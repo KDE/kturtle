@@ -34,7 +34,7 @@ ColorPicker::ColorPicker(QWidget *parent) : KDialogBase(parent, "colorpicker",
     setMainWidget(BaseWidget);
     
     // the User1 button:
-    setButtonText( KDialogBase::User1, i18n("Insert color code at cursor") );
+    setButtonText( KDialogBase::User1, i18n("Insert Color Code at Cursor") );
     connect( this, SIGNAL( user1Clicked() ), SLOT( slotEmitColorCode() ) );
  
     QVBoxLayout *vlayout = new QVBoxLayout(BaseWidget);
