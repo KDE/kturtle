@@ -289,6 +289,7 @@ void MainWindow::loadFile(KURL url) {
 				}
 			}
 			QTextStream stream(&file);
+			stream.setEncoding(QTextStream::UnicodeUTF8);
 			ei->setText(stream.read());
 			file.close();
 			CurrentFile = myFile;

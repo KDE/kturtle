@@ -1,6 +1,6 @@
-# dessine un carré
+# dessine un carrÃ©
 
-répète 4 [
+rÃ©pÃ¨te 4 [
   avance 100 
   tournegauche  90
 ]
