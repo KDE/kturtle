@@ -82,7 +82,7 @@ class Canvas : public QCanvasView
 		void updateSpritePos();
 		void updateSpriteAngle();
 		
-		QCanvas             *TurtleCanvas;
+		QCanvas             *canvas;
 		QPixmap              pixmap;
 		QCanvasSprite       *sprite;
 		QCanvasPixmapArray  *spriteFrames;

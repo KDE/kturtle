@@ -77,14 +77,14 @@ const double PI = 3.14159265358979323846;
 Canvas::Canvas(QWidget *parent, const char *name) : QCanvasView(0, parent, name)
 {
 	// Create a new canvas for this view
-	TurtleCanvas = new QCanvas(parent);
-	TurtleCanvas->setAdvancePeriod(250);  // refresh-rate in [ms]
+	canvas = new QCanvas(parent);
+	canvas->setAdvancePeriod(250);  // refresh-rate in [ms]
 	
 	// set initial values
 	initValues();
 	
 	// at last we assign the canvas to the view
-	setCanvas(TurtleCanvas);
+	setCanvas(canvas);
 }
 
 Canvas::~Canvas()
@@ -96,9 +96,9 @@ Canvas::~Canvas()
 
 QPixmap* Canvas::canvas2Pixmap()
 {
-	pixmap = QPixmap( TurtleCanvas->width(), TurtleCanvas->height() );
+	pixmap = QPixmap( canvas->width(), canvas->height() );
 	QPainter painter(&pixmap);
-	TurtleCanvas->drawArea(TurtleCanvas->rect(), &painter);
+	canvas->drawArea(canvas->rect(), &painter);
 	return &pixmap;
 }
 
@@ -110,7 +110,7 @@ QPixmap* Canvas::canvas2Pixmap()
 
 void Canvas::slotClear()
 {
-	QCanvasItemList list = canvas()->allItems();
+	QCanvasItemList list = canvas->allItems();
 	QCanvasItemList::Iterator it = list.begin();
 	for (; it != list.end(); ++it)
 	{
@@ -121,7 +121,7 @@ void Canvas::slotClear()
 
 void Canvas::slotClearSpriteToo()
 {
-	QCanvasItemList list = canvas()->allItems();
+	QCanvasItemList list = canvas->allItems();
 	QCanvasItemList::Iterator it = list.begin();
 	for (; it != list.end(); ++it)
 	{
@@ -135,11 +135,11 @@ void Canvas::slotGo(double x, double y)
 	int intX = ROUND2INT(x);
 	int intY = ROUND2INT(y);
 	
-	if ( wrap && !TurtleCanvas->onCanvas(intX, intY) )
+	if ( wrap && !canvas->onCanvas(intX, intY) )
 	{
 		QPoint offsetPoint = offset(intX, intY);
-		posX = x - (double)( offsetPoint.x() * canvasWidth );
-		posY = y - (double)( offsetPoint.y() * canvasHeight );
+		posX = x - ( offsetPoint.x() * canvasWidth );
+		posY = y - ( offsetPoint.y() * canvasHeight );
 
 	}
 	else
@@ -154,7 +154,7 @@ void Canvas::slotGoX(double x)
 {
 	int intX = ROUND2INT(x);
 	int intPosY = ROUND2INT(posY);
-	if ( wrap && !TurtleCanvas->onCanvas(intX, intPosY) )
+	if ( wrap && !canvas->onCanvas(intX, intPosY) )
 	{
 		QPoint offsetPoint = offset(intX, intPosY);
 		posX = x - ( offsetPoint.x() * canvasWidth );
@@ -167,7 +167,7 @@ void Canvas::slotGoY(double y)
 {
 	int intY = ROUND2INT(y);
 	int intPosX = ROUND2INT(posX);
-	if ( wrap && !TurtleCanvas->onCanvas(intPosX, intY) )
+	if ( wrap && !canvas->onCanvas(intPosX, intY) )
 	{
 		QPoint offsetPoint = offset(intPosX, intY);
 		posY = y - ( offsetPoint.y() * canvasHeight );
@@ -180,7 +180,7 @@ void Canvas::slotForward(double x)
 {
 	double posXnew = posX + ( x * cos(direction) );
 	double posYnew = posY - ( x * sin(direction) );
-	if (pen) lineShell( ROUND2INT(posX), ROUND2INT(posY), ROUND2INT(posXnew), ROUND2INT(posYnew) );
+	if (pen) lineShell(posX, posY, posXnew, posYnew);
 	slotGo(posXnew, posYnew);
 }
 
@@ -188,7 +188,7 @@ void Canvas::slotBackward(double x)
 {
 	double posXnew = posX - ( x * cos(direction) );
 	double posYnew = posY + ( x * sin(direction) );
-	if (pen) lineShell( ROUND2INT(posX), ROUND2INT(posY), ROUND2INT(posXnew), ROUND2INT(posYnew) );
+	if (pen) lineShell(posX, posY, posXnew, posYnew);
 	slotGo(posXnew, posYnew);
 }
 
@@ -243,7 +243,7 @@ void Canvas::slotSetFgColor(int r, int g, int b)
 
 void Canvas::slotSetBgColor(int r, int g, int b)
 {
-	TurtleCanvas->setBackgroundColor( QColor(r, g, b) );
+	canvas->setBackgroundColor( QColor(r, g, b) );
 }
 
 void Canvas::slotResizeCanvas(int x, int y)
@@ -256,7 +256,7 @@ void Canvas::slotResizeCanvas(int x, int y)
 	}
 	canvasWidth = x;
 	canvasHeight = y;
-	TurtleCanvas->resize(x, y);
+	canvas->resize(x, y);
 	emit CanvasResized(); 
 }
 
@@ -287,7 +287,7 @@ void Canvas::slotSpriteChange(int x)
 
 void Canvas::slotPrint(QString text)
 {
-	QCanvasText* t = new QCanvasText(text, font, TurtleCanvas);
+	QCanvasText* t = new QCanvasText(text, font, canvas);
 	// text does not do the wrapping, never... sorry
 	t->setColor( QColor(fgR, fgG, fgB) );
 	t->move(ROUND2INT(posX), ROUND2INT(posY));
@@ -338,7 +338,7 @@ void Canvas::initValues()
 	canvasWidth = Settings::canvasWidth();
 	canvasHeight = Settings::canvasHeight();
 	// colors
-	TurtleCanvas->setBackgroundColor( QColor(255, 255, 255) ); // background
+	canvas->setBackgroundColor( QColor(255, 255, 255) ); // background
 	fgR = 0; // pencolor (forground)
 	fgG = 0;
 	fgB = 0;
@@ -371,7 +371,7 @@ void Canvas::lineShell(double xa, double ya, double xb, double yb)
 
 void Canvas::line(double xa, double ya, double xb, double yb)
 {
-	QCanvasLine* l = new QCanvasLine(TurtleCanvas);
+	QCanvasLine* l = new QCanvasLine(canvas);
 	int intXa = ROUND2INT(xa);
 	int intYa = ROUND2INT(ya);
 	int intXb = ROUND2INT(xb);
@@ -381,7 +381,7 @@ void Canvas::line(double xa, double ya, double xb, double yb)
 	l->setZ(1);
 	l->show();
 	// kdDebug(0)<<"Canvas::line(); xa:"<<xa<<", ya:"<<ya<<", xb:"<<xb<<", yb:"<<yb<<endl;
-	if ( wrap && !TurtleCanvas->onCanvas( ROUND2INT(xb), ROUND2INT(yb) ) )
+	if ( wrap && !canvas->onCanvas( ROUND2INT(xb), ROUND2INT(yb) ) )
 	{
 		if (endlessLoop( QPoint(intXa, intYa), QPoint(intXb, intYb) ) == true) // detect for endless loop
 		{
@@ -613,7 +613,7 @@ void Canvas::loadSpriteFrames(QString name)
 	QString spritePath = locate("data","kturtle/pics/"+name+".0000.png");
 	spritePath.remove(".0000.png");
 	spriteFrames = new QCanvasPixmapArray(spritePath+".%1.png", 36);
-	sprite = new QCanvasSprite(spriteFrames, TurtleCanvas);
+	sprite = new QCanvasSprite(spriteFrames, canvas);
 	sprite->setZ(250);
 }
 

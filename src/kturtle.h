@@ -131,10 +131,10 @@ class MainWindow : public KParts::MainWindow
 		void updateFullScreen();
 		virtual bool event(QEvent* e);
 		
-		Canvas              *TurtleView;
-		QWidget             *BaseWidget;
-		QGridLayout         *BaseLayout;
-		QDockWindow         *EditorDock;
+		Canvas              *canvasView;
+		QWidget             *baseWidget;
+		QGridLayout         *baseLayout;
+		QDockWindow         *editorDock;
 		Executer            *exe;
 		ErrorMessage        *errMsg;
 		ColorPicker         *picker;

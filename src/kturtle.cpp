@@ -184,18 +184,18 @@ void MainWindow::setupActions()
 
 void MainWindow::setupEditor()
 {
-	EditorDock = new QDockWindow(this);
-	EditorDock->setNewLine(true);
-	EditorDock->setFixedExtentWidth(250);
-	EditorDock->setFixedExtentHeight(150);
-	EditorDock->setResizeEnabled(true);
-	EditorDock->setFrameShape(QFrame::ToolBarPanel);
-	QWhatsThis::add( EditorDock, i18n( "This is the code editor, here you type the Logo commands to instruct the turtle. You can also open an existing Logo program with File->Open Examples... or File->Open." ) );
-	moveDockWindow(EditorDock, Qt::DockLeft);
-	editor = doc->createView (EditorDock, 0L);
+	editorDock = new QDockWindow(this);
+	editorDock->setNewLine(true);
+	editorDock->setFixedExtentWidth(250);
+	editorDock->setFixedExtentHeight(150);
+	editorDock->setResizeEnabled(true);
+	editorDock->setFrameShape(QFrame::ToolBarPanel);
+	QWhatsThis::add( editorDock, i18n( "This is the code editor, here you type the Logo commands to instruct the turtle. You can also open an existing Logo program with File->Open Examples... or File->Open." ) );
+	moveDockWindow(editorDock, Qt::DockLeft);
+	editor = doc->createView (editorDock, 0L);
 	// editorInterface is the editor interface which allows us to access the text in the part
 	editorInterface = dynamic_cast<KTextEditor::EditInterface*>(doc);
-	EditorDock->setWidget(editor);
+	editorDock->setWidget(editor);
 
 	// default the highlightstyle to "logo" using the needed i18n
 	kdDebug(0)<<"The HighlightStyle for the Code Editor: "<<Settings::logoLanguage()<<endl;
@@ -225,16 +225,16 @@ void MainWindow::setupStatusBar()
 
 void MainWindow::setupCanvas()
 {
-	BaseWidget = new QWidget(this);
-	setCentralWidget(BaseWidget);
-	BaseLayout = new QGridLayout(BaseWidget, 0, 0);
-	TurtleView = new Canvas(BaseWidget);
-	BaseLayout->addWidget(TurtleView, 0, 0, AlignCenter);
-	BaseLayout->setRowStretch(0, 1); // this apperntly fixes a pre-usefull scrollbars bug
-	BaseLayout->setColStretch(0, 1);
-	QWhatsThis::add( TurtleView, i18n("This is the canvas, here the turtle draws a picture.") );
-	TurtleView->show();
-	connect( TurtleView, SIGNAL( CanvasResized() ), this, SLOT( slotUpdateCanvas() ) );
+	baseWidget = new QWidget(this);
+	setCentralWidget(baseWidget);
+	baseLayout = new QGridLayout(baseWidget, 0, 0);
+	canvasView = new Canvas(baseWidget);
+	baseLayout->addWidget(canvasView, 0, 0, AlignCenter);
+	baseLayout->setRowStretch(0, 1); // this apperntly fixes a pre-usefull scrollbars bug
+	baseLayout->setColStretch(0, 1);
+	QWhatsThis::add( canvasView, i18n("This is the canvas, here the turtle draws a picture.") );
+	canvasView->show();
+	connect( canvasView, SIGNAL( CanvasResized() ), this, SLOT( slotUpdateCanvas() ) );
 }
 
 // END
@@ -276,7 +276,7 @@ void MainWindow::slotNewFile()
 		if (result != KMessageBox::Continue) return;
 	}
 	editorInterface->clear(); // clear the editor
-	TurtleView->slotClear(); // clear the view
+	canvasView->slotClear(); // clear the view
 	editor->document()->setModified(false);
 	CurrentFile = KURL();
 	setCaption( i18n("Untitled") );
@@ -415,7 +415,7 @@ void MainWindow::slotSaveCanvas()
 	QString type( KImageIO::type( url.path() ) );
 	if ( type.isNull() ) type = "PNG";
 	bool ok = false;
-	QPixmap* pixmap = TurtleView->canvas2Pixmap();
+	QPixmap* pixmap = canvasView->canvas2Pixmap();
 	if ( url.isLocalFile() )
 	{
 		KSaveFile saveFile( url.path() );
@@ -454,7 +454,7 @@ void MainWindow::slotPrint()
 		if ( printer.setup(this) )
 		{
 			QPainter painter(&printer);
-			QPixmap *CanvasPic = TurtleView->canvas2Pixmap();
+			QPixmap *CanvasPic = canvasView->canvas2Pixmap();
 			painter.drawPixmap(0, 0, *CanvasPic);
 		}
 		return;
@@ -507,7 +507,7 @@ void MainWindow::slotExecute()
 {
 	if (b_fullscreen) // check if execution should be execution in 'fullscreen' mode
 	{
-		EditorDock->hide();
+		editorDock->hide();
 		statusBar()->hide();
 		menuBar()->hide();
 		toolBar()->hide();
@@ -549,32 +549,32 @@ void MainWindow::slotExecute()
 	connect( exe, SIGNAL( MessageDialog(QString) ), this, SLOT( slotMessageDialog(QString) ) );
 
 	// Connect the signals form Executer to the slots from Canvas:
-	connect( exe, SIGNAL( Clear() ), TurtleView, SLOT( slotClear() ) );
-	connect( exe, SIGNAL( Go(double, double) ), TurtleView, SLOT( slotGo(double, double) ) );
-	connect( exe, SIGNAL( GoX(double) ), TurtleView, SLOT( slotGoX(double) ) );
-	connect( exe, SIGNAL( GoY(double) ), TurtleView, SLOT( slotGoY(double) ) );
-	connect( exe, SIGNAL( Forward(double) ), TurtleView, SLOT( slotForward(double) ) );
-	connect( exe, SIGNAL( Backward(double) ), TurtleView, SLOT( slotBackward(double) ) );
-	connect( exe, SIGNAL( Direction(double) ), TurtleView, SLOT( slotDirection(double) ) );
-	connect( exe, SIGNAL( TurnLeft(double) ), TurtleView, SLOT( slotTurnLeft(double) ) );
-	connect( exe, SIGNAL( TurnRight(double) ), TurtleView, SLOT( slotTurnRight(double) ) );
-	connect( exe, SIGNAL( Center() ), TurtleView, SLOT( slotCenter() ) );
-	connect( exe, SIGNAL( SetPenWidth(int) ), TurtleView, SLOT( slotSetPenWidth(int) ) );
-	connect( exe, SIGNAL( PenUp() ), TurtleView, SLOT( slotPenUp() ) );
-	connect( exe, SIGNAL( PenDown() ), TurtleView, SLOT( slotPenDown() ) );
-	connect( exe, SIGNAL( SetFgColor(int, int, int) ), TurtleView, SLOT( slotSetFgColor(int, int, int) ) );
-	connect( exe, SIGNAL( SetBgColor(int, int, int) ), TurtleView, SLOT( slotSetBgColor(int, int, int) ) );
-	connect( exe, SIGNAL( ResizeCanvas(int, int) ), TurtleView, SLOT( slotResizeCanvas(int, int) ) );
-	connect( exe, SIGNAL( SpriteShow() ), TurtleView, SLOT( slotSpriteShow() ) );
-	connect( exe, SIGNAL( SpriteHide() ), TurtleView, SLOT( slotSpriteHide() ) );
-	connect( exe, SIGNAL( SpritePress() ), TurtleView, SLOT( slotSpritePress() ) );
-	connect( exe, SIGNAL( SpriteChange(int) ), TurtleView, SLOT( slotSpriteChange(int) ) );
-	connect( exe, SIGNAL( Print(QString) ), TurtleView, SLOT( slotPrint(QString) ) );
-	connect( exe, SIGNAL( FontType(QString) ), TurtleView, SLOT( slotFontType(QString) ) );
-	connect( exe, SIGNAL( FontSize(int) ), TurtleView, SLOT( slotFontSize(int) ) );
-	connect( exe, SIGNAL( WrapOn() ), TurtleView, SLOT( slotWrapOn() ) );
-	connect( exe, SIGNAL( WrapOff() ), TurtleView, SLOT( slotWrapOff() ) );
-	connect( exe, SIGNAL( Reset() ), TurtleView, SLOT( slotReset() ) );
+	connect( exe, SIGNAL( Clear() ), canvasView, SLOT( slotClear() ) );
+	connect( exe, SIGNAL( Go(double, double) ), canvasView, SLOT( slotGo(double, double) ) );
+	connect( exe, SIGNAL( GoX(double) ), canvasView, SLOT( slotGoX(double) ) );
+	connect( exe, SIGNAL( GoY(double) ), canvasView, SLOT( slotGoY(double) ) );
+	connect( exe, SIGNAL( Forward(double) ), canvasView, SLOT( slotForward(double) ) );
+	connect( exe, SIGNAL( Backward(double) ), canvasView, SLOT( slotBackward(double) ) );
+	connect( exe, SIGNAL( Direction(double) ), canvasView, SLOT( slotDirection(double) ) );
+	connect( exe, SIGNAL( TurnLeft(double) ), canvasView, SLOT( slotTurnLeft(double) ) );
+	connect( exe, SIGNAL( TurnRight(double) ), canvasView, SLOT( slotTurnRight(double) ) );
+	connect( exe, SIGNAL( Center() ), canvasView, SLOT( slotCenter() ) );
+	connect( exe, SIGNAL( SetPenWidth(int) ), canvasView, SLOT( slotSetPenWidth(int) ) );
+	connect( exe, SIGNAL( PenUp() ), canvasView, SLOT( slotPenUp() ) );
+	connect( exe, SIGNAL( PenDown() ), canvasView, SLOT( slotPenDown() ) );
+	connect( exe, SIGNAL( SetFgColor(int, int, int) ), canvasView, SLOT( slotSetFgColor(int, int, int) ) );
+	connect( exe, SIGNAL( SetBgColor(int, int, int) ), canvasView, SLOT( slotSetBgColor(int, int, int) ) );
+	connect( exe, SIGNAL( ResizeCanvas(int, int) ), canvasView, SLOT( slotResizeCanvas(int, int) ) );
+	connect( exe, SIGNAL( SpriteShow() ), canvasView, SLOT( slotSpriteShow() ) );
+	connect( exe, SIGNAL( SpriteHide() ), canvasView, SLOT( slotSpriteHide() ) );
+	connect( exe, SIGNAL( SpritePress() ), canvasView, SLOT( slotSpritePress() ) );
+	connect( exe, SIGNAL( SpriteChange(int) ), canvasView, SLOT( slotSpriteChange(int) ) );
+	connect( exe, SIGNAL( Print(QString) ), canvasView, SLOT( slotPrint(QString) ) );
+	connect( exe, SIGNAL( FontType(QString) ), canvasView, SLOT( slotFontType(QString) ) );
+	connect( exe, SIGNAL( FontSize(int) ), canvasView, SLOT( slotFontSize(int) ) );
+	connect( exe, SIGNAL( WrapOn() ), canvasView, SLOT( slotWrapOn() ) );
+	connect( exe, SIGNAL( WrapOff() ), canvasView, SLOT( slotWrapOff() ) );
+	connect( exe, SIGNAL( Reset() ), canvasView, SLOT( slotReset() ) );
 
 	// START EXECUTION on the selected speed, and use the feedbacked boolean value
 	slotChangeSpeed();
@@ -842,7 +842,7 @@ void MainWindow::slotFinishedFullScreenExecution()
 void MainWindow::slotBackToFullScreen()
 {
 	delete restartOrBackDialog;
-	EditorDock->show();
+	editorDock->show();
 	statusBar()->show();
 	menuBar()->show();
 	toolBar()->show();
@@ -1143,10 +1143,10 @@ void MainWindow::slotColorPicker()
 void MainWindow::slotUpdateCanvas()
 {
 	// fixes a non updateing bug
-	// I tried doing this by connecting Canvas's resized to BaseWidget's update...
+	// I tried doing this by connecting Canvas's resized to baseWidget's update...
 	// but i had no luck :(    ...    this worked though :)
-	TurtleView->hide();
-	TurtleView->show();
+	canvasView->hide();
+	canvasView->show();
 }
 
 // END
