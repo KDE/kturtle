@@ -1,5 +1,7 @@
 # draw a red arrow
 
+reset
+
 canvassize 200, 200
 canvascolor 0, 0, 0
 pencolor 255, 0, 0

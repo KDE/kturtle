@@ -1,0 +1,24 @@
+# draw triangle wheels
+
+reset
+
+learn triangle X [
+  repeat 3 [  
+    forward X
+    turnleft 120
+  ]
+]
+
+for r = 1 to 30 [
+  clear
+  repeat 18 [
+    triangle r*r*5
+    tr 20
+  ]
+  wait 1
+]
+
+wait 3
+clear
+
+print "  I'm tired..."

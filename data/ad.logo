@@ -1,0 +1,125 @@
+# KTurtle advertisement :)
+
+reset
+canvassize 400,190
+penwidth 10
+
+
+learn K x,y [
+  dir 0
+  go x,y
+  bw 75
+  go x+40,y
+  dir -140
+  fw 60
+  bw 10
+  tl 85
+  fw 50
+]
+
+learn T x,y [
+  go x,y
+  dir 90
+  fw 50
+  bw 25
+  dir 180
+  fw 70
+]
+
+learn u x,y [
+  go x,y
+  dir 180
+  fw 47
+  tl 45
+  fw 7
+  tl 45
+  fw 20
+  tl 45
+  fw 7
+  tl 45
+  fw 47
+]
+
+learn r x,y [
+  go x,y
+  dir 180
+  fw 55
+  go x,y+15
+  dir 45
+  penup
+  fw 4
+  pendown
+  fw 10
+  tr 45
+  fw 10
+]
+
+learn t x,y [
+  dir 180
+  go x,y
+  fw 67
+  tl 45
+  fw 7
+  tl 45
+  fw 10
+  go x,y+30
+  dir 90
+  fw 10
+]
+
+learn l x,y [
+  dir 180
+  go x,y
+  fw 77
+]
+
+learn e x,y [
+  go x,y+30
+  dir 90
+  fw 50
+  tl 90
+  fw 15
+  tl 45
+  fw 15
+  tl 45
+  fw 20
+  tl 45
+  fw 15
+  tl 45
+  fw 25
+  tl 45
+  fw 15
+  tl 45
+  fw 25
+]
+
+
+K 50,30
+T 108,35
+u 167,50
+r 220,50
+t 256,30
+l 289,30
+e 305,50
+
+go 12,115
+fontsize 25
+print "Educative Programming Environment"
+
+hide
+wait 1
+show
+
+go 120,145
+dir 80
+penwidth 5
+pencolor 255,0,0
+fw 130
+
+wait 0.5
+go 180,135
+print "play"
+
+go 238,160
+wait 0.5
+dir 0
