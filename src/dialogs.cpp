@@ -29,6 +29,7 @@ ErrorMessage::ErrorMessage (QWidget *parent)
 	: KDialogBase (parent, "errorDialog", false, 0, KDialogBase::Close | KDialogBase::Help | KDialogBase::User1, KDialogBase::Close, true, i18n("Help on &Error") )
 {
 	connect( this, SIGNAL( user1Clicked() ), this, SLOT( showHelpOnError() ) );
+	connect( this, SIGNAL( helpClicked() ), this, SLOT( errorMessageHelp() ) );
 	setCaption( i18n("Error Dialog") );
 	setButtonWhatsThis( KDialogBase::Close, i18n("Closes this Error Dialog") );
 	setButtonWhatsThis( KDialogBase::Help, i18n("Click here to read more on this Error Dialog in KTurtle's Handbook.") );
@@ -66,6 +67,10 @@ ErrorMessage::ErrorMessage (QWidget *parent)
 	errTable->setColumnStretchable(2, true);
 
 	baseLayout->addWidget(errTable);
+	
+	// Since both help buttons are not working yet. Doc need a section on the Error Dialog!
+	enableButton(KDialogBase::Help, false);
+	enableButton(KDialogBase::User1, false);
 	
 	errCount = 1;
 }
@@ -111,17 +116,22 @@ void ErrorMessage::updateSelection()
 	currentError = *errList.at(i - 1);
 	emit setSelection(currentError.tok.start.row, currentError.tok.start.col, 
 	                  currentError.tok.end.row,   currentError.tok.end.col);
-#if 0 // FIXME
-	if ( tokenTypeNames[currentError.tok.type].isEmpty() ) enableButton(KDialogBase::User1, true);
-	else                                                   enableButton(KDialogBase::User1, false);
-#endif
+// #if 0 // FIXME
+// 	if ( tokenTypeNames[currentError.tok.type].isEmpty() ) enableButton(KDialogBase::User1, true);
+// 	else                                                   enableButton(KDialogBase::User1, false);
+// #endif
 }
 
 void ErrorMessage::showHelpOnError()
 {
-#if 0 // FIXME
-	kapp->invokeHelp(tokenTypeNames[currentError.tok.type], "", "");
-#endif
+// #if 0 // FIXME
+// 	kapp->invokeHelp(tokenTypeNames[currentError.tok.type], "", "");
+// #endif
+}
+
+void ErrorMessage::errorMessageHelp()
+{
+	kapp->invokeHelp("anchorname", "", "");
 }
 
 // END
@@ -133,6 +143,9 @@ void ErrorMessage::showHelpOnError()
 ColorPicker::ColorPicker(QWidget *parent)
 	: KDialogBase(parent, "colorpicker", false, i18n("Color Picker"), KDialogBase::Close | KDialogBase::Help | KDialogBase::User1, KDialogBase::Close, true )
 {
+	// connect to help
+	connect( this, SIGNAL( helpClicked() ), SLOT( slotColorPickerHelp() ) );
+	
 	// for toggling convenience
 	connect( this, SIGNAL( finished() ), SLOT( slotEmitVisibility() ) );
     
@@ -271,6 +284,11 @@ void ColorPicker::slotEmitColorCode()
 {
 	// convenience
 	emit ColorCode( colorcode->text() );
+}
+
+void ColorPicker::slotColorPickerHelp()
+{
+	kapp->invokeHelp("tools-color-picker", "", "");
 }
 
 // END

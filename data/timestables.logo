@@ -1,6 +1,7 @@
 # print times-tables
 
-clear
+reset
+canvassize 300,250
 hide
 penup
 go 10, 0

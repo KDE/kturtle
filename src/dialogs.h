@@ -68,6 +68,7 @@ class ErrorMessage : public KDialogBase
 
 	private slots:
 		void showHelpOnError();
+		void errorMessageHelp();
 
 	signals:
 		void setCursor(uint row, uint column);
@@ -124,6 +125,10 @@ class ColorPicker : public KDialogBase
 		QLineEdit          *colorcode;
 		QColor              color;
 		int                 h, s, v, r, g, b;
+
+
+	private slots:
+		void slotColorPickerHelp();
 
 
 	protected slots:

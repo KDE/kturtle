@@ -99,6 +99,7 @@ class MainWindow : public KParts::MainWindow
 	
 		void slotSettings();
 		void slotUpdateSettings();
+		void slotSettingsHelp();
 		
 		void slotContextHelp();
 		void slotContextHelpUpdate();

@@ -129,16 +129,16 @@ void MainWindow::setupActions()
 	KStdAction::save(this, SLOT(slotSaveFile()), ac);
 	KStdAction::saveAs(this, SLOT(slotSaveAs()), ac);
 	new KAction(i18n("Save &Canvas..."), 0, 0, this, SLOT(slotSaveCanvas()), ac, "save_canvas");
+	speed = new KSelectAction(i18n("Execution Speed"), 0, ALT+Key_S, this, SLOT( slotChangeSpeed() ), ac, "speed");
+	QStringList speeds; speeds << i18n("Full Speed") << i18n("Slow") << i18n("Slower") << i18n("Slowest");
+	speed->setItems(speeds);
+	speed->setCurrentItem(0);
 	run = new KAction(i18n("&Execute Commands"), "gear", ALT+Key_Return, this, SLOT( slotExecute() ), ac, "run");
 	pause = new KToggleAction(i18n("Pause E&xecution"), "player_pause", Key_Pause, this, SLOT( slotPauseExecution() ), ac, "pause");
 	pause->setChecked(false);
 	pause->setEnabled(false);
 	stop = new KAction(i18n("Stop E&xecution"), "stop", Key_Escape, this, SLOT( slotAbortExecution() ), ac, "stop");
 	stop->setEnabled(false);
-	speed = new KSelectAction(i18n("Execution Speed"), 0, ALT+Key_S, this, SLOT( slotChangeSpeed() ), ac, "speed");
-	QStringList speeds; speeds << i18n("Full Speed") << i18n("Slow") << i18n("Slower") << i18n("Slowest");
-	speed->setItems(speeds);
-	speed->setCurrentItem(0);
 	KStdAction::print(this, SLOT(slotPrint()), ac);
 	KStdAction::quit(this, SLOT(close()), ac);
 	
@@ -869,6 +869,9 @@ void MainWindow::slotSettings()
 
 	// Create a new dialog with the same name as the above checking code.
 	KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self() );
+	// connect the help
+	connect( dialog, SIGNAL( helpClicked() ), this, SLOT( slotSettingsHelp() ) );
+	
 	// making the filling for the 'General' settings dept.
 	general = new QWidget();
 	QGridLayout *generalLayout = new QGridLayout( general, 1, 1, 11, 6, "generalLayout");
@@ -977,6 +980,11 @@ void MainWindow::readConfig(KConfig *config)
 	KConfig entry(locate("locale", "all_languages"));
 	entry.setGroup(Settings::logoLanguage().left(2));
 	slotStatusBar(i18n("Command language: %1").arg( entry.readEntry("Name") ), IDS_LANG);
+}
+
+void MainWindow::slotSettingsHelp()
+{
+	kapp->invokeHelp("settings-configure", "", "");
 }
 
 // END

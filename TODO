@@ -57,31 +57,18 @@ WISHes
  
 
 My [cies] TODO list (in this order!):
-- the connection with the manual should be fixed (might need a change in kdelibs)
-- bug, wishes, errmsgs-fixes concering the interpreter
-- spice up the errormessage window with my great ideas
+- the connection with the manual should be fixed (might need a change in kdelibs)  FIXED tnx Waldo!
+- bug, wishes, errmsgs-fixes concering the interpreter  HAS TO RESULT IN HUGE REFACTORING
+- spice up the errormessage window with my great ideas  ON HOLD
 
 
   
  
 >>>>> BUGs::Urgent
 
-
-
-a = 1
-b = 5
-if (a < 5) and (b == 5) [
-	print "Hello"
-]   ------------> fixed!!!
-
-
-
-print inputwindow "bla"  --> wrong error: FIXED!!
-print "---" + (inputwindow "bla") + "-----" WORX!
-
-
-
-commenting out line using ctrl-D doesnt work anymore! arg!  <--- starts to heavily annoyme!!
+cies> currently no urgent bugs that i know of. except for:
+THERE IS NO HELP ON THE ERROR DIALOG! (nor on the ColorPicker Dialog and the Configure Dlg)
+		this is needed for help button references
 
 
 
@@ -129,21 +116,14 @@ have the slow-execution cursor stop at more places like: inputwindow, inline fun
 
 if the inputwindow is canceled the returned value is empty. Yet we need to be a hybrid string ("") or number (0).
 
-hopefully a temporary thing with random... 
+when aborting execution dont say "Done." in the statusbar
+
+Maybe change the location of the Logo highlightstyles 
+
 
 
 
 >>>>> BUGs::Unconfirmed
-forward 100e does not work: freezes the machine
-  - i can confirm this bug, who noted it? "forward 100" and "forward 100e" both 'work' correctly "forward 100e" produces and error, duh...
-
-
-run command does not work...  I (cies) cant confirm this, who filed this bug? try:
-   go 0,0
-   x = run "ls"
-   print x
-
-
 annma can you go though the next 2 bugs and supply some more info bout them to me? tnx
 - The documentation of "not" seems wrong. Should it be a unary <-- annma
    operator?
@@ -153,8 +133,7 @@ annma can you go though the next 2 bugs and supply some more info bout them to m
 
 
 >>>>> WISHes::important
-Manual intergration with KTurtle (context-F1-help and several 'help' buttons in dialogs)
-
+cies> refactor the interpreter so it is easier to add new commands (using meta programming)
 
 
 

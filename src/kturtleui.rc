@@ -11,10 +11,10 @@
       <Action name="file_save_as" />
       <Action name="save_canvas" />
       <Separator />
+      <Action name="speed" />
       <Action name="run" />
       <Action name="pause" />
       <Action name="stop" />
-      <Action name="speed" />
       <Separator />
       <Action name="file_print" />
       <Separator />
