@@ -84,7 +84,6 @@ class MainWindow : public KParts::MainWindow
 	KAction            *newAction;
 	KToggleAction      *m_fullscreen;
 	KToggleAction      *colorpicker;
-	// KToggleAction      *showEditor; // DEPPRICATED
 	KRecentFilesAction *m_recentFiles;
 	KAction            *ContextHelp;
 	bool                b_fullscreen:1;
@@ -121,7 +120,7 @@ class MainWindow : public KParts::MainWindow
 	// fullscreen related
 	void updateFullScreen();
     
-  private slots:
+  protected slots:
 	void slotNewFile();
 	void slotOpenFile();
 	void loadFile(KURL url);
