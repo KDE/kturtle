@@ -115,7 +115,8 @@ void MainWindow::setupActions() {
     KStdAction::copy(this, SLOT(slotCopy()), ac);
     KStdAction::paste(this, SLOT(slotPaste()), ac);
     KStdAction::selectAll(this, SLOT(slotSelectAll()), ac);
-    new KAction(i18n("Toggle Insert"), Key_Insert, 0, SLOT(slotToggleInsert()), ac, "insert");
+    KStdAction::deselect(this, SLOT(slotClearSelection()), ac);
+    new KToggleAction(i18n("Toggle Insert"), Key_Insert, this, SLOT(slotToggleInsert()), ac, "insert");
     // ^ not working!!!
     KStdAction::find(this, SLOT(slotFind()), ac);
     KStdAction::findNext(this, SLOT(slotFindNext()), ac);
@@ -123,17 +124,17 @@ void MainWindow::setupActions() {
     KStdAction::replace(this, SLOT(slotReplace()), ac);
     
     // setup view actions
-    new KToggleAction(i18n("Show &Line Numbers"), 0, 0, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
+    new KToggleAction(i18n("Show &Line Numbers"), "linenumbers", Qt::Key_F11, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
     m_fullscreen = KStdAction::fullScreen(this, SLOT( slotToggleFullscreen() ), ac, this, "full_screen");
     m_fullscreen->setChecked(b_fullscreen);
 
     // setup tools actions
-    new KToggleAction(i18n("&Color Picker"), "colorize", 0, this, SLOT( slotColorPicker() ), ac, "color_picker");
-    new KAction(i18n("&Indent"), "indent", CTRL+Key_I, 0, SLOT(slotIndent()), ac, "indent");
-    new KAction(i18n("&Unindent"), "unindent", CTRL+SHIFT+Key_I, 0, SLOT(slotUnIndent()), ac, "unindent");
-    new KAction(i18n("Cl&ean Indentation"), "cleanindent", 0, 0, SLOT(slotCleanIndent()), ac, "cleanindent");
-    new KAction(i18n("Co&mment"), CTRL+Key_D, 0, SLOT(slotComment()), ac, "comment");
-    new KAction(i18n("Unc&omment"), CTRL+SHIFT+Key_D, 0, SLOT(slotUnComment()), ac, "uncomment");
+    new KToggleAction(i18n("&Color Picker"), "colorize", 0, this, SLOT(slotColorPicker()), ac, "color_picker");
+    new KAction(i18n("&Indent"), "indent", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
+    new KAction(i18n("&Unindent"), "unindent", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
+    new KAction(i18n("Cl&ean Indentation"), 0, 0, this, SLOT(slotCleanIndent()), ac, "edit_cleanindent");
+    new KAction(i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
+    new KAction(i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
 
     //@todo: make the EditorDock hideable, better to do it when on KTextEditor... 
     // (void)new KToggleAction(i18n("&Hide Editor"), 0, 0, this, SLOT(slotToggleHideEditor()),
@@ -495,7 +496,6 @@ void MainWindow::slotClearSelection() {
 }
 
 void MainWindow::slotToggleInsert() {
-    kdDebug(0)<<"qwdqw"<<endl;
     KToggleAction *a = dynamic_cast<KToggleAction*>( editor->actionCollection()->action("set_insert") );
     a->activate();
     slotStatusBar(a->isChecked() ? i18n(" OVR ") : i18n(" INS "), 0);
@@ -503,6 +503,7 @@ void MainWindow::slotToggleInsert() {
 
 
 void MainWindow::slotFind() {
+kdDebug(0)<<"qwdqw"<<endl;
     KAction *a = editor->actionCollection()->action("edit_find");
     a->activate();
 }
