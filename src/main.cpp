@@ -28,7 +28,7 @@ static const char version[] = "0.1";
 
 static const char copyright[] = "(C) 2003 The KTurtle Authors";
 
-static const char website[] = "http://kturtle.sf.net";
+static const char website[] = "http://edu.kde.org/kturtle";
 
 static KCmdLineOptions options[] =
 {

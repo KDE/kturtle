@@ -20,7 +20,7 @@ Please don't translate anything else.
 
 4) Save your file as utf-8 (in Kate, use Save As and change to utf8 in the box on the right of the file name)
 
-5) Commit your file or send it to Anne-Marie.
+5) Commit your file (add your filename in the Makefile.am) or send it to Anne-Marie.
 
 6) In case of any doubt, please contact Anne-Marie Mahfouf, annemarie.mahfouf@free.fr for more information.
 
