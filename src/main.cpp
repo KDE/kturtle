@@ -33,7 +33,7 @@ static const char website[] = "http://edu.kde.org/kturtle";
 static KCmdLineOptions options[] =
 {
 //    TODO implement this (first katepart should be used)
-//    { "+[URL]", I18N_NOOP( "Document to open." ), 0 },
+//    { "+[URL]", I18N_NOOP( "Document to open" ), 0 },
     KCmdLineLastOption
 };
 
