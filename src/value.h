@@ -29,7 +29,7 @@ enum valueType
 {
 	boolType,
 	numberType,
-	stringType,
+	stringType
 };
 
 class Value
