@@ -50,15 +50,24 @@ int main(int argc, char **argv)
     about.addAuthor( "Anne-Marie Mahfouf",
            I18N_NOOP("Big contributor, supporter and fan"),
                       "annemarie.mahfouf # free.fr" );    
-    about.addAuthor( "Matthias Meßmer",
+    about.addCredit( "Matthias Meßmer",
            I18N_NOOP("German Data Files"),
                       "bmlmessmer@web.de" ); 
-    about.addAuthor( "Stefan Asserhäll",
+    about.addCredit( "Stefan Asserhäll",
            I18N_NOOP("Swedish Data Files"),
-                      "stefan.asserhall@telia.com" ); 	
+                      "stefan.asserhall@telia.com" ); 
+    about.addCredit( "Jure Repinc",
+           I18N_NOOP("Slovenian Data Files"),
+                      "jlp@holodeck1.com" );
+       about.addCredit( "Chusslove Illich",
+           I18N_NOOP("Serbian (Latin and Cyrillic) Data Files"),
+                      "caslav.ilic@gmx.net" );
+    about.addCredit( "Pino Toscano",
+           I18N_NOOP("Italian Data Files"),
+                      "toscano.pino@tiscali.it" ); 	
     about.addCredit( "Albert Astals Cid",
-                      0, /* once message freeze is over put "Parser Cyrillic support" */ 
-                      "astals11@terra.es" ); 	
+                      I18N_NOOP("Parser Cyrillic support" ),
+		      "astals11@terra.es" ); 	
     KCmdLineArgs::init(argc, argv, &about);
     KCmdLineArgs::addCmdLineOptions( options );
     KApplication app;
