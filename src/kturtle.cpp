@@ -40,7 +40,6 @@
 #include "kturtle.h"
 
 // StatusBar field IDs
-#define KTURTLE_ID_GEN 1
 
 
 MainWindow::MainWindow(KTextEditor::Document *document) : editor(0) {
@@ -119,15 +118,14 @@ void MainWindow::setupActions() {
     KStdAction::paste(this, SLOT(slotPaste()), ac);
     KStdAction::selectAll(this, SLOT(slotSelectAll()), ac);
     KStdAction::deselect(this, SLOT(slotClearSelection()), ac);
-    new KToggleAction(i18n("Toggle Insert"), Key_Insert, this, SLOT(slotToggleInsert()), ac, "insert");
-    // ^ not working!!!
+    new KToggleAction(i18n("Toggle Insert"), Key_Insert, this, SLOT(slotToggleInsert()), ac, "set_insert");
     KStdAction::find(this, SLOT(slotFind()), ac);
     KStdAction::findNext(this, SLOT(slotFindNext()), ac);
     KStdAction::findPrev(this, SLOT(slotFindPrevious()), ac);
     KStdAction::replace(this, SLOT(slotReplace()), ac);
     
     // setup view actions
-    new KToggleAction(i18n("Show &Line Numbers"), 0, Qt::Key_F11, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
+    //new KToggleAction(i18n("Show &Line Numbers"), 0, Qt::Key_F11, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
     m_fullscreen = KStdAction::fullScreen(this, SLOT( slotToggleFullscreen() ), ac, this, "full_screen");
     m_fullscreen->setChecked(b_fullscreen);
 
@@ -183,7 +181,7 @@ void MainWindow::setupStatusBar() {
     statusBar()->show();
 
     // fill the statusbar
-    slotStatusBar(i18n("v0.1"), 0); // the version part
+    slotStatusBar(i18n("INS"), 0); 
     slotStatusBar(i18n("Welcome to KTurtle..."), 1); // the message part
 }
 
@@ -496,9 +494,12 @@ void MainWindow::slotClearSelection() {
 }
 
 void MainWindow::slotToggleInsert() {
-    KToggleAction *a = dynamic_cast<KToggleAction*>( editor->actionCollection()->action("set_insert") );
-    a->activate();
-    slotStatusBar(a->isChecked() ? i18n(" OVR ") : i18n(" INS "), 0);
+      KToggleAction *a = dynamic_cast<KToggleAction*>(editor->actionCollection()->action("set_insert"));
+      a->activate();
+     if (a)
+      {
+        statusBar()->changeItem(a->isChecked() ? i18n(" OVR ") : i18n(" INS "),0); 
+     } 
 }
 
 

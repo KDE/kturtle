@@ -45,13 +45,13 @@ that will fix it :-)
 
 cies: Implement either a Kate-part or a KTextEditor as editor widget. ANNMA DID IT!!!
 Now the minor issues regarding the intergretion should be looked at
-- editor-kaction-connections
-- on save the title does not appear in the titlebar
-- save as does not open in the logo dir
-- Qfile->KURL migration
+- editor-kaction-connections                                     //done
+- on save the title does not appear in the titlebar  //done
+- save as does not open in the logo dir                 //done
+- Qfile->KURL migration                                        //done as far as I can go at the moment
 - CLI-file-selection (for mimetype eaz)
-- recentfileshistory (action added, have to get it working)
-- linenumbers (what di we need more than the View->Show Line numbers or F11 menu?)
+- recentfileshistory (action added, have to get it working)     //done
+- linenumbers (what di we need more than the View->Show Line numbers or F11 menu?)  //done
 
 - highlighting (a kturtle language sensitive highlight script)
 - loads for things sould be hidden and reordered (annma: we can do a shouut out)

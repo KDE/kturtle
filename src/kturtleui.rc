@@ -25,6 +25,8 @@
       <Action name="edit_copy" />
       <Action name="edit_paste" />
       <Separator />
+      <Action name="set_insert"/>
+      <Separator />
       <Action name="edit_find" />
       <Action name="edit_find_next" />
       <Action name="edit_replace" />
