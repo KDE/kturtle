@@ -124,7 +124,7 @@ void MainWindow::setupActions()
 	KActionCollection *ac = actionCollection(); // abbreviation
 	// File menu
 	KStdAction::openNew(this, SLOT(slotNewFile()), ac);
-	openExAction = new KAction(i18n("Open Examples..."), "bookmark_folder", CTRL+Key_E, this, SLOT(slotOpenExample()), ac, "open_examples");
+	openExAction = new KAction(i18n("Open Exa&mples..."), "bookmark_folder", CTRL+Key_E, this, SLOT(slotOpenExample()), ac, "open_examples");
 	KStdAction::open(this, SLOT(slotOpenFile()), ac);
 	m_recentFiles = KStdAction::openRecent(this, SLOT(slotOpen(const KURL&)), ac);
 	KStdAction::save(this, SLOT(slotSaveFile()), ac);
@@ -849,9 +849,9 @@ void MainWindow::slotSettings()
 	kcfg_CanvasHeight->setReferencePoint( 1 );
 	layout1->addWidget( kcfg_CanvasHeight );
 
-	WidthLabel = new QLabel( kcfg_CanvasWidth, i18n("Canvas width:"), WidthHeightBox );
+	WidthLabel = new QLabel( kcfg_CanvasWidth, i18n("Canvas &width:"), WidthHeightBox );
 	layout2->addWidget( WidthLabel );
-	HeightLabel = new QLabel( kcfg_CanvasHeight, i18n("Canvas height:"), WidthHeightBox );
+	HeightLabel = new QLabel( kcfg_CanvasHeight, i18n("Ca&nvas height:"), WidthHeightBox );
 	layout2->addWidget( HeightLabel );
 	layout3->addLayout( layout2 );
 
@@ -885,7 +885,7 @@ void MainWindow::slotSettings()
 	}
 	kcfg_LanguageComboBox->insertStringList(LogoLanguageList);
 	
-	LanguageLabel = new QLabel(kcfg_LanguageComboBox, i18n("Select the language for the Logo commands:"), groupBox1);
+	LanguageLabel = new QLabel(kcfg_LanguageComboBox, i18n("&Select the language for the Logo commands:"), groupBox1);
 	layout4->addWidget( LanguageLabel );
 	layout4->addWidget( kcfg_LanguageComboBox );
 	LanguageLabel->setBuddy( kcfg_LanguageComboBox );
@@ -1007,7 +1007,7 @@ void MainWindow::slotContextHelpUpdate() {
 	} else {
 		helpKeyword = cursorWord;
 	}
-	ContextHelp->setText( i18n("Help on: %1").arg(helpKeyword) );
+	ContextHelp->setText( i18n("Help &on: %1").arg(helpKeyword) );
 }
 
 // END
