@@ -1,0 +1,120 @@
+# The KDE Logo for a KDE logo
+# interpreter.
+# Copyright 2005 Andy Teijelo <ateijelo@uh.cu>
+# GNU General Public License version 2
+
+reset
+canvassize 620, 480
+canvascolor 10,50,200
+pencolor 255,255,255
+penwidth 3
+
+go 294,280
+
+turnright 81
+forward 50
+turnleft 81
+forward 90
+turnright 145
+forward 120
+turnleft 72
+forward 55
+turnleft 108
+forward 116
+turnright 73
+forward 112
+turnleft 115
+forward 55
+turnleft 65
+forward 113
+turnright 142
+forward 92
+turnleft 96
+forward 50
+turnleft 84
+forward 209
+
+go 358,322
+
+direction -112.5
+
+repeat 4
+[
+  repeat 2
+  [
+    forward 6
+    turnright 3.75
+  ]
+
+  turnleft 63
+  forward 43
+  turnright 39
+  forward 3
+  turnright 39
+  forward 32
+  turnright 39
+  forward 3
+  turnright 39
+  forward 43
+  turnleft 63
+
+  repeat 2
+  [
+    forward 6
+    turnright 3.75
+  ]
+]
+
+forward 4
+turnright 112.5
+forward 25
+
+turnright 58
+repeat 21
+[
+  forward 13.5
+  turnleft 10
+]
+
+forward 9
+turnright 117
+forward 34
+turnleft 60
+forward 8
+turnright 62
+
+forward 25
+turnright 39
+forward 3
+turnright 39
+forward 32
+turnright 39
+forward 3
+turnright 39
+forward 43
+turnleft 63
+
+repeat 2
+[
+  forward 6
+  turnright 3.75
+]
+
+go 320,395
+direction 90
+
+penwidth 5
+
+repeat 4
+[
+  forward 160
+  repeat 6
+  [
+    forward 4
+    turnleft 15
+
+  ]
+  forward 160
+]
+
+go 320,440
