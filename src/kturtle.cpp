@@ -127,7 +127,7 @@ void MainWindow::setupActions() {
 	stop = new KAction(i18n("Stop E&xecution"), "stop", Key_Escape, this, SLOT( slotAbortExecution() ), ac, "stop");
 	stop->setEnabled(false);
 	KStdAction::print(this, SLOT(slotPrint()), ac);
-	KStdAction::quit(this, SLOT(slotQuit()), ac);
+	KStdAction::quit(this, SLOT(close()), ac);
 	// Edit actions
 	KStdAction::undo(this, SLOT(slotUndo()), ac);
 	KStdAction::redo(this, SLOT(slotRedo()), ac);
@@ -201,7 +201,6 @@ void MainWindow::setupStatusBar() {
 	slotStatusBar(i18n("Welcome to KTurtle..."),  IDS_STATUS); // the message part
 	slotStatusBar(i18n(" Line: %1 Column: %2 ").arg(1).arg(1), IDS_STATUS_CLM);
 	slotStatusBar(i18n("INS"), IDS_INS);
-	statusBar()->show();
 }
 
 void MainWindow::setupCanvas() {
@@ -441,7 +440,7 @@ void MainWindow::slotPrint() {
 	slotStatusBar(i18n("Printing aborted."),  IDS_STATUS);
 }
 
-void MainWindow::slotQuit() {
+bool MainWindow::queryClose() {
 	if ( editor->document()->isModified() ) {
 		slotStatusBar(i18n("Quitting KTurtle..."),  IDS_STATUS);
 		// make sure the dialog looks good with new -- unnamed -- files.
@@ -452,11 +451,11 @@ void MainWindow::slotQuit() {
 		i18n("Unsaved File"), i18n("Save"), i18n("Discard Changes && Quit") );
 		if (result == KMessageBox::Cancel) {
 			slotStatusBar(i18n("Quitting aborted."),  IDS_STATUS);
-			return;
+			return false;
 		} else if (result == KMessageBox::Yes) {
 			slotSaveFile();
 			if ( CurrentFile.isEmpty() ) {
-				return; // when saveAs get cancelled or X-ed it should not quit
+				return false; // when saveAs get cancelled or X-ed it should not quit
 			}	
 		}
 	}
@@ -464,7 +463,7 @@ void MainWindow::slotQuit() {
 	config->setGroup("General Options");
 	m_recentFiles->saveEntries(config, "Recent Files");
 	config->sync();
-	close();
+	return true;
 }
 
 // END
@@ -854,6 +853,9 @@ void MainWindow::slotSettings() {
 	
 	QVBoxLayout *layout4 = new QVBoxLayout( 0, 0, 6, "layout4"); 
 	
+	LanguageLabel = new QLabel(kcfg_LanguageComboBox, i18n("Select the language for the Logo commands:"), groupBox1);
+	layout4->addWidget( LanguageLabel );
+	
 	kcfg_LanguageComboBox = new KComboBox(groupBox1, "kcfg_LanguageComboBox");
 	kcfg_LanguageComboBox->setEditable(false);
 	QStringList LogoLanguageList = Settings::logoLanguageList();
@@ -864,9 +866,9 @@ void MainWindow::slotSettings() {
 	kcfg_LanguageComboBox->insertStringList(LogoLanguageList);
 	layout4->addWidget( kcfg_LanguageComboBox );
 	
-	LanguageLabel = new QLabel(kcfg_LanguageComboBox, i18n("Select the language for the Logo commands:"), groupBox1);
+
 	LanguageLabel->setBuddy( kcfg_LanguageComboBox );
-	layout4->addWidget( LanguageLabel );
+
 	
 	groupBox1Layout->addLayout( layout4, 0, 0 );
 	languageLayout->addWidget( groupBox1, 0, 0 ); 

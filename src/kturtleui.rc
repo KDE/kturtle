@@ -56,6 +56,7 @@
           <Action name="options_configure_keybinding"/>
           <Action name="options_configure_toolbars"/>
         </Menu>
+	<Action name="options_show_statusbar"/>
      </Menu>
     
     <Menu name="help"><text>&amp;Help</text>

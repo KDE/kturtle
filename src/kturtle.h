@@ -131,7 +131,6 @@ class MainWindow : public KParts::MainWindow
 	void slotSave(KURL &);
 	void slotSaveCanvas();
 	void slotPrint();
-	void slotQuit();
 	
 	void slotExecute();
 	void slotAbortExecution();
@@ -198,6 +197,7 @@ class MainWindow : public KParts::MainWindow
 
   protected:
     	virtual bool event(QEvent* e);
+		bool queryClose();
 };
 
 

@@ -1,27 +1,54 @@
 This is the TODO file of the KTurtle project, here the things are put that still need implementation.
 This list is divided into URGENT, BIG-TODOs, normalTODOs, TO-oeps-meDOitALLreadies and StillSubjectToDiscussions :-)
 
-BUGS
+BUGS 
+**** URGENT ****
 - when there is an error, display only the most descriptive error
+(error messages: not all errors, only the 1st or the 2 first. Error message related to language non-compatibility)
+(IRC discussion: every compiler/interpreter should try to recover from a given error and continue if possible
+ the idea is the compiler tryes to recover from the error and so it can tell you if there is more than one error and not just one by compilation attempt
+ it may be assuming you missed a ; and maybe you missed a ( or something elase and following messages are completely wrong)
+ 
+- forward 100e does not work: freezes the machine
+
 - with long lines and wrapping the canvas can get into a endless loop -> 100%CPU
        i tried a lot to fix this allready, maybe my solution needs some tuning :)
        maybe i should just catch errors and break the loop :)  >>> see BUGGING LOGO SCRIPTS BELOW
 - accept the making and calling of parameterless 'learned' commands (without using the '()')
-- compile problems with gcc3.4 because std-c++ and qt-funktions are mixed
-- get the manual intergrated in the program
+- print command is buggy (The example:
+      print A + " plus " + B
+   from the manual should output
+      "2004 plus 25"
+   according to the comment, but outputs
+      "2029"
+   The problem dissappears if ""+ is prepended.)
+   (The example
+      a = 1
+      b = 5
+      if a < 5 and b == 5 [
+        print "Hello"
+      ]
+   should print Hello, but doesn't. Just a < 5 works correctly, and 
+   the same for just b == 5.)
+   (The example
+      learn multiplyBySelf (n) [
+        r = n * n
+        return r
+      ]
+      i = inputwindow "Please enter a number and press OK"
+      print i + " multiplied by itself is: " + multiplyBySelf (i)
+   should print i*i, but prints i instead.)
+- run command does not work
 
+- The documentation of "not" seems wrong. Should it be a unary <-- annma
+   operator?
+- German examples are twice the same (ask Matthias) <--annma
 
-**** URGENT ****
 
 - preview in konqueror: (from IRC discussion about the preview thing a mimetype and a litle kpart-previewer would not be too dificult wouldn't it
 <TSDgeos> you could put the widget you use in klogo in the kpart in read only mode
 <polux> yeah good idea, instead of including it as a katepart, making a kturtlepart)
 
-- error messages: not all errors, only the 1st or the 2 first. Error message related to language non-compatibility
-(IRC discussion: every compiler/interpreter should try to recover from a given error and continue if possible
- the idea is the compiler tryes to recover from the error and so it can tell you if there is more than one error and not just one by compilation attempt
- it may be assuming you missed a ; and maybe you missed a ( or something elase and following messages are completely wrong)
- 
  - translating data in the knewstuff.xml file: how would the translators access the file which is on the server?
  
  - functions support in Logo
