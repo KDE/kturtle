@@ -177,8 +177,8 @@
     <alias>sc</alias>
   </command>
   
-  <command name="input">
-    <keyword>input</keyword>
+  <command name="message">
+    <keyword>message</keyword>
   </command>
   
   <command name="inputwindow">

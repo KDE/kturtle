@@ -63,12 +63,14 @@ class MainWindow : public KParts::MainWindow
     
     void slotErrorDialog(QString msg, int row = 0, int col = 0, int code = 0);
     void slotInputDialog(QString& value);
+    void slotMessageDialog(QString text);
     
   signals:
     void ResizeCanvas(int x, int y);
 
   private:
     void setupActions();
+    void setupEditor(KTextEditor::Document *doc);
     void setupCanvas();
     void setupStatusBar();
     void readConfig(KConfig *config);

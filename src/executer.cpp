@@ -10,8 +10,6 @@
 #include "executer.h"
 
 
-#include <kinputdialog.h> 
-
 Executer::Executer(TreeNode* tree) {
   this->tree = tree;
   functionTable.clear();
@@ -110,7 +108,7 @@ void Executer::execute(TreeNode* node) {
     case SpritePressNode    : execSpritePress( node );  break;
     case SpriteChangeNode   : execSpriteChange( node ); break;
 
-    case inputNode          : execInput( node );        break;
+    case MessageNode        : execMessage( node );        break;
     case InputWindowNode    : execInputWindow( node );  break;
     case printNode          : execPrint( node );        break;
     case FontTypeNode       : execFontType( node );     break;
@@ -799,15 +797,13 @@ void Executer::execSpriteChange( TreeNode* node ) {
 
 
 
-void Executer::execInput( TreeNode* node ){
-  string varName = node->firstChild()->getName();
-  Number val;
-  
-  //ask input from cin
-  //cout<<"?"; // basic style , don't like it :) // cies: me neither
-  cin>>val;
-  
-  ( symbolTables.top() )[ varName ] = val;  
+void Executer::execMessage( TreeNode* node ){
+    // check if number of parameters match, or else...
+    if( node->size() != 1 ) {
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), 0, 0, 7070);
+        return;
+    }
+    emit MessageDialog( node->firstChild()->getValue().strVal.c_str() );
 }
 
 
@@ -819,8 +815,11 @@ void Executer::execInputWindow( TreeNode* node ) {
     }
     QString value = node->firstChild()->getValue().strVal.c_str();
     emit InputDialog( value );
-    //QString bla = KInputDialog::getText (i18n("Input"), "eqdqde");
-    node->setValue( value.latin1() );
+    if (value == "") {
+        node->setValue(""); // this prevents a crash :)
+    } else {
+        node->setValue( value.latin1() );
+    }
 }
 
 void Executer::execPrint( TreeNode* node ) {

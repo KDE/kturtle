@@ -109,7 +109,7 @@ class Parser : public QObject
     TreeNode* SpritePress();
     TreeNode* SpriteChange();
 
-    TreeNode* Input();
+    TreeNode* Message();
     TreeNode* InputWindow();
     TreeNode* Print();
     TreeNode* FontType();

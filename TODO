@@ -76,7 +76,7 @@ cies: Make good error messages with links to corresponing help pages.
 
 
 
-cies: Implement an 'abort' funktion into the interpretor. So an endless execution can be aborted.
+cies: Have a look a the BUGGING SCRIPTS as mentioned below
 
 
 
@@ -161,7 +161,7 @@ put a sample code file in kturtle/examples and get it load as an example maybe i
 
 
 cies: remove some debug crap from the canvas.cpp, I refer to leave it there till mid.03.2003.
-
+>>>>>>>>> NOT YET! FOUND BUGS IN THIS CODE :-)
 
 
 Remove hide the scrollbar from the editor when not needed... (probably not easy, kwrite and kate suffer from it too -- i guess the kate folk will have to fix it)

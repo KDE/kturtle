@@ -187,7 +187,7 @@ void Lexer::checkKeywords(token& t) {
     
     else if( tt == KeyMap["do"]             ) t.type=tokDo; // dummy commands
 
-    else if( tt == KeyMap["input"]          ) t.type=tokInput;
+    else if( tt == KeyMap["message"]        ) t.type=tokMessage;
     else if( tt == KeyMap["inputwindow"]    ) t.type=tokInputWindow;
     else if( tt == KeyMap["print"]          ) t.type=tokPrint;
     else if( tt == KeyMap["fonttype"]       ) t.type=tokFontType;

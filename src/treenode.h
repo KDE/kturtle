@@ -80,7 +80,7 @@ enum NodeType {
                 SpritePressNode,
                 SpriteChangeNode,
 
-                inputNode,
+                MessageNode,
                 InputWindowNode,
                 printNode,
                 FontTypeNode,

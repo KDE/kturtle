@@ -47,29 +47,12 @@ MainWindow::MainWindow(KTextEditor::Document *doc) : editor(0) {
     }
 
     setupCanvas();
+    setupEditor(doc);
     setupActions();
     setupStatusBar();
    
     setXMLFile("kturtleui.rc");
     createShellGUI( true );
-   
-    EditorDock = new QDockWindow(this);
-    EditorDock->setNewLine(true);
-    EditorDock->setFixedExtentWidth(250);
-    EditorDock->setFixedExtentHeight(150);
-    EditorDock->setResizeEnabled(true);
-    EditorDock->setFrameShape(QFrame::ToolBarPanel);
-    moveDockWindow(EditorDock, Qt::DockLeft);
-    editor = doc->createView (EditorDock, 0L);
-    // ei is the editor interface which allows us to access the text in the part
-    ei = dynamic_cast<KTextEditor::EditInterface*>( doc );
-    EditorDock->setWidget(editor);
-    //dynamic_cast<KTextEditor::Document*>(this)->actionCollection()->remove(action("file_quit"));
-    //doc->actionCollection()->remove(action("file_quit"));
-    
-    ///allow to enable run only when some text is written in editor
-    connect(editor->document(), SIGNAL(textChanged()), this, SLOT(setRunEnabled()));
-    
     guiFactory()->addClient(editor);
     setMinimumSize(200,200);
        
@@ -136,10 +119,8 @@ void MainWindow::setupActions() {
     // setup View menu
     m_fullscreen = KStdAction::fullScreen(this, SLOT( slotToggleFullscreen() ), actionCollection(), this, "full_screen");
     m_fullscreen->setChecked(b_fullscreen);
-    colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", 0, this, SLOT(slotColorPicker()),
-      actionCollection(), "color_picker");
-     m_recentFiles = KStdAction::openRecent(this, SLOT(slotOpen(const KURL&)),
-                                         actionCollection());
+    colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", 0, this, SLOT( slotColorPicker() ), actionCollection(), "color_picker");
+    m_recentFiles = KStdAction::openRecent(this, SLOT(slotOpen(const KURL&)), actionCollection());
     
    ///@todo: make the EditorDock hideable, better to do it when on KTextEditor... 
     // (void)new KToggleAction(i18n("&Hide Editor"), 0, 0, this, SLOT(slotToggleHideEditor()),
@@ -152,6 +133,25 @@ void MainWindow::setupActions() {
     // setup Settings menu
     KStdAction::preferences( this, SLOT( slotSettings() ), actionCollection() );
     KStdAction::keyBindings( this, SLOT( slotConfigureKeys() ), actionCollection() );
+}
+
+void MainWindow::setupEditor(KTextEditor::Document *doc) {
+    EditorDock = new QDockWindow(this);
+    EditorDock->setNewLine(true);
+    EditorDock->setFixedExtentWidth(250);
+    EditorDock->setFixedExtentHeight(150);
+    EditorDock->setResizeEnabled(true);
+    EditorDock->setFrameShape(QFrame::ToolBarPanel);
+    moveDockWindow(EditorDock, Qt::DockLeft);
+    editor = doc->createView (EditorDock, 0L);
+    // ei is the editor interface which allows us to access the text in the part
+    ei = dynamic_cast<KTextEditor::EditInterface*>( doc );
+    EditorDock->setWidget(editor);
+    //dynamic_cast<KTextEditor::Document*>(this)->actionCollection()->remove(action("file_quit"));
+    //doc->actionCollection()->remove(action("file_quit"));
+    
+    ///allow to enable run only when some text is written in editor
+    connect(editor->document(), SIGNAL(textChanged()), this, SLOT(setRunEnabled()));
 }
 
 void MainWindow::setupStatusBar() {
@@ -296,9 +296,6 @@ void MainWindow::slotQuit() {
     close();
 }
 
-
-static TreeNode::const_iterator ss_it;
-
 void MainWindow::slotExecute() {
     if ( executing ) {
         abortExecution();
@@ -333,6 +330,8 @@ void MainWindow::startExecution() {
                  this, SLOT( slotErrorDialog(QString, int, int, int) ) );
         connect( exe, SIGNAL( InputDialog(QString&) ), 
                  this, SLOT( slotInputDialog(QString&) ) );
+        connect( exe, SIGNAL( MessageDialog(QString) ), 
+                 this, SLOT( slotMessageDialog(QString) ) );
 
         // Connect the signals form Executer to the slots from Canvas:
         connect( exe, SIGNAL( Clear() ),
@@ -476,6 +475,10 @@ void MainWindow::slotErrorDialog(QString msg, int row, int col, int code) {
 
 void MainWindow::slotInputDialog(QString& value) {
     value = KInputDialog::getText (i18n("Input"), value);
+}
+
+void MainWindow::slotMessageDialog(QString text) {
+    KMessageBox::information( this, text, i18n("Message") );
 }
 
 void MainWindow::slotUpdateCanvas() {

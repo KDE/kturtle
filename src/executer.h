@@ -38,6 +38,7 @@ class Executer : public QObject
   signals:
     void ErrorMsg(QString s, int row, int col, int code = 2000);
     void InputDialog(QString& value);
+    void MessageDialog(QString text);
     void Finished();
   
     void Clear();
@@ -129,7 +130,7 @@ class Executer : public QObject
     void execSpritePress   ( TreeNode* );
     void execSpriteChange  ( TreeNode* );
 
-    void execInput         ( TreeNode* );
+    void execMessage       ( TreeNode* );
     void execInputWindow   ( TreeNode* );
     void execPrint         ( TreeNode* );
     void execFontType      ( TreeNode* );

@@ -123,7 +123,7 @@ void Parser::Match(int x) {
       case tokSpritePress   : tokStr+="spritepress";  break;
       case tokSpriteChange  : tokStr+="spritechange"; break;
 
-      case tokInput         : tokStr+="input";        break;
+      case tokMessage       : tokStr+="message";      break;
       case tokInputWindow   : tokStr+="inputwindow";  break;
       case tokPrint         : tokStr+="print";        break;
       case tokFontType      : tokStr+="fonttype";     break;
@@ -679,7 +679,7 @@ TreeNode* Parser::Statement() {
     
     case tokPrint         : return Print();            break;
     case tokInputWindow   : return InputWindow();      break;
-    case tokInput         : return Input();            break;
+    case tokMessage       : return Message();          break;
     case tokFontType      : return FontType();         break;
     case tokFontSize      : return FontSize();         break;
     case tokRepeat        : return Repeat();           break;
@@ -1086,13 +1086,13 @@ TreeNode* Parser::SpriteChange() {
 
 
 
-TreeNode* Parser::Input() {
-  TreeNode* node=new TreeNode( inputNode, row, col );
-  node->setName("input");
-  node->setKey( lexer->translateCommand("input") );
+TreeNode* Parser::Message() {
+  TreeNode* node=new TreeNode( MessageNode, row, col );
+  node->setName("message");
+  node->setKey( lexer->translateCommand("message") );
   
-  Match( tokInput ); 
-  node->appendChild( getId() ); 
+  getToken();
+  node->appendChild( Expression() );
   
   return node;
 }
@@ -1103,8 +1103,6 @@ TreeNode* Parser::InputWindow() {
   node->setKey( lexer->translateCommand("inputwindow") );
   
   getToken();
-  
-  //node->appendChild( getId() ); 
   node->appendChild( Expression() );
   
   return node;

@@ -83,7 +83,7 @@ enum types {
   
   tokDo, // this is a dummy command
 
-  tokInput,
+  tokMessage,
   tokInputWindow,
   tokPrint,
   tokFontType,
