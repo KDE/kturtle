@@ -1058,9 +1058,9 @@ Draw a maze for example
   </variablelist>
 </sect2>
 
-<sect2 id="printing">
-<title>Can turtle's write?</title>
-<para>The answer is: 'yes'. The turtle can write, he writes just about everything you command him to.</para>
+<sect2 id="writing">
+<title>Can the turtle write?</title>
+<para>The answer is: 'yes'. The turtle can write, she writes just about everything you command him to.</para>
   <variablelist>
     <anchor id="print" />
     <varlistentry>
@@ -1221,7 +1221,8 @@ wrapon
 hide
 </screen>
 </para>
-
+</glossdef>
+</glossentry>
 <glossentry id="wrapping">
 <glossterm>wrapping</glossterm>
 <glossdef><para>Wrapping is what happens when the turtle draws something that is to big to fix in on the canvas and wrapping is set 'on'.
@@ -1245,8 +1246,7 @@ When the turlte moves off a border of the canvas it is instantly taken to the op
 <glossdef><para>A sprite is a small picture that can be moved arround the screen. Out beloved turtle, for instance, is a sprite. [With this version of KTurtle the sprite cannot be changed from a turtle into something else. Future versions of KTurtle will be able to do this.]</para></glossdef>
 </glossentry>
 
-</glossdef>
-</glossentry>
+
 
 </glosslist>
 
