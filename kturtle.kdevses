@@ -3,12 +3,12 @@
 <KDevPrjSession>
  <DocsAndViews NumberOfDocuments="2" >
   <Doc0 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/canvas.h" >
-   <View0 line="71" Type="???" >
+   <View0 line="67" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc0>
   <Doc1 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/canvas.cpp" >
-   <View0 line="91" Type="???" >
+   <View0 line="163" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc1>

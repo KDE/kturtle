@@ -96,6 +96,13 @@ Off course the connect() in kturtle.cpp should follow. [while typing this i coul
 
 
 
+cies: Make a dir and put some examples/test in there...
+Let be a little nice to the people how want to get started, or just want to have a peek, right?
+It would also be nice to test for regressions in the future.
+
+
+
+cies: remove some debug crap from the canvas.cpp, I refer to leave it there till mid.03.2003.
 
 
 

@@ -71,7 +71,6 @@ QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb) {
     QPoint CrossPoint[4]; // under wicked circumstance this can happen! (crossing both corners)
     QPoint Translate[4];
     int i = 0;
-    // First we find out what crossing points the line has with canvas border lines
     if ( ( xb - xa ) == 0 ) {  // check for an infinite direction coefficient
         i++;
         Translate[i] = QPoint(0, 1);
@@ -80,6 +79,7 @@ QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb) {
         Translate[i] = QPoint(0,-1);
         CrossPoint[i] = QPoint(xa, CanvasHeight);
     } else {
+        // Here we find out what crossing points the line has with canvas border lines
         float A = (float)( yb - ya ) / (float)( xb - xa );
         int B = ya - (int)( ( A * xa ) );
         int x_sT = (int)( ( -B ) / A );                // A * x_sT + B = 0  =>   x_sT = -B / A 
@@ -88,9 +88,7 @@ QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb) {
         int y_sR = (int)( A * CanvasWidth ) + B;
         kdDebug(0)<<"CB:: rc:"<<A<<", xTop:"<<x_sT<<", xBot:"<<x_sB<<", yLft:"<<y_sL<<", yRft:"<<y_sR<<". "<<endl;
         
-        // Here we find out what crossing points are actually on the borders 
-        
-        // MAYBE it should be  -2 <= foo && foo <= CW
+        // Here we find out what crossing points are on the borders AND on the lines
         if ( 0 <= x_sT && x_sT <= CanvasWidth && PointInRange(x_sT, 0, xa, ya, xb, yb) ) {
             i++;
             Translate[i] = QPoint(0, 1);
@@ -116,6 +114,10 @@ QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb) {
             kdDebug(0)<<"**no border crossings**"<<endl;
             QPoint returnValue = QPoint(0, 0);
             // Here a fallback if the line has no crossings points with any borders.
+            // This mostly happens because of unlucky rounding, when this happens the line is nearly
+            // crossing a corner of the canvas.
+            // This code make sure the line is tranlated back onto the canvas.
+            // The -2 and +2 was just something i learnt from examples... I HAVE NO PROOF FOR THIS!
             if ( -2 <= x_sT && x_sT <= (CanvasWidth + 2) && PointInRange(x_sT, 0, xa, ya, xb, yb) ) {
                 returnValue = returnValue + QPoint( 0, 1);
             }
@@ -164,30 +166,6 @@ QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb) {
     kdDebug(0)<<"***yoooo!"<<endl;
     return returnValue;
     }
-   
-        
-// // // // //     // Here a fallback if the line has no crossings points with any borders.
-// // // // //     kdDebug(0)<<"  **1**  "<<endl;
-// // // // //     float A = (float)( yb - ya ) / (float)( xb - xa );
-// // // // //     kdDebug(0)<<"  **2**  "<<endl;
-// // // // //     int B = ya - (int)( ( A * xa ) );
-// // // // //     kdDebug(0)<<"  **3**  "<<endl;
-// // // // //     // if the allmost a parallel to y = x:
-// // // // //     if ( ( A < 1.000100 && A > 0.999900 ) || (-A < 1.000100 && -A > 0.999900 ) ) {
-// // // // //         if ( B < 0 ) { return QPoint(-1, 1); }
-// // // // //         if ( B > 0 ) { return QPoint( 1,-1); }
-// // // // //     }
-// // // // //     kdDebug(0)<<"  **4**  "<<endl;
-// // // // //     // X coord of the crossing point with the line y = x
-// // // // //     int c_X = (int)( B / (A - 1) );
-// // // // //     int c_Y = (int)( A * c_X ) + B;
-// // // // //     kdDebug(0)<<"  **5**  "<<endl;
-// // // // //     if ( c_X < 0 && A > 0 && A < 1 )   { return QPoint( 1,-1); }
-// // // // //     if ( c_X < 0 && A > 0 && A > 1 )   { return QPoint(-1, 1); }
-// // // // //     if ( c_X < 0 && A < 0 && c_Y < 0 ) { return QPoint(-1,-1); }
-// // // // //     if ( c_X < 0 && A < 0 && c_Y > 0 ) { return QPoint( 1, 1); }
-// // // // //     kdDebug(0)<<"**Shouldn't happen**"<<endl;
-// // // // //     return QPoint(0, 0);
 }
 
 bool Canvas::PointInRange(int px, int py, int xa, int ya, int xb, int yb) {

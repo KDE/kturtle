@@ -12,14 +12,6 @@
 #include <cmath>
 
 
-enum CanvasBorder { 
-    NoCrossing = -1,
-    Top,
-    Bottom,
-    Left,
-    Right
-};
-
 struct BorderPoint {
     int border;
     QPoint point;
