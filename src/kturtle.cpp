@@ -844,10 +844,10 @@ void MainWindow::slotSettings() {
 		*it = KGlobal::locale()->twoAlphaToLanguageName( (*it).left(2) ) + " (" + *it + ")";
 	}
 	kcfg_LanguageComboBox->insertStringList(LogoLanguageList);
-	layout4->addWidget( kcfg_LanguageComboBox );
 	
 	LanguageLabel = new QLabel(kcfg_LanguageComboBox, i18n("Select the language for the Logo commands:"), groupBox1);
 	layout4->addWidget( LanguageLabel );
+	layout4->addWidget( kcfg_LanguageComboBox );
 	LanguageLabel->setBuddy( kcfg_LanguageComboBox );
 
 	groupBox1Layout->addLayout( layout4, 0, 0 );
@@ -899,14 +899,22 @@ void MainWindow::slotContextHelp() {
 // this should most likely be filed as a bug in KHelpCenter...
 // The other option is to Just use the code from kapplication.cpp:2051
 // and compose the helpUrl:
+	/// Noticed that the anchor works correctly but somehow does gets translated from the docbook to the html
+	/// Try help:/kturtle/reference.html#pen  it worx, but #penup doesnt... Gotta look into this 1st
 // "help:/"+name()+"/"+"{reference,container,glorrery,etc.}"+"#"+translate(helpKeyword);
 // our self... dessision/chat with the creators of KH.C. needed :))
 // Ooh... and we also want a DCOPmethod to close the sidebar since it over-informs...
-// Ooh2... we must probably put the code to translate commands in a seperate .cpp/.h since
-// we want to use it in several places (i.e. here too)
+// Ooh2... we must probably put the code to translate commands in a seperate .cpp/.h (right
+// now its in the lexer since we want to use it in several places (i.e. here too)
+// Ooh3... we want fancy help (using KHTML) @ errormessage dialog
+// Ooh4... And we might also have to keep track of the KHelpCenter instance we open so
+// we will not end up with loads of them
+// 
 
 // IDEA!!:  put all the keyword in a i18n("...") this will make translating them a lot easier!!!
 // MAYBE THIS IS ALSO POSSIBLE FOR THE INTERPRETER!!!!
+// this should be discussed with translators (and please think of the highlight-themes too (since
+// right now thay can probably be translated with a simple perl script 
 
 	kdDebug(0)<<"helpKeyword = "<<helpKeyword<<endl;
 	kapp->invokeHelp(helpKeyword, "", "");
