@@ -12,6 +12,22 @@
     <keyword>]</keyword>
   </command>
 
+
+
+<!--
+TO THE TRANSLATORS: 
+
+Translate the terms between the KEYWORD tags to the appropriate term in your language.
+You might want to checkout what terms other Logo languages have chosen in the past (google is your friend).
+Make sure to see the scripts and the README file in the kdeedu/kturtle/scripts directory, they help you!
+If you did not read it allready: there is a chapter on how to translate KTurtle in the KTurtle documentation.
+
+Thanks for your efford, we love you!
+--> 
+
+
+
+
 <!-- execution controllers -->
   <command name="while">
     <keyword>while</keyword>

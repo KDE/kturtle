@@ -1,23 +1,22 @@
 #!/usr/bin/perl -w
 
-#Copyright (C) 2004 Rafael Beccar <rafael.beccar ! kdemail.net>
+# Copyright (C) 2004 Rafael Beccar <rafael.beccar ! kdemail.net>
 #
-#This program is free software; you can redistribute it and/or
-#modify it under the terms of version 2 of the GNU General
-#Public License as published by the Free Software Foundation.
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of version 2 of the GNU General
+# Public License as published by the Free Software Foundation.
 #
-#This program is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#GNU General Public License for more details.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 #
-#You should have received a copy of the GNU General Public
-#License along with this program; if not, write to the
-#Free Software Foundation, Inc.,
-#59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-#
+# You should have received a copy of the GNU General Public
+# License along with this program; if not, write to the
+# Free Software Foundation, Inc.,
+# 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-# 
+
 # Author: Rafael Beccar <rafael.beccar ! kdemail.net>
 # 
 # Bs.As. November 2004
@@ -26,12 +25,6 @@
 #
 # Usage: ./i18n_examples.pl logokeywords.YOURLANGCODE.xml
 # 
-# You will need the following under current directory:
-# - logokeywords.en_US.xml
-# - logokeywords.YOURLANGCODE.xml 
-# - The en_US KTurtle examples 
-# - This script
-#
 # e.g.: 
 # $./i18n_examples.pl logokeywords.es.xml
 #
@@ -40,15 +33,15 @@
 # curly.logo -> curly.es.LOGO
 #
 # NOTES:
+# - You'll need logokeywords.YOURLANGCODE.xml under kturtle/scripts
 # - Commented lines, variable names, and strings like
 # "What's your name?" must be translated by hand.
 # - You might want to rename the resulting files to something 
 # into your own language e.g. arrow.es.LOGO to flecha.LOGO
-# - Please, before executing make sure that you don´t have 
-# *.logo files in other language than english_US under current
-# directory. If you had any, you should rename them in such a
-# way they don't finish in .logo (eg. my.logo to my.LOGO is OK).
+# - Please, if the script is not working for you report it to
+# KDE-Edu mailing list.
 #  
+
 
 use strict;
 
@@ -57,7 +50,7 @@ my $langcode;
 my @mylang_commands;
 my %commands;
 my $i;
-my @examples= glob "*.logo";
+my @examples= glob "../data/*.logo";
 my $filename;
 my $line;
 
@@ -69,7 +62,7 @@ if (/logokeywords.(\w+).xml/){
 	}
 
 #Get en_US commands
-open EN_COMMANDS, "<logokeywords.en_US.xml"
+open EN_COMMANDS, "<../data/logokeywords.en_US.xml"
 	or die "Cannot open logokeywords.en_US.xml";
 $i=0;
 while (<EN_COMMANDS>){
@@ -77,6 +70,10 @@ while (<EN_COMMANDS>){
 		$en_commands[$i]=$1;
 		$i++;
 		}
+	elsif (/<alias>(.*)<\/alias>/){
+                $en_commands[$i]=$1;
+                $i++;
+                }
 	}
 
 close EN_COMMANDS;
@@ -89,10 +86,16 @@ while(<>){
 		$commands{$en_commands[$i]}=$mylang_commands[$i];
 		$i++;
 		}
+	elsif (/<alias>(.*)<\/alias>/){
+		$mylang_commands[$i]=$1;
+		$commands{$en_commands[$i]}=$mylang_commands[$i];
+		$i++;
+		}	
+
 	}
 	
 	
-#Remove brackets from @en_commands (they only bring troubles) 
+#Remove brackets from @en_commands (they aren't needed here) 
 #Brackets will be managed in a different way later
 shift @en_commands;
 shift @en_commands;
@@ -100,9 +103,9 @@ shift @en_commands;
 
 #Parse *.logo and generate the homologous for the given language
 foreach (@examples){
-	print "$_ -> "; #The user get some output
-	if (/^(\w+).logo/){$filename="$1".".$langcode."."LOGO"};
-	print "$filename\n"; #The user get some output
+	if (m%^../data/(\w+).logo%){$filename="$1".".$langcode."."logo";}
+	else{die "Error: Check if you have ../data/*.logo files";}
+	printf "\n%-25s  > ./%s \n", $_, $filename;
 	open EXAMPLE,"<$_"
 		or die "Cannot open $_ \n";
 	while (<EXAMPLE>){
@@ -114,19 +117,26 @@ foreach (@examples){
 			select STDOUT;}
 		#Manage tabulated "for .. to .." lines
 		elsif (/(^\s+)(\bfor\b)(.*)(\bto\b)/){	
-			chomp ($line = "$commands{$2} $3 $commands{$4} $'");
+			chomp ($line = "$1$commands{$2} $3 $commands{$4} $'");
 			open TRANSLATION, ">>$filename";
 			select TRANSLATION;
 			print "$line \n"; 	
 			select STDOUT;}
-		
+		#Manage tabulated brackets
+		elsif (/(^\s+)(\p{IsPunct})/){
+			open TRANSLATION,">>$filename";
+			select TRANSLATION;
+			print "$1$2\n";
+			select STDOUT;}
 		#Manage any other tabulated line
 		elsif (/(^\s+)(\w+)/){
+			my $tab=$1;
 			if ($commands{$2}){
 				chomp ($line = "$commands{$2} $'");
 				}
 			elsif (/([=])(\s+)(\w+)/){
 				if ($commands{$3}){
+					$tab="";
 					chomp ($line = "$`$1$2$commands{$3}$'");
 					}
 				}	
@@ -141,7 +151,7 @@ foreach (@examples){
 				}	
 			open TRANSLATION,">>$filename";
 			select TRANSLATION;
-			print "\t$line\n";
+			print "$tab$line\n";
 			select STDOUT;}
 		#Manage "for .. to .." lines
 		elsif (/(^\bfor\b)(.*)(\bto\b)/){	
@@ -189,4 +199,16 @@ foreach (@examples){
 		}	
 	}
 
+print <<EOF;
+
+The translation of KTurtle examples is almost DONE...
+You will need to translate the following by hand:
+1) Commented lines,
+2) Variable names (if any of them is named in english or represents a reserved word in your language),
+3) Strings like "What's your name?"
+4) File names 
+
+Thanks a lot!
+
+EOF
 

@@ -1,0 +1,56 @@
+kturtle/scripts/
+this directory of the source version KTurtle contains two scripts that will make translating of KTurtle to other langauges much easier.
+
+When translating KTurtle more than just the usual 'documantation and strings' have to be translated, namely:
+- the examples (which are *.logo files),
+- the logokeyword.*.xml files, and
+- the logohighlightstyle.*.xml files.
+
+These files are called data files, and their English originals can be found in kdeedu/kturtle/data.
+For more information on these files and their translation read:
+kdeedu/kturtle/data/README.data
+
+In this directory you find Rafael Beccar's nifty tranlaton perl scripts that can make translating KTurtle human resourcefriendly.
+
+This is how these scripts work:
+
+But only logokeywords.YOURLANGCODE.xml needs to be under current directory..
+
+If everything is working fine the general process is something like:
+
+
+1. MANUALLY TRANSLATE THE KEYWORD
+Copy the logokeywords.en_US.xml file (from kdeedu/kturtle/data) to the kturtle directory in your branch of the kde-i18n module (for Dutch this would be: kde-i18n/nl/data/kdeedu/kturtle). Translate the file, and change the name to:
+logokeywords.YOURLANGCODE.xml
+
+
+2. AUTOMAGICALLY GENERATE THE HIGHLIGHTSTYLE FOR YOUR LANGUAGE
+- Copy logokeywords.YOURLANGCODE.xml to kdeedu/kturtle/scripts
+- change directory to kdeedu/kturtle/sripts, and run:
+./i18n_highlighting.pl logokeywords.YOURLANGCODE.xml
+- Now you have a translated logohighlightstyle.YOURLANGCODE.xml under current directory (kdeedu/kturtle/scripts)
+
+
+3. AUTOMAGICALLY GENERATE NEARLY FINISHED TRANSLATIONS OF THE EXAMPLES
+- change directory to kdeedu/kturtle/scripts, and run:
+./i18n_examples.pl logokeywords.YOURLANGCODE.xml
+- the translated examples can then be found in current directory. Some manual adjusments are
+needed, namely: the sings in the code and the comments
+
+
+4. LAST BUT NOT LEAST!!!    CHECK IF EVERYTHING WORKS
+- move all the generated files to the kturtle directory in your branch of the kde-i18n module
+- check if it installs correctly
+- check if the fresh logo examples in your language run when KTurtle is set to your language (see the Settings)
+
+
+Please report BUGs when it doesnt work (bugs.kde.org)!
+
+Thanks for the efford, we love you!
+
+
+
+
+
+
+
