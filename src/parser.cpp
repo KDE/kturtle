@@ -524,7 +524,10 @@ TreeNode* Parser::Statement()
 		
 		case tokEOF           : return EndOfFile();        break;
 		
-		case tokEnd           : break; //caught by Block
+		case tokEnd           : Error(currentToken, i18n("Cannot understand ']'"), 1050);
+		                        getToken();
+		                        return new TreeNode(currentToken, Unknown);
+		                        break;
 
 		case tokBegin         : Error(currentToken, i18n("Cannot understand '['"), 1050);
 		                        getToken();
@@ -967,6 +970,7 @@ TreeNode* Parser::For()
 		fNode->appendChild( Expression() ); //step expression
 	}
 
+	while (currentToken.type == tokEOL) getToken(); // newlines are allowed
 	if (currentToken.type == tokBegin) fNode->appendChild( Block() ); // for followed by a block
 	else fNode->appendChild( Statement() ); // while followed by single statement
 

@@ -9,42 +9,42 @@
   </Doc0>
   <Doc1 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/main.cpp" >
    <View0 line="54" Type="???" >
-    <AdditionalSettings Top="2" Width="432" Attach="1" Height="547" Left="2" MinMaxMode="0" />
+    <AdditionalSettings Top="2" Width="954" Attach="1" Height="536" Left="2" MinMaxMode="0" />
    </View0>
   </Doc1>
   <Doc2 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/kturtle.h" >
    <View0 line="146" Type="???" >
-    <AdditionalSettings Top="2" Width="954" Attach="1" Height="508" Left="2" MinMaxMode="0" />
+    <AdditionalSettings Top="2" Width="954" Attach="1" Height="504" Left="2" MinMaxMode="0" />
    </View0>
   </Doc2>
   <Doc3 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/kturtle.cpp" >
-   <View0 line="230" Type="???" >
-    <AdditionalSettings Top="2" Width="954" Attach="1" Height="508" Left="2" MinMaxMode="0" />
+   <View0 line="547" Type="???" >
+    <AdditionalSettings Top="2" Width="954" Attach="1" Height="504" Left="2" MinMaxMode="0" />
    </View0>
   </Doc3>
   <Doc4 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/dialogs.h" >
    <View0 line="0" Type="???" >
-    <AdditionalSettings Top="2" Width="954" Attach="1" Height="540" Left="2" MinMaxMode="0" />
+    <AdditionalSettings Top="2" Width="954" Attach="1" Height="504" Left="2" MinMaxMode="0" />
    </View0>
   </Doc4>
   <Doc5 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/dialogs.cpp" >
    <View0 line="0" Type="???" >
-    <AdditionalSettings Top="2" Width="954" Attach="1" Height="508" Left="2" MinMaxMode="0" />
+    <AdditionalSettings Top="2" Width="954" Attach="1" Height="504" Left="2" MinMaxMode="0" />
    </View0>
   </Doc5>
   <Doc6 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/executer.cpp" >
-   <View0 line="0" Type="???" >
-    <AdditionalSettings Top="2" Width="954" Attach="1" Height="508" Left="2" MinMaxMode="0" />
+   <View0 line="200" Type="???" >
+    <AdditionalSettings Top="2" Width="954" Attach="1" Height="504" Left="2" MinMaxMode="0" />
    </View0>
   </Doc6>
   <Doc7 NumberOfViews="1" URL="file:/opt/kde3/share/doc/HTML/en/kdelibs-apidocs/index.html" >
    <View0 line="0" Type="???" >
-    <AdditionalSettings Top="2" Width="954" Attach="1" Height="540" Left="2" MinMaxMode="0" />
+    <AdditionalSettings Top="2" Width="954" Attach="1" Height="504" Left="2" MinMaxMode="0" />
    </View0>
   </Doc7>
   <Doc8 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/translate.h" >
    <View0 line="0" Type="???" >
-    <AdditionalSettings Top="2" Width="954" Attach="1" Height="540" Left="2" MinMaxMode="0" />
+    <AdditionalSettings Top="2" Width="954" Attach="1" Height="504" Left="2" MinMaxMode="0" />
    </View0>
   </Doc8>
   <Doc9 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/lexer.cpp" >
@@ -84,7 +84,7 @@
   </Doc15>
   <Doc16 NumberOfViews="1" URL="file:/home/cies/kdecvs-COMPARE/kdeedu/kturtle/src/dialogs.cpp" >
    <View0 line="136" Type="???" >
-    <AdditionalSettings Top="2" Width="954" Attach="1" Height="508" Left="2" MinMaxMode="0" />
+    <AdditionalSettings Top="2" Width="954" Attach="1" Height="504" Left="2" MinMaxMode="0" />
    </View0>
   </Doc16>
  </DocsAndViews>

@@ -525,8 +525,8 @@ void MainWindow::slotExecute()
 	QString txt = editorInterface->text() + "\x0a\x0a"; // parser expects input to have 2 delimiting newlines
 	QTextIStream in(&txt); // create the stream
 	Parser parser(in); // pass the reference to the stream to the parse object
-	connect(&parser, SIGNAL( ErrorMsg(Token&, QString, uint) ),
-	         errMsg, SLOT( slotAddError(Token&, QString, uint) ) );
+	connect(&parser, SIGNAL( ErrorMsg(Token&, const QString&, uint) ),
+	         errMsg, SLOT( slotAddError(Token&, const QString&, uint) ) );
 	connect( errMsg, SIGNAL(setSelection(uint, uint, uint, uint) ),
 	           this, SLOT(slotSetSelection(uint, uint, uint, uint) ) );
 	parser.parse(); // and GO!
@@ -544,7 +544,8 @@ void MainWindow::slotExecute()
 	connect(this, SIGNAL( unpauseExecution() ), exe, SLOT( slotStopPausing() ) );
 	connect( exe, SIGNAL( setSelection(uint, uint, uint, uint) ),
 	        this, SLOT  ( slotSetSelection(uint, uint, uint, uint) ) );
-	connect( exe, SIGNAL( ErrorMsg(Token&, const QString&, uint) ), errMsg, SLOT( slotAddError(Token&, const QString&, uint) ) );
+	connect( exe, SIGNAL( ErrorMsg(Token&, const QString&, uint) ),
+	      errMsg, SLOT  ( slotAddError(Token&, const QString&, uint) ) );
 	connect( exe, SIGNAL( InputDialog(QString&) ), this, SLOT( slotInputDialog(QString&) ) );
 	connect( exe, SIGNAL( MessageDialog(QString) ), this, SLOT( slotMessageDialog(QString) ) );
 
