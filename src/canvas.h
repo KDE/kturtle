@@ -58,7 +58,7 @@ class Canvas : public QCanvasView
     
   private:
     void initValues();
-    void Line(int xa, int ya, int xb, int yb);
+    void Line(int xa, int ya, int xb, int yb, bool repeat = false);
     intpair Offset(int x, int y);
     void loadSpriteFrames(QString name);
     

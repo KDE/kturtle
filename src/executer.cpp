@@ -911,7 +911,11 @@ int Executer::execRandom( TreeNode* node ) {
 } 
 
 
-void Executer::execWait( TreeNode* node ) {}
+void Executer::execWait( TreeNode* node ) {
+// for this we can use sleep() or nanosleep()
+// but threadding would be much better
+// looking into theadding for this now
+}
 
 void Executer::execWrapOn( TreeNode* node ) {
     // check if number of parameters match, or else...

@@ -5,7 +5,6 @@
 #include <kdebug.h>
 
 #include "settings.h"
-
 #include "canvas.h"
 
 // Implementation of the canvas //
@@ -44,30 +43,38 @@ void Canvas::initValues() {
 //    loadSpriteFrames("logo");
 }
 
-void Canvas::Line(int xa, int ya, int xb, int yb) {
+void Canvas::Line(int xa, int ya, int xb, int yb, bool repeat) {
     QCanvasLine* i = new QCanvasLine(TurtleCanvas);
     i->setPoints( xa, ya, xb, yb );
     i->setPen( QPen( QColor(FgR, FgB, FgG), PenWidth, SolidLine ) );
     i->setZ(1);
     i->show();
-    if ( Wrap && !TurtleCanvas->onCanvas(xb, yb) ) {
+    if ( Wrap && !TurtleCanvas->onCanvas(xb, yb) && repeat == false ) {
         intpair offset = Offset(xb, yb);
-        Line( (xa - offset.x), (ya - offset.y), (xb - offset.x), (yb - offset.y) );
+        int xi = offset.x;
+        int yi = offset.y;
+        while ( xi != 0 ) {
+            Line( xa - ( xi * CanvasWidth ), ya, 
+                  xb - ( xi * CanvasWidth ), yb, true );
+            if (xi > 0) { xi--; } else if (xi < 0) { xi++; } // offset.x > 0 ? offset.x-- : offset.x++;
+        }
+        while ( yi != 0 ) {
+            Line( xa, ya - ( yi * CanvasHeight ), 
+                  xb, yb - ( yi * CanvasHeight ), true );
+            if (yi > 0) { yi--; } else if (yi < 0) { yi++; } // offset.y > 0 ? offset.y-- : offset.y++;
+        }
     }
 }
 
 intpair Canvas::Offset(int x, int y) {
+    // This funktion make is easy to read since deviding int's is a weird thing:
+    // int x = 5 / 2,  outputs: x = 2,  with: 5 % 2 = 1 (the rest value) 
     intpair offset;
-    if ( x < 0 ) {
-        offset.x = (x/CanvasWidth) * CanvasWidth - CanvasWidth;
-    } else {
-        offset.x = (x/CanvasWidth) * CanvasWidth;
-    }
-    if ( y < 0 ) {
-        offset.y = (y/CanvasHeight) * CanvasHeight - CanvasHeight;
-    } else {
-        offset.y = (y/CanvasHeight) * CanvasHeight;
-    }
+    if ( x < 0 ) { x = x - CanvasWidth; } 
+    if ( y < 0 ) { y = y - CanvasHeight; } 
+    offset.x = x / CanvasWidth;
+    offset.y = y / CanvasHeight;
+    kdDebug(0)<<"  offset start:"<<x<<", "<<y<<"offset end:"<<offset.x<<", "<<offset.y<<endl;
     return offset;
 }
 
@@ -99,16 +106,34 @@ void Canvas::slotClear() {
 }
 
 void Canvas::slotGo(int x, int y) {
-    PosX = x;
-    PosY = y;
+    if ( Wrap && !TurtleCanvas->onCanvas(x, y) ) {
+        intpair offset = Offset(x, y);
+        kdDebug(0)<<"offset:"<<offset.x<<", "<<offset.y<<"  X:"<<x<<", Y:"<<y;
+        PosX = x - (offset.x * CanvasWidth);
+        PosY = y - (offset.y * CanvasHeight);
+	kdDebug(0)<<"   PosXnew:"<<PosX<<", PosYnew:"<<PosY<<endl;
+    } else {
+        PosX = x;
+        PosY = y;
+    }
 }
 
 void Canvas::slotGoX(int x) {
-    PosX = x;
+    if ( Wrap && !TurtleCanvas->onCanvas(x, PosY) ) {
+        intpair offset = Offset(x, PosY);
+        PosX = x - (offset.x * CanvasWidth);
+    } else {
+        PosX = x;
+    }
 }
 
 void Canvas::slotGoY(int y) {
-    PosY = y;
+    if ( Wrap && !TurtleCanvas->onCanvas(PosX, y) ) {
+        intpair offset = Offset(PosX, y);
+        PosY = y - (offset.y * CanvasHeight);
+    } else {
+        PosY = y;
+    }
 }
 
 void Canvas::slotForward(int x) {
@@ -117,14 +142,15 @@ void Canvas::slotForward(int x) {
     if (Pen) {
         Line(PosX, PosY, PosXnew, PosYnew);
     }
-    if ( Wrap && !TurtleCanvas->onCanvas(PosXnew, PosYnew) ) {
-        intpair offset = Offset(PosXnew, PosYnew);
-        PosX = PosXnew - offset.x;
-        PosY = PosYnew - offset.y;
-    } else {
-        PosX = PosXnew;
-        PosY = PosYnew;
-    }
+    slotGo(PosXnew, PosYnew);
+//     if ( Wrap && !TurtleCanvas->onCanvas(PosXnew, PosYnew) ) {
+//         intpair offset = Offset(PosXnew, PosYnew);
+//         PosX = PosXnew - (offset.x * CanvasWidth);
+//         PosY = PosYnew - (offset.y * CanvasHeight);
+//     } else {
+//         PosX = PosXnew;
+//         PosY = PosYnew;
+//     }
 }
 
 void Canvas::slotBackward(int x) {
@@ -132,15 +158,16 @@ void Canvas::slotBackward(int x) {
     int PosYnew = PosY + (int)( x * sin(Dir) );
     if (Pen) {
         Line(PosX, PosY, PosXnew, PosYnew);
-    }   
-    if ( Wrap && !TurtleCanvas->onCanvas(PosXnew, PosYnew) ) {
-        intpair offset = Offset(PosXnew, PosYnew);
-        PosX = PosXnew - offset.x;
-        PosY = PosYnew - offset.y;
-    } else {
-        PosX = PosXnew;
-        PosY = PosYnew;
     }
+    slotGo(PosXnew, PosYnew);
+//     if ( Wrap && !TurtleCanvas->onCanvas(PosXnew, PosYnew) ) {
+//         intpair offset = Offset(PosXnew, PosYnew);
+//         PosX = PosXnew - (offset.x * CanvasWidth);
+//         PosY = PosYnew - (offset.y * CanvasHeight);
+//     } else {
+//         PosX = PosXnew;
+//         PosY = PosYnew;
+//     }
 }
 
 void Canvas::slotDirection(double deg) {

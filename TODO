@@ -78,6 +78,10 @@ Press F1 while in a command and see help on it
 
 
 
+cies: (BUG) the wrapping is a bit over simplistic WORKIN ON IT HEAVILY shall be fixed soon!
+try tr 45; fw 100000;
+
+
 
 
 **** TO-oeps-IdidItAllReadies: ****
@@ -192,3 +196,60 @@ the basics of logo programming
 
 
 
+
+TREADDING, TIMER LOOPS OR SLEEP()/NANOSLEEP() ??
+
+I run into a problem when trying to implement the 'wait' funktion, how to have a C++ program 'wait' without jamming all internals ( what happends with sleep() ). I though threadding, lypanov hates threadding and says its better avoided; he proposes a qtimer trick, see the irc conversation here:
+
+
+>cies< but i'm writing an logo interpreter for educational puposes
+>cies< and i want to add a 'wait' function
+>cies< like: 'wait 5' has the script wait for 5 seconds
+>cies< i though (in fact i googled) hmmm sleep() or nanosleep()
+>cies< but that wil jam the whole app, right?
+[lypanov] re
+>cies< so i need to have the execution class of the interpeter pause it execution
+>cies< without jamming the whole program
+[lypanov] qtimer
+>cies< ill look into that
+>cies< thanks!
+>cies< (again)
+[lypanov] np :)
+[lypanov] ;yup. sleep will jam the whole app
+[lypanov] i would say
+[lypanov] add a singleshot timer
+[lypanov] that goes off in 5 minutes
+[lypanov] stop the interpreter
+[lypanov] and make the singleshot timer
+[lypanov] send a "unpauseInterpreter"
+[lypanov] signal
+>cies< lypanov: ping?
+>cies< i tried ver hard but i dont understand...
+>cies< i cant make a solution from the above.
+[lypanov] re
+[lypanov] umm
+[lypanov] you read qtimer doc?
+>cies< yes offcourse
+>cies< you say 5 minutes... dont you mean 5 seconds?
+>cies< well
+>cies< right after the qtimer started the execution-class should fall back into the main event loop right?
+>cies< ...but without destroying itself
+>cies< [i dont know how to do this]
+>cies< the when "unpauseInterpreter" is emitted (after 5 secs) the executer should go on exactly where is was 'interrupted', right?
+>cies< [i dont know how to do this either]
+>cies< please note this is my first qt-app
+>cies< and my first c++ app
+[lypanov] dum di dum
+[lypanov] nope
+[lypanov] qtimer
+[lypanov] ::singleshot
+[lypanov] or whatever its called
+[lypanov] sends a signal
+[lypanov] you need to
+[lypanov] make a slot:
+[lypanov] and
+[lypanov] add a "unpauseInterpreter" slot
+[lypanov] which does
+[lypanov] {
+[lypanov]     m_interpreter->unpause()
+[lypanov] }
