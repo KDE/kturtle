@@ -137,8 +137,6 @@ void MainWindow::setupActions() {
     m_fullscreen->setChecked(b_fullscreen);
     colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", 0, this, SLOT(slotColorPicker()),
       actionCollection(), "color_picker");
-   ///@todo recent file list, but this needs KURL which will be implemented with KTextEditor 
-     //KStdAction::openRecent(this, SLOT( slotOpen(const KURL&) ), actionCollection());
      m_recentFiles = KStdAction::openRecent(this, SLOT(slotOpen(const KURL&)),
                                          actionCollection());
     
@@ -178,11 +176,6 @@ void MainWindow::setupCanvas() {
 }
 
 // Implementation of most of the items in the File and Edit menus //
-//
-// / @todo: most of the Edit functionality (Cut,Copy,Paste,Find,...) is still lacking.
-// I will probably implement it when going from KTextEdit to KTextEditor::Editor,
-// because I'll have to reimplement it then anyway (it implements itself then actally).
-//
 void MainWindow::slotNewFile() {
     if ( !editor->document()->isModified() && CurrentFile == "" ) {
         return; // do nothing when nothing is to be done
@@ -268,6 +261,11 @@ void MainWindow::slotSaveAs() {
 void MainWindow::slotOpenFile() {
       KURL url = KFileDialog::getOpenURL( QString(":logo_dir"), QString("*.logo|") +
       i18n("Logo files"), this, i18n("Open logo file...") );
+       if( !url.isEmpty() )
+           loadFile(url);
+}
+
+void MainWindow::slotOpen(const KURL& url) {
        if( !url.isEmpty() )
            loadFile(url);
 }
