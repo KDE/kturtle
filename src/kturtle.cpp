@@ -346,7 +346,10 @@ void MainWindow::slotSaveFile() {
 void MainWindow::slotSave(KURL &url) {
 	if ( !url.isEmpty() ) {
 		filename2saveAs = url.url();
+		QString mString=ei->text();
+		ei->setText(mString.utf8());
 		editor->document()->saveAs(url);
+		loadFile(url);
 		CurrentFile = url.fileName();
 		setCaption(CurrentFile);
 		slotStatusBar(i18n("Saved file to: %1").arg(CurrentFile),  IDS_STATUS); 
