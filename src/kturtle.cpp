@@ -421,7 +421,7 @@ void MainWindow::slotSaveCanvas() {
 void MainWindow::slotPrint() {
 	int result = KMessageBox::questionYesNoCancel( this,
 	i18n("Do you want to print the Logo code or the canvas?"),
-	i18n("Print Code or Canvas?"), i18n("Print &Logo Code"), i18n("Print &Canvas") );
+	i18n("Part to print"), i18n("Print &Logo Code"), i18n("Print &Canvas") );
 	if (result == KMessageBox::Yes) {
 		dynamic_cast<KTextEditor::PrintInterface*>(doc)->printDialog();
 		return;
