@@ -83,6 +83,14 @@ this way the language selection is done by the language name (we hide the URL an
 
 
 
+All i18n should be done/saved in one clear manner... From selection to use. Ill (cies) do this one (have an idea)
+
+
+
+i18n("blabla ") + value    ==> BAD should be  i18n("blabla %1") etc. :)
+
+
+
 Licence: provide a proper licence and have copyrights in all files
 
 

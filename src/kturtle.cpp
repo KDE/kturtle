@@ -482,7 +482,7 @@ void MainWindow::finishExecution() {
 
 void MainWindow::slotErrorDialog(QString msg, unsigned int row, unsigned int col, unsigned int code) {
     if(allreadyError) { return; } // one error dialog per 'run' is enough... (see next line)
-    // allreadyError = true; NO I WANT TO SE ALL ERRORS for the time beeing
+    allreadyError = true;
     QString line;
     if( row <= 0 || col <= 0 ) {
         line = ".";
@@ -856,26 +856,38 @@ void MainWindow::slotOpenEx() {
     for (QStringList::Iterator it = dirs.begin(); it != dirs.end(); ++it ) {
 	QDir dir(*it);
 	m_languages += dir.entryList(QDir::Dirs, QDir::Name);
-    }	
+    }
     m_languages.remove(m_languages.find("."));
     m_languages.remove(m_languages.find(".."));
     kdDebug() << m_languages << endl;
-    //see what language the user has in his settings
-    KConfigBase *globalConf = KGlobal::config();
-    globalConf->setGroup("Locale");
-    QString userLanguage = globalConf->readEntry("Language");
-    userLanguage = userLanguage.left(5);
-   //default language is one of the logokeyword or en
-   QString defaultLanguage;
-   for (QStringList::Iterator it = m_languages.begin(); it != m_languages.end(); ++it ) {
-	QString m_language(*it);
-	if (m_language == userLanguage || m_language.left(2) == userLanguage) {
-		defaultLanguage = m_language;
-		break;
-	}
-	else
-  		defaultLanguage = "en_US";
-    }    
+// // //         THIS SHOULD BE DONE AT THE BEGINNING OF THE APP
+      //         using KTurtle config as first priority then global KDE config than en_US as fallback
+// // //     //see what language the user has in his settings
+// // //     KConfigBase *globalConf = KGlobal::config();
+// // //     globalConf->setGroup("Locale");
+// // //     QString userLanguage = globalConf->readEntry("Language");
+// // //     kdDebug(0)<<"globalConf->readEntry(Language)"<<userLanguage<<endl;
+// // //     userLanguage = userLanguage.left(5);
+// // //     kdDebug(0)<<"globalConf->readEntry(Language).left(5)"<<userLanguage<<endl;
+
+// for now i use the config of KTurtle only
+   QString userLanguage = Settings::translationFilePath().section('.', -2, -2);
+
+// // //    Very nice but for now (the contest i prefer to do it simpler (since only en_US or nl will be selected
+// // //    
+// // //    // default language is one of the logokeyword or en
+// // //    QString defaultLanguage;
+// // //    for ( QStringList::Iterator it = m_languages.begin(); it != m_languages.end(); ++it ) {
+// // //         QString m_language(*it);
+// // //         if (m_language == userLanguage || m_language.left(2) == userLanguage) {
+// // //             defaultLanguage = m_language;
+// // //             break;
+// // //         } else
+// // //         defaultLanguage = "en_US";
+// // //     }
+    
+    QString defaultLanguage = userLanguage;
+
     kdDebug() << defaultLanguage << endl;
     KURL url;
     url.setPath( locate("data", "kturtle/examples/"+defaultLanguage+"/"));
