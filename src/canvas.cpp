@@ -52,6 +52,11 @@ void Canvas::Line(int xa, int ya, int xb, int yb) {
     kdDebug(0)<<"Line:: xa:"<<xa<<", ya:"<<ya<<", xb:"<<xb<<", yb:"<<yb<<endl;
     if ( Wrap && !TurtleCanvas->onCanvas(xb, yb) ) {
         QPoint translation = TranslationFactor(xa, ya, xb, yb);
+        if (translation == QPoint(0, 0) ) {
+            kdDebug(0)<<"***********ERRORRR***********"<<endl;
+            return;
+        }
+        kdDebug(0)<<"transX:"<<translation.x()<<",   transY:"<<translation.y()<<endl;
         QPoint t_startPos = QPoint(xa, ya) +
                             QPoint(translation.x() * CanvasWidth, translation.y() * CanvasHeight);
         QPoint t_endPos   = QPoint(xb, yb) + 
@@ -81,9 +86,11 @@ QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb) {
         int x_sB = (int)( ( CanvasHeight - B ) / A );  // A * x_sB + B = CW  =>   x_sB = (CW - B) / A
         int y_sL = B;                                  // A * 0 + B = y_sL  =>  y_sL = B
         int y_sR = (int)( A * CanvasWidth ) + B;
-        kdDebug(0)<<"CB:: rc:"<<A<<", T:"<<x_sT<<", B:"<<x_sB<<", L:"<<y_sL<<", R:"<<y_sR<<". "<<endl;
+        kdDebug(0)<<"CB:: rc:"<<A<<", xTop:"<<x_sT<<", xBot:"<<x_sB<<", yLft:"<<y_sL<<", yRft:"<<y_sR<<". "<<endl;
         
         // Here we find out what crossing points are actually on the borders 
+        
+        // MAYBE it should be  -2 <= foo && foo <= CW
         if ( 0 <= x_sT && x_sT <= CanvasWidth && PointInRange(x_sT, 0, xa, ya, xb, yb) ) {
             i++;
             Translate[i] = QPoint(0, 1);
@@ -104,9 +111,31 @@ QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb) {
             Translate[i] = QPoint(-1, 0);
             CrossPoint[i] = QPoint(CanvasWidth, y_sR);
         }
+    
+        if ( i == 0 ) {
+            kdDebug(0)<<"**no border crossings**"<<endl;
+            QPoint returnValue = QPoint(0, 0);
+            // Here a fallback if the line has no crossings points with any borders.
+            if ( -2 <= x_sT && x_sT <= (CanvasWidth + 2) && PointInRange(x_sT, 0, xa, ya, xb, yb) ) {
+                returnValue = returnValue + QPoint( 0, 1);
+            }
+            if ( -2 <= x_sB && x_sB <= (CanvasWidth + 2) && PointInRange(x_sB, CanvasHeight, xa, ya, xb, yb) ) {
+                returnValue = returnValue + QPoint( 0,-1);
+            } 
+            if ( -2 <= y_sL && y_sL <= (CanvasHeight + 2) && PointInRange(0, y_sL, xa, ya, xb, yb) ) {
+                returnValue = returnValue + QPoint( 1, 0);
+            }
+            if ( -2 <= y_sR && y_sR <= (CanvasHeight + 2)  && PointInRange(CanvasWidth, y_sR, xa, ya, xb, yb) ) {
+                returnValue = returnValue + QPoint(-1, 0);
+            }
+            
+            if ( returnValue == QPoint(0, 0) ) { kdDebug(0)<<"*****Shouldn't happen*****"<<endl; }
+            return returnValue;
+        }
     }
+   
     QPoint returnValue = QPoint(0, 0);
-    if ( i == 1 ) { return Translate[1]; }
+    if ( i == 1 ) { kdDebug(0)<<"***123243455!"<<endl; return Translate[1]; }
     if ( i > 1 )  {
         QPoint endPos(xb, yb);
         int smallestSize = ( QPoint(xa, ya) - endPos ).manhattanLength();
@@ -115,7 +144,9 @@ QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb) {
             if ( testSize < smallestSize ) {
                 smallestSize = testSize;
                 returnValue = Translate[ii];
+                kdDebug(0)<<"***heeeeeeeeeeee!"<<endl;
             } else if ( testSize == smallestSize ) {  // this only happens on corners
+                kdDebug(0)<<"***ARggg!"<<endl;
                 returnValue = QPoint(0, 0);
                 if ( xb < 0 ) {
                     returnValue = returnValue + QPoint(1, 0);
@@ -130,28 +161,33 @@ QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb) {
                 return returnValue;
             }
         }
-        if ( returnValue == QPoint(0, 0) ) { kdDebug(0)<<"***Shouldn't happen***"<<endl; }
-        return returnValue;
+    kdDebug(0)<<"***yoooo!"<<endl;
+    return returnValue;
     }
-    
-// // // // // //     // Here a fallback if the line has no crossings points with any borders. 
-// // // // // //     float A = (float)( yb - ya ) / (float)( xb - xa );
-// // // // // //     // if the allmost a parallel to y = x:
-// // // // // //     if ( ( A < 1.000100 && A > 0.999900 ) || (-A < 1.000100 && -A > 0.999900 ) ) {
-// // // // // //         if ( B < 0 ) { return QPoint(1,-1); }
-// // // // // //         if ( B > 0 ) { return QPoint(-1,1); }
-// // // // // //     }
-// // // // // //     int B = ya - (int)( ( A * xa ) );
-// // // // // //     
-// // // // // //     // crossing point with the line y = x
-// // // // // //     int c_X = B / (int)(A - 1);
-// // // // // //     int c_Y = (int)( A * c_X ) + B;
-// // // // // //     if ( c_X < 0 && A > 0 ) {
-// // // // // //         if ( A < 1 ) { return QPoint(1,-1); }
-// // // // // //     
-// // // // // //     WORKING ON THIS!!!
-    kdDebug(0)<<"**Shouldn't happen**"<<endl;
-    return QPoint(1,-1);
+   
+        
+// // // // //     // Here a fallback if the line has no crossings points with any borders.
+// // // // //     kdDebug(0)<<"  **1**  "<<endl;
+// // // // //     float A = (float)( yb - ya ) / (float)( xb - xa );
+// // // // //     kdDebug(0)<<"  **2**  "<<endl;
+// // // // //     int B = ya - (int)( ( A * xa ) );
+// // // // //     kdDebug(0)<<"  **3**  "<<endl;
+// // // // //     // if the allmost a parallel to y = x:
+// // // // //     if ( ( A < 1.000100 && A > 0.999900 ) || (-A < 1.000100 && -A > 0.999900 ) ) {
+// // // // //         if ( B < 0 ) { return QPoint(-1, 1); }
+// // // // //         if ( B > 0 ) { return QPoint( 1,-1); }
+// // // // //     }
+// // // // //     kdDebug(0)<<"  **4**  "<<endl;
+// // // // //     // X coord of the crossing point with the line y = x
+// // // // //     int c_X = (int)( B / (A - 1) );
+// // // // //     int c_Y = (int)( A * c_X ) + B;
+// // // // //     kdDebug(0)<<"  **5**  "<<endl;
+// // // // //     if ( c_X < 0 && A > 0 && A < 1 )   { return QPoint( 1,-1); }
+// // // // //     if ( c_X < 0 && A > 0 && A > 1 )   { return QPoint(-1, 1); }
+// // // // //     if ( c_X < 0 && A < 0 && c_Y < 0 ) { return QPoint(-1,-1); }
+// // // // //     if ( c_X < 0 && A < 0 && c_Y > 0 ) { return QPoint( 1, 1); }
+// // // // //     kdDebug(0)<<"**Shouldn't happen**"<<endl;
+// // // // //     return QPoint(0, 0);
 }
 
 bool Canvas::PointInRange(int px, int py, int xa, int ya, int xb, int yb) {
