@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
   <!ENTITY kapp "&kturtle;"><!-- replace kturtle here -->
-  <!ENTITY package "kdenonbeta">
+  <!ENTITY package "kdeedu">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE"><!-- change language only here -->
 ]>
@@ -37,7 +37,7 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2004-03-24</date>
+<date>2004-05-27</date>
 <releaseinfo>0.2</releaseinfo>
 
 <abstract>
