@@ -173,7 +173,7 @@
     <varlistentry>
       <term>reset</term>
       <listitem><para><screen>reset</screen>
-      <userinput>reset</userinput> cleans much more thoroughly than the <userinput>clear</userinput> command. After a <userinput>reset</userinput> command everything is like is was when you had just started &kturtle;.</para></listitem>
+      <userinput>reset</userinput> cleans much more thoroughly than the <userinput>clear</userinput> command. After a <userinput>reset</userinput> command everything is like is was when you had just started &kturtle;. The tortle is positionned at the middle of the screen, the canvas color is white and the turtle daws a black line on the canvas.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -188,7 +188,7 @@
     <varlistentry>
       <term>show</term>
       <listitem><para><screen>show</screen>
-      <userinput>show</userinput> makes the turtle visible again after she has been hidden.</para></listitem>
+      <userinput>show</userinput> makes the turtle visible again after she has been hidden.<userinput>show</userinput> can be abbreviated to <userinput>ss</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -196,7 +196,7 @@
     <varlistentry>
       <term>hide</term>
       <listitem><para><screen>hide</screen>
-      <userinput>hide</userinput> hides the turtle. This can be used if the turtle does not fit in your drawing.</para></listitem>
+      <userinput>hide</userinput> hides the turtle. This can be used if the turtle does not fit in your drawing.<userinput>hide</userinput> can be abbreviated to <userinput>sh</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -244,7 +244,7 @@ repeat 500 [
   turnleft 10 - x
 ]
 </screen>
-      Using the random command you can add a bit of chaos to your program.</para></listitem>
+      Using the <userinput>random</userinput> command you can add a bit of chaos to your program.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -254,7 +254,7 @@ repeat 500 [
 <title>Containers</title>
 <para>Containers are letters or words that can be used by the programmer to store a number or a text. Containers that contain a number are called <link linkend="variables">variables</link>, containers that can contain text are called <link linkend="strings">strings</link>.</para>
 
-<para>Containers that are not used yet used are 0 by default. An example:
+<para>Containers that are not used yet are 0 by default. An example:
 <screen>
 print N
 </screen>
