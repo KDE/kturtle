@@ -120,19 +120,25 @@ many internationalized example logo programs make it easy to get started
   </mediaobject>
 </screenshot>
 
-<para>The main window of KTurtle has two main parts, the code editor(3) on the left where you type the Logo commands and the canvas(2) on the right where the instructions are visualized. The canvas is the turtle's playground, it's on the canvas that the turtle actually moves and draws. Then there are tree other important places on the main window: the menu bar(1) from where all the actions can be reached, the tool bar(2) that allows you to quickly actived some often used actions and the statusbar(5) where you find some feedback on the state of KTurtle.</para>
+<para>The main window of KTurtle has two main parts, the code editor (3) on the left where you type the Logo commands and the canvas (4) on the right where the instructions are visualized. The canvas is the turtle's playground, it's on the canvas that the turtle actually moves and draws. Then there are tree other important places on the main window: the menu bar (1) from where all the actions can be reached, the tool bar (4) that allows you to quickly actived some often used actions and the statusbar (5) where you find some feedback on the state of KTurtle.</para>
 
 <sect1 id="the-code-editor">
 <title>The Code Editor</title>
-<para>In the code editor you to type the Logo commands. It has all features you would expect from a modern editor. Most of its features are found in the Edit and the Tools menu. It can be dragged to each border of the main window or detached and dragged anywhere on your desktop.</para>
-<para>Use the Execute action (File->Execute Commands) to execute the code written in the code editor.</para>
+<para>In the code editor you type the Logo commands. It has all features you would expect from a modern editor. Most of its features are found in the Edit and the Tools menus. The code editor can be dragged to each border of the main window or detached and dragged anywhere on your desktop.</para>
+<para>
+You have several ways to get some code in the editor. The easiest way is to use an already-made example. You choose Open Examples in the File menu and you click on a file. The file name will tell you what the example is about (for example: square.logo will draw a square). The code will be pasted in the editor. You can also open your own files by choosing File -&gt; Open and the file text will be pasted in the editor. The third way is to directly type your own code in the editor.
+</para>
+<para>
+The cursor position is indicated in the statusbar, on the right with the Line number and Column number.
+</para>
+<para>Use the Execute action (<guimenu>File</guimenu>-&gt;<guimenuitem>Execute Commands</guimenuitem>) to execute the code written in the code editor.</para>
 </sect1>
 
 <sect1 id="the-canvas">
 <title>The Canvas</title>
 <para>
-The canvas is the place where the commands 'draw' a picture. Most of the commands have an effect on the canvas.</para>
-<para>The picture that is drawn can be saved (using File->Save Canvas) or printed (using File->Print).</para>
+The canvas is the area where the commands are visualized, where the commands 'draw' a picture. It also can be called the Turtle Playground for young children. After getting some code in the Editor, you will use the Execute command and two things can happen: if you have an error in your code, there will be a message that will tell you what error you made. If your code is good (we can say: valid) then the turtle will get into action and it will execute the instructions. Most of the commands have an effect on the canvas.</para>
+<para>The picture that is drawn can be saved (using <guimenu>File</guimenu>-&gt;<guimenuitem>Save Canvas</guimenuitem>) or printed (using <guimenu>File</guimenu>-&gt;<guimenuitem>Print</guimenuitem>).</para>
 </sect1>
 
 <sect1 id="the-menubar">
@@ -183,7 +189,7 @@ The canvas is the place where the commands 'draw' a picture. Most of the command
         <guimenu>File</guimenu>
         <guimenuitem>Examples</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Show the folder with examples logo programs. The examples should be in your favorite language that you can choose in here: <guimenu>Setting</guimenu><guimenuitem>Setting</guimenuitem> Language.</para></listitem>
+      <listitem><para>Show the folder with examples logo programs. The examples should be in your favorite language that you can choose in here: <guimenu>Settings</guimenu><guimenuitem>Configure KTurtle</guimenuitem>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -620,7 +626,7 @@ The canvas is the place where the commands 'draw' a picture. Most of the command
     </textobject>
   </mediaobject>
 </screenshot>
-In this Gettng Started guide we assume that the language of the logo commands is English. You can check to what language KTurtle is set in <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure KTurtle</guimenuitem></menuchoice> on the Language section.</para>
+In this Getting Started guide we assume that the language of the logo commands is English. You can check to what language KTurtle is set in <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure KTurtle</guimenuitem></menuchoice> in the Language section.</para>
 
 <sect1 id="first-steps">
 <title>First steps with Logo: meet the Turtle!</title>
@@ -700,13 +706,6 @@ Again you should type or copy-paste the code to the code editor and execute it (
 </sect2>
 
 
-
-
-
-
-
-
-
 <sect2 id="les">
 <title>Moples</title>
 
@@ -735,7 +734,7 @@ To get you started, type:
 <screen>
 forward 50
 </screen>
-in the editor and click on the Execute button (the blue round cog). See on the screenshot below what happens: the Turtle move for 50 steps.
+in the editor and click on the Execute button (the blue round cog). See on the screenshot below what happens: the Turtle moves forward for 50 steps.
 </para>
 <screenshot>
      <screeninfo>Get the Turtle move forward for 50 steps.</screeninfo>
@@ -769,7 +768,7 @@ clear
 command.
 </para>
 <para>
-Usually,you will start with one of these commands, preferably <emphasis>reset</emphasis> to ensure the Turtle playground is clean.
+Usually, you will start with one of these commands, preferably <emphasis>reset</emphasis> to ensure the Turtle playground is clean.
 </para>
 </sect2> 
 <sect2 id="printing">
@@ -792,11 +791,11 @@ print "some text"
 Don't forget the " around the text you want to display on the canvas.
 </para>
 <para>
-You will also need to write some comments in the program, to indicate what you want your turtle to do. The program is the text in the editor and once your turtle does exactly what you wanted her to do, you can save that text for showing to your friens. This text is call a program. When you write some words to say what this program does, this can help another person opening your program to understand it better. 
+You will also need to write some comments in the program, to indicate what you want your turtle to do. The program is the text in the editor and once your turtle does exactly what you wanted her to do, you can save that text for showing to your friends. This text is call a program. When you write some words to say what this program does, this can help another person opening your program to understand it better. 
 <screen>
 # this is a comment
 </screen>
-The turtle will not execute the etxt after a #, she knows that does not concern her.
+The turtle will not execute the text after a #, she knows that does not concern her.
 </para>
 <para>
 Let's see those 4 commands in action. 
@@ -1278,17 +1277,24 @@ KTurtle
 <para>
 Contributors:
 <itemizedlist>
-<listitem><para>Coding help: Anne-Marie Mahfouf<email>annma@kde.org</email></para>
+<listitem><para>Coding help: Anne-Marie Mahfouf <email>annma@kde.org</email></para>
 </listitem>
-<listitem><para>Author of "wsbasic" (wsbasic.sf.net) which is the base for the interpreter of KTurtle: Walter Schreppers<email>Walter.Schreppers@ua.ac.be</email></para>
+<listitem><para>Author of "wsbasic" (wsbasic.sf.net) which is the base for the interpreter of KTurtle: Walter Schreppers <email>Walter.Schreppers@ua.ac.be</email></para>
 </listitem>
 </itemizedlist>
 </para>
 
 <para>
-Documentation copyright 2004 Anne-Marie Mahfouf <email>annma@kde.org</email>
+Documentation copyright 2004
+<itemizedlist>
+<listitem><para>
+ Anne-Marie Mahfouf <email>annma@kde.org</email>
+</para></listitem>
+<listitem><para>
+Cies Briej <email>cies # showroommama ! nl</email>
+</para></listitem>
+</itemizedlist>
 </para>
-
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 
 &underFDL;
