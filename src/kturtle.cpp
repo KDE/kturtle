@@ -7,6 +7,8 @@
 #include <qregexp.h>
 #include <qpainter.h>
 #include <qpixmap.h>
+#include <qtooltip.h>
+#include <qwhatsthis.h>
 
 #include <kapplication.h>
 #include <kconfigdialog.h>
@@ -147,6 +149,8 @@ void MainWindow::setupEditor() {
     EditorDock->setFixedExtentHeight(150);
     EditorDock->setResizeEnabled(true);
     EditorDock->setFrameShape(QFrame::ToolBarPanel);
+    QToolTip::add( EditorDock, i18n( "The Logo code must be typed or pasted or opened from a file here, in the editor" ) );
+    QWhatsThis::add( EditorDock, i18n( "This is the editor, you type your code here." ) );
     moveDockWindow(EditorDock, Qt::DockLeft);
     editor = doc->createView (EditorDock, 0L);
     // ei is the editor interface which allows us to access the text in the part
@@ -187,6 +191,8 @@ void MainWindow::setupCanvas() {
     BaseLayout = new QGridLayout(BaseWidget, 0, 0);
     TurtleView = new Canvas(BaseWidget);
     BaseLayout->addWidget(TurtleView, 0, 0, AlignCenter);
+    QToolTip::add( TurtleView, i18n( "The canvas is the Turtle playground" ) );
+    QWhatsThis::add( TurtleView, i18n( "This is the canvas where the turtle puts your code into drawing and text." ) );
     TurtleView->show();
     
     connect( TurtleView, SIGNAL( CanvasResized() ), this, SLOT( slotUpdateCanvas() ) );
