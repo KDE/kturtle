@@ -464,10 +464,8 @@ void MainWindow::slotQuit() {
 			}	
 		}
 	}
-	
 	KConfig *config = kapp->config();
-	saveSettings(config);
-	
+	config->sync();
 	close();
 }
 
