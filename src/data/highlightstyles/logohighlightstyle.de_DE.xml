@@ -37,49 +37,49 @@
     <item> str </item> 
     <item> stiftfarbe </item> 
     <item> stf </item> 
-    <item> canvascolor </item> 
-    <item> cc </item> 
-    <item> canvassize </item> 
-    <item> cs </item> 
-    <item> show </item> 
-    <item> ss </item> 
-    <item> hide </item> 
-    <item> sh </item> 
-    <item> press </item> 
-    <item> sp </item> 
-    <item> change </item> 
-    <item> sc </item> 
-    <item> message </item>
-    <item> inputwindow </item> 
-    <item> print </item> 
-    <item> fonttype </item> 
-    <item> fontsize </item>
-    <item> random </item> 
-    <item> wrapon </item> 
-    <item> wrapoff </item> 
-    <item> reset </item> 
+    <item> papierfarbe </item> 
+    <item> pf </item> 
+    <item> papiergröße </item> 
+    <item> pg </item> 
+    <item> zeige </item> 
+    <item> zg </item> 
+    <item> verberge </item> 
+    <item> vg </item> 
+    <item> drücke </item> 
+    <item> dc </item> 
+    <item> wechsle </item> 
+    <item> wc </item> 
+    <item> nachricht </item>
+    <item> eingabefenster </item> 
+    <item> drucken </item> 
+    <item> schriftart </item> 
+    <item> schriftgröße </item>
+    <item> zufall </item> 
+    <item> umbruckan </item> 
+    <item> umbruchaus </item> 
+    <item> zurücksetzen </item> 
   </list>
 
   <list name="controllers">
-    <item> while </item>
-    <item> foreach </item>
+    <item> solange </item>
+    <item> fürjedes </item>
     <item> in </item>
-    <item> for </item>
-    <item> to </item>
-    <item> do </item>
-    <item> repeat </item>
-    <item> rpt </item>
-    <item> if </item>
-    <item> else </item>
-    <item> return </item>
-    <item> break </item>
-    <item> wait </item>
+    <item> von </item>
+    <item> bis </item>
+    <item> tue </item>
+    <item> wiederhole </item>
+    <item> wdh </item>
+    <item> wenn </item>
+    <item> sonst </item>
+    <item> zurück </item>
+    <item> abbrechen </item>
+    <item> warte </item>
   </list>
 
   <list name="boolops">
-    <item> and </item>
-    <item> or </item>
-    <item> not </item>
+    <item> und </item>
+    <item> oder </item>
+    <item> nicht </item>
   </list>
  
   <contexts>

@@ -170,7 +170,7 @@
   
   <command name="spritehide">
     <keyword>verberge</keyword>
-    <alias>verstecke</alias>
+    <alias>vg</alias>
   </command>
 
   <command name="spritepress">
@@ -179,7 +179,7 @@
 
   <command name="spritechange">
     <keyword>wechsle</keyword>
-    <alias>ändere</alias>
+    <alias>wc</alias>
   </command>
   
   <command name="message">
