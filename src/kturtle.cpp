@@ -12,6 +12,7 @@
 #include <kdebug.h>
 #include <kfiledialog.h>
 #include <kkeydialog.h>
+#include <klineedit.h>
 #include <klocale.h>
 #include <kmainwindow.h>
 #include <kmenubar.h>
@@ -45,7 +46,7 @@ MainWindow::MainWindow() : KMainWindow( 0, i18n("KTurtle") ) {
     filename2saveAs = "";
     setCaption( i18n("Untitled") );
     picker = 0; // for the colorpickerdialog
-    checkTranslationFile(); // translationFile should be know else: error.
+    //checkTranslationFile(); // translationFile should be know else: error.
     
     // at last; must be sure everything is already set up ;)
     setAutoSaveSettings ("MainWindow Settings");
@@ -503,7 +504,10 @@ void MainWindow::slotSettings() {
     // making the filling for the 'Language' settings dept.    
     QWidget *language = new QWidget();
     kcfg_TranslationFilePath = new KURLRequester(language, "kcfg_TranslationFilePath");
+    kcfg_TranslationFilePath->setShowLocalProtocol(true);
     kcfg_TranslationFilePath->setGeometry( QRect(20, 90, 440, 30) );
+    //this does not show in the dialog lineEDit
+    kcfg_TranslationFilePath->setURL(locate("data","kturtle/data/logokeywords.en_US.xml"));
     TranslationFileLabel = new QLabel(kcfg_TranslationFilePath, i18n("&Translation file:"), language);
     TranslationFileLabel->setGeometry( QRect(20, 40, 200, 30) );
     dialog->addPage( language, i18n("Language"), "locale", i18n("Language Settings") );
@@ -533,9 +537,9 @@ void MainWindow::checkTranslationFile() {
     KConfig *config = kapp->config();
     if ( !QFile( config->readPathEntry("TranslationFile") ).exists() ) {
         kdDebug(0)<<"--1--"<<endl;
-        if ( !locate("appdata", "data/logokeywords.en_US.xml").isNull() ) {
+        if ( !locate("appdata", "kturtle/data/logokeywords.en_US.xml").isNull() ) {
             config->setGroup("language");
-            config->writeEntry("TranslationFile", locate("appdata", "data/logokeywords.en_US.xml") );
+            config->writeEntry("TranslationFile", locate("appdata", "kturtle/data/logokeywords.en_US.xml") );
             config->sync(); // doesnt work
             // the settings dialog will not show the translationFile the first time it is started
             // i dont know why or how to fix <- TODO 
