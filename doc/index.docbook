@@ -98,7 +98,7 @@ KTurtle is fully translationable (currently only English, Dutch and French are s
 full-screen mode
 </para></listitem>
 <listitem><para>
-many internationalized example logo programs make it easy to get started
+many integrated internationalized example logo programs make it easy to get started
 </para></listitem>
 </itemizedlist>
 </para>
@@ -109,7 +109,7 @@ many internationalized example logo programs make it easy to get started
 <title>Using KTurtle</title>
 
 <screenshot>
-  <screeninfo>Here's a screenshot KTurtle when you start it for the first time</screeninfo>
+  <screeninfo>Here's a screenshot KTurtle in action</screeninfo>
   <mediaobject>
     <imageobject>
       <imagedata fileref="mainwindow_flower_nrs.png" format="PNG"/>
@@ -120,13 +120,13 @@ many internationalized example logo programs make it easy to get started
   </mediaobject>
 </screenshot>
 
-<para>The main window of KTurtle has two main parts, the code editor (3) on the left where you type the Logo commands and the canvas (4) on the right where the instructions are visualized. The canvas is the turtle's playground, it's on the canvas that the turtle actually moves and draws. Then there are tree other important places on the main window: the menu bar (1) from where all the actions can be reached, the tool bar (4) that allows you to quickly actived some often used actions and the statusbar (5) where you find some feedback on the state of KTurtle.</para>
+<para>The main window of KTurtle has two main parts, the code editor (3) on the left where you type the Logo commands and the canvas (4) on the right where the instructions are visualized. The canvas is the turtle's playground, it's on the canvas that the turtle actually moves and draws. Then there are three other important places on the main window: the menu bar (1) from where all the actions can be reached, the toolbar (4) that allows you to quickly actived some often used actions and the statusbar (5) where you find some feedback on the state of KTurtle.</para>
 
 <sect1 id="the-code-editor">
 <title>The Code Editor</title>
 <para>In the code editor you type the Logo commands. It has all features you would expect from a modern editor. Most of its features are found in the Edit and the Tools menus. The code editor can be dragged to each border of the main window or detached and dragged anywhere on your desktop.</para>
 <para>
-You have several ways to get some code in the editor. The easiest way is to use an already-made example. You choose Open Examples in the File menu and you click on a file. The file name will tell you what the example is about (for example: square.logo will draw a square). The code will be pasted in the editor. You can also open your own files by choosing File -&gt; Open and the file text will be pasted in the editor. The third way is to directly type your own code in the editor.
+You have several ways to get some code in the editor. The easiest way is to use an already-made example. You choose Open Examples in the File menu and you click on a file. The file name will tell you what the example is about (for example: square.logo will draw a square). The code will be pasted in the editor. You can also open your own files by choosing File -&gt; Open and the file text will be pasted in the editor. The third way is to directly type your own code in the editor or to copy/paste some code from this user guide.
 </para>
 <para>
 The cursor position is indicated in the statusbar, on the right with the Line number and Column number.
@@ -506,7 +506,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Settings</guimenu>
         <guimenuitem>Configure KTurtle...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This is used to configure KTurtle.Here you can change the language of the logo commands or set a new initial canvas size.</para></listitem>
+      <listitem><para>This is used to configure KTurtle. Here you can change the language of the logo commands or set a new initial canvas size.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -516,7 +516,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Settings</guimenu>
         <guisubmenu>Advanced Settings</guisubmenu>
       </menuchoice></term>
-      <listitem><para>Here you can change things you normally do not need to change. The advanced settings submenu has three items: Configure Editor, Configure Shortcuts and Configure Toolbars.</para></listitem>
+      <listitem><para>Here you can change things you normally do not need to change. The advanced settings submenu has three items: Configure Editor (the standard Kate editor settings dialog), Configure Shortcuts (the standard KDE shortcut settings dialog) and Configure Toolbars (the standard KDE toolbars setting dialog).</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -601,14 +601,10 @@ The canvas is the area where the commands are visualized, where the commands 'dr
 
 <sect1 id="the-statusbar">
 <title>The Statusbar</title>
-<para>On the statusbar you get feedback of the state of KTurtle. On the left side it shows the feedback on the last action. On the right side you find the current location of the cursor.</para>
+<para>On the statusbar you get feedback of the state of KTurtle. On the left side it shows the feedback on the last action. On the right side you find the current location of the cursor (line and column numbers).</para>
 </sect1>
 
 </chapter>
-
-
-
-
 
 
 
