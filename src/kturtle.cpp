@@ -32,7 +32,6 @@
 #include <kfiledialog.h>
 #include <kimageio.h>
 #include <kinputdialog.h> 
-#include <kkeydialog.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kprinter.h>
@@ -161,7 +160,7 @@ void MainWindow::setupActions() {
 	// //createStandardStatusBarAction();
 	// //setStandardToolBarMenuEnabled(true);
 	KStdAction::preferences( this, SLOT( slotSettings() ), ac );
-	KStdAction::keyBindings( this, SLOT( slotConfigureKeys() ), ac );
+	KStdAction::keyBindings(guiFactory(), SLOT(configureShortcuts()), ac);
 	new KAction(i18n("&Configure Editor..."), "configure", 0, this, SLOT(slotEditor()), ac, "set_confdlg");
 	KStdAction::configureToolbars( this, SLOT(slotConfigureToolbars()), ac);
 	// Help actions
@@ -891,10 +890,6 @@ void MainWindow::slotUpdateSettings() {
 void MainWindow::readConfig(KConfig *config) {
 	config->setGroup("General Options");
 	m_recentFiles->loadEntries(config, "Recent Files");
-}
-
-void MainWindow::slotConfigureKeys() {
-  	KKeyDialog::configure(actionCollection(), this);
 }
 
 void MainWindow::slotConfigureToolbars() {
