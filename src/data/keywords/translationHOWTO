@@ -1,9 +1,10 @@
-How to translate the logo keywords (commands)
+How to translate the syntax highlighting files 
 
-The commands files are located in kdeedu/kturtle/src/data/keywords/
+The commands files are located in kdeedu/kturtle/src/data/highlightstyles/
 Each file is named
-logokeywords.code.xml
+logohighlightstyle.code.xml
 where code is the iso code for your country (note that this must be a valid iso code).
+Please note that the country code must be the same here than in the logokeywords file and for the example folder.
 
 1) Copy the logokeywords.en_US.xml file by renaming it to logokeywords.code.xml where code is your country code (2 or 4 letters ISO code)
 
