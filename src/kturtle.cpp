@@ -412,7 +412,7 @@ void MainWindow::slotSaveCanvas()
 	QString type( KImageIO::type( url.path() ) );
 	if ( type.isNull() ) type = "PNG";
 	bool ok = false;
-	QPixmap* pixmap = TurtleView->Canvas2Pixmap();
+	QPixmap* pixmap = TurtleView->canvas2Pixmap();
 	if ( url.isLocalFile() )
 	{
 		KSaveFile saveFile( url.path() );
@@ -451,7 +451,7 @@ void MainWindow::slotPrint()
 		if ( printer.setup(this) )
 		{
 			QPainter painter(&printer);
-			QPixmap *CanvasPic = TurtleView->Canvas2Pixmap();
+			QPixmap *CanvasPic = TurtleView->canvas2Pixmap();
 			painter.drawPixmap(0, 0, *CanvasPic);
 		}
 		return;

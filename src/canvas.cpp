@@ -89,12 +89,12 @@ Canvas::Canvas(QWidget *parent, const char *name) : QCanvasView(0, parent, name)
 
 Canvas::~Canvas()
 {
-	delete Sprite;
-	delete SpriteFrames;
+	delete sprite;
+	delete spriteFrames;
 }
 
 
-QPixmap* Canvas::Canvas2Pixmap()
+QPixmap* Canvas::canvas2Pixmap()
 {
 	pixmap = QPixmap( TurtleCanvas->width(), TurtleCanvas->height() );
 	QPainter painter(&pixmap);
@@ -135,17 +135,17 @@ void Canvas::slotGo(double x, double y)
 	int intX = ROUND2INT(x);
 	int intY = ROUND2INT(y);
 	
-	if ( Wrap && !TurtleCanvas->onCanvas(intX, intY) )
+	if ( wrap && !TurtleCanvas->onCanvas(intX, intY) )
 	{
-		QPoint offset = Offset(intX, intY);
-		dblPosX = x - (double)( offset.x() * CanvasWidth );
-		dblPosY = y - (double)( offset.y() * CanvasHeight );
+		QPoint offsetPoint = offset(intX, intY);
+		posX = x - (double)( offsetPoint.x() * canvasWidth );
+		posY = y - (double)( offsetPoint.y() * canvasHeight );
 
 	}
 	else
 	{
-		dblPosX = x;
-		dblPosY = y;
+		posX = x;
+		posY = y;
 	}
 	updateSpritePos();
 }
@@ -153,99 +153,94 @@ void Canvas::slotGo(double x, double y)
 void Canvas::slotGoX(double x)
 {
 	int intX = ROUND2INT(x);
-	int intPosY = ROUND2INT(dblPosY);
-	if ( Wrap && !TurtleCanvas->onCanvas(intX, intPosY) )
+	int intPosY = ROUND2INT(posY);
+	if ( wrap && !TurtleCanvas->onCanvas(intX, intPosY) )
 	{
-		QPoint offset = Offset(intX, intPosY);
-		dblPosX = x - ( offset.x() * CanvasWidth );
+		QPoint offsetPoint = offset(intX, intPosY);
+		posX = x - ( offsetPoint.x() * canvasWidth );
 	}
-	else dblPosX = x;
+	else posX = x;
 	updateSpritePos();
 }
 
 void Canvas::slotGoY(double y)
 {
 	int intY = ROUND2INT(y);
-	int intPosX = ROUND2INT(dblPosX);
-	if ( Wrap && !TurtleCanvas->onCanvas(intPosX, intY) )
+	int intPosX = ROUND2INT(posX);
+	if ( wrap && !TurtleCanvas->onCanvas(intPosX, intY) )
 	{
-		QPoint offset = Offset(intPosX, intY);
-		dblPosY = y - ( offset.y() * CanvasHeight );
+		QPoint offsetPoint = offset(intPosX, intY);
+		posY = y - ( offsetPoint.y() * canvasHeight );
 	}
-	else dblPosY = y;
+	else posY = y;
 	updateSpritePos();
 }
 
 void Canvas::slotForward(int x)
 {
 	float f = (float)x;
-	double dblPosXnew = dblPosX + f * cos(Dir);
-	double dblPosYnew = dblPosY - f * sin(Dir);
-	if (Pen)
-	{
-		LineShell(ROUND2INT(dblPosX), ROUND2INT(dblPosY), ROUND2INT(dblPosXnew), ROUND2INT(dblPosYnew));
-	}
-	slotGo(dblPosXnew, dblPosYnew);
+	double posXnew = posX + f * cos(direction);
+	double posYnew = posY - f * sin(direction);
+	if (pen) lineShell( ROUND2INT(posX), ROUND2INT(posY), ROUND2INT(posXnew), ROUND2INT(posYnew) );
+	slotGo(posXnew, posYnew);
 }
 
 void Canvas::slotBackward(int x)
 {
 	float f = (float)x;
-	double dblPosXnew = dblPosX - f * cos(Dir);
-	double dblPosYnew = dblPosY + f * sin(Dir);
-	if (Pen) {
-		LineShell(ROUND2INT(dblPosX), ROUND2INT(dblPosY), ROUND2INT(dblPosXnew), ROUND2INT(dblPosYnew));
-	}
-	slotGo(dblPosXnew, dblPosYnew);
+	double posXnew = posX - f * cos(direction);
+	double posYnew = posY + f * sin(direction);
+	if (pen) lineShell( ROUND2INT(posX), ROUND2INT(posY), ROUND2INT(posXnew), ROUND2INT(posYnew) );
+	slotGo(posXnew, posYnew);
 }
 
-void Canvas::slotDirection(double deg)
+void Canvas::slotdirectionection(double deg)
 {
-	Dir = ( -deg + 90 ) * PI / 180;
+	direction = ( -deg + 90 ) * PI / 180;
 	updateSpriteAngle();
 }
 
 void Canvas::slotTurnLeft(double deg)
 {
-	Dir = Dir + ( deg * PI / 180 );
+	direction = direction + ( deg * PI / 180 );
 	updateSpriteAngle();
 }
 
 void Canvas::slotTurnRight(double deg)
 {
-	Dir = Dir - ( deg * PI / 180 );
+	direction = direction - ( deg * PI / 180 );
 	updateSpriteAngle();
 }
 
 void Canvas::slotCenter()
 {
-	dblPosX = CanvasWidth / 2;
-	dblPosY = CanvasHeight / 2;
+	posX = canvasWidth / 2;
+	posY = canvasHeight / 2;
 	updateSpritePos();
 }
 
-void Canvas::slotSetPenWidth(int w)
+void Canvas::slotSetpenWidth(int w)
 {
-	if ( w == 1 ) PenWidth = 0; // 0 gives 1 pixel lines using fast algorithem
-	else PenWidth = w;
+	if ( w == 1 ) penWidth = 0; // 0 gives 1 pixel lines using fast algorithem
+	else penWidth = w;
 }
 
-void Canvas::slotPenUp()
+void Canvas::slotpenUp()
 {
-	Pen = false;
+	pen = false;
 }
 
-void Canvas::slotPenDown()
+void Canvas::slotpenDown()
 {
-	Pen = true;
+	pen = true;
 }
 
 void Canvas::slotSetFgColor(int r, int g, int b)
 {
 	// shouldn't it be checked if: ( 0 =< r, g, b =< 255) ?
-	FgR = r;
-	FgG = g;
-	FgB = b;
+	fgR = r;
+	fgG = g;
+	fgB = b;
 }
 
 void Canvas::slotSetBgColor(int r, int g, int b)
@@ -261,8 +256,8 @@ void Canvas::slotResizeCanvas(int x, int y)
 		x = 100;
 		y = 100;
 	}
-	CanvasWidth = x;
-	CanvasHeight = y;
+	canvasWidth = x;
+	canvasHeight = y;
 	TurtleCanvas->resize(x, y);
 	emit CanvasResized(); 
 }
@@ -274,12 +269,12 @@ void Canvas::slotResizeCanvas(int x, int y)
 
 void Canvas::slotSpriteShow()
 {
-	Sprite->show();
+	sprite->show();
 }
 
 void Canvas::slotSpriteHide()
 {
-	Sprite->hide();
+	sprite->hide();
 }
 
 void Canvas::slotSpritePress()
@@ -288,16 +283,16 @@ void Canvas::slotSpritePress()
 
 void Canvas::slotSpriteChange(int x)
 {
-	Sprite->setFrame(x);
-	Sprite->move(ROUND2INT(dblPosX - Sprite->width()/2), ROUND2INT(dblPosY - Sprite->height()/2));
+	sprite->setFrame(x);
+	sprite->move(ROUND2INT(posX - sprite->width()/2), ROUND2INT(posY - sprite->height()/2));
 }
 
 void Canvas::slotPrint(QString text)
 {
 	QCanvasText* t = new QCanvasText(text, font, TurtleCanvas);
 	// text does not do the wrapping, never... sorry
-	t->setColor( QColor(FgR, FgG, FgB) );
-	t->move(ROUND2INT(dblPosX), ROUND2INT(dblPosY));
+	t->setColor( QColor(fgR, fgG, fgB) );
+	t->move(ROUND2INT(posX), ROUND2INT(posY));
 	t->show();
 }
 
@@ -316,14 +311,14 @@ void Canvas::slotFontSize(int px)
 	font.setPixelSize(px);
 }
 
-void Canvas::slotWrapOn()
+void Canvas::slotwrapOn()
 {
-	Wrap = true;
+	wrap = true;
 }
 
-void Canvas::slotWrapOff()
+void Canvas::slotwrapOff()
 {
-	Wrap = false;
+	wrap = false;
 }
 
 void Canvas::slotReset()
@@ -342,119 +337,119 @@ void Canvas::initValues()
 {
 	// canvas size
 	slotResizeCanvas( Settings::canvasWidth(), Settings::canvasHeight() );
-	CanvasWidth = Settings::canvasWidth();
-	CanvasHeight = Settings::canvasHeight();
+	canvasWidth = Settings::canvasWidth();
+	canvasHeight = Settings::canvasHeight();
 	// colors
 	TurtleCanvas->setBackgroundColor( QColor(255, 255, 255) ); // background
-	FgR = 0; // pencolor (forground)
-	FgG = 0;
-	FgB = 0;
+	fgR = 0; // pencolor (forground)
+	fgG = 0;
+	fgB = 0;
 	// pen, wrap, direction and font
-	PenWidth = 0;
-	Pen = true;
-	Wrap = true;
-	Dir = PI/2;
+	penWidth = 0;
+	pen = true;
+	wrap = true;
+	direction = PI/2;
 	font = QFont("serif", 18);
 	// the position
-	dblPosX = CanvasWidth / 2;
-	dblPosY = CanvasHeight / 2;
+	posX = canvasWidth / 2;
+	posY = canvasHeight / 2;
 	// construct the default sprite
 	loadSpriteFrames("turtle");
 	updateSpritePos();
 	updateSpriteAngle();
-	Sprite->show();
+	sprite->show();
 }
 
 
-void Canvas::LineShell(int xa, int ya, int xb, int yb)
+void Canvas::lineShell(int xa, int ya, int xb, int yb)
 {
-	// Line can fallback into this function in case of cutLoop == true
+	// line can fallback into this function in case of cutLoop == true
 	cutLoop = false;
 	// Reset the loop detection memory
-	PrevStartPos3 = PrevStartPos2 = PrevStartPos1 = PrevEndPos3 = PrevEndPos2 = PrevEndPos1 = QPoint(0, 0);
+	prevStartPos3 = prevStartPos2 = prevStartPos1 = prevEndPos3 = prevEndPos2 = prevEndPos1 = QPoint(0, 0);
 	// and go!
-	Line(xa, ya, xb, yb);
+	line(xa, ya, xb, yb);
 }
 
-void Canvas::Line(int xa, int ya, int xb, int yb)
+void Canvas::line(int xa, int ya, int xb, int yb)
 {
 	QCanvasLine* l = new QCanvasLine(TurtleCanvas);
 	l->setPoints(xa, ya, xb, yb);
-	l->setPen( QPen(QColor(FgR, FgG, FgB), PenWidth, SolidLine) );
+	l->setPen( QPen(QColor(fgR, fgG, fgB), penWidth, SolidLine) );
 	l->setZ(1);
 	l->show();
-	// kdDebug(0)<<"Canvas::Line(); xa:"<<xa<<", ya:"<<ya<<", xb:"<<xb<<", yb:"<<yb<<endl;
-	if ( Wrap && !TurtleCanvas->onCanvas(xb, yb) )
+	// kdDebug(0)<<"Canvas::line(); xa:"<<xa<<", ya:"<<ya<<", xb:"<<xb<<", yb:"<<yb<<endl;
+	if ( wrap && !TurtleCanvas->onCanvas(xb, yb) )
 	{
-		if (EndlessLoop( QPoint(xa, ya), QPoint(xb, yb) ) == true) // detect for endless loop
+		if (endlessLoop( QPoint(xa, ya), QPoint(xb, yb) ) == true) // detect for endless loop
 		{
 			slotCenter();
-			//kdDebug(0)<<"Canvas::Line(): ENDLESS LOOP DETECTED, BROKE THE LOOP"<<endl;
+			//kdDebug(0)<<"Canvas::line(): ENDLESS LOOP DETECTED, BROKE THE LOOP"<<endl;
 			cutLoop = true;
 			return;
 		}
-		QPoint translation = TranslationFactor(xa, ya, xb, yb);
+		QPoint translation = translationFactor(xa, ya, xb, yb);
 		if (translation == QPoint(0, 0) )
 		{
-			// kdDebug(0)<<"Canvas::Line(): ***********ERRORRR***********"<<endl;
+			// kdDebug(0)<<"Canvas::line(): ***********ERRORRR***********"<<endl;
 			return;
 		}
-		// kdDebug(0)<<"Canvas::Line(); translate by: <<tranlation<<endl;
-		QPoint t_startPos = QPoint(xa, ya) + QPoint(translation.x() * CanvasWidth, translation.y() * CanvasHeight);
-		QPoint t_endPos   = QPoint(xb, yb) + QPoint(translation.x() * CanvasWidth, translation.y() * CanvasHeight);
-		Line( t_startPos.x(), t_startPos.y(), t_endPos.x(), t_endPos.y() );
+		// kdDebug(0)<<"Canvas::line(); translate by: <<tranlation<<endl;
+		QPoint t_startPos = QPoint(xa, ya) + QPoint(translation.x() * canvasWidth, translation.y() * canvasHeight);
+		QPoint t_endPos   = QPoint(xb, yb) + QPoint(translation.x() * canvasWidth, translation.y() * canvasHeight);
+		line( t_startPos.x(), t_startPos.y(), t_endPos.x(), t_endPos.y() );
 		if (cutLoop == true)
 		{
-			// kdDebug(0)<<"Canvas::Line(): cutLoop is set to TRUE!  ABORT LINE MISSION"<<endl;
+			// kdDebug(0)<<"Canvas::line(): cutLoop is set to TRUE!  ABORT LINE MISSION"<<endl;
 			return;
 		}
 	}
 }
 
-bool Canvas::EndlessLoop(QPoint begin, QPoint end)
+bool Canvas::endlessLoop(QPoint begin, QPoint end)
 {
-	// kdDebug(0)<<"PrevStartPos3: "<<PrevStartPos3<<", PrevStartPos2: "<<PrevStartPos2<<", PrevStartPos1: "<<PrevStartPos1<<", PrevStartPos0: "<<begin<<", PrevEndPos3: "<<PrevEndPos3<<", PrevEndPos2: "<<PrevEndPos2<<", PrevEndPos1: "<<PrevEndPos1<<", PrevEndPos0: "<<end<<endl;
-	if ( PrevStartPos2 == begin && PrevStartPos3 == PrevStartPos1 &&
-	     PrevEndPos2 == end && PrevEndPos3 == PrevEndPos1 )
+	// kdDebug(0)<<"prevStartPos3: "<<prevStartPos3<<", prevStartPos2: "<<prevStartPos2<<", prevStartPos1: "<<prevStartPos1<<", prevStartPos0: "<<begin<<", prevEndPos3: "<<prevEndPos3<<", prevEndPos2: "<<prevEndPos2<<", prevEndPos1: "<<prevEndPos1<<", prevEndPos0: "<<end<<endl;
+	if ( prevStartPos2 == begin && prevStartPos3 == prevStartPos1 &&
+	     prevEndPos2 == end && prevEndPos3 == prevEndPos1 )
 	{
 		// this is to break the horrible endless loop bug that i cannot fix...
 		// i need more simple reproductions of this bug to really find it
 		// for now i say it is something with QCanvas but i'm likely wrong on thisone
-		// kdDebug(0)<<"Canvas::EndlessLoop TRUE!!"<<endl;
+		// kdDebug(0)<<"Canvas::endlessLoop TRUE!!"<<endl;
 		return true;
 	}
 	else
 	{
-		// kdDebug(0)<<"Canvas::EndlessLoop FASLE!!"<<endl;
-		PrevStartPos3 = PrevStartPos2;
-		PrevStartPos2 = PrevStartPos1;
-		PrevStartPos1 = begin;
-		PrevEndPos3 = PrevEndPos2;
-		PrevEndPos2 = PrevEndPos1;
-		PrevEndPos1 = end;
+		// kdDebug(0)<<"Canvas::endlessLoop FASLE!!"<<endl;
+		prevStartPos3 = prevStartPos2;
+		prevStartPos2 = prevStartPos1;
+		prevStartPos1 = begin;
+		prevEndPos3 = prevEndPos2;
+		prevEndPos2 = prevEndPos1;
+		prevEndPos1 = end;
 		return false;
 	}
 	return false; // fallback will not be used
 }
 
-bool Canvas::PointInRange(int px, int py, int xa, int ya, int xb, int yb)
+bool Canvas::pointInRange(int px, int py, int xa, int ya, int xb, int yb)
 {
 	if ( ( ( px >= xa && px <= xb ) || ( px <= xa && px >= xb ) ) &&
-	   ( ( py >= ya && py <= yb ) || ( py <= ya && py >= yb ) ) ) return true;
+	     ( ( py >= ya && py <= yb ) || ( py <= ya && py >= yb ) ) ) return true;
 	return false;
 }
 
-QPoint Canvas::Offset(int x, int y)
+QPoint Canvas::offset(int x, int y)
 {
-	// This funktion make is easy to read since deviding int's is a weird thing:
+	// This funktion makes is easy to read since deviding int's is a weird thing:
 	// int x = 5 / 2,  outputs: x = 2,  with: 5 % 2 = 1 (the rest value) 
-	if ( x < 0 ) x = x - CanvasWidth;
-	if ( y < 0 ) y = y - CanvasHeight;
-	QPoint offset( x / CanvasWidth, y / CanvasHeight);
-	return offset;
+	if (x < 0) x = x - canvasWidth;
+	if (y < 0) y = y - canvasHeight;
+	QPoint offsetPoint( x / canvasWidth, y / canvasHeight);
+	return offsetPoint;
 }
 
-QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb)
+QPoint Canvas::translationFactor(int xa, int ya, int xb, int yb)
 {
 	// this class returns a QPoint which can be used to properly 'wrap' a line
 	QPoint CrossPoint[4]; // under wicked circumstances we can need this
@@ -468,7 +463,7 @@ QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb)
 		CrossPoint[i] = QPoint(xa, 0);
 		i++;
 		Translate[i] = QPoint(0,-1);
-		CrossPoint[i] = QPoint(xa, CanvasHeight);
+		CrossPoint[i] = QPoint(xa, canvasHeight);
 	}
 	else
 	{
@@ -477,40 +472,40 @@ QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb)
 		float Bfl = (float)(ya) - ( A * (float)(xa) ); // floating B
 		int B     = ya - ROUND2INT( A * (float)(xa) ); // int B
 		int x_sT  = ROUND2INT( (-Bfl) / A );                         // A * x_sT + B = 0  =>  x_sT = -B / A 
-		int x_sB  = ROUND2INT( ( (float)(CanvasHeight) - Bfl ) / A );// A * x_sB + B = CW =>  x_sB = (CW - B) / A
+		int x_sB  = ROUND2INT( ( (float)(canvasHeight) - Bfl ) / A );// A * x_sB + B = CW =>  x_sB = (CW - B) / A
 		int y_sL  = B;                                               // A * 0 + B = y_sL  =>  y_sL = B
-		int y_sR  = ROUND2INT( A * (float)(CanvasWidth) ) + B;
-		// kdDebug(0)<<"Canvas::TranslationFactor; rc:"<<A<<", xTop:"<<x_sT<<", xBot:"<<x_sB<<", yLft:"<<y_sL<<", yRft:"<<y_sR<<". "<<endl;
+		int y_sR  = ROUND2INT( A * (float)(canvasWidth) ) + B;
+		// kdDebug(0)<<"Canvas::translationFactor; rc:"<<A<<", xTop:"<<x_sT<<", xBot:"<<x_sB<<", yLft:"<<y_sL<<", yRft:"<<y_sR<<". "<<endl;
 		
 		// Here we find out what crossing points are on the borders AND on the linePIECES
-		if ( 0 <= x_sT && x_sT <= CanvasWidth && PointInRange(x_sT, 0, xa, ya, xb, yb) )
+		if ( 0 <= x_sT && x_sT <= canvasWidth && pointInRange(x_sT, 0, xa, ya, xb, yb) )
 		{
 			i++;
 			Translate[i] = QPoint(0, 1);
 			CrossPoint[i] = QPoint(x_sT, 0);
 		}
-		if ( 0 <= x_sB && x_sB <= CanvasWidth && PointInRange(x_sB, CanvasHeight, xa, ya, xb, yb) )
+		if ( 0 <= x_sB && x_sB <= canvasWidth && pointInRange(x_sB, canvasHeight, xa, ya, xb, yb) )
 		{
 			i++;
 			Translate[i] = QPoint(0,-1);
-			CrossPoint[i] = QPoint(x_sB, CanvasHeight);
+			CrossPoint[i] = QPoint(x_sB, canvasHeight);
 		} 
-		if ( 0 <= y_sL && y_sL <= CanvasHeight && PointInRange(0, y_sL, xa, ya, xb, yb) )
+		if ( 0 <= y_sL && y_sL <= canvasHeight && pointInRange(0, y_sL, xa, ya, xb, yb) )
 		{
 			i++;
 			Translate[i] = QPoint(1, 0);
 			CrossPoint[i] = QPoint(0, y_sL);
 		}
-		if ( 0 <= y_sR && y_sR <= CanvasHeight && PointInRange(CanvasWidth, y_sR, xa, ya, xb, yb) )
+		if ( 0 <= y_sR && y_sR <= canvasHeight && pointInRange(canvasWidth, y_sR, xa, ya, xb, yb) )
 		{
 			i++;
 			Translate[i] = QPoint(-1, 0);
-			CrossPoint[i] = QPoint(CanvasWidth, y_sR);
+			CrossPoint[i] = QPoint(canvasWidth, y_sR);
 		}
 	
 		if ( i == 0 )
 		{
-			// kdDebug(0)<<"Canvas::TranslationFactor: NO BORDER CROSSINGS DETECTED"<<endl;
+			// kdDebug(0)<<"Canvas::translationFactor: NO BORDER CROSSINGS DETECTED"<<endl;
 			QPoint returnValue = QPoint(0, 0); // initiate the returnValue
 			// Here a fallback if the line has no crossings points with any borders.
 			// This mostly happens because of unlucky rounding, when this happens the line is nearly
@@ -518,26 +513,26 @@ QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb)
 			// This code make sure the line is tranlated back onto the canvas.
 			// The -3 and +3 was just something i learnt from examples... I HAVE NO PROOF FOR THIS!
 			// This, luckily, allmost never happens.
-			if ( -3 <= x_sT && x_sT <= (CanvasWidth + 3) && PointInRange(x_sT, 0, xa, ya, xb, yb) )
+			if ( -3 <= x_sT && x_sT <= (canvasWidth + 3) && pointInRange(x_sT, 0, xa, ya, xb, yb) )
 			{
 				returnValue = returnValue + QPoint(0, 1);
 			}
-			if ( -3 <= x_sB && x_sB <= (CanvasWidth + 3) && PointInRange(x_sB, CanvasHeight, xa, ya, xb, yb) )
+			if ( -3 <= x_sB && x_sB <= (canvasWidth + 3) && pointInRange(x_sB, canvasHeight, xa, ya, xb, yb) )
 			{
 				returnValue = returnValue + QPoint(0,-1);
 			} 
-			if ( -3 <= y_sL && y_sL <= (CanvasHeight + 3) && PointInRange(0, y_sL, xa, ya, xb, yb) )
+			if ( -3 <= y_sL && y_sL <= (canvasHeight + 3) && pointInRange(0, y_sL, xa, ya, xb, yb) )
 			{
 				returnValue = returnValue + QPoint(1, 0);
 			}
-			if ( -3 <= y_sR && y_sR <= (CanvasHeight + 3)  && PointInRange(CanvasWidth, y_sR, xa, ya, xb, yb) )
+			if ( -3 <= y_sR && y_sR <= (canvasHeight + 3)  && pointInRange(canvasWidth, y_sR, xa, ya, xb, yb) )
 			{
 				returnValue = returnValue + QPoint(-1, 0);
 			}
 		
 			if ( returnValue == QPoint(0, 0) )
 			{
-				// kdDebug(0)<<"Canvas::TranslationFactor:  *****This shouldn't happen (1) *****"<<endl;
+				// kdDebug(0)<<"Canvas::translationFactor:  *****This shouldn't happen (1) *****"<<endl;
 				// and this doesnt happen, that why +3 and -3 are ok values and the code above works.
 			}
 			return returnValue;
@@ -567,25 +562,25 @@ QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb)
 				smallestSize = testSize;       // ...it becomes smallestSize
 				returnValue = Translate[ii];
 				// and the returnValue is updated to the corresponing translaton factors
-				// kdDebug(0)<<"Canvas::TranslationFactor: UPDATED"<<endl;
+				// kdDebug(0)<<"Canvas::translationFactor: UPDATED"<<endl;
 			}
 			else if (testSize == smallestSize) // this only happens on corners
 			{
-				// kdDebug(0)<<"Canvas::TranslationFactor: CORNER EXCEPTION"<<endl;
+				// kdDebug(0)<<"Canvas::translationFactor: CORNER EXCEPTION"<<endl;
 				returnValue = QPoint(0, 0);
 				if      (xb < 0)            returnValue = returnValue + QPoint( 1, 0);
-				else if (xb > CanvasWidth)  returnValue = returnValue + QPoint(-1, 0);
+				else if (xb > canvasWidth)  returnValue = returnValue + QPoint(-1, 0);
 				
 				if      (yb < 0)            returnValue = returnValue + QPoint( 0, 1);
-				else if (yb > CanvasHeight) returnValue = returnValue + QPoint( 0,-1);
+				else if (yb > canvasHeight) returnValue = returnValue + QPoint( 0,-1);
 				
 				return returnValue;
 			}
 		}
-		// kdDebug(0)<<"Canvas::TranslationFactor:  NOT RETURNED YET SO DOING IT NOW"<<endl;
+		// kdDebug(0)<<"Canvas::translationFactor:  NOT RETURNED YET SO DOING IT NOW"<<endl;
 		return returnValue;
 	}
-	// kdDebug(0)<<"Canvas::TranslationFactor:  *****This shouldn't happen (3) *****"<<endl;
+	// kdDebug(0)<<"Canvas::translationFactor:  *****This shouldn't happen (3) *****"<<endl;
 	return returnValue;
 }
 
@@ -610,27 +605,27 @@ void Canvas::loadSpriteFrames(QString name)
 	}
 	QString spritePath = locate("data","kturtle/pics/"+name+".0000.png");
 	spritePath.remove(".0000.png");
-	SpriteFrames = new QCanvasPixmapArray(spritePath+".%1.png", 36);
-	Sprite = new QCanvasSprite(SpriteFrames, TurtleCanvas);
-	Sprite->setZ(250);
+	spriteFrames = new QCanvasPixmapArray(spritePath+".%1.png", 36);
+	sprite = new QCanvasSprite(spriteFrames, TurtleCanvas);
+	sprite->setZ(250);
 }
 
 void Canvas::updateSpritePos()
 {
-	Sprite->move(dblPosX - ( Sprite->width() / 2 ), dblPosY - ( Sprite->height() / 2 ), -1 );
+	sprite->move(posX - ( sprite->width() / 2 ), posY - ( sprite->height() / 2 ), -1 );
 }
 
 void Canvas::updateSpriteAngle()
 {
-	// get the Dir back on the 1st circle 
-	while (Dir >= 2*PI || Dir < 0)
+	// get the direction back on the 1st circle 
+	while (direction >= 2*PI || direction < 0)
 	{
-		if (Dir >= 2*PI) Dir = Dir - 2*PI;
-		if (Dir < 0)     Dir = Dir + 2*PI;
+		if (direction >= 2*PI) direction = direction - 2*PI;
+		if (direction < 0)     direction = direction + 2*PI;
 	}
 	// convert to degrees, fix the direction, divide by 10 (for picnr), and round
-	int i = ROUND2INT( ( (-Dir * 180) / PI + 90) / 10 );
-	Sprite->setFrame(i);
+	int i = ROUND2INT( ( (-direction * 180) / PI + 90) / 10 );
+	sprite->setFrame(i);
 	updateSpritePos(); // pixmaps of different rotations have different sizes, so refresh
 }
 

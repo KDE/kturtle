@@ -37,7 +37,7 @@ class Canvas : public QCanvasView
 		Canvas(QWidget *parent = 0, const char *name = 0);
 		~Canvas();
 		
-		QPixmap* Canvas2Pixmap();
+		QPixmap* canvas2Pixmap();
 
 
 	public slots:
@@ -48,13 +48,13 @@ class Canvas : public QCanvasView
 		void slotGoY(double y);
 		void slotForward(int x);
 		void slotBackward(int x);
-		void slotDirection(double deg);
+		void slotdirectionection(double deg);
 		void slotTurnLeft(double deg);
 		void slotTurnRight(double deg);
 		void slotCenter();
-		void slotSetPenWidth(int w);
-		void slotPenUp();
-		void slotPenDown();
+		void slotSetpenWidth(int w);
+		void slotpenUp();
+		void slotpenDown();
 		void slotSetFgColor(int r, int g, int b);
 		void slotSetBgColor(int r, int g, int b);
 		void slotResizeCanvas(int x, int y);
@@ -66,8 +66,8 @@ class Canvas : public QCanvasView
 		void slotPrint(QString text);
 		void slotFontType(QString family, QString extra);
 		void slotFontSize(int px);
-		void slotWrapOn();
-		void slotWrapOff();
+		void slotwrapOn();
+		void slotwrapOff();
 		void slotReset();
 
 
@@ -78,12 +78,12 @@ class Canvas : public QCanvasView
 	private:
 		void initValues();
 		
-		void Line(int xa, int ya, int xb, int yb);
-		void LineShell(int xa, int ya, int xb, int yb);
-		bool EndlessLoop(QPoint begin, QPoint end);
-		bool PointInRange(int px, int py, int xa, int ya, int xb, int yb);
-		QPoint Offset(int x, int y);
-		QPoint TranslationFactor(int xa, int ya, int xb, int yb);
+		void line(int xa, int ya, int xb, int yb);
+		void lineShell(int xa, int ya, int xb, int yb);
+		bool endlessLoop(QPoint begin, QPoint end);
+		bool pointInRange(int px, int py, int xa, int ya, int xb, int yb);
+		QPoint offset(int x, int y);
+		QPoint translationFactor(int xa, int ya, int xb, int yb);
 		
 		void loadSpriteFrames(QString name);
 		void updateSpritePos();
@@ -91,18 +91,18 @@ class Canvas : public QCanvasView
 		
 		QCanvas             *TurtleCanvas;
 		QPixmap              pixmap;
-		QCanvasSprite       *Sprite;
-		QCanvasPixmapArray  *SpriteFrames;
+		QCanvasSprite       *sprite;
+		QCanvasPixmapArray  *spriteFrames;
 		QFont                font;
-		double               dblPosX, dblPosY;
-		int                  CanvasWidth, CanvasHeight;
-		int                  PenWidth;
-		double               Dir;
-		int                  FgR, FgG, FgB;
-		bool                 Pen;
-		bool                 Wrap;
+		double               posX, posY;
+		int                  canvasWidth, canvasHeight;
+		int                  penWidth;
+		double               direction;
+		int                  fgR, fgG, fgB;
+		bool                 pen;
+		bool                 wrap;
 		bool                 cutLoop;
-		QPoint               PrevStartPos3, PrevStartPos2, PrevStartPos1, PrevEndPos3, PrevEndPos2, PrevEndPos1;
+		QPoint               prevStartPos3, prevStartPos2, prevStartPos1, prevEndPos3, prevEndPos2, prevEndPos1;
 };
 
 #endif // _CANVAS_H_
