@@ -264,7 +264,7 @@ void MainWindow::slotCursorStatusBar()
 
 void MainWindow::slotNewFile()
 {
-	if ( !editor->document()->isModified() && CurrentFile == "" ) return; // do nothing when nothing can be done
+	if ( !editor->document()->isModified() && CurrentFile.isEmpty() ) return; // do nothing when nothing can be done
 	if ( editor->document()->isModified() )
 	{
 		int result = KMessageBox::warningContinueCancel( this,
