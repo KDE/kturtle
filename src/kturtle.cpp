@@ -64,6 +64,8 @@ MainWindow::~MainWindow() { // The MainWindow destructor
 void MainWindow::setupActions() {
     // Set up file menu
     KStdAction::openNew(this, SLOT(slotNewFile()), actionCollection());
+    openExAction = new KAction(i18n("Open Examples"), "bookmark_folder", 0, this, SLOT(slotOpenEx()),
+      actionCollection(), "open_examples");
     KStdAction::open(this, SLOT(slotOpenFile()), actionCollection());
     /// @todo implement a recent files list
     // recenter = KStdAction::openRecent(this, SLOT(openRecent(int)), actionCollection());
@@ -248,31 +250,7 @@ void MainWindow::slotOpenFile() {
    ///@todo migrate to KURL, probably when going from KTextEdit to KTextEditor::Editor
     QString filestr = KFileDialog::getOpenFileName(QString(":logo_dir"), QString("*.logo|") +
       i18n("Logo files"), this, i18n("Open logo file..."));
-    if ( !filestr.isEmpty() ) {
-        QFile file(filestr);
-        if ( !file.open(IO_ReadOnly) ) {
-            return;
-        }
-        if ( editor->isModified() ) {
-            int result = KMessageBox::warningContinueCancel( this,
-              i18n("The changes you have made to the file you "
-                   "are currently working on (%1) are not saved. "
-                   "By continuing you will lose all the changes "
-                   "you have made.").arg( filestr ),
-              i18n("Unsaved file..."), i18n("Discard changes") );
-            if (result != KMessageBox::Continue) {
-                return;
-            }
-        }
-        QTextStream stream(&file);
-        editor->setText( stream.read() );
-
-        CurrentFile = filestr;
-        setCaption(CurrentFile);
-        slotStatusBar(i18n("Opened file: %1").arg(CurrentFile), 1);
-    } else { 
-        slotStatusBar(i18n("Opening aborted, nothing opened."), 1);
-    }
+      loadFile(filestr);
 }
 
 void MainWindow::slotQuit() {
@@ -562,8 +540,42 @@ void MainWindow::slotColorPicker() {
     }
 }
 
-void MainWindow::setRunEnabled(){
+void MainWindow::setRunEnabled() {
     run->setEnabled(true);
+}
+
+void MainWindow::slotOpenEx() {
+     QString filestr = KFileDialog::getOpenFileName(QString(locate("data", "kturtle/examples/en/")), QString("*.logo|") +
+      i18n("Logo Examples files"), this, i18n("Open logo example file..."));//change en with the user's language 
+      loadFile(filestr);
+}
+
+void MainWindow::loadFile(QString myFile) {
+if ( !myFile.isEmpty() ) {
+        QFile file(myFile);
+        if ( !file.open(IO_ReadOnly) ) {
+            return;
+        }
+        if ( editor->isModified() ) {
+            int result = KMessageBox::warningContinueCancel( this,
+              i18n("The changes you have made to the file you "
+                   "are currently working on (%1) are not saved. "
+                   "By continuing you will lose all the changes "
+                   "you have made.").arg( myFile ),
+              i18n("Unsaved file..."), i18n("Discard changes") );
+            if (result != KMessageBox::Continue) {
+                return;
+            }
+        }
+        QTextStream stream(&file);
+        editor->setText( stream.read() );
+
+        CurrentFile = myFile;
+        setCaption(CurrentFile);
+        slotStatusBar(i18n("Opened file: %1").arg(CurrentFile), 1);
+    } else { 
+        slotStatusBar(i18n("Opening aborted, nothing opened."), 1);
+    }
 }
 
 #include "kturtle.moc"

@@ -74,6 +74,7 @@ class MainWindow : public KMainWindow
     QString             filename2saveAs;
     
     KAction            *run;
+    KAction             *openExAction;
     KToggleAction      *m_fullscreen;
     KToggleAction      *colorpicker;
     // KRecentFilesAction *m_recentFiles; // TODO waiting on KURL (KURL wainting on KTextEditor)
@@ -100,6 +101,8 @@ class MainWindow : public KMainWindow
     void slotConfigureKeys();
     void slotColorPicker();
     void setRunEnabled();
+    void slotOpenEx();
+    void loadFile(QString myFile);
 
   protected:
     virtual bool event(QEvent* e);
