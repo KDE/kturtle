@@ -197,7 +197,7 @@ void MainWindow::setupStatusBar() {
 	// fill the statusbar
 	slotStatusBar(i18n("Welcome to KTurtle..."),  IDS_STATUS); // the message part
 	slotStatusBar(i18n(" Line: %1 Column: %2 ").arg(1).arg(1), IDS_STATUS_CLM);
-	slotStatusBar(i18n("INS"), IDS_INS);
+	slotStatusBar(i18n(" INS "), IDS_INS);
 }
 
 void MainWindow::setupCanvas() {
