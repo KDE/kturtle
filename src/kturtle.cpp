@@ -27,35 +27,38 @@
 #include <kurl.h>
 
 #include <ktexteditor/editorchooser.h>
+#include <ktexteditor/highlightinginterface.h>
+#include <ktexteditor/undointerface.h>
 
 #include "settings.h"
 #include "kturtle.h"
 
-
 // StatusBar field IDs
 #define KTURTLE_ID_GEN 1
 
-MainWindow::MainWindow(KTextEditor::Document *doc) : editor(0) {
+
+MainWindow::MainWindow(KTextEditor::Document *document) : editor(0) {
     // set the shell's ui resource file
-    if (!doc) {
-      if ( !(doc = KTextEditor::EditorChooser::createDocument(0,"KTextEditor::Document") ) ) {
+    if (!document) {
+      if ( !(document = KTextEditor::EditorChooser::createDocument(0,"KTextEditor::Document") ) ) {
         KMessageBox::error(this, i18n("A KDE text editor component could not be found!\n"
                                      "Please check your KDE installation."));
         kapp->exit(1);
       }  
     // docList.append(doc);
     }
+    doc = document;
 
     setupCanvas();
-    setupEditor(doc);
+    setupEditor();
     setupActions();
     setupStatusBar();
-   
+    
     setXMLFile("kturtleui.rc");
     createShellGUI( true );
     guiFactory()->addClient(editor);
     setMinimumSize(200,200);
-       
+
     // the initial values
     CurrentFile = "";
     filename2saveAs = "";
@@ -81,8 +84,10 @@ MainWindow::~MainWindow() { // The MainWindow destructor
     }
 }
 
+
+
+
 void MainWindow::setupActions() {
-  
     // Set up file menu
     KStdAction::openNew(this, SLOT(slotNewFile()), actionCollection());
     openExAction = new KAction(i18n("Open Examples"), "bookmark_folder", 0, this, SLOT(slotOpenEx()),
@@ -135,7 +140,7 @@ void MainWindow::setupActions() {
     KStdAction::keyBindings( this, SLOT( slotConfigureKeys() ), actionCollection() );
 }
 
-void MainWindow::setupEditor(KTextEditor::Document *doc) {
+void MainWindow::setupEditor() {
     EditorDock = new QDockWindow(this);
     EditorDock->setNewLine(true);
     EditorDock->setFixedExtentWidth(250);
@@ -145,13 +150,19 @@ void MainWindow::setupEditor(KTextEditor::Document *doc) {
     moveDockWindow(EditorDock, Qt::DockLeft);
     editor = doc->createView (EditorDock, 0L);
     // ei is the editor interface which allows us to access the text in the part
-    ei = dynamic_cast<KTextEditor::EditInterface*>( doc );
+    ei = dynamic_cast<KTextEditor::EditInterface*>(doc);
     EditorDock->setWidget(editor);
-    //dynamic_cast<KTextEditor::Document*>(this)->actionCollection()->remove(action("file_quit"));
-    //doc->actionCollection()->remove(action("file_quit"));
-    
+
+    // default the highlightstyle to "logo" someday this needs to be i18nized
+    KTextEditor::HighlightingInterface *hli = dynamic_cast<KTextEditor::HighlightingInterface*>(doc);
+    for(unsigned int i = 0; i < hli->hlModeCount(); i++) {
+         if(hli->hlModeName(i) == "logo") {
+             hli->setHlMode(i);
+         }
+    }
+
     ///allow to enable run only when some text is written in editor
-    connect(editor->document(), SIGNAL(textChanged()), this, SLOT(setRunEnabled()));
+    connect( editor->document(), SIGNAL( textChanged() ), this, SLOT( setRunEnabled() ) );
 }
 
 void MainWindow::setupStatusBar() {
@@ -175,6 +186,10 @@ void MainWindow::setupCanvas() {
     
     connect( TurtleView, SIGNAL( CanvasResized() ), this, SLOT( slotUpdateCanvas() ) );
 }
+
+
+
+
 
 // Implementation of most of the items in the File and Edit menus //
 void MainWindow::slotNewFile() {
@@ -296,6 +311,10 @@ void MainWindow::slotQuit() {
     close();
 }
 
+
+
+
+
 void MainWindow::slotExecute() {
     if ( executing ) {
         abortExecution();
@@ -410,6 +429,46 @@ void MainWindow::finishExecution() {
     executing = false;
 }
 
+void MainWindow::slotErrorDialog(QString msg, int row, int col, int code) {
+    if(allreadyError) { return; } // one error dialog per 'run' is enough... (see next line)
+    // allreadyError = true; NO I WANT TO SE ALL ERRORS for the time beeing
+    QString line;
+    if( row <= 0 || col <= 0 ) {
+        line = ".";
+    } else {
+//         RowCol = QString(" on row %1, column %2.").arg(row).arg(col); // no column, it over informs
+         line = QString(" on line %1.").arg(row);
+    }
+    QString ErrorType;
+    if( 1000 <= code || code < 2000 ) {
+        ErrorType = i18n("Parse Error");
+    } else if( 3000 <= code || code < 4000 ) {
+        ErrorType = i18n("Internal Error");
+    } else if( code >= 5000 ) {
+        ErrorType = i18n("Execution Error");
+    } else if( code < 1000 ) {
+        ErrorType = i18n("Error");
+    }
+    KMessageBox::detailedSorry( this, msg + line, i18n("Error code: %1").arg(code), ErrorType );
+}
+
+void MainWindow::slotInputDialog(QString& value) {
+    value = KInputDialog::getText (i18n("Input"), value);
+}
+
+void MainWindow::slotMessageDialog(QString text) {
+    KMessageBox::information( this, text, i18n("Message") );
+}
+
+
+
+
+void MainWindow::slotUndo() {
+    dynamic_cast<KTextEditor::UndoInterface*>(doc)->undo();
+}
+
+
+
 void MainWindow::slotToggleFullscreen() {
     if (!b_fullscreen) {
        showFullScreen(); // both calls will generate event triggering updateFullScreen()
@@ -450,37 +509,6 @@ void MainWindow::slotStatusBar(QString text, int id) {
     statusBar()->changeItem(text, id);
 }
 
-void MainWindow::slotErrorDialog(QString msg, int row, int col, int code) {
-    if(allreadyError) { return; } // one error dialog per 'run' is enough... (see next line)
-    // allreadyError = true; NO I WANT TO SE ALL ERRORS for the time beeing
-    QString line;
-    if( row <= 0 || col <= 0 ) {
-        line = ".";
-    } else {
-//         RowCol = QString(" on row %1, column %2.").arg(row).arg(col); // no column, it over informs
-         line = QString(" on line %1.").arg(row);
-    }
-    QString ErrorType;
-    if( 1000 <= code || code < 2000 ) {
-        ErrorType = i18n("Parse Error");
-    } else if( 3000 <= code || code < 4000 ) {
-        ErrorType = i18n("Internal Error");
-    } else if( code >= 5000 ) {
-        ErrorType = i18n("Execution Error");
-    } else if( code < 1000 ) {
-        ErrorType = i18n("Error");
-    }
-    KMessageBox::detailedSorry( this, msg + line, i18n("Error code: %1").arg(code), ErrorType );
-}
-
-void MainWindow::slotInputDialog(QString& value) {
-    value = KInputDialog::getText (i18n("Input"), value);
-}
-
-void MainWindow::slotMessageDialog(QString text) {
-    KMessageBox::information( this, text, i18n("Message") );
-}
-
 void MainWindow::slotUpdateCanvas() {
     // fixes a non updateing bug
     // I tried doing this by connecting Canvas's resized to BaseWidget's update...
@@ -488,6 +516,10 @@ void MainWindow::slotUpdateCanvas() {
     TurtleView->hide();
     TurtleView->show();
 }
+
+
+
+
 
 void MainWindow::slotSettings() {
     // Check if there is already a dialog, if so bring it to the foreground.
@@ -541,6 +573,10 @@ void MainWindow::slotConfigureKeys() {
     KKeyDialog::configure(actionCollection(), this);
 }
 
+
+
+
+
 void MainWindow::readConfig(KConfig *config) {
 	//in case the xml files are not installed. I believe it should quit in that case as the kstandardirs has been 
 	//searched for the xml files
@@ -561,6 +597,10 @@ void MainWindow::writeConfig(KConfig *config) {
 	config->setGroup("General Options");
 	m_recentFiles->saveEntries(config, "Recent Files");
 }
+
+
+
+
 
 void MainWindow::slotColorPicker() {
     // in the constructor picker is initialised as 0

@@ -1,6 +1,6 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
 <kpartgui name="kturtle" version="2" >
-<MenuBar noMerge="1">
+<MenuBar>
     <Menu name="file" noMerge="1"><text>&amp;File</text>
       <Action name="file_new" />
       <Action name="file_open" />
@@ -12,7 +12,8 @@
       <Action name="file_quit"/>
     </Menu>
    
-     <Menu name="edit" noMerge="1"><text>&amp;Edit</text>
+    <Menu name="edit" noMerge="1"><text>&amp;Edit</text>
+      <Action name="edit_undo" /> 
     </Menu>
     
     <Menu name="view" noMerge="1"><text>&amp;View</text>

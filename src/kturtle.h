@@ -57,6 +57,8 @@ class MainWindow : public KParts::MainWindow
     // void slotLineNumbers();
     void slotQuit();
     void slotExecute();
+    
+    void slotUndo();
    
     void slotStatusBar(QString text, int place);
     void slotUpdateCanvas();
@@ -70,7 +72,7 @@ class MainWindow : public KParts::MainWindow
 
   private:
     void setupActions();
-    void setupEditor(KTextEditor::Document *doc);
+    void setupEditor();
     void setupCanvas();
     void setupStatusBar();
     void readConfig(KConfig *config);
@@ -79,7 +81,8 @@ class MainWindow : public KParts::MainWindow
     void abortExecution();
     void finishExecution();
     void updateFullScreen();
-        
+    
+    KTextEditor::Document *doc;
     KTextEditor::View  *editor;
     Canvas             *TurtleView;
     QWidget            *BaseWidget;
