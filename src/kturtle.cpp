@@ -407,14 +407,6 @@ void MainWindow::finishExecution() {
     executing = false;
 }
 
-// / @todo: linenumbers; probably when going from KTextEdit to KTextEditor::Editor
-// void MainWindow::slotLineNumbers() {
-//     editor->toggleLineNumbersOn();
-// }
-
-// Implementation of FullScreen functionality //
-//
-// switch to showFullScreen() or showNormal()
 void MainWindow::slotToggleFullscreen() {
     if (!b_fullscreen) {
        showFullScreen(); // both calls will generate event triggering updateFullScreen()
@@ -466,9 +458,9 @@ void MainWindow::slotErrorDialog(QString msg, int row, int col, int code) {
          line = QString(" on line %1.").arg(row);
     }
     QString ErrorType;
-    if( 1000 <= code < 2000 ) {
+    if( 1000 <= code || code < 2000 ) {
         ErrorType = i18n("Parse Error");
-    } else if( 3000 <= code < 4000 ) {
+    } else if( 3000 <= code || code < 4000 ) {
         ErrorType = i18n("Internal Error");
     } else if( code >= 5000 ) {
         ErrorType = i18n("Execution Error");
@@ -589,37 +581,36 @@ void MainWindow::slotOpenEx() {
     url = KFileDialog::getOpenURL( url.path() ,
                        QString("*.logo|") + i18n("Logo Examples files"), this,
                        i18n("Open logo example file..."));
-		       
-     loadFile(url);
+    loadFile(url);
 }
 
 void MainWindow::loadFile(KURL url) {
-	m_recentFiles->addURL( url );
-        QString myFile = url.path();
-	if ( !myFile.isEmpty() ) {
+    m_recentFiles->addURL( url );
+    QString myFile = url.path();
+    if ( !myFile.isEmpty() ) {
         QFile file(myFile);
         //if ( !file.open(IO_ReadWrite) ) {
-         //  return;
-      // }
-       if (file.open(IO_ReadWrite)){
-        if ( editor->document()->isModified() ) {
-            int result = KMessageBox::warningContinueCancel( this,
-              i18n("The changes you have made to the file you "
-                   "are currently working on (%1) are not saved. "
-                   "By continuing you will lose all the changes "
-                   "you have made.").arg( myFile ),
-              i18n("Unsaved file..."), i18n("Discard changes") );
-            if (result != KMessageBox::Continue) {
-                return;
+        //  return;
+        // }
+        if ( file.open(IO_ReadWrite) ) {
+            if ( editor->document()->isModified() ) {
+                int result = KMessageBox::warningContinueCancel( this,
+                  i18n("The changes you have made to the file you "
+                        "are currently working on (%1) are not saved. "
+                        "By continuing you will lose all the changes "
+                        "you have made.").arg( myFile ),
+                  i18n("Unsaved file..."), i18n("Discard changes") );
+                if (result != KMessageBox::Continue) {
+                    return;
+                }
             }
-        }
-	QTextStream stream(&file);
+        QTextStream stream(&file);
         ei->setText(stream.read());
         file.close();
         CurrentFile = myFile;
         setCaption(url.fileName());
         slotStatusBar(i18n("Opened file: %1").arg(url.fileName()), 1);
-	}
+        }
     } else { 
         slotStatusBar(i18n("Opening aborted, nothing opened."), 1);
     }

@@ -10,11 +10,6 @@ DONE - the caption of the window does not display the title of the saved file af
 **** URGENT ****
 
 
-After a conversiation with lypanov I came to the conclusion that making the executer 'statefull' is a very by thing! So I take the cheap approach using kapp->processEvents();... Maybe someday, later, I'll do it neatly -- the lypanov pointed out.
-
-
-
-
 06 Jan. 2004 - annma: the KConfig XT stuff is done. Please note that locate("data", "kturtle/data/logokeywords.en_US.xml") being the default xml file, it does not appear in the config file. If there is nothing in the config file in TranslationFilePath, then this file is always taken.
 Always load the xml file with
 QFile xmlfile( Settings::translationFilePath() );
@@ -178,6 +173,8 @@ Remove hide the scrollbar from the editor when not needed... (probably not easy,
 
 
 **** StillSubjectToDiscussions ****
+
+After a conversiation with lypanov I came to the conclusion that making the executer 'statefull' is a very by thing! So I take the cheap approach using kapp->processEvents();... Maybe someday, later, I'll do it neatly -- the lypanov pointed out. FIXED
 
 
 annma - 29th December 2003

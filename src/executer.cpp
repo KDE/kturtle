@@ -1,4 +1,4 @@
-#include <unistd.h>
+#include <unistd.h> // for usleep();
 #include <string.h>
 
 #include <qtimer.h>
@@ -8,6 +8,7 @@
 #include <klocale.h>
 
 #include "executer.h"
+
 
 Executer::Executer(TreeNode* tree) {
   this->tree = tree;
@@ -900,7 +901,7 @@ void Executer::execRepeat( TreeNode* node ) {
 
   bBreak=false;
   execute( value );
-  for( int i = (int)value->getValue().val + 0.5; i > 0; i-- ) {
+  for( int i = (int)( value->getValue().val + 0.5 ); i > 0; i-- ) {
     if (bAbort) { return; }
     kapp->processEvents();
     
@@ -987,10 +988,6 @@ void Executer::execReset( TreeNode* node ) {
     }
     emit Reset();
 }
-
-
-
-
 
 
 #include "executer.moc"

@@ -34,9 +34,10 @@
 #include <ktexteditor/editinterface.h>
 #include <ktexteditor/view.h>
 
+
 class KRecentFilesAction;
 
-class MainWindow : public KParts::MainWindow// public KMainWindow
+class MainWindow : public KParts::MainWindow
 {   Q_OBJECT
 
   public:
@@ -74,8 +75,9 @@ class MainWindow : public KParts::MainWindow// public KMainWindow
     void startExecution();
     void abortExecution();
     void finishExecution();
-    
-    KTextEditor::View * editor;
+    void updateFullScreen();
+        
+    KTextEditor::View  *editor;
     Canvas             *TurtleView;
     QWidget            *BaseWidget;
     QGridLayout        *BaseLayout;
@@ -84,20 +86,16 @@ class MainWindow : public KParts::MainWindow// public KMainWindow
     QString             CurrentFile;
     QString             filename2saveAs;
 
-    KToggleAction * m_paShowPath;
-    KToggleAction * m_paShowStatusBar;
+    KToggleAction      *m_paShowPath;
+    KToggleAction      *m_paShowStatusBar;
     
     KAction            *run;
-    KAction             *openExAction;
-    KAction             *openFileAction;
-   // KAction             *openRecentAction;
-    KAction             *newAction;
+    KAction            *openExAction;
+    KAction            *openFileAction;
+    KAction            *newAction;
     KToggleAction      *m_fullscreen;
     KToggleAction      *colorpicker;
     KRecentFilesAction * m_recentFiles;
-    
-    bool                b_fullscreen:1;
-    void updateFullScreen();
     
     QWidget            *general;
     QWidget            *language;
@@ -110,11 +108,11 @@ class MainWindow : public KParts::MainWindow// public KMainWindow
     QLabel             *TranslationFileLabel;
     ColorPicker        *picker;
     
-    bool allreadyError;
-    bool executing;
-    
     Executer           *exe;
-  
+    bool                b_fullscreen:1;
+    bool                allreadyError;
+    bool                executing;
+    
   private slots:
     void slotToggleFullscreen();
     void slotSettings();
@@ -128,5 +126,6 @@ class MainWindow : public KParts::MainWindow// public KMainWindow
   protected:
     virtual bool event(QEvent* e);
 };
+
 
 #endif // _KTURTLE_H_

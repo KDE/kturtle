@@ -24,7 +24,6 @@ typedef map<string,TreeNode*> functable;
 
 typedef stack<Number> runstack;
 
-//using namespace std;
 
 class Executer : public QObject
 {   Q_OBJECT
@@ -143,13 +142,13 @@ class Executer : public QObject
     void execWrapOff       ( TreeNode* );
     void execReset         ( TreeNode* );
         
-    string runCommand( const string& );
-    
-    //void StartWaiting(float sec);
+    string runCommand(const string&);
+
+    void startWaiting(float sec);
         
     //private locals
     //==============
-    TreeNode* tree;
+    TreeNode*       tree;
     stack<symtable> symbolTables;
     functable       functionTable;  //keep track of functionNode's
     runstack        runStack;       //stores parameters and return value of functions
@@ -158,8 +157,6 @@ class Executer : public QObject
     bool bBreak;        // used for break statement
     bool bAbort;        // used to abort execution
     bool bStopWaiting;  // used for wait-command
-    
-    void startWaiting(float sec);
     
   private slots:
     void slotStopWaiting();
