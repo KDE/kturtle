@@ -827,7 +827,7 @@ void MainWindow::slotSettings() {
 	
 	WidthLabel = new QLabel( kcfg_CanvasWidth, i18n("Canvas width:"), WidthHeightBox );
 	layout2->addWidget( WidthLabel );
-	HeightLabel = new QLabel( kcfg_CanvasHeight, i18n("Canvas weight:"), WidthHeightBox );
+	HeightLabel = new QLabel( kcfg_CanvasHeight, i18n("Canvas height:"), WidthHeightBox );
 	layout2->addWidget( HeightLabel );
 	layout3->addLayout( layout2 );
 	
