@@ -60,8 +60,8 @@ TreeNode::const_iterator Executer::run(TreeNode::const_iterator it) {
       execute( node );               //execute main block
       symbolTables.pop(); //free up stack
     } else if( node->getType() == functionNode ) {
-      string funcname = node->firstChild()->getName();
-      functionTable[funcname] = node; //store for later use
+// //       string funcname = node->firstChild()->getName();   /// FUNCTIONS NOT DEFINED OUTSIDE []
+// //       functionTable[funcname] = node; //store for later use
     }
     kdDebug(0)<<" --1-- "<<endl;
     if (m_pause) {
@@ -104,6 +104,7 @@ void Executer::execute(TreeNode* node){
     case orNode             : execOr( node );           break;
     case notNode            : execNot( node );          break;
     
+    case functionNode       : createFunction( node );   break;
     case functionCallNode   : execFunction( node );     break;
     case funcReturnNode     : execRetFunction( node );  break;
     case returnNode         : execReturn( node );       break;
@@ -153,6 +154,12 @@ void Executer::execute(TreeNode* node){
   }  
 }
 
+
+void Executer::createFunction( TreeNode* node ) {
+    string funcname = node->firstChild()->getName();
+    // TODO maybe catch off double definitions (when some kid defines a function in a loop ;)
+    functionTable[funcname] = node; //store for later use
+}
 
 
 //execute a function

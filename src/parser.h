@@ -124,6 +124,8 @@ class Parser : public QObject
     TreeNode* WrapOff();
     TreeNode* Reset();
     
+    TreeNode* Learn();
+    
     //string toString(number);
 
     //private locals

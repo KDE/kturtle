@@ -152,7 +152,7 @@ void Parser::Match(int x) {
 
 
 TreeNode* Parser::signedFactor(){
-  TreeNode* sfac; //used by '-' and tokNot  
+  TreeNode* sfac; //used by '-' and tokNot
   switch( look.type ){
     case '+':     Match('+');
                   return Factor();
@@ -168,6 +168,7 @@ TreeNode* Parser::signedFactor(){
                   }
                   else{
                     TreeNode* minus= new TreeNode( minusNode, row, col );
+                    minus->setName("minus");
                     minus->appendChild( sfac );
                     return minus;
                   }
@@ -183,6 +184,7 @@ TreeNode* Parser::signedFactor(){
                   }
                   else{
                     TreeNode* n = new TreeNode( notNode, row, col );
+                    n->setName("not");
                     n->appendChild( sfac );
                     return n;
                   }
@@ -214,6 +216,7 @@ TreeNode* Parser::runFunction() {
 
 TreeNode* Parser::writeFunction(){
   TreeNode* n=new TreeNode( writeNode, row, col );
+  n->setName("writefunction");
   Match(tokWrite);
   Match('(');
   
@@ -227,6 +230,7 @@ TreeNode* Parser::writeFunction(){
 
 TreeNode* Parser::substrFunction(){
   TreeNode* n=new TreeNode( substrNode, row, col );
+  n->setName("substrfunction");
   Match(tokSubstr);
   Match('(');
   
@@ -471,7 +475,7 @@ TreeNode* Parser::Assignment( const string& name ){
 */
 TreeNode* Parser::ParamList() {
   TreeNode* ilist=new TreeNode( idListNode, row, col );
-
+  ilist->setName("ilist");
   //check for empty idlist -> function with no parameters
   if( look.type == ')' ) return ilist;
   
@@ -492,7 +496,7 @@ TreeNode* Parser::ParamList() {
 */
 TreeNode* Parser::FunctionCall( const string& name ) {
   TreeNode* fcall=new TreeNode( functionCallNode, row, col );
-  
+  fcall->setName("functioncall");
   //first child contains function name
   TreeNode* funcid= new TreeNode( idNode, row, col );
   funcid->setName( name );
@@ -616,6 +620,7 @@ TreeNode* Parser::ForEach(){
 
 TreeNode* Parser::NewLineNode() {
   TreeNode* newline = new TreeNode( stringConstantNode, row, col );
+  newline->setName("newline");
   Number n;
   n=string("\n");
   newline->setValue( n );
@@ -673,6 +678,7 @@ TreeNode* Parser::If() {
 
 TreeNode* Parser::getString(){
   TreeNode* str = new TreeNode( stringConstantNode, row, col );
+  str->setName("string");
   
   str->setStrValue( look.str );
   Match( tokString );
@@ -682,6 +688,7 @@ TreeNode* Parser::getString(){
 
 TreeNode* Parser::Return(){
   TreeNode* ret=new TreeNode( returnNode, row, col );
+  ret->setName("return");
   
   Match( tokReturn );
   ret->appendChild( Expression() );
@@ -691,6 +698,7 @@ TreeNode* Parser::Return(){
 
 TreeNode* Parser::Break() {
   TreeNode* brk = new TreeNode( breakNode, row, col );
+  brk->setName("break");
   Match ( tokBreak );
   
   return brk;
@@ -698,6 +706,8 @@ TreeNode* Parser::Break() {
 
 TreeNode* Parser::Statement() {
   switch(look.type) {
+    case tokLearn         : return Learn();               break;
+  
     case tokIf            : return If();               break;
     case tokFor           : return For();              break;
     case tokForEach       : return ForEach();          break;
@@ -774,6 +784,7 @@ TreeNode* Parser::Block() {
 
 TreeNode* Parser::IdList(){
   TreeNode* ilist=new TreeNode( idListNode, row, col );
+  ilist->setName("idlist");
 
   //check for empty idlist -> function with no parameters
   if( look.type == ')' ) return ilist;
@@ -802,6 +813,7 @@ TreeNode* Parser::IdList(){
 TreeNode* Parser::Function() {
   TreeNode* func = new TreeNode( functionNode, row, col );
   TreeNode* idn = getId();
+  func->setName("function");
   
   func->appendChild( idn );
   Match('(');
@@ -816,13 +828,13 @@ TreeNode* Parser::Program() {
   TreeNode* program = new TreeNode( programNode, row, col );
   program->setName("program");
 
-  //get the functions
-  while( look.type == tokLearn ) {
-    Match(tokLearn);
-    program->appendChild( Function() );
-  }
+  //get the functions         // NO MORE DEFINITIONS OUTSIDE THE MAIN BLOCK
+//   while( look.type == tokLearn ) {
+//     Match(tokLearn);
+//     program->appendChild( Function() );
+//   }
 
-  //the main, or execution starting block
+  //the main, or execution starting block    ///////////////////////////////////////////////////
   program->appendChild( Block() );
 
   Match(tokEof);
@@ -831,7 +843,7 @@ TreeNode* Parser::Program() {
 
 
 //
-//    Turlte Funktions  LOST OF WORK NEEDED TODO TODO TODO!!!!!!
+//    Turtle Funktions
 //
 
 TreeNode* Parser::Clear() {
@@ -1295,6 +1307,15 @@ TreeNode* Parser::Reset() {
     getToken();
     return node;
 }
+
+
+TreeNode* Parser::Learn() {
+    // dummy word
+    Match(tokLearn);
+    TreeNode* r = Function();
+    return r;
+}
+
 
 
 /*

@@ -3,7 +3,7 @@ This list is devided into URGENT, BIG-TODOs, normalTODOs, TO-oeps-meDOitALLreadi
 
 **** URGENT ****
 
-cies: Next time the first things i'll do is finish off what lypanov started: 
+cies: Next time the first things i'll do is finish off what lypanov started:
 - fixing 'wait' command using lypanovs paradigm
 - and fallbacks to the main eventloop (using pause/unpause's) so KTurtle wont be locked up during execution
 - implement the ability to stop execution!

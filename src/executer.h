@@ -86,6 +86,7 @@ class Executer : public QObject
     void execId         ( TreeNode* );
     void execConstant   ( TreeNode* );
     
+    void createFunction ( TreeNode* );
     void execFunction   ( TreeNode* );
     void execRetFunction( TreeNode* );
     void execReturn     ( TreeNode* );

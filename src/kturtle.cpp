@@ -414,7 +414,7 @@ void MainWindow::slotPauseTimer(int msec) {
 void MainWindow::slotUnPauseExecution() {
     kdDebug(0)<<"MainWindow::slotUnPauseTimer: "<<endl;
     exe->unPause();
-    ss_it = exe->run( ss_it );
+    ss_it = exe->run( ++ss_it );
     if ( ss_it == exe->endPoint() ) {
         stopExecution();
     } else {
