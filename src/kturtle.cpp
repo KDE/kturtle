@@ -35,7 +35,6 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kprinter.h>
-#include <krun.h>
 #include <ksavefile.h>
 #include <kstatusbar.h>
 
@@ -920,8 +919,7 @@ void MainWindow::slotConfigureToolbars() {
 // BEGIN help related functions
 
 void MainWindow::slotContextHelp() {
-        QString myString("help:/kturtle/reference.html#"+helpKeyword);
-	KRun::runCommand("konqueror "+myString );
+	kapp->invokeHelp(helpKeyword, "kturtle/reference.html#"+helpKeyword, "");
 }
 
 
