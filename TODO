@@ -1,4 +1,4 @@
-This is the TODO file of the KTurtle project, here the things are put that still need implmentation.
+This is the TODO file of the KTurtle project, here the things are put that still need implementation.
 This list is divided into URGENT, BIG-TODOs, normalTODOs, TO-oeps-meDOitALLreadies and StillSubjectToDiscussions :-)
 
 BUGS
@@ -11,6 +11,10 @@ BUGS
 
 
 **** URGENT ****
+
+- open recent does not keep the files after quitting
+- crash on quitting after Opening files
+
 DONE
 cies: The KconfigXT issue: If an error like this
 """
@@ -30,7 +34,7 @@ that will fix it :-)
 ***** Annma's ideas *****
 
 - have a context menu on right-click in the canvas to save the drawing (right-click -> Save Canvas)
-- 
+
 
 **** BIG-TODOs: ****
 
@@ -71,6 +75,7 @@ i18n("blabla ") + value    ==> BAD should be  i18n("blabla %1") etc. :)
 
 
 Licence: provide a proper licence and have copyrights in all files
+---> DONE by annma 01/04/2004 - Please check it, Cies!
 
 
 
