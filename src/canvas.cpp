@@ -276,6 +276,16 @@ void Canvas::slotClearSpriteToo() {
     }
 }
 
+void Canvas::slotClearSpriteToo() {
+    QCanvasItemList list = canvas()->allItems();
+    QCanvasItemList::Iterator it = list.begin();
+    for (; it != list.end(); ++it) {
+        if ( *it ) {
+          delete *it;
+        }
+    }
+}
+
 void Canvas::slotGo(int x, int y) {
 	if ( Wrap && !TurtleCanvas->onCanvas(x, y) ) {
 		QPoint offset = Offset(x, y);
