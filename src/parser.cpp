@@ -17,7 +17,7 @@
  */
 
 // This file is originally written by Walter Scheppers, but allmost
-// every aspect of it is slightly changed by Cies Breijs.
+// allmost every aspect of it is heavily changed by Cies Breijs.
 
 
 #include <qstringlist.h>
@@ -64,25 +64,35 @@ Parser::~Parser()
 void Parser::parse()
 {
 	tree = Program(); // the first node that keeps the lexer running till finished/error
-	currentNode = tree;
 }
 
-void Parser::getToken() {
+void Parser::getToken()
+{
 	currentToken = lexer->lex(); // stores a token, obtained though the lexer, in 'currentToken'
 	row = currentToken.start.row; // these will have to leave eventually, all should be passed on by the token
 	col = currentToken.start.col;
-	kdDebug(0)<<"Parser::getToken(), got a token: '"<<currentToken.look<<"', @ ("<<currentToken.start.row<<", "<<currentToken.start.col<<"), tok-number:"<<currentToken.type<<endl;
+	kdDebug(0)<<"Parser::getToken(), got a token: '"<<currentToken.look<<"', @ ("<<currentToken.start.row<<", "<<currentToken.start.col<<") - ("<<currentToken.end.row<<", "<<currentToken.end.col<<"), tok-number:"<<currentToken.type<<endl;
 }
 
-TreeNode* Parser::Program() {
-	TreeNode* program = new TreeNode(programNode, 0, 0, "program");
-	TreeNode* block = new TreeNode(blockNode, 0, 0, "block");
+TreeNode* Parser::Program()
+{
+	token emptyToken;
+	emptyToken.type = tokNotSet;
+	emptyToken.look = "";
+	emptyToken.start.row = 0;
+	emptyToken.start.col = 0;
+	emptyToken.end.row = 0;
+	emptyToken.end.col = 0;
+	
+	TreeNode* program = new TreeNode(emptyToken, programNode, "program");
+	TreeNode* block = new TreeNode(emptyToken, blockNode, "block");
 
 	getToken();
 	
 	// this is the main parse loop
 	kdDebug(0)<<"Parser::Program(), Entering main parse loop..."<<endl;
-	while (currentToken.type != tokEOF) { // currentToken.type returns the type of the current token
+	while (currentToken.type != tokEOF) // currentToken.type returns the type of the current token
+	{
 		kdDebug(0)<<"Parser::Program(), looking for a statement..."<<endl;
 		block->appendChild( Statement() );
 		while (currentToken.type == tokEOL) getToken(); // newlines between statements are allowed
@@ -92,7 +102,6 @@ TreeNode* Parser::Program() {
 	program->appendChild(block);
 	kdDebug(0)<<"Parser::Program(), Left main parse loop..."<<endl;
 
-	matchToken(tokEOF);
 	return program;
 }
 
@@ -178,7 +187,7 @@ void Parser::matchToken(int expectedToken)
 // 		}
 // 		QString key = lexer->name2key(tokStr); // translate if possible, else key=tokStr
 // 		Error( i18n("Expected %1 on line %2").arg(key).arg( lexer->getRow() ), 1010, lexer->getRow(), lexer->getCol() );
-		Error( i18n("Could not match token-number: '%1'").arg(expectedToken), 1010, row, col );
+		Error(currentToken, i18n("Couldnt match tok-number: '%1'").arg(expectedToken), 1010);
 	}
 	else
 	{
@@ -189,72 +198,33 @@ void Parser::matchToken(int expectedToken)
 TreeNode* Parser::getId()
 {
 	TreeNode* n = new TreeNode(currentToken, idNode);
-	n->setName(currentToken.look);
+	n->setLook(currentToken.look);
 	matchToken(tokUnknown); // Id's are ofcouse not yet known 
 	return n;  
 }
 
-/*
-  paramlist is like idlist except it does not only
-  except id's it accepts expressions seperated by ','!
-  This is used by FunctionCall(). 
-*/
-TreeNode* Parser::ParamList()
-{
-	TreeNode* ilist = new TreeNode(currentToken, idListNode);
-	//check for empty idlist -> function with no parameters
-	if( currentToken.type == ')' )
-	{
-		return ilist;
-	}
 
-	TreeNode* expr = Expression();
-	if (expr->getType() == Unknown) {
-		Error( i18n("Expected an expression"), 1020, ilist->getRow(), ilist->getCol() );
-	} else {
-		ilist->appendChild( expr );
-	}
-	
-// 	//get id's seperated by ','
-// 	ilist->appendChild( Expression() ); //aaah KISS (Keep It Simple Sidney)
-	
-	while( currentToken.type == ',' )
+
+TreeNode* Parser::FunctionCall(token maybeFunctionCall)
+{
+	kdDebug(0)<<"Parser::FunctionCall, using identifier: '"<<maybeFunctionCall.look<<"'"<<endl;
+	TreeNode* fcall = new TreeNode(maybeFunctionCall, functionCallNode);
+
+	TreeNode* paramList = new TreeNode(currentToken, idListNode, "idlist");
+	if (currentToken.type != tokEOL && currentToken.type != tokEOF)
 	{
-		matchToken(tokComma);
-		// ilist->appendChild( Expression() ); 
-		
-		expr = Expression();
-		if (expr->getType() == Unknown) {
-			Error( i18n("Expected an expression"), 1020, ilist->getRow(), ilist->getCol() );
-		} else {
-			ilist->appendChild( expr );
+		TreeNode* expr = Expression();
+		if (expr->getType() == Unknown) Error(currentToken, i18n("Expected an expression"), 1020);
+		else paramList->appendChild(expr);
+		while (currentToken.type == tokComma)
+		{
+			matchToken(tokComma);
+			expr = Expression();
+			if (expr->getType() == Unknown) Error(currentToken, i18n("Expected an expression"), 1020);
+			else paramList->appendChild(expr);
 		}
 	}
-
-	return ilist;
-}
-
-/*
-  <functioncall> := tokId '(' <paramlist> ')' 
-*/
-TreeNode* Parser::FunctionCall(const QString& name, uint r, uint c) {
-	if (learnedFunctionList.contains(name) == 0) {
-		Error( i18n("'%1' is neither a Logo command nor a learned command.").arg(name), 1010, r, c);
-		TreeNode* errNode = new TreeNode(Unknown, r, c, "name");
-		return errNode;
-	}
-	
-	kdDebug(0)<<"Parser::FunctionCall, using identifier: '"<<name<<"'"<<endl;
-	TreeNode* fcall = new TreeNode(functionCallNode, r, c, "functioncall");
-	//first child contains function name
-	
-	TreeNode* funcid = new TreeNode(idNode, row, col);
-	funcid->setName(name);
-	fcall->appendChild(funcid);
-
-	matchToken(tokBraceOpen);
-	fcall->appendChild( ParamList() );
-	matchToken(tokBraceClose);
+	fcall->appendChild(paramList);
 
 	return fcall;
 }
@@ -264,69 +234,70 @@ TreeNode* Parser::FunctionCall(const QString& name, uint r, uint c) {
 /* Parse and Translate a Math Factor */
 TreeNode* Parser::Factor()
 {
-	TreeNode* n;
-	switch(currentToken.type)
+	TreeNode* node;
+	switch (currentToken.type)
 	{
 		case tokBraceOpen:
 			matchToken(tokBraceOpen);
-			n = Expression();
+			node = Expression();
 			matchToken(tokBraceClose);
 			break;
 
 		case tokUnknown:     
-			n = getId();
-			if (currentToken.type == tokBraceOpen) { //is function call
-				QString name = n->getName();
-				delete n;
-				n = FunctionCall(name);
-				n->setType(funcReturnNode); //expect returned value on stack
+			node = getId();
+			if (currentToken.type == tokBraceOpen) // is function call
+			{
+				QString name = node->getLook();
+				delete node;
+				node = FunctionCall(currentToken);
+				node->setType(funcReturnNode); // expect returned value on stack
 			}
 			break;
-                  
+
 		case tokString:
-			n = new TreeNode(stringConstantNode, row, col, "string-constant");
-			n->setValue(currentToken.look);
+			node = new TreeNode(currentToken, stringConstantNode);
+			node->setValue(currentToken.look);
 			matchToken(tokString);
 			break;
 
 		case tokNumber:
-			n = new TreeNode(constantNode, row, col, "constant");
-			n->setValue(currentToken.value);
+			node = new TreeNode(currentToken, constantNode);
+			node->setValue(currentToken.value);
 			matchToken(tokNumber);
 			break;
-    
+
 		case tokRun:
-			n = ExternalRun();
+			node = ExternalRun();
 			break;
 
 		case tokInputWindow:
-			n = InputWindow();
+			node = InputWindow();
 			break;
 
 		case tokRandom:
-			n = Random();
+			node = Random();
 			break;
 
 		default:
 			QString s = currentToken.look;
 			if ( s.isEmpty() || currentToken.type == tokEOF ) {
 				kdDebug(0)<<"EXPECTED AN EXPRESSION"<<endl;
-				Error( i18n("DEBUG: This message should be avoided, see the Parser::Repeat for the good solution"), 1020, currentNode->getRow(), currentNode->getRow() );
+				Error(currentToken, i18n("DEBUG: This message should be avoided, see the Parser::Repeat for the good solution"), 1020);
 			} else {
-				Error( i18n("Cannot understand '%1' in expression").arg(s), 1020 );
+				Error(currentToken, i18n("Cannot understand '%1' in expression").arg(s), 1020);
 			}
-			n = new TreeNode(Unknown, row, col);
+			node = new TreeNode(currentToken, Unknown);
 			getToken();
 			break;
 	}
-	return n;
+	return node;
 }
 
 
 TreeNode* Parser::signedFactor()
 {
-	TreeNode* sfac; //used by '-' and tokNot
-	switch( currentToken.type )
+	TreeNode* node; //used by '-' and tokNot
+	switch (currentToken.type)
 	{
 		case tokPlus:
 			matchToken(tokPlus);
@@ -334,37 +305,39 @@ TreeNode* Parser::signedFactor()
 			break;
 
 		case tokMinus:
+			preservedToken = currentToken;
 			matchToken(tokMinus);
-			sfac = Factor();
-			if(sfac->getType() == constantNode)
+			node = Factor();
+			if(node->getType() == constantNode)
 			{
-				Number n = sfac->getValue();
-				n.val = -n.val;
-				sfac->setValue( n );
-				return sfac;
+				Number num = node->getValue();
+				num.val = -num.val;
+				node->setValue(num);
+				return node;
 			}
 			else
 			{
-				TreeNode* minus = new TreeNode(minusNode, row, col, "minus");
-				minus->appendChild(sfac);
+				TreeNode* minus = new TreeNode(preservedToken, minusNode);
+				minus->appendChild(node);
 				return minus;
 			}
 			break;
 
 		case tokNot:
+			preservedToken = currentToken;
 			matchToken(tokNot);
-			sfac = Factor();
-			if (sfac->getType() == constantNode)
+			node = Factor();
+			if (node->getType() == constantNode)
 			{
-				Number n = sfac->getValue();
-				n.val = 1 - n.val;
-				sfac->setValue(n);
-				return sfac;
+				Number num = node->getValue();
+				num.val = 1 - num.val;
+				node->setValue(num);
+				return node;
 			}
 			else
 			{
-				TreeNode* n = new TreeNode(notNode, row, col, "not", lexer->name2key("not") );
-				n->appendChild(sfac);
+				TreeNode* n = new TreeNode(preservedToken, notNode);
+				n->appendChild(node);
 				return n;
 			}
 			break;
@@ -379,16 +352,18 @@ TreeNode* Parser::signedFactor()
 
 /*---------------------------------------------------------------*/
 /* Parse and Translate a Math Term */
-TreeNode* Parser::Term() {
+TreeNode* Parser::Term()
+{
 	TreeNode* termNode = signedFactor();
 	TreeNode* pos = termNode;
 	TreeNode* left = NULL;
 	TreeNode* right = NULL;
 
-	while ( (currentToken.type == tokMul) || (currentToken.type == tokDev) || (currentToken.type == tokAnd) ) {
+	while ( (currentToken.type == tokMul) || (currentToken.type == tokDev) || (currentToken.type == tokAnd) )
+	{
 		// while is is a multiplicative operator do...
 		left = pos;
-		pos = new TreeNode(Unknown, row, col);
+		pos = new TreeNode(currentToken, Unknown);
 		pos->appendChild(left);
 
 		switch (currentToken.type)
@@ -396,31 +371,28 @@ TreeNode* Parser::Term() {
 			case tokMul:
 				matchToken(tokMul);
 				right = signedFactor();
-				pos->setType( mulNode );
-				pos->setName( "mul" );
+				pos->setType(mulNode);
 				break;
 
 			case tokDev:
 				matchToken(tokDev);
 				right = signedFactor();
-				pos->setType( divNode );
-				pos->setName( "div" );
+				pos->setType(divNode);
 				break;
 
 			case tokAnd:
 				matchToken(tokAnd);
 				right = signedFactor();
-				pos->setType( andNode );
-				pos->setName( "and" );
+				pos->setType(andNode);
 				break;
 
 			default:
-				Error( i18n("Expected '*' or '/'"), 1030 ); 
+				Error(currentToken, i18n("Expected '*' or '/'"), 1030);
 				getToken();
 				return pos;
 				break;
 		}
-		if( right != NULL)
+		if (right != NULL)
 		{
 			pos->appendChild(right);
 		}
@@ -454,76 +426,69 @@ TreeNode* Parser::Expression() {
 	TreeNode* left = NULL;
 	TreeNode* right = NULL;
 
-	while( isAddOp(currentToken) ) {
+	while ( isAddOp(currentToken) )
+	{
 		left = pos;
-		pos = new TreeNode(Unknown, row, col);
+		pos = new TreeNode(currentToken, Unknown);
 		pos->appendChild(left);
-		switch(currentToken.type) {
+		switch (currentToken.type)
+		{
 			case tokPlus:
 				matchToken(tokPlus);
 				right = Term() ;
-				pos->setType( addNode );
-				pos->setName("add");
+				pos->setType(addNode);
 				break;
 
 			case tokMinus:
 				matchToken(tokMinus);
 				right = Term();
-				pos->setType( subNode );
-				pos->setName("sub");
+				pos->setType(subNode);
 				break;
 
 			case tokGt:
 				matchToken(tokGt);
 				right = Term();
-				pos->setType( nodeGT );
-				pos->setName(">");
+				pos->setType(nodeGT);
 				break;
 
 			case tokLt:
 				matchToken(tokLt);
 				right = Term();
-				pos->setType( nodeLT );
-				pos->setName("<");
+				pos->setType(nodeLT);
 				break;
 
 			case tokGe:
 				matchToken(tokGe);
 				right = Term();
-				pos->setType( nodeGE );
-				pos->setName(">=");
+				pos->setType(nodeGE);
 				break;
 
 			case tokLe:
 				matchToken(tokLe);
 				right = Term();
-				pos->setType( nodeLE );
-				pos->setName("<=");
+				pos->setType(nodeLE);
 				break;
 			
 			case tokEq:
 				matchToken(tokEq);
 				right = Term();
-				pos->setType( nodeEQ );
-				pos->setName("==");
+				pos->setType(nodeEQ);
 				break;
 
 			case tokNe:
 				matchToken(tokNe);
 				right = Term();
-				pos->setType( nodeNE );
-				pos->setName("!=");
+				pos->setType(nodeNE);
 				break;
 			
 			case tokOr:
 				matchToken(tokOr);
 				right = Term();
-				pos->setType( orNode );
-				pos->setName( "or" );
+				pos->setType(orNode);
 				break;
 
 			default:
-				Error( i18n("Expected additive operation"), 1040 );
+				Error(currentToken, i18n("Expected '*' or '/'"), 1040);
 				getToken();
 				return pos;
 				break;
@@ -535,33 +500,27 @@ TreeNode* Parser::Expression() {
 }
 
 
-TreeNode* Parser::Assignment(const QString& name)
+TreeNode* Parser::Assignment(token t)
 {
-	TreeNode* assign = new TreeNode(assignNode, row, col, "assignment");
+	TreeNode* node = new TreeNode(t, assignNode);
+	matchToken(tokAssign); // match the '='
 	
-	matchToken(tokAssign);
+	// the child is the expression or RHV of assignment
+	TreeNode* expr = Expression();
+	node->appendChild(expr);
 
-	//first child of assign is id or lhv of assignment
-	TreeNode* left = new TreeNode(idNode, row, col, "", lexer->name2key("") );
-	left->setName(name);
-	assign->appendChild(left);
-	
-	//next child is expression or rhv of assignment
-	TreeNode* right = Expression();
-	assign->appendChild(right);
-
-	return assign;
+	return node;
 }
 
 
 TreeNode* Parser::getString()
 {
-	TreeNode* str = new TreeNode(stringConstantNode, row, col, "string");
+	TreeNode* node = new TreeNode(currentToken, stringConstantNode);
 	
-	str->setLook(currentToken.look);
+	node->setLook(currentToken.look);
 	matchToken(tokString);
 	
-	return str;
+	return node;
 }
 
 TreeNode* Parser::Statement() {
@@ -614,9 +573,9 @@ TreeNode* Parser::Statement() {
 		case tokReset         : return Reset();            break;
 		case tokEnd           : break; //caught by Block
 
-		case tokBegin         : Error( i18n("Begin without matching end"), 1050 );
+		case tokBegin         : Error(currentToken, i18n("Begin without matching end"), 1050);
 		                        getToken();
-		                        return new TreeNode(Unknown, row, col);
+		                        return new TreeNode(currentToken, Unknown);
 		                        break;
 
 		default               : break;    
@@ -631,18 +590,19 @@ TreeNode* Parser::Statement() {
 	
 	if (currentToken.type != tokEnd)
 	{
-		Error( i18n("'%1' is not a Logo command").arg(currentToken.look), 1060);
+		Error(currentToken, i18n("'%1' is not a Logo command").arg(currentToken.look), 1060);
 	}
 	
 	getToken();
-	return new TreeNode(Unknown, row, col); // fallback for unknowns
+	return new TreeNode(currentToken, Unknown); // fallback for unknowns
 }
 
 
 TreeNode* Parser::Block()
 {
-	TreeNode* block = new TreeNode(blockNode, row, col, "block");
+	TreeNode* block = new TreeNode(currentToken, blockNode, "block");
 	
+	while (currentToken.type == tokEOL) getToken(); // skip newlines
 	matchToken(tokBegin);
 	while ( (currentToken.type != tokEnd) && (currentToken.type != tokEOF) )
 	{
@@ -651,25 +611,6 @@ TreeNode* Parser::Block()
 	}
 	matchToken(tokEnd);
 	return block;
-}
-
-
-TreeNode* Parser::IdList()
-{
-	TreeNode* ilist = new TreeNode(idListNode, row, col, "idlist");
-
-	//check for empty idlist -> function with no parameters
-	if( currentToken.type == tokBraceOpen ) return ilist;
-	
-	//get id's seperated by ','
-	ilist->appendChild( getId() );
-	while (currentToken.type == tokComma)
-	{
-		matchToken(tokComma);
-		ilist->appendChild( getId() );
-	}
-
-	return ilist;
 }
 
 
@@ -767,7 +708,6 @@ TreeNode* Parser::Reset()
 TreeNode* Parser::GoX()
 {
 	TreeNode* node = new TreeNode(currentToken, GoXNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // get the expression
 	matchToken(tokEOL);
@@ -778,7 +718,6 @@ TreeNode* Parser::GoX()
 TreeNode* Parser::GoY()
 {
 	TreeNode* node = new TreeNode(currentToken, GoYNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // get the expression
 	matchToken(tokEOL);
@@ -789,7 +728,6 @@ TreeNode* Parser::GoY()
 TreeNode* Parser::Forward()
 {
 	TreeNode* node = new TreeNode(currentToken, ForwardNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // get the expression
 	matchToken(tokEOL);
@@ -800,7 +738,6 @@ TreeNode* Parser::Forward()
 TreeNode* Parser::Backward()
 {
 	TreeNode* node = new TreeNode(currentToken, BackwardNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // get the expression
 	matchToken(tokEOL);
@@ -810,7 +747,6 @@ TreeNode* Parser::Backward()
 TreeNode* Parser::Direction()
 {
 	TreeNode* node = new TreeNode(currentToken, DirectionNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // get the expression
 	matchToken(tokEOL);
@@ -820,7 +756,6 @@ TreeNode* Parser::Direction()
 TreeNode* Parser::TurnLeft()
 {
 	TreeNode* node = new TreeNode(currentToken, TurnLeftNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // get the expression
 	matchToken(tokEOL);
@@ -830,7 +765,6 @@ TreeNode* Parser::TurnLeft()
 TreeNode* Parser::TurnRight()
 {
 	TreeNode* node = new TreeNode(currentToken, TurnRightNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // get the expression
 	matchToken(tokEOL);
@@ -840,7 +774,6 @@ TreeNode* Parser::TurnRight()
 TreeNode* Parser::SetPenWidth()
 {
 	TreeNode* node = new TreeNode(currentToken, SetPenWidthNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // get the expression
 	matchToken(tokEOL);
@@ -850,7 +783,6 @@ TreeNode* Parser::SetPenWidth()
 TreeNode* Parser::Message()
 {
 	TreeNode* node = new TreeNode(currentToken, MessageNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // get the expression
 	matchToken(tokEOL);
@@ -860,7 +792,6 @@ TreeNode* Parser::Message()
 TreeNode* Parser::InputWindow()
 {
 	TreeNode* node = new TreeNode(currentToken, InputWindowNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // get the expression
 	matchToken(tokEOL);
@@ -870,7 +801,6 @@ TreeNode* Parser::InputWindow()
 TreeNode* Parser::SpriteChange()
 {
 	TreeNode* node = new TreeNode(currentToken, SpriteChangeNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // get the expression
 	matchToken(tokEOL);
@@ -880,7 +810,6 @@ TreeNode* Parser::SpriteChange()
 TreeNode* Parser::FontType()
 {
 	TreeNode* node = new TreeNode(currentToken, FontTypeNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // get the expression
 	matchToken(tokEOL);
@@ -890,7 +819,6 @@ TreeNode* Parser::FontType()
 TreeNode* Parser::FontSize()
 {
 	TreeNode* node = new TreeNode(currentToken, FontSizeNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // get the expression
 	matchToken(tokEOL);
@@ -900,7 +828,6 @@ TreeNode* Parser::FontSize()
 TreeNode* Parser::Random()
 {
 	TreeNode* node = new TreeNode(currentToken, RandomNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // first expression
 	matchToken(tokComma);
@@ -912,7 +839,6 @@ TreeNode* Parser::Random()
 TreeNode* Parser::Wait()
 {
 	TreeNode* node = new TreeNode(currentToken, WaitNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // get the expression
 	matchToken(tokEOL);
@@ -922,7 +848,6 @@ TreeNode* Parser::Wait()
 TreeNode* Parser::ExternalRun()
 {
 	TreeNode* node = new TreeNode(currentToken, runNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // get the expression
 	matchToken(tokEOL);
@@ -936,7 +861,6 @@ TreeNode* Parser::ExternalRun()
 TreeNode* Parser::Go()
 {
 	TreeNode* node = new TreeNode(currentToken, GoNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // first expression
 	matchToken(tokComma);
@@ -948,7 +872,6 @@ TreeNode* Parser::Go()
 TreeNode* Parser::ResizeCanvas()
 {
 	TreeNode* node = new TreeNode(currentToken, ResizeCanvasNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // first expression
 	matchToken(tokComma);
@@ -965,7 +888,6 @@ TreeNode* Parser::ResizeCanvas()
 TreeNode* Parser::SetFgColor()
 {
 	TreeNode* node = new TreeNode(currentToken, SetFgColorNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // first expression
 	matchToken(tokComma);
@@ -979,7 +901,6 @@ TreeNode* Parser::SetFgColor()
 TreeNode* Parser::SetBgColor()
 {
 	TreeNode* node = new TreeNode(currentToken, SetBgColorNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // first expression
 	matchToken(tokComma);
@@ -1007,26 +928,35 @@ TreeNode* Parser::SetBgColor()
 ===================================================================*/
 TreeNode* Parser::Learn()
 {
-	matchToken(tokLearn); // dummy word
+	matchToken(tokLearn);
 	TreeNode* func = new TreeNode(currentToken, functionNode);
-	TreeNode* idn = getId();
-
-	func->appendChild( idn );
-	matchToken(tokBraceOpen);
-	func->appendChild( IdList() );
-	matchToken(tokBraceClose);
-	func->appendChild( Block() );
+	getToken(); // get the token after the function's name
 	
-	learnedFunctionList.append( idn->getName() );
+	TreeNode* idList = new TreeNode(currentToken, idListNode, "idlist");
+	if (currentToken.type != tokBegin)
+	{
+		idList->appendChild( getId() );
+		while (currentToken.type == tokComma)
+		{
+			matchToken(tokComma);
+			idList->appendChild( getId() );
+		}
+	}
+	func->appendChild(idList);
+	
+	func->appendChild( Block() ); // do the Block() thing
+
+	learnedFunctionList.append( func->getLook() );
 
 	return func;
 }
 
-TreeNode* Parser::Repeat() {
+TreeNode* Parser::Repeat()
+{
 	TreeNode* node = new TreeNode(currentToken, RepeatNode);
-	currentNode = node;
 	matchToken(tokRepeat);
 	node->appendChild( Expression() );
+	
 	node->appendChild( Block() );
 	return node;
 }
@@ -1041,26 +971,23 @@ TreeNode* Parser::Repeat() {
 */
 TreeNode* Parser::If()
 {
-	TreeNode* node = new TreeNode(ifNode, row, col, "if", lexer->name2key("if") );
+	TreeNode* node = new TreeNode(currentToken, ifNode);
 	matchToken(tokIf);
-	currentNode = node;
 	
 	node->appendChild( Expression() );
 
-	if(currentToken.type == tokDo) {  // skip the 'do'
-		getToken(); //next word
-	}
+	if (currentToken.type == tokDo) getToken(); // skip dummy word 'do'
 
-	if(currentToken.type == tokBegin) {  //if followed by a block
-		node->appendChild( Block() ); 
+	if (currentToken.type == tokBegin) {  //if followed by a block
+		node->appendChild( Block() );
 	} else {   //if followed by single statement
 		node->appendChild( Statement() );
 	}
 
-	if(currentToken.type == tokElse) { //else part
+	if (currentToken.type == tokElse) { //else part
 		matchToken(tokElse);
 		
-		if(currentToken.type == tokDo) {  // skip the 'do'
+		if (currentToken.type == tokDo) {  // skip the 'do'
 			getToken(); // next word
 		}
 
@@ -1080,9 +1007,8 @@ TreeNode* Parser::If()
  */
 TreeNode* Parser::While()
 {
-	TreeNode* wNode = new TreeNode(whileNode, row, col, "while", lexer->name2key("while") );
+	TreeNode* wNode = new TreeNode(currentToken, whileNode);
 	matchToken(tokWhile);
-	currentNode = wNode;
 	wNode->appendChild( Expression() );
 
 	if(currentToken.type == tokBegin) //while followed by a block
@@ -1103,9 +1029,8 @@ TreeNode* Parser::While()
 */
 TreeNode* Parser::For()
 {
-	TreeNode* fNode = new TreeNode(forNode, row, col, "for loop", lexer->name2key("for loop") );
+	TreeNode* fNode = new TreeNode(currentToken, forNode);
 	matchToken(tokFor);
-	currentNode = fNode;
 	fNode->appendChild( getId() ); //loop id
 	matchToken(tokAssign);
 	
@@ -1131,10 +1056,10 @@ TreeNode* Parser::For()
 	return fNode;
 }
 
-TreeNode* Parser::ForEach() {
-	TreeNode* fNode = new TreeNode(forEachNode, row, col, "foreach loop", lexer->name2key("foreach loop") );
+TreeNode* Parser::ForEach()
+{
+	TreeNode* fNode = new TreeNode(currentToken, forEachNode);
 	matchToken(tokForEach);
-	currentNode = fNode;
 	
 	fNode->appendChild( Expression() );
 	matchToken(tokIn);
@@ -1152,11 +1077,10 @@ TreeNode* Parser::ForEach() {
 TreeNode* Parser::Print()
 {
 	TreeNode* node = new TreeNode(currentToken, printNode);
-	currentNode = node;
 	getToken();
 	node->appendChild( Expression() ); // first expression
 	// following strings or expressions
-	while(currentToken.type == tokComma)
+	while (currentToken.type == tokComma)
 	{
 		getToken(); //the comma
 		node->appendChild( Expression() );
@@ -1167,9 +1091,8 @@ TreeNode* Parser::Print()
 
 TreeNode* Parser::Return()
 {
-	TreeNode* ret = new TreeNode(returnNode, row, col, "return", lexer->name2key("return") );
+	TreeNode* ret = new TreeNode(currentToken, returnNode);
 	matchToken(tokReturn);
-	currentNode = ret;
 	
 	ret->appendChild( Expression() );
 	
@@ -1178,7 +1101,7 @@ TreeNode* Parser::Return()
 
 TreeNode* Parser::Break()
 {
-	TreeNode* brk = new TreeNode(breakNode, row, col, "break", lexer->name2key("break") );
+	TreeNode* brk = new TreeNode(currentToken, breakNode);
 	matchToken(tokBreak);
 	
 	return brk;
@@ -1190,17 +1113,18 @@ TreeNode* Parser::Other()
 	token presevedToken = currentToken; // preserve token, else Match() will make sure it gets lost
 	matchToken(tokUnknown);
 
-	if(currentToken.type == tokAssign)
-	{
-		return Assignment(presevedToken.look);
-	} else {
-		return FunctionCall(presevedToken.look, presevedToken.start.row, presevedToken.start.col);
-	}
+	if (learnedFunctionList.contains(presevedToken.look) > 0) return FunctionCall(presevedToken);
+	else if (currentToken.type == tokAssign)                  return Assignment(presevedToken);
+	
+	Error(presevedToken, i18n("'%1' is not (yet) a learned command and neither a Logo command.").arg(presevedToken.look), 1020);
+	TreeNode* errNode = new TreeNode(presevedToken, Unknown);
+	return errNode;
 }
 
 
-void Parser::Error(const QString& s, uint code, uint r, uint c) {
-	emit ErrorMsg(s, (r == NA ? row : r), (c == NA ? col : c), code);
+void Parser::Error(token t, QString s, uint code)
+{
+	emit ErrorMsg(t, s, code);
 }
 
 

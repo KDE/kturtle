@@ -48,6 +48,7 @@
 #include <ktexteditor/undointerface.h>
 #include <ktexteditor/viewcursorinterface.h>
 
+#include "lexer.h"
 #include "settings.h"
 
 #include "kturtle.h"
@@ -503,28 +504,30 @@ void MainWindow::startExecution() {
 	QTextIStream in(&txt);
 	errMsg = new ErrorMessage(this);
 	Parser parser(in);
-	connect( &parser, SIGNAL(ErrorMsg(QString, uint, uint, uint) ),
-		errMsg, SLOT(slotAddError(QString, uint, uint, uint) ) );
+	connect(&parser, SIGNAL( ErrorMsg(token&, QString, uint) ),
+	         errMsg, SLOT( slotAddError(token&, QString, uint) ) );
 	connect( errMsg, SIGNAL(SetCursor(uint, uint) ),
-		this, SLOT(slotSetCursorPos(uint, uint) ) );
-
+	           this, SLOT(slotSetCursorPos(uint, uint) ) );
+	connect( errMsg, SIGNAL(SetSelection(uint, uint, uint, uint) ),
+	           this, SLOT(slotSetSelection(uint, uint, uint, uint) ) );
+	
 	// parsing and executing...
-	//if( parser.parse() ) {
+	//if( parser.parse() ) { // not executing after parse errors is for pussies
 	parser.parse();
 	
 		TreeNode* root = parser.getTree();
 		kdDebug(0)<<"############## PARSING FINISHED ##############"<<endl;
-		root->showTree(root); // show parsetree  DEBUG OPTION
+		root->showTree(root); // show parsetree  DEBUG OPTION (but nice)
 
 		slotStatusBar(i18n("Executing commands..."),  IDS_STATUS);
 		kdDebug(0)<<"############## EXECUTION STARTED ##############"<<endl;
 		exe = new Executer(root); // make Executer object, 'exe', and have it point to the root
-		connect( exe, SIGNAL( ErrorMsg(QString, uint, uint, uint) ),
-			errMsg, SLOT( slotAddError(QString, uint, uint, uint) ) );
+		connect( exe, SIGNAL( ErrorMsg(token&, QString, uint) ),
+		      errMsg, SLOT( slotAddError(token&, QString, uint) ) );
 		connect( exe, SIGNAL( InputDialog(QString&) ),
-			this, SLOT( slotInputDialog(QString&) ) );
+		        this, SLOT( slotInputDialog(QString&) ) );
 		connect( exe, SIGNAL( MessageDialog(QString) ),
-			this, SLOT( slotMessageDialog(QString) ) );
+		        this, SLOT( slotMessageDialog(QString) ) );
 
 		// Connect the signals form Executer to the slots from Canvas:
 		connect( exe, SIGNAL( Clear() ), TurtleView, SLOT( slotClear() ) );
@@ -554,10 +557,13 @@ void MainWindow::startExecution() {
 		connect( exe, SIGNAL( WrapOff() ), TurtleView, SLOT( slotWrapOff() ) );
 		connect( exe, SIGNAL( Reset() ), TurtleView, SLOT( slotReset() ) );
 
-		if ( exe->run() ) {
+		if ( exe->run() )
+		{
 			slotStatusBar(i18n("Done."),  IDS_STATUS);
 			finishExecution();
-		} else {
+		}
+		else
+		{
 			slotStatusBar(i18n("Execution aborted."),  IDS_STATUS);
 			finishExecution();
 		}
@@ -725,7 +731,8 @@ void MainWindow::slotUnComment() {
 	a->activate();
 }
 
-void MainWindow::slotToggleLineNumbers() {
+void MainWindow::slotToggleLineNumbers()
+{
 	KToggleAction *a = dynamic_cast<KToggleAction*>( editor->actionCollection()->action("view_line_numbers") );
 	a->activate();
 }
@@ -738,9 +745,16 @@ void MainWindow::slotInsertText(QString str) {
 	dynamic_cast<KTextEditor::SelectionInterface*>(doc)->setSelection(StartLine, StartCol, EndLine, EndCol);
 }
 
-void MainWindow::slotSetCursorPos(uint row, uint col) {
-	dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->setCursorPositionReal(row-2, col);
-	kdDebug(0)<<"Cursor set to: ("<<row-2<<", "<<col<<")"<<endl;
+void MainWindow::slotSetCursorPos(uint row, uint col)
+{
+	dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->setCursorPositionReal(row - 1, col);
+	kdDebug(0)<<"Cursor set to: ("<<row-1<<", "<<col<<")"<<endl;
+}
+
+void MainWindow::slotSetSelection(uint StartLine, uint StartCol, uint EndLine, uint EndCol)
+{
+	dynamic_cast<KTextEditor::SelectionInterface*>(doc)->setSelection(StartLine - 1, StartCol - 1, EndLine - 1, EndCol - 1);
+	kdDebug(0)<<"Selection set to: ("<<StartLine<<", "<<StartCol<<", "<<EndLine<<", "<<EndCol<<")"<<endl;
 }
 // END
 

@@ -26,7 +26,8 @@
 #include "treenode.h"
 
 
-class Parser : public QObject {
+class Parser : public QObject
+{
 Q_OBJECT
 
 	public:
@@ -37,19 +38,17 @@ Q_OBJECT
 	TreeNode* getTree() const { return tree; }
 
 	signals:
-	void ErrorMsg(QString s, uint row, uint col, uint code);
+	void ErrorMsg(token&, QString, uint code);
 
 	private:
 	bool isAddOp(token);
 	bool isMulOp(token);
 	
 	void getToken();
-	void matchToken(int);
-	void Error(const QString& s, uint code = 1000, uint r = NA, uint c = NA);
+	void matchToken(int tokenType);
+	void Error(token, QString, uint code);
 
 	TreeNode* Program();
-	//TreeNode* Function();
-	TreeNode* IdList();
 	TreeNode* ParamList();
 	TreeNode* Block();
 	TreeNode* Statement();
@@ -62,8 +61,8 @@ Q_OBJECT
 	TreeNode* Term();
 	TreeNode* Expression();
 	
-	TreeNode* Assignment  ( const QString& );
-	TreeNode* FunctionCall( const QString&, uint r = NA, uint c = NA);
+	TreeNode* Assignment(token);
+	TreeNode* FunctionCall(token);
 	TreeNode* Other();
 	
 	TreeNode* While();
@@ -113,9 +112,9 @@ Q_OBJECT
 
 	//private locals
 	Lexer       *lexer;
-	token        currentToken;
 	TreeNode    *tree;
-	TreeNode    *currentNode;
+	token        currentToken;
+	token        preservedToken; // to preserve the currentToken so it wont get lost
 	uint         row;
 	uint         col;
 	QStringList  learnedFunctionList;

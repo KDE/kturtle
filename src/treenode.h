@@ -28,9 +28,6 @@
 #include "number.h"
 
 
-// this const is used in executer, treenode and errormsg when uint row/col information is N/A
-const uint NA = 999999999;
-
 using namespace std;  // i dont know if this is still needed
 
 //BUGS: prevSibling and nextSibling sometimes segfault and are not optimal, in short, don't use em! :)
@@ -212,26 +209,17 @@ enum NodeType
 class TreeNode : public list<TreeNode*>
 {
 	public:
-	//constructors/destructor
-	TreeNode();
-	TreeNode(TreeNode*); //give parent
-
-	// TreeNode(NodeType);
-	TreeNode(NodeType,
-	         uint row = NA, 
-	         uint col = NA,
-	         QString name = "<name not set>", 
-				QString key = "<key not set>");  // temporary
-
-	TreeNode(token, NodeType = Unknown); // this should become the thing!
-	TreeNode(NodeType) {}; // temporary!
+	// constructors/destructor
+	TreeNode(); // used for creation of the first node called 'tree', in the contructor of the parser 
+	TreeNode( TreeNode* ); //give parent
+	TreeNode( token, NodeType = Unknown, QString = QString() ); // this should become the thing!
 	
 	virtual ~TreeNode();
 
-	//public members
+	// public members
 	void init();
 	void setParent(TreeNode* p);
-	TreeNode* getParent() {return parent;}
+	TreeNode* getParent() { return parent; }
 	
 	virtual void show(int indent = 0);
 	void showTree(TreeNode* node, int indent = 0) const;
@@ -250,30 +238,25 @@ class TreeNode : public list<TreeNode*>
 	TreeNode* prevSibling();
 	
 	
+	void      setToken(token t)          { fTok = t; }
+	token&    getToken()                 { return fTok; }
 	
-	void setType(NodeType t)           { fType = t; }
-	NodeType getType() const           { return fType; }
-
-	void setToken(token t)             { fTok = t; }
-	token getToken() const             { return fTok; }
+	void      setType(NodeType t)        { fType = t; }
+	NodeType  getType() const            { return fType; }
 	
-	uint getRow() const                { return fTok.start.row; }
-	uint getCol() const                { return fTok.start.col; }
+	void      setLook(const QString& s)  { fTok.look = s; }
+	QString   getLook() const            { return fTok.look; }
 	
-	void setName(const QString& n)     { fName = n; }
-	QString getName() const            { return fName; }
+	void      setValue(const Number& n)  { fTok.value = n; }
+	void      setValue(double d)         { fTok.value = d; }
+	void      setValue(const QString& s) { fTok.value = s; }
+	Number    getValue() const           { return fTok.value; }
 	
-	void setValue(const Number& n)     { fTok.value = n; }
-	void setValue(double d)            { fTok.value = d; }
-	void setValue(const QString& s)    { fTok.value = s; }
-	Number getValue() const            { return fTok.value; }
-	
-	void setLook(const QString& s)     { fTok.look = s; }
-	QString getLook() const            { return fTok.look; }
-
+	uint      getRow() const             { return fTok.start.row; }
+	uint      getCol() const             { return fTok.start.col; }
 
 	
-	TreeNode::iterator lookup(); //gives location in parent list as iterator (used by prevSibling and nextSibling)
+	TreeNode::iterator lookup(); // gives location in parent list as iterator (used by prevSibling and nextSibling)
 	bool hasChildren() { return size() != 0; }
 
 	TreeNode& operator= (const TreeNode&);
@@ -285,13 +268,9 @@ class TreeNode : public list<TreeNode*>
 	//private locals
 	NodeType   fType;
 	token      fTok;
-	QString    fName;
 	
 	protected:
 	TreeNode  *parent;
 };
 
 #endif // _TREENODE_H_
-
-
-

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003 Cies Breijs <cies # showroommama ! nl>
+    Copyright (C) 2003-04 Cies Breijs <cies # kde ! nl>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of version 2 of the GNU General Public
@@ -181,6 +181,8 @@ class MainWindow : public KParts::MainWindow
 	void slotUnComment();
 	///Sets the row and column of the cursor in the KTextEditor part
 	void slotSetCursorPos(uint row, uint column);
+	///Sets the selection in the KTextEditor part
+	void slotSetSelection(uint StartLine, uint StartCol, uint EndLine, uint EndCol);
 
 	///Create the Configure KTurtle dialog
 	void slotSettings();

@@ -16,49 +16,4 @@
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-    
-#ifndef _LEXER_H_
-#define _LEXER_H_
-
-#include <qmap.h>
-#include <qstring.h>
-#include <qtextstream.h>
-
-#include "number.h"
 #include "token.h"
-#include "translate.h"
-
-class Lexer
-{
-	public:
-	//constructor and destructor
-	Lexer(QTextIStream&);
-	~Lexer() {}
-
-	//public members
-	token lex(); // returns the next token, skipping spaces
-// 	QString name2key(QString);
-	
-	private:
-	//private members
-	QChar getChar();
-	void ungetChar(QChar);
-	void skipComment();
-	void skipSpaces();
-	void setTokenType(token&);
-	int getNumber(Number&, QString&);
-	int getWord(QString&);
-	void getString(token&);
-
-	//private locals
-	QTextIStream    *inputStream;
-	uint             row, col, prevCol;
-	QChar            putBackChar;
-	
-	Translate       *translate;
-};
-
-
-#endif // _LEXER_H_
-
-

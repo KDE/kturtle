@@ -26,15 +26,24 @@
 #include <qlabel.h>
 #include <qstring.h>
 #include <qtable.h>
+#include <qvaluelist.h>
 
-
-// this const is used in executer, treenode and errormsg when uint row/col information is N/A
-//const uint NA = 999999999;  --->  leads to redefinition, thats why:
+#include "lexer.h"
 #include "treenode.h"
 
 
-class ErrorMessage : public KDialogBase {
- Q_OBJECT
+struct errorData
+{
+	uint    code;
+	token   tok;
+	QString msg;
+};
+
+
+class ErrorMessage : public KDialogBase
+{
+Q_OBJECT
+	
 	public:
 	ErrorMessage(QWidget *parent);
 	~ErrorMessage() {}
@@ -44,14 +53,18 @@ class ErrorMessage : public KDialogBase {
 	void display();
 
 	public slots:
-	void slotAddError(QString msg = "", uint row = NA, uint col = NA, uint code = NA);
+	void slotAddError(token&, QString, uint code);
 	void updateSelection();
 
 	signals:
 	void SetCursor(uint row, uint column);
+	void SetSelection(uint, uint, uint, uint);
 
 	private:
+	typedef QValueList<errorData> errorList;
+	errorList     errList;
 	QTable       *errTable;
+	uint          errCount;
 
 	protected:
 	QDialog      *dialog;

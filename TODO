@@ -36,12 +36,13 @@ should print Hello, but doesn't. Just a < 5 works correctly, and the same for ju
 -----------> tryed to fix this... probably i have to look into the parser code and into the original WSBASIC implementation
 
 
-	learn multiplyBySelf (n) [
-		r = n * n
-		return r
-	]
-	i = inputwindow "Please enter a number and press OK"
-	print i + " multiplied by itself is: " + multiplyBySelf (i)
+learn multiplyBySelf n
+[
+	r = n * n
+	return r
+]
+i = inputwindow "Please enter a number and press OK"
+print i + " multiplied by itself is: " + multiplyBySelf i
 should print i*i, but prints i instead.  -----> inputwindow allways returns strings!
 
 

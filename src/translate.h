@@ -1,5 +1,4 @@
 /*
-     Copyright (C) 2003 by Walter Schreppers 
      Copyright (C) 2004 by Cies Breijs   
      
     This program is free software; you can redistribute it and/or
@@ -17,48 +16,34 @@
  */
 
     
-#ifndef _LEXER_H_
-#define _LEXER_H_
+#ifndef _TRANSLATE_H_
+#define _TRANSLATE_H_
 
 #include <qmap.h>
 #include <qstring.h>
-#include <qtextstream.h>
 
-#include "number.h"
-#include "token.h"
-#include "translate.h"
 
-class Lexer
+class Translate
 {
 	public:
-	//constructor and destructor
-	Lexer(QTextIStream&);
-	~Lexer() {}
-
-	//public members
-	token lex(); // returns the next token, skipping spaces
-// 	QString name2key(QString);
+	Translate();
+	~Translate() {}
+	
+	QString name2fuzzy(QString);
+	QString name2key(QString);
+	QString alias2key(QString);
+	
 	
 	private:
-	//private members
-	QChar getChar();
-	void ungetChar(QChar);
-	void skipComment();
-	void skipSpaces();
-	void setTokenType(token&);
-	int getNumber(Number&, QString&);
-	int getWord(QString&);
-	void getString(token&);
-
-	//private locals
-	QTextIStream    *inputStream;
-	uint             row, col, prevCol;
-	QChar            putBackChar;
+	void loadTranslations();
 	
-	Translate       *translate;
+	typedef QMap<QString, QString> StringMap;
+	StringMap keyMap;
+	StringMap aliasMap;
+	StringMap reverseAliasMap;
 };
 
 
-#endif // _LEXER_H_
+#endif // _TRANSLATE_H_
 
 

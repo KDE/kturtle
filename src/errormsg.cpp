@@ -22,7 +22,8 @@
 
 
 ErrorMessage::ErrorMessage (QWidget *parent)
-			: KDialogBase (parent, "errorDialog", false, 0, KDialogBase::Close|KDialogBase::Help|KDialogBase::User1, KDialogBase::Close, true, i18n("Help on &Error") ) {
+	: KDialogBase (parent, "errorDialog", false, 0, KDialogBase::Close|KDialogBase::Help|KDialogBase::User1, KDialogBase::Close, true, i18n("Help on &Error") )
+{
 	setCaption( i18n("Error Dialog") );
 	setButtonWhatsThis( KDialogBase::Close, i18n("Closes this Error Dialog") );
 	setButtonWhatsThis( KDialogBase::Help, i18n("Click here to read more on this Error Dialog in KTurtle's Handbook.") );
@@ -30,7 +31,7 @@ ErrorMessage::ErrorMessage (QWidget *parent)
 	setButtonWhatsThis( KDialogBase::User1, i18n("Click here for help regarding the error you selected in the list. This button will not work when no error is selected.") );
 	setButtonTip( KDialogBase::User1, i18n("Click here for help regarding the error you selected.") );
 	
-	QWidget *baseWidget = new QWidget( this );
+	QWidget *baseWidget = new QWidget(this);
 	setMainWidget(baseWidget);
 	baseLayout = new QVBoxLayout(baseWidget); 
 	
@@ -42,62 +43,55 @@ ErrorMessage::ErrorMessage (QWidget *parent)
 	spacer = new QSpacerItem( 10, 10, QSizePolicy::Minimum, QSizePolicy::Fixed );
 	baseLayout->addItem(spacer);
 	
-	errTable = new QTable(0, 4, baseWidget);
+	errTable = new QTable(0, 3, baseWidget);
 	errTable->setSelectionMode(QTable::SingleRow);
 	errTable->setReadOnly(true);
 	errTable->setShowGrid(false);
 	errTable->setFocusStyle(QTable::FollowStyle);
 	errTable->setLeftMargin(0);
 	
-	errTable->horizontalHeader()->setLabel( 0, i18n("line") );
-	errTable->setColumnWidth(0, baseWidget->fontMetrics().width("88888") );
+	errTable->horizontalHeader()->setLabel( 0, i18n("number") );
+	errTable->hideColumn(0); // needed to link with the errorData which stores the tokens, codes, etc.
 	
-	errTable->horizontalHeader()->setLabel( 1, i18n("column") );
-	errTable->hideColumn(1); // overinforms, but info could be needed later on
-
-	errTable->horizontalHeader()->setLabel( 2, i18n("code") );
-	errTable->hideColumn(2); // overinforms, but info could be needed later on
-	// errTable->setColumnWidth(2, baseWidget->fontMetrics().width("88888") );
+	errTable->horizontalHeader()->setLabel( 1, i18n("line") );
+	errTable->setColumnWidth(1, baseWidget->fontMetrics().width("88888") );
 	
-	errTable->horizontalHeader()->setLabel( 3, i18n("description") );
-	errTable->setColumnStretchable(3, true);
+	errTable->horizontalHeader()->setLabel( 2, i18n("description") );
+	errTable->setColumnStretchable(2, true);
 
 	baseLayout->addWidget(errTable);
+	
+	errCount = 1;
 }
 
 
-void ErrorMessage::slotAddError(QString msg, uint row, uint col, uint code) { 
+void ErrorMessage::slotAddError(token& t, QString s, uint c)
+{
+	errorData err;
+	err.code = c;
+	err.tok = t;
+	err.msg = s;
+	errList.append(err);
+	
+// 	token currentToken = err.tok; kdDebug(0)<<"ErrorMessage::slotAddError, got token: '"<<currentToken.look<<"', @ ("<<currentToken.start.row<<", "<<currentToken.start.col<<") - ("<<currentToken.end.row<<", "<<currentToken.end.col<<"), tok-number:"<<currentToken.type<<endl;
+	
 	errTable->insertRows(0);
-	QString dash = i18n("-"); // NA means not available
+	errTable->setText( 0, 0, QString::number(errCount) ); // put the count in a hidden field for reference
+	errTable->setText( 0, 1, QString::number(err.tok.start.row) );
+	errTable->setText( 0, 2, err.msg );
 	
-	if (row == NA)
-		errTable->setText( 0, 0, dash );
-	else
-		errTable->setText( 0, 0, QString::number(row) ); 
-	
-	if (col == NA)
-		errTable->setText( 0, 1, dash );
-	else
-		errTable->setText( 0, 1, QString::number(col) );
-
-	if (code== NA)
-		errTable->setText( 0, 2, dash );
-	else
-		errTable->setText( 0, 2, QString::number(code) );
-	
-	errTable->setText( 0, 3, msg );
-	kdDebug(0)<<"ErrorTable entry: "<<row<<", "<<col<<", "<<code<<", "<<msg<<"."<<endl;
+	errCount++;
 }
 
 
-bool ErrorMessage::containsErrors() {
-	if (errTable->numRows() != 0) {
-		return false;
-	}
+bool ErrorMessage::containsErrors()
+{
+	if (errTable->numRows() != 0) return false;
 	return true;
 }
 
-void ErrorMessage::display() {
+void ErrorMessage::display()
+{
 	errTable->clearSelection();
 	enableButton (KDialogBase::User1, false);
 	errTable->sortColumn(0, true, true);
@@ -105,10 +99,11 @@ void ErrorMessage::display() {
 	connect( errTable, SIGNAL( selectionChanged() ), this, SLOT( updateSelection() ) );
 }
 
-void ErrorMessage::updateSelection() {
-	int row = errTable->currentRow();
-	int line = errTable->text(row, 0).toInt() + 1;
-	emit SetCursor( line, errTable->text(row, 1).toInt() );
+void ErrorMessage::updateSelection()
+{
+	int i = errTable->text( errTable->currentRow(), 0 ).toInt(); // get the hidden errCount value
+	errorData err = *errList.at(i - 1);
+	emit SetSelection(err.tok.start.row, err.tok.start.col, err.tok.end.row, err.tok.end.col);
 	enableButton (KDialogBase::User1, true);
 }
 

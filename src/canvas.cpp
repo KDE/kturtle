@@ -96,7 +96,7 @@ void Canvas::initValues() {
 	PenWidth = 0;
 	Pen = true;
 	Wrap = true;
-	Dir = PI/2;
+	Dir = 0;
 	font = QFont("serif", 18);
 	// the position
 	PosX = CanvasWidth / 2;
@@ -336,18 +336,17 @@ void Canvas::updateSpritePos() {
 	Sprite->move( (double)(PosX - ( Sprite->width() / 2 ) ), (double)(PosY - ( Sprite->height() / 2 ) ), -1 );
 }
 
-void Canvas::updateSpriteAngle() {
+void Canvas::updateSpriteAngle()
+{
 	// get the Dir back on the 1st circle 
-	while (Dir >= 2*PI || Dir < 0) {
-		if (Dir >= 2*PI) {
-			Dir = Dir - 2*PI;
-		}
-		if (Dir < 0) {
-			Dir = Dir + 2*PI;
-		}
+	while (Dir >= 2*PI || Dir < 0)
+	{
+		if (Dir >= 2*PI) Dir = Dir - 2*PI;
+		if (Dir < 0)     Dir = Dir + 2*PI;
 	}
 	// convert to degrees, fix the direction, divide by 10 (for picnr), and round
-	int i = ROUND2INT( ( (-Dir * 180) / PI + 90) / 10 );
+	int i = ROUND2INT( ( Dir*180 / PI ) / 10 );
+	if (i == 36) i = 0;
 	Sprite->setFrame(i);
 	updateSpritePos(); // pixmaps of different rotations have different sizes, so refresh
 }
@@ -408,38 +407,35 @@ void Canvas::slotGoY(int y) {
 	updateSpritePos();
 }
 
-void Canvas::slotForward(int x) {
+void Canvas::slotForward(int x)
+{
 	float f = (float)x;
-	int PosXnew = PosX + ROUND2INT(f * cos(Dir) );
-	int PosYnew = PosY - ROUND2INT(f * sin(Dir) );
-	if (Pen) {
-		LineShell(PosX, PosY, PosXnew, PosYnew);
-	}
+	int PosXnew = PosX + ROUND2INT( f * sin(Dir) );
+	int PosYnew = PosY - ROUND2INT( f * cos(Dir) );
+	if (Pen) LineShell(PosX, PosY, PosXnew, PosYnew);
 	slotGo(PosXnew, PosYnew);
 }
 
 void Canvas::slotBackward(int x) {
 	float f = (float)x;
-	int PosXnew = PosX - ROUND2INT(f * cos(Dir) );
-	int PosYnew = PosY + ROUND2INT(f * sin(Dir) );
-	if (Pen) {
-		LineShell(PosX, PosY, PosXnew, PosYnew);
-	}
+	int PosXnew = PosX - ROUND2INT( f * sin(Dir) );
+	int PosYnew = PosY + ROUND2INT( f * cos(Dir) );
+	if (Pen) LineShell(PosX, PosY, PosXnew, PosYnew);
 	slotGo(PosXnew, PosYnew);
 }
 
 void Canvas::slotDirection(double deg) {
-	Dir = ( -deg + 90 ) * PI / 180;
+	Dir = deg * PI / 180;
 	updateSpriteAngle();
 }
 
 void Canvas::slotTurnLeft(double deg) {
-	Dir = Dir + ( deg * PI / 180 );
+	Dir = Dir - ( deg * PI / 180 );
 	updateSpriteAngle();
 }
 
 void Canvas::slotTurnRight(double deg) {
-	Dir = Dir - ( deg * PI / 180 );
+	Dir = Dir + ( deg * PI / 180 );
 	updateSpriteAngle();
 }
 
