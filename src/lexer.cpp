@@ -2,7 +2,6 @@
 #include <qfile.h>
 
 #include "settings.h"
-
 #include "lexer.h"
 
 

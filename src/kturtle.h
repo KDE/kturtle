@@ -62,6 +62,7 @@ class MainWindow : public KMainWindow
     void setupCanvas();
     void setupEditor();
     void setupStatusBar();
+    void checkTranslationFile();
     
     KTextEdit          *editor;
     Canvas             *TurtleView;

@@ -2,8 +2,12 @@ This is the TODO file of the KTurtle project, here the things are put that still
 This list is devided into BIG-TODOs, normalTODOs, TO-oeps-meDOitALLreadies and StillSubjectToDiscussions :-)
 
 **** URGENT ****
-be sure the xml file is loaded. If not, have an error message. Load the en one at start.
-(if not, the parser keeps telling you have an error but it does not say it's because no xml file can be read)
+
+cies: urgets issues are fixed
+
+
+
+
 
 **** BIG-TODOs: ****
 

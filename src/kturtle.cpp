@@ -17,11 +17,13 @@
 #include <kmenubar.h>
 #include <kmessagebox.h>
 #include <kprocess.h>
+#include <kstandarddirs.h> 
 #include <kstatusbar.h>
 #include <kstdaction.h>
 #include <ktextedit.h>
 #include <kurl.h>
 
+#include "settings.h"
 #include "kturtle.h"
 
 
@@ -43,6 +45,7 @@ MainWindow::MainWindow() : KMainWindow( 0, i18n("KTurtle") ) {
     filename2saveAs = "";
     setCaption( i18n("Untitled") );
     picker = 0; // for the colorpickerdialog
+    checkTranslationFile(); // translationFile should be know else: error.
     
     // at last; must be sure everything is already set up ;)
     setAutoSaveSettings ("MainWindow Settings");
@@ -459,6 +462,8 @@ void MainWindow::slotErrorDialog(QString msg, int row, int col, int code) {
         ErrorType = i18n("Internal Error");
     } else if( code >= 5000 ) {
         ErrorType = i18n("Execution Error");
+    } else if( code < 1000 ) {
+        ErrorType = i18n("Error");
     }
     KMessageBox::detailedSorry( this, msg + line, i18n("Error code: %1").arg(code), ErrorType );
 }
@@ -518,7 +523,32 @@ void MainWindow::slotUpdateSettings() {
 }
 
 void MainWindow::slotConfigureKeys() {
-  KKeyDialog::configure(actionCollection(), this);
+    KKeyDialog::configure(actionCollection(), this);
+}
+
+void MainWindow::checkTranslationFile() {
+    // Here we check wether there is a TranslationFile selected in settings...
+    // if not we will set it to 'en_US' by default
+    // if ( !QFile( Settings::translationFilePath() ).exists() ) {
+    if ( !QFile( Settings::translationFilePath() ).exists() ) {
+        kdDebug(0)<<"--1--"<<endl;
+        if ( !locate("appdata", "data/logokeywords.en_US.xml").isNull() ) {
+            KConfig *config=kapp->config();
+            config->setGroup("language");
+            config->writeEntry("TranslationFile", locate("appdata", "data/logokeywords.en_US.xml") );
+            config->sync(); // doesnt work
+            // the settings dialog will not show the translationFile the first time it is started
+            // i dont know why or how to fix <- TODO 
+            kdDebug(0)<<"--2--"<<endl;
+        } else {
+        kdDebug(0)<<"--3--"<<endl;
+            slotErrorDialog( i18n("Could not find the command translation file.\n"
+                                  "Please go to \"Settings -> Configure KTurtle\" and "
+                                  "specify the full name and path to "
+                                  "\"logokeywords.en_US.xml\" or any other logokeywords "
+                                  "file. Otherwise KTurtle will not operate." ) );
+        }
+    }
 }
 
 void MainWindow::slotColorPicker() {
