@@ -122,7 +122,7 @@ Syntax highlighting allows you to learn and type easily the Logo instructions.
 <sect1 id="kturtle-canvas">
 <title>The KTurtle Canvas</title>
 <para>
-
+The KTurtle Canvas is the area where the commands are visualized. It also can be called the Turtle Playground for young children.
 </para>
 
 <para>
@@ -137,11 +137,121 @@ Syntax highlighting allows you to learn and type easily the Logo instructions.
 
 <chapter id="logo-programming">
 <title>Logo Programming</title>
+<para>
+You will find here how to program with Logo, starting with easy instructions.
+</para>
 <sect1 id="first-steps">
 <title>First steps with Logo: meet the Turtle!</title>
-<para>just a few commands: print, repeat, fw-tr) [just to show how easy it is!]
-penup...
-</para>  
+<sect2 id="directions">
+<title>The Turtle moves in 4 directions</title>
+<para>Let's start by getting the Turtle moving. Our Turtle can go to 4 directions: forward, backward, on the left and on the right. Remember that you write the instructions in the editor and you click on the Run button to see the turtle moving. These directions instructions are of the form
+<screen>
+instruction [spacebar] number 
+</screen>
+and they are listed below.
+</para>
+<table frame="none">
+<title>Instructions for directions</title>
+<tgroup cols="2" colsep="5" rowsep="1">
+<colspec colname="c1"/>
+<tbody>
+<row><entry><emphasis role="bold">Instruction</emphasis></entry><entry><emphasis role="bold">Effect on the turtle</emphasis></entry></row>
+<row><entry>forward XX </entry><entry>you move forward XX steps (i.e. XX pixels)</entry></row>
+<row><entry>backward XX</entry><entry>you move backward XX steps</entry></row>
+<row><entry>turnright XX</entry><entry>you turn to the right at an angle of XX degrees</entry></row>
+<row><entry>turnleft XX</entry><entry>you turn to the left at an angle of XX degrees</entry></row>
+</tbody>
+</tgroup>
+</table>
+<para>
+Note that you can also write all instructions in upper case letters, so for example
+<screen>
+BACKWARD 40
+</screen>
+will also work and the Turtle will move backwards for 40 steps.
+</para>
+<para>
+To get you started, type:
+<screen>
+forward 50
+</screen>
+in the editor and click on the Execute button (the blue round cog). See on the screenshot below what happens: the Turtle move for 50 steps.
+</para>
+<screenshot>
+     <screeninfo>Get the Turtle move forward for 50 steps.</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="forward.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase>Get the Turtle move forward for 50 steps</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
+<para>
+If you type 2 instructions in the editor, the turtle will execute them one after the other, in the order they are typed.
+</para>
+</sect2>
+<sect2 id="cleaning">
+<title>Cleaning</title>
+<para>Now you want to clean the Turtle path! You have 2 special instructions that will get some cleaning. When you type:
+<screen>
+reset
+</screen>
+everything will be back to defaults: the canvas will be cleared, the pen color becomes black, the background color comes back to white and the turtle goes back in the middle of the canvas and wait for your instructions.
+</para>
+<para>
+You can also clean the canvas but leave the Turtle where it is and keep the current color of the pen. This is done with the
+<screen>
+clear
+</screen>
+command.
+</para>
+<para>
+Usually,you will start with one of these commands, preferably <emphasis>reset</emphasis> to ensure the Turtle playground is clean.
+</para>
+</sect2> 
+<sect2 id="print">
+<title>Printing</title>
+<para>You've seen our Turtle drawing lines as she walks. Of course, you understand that she has a pen! What if you want the Turtle to move and not to draw something? I am sure you have guessed that she will get her pen up.
+<screen>
+penup
+</screen>
+get the pen up the canvas and not drawing.
+<screen>
+pendown
+</screen>
+will lower the pen again and the Turtle will be able to draw again.
+</para> 
+<para>
+Our Turtle knows how to write! We can display text on the cavas using the command
+<screen>
+print "some text"
+</screen>
+Don't forget the " around the text you want to display on the canvas.
+</para>
+<para>
+You will also need to write some comments in the program, to indicate what you want your turtle to do. The program is the text in the editor and once your turtle does exactly what you wanted her to do, you can save that text for showing to your friens. This text is call a program. When you write some words to say what this program does, this can help another person opening your program to understand it better. 
+<screen>
+# this is a comment
+</screen>
+The turtle will not execute the etxt after a #, she knows that does not concern her.
+</para>
+<para>
+Let's see those 4 commands in action. 
+</para>
+<screenshot>
+     <screeninfo>Get the Turtle set the pen up and down.</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="print.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase>Get the Turtle set the pen up and down</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
+</sect2>
 </sect1>
 <sect1 id="calculations">
 <title>Simple Calculations</title>
