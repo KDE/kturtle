@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
-  <!ENTITY kapp "&kturtle;"><!-- replace klatin here -->
+  <!ENTITY kapp "&kturtle;"><!-- replace kturtle here -->
   <!ENTITY package "kdenonbeta">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE"><!-- change language only here -->
@@ -93,19 +93,30 @@ full-screen mode
 
 <chapter id="using-kturtle">
 <title>Using KTurtle</title>
-<para>The KTurtle mainwindow consists of the editor on the left where you type the Logo instructions and the canvas on the right where the instructions are visualized.The toolbar allows you to use quickly some menu items.</para>
+<para>The KTurtle mainwindow consists of the editor on the left where you type the Logo instructions and the canvas on the right where the instructions are visualized. The canvas is the turtle playground, it's on the canvas that the turtle actually moves. The toolbar allows you to use quickly some menu items.</para>
+<screenshot>
+     <screeninfo>Here's a screenshot KTurtle when you start it for the first time</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="mainwindow.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase>KLogoTurtle Main Window</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
 <sect1 id="kturtle-editor">
 <title>The KTurtle Editor</title>
 <para>
-
+The KTurtle Editor allows you to type your Logo instructions and code. It can be detached from the window and dragged anywhere on your desktop. It can also be hidden/shown using the View menu, by clicking on Show Editor. 
 </para>
 
 <para>
-
+The cursor position is indicated in the statusbar, on the right with the Line number and Column number.
 </para>
 
 <para>
-
+Syntax highlighting allows you to learn and type easily the Logo instructions.
 </para>
 </sect1>
 <sect1 id="kturtle-canvas">
@@ -233,6 +244,13 @@ Draw a maze for example
 </varlistentry>
 <varlistentry>
 <term><menuchoice>
+<guimenu>File</guimenu>
+<guimenuitem>Save Canvas</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Save</action> your drawing which is currently on the canvas. </para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
 <shortcut>
 <keycombo>&Ctrl;<keycap>P</keycap></keycombo>
 </shortcut>
@@ -344,6 +362,31 @@ Draw a maze for example
 </variablelist>
 </para>
 </sect1>
+
+<sect1  id="kturtle-view-menu">
+<title>The <guimenu>View</guimenu> Menu</title>
+<para>
+</para>
+</sect1>
+
+<sect1  id="kturtle-toolsmenu">
+<title>The <guimenu>Tools</guimenu> Menu</title>
+<para>
+</para>
+</sect1>
+
+<sect1  id="kturtle-settings-menu">
+<title>The <guimenu>Settings</guimenu> Menu</title>
+<para>
+</para>
+</sect1>
+
+<sect1  id="kturtle-help-menu">
+<title>The <guimenu>Help</guimenu> Menu</title>
+<para>
+</para>
+</sect1>
+
 </chapter>
 
 <chapter id="developers">
