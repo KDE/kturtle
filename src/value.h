@@ -25,43 +25,98 @@
 
 using namespace std;
 
-class Value {
-  public:
-    
-    //constructor/destructor
-    //======================
-    Value();
-    Value(const Value&);
-    ~Value(){}
-    
-    
-    //public members
-    //==============
-    void toString(); //explicit conversion to string strVal
-    void toDouble(); //explicit conversion to double val
-    
-    //operators
-    //=========
-    Value& operator=(const Value&);
-    Value& operator=(const QString&);
-    Value& operator=(double);
+enum valueType
+{
+	boolType,
+	numberType,
+	stringType,
+};
 
-    Value& operator+(const Value&);
-    Value& operator-(const Value&);
-    Value& operator*(const Value&);
-    Value& operator/(const Value&);
+class Value
+{
+	public:
+	// constructors/destructor
+	Value();
+	Value(const Value&);
+	~Value() {}
 
-    bool operator==(const Value&) const;
-    bool operator!=(const Value&) const;
-    bool operator<(const Value&) const;
-    bool operator<=(const Value&) const;
-    bool operator>(const Value&) const;
-    bool operator>=(const Value&) const;
+	// public members
+	int Type() const;
+	void setType(int);
 
-    //public members  
-    bool bString; //set to true if Value represents a string...
-    QString strVal;
-    double val;
+	void setBool(bool);
+	bool Bool() const;
+
+	double Number() const;
+	void setNumber(double);
+	bool setNumber(QString);
+
+	QString String() const;
+	void setString(double);
+	void setString(QString);
+
+	// operators
+	Value& operator=(const Value&);
+	Value& operator=(const QString&);
+	Value& operator=(double);
+
+	Value& operator+(const Value&);
+	Value& operator-(const Value&);
+	Value& operator*(const Value&);
+	Value& operator/(const Value&);
+
+	bool operator==(const Value&) const;
+	bool operator!=(const Value&) const;
+	bool operator< (const Value&) const;
+	bool operator<=(const Value&) const;
+	bool operator> (const Value&) const;
+	bool operator>=(const Value&) const;
+	
+	
+	private:
+	void init();
+	
+	int type;
+	bool m_bool;
+	double m_double;
+	QString m_string;
+
+//   public:
+//     
+//     //constructor/destructor
+//     //======================
+//     Value();
+//     Value(const Value&);
+//     ~Value(){}
+//     
+//     
+//     //public members
+//     //==============
+//     void toString(); //explicit conversion to string strVal
+//     void toDouble(); //explicit conversion to double val
+//     
+//     //operators
+//     //=========
+//     Value& operator=(const Value&);
+//     Value& operator=(const QString&);
+//     Value& operator=(double);
+// 
+//     Value& operator+(const Value&);
+//     Value& operator-(const Value&);
+//     Value& operator*(const Value&);
+//     Value& operator/(const Value&);
+// 
+//     bool operator==(const Value&) const;
+//     bool operator!=(const Value&) const;
+//     bool operator<(const Value&) const;
+//     bool operator<=(const Value&) const;
+//     bool operator>(const Value&) const;
+//     bool operator>=(const Value&) const;
+// 
+//     //public members  
+//     bool bString; //set to true if Value represents a string...
+//     QString strVal;
+//     double val;
 
 };
 

@@ -278,8 +278,8 @@ void Executer::execForEach(TreeNode* node)
 	execute(expr1);
 	execute(expr2);
 	
-	QString expStr1 = expr1->getValue().strVal;
-	QString expStr2 = expr2->getValue().strVal;
+	QString expStr1 = expr1->getValue().String();
+	QString expStr2 = expr2->getValue().String();
 	
 	bBreak = false;
 	
@@ -318,7 +318,7 @@ void Executer::execFor(TreeNode* node)
 	if(node->size() == 4 ) //for loop without step part
 	{
 		bBreak = false;
-		for (double d = startVal.val; d <= stopVal.val; d = d + 1)
+		for (double d = startVal.Number(); d <= stopVal.Number(); d = d + 1)
 		{
 			if (bAbort) return;
 			kapp->processEvents();
@@ -336,9 +336,9 @@ void Executer::execFor(TreeNode* node)
 		execute(step);
 		Value stepVal = step->getValue();
 		bBreak=false;
-		if( (stepVal.val >= 0.0) && (startVal.val <= stopVal.val) )
+		if( (stepVal.Number() >= 0.0) && (startVal.Number() <= stopVal.Number()) )
 		{
-			for( double d = startVal.val; d <= stopVal.val; d = d + stepVal.val )
+			for( double d = startVal.Number(); d <= stopVal.Number(); d = d + stepVal.Number() )
 			{
 				if (bAbort) return;
 				kapp->processEvents();
@@ -348,9 +348,9 @@ void Executer::execFor(TreeNode* node)
 				if (bBreak || bReturn) break; //jump out loop
 			}
 		}
-		else if ( (stepVal.val < 0.0) && (startVal.val >= stopVal.val) )
+		else if ( (stepVal.Number() < 0.0) && (startVal.Number() >= stopVal.Number()) )
 		{
-			for (double d = startVal.val; d >= stopVal.val; d = d + stepVal.val)
+			for (double d = startVal.Number(); d >= stopVal.Number(); d = d + stepVal.Number())
 			{
 				if (bAbort) return;
 				kapp->processEvents();
@@ -373,7 +373,7 @@ void Executer::execWhile(TreeNode* node)
 	
 	bBreak = false;
 	execute(condition);
-	while (condition->getValue().val != 0)
+	while (condition->getValue().Number() != 0)
 	{
 		if (bAbort) return;
 		kapp->processEvents();
@@ -395,13 +395,13 @@ void Executer::execIf(TreeNode* node)
 	if (node->size() == 2) // no else
 	{
 		execute( condition );
-		if( condition->getValue().val != 0 ) execute(ifblok);   
+		if( condition->getValue().Number() != 0 ) execute(ifblok);   
 	}
 	else // else part given
 	{
 		TreeNode* elseblok = node->thirdChild();
 		execute( condition );
-		if( condition->getValue().val != 0 ) execute(ifblok);
+		if( condition->getValue().Number() != 0 ) execute(ifblok);
 		else execute( elseblok );
 	}
 }
@@ -431,7 +431,7 @@ void Executer::execConstant(/*TreeNode* node*/)
 	// do nothing, value is already set
 }
 
-Value Executer::getVal(TreeNode* node)
+Value Executer::exec2getValue(TreeNode* node)
 {
 	execute(node);
 	return node->getValue();
@@ -443,14 +443,14 @@ void Executer::execAdd(TreeNode* node)
 	// if one of the values to be summed is not a constant they should be concatenated
 	if (node->firstChild()->getType() == constantNode && node->secondChild()->getType() == constantNode)
 	{
-		node->setValue( getVal( node->firstChild() )
+		node->setValue( exec2getValue( node->firstChild() )
 		                +
-		                getVal( node->secondChild() )
+		                exec2getValue( node->secondChild() )
 		              );
 	}
 	else
 	{
-		node->setValue( getVal( node->firstChild() ).strVal.append( getVal( node->secondChild() ).strVal ) );
+		node->setValue( exec2getValue( node->firstChild() ).String().append( exec2getValue( node->secondChild() ).String() ) );
 		node->setType(stringConstantNode);
 	}
 }
@@ -464,9 +464,9 @@ void Executer::execMul(TreeNode* node)
 		emit ErrorMsg(node->getToken(), i18n("Cannot multiply strings"), 9000);
 		return;
 	}
-	node->setValue( getVal( node->firstChild() )
+	node->setValue( exec2getValue( node->firstChild() )
 	                *
-	                getVal( node->secondChild() )
+	                exec2getValue( node->secondChild() )
 	              );
 }
 
@@ -479,9 +479,9 @@ void Executer::execDiv(TreeNode* node)
 		emit ErrorMsg(node->getToken(), i18n("Cannot divide strings"), 9000);
 		return;
 	}
-	node->setValue( getVal( node->firstChild() )
+	node->setValue( exec2getValue( node->firstChild() )
 	                /
-	                getVal( node->secondChild() ) 
+	                exec2getValue( node->secondChild() ) 
 	              );
 }
 
@@ -494,60 +494,60 @@ void Executer::execSub(TreeNode* node)
 		emit ErrorMsg(node->getToken(), i18n("Cannot subtract strings"), 9000);
 		return;
 	}
-	node->setValue( getVal( node->firstChild() ) 
+	node->setValue( exec2getValue( node->firstChild() ) 
 	                - 
-	                getVal( node->secondChild() )
+	                exec2getValue( node->secondChild() )
 	              );
 }
 
        
 void Executer::execLT(TreeNode* node)
 {
-	node->setValue( (double) ( getVal( node->firstChild() )
+	node->setValue( (double) ( exec2getValue( node->firstChild() )
 	                           <
-	                           getVal( node->secondChild() ) )
+	                           exec2getValue( node->secondChild() ) )
 	              );
 }
 
 void Executer::execLE(TreeNode* node)
 {
-	node->setValue( (double) ( getVal( node->firstChild() )
+	node->setValue( (double) ( exec2getValue( node->firstChild() )
 	                           <=
-	                           getVal( node->secondChild() ) )
+	                           exec2getValue( node->secondChild() ) )
 	              );
 }
 
 void Executer::execGT(TreeNode* node)
 {
-	node->setValue( (double) ( getVal( node->firstChild() )
+	node->setValue( (double) ( exec2getValue( node->firstChild() )
 	                           >
-	                           getVal( node->secondChild() ) )
+	                           exec2getValue( node->secondChild() ) )
 	              );
 }
 
 void Executer::execGE(TreeNode* node)
 {
-	node->setValue( (double) ( getVal( node->firstChild() )
+	node->setValue( (double) ( exec2getValue( node->firstChild() )
 	                           >=
-	                           getVal( node->secondChild() ) )
+	                           exec2getValue( node->secondChild() ) )
 	              );
 }
 
 
 void Executer::execEQ(TreeNode* node)
 {
-	node->setValue( (double) ( getVal( node->firstChild() )
+	node->setValue( (double) ( exec2getValue( node->firstChild() )
 	                           ==
-	                           getVal( node->secondChild() ) )
+	                           exec2getValue( node->secondChild() ) )
 	              );
 }
 
 
 void Executer::execNE(TreeNode* node)
 {
-	node->setValue( (double) ( getVal( node->firstChild() )
+	node->setValue( (double) ( exec2getValue( node->firstChild() )
 	                           !=
-	                           getVal( node->secondChild() ) )
+	                           exec2getValue( node->secondChild() ) )
 	              );
 }
 
@@ -555,29 +555,29 @@ void Executer::execNE(TreeNode* node)
   
 void Executer::execAnd(TreeNode* node)
 {
-	bool nl = getVal( node->firstChild() ).val != 0;
-	bool nr = getVal( node->secondChild() ).val != 0;
+	bool nl = exec2getValue( node->firstChild() ).Number() != 0;
+	bool nr = exec2getValue( node->secondChild() ).Number() != 0;
 	node->setValue( (double) (nl && nr) );
 }
 
        
 void Executer::execOr(TreeNode* node)
 {
-	bool nl = getVal( node->firstChild() ).val != 0;
-	bool nr = getVal( node->secondChild() ).val != 0;
+	bool nl = exec2getValue( node->firstChild() ).Number() != 0;
+	bool nr = exec2getValue( node->secondChild() ).Number() != 0;
 	node->setValue( (double) (nl || nr) );
 }
 
 
 void Executer::execNot(TreeNode* node)
 {
-	node->setValue(1 - getVal( node->firstChild() ).val); 
+	node->setValue(1 - exec2getValue( node->firstChild() ).Number()); 
 }
 
 
 void Executer::execMinus(TreeNode* node)
 {
-	node->setValue(-getVal( node->firstChild() ).val); 
+	node->setValue(-exec2getValue( node->firstChild() ).Number()); 
 }
 
 
@@ -603,7 +603,7 @@ QString Executer::runCommand(const QString& command)
 
 void Executer::execRun(TreeNode* node)
 {
-	QString cmd = getVal( node->firstChild() ).strVal;
+	QString cmd = exec2getValue( node->firstChild() ).String();
 	node->setValue( runCommand(cmd) );
 }
 
@@ -631,8 +631,8 @@ void Executer::execGo(TreeNode* node)
 	TreeNode* nodeY = node->secondChild();
 	execute(nodeX); // executing
 	execute(nodeY);
-	int x = ROUND2INT(nodeX->getValue().val); // converting & rounding to int
-	int y = ROUND2INT(nodeY->getValue().val);
+	int x = ROUND2INT(nodeX->getValue().Number()); // converting & rounding to int
+	int y = ROUND2INT(nodeY->getValue().Number());
 	emit Go(x, y);
 }
 
@@ -646,7 +646,7 @@ void Executer::execGoX(TreeNode* node)
 	}
 	TreeNode* nodeX = node->firstChild(); // getting
 	execute(nodeX); // executing
-	int x = ROUND2INT(nodeX->getValue().val); // converting & rounding to int
+	int x = ROUND2INT(nodeX->getValue().Number()); // converting & rounding to int
 	emit GoX(x);
 }
 
@@ -660,7 +660,7 @@ void Executer::execGoY(TreeNode* node)
 	}
 	TreeNode* nodeY = node->firstChild(); // getting
 	execute(nodeY); // executing
-	int y = ROUND2INT(nodeY->getValue().val); // converting & rounding to int
+	int y = ROUND2INT(nodeY->getValue().Number()); // converting & rounding to int
 	emit GoY(y);
 }
 
@@ -674,7 +674,7 @@ void Executer::execForward(TreeNode* node)
 	}
 	TreeNode* nodeX = node->firstChild(); // getting
 	execute(nodeX); // executing
-	int x = ROUND2INT(nodeX->getValue().val); // converting & rounding to int
+	int x = ROUND2INT(nodeX->getValue().Number()); // converting & rounding to int
 	emit Forward(x);
 }
 
@@ -688,7 +688,7 @@ void Executer::execBackward(TreeNode* node)
 	}
 	TreeNode* nodeX = node->firstChild(); // getting
 	execute(nodeX); // executing
-	int x = ROUND2INT(nodeX->getValue().val); // converting & rounding to int
+	int x = ROUND2INT(nodeX->getValue().Number()); // converting & rounding to int
 	emit Backward(x);
 }
 
@@ -702,7 +702,7 @@ void Executer::execDirection(TreeNode* node)
 	}
 	TreeNode* nodeX = node->firstChild(); // getting
 	execute(nodeX); // executing
-	double x = (nodeX->getValue().val); // converting to double
+	double x = (nodeX->getValue().Number()); // converting to double
 	emit Direction(x);  // why the FUCK doesnt this work??
 }
 
@@ -716,7 +716,7 @@ void Executer::execTurnLeft(TreeNode* node)
 	}
 	TreeNode* nodeX = node->firstChild(); // getting
 	execute(nodeX); // executing
-	double x = (nodeX->getValue().val); // converting to double
+	double x = (nodeX->getValue().Number()); // converting to double
 	emit TurnLeft(x);
 }
 
@@ -730,7 +730,7 @@ void Executer::execTurnRight(TreeNode* node)
 	}
 	TreeNode* nodeX = node->firstChild(); // getting
 	execute(nodeX); // executing
-	double x = (nodeX->getValue().val); // converting to double
+	double x = (nodeX->getValue().Number()); // converting to double
 	emit TurnRight(x);
 }
 
@@ -755,7 +755,7 @@ void Executer::execSetPenWidth(TreeNode* node)
 	}
 	TreeNode* nodeX = node->firstChild(); // getting
 	execute(nodeX); // executing
-	int x = ROUND2INT(nodeX->getValue().val); // converting & rounding to int
+	int x = ROUND2INT(nodeX->getValue().Number()); // converting & rounding to int
 	if (x < 1)
 	{
 		emit ErrorMsg(node->getToken(), i18n("The parameter of %1 must be smaller than 1.").arg( node->getLook() ), 6050);
@@ -800,9 +800,9 @@ void Executer::execSetFgColor(TreeNode* node)
 	execute(nodeR); // executing
 	execute(nodeG);
 	execute(nodeB);
-	int r = ROUND2INT(nodeR->getValue().val); // converting & rounding to int
-	int g = ROUND2INT(nodeG->getValue().val);
-	int b = ROUND2INT(nodeB->getValue().val);
+	int r = ROUND2INT(nodeR->getValue().Number()); // converting & rounding to int
+	int g = ROUND2INT(nodeG->getValue().Number());
+	int b = ROUND2INT(nodeB->getValue().Number());
 	if ( ( r < 0 || g < 0 || b < 0 ) || ( r > 255 || g > 255 || b > 255 ) )
 	{
 		emit ErrorMsg(node->getToken(), i18n("The parameters of function %1 must be within range: 0 to 255.").arg( node->getLook() ), 6090);
@@ -825,9 +825,9 @@ void Executer::execSetBgColor(TreeNode* node)
 	execute(nodeR); // executing
 	execute(nodeG);
 	execute(nodeB);
-	int r = ROUND2INT(nodeR->getValue().val); // converting & rounding to int
-	int g = ROUND2INT(nodeG->getValue().val);
-	int b = ROUND2INT(nodeB->getValue().val);
+	int r = ROUND2INT(nodeR->getValue().Number()); // converting & rounding to int
+	int g = ROUND2INT(nodeG->getValue().Number());
+	int b = ROUND2INT(nodeB->getValue().Number());
 	if ( ( r < 0 || g < 0 || b < 0 ) || ( r > 255 || g > 255 || b > 255 ) )
 	{
 		emit ErrorMsg(node->getToken(), i18n("The parameters of function %1 must be within range: 0 to 255.").arg( node->getLook() ), 7010);
@@ -849,8 +849,8 @@ void Executer::execResizeCanvas(TreeNode* node)
 	TreeNode* nodeY = node->secondChild();
 	execute(nodeX); // executing
 	execute(nodeY);
-	int x = ROUND2INT(nodeX->getValue().val); // converting & rounding to int
-	int y = ROUND2INT(nodeY->getValue().val);
+	int x = ROUND2INT(nodeX->getValue().Number()); // converting & rounding to int
+	int y = ROUND2INT(nodeY->getValue().Number());
 	if ( ( x < 1 || y < 1 ) || ( x > 10000 || y > 10000 ) )
 	{
 		emit ErrorMsg(node->getToken(), i18n("The parameters of function %1 must be within range: 1 to 10000.").arg( node->getLook() ), 7030);
@@ -902,7 +902,7 @@ void Executer::execSpriteChange(TreeNode* node)
 	}
 	TreeNode* nodeX = node->firstChild(); // getting
 	execute(nodeX); // executing
-	int x = (int)(nodeX->getValue().val); // converting & rounding to int
+	int x = (int)(nodeX->getValue().Number()); // converting & rounding to int
 	emit SpriteChange(x);
 }
 
@@ -916,7 +916,7 @@ void Executer::execMessage(TreeNode* node)
 		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 7070);
 		return;
 	}
-	emit MessageDialog(node->firstChild()->getValue().strVal);
+	emit MessageDialog(node->firstChild()->getValue().String());
 }
 
 
@@ -928,7 +928,7 @@ void Executer::execInputWindow(TreeNode* node)
 		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 7070);
 		return;
 	}
-	QString value = node->firstChild()->getValue().strVal;
+	QString value = node->firstChild()->getValue().String();
 	emit InputDialog(value);
 	bool ok = true;
 	value.toFloat(&ok); // to see if the value from the InpDialog is a float
@@ -955,7 +955,7 @@ void Executer::execPrint(TreeNode* node)
 	for (i = node->begin(); i != node->end(); ++i)
 	{
 		execute( *i ); //execute expression
-		str = str + (*i)->getValue().strVal;
+		str = str + (*i)->getValue().String();
 	}
 	emit Print(str);
 }
@@ -977,9 +977,9 @@ void Executer::execFontType(TreeNode* node)
 	QString extra;
 	if (node->size() == 2)
 	{
-		QString extra = node->secondChild()->getValue().strVal;
+		QString extra = node->secondChild()->getValue().String();
 	}
-	QString family = node->firstChild()->getValue().strVal;
+	QString family = node->firstChild()->getValue().String();
 	emit FontType(family, extra);
 }
 
@@ -993,7 +993,7 @@ void Executer::execFontSize(TreeNode* node)
 	}
 	TreeNode* nodeX = node->firstChild(); // getting
 	execute(nodeX); // executing
-	int px = ROUND2INT(nodeX->getValue().val); // converting & rounding to int
+	int px = ROUND2INT(nodeX->getValue().Number()); // converting & rounding to int
 	if ( px < 0 || px > 350 )
 	{
 		emit ErrorMsg(node->getToken(), i18n("The parameters of function %1 must be within range: 0 to 350.").arg( node->getLook() ), 5065);
@@ -1009,7 +1009,7 @@ void Executer::execRepeat(TreeNode* node)
 	
 	bBreak=false;
 	execute( value );
-	for( int i = ROUND2INT( value->getValue().val); i > 0; i-- )
+	for( int i = ROUND2INT( value->getValue().Number()); i > 0; i-- )
 	{
 		if (bAbort) return;
 		kapp->processEvents();
@@ -1032,8 +1032,8 @@ void Executer::execRandom(TreeNode* node)
 	TreeNode* nodeY = node->secondChild();
 	execute(nodeX); // executing
 	execute(nodeY);
-	float x = nodeX->getValue().val;
-	float y = nodeY->getValue().val;
+	float x = nodeX->getValue().Number();
+	float y = nodeY->getValue().Number();
 	
 	float r = (float)( KApplication::random() ) / RAND_MAX;
 	Value value;
@@ -1053,7 +1053,7 @@ void Executer::execWait(TreeNode* node)
 	}
 	TreeNode* nodeX = node->firstChild(); // getting
 	execute(nodeX); // executing
-	float sec = nodeX->getValue().val;
+	float sec = nodeX->getValue().Number();
 	startWaiting(sec);
 }
 

@@ -96,7 +96,7 @@ Q_OBJECT
 	void execReturn        (TreeNode*);
 	void execBreak         (/*TreeNode*/);
 
-	Value getVal          (TreeNode*);
+	Value exec2getValue    (TreeNode*);
 	
 	void execAdd           (TreeNode*);
 	void execMul           (TreeNode*);

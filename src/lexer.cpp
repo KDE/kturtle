@@ -269,9 +269,9 @@ int Lexer::getNumber(Value& num, QString& look)
 			currentChar = getChar();
 		}
 		ungetChar(currentChar); //read one too much
-		num.bString = false;
-		num.val = look.toDouble();
-		kdDebug(0)<<"Lexer::getNumber(), got NUMBER: '"<<num.val<<"'"<<endl;
+		//num.bString = false;
+		num.setNumber( look.toDouble() );
+		kdDebug(0)<<"Lexer::getNumber(), got NUMBER: '"<<num.Number()<<"'"<<endl;
 		return tokNumber;
 	}
 	else
