@@ -225,7 +225,7 @@ void Canvas::loadSpriteFrames(QString name) {
 	// This will be fixed in qt3.3 and in the current qt-copy
 	QPixmap turtlePix = QPixmap(locate("data","kturtle/pics/turtle.0000.png") );
 	if ( turtlePix.isNull() ) {
-	QString mString = i18n("The turtle picture is not found.\nPlease check your installation!");
+	QString mString = i18n("The turtle picture is not found;\nplease check your installation.");
 	KMessageBox::sorry( this, mString, i18n("Error") );
 	exit(1);
 	}

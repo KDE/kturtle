@@ -67,8 +67,8 @@ MainWindow::MainWindow(KTextEditor::Document *document) : editor(0) {
 	// set the shell's ui resource file
 	if (!document) {
 		if ( !(document = KTextEditor::EditorChooser::createDocument(0,"KTextEditor::Document") ) ) {
-			KMessageBox::error(this, i18n("A KDE text editor component could not be found!\n"
-					"Please check your KDE installation."));
+			KMessageBox::error(this, i18n("A KDE text-editor component could not be found;\n"
+					"please check your KDE installation."));
 			kapp->exit(1);
 		}  
 		// docList.append(doc);
@@ -364,8 +364,8 @@ void MainWindow::slotSaveAs() {
 		}
 		if (QFile(url.path()).exists()) { 
 			int result = KMessageBox::warningContinueCancel ( this,
-			i18n("A file named \"%1\" already exists.\n"
-			"Are you sure you want to overwrite it?").arg( url.url() ),
+			i18n("A file named \"%1\" already exists;\n"
+			"are you sure you want to overwrite it?").arg( url.url() ),
 			i18n("Overwrite Existing File?"), i18n("Overwrite") );
 			if (result != KMessageBox::Continue) {
 				return;
@@ -386,8 +386,8 @@ void MainWindow::slotSaveCanvas() {
 		}
 		if (QFile(url.path()).exists()) { 
 			int result = KMessageBox::warningContinueCancel( this,
-				i18n("A picture named \"%1\" already exists.\n"
-				"Are you sure you want to overwrite it?").arg(url.url()),
+				i18n("A picture named \"%1\" already exists;\n"
+				"are you sure you want to overwrite it?").arg(url.url()),
 				i18n("Overwrite Existing Picture?"), i18n("Overwrite") );
 			if (result != KMessageBox::Continue) {
 				return;
@@ -556,7 +556,7 @@ void MainWindow::startExecution() {
 			finishExecution();
 		}
 	} else {
-		slotStatusBar(i18n("Parsing failed!"),  IDS_STATUS);
+		slotStatusBar(i18n("Parsing failed."),  IDS_STATUS);
 		finishExecution();
 	}
 }
@@ -891,7 +891,7 @@ void MainWindow::slotUpdateSettings() {
 	Settings::writeConfig();
 	KConfig entry(locate("locale", "all_languages"));
 	entry.setGroup(Settings::logoLanguage().left(2));
-	statusBar()-> changeItem(i18n("Commands language: ")+entry.readEntry("Name"), IDS_LANG);
+	statusBar()-> changeItem(i18n("Command language: ")+entry.readEntry("Name"), IDS_LANG);
 }
 
 void MainWindow::readConfig(KConfig *config) {
@@ -899,7 +899,7 @@ void MainWindow::readConfig(KConfig *config) {
 	m_recentFiles->loadEntries(config, "Recent Files");
 	KConfig entry(locate("locale", "all_languages"));
 	entry.setGroup(Settings::logoLanguage().left(2));
-	statusBar()-> changeItem(i18n("Commands language: ")+entry.readEntry("Name"), IDS_LANG);
+	statusBar()-> changeItem(i18n("Command language: ")+entry.readEntry("Name"), IDS_LANG);
 }
 
 // END
