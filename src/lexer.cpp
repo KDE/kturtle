@@ -134,7 +134,7 @@ QString Lexer::translateCommand(string s) {
 void Lexer::checkKeywords(token& t) {
   if(t.type == tokId) {
     QString tt = t.str.c_str(); // small *hack* to make it work ;-)
-        
+
     if( !AliasMap[tt].isEmpty() ) { // translate the alias
       tt = AliasMap[tt];
     }
@@ -144,9 +144,6 @@ void Lexer::checkKeywords(token& t) {
     else if( tt == KeyMap["while"]          ) t.type=tokWhile;
     else if( tt == KeyMap["if"]             ) t.type=tokIf;
     else if( tt == KeyMap["else"]           ) t.type=tokElse;
-    else if( tt == KeyMap["print"]          ) t.type=tokPrint;
-    else if( tt == KeyMap["println"]        ) t.type=tokPrintLn;
-    else if( tt == KeyMap["input"]          ) t.type=tokInput;
     else if( tt == KeyMap["for"]            ) t.type=tokFor;
     else if( tt == KeyMap["to"]             ) t.type=tokTo;
     else if( tt == KeyMap["step"]           ) t.type=tokStep;
@@ -187,7 +184,19 @@ void Lexer::checkKeywords(token& t) {
     else if( tt == KeyMap["spritechange"]   ) t.type=tokSpriteChange;
     
     else if( tt == KeyMap["do"]             ) t.type=tokDo; // dummy commands
-    
+
+    else if( tt == KeyMap["input"]          ) t.type=tokInput;
+    else if( tt == KeyMap["inputwindow"]    ) t.type=tokInputWindow;
+    else if( tt == KeyMap["print"]          ) t.type=tokPrint;
+    else if( tt == KeyMap["fonttype"]       ) t.type=tokFontType;
+    else if( tt == KeyMap["fontsize"]       ) t.type=tokFontSize;
+    else if( tt == KeyMap["repeat"]         ) t.type=tokRepeat;
+    else if( tt == KeyMap["random"]         ) t.type=tokRandom;
+    else if( tt == KeyMap["wait"]           ) t.type=tokWait;
+    else if( tt == KeyMap["wrapon"]         ) t.type=tokWrapOn;
+    else if( tt == KeyMap["wrapoff"]        ) t.type=tokWrapOff;
+    else if( tt == KeyMap["reset"]          ) t.type=tokReset;
+       
     else t.type = tokId;
   }
 }

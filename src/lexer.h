@@ -35,9 +35,6 @@ enum types {
   tokProcId,
   tokBegin,
   tokEnd,
-  tokPrint,
-  tokPrintLn,
-  tokInput,
     
   tokOr,
   tokAnd,
@@ -88,8 +85,20 @@ enum types {
   tokSpritePress,
   tokSpriteChange,
   
-  tokDo // this is a dummy command
+  tokDo, // this is a dummy command
 
+  tokInput,
+  tokInputWindow,
+  tokPrint,
+  tokFontType,
+  tokFontSize,
+  tokRepeat,
+  tokRandom,
+  tokWait,
+  tokWrapOn,
+  tokWrapOff,
+  tokReset
+  
 };
 
 

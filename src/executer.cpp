@@ -413,7 +413,7 @@ void Executer::execAdd( TreeNode* node ) {
 
        
 void Executer::execMul( TreeNode* node ) {
-  if( node->firstChild()->getType() != constantNode || node->secondChild()->getType() != constantNode ) {
+  if( node->firstChild()->getType() == stringConstantNode || node->secondChild()->getType() == stringConstantNode ) {
     emit ErrorMsg( i18n("Cannot multiply strings."), 0, 0, 9000);
     return;
   }
@@ -425,7 +425,7 @@ void Executer::execMul( TreeNode* node ) {
 
        
 void Executer::execDiv( TreeNode* node ) {
-  if( node->firstChild()->getType() != constantNode || node->secondChild()->getType() != constantNode ) {
+  if( node->firstChild()->getType() == stringConstantNode || node->secondChild()->getType() == stringConstantNode ) {
     emit ErrorMsg( i18n("Cannot divide strings."), 0, 0, 9000);
     return;
   }
@@ -436,7 +436,7 @@ void Executer::execDiv( TreeNode* node ) {
 
        
 void Executer::execSub( TreeNode* node ) {
-  if( node->firstChild()->getType() != constantNode || node->secondChild()->getType() != constantNode ) {
+  if( node->firstChild()->getType() == stringConstantNode || node->secondChild()->getType() == stringConstantNode ) {
     emit ErrorMsg( i18n("Cannot substract strings."), 0, 0, 9000);
     return;
   }

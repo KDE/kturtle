@@ -299,8 +299,8 @@ void MainWindow::slotRun() {
 //     run->setEnabled(true);
     slotStatusBar(i18n("Parsing commands..."), 1);
     
-    //string txt=editor->text() ; // TODO interpreter shouldnt need extra "[" & "]"
-    QString txt(editor->text());
+    string txt=editor->text().latin1(); // TODO interpreter shouldnt need extra "[" & "]"
+    //QString txt(editor->text());
     stringbuf sbuf(txt , ios_base::in);
     istream in(&sbuf);
     
@@ -317,7 +317,7 @@ void MainWindow::slotRun() {
         Executer exe(root); // make Executer object, 'exe', and have it point to the root
         connect( &exe, SIGNAL(ErrorMsg(QString, int, int, int) ), 
                  this, SLOT(slotErrorDialog(QString, int, int, int) ) );
-        connect( &exe, SIGNAL(Finished() ), this, SLOT(slotExecutionFinished() ) );
+        connect( &exe, SIGNAL( Finished() ), this, SLOT( slotExecutionFinished() ) );
 
         // Connect the signals form Executer to the slots from Canvas:
         // TODO TODO TODO Implement new funktions!!

@@ -85,12 +85,9 @@ class Parser : public QObject
     TreeNode* While();
     TreeNode* For();
     TreeNode* ForEach();
+    TreeNode* NewLineNode();
     TreeNode* If();
     TreeNode* getString();
-    TreeNode* Print();
-    TreeNode* NewLineNode();
-    TreeNode* PrintLn();
-    TreeNode* Input();
     TreeNode* Return();
     TreeNode* Break();
     
@@ -115,6 +112,18 @@ class Parser : public QObject
     TreeNode* SpritePress();
     TreeNode* SpriteChange();
 
+    TreeNode* Input();
+    TreeNode* InputWindow();
+    TreeNode* Print();
+    TreeNode* FontType();
+    TreeNode* FontSize();
+    TreeNode* Repeat();
+    TreeNode* Random();
+    TreeNode* Wait();
+    TreeNode* WrapOn();
+    TreeNode* WrapOff();
+    TreeNode* Reset();
+    
     //string toString(number);
 
     //private locals

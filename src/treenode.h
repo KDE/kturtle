@@ -34,8 +34,6 @@ enum NodeType {
                 forEachNode,
                 whileNode,
                 ifNode,
-                printNode,
-                inputNode,
                 assignNode,
                 expressionNode,
                 idNode,
@@ -82,7 +80,19 @@ enum NodeType {
                 SpriteShowNode,
                 SpriteHideNode,
                 SpritePressNode,
-                SpriteChangeNode
+                SpriteChangeNode,
+
+                inputNode,
+                InputWindowNode,
+                printNode,
+                FontTypeNode,
+                FontSizeNode,
+                RepeatNode,
+                RandomNode,
+                WaitNode,
+                WrapOnNode,
+                WrapOffNode,
+                ResetNode
                 
               };
 

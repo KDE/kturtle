@@ -77,9 +77,6 @@ void Parser::Match(int x) {
       case tokProcId    : tokStr+="procedure id"; break;
       case tokBegin     : tokStr+="begin";        break;
       case tokEnd       : tokStr+="end";          break;
-      case tokPrint     : tokStr+="print";        break;
-      case tokPrintLn   : tokStr+="println";      break;
-      case tokInput     : tokStr+="input";        break;
     
       case tokOr        : tokStr+="or";      break;
       case tokAnd       : tokStr+="and";     break;
@@ -129,6 +126,18 @@ void Parser::Match(int x) {
       case tokSpriteHide    : tokStr+="spritehide";   break;
       case tokSpritePress   : tokStr+="spritepress";  break;
       case tokSpriteChange  : tokStr+="spritechange"; break;
+
+      case tokInput         : tokStr+="input";        break;
+      case tokInputWindow   : tokStr+="inputwindow";  break;
+      case tokPrint         : tokStr+="print";        break;
+      case tokFontType      : tokStr+="fonttype";     break;
+      case tokFontSize      : tokStr+="fontsize";     break;
+      case tokRepeat        : tokStr+="repeat";       break;
+      case tokRandom        : tokStr+="random";       break;
+      case tokWait          : tokStr+="wait";         break;
+      case tokWrapOn        : tokStr+="wrapon";       break;
+      case tokWrapOff       : tokStr+="wrapoff";      break;
+      case tokReset         : tokStr+="reset";        break;
 
       default: tokStr+= (char)x; break;
     }
@@ -196,12 +205,8 @@ TreeNode* Parser::getId(){
 
 TreeNode* Parser::runFunction(){
   TreeNode* n=new TreeNode( runNode, row, col );
-  Match(tokRun);
-  Match('(');
-  
+  Match(tokRun);  
   n->appendChild( Expression() );
-  
-  Match(')');
   return n;
 }
 
@@ -590,8 +595,7 @@ TreeNode* Parser::ForEach(){
     Match(tokSeperated);
     Match(tokBy);
     fNode->appendChild( Expression() ); //seperator expression
-  }
-  else{ //default seperator "\n"
+  } else { //default seperator "\n"
     fNode->appendChild( NewLineNode() );
   }
     
@@ -605,9 +609,13 @@ TreeNode* Parser::ForEach(){
   return fNode;
 }
 
-
-
-
+TreeNode* Parser::NewLineNode() {
+  TreeNode* newline = new TreeNode( stringConstantNode, row, col );
+  Number n;
+  n=string("\n");
+  newline->setValue( n );
+  return newline;
+}
 
 
 
@@ -667,59 +675,6 @@ TreeNode* Parser::getString(){
   return str;
 }
 
-/*
-  <print> ::= 'print' ( ( <expression> | <string> ) ',' )+
-*/
-TreeNode* Parser::Print(){
-  TreeNode* node=new TreeNode( printNode, row, col );
-  node->setName("print");
-  node->setKey( lexer->translateCommand("print") );
-  
-  getToken(); //is tokPrint or tokPrintLn
-  
-  //first expression
-  node->appendChild( Expression() );
-  
-  //following strings or expressions
-  while( look.type == ',' ){
-    getToken(); //the comma
-    node->appendChild( Expression() );
-  }
-  
-  return node;
-}
-
-
-TreeNode* Parser::NewLineNode(){
-  TreeNode* newline = new TreeNode( stringConstantNode, row, col );
-  Number n;
-  n=string("\n");
-  newline->setValue( n );
-  return newline;        
-}
-
-//use Print and add extra string element containing "\n"
-TreeNode* Parser::PrintLn(){
-  TreeNode* node=Print();
-  node->setName("println");
-  node->setKey( lexer->translateCommand("println") );
-
-  node->appendChild( NewLineNode() );
-
-  return node;
-}
-
-TreeNode* Parser::Input(){
-  TreeNode* inp=new TreeNode( inputNode, row, col );
-  inp->setName("input");
-  inp->setKey( lexer->translateCommand("input") );
-  
-  Match( tokInput ); 
-  inp->appendChild( getId() ); 
-  
-  return inp;
-}
-
 TreeNode* Parser::Return(){
   TreeNode* ret=new TreeNode( returnNode, row, col );
   
@@ -743,7 +698,7 @@ TreeNode* Parser::Statement() {
     case tokForEach : return ForEach();       break;
     case tokWhile   : return While();         break;
     case tokPrint   : return Print();         break;
-    case tokPrintLn : return PrintLn();       break;
+    case tokRun     : return runFunction();   break;
     case tokInput   : return Input();         break;
     case tokReturn  : return Return();        break;
     case tokBreak   : return Break();         break;
@@ -1152,7 +1107,7 @@ TreeNode* Parser::SpritePress() {
 TreeNode* Parser::SpriteChange() {
   TreeNode* node=new TreeNode( SpriteChangeNode, row, col );
   node->setName("spritechange");
-    node->setKey( lexer->translateCommand("spritechange") );
+  node->setKey( lexer->translateCommand("spritechange") );
   
   getToken();
   
@@ -1166,6 +1121,176 @@ TreeNode* Parser::SpriteChange() {
   }
   return node;
 }
+
+
+
+TreeNode* Parser::Input() {
+  TreeNode* node=new TreeNode( inputNode, row, col );
+  node->setName("input");
+  node->setKey( lexer->translateCommand("input") );
+  
+  Match( tokInput ); 
+  node->appendChild( getId() ); 
+  
+  return node;
+}
+
+TreeNode* Parser::InputWindow() {
+  TreeNode* node=new TreeNode( InputWindowNode, row, col );
+  node->setName("inputwindow");
+  node->setKey( lexer->translateCommand("inputwindow") );
+  
+  Match( tokInputWindow ); 
+  node->appendChild( getId() ); 
+  
+  return node;
+}
+
+
+/*
+  <print> ::= 'print' ( ( <expression> | <string> ) ',' )+
+*/
+TreeNode* Parser::Print(){
+  TreeNode* node=new TreeNode( printNode, row, col );
+  node->setName("print");
+  node->setKey( lexer->translateCommand("print") );
+  
+  getToken();
+  
+  //first expression
+  node->appendChild( Expression() );
+  
+  //following strings or expressions
+  while( look.type == ',' ){
+    getToken(); //the comma
+    node->appendChild( Expression() );
+  }
+  
+  return node;
+}
+
+TreeNode* Parser::FontType() {
+  TreeNode* node=new TreeNode( FontTypeNode, row, col );
+  node->setName("fonttype");
+  node->setKey( lexer->translateCommand("fonttype") );
+  
+  getToken();
+ 
+  //first expression
+  node->appendChild( Expression() );
+  
+  //following strings or expressions
+  while( look.type == ',' ){
+    getToken(); //the comma
+    node->appendChild( Expression() );
+  }
+  return node;
+}
+
+TreeNode* Parser::FontSize() {
+  TreeNode* node=new TreeNode( FontSizeNode, row, col );
+  node->setName("fontsize");
+  node->setKey( lexer->translateCommand("fontsize") );
+  
+  getToken();
+  
+  //first expression
+  node->appendChild( Expression() );
+  
+  //following strings or expressions
+  while( look.type == ',' ){
+    getToken(); //the comma
+    node->appendChild( Expression() );
+  }
+  return node;
+}
+
+TreeNode* Parser::Repeat() {
+  TreeNode* node=new TreeNode( RepeatNode, row, col );
+  node->setName("repeat");
+  node->setKey( lexer->translateCommand("repeat") );
+  Match(tokRepeat);
+  node->appendChild( Expression() );
+  
+  if(look.type == tokBegin) { // repeat followed by a block
+    node->appendChild( Block() ); 
+  } else { // repeat followed by single statement
+    node->appendChild( Statement() );
+  }
+  
+  return node;
+}
+
+TreeNode* Parser::Random() {
+  TreeNode* node=new TreeNode( RandomNode, row, col );
+  node->setName("random");
+  node->setKey( lexer->translateCommand("random") );
+  
+  getToken();
+  
+  //first expression
+  node->appendChild( Expression() );
+  
+  //following strings or expressions
+  while( look.type == ',' ){
+    getToken(); //the comma
+    node->appendChild( Expression() );
+  }
+  return node;
+}
+
+TreeNode* Parser::Wait() {
+  TreeNode* node=new TreeNode( WaitNode, row, col );
+  node->setName("wait");
+  node->setKey( lexer->translateCommand("wait") );
+  
+  getToken();
+  
+  //first expression
+  node->appendChild( Expression() );
+  
+  //following strings or expressions
+  while( look.type == ',' ){
+    getToken(); //the comma
+    node->appendChild( Expression() );
+  }
+  return node;
+}
+
+TreeNode* Parser::WrapOn() {
+    TreeNode* node=new TreeNode( WrapOnNode, row, col );
+    node->setName("wrapon");
+    node->setKey( lexer->translateCommand("wrapon") );
+    getToken();
+    return node;
+}
+
+TreeNode* Parser::WrapOff() {
+    TreeNode* node=new TreeNode( WrapOffNode, row, col );
+    node->setName("wrapoff");
+    node->setKey( lexer->translateCommand("wrapoff") );
+    getToken();
+    return node;
+}
+
+TreeNode* Parser::Reset() {
+    TreeNode* node=new TreeNode( ResetNode, row, col );
+    node->setName("reset");
+    node->setKey( lexer->translateCommand("reset") );
+    getToken();
+    return node;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*
