@@ -66,7 +66,7 @@ KTurtle is an educational programming environment using the Logo programming lan
 
 <para>KTurtle is an educational programming environment using the Logo programming language. It tries to make programming as easy and touchable possible. This makes KTurtle suitable for teaching kids the basics of math, geometry and... programming. The commands used to program are in the style of the Logo programming language. The unique feature of Logo is that the commands are often translated into the speaking language of the programmer.</para>
 
-<para>KTurtle is named after 'the turtle' that play a central role in the programming environment. The turtle is programmed,  using the Logo commands,  to draw a picture on the canvas.</para>
+<para>KTurtle is named after 'the turtle' that plays a central role in the programming environment. The user programs the turtle, using the Logo commands, to draw a picture on <link linkend="the-canvas">the canvas</link>.</para>
 
 <sect1 id="what-is-logo">
 <title>What is Logo?</title>
@@ -86,13 +86,13 @@ an integrated Logo interpreter, no need to download any other program
 a powerful editor for the Logo commands with intuitive syntax highlighting, line numbering and more
 </para></listitem>
 <listitem><para>
-the canvas can be saved as an image or printed
+<link linkend="the-canvas">the canvas</link> can be saved as an image or printed
 </para></listitem>
 <listitem><para>
-context help for all Logo commands, just press <keysym>F1</keysym> with your cursor a command for the help
+context help for all Logo commands, just press <keysym>F1</keysym> with your cursor a command for the help (not yet)
 </para></listitem>
 <listitem><para>
-KTurtle is fully translationable (currently only English, Dutch and French are supported)
+the Logo commands are fully translationable (currently only English, Dutch and French are supported)
 </para></listitem>
 <listitem><para>
 full-screen mode
@@ -120,30 +120,32 @@ many integrated internationalized example logo programs make it easy to get star
   </mediaobject>
 </screenshot>
 
-<para>The main window of KTurtle has two main parts, the code editor (3) on the left where you type the Logo commands and the canvas (4) on the right where the instructions are visualized. The canvas is the turtle's playground, it's on the canvas that the turtle actually moves and draws. Then there are three other important places on the main window: the menu bar (1) from where all the actions can be reached, the toolbar (4) that allows you to quickly activate some often used actions and the statusbar (5) where you find some feedback on the state of KTurtle.</para>
+<para>The main window of KTurtle has two main parts, <link linkend="the-code-editor">the code editor</link> (3) on the left where you type the Logo commands and <link linkend="the-canvas">the canvas</link> (4) on the right where the instructions are visualized. <link linkend="the-canvas">The canvas</link> is the turtle's playground, it's on the canvas that the turtle actually moves and draws. The three other places on the main window are: <link linkend="the-menubar">the menu bar</link> (1) from where all the actions can be reached, <link linkend="the-toolbar">the toolbar</link> (4) that allows you to quickly select the most used actions, and <link linkend="the-statusbar">the statusbar</link> (5) where you will find feedback on the state of KTurtle.</para>
 
 <sect1 id="the-code-editor">
 <title>The Code Editor</title>
-<para>In the code editor you type the Logo commands. It has all features you would expect from a modern editor. Most of its features are found in the Edit and the Tools menus. The code editor can be dragged to each border of the main window or detached and dragged anywhere on your desktop.</para>
+<para>In the code editor you type the Logo commands. It has all features you would expect from a modern editor. Most of its features are found in the <link linkend="the-edit-menu">Edit</link> and the <link linkend="the-tools-menu">Tools</link> menus. The code editor can be docked on each border of the main window or it can be detached and placed anywhere on your desktop.</para>
 <para>
-You have several ways to get some code in the editor. The easiest way is to use an already-made example. You choose Open Examples in the File menu and you click on a file. The file name will tell you what the example is about (for example: square.logo will draw a square). The code will be pasted in the editor. You can also open your own files by choosing File -&gt; Open and the file text will be pasted in the editor. The third way is to directly type your own code in the editor or to copy/paste some code from this user guide.
+You have several ways to get some code in the editor. The easiest way is to use an already-made example. You choose <guimenu>File</guimenu>-&gt;<guimenuitem>Open Examples</guimenuitem> in the <link linkend="the-file-menu">File menu</link> and you click on a file. The file name will tell you what the example is about (for example: square.logo will draw a square). The file you choose will be opened in the <link linkend="the-code-editor">the code editor</link>, you can then <guimenu>File</guimenu>-&gt;<guimenuitem>Execute Commands</guimenuitem> the code if you like.</para>
+<para>You can open Logo files by choosing <guimenu>File</guimenu>-&gt;<guimenuitem>open</guimenuitem>.</para>
+<para>The third way is to directly type your own code in the editor or to copy/paste some code from this user guide.
 </para>
 <para>
-The cursor position is indicated in the statusbar, on the right with the Line number and Column number.
+The cursor position is indicated in <link linkend="the-statusbar">the statusbar</link>, on the right with the Line number and Column number.
 </para>
-<para>Use the Execute action (<guimenu>File</guimenu>-&gt;<guimenuitem>Execute Commands</guimenuitem>) to execute the code written in the code editor.</para>
 </sect1>
 
 <sect1 id="the-canvas">
 <title>The Canvas</title>
 <para>
-The canvas is the area where the commands are visualized, where the commands 'draw' a picture. It also can be called the Turtle Playground for young children. After getting some code in the Editor, you will use the Execute command and two things can happen: if you have an error in your code, there will be a message that will tell you what error you made. If your code is good (we can say: valid) then the turtle will get into action and it will execute the instructions. Most of the commands have an effect on the canvas.</para>
-<para>The picture that is drawn can be saved (using <guimenu>File</guimenu>-&gt;<guimenuitem>Save Canvas</guimenuitem>) or printed (using <guimenu>File</guimenu>-&gt;<guimenuitem>Print</guimenuitem>).</para>
+The canvas is the area where the commands are visualized, where the commands 'draw' a picture. In other words it is the turtle's playground. After getting some code in the <link linkend="the-code-editor">the code editor</link>, and executing it by <guimenu>File</guimenu>-&gt;<guimenuitem>Execute Commands</guimenuitem>, two things can happen: 1) the code executes fine and you most likely see some changing on the canvas, or 2) you have an error in your code, there will be a message that will tell you what error you made.</para>
+<para>This messgae should help you resolving the error.</para>
+<para>The picture that is drawn can be saved as an image (using <guimenu>File</guimenu>-&gt;<guimenuitem>Save Canvas</guimenuitem>) or printed (using <guimenu>File</guimenu>-&gt;<guimenuitem>Print</guimenuitem>).</para>
 </sect1>
 
 <sect1 id="the-menubar">
 <title>The Menubar</title>
-<para>In the menu bar you find all the actions of KTurtle. There are in the following groups: File, Edit, View, Tools, Settings and Help.</para>
+<para>In the menu bar you find all the actions of KTurtle. There are in the following groups: File, Edit, View, Tools, Settings and Help. This section describes them all.</para>
 
 <sect2 id="the-file-menu">
 <title>The File Menu</title>
@@ -177,7 +179,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>File</guimenu>
         <guimenuitem>Open Recent</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Opens a logo file.</para></listitem>
+      <listitem><para>Opens a logo file that has been opened recently.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -413,7 +415,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>View</guimenu>
         <guimenuitem>Show Line Numbers</guimenuitem>
       </menuchoice></term>
-      <listitem><para>With this action you can show the line numbers in the code editor.</para></listitem>
+      <listitem><para>With this action you can show the line numbers in the code editor. This can be handy for finding and error.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -430,7 +432,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Tools</guimenu>
         <guimenuitem>Color Picker</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This action opens the color picker. Using the color picker you can easily select a color and insert it in your logo code.</para></listitem>
+      <listitem><para>This action opens the color picker. Using the color picker you can easily select a <glossterm linkend="rgb">color code</glossterm> and insert it in <link linkend="the-code-editor">the code editor</link>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -443,7 +445,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Tools</guimenu>
         <guimenuitem>Indent</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This action 'indents' (adds white space at the beginning of) the lines that are selected. When used properly this can make code much easier to read. All examples use indendation, please check them out</para></listitem>
+      <listitem><para>This action 'indents' (adds white space at the beginning of) the lines that are selected. When 'indentation' is used properly this can make code much easier to read. All examples use indendation, please check them out.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -479,7 +481,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Tools</guimenu>
         <guimenuitem>Comment</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This action add commentation characters (#) in from of the lines that are selected. Lines that start with commentation character are not executed but allow the programmer to explain a bit more about his code or it can prevent a certain piece of code from execution.</para></listitem>
+      <listitem><para>This action add commentation characters (#) in from of the lines that are selected. Lines that start with commentation character are ignored when the code is executed. Comments allow the programmer to explain a bit about his code or it can be used to temporarily prevent a certain piece of code from execution.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -567,7 +569,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Help</guimenu>
         <guimenuitem>Report Bug...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Use this to report a problem with KTurtle to the developers. These reports can be used to make KTurtle even better.</para></listitem>
+      <listitem><para>Use this to report a problem with KTurtle to the developers. These reports can be used to make KTurtle's future versions better.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -577,7 +579,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Help</guimenu>
         <guimenuitem>About KTurtle</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Here you find information on KTurtle like the authors and the license.</para></listitem>
+      <listitem><para>Here you find information on KTurtle like the authors and the license it comes with.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -596,7 +598,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
 
 <sect1 id="the-toolbar">
 <title>The Toolbar</title>
-<para>Here you can quickly reach a few of the most used actions.</para>
+<para>Here you can quickly reach the most used actions.</para>
 </sect1>
 
 <sect1 id="the-statusbar">
@@ -615,18 +617,18 @@ The canvas is the area where the commands are visualized, where the commands 'dr
   <screeninfo>Here's a screenshot KTurtle when you start it for the first time</screeninfo>
   <mediaobject>
     <imageobject>
-      <imagedata fileref="mainwindow.png" format="PNG"/>
+      <imagedata fileref="fresh.png" format="PNG"/>
     </imageobject>
     <textobject>
       <phrase>KTurtle's main window</phrase>
     </textobject>
   </mediaobject>
 </screenshot>
-In this Getting Started guide we assume that the language of the logo commands is English. You can check to what language KTurtle is set in <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure KTurtle</guimenuitem></menuchoice> in the Language section.</para>
+In this Getting Started guide we assume that the language of the logo commands is English. You can check to what language KTurtle is set in <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure KTurtle</guimenuitem></menuchoice> in the Language section. Be aware that the language you set for KTurtle needs to be the same as the language you use to type the logo commands in.</para>
 
 <sect1 id="first-steps">
 <title>First steps with Logo: meet the Turtle!</title>
-<para>You must have noticed the turtle in the middle of the canvas, you are just about to learn how to control it using commands in the code editor.</para>
+<para>You must have noticed the turtle is in the middle of the canvas, you are just about to learn how to control it using commands in the code editor.</para>
 
 <sect2 id="the-turtle-moves">
 <title>The Turtle Moves</title>
@@ -639,7 +641,7 @@ turnleft 90
 Type or copy-paste the code to the code editor and execute it (using <link linkend="file-execute"><menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem></menuchoice></link>) to see the result.</para>
 
 <para>When you typed and executed the commands like above in the code editor you might have noticed one or more of the following things:</para>
-<para>1. That -- after executing the commands -- the turtle moves up, draws a line and then turns a quarter turn to the left. This because you have used the <userinput>forward</userinput> and the <userinput>turnleft</userinput> commands.</para>
+<para>1. That -- after executing the commands -- the turtle moves up, draws a line and then turns a quarter turn to the left. This because you have used the <link linkend="forward"><userinput>forward</userinput></link> and the <link linkend="turnleft"><userinput>turnleft</userinput></link> commands.</para>
 <para>2. That the color of the code changed while you where typing it, this features is called: intuitive highlighting -- different types of commands are highlighted differently. This makes reading large blocks of code more easy.</para>
 <para>3. That the turtle draws a thin black line.</para>
 <para>4. Maybe you got an error message. This could simply mean two things: you could have made a mistake while copying the commands, or you should still set the correct language for the logo commands (you can do that here: <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure KTurtle</guimenuitem></menuchoice> in the Language section).</para>
@@ -700,115 +702,11 @@ Again you should type or copy-paste the code to the code editor and execute it (
 <para>Make sure you follow the links to the reference. The reference explains each command more thoroughly.</para>
 
 </sect2>
-
-
-<sect2 id="les">
-<title>Moples</title>
-
-<table frame="none">
-<title>Instructions for directions</title>
-<tgroup cols="2" colsep="5" rowsep="1">
-<colspec colname="c1"/>
-<tbody>
-<row><entry><emphasis role="bold">Instruction</emphasis></entry><entry><emphasis role="bold">Effect on the turtle</emphasis></entry></row>
-<row><entry>forward XX </entry><entry>you move forward XX steps (i.e. XX pixels)</entry></row>
-<row><entry>backward XX</entry><entry>you move backward XX steps</entry></row>
-<row><entry>turnright XX</entry><entry>you turn to the right at an angle of XX degrees</entry></row>
-<row><entry>turnleft XX</entry><entry>you turn to the left at an angle of XX degrees</entry></row>
-</tbody>
-</tgroup>
-</table>
-<para>
-Note that you can also write all instructions in upper case letters, so for example
-<screen>
-BACKWARD 40
-</screen>
-will also work and the Turtle will move backwards for 40 steps.
-</para>
-<para>
-To get you started, type:
-<screen>
-forward 50
-</screen>
-in the editor and click on the Execute button (the blue round cog). See on the screenshot below what happens: the Turtle moves forward for 50 steps.
-</para>
-<screenshot>
-     <screeninfo>Get the Turtle move forward for 50 steps.</screeninfo>
-	<mediaobject>
-	  <imageobject>
-	    <imagedata fileref="forward.png" format="PNG"/>
-	  </imageobject>
-	    <textobject>
-	    <phrase>Get the Turtle move forward for 50 steps</phrase>
-	  </textobject>
-	</mediaobject>
-</screenshot>
-<para>
-If you type 2 instructions in the editor, the turtle will execute them one after the other, in the order they are typed.
-</para>
-</sect2>
-
-<sect2 id="cleaning">
-<title>Cleaning</title>
-<para>Now you want to clean the Turtle path! You have 2 special instructions that will get some cleaning. When you type:
-<screen>
-reset
-</screen>
-everything will be back to default: the canvas will be cleared, the pen color becomes black, the background color comes back to white and the turtle goes back in the middle of the canvas and wait for your instructions.
-</para>
-<para>
-You can also clean the canvas but leave the Turtle where it is and keep the current color of the pen. This is done with the
-<screen>
-clear
-</screen>
-command.
-</para>
-<para>
-Usually, you will start your program with one of these commands, preferably <emphasis>reset</emphasis> to ensure the Turtle playground is clean.
-</para>
-</sect2> 
-<sect2 id="printing">
-<title>Printing</title>
-<para>You've seen our Turtle drawing lines as she walks. Of course, you understand that she has a pen! What if you want the Turtle to move and not to draw something? I am sure you have guessed that she will get her pen up.
-<screen>
-penup
-</screen>
-get the pen up the canvas and not drawing.
-<screen>
-pendown
-</screen>
-will lower the pen again and the Turtle will be able to draw again.
-</para> 
-<para>
-Our Turtle knows how to write! We can display text on the canvas using the command
-<screen>
-print "some text"
-</screen>
-Don't forget the " around the text you want to display on the canvas.
-</para>
-<para>
-You will also need to write some comments in the program, to indicate what you want your turtle to do. The program is the text in the editor and once your turtle does exactly what you wanted her to do, you can save that text for showing to your friends. This text is call a program. When you write some words to say what this program does, this can help another person opening your program to understand it better. 
-<screen>
-# this is a comment
-</screen>
-The turtle will not execute the text after a #, she knows that does not concern her.
-</para>
-<para>
-Let's see those 4 commands in action. 
-</para>
-<screenshot>
-     <screeninfo>Get the Turtle set the pen up and down.</screeninfo>
-	<mediaobject>
-	  <imageobject>
-	    <imagedata fileref="print.png" format="PNG"/>
-	  </imageobject>
-	    <textobject>
-	    <phrase>Get the Turtle set the pen up and down</phrase>
-	  </textobject>
-	</mediaobject>
-</screenshot>
-</sect2>
 </sect1>
+
+
+
+<!--        EXTRA SECTIONS CAN BE ADDED TO THE "GETTING STARTED"
 
 <sect1 id="calculations">
 <title>Simple Calculations</title>
@@ -839,7 +737,9 @@ Not yet written
 <para>
 Draw a maze for example
 </para>
-</sect1>
+</sect1>-->
+
+
 </chapter>
 
 
@@ -1054,8 +954,8 @@ Draw a maze for example
 </sect2>
 
 <sect2 id="writing">
-<title>Can the turtle write?</title>
-<para>The answer is: 'yes'. The turtle can write, she writes just about everything you command her to.</para>
+<title>Can the turtles write text?</title>
+<para>The answer is: 'yes'. The turtle can write, he writes just about everything you command him to.</para>
   <variablelist>
     <anchor id="print" />
     <varlistentry>
@@ -1100,43 +1000,322 @@ Draw a maze for example
     </varlistentry>
   </variablelist>
 </sect2>
-
-</sect1>
-
-<sect1 id="turtles-doing-math">
-<title>Turtles doing math?</title>
-<para></para>
-</sect1>
-
-<sect1 id="asking-questions-getting-answers">
-<title>Asking questions, getting answers...</title>
-<para></para>
 </sect1>
 
 <sect1 id="containers">
 <title>Containers</title>
-<para></para>
+<para>Containers are letters or words that can be used by the programmer to store a number or a text. Containers that contain a number are called <link linkend="variables">variables</link>, containers that can contain text are called <link linkend="strings">strings</link>.</para>
+
+<para>Containers that are not used yet used are 0 by default. An example:
+<screen>
+print N
+</screen>
+This will print a 0.
+</para>
 
 <sect2 id="variables">
 <title>Variables: number containers</title>
-<para></para>
+<para>Lets start with an example:
+<screen>
+x = 3
+print x
+</screen>
+In the first line the letter <userinput>x</userinput> made into a variable (number container). As you see the value of the variable <userinput>x</userinput> is set to 3. On the second line the value is printed.</para>
+<para> Note that if we wanted to print an 'x' that we should have writen:
+<screen>
+print "x"
+</screen>
+</para>
+<para>That was easy, now a bit harder example:
+<screen>
+A = 2004
+B = 25
+AB = A + B
+
+# the next command prints "2029"
+print AB
+backward 30
+# the next command prints "2004 plus 25"
+print A + " plus " + B
+backward 30
+# the next command prints "1979"
+print A - B
+</screen>
+In the first two lines the variables <userinput>A</userinput> and <userinput>B</userinput> are set to 2004 and 25. On the third line the variable <userinput>AB</userinput> is set to <userinput>A + B</userinput>, which is 2029. The rest of the example consists of 3 <userinput>print</userinput> commands with <userinput>backward 30</userinput> in between. The <userinput>backward 30</userinput> is there to make sure every output is on a new line. In this example you also see that variables can be used in <link linkend="math">mathmatical calculations</link>.</para>
 </sect2>
 
 <sect2 id="strings">
 <title>Strings: text containers</title>
-<para></para>
+<para>Strings are a lot like variables. The biggest difference is that strings cannot be used in <link linkend="math">mathmatical calculations</link> and <link linkend="questions">questions</link>. An example of the use of strings:
+<screen>
+x = "Hello "
+name = inputwindow "please enter your name..."
+print x + name + ", how are you?
+</screen>
+On the first line the string <userinput>x</userinput> is set to 'Hello '. On the second line the string <userinput>name</userinput> is set to the output of the <userinput>inputwindow</userinput> command. On the third line the program prints a composition of three strings on the canvas.</para>
+<para>This program ask you to enter your name. When you, for instance, enter the name 'Paul', the program prints 'Hello Paul, how are you?'. Please note that the plus (+) is the only math symbol that you can use with strings.</para>
 </sect2>
+</sect1>
 
+<sect1 id="math">
+<title>Turtles doing math?</title>
+<para>Yes, KTurtle will do your math. You can add (+), substract (-), multiply (*) and divide (/). Here an example in which we use all of them:
+<screen>
+a = 20 - 5
+b = 15 * 2
+c = 30 / 30
+d = 1 + 1
+print "a: "+a+", b: "+b+", c: "+c+", d: "+d 
+</screen>
+Do you know what value a, b, c and d have?</para>
+<para>If you just want a simple calculation to be done you can do something like this:
+<screen>
+print 2004-12
+</screen></para>
+<para>Now an example with braces:
+<screen>
+print ( ( 20 - 5 ) * 2 / 30 ) + 1
+</screen>
+That what is between braces will be calculated first.</para>
+</sect1>
+
+<sect1 id="questions">
+<title>Asking questions, getting answers...</title>
+<para><link linkend="if"><userinput>if</userinput></link> and <link linkend="while"><userinput>while</userinput></link> are <link linkend="controlling-execution">execution controllers</link> that we will discuss in the next section. In this section we use the <userinput>if</userinput> command to explain questions.</para>
+<para>A simple example of questions:
+<screen>
+x = 6
+if x &gt; 5 [
+  print hello
+]
+</screen>
+
+In this example the question is the <userinput>x &gt; 5</userinput>, if the answer to this question is 'true' the code between the braces will be executed. Question are an important part of programming and often used together with <link linkend="controlling-execution">execution controllers</link>, like <link linkend="if"><userinput>if</userinput></link>. All numbers and <link linkend="variables">variables</link> (number containers) can be compared to eachother with quesions.</para>
+<para>
+Here are all possible questions:
+<table>
+<title>All diffrent questions</title>
+<tgroup cols="3">
+<tbody>
+<row>
+<entry><userinput>a == b</userinput></entry>
+<entry>equals</entry>
+<entry>answer is 'true' if <userinput>a</userinput> equals <userinput>b</userinput></entry>
+</row>
+<row>
+<entry><userinput>a != b</userinput></entry>
+<entry>not-equal</entry>
+<entry>answer is 'true' if <userinput>a</userinput> does not equal <userinput>b</userinput></entry>
+</row>
+<row>
+<entry><userinput>a &gt; b</userinput></entry>
+<entry>greater then</entry>
+<entry>answer is 'true' if <userinput>a</userinput> is greater then <userinput>b</userinput></entry>
+</row>
+<row>
+<entry><userinput>a &lt; b</userinput></entry>
+<entry>smaller then</entry>
+<entry>answer is 'true' if <userinput>a</userinput> is smaller then <userinput>b</userinput></entry>
+</row>
+<row>
+<entry><userinput>a &gt;= b</userinput></entry>
+<entry>greater then or equals</entry>
+<entry>answer is 'true' if <userinput>a</userinput> is greater then or equals <userinput>b</userinput></entry>
+</row>
+<row>
+<entry><userinput>a &lt;= b</userinput></entry>
+<entry>smaller then or equals</entry>
+<entry>answer is 'true' if <userinput>a</userinput> is smaller then or equals <userinput>b</userinput></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para>
+Questions can also be glued to eachother with 'question glue', this way a few question can become one big question.
+<screen>
+a = 1
+b = 5
+if a &lt; 5 and b == 5 [
+  print hello
+]
+</screen>
+<anchor id="question-glue" />In this example the glue-word <userinput>and</userinput> is used to glue 2 questions (<userinput>a &lt; 5</userinput>, <userinput>b == 5</userinput>) together. If one side of the <userinput>and</userinput> would would answer 'false' the whole question would answer 'false', because with the glue-word <userinput>and</userinput> both sides need to be 'true' in order to answer 'true'.</para>
+<para>
+<userinput>and</userinput> is not the only glue-word there are two others. They are all in the next table:
+<table>
+<title>Question glue-words</title>
+<tgroup cols="2">
+<tbody>
+<row>
+<entry><userinput>and</userinput></entry>
+<entry>both sides need to be 'true' in order to answer 'true'</entry>
+</row>
+<row>
+<entry><userinput>or</userinput></entry>
+<entry>if one of the sides is 'true' the answer is 'true'</entry>
+</row>
+<row>
+<entry><userinput>not</userinput></entry>
+<entry>only if both of the sides are 'false' the answer is 'false'</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para>
 </sect1>
 
 <sect1 id="controlling-execution">
 <title>Controlling execution</title>
+<para>The execution controllers enable you to -- a their name implies -- control exection.</para>
+
+<sect2 id="easy">
+<title>Have the turtle wait</title>
+<para>If you tried programming some in KTurtle you have might noticed the the turtle can be very quick at drawing. This command makes the turtle take it a little more easy.</para>
+  <variablelist>
+    <anchor id="wait" />
+    <varlistentry>
+      <term>wait</term>
+      <listitem><para><screen>wait X</screen>
+      <userinput>wait</userinput> lets the turtle wait for X seconds.
+      <screen>
+      repeat 36 [
+        forward 5
+        turnright 10
+        wait 0.5
+      ]
+      </screen>
+      This code draws a circle, but the turtle will wait half a second each step. This gives the impression of an easy moving turtle.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="execute-if">
+<title>Execute "if"</title>
 <para></para>
+  <variablelist>
+    <anchor id="if" />
+    <varlistentry>
+      <term>if</term>
+      <listitem><para><screen>if <link linkend="questions">question</link> [ ... ]</screen>
+      The code that is placed on the '...' will only be executed <userinput>if</userinput> the answer to the <link linkend="questions">question</link> is 'true'. Please read for more information on <link linkend="questions">questions</link> the <link linkend="questions">question section</link>.
+      <screen>
+      
+      x = 6
+      if x &gt; 5 [
+        print "x is greater than five!"
+      ]
+      </screen>
+      On the first line <userinput>x</userinput> is set to 6. On the second line the <link linkend="questions">question</link> <userinput>x &gt; 5</userinput> is asked. Since the answer to this question is 'true' the execution controller <userinput>if</userinput> will allow the code between the braces to be executd.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="execute-while">
+<title>Execute "while"</title>
+<para></para>
+  <variablelist>
+    <anchor id="while" />
+    <varlistentry>
+      <term>while</term>
+      <listitem><para><screen>while <link linkend="questions">question</link> [ ... ]</screen>
+      The execution controller <userinput>while</userinput> is a lot like the <link linkend="if"><userinput>if</userinput></link>. The difference is that <userinput>while</userinput> keeps repeating the code between the braces till the answer to the <link linkend="questions">question</link> is 'false'.
+      <screen>
+      x = 1
+      while x &lt; 5 [
+        forward 10
+        wait 1
+        x = x + 1
+      ]
+      </screen>
+      On the first line <userinput>x</userinput> is set to 1. On the second line the <link linkend="questions">question</link> <userinput>x &lt; 5</userinput> is asked. Since the answer to this question is 'true' the execution controller <userinput>while</userinput> starts executing the code between the braces till the answer to the <link linkend="questions">question</link> is 'false'. In this case the code between the braces will be executed 4 times, because everytime the fifth line is executed <userinput>x</userinput> get one number higher.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="if-else">
+<title>If not, in other words: "else"</title>
+<para></para>
+  <variablelist>
+    <anchor id="else" />
+    <varlistentry>
+      <term>else</term>
+      <listitem><para><screen>if question [ ... ] else [ ... ]</screen>
+      <userinput>else</userinput> can be used in addition to the execution controller <link linkend="if"><userinput>if</userinput></link>. The code between the braces after <userinput>else</userinput> is only executed if the answer to the <link linkend="questions">question</link> that is asked is 'false'. 
+      <screen>
+      x = 4
+      if x &gt; 5 [
+        print "x is greater than five!"
+      ] else [
+        print "x is smaller than six!"
+      ]
+      </screen>
+      The <link linkend="questions">question</link> askes if <userinput>x</userinput> is greater than 5. Since <userinput>x</userinput> is set to 4 on the first line the answer to the question is 'false'. This means the code between the braces after <userinput>else</userinput> get's executed.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="for-loop">
+<title>The "for" loop</title>
+<para></para>
+  <variablelist>
+    <anchor id="for" />
+    <varlistentry>
+      <term>for</term>
+      <listitem><para><screen>for <userinput>start point</userinput> to <userinput>end point</userinput> [ ... ]</screen>
+      The <userinput>for</userinput> loop is a 'counting loop', it keeps count for you.
+      <screen>
+      for x = 1 to 10 [
+        print x * 7
+        forward 15
+      ]
+      </screen>
+     Everytime the code between the braces is executed the <userinput>x</userinput> get's one number higher, till x reaches the count of 10. The code between the braces prints the <userinput>x</userinput> multiplied by 7. After this program finished execution you will see the times table of 7 on the canvas.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
 </sect1>
+
 
 <sect1 id="learn">
 <title>Create your own commands!</title>
-<para></para>
+<para><userinput>learn</userinput> is a very special command, because it is used to create you own commands. The command you create can take <glossterm linkend="input-output">input</glossterm> and return <glossterm linkend="input-output">output</glossterm>. Let's take a look at how a new command is created.
+<screen>
+learn circle (x) [
+  repeat 36 [
+    forward x
+    turnleft 10
+  ]
+]
+</screen>
+The new command is called <userinput>circle</userinput>. <userinput>circle</userinput> takes one <glossterm linkend="input-output">input</glossterm>, a number, to set the size of the circle. <userinput>circle</userinput> returns no <glossterm linkend="input-output">output</glossterm>. The <userinput>circle</userinput> command can now be used like a normal command. See this example:
+<screen>
+learn circle (x) [
+  repeat 36 [
+    forward x
+    turnleft 10
+  ]
+]
+
+go 30,30
+circle 20
+
+go 40,40
+circle 50
+</screen>
+</para>
+<para>In the next example a command with a return value is created.
+<screen>
+learn multiplyBySelf (n) [
+  r = n * n
+  return r
+]
+i = inputwindow "Please enter a number and press Ok."
+print i + " multiplied by it self is: " + multiplyBySelf (i)
+</screen>
+In this example a new command called <userinput>multiplyBySelf</userinput>. The input of this command is multiplied by it self and then returned, using the <anchor id="return" /><userinput>return</userinput> command. The <userinput>return</userinput> command is the way to output a value from a self created function.
+</para>
 </sect1>
 
 </chapter>
@@ -1151,37 +1330,6 @@ Draw a maze for example
 <glossentry id="degrees">
 <glossterm>degrees</glossterm>
 <glossdef><para>Degrees a unit to measure angles or turns. A full turn is 360 degrees, that make a half turn 180 degrees and a quarter turn 90 degrees. The commands <userinput>turnleft</userinput>, <userinput>turnright</userinput> and <userinput>direction</userinput> need an input in degrees.</para></glossdef>
-</glossentry>
-
-<glossentry id="pixels">
-<glossterm>pixels</glossterm>
-<glossdef><para>A pixel is a dot on the screen. If you look very close you will see that the screen of your monitor uses pixels. All images on the screen are build with these pixels. A pixel is the smallest thing that can be drawn on the screen.</para>
-<para>A lot of commands need an amount of pixels as input, these commands are: <userinput>forward</userinput>, <userinput>backward</userinput>, <userinput>go</userinput>, <userinput>gox</userinput>, <userinput>goy</userinput>, <userinput>canvassize</userinput> and <userinput>penwidth</userinput>.</para></glossdef>
-</glossentry>
-
-<glossentry id="rgb">
-<glossterm>RGB combinations</glossterm>
-<glossdef><para>RGB combinations are used to describe colors. The 'R' stand for 'red', the 'G' stands for 'green' and the 'B' stands for 'blue'. An example of an RGB combination is <userinput>255,0,0</userinput>, the first 'red' value is 255 and the others are 0, this results in a bright shade of red. Each value of an RGB combination has to be in the range 0 to 255. Here a small list of some often used colors:
-<table frame="none">
-<title>Often used RGB combinations</title>
-<tgroup cols="2" colsep="5" rowsep="1">
-<colspec colname="c1"/>
-<tbody>
-<row><entry><userinput>0,0,0</userinput></entry><entry>black</entry></row>
-<row><entry><userinput>255,255,255</userinput></entry><entry>white</entry></row>
-<row><entry><userinput>255,0,0</userinput></entry><entry>red</entry></row>
-<row><entry><userinput>150,0,0</userinput></entry><entry>dark red</entry></row>
-<row><entry><userinput>0,255,0</userinput></entry><entry>green</entry></row>
-<row><entry><userinput>0,0,255</userinput></entry><entry>blue</entry></row>
-<row><entry><userinput>0,255,255</userinput></entry><entry>light blue</entry></row>
-<row><entry><userinput>255,0,255</userinput></entry><entry>pink</entry></row>
-<row><entry><userinput>255,255,0</userinput></entry><entry>yellow</entry></row>
-</tbody>
-</tgroup>
-</table>
-</para>
-<para>To easily find the RGB combinations of a color you should try the colorpicker! You can find the colorpicker here: <link linkend="tools-color-picker"><menuchoice><guimenu>Tools</guimenu><guimenuitem>Color Picker</guimenuitem></menuchoice></link>.</para>
-<para>Two commands need an RGB combination as input, these commands are: <userinput>canvascolor</userinput> and <userinput>pencolor</userinput>.</para></glossdef>
 </glossentry>
 
 <glossentry id="input-output">
@@ -1215,9 +1363,113 @@ penup
 wrapon
 hide
 </screen>
-</para>
-</glossdef>
+</para></glossdef>
 </glossentry>
+
+<glossentry id="intuitive-highlighting">
+<glossterm>intuitive highlighting</glossterm>
+<glossdef><para>This is a feature of KTurtle that makes coding even easier. With intuitive highlighting the code that you write get's a color that indicates what type os code it is. In the next list you will find the different types of code and the color they get in <link linkend="the-code-editor">the code editor</link>.
+<table>
+<title>Different types of code and their highlight color</title>
+<tgroup cols="3">
+<tbody>
+<row>
+<entry>regular commands</entry>
+<entry>dark green</entry>
+<entry>The regular commands are described <link linkend="commands">here</link>.</entry>
+</row>
+<row>
+<entry>execution controllers</entry>
+<entry>black (bold)</entry>
+<entry>The special commands control execution, read more on them <link linkend="controlling-execution">here</link>.</entry>
+</row>
+<row>
+<entry>comments</entry>
+<entry>dark yellow</entry>
+<entry>Lines that are commented start with a commentation characters (#), these lines are ignored when the code is executed. Comments allow the programmer to explain a bit about his code or it can be used to temporarily prevent a certain piece of code from execution.</entry>
+</row>
+<row>
+<entry>braces [, ]</entry>
+<entry>light green (bold)</entry>
+<entry>Braces are used to group portions of code. Braces are often used together with <link linkend="controlling-execution">execution controllers</link>.</entry>
+</row>
+<row>
+<entry>the <link linkend="learn">learn</link> command</entry>
+<entry>light green (bold)</entry>
+<entry>The <link linkend="learn">learn</link> command is used to create new commands.</entry>
+</row>
+<row>
+<entry>numbers</entry>
+<entry>blue</entry>
+<entry>Numbers, well not much to say about them.</entry>
+</row>
+<row>
+<entry>strings</entry>
+<entry>dark red</entry>
+<entry>Not much to say about (text) string either, except the allway start and end with the "-character.</entry>
+</row>
+<row>
+<entry>mathmatical characters</entry>
+<entry>grey</entry>
+<entry>This are the mathmatical characters: +, -, *, \, (, and ). Read more about them <link linkend="math">here</link>.</entry>
+</row>
+<row>
+<entry>questions characters</entry>
+<entry>blue (bold)</entry>
+<entry>Read more about questions <link linkend="questions">here</link>.</entry>
+</row>
+<row>
+<entry>question glue-words</entry>
+<entry>pink</entry>
+<entry>Read more about the question glue-words (and, or, not) <link linkend="question-glue">here</link>.</entry>
+</row>
+<row>
+<entry>regular text</entry>
+<entry>black</entry>
+<entry></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para></glossdef>
+</glossentry>
+
+<glossentry id="pixels">
+<glossterm>pixels</glossterm>
+<glossdef><para>A pixel is a dot on the screen. If you look very close you will see that the screen of your monitor uses pixels. All images on the screen are build with these pixels. A pixel is the smallest thing that can be drawn on the screen.</para>
+<para>A lot of commands need an amount of pixels as input, these commands are: <userinput>forward</userinput>, <userinput>backward</userinput>, <userinput>go</userinput>, <userinput>gox</userinput>, <userinput>goy</userinput>, <userinput>canvassize</userinput> and <userinput>penwidth</userinput>.</para></glossdef>
+</glossentry>
+
+<glossentry id="rgb">
+<glossterm>RGB combinations (color codes)</glossterm>
+<glossdef><para>RGB combinations are used to describe colors. The 'R' stand for 'red', the 'G' stands for 'green' and the 'B' stands for 'blue'. An example of an RGB combination is <userinput>255,0,0</userinput>, the first 'red' value is 255 and the others are 0, this results in a bright shade of red. Each value of an RGB combination has to be in the range 0 to 255. Here a small list of some often used colors:
+<table frame="none">
+<title>Often used RGB combinations</title>
+<tgroup cols="2" colsep="5" rowsep="1">
+<colspec colname="c1"/>
+<tbody>
+<row><entry><userinput>0,0,0</userinput></entry><entry>black</entry></row>
+<row><entry><userinput>255,255,255</userinput></entry><entry>white</entry></row>
+<row><entry><userinput>255,0,0</userinput></entry><entry>red</entry></row>
+<row><entry><userinput>150,0,0</userinput></entry><entry>dark red</entry></row>
+<row><entry><userinput>0,255,0</userinput></entry><entry>green</entry></row>
+<row><entry><userinput>0,0,255</userinput></entry><entry>blue</entry></row>
+<row><entry><userinput>0,255,255</userinput></entry><entry>light blue</entry></row>
+<row><entry><userinput>255,0,255</userinput></entry><entry>pink</entry></row>
+<row><entry><userinput>255,255,0</userinput></entry><entry>yellow</entry></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para>To easily find the RGB combinations of a color you should try the colorpicker! You can find the colorpicker here: <link linkend="tools-color-picker"><menuchoice><guimenu>Tools</guimenu><guimenuitem>Color Picker</guimenuitem></menuchoice></link>.</para>
+<para>Two commands need an RGB combination as input, these commands are: <userinput>canvascolor</userinput> and <userinput>pencolor</userinput>.</para></glossdef>
+</glossentry>
+
+<glossentry id="sprite">
+<glossterm>sprite</glossterm>
+<glossdef><para>A sprite is a small picture that can be moved around the screen. Our beloved turtle, for instance, is a sprite. [With this version of KTurtle the sprite cannot be changed from a turtle into something else. Future versions of KTurtle will be able to do this.]</para></glossdef>
+</glossentry>
+
 <glossentry id="wrapping">
 <glossterm>wrapping</glossterm>
 <glossdef><para>Wrapping is what happens when the turtle draws something that is to big to fix in on the canvas and wrapping is set 'on'.
@@ -1235,13 +1487,6 @@ hide
 When the turtle moves off a border of the canvas it is instantly taken to the opposite border so it can continue its move. This way the turtle will allways stay on screen while it moves.</para>
 <para>Wrapping can be turned on and off with the <userinput>wrapon</userinput> and <userinput>wrapoff</userinput> commands. When KTurtle starts wrapping is turned on by default.</para></glossdef>
 </glossentry>
-
-<glossentry id="sprite">
-<glossterm>sprite</glossterm>
-<glossdef><para>A sprite is a small picture that can be moved around the screen. Our beloved turtle, for instance, is a sprite. [With this version of KTurtle the sprite cannot be changed from a turtle into something else. Future versions of KTurtle will be able to do this.]</para></glossdef>
-</glossentry>
-
-
 
 </glosslist>
 
@@ -1331,16 +1576,3 @@ sgml-indent-step:0
 sgml-indent-data:nil
 End:
 -->
-
-
-
-
-
-
-
-
-
-
-
-
-
