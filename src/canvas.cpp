@@ -220,7 +220,7 @@ void Canvas::slotCenter()
 
 void Canvas::slotSetPenWidth(int w)
 {
-	if ( w == 1 ) penWidth = 0; // 0 gives 1 pixel lines using fast algorithem
+	if (w == 1) penWidth = 0; // 0 gives 1 pixel lines using fast algorithem
 	else penWidth = w;
 }
 
@@ -249,7 +249,7 @@ void Canvas::slotSetBgColor(int r, int g, int b)
 
 void Canvas::slotResizeCanvas(int x, int y)
 {
-	if ( x <= 0 || y <= 0 )
+	if (x <= 0 || y <= 0)
 	{
 		// TODO put error message
 		x = 100;
@@ -400,9 +400,6 @@ void Canvas::line(double xa, double ya, double xb, double yb)
 			return;
 		}
 		// kdDebug(0)<<"Canvas::line(); translate by: <<tranlation<<endl;
-// QPoint t_startPos = QPoint(xa, ya) + QPoint(translation.x() * canvasWidth, translation.y() * canvasHeight);
-// QPoint t_endPos   = QPoint(xb, yb) + QPoint(translation.x() * canvasWidth, translation.y() * canvasHeight);
-// line( t_startPos.x(), t_startPos.y(), t_endPos.x(), t_endPos.y() );
 		line (xa + translation.x() * canvasWidth, ya + translation.y() * canvasHeight, 
 		      xb + translation.x() * canvasWidth, yb + translation.y() * canvasHeight);
 		if (cutLoop == true)
@@ -550,14 +547,14 @@ QPoint Canvas::translationFactor(double xa, double ya, double xb, double yb)
 	}
 	
 	QPoint returnValue = QPoint(0, 0); // a new returnValue QPoint gets inited
-	if ( i == 1 )
+	if (i == 1)
 	{
 		// only one border crossing, this is normal when the start point
 		// is within the canvas and no corners are crossed
 		// kdDebug(0)<<"***only one border crossing!"<<endl;
 		return translate[1];
 	}
-	if ( i > 1 ) 
+	if (i > 1) 
 	{
 		// more than one border crossing starting point if of the canvas
 		// we now have to find out which crossing occurs 'first' to know how to translate the line
@@ -623,13 +620,13 @@ void Canvas::loadSpriteFrames(QString name)
 
 void Canvas::updateSpritePos()
 {
-	sprite->move(posX - ( sprite->width() / 2 ), posY - ( sprite->height() / 2 ), -1 );
+	sprite->move( posX - ( sprite->width() / 2 ), posY - ( sprite->height() / 2 ), -1 );
 }
 
 void Canvas::updateSpriteAngle()
 {
 	// get the direction back on the 1st circle 
-	while (direction >= 2*PI || direction < 0)
+	while (direction < 0 || direction >= 2*PI)
 	{
 		if (direction >= 2*PI) direction = direction - 2*PI;
 		if (direction < 0)     direction = direction + 2*PI;

@@ -22,13 +22,6 @@
 #include <qcanvas.h>
 
 
-struct BorderPoint
-{
-	int border;
-	QPoint point;
-};
-
-
 class Canvas : public QCanvasView
 {
 	Q_OBJECT
@@ -52,9 +45,9 @@ class Canvas : public QCanvasView
 		void slotTurnLeft(double deg);
 		void slotTurnRight(double deg);
 		void slotCenter();
-		void slotSetpenWidth(int w);
-		void slotpenUp();
-		void slotpenDown();
+		void slotSetPenWidth(int w);
+		void slotPenUp();
+		void slotPenDown();
 		void slotSetFgColor(int r, int g, int b);
 		void slotSetBgColor(int r, int g, int b);
 		void slotResizeCanvas(int x, int y);
