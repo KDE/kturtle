@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 
-# Copyright (C) 2004 Rafael Beccar <rafael.beccar ! kdemail.net>
+# Copyright (C) 2004-2005 Rafael Beccar <rafael.beccar ! kdemail.net>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of version 2 of the GNU General
@@ -117,7 +117,7 @@ foreach (@examples){
 			select STDOUT;}
 		#Manage tabulated "for .. to .." lines
 		elsif (/(^\s+)(\bfor\b)(.*)(\bto\b)/){	
-			chomp ($line = "$1$commands{$2} $3 $commands{$4} $'");
+			chomp ($line = "$1$commands{$2}$3$commands{$4}$'");
 			open TRANSLATION, ">>$filename";
 			select TRANSLATION;
 			print "$line \n"; 	
@@ -132,7 +132,7 @@ foreach (@examples){
 		elsif (/(^\s+)(\w+)/){
 			my $tab=$1;
 			if ($commands{$2}){
-				chomp ($line = "$commands{$2} $'");
+				chomp ($line = "$commands{$2}$'");
 				}
 			elsif (/([=])(\s+)(\w+)/){
 				if ($commands{$3}){
@@ -142,12 +142,12 @@ foreach (@examples){
 				}	
 			elsif (/([=])(\w+)/){
 				if ($commands{$2}){
-					chomp ($line = "$` $1 $commands{$2}$'");
+					chomp ($line = "$`$1$commands{$2}$'");
 					}
 				}	
 			else
 				{
-				chomp ($line = "$2 $'");
+				chomp ($line = "$2$'");
 				}	
 			open TRANSLATION,">>$filename";
 			select TRANSLATION;
@@ -155,15 +155,15 @@ foreach (@examples){
 			select STDOUT;}
 		#Manage "for .. to .." lines
 		elsif (/(^\bfor\b)(.*)(\bto\b)/){	
-			chomp (my $line = "$commands{$1} $2 $commands{$3} $'");
+			chomp (my $line = "$commands{$1}$2$commands{$3}$'");
 			open TRANSLATION, ">>$filename";
 			select TRANSLATION;
-			print "$line \n"; 	
+			print "$line\n"; 	
 			select STDOUT;}
 		#Manage any other line of code
 		elsif (/(^\w+)/){
 			if ($commands{$&}){
-				chomp ($line = "$commands{$&} $'");
+				chomp ($line = "$commands{$&}$'");
 				}
 			elsif (/([=])(\s+)(\w+)/){
 				if ($commands{$3}){
@@ -172,11 +172,11 @@ foreach (@examples){
 				}	
 			elsif (/([=])(\w+)/){
 				if ($commands{$2}){
-					chomp ($line = "$` $1 $commands{$2}$'");
+					chomp ($line = "$`$1$commands{$2}$'");
 					}
 				}	
 			else{
-				chomp ($line = "$1 $'");
+				chomp ($line = "$1$'");
 				}	
 			open TRANSLATION, ">>$filename";
 			select TRANSLATION;
