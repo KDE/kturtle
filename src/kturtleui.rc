@@ -50,13 +50,15 @@
     </Menu>
     
      <Menu name="settings" noMerge="1"><text>&amp;Settings</text>
-      <Action name="options_configure"/>
-        <Menu name="Advanced settings"><text>&amp;Advanced Settings</text>
+       <Merge name="StandardToolBarMenuHandler" />
+       <Action name="options_show_statusbar"/>
+       <Separator />
+       <Menu name="Advanced settings"><text>&amp;Advanced Settings</text>
           <Action name="set_confdlg" />
           <Action name="options_configure_keybinding"/>
           <Action name="options_configure_toolbars"/>
-        </Menu>
-	<Action name="options_show_statusbar"/>
+       </Menu>
+       <Action name="options_configure"/>
      </Menu>
     
     <Menu name="help"><text>&amp;Help</text>
