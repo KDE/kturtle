@@ -11,6 +11,9 @@ BUGS
  
 - forward 100e does not work: freezes the machine
 
+- commands do not follow usual commands like forward is FD
+ reference: http://asijonline.net/ep/logo/logo_com.htm
+ 
 - with long lines and wrapping the canvas can get into a endless loop -> 100%CPU
        i tried a lot to fix this allready, maybe my solution needs some tuning :)
        maybe i should just catch errors and break the loop :)  >>> see BUGGING LOGO SCRIPTS BELOW
