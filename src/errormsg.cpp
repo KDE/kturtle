@@ -21,8 +21,8 @@
 
 
 ErrorMessage::ErrorMessage (QWidget *parent)
-			: KDialogBase (parent, "errorDialog", false, 0, KDialogBase::Close|KDialogBase::Help|KDialogBase::User1, KDialogBase::Close, true, i18n("Help on Error") ) {
-	setCaption( i18n("caption") );
+			: KDialogBase (parent, "errorDialog", false, 0, KDialogBase::Close|KDialogBase::Help|KDialogBase::User1, KDialogBase::Close, true, i18n("Help on &Error") ) {
+	setCaption( i18n("Error Dialog") );
 	setButtonWhatsThis( KDialogBase::Close, i18n("Closes this Error Dialog") );
 	setButtonWhatsThis( KDialogBase::Help, i18n("Click here to read more on this Error Dialog in KTurtle's Handbook.") );
 	setButtonTip( KDialogBase::Help, i18n("Click here for help using this Error Dialog") );
@@ -73,17 +73,17 @@ void ErrorMessage::slotAddError(QString msg, uint row, uint col, uint code) {
 	if (row == NA)
 		errTable->setText( 0, 0, dash );
 	else
-		errTable->setText( 0, 0, QString("%1").arg(row + 1) ); // stupid way to convert ints to QStrings;  
+		errTable->setText( 0, 0, QString::number(row + 1) ); 
 	
 	if (col == NA)
 		errTable->setText( 0, 1, dash );
 	else
-		errTable->setText( 0, 1, QString("%1").arg(col + 1) );
+		errTable->setText( 0, 1, QString::number(col + 1) );
 
 	if (code== NA)
 		errTable->setText( 0, 2, dash );
 	else
-		errTable->setText( 0, 2, QString("%1").arg(code) );
+		errTable->setText( 0, 2, QString::number(code) );
 	
 	errTable->setText( 0, 3, msg );
 }

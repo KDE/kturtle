@@ -167,7 +167,7 @@ void MainWindow::setupEditor() {
 	EditorDock->setFixedExtentHeight(150);
 	EditorDock->setResizeEnabled(true);
 	EditorDock->setFrameShape(QFrame::ToolBarPanel);
-	QWhatsThis::add( EditorDock, i18n( "This is the code editor, here you type the Logo commands to intruct the turtle. You can also open an existing Logo program with File->Open Examples... or File->Open." ) );
+	QWhatsThis::add( EditorDock, i18n( "This is the code editor, here you type the Logo commands to instruct the turtle. You can also open an existing Logo program with File->Open Examples... or File->Open." ) );
 	moveDockWindow(EditorDock, Qt::DockLeft);
 	editor = doc->createView (EditorDock, 0L);
 	// ei is the editor interface which allows us to access the text in the part
@@ -247,7 +247,7 @@ void MainWindow::slotNewFile() {
 		i18n("The changes you have made to the file you "
 		"are currently working are not saved. "
 		"By continuing you will lose all the changes you have made."),
-		i18n("Unsaved File"), i18n("Discard Changes") );
+		i18n("Unsaved File"), i18n("&Discard Changes") );
 		if (result != KMessageBox::Continue) {
 			return;
 		}
@@ -275,7 +275,7 @@ void MainWindow::loadFile(KURL url) {
 				"are currently working on (%1) are not saved. "
 				"By continuing you will lose all the changes "
 				"you have made.").arg( myFile ),
-				i18n("Unsaved File"), i18n("Discard Changes") );
+				i18n("Unsaved File"), i18n("&Discard Changes") );
 				if (result != KMessageBox::Continue) {
 					return;
 				}
@@ -361,7 +361,7 @@ void MainWindow::slotSaveAs() {
 			int result = KMessageBox::warningContinueCancel ( this,
 			i18n("A file named \"%1\" already exists;\n"
 			"are you sure you want to overwrite it?").arg( url.url() ),
-			i18n("Overwrite Existing File?"), i18n("Overwrite") );
+			i18n("Overwrite Existing File?"), i18n("&Overwrite") );
 			if (result != KMessageBox::Continue) {
 				return;
 			}
@@ -383,7 +383,7 @@ void MainWindow::slotSaveCanvas() {
 			int result = KMessageBox::warningContinueCancel( this,
 				i18n("A picture named \"%1\" already exists;\n"
 				"are you sure you want to overwrite it?").arg(url.url()),
-				i18n("Overwrite Existing Picture?"), i18n("Overwrite") );
+				i18n("Overwrite Existing Picture?"), i18n("&Overwrite") );
 			if (result != KMessageBox::Continue) {
 				return;
 			}
@@ -442,7 +442,7 @@ bool MainWindow::queryClose() {
 		i18n("The changes you have made are not saved. "
 			"By quitting KTurtle you will lose all the changes "
 			"you have made."),
-		i18n("Unsaved File"), i18n("Save"), i18n("Discard Changes && Quit") );
+		i18n("Unsaved File"), i18n("&Save"), i18n("Discard Changes And &Quit") );
 		if (result == KMessageBox::Cancel) {
 			slotStatusBar(i18n("Quitting aborted."),  IDS_STATUS);
 			return false;
