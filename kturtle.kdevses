@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version = '1.0' encoding = 'UTF-8'?>
 <!DOCTYPE KDevPrjSession>
 <KDevPrjSession>
- <DocsAndViews NumberOfDocuments="5" >
+ <DocsAndViews NumberOfDocuments="8" >
   <Doc0 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/TODO" >
-   <View0 line="113" Type="???" >
+   <View0 line="0" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc0>
   <Doc1 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/kturtle.h" >
-   <View0 line="0" Type="???" >
+   <View0 line="148" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc1>
   <Doc2 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/kturtle.cpp" >
-   <View0 line="703" Type="???" >
+   <View0 line="188" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc2>
@@ -27,6 +27,21 @@
     <AdditionalSettings/>
    </View0>
   </Doc4>
+  <Doc5 context="ctx_doxygen" NumberOfViews="1" URL="file:/usr/share/doc/kde/HTML/en/kdelibs-apidocs/kdeui/html/classKDockMainWindow.html" >
+   <View0 Type="???" >
+    <AdditionalSettings/>
+   </View0>
+  </Doc5>
+  <Doc6 context="ctx_qt" NumberOfViews="1" URL="file:/usr/share/qt3/doc/html/qobject.html" >
+   <View0 Type="???" >
+    <AdditionalSettings/>
+   </View0>
+  </Doc6>
+  <Doc7 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/kturtleui.rc" >
+   <View0 line="38" Type="???" >
+    <AdditionalSettings/>
+   </View0>
+  </Doc7>
  </DocsAndViews>
  <pluginList>
   <kdevbookmarks>

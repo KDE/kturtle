@@ -52,10 +52,12 @@
     </Menu>
     
      <Menu name="settings" noMerge="1"><text>&amp;Settings</text>
-      <Action name="options_configure_keybinding"/>
-      <Action name="options_configure_toolbars"/>
-      <Action name="set_confdlg" />
       <Action name="options_configure"/>
+        <Menu name="Advanced settings"><text>&amp;Advanced Settings</text>
+          <Action name="set_confdlg" />
+          <Action name="options_configure_keybinding"/>
+          <Action name="options_configure_toolbars"/>
+        </Menu>
      </Menu>
     
     <Menu name="help"><text>&amp;Help</text>
@@ -66,20 +68,25 @@
 <ToolBar name="mainToolBar" noMerge="1" fullWidth="true" >
   <Action name="file_new" />
   <Action name="file_open" />
-  <Action name="file_open_recent" />
-  <Action name="open_examples" />
   <Separator />
   <Action name="file_save" />
   <Action name="file_save_as" />
   <Separator />
   <Action name="file_print" />
-  <Separator/>
+  <Separator />
+  <Action name="edit_undo" />
+  <Action name="edit_redo" />
+  <Separator />
+  <Action name="edit_cut" />
+  <Action name="edit_copy" />
+  <Action name="edit_paste" />
+  <Separator />
   <Action name="full_screen" />
-  <Separator/>
+  <Separator />
   <Action name="color_picker" />
   <Separator />
   <Action name="run" />
-  <Separator/>
+  <Separator />
   <Action name="show_numbers" />
 </ToolBar>
  

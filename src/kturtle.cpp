@@ -4,6 +4,7 @@
 
 #include <stdlib.h>
 
+#include <qregexp.h>
 
 #include <kapplication.h>
 #include <kconfigdialog.h>
@@ -728,16 +729,23 @@ void MainWindow::slotContextHelpUpdate() {
     beforeCursor.truncate(col);
     QString afterCursor = line.remove(0, col);
     QString cursorWord = beforeCursor.section(' ', -1) + afterCursor.section(' ', 0, 0);
-    QString keyword;
+    QRegExp string("\"[^\"]*\""); // kindly donated by blackie
     if ( cursorWord.isEmpty() ) {
-        keyword = i18n("<no keyword>");
-    } else if ( cursorWord.startsWith("\"") || cursorWord.endsWith("\"") ) { //bad dection better use QRX
-        keyword = i18n("<string>");
+        helpKeyword = i18n("<no keyword>");
+    } else if ( cursorWord.find( QRegExp("[\\d.]+") ) == 0 ) {
+        helpKeyword = i18n("<number>");
+    } else if ( string.search(line) != -1 ) { // check if there are strings in the line
+        int pos = 0;
+        while ( ( pos = string.search(line, pos) ) != -1 ) { // and if the cursor is in the string
+            if ( (int)col > pos && (int)col < pos + string.matchedLength() ) {
+                helpKeyword = i18n("<string>");
+            }
+            pos += string.matchedLength();
+        }
     } else {
-        keyword = cursorWord;
+        helpKeyword = cursorWord;
     }
-    // numbers need to be catched! this can be done with a QRegExp, see the highlightstyle file
-    ContextHelp->setText( i18n("Help on:") + " " + keyword );
+    ContextHelp->setText( i18n("Help on:") + " " + helpKeyword );
 }
 
 void MainWindow::readConfig(KConfig *config) {

@@ -131,6 +131,7 @@ class MainWindow : public KParts::MainWindow
     KURLRequester      *kcfg_TranslationFilePath;
     QLabel             *TranslationFileLabel;
     ColorPicker        *picker;
+    QString             helpKeyword;
     
     Executer           *exe;
     bool                b_fullscreen:1;
