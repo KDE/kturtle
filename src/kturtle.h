@@ -19,8 +19,6 @@
 #include <qwidget.h>
 
 #include <kaction.h> 
-#include <kmainwindow.h>
-#include <ktextedit.h>
 #include <kurlrequester.h>
 #include <knuminput.h>
 
@@ -30,14 +28,21 @@
 #include "parser.h"
 #include "settings.h"
 
+#include <kparts/mainwindow.h>
+#include <ktexteditor/document.h>
+#include <ktexteditor/editinterface.h>
+#include <ktexteditor/view.h>
 
-class MainWindow : public KMainWindow
+class MainWindow : public KParts::MainWindow// public KMainWindow
 {   Q_OBJECT
 
   public:
-    MainWindow();
+    MainWindow(KTextEditor::Document * = 0L);
     virtual ~MainWindow();
        
+    KTextEditor::View *view() const { return editor; }
+    KTextEditor::EditInterface * ei;
+    
   public slots:
     void slotNewFile();
     void slotOpenFile();
@@ -47,19 +52,7 @@ class MainWindow : public KMainWindow
     // void slotLineNumbers();
     void slotQuit();
     void slotExecute();
-    // copy the selected text from the editor into the clipboard
-    void slotCopy();
-    // paste the text from the clipboard to the editor
-    void slotPaste();
-    //  cut the selected text from the editor and copy it into the clipboard
-    void slotCut();
-     //  select all the text from the editor 
-    void slotSelectAll();
-    
-    void slotUndo();
-    
-    void slotRedo();
-    
+   
     void slotStatusBar(QString text, int place);
     void slotUpdateCanvas();
     
@@ -72,13 +65,12 @@ class MainWindow : public KMainWindow
   private:
     void setupActions();
     void setupCanvas();
-    void setupEditor();
     void setupStatusBar();
     void readConfig();
     void startExecution();
     void stopExecution();
     
-    KTextEdit          *editor;
+    KTextEditor::View * editor;
     Canvas             *TurtleView;
     QWidget            *BaseWidget;
     QGridLayout        *BaseLayout;

@@ -6,24 +6,26 @@
       <Action name="file_open" />
       <Action name="open_examples" />
       <Separator />
-      <Action name="file_save" />
-      <Action name="file_save_as"/>
+      <Merge name="file_save" />
+      <Merge name="file_save_as"/>
       <Separator />
-      <Action name="file_print" />
+      <Merge name="file_print" />
       <Separator />
       <Action name="run" />
       <Separator />
+      <Merge/>
       <Action name="file_quit" />
     </Menu>
-    <Menu name="View" >
-      <text>&amp;View</text>
+     <Menu name="edit" noMerge="1"><text>&amp;Edit</text>
+    </Menu>
+    <Menu name="view" noMerge="1"><text>&amp;View</text>
       <Action name="full_screen" />
       <!--<Action name="line_numbers"/>-->
       <Action name="color_picker" />
     </Menu>
   </MenuBar>
 
-<ToolBar name="mainToolBar" fullWidth="true" >
+<ToolBar name="mainToolBar" noMerge="1" fullWidth="true" >
   <Separator/>
   <Action name="full_screen" />
   <Action name="color_picker" />

@@ -8,7 +8,7 @@
 
 #include <kaccel.h>
 #include <kaction.h>
-#include <kapp.h>
+#include <kapplication.h>
 #include <kconfig.h>
 #include <kconfigdialog.h>
 #include <kdebug.h>
@@ -16,7 +16,7 @@
 #include <kkeydialog.h>
 #include <klineedit.h>
 #include <klocale.h>
-#include <kmainwindow.h>
+//#include <kmainwindow.h>
 #include <kmenubar.h>
 #include <kmessagebox.h>
 #include <kprocess.h>
@@ -26,24 +26,57 @@
 #include <ktextedit.h>
 #include <kurl.h>
 
+#include <ktexteditor/editorchooser.h>
+
 #include "settings.h"
 #include "kturtle.h"
 
 
-MainWindow::MainWindow() : KMainWindow( 0, i18n("KTurtle") ) {
-    
-    setMinimumSize(200,200);
-    
-    setupActions(); 
-    setupCanvas();
-    setupEditor();
-    setupStatusBar();
-    
-    // setXMLFile("kturtleui.rc");  //from kwrite
-    // createShellGUI(true); // i intend to use a katepart as editor later...
-    createGUI("kturtleui.rc");
+// StatusBar field IDs
+#define KTURTLE_ID_GEN 1
 
-    // the initial values
+MainWindow::MainWindow(KTextEditor::Document *doc)
+      : editor(0)
+{
+    // set the shell's ui resource file
+    
+if ( !doc )
+   {
+     if ( !(doc = KTextEditor::EditorChooser::createDocument(0,"KTextEditor::Document")) )
+    {
+       KMessageBox::error(this, i18n("A KDE text editor component could not be found!\n"
+                                     "Please check your KDE installation."));
+       kapp->exit(1);
+     }
+     
+    // docList.append(doc);
+   }
+
+   setupCanvas();
+   setupActions();
+   setupStatusBar();
+   
+   setXMLFile("kturtleui.rc");
+   createShellGUI( true );
+   
+    EditorDock = new QDockWindow(this);
+    EditorDock->setNewLine(true);
+    EditorDock->setFixedExtentWidth(250);
+    EditorDock->setFixedExtentHeight(150);
+    EditorDock->setResizeEnabled(true);
+    EditorDock->setFrameShape(QFrame::ToolBarPanel);
+    moveDockWindow(EditorDock, Qt::DockLeft);
+    editor = doc->createView (EditorDock, 0L);
+    //ei is the editor interface which allows us to access the text in the part
+    ei = dynamic_cast<KTextEditor::EditInterface*>( doc );
+    EditorDock->setWidget(editor);
+    ///allow to enable run only when some text is written in editor
+    connect(editor->document(), SIGNAL(textChanged()), this, SLOT(setRunEnabled()));
+    
+   guiFactory()->addClient(editor);
+       setMinimumSize(200,200);
+       
+       // the initial values
     CurrentFile = "";
     filename2saveAs = "";
     setCaption( i18n("Untitled") );
@@ -58,9 +91,11 @@ MainWindow::MainWindow() : KMainWindow( 0, i18n("KTurtle") ) {
     }
              
     readConfig ();
+    show();
 }
 
 MainWindow::~MainWindow() { // The MainWindow destructor
+	delete editor->document();
 }
 
 void MainWindow::setupActions() {
@@ -138,28 +173,6 @@ void MainWindow::setupCanvas() {
     connect( TurtleView, SIGNAL( CanvasResized() ), this, SLOT( slotUpdateCanvas() ) );
 }
 
-void MainWindow::setupEditor() {
-    EditorDock = new QDockWindow(this);
-    EditorDock->setNewLine(true);
-    EditorDock->setFixedExtentWidth(250);
-    EditorDock->setFixedExtentHeight(150);
-    EditorDock->setResizeEnabled(true);
-    EditorDock->setFrameShape(QFrame::ToolBarPanel);
-    moveDockWindow(EditorDock, Qt::DockLeft);
-    editor = new KTextEdit(EditorDock);
-    /// @todo migrate from KTextEdit to KTextEditor::Editor (a 2.0 job?)
-    editor->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    editor->setTextFormat(PlainText);
-    /// @todo make the editor look good and internationalize well
-    //     probably when going from KTextEdit to KTextEditor::Editor
-    EditorDock->setWidget(editor);
-    ///allow to enable run only when some text is written in editor
-    connect(editor, SIGNAL(textChanged()), this, SLOT(setRunEnabled()));
-}
-
-
-
-
 // Implementation of most of the items in the File and Edit menus //
 //
 // / @todo: most of the Edit functionality (Cut,Copy,Paste,Find,...) is still lacking.
@@ -167,10 +180,10 @@ void MainWindow::setupEditor() {
 // because I'll have to reimplement it then anyway (it implements itself then actally).
 //
 void MainWindow::slotNewFile() {
-    if ( !editor->isModified() && CurrentFile == "" ) {
+    if ( !editor->document()->isModified() && CurrentFile == "" ) {
         return; // do nothing when nothing is to be done
     }
-    if ( editor->isModified() ) {
+    if ( editor->document()->isModified() ) {
         int result = KMessageBox::warningContinueCancel( this,
         i18n("The changes you have made to the file you "
              "are currently working are not saved. "
@@ -180,7 +193,8 @@ void MainWindow::slotNewFile() {
             return;
         }
     }
-    editor->clear();// clear the editor
+    ei->clear();// clear the editor
+    //new MainWindow(editor->document()); //this opens another instance ;)
     TurtleView->slotClear();// clear the view
     CurrentFile = "";
     setCaption( i18n("Untitled") );
@@ -214,17 +228,17 @@ void MainWindow::slotSaveFile() {
         return;
     }
     QTextStream stream(&file);
-    stream << editor->text();
+    stream << ei->text();
     file.close();
     
-    editor->setModified(false);
+    editor->document()->setModified(false);
     CurrentFile = filestr;
     setCaption(CurrentFile);
     slotStatusBar(i18n("Saved file to: %1").arg(CurrentFile), 1); 
 }
 
 void MainWindow::slotSaveFileAs() {
-    /// @todo migrate to KURL, probably when going from KTextEdit to KTextEditor::Editor
+    /// @todo migrate to KURL
     QString filestr; // forward declaration (see end of scope)
     while(true) {
         filestr = KFileDialog::getSaveFileName(QString(":logo_dir"), QString("*.logo|") +
@@ -249,14 +263,14 @@ void MainWindow::slotSaveFileAs() {
 }
 
 void MainWindow::slotOpenFile() {
-   ///@todo migrate to KURL, probably when going from KTextEdit to KTextEditor::Editor
+   ///@todo migrate to KURL
     QString filestr = KFileDialog::getOpenFileName(QString(":logo_dir"), QString("*.logo|") +
       i18n("Logo files"), this, i18n("Open logo file..."));
       loadFile(filestr);
 }
 
 void MainWindow::slotQuit() {
-    if ( editor->isModified() ) {
+    if ( editor->document()->isModified() ) {
         slotStatusBar(i18n("Quitting KTurtle..."), 1);
         // make sure the dialog looks good with new -- unnamed -- files.
         int result = KMessageBox::warningYesNoCancel( this,
@@ -297,10 +311,9 @@ void MainWindow::startExecution() {
     slotStatusBar(i18n("Parsing commands..."), 1);
     kapp->processEvents();
     
-    string txt = editor->text().latin1();///@todo interpreter shouldnt need extra "[" & "]"
+    string txt = ei->text().latin1();///@todo interpreter shouldnt need extra "[" & "]"
     stringbuf sbuf(txt, ios_base::in);
     istream in(&sbuf);
-    
     Parser parser(in);
     connect( &parser, SIGNAL(ErrorMsg(QString, int, int, int) ), 
              this, SLOT(slotErrorDialog(QString, int, int, int) ) );
@@ -586,7 +599,7 @@ if ( !myFile.isEmpty() ) {
         if ( !file.open(IO_ReadOnly) ) {
             return;
         }
-        if ( editor->isModified() ) {
+        if ( editor->document()->isModified() ) {
             int result = KMessageBox::warningContinueCancel( this,
               i18n("The changes you have made to the file you "
                    "are currently working on (%1) are not saved. "
@@ -598,7 +611,7 @@ if ( !myFile.isEmpty() ) {
             }
         }
         QTextStream stream(&file);
-        editor->setText( stream.read() );
+        ei->setText( stream.read() );
 
         CurrentFile = myFile;
         setCaption(CurrentFile);
@@ -606,32 +619,6 @@ if ( !myFile.isEmpty() ) {
     } else { 
         slotStatusBar(i18n("Opening aborted, nothing opened."), 1);
     }
-}
-
-void MainWindow::slotCopy() {
-     if (editor->hasSelectedText())
-		editor->copy();
-}
-
-void MainWindow::slotPaste() {
-     editor->paste();
-}
-
-void MainWindow::slotCut() {
-    if (editor->hasSelectedText())
-     	editor->cut();
-}
-
-void MainWindow::slotSelectAll() {
-     	editor->selectAll();
-}
-
-void MainWindow::slotUndo() {
-     	editor->undo();
-}
-
-void MainWindow::slotRedo() {
-     	editor->redo();
 }
 
 #include "kturtle.moc"
