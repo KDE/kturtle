@@ -534,9 +534,9 @@ void Executer::execMinus( TreeNode* node ){
 QString Executer::runCommand( const QString& command ){
   FILE *pstream;
   
-  if ( ( pstream = popen( command, "r" ) ) == NULL ) {
+ /* if ( ( pstream = popen( command, "r" ) ) == NULL ) {
     return "";
-  }
+  }*/
   
   QString Line;
   char buf[100];

@@ -228,7 +228,7 @@ TreeNode* Parser::Factor() {
 
     case tokId:     n=getId();
                     if( look.type == '(' ){       //is function call
-                      string name=n->getName();
+                      QString name=n->getName();
                       delete n;              
                       n=FunctionCall( name );
                       n->setType(funcReturnNode); //expect returned value on stack
@@ -304,7 +304,7 @@ TreeNode* Parser::FunctionCall( const QString& name ) {
 
 // this is either an assignment or a function call!
 TreeNode* Parser::Other(){
-  string idname=look.str; 
+  QString idname=look.str; 
   Match(tokId);
   
   if( look.type == tokAssign ){

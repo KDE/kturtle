@@ -20,7 +20,7 @@ bugreport(log):/
  */
  
 #include "treenode.h"
-
+#include <kdebug.h>
 
 void TreeNode::init() {
   clear();
@@ -76,7 +76,7 @@ void TreeNode::destroy(TreeNode* node) {
     for( TreeNode::iterator i=node->begin(); i!= node->end(); ++i ) {
       
       destroy( *i );
-      //cout<<"deleting:"<<(*i)->getName()<<endl;
+      //kdDebug()<<"deleting:"<<(*i)->getName()<<endl;
       
       (*i)->clear(); //free children
       //delete ( *i ); //free mem
@@ -151,9 +151,8 @@ void TreeNode::show(int indent) {
   QString s="";
   for(int i=0;i<indent;i++) s+="  ";
   s+=getName();
-  cout<<s;
-  if(getType() == constantNode) cout<<" constant = "<<getValue();  
-  cout<<endl;
+  kdDebug() << s;
+//  if(getType() == constantNode) kdDebug()<<" constant = "<<getValue() <<endl;
 }
 
 //
@@ -161,7 +160,7 @@ void TreeNode::show(int indent) {
 //
 void TreeNode::showTree(TreeNode* node, int indent) const {
   indent++;
-  cout<<" NodeTree>>";
+  kdDebug() << " NodeTree>>";
   if( (node!=NULL) && (node->size()>0) ) {
     for( TreeNode::const_iterator i=node->begin(); i!= node->end(); ++i ) {
       (*i)->show( indent );

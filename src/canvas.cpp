@@ -24,6 +24,8 @@
 #include "settings.h"
 #include "canvas.h"
 
+#include <stdlib.h>
+
 const float PI=3.14159265358979323846;
 
 Canvas::Canvas(QWidget *parent, const char *name) : QCanvasView(0, parent, name) {
