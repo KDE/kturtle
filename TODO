@@ -54,13 +54,16 @@ File->reload: do we need that one?
 I *love* to see so much free funktionality in kturtle!
 
 
+
+
 cies: Make the interpreter (stolen from wsbasic.sf.net) (executer, parser, lexer, number and treenode) more native Qt.
 Right now they are a mixture of standard-CLI-C++ and Qt thingies (i put the Qt thingies there). I tried to do that but i found that i'm not comfortable with the concept of streams -- which are used a lot in the interpreter. Especially streaming QString was an obstacle i couldnt take.
-
+>>>>> after this is done we can also make the ()[],.""-confgurable
 
 
 cies: The manual...
 Au! That is a big one, lets first decide on the chapter structure. See the "StillSubjectToDiscussions" below...
+
 
 
 cies: Make good error messages with links to corresponing help pages.
@@ -79,7 +82,7 @@ cies: Implement an 'abort' funktion into the interpretor. So an endless executio
 **** normalTODOs ****
 
 
-Blocking funktions:
+Blocking funktions: >>>>>>>>  sent mail to kwrite-devel list asking soluition
 file: reload, export
 edit: block selection, gotoline, deselect, find next/previous, overwritemode
 view: wordwrapping-, schema- and codefolding funks, commandline, icon border, colorpicker->tools
@@ -115,9 +118,8 @@ Maybe need to be removed:
 
 
 
-cies: Ingore case of commands
-and remenber how the command was typed so it can be issued properly in i.e. err msgs
-
+cies: Ingore case of commands --> DONE
+and remenber how the command was typed so it can be issued properly in i.e. err msgs --> will not do it too much hassle
 
 
 
@@ -147,6 +149,8 @@ Press F1 while in a command and see help on it
 **** TO-oeps-IdidItAllReadies: ****
 
 
+default the highlightstyle to logo
+
 
 cies: Make a dir and put some examples/test in there...
 Let be a little nice to the people how want to get started, or just want to have a peek, right?
@@ -157,6 +161,9 @@ put a sample code file in kturtle/examples and get it load as an example maybe i
 
 cies: remove some debug crap from the canvas.cpp, I refer to leave it there till mid.03.2003.
 
+
+
+Remove hide the scrollbar from the editor when not needed... (probably not easy, kwrite and kate suffer from it too -- i guess the kate folk will have to fix it)
 
 
 

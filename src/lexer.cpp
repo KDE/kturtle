@@ -139,7 +139,8 @@ QString Lexer::translateCommand(string s) {
 void Lexer::checkKeywords(token& t) {
   if(t.type == tokId) {
     QString tt = t.str.c_str(); // small *hack* to make it work ;-)
-
+    tt = tt.lower();
+    
     if( !AliasMap[tt].isEmpty() ) { // translate the alias
       tt = AliasMap[tt];
     }

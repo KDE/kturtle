@@ -26,20 +26,12 @@
     <item> in </item>
     <item> for </item>
     <item> to </item>
+    <item> do </item>
     <item> repeat </item>
     <item> if </item>
     <item> else </item>
     <item> return </item>
     <item> break </item>
-  </list>
-  
-  <list name="expressers">
-    <item> == </item>
-    <item> &gt;= </item>
-    <item> &lt;= </item>
-    <item> &gt; </item>
-    <item> &lt; </item>
-    <item> != </item>
   </list>
 
   <list name="boolops">
@@ -47,27 +39,24 @@
     <item> or </item>
     <item> not </item>
   </list>
-
+ 
   <contexts>
     <context name="Normal" attribute="Normal Text" lineEndContext="#stay">
       
       <keyword attribute="MetaFunctions" String="metafunctions" context="#stay"/>
       <keyword attribute="Statements" String="statements" context="#stay"/>
       <keyword attribute="Execution Controllers" String="controllers" context="#stay"/>
-      <keyword attribute="Expressers" String="expressers" context="#stay"/>
+      <keyword attribute="Boolean Operators" String="boolops" context="#stay"/>
+     
+      <RegExpr attribute="Expressers" String="([!=&gt;&lt;][=]|[&gt;&lt;])" context="#stay"/>
       <RegExpr attribute="Normal" String="[a-zA-Z_][a-zA-Z_0-9]+" context="#stay"/>
-
       <RegExpr attribute="Float" String="([0-9]+\.[0-9]*|\.[0-9]+)([eE][0-9]+)?" context="#stay"/>
       <RegExpr attribute="Int" String="([1-9][0-9]*([eE][0-9]+)?|0)" context="#stay"/>
-
       <RegExpr attribute="Raw String" String="[rR]&quot;" context="Raw Q-string"/>
-      
       <RegExpr attribute="Comment" String="#.*$" context="#stay"/>
-      
       <DetectChar attribute="String" char="&quot;" context="Single Q-string"/>
-      
-      <RegExpr attribute="Operator" String="[+*/\(\)%\|\[\]\{\}:=;\!&lt;&gt;!^&amp;~-]" context="#stay"/>
-
+      <RegExpr attribute="Operator" String="[+*/\(\)%\|:-]" context="#stay"/>
+      <RegExpr attribute="Scopes" String="[\[\]]" context="#stay"/>
     </context>
 
 
@@ -84,20 +73,21 @@
     
   </contexts>
     
-    
   <itemDatas>
     <itemData name="Normal Text" defStyleNum="dsNormal"/>
     <itemData name="Normal" defStyleNum="dsNormal"/>
-    <itemData name="MetaFunctions" defStyleNum="dsChar"/>
-    <itemData name="Statements" defStyleNum="dsKeyword"/>
-    <itemData name="Execution Controllers" defStyleNum="dsDataType"/>
-    <itemData name="Expressers" defStyleNum="dsOthers"/>
-    <itemData name="Float" defStyleNum="dsFloat"/>
-    <itemData name="Int" defStyleNum="dsDecVal"/>
-    <itemData name="Comment" defStyleNum="dsComment"/>
-    <itemData name="String" defStyleNum="dsString"/>
-    <itemData name="Raw String" defStyleNum="dsString"/>
-    <itemData name="Operator" defStyleNum="dsOthers"/>
+    <itemData name="MetaFunctions" defStyleNum="dsKeyword" color="#00bb00" selColor="#ffffff" bold="1" italic="0"/>
+    <itemData name="Statements" defStyleNum="dsKeyword" color="#006600" selColor="#ffffff" bold="0" italic="0"/>
+    <itemData name="Execution Controllers" defStyleNum="dsKeyword" color="#006600" selColor="#ffffff" bold="1" italic="0"/>
+    <itemData name="Expressers" defStyleNum="dsKeyword" color="#1e99cc" selColor="#ffffff" bold="1" italic="0"/>
+    <itemData name="Boolean Operators" defStyleNum="dsKeyword" color="#9922cc" selColor="#ffffff" bold="1" italic="0"/>
+    <itemData name="Scopes" defStyleNum="dsKeyword" color="#00bb00" selColor="#ffffff" bold="1" italic="0"/>
+    <itemData name="Float" defStyleNum="dsFloat" color="#0000ff" selColor="#00eeff" bold="0" italic="0"/>
+    <itemData name="Int" defStyleNum="dsDecVal" color="#0000ff" selColor="#00eeff" bold="0" italic="0"/>
+    <itemData name="Comment" defStyleNum="dsComment" color="#999922" selColor="#888888" bold="0" italic="0"/>
+    <itemData name="String" defStyleNum="dsString" color="#800000" selColor="#ffffff" bold="0" italic="0"/>
+    <itemData name="Raw String" defStyleNum="dsString" color="#800000" selColor="#ffffff" bold="0" italic="0"/>
+    <itemData name="Operator" defStyleNum="dsOthers" color="#888888" selColor="#ffffff" bold="0" italic="0"/>
   </itemDatas>
 </highlighting>
    

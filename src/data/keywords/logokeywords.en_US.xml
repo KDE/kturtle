@@ -3,8 +3,7 @@
 
 <logokeywords lang="en_US" ver="0.01">
 
-<!-- standard BASIC commands -->
-  
+<!-- scope -->
   <command name="begin">
     <keyword>[</keyword>
   </command>
@@ -12,7 +11,8 @@
   <command name="end">
     <keyword>]</keyword>
   </command>
-    
+
+<!-- execution controllers -->
   <command name="while">
     <keyword>while</keyword>
   </command>
@@ -33,6 +33,28 @@
     <keyword>to</keyword>
   </command>
   
+  <command name="return">
+    <keyword>return</keyword>
+  </command>
+  
+  <command name="break">
+    <keyword>break</keyword>
+  </command>
+  
+  <command name="foreach">
+    <keyword>foreach</keyword>
+  </command>
+  
+  <command name="in">
+    <keyword>in</keyword>
+  </command>
+
+  <command name="do">
+    <keyword>do</keyword>
+  </command>
+
+
+<!-- boolean operators -->  
   <command name="and">
     <keyword>and</keyword>
   </command>
@@ -45,32 +67,14 @@
     <keyword>not</keyword>
   </command>
   
-  <command name="return">
-    <keyword>return</keyword>
-  </command>
   
-  <command name="break">
-    <keyword>break</keyword>
-  </command>
-  
-  <command name="run">
-    <keyword>run</keyword>
-  </command>
-  
+<!-- depricated -->  
   <command name="write">
     <keyword>write</keyword>
   </command>
   
   <command name="substr">
     <keyword>substr</keyword>
-  </command>
-  
-  <command name="foreach">
-    <keyword>foreach</keyword>
-  </command>
-  
-  <command name="in">
-    <keyword>in</keyword>
   </command>
   
   <command name="seperated">
@@ -82,13 +86,17 @@
   </command>
 
 
-
-<!-- the LOGO commands -->
-
+<!-- the meta command --> 
   <command name="learn">
     <keyword>learn</keyword>
   </command>
 
+  
+<!-- normal keywords -->
+  <command name="run">
+    <keyword>run</keyword>
+  </command>
+  
   <command name="clear">
     <keyword>clear</keyword>
     <alias>ccl</alias>
@@ -186,14 +194,6 @@
     <keyword>change</keyword>
     <alias>sc</alias>
   </command>
-
-
-  <!--
-  still need implementation
-ask **
-speed **
- -->
-
   
   <command name="input">
     <keyword>input</keyword>
@@ -239,12 +239,5 @@ speed **
   <command name="reset">
     <keyword>reset</keyword>
   </command>
-  
-  
-<!-- LOGO dummy words -->
 
-  <command name="do">
-    <keyword>do</keyword>
-  </command>
-  
 </logokeywords>

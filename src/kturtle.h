@@ -38,11 +38,11 @@ class MainWindow : public KParts::MainWindow// public KMainWindow
 {   Q_OBJECT
 
   public:
-    MainWindow(KTextEditor::Document * = 0L);
+    MainWindow(KTextEditor::Document* = 0L);
     virtual ~MainWindow();
        
     KTextEditor::View *view() const { return editor; }
-    KTextEditor::EditInterface * ei;
+    KTextEditor::EditInterface* ei;
     
   public slots:
     void slotNewFile();

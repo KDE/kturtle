@@ -34,29 +34,23 @@
 // StatusBar field IDs
 #define KTURTLE_ID_GEN 1
 
-MainWindow::MainWindow(KTextEditor::Document *doc)
-      : editor(0)
-{
+MainWindow::MainWindow(KTextEditor::Document *doc) : editor(0) {
     // set the shell's ui resource file
-    
-if ( !doc )
-   {
-     if ( !(doc = KTextEditor::EditorChooser::createDocument(0,"KTextEditor::Document")) )
-    {
-       KMessageBox::error(this, i18n("A KDE text editor component could not be found!\n"
+    if (!doc) {
+      if ( !(doc = KTextEditor::EditorChooser::createDocument(0,"KTextEditor::Document") ) ) {
+        KMessageBox::error(this, i18n("A KDE text editor component could not be found!\n"
                                      "Please check your KDE installation."));
-       kapp->exit(1);
-     }
-     
+        kapp->exit(1);
+      }  
     // docList.append(doc);
-   }
+    }
 
-   setupCanvas();
-   setupActions();
-   setupStatusBar();
+    setupCanvas();
+    setupActions();
+    setupStatusBar();
    
-   setXMLFile("kturtleui.rc");
-   createShellGUI( true );
+    setXMLFile("kturtleui.rc");
+    createShellGUI( true );
    
     EditorDock = new QDockWindow(this);
     EditorDock->setNewLine(true);
@@ -66,19 +60,19 @@ if ( !doc )
     EditorDock->setFrameShape(QFrame::ToolBarPanel);
     moveDockWindow(EditorDock, Qt::DockLeft);
     editor = doc->createView (EditorDock, 0L);
-    //ei is the editor interface which allows us to access the text in the part
+    // ei is the editor interface which allows us to access the text in the part
     ei = dynamic_cast<KTextEditor::EditInterface*>( doc );
     EditorDock->setWidget(editor);
-   	//dynamic_cast<KTextEditor::Document*>(this)->actionCollection()->remove(action("file_quit"));
+    //dynamic_cast<KTextEditor::Document*>(this)->actionCollection()->remove(action("file_quit"));
     //doc->actionCollection()->remove(action("edit_find_next")); //works if you suppress file_quit from the kturtleui.rc file
     //doc->actionCollection()->remove(action("file_quit"));
     ///allow to enable run only when some text is written in editor
     connect(editor->document(), SIGNAL(textChanged()), this, SLOT(setRunEnabled()));
     
-   guiFactory()->addClient(editor);
-       setMinimumSize(200,200);
+    guiFactory()->addClient(editor);
+    setMinimumSize(200,200);
        
-       // the initial values
+    // the initial values
     CurrentFile = "";
     filename2saveAs = "";
     setCaption( i18n("Untitled") );
@@ -97,8 +91,9 @@ if ( !doc )
 }
 
 MainWindow::~MainWindow() { // The MainWindow destructor
-	if (editor->document())
-		delete editor->document();
+    if ( editor->document() ) {
+        delete editor->document();
+    }
 }
 
 void MainWindow::setupActions() {
