@@ -57,6 +57,10 @@ class MainWindow : public KMainWindow
      //  select all the text from the editor 
     void slotSelectAll();
     
+    void slotUndo();
+    
+    void slotRedo();
+    
     void slotStatusBar(QString text, int place);
     void slotUpdateCanvas();
     

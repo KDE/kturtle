@@ -596,4 +596,12 @@ void MainWindow::slotSelectAll() {
      	editor->selectAll();
 }
 
+void MainWindow::slotUndo() {
+     	editor->undo();
+}
+
+void MainWindow::slotRedo() {
+     	editor->redo();
+}
+
 #include "kturtle.moc"
