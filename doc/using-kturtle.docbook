@@ -530,12 +530,12 @@ The canvas is the area where the commands are visualized, where the commands <qu
     <varlistentry>
       <term><menuchoice>
         <shortcut>
-          <keycombo><keysym>F1</keysym></keycombo>
+          <keycombo><keysym>F2</keysym></keycombo>
         </shortcut>
         <guimenu>Help</guimenu>
         <guimenuitem>Help on: ...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This is a very useful function: it provides help on the code where the cursor in the code editor is at. So, &eg;, you have used the <userinput>print</userinput> command in your code, and you want to read and to know what the handbook says on this command. You just move your cursor so it is in the <userinput>print</userinput> command and you press <keysym>F1</keysym>. The handbook will then show all info on the <userinput>print</userinput> command.</para>
+      <listitem><para>This is a very useful function: it provides help on the code where the cursor in the code editor is at. So, &eg;, you have used the <userinput>print</userinput> command in your code, and you want to read and to know what the handbook says on this command. You just move your cursor so it is in the <userinput>print</userinput> command and you press <keysym>F2</keysym>. The handbook will then show all info on the <userinput>print</userinput> command.</para>
       <para>This function is very important while learning programming.</para></listitem>
     </varlistentry>
   </variablelist>

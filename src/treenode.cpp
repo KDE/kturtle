@@ -37,7 +37,7 @@ TreeNode::TreeNode(Token t, NodeType nodeType, QString name)
 	fType = nodeType;
 	fTok = t;
 	if ( !name.isNull() ) fTok.look = name;
-	kdDebug(0)<<">>> new TreeNode created;  look: '"<<fTok.look<<"', from position ("<<fTok.start.row<<", "<<fTok.start.col<<")."<<endl;
+	kdDebug(0)<<"TreeNode::TreeNode(); new TreeNode created, with look: '"<<fTok.look<<"', from position ("<<fTok.start.row<<", "<<fTok.start.col<<")."<<endl;
 }
 
 TreeNode::TreeNode(TreeNode* p)
@@ -236,7 +236,7 @@ void TreeNode::show(int indent)
 	{
 		s += ">  ";
 	}
-	kdDebug(0)<<"NodeTree:"<<s<<""<<fTok.look<<" @ ("<<getRow()<<", "<<getCol()<<")"<<endl;
+	kdDebug(0)<<s<<""<<fTok.look<<" @ ("<<getRow()<<", "<<getCol()<<")"<<endl;
 }
 
 

@@ -89,7 +89,7 @@ print W + x
 
 <sect2 id="questions-glue">
 <title>Question Glue-Words</title>
-<para>Questions can be glued together with so called 'question glue'. The glue words are <userinput>and</userinput><userinput>or</userinput>, and a special glue-word: <userinput>not</userinput>.</para>
+<para>Questions can be glued together with so called 'question glue'. The glue words are <userinput>and</userinput>, <userinput>or</userinput>, and a special glue-word: <userinput>not</userinput>.</para>
 <para>Using question-glue is explained in the <link linkend="question-glue">Question Glue</link> section.</para>
 </sect2>
 

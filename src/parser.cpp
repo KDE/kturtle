@@ -68,17 +68,17 @@ TreeNode* Parser::Program()
 	getToken();
 
 	// this is the main parse loop
-	kdDebug(0)<<"Parser::Program(), Entering main parse loop..."<<endl;
+	kdDebug(0)<<"Parser::Program(): entering main parse loop..."<<endl;
 	while (currentToken.type != tokEOF) // currentToken.type returns the type of the currentToken
 	{
-		kdDebug(0)<<"Parser::Program(), looking for a statement..."<<endl;
+		kdDebug(0)<<"Parser::Program(), [main parse loop]: looking for next statement..."<<endl;
 		block->appendChild( Statement() );
 		while (currentToken.type == tokEOL) getToken(); // newlines between statements are allowed
 		// runs statement related code, stores the returned TreeNode* in the nodetree
 		// note: Statement() allways gets a new Token with getToken() before it returns
 	}
 	program->appendChild(block);
-	kdDebug(0)<<"Parser::Program(), Left main parse loop..."<<endl;
+	kdDebug(0)<<"Parser::Program(): leaving main parse loop..."<<endl;
 
 	return program;
 }
@@ -148,7 +148,7 @@ TreeNode* Parser::getId()
 
 TreeNode* Parser::FunctionCall(Token maybeFunctionCall)
 {
-	kdDebug(0)<<"Parser::FunctionCall, using identifier: '"<<maybeFunctionCall.look<<"'"<<endl;
+	kdDebug(0)<<"Parser::FunctionCall() [using identifier: '"<<maybeFunctionCall.look<<"']"<<endl;
 	TreeNode* fcall = new TreeNode(maybeFunctionCall, functionCallNode);
 
 	TreeNode* paramList = new TreeNode(currentToken, idListNode, "idlist");

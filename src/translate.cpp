@@ -57,7 +57,7 @@ QString Translate::alias2key(const QString &name)
 void Translate::loadTranslations() {
 	QDomDocument KeywordsXML;
 
-	kdDebug(0) << "TranslationXMLfile:"<< locate("data", "kturtle/data/logokeywords." + Settings::logoLanguage() + ".xml") <<endl;
+	kdDebug(0) << "Loading translation dictionary: "<< locate("data", "kturtle/data/logokeywords." + Settings::logoLanguage() + ".xml") <<endl;
   	// Read the specified translation file
 	QFile xmlfile( locate("data", "kturtle/data/logokeywords." + Settings::logoLanguage() + ".xml") );
 
@@ -101,5 +101,7 @@ void Translate::loadTranslations() {
 		}
 		n = n.nextSibling(); // goto the next <command>
 	}
+	
+	kdDebug(0) << "Translation dictionary loaded" <<endl;
 }
 

@@ -309,3 +309,50 @@ in kdelibs/kdecore/kapp... :
 url = QString("help:/%1?anchor=%2").arg(appname).arg(anchor);
 and
 DCOPRef( "khelpcenter", "KHelpCenterIface" ).send( "openUrl", url, startup_id );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*************
+vi .cvsrc
+      cvs -z4 -q
+      diff -u3 -p
+      update -dP
+      checkout -P
+
+touch /home/cies/.cvspass
+
+export CVSROOT=:pserver:cies@cvs.kde.org:/home/kde
+cvs login
+
+mkdir kdecvs
+cd kdecvs/
+
+cvs co -l kdeedu
+cvs co kdeedu/kturtle
+cvs co -l kde-i18n
+cvs co -l kde-i18n/nl
+cvs co -l kde-i18n/nl/data
+cvs co -l kde-i18n/nl/data/kdeedu
+cvs co kde-i18n/nl/data/kdeedu/kturtle
+cvs co -l kdeedu/doc
+cvs co kdeedu/doc/kturtle
+
+cd kdeedu/
+cvs co admin
+make -f Makefile.cvs && ./configure
+
+cd ../kde-i18n
+cvs co admin
+make -f Makefile.cvs && ./configure
+

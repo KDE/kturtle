@@ -219,7 +219,7 @@ Value& Value::operator-(const Value& n)
 	}
 	else
 	{
-		kdDebug(0)<<"cannot subtract strings"<<endl;
+		kdDebug(0)<<"Value::operator; cannot subtract strings"<<endl;
 	}
 	return *this;
 }
@@ -233,7 +233,7 @@ Value& Value::operator*(const Value& n)
 	}
 	else
 	{
-		kdDebug(0)<<"cannot multiply strings"<<endl; 
+		kdDebug(0)<<"Value::operator; cannot multiply strings"<<endl; 
 	}
 	return *this;
 }
@@ -247,7 +247,7 @@ Value& Value::operator/(const Value& n)
 	}
 	else
 	{
-		kdDebug(0)<<"cannot divide strings"<<endl;
+		kdDebug(0)<<"Value::operator; cannot divide strings"<<endl;
 	}
 	return *this;
 }

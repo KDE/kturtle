@@ -632,7 +632,7 @@ void Canvas::updateSpriteAngle()
 	}
 	// convert to degrees, fix the direction, divide by 10 (for picnr), and round
 	int i = (int) ( direction / 10 );
-	kdDebug(0)<<"########## direction = "<<direction<<";  int i = "<< i << endl;
+	// kdDebug(0)<<"########## direction = "<<direction<<";  int i = "<< i << endl;
 	// int i = (int) ( ( ( (-direction * 180) / PI ) / 10) + 0.000000001 );
 	sprite->setFrame(i);
 	updateSpritePos(); // pixmaps of different rotations have different sizes, so refresh

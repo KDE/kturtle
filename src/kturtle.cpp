@@ -533,6 +533,7 @@ void MainWindow::slotExecute()
 	TreeNode* root = parser.getTree(); // when finished parsing get the nodeTree
 	kdDebug(0)<<"############## PARSING FINISHED ##############"<<endl;
 	
+	kdDebug(0)<<"TreeNode::showTree():"<<endl;
 	root->showTree(root); // show nodeTree, this is a DEBUG OPTION (but nice)
 
 	// start execution
@@ -792,13 +793,13 @@ void MainWindow::slotInsertText(QString str)
 void MainWindow::slotSetCursorPos(uint row, uint col)
 {
 	dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->setCursorPositionReal(row - 1, col);
-	kdDebug(0)<<"Cursor set to: ("<<row-1<<", "<<col<<")"<<endl;
+	// kdDebug(0)<<"Cursor set to: ("<<row-1<<", "<<col<<")"<<endl;
 }
 
 void MainWindow::slotSetSelection(uint StartLine, uint StartCol, uint EndLine, uint EndCol)
 {
 	dynamic_cast<KTextEditor::SelectionInterface*>(doc)->setSelection(StartLine - 1, StartCol - 1, EndLine - 1, EndCol - 1);
-	kdDebug(0)<<"Selection set to: ("<<StartLine<<", "<<StartCol<<", "<<EndLine<<", "<<EndCol<<")"<<endl;
+	// kdDebug(0)<<"Selection set to: ("<<StartLine<<", "<<StartCol<<", "<<EndLine<<", "<<EndCol<<")"<<endl;
 }
 // END
 

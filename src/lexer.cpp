@@ -204,7 +204,7 @@ QChar Lexer::getChar()
 	if ( !putBackChar.isNull() )
 	{
 		c = putBackChar; // use the char that is stored to be put back
-		kdDebug(0)<<"Lexer::getChar(), restored: '"<<c<<"' @ ("<<row<<", "<<col<<")"<<endl;
+		// kdDebug(0)<<"Lexer::getChar(), restored: '"<<c<<"' @ ("<<row<<", "<<col<<")"<<endl;
 		putBackChar = QChar(); // and set putBackChar back to NULL
 		if (c == '\x0a' || c == '\n')
 		{
@@ -220,7 +220,7 @@ QChar Lexer::getChar()
 	else
 	{
 		*inputStream >> c; // take a QChar of the inputStream
-		kdDebug(0)<<"Lexer::getChar(): '"<<c<<"' @ ("<<row<<", "<<col<<")"<<endl;
+		// kdDebug(0)<<"Lexer::getChar(): '"<<c<<"' @ ("<<row<<", "<<col<<")"<<endl;
 		if (c == '\x0a' || c == '\n')
 		{
 			row++;
@@ -247,12 +247,12 @@ void Lexer::ungetChar(QChar c)
 		col--;
 	}
 	putBackChar = c;
-	kdDebug(0)<<"Lexer::ungetChar(), saved char: '"<<c<<"' and steped back to ("<<row<<", "<<col<<")"<<endl;
+	// kdDebug(0)<<"Lexer::ungetChar(), saved char: '"<<c<<"' and steped back to ("<<row<<", "<<col<<")"<<endl;
 }
 
 int Lexer::getWord(QString& word)
 {
-	kdDebug(0)<<"Lexer::getWord()"<<endl;
+	// kdDebug(0)<<"Lexer::getWord()"<<endl;
 	QChar currentChar = getChar();
 	if ( currentChar.isLetter() || currentChar == '[' || currentChar == ']' ) {
 		while ( ( currentChar.isLetterOrNumber() || currentChar == '_' || currentChar == '[' || currentChar == ']' ) && !inputStream->atEnd() )
@@ -342,7 +342,7 @@ void Lexer::setTokenType(Token& currentToken)
 
 void Lexer::skipSpaces()
 {
-	kdDebug(0)<<"Lexer::skipSpaces(), skipping SPACES."<<endl;
+	// kdDebug(0)<<"Lexer::skipSpaces(), skipping SPACES."<<endl;
 	QChar currentChar = getChar();
 	// when the Separator_* groups can be identified in the QChar thing would be easier
 	while ( !inputStream->atEnd() && ( currentChar.isSpace() && !(currentChar == '\x0a' || currentChar == '\n') ) )
@@ -356,7 +356,7 @@ void Lexer::skipSpaces()
 int Lexer::getNumber(Value& num, QString& look)
 {
 	// by reference the value (Value) and look part are set
-	kdDebug(0)<<"Lexer::getNumber()"<<endl;
+	// kdDebug(0)<<"Lexer::getNumber()"<<endl;
 	bool hasPoint = false;
 	QChar currentChar = getChar();
 	if ( currentChar.isNumber() )
