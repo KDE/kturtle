@@ -117,6 +117,8 @@ Sorry for beeing so inflexible... *Really*  I am still open for discussion! :-) 
 
 Annma: Idea from my daughter: have a Tux and a Konqui as alternate turtle for the cursor. I don't know if it's possible and if you like it ;)
 
+cies: That is a good plan! (you can tell your daughter that the plan -- just like any of her feedback -- is very appreciated :-) I have tux allready in my sprites dir (I'm a fan too!)... but there's one nice thing about the turtle: this animal is very regocnisable from above, and the head points in the direction of movement. Tux is more a front faced character, so nice would be to have an option to put the automatic turning off, and to have a different method to turn tux by command. [please note that i wont do any extra work on getting qt3.3 (needed for sprites), it comes when it comes]
+
 
 
 
@@ -128,10 +130,14 @@ I dont hav much experience with this (doc an KDE) but i seeing 3 documents 1) Qu
 
 Maybe 1 & 3 should be combined, what do you think?
 
-annma 30/12/2003 Quick Start might be a wizard run at first start and could be accessed later or the classical 'tips of the day'
- dialog. A tutorial is indeed needed, maybe within KTurtle, in the Settings menu.
- I can help with the writing.
- 
+annma 30/12/2003 Quick Start might be a wizard run at first start and could be accessed later or the classical 'tips of the day' dialog. A tutorial is indeed needed, maybe within KTurtle, in the Settings menu. I can help with the writing.
+
+cies: I think the syntax of the language should first be more mature, it changes too much right now... This will settle down in a few moths i hope :-)
+For the settingsmenu: if you know a better string than 'initial canvas size' (iirc) feel free to... etc.
+
+
+
+
 Here a small start with the manual chapters, FEEDBACK NEEDED!
 
 THE MANUAL
