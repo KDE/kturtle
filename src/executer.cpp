@@ -709,7 +709,7 @@ void Executer::execSetFgColor( TreeNode* node ) {
     int b = (int)(nodeB->getValue().val + 0.5);
     if( ( r < 0 || g < 0 || b < 0 ) || ( r > 255 || g > 255 || b > 255 ) ) {
         emit ErrorMsg( i18n("The parameters of function %1 must be within range: 0 to 255.").arg( node->getKey() ), 0, 0, 6090);
-        return;    
+        return;
     }
     emit SetFgColor(r, g, b);
 }

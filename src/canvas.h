@@ -43,9 +43,6 @@ class Canvas : public QCanvasView
     void slotSpriteHide();
     void slotSpritePress();
     void slotSpriteChange(int x);
-    
-    QString slotInput(); // should these two be in canvas?????
-    QString slotInputWindow();
 
     void slotPrint(QString text);
     void slotFontType(QString family, QString extra);
@@ -64,6 +61,7 @@ class Canvas : public QCanvasView
     bool PointInRange(int px, int py, int xa, int ya, int xb, int yb);
     QPoint Offset(int x, int y);
     void loadSpriteFrames(QString name);
+    void updateSprite(int x, int y);
     
     QCanvas             *TurtleCanvas;
     QPixmap              pixmap;

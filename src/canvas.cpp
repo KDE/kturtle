@@ -44,7 +44,7 @@ void Canvas::initValues() {
     // the position
     slotCenter();
     // construct the default sprite
-//    loadSpriteFrames("logo");
+    loadSpriteFrames("logo");
 }
 
 QPixmap* Canvas::Canvas2Pixmap() {
@@ -58,7 +58,7 @@ QPixmap* Canvas::Canvas2Pixmap() {
 void Canvas::Line(int xa, int ya, int xb, int yb) {
     QCanvasLine* l = new QCanvasLine(TurtleCanvas);
     l->setPoints( xa, ya, xb, yb );
-    l->setPen( QPen( QColor(FgR, FgB, FgG), PenWidth, SolidLine ) );
+    l->setPen( QPen( QColor(FgR, FgG, FgB), PenWidth, SolidLine ) );
     l->setZ(1);
     l->show();
     kdDebug(0)<<"Line:: xa:"<<xa<<", ya:"<<ya<<", xb:"<<xb<<", yb:"<<yb<<endl;
@@ -178,6 +178,8 @@ QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb) {
     kdDebug(0)<<"***yoooo!"<<endl;
     return returnValue;
     }
+    kdDebug(0)<<"***nnnooooOOoooOOOoooOOOoooo!"<<endl;
+    return returnValue;
 }
 
 bool Canvas::PointInRange(int px, int py, int xa, int ya, int xb, int yb) {
@@ -203,15 +205,22 @@ void Canvas::loadSpriteFrames(QString name) {
     
     // WARNING if the dir doesnt exists the app will crash!!!
     // This will be fixed in qt3.3 and in the current qt-copy
-    QCanvasPixmapArray* SpriteFrames = new QCanvasPixmapArray("/home/cies/logo/.sprites/"+name+".%1.png", 36);
+//     QCanvasPixmapArray* SpriteFrames = new QCanvasPixmapArray("/home/cies/logo/.sprites/"+name+".%1.png", 36);
+//     QCanvasSprite* Sprite = new QCanvasSprite(SpriteFrames, TurtleCanvas);
+    QCanvasPixmapArray* SpriteFrames = new QCanvasPixmapArray("/home/cies/logo/.sprites/turtle.png", 1);
     QCanvasSprite* Sprite = new QCanvasSprite(SpriteFrames, TurtleCanvas);
     Sprite->setZ(1);
-//     Sprite->show();
+    // (1) updateSprite(CanvasWidth/2, CanvasHeight/2);
+    // (2) Sprite->move( (double)(CanvasWidth/2 - ( Sprite->width() / 2 ) ), (double)(CanvasHeight/2 - ( Sprite->height() / 2 ) ), -1 );
+    
+    Sprite->show();
 }
 
-// void Canvas::updateSprite(int xa, int ya, int xb, int yb) {
-//     QCanvasSprite* i = new QCanvasLine(TurtleCanvas);
-// }
+void Canvas::updateSprite(int x, int y) {
+    Sprite->hide();
+    Sprite->move( (double)(x - (Sprite->width() / 2) ), (double)(y - ( Sprite->height() / 2) ), -1 );
+    Sprite->show();
+}
 
 // Slots:
 void Canvas::slotClear() {
@@ -333,30 +342,25 @@ void Canvas::slotResizeCanvas(int x, int y) {
 // i'll not work any further on sprites, while i dont have qt-3.3 or a fresh qt-copy
 
 void Canvas::slotSpriteShow() {
-//     Sprite->show();
+    Sprite->show();
 }
 
 void Canvas::slotSpriteHide() {
-//     Sprite->hide();
+    Sprite->hide();
 }
 
 void Canvas::slotSpritePress() {
 }
 
 void Canvas::slotSpriteChange(int x) {
-//     Sprite->setFrame(x);
-//     Sprite->move(PosX - Sprite->width()/2, PosY - Sprite->height()/2);
+    Sprite->setFrame(x);
+    Sprite->move(PosX - Sprite->width()/2, PosY - Sprite->height()/2);
 }
-
-
-
-QString Canvas::slotInput() {} // should these two be in canvas?????
-QString Canvas::slotInputWindow() {}
 
 void Canvas::slotPrint(QString text) {
     QCanvasText* t = new QCanvasText(text, font, TurtleCanvas);
     // text does not do the wrapping, never... sorry
-    t->setColor( QColor(FgR, FgB, FgG) );
+    t->setColor( QColor(FgR, FgG, FgB) );
     t->move(PosX, PosY);
     t->show();
 }
