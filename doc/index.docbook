@@ -92,7 +92,7 @@ a powerful editor for the Logo commands with intuitive syntax highlighting, line
 context help for all Logo commands, just press <keysym>F1</keysym> with your cursor a command for the help (not yet)
 </para></listitem>
 <listitem><para>
-the Logo commands are fully translationable (currently only English, Dutch and French are supported)
+the Logo commands are fully translationable (currently only English, Dutch, French, German and Swedish are supported)
 </para></listitem>
 <listitem><para>
 full-screen mode
@@ -1484,7 +1484,7 @@ hide
     </textobject>
   </mediaobject>
 </screenshot>
-When the turtle moves off a border of the canvas it is instantly taken to the opposite border so it can continue its move. This way the turtle will allways stay on screen while it moves.</para>
+When the turtle moves off a border of the canvas it is instantly taken to the opposite border so it can continue its move. This way the turtle will allways stay on the screen while it moves. This is when wrapping is set to on.</para>
 <para>Wrapping can be turned on and off with the <userinput>wrapon</userinput> and <userinput>wrapoff</userinput> commands. When KTurtle starts wrapping is turned on by default.</para></glossdef>
 </glossentry>
 
@@ -1600,9 +1600,13 @@ KTurtle
 <para>
 Contributors:
 <itemizedlist>
-<listitem><para>Coding help: Anne-Marie Mahfouf <email>annma@kde.org</email></para>
+<listitem><para>Coding help, editor part: Anne-Marie Mahfouf <email>annma@kde.org</email></para>
 </listitem>
 <listitem><para>Author of "wsbasic" (wsbasic.sf.net) which is the base for the interpreter of KTurtle: Walter Schreppers <email>Walter.Schreppers@ua.ac.be</email></para>
+</listitem>
+<listitem><para>German Data Files: Matthias Me&szlig;mer <email>bmlmessmer@web.de</email></para>
+</listitem>
+<listitem><para>Swedish Data Files: Stefan Asserh&#228;ll <email>stefan.asserhal@telia.com</email></para>
 </listitem>
 </itemizedlist>
 </para>
