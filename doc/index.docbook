@@ -1,0 +1,447 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
+  <!ENTITY kapp "&kturtle;"><!-- replace klatin here -->
+  <!ENTITY package "kdenonbeta">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % English "INCLUDE"><!-- change language only here -->
+]>
+
+<book lang="&language;">
+
+<bookinfo>
+<title>The KTurtle Handbook</title>
+
+<authorgroup>
+<author>
+<firstname>Anne-Marie</firstname>
+<surname>Mahfouf</surname>
+<affiliation>
+<address><email>annma@kde.org</email></address>
+</affiliation>
+</author>
+</authorgroup>
+
+<!-- TRANS:ROLES_OF_TRANSLATORS -->
+
+<copyright>
+<year>2004</year>
+<holder>Anne-Marie Mahfouf</holder>
+</copyright>
+
+<legalnotice>&FDLNotice;</legalnotice>
+
+<date>2004-01-24</date>
+<releaseinfo>0.1</releaseinfo>
+
+<abstract>
+<para>
+KTurtle is a Logo interpreter for the KDE Desktop.
+</para>
+</abstract>
+
+<keywordset>
+<keyword>KDE</keyword>
+<keyword>kdeedu</keyword>
+<keyword>KTurtle</keyword>
+<keyword>education</keyword>
+<keyword>language</keyword>
+<keyword>Logo</keyword>
+<keyword>instructions</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title>Introduction</title>
+          <para>KTurtle is a Logo programming language interpreter for &kde;. The Logo programming language is very easy and thus it can be used by young children. A unique quality of Logo is that the commands or instructions can be translated, so the 'programmer' can program in his or her native language. This makes Logo ideal for teaching kids the basics of programming, mathematics and geometry. One of the reasons many children like Logo is because of the turtle, a programmable icon which can be moved around the screen with simple commands and can be programmed to draw objects.</para>
+
+     <para>The first version Logo programming language was created by Seymour Papert of MIT Artificial Intelligence Laboratory in 1967 as an ofshoot of the LISP programming language. From then many versions of Logo have been released. By 1980 Logo was gaining momentum, with versions for MSX, Commodore, Atari, and IBM PC systems. These versions were mainly for educational purposes. LCSI released MacLogo in 1985 as a tool for professional programmers, but it never caught on. MIT is still maintaining a site on Logo which can be found on: <ulink url="http://el.media.mit.edu/logo-foundation/">http://el.media.mit.edu/logo-foundation/</ulink>.</para>
+
+     <para>Today there are several versions of Logo around which can easily be found on <ulink url="http://el.media.mit.edu/logo-foundation/">MIT's Logo site</ulink> and by a simple <ulink url="http://www.google.com/search?q=logo+programming+kids">google search</ulink>) search. This version of Logo (KTurtle) is only focused on the educational qualities of the programming language and will not try to suit professional progammers needs.</para>
+     
+     <para>
+     Why Logo? Logo is recommended for teaching kids as you begin by controlling the actions of a cybernetic turtle in a graphic environment that provides immediate feedback. These immediate actions let you "see" what you are thinking. And as you grow, so does Logo, from the immediate graphic environment into a structured and procedural programming environment for exploring mathematics, language, science, computer, number systems and more.
+     </para>
+     
+<para>
+KTurtle features:
+<itemizedlist>
+<listitem><para>
+an integrated Logo interpreter, no need to download any other program.
+</para></listitem>
+<listitem><para>
+a powerful editor for the Logo commands with syntax highlighting, line numbering and more.
+</para></listitem>
+<listitem><para>
+context help for each Logo command.
+</para></listitem>
+<listitem><para>
+translation of the Logo commands in 2 languages: Dutch and French.
+</para></listitem>
+<listitem><para>
+full-screen mode
+</para></listitem>
+</itemizedlist>
+</para>
+<para>
+
+</para>
+<para>
+
+</para>
+</chapter>
+
+<chapter id="using-kturtle">
+<title>Using KTurtle</title>
+<para>The KTurtle mainwindow consists of the editor on the left where you type the Logo instructions and the canvas on the right where the instructions are visualized.The toolbar allows you to use quickly some menu items.</para>
+<sect1 id="kturtle-editor">
+<title>The KTurtle Editor</title>
+<para>
+
+</para>
+
+<para>
+
+</para>
+
+<para>
+
+</para>
+</sect1>
+<sect1 id="kturtle-canvas">
+<title>The KTurtle Canvas</title>
+<para>
+
+</para>
+
+<para>
+
+</para>
+
+<para>
+
+</para>
+</sect1>
+</chapter>
+
+<chapter id="logo-programming">
+<title>Logo Programming</title>
+<sect1 id="first-steps">
+<title>First steps with Logo: meet the Turtle!</title>
+<para>just a few commands: print, repeat, fw-tr) [just to show how easy it is!]
+penup...
+</para>  
+</sect1>
+<sect1 id="calculations">
+<title>Simple Calculations</title>
+<para>
+</para>
+</sect1>
+<sect1 id="variables">
+<title>Using Variables: creating 'number containers'</title>
+<para>
+</para>
+</sect1>
+<sect1 id="strings">
+<title>Using strings: creating 'text containers'</title>
+<para>
+</para>
+</sect1>
+<sect1 id="logic">
+<title>Logic: asking the computer simple questions</title>
+<para>
+</para>
+</sect1>
+<sect1 id="recursion">
+<title>Recursion: the Turtle is using itself</title>
+<para>
+Draw a maze for example
+</para>
+</sect1>
+</chapter>
+     
+<chapter id="commands">
+<title>Command Reference</title>
+
+<sect1  id="kturtle-file-menu">
+<title>The <guimenu>File</guimenu> Menu</title>
+<para>
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Ctrl;<keycap>N</keycap></keycombo>
+</shortcut>
+<guimenu>File</guimenu>
+<guimenuitem>New</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Opens</action> a new document for KTurtle by clearing both the editor and the canvas.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Ctrl;<keycap>O</keycap></keycombo>
+</shortcut>
+<guimenu>File</guimenu>
+<guimenuitem>Open</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Open</action> a file. It launches a KDE open file dialog box which waits for you to select the file you want. Just click on the choosen file with a .logo extension and this file will be loaded in the editor.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<guimenu>File</guimenu>
+<guimenuitem>Open Recent</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Open</action> recently viewed files. You can see a submenu with the names of the recently viewed files.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Ctrl;<keycap>E</keycap></keycombo>
+</shortcut>
+<guimenu>File</guimenu>
+<guimenuitem>Open Examples</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Open</action> a dialog that allows you to choose an example of a .logo file. The examples files are translated in several languages so be sure to get a file that matches the Language setting you currently have in KTurtle.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Alt;<keycap>Return</keycap></keycombo>
+</shortcut>
+<guimenu>File</guimenu>
+<guimenuitem>Execute Commands</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Run</action> the commands currently written in the editor and display the graphical output in the canvas view.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Ctrl;<keycap>S</keycap></keycombo>
+</shortcut>
+<guimenu>File</guimenu>
+<guimenuitem>Save</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Save</action> your file. Use it often so you will not loose your work. If a file is  <emphasis>Untitled</emphasis> then <action>Save</action> becomes <action>Save As</action>.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<guimenu>File</guimenu>
+<guimenuitem>Save As</guimenuitem>
+</menuchoice></term>
+<listitem><para>Name and rename files with this command. It launches the save file dialog box. Type the name you want to give to your file in the Location field and press <keycap>Enter</keycap> or click the Save button.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Ctrl;<keycap>P</keycap></keycombo>
+</shortcut>
+<guimenu>File</guimenu>
+<guimenuitem>Print</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Print</action> the active file in the editor. This launches the Print KDE dialog.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Ctrl;<keycap>Q</keycap></keycombo>
+</shortcut>
+<guimenu>File</guimenu>
+<guimenuitem>Quit</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Quit</action> KTurtle.</para></listitem>
+</varlistentry>
+
+</variablelist>
+</para>
+</sect1>
+
+<sect1  id="kturtle-edit-menu">
+<title>The <guimenu>Edit</guimenu> Menu</title>
+<para>
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Ctrl;<keycap>Z</keycap></keycombo>
+</shortcut>
+<guimenu>Edit</guimenu>
+<guimenuitem>Undo</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Undo</action> the last editing command (writing, copying, pasting...).</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Ctrl;<keycap>Shift</keycap><keycap>Z</keycap></keycombo>
+</shortcut>
+<guimenu>Edit</guimenu>
+<guimenuitem>Redo</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Redo</action> the last undo step.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Ctrl;<keycap>X</keycap></keycombo>
+</shortcut>
+<guimenu>Edit</guimenu>
+<guimenuitem>Cut</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Remove</action> the selected text if any and place a copy of that selected text in the clipboard.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Ctrl;<keycap>C</keycap></keycombo>
+</shortcut>
+<guimenu>Edit</guimenu>
+<guimenuitem>Copy</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Copy</action> the selected text, if any, to the clipboard.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Ctrl;<keycap>V</keycap></keycombo>
+</shortcut>
+<guimenu>Edit</guimenu>
+<guimenuitem>Paste</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Copy</action> the first item in the clipboardinto the editor at cursor position.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Ctrl;<keycap>F</keycap></keycombo>
+</shortcut>
+<guimenu>Edit</guimenu>
+<guimenuitem>Find</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Launch</action> the Find dialog to allow to search for text in the editor.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo><keycap>F3</keycap></keycombo>
+</shortcut>
+<guimenu>Edit</guimenu>
+<guimenuitem>Find Next</guimenuitem>
+</menuchoice></term>
+<listitem><para>Go to the nearest downwards match of the last text or regular expressionsarched for, starting from cursor position.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Ctrl;<keycap>R</keycap></keycombo>
+</shortcut>
+<guimenu>Edit</guimenu>
+<guimenuitem>Replace...</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Launch</action> the Replace dialog to replace one or more instances of a defined text with something else.</para></listitem>
+</varlistentry>
+
+</variablelist>
+</para>
+</sect1>
+</chapter>
+
+<chapter id="developers">
+<title>Developer's Guide to KTurtle</title>
+
+<para>
+
+</para>
+<para>
+
+</para>
+</chapter>
+
+<chapter id="translators">
+<title>Translator's Guide to KTurtle</title>
+
+<para>
+how to translate the commands
+</para>
+<para>
+how to translate the examples
+</para>
+</chapter>
+
+<chapter id="credits">
+
+<title>Credits and License</title>
+
+<para>
+KTurtle
+</para>
+<para>
+Program copyright 2003 Cies Briejs <email>cies@showroommama.nl</email>
+</para>
+<para>
+Contributors:
+<itemizedlist>
+<listitem><para>Coding help: Anne-Marie Mahfouf<email>annma@kde.org</email></para>
+</listitem>
+<listitem><para>Author of "wsbasic" (wsbasic.sf.net) which is the base for the interpreter of KTurtle: Walter Schreppers<email>Walter.Schreppers@ua.ac.be</email></para>
+</listitem>
+</itemizedlist>
+</para>
+
+<para>
+Documentation copyright 2004 Anne-Marie Mahfouf<email>annma@kde.org</email>
+</para>
+
+<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
+
+&underFDL;
+
+&underGPL;                 <!-- GPL License -->
+
+</chapter>
+
+
+
+<appendix id="installation">
+<title>Installation</title>
+
+<sect1 id="getting-kturtle">
+<title>How to obtain KTurtle</title>
+
+&install.intro.documentation;
+
+</sect1>
+
+<sect1 id="compilation">
+<title>Compilation and Installation</title>
+
+&install.compile.documentation;
+
+</sect1>
+
+</appendix>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
