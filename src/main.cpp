@@ -58,6 +58,9 @@ int main(int argc, char **argv)
 	about.addCredit("Matthias Meßmer",
 	      I18N_NOOP("German Data Files"),
 	                "bmlmessmer # web.de"); 
+	about.addCredit("Burkhard Lück",
+	      I18N_NOOP("German Data Files"),
+			"lueck # hube-lueck.de"); 
 	about.addCredit("Stefan Asserhäll",
 	      I18N_NOOP("Swedish Data Files"),
 	                "stefan.asserhall # telia.com"); 
