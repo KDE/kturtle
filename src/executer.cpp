@@ -1,5 +1,6 @@
 #include <string.h>
 
+#include <kapplication.h>
 #include <klocale.h>
 
 #include "executer.h"
@@ -526,7 +527,7 @@ string Executer::runCommand( const string& command ){
 
 
 void Executer::execRun( TreeNode* node ){ // COMMAND NOT (YET) IMPLENTED IN LOGO
-  string cmd= getVal( node->firstChild() ).strVal;
+  string cmd = getVal( node->firstChild() ).strVal;
   node->setValue( runCommand(cmd) );
 }
 
@@ -874,6 +875,10 @@ void Executer::execFontSize( TreeNode* node ) {
     TreeNode* nodeX = node->firstChild(); // getting
     execute(nodeX); // executing
     int px = (int)(nodeX->getValue().val + 0.5); // converting & rounding to int
+    if( ( px < 0 || px > 350 ) ) {
+        emit ErrorMsg( i18n("The parameters of function %1 must be within range: 0 to 350.").arg( node->getKey() ), 0, 0, 5065);
+        return;    
+    }
     emit FontSize(px);
 }
 
@@ -890,24 +895,27 @@ void Executer::execRepeat( TreeNode* node ) {
   bBreak=false;
 }
 
-int Executer::execRandom( TreeNode* node ) {
+void Executer::execRandom( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 2 ) {
         emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), 0, 0, 5050);
-        return 0;
+        return;
     }
     TreeNode* nodeX = node->firstChild(); // getting
     TreeNode* nodeY = node->secondChild();
     execute(nodeX); // executing
     execute(nodeY);
-    int x = (int)(nodeX->getValue().val + 0.5); // converting & rounding to int
-    int y = (int)(nodeY->getValue().val + 0.5);
+    float x = nodeX->getValue().val; // converting & rounding to int
+    float y = nodeY->getValue().val;
 
-    float r;
     // Set evil seed (initial seed)
-    srand( (unsigned)time( NULL ) );
-    r = (float)( rand() / RAND_MAX );
-    return (int)r * ( y - x ) + y;
+//     srand( (unsigned)time( NULL ) );
+//     
+    float r = (float)( KApplication::random() ) / RAND_MAX;
+    Number value;
+    value = (double)( r * ( y - x ) ) + x;
+    node->setValue(value);
+    return;
 } 
 
 

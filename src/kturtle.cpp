@@ -367,10 +367,10 @@ void MainWindow::slotRun() {
                  TurtleView, SLOT( slotSpriteChange(int) ) );
         connect( &exe, SIGNAL( Print(QString) ),
                  TurtleView, SLOT( slotPrint(QString) ) );
-        connect( &exe, SIGNAL( FontType(QString) ),
-                 TurtleView, SLOT( slotFontType(QString) ) );
-        connect( &exe, SIGNAL( FontSize(QString) ),
-                 TurtleView, SLOT( slotFontSize(QString) ) );
+        connect( &exe, SIGNAL( FontType(QString, QString) ),
+                 TurtleView, SLOT( slotFontType(QString, QString) ) );
+        connect( &exe, SIGNAL( FontSize(int) ),
+                 TurtleView, SLOT( slotFontSize(int) ) );
         connect( &exe, SIGNAL( WrapOn() ),
                  TurtleView, SLOT( slotWrapOn() ) );
         connect( &exe, SIGNAL( WrapOff() ),
@@ -446,8 +446,8 @@ void MainWindow::slotStatusBar(QString text, int id) {
 }
 
 void MainWindow::slotErrorDialog(QString msg, int row, int col, int code) {
-    if(allreadyError) { return; } // one error dialog per 'run' is enough
-    allreadyError = true;
+    if(allreadyError) { return; } // one error dialog per 'run' is enough... (see next line)
+    // allreadyError = true; NO I WANT TO SE ALL ERRORS for the time beeing
     QString line;
     if( row <= 0 || col <= 0 ) {
         line = ".";

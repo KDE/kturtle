@@ -203,9 +203,11 @@ TreeNode* Parser::getId(){
 }
 
 
-TreeNode* Parser::runFunction(){
-  TreeNode* n=new TreeNode( runNode, row, col );
-  Match(tokRun);  
+TreeNode* Parser::runFunction() {
+  TreeNode* n = new TreeNode( runNode, row, col );
+  n->setName("run");
+  n->setKey( lexer->translateCommand("run") );
+  Match(tokRun);
   n->appendChild( Expression() );
   return n;
 }
@@ -269,6 +271,9 @@ TreeNode* Parser::Factor() {
                     break;
     
     case tokRun:    n=runFunction();     break;
+    
+    case tokRandom: n=Random();     break;
+    
     case tokSubstr: n=substrFunction();  break;
                                     
     default:        Error( i18n("Illegal char in expression"), 1020 );

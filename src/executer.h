@@ -135,7 +135,7 @@ class Executer : public QObject
     void execFontType      ( TreeNode* );
     void execFontSize      ( TreeNode* );
     void execRepeat        ( TreeNode* );
-    int  execRandom        ( TreeNode* );
+    void  execRandom        ( TreeNode* );
     void execWait          ( TreeNode* );
     void execWrapOn        ( TreeNode* );
     void execWrapOff       ( TreeNode* );

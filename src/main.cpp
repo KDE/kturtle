@@ -14,7 +14,7 @@ static const char description[] =
 
 static const char version[] = "0.1";
 
-static const char copyright[] = "(C) 2003 Cies Breijs";
+static const char copyright[] = "(C) 2003 The KTurtle Authors";
 
 static const char website[] = "http://kturtle.sf.net";
 

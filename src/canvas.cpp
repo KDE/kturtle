@@ -36,7 +36,7 @@ void Canvas::initValues() {
     Pen = true;
     Wrap = true;
     Dir = 3.14159265358979323846 / 2;
-    font = QFont("serif", 10);
+    font = QFont("serif", 18);
     // the position
     slotCenter();
     // construct the default sprite
