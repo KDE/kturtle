@@ -1,7 +1,10 @@
 /*
  * Copyright (C) 2003 Cies Breijs <cies # showroommama ! nl>
  */
-
+ 
+/**
+ * This file declares a class for  KTurtle main window. It provides geometry management, menubar, toolbar, statusbar, the editor and *the canvas. The editor is a KTextEditor part and the canvas is derived from its own class.
+ **/
 #ifndef _KTURTLE_H_
 #define _KTURTLE_H_
 
@@ -29,7 +32,9 @@ class MainWindow : public KParts::MainWindow
 {   Q_OBJECT
 
   public:
+    /// Constructor
     MainWindow(KTextEditor::Document* = 0L);
+    /// Destructor
     virtual ~MainWindow();
        
     KTextEditor::View *view() const { return editor; }

@@ -874,7 +874,7 @@ void MainWindow::loadFile(KURL url) {
         //if ( !file.open(IO_ReadWrite) ) {
         //  return;
         // }
-        if ( file.open(IO_ReadWrite) ) {
+        if ( file.open(IO_ReadOnly) ) {
             if ( editor->document()->isModified() ) {
                 int result = KMessageBox::warningContinueCancel( this,
                   i18n("The changes you have made to the file you "
