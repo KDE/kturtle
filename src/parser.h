@@ -61,7 +61,7 @@ class Parser : public QObject
     virtual ~Parser();
 
     bool parse();
-    TreeNode* getTree();
+	 TreeNode* getTree() const { return tree; }
 
   signals:
     void ErrorMsg(QString s, uint row, uint col, uint code);
@@ -72,7 +72,7 @@ class Parser : public QObject
     
     void getToken();
     void Match(int);
-    void Error(const QString& s, uint code = 1000);
+    void Error(const QString& s, uint code = 1000, uint r = NA, uint c = NA);
 
     TreeNode* Program();
     TreeNode* Function();
@@ -90,7 +90,7 @@ class Parser : public QObject
     TreeNode* Expression();
     
     TreeNode* Assignment  ( const QString& );
-    TreeNode* FunctionCall( const QString& );
+	 TreeNode* FunctionCall( const QString&, uint r = NA, uint c = NA);
     TreeNode* Other();
     
     TreeNode* While();
@@ -139,14 +139,13 @@ class Parser : public QObject
     //string toString(number);
 
     //private locals
-    //==============    
-    Lexer* lexer;
-    token look;
-    
-    TreeNode* tree; 
-    bool bNoErrors;
-    uint row;
-    uint col;
+    Lexer       *lexer;
+    token        lookToken;
+    TreeNode    *tree; 
+    bool         bNoErrors;
+    uint         row;
+    uint         col;
+	 QStringList  learnedFunctionList;
 };
 
 #endif // _PARSER_H_

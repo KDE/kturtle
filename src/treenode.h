@@ -147,30 +147,34 @@ class TreeNode : public list<TreeNode*> {
 	TreeNode* nextSibling();   
 	TreeNode* prevSibling();
 	
-	NodeType getType();
-	void setType(NodeType t);
-
-	void setKey(const QString&);
-	QString getKey();  
-			
-	void setName(const QString&);
-	QString getName() const;  
 	
-	void setValue(const Number&);
-	void setValue(double d){ value = d; }
-	void setValue(const QString& s){ value = s; }
 	
-	Number getValue();
-	uint getRow() { return fRow; }
-	uint getCol() { return fCol; }
+	void setType(NodeType t)           { fType = t; }
+	NodeType getType() const           { return fType; }
+	
+	uint getRow() const                { return fRow; }
+	uint getCol() const                { return fCol; }
+	
+	void setName(const QString& n)     { fName = n; }
+	QString getName() const            { return fName; }
 
-	void setStrValue(const QString&);
-	QString getStrValue();
+	void setKey(const QString& k)      { fKey = k; }
+	QString getKey() const             { return fKey; }
+	
+	void setValue(const Number&n )     { value = n; }
+	void setValue(double d)            { value = d; }
+	void setValue(const QString& s)    { value = s; }
+	Number getValue() const            { return value; }
+	
+	void setStrValue(const QString& s) { strValue = s; }
+	QString getStrValue() const        { return strValue; }
+
+
 	
 	TreeNode::iterator lookup(); //gives location in parent list as iterator (used by prevSibling and nextSibling)
-	bool hasChildren() { return size()!=0; }
+	bool hasChildren() { return size() != 0; }
 
-	TreeNode& operator=(const TreeNode&);
+	TreeNode& operator= (const TreeNode&);
 
 
 	protected:
@@ -181,13 +185,13 @@ class TreeNode : public list<TreeNode*> {
 	void destroy(TreeNode*);
 
 	//private locals
-	QString    key;
-	QString    name;
+	QString    fKey;
+	uint       fRow; //for runtime error messages
+	uint       fCol;
+	QString    fName;
 	NodeType   fType;
 	Number     value;
 	QString    strValue;
-	
-	uint fRow, fCol; //for runtime error messages.
 };
 
 #endif // _TREENODE_H_

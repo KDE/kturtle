@@ -30,8 +30,8 @@ void TreeNode::init() {
 	parent = NULL;
 	value = 0;
 	strValue = "";
-	name = "<name not set>"; // generic/internal command name
-	key = "<key not set>"; // i18able logo command name
+	fName = "<name not set>"; // generic/internal command name
+	fKey = "<key not set>"; // i18able logo command name
 	fRow = NA;
 	fCol = NA;
 }
@@ -48,10 +48,12 @@ TreeNode::TreeNode() {
 
 TreeNode::TreeNode(NodeType t, uint row, uint col, QString name, QString key) {
 	init();
+	fType = t;
 	fRow = row;
 	fCol = col;
-	fType = t;
-	kdDebug(0)<<"new TreeNode;  row : "<<row<<", col: "<<col<<", name: "<<name<<", key: "<<key<<endl;
+	fName = name;
+	fKey = key;
+	kdDebug(0)<<">>> new TreeNode created;  name: '"<<fName<<"', key: "<<fKey<<", pos: ("<<fRow<<", "<<fCol<<")."<<endl;
 }
 
 TreeNode::TreeNode(TreeNode* p) {
@@ -59,14 +61,16 @@ TreeNode::TreeNode(TreeNode* p) {
 	setParent(p);
 	value = -1;
 	strValue = "";
-	name = "<name not set>";
-	key = "<key not set>";
 	fType = Unknown;
+	fRow = NA;
+	fCol = NA;
+	fName = "<name not set>";
+	fKey = "<key not set>";
 }
 
 
 void TreeNode::setParent(TreeNode* p) {
-	parent=p;
+	parent = p;
 }
 
 
@@ -74,9 +78,8 @@ TreeNode::~TreeNode() {
 	destroy(this);
 }
 
-//
+
 //recursively walk down tree and delete every node bottom up
-//
 void TreeNode::destroy(TreeNode* node) {
 	if( (node != NULL) && (node->size() > 0) ) {
 		for( TreeNode::iterator i = node->begin(); i != node->end(); ++i ) {
@@ -89,55 +92,13 @@ void TreeNode::destroy(TreeNode* node) {
 }
 
 
-void TreeNode::setKey(const QString& s) {
-	key = s;
-}
-
-QString TreeNode::getKey() {
-	return key;
-}
-
-void TreeNode::setValue(const Number& n) {
-	value = n;
-}
-
-Number TreeNode::getValue() {
-	return value;
-}
-
-
-void TreeNode::setStrValue(const QString& s) {
-	strValue = s;
-}
-
-QString TreeNode::getStrValue() {
-	return strValue;
-}
-
-
-
-void TreeNode::setName(const QString& s) {
-	name = s;
-}
-
-QString TreeNode::getName() const {
-	return name;
-}
-
-
-NodeType TreeNode::getType() {
-	return fType;
-}
-
-void TreeNode::setType(NodeType t) {
-	fType = t;
-}
 
 TreeNode& TreeNode::operator= (const TreeNode& t) {
 	if(this != &t) {
 		value = t.value;
 		strValue = t.strValue;
-		name = t.name;
+		fName = t.fName;
+		fKey = t.fKey;
 		fType = t.fType;
 		parent = t.parent;
 		
@@ -151,28 +112,25 @@ TreeNode& TreeNode::operator= (const TreeNode& t) {
 		
 
 
-void TreeNode::show(int indent) {
-	QString s = "";
-	for(int i = 0; i < indent; i++) s += "  ";
-	s += getName();
-	kdDebug() << s << endl;
-//  if(getType() == constantNode) kdDebug()<<" constant = "<<getValue() <<endl;
-}
 
-//
-//recursively walk through tree and show node names with indentation
-//
+// recursively walk through tree and show node names with indentation
 void TreeNode::showTree(TreeNode* node, int indent) const {
 	indent++;
-	kdDebug() << " NodeTree>>";
 	if( (node != NULL) && (node->size() > 0) ) {
 		for( TreeNode::const_iterator i = node->begin(); i != node->end(); ++i ) {
 			(*i)->show(indent);
-			showTree(*i , indent);
+			showTree(*i, indent);
 		}
 	}
 }
 
+void TreeNode::show(int indent) {
+	QString s = "";
+	for (int i = 0; i < indent; i++) {
+		s += ">  ";
+	}
+	kdDebug(0)<<"NodeTree:"<<s<<""<<getName()<<", "<<getKey()<<" @ ("<<getRow()<<", "<<getCol()<<")"<<endl;
+}
 
 
 void TreeNode::appendChild(TreeNode* node) {
@@ -181,7 +139,7 @@ void TreeNode::appendChild(TreeNode* node) {
 }
 
 void TreeNode::appendSibling(TreeNode* node) {
-	node->parent=parent;
+	node->parent = parent;
 	if(parent != NULL) {
 		parent->push_back(node);
 	}

@@ -175,7 +175,7 @@ void MainWindow::setupEditor() {
 	EditorDock->setWidget(editor);
 
 	// default the highlightstyle to "logo" using the needed i18n
-	kdDebug(0)<<"initHLstyle: "<<Settings::logoLanguage()<<endl;
+	kdDebug(0)<<"The HighllightStyle for the Code Editor: "<<Settings::logoLanguage()<<endl;
 	slotSetHighlightstyle( Settings::logoLanguage() );
 
 	// allow the cursor position to be indicated in the statusbar
@@ -491,13 +491,14 @@ void MainWindow::startExecution() {
 	stop->setEnabled(true);
 
 	slotStatusBar(i18n("Parsing commands..."),  IDS_STATUS);
+	kdDebug(0)<<"############## PARSING STARTED ##############"<<endl;
 
 	kapp->processEvents();
 
 	QString txt = ei->text() + "\n"; // the /n is needed for proper parsing
 	QTextIStream in(&txt);
-	Parser parser(in);
 	errMsg = new ErrorMessage(this);
+	Parser parser(in);
 	connect( &parser, SIGNAL(ErrorMsg(QString, uint, uint, uint) ),
 		errMsg, SLOT(slotAddError(QString, uint, uint, uint) ) );
 	connect( errMsg, SIGNAL(SetCursor(uint, uint) ),
@@ -506,9 +507,11 @@ void MainWindow::startExecution() {
 	// parsing and executing...
 	if( parser.parse() ) {
 		TreeNode* root = parser.getTree();
+		kdDebug(0)<<"############## PARSING FINISHED ##############"<<endl;
 		root->showTree(root); // show parsetree  DEBUG OPTION
 
 		slotStatusBar(i18n("Executing commands..."),  IDS_STATUS);
+		kdDebug(0)<<"############## EXECUTION STARTED ##############"<<endl;
 		exe = new Executer(root); // make Executer object, 'exe', and have it point to the root
 		connect( exe, SIGNAL( ErrorMsg(QString, uint, uint, uint) ),
 			errMsg, SLOT( slotAddError(QString, uint, uint, uint) ) );
@@ -568,6 +571,7 @@ void MainWindow::slotAbortExecution() {
 }
 
 void MainWindow::finishExecution() {
+	kdDebug(0)<<"############## EXECUTION FINISHED ##############"<<endl;
 	run->setEnabled(true);
 	stop->setEnabled(false);
 	executing = false;
@@ -728,7 +732,8 @@ void MainWindow::slotInsertText(QString str) {
 }
 
 void MainWindow::slotSetCursorPos(uint row, uint col) {
-	dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->setCursorPositionReal(row - 2, col);
+	dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->setCursorPositionReal(row-2, col);
+	kdDebug(0)<<"Cursor set to: ("<<row-2<<", "<<col<<")"<<endl;
 }
 // END
 

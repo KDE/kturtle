@@ -19,7 +19,9 @@ bugreport(log):/
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
- 
+
+#include <qstringlist.h>
+   
 #include <kdebug.h>
 #include <klocale.h>
 
@@ -55,117 +57,125 @@ Parser::~Parser() {
 	delete lexer;
 }
 
-TreeNode* Parser::getTree() {
-	return tree;
-}
-
 bool Parser::parse() {
 	bNoErrors = true;
-	getToken();
-	tree = Program();
+	getToken(); // starts the lexer once
+	tree = Program(); // keeps the lexer running till finished/error
 	return bNoErrors;
 }
 
+// TreeNode* Parser::getTree() {
+// 	return tree;
+// }
+
 void Parser::getToken() {
-	look = lexer->lex();
-	row = lexer->getRow();
-	col = lexer->getCol();
+	lookToken = lexer->lex(); // stores a token, obtained though the lexer, in 'lookToken'
+// 	row = lexer->getRow();
+// 	col = lexer->getCol();
+	row = lookToken.row;
+	col = lookToken.col;
+	kdDebug(0)<<"Parser::getToken(), got a token: '"<<lookToken.str<<"', @ ("<<row<<", "<<col<<")"<<endl;
 }
 
 TreeNode* Parser::Program() {
 	TreeNode* program = new TreeNode(programNode, row, col, "program");
 	TreeNode* block = new TreeNode(blockNode, row, col, "block");
 
-	while( (look.type != tokEof) ) {
+	// this is the main parse loop
+	while (lookToken.type != tokEof) { // lookToken.type returns the type of the current token
 		block->appendChild( Statement() );
+		// runs statement related code, stores the returned TreeNode* in the nodetree
+		// note: Statement() allways gets a new token with getToken() before it returns 
 	}
-	program->appendChild( block );
+	program->appendChild(block);
 
 	Match(tokEof);
 	return program;
 }
 
 void Parser::Match(int x) {
-	if(look.type != x) {
+	if (lookToken.type != x) {
 		QString tokStr = "";
 		switch(x) {
-			case tokIf            : tokStr+="if";           break;
-			case tokElse          : tokStr+="else";         break;
-			case tokWhile         : tokStr+="while";        break;
-			case tokFor           : tokStr+="for";          break;
-			case tokTo            : tokStr+="to";           break;
-			case tokStep          : tokStr+="step";         break;
-			case tokNumber        : tokStr+="number";       break;
-			case tokString        : tokStr+="string";       break;
-			case tokId            : tokStr+="id";           break;
-			case tokProcId        : tokStr+="procedure id"; break;
-			case tokBegin         : tokStr+="begin";        break;
-			case tokEnd           : tokStr+="end";          break;
+			case tokIf            : tokStr += "if";           break;
+			case tokElse          : tokStr += "else";         break;
+			case tokWhile         : tokStr += "while";        break;
+			case tokFor           : tokStr += "for";          break;
+			case tokTo            : tokStr += "to";           break;
+			case tokStep          : tokStr += "step";         break;
+			case tokNumber        : tokStr += "number";       break;
+			case tokString        : tokStr += "string";       break;
+			case tokId            : tokStr += "id";           break;
+			case tokProcId        : tokStr += "procedure id"; break;
+			case tokBegin         : tokStr += "begin";        break;
+			case tokEnd           : tokStr += "end";          break;
 		
-			case tokOr            : tokStr+="or";           break;
-			case tokAnd           : tokStr+="and";          break;
-			case tokNot           : tokStr+="not";          break;
+			case tokOr            : tokStr += "or";           break;
+			case tokAnd           : tokStr += "and";          break;
+			case tokNot           : tokStr += "not";          break;
 	
-			case tokGe            : tokStr+=">=";           break;
-			case tokGt            : tokStr+=">";            break;
-			case tokLe            : tokStr+="<=";           break;
-			case tokLt            : tokStr+="<";            break;
-			case tokNe            : tokStr+="!=";           break;
-			case tokEq            : tokStr+="==";           break;
-			case tokAssign        : tokStr+="=";            break;
+			case tokGe            : tokStr += ">=";           break;
+			case tokGt            : tokStr += ">";            break;
+			case tokLe            : tokStr += "<=";           break;
+			case tokLt            : tokStr += "<";            break;
+			case tokNe            : tokStr += "!=";           break;
+			case tokEq            : tokStr += "==";           break;
+			case tokAssign        : tokStr += "=";            break;
 
-			case tokReturn        : tokStr+="return";       break;
-			case tokBreak         : tokStr+="break";        break;
+			case tokReturn        : tokStr += "return";       break;
+			case tokBreak         : tokStr += "break";        break;
 
-			case tokForEach       : tokStr+="foreach";      break;
-			case tokIn            : tokStr+="in";           break;
+			case tokForEach       : tokStr += "foreach";      break;
+			case tokIn            : tokStr += "in";           break;
 		
-			case tokRun           : tokStr+="run";          break;
-			case tokEof           : tokStr+="end of file";  break;
-			case tokError         : tokStr+="error token";  break;
+			case tokRun           : tokStr += "run";          break;
+			case tokEof           : tokStr += "end of file";  break;
+			case tokError         : tokStr += "error token";  break;
 			
-			case tokLearn         : tokStr+="learn";        break;
+			case tokLearn         : tokStr += "learn";        break;
 			
-			case tokClear         : tokStr+="clear";        break;
-			case tokGo            : tokStr+="go";           break;
-			case tokGoX           : tokStr+="gox";          break;
-			case tokGoY           : tokStr+="goy";          break;
-			case tokForward       : tokStr+="forward";      break;
-			case tokBackward      : tokStr+="backward";     break;
-			case tokDirection     : tokStr+="direction";    break;
-			case tokTurnLeft      : tokStr+="turnleft";     break;
-			case tokTurnRight     : tokStr+="turnright";    break;
-			case tokCenter        : tokStr+="center";       break;
-			case tokSetPenWidth   : tokStr+="setpenwidth";  break;
-			case tokPenUp         : tokStr+="penup";        break;
-			case tokPenDown       : tokStr+="pendown";      break;
-			case tokSetFgColor    : tokStr+="setfgcolor";   break;
-			case tokSetBgColor    : tokStr+="setbgcolor";   break;
-			case tokResizeCanvas  : tokStr+="resizecanvas"; break;
-			case tokSpriteShow    : tokStr+="spriteshow";   break;
-			case tokSpriteHide    : tokStr+="spritehide";   break;
-			case tokSpritePress   : tokStr+="spritepress";  break;
-			case tokSpriteChange  : tokStr+="spritechange"; break;
+			case tokClear         : tokStr += "clear";        break;
+			case tokGo            : tokStr += "go";           break;
+			case tokGoX           : tokStr += "gox";          break;
+			case tokGoY           : tokStr += "goy";          break;
+			case tokForward       : tokStr += "forward";      break;
+			case tokBackward      : tokStr += "backward";     break;
+			case tokDirection     : tokStr += "direction";    break;
+			case tokTurnLeft      : tokStr += "turnleft";     break;
+			case tokTurnRight     : tokStr += "turnright";    break;
+			case tokCenter        : tokStr += "center";       break;
+			case tokSetPenWidth   : tokStr += "setpenwidth";  break;
+			case tokPenUp         : tokStr += "penup";        break;
+			case tokPenDown       : tokStr += "pendown";      break;
+			case tokSetFgColor    : tokStr += "setfgcolor";   break;
+			case tokSetBgColor    : tokStr += "setbgcolor";   break;
+			case tokResizeCanvas  : tokStr += "resizecanvas"; break;
+			case tokSpriteShow    : tokStr += "spriteshow";   break;
+			case tokSpriteHide    : tokStr += "spritehide";   break;
+			case tokSpritePress   : tokStr += "spritepress";  break;
+			case tokSpriteChange  : tokStr += "spritechange"; break;
 
-			case tokMessage       : tokStr+="message";      break;
-			case tokInputWindow   : tokStr+="inputwindow";  break;
-			case tokPrint         : tokStr+="print";        break;
-			case tokFontType      : tokStr+="fonttype";     break;
-			case tokFontSize      : tokStr+="fontsize";     break;
-			case tokRepeat        : tokStr+="repeat";       break;
-			case tokRandom        : tokStr+="random";       break;
-			case tokWait          : tokStr+="wait";         break;
-			case tokWrapOn        : tokStr+="wrapon";       break;
-			case tokWrapOff       : tokStr+="wrapoff";      break;
-			case tokReset         : tokStr+="reset";        break;
+			case tokMessage       : tokStr += "message";      break;
+			case tokInputWindow   : tokStr += "inputwindow";  break;
+			case tokPrint         : tokStr += "print";        break;
+			case tokFontType      : tokStr += "fonttype";     break;
+			case tokFontSize      : tokStr += "fontsize";     break;
+			case tokRepeat        : tokStr += "repeat";       break;
+			case tokRandom        : tokStr += "random";       break;
+			case tokWait          : tokStr += "wait";         break;
+			case tokWrapOn        : tokStr += "wrapon";       break;
+			case tokWrapOff       : tokStr += "wrapoff";      break;
+			case tokReset         : tokStr += "reset";        break;
 
-			default               : tokStr+= (char)x; break;
+			default               : tokStr += (char)x; break;
 		}
-		QString commandname = lexer->translateCommand(tokStr);
-		if ( commandname == "''" ) {
-			Error( i18n("Syntax error, expected a command"), 1010);
+		QString key = lexer->translateCommand(tokStr);
+		if ( key.isEmpty() ) {
+			// if the tokStr cannot be translated it is an unknow command, and thus either
+			// a user defined command or an error
+			Error( i18n("Expected a command on line %1, found %2").arg(row).arg(lookToken.str), 1010);
 		} else { 
-			Error( i18n("Syntax error, expected '%1'").arg(commandname), 1010);
+			Error( i18n("Expected '%1' on line %2").arg(key).arg(row), 1010);
 		}
 	} else {
 		getToken(); 
@@ -192,6 +202,8 @@ TreeNode* Parser::Function() {
 	func->appendChild( IdList() );    
 	Match(')');
 	func->appendChild( Block() );
+	
+	learnedFunctionList.append( idn->getName() );
 
 	return func;
 }
@@ -205,7 +217,7 @@ TreeNode* Parser::runFunction() {
 
 TreeNode* Parser::getId(){
 	TreeNode* n = new TreeNode(idNode, row, col, "id-node");
-	n->setName( look.str );
+	n->setName(lookToken.str);
 	Match( tokId );
 	return n;  
 }
@@ -215,7 +227,7 @@ TreeNode* Parser::getId(){
 /* Parse and Translate a Math Factor */
 TreeNode* Parser::Factor() {
 	TreeNode* n;
-	switch(look.type) {
+	switch(lookToken.type) {
 		case '(':       
 			Match('(');
 			n = Expression();
@@ -224,9 +236,9 @@ TreeNode* Parser::Factor() {
 
 		case tokId:     
 			n = getId();
-			if(look.type == '(') {       //is function call
+			if(lookToken.type == '(') {       //is function call
 				QString name = n->getName();
-				delete n;              
+				delete n;
 				n = FunctionCall(name);
 				n->setType(funcReturnNode); //expect returned value on stack
 			}
@@ -234,13 +246,13 @@ TreeNode* Parser::Factor() {
                   
 		case tokString:
 			n = new TreeNode(stringConstantNode, row, col, "string-constant");
-			n->setValue(look.str);
+			n->setValue(lookToken.str);
 			Match(tokString);
 			break;
 
 		case tokNumber:
 			n = new TreeNode(constantNode, row, col, "constant");
-			n->setValue(look.val);
+			n->setValue(lookToken.val);
 			Match(tokNumber);
 			break;
     
@@ -257,8 +269,8 @@ TreeNode* Parser::Factor() {
 			break;
 
 		default:
-			QString s = look.str;
-			if ( s.isEmpty() || look.type == tokEof ) {
+			QString s = lookToken.str;
+			if ( s.isEmpty() || lookToken.type == tokEof ) {
 				Error( i18n("Expected an expression"), 1020 );
 			} else {
 				Error( i18n("Cannot understand '%1' in expression").arg(s), 1020 );
@@ -277,13 +289,13 @@ TreeNode* Parser::Factor() {
 TreeNode* Parser::ParamList() {
 	TreeNode* ilist = new TreeNode(idListNode, row, col, "ilist");
 	//check for empty idlist -> function with no parameters
-	if( look.type == ')' ) {
+	if( lookToken.type == ')' ) {
 		return ilist;
 	}
 
 	//get id's seperated by ','
 	ilist->appendChild( Expression() ); //aaah KISS (Keep It Simple Sidney)
-	while( look.type == ',' ) {
+	while( lookToken.type == ',' ) {
 		Match(',');
 		ilist->appendChild( Expression() ); 
 	}
@@ -294,10 +306,14 @@ TreeNode* Parser::ParamList() {
 /*
   <functioncall> := tokId '(' <paramlist> ')' 
 */
-TreeNode* Parser::FunctionCall(const QString& name) {
-	TreeNode* fcall = new TreeNode(functionCallNode, row, col, "functioncall");
+TreeNode* Parser::FunctionCall(const QString& name, uint r, uint c) {
+	kdDebug(0)<<"Parser::FunctionCall, using identifier: '"<<name<<"'"<<endl;
+	TreeNode* fcall = new TreeNode(functionCallNode, r, c, "functioncall");
+	if (learnedFunctionList.contains(name) == 0) {
+		Error( i18n("'%1' is not a Logo command nor a learned command.").arg(name), 1010, r, c);
+	}
 	//first child contains function name
-	TreeNode* funcid= new TreeNode(idNode, row, col);
+	TreeNode* funcid = new TreeNode(idNode, row, col);
 	funcid->setName(name);
 	fcall->appendChild(funcid);
 
@@ -310,13 +326,13 @@ TreeNode* Parser::FunctionCall(const QString& name) {
 
 // this is either an assignment or a function call!
 TreeNode* Parser::Other() {
-	QString idname=look.str; 
+	QString idname = lookToken.str; 
 	Match(tokId);
 
-	if(look.type == tokAssign) {
+	if(lookToken.type == tokAssign) {
 		return Assignment(idname);
 	} else {
-		return FunctionCall(idname);
+		return FunctionCall(idname, lookToken.row, lookToken.col);
 	}
 }
 
@@ -324,7 +340,7 @@ TreeNode* Parser::Other() {
 
 TreeNode* Parser::signedFactor() {
 	TreeNode* sfac; //used by '-' and tokNot
-	switch( look.type ){
+	switch( lookToken.type ){
 		case '+':
 			Match('+');
 			return Factor();
@@ -385,12 +401,12 @@ TreeNode* Parser::Term() {
 	TreeNode* left = NULL;
 	TreeNode* right = NULL;
 
-	while( isMulOp(look) ){
+	while( isMulOp(lookToken) ){
 		left=pos;
 		pos=new TreeNode(Unknown, row, col);
 		pos->appendChild(left);
 
-		switch( look.type ) {
+		switch( lookToken.type ) {
 			case '*':
 				Match('*');
 				right = signedFactor();
@@ -449,11 +465,11 @@ TreeNode* Parser::Expression() {
 	TreeNode* left = NULL;
 	TreeNode* right = NULL;
 
-	while( isAddOp(look) ) {
+	while( isAddOp(lookToken) ) {
 		left = pos;
 		pos = new TreeNode(Unknown, row, col);
 		pos->appendChild(left);
-		switch(look.type) {
+		switch(lookToken.type) {
 			case '+':
 				Match('+');
 				right = Term() ;
@@ -556,7 +572,7 @@ TreeNode* Parser::While() {
 	Match(tokWhile);
 	wNode->appendChild( Expression() );
 
-	if(look.type == tokBegin){ //while followed by a block
+	if(lookToken.type == tokBegin){ //while followed by a block
 		wNode->appendChild( Block() ); 
 	} 
 	else{ //while followed by single statement
@@ -586,12 +602,12 @@ TreeNode* Parser::For() {
 	Match(tokTo);
 	fNode->appendChild( Expression() ); //stop value expression
 
-	if(look.type == tokStep){
+	if(lookToken.type == tokStep){
 		Match(tokStep);
 		fNode->appendChild( Expression() ); //step expression
 	}
 
-	if(look.type == tokBegin){ //for followed by a block
+	if(lookToken.type == tokBegin){ //for followed by a block
 		fNode->appendChild( Block() ); 
 	} 
 	else{ //while followed by single statement
@@ -610,7 +626,7 @@ TreeNode* Parser::ForEach() {
 	Match(tokIn);
 	fNode->appendChild( Expression() );
 
-	if(look.type == tokBegin) { //for followed by a block
+	if(lookToken.type == tokBegin) { //for followed by a block
 		fNode->appendChild( Block() ); 
 	} else { //while followed by single statement
 		fNode->appendChild( Statement() );
@@ -634,24 +650,24 @@ TreeNode* Parser::If() {
 	Match(tokIf);
 	node->appendChild( Expression() );
 
-	if(look.type == tokDo) {  // skip the 'do'
+	if(lookToken.type == tokDo) {  // skip the 'do'
 		getToken(); //next word
 	}
 
-	if(look.type == tokBegin) {  //if followed by a block
+	if(lookToken.type == tokBegin) {  //if followed by a block
 		node->appendChild( Block() ); 
 	} else {   //if followed by single statement
 		node->appendChild( Statement() );
 	}
 
-	if(look.type == tokElse) { //else part
+	if(lookToken.type == tokElse) { //else part
 		Match(tokElse);
 		
-		if(look.type == tokDo) {  // skip the 'do'
+		if(lookToken.type == tokDo) {  // skip the 'do'
 			getToken(); // next word
 		}
 
-		if(look.type == tokBegin) {  //else is followed by block
+		if(lookToken.type == tokBegin) {  //else is followed by block
 			node->appendChild( Block() );
 		} else {
 			node->appendChild( Statement() );
@@ -666,7 +682,7 @@ TreeNode* Parser::If() {
 TreeNode* Parser::getString(){
 	TreeNode* str = new TreeNode(stringConstantNode, row, col, "string");
 	
-	str->setStrValue( look.str );
+	str->setStrValue(lookToken.str);
 	Match( tokString );
 	
 	return str;
@@ -675,7 +691,7 @@ TreeNode* Parser::getString(){
 TreeNode* Parser::Return(){
 	TreeNode* ret=new TreeNode(returnNode, row, col, "return", lexer->translateCommand("return") );
 	
-	Match( tokReturn );
+	Match(tokReturn);
 	ret->appendChild( Expression() );
 	
 	return ret;
@@ -689,7 +705,7 @@ TreeNode* Parser::Break() {
 }
 
 TreeNode* Parser::Statement() {
-	switch(look.type) {
+	switch(lookToken.type) {
 		case tokLearn         : return Learn();            break;
 
 		case tokIf            : return If();               break;
@@ -743,14 +759,15 @@ TreeNode* Parser::Statement() {
 
 		default               : break;    
 	}
-	QString qstr = look.str;
-	if (qstr == "\'[\'") {
-		Error( i18n("'[' is expected"), 1060);
+	const QString beginChar = lexer->translateCommand("begin");
+	const QString lookTokenChar = lookToken.str;
+	if (lookTokenChar == beginChar) {
+		Error( i18n("'%1' is expected").arg(beginChar), 1060);
 	} else {
-		Error( i18n("'%1' is no Logo command").arg(qstr), 1060); 
+		Error( i18n("'%1' is no Logo command").arg(lookTokenChar), 1060); 
 	}
 	getToken();
-	return new TreeNode(Unknown, row, col);
+	return new TreeNode(Unknown, row, col); // fallback for unknowns
 }
 
 
@@ -758,7 +775,7 @@ TreeNode* Parser::Block() {
 	TreeNode* block = new TreeNode(blockNode, row, col, "block");
 	
 	Match(tokBegin);
-	while( (look.type != tokEnd) && (look.type != tokEof) ){
+	while( (lookToken.type != tokEnd) && (lookToken.type != tokEof) ){
 		block->appendChild( Statement() );
 	}
 	Match(tokEnd);
@@ -767,15 +784,15 @@ TreeNode* Parser::Block() {
 }
 
 
-TreeNode* Parser::IdList(){
-	TreeNode* ilist=new TreeNode(idListNode, row, col, "idlist");
+TreeNode* Parser::IdList() {
+	TreeNode* ilist = new TreeNode(idListNode, row, col, "idlist");
 
 	//check for empty idlist -> function with no parameters
-	if( look.type == ')' ) return ilist;
+	if( lookToken.type == ')' ) return ilist;
 	
 	//get id's seperated by ','
 	ilist->appendChild( getId() );
-	while( look.type == ',' ){
+	while( lookToken.type == ',' ){
 		Match(',');
 		ilist->appendChild( getId() );
 	}
@@ -804,7 +821,7 @@ TreeNode* Parser::Go() {
 	node->appendChild( Expression() );
 	
 	//following strings or expressions
-	while( look.type == ',' ){
+	while( lookToken.type == ',' ){
 		getToken(); //the comma
 		node->appendChild( Expression() );
 	}
@@ -821,7 +838,7 @@ TreeNode* Parser::GoX() {
 	node->appendChild( Expression() );
 	
 	//following strings or expressions
-	while( look.type == ',' ){
+	while( lookToken.type == ',' ){
 		getToken(); //the comma
 		node->appendChild( Expression() );
 	}
@@ -838,7 +855,7 @@ TreeNode* Parser::GoY() {
 	node->appendChild( Expression() );
 	
 	//following strings or expressions
-	while( look.type == ',' ){
+	while( lookToken.type == ',' ){
 		getToken(); //the comma
 		node->appendChild( Expression() );
 	}
@@ -855,7 +872,7 @@ TreeNode* Parser::Forward() {
 	node->appendChild( Expression() );
 	
 	//following strings or expressions
-	while( look.type == ',' ) {
+	while( lookToken.type == ',' ) {
 		getToken(); //the comma
 		node->appendChild( Expression() );
 	}
@@ -872,7 +889,7 @@ TreeNode* Parser::Backward() {
 	node->appendChild( Expression() );
 	
 	//following strings or expressions
-	while( look.type == ',' ) {
+	while( lookToken.type == ',' ) {
 		getToken(); //the comma
 		node->appendChild( Expression() );
 	}
@@ -888,7 +905,7 @@ TreeNode* Parser::Direction() {
 	node->appendChild( Expression() );
 	
 	//following strings or expressions
-	while( look.type == ',' ) {
+	while( lookToken.type == ',' ) {
 		getToken(); //the comma
 		node->appendChild( Expression() );
 	}
@@ -904,7 +921,7 @@ TreeNode* Parser::TurnLeft() {
 	node->appendChild( Expression() );
 	
 	//following strings or expressions
-	while( look.type == ',' ){
+	while( lookToken.type == ',' ){
 		getToken(); //the comma
 		node->appendChild( Expression() );
 	}
@@ -921,7 +938,7 @@ TreeNode* Parser::TurnRight() {
 	node->appendChild( Expression() );
 	
 	//following strings or expressions
-	while( look.type == ',' ){
+	while( lookToken.type == ',' ){
 		getToken(); //the comma
 		node->appendChild( Expression() );
 	}
@@ -945,7 +962,7 @@ TreeNode* Parser::SetPenWidth() {
 	node->appendChild( Expression() );
 	
 	//following strings or expressions
-	while( look.type == ',' ){
+	while( lookToken.type == ',' ){
 		getToken(); //the comma
 		node->appendChild( Expression() );
 	}
@@ -974,7 +991,7 @@ TreeNode* Parser::SetFgColor() {
 	getToken();
 	node->appendChild( Expression() );
 	//following strings or expressions
-	while( look.type == ',' ){
+	while( lookToken.type == ',' ){
 		getToken(); //the comma
 		node->appendChild( Expression() );
 	}
@@ -989,7 +1006,7 @@ TreeNode* Parser::SetBgColor() {
 	getToken();
 	node->appendChild( Expression() );
 	//following strings or expressions
-	while( look.type == ',' ){
+	while( lookToken.type == ',' ){
 		getToken(); //the comma
 		node->appendChild( Expression() );
 	}
@@ -1006,7 +1023,7 @@ TreeNode* Parser::ResizeCanvas() {
 	node->appendChild( Expression() );
 	
 	//following strings or expressions
-	while( look.type == ',' ){
+	while( lookToken.type == ',' ){
 		getToken(); //the comma
 		node->appendChild( Expression() );
 	}
@@ -1044,7 +1061,7 @@ TreeNode* Parser::SpriteChange() {
 	node->appendChild( Expression() );
 	
 	//following strings or expressions
-	while( look.type == ',' ){
+	while( lookToken.type == ',' ){
 		getToken(); //the comma
 		node->appendChild( Expression() );
 	}
@@ -1084,7 +1101,7 @@ TreeNode* Parser::Print() {
 	node->appendChild( Expression() );
 	
 	//following strings or expressions
-	while( look.type == ',' ){
+	while( lookToken.type == ',' ){
 		getToken(); //the comma
 		node->appendChild( Expression() );
 	}
@@ -1101,7 +1118,7 @@ TreeNode* Parser::FontType() {
 	node->appendChild( Expression() );
 	
 	//following strings or expressions
-	while( look.type == ',' ){
+	while( lookToken.type == ',' ){
 		getToken(); //the comma
 		node->appendChild( Expression() );
 	}
@@ -1117,7 +1134,7 @@ TreeNode* Parser::FontSize() {
 	node->appendChild( Expression() );
 	
 	//following strings or expressions
-	while( look.type == ',' ){
+	while( lookToken.type == ',' ) {
 		getToken(); //the comma
 		node->appendChild( Expression() );
 	}
@@ -1128,12 +1145,13 @@ TreeNode* Parser::Repeat() {
 	TreeNode* node = new TreeNode(RepeatNode, row, col, "repeat", lexer->translateCommand("repeat") );
 	Match(tokRepeat);
 	node->appendChild( Expression() );
+	node->appendChild( Block() );
 	
-	if(look.type == tokBegin) { // repeat followed by a block
-		node->appendChild( Block() ); 
-	} else { // repeat followed by single statement
-		node->appendChild( Statement() );
-	}
+// 	if(lookToken.type == tokBegin) { // repeat followed by a block
+// 		node->appendChild( Block() ); 
+// 	} else { // repeat followed by single statement
+// 		node->appendChild( Statement() );
+// 	}
 	
 	return node;
 }
@@ -1146,7 +1164,7 @@ TreeNode* Parser::Random() {
 	node->appendChild( Expression() );
 	
 	//following strings or expressions
-	while( look.type == ',' ){
+	while( lookToken.type == ',' ){
 		getToken(); //the comma
 		node->appendChild( Expression() );
 	}
@@ -1161,7 +1179,7 @@ TreeNode* Parser::Wait() {
 	node->appendChild( Expression() );
 	
 	//following strings or expressions
-	while( look.type == ',' ){
+	while( lookToken.type == ',' ){
 		getToken(); //the comma
 		node->appendChild( Expression() );
 	}
@@ -1197,8 +1215,8 @@ TreeNode* Parser::Learn() {
 
 
 
-void Parser::Error(const QString& s, uint code) {
-	emit ErrorMsg(s, row, col, code);
+void Parser::Error(const QString& s, uint code, uint r, uint c) {
+	emit ErrorMsg(s, (r == NA ? row : r), (c == NA ? col : c), code);
 	//exit(1); // better = throw exception here!
 	bNoErrors = false;
 }

@@ -198,8 +198,8 @@ void Executer::execFunction( TreeNode* node ) {
 		//execute the parameters which can be expressions
 		execute( *pfrom ); 
 		
-		QString idname=(*pto)->getName();
-		funcSymTable[idname]= (*pfrom)->getValue();
+		QString idname = (*pto)->getName();
+		funcSymTable[idname] = (*pfrom)->getValue();
 		++pto;
 	
 	}
@@ -377,7 +377,7 @@ void Executer::execIf( TreeNode* node ) {
   } else { //else part given
     TreeNode* elseblok = node->thirdChild();
     execute( condition );
-    if( condition->getValue().val != 0 ){
+    if( condition->getValue().val != 0 ) {
       execute( ifblok );
     } else {
       execute( elseblok );
@@ -387,7 +387,7 @@ void Executer::execIf( TreeNode* node ) {
 
 
 
-void Executer::execAssign( TreeNode* node ){
+void Executer::execAssign( TreeNode* node ) {
   TreeNode* var  = node->firstChild();
   TreeNode* expr = node->secondChild();
 
@@ -396,21 +396,21 @@ void Executer::execAssign( TreeNode* node ){
 }
 
     
-void Executer::execExpression( TreeNode* node ){
-  kdDebug(0)<<"execExpression is not implemented, because it should not be needed!"<<endl;
+void Executer::execExpression( TreeNode* node ) {
+  // execExpression is not implemented, because it should not be needed!
   // cies calls it debug info
 }
 
 
-void Executer::execId( TreeNode* node ){
+void Executer::execId( TreeNode* node ) {
   node->setValue( ( symbolTables.top() )[ node->getName() ] );
 }
 
-void Executer::execConstant( TreeNode* node ){
+void Executer::execConstant( TreeNode* node ) {
   //do nothing, value is already set
 }
 
-Number Executer::getVal( TreeNode* node ){
+Number Executer::getVal( TreeNode* node ) {
   execute( node );
   return node->getValue();
 }
@@ -516,9 +516,7 @@ void Executer::execNE( TreeNode* node ){
   
 void Executer::execAnd( TreeNode* node ){
   bool nl = getVal( node->firstChild() ).val != 0;
-	kdDebug(0)<<"leftAndChild"<< getVal(node->firstChild()).strVal <<endl;
   bool nr = getVal( node->secondChild() ).val != 0;
-	kdDebug(0)<<"rightAndChild"<< getVal(node->secondChild()).strVal <<endl;
   node->setValue( (double) (nl && nr) );
 }
 
@@ -625,9 +623,7 @@ void Executer::execForward( TreeNode* node ) {
     }
     TreeNode* nodeX = node->firstChild(); // getting
     execute(nodeX); // executing
-		kdDebug(0)<<" value after execution: "<<nodeX->getValue().val<<endl;
     int x = ROUND2INT(nodeX->getValue().val); // converting & rounding to int
-		kdDebug(0)<<" value after rounding: "<<x<<endl;
     emit Forward(x);
 }
 
@@ -850,7 +846,6 @@ void Executer::execInputWindow( TreeNode* node ) {
     if (value == "") {
         node->setValue(""); // this prevents a crash :)
     } else if (ok) {
-        kdDebug(0)<<"########################"<<endl;
         node->setValue(value);
         node->setType(constantNode);
     } else {

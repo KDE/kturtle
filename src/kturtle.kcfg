@@ -25,12 +25,14 @@
 
           QStringList xmlFiles = KGlobal::dirs()->findAllResources("data", "kturtle/data/*.xml");
           QStringList LogoLanguageList;
+          QString xmlTranslationFiles; // for debug purposes
           for ( QStringList::Iterator it = xmlFiles.begin(); it != xmlFiles.end(); ++it ) {
               QString xmlFile(*it);
-              kdDebug(0) &lt;&lt; "xmlTranslationFile: "&lt;&lt; xmlFile &lt;&lt;endl;
+              xmlTranslationFiles += xmlFile.section('.', -2, -2).append(", "); // for debug purposes
               // build list of language codes (en_US, nl, etc.)
               LogoLanguageList += xmlFile.section('.', -2, -2);
           }
+          kdDebug(0) &lt;&lt; "Available translations of Logo: "&lt;&lt; xmlTranslationFiles &lt;&lt;endl;
           LogoLanguageList.sort();
 
       </code>
@@ -65,7 +67,7 @@
               }
               itemCount++;
           }
-          kdDebug(0) &lt;&lt; "defaultLanguage: "&lt;&lt; defaultLanguage &lt;&lt;endl;
+          kdDebug(0) &lt;&lt; "Logo command language: "&lt;&lt; defaultLanguage &lt;&lt;endl;
 
       </code>
       <default code="true">defaultLanguage</default> 

@@ -55,12 +55,13 @@ How to make the errors more descriptive:  (my TODO for tomorow :)
 - store row,col numbers in the tree so the executer can feed rows/cols back    DONE
 - learn something about interpreters and errorhandling (check the net)         FOUND NOTHING (ask my neighbour)
 
------> line numbering is somehow broken.... most likely in parser/lexer
+-----> line numbering is somehow broken.... most likely in parser/lexer (only (syntax)error from the parsr such)
 
 - try to break up/refine the most common errors
 - Reformulate all the error messages after simulating them
 - Maybe more desciptive error messages should be triggered by the 'Help on Error" and DubleClick, these messages should be stored in/out-side of the executer,parser, but maybe even better, the errormsg file. I18n should then be easy, and it should supply richtext ((k)html) + links to the manual. (this could be in the same dialog)
 - errmsgs should maybe be filtered since there is quite some garbage in the errors that come back.
+- possible no newlines in a command this could make the error messages more specific/descriptive.
 
 
 

@@ -106,21 +106,22 @@ struct token {
 	Number  val;
 	QString str;
 	int     type;
+	uint    row;
+	uint    col;
 };
 
 
 class Lexer {
 	public:
 	//constructor and destructor
-	Lexer( QTextIStream& );
+	Lexer(QTextIStream&);
 	~Lexer() {}
-	QString translateCommand(QString s);
 
 	//public members
-	token lex(); //return token
-	uint getRow();
-	uint getCol();
-	
+	token lex(); // returns a complete token
+	uint getRow() { return row; }
+	uint getCol() { return col; }
+	QString translateCommand(QString s);
 	
 	private:
 	//private members
@@ -128,20 +129,21 @@ class Lexer {
 	void ungetChar(QChar);
 	void skipComment();
 	void skipWhite();
-	void getKeywords();
-	void checkKeywords(token&);
+	void loadKeywords();
+	void getToken(token&);
 	int getNumber(Number&);
 	int getName(QString&);
 	void getStringConstant(token& t);
 
-	typedef QMap<QString, QString> StringMap;
-	StringMap KeyMap;
-	StringMap AliasMap;
-
 	//private locals
 	QTextIStream    *in;
-	unsigned int     row,col,prevCol;
+	unsigned int     row, col, prevCol;
 	QChar            putBackChar;
+	
+	typedef QMap<QString, QString> StringMap;
+	StringMap        KeyMap;
+	StringMap        AliasMap;
+	StringMap        ReverseAliasMap;
 };
 
 

@@ -15,6 +15,7 @@
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+#include <kdebug.h> 
 #include <klocale.h>
 
 #include "errormsg.h"
@@ -47,7 +48,6 @@ ErrorMessage::ErrorMessage (QWidget *parent)
 	errTable->setShowGrid(false);
 	errTable->setFocusStyle(QTable::FollowStyle);
 	errTable->setLeftMargin(0);
-	connect( errTable, SIGNAL( selectionChanged() ), this, SLOT( updateSelection() ) );
 	
 	errTable->horizontalHeader()->setLabel( 0, i18n("line") );
 	errTable->setColumnWidth(0, baseWidget->fontMetrics().width("88888") );
@@ -73,12 +73,12 @@ void ErrorMessage::slotAddError(QString msg, uint row, uint col, uint code) {
 	if (row == NA)
 		errTable->setText( 0, 0, dash );
 	else
-		errTable->setText( 0, 0, QString::number(row + 1) ); 
+		errTable->setText( 0, 0, QString::number(row) ); 
 	
 	if (col == NA)
 		errTable->setText( 0, 1, dash );
 	else
-		errTable->setText( 0, 1, QString::number(col + 1) );
+		errTable->setText( 0, 1, QString::number(col) );
 
 	if (code== NA)
 		errTable->setText( 0, 2, dash );
@@ -86,6 +86,7 @@ void ErrorMessage::slotAddError(QString msg, uint row, uint col, uint code) {
 		errTable->setText( 0, 2, QString::number(code) );
 	
 	errTable->setText( 0, 3, msg );
+	kdDebug(0)<<"ErrorTable entry: "<<row<<", "<<col<<", "<<code<<", "<<msg<<"."<<endl;
 }
 
 
@@ -99,12 +100,15 @@ bool ErrorMessage::containsErrors() {
 void ErrorMessage::display() {
 	errTable->clearSelection();
 	enableButton (KDialogBase::User1, false);
+	errTable->sortColumn(0, true, true);
 	show();
+	connect( errTable, SIGNAL( selectionChanged() ), this, SLOT( updateSelection() ) );
 }
 
 void ErrorMessage::updateSelection() {
 	int row = errTable->currentRow();
-	emit SetCursor( errTable->text(row, 0).toInt(), errTable->text(row, 1).toInt() );
+	int line = errTable->text(row, 0).toInt() + 1;
+	emit SetCursor( line, errTable->text(row, 1).toInt() );
 	enableButton (KDialogBase::User1, true);
 }
 
