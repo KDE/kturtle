@@ -1,10 +1,3 @@
-/*=============================================================================
-author        :Walter Schreppers
-filename      :lexer.h
-description   :Split an input stream up into tokens, eat up white space and
-               comments and keep track of row and column
-bugreport(log):column will not be incremented enough when numbers are read
-=============================================================================*/
 /*
     This program is free software; you can redistribute it and/or
     modify it under the terms of version 2 of the GNU General Public
@@ -19,7 +12,11 @@ bugreport(log):column will not be incremented enough when numbers are read
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
- 
+
+// This file is originally written by Walter Scheppers, but allmost
+// every aspect of it is slightly changed by Cies Breijs.
+
+    
 #ifndef _LEXER_H_
 #define _LEXER_H_
 
@@ -119,8 +116,8 @@ class Lexer {
 
 	//public members
 	token lex(); // returns a complete token
-	uint getRow() { return row; }
-	uint getCol() { return col; }
+	// uint getRow() { return row; }
+	// uint getCol() { return col; }
 	QString translateCommand(QString s);
 	
 	private:
@@ -136,7 +133,7 @@ class Lexer {
 	void getStringConstant(token& t);
 
 	//private locals
-	QTextIStream    *in;
+	QTextIStream    *inputStream;
 	unsigned int     row, col, prevCol;
 	QChar            putBackChar;
 	

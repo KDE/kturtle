@@ -1,10 +1,3 @@
-/*=============================================================================
-author        :Walter Schreppers
-filename      :parser.h
-description   :Parse source code by calling lexer repeadetly and build a tree
-               so that it can be executed by Executer
-bugreport(log):/
-=============================================================================*/
 /*
     This program is free software; you can redistribute it and/or
     modify it under the terms of version 2 of the GNU General Public
@@ -19,6 +12,10 @@ bugreport(log):/
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
+
+// This file is originally written by Walter Scheppers, but allmost
+// every aspect of it is slightly changed by Cies Breijs.
+
 
 #include <qstringlist.h>
    
@@ -48,6 +45,8 @@ bugreport(log):/
 
 =================================================================*/
 
+
+
 Parser::Parser(QTextIStream& in) {
 	lexer = new Lexer(in);
 	tree = new TreeNode();
@@ -59,30 +58,29 @@ Parser::~Parser() {
 
 bool Parser::parse() {
 	bNoErrors = true;
-	getToken(); // starts the lexer once
 	tree = Program(); // keeps the lexer running till finished/error
-	return bNoErrors;
+	// return bNoErrors;        ----> see what happens  WORKS GREAT! parser now allways 'succeeds'
+	return true;
 }
-
-// TreeNode* Parser::getTree() {
-// 	return tree;
-// }
 
 void Parser::getToken() {
 	lookToken = lexer->lex(); // stores a token, obtained though the lexer, in 'lookToken'
-// 	row = lexer->getRow();
-// 	col = lexer->getCol();
 	row = lookToken.row;
 	col = lookToken.col;
 	kdDebug(0)<<"Parser::getToken(), got a token: '"<<lookToken.str<<"', @ ("<<row<<", "<<col<<")"<<endl;
 }
 
 TreeNode* Parser::Program() {
+	row = 0;
+	col = 0;
 	TreeNode* program = new TreeNode(programNode, row, col, "program");
 	TreeNode* block = new TreeNode(blockNode, row, col, "block");
 
+	getToken();
+	
 	// this is the main parse loop
 	while (lookToken.type != tokEof) { // lookToken.type returns the type of the current token
+		kdDebug(0)<<"Parser::entered main parse loop"<<endl;
 		block->appendChild( Statement() );
 		// runs statement related code, stores the returned TreeNode* in the nodetree
 		// note: Statement() allways gets a new token with getToken() before it returns 
@@ -173,7 +171,9 @@ void Parser::Match(int x) {
 		if ( key.isEmpty() ) {
 			// if the tokStr cannot be translated it is an unknow command, and thus either
 			// a user defined command or an error
-			Error( i18n("Expected a command on line %1, found %2").arg(row).arg(lookToken.str), 1010);
+			
+			// Error( i18n("Expected a command on line %1, found %2").arg(row).arg(lookToken.str), 1010);
+			// without this error it might also work, the executer will take care of it
 		} else { 
 			Error( i18n("Expected '%1' on line %2").arg(key).arg(row), 1010);
 		}
@@ -183,11 +183,20 @@ void Parser::Match(int x) {
 }
 
 
+
+
+TreeNode* Parser::Learn() {
+	// dummy word
+	Match(tokLearn);
+	TreeNode* r = Function();
+	return r;
+}
+
 /*==================================================================
    EBNF for a function 
    <function> := tokId '(' <idlist> ')' <block>
 
-   we can safely use tokId because we require ( .. )
+   we can safely use tokId because we require "(" and ")" to mark the params
    to be given after the id when it is called, 
    if this were not the case
    we would have to extend the lexer so that it gives a
@@ -208,18 +217,58 @@ TreeNode* Parser::Function() {
 	return func;
 }
 
-TreeNode* Parser::runFunction() {
-	TreeNode* n = new TreeNode(runNode, row, col, "run", lexer->translateCommand("run") );
-	Match(tokRun);
-	n->appendChild( Expression() );
-	return n;
-}
-
 TreeNode* Parser::getId(){
 	TreeNode* n = new TreeNode(idNode, row, col, "id-node");
 	n->setName(lookToken.str);
 	Match( tokId );
 	return n;  
+}
+
+/*
+  paramlist is like idlist except it does not only
+  except id's it accepts expressions seperated by ','!
+  This is used by FunctionCall(). 
+*/
+TreeNode* Parser::ParamList() {
+	TreeNode* ilist = new TreeNode(idListNode, row, col, "ilist");
+	//check for empty idlist -> function with no parameters
+	if( lookToken.type == ')' ) {
+		return ilist;
+	}
+
+	//get id's seperated by ','
+	ilist->appendChild( Expression() ); //aaah KISS (Keep It Simple Sidney)
+	while( lookToken.type == ',' ) {
+		Match(',');
+		ilist->appendChild( Expression() ); 
+	}
+
+	return ilist;
+}
+
+/*
+  <functioncall> := tokId '(' <paramlist> ')' 
+*/
+TreeNode* Parser::FunctionCall(const QString& name, uint r, uint c) {
+	if (learnedFunctionList.contains(name) == 0) {
+		Error( i18n("'%1' is not a Logo command nor a learned command.").arg(name), 1010, r, c);
+		TreeNode* errNode = new TreeNode(Unknown, r, c, "name");
+		return errNode;
+	}
+	
+	kdDebug(0)<<"Parser::FunctionCall, using identifier: '"<<name<<"'"<<endl;
+	TreeNode* fcall = new TreeNode(functionCallNode, r, c, "functioncall");
+	//first child contains function name
+	
+	TreeNode* funcid = new TreeNode(idNode, row, col);
+	funcid->setName(name);
+	fcall->appendChild(funcid);
+
+	Match('(');
+	fcall->appendChild( ParamList() );
+	Match(')');
+
+	return fcall;
 }
 
 
@@ -257,7 +306,7 @@ TreeNode* Parser::Factor() {
 			break;
     
 		case tokRun:
-			n = runFunction();
+			n = ExternalRun();
 			break;
 
 		case tokInputWindow:
@@ -281,61 +330,6 @@ TreeNode* Parser::Factor() {
 	}
 	return n;
 }
-
-/*
-  paramlist is like idlist except it does not only
-  except id's it accepts expressions seperated by ','!
-*/
-TreeNode* Parser::ParamList() {
-	TreeNode* ilist = new TreeNode(idListNode, row, col, "ilist");
-	//check for empty idlist -> function with no parameters
-	if( lookToken.type == ')' ) {
-		return ilist;
-	}
-
-	//get id's seperated by ','
-	ilist->appendChild( Expression() ); //aaah KISS (Keep It Simple Sidney)
-	while( lookToken.type == ',' ) {
-		Match(',');
-		ilist->appendChild( Expression() ); 
-	}
-
-	return ilist;
-}
-
-/*
-  <functioncall> := tokId '(' <paramlist> ')' 
-*/
-TreeNode* Parser::FunctionCall(const QString& name, uint r, uint c) {
-	kdDebug(0)<<"Parser::FunctionCall, using identifier: '"<<name<<"'"<<endl;
-	TreeNode* fcall = new TreeNode(functionCallNode, r, c, "functioncall");
-	if (learnedFunctionList.contains(name) == 0) {
-		Error( i18n("'%1' is not a Logo command nor a learned command.").arg(name), 1010, r, c);
-	}
-	//first child contains function name
-	TreeNode* funcid = new TreeNode(idNode, row, col);
-	funcid->setName(name);
-	fcall->appendChild(funcid);
-
-	Match('(');
-	fcall->appendChild( ParamList() );
-	Match(')');
-
-	return fcall;
-}
-
-// this is either an assignment or a function call!
-TreeNode* Parser::Other() {
-	QString idname = lookToken.str; 
-	Match(tokId);
-
-	if(lookToken.type == tokAssign) {
-		return Assignment(idname);
-	} else {
-		return FunctionCall(idname, lookToken.row, lookToken.col);
-	}
-}
-
 
 
 TreeNode* Parser::signedFactor() {
@@ -385,13 +379,6 @@ TreeNode* Parser::signedFactor() {
 }
 
 
-/*---------------------------------------------------------------*/
-/* identify a multiplicative operator */
-bool Parser::isMulOp(token t){
-  return (t.type == '*') || (t.type == '/') || (t.type == tokAnd);
-}
-
-
 
 /*---------------------------------------------------------------*/
 /* Parse and Translate a Math Term */
@@ -401,9 +388,10 @@ TreeNode* Parser::Term() {
 	TreeNode* left = NULL;
 	TreeNode* right = NULL;
 
-	while( isMulOp(lookToken) ){
-		left=pos;
-		pos=new TreeNode(Unknown, row, col);
+	while ( (lookToken.type == '*') || (lookToken.type == '/') || (lookToken.type == tokAnd) ) {
+		// while is is a multiplicative operator do...
+		left = pos;
+		pos = new TreeNode(Unknown, row, col);
 		pos->appendChild(left);
 
 		switch( lookToken.type ) {
@@ -434,14 +422,16 @@ TreeNode* Parser::Term() {
 				return pos;
 				break;
 		}
-		if(right!=NULL) pos->appendChild( right );
-		termNode=pos;
+		if( right != NULL) {
+			pos->appendChild( right );
+		}
+		termNode = pos;
 	}   //end while
 	return termNode;
 }
 
 
-bool Parser::isAddOp(token t){
+bool Parser::isAddOp(token t) {
 	return 
 		(t.type == '+')   ||
 		(t.type == '-')   ||
@@ -539,8 +529,8 @@ TreeNode* Parser::Expression() {
 				return pos;
 				break;
 		}
-		if(right!=NULL) pos->appendChild( right );
-		retExp=pos;
+		if (right != NULL) pos->appendChild(right);
+		retExp = pos;
 	}
 	return retExp;
 }
@@ -705,6 +695,7 @@ TreeNode* Parser::Break() {
 }
 
 TreeNode* Parser::Statement() {
+	kdDebug(0)<<"Parser::Statement()"<<endl;
 	switch(lookToken.type) {
 		case tokLearn         : return Learn();            break;
 
@@ -712,7 +703,7 @@ TreeNode* Parser::Statement() {
 		case tokFor           : return For();              break;
 		case tokForEach       : return ForEach();          break;
 		case tokWhile         : return While();            break;
-		case tokRun           : return runFunction();      break;
+		case tokRun           : return ExternalRun();      break;
 		case tokReturn        : return Return();           break;
 		case tokBreak         : return Break();            break;
 		case tokId            : return Other();            break; //assignment or function call
@@ -1204,31 +1195,31 @@ TreeNode* Parser::Reset() {
 	return node;
 }
 
-
-TreeNode* Parser::Learn() {
-	// dummy word
-	Match(tokLearn);
-	TreeNode* r = Function();
-	return r;
+TreeNode* Parser::ExternalRun() {
+	TreeNode* n = new TreeNode(runNode, row, col, "run", lexer->translateCommand("run") );
+	Match(tokRun);
+	n->appendChild( Expression() );
+	return n;
 }
 
+// this is either an assignment or a function call!
+TreeNode* Parser::Other() {
+	kdDebug(0)<<"Parser::Other()"<<endl;
+	token presevedToken = lookToken; // preserve token, else Match() will make sure it gets lost
+	Match(tokId);
 
+	if(lookToken.type == tokAssign) {
+		return Assignment(presevedToken.str);
+	} else {
+		return FunctionCall(presevedToken.str, presevedToken.row, presevedToken.col);
+	}
+}
 
 
 void Parser::Error(const QString& s, uint code, uint r, uint c) {
 	emit ErrorMsg(s, (r == NA ? row : r), (c == NA ? col : c), code);
-	//exit(1); // better = throw exception here!
 	bNoErrors = false;
 }
 
-
-/*
-  //obsolete
-  string Parser::toString( number n ){
-    ostringstream os;
-    os<<n;
-    return os.str();
-  }
-*/
 
 #include "parser.moc"

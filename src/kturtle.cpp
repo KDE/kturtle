@@ -557,6 +557,7 @@ void MainWindow::startExecution() {
 		}
 		delete exe;
 	} else {
+		kdDebug(0)<<"############## PARSING FAILED ##############"<<endl;
 		slotStatusBar(i18n("Parsing failed."),  IDS_STATUS);
 		finishExecution();
 	}

@@ -1,9 +1,3 @@
-/*=============================================================================
-author        :Walter Schreppers
-filename      :treenode.cpp
-description   :A node in n-tree
-bugreport(log):/
-=============================================================================*/
 /*
     This program is free software; you can redistribute it and/or
     modify it under the terms of version 2 of the GNU General Public
@@ -18,6 +12,9 @@ bugreport(log):/
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
+
+// This file is originally written by Walter Scheppers, but allmost
+// every aspect of it is slightly changed by Cies Breijs.
 
 
 #include <kdebug.h>

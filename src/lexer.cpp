@@ -1,10 +1,3 @@
-/*=============================================================================
-author        :Walter Schreppers
-filename      :lexer.h
-description   :Split an input stream up into tokens, eat up white space and
-               comments and keep track of row and column
-bugreport(log):column will not be incremented enough when numbers are read
-=============================================================================*/
 /*
     This program is free software; you can redistribute it and/or
     modify it under the terms of version 2 of the GNU General Public
@@ -19,7 +12,11 @@ bugreport(log):column will not be incremented enough when numbers are read
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
- 
+
+// This file is originally written by Walter Scheppers, but allmost
+// every aspect of it is slightly changed by Cies Breijs.
+
+  
 #include <qdom.h>
 #include <qfile.h>
 
@@ -30,9 +27,9 @@ bugreport(log):column will not be incremented enough when numbers are read
 #include "lexer.h"
 
 
-Lexer::Lexer(QTextIStream& ifstr) {
+Lexer::Lexer(QTextIStream& QTextIncomingStream) {
 	loadKeywords();
-	in = &ifstr;
+	inputStream = &QTextIncomingStream;
 	row = 1;
 	col = 1;
 	prevCol = 1;
@@ -50,7 +47,7 @@ token Lexer::lex() {
 	// skipWhite();
 	
 	QChar look = getChar();
-	if ( in->atEnd() ) {
+	if ( inputStream->atEnd() ) {
 		kdDebug(0)<<"Lexer::lex(), got EOF."<<endl;
 		t.type = tokEof;
 		return t;
@@ -120,7 +117,7 @@ QChar Lexer::getChar() {
 			col++;
 		}
 	} else {
-		*in >> c; // take one QChar of the QStream
+		*inputStream >> c; // take one QChar of the QStream
 		kdDebug(0)<<"Lexer::getChar(): '"<<c<<"' @ ("<<row<<", "<<col<<")"<<endl;
 		if (c == '\n' || c == '\x0a') {
 			row++;
@@ -160,7 +157,7 @@ int Lexer::getNumber(Number& n) {
 	bool havePoint = false;
 	QChar look = getChar();
 	if ( look.isNumber() ) {
-		while ( ( look.isNumber() || (look == '.' && !havePoint) ) && !in->atEnd() ) {
+		while ( ( look.isNumber() || (look == '.' && !havePoint) ) && !inputStream->atEnd() ) {
 			if (look == '.') {
 				havePoint = true;
 			}
@@ -181,7 +178,7 @@ int Lexer::getNumber(Number& n) {
 int Lexer::getName(QString& s) {
 	QChar look = getChar();
 	if ( look.isLetter() || look=='[' || look==']' ) {
-		while ( ( look.isLetterOrNumber() || look == '_' || look=='[' || look==']' ) && !in->atEnd() ) {
+		while ( ( look.isLetterOrNumber() || look == '_' || look=='[' || look==']' ) && !inputStream->atEnd() ) {
 			s += look;
 			look = getChar();
 		}
@@ -310,8 +307,8 @@ void Lexer::getToken(token& t) {
 void Lexer::skipComment() {
 	kdDebug(0)<<"Lexer::getChar(), skipping COMMENT."<<endl;
 	QChar look = getChar();
-	while ( !in->atEnd() && look == '#' ) {
-		while( !in->atEnd() && ( look != '\n' || look != '\x0a' ) ) {
+	while ( !inputStream->atEnd() && look == '#' ) {
+		while( !inputStream->atEnd() && ( look != '\n' || look != '\x0a' ) ) {
 			look = getChar();
 		}
 		skipWhite(); // see?
@@ -323,7 +320,7 @@ void Lexer::skipComment() {
 void Lexer::skipWhite() {
 	kdDebug(0)<<"Lexer::skipWhite(), skipping WHITESPACE."<<endl;
 	QChar look = getChar();
-	while( !in->atEnd() && look.isSpace() ) {
+	while( !inputStream->atEnd() && look.isSpace() ) {
 		look = getChar();
 	}
 	ungetChar(look);
@@ -333,7 +330,7 @@ void Lexer::skipWhite() {
 void Lexer::getStringConstant(token& t) {
 	QString constStr;
 	QChar ch = getChar();
-	while( ch != '"' && !in->atEnd() ) {
+	while( ch != '"' && !inputStream->atEnd() ) {
 		
 		if(ch == '\\') { //escape sequence 
 			ch = getChar();
@@ -357,7 +354,7 @@ void Lexer::getStringConstant(token& t) {
 	
 	kdDebug(0)<<"Lexer::getStringConstant, got STRINGCONSTANT: "<<t.str<<"'"<<endl;
 	
-	if( in->atEnd() ) {
+	if( inputStream->atEnd() ) {
 		t.type = tokEof;
 	}
 }

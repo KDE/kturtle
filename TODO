@@ -15,10 +15,16 @@ WISHes
  - WISHes that still have to be discussed
 
  
+       here we go!
  
- 
-    here we go!
- 
+
+My [cies] TODO list (in this order!):
+- the connection with the manual should be fixed (might need a change in kdelibs)
+- bug, wishes, linenumbering, errmsgs concering the interpreter maybe even a redesign [it does quite well now]
+- spice up the errormessage window with my great ideas
+
+
+  
  
 >>>>> BUGs::Urgent
 	a = 1
@@ -39,15 +45,13 @@ should print Hello, but doesn't. Just a < 5 works correctly, and the same for ju
 should print i*i, but prints i instead.  -----> inputwindow allways returns strings!
 
 
-commenting doesnt work anymore! arg!
+commenting out line using ctrl-D doesnt work anymore! arg!
 
 
 >>>>> BUGs::Big
 when there is an error, display only the most descriptive error
-  -error messages: not all errors, only the 1st or the 2 first. Error message related to language non-compatibility)
-  -IRC discussion: every compiler/interpreter should try to recover from a given error and continue if possible the idea is the compiler tryes to recover from the error and so it can tell you if there is more than one error and not just one by compilation attempt it may be assuming you missed a ; and maybe you missed a ( or something elase and following messages are completely wrong)
+  -IRC discussion: every compiler/interpreter should try to recover from a given error and continue if possible the idea is the compiler tryes to recover from the error and so it can tell you if there is more than one error and not just one by compilation attempt it may be assuming you missed a ; and maybe you missed a ( or something elase and following messages are completely wrong)  PARSER DOES NOT STOP ON ERRORS ANYMORE
 This can be a big issue, maybe I (cies) will have to learn more on interpreters to know how to properly do this error handling
-  -have links in there to corresponing help pages --> see WISHes
   - I pobably need to make an error message class that inherates some dialog thing (it should have: help-link-button, details, short error title and origion (Parse error), 'the-row-of-error', and a small description (maybe the description should contain links to help pagen on certain commands/ methods/ etc.) and maybe even a small hint or hint button      MORE OR LESS DONE
   - I porbably have to refine the way error message get emitted, problems: Ugly-, short-, technical messages. Sometimes more than one messages gets emmitted right now only the 1st msg is shown -- the 1st may not allways point to the 'core of error'.
 
@@ -59,18 +63,15 @@ How to make the errors more descriptive:  (my TODO for tomorow :)
 
 - try to break up/refine the most common errors
 - Reformulate all the error messages after simulating them
+- have links in there to corresponing help pages --> see WISHes
 - Maybe more desciptive error messages should be triggered by the 'Help on Error" and DubleClick, these messages should be stored in/out-side of the executer,parser, but maybe even better, the errormsg file. I18n should then be easy, and it should supply richtext ((k)html) + links to the manual. (this could be in the same dialog)
 - errmsgs should maybe be filtered since there is quite some garbage in the errors that come back.
-- possible no newlines in a command this could make the error messages more specific/descriptive.
+- possible no newlines in a command this could make the error messages more specific/descriptive. NOT NEEDED ATTHIS POINT
+
 
 
 
 >>>>> BUGs::Regular
-With long lines and wrapping the canvas can get into a endless loop -> 100%CPU, i tried a lot to fix this allready, maybe my solution needs some tuning :).
-Maybe i should just catch errors and break that endless loop :)
-There is quite some debugging info in the canvas.cpp class to help me solve this eventually
- - see BUGGING LOGO SCRIPTS BELOW
-
 
 Accept the making and calling of parameterless 'learned' commands (without using the '()')
 >> consequece: the interpreter will not now the difference between a typo and a user command, this should be explained in the error message as this is done with most interpreted languages.
@@ -190,31 +191,6 @@ cies: That is a good plan!  I have tux allready in my sprites dir (I'm a fan too
   
 
 
->>>> TROUBLE LOGO SCRIPTS!!!!!
-
-# due to lines 
-reset
-canvassize 350,348
-canvascolor 0,0,0
-center
-for x = 1 to 255 [
-  fw x
-  pencolor x, 255 - x, 255 - x
-  tr x / 65
-]
-
-# due to lines
-reset
-canvassize 350,350
-center
-for x = 1 to 255 [
-  fw x*x
-  tr x
-]
-
-
-
-
 >>>> RECENTLY FIXED BUGs
 
 - settings->configure cauzes crash FIXED thanks to Martijn Klingens  ->  move "LanguageLabel = new QLabel(kcfg_LanguageComboBox..." down a few lines (after kcfg_LanguageComboBox is init'ed) BACKPORT
@@ -237,6 +213,10 @@ for x = 1 to 255 [
 
 - cies: Make the interpreter (stolen from wsbasic.sf.net) (executer, parser, lexer, number and treenode) more native Qt. Right now they are a mixture of standard-CLI-C++ and Qt thingies (i put the Qt thingies there). I tried do that but i found that i'm not comfortable with the concept of streams -- which are used a lot in the interpreter. Especially streaming QString was an obstacle i couldnt take.     DONE
 >>>>> after this is done we can also make the ()[],.""-configurable
+
+With long lines and wrapping the canvas can get into a endless loop -> 100%CPU, i tried a lot to fix this allready, maybe my solution needs some tuning :).
+Maybe i should just catch errors and break that endless loop :)        FIXED!!! FINALLY
+
 
 
 

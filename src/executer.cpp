@@ -76,80 +76,79 @@ void Executer::abort() {
 
 void Executer::execute(TreeNode* node) {
 	switch( node->getType() ) {
-		case blockNode          : execBlock( node );        break;
-		case forNode            : execFor( node );          break;
-		case forEachNode        : execForEach( node );      break;
-		case whileNode          : execWhile( node );        break;
-		case ifNode             : execIf( node );           break;
-		case assignNode         : execAssign( node );       break;
-		case expressionNode     : execExpression( node );   break;
-		case idNode             : execId( node );           break;
-		case constantNode       : execConstant( node );     break; // does nothing value allready set
-		case stringConstantNode : execConstant( node );     break; // idem
+		case blockNode          : execBlock(node);        break;
+		case forNode            : execFor(node);          break;
+		case forEachNode        : execForEach(node);      break;
+		case whileNode          : execWhile(node);        break;
+		case ifNode             : execIf(node);           break;
+		case assignNode         : execAssign(node);       break;
+		case expressionNode     : execExpression(node);   break;
+		case idNode             : execId(node);           break;
+		case constantNode       : execConstant(node);     break; // does nothing value allready set
+		case stringConstantNode : execConstant(node);     break; // idem
 		
-		case addNode            : execAdd( node );          break;
-		case mulNode            : execMul( node );          break;
-		case divNode            : execDiv( node );          break;
-		case subNode            : execSub( node );          break;
-		case minusNode          : execMinus( node );        break;
+		case addNode            : execAdd(node);          break;
+		case mulNode            : execMul(node);          break;
+		case divNode            : execDiv(node);          break;
+		case subNode            : execSub(node);          break;
+		case minusNode          : execMinus(node);        break;
 	
-		case nodeGE             : execGE( node );           break; 
-		case nodeGT             : execGT( node );           break;
-		case nodeLE             : execLE( node );           break;
-		case nodeLT             : execLT( node );           break;
-		case nodeNE             : execNE( node );           break;
-		case nodeEQ             : execEQ( node );           break;
+		case nodeGE             : execGE(node);           break; 
+		case nodeGT             : execGT(node);           break;
+		case nodeLE             : execLE(node);           break;
+		case nodeLT             : execLT(node);           break;
+		case nodeNE             : execNE(node);           break;
+		case nodeEQ             : execEQ(node);           break;
 		
-		case andNode            : execAnd( node );          break;
-		case orNode             : execOr( node );           break;
-		case notNode            : execNot( node );          break;
+		case andNode            : execAnd(node);          break;
+		case orNode             : execOr(node);           break;
+		case notNode            : execNot(node);          break;
 		
-		case functionNode       : createFunction( node );   break;
-		case functionCallNode   : execFunction( node );     break;
-		case funcReturnNode     : execRetFunction( node );  break;
-		case returnNode         : execReturn( node );       break;
-		case breakNode          : execBreak( node );        break;
+		case functionNode       : createFunction(node);   break;
+		case functionCallNode   : execFunction(node);     break;
+		case funcReturnNode     : execRetFunction(node);  break;
+		case returnNode         : execReturn(node);       break;
+		case breakNode          : execBreak(node);        break;
 		
-		case runNode            : execRun( node );          break;
+		case runNode            : execRun(node);          break;
 		
-		case ClearNode          : execClear( node );        break;
-		case GoNode             : execGo( node );           break;
-		case GoXNode            : execGoX( node );          break;
-		case GoYNode            : execGoY( node );          break;
-		case ForwardNode        : execForward( node );      break;
-		case BackwardNode       : execBackward( node );     break;
-		case DirectionNode      : execDirection( node );    break;
-		case TurnLeftNode       : execTurnLeft( node );     break;
-		case TurnRightNode      : execTurnRight( node );    break;
-		case CenterNode         : execCenter( node );       break;
-		case SetPenWidthNode    : execSetPenWidth( node );  break;
-		case PenUpNode          : execPenUp( node );        break;
-		case PenDownNode        : execPenDown( node );      break;
-		case SetFgColorNode     : execSetFgColor( node );   break;
-		case SetBgColorNode     : execSetBgColor( node );   break;
-		case ResizeCanvasNode   : execResizeCanvas( node ); break;
-		case SpriteShowNode     : execSpriteShow( node );   break;
-		case SpriteHideNode     : execSpriteHide( node );   break;
-		case SpritePressNode    : execSpritePress( node );  break;
-		case SpriteChangeNode   : execSpriteChange( node ); break;
+		case ClearNode          : execClear(node);        break;
+		case GoNode             : execGo(node);           break;
+		case GoXNode            : execGoX(node);          break;
+		case GoYNode            : execGoY(node);          break;
+		case ForwardNode        : execForward(node);      break;
+		case BackwardNode       : execBackward(node);     break;
+		case DirectionNode      : execDirection(node);    break;
+		case TurnLeftNode       : execTurnLeft(node);     break;
+		case TurnRightNode      : execTurnRight(node);    break;
+		case CenterNode         : execCenter(node);       break;
+		case SetPenWidthNode    : execSetPenWidth(node);  break;
+		case PenUpNode          : execPenUp(node);        break;
+		case PenDownNode        : execPenDown(node);      break;
+		case SetFgColorNode     : execSetFgColor(node);   break;
+		case SetBgColorNode     : execSetBgColor(node);   break;
+		case ResizeCanvasNode   : execResizeCanvas(node); break;
+		case SpriteShowNode     : execSpriteShow(node);   break;
+		case SpriteHideNode     : execSpriteHide(node);   break;
+		case SpritePressNode    : execSpritePress(node);  break;
+		case SpriteChangeNode   : execSpriteChange(node); break;
 
-		case MessageNode        : execMessage( node );      break;
-		case InputWindowNode    : execInputWindow( node );  break;
-		case printNode          : execPrint( node );        break;
-		case FontTypeNode       : execFontType( node );     break;
-		case FontSizeNode       : execFontSize( node );     break;
-		case RepeatNode         : execRepeat( node );       break;
-		case RandomNode         : execRandom( node );       break;
-		case WaitNode           : execWait( node );         break;
-		case WrapOnNode         : execWrapOn( node );       break;
-		case WrapOffNode        : execWrapOff( node );      break;
-		case ResetNode          : execReset( node );        break;
+		case MessageNode        : execMessage(node);      break;
+		case InputWindowNode    : execInputWindow(node);  break;
+		case printNode          : execPrint(node);        break;
+		case FontTypeNode       : execFontType(node);     break;
+		case FontSizeNode       : execFontSize(node);     break;
+		case RepeatNode         : execRepeat(node);       break;
+		case RandomNode         : execRandom(node);       break;
+		case WaitNode           : execWait(node);         break;
+		case WrapOnNode         : execWrapOn(node);       break;
+		case WrapOffNode        : execWrapOff(node);      break;
+		case ResetNode          : execReset(node);        break;
+		
+		case Unknown            : // dont break but fallthrough to default
 		
 		default:
-			QString nodename = node->getName();
-			uint row = node->getRow();
-			uint col = node->getRow();
-			emit ErrorMsg( i18n("Found unsupported node named '%1' in the tree.").arg(nodename), row, col, 3000 );
+			kdDebug(0)<<"Found unsupported node named '"<<node->getName()<<"' in the tree @ ("<<node->getRow()<<", "<<node->getCol()<<")"<<endl;
 			break;
 	}  
 }
@@ -220,7 +219,7 @@ void Executer::execFunction( TreeNode* node ) {
 //first child   = function name
 //second child  = parameters
 void Executer::execRetFunction( TreeNode* node ) {
-	execFunction( node );
+	execFunction(node);
 	if( runStack.size() == 0 ) {
 		emit ErrorMsg( i18n("Function %1 did not return a value.").arg( node->getKey() ), node->getRow(), node->getCol(), 5030);
 		return;
@@ -411,7 +410,7 @@ void Executer::execConstant( TreeNode* node ) {
 }
 
 Number Executer::getVal( TreeNode* node ) {
-  execute( node );
+  execute(node);
   return node->getValue();
 }
 
