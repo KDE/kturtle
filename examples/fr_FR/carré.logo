@@ -1,6 +1,0 @@
-# dessine un carré
-
-répète 4 [
-  avance 100 
-  tournegauche  90
-]
