@@ -1,0 +1,6 @@
+# rita en fyrkant
+
+upprepa 4 [
+  framåt 100 
+  svängvänster  90
+]

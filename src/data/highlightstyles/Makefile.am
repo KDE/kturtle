@@ -1,3 +1,3 @@
-xml_DATA = logohighlightstyle.en_US.xml logohighlightstyle.nl.xml logohighlightstyle.fr_FR.xml logohighlightstyle.de_DE.xml
+xml_DATA = logohighlightstyle.en_US.xml logohighlightstyle.nl.xml logohighlightstyle.fr_FR.xml logohighlightstyle.de_DE.xml logohighlightstyle.sv.xml
 xmldir = $(kde_datadir)/katepart/syntax
 EXTRA_DIST = $(xml_DATA)

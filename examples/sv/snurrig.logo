@@ -1,0 +1,13 @@
+# snurrig.logo
+
+återställ
+höjpenna
+fr 50
+sänkpenna
+
+upprepa 4 [
+för x = 1 till 100 [
+fr 10
+sh 100 - x
+]
+]

@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<!DOCTYPE logokeywords>
+
+<logokeywords lang="sv" ver="0.01">
+
+<!-- scope -->
+  <command name="begin">
+    <keyword>[</keyword>
+  </command>
+  
+  <command name="end">
+    <keyword>]</keyword>
+  </command>
+
+<!-- execution controllers -->
+  <command name="while">
+    <keyword>medan</keyword>
+  </command>
+  
+  <command name="if">
+    <keyword>om</keyword>
+  </command>
+  
+  <command name="else">
+    <keyword>annars</keyword>
+  </command>
+  
+  <command name="for">
+    <keyword>för</keyword>
+  </command>
+  
+  <command name="to">
+    <keyword>till</keyword>
+  </command>
+  
+  <command name="return">
+    <keyword>returnera</keyword>
+  </command>
+  
+  <command name="break">
+    <keyword>avbryt</keyword>
+  </command>
+  
+  <command name="foreach">
+    <keyword>förvarje</keyword>
+  </command>
+  
+  <command name="in">
+    <keyword>i</keyword>
+  </command>
+
+  <command name="do">
+    <keyword>gör</keyword>
+  </command>
+  
+  <command name="repeat">
+    <keyword>upprepa</keyword>
+    <alias>upr</alias>
+  </command>
+
+  <command name="wait">
+    <keyword>vänta</keyword>
+  </command>
+
+<!-- boolean operators -->  
+  <command name="and">
+    <keyword>och</keyword>
+  </command>
+  
+  <command name="or">
+    <keyword>eller</keyword>
+  </command>
+  
+  <command name="not">
+    <keyword>inte</keyword>
+  </command>
+  
+  
+<!-- the meta command --> 
+  <command name="learn">
+    <keyword>lär</keyword>
+  </command>
+
+  
+<!-- normal keywords -->
+  <command name="run">
+    <keyword>kör</keyword>
+  </command>
+  
+  <command name="clear">
+    <keyword>rensa</keyword>
+    <alias>ren</alias>
+  </command>
+ 
+  <command name="go">
+    <keyword>gå</keyword>
+  </command>
+ 
+  <command name="gox">
+    <keyword>gåx</keyword>
+    <alias>gx</alias>
+  </command>
+ 
+  <command name="goy">
+    <keyword>gåy</keyword>
+    <alias>gy</alias>
+  </command>
+ 
+  <command name="forward">
+    <keyword>framåt</keyword>
+    <alias>fr</alias>
+  </command>
+  
+  <command name="backward">
+    <keyword>bakåt</keyword>
+    <alias>ba</alias>
+  </command>
+
+  <command name="direction">
+    <keyword>riktning</keyword>
+    <alias>ri</alias>
+  </command>
+  
+  <command name="turnleft">
+    <keyword>svängvänster</keyword>
+    <alias>sv</alias>
+  </command>
+
+  <command name="turnright">
+    <keyword>svänghöger</keyword>
+    <alias>sh</alias>
+  </command>
+
+  <command name="center">
+    <keyword>mitten</keyword>
+  </command>
+  
+  <command name="setpenwidth">
+    <keyword>pennbredd</keyword>
+    <alias>pb</alias>
+  </command>
+  
+  <command name="penup">
+    <keyword>höjpenna</keyword>
+    <alias>hp</alias>
+  </command>
+
+  <command name="pendown">
+    <keyword>sänkpenna</keyword>
+    <alias>sp</alias>
+  </command>
+  
+  <command name="setfgcolor">
+    <keyword>pennfärg</keyword>
+    <alias>pf</alias>
+  </command>
+  
+  <command name="setbgcolor">
+    <keyword>dukfärg</keyword>
+    <alias>df</alias>
+  </command>
+   
+  <command name="resizecanvas">
+    <keyword>dukstorlek</keyword>
+    <alias>ds</alias>
+  </command>
+
+  <command name="spriteshow">
+    <keyword>visa</keyword>
+    <alias>vi</alias>
+  </command>
+  
+  <command name="spritehide">
+    <keyword>göm</keyword>
+    <alias>gö</alias>
+  </command>
+
+  <command name="spritepress">
+    <keyword>tryck</keyword>
+    <alias>tr</alias>
+  </command>
+
+  <command name="spritechange">
+    <keyword>ändra</keyword>
+    <alias>än</alias>
+  </command>
+  
+  <command name="message">
+    <keyword>meddelande</keyword>
+  </command>
+  
+  <command name="inputwindow">
+    <keyword>indatafönster</keyword>
+  </command>
+  
+  <command name="print">
+    <keyword>skriv</keyword>
+  </command>
+
+  <command name="fonttype">
+    <keyword>teckentyp</keyword>
+  </command>
+  
+  <command name="fontsize">
+    <keyword>teckenstorlek</keyword>
+  </command>
+  
+  <command name="random">
+    <keyword>slump</keyword>
+  </command>
+  
+  <command name="wrapon">
+    <keyword>rundpå</keyword>
+  </command>
+  
+  <command name="wrapoff">
+    <keyword>rundav</keyword>
+  </command>
+  
+  <command name="reset">
+    <keyword>återställ</keyword>
+  </command>
+
+</logokeywords>

@@ -1,0 +1,6 @@
+# rita en triangel
+
+upprepa 3 [
+  framåt 100 
+  svängvänster 120
+]
