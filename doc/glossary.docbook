@@ -33,7 +33,7 @@ r = random 1,100
 </screen>
 The <userinput>inputwindow</userinput> command takes a string as input, and outputs the number or string that is entered. As you can see, the output of <userinput>inputwindow</userinput> is stored in the container <userinput>x</userinput>. The <userinput>random</userinput> command also gives output. In this case it outputs a number between 1 and 100. The output of the random is again stored in a container, named <userinput>r</userinput>. Note that the containers <userinput>x</userinput> and <userinput>r</userinput> are not used in the example code above.</para>
 
-<para>There are also commands that neither need input nor give output. Here some examples:
+<para>There are also commands that neither need input nor give output. Here are some examples:
 <screen>
 clear
 penup

@@ -2,7 +2,7 @@
 <title>Using &kturtle;</title>
 
 <screenshot>
-  <screeninfo>Here's a screenshot of &kturtle; in action</screeninfo>
+  <screeninfo>Here is a screenshot of &kturtle; in action</screeninfo>
   <mediaobject>
     <imageobject>
       <imagedata fileref="mainwindow_flower_nrs.png" format="PNG"/>
@@ -13,14 +13,14 @@
   </mediaobject>
 </screenshot>
 
-<para>The main window of &kturtle; has two main parts: <link linkend="the-code-editor">the code editor</link> (3) on the left where you type the &logo; commands,  and <link linkend="the-canvas">the canvas</link> (4) on the right where the instructions are visualized. <link linkend="the-canvas">The canvas</link> is the turtle's playground, it's on the canvas that the turtle actually moves and draws. The three other places on the main window are: <link linkend="the-menubar">the menu bar</link> (1) from where all the actions can be reached, <link linkend="the-toolbar">the toolbar</link> (4) that allows you to quickly select the most used actions, and <link linkend="the-statusbar">the statusbar</link> (5) where you will find feedback on the state of &kturtle;.</para>
+<para>The main window of &kturtle; has two main parts: <link linkend="the-code-editor">the code editor</link> (3) on the left where you type the &logo; commands,  and <link linkend="the-canvas">the canvas</link> (4) on the right where the instructions are visualized. <link linkend="the-canvas">The canvas</link> is the turtle's playground: it is on the canvas that the turtle actually moves and draws. The three other places on the main window are: <link linkend="the-menubar">the menu bar</link> (1) from where all the actions can be reached, <link linkend="the-toolbar">the toolbar</link> (4) that allows you to quickly select the most used actions, and <link linkend="the-statusbar">the statusbar</link> (5) where you will find feedback on the state of &kturtle;.</para>
 
 <sect1 id="the-code-editor">
 <title>The Code Editor</title>
 <para>In the code editor you type the &logo; commands. It has all of the features you would expect from a modern editor. Most of its features are found in the <link linkend="the-edit-menu">Edit</link> and the <link linkend="the-tools-menu">Tools</link> menus. The code editor can be docked on each border of the main window or it can be detached and placed anywhere on your desktop.</para>
 <para>
-You have several ways to get some code in the editor. The easiest way is to use an already-made example. You choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open Examples</guimenuitem>
-</menuchoice> in the <link linkend="the-file-menu">File menu</link> and you click on a file. The file name will tell you what the example is about (&eg; <filename>square.logo</filename> will draw a square). The file you choose will be opened in the <link linkend="the-code-editor">the code editor</link>, you can then use <menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem>
+You have several ways to get some code in the editor. The easiest way is to use an already-made example: choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open Examples</guimenuitem>
+</menuchoice> in the <link linkend="the-file-menu">File menu</link> and click on a file. The filename will tell you what the example is about (&eg; <filename>square.logo</filename> will draw a square). The file you choose will be opened in the <link linkend="the-code-editor">the code editor</link>, you can then use <menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem>
 </menuchoice> to run the code if you like.</para>
 <para>You can open &logo; files by choosing <menuchoice><guimenu>File</guimenu><guimenuitem>Open...</guimenuitem>
 </menuchoice>.</para>
@@ -34,8 +34,8 @@ The cursor position is indicated in <link linkend="the-statusbar">the statusbar<
 <sect1 id="the-canvas">
 <title>The Canvas</title>
 <para>
-The canvas is the area where the commands are visualized, where the commands <quote>draw</quote> a picture. In other words it is the turtle's playground. After getting some code in the <link linkend="the-code-editor">the code editor</link>, and executing it using <menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem>
-</menuchoice>, two things can happen: Either the code executes fine and you most likely see something change on the canvas, or you have an error in your code and there will be a message that will tell you what error you made.</para>
+The canvas is the area where the commands are visualized, where the commands <quote>draw</quote> a picture. In other words, it is the turtle's playground. After getting some code in the <link linkend="the-code-editor">the code editor</link>, and executing it using <menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem>
+</menuchoice>, two things can happen: either the code executes fine, and will you most likely see something change on the canvas; or you have made an error in your code and there will be a message telling you what error you made.</para>
 <para>This message should help you to resolve the error.</para>
 <para>The picture that is drawn can be saved as an image (using <menuchoice><guimenu>File</guimenu><guimenuitem>Save Canvas</guimenuitem>
 </menuchoice>) or printed (using <menuchoice><guimenu>File</guimenu><guimenuitem>Print...</guimenuitem>
@@ -44,7 +44,7 @@ The canvas is the area where the commands are visualized, where the commands <qu
 
 <sect1 id="the-menubar">
 <title>The Menubar</title>
-<para>In the menu bar you find all the actions of &kturtle;. There are in the following groups: <guimenu>File</guimenu>, <guimenu>Edit</guimenu>, <guimenu>View</guimenu>, <guimenu>Tools</guimenu>, <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>. This section describes them all.</para>
+<para>In the menu bar you find all the actions of &kturtle;. They are in the following groups: <guimenu>File</guimenu>, <guimenu>Edit</guimenu>, <guimenu>View</guimenu>, <guimenu>Tools</guimenu>, <guimenu>Settings</guimenu>, and <guimenu>Help</guimenu>. This section describes them all.</para>
 
 <sect2 id="the-file-menu">
 <title>The <guimenu>File</guimenu> Menu</title>
@@ -193,7 +193,7 @@ The canvas is the area where the commands are visualized, where the commands <qu
         <guimenu>Edit</guimenu>
         <guimenuitem>Undo</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Undoes the last change to code. &kturtle; has unlimited undo's!</para></listitem>
+      <listitem><para>Undoes the last change to code. &kturtle; has unlimited undos.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -381,7 +381,7 @@ The canvas is the area where the commands are visualized, where the commands <qu
         <guimenu>Tools</guimenu>
         <guimenuitem>Comment</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This action add comment characters (#) in from of the lines that are selected. Lines that start with a comment character are ignored when the code is executed. Comments allow the programmer to explain a bit about his code or they can be used to temporarily prevent a certain piece of code from execution.</para></listitem>
+      <listitem><para>This action add comment characters (#) in from of the lines that are selected. Lines that start with a comment character are ignored when the code is executed. Comments allow the programmer to explain a bit about his code or they can be used to temporarily prevent a certain piece of code from being  executed.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -428,7 +428,7 @@ The canvas is the area where the commands are visualized, where the commands <qu
         <guimenu>Settings</guimenu>
         <guisubmenu>Advanced Settings</guisubmenu>
       </menuchoice></term>
-      <listitem><para>Here you can change things you normally do not need to change. The <guisubmenu>Advanced Settings</guisubmenu> submenu has three items: <guimenuitem>Configure Editor...</guimenuitem> (the standard &kate; editor settings dialog), <guimenuitem>Configure Shortcuts...</guimenuitem> (the standard &kde; shortcut settings dialog) and <guimenuitem>Configure Toolbars...</guimenuitem> (the standard &kde; toolbars setting dialog).</para></listitem>
+      <listitem><para>Here you can change things you normally do not need to change. The <guisubmenu>Advanced Settings</guisubmenu> submenu has three items: <guimenuitem>Configure Editor...</guimenuitem> (the standard &kate; editor settings dialog), <guimenuitem>Configure Shortcuts...</guimenuitem> (the standard &kde; shortcut settings dialog), and <guimenuitem>Configure Toolbars...</guimenuitem> (the standard &kde; toolbars setting dialog).</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -490,7 +490,7 @@ The canvas is the area where the commands are visualized, where the commands <qu
         <guimenu>Help</guimenu>
         <guimenuitem>Report Bug...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Use this to report a problem with &kturtle; to the developers. These reports can be used to make &kturtle; future versions better.</para></listitem>
+      <listitem><para>Use this to report a problem with &kturtle; to the developers. These reports can be used to make future versions of &kturtle; even better.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -500,7 +500,7 @@ The canvas is the area where the commands are visualized, where the commands <qu
         <guimenu>Help</guimenu>
         <guimenuitem>About &kturtle;</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Here you find information on &kturtle; like the authors and the license it comes with.</para></listitem>
+      <listitem><para>Here you find information on &kturtle;, like the authors and the license it comes with.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -510,7 +510,7 @@ The canvas is the area where the commands are visualized, where the commands <qu
         <guimenu>Help</guimenu>
         <guimenuitem>About &kde;</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Here you can find information on &kde;. If you do not know yet what &kde; is, this is a place you should not miss!</para></listitem>
+      <listitem><para>Here you can find information on &kde;. If you do not know yet what &kde; is, this is a place you should not miss.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>

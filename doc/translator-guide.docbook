@@ -1,32 +1,41 @@
 <chapter id="translators">
 <title>Translator's Guide to &kturtle;</title>
-<para>As you know, the &logo; language great specificity is that the &logo; commands can be translated in your own language. This makes it easier for a child to understand the commands.
+<para>As you know, one of the great features of &logo; is that the &logo; commands can be translated in your own language. This makes it easier for a child to understand the commands.
 For a new language, there are 3 files to translate: first the keywords file (or commands) then the logo-highlight-style file and finally the examples.
 </para>
-<sect1 id="commands_trans">
-<title>How To Translate the &logo; keywords (commands)</title>
+<sect1 id="make_directory">
+<title>Creating a Directory to hold the Translated Files</title>
 <para>
-The commands files are located in <filename class="directory">kdeedu/kturtle/src/data/keywords/</filename>
-Each file is named <filename>logokeywords.<replaceable>code</replaceable>.xml</filename>
-where <replaceable>code</replaceable> is the ISO code for your country (note that this must be a valid <acronym>ISO</acronym> code).</para>
+First, you need to create a directory to store the translated files.
+
+Create a directory called
+
+<filename class="directory">kde-i18n/<replaceable>code</replaceable>/data/kdeedu/kturtle/</filename>
+
+in your KDE CVS directory, where <replaceable>code</replaceable> is your country code (the 2- or 4- letter <acronym>ISO</acronym> code).  
+</para>
+<para>
+Copy the <filename>Makefile.am</filename> file from <filename class="directory">kdeedu/kturtle/data/</filename> into this directory.  Open it using your favorite text editor, replace all instances of <quote>en_US</quote> in the file with your country code (the one used above), and save the file.
+</para>
+</sect1>
+<sect1 id="commands_trans">
+<title>How To Translate the &logo; Keywords (commands)</title>
 <para>
 <itemizedlist>
 <listitem><para>
-Copy the <filename>logokeywords.en_US.xml</filename> file by renaming
-it to
-<filename>logokeywords.<replaceable>code</replaceable>.xml</filename>
-where <replaceable>code</replaceable> is your country code (the 2 or 4 letters <acronym>ISO</acronym> code).
+Copy the <filename>logokeywords.en_US.xml</filename> file from <filename class="directory">kdeedu/kturtle/data/</filename> to the directory you have just created, and rename it to <filename>logokeywords.<replaceable>code</replaceable>.xml</filename>
+where <replaceable>code</replaceable> is your country code (the 2- or 4- letter <acronym>ISO</acronym> code).
 </para>
 </listitem>
-<listitem><para>Translate the content of the <sgmltag class="starttag">keyword</sgmltag> tag (&ie;
+<listitem><para>Translate the contents of the <sgmltag class="starttag">keyword</sgmltag> tag (&ie;
 the information between <sgmltag class="starttag">keyword</sgmltag>
 and <sgmltag class="endtag">keyword</sgmltag>) into your own language
-whenever it's possible. Also translate the content of the <sgmltag class="starttag">alias</sgmltag> tag, (&ie; the information between the <sgmltag class="starttag">alias</sgmltag> and <sgmltag class="endtag">alias</sgmltag>). These contents are related as the alias is a shortcut for the keyword.</para>
+wherever possible. Also, translate the contents of the <sgmltag class="starttag">alias</sgmltag> tag, (&ie; the information between the <sgmltag class="starttag">alias</sgmltag> and <sgmltag class="endtag">alias</sgmltag>): these are used as shortcuts for the keyword.</para>
 <para>
-For example translate <quote>while</quote> in: <sgmltag class="starttag">keyword</sgmltag>while<sgmltag class="endtag">keyword</sgmltag>
+For example, translate <quote>while</quote> in: <sgmltag class="starttag">keyword</sgmltag>while<sgmltag class="endtag">keyword</sgmltag>
 </para>
 <para>
-Please don't translate anything else and don't translate English words in <sgmltag class="starttag">command name="english_word"</sgmltag>. These must stay in English.
+Please do not translate anything else and do not translate the English words in <sgmltag class="starttag">command name="english_word"</sgmltag>: these must stay in English.
 </para>
 </listitem>
 <listitem><para>Save your file as <acronym>UTF-8</acronym> (in &kate;, use <guimenuitem>Save As...</guimenuitem> and change to <guilabel>utf8</guilabel> in the box on the right of the file name).
@@ -42,26 +51,19 @@ Please don't translate anything else and don't translate English words in <sgmlt
 </sect1>
 
 <sect1 id="examples_syntax">
-<title>How To Translate the syntax highlighting files</title>
-<para>The syntax highlighting files are located in <filename class="directory">kdeedu/kturtle/src/data/highlightstyles/</filename>.
-Each file is named <filename>logohighlightstyle.<replaceable>code</replaceable>.xml</filename>
-where <replaceable>code</replaceable> is the <acronym>ISO</acronym> code for your country (note that this must be a valid <acronym>ISO</acronym> code).
-Please note that the country code must be the same here than in the <filename>logokeywords</filename> file and for the example folder.
-</para>
+<title>How To Translate the Syntax Highlighting Files</title>
 <para>
 <itemizedlist>
-<listitem><para>Copy the
-<filename>logohighlightstyle.en_US.xml</filename> file by renaming it
-to
-<filename>logohighlightstyle.<replaceable>code</replaceable>.xml</filename>
-where <replaceable>code</replaceable> is your country code ( the 2- or 4-letter <acronym>ISO</acronym> code)
-</para></listitem>
+<listitem><para>Copy the <filename>logohighlightstyle.en_US.xml</filename> file from <filename class="directory">kdeedu/kturtle/data/</filename> to the directory you created to store the translated keywords file, and rename it to <filename>logohighlightstyle.<replaceable>code</replaceable>.xml</filename>
+where <replaceable>code</replaceable> is your country code (the 2- or 4- letter <acronym>ISO</acronym> code).
+</para>
+</listitem>
 <listitem><para>In line 4 of the file, there is
 <sgmltag class="starttag">language name="en_US"</sgmltag>...: here you change <quote>en_US</quote> to your language's <acronym>ISO</acronym> code (2 or 4 letters).
 </para></listitem>
 <listitem><para>Translate into your own language the content of the <sgmltag class="starttag">item</sgmltag> tag (&ie; the information between <sgmltag class="starttag">item</sgmltag> and <sgmltag class="endtag">item</sgmltag>). This content must match the <filename>logokeyword</filename> file.
-For example translate <quote>while</quote> in: <sgmltag class="starttag">item</sgmltag> while <sgmltag class="endtag">item</sgmltag> and leave the spaces as they are (one at the beginning and one at the end).
-Please don't translate anything else.
+For example, translate <quote>while</quote> in: <sgmltag class="starttag">item</sgmltag> while <sgmltag class="endtag">item</sgmltag> and leave the spaces as they are (one at the beginning and one at the end).
+Please do not translate anything else.
 </para></listitem>
 <listitem><para>Save your file as <acronym>UTF-8</acronym> (in &kate;, use <guimenuitem>Save As...</guimenuitem> and change to <guilabel>utf8</guilabel> in the box on the right of the file name).
 </para></listitem>
@@ -74,18 +76,11 @@ Please don't translate anything else.
 </sect1>
 
 <sect1 id="examples_trans">
-<title>How To Translate the examples</title>
-<para>
-The examples are located in the &kturtle; source in the <filename class="directory">kdeedu/kturtle/examples</filename> folder.
-</para>
-<para>
+<title>How To Translate the Examples</title>
 <itemizedlist>
-<listitem><para>Create a folder with your language's <acronym>ISO</acronym> code as name.</para>
+<listitem><para>Copy the English example files from <filename class="directory">kdeedu/kturtle/data/</filename> to the directory used to store the translated keyword and hilighting files.  Translate the filenames of the examples in your directory: this will allow users to easily and quickly understand what the example is about.</para>
 </listitem>
-<listitem><para>Copy the English examples in this folder and rename the files with your language translation. This will allow users to easily and quickly understand what the example is about.</para>
-</listitem>
-<listitem><para>See in <filename class="directory">kturtle/src/data/keywords/</filename> the file corresponding to your language. This file must be done before translating the examples. 
-Replace, in the example files, all English keywords with your translated keywords.</para>
+<listitem><para>Translate the keywords in the examples, using those in the <filename>logokeywords.xml</filename> for your language. The keywords file file must be done, first, before translating the examples.</para>
 </listitem>
 <listitem><para>Save your file as <acronym>UTF-8</acronym> (in &kate;, use <guimenuitem>Save As...</guimenuitem> and change to <guilabel>utf8</guilabel> in the box on the right of the file name)</para>
 </listitem>
@@ -96,7 +91,6 @@ Replace, in the example files, all English keywords with your translated keyword
 <listitem><para>Finally, if you want, you can add your own examples in this folder.</para>
 </listitem>
 </itemizedlist>
-</para>
 </sect1>
 
 </chapter>

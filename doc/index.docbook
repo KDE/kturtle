@@ -45,8 +45,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2004-07-09</date>
-<releaseinfo>0.2</releaseinfo>
+<date>2004-10-5</date>
+<releaseinfo>0.2.1</releaseinfo>
 
 <abstract>
 <para>
@@ -159,6 +159,9 @@ Cies Briej <email>cies # showroommama ! nl</email>
 </para></listitem>
 <listitem><para>Some proofreading changes by &Philip.Rodrigues; &Philip.Rodrigues.mail;</para>
 </listitem>
+<listitem><para>Updated translation how-to and some proofreading changes by Andrew Coles <email>andrew_coles@yahoo.co.uk</email></para>
+</listitem>
+
 </itemizedlist>
 </para>
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->

@@ -2,7 +2,7 @@
 <title>Getting Started</title>
 <para>When you start &kturtle; you will see something like this:
 <screenshot>
-  <screeninfo>Here is a screenshot &kturtle; when you start it for the first time</screeninfo>
+  <screeninfo>Here is a screenshot of &kturtle; when you start it for the first time</screeninfo>
   <mediaobject>
     <imageobject>
       <imagedata fileref="mainwindow.png" format="PNG"/>
@@ -20,7 +20,7 @@ In this Getting Started guide we assume that the language of the &logo; commands
 
 <sect2 id="the-turtle-moves">
 <title>The Turtle Moves</title>
-<para>Let's start by getting the turtle moving. Our turtle can do 3 types of moves, (1) it can go forwards and backwards, (2) it can turn left and right and (3) it can go directly to a position on the screen. Try this for example:</para>
+<para>Let us start by getting the turtle moving. Our turtle can do 3 types of moves, (1) it can go forwards and backwards, (2) it can turn left and right and (3) it can go directly to a position on the screen. Try this for example:</para>
 <para>
 <screen>
 forward 90
@@ -30,7 +30,7 @@ Type or copy-paste the code to the code editor and execute it (using <link linke
 
 <para>When you typed and executed the commands like above in the code editor you might have noticed one or more of the following things:</para>
 <orderedlist>
-<listitem><para>That &mdash; after executing the commands &mdash; the turtle moves up, draws a line and then turns a quarter turn to the left. This because you have used the <link linkend="forward"><userinput>forward</userinput></link> and the <link linkend="turnleft"><userinput>turnleft</userinput></link> commands.</para>
+<listitem><para>That &mdash; after executing the commands &mdash; the turtle moves up, draws a line, and then turns a quarter turn to the left. This because you have used the <link linkend="forward"><userinput>forward</userinput></link> and the <link linkend="turnleft"><userinput>turnleft</userinput></link> commands.</para>
 </listitem>
 <listitem>
 <para>That the color of the code changed while you where typing it: this feature is called <emphasis>intuitive highlighting</emphasis> &mdash; different types of commands are highlighted differently. This makes reading large blocks of code more easy.</para>
@@ -45,15 +45,15 @@ Type or copy-paste the code to the code editor and execute it (using <link linke
 
 <para>You will likely understand that <userinput>forward 90</userinput> commanded the turtle to move forward leaving a line, and that <userinput>turnleft 90</userinput> commanded the turtle to turn 90 <glossterm linkend="degrees">degrees</glossterm> to the left.</para>
 
-<para>Please see the following links to the reference manual for a complete explanation of the new commands: <userinput>forward</userinput>, <userinput>backward</userinput>, <userinput>turnleft</userinput> and <userinput>turnright</userinput>.</para>
+<para>Please see the following links to the reference manual for a complete explanation of the new commands: <userinput>forward</userinput>, <userinput>backward</userinput>, <userinput>turnleft</userinput>, and <userinput>turnright</userinput>.</para>
 </sect2>
 
 <sect2 id="more-examples">
 <title>More examples</title>
-<para>The first example was very simple, so let's go on!</para>
+<para>The first example was very simple, so let us go on!</para>
 
 <para>
-<!--translators: you can copy/paste the translated code below and save it in example1.logo in your examples folder in kturtle source in kdeedu/kturtle/examples/iso_code/ and update the Makefile.am here -->
+<!--translators: if it's not already there, you can copy/paste the translated code below and save it in arrow.logo in your examples folder: kde-i18n/language-code/data/kdeedu/kturtle/ -->
 <screen>
 canvassize 200,200
 canvascolor 0,0,0
@@ -75,7 +75,7 @@ turnleft 45
 
 go 40, 100
 </screen>
-Again you can type or copy-paste the code to the code editor or open the <filename>example1.logo</filename> file in the <guimenu>Open examples</guimenu> folder and execute it (using <link linkend="file-execute"><menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem></menuchoice></link>) to see the result. In the next examples you are expected to know the drill.</para>
+Again you can type or copy-paste the code to the code editor or open the <filename>arrow.logo</filename> file in the <guimenu>Open examples</guimenu> folder and execute it (using <link linkend="file-execute"><menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem></menuchoice></link>) to see the result. In the next examples you are expected to know the drill.</para>
 
 <para>You might have noticed that this second example uses a lot more code. You have also seen a couple of new commands. Here a short explanation of all the new commands:</para>
 
@@ -83,13 +83,13 @@ Again you can type or copy-paste the code to the code editor or open the <filena
 
 <para><userinput>canvascolor 0,0,0</userinput> makes the canvas black. <userinput>0,0,0</userinput> is an <glossterm linkend="rgb">RGB-combination</glossterm> where all values are set to <userinput>0</userinput>, which results in black.</para>
 
-<para><userinput>pencolor 255,0,0</userinput> sets the color of the pen to red. <userinput>255,0,0</userinput> is an <glossterm linkend="rgb">RGB-combination</glossterm> where only the red value is set to <userinput>255</userinput> while the others (green and blue) are set to <userinput>0</userinput>. This results in a bright shade of red.</para>
+<para><userinput>pencolor 255,0,0</userinput> sets the color of the pen to red. <userinput>255,0,0</userinput> is an <glossterm linkend="rgb">RGB-combination</glossterm> where only the red value is set to <userinput>255</userinput> (fully on) while the others (green and blue) are set to <userinput>0</userinput> (fully off). This results in a bright shade of red.</para>
 
 <para><userinput>penwidth 5</userinput> sets the width (the size) of the pen to <userinput>5</userinput> <glossterm linkend="pixels">pixels</glossterm>. From now on every line the turtle draw will have a thickness of <userinput>5</userinput>, until we change the <userinput>penwidth</userinput> to something else.</para>
 
 <para><userinput>clear</userinput> clear the canvas, that is all it does.</para>
 
-<para><userinput>go 20,20</userinput> commands the turtle to go to a certain place on the canvas. Counted from the upper left corner, this place is 20 <glossterm linkend="pixels">pixels</glossterm> from the left, and 20 <glossterm linkend="pixels">pixels</glossterm> from the top of the canvas. Note that using the <userinput>go</userinput> command the turtle will not draw a line.</para>
+<para><userinput>go 20,20</userinput> commands the turtle to go to a certain place on the canvas. Counted from the upper left corner, this place is 20 <glossterm linkend="pixels">pixels</glossterm> across from the left, and 20 <glossterm linkend="pixels">pixels</glossterm> down from the top of the canvas. Note that using the <userinput>go</userinput> command the turtle will not draw a line.</para>
 
 <para><userinput>direction 135</userinput> set the turtle's direction. The <userinput>turnleft</userinput> and <userinput>turnright</userinput> commands change the turtle's angle starting from its current direction. The <userinput>direction</userinput> command changes the turtle's angle from zero, and thus is not relative to the turtle previous direction.</para>
 
