@@ -15,6 +15,10 @@
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+// Updated 21.10.2004 by Kiril Jovchev
+//    -- Changed that position is kept in double values.
+//       This makes accuracy higher.
+
 #ifndef _CANVAS_H_
 #define _CANVAS_H_
 
@@ -39,9 +43,9 @@ Q_OBJECT
 	public slots:
 	void slotClear();
 	void slotClearSpriteToo();
-	void slotGo(int x, int y);
-	void slotGoX(int x);
-	void slotGoY(int y);
+	void slotGo(double x, double y);
+	void slotGoX(double x);
+	void slotGoY(double y);
 	void slotForward(int x);
 	void slotBackward(int x);
 	void slotDirection(double deg);
@@ -59,8 +63,8 @@ Q_OBJECT
 	void slotSpritePress();
 	void slotSpriteChange(int x);
 
-	void slotPrint(const QString &text);
-	void slotFontType(const QString &family, const QString &extra);
+	void slotPrint(QString text);
+	void slotFontType(QString family, QString extra);
 	void slotFontSize(int px);
 	void slotWrapOn();
 	void slotWrapOff();
@@ -77,7 +81,7 @@ Q_OBJECT
 	bool EndlessLoop(QPoint begin, QPoint end);
 	bool PointInRange(int px, int py, int xa, int ya, int xb, int yb);
 	QPoint Offset(int x, int y);
-	void loadSpriteFrames(const QString &name);
+	void loadSpriteFrames(QString name);
 	void updateSpritePos();
 	void updateSpriteAngle();
 	
@@ -86,7 +90,7 @@ Q_OBJECT
 	QCanvasSprite       *Sprite;
 	QCanvasPixmapArray  *SpriteFrames;
 	QFont                font;
-	int                  PosX, PosY;
+	double               dblPosX, dblPosY;
 	int                  CanvasWidth, CanvasHeight;
 	int                  PenWidth;
 	double               Dir;
