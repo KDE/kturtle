@@ -1,6 +1,0 @@
-# teken een vierkant
-
-herhaal 4 [
-  vooruit 100 
-  draairechts  90
-]
