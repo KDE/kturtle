@@ -514,6 +514,36 @@ The canvas is the area where the commands are visualized, where the commands <qu
 
 <sect2 id="the-setting-menu">
   <title>The <guimenu>Settings</guimenu> Menu</title>
+    <variablelist>
+    <anchor id="toggle-toolbar" />
+    <varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show/Hide Toolbar</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Toggle</action> the Main Toolbar</para></listitem>
+</varlistentry>
+  </variablelist>  
+  <variablelist>
+      <anchor id="toggle-statusbar" />
+   <varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show/Hide Statusbar</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Toggle</action> the Statusbar</para></listitem>
+</varlistentry>
+  </variablelist>
+    <variablelist>
+    <anchor id="tools-advanced" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>Settings</guimenu>
+        <guisubmenu>Advanced Settings</guisubmenu>
+      </menuchoice></term>
+      <listitem><para>Here you can change things you normally do not need to change. The <guisubmenu>Advanced Settings</guisubmenu> submenu has three items: <guimenuitem>Configure Editor...</guimenuitem> (the standard &kate; editor settings dialog), <guimenuitem>Configure Shortcuts...</guimenuitem> (the standard &kde; shortcut settings dialog) and <guimenuitem>Configure Toolbars...</guimenuitem> (the standard &kde; toolbars setting dialog).</para></listitem>
+    </varlistentry>
+  </variablelist>
   <variablelist>
     <anchor id="settings-configure" />
     <varlistentry>
@@ -524,16 +554,7 @@ The canvas is the area where the commands are visualized, where the commands <qu
       <listitem><para>This is used to configure &kturtle;. Here you can change the language of the &logo; commands or set a new initial canvas size.</para></listitem>
     </varlistentry>
   </variablelist>
-  <variablelist>
-    <anchor id="tools-advanced" />
-    <varlistentry>
-      <term><menuchoice>
-        <guimenu>Settings</guimenu>
-        <guisubmenu>Advanced Settings</guisubmenu>
-      </menuchoice></term>
-      <listitem><para>Here you can change things you normally do not need to change. The <guisubmenu>Advanced Settings</guisubmenu> submenu has three items: <guimenuitem>Configure Editor...</guimenuitem> (the standard &kate; editor settings dialog), <guimenuitem>Configure Shortcuts...</guimenuitem> (the standard &kde; shortcut settings dialog) and <guimenuitem>Configure Toolbars...</guimenuitem> (the standard &kde; toolbars setting dialog).</para></listitem>
-    </varlistentry>
-  </variablelist>
+
 </sect2>
 
 <sect2 id="the-help-menu">
