@@ -917,7 +917,7 @@ void MainWindow::slotContextHelp() {
 // Ooh2... we must probably put the code to translate commands in a seperate .cpp/.h since
 // we want to use it in several places (i.e. here too)
 	kdDebug(0)<<"helpKeyword = "<<helpKeyword<<endl;
-	kapp->invokeHelp(helpKeyword, "", "");
+	kapp->invokeHelp(helpKeyword, "kturtle/reference.html#"+helpKeyword, "");
 }
 
 
