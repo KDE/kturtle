@@ -91,7 +91,7 @@
     <varlistentry>
       <term>penup</term>
       <listitem><para><screen>penup</screen>
-      <userinput>penup</userinput> lifts the pen from the canvas. When the pen is <quote>up</quote> no line will be drawn when the turtle moves.</para></listitem>
+      <userinput>penup</userinput> lifts the pen from the canvas. When the pen is <quote>up</quote> no line will be drawn when the turtle moves.See also <userinput>pendown</userinput>.<userinput>penup</userinput> can be abbreviated to <userinput>pu</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -99,7 +99,7 @@
     <varlistentry>
       <term>pendown</term>
       <listitem><para><screen>pendown</screen>
-      <userinput>pendown</userinput> presses the pen down on the canvas. When the pen is press <quote>down</quote> on the canvas a line will be drawn when the turtle moves. See also <userinput>penup</userinput>.</para></listitem>
+      <userinput>pendown</userinput> presses the pen down on the canvas. When the pen is press <quote>down</quote> on the canvas a line will be drawn when the turtle moves. See also <userinput>penup</userinput>.<userinput>pendown</userinput> can be abbreviated to <userinput>pd</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -107,7 +107,7 @@
     <varlistentry>
       <term>penwidth</term>
       <listitem><para><screen>penwidth X</screen>
-      <userinput>penwidth</userinput> sets the width of the pen to an amount of X <glossterm linkend="pixels">pixels</glossterm>.</para></listitem>
+      <userinput>penwidth</userinput> sets the width of the pen (the ligne width) to an amount of X <glossterm linkend="pixels">pixels</glossterm>.<userinput>penwidth</userinput> can be abbreviated to <userinput>pw</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -115,7 +115,7 @@
     <varlistentry>
       <term>pencolor</term>
       <listitem><para><screen>pencolor R,G,B</screen>
-      <userinput>pencolor</userinput> sets the color of the pen. <userinput>pencolor</userinput> takes an <glossterm linkend="rgb">RGB combination</glossterm> as input.</para></listitem>
+      <userinput>pencolor</userinput> sets the color of the pen. <userinput>pencolor</userinput> takes an <glossterm linkend="rgb">RGB combination</glossterm> as input.<userinput>pencolor</userinput> can be abbreviated to <userinput>pc</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
