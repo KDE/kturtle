@@ -93,7 +93,7 @@ a powerful editor for the &logo; commands with intuitive syntax highlighting, li
 <link linkend="the-canvas">the canvas</link> can be saved as an image or printed
 </para></listitem>
 <listitem><para>
-context help for all &logo; commands, just press <keysym>F1</keysym> with your cursor a command for the help (not yet)
+context help for all &logo; commands, just press <keysym>F1</keysym> with your cursor a command for the help 
 </para></listitem>
 <listitem><para>
 the &logo; commands are fully translationable (currently only English, Dutch, French, German and Swedish are supported)
@@ -130,8 +130,8 @@ many integrated internationalized example &logo; programs make it easy to get st
 <title>The Code Editor</title>
 <para>In the code editor you type the &logo; commands. It has all features you would expect from a modern editor. Most of its features are found in the <link linkend="the-edit-menu">Edit</link> and the <link linkend="the-tools-menu">Tools</link> menus. The code editor can be docked on each border of the main window or it can be detached and placed anywhere on your desktop.</para>
 <para>
-You have several ways to get some code in the editor. The easiest way is to use an already-made example. You choose <guimenu>File</guimenu>-&gt;<guimenuitem>Open Examples</guimenuitem> in the <link linkend="the-file-menu">File menu</link> and you click on a file. The file name will tell you what the example is about (&eg; <filename>square.logo</filename> will draw a square). The file you choose will be opened in the <link linkend="the-code-editor">the code editor</link>, you can then <guimenu>File</guimenu>-&gt;<guimenuitem>Execute Commands</guimenuitem> the code if you like.</para>
-<para>You can open &logo; files by choosing <guimenu>File</guimenu>-&gt;<guimenuitem>Open...</guimenuitem>.</para>
+You have several ways to get some code in the editor. The easiest way is to use an already-made example. You choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open Examples...</guimenuitem></menuchoice> in the <link linkend="the-file-menu">File menu</link> and you click on a file. The file name will tell you what the example is about (&eg; <filename>square.logo</filename> will draw a square). The file you choose will be opened in the <link linkend="the-code-editor">the code editor</link>, you can then <menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem></menuchoice> the code if you like.</para>
+<para>You can open &logo; files by choosing <menuchoice><guimenu>File</guimenu><guimenuitem>Open...</guimenuitem></menuchoice>.</para>
 <para>The third way is to directly type your own code in the editor or to copy/paste some code from this user guide.
 </para>
 <para>
@@ -142,9 +142,9 @@ The cursor position is indicated in <link linkend="the-statusbar">the statusbar<
 <sect1 id="the-canvas">
 <title>The Canvas</title>
 <para>
-The canvas is the area where the commands are visualized, where the commands <quote>draw</quote> a picture. In other words it is the turtle's playground. After getting some code in the <link linkend="the-code-editor">the code editor</link>, and executing it by <guimenu>File</guimenu>-&gt;<guimenuitem>Execute Commands</guimenuitem>, two things can happen: 1) the code executes fine and you most likely see some changing on the canvas, or 2) you have an error in your code, there will be a message that will tell you what error you made.</para>
+The canvas is the area where the commands are visualized, where the commands <quote>draw</quote> a picture. In other words it is the turtle's playground. After getting some code in the <link linkend="the-code-editor">the code editor</link>, and executing it by <menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem></menuchoice>, two things can happen: 1) the code executes fine and you most likely see some changing on the canvas, or 2) you have an error in your code, there will be a message that will tell you what error you made.</para>
 <para>This message should help you resolving the error.</para>
-<para>The picture that is drawn can be saved as an image (using <guimenu>File</guimenu>-&gt;<guimenuitem>Save Canvas</guimenuitem>) or printed (using <guimenu>File</guimenu>-&gt;<guimenuitem>Print...</guimenuitem>).</para>
+<para>The picture that is drawn can be saved as an image (using <menuchoice><guimenu>File</guimenu><guimenuitem>Save Canvas...</guimenuitem></menuchoice>) or printed (using <menuchoice><guimenu>File</guimenu><guimenuitem>Print...</guimenuitem></menuchoice>).</para>
 </sect1>
 
 <sect1 id="the-menubar">
@@ -522,7 +522,7 @@ The canvas is the area where the commands are visualized, where the commands <qu
         <guimenu>Settings</guimenu>
         <guisubmenu>Advanced Settings</guisubmenu>
       </menuchoice></term>
-      <listitem><para>Here you can change things you normally do not need to change. The <guisubmenu>Advanced Settings</guisubmenu> submenu has three items: <guimenuitem>Configure Editor...</guimenuitem> (the standard Kate editor settings dialog), <guimenuitem>Configure Shortcuts...</guimenuitem> (the standard &kde; shortcut settings dialog) and <guimenuitem>Configure Toolbars...</guimenuitem> (the standard &kde; toolbars setting dialog).</para></listitem>
+      <listitem><para>Here you can change things you normally do not need to change. The <guisubmenu>Advanced Settings</guisubmenu> submenu has three items: <guimenuitem>Configure Editor...</guimenuitem> (the standard <application>Kate</application> editor settings dialog), <guimenuitem>Configure Shortcuts...</guimenuitem> (the standard &kde; shortcut settings dialog) and <guimenuitem>Configure Toolbars...</guimenuitem> (the standard &kde; toolbars setting dialog).</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -602,8 +602,8 @@ The canvas is the area where the commands are visualized, where the commands <qu
 
 <sect1 id="the-toolbar">
 <title>The Toolbar</title>
-<para>Here you can quickly reach the most used actions. By default, you will find here all main useful commands ending with the Execute Commands and Stop Execution icons. </para>
-<para>You can configure the Toolbar using the <guimenu>Settings</guimenu> menu, <guimenuitem>Advanced Settings</guimenuitem> and <guimenuitem>Configure Toolbar...</guimenuitem></para>
+<para>Here you can quickly reach the most used actions. By default, you will find here all main useful commands ending with the <guiicon>Execute Commands</guiicon> and <guiicon>Stop Execution</guiicon> icons.</para>
+<para>You can configure the toolbar using <menuchoice><guimenu>Settings</guimenu><guimenuitem>Advanced Settings</guimenuitem><guimenuitem>Configure Toolbar...</guimenuitem></menuchoice></para>
 </sect1>
 
 <sect1 id="the-statusbar">
@@ -1055,7 +1055,7 @@ In the first two lines the variables <userinput>A</userinput> and <userinput>B</
 <para>Strings are a lot like variables. The biggest difference is that strings cannot be used in <link linkend="math">mathematical calculations</link> and <link linkend="questions">questions</link>. An example of the use of strings:
 <screen>
 x = "Hello "
-name = inputwindow "please enter your name..."
+name = inputwindow "Please enter your name..."
 print x + name + ", how are you?
 </screen>
 On the first line the string <userinput>x</userinput> is set to <quote>Hello </quote>. On the second line the string <userinput>name</userinput> is set to the output of the <userinput>inputwindow</userinput> command. On the third line the program prints a composition of three strings on the canvas.</para>
@@ -1344,7 +1344,7 @@ In this example a new command called <userinput>multiplyBySelf</userinput>. The 
 <screen>
 forward 50
 pencolor 255,0,0
-print "hello!"
+print "Hello!"
 </screen>
 The <userinput>forward</userinput> command takes <userinput>50</userinput> as input, <userinput>forward</userinput> needs this input to know how much <glossterm linkend="pixels">pixels</glossterm> it should go forward. <userinput>pencolor</userinput> takes an  as input and <userinput>print</userinput> takes a string as input. Please note that the input can also be a container. The next example illustrates this:
 <screen>
@@ -1416,7 +1416,7 @@ hide
 <row>
 <entry>mathematical characters</entry>
 <entry>grey</entry>
-<entry>This are the mathematical characters: +, -, *, /, (, and ). Read more about them <link linkend="math">here</link>.</entry>
+<entry>These are the mathematical characters: +, -, *, /, (, and ). Read more about them <link linkend="math">here</link>.</entry>
 </row>
 <row>
 <entry>questions characters</entry>
@@ -1525,7 +1525,7 @@ For example translate <quote>while</quote> in: &lt;keyword&gt;while&lt;/keyword&
 Please don't translate anything else and don't translate English words in &lt;command name="english_word"&gt;. These must stay in English.
 </para>
 </listitem>
-<listitem><para>Save your file as <emphasis role="bold">utf-8</emphasis> (in Kate, use <guimenuitem>Save As...</guimenuitem> and change to utf8 in the box on the right of the file name)
+<listitem><para>Save your file as <emphasis role="bold">utf-8</emphasis> (in <application>Kate</application>, use <guimenuitem>Save As...</guimenuitem> and change to utf8 in the box on the right of the file name)
 </para>
 </listitem>
 <listitem><para>Commit your file (add your filename in the <filename>Makefile.am</filename>) or send it to Anne-Marie.
@@ -1551,13 +1551,13 @@ Please note that the country code must be the same here than in the logokeywords
 <listitem><para>In line 4 of the file, there is
 &lt;language name="en_US" ...&gt;: here you change <quote>en_US</quote> with your language ISO code (2 or 4 letters).
 </para></listitem>
-<listitem><para>Translate in your own language the content of the &lt;item&gt; tag &ie; the information between &lt;item&gt; and &lt;/item&gt;. This content must match the logokeyword file.
-For example translate <quote>while</quote> in: &lt;item&gt; while &lt;/item&gt; and leave the spaces as they are (one at the beginning and one at the end).
+<listitem><para>Translate in your own language the content of the &lt;item&gt; tag, &ie; the information between &lt;item&gt; and &lt;/item&gt;. This content must match the logokeyword file.
+For example translate <quote>while</quote> in &lt;item&gt; while &lt;/item&gt; and leave the spaces as they are (one at the beginning and one at the end).
 Please don't translate anything else.
 </para></listitem>
-<listitem><para>Save your file as <emphasis role="bold">utf-8</emphasis> (in Kate, use <guimenuitem>Save As...</guimenuitem> and change to utf8 in the box on the right of the file name)
+<listitem><para>Save your file as <emphasis role="bold">utf-8</emphasis> (in <application>Kate</application>, use <guimenuitem>Save As...</guimenuitem> and change to utf8 in the box on the right of the file name)
 </para></listitem>
-<listitem><para>Commit your file (change the <filename>Makefile.am</filename> by adding your filename) or send it to Anne-Marie.
+<listitem><para>Commit your file (add your filename in the <filename>Makefile.am</filename>) or send it to Anne-Marie.
 </para></listitem>
 <listitem><para>In case of any doubt, please contact Anne-Marie Mahfouf <email>annemarie.mahfouf@free.fr</email> for more information.
 </para></listitem>
@@ -1579,7 +1579,7 @@ The examples are located in the &kturtle; source in the <filename class="directo
 <listitem><para>See in <filename class="directory">kturtle/src/data/keywords/</filename> the file corresponding to your language. This file must be done before translating the examples. 
 Replace, in the example files, all English keywords with your translated keywords.</para>
 </listitem>
-<listitem><para>Save your file as <emphasis role="bold">utf-8</emphasis> (in Kate, use <guimenuitem>Save As...</guimenuitem> and change to utf8 in the box on the right of the file name)</para>
+<listitem><para>Save your file as <emphasis role="bold">utf-8</emphasis> (in <application>Kate</application>, use <guimenuitem>Save As...</guimenuitem> and change to utf8 in the box on the right of the file name)</para>
 </listitem>
 <listitem><para>Commit your folder (add a <filename>Makefile.am</filename> inside) or send it to Anne-Marie.</para>
 </listitem>
