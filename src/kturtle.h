@@ -81,7 +81,8 @@ class MainWindow : public KParts::MainWindow
     void slotCleanIndent();
     void slotComment();
     void slotUnComment();
-    
+    void slotEditor();
+    void slotConfigureToolbars();
     void slotContextHelp();
     void slotContextHelpUpdate();
 

@@ -13,6 +13,7 @@
 #include <kconfig.h>
 #include <kconfigdialog.h>
 #include <kdebug.h>
+#include <kedittoolbar.h>
 #include <kfiledialog.h>
 #include <kinputdialog.h> 
 #include <kkeydialog.h>
@@ -135,9 +136,11 @@ void MainWindow::setupActions() {
     // (void)new KToggleAction(i18n("&Hide Editor"), 0, 0, this, SLOT(slotToggleHideEditor()),
    
     // setup settings actions
+    setStandardToolBarMenuEnabled(true);
     KStdAction::preferences( this, SLOT( slotSettings() ), ac );
     KStdAction::keyBindings( this, SLOT( slotConfigureKeys() ), ac );
-    
+    new KAction(i18n("&Configure Editor..."), "configure", 0, this, SLOT(slotEditor()), ac, "set_confdlg");
+    KStdAction::configureToolbars( this, SLOT(slotConfigureToolbars()), ac);
     // setup help actions
     ContextHelp = new KAction(0, 0, Key_F1, this, SLOT(slotContextHelp()), ac, "context_help");
     slotContextHelpUpdate(); // this sets the label of this action
@@ -519,6 +522,18 @@ void MainWindow::slotReplace() {
 void MainWindow::slotToggleLineNumbers() {
     KToggleAction *a = dynamic_cast<KToggleAction*>( editor->actionCollection()->action("view_line_numbers") );
     a->activate();
+}
+
+void MainWindow::slotEditor() {
+    KAction *a = editor->actionCollection()->action("set_confdlg");
+    a->activate();
+}
+void MainWindow::slotConfigureToolbars() {
+    // use the standard toolbar editor
+    saveMainWindowSettings( KGlobal::config(), autoSaveGroup() );
+    KEditToolbar dlg(actionCollection());
+    connect(&dlg, SIGNAL(newToolbarConfig()), this, SLOT(newToolbarConfig()));
+    dlg.exec();
 }
 
 void MainWindow::slotToggleFullscreen() {

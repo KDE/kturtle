@@ -12,7 +12,7 @@ i write this mainly to remind myself :-)
 BUGS
 - when there is an error, display only 1 error, the first.
 - The gear does not come back after errors.
-- get the logo highlight by default - save the config for highlight
+- get the logo highlight by default - save the config for highlight    //done
 DONE - the caption of the window does not display the title of the saved file after 'save as'
 
 **** URGENT ****
@@ -53,7 +53,7 @@ Now the minor issues regarding the intergretion should be looked at
 - recentfileshistory (action added, have to get it working)     //done
 - linenumbers (what di we need more than the View->Show Line numbers or F11 menu?)  //done
 
-- highlighting (a kturtle language sensitive highlight script)
+- highlighting (a kturtle language sensitive highlight script)  //done
 - loads for things sould be hidden and reordered (annma: we can do a shouut out)
 File->reload: do we need that one?
 
@@ -102,11 +102,11 @@ help (to the far right?)
 bookmarks: as a whole
 tools: only the indentation/commentation should stay imo. (and the picker comes here)
 
-Language: "Select the language of the commands" in the config, default to the desktop user (en if not en, nl or fr)
-Keep it in config (already via xml file)
+Language: "Select the language of the commands" in the config, default to the desktop user (en if not en, nl or fr)   //done
+Keep it in config (already via xml file)  //done
 
 
-cies:INS, ROW and COL in the statusbar would be nice
+cies:INS, ROW and COL in the statusbar would be nice  //done
 
 
 
