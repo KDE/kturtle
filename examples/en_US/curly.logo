@@ -1,0 +1,13 @@
+# curly.logo
+
+reset
+penup
+fw 50
+pendown
+
+repeat 4 [
+for x = 1 to 100 [
+fw 10
+tr 100 - x
+]
+]

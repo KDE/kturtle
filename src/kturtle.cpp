@@ -730,8 +730,35 @@ void MainWindow::setRunEnabled() {
 }
 
 void MainWindow::slotOpenEx() {
+    //the program scans in kturtle/examples/ to see what languages data is found
+    QStringList m_languages;
+    QStringList dirs = KGlobal::dirs()->findDirs("data", "kturtle/examples/");
+    for (QStringList::Iterator it = dirs.begin(); it != dirs.end(); ++it ) {
+	QDir dir(*it);
+	m_languages += dir.entryList(QDir::Dirs, QDir::Name);
+    }	
+    m_languages.remove(m_languages.find("."));
+    m_languages.remove(m_languages.find(".."));
+    kdDebug() << m_languages << endl;
+    //see what language the user has in his settings
+    KConfigBase *globalConf = KGlobal::config();
+    globalConf->setGroup("Locale");
+    QString userLanguage = globalConf->readEntry("Language");
+    userLanguage = userLanguage.left(5);
+   //default language is one of the logokeyword or en
+   QString defaultLanguage;
+   for (QStringList::Iterator it = m_languages.begin(); it != m_languages.end(); ++it ) {
+	QString m_language(*it);
+	if (m_language == userLanguage || m_language.left(2) == userLanguage) {
+		defaultLanguage = m_language;
+		break;
+	}
+	else
+  		defaultLanguage = "en_US";
+    }    
+    kdDebug() << defaultLanguage << endl;
     KURL url;
-    url.setPath( locate("data", "kturtle/examples/en/"));
+    url.setPath( locate("data", "kturtle/examples/"+defaultLanguage+"/"));
     url = KFileDialog::getOpenURL( url.path() ,
                        QString("*.logo|") + i18n("Logo Examples files"), this,
                        i18n("Open logo example file..."));
@@ -764,6 +791,7 @@ void MainWindow::loadFile(KURL url) {
         CurrentFile = myFile;
         setCaption(url.fileName());
         slotStatusBar(i18n("Opened file: %1").arg(url.fileName()),  IDS_STATUS);
+	editor->document()->setModified(false);
         }
     } else { 
         slotStatusBar(i18n("Opening aborted, nothing opened."),  IDS_STATUS);
