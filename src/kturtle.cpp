@@ -355,7 +355,7 @@ void MainWindow::slotSaveAs()
 	KURL url;
 	while (true)
 	{
-		url = KFileDialog::getSaveURL( QString(":logo_dir"), QString("*.logo|") + i18n("Logo Files"), this, i18n("Save As...") );
+		url = KFileDialog::getSaveURL( QString(":logo_dir"), QString("*.logo|") + i18n("Logo Files"), this, i18n("Save As") );
 		if ( url.isEmpty() ) // cancelled the save dialog
 		{
 			slotStatusBar(i18n("Saving aborted."),  IDS_STATUS);
@@ -442,7 +442,7 @@ void MainWindow::slotPrint()
 {
 	int result = KMessageBox::questionYesNoCancel( this,
 	i18n("Do you want to print the Logo code or the canvas?"),
-	i18n("What to print?"), i18n("Print &Logo Code"), i18n("Print &Canvas") );
+	i18n("What to Print?"), i18n("Print &Logo Code"), i18n("Print &Canvas") );
 	if (result == KMessageBox::Yes)
 	{
 		dynamic_cast<KTextEditor::PrintInterface*>(doc)->printDialog();
@@ -473,7 +473,7 @@ bool MainWindow::queryClose()
 		int result = KMessageBox::warningYesNoCancel( this,
 			i18n("The program you are currently working on is not saved. "
 			     "By quitting KTurtle you may lose the changes you have made."),
-			i18n("Unsaved File"), i18n("&Save"), i18n("Discard changes and &Quit") );
+			i18n("Unsaved File"), i18n("&Save"), i18n("Discard Changes && &Quit") );
 		if (result == KMessageBox::Cancel)
 		{
 			slotStatusBar(i18n("Quitting aborted."),  IDS_STATUS);
@@ -1005,7 +1005,7 @@ void MainWindow::slotContextHelp()
 	QString helpWord;
 	if ( helpKeyword == i18n("<no keyword>") )
 	{
-		KMessageBox::information( this, i18n("There is currently no text under the cursor to get help on."), i18n("Nothing under cursor") );
+		KMessageBox::information( this, i18n("There is currently no text under the cursor to get help on."), i18n("Nothing Under Cursor") );
 		return;
 	}
 	else if ( helpKeyword == i18n("<number>") )     helpWord = "number";

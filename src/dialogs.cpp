@@ -281,7 +281,7 @@ void ColorPicker::slotEmitColorCode()
 RestartOrBack::RestartOrBack (QWidget *parent)
 	: KDialogBase (parent, "rbDialog", true, 0, KDialogBase::User1 | KDialogBase::User2, KDialogBase::User2, false, i18n("&Restart"), i18n("&Back") )
 {
-	setPlainCaption( i18n("Finished execution...") );
+	setPlainCaption( i18n("Finished Execution") );
 	setButtonWhatsThis( KDialogBase::User1, i18n("Click here to restart the current logo program.") );
 	setButtonWhatsThis( KDialogBase::User2, i18n("Click here to switch back to the edit mode.") );
 	QWidget *baseWidget = new QWidget(this);
