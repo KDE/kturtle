@@ -70,6 +70,12 @@ int main(int argc, char **argv)
 	about.addCredit("Pino Toscano",
 	      I18N_NOOP("Italian Data Files"),
 	                "toscano.pino # tiscali.it");
+	about.addCredit("Andy Potter",
+	      I18N_NOOP("British English Data Files"),
+	                "A.J.Potter # rhul.ac.uk");	                
+	about.addCredit("Rafael Beccar",
+	      I18N_NOOP("Spanish Data Files"),
+	                "rafael.beccar # kdemail.net");
 	about.addCredit("Albert Astals Cid",
 	      I18N_NOOP("Parser Cyrillic support"),
 	                "astals11 # terra.es");
