@@ -465,6 +465,8 @@ void MainWindow::slotQuit() {
 		}
 	}
 	KConfig *config = kapp->config();
+	config->setGroup("General Options");
+	m_recentFiles->saveEntries(config, "Recent Files");
 	config->sync();
 	close();
 }
@@ -892,22 +894,13 @@ void MainWindow::slotUpdateSettings() {
 	// connect( this, SIGNAL( ResizeCanvas(int, int) ), TurtleView, SLOT( slotResizeCanvas(int, int) ) );
 	// emit ResizeCanvas( Settings::canvasWidth(), Settings::canvasWidth() );
 	slotSetHighlightstyle( kcfg_LanguageComboBox->currentText().section( "(", -1, -1 ).remove(")") );
-	KConfig *config = kapp->config();
-	saveSettings(config);
+	Settings::setLanguageComboBox( kcfg_LanguageComboBox->currentItem() );
+	Settings::writeConfig();
 }
 
 void MainWindow::readConfig(KConfig *config) {
 	config->setGroup("General Options");
 	m_recentFiles->loadEntries(config, "Recent Files");
-}
-
-void MainWindow::saveSettings(KConfig *config) {
-	config->setGroup("General Options");
-	m_recentFiles->saveEntries(config, "Recent Files");
-	config->setGroup("language");
-	Settings::setLogoLanguage( kcfg_LanguageComboBox->currentText().section( "(", -1, -1 ).remove(")") );
-	Settings::setLanguageComboBox( kcfg_LanguageComboBox->currentItem() );
-	Settings::writeConfig();
 }
 
 void MainWindow::slotConfigureKeys() {

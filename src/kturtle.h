@@ -102,7 +102,6 @@ class MainWindow : public KParts::MainWindow
 	
 	// configuration related
 	void readConfig(KConfig *config);
-	void saveSettings(KConfig *config);
 	QWidget            *general;
 	QWidget            *language;
 	QGroupBox          *WidthHeightBox;
