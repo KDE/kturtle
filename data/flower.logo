@@ -1,0 +1,26 @@
+# flower
+
+reset
+canvassize 170, 170
+canvascolor 255, 55, 140
+go 45, 120
+pencolor 160, 0, 255
+penwidth 3
+
+repeat 8 [
+  repeat 4 [
+    forward 20
+    turnright 30
+  ]
+  repeat 7 [
+    forward 10
+    turnright 15
+  ]
+  repeat 9 [
+    forward 3
+    turnright 10
+  ]
+]
+
+go 145, 145
+direction 0
