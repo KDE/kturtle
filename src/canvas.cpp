@@ -40,6 +40,12 @@ Canvas::Canvas(QWidget *parent, const char *name) : QCanvasView(0, parent, name)
 	setCanvas(TurtleCanvas);
 }
 
+Canvas::~Canvas()
+{
+	delete Sprite;
+	delete SpriteFrames;
+}
+
 void Canvas::initValues() {
 	// canvas size
 	slotResizeCanvas( Settings::canvasWidth(), Settings::canvasHeight() );
@@ -231,7 +237,7 @@ void Canvas::loadSpriteFrames(QString name) {
 	}
 	QString spritePath = locate("data","kturtle/pics/"+name+".0000.png");
 	spritePath.remove(".0000.png");
-	QCanvasPixmapArray* SpriteFrames = new QCanvasPixmapArray(spritePath+".%1.png", 36);
+	SpriteFrames = new QCanvasPixmapArray(spritePath+".%1.png", 36);
 	Sprite = new QCanvasSprite(SpriteFrames, TurtleCanvas);
 	Sprite->setZ(250);
 }

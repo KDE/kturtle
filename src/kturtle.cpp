@@ -102,9 +102,7 @@ MainWindow::MainWindow(KTextEditor::Document *document) : editor(0) {
 }
 
 MainWindow::~MainWindow() { // The MainWindow destructor
-	if ( editor->document() ) {
-		delete editor->document();
-	}
+	delete editor->document();
 }
 
 // END
@@ -555,6 +553,7 @@ void MainWindow::startExecution() {
 			slotStatusBar(i18n("Execution aborted."),  IDS_STATUS);
 			finishExecution();
 		}
+		delete exe;
 	} else {
 		slotStatusBar(i18n("Parsing failed."),  IDS_STATUS);
 		finishExecution();

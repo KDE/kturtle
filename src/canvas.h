@@ -33,6 +33,7 @@ class Canvas : public QCanvasView
 
   public:
     Canvas(QWidget *parent = 0, const char *name = 0);
+    ~Canvas();
     QPixmap* Canvas2Pixmap();
   
   public slots:
