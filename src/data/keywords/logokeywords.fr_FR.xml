@@ -233,7 +233,7 @@ speed **
   </command>
   
   <command name="wrapoff">
-    <keyword>wrapoff</keyword>
+    <keyword>déroule</keyword>
   </command>
   
   <command name="reset">
