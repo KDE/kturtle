@@ -19,6 +19,13 @@
 <address><email>annma@kde.org</email></address>
 </affiliation>
 </author>
+<author>
+<firstname>Cies</firstname>
+<surname>Breijs</surname>
+<affiliation>
+<address><email>cies # showroommama ! nl</email></address>
+</affiliation>
+</author>
 </authorgroup>
 
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
@@ -30,12 +37,12 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2004-01-24</date>
-<releaseinfo>0.1</releaseinfo>
+<date>2004-03-24</date>
+<releaseinfo>0.2</releaseinfo>
 
 <abstract>
 <para>
-KTurtle is a Logo interpreter for the KDE Desktop.
+KTurtle is an educational programming environment using the Logo programming language.
 </para>
 </abstract>
 
@@ -45,6 +52,9 @@ KTurtle is a Logo interpreter for the KDE Desktop.
 <keyword>KTurtle</keyword>
 <keyword>education</keyword>
 <keyword>language</keyword>
+<keyword>native</keyword>
+<keyword>programming</keyword>
+<keyword>code</keyword>
 <keyword>Logo</keyword>
 <keyword>instructions</keyword>
 </keywordset>
@@ -53,107 +63,305 @@ KTurtle is a Logo interpreter for the KDE Desktop.
 
 <chapter id="introduction">
 <title>Introduction</title>
-          <para>KTurtle is a Logo programming language interpreter for &kde;. The Logo programming language is very easy and thus it can be used by young children. A unique quality of Logo is that the commands or instructions can be translated, so the 'programmer' can program in his or her native language. This makes Logo ideal for teaching kids the basics of programming, mathematics and geometry. One of the reasons many children like Logo is because of the turtle, a programmable icon which can be moved around the screen with simple commands and can be programmed to draw objects.</para>
 
-     <para>The first version Logo programming language was created by Seymour Papert of MIT Artificial Intelligence Laboratory in 1967 as an ofshoot of the LISP programming language. From then many versions of Logo have been released. By 1980 Logo was gaining momentum, with versions for MSX, Commodore, Atari, and IBM PC systems. These versions were mainly for educational purposes. LCSI released MacLogo in 1985 as a tool for professional programmers, but it never caught on. MIT is still maintaining a site on Logo which can be found on: <ulink url="http://el.media.mit.edu/logo-foundation/">http://el.media.mit.edu/logo-foundation/</ulink>.</para>
+<para>KTurtle is an educational programming environment using the Logo programming language. It tries to make programming as easy and touchable possible. This makes KTurtle suitable for teaching kids the basics of math, geometry and... programming. The commands used to program are in the style of the Logo programming language. The unique feature of Logo is that the commands are often translated into the speaking language of the programmer.</para>
 
-     <para>Today there are several versions of Logo around which can easily be found on <ulink url="http://el.media.mit.edu/logo-foundation/">MIT's Logo site</ulink> and by a simple <ulink url="http://www.google.com/search?q=logo+programming+kids">google search</ulink>. This version of Logo (KTurtle) is only focused on the educational qualities of the programming language and will not try to suit professional progammers needs.</para>
-     
-     <para>
-     Why Logo? Logo is recommended for teaching kids as you begin by controlling the actions of a cybernetic turtle in a graphic environment that provides immediate feedback. These immediate actions let you "see" what you are thinking. And as you grow, so does Logo, from the immediate graphic environment into a structured and procedural programming environment for exploring mathematics, language, science, computer, number systems and more.
-     </para>
-     
-<para>
-KTurtle features:
+<para>KTurtle is named after 'the turlte' that play a central role in the programming environment. The turlte is programmed,  using the Logo commands,  to draw a picture on the canvas.</para>
+
+<sect1 id="what-is-logo">
+<title>What is Logo?</title>
+<para>The first version Logo programming language was created by Seymour Papert of MIT Artificial Intelligence Laboratory in 1967 as an ofshoot of the LISP programming language. From then many versions of Logo have been released. By 1980 Logo was gaining momentum, with versions for MSX, Commodore, Atari, and IBM PC systems. These versions were mainly for educational purposes. LCSI released MacLogo in 1985 as a tool for professional programmers, but it never caught on. MIT is still maintaining a site on Logo which can be found on: <ulink url="http://el.media.mit.edu/logo-foundation/">http://el.media.mit.edu/logo-foundation/</ulink>.</para>
+
+<para>Today there are several versions of Logo around which can easily be found on <ulink url="http://el.media.mit.edu/logo-foundation/">MIT's Logo site</ulink> and by a simple <ulink url="http://www.google.com/search?q=logo+programming+kids">google search</ulink>. This version of Logo (KTurtle) is only focused on the educational qualities of the programming language and will not try to suit professional progammers needs.</para>
+</sect1>
+
+<sect1 id="features-of-kturtle">
+<title>Features of KTurtle</title>
+<para>KTurtle has some nice features that make starting to program a breeze. See here some of the highlights of KTurtles feature set:
 <itemizedlist>
 <listitem><para>
-an integrated Logo interpreter, no need to download any other program.
+an integrated Logo interpreter, no need to download any other program
 </para></listitem>
 <listitem><para>
-a powerful editor for the Logo commands with syntax highlighting, line numbering and more.
+a powerful editor for the Logo commands with intuitive syntax highlighting, line numbering and more
 </para></listitem>
 <listitem><para>
-a nice "playground" for the turtle where your commands visualized
+the canvas can be saved as an image or printed
 </para></listitem>
 <listitem><para>
-context help for each Logo command.
+context help for all Logo commands, just press F1 with your cursor a command for the help
 </para></listitem>
 <listitem><para>
-translation of the Logo commands in 2 languages: Dutch and French.
+KTurtle is fully translationable (currently only English, Dutch and French are supported)
 </para></listitem>
 <listitem><para>
 full-screen mode
 </para></listitem>
+<listitem><para>
+many internationalized examples make it easy to get started
+</para></listitem>
 </itemizedlist>
 </para>
-<para>
-Not yet written
-</para>
-<para>
-
-Not yet written
-</para>
+</sect1>
 </chapter>
 
 <chapter id="using-kturtle">
 <title>Using KTurtle</title>
-<para>The KTurtle mainwindow consists of the editor on the left where you type the Logo instructions and the canvas on the right where the instructions are visualized. The canvas is the turtle playground, it's on the canvas that the turtle actually moves. The toolbar allows you to use quickly some menu items.</para>
+
 <screenshot>
-     <screeninfo>Here's a screenshot KTurtle when you start it for the first time</screeninfo>
-	<mediaobject>
-	  <imageobject>
-	    <imagedata fileref="mainwindow.png" format="PNG"/>
-	  </imageobject>
-	    <textobject>
-	    <phrase>KLogoTurtle Main Window</phrase>
-	  </textobject>
-	</mediaobject>
+  <screeninfo>Here's a screenshot KTurtle when you start it for the first time</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow_flower_nrs.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase>KTurtle's main window</phrase>
+    </textobject>
+  </mediaobject>
 </screenshot>
-<sect1 id="kturtle-editor">
-<title>The KTurtle Editor</title>
-<para>
-The KTurtle Editor allows you to type your Logo instructions and code. It can be detached from the window and dragged anywhere on your desktop. It can also be hidden/shown using the View menu, by clicking on Show Editor. 
-</para>
 
-<para>
-The cursor position is indicated in the statusbar, on the right with the Line number and Column number.
-</para>
+<para>The main window of KTurtle has two main parts, the code editor(3) on the left where you type the Logo commands and the canvas(2) on the right where the instructions are visualized. The canvas is the turtle's playground, it's on the canvas that the turtle actually moves and draws. Then there are tree other important places on the main window: the menu bar(1) from where all the actions can be reached, the tool bar(2) that allows you to quickly actived some often used actions and the statusbar(5) where you find some feedback on the state of KTurtle.</para>
 
-<para>
-Syntax highlighting allows you to learn and type easily the Logo instructions.
-</para>
+<sect1 id="the-code-editor">
+<title>The Code Editor</title>
+<para>In the code editor you to type the Logo commands. It has all features you would expect from a modern editor. Most of its features are found in the Edit and the Tools menu. It can be dragged to each border of the main window or detached and dragged anywhere on your desktop.</para>
+<para>Use the Execute action (File->Execute Commands) to execute the code written in the code editor.</para>
 </sect1>
-<sect1 id="kturtle-canvas">
-<title>The KTurtle Canvas</title>
+
+<sect1 id="the-canvas">
+<title>The Canvas</title>
 <para>
-The KTurtle Canvas is the area where the commands are visualized. It also can be called the Turtle Playground for young children.
-</para>
-
-<para>
-
-</para>
-
-<para>
-
-</para>
+The canvas is the place where the commands 'draw' a picture. Most of the commands have an effect on the canvas.</para>
+<para>The picture that is drawn can be saved (using File->Save Canvas) or printed (using File->Print).</para>
 </sect1>
+
+<sect1 id="the-menu-bar">
+<title>The Menu Bar</title>
+<para>In the menu bar you find all the actions of KTurtle. There are in the following groups: File, Edit, View, Tools, Settings and Help.</para>
+
+<sect2 id="the-file-menu">
+<title>The File Menu</title>
+  <variablelist>
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>N</keycap></keycombo>
+        </shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>New</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Creates a new, empty logo file.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>O</keycap></keycombo>
+        </shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>Open...</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Opens a logo file.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>File</guimenu>
+        <guimenuitem>Open Recent</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Opens a logo file.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>E</keycap></keycombo>
+        </shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>Examples</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Show the folder with examples logo programs. The examples should be in your favorite language that you can choose in here: <guimenu>Setting</guimenu><guimenuitem>Setting</guimenuitem> Language.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Alt;<keysym>Return</keysym></keycombo>
+        </shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>Execute Commands</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Starts the execution of the commands in the code editor.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo><keysym>Escape</keysym></keycombo>
+        </shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>Stop Execution</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Stops the execution, this action is only enabled whet the commands are actually executiong.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>S</keycap></keycombo>
+        </shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>Save</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Saves the currently opened logo file.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>File</guimenu>
+        <guimenuitem>Save As...</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Saves the currently opened logo file on a specified location.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>File</guimenu>
+        <guimenuitem>Save Canvas</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>aves the current drawing on canvas into an image.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>P</keycap></keycombo>
+        </shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>Print</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Prints either the current code in the editor or the current drawing on the canvas.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>Q</keycap></keycombo>
+        </shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>Quit</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Quits KTurtle.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-edit-menu">
+  <title>The Edit Menu</title>
+  <sect3 id="undo">
+  <title>Undo</title>
+  <para>Undoes the last change to code. KTurtle has unlimited undo's!</para>
+  </sect3>
+  <sect3 id="redo">
+  <title>Redo</title>
+  <para>Redoes an undone change to the code.</para>
+  </sect3>
+  <sect3 id="cut">
+  <title>Cut</title>
+  <para>Cuts the selected text from the code editor to the clip board.</para>
+  </sect3>
+  <sect3 id="copy">
+  <title>Copy</title>
+  <para>Copies the selected text from the code editor to the clip board.</para>
+  </sect3>
+  <sect3 id="paste">
+  <title>Paste</title>
+  <para>Pastes the text from the clip board to the editor.</para>
+  </sect3>
+  <sect3 id="find">
+  <title>Find...</title>
+  <para>With this action you can find phrases in the code.</para>
+  </sect3>
+  <sect3 id="find-next">
+  <title>Find Next</title>
+  <para>Use this to find the next occurence of the phrase.</para>
+  </sect3>
+  <sect3 id="replace">
+  <title>Replace...</title>
+  <para>With this action you can replace phases in the code.</para>
+  </sect3>
+</sect2>
+
+<sect2 id="the-view-menu">
+  <title>The View Menu</title>
+  <sect3 id="full-screen-mode">
+  <title>Full Screen Mode</title>
+  <para>With this action you toggle the full screen mode.</para>
+  <para>Note: When code is executed while in full screen mode all but the canvas are hidden. This make is possible to write 'full screen' programs in KTurtle.</para>
+  </sect3>
+  <sect3 id="show-line-numbers">
+  <title>Show Line Numbers</title>
+  <para>With this action you can show the line numbers in the code editor.</para>
+  </sect3>
+</sect2>
+
+<sect2 id="the-tools-menu">
+  <title>The Tools Menu</title>
+  <para></para>
+</sect2>
+
+<sect2 id="the-setting-menu">
+  <title>The Settings Menu</title>
+  <para></para>
+</sect2>
+
+<sect2 id="the-help-menu">
+  <title>The Help Menu</title>
+  <para></para>
+</sect2>
+
+</sect1>
+
+<sect1 id="the-tool-bar">
+<title>The Tool Bar</title>
+<para>Here you can quickly reach a few of the most used actions.</para>
+</sect1>
+
+<sect1 id="the-status-bar">
+<title>The Status Bar</title>
+<para>On the statusbar you get feedback of the state of KTurtle. On the left side it shows the feedback on the last action. On the right side you find the current location of the cursor.</para>
+</sect1>
+
 </chapter>
 
 <chapter id="logo-programming">
-<title>Logo Programming</title>
-<para>
-You will find here how to program with Logo, starting with easy instructions.
-</para>
+<title>Logo Programming (Quick Start)</title>
+<para>Here is a quick start to programing with Logo in KTurtle. We start with easy instructions.</para>
+
 <sect1 id="first-steps">
 <title>First steps with Logo: meet the Turtle!</title>
-<sect2 id="directions">
-<title>The Turtle moves in 4 directions</title>
-<para>Let's start by getting the Turtle moving. Our Turtle can go to 4 directions: forward, backward, on the left and on the right. Remember that you write the instructions in the editor and you click on the Run button to see the turtle moving. These directions instructions are of the form
+
+<sect2 id="the-turtle-moves">
+<title>The Turtle Moves</title>
+<para>Let's start by getting the Turtle moving. Our Turtle can move (forwards and backwards) and turn (left and right). Remember, you write the instructions in the editor and click execute (File->Execute Commands) them. Try this for example:
 <screen>
-instruction [spacebar] number 
+forward 90
+turnleft 90 
 </screen>
-and they are listed below.
-</para>
+When you typed the commands like above in the code editor you might have noticed one or more of the following things:</para>
+<para>1. That -- after clicking executing the commands -- the turtle moves up, draws a line and then turns a quater turn to the left. This because you have used the forward and the turnleft command.</para>
+<para>2. That the color of the text you typed canged while you where typing it, this is on of the features of the ditor of KTurtle, called: intuitive highlighting -- different type of commands are highlighted differently. This makes reading large blocks of code more easy.</para>
+<para>2. That the color of the text you typed canged while you where typing it, this is on of the features of the ditor of KTurtle, called: intuitive highlighting -- different type of commands are highlighted differently. This makes reading large blocks of code more easy.</para>
 <table frame="none">
 <title>Instructions for directions</title>
 <tgroup cols="2" colsep="5" rowsep="1">
@@ -196,6 +404,7 @@ in the editor and click on the Execute button (the blue round cog). See on the s
 If you type 2 instructions in the editor, the turtle will execute them one after the other, in the order they are typed.
 </para>
 </sect2>
+
 <sect2 id="cleaning">
 <title>Cleaning</title>
 <para>Now you want to clean the Turtle path! You have 2 special instructions that will get some cleaning. When you type:
@@ -215,7 +424,7 @@ command.
 Usually,you will start with one of these commands, preferably <emphasis>reset</emphasis> to ensure the Turtle playground is clean.
 </para>
 </sect2> 
-<sect2 id="print">
+<sect2 id="printing">
 <title>Printing</title>
 <para>You've seen our Turtle drawing lines as she walks. Of course, you understand that she has a pen! What if you want the Turtle to move and not to draw something? I am sure you have guessed that she will get her pen up.
 <screen>
@@ -292,7 +501,7 @@ Draw a maze for example
 <chapter id="commands">
 <title>Command Reference</title>
 
-<sect1  id="kturtle-file-menu">
+<sect1 id="kturtle-file-menu">
 <title>The <guimenu>File</guimenu> Menu</title>
 <para>
 <variablelist>
@@ -635,9 +844,7 @@ how to translate the examples
 <para>
 KTurtle
 </para>
-<para>
-Program copyright 2003 Cies Briejs <email>cies@showroommama.nl</email>
-</para>
+<para>Program copyright 2003-2004 Cies Breijs <email>cies # showroommama ! nl</email></para>
 <para>
 Contributors:
 <itemizedlist>
