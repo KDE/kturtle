@@ -115,7 +115,7 @@ many integrated internationalized example logo programs make it easy to get star
       <imagedata fileref="mainwindow_flower_nrs.png" format="PNG"/>
     </imageobject>
     <textobject>
-      <phrase>KTurtle's main window</phrase>
+      <phrase>KTurtle Main Window</phrase>
     </textobject>
   </mediaobject>
 </screenshot>
@@ -139,7 +139,7 @@ The cursor position is indicated in <link linkend="the-statusbar">the statusbar<
 <title>The Canvas</title>
 <para>
 The canvas is the area where the commands are visualized, where the commands 'draw' a picture. In other words it is the turtle's playground. After getting some code in the <link linkend="the-code-editor">the code editor</link>, and executing it by <guimenu>File</guimenu>-&gt;<guimenuitem>Execute Commands</guimenuitem>, two things can happen: 1) the code executes fine and you most likely see some changing on the canvas, or 2) you have an error in your code, there will be a message that will tell you what error you made.</para>
-<para>This messgae should help you resolving the error.</para>
+<para>This message should help you resolving the error.</para>
 <para>The picture that is drawn can be saved as an image (using <guimenu>File</guimenu>-&gt;<guimenuitem>Save Canvas</guimenuitem>) or printed (using <guimenu>File</guimenu>-&gt;<guimenuitem>Print</guimenuitem>).</para>
 </sect1>
 
@@ -371,7 +371,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Edit</guimenu>
         <guimenuitem>Find Next</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Use this to find the next occurence of the phrase.</para></listitem>
+      <listitem><para>Use this to find the next occurrencef the phrase.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -445,7 +445,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Tools</guimenu>
         <guimenuitem>Indent</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This action 'indents' (adds white space at the beginning of) the lines that are selected. When 'indentation' is used properly this can make code much easier to read. All examples use indendation, please check them out.</para></listitem>
+      <listitem><para>This action 'indents' (adds white space at the beginning of) the lines that are selected. When 'indentation' is used properly this can make code much easier to read. All examples use indentation, please check them out.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -481,7 +481,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Tools</guimenu>
         <guimenuitem>Comment</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This action add commentation characters (#) in from of the lines that are selected. Lines that start with commentation character are ignored when the code is executed. Comments allow the programmer to explain a bit about his code or it can be used to temporarily prevent a certain piece of code from execution.</para></listitem>
+      <listitem><para>This action add comment characters (#) in from of the lines that are selected. Lines that start with a comment character are ignored when the code is executed. Comments allow the programmer to explain a bit about his code or they can be used to temporarily prevent a certain piece of code from execution.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -545,7 +545,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Help</guimenu>
         <guimenuitem>What's This?</guimenuitem>
       </menuchoice></term>
-      <listitem><para>After activating his action the mouse arrow will be changed into a 'question mark arrow'. When this arrow is used to click on parts of KTurtle's main window a description of the particular part pops-up.</para></listitem>
+      <listitem><para>After activating his action the mouse arrow will be changed into a 'question mark arrow'. When this arrow is used to click on parts of KTurtle Main window, a description of the particular part pops-up.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -569,7 +569,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Help</guimenu>
         <guimenuitem>Report Bug...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Use this to report a problem with KTurtle to the developers. These reports can be used to make KTurtle's future versions better.</para></listitem>
+      <listitem><para>Use this to report a problem with KTurtle to the developers. These reports can be used to make KTurtle future versions better.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -620,7 +620,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
       <imagedata fileref="fresh.png" format="PNG"/>
     </imageobject>
     <textobject>
-      <phrase>KTurtle's main window</phrase>
+      <phrase>KTurtle Main window</phrase>
     </textobject>
   </mediaobject>
 </screenshot>
@@ -648,7 +648,7 @@ Type or copy-paste the code to the code editor and execute it (using <link linke
 
 <para>You will likely understand that <userinput>forward 90</userinput> commanded the turtle to move forward leaving a line, and that <userinput>turnleft 90</userinput> commanded the turtle to turn 90 <glossterm linkend="degrees">degrees</glossterm> to the left.</para>
 
-<para>Please see the follow the links to the reference manual for a complete explaination of the introduced commands: forward, backward, turnleft and turnright.</para>
+<para>Please see the follow the links to the reference manual for a complete explanation of the introduced commands: forward, backward, turnleft and turnright.</para>
 </sect2>
 
 <sect2 id="more-examples">
@@ -1021,7 +1021,7 @@ x = 3
 print x
 </screen>
 In the first line the letter <userinput>x</userinput> made into a variable (number container). As you see the value of the variable <userinput>x</userinput> is set to 3. On the second line the value is printed.</para>
-<para> Note that if we wanted to print an 'x' that we should have writen:
+<para> Note that if we wanted to print an 'x' that we should have written
 <screen>
 print "x"
 </screen>
@@ -1041,12 +1041,12 @@ backward 30
 # the next command prints "1979"
 print A - B
 </screen>
-In the first two lines the variables <userinput>A</userinput> and <userinput>B</userinput> are set to 2004 and 25. On the third line the variable <userinput>AB</userinput> is set to <userinput>A + B</userinput>, which is 2029. The rest of the example consists of 3 <userinput>print</userinput> commands with <userinput>backward 30</userinput> in between. The <userinput>backward 30</userinput> is there to make sure every output is on a new line. In this example you also see that variables can be used in <link linkend="math">mathmatical calculations</link>.</para>
+In the first two lines the variables <userinput>A</userinput> and <userinput>B</userinput> are set to 2004 and 25. On the third line the variable <userinput>AB</userinput> is set to <userinput>A + B</userinput>, which is 2029. The rest of the example consists of 3 <userinput>print</userinput> commands with <userinput>backward 30</userinput> in between. The <userinput>backward 30</userinput> is there to make sure every output is on a new line. In this example you also see that variables can be used in <link linkend="math">mathematical calculations</link>.</para>
 </sect2>
 
 <sect2 id="strings">
 <title>Strings: text containers</title>
-<para>Strings are a lot like variables. The biggest difference is that strings cannot be used in <link linkend="math">mathmatical calculations</link> and <link linkend="questions">questions</link>. An example of the use of strings:
+<para>Strings are a lot like variables. The biggest difference is that strings cannot be used in <link linkend="math">mathematical calculations</link> and <link linkend="questions">questions</link>. An example of the use of strings:
 <screen>
 x = "Hello "
 name = inputwindow "please enter your name..."
@@ -1058,7 +1058,7 @@ On the first line the string <userinput>x</userinput> is set to 'Hello '. On the
 </sect1>
 
 <sect1 id="math">
-<title>Turtles doing math?</title>
+<title>Can the Turtle do math?</title>
 <para>Yes, KTurtle will do your math. You can add (+), substract (-), multiply (*) and divide (/). Here an example in which we use all of them:
 <screen>
 a = 20 - 5
@@ -1094,7 +1094,7 @@ In this example the question is the <userinput>x &gt; 5</userinput>, if the answ
 <para>
 Here are all possible questions:
 <table>
-<title>All diffrent questions</title>
+<title>All different questions</title>
 <tgroup cols="3">
 <tbody>
 <row>
@@ -1132,7 +1132,7 @@ Here are all possible questions:
 </table>
 </para>
 <para>
-Questions can also be glued to eachother with 'question glue', this way a few question can become one big question.
+Questions can also be glued to each other with 'question glue', this way a few questions can become one big question.
 <screen>
 a = 1
 b = 5
@@ -1140,7 +1140,7 @@ if a &lt; 5 and b == 5 [
   print hello
 ]
 </screen>
-<anchor id="question-glue" />In this example the glue-word <userinput>and</userinput> is used to glue 2 questions (<userinput>a &lt; 5</userinput>, <userinput>b == 5</userinput>) together. If one side of the <userinput>and</userinput> would would answer 'false' the whole question would answer 'false', because with the glue-word <userinput>and</userinput> both sides need to be 'true' in order to answer 'true'.</para>
+<anchor id="question-glue" />In this example the glue-word <userinput>and</userinput> is used to glue 2 questions (<userinput>a &lt; 5</userinput>, <userinput>b == 5</userinput>) together. If one side of the <userinput>and</userinput> would answer 'false' the whole question would answer 'false', because with the glue-word <userinput>and</userinput> both sides need to be 'true' in order to answer 'true'.</para>
 <para>
 <userinput>and</userinput> is not the only glue-word there are two others. They are all in the next table:
 <table>
@@ -1167,7 +1167,7 @@ if a &lt; 5 and b == 5 [
 
 <sect1 id="controlling-execution">
 <title>Controlling execution</title>
-<para>The execution controllers enable you to -- a their name implies -- control exection.</para>
+<para>The execution controllers enable you to -- as their name implies -- control execution</para>
 
 <sect2 id="easy">
 <title>Have the turtle wait</title>
@@ -1206,7 +1206,7 @@ if a &lt; 5 and b == 5 [
         print "x is greater than five!"
       ]
       </screen>
-      On the first line <userinput>x</userinput> is set to 6. On the second line the <link linkend="questions">question</link> <userinput>x &gt; 5</userinput> is asked. Since the answer to this question is 'true' the execution controller <userinput>if</userinput> will allow the code between the braces to be executd.</para></listitem>
+      On the first line <userinput>x</userinput> is set to 6. On the second line the <link linkend="questions">question</link> <userinput>x &gt; 5</userinput> is asked. Since the answer to this question is 'true' the execution controller <userinput>if</userinput> will allow the code between the braces to be executed</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -1250,7 +1250,7 @@ if a &lt; 5 and b == 5 [
         print "x is smaller than six!"
       ]
       </screen>
-      The <link linkend="questions">question</link> askes if <userinput>x</userinput> is greater than 5. Since <userinput>x</userinput> is set to 4 on the first line the answer to the question is 'false'. This means the code between the braces after <userinput>else</userinput> get's executed.</para></listitem>
+      The <link linkend="questions">question</link> asks if <userinput>x</userinput> is greater than 5. Since <userinput>x</userinput> is set to 4 on the first line the answer to the question is 'false'. This means the code between the braces after <userinput>else</userinput> gets executed.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -1270,7 +1270,7 @@ if a &lt; 5 and b == 5 [
         forward 15
       ]
       </screen>
-     Everytime the code between the braces is executed the <userinput>x</userinput> get's one number higher, till x reaches the count of 10. The code between the braces prints the <userinput>x</userinput> multiplied by 7. After this program finished execution you will see the times table of 7 on the canvas.</para></listitem>
+     Everytime the code between the braces is executed the <userinput>x</userinput> is one number higher, till x reaches the count of 10. The code between the braces prints the <userinput>x</userinput> multiplied by 7. After this program finished its execution you will see the times table of 7 on the canvas.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -1311,7 +1311,7 @@ learn multiplyBySelf (n) [
   r = n * n
   return r
 ]
-i = inputwindow "Please enter a number and press Ok."
+i = inputwindow "Please enter a number and press OK"
 print i + " multiplied by it self is: " + multiplyBySelf (i)
 </screen>
 In this example a new command called <userinput>multiplyBySelf</userinput>. The input of this command is multiplied by it self and then returned, using the <anchor id="return" /><userinput>return</userinput> command. The <userinput>return</userinput> command is the way to output a value from a self created function.
@@ -1368,7 +1368,7 @@ hide
 
 <glossentry id="intuitive-highlighting">
 <glossterm>intuitive highlighting</glossterm>
-<glossdef><para>This is a feature of KTurtle that makes coding even easier. With intuitive highlighting the code that you write get's a color that indicates what type os code it is. In the next list you will find the different types of code and the color they get in <link linkend="the-code-editor">the code editor</link>.
+<glossdef><para>This is a feature of KTurtle that makes coding even easier. With intuitive highlighting the code that you write gets a color that indicates what type of code it is. In the next list you will find the different types of code and the color they get in <link linkend="the-code-editor">the code editor</link>.
 <table>
 <title>Different types of code and their highlight color</title>
 <tgroup cols="3">
@@ -1386,7 +1386,7 @@ hide
 <row>
 <entry>comments</entry>
 <entry>dark yellow</entry>
-<entry>Lines that are commented start with a commentation characters (#), these lines are ignored when the code is executed. Comments allow the programmer to explain a bit about his code or it can be used to temporarily prevent a certain piece of code from execution.</entry>
+<entry>Lines that are commented start with a comment characters (#), these lines are ignored when the code is executed. Comments allow the programmer to explain a bit about his code or it can be used to temporarily prevent a certain piece of code from execution.</entry>
 </row>
 <row>
 <entry>braces [, ]</entry>
@@ -1409,9 +1409,9 @@ hide
 <entry>Not much to say about (text) string either, except the allway start and end with the "-character.</entry>
 </row>
 <row>
-<entry>mathmatical characters</entry>
+<entry>mathematical characters</entry>
 <entry>grey</entry>
-<entry>This are the mathmatical characters: +, -, *, \, (, and ). Read more about them <link linkend="math">here</link>.</entry>
+<entry>This are the mathematical characters: +, -, *, \, (, and ). Read more about them <link linkend="math">here</link>.</entry>
 </row>
 <row>
 <entry>questions characters</entry>
