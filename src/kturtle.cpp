@@ -53,8 +53,9 @@
 
 // StatusBar field IDs
 #define IDS_INS    0
-#define IDS_STATUS      1
+#define IDS_STATUS           1
 #define IDS_STATUS_CLM  3
+#define IDS_LANG              5
 
 // END
 
@@ -198,6 +199,8 @@ void MainWindow::setupStatusBar() {
 	// statusBar()->insertItem(" ", 2, 0, true);//to add a space, ID is 2
 	statusBar()->insertItem("", IDS_STATUS, 1, false);
 	statusBar()->setItemAlignment(IDS_STATUS, AlignLeft);
+	statusBar()->insertItem("", IDS_LANG, 1, false);
+	statusBar()->setItemAlignment(IDS_LANG, AlignLeft);
 	statusBar()->insertItem("", IDS_STATUS_CLM, 0, true);
 	statusBar()->insertItem("", IDS_INS, 0, true);
 	// fill the statusbar 
@@ -886,11 +889,13 @@ void MainWindow::slotUpdateSettings() {
 	slotSetHighlightstyle( kcfg_LanguageComboBox->currentText().section( "(", -1, -1 ).remove(")") );
 	Settings::setLanguageComboBox( kcfg_LanguageComboBox->currentItem() );
 	Settings::writeConfig();
+	statusBar()-> changeItem(i18n("Commands language: ")+Settings::logoLanguage(), IDS_LANG);
 }
 
 void MainWindow::readConfig(KConfig *config) {
 	config->setGroup("General Options");
 	m_recentFiles->loadEntries(config, "Recent Files");
+	statusBar()->changeItem(i18n("Commands language: ")+Settings::logoLanguage(), IDS_LANG);
 }
 
 void MainWindow::slotConfigureToolbars() {
