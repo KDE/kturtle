@@ -9,7 +9,7 @@ BUGS
 - accept the making and calling of parameterless 'learned' commands (without using the '()')
 
 I (cies) installed KTurtle on gentoo/qt3.3/kde3.2 and found the following BUG:
-- highlight style is not by default on logo-sceme
+- highlight style is not by default on logo-sceme FIXED
 - cannot open examples
 
 
@@ -133,8 +133,6 @@ Press F1 while in a command and see help on it
 
 **** TO-oeps-IdidItAllReadies: ****
 
-
-default the highlightstyle to logo --> not working anymore since upgraded to 3.2... this should be implemented after the "single language selection"
 
 
 cies: Make a dir and put some examples/test in there...
