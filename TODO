@@ -12,8 +12,23 @@ BUGS
 
 
 **** URGENT ****
+
+- preview in konqueror: (from IRC discussion about the preview thing a mimetype and a litle kpart-previewer would not be too dificult wouldn't it
+<TSDgeos> you could put the widget you use in klogo in the kpart in read only mode
+<polux> yeah good idea, instead of including it as a katepart, making a kturtlepart)
+
+- error messages: not all errors, only the 1st or the 2 first. Error message related to language non-compatibility
+(IRC discussion: every compiler/interpreter should try to recover from a given error and continue if possible
+ the idea is the compiler tryes to recover from the error and so it can tell you if there is more than one error and not just one by compilation attempt
+ it may be assuming you missed a ; and maybe you missed a ( or something elase and following messages are completely wrong)
+ 
+ - translating data in the knewstuff.xml file: how would the translators access the file which is on the server?
+ 
+ - functions support in Logo
+ 
+ --------------------------------- below are done
 - About the language: when user is set to fr (not fr_FR but fr like me being in Canada), the parsing does not work because Settings::LogoLanguage() is set to fr and NOT to fr_FR.
-  Syntax highlighting does not work for fr
+  Syntax highlighting does not work for fr        DONE annma
  
 - Default does not work in Language ComboBox -> I am not sure your use of KConfig XT is optimum here, Cies
  and other bug: output: kturtle: desktopLanguage: fr:en_US
