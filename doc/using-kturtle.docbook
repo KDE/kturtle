@@ -1,0 +1,531 @@
+<chapter id="using-kturtle">
+<title>Using &kturtle;</title>
+
+<screenshot>
+  <screeninfo>Here's a screenshot of &kturtle; in action</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow_flower_nrs.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase>&kturtle; Main Window</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para>The main window of &kturtle; has two main parts: <link linkend="the-code-editor">the code editor</link> (3) on the left where you type the &logo; commands,  and <link linkend="the-canvas">the canvas</link> (4) on the right where the instructions are visualized. <link linkend="the-canvas">The canvas</link> is the turtle's playground, it's on the canvas that the turtle actually moves and draws. The three other places on the main window are: <link linkend="the-menubar">the menu bar</link> (1) from where all the actions can be reached, <link linkend="the-toolbar">the toolbar</link> (4) that allows you to quickly select the most used actions, and <link linkend="the-statusbar">the statusbar</link> (5) where you will find feedback on the state of &kturtle;.</para>
+
+<sect1 id="the-code-editor">
+<title>The Code Editor</title>
+<para>In the code editor you type the &logo; commands. It has all of the features you would expect from a modern editor. Most of its features are found in the <link linkend="the-edit-menu">Edit</link> and the <link linkend="the-tools-menu">Tools</link> menus. The code editor can be docked on each border of the main window or it can be detached and placed anywhere on your desktop.</para>
+<para>
+You have several ways to get some code in the editor. The easiest way is to use an already-made example. You choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open Examples</guimenuitem>
+</menuchoice> in the <link linkend="the-file-menu">File menu</link> and you click on a file. The file name will tell you what the example is about (&eg; <filename>square.logo</filename> will draw a square). The file you choose will be opened in the <link linkend="the-code-editor">the code editor</link>, you can then use <menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem>
+</menuchoice> to run the code if you like.</para>
+<para>You can open &logo; files by choosing <menuchoice><guimenu>File</guimenu><guimenuitem>Open...</guimenuitem>
+</menuchoice>.</para>
+<para>The third way is to directly type your own code in the editor or to copy/paste some code from this user guide.
+</para>
+<para>
+The cursor position is indicated in <link linkend="the-statusbar">the statusbar</link>, on the right with the Line number and Column number.
+</para>
+</sect1>
+
+<sect1 id="the-canvas">
+<title>The Canvas</title>
+<para>
+The canvas is the area where the commands are visualized, where the commands <quote>draw</quote> a picture. In other words it is the turtle's playground. After getting some code in the <link linkend="the-code-editor">the code editor</link>, and executing it using <menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem>
+</menuchoice>, two things can happen: Either the code executes fine and you most likely see something change on the canvas, or you have an error in your code and there will be a message that will tell you what error you made.</para>
+<para>This message should help you to resolve the error.</para>
+<para>The picture that is drawn can be saved as an image (using <menuchoice><guimenu>File</guimenu><guimenuitem>Save Canvas</guimenuitem>
+</menuchoice>) or printed (using <menuchoice><guimenu>File</guimenu><guimenuitem>Print...</guimenuitem>
+</menuchoice>).</para>
+</sect1>
+
+<sect1 id="the-menubar">
+<title>The Menubar</title>
+<para>In the menu bar you find all the actions of &kturtle;. There are in the following groups: <guimenu>File</guimenu>, <guimenu>Edit</guimenu>, <guimenu>View</guimenu>, <guimenu>Tools</guimenu>, <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>. This section describes them all.</para>
+
+<sect2 id="the-file-menu">
+<title>The <guimenu>File</guimenu> Menu</title>
+  <variablelist>
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>N</keycap></keycombo>
+        </shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>New</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Creates a new, empty &logo; file.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>O</keycap></keycombo>
+        </shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>Open...</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Opens a &logo; file.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>File</guimenu>
+        <guimenuitem>Open Recent</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Opens a &logo; file that has been opened recently.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>E</keycap></keycombo>
+        </shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>Open Examples</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Show the folder with examples &logo; programs. The examples should be in your favorite language that you can choose in  <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kturtle;...</guimenuitem>
+</menuchoice>.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-execute" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Alt;<keysym>Return</keysym></keycombo>
+        </shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>Execute Commands</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Starts the execution of the commands in the code editor.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-stop" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo><keysym>Escape</keysym></keycombo>
+        </shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>Stop Execution</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Stops the execution. This action is only enabled when the commands are actually executing.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-save" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>S</keycap></keycombo>
+        </shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>Save</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Saves the currently opened &logo; file.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-save-as" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>File</guimenu>
+        <guimenuitem>Save As...</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Saves the currently opened &logo; file on a specified location.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-save-canvas" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>File</guimenu>
+        <guimenuitem>Save Canvas</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Saves the current drawing on canvas into an image.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-print" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>P</keycap></keycombo>
+        </shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>Print...</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Prints either the current code in the editor or the current drawing on the canvas.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-quit" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>Q</keycap></keycombo>
+        </shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>Quit</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Quits &kturtle;.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-edit-menu">
+  <title>The <guimenu>Edit</guimenu> Menu</title>
+  <variablelist>
+    <anchor id="edit-undo" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>Z</keycap></keycombo>
+        </shortcut>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Undo</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Undoes the last change to code. &kturtle; has unlimited undo's!</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-redo" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;&Shift;<keycap>Z</keycap></keycombo>
+        </shortcut>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Redo</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Redoes an undone change to the code.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-cut" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>X</keycap></keycombo>
+        </shortcut>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Cut</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Cuts the selected text from the code editor to the clipboard.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-copy" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>C</keycap></keycombo>
+        </shortcut>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Copy</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Copies the selected text from the code editor to the clipboard.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-paste" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>V</keycap></keycombo>
+        </shortcut>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Paste</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Pastes the text from the clipboard to the editor.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>F</keycap></keycombo>
+        </shortcut>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Find...</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>With this action you can find phrases in the code.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find-next" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo><keysym>F3</keysym></keycombo>
+        </shortcut>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Find Next</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Use this to find the next occurrence of the phrase.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-replace" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>R</keycap></keycombo>
+        </shortcut>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Replace...</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>With this action you can replace phrases in the code.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-view-menu">
+  <title>The <guimenu>View</guimenu> Menu</title>
+  <variablelist>
+    <anchor id="view-fullscreen" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;&Shift;<keycap>F</keycap></keycombo>
+        </shortcut>
+        <guimenu>View</guimenu>
+        <guimenuitem>Full Screen Mode</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>With this action you toggle the full screen mode.</para>
+                <para>Note: When code is executed while in full screen mode everything but the canvas is hidden. This makes it possible to write <quote>full screen</quote> programs in &kturtle;.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="view-linenumbers" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo><keysym>F11</keysym></keycombo>
+        </shortcut>
+        <guimenu>View</guimenu>
+        <guimenuitem>Show Line Numbers</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>With this action you can show the line numbers in the code editor. This can be handy for finding errors.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-tools-menu">
+  <title>The <guimenu>Tools</guimenu> Menu</title>
+  <variablelist>
+    <anchor id="tools-color-picker" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Alt;<keycap>C</keycap></keycombo>
+        </shortcut>
+        <guimenu>Tools</guimenu>
+        <guimenuitem>Color Picker</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>This action opens the color picker. Using the color picker you can easily select a <glossterm linkend="rgb">color code</glossterm> and insert it in <link linkend="the-code-editor">the code editor</link>.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-indent" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>I</keycap></keycombo>
+        </shortcut>
+        <guimenu>Tools</guimenu>
+        <guimenuitem>Indent</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>This action <quote>indents</quote> (adds white space at the beginning of) the lines that are selected. When <quote>indentation</quote> is used properly this can make code much easier to read. All examples use indentation, please check them out.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-unindent" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;&Shift;<keycap>I</keycap></keycombo>
+        </shortcut>
+        <guimenu>Tools</guimenu>
+        <guimenuitem>Unindent</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>This action <quote>unindents</quote> (removes the white space at the beginning of) the lines that are selected.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-clean-indent" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>Tools</guimenu>
+        <guimenuitem>Clean Indentation</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>This action cleans <quote>indentation</quote> (removes all the white space at the beginning of) the lines that are selected.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-comment" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>D</keycap></keycombo>
+        </shortcut>
+        <guimenu>Tools</guimenu>
+        <guimenuitem>Comment</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>This action add comment characters (#) in from of the lines that are selected. Lines that start with a comment character are ignored when the code is executed. Comments allow the programmer to explain a bit about his code or they can be used to temporarily prevent a certain piece of code from execution.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-uncomment" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;&Shift;<keycap>D</keycap></keycombo>
+        </shortcut>
+        <guimenu>Tools</guimenu>
+        <guimenuitem>Uncomment</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>This action removes the comment characters from the selected lines.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-setting-menu">
+  <title>The <guimenu>Settings</guimenu> Menu</title>
+    <variablelist>
+    <anchor id="toggle-toolbar" />
+    <varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show/Hide Toolbar</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Toggle</action> the Main Toolbar</para></listitem>
+</varlistentry>
+  </variablelist>  
+  <variablelist>
+      <anchor id="toggle-statusbar" />
+   <varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show/Hide Statusbar</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Toggle</action> the Statusbar</para></listitem>
+</varlistentry>
+  </variablelist>
+    <variablelist>
+    <anchor id="tools-advanced" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>Settings</guimenu>
+        <guisubmenu>Advanced Settings</guisubmenu>
+      </menuchoice></term>
+      <listitem><para>Here you can change things you normally do not need to change. The <guisubmenu>Advanced Settings</guisubmenu> submenu has three items: <guimenuitem>Configure Editor...</guimenuitem> (the standard &kate; editor settings dialog), <guimenuitem>Configure Shortcuts...</guimenuitem> (the standard &kde; shortcut settings dialog) and <guimenuitem>Configure Toolbars...</guimenuitem> (the standard &kde; toolbars setting dialog).</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>Settings</guimenu>
+        <guimenuitem>Configure &kturtle;...</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>This is used to configure &kturtle;. Here you can change the language of the &logo; commands or set a new initial canvas size.</para></listitem>
+    </varlistentry>
+  </variablelist>
+
+</sect2>
+
+<sect2 id="the-help-menu">
+  <title>The <guimenu>Help</guimenu> Menu</title>
+  <variablelist>
+    <anchor id="help-handbook" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>Help</guimenu>
+        <guimenuitem>&kturtle; Handbook</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>This action shows the handbook that you are currently reading.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="help-whats-this" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Shift;<keysym>F1</keysym></keycombo>
+        </shortcut>
+        <guimenu>Help</guimenu>
+        <guimenuitem>What's This?</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>After activating this action the mouse arrow will be changed into a <quote>question mark arrow</quote>. When this arrow is used to click on parts of &kturtle; main window, a description of the particular part pops-up.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="help-context-help" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo><keysym>F1</keysym></keycombo>
+        </shortcut>
+        <guimenu>Help</guimenu>
+        <guimenuitem>Help on: ...</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>This is a very useful function: it provides help on the code where the cursor in the code editor is at. So, &eg;, you have used the <userinput>print</userinput> command in your code, and you want to read and to know what the handbook says on this command. You just move your cursor so it is in the <userinput>print</userinput> command and you press <keysym>F1</keysym>. The handbook will then show all info on the <userinput>print</userinput> command.</para>
+      <para>This function is very important while learning programming.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="help-report-bug" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>Help</guimenu>
+        <guimenuitem>Report Bug...</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Use this to report a problem with &kturtle; to the developers. These reports can be used to make &kturtle; future versions better.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="help-about-kturtle" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>Help</guimenu>
+        <guimenuitem>About &kturtle;</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Here you find information on &kturtle; like the authors and the license it comes with.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="help-about-kde" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>Help</guimenu>
+        <guimenuitem>About &kde;</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Here you can find information on &kde;. If you do not know yet what &kde; is, this is a place you should not miss!</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+<sect1 id="the-toolbar">
+<title>The Toolbar</title>
+<para>Here you can quickly reach the most used actions. By default, you will find here all main useful commands ending with the <guiicon>Execute Commands</guiicon> and <guiicon>Stop Execution</guiicon> icons.</para>
+<para>You can configure the toolbar using <menuchoice><guimenu>Settings</guimenu><guimenuitem>Advanced Settings</guimenuitem><guimenuitem>Configure Toolbar...</guimenuitem></menuchoice></para>
+</sect1>
+
+<sect1 id="the-statusbar">
+<title>The Statusbar</title>
+<para>On the statusbar you get feedback of the state of &kturtle;. On the left side it shows the feedback on the last action. On the right side you find the current location of the cursor (line and column numbers). In the middle of the Statusbar is indicated the current language used for the commands.</para>
+</sect1>
+
+</chapter>

@@ -1,0 +1,171 @@
+<chapter id="Glossary">
+<title>Glossary</title>
+
+<para>In this chapter you will find an explanation of most of the <quote>uncommon</quote> words that are used in the handbook.</para>
+
+<glosslist>
+<glossentry id="degrees">
+<glossterm>degrees</glossterm>
+<glossdef><para>Degrees are units to measure angles or turns. A full turn is 360 degrees,  a half turn 180 degrees and a quarter turn 90 degrees. The commands <userinput>turnleft</userinput>, <userinput>turnright</userinput> and <userinput>direction</userinput> need an input in degrees.</para></glossdef>
+</glossentry>
+
+<glossentry id="input-output">
+<glossterm>input and output of commands</glossterm>
+<glossdef><para>Some commands take input, some commands give output, some commands take input <emphasis>and</emphasis> give output and some commands neither take input nor give output.</para>
+<para>Some examples of commands that only take input are:
+<screen>
+forward 50
+pencolor 255,0,0
+print "Hello!"
+</screen>
+The <userinput>forward</userinput> command takes <userinput>50</userinput> as input. <userinput>forward</userinput> needs this input to know how many <glossterm linkend="pixels">pixels</glossterm> it should go forward. <userinput>pencolor</userinput> takes a color as input and <userinput>print</userinput> takes a string (a piece of text) as input. Please note that the input can also be a container. The next example illustrates this:
+<screen>
+x = 50
+print x
+str = "hello!"
+print str
+</screen></para>
+
+<para>Now some examples of commands that give output:
+<screen>
+x = inputwindow "Please type something and press OK... thanks!"
+r = random 1,100
+</screen>
+The <userinput>inputwindow</userinput> command takes a string as input, and outputs the number or string that is entered. As you can see, the output of <userinput>inputwindow</userinput> is stored in the container <userinput>x</userinput>. The <userinput>random</userinput> command also gives output. In this case it outputs a number between 1 and 100. The output of the random is again stored in a container, named <userinput>r</userinput>. Note that the containers <userinput>x</userinput> and <userinput>r</userinput> are not used in the example code above.</para>
+
+<para>There are also commands that neither need input nor give output. Here some examples:
+<screen>
+clear
+penup
+wrapon
+hide
+</screen>
+</para></glossdef>
+</glossentry>
+
+<glossentry id="intuitive-highlighting">
+<glossterm>intuitive highlighting</glossterm>
+<glossdef><para>This is a feature of &kturtle; that makes coding even easier. With intuitive highlighting the code that you write gets a color that indicates what type of code it is. In the next list you will find the different types of code and the color they get in <link linkend="the-code-editor">the code editor</link>.
+<table>
+<title>Different types of code and their highlight color</title>
+<tgroup cols="3">
+<tbody>
+<row>
+<entry>regular commands</entry>
+<entry>dark green</entry>
+<entry>The regular commands are described <link linkend="commands">here</link>.</entry>
+</row>
+<row>
+<entry>execution controllers</entry>
+<entry>black (bold)</entry>
+<entry>The special commands control execution, read more on them <link linkend="controlling-execution">here</link>.</entry>
+</row>
+<row>
+<entry>comments</entry>
+<entry>dark yellow</entry>
+<entry>Lines that are commented start with a comment characters (#). These lines are ignored when the code is executed. Comments allow the programmer to explain a bit about his code or can be used to temporarily prevent a certain piece of code from executing.</entry>
+</row>
+<row>
+<entry>brackets [, ]</entry>
+<entry>light green (bold)</entry>
+<entry>Brackets are used to group portions of code. Brackets are often used together with <link linkend="controlling-execution">execution controllers</link>.</entry>
+</row>
+<row>
+<entry>the <link linkend="learn">learn</link> command</entry>
+<entry>light green (bold)</entry>
+<entry>The <link linkend="learn">learn</link> command is used to create new commands.</entry>
+</row>
+<row>
+<entry>numbers</entry>
+<entry>blue</entry>
+<entry>Numbers, well not much to say about them.</entry>
+</row>
+<row>
+<entry>strings</entry>
+<entry>dark red</entry>
+<entry>Not much to say about (text) strings either, except that they always start and end with the double quotes (").</entry>
+</row>
+<row>
+<entry>mathematical characters</entry>
+<entry>grey</entry>
+<entry>These are the mathematical characters: +, -, *, /, (, and ). Read more about them <link linkend="math">here</link>.</entry>
+</row>
+<row>
+<entry>questions characters</entry>
+<entry>blue (bold)</entry>
+<entry>Read more about questions <link linkend="questions">here</link>.</entry>
+</row>
+<row>
+<entry>question glue-words</entry>
+<entry>pink</entry>
+<entry>Read more about the question glue-words (and, or, not) <link linkend="question-glue">here</link>.</entry>
+</row>
+<row>
+<entry>regular text</entry>
+<entry>black</entry>
+<entry></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para></glossdef>
+</glossentry>
+
+<glossentry id="pixels">
+<glossterm>pixels</glossterm>
+<glossdef><para>A pixel is a dot on the screen. If you look very close you will see that the screen of your monitor uses pixels. All images on the screen are built with these pixels. A pixel is the smallest thing that can be drawn on the screen.</para>
+<para>A lot of commands need a number of pixels as input. These commands are: <userinput>forward</userinput>, <userinput>backward</userinput>, <userinput>go</userinput>, <userinput>gox</userinput>, <userinput>goy</userinput>, <userinput>canvassize</userinput> and <userinput>penwidth</userinput>.</para></glossdef>
+</glossentry>
+
+<glossentry id="rgb">
+<glossterm>RGB combinations (color codes)</glossterm>
+<glossdef><para>RGB combinations are used to describe colors. The <quote>R</quote> stand for <quote>red</quote>, the <quote>G</quote> stands for <quote>green</quote> and the <quote>B</quote> stands for <quote>blue</quote>. An example of an RGB combination is <userinput>255,0,0</userinput>: the first value (<quote>red</quote>) is 255 and the others are 0, so this represents a bright shade of red. Each value of an RGB combination has to be in the range 0 to 255. Here a small list of some often used colors:
+<table frame="none">
+<title>Often used RGB combinations</title>
+<tgroup cols="2" colsep="5" rowsep="1">
+<colspec colname="c1"/>
+<tbody>
+<row><entry><userinput>0,0,0</userinput></entry><entry>black</entry></row>
+<row><entry><userinput>255,255,255</userinput></entry><entry>white</entry></row>
+<row><entry><userinput>255,0,0</userinput></entry><entry>red</entry></row>
+<row><entry><userinput>150,0,0</userinput></entry><entry>dark red</entry></row>
+<row><entry><userinput>0,255,0</userinput></entry><entry>green</entry></row>
+<row><entry><userinput>0,0,255</userinput></entry><entry>blue</entry></row>
+<row><entry><userinput>0,255,255</userinput></entry><entry>light blue</entry></row>
+<row><entry><userinput>255,0,255</userinput></entry><entry>pink</entry></row>
+<row><entry><userinput>255,255,0</userinput></entry><entry>yellow</entry></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para>To easily find the RGB combinations of a color you should try the color picker! You can open the color picker using <link linkend="tools-color-picker"><menuchoice><guimenu>Tools</guimenu><guimenuitem>Color Picker</guimenuitem></menuchoice></link>.</para>
+<para>Two commands need an RGB combination as input: these commands are <userinput>canvascolor</userinput> and <userinput>pencolor</userinput>.</para></glossdef>
+</glossentry>
+
+<glossentry id="sprite">
+<glossterm>sprite</glossterm>
+<glossdef><para>A sprite is a small picture that can be moved around the screen. Our beloved turtle, for instance, is a sprite.</para>
+<para>Note: with this version of &kturtle; the sprite cannot be changed from a turtle into something else. Future versions of &kturtle; will be able to do this.</para></glossdef>
+</glossentry>
+
+<glossentry id="wrapping">
+<glossterm>wrapping</glossterm>
+<glossdef><para>Wrapping is what happens when the turtle draws something that is to big to fix in on the canvas and wrapping is set <quote>on</quote>.
+<screenshot>
+  <screeninfo>This is what happens when wrapping is <quote>on</quote></screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="wrapping.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase>An example of wrapping</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+When the turtle moves off a border of the canvas it is instantly taken to the opposite border so it can continue its move. This way the turtle will always stay on the screen while it moves. This happens when wrapping is on.</para>
+<para>Wrapping can be turned on and off with the <userinput>wrapon</userinput> and <userinput>wrapoff</userinput> commands. When &kturtle; starts wrapping is turned on by default.</para></glossdef>
+</glossentry>
+
+</glosslist>
+
+</chapter>
