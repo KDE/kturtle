@@ -60,6 +60,8 @@ How to make the errors more descriptive:  (my TODO for tomorow :)
 - learn something about interpreters and errorhandling (check the net)         FOUND NOTHING (ask my neighbour)
 
 -----> line numbering is somehow broken.... most likely in parser/lexer (only (syntax)error from the parsr such)
+            ISSUE TRACKED DOWN, line numbering will remain hard we we do not limit funtions to one line
+                                             IMPORTANT TODO!!!
 
 - try to break up/refine the most common errors
 - Reformulate all the error messages after simulating them

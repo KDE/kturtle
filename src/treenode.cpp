@@ -22,18 +22,23 @@
 #include "treenode.h"
 
 
-void TreeNode::init() {
+void TreeNode::init()
+{
 	clear();
 	parent = NULL;
-	value = 0;
-	strValue = "";
+	fTok.value = 0;
+	// fTok.string = "";
+	fTok.look = "";
 	fName = "<name not set>"; // generic/internal command name
-	fKey = "<key not set>"; // i18able logo command name
-	fRow = NA;
-	fCol = NA;
+	fTok.look = "<fTok.look not set>";
+	fTok.start.row = 0;
+	fTok.start.col = 0;
+	fTok.end.row = 0;
+	fTok.end.col = 0;
 }
 
-TreeNode::TreeNode() {
+TreeNode::TreeNode()
+{
 	init();
 	fType = Unknown;
 }
@@ -43,30 +48,42 @@ TreeNode::TreeNode() {
 // 	fType = t;
 // }
 
-TreeNode::TreeNode(NodeType t, uint row, uint col, QString name, QString key) {
+TreeNode::TreeNode(token t, NodeType nodeType)
+{
+	init();
+	fType = nodeType;
+	fTok = t;
+	fName = fTok.look;
+// 	fName = name;
+// 	fKey = key;
+	kdDebug(0)<<">>> new TreeNode created;  look: '"<<fTok.look<<"', from position ("<<fTok.start.row<<", "<<fTok.start.col<<")."<<endl;
+}
+
+TreeNode::TreeNode(NodeType t, uint row, uint col, QString name, QString key)
+{
 	init();
 	fType = t;
-	fRow = row;
-	fCol = col;
+	fTok.start.row = row;
+	fTok.start.col = col;
 	fName = name;
-	fKey = key;
-	kdDebug(0)<<">>> new TreeNode created;  name: '"<<fName<<"', key: "<<fKey<<", pos: ("<<fRow<<", "<<fCol<<")."<<endl;
+	kdDebug(0)<<">>> new TreeNode created;  name: '"<<fName<<"', pos: ("<<row<<", "<<col<<")."<<endl;
 }
 
-TreeNode::TreeNode(TreeNode* p) {
+TreeNode::TreeNode(TreeNode* p)
+{
 	clear();
 	setParent(p);
-	value = -1;
-	strValue = "";
+	fTok.value = -1;
+	fTok.look = "";
 	fType = Unknown;
-	fRow = NA;
-	fCol = NA;
+	fTok.start.row = 0;
+	fTok.start.col = 0;
 	fName = "<name not set>";
-	fKey = "<key not set>";
 }
 
 
-void TreeNode::setParent(TreeNode* p) {
+void TreeNode::setParent(TreeNode* p)
+{
 	parent = p;
 }
 
@@ -77,7 +94,8 @@ TreeNode::~TreeNode() {
 
 
 //recursively walk down tree and delete every node bottom up
-void TreeNode::destroy(TreeNode* node) {
+void TreeNode::destroy(TreeNode* node)
+{
 	if( (node != NULL) && (node->size() > 0) ) {
 		for( TreeNode::iterator i = node->begin(); i != node->end(); ++i ) {
 			destroy(*i);
@@ -90,17 +108,18 @@ void TreeNode::destroy(TreeNode* node) {
 
 
 
-TreeNode& TreeNode::operator= (const TreeNode& t) {
-	if(this != &t) {
-		value = t.value;
-		strValue = t.strValue;
-		fName = t.fName;
-		fKey = t.fKey;
+TreeNode& TreeNode::operator= (const TreeNode& t)
+{
+	if (this != &t)
+	{
 		fType = t.fType;
+		fTok = t.fTok;
+		fName = t.fName;
 		parent = t.parent;
 		
 		this->clear();
-		for(TreeNode::const_iterator i = t.begin(); i != t.end(); ++i) {
+		for (TreeNode::const_iterator i = t.begin(); i != t.end(); ++i)
+		{
 			this->push_back(*i);
 		}
 	}
@@ -126,7 +145,7 @@ void TreeNode::show(int indent) {
 	for (int i = 0; i < indent; i++) {
 		s += ">  ";
 	}
-	kdDebug(0)<<"NodeTree:"<<s<<""<<getName()<<", "<<getKey()<<" @ ("<<getRow()<<", "<<getCol()<<")"<<endl;
+	kdDebug(0)<<"NodeTree:"<<s<<""<<getName()<<" @ ("<<getRow()<<", "<<getCol()<<")"<<endl;
 }
 
 

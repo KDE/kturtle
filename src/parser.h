@@ -1,4 +1,7 @@
 /*
+     Copyright (C) 2003 by Walter Schreppers 
+     Copyright (C) 2004 by Cies Breijs   
+     
     This program is free software; you can redistribute it and/or
     modify it under the terms of version 2 of the GNU General Public
     License as published by the Free Software Foundation.
@@ -12,9 +15,6 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-
-// This file is originally written by Walter Scheppers, but allmost
-// every aspect of it is slightly changed by Cies Breijs.
 
  
 #ifndef _PARSER_H_
@@ -33,7 +33,7 @@ Q_OBJECT
 	Parser(QTextIStream& in);
 	virtual ~Parser();
 
-	bool parse();
+	void parse();
 	TreeNode* getTree() const { return tree; }
 
 	signals:
@@ -44,11 +44,11 @@ Q_OBJECT
 	bool isMulOp(token);
 	
 	void getToken();
-	void Match(int);
+	void matchToken(int);
 	void Error(const QString& s, uint code = 1000, uint r = NA, uint c = NA);
 
 	TreeNode* Program();
-	TreeNode* Function();
+	//TreeNode* Function();
 	TreeNode* IdList();
 	TreeNode* ParamList();
 	TreeNode* Block();
@@ -107,13 +107,15 @@ Q_OBJECT
 	TreeNode* WrapOff();
 	TreeNode* Reset();
 	
+	TreeNode* LineBreak();
+	
 	TreeNode* Learn();
 
 	//private locals
 	Lexer       *lexer;
-	token        lookToken;
-	TreeNode    *tree; 
-	bool         bNoErrors;
+	token        currentToken;
+	TreeNode    *tree;
+	TreeNode    *currentNode;
 	uint         row;
 	uint         col;
 	QStringList  learnedFunctionList;

@@ -222,7 +222,7 @@ void Executer::execFunction( TreeNode* node ) {
 void Executer::execRetFunction( TreeNode* node ) {
 	execFunction(node);
 	if( runStack.size() == 0 ) {
-		emit ErrorMsg( i18n("Function %1 did not return a value.").arg( node->getKey() ), node->getRow(), node->getCol(), 5030);
+		emit ErrorMsg( i18n("Function %1 did not return a value.").arg( node->getLook() ), node->getRow(), node->getCol(), 5030);
 		return;
 	}
 	node->setValue( runStack.top() ); //set return val
@@ -569,7 +569,7 @@ void Executer::execRun( TreeNode* node ) {
 void Executer::execClear( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 0 ) {
-        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 5040);
+        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 5040);
         return;
     }
     emit Clear();
@@ -578,7 +578,7 @@ void Executer::execClear( TreeNode* node ) {
 void Executer::execGo( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 2 ) {
-        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 5050);
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 5050);
         return;
     }
     TreeNode* nodeX = node->firstChild(); // getting
@@ -593,7 +593,7 @@ void Executer::execGo( TreeNode* node ) {
 void Executer::execGoX( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 1 ) {
-        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 5060);
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 5060);
         return;
     }
     TreeNode* nodeX = node->firstChild(); // getting
@@ -605,7 +605,7 @@ void Executer::execGoX( TreeNode* node ) {
 void Executer::execGoY( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 1 ) {
-        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 5070);
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 5070);
         return;
     }
     TreeNode* nodeY = node->firstChild(); // getting
@@ -617,8 +617,8 @@ void Executer::execGoY( TreeNode* node ) {
 void Executer::execForward( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 1 ) {
-//        QString f = node->getKey();
-        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 5080);
+//        QString f = node->getLook();
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 5080);
         return;
     }
     TreeNode* nodeX = node->firstChild(); // getting
@@ -630,7 +630,7 @@ void Executer::execForward( TreeNode* node ) {
 void Executer::execBackward( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 1 ) {
-        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 5090);
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 5090);
         return;
     }
     TreeNode* nodeX = node->firstChild(); // getting
@@ -642,7 +642,7 @@ void Executer::execBackward( TreeNode* node ) {
 void Executer::execDirection( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 1 ) {
-        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 6000);
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 6000);
         return;
     }
     TreeNode* nodeX = node->firstChild(); // getting
@@ -654,7 +654,7 @@ void Executer::execDirection( TreeNode* node ) {
 void Executer::execTurnLeft( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 1 ) {
-        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 6010);
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 6010);
         return;
     }
     TreeNode* nodeX = node->firstChild(); // getting
@@ -666,7 +666,7 @@ void Executer::execTurnLeft( TreeNode* node ) {
 void Executer::execTurnRight( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 1 ) {
-        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 6020);
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 6020);
         return;
     }
     TreeNode* nodeX = node->firstChild(); // getting
@@ -678,7 +678,7 @@ void Executer::execTurnRight( TreeNode* node ) {
 void Executer::execCenter( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 0 ) {
-        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 6030);
+        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 6030);
         return;
     }
     emit Center();
@@ -687,14 +687,14 @@ void Executer::execCenter( TreeNode* node ) {
 void Executer::execSetPenWidth( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 1 ) {
-        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 6040);
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 6040);
         return;
     }
     TreeNode* nodeX = node->firstChild(); // getting
     execute(nodeX); // executing
     int x = ROUND2INT(nodeX->getValue().val); // converting & rounding to int
     if( x < 1 ) {
-        emit ErrorMsg( i18n("The parameter of %1 must be smaller than 1.").arg( node->getKey() ), node->getRow(), node->getCol(), 6050);
+        emit ErrorMsg( i18n("The parameter of %1 must be smaller than 1.").arg( node->getLook() ), node->getRow(), node->getCol(), 6050);
         return;    
     }
     emit SetPenWidth(x);
@@ -703,7 +703,7 @@ void Executer::execSetPenWidth( TreeNode* node ) {
 void Executer::execPenUp( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 0 ) {
-        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 6060);
+        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 6060);
         return;
     }
     emit PenUp();
@@ -712,7 +712,7 @@ void Executer::execPenUp( TreeNode* node ) {
 void Executer::execPenDown( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 0 ) {
-        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 6070);
+        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 6070);
         return;
     }
     emit PenDown();
@@ -721,7 +721,7 @@ void Executer::execPenDown( TreeNode* node ) {
 void Executer::execSetFgColor( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 3 ) {
-        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 6080);
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 6080);
         return;
     }
     TreeNode* nodeR = node->firstChild(); // getting
@@ -734,7 +734,7 @@ void Executer::execSetFgColor( TreeNode* node ) {
     int g = ROUND2INT(nodeG->getValue().val);
     int b = ROUND2INT(nodeB->getValue().val);
     if( ( r < 0 || g < 0 || b < 0 ) || ( r > 255 || g > 255 || b > 255 ) ) {
-        emit ErrorMsg( i18n("The parameters of function %1 must be within range: 0 to 255.").arg( node->getKey() ), node->getRow(), node->getCol(), 6090);
+        emit ErrorMsg( i18n("The parameters of function %1 must be within range: 0 to 255.").arg( node->getLook() ), node->getRow(), node->getCol(), 6090);
         return;
     }
     emit SetFgColor(r, g, b);
@@ -743,7 +743,7 @@ void Executer::execSetFgColor( TreeNode* node ) {
 void Executer::execSetBgColor( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 3 ) {
-        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 7000);
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 7000);
         return;
     }
     TreeNode* nodeR = node->firstChild(); // getting
@@ -756,7 +756,7 @@ void Executer::execSetBgColor( TreeNode* node ) {
     int g = ROUND2INT(nodeG->getValue().val);
     int b = ROUND2INT(nodeB->getValue().val);
     if( ( r < 0 || g < 0 || b < 0 ) || ( r > 255 || g > 255 || b > 255 ) ) {
-        emit ErrorMsg( i18n("The parameters of function %1 must be within range: 0 to 255.").arg( node->getKey() ), node->getRow(), node->getCol(), 7010);
+        emit ErrorMsg( i18n("The parameters of function %1 must be within range: 0 to 255.").arg( node->getLook() ), node->getRow(), node->getCol(), 7010);
         return;    
     }
     emit SetBgColor(r, g, b);
@@ -766,7 +766,7 @@ void Executer::execResizeCanvas( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 2 ) {
         QString funcname = node->getName();
-        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 7020);
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 7020);
         return;
     }
     TreeNode* nodeX = node->firstChild(); // getting
@@ -776,7 +776,7 @@ void Executer::execResizeCanvas( TreeNode* node ) {
     int x = ROUND2INT(nodeX->getValue().val); // converting & rounding to int
     int y = ROUND2INT(nodeY->getValue().val);
     if( ( x < 1 || y < 1 ) || ( x > 10000 || y > 10000 ) ) {
-        emit ErrorMsg( i18n("The parameters of function %1 must be within range: 1 to 10000.").arg( node->getKey() ), node->getRow(), node->getCol(), 7030);
+        emit ErrorMsg( i18n("The parameters of function %1 must be within range: 1 to 10000.").arg( node->getLook() ), node->getRow(), node->getCol(), 7030);
         return;    
     }
     emit ResizeCanvas(x, y);
@@ -785,7 +785,7 @@ void Executer::execResizeCanvas( TreeNode* node ) {
 void Executer::execSpriteShow( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 0 ) {
-        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 7040);
+        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 7040);
         return;
     }
     emit SpriteShow();
@@ -794,7 +794,7 @@ void Executer::execSpriteShow( TreeNode* node ) {
 void Executer::execSpriteHide( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 0 ) {
-        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 7050);
+        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 7050);
         return;
     }
     emit SpriteHide();
@@ -803,7 +803,7 @@ void Executer::execSpriteHide( TreeNode* node ) {
 void Executer::execSpritePress( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 0 ) {
-        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 7060);
+        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 7060);
         return;
     }
     emit SpritePress();
@@ -812,7 +812,7 @@ void Executer::execSpritePress( TreeNode* node ) {
 void Executer::execSpriteChange( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 1 ) {
-        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 7070);
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 7070);
         return;
     }
     TreeNode* nodeX = node->firstChild(); // getting
@@ -826,7 +826,7 @@ void Executer::execSpriteChange( TreeNode* node ) {
 void Executer::execMessage( TreeNode* node ){
     // check if number of parameters match, or else...
     if( node->size() != 1 ) {
-        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 7070);
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 7070);
         return;
     }
     emit MessageDialog( node->firstChild()->getValue().strVal );
@@ -836,7 +836,7 @@ void Executer::execMessage( TreeNode* node ){
 void Executer::execInputWindow( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 1 ) {
-        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 7070);
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 7070);
         return;
     }
     QString value = node->firstChild()->getValue().strVal;
@@ -868,12 +868,12 @@ void Executer::execPrint( TreeNode* node ) {
 void Executer::execFontType( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 2 || node->size() != 1 ) {
-        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 7070);
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 7070);
         return;
     }
     if( node->firstChild()->getType() == stringConstantNode ||
         node->secondChild()->getType() == stringConstantNode ) {
-        emit ErrorMsg( i18n("The function %1 only accepts strings as parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 9000);
+        emit ErrorMsg( i18n("The function %1 only accepts strings as parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 9000);
         return;
     }
     QString extra;
@@ -887,14 +887,14 @@ void Executer::execFontType( TreeNode* node ) {
 void Executer::execFontSize( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 1 ) {
-        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 5060);
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 5060);
         return;
     }
     TreeNode* nodeX = node->firstChild(); // getting
     execute(nodeX); // executing
     int px = ROUND2INT(nodeX->getValue().val); // converting & rounding to int
     if( ( px < 0 || px > 350 ) ) {
-        emit ErrorMsg( i18n("The parameters of function %1 must be within range: 0 to 350.").arg( node->getKey() ), node->getRow(), node->getCol(), 5065);
+        emit ErrorMsg( i18n("The parameters of function %1 must be within range: 0 to 350.").arg( node->getLook() ), node->getRow(), node->getCol(), 5065);
         return;    
     }
     emit FontSize(px);
@@ -919,7 +919,7 @@ void Executer::execRepeat( TreeNode* node ) {
 void Executer::execRandom( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 2 ) {
-        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 5050);
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 5050);
         return;
     }
     TreeNode* nodeX = node->firstChild(); // getting
@@ -940,7 +940,7 @@ void Executer::execRandom( TreeNode* node ) {
 void Executer::execWait( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 1 ) {
-        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 5090);
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 5090);
         return;
     }
     TreeNode* nodeX = node->firstChild(); // getting
@@ -970,7 +970,7 @@ void Executer::slotStopWaiting() {
 void Executer::execWrapOn( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 0 ) {
-        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 6060);
+        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 6060);
         return;
     }
     emit WrapOn();
@@ -979,7 +979,7 @@ void Executer::execWrapOn( TreeNode* node ) {
 void Executer::execWrapOff( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 0 ) {
-        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 6060);
+        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 6060);
         return;
     }
     emit WrapOff();
@@ -988,7 +988,7 @@ void Executer::execWrapOff( TreeNode* node ) {
 void Executer::execReset( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 0 ) {
-        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getKey() ), node->getRow(), node->getCol(), 6060);
+        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getLook() ), node->getRow(), node->getCol(), 6060);
         return;
     }
     emit Reset();

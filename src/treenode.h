@@ -24,6 +24,7 @@
 
 #include <qstring.h>
 
+#include "lexer.h"
 #include "number.h"
 
 
@@ -35,7 +36,8 @@ using namespace std;  // i dont know if this is still needed
 //BUGS: prevSibling and nextSibling sometimes segfault and are not optimal, in short, don't use em! :)
 
 
-enum NodeType { 
+enum NodeType
+{
 	Unknown = -1,
 	programNode,
 	functionNode,
@@ -60,7 +62,7 @@ enum NodeType {
 	divNode,
 	subNode,
 	minusNode,
-
+	
 	nodeGE,
 	nodeGT,
 	nodeLE,
@@ -71,7 +73,7 @@ enum NodeType {
 	andNode,
 	orNode,
 	notNode,
-	
+
 	runNode,
 
 	ClearNode,
@@ -105,11 +107,110 @@ enum NodeType {
 	WaitNode,
 	WrapOnNode,
 	WrapOffNode,
-	ResetNode
+	ResetNode,
+	
+	LineBreakNode
+
+	
+//              HOPEFULLY THIS LIST CAN ONCE LOOK LIKE THIS:
+// 	nodeProgram, // this frirst block has no corresponding token
+// 	nodeFunction,
+// 	nodeFunctionCall,
+// 	nodeReturnFunction,
+// 	nodeParameterList,
+// 	nodeBlock,
+// 	nodeExpression,
+// 	nodeId, // for assignments
+// 
+// 	nodeNotSet = -1, // inittial type of all tokens
+// 	nodeUnknown = 0, // when no token was found, a tokUnknown is often a variable, function or error
+// 	
+// 	nodeIf,
+// 	nodeElse,
+// 	nodeWhile,
+// 	nodeFor,
+// 	nodeTo,
+// 	nodeStep,
+// 	nodeForEach,
+// 	nodeIn,
+// 	nodeBreak,
+// 	nodeReturn,
+// 
+// 	nodeBegin,
+// 	nodeEnd,
+// 
+// 	nodeNumber,
+// 	nodeString,
+// 
+// 	nodeAssign,
+// 	
+// 	nodeAnd,
+// 	nodeOr,
+// 	nodeNot,
+// 	
+// 	nodeEq,
+// 	nodeNe,
+// 	nodeGe,
+// 	nodeGt,
+// 	nodeLe,
+// 	nodeLt,
+// 	
+// 	// nodeBraceOpen,
+// 	// nodeBraceClose,
+// 	// nodePlus,
+// 	nodeAdd, // different from TokenType
+// 	nodeSub, // different from TokenType
+// 	nodeMul,
+// 	nodeDev,
+// 	nodeMinus, // different meaning from TokenType
+// 	
+// 	// nodeComma,
+// 	// nodeEOL,
+// 	// nodeEOF,
+// 	// nodeError,
+// 
+// 	nodeLearn,
+// 	
+// 	nodeClear,
+// 	nodeGo,
+// 	nodeGoX,
+// 	nodeGoY,
+// 	nodeForward,
+// 	nodeBackward,
+// 	nodeDirection,
+// 	nodeTurnLeft,
+// 	nodeTurnRight,
+// 	nodeCenter,
+// 	nodeSetPenWidth,
+// 	nodePenUp,
+// 	nodePenDown,
+// 	nodeSetFgColor,
+// 	nodeSetBgColor,
+// 	nodeResizeCanvas,
+// 	nodeSpriteShow,
+// 	nodeSpriteHide,
+// 	nodeSpritePress,
+// 	nodeSpriteChange,
+// 	nodeMessage,
+// 	nodeInputWindow,
+// 	nodePrint,
+// 	nodeFontType,
+// 	nodeFontSize,
+// 	nodeRepeat,
+// 	nodeRandom,
+// 	nodeWait,
+// 	nodeWrapOn,
+// 	nodeWrapOff,
+// 	nodeReset,
+// 	nodeRun,
+// 
+// 	// nodeDo
 };
 
 
-class TreeNode : public list<TreeNode*> {
+
+class TreeNode : public list<TreeNode*>
+{
 	public:
 	//constructors/destructor
 	TreeNode();
@@ -120,8 +221,11 @@ class TreeNode : public list<TreeNode*> {
 	         uint row = NA, 
 	         uint col = NA,
 	         QString name = "<name not set>", 
-	         QString key = "<key not set>");
+				QString key = "<key not set>");  // temporary
 
+	TreeNode(token, NodeType = Unknown); // this should become the thing!
+	TreeNode(NodeType) {}; // temporary!
+	
 	virtual ~TreeNode();
 
 	//public members
@@ -149,23 +253,23 @@ class TreeNode : public list<TreeNode*> {
 	
 	void setType(NodeType t)           { fType = t; }
 	NodeType getType() const           { return fType; }
+
+	void setToken(token t)             { fTok = t; }
+	token getToken() const             { return fTok; }
 	
-	uint getRow() const                { return fRow; }
-	uint getCol() const                { return fCol; }
+	uint getRow() const                { return fTok.start.row; }
+	uint getCol() const                { return fTok.start.col; }
 	
 	void setName(const QString& n)     { fName = n; }
 	QString getName() const            { return fName; }
-
-	void setKey(const QString& k)      { fKey = k; }
-	QString getKey() const             { return fKey; }
 	
-	void setValue(const Number&n )     { value = n; }
-	void setValue(double d)            { value = d; }
-	void setValue(const QString& s)    { value = s; }
-	Number getValue() const            { return value; }
+	void setValue(const Number& n)     { fTok.value = n; }
+	void setValue(double d)            { fTok.value = d; }
+	void setValue(const QString& s)    { fTok.value = s; }
+	Number getValue() const            { return fTok.value; }
 	
-	void setStrValue(const QString& s) { strValue = s; }
-	QString getStrValue() const        { return strValue; }
+	void setLook(const QString& s)     { fTok.look = s; }
+	QString getLook() const            { return fTok.look; }
 
 
 	
@@ -175,21 +279,16 @@ class TreeNode : public list<TreeNode*> {
 	TreeNode& operator= (const TreeNode&);
 
 
-	protected:
-	TreeNode* parent;
-
-
 	private:
 	void destroy(TreeNode*);
 
 	//private locals
-	QString    fKey;
-	uint       fRow; //for runtime error messages
-	uint       fCol;
-	QString    fName;
 	NodeType   fType;
-	Number     value;
-	QString    strValue;
+	token      fTok;
+	QString    fName;
+	
+	protected:
+	TreeNode  *parent;
 };
 
 #endif // _TREENODE_H_

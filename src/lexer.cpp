@@ -1,4 +1,7 @@
 /*
+     Copyright (C) 2003 by Walter Schreppers 
+     Copyright (C) 2004 by Cies Breijs   
+     
     This program is free software; you can redistribute it and/or
     modify it under the terms of version 2 of the GNU General Public
     License as published by the Free Software Foundation.
@@ -13,10 +16,6 @@
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-// This file is originally written by Walter Scheppers, but allmost
-// every aspect of it is slightly changed by Cies Breijs.
-
-  
 #include <qdom.h>
 #include <qfile.h>
 
@@ -24,337 +23,464 @@
 #include <klocale.h>
 
 #include "settings.h"
+
 #include "lexer.h"
 
 
-Lexer::Lexer(QTextIStream& QTextIncomingStream) {
-	loadKeywords();
-	inputStream = &QTextIncomingStream;
+Lexer::Lexer(QTextIStream& istream)
+{
+	inputStream = &istream;
 	row = 1;
 	col = 1;
 	prevCol = 1;
+	loadTranslations();
 }
 
 
-token Lexer::lex() {
-	token t;
-	t.val = 0;
-	t.str = "";
-	t.type = tokEof;
-	
-	skipWhite();
-	skipComment(); // this skips all comments (also multilined with whitelines, see code)
-	// skipWhite();
-	
-	QChar look = getChar();
-	if ( inputStream->atEnd() ) {
+token Lexer::lex()
+{
+	skipSpaces(); // skips the white space that it quite likely infront of the token
+
+	token currentToken;
+	currentToken.type = tokNotSet; // not really needed
+	currentToken.look = "";
+	currentToken.value = 0;
+	currentToken.string = "";
+	currentToken.start.row = row;
+	currentToken.start.col = col;
+
+	QChar gottenChar = getChar();
+
+	if ( inputStream->atEnd() )
+	{
 		kdDebug(0)<<"Lexer::lex(), got EOF."<<endl;
-		t.type = tokEof;
-		return t;
+		currentToken.type = tokEOF;
+		ungetChar(gottenChar); // unget the gottenChar and fix the row/col values
+		return currentToken;
+	}
+
+	if (gottenChar == '#')
+	{
+		ungetChar(gottenChar);
+		skipComment();
+		gottenChar = getChar();
 	}
 	
-	if ( look.isLetter() || look == '[' || look == ']' ) {
-		ungetChar(look);
-		t.type = getName(t.str); // read the whole name and store it in t.str, and return tokId when finished
-		getToken(t);
-	} else if ( look.isNumber() ) {
-		ungetChar(look);
-		t.type = getNumber(t.val);
-	} else if (look == '>') {
-		look = getChar();
-		if (look == '=') {
-			t.type = tokGe;
-		} else {
-			ungetChar(look);
-		t.type = tokGt;
+	// if (gottenChar.category() == QChar::Separator_Line) somehow doesnt work
+	if (gottenChar == '\x0a' || gottenChar == '\n')
+	{
+		currentToken.type = tokEOL;
+	}
+	else if (gottenChar.isLetter() || gottenChar == '[' || gottenChar == ']')
+	{
+		ungetChar(gottenChar);
+		// sets currentToken.look by reference, and set the currentToken.type to tokUnknown
+		currentToken.type = getWord(currentToken.look);
+		getTokenType(currentToken); // gets the actual tokenType
+	}
+	else if ( gottenChar.isNumber() )
+	{
+		ungetChar(gottenChar);
+		// set currentToken.value by reference, and set the currentToken.type to tokNumber
+		currentToken.type = getNumber(currentToken.value);
+	}
+	else if (gottenChar == '>')
+	{
+		gottenChar = getChar();
+		if (gottenChar == '=')
+		{
+			currentToken.type = tokGe;
 		}
-	} else if (look == '<') {
-		look = getChar();
-		if ( look == '=' ) {
-			t.type = tokLe;
-		} else {
-			ungetChar(look);
-		t.type = tokLt;
+		else
+		{
+			ungetChar(gottenChar);
+			currentToken.type = tokGt;
 		}
-	} else if (look == '!') {
-		look = getChar();
-		if (look == '=') {
-			t.type = tokNe;
-		} else {
-			ungetChar(look);
-			t.type='!';
+	}
+	else if (gottenChar == '<')
+	{
+		gottenChar = getChar();
+		if ( gottenChar == '=' )
+		{
+			currentToken.type = tokLe;
 		}
-	} else if (look == '=') {
-		look = getChar();
-		if( look == '=' ) {
-			t.type = tokEq;
-		} else {
-			ungetChar(look);
-			t.type = tokAssign;
+		else
+		{
+			ungetChar(gottenChar);
+			currentToken.type = tokLt;
 		}
-	} else if (look == '"') {
-		getStringConstant(t);
-	} else if (look == '\n' || look == '\x0a') {
-		// do something here to break at linebreak
-	} else {
-		t.type = look;
+	}
+	else if (gottenChar == '!')
+	{
+		gottenChar = getChar();
+		if (gottenChar == '=')
+		{
+			currentToken.type = tokNe;
+		}
+		else
+		{
+			ungetChar(gottenChar);
+			currentToken.type = tokNot;
+		}
+	}
+	else if (gottenChar == '=')
+	{
+		gottenChar = getChar();
+		if (gottenChar == '=')
+		{
+			currentToken.type = tokEq;
+		}
+		else
+		{
+			ungetChar(gottenChar);
+			currentToken.type = tokAssign;
+		}
+	}
+	else if (gottenChar == '(')
+	{
+		currentToken.type = tokBraceOpen;
+	}
+	else if (gottenChar == ')')
+	{
+		currentToken.type = tokBraceClose;
+	}
+	else if (gottenChar == '+')
+	{
+		currentToken.type = tokPlus;
+	}
+	else if (gottenChar == '-')
+	{
+		currentToken.type = tokMinus;
+	}
+	else if (gottenChar == '*')
+	{
+		currentToken.type = tokMul;
+	}
+	else if (gottenChar == '/')
+	{
+		currentToken.type = tokDev;
+	}
+	else if (gottenChar == ',')
+	{
+		currentToken.type = tokComma;
+	}
+	else if (gottenChar == '"')
+	{
+		ungetChar(gottenChar);
+		getString(currentToken);
+	}
+	else
+	{
+		currentToken.type = tokUnknown;
+		currentToken.look = gottenChar;
 	}
 	
-	return t;
+	currentToken.end.row = row;
+	currentToken.end.col = col;
+	return currentToken;
 }
 
-QChar Lexer::getChar() {
+
+QChar Lexer::getChar()
+{
 	QChar c;
-	if ( !putBackChar.isNull() ) {
-		c = putBackChar;       // use the char that is stored to be put back
+	if ( !putBackChar.isNull() )
+	{
+		c = putBackChar; // use the char that is stored to be put back
 		kdDebug(0)<<"Lexer::getChar(), restored: '"<<c<<"' @ ("<<row<<", "<<col<<")"<<endl;
 		putBackChar = QChar(); // and set putBackChar back to NULL
-		if (c == '\n' || c == '\x0a') {
+		if (c == '\x0a' || c == '\n')
+		{
 			row++;
 			prevCol = col;
 			col = 1;
-		} else {
+		}
+		else
+		{
 			col++;
 		}
-	} else {
-		*inputStream >> c; // take one QChar of the QStream
+	}
+	else
+	{
+		*inputStream >> c; // take a QChar of the inputStream
 		kdDebug(0)<<"Lexer::getChar(): '"<<c<<"' @ ("<<row<<", "<<col<<")"<<endl;
-		if (c == '\n' || c == '\x0a') {
+		if (c == '\x0a' || c == '\n')
+		{
 			row++;
 			prevCol = col;
 			col = 1;
-		} else {
+		}
+		else
+		{
 			col++;
 		}
 	}
 	return c;
 }
 
-void Lexer::ungetChar(QChar ch) {
-	if (ch == '\n' || ch == '\x0a') {
+void Lexer::ungetChar(QChar c)
+{
+	if (c == '\x0a' || c == '\n')
+	{
 		row--;
 		col = prevCol;
-	} else {
+	}
+	else
+	{
 		col--;
 	}
-	kdDebug(0)<<"Lexer::ungetChar(), saved char: '"<<ch<<"' and steped back to ("<<row<<", "<<col<<")"<<endl;
-	putBackChar = ch;
+	putBackChar = c;
+	kdDebug(0)<<"Lexer::ungetChar(), saved char: '"<<c<<"' and steped back to ("<<row<<", "<<col<<")"<<endl;
 }
-
-QString Lexer::translateCommand(QString name) {
-	QString key = KeyMap[name];
-	if( !ReverseAliasMap[name].isEmpty() ) { // translate the alias
-		return QString("%1 (%2)").arg(key).arg(ReverseAliasMap[name]);
-	}
-	return key;
-}
-
 
 // PRIVATEs
 
-int Lexer::getNumber(Number& n) {
+int Lexer::getNumber(Number& n)
+{
+	kdDebug(0)<<"Lexer::getNumber()"<<endl;
 	QString s;
-	bool havePoint = false;
-	QChar look = getChar();
-	if ( look.isNumber() ) {
-		while ( ( look.isNumber() || (look == '.' && !havePoint) ) && !inputStream->atEnd() ) {
-			if (look == '.') {
-				havePoint = true;
+	bool hasPoint = false;
+	QChar currentChar = getChar();
+	if ( currentChar.isNumber() )
+	{
+		while ( ( currentChar.isNumber() || (currentChar == '.' && !hasPoint) ) && !inputStream->atEnd() )
+		{
+			if (currentChar == '.')
+			{
+				hasPoint = true;
 			}
-			s += look;
-			look = getChar();
+			s += currentChar;
+			currentChar = getChar();
 		}
-		ungetChar(look); //read one too much
+		ungetChar(currentChar); //read one too much
 		n.bString = false;
 		n.val = s.toDouble();
 		kdDebug(0)<<"Lexer::getNumber(), got NUMBER: '"<<n.val<<"'"<<endl;
 		return tokNumber;
-	} else {
+	}
+	else
+	{
 		return tokError;  
 	}
 }
 
 
-int Lexer::getName(QString& s) {
-	QChar look = getChar();
-	if ( look.isLetter() || look=='[' || look==']' ) {
-		while ( ( look.isLetterOrNumber() || look == '_' || look=='[' || look==']' ) && !inputStream->atEnd() ) {
-			s += look;
-			look = getChar();
+int Lexer::getWord(QString& word) {
+	kdDebug(0)<<"Lexer::getWord()"<<endl;
+	QChar currentChar = getChar();
+	if ( currentChar.isLetter() || currentChar == '[' || currentChar == ']' ) {
+		while ( ( currentChar.isLetterOrNumber() || currentChar == '_' || currentChar == '[' || currentChar == ']' ) && !inputStream->atEnd() )
+		{
+			word += currentChar;
+			currentChar = getChar();
 		}
-		kdDebug(0)<<"Lexer::getName(), got NAME: '"<<s<<"'"<<endl;
-		ungetChar(look); //read one too much
-		return tokId;
-	} else {
+		kdDebug(0)<<"Lexer::getWord(), got NAME: '"<<word<<"'"<<endl;
+		ungetChar(currentChar); //read one too much
+		return tokUnknown; // returns tokUnknown, actual token is to be determained later in Lexer::getTokenType
+	}
+	else
+	{
 		return tokError;  
 	}
 }
 
+void Lexer::getTokenType(token& currentToken)
+{
+	if (currentToken.type == tokUnknown)
+	{
+		QString key = currentToken.look.lower(); // make lowercase copy of the word as it was found in the inputStream
+// 		t.row = row; // store the tokens row/col info
+// 		t.col = col;                 <-- done in the Lexer::lex 
+		
+		if( !aliasMap[key].isEmpty() ) // if the key is an alias translate that alias to a key
+		{
+			key = aliasMap[key];
+		}
+		
+		if(      key == keyMap["begin"]          ) currentToken.type = tokBegin;
+		else if( key == keyMap["end"]            ) currentToken.type = tokEnd;
+		else if( key == keyMap["while"]          ) currentToken.type = tokWhile;
+		else if( key == keyMap["if"]             ) currentToken.type = tokIf;
+		else if( key == keyMap["else"]           ) currentToken.type = tokElse;
+		else if( key == keyMap["for"]            ) currentToken.type = tokFor;
+		else if( key == keyMap["to"]             ) currentToken.type = tokTo;
+		else if( key == keyMap["step"]           ) currentToken.type = tokStep;
+		else if( key == keyMap["and"]            ) currentToken.type = tokAnd;
+		else if( key == keyMap["or"]             ) currentToken.type = tokOr;
+		else if( key == keyMap["not"]            ) currentToken.type = tokNot;
+		else if( key == keyMap["return"]         ) currentToken.type = tokReturn;
+		else if( key == keyMap["break"]          ) currentToken.type = tokBreak;
+		else if( key == keyMap["run"]            ) currentToken.type = tokRun;
+		else if( key == keyMap["foreach"]        ) currentToken.type = tokForEach;
+		else if( key == keyMap["in"]             ) currentToken.type = tokIn;
 
-void Lexer::loadKeywords() {
-	QDomDocument KeywordsXML;
-	// Read the specified translation file
-	QFile xmlfile( locate("data", "kturtle/data/logokeywords." + Settings::logoLanguage() + ".xml") );
-	
-	if ( !xmlfile.open(IO_ReadOnly) ) {
-			return;
+		else if( key == keyMap["learn"]          ) currentToken.type = tokLearn;
+		
+		else if( key == keyMap["clear"]          ) currentToken.type = tokClear;
+		else if( key == keyMap["go"]             ) currentToken.type = tokGo;
+		else if( key == keyMap["gox"]            ) currentToken.type = tokGoX;
+		else if( key == keyMap["goy"]            ) currentToken.type = tokGoY;
+		else if( key == keyMap["forward"]        ) currentToken.type = tokForward;
+		else if( key == keyMap["backward"]       ) currentToken.type = tokBackward;
+		else if( key == keyMap["direction"]      ) currentToken.type = tokDirection;
+		else if( key == keyMap["turnleft"]       ) currentToken.type = tokTurnLeft;
+		else if( key == keyMap["turnright"]      ) currentToken.type = tokTurnRight;
+		else if( key == keyMap["center"]         ) currentToken.type = tokCenter;
+		else if( key == keyMap["setpenwidth"]    ) currentToken.type = tokSetPenWidth;
+		else if( key == keyMap["penup"]          ) currentToken.type = tokPenUp;
+		else if( key == keyMap["pendown"]        ) currentToken.type = tokPenDown;
+		else if( key == keyMap["setfgcolor"]     ) currentToken.type = tokSetFgColor;
+		else if( key == keyMap["setbgcolor"]     ) currentToken.type = tokSetBgColor;
+		else if( key == keyMap["resizecanvas"]   ) currentToken.type = tokResizeCanvas;
+		else if( key == keyMap["spriteshow"]     ) currentToken.type = tokSpriteShow;
+		else if( key == keyMap["spritehide"]     ) currentToken.type = tokSpriteHide;
+		else if( key == keyMap["spritepress"]    ) currentToken.type = tokSpritePress;
+		else if( key == keyMap["spritechange"]   ) currentToken.type = tokSpriteChange;
+		
+		else if( key == keyMap["do"]             ) currentToken.type = tokDo; // dummy commands
+
+		else if( key == keyMap["message"]        ) currentToken.type = tokMessage;
+		else if( key == keyMap["inputwindow"]    ) currentToken.type = tokInputWindow;
+		else if( key == keyMap["print"]          ) currentToken.type = tokPrint;
+		else if( key == keyMap["fonttype"]       ) currentToken.type = tokFontType;
+		else if( key == keyMap["fontsize"]       ) currentToken.type = tokFontSize;
+		else if( key == keyMap["repeat"]         ) currentToken.type = tokRepeat;
+		else if( key == keyMap["random"]         ) currentToken.type = tokRandom;
+		else if( key == keyMap["wait"]           ) currentToken.type = tokWait;
+		else if( key == keyMap["wrapon"]         ) currentToken.type = tokWrapOn;
+		else if( key == keyMap["wrapoff"]        ) currentToken.type = tokWrapOff;
+		else if( key == keyMap["reset"]          ) currentToken.type = tokReset;
+		else
+		{
+			kdDebug(0)<<"Lexer::getTokenType, found UNKNOWN word @ ("<<currentToken.start.row<<", "<<currentToken.start.col<<"), can be anything"<<endl;
+			// t.type = tokUnknown; is allready
+		}
+		
+		kdDebug(0)<<"Lexer::getTokenType, found tok-number: '"<<currentToken.type<<"' with the key: '"<<key<<"' @ ("<<currentToken.start.row<<", "<<currentToken.start.col<<")"<<endl;
 	}
-	if ( !KeywordsXML.setContent(&xmlfile) ) {
-			xmlfile.close();
-			return;
+}
+
+void Lexer::skipComment()
+{
+	kdDebug(0)<<"Lexer::skipComment(), skipping COMMENT."<<endl;
+	QChar currentChar = getChar();
+	while ( !inputStream->atEnd() && currentChar == '#' )
+	{
+		while ( !inputStream->atEnd() && !(currentChar == '\x0a' || currentChar == '\n') )
+		{
+			currentChar = getChar();
+		}
+		kdDebug(0)<<"Lexer::skipComment(), skiped one commented line."<<endl;
+		currentChar = getChar();
+	}
+	ungetChar(currentChar);
+}
+
+void Lexer::skipSpaces()
+{
+	kdDebug(0)<<"Lexer::skipSpaces(), skipping SPACES."<<endl;
+	QChar currentChar = getChar();
+	while (!inputStream->atEnd() && currentChar == ' ')
+	{
+		currentChar = getChar();
+	}
+	ungetChar(currentChar);
+}
+
+
+void Lexer::getString(token& currentToken)
+{
+	QString str;
+	QChar currentChar = getChar();
+	while ( currentChar != '"' && !inputStream->atEnd() ) {
+		
+		if (currentChar == '\\') //escape sequence 
+		{
+			currentChar = getChar();
+			switch (currentChar)
+			{
+				case 'n': str += '\n'; break;
+				case 't': str += '\t'; break;
+				case 'f': str += '\f'; break;
+				case '"': str += '"';  break;
+			}
+		}
+		else if(currentChar != '"'){ //anything but closing char
+			str += currentChar;
+		}
+		
+		currentChar = getChar();
+	}
+	
+	currentToken.type = tokString;
+	currentToken.look = str;
+	// currentToken.string = str;
+	currentToken.value = 0;
+	
+	kdDebug(0)<<"Lexer::getStringConstant, got STRINGCONSTANT: "<<currentToken.look<<"'"<<endl;
+	
+// 	if( inputStream->atEnd() )       // DUNNO WHAT THIS IS FOR
+// 	{
+// 		currentToken.type = tokEOF;
+// 	}
+}
+
+
+void Lexer::loadTranslations() {
+	QDomDocument KeywordsXML;
+
+	kdDebug(0) << "TRname:"<< "kturtle/data/logokeywords." + Settings::logoLanguage() + ".xml" <<endl;
+	kdDebug(0) << "TRfile:"<< locate("data", "kturtle/data/logokeywords." + Settings::logoLanguage() + ".xml") <<endl;
+  	// Read the specified translation file
+	QFile xmlfile( locate("data", "kturtle/data/logokeywords." + Settings::logoLanguage() + ".xml") );
+
+	if ( !xmlfile.open(IO_ReadOnly) )
+	{
+		return;
+	}
+	if ( !KeywordsXML.setContent(&xmlfile) )
+	{
+		xmlfile.close();
+		return;
 	}
 	xmlfile.close();
 
-	// get into the first child of the root element (in our case a <command>"
+	// get into the first child of the root element (in our case a <command> tag)
 	QDomElement rootElement = KeywordsXML.documentElement();
 	QDomNode n = rootElement.firstChild();
-	
-	while( !n.isNull() ) {
+
+	while( !n.isNull() )
+	{
 		QString name, key, alias;
 		name = n.toElement().attribute("name"); // get the name attribute of <command>
 		QDomNode m = n.firstChild(); // get into the first child of a <command>
-		while (true) {
-			if( !m.toElement().text().isEmpty() ) { // no need for checking empty's
-				if (m.toElement().tagName() == "keyword") {
+		while (true)
+		{
+			if( !m.toElement().text().isEmpty() ) {
+				if (m.toElement().tagName() == "keyword")
+				{
 					key = m.toElement().text();
-					KeyMap.insert(name, key); // put it in the map
+					keyMap.insert(name, key);
 				}
-				if (m.toElement().tagName() == "alias") {
+				if (m.toElement().tagName() == "alias")
+				{
 					alias = m.toElement().text();
-					AliasMap.insert(alias, key); // to find an key by an alias
-					ReverseAliasMap.insert(key, alias); // to find an alias by a key
+					aliasMap.insert(alias, key);
+					reverseAliasMap.insert(key, alias);
 				}
 			}
-			// break when just read the last child of the current <command>
-			if ( m == n.lastChild() ) { break; }
+			// break when read the last child of the current <command>
+			if ( m == n.lastChild() ) break;
 			m = m.nextSibling(); // goto the next element in the current <command>
 		}
 		n = n.nextSibling(); // goto the next <command>
 	}
 }
 
-void Lexer::getToken(token& t) {
-	if(t.type == tokId) {
-		QString key = t.str.lower(); // make lowercase copy
-
-		t.row = row; // store the tokens row/col info
-		t.col = col;
-		
-		if( !AliasMap[key].isEmpty() ) { // if the key is an alias translate that alias to a key
-			key = AliasMap[key];
-		}
-		
-		if(      key == KeyMap["begin"]          ) t.type = tokBegin;
-		else if( key == KeyMap["end"]            ) t.type = tokEnd;
-		else if( key == KeyMap["while"]          ) t.type = tokWhile;
-		else if( key == KeyMap["if"]             ) t.type = tokIf;
-		else if( key == KeyMap["else"]           ) t.type = tokElse;
-		else if( key == KeyMap["for"]            ) t.type = tokFor;
-		else if( key == KeyMap["to"]             ) t.type = tokTo;
-		else if( key == KeyMap["step"]           ) t.type = tokStep;
-		else if( key == KeyMap["and"]            ) t.type = tokAnd;
-		else if( key == KeyMap["or"]             ) t.type = tokOr;
-		else if( key == KeyMap["not"]            ) t.type = tokNot;
-		else if( key == KeyMap["return"]         ) t.type = tokReturn;
-		else if( key == KeyMap["break"]          ) t.type = tokBreak;
-		else if( key == KeyMap["run"]            ) t.type = tokRun;
-		else if( key == KeyMap["foreach"]        ) t.type = tokForEach;
-		else if( key == KeyMap["in"]             ) t.type = tokIn;
-
-		else if( key == KeyMap["learn"]          ) t.type = tokLearn;
-		
-		else if( key == KeyMap["clear"]          ) t.type = tokClear;
-		else if( key == KeyMap["go"]             ) t.type = tokGo;
-		else if( key == KeyMap["gox"]            ) t.type = tokGoX;
-		else if( key == KeyMap["goy"]            ) t.type = tokGoY;
-		else if( key == KeyMap["forward"]        ) t.type = tokForward;
-		else if( key == KeyMap["backward"]       ) t.type = tokBackward;
-		else if( key == KeyMap["direction"]      ) t.type = tokDirection;
-		else if( key == KeyMap["turnleft"]       ) t.type = tokTurnLeft;
-		else if( key == KeyMap["turnright"]      ) t.type = tokTurnRight;
-		else if( key == KeyMap["center"]         ) t.type = tokCenter;
-		else if( key == KeyMap["setpenwidth"]    ) t.type = tokSetPenWidth;
-		else if( key == KeyMap["penup"]          ) t.type = tokPenUp;
-		else if( key == KeyMap["pendown"]        ) t.type = tokPenDown;
-		else if( key == KeyMap["setfgcolor"]     ) t.type = tokSetFgColor;
-		else if( key == KeyMap["setbgcolor"]     ) t.type = tokSetBgColor;
-		else if( key == KeyMap["resizecanvas"]   ) t.type = tokResizeCanvas;
-		else if( key == KeyMap["spriteshow"]     ) t.type = tokSpriteShow;
-		else if( key == KeyMap["spritehide"]     ) t.type = tokSpriteHide;
-		else if( key == KeyMap["spritepress"]    ) t.type = tokSpritePress;
-		else if( key == KeyMap["spritechange"]   ) t.type = tokSpriteChange;
-		
-		else if( key == KeyMap["do"]             ) t.type = tokDo; // dummy commands
-
-		else if( key == KeyMap["message"]        ) t.type = tokMessage;
-		else if( key == KeyMap["inputwindow"]    ) t.type = tokInputWindow;
-		else if( key == KeyMap["print"]          ) t.type = tokPrint;
-		else if( key == KeyMap["fonttype"]       ) t.type = tokFontType;
-		else if( key == KeyMap["fontsize"]       ) t.type = tokFontSize;
-		else if( key == KeyMap["repeat"]         ) t.type = tokRepeat;
-		else if( key == KeyMap["random"]         ) t.type = tokRandom;
-		else if( key == KeyMap["wait"]           ) t.type = tokWait;
-		else if( key == KeyMap["wrapon"]         ) t.type = tokWrapOn;
-		else if( key == KeyMap["wrapoff"]        ) t.type = tokWrapOff;
-		else if( key == KeyMap["reset"]          ) t.type = tokReset;
-		else                                       t.type = tokId;
-		
-		kdDebug(0)<<"Lexer::getToken, got: '"<<key<<"' @ ("<<t.row<<", "<<t.col<<")"<<endl;
+QString Lexer::name2key(QString name)
+{
+	if( !aliasMap[name].isEmpty() ) { // translate the alias
+		return QString( i18n("'%1' (%2)").arg(keyMap[name]).arg(reverseAliasMap[name]) );
 	}
-	
-}
-
-void Lexer::skipComment() {
-	kdDebug(0)<<"Lexer::getChar(), skipping COMMENT."<<endl;
-	QChar look = getChar();
-	while ( !inputStream->atEnd() && look == '#' ) {
-		while( !inputStream->atEnd() && ( look != '\n' || look != '\x0a' ) ) {
-			look = getChar();
-		}
-		skipWhite(); // see?
-		look = getChar();
-	}
-	ungetChar(look);
-}
-
-void Lexer::skipWhite() {
-	kdDebug(0)<<"Lexer::skipWhite(), skipping WHITESPACE."<<endl;
-	QChar look = getChar();
-	while( !inputStream->atEnd() && look.isSpace() ) {
-		look = getChar();
-	}
-	ungetChar(look);
-}
-
-
-void Lexer::getStringConstant(token& t) {
-	QString constStr;
-	QChar ch = getChar();
-	while( ch != '"' && !inputStream->atEnd() ) {
-		
-		if(ch == '\\') { //escape sequence 
-			ch = getChar();
-			switch(ch){
-				case 'n': constStr += '\n'; break;
-				case 't': constStr += '\t'; break;
-				case 'f': constStr += '\f'; break;
-				case '"': constStr += '"';  break;
-			}
-		}
-		else if(ch != '"'){ //anything but closing char
-			constStr += ch;
-		}
-		
-		ch = getChar();
-	}
-	
-	t.str = constStr;
-	t.type = tokString;
-	t.val = 0;
-	
-	kdDebug(0)<<"Lexer::getStringConstant, got STRINGCONSTANT: "<<t.str<<"'"<<endl;
-	
-	if( inputStream->atEnd() ) {
-		t.type = tokEof;
-	}
+	return QString( "'" + keyMap[name] + "'");
 }

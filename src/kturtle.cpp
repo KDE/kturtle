@@ -49,6 +49,7 @@
 #include <ktexteditor/viewcursorinterface.h>
 
 #include "settings.h"
+
 #include "kturtle.h"
 
 // StatusBar field IDs
@@ -88,7 +89,7 @@ MainWindow::MainWindow(KTextEditor::Document *document) : editor(0) {
 
 	setupStatusBar();
 	setupActions();
-	createShellGUI( true );
+	createShellGUI(true);
 	setMinimumSize(200,200);
 
 	// init with more usefull size, stolen from kwite (they stole it from konq)
@@ -238,11 +239,14 @@ void MainWindow::slotCursorStatusBar() {
 
 // BEGIN file menu related fuctions (new, open, save()as, image, print, quit)
 
-void MainWindow::slotNewFile() {
-	if ( !editor->document()->isModified() && CurrentFile == "" ) {
+void MainWindow::slotNewFile()
+{
+	if ( !editor->document()->isModified() && CurrentFile == "" )
+	{
 		return; // do nothing when nothing is to be done
 	}
-	if ( editor->document()->isModified() ) {
+	if ( editor->document()->isModified() )
+	{
 		int result = KMessageBox::warningContinueCancel( this,
 		i18n("The changes you have made to the file you "
 		"are currently working are not saved. "
@@ -495,7 +499,7 @@ void MainWindow::startExecution() {
 
 	kapp->processEvents();
 
-	QString txt = ei->text() + "\n"; // the /n is needed for proper parsing
+	QString txt = ei->text() + "\x0a\x0a"; // parser expects instructions to be delimited with newlines
 	QTextIStream in(&txt);
 	errMsg = new ErrorMessage(this);
 	Parser parser(in);
@@ -505,7 +509,9 @@ void MainWindow::startExecution() {
 		this, SLOT(slotSetCursorPos(uint, uint) ) );
 
 	// parsing and executing...
-	if( parser.parse() ) {
+	//if( parser.parse() ) {
+	parser.parse();
+	
 		TreeNode* root = parser.getTree();
 		kdDebug(0)<<"############## PARSING FINISHED ##############"<<endl;
 		root->showTree(root); // show parsetree  DEBUG OPTION
@@ -556,11 +562,11 @@ void MainWindow::startExecution() {
 			finishExecution();
 		}
 		delete exe;
-	} else {
-		kdDebug(0)<<"############## PARSING FAILED ##############"<<endl;
-		slotStatusBar(i18n("Parsing failed."),  IDS_STATUS);
-		finishExecution();
-	}
+// 	} else {
+// 		kdDebug(0)<<"############## PARSING FAILED ##############"<<endl;
+// 		slotStatusBar(i18n("Parsing failed."),  IDS_STATUS);
+// 		finishExecution();
+// 	}
 
 	if (errMsg->containsErrors() == false) {
 		errMsg->display();

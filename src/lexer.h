@@ -1,4 +1,7 @@
 /*
+     Copyright (C) 2003 by Walter Schreppers 
+     Copyright (C) 2004 by Cies Breijs   
+     
     This program is free software; you can redistribute it and/or
     modify it under the terms of version 2 of the GNU General Public
     License as published by the Free Software Foundation.
@@ -13,56 +16,67 @@
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-// This file is originally written by Walter Scheppers, but allmost
-// every aspect of it is slightly changed by Cies Breijs.
-
     
 #ifndef _LEXER_H_
 #define _LEXER_H_
 
+#include <qmap.h>
+#include <qstring.h>
+#include <qtextstream.h>
+
 #include "number.h"
 
-using namespace std;
 
-enum types {
-	tokIf=-40,
+enum tokenTypes {
+	tokNotSet = -1, // inittial type of all tokens
+	tokError = 1, // when there is an error
+	tokUnknown = 0, // when no token was found, a tokUnknown is often a variable, function or error
+	
+	tokIf, // the execution controlling tokens
 	tokElse,
 	tokWhile,
 	tokFor,
 	tokTo,
 	tokStep,
-	tokNumber,
-	tokString,
-	tokId,
-	tokProcId,
-	tokBegin,
+	tokForEach,
+	tokIn,
+	tokBreak,
+	tokReturn,
+
+	tokBegin, // the scope delimiting tokens
 	tokEnd,
-		
+
+	tokNumber, // the containers
+	tokString,
+
+	tokAssign, // for assignments
+	
+	tokAnd, // and, or, not
 	tokOr,
-	tokAnd,
 	tokNot,
 	
+	tokEq, // ==, !=, >=, >, <=, <
+	tokNe,
 	tokGe,
 	tokGt,
 	tokLe,
 	tokLt,
-	tokNe,
-	tokEq,
-	tokAssign,
-
-	tokReturn,
-	tokBreak,
-
-	tokForEach,
-	tokIn,
-		
-	tokRun,
-	tokEof,
-	tokError,
 	
-	tokLearn,
+	tokBraceOpen, // (, ), +, -, *, /
+	tokBraceClose,
+	tokPlus,
+	tokMinus,
+	tokMul,
+	tokDev,
 	
-	tokClear,
+	tokComma,
+	
+	tokEOL, // End Of Line token
+	tokEOF, // End Of File token
+
+	tokLearn, // learn command
+	
+	tokClear, // the 'regular' command tokens
 	tokGo,
 	tokGoX,
 	tokGoY,
@@ -82,9 +96,6 @@ enum types {
 	tokSpriteHide,
 	tokSpritePress,
 	tokSpriteChange,
-	
-	tokDo, // this is a dummy command
-
 	tokMessage,
 	tokInputWindow,
 	tokPrint,
@@ -95,16 +106,24 @@ enum types {
 	tokWait,
 	tokWrapOn,
 	tokWrapOff,
-	tokReset
+	tokReset,
+	tokRun,
+
+	tokDo, // a dummy command
 };
 
-
-struct token {
-	Number  val;
-	QString str;
-	int     type;
+struct pos {
 	uint    row;
 	uint    col;
+};
+
+struct token {
+	int      type; // filled with enum tokenTypes
+	QString  look;
+	Number   value;
+	QString  string;
+	pos      start;
+	pos      end;
 };
 
 
@@ -115,32 +134,31 @@ class Lexer {
 	~Lexer() {}
 
 	//public members
-	token lex(); // returns a complete token
-	// uint getRow() { return row; }
-	// uint getCol() { return col; }
-	QString translateCommand(QString s);
+	token lex(); // returns the next token, skipping spaces
+	QString name2key(QString);
 	
 	private:
 	//private members
 	QChar getChar();
 	void ungetChar(QChar);
 	void skipComment();
-	void skipWhite();
-	void loadKeywords();
-	void getToken(token&);
+	void skipSpaces();
+	void getTokenType(token&);
 	int getNumber(Number&);
-	int getName(QString&);
-	void getStringConstant(token& t);
+	int getWord(QString&);
+	void getString(token&);
+	
+	void loadTranslations();
 
 	//private locals
 	QTextIStream    *inputStream;
-	unsigned int     row, col, prevCol;
+	uint             row, col, prevCol;
 	QChar            putBackChar;
 	
 	typedef QMap<QString, QString> StringMap;
-	StringMap        KeyMap;
-	StringMap        AliasMap;
-	StringMap        ReverseAliasMap;
+	StringMap keyMap;
+	StringMap aliasMap;
+	StringMap reverseAliasMap;
 };
 
 
