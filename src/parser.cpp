@@ -147,7 +147,7 @@ void Parser::Match(int x) {
     Error( i18n("Syntax error, expected ") + commandname, 1010);
     } else {
         getToken(); 
-    }  
+    }
 }
 
 
