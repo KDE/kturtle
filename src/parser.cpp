@@ -1,7 +1,7 @@
 /*
-    Copyright (C) 2003 by Walter Schreppers 
-    Copyright (C) 2004 by Cies Breijs   
-     
+    Copyright (C) 2003 by Walter Schreppers
+    Copyright (C) 2004 by Cies Breijs
+
     This program is free software; you can redistribute it and/or
     modify it under the terms of version 2 of the GNU General Public
     License as published by the Free Software Foundation.
@@ -21,7 +21,7 @@
 
 
 #include <qstringlist.h>
-   
+
 #include <kdebug.h>
 #include <klocale.h>
 
@@ -61,12 +61,12 @@ TreeNode* Parser::Program()
 	emptyToken.start.col = 0;
 	emptyToken.end.row = 0;
 	emptyToken.end.col = 0;
-	
+
 	TreeNode* program = new TreeNode(emptyToken, programNode, "program");
 	TreeNode* block = new TreeNode(emptyToken, blockNode, "block");
 
 	getToken();
-	
+
 	// this is the main parse loop
 	kdDebug(0)<<"Parser::Program(), Entering main parse loop..."<<endl;
 	while (currentToken.type != tokEOF) // currentToken.type returns the type of the currentToken
@@ -75,7 +75,7 @@ TreeNode* Parser::Program()
 		block->appendChild( Statement() );
 		while (currentToken.type == tokEOL) getToken(); // newlines between statements are allowed
 		// runs statement related code, stores the returned TreeNode* in the nodetree
-		// note: Statement() allways gets a new Token with getToken() before it returns 
+		// note: Statement() allways gets a new Token with getToken() before it returns
 	}
 	program->appendChild(block);
 	kdDebug(0)<<"Parser::Program(), Left main parse loop..."<<endl;
@@ -94,9 +94,9 @@ void Parser::matchToken(int expectedToken)
 		switch (expectedToken)
 		{
 			case tokEOL:
-				Error(preservedToken, i18n("Unexpected intruction after the %1 command, please use only one instruction per line.").arg(preservedToken.look), 1010);
+				Error(preservedToken, i18n("Unexpected instruction after the %1 command, please use only one instruction per line.").arg(preservedToken.look), 1010);
 				break;
-				
+
 			default:
 				Error(currentToken, i18n("Could not match token-number: '%1'").arg(expectedToken), 1010);
 				break;
@@ -121,8 +121,8 @@ TreeNode* Parser::getId()
 {
 	TreeNode* n = new TreeNode(currentToken, idNode);
 	n->setLook(currentToken.look);
-	matchToken(tokUnknown); // Id's are ofcouse not yet known 
-	return n;  
+	matchToken(tokUnknown); // Id's are ofcouse not yet known
+	return n;
 }
 
 
@@ -165,7 +165,7 @@ TreeNode* Parser::Factor()
 			matchToken(tokBraceClose);
 			break;
 
-		case tokUnknown:     
+		case tokUnknown:
 			node = getId();
 			if (currentToken.type == tokBraceOpen) // is function call
 			{
@@ -209,7 +209,7 @@ TreeNode* Parser::Factor()
 		case tokRandom:
 			node = Random();
 			break;
-		
+
 		case tokEOL:
 			node = new TreeNode(currentToken, Unknown);
 			break;
@@ -350,7 +350,7 @@ bool Parser::isAddOp(Token t) {
 		(t.type == tokLe)    ||
 		(t.type == tokEq)    ||
 		(t.type == tokNe)    ||
-		
+
 		(t.type == tokOr)    ||
 		(t.type == tokGe) );
 }
@@ -407,7 +407,7 @@ TreeNode* Parser::Expression()
 				right = Term();
 				pos->setType(nodeLE);
 				break;
-			
+
 			case tokEq:
 				matchToken(tokEq);
 				right = Term();
@@ -419,7 +419,7 @@ TreeNode* Parser::Expression()
 				right = Term();
 				pos->setType(nodeNE);
 				break;
-			
+
 			case tokOr:
 				matchToken(tokOr);
 				right = Term();
@@ -443,7 +443,7 @@ TreeNode* Parser::Assignment(Token t)
 {
 	TreeNode* node = new TreeNode(t, assignNode);
 	matchToken(tokAssign); // match the '='
-	
+
 	// the child is the expression or RHV of assignment
 	TreeNode* expr = Expression();
 	node->appendChild(expr);
@@ -489,7 +489,7 @@ TreeNode* Parser::Statement()
 		case tokSpriteHide    : return SpriteHide();       break;
 		case tokSpritePress   : return SpritePress();      break;
 		case tokSpriteChange  : return SpriteChange();     break;
-		
+
 		case tokPrint         : return Print();            break;
 		case tokInputWindow   : return InputWindow();      break;
 		case tokMessage       : return Message();          break;
@@ -501,9 +501,9 @@ TreeNode* Parser::Statement()
 		case tokWrapOn        : return WrapOn();           break;
 		case tokWrapOff       : return WrapOff();          break;
 		case tokReset         : return Reset();            break;
-		
+
 		case tokEOF           : return EndOfFile();            break;
-		
+
 		case tokEnd           : break; //caught by Block
 
 		case tokBegin         : Error(currentToken, i18n("Begin without matching end"), 1050);
@@ -511,21 +511,21 @@ TreeNode* Parser::Statement()
 		                        return new TreeNode(currentToken, Unknown);
 		                        break;
 
-		default               : break;    
+		default               : break;
 	}
 // 	const QString beginChar = lexer->name2key("begin");
 // 	const QString currentTokenChar = currentToken.look;
 // 	if (currentTokenChar == beginChar) {
 // 		Error( i18n("'%1' is expected").arg(beginChar), 1060);
 // 	} else {
-// 		Error( i18n("'%1' is not a Logo command").arg(currentTokenChar), 1060); 
+// 		Error( i18n("'%1' is not a Logo command").arg(currentTokenChar), 1060);
 // 	}
-	
+
 	if (currentToken.type != tokEnd)
 	{
 		Error(currentToken, i18n("'%1' is not a Logo command").arg(currentToken.look), 1060);
 	}
-	
+
 	getToken();
 	return new TreeNode(currentToken, Unknown); // fallback for unknowns
 }
@@ -534,7 +534,7 @@ TreeNode* Parser::Statement()
 TreeNode* Parser::Block()
 {
 	TreeNode* block = new TreeNode(currentToken, blockNode, "block");
-	
+
 	while (currentToken.type == tokEOL) getToken(); // skip newlines
 	matchToken(tokBegin);
 	while ( (currentToken.type != tokEnd) && (currentToken.type != tokEOF) )
@@ -864,11 +864,11 @@ TreeNode* Parser::SetBgColor()
 // Weirdo's (learn, execution controllers, print, and Other()s)
 
 /*==================================================================
-   EBNF for a function 
+   EBNF for a function
    <function> := tokId '(' <idlist> ')' <block>
 
    we can safely use tokId because we require "(" and ")" to mark the params
-   to be given after the id when it is called, 
+   to be given after the id when it is called,
    if this were not the case
    we would have to extend the lexer so that it gives a
    tokFunctionId whenever an id has the same name as a function...
@@ -878,7 +878,7 @@ TreeNode* Parser::Learn()
 	matchToken(tokLearn);
 	TreeNode* func = new TreeNode(currentToken, functionNode);
 	getToken(); // get the token after the function's name
-	
+
 	TreeNode* idList = new TreeNode(currentToken, idListNode, "idlist");
 	if (currentToken.type != tokBegin)
 	{
@@ -890,7 +890,7 @@ TreeNode* Parser::Learn()
 		}
 	}
 	func->appendChild(idList);
-	
+
 	func->appendChild( Block() ); // do the Block() thing
 
 	learnedFunctionList.append( func->getLook() );
@@ -902,7 +902,7 @@ TreeNode* Parser::Learn()
 /*
   <if> ::= tokIf <expression> ( <statement> | <block> )
                 ( tokElse ( <statement> | <block> ) )?
- 
+
  the expression is in first child
  the first block or statement is in second child
  the else block or statement is in third child
@@ -911,7 +911,7 @@ TreeNode* Parser::If()
 {
 	TreeNode* node = new TreeNode(currentToken, ifNode);
 	matchToken(tokIf);
-	
+
 	node->appendChild( Expression() );
 
 	if (currentToken.type == tokDo) getToken(); // skip dummy word 'do'
@@ -925,7 +925,7 @@ TreeNode* Parser::If()
 	if (currentToken.type == tokElse) // else part
 	{
 		matchToken(tokElse);
-		
+
 		if (currentToken.type == tokDo) {  // skip the 'do'
 			getToken(); // next word
 		}
@@ -949,7 +949,7 @@ TreeNode* Parser::While()
 	TreeNode* node = new TreeNode(currentToken, whileNode);
 	matchToken(tokWhile);
 	node->appendChild( Expression() );
-	node->appendChild( Block() ); 
+	node->appendChild( Block() );
 	return node;
 }
 
@@ -964,7 +964,7 @@ TreeNode* Parser::For()
 	matchToken(tokFor);
 	fNode->appendChild( getId() ); //loop id
 	matchToken(tokAssign);
-	
+
 	fNode->appendChild( Expression() ); //start value expression
 	matchToken(tokTo);
 	fNode->appendChild( Expression() ); //stop value expression
@@ -977,8 +977,8 @@ TreeNode* Parser::For()
 
 	if (currentToken.type == tokBegin) // for followed by a block
 	{
-		fNode->appendChild( Block() ); 
-	} 
+		fNode->appendChild( Block() );
+	}
 	else // while followed by single statement
 	{
 		fNode->appendChild( Statement() );
@@ -1003,14 +1003,14 @@ TreeNode* Parser::ForEach()
 {
 	TreeNode* fNode = new TreeNode(currentToken, forEachNode);
 	matchToken(tokForEach);
-	
+
 	fNode->appendChild( Expression() );
 	matchToken(tokIn);
 	fNode->appendChild( Expression() );
 
 	if(currentToken.type == tokBegin) // for followed by a block
 	{
-		fNode->appendChild( Block() ); 
+		fNode->appendChild( Block() );
 	}
 	else // while followed by single statement
 	{
@@ -1039,9 +1039,9 @@ TreeNode* Parser::Return()
 {
 	TreeNode* ret = new TreeNode(currentToken, returnNode);
 	matchToken(tokReturn);
-	
+
 	ret->appendChild( Expression() );
-	
+
 	return ret;
 }
 
@@ -1049,7 +1049,7 @@ TreeNode* Parser::Break()
 {
 	TreeNode* brk = new TreeNode(currentToken, breakNode);
 	matchToken(tokBreak);
-	
+
 	return brk;
 }
 
@@ -1067,7 +1067,7 @@ TreeNode* Parser::Other()
 
 	if (learnedFunctionList.contains(presevedToken.look) > 0) return FunctionCall(presevedToken);
 	else if (currentToken.type == tokAssign)                  return Assignment(presevedToken);
-	
+
 	Error(presevedToken, i18n("'%1' is neither a Logo command nor a learned routine.").arg(presevedToken.look), 1020);
 	TreeNode* errNode = new TreeNode(presevedToken, Unknown);
 	return errNode;
