@@ -10,7 +10,7 @@
   </list>
 
   <list name="statements">
-    <item> run </item>
+    <item> lance</item>
     <item> nettoietout </item> 
     <item> ntt </item> 
     <item> va </item> 
@@ -31,7 +31,7 @@
     <item> centre </item> 
     <item> penwidth </item> 
     <item> pw </item> 
-    <item> lèvecrayon </item> 
+    <item> lï¿½ecrayon </item> 
     <item> lc </item> 
     <item> baissecrayon </item> 
     <item> bc </item> 
@@ -51,13 +51,13 @@
     <item> ci </item> 
     <item> message </item>
     <item> inputwindow </item> 
-    <item> écris </item> 
+    <item> ï¿½ris </item> 
     <item> typepolice </item> 
     <item> taillepolice </item>
     <item> hasard </item> 
     <item> attends </item> 
     <item> enroule </item> 
-    <item> déroule </item> 
+    <item> dï¿½oule </item> 
     <item> reset </item> 
   </list>
 
@@ -66,9 +66,9 @@
     <item> foreach </item>
     <item> in </item>
     <item> pour </item>
-    <item> à </item>
+    <item> ï¿½</item>
     <item> fait </item>
-    <item> répète </item>
+    <item> rï¿½ï¿½e </item>
     <item> rpt </item>
     <item> si </item>
     <item> sinon </item>

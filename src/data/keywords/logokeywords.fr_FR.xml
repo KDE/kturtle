@@ -50,11 +50,11 @@
   </command>
   
   <command name="break">
-    <keyword>break</keyword>
+    <keyword>coupure</keyword>
   </command>
   
   <command name="run">
-    <keyword>run</keyword>
+    <keyword>lance</keyword>
   </command>
   
   <command name="write">
@@ -62,19 +62,19 @@
   </command>
   
   <command name="substr">
-    <keyword>substr</keyword>
+    <keyword>soustr</keyword>
   </command>
   
   <command name="foreach">
-    <keyword>foreach</keyword>
+    <keyword>pourchaque</keyword>
   </command>
   
   <command name="in">
-    <keyword>in</keyword>
+    <keyword>dans</keyword>
   </command>
   
   <command name="seperated">
-    <keyword>seperated</keyword>
+    <keyword>séparé</keyword>
   </command>
   
   <command name="by">
@@ -159,12 +159,12 @@
   
   <command name="setbgcolor">
     <keyword>fixecouleurécran</keyword>
-    <alias>fcfg</alias>
+    <alias>fcé</alias>
   </command>
    
   <command name="resizecanvas">
-    <keyword>canvassize</keyword>
-    <alias>cs</alias>
+    <keyword>taillecanevas</keyword>
+    <alias>tc</alias>
   </command>
 
   <command name="spriteshow">
@@ -178,8 +178,8 @@
   </command>
 
   <command name="spritepress">
-    <keyword>press</keyword>
-    <alias>sp</alias>
+    <keyword>presseimage</keyword>
+    <alias>pi</alias>
   </command>
 
   <command name="spritechange">
@@ -196,11 +196,11 @@ speed **
 
   
   <command name="input">
-    <keyword>input</keyword>
+    <keyword>entrée</keyword>
   </command>
   
   <command name="inputwindow">
-    <keyword>inputwindow</keyword>
+    <keyword>fenêtreentrée</keyword>
   </command>
   
   <command name="print">
@@ -229,7 +229,7 @@ speed **
   </command>
   
   <command name="wrapon">
-    <keyword>déroule</keyword>
+    <keyword>enroule</keyword>
   </command>
   
   <command name="wrapoff">
@@ -237,7 +237,7 @@ speed **
   </command>
   
   <command name="reset">
-    <keyword>reset</keyword>
+    <keyword>initialise</keyword>
   </command>
   
   
