@@ -1,6 +1,6 @@
 How to translate the syntax highlighting files 
 
-The commands files are located in kdeedu/kturtle/src/data/highlightstyles/
+The syntax highlighting files are located in kdeedu/kturtle/src/data/highlightstyles/
 Each file is named
 logohighlightstyle.code.xml
 where code is the iso code for your country (note that this must be a valid iso code).
