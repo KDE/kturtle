@@ -72,12 +72,12 @@ KTurtle is an educational programming environment using the Logo programming lan
 <title>What is Logo?</title>
 <para>The first version Logo programming language was created by Seymour Papert of MIT Artificial Intelligence Laboratory in 1967 as an ofshoot of the LISP programming language. From then many versions of Logo have been released. By 1980 Logo was gaining momentum, with versions for MSX, Commodore, Atari, and IBM PC systems. These versions were mainly for educational purposes. LCSI released MacLogo in 1985 as a tool for professional programmers, but it never caught on. MIT is still maintaining a site on Logo which can be found on: <ulink url="http://el.media.mit.edu/logo-foundation/">http://el.media.mit.edu/logo-foundation/</ulink>.</para>
 
-<para>Today there are several versions of Logo around which can easily be found on <ulink url="http://el.media.mit.edu/logo-foundation/">MIT's Logo site</ulink> and by a simple <ulink url="http://www.google.com/search?q=logo+programming+kids">google search</ulink>. This version of Logo (KTurtle) is only focused on the educational qualities of the programming language and will not try to suit professional progammers needs.</para>
+<para>Today there are several versions of Logo around which can easily be found on <ulink url="http://el.media.mit.edu/logo-foundation/">MIT's Logo site</ulink> and by a simple <ulink url="http://www.google.com/search?q=logo+programming+kids">google search</ulink>. This version of Logo (KTurtle) is only focused on the educational qualities of the programming language and will not try to suit professional programmers needs.</para>
 </sect1>
 
 <sect1 id="features-of-kturtle">
 <title>Features of KTurtle</title>
-<para>KTurtle has some nice features that make starting to program a breeze. See here some of the highlights of KTurtles feature set:
+<para>KTurtle has some nice features that make starting to program a breeze. See here some of the highlights of KTurtle feature set:
 <itemizedlist>
 <listitem><para>
 an integrated Logo interpreter, no need to download any other program
@@ -120,7 +120,7 @@ many integrated internationalized example logo programs make it easy to get star
   </mediaobject>
 </screenshot>
 
-<para>The main window of KTurtle has two main parts, the code editor (3) on the left where you type the Logo commands and the canvas (4) on the right where the instructions are visualized. The canvas is the turtle's playground, it's on the canvas that the turtle actually moves and draws. Then there are three other important places on the main window: the menu bar (1) from where all the actions can be reached, the toolbar (4) that allows you to quickly actived some often used actions and the statusbar (5) where you find some feedback on the state of KTurtle.</para>
+<para>The main window of KTurtle has two main parts, the code editor (3) on the left where you type the Logo commands and the canvas (4) on the right where the instructions are visualized. The canvas is the turtle's playground, it's on the canvas that the turtle actually moves and draws. Then there are three other important places on the main window: the menu bar (1) from where all the actions can be reached, the toolbar (4) that allows you to quickly activate some often used actions and the statusbar (5) where you find some feedback on the state of KTurtle.</para>
 
 <sect1 id="the-code-editor">
 <title>The Code Editor</title>
@@ -215,7 +215,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>File</guimenu>
         <guimenuitem>Stop Execution</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Stops the execution, this action is only enabled whet the commands are actually executiong.</para></listitem>
+      <listitem><para>Stops the execution, this action is only enabled when the commands are actually executing.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -248,7 +248,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>File</guimenu>
         <guimenuitem>Save Canvas</guimenuitem>
       </menuchoice></term>
-      <listitem><para>aves the current drawing on canvas into an image.</para></listitem>
+      <listitem><para>Saves the current drawing on canvas into an image.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -479,7 +479,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Tools</guimenu>
         <guimenuitem>Comment</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This action add commentation characters (#) in from of the lines that are selected. Lines that start with commentation character are not executed but allow the programmer to expain a bit more about his code or it can prevent a certain piece of code from execution.</para></listitem>
+      <listitem><para>This action add commentation characters (#) in from of the lines that are selected. Lines that start with commentation character are not executed but allow the programmer to explain a bit more about his code or it can prevent a certain piece of code from execution.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -492,7 +492,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Tools</guimenu>
         <guimenuitem>Uncomment</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This action removes the commentation characters from the selected lines.</para></listitem>
+      <listitem><para>This action removes the comment characters from the selected lines.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -530,7 +530,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Help</guimenu>
         <guimenuitem>KTurtle Handbook</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This action shows the handbook that you are currenty reading.</para></listitem>
+      <listitem><para>This action shows the handbook that you are currently reading.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -577,7 +577,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Help</guimenu>
         <guimenuitem>About KTurtle</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Here you find information on KTurtle like the authors and the licence.</para></listitem>
+      <listitem><para>Here you find information on KTurtle like the authors and the license.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -587,7 +587,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Help</guimenu>
         <guimenuitem>About KDE</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Here you can find information on KDE. If you dont know yet what KDE is, this is a place you should not mis!</para></listitem>
+      <listitem><para>Here you can find information on KDE. If you do not know yet what KDE is, this is a place you should not miss!</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -639,7 +639,7 @@ turnleft 90
 Type or copy-paste the code to the code editor and execute it (using <link linkend="file-execute"><menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem></menuchoice></link>) to see the result.</para>
 
 <para>When you typed and executed the commands like above in the code editor you might have noticed one or more of the following things:</para>
-<para>1. That -- after executing the commands -- the turtle moves up, draws a line and then turns a quater turn to the left. This because you have used the <userinput>forward</userinput> and the <userinput>turnleft</userinput> commands.</para>
+<para>1. That -- after executing the commands -- the turtle moves up, draws a line and then turns a quarter turn to the left. This because you have used the <userinput>forward</userinput> and the <userinput>turnleft</userinput> commands.</para>
 <para>2. That the color of the code changed while you where typing it, this features is called: intuitive highlighting -- different types of commands are highlighted differently. This makes reading large blocks of code more easy.</para>
 <para>3. That the turtle draws a thin black line.</para>
 <para>4. Maybe you got an error message. This could simply mean two things: you could have made a mistake while copying the commands, or you should still set the correct language for the logo commands (you can do that here: <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure KTurtle</guimenuitem></menuchoice> in the Language section).</para>
@@ -677,17 +677,17 @@ go 40, 100
 </screen>
 Again you should type or copy-paste the code to the code editor and execute it (using <link linkend="file-execute"><menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem></menuchoice></link>) to see the result. In the next examples you are expected to know the drill.</para>
 
-<para>You might have noticed that this second example uses a lot more code. You have also seen a couple of new commands. Here a short explaination of all the new commands:</para>
+<para>You might have noticed that this second example uses a lot more code. You have also seen a couple of new commands. Here a short explanation of all the new commands:</para>
 
 <para><userinput>canvassize 200,200</userinput> sets the canvas width and height to 200 <glossterm linkend="pixels">pixels</glossterm>. The width and the height are equal in length, this means the canvas should now be a square.</para>
 
 <para><userinput>canvascolor 0,0,0</userinput> makes the canvas black. <userinput>0,0,0</userinput> is an <glossterm linkend="rgb">RGB-combination</glossterm> where all values are set to <userinput>0</userinput>, which results in black.</para>
 
-<para><userinput>pencolor 255,0,0</userinput> sets the color of the pen to red. <userinput>255,0,0</userinput> is an <glossterm linkend="rgb">RGB-combination</glossterm> where only the 'red' value is set to <userinput>255</userinput> while the others (green adn blue) are set to <userinput>0</userinput>, this results in a bright shade of red.</para>
+<para><userinput>pencolor 255,0,0</userinput> sets the color of the pen to red. <userinput>255,0,0</userinput> is an <glossterm linkend="rgb">RGB-combination</glossterm> where only the 'red' value is set to <userinput>255</userinput> while the others (green and blue) are set to <userinput>0</userinput>, this results in a bright shade of red.</para>
 
 <para><userinput>penwidth 5</userinput> sets the width (the size) of pen <userinput>5</userinput> <glossterm linkend="pixels">pixels</glossterm>. From now on every line the turtle draw will have a thickness of <userinput>5</userinput>, until we change the <userinput>penwidth</userinput> to something else.</para>
 
-<para><userinput>clear</userinput> clear the canvas, that is al it does.</para>
+<para><userinput>clear</userinput> clear the canvas, that is all it does.</para>
 
 <para><userinput>go 20,20</userinput> commands to turtle to go to a certain place on the canvas. Counted from the upper left corner, this place is 20 <glossterm linkend="pixels">pixels</glossterm> from the left, and 20 <glossterm linkend="pixels">pixels</glossterm> form the top of the canvas. Note that using the <userinput>go</userinput> command the turtle will not draw a line.</para>
 
@@ -695,9 +695,9 @@ Again you should type or copy-paste the code to the code editor and execute it (
 
 <para>After the direction command a lot of <userinput>forward</userinput> and <userinput>turnleft</userinput> commands follow. These command do the actual drawing.</para>
 
-<para>At last a other <userinput>go</userinput> command is used to move the turtle aside.</para>
+<para>At last another <userinput>go</userinput> command is used to move the turtle aside.</para>
 
-<para>Make sure you follow the links to the reference. The reference explains each command more thourroughly.</para>
+<para>Make sure you follow the links to the reference. The reference explains each command more thoroughly.</para>
 
 </sect2>
 
@@ -780,7 +780,7 @@ pendown
 will lower the pen again and the Turtle will be able to draw again.
 </para> 
 <para>
-Our Turtle knows how to write! We can display text on the cavas using the command
+Our Turtle knows how to write! We can display text on the canvas using the command
 <screen>
 print "some text"
 </screen>
@@ -816,13 +816,13 @@ Let's see those 4 commands in action.
 Not yet written
 </para>
 </sect1>
-<sect1 id="variabless">
+<sect1 id="using_variables">
 <title>Using Variables: creating 'number containers'</title>
 <para>
 Not yet written
 </para>
 </sect1>
-<sect1 id="stringss">
+<sect1 id="using_strings">
 <title>Using strings: creating 'text containers'</title>
 <para>
 Not yet written
@@ -851,7 +851,7 @@ Draw a maze for example
 
 
 <chapter id="reference">
-<title>KTurtle's Logo Programing Reference</title>
+<title>KTurtle's Logo Programming Reference</title>
 
 <sect1 id="commands">
 <title>Commands</title>
@@ -930,7 +930,7 @@ Draw a maze for example
     <varlistentry>
       <term>goy</term>
       <listitem><para><screen>goy Y</screen>
-      <userinput>gox</userinput> using this command the turtle will move to Y <glossterm linkend="pixels">pixels</glossterm> from the top of the canvas while he keeps his on the same diatance from the left border of the canvas.</para></listitem>
+      <userinput>gox</userinput> using this command the turtle will move to Y <glossterm linkend="pixels">pixels</glossterm> from the top of the canvas while she keeps his on the same distance from the left border of the canvas.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -1025,14 +1025,14 @@ Draw a maze for example
     <varlistentry>
       <term>reset</term>
       <listitem><para><screen>reset</screen>
-      <userinput>reset</userinput> cleans much more thorrow than the <userinput>clear</userinput> command. After a <userinput>reset</userinput> command everything is like is was when you had just started KTrutle.</para></listitem>
+      <userinput>reset</userinput> cleans much more thoroughly than the <userinput>clear</userinput> command. After a <userinput>reset</userinput> command everything is like is was when you had just started KTurtle.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
 
 <sect2 id="sprites">
 <title>The turtle is a sprite</title>
-<para>Many people do not know what sprites are, so here a short explaination: sprites are small pictures that can be moved arround the screen. (for more info see the glossary on <glossterm linkend="sprites">sprites</glossterm>). So the turtle is a sprite!</para>
+<para>Many people do not know what sprites are, so here a short explanation: sprites are small pictures that can be moved around the screen. (for more info see the glossary on <glossterm linkend="sprites">sprites</glossterm>). So the turtle is a sprite!</para>
 <para>Next you will find a full overview on all commands to work with sprites.</para>
 <para>[The current version of KTurtle does not yet support the use of sprites other that the turtle. With future versions you will be able to change the turtle into something of your own design!]</para>
   <variablelist>
@@ -1150,7 +1150,7 @@ Draw a maze for example
 <glosslist>
 <glossentry id="degrees">
 <glossterm>degrees</glossterm>
-<glossdef><para>Degrees a unit to measure angles or turns. A full turn is 360 degrees, that make a half turn 180 degrees and a quater turn 90 degrees. The commands <userinput>turnleft</userinput>, <userinput>turnright</userinput> and <userinput>direction</userinput> need an input in degrees.</para></glossdef>
+<glossdef><para>Degrees a unit to measure angles or turns. A full turn is 360 degrees, that make a half turn 180 degrees and a quarter turn 90 degrees. The commands <userinput>turnleft</userinput>, <userinput>turnright</userinput> and <userinput>direction</userinput> need an input in degrees.</para></glossdef>
 </glossentry>
 
 <glossentry id="pixels">
@@ -1203,10 +1203,10 @@ print str
 
 <para>Now some examples of the commands that give output:
 <screen>
-x = inputwindow "please type something and press ok... thanks!"
+x = inputwindow "please type something and press OK... thanks!"
 r = random 1,100
 </screen>
-The <userinput>inputwindow</userinput> command takes a string as input, and outputs the numer or string that is enter. As you see the output of <userinput>inputwindow</userinput> is stored in the container <userinput>x</userinput>. The <userinput>random</userinput> command also gives output. In this case it outputs a number between 1 and 100. The output of the random is again stored in a container, named <userinput>r</userinput>. Note that the containers <userinput>x</userinput> and <userinput>r</userinput> are not used in the example code above.</para>
+The <userinput>inputwindow</userinput> command takes a string as input, and outputs the number or string that is enter. As you see the output of <userinput>inputwindow</userinput> is stored in the container <userinput>x</userinput>. The <userinput>random</userinput> command also gives output. In this case it outputs a number between 1 and 100. The output of the random is again stored in a container, named <userinput>r</userinput>. Note that the containers <userinput>x</userinput> and <userinput>r</userinput> are not used in the example code above.</para>
 
 <para>There are also commands that neither need input nor give output. Here some examples:
 <screen>
@@ -1238,7 +1238,7 @@ When the turtle moves off a border of the canvas it is instantly taken to the op
 
 <glossentry id="sprite">
 <glossterm>sprite</glossterm>
-<glossdef><para>A sprite is a small picture that can be moved arround the screen. Out beloved turtle, for instance, is a sprite. [With this version of KTurtle the sprite cannot be changed from a turtle into something else. Future versions of KTurtle will be able to do this.]</para></glossdef>
+<glossdef><para>A sprite is a small picture that can be moved around the screen. Our beloved turtle, for instance, is a sprite. [With this version of KTurtle the sprite cannot be changed from a turtle into something else. Future versions of KTurtle will be able to do this.]</para></glossdef>
 </glossentry>
 
 
