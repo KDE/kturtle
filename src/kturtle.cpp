@@ -77,10 +77,9 @@ MainWindow::MainWindow(KTextEditor::Document *document) : editor(0) {
 	
 	setupCanvas();
 	setupEditor();
-	setupActions();
-	setupStatusBar();
 	
-	setXMLFile("kturtleui.rc");
+	setupStatusBar();
+	setupActions();
 	createShellGUI( true );
 	setMinimumSize(200,200);
 	
@@ -91,9 +90,6 @@ MainWindow::MainWindow(KTextEditor::Document *document) : editor(0) {
 	picker = 0; // for the colorpickerdialog
 	executing = false;
 	
-	// at last; must be sure everything is already set up ;)
-	setAutoSaveSettings ("MainWindow Settings");
-	
 	// init with more usefull size, stolen from kwite (they stole it from konq)
 	if ( !initialGeometrySet() && !kapp->config()->hasGroup("MainWindow Settings") ) {
 		resize( 640, 480 );
@@ -102,7 +98,7 @@ MainWindow::MainWindow(KTextEditor::Document *document) : editor(0) {
 	KConfig *config = kapp->config();
 	readConfig(config);
 	
-	show();
+	//show();
 }
 
 MainWindow::~MainWindow() { // The MainWindow destructor
@@ -158,15 +154,13 @@ void MainWindow::setupActions() {
 	new KAction(i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
 	new KAction(i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");  
 	// Settings actions
-	// //createStandardStatusBarAction();
-	// //setStandardToolBarMenuEnabled(true);
 	KStdAction::preferences( this, SLOT( slotSettings() ), ac );
-	KStdAction::keyBindings(guiFactory(), SLOT(configureShortcuts()), ac);
 	new KAction(i18n("&Configure Editor..."), "configure", 0, this, SLOT(slotEditor()), ac, "set_confdlg");
-	KStdAction::configureToolbars( this, SLOT(slotConfigureToolbars()), ac);
 	// Help actions
 	ContextHelp = new KAction(0, 0, Key_F1, this, SLOT(slotContextHelp()), ac, "context_help");
 	slotContextHelpUpdate(); // this sets the label of this action
+	setXMLFile("kturtleui.rc");
+	setupGUI();
 }
 
 void MainWindow::setupEditor() {
@@ -904,13 +898,6 @@ void MainWindow::readConfig(KConfig *config) {
 	KConfig entry(locate("locale", "all_languages"));
 	entry.setGroup(Settings::logoLanguage().left(2));
 	statusBar()-> changeItem(i18n("Commands language: ")+entry.readEntry("Name"), IDS_LANG);
-}
-
-void MainWindow::slotConfigureToolbars() {
-	saveMainWindowSettings( KGlobal::config(), autoSaveGroup() );
-	KEditToolbar dlg(actionCollection());
-	connect(&dlg, SIGNAL(newToolbarConfig()), this, SLOT(newToolbarConfig()));
-	dlg.exec();
 }
 
 // END

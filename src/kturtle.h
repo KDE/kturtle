@@ -184,7 +184,6 @@ class MainWindow : public KParts::MainWindow
 	void slotSettings();
 	///When a setting is changed in Configure KTurtle, it is updated here (change the language of the xml file)
 	void slotUpdateSettings();
-	void slotConfigureToolbars();
 	
 	void slotContextHelp();
 	void slotContextHelpUpdate();

@@ -50,6 +50,12 @@ int main(int argc, char **argv)
     about.addAuthor( "Anne-Marie Mahfouf",
            I18N_NOOP("Big contributor, supporter and fan"),
                       "annemarie.mahfouf # free.fr" );    
+    about.addAuthor( "Matthias Meßmer",
+           I18N_NOOP("German Data Files"),
+                      "bmlmessmer@web.de" ); 
+    about.addAuthor( "Stefan Asserhäll",
+           I18N_NOOP("Swedish Data Files"),
+                      "stefan.asserhall@telia.com" ); 	
     KCmdLineArgs::init(argc, argv, &about);
     KCmdLineArgs::addCmdLineOptions( options );
     KApplication app;
