@@ -504,10 +504,7 @@ void MainWindow::slotSettings() {
     // making the filling for the 'Language' settings dept.    
     QWidget *language = new QWidget();
     kcfg_TranslationFilePath = new KURLRequester(language, "kcfg_TranslationFilePath");
-    kcfg_TranslationFilePath->setShowLocalProtocol(true);
     kcfg_TranslationFilePath->setGeometry( QRect(20, 90, 440, 30) );
-    //this does not show in the dialog lineEDit
-    kcfg_TranslationFilePath->setURL(locate("data","kturtle/data/logokeywords.en_US.xml"));
     TranslationFileLabel = new QLabel(kcfg_TranslationFilePath, i18n("&Translation file:"), language);
     TranslationFileLabel->setGeometry( QRect(20, 40, 200, 30) );
     dialog->addPage( language, i18n("Language"), "locale", i18n("Language Settings") );
@@ -518,6 +515,8 @@ void MainWindow::slotSettings() {
     // Display the dialog.
     dialog->setInitialSize( QSize(610, 400) );
     dialog->show();
+    // This need to be placed here for the url to show up in the lineedit
+    kcfg_TranslationFilePath->setURL(locate("data","kturtle/data/logokeywords.en_US.xml"));
 }
 
 void MainWindow::slotUpdateSettings() {
@@ -537,9 +536,9 @@ void MainWindow::checkTranslationFile() {
     KConfig *config = kapp->config();
     if ( !QFile( config->readPathEntry("TranslationFile") ).exists() ) {
         kdDebug(0)<<"--1--"<<endl;
-        if ( !locate("appdata", "kturtle/data/logokeywords.en_US.xml").isNull() ) {
+        if ( !locate("data", "kturtle/data/logokeywords.en_US.xml").isNull() ) {
             config->setGroup("language");
-            config->writeEntry("TranslationFile", locate("appdata", "kturtle/data/logokeywords.en_US.xml") );
+            config->writeEntry("TranslationFile", locate("data", "kturtle/data/logokeywords.en_US.xml") );
             config->sync(); // doesnt work
             // the settings dialog will not show the translationFile the first time it is started
             // i dont know why or how to fix <- TODO 
