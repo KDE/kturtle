@@ -40,7 +40,9 @@
 #include "kturtle.h"
 
 // StatusBar field IDs
-
+#define IDS_INS    0
+#define IDS_STATUS      1
+#define IDS_STATUS_CLM  3
 
 MainWindow::MainWindow(KTextEditor::Document *document) : editor(0) {
     // set the shell's ui resource file
@@ -169,20 +171,25 @@ void MainWindow::setupEditor() {
              hli->setHlMode(i);
          }
     }
-
+    ///allow the cursor position to be indicated in the statusbar
+    connect(editor, SIGNAL(cursorPositionChanged()), this, SLOT(slotCursor()));
     ///allow to enable run only when some text is written in editor
     connect( editor->document(), SIGNAL( textChanged() ), this, SLOT( setRunEnabled() ) );
 }
 
 void MainWindow::setupStatusBar() {
-    statusBar()->insertItem("", 0, 0, true);
-    statusBar()->insertItem("", 1, 1, false);
-    statusBar()->setItemAlignment(1, AlignLeft);
+    statusBar()->insertItem("", IDS_INS, 0, true);
+    statusBar()->insertItem(" ", 2, 0, true);//blank
+    statusBar()->insertItem("",  IDS_STATUS, 1, false);
+    QString linenumber;
+    linenumber = i18n(" Line: %1 Col: %2 ").arg(1).arg(1);
+    statusBar()->insertItem(linenumber,  IDS_STATUS_CLM, 0, true);
+    statusBar()->setItemAlignment( IDS_STATUS, AlignLeft);
     statusBar()->show();
 
     // fill the statusbar
-    slotStatusBar(i18n("INS"), 0); 
-    slotStatusBar(i18n("Welcome to KTurtle..."), 1); // the message part
+    slotStatusBar(i18n("INS"), IDS_INS); 
+    slotStatusBar(i18n("Welcome to KTurtle..."),  IDS_STATUS); // the message part
 }
 
 void MainWindow::setupCanvas() {
@@ -215,7 +222,7 @@ void MainWindow::slotNewFile() {
     TurtleView->slotClear();// clear the view
     CurrentFile = "";
     setCaption( i18n("Untitled") );
-    slotStatusBar(i18n("New file... Happy coding!"), 1); 
+    slotStatusBar(i18n("New file... Happy coding!"), IDS_STATUS); 
 }
 
 void MainWindow::slotSaveFile() {  
@@ -259,7 +266,7 @@ void MainWindow::slotSave(KURL &url)
     		editor->document()->saveAs(url);
     		CurrentFile = url.fileName();
     		setCaption(CurrentFile);
-    		slotStatusBar(i18n("Saved file to: %1").arg(CurrentFile), 1); 
+    		slotStatusBar(i18n("Saved file to: %1").arg(CurrentFile),  IDS_STATUS); 
     		m_recentFiles->addURL( url );
 		editor->document()->setModified(false);
 	}
@@ -285,7 +292,7 @@ void MainWindow::slotOpen(const KURL& url) {
 
 void MainWindow::slotQuit() {
     if ( editor->document()->isModified() ) {
-        slotStatusBar(i18n("Quitting KTurtle..."), 1);
+        slotStatusBar(i18n("Quitting KTurtle..."),  IDS_STATUS);
         // make sure the dialog looks good with new -- unnamed -- files.
         int result = KMessageBox::warningYesNoCancel( this,
         i18n("The changes you have made are not saved. "
@@ -293,7 +300,7 @@ void MainWindow::slotQuit() {
              "you have made."),
         i18n("Unsaved file..."), i18n("Save"), i18n("Discard changes and Quit") );
         if (result == KMessageBox::Cancel) {
-            slotStatusBar(i18n("Quitting aborted."), 1);
+            slotStatusBar(i18n("Quitting aborted."),  IDS_STATUS);
             return;
         } else if (result == KMessageBox::Yes) {
             slotSaveFile();
@@ -325,7 +332,7 @@ void MainWindow::startExecution() {
     executing = true;
     run->setIcon("stop");
     run->setText("Stop Execution");   
-    slotStatusBar(i18n("Parsing commands..."), 1);
+    slotStatusBar(i18n("Parsing commands..."),  IDS_STATUS);
     kapp->processEvents();
     
     string txt = ( ei->text() + "\n" ).latin1(); // the /n is needed for proper parsing
@@ -340,7 +347,7 @@ void MainWindow::startExecution() {
         TreeNode* root = parser.getTree();
         root->showTree(root); // show parsetree  DEBUG OPTION
 
-        slotStatusBar(i18n("Executing commands..."), 1); 
+        slotStatusBar(i18n("Executing commands..."),  IDS_STATUS); 
         exe = new Executer(root); // make Executer object, 'exe', and have it point to the root
         connect( exe, SIGNAL( ErrorMsg(QString, unsigned int, unsigned int, unsigned int) ), 
                  this, SLOT( slotErrorDialog(QString, unsigned int, unsigned int, unsigned int) ) );
@@ -404,14 +411,14 @@ void MainWindow::startExecution() {
                  TurtleView, SLOT( slotReset() ) );
 
         if ( exe->run() ) {
-            slotStatusBar(i18n("Done."), 1);
+            slotStatusBar(i18n("Done."),  IDS_STATUS);
             finishExecution();
         } else {
-            slotStatusBar(i18n("Execution aborted."), 1);
+            slotStatusBar(i18n("Execution aborted."),  IDS_STATUS);
             finishExecution();
         }
     } else {
-        slotStatusBar(i18n("Parsing failed!"), 1);
+        slotStatusBar(i18n("Parsing failed!"),  IDS_STATUS);
         finishExecution();
     }
 }
@@ -498,7 +505,7 @@ void MainWindow::slotToggleInsert() {
       a->activate();
      if (a)
       {
-        statusBar()->changeItem(a->isChecked() ? i18n(" OVR ") : i18n(" INS "),0); 
+        statusBar()->changeItem(a->isChecked() ? i18n(" OVR ") : i18n(" INS "), IDS_INS); 
      } 
 }
 
@@ -564,7 +571,7 @@ void MainWindow::updateFullScreen() {
 }
 
 void MainWindow::slotStatusBar(QString text, int id) {
-    if(id == 0) { // the version part of the statusbar
+    if(id == IDS_INS) { // the version part of the statusbar
         text = " " + text + " "; // help the layout
     } else { // if id is not 0 it must be 1 (error cacher)
         text = " " + text; // help the layout
@@ -784,11 +791,21 @@ void MainWindow::loadFile(KURL url) {
         file.close();
         CurrentFile = myFile;
         setCaption(url.fileName());
-        slotStatusBar(i18n("Opened file: %1").arg(url.fileName()), 1);
+        slotStatusBar(i18n("Opened file: %1").arg(url.fileName()),  IDS_STATUS);
         }
     } else { 
-        slotStatusBar(i18n("Opening aborted, nothing opened."), 1);
+        slotStatusBar(i18n("Opening aborted, nothing opened."),  IDS_STATUS);
     }
 }
+
+/// the cursor position is indicated in the statusbar
+void MainWindow::slotCursor() {
+  uint cursorLine;
+  uint cursorCol;
+  dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->cursorPositionReal(&cursorLine, &cursorCol);
+  QString linenumber = i18n(" Line: %1 Col: %2 ").arg(cursorLine+1).arg(cursorCol+1);
+  statusBar()->changeItem(linenumber, IDS_STATUS_CLM);
+}
+
 
 #include "kturtle.moc"

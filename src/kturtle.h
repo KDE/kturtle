@@ -73,6 +73,8 @@ class MainWindow : public KParts::MainWindow
     void slotFindPrevious();
     void slotReplace();
     void slotToggleLineNumbers();
+    
+    void slotCursor();
 
     void slotIndent();
     void slotUnIndent();
