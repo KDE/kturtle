@@ -128,7 +128,7 @@
     <varlistentry>
       <term>canvassize</term>
       <listitem><para><screen>canvassize X,Y</screen>
-      With the <userinput>canvassize</userinput> command you can set the size of the canvas. It takes X and Y as input, where X is the new canvas width in <glossterm linkend="pixels">pixels</glossterm>, and Y id the new height of the canvas in <glossterm linkend="pixels">pixels</glossterm>.<userinput>canvassize</userinput> can be abbreviated to <userinput>cs</userinput>.</para></listitem>
+      With the <userinput>canvassize</userinput> command you can set the size of the canvas. It takes X and Y as input, where X is the new canvas width in <glossterm linkend="pixels">pixels</glossterm>, and Y is the new height of the canvas in <glossterm linkend="pixels">pixels</glossterm>.<userinput>canvassize</userinput> can be abbreviated to <userinput>cs</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -298,7 +298,7 @@ In the first two lines the variables <userinput>A</userinput> and <userinput>B</
 <screen>
 x = "Hello "
 name = inputwindow "Please enter your name..."
-print x + name + ", how are you?
+print x + name + ", how are you?"
 </screen>
 On the first line the string <userinput>x</userinput> is set to <quote>Hello </quote>. On the second line the string <userinput>name</userinput> is set to the output of the <userinput>inputwindow</userinput> command. On the third line the program prints a composition of three strings on the canvas.</para>
 <para>This program ask you to enter your name. When you, for instance, enter the name <quote>Paul</quote>, the program prints <quote>Hello Paul, how are you?</quote>. Please note that the plus (+) is the only math symbol that you can use with strings.</para>
@@ -537,25 +537,28 @@ learn circle (x) [
   ]
 ]
 </screen>
-The new command is called <userinput>circle</userinput>. <userinput>circle</userinput> takes one <glossterm linkend="input-output">input</glossterm>, a number, to set the size of the circle. <userinput>circle</userinput> returns no <glossterm linkend="input-output">output</glossterm>. The <userinput>circle</userinput> command can now be used like a normal command. See this example:
+The new command is called <userinput>circle</userinput>. <userinput>circle</userinput> takes one <glossterm linkend="input-output">input</glossterm>, a number, to set the size of the circle. <userinput>circle</userinput> returns no <glossterm linkend="input-output">output</glossterm>. The <userinput>circle</userinput> command can now be used like a normal command in the rest of the code. See this example:
 <screen>
-learn circle (x) [
-  repeat 36 [
-    forward x
-    turnleft 10
-  ]
-]
-
-go 30,30
-circle 20
-
-go 40,40
-circle 50
+learn circle (x) [ 
+   repeat 36 [ 
+     forward x 
+     turnleft 10 
+   ] 
+ ] 
+ 
+ go 30,30 
+ circle(20) 
+ 
+ go 40,40 
+ circle(50) 
 </screen>
 </para>
 <para>In the next example a command with a return value is created.
 <screen>
+reset
+
 learn multiplyBySelf (n) [
+  r = n * 1
   r = n * n
   return r
 ]
