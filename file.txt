@@ -1,0 +1,34 @@
+Reading Package Lists...
+Building Dependency Tree...
+Correcting dependencies... Done
+The following extra packages will be installed:
+  alsa-headers libasound2-dev libaudio-dev libaudiofile-dev libfontconfig1-dev
+  libfreetype6-dev libglib2.0-dev libjpeg62-dev liblcms1-dev libmad0-dev
+  libogg-dev libpng12-dev libqt3-headers libvorbis-dev libxcursor-dev
+  pkg-config qt3-dev-tools xlibmesa3-gl xlibmesa3-glu zlib1g-dev
+Suggested packages:
+  libasound2-doc libglib2.0-doc libgnome-dev libglide3
+Recommended packages:
+  libqt3-mt-dev libqt3-dev
+The following packages will be REMOVED:
+  arts gideon gideon-data gideon-plugins kaddressbook kalarm kalarmd kandy
+  kappfinder karm kate kcontrol kde-cvs-snapshot kdeartwork kdeartwork-misc
+  kdeartwork-style kdeartwork-theme-desktop kdeartwork-theme-window kdebase
+  kdebase-bin kdebase-data kdebase-kio-plugins kdelibs kdelibs-bin kdelibs-data
+  kdelibs4 kdelibs4-doc kdepim kdepim-kfile-plugins kdepim-libs kdeprint
+  kdesktop kdm kfind kgpgcertmanager khelpcenter kicker kitchensync klipper
+  kmail kmailcvt kmenuedit knode knotes konqueror konqueror-nsplugins konsole
+  kontact korganizer korn kpager kpersonalizer kpilot kscreensaver ksmserver
+  ksplash ksync ksysguard ksysguardd ktip ktnef kwin libarts1 libarts1-dev
+  libartsc0 libkcal2 libkdenetwork2 libkgantt0 libkonq4 libmimelib1
+  x-window-system-core xlibmesa-dri xlibmesa-gl xlibmesa-glu
+The following NEW packages will be installed:
+  alsa-headers libasound2-dev libaudio-dev libaudiofile-dev libfontconfig1-dev
+  libfreetype6-dev libglib2.0-dev libjpeg62-dev liblcms1-dev libmad0-dev
+  libogg-dev libpng12-dev libqt3-headers libvorbis-dev libxcursor-dev
+  pkg-config qt3-dev-tools xlibmesa3-gl xlibmesa3-glu zlib1g-dev
+0 upgraded, 20 newly installed, 74 to remove and 9 not upgraded.
+1 not fully installed or removed.
+Need to get 10.1MB of archives.
+After unpacking 284MB disk space will be freed.
+Do you want to continue? [Y/n] Abort.

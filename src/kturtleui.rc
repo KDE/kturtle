@@ -1,0 +1,31 @@
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+<kpartgui name="KTurtle" >
+  <MenuBar>
+    <Menu name="file" >
+      <text>&amp;File</text>
+      <Action name="run" />
+    </Menu>
+    <Menu name="View" >
+      <text>&amp;View</text>
+      <Action name="full_screen" />
+      <!--<Action name="line_numbers"/>-->
+      <Action name="color_picker" />
+    </Menu>
+  </MenuBar>
+
+<ToolBar name="mainToolBar" fullWidth="true" >
+  <Separator/>
+  <Action name="full_screen" />
+  <Action name="color_picker" />
+  <!--<Action name="line_numbers"/>-->
+  <Separator/>
+  <Action name="run" />
+  <!--<Action name="line_numbers"/>-->
+</ToolBar>
+ 
+<ActionProperties>
+  <Action shortcut="Alt+Return" name="run" />
+  <Action shortcut="Alt+C" name="color_picker" />
+</ActionProperties>
+
+</kpartgui>

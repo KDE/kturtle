@@ -1,0 +1,16 @@
+Begin3
+Title:          KTurtle -- Some description
+Version:        0.01
+Entered-date:   
+Description:    
+Keywords:       KDE Qt
+Author:         Cies Breijs <cies # showroommama ! nl>
+Maintained-by:  Cies Breijs <cies # showroommama ! nl>
+Home-page:      
+Alternate-site: 
+Primary-site:   ftp://ftp.kde.org/pub/kde/unstable/apps/utils
+                xxxxxx  kturtle-0.01.tar.gz
+                xxx     kturtle-0.01.lsm
+Platform:       Linux. Needs KDE
+Copying-policy: GPL
+End
