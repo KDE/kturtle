@@ -29,9 +29,15 @@ int main(int argc, char **argv)
 {
     KAboutData about("kturtle", I18N_NOOP("KTurtle"), version, description,
                      KAboutData::License_GPL, copyright, 0, website);
-    about.addAuthor( "Cies Breijs", "Main developer and initiator", "cies#showroommama!nl" );
-    about.addAuthor( "Walter Schreppers", "Author of \"wsbasic\" (wsbasic.sf.net) the base for the interpreter of KTurtle", "Walter!Schreppers#ua!ac!be" );
-    about.addAuthor( "Anne-Marie Mahfouf", "Big contributor, supporter and fan", "annemarie!mahfouf#free!fr" );    
+    about.addAuthor( "Cies Breijs",
+           I18N_NOOP("Main developer and initiator"),
+                     "cies # showroommama.nl" );
+    about.addAuthor( "Walter Schreppers",
+           I18N_NOOP("Author of \"wsbasic\" (wsbasic.sf.net) the base for the interpreter of KTurtle"),
+                     "Walter.Schreppers # ua.ac.be" );
+    about.addAuthor( "Anne-Marie Mahfouf",
+           I18N_NOOP("Big contributor, supporter and fan"),
+                      "annemarie.mahfouf # free.fr" );    
     KCmdLineArgs::init(argc, argv, &about);
     KCmdLineArgs::addCmdLineOptions( options );
     KApplication app;
