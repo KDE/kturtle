@@ -110,13 +110,17 @@ void ErrorMessage::updateSelection()
 	currentError = *errList.at(i - 1);
 	emit setSelection(currentError.tok.start.row, currentError.tok.start.col, 
 	                  currentError.tok.end.row,   currentError.tok.end.col);
+#if 0 // FIXME
 	if ( tokenTypeNames[currentError.tok.type].isEmpty() ) enableButton(KDialogBase::User1, true);
 	else                                                   enableButton(KDialogBase::User1, false);
+#endif
 }
 
 void ErrorMessage::showHelpOnError()
 {
+#if 0 // FIXME
 	kapp->invokeHelp(tokenTypeNames[currentError.tok.type], "", "");
+#endif
 }
 
 // END
