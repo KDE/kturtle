@@ -1,12 +1,39 @@
 This document goes on the BUGs and WISHes that regarding KTurtle
 
 
-WHEN ONLINE DO:
-- remove/add dialog(s).{cpp,h}
-- fix randomnaam in ../data
-- find a solution for the website with annma
-- update the kde-apps
-- 
+    CHECKLIST FOR KTURTLE IN KDE 3.4:
+
+annma> get some other sprites alternative to the turtle
+
+ cies> or a better website
+
+annma> I would say: hunt bugs
+
+ cies> i think promotion will be an important part
+
+annma> I would say make sure we test kturtle thoroughly
+annma> remove config, remove installed files and try from scratch
+
+ cies> more examples? would that pull?
+annma> more examples are only in en_US at the moment
+
+annma> is all the code in the doc working correctly?
+ cies> dint check for a while
+ cies> i changed some syntaxt
+annma> that is to be checked
+
+ cies> maybe a contest...
+ cies> best logo script gets in the examples of the next kturtle
+ cies> and get TRANSLATED to many lang.s
+ cies> how does that sound?
+annma> yes
+ cies> good for a dot story
+annma> sounds good
+
+
+
+
+
 
 
 
@@ -91,6 +118,8 @@ would be nice (not in yet):
 
 - <joke> and what about a 'goto' command ( you can never make them mistakes young enough, muahoahoaaaa >:-} ) </joke> well?
 
+
+- use qt-richtext <qt></qt> in dialogs etc.
 
 
 
@@ -248,3 +277,35 @@ print command is buggy, examples:        FIXED!
       "2004 before 25"
    according to the comment, but outputs
       "2029"
+		
+		
+		
+RESEARCH ON THE HELP PROBLEM
+
+then the help-kioslave is kdelibs/kdoctools
+
+little help needed: when i use konq to go
+"help:/kate?anchor=kate-part-selection-persistent" (which is the proper way to go
+there iirc) i get seemingly transferred to
+"help:/kate/index.html#kate-part-selection-persistent" but not to the anchor on that
+page -- it stays on the top of that page. When i enter the location bar again i get
+to the anchor.  --->  shoud i file a bug, for with apps should i do that OR where is
+the code that handles this. Anyone? :)
+
+yet this works wel if i go straight to (in konq):
+help:/kate/index.html#kate-part-selection-persistent
+
+or if i use kdcop to set "help:/kate/index.html#kate-part-selection-persistent" in
+KHelpCenterIface-OpenUrl, than all works fine...
+
+yet this doesnt work
+dcop khelpcenter KHelpCenterIface openUrl "help:/kate/index.html#kate-part-selection-persistent", ""
+
+
+Im tryered of this... I can fix it; too much for me. Sorry
+
+
+in kdelibs/kdecore/kapp... :
+url = QString("help:/%1?anchor=%2").arg(appname).arg(anchor);
+and
+DCOPRef( "khelpcenter", "KHelpCenterIface" ).send( "openUrl", url, startup_id );

@@ -53,6 +53,7 @@
 
 #include "lexer.h"
 #include "settings.h"
+#include "translate.h"
 
 #include "kturtle.h"
 
@@ -977,18 +978,13 @@ void MainWindow::readConfig(KConfig *config)
 
 // BEGIN help related functions
 
-void MainWindow::slotContextHelp() {
-// somehow the 'anchor' parameter of invokeHelp is not working correcctly
-// this should most likely be filed as a bug in KHelpCenter...
-// The other option is to Just use the code from kapplication.cpp:2051
-// and compose the helpUrl:
-	/// Noticed that the anchor works correctly but somehow does gets translated from the docbook to the html
-	/// Try help:/kturtle/reference.html#pen  it worx, but #penup doesnt... Gotta look into this 1st
-// "help:/"+name()+"/"+"{reference,container,glorrery,etc.}"+"#"+translate(helpKeyword);
-// our self... dessision/chat with the creators of KH.C. needed :))
+void MainWindow::slotContextHelp()
+{
+// somehow the 'anchor' parameter of invokeHelp is not working correcctly (yet)
+
+// this is/was appearently a bug in KHTML that Waldo Bastian kindly and quikly fixed.
+
 // Ooh... and we also want a DCOPmethod to close the sidebar since it over-informs...
-// Ooh2... we must probably put the code to translate commands in a seperate .cpp/.h (right
-// now its in the lexer since we want to use it in several places (i.e. here too)
 // Ooh3... we want fancy help (using KHTML) @ errormessage dialog
 // Ooh4... And we might also have to keep track of the KHelpCenter instance we open so
 // we will not end up with loads of them
@@ -999,31 +995,30 @@ void MainWindow::slotContextHelp() {
 // this should be discussed with translators (and please think of the highlight-themes too (since
 // right now thay can probably be translated with a simple perl script 
 
-	kdDebug(0)<<"helpKeyword = "<<helpKeyword<<endl;
+	kdDebug(0)<<"help requested on this text: "<<helpKeyword<<endl;
+	
+	if ( helpKeyword == i18n("<no keyword>") )
+	{
+		KMessageBox::information( this, i18n("There is currently no text under the cursor to get help on."), i18n("Nothing under cursor") );
+		return;
+	}
+	else if ( helpKeyword == i18n("<number>") ) helpKeyword = "number";
+	else if ( helpKeyword == i18n("<string>") ) helpKeyword = "string";
+	else
+	{
+		Translate *translate = new Translate();
+		// make lowercase copy
+		helpKeyword = helpKeyword.lower();
+		// if the key is an alias translate that alias to a key
+		if      ( !translate->alias2key(helpKeyword).isEmpty() ) helpKeyword = translate->alias2key(helpKeyword);
+		else if ( !translate->name2key (helpKeyword).isEmpty() ) helpKeyword = translate->name2key (helpKeyword);
+		
+		// at this point helpKeyword should contain an valid
+		// section/anchor-id that can be used found in the doc
+	}
+	
+	kdDebug(0)<<"trying to open a help page unsing this keyword: "<<helpKeyword<<endl;
 	kapp->invokeHelp(helpKeyword, "", "");
-
-// Firts attempt for making smarter use of the helpcenter:
-//
-// 	QString url;
-// 	if ( helpKeyword == i18n("<no keyword>") ) {
-// 		kdWarning() << "Could not launch help, nothing under cursor." << endl;
-// 	} else if ( helpKeyword == i18n("<number>") ) {
-// 		url = QString("help:/kturtle/index.html");
-// 	} else if ( helpKeyword == i18n("<string>") ) {
-// 		url = QString("help:/kturtle/index.html");
-// 	} else {
-// 		url = QString("help:/kturtle/index.html");
-// 	}
-// 
-// 	QString error;
-// 	if ( !dcopClient()->isApplicationRegistered("khelpcenter") ) {
-// 		if (startServiceByDesktopName("khelpcenter", url, &error, 0, 0, startup_id, true) ) {
-// 			kdWarning() << "Could not launch help:\n" << error << endl;
-// 			return;
-// 		}
-// 	} else {
-// 		DCOPRef( "khelpcenter", "KHelpCenterIface" ).send( "openUrl", url, startup_id );
-// 	}
 }
 
 void MainWindow::slotContextHelpUpdate()
@@ -1031,20 +1026,21 @@ void MainWindow::slotContextHelpUpdate()
 	uint row, col;
 	dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->cursorPositionReal(&row, &col);
 	QString line = dynamic_cast<KTextEditor::EditInterface*>(doc)->textLine(row);
-	QString beforeCursor = line;
-	beforeCursor.truncate(col);
-	QString afterCursor = line.remove(0, col);
-	QString cursorWord = beforeCursor.section(' ', -1) + afterCursor.section(' ', 0, 0);
+	QString cursorWord = line.left(col).section(' ', -1) + line.mid( col, line.length() ).section(' ', 0, 0);
 	QRegExp string("\"[^\"]*\""); // kindly donated by blackie
 	if ( cursorWord.isEmpty() ) helpKeyword = i18n("<no keyword>");
 	else if ( cursorWord.find( QRegExp("[\\d.]+") ) == 0 ) helpKeyword = i18n("<number>");
 	else if ( string.search(line) != -1 ) // check if there are strings in the line
 	{
 		int pos = 0;
-		while ( ( pos = string.search(line, pos) ) != -1 ) // and if the cursor is in the string
+		while ( ( pos = string.search(line, pos) ) != -1 )
 		{
-			if ( (int)col > pos && (int)col < pos + string.matchedLength() ) helpKeyword = i18n("<string>");
-			pos += string.matchedLength();
+			if ( (int)col >= pos && (int)col <= pos + string.matchedLength() )
+			{
+				// and if the cursor is in the string
+				helpKeyword = i18n("<string>");
+			}
+			pos++;
 		}
 	}
 	else helpKeyword = cursorWord;  // some CVS error regrding this line CHECK IT OUT

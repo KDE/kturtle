@@ -74,14 +74,15 @@ void Translate::loadTranslations() {
 	QDomElement rootElement = KeywordsXML.documentElement();
 	QDomNode n = rootElement.firstChild();
 
-	while( !n.isNull() )
+	while ( !n.isNull() )
 	{
 		QString name, key, alias;
 		name = n.toElement().attribute("name"); // get the name attribute of <command>
 		QDomNode m = n.firstChild(); // get into the first child of a <command>
 		while (true)
 		{
-			if( !m.toElement().text().isEmpty() ) {
+			if( !m.toElement().text().isEmpty() )
+			{
 				if (m.toElement().tagName() == "keyword")
 				{
 					key = m.toElement().text();
