@@ -66,9 +66,6 @@ class MainWindow : public KParts::MainWindow
     	MainWindow(KTextEditor::Document* = 0L);
     	virtual ~MainWindow();
   
-  signals:
-    	void ResizeCanvas(int x, int y);
-
   private:
 	// init'ed in contructor
 	Canvas             *TurtleView;
@@ -145,28 +142,48 @@ class MainWindow : public KParts::MainWindow
 	
 	void slotEditor();
 	void slotShowEditor();
-	void slotSetHighlightstyle(QString langCode);   
+	void slotSetHighlightstyle(QString langCode);  
+	///The Edit -> Undo action from the KTextEditor part
 	void slotUndo();
+	///The Edit -> Redo action from the KTextEditor part
 	void slotRedo();
+	///The Edit -> Cut action from the KTextEditor part
 	void slotCut();
+	///The Edit -> Copy action from the KTextEditor part
 	void slotCopy();
+	///The Edit -> Paste action from the KTextEditor part
 	void slotPaste();
+	///The Edit -> Select All action from the KTextEditor part
 	void slotSelectAll();
+	///The Edit -> Clear Selection action from the KTextEditor part
 	void slotClearSelection();
+	///The Edit-> Find action from the KTextEditor part
 	void slotFind();
+	///The Edit-> Find Next action from the KTextEditor part
 	void slotFindNext();
+	///The Edit-> Find Previous action from the KTextEditor part
 	void slotFindPrevious();
+	///The Edit -> Replace action from the KTextEditor part
 	void slotReplace();
-	void slotToggleInsert();
-	void slotInsertText(QString);
-	void slotToggleLineNumbers();
-	void slotIndent();
-	void slotUnIndent();
-	void slotCleanIndent();
-	void slotComment();
-	void slotUnComment();
 	
+	void slotToggleInsert();
+	
+	void slotInsertText(QString);
+	///The View-> Show Line Numbers action from the KTextEditor part
+	void slotToggleLineNumbers();
+	///The Tools-> Indent action from the KTextEditor part
+	void slotIndent();
+	///The Tools-> Unindent action from the KTextEditor part
+	void slotUnIndent();
+	///The Tools-> Clean Indentation action from the KTextEditor part
+	void slotCleanIndent();
+	///The Tools-> Comment action from the KTextEditor part
+	void slotComment();
+	///The Tools-> Uncomment action from the KTextEditor part
+	void slotUnComment();
+	///Create the Configure KTurtle dialog
 	void slotSettings();
+	///When a setting is changed in Configure KTurtle, it is updated here (change the language of the xml file)
 	void slotUpdateSettings();
 	void slotConfigureToolbars();
 	void slotConfigureKeys();
@@ -177,9 +194,8 @@ class MainWindow : public KParts::MainWindow
 	void slotStatusBar(QString text, int place);
 	void slotCursorStatusBar();
 	
-	void slotUpdateCanvas();
 	void slotColorPicker();
-	
+	///Turn Full Screen mode on or off
 	void slotToggleFullscreen();
 
   protected:

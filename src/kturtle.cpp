@@ -219,8 +219,6 @@ void MainWindow::setupCanvas() {
 	BaseLayout->addWidget(TurtleView, 0, 0, AlignCenter);
 	QWhatsThis::add( TurtleView, i18n( "This is the canvas, here the turtle draws a picture." ) );
 	TurtleView->show();
-	
-	connect( TurtleView, SIGNAL( CanvasResized() ), this, SLOT( slotUpdateCanvas() ) );
 }
 
 // END
@@ -887,10 +885,6 @@ void MainWindow::slotSettings() {
 }
 
 void MainWindow::slotUpdateSettings() {
-	// Changing the size of the canvas has to be done using the command
-	// only the inital size can be changed here :)   [ sorry annma :) ]
-	// connect( this, SIGNAL( ResizeCanvas(int, int) ), TurtleView, SLOT( slotResizeCanvas(int, int) ) );
-	// emit ResizeCanvas( Settings::canvasWidth(), Settings::canvasWidth() );
 	Settings::setLogoLanguage(kcfg_LanguageComboBox->currentText().section( "(", -1, -1 ).remove(")") );
 	slotSetHighlightstyle( kcfg_LanguageComboBox->currentText().section( "(", -1, -1 ).remove(")") );
 	Settings::setLanguageComboBox( kcfg_LanguageComboBox->currentItem() );
@@ -954,17 +948,8 @@ void MainWindow::slotContextHelpUpdate() {
 // END
 
 
-
-
 // Misc. functions
 
-void MainWindow::slotUpdateCanvas() {
-	// fixes a non updateing bug
-	// I tried doing this by connecting Canvas's resized to BaseWidget's update...
-	// but i had no luck :(     this worked though
-	TurtleView->hide();
-	TurtleView->show();
-}
 
 void MainWindow::slotColorPicker() {
 	// in the constructor picker is initialised as 0
