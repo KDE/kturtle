@@ -314,7 +314,7 @@ void MainWindow::startExecution() {
     slotStatusBar(i18n("Parsing commands..."), 1);
     kapp->processEvents();
     
-    string txt = ei->text().latin1();///@todo interpreter shouldnt need extra "[" & "]"
+    string txt = ( ei->text() + "\n" ).latin1(); // the /n is needed for proper parsing
     stringbuf sbuf(txt, ios_base::in);
     istream in(&sbuf);
     Parser parser(in);

@@ -826,16 +826,14 @@ TreeNode* Parser::Function() {
 
 TreeNode* Parser::Program() {
   TreeNode* program = new TreeNode( programNode, row, col );
-  program->setName("program");
+  program->setName("program");  
+  TreeNode* block = new TreeNode( blockNode, row, col );
+  block->setName("block");
 
-  //get the functions         // NO MORE DEFINITIONS OUTSIDE THE MAIN BLOCK
-//   while( look.type == tokLearn ) {
-//     Match(tokLearn);
-//     program->appendChild( Function() );
-//   }
-
-  //the main, or execution starting block    ///////////////////////////////////////////////////
-  program->appendChild( Block() );
+  while( /*(look.type != tokEnd) &&*/ (look.type != tokEof) ) {
+    block->appendChild( Statement() );
+  }
+  program->appendChild( block );
 
   Match(tokEof);
   return program;

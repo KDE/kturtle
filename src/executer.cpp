@@ -37,37 +37,19 @@ void Executer::unPause() {
 TreeNode::const_iterator Executer::run(TreeNode::const_iterator it) {
   bBreak = false;
   bReturn = false;
-  //find program block and execute it
-  
-  TreeNode* node;
+  symtable main;
+  symbolTables.push( main ); //new symbol table for main block
+
   TreeNode::const_iterator i;
-  for(i = it; i != tree->end(); ++i ) {
-    kdDebug(0)<<" --0-- "<<endl;
-    node = *i;
-// //     if( i == it && i != startPoint() ) {
-// //       // if we just picked up after a pause the next sibling node should be used
-// //       // or esle it keeps repeating
-// //       node = node->nextSibling();
-// //       ++i;
-// //     }
-
-// somehow i dont seem to understand the TreeNode::const_iterator i vs. it vs various node-pointers yet
-// 
-
-    if( node->getType() == blockNode) {
-      symtable main;
-      symbolTables.push( main ); //new symbol table for main block
-      execute( node );               //execute main block
-      symbolTables.pop(); //free up stack
-    } else if( node->getType() == functionNode ) {
-// //       string funcname = node->firstChild()->getName();   /// FUNCTIONS NOT DEFINED OUTSIDE []
-// //       functionTable[funcname] = node; //store for later use
-    }
-    kdDebug(0)<<" --1-- "<<endl;
+  for( i = it /*node->begin()*/; i != tree->end(); ++i ){
     if (m_pause) {
-      kdDebug(0)<<" --2-- "<<endl;
+      kdDebug(0)<<" --mainexec-- "<<endl;
       return i;
     }
+    
+    execute( *i );
+  
+    symbolTables.pop(); //free up stack
   }
   return tree->end();
 }
@@ -157,7 +139,6 @@ void Executer::execute(TreeNode* node){
 
 void Executer::createFunction( TreeNode* node ) {
     string funcname = node->firstChild()->getName();
-    // TODO maybe catch off double definitions (when some kid defines a function in a loop ;)
     functionTable[funcname] = node; //store for later use
 }
 
@@ -317,35 +298,33 @@ void Executer::execFor( TreeNode* node ){
   
   if(node->size() == 4 ){ //for loop without step part
     bBreak=false;
-    for( double d=startVal.val; d<=stopVal.val; d=d+1 ){
+    for( double d = startVal.val; d <= stopVal.val; d = d + 1 ) {
       (symbolTables.top() )[name] = d;
       execute( statements );
       if( bBreak || bReturn ) break; //jump out loop
     }
-    bBreak=false;
-  }
-  else{ //for loop with step part
+    bBreak = false;
+  } else { //for loop with step part
     TreeNode* step  = node->fourthChild();
-    statements      = node->fifthChild();
+    statements = node->fifthChild();
     
     execute(step);
-    Number stepVal=step->getValue();
+    Number stepVal = step->getValue();
     bBreak=false;
-    if( (stepVal.val >= 0.0) && (startVal.val <= stopVal.val) ){
-      for( double d=startVal.val; d<=stopVal.val; d=d+stepVal.val ){
+    if( (stepVal.val >= 0.0) && (startVal.val <= stopVal.val) ) {
+      for( double d = startVal.val; d <= stopVal.val; d = d + stepVal.val ) {
         (symbolTables.top() )[name] = d;
         execute( statements );
         if( bBreak || bReturn ) break; //jump out loop
       }
-    }
-    else if( (stepVal.val < 0.0) && (startVal.val >= stopVal.val) ){
-      for( double d=startVal.val; d>=stopVal.val; d=d+stepVal.val ){
+    } else if( (stepVal.val < 0.0) && (startVal.val >= stopVal.val) ) {
+      for( double d = startVal.val; d >= stopVal.val; d = d + stepVal.val ) {
         (symbolTables.top() )[name] = d;
         execute( statements );
         if( bBreak || bReturn ) break; //jump out loop
       }    
     }
-    bBreak=false;
+    bBreak = false;
   }
 
 }

@@ -11,6 +11,8 @@ Sorry, cauze somthings dont work/work weird in the mean time :-)
 // somehow i dont seem to understand the TreeNode::const_iterator i vs. it vs various node-pointers yet
 // difficult matter :)
 --> just dont use the wait funk and you should not notice any weird things (if you do tell me!)
+>>>>>>>>>>>> mail sent to lypanov opening a discussion on his 'hack' which seems 2b a dead end
+
 
 06 Jan. 2004 - annma: the KConfig XT stuff is done. Please note that locate("data", "kturtle/data/logokeywords.en_US.xml") being the default xml file, it does not appear in the config file. If there is nothing in the config file in TranslationFilePath, then this file is always taken.
 Always load the xml file with
@@ -55,10 +57,6 @@ I *love* to see so much free funktionality in kturtle!
 cies: Make the interpreter (stolen from wsbasic.sf.net) (executer, parser, lexer, number and treenode) more native Qt.
 Right now they are a mixture of standard-CLI-C++ and Qt thingies (i put the Qt thingies there). I tried to do that but i found that i'm not comfortable with the concept of streams -- which are used a lot in the interpreter. Especially streaming QString was an obstacle i couldnt take.
 
-
-cies: Remove the [ and ] that are currently needed for the execution of commands.
-These [ and ] tell the interpreter what is the main execution block, the interpreter needs it. Outside the main execution block user-made-funktions can be defined.
-Solution: make the interpreter accept user-made-funktions to be declared within the main execution block AND change the interpreter so it wont need a main execution block (give it a hardcoded execution block). 
 
 
 cies: The manual...
@@ -122,8 +120,6 @@ and remenber how the command was typed so it can be issued properly in i.e. err 
 
 
 
-cies: have that f*cking gear icon update, it should go from gear to cross when executing but for some very misterious reason it doesnt!
-
 
 
 cies: a fontchooser would be fun
@@ -144,17 +140,11 @@ Press F1 while in a command and see help on it
 
 
 
-cies: (BUG) the wrapping is a bit over simplistic WORKIN ON IT HEAVILY shall be fixed soon!
-try tr 45; fw 100000;
 
 
 
 
 **** TO-oeps-IdidItAllReadies: ****
-
-
-cies: rename the resized() signal in canvas.* to CanvasResized() or any apropriate other letter combi, to stop the clash with QWidgets resized() signal.
-Off course the connect() in kturtle.cpp should follow. [while typing this i could have fixed it :-)]
 
 
 
