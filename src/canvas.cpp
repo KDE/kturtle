@@ -5,6 +5,8 @@
 #include <qpainter.h>
 #include <qpixmap.h>
 #include <kdebug.h>
+#include <klocale.h>
+#include <kmessagebox.h>
 
 #include "settings.h"
 #include "canvas.h"
@@ -207,11 +209,20 @@ void Canvas::loadSpriteFrames(QString name) {
     // This will be fixed in qt3.3 and in the current qt-copy
 //     QCanvasPixmapArray* SpriteFrames = new QCanvasPixmapArray("/home/cies/logo/.sprites/"+name+".%1.png", 36);
 //     QCanvasSprite* Sprite = new QCanvasSprite(SpriteFrames, TurtleCanvas);
-    QCanvasPixmapArray* SpriteFrames = new QCanvasPixmapArray(locate("data", "kturtle/pics/turtle.png"), 1);
+        QPixmap turtlePix = QPixmap(locate("data","kturtle/pics/turtle.png") );
+	if (turtlePix.isNull() )
+	{
+		QString mString=i18n("The turtle picture is not found.\n"
+                                     "Check your installation, please!");
+		KMessageBox::sorry( this, mString,
+		                    i18n("Error") );
+		exit(1);
+	}
+    QCanvasPixmapArray* SpriteFrames = new QCanvasPixmapArray(locate("data","kturtle/pics/turtle.png") , 1);
     QCanvasSprite* Sprite = new QCanvasSprite(SpriteFrames, TurtleCanvas);
     Sprite->setZ(1);
     // (1) updateSprite(CanvasWidth/2, CanvasHeight/2);
-    // (2) Sprite->move( (double)(CanvasWidth/2 - ( Sprite->width() / 2 ) ), (double)(CanvasHeight/2 - ( Sprite->height() / 2 ) ), -1 );
+    Sprite->move( (double)(CanvasWidth/2 - ( Sprite->width() / 2 ) ), (double)(CanvasHeight/2 - ( Sprite->height() / 2 ) ), -1 );
     
     Sprite->show();
 }
