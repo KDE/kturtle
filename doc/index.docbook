@@ -1496,7 +1496,9 @@ When the turtle moves off a border of the canvas it is instantly taken to the op
 
 <chapter id="translators">
 <title>Translator's Guide to KTurtle</title>
-
+<para>As you know, the Logo language great specificity is that the Logo commands can be translated in your own language. This makes it easier for a child to understand the commands.
+For a new language, there are 3 files to translate: first the keywords file (or commands) then the logo-highlight-style file and finally the examples.
+</para>
 <sect1 id="commands_trans">
 <title>How To Translate the Logo keywords (commands)</title>
 <para>
@@ -1522,11 +1524,39 @@ Please don't translate anything else and don't translate English words in &lt;co
 <listitem><para>Save your file as <emphasis role="bold">utf-8</emphasis> (in Kate, use Save As and change to utf8 in the box on the right of the file name)
 </para>
 </listitem>
-<listitem><para>Commit your file or send it to Anne-Marie.
+<listitem><para>Commit your file (add your filename in the Makefile.am) or send it to Anne-Marie.
 </para>
 </listitem>
 <listitem><para>In case of any doubt, please contact Anne-Marie Mahfouf <email>annemarie.mahfouf@free.fr</email> for more information.</para>
 </listitem>
+</itemizedlist>
+</para>
+</sect1>
+
+<sect1 id="examples_syntax">
+<title>How To Translate the syntax highlighting files</title>
+<para>The syntax highlighting files are located in <filename class="directory">kdeedu/kturtle/src/data/highlightstyles/</filename>.
+Each file is named <filename>logohighlightstyle.code.xml</filename>
+where <emphasis>code</emphasis> is the ISO code for your country (note that this must be a valid ISO code).
+Please note that the country code must be the same here than in the logokeywords file and for the example folder.
+</para>
+<para>
+<itemizedlist>
+<listitem><para>Copy the logohighlightstyle.en_US.xml file by renaming it to logohighlightstyle.code.xml where <emphasis>code</emphasis> is your country code (2 or 4 letters ISO code)
+</para></listitem>
+<listitem><para>Line 4 of the file, there is
+&lt;language name="en_US" ..., here you change en_US with your language ISO code (2 or 4 letters).
+</para></listitem>
+<listitem><para>Translate in your own language the content of the &lt;item&gt; tag i.e the information between &lt;item&gt; and &lt;/item&gt;. This content must match the logokeyword file.
+For example translate 'while' in: &lt;item&gt; while &lt;/item&gt; and leave the spaces as they are (one at the beginning and one at the end).
+Please don't translate anything else.
+</para></listitem>
+<listitem><para>Save your file as <emphasis role="bold">utf-8</emphasis> (in Kate, use Save As and change to utf8 in the box on the right of the file name)
+</para></listitem>
+<listitem><para>Commit your file (change the Makefile.am by adding your filename) or send it to Anne-Marie.
+</para></listitem>
+<listitem><para>In case of any doubt, please contact Anne-Marie Mahfouf <email>annemarie.mahfouf@free.fr</email> for more information.
+</para></listitem>
 </itemizedlist>
 </para>
 </sect1>
@@ -1538,7 +1568,7 @@ The examples are located in the KTurtle source in the <filename class="directory
 </para>
 <para>
 <itemizedlist>
-<listitem><para>Create a folder with your language iso code as name.</para>
+<listitem><para>Create a folder with your language ISO code as name.</para>
 </listitem>
 <listitem><para>Copy the english example in this folder and rename the files with your language translation. This will allow users to easily and quickly understand what the example is about.</para>
 </listitem>
@@ -1547,7 +1577,7 @@ Replace in the example files all English keywords with your translated keywords.
 </listitem>
 <listitem><para>Save your file as <emphasis role="bold">utf-8</emphasis> (in Kate, use Save As and change to utf8 in the box on the right of the file name)</para>
 </listitem>
-<listitem><para>Commit your folder or send it to Anne-Marie.</para>
+<listitem><para>Commit your folder (add a Makefile.am inside) or send it to Anne-Marie.</para>
 </listitem>
 <listitem><para>In case of any doubt, please contact Anne-Marie Mahfouf, <email>annemarie.mahfouf@free.fr</email> for more information.</para>
 </listitem>
