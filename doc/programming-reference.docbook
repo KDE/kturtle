@@ -729,7 +729,7 @@ while x &lt; 5 [
   x = x + 1
 ]
 </screen>
-      On the first line <userinput>x</userinput> is set to 1. On the second line the <link linkend="questions">question</link> <userinput>x &lt; 5</userinput> is asked. Since the answer to this question is <quote>true</quote> the execution controller <userinput>while</userinput> starts executing the code between the brackets till the answer to the <link linkend="questions">question</link> is <quote>false</quote>. In this case the code between the brackets will be executed 4 times, because every time the fifth line is executed <userinput>x</userinput> increases by 1..</para></listitem>
+      On the first line <userinput>x</userinput> is set to 1. On the second line the <link linkend="questions">question</link> <userinput>x &lt; 5</userinput> is asked. Since the answer to this question is <quote>true</quote> the execution controller <userinput>while</userinput> starts executing the code between the brackets till the answer to the <link linkend="questions">question</link> is <quote>false</quote>. In this case the code between the brackets will be executed 4 times, because every time the fifth line is executed <userinput>x</userinput> increases by 1.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -743,6 +743,7 @@ while x &lt; 5 [
       <listitem><para><screen>if question [ ... ] else [ ... ]</screen>
       <userinput>else</userinput> can be used in addition to the execution controller <link linkend="if"><userinput>if</userinput></link>. The code between the brackets after <userinput>else</userinput> is only executed if the answer to the <link linkend="questions">question</link> that is asked is <quote>false</quote>. 
       <screen>
+reset
 x = 4
 if x &gt; 5 [
   print "x is greater than five!"
@@ -783,7 +784,7 @@ for x = 1 to 10 [
 <title>Create your own commands with <quote>learn</quote></title>
 <para><userinput>learn</userinput> is a very special command, because it is used to create your own commands. The command you create can take <glossterm linkend="input-output">input</glossterm> and return <glossterm linkend="input-output">output</glossterm>. Let us take a look at how a new command is created:
 <screen>
-learn circle (x) [
+learn circle x [
   repeat 36 [
     forward x
     turnleft 10
@@ -806,7 +807,7 @@ go 40,40
 circle 50  
 </screen>
 </para>
-<para>In the next example a command with a return value is created.
+<para>In the next example, a command with a return value is created.
 <screen>
 reset
 
@@ -818,7 +819,7 @@ learn multiplyBySelf n [
 i = inputwindow "Please enter a number and press OK"
 print i + " multiplied by itself is: " + multiplyBySelf i
 </screen>
-In this example a new command called <userinput>multiplyBySelf</userinput> is created. The input of this command is multiplied by it self and then returned, using the <anchor id="return" /><userinput>return</userinput> command. The <userinput>return</userinput> command is the way to output a value from a function you have created.
+In this example a new command called <userinput>multiplyBySelf</userinput> is created. The input of this command is multiplied by itself and then returned, using the <anchor id="return" /><userinput>return</userinput> command. The <userinput>return</userinput> command is the way to output a value from a function you have created.
 </para>
 </sect1>
 
