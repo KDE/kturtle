@@ -6,7 +6,7 @@
 
 <sect1 id="different-instructions">
 <title>Different Instruction Types</title>
-<para>As in any language, LOGO has different types of words and symbols. Here the difference between the types are briefly explained.</para>
+<para>As in any language, LOGO has different types of words and symbols. Here the differences between the types are briefly explained.</para>
 
 <sect2 id="command">
 <title>Commands</title>
@@ -83,8 +83,8 @@ print W + x
 
 <sect2 id="question">
 <title>Questions</title>
-<para>We can ask the ask simple questions on which the answer will be 'true' or 'false'.</para>
-<para>Using question is extensively explained in the <link linkend="questions">questions</link> section.</para>
+<para>We can ask simple questions on which the answer will be 'true' or 'false'.</para>
+<para>Using questions is extensively explained in the <link linkend="questions">questions</link> section.</para>
 </sect2>
 
 <sect2 id="questions-glue">
@@ -103,7 +103,7 @@ print "this is not a comment"
 # the previous line is not a comment, but the next line is:
 # print "this is not a comment"
 </screen>
-Comment line we can add comments to the code, for ourself or someone else to read. Comments are used for: (1) adding a small description to the program, (2) to explain how a piece of code works if it is a bit cryptic, and (3) to 'comment-out' lines of code that should be (temporarily) ignored (see the last line of the example).</para>
+We can add comments to the code for ourselves or for someone else to read. Comments are used for: (1) adding a small description to the program, (2) explaining how a piece of code works if it is a bit cryptic, and (3) to 'comment-out' lines of code that should be (temporarily) ignored (see the last line of the example).</para>
 <para>Commented lines are <glossterm>highlighted</glossterm> with dark yellow in the <link linkend="the-code-editor">code editor</link>.</para>
 </sect2>
 
@@ -661,7 +661,7 @@ else
   print "not hello ;-)"
 ]
 </screen>
-In this example glued question is 'true' yet the <userinput>not</userinput> changes it to 'false'. So in the end <userinput>"not hello ;-)"</userinput> is printed on the <link linkend="the-canvas">canvas</link>.</para>
+In this example the glued question is 'true' yet the <userinput>not</userinput> changes it to 'false'. So in the end <userinput>"not hello ;-)"</userinput> is printed on the <link linkend="the-canvas">canvas</link>.</para>
 </sect3>
 
 </sect2>
@@ -671,7 +671,7 @@ In this example glued question is 'true' yet the <userinput>not</userinput> chan
 <sect1 id="controlling-execution">
 <title>Controlling execution</title>
 <para>The execution controllers enable you &mdash; as their name implies &mdash; to control execution.</para>
-<para>Execution controlling commands are <glossterm>highlighted</glossterm> with dark green in a bold font type. The square brackets are mostly used together with execution controllers are <glossterm>highlighted</glossterm> with light green.</para>
+<para>Execution controlling commands are <glossterm>highlighted</glossterm> with dark green in a bold font type. The square brackets are mostly used together with execution controllers and they are <glossterm>highlighted</glossterm> with light green.</para>
 
 <sect2 id="wait">
 <title>Have the turtle wait</title>
