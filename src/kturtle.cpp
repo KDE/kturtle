@@ -346,10 +346,10 @@ void MainWindow::slotSaveFile() {
 void MainWindow::slotSave(KURL &url) {
 	if ( !url.isEmpty() ) {
 		filename2saveAs = url.url();
-		QString mString=ei->text();
-		ei->setText(mString.utf8());
+		QString mString=ei->text(); //get the text
+		ei->setText(mString.utf8());//convert it to utf8
 		editor->document()->saveAs(url);
-		loadFile(url);
+		loadFile(url);//reload the file as utf8 otherwise display weird chars
 		CurrentFile = url.fileName();
 		setCaption(CurrentFile);
 		slotStatusBar(i18n("Saved file to: %1").arg(CurrentFile),  IDS_STATUS); 
