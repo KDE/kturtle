@@ -61,7 +61,8 @@ class Canvas : public QCanvasView
     bool PointInRange(int px, int py, int xa, int ya, int xb, int yb);
     QPoint Offset(int x, int y);
     void loadSpriteFrames(QString name);
-    void updateSprite(int x, int y);
+    void updateSpritePos();
+    void updateSpriteAngle();
     
     QCanvas             *TurtleCanvas;
     QPixmap              pixmap;

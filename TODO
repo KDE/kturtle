@@ -22,6 +22,8 @@ Always load the xml file with
 QFile xmlfile( Settings::translationFilePath() );
 note: I left the kdDebug() in the lexer.cpp file.
 
+
+
 cies: The KconfigXT issue: If an error like this
 """
   make[4]: Entering directory `/home/cies/kdenonbeta/kturtle/src'
@@ -41,26 +43,6 @@ that will fix it :-)
 
 
 **** BIG-TODOs: ****
-
-cies: Implement either a Kate-part or a KTextEditor as editor widget. ANNMA DID IT!!!
-Now the minor issues regarding the intergretion should be looked at
-- editor-kaction-connections                                     //done
-- on save the title does not appear in the titlebar  //done
-- save as does not open in the logo dir                 //done
-- Qfile->KURL migration                                        //done as far as I can go at the moment
-- CLI-file-selection (for mimetype eaz)
-- recentfileshistory (action added, have to get it working)     //done
-- linenumbers (what di we need more than the View->Show Line numbers or F11 menu?)  //done
-
-- highlighting (a kturtle language sensitive highlight script)  //done
-- loads for things sould be hidden and reordered (annma: we can do a shouut out)
-File->reload: do we need that one?
-
-- some standadisation, annma i think you know most on encodings (what about MS-DOS <br>'s)
-- ...
-I *love* to see so much free funktionality in kturtle!
-
-
 
 
 cies: Make the interpreter (stolen from wsbasic.sf.net) (executer, parser, lexer, number and treenode) more native Qt.
@@ -93,34 +75,17 @@ Add a what-to-print (canvas/editor) choise, and add a 'save canvas as' aktion
 
 **** normalTODOs ****
 
-
-Blocking funktions: >>>>>>>>  sent mail to kwrite-devel list asking soluition
-file: reload, export
-edit: block selection, gotoline, deselect, find next/previous, overwritemode
-view: wordwrapping-, schema- and codefolding funks, commandline, icon border, colorpicker->tools
-setting (should be left from help?): editor settings? -> with good defaults we can block it right?
-help (to the far right?)
-bookmarks: as a whole
-tools: only the indentation/commentation should stay imo. (and the picker comes here)
-
 Language: "Select the language of the commands" in the config, default to the desktop user (en if not en, nl or fr)   //done
 Keep it in config (already via xml file)  //done
 
-
-cies:INS, ROW and COL in the statusbar would be nice  //done
-
-
-
-language selection by language name (this way we hide the URL and the kryptic english xml file names)
+The language for the command and the hightlight style should be selected at ones; and from a drop list....
+this way the language selection is done by the language name (we hide the URL and the kryptic english xml file names)
 
 
 
 Licence: provide a proper licence and have copyrights in all files
 
 
-
-cies: Printing.
-When the print aktion is called give the user a small-choise-kdialog: "print the code", "print the canvas" or "print both" (the last one is optional). Maybe a reference (in the manual) to ksnapshot will be nice.
 
 
 cies: get all the commands in the logokeywords.*.xml file working properly, and remove the commands that are not needed:
@@ -138,6 +103,11 @@ would be nice (not in yet):
 
 - <joke> and what about a 'goto' command ( you can never make them mistakes young enough, muahoahoaaaa >:-} ) <joke> well?
 
+
+
+- CLI-file-selection (for mimetype eaz)
+- some standadisation, annma i think you know most on encodings (what about MS-DOS <br>'s)
+- ...
 
 
 
@@ -164,7 +134,7 @@ Press F1 while in a command and see help on it
 **** TO-oeps-IdidItAllReadies: ****
 
 
-default the highlightstyle to logo
+default the highlightstyle to logo --> not working anymore since upgraded to 3.2... this should be implemented after the "single language selection"
 
 
 cies: Make a dir and put some examples/test in there...

@@ -47,6 +47,9 @@ void Canvas::initValues() {
     slotCenter();
     // construct the default sprite
     loadSpriteFrames("logo");
+    updateSpritePos();
+    updateSpriteAngle();
+    Sprite->show();
 }
 
 QPixmap* Canvas::Canvas2Pixmap() {
@@ -221,13 +224,13 @@ void Canvas::loadSpriteFrames(QString name) {
     QCanvasPixmapArray* SpriteFrames = new QCanvasPixmapArray(locate("data","kturtle/pics/turtle.png") , 1);
     Sprite = new QCanvasSprite(SpriteFrames, TurtleCanvas);
     Sprite->setZ(1);
-    updateSprite(CanvasWidth/2, CanvasHeight/2);
-    
-    Sprite->show();
 }
 
-void Canvas::updateSprite(int x, int y) {
-    Sprite->move( (double)(x - ( Sprite->width() / 2 ) ), (double)(y - ( Sprite->height() / 2 ) ), -1 );
+void Canvas::updateSpritePos() {
+    Sprite->move( (double)(PosX - ( Sprite->width() / 2 ) ), (double)(PosY - ( Sprite->height() / 2 ) ), -1 );
+}
+
+void updateSpriteAngle() {
 }
 
 // Slots:
@@ -250,6 +253,7 @@ void Canvas::slotGo(int x, int y) {
         PosX = x;
         PosY = y;
     }
+    updateSpritePos();
 }
 
 void Canvas::slotGoX(int x) {
@@ -259,6 +263,7 @@ void Canvas::slotGoX(int x) {
     } else {
         PosX = x;
     }
+    updateSpritePos();
 }
 
 void Canvas::slotGoY(int y) {
@@ -268,6 +273,7 @@ void Canvas::slotGoY(int y) {
     } else {
         PosY = y;
     }
+    updateSpritePos();
 }
 
 void Canvas::slotForward(int x) {
@@ -290,14 +296,17 @@ void Canvas::slotBackward(int x) {
 
 void Canvas::slotDirection(double deg) {
     Dir = ( -deg + 90 ) * PI / 180;
+    updateSpriteAngle();
 }
 
 void Canvas::slotTurnLeft(double deg) {
     Dir = Dir + ( deg * PI / 180 );
+    updateSpriteAngle();
 }
 
 void Canvas::slotTurnRight(double deg) {
     Dir = Dir - ( deg * PI / 180 );
+    updateSpriteAngle();
 }
 
 void Canvas::slotCenter() {

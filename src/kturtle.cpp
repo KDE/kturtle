@@ -156,7 +156,7 @@ void MainWindow::setupEditor() {
     // default the highlightstyle to "logo" someday this needs to be i18nized
     KTextEditor::HighlightingInterface *hli = dynamic_cast<KTextEditor::HighlightingInterface*>(doc);
     for(unsigned int i = 0; i < hli->hlModeCount(); i++) {
-         if(hli->hlModeName(i) == "logo") {
+         if(hli->hlModeName(i) == "en_US") {
              hli->setHlMode(i);
          }
     }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE language>
 <!-- Logo syntax highlightning v0.2 by Cies Breijs -->
-<language name="en_US" version="0.2" kateversion="2.1" section="Logo" extensions="*.logo;*.lgo" mimetype="text/x-logosrc;text/x-logo;application/x-logo" priority="9" casesensitive="0">
+<language name="en_US" version="0.2" kateversion="2.1" section="Logo" extensions="*.logo;*.lgo;*.LOGO;*.Logo" mimetype="text/x-logosrc;text/x-logo;application/x-logo" priority="9" casesensitive="0">
 
 
 <highlighting>

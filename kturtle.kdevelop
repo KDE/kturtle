@@ -67,6 +67,7 @@
       <group pattern="*.png" name="Icons" />
       <group pattern="*.po;*.ts" name="Translations" />
       <group pattern="*" name="Others" />
+      <hidenonprojectfiles>false</hidenonprojectfiles>
     </groups>
     <tree>
       <hidepatterns></hidepatterns>
@@ -118,9 +119,9 @@
   </kdevfilecreate>
   <kdevcvs>
     <cvsoptions>-z3 -d:ext:cies@cvs.sourceforge.net:/cvsroot/kturtle co kturtle </cvsoptions>
-    <commitoptions></commitoptions>
-    <addoptions></addoptions>
-    <logoptions></logoptions>
+    <commitoptions/>
+    <addoptions/>
+    <logoptions/>
     <updateoptions>-dP</updateoptions>
     <removeoptions>-f</removeoptions>
     <revertoptions>-C -d -P</revertoptions>
