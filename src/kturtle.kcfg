@@ -4,7 +4,7 @@
 <kcfgfile name="kturtlerc"/> 
   <group name="general"> 
     <entry name="CanvasWidth" type="Int"> 
-      <label>The height of the canvas in pixels</label> 
+      <label>The width of the canvas in pixels</label> 
       <default>300</default>
     </entry>
     <entry name="CanvasHeight" type="Int"> 
@@ -15,7 +15,7 @@
   <group name="language">
     <entry name="LogoLanguageList" type="StringList">
       <!--This StingList is used in the above LogoLanguage AND in the settingsdialog to fill the ComboBox. Better not to dupe the code that does this.-->
-      <label>The list the available logo languages</label> 
+      <label>The list of the available languages for the Logo commands</label> 
       <code>
           // We assume keyword and highlight files come in pairs (if not there will be no highlight)
           // First a list is build from all possible language(codes) [en_US, fr, nl, etc.]
