@@ -115,20 +115,26 @@ void MainWindow::setupActions() {
     KStdAction::copy(this, SLOT(slotCopy()), ac);
     KStdAction::paste(this, SLOT(slotPaste()), ac);
     KStdAction::selectAll(this, SLOT(slotSelectAll()), ac);
-    new KAction(i18n("Toggle Insert"), Key_Insert, 0, SLOT(slotToggleInsert()), ac, "set_insert");
+    new KAction(i18n("Toggle Insert"), Key_Insert, 0, SLOT(slotToggleInsert()), ac, "insert");
     // ^ not working!!!
     KStdAction::find(this, SLOT(slotFind()), ac);
     KStdAction::findNext(this, SLOT(slotFindNext()), ac);
     KStdAction::findPrev(this, SLOT(slotFindPrevious()), ac);
     KStdAction::replace(this, SLOT(slotReplace()), ac);
     
-    // setup view action
+    // setup view actions
     new KToggleAction(i18n("Show &Line Numbers"), 0, 0, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
     m_fullscreen = KStdAction::fullScreen(this, SLOT( slotToggleFullscreen() ), ac, this, "full_screen");
     m_fullscreen->setChecked(b_fullscreen);
-    
-    // setup tools action
-    colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", 0, this, SLOT( slotColorPicker() ), ac, "color_picker");
+
+    // setup tools actions
+    new KToggleAction(i18n("&Color Picker"), "colorize", 0, this, SLOT( slotColorPicker() ), ac, "color_picker");
+    new KAction(i18n("&Indent"), "indent", CTRL+Key_I, 0, SLOT(slotIndent()), ac, "indent");
+    new KAction(i18n("&Unindent"), "unindent", CTRL+SHIFT+Key_I, 0, SLOT(slotUnIndent()), ac, "unindent");
+    new KAction(i18n("Cl&ean Indentation"), "cleanindent", 0, 0, SLOT(slotCleanIndent()), ac, "cleanindent");
+    new KAction(i18n("Co&mment"), CTRL+Key_D, 0, SLOT(slotComment()), ac, "comment");
+    new KAction(i18n("Unc&omment"), CTRL+SHIFT+Key_D, 0, SLOT(slotUnComment()), ac, "uncomment");
+
     //@todo: make the EditorDock hideable, better to do it when on KTextEditor... 
     // (void)new KToggleAction(i18n("&Hide Editor"), 0, 0, this, SLOT(slotToggleHideEditor()),
    
@@ -311,7 +317,6 @@ void MainWindow::slotQuit() {
 void MainWindow::slotPrint() {
     dynamic_cast<KTextEditor::PrintInterface*>(doc)->printDialog();
 }
-
 
 void MainWindow::slotExecute() {
     if ( executing ) {
@@ -498,7 +503,6 @@ void MainWindow::slotToggleInsert() {
 
 
 void MainWindow::slotFind() {
-// no more ideas... quanta is our friend
     KAction *a = editor->actionCollection()->action("edit_find");
     a->activate();
 }
@@ -522,6 +526,7 @@ void MainWindow::slotToggleLineNumbers() {
     KToggleAction *a = dynamic_cast<KToggleAction*>( editor->actionCollection()->action("view_line_numbers") );
     a->activate();
 }
+
 
 
 
@@ -575,6 +580,53 @@ void MainWindow::slotUpdateCanvas() {
 
 
 
+
+
+
+void MainWindow::slotColorPicker() {
+    // in the constructor picker is initialised as 0
+    // if picker is 0 when this funktion is called a colorpickerdialog is created and connected
+    if(picker == 0) {
+        picker = new ColorPicker(this);
+      if(picker == 0) {
+          return; // safety
+      }
+      connect( picker, SIGNAL( visible(bool) ), colorpicker, SLOT( setChecked(bool) ) );
+    }
+    // if picker is not 0, there is a colorpickerdialog which only needs to be shown OR hidden
+    if( picker->isHidden() ) {
+        picker->show();
+        colorpicker->setChecked(true);
+    } else {
+        picker->hide();
+        colorpicker->setChecked(false);
+    }
+}
+
+void MainWindow::slotIndent() {
+    KAction *a = editor->actionCollection()->action("tools_indent");
+    a->activate();
+}
+
+void MainWindow::slotUnIndent() {
+    KAction *a = editor->actionCollection()->action("tools_unindent");
+    a->activate();
+}
+
+void MainWindow::slotCleanIndent() {
+    KAction *a = editor->actionCollection()->action("tools_cleanIndent");
+    a->activate();
+}
+
+void MainWindow::slotComment() {
+    KAction *a = editor->actionCollection()->action("tools_comment");
+    a->activate();
+}
+
+void MainWindow::slotUnComment() {
+    KAction *a = editor->actionCollection()->action("tools_uncomment");
+    a->activate();
+}
 
 
 void MainWindow::slotSettings() {
@@ -631,8 +683,6 @@ void MainWindow::slotConfigureKeys() {
 
 
 
-
-
 void MainWindow::readConfig(KConfig *config) {
 	//in case the xml files are not installed. I believe it should quit in that case as the kstandardirs has been 
 	//searched for the xml files
@@ -658,25 +708,7 @@ void MainWindow::writeConfig(KConfig *config) {
 
 
 
-void MainWindow::slotColorPicker() {
-    // in the constructor picker is initialised as 0
-    // if picker is 0 when this funktion is called a colorpickerdialog is created and connected
-    if(picker == 0) {
-        picker = new ColorPicker(this);
-	if(picker == 0) {
-	    return; // safety
-	}
-	connect( picker, SIGNAL( visible(bool) ), colorpicker, SLOT( setChecked(bool) ) );
-    }
-    // if picker is not 0, there is a colorpickerdialog which only needs to be shown OR hidden
-    if( picker->isHidden() ) {
-        picker->show();
-	colorpicker->setChecked(true);
-    } else {
-        picker->hide();
-	colorpicker->setChecked(false);
-    }
-}
+
 
 void MainWindow::setRunEnabled() {
     run->setEnabled(true);

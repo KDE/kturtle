@@ -38,6 +38,11 @@
     
     <Menu name="tools" noMerge="1"><text>&amp;Tools</text>
       <Action name="color_picker" />
+      <Action name="indent" />
+      <Action name="unindent" />
+      <Action name="cleanIndent" />
+      <Action name="comment" />
+      <Action name="uncomment" />
     </Menu>
   </MenuBar>
 
