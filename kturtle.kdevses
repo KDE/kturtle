@@ -1,57 +1,37 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <!DOCTYPE KDevPrjSession>
 <KDevPrjSession>
- <DocsAndViews NumberOfDocuments="10" >
-  <Doc0 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/kturtle.cpp" >
-   <View0 line="494" Type="???" >
+ <DocsAndViews NumberOfDocuments="6" >
+  <Doc0 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/TODO" >
+   <View0 line="94" Type="???" >
     <AdditionalSettings Top="2" Width="954" Attach="1" Height="508" Left="2" MinMaxMode="0" />
    </View0>
   </Doc0>
-  <Doc1 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/TODO" >
-   <View0 line="54" Type="???" >
-    <AdditionalSettings Top="2" Width="584" Attach="1" Height="547" Left="2" MinMaxMode="0" />
+  <Doc1 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/kturtle.cpp" >
+   <View0 line="65" Type="???" >
+    <AdditionalSettings Top="2" Width="954" Attach="1" Height="508" Left="2" MinMaxMode="0" />
    </View0>
   </Doc1>
-  <Doc2 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/main.cpp" >
-   <View0 line="0" Type="???" >
+  <Doc2 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/errormsg.cpp" >
+   <View0 line="33" Type="???" >
     <AdditionalSettings Top="2" Width="954" Attach="1" Height="508" Left="2" MinMaxMode="0" />
    </View0>
   </Doc2>
-  <Doc3 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/canvas.cpp" >
-   <View0 line="321" Type="???" >
+  <Doc3 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/errormsg.h" >
+   <View0 line="23" Type="???" >
     <AdditionalSettings Top="2" Width="954" Attach="1" Height="508" Left="2" MinMaxMode="0" />
    </View0>
   </Doc3>
-  <Doc4 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/executer.cpp" >
-   <View0 line="846" Type="???" >
+  <Doc4 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/kturtle.h" >
+   <View0 line="60" Type="???" >
     <AdditionalSettings Top="2" Width="954" Attach="1" Height="508" Left="2" MinMaxMode="0" />
    </View0>
   </Doc4>
-  <Doc5 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/parser.cpp" >
-   <View0 line="727" Type="???" >
+  <Doc5 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/lexer.h" >
+   <View0 line="0" Type="???" >
     <AdditionalSettings Top="2" Width="954" Attach="1" Height="508" Left="2" MinMaxMode="0" />
    </View0>
   </Doc5>
-  <Doc6 context="ctx_qt" NumberOfViews="1" URL="file:/usr/lib/qt3/doc/html/qstring.html#operator%2B" >
-   <View0 Type="???" >
-    <AdditionalSettings/>
-   </View0>
-  </Doc6>
-  <Doc7 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/treenode.cpp" >
-   <View0 line="48" Type="???" >
-    <AdditionalSettings Top="2" Width="954" Attach="1" Height="508" Left="2" MinMaxMode="0" />
-   </View0>
-  </Doc7>
-  <Doc8 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/treenode.h" >
-   <View0 line="53" Type="???" >
-    <AdditionalSettings Top="2" Width="954" Attach="1" Height="508" Left="2" MinMaxMode="0" />
-   </View0>
-  </Doc8>
-  <Doc9 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/executer.h" >
-   <View0 line="99" Type="???" >
-    <AdditionalSettings Top="2" Width="954" Attach="1" Height="508" Left="2" MinMaxMode="0" />
-   </View0>
-  </Doc9>
  </DocsAndViews>
  <pluginList>
   <kdevbookmarks>

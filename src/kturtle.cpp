@@ -98,11 +98,9 @@ MainWindow::MainWindow(KTextEditor::Document *document) : editor(0) {
 
 	KConfig *config = kapp->config();
 	readConfig(config);
-
-	//show();
 }
 
-MainWindow::~MainWindow() { // The MainWindow destructor
+MainWindow::~MainWindow() {  // The MainWindow destructor
 	delete editor->document();
 }
 
@@ -219,9 +217,9 @@ void MainWindow::setupCanvas() {
 
 void MainWindow::slotStatusBar(QString text, int id) {
 	if(id == IDS_INS) { // the version part of the statusbar
-	text = " " + text + " "; // help the layout
+		text = " " + text + " "; // help the layout
 	} else { // if id is not 0 it must be 1 (error cacher)
-	text = " " + text; // help the layout
+		text = " " + text; // help the layout
 	}
 	statusBar()->changeItem(text, id);
 }
@@ -413,7 +411,6 @@ void MainWindow::slotSaveCanvas() {
 		QString text = i18n("KTurtle was unable to save the image to\n%1.").arg(url.prettyURL());
 		KMessageBox::error(this, text, caption);
 	}
-	/// NOW THE PIXMAP SHOULD BE SAVED!!! better look at an other app (ksnapshot) how to do that. :-)
 	slotStatusBar(i18n("Saved canvas to: %1").arg(url.fileName()),  IDS_STATUS);
 }
 
@@ -488,6 +485,7 @@ void MainWindow::startExecution() {
 		// menuBar()->hide();   <--- seems pretty hard to hide the menubar
 		toolBar()->hide();
 	}
+	// maybe the fullscreen funktion should be a screen ocupying widget with the canvas in the middle and a button that only shows 1 sec after the execution is finished. (what to do with endless loop scripts?) 
 
 	run->setEnabled(false);
 	stop->setEnabled(true);
@@ -499,8 +497,11 @@ void MainWindow::startExecution() {
 	QString txt = ei->text() + "\n"; // the /n is needed for proper parsing
 	QTextIStream in(&txt);
 	Parser parser(in);
+	errMsg = new ErrorMessage(this);
 	connect( &parser, SIGNAL(ErrorMsg(QString, uint, uint, uint) ),
-		this, SLOT(slotErrorDialog(QString, uint, uint, uint) ) );
+		errMsg, SLOT(slotAddError(QString, uint, uint, uint) ) );
+	connect( errMsg, SIGNAL(SetCursor(uint, uint) ),
+		this, SLOT(slotSetCursorPos(uint, uint) ) );
 
 	// parsing and executing...
 	if( parser.parse() ) {
@@ -510,7 +511,7 @@ void MainWindow::startExecution() {
 		slotStatusBar(i18n("Executing commands..."),  IDS_STATUS);
 		exe = new Executer(root); // make Executer object, 'exe', and have it point to the root
 		connect( exe, SIGNAL( ErrorMsg(QString, uint, uint, uint) ),
-			this, SLOT( slotErrorDialog(QString, uint, uint, uint) ) );
+			errMsg, SLOT( slotAddError(QString, uint, uint, uint) ) );
 		connect( exe, SIGNAL( InputDialog(QString&) ),
 			this, SLOT( slotInputDialog(QString&) ) );
 		connect( exe, SIGNAL( MessageDialog(QString) ),
@@ -556,6 +557,10 @@ void MainWindow::startExecution() {
 		slotStatusBar(i18n("Parsing failed."),  IDS_STATUS);
 		finishExecution();
 	}
+
+	if (errMsg->containsErrors() == false) {
+		errMsg->display();
+	}
 }
 
 void MainWindow::slotAbortExecution() {
@@ -578,42 +583,14 @@ void MainWindow::finishExecution() {
 	}
 }
 
-void MainWindow::slotErrorDialog(QString msg, uint row, uint col, uint code) {
-	// if(allreadyError) { return; } // one error dialog per 'run' is enough... (see next line)
-	allreadyError = true;
-	QString line;
-	if( row <= 1 || col <= 0 ) {
-		line = ".";
-	} else {
-		// RowCol = QString(" on row %1, column %2.").arg(row).arg(col); // no column, it over informs
-		line = i18n(" on line %1.").arg(row);
-	}
-
-	// move cursor to the error
-	dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->setCursorPositionReal(row - 2, col);
-
-	QString ErrorType;
-	if( 1000 <= code || code < 2000 ) {
-		ErrorType = i18n("Parse Error");
-	} else if( 3000 <= code || code < 4000 ) {
-		ErrorType = i18n("Internal Error");
-	} else if( code >= 5000 ) {
-		ErrorType = i18n("Execution Error");
-	} else if( code < 1000 ) {
-		ErrorType = i18n("Error");
-	}
-	KMessageBox::detailedSorry( this, msg + line, i18n("Error code: %1").arg(code) + "\n" +
-	i18n("Exact location: %1, %2").arg(row - 1).arg(col), ErrorType );
-}
-
 // some other parts of the main window that need to be connected with the mainwindow
 
 void MainWindow::slotInputDialog(QString& value) {
-  	value = KInputDialog::getText (i18n("Input"), value);
+	value = KInputDialog::getText (i18n("Input"), value);
 }
 
 void MainWindow::slotMessageDialog(QString text) {
-  	KMessageBox::information( this, text, i18n("Message") );
+	KMessageBox::information( this, text, i18n("Message") );
 }
 
 // END
@@ -623,19 +600,19 @@ void MainWindow::slotMessageDialog(QString text) {
 // BEGIN editor connections (undo, redo, cut, copy, paste, cursor, selections, find, replace, linenumbers etc.)
 
 void MainWindow::slotEditor() {
-  	KAction *a = editor->actionCollection()->action("set_confdlg");
-  	a->activate();
+	KAction *a = editor->actionCollection()->action("set_confdlg");
+	a->activate();
 }
 
 void MainWindow::slotShowEditor() {
-  	if ( EditorDock->isHidden() ) {
-    		EditorDock->show();
-    		b_editorShown = true;
-  	} else {
-    		EditorDock->hide();
-    		b_editorShown = false;
-  	}
-  // showEditor->setChecked(b_editorShown); // DEPRICATED
+	if ( EditorDock->isHidden() ) {
+		EditorDock->show();
+		b_editorShown = true;
+	} else {
+		EditorDock->hide();
+		b_editorShown = false;
+	}
+	// showEditor->setChecked(b_editorShown); // DEPRICATED
 }
 
 void MainWindow::slotSetHighlightstyle(QString langCode) {
@@ -655,48 +632,48 @@ void MainWindow::slotSetHighlightstyle(QString langCode) {
 
 
 void MainWindow::slotUndo() {
-  	dynamic_cast<KTextEditor::UndoInterface*>(doc)->undo();
+	dynamic_cast<KTextEditor::UndoInterface*>(doc)->undo();
 }
 
 void MainWindow::slotRedo() {
-  	dynamic_cast<KTextEditor::UndoInterface*>(doc)->redo();
+	dynamic_cast<KTextEditor::UndoInterface*>(doc)->redo();
 }
 
 
 void MainWindow::slotCut() {
-  	dynamic_cast<KTextEditor::ClipboardInterface*>(editor)->cut();
+	dynamic_cast<KTextEditor::ClipboardInterface*>(editor)->cut();
 }
 
 void MainWindow::slotCopy() {
-  	dynamic_cast<KTextEditor::ClipboardInterface*>(editor)->copy();
+	dynamic_cast<KTextEditor::ClipboardInterface*>(editor)->copy();
 }
 
 void MainWindow::slotPaste() {
-  	dynamic_cast<KTextEditor::ClipboardInterface*>(editor)->paste();
+	dynamic_cast<KTextEditor::ClipboardInterface*>(editor)->paste();
 }
 
 
 void MainWindow::slotSelectAll() {
-  	dynamic_cast<KTextEditor::SelectionInterface*>(doc)->selectAll();
+	dynamic_cast<KTextEditor::SelectionInterface*>(doc)->selectAll();
 }
 
 void MainWindow::slotClearSelection() {
-  	dynamic_cast<KTextEditor::SelectionInterface*>(doc)->clearSelection();
+	dynamic_cast<KTextEditor::SelectionInterface*>(doc)->clearSelection();
 }
 
 void MainWindow::slotFind() {
-  	KAction *a = editor->actionCollection()->action("edit_find");
-  	a->activate();
+	KAction *a = editor->actionCollection()->action("edit_find");
+	a->activate();
 }
 
 void MainWindow::slotFindNext() {
-  	KAction *a = editor->actionCollection()->action("edit_find_next");
-  	a->activate();
+	KAction *a = editor->actionCollection()->action("edit_find_next");
+	a->activate();
 }
 
 void MainWindow::slotFindPrevious() {
-  	KAction *a = editor->actionCollection()->action("edit_find_prev");
-  	a->activate();
+	KAction *a = editor->actionCollection()->action("edit_find_prev");
+	a->activate();
 }
 
 void MainWindow::slotReplace() {
@@ -750,6 +727,9 @@ void MainWindow::slotInsertText(QString str) {
 	dynamic_cast<KTextEditor::SelectionInterface*>(doc)->setSelection(StartLine, StartCol, EndLine, EndCol);
 }
 
+void MainWindow::slotSetCursorPos(uint row, uint col) {
+	dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->setCursorPositionReal(row - 2, col);
+}
 // END
 
 
@@ -873,8 +853,8 @@ void MainWindow::slotSettings() {
 	// When the user clicks OK or Apply we want to update our settings.
 	connect( dialog, SIGNAL( settingsChanged() ), this, SLOT( slotUpdateSettings() ) );
 
-	// Display the dialog.
-	dialog->setInitialSize( QSize(550, 300));
+	// Display the dialog is there where errors.
+	dialog->setInitialSize( QSize(550, 300) );
 	dialog->show();
 }
 

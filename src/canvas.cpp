@@ -26,7 +26,7 @@
 
 #include <stdlib.h>
 
-const float PI=3.14159265358979323846;
+const double PI=3.14159265358979323846;
 
 Canvas::Canvas(QWidget *parent, const char *name) : QCanvasView(0, parent, name) {
 	// Create a new canvas for this view
@@ -248,18 +248,21 @@ void Canvas::updateSpritePos() {
 }
 
 void Canvas::updateSpriteAngle() {
-	int i = (int)( ( (-Dir*180/PI + 90) / 10 ) + .5 );
-	while (i > 36 || i < 0) {
-		if (i > 36) {
-		i = i - 36;
+	// get the Dir back on the 1st circle 
+	while (Dir >= 2*PI || Dir < 0) {
+		if (Dir >= 2*PI) {
+			Dir = Dir - 2*PI;
 		}
-		if (i < 0) {
-		i = i + 36;
+		if (Dir < 0) {
+			Dir = Dir + 2*PI;
 		}
 	}
+	// convert to degrees, fix the direction, divide by 10 (for picnr), and add .5 before casting to int
+	int i = (int)( ( ( (-Dir * 180) / PI + 90) / 10 ) + .5 );
 	Sprite->setFrame(i);
-	updateSpritePos(); // pixmaps of different rotations have different sizes
+	updateSpritePos(); // pixmaps of different rotations have different sizes, so refresh
 }
+
 
 // Slots:
 void Canvas::slotClear() {
@@ -317,8 +320,9 @@ void Canvas::slotGoY(int y) {
 }
 
 void Canvas::slotForward(int x) {
-	int PosXnew = PosX + (int)(x * cos(Dir) + .5);
-	int PosYnew = PosY - (int)(x * sin(Dir) + .5);
+	float f = (float)x + .5;
+	int PosXnew = PosX + (int)(f * cos(Dir) );
+	int PosYnew = PosY - (int)(f * sin(Dir) );
 	if (Pen) {
 		Line(PosX, PosY, PosXnew, PosYnew);
 	}
@@ -326,8 +330,9 @@ void Canvas::slotForward(int x) {
 }
 
 void Canvas::slotBackward(int x) {
-	int PosXnew = PosX - (int)(x * cos(Dir) + .5);
-	int PosYnew = PosY + (int)(x * sin(Dir) + .5);
+	float f = (float)x + .5;
+	int PosXnew = PosX - (int)(f * cos(Dir) );
+	int PosYnew = PosY + (int)(f * sin(Dir) );
 	if (Pen) {
 		Line(PosX, PosY, PosXnew, PosYnew);
 	}

@@ -36,7 +36,7 @@ should print Hello, but doesn't. Just a < 5 works correctly, and the same for ju
 	]
 	i = inputwindow "Please enter a number and press OK"
 	print i + " multiplied by itself is: " + multiplyBySelf (i)
-should print i*i, but prints i instead.  -----> multiplication doenst work at all!
+should print i*i, but prints i instead.  -----> inputwindow allways returns strings!
 
 
 commenting doesnt work anymore! arg!
@@ -54,7 +54,8 @@ This can be a big issue, maybe I (cies) will have to learn more on interpreters 
 
 	
 >>>>> BUGs::Regular
-With long lines and wrapping the canvas can get into a endless loop -> 100%CPU, i tried a lot to fix this allready, maybe my solution needs some tuning :). maybe i should just catch errors and break the loop :)
+With long lines and wrapping the canvas can get into a endless loop -> 100%CPU, i tried a lot to fix this allready, maybe my solution needs some tuning :).
+Maybe i should just catch errors and break that endless loop :)
 There is quite some debugging info in the canvas.cpp class to help me solve this eventually
  - see BUGGING LOGO SCRIPTS BELOW
 

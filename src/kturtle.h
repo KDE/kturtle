@@ -37,6 +37,7 @@
 
 #include "canvas.h"
 #include "colorpicker.h"
+#include "errormsg.h"
 #include "executer.h"
 #include "parser.h"
 
@@ -55,18 +56,17 @@ class KRecentFilesAction;
  
 class MainWindow : public KParts::MainWindow
 {   
-
  Q_OBJECT
 
   public:
-  	/**
+	/**
 	Constructor
 	@param KTextEditor::Document
 	*/
-    	MainWindow(KTextEditor::Document* = 0L);
-    	virtual ~MainWindow();
+	MainWindow(KTextEditor::Document* = 0L);
+	virtual ~MainWindow();
   
-  private:
+	private:
 	// init'ed in contructor
 	Canvas             *TurtleView;
 	QWidget            *BaseWidget;
@@ -114,13 +114,14 @@ class MainWindow : public KParts::MainWindow
 	void startExecution();
 	void finishExecution();
 	Executer           *exe;
+	ErrorMessage       *errMsg;
 	bool                allreadyError;
 	bool                executing;
 	
 	// fullscreen related
 	void updateFullScreen();
     
-  protected slots:
+	protected slots:
 	void slotNewFile();
 	void slotOpenFile();
 	void loadFile(KURL url);
@@ -134,7 +135,6 @@ class MainWindow : public KParts::MainWindow
 	
 	void slotExecute();
 	void slotAbortExecution();
-	void slotErrorDialog(QString msg, uint row = 0, uint col = 0, uint code = 0);
 	void slotInputDialog(QString& value);
 	void slotMessageDialog(QString text);
 	
@@ -179,6 +179,9 @@ class MainWindow : public KParts::MainWindow
 	void slotComment();
 	///The Tools-> Uncomment action from the KTextEditor part
 	void slotUnComment();
+	///Sets the row and column of the cursor in the KTextEditor part
+	void slotSetCursorPos(uint row, uint column);
+
 	///Create the Configure KTurtle dialog
 	void slotSettings();
 	///When a setting is changed in Configure KTurtle, it is updated here (change the language of the xml file)
@@ -195,9 +198,9 @@ class MainWindow : public KParts::MainWindow
 	void slotToggleFullscreen();
 	void slotUpdateCanvas();
 
-  protected:
-    	virtual bool event(QEvent* e);
-		bool queryClose();
+	protected:
+	virtual bool event(QEvent* e);
+	bool queryClose();
 };
 
 
