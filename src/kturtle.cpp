@@ -6,6 +6,7 @@
 
 #include <qtimer.h>
 #include <qlayout.h>
+#include <qregexp.h>
 
 #include <kaccel.h>
 #include <kaction.h>
@@ -125,7 +126,7 @@ void MainWindow::setupActions() {
     m_fullscreen = KStdAction::fullScreen(this, SLOT( slotToggleFullscreen() ), ac, this, "full_screen");
     m_fullscreen->setChecked(b_fullscreen);
     // Set up tools actions
-    new KToggleAction(i18n("&Color Picker"), "colorize", 0, this, SLOT(slotColorPicker()), ac, "color_picker");
+    colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", 0, this, SLOT(slotColorPicker()), ac, "color_picker");
     new KAction(i18n("&Indent"), "indent", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
     new KAction(i18n("&Unindent"), "unindent", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
     new KAction(i18n("Cl&ean Indentation"), 0, 0, this, SLOT(slotCleanIndent()), ac, "edit_cleanIndent");
@@ -169,21 +170,24 @@ void MainWindow::setupEditor() {
     }
     // allow the cursor position to be indicated in the statusbar
     connect(editor, SIGNAL(cursorPositionChanged()), this, SLOT(slotCursor()));
+    // and update the context help menu item
+    connect(editor, SIGNAL(cursorPositionChanged()), this, SLOT(slotContextHelpUpdate()));
     // allow to enable run only when some text is written in editor
     connect( editor->document(), SIGNAL( textChanged() ), this, SLOT( setRunEnabled() ) );
 }
 
 void MainWindow::setupStatusBar() {
+    // statusBar()->insertItem(" ", 2, 0, true);//to add a space, ID is 2
+    statusBar()->insertItem("", IDS_STATUS, 1, false);
+    statusBar()->setItemAlignment(IDS_STATUS, AlignLeft);
+    statusBar()->insertItem("", IDS_STATUS_CLM, 0, true);
     statusBar()->insertItem("", IDS_INS, 0, true);
-    statusBar()->insertItem(" ", 2, 0, true);//to add a space, ID is 2
-    statusBar()->insertItem("",  IDS_STATUS, 1, false);
-    QString linenumber = i18n(" Line: %1 Col: %2 ").arg(1).arg(1);
-    statusBar()->insertItem(linenumber,  IDS_STATUS_CLM, 0, true);
-    statusBar()->setItemAlignment( IDS_STATUS, AlignLeft);
-    statusBar()->show();
-    // fill the statusbar
-    slotStatusBar(i18n("INS"), IDS_INS); 
+    // fill the statusbar 
     slotStatusBar(i18n("Welcome to KTurtle..."),  IDS_STATUS); // the message part
+    slotStatusBar(i18n(" Line: %1 Col: %2 ").arg(1).arg(1), IDS_STATUS_CLM);
+    slotStatusBar(i18n("INS"), IDS_INS);
+    // and...
+    statusBar()->show();
 }
 
 void MainWindow::setupCanvas() {
@@ -717,8 +721,22 @@ void MainWindow::slotContextHelp() {
 }
 
 void MainWindow::slotContextHelpUpdate() {
-    QString keyword = i18n("<no keyword>");
-    
+    unsigned int row, col;
+    dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->cursorPositionReal(&row, &col);
+    QString line = dynamic_cast<KTextEditor::EditInterface*>(doc)->textLine(row);
+    QString beforeCursor = line;
+    beforeCursor.truncate(col);
+    QString afterCursor = line.remove(0, col);
+    QString cursorWord = beforeCursor.section(' ', -1) + afterCursor.section(' ', 0, 0);
+    QString keyword;
+    if ( cursorWord.isEmpty() ) {
+        keyword = i18n("<no keyword>");
+    } else if ( cursorWord.startsWith("\"") || cursorWord.endsWith("\"") ) { //bad dection better use QRX
+        keyword = i18n("<string>");
+    } else {
+        keyword = cursorWord;
+    }
+    // numbers need to be catched! this can be done with a QRegExp, see the highlightstyle file
     ContextHelp->setText( i18n("Help on:") + " " + keyword );
 }
 

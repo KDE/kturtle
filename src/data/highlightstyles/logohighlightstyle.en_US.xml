@@ -53,8 +53,7 @@
     <item> inputwindow </item> 
     <item> print </item> 
     <item> fonttype </item> 
-    <item> fontsize </item> 
-    <item> repeat </item> 
+    <item> fontsize </item>
     <item> rpt </item> 
     <item> random </item> 
     <item> wait </item> 

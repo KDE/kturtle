@@ -52,6 +52,11 @@
   <command name="do">
     <keyword>do</keyword>
   </command>
+  
+  <command name="repeat">
+    <keyword>repeat</keyword>
+    <alias>rpt</alias>
+  </command>
 
 
 <!-- boolean operators -->  
@@ -195,11 +200,6 @@
   
   <command name="fontsize">
     <keyword>fontsize</keyword>
-  </command>
-  
-  <command name="repeat">
-    <keyword>repeat</keyword>
-    <alias>rpt</alias>
   </command>
   
   <command name="random">

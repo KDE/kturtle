@@ -4,6 +4,7 @@ This list is devided into URGENT, BIG-TODOs, normalTODOs, TO-oeps-meDOitALLreadi
 
 Cies is working on 2 things at the same time:
 1) if error move cursor to place of error
+>>>>>>>> column of error is b0rk3d
 2) context sensitive help menu item...
    (only the menu item for now... we have to think of something to connect it to the help center later)
 i write this mainly to remind myself :-)
@@ -107,6 +108,10 @@ Keep it in config (already via xml file)  //done
 
 
 cies:INS, ROW and COL in the statusbar would be nice  //done
+
+
+
+language selection by language name (this way we hide the URL and the kryptic english xml file names)
 
 
 
