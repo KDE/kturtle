@@ -41,36 +41,37 @@ int Value::Type() const
 
 void Value::setType(int newType)
 {
-	if (type == newType) type = newType; // dont change values when type is not changing
-	else if (newType == boolType)
+	if (type == newType) return; // dont change values when type is not changing
+	else if (newType == boolValue)
 	{
 		init();
 		type = newType;
 		m_string = i18n("false");
 	}
-	else if (newType == numberType)
+	else if (newType == numberValue)
 	{
 		init();
 		type = newType;
 	}
-	else if (newType == stringType)
+	else if (newType == stringValue)
 	{
 		init();
 		type = newType;
 	}
+	else if (newType == emptyValue) init();
 }
 
 
 bool Value::Bool() const
 {
-	if (type == boolType) return m_bool;
-	else if (type == numberType) return (m_double > 0);
-	return true;
+	if (type == boolValue) return m_bool;
+	else if (type == numberValue) return (m_double - 0.5 > 0);
+	return false;
 }
 
 void Value::setBool(bool b)
 {
-	type = boolType;
+	type = boolValue;
 	m_bool = b;
 	if (m_bool)
 	{
@@ -87,65 +88,63 @@ void Value::setBool(bool b)
 
 double Value::Number() const
 {
-	if (type == boolType)
+	if (type == boolValue)
 	{
 		if (m_bool) return 1;
 		else return 0;
 	}
-	else if (type == numberType) return m_double;
-	// else if (type == stringType)
-	return 0;
+	else if (type == numberValue) return m_double;
+	return 0; // stringValue, emptyValue
 }
 
 void Value::setNumber(double d)
 {
-	type = numberType;
+	type = numberValue;
 	m_double = d;
 	m_string.setNum(d);
 }
 
 bool Value::setNumber(QString s)
 {
-	type = numberType;
+	type = numberValue;
 	bool ok = true;
-	double d = s.toDouble(&ok);
+	double num = s.toDouble(&ok);
 	if (ok)
 	{
-		m_double = d;
-		m_string.setNum(d);
+		m_double = num;
+		m_string.setNum(num);
 		return true;
 	}
-	else return false; 
+	return false; 
 }
 
 
 QString Value::String() const
 {
-	if (type == boolType)
+	if (type == boolValue)
 	{
 		if (m_bool) return QString( i18n("true") );
 		else return QString( i18n("false") );
 	}
-	else if (type == numberType)
+	else if (type == numberValue)
 	{
 		QString s;
 		s.setNum(m_double);
 		return s;
 	}
-	//else if (type == stringType)
-	return m_string;
+	return m_string; // stringValue, emptyValue
 }
 
 void Value::setString(double d)
 {
-	type = stringType;
+	type = stringValue;
 	m_double = d;
 	m_string.setNum(d);
 }
 
 void Value::setString(QString s)
 {
-	type = stringType;
+	type = stringValue;
 	m_string = s;
 }
 
@@ -162,17 +161,21 @@ Value& Value::operator=(const Value& n)
 			m_double = n.Number();
 			m_string = n.String();
 		}
-		else if (n.Type() == boolType)
+		else if (n.Type() == boolValue)
 		{
 			setBool( n.Bool() );
 		}
-		else if (n.Type() == numberType)
+		else if (n.Type() == numberValue)
 		{
 			setNumber( n.Number() );
 		}
-		else if (n.Type() == stringType)
+		else if (n.Type() == stringValue)
 		{
 			setString( n.String() );
+		}
+		else if (n.Type() == emptyValue)
+		{
+			init();
 		}
 	}
 	return *this;
@@ -195,13 +198,13 @@ Value& Value::operator=(double n)
 
 Value& Value::operator+(const Value& n)
 {
-	if (type == numberType && n.Type() == numberType)
+	if (type == numberValue && n.Type() == numberValue)
 	{
 		m_double += n.Number();
 	}
 	else
 	{
-		type = stringType;
+		type = stringValue;
 		m_string = String() + n.String();
 	}
 	return *this;
@@ -210,7 +213,7 @@ Value& Value::operator+(const Value& n)
 
 Value& Value::operator-(const Value& n)
 {
-	if (type == numberType && n.Type() == numberType)
+	if (type == numberValue && n.Type() == numberValue)
 	{
 		m_double -= n.Number();
 	}
@@ -224,7 +227,7 @@ Value& Value::operator-(const Value& n)
 
 Value& Value::operator*(const Value& n)
 {
-	if (type == numberType && n.Type() == numberType)
+	if (type == numberValue && n.Type() == numberValue)
 	{
 		m_double *= n.Number();
 	}
@@ -238,7 +241,7 @@ Value& Value::operator*(const Value& n)
 
 Value& Value::operator/(const Value& n)
 {
-	if (type == numberType && n.Type() == numberType)
+	if (type == numberValue && n.Type() == numberValue)
 	{
 		m_double /= n.Number();
 	}
@@ -253,54 +256,60 @@ Value& Value::operator/(const Value& n)
 
 bool Value::operator==(const Value& n) const
 {
-	if (type == boolType && n.Type() == boolType)     return m_bool == n.Bool(); 
-	if (type == numberType && n.Type() == numberType) return m_double == n.Number();
-	if (type == stringType && n.Type() == stringType) return m_string == n.String();
+	if (type == boolValue && n.Type() == boolValue)     return m_bool == n.Bool(); 
+	if (type == numberValue && n.Type() == numberValue) return m_double == n.Number();
+	if (type == stringValue && n.Type() == stringValue) return m_string == n.String();
+	if (type == emptyValue && n.Type() == emptyValue)   return true;
 	return false;
 }
 
 
 bool Value::operator!=(const Value& n) const
 {
-	if (type == boolType && n.Type() == boolType)     return m_bool != n.Bool(); 
-	if (type == numberType && n.Type() == numberType) return m_double != n.Number();
-	if (type == stringType && n.Type() == stringType) return m_string != n.String();
+	if (type == boolValue && n.Type() == boolValue)     return m_bool != n.Bool(); 
+	if (type == numberValue && n.Type() == numberValue) return m_double != n.Number();
+	if (type == stringValue && n.Type() == stringValue) return m_string != n.String();
+	// if (type == emptyValue && n.Type() == emptyValue)   return false;
 	return false;
 }
 
 
 bool Value::operator<(const Value& n) const
 {
-	if (type == boolType && n.Type() == boolType)     return m_bool < n.Bool(); 
-	if (type == numberType && n.Type() == numberType) return m_double < n.Number();
-	if (type == stringType && n.Type() == stringType) return m_string.length() < n.String().length();
+	if (type == boolValue && n.Type() == boolValue)     return m_bool < n.Bool(); 
+	if (type == numberValue && n.Type() == numberValue) return m_double < n.Number();
+	if (type == stringValue && n.Type() == stringValue) return m_string.length() < n.String().length();
+	// if (type == emptyValue && n.Type() == emptyValue)   return false;
 	return false;
 }
 
 
 bool Value::operator<=(const Value& n) const
 {
-	if (type == boolType && n.Type() == boolType)     return m_bool <= n.Bool(); 
-	if (type == numberType && n.Type() == numberType) return m_double <= n.Number();
-	if (type == stringType && n.Type() == stringType) return m_string.length() <= n.String().length();
+	if (type == boolValue && n.Type() == boolValue)     return m_bool <= n.Bool(); 
+	if (type == numberValue && n.Type() == numberValue) return m_double <= n.Number();
+	if (type == stringValue && n.Type() == stringValue) return m_string.length() <= n.String().length();
+	if (type == emptyValue && n.Type() == emptyValue)   return true;
 	return false;
 }
 
 
 bool Value::operator>(const Value& n) const
 {
-	if (type == boolType && n.Type() == boolType)     return m_bool > n.Bool(); 
-	if (type == numberType && n.Type() == numberType) return m_double > n.Number();
-	if (type == stringType && n.Type() == stringType) return m_string.length() > n.String().length();
+	if (type == boolValue && n.Type() == boolValue)     return m_bool > n.Bool(); 
+	if (type == numberValue && n.Type() == numberValue) return m_double > n.Number();
+	if (type == stringValue && n.Type() == stringValue) return m_string.length() > n.String().length();
+	// if (type == emptyValue && n.Type() == emptyValue)   return false;
 	return false;
 }
 
 
 bool Value::operator>=(const Value& n) const
 {
-	if (type == boolType && n.Type() == boolType)     return m_bool >= n.Bool(); 
-	if (type == numberType && n.Type() == numberType) return m_double >= n.Number();
-	if (type == stringType && n.Type() == stringType) return m_string.length() >= n.String().length();
+	if (type == boolValue   && n.Type() == boolValue)   return m_bool >= n.Bool(); 
+	if (type == numberValue && n.Type() == numberValue) return m_double >= n.Number();
+	if (type == stringValue && n.Type() == stringValue) return m_string.length() >= n.String().length();
+	if (type == emptyValue  && n.Type() == emptyValue)  return true;
 	return false;
 }
 
@@ -310,7 +319,7 @@ bool Value::operator>=(const Value& n) const
 
 void Value::init()
 {
-	type = numberType; // init'ed values are numbers by default
+	type = emptyValue; // init'ed values are empty by default
 	m_bool = false;
 	m_double = 0;
 	m_string = "";

@@ -1,0 +1,18 @@
+# prints your name at random
+
+reset
+canvassize 255,255
+hide
+
+name = inputwindow "What's your name?"
+
+repeat 50 [
+  x = random 0, 255 
+  y = random 0, 255
+  s = random 10, 51
+
+  go x, y
+  fontsize s
+  pencolor x,y,s*5
+  print name
+]

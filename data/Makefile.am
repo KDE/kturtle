@@ -1,4 +1,4 @@
-txt_DATA = triangle.logo curly.logo square.logo arrow.logo
+txt_DATA = arrow.logo curly.logo square.logo timestables.logo canvascolors.logo randomnaam.logo squaresss.logo triangle.logo 
 txtdir = $(kde_datadir)/kturtle/examples/en_US
 
 xml_DATA = logohighlightstyle.en_US.xml

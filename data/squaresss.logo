@@ -1,0 +1,22 @@
+# draw a square
+
+learn square X [
+  repeat 4 [
+    forward X
+    turnleft 90
+  ]
+]
+
+reset
+canvassize 400, 400
+go 150,200
+penwidth 5
+hide
+
+repeat 12 [
+  penup
+  forward 30
+  pendown
+  square 80
+  turnright 30
+]

@@ -42,7 +42,6 @@ class Lexer
 	QChar getChar();
 	void ungetChar(QChar);
 	int getWord(QString&);
-	void skipComment();
 	void skipSpaces();
 	void setTokenType(Token&);
 	int getNumber(Value&, QString&);

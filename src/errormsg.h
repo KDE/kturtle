@@ -57,8 +57,8 @@ Q_OBJECT
 	void updateSelection();
 
 	signals:
-	void SetCursor(uint row, uint column);
-	void SetSelection(uint, uint, uint, uint);
+	void setCursor(uint row, uint column);
+	void setSelection(uint, uint, uint, uint);
 
 	private:
 	typedef QValueList<errorData> errorList;

@@ -76,13 +76,15 @@ Canvas::Canvas(QWidget *parent, const char *name) : QCanvasView(0, parent, name)
 	setCanvas(TurtleCanvas);
 }
 
-Canvas::~Canvas() {
+Canvas::~Canvas()
+{
 	delete Sprite;
 	delete SpriteFrames;
 }
 
 
-void Canvas::initValues() {
+void Canvas::initValues()
+{
 	// canvas size
 	slotResizeCanvas( Settings::canvasWidth(), Settings::canvasHeight() );
 	CanvasWidth = Settings::canvasWidth();
@@ -108,14 +110,16 @@ void Canvas::initValues() {
 	Sprite->show();
 }
 
-QPixmap* Canvas::Canvas2Pixmap() {
+QPixmap* Canvas::Canvas2Pixmap()
+{
 	pixmap = QPixmap( TurtleCanvas->width(), TurtleCanvas->height() );
 	QPainter painter(&pixmap);
 	TurtleCanvas->drawArea(TurtleCanvas->rect(), &painter);
 	return &pixmap;
 }
 
-void Canvas::LineShell(int xa, int ya, int xb, int yb) {
+void Canvas::LineShell(int xa, int ya, int xb, int yb)
+{
 	// Line can fallback into this function in case of cutLoop == true
 	cutLoop = false;
 	// Reset the loop detection memory
@@ -124,22 +128,26 @@ void Canvas::LineShell(int xa, int ya, int xb, int yb) {
 	Line(xa, ya, xb, yb);
 }
 
-void Canvas::Line(int xa, int ya, int xb, int yb) {
+void Canvas::Line(int xa, int ya, int xb, int yb)
+{
 	QCanvasLine* l = new QCanvasLine(TurtleCanvas);
 	l->setPoints( xa, ya, xb, yb );
 	l->setPen( QPen( QColor(FgR, FgG, FgB), PenWidth, SolidLine ) );
 	l->setZ(1);
 	l->show();
 	// kdDebug(0)<<"Canvas::Line(); xa:"<<xa<<", ya:"<<ya<<", xb:"<<xb<<", yb:"<<yb<<endl;
-	if ( Wrap && !TurtleCanvas->onCanvas(xb, yb) ) {
-		if (EndlessLoop( QPoint(xa, ya), QPoint(xb, yb) ) == true) { // detect for endless loop
+	if ( Wrap && !TurtleCanvas->onCanvas(xb, yb) )
+	{
+		if (EndlessLoop( QPoint(xa, ya), QPoint(xb, yb) ) == true) // detect for endless loop
+		{
 			slotCenter();
 			//kdDebug(0)<<"Canvas::Line(): ENDLESS LOOP DETECTED, BROKE THE LOOP"<<endl;
 			cutLoop = true;
 			return;
 		}
 		QPoint translation = TranslationFactor(xa, ya, xb, yb);
-		if (translation == QPoint(0, 0) ) {
+		if (translation == QPoint(0, 0) )
+		{
 			// kdDebug(0)<<"Canvas::Line(): ***********ERRORRR***********"<<endl;
 			return;
 		}
@@ -147,27 +155,32 @@ void Canvas::Line(int xa, int ya, int xb, int yb) {
 		QPoint t_startPos = QPoint(xa, ya) + QPoint(translation.x() * CanvasWidth, translation.y() * CanvasHeight);
 		QPoint t_endPos   = QPoint(xb, yb) + QPoint(translation.x() * CanvasWidth, translation.y() * CanvasHeight);
 		Line( t_startPos.x(), t_startPos.y(), t_endPos.x(), t_endPos.y() );
-		if (cutLoop == true) {
+		if (cutLoop == true)
+		{
 			// kdDebug(0)<<"Canvas::Line(): cutLoop is set to TRUE!  ABORT LINE MISSION"<<endl;
 			return;
 		}
 	}
 }
 
-QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb) {
+QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb)
+{
 	// this class returns a QPoint which can be used to properly 'wrap' a line
 	QPoint CrossPoint[4]; // under wicked circumstances we can need this
 	                      // namely when crossing both corners, we have 4 bordercrossings
 	QPoint Translate[4];
 	int i = 0;
-	if ( ( xb - xa ) == 0 ) {  // check for an infinite direction coefficient
+	if ( ( xb - xa ) == 0 ) // check for an infinite direction coefficient
+	{
 		i++;
 		Translate[i] = QPoint(0, 1);
 		CrossPoint[i] = QPoint(xa, 0);
 		i++;
 		Translate[i] = QPoint(0,-1);
 		CrossPoint[i] = QPoint(xa, CanvasHeight);
-	} else {
+	}
+	else
+	{
 		// Here we find out what crossing points the line has with canvas border lines (lines are ENDLESS here)
 		float A   = (float)( yb - ya ) / (float)( xb - xa );
 		float Bfl = (float)(ya) - ( A * (float)(xa) ); // floating B
@@ -179,50 +192,54 @@ QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb) {
 		// kdDebug(0)<<"Canvas::TranslationFactor; rc:"<<A<<", xTop:"<<x_sT<<", xBot:"<<x_sB<<", yLft:"<<y_sL<<", yRft:"<<y_sR<<". "<<endl;
 		
 		// Here we find out what crossing points are on the borders AND on the linePIECES
-		if ( 0 <= x_sT && x_sT <= CanvasWidth && PointInRange(x_sT, 0, xa, ya, xb, yb) ) {
+		if ( 0 <= x_sT && x_sT <= CanvasWidth && PointInRange(x_sT, 0, xa, ya, xb, yb) )
+		{
 			i++;
 			Translate[i] = QPoint(0, 1);
 			CrossPoint[i] = QPoint(x_sT, 0);
 		}
-		if ( 0 <= x_sB && x_sB <= CanvasWidth && PointInRange(x_sB, CanvasHeight, xa, ya, xb, yb) ) {
+		if ( 0 <= x_sB && x_sB <= CanvasWidth && PointInRange(x_sB, CanvasHeight, xa, ya, xb, yb) )
+		{
 			i++;
 			Translate[i] = QPoint(0,-1);
 			CrossPoint[i] = QPoint(x_sB, CanvasHeight);
 		} 
-		if ( 0 <= y_sL && y_sL <= CanvasHeight && PointInRange(0, y_sL, xa, ya, xb, yb) ) {
+		if ( 0 <= y_sL && y_sL <= CanvasHeight && PointInRange(0, y_sL, xa, ya, xb, yb) )
+		{
 			i++;
 			Translate[i] = QPoint(1, 0);
 			CrossPoint[i] = QPoint(0, y_sL);
 		}
-		if ( 0 <= y_sR && y_sR <= CanvasHeight && PointInRange(CanvasWidth, y_sR, xa, ya, xb, yb) ) {
+		if ( 0 <= y_sR && y_sR <= CanvasHeight && PointInRange(CanvasWidth, y_sR, xa, ya, xb, yb) )
+		{
 			i++;
 			Translate[i] = QPoint(-1, 0);
 			CrossPoint[i] = QPoint(CanvasWidth, y_sR);
 		}
 	
-		if ( i == 0 ) {
+		if ( i == 0 )
+		{
 			// kdDebug(0)<<"Canvas::TranslationFactor: NO BORDER CROSSINGS DETECTED"<<endl;
 			QPoint returnValue = QPoint(0, 0); // initiate the returnValue
+			
 			// Here a fallback if the line has no crossings points with any borders.
 			// This mostly happens because of unlucky rounding, when this happens the line is nearly
 			// crossing a corner of the canvas.
 			// This code make sure the line is tranlated back onto the canvas.
 			// The -3 and +3 was just something i learnt from examples... I HAVE NO PROOF FOR THIS!
 			// This, luckily, allmost never happens.
-			if ( -3 <= x_sT && x_sT <= (CanvasWidth + 3) && PointInRange(x_sT, 0, xa, ya, xb, yb) ) {
+			
+			if ( -3 <= x_sT && x_sT <= (CanvasWidth + 3) && PointInRange(x_sT, 0, xa, ya, xb, yb) )
 				returnValue = returnValue + QPoint(0, 1);
-			}
-			if ( -3 <= x_sB && x_sB <= (CanvasWidth + 3) && PointInRange(x_sB, CanvasHeight, xa, ya, xb, yb) ) {
+			if ( -3 <= x_sB && x_sB <= (CanvasWidth + 3) && PointInRange(x_sB, CanvasHeight, xa, ya, xb, yb) )
 				returnValue = returnValue + QPoint(0,-1);
-			} 
-			if ( -3 <= y_sL && y_sL <= (CanvasHeight + 3) && PointInRange(0, y_sL, xa, ya, xb, yb) ) {
+			if ( -3 <= y_sL && y_sL <= (CanvasHeight + 3) && PointInRange(0, y_sL, xa, ya, xb, yb) )
 				returnValue = returnValue + QPoint(1, 0);
-			}
-			if ( -3 <= y_sR && y_sR <= (CanvasHeight + 3)  && PointInRange(CanvasWidth, y_sR, xa, ya, xb, yb) ) {
+			if ( -3 <= y_sR && y_sR <= (CanvasHeight + 3)  && PointInRange(CanvasWidth, y_sR, xa, ya, xb, yb) )
 				returnValue = returnValue + QPoint(-1, 0);
-			}
 		
-			if ( returnValue == QPoint(0, 0) ) {
+			if ( returnValue == QPoint(0, 0) )
+			{
 				// kdDebug(0)<<"Canvas::TranslationFactor:  *****This shouldn't happen (1) *****"<<endl;
 				// and this doesnt happen, that why +3 and -3 are ok values and the code above works.
 			}
@@ -231,38 +248,39 @@ QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb) {
 	}
 	
 	QPoint returnValue = QPoint(0, 0); // a new returnValue QPoint gets inited
-	if ( i == 1 ) {
+	if ( i == 1 )
+	{
 		// only one border crossing, this is normal when the start point
 		// is within the canvas and no corners are crossed
 		// kdDebug(0)<<"***only one border crossing!"<<endl;
 		return Translate[1];
 	}
-	if ( i > 1 )  {
+	if ( i > 1 )
+	{
 		// more than one border crossing starting point if of the canvas
 		// we now have to find out which crossing occurs 'first' to know how to translate the line
 		QPoint endPos(xb, yb);
 		int smallestSize = ( QPoint(xa, ya) - endPos ).manhattanLength();
 		// smallestSize is initiated to the total size of the line
-		for ( int ii = 1; ii <= i; ii++ ) {
+		for ( int ii = 1; ii <= i; ii++ )
+		{
 			int testSize = ( CrossPoint[ii] - endPos ).manhattanLength(); // size till the crosspoint
-			if ( testSize < smallestSize ) {  // if testSize is smaller then...
-				smallestSize = testSize;       // ...it becomes smallestSize
+			if ( testSize < smallestSize ) // if testSize is smaller then...
+			{
+				smallestSize = testSize; // ...it becomes smallestSize
 				returnValue = Translate[ii];
 				// and the returnValue is updated to the corresponing translaton factors
 				// kdDebug(0)<<"Canvas::TranslationFactor: UPDATED"<<endl;
-			} else if ( testSize == smallestSize ) {  // this only happens on corners
+			}
+			else if ( testSize == smallestSize ) // this only happens on corners
+			{
 				// kdDebug(0)<<"Canvas::TranslationFactor: CORNER EXCEPTION"<<endl;
 				returnValue = QPoint(0, 0);
-				if ( xb < 0 ) {
-					returnValue = returnValue + QPoint(1, 0);
-				} else if ( xb > CanvasWidth ) {
-					returnValue = returnValue + QPoint(-1, 0);
-				}
-				if ( yb < 0 ) {
-					returnValue = returnValue + QPoint(0, 1);
-				} else if ( yb > CanvasHeight ) {
-					returnValue = returnValue + QPoint(0,-1);
-				}
+				if ( xb < 0 )                 returnValue = returnValue + QPoint( 1, 0 );
+				else if ( xb > CanvasWidth )  returnValue = returnValue + QPoint(-1, 0 );
+				
+				if ( yb < 0 )                 returnValue = returnValue + QPoint( 0, 1 );
+				else if ( yb > CanvasHeight ) returnValue = returnValue + QPoint( 0,-1 );
 				return returnValue;
 			}
 		}
@@ -276,13 +294,16 @@ QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb) {
 bool Canvas::EndlessLoop(QPoint begin, QPoint end) {
 	// kdDebug(0)<<"PrevStartPos3: "<<PrevStartPos3<<", PrevStartPos2: "<<PrevStartPos2<<", PrevStartPos1: "<<PrevStartPos1<<", PrevStartPos0: "<<begin<<", PrevEndPos3: "<<PrevEndPos3<<", PrevEndPos2: "<<PrevEndPos2<<", PrevEndPos1: "<<PrevEndPos1<<", PrevEndPos0: "<<end<<endl;
 	if ( PrevStartPos2 == begin && PrevStartPos3 == PrevStartPos1 &&
-		  PrevEndPos2 == end && PrevEndPos3 == PrevEndPos1 ) {
+	     PrevEndPos2 == end && PrevEndPos3 == PrevEndPos1 )
+	{
 		// this is to break the horrible endless loop bug that i cannot fix...
 		// i need more simple reproductions of this bug to really find it
 		// for now i say it is something with QCanvas but i'm likely wrong on thisone
 		// kdDebug(0)<<"Canvas::EndlessLoop TRUE!!"<<endl;
 		return true;
-	} else {
+	}
+	else
+	{
 		// kdDebug(0)<<"Canvas::EndlessLoop FASLE!!"<<endl;
 		PrevStartPos3 = PrevStartPos2;
 		PrevStartPos2 = PrevStartPos1;
@@ -295,32 +316,34 @@ bool Canvas::EndlessLoop(QPoint begin, QPoint end) {
 	return false; // fallback will not be used
 }
 
-bool Canvas::PointInRange(int px, int py, int xa, int ya, int xb, int yb) {
+bool Canvas::PointInRange(int px, int py, int xa, int ya, int xb, int yb)
+{
 	if ( ( ( px >= xa && px <= xb ) || ( px <= xa && px >= xb ) ) &&
-		( ( py >= ya && py <= yb ) || ( py <= ya && py >= yb ) ) ) {
-		return true;
-	}
+	   ( ( py >= ya && py <= yb ) || ( py <= ya && py >= yb ) ) ) return true;
 	return false;
 }
 
-QPoint Canvas::Offset(int x, int y) {
+QPoint Canvas::Offset(int x, int y)
+{
 	// This funktion make is easy to read since deviding int's is a weird thing:
 	// int x = 5 / 2,  outputs: x = 2,  with: 5 % 2 = 1 (the rest value) 
-	if ( x < 0 ) { x = x - CanvasWidth; } 
-	if ( y < 0 ) { y = y - CanvasHeight; } 
+	if ( x < 0 ) x = x - CanvasWidth;
+	if ( y < 0 ) y = y - CanvasHeight;
 	QPoint offset( x / CanvasWidth, y / CanvasHeight);
 	return offset;
 }
 
 
-void Canvas::loadSpriteFrames(QString name) {
+void Canvas::loadSpriteFrames(QString name)
+{
 	// read the pixmaps name.0001.png, name.0002.png, ..., name.0035.png: the different rotations
 	// #0000 for 0 or 360, #0001 for 10, #0002 for 20, ..., #0018 for 180, etc.
 	
 	// WARNING if the dir doesnt exists the app will crash!!!
 	// This will be fixed in qt3.3 and in the current qt-copy
 	QPixmap turtlePix = QPixmap(locate("data","kturtle/pics/turtle.0000.png") );
-	if ( turtlePix.isNull() ) {
+	if ( turtlePix.isNull() )
+	{
 		QString mString = i18n("The turtle picture is not found;\nplease check your installation.");
 		KMessageBox::sorry( this, mString, i18n("Error") );
 		exit(1);
@@ -332,7 +355,8 @@ void Canvas::loadSpriteFrames(QString name) {
 	Sprite->setZ(250);
 }
 
-void Canvas::updateSpritePos() {
+void Canvas::updateSpritePos()
+{
 	Sprite->move( (double)(PosX - ( Sprite->width() / 2 ) ), (double)(PosY - ( Sprite->height() / 2 ) ), -1 );
 }
 
@@ -353,57 +377,64 @@ void Canvas::updateSpriteAngle()
 
 
 // Slots:
-void Canvas::slotClear() {
+void Canvas::slotClear()
+{
 	QCanvasItemList list = canvas()->allItems();
 	QCanvasItemList::Iterator it = list.begin();
-	for (; it != list.end(); ++it) {
-		if ( *it ) {
-			if ( !( (*it)->z() == 250 ) ) { // this is the turtle sprite, we dont want to kill him
-				delete *it;
-			}
+	for (; it != list.end(); ++it)
+	{
+		if ( *it )
+		{
+			if ( !( (*it)->z() == 250 ) ) delete *it; // this is the turtle sprite, we dont want to kill him
 		}
 	}
 }
 
-void Canvas::slotClearSpriteToo() {
+void Canvas::slotClearSpriteToo()
+{
 	QCanvasItemList list = canvas()->allItems();
 	QCanvasItemList::Iterator it = list.begin();
-	for (; it != list.end(); ++it) {
-		if ( *it ) {
-			delete *it;
-		}
+	for (; it != list.end(); ++it)
+	{
+		if ( *it ) delete *it;
 	}
 }
 
-void Canvas::slotGo(int x, int y) {
-	if ( Wrap && !TurtleCanvas->onCanvas(x, y) ) {
+void Canvas::slotGo(int x, int y)
+{
+	if ( Wrap && !TurtleCanvas->onCanvas(x, y) )
+	{
 		QPoint offset = Offset(x, y);
 		PosX = x - ( offset.x() * CanvasWidth );
 		PosY = y - ( offset.y() * CanvasHeight );
-	} else {
+	}
+	else
+	{
 		PosX = x;
 		PosY = y;
 	}
 	updateSpritePos();
 }
 
-void Canvas::slotGoX(int x) {
-	if ( Wrap && !TurtleCanvas->onCanvas(x, PosY) ) {
+void Canvas::slotGoX(int x)
+{
+	if ( Wrap && !TurtleCanvas->onCanvas(x, PosY) )
+	{
 		QPoint offset = Offset(x, PosY);
 		PosX = x - ( offset.x() * CanvasWidth );
-	} else {
-		PosX = x;
 	}
+	else PosX = x;
 	updateSpritePos();
 }
 
-void Canvas::slotGoY(int y) {
-	if ( Wrap && !TurtleCanvas->onCanvas(PosX, y) ) {
+void Canvas::slotGoY(int y)
+{
+	if ( Wrap && !TurtleCanvas->onCanvas(PosX, y) )
+	{
 		QPoint offset = Offset(PosX, y);
 		PosY = y - ( offset.y() * CanvasHeight );
-	} else {
-		PosY = y;
 	}
+	else  PosY = y;
 	updateSpritePos();
 }
 
@@ -416,7 +447,8 @@ void Canvas::slotForward(int x)
 	slotGo(PosXnew, PosYnew);
 }
 
-void Canvas::slotBackward(int x) {
+void Canvas::slotBackward(int x)
+{
 	float f = (float)x;
 	int PosXnew = PosX - ROUND2INT( f * sin(Dir) );
 	int PosYnew = PosY + ROUND2INT( f * cos(Dir) );
@@ -424,28 +456,33 @@ void Canvas::slotBackward(int x) {
 	slotGo(PosXnew, PosYnew);
 }
 
-void Canvas::slotDirection(double deg) {
+void Canvas::slotDirection(double deg)
+{
 	Dir = deg * PI / 180;
 	updateSpriteAngle();
 }
 
-void Canvas::slotTurnLeft(double deg) {
+void Canvas::slotTurnLeft(double deg)
+{
 	Dir = Dir - ( deg * PI / 180 );
 	updateSpriteAngle();
 }
 
-void Canvas::slotTurnRight(double deg) {
+void Canvas::slotTurnRight(double deg)
+{
 	Dir = Dir + ( deg * PI / 180 );
 	updateSpriteAngle();
 }
 
-void Canvas::slotCenter() {
+void Canvas::slotCenter()
+{
 	PosX = CanvasWidth / 2;
 	PosY = CanvasHeight / 2;
 	updateSpritePos();
 }
 
-void Canvas::slotSetPenWidth(int w) {
+void Canvas::slotSetPenWidth(int w)
+{
 	if ( w == 1 ) {
 		PenWidth = 0; // 0 gives 1 pixel lines using fast algorithem
 	} else {
@@ -453,30 +490,35 @@ void Canvas::slotSetPenWidth(int w) {
 	}
 }
 
-void Canvas::slotPenUp() {
+void Canvas::slotPenUp()
+{
 	Pen = false;
 }
 
-void Canvas::slotPenDown() {
+void Canvas::slotPenDown()
+{
 	Pen = true;
 }
 
-void Canvas::slotSetFgColor(int r, int g, int b) {
+void Canvas::slotSetFgColor(int r, int g, int b)
+{
 	// shouldn't it be checked if: ( 0 =< r, g, b =< 255) ?
 	FgR = r;
 	FgG = g;
 	FgB = b;
 }
 
-void Canvas::slotSetBgColor(int r, int g, int b) {
+void Canvas::slotSetBgColor(int r, int g, int b)
+{
     	TurtleCanvas->setBackgroundColor( QColor(r, g, b) );
 }
 
-void Canvas::slotResizeCanvas(int x, int y) {
-	if ( x <= 0 || y <= 0 ) {
-		// TODO put error message
-		x = 100;
-		y = 100;
+void Canvas::slotResizeCanvas(int x, int y)
+{
+	if ( x <= 0 || y <= 0 )
+	{
+		x = 10;
+		y = 10;
 	}
 	CanvasWidth = x;
 	CanvasHeight = y;
@@ -489,23 +531,28 @@ void Canvas::slotResizeCanvas(int x, int y) {
 // qt-3.3 will fix it and the supposed fix is allready in qt-copy
 // i'll not work any further on sprites, while i dont have qt-3.3 or a fresh qt-copy
 
-void Canvas::slotSpriteShow() {
+void Canvas::slotSpriteShow()
+{
 	Sprite->show();
 }
 
-void Canvas::slotSpriteHide() {
+void Canvas::slotSpriteHide()
+{
 	Sprite->hide();
 }
 
-void Canvas::slotSpritePress() {
+void Canvas::slotSpritePress()
+{
 }
 
-void Canvas::slotSpriteChange(int x) {
+void Canvas::slotSpriteChange(int x)
+{
 	Sprite->setFrame(x);
 	Sprite->move(PosX - Sprite->width()/2, PosY - Sprite->height()/2);
 }
 
-void Canvas::slotPrint(QString text) {
+void Canvas::slotPrint(QString text)
+{
 	QCanvasText* t = new QCanvasText(text, font, TurtleCanvas);
 	// text does not do the wrapping, never... sorry
 	t->setColor( QColor(FgR, FgG, FgB) );
@@ -513,7 +560,8 @@ void Canvas::slotPrint(QString text) {
 	t->show();
 }
 
-void Canvas::slotFontType(QString family, QString extra) {
+void Canvas::slotFontType(QString family, QString extra)
+{
 	font.setFamily(family);
 	font.setBold( extra.contains("bold") > 0 );
 	font.setItalic( extra.contains("italic") > 0 );
@@ -522,19 +570,23 @@ void Canvas::slotFontType(QString family, QString extra) {
 	font.setStrikeOut( extra.contains("strikeout") > 0 );
 }
 
-void Canvas::slotFontSize(int px) {
+void Canvas::slotFontSize(int px)
+{
 	font.setPixelSize(px);
 }
 
-void Canvas::slotWrapOn() {
+void Canvas::slotWrapOn()
+{
 	Wrap = true;
 }
 
-void Canvas::slotWrapOff() {
+void Canvas::slotWrapOff()
+{
 Wrap = false;
 }
 
-void Canvas::slotReset() {
+void Canvas::slotReset()
+{
 	slotClearSpriteToo();
 	initValues();
 }

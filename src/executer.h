@@ -26,10 +26,10 @@
 #include "treenode.h"
 
 
-typedef map<QString,Value>    symtable;
+typedef map<QString,Value>     symtable;
 typedef map<QString,TreeNode*> functable;
 
-typedef stack<Value>          runstack;
+typedef stack<Value>           runstack;
 
 
 class Executer : public QObject
@@ -41,11 +41,13 @@ Q_OBJECT
 	virtual ~Executer();
 
 	bool run();
+	void pause();
 	void abort();
 
 	signals:
 	void Finished();
 	void ErrorMsg(Token&, QString, uint code);
+	void setSelection(uint, uint, uint, uint);
 	
 	void InputDialog(QString& value);
 	void MessageDialog(QString text);
@@ -155,21 +157,27 @@ Q_OBJECT
 	bool checkParameterQuantity(TreeNode*, uint quantity, int errorCode);
 	bool checkParameterType(TreeNode*, int valueType, int errorCode);
 
-	void startWaiting(float sec);
-		
-	//private locals
+	void slowDown(TreeNode*);
+	void startWaiting(int msec);
+	void startPausing();
+	
+	// private locals
 	TreeNode*        tree;
 	stack<symtable>  symbolTables;
 	functable        functionTable;  // keep track of functionNode's
 	runstack         runStack;       // stores parameters and return value of functions
 	
+	int              runSpeed;
 	bool             bReturn;       // used for return statements
 	bool             bBreak;        // used for break statement
+	bool             bPause;        // used to pause execution
 	bool             bAbort;        // used to abort execution
 	bool             bStopWaiting;  // used for wait-command
 	
 	private slots:
 	void slotStopWaiting();
+	void slotChangeSpeed(int speed);
+	void slotStopPausing();
 };
 
 #endif // _EXECUTER_H_

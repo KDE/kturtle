@@ -26,9 +26,10 @@
 
 enum valueType
 {
-	boolType,
-	numberType,
-	stringType
+	emptyValue,
+	boolValue,
+	numberValue,
+	stringValue
 };
 
 class Value
@@ -39,6 +40,8 @@ class Value
 	~Value() {}
 
 
+	void resetValue() { init(); }
+	
 	int Type() const;
 	void setType(int);
 

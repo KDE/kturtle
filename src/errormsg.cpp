@@ -86,8 +86,8 @@ void ErrorMessage::slotAddError(Token& t, QString s, uint c)
 
 bool ErrorMessage::containsErrors()
 {
-	if (errTable->numRows() != 0) return false;
-	return true;
+	if (errTable->numRows() != 0) return true;
+	return false;
 }
 
 void ErrorMessage::display()
@@ -103,7 +103,7 @@ void ErrorMessage::updateSelection()
 {
 	int i = errTable->text( errTable->currentRow(), 0 ).toInt(); // get the hidden errCount value
 	errorData err = *errList.at(i - 1);
-	emit SetSelection(err.tok.start.row, err.tok.start.col, err.tok.end.row, err.tok.end.col);
+	emit setSelection(err.tok.start.row, err.tok.start.col, err.tok.end.row, err.tok.end.col);
 	enableButton (KDialogBase::User1, true);
 }
 

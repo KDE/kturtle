@@ -44,6 +44,35 @@
 // END
 
 
+class RestartOrBackDialog : public KDialogBase
+{
+	Q_OBJECT
+	
+	public:
+		RestartOrBackDialog (QWidget *parent)
+			: KDialogBase (parent, "rbDialog", true, 0, KDialogBase::User1|KDialogBase::User2, KDialogBase::User2, false, i18n("&Restart"), i18n("&Back") )
+		{
+			setPlainCaption( i18n("Finished execution...") );
+			setButtonWhatsThis( KDialogBase::User1, i18n("Click here to restart the current logo program.") );
+			setButtonWhatsThis( KDialogBase::User2, i18n("Click here to switch back to the edit mode.") );
+			QWidget *baseWidget = new QWidget(this);
+			setMainWidget(baseWidget);
+			baseLayout = new QVBoxLayout(baseWidget);
+			
+			label = new QLabel(baseWidget);
+			label->setText( i18n("Execution was finished without errors.\nWhat do you want to do next?") );
+			label->setScaledContents(true);
+			baseLayout->addWidget(label);
+			disableResize();
+		}
+		
+		~RestartOrBackDialog() {}
+
+	protected:
+		QVBoxLayout  *baseLayout;
+		QLabel       *label;
+};
+
 class KRecentFilesAction;
 
 /**
@@ -73,15 +102,16 @@ class MainWindow : public KParts::MainWindow
 	QGridLayout        *BaseLayout;
 	QDockWindow        *EditorDock;
 	QString             CurrentFile;
-	QString             filename2saveAs;
 		
 	// setup's (actions, editor, statusbar, canvas)
 	void setupActions();
 	KAction            *run;
 	KAction            *stop;
+	KSelectAction      *speed;
 	KAction            *openExAction;
 	KAction            *openFileAction;
 	KAction            *newAction;
+	KToggleAction      *pause;
 	KToggleAction      *m_fullscreen;
 	KToggleAction      *colorpicker;
 	KRecentFilesAction *m_recentFiles;
@@ -90,7 +120,7 @@ class MainWindow : public KParts::MainWindow
 	bool                b_editorShown;
 	void setupEditor();
 	KTextEditor::View           *view() const { return editor; }
-	KTextEditor::EditInterface  *ei;    
+	KTextEditor::EditInterface  *editorInterface;    
 	KTextEditor::Document       *doc;
 	KTextEditor::View           *editor;
 	void setupCanvas();
@@ -98,29 +128,31 @@ class MainWindow : public KParts::MainWindow
 	
 	// configuration related
 	void readConfig(KConfig *config);
-	QWidget            *general;
-	QWidget            *language;
-	QGroupBox          *WidthHeightBox;
-	QLabel             *WidthLabel;
-	QLabel             *HeightLabel;
-	KIntNumInput       *kcfg_CanvasWidth;
-	KIntNumInput       *kcfg_CanvasHeight;
-	KComboBox          *kcfg_LanguageComboBox;
-	QLabel             *LanguageLabel;
-	ColorPicker        *picker;
-	QString             helpKeyword;
+	QWidget             *general;
+	QWidget             *language;
+	QGroupBox           *WidthHeightBox;
+	QLabel              *WidthLabel;
+	QLabel              *HeightLabel;
+	KIntNumInput        *kcfg_CanvasWidth;
+	KIntNumInput        *kcfg_CanvasHeight;
+	KComboBox           *kcfg_LanguageComboBox;
+	QLabel              *LanguageLabel;
+	ColorPicker         *picker;
+	QString              helpKeyword;
+	RestartOrBackDialog *dialog;
 	
 	// run related
-	void startExecution();
 	void finishExecution();
-	Executer           *exe;
-	ErrorMessage       *errMsg;
-	QButton            *button;
-	bool                allreadyError;
-	bool                executing;
+	Executer            *exe;
+	ErrorMessage        *errMsg;
+	bool                 executing;
 	
 	// fullscreen related
 	void updateFullScreen();
+	
+	signals:
+	void changeSpeed(int speed);
+	void unpauseExecution();
     
 	protected slots:
 	void slotNewFile();
@@ -135,12 +167,13 @@ class MainWindow : public KParts::MainWindow
 	void slotPrint();
 	
 	void slotExecute();
+	void slotPauseExecution();
 	void slotAbortExecution();
+	void slotChangeSpeed();
 	void slotInputDialog(QString& value);
 	void slotMessageDialog(QString text);
 	
 	void slotEditor();
-	void slotShowEditor();
 	void slotSetHighlightstyle(QString langCode);  
 	///The Edit -> Undo action from the KTextEditor part
 	void slotUndo();
@@ -199,7 +232,8 @@ class MainWindow : public KParts::MainWindow
 	void slotColorPicker();
 	///Turn Full Screen mode on or off
 	void slotToggleFullscreen();
-	void slotShowBackToFullScreenButton();
+	void slotFinishedFullScreenExecution();
+	void slotRestartFullScreen();
 	void slotBackToFullScreen();
 	void slotUpdateCanvas();
 
@@ -207,6 +241,7 @@ class MainWindow : public KParts::MainWindow
 	virtual bool event(QEvent* e);
 	bool queryClose();
 };
+
 
 
 #endif // _KTURTLE_H_

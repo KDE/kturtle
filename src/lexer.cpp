@@ -39,7 +39,7 @@ Lexer::Lexer(QTextIStream& iStream)
 
 Token Lexer::lex()
 {
-	skipSpaces(); // skips the white space that it quite likely infront of the Token
+	skipSpaces(); // skips the white space that it quite likely (indentation) infront of the Token
 
 	Token currentToken;
 	currentToken.type = tokNotSet; // not really needed
@@ -61,9 +61,8 @@ Token Lexer::lex()
 
 	if (currentChar == '#')
 	{
-		ungetChar(currentChar);
-		skipComment();
-		currentChar = getChar();
+		while ( !inputStream->atEnd() && !(currentChar == '\x0a' || currentChar == '\n') )
+			currentChar = getChar();
 	}
 	
 	// if (currentChar.category() == QChar::Separator_Line) somehow doesnt work
@@ -340,32 +339,17 @@ void Lexer::setTokenType(Token& currentToken)
 	}
 }
 
-void Lexer::skipComment()
-{
-	kdDebug(0)<<"Lexer::skipComment(), skipping COMMENT."<<endl;
-	QChar currentChar = getChar();
-	while ( !inputStream->atEnd() && currentChar == '#' )
-	{
-		while ( !inputStream->atEnd() && !(currentChar == '\x0a' || currentChar == '\n') )
-		{
-			currentChar = getChar();
-		}
-		kdDebug(0)<<"Lexer::skipComment(), skiped one commented line."<<endl;
-		currentChar = getChar();
-	}
-	ungetChar(currentChar);
-}
 
 void Lexer::skipSpaces()
 {
 	kdDebug(0)<<"Lexer::skipSpaces(), skipping SPACES."<<endl;
 	QChar currentChar = getChar();
 	// when the Separator_* groups can be identified in the QChar thing would be easier
-	while (!inputStream->atEnd() && ( currentChar.isSpace() && !(currentChar == '\x0a' || currentChar == '\n') ) )
+	while ( !inputStream->atEnd() && ( currentChar.isSpace() && !(currentChar == '\x0a' || currentChar == '\n') ) )
 	{
 		currentChar = getChar();
 	}
-	ungetChar(currentChar);
+	ungetChar(currentChar); // unget the tokEOL we likely just found
 }
 
 

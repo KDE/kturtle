@@ -1,0 +1,33 @@
+# color demo
+
+canvascolor 255,255,255
+hide
+
+repeat 5 [
+
+for c = 0 to 255 [
+  canvascolor 255-c,255,255
+]
+for c = 0 to 255 [
+  canvascolor 0,255-c,255
+]
+for c = 0 to 255 [
+  canvascolor c,0,255
+]
+for c = 0 to 255 [
+  canvascolor 255,c,255-c
+]
+for c = 0 to 255 [
+  canvascolor 255,255-c,0
+]
+for c = 0 to 255 [
+  canvascolor 255,0,c
+]
+for c = 0 to 255 [
+  canvascolor 255-c,0,255-c
+]
+for c = 0 to 255 [
+  canvascolor c,c,c
+]
+
+]

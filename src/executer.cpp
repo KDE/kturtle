@@ -51,12 +51,13 @@ bool Executer::run()
 {
 	bBreak = false;
 	bReturn = false;
+	bPause = false;
 	bAbort = false;
 	symtable main;
 	symbolTables.push(main); // new symbol table for main block
 	
 	TreeNode::const_iterator i;
-	for( i = tree->begin(); i != tree->end(); ++i )
+	for (i = tree->begin(); i != tree->end(); ++i)
 	{
 		if (bAbort) return false;
 		kapp->processEvents();
@@ -65,6 +66,46 @@ bool Executer::run()
 		symbolTables.pop(); //free up stack
 	}
 	return true;
+}
+
+void Executer::slowDown(TreeNode* node)
+{
+	switch (runSpeed)
+	{
+		case 1: // slow
+			startWaiting(0);
+			break;
+		
+		case 2: // slower
+			startWaiting(250);
+			break;
+		
+		case 3: // slowest
+			startWaiting(900);
+			break;
+		
+		default:
+			kdDebug(0)<<"Executer: Wrong execution speed given"<<endl;
+			break;
+	}
+	Token tok = node->getToken();
+	emit setSelection(tok.start.row, tok.start.col, tok.end.row, tok.end.col);
+}
+
+void Executer::slotChangeSpeed(int speed)
+{
+	runSpeed = speed;
+}
+
+void Executer::pause()
+{
+	// The next line is within all loops of the Executer
+	//     if (bAbort) return;
+	// mostly before
+	//     kapp->processEvents();
+	// this to keep the GUI of KTurtle accessible while executing the logo code
+	// so the Abort button can be clicked, and will function
+	bPause = true;
 }
 
 void Executer::abort()
@@ -92,7 +133,6 @@ void Executer::execute(TreeNode* node)
 		case expressionNode     : execExpression(/*node*/); break;
 		case idNode             : execId(node);             break;
 		case constantNode       : execConstant(/*node*/);   break; // does nothing value allready set
-		case stringConstantNode : execConstant(/*node*/);   break; // idem
 		
 		case addNode            : execAdd(node);            break;
 		case mulNode            : execMul(node);            break;
@@ -196,12 +236,13 @@ void Executer::execFunction(TreeNode* node)
 
 	// pass parameters to function
 	// by adding them to it's symboltable and setting the values
-	TreeNode::iterator pfrom,pto = funcIds->begin();
+	TreeNode::iterator pfrom, pto = funcIds->begin();
 	symtable funcSymTable;
 	
 	for (pfrom = callparams->begin(); pfrom != callparams->end(); ++pfrom )
 	{
 		if (bAbort) return;
+		if (bPause) startPausing();
 		kapp->processEvents();
 		
 		// execute the parameters which can be expressions
@@ -223,14 +264,14 @@ void Executer::execFunction(TreeNode* node)
 }
 
 
-//execute a function and expect and get return 
-//value from stack
-//first child   = function name
-//second child  = parameters
+// execute a function and expect and get return 
+// value from stack
+// first child   = function name
+// second child  = parameters
 void Executer::execRetFunction(TreeNode* node)
 {
 	execFunction(node);
-	if( runStack.size() == 0 )
+	if (runStack.size() == 0)
 	{
 		emit ErrorMsg(node->getToken(), i18n("Function %1 did not return a value.").arg( node->getLook() ), 5030);
 		return;
@@ -260,7 +301,9 @@ void Executer::execBlock(TreeNode* node)
 	TreeNode::iterator i;
 	for (i = node->begin(); i != node->end(); ++i)
 	{
+		if (runSpeed != 0) slowDown(*i);
 		if (bAbort) return;
+		if (bPause) startPausing();
 		kapp->processEvents();
 		
 		execute(*i);
@@ -289,6 +332,7 @@ void Executer::execForEach(TreeNode* node)
 	for ( ; i > 0; i-- )
 	{
 		if (bAbort) return;
+		if (bPause) startPausing();
 		kapp->processEvents();
 		
 		execute(statements);
@@ -323,8 +367,9 @@ void Executer::execFor(TreeNode* node)
 		for (double d = startVal.Number(); d <= stopVal.Number(); d = d + 1)
 		{
 			if (bAbort) return;
+			if (bPause) startPausing();
 			kapp->processEvents();
-			(symbolTables.top() )[name] = d;
+			( symbolTables.top() )[name] = d;
 			execute( statements );
 			if (bBreak || bReturn) break; //jump out loop
 		}
@@ -337,12 +382,13 @@ void Executer::execFor(TreeNode* node)
 		
 		execute(step);
 		Value stepVal = step->getValue();
-		bBreak=false;
+		bBreak = false;
 		if( (stepVal.Number() >= 0.0) && (startVal.Number() <= stopVal.Number() ) )
 		{
 			for( double d = startVal.Number(); d <= stopVal.Number(); d = d + stepVal.Number() )
 			{
 				if (bAbort) return;
+				if (bPause) startPausing();
 				kapp->processEvents();
 				
 				(symbolTables.top() )[name] = d;
@@ -355,6 +401,7 @@ void Executer::execFor(TreeNode* node)
 			for (double d = startVal.Number(); d >= stopVal.Number(); d = d + stepVal.Number() )
 			{
 				if (bAbort) return;
+				if (bPause) startPausing();
 				kapp->processEvents();
 				
 				( symbolTables.top() )[name] = d;
@@ -373,14 +420,15 @@ void Executer::execRepeat(TreeNode* node)
 	TreeNode* value = node->firstChild();
 	TreeNode* statements = node->secondChild();
 	
-	bBreak=false;
-	execute( value );
+	bBreak = false;
+	execute(value);
 	for ( int i = ROUND2INT( value->getValue().Number() ); i > 0; i-- )
 	{
 		if (bAbort) return;
+		if (bPause) startPausing();
 		kapp->processEvents();
 		
-		execute( statements );
+		execute(statements);
 		if (bBreak || bReturn) break; //jump out loop
 	}
 	bBreak = false;
@@ -397,6 +445,7 @@ void Executer::execWhile(TreeNode* node)
 	while (condition->getValue().Number() != 0)
 	{
 		if (bAbort) return;
+		if (bPause) startPausing();
 		kapp->processEvents();
 		
 		execute(statements);
@@ -464,9 +513,7 @@ void Executer::execAdd(TreeNode* node)
 	Value left( exec2getValue( node->firstChild() ) );
 	Value right( exec2getValue( node->secondChild() ) );
 	
-	if (left.Type() == numberType && right.Type() == numberType)
-		node->setValue( left + right );
-	
+	if (left.Type() == numberValue && right.Type() == numberValue) node->setValue( left + right );
 	else node->setValue( left.String().append( right.String() ) );
 }
 
@@ -476,9 +523,7 @@ void Executer::execMul(TreeNode* node)
 	Value left( exec2getValue( node->firstChild() ) );
 	Value right( exec2getValue( node->secondChild() ) );
 	
-	if (left.Type() == numberType && right.Type() == numberType)
-		node->setValue( left * right );
-	
+	if (left.Type() == numberValue && right.Type() == numberValue) node->setValue( left * right );
 	else emit ErrorMsg(node->getToken(), i18n("Can only multiply numbers."), 9000);
 }
 
@@ -488,7 +533,7 @@ void Executer::execDiv(TreeNode* node)
 	Value left( exec2getValue( node->firstChild() ) );
 	Value right( exec2getValue( node->secondChild() ) );
 	
-	if (left.Type() == numberType && right.Type() == numberType)
+	if (left.Type() == numberValue && right.Type() == numberValue)
 	{
 		if (right.Number() == 0) emit ErrorMsg(node->getToken(), i18n("Cannot divide by zero."), 9000);
 		else node->setValue( left / right );
@@ -502,7 +547,7 @@ void Executer::execSub(TreeNode* node)
 	Value left( exec2getValue( node->firstChild() ) );
 	Value right( exec2getValue( node->secondChild() ) );
 	
-	if (left.Type() == numberType && right.Type() == numberType)
+	if (left.Type() == numberValue && right.Type() == numberValue)
 		node->setValue( left - right );
 	
 	else emit ErrorMsg(node->getToken(), i18n("Can only subtract numbers."), 9000);
@@ -580,7 +625,7 @@ void Executer::execOr(TreeNode* node)
 
 void Executer::execNot(TreeNode* node)
 {
-	node->setValue( exec2getValue( node->firstChild() ).Number() != 0 ); 
+	node->setValue( exec2getValue( node->firstChild() ).Number() == 0 ); 
 }
 
 
@@ -671,7 +716,7 @@ void Executer::execReset(TreeNode* node)
 
 void Executer::execMessage(TreeNode* node)
 {
-	if ( checkParameterQuantity(node, 1, 5060) && checkParameterType(node, stringType, 5060) )
+	if ( checkParameterQuantity(node, 1, 5060) && checkParameterType(node, stringValue, 5060) )
 		emit MessageDialog( node->firstChild()->getValue().String() );
 }
 
@@ -685,7 +730,7 @@ void Executer::execGoX(TreeNode* node)
 	if ( !checkParameterQuantity(node, 1, 5060) ) return;
 	TreeNode* param1 = node->firstChild();
 	execute(param1);
-	if ( checkParameterType(node, numberType, 5060) )
+	if ( checkParameterType(node, numberValue, 5060) )
 	{
 		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
 		emit GoX(x);
@@ -697,7 +742,7 @@ void Executer::execGoY(TreeNode* node)
 	if ( !checkParameterQuantity(node, 1, 5060) ) return;
 	TreeNode* param1 = node->firstChild();
 	execute(param1);
-	if ( checkParameterType(node, numberType, 5060) )
+	if ( checkParameterType(node, numberValue, 5060) )
 	{
 		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
 		emit GoY(x);
@@ -709,7 +754,7 @@ void Executer::execForward(TreeNode* node)
 	if ( !checkParameterQuantity(node, 1, 5060) ) return;
 	TreeNode* param1 = node->firstChild();
 	execute(param1);
-	if ( checkParameterType(node, numberType, 5060) )
+	if ( checkParameterType(node, numberValue, 5060) )
 	{
 		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
 		emit Forward(x);
@@ -721,7 +766,7 @@ void Executer::execBackward(TreeNode* node)
 	if ( !checkParameterQuantity(node, 1, 5060) ) return;
 	TreeNode* param1 = node->firstChild();
 	execute(param1);
-	if ( checkParameterType(node, numberType, 5060) )
+	if ( checkParameterType(node, numberValue, 5060) )
 	{
 		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
 		emit Backward(x);
@@ -733,7 +778,7 @@ void Executer::execDirection(TreeNode* node)
 	if ( !checkParameterQuantity(node, 1, 5060) ) return;
 	TreeNode* param1 = node->firstChild();
 	execute(param1);
-	if ( checkParameterType(node, numberType, 5060) )
+	if ( checkParameterType(node, numberValue, 5060) )
 	{
 		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
 		emit Direction(x);
@@ -745,7 +790,7 @@ void Executer::execTurnLeft(TreeNode* node)
 	if ( !checkParameterQuantity(node, 1, 5060) ) return;
 	TreeNode* param1 = node->firstChild();
 	execute(param1);
-	if ( checkParameterType(node, numberType, 5060) )
+	if ( checkParameterType(node, numberValue, 5060) )
 	{
 		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
 		emit TurnLeft(x);
@@ -757,7 +802,7 @@ void Executer::execTurnRight(TreeNode* node)
 	if ( !checkParameterQuantity(node, 1, 5060) ) return;
 	TreeNode* param1 = node->firstChild();
 	execute(param1);
-	if ( checkParameterType(node, numberType, 5060) )
+	if ( checkParameterType(node, numberValue, 5060) )
 	{
 		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
 		emit TurnRight(x);
@@ -769,7 +814,7 @@ void Executer::execSetPenWidth(TreeNode* node)
 	if ( !checkParameterQuantity(node, 1, 5060) ) return;
 	TreeNode* param1 = node->firstChild();
 	execute(param1);
-	if ( checkParameterType(node, numberType, 5060) )
+	if ( checkParameterType(node, numberValue, 5060) )
 	{
 		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
 		if (x < 1)
@@ -784,7 +829,7 @@ void Executer::execSpriteChange(TreeNode* node)
 	if ( !checkParameterQuantity(node, 1, 5060) ) return;
 	TreeNode* param1 = node->firstChild();
 	execute(param1);
-	if ( checkParameterType(node, numberType, 5060) )
+	if ( checkParameterType(node, numberValue, 5060) )
 	{
 		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
 		emit SpriteChange(x);
@@ -796,7 +841,7 @@ void Executer::execFontSize(TreeNode* node)
 	if ( !checkParameterQuantity(node, 1, 5060) ) return;
 	TreeNode* param1 = node->firstChild();
 	execute(param1);
-	if ( checkParameterType(node, numberType, 5060) )
+	if ( checkParameterType(node, numberValue, 5060) )
 	{
 		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
 		if ( x < 0 || x > 350 )
@@ -819,7 +864,7 @@ void Executer::execGo(TreeNode* node)
 	execute(nodeX); // executing
 	execute(nodeY);
 	
-	if ( checkParameterType(node, numberType, 5060) )
+	if ( checkParameterType(node, numberValue, 5060) )
 	{
 		int x = ROUND2INT( nodeX->getValue().Number() ); // converting & rounding to int
 		int y = ROUND2INT( nodeY->getValue().Number() );
@@ -835,7 +880,7 @@ void Executer::execResizeCanvas(TreeNode* node)
 	execute(nodeX); // executing
 	execute(nodeY);
 	
-	if ( checkParameterType(node, numberType, 5060) )
+	if ( checkParameterType(node, numberValue, 5060) )
 	{
 		int x = ROUND2INT( nodeX->getValue().Number() ); // converting & rounding to int
 		int y = ROUND2INT( nodeY->getValue().Number() );
@@ -854,11 +899,13 @@ void Executer::execRandom(TreeNode* node)
 	execute(nodeX); // executing
 	execute(nodeY);
 	
-	if ( !checkParameterType(node, numberType, 5060) ) return;
+	if ( !checkParameterType(node, numberValue, 5060) ) return;
 	double x = nodeX->getValue().Number();
 	double y = nodeY->getValue().Number();
 	double r = (double)( KApplication::random() / RAND_MAX );
+	// kdDebug(0)<<"WHAT THE HECK!?? ya call his random?  ->  "<<r<<endl;
 	node->setValue( r * ( y - x ) + x );
+	
 }
 
 
@@ -874,7 +921,7 @@ void Executer::execSetFgColor(TreeNode* node)
 	execute(nodeR); // executing
 	execute(nodeG);
 	execute(nodeB);
-	if ( checkParameterType(node, numberType, 5060) )
+	if ( checkParameterType(node, numberValue, 5060) )
 	{
 		int r = ROUND2INT( nodeR->getValue().Number() ); // converting & rounding to int
 		int g = ROUND2INT( nodeG->getValue().Number() );
@@ -895,7 +942,7 @@ void Executer::execSetBgColor(TreeNode* node)
 	execute(nodeR); // executing
 	execute(nodeG);
 	execute(nodeB);
-	if ( checkParameterType(node, numberType, 5060) )
+	if ( checkParameterType(node, numberValue, 5060) )
 	{
 		int r = ROUND2INT( nodeR->getValue().Number() ); // converting & rounding to int
 		int g = ROUND2INT( nodeG->getValue().Number() );
@@ -923,31 +970,30 @@ void Executer::execInputWindow(TreeNode* node)
 
 	QString value = node->firstChild()->getValue().String();
 	emit InputDialog(value);
-	bool ok = true;
-	value.toFloat(&ok); // to see if the value from the InpDialog is a float
-	if (value == "")
-	{
-		node->setValue(""); // this prevents a crash :)
-	}
-	else if (ok)
-	{
-		node->setValue(value);
-		node->setType(constantNode);
-	}
+	
+	node->setType(constantNode);
+	if ( value.isEmpty() ) node->getValue().resetValue(); // set value back to empty
 	else
 	{
-		node->setValue(value);
-		node->setType(stringConstantNode);
+		bool ok = true;
+		double num = value.toDouble(&ok); // to see if the value from the InpDialog is a float
+		if (ok) node->setValue(num);
+		else    node->setValue(value);
 	}
 }
 
 void Executer::execPrint(TreeNode* node)
 {
+	if (node->size() == 0) 
+	{
+		emit ErrorMsg(node->getToken(), i18n("The print command needs input"), 5050);
+		return;
+	}
 	TreeNode::iterator i;
 	QString str = "";
 	for (i = node->begin(); i != node->end(); ++i)
 	{
-		execute( *i ); //execute expression
+		execute(*i); // execute expression
 		str = str + (*i)->getValue().String();
 	}
 	emit Print(str);
@@ -956,13 +1002,10 @@ void Executer::execPrint(TreeNode* node)
 void Executer::execFontType(TreeNode* node)
 {
 	// if not 2 params go staight to the checkParam, diplay the error, and return to prevent a crash
-	if ( !checkParameterQuantity(node, 2, 5060) && !checkParameterType(node, stringType, 5060) ) return;
+	if ( !checkParameterQuantity(node, 2, 5060) && !checkParameterType(node, stringValue, 5060) ) return;
 	
 	QString extra;
-	if (node->size() == 2)
-	{
-		QString extra = node->secondChild()->getValue().String();
-	}
+	if (node->size() == 2) QString extra = node->secondChild()->getValue().String();
 	QString family = node->firstChild()->getValue().String();
 	emit FontType(family);
 }
@@ -973,20 +1016,20 @@ void Executer::execWait(TreeNode* node)
 	if ( !checkParameterQuantity(node, 1, 5060) ) return;
 	TreeNode* param1 = node->firstChild();
 	execute(param1);
-	if ( !checkParameterType(node, numberType, 5060) ) return;
-	float sec = param1->getValue().Number();
-	startWaiting(sec);
+	if ( !checkParameterType(node, numberValue, 5060) ) return;
+	int msec = (int)( 1000 * param1->getValue().Number() );
+	startWaiting(msec);
 }
 
-void Executer::startWaiting(float sec)
+void Executer::startWaiting(int msec)
 {
 	bStopWaiting = false;
-	int msec = (int)( sec * 1000 ); // convert
 	// call a timer that sets stopWaiting to true when it runs 
 	QTimer::singleShot( msec, this, SLOT( slotStopWaiting() ) );
 	while (bStopWaiting == false)
 	{
-		if (bAbort) return;
+		if (bAbort) return; // waits need to be interrupted by the stop action
+		if (bPause) startPausing();
 		kapp->processEvents();
 
 		// only 10 times per second is enough... else the CPU gets 100% loaded ( not nice :)
@@ -996,8 +1039,25 @@ void Executer::startWaiting(float sec)
 
 void Executer::slotStopWaiting()
 {
-    bStopWaiting = true;
+	bStopWaiting = true;
 }
+
+void Executer::startPausing()
+{
+	while (bPause == true)
+	{
+		if (bAbort) return; // waits need to be interrupted by the stop action
+		kapp->processEvents();
+		// only 10 times per second is enough... else the CPU gets 100% loaded ( not nice :)
+		usleep(100000);
+	}
+}
+
+void Executer::slotStopPausing()
+{
+	bPause = false;
+}
+
 
 
 
@@ -1041,14 +1101,14 @@ bool Executer::checkParameterType(TreeNode* node, int valueType, int errorCode)
 		{
 			switch (valueType)
 			{
-				case stringType:
+				case stringValue:
 					if (quantity == 1)
 						emit ErrorMsg(node->getToken(), i18n("The %1 command only accepts a string as its parameter.").arg( node->getLook() ), errorCode); 
 					else
 						emit ErrorMsg(node->getToken(), i18n("The %1 command only accepts strings as its parameters.").arg( node->getLook() ), errorCode);
 					break;
 				
-				case numberType:
+				case numberValue:
 					if (quantity == 1)
 						emit ErrorMsg(node->getToken(), i18n("The %1 command only accepts a number as its parameter.").arg( node->getLook() ), errorCode);
 					else

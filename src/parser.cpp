@@ -88,19 +88,38 @@ void Parser::matchToken(int expectedToken)
 	if (currentToken.type == expectedToken)
 	{
 		getToken(); // get a new token
+		return;
 	}
-	else
+	
+	switch (expectedToken)
 	{
-		switch (expectedToken)
-		{
-			case tokEOL:
-				Error(preservedToken, i18n("Unexpected instruction after the %1 command, please use only one instruction per line.").arg(preservedToken.look), 1010);
-				break;
-
-			default:
-				Error(currentToken, i18n("Could not match token-number: '%1'").arg(expectedToken), 1010);
-				break;
-		}
+		case tokEOL:
+			Error(currentToken, i18n("Unexpected intruction after the '%1' command, please use only one instuction per line").arg(preservedToken.look), 1010);
+			break;
+		
+		case tokBegin:
+			Error(preservedToken, i18n("Expected '['"), 1010);
+			break;
+		
+		case tokTo:
+			Error(currentToken, i18n("Expected 'to' after the '%1' command").arg(preservedToken.look), 1010);
+			break;
+		
+		case tokAssign:
+			Error(currentToken, i18n("Expected '=' after the '%1' command").arg(preservedToken.look), 1010);
+			break;
+		
+		case tokEnd:
+			Error(currentToken, i18n("Expected ']' after the '%1' command").arg(preservedToken.look), 1010);
+			break;
+		
+		case tokUnknown:
+			Error(preservedToken, i18n("Expected a name after the '%1' command").arg(preservedToken.look), 1010);
+			break;
+		
+		default:
+			Error(currentToken, i18n("UNDEFINED ERROR NR %1: please sent this Logo script to KTurtle developers").arg(expectedToken), 1010);
+			break;
 	}
 }
 
@@ -121,7 +140,7 @@ TreeNode* Parser::getId()
 {
 	TreeNode* n = new TreeNode(currentToken, idNode);
 	n->setLook(currentToken.look);
-	matchToken(tokUnknown); // Id's are ofcouse not yet known
+	matchToken(tokUnknown); // Id's are ofcouse not yet known 
 	return n;
 }
 
@@ -133,7 +152,10 @@ TreeNode* Parser::FunctionCall(Token maybeFunctionCall)
 	TreeNode* fcall = new TreeNode(maybeFunctionCall, functionCallNode);
 
 	TreeNode* paramList = new TreeNode(currentToken, idListNode, "idlist");
-	if (currentToken.type != tokEOL && currentToken.type != tokEOF)
+	// if (currentToken.type != tokEOL && currentToken.type != tokEOF)
+	if (currentToken.type == tokNumber ||
+	    currentToken.type == tokString ||
+	    currentToken.type == tokUnknown) // only if there is a possible parameter given after the call...
 	{
 		TreeNode* expr = Expression();
 		if (expr->getType() == Unknown) Error(currentToken, i18n("Expected an expression"), 1020);
@@ -152,11 +174,10 @@ TreeNode* Parser::FunctionCall(Token maybeFunctionCall)
 }
 
 
-/*---------------------------------------------------------------*/
-/* Parse and Translate a Math Factor */
 TreeNode* Parser::Factor()
 {
 	TreeNode* node;
+	Token rememberedToken = currentToken;
 	switch (currentToken.type)
 	{
 		case tokBraceOpen:
@@ -167,28 +188,30 @@ TreeNode* Parser::Factor()
 
 		case tokUnknown:
 			node = getId();
-			if (currentToken.type == tokBraceOpen) // is function call
+			if (learnedFunctionList.contains(rememberedToken.look) > 0) // is function call
 			{
-				QString name = node->getLook();
 				delete node;
-				node = FunctionCall(currentToken);
+				node = FunctionCall(rememberedToken);
 				node->setType(funcReturnNode); // expect returned value on stack
 			}
 			break;
 
 		case tokString:
-			node = new TreeNode(currentToken, stringConstantNode);
-			if ( currentToken.look.endsWith("\"") )
-			{
-				currentToken.look.remove(0, 1).truncate( currentToken.look.length() - 2 ); // cut off the quotes
+			node = new TreeNode(currentToken, constantNode);
+			{ // extra scope to localize the QString 'str'
+				QString str = currentToken.look;
+				if ( currentToken.look.endsWith("\"") )
+				{
+					// cut off the quotes and store the value
+					str.remove(0, 1).truncate( currentToken.look.length() - 2 );
+				}
+				else // problems but we need to keep it moving
+				{
+					str.remove(0, 1); // cut off the first quote only
+					Error(currentToken, i18n("String text not properly delimited with a ' \" ' (double quote)"), 1060);
+				}
+				node->setValue(str);
 			}
-			else // problems but we need to keep it moving
-			{
-				currentToken.look.remove(0, 1); // cut off the first quote only
-				Error(currentToken, i18n("String text not properly delimited with a \" (double quote)"), 1060);
-			}
-			node->setValue(currentToken.look);
-			node->setLook("string-constant");
 			matchToken(tokString);
 			break;
 
@@ -216,13 +239,14 @@ TreeNode* Parser::Factor()
 
 		default:
 			QString s = currentToken.look;
-			if ( s.isEmpty() || currentToken.type == tokEOF ) {
-				kdDebug(0)<<"EXPECTED AN EXPRESSION"<<endl;
-				Error(currentToken, i18n("DEBUG: This message should be avoided, see the Parser::Repeat for the good solution"), 1020);
+			if ( s.isEmpty() || currentToken.type == tokEOF )
+			{
+				Error(currentToken, i18n("INTERNAL ERROR NR %1: please sent this Logo script to KTurtle developers").arg(1), 1020);
+				// if this error occurs the see the Parser::Repeat for the good solution using 'preservedToken'
 			}
 			else
 			{
-				Error(currentToken, i18n("Cannot understand '%1' in expression").arg(s), 1020);
+				Error(currentToken, i18n("Cannot understand '%1', expected an expression after the '%2' command").arg(s).arg(preservedToken.look), 1020);
 			}
 			node = new TreeNode(currentToken, Unknown);
 			getToken();
@@ -234,7 +258,8 @@ TreeNode* Parser::Factor()
 
 TreeNode* Parser::signedFactor()
 {
-	TreeNode* node; //used by '-' and tokNot
+	// see if there is a tokPlus, tokMinus or tokNot infront of the factor
+	TreeNode* node;
 	switch (currentToken.type)
 	{
 		case tokPlus:
@@ -246,8 +271,9 @@ TreeNode* Parser::signedFactor()
 			preservedToken = currentToken;
 			matchToken(tokMinus);
 			node = Factor();
-			if(node->getType() == constantNode)
+			if (node->getType() == constantNode)
 			{
+				// in case of just a constant (-3) situation
 				Value num = node->getValue();
 				num.setNumber( -num.Number() );
 				node->setValue(num);
@@ -255,6 +281,7 @@ TreeNode* Parser::signedFactor()
 			}
 			else
 			{
+				// in case of a variable or other situation (-a)
 				TreeNode* minus = new TreeNode(preservedToken, minusNode);
 				minus->appendChild(node);
 				return minus;
@@ -265,22 +292,15 @@ TreeNode* Parser::signedFactor()
 			preservedToken = currentToken;
 			matchToken(tokNot);
 			node = Factor();
-			if (node->getType() == constantNode)
-			{
-				Value num = node->getValue();
-				num.setNumber( 1 - num.Number() );
-				node->setValue(num);
-				return node;
-			}
-			else
-			{
-				TreeNode* n = new TreeNode(preservedToken, notNode);
-				n->appendChild(node);
-				return n;
+			{ // extra scope needed to localize not_Node
+				TreeNode* not_Node = new TreeNode(preservedToken, notNode);
+				not_Node->appendChild(node);
+				return not_Node;
 			}
 			break;
 
 		default:
+			// fall-through safety
 			return Factor();
 			break;
 	}
@@ -288,8 +308,6 @@ TreeNode* Parser::signedFactor()
 
 
 
-/*---------------------------------------------------------------*/
-/* Parse and Translate a Math Term */
 TreeNode* Parser::Term()
 {
 	TreeNode* termNode = signedFactor();
@@ -330,29 +348,26 @@ TreeNode* Parser::Term()
 				return pos;
 				break;
 		}
-		if (right != NULL)
-		{
-			pos->appendChild(right);
-		}
+		if (right != NULL) pos->appendChild(right);
 		termNode = pos;
-	}   //end while
+	}
 	return termNode;
 }
 
 
-bool Parser::isAddOp(Token t) {
-	return (
-		(t.type == tokPlus)  ||
-		(t.type == tokMinus) ||
-		(t.type == tokGt)    ||
-		(t.type == tokGe)    ||
-		(t.type == tokLt)    ||
-		(t.type == tokLe)    ||
-		(t.type == tokEq)    ||
-		(t.type == tokNe)    ||
-
-		(t.type == tokOr)    ||
-		(t.type == tokGe) );
+bool Parser::isAddOp(Token t)
+{
+	return ( (t.type == tokPlus)  ||
+	         (t.type == tokMinus) ||
+	         (t.type == tokGt)    ||
+	         (t.type == tokGe)    ||
+	         (t.type == tokLt)    ||
+	         (t.type == tokLe)    ||
+	         (t.type == tokEq)    ||
+	         (t.type == tokNe)    ||
+		
+	         (t.type == tokOr)    ||
+	         (t.type == tokGe) );
 }
 
 
@@ -360,7 +375,7 @@ bool Parser::isAddOp(Token t) {
 /* Parse and Translate an Expression */
 TreeNode* Parser::Expression()
 {
-	TreeNode* retExp = Term();
+	TreeNode* retExp = Term(); // preset the base-TreeNode as it eventually will be returned
 	TreeNode* pos = retExp;
 	TreeNode* left = NULL;
 	TreeNode* right = NULL;
@@ -374,7 +389,7 @@ TreeNode* Parser::Expression()
 		{
 			case tokPlus:
 				matchToken(tokPlus);
-				right = Term() ;
+				right = Term();
 				pos->setType(addNode);
 				break;
 
@@ -445,7 +460,12 @@ TreeNode* Parser::Assignment(Token t)
 	matchToken(tokAssign); // match the '='
 
 	// the child is the expression or RHV of assignment
-	TreeNode* expr = Expression();
+	TreeNode* expr = NULL;
+// 	if (currentToken.type == tokUnknown) expr = Other(); // in case of an functioncall
+// 	else expr = Expression();               -------> fuctioncalls get caught in Expression() and co.
+	
+	expr = Expression();
+	
 	node->appendChild(expr);
 
 	return node;
@@ -501,33 +521,25 @@ TreeNode* Parser::Statement()
 		case tokWrapOn        : return WrapOn();           break;
 		case tokWrapOff       : return WrapOff();          break;
 		case tokReset         : return Reset();            break;
-
-		case tokEOF           : return EndOfFile();            break;
-
+		
+		case tokEOF           : return EndOfFile();        break;
+		
 		case tokEnd           : break; //caught by Block
 
-		case tokBegin         : Error(currentToken, i18n("Begin without matching end"), 1050);
+		case tokBegin         : Error(currentToken, i18n("Cannot understand '['"), 1050);
 		                        getToken();
 		                        return new TreeNode(currentToken, Unknown);
 		                        break;
 
 		default               : break;
 	}
-// 	const QString beginChar = lexer->name2key("begin");
-// 	const QString currentTokenChar = currentToken.look;
-// 	if (currentTokenChar == beginChar) {
-// 		Error( i18n("'%1' is expected").arg(beginChar), 1060);
-// 	} else {
-// 		Error( i18n("'%1' is not a Logo command").arg(currentTokenChar), 1060);
-// 	}
-
 	if (currentToken.type != tokEnd)
 	{
-		Error(currentToken, i18n("'%1' is not a Logo command").arg(currentToken.look), 1060);
+		Error(currentToken, i18n("Cannot understand '%1'").arg(currentToken.look), 1060);
 	}
 
 	getToken();
-	return new TreeNode(currentToken, Unknown); // fallback for unknowns
+	return new TreeNode(currentToken, Unknown); // fall-though for unknowns
 }
 
 
@@ -537,6 +549,7 @@ TreeNode* Parser::Block()
 
 	while (currentToken.type == tokEOL) getToken(); // skip newlines
 	matchToken(tokBegin);
+	while (currentToken.type == tokEOL) getToken(); // skip newlines
 	while ( (currentToken.type != tokEnd) && (currentToken.type != tokEOF) )
 	{
 		block->appendChild( Statement() );
@@ -746,8 +759,8 @@ TreeNode* Parser::InputWindow()
 	TreeNode* node = new TreeNode(currentToken, InputWindowNode);
 	preservedToken = currentToken;
 	getToken();
-	appendParameters(node);
-	matchToken(tokEOL);
+	node->appendChild( Expression() );
+	// matchToken(tokEOL);  this command can return values so can be used as expression/parameter
 	return node;
 }
 
@@ -786,8 +799,8 @@ TreeNode* Parser::Random()
 	TreeNode* node = new TreeNode(currentToken, RandomNode);
 	preservedToken = currentToken;
 	getToken();
-	appendParameters(node);
-	matchToken(tokEOL);
+	node->appendChild( Expression() );
+	// matchToken(tokEOL);  this command can return values so can be used as expression/parameter
 	return node;
 }
 
@@ -806,8 +819,8 @@ TreeNode* Parser::ExternalRun()
 	TreeNode* node = new TreeNode(currentToken, runNode);
 	preservedToken = currentToken;
 	getToken();
-	appendParameters(node);
-	matchToken(tokEOL);
+	node->appendChild( Expression() );
+	// matchToken(tokEOL);  this command can return values so can be used as expression/parameter
 	return node;
 }
 
@@ -843,6 +856,7 @@ TreeNode* Parser::ResizeCanvas()
 TreeNode* Parser::SetFgColor()
 {
 	TreeNode* node = new TreeNode(currentToken, SetFgColorNode);
+	preservedToken = currentToken;
 	getToken();
 	appendParameters(node);
 	matchToken(tokEOL);
@@ -852,6 +866,7 @@ TreeNode* Parser::SetFgColor()
 TreeNode* Parser::SetBgColor()
 {
 	TreeNode* node = new TreeNode(currentToken, SetBgColorNode);
+	preservedToken = currentToken;
 	getToken();
 	appendParameters(node);
 	matchToken(tokEOL);
@@ -863,26 +878,23 @@ TreeNode* Parser::SetBgColor()
 
 // Weirdo's (learn, execution controllers, print, and Other()s)
 
-/*==================================================================
-   EBNF for a function
-   <function> := tokId '(' <idlist> ')' <block>
-
-   we can safely use tokId because we require "(" and ")" to mark the params
-   to be given after the id when it is called,
-   if this were not the case
-   we would have to extend the lexer so that it gives a
-   tokFunctionId whenever an id has the same name as a function...
-===================================================================*/
 TreeNode* Parser::Learn()
 {
-	matchToken(tokLearn);
+	preservedToken = currentToken;
+	matchToken(tokLearn); // skip the 'dummy' command
 	TreeNode* func = new TreeNode(currentToken, functionNode);
 	getToken(); // get the token after the function's name
 
 	TreeNode* idList = new TreeNode(currentToken, idListNode, "idlist");
 	if (currentToken.type != tokBegin)
 	{
-		idList->appendChild( getId() );
+		if (currentToken.type == tokUnknown) idList->appendChild( getId() );
+		else
+		{
+			Error(currentToken, "Expected a parameter name or a '[' after the learn command.", 3030);
+			getToken(); // this recovers from the error
+		}
+		
 		while (currentToken.type == tokComma)
 		{
 			matchToken(tokComma);
@@ -899,75 +911,55 @@ TreeNode* Parser::Learn()
 }
 
 
-/*
-  <if> ::= tokIf <expression> ( <statement> | <block> )
-                ( tokElse ( <statement> | <block> ) )?
-
- the expression is in first child
- the first block or statement is in second child
- the else block or statement is in third child
-*/
 TreeNode* Parser::If()
 {
 	TreeNode* node = new TreeNode(currentToken, ifNode);
+	preservedToken = currentToken;
 	matchToken(tokIf);
 
 	node->appendChild( Expression() );
 
 	if (currentToken.type == tokDo) getToken(); // skip dummy word 'do'
 
-	if (currentToken.type == tokBegin) {  //if followed by a block
-		node->appendChild( Block() );
-	} else {   //if followed by single statement
-		node->appendChild( Statement() );
-	}
+	if (currentToken.type == tokBegin) node->appendChild( Block() ); // if followed by a block
+	else node->appendChild( Statement() ); // if followed by single statement
 
 	if (currentToken.type == tokElse) // else part
 	{
 		matchToken(tokElse);
+		
+		if (currentToken.type == tokDo) getToken(); // next word
 
-		if (currentToken.type == tokDo) {  // skip the 'do'
-			getToken(); // next word
-		}
-
-		if(currentToken.type == tokBegin) {  //else is followed by block
-			node->appendChild( Block() );
-		} else {
-			node->appendChild( Statement() );
-		}
-
+		if(currentToken.type == tokBegin) node->appendChild( Block() ); // else is followed by block
+		else node->appendChild( Statement() );
 	}
 
 	return node;
 }
 
-/*
-  <while> ::= tokWhile <expression> ( <statement> | <block> )
- */
+
 TreeNode* Parser::While()
 {
 	TreeNode* node = new TreeNode(currentToken, whileNode);
+	preservedToken = currentToken;
 	matchToken(tokWhile);
 	node->appendChild( Expression() );
 	node->appendChild( Block() );
 	return node;
 }
 
-/*
-  <for> ::= tokFor <id>'='<expression> tokTo <expression> (<tokStep> <expression>)? ( <statement> | <block> )
-  for loops with step have 5 children
-  for loops without step have 4 children
-*/
+
 TreeNode* Parser::For()
 {
 	TreeNode* fNode = new TreeNode(currentToken, forNode);
+	preservedToken = currentToken;
 	matchToken(tokFor);
-	fNode->appendChild( getId() ); //loop id
+	fNode->appendChild( getId() ); // loop id
 	matchToken(tokAssign);
-
-	fNode->appendChild( Expression() ); //start value expression
+	
+	fNode->appendChild( Expression() ); // start value expression
 	matchToken(tokTo);
-	fNode->appendChild( Expression() ); //stop value expression
+	fNode->appendChild( Expression() ); // stop value expression
 
 	if (currentToken.type == tokStep)
 	{
@@ -975,14 +967,8 @@ TreeNode* Parser::For()
 		fNode->appendChild( Expression() ); //step expression
 	}
 
-	if (currentToken.type == tokBegin) // for followed by a block
-	{
-		fNode->appendChild( Block() );
-	}
-	else // while followed by single statement
-	{
-		fNode->appendChild( Statement() );
-	}
+	if (currentToken.type == tokBegin) fNode->appendChild( Block() ); // for followed by a block
+	else fNode->appendChild( Statement() ); // while followed by single statement
 
 	return fNode;
 }
@@ -991,6 +977,7 @@ TreeNode* Parser::For()
 TreeNode* Parser::Repeat()
 {
 	TreeNode* node = new TreeNode(currentToken, RepeatNode);
+	preservedToken = currentToken; // preserve token, else Match() will make sure it gets lost
 	matchToken(tokRepeat);
 	node->appendChild( Expression() );
 	node->appendChild( Block() );
@@ -1002,20 +989,15 @@ TreeNode* Parser::Repeat()
 TreeNode* Parser::ForEach()
 {
 	TreeNode* fNode = new TreeNode(currentToken, forEachNode);
+	preservedToken = currentToken;
 	matchToken(tokForEach);
 
 	fNode->appendChild( Expression() );
 	matchToken(tokIn);
 	fNode->appendChild( Expression() );
 
-	if(currentToken.type == tokBegin) // for followed by a block
-	{
-		fNode->appendChild( Block() );
-	}
-	else // while followed by single statement
-	{
-		fNode->appendChild( Statement() );
-	}
+	if (currentToken.type == tokBegin) fNode->appendChild( Block() ); // for followed by a block
+	else fNode->appendChild( Statement() ); // while followed by single statement
 
 	return fNode;
 }
@@ -1023,7 +1005,9 @@ TreeNode* Parser::ForEach()
 TreeNode* Parser::Print()
 {
 	TreeNode* node = new TreeNode(currentToken, printNode);
+	preservedToken = currentToken; // preserve token, else Match() will make sure it gets lost
 	getToken();
+	if (currentToken.type == tokEOL) return node; // print called without expressions
 	node->appendChild( Expression() ); // first expression
 	// following strings or expressions
 	while (currentToken.type == tokComma)
@@ -1060,16 +1044,23 @@ TreeNode* Parser::EndOfFile()
 }
 
 TreeNode* Parser::Other()
-{  // this is either an assignment or a function call!
+{
+	// this is either an assignment or a function call!
 	kdDebug(0)<<"Parser::Other()"<<endl;
-	Token presevedToken = currentToken; // preserve token, else Match() will make sure it gets lost
+	Token rememberedToken = currentToken; // preserve token, else Match() will make sure it gets lost
 	matchToken(tokUnknown);
 
-	if (learnedFunctionList.contains(presevedToken.look) > 0) return FunctionCall(presevedToken);
-	else if (currentToken.type == tokAssign)                  return Assignment(presevedToken);
-
-	Error(presevedToken, i18n("'%1' is neither a Logo command nor a learned routine.").arg(presevedToken.look), 1020);
-	TreeNode* errNode = new TreeNode(presevedToken, Unknown);
+	if (currentToken.type == tokAssign) return Assignment(rememberedToken);
+	else if (learnedFunctionList.contains(rememberedToken.look) > 0)
+	{
+		TreeNode* node;
+		node = FunctionCall(rememberedToken);
+// 		node->setType(funcReturnNode);
+		return node;
+	}
+	
+	Error(rememberedToken, i18n("'%1' is neither a Logo command nor a learned command.").arg(rememberedToken.look), 1020);
+	TreeNode* errNode = new TreeNode(rememberedToken, Unknown);
 	return errNode;
 }
 

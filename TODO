@@ -27,26 +27,25 @@ My [cies] TODO list (in this order!):
   
  
 >>>>> BUGs::Urgent
-	a = 1
-	b = 5
-	if a < 5 and b == 5 [
-		print "Hello"
-	]
-should print Hello, but doesn't. Just a < 5 works correctly, and the same for just b == 5.
------------> i layed the groundwork to fix this when i refactored the interpreter, main problem: and, or & not have never been fully implemented
 
 
-learn multiplyBySelf n
-[
-	r = n * n
-	return r
-]
-i = inputwindow "Please enter a number and press OK"
-print i + " multiplied by itself is: " + multiplyBySelf i
-should print i*i, but prints i instead.  -----> inputwindow allways returns strings!
+
+a = 1
+b = 5
+if (a < 5) and (b == 5) [
+	print "Hello"
+]   ------------> fixed!!!
 
 
-commenting out line using ctrl-D doesnt work anymore! arg!
+
+print inputwindow "bla"  --> wrong error FIXED!!
+print "---" + (inputwindow "bla") + "-----" WORX!
+
+
+
+commenting out line using ctrl-D doesnt work anymore! arg!  <--- starts to heavily annoyme!!
+
+
 
 
 >>>>> BUGs::Big
@@ -74,6 +73,7 @@ Need to work eventually:
 would be nice (not in yet):
 - message, just a dialog with sone user defined text
 - and a dialog that return a bool (YesNoDlg)
+- more drawing functions, use directly from QCanvas; like: filled circle, filled square, filled triangle
 - more expressers: isString, isNumber, isRound
 - round()
 - true and fasle as cunfiguarables  ---> in highlightstyle as Fat/grey
@@ -85,7 +85,11 @@ would be nice (not in yet):
 
 
 >>>>> BUGs::Small
+have the slow-execution cursor stop at more places like: inputwindow, inline functions
 
+if the inputwindow is canceled the returned value is empty. Yet we need to be a hybrid string ("") or number (0).
+
+hopefully a temporary thing with random... 
 
 
 
@@ -124,8 +128,6 @@ the default font can be a bit bigger and sans serif, and default the <tab> on 2 
 
 have a context menu on right-click in the canvas to save the drawing (right-click -> Save Canvas). cies: then also put "print canvas" and "fullscreen" in there
 
-
-proposal by Simone: have the cursor (the blue bar in katepart) walk with the interpreter
 
 
 CLI-file-selection (for mimetype eaz)

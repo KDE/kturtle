@@ -7,12 +7,14 @@
       <Action name="file_open_recent" />
       <Action name="open_examples" />
       <Separator />
-      <Action name="run" />
-      <Action name="stop" />
-      <Separator />
       <Action name="file_save" />
       <Action name="file_save_as" />
       <Action name="save_canvas" />
+      <Separator />
+      <Action name="run" />
+      <Action name="pause" />
+      <Action name="stop" />
+      <Action name="speed" />
       <Separator />
       <Action name="file_print" />
       <Separator />
@@ -82,11 +84,13 @@
   <Action name="edit_copy" />
   <Action name="edit_paste" />
   <Separator />
-  <Action name="full_screen" />
-  <Separator />
   <Action name="color_picker" />
   <Separator />
+  <Action name="full_screen" />
+  <Separator />
+  <Action name="speed" />
   <Action name="run" />
+  <Action name="pause" />
   <Action name="stop" />
 </ToolBar>
 

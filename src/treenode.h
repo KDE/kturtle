@@ -55,7 +55,6 @@ enum NodeType
 	expressionNode,
 	idNode,
 	constantNode,
-	stringConstantNode,
 
 	addNode,
 	mulNode,
@@ -140,8 +139,8 @@ enum NodeType
 // 	nodeBegin,
 // 	nodeEnd,
 // 
-// 	nodeNumber,
-// 	nodeString,
+// // 	nodeNumber,  --> constantNode
+// // 	nodeString,
 // 
 // 	nodeAssign,
 // 	
@@ -214,14 +213,14 @@ class TreeNode : public list<TreeNode*>
 {
 	public:
 	TreeNode(); // used for creation of the first node called 'tree', in the contructor of the parser 
-	TreeNode( TreeNode* ); //give parent
+	TreeNode( TreeNode* ); // give parent
 	TreeNode( Token, NodeType = Unknown, QString = QString() );
 	virtual ~TreeNode();
 
 	void init();
 
 	void appendChild(TreeNode*);
-	void appendSibling(TreeNode*); //works only if it has parent set!
+	void appendSibling(TreeNode*); // works only if it has parent set!
 
 	TreeNode* firstChild();
 	TreeNode* secondChild();
