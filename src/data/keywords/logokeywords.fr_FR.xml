@@ -78,7 +78,7 @@
   </command>
   
   <command name="by">
-    <keyword>by</keyword>
+    <keyword>par</keyword>
   </command>
 
 
@@ -216,7 +216,7 @@ speed **
   </command>
   
   <command name="repeat">
-    <keyword>repète</keyword>
+    <keyword>répète</keyword>
     <alias>rpt</alias>
   </command>
   

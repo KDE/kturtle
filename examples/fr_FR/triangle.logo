@@ -1,0 +1,6 @@
+# dessine un triangle
+
+répète 3 [
+  avance 100 
+  tournegauche 120
+]
