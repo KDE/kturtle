@@ -889,13 +889,17 @@ void MainWindow::slotUpdateSettings() {
 	slotSetHighlightstyle( kcfg_LanguageComboBox->currentText().section( "(", -1, -1 ).remove(")") );
 	Settings::setLanguageComboBox( kcfg_LanguageComboBox->currentItem() );
 	Settings::writeConfig();
-	statusBar()-> changeItem(i18n("Commands language: ")+Settings::logoLanguage(), IDS_LANG);
+	KConfig entry(locate("locale", "all_languages"));
+	entry.setGroup(Settings::logoLanguage().left(2));
+	statusBar()-> changeItem(i18n("Commands language: ")+entry.readEntry("Name"), IDS_LANG);
 }
 
 void MainWindow::readConfig(KConfig *config) {
 	config->setGroup("General Options");
 	m_recentFiles->loadEntries(config, "Recent Files");
-	statusBar()->changeItem(i18n("Commands language: ")+Settings::logoLanguage(), IDS_LANG);
+	KConfig entry(locate("locale", "all_languages"));
+	entry.setGroup(Settings::logoLanguage().left(2));
+	statusBar()-> changeItem(i18n("Commands language: ")+entry.readEntry("Name"), IDS_LANG);
 }
 
 void MainWindow::slotConfigureToolbars() {
