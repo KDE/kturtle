@@ -4,11 +4,12 @@
 
 #include <qpainter.h>
 #include <qpixmap.h>
-
 #include <kdebug.h>
 
 #include "settings.h"
 #include "canvas.h"
+
+const float PI=3.14159265358979323846;
 
 // Implementation of the canvas //
 //
@@ -38,7 +39,7 @@ void Canvas::initValues() {
     PenWidth = 0;
     Pen = true;
     Wrap = true;
-    Dir = 3.14159265358979323846 / 2;
+    Dir = PI/2;
     font = QFont("serif", 18);
     // the position
     slotCenter();
@@ -271,15 +272,15 @@ void Canvas::slotBackward(int x) {
 }
 
 void Canvas::slotDirection(double deg) {
-    Dir = ( -deg + 90 ) * 3.14159265358979323846 / 180;
+    Dir = ( -deg + 90 ) * PI / 180;
 }
 
 void Canvas::slotTurnLeft(double deg) {
-    Dir = Dir + ( deg * 3.14159265358979323846 / 180 );
+    Dir = Dir + ( deg * PI / 180 );
 }
 
 void Canvas::slotTurnRight(double deg) {
-    Dir = Dir - ( deg * 3.14159265358979323846 / 180 );
+    Dir = Dir - ( deg * PI / 180 );
 }
 
 void Canvas::slotCenter() {
