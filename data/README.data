@@ -1,0 +1,27 @@
+Dear Reader,
+
+this is your captain speaking...
+
+KTurtle currently has 3 types of 'data' (as we call it), namely:
+- examples (which are *.logo files)
+- logokeyword.*.xml files
+- logoheighlightstyle.*.xml files
+
+In this kdeedu/kturtle/data directory we only store the 'en_US' (default) versions of this data.
+This means that here we store:
+- the English logo examples (a, hopefully evergrowing, bunch of *.logo files)
+- the definition used to translate these examples in "logokeyword.en_US.xml"
+- and the accompanying highlight style in "logoheighlightstyle.en_US.xml"
+
+The makefile system makes sure every part gets installed to the right place.
+(if you dont believe me see the Makefile.am in this dir)
+
+For the other localizations a dir like this, containing these files for an other language, can be found in the kde-i18n module -- if it exists.
+On kdecvs this is: kde-i18n/*/data/kdeedu/kturtle  (for Dutch this would be: kde-i18n/nl/data/kdeedu/kturtle)
+
+If the localization of KTurtle to you favorite language does noet exist yet, you might concider making it. In the documentation of KTurtle you can find some pointers on how to start. If you face difficutly translating feel free to contact one of the KTrutle developers.
+
+
+Thanks for reading,
+
+Cies Breijs.

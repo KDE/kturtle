@@ -33,7 +33,7 @@ My [cies] TODO list (in this order!):
 		print "Hello"
 	]
 should print Hello, but doesn't. Just a < 5 works correctly, and the same for just b == 5.
------------> tryed to fix this... probably i have to look into the parser code and into the original WSBASIC implementation
+-----------> i layed the groundwork to fix this when i refactores the interpreter
 
 
 learn multiplyBySelf n
@@ -50,35 +50,21 @@ commenting out line using ctrl-D doesnt work anymore! arg!
 
 
 >>>>> BUGs::Big
-when there is an error, display only the most descriptive error
-  -IRC discussion: every compiler/interpreter should try to recover from a given error and continue if possible the idea is the compiler tryes to recover from the error and so it can tell you if there is more than one error and not just one by compilation attempt it may be assuming you missed a ; and maybe you missed a ( or something elase and following messages are completely wrong)  PARSER DOES NOT STOP ON ERRORS ANYMORE
-This can be a big issue, maybe I (cies) will have to learn more on interpreters to know how to properly do this error handling
-  - I pobably need to make an error message class that inherates some dialog thing (it should have: help-link-button, details, short error title and origion (Parse error), 'the-row-of-error', and a small description (maybe the description should contain links to help pagen on certain commands/ methods/ etc.) and maybe even a small hint or hint button      MORE OR LESS DONE
-  - I porbably have to refine the way error message get emitted, problems: Ugly-, short-, technical messages. Sometimes more than one messages gets emmitted right now only the 1st msg is shown -- the 1st may not allways point to the 'core of error'.
-
-How to make the errors more descriptive:  (my TODO for tomorow :) 
-- store row,col numbers in the tree so the executer can feed rows/cols back    DONE
-- learn something about interpreters and errorhandling (check the net)         FOUND NOTHING (ask my neighbour)
-
------> line numbering is somehow broken.... most likely in parser/lexer (only (syntax)error from the parsr such)
-            ISSUE TRACKED DOWN, line numbering will remain hard we we do not limit funtions to one line
-                                             IMPORTANT TODO!!!
-
+  - I porbably have to refine the way error message get emitted, problems: Ugly-, short-, technical messages.
+ 
+ I'll have to: 
+ 
 - try to break up/refine the most common errors
 - Reformulate all the error messages after simulating them
 - have links in there to corresponing help pages --> see WISHes
-- Maybe more desciptive error messages should be triggered by the 'Help on Error" and DubleClick, these messages should be stored in/out-side of the executer,parser, but maybe even better, the errormsg file. I18n should then be easy, and it should supply richtext ((k)html) + links to the manual. (this could be in the same dialog)
+- Maybe more LONGER, desciptive error messages should be triggered by the 'Help on Error", these messages should be stored in/out-side of the executer/parser, but maybe even better, the errormsg file. I18n should then be easy, and it should supply richtext ((k)html) + links to the manual. (this could be in the same dialog)
 - errmsgs should maybe be filtered since there is quite some garbage in the errors that come back.
-- possible no newlines in a command this could make the error messages more specific/descriptive. NOT NEEDED ATTHIS POINT
+- possible no newlines in a command this could make the error messages more specific/descriptive. DONE
 
 
 
 
 >>>>> BUGs::Regular
-
-Accept the making and calling of parameterless 'learned' commands (without using the '()')
->> consequece: the interpreter will not now the difference between a typo and a user command, this should be explained in the error message as this is done with most interpreted languages.
-
 cies: get all the commands in the logokeywords.*.xml file working properly, and remove the commands that are not needed:
 Need to work eventually:
 - input (without window, grabKeyEvents... not easy :)
@@ -86,7 +72,7 @@ Need to work eventually:
 - 'speed' will come later -- me has to focus and concentrate
 
 would be nice (not in yet):
-- ask (print ask 3>0) <.4999 -> "false",  >.5000 -> "true"
+- ask (print ask 3>0) <.4999 -> "false",  >.5000 -> "true"  >>>>  frameworke made for this!!
 - message, just a dialog with sone user defined text
 - more expressers: isString, isNumber, isRound
 - round()

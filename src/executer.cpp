@@ -152,6 +152,8 @@ void Executer::execute(TreeNode* node)
 		case WrapOffNode        : execWrapOff(node);        break;
 		case ResetNode          : execReset(node);          break;
 		
+		case EndOfFileNode      : break; // just do nothing is enough
+		
 		case Unknown            : // dont break but fallthrough to default
 		
 		default:
@@ -336,7 +338,7 @@ void Executer::execFor(TreeNode* node)
 		execute(step);
 		Value stepVal = step->getValue();
 		bBreak=false;
-		if( (stepVal.Number() >= 0.0) && (startVal.Number() <= stopVal.Number()) )
+		if( (stepVal.Number() >= 0.0) && (startVal.Number() <= stopVal.Number() ) )
 		{
 			for( double d = startVal.Number(); d <= stopVal.Number(); d = d + stepVal.Number() )
 			{
@@ -348,9 +350,9 @@ void Executer::execFor(TreeNode* node)
 				if (bBreak || bReturn) break; //jump out loop
 			}
 		}
-		else if ( (stepVal.Number() < 0.0) && (startVal.Number() >= stopVal.Number()) )
+		else if ( (stepVal.Number() < 0.0) && (startVal.Number() >= stopVal.Number() ) )
 		{
-			for (double d = startVal.Number(); d >= stopVal.Number(); d = d + stepVal.Number())
+			for (double d = startVal.Number(); d >= stopVal.Number(); d = d + stepVal.Number() )
 			{
 				if (bAbort) return;
 				kapp->processEvents();
@@ -571,13 +573,13 @@ void Executer::execOr(TreeNode* node)
 
 void Executer::execNot(TreeNode* node)
 {
-	node->setValue(1 - exec2getValue( node->firstChild() ).Number()); 
+	node->setValue(1 - exec2getValue( node->firstChild() ).Number() ); 
 }
 
 
 void Executer::execMinus(TreeNode* node)
 {
-	node->setValue(-exec2getValue( node->firstChild() ).Number()); 
+	node->setValue(-exec2getValue( node->firstChild() ).Number() ); 
 }
 
 
@@ -631,8 +633,8 @@ void Executer::execGo(TreeNode* node)
 	TreeNode* nodeY = node->secondChild();
 	execute(nodeX); // executing
 	execute(nodeY);
-	int x = ROUND2INT(nodeX->getValue().Number()); // converting & rounding to int
-	int y = ROUND2INT(nodeY->getValue().Number());
+	int x = ROUND2INT( nodeX->getValue().Number() ); // converting & rounding to int
+	int y = ROUND2INT( nodeY->getValue().Number() );
 	emit Go(x, y);
 }
 
@@ -646,7 +648,7 @@ void Executer::execGoX(TreeNode* node)
 	}
 	TreeNode* nodeX = node->firstChild(); // getting
 	execute(nodeX); // executing
-	int x = ROUND2INT(nodeX->getValue().Number()); // converting & rounding to int
+	int x = ROUND2INT( nodeX->getValue().Number() ); // converting & rounding to int
 	emit GoX(x);
 }
 
@@ -660,7 +662,7 @@ void Executer::execGoY(TreeNode* node)
 	}
 	TreeNode* nodeY = node->firstChild(); // getting
 	execute(nodeY); // executing
-	int y = ROUND2INT(nodeY->getValue().Number()); // converting & rounding to int
+	int y = ROUND2INT( nodeY->getValue().Number() ); // converting & rounding to int
 	emit GoY(y);
 }
 
@@ -674,7 +676,7 @@ void Executer::execForward(TreeNode* node)
 	}
 	TreeNode* nodeX = node->firstChild(); // getting
 	execute(nodeX); // executing
-	int x = ROUND2INT(nodeX->getValue().Number()); // converting & rounding to int
+	int x = ROUND2INT( nodeX->getValue().Number() ); // converting & rounding to int
 	emit Forward(x);
 }
 
@@ -688,7 +690,7 @@ void Executer::execBackward(TreeNode* node)
 	}
 	TreeNode* nodeX = node->firstChild(); // getting
 	execute(nodeX); // executing
-	int x = ROUND2INT(nodeX->getValue().Number()); // converting & rounding to int
+	int x = ROUND2INT( nodeX->getValue().Number() ); // converting & rounding to int
 	emit Backward(x);
 }
 
@@ -702,7 +704,7 @@ void Executer::execDirection(TreeNode* node)
 	}
 	TreeNode* nodeX = node->firstChild(); // getting
 	execute(nodeX); // executing
-	double x = (nodeX->getValue().Number()); // converting to double
+	double x = (nodeX->getValue().Number() ); // converting to double
 	emit Direction(x);  // why the FUCK doesnt this work??
 }
 
@@ -716,7 +718,7 @@ void Executer::execTurnLeft(TreeNode* node)
 	}
 	TreeNode* nodeX = node->firstChild(); // getting
 	execute(nodeX); // executing
-	double x = (nodeX->getValue().Number()); // converting to double
+	double x = (nodeX->getValue().Number() ); // converting to double
 	emit TurnLeft(x);
 }
 
@@ -730,7 +732,7 @@ void Executer::execTurnRight(TreeNode* node)
 	}
 	TreeNode* nodeX = node->firstChild(); // getting
 	execute(nodeX); // executing
-	double x = (nodeX->getValue().Number()); // converting to double
+	double x = (nodeX->getValue().Number() ); // converting to double
 	emit TurnRight(x);
 }
 
@@ -755,7 +757,7 @@ void Executer::execSetPenWidth(TreeNode* node)
 	}
 	TreeNode* nodeX = node->firstChild(); // getting
 	execute(nodeX); // executing
-	int x = ROUND2INT(nodeX->getValue().Number()); // converting & rounding to int
+	int x = ROUND2INT( nodeX->getValue().Number() ); // converting & rounding to int
 	if (x < 1)
 	{
 		emit ErrorMsg(node->getToken(), i18n("The parameter of %1 must be smaller than 1.").arg( node->getLook() ), 6050);
@@ -800,9 +802,9 @@ void Executer::execSetFgColor(TreeNode* node)
 	execute(nodeR); // executing
 	execute(nodeG);
 	execute(nodeB);
-	int r = ROUND2INT(nodeR->getValue().Number()); // converting & rounding to int
-	int g = ROUND2INT(nodeG->getValue().Number());
-	int b = ROUND2INT(nodeB->getValue().Number());
+	int r = ROUND2INT( nodeR->getValue().Number() ); // converting & rounding to int
+	int g = ROUND2INT( nodeG->getValue().Number() );
+	int b = ROUND2INT( nodeB->getValue().Number() );
 	if ( ( r < 0 || g < 0 || b < 0 ) || ( r > 255 || g > 255 || b > 255 ) )
 	{
 		emit ErrorMsg(node->getToken(), i18n("The parameters of function %1 must be within range: 0 to 255.").arg( node->getLook() ), 6090);
@@ -825,9 +827,9 @@ void Executer::execSetBgColor(TreeNode* node)
 	execute(nodeR); // executing
 	execute(nodeG);
 	execute(nodeB);
-	int r = ROUND2INT(nodeR->getValue().Number()); // converting & rounding to int
-	int g = ROUND2INT(nodeG->getValue().Number());
-	int b = ROUND2INT(nodeB->getValue().Number());
+	int r = ROUND2INT( nodeR->getValue().Number() ); // converting & rounding to int
+	int g = ROUND2INT( nodeG->getValue().Number() );
+	int b = ROUND2INT( nodeB->getValue().Number() );
 	if ( ( r < 0 || g < 0 || b < 0 ) || ( r > 255 || g > 255 || b > 255 ) )
 	{
 		emit ErrorMsg(node->getToken(), i18n("The parameters of function %1 must be within range: 0 to 255.").arg( node->getLook() ), 7010);
@@ -849,8 +851,8 @@ void Executer::execResizeCanvas(TreeNode* node)
 	TreeNode* nodeY = node->secondChild();
 	execute(nodeX); // executing
 	execute(nodeY);
-	int x = ROUND2INT(nodeX->getValue().Number()); // converting & rounding to int
-	int y = ROUND2INT(nodeY->getValue().Number());
+	int x = ROUND2INT( nodeX->getValue().Number() ); // converting & rounding to int
+	int y = ROUND2INT( nodeY->getValue().Number() );
 	if ( ( x < 1 || y < 1 ) || ( x > 10000 || y > 10000 ) )
 	{
 		emit ErrorMsg(node->getToken(), i18n("The parameters of function %1 must be within range: 1 to 10000.").arg( node->getLook() ), 7030);
@@ -902,7 +904,7 @@ void Executer::execSpriteChange(TreeNode* node)
 	}
 	TreeNode* nodeX = node->firstChild(); // getting
 	execute(nodeX); // executing
-	int x = (int)(nodeX->getValue().Number()); // converting & rounding to int
+	int x = (int)(nodeX->getValue().Number() ); // converting & rounding to int
 	emit SpriteChange(x);
 }
 
@@ -916,7 +918,7 @@ void Executer::execMessage(TreeNode* node)
 		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 7070);
 		return;
 	}
-	emit MessageDialog(node->firstChild()->getValue().String());
+	emit MessageDialog( node->firstChild()->getValue().String() );
 }
 
 
@@ -993,7 +995,7 @@ void Executer::execFontSize(TreeNode* node)
 	}
 	TreeNode* nodeX = node->firstChild(); // getting
 	execute(nodeX); // executing
-	int px = ROUND2INT(nodeX->getValue().Number()); // converting & rounding to int
+	int px = ROUND2INT( nodeX->getValue().Number() ); // converting & rounding to int
 	if ( px < 0 || px > 350 )
 	{
 		emit ErrorMsg(node->getToken(), i18n("The parameters of function %1 must be within range: 0 to 350.").arg( node->getLook() ), 5065);
@@ -1009,7 +1011,7 @@ void Executer::execRepeat(TreeNode* node)
 	
 	bBreak=false;
 	execute( value );
-	for( int i = ROUND2INT( value->getValue().Number()); i > 0; i-- )
+	for( int i = ROUND2INT( value->getValue().Number() ); i > 0; i-- )
 	{
 		if (bAbort) return;
 		kapp->processEvents();

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003 Cies Breijs <cies # kde ! nl>
+    Copyright (C) 2003 Cies Breijs <cies # kde ! nl>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of version 2 of the GNU General Public
@@ -35,7 +35,7 @@
 struct errorData
 {
 	uint    code;
-	token   tok;
+	Token   tok;
 	QString msg;
 };
 
@@ -53,7 +53,7 @@ Q_OBJECT
 	void display();
 
 	public slots:
-	void slotAddError(token&, QString, uint code);
+	void slotAddError(Token&, QString, uint code);
 	void updateSelection();
 
 	signals:

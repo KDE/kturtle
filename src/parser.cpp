@@ -1,6 +1,6 @@
 /*
-     Copyright (C) 2003 by Walter Schreppers 
-     Copyright (C) 2004 by Cies Breijs   
+    Copyright (C) 2003 by Walter Schreppers 
+    Copyright (C) 2004 by Cies Breijs   
      
     This program is free software; you can redistribute it and/or
     modify it under the terms of version 2 of the GNU General Public
@@ -27,28 +27,6 @@
 
 #include "parser.h"
 
-/*======================= THE GRAMMAR =============================
-
-  BNF for arithmetic expressions (improved unary minus)
-
-    <expression>    ::= <term> [<addop> <term>]*
-    <term>          ::= <signed factor> [<mulop> <signed factor>]*
-    <signed factor> ::= [<addop>] <factor>
-    <factor>        ::= <integer> | <variable> | (<expression>)
-
-
-
-  NOT DONE YET !: 
-  BNF for boolean algebra
-
-    <b-expression>::= <b-term> [<orop> <b-term>]*
-    <b-term>      ::= <not-factor> [AND <not-factor>]*
-    <not-factor>  ::= [NOT] <b-factor>
-    <b-factor>    ::= <b-literal> | <b-variable> | (<b-expression>)
-
-=================================================================*/
-
-
 
 Parser::Parser(QTextIStream& in)
 {
@@ -68,15 +46,15 @@ void Parser::parse()
 
 void Parser::getToken()
 {
-	currentToken = lexer->lex(); // stores a token, obtained though the lexer, in 'currentToken'
-	row = currentToken.start.row; // these will have to leave eventually, all should be passed on by the token
+	currentToken = lexer->lex(); // stores a Token, obtained though the lexer, in 'currentToken'
+	row = currentToken.start.row; // these will have to leave eventually, all should be passed on by the Token
 	col = currentToken.start.col;
 	kdDebug(0)<<"Parser::getToken(), got a token: '"<<currentToken.look<<"', @ ("<<currentToken.start.row<<", "<<currentToken.start.col<<") - ("<<currentToken.end.row<<", "<<currentToken.end.col<<"), tok-number:"<<currentToken.type<<endl;
 }
 
 TreeNode* Parser::Program()
 {
-	token emptyToken;
+	Token emptyToken;
 	emptyToken.type = tokNotSet;
 	emptyToken.look = "";
 	emptyToken.start.row = 0;
@@ -91,13 +69,13 @@ TreeNode* Parser::Program()
 	
 	// this is the main parse loop
 	kdDebug(0)<<"Parser::Program(), Entering main parse loop..."<<endl;
-	while (currentToken.type != tokEOF) // currentToken.type returns the type of the current token
+	while (currentToken.type != tokEOF) // currentToken.type returns the type of the currentToken
 	{
 		kdDebug(0)<<"Parser::Program(), looking for a statement..."<<endl;
 		block->appendChild( Statement() );
 		while (currentToken.type == tokEOL) getToken(); // newlines between statements are allowed
 		// runs statement related code, stores the returned TreeNode* in the nodetree
-		// note: Statement() allways gets a new token with getToken() before it returns 
+		// note: Statement() allways gets a new Token with getToken() before it returns 
 	}
 	program->appendChild(block);
 	kdDebug(0)<<"Parser::Program(), Left main parse loop..."<<endl;
@@ -205,7 +183,7 @@ TreeNode* Parser::getId()
 
 
 
-TreeNode* Parser::FunctionCall(token maybeFunctionCall)
+TreeNode* Parser::FunctionCall(Token maybeFunctionCall)
 {
 	kdDebug(0)<<"Parser::FunctionCall, using identifier: '"<<maybeFunctionCall.look<<"'"<<endl;
 	TreeNode* fcall = new TreeNode(maybeFunctionCall, functionCallNode);
@@ -256,8 +234,13 @@ TreeNode* Parser::Factor()
 
 		case tokString:
 			node = new TreeNode(currentToken, stringConstantNode);
-			node->setValue(currentToken.look);
-			matchToken(tokString);
+			if ( currentToken.look.endsWith("\"") )
+			{
+				currentToken.look.remove(0, 1).truncate( currentToken.look.length() - 2 ); // cut off the quotes 
+				node->setValue(currentToken.look);
+				matchToken(tokString);
+			}
+			else Error(currentToken, i18n("String text not properly delimited with a '\"' (double quote)"), 1060);
 			break;
 
 		case tokNumber:
@@ -402,7 +385,7 @@ TreeNode* Parser::Term()
 }
 
 
-bool Parser::isAddOp(token t) {
+bool Parser::isAddOp(Token t) {
 	return (
 		(t.type == tokPlus)  ||
 		(t.type == tokMinus) ||
@@ -500,7 +483,7 @@ TreeNode* Parser::Expression() {
 }
 
 
-TreeNode* Parser::Assignment(token t)
+TreeNode* Parser::Assignment(Token t)
 {
 	TreeNode* node = new TreeNode(t, assignNode);
 	matchToken(tokAssign); // match the '='
@@ -513,17 +496,8 @@ TreeNode* Parser::Assignment(token t)
 }
 
 
-TreeNode* Parser::getString()
+TreeNode* Parser::Statement()
 {
-	TreeNode* node = new TreeNode(currentToken, stringConstantNode);
-	
-	node->setLook(currentToken.look);
-	matchToken(tokString);
-	
-	return node;
-}
-
-TreeNode* Parser::Statement() {
 	kdDebug(0)<<"Parser::Statement()"<<endl;
 	while (currentToken.type == tokEOL) getToken(); // statements can allways start on newlines
 	switch (currentToken.type)
@@ -571,6 +545,9 @@ TreeNode* Parser::Statement() {
 		case tokWrapOn        : return WrapOn();           break;
 		case tokWrapOff       : return WrapOff();          break;
 		case tokReset         : return Reset();            break;
+		
+		case tokEOF           : return EndOfFile();            break;
+		
 		case tokEnd           : break; //caught by Block
 
 		case tokBegin         : Error(currentToken, i18n("Begin without matching end"), 1050);
@@ -1107,22 +1084,28 @@ TreeNode* Parser::Break()
 	return brk;
 }
 
+TreeNode* Parser::EndOfFile()
+{
+	TreeNode* node = new TreeNode(currentToken, EndOfFileNode);
+	return node;
+}
+
 TreeNode* Parser::Other()
 {  // this is either an assignment or a function call!
 	kdDebug(0)<<"Parser::Other()"<<endl;
-	token presevedToken = currentToken; // preserve token, else Match() will make sure it gets lost
+	Token presevedToken = currentToken; // preserve token, else Match() will make sure it gets lost
 	matchToken(tokUnknown);
 
 	if (learnedFunctionList.contains(presevedToken.look) > 0) return FunctionCall(presevedToken);
 	else if (currentToken.type == tokAssign)                  return Assignment(presevedToken);
 	
-	Error(presevedToken, i18n("'%1' is neither (yet) a learned command nor a Logo command.").arg(presevedToken.look), 1020);
+	Error(presevedToken, i18n("'%1' is no Logo command nor a learned routine.").arg(presevedToken.look), 1020);
 	TreeNode* errNode = new TreeNode(presevedToken, Unknown);
 	return errNode;
 }
 
 
-void Parser::Error(token t, QString s, uint code)
+void Parser::Error(Token t, QString s, uint code)
 {
 	emit ErrorMsg(t, s, code);
 }

@@ -1,4 +1,7 @@
 /*
+    Copyright (C) 2003 by Walter Schreppers 
+    Copyright (C) 2004 by Cies Breijs
+ 
     This program is free software; you can redistribute it and/or
     modify it under the terms of version 2 of the GNU General Public
     License as published by the Free Software Foundation.
@@ -25,13 +28,13 @@
 #include <qstring.h>
 
 #include "lexer.h"
+#include "token.h"
 #include "value.h"
 
 
-using namespace std;  // i dont know if this is still needed
+using namespace std;  // needed because treenode inherites from std::list
 
 //BUGS: prevSibling and nextSibling sometimes segfault and are not optimal, in short, don't use em! :)
-
 
 enum NodeType
 {
@@ -106,7 +109,8 @@ enum NodeType
 	WrapOffNode,
 	ResetNode,
 	
-	LineBreakNode
+	LineBreakNode,
+	EndOfFileNode
 
 	
 //              HOPEFULLY THIS LIST CAN ONCE LOOK LIKE THIS:
@@ -209,37 +213,31 @@ enum NodeType
 class TreeNode : public list<TreeNode*>
 {
 	public:
-	// constructors/destructor
 	TreeNode(); // used for creation of the first node called 'tree', in the contructor of the parser 
 	TreeNode( TreeNode* ); //give parent
-	TreeNode( token, NodeType = Unknown, QString = QString() ); // this should become the thing!
-	
+	TreeNode( Token, NodeType = Unknown, QString = QString() );
 	virtual ~TreeNode();
 
-	// public members
 	void init();
-	void setParent(TreeNode* p);
-	TreeNode* getParent() { return parent; }
-	
-	virtual void show(int indent = 0);
-	void showTree(TreeNode* node, int indent = 0) const;
-	
+
 	void appendChild(TreeNode*);
 	void appendSibling(TreeNode*); //works only if it has parent set!
-	
+
 	TreeNode* firstChild();
 	TreeNode* secondChild();
 	TreeNode* thirdChild();
 	TreeNode* fourthChild();
 	TreeNode* fifthChild();
-	
+
 	TreeNode* lastChild();    
 	TreeNode* nextSibling();   
 	TreeNode* prevSibling();
+
+	void      setParent(TreeNode* p)     { parent = p; }
+	TreeNode* getParent() const          { return parent; }
 	
-	
-	void      setToken(token t)          { fTok = t; }
-	token&    getToken()                 { return fTok; }
+	void      setToken(Token t)          { fTok = t; }
+	Token&    getToken()                 { return fTok; }
 	
 	void      setType(NodeType t)        { fType = t; }
 	NodeType  getType() const            { return fType; }
@@ -247,30 +245,32 @@ class TreeNode : public list<TreeNode*>
 	void      setLook(const QString& s)  { fTok.look = s; }
 	QString   getLook() const            { return fTok.look; }
 	
-	void      setValue(const Value& n)  { fTok.value = n; }
+	void      setValue(const Value& n)   { fTok.value = n; }
 	void      setValue(double d)         { fTok.value = d; }
 	void      setValue(const QString& s) { fTok.value = s; }
-	Value    getValue() const           { return fTok.value; }
+	Value     getValue() const           { return fTok.value; }
 	
 	uint      getRow() const             { return fTok.start.row; }
 	uint      getCol() const             { return fTok.start.col; }
 
-	
+	bool hasChildren() const             { return size() != 0; }
 	TreeNode::iterator lookup(); // gives location in parent list as iterator (used by prevSibling and nextSibling)
-	bool hasChildren() { return size() != 0; }
 
-	TreeNode& operator= (const TreeNode&);
+	TreeNode& operator=(const TreeNode&);
+
+	virtual void show(int indent = 0);
+	void showTree(TreeNode* node, int indent = 0) const;
 
 
 	private:
 	void destroy(TreeNode*);
 
-	//private locals
-	NodeType   fType;
-	token      fTok;
-	
+	NodeType     fType;
+	Token        fTok;
+
+
 	protected:
-	TreeNode  *parent;
+	TreeNode    *parent;
 };
 
 #endif // _TREENODE_H_

@@ -1,6 +1,6 @@
 /*
-     Copyright (C) 2003 by Walter Schreppers 
-     Copyright (C) 2004 by Cies Breijs   
+    Copyright (C) 2003 by Walter Schreppers 
+    Copyright (C) 2004 by Cies Breijs   
      
     This program is free software; you can redistribute it and/or
     modify it under the terms of version 2 of the GNU General Public
@@ -37,11 +37,11 @@ Lexer::Lexer(QTextIStream& iStream)
 }
 
 
-token Lexer::lex()
+Token Lexer::lex()
 {
-	skipSpaces(); // skips the white space that it quite likely infront of the token
+	skipSpaces(); // skips the white space that it quite likely infront of the Token
 
-	token currentToken;
+	Token currentToken;
 	currentToken.type = tokNotSet; // not really needed
 	currentToken.look = "";
 	currentToken.value = 0;
@@ -196,6 +196,9 @@ token Lexer::lex()
 }
 
 
+
+// PRIVATEs
+
 QChar Lexer::getChar()
 {
 	QChar c;
@@ -248,39 +251,6 @@ void Lexer::ungetChar(QChar c)
 	kdDebug(0)<<"Lexer::ungetChar(), saved char: '"<<c<<"' and steped back to ("<<row<<", "<<col<<")"<<endl;
 }
 
-// PRIVATEs
-
-int Lexer::getNumber(Value& num, QString& look)
-{
-	// by reference the value (Value) and look part are set
-	kdDebug(0)<<"Lexer::getNumber()"<<endl;
-	// QString s;
-	bool hasPoint = false;
-	QChar currentChar = getChar();
-	if ( currentChar.isNumber() )
-	{
-		while ( ( currentChar.isNumber() || (currentChar == '.' && !hasPoint) ) && !inputStream->atEnd() )
-		{
-			if (currentChar == '.')
-			{
-				hasPoint = true;
-			}
-			look += currentChar;
-			currentChar = getChar();
-		}
-		ungetChar(currentChar); //read one too much
-		//num.bString = false;
-		num.setNumber( look.toDouble() );
-		kdDebug(0)<<"Lexer::getNumber(), got NUMBER: '"<<num.Number()<<"'"<<endl;
-		return tokNumber;
-	}
-	else
-	{
-		return tokError;  
-	}
-}
-
-
 int Lexer::getWord(QString& word)
 {
 	kdDebug(0)<<"Lexer::getWord()"<<endl;
@@ -295,13 +265,10 @@ int Lexer::getWord(QString& word)
 		ungetChar(currentChar); //read one too much
 		return tokUnknown; // returns tokUnknown, actual token is to be determained later in Lexer::setTokenType
 	}
-	else
-	{
-		return tokError;  
-	}
+	else return tokError;
 }
 
-void Lexer::setTokenType(token& currentToken)
+void Lexer::setTokenType(Token& currentToken)
 {
 	if (currentToken.type == tokUnknown)
 	{
@@ -402,9 +369,34 @@ void Lexer::skipSpaces()
 }
 
 
-void Lexer::getString(token& currentToken)
+int Lexer::getNumber(Value& num, QString& look)
 {
-	QString str = "\""; // the quotes get chopped of in the executor
+	// by reference the value (Value) and look part are set
+	kdDebug(0)<<"Lexer::getNumber()"<<endl;
+	bool hasPoint = false;
+	QChar currentChar = getChar();
+	if ( currentChar.isNumber() )
+	{
+		while ( ( currentChar.isNumber() || (currentChar == '.' && !hasPoint) ) && !inputStream->atEnd() )
+		{
+			if (currentChar == '.')
+			{
+				hasPoint = true;
+			}
+			look += currentChar;
+			currentChar = getChar();
+		}
+		ungetChar(currentChar); //read one too much
+		num.setNumber( look.toDouble() );
+		kdDebug(0)<<"Lexer::getNumber(), got NUMBER: '"<<num.Number()<<"'"<<endl;
+		return tokNumber;
+	}
+	else return tokError;
+}
+
+void Lexer::getString(Token& currentToken)
+{
+	QString str = "\"";
 	QChar currentChar = QChar(); // start empty
 	while ( currentChar != '"' && !(currentChar == '\x0a' || currentChar == '\n') && !inputStream->atEnd() )
 	{
@@ -424,13 +416,7 @@ void Lexer::getString(token& currentToken)
 	}
 	currentToken.type = tokString;
 	currentToken.look = str;
-	currentToken.value = 0;
 	
 	kdDebug(0)<<"Lexer::getStringConstant, got STRINGCONSTANT: "<<currentToken.look<<"'"<<endl;
-	
-// 	if( inputStream->atEnd() )       // DUNNO WHAT THIS IS FOR
-// 	{
-// 		currentToken.type = tokEOF;
-// 	}
 }
 

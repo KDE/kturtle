@@ -75,10 +75,12 @@ MainWindow::MainWindow(KTextEditor::Document *document) : editor(0) {
 	b_fullscreen = false;
 
 	// set the shell's ui resource file
-	if (!document) {
-		if ( !(document = KTextEditor::EditorChooser::createDocument(0,"KTextEditor::Document") ) ) {
-			KMessageBox::error(this, i18n("A KDE text-editor component could not be found;\n"
-					"please check your KDE installation."));
+	if (!document)
+	{
+		if ( !(document = KTextEditor::EditorChooser::createDocument(0,"KTextEditor::Document") ) )
+		{
+			KMessageBox::error( this, i18n("A KDE text-editor component could not be found;\n"
+			                               "please check your KDE installation.") );
 			kapp->exit(1);
 		}
 		// docList.append(doc);
@@ -94,7 +96,8 @@ MainWindow::MainWindow(KTextEditor::Document *document) : editor(0) {
 	setMinimumSize(200,200);
 
 	// init with more usefull size, stolen from kwite (they stole it from konq)
-	if ( !initialGeometrySet() && !kapp->config()->hasGroup("MainWindow Settings") ) {
+	if ( !initialGeometrySet() && !kapp->config()->hasGroup("MainWindow Settings") )
+	{
 		resize( 640, 480 );
 	}
 
@@ -102,7 +105,8 @@ MainWindow::MainWindow(KTextEditor::Document *document) : editor(0) {
 	readConfig(config);
 }
 
-MainWindow::~MainWindow() {  // The MainWindow destructor
+MainWindow::~MainWindow()
+{
 	delete editor->document();
 }
 
@@ -112,11 +116,12 @@ MainWindow::~MainWindow() {  // The MainWindow destructor
 
 // BEGIN setup's (actions, editor, statusbar, canvas)
 
-void MainWindow::setupActions() {
-	KActionCollection *ac = actionCollection();
+void MainWindow::setupActions()
+{
+	KActionCollection *ac = actionCollection(); // abbreviation
 	// File menu
 	KStdAction::openNew(this, SLOT(slotNewFile()), ac);
-	openExAction = new KAction(i18n("Open Examples..."), "bookmark_folder", CTRL+Key_E, this, SLOT(slotOpenEx()), ac, "open_examples");
+	openExAction = new KAction(i18n("Open Examples..."), "bookmark_folder", CTRL+Key_E, this, SLOT(slotOpenExample()), ac, "open_examples");
 	KStdAction::open(this, SLOT(slotOpenFile()), ac);
 	m_recentFiles = KStdAction::openRecent(this, SLOT(slotOpen(const KURL&)), ac);
 	KStdAction::save(this, SLOT(slotSaveFile()), ac);
@@ -162,7 +167,8 @@ void MainWindow::setupActions() {
 	setupGUI();
 }
 
-void MainWindow::setupEditor() {
+void MainWindow::setupEditor()
+{
 	EditorDock = new QDockWindow(this);
 	EditorDock->setNewLine(true);
 	EditorDock->setFixedExtentWidth(250);
@@ -186,7 +192,8 @@ void MainWindow::setupEditor() {
 	connect(editor, SIGNAL(cursorPositionChanged()), this, SLOT(slotContextHelpUpdate()));
 }
 
-void MainWindow::setupStatusBar() {
+void MainWindow::setupStatusBar()
+{
 	// statusBar()->insertItem(" ", 2, 0, true);//to add a space, ID is 2
 	statusBar()->insertItem("", IDS_STATUS, 1, false);
 	statusBar()->setItemAlignment(IDS_STATUS, AlignLeft);
@@ -200,7 +207,8 @@ void MainWindow::setupStatusBar() {
 	slotStatusBar(i18n(" INS "), IDS_INS);
 }
 
-void MainWindow::setupCanvas() {
+void MainWindow::setupCanvas()
+{
 	BaseWidget = new QWidget(this);
 	setCentralWidget(BaseWidget);
 	BaseLayout = new QGridLayout(BaseWidget, 0, 0);
@@ -217,16 +225,14 @@ void MainWindow::setupCanvas() {
 
 // BEGIN staturbar related functions
 
-void MainWindow::slotStatusBar(QString text, int id) {
-	if(id == IDS_INS) { // the version part of the statusbar
-		text = " " + text + " "; // help the layout
-	} else { // if id is not 0 it must be 1 (error cacher)
-		text = " " + text; // help the layout
-	}
+void MainWindow::slotStatusBar(QString text, int id)
+{
+	text = " " + text + " "; // help the layout
 	statusBar()->changeItem(text, id);
 }
 
-void MainWindow::slotCursorStatusBar() {
+void MainWindow::slotCursorStatusBar()
+{
 	uint cursorLine;
 	uint cursorCol;
 	dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->cursorPositionReal(&cursorLine, &cursorCol);
@@ -250,12 +256,10 @@ void MainWindow::slotNewFile()
 	{
 		int result = KMessageBox::warningContinueCancel( this,
 		i18n("The changes you have made to the file you "
-		"are currently working are not saved. "
-		"By continuing you will lose all the changes you have made."),
+		     "are currently working are not saved. "
+		     "By continuing you will lose all the changes you have made."),
 		i18n("Unsaved File"), i18n("&Discard Changes") );
-		if (result != KMessageBox::Continue) {
-			return;
-		}
+		if (result != KMessageBox::Continue) return;
 	}
 	ei->clear();// clear the editor
 	TurtleView->slotClear();// clear the view
@@ -265,71 +269,71 @@ void MainWindow::slotNewFile()
 	slotStatusBar(i18n("New file... Happy coding!"), IDS_STATUS);
 }
 
-void MainWindow::loadFile(KURL url) {
-	m_recentFiles->addURL( url );
+void MainWindow::loadFile(KURL url)
+{
+	m_recentFiles->addURL(url);
 	QString myFile = url.path();
-	if ( !myFile.isEmpty() ) {
+	if ( !myFile.isEmpty() )
+	{
 		QFile file(myFile);
 		//if ( !file.open(IO_ReadWrite) ) {
 		//  return;
 		// }
-		if ( file.open(IO_ReadOnly) ) {
-			if ( editor->document()->isModified() ) {
+		if ( file.open(IO_ReadOnly) )
+		{
+			if ( editor->document()->isModified() )
+			{
 				int result = KMessageBox::warningContinueCancel( this,
 				i18n("The changes you have made to the file you "
-				"are currently working on (%1) are not saved. "
-				"By continuing you will lose all the changes "
-				"you have made.").arg( myFile ),
+				     "are currently working on (%1) are not saved. "
+				     "By continuing you will lose all the changes "
+				     "you have made.").arg(myFile),
 				i18n("Unsaved File"), i18n("&Discard Changes") );
-				if (result != KMessageBox::Continue) {
-					return;
-				}
+				if (result != KMessageBox::Continue) return;
 			}
 			QTextStream stream(&file);
 			stream.setEncoding(QTextStream::UnicodeUTF8);
-			ei->setText(stream.read());
+			ei->setText( stream.read() );
 			file.close();
 			CurrentFile = myFile;
-			setCaption(url.fileName());
-			slotStatusBar(i18n("Opened file: %1").arg(url.fileName()),  IDS_STATUS);
+			setCaption( url.fileName() );
+			slotStatusBar(i18n("Opened file: %1").arg( url.fileName() ), IDS_STATUS);
 			editor->document()->setModified(false);
 		}
-	} else {
-		slotStatusBar(i18n("Opening aborted, nothing opened."),  IDS_STATUS);
 	}
+	else slotStatusBar(i18n("Opening aborted, nothing opened."),  IDS_STATUS);
 }
 
-void MainWindow::slotOpenFile() {
+void MainWindow::slotOpenFile()
+{
 	slotNewFile();
 	KURL url = KFileDialog::getOpenURL( QString(":logo_dir"), QString("*.logo|") +
 	i18n("Logo Files"), this, i18n("Open Logo File") );
-	if( !url.isEmpty() ) {
-		loadFile(url);
-	}
+	if ( !url.isEmpty() ) loadFile(url);
 	editor->document()->setModified(false);
 }
 
-void MainWindow::slotOpen(const KURL& url) {
+void MainWindow::slotOpen(const KURL& url)
+{
 	slotNewFile();
-	if( !url.isEmpty() ) {
-		loadFile(url);
-	}
+	if ( !url.isEmpty() ) loadFile(url);
 	editor->document()->setModified(false);
 }
 
-void MainWindow::slotOpenEx() {
+void MainWindow::slotOpenExample()
+{
 	KURL url;
 	url.setPath( locate("data", "kturtle/examples/" + Settings::logoLanguage() + "/"));
-	url = KFileDialog::getOpenURL( url.path(),
-		QString("*.logo|") + i18n("Logo Examples Files"), this,
-		i18n("Open Logo Example File") );
+	url = KFileDialog::getOpenURL( url.path(), QString("*.logo|") + i18n("Logo Examples Files"), this, i18n("Open Logo Example File") );
 	loadFile(url);
 }
 
-void MainWindow::slotSaveFile() {
+void MainWindow::slotSaveFile()
+{
 	QString filestr = CurrentFile;
 	// when coming from SaveAs, then dont use CurrentFile but filename2saveAs
-	if ( !filename2saveAs.isEmpty() ) {
+	if ( !filename2saveAs.isEmpty() )
+	{
 		filestr = filename2saveAs;
 		filename2saveAs = "";
 	}
@@ -337,8 +341,10 @@ void MainWindow::slotSaveFile() {
 	slotSave(url);
 }
 
-void MainWindow::slotSave(KURL &url) {
-	if ( !url.isEmpty() ) {
+void MainWindow::slotSave(KURL &url)
+{
+	if ( !url.isEmpty() )
+	{
 		filename2saveAs = url.url();
 		QString mString=ei->text(); //get the text
 		ei->setText(mString.utf8());//convert it to utf8
@@ -349,87 +355,90 @@ void MainWindow::slotSave(KURL &url) {
 		slotStatusBar(i18n("Saved file to: %1").arg(CurrentFile),  IDS_STATUS);
 		m_recentFiles->addURL( url );
 		editor->document()->setModified(false);
-	} else {
-		slotSaveAs();
 	}
+	else slotSaveAs();
 }
 
-void MainWindow::slotSaveAs() {
+void MainWindow::slotSaveAs()
+{
 	KURL url;
-	while(true) {
+	while (true)
+	{
 		url = KFileDialog::getSaveURL( QString(":logo_dir"), QString("*.logo|") +
 		i18n("Logo Files"), this, i18n("Save Logo File") );
-		if (url.isEmpty()) { // when cancelled the KFiledialog?
-			return;
-		}
-		if (QFile(url.path()).exists()) {
+		if ( url.isEmpty() ) return; // when cancelled the KFiledialog -> return
+		if ( QFile( url.path() ).exists() )
+		{
 			int result = KMessageBox::warningContinueCancel ( this,
 			i18n("A file named \"%1\" already exists;\n"
-			"are you sure you want to overwrite it?").arg( url.url() ),
+			     "are you sure you want to overwrite it?").arg( url.url() ),
 			i18n("Overwrite Existing File?"), i18n("&Overwrite") );
-			if (result != KMessageBox::Continue) {
-				return;
-			}
+			if (result != KMessageBox::Continue) return;
 		}
 		break;
 	}
 	slotSave(url);
 }
 
-void MainWindow::slotSaveCanvas() {
+void MainWindow::slotSaveCanvas()
+{
 	KURL url;
-	while(true) {
+	while (true)
+	{
 		url = KFileDialog::getSaveURL( QString(":logo_dir"), QString("*.png|") +
 		i18n("Pictures"), this, i18n("Save Canvas as Picture") );
-		if (url.isEmpty()) { // when cancelled the KFiledialog?
-			return;
-		}
-		if (QFile(url.path()).exists()) {
+		if ( url.isEmpty() ) return; // when cancelled the KFiledialog?
+		if ( QFile( url.path() ).exists() )
+		{
 			int result = KMessageBox::warningContinueCancel( this,
 				i18n("A picture named \"%1\" already exists;\n"
-				"are you sure you want to overwrite it?").arg(url.url()),
+				     "are you sure you want to overwrite it?").arg(url.url()),
 				i18n("Overwrite Existing Picture?"), i18n("&Overwrite") );
-			if (result != KMessageBox::Continue) {
-				return;
-			}
+			if (result != KMessageBox::Continue) return;
 		}
 		break;
-		}
-	QString type( KImageIO::type(url.path()) );
-	if ( type.isNull() ) {
-		type = "PNG";
 	}
+	
+	QString type( KImageIO::type(url.path()) );
+	if ( type.isNull() ) type = "PNG";
 	bool ok = false;
 	QPixmap* pixmap = TurtleView->Canvas2Pixmap();
-	if ( url.isLocalFile() ) {
+	if ( url.isLocalFile() )
+	{
 		KSaveFile saveFile( url.path() );
-		if ( saveFile.status() == 0 ) {
-			if ( pixmap->save( saveFile.file(), type.latin1() ) ) {
-				ok = saveFile.close();
-			}
+		if ( saveFile.status() == 0 )
+		{
+			if ( pixmap->save( saveFile.file(), type.latin1() ) ) ok = saveFile.close();
 		}
 	}
-	if ( !ok ) {
+	
+	if (!ok)
+	{
 		kdWarning() << "KTurtle was unable to save the canvas drawing" << endl;
-
-		QString caption = i18n("Unable to Save Image");
-		QString text = i18n("KTurtle was unable to save the image to\n%1.").arg(url.prettyURL());
-		KMessageBox::error(this, text, caption);
+		KMessageBox::error(this,
+		i18n("KTurtle was unable to save the image to\n%1.").arg( url.prettyURL() ),
+		i18n("Unable to Save Image") );
+		slotStatusBar(i18n("Could not save image."),  IDS_STATUS);
 	}
-	slotStatusBar(i18n("Saved canvas to: %1").arg(url.fileName()),  IDS_STATUS);
+	
+	slotStatusBar(i18n("Saved canvas to: %1").arg( url.fileName() ),  IDS_STATUS);
 }
 
-void MainWindow::slotPrint() {
+void MainWindow::slotPrint()
+{
 	int result = KMessageBox::questionYesNoCancel( this,
 	i18n("Do you want to print the Logo code or the canvas?"),
 	i18n("Part to print"), i18n("Print &Logo Code"), i18n("Print &Canvas") );
-	if (result == KMessageBox::Yes) {
+	if (result == KMessageBox::Yes)
+	{
 		dynamic_cast<KTextEditor::PrintInterface*>(doc)->printDialog();
 		return;
 	}
-	if (result == KMessageBox::No) {
+	if (result == KMessageBox::No)
+	{
 		KPrinter printer;
-		if ( printer.setup(this) ) {
+		if ( printer.setup(this) )
+		{
 			QPainter painter(&printer);
 			QPixmap *CanvasPic = TurtleView->Canvas2Pixmap();
 			painter.drawPixmap(0, 0, *CanvasPic);
@@ -439,8 +448,10 @@ void MainWindow::slotPrint() {
 	slotStatusBar(i18n("Printing aborted."),  IDS_STATUS);
 }
 
-bool MainWindow::queryClose() {
-	if ( editor->document()->isModified() ) {
+bool MainWindow::queryClose()
+{
+	if ( editor->document()->isModified() )
+	{
 		slotStatusBar(i18n("Quitting KTurtle..."),  IDS_STATUS);
 		// make sure the dialog looks good with new -- unnamed -- files.
 		int result = KMessageBox::warningYesNoCancel( this,
@@ -448,14 +459,15 @@ bool MainWindow::queryClose() {
 			"By quitting KTurtle you will lose all the changes "
 			"you have made."),
 		i18n("Unsaved File"), i18n("&Save"), i18n("Discard Changes And &Quit") );
-		if (result == KMessageBox::Cancel) {
+		if (result == KMessageBox::Cancel)
+		{
 			slotStatusBar(i18n("Quitting aborted."),  IDS_STATUS);
 			return false;
-		} else if (result == KMessageBox::Yes) {
+		}
+		else if (result == KMessageBox::Yes)
+		{
 			slotSaveFile();
-			if ( CurrentFile.isEmpty() ) {
-				return false; // when saveAs get cancelled or X-ed it should not quit
-			}
+			if ( CurrentFile.isEmpty() ) return false; // when saveAs get cancelled or X-ed it should not quit
 		}
 	}
 	KConfig *config = kapp->config();
@@ -471,12 +483,10 @@ bool MainWindow::queryClose() {
 
 // BEGIN run related functions
 
-void MainWindow::slotExecute() {
-	if ( executing ) {
-		slotAbortExecution();
-	} else {
-		startExecution();
-	}
+void MainWindow::slotExecute()
+{
+	if (executing) slotAbortExecution();
+	else           startExecution();
 }
 
 void MainWindow::startExecution() {
@@ -484,7 +494,8 @@ void MainWindow::startExecution() {
 	executing = true;
 
 	// check if execution should be runnin 'fullscreen'
-	if (b_fullscreen) {
+	if (b_fullscreen)
+	{
 		slotShowEditor();
 		statusBar()->hide();
 		// menuBar()->hide();   <--- seems pretty hard to hide the menubar
@@ -504,8 +515,8 @@ void MainWindow::startExecution() {
 	QTextIStream in(&txt);
 	errMsg = new ErrorMessage(this);
 	Parser parser(in);
-	connect(&parser, SIGNAL( ErrorMsg(token&, QString, uint) ),
-	         errMsg, SLOT( slotAddError(token&, QString, uint) ) );
+	connect(&parser, SIGNAL( ErrorMsg(Token&, QString, uint) ),
+	         errMsg, SLOT( slotAddError(Token&, QString, uint) ) );
 	connect( errMsg, SIGNAL(SetCursor(uint, uint) ),
 	           this, SLOT(slotSetCursorPos(uint, uint) ) );
 	connect( errMsg, SIGNAL(SetSelection(uint, uint, uint, uint) ),
@@ -522,8 +533,8 @@ void MainWindow::startExecution() {
 		slotStatusBar(i18n("Executing commands..."),  IDS_STATUS);
 		kdDebug(0)<<"############## EXECUTION STARTED ##############"<<endl;
 		exe = new Executer(root); // make Executer object, 'exe', and have it point to the root
-		connect( exe, SIGNAL( ErrorMsg(token&, QString, uint) ),
-		      errMsg, SLOT( slotAddError(token&, QString, uint) ) );
+		connect( exe, SIGNAL( ErrorMsg(Token&, QString, uint) ),
+		      errMsg, SLOT( slotAddError(Token&, QString, uint) ) );
 		connect( exe, SIGNAL( InputDialog(QString&) ),
 		        this, SLOT( slotInputDialog(QString&) ) );
 		connect( exe, SIGNAL( MessageDialog(QString) ),
@@ -590,10 +601,9 @@ void MainWindow::finishExecution() {
 	executing = false;
 
 	// show the editor, menu- and statusbar
-	if (b_fullscreen) {
-		if(!b_editorShown) {
-			slotShowEditor();
-		}
+	if (b_fullscreen)
+	{
+		if (!b_editorShown) slotShowEditor();
 		statusBar()->show();
 		// menuBar()->hide();   <--- seems pretty hard to hide the menubar
 		toolBar()->show();
@@ -602,11 +612,13 @@ void MainWindow::finishExecution() {
 
 // some other parts of the main window that need to be connected with the mainwindow
 
-void MainWindow::slotInputDialog(QString& value) {
+void MainWindow::slotInputDialog(QString& value)
+{
 	value = KInputDialog::getText (i18n("Input"), value);
 }
 
-void MainWindow::slotMessageDialog(QString text) {
+void MainWindow::slotMessageDialog(QString text)
+{
 	KMessageBox::information( this, text, i18n("Message") );
 }
 
@@ -616,34 +628,42 @@ void MainWindow::slotMessageDialog(QString text) {
 
 // BEGIN editor connections (undo, redo, cut, copy, paste, cursor, selections, find, replace, linenumbers etc.)
 
-void MainWindow::slotEditor() {
+void MainWindow::slotEditor()
+{
 	KAction *a = editor->actionCollection()->action("set_confdlg");
 	a->activate();
 }
 
-void MainWindow::slotShowEditor() {
-	if ( EditorDock->isHidden() ) {
+void MainWindow::slotShowEditor()
+{
+	if ( EditorDock->isHidden() )
+	{
 		EditorDock->show();
 		b_editorShown = true;
-	} else {
+	}
+	else
+	{
 		EditorDock->hide();
 		b_editorShown = false;
 	}
 	// showEditor->setChecked(b_editorShown); // DEPRICATED
 }
 
-void MainWindow::slotSetHighlightstyle(QString langCode) {
+void MainWindow::slotSetHighlightstyle(QString langCode)
+{
 	KTextEditor::HighlightingInterface *hli = dynamic_cast<KTextEditor::HighlightingInterface*>(doc);
-	for(uint i = 0; i < hli->hlModeCount(); i++) {
-		if(hli->hlModeName(i) == langCode) {
+	for (uint i = 0; i < hli->hlModeCount(); i++)
+	{
+		if (hli->hlModeName(i) == langCode)
+		{
 			hli->setHlMode(i);
 			return;
 		}
-	} // and the fallback:
-	for(uint i = 0; i < hli->hlModeCount(); i++) {
-		if(hli->hlModeName(i) == "en_US") {
-			hli->setHlMode(i);
-		}
+	}
+	// and the fallback:
+	for (uint i = 0; i < hli->hlModeCount(); i++)
+	{
+		if(hli->hlModeName(i) == "en_US") hli->setHlMode(i);
 	}
 }
 

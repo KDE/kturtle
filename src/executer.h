@@ -45,7 +45,7 @@ Q_OBJECT
 
 	signals:
 	void Finished();
-	void ErrorMsg(token&, QString, uint code);
+	void ErrorMsg(Token&, QString, uint code);
 	
 	void InputDialog(QString& value);
 	void MessageDialog(QString text);

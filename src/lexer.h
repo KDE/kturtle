@@ -1,6 +1,6 @@
 /*
-     Copyright (C) 2003 by Walter Schreppers 
-     Copyright (C) 2004 by Cies Breijs   
+    Copyright (C) 2003 by Walter Schreppers 
+    Copyright (C) 2004 by Cies Breijs   
      
     This program is free software; you can redistribute it and/or
     modify it under the terms of version 2 of the GNU General Public
@@ -28,34 +28,30 @@
 #include "translate.h"
 #include "value.h"
 
+
 class Lexer
 {
 	public:
-	//constructor and destructor
 	Lexer(QTextIStream&);
 	~Lexer() {}
 
-	//public members
-	token lex(); // returns the next token, skipping spaces
-// 	QString name2key(QString);
-	
+	Token lex(); // returns the next Token, skipping spaces
+
+
 	private:
-	//private members
 	QChar getChar();
 	void ungetChar(QChar);
+	int getWord(QString&);
 	void skipComment();
 	void skipSpaces();
-	void setTokenType(token&);
+	void setTokenType(Token&);
 	int getNumber(Value&, QString&);
-	int getWord(QString&);
-	void getString(token&);
+	void getString(Token&);
 
-	//private locals
 	QTextIStream    *inputStream;
+	Translate       *translate;
 	uint             row, col, prevCol;
 	QChar            putBackChar;
-	
-	Translate       *translate;
 };
 
 

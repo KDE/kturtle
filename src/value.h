@@ -1,4 +1,7 @@
 /*
+    Copyright (C) 2003 by Walter Schreppers 
+    Copyright (C) 2004 by Cies Breijs
+ 
     This program is free software; you can redistribute it and/or
     modify it under the terms of version 2 of the GNU General Public
     License as published by the Free Software Foundation.
@@ -13,9 +16,6 @@
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
  
- 
- //typedef double Value;
-//Value class to store variables ...
 
 #ifndef _VALUE_H_
 #define _VALUE_H_
@@ -23,7 +23,6 @@
 #include <qstring.h>
 #include <qtextstream.h>
 
-using namespace std;
 
 enum valueType
 {
@@ -35,12 +34,11 @@ enum valueType
 class Value
 {
 	public:
-	// constructors/destructor
 	Value();
 	Value(const Value&);
 	~Value() {}
 
-	// public members
+
 	int Type() const;
 	void setType(int);
 
@@ -55,7 +53,6 @@ class Value
 	void setString(double);
 	void setString(QString);
 
-	// operators
 	Value& operator=(const Value&);
 	Value& operator=(const QString&);
 	Value& operator=(double);
@@ -76,48 +73,10 @@ class Value
 	private:
 	void init();
 	
-	int type;
-	bool m_bool;
-	double m_double;
-	QString m_string;
-
-//   public:
-//     
-//     //constructor/destructor
-//     //======================
-//     Value();
-//     Value(const Value&);
-//     ~Value(){}
-//     
-//     
-//     //public members
-//     //==============
-//     void toString(); //explicit conversion to string strVal
-//     void toDouble(); //explicit conversion to double val
-//     
-//     //operators
-//     //=========
-//     Value& operator=(const Value&);
-//     Value& operator=(const QString&);
-//     Value& operator=(double);
-// 
-//     Value& operator+(const Value&);
-//     Value& operator-(const Value&);
-//     Value& operator*(const Value&);
-//     Value& operator/(const Value&);
-// 
-//     bool operator==(const Value&) const;
-//     bool operator!=(const Value&) const;
-//     bool operator<(const Value&) const;
-//     bool operator<=(const Value&) const;
-//     bool operator>(const Value&) const;
-//     bool operator>=(const Value&) const;
-// 
-//     //public members  
-//     bool bString; //set to true if Value represents a string...
-//     QString strVal;
-//     double val;
-
+	int      type;
+	bool     m_bool;
+	double   m_double;
+	QString  m_string;
 };
 
 #endif // _VALUE_H_

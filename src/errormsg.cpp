@@ -1,5 +1,5 @@
 /*
- * KTurtle, Copyright (C) 2003-04 Cies Breijs <cies # kde ! nl>
+    KTurtle, Copyright (C) 2003-04 Cies Breijs <cies # kde ! nl>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of version 2 of the GNU General Public
@@ -65,7 +65,7 @@ ErrorMessage::ErrorMessage (QWidget *parent)
 }
 
 
-void ErrorMessage::slotAddError(token& t, QString s, uint c)
+void ErrorMessage::slotAddError(Token& t, QString s, uint c)
 {
 	errorData err;
 	err.code = c;
@@ -73,7 +73,7 @@ void ErrorMessage::slotAddError(token& t, QString s, uint c)
 	err.msg = s;
 	errList.append(err);
 	
-// 	token currentToken = err.tok; kdDebug(0)<<"ErrorMessage::slotAddError, got token: '"<<currentToken.look<<"', @ ("<<currentToken.start.row<<", "<<currentToken.start.col<<") - ("<<currentToken.end.row<<", "<<currentToken.end.col<<"), tok-number:"<<currentToken.type<<endl;
+// 	Token currentToken = err.tok; kdDebug(0)<<"ErrorMessage::slotAddError, got token: '"<<currentToken.look<<"', @ ("<<currentToken.start.row<<", "<<currentToken.start.col<<") - ("<<currentToken.end.row<<", "<<currentToken.end.col<<"), tok-number:"<<currentToken.type<<endl;
 	
 	errTable->insertRows(0);
 	errTable->setText( 0, 0, QString::number(errCount) ); // put the count in a hidden field for reference

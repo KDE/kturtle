@@ -1,6 +1,6 @@
 /*
-     Copyright (C) 2003 by Walter Schreppers 
-     Copyright (C) 2004 by Cies Breijs   
+    Copyright (C) 2003 by Walter Schreppers 
+    Copyright (C) 2004 by Cies Breijs   
      
     This program is free software; you can redistribute it and/or
     modify it under the terms of version 2 of the GNU General Public
@@ -38,15 +38,15 @@ Q_OBJECT
 	TreeNode* getTree() const { return tree; }
 
 	signals:
-	void ErrorMsg(token&, QString, uint code);
+	void ErrorMsg(Token&, QString, uint code);
 
 	private:
-	bool isAddOp(token);
-	bool isMulOp(token);
+	bool isAddOp(Token);
+	bool isMulOp(Token);
 	
 	void getToken();
 	void matchToken(int tokenType);
-	void Error(token, QString, uint code);
+	void Error(Token, QString, uint code);
 
 	TreeNode* Program();
 	TreeNode* ParamList();
@@ -61,15 +61,14 @@ Q_OBJECT
 	TreeNode* Term();
 	TreeNode* Expression();
 	
-	TreeNode* Assignment(token);
-	TreeNode* FunctionCall(token);
+	TreeNode* Assignment(Token);
+	TreeNode* FunctionCall(Token);
 	TreeNode* Other();
 	
 	TreeNode* While();
 	TreeNode* For();
 	TreeNode* ForEach();
 	TreeNode* If();
-	TreeNode* getString();
 	TreeNode* Return();
 	TreeNode* Break();
 	
@@ -107,14 +106,15 @@ Q_OBJECT
 	TreeNode* Reset();
 	
 	TreeNode* LineBreak();
+	TreeNode* EndOfFile();
 	
 	TreeNode* Learn();
 
 	//private locals
 	Lexer       *lexer;
 	TreeNode    *tree;
-	token        currentToken;
-	token        preservedToken; // to preserve the currentToken so it wont get lost
+	Token        currentToken;
+	Token        preservedToken; // to preserve the currentToken so it wont get lost
 	uint         row;
 	uint         col;
 	QStringList  learnedFunctionList;

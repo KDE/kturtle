@@ -1,6 +1,6 @@
 /*
-     Copyright (C) 2003 by Walter Schreppers 
-     Copyright (C) 2004 by Cies Breijs   
+    Copyright (C) 2003 by Walter Schreppers 
+    Copyright (C) 2004 by Cies Breijs   
      
     This program is free software; you can redistribute it and/or
     modify it under the terms of version 2 of the GNU General Public
@@ -25,27 +25,27 @@
 #include "value.h"
 
 
-struct pos // convenience, it codes a bit nicer with this, i.e.: tok.start.row
+struct Pos // convenience, it codes a bit nicer with this, i.e.: "int row = tok.start.row"
 {
-	uint    row;
-	uint    col;
+	uint     row;
+	uint     col;
 };
 
-struct token
+struct Token
 {
 	int      type;  // filled with enumed tokenTypes
 	QString  look;  // the way the token looks in the text editor
 	Value    value; // if the token is a number it can be stored here
-	pos      start; // row'n'col of the starting/ending point of the token
-	pos      end;
+	Pos      start; // row'n'col of the starting/ending point of the token
+	Pos      end;
 };
 
 
 enum tokenTypes
 {
-	tokNotSet = -1, // inittial type of all tokens
-	tokError = 1, // when there is an error
-	tokUnknown = 0, // when no token was found, a tokUnknown is often a variable, function or error
+	tokNotSet  = -1, // inittial type of all tokens
+	tokError   = 1,  // when there is an error
+	tokUnknown = 0,  // when no token was found, a tokUnknown is often a variable, function or error
 	
 	tokIf, // the execution controlling tokens
 	tokElse,

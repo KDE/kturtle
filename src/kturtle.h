@@ -126,7 +126,7 @@ class MainWindow : public KParts::MainWindow
 	void slotOpenFile();
 	void loadFile(KURL url);
 	void slotOpen(const KURL&);
-	void slotOpenEx();
+	void slotOpenExample();
 	void slotSaveFile();
 	void slotSaveAs();
 	void slotSave(KURL &);
