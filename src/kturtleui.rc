@@ -6,14 +6,28 @@
       <Action name="file_open" />
       <Action name="file_open_recent" />
       <Action name="open_examples" />
-      <Action name="run"/>
       <Separator />
-      <Merge/>
-      <Action name="file_quit"/>
+      <Action name="run" />
+      <Separator />
+      <Action name="file_save" />
+      <Action name="file_save_as" />
+      <Separator />
+      <Action name="file_print" />
+      <Separator />
+      <Action name="file_quit" />
     </Menu>
    
     <Menu name="edit" noMerge="1"><text>&amp;Edit</text>
-      <Action name="edit_undo" /> 
+      <Action name="edit_undo" />
+      <Action name="edit_redo" />
+      <Separator />
+      <Action name="edit_cut" />
+      <Action name="edit_copy" />
+      <Action name="edit_paste" />
+      <Separator />
+      <Action name="edit_find" />
+      <Action name="edit_find_next" />
+      <Action name="edit_replace" />
     </Menu>
     
     <Menu name="view" noMerge="1"><text>&amp;View</text>
@@ -26,11 +40,20 @@
   </MenuBar>
 
 <ToolBar name="mainToolBar" noMerge="1" fullWidth="true" >
+  <Action name="file_new" />
+  <Action name="file_open" />
+  <Action name="file_open_recent" />
+  <Action name="open_examples" />
+  <Separator />
+  <Action name="file_save" />
+  <Action name="file_save_as" />
+  <Separator />
+  <Action name="file_print" />
   <Separator/>
   <Action name="full_screen" />
   <Separator/>
   <Action name="color_picker" />
-
+  <Separator />
   <Action name="run" />
   <Separator/>
   <Action name="show_numbers" />

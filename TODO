@@ -192,6 +192,61 @@ cies: That is a good plan! (you can tell your daughter that the plan -- just lik
 
 
 
+THE MENU:
+File:
+  new
+  open
+  open recent
+  open example
+  -
+  execute
+  -
+  save
+  save as
+  -
+  print (should pop-up choise)
+  -
+  quit
+
+Edit
+  undo
+  redo
+  -
+  cut
+  copy
+  paste
+  -
+  find
+  replace
+  
+View  
+  fullscreen
+  -
+  linenumbers
+  -
+  hide editor
+
+Tools
+  colorpicker
+  fontchooser
+  -
+  indent
+  un-indent
+  clean indent
+  -
+  comment
+  uncomment
+
+Settings
+  configure kturtle
+  conf shortcuts
+  >>> no conf editor too much options
+  
+Help
+  +context help
+  
+
+
 
 cies: On the docbook 'manual' page...
 

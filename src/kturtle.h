@@ -59,6 +59,15 @@ class MainWindow : public KParts::MainWindow
     void slotExecute();
     
     void slotUndo();
+    void slotRedo();
+    void slotCut();
+    void slotCopy();
+    void slotPaste();
+    void slotSelectAll();
+    void slotFind();
+    void slotFindNext();
+    void slotFindPrevious();
+    void slotReplace();
    
     void slotStatusBar(QString text, int place);
     void slotUpdateCanvas();

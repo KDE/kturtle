@@ -26,8 +26,12 @@
 #include <ktextedit.h>
 #include <kurl.h>
 
+#include <ktexteditor/clipboardinterface.h>
+#include <ktexteditor/editinterface.h>
 #include <ktexteditor/editorchooser.h>
 #include <ktexteditor/highlightinginterface.h>
+#include <ktexteditor/printinterface.h>
+#include <ktexteditor/selectioninterface.h>
 #include <ktexteditor/undointerface.h>
 
 #include "settings.h"
@@ -56,7 +60,7 @@ MainWindow::MainWindow(KTextEditor::Document *document) : editor(0) {
     
     setXMLFile("kturtleui.rc");
     createShellGUI( true );
-    guiFactory()->addClient(editor);
+    //guiFactory()->addClient(editor);
     setMinimumSize(200,200);
 
     // the initial values
@@ -119,7 +123,8 @@ void MainWindow::setupActions() {
     KStdAction::selectAll(this, SLOT(slotSelectAll()), actionCollection());
     //
     KStdAction::find(this, SLOT(slotFind()), actionCollection());
-    KStdAction::findNext(this, SLOT(slotFindAgain()), actionCollection());
+    KStdAction::findNext(this, SLOT(slotFindNext()), actionCollection());
+    KStdAction::findPrev(this, SLOT(slotFindPrevious()), actionCollection());
     KStdAction::replace(this, SLOT(slotReplace()), actionCollection());
     // setup View menu
     m_fullscreen = KStdAction::fullScreen(this, SLOT( slotToggleFullscreen() ), actionCollection(), this, "full_screen");
@@ -466,6 +471,40 @@ void MainWindow::slotMessageDialog(QString text) {
 void MainWindow::slotUndo() {
     dynamic_cast<KTextEditor::UndoInterface*>(doc)->undo();
 }
+   
+void MainWindow:: slotRedo() {
+    dynamic_cast<KTextEditor::UndoInterface*>(doc)->redo();
+}
+   
+void MainWindow:: slotCut() {
+    dynamic_cast<KTextEditor::ClipboardInterface*>(doc)->cut();
+}
+  
+void MainWindow:: slotCopy() {
+    dynamic_cast<KTextEditor::ClipboardInterface*>(doc)->copy();
+}
+   
+void MainWindow:: slotPaste() {
+    dynamic_cast<KTextEditor::ClipboardInterface*>(doc)->paste();
+}
+
+void MainWindow:: slotSelectAll() {
+    dynamic_cast<KTextEditor::SelectionInterface*>(doc)->selectAll();
+}
+
+void MainWindow:: slotFind() {
+// no more ideas... quanta is our friend
+}
+
+void MainWindow:: slotFindNext() {
+}
+
+void MainWindow:: slotFindPrevious() {
+}
+
+void MainWindow:: slotReplace() {
+}
+
 
 
 
