@@ -40,7 +40,7 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2004-06-27</date>
+<date>2004-07-09</date>
 <releaseinfo>0.2</releaseinfo>
 
 <abstract>
@@ -1117,11 +1117,11 @@ Do you know what value a, b, c and d have?</para>
 <screen>
 print 2004-12
 </screen></para>
-<para>Now an example with braces:
+<para>Now an example with parentheses:
 <screen>
 print ( ( 20 - 5 ) * 2 / 30 ) + 1
 </screen>
-The expressions inside braces will be calculated first. In this example, 20-5 will be calculated, then multiplied by 2, divided by 30, and then 1 is added (giving 2).</para>
+The expressions inside parentheses will be calculated first. In this example, 20-5 will be calculated, then multiplied by 2, divided by 30, and then 1 is added (giving 2).</para>
 </sect1>
 
 <sect1 id="questions">
@@ -1135,7 +1135,7 @@ if x &gt; 5 [
 ]
 </screen>
 
-In this example the question is the <userinput>x &gt; 5</userinput> part. If the answer to this question is <quote>true</quote> the code between the braces will be executed. Questions are an important part of programming and often used together with <link linkend="controlling-execution">execution controllers</link>, like <link linkend="if"><userinput>if</userinput></link>. All numbers and <link linkend="variables">variables</link> (number containers) can be compared to each other with questions.</para>
+In this example the question is the <userinput>x &gt; 5</userinput> part. If the answer to this question is <quote>true</quote> the code between the brackets will be executed. Questions are an important part of programming and often used together with <link linkend="controlling-execution">execution controllers</link>, like <link linkend="if"><userinput>if</userinput></link>. All numbers and <link linkend="variables">variables</link> (number containers) can be compared to each other with questions.</para>
 <para>
 Here are all possible questions:
 <table>
@@ -1230,7 +1230,8 @@ repeat 36 [
   wait 0.5
 ]
 </screen>
-      This code draws a circle, but the turtle will wait half a second each step. This gives the impression of an easy moving turtle.</para></listitem>
+      This code draws a circle, but the turtle will wait half a second
+      after each step. This gives the impression of an easy-moving turtle.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -1243,14 +1244,14 @@ repeat 36 [
     <varlistentry>
       <term>if</term>
       <listitem><para><screen>if <link linkend="questions">question</link> [ ... ]</screen>
-      The code that is placed on the <quote>...</quote> will only be executed <userinput>if</userinput> the answer to the <link linkend="questions">question</link> is <quote>true</quote>. Please read for more information on <link linkend="questions">questions</link> in the <link linkend="questions">question section</link>.
+      The code that is placed between the brackets will only be executed <userinput>if</userinput> the answer to the <link linkend="questions">question</link> is <quote>true</quote>. Please read for more information on <link linkend="questions">questions</link> in the <link linkend="questions">question section</link>.
       <screen>
 x = 6
 if x &gt; 5 [
   print "x is greater than five!"
 ]
 </screen>
-      On the first line <userinput>x</userinput> is set to 6. On the second line the <link linkend="questions">question</link> <userinput>x &gt; 5</userinput> is asked. Since the answer to this question is <quote>true</quote> the execution controller <userinput>if</userinput> will allow the code between the braces to be executed</para></listitem>
+      On the first line <userinput>x</userinput> is set to 6. On the second line the <link linkend="questions">question</link> <userinput>x &gt; 5</userinput> is asked. Since the answer to this question is <quote>true</quote> the execution controller <userinput>if</userinput> will allow the code between the brackets to be executed</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -1263,7 +1264,7 @@ if x &gt; 5 [
     <varlistentry>
       <term>while</term>
       <listitem><para><screen>while <link linkend="questions">question</link> [ ... ]</screen>
-      The execution controller <userinput>while</userinput> is a lot like the <link linkend="if"><userinput>if</userinput></link>. The difference is that <userinput>while</userinput> keeps repeating the code between the braces till the answer to the <link linkend="questions">question</link> is <quote>false</quote>.
+      The execution controller <userinput>while</userinput> is a lot like <link linkend="if"><userinput>if</userinput></link>. The difference is that <userinput>while</userinput> keeps repeating the code between the brackets till the answer to the <link linkend="questions">question</link> is <quote>false</quote>.
       <screen>
 x = 1
 while x &lt; 5 [
@@ -1272,7 +1273,7 @@ while x &lt; 5 [
   x = x + 1
 ]
 </screen>
-      On the first line <userinput>x</userinput> is set to 1. On the second line the <link linkend="questions">question</link> <userinput>x &lt; 5</userinput> is asked. Since the answer to this question is <quote>true</quote> the execution controller <userinput>while</userinput> starts executing the code between the braces till the answer to the <link linkend="questions">question</link> is <quote>false</quote>. In this case the code between the braces will be executed 4 times, because every time the fifth line is executed <userinput>x</userinput> get one number higher.</para></listitem>
+      On the first line <userinput>x</userinput> is set to 1. On the second line the <link linkend="questions">question</link> <userinput>x &lt; 5</userinput> is asked. Since the answer to this question is <quote>true</quote> the execution controller <userinput>while</userinput> starts executing the code between the brackets till the answer to the <link linkend="questions">question</link> is <quote>false</quote>. In this case the code between the brackets will be executed 4 times, because every time the fifth line is executed <userinput>x</userinput> increases by 1..</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -1285,7 +1286,7 @@ while x &lt; 5 [
     <varlistentry>
       <term>else</term>
       <listitem><para><screen>if question [ ... ] else [ ... ]</screen>
-      <userinput>else</userinput> can be used in addition to the execution controller <link linkend="if"><userinput>if</userinput></link>. The code between the braces after <userinput>else</userinput> is only executed if the answer to the <link linkend="questions">question</link> that is asked is <quote>false</quote>. 
+      <userinput>else</userinput> can be used in addition to the execution controller <link linkend="if"><userinput>if</userinput></link>. The code between the brackets after <userinput>else</userinput> is only executed if the answer to the <link linkend="questions">question</link> that is asked is <quote>false</quote>. 
       <screen>
 x = 4
 if x &gt; 5 [
@@ -1294,7 +1295,7 @@ if x &gt; 5 [
   print "x is smaller than six!"
 ]
 </screen>
-      The <link linkend="questions">question</link> asks if <userinput>x</userinput> is greater than 5. Since <userinput>x</userinput> is set to 4 on the first line the answer to the question is <quote>false</quote>. This means the code between the braces after <userinput>else</userinput> gets executed.</para></listitem>
+      The <link linkend="questions">question</link> asks if <userinput>x</userinput> is greater than 5. Since <userinput>x</userinput> is set to 4 on the first line the answer to the question is <quote>false</quote>. This means the code between the brackets after <userinput>else</userinput> gets executed.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -1314,7 +1315,7 @@ for x = 1 to 10 [
   forward 15
 ]
 </screen>
-     Every time the code between the braces is executed the <userinput>x</userinput> is one number higher, till x reaches the count of 10. The code between the braces prints the <userinput>x</userinput> multiplied by 7. After this program finished its execution you will see the times table of 7 on the canvas.</para></listitem>
+     Every time the code between the brackets is executed the <userinput>x</userinput> is increased by 1, till <userinput>x</userinput> reaches the value of 10. The code between the brackets prints the <userinput>x</userinput> multiplied by 7. After this program finishes its execution you will see the times table of 7 on the canvas.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -1324,7 +1325,7 @@ for x = 1 to 10 [
 
 <sect1 id="learn">
 <title>Create your own commands!</title>
-<para><userinput>learn</userinput> is a very special command, because it is used to create you own commands. The command you create can take <glossterm linkend="input-output">input</glossterm> and return <glossterm linkend="input-output">output</glossterm>. Let's take a look at how a new command is created.
+<para><userinput>learn</userinput> is a very special command, because it is used to create your own commands. The command you create can take <glossterm linkend="input-output">input</glossterm> and return <glossterm linkend="input-output">output</glossterm>. Let's take a look at how a new command is created:
 <screen>
 learn circle (x) [
   repeat 36 [
@@ -1356,9 +1357,9 @@ learn multiplyBySelf (n) [
   return r
 ]
 i = inputwindow "Please enter a number and press OK"
-print i + " multiplied by it self is: " + multiplyBySelf (i)
+print i + " multiplied by itself is: " + multiplyBySelf (i)
 </screen>
-In this example a new command called <userinput>multiplyBySelf</userinput>. The input of this command is multiplied by it self and then returned, using the <anchor id="return" /><userinput>return</userinput> command. The <userinput>return</userinput> command is the way to output a value from a self created function.
+In this example a new command called <userinput>multiplyBySelf</userinput> is created. The input of this command is multiplied by it self and then returned, using the <anchor id="return" /><userinput>return</userinput> command. The <userinput>return</userinput> command is the way to output a value from a function you have created.
 </para>
 </sect1>
 
@@ -1368,24 +1369,24 @@ In this example a new command called <userinput>multiplyBySelf</userinput>. The 
 <chapter id="Glossary">
 <title>Glossary</title>
 
-<para>In this chapter you find an explanation of most of the <quote>uncommon</quote> words that are used in the handbook.</para>
+<para>In this chapter you will find an explanation of most of the <quote>uncommon</quote> words that are used in the handbook.</para>
 
 <glosslist>
 <glossentry id="degrees">
 <glossterm>degrees</glossterm>
-<glossdef><para>Degrees a unit to measure angles or turns. A full turn is 360 degrees, that make a half turn 180 degrees and a quarter turn 90 degrees. The commands <userinput>turnleft</userinput>, <userinput>turnright</userinput> and <userinput>direction</userinput> need an input in degrees.</para></glossdef>
+<glossdef><para>Degrees are units to measure angles or turns. A full turn is 360 degrees,  a half turn 180 degrees and a quarter turn 90 degrees. The commands <userinput>turnleft</userinput>, <userinput>turnright</userinput> and <userinput>direction</userinput> need an input in degrees.</para></glossdef>
 </glossentry>
 
 <glossentry id="input-output">
 <glossterm>input and output of commands</glossterm>
-<glossdef><para>Some commands take input, some commands give output, some commands take input and give output and some commands do not take input nor give output.</para>
+<glossdef><para>Some commands take input, some commands give output, some commands take input <emphasis>and</emphasis> give output and some commands neither take input nor give output.</para>
 <para>Some examples of commands that only take input are:
 <screen>
 forward 50
 pencolor 255,0,0
 print "Hello!"
 </screen>
-The <userinput>forward</userinput> command takes <userinput>50</userinput> as input, <userinput>forward</userinput> needs this input to know how much <glossterm linkend="pixels">pixels</glossterm> it should go forward. <userinput>pencolor</userinput> takes an  as input and <userinput>print</userinput> takes a string as input. Please note that the input can also be a container. The next example illustrates this:
+The <userinput>forward</userinput> command takes <userinput>50</userinput> as input. <userinput>forward</userinput> needs this input to know how many <glossterm linkend="pixels">pixels</glossterm> it should go forward. <userinput>pencolor</userinput> takes a color as input and <userinput>print</userinput> takes a string (a piece of text) as input. Please note that the input can also be a container. The next example illustrates this:
 <screen>
 x = 50
 print x
@@ -1393,12 +1394,12 @@ str = "hello!"
 print str
 </screen></para>
 
-<para>Now some examples of the commands that give output:
+<para>Now some examples of commands that give output:
 <screen>
 x = inputwindow "Please type something and press OK... thanks!"
 r = random 1,100
 </screen>
-The <userinput>inputwindow</userinput> command takes a string as input, and outputs the number or string that is enter. As you see the output of <userinput>inputwindow</userinput> is stored in the container <userinput>x</userinput>. The <userinput>random</userinput> command also gives output. In this case it outputs a number between 1 and 100. The output of the random is again stored in a container, named <userinput>r</userinput>. Note that the containers <userinput>x</userinput> and <userinput>r</userinput> are not used in the example code above.</para>
+The <userinput>inputwindow</userinput> command takes a string as input, and outputs the number or string that is entered. As you can see, the output of <userinput>inputwindow</userinput> is stored in the container <userinput>x</userinput>. The <userinput>random</userinput> command also gives output. In this case it outputs a number between 1 and 100. The output of the random is again stored in a container, named <userinput>r</userinput>. Note that the containers <userinput>x</userinput> and <userinput>r</userinput> are not used in the example code above.</para>
 
 <para>There are also commands that neither need input nor give output. Here some examples:
 <screen>
@@ -1430,12 +1431,12 @@ hide
 <row>
 <entry>comments</entry>
 <entry>dark yellow</entry>
-<entry>Lines that are commented start with a comment characters (#), these lines are ignored when the code is executed. Comments allow the programmer to explain a bit about his code or it can be used to temporarily prevent a certain piece of code from execution.</entry>
+<entry>Lines that are commented start with a comment characters (#). These lines are ignored when the code is executed. Comments allow the programmer to explain a bit about his code or can be used to temporarily prevent a certain piece of code from executing.</entry>
 </row>
 <row>
-<entry>braces [, ]</entry>
+<entry>brackets [, ]</entry>
 <entry>light green (bold)</entry>
-<entry>Braces are used to group portions of code. Braces are often used together with <link linkend="controlling-execution">execution controllers</link>.</entry>
+<entry>Brackets are used to group portions of code. Brackets are often used together with <link linkend="controlling-execution">execution controllers</link>.</entry>
 </row>
 <row>
 <entry>the <link linkend="learn">learn</link> command</entry>
@@ -1480,8 +1481,8 @@ hide
 
 <glossentry id="pixels">
 <glossterm>pixels</glossterm>
-<glossdef><para>A pixel is a dot on the screen. If you look very close you will see that the screen of your monitor uses pixels. All images on the screen are build with these pixels. A pixel is the smallest thing that can be drawn on the screen.</para>
-<para>A lot of commands need an amount of pixels as input, these commands are: <userinput>forward</userinput>, <userinput>backward</userinput>, <userinput>go</userinput>, <userinput>gox</userinput>, <userinput>goy</userinput>, <userinput>canvassize</userinput> and <userinput>penwidth</userinput>.</para></glossdef>
+<glossdef><para>A pixel is a dot on the screen. If you look very close you will see that the screen of your monitor uses pixels. All images on the screen are built with these pixels. A pixel is the smallest thing that can be drawn on the screen.</para>
+<para>A lot of commands need a number of pixels as input. These commands are: <userinput>forward</userinput>, <userinput>backward</userinput>, <userinput>go</userinput>, <userinput>gox</userinput>, <userinput>goy</userinput>, <userinput>canvassize</userinput> and <userinput>penwidth</userinput>.</para></glossdef>
 </glossentry>
 
 <glossentry id="rgb">
@@ -1655,7 +1656,7 @@ Contributors:
 <itemizedlist>
 <listitem><para>Coding help, editor part: Anne-Marie Mahfouf <email>annma@kde.org</email></para>
 </listitem>
-<listitem><para>Author of <application>wsbasic</application>> (<ulink url="http://wsbasic.sourceforge.net">http://wsbasic.sourceforge.net</ulink>) which is the base for the interpreter of &kturtle;: Walter Schreppers <email>Walter.Schreppers@ua.ac.be</email></para>
+<listitem><para>Author of <application>wsbasic</application> (<ulink url="http://wsbasic.sourceforge.net">http://wsbasic.sourceforge.net</ulink>) which is the base for the interpreter of &kturtle;: Walter Schreppers <email>Walter.Schreppers@ua.ac.be</email></para>
 </listitem>
 <listitem><para>German Data Files: Matthias Me&szlig;mer <email>bmlmessmer@web.de</email></para>
 </listitem>
@@ -1673,6 +1674,8 @@ Cies Briej <email>cies # showroommama ! nl</email>
 <listitem><para>
  Anne-Marie Mahfouf <email>annma@kde.org</email>
 </para></listitem>
+<listitem><para>Some proofreading changes by &Philip.Rodrigues; &Philip.Rodrigues.mail;</para>
+</listitem>
 </itemizedlist>
 </para>
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
