@@ -43,56 +43,131 @@ void Canvas::initValues() {
 //    loadSpriteFrames("logo");
 }
 
-void Canvas::Line(int xa, int ya, int xb, int yb, bool repeat) {
-    QCanvasLine* i = new QCanvasLine(TurtleCanvas);
-    i->setPoints( xa, ya, xb, yb );
-    i->setPen( QPen( QColor(FgR, FgB, FgG), PenWidth, SolidLine ) );
-    i->setZ(1);
-    i->show();
-    kdDebug(0)<<"Line:: "<<xa<<", "<<ya<<", "<<xb<<", "<<yb<<endl;
+void Canvas::Line(int xa, int ya, int xb, int yb) {
+    QCanvasLine* l = new QCanvasLine(TurtleCanvas);
+    l->setPoints( xa, ya, xb, yb );
+    l->setPen( QPen( QColor(FgR, FgB, FgG), PenWidth, SolidLine ) );
+    l->setZ(1);
+    l->show();
+    kdDebug(0)<<"Line:: xa:"<<xa<<", ya:"<<ya<<", xb:"<<xb<<", yb:"<<yb<<endl;
     if ( Wrap && !TurtleCanvas->onCanvas(xb, yb) ) {
-        intpair offset = Offset(xb, yb);
-        int xi = offset.x;
-        int yi = offset.y;
-	if ( CrossingBorder(xa, ya, xb, yb, false) && offset.x != 0 ) {
-	    kdDebug(0)<<"-Xtranlation"<<endl;
-            Line( xa - ( xi * CanvasWidth ), ya, 
-                  xb - ( xi * CanvasWidth ), yb, true );
-	} else if ( CrossingBorder(xa, ya, xb, yb, true) && offset.y != 0 ) {
-	    kdDebug(0)<<"-Ytranlation"<<endl;
-            Line( xa, ya - ( yi * CanvasHeight ), 
-                  xb, yb - ( yi * CanvasHeight ), true );
-	}
+        QPoint translation = TranslationFactor(xa, ya, xb, yb);
+        QPoint t_startPos = QPoint(xa, ya) +
+                            QPoint(translation.x() * CanvasWidth, translation.y() * CanvasHeight);
+        QPoint t_endPos   = QPoint(xb, yb) + 
+                            QPoint(translation.x() * CanvasWidth, translation.y() * CanvasHeight);
+        Line( t_startPos.x(), t_startPos.y(), t_endPos.x(), t_endPos.y() );
+        // Line( t_startPos, t_endPos ); // not yet :-)
     }
 }
 
-bool Canvas::CrossingBorder(int xa, int ya, int xb, int yb, bool XorY) {
-    // this class returns true it the top/bottom border of the canvas is crossed
-    // and return false if the left/right border is crossed
-    //          y = A * x + B
-    float A = (float)( yb - ya ) / (float)( xb - xa );
-    int B = ya - (int)( ( A * xa ) );
-    int x_sT = (int)( ( -B ) / A );  // A * x_sT + B = 0  =>   x_sT = -B / A 
-    int x_sB = (int)( ( CanvasHeight - B ) / A );  // A * x_sB + B = CW  =>   x_sB = (CW - B) / A
-    int y_sL = B;  // A * 0 + B = y_sL  =>  y_sL = B
-    int y_sR = (int)( A * CanvasWidth ) + B;
-    kdDebug(0)<<"CB:: "<<A<<", "<<B<<", "<<x_sT<<", "<<x_sB<<", "<<y_sL<<", "<<y_sR<<", "<<endl;
-    if ( XorY == true  && ( ( 0 < x_sT && x_sT < CanvasWidth )  || 
-                            ( 0 < x_sB && x_sB < CanvasWidth ) ) )  { return true; } 
-    if ( XorY == false && ( ( 0 < y_sL && y_sL < CanvasHeight ) ||
-                            ( 0 < y_sR && y_sR < CanvasHeight ) ) ) { return true; }
+QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb) {
+    // this class returns a QPoint which can be used to properly 'wrap' a line
+    QPoint CrossPoint[4]; // under wicked circumstance this can happen! (crossing both corners)
+    QPoint Translate[4];
+    int i = 0;
+    // First we find out what crossing points the line has with canvas border lines
+    if ( ( xb - xa ) == 0 ) {  // check for an infinite direction coefficient
+        i++;
+        Translate[i] = QPoint(0, 1);
+        CrossPoint[i] = QPoint(xa, 0);
+        i++;
+        Translate[i] = QPoint(0,-1);
+        CrossPoint[i] = QPoint(xa, CanvasHeight);
+    } else {
+        float A = (float)( yb - ya ) / (float)( xb - xa );
+        int B = ya - (int)( ( A * xa ) );
+        int x_sT = (int)( ( -B ) / A );                // A * x_sT + B = 0  =>   x_sT = -B / A 
+        int x_sB = (int)( ( CanvasHeight - B ) / A );  // A * x_sB + B = CW  =>   x_sB = (CW - B) / A
+        int y_sL = B;                                  // A * 0 + B = y_sL  =>  y_sL = B
+        int y_sR = (int)( A * CanvasWidth ) + B;
+        kdDebug(0)<<"CB:: rc:"<<A<<", T:"<<x_sT<<", B:"<<x_sB<<", L:"<<y_sL<<", R:"<<y_sR<<". "<<endl;
+        
+        // Here we find out what crossing points are actually on the borders 
+        if ( 0 <= x_sT && x_sT <= CanvasWidth && PointInRange(x_sT, 0, xa, ya, xb, yb) ) {
+            i++;
+            Translate[i] = QPoint(0, 1);
+            CrossPoint[i] = QPoint(x_sT, 0);
+        }
+        if ( 0 <= x_sB && x_sB <= CanvasWidth && PointInRange(x_sB, CanvasHeight, xa, ya, xb, yb) ) {
+            i++;
+            Translate[i] = QPoint(0,-1);
+            CrossPoint[i] = QPoint(x_sB, CanvasHeight);
+        } 
+        if ( 0 <= y_sL && y_sL <= CanvasHeight && PointInRange(0, y_sL, xa, ya, xb, yb) ) {
+            i++;
+            Translate[i] = QPoint(1, 0);
+            CrossPoint[i] = QPoint(0, y_sL);
+        }
+        if ( 0 <= y_sR && y_sR <= CanvasHeight && PointInRange(CanvasWidth, y_sR, xa, ya, xb, yb) ) {
+            i++;
+            Translate[i] = QPoint(-1, 0);
+            CrossPoint[i] = QPoint(CanvasWidth, y_sR);
+        }
+    }
+    QPoint returnValue = QPoint(0, 0);
+    if ( i == 1 ) { return Translate[1]; }
+    if ( i > 1 )  {
+        QPoint endPos(xb, yb);
+        int smallestSize = ( QPoint(xa, ya) - endPos ).manhattanLength();
+        for ( int ii = 1; ii <= i; ii++ ) {
+            int testSize = ( CrossPoint[ii] - endPos ).manhattanLength();
+            if ( testSize < smallestSize ) {
+                smallestSize = testSize;
+                returnValue = Translate[ii];
+            } else if ( testSize == smallestSize ) {  // this only happens on corners
+                returnValue = QPoint(0, 0);
+                if ( xb < 0 ) {
+                    returnValue = returnValue + QPoint(1, 0);
+                } else if ( xb > CanvasWidth ) {
+                    returnValue = returnValue + QPoint(-1, 0);
+                }
+                if ( yb < 0 ) {
+                    returnValue = returnValue + QPoint(0, 1);
+                } else if ( yb > CanvasHeight ) {
+                    returnValue = returnValue + QPoint(0,-1);
+                }
+                return returnValue;
+            }
+        }
+        if ( returnValue == QPoint(0, 0) ) { kdDebug(0)<<"***Shouldn't happen***"<<endl; }
+        return returnValue;
+    }
+    
+// // // // // //     // Here a fallback if the line has no crossings points with any borders. 
+// // // // // //     float A = (float)( yb - ya ) / (float)( xb - xa );
+// // // // // //     // if the allmost a parallel to y = x:
+// // // // // //     if ( ( A < 1.000100 && A > 0.999900 ) || (-A < 1.000100 && -A > 0.999900 ) ) {
+// // // // // //         if ( B < 0 ) { return QPoint(1,-1); }
+// // // // // //         if ( B > 0 ) { return QPoint(-1,1); }
+// // // // // //     }
+// // // // // //     int B = ya - (int)( ( A * xa ) );
+// // // // // //     
+// // // // // //     // crossing point with the line y = x
+// // // // // //     int c_X = B / (int)(A - 1);
+// // // // // //     int c_Y = (int)( A * c_X ) + B;
+// // // // // //     if ( c_X < 0 && A > 0 ) {
+// // // // // //         if ( A < 1 ) { return QPoint(1,-1); }
+// // // // // //     
+// // // // // //     WORKING ON THIS!!!
+    kdDebug(0)<<"**Shouldn't happen**"<<endl;
+    return QPoint(1,-1);
+}
+
+bool Canvas::PointInRange(int px, int py, int xa, int ya, int xb, int yb) {
+    if ( ( ( px >= xa && px <= xb ) || ( px <= xa && px >= xb ) ) &&
+         ( ( py >= ya && py <= yb ) || ( py <= ya && py >= yb ) ) ) {
+        return true;
+    }
     return false;
 }
 
-intpair Canvas::Offset(int x, int y) {
+QPoint Canvas::Offset(int x, int y) {
     // This funktion make is easy to read since deviding int's is a weird thing:
     // int x = 5 / 2,  outputs: x = 2,  with: 5 % 2 = 1 (the rest value) 
-    intpair offset;
     if ( x < 0 ) { x = x - CanvasWidth; } 
     if ( y < 0 ) { y = y - CanvasHeight; } 
-    offset.x = x / CanvasWidth;
-    offset.y = y / CanvasHeight;
-    kdDebug(0)<<"Offset::  x:"<<offset.x<<", y:"<<offset.y<<endl;
+    QPoint offset( x / CanvasWidth, y / CanvasHeight);
     return offset;
 }
 
@@ -125,11 +200,9 @@ void Canvas::slotClear() {
 
 void Canvas::slotGo(int x, int y) {
     if ( Wrap && !TurtleCanvas->onCanvas(x, y) ) {
-        intpair offset = Offset(x, y);
-        kdDebug(0)<<"slotGo:: offset:"<<offset.x<<", "<<offset.y<<"  X:"<<x<<", Y:"<<y;
-        PosX = x - (offset.x * CanvasWidth);
-        PosY = y - (offset.y * CanvasHeight);
-	kdDebug(0)<<"   PosXnew:"<<PosX<<", PosYnew:"<<PosY<<endl;
+        QPoint offset = Offset(x, y);
+        PosX = x - ( offset.x() * CanvasWidth );
+        PosY = y - ( offset.y() * CanvasHeight );
     } else {
         PosX = x;
         PosY = y;
@@ -138,8 +211,8 @@ void Canvas::slotGo(int x, int y) {
 
 void Canvas::slotGoX(int x) {
     if ( Wrap && !TurtleCanvas->onCanvas(x, PosY) ) {
-        intpair offset = Offset(x, PosY);
-        PosX = x - (offset.x * CanvasWidth);
+        QPoint offset = Offset(x, PosY);
+        PosX = x - ( offset.x() * CanvasWidth );
     } else {
         PosX = x;
     }
@@ -147,8 +220,8 @@ void Canvas::slotGoX(int x) {
 
 void Canvas::slotGoY(int y) {
     if ( Wrap && !TurtleCanvas->onCanvas(PosX, y) ) {
-        intpair offset = Offset(PosX, y);
-        PosY = y - (offset.y * CanvasHeight);
+        QPoint offset = Offset(PosX, y);
+        PosY = y - ( offset.y() * CanvasHeight );
     } else {
         PosY = y;
     }
@@ -161,14 +234,6 @@ void Canvas::slotForward(int x) {
         Line(PosX, PosY, PosXnew, PosYnew);
     }
     slotGo(PosXnew, PosYnew);
-//     if ( Wrap && !TurtleCanvas->onCanvas(PosXnew, PosYnew) ) {
-//         intpair offset = Offset(PosXnew, PosYnew);
-//         PosX = PosXnew - (offset.x * CanvasWidth);
-//         PosY = PosYnew - (offset.y * CanvasHeight);
-//     } else {
-//         PosX = PosXnew;
-//         PosY = PosYnew;
-//     }
 }
 
 void Canvas::slotBackward(int x) {
@@ -178,14 +243,6 @@ void Canvas::slotBackward(int x) {
         Line(PosX, PosY, PosXnew, PosYnew);
     }
     slotGo(PosXnew, PosYnew);
-//     if ( Wrap && !TurtleCanvas->onCanvas(PosXnew, PosYnew) ) {
-//         intpair offset = Offset(PosXnew, PosYnew);
-//         PosX = PosXnew - (offset.x * CanvasWidth);
-//         PosY = PosYnew - (offset.y * CanvasHeight);
-//     } else {
-//         PosX = PosXnew;
-//         PosY = PosYnew;
-//     }
 }
 
 void Canvas::slotDirection(double deg) {
@@ -241,7 +298,7 @@ void Canvas::slotResizeCanvas(int x, int y) {
     CanvasWidth = x;
     CanvasHeight = y;
     TurtleCanvas->resize(x, y);
-    emit resize(); 
+    emit CanvasResized(); 
 }
 
 

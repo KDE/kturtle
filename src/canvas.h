@@ -7,12 +7,22 @@
 
 #include <qcanvas.h>
 #include <qfont.h>
+#include <qpoint.h>
 
 #include <cmath>
 
-struct intpair {
-    int x;
-    int y;
+
+enum CanvasBorder { 
+    NoCrossing = -1,
+    Top,
+    Bottom,
+    Left,
+    Right
+};
+
+struct BorderPoint {
+    int border;
+    QPoint point;
 };
 
 class Canvas : public QCanvasView
@@ -54,13 +64,14 @@ class Canvas : public QCanvasView
     void slotReset();
     
   signals:
-    void resize();
+    void CanvasResized();
     
   private:
     void initValues();
-    void Line(int xa, int ya, int xb, int yb, bool repeat = false);
-    bool CrossingBorder(int xa, int ya, int xb, int yb, bool XorY);
-    intpair Offset(int x, int y);
+    void Line(int xa, int ya, int xb, int yb);
+    QPoint TranslationFactor(int xa, int ya, int xb, int yb);
+    bool PointInRange(int px, int py, int xa, int ya, int xb, int yb);
+    QPoint Offset(int x, int y);
     void loadSpriteFrames(QString name);
     
     QCanvas *TurtleCanvas;

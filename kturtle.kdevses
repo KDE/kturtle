@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <!DOCTYPE KDevPrjSession>
 <KDevPrjSession>
- <DocsAndViews NumberOfDocuments="17" >
+ <DocsAndViews NumberOfDocuments="18" >
   <Doc0 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/TODO" >
    <View0 line="80" Type="???" >
     <AdditionalSettings/>
@@ -13,7 +13,7 @@
    </View0>
   </Doc1>
   <Doc2 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/kturtle.cpp" >
-   <View0 line="472" Type="???" >
+   <View0 line="130" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc2>
@@ -23,7 +23,7 @@
    </View0>
   </Doc3>
   <Doc4 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/parser.cpp" >
-   <View0 line="1225" Type="???" >
+   <View0 line="66" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc4>
@@ -38,7 +38,7 @@
    </View0>
   </Doc6>
   <Doc7 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/treenode.h" >
-   <View0 line="0" Type="???" >
+   <View0 line="22" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc7>
@@ -67,18 +67,18 @@
     <AdditionalSettings/>
    </View0>
   </Doc12>
-  <Doc13 context="ctx_qt" NumberOfViews="1" URL="file:/usr/share/qt3/doc/html/qtimer.html#details" >
+  <Doc13 context="ctx_qt" NumberOfViews="1" URL="file:/usr/share/qt3/doc/html/qpoint.html" >
    <View0 Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc13>
   <Doc14 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/canvas.cpp" >
-   <View0 line="112" Type="???" >
+   <View0 line="153" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc14>
   <Doc15 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/canvas.h" >
-   <View0 line="60" Type="???" >
+   <View0 line="71" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc15>
@@ -87,6 +87,11 @@
     <AdditionalSettings/>
    </View0>
   </Doc16>
+  <Doc17 context="ctx_/usr/share/apps/kdevdoctreeview/tocs/libstdc++.toc" NumberOfViews="1" URL="http://gcc.gnu.org/onlinedocs/libstdc++/documentation.html" >
+   <View0 Type="???" >
+    <AdditionalSettings/>
+   </View0>
+  </Doc17>
  </DocsAndViews>
  <pluginList>
   <kdevbookmarks>

@@ -128,7 +128,7 @@ void MainWindow::setupCanvas() {
     BaseLayout->addWidget(TurtleView, 0, 0, AlignCenter);
     TurtleView->show();
     
-    connect( TurtleView, SIGNAL( resize() ), this, SLOT( slotUpdateCanvas() ) );
+    connect( TurtleView, SIGNAL( CanvasResized() ), this, SLOT( slotUpdateCanvas() ) );
 }
 
 void MainWindow::setupEditor() {
