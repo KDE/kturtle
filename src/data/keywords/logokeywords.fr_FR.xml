@@ -138,7 +138,7 @@
   </command>
   
   <command name="setpenwidth">
-    <keyword>fixetaillecrayon</keyword>
+    <keyword>taillecrayon</keyword>
     <alias>ftc</alias>
   </command>
   
@@ -153,18 +153,18 @@
   </command>
   
   <command name="setfgcolor">
-    <keyword>fixecouleurcrayon</keyword>
+    <keyword>couleurcrayon</keyword>
     <alias>fcc</alias>
   </command>
   
   <command name="setbgcolor">
-    <keyword>fixecouleurécran</keyword>
+    <keyword>couleurcanevas</keyword>
     <alias>fcé</alias>
   </command>
    
   <command name="resizecanvas">
     <keyword>taillecanevas</keyword>
-    <alias>tc</alias>
+    <alias>tca</alias>
   </command>
 
   <command name="spriteshow">

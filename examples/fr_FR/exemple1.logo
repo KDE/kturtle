@@ -1,0 +1,19 @@
+taillecanevas 200,200
+couleurcanevas 0,0,0
+couleurcrayon 255,0,0
+taillecrayon 5
+nettoietout
+
+va 20,20
+direction 135
+
+avance 200
+tournegauche 135
+avance 100
+tournegauche 135
+avance 141
+tournegauche 135
+avance 100
+tournegauche 45
+
+va 40, 100 
