@@ -51,7 +51,7 @@ class Parser : public QObject
     TreeNode* getTree();
 
   signals:
-    void ErrorMsg(QString s, unsigned int row, unsigned int col, unsigned int code);
+    void ErrorMsg(QString s, uint row, uint col, uint code);
   
   private:
     bool isAddOp(token);
@@ -59,7 +59,7 @@ class Parser : public QObject
     
     void getToken();
     void Match(int);
-    void Error(const QString& s, unsigned int code = 1000);
+    void Error(const QString& s, uint code = 1000);
 
     TreeNode* Program();
     TreeNode* Function();
@@ -76,8 +76,8 @@ class Parser : public QObject
     TreeNode* Term();
     TreeNode* Expression();
     
-    TreeNode* Assignment  ( const string& );
-    TreeNode* FunctionCall( const string& );
+    TreeNode* Assignment  ( const QString& );
+    TreeNode* FunctionCall( const QString& );
     TreeNode* Other();
     
     TreeNode* While();
@@ -132,8 +132,8 @@ class Parser : public QObject
     
     TreeNode* tree; 
     bool bNoErrors;
-    unsigned int row;
-    unsigned int col;
+    uint row;
+    uint col;
 };
 
 #endif // _PARSER_H_

@@ -1,49 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE kcfg SYSTEM "http://www.kde.org/standards/kcfg/1.0/kcfg.dtd">
 <kcfg> 
-  <kcfgfile name="kturtlerc"/> 
-    <group name="general"> 
-        <entry name="CanvasHeight" type="Int"> 
-      <label>The height of the canvas in pixels</label> 
-      <default>300</default> 
-    </entry> 
+<kcfgfile name="kturtlerc"/> 
+  <group name="general"> 
     <entry name="CanvasWidth" type="Int"> 
-      <label>The width of the canvas in pixels</label> 
-      <default>400</default> 
-    </entry> 
-  </group> 
-  <group name="language"> 
-    <entry name="TranslationFilePath" type="Path"> 
-      <label>The location of the language xml file</label> 
+      <label>The height of the canvas in pixels</label> 
+      <default>300</default>
+    </entry>
+    <entry name="CanvasHeight" type="Int"> 
+      <label>The height of the canvas in pixels</label> 
+      <default>250</default>
+    </entry>       
+  </group>
+  <group name="language">
+    <entry name="LogoLanguageList" type="StringList">
+      <!--This StingList is used in the above LogoLanguage AND in the settingsdialog to fill the ComboBox. Better not to dupe the code that does this.-->
+      <label>The list the available logo languages</label> 
       <code>
-      		QStringList xmlFiles = KGlobal::dirs()->findAllResources("data", "kturtle/data/*.xml");
-      		QStringList m_languages;
-    		for (QStringList::Iterator it = xmlFiles.begin(); it != xmlFiles.end(); ++it ) {
-			QString xmlFile(*it);
-			xmlFile = xmlFile.right(xmlFile.length()-QString(locate("data","kturtle/data/")+"logokeywords.").length());
-			xmlFile = xmlFile.left(xmlFile.length()-4);
-	 		m_languages += xmlFile;
-    		}
-    		//see what language the user has in his settings
-    		KConfigBase *globalConf = KGlobal::config();
-    		globalConf->setGroup("Locale");
-    		QString userLanguage = globalConf->readEntry("Language");
-    		userLanguage = userLanguage.left(5);
-		//default language is one of the logokeyword or en
-		QString defaultLanguage;
-		for (QStringList::Iterator it = m_languages.begin(); it != m_languages.end(); ++it ) {
-			QString m_language(*it);
-			if (m_language == userLanguage || m_language.left(2) == userLanguage) {
-				defaultLanguage = m_language;
-				break;
-				}
-			else
-  				defaultLanguage = "en_US";
-		}    
-		
-       QString myString = locate("data", "kturtle/data/logokeywords."+ defaultLanguage +".xml");
+          // We assume keyword and highlight files come in pairs (if not there will be no highlight)
+          // First a list is build from all possible language(codes) [en_US, fr, nl, etc.]
+          QStringList xmlFiles = KGlobal::dirs()->findAllResources("data", "kturtle/data/*.xml");
+          QStringList LogoLanguageList;
+          for ( QStringList::Iterator it = xmlFiles.begin(); it != xmlFiles.end(); ++it ) {
+              QString xmlFile(*it);
+              kdDebug(0) &lt;&lt; "xmlFile: "&lt;&lt; xmlFile &lt;&lt;endl;
+              LogoLanguageList += xmlFile.section('.', -2, -2);
+          }
       </code>
-      <default code="true">myString</default>
-    </entry> 
+      <default code="true">LogoLanguageList</default> 
+    </entry>
+    <entry name="LanguageComboBox" type="Int">
+      <!--This is the parameter that actually gets changed (and emits the signal to the dialog)-->
+      <label>The value of the ComboBox</label> 
+      <default>0</default>
+    </entry>
+    <entry name="LogoLanguage" type="String">
+      <!--This is the String that actually get picked up by the app. It is not directly changeable by the ComboBox but is translated from the Ints that ComboBox LogoLanguageList emits. It is better to have the logic that changes the Ints to Strings at the settings dept.-->
+      <label>The language of the Logo commands</label> 
+      <code>
+          // This the the parameter that is used by the rest of the app
+          KConfigBase *globalConf = KGlobal::config();
+          globalConf->setGroup("Locale");
+          QString desktopLanguage = globalConf->readEntry("Language");
+          kdDebug(0) &lt;&lt; "desktopLanguage: "&lt;&lt; desktopLanguage &lt;&lt;endl;
+          QString defaultLanguage = "en_US";
+          for (QStringList::Iterator it = LogoLanguageList.begin(); it != LogoLanguageList.end(); ++it ) {
+              QString testLanguage(*it);
+              if (testLanguage == desktopLanguage) { // exact match
+                  defaultLanguage = testLanguage;
+                  break;
+              } else if (testLanguage.left(2) == desktopLanguage) { // close match (no the same dialect)
+                  defaultLanguage = testLanguage.left(2);
+                  break;
+              }
+          }
+          kdDebug(0) &lt;&lt; "defaultLanguage: "&lt;&lt; defaultLanguage &lt;&lt;endl;
+      </code>
+      <default code="true">defaultLanguage</default> 
+    </entry>
   </group> 
 </kcfg>

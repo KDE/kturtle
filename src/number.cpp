@@ -2,26 +2,26 @@
 
 
 Number::Number() {
-  strVal="";
-  val=0;
-  bString=false;
+  strVal = "";
+  val = 0;
+  bString = false;
 }
 
 Number::Number( const Number& n ) {
-  *this=n;
+  *this = n;
 }
 
 void Number::toString() {
   ostringstream os;
-  os<<val;
-  strVal=os.str();
-  bString=true;
+  os << val;
+  strVal = os.str();
+  bString = true;
 }
 
 void Number::toDouble() {
   istringstream is(strVal);
-  is>>val;
-  bString=false;
+  is >> val;
+  bString = false;
 }
     
 
@@ -29,9 +29,9 @@ Number& Number::operator=( const Number& n ) {
   if(this != &n) {
 
     if( bString == n.bString ) {
-      strVal=n.strVal;
-      val=n.val;
-      bString=n.bString;
+      strVal = n.strVal;
+      val = n.val;
+      bString = n.bString;
     }
     
     if(n.bString) {
@@ -59,7 +59,7 @@ Number& Number::operator=( const Number& n ) {
 }
 
 
-Number& Number::operator=( const string& s ) {
+Number& Number::operator=( const QString& s ) {
   strVal=s;
   bString=true;
   return *this;

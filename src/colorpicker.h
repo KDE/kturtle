@@ -20,6 +20,7 @@ class ColorPicker : public KDialogBase
   
   signals:
     void visible(bool); // for toggling convenience
+    void ColorCode(QString);
    
   private:
     QWidget            *BaseWidget;
@@ -46,6 +47,7 @@ class ColorPicker : public KDialogBase
     void slotReselect();
     
     void slotEmitVisibility(); // for toggling convenience
+    void slotEmitColorCode(); // convenience
 };
 
 #endif // _COLORPICKER_H_

@@ -2,6 +2,7 @@
 #include <qfile.h>
 
 #include <kdebug.h>
+#include <klocale.h>
 
 #include "settings.h"
 #include "lexer.h"
@@ -66,7 +67,7 @@ int Lexer::getNumber(Number& n) {
 }
 
 
-int Lexer::getName(string& s) {
+int Lexer::getName(QString& s) {
   char look=getChar();
   if( isalpha(look) || look=='[' || look==']' ) {
     while( ( isalpha(look) || isdigit(look) || look == '_' || look=='[' || look==']' ) && !in->eof() ) {
@@ -84,10 +85,12 @@ int Lexer::getName(string& s) {
 
 void Lexer::getKeywords() {
     QDomDocument KeywordsXML;
-   
-    kdDebug(0) << "TRfile:"<< Settings::translationFilePath() <<endl;
-        
-    QFile xmlfile( Settings::translationFilePath() ); // Read the specified translation file
+    
+    kdDebug(0) << "TRname:"<< "kturtle/data/logokeywords." + Settings::logoLanguage() + ".xml" <<endl;
+    kdDebug(0) << "TRfile:"<< locate("data", "kturtle/data/logokeywords." + Settings::logoLanguage() + ".xml") <<endl;
+
+    // Read the specified translation file        
+    QFile xmlfile( locate("data", "kturtle/data/logokeywords." + Settings::logoLanguage() + ".xml") );
     
     if ( !xmlfile.open(IO_ReadOnly) ) {
         return;
@@ -137,7 +140,7 @@ QString Lexer::translateCommand(string s) {
 
 void Lexer::checkKeywords(token& t) {
   if(t.type == tokId) {
-    QString tt = t.str.c_str(); // small *hack* to make it work ;-)
+    QString tt = t.str; // small *hack* to make it work ;-)
     tt = tt.lower();
     
     if( !AliasMap[tt].isEmpty() ) { // translate the alias
@@ -265,7 +268,7 @@ token Lexer::lex(){
   
   char look=getChar();
   
-  if(in->eof()){
+  if( in->eof() ) {
     t.type=tokEof;
     return t;
   }

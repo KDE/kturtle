@@ -11,8 +11,6 @@ bugreport(log):column will not be incremented enough when numbers are read
 
 #include <fstream>
 #include <stdlib.h>
-#include <string>
-
 
 #include "number.h"
 
@@ -98,7 +96,7 @@ enum types {
 
 struct token {
   Number  val;
-  string  str;
+  QString str;
   int     type;
 };
 
@@ -131,7 +129,7 @@ class Lexer {
     void getKeywords();
     void checkKeywords(token&);
     int getNumber(Number&);
-    int getName(string&);
+    int getName(QString&);
     void getStringConstant(token& t);
 
     typedef QMap<QString, QString> StringMap;

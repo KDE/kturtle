@@ -1,4 +1,5 @@
 
+#include <kdebug.h>
 #include <klocale.h>
 
 #include "parser.h"
@@ -29,24 +30,13 @@ Parser::Parser(istream& in) {
   tree = new TreeNode();
 }
 
-
 Parser::~Parser() {
   delete lexer;
 }
 
-
-void Parser::Error(const QString& s, unsigned int code) {
-  emit ErrorMsg(s, row, col, code);
-  //exit(1); // better = throw exception here!
-  bNoErrors=false;
+TreeNode* Parser::getTree() {
+  return tree;
 }
-
-void Parser::getToken() {
-  look = lexer->lex();
-  row = lexer->getRow();
-  col = lexer->getCol();
-}
-
 
 bool Parser::parse() {
   bNoErrors = true;
@@ -55,49 +45,65 @@ bool Parser::parse() {
   return bNoErrors;
 }
 
+void Parser::getToken() {
+  look = lexer->lex();
+  row = lexer->getRow();
+  col = lexer->getCol();
+}
 
-TreeNode* Parser::getTree() {
-  return tree;
+TreeNode* Parser::Program() {
+  TreeNode* program = new TreeNode( programNode, row, col );
+  program->setName("program");  
+  TreeNode* block = new TreeNode( blockNode, row, col );
+  block->setName("block");
+
+  while( (look.type != tokEof) ) {
+    block->appendChild( Statement() );
+  }
+  program->appendChild( block );
+
+  Match(tokEof);
+  return program;
 }
 
 void Parser::Match(int x) {
   if(look.type != x) {
     string tokStr = "";
     switch(x) {
-      case tokIf        : tokStr+="if";           break;
-      case tokElse      : tokStr+="else";         break;
-      case tokWhile     : tokStr+="while";        break;
-      case tokFor       : tokStr+="for";          break;
-      case tokTo        : tokStr+="to";           break;
-      case tokStep      : tokStr+="step";         break;
-      case tokNumber    : tokStr+="number";       break;
-      case tokString    : tokStr+="string";       break;
-      case tokId        : tokStr+="id";           break;
-      case tokProcId    : tokStr+="procedure id"; break;
-      case tokBegin     : tokStr+="begin";        break;
-      case tokEnd       : tokStr+="end";          break;
+      case tokIf            : tokStr+="if";           break;
+      case tokElse          : tokStr+="else";         break;
+      case tokWhile         : tokStr+="while";        break;
+      case tokFor           : tokStr+="for";          break;
+      case tokTo            : tokStr+="to";           break;
+      case tokStep          : tokStr+="step";         break;
+      case tokNumber        : tokStr+="number";       break;
+      case tokString        : tokStr+="string";       break;
+      case tokId            : tokStr+="id";           break;
+      case tokProcId        : tokStr+="procedure id"; break;
+      case tokBegin         : tokStr+="begin";        break;
+      case tokEnd           : tokStr+="end";          break;
     
-      case tokOr        : tokStr+="or";      break;
-      case tokAnd       : tokStr+="and";     break;
-      case tokNot       : tokStr+="not";     break;
+      case tokOr            : tokStr+="or";           break;
+      case tokAnd           : tokStr+="and";          break;
+      case tokNot           : tokStr+="not";          break;
   
-      case tokGe        : tokStr+=">=";      break;
-      case tokGt        : tokStr+=">";       break;
-      case tokLe        : tokStr+="<=";      break;
-      case tokLt        : tokStr+="<";       break;
-      case tokNe        : tokStr+="!=";      break;
-      case tokEq        : tokStr+="==";      break;
-      case tokAssign    : tokStr+="=";       break;
+      case tokGe            : tokStr+=">=";           break;
+      case tokGt            : tokStr+=">";            break;
+      case tokLe            : tokStr+="<=";           break;
+      case tokLt            : tokStr+="<";            break;
+      case tokNe            : tokStr+="!=";           break;
+      case tokEq            : tokStr+="==";           break;
+      case tokAssign        : tokStr+="=";            break;
 
-      case tokReturn    : tokStr+="return";  break;
-      case tokBreak     : tokStr+="break";   break;
+      case tokReturn        : tokStr+="return";       break;
+      case tokBreak         : tokStr+="break";        break;
 
-      case tokForEach   : tokStr+="foreach";   break;
-      case tokIn        : tokStr+="in";        break;
+      case tokForEach       : tokStr+="foreach";      break;
+      case tokIn            : tokStr+="in";           break;
     
-      case tokRun       : tokStr+="run";          break;
-      case tokEof       : tokStr+="end of file";  break;
-      case tokError     : tokStr+="error token";  break;
+      case tokRun           : tokStr+="run";          break;
+      case tokEof           : tokStr+="end of file";  break;
+      case tokError         : tokStr+="error token";  break;
       
       case tokLearn         : tokStr+="learn";        break;
       
@@ -134,71 +140,43 @@ void Parser::Match(int x) {
       case tokWrapOff       : tokStr+="wrapoff";      break;
       case tokReset         : tokStr+="reset";        break;
 
-      default: tokStr+= (char)x; break;
+      default               : tokStr+= (char)x; break;
     }
-//     QString QTokStr = tokStr.c_str();
-//     Error( i18n("Syntax error, expected") + " '" + QTokStr + "'", 1010);
     QString commandname = lexer->translateCommand(tokStr);
-    Error( i18n("Syntax error, expected ") + commandname, 1010);
-    } else {
-        getToken(); 
+    if ( commandname == "''" ) {
+      Error( i18n("Syntax error, expected a command"), 1010);
+    } else { 
+      Error( i18n("Syntax error %2, expected %1").arg(commandname), 1010);
     }
-}
-
-
-TreeNode* Parser::signedFactor(){
-  TreeNode* sfac; //used by '-' and tokNot
-  switch( look.type ){
-    case '+':     Match('+');
-                  return Factor();
-                  break;
-
-    case '-':     Match('-');
-                  sfac=Factor();
-                  if( sfac->getType() == constantNode ){
-                    Number n=sfac->getValue();
-                    n.val= - n.val;
-                    sfac->setValue( n );
-                    return sfac;
-                  }
-                  else{
-                    TreeNode* minus= new TreeNode( minusNode, row, col );
-                    minus->setName("minus");
-                    minus->appendChild( sfac );
-                    return minus;
-                  }
-                  break;
-
-    case tokNot:  Match(tokNot);
-                  sfac=Factor();
-                  if( sfac->getType() == constantNode ){
-                    Number n=sfac->getValue();
-                    n.val= 1 - n.val;
-                    sfac->setValue( n );
-                    return sfac;
-                  }
-                  else{
-                    TreeNode* n = new TreeNode( notNode, row, col );
-                    n->setName("not");
-                    n->appendChild( sfac );
-                    return n;
-                  }
-                  break;
-
-    default:      return Factor();
-                  break;
+  } else {
+    getToken(); 
   }
 }
 
 
+/*==================================================================
+   EBNF for a function 
+   <function> := tokId '(' <idlist> ')' <block>
 
-TreeNode* Parser::getId(){
-  TreeNode* n=new TreeNode( idNode, row, col );
-  n->setName( look.str );
-  Match( tokId );
-  return n;  
+   we can safely use tokId because we require ( .. )
+   to be given after the id when it is called, 
+   if this were not the case
+   we would have to extend the lexer so that it gives a
+   tokFunctionId whenever an id has the same name as a function...
+===================================================================*/
+TreeNode* Parser::Function() {
+  TreeNode* func = new TreeNode( functionNode, row, col );
+  TreeNode* idn = getId();
+  func->setName("function");
+  
+  func->appendChild( idn );
+  Match('(');
+  func->appendChild( IdList() );    
+  Match(')');
+  func->appendChild( Block() );
+
+  return func;
 }
-
 
 TreeNode* Parser::runFunction() {
   TreeNode* n = new TreeNode( runNode, row, col );
@@ -207,6 +185,13 @@ TreeNode* Parser::runFunction() {
   Match(tokRun);
   n->appendChild( Expression() );
   return n;
+}
+
+TreeNode* Parser::getId(){
+  TreeNode* n=new TreeNode( idNode, row, col );
+  n->setName( look.str );
+  Match( tokId );
+  return n;  
 }
 
 
@@ -245,15 +230,115 @@ TreeNode* Parser::Factor() {
     
     case tokRandom: n=Random();     break;
                                     
-    default:        Error( i18n("Illegal char in expression"), 1020 );
-                    n=new TreeNode( Unknown, row, col );
+    default:        QString s = look.str;
+                    if ( s.isEmpty() || look.type == tokEof ) {
+                      Error( i18n("Expected an expression"), 1020 );
+                    } else {
+                      Error( i18n("Cannot understand '%1' in expression").arg(s), 1020 );
+                    }
+                    n = new TreeNode( Unknown, row, col );
                     getToken();
                     break;
   }
   return n;
 }
 
+/*
+  paramlist is like idlist except it does not only
+  except id's it accepts expressions seperated by ','!
+*/
+TreeNode* Parser::ParamList() {
+  TreeNode* ilist=new TreeNode( idListNode, row, col );
+  ilist->setName("ilist");
+  //check for empty idlist -> function with no parameters
+  if( look.type == ')' ) return ilist;
+  
+  //get id's seperated by ','
+  ilist->appendChild( Expression() ); //aaah KISS (Keep It Simple Sidney)
+  while( look.type == ',' ){
+    Match(',');
+    ilist->appendChild( Expression() ); 
+  }
 
+  return ilist;
+}
+
+/*
+  <functioncall> := tokId '(' <paramlist> ')' 
+*/
+TreeNode* Parser::FunctionCall( const QString& name ) {
+  TreeNode* fcall=new TreeNode( functionCallNode, row, col );
+  fcall->setName("functioncall");
+  //first child contains function name
+  TreeNode* funcid= new TreeNode( idNode, row, col );
+  funcid->setName( name );
+  fcall->appendChild( funcid );
+  
+  Match( '(' );
+  fcall->appendChild( ParamList() );
+  Match( ')' );
+  
+  return fcall;
+}
+
+// this is either an assignment or a function call!
+TreeNode* Parser::Other(){
+  string idname=look.str; 
+  Match(tokId);
+  
+  if( look.type == tokAssign ){
+    return Assignment( idname );
+  }
+  else{
+    return FunctionCall( idname );
+  }
+}
+
+
+
+TreeNode* Parser::signedFactor(){
+  TreeNode* sfac; //used by '-' and tokNot
+  switch( look.type ){
+    case '+':     Match('+');
+                  return Factor();
+                  break;
+
+    case '-':     Match('-');
+                  sfac=Factor();
+                  if( sfac->getType() == constantNode ){
+                    Number n = sfac->getValue();
+                    n.val= - n.val;
+                    sfac->setValue( n );
+                    return sfac;
+                  }
+                  else{
+                    TreeNode* minus= new TreeNode( minusNode, row, col );
+                    minus->setName("minus");
+                    minus->appendChild( sfac );
+                    return minus;
+                  }
+                  break;
+
+    case tokNot:  Match(tokNot);
+                  sfac=Factor();
+                  if( sfac->getType() == constantNode ){
+                    Number n=sfac->getValue();
+                    n.val= 1 - n.val;
+                    sfac->setValue( n );
+                    return sfac;
+                  }
+                  else{
+                    TreeNode* n = new TreeNode( notNode, row, col );
+                    n->setName("not");
+                    n->appendChild( sfac );
+                    return n;
+                  }
+                  break;
+
+    default:      return Factor();
+                  break;
+  }
+}
 
 
 /*---------------------------------------------------------------*/
@@ -414,7 +499,7 @@ TreeNode* Parser::Expression()
 }
 
 
-TreeNode* Parser::Assignment( const string& name ){
+TreeNode* Parser::Assignment( const QString& name ){
   TreeNode* assign = new TreeNode( assignNode, row, col );
   assign->setName("assignment");
   
@@ -431,64 +516,6 @@ TreeNode* Parser::Assignment( const string& name ){
 
   return assign;
 }
-
-
-
-/*
-  paramlist is like idlist except it does not only
-  except id's it accepts expressions seperated by ','!
-*/
-TreeNode* Parser::ParamList() {
-  TreeNode* ilist=new TreeNode( idListNode, row, col );
-  ilist->setName("ilist");
-  //check for empty idlist -> function with no parameters
-  if( look.type == ')' ) return ilist;
-  
-  //get id's seperated by ','
-  ilist->appendChild( Expression() ); //aaah KISS (Keep It Simple Sidney)
-  while( look.type == ',' ){
-    Match(',');
-    ilist->appendChild( Expression() ); 
-  }
-
-  return ilist;
-}
-
-
-
-/*
-  <functioncall> := tokId '(' <paramlist> ')' 
-*/
-TreeNode* Parser::FunctionCall( const string& name ) {
-  TreeNode* fcall=new TreeNode( functionCallNode, row, col );
-  fcall->setName("functioncall");
-  //first child contains function name
-  TreeNode* funcid= new TreeNode( idNode, row, col );
-  funcid->setName( name );
-  fcall->appendChild( funcid );
-  
-  Match( '(' );
-  fcall->appendChild( ParamList() );
-  Match( ')' );
-  
-  return fcall;
-}
-
-
-// this is either an assignment or a function call!
-TreeNode* Parser::Other(){
-  string idname=look.str; 
-  Match(tokId);
-  
-  if( look.type == tokAssign ){
-    return Assignment( idname );
-  }
-  else{
-    return FunctionCall( idname );
-  }
-}
-
-
 
 
 /*
@@ -697,8 +724,12 @@ TreeNode* Parser::Statement() {
                                             
     default               : break;    
   }
-  QString qstr = look.str.c_str();
-  Error( i18n("Incorrect statement: ") + qstr, 1060); 
+  QString qstr = look.str;
+  if (qstr == "\'[\'") {
+    Error( i18n("[ is expected").arg(qstr), 1060);
+  } else {
+    Error( i18n("%1 is no Logo command").arg(qstr), 1060); 
+  }
   getToken();
   return new TreeNode( Unknown, row, col );
 }
@@ -733,46 +764,6 @@ TreeNode* Parser::IdList(){
   }
 
   return ilist;
-}
-
-
-/*==================================================================
-   EBNF for a function 
-   <function> := tokId '(' <idlist> ')' <block>
-
-   we can safely use tokId because we require ( .. )
-   to be given after the id when it is called, 
-   if this were not the case
-   we would have to extend the lexer so that it gives a
-   tokFunctionId whenever an id has the same name as a function...
-===================================================================*/
-TreeNode* Parser::Function() {
-  TreeNode* func = new TreeNode( functionNode, row, col );
-  TreeNode* idn = getId();
-  func->setName("function");
-  
-  func->appendChild( idn );
-  Match('(');
-  func->appendChild( IdList() );    
-  Match(')');
-  func->appendChild( Block() );
-
-  return func;
-}
-
-TreeNode* Parser::Program() {
-  TreeNode* program = new TreeNode( programNode, row, col );
-  program->setName("program");  
-  TreeNode* block = new TreeNode( blockNode, row, col );
-  block->setName("block");
-
-  while( /*(look.type != tokEnd) &&*/ (look.type != tokEof) ) {
-    block->appendChild( Statement() );
-  }
-  program->appendChild( block );
-
-  Match(tokEof);
-  return program;
 }
 
 
@@ -968,20 +959,20 @@ TreeNode* Parser::SetPenWidth() {
 
 
 TreeNode* Parser::PenUp() {
-    TreeNode* node=new TreeNode( PenUpNode, row, col );
-    node->setName("penup");
-    node->setKey( lexer->translateCommand("penup") );
-    getToken();
-    return node;
+  TreeNode* node=new TreeNode( PenUpNode, row, col );
+  node->setName("penup");
+  node->setKey( lexer->translateCommand("penup") );
+  getToken();
+  return node;
 }
 
 
 TreeNode* Parser::PenDown() {
-    TreeNode* node=new TreeNode( PenDownNode, row, col );
-    node->setName("pendown");
-    node->setKey( lexer->translateCommand("pendown") );
-    getToken();
-    return node;
+  TreeNode* node=new TreeNode( PenDownNode, row, col );
+  node->setName("pendown");
+  node->setKey( lexer->translateCommand("pendown") );
+  getToken();
+  return node;
 }
 
 
@@ -1039,29 +1030,29 @@ TreeNode* Parser::ResizeCanvas() {
 
 
 TreeNode* Parser::SpriteShow() {
-    TreeNode* node=new TreeNode( SpriteShowNode, row, col );
-    node->setName("spriteshow");
-    node->setKey( lexer->translateCommand("spriteshow") );
-    getToken();
-    return node;
+  TreeNode* node=new TreeNode( SpriteShowNode, row, col );
+  node->setName("spriteshow");
+  node->setKey( lexer->translateCommand("spriteshow") );
+  getToken();
+  return node;
 }
 
 
 TreeNode* Parser::SpriteHide() {
-    TreeNode* node=new TreeNode( SpriteHideNode, row, col );
-    node->setName("spritehide");
-    node->setKey( lexer->translateCommand("spritehide") );
-    getToken();
-    return node;
+  TreeNode* node=new TreeNode( SpriteHideNode, row, col );
+  node->setName("spritehide");
+  node->setKey( lexer->translateCommand("spritehide") );
+  getToken();
+  return node;
 }
 
 
 TreeNode* Parser::SpritePress() {
-    TreeNode* node=new TreeNode( SpritePressNode, row, col );
-    node->setName("spritepress");
-    node->setKey( lexer->translateCommand("spritepress") );
-    getToken();
-    return node;
+  TreeNode* node=new TreeNode( SpritePressNode, row, col );
+  node->setName("spritepress");
+  node->setKey( lexer->translateCommand("spritepress") );
+  getToken();
+  return node;
 }
 
 
@@ -1250,6 +1241,14 @@ TreeNode* Parser::Learn() {
     return r;
 }
 
+
+
+
+void Parser::Error(const QString& s, uint code) {
+  emit ErrorMsg(s, row, col + 1, code);
+  //exit(1); // better = throw exception here!
+  bNoErrors=false;
+}
 
 
 /*

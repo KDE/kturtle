@@ -8,21 +8,9 @@ BUGS
        maybe i should just catch errors and break the loop :)
 - accept the making and calling of parameterless 'learned' commands (without using the '()')
 
-I (cies) installed KTurtle on gentoo/qt3.3/kde3.2 and found the following BUG:
-- highlight style is not by default on logo-sceme FIXED
-- cannot open examples
-
 
 
 **** URGENT ****
-
-
-06 Jan. 2004 - annma: the KConfig XT stuff is done. Please note that locate("data", "kturtle/data/logokeywords.en_US.xml") being the default xml file, it does not appear in the config file. If there is nothing in the config file in TranslationFilePath, then this file is always taken.
-Always load the xml file with
-QFile xmlfile( Settings::translationFilePath() );
-note: I left the kdDebug() in the lexer.cpp file.
-
-
 
 cies: The KconfigXT issue: If an error like this
 """
@@ -69,21 +57,10 @@ cies: Have a look a the BUGGING SCRIPTS as mentioned below
 
 
 
-Add a what-to-print (canvas/editor) choise, and add a 'save canvas as' aktion
-
-
 
 **** normalTODOs ****
 
-Language: "Select the language of the commands" in the config, default to the desktop user (en if not en, nl or fr)   //done
-Keep it in config (already via xml file)  //done
-
-The language for the command and the hightlight style should be selected at ones; and from a drop list....
-this way the language selection is done by the language name (we hide the URL and the kryptic english xml file names)
-
-
-
-All i18n should be done/saved in one clear manner... From selection to use. Ill (cies) do this one (have an idea)
+Language selection much improved! -> BUG only doesnt restore from 'rc' file after restart; might have something TODO with the rc-file: 1) there's no problem when there is no rc-file, 2) theres only the languageComboxBox-parameter in there (wheres the others?) ==> in that the thing doesnt work :)
 
 
 
@@ -126,10 +103,6 @@ would be nice (not in yet):
 cies: a fontchooser would be fun
 30/12/2003 annma: for the editor font? I can do it
 04/01/2003 we'll see after the editor part is done
-
-
-
-annma: color-picker: maybe the code could be pasted directly in the editor at the cursor point (see after the editor part is done)
 
 
 

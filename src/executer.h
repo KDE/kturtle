@@ -10,16 +10,15 @@ bugreport(log):/
 
 #include <fstream>
 #include <iostream>
-#include <map>
 #include <stack>
-#include <string>
 
+#include <qmap.h>
 
 #include "treenode.h"
 
 
-typedef map<string,Number>    symtable;
-typedef map<string,TreeNode*> functable;
+typedef QMap<QString,Number>    symtable;
+typedef QMap<QString,TreeNode*> functable;
 
 typedef stack<Number> runstack;
 
@@ -35,7 +34,7 @@ class Executer : public QObject
     void abort();
 
   signals:
-    void ErrorMsg(QString s, unsigned int row, unsigned int col, unsigned int code = 2000);
+    void ErrorMsg(QString s, uint row, uint col, unsigned int code = 2000);
     void InputDialog(QString& value);
     void MessageDialog(QString text);
     void Finished();
@@ -141,7 +140,7 @@ class Executer : public QObject
     void execWrapOff       ( TreeNode* );
     void execReset         ( TreeNode* );
         
-    string runCommand(const string&);
+    QString runCommand(const QString&);
 
     void startWaiting(float sec);
         

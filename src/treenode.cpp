@@ -88,21 +88,21 @@ Number TreeNode::getValue() {
 }
 
 
-void TreeNode::setStrValue(const string& s) {
+void TreeNode::setStrValue(const QString& s) {
   strValue=s;
 }
 
-string TreeNode::getStrValue() {
+QString TreeNode::getStrValue() {
   return strValue;
 }
 
 
 
-void TreeNode::setName(const string& s) {
+void TreeNode::setName(const QString& s) {
   name=s;
 }
 
-string TreeNode::getName() const {
+QString TreeNode::getName() const {
   return name;
 }
 
@@ -134,7 +134,7 @@ TreeNode& TreeNode::operator=(const TreeNode& t) {
 
 
 void TreeNode::show(int indent) {
-  string s="";
+  QString s="";
   for(int i=0;i<indent;i++) s+="  ";
   s+=getName();
   cout<<s;

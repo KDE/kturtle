@@ -9,7 +9,6 @@ bugreport(log):/
 #define _TREENODE_H_
 
 #include <list>
-#include <string>
 
 #include <qstring.h>
 
@@ -95,7 +94,7 @@ enum NodeType {
               };
 
 
-class TreeNode:public list<TreeNode*> {
+class TreeNode : public list<TreeNode*> {
 
   public:
   
@@ -138,19 +137,19 @@ class TreeNode:public list<TreeNode*> {
     void setKey(const QString&);
     QString getKey();  
         
-    void setName(const string&);
-    string getName() const;  
+    void setName(const QString&);
+    QString getName() const;  
     
     void setValue(const Number&);
     void setValue(double d){ value = d; }
-    void setValue(const string& s){ value = s; }
+    void setValue(const QString& s){ value = s; }
     
     Number getValue();
-    unsigned int getRow(){ return fRow; }
-    unsigned int getCol(){ return fCol; }
+    uint getRow(){ return fRow; }
+    uint getCol(){ return fCol; }
 
-    void setStrValue(const string&);
-    string getStrValue();
+    void setStrValue(const QString&);
+    QString getStrValue();
     
     TreeNode::iterator lookup(); //gives location in parent list as iterator (used by prevSibling and nextSibling)
     bool hasChildren() { return size()!=0; }
@@ -170,12 +169,12 @@ class TreeNode:public list<TreeNode*> {
     //private locals
     //==============
     QString key;
-    string name;
+    QString name;
     NodeType fType;
     Number value;
-    string strValue;
+    QString strValue;
     
-    unsigned int fRow, fCol; //for runtime error messages.
+    uint fRow, fCol; //for runtime error messages.
     
 };
 

@@ -1,5 +1,5 @@
+
 #include <unistd.h> // for usleep();
-#include <string.h>
 
 #include <qtimer.h>
 
@@ -32,7 +32,6 @@ bool Executer::run() {
   for( i = tree->begin(); i != tree->end(); ++i ){
     if (bAbort) { return false; }
     kapp->processEvents();
-    
     execute( *i );
   
     symbolTables.pop(); //free up stack
@@ -121,7 +120,7 @@ void Executer::execute(TreeNode* node) {
     case ResetNode          : execReset( node );        break;
     
     default:
-        QString nodename = node->getName().c_str();
+        QString nodename = node->getName();
         emit ErrorMsg( i18n("Found unsupported node named '%1' in the tree.").arg(nodename), 0, 0, 3000 );
     break;
   }  
@@ -129,7 +128,7 @@ void Executer::execute(TreeNode* node) {
 
 
 void Executer::createFunction( TreeNode* node ) {
-    string funcname = node->firstChild()->getName();
+    QString funcname = node->firstChild()->getName();
     functionTable[funcname] = node; //store for later use
 }
 
@@ -138,23 +137,26 @@ void Executer::createFunction( TreeNode* node ) {
 //first child   = function name
 //second child  = parameters
 void Executer::execFunction( TreeNode* node ) {
-  string funcname = node->firstChild()->getName();
+  QString funcname = node->firstChild()->getName();
 
   //locate function node  
-  functable::iterator p = functionTable.find( funcname );
+  functable::Iterator p = functionTable.find( funcname );
   if ( p == functionTable.end() ) {
-    QString f = funcname.c_str();
+    QString f = funcname;
     emit ErrorMsg( i18n("Call to undefined function: %1.").arg(f), 0, 0, 5010);
     return;
   }
   
-  TreeNode* funcnode    = p->second;
+  // Before it was:   TreeNode* funcnode    = p->second;
+  // now it is:
+  TreeNode* funcnode    = funcnode.begin()++;
+  // and now it still makes troubles cauz i changed map into QMap
   TreeNode* funcIds     = funcnode->secondChild();
   TreeNode* callparams  = node->secondChild();
     
   //check if number of parameters match
   if ( callparams->size() != funcIds->size() ) {
-    QString f = funcname.c_str();
+    QString f = funcname;
     emit ErrorMsg( i18n("Call to function '%1' with wrong number of parameters.").arg(f), 0, 0, 5020);
     return;
   }
@@ -171,7 +173,7 @@ void Executer::execFunction( TreeNode* node ) {
     //execute the parameters which can be expressions
     execute( *pfrom ); 
     
-    string idname=(*pto)->getName();
+    QString idname=(*pto)->getName();
     funcSymTable[idname]= (*pfrom)->getValue();
     ++pto;
   
@@ -241,8 +243,8 @@ void Executer::execForEach( TreeNode* node ) {
   execute( expr1 );
   execute( expr2 );
   
-  QString expStr1 = expr1->getValue().strVal.c_str();
-  QString expStr2 = expr2->getValue().strVal.c_str();
+  QString expStr1 = expr1->getValue().strVal;
+  QString expStr2 = expr2->getValue().strVal;
   
   bBreak = false;
   
@@ -265,7 +267,7 @@ void Executer::execFor( TreeNode* node ) {
   TreeNode* stopNode = node->thirdChild();
   TreeNode* statements = node->fourthChild();
   
-  string name = id->getName();
+  QString name = id->getName();
 
   execute(startNode);
   //assign startval to id
@@ -512,14 +514,14 @@ void Executer::execMinus( TreeNode* node ){
 }
 
 
-string Executer::runCommand( const string& command ){
+QString Executer::runCommand( const QString& command ){
   FILE *pstream;
   
-  if ( ( pstream = popen( command.c_str(), "r" ) ) == NULL ) {
+  if ( ( pstream = popen( command, "r" ) ) == NULL ) {
     return "";
   }
   
-  string Line;
+  QString Line;
   char buf[100];
   
   while( fgets(buf, sizeof(buf), pstream) !=NULL) {
@@ -535,7 +537,7 @@ string Executer::runCommand( const string& command ){
 
 
 void Executer::execRun( TreeNode* node ) {
-  string cmd = getVal( node->firstChild() ).strVal;
+  QString cmd = getVal( node->firstChild() ).strVal;
   node->setValue( runCommand(cmd) );
 }
 
@@ -739,7 +741,7 @@ void Executer::execSetBgColor( TreeNode* node ) {
 void Executer::execResizeCanvas( TreeNode* node ) {
     // check if number of parameters match, or else...
     if( node->size() != 2 ) {
-        string funcname = node->getName();
+        QString funcname = node->getName();
         emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), 0, 0, 7020);
         return;
     }
@@ -803,7 +805,7 @@ void Executer::execMessage( TreeNode* node ){
         emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), 0, 0, 7070);
         return;
     }
-    emit MessageDialog( node->firstChild()->getValue().strVal.c_str() );
+    emit MessageDialog( node->firstChild()->getValue().strVal );
 }
 
 
@@ -813,7 +815,7 @@ void Executer::execInputWindow( TreeNode* node ) {
         emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), 0, 0, 7070);
         return;
     }
-    QString value = node->firstChild()->getValue().strVal.c_str();
+    QString value = node->firstChild()->getValue().strVal;
     emit InputDialog( value );
     if (value == "") {
         node->setValue(""); // this prevents a crash :)
@@ -827,7 +829,7 @@ void Executer::execPrint( TreeNode* node ) {
   QString str = "";
   for( i = node->begin(); i != node->end(); ++i ) {
     execute( *i ); //execute expression
-    str = str + (*i)->getValue().strVal.c_str();
+    str = str + (*i)->getValue().strVal;
   }
   emit Print(str);
 }
@@ -845,9 +847,9 @@ void Executer::execFontType( TreeNode* node ) {
     }
     QString extra;
     if( node->size() == 2 ) {
-        QString extra = node->secondChild()->getValue().strVal.c_str();
+        QString extra = node->secondChild()->getValue().strVal;
     }
-    QString family = node->firstChild()->getValue().strVal.c_str();
+    QString family = node->firstChild()->getValue().strVal;
     emit FontType(family, extra);
 }
 

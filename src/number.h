@@ -6,7 +6,8 @@
 
 #include <iostream>
 #include <sstream>
-#include <string>
+
+#include <qstring.h>
 
 using namespace std;
 
@@ -28,7 +29,7 @@ class Number {
     //operators
     //=========
     Number& operator=(const Number&);
-    Number& operator=(const string&);
+    Number& operator=(const QString&);
     Number& operator=(double);
 
     Number& operator+(const Number&);
@@ -49,7 +50,7 @@ class Number {
 
     //public members  
     bool bString; //set to true if Number represents a string...
-    string strVal;
+    QString strVal;
     double val;
 
 };

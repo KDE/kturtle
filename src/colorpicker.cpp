@@ -10,7 +10,7 @@
 
 
 ColorPicker::ColorPicker(QWidget *parent) : KDialogBase(parent, "colorpicker",
-             false, i18n("Color Picker"), KDialogBase::Close|KDialogBase::Help, 
+             false, i18n("Color Picker"), KDialogBase::Close|KDialogBase::Help|KDialogBase::User1, 
              KDialogBase::Close, true ) {
 
     // for toggling convenience
@@ -19,6 +19,10 @@ ColorPicker::ColorPicker(QWidget *parent) : KDialogBase(parent, "colorpicker",
     // Create the top level page and its layout
     BaseWidget = new QWidget(this);
     setMainWidget(BaseWidget);
+    
+    // the User1 button:
+    setButtonText( KDialogBase::User1, i18n("Insert color code at cursor") );
+    connect( this, SIGNAL( user1Clicked() ), SLOT( slotEmitColorCode() ) );
  
     QVBoxLayout *vlayout = new QVBoxLayout(BaseWidget);
     
@@ -31,7 +35,7 @@ ColorPicker::ColorPicker(QWidget *parent) : KDialogBase(parent, "colorpicker",
     h1layout->addSpacing(10); // space on the left border
      
     hsSelector = new KHSSelector(BaseWidget); // the color (SH) selector
-    hsSelector->setMinimumSize(200, 150);
+    hsSelector->setMinimumSize(300, 150);
     h1layout->addWidget(hsSelector);
     connect( hsSelector, SIGNAL( valueChanged(int, int) ), SLOT( slotSelectorChanged(int, int) ) );
 
@@ -60,7 +64,7 @@ ColorPicker::ColorPicker(QWidget *parent) : KDialogBase(parent, "colorpicker",
     QVBoxLayout *v2layout = new QVBoxLayout(BaseWidget);
     h2layout->addLayout(v2layout); 
     
-    copyable = new QLabel(i18n("Copy this into your code:    "), BaseWidget); // tha label
+    copyable = new QLabel(i18n("Color code:"), BaseWidget); // tha label
     v2layout->addWidget(copyable);
         
     colorcode = new QLineEdit(BaseWidget); // the code generator
@@ -105,8 +109,6 @@ void ColorPicker::updateColorCode() {
     colorcode->selectAll();
 }
 
-
-
 void ColorPicker::slotSelectorChanged(int h_, int s_) {
     h = h_;
     s = s_;
@@ -139,5 +141,11 @@ void ColorPicker::slotEmitVisibility() {
     // for toggling convenience
     emit visible(false);
 }
+
+void ColorPicker::slotEmitColorCode() {
+    // convenience
+    emit ColorCode( colorcode->text() );
+}
+
 
 #include "colorpicker.moc"
