@@ -31,49 +31,49 @@
     <item> centre </item> 
     <item> penwidth </item> 
     <item> pw </item> 
-    <item> l�ecrayon </item> 
+    <item> lèvecrayon </item> 
     <item> lc </item> 
     <item> baissecrayon </item> 
     <item> bc </item> 
-    <item> pencolor </item> 
-    <item> pc </item> 
-    <item> canvascolor </item> 
+    <item> couleurcrayon </item> 
     <item> cc </item> 
-    <item> canvassize </item> 
-    <item> cs </item> 
+    <item> couleurcanevas </item> 
+    <item> cca </item> 
+    <item> taillecanevas </item> 
+    <item> tca </item> 
     <item> montreimage </item> 
     <item> mi </item> 
     <item> cacheimage </item> 
     <item> ci </item> 
-    <item> press </item> 
-    <item> sp </item> 
+    <item> presseimage </item> 
+    <item> pi </item> 
     <item> changeimage </item> 
     <item> ci </item> 
     <item> message </item>
-    <item> inputwindow </item> 
-    <item> �ris </item> 
+    <item> entréefenêtre </item> 
+    <item> écris </item> 
     <item> typepolice </item> 
     <item> taillepolice </item>
     <item> hasard </item> 
     <item> attends </item> 
     <item> enroule </item> 
-    <item> d�oule </item> 
-    <item> reset </item> 
+    <item> déroule </item> 
+    <item> initialise </item> 
   </list>
 
   <list name="controllers">
     <item> pendant </item>
-    <item> foreach </item>
+    <item> pourchaque </item>
     <item> in </item>
     <item> pour </item>
-    <item> �</item>
+    <item>à</item>
     <item> fait </item>
-    <item> r��e </item>
+    <item> répète </item>
     <item> rpt </item>
     <item> si </item>
     <item> sinon </item>
-    <item> return </item>
-    <item> break </item>
+    <item> retourne </item>
+    <item> coupure </item>
   </list>
 
   <list name="boolops">
