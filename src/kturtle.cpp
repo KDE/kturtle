@@ -92,57 +92,49 @@ MainWindow::~MainWindow() { // The MainWindow destructor
 
 
 void MainWindow::setupActions() {
-    // Set up file menu
-    KStdAction::openNew(this, SLOT(slotNewFile()), actionCollection());
-    openExAction = new KAction(i18n("Open Examples"), "bookmark_folder", 0, this, SLOT(slotOpenEx()),
-      actionCollection(), "open_examples");
-    KStdAction::open(this, SLOT(slotOpenFile()), actionCollection());
-    /// @todo implement a recent files list
-    // recenter = KStdAction::openRecent(this, SLOT(openRecent(int)), actionCollection());
-    KStdAction::save(this, SLOT(slotSaveFile()), actionCollection());
-    KStdAction::saveAs(this, SLOT(slotSaveAs()), actionCollection());
+    KActionCollection *ac = actionCollection();
+    // Set up file actions
+    KStdAction::openNew(this, SLOT(slotNewFile()), ac);
+    openExAction = new KAction(i18n("Open Examples"), "bookmark_folder", 0, this, SLOT(slotOpenEx()), ac, "open_examples");
+    KStdAction::open(this, SLOT(slotOpenFile()), ac);
+    m_recentFiles = KStdAction::openRecent(this, SLOT(slotOpen(const KURL&)), ac);
+    KStdAction::save(this, SLOT(slotSaveFile()), ac);
+    KStdAction::saveAs(this, SLOT(slotSaveAs()), ac);
     //
-    run = new KAction(i18n("&Execute Commands"), "gear", 0, this, SLOT( slotExecute() ),
-      actionCollection(), "run");
+    run = new KAction(i18n("&Execute Commands"), "gear", 0, this, SLOT( slotExecute() ), ac, "run");
     run->setEnabled(false);
+    //
+    KStdAction::print(this, SLOT(slotPrint()), ac);
+    //
+    KStdAction::quit(this, SLOT(slotQuit()), ac);
 
-    //KAction *a = new KAction(i18n("Reloa&d"), "file_reload", KStdAccel::reload(), this, SLOT(reloadFile()), //dynamic_cast<KTextEditor::Document*>(this)->actionCollection(), "file_reload");
-    //
-    KStdAction::print(this, SLOT(slotPrint()), actionCollection());
-    //
-    KStdAction::quit(this, SLOT(slotQuit()), actionCollection());
-
-    // setup edit menu
-    KStdAction::undo(this, SLOT(slotUndo()), actionCollection());
-    KStdAction::redo(this, SLOT(slotRedo()), actionCollection());
-    //
-    KStdAction::cut(this, SLOT(slotCut()), actionCollection());
-    KStdAction::copy(this, SLOT(slotCopy()), actionCollection());
-    KStdAction::paste(this, SLOT(slotPaste()), actionCollection());
-    //
-    KStdAction::selectAll(this, SLOT(slotSelectAll()), actionCollection());
-    //
-    KStdAction::find(this, SLOT(slotFind()), actionCollection());
-    KStdAction::findNext(this, SLOT(slotFindNext()), actionCollection());
-    KStdAction::findPrev(this, SLOT(slotFindPrevious()), actionCollection());
-    KStdAction::replace(this, SLOT(slotReplace()), actionCollection());
-    // setup View menu
-    m_fullscreen = KStdAction::fullScreen(this, SLOT( slotToggleFullscreen() ), actionCollection(), this, "full_screen");
+    // setup edit actions
+    KStdAction::undo(this, SLOT(slotUndo()), ac);
+    KStdAction::redo(this, SLOT(slotRedo()), ac);
+    KStdAction::cut(this, SLOT(slotCut()), ac);
+    KStdAction::copy(this, SLOT(slotCopy()), ac);
+    KStdAction::paste(this, SLOT(slotPaste()), ac);
+    KStdAction::selectAll(this, SLOT(slotSelectAll()), ac);
+    new KAction(i18n("Toggle Insert"), Key_Insert, 0, SLOT(slotToggleInsert()), ac, "set_insert");
+    // ^ not working!!!
+    KStdAction::find(this, SLOT(slotFind()), ac);
+    KStdAction::findNext(this, SLOT(slotFindNext()), ac);
+    KStdAction::findPrev(this, SLOT(slotFindPrevious()), ac);
+    KStdAction::replace(this, SLOT(slotReplace()), ac);
+    
+    // setup view action
+    new KToggleAction(i18n("Show &Line Numbers"), 0, 0, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
+    m_fullscreen = KStdAction::fullScreen(this, SLOT( slotToggleFullscreen() ), ac, this, "full_screen");
     m_fullscreen->setChecked(b_fullscreen);
-    colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", 0, this, SLOT( slotColorPicker() ), actionCollection(), "color_picker");
-    m_recentFiles = KStdAction::openRecent(this, SLOT(slotOpen(const KURL&)), actionCollection());
     
-   ///@todo: make the EditorDock hideable, better to do it when on KTextEditor... 
+    // setup tools action
+    colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", 0, this, SLOT( slotColorPicker() ), ac, "color_picker");
+    //@todo: make the EditorDock hideable, better to do it when on KTextEditor... 
     // (void)new KToggleAction(i18n("&Hide Editor"), 0, 0, this, SLOT(slotToggleHideEditor()),
-    //   actionCollection(), "line_numbers"); 
-   ///@todo: linenumbers; probably when going from KTextEdit to KTextEditor::Editor
-    // (void)new KToggleAction(i18n("Show &Line Numbers"), 0, 0, this, SLOT(slotLineNumbers()),
-    //   actionCollection(), "line_numbers");
-    // Going to KTestEditor will also bring -- eventually -- BiDi/RTL text support to us!!!!
-    
-    // setup Settings menu
-    KStdAction::preferences( this, SLOT( slotSettings() ), actionCollection() );
-    KStdAction::keyBindings( this, SLOT( slotConfigureKeys() ), actionCollection() );
+   
+    // setup settings actions
+    KStdAction::preferences( this, SLOT( slotSettings() ), ac );
+    KStdAction::keyBindings( this, SLOT( slotConfigureKeys() ), ac );
 }
 
 void MainWindow::setupEditor() {
@@ -316,8 +308,9 @@ void MainWindow::slotQuit() {
     close();
 }
 
-
-
+void MainWindow::slotPrint() {
+    dynamic_cast<KTextEditor::PrintInterface*>(doc)->printDialog();
+}
 
 
 void MainWindow::slotExecute() {
@@ -472,39 +465,63 @@ void MainWindow::slotUndo() {
     dynamic_cast<KTextEditor::UndoInterface*>(doc)->undo();
 }
    
-void MainWindow:: slotRedo() {
+void MainWindow::slotRedo() {
     dynamic_cast<KTextEditor::UndoInterface*>(doc)->redo();
 }
    
-void MainWindow:: slotCut() {
-    dynamic_cast<KTextEditor::ClipboardInterface*>(doc)->cut();
+void MainWindow::slotCut() {
+    dynamic_cast<KTextEditor::ClipboardInterface*>(editor)->cut();
 }
   
-void MainWindow:: slotCopy() {
-    dynamic_cast<KTextEditor::ClipboardInterface*>(doc)->copy();
+void MainWindow::slotCopy() {
+    dynamic_cast<KTextEditor::ClipboardInterface*>(editor)->copy();
 }
    
-void MainWindow:: slotPaste() {
-    dynamic_cast<KTextEditor::ClipboardInterface*>(doc)->paste();
+void MainWindow::slotPaste() {
+    dynamic_cast<KTextEditor::ClipboardInterface*>(editor)->paste();
 }
 
-void MainWindow:: slotSelectAll() {
+void MainWindow::slotSelectAll() {
     dynamic_cast<KTextEditor::SelectionInterface*>(doc)->selectAll();
 }
 
-void MainWindow:: slotFind() {
+void MainWindow::slotClearSelection() {
+    dynamic_cast<KTextEditor::SelectionInterface*>(doc)->clearSelection();
+}
+
+void MainWindow::slotToggleInsert() {
+    kdDebug(0)<<"qwdqw"<<endl;
+    KToggleAction *a = dynamic_cast<KToggleAction*>( editor->actionCollection()->action("set_insert") );
+    a->activate();
+    slotStatusBar(a->isChecked() ? i18n(" OVR ") : i18n(" INS "), 0);
+}
+
+
+void MainWindow::slotFind() {
 // no more ideas... quanta is our friend
+    KAction *a = editor->actionCollection()->action("edit_find");
+    a->activate();
 }
 
-void MainWindow:: slotFindNext() {
+void MainWindow::slotFindNext() {
+    KAction *a = editor->actionCollection()->action("edit_find_next");
+    a->activate();
 }
 
-void MainWindow:: slotFindPrevious() {
+void MainWindow::slotFindPrevious() {
+    KAction *a = editor->actionCollection()->action("edit_find_prev");
+    a->activate();
 }
 
-void MainWindow:: slotReplace() {
+void MainWindow::slotReplace() {
+    KAction* a = editor->actionCollection()->action("edit_replace");
+    a->activate();
 }
 
+void MainWindow::slotToggleLineNumbers() {
+    KToggleAction *a = dynamic_cast<KToggleAction*>( editor->actionCollection()->action("view_line_numbers") );
+    a->activate();
+}
 
 
 

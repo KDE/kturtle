@@ -32,8 +32,10 @@
     
     <Menu name="view" noMerge="1"><text>&amp;View</text>
       <Action name="full_screen" />
-
+      <Separator />
+      <Action name="line_numbers" />
     </Menu>
+    
     <Menu name="tools" noMerge="1"><text>&amp;Tools</text>
       <Action name="color_picker" />
     </Menu>

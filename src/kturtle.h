@@ -55,6 +55,7 @@ class MainWindow : public KParts::MainWindow
     void slotSaveAs();
     // TODO: linenumbers; probably when going from KTextEdit to KTextEditor::Editor
     // void slotLineNumbers();
+    void slotPrint();
     void slotQuit();
     void slotExecute();
     
@@ -64,10 +65,13 @@ class MainWindow : public KParts::MainWindow
     void slotCopy();
     void slotPaste();
     void slotSelectAll();
+    void slotClearSelection();
+    void slotToggleInsert();
     void slotFind();
     void slotFindNext();
     void slotFindPrevious();
     void slotReplace();
+    void slotToggleLineNumbers();
    
     void slotStatusBar(QString text, int place);
     void slotUpdateCanvas();
