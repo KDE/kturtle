@@ -168,22 +168,22 @@
   </command>
 
   <command name="spriteshow">
-    <keyword>montreimage</keyword>
+    <keyword>montre</keyword>
     <alias>mi</alias>
   </command>
   
   <command name="spritehide">
-    <keyword>cacheimage</keyword>
+    <keyword>cache</keyword>
     <alias>ci</alias>
   </command>
 
   <command name="spritepress">
-    <keyword>presseimage</keyword>
+    <keyword>presse</keyword>
     <alias>pi</alias>
   </command>
 
   <command name="spritechange">
-    <keyword>changeimage</keyword>
+    <keyword>change</keyword>
     <alias>ci</alias>
   </command>
 
