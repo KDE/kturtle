@@ -149,10 +149,7 @@ void MainWindow::setupActions() {
 	new KToggleAction(i18n("Show &Line Numbers"), 0, Key_F11, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
 	m_fullscreen = KStdAction::fullScreen(this, SLOT( slotToggleFullscreen() ), ac, this, "full_screen");
 	m_fullscreen->setChecked(b_fullscreen);
-	// DEPRICATED:
-	//showEditor = new KToggleAction(i18n("Show &Editor"), 0, 0, this, SLOT(slotShowEditor()), ac, "show_editor");
-	//showEditor->setChecked(true);
-	
+
 	// Tools actions
 	colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", ALT+Key_C, this, SLOT(slotColorPicker()), ac, "color_picker");
 	new KAction(i18n("&Indent"), "indent", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");

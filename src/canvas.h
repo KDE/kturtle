@@ -79,6 +79,7 @@ class Canvas : public QCanvasView
     
     QCanvas             *TurtleCanvas;
     QPixmap              pixmap;
+    ///The cute green turtle
     QCanvasSprite       *Sprite;
     QCanvasPixmapArray  *SpriteFrames;
     QFont                font;
