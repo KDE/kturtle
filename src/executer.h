@@ -74,7 +74,7 @@ class Executer : public QObject
 		void SpritePress();
 		void SpriteChange(int x);
 		void Print(QString text);
-		void FontType(QString family);
+		void FontType(QString family, QString extra);
 		void FontSize(int px);
 		void WrapOn();
 		void WrapOff();

@@ -996,7 +996,7 @@ void Executer::execFontType(TreeNode* node)
 	QString extra;
 	if (node->size() == 2) QString extra = node->secondChild()->getValue().String();
 	QString family = node->firstChild()->getValue().String();
-	emit FontType(family);
+	emit FontType(family, extra);
 }
 
 

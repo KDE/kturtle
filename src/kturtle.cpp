@@ -570,7 +570,7 @@ void MainWindow::slotExecute()
 	connect( exe, SIGNAL( SpritePress() ), canvasView, SLOT( slotSpritePress() ) );
 	connect( exe, SIGNAL( SpriteChange(int) ), canvasView, SLOT( slotSpriteChange(int) ) );
 	connect( exe, SIGNAL( Print(QString) ), canvasView, SLOT( slotPrint(QString) ) );
-	connect( exe, SIGNAL( FontType(QString) ), canvasView, SLOT( slotFontType(QString) ) );
+	connect( exe, SIGNAL( FontType(QString, QString) ), canvasView, SLOT( slotFontType(QString, QString) ) );
 	connect( exe, SIGNAL( FontSize(int) ), canvasView, SLOT( slotFontSize(int) ) );
 	connect( exe, SIGNAL( WrapOn() ), canvasView, SLOT( slotWrapOn() ) );
 	connect( exe, SIGNAL( WrapOff() ), canvasView, SLOT( slotWrapOff() ) );
