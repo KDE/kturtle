@@ -4,33 +4,20 @@
 
 #include <stdlib.h>
 
-#include <qtimer.h>
-#include <qlayout.h>
-#include <qregexp.h>
 
-#include <kaccel.h>
-#include <kaction.h>
 #include <kapplication.h>
-#include <kconfig.h>
 #include <kconfigdialog.h>
 #include <kdebug.h>
 #include <kedittoolbar.h>
 #include <kfiledialog.h>
 #include <kinputdialog.h> 
 #include <kkeydialog.h>
-#include <klineedit.h>
 #include <klocale.h>
-#include <kmenubar.h>
 #include <kmessagebox.h>
-#include <kprocess.h>
 #include <kstandarddirs.h> 
 #include <kstatusbar.h>
-#include <kstdaction.h>
-#include <ktextedit.h>
-#include <kurl.h>
 
 #include <ktexteditor/clipboardinterface.h>
-#include <ktexteditor/editinterface.h>
 #include <ktexteditor/editorchooser.h>
 #include <ktexteditor/highlightinginterface.h>
 #include <ktexteditor/printinterface.h>
@@ -140,7 +127,7 @@ void MainWindow::setupActions() {
    
     // setup settings actions
     createStandardStatusBarAction();
-    setStandardToolBarMenuEnabled(true);
+    //setStandardToolBarMenuEnabled(true);
     KStdAction::preferences( this, SLOT( slotSettings() ), ac );
     KStdAction::keyBindings( this, SLOT( slotConfigureKeys() ), ac );
     new KAction(i18n("&Configure Editor..."), "configure", 0, this, SLOT(slotEditor()), ac, "set_confdlg");

@@ -6,8 +6,6 @@
 #define _CANVAS_H_
 
 #include <qcanvas.h>
-#include <qfont.h>
-#include <qpoint.h>
 
 #include <cmath>
 

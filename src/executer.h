@@ -14,7 +14,6 @@ bugreport(log):/
 #include <stack>
 #include <string>
 
-#include <qobject.h>
 
 #include "treenode.h"
 

@@ -13,8 +13,6 @@ bugreport(log):column will not be incremented enough when numbers are read
 #include <stdlib.h>
 #include <string>
 
-#include <qmap.h>
-#include <qstring.h>
 
 #include "number.h"
 

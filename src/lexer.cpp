@@ -1,7 +1,6 @@
 #include <qdom.h>
 #include <qfile.h>
 
-#include <kapp.h>
 #include <kdebug.h>
 
 #include "settings.h"

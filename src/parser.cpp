@@ -1,4 +1,3 @@
-#include <qstring.h>
 
 #include <klocale.h>
 

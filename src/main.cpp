@@ -3,9 +3,8 @@
  */
 
 #include <kaboutdata.h>
-#include <kapp.h>
+#include <kapplication.h>
 #include <kcmdlineargs.h>
-#include <klocale.h>
 
 #include "kturtle.h"
 

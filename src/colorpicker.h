@@ -7,11 +7,8 @@
 
 #include <qlayout.h>
 #include <qlineedit.h> 
-#include <qslider.h> 
-#include <qspinbox.h>
 
 #include <kcolordialog.h>
-#include <kdialogbase.h>
 
 
 class ColorPicker : public KDialogBase

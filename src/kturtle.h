@@ -9,17 +9,7 @@
 #include <config.h>
 #endif
 
-#include <qdockwindow.h>
-#include <qdom.h>
-#include <qfile.h>
-#include <qgroupbox.h>
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qtextstream.h> 
-#include <qwidget.h>
 
-#include <kaction.h> 
-#include <kstdaction.h>
 #include <kurlrequester.h>
 #include <knuminput.h>
 
@@ -27,10 +17,8 @@
 #include "colorpicker.h"
 #include "executer.h"
 #include "parser.h"
-#include "settings.h"
 
 #include <kparts/mainwindow.h>
-#include <ktexteditor/document.h>
 #include <ktexteditor/editinterface.h>
 #include <ktexteditor/view.h>
 
