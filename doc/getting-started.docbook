@@ -1,3 +1,5 @@
+<!--Dear translator: please NEVER translate the id or anything inside the tags as they are needed in english by the application
+     Thanks a lot in advance.-->
 <chapter id="getting-started">
 <title>Getting Started</title>
 <para>When you start &kturtle; you will see something like this:

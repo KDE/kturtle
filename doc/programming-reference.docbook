@@ -1,3 +1,5 @@
+<!--Dear translator: please NEVER translate the id or anything inside the tags as they are needed in english by the application
+     Thanks a lot in advance.-->
 <chapter id="reference">
 <title>&kturtle;'s &logo; Programming Reference</title>
 <para>This is the reference for the &kturtle;'s &logo;. In this chapter we first briefly touch all the <link linkend="different-instructions">different instruction types</link>. Then the <link linkend="commands">commands</link> are explained one by one. Then <link linkend="containers">containers</link>, <link linkend="math">math</link>, <link linkend="questions">questions</link> and <link linkend="controlling-execution">execution controllers</link> are explained. At last you are shown how to create you own commands with <link linkend="learn">learn</link>.</para>
