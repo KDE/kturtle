@@ -1,0 +1,14 @@
+How to translate examples
+
+1) Create a folder with your language iso as name
+2) Copy the english example in this folder and rename the files with your language translation. This will allow users to easily and quickly understand what the example is about.
+3) See in kturtle/src/data/keywords/ the file corresponding to your language. This file must be done before translating the examples. 
+Replace in the example files all English keywords with your translated keywords.
+4) Commit your folder or send it to Anne-Marie.
+5) In case of any doubt, please contact Anne-Marie Mahfouf, annemarie.mahfouf@free.fr for more information.
+6) Finally, if you want, you can add your own examples in this folder.
+
+Thanks for your work.
+
+Anne-Marie
+27th May 2004

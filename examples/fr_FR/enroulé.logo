@@ -1,12 +1,12 @@
-# enroulé.logo
+# enroulÃ©.logo
 
 reset
-lèvecrayon
+lÃ¨vecrayon
 av 50
 baissecrayon
 
-répète 4 [
-pour x = 1 à 100 [
+rÃ©pÃ¨te 4 [
+pour x = 1 Ã  100 [
 av 10
 td 100 - x
 ]
