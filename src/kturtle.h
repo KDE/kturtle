@@ -42,6 +42,7 @@ class MainWindow : public KParts::MainWindow
     void slotSaveFile();
     void slotSaveAs();
     void slotSave(KURL &);
+    /// save the canvas drawing to a .png file
     void slotSaveCanvas();
     void slotPrint();
     void slotQuit();

@@ -12,10 +12,12 @@
 #include <kdebug.h>
 #include <kedittoolbar.h>
 #include <kfiledialog.h>
+#include <kimageio.h>
 #include <kinputdialog.h> 
 #include <kkeydialog.h>
 #include <klocale.h>
 #include <kmessagebox.h>
+#include <ksavefile.h>
 #include <kstandarddirs.h> 
 #include <kstatusbar.h>
 
@@ -86,7 +88,7 @@ MainWindow::~MainWindow() { // The MainWindow destructor
 
 void MainWindow::setupActions() {
     KActionCollection *ac = actionCollection();
-    // Set up file actions
+    // File menu
     KStdAction::openNew(this, SLOT(slotNewFile()), ac);
     openExAction = new KAction(i18n("Open Examples"), "bookmark_folder", 0, this, SLOT(slotOpenEx()), ac, "open_examples");
     KStdAction::open(this, SLOT(slotOpenFile()), ac);
@@ -98,7 +100,7 @@ void MainWindow::setupActions() {
     run->setEnabled(false);
     KStdAction::print(this, SLOT(slotPrint()), ac);
     KStdAction::quit(this, SLOT(slotQuit()), ac);
-    // Set up edit actions
+    // Edit actions
     KStdAction::undo(this, SLOT(slotUndo()), ac);
     KStdAction::redo(this, SLOT(slotRedo()), ac);
     KStdAction::cut(this, SLOT(slotCut()), ac);
@@ -111,31 +113,27 @@ void MainWindow::setupActions() {
     KStdAction::findNext(this, SLOT(slotFindNext()), ac);
     KStdAction::findPrev(this, SLOT(slotFindPrevious()), ac);
     KStdAction::replace(this, SLOT(slotReplace()), ac);
-    // Set up view actions
+    // View actions
     new KToggleAction(i18n("Show &Line Numbers"), 0, Qt::Key_F11, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
     m_fullscreen = KStdAction::fullScreen(this, SLOT( slotToggleFullscreen() ), ac, this, "full_screen");
     m_fullscreen->setChecked(b_fullscreen);
     showEditor = new KToggleAction(i18n("Show &Editor"), 0, 0, this, SLOT(slotShowEditor()), ac, "show_editor");
     showEditor->setChecked(true);
-    // Set up tools actions
+    // Tools actions
     colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", 0, this, SLOT(slotColorPicker()), ac, "color_picker");
     new KAction(i18n("&Indent"), "indent", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
     new KAction(i18n("&Unindent"), "unindent", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
     new KAction(i18n("Cl&ean Indentation"), 0, 0, this, SLOT(slotCleanIndent()), ac, "edit_cleanIndent");
     new KAction(i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
-    new KAction(i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
-
-    //@todo: make the EditorDock hideable, better to do it when on KTextEditor... 
-    // (void)new KToggleAction(i18n("&Hide Editor"), 0, 0, this, SLOT(slotToggleHideEditor()),
-   
-    // setup settings actions
+    new KAction(i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");  
+    // Settings actiins
     createStandardStatusBarAction();
     //setStandardToolBarMenuEnabled(true);
     KStdAction::preferences( this, SLOT( slotSettings() ), ac );
     KStdAction::keyBindings( this, SLOT( slotConfigureKeys() ), ac );
     new KAction(i18n("&Configure Editor..."), "configure", 0, this, SLOT(slotEditor()), ac, "set_confdlg");
     KStdAction::configureToolbars( this, SLOT(slotConfigureToolbars()), ac);
-    // setup help actions
+    // Help actions
     ContextHelp = new KAction(0, 0, Key_F1, this, SLOT(slotContextHelp()), ac, "context_help");
     slotContextHelpUpdate(); // this sets the label of this action
 }
@@ -178,7 +176,6 @@ void MainWindow::setupStatusBar() {
     slotStatusBar(i18n("Welcome to KTurtle..."),  IDS_STATUS); // the message part
     slotStatusBar(i18n(" Line: %1 Column: %2 ").arg(1).arg(1), IDS_STATUS_CLM);
     slotStatusBar(i18n("INS"), IDS_INS);
-    // and...
     statusBar()->show();
 }
 
@@ -281,14 +278,28 @@ void MainWindow::slotSaveCanvas() {
         }
         break;
     }
+    QString type( KImageIO::type(url.path()) );
+    if ( type.isNull() )
+	type = "PNG";
+    bool ok = false;
     QPixmap* pixmap = TurtleView->Canvas2Pixmap();
+    if ( url.isLocalFile() ) {
+	KSaveFile saveFile( url.path() );
+	if ( saveFile.status() == 0 ) {
+	    if ( pixmap->save( saveFile.file(), type.latin1() ) )
+		ok = saveFile.close();
+	}
+    }
+    if ( !ok ) {
+	kdWarning() << "KTurtle was unable to save the canvas drawing" << endl;
+
+	QString caption = i18n("Unable to save image");
+	QString text = i18n("KTurtle was unable to save the image to\n%1.")
+	               .arg(url.prettyURL());
+	KMessageBox::error(this, text, caption);
+    }
     /// NOW THE PIXMAP SHOULD BE SAVED!!! better look at an other app (ksnapshot) how to do that. :-)
-//     editor->document()->saveAs(url);
-//     CurrentFile = url.fileName();
-//     setCaption(CurrentFile);
-//     slotStatusBar(i18n("Saved file to: %1").arg(CurrentFile),  IDS_STATUS); 
-//     m_recentFiles->addURL( url );
-//     editor->document()->setModified(false);
+    slotStatusBar(i18n("Saved canvas to: %1").arg(url.fileName()),  IDS_STATUS); 
 }
 
 void MainWindow::slotOpenFile() {
