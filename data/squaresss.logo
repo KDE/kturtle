@@ -1,6 +1,6 @@
 # draw a square
 
-learn square X [
+learn square (X) [
   repeat 4 [
     forward X
     turnleft 90
@@ -17,6 +17,6 @@ repeat 12 [
   penup
   forward 30
   pendown
-  square 80
+  square (80)
   turnright 30
 ]
