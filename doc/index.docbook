@@ -24,7 +24,7 @@
 <firstname>Cies</firstname>
 <surname>Breijs</surname>
 <affiliation>
-<address><email>cies # showroommama ! nl</email></address>
+<address><email>cies@showroommama ! nl</email></address>
 </affiliation>
 </author>
 <author>
@@ -133,7 +133,7 @@ Many integrated, internationalized example &logo; programs make it easy to get s
 <para>
 &kturtle;
 </para>
-<para>Program copyright 2003-2004 Cies Breijs <email>cies # showroommama ! nl</email></para>
+<para>Program copyright 2003-2004 Cies Breijs <email>cies@showroommama ! nl</email></para>
 <para>
 Contributors:
 <itemizedlist>
@@ -145,6 +145,18 @@ Contributors:
 </listitem>
 <listitem><para>Swedish Data Files: Stefan Asserh&#228;ll <email>stefan.asserhal@telia.com</email></para>
 </listitem>
+<listitem><para>Slovenian Data Files: Jure Repinc <email>jlp@holodeck1.com</email></para>
+</listitem>
+<listitem><para>Serbian (Cyrillic and Latin) Data Files: Chusslove Illich <email>caslav.ilic@gmx.net</email></para>
+</listitem>
+<listitem><para>Italian Data Files: Pino Toscano <email>toscano.pino@tiscali.it</email></para>
+</listitem>
+<listitem><para>English GB Data Files: Andy Potter <email>A.J.Potter@rhul.ac.uk</email></para>
+</listitem>
+<listitem><para>Spanish Data Files: Rafael Beccar <email>rafael.beccar@kdemail.net</email></para>
+</listitem>
+<listitem><para>Parser Cyrillic support: Albert Astals Cid <email>astals11@terra.es</email></para>
+</listitem>
 </itemizedlist>
 </para>
 
@@ -152,7 +164,7 @@ Contributors:
 Documentation copyright 2004
 <itemizedlist>
 <listitem><para>
-Cies Briej <email>cies # showroommama ! nl</email>
+Cies Briej <email>cies@showroommama ! nl</email>
 </para></listitem>
 <listitem><para>
  Anne-Marie Mahfouf <email>annma@kde.org</email>
