@@ -617,14 +617,14 @@ The canvas is the area where the commands are visualized, where the commands 'dr
   <screeninfo>Here's a screenshot KTurtle when you start it for the first time</screeninfo>
   <mediaobject>
     <imageobject>
-      <imagedata fileref="fresh.png" format="PNG"/>
+      <imagedata fileref="mainwindow.png" format="PNG"/>
     </imageobject>
     <textobject>
       <phrase>KTurtle Main window</phrase>
     </textobject>
   </mediaobject>
 </screenshot>
-In this Getting Started guide we assume that the language of the logo commands is English. You can check to what language KTurtle is set in <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure KTurtle</guimenuitem></menuchoice> in the Language section. Be aware that the language you set for KTurtle needs to be the same as the language you use to type the logo commands in.</para>
+In this Getting Started guide we assume that the language of the logo commands is English. You can change this language in <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure KTurtle</guimenuitem></menuchoice> in the Language section. Be aware that the language you set for KTurtle needs to be the same as the language you use to type the logo commands in.</para>
 
 <sect1 id="first-steps">
 <title>First steps with Logo: meet the Turtle!</title>
