@@ -905,12 +905,9 @@ void Executer::execRandom( TreeNode* node ) {
     TreeNode* nodeY = node->secondChild();
     execute(nodeX); // executing
     execute(nodeY);
-    float x = nodeX->getValue().val; // converting & rounding to int
+    float x = nodeX->getValue().val;
     float y = nodeY->getValue().val;
-
-    // Set evil seed (initial seed)
-//     srand( (unsigned)time( NULL ) );
-//     
+    
     float r = (float)( KApplication::random() ) / RAND_MAX;
     Number value;
     value = (double)( r * ( y - x ) ) + x;
