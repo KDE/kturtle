@@ -26,7 +26,7 @@ static const char description[] =
 
 static const char version[] = "0.1";
 
-static const char copyright[] = "(C) 2003 The KTurtle Authors";
+static const char copyright[] = I18N_NOOP("(C) 2003 The KTurtle Authors");
 
 static const char website[] = "http://edu.kde.org/kturtle";
 
@@ -43,7 +43,7 @@ int main(int argc, char **argv)
                      KAboutData::License_GPL, copyright, 0, website);
     about.addAuthor( "Cies Breijs",
            I18N_NOOP("Main developer and initiator"),
-                     "cies # showroommama.nl" );
+                     "eric # showroommama.nl" );
     about.addAuthor( "Walter Schreppers",
            I18N_NOOP("Author of \"wsbasic\" (wsbasic.sf.net) the base for the interpreter of KTurtle"),
                      "Walter.Schreppers # ua.ac.be" );

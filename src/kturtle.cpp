@@ -586,11 +586,11 @@ void MainWindow::slotErrorDialog(QString msg, uint row, uint col, uint code) {
 	// if(allreadyError) { return; } // one error dialog per 'run' is enough... (see next line)
 	allreadyError = true;
 	QString line;
-	if( row <= 0 || col <= 0 ) {
+	if( row <= 1 || col <= 0 ) {
 		line = ".";
 	} else {
 		// RowCol = QString(" on row %1, column %2.").arg(row).arg(col); // no column, it over informs
-		line = QString(" on line %1.").arg(row - 1);
+		line = i18n(" on line %1.").arg(row - 1);
 	}
 	
 	// move cursor to the error

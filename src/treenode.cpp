@@ -151,7 +151,7 @@ void TreeNode::show(int indent) {
   QString s="";
   for(int i=0;i<indent;i++) s+="  ";
   s+=getName();
-  kdDebug() << s;
+  kdDebug() << s << endl;
 //  if(getType() == constantNode) kdDebug()<<" constant = "<<getValue() <<endl;
 }
 
@@ -160,7 +160,7 @@ void TreeNode::show(int indent) {
 //
 void TreeNode::showTree(TreeNode* node, int indent) const {
   indent++;
-  kdDebug() << " NodeTree>>";
+  kdDebug() << " NodeTree>>" << endl;
   if( (node!=NULL) && (node->size()>0) ) {
     for( TreeNode::const_iterator i=node->begin(); i!= node->end(); ++i ) {
       (*i)->show( indent );

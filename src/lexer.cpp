@@ -91,8 +91,8 @@ int Lexer::getNumber(Number& n) {
 
 int Lexer::getName(QString& s) {
   char look=getChar();
-  if( isalpha(look) || look=='[' || look==']' ) {
-    while( ( isalpha(look) || isdigit(look) || look == '_' || look=='[' || look==']' ) && !in->eof() ) {
+if( QChar(look).isLetter() || look=='[' || look==']' ) {
+    while( ( QChar(look).isLetterOrNumber() || look == '_' || look=='[' || look==']' ) && !in->eof() ) {
       s+=look;
       look=getChar();
     }
@@ -294,11 +294,11 @@ token Lexer::lex(){
     return t;
   }
   
-  if( isalpha(look) || look=='[' || look==']' ) { //haha
+  if( QChar(look).isLetter() || look=='[' || look==']' ) { //haha
     ungetChar(look);
     t.type=getName(t.str);
     checkKeywords(t);
-  } else if( isdigit(look) ) {
+  } else if( QChar(look).isNumber() ) {
     ungetChar(look);
     t.type=getNumber(t.val);
   } else {
