@@ -490,10 +490,10 @@ void Executer::execDiv(TreeNode* node)
 	
 	if (left.Type() == numberType && right.Type() == numberType)
 	{
-		if (right.Number() == 0) emit ErrorMsg(node->getToken(), i18n("Cannot devide by zero."), 9000);
+		if (right.Number() == 0) emit ErrorMsg(node->getToken(), i18n("Cannot divide by zero."), 9000);
 		else node->setValue( left / right );
 	}
-	else emit ErrorMsg(node->getToken(), i18n("Can only devide numbers."), 9000);
+	else emit ErrorMsg(node->getToken(), i18n("Can only divide numbers."), 9000);
 }
 
        
@@ -505,7 +505,7 @@ void Executer::execSub(TreeNode* node)
 	if (left.Type() == numberType && right.Type() == numberType)
 		node->setValue( left - right );
 	
-	else emit ErrorMsg(node->getToken(), i18n("Can only substract numbers."), 9000);
+	else emit ErrorMsg(node->getToken(), i18n("Can only subtract numbers."), 9000);
 }
 
 
@@ -880,7 +880,7 @@ void Executer::execSetFgColor(TreeNode* node)
 		int g = ROUND2INT( nodeG->getValue().Number() );
 		int b = ROUND2INT( nodeB->getValue().Number() );
 		if ( ( r < 0 || g < 0 || b < 0 ) || ( r > 255 || g > 255 || b > 255 ) )
-			emit ErrorMsg(node->getToken(), i18n("The parameters the %1 command must be numbers in the range: 0 to 255.").arg( node->getLook() ), 6090);
+			emit ErrorMsg(node->getToken(), i18n("The parameters of the %1 command must be numbers in the range: 0 to 255.").arg( node->getLook() ), 6090);
 		else
 			emit SetFgColor(r, g, b);
 	}
@@ -901,7 +901,7 @@ void Executer::execSetBgColor(TreeNode* node)
 		int g = ROUND2INT( nodeG->getValue().Number() );
 		int b = ROUND2INT( nodeB->getValue().Number() );
 		if ( ( r < 0 || g < 0 || b < 0 ) || ( r > 255 || g > 255 || b > 255 ) )
-			emit ErrorMsg(node->getToken(), i18n("The parameters the %1 command must be numbers in the range: 0 to 255.").arg( node->getLook() ), 6090);
+			emit ErrorMsg(node->getToken(), i18n("The parameters of the %1 command must be numbers in the range: 0 to 255.").arg( node->getLook() ), 6090);
 		else
 			emit SetBgColor(r, g, b);
 	}
@@ -1018,17 +1018,11 @@ bool Executer::checkParameterQuantity(TreeNode* node, uint quantity, int errorCo
 	{
 		if (nodeSize < quantity)
 		{
-			if (quantity == 1)
-				emit ErrorMsg(node->getToken(), i18n("The %1 command was called with %2 but needs %3 parameter.").arg( node->getLook() ).arg(nodeSize).arg(quantity), errorCode);
-			else
-				emit ErrorMsg(node->getToken(), i18n("The %1 command was called with %2 but needs %3 parameters.").arg( node->getLook() ).arg(nodeSize).arg(quantity), errorCode);
+			emit ErrorMsg(node->getToken(), i18n("The %1 command was called with %2 but needs 1 parameter.", "The %1 command was called with %2 but needs %n parameters.", quantity).arg( node->getLook() ).arg(nodeSize), errorCode);
 		}
 		else
 		{
-			if (quantity == 1)
-				emit ErrorMsg(node->getToken(), i18n("The %1 command was called with %2 but only accepts %3 parameter.").arg( node->getLook() ).arg(nodeSize).arg(quantity), errorCode);
-			else
-				emit ErrorMsg(node->getToken(), i18n("The %1 command was called with %2 but only accepts %3 parameters.").arg( node->getLook() ).arg(nodeSize).arg(quantity), errorCode);
+			emit ErrorMsg(node->getToken(), i18n("The %1 command was called with %2 but only accepts 1 parameter.", "The %1 command was called with %2 but only accepts %n parameters.", quantity).arg( node->getLook() ).arg(nodeSize), errorCode);
 		}
 		return false;
 	}
@@ -1049,16 +1043,16 @@ bool Executer::checkParameterType(TreeNode* node, int valueType, int errorCode)
 			{
 				case stringType:
 					if (quantity == 1)
-						emit ErrorMsg(node->getToken(), i18n("The %1 command only accepts a string as parameter.").arg( node->getLook() ), errorCode); 
+						emit ErrorMsg(node->getToken(), i18n("The %1 command only accepts a string as its parameter.").arg( node->getLook() ), errorCode); 
 					else
-						emit ErrorMsg(node->getToken(), i18n("The %1 command only accepts strings as parameters.").arg( node->getLook() ), errorCode);
+						emit ErrorMsg(node->getToken(), i18n("The %1 command only accepts strings as its parameters.").arg( node->getLook() ), errorCode);
 					break;
 				
 				case numberType:
 					if (quantity == 1)
-						emit ErrorMsg(node->getToken(), i18n("The %1 command only accepts a number as parameter.").arg( node->getLook() ), errorCode);
+						emit ErrorMsg(node->getToken(), i18n("The %1 command only accepts a number as its parameter.").arg( node->getLook() ), errorCode);
 					else
-						emit ErrorMsg(node->getToken(), i18n("The %1 command only accepts numbers as parameters.").arg( node->getLook() ), errorCode);
+						emit ErrorMsg(node->getToken(), i18n("The %1 command only accepts numbers as its parameters.").arg( node->getLook() ), errorCode);
 					break;
 			}
 			return false;

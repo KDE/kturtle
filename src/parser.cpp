@@ -94,7 +94,7 @@ void Parser::matchToken(int expectedToken)
 		switch (expectedToken)
 		{
 			case tokEOL:
-				Error(preservedToken, i18n("Unexpected intruction after the %1 command, please use only one instuction per line.").arg(preservedToken.look), 1010);
+				Error(preservedToken, i18n("Unexpected intruction after the %1 command, please use only one instruction per line.").arg(preservedToken.look), 1010);
 				break;
 				
 			default:
