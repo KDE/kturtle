@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<!DOCTYPE logokeywords>
+
+<logokeywords lang="de_DE" ver="0.01">
+
+<!-- scope -->
+  <command name="begin">
+    <keyword>[</keyword>
+  </command>
+  
+  <command name="end">
+    <keyword>]</keyword>
+  </command>
+
+<!-- execution controllers -->
+  <command name="while">
+    <keyword>solange</keyword>
+  </command>
+  
+  <command name="if">
+    <keyword>wenn</keyword>
+  </command>
+  
+  <command name="else">
+    <keyword>sonst</keyword>
+  </command>
+  
+  <command name="for">
+    <keyword>von</keyword>
+  </command>
+  
+  <command name="to">
+    <keyword>bis</keyword>
+  </command>
+  
+  <command name="return">
+    <keyword>zurück</keyword>
+  </command>
+  
+  <command name="break">
+    <keyword>abbrechen</keyword>
+  </command>
+  
+  <command name="foreach">
+    <keyword>fürjedes</keyword>
+  </command>
+  
+  <command name="in">
+    <keyword>in</keyword>
+  </command>
+
+  <command name="do">
+    <keyword>tue</keyword>
+  </command>
+  
+  <command name="repeat">
+    <keyword>wiederhole</keyword>
+    <alias>wdh</alias>
+  </command>
+
+  <command name="wait">
+    <keyword>warte</keyword>
+  </command>
+
+<!-- boolean operators -->  
+  <command name="and">
+    <keyword>und</keyword>
+  </command>
+  
+  <command name="or">
+    <keyword>oder</keyword>
+  </command>
+  
+  <command name="not">
+    <keyword>nicht</keyword>
+  </command>
+  
+  
+<!-- the meta command --> 
+  <command name="learn">
+    <keyword>lerne</keyword>
+  </command>
+
+  
+<!-- normal keywords -->
+  <command name="run">
+    <keyword>lauf</keyword>
+  </command>
+  
+  <command name="clear">
+    <keyword>lösche</keyword>
+  </command>
+ 
+  <command name="go">
+    <keyword>gehe</keyword>
+  </command>
+ 
+  <command name="gox">
+    <keyword>gehex</keyword>
+    <alias>gx</alias>
+  </command>
+ 
+  <command name="goy">
+    <keyword>gehey</keyword>
+    <alias>gy</alias>
+  </command>
+ 
+  <command name="forward">
+    <keyword>vorwärts</keyword>
+    <alias>vw</alias>
+  </command>
+  
+  <command name="backward">
+    <keyword>rückwärts</keyword>
+    <alias>rw</alias>
+  </command>
+
+  <command name="direction">
+    <keyword>Richtung</keyword>
+    <alias>Rtg</alias>
+  </command>
+  
+  <command name="turnleft">
+    <keyword>nachlinks</keyword>
+    <alias>nl</alias>
+  </command>
+
+  <command name="turnright">
+    <keyword>nachrechts</keyword>
+    <alias>nr</alias>
+  </command>
+
+  <command name="center">
+    <keyword>indiemitte</keyword>
+  </command>
+  
+  <command name="setpenwidth">
+    <keyword>stiftbreite</keyword>
+    <alias>stbr</alias>
+  </command>
+  
+  <command name="penup">
+    <keyword>stifthoch</keyword>
+    <alias>sth</alias>
+  </command>
+
+  <command name="pendown">
+    <keyword>stiftrunter</keyword>
+    <alias>str</alias>
+  </command>
+  
+  <command name="setfgcolor">
+    <keyword>stiftfarbe</keyword>
+    <alias>stf</alias>
+  </command>
+  
+  <command name="setbgcolor">
+    <keyword>papierfarbe</keyword>
+    <alias>pf</alias>
+  </command>
+   
+  <command name="resizecanvas">
+    <keyword>papiergröße</keyword>
+    <alias>pg</alias>
+  </command>
+
+  <command name="spriteshow">
+    <keyword>zeige</keyword>
+  </command>
+  
+  <command name="spritehide">
+    <keyword>verberge</keyword>
+    <alias>verstecke</alias>
+  </command>
+
+  <command name="spritepress">
+    <keyword>drücke</keyword>
+  </command>
+
+  <command name="spritechange">
+    <keyword>wechsle</keyword>
+    <alias>ändere</alias>
+  </command>
+  
+  <command name="message">
+    <keyword>nachricht</keyword>
+  </command>
+  
+  <command name="inputwindow">
+    <keyword>eingabefenster</keyword>
+  </command>
+  
+  <command name="print">
+    <keyword>drucken</keyword>
+  </command>
+
+  <command name="fonttype">
+    <keyword>schriftart</keyword>
+  </command>
+  
+  <command name="fontsize">
+    <keyword>schriftgröße</keyword>
+  </command>
+  
+  <command name="random">
+    <keyword>zufall</keyword>
+  </command>
+  
+  <command name="wrapon">
+    <keyword>umbruckan</keyword>
+    <alias>umbruchein</alias>
+  </command>
+  
+  <command name="wrapoff">
+    <keyword>umbruchaus</keyword>
+  </command>
+  
+  <command name="reset">
+    <keyword>zurücksetzen</keyword>
+  </command>
+
+</logokeywords>
