@@ -1,8 +1,182 @@
+This is the TODO file of the KTurtle project, here the things are put that still need implmentation.
+This list is devided into BIG-TODOs, normalTODOs, TO-oeps-meDOitALLreadies and StillSubjectToDiscussions :-)
+
+
+
+**** BIG-TODOs: ****
+
+cies: Implement ether a Kate-part or a KTextEditor as editor widget.
+1) Kate-part, will merge it's GUI with ours (preferred by me)
+2) KTextEditor, seems simpler
+I tried both and failed :( so it is now on HOLD [still hoping for a god-sent Kate-developer to make the decision and implement].
+A lot of other issues are more/less waiting for this one (i'm not working on editor-kaction-connections, Qfile->KURL migration, CLI-file-selection, recentfileshistory, linenumbers and highlighting when i might have to redo them in a month.)
+
+
+cies: Make the interpreter (stolen from wsbasic.sf.net) (executer, parser, lexer, number and treenode) more native Qt.
+Right now they are a mixture of standard-CLI-C++ and Qt thingies (i put the Qt thingies there). I tried to do that but i found that i'm not comfortable with the concept of streams -- which are used a lot in the interpreter. Especially streaming QString was an obstacle i couldnt take.
+
+
+cies: Remove the [ and ] that are currently needed for the exectution of commands.
+These [ and ] tell the interpreter what is the main execution block, the interpreter needs it. Outside the main execution block user-made-funktions can be defined.
+Solution: make the interpreter accept user-made-funktions to be declared within the main execution block AND change the interpreter so it wont need a main execution block, OR give it a hardcoded execution block. 
+
+
+cies: The manual...
+Au! That is a big one, lets first decide on the chapter structure. See the "StillSubjectToDiscussions" below
+
+
+cies: Make good error messages with links to corresponing help pages.
+- Make an error message class that inherates some dialog thing (it should have: help-link-button, details, short error title and origion (Parse error), 'the-row-of-error', and a small description (maybe the description should contain links to help pagen on certain commands/ methods/ etc.) and maybe even a small hint or hint button
+- Refine the way error message get emitted, problems: Ugly-, short-, technical messages. Sometimes moere than one messages gets emmitted right now only the 1st msg is shown -- the 1st may not allways point to the 'core ot error'.
+
+
+cies: Implement an 'abort' funktion into the interpretor. So an endless execution can be aborted.
+
+
+
+**** normalTODOs ****
+
+
+cies: Printing.
+When the print aktion is called give the user a small-choise-kdialog: "print the code", "print the canvas" or "print both" (the last one is optional). Maybe a reference (in the manual) to ksnapshot will be nice.
+
+
+cies: get all the commands in the logokeywords.*.xml file working properly, and remove the commands that are not needed:
+Need to work eventually:
+- repeat (very soon -- i will do it soon :-)
+- wait (idem)
+- random (idem, working on it)
+- fontsize/ fonttype (idem)
+- input/ inputwindow (idem)
+- sprite* (i'll maybe look into this when i have Qt3.3 which fixes the nasty crashbug that came across)
+- foreach-(word,...)-in-<string>-seperated-by-<string>-do-[-...-] needs a lot of work (i like the functionality)
+- 'ask' and 'speed' will come later -- me has to focus and concentrate
+- 'learn' also needs work: see BIG-TODOs -> "Remove the [ and ]"
+- <joke> and what about a 'goto' command ( you can never make them mistakes young enough, muahoahoaaaa >:-} ) <joke> well?
+Maybe need to be removed:
+- write (writing files from logo... nah)
+- substr (a bit hard to use { a="qwerty"; substr(a,1,3) // outputs "qwe" } for kids not really usefull either) but if called 'cutstring' it might be a nice funktion.
+
+
+cies: have that f*cking gear icon update, it should go from gear to cross when executing but for some very misterious reason it doesnt!
+
+
+cies: a fontchooser would be fun
+
+
+cies: a press-F1-for-context-help...
+Press F1 while in a command and see help on it
+- wait for Kate-part?
+
+
+
+**** TO-oeps-IdidItAllReadies: ****
+
+
+cies: Get us bugs.kde.org entity
+
+cies: rename the resized() signal in canvas.* to CanvasResized() or any apropriate other letter combi.
+Off course the connect() in kturtle.cpp should follow. [while typing this i could have fixed it :-)]
+
+
+
+**** StillSubjectToDiscussions ****
+
+
 annma - 29th December 2003
 about the resizing
 I think the canvas size should fill all the right side under the toolbar when KTurtle is started. When resizing the window with the mouse, the canvas grows bigger, everything resize smoothly (-> resizeEvent( QResizeEvent * )).
 You can leave the resizing option of the canvas in the Settings but only for having the canvas bigger. That would mean setting minimums in the config dialog.
 
+cies: Sorry i have to disagree, let me explain: a lot of logoscripts will be written on a certain canvas size, if the canvas is made bigger the script will give 'broken' output. I also dont have a way to update the 'wrapping' if a canvas is resized. IMHO the canvassize should be changed by a command, nl. canvassize x,y -- which works on my side of mother earth :-) IMHO all changes to the canvas MUST be done by commands and not by clicky-clicky... Putting the 'initial canvas size' in the settings window is only for the teatcher to setup all his computers.
+
+Sorry for beeing so inflexible... *Really*  I am still open for discussion! :-) I just have developed a certain vision of KTurtle's future that is really hard to let go.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cies: On the docbook 'manual' page...
+
+I dont hav much experience with this (doc an KDE) but i seeing 3 documents 1) Quickstart, 2) THE MANUAL and 3) A Tutorial
+
+
+Maybe 1 & 3 should be combined, what do you think?
+
+
+
+Here a small start with the manual chapters, FEEDBACK NEEDED!
+
+THE MANUAL
+
+starting logo
+  the mainwindow
+     the canvas
+     the text input
+     the toolbar
+     the menus
+        file
+	edit
+	view
+	tools
+	   colorpicker
+           fontchooser
+	setings
+           configuring klogo
+               the language
+	       initial values
+	help
+	   using the help
+  
+
+the basics of logo programming
+     first steps... (just a few commands: print, repeat, fw-tr) [just to show how easy it is!]
+     simple calculations: 1+1=...
+     variables: creating 'number containers'
+     strings: creating 'text containers'
+     logic: asking the computer simple questions
+        
+        and/or/not: combining simple questions 
+     if ... do: logic conditions
+        if ... do ... else
+     loops: repeat and friends
+        repeat ... times: the simplelest loop
+	while ... do: a conditioned loop
+        for ... to ... do: a counting loop
+     moving the turlte
+        forward and backward
+        turnleft and turnright
+	direction
+	go/gox/goy
+	center
+     the turtle has a pen
+        penup/pendown
+        pencolor
+	penwidth
+     the canvas
+        canvascolor
+	clean
+	canvassize
+     sprites: turtle has new clothes
+        hiding the turtle
+	
+
+     learn: your own commands!
+        simplify
+	use others code
+     
+ 
 
 
 
