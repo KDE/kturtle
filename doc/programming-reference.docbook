@@ -128,7 +128,7 @@
     <varlistentry>
       <term>canvassize</term>
       <listitem><para><screen>canvassize X,Y</screen>
-      With the <userinput>canvassize</userinput> command you can set the size of the canvas. It takes X and Y as input, where X is the new canvas width in <glossterm linkend="pixels">pixels</glossterm>, and Y id the new height of the canvas in <glossterm linkend="pixels">pixels</glossterm>.</para></listitem>
+      With the <userinput>canvassize</userinput> command you can set the size of the canvas. It takes X and Y as input, where X is the new canvas width in <glossterm linkend="pixels">pixels</glossterm>, and Y id the new height of the canvas in <glossterm linkend="pixels">pixels</glossterm>.<userinput>canvassize</userinput> can be abbreviated to <userinput>cs</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -136,7 +136,7 @@
     <varlistentry>
       <term>canvascolor</term>
       <listitem><para><screen>canvascolor R,G,B</screen>
-      <userinput>canvascolor</userinput> set the color of the canvas. <userinput>canvascolor</userinput> takes an <glossterm linkend="rgb">RGB combination</glossterm> as input.</para></listitem>
+      <userinput>canvascolor</userinput> set the color of the canvas. <userinput>canvascolor</userinput> takes an <glossterm linkend="rgb">RGB combination</glossterm> as input.<userinput>canvascolor</userinput> can be abbreviated to <userinput>cc</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -165,7 +165,7 @@
     <varlistentry>
       <term>clear</term>
       <listitem><para><screen>clear</screen>
-      With <userinput>clear</userinput> you can clean all drawings from the canvas. All other things remain: the position and angle of the turtle, the canvascolor, the visibility of the turtle and the canvas size.</para></listitem>
+      With <userinput>clear</userinput> you can clean all drawings from the canvas. All other things remain: the position and angle of the turtle, the canvascolor, the visibility of the turtle and the canvas size.<userinput>clear</userinput> can be abbreviated to <userinput>ccl</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
