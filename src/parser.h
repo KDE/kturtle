@@ -39,7 +39,7 @@ class Parser : public QObject
 
 
 	signals:
-		void ErrorMsg(Token&, QString, uint code);
+		void ErrorMsg(Token&, const QString&, uint code);
 
 
 	private:
@@ -49,7 +49,7 @@ class Parser : public QObject
 		void getToken();
 		void matchToken(int tokenType);
 		void appendParameters(TreeNode* node);
-		void Error(Token, QString, uint code);
+		void Error(Token&, const QString& s, uint code);
 	
 		TreeNode* Program();
 		TreeNode* ParamList();

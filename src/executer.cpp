@@ -383,9 +383,9 @@ void Executer::execFor(TreeNode* node)
 		execute(step);
 		Value stepVal = step->getValue();
 		bBreak = false;
-		if( (stepVal.Number() >= 0.0) && (startVal.Number() <= stopVal.Number() ) )
+		if ( (stepVal.Number() >= 0.0) && (startVal.Number() <= stopVal.Number() ) )
 		{
-			for( double d = startVal.Number(); d <= stopVal.Number(); d = d + stepVal.Number() )
+			for ( double d = startVal.Number(); d <= stopVal.Number(); d = d + stepVal.Number() )
 			{
 				if (bAbort) return;
 				if (bPause) startPausing();
@@ -732,8 +732,7 @@ void Executer::execGoX(TreeNode* node)
 	execute(param1);
 	if ( checkParameterType(node, numberValue, 5060) )
 	{
-		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
-		emit GoX(x);
+		emit GoX( param1->getValue().Number() );
 	}
 }
 
@@ -744,8 +743,7 @@ void Executer::execGoY(TreeNode* node)
 	execute(param1);
 	if ( checkParameterType(node, numberValue, 5060) )
 	{
-		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
-		emit GoY(x);
+		emit GoY( param1->getValue().Number() );
 	}
 }
 
@@ -756,8 +754,7 @@ void Executer::execForward(TreeNode* node)
 	execute(param1);
 	if ( checkParameterType(node, numberValue, 5060) )
 	{
-		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
-		emit Forward(x);
+		emit Forward( param1->getValue().Number() );
 	}
 }
 
@@ -768,8 +765,7 @@ void Executer::execBackward(TreeNode* node)
 	execute(param1);
 	if ( checkParameterType(node, numberValue, 5060) )
 	{
-		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
-		emit Backward(x);
+		emit Backward( param1->getValue().Number() );
 	}
 }
 
@@ -780,8 +776,7 @@ void Executer::execDirection(TreeNode* node)
 	execute(param1);
 	if ( checkParameterType(node, numberValue, 5060) )
 	{
-		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
-		emit Direction(x);
+		emit Direction( param1->getValue().Number() );
 	}
 }
 
@@ -792,8 +787,7 @@ void Executer::execTurnLeft(TreeNode* node)
 	execute(param1);
 	if ( checkParameterType(node, numberValue, 5060) )
 	{
-		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
-		emit TurnLeft(x);
+		emit TurnLeft( param1->getValue().Number() );
 	}
 }
 
@@ -804,8 +798,7 @@ void Executer::execTurnRight(TreeNode* node)
 	execute(param1);
 	if ( checkParameterType(node, numberValue, 5060) )
 	{
-		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
-		emit TurnRight(x);
+		emit TurnRight( param1->getValue().Number() );
 	}
 }
 
@@ -866,9 +859,7 @@ void Executer::execGo(TreeNode* node)
 	
 	if ( checkParameterType(node, numberValue, 5060) )
 	{
-		int x = ROUND2INT( nodeX->getValue().Number() ); // converting & rounding to int
-		int y = ROUND2INT( nodeY->getValue().Number() );
-		emit Go(x, y);
+		emit Go( nodeX->getValue().Number(), nodeY->getValue().Number() );
 	}
 }
 

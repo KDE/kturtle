@@ -118,7 +118,7 @@ void Parser::matchToken(int expectedToken)
 			break;
 		
 		default:
-			Error(currentToken, i18n("UNDEFINED ERROR NR %1: please sent this Logo script to KTurtle developers").arg(expectedToken), 1010);
+			Error(currentToken, i18n("UNDEFINED ERROR NR %1: please sent this Logo script to the KTurtle developers").arg(expectedToken), 1010);
 			break;
 	}
 }
@@ -1065,7 +1065,7 @@ TreeNode* Parser::Other()
 }
 
 
-void Parser::Error(Token t, QString s, uint code)
+void Parser::Error(Token& t, const QString& s, uint code)
 {
 	emit ErrorMsg(t, s, code);
 }

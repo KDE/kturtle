@@ -176,24 +176,23 @@ void Canvas::slotGoY(double y)
 	updateSpritePos();
 }
 
-void Canvas::slotForward(int x)
+void Canvas::slotForward(double x)
 {
-	float f = (float)x;
-	double posXnew = posX + ( (double)x * cos(direction) );
-	double posYnew = posY - ( (double)x * sin(direction) );
+	double posXnew = posX + ( x * cos(direction) );
+	double posYnew = posY - ( x * sin(direction) );
 	if (pen) lineShell( ROUND2INT(posX), ROUND2INT(posY), ROUND2INT(posXnew), ROUND2INT(posYnew) );
 	slotGo(posXnew, posYnew);
 }
 
-void Canvas::slotBackward(int x)
+void Canvas::slotBackward(double x)
 {
-	double posXnew = posX - ( (double)x * cos(direction) );
-	double posYnew = posY + ( (double)x * sin(direction) );
+	double posXnew = posX - ( x * cos(direction) );
+	double posYnew = posY + ( x * sin(direction) );
 	if (pen) lineShell( ROUND2INT(posX), ROUND2INT(posY), ROUND2INT(posXnew), ROUND2INT(posYnew) );
 	slotGo(posXnew, posYnew);
 }
 
-void Canvas::slotdirectionection(double deg)
+void Canvas::slotDirection(double deg)
 {
 	direction = ( -deg + 90 ) * PI / 180;
 	updateSpriteAngle();
@@ -310,12 +309,12 @@ void Canvas::slotFontSize(int px)
 	font.setPixelSize(px);
 }
 
-void Canvas::slotwrapOn()
+void Canvas::slotWrapOn()
 {
 	wrap = true;
 }
 
-void Canvas::slotwrapOff()
+void Canvas::slotWrapOff()
 {
 	wrap = false;
 }

@@ -54,11 +54,11 @@ class Executer : public QObject
 		void MessageDialog(QString text);
 	
 		void Clear();
-		void Go(int x, int y);
-		void GoX(int x);
-		void GoY(int y);
-		void Forward(int x);
-		void Backward(int x);
+		void Go(double x, double y);
+		void GoX(double x);
+		void GoY(double y);
+		void Forward(double x);
+		void Backward(double x);
 		void Direction(double x);
 		void TurnLeft(double x);
 		void TurnRight(double x);

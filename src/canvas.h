@@ -39,9 +39,9 @@ class Canvas : public QCanvasView
 		void slotGo(double x, double y);
 		void slotGoX(double x);
 		void slotGoY(double y);
-		void slotForward(int x);
-		void slotBackward(int x);
-		void slotdirectionection(double deg);
+		void slotForward(double x);
+		void slotBackward(double x);
+		void slotDirection(double deg);
 		void slotTurnLeft(double deg);
 		void slotTurnRight(double deg);
 		void slotCenter();
@@ -59,8 +59,8 @@ class Canvas : public QCanvasView
 		void slotPrint(QString text);
 		void slotFontType(QString family, QString extra);
 		void slotFontSize(int px);
-		void slotwrapOn();
-		void slotwrapOff();
+		void slotWrapOn();
+		void slotWrapOff();
 		void slotReset();
 
 

@@ -63,7 +63,7 @@ class ErrorMessage : public KDialogBase
 		void display();
 
 	public slots:
-		void slotAddError(Token&, QString, uint code);
+		void slotAddError(Token&, const QString&, uint code);
 		void updateSelection();
 
 	signals:

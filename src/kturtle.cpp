@@ -205,6 +205,8 @@ void MainWindow::setupEditor()
 	connect( editor, SIGNAL(cursorPositionChanged()), this, SLOT(slotCursorStatusBar()) );
 	// and update the context help menu item
 	connect( editor, SIGNAL(cursorPositionChanged()), this, SLOT(slotContextHelpUpdate()) );
+	
+	translate = new Translate();
 }
 
 void MainWindow::setupStatusBar()
@@ -542,17 +544,17 @@ void MainWindow::slotExecute()
 	connect(this, SIGNAL( unpauseExecution() ), exe, SLOT( slotStopPausing() ) );
 	connect( exe, SIGNAL( setSelection(uint, uint, uint, uint) ),
 	        this, SLOT  ( slotSetSelection(uint, uint, uint, uint) ) );
-	connect( exe, SIGNAL( ErrorMsg(Token&, QString, uint) ), errMsg, SLOT( slotAddError(Token&, QString, uint) ) );
+	connect( exe, SIGNAL( ErrorMsg(Token&, const QString&, uint) ), errMsg, SLOT( slotAddError(Token&, const QString&, uint) ) );
 	connect( exe, SIGNAL( InputDialog(QString&) ), this, SLOT( slotInputDialog(QString&) ) );
 	connect( exe, SIGNAL( MessageDialog(QString) ), this, SLOT( slotMessageDialog(QString) ) );
 
 	// Connect the signals form Executer to the slots from Canvas:
 	connect( exe, SIGNAL( Clear() ), TurtleView, SLOT( slotClear() ) );
-	connect( exe, SIGNAL( Go(int, int) ), TurtleView, SLOT( slotGo(int, int) ) );
-	connect( exe, SIGNAL( GoX(int) ), TurtleView, SLOT( slotGoX(int) ) );
-	connect( exe, SIGNAL( GoY(int) ), TurtleView, SLOT( slotGoY(int) ) );
-	connect( exe, SIGNAL( Forward(int) ), TurtleView, SLOT( slotForward(int) ) );
-	connect( exe, SIGNAL( Backward(int) ), TurtleView, SLOT( slotBackward(int) ) );
+	connect( exe, SIGNAL( Go(double, double) ), TurtleView, SLOT( slotGo(double, double) ) );
+	connect( exe, SIGNAL( GoX(double) ), TurtleView, SLOT( slotGoX(double) ) );
+	connect( exe, SIGNAL( GoY(double) ), TurtleView, SLOT( slotGoY(double) ) );
+	connect( exe, SIGNAL( Forward(double) ), TurtleView, SLOT( slotForward(double) ) );
+	connect( exe, SIGNAL( Backward(double) ), TurtleView, SLOT( slotBackward(double) ) );
 	connect( exe, SIGNAL( Direction(double) ), TurtleView, SLOT( slotDirection(double) ) );
 	connect( exe, SIGNAL( TurnLeft(double) ), TurtleView, SLOT( slotTurnLeft(double) ) );
 	connect( exe, SIGNAL( TurnRight(double) ), TurtleView, SLOT( slotTurnRight(double) ) );
@@ -568,7 +570,7 @@ void MainWindow::slotExecute()
 	connect( exe, SIGNAL( SpritePress() ), TurtleView, SLOT( slotSpritePress() ) );
 	connect( exe, SIGNAL( SpriteChange(int) ), TurtleView, SLOT( slotSpriteChange(int) ) );
 	connect( exe, SIGNAL( Print(QString) ), TurtleView, SLOT( slotPrint(QString) ) );
-	connect( exe, SIGNAL( FontType(QString, QString) ), TurtleView, SLOT( slotFontType(QString, QString) ) );
+	connect( exe, SIGNAL( FontType(QString) ), TurtleView, SLOT( slotFontType(QString) ) );
 	connect( exe, SIGNAL( FontSize(int) ), TurtleView, SLOT( slotFontSize(int) ) );
 	connect( exe, SIGNAL( WrapOn() ), TurtleView, SLOT( slotWrapOn() ) );
 	connect( exe, SIGNAL( WrapOff() ), TurtleView, SLOT( slotWrapOff() ) );
@@ -961,6 +963,9 @@ void MainWindow::slotUpdateSettings()
 	KConfig entry(locate("locale", "all_languages"));
 	entry.setGroup(Settings::logoLanguage().left(2));
 	slotStatusBar(i18n("Command language: %1").arg( entry.readEntry("Name") ), IDS_LANG);
+	
+	delete translate; // to update the currently used language
+	translate = new Translate();
 }
 
 void MainWindow::readConfig(KConfig *config)
@@ -997,31 +1002,33 @@ void MainWindow::slotContextHelp()
 
 	kdDebug(0)<<"help requested on this text: "<<helpKeyword<<endl;
 	
+	QString helpWord;
 	if ( helpKeyword == i18n("<no keyword>") )
 	{
 		KMessageBox::information( this, i18n("There is currently no text under the cursor to get help on."), i18n("Nothing under cursor") );
 		return;
 	}
-	else if ( helpKeyword == i18n("<number>") )     helpKeyword = "number";
-	else if ( helpKeyword == i18n("<string>") )     helpKeyword = "string";
-	else if ( helpKeyword == i18n("<assignment>") ) helpKeyword = "assignment";
-	else if ( helpKeyword == i18n("<question>") )   helpKeyword = "question";
-	else if ( helpKeyword == i18n("<name>") )       helpKeyword = "name";
+	else if ( helpKeyword == i18n("<number>") )     helpWord = "number";
+	else if ( helpKeyword == i18n("<string>") )     helpWord = "string";
+	else if ( helpKeyword == i18n("<assignment>") ) helpWord = "assignment";
+	else if ( helpKeyword == i18n("<question>") )   helpWord = "question";
+	else if ( helpKeyword == i18n("<name>") )       helpWord = "name";
 	else
 	{
-		Translate *translate = new Translate();
-		// make lowercase copy
-		helpKeyword = helpKeyword.lower();
+		// make lowercase
+		helpWord = helpKeyword.lower();
 		// if the key is an alias translate that alias to a key
-		if      ( !translate->alias2key(helpKeyword).isEmpty() ) helpKeyword = translate->alias2key(helpKeyword);
-		else if ( !translate->name2key (helpKeyword).isEmpty() ) helpKeyword = translate->name2key (helpKeyword);
+		if      ( !translate->alias2key(helpKeyword).isEmpty() ) helpWord = translate->alias2key(helpKeyword);
+		else if ( !translate->name2key (helpKeyword).isEmpty() ) helpWord = translate->name2key (helpKeyword);
 		
-		// at this point helpKeyword should contain an valid
+		// at this point helpKeyword should contain a valid
 		// section/anchor-id that can be used found in the doc
+		// if not... who cares :)... well let's put an debugMsg for that occasion:
+		else kdDebug(0)<<"Error in MainWindow::slotContextHelp: could not translate \""<<helpKeyword<<"\""<<endl;
 	}
 	
-	kdDebug(0)<<"trying to open a help page using this keyword: "<<helpKeyword<<endl;
-	kapp->invokeHelp(helpKeyword, "", "");
+	kdDebug(0)<<"trying to open a help page using this keyword: "<<helpWord<<endl;
+	kapp->invokeHelp(helpWord, "", "");
 }
 
 void MainWindow::slotContextHelpUpdate()
@@ -1029,12 +1036,12 @@ void MainWindow::slotContextHelpUpdate()
 	uint row, col;
 	dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->cursorPositionReal(&row, &col);
 	QString line = dynamic_cast<KTextEditor::EditInterface*>(doc)->textLine(row);
-
-	translate = new Translate();
 	
 	if ( line.stripWhiteSpace().isEmpty() || line.mid(col-1,2).stripWhiteSpace().isEmpty() )
 	{
-		ContextHelp->setText( i18n("Help on: %1").arg("<no keyword>") );
+		// just a shortcut so we dont do all the CPU intensive regexp stuff when it not needed
+		helpKeyword = i18n("<no keyword>");
+		ContextHelp->setText( i18n("Help on: %1").arg(helpKeyword) );
 		return;
 	}
 	
@@ -1051,7 +1058,8 @@ void MainWindow::slotContextHelpUpdate()
 			length = delimitedStrings.matchedLength(); // the length of the last matched string, or -1 if there was no match
 			if ( col >= (uint)start && col < (uint)(start+length) )
 			{
-				ContextHelp->setText( i18n("Help on: %1").arg("<string>") );
+				helpKeyword = i18n("<string>");
+				ContextHelp->setText( i18n("Help on: %1").arg(helpKeyword) );
 				return;
 			}
 			pos += (length <= 0 ? 1 : length);
@@ -1073,47 +1081,33 @@ void MainWindow::slotContextHelpUpdate()
 			QString cursorWord = line.mid( (uint)start, (uint)length );
 			// kdDebug(0)<<"splitsearch: >>"<<cursorWord<<"<<"<<endl;
 			
-			if ( cursorWord.stripWhiteSpace().isEmpty() )
-			{
-				ContextHelp->setText( i18n("Help on: %1").arg("<no keyword>") );
-				return;
-			}
-			if ( !translate->name2key(cursorWord).isEmpty() || !translate->alias2key(cursorWord).isEmpty() )
-			{
-				ContextHelp->setText( i18n("Help on: %1").arg(cursorWord) );
-				return;
-			}
-			if ( cursorWord.find( QRegExp("[\\d.]+") ) == 0 )
-			{
-				ContextHelp->setText( i18n("Help on: %1").arg("<number>") );
-				return;
-			}
-			if ( cursorWord.find( QRegExp("[+\\-*/\\(\\)]") ) == 0 )
-			{
-				ContextHelp->setText( i18n("Help on: %1").arg("<math>") );
-				return;
-			}
-			if ( cursorWord == QString("=") )
-			{
-				ContextHelp->setText( i18n("Help on: %1").arg("<assignment>") );
-				return;
-			}
-			if ( cursorWord.find( QRegExp("==|<|>|<=|>=|!=") ) == 0 )
-			{
-				ContextHelp->setText( i18n("Help on: %1").arg("<question>") );
-				return;
-			}
+			if      ( cursorWord.stripWhiteSpace().isEmpty() ) helpKeyword = i18n("<no keyword>");
+
+			else if ( !translate->name2key(  cursorWord.lower() ).isEmpty() ||
+			          !translate->alias2key( cursorWord.lower() ).isEmpty() ) helpKeyword = cursorWord;
+
+			else if ( cursorWord.find( QRegExp("[\\d.]+") ) == 0 ) helpKeyword = i18n("<number>");
+
+			else if ( cursorWord.find( QRegExp("[+\\-*/\\(\\)]") ) == 0 ) helpKeyword = i18n("<math>");
+
+			else if ( cursorWord == QString("=") ) helpKeyword = i18n("<assignment>");
+
+			else if ( cursorWord.find( QRegExp("==|<|>|<=|>=|!=") ) == 0 ) helpKeyword = i18n("<question>");
+
 			// if we come here we either have an ID of some sort or an error
 			// all we can do is try to catch some errors (TODO) and then...
 			
-			ContextHelp->setText( i18n("Help on: %1").arg("<name>") );
+			else helpKeyword = cursorWord; // FOR DEBUGGING I DO IT LIKE THIS NOW!!!    //i18n("<name>");
+			
+			ContextHelp->setText( i18n("Help on: %1").arg(helpKeyword) );
 			return;
 		}
 		pos += (length <= 0 ? 1 : length); // the pos had to be increased with at least one
 	}
 	
 	// we allready cached some in the beginning of this method; yet its still needed as fall-through
-	ContextHelp->setText( i18n("Help on: %1").arg("<no keyword>") );
+	helpKeyword = i18n("<no keyword>");
+	ContextHelp->setText( i18n("Help on: %1").arg(helpKeyword) );
 }
 
 // END

@@ -36,7 +36,7 @@ Translate::Translate()
 
 QString Translate::name2fuzzy(const QString &name)
 {
-	if( !aliasMap[name].isEmpty() ) // translate the alias if any
+	if ( !aliasMap[name].isEmpty() ) // translate the alias if any
 	{
 		return QString( i18n("'%1' (%2)").arg(keyMap[name]).arg(reverseAliasMap[name]) );
 	}
