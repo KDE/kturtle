@@ -79,6 +79,9 @@ int main(int argc, char **argv)
 	about.addCredit("Rafael Beccar",
 	      I18N_NOOP("Spanish Data Files"),
 	                "rafael.beccar # kdemail.net");
+	about.addCredit("Riverson Rios",
+			I18N_NOOP("Brazilian Portuguese Data Files"),
+			"riverson # ccv.ufc.br");
 	about.addCredit("Albert Astals Cid",
 	      I18N_NOOP("Parser Cyrillic support"),
 	                "astals11 # terra.es");
