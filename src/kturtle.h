@@ -49,7 +49,7 @@ class KRecentFilesAction;
  *This file declares a class for  KTurtle main window. It provides geometry management, menubar, toolbar, statusbar, the editor and *the canvas. The editor is a KTextEditor part and the canvas is derived from its own class
  *
  * @short Main window class
- * @author Cies Breijs <cies # showroommama ! nl>
+ * @author Cies Breijs <cies # kde ! nl>
  * @version 0.1
  */
  
@@ -86,8 +86,8 @@ class MainWindow : public KParts::MainWindow
 	KToggleAction      *colorpicker;
 	KRecentFilesAction *m_recentFiles;
 	KAction            *ContextHelp;
-	bool                b_fullscreen:1;
-	bool                b_editorShown:1;
+	bool                b_fullscreen;
+	bool                b_editorShown;
 	void setupEditor();
 	KTextEditor::View           *view() const { return editor; }
 	KTextEditor::EditInterface  *ei;    

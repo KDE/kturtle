@@ -64,6 +64,14 @@
 // BEGIN constructor and destructor
 
 MainWindow::MainWindow(KTextEditor::Document *document) : editor(0) {
+	// the initial values
+	CurrentFile = "";
+	filename2saveAs = "";
+	setCaption( i18n("Untitled") );
+	picker = 0; // for the colorpickerdialog
+	executing = false;
+	b_fullscreen = false;
+
 	// set the shell's ui resource file
 	if (!document) {
 		if ( !(document = KTextEditor::EditorChooser::createDocument(0,"KTextEditor::Document") ) ) {
@@ -82,13 +90,6 @@ MainWindow::MainWindow(KTextEditor::Document *document) : editor(0) {
 	setupActions();
 	createShellGUI( true );
 	setMinimumSize(200,200);
-
-	// the initial values
-	CurrentFile = "";
-	filename2saveAs = "";
-	setCaption( i18n("Untitled") );
-	picker = 0; // for the colorpickerdialog
-	executing = false;
 
 	// init with more usefull size, stolen from kwite (they stole it from konq)
 	if ( !initialGeometrySet() && !kapp->config()->hasGroup("MainWindow Settings") ) {
@@ -168,9 +169,7 @@ void MainWindow::setupEditor() {
 	EditorDock->setFixedExtentHeight(150);
 	EditorDock->setResizeEnabled(true);
 	EditorDock->setFrameShape(QFrame::ToolBarPanel);
-	//   it started to annoy me :( sorry :)
-	//   QToolTip::add( EditorDock, i18n( "The Logo code must be typed or pasted or opened from a file here, in the editor" ) );
-	QWhatsThis::add( EditorDock, i18n( "This is the code editor, you can type your commands here or you can get some code by opening a .logo file." ) );
+	QWhatsThis::add( EditorDock, i18n( "This is the code editor, here you type the Logo commands to intruct the turtle. You can also open an existing Logo program with File->Open Examples... or File->Open." ) );
 	moveDockWindow(EditorDock, Qt::DockLeft);
 	editor = doc->createView (EditorDock, 0L);
 	// ei is the editor interface which allows us to access the text in the part
@@ -178,7 +177,7 @@ void MainWindow::setupEditor() {
 	EditorDock->setWidget(editor);
 
 	// default the highlightstyle to "logo" using the needed i18n
-	kdDebug(0)<<"init: "<<Settings::logoLanguage()<<endl;
+	kdDebug(0)<<"initHLstyle: "<<Settings::logoLanguage()<<endl;
 	slotSetHighlightstyle( Settings::logoLanguage() );
 
 	// allow the cursor position to be indicated in the statusbar
@@ -809,7 +808,7 @@ void MainWindow::slotSettings() {
 	WidthHeightBoxLayout->setAlignment( Qt::AlignTop );
 	QHBoxLayout *layout3 = new QHBoxLayout( 0, 0, 6, "layout3");
 	QVBoxLayout *layout2 = new QVBoxLayout( 0, 0, 6, "layout2");
-
+	
 	QVBoxLayout *layout1 = new QVBoxLayout( 0, 0, 6, "layout1");
 
 	kcfg_CanvasWidth = new KIntNumInput( WidthHeightBox, "kcfg_CanvasWidth" );
@@ -851,22 +850,19 @@ void MainWindow::slotSettings() {
 
 	QVBoxLayout *layout4 = new QVBoxLayout( 0, 0, 6, "layout4");
 
-	LanguageLabel = new QLabel(kcfg_LanguageComboBox, i18n("Select the language for the Logo commands:"), groupBox1);
-	layout4->addWidget( LanguageLabel );
-
 	kcfg_LanguageComboBox = new KComboBox(groupBox1, "kcfg_LanguageComboBox");
 	kcfg_LanguageComboBox->setEditable(false);
 	QStringList LogoLanguageList = Settings::logoLanguageList();
-	// Ad the full language names to the items
+	// Add the full language names to the items
 	for ( QStringList::Iterator it = LogoLanguageList.begin(); it != LogoLanguageList.end(); ++it ) {
-	*it = KGlobal::locale()->twoAlphaToLanguageName( (*it).left(2) ) + " (" + *it + ")";
+		*it = KGlobal::locale()->twoAlphaToLanguageName( (*it).left(2) ) + " (" + *it + ")";
 	}
 	kcfg_LanguageComboBox->insertStringList(LogoLanguageList);
 	layout4->addWidget( kcfg_LanguageComboBox );
-
-
+	
+	LanguageLabel = new QLabel(kcfg_LanguageComboBox, i18n("Select the language for the Logo commands:"), groupBox1);
+	layout4->addWidget( LanguageLabel );
 	LanguageLabel->setBuddy( kcfg_LanguageComboBox );
-
 
 	groupBox1Layout->addLayout( layout4, 0, 0 );
 	languageLayout->addWidget( groupBox1, 0, 0 );
@@ -883,10 +879,16 @@ void MainWindow::slotSettings() {
 }
 
 void MainWindow::slotUpdateSettings() {
-	Settings::setLogoLanguage(kcfg_LanguageComboBox->currentText().section( "(", -1, -1 ).remove(")") );
-	slotSetHighlightstyle( kcfg_LanguageComboBox->currentText().section( "(", -1, -1 ).remove(")") );
+	// get the selected language as a language code
+	QString selectedLogoLanguage = kcfg_LanguageComboBox->currentText().section( "(", -1, -1 ).remove(")");
+	// update the settings
+	Settings::setLogoLanguage( selectedLogoLanguage );
 	Settings::setLanguageComboBox( kcfg_LanguageComboBox->currentItem() );
 	Settings::writeConfig();
+	// set the HLstyle
+	slotSetHighlightstyle( selectedLogoLanguage );
+	// set the statusbar to display the language as just updated
+	// TODO maybe this language name can be more pretty by not using ".left(2)", ie "American English" would than be possible... [if this is possible this should be fixed at more places.]
 	KConfig entry(locate("locale", "all_languages"));
 	entry.setGroup(Settings::logoLanguage().left(2));
 	statusBar()-> changeItem(i18n("Command language: ")+entry.readEntry("Name"), IDS_LANG);
@@ -971,7 +973,7 @@ void MainWindow::slotContextHelpUpdate() {
 	} else {
 		helpKeyword = cursorWord;
 	}
-	ContextHelp->setText( i18n("Help on:") + " " + helpKeyword );
+	ContextHelp->setText( i18n("Help on: %1").arg(helpKeyword) );
 }
 
 // END

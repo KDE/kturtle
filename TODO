@@ -1,155 +1,65 @@
-This is the TODO file of the KTurtle project, here the things are put that still need implementation.
-This list is divided into URGENT, BIG-TODOs, normalTODOs, TO-oeps-meDOitALLreadies and StillSubjectToDiscussions :-)
+This document goes on the BUGs and WISHes that regarding KTurtle
 
+Chapeters in this documents:
 
-
-BUGS 
-
-**** URGENT ****
-- when there is an error, display only the most descriptive error
-(error messages: not all errors, only the 1st or the 2 first. Error message related to language non-compatibility)
-(IRC discussion: every compiler/interpreter should try to recover from a given error and continue if possible
- the idea is the compiler tryes to recover from the error and so it can tell you if there is more than one error and not just one by compilation attempt
- it may be assuming you missed a ; and maybe you missed a ( or something elase and following messages are completely wrong)
+BUGs
+ - urgent bugs (small/regular and critical)
+ - big ones (that need losts of work)
+ - regular ones (the phat cocroach type)
+ - small bugs (annoyances that can be considered urgent, ie poisonless musquito's)
+ - unconfirmed
  
-- forward 100e does not work: freezes the machine
+WISHes
+ - important WISHes (that are needed for a 1.0 release and help to fulfill kturtles objectives)
+ - less important but nice WISHes
+ - WISHes that still have to be discussed
 
-- commands do not follow usual commands like forward is FD
- reference: http://asijonline.net/ep/logo/logo_com.htm
- 
-- with long lines and wrapping the canvas can get into a endless loop -> 100%CPU
-       i tried a lot to fix this allready, maybe my solution needs some tuning :)
-       maybe i should just catch errors and break the loop :)  >>> see BUGGING LOGO SCRIPTS BELOW
-- accept the making and calling of parameterless 'learned' commands (without using the '()')
-- print command is buggy (The example:
-      print A + " plus " + B
-   from the manual should output
-      "2004 plus 25"
-   according to the comment, but outputs
-      "2029"
-   The problem dissappears if ""+ is prepended.)
-   (The example
-      a = 1
-      b = 5
-      if a < 5 and b == 5 [
-        print "Hello"
-      ]
-   should print Hello, but doesn't. Just a < 5 works correctly, and 
-   the same for just b == 5.)
-   (The example
-      learn multiplyBySelf (n) [
-        r = n * n
-        return r
-      ]
-      i = inputwindow "Please enter a number and press OK"
-      print i + " multiplied by itself is: " + multiplyBySelf (i)
-   should print i*i, but prints i instead.)
-- run command does not work
-
-- The documentation of "not" seems wrong. Should it be a unary <-- annma
-   operator?
-- German examples are twice the same (ask Matthias) <--annma
-
-
-- preview in konqueror: (from IRC discussion about the preview thing a mimetype and a litle kpart-previewer would not be too dificult wouldn't it
-<TSDgeos> you could put the widget you use in klogo in the kpart in read only mode
-<polux> yeah good idea, instead of including it as a katepart, making a kturtlepart)
-
- - translating data in the knewstuff.xml file: how would the translators access the file which is on the server?
- 
- - functions support in Logo
  
  
-*** BUGS THAT OCCURD WHEN CIES UPGRADED TO KDE 3.3 on SUSE 9.1 USING SUSE's bin packs
-
-- settings->configure cauzes crash, because there's no kturtlerc - file
-- default language translation somehow doesnt work, it seems NO Logo language is selected at all
-- this also results in no examples
-- the above two are likely due to the same problem, strangly the HL-style and the default slection in the configure window are correct
-- the default font can be a bit bigger and sans serif
-- on steps of 1 the turtle doesnt move at all
-- when the kturtlerc-file was quite big i also encountered crashes when going settings->configure (i think might be regarding recent files)
-
-
-
  
- --------------------------------- below are done
-- About the language: when user is set to fr (not fr_FR but fr like me being in Canada), the parsing does not   work because Settings::LogoLanguage() is set to fr and NOT to fr_FR.
-  Syntax highlighting does not work for fr        DONE annma
+    here we go!
  
-- Default does not work in Language ComboBox -> I am not sure your use of KConfig XT is optimum here, Cies
-  and other bug: output: kturtle: desktopLanguage: fr:en_US
-  kturtle: defaultLanguage: en_US
-  Why is not default Language fr_FR?              DONE annma 02/04/2004
-
-- open recent does not keep the files after quitting DONE annma 02/04/2004
-
-- crash on quitting after Opening files           DONE annma 02/04/2004
-
-- cies: Make the interpreter (stolen from wsbasic.sf.net) (executer, parser, lexer, number and treenode) more native Qt. Right now they are a mixture of standard-CLI-C++ and Qt thingies (i put the Qt thingies there). I tried do that but i found that i'm not comfortable with the concept of streams -- which are used a lot in the interpreter. Especially streaming QString was an obstacle i couldnt take.     DONE
->>>>> after this is done we can also make the ()[],.""-configurable 
+ 
+>>>>> BUGs::Urgent
+	a = 1
+	b = 5
+	if a < 5 and b == 5 [
+		print "Hello"
+	]
+should print Hello, but doesn't. Just a < 5 works correctly, and the same for just b == 5.
+-----------> tryed to fix this... probably i have to look into the parser code and into the original WSBASIC implementation
 
 
+	learn multiplyBySelf (n) [
+		r = n * n
+		return r
+	]
+	i = inputwindow "Please enter a number and press OK"
+	print i + " multiplied by itself is: " + multiplyBySelf (i)
+should print i*i, but prints i instead.  -----> multiplication doenst work at all!
 
 
-
-cies: The KconfigXT issue: If an error like this
-"""
-  make[4]: Entering directory `/home/cies/kdenonbeta/kturtle/src'
-  ./kturtle.kcfg ./settings.kcfgc; ret=$?; \
-  if test "$ret" != 0; then rm -f settings.h ; exit $ret ; fi
-  /bin/sh: line 1: ./kturtle.kcfg: Permission denied
-  make[4]: *** [settings.h] Error 126
-"""
-happends when make'ing KTurtle form cvs one should change the first line of configure.in.in from:
-  #MIN_CONFIG(3.0)
-into:
-  #MIN_CONFIG(3.2)
-that will fix it :-)
+commenting doesnt work anymore! arg!
 
 
+>>>>> BUGs::Big
+when there is an error, display only the most descriptive error
+  -error messages: not all errors, only the 1st or the 2 first. Error message related to language non-compatibility)
+  -IRC discussion: every compiler/interpreter should try to recover from a given error and continue if possible the idea is the compiler tryes to recover from the error and so it can tell you if there is more than one error and not just one by compilation attempt it may be assuming you missed a ; and maybe you missed a ( or something elase and following messages are completely wrong)
+This can be a big issue, maybe I (cies) will have to learn more on interpreters to know how to properly do this error handling
+  -have links in there to corresponing help pages --> see WISHes
+  - I pobably need to make an error message class that inherates some dialog thing (it should have: help-link-button, details, short error title and origion (Parse error), 'the-row-of-error', and a small description (maybe the description should contain links to help pagen on certain commands/ methods/ etc.) and maybe even a small hint or hint button
+  - I porbably have to refine the way error message get emitted, problems: Ugly-, short-, technical messages. Sometimes moere than one messages gets emmitted right now only the 1st msg is shown -- the 1st may not allways point to the 'core ot error'.
 
 
-
-***** Annma's ideas *****
-
-- have a context menu on right-click in the canvas to save the drawing (right-click -> Save Canvas)
-         then also put "print canvas" and "fullscreen" in there
-- display the current command language in StatusBar? DONE apperetly
-
+	
+>>>>> BUGs::Regular
+With long lines and wrapping the canvas can get into a endless loop -> 100%CPU, i tried a lot to fix this allready, maybe my solution needs some tuning :). maybe i should just catch errors and break the loop :)
+There is quite some debugging info in the canvas.cpp class to help me solve this eventually
+ - see BUGGING LOGO SCRIPTS BELOW
 
 
-
-**** BIG-TODOs: ****
-cies: The manual intergration with KTurtle (contaxt menu and several 'help' buttons in dialogs)
-
-
-
-cies: Make good error messages with links to corresponing help pages.
-- Make an error message class that inherates some dialog thing (it should have: help-link-button, details, short error title and origion (Parse error), 'the-row-of-error', and a small description (maybe the description should contain links to help pagen on certain commands/ methods/ etc.) and maybe even a small hint or hint button
-- Refine the way error message get emitted, problems: Ugly-, short-, technical messages. Sometimes moere than one messages gets emmitted right now only the 1st msg is shown -- the 1st may not allways point to the 'core ot error'.
->>>>does anyone know a K-app that allready uses this F1-context-sensitive-help style? (no one yet)
-
-
-
-cies: Have a look a the BUGGING SCRIPTS as mentioned below
-
-
-
-
-**** normalTODOs ****
-
-Language selection much improved! -> BUG only doesnt restore from 'rc' file after restart; might have something TODO with the rc-file: 1) there's no problem when there is no rc-file, 2) theres only the languageComboxBox-parameter in there (wheres the others?) ==> in that the thing doesnt work :)
-
-
-
-i18n("blabla ") + value    ==> BAD should be  i18n("blabla %1") etc. :)
-
-
-
-proposal by Simone: have the cursor (the blue bar in katepart) walk with the interpreter 
-(Nice one)
-
+Accept the making and calling of parameterless 'learned' commands (without using the '()')
 
 
 cies: get all the commands in the logokeywords.*.xml file working properly, and remove the commands that are not needed:
@@ -168,9 +78,54 @@ would be nice (not in yet):
 - <joke> and what about a 'goto' command ( you can never make them mistakes young enough, muahoahoaaaa >:-} ) </joke> well?
 
 
-- CLI-file-selection (for mimetype eaz)
-- ...
 
+
+
+>>>>> BUGs::Small
+
+
+
+
+>>>>> BUGs::Unconfirmed
+forward 100e does not work: freezes the machine
+  - i can confirm this bug, who noted it? "forward 100" and "forward 100e" both 'work' correctly "forward 100e" produces and error, duh...
+
+
+run command does not work...  I (cies) cant confirm this, who filed this bug? try:
+   go 0,0
+   x = run "ls"
+   print x
+
+
+annma can you go though the next 2 bugs and supply some more info bout them to me? tnx
+- The documentation of "not" seems wrong. Should it be a unary <-- annma
+   operator?
+- German examples are twice the same (ask Matthias) <--annma
+
+
+
+
+>>>>> WISHes::important
+Manual intergration with KTurtle (context-F1-help and several 'help' buttons in dialogs)
+
+
+
+
+
+>>>>> WISHes::less important but nice
+I saw the KD Executer talk on the aKademy... I (cies) want KD Executer tests for KTurtle to better manage the quality! [ maybe this is important, :) ]
+
+
+the default font can be a bit bigger and sans serif, and default the <tab> on 2 spaces
+
+
+have a context menu on right-click in the canvas to save the drawing (right-click -> Save Canvas). cies: then also put "print canvas" and "fullscreen" in there
+
+
+proposal by Simone: have the cursor (the blue bar in katepart) walk with the interpreter
+
+
+CLI-file-selection (for mimetype eaz)
 
 
 cies: a fontchooser would be fun
@@ -180,29 +135,25 @@ cies: a fontchooser would be fun
 
 
 
-cies: a press-F1-for-context-help...
-Press F1 while in a command and see help on it
+
+>>>>> WISHes::still subject to discussion
+commands do not follow usual commands like forward is FD, reference: http://asijonline.net/ep/logo/logo_com.htm
+  -is there a logo standardisation? Compatibility is something that i (cies) would think is overdone. Logo is only used for a short moment, to learn programming; it will never produce real-world programs. So?
 
 
+Preview in konqueror: (from IRC discussion about the preview thing a mimetype and a litle kpart-previewer would not be too dificult wouldn't it
+<TSDgeos> you could put the widget you use in klogo in the kpart in read only mode
+<polux> yeah good idea, instead of including it as a katepart, making a kturtlepart)
+<cies> we could but what is the use of it? will it help to fulfill kturtles objectives?
 
 
+Translating data in the knewstuff.xml file: how would the translators access the file which is on the server?
+  - i dunno what's ment by this.. annma?
 
 
-
-**** TO-oeps-IdidItAllReadies: ****
-
-
-cies: remove some debug crap from the canvas.cpp, I refer to leave it there till mid.03.2003.
->>>>>>>>> NOT YET! FOUND BUGS IN THIS CODE :-)
-
-
-Remove hide the scrollbar from the editor when not needed... (probably not easy, kwrite and kate suffer from it too -- i guess the kate folk will have to fix it)
-
-
-
-**** StillSubjectToDiscussions ****
 
 After a conversiation with lypanov I came to the conclusion that making the executer 'statefull' is a very by thing! So I take the cheap approach using kapp->processEvents();... Maybe someday, later, I'll do it neatly -- the lypanov pointed out. FIXED
+
 
 
 annma - 29th December 2003
@@ -219,36 +170,14 @@ Sorry for beeing so inflexible... *Really*  I am still open for discussion! :-) 
 
 Annma: Idea from my daughter: have a Tux and a Konqui as alternate turtle for the cursor. I don't know if it's possible and if you like it ;)
 
-cies: That is a good plan! (you can tell your daughter that the plan -- just like any of her feedback -- is very appreciated :-) I have tux allready in my sprites dir (I'm a fan too!)... but there's one nice thing about the turtle: this animal is very regocnisable from above, and the head points in the direction of movement. Tux is more a front faced character, so nice would be to have an option to put the automatic turning off, and to have a different method to turn tux by command. [please note that i wont do any extra work on getting qt3.3 (needed for sprites), it comes when it comes]
+cies: That is a good plan!  I have tux allready in my sprites dir (I'm a fan too!)... but there's one nice thing about the turtle: this animal is very regocnisable from above, and the head points in the direction of movement. Tux is more a front faced character, so nice would be to have an option to put the automatic turning off, and to have a different method to turn tux by command. [please note that i wont do any extra work on getting qt3.3 (needed for sprites), it comes when it comes]
 
 
 
   
 
 
-
-cies: On the docbook 'manual' page...
-
-I dont hav much experience with this (doc an KDE) but i seeing 3 documents 1) Quickstart, 2) THE MANUAL and 3) A Tutorial
-
-
-Maybe 1 & 3 should be combined, what do you think?
-
-annma 30/12/2003 Quick Start might be a wizard run at first start and could be accessed later or the classical 'tips of the day' dialog. A tutorial is indeed needed, maybe within KTurtle, in the Settings menu. I can help with the writing.
-
-A graphical Quick Start wizard was suggested on IRC using flash animations.
-
-cies: I think the syntax of the language should first be more mature, it changes too much right now... This will settle down in a few moths i hope :-)
-For the settingsmenu: if you know a better string than 'initial canvas size' (iirc) feel free to... etc.
-
-
-     
- 
-
-
-        
-
-BUGS: TROUBLE LOGO SCRIPTS!!!!!
+>>>> TROUBLE LOGO SCRIPTS!!!!!
 
 # due to lines        <<<<<<<< this one seems to have solved it self :))
 reset
@@ -272,3 +201,54 @@ for x = 1 to 255 [
 
 
 
+
+>>>> RECENTLY FIXED BUGs
+
+- settings->configure cauzes crash FIXED thanks to Martijn Klingens  ->  move "LanguageLabel = new QLabel(kcfg_LanguageComboBox..." down a few lines (after kcfg_LanguageComboBox is init'ed) BACKPORT
+
+- default language translation somehow doesnt work, it seems NO Logo language is selected at all FIXED
+- this also results in no examples FIXED
+
+
+- About the language: when user is set to fr (not fr_FR but fr like me being in Canada), the parsing does not   work because Settings::LogoLanguage() is set to fr and NOT to fr_FR.
+  Syntax highlighting does not work for fr        DONE annma
+ 
+- Default does not work in Language ComboBox -> I am not sure your use of KConfig XT is optimum here, Cies
+  and other bug: output: kturtle: desktopLanguage: fr:en_US
+  kturtle: defaultLanguage: en_US
+  Why is not default Language fr_FR?              DONE annma 02/04/2004
+
+- open recent does not keep the files after quitting DONE annma 02/04/2004
+
+- crash on quitting after Opening files           DONE annma 02/04/2004
+
+- cies: Make the interpreter (stolen from wsbasic.sf.net) (executer, parser, lexer, number and treenode) more native Qt. Right now they are a mixture of standard-CLI-C++ and Qt thingies (i put the Qt thingies there). I tried do that but i found that i'm not comfortable with the concept of streams -- which are used a lot in the interpreter. Especially streaming QString was an obstacle i couldnt take.     DONE
+>>>>> after this is done we can also make the ()[],.""-configurable
+
+
+
+cies: The KconfigXT issue: If an error like this
+"""
+  make[4]: Entering directory `/home/cies/kdenonbeta/kturtle/src'
+  ./kturtle.kcfg ./settings.kcfgc; ret=$?; \
+  if test "$ret" != 0; then rm -f settings.h ; exit $ret ; fi
+  /bin/sh: line 1: ./kturtle.kcfg: Permission denied
+  make[4]: *** [settings.h] Error 126
+"""
+happends when make'ing KTurtle form cvs one should change the first line of configure.in.in from:
+  #MIN_CONFIG(3.0)
+into:
+  #MIN_CONFIG(3.2)
+that will fix it :-)   FIXED with KDE 3.3 (I suspect)
+
+
+
+- display the current command language in StatusBar? DONE apperently
+
+
+print command is buggy, examples:        FIXED!
+      print 2004 + " before " + 25
+   from the manual should output
+      "2004 before 25"
+   according to the comment, but outputs
+      "2029"

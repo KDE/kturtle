@@ -167,7 +167,7 @@ void Parser::Match(int x) {
     if ( commandname == "''" ) {
       Error( i18n("Syntax error, expected a command"), 1010);
     } else { 
-      Error( i18n("Syntax error %2, expected %1").arg(commandname), 1010);
+      Error( i18n("Syntax error, expected '%1'").arg(commandname), 1010);
     }
   } else {
     getToken(); 
@@ -747,9 +747,9 @@ TreeNode* Parser::Statement() {
   }
   QString qstr = look.str;
   if (qstr == "\'[\'") {
-    Error( i18n("[ is expected").arg(qstr), 1060);
+    Error( i18n("'[' is expected"), 1060);
   } else {
-    Error( i18n("%1 is no Logo command").arg(qstr), 1060); 
+    Error( i18n("'%1' is no Logo command").arg(qstr), 1060); 
   }
   getToken();
   return new TreeNode( Unknown, row, col );

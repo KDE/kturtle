@@ -46,7 +46,7 @@ int main(int argc, char **argv)
                      "cies # kde.nl" );
     about.addAuthor( "Anne-Marie Mahfouf",
            I18N_NOOP("Big contributor, supporter and fan"),
-                      "annemarie.mahfouf # free.fr" );    
+                     "annemarie.mahfouf # free.fr" );    
     about.addAuthor( "Walter Schreppers",
            I18N_NOOP("Author of \"wsbasic\" (wsbasic.sf.net) the base for the interpreter of KTurtle"),
                      "Walter.Schreppers # ua.ac.be" );
@@ -58,16 +58,16 @@ int main(int argc, char **argv)
                      "stefan.asserhall # telia.com" ); 
     about.addCredit( "Jure Repinc",
            I18N_NOOP("Slovenian Data Files"),
-                     "jlp@holodeck1.com" );
+                     "jlp # holodeck1.com" );
     about.addCredit( "Chusslove Illich",
            I18N_NOOP("Serbian (Latin and Cyrillic) Data Files"),
                      "caslav.ilic # gmx.net" );
     about.addCredit( "Pino Toscano",
            I18N_NOOP("Italian Data Files"),
-                     "toscano.pino # tiscali.it" ); 	
+                     "toscano.pino # tiscali.it" );
     about.addCredit( "Albert Astals Cid",
            I18N_NOOP("Parser Cyrillic support" ),
-                     "astals11@terra.es" );
+                     "astals11 # terra.es" );
     KCmdLineArgs::init(argc, argv, &about);
     KCmdLineArgs::addCmdLineOptions( options );
     KApplication app;

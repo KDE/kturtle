@@ -12,55 +12,75 @@
       <default>250</default>
     </entry>       
   </group>
+
+
   <group name="language">
     <entry name="LogoLanguageList" type="StringList">
-      <!--This StingList is used in the above LogoLanguage AND in the settingsdialog to fill the ComboBox. Better not to dupe the code that does this.-->
       <label>The list of the available languages for the Logo commands</label> 
       <code>
-          // We assume keyword and highlight files come in pairs (if not there will be no highlight)
-          // First a list is build from all possible language(codes) [en_US, fr, nl, etc.]
+
+          // This StringList (LogoLanguageList) is a list of all possible language codes all possible [en_US, fr, nl, etc.]. It is used to (1) find the LogoLanguage variable (that is defined later on), and (2) in the Settings dialog to fill the language ComboBox. Better not to dupe this code. The LogoLanguageList is made pretty in the slotSettings class of kturtle.cpp.
+
+          // We assume keyword and highlight files come in pairs (if not there will be no highlight style)
+
           QStringList xmlFiles = KGlobal::dirs()->findAllResources("data", "kturtle/data/*.xml");
           QStringList LogoLanguageList;
           for ( QStringList::Iterator it = xmlFiles.begin(); it != xmlFiles.end(); ++it ) {
               QString xmlFile(*it);
               kdDebug(0) &lt;&lt; "xmlTranslationFile: "&lt;&lt; xmlFile &lt;&lt;endl;
+              // build list of language codes (en_US, nl, etc.)
               LogoLanguageList += xmlFile.section('.', -2, -2);
           }
           LogoLanguageList.sort();
+
       </code>
       <default code="true">LogoLanguageList</default> 
     </entry>
+
+
     <entry name="LogoLanguage" type="String">
-      <!--This is the String that actually get picked up by the app. It is not directly changeable by the ComboBox but is translated from the Ints that ComboBox LogoLanguageList emits. It is better to have the logic that changes the Ints to Strings at the settings dept.-->
       <label>The language of the Logo commands</label> 
       <code>
-          // This the the parameter that is used by the rest of the app
+
+          // This is the String (LogoLanguage) that actually gets picked up by the app to know what XML files (for HLstyle and Logo language) to use. It is not directly changeable by the ComboBox but is translated from the Ints that ComboBox LogoLanguageList emits. It is better to have the logic that changes the Ints to Strings at the settings dept.
+
+          // The KconfigXT framework makes shure the value that is saved in the kturtlerc file will be used in stead of the defaultLanguage that we find here.
+
+          // Get the desktops language
           KConfigBase *globalConf = KGlobal::config();
           globalConf->setGroup("Locale");
           QString desktopLanguage = globalConf->readEntry("Language");
           kdDebug(0) &lt;&lt; "desktopLanguage: "&lt;&lt; desktopLanguage &lt;&lt;endl;
-          QString defaultLanguage = "en_US";
-          int itemCount = 0; // for the LanguageComboBox
+
+          QString defaultLanguage = "en_US";  // init to the fall back value
+          int itemCount = 0;  // for the LanguageComboBox
           for (QStringList::Iterator it = LogoLanguageList.begin(); it != LogoLanguageList.end(); ++it ) {
               QString testLanguage(*it);
               if (testLanguage == desktopLanguage) { // exact match
                   defaultLanguage = testLanguage;
                   break;
-              } else if (testLanguage.left(2) == desktopLanguage.left(2)) { // close match (no the same dialect)
+              } else if ( testLanguage.left(2) == desktopLanguage.left(2) ) { // close match (different dialect)
                   defaultLanguage = testLanguage.left(2);
                   break;
               }
               itemCount++;
           }
           kdDebug(0) &lt;&lt; "defaultLanguage: "&lt;&lt; defaultLanguage &lt;&lt;endl;
+
       </code>
       <default code="true">defaultLanguage</default> 
     </entry>
+
+
     <entry name="LanguageComboBox" type="Int">
-      <!--This is the parameter that actually gets changed (and emits the signal to the dialog)-->
       <label>The value of the ComboBox</label>
-      <code>// see the previous codeblock for int itemCount.</code>
+      <code>
+
+         // This is the parameter that actually gets changed (and emits the signal to the dialog to enable the Apply and Defaults buttons). This value is saved in the kturtlerc file but is never used.
+
+      </code>
       <default code="true">itemCount</default>
     </entry>
+
   </group> 
 </kcfg>

@@ -63,7 +63,8 @@ void Canvas::initValues() {
 	Dir = PI/2;
 	font = QFont("serif", 18);
 	// the position
-	slotCenter();
+	PosX = CanvasWidth / 2;
+	PosY = CanvasHeight / 2;
 	// construct the default sprite
 	loadSpriteFrames("turtle");
 	updateSpritePos();
@@ -243,7 +244,7 @@ void Canvas::loadSpriteFrames(QString name) {
 }
 
 void Canvas::updateSpritePos() {
-    	Sprite->move( (double)(PosX - ( Sprite->width() / 2 ) ), (double)(PosY - ( Sprite->height() / 2 ) ), -1 );
+	Sprite->move( (double)(PosX - ( Sprite->width() / 2 ) ), (double)(PosY - ( Sprite->height() / 2 ) ), -1 );
 }
 
 void Canvas::updateSpriteAngle() {
@@ -316,8 +317,8 @@ void Canvas::slotGoY(int y) {
 }
 
 void Canvas::slotForward(int x) {
-	int PosXnew = PosX + (int)( x * cos(Dir) );
-	int PosYnew = PosY - (int)( x * sin(Dir) );
+	int PosXnew = PosX + (int)(x * cos(Dir) + .5);
+	int PosYnew = PosY - (int)(x * sin(Dir) + .5);
 	if (Pen) {
 		Line(PosX, PosY, PosXnew, PosYnew);
 	}
@@ -325,8 +326,8 @@ void Canvas::slotForward(int x) {
 }
 
 void Canvas::slotBackward(int x) {
-	int PosXnew = PosX - (int)( x * cos(Dir) );
-	int PosYnew = PosY + (int)( x * sin(Dir) );
+	int PosXnew = PosX - (int)(x * cos(Dir) + .5);
+	int PosYnew = PosY + (int)(x * sin(Dir) + .5);
 	if (Pen) {
 		Line(PosX, PosY, PosXnew, PosYnew);
 	}
@@ -351,6 +352,7 @@ void Canvas::slotTurnRight(double deg) {
 void Canvas::slotCenter() {
 	PosX = CanvasWidth / 2;
 	PosY = CanvasHeight / 2;
+	updateSpritePos();
 }
 
 void Canvas::slotSetPenWidth(int w) {

@@ -78,8 +78,8 @@ void Executer::execute(TreeNode* node) {
     case assignNode         : execAssign( node );       break;
     case expressionNode     : execExpression( node );   break;
     case idNode             : execId( node );           break;
-    case constantNode       : execConstant( node );     break; 
-    case stringConstantNode : execConstant( node );     break; //for now handle same as ordinary constant
+    case constantNode       : execConstant( node );     break; // does nothing value allready set
+    case stringConstantNode : execConstant( node );     break; // idem
     
     case addNode            : execAdd( node );          break;
     case mulNode            : execMul( node );          break;
@@ -127,7 +127,7 @@ void Executer::execute(TreeNode* node) {
     case SpritePressNode    : execSpritePress( node );  break;
     case SpriteChangeNode   : execSpriteChange( node ); break;
 
-    case MessageNode        : execMessage( node );        break;
+    case MessageNode        : execMessage( node );      break;
     case InputWindowNode    : execInputWindow( node );  break;
     case printNode          : execPrint( node );        break;
     case FontTypeNode       : execFontType( node );     break;
@@ -378,7 +378,7 @@ void Executer::execIf( TreeNode* node ) {
 }
 
 
-   
+
 void Executer::execAssign( TreeNode* node ){
   TreeNode* var  = node->firstChild();
   TreeNode* expr = node->secondChild();
@@ -409,43 +409,42 @@ Number Executer::getVal( TreeNode* node ){
 
         
 void Executer::execAdd( TreeNode* node ) {
-  node->setValue( getVal( node->firstChild() )
-                  + 
-                  getVal( node->secondChild() ) );
+	// if one of the values to be summed is not a constant they should be concatenated
+	if( node->firstChild()->getType() == constantNode && node->secondChild()->getType() == constantNode ) {
+		node->setValue( getVal( node->firstChild() )  +  getVal( node->secondChild() ) );
+  } else {
+		node->setValue( getVal( node->firstChild() ).strVal.append( getVal( node->secondChild() ).strVal ) );
+		node->setType(stringConstantNode);
+	}
 }
 
        
 void Executer::execMul( TreeNode* node ) {
   if( node->firstChild()->getType() == stringConstantNode || node->secondChild()->getType() == stringConstantNode ) {
-    emit ErrorMsg( i18n("Cannot multiply strings."), 0, 0, 9000);
+		emit ErrorMsg( i18n("Cannot multiply strings"), 0, 0, 9000);
     return;
   }
-  
-  node->setValue( getVal( node->firstChild() )
-                  * 
-                  getVal( node->secondChild() ) );
+  node->setValue( getVal( node->firstChild() )  *  getVal( node->secondChild() ) );
 }
 
        
 void Executer::execDiv( TreeNode* node ) {
-  if( node->firstChild()->getType() == stringConstantNode || node->secondChild()->getType() == stringConstantNode ) {
-    emit ErrorMsg( i18n("Cannot divide strings."), 0, 0, 9000);
+  if( node->firstChild()->getType() == stringConstantNode ||
+	    node->secondChild()->getType() == stringConstantNode ) {
+    emit ErrorMsg( i18n("Cannot divide strings"), 0, 0, 9000);
     return;
   }
-  node->setValue( getVal( node->firstChild() )
-                  / 
-                  getVal( node->secondChild() ) );
+  node->setValue( getVal( node->firstChild() )  /  getVal( node->secondChild() ) );
 }
 
        
 void Executer::execSub( TreeNode* node ) {
-  if( node->firstChild()->getType() == stringConstantNode || node->secondChild()->getType() == stringConstantNode ) {
-    emit ErrorMsg( i18n("Cannot substract strings."), 0, 0, 9000);
+  if( node->firstChild()->getType() == stringConstantNode ||
+	    node->secondChild()->getType() == stringConstantNode ) {
+    emit ErrorMsg( i18n("Cannot substract strings"), 0, 0, 9000);
     return;
   }
-  node->setValue( getVal( node->firstChild() )
-                  - 
-                  getVal( node->secondChild() ) );
+  node->setValue( getVal( node->firstChild() )  -  getVal( node->secondChild() ) );
 }
 
        
@@ -509,7 +508,9 @@ void Executer::execNE( TreeNode* node ){
   
 void Executer::execAnd( TreeNode* node ){
   bool nl = getVal( node->firstChild() ).val != 0;
+	kdDebug(0)<<"leftAndChild"<< getVal(node->firstChild()).strVal <<endl;
   bool nr = getVal( node->secondChild() ).val != 0;
+	kdDebug(0)<<"rightAndChild"<< getVal(node->secondChild()).strVal <<endl;
   node->setValue( (double) (nl && nr) );
 }
 
@@ -834,21 +835,29 @@ void Executer::execInputWindow( TreeNode* node ) {
     }
     QString value = node->firstChild()->getValue().strVal;
     emit InputDialog( value );
+    bool ok = true;
+    int unused = value.toFloat(&ok);
     if (value == "") {
         node->setValue(""); // this prevents a crash :)
+    } else if (ok) {
+        kdDebug(0)<<"########################"<<endl;
+        node->setValue(value);
+        node->setType(constantNode);
     } else {
-        node->setValue( value.latin1() );
+        node->setValue(value);
+        node->setType(stringConstantNode);
     }
 }
 
 void Executer::execPrint( TreeNode* node ) {
   TreeNode::iterator i;
   QString str = "";
-  for( i = node->begin(); i != node->end(); ++i ) {
-    execute( *i ); //execute expression
-    str = str + (*i)->getValue().strVal;
-  }
-  emit Print(str);
+	for( i = node->begin(); i != node->end(); ++i ) {
+		execute( *i ); //execute expression
+		str = str + (*i)->getValue().strVal;
+	}
+
+	emit Print(str);
 }
 
 void Executer::execFontType( TreeNode* node ) {
