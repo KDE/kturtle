@@ -4,6 +4,8 @@
 
 #include <stdlib.h>
 
+#include <qtimer.h>
+
 #include <kaccel.h>
 #include <kaction.h>
 #include <kapp.h>
@@ -72,7 +74,7 @@ void MainWindow::setupActions() {
     KStdAction::save(this, SLOT(slotSaveFile()), actionCollection());
     KStdAction::saveAs(this, SLOT(slotSaveFileAs()), actionCollection());
     //
-    run = new KAction(i18n("&Execute Commands"), "gear", 0, this, SLOT(slotRun()),
+    run = new KAction(i18n("&Execute Commands"), "gear", 0, this, SLOT( slotExecute() ),
       actionCollection(), "run");
     run->setEnabled(false);
     //
@@ -276,14 +278,27 @@ void MainWindow::slotQuit() {
     close();
 }
 
-void MainWindow::slotRun() {
+
+static TreeNode::const_iterator ss_it;
+
+void MainWindow::slotExecute() {
+    if ( executing ) {
+        stopExecution();
+    } else {
+        startExecution();
+    }
+}
+
+void MainWindow::startExecution() {
     allreadyError = false;
+    executing = true;
     run->setIcon("stop");
     run->setText("Stop Execution");   
     slotStatusBar(i18n("Parsing commands..."), 1);
+    kapp->processEvents();
     
-    string txt=editor->text().latin1();///@todo interpreter shouldnt need extra "[" & "]"
-    stringbuf sbuf(txt , ios_base::in);
+    string txt = editor->text().latin1();///@todo interpreter shouldnt need extra "[" & "]"
+    stringbuf sbuf(txt, ios_base::in);
     istream in(&sbuf);
     
     Parser parser(in);
@@ -296,84 +311,98 @@ void MainWindow::slotRun() {
         root->showTree(root); // show parsetree  DEBUG OPTION
 
         slotStatusBar(i18n("Executing commands..."), 1); 
-        Executer exe(root); // make Executer object, 'exe', and have it point to the root
-        connect( &exe, SIGNAL(ErrorMsg(QString, int, int, int) ), 
-                 this, SLOT(slotErrorDialog(QString, int, int, int) ) );
-        connect( &exe, SIGNAL( Finished() ), this, SLOT( slotExecutionFinished() ) );
+        exe = new Executer(root); // make Executer object, 'exe', and have it point to the root
+        connect( exe, SIGNAL( ErrorMsg(QString, int, int, int) ), 
+                 this, SLOT( slotErrorDialog(QString, int, int, int) ) );
+        connect( exe, SIGNAL( setPauseTimer(int) ), this, SLOT( slotPauseTimer(int) ) );
 
         // Connect the signals form Executer to the slots from Canvas:
-       ///@todo / @todo / @todo Implement new funktions!!
-        connect( &exe, SIGNAL( Clear() ),
+        connect( exe, SIGNAL( Clear() ),
                  TurtleView, SLOT( slotClear() ) );
-        connect( &exe, SIGNAL( Go(int, int) ),
+        connect( exe, SIGNAL( Go(int, int) ),
                  TurtleView, SLOT( slotGo(int, int) ) );
-        connect( &exe, SIGNAL( GoX(int) ),
+        connect( exe, SIGNAL( GoX(int) ),
                  TurtleView, SLOT( slotGoX(int) ) );
-        connect( &exe, SIGNAL( GoY(int) ),
+        connect( exe, SIGNAL( GoY(int) ),
                  TurtleView, SLOT( slotGoY(int) ) );
-        connect( &exe, SIGNAL( Forward(int) ),
+        connect( exe, SIGNAL( Forward(int) ),
                  TurtleView, SLOT( slotForward(int) ) );
-        connect( &exe, SIGNAL( Backward(int) ),
+        connect( exe, SIGNAL( Backward(int) ),
                  TurtleView, SLOT( slotBackward(int) ) );
-        connect( &exe, SIGNAL( Direction(double) ),
+        connect( exe, SIGNAL( Direction(double) ),
                  TurtleView, SLOT( slotDirection(double) ) );
-        connect( &exe, SIGNAL( TurnLeft(double) ),
+        connect( exe, SIGNAL( TurnLeft(double) ),
                  TurtleView, SLOT( slotTurnLeft(double) ) );
-        connect( &exe, SIGNAL( TurnRight(double) ),
+        connect( exe, SIGNAL( TurnRight(double) ),
                  TurtleView, SLOT( slotTurnRight(double) ) );
-        connect( &exe, SIGNAL( Center() ),
+        connect( exe, SIGNAL( Center() ),
                  TurtleView, SLOT( slotCenter() ) );
-        connect( &exe, SIGNAL( SetPenWidth(int) ),
+        connect( exe, SIGNAL( SetPenWidth(int) ),
                  TurtleView, SLOT( slotSetPenWidth(int) ) );
-        connect( &exe, SIGNAL( PenUp() ),
+        connect( exe, SIGNAL( PenUp() ),
                  TurtleView, SLOT( slotPenUp() ) );
-        connect( &exe, SIGNAL( PenDown() ),
+        connect( exe, SIGNAL( PenDown() ),
                  TurtleView, SLOT( slotPenDown() ) );
-        connect( &exe, SIGNAL( SetFgColor(int, int, int) ),
+        connect( exe, SIGNAL( SetFgColor(int, int, int) ),
                  TurtleView, SLOT( slotSetFgColor(int, int, int) ) );
-        connect( &exe, SIGNAL( SetBgColor(int, int, int) ),
+        connect( exe, SIGNAL( SetBgColor(int, int, int) ),
                  TurtleView, SLOT( slotSetBgColor(int, int, int) ) );
-        connect( &exe, SIGNAL( ResizeCanvas(int, int) ),
+        connect( exe, SIGNAL( ResizeCanvas(int, int) ),
                  TurtleView, SLOT( slotResizeCanvas(int, int) ) );
-        connect( &exe, SIGNAL( SpriteShow() ),
+        connect( exe, SIGNAL( SpriteShow() ),
                  TurtleView, SLOT( slotSpriteShow() ) );
-        connect( &exe, SIGNAL( SpriteHide() ),
+        connect( exe, SIGNAL( SpriteHide() ),
                  TurtleView, SLOT( slotSpriteHide() ) );
-        connect( &exe, SIGNAL( SpritePress() ),
+        connect( exe, SIGNAL( SpritePress() ),
                  TurtleView, SLOT( slotSpritePress() ) );
-        connect( &exe, SIGNAL( SpriteChange(int) ),
+        connect( exe, SIGNAL( SpriteChange(int) ),
                  TurtleView, SLOT( slotSpriteChange(int) ) );
-        connect( &exe, SIGNAL( Print(QString) ),
+        connect( exe, SIGNAL( Print(QString) ),
                  TurtleView, SLOT( slotPrint(QString) ) );
-        connect( &exe, SIGNAL( FontType(QString, QString) ),
+        connect( exe, SIGNAL( FontType(QString, QString) ),
                  TurtleView, SLOT( slotFontType(QString, QString) ) );
-        connect( &exe, SIGNAL( FontSize(int) ),
+        connect( exe, SIGNAL( FontSize(int) ),
                  TurtleView, SLOT( slotFontSize(int) ) );
-        connect( &exe, SIGNAL( WrapOn() ),
+        connect( exe, SIGNAL( WrapOn() ),
                  TurtleView, SLOT( slotWrapOn() ) );
-        connect( &exe, SIGNAL( WrapOff() ),
+        connect( exe, SIGNAL( WrapOff() ),
                  TurtleView, SLOT( slotWrapOff() ) );
-        connect( &exe, SIGNAL( Reset() ),
+        connect( exe, SIGNAL( Reset() ),
                  TurtleView, SLOT( slotReset() ) );
 
-        exe.run();
-        slotStatusBar(i18n("Done."), 1); // this will override all the err-msgs
+        ss_it = exe->run( exe->startPoint() );
+        if ( ss_it == exe->endPoint() ) {
+            stopExecution();
+        } else {
+        
+        }
     } else {
         slotStatusBar(i18n("Parsing failed!"), 1);
-        slotExecutionFinished();
     }
-
-    //run->setIcon("gear");
-
-// wait for finished or error signal to change 'stop' icon back to 'gear'
-// finished: change button + statusbar
 }
 
-void MainWindow::slotExecutionFinished() {
+void MainWindow::stopExecution() {
     run->setIcon("gear");
     run->setText( i18n("&Execute Commands") );
     slotStatusBar(i18n("Done."), 1);
+    executing = false;
 }
+
+void MainWindow::slotPauseTimer(int msec) {
+    exe->Pause();
+    QTimer::singleShot( msec, this, SLOT( slotUnPauseExecution() ) );
+}
+
+void MainWindow::slotUnPauseExecution() {
+    exe->unPause();
+    ss_it = exe->run( ss_it );
+    if ( ss_it == exe->endPoint() ) {
+        stopExecution();
+    } else {
+        
+    }
+}
+
 
 // / @todo: linenumbers; probably when going from KTextEdit to KTextEditor::Editor
 // void MainWindow::slotLineNumbers() {
@@ -545,9 +574,10 @@ void MainWindow::setRunEnabled() {
 }
 
 void MainWindow::slotOpenEx() {
-     QString filestr = KFileDialog::getOpenFileName(QString(locate("data", "kturtle/examples/en/")), QString("*.logo|") +
-      i18n("Logo Examples files"), this, i18n("Open logo example file..."));//change en with the user's language 
-      loadFile(filestr);
+     QString filestr = KFileDialog::getOpenFileName( QString( locate("data", "kturtle/examples/en/") ),
+                       QString("*.logo|") + i18n("Logo Examples files"), this,
+                       i18n("Open logo example file...") ); //change en with the user's language 
+     loadFile(filestr);
 }
 
 void MainWindow::loadFile(QString myFile) {

@@ -1,7 +1,5 @@
 #include <string.h>
 
-#include <qtimer.h>
-
 #include <kapplication.h>
 #include <klocale.h>
 
@@ -10,38 +8,55 @@
 Executer::Executer(TreeNode* tree) {
   this->tree = tree;
   functionTable.clear();
-  bBreak=false;
-  bReturn=false;
+  bBreak = false;
+  bReturn = false;
+  m_pause = false;
 }
 
 Executer::~Executer() {
   emit Finished();
 }
 
-void Executer::run() {
-  bBreak=false;
-  bReturn=false;
+TreeNode::const_iterator Executer::startPoint() {
+  return tree->begin();
+}
+
+TreeNode::const_iterator Executer::endPoint() {
+  return tree->end();
+}
+
+void Executer::Pause() {
+  m_pause = true;
+}
+
+void Executer::unPause() {
+  m_pause = false;
+}
+
+TreeNode::const_iterator Executer::run(TreeNode::const_iterator it) {
+  bBreak = false;
+  bReturn = false;
   //find program block and execute it
   
   TreeNode* node;
   TreeNode::const_iterator i;
-  for(i = tree->begin() ; i != tree->end(); ++i ) {
+  for(i = it; i != tree->end(); ++i ) {
 
-    node=*i;
+    node = *i;
     if( node->getType() == blockNode) {
       symtable main;
       symbolTables.push( main ); //new symbol table for main block
       execute( node );               //execute main block
       symbolTables.pop(); //free up stack
-      
+    } else if( node->getType() == functionNode ) {
+      string funcname = node->firstChild()->getName();
+      functionTable[funcname] = node; //store for later use
     }
-    else if( node->getType() == functionNode ) {
-      string funcname=node->firstChild()->getName();
-      functionTable[ funcname ] = node; //store for later use
+    if (m_pause) {
+      return i;
     }
-
   }
-
+  return tree->end();
 }
 
 
@@ -927,22 +942,13 @@ void Executer::execWait( TreeNode* node ) {
     TreeNode* nodeX = node->firstChild(); // getting
     execute(nodeX); // executing
     float sec = nodeX->getValue().val;
-    StartWaiting(sec);
+    startWaiting(sec);
 }
 
-void Executer::StartWaiting(float sec) {
-    stopWaiting = false;
+void Executer::startWaiting(float sec) {
+    Pause();
     int msec = (int)( sec * 1000 ); // convert
-    // call a timer that sets stopWaiting to true when it runs off
-    QTimer::singleShot( msec, this, SLOT( slotStopWaiting() ) );
-    while (stopWaiting == false) {
-        // keep falling back to the main event loop while stopWaiting if false
-        kapp->processEvents();
-    }
-}
-
-void Executer::slotStopWaiting() {
-    stopWaiting = true;
+    emit setPauseTimer(msec);
 }
 
 void Executer::execWrapOn( TreeNode* node ) {

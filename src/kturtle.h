@@ -46,8 +46,7 @@ class MainWindow : public KMainWindow
     // TODO: linenumbers; probably when going from KTextEdit to KTextEditor::Editor
     // void slotLineNumbers();
     void slotQuit();
-    void slotRun();
-    void slotExecutionFinished();
+    void slotExecute();
     // copy the selected text from the editor into the clipboard
     void slotCopy();
     // paste the text from the clipboard to the editor
@@ -65,6 +64,7 @@ class MainWindow : public KMainWindow
     void slotUpdateCanvas();
     
     void slotErrorDialog(QString msg, int row = 0, int col = 0, int code = 0);
+    void slotPauseTimer(int msec);
     
   signals:
     void ResizeCanvas(int x, int y);
@@ -75,6 +75,8 @@ class MainWindow : public KMainWindow
     void setupEditor();
     void setupStatusBar();
     void readConfig();
+    void startExecution();
+    void stopExecution();
     
     KTextEdit          *editor;
     Canvas             *TurtleView;
@@ -105,6 +107,9 @@ class MainWindow : public KMainWindow
     ColorPicker        *picker;
     
     bool allreadyError;
+    bool executing;
+    
+    Executer           *exe;
   
   private slots:
     void slotToggleFullscreen();
@@ -115,6 +120,7 @@ class MainWindow : public KMainWindow
     void setRunEnabled();
     void slotOpenEx();
     void loadFile(QString myFile);
+    void slotUnPauseExecution();
 
   protected:
     virtual bool event(QEvent* e);

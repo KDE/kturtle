@@ -33,9 +33,15 @@ class Executer : public QObject
     Executer(TreeNode*);
     virtual ~Executer();
 
-    void run();
+    TreeNode::const_iterator startPoint();
+    TreeNode::const_iterator endPoint();
+    TreeNode::const_iterator run(TreeNode::const_iterator it);
+    void Pause();
+    void unPause();
+    
 
   signals:
+    void setPauseTimer(int msec);
     void ErrorMsg(QString s, int row, int col, int code = 2000);
     void Finished();
   
@@ -135,7 +141,7 @@ class Executer : public QObject
     void execFontType      ( TreeNode* );
     void execFontSize      ( TreeNode* );
     void execRepeat        ( TreeNode* );
-    void  execRandom       ( TreeNode* );
+    void execRandom        ( TreeNode* );
     void execWait          ( TreeNode* );
     void execWrapOn        ( TreeNode* );
     void execWrapOff       ( TreeNode* );
@@ -143,7 +149,7 @@ class Executer : public QObject
         
     string runCommand( const string& );
     
-    void StartWaiting(float sec);
+    //void StartWaiting(float sec);
         
     //private locals
     //==============
@@ -154,10 +160,9 @@ class Executer : public QObject
     
     bool bReturn;  //used for return statements
     bool bBreak;   //used for break statement
-    bool stopWaiting;
+    bool m_pause;
     
-  private slots:
-    void slotStopWaiting();
+    void startWaiting(float sec);
 };
 
 #endif // _EXECUTER_H_

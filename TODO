@@ -3,7 +3,12 @@ This list is devided into BIG-TODOs, normalTODOs, TO-oeps-meDOitALLreadies and S
 
 **** URGENT ****
 
-cies: urgent issues are fixed
+cies: Next time the first things i'll do is finish off what lypanov started: 
+- fixing 'wait' command using lypanovs paradigm
+- and fallbacks to the main eventloop (using pause/unpause's) so KTurtle wont be locked up during execution
+- implement the ability to stop execution!
+Sorry, cauze somthings dont work/work weird in the mean time :-)
+
 
 06 Jan. 2004 - annma: the KConfig XT stuff is done. Please note that locate("data", "kturtle/data/logokeywords.en_US.xml") being the default xml file, it does not appear in the config file. If there is nothing in the config file in TranslationFilePath, then this file is always taken.
 Always load the xml file with
