@@ -251,7 +251,9 @@ void Canvas::slotClear() {
     QCanvasItemList::Iterator it = list.begin();
     for (; it != list.end(); ++it) {
         if ( *it ) {
-            delete *it;
+            if ( !( (*it)->z() == 250 ) ) { // this is the turtle sprite, we dont want to kill him
+                delete *it;
+            }
         }
     }
 }

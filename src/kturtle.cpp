@@ -847,16 +847,20 @@ void MainWindow::slotSettings() {
   
   QVBoxLayout *layout4 = new QVBoxLayout( 0, 0, 6, "layout4"); 
   
-  LanguageLabel = new QLabel(kcfg_LanguageComboBox, i18n("Select the language for the LOGO commands:"), groupBox1);
+  LanguageLabel = new QLabel(kcfg_LanguageComboBox, i18n("Select the language for the Logo commands:"), groupBox1);
   LanguageLabel->setBuddy( kcfg_LanguageComboBox );
   layout4->addWidget( LanguageLabel );
   
   kcfg_LanguageComboBox = new KComboBox(groupBox1, "kcfg_LanguageComboBox");
   kcfg_LanguageComboBox->setEditable(false);
   QStringList LogoLanguageList = Settings::logoLanguageList();
+  // Ad the full language names to the items
+  for ( QStringList::Iterator it = LogoLanguageList.begin(); it != LogoLanguageList.end(); ++it ) {
+      *it = KGlobal::locale()->twoAlphaToLanguageName( (*it).left(2) ) + " (" + *it + ")";
+  }
+
   kcfg_LanguageComboBox->insertStringList(LogoLanguageList);
-  kcfg_LanguageComboBox->setCurrentText( Settings::logoLanguage() );
-  kdDebug(0) << "kcfg_LanguageComboBox->setCurrentText:"<< Settings::logoLanguage() <<endl;
+  kcfg_LanguageComboBox->setCurrentText( KGlobal::locale()->twoAlphaToLanguageName( (Settings::logoLanguage() ).left(2) ) + " (" + Settings::logoLanguage() + ")" );
   layout4->addWidget( kcfg_LanguageComboBox );
   
   groupBox1Layout->addLayout( layout4, 0, 0 );
@@ -878,19 +882,12 @@ void MainWindow::slotUpdateSettings() {
   // only the inital size can be changed here :)   [ sorry annma :) ]
   // connect( this, SIGNAL( ResizeCanvas(int, int) ), TurtleView, SLOT( slotResizeCanvas(int, int) ) );
   // emit ResizeCanvas( Settings::canvasWidth(), Settings::canvasWidth() );
-  
-  slotSetHighlightstyle( kcfg_LanguageComboBox->currentText() );
+  slotSetHighlightstyle( kcfg_LanguageComboBox->currentText().section( "(", -1, -1 ).remove(")") );
   KConfig *config = kapp->config();
   saveSettings(config);
 }
 
 void MainWindow::readConfig(KConfig *config) {
-  if ( Settings::logoLanguage().isNull() ) {
-    slotErrorDialog( i18n("Could not find the command translation file.\n"
-                          "Please go to \"Settings -> Configure KTurtle\" and "
-                          "specify the code of the language you prefer. "
-                          "Otherwise KTurtle will not operate." ) );
-  }
   config->setGroup("General Options");
   m_recentFiles->loadEntries(config, "Recent Files");
 }
@@ -899,10 +896,9 @@ void MainWindow::saveSettings(KConfig *config) {
   config->setGroup("General Options");
   m_recentFiles->saveEntries(config, "Recent Files");
   config->setGroup("language");
-  Settings::setLogoLanguage( kcfg_LanguageComboBox->currentText() );
+  Settings::setLogoLanguage( kcfg_LanguageComboBox->currentText().section( "(", -1, -1 ).remove(")") );
   Settings::setLanguageComboBox( kcfg_LanguageComboBox->currentItem() );
   Settings::writeConfig();
-  kdDebug(0) << "logoLanguage set to:"<< Settings::logoLanguage() <<endl;
 }
 
 void MainWindow::slotConfigureKeys() {

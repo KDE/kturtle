@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <!DOCTYPE KDevPrjSession>
 <KDevPrjSession>
- <DocsAndViews NumberOfDocuments="6" >
+ <DocsAndViews NumberOfDocuments="9" >
   <Doc0 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/executer.cpp" >
    <View0 line="9" Type="???" >
     <AdditionalSettings Top="2" Width="958" Attach="1" Height="544" Left="2" MinMaxMode="0" />
@@ -9,29 +9,44 @@
   </Doc0>
   <Doc1 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/kturtle.h" >
    <View0 line="66" Type="???" >
-    <AdditionalSettings Top="2" Width="956" Attach="1" Height="580" Left="2" MinMaxMode="0" />
+    <AdditionalSettings Top="2" Width="952" Attach="1" Height="580" Left="2" MinMaxMode="0" />
    </View0>
   </Doc1>
   <Doc2 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/kturtle.cpp" >
-   <View0 line="170" Type="???" >
-    <AdditionalSettings Top="2" Width="958" Attach="1" Height="544" Left="2" MinMaxMode="0" />
+   <View0 line="851" Type="???" >
+    <AdditionalSettings Top="2" Width="954" Attach="1" Height="544" Left="2" MinMaxMode="0" />
    </View0>
   </Doc2>
   <Doc3 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/executer.h" >
    <View0 line="41" Type="???" >
-    <AdditionalSettings Top="2" Width="958" Attach="1" Height="544" Left="2" MinMaxMode="0" />
+    <AdditionalSettings Top="2" Width="952" Attach="1" Height="544" Left="2" MinMaxMode="0" />
    </View0>
   </Doc3>
   <Doc4 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/doc/kturtle/index.docbook" >
-   <View0 line="204" Type="???" >
-    <AdditionalSettings Top="2" Width="958" Attach="1" Height="544" Left="2" MinMaxMode="0" />
+   <View0 line="1106" Type="???" >
+    <AdditionalSettings Top="2" Width="952" Attach="1" Height="544" Left="2" MinMaxMode="0" />
    </View0>
   </Doc4>
   <Doc5 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/TODO" >
-   <View0 line="0" Type="???" >
-    <AdditionalSettings Top="2" Width="956" Attach="1" Height="544" Left="2" MinMaxMode="0" />
+   <View0 line="296" Type="???" >
+    <AdditionalSettings Top="2" Width="952" Attach="1" Height="544" Left="2" MinMaxMode="0" />
    </View0>
   </Doc5>
+  <Doc6 context="ctx_qt" NumberOfViews="1" URL="file:/usr/qt/3/doc/html/qcanvasitem.html" >
+   <View0 Type="???" >
+    <AdditionalSettings Top="-10000" Width="1" Attach="1" Height="1" Left="-10000" MinMaxMode="0" />
+   </View0>
+  </Doc6>
+  <Doc7 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/canvas.cpp" >
+   <View0 line="243" Type="???" >
+    <AdditionalSettings Top="2" Width="952" Attach="1" Height="544" Left="2" MinMaxMode="0" />
+   </View0>
+  </Doc7>
+  <Doc8 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/data/keywords/logokeywords.en_US.xml" >
+   <View0 line="199" Type="???" >
+    <AdditionalSettings Top="2" Width="952" Attach="1" Height="544" Left="2" MinMaxMode="0" />
+   </View0>
+  </Doc8>
  </DocsAndViews>
  <pluginList>
   <kdevbookmarks>

@@ -319,5 +319,8 @@ for x = 1 to 255 [
   tr x
 ]
 
+# hmm... this used to work
+clear
+forward 10
 
 
