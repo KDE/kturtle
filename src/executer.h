@@ -66,7 +66,7 @@ class Executer : public QObject
     void WrapOn();
     void WrapOff();
     void Reset();
-    
+
   private:
     void execute( TreeNode* );  
 
@@ -135,13 +135,15 @@ class Executer : public QObject
     void execFontType      ( TreeNode* );
     void execFontSize      ( TreeNode* );
     void execRepeat        ( TreeNode* );
-    void  execRandom        ( TreeNode* );
+    void  execRandom       ( TreeNode* );
     void execWait          ( TreeNode* );
     void execWrapOn        ( TreeNode* );
     void execWrapOff       ( TreeNode* );
     void execReset         ( TreeNode* );
         
     string runCommand( const string& );
+    
+    void StartWaiting(float sec);
         
     //private locals
     //==============
@@ -152,6 +154,10 @@ class Executer : public QObject
     
     bool bReturn;  //used for return statements
     bool bBreak;   //used for break statement
+    bool stopWaiting;
+    
+  private slots:
+    void slotStopWaiting();
 };
 
 #endif // _EXECUTER_H_

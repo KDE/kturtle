@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <!DOCTYPE KDevPrjSession>
 <KDevPrjSession>
- <DocsAndViews NumberOfDocuments="10" >
+ <DocsAndViews NumberOfDocuments="12" >
   <Doc0 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/kturtle.h" >
    <View0 line="0" Type="???" >
     <AdditionalSettings/>
@@ -18,7 +18,7 @@
    </View0>
   </Doc2>
   <Doc3 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/executer.cpp" >
-   <View0 line="909" Type="???" >
+   <View0 line="0" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc3>
@@ -52,6 +52,16 @@
     <AdditionalSettings/>
    </View0>
   </Doc9>
+  <Doc10 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/main.cpp" >
+   <View0 line="33" Type="???" >
+    <AdditionalSettings/>
+   </View0>
+  </Doc10>
+  <Doc11 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/TODO" >
+   <View0 line="74" Type="???" >
+    <AdditionalSettings/>
+   </View0>
+  </Doc11>
  </DocsAndViews>
  <pluginList>
   <kdevbookmarks>

@@ -1,5 +1,7 @@
 #include <string.h>
 
+#include <qtimer.h>
+
 #include <kapplication.h>
 #include <klocale.h>
 
@@ -917,9 +919,30 @@ void Executer::execRandom( TreeNode* node ) {
 
 
 void Executer::execWait( TreeNode* node ) {
-// for this we can use sleep() or nanosleep()
-// but threadding would be much better
-// looking into theadding for this now
+    // check if number of parameters match, or else...
+    if( node->size() != 1 ) {
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), 0, 0, 5090);
+        return;
+    }
+    TreeNode* nodeX = node->firstChild(); // getting
+    execute(nodeX); // executing
+    float sec = nodeX->getValue().val;
+    StartWaiting(sec);
+}
+
+void Executer::StartWaiting(float sec) {
+    stopWaiting = false;
+    int msec = (int)( sec * 1000 ); // convert
+    // call a timer that sets stopWaiting to true when it runs off
+    QTimer::singleShot( msec, this, SLOT( slotStopWaiting() ) );
+    while (stopWaiting == false) {
+        // keep falling back to the main event loop while stopWaiting if false
+        kapp->processEvents();
+    }
+}
+
+void Executer::slotStopWaiting() {
+    stopWaiting = true;
 }
 
 void Executer::execWrapOn( TreeNode* node ) {

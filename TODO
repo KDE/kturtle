@@ -55,10 +55,7 @@ When the print aktion is called give the user a small-choise-kdialog: "print the
 
 cies: get all the commands in the logokeywords.*.xml file working properly, and remove the commands that are not needed:
 Need to work eventually:
-- repeat (very soon -- i will do it soon :-)
 - wait (idem)
-- random (idem, working on it)
-- fontsize/ fonttype (idem)
 - input/ inputwindow (idem)
 - sprite* (i'll maybe look into this when i have Qt3.3 which fixes the nasty crashbug that came across)
 - foreach-(word,...)-in-<string>-seperated-by-<string>-do-[-...-] needs a lot of work (i like the functionality)
