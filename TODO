@@ -1,5 +1,5 @@
 This is the TODO file of the KTurtle project, here the things are put that still need implmentation.
-This list is devided into BIG-TODOs, normalTODOs, TO-oeps-meDOitALLreadies and StillSubjectToDiscussions :-)
+This list is devided into URGENT, BIG-TODOs, normalTODOs, TO-oeps-meDOitALLreadies and StillSubjectToDiscussions :-)
 
 **** URGENT ****
 
@@ -8,7 +8,9 @@ cies: Next time the first things i'll do is finish off what lypanov started:
 - and fallbacks to the main eventloop (using pause/unpause's) so KTurtle wont be locked up during execution
 - implement the ability to stop execution!
 Sorry, cauze somthings dont work/work weird in the mean time :-)
-
+// somehow i dont seem to understand the TreeNode::const_iterator i vs. it vs various node-pointers yet
+// difficult matter :)
+--> just dont use the wait funk and you should not notice any weird things (if you do tell me!)
 
 06 Jan. 2004 - annma: the KConfig XT stuff is done. Please note that locate("data", "kturtle/data/logokeywords.en_US.xml") being the default xml file, it does not appear in the config file. If there is nothing in the config file in TranslationFilePath, then this file is always taken.
 Always load the xml file with
@@ -31,11 +33,18 @@ that will fix it :-)
 
 **** BIG-TODOs: ****
 
-cies: Implement either a Kate-part or a KTextEditor as editor widget.
-1) Kate-part, will merge it's GUI with ours (preferred by me)
-2) KTextEditor, looks like a simpler solution on fisrt sight
-I tried both and failed :( so it is now on HOLD [still hoping for a god-sent Kate-developer to make the decision and do the beginning of the implementation].
-A lot of other issues are more/less waiting for this one. I'm not working on editor-kaction-connections, Qfile->KURL migration, CLI-file-selection, recentfileshistory, linenumbers and highlighting cauz i might have to redo them in a month or so...
+cies: Implement either a Kate-part or a KTextEditor as editor widget. ANNMA DIDIT!!!
+Now the minor issues regarding the intergretion should be looked at
+- editor-kaction-connections
+- Qfile->KURL migration
+- CLI-file-selection (for mimetype eaz)
+- recentfileshistory
+- linenumbers
+- highlighting (a kturtle language sesitive highlight script)
+- loads for things sould be hidden and reordered (annma: we can do a shouut out)
+- some standadisation, annma i think you know most on encodings (what about MS-DOS <br>'s)
+- ...
+I *love* to see so much free funktionality in kturtle!
 
 
 cies: Make the interpreter (stolen from wsbasic.sf.net) (executer, parser, lexer, number and treenode) more native Qt.

@@ -387,7 +387,7 @@ void MainWindow::startExecution() {
         if ( ss_it == exe->endPoint() ) {
             stopExecution();
         } else {
-        
+        kdDebug(0)<<"MainWindow::slotExecute --- else"<<endl;
         }
     } else {
         slotStatusBar(i18n("Parsing failed!"), 1);
@@ -395,6 +395,7 @@ void MainWindow::startExecution() {
 }
 
 void MainWindow::stopExecution() {
+    kdDebug(0)<<"MainWindow::stopExecution"<<endl;
     run->setIcon("gear");
     run->setText( i18n("&Execute Commands") );
     slotStatusBar(i18n("Done."), 1);
@@ -402,11 +403,13 @@ void MainWindow::stopExecution() {
 }
 
 void MainWindow::slotPauseTimer(int msec) {
-    exe->Pause();
+    kdDebug(0)<<"MainWindow::slotPauseTimer: "<<msec<<endl;
+    // exe->Pause(); earlier?
     QTimer::singleShot( msec, this, SLOT( slotUnPauseExecution() ) );
 }
 
 void MainWindow::slotUnPauseExecution() {
+    kdDebug(0)<<"MainWindow::slotUnPauseTimer: "<<endl;
     exe->unPause();
     ss_it = exe->run( ss_it );
     if ( ss_it == exe->endPoint() ) {

@@ -1,9 +1,9 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <!DOCTYPE KDevPrjSession>
 <KDevPrjSession>
- <DocsAndViews NumberOfDocuments="8" >
+ <DocsAndViews NumberOfDocuments="10" >
   <Doc0 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/TODO" >
-   <View0 line="8" Type="???" >
+   <View0 line="45" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc0>
@@ -13,35 +13,45 @@
    </View0>
   </Doc1>
   <Doc2 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/canvas.cpp" >
-   <View0 line="13" Type="???" >
+   <View0 line="0" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc2>
   <Doc3 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/executer.h" >
-   <View0 line="38" Type="???" >
+   <View0 line="0" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc3>
   <Doc4 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/executer.cpp" >
-   <View0 line="55" Type="???" >
+   <View0 line="53" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc4>
-  <Doc5 context="ctx_qt" NumberOfViews="1" URL="file:/usr/share/qt3/doc/html/qobject.html#connect-2" >
+  <Doc5 context="ctx_qt" NumberOfViews="1" URL="file:/usr/share/qt3/doc/html/qpair.html" >
    <View0 Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc5>
   <Doc6 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/kturtle.cpp" >
-   <View0 line="392" Type="???" >
+   <View0 line="413" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc6>
   <Doc7 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/kturtle.h" >
-   <View0 line="54" Type="???" >
+   <View0 line="0" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc7>
+  <Doc8 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/treenode.h" >
+   <View0 line="0" Type="???" >
+    <AdditionalSettings/>
+   </View0>
+  </Doc8>
+  <Doc9 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/treenode.cpp" >
+   <View0 line="189" Type="???" >
+    <AdditionalSettings/>
+   </View0>
+  </Doc9>
  </DocsAndViews>
  <pluginList>
   <kdevbookmarks>

@@ -1,6 +1,7 @@
 #include <string.h>
 
 #include <kapplication.h>
+#include <kdebug.h>
 #include <klocale.h>
 
 #include "executer.h"
@@ -41,8 +42,18 @@ TreeNode::const_iterator Executer::run(TreeNode::const_iterator it) {
   TreeNode* node;
   TreeNode::const_iterator i;
   for(i = it; i != tree->end(); ++i ) {
-
+    kdDebug(0)<<" --0-- "<<endl;
     node = *i;
+// //     if( i == it && i != startPoint() ) {
+// //       // if we just picked up after a pause the next sibling node should be used
+// //       // or esle it keeps repeating
+// //       node = node->nextSibling();
+// //       ++i;
+// //     }
+
+// somehow i dont seem to understand the TreeNode::const_iterator i vs. it vs various node-pointers yet
+// 
+
     if( node->getType() == blockNode) {
       symtable main;
       symbolTables.push( main ); //new symbol table for main block
@@ -52,7 +63,9 @@ TreeNode::const_iterator Executer::run(TreeNode::const_iterator it) {
       string funcname = node->firstChild()->getName();
       functionTable[funcname] = node; //store for later use
     }
+    kdDebug(0)<<" --1-- "<<endl;
     if (m_pause) {
+      kdDebug(0)<<" --2-- "<<endl;
       return i;
     }
   }
@@ -225,6 +238,10 @@ void Executer::execBlock( TreeNode* node ){
   //execute all statements in block
   TreeNode::iterator i;
   for( i=node->begin(); i!=node->end(); ++i ){
+    if (m_pause) {
+      kdDebug(0)<<" --blockexec-- "<<endl;
+      return;
+    }
     execute( *i );
 
     if( bReturn || bBreak){
