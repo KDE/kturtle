@@ -1498,16 +1498,43 @@ When the turtle moves off a border of the canvas it is instantly taken to the op
 <title>Translator's Guide to KTurtle</title>
 
 <sect1 id="commands_trans">
-<title>How To Translate the commands</title>
+<title>How To Translate the Logo keywords (commands)</title>
 <para>
-how to translate the commands
+The commands files are located in <filename class="directory">kdeedu/kturtle/src/data/keywords/</filename>
+Each file is named
+<filename>
+logokeywords.code.xml</filename>
+where <emphasis>code</emphasis> is the iso code for your country (note that this must be a valid iso code).</para>
+<para>
+<itemizedlist>
+<listitem><para>
+Copy the logokeywords.en_US.xml file by renaming it to logokeywords.code.xml where code is your country code (2 or 4 letters ISO code)
+</para>
+</listitem>
+<listitem><para>Translate in your own language the content of the &lt;keyword&gt; tag i.e the information between &lt;keyword&gt; and &lt;/keyword&gt; whenever it's possible and the content of the &lt;alias&gt; tag, i.e the information between the &lt;alias&gt; and &lt;/alias&gt;. These contents are related as the alias is a shortcut for the keyword.</para>
+<para>
+For example translate 'while' in: &lt;keyword&gt;while&lt;/keyword&gt;.
+</para>
+<para>
+Please don't translate anything else and don't translate English words in &lt;command name="english_word"&gt;. These must stay in English.
+</para>
+</listitem>
+<listitem><para>Save your file as <emphasis role="bold">utf-8</emphasis> (in Kate, use Save As and change to utf8 in the box on the right of the file name)
+</para>
+</listitem>
+<listitem><para>Commit your file or send it to Anne-Marie.
+</para>
+</listitem>
+<listitem><para>In case of any doubt, please contact Anne-Marie Mahfouf <email>annemarie.mahfouf@free.fr</email> for more information.</para>
+</listitem>
+</itemizedlist>
 </para>
 </sect1>
 
 <sect1 id="examples_trans">
 <title>How To Translate the examples</title>
 <para>
-The examples are located in the KTurtle source in the <filename class="directory">>kdeedu/kturtle/examples</filename> folder.
+The examples are located in the KTurtle source in the <filename class="directory">kdeedu/kturtle/examples</filename> folder.
 </para>
 <para>
 <itemizedlist>
@@ -1515,7 +1542,7 @@ The examples are located in the KTurtle source in the <filename class="directory
 </listitem>
 <listitem><para>Copy the english example in this folder and rename the files with your language translation. This will allow users to easily and quickly understand what the example is about.</para>
 </listitem>
-<listitem><para>See in <filename class="directory">>kturtle/src/data/keywords/</filename> the file corresponding to your language. This file must be done before translating the examples. 
+<listitem><para>See in <filename class="directory">kturtle/src/data/keywords/</filename> the file corresponding to your language. This file must be done before translating the examples. 
 Replace in the example files all English keywords with your translated keywords.</para>
 </listitem>
 <listitem><para>Save your file as <emphasis role="bold">utf-8</emphasis> (in Kate, use Save As and change to utf8 in the box on the right of the file name)</para>
