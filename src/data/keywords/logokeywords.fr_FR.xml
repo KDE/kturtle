@@ -159,7 +159,7 @@
   
   <command name="setbgcolor">
     <keyword>couleurcanevas</keyword>
-    <alias>fcé</alias>
+    <alias>cca</alias>
   </command>
    
   <command name="resizecanvas">
