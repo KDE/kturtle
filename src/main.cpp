@@ -22,7 +22,7 @@
 #include "kturtle.h"
 
 static const char description[] =
-    I18N_NOOP("KTurtle - Educational programming environment using the Logo programming language");
+    I18N_NOOP("Educational programming environment using the Logo programming language");
 
 static const char version[] = "0.1";
 

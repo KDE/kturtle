@@ -253,7 +253,7 @@ void MainWindow::slotNewFile() {
 		i18n("The changes you have made to the file you "
 		"are currently working are not saved. "
 		"By continuing you will lose all the changes you have made."),
-		i18n("Unsaved file..."), i18n("Discard changes") );
+		i18n("Unsaved File"), i18n("Discard Changes") );
 		if (result != KMessageBox::Continue) {
 			return;
 		}
@@ -281,7 +281,7 @@ void MainWindow::loadFile(KURL url) {
 				"are currently working on (%1) are not saved. "
 				"By continuing you will lose all the changes "
 				"you have made.").arg( myFile ),
-				i18n("Unsaved file..."), i18n("Discard changes") );
+				i18n("Unsaved File"), i18n("Discard Changes") );
 				if (result != KMessageBox::Continue) {
 					return;
 				}
@@ -303,7 +303,7 @@ void MainWindow::loadFile(KURL url) {
 void MainWindow::slotOpenFile() {
 	slotNewFile();
 	KURL url = KFileDialog::getOpenURL( QString(":logo_dir"), QString("*.logo|") +
-	i18n("Logo files"), this, i18n("Open logo file...") );
+	i18n("Logo Files"), this, i18n("Open Logo File") );
 	if( !url.isEmpty() ) {
 		loadFile(url);
 	}
@@ -322,8 +322,8 @@ void MainWindow::slotOpenEx() {
 	KURL url;
 	url.setPath( locate("data", "kturtle/examples/" + Settings::logoLanguage() + "/"));
 	url = KFileDialog::getOpenURL( url.path(),
-		QString("*.logo|") + i18n("Logo Examples files"), this,
-		i18n("Open logo example file...") );
+		QString("*.logo|") + i18n("Logo Examples Files"), this,
+		i18n("Open Logo Example File") );
 	loadFile(url);
 }
 
@@ -359,7 +359,7 @@ void MainWindow::slotSaveAs() {
 	KURL url;
 	while(true) {
 		url = KFileDialog::getSaveURL( QString(":logo_dir"), QString("*.logo|") +
-		i18n("Logo files"), this, i18n("Save logo file...") );
+		i18n("Logo Files"), this, i18n("Save Logo File") );
 		if (url.isEmpty()) { // when cancelled the KFiledialog?
 			return;
 		}
@@ -367,7 +367,7 @@ void MainWindow::slotSaveAs() {
 			int result = KMessageBox::warningContinueCancel ( this,
 			i18n("A file named \"%1\" already exists.\n"
 			"Are you sure you want to overwrite it?").arg( url.url() ),
-			i18n("Overwrite existing file?"), i18n("Overwrite") );
+			i18n("Overwrite Existing File?"), i18n("Overwrite") );
 			if (result != KMessageBox::Continue) {
 				return;
 			}
@@ -381,7 +381,7 @@ void MainWindow::slotSaveCanvas() {
 	KURL url;
 	while(true) {
 		url = KFileDialog::getSaveURL( QString(":logo_dir"), QString("*.png|") +
-		i18n("Pictures"), this, i18n("Save canvas as picture...") );
+		i18n("Pictures"), this, i18n("Save Canvas as Picture") );
 		if (url.isEmpty()) { // when cancelled the KFiledialog?
 			return;
 		}
@@ -389,7 +389,7 @@ void MainWindow::slotSaveCanvas() {
 			int result = KMessageBox::warningContinueCancel( this,
 				i18n("A picture named \"%1\" already exists.\n"
 				"Are you sure you want to overwrite it?").arg(url.url()),
-				i18n("Overwrite existing picture?"), i18n("Overwrite") );
+				i18n("Overwrite Existing Picture?"), i18n("Overwrite") );
 			if (result != KMessageBox::Continue) {
 				return;
 			}
@@ -413,7 +413,7 @@ void MainWindow::slotSaveCanvas() {
 	if ( !ok ) {
 		kdWarning() << "KTurtle was unable to save the canvas drawing" << endl;
 		
-		QString caption = i18n("Unable to save image");
+		QString caption = i18n("Unable to Save Image");
 		QString text = i18n("KTurtle was unable to save the image to\n%1.").arg(url.prettyURL());
 		KMessageBox::error(this, text, caption);
 	}
@@ -424,7 +424,7 @@ void MainWindow::slotSaveCanvas() {
 void MainWindow::slotPrint() {
 	int result = KMessageBox::questionYesNoCancel( this,
 	i18n("Do you want to print the Logo code or the canvas?"),
-	i18n("Print code or canvas?"), i18n("Print the Logo code"), i18n("Print the canvas") );
+	i18n("Print Code or Canvas?"), i18n("Print Logo Code"), i18n("Print Canvas") );
 	if (result == KMessageBox::Yes) {
 		dynamic_cast<KTextEditor::PrintInterface*>(doc)->printDialog();
 		return;
@@ -449,7 +449,7 @@ void MainWindow::slotQuit() {
 		i18n("The changes you have made are not saved. "
 			"By quitting KTurtle you will lose all the changes "
 			"you have made."),
-		i18n("Unsaved file..."), i18n("Save"), i18n("Discard changes and Quit") );
+		i18n("Unsaved File"), i18n("Save"), i18n("Discard Changes && Quit") );
 		if (result == KMessageBox::Cancel) {
 			slotStatusBar(i18n("Quitting aborted."),  IDS_STATUS);
 			return;
