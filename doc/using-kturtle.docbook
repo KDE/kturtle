@@ -48,6 +48,9 @@ The canvas is the area where the commands are visualized, where the commands <qu
 
 <sect2 id="the-file-menu">
 <title>The <guimenu>File</guimenu> Menu</title>
+
+<sect3 id="file-new">
+<title>New</title>
   <variablelist>
     <varlistentry>
       <term><menuchoice>
@@ -60,6 +63,9 @@ The canvas is the area where the commands are visualized, where the commands <qu
       <listitem><para>Creates a new, empty &logo; file.</para></listitem>
     </varlistentry>
   </variablelist>
+</sect3>
+<sect3 id="file-open">
+<title>Open</title>
   <variablelist>
     <varlistentry>
       <term><menuchoice>
@@ -72,6 +78,9 @@ The canvas is the area where the commands are visualized, where the commands <qu
       <listitem><para>Opens a &logo; file.</para></listitem>
     </varlistentry>
   </variablelist>
+</sect3>
+<sect3 id="file-open-recent">
+<title>Open Recent</title>
   <variablelist>
     <varlistentry>
       <term><menuchoice>
@@ -81,6 +90,9 @@ The canvas is the area where the commands are visualized, where the commands <qu
       <listitem><para>Opens a &logo; file that has been opened recently.</para></listitem>
     </varlistentry>
   </variablelist>
+</sect3>
+<sect3 id="file-open-examples">
+<title>Open Examples</title>
   <variablelist>
     <varlistentry>
       <term><menuchoice>
@@ -94,8 +106,10 @@ The canvas is the area where the commands are visualized, where the commands <qu
 </menuchoice>.</para></listitem>
     </varlistentry>
   </variablelist>
+</sect3>
+<sect3 id="file-execute">
+<title>Execute</title>
   <variablelist>
-    <anchor id="file-execute" />
     <varlistentry>
       <term><menuchoice>
         <shortcut>
@@ -107,21 +121,10 @@ The canvas is the area where the commands are visualized, where the commands <qu
       <listitem><para>Starts the execution of the commands in the code editor.</para></listitem>
     </varlistentry>
   </variablelist>
+</sect3>
+<sect3 id="file-save">
+<title>Save</title>
   <variablelist>
-    <anchor id="file-stop" />
-    <varlistentry>
-      <term><menuchoice>
-        <shortcut>
-          <keycombo><keysym>Escape</keysym></keycombo>
-        </shortcut>
-        <guimenu>File</guimenu>
-        <guimenuitem>Stop Execution</guimenuitem>
-      </menuchoice></term>
-      <listitem><para>Stops the execution. This action is only enabled when the commands are actually executing.</para></listitem>
-    </varlistentry>
-  </variablelist>
-  <variablelist>
-    <anchor id="file-save" />
     <varlistentry>
       <term><menuchoice>
         <shortcut>
@@ -133,8 +136,10 @@ The canvas is the area where the commands are visualized, where the commands <qu
       <listitem><para>Saves the currently opened &logo; file.</para></listitem>
     </varlistentry>
   </variablelist>
+</sect3>
+<sect3 id="file-save-as">
+<title>Save As</title>
   <variablelist>
-    <anchor id="file-save-as" />
     <varlistentry>
       <term><menuchoice>
         <guimenu>File</guimenu>
@@ -143,8 +148,10 @@ The canvas is the area where the commands are visualized, where the commands <qu
       <listitem><para>Saves the currently opened &logo; file on a specified location.</para></listitem>
     </varlistentry>
   </variablelist>
+</sect3>
+<sect3 id="file-save-canvas">
+<title>Save Canvas</title>
   <variablelist>
-    <anchor id="file-save-canvas" />
     <varlistentry>
       <term><menuchoice>
         <guimenu>File</guimenu>
@@ -153,8 +160,52 @@ The canvas is the area where the commands are visualized, where the commands <qu
       <listitem><para>Saves the current drawing on canvas into an image.</para></listitem>
     </varlistentry>
   </variablelist>
+</sect3>
+<sect3 id="file-pause">
+<title>Pause</title>
   <variablelist>
-    <anchor id="file-print" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo><keysym>Pause</keysym></keycombo>
+        </shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>Pause Execution</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Pauses the execution. This action is only enabled when the commands are actually executing.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect3>
+<sect3 id="file-stop">
+<title>Stop</title>
+  <variablelist>
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo><keysym>Escape</keysym></keycombo>
+        </shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>Stop Execution</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Stops the execution. This action is only enabled when the commands are actually executing.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect3>
+<sect3 id="file-speed">
+<title>Execution Speed</title>
+  <variablelist>
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>File</guimenu>
+        <guimenuitem>Execution Speed</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Present a list of possible execution speeds, consisting of: Full Speed, Slow, Slower and Slowest. When the execution speed is set to 'Full Speed' (default) we can barely keep up with what is happening. Sometimes this behavior is wanted, but sometimes we want to keep track of the execution. In the latter case you want to set the execution speed to 'Slow', 'Slower' or 'Slowest'. When one of the slow modes is selected the current position of the executor will be shown in the editor.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect3>
+<sect3 id="file-print">
+<title>Print</title>
+  <variablelist>
     <varlistentry>
       <term><menuchoice>
         <shortcut>
@@ -166,8 +217,10 @@ The canvas is the area where the commands are visualized, where the commands <qu
       <listitem><para>Prints either the current code in the editor or the current drawing on the canvas.</para></listitem>
     </varlistentry>
   </variablelist>
+</sect3>
+<sect3 id="file-quit">
+<title>Quit</title>
   <variablelist>
-    <anchor id="file-quit" />
     <varlistentry>
       <term><menuchoice>
         <shortcut>
@@ -179,6 +232,7 @@ The canvas is the area where the commands are visualized, where the commands <qu
       <listitem><para>Quits &kturtle;.</para></listitem>
     </varlistentry>
   </variablelist>
+</sect3>
 </sect2>
 
 <sect2 id="the-edit-menu">

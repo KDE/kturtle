@@ -16,14 +16,14 @@ In this Getting Started guide we assume that the language of the &logo; commands
 
 <sect1 id="first-steps">
 <title>First steps with &logo;: meet the Turtle!</title>
-<para>You must have noticed the turtle is in the middle of the canvas: you are just about to learn how to control it using commands in the code editor.</para>
+<para>You must have noticed the turtle in the middle of the canvas: you are just about to learn how to control it using commands in the code editor.</para>
 
 <sect2 id="the-turtle-moves">
 <title>The Turtle Moves</title>
-<para>Let us start by getting the turtle moving. Our turtle can do 3 types of moves, (1) it can go forwards and backwards, (2) it can turn left and right and (3) it can go directly to a position on the screen. Try this for example:</para>
+<para>Let's start by getting the turtle moving. Our turtle can do 3 types of moves, (1) it can go forwards and backwards, (2) it can turn left and right and (3) it can go directly to a position on the screen. Try this for example:</para>
 <para>
 <screen>
-forward 90
+forward 100
 turnleft 90 
 </screen>
 Type or copy-paste the code to the code editor and execute it (using <link linkend="file-execute"><menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem></menuchoice></link>) to see the result.</para>
@@ -43,7 +43,7 @@ Type or copy-paste the code to the code editor and execute it (using <link linke
 </listitem>
 </orderedlist>
 
-<para>You will likely understand that <userinput>forward 90</userinput> commanded the turtle to move forward leaving a line, and that <userinput>turnleft 90</userinput> commanded the turtle to turn 90 <glossterm linkend="degrees">degrees</glossterm> to the left.</para>
+<para>You will likely understand that <userinput>forward 100</userinput> commanded the turtle to move forward leaving a line, and that <userinput>turnleft 90</userinput> commanded the turtle to turn 90 <glossterm linkend="degrees">degrees</glossterm> to the left.</para>
 
 <para>Please see the following links to the reference manual for a complete explanation of the new commands: <userinput>forward</userinput>, <userinput>backward</userinput>, <userinput>turnleft</userinput>, and <userinput>turnright</userinput>.</para>
 </sect2>
@@ -81,9 +81,11 @@ Again you can type or copy-paste the code to the code editor or open the <filena
 
 <para><userinput>canvassize 200,200</userinput> sets the canvas width and height to 200 <glossterm linkend="pixels">pixels</glossterm>. The width and the height are equal, so the canvas will be a square.</para>
 
-<para><userinput>canvascolor 0,0,0</userinput> makes the canvas black. <userinput>0,0,0</userinput> is an <glossterm linkend="rgb">RGB-combination</glossterm> where all values are set to <userinput>0</userinput>, which results in black.</para>
+<para><userinput>canvascolor 0,0,0</userinput> makes the canvas black. <userinput>0,0,0</userinput> is a <glossterm linkend="rgb">RGB-combination</glossterm> where all values are set to <userinput>0</userinput>, which results in black.</para>
 
-<para><userinput>pencolor 255,0,0</userinput> sets the color of the pen to red. <userinput>255,0,0</userinput> is an <glossterm linkend="rgb">RGB-combination</glossterm> where only the red value is set to <userinput>255</userinput> (fully on) while the others (green and blue) are set to <userinput>0</userinput> (fully off). This results in a bright shade of red.</para>
+<para><userinput>pencolor 255,0,0</userinput> sets the color of the pen to red. <userinput>255,0,0</userinput> is a <glossterm linkend="rgb">RGB-combination</glossterm> where only the red value is set to <userinput>255</userinput> (fully on) while the others (green and blue) are set to <userinput>0</userinput> (fully off). This results in a bright shade of red.</para>
+
+<para>If you do not understand the color values, makes sure to read the glossary on <glossterm linkend="rgb">RGB-combination</glossterm>s</para>
 
 <para><userinput>penwidth 5</userinput> sets the width (the size) of the pen to <userinput>5</userinput> <glossterm linkend="pixels">pixels</glossterm>. From now on every line the turtle draw will have a thickness of <userinput>5</userinput>, until we change the <userinput>penwidth</userinput> to something else.</para>
 
@@ -98,6 +100,7 @@ Again you can type or copy-paste the code to the code editor or open the <filena
 <para>At last another <userinput>go</userinput> command is used to move the turtle aside.</para>
 
 <para>Make sure you follow the links to the reference. The reference explains each command more thoroughly.</para>
+
 
 </sect2>
 </sect1>
@@ -135,7 +138,8 @@ Not yet written
 <para>
 Draw a maze for example
 </para>
-</sect1>-->
+</sect1>
+-->
 
 
 </chapter>
