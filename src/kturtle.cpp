@@ -62,7 +62,7 @@ void MainWindow::setupActions() {
     // Set up file menu
     KStdAction::openNew(this, SLOT(slotNewFile()), actionCollection());
     KStdAction::open(this, SLOT(slotOpenFile()), actionCollection());
-    // TODO implement a recent files list
+    /// @todo implement a recent files list
     // recenter = KStdAction::openRecent(this, SLOT(openRecent(int)), actionCollection());
     KStdAction::save(this, SLOT(slotSaveFile()), actionCollection());
     KStdAction::saveAs(this, SLOT(slotSaveFileAs()), actionCollection());
@@ -92,13 +92,13 @@ void MainWindow::setupActions() {
     m_fullscreen->setChecked(b_fullscreen);
     colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", 0, this, SLOT(slotColorPicker()),
       actionCollection(), "color_picker");
-    // TODO recent file list, but this needs KURL which will be implemented with KTextEditor 
+   ///@todo recent file list, but this needs KURL which will be implemented with KTextEditor 
     // m_recentFiles = KStdAction::openRecent(this, SLOT( slotOpen(const KURL&) ), actionCollection());
     
-    // TODO: make the EditorDock hideable, better to do it when on KTextEditor... 
+   ///@todo: make the EditorDock hideable, better to do it when on KTextEditor... 
     // (void)new KToggleAction(i18n("&Hide Editor"), 0, 0, this, SLOT(slotToggleHideEditor()),
     //   actionCollection(), "line_numbers"); 
-    // TODO: linenumbers; probably when going from KTextEdit to KTextEditor::Editor
+   ///@todo: linenumbers; probably when going from KTextEdit to KTextEditor::Editor
     // (void)new KToggleAction(i18n("Show &Line Numbers"), 0, 0, this, SLOT(slotLineNumbers()),
     //   actionCollection(), "line_numbers");
     // Going to KTestEditor will also bring -- eventually -- BiDi/RTL text support to us!!!!
@@ -139,10 +139,10 @@ void MainWindow::setupEditor() {
     EditorDock->setFrameShape(QFrame::ToolBarPanel);
     moveDockWindow(EditorDock, Qt::DockLeft);
     editor = new KTextEdit(EditorDock);
-    //TODO migrate from KTextEdit to KTextEditor::Editor (a 2.0 job?)
+    /// @todo migrate from KTextEdit to KTextEditor::Editor (a 2.0 job?)
     editor->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     editor->setTextFormat(PlainText);
-    //TODO make the editor look good and internationalize well
+    /// @todo make the editor look good and internationalize well
     //     probably when going from KTextEdit to KTextEditor::Editor
     EditorDock->setWidget(editor);
 }
@@ -152,7 +152,7 @@ void MainWindow::setupEditor() {
 
 // Implementation of most of the items in the File and Edit menus //
 //
-// TODO: most of the Edit functionality (Cut,Copy,Paste,Find,...) is still lacking.
+// / @todo: most of the Edit functionality (Cut,Copy,Paste,Find,...) is still lacking.
 // I will probably implement it when going from KTextEdit to KTextEditor::Editor,
 // because I'll have to reimplement it then anyway (it implements itself then actally).
 //
@@ -170,7 +170,8 @@ void MainWindow::slotNewFile() {
             return;
         }
     }
-    editor->setText("");
+    editor->clear();// clear the editor
+    TurtleView->slotClear();// clear the view
     CurrentFile = "";
     setCaption( i18n("Untitled") );
     slotStatusBar(i18n("New file... Happy coding!"), 1); 
@@ -213,7 +214,7 @@ void MainWindow::slotSaveFile() {
 }
 
 void MainWindow::slotSaveFileAs() {
-    //TODO migrate to KURL, probably when going from KTextEdit to KTextEditor::Editor
+    /// @todo migrate to KURL, probably when going from KTextEdit to KTextEditor::Editor
     QString filestr; // forward declaration (see end of scope)
     while(true) {
         filestr = KFileDialog::getSaveFileName(QString(":logo_dir"), QString("*.logo|") +
@@ -238,7 +239,7 @@ void MainWindow::slotSaveFileAs() {
 }
 
 void MainWindow::slotOpenFile() {
-    // TODO migrate to KURL, probably when going from KTextEdit to KTextEditor::Editor
+   ///@todo migrate to KURL, probably when going from KTextEdit to KTextEditor::Editor
     QString filestr = KFileDialog::getOpenFileName(QString(":logo_dir"), QString("*.logo|") +
       i18n("Logo files"), this, i18n("Open logo file..."));
     if ( !filestr.isEmpty() ) {
@@ -287,7 +288,7 @@ void MainWindow::slotQuit() {
             }
         }
     }
-    // saveOptions();   TODO: Implement KConfig
+    // saveOptions();   / @todo: Implement KConfig
     close();
 }
 
@@ -299,7 +300,7 @@ void MainWindow::slotRun() {
 //     run->setEnabled(true);
     slotStatusBar(i18n("Parsing commands..."), 1);
     
-    string txt=editor->text().latin1(); // TODO interpreter shouldnt need extra "[" & "]"
+    string txt=editor->text().latin1();///@todo interpreter shouldnt need extra "[" & "]"
     //QString txt(editor->text());
     stringbuf sbuf(txt , ios_base::in);
     istream in(&sbuf);
@@ -320,7 +321,7 @@ void MainWindow::slotRun() {
         connect( &exe, SIGNAL( Finished() ), this, SLOT( slotExecutionFinished() ) );
 
         // Connect the signals form Executer to the slots from Canvas:
-        // TODO TODO TODO Implement new funktions!!
+       ///@todo / @todo / @todo Implement new funktions!!
         connect( &exe, SIGNAL( Clear() ),
                  TurtleView, SLOT( slotClear() ) );
         connect( &exe, SIGNAL( Go(int, int) ),
@@ -381,7 +382,7 @@ void MainWindow::slotExecutionFinished() {
     slotStatusBar(i18n("Done."), 1);
 }
 
-// TODO: linenumbers; probably when going from KTextEdit to KTextEditor::Editor
+// / @todo: linenumbers; probably when going from KTextEdit to KTextEditor::Editor
 // void MainWindow::slotLineNumbers() {
 //     editor->toggleLineNumbersOn();
 // }
@@ -395,7 +396,7 @@ void MainWindow::slotToggleFullscreen() {
     } else {
         if( isFullScreen() ) {
             // showNormal() may also do unminimize, unmaximize etc.
-            // solution: TODO previous state should be reminded...
+            // solution: / @todo previous state should be reminded...
             showNormal();
         }
     }

@@ -28,8 +28,8 @@ SUBGROUPING            = YES
 #---------------------------------------------------------------------------
 # Build related configuration options
 #---------------------------------------------------------------------------
-EXTRACT_ALL            = NO
-EXTRACT_PRIVATE        = NO
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
 EXTRACT_STATIC         = NO
 EXTRACT_LOCAL_CLASSES  = YES
 HIDE_UNDOC_MEMBERS     = NO
@@ -61,7 +61,7 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = /home/cies/src/kturtle
+INPUT                  =
 FILE_PATTERNS          = *.c \
                          *.cc \
                          *.cxx \
@@ -105,7 +105,7 @@ FILTER_SOURCE_FILES    = NO
 #---------------------------------------------------------------------------
 # configuration options related to source browsing
 #---------------------------------------------------------------------------
-SOURCE_BROWSER         = NO
+SOURCE_BROWSER         = YES
 INLINE_SOURCES         = NO
 STRIP_CODE_COMMENTS    = YES
 REFERENCED_BY_RELATION = YES
@@ -140,7 +140,7 @@ TREEVIEW_WIDTH         = 250
 #---------------------------------------------------------------------------
 # configuration options related to the LaTeX output
 #---------------------------------------------------------------------------
-GENERATE_LATEX         = YES
+GENERATE_LATEX         = NO
 LATEX_OUTPUT           = latex
 LATEX_CMD_NAME         = latex
 MAKEINDEX_CMD_NAME     = makeindex
@@ -171,7 +171,7 @@ MAN_LINKS              = NO
 #---------------------------------------------------------------------------
 # configuration options related to the XML output
 #---------------------------------------------------------------------------
-GENERATE_XML           = yes
+GENERATE_XML           = NO
 XML_OUTPUT             = xml
 XML_SCHEMA             = 
 XML_DTD                = 
