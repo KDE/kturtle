@@ -1,8 +1,0 @@
-# Zeichne ein Quadrat!
-
-zurücksetzen
-wiederhole 4 
-[
-  vorwärts 100 
-  nachlinks  90
-]

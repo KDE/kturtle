@@ -1,8 +1,0 @@
-# Zeichne ein Dreieck!
-
-zurücksetzen
-
-wiederhole 3 [
-  vorwärts 100
-  nachrechts 120
-]
