@@ -74,6 +74,7 @@ class MainWindow : public KParts::MainWindow
     /// show/hide the line numbers, from KTextEditor
     void slotToggleLineNumbers();
     /// get the cursor position indicated in the statusbar
+    void slotShowEditor();
     void slotCursor();
 
     void slotIndent();
@@ -128,6 +129,7 @@ class MainWindow : public KParts::MainWindow
     KAction            *newAction;
     KToggleAction      *m_fullscreen;
     KToggleAction      *colorpicker;
+    KToggleAction      *showEditor;
     KRecentFilesAction * m_recentFiles;
     KAction            *ContextHelp;
     
@@ -144,6 +146,7 @@ class MainWindow : public KParts::MainWindow
     
     Executer           *exe;
     bool                b_fullscreen:1;
+    bool                b_editorShown:1;
     bool                allreadyError;
     bool                executing;
 

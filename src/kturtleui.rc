@@ -25,8 +25,6 @@
       <Action name="edit_copy" />
       <Action name="edit_paste" />
       <Separator />
-      <Action name="set_insert"/>
-      <Separator />
       <Action name="edit_find" />
       <Action name="edit_find_next" />
       <Action name="edit_replace" />
@@ -36,6 +34,10 @@
       <Action name="full_screen" />
       <Separator />
       <Action name="line_numbers" />
+      <Separator />
+      <Action name="show_editor" />
+      <Merge name="StandardToolBarMenuHandler" />
+      <Action name="options_show_statusbar" />
     </Menu>
     
     <Menu name="tools" noMerge="1"><text>&amp;Tools</text>
@@ -50,9 +52,6 @@
     </Menu>
     
      <Menu name="settings" noMerge="1"><text>&amp;Settings</text>
-     <Merge name="StandardToolBarMenuHandler" />
-     <Action name="options_show_statusbar"/>
-    <Separator/>
       <Action name="options_configure_keybinding"/>
       <Action name="options_configure_toolbars"/>
       <Action name="set_confdlg" />

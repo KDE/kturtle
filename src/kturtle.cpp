@@ -125,6 +125,8 @@ void MainWindow::setupActions() {
     new KToggleAction(i18n("Show &Line Numbers"), 0, Qt::Key_F11, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
     m_fullscreen = KStdAction::fullScreen(this, SLOT( slotToggleFullscreen() ), ac, this, "full_screen");
     m_fullscreen->setChecked(b_fullscreen);
+    showEditor = new KToggleAction(i18n("Show &Editor"), 0, 0, this, SLOT(slotShowEditor()), ac, "show_editor");
+    showEditor->setChecked(true);
     // Set up tools actions
     colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", 0, this, SLOT(slotColorPicker()), ac, "color_picker");
     new KAction(i18n("&Indent"), "indent", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
@@ -184,7 +186,7 @@ void MainWindow::setupStatusBar() {
     statusBar()->insertItem("", IDS_INS, 0, true);
     // fill the statusbar 
     slotStatusBar(i18n("Welcome to KTurtle..."),  IDS_STATUS); // the message part
-    slotStatusBar(i18n(" Line: %1 Col: %2 ").arg(1).arg(1), IDS_STATUS_CLM);
+    slotStatusBar(i18n(" Line: %1 Column: %2 ").arg(1).arg(1), IDS_STATUS_CLM);
     slotStatusBar(i18n("INS"), IDS_INS);
     // and...
     statusBar()->show();
@@ -587,6 +589,17 @@ void MainWindow::slotUpdateCanvas() {
     // but i had no luck :(       this worked though
     TurtleView->hide();
     TurtleView->show();
+}
+
+void MainWindow::slotShowEditor() {
+    if ( EditorDock->isHidden() ) {
+        EditorDock->show();
+        b_editorShown = true;
+    } else {
+        EditorDock->hide();
+        b_editorShown = false;
+    }
+    showEditor->setChecked(b_editorShown);
 }
 
 void MainWindow::slotColorPicker() {
