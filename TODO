@@ -5,7 +5,7 @@ BUGS
 - when there is an error, display only the most descriptive error
 - with long lines and wrapping the canvas can get into a endless loop -> 100%CPU
        i tried a lot to fix this allready, maybe my solution needs some tuning :)
-       maybe i should just catch errors and break the loop :)
+       maybe i should just catch errors and break the loop :)  >>> see BUGGING LOGO SCRIPTS BELOW
 - accept the making and calling of parameterless 'learned' commands (without using the '()')
 - compile problems with gcc3.4 because std-c++ and qt-funktions are mixed
 - get the manual intergrated in the program
@@ -214,7 +214,7 @@ For the settingsmenu: if you know a better string than 'initial canvas size' (ii
 
 BUGS: TROUBLE LOGO SCRIPTS!!!!!
 
-# due to lines
+# due to lines        <<<<<<<< this one seems to have solved it self :))
 reset
 canvassize 350,350
 canvascolor 0,0,0
@@ -225,7 +225,7 @@ for x = 1 to 255 [
   tr x / 65
 ]
 
-# due to lines
+# due to lines        <<<  this one not :(
 reset
 canvassize 350,350
 center
@@ -234,8 +234,5 @@ for x = 1 to 255 [
   tr x
 ]
 
-# hmm... this used to work
-clear
-forward 10
 
 

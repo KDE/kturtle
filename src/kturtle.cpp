@@ -919,7 +919,17 @@ void MainWindow::slotConfigureToolbars() {
 // BEGIN help related functions
 
 void MainWindow::slotContextHelp() {
-	kapp->invokeHelp(helpKeyword, "kturtle/reference.html#"+helpKeyword, "");
+// somehow the 'anchor' parameter of invokeHelp is not working correcctly
+// this should most likely be filed as a bug in KHelpCenter...
+// The other option is to Just use the code from kapplication.cpp:2051
+// and compose the helpUrl:
+// "help:/"+name()+"/"+"{reference,container,glorrery,etc.}"+"#"+translate(helpKeyword);
+// our self... dessision/chat with the creators of KH.C. needed :))
+// Ooh... and we also want a DCOPmethod to close the sidebar since it over-informs...
+// Ooh2... we must probably put the code to translate commands in a seperate .cpp/.h since
+// we want to use it in several places (i.e. here too)
+	kdDebug(0)<<"helpKeyword = "<<helpKeyword<<endl;
+	kapp->invokeHelp(helpKeyword, "", "");
 }
 
 

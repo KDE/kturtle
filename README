@@ -2,12 +2,12 @@ Hi,
 
 you are reading the README of the 'KTurtle' project that is initiated
 and maintained by Cies Breijs (cies-AT-showroommama-DOT-nl). In this
-README I will tell you how to get KTurtle running on you computer.
+README I will tell you how to get KTurtle running on your computer.
 
 
 
 1. Requirements
-You need to have KDE 3.x. I don't know if it will work with different
+You need to have KDE 3.2 or higher. I don't know if it will work with different
 KDE versions since I did not test it. If it does not work please see
 the Questions section below.
 
@@ -20,9 +20,9 @@ The simplest way to compile this package is:
      `./configure --prefix=<PATH>' to configure the package for your
      system.
      
-     Make sure to replace <PATH> by the path you have you KDE apps
-     installed. This is mostly '/usr', but sometimes '/opt/kde'.
-     If you dont know what to do try: `./configure --prefix=/usr'
+     Make sure to replace <PATH> by the path wher your KDE apps are
+     installed. This is mostly '/usr', but sometimes (for SuSE) '/opt/kde'.
+     If you dont know what to do try: `./configure --prefix=/usr'. If you don't give a --prefix the default path /usr/local will be used, resulting that KTurtle will no be with your other apps, and may not run smoothly.
 
      Running `configure' takes a while.  While running, it prints some
      messages telling which features it is checking for. If the
@@ -57,6 +57,7 @@ NOTE: you often need 'root' privilliges to do the following!
 If you want to uninstall KTurtle you should type 'make uninstall' when
 in the source code directory.
 
+Please note that 'make install' will install KTurtle to the path that is provided to the './configure' command with the '--prefix' flag! 
 
 
 4. Running
@@ -79,7 +80,7 @@ question has allready been asked.
 
 You can also mail questions to the mail address you find in the
 beginning of this document. Or visit the KTurtle website:
-http://kturlte.sf.net
+http://kturlte.sf.net ,   or    http://edu.kde.org/kturtle
 and post it in the forum.
 
 
