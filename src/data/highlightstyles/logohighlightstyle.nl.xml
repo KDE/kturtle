@@ -55,7 +55,6 @@
     <item> lettertype </item> 
     <item> lettermaat </item>
     <item> gok </item> 
-    <item> wacht </item> 
     <item> wikkelaan </item> 
     <item> wikkeluit </item> 
     <item> alsnieuw </item> 
@@ -74,6 +73,7 @@
     <item> anders </item>
     <item> geefdoor </item>
     <item> kap </item>
+    <item> wacht </item> 
   </list>
 
   <list name="boolops">

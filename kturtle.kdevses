@@ -1,52 +1,57 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <!DOCTYPE KDevPrjSession>
 <KDevPrjSession>
- <DocsAndViews NumberOfDocuments="9" >
-  <Doc0 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/executer.cpp" >
-   <View0 line="9" Type="???" >
-    <AdditionalSettings Top="2" Width="958" Attach="1" Height="544" Left="2" MinMaxMode="0" />
+ <DocsAndViews NumberOfDocuments="10" >
+  <Doc0 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/kturtle.h" >
+   <View0 line="66" Type="???" >
+    <AdditionalSettings Top="2" Width="952" Attach="1" Height="544" Left="2" MinMaxMode="0" />
    </View0>
   </Doc0>
-  <Doc1 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/kturtle.h" >
-   <View0 line="66" Type="???" >
+  <Doc1 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/kturtle.cpp" >
+   <View0 line="510" Type="???" >
     <AdditionalSettings Top="2" Width="952" Attach="1" Height="580" Left="2" MinMaxMode="0" />
    </View0>
   </Doc1>
-  <Doc2 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/kturtle.cpp" >
-   <View0 line="851" Type="???" >
-    <AdditionalSettings Top="2" Width="954" Attach="1" Height="544" Left="2" MinMaxMode="0" />
+  <Doc2 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/TODO" >
+   <View0 line="10" Type="???" >
+    <AdditionalSettings Top="2" Width="952" Attach="1" Height="544" Left="2" MinMaxMode="0" />
    </View0>
   </Doc2>
-  <Doc3 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/executer.h" >
-   <View0 line="41" Type="???" >
+  <Doc3 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/parser.h" >
+   <View0 line="59" Type="???" >
     <AdditionalSettings Top="2" Width="952" Attach="1" Height="544" Left="2" MinMaxMode="0" />
    </View0>
   </Doc3>
-  <Doc4 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/doc/kturtle/index.docbook" >
-   <View0 line="1106" Type="???" >
+  <Doc4 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/parser.cpp" >
+   <View0 line="48" Type="???" >
     <AdditionalSettings Top="2" Width="952" Attach="1" Height="544" Left="2" MinMaxMode="0" />
    </View0>
   </Doc4>
-  <Doc5 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/TODO" >
-   <View0 line="296" Type="???" >
+  <Doc5 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/number.h" >
+   <View0 line="30" Type="???" >
     <AdditionalSettings Top="2" Width="952" Attach="1" Height="544" Left="2" MinMaxMode="0" />
    </View0>
   </Doc5>
-  <Doc6 context="ctx_qt" NumberOfViews="1" URL="file:/usr/qt/3/doc/html/qcanvasitem.html" >
-   <View0 Type="???" >
-    <AdditionalSettings Top="-10000" Width="1" Attach="1" Height="1" Left="-10000" MinMaxMode="0" />
+  <Doc6 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/number.cpp" >
+   <View0 line="0" Type="???" >
+    <AdditionalSettings Top="2" Width="952" Attach="1" Height="544" Left="2" MinMaxMode="0" />
    </View0>
   </Doc6>
-  <Doc7 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/canvas.cpp" >
-   <View0 line="243" Type="???" >
+  <Doc7 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/lexer.h" >
+   <View0 line="154" Type="???" >
     <AdditionalSettings Top="2" Width="952" Attach="1" Height="544" Left="2" MinMaxMode="0" />
    </View0>
   </Doc7>
-  <Doc8 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/data/keywords/logokeywords.en_US.xml" >
-   <View0 line="199" Type="???" >
+  <Doc8 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdenonbeta/kturtle/src/lexer.cpp" >
+   <View0 line="45" Type="???" >
     <AdditionalSettings Top="2" Width="952" Attach="1" Height="544" Left="2" MinMaxMode="0" />
    </View0>
   </Doc8>
+  <Doc9 context="ctx_qt" NumberOfViews="1" URL="file:/usr/qt/3/doc/html/qtextstream.html#read" >
+   <View0 Type="???" >
+    <AdditionalSettings Top="2" Width="952" Attach="1" Height="551" Left="2" MinMaxMode="0" />
+   </View0>
+  </Doc9>
  </DocsAndViews>
  <pluginList>
   <kdevbookmarks>

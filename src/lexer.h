@@ -121,7 +121,7 @@ class Lexer {
     
     //constructor and destructor
     //==========================
-    Lexer( istream& );
+    Lexer( QTextIStream& );
     ~Lexer();
     QString translateCommand(string s);
   
@@ -152,7 +152,7 @@ class Lexer {
       
     //private locals
     //==============
-    istream* in;
+    QTextIStream* in;
     unsigned int row,col,prevCol;
 };
 

@@ -37,6 +37,7 @@ class Canvas : public QCanvasView
   
   public slots:
     void slotClear();
+    void slotClearSpriteToo();
     void slotGo(int x, int y);
     void slotGoX(int x);
     void slotGoY(int y);

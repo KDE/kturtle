@@ -19,9 +19,10 @@ bugreport(log):column will not be incremented enough when numbers are read
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
- 
+
 #include <qdom.h>
 #include <qfile.h>
+#include <qstring.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -33,9 +34,8 @@ bugreport(log):column will not be incremented enough when numbers are read
 Lexer::~Lexer() {
 }
 
-Lexer::Lexer(istream& ifstr) {
+Lexer::Lexer(QTextIStream& in) {
   getKeywords();
-  in = &ifstr;
   row = 1;
   col = 1;
   prevCol=1;
@@ -51,7 +51,9 @@ unsigned int Lexer::getCol() {
 }
 
 int Lexer::getChar() {
-  int i = in->get();
+  // int i = in->get();
+  QChar i;
+  in >> i;
   if( i == '\n' ) {
     row++;
     prevCol = col;

@@ -58,6 +58,9 @@
     <alias>rpt</alias>
   </command>
 
+  <command name="wait">
+    <keyword>wait</keyword>
+  </command>
 
 <!-- boolean operators -->  
   <command name="and">
@@ -204,10 +207,6 @@
   
   <command name="random">
     <keyword>random</keyword>
-  </command>
-  
-  <command name="wait">
-    <keyword>wait</keyword>
   </command>
   
   <command name="wrapon">

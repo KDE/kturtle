@@ -71,7 +71,10 @@
   <command name="not">
     <keyword>niet</keyword>
   </command>
-  
+
+  <command name="wait">
+    <keyword>wacht</keyword>
+  </command>
   
 <!-- the meta command --> 
   <command name="learn">
@@ -204,10 +207,6 @@
   
   <command name="random">
     <keyword>gok</keyword>
-  </command>
-  
-  <command name="wait">
-    <keyword>wacht</keyword>
   </command>
   
   <command name="wrapon">

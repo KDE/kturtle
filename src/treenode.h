@@ -28,7 +28,7 @@ bugreport(log):/
 
 #include "number.h"
 
-//using namespace std;
+using namespace std;
 
 //BUGS: prevSibling and nextSibling sometimes segfault and are not optimal, in short, don't use em! :)
 

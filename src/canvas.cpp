@@ -216,27 +216,22 @@ QPoint Canvas::Offset(int x, int y) {
 }
 
 void Canvas::loadSpriteFrames(QString name) {
-	// read the pixmaps name.0001.png, name.0002.png, ..., name.0035.png: the different rotations
-	// #0000 for 0 or 360, #0001 for 10, #0002 for 20, ..., #0018 for 180, etc.
-	
-	// WARNING if the dir doesnt exists the app will crash!!!
-	// This will be fixed in qt3.3 and in the current qt-copy
-	//     QCanvasPixmapArray* SpriteFrames = new QCanvasPixmapArray("/home/cies/logo/.sprites/"+name+".%1.png", 36);
-	//     QCanvasSprite* Sprite = new QCanvasSprite(SpriteFrames, TurtleCanvas);
-		QPixmap turtlePix = QPixmap(locate("data","kturtle/pics/turtle.0000.png") );
-		if (turtlePix.isNull() )
-		{
-			QString mString=i18n("The turtle picture is not found.\n"
-					"Check your installation, please!");
-			KMessageBox::sorry( this, mString,
-					i18n("Error") );
-			exit(1);
-		}
-	QString spritePath = locate("data","kturtle/pics/"+name+".0000.png");
-	spritePath.remove(".0000.png");
-	QCanvasPixmapArray* SpriteFrames = new QCanvasPixmapArray(spritePath+".%1.png", 36);
-	Sprite = new QCanvasSprite(SpriteFrames, TurtleCanvas);
-	Sprite->setZ(250);
+  // read the pixmaps name.0001.png, name.0002.png, ..., name.0035.png: the different rotations
+  // #0000 for 0 or 360, #0001 for 10, #0002 for 20, ..., #0018 for 180, etc.
+    
+  // WARNING if the dir doesnt exists the app will crash!!!
+  // This will be fixed in qt3.3 and in the current qt-copy
+  QPixmap turtlePix = QPixmap(locate("data","kturtle/pics/turtle.0000.png") );
+  if ( turtlePix.isNull() ) {
+    QString mString = i18n("The turtle picture is not found.\nPlease check your installation!");
+    KMessageBox::sorry( this, mString, i18n("Error") );
+    exit(1);
+  }
+  QString spritePath = locate("data","kturtle/pics/"+name+".0000.png");
+  spritePath.remove(".0000.png");
+  QCanvasPixmapArray* SpriteFrames = new QCanvasPixmapArray(spritePath+".%1.png", 36);
+  Sprite = new QCanvasSprite(SpriteFrames, TurtleCanvas);
+  Sprite->setZ(250);
 }
 
 void Canvas::updateSpritePos() {
@@ -244,17 +239,17 @@ void Canvas::updateSpritePos() {
 }
 
 void Canvas::updateSpriteAngle() {
-	int i = (int)( ( (-Dir*180/PI + 90) / 10 ) + .5 );
-	while (i > 36 || i < 0) {
-		if (i > 36) {
-		i = i - 36;
-		}
-		if (i < 0) {
-		i = i + 36;
-		}
-	}
-	Sprite->setFrame(i);
-	updateSpritePos(); // different rotation have different sizes
+    int i = (int)( ( (-Dir*180/PI + 90) / 10 ) + .5 );
+    while (i > 36 || i < 0) {
+        if (i > 36) {
+            i = i - 36;
+        }
+        if (i < 0) {
+            i = i + 36;
+        }
+    }
+    Sprite->setFrame(i);
+    updateSpritePos(); // pixmaps of different rotations have different sizes
 }
 
 // Slots:
@@ -269,6 +264,16 @@ void Canvas::slotClear() {
 		}
 		}
 	}
+}
+
+void Canvas::slotClearSpriteToo() {
+    QCanvasItemList list = canvas()->allItems();
+    QCanvasItemList::Iterator it = list.begin();
+    for (; it != list.end(); ++it) {
+        if ( *it ) {
+          delete *it;
+        }
+    }
 }
 
 void Canvas::slotGo(int x, int y) {
@@ -431,8 +436,8 @@ void Canvas::slotWrapOff() {
 }
 
 void Canvas::slotReset() {
-	slotClear();
-	initValues();
+    slotClearSpriteToo();
+    initValues();
 }
 
     

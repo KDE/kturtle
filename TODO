@@ -7,7 +7,8 @@ BUGS
        i tried a lot to fix this allready, maybe my solution needs some tuning :)
        maybe i should just catch errors and break the loop :)
 - accept the making and calling of parameterless 'learned' commands (without using the '()')
-
+- compile problems with gcc3.4 because std-c++ and qt-funktions are mixed
+- get the manual intergrated in the program
 
 
 **** URGENT ****
@@ -53,9 +54,8 @@ Right now they are a mixture of standard-CLI-C++ and Qt thingies (i put the Qt t
 
 
 cies: The manual...
-Au! That is a big one, lets first decide on the chapter structure. See the "StillSubjectToDiscussions" below...
->>>>> i want to use color (the same a the highlighing scheme) in the docu... i have to find out if that is possible
-I'm still weighting docbook with pain HTML... since the whole KHelpCenter in a bloated beast.
+
+        I DID IT :)) :) :))    --> now the intergration with KTurtle (contaxt menu and several 'help' buttons in dialogs)
 
 
 
@@ -104,7 +104,7 @@ would be nice (not in yet):
 - round()
 - true and fasle as cunfiguarables
 
-- <joke> and what about a 'goto' command ( you can never make them mistakes young enough, muahoahoaaaa >:-} ) <joke> well?
+- <joke> and what about a 'goto' command ( you can never make them mistakes young enough, muahoahoaaaa >:-} ) </joke> well?
 
 
 
@@ -172,59 +172,6 @@ cies: That is a good plan! (you can tell your daughter that the plan -- just lik
 
 
 
-
-THE MENU:
-File:
-  new
-  open
-  open recent
-  open example
-  -
-  execute
-  -
-  save
-  save as
-  -
-  print (should pop-up choise)
-  -
-  quit
-
-Edit
-  undo
-  redo
-  -
-  cut
-  copy
-  paste
-  -
-  find
-  replace
-  
-View  
-  fullscreen
-  -
-  linenumbers
-  -
-  hide editor
-
-Tools
-  colorpicker
-  fontchooser
-  -
-  indent
-  un-indent
-  clean indent
-  -
-  comment
-  uncomment
-
-Settings
-  configure kturtle
-  conf shortcuts
-  >>> no conf editor too much options
-  
-Help
-  +context help
   
 
 
@@ -244,67 +191,6 @@ cies: I think the syntax of the language should first be more mature, it changes
 For the settingsmenu: if you know a better string than 'initial canvas size' (iirc) feel free to... etc.
 
 
-
-
-Here a small start with the manual chapters, FEEDBACK NEEDED!
-
-THE MANUAL
-
-starting logo
-  the mainwindow
-     the canvas
-     the text input
-     the toolbar
-     the menus
-        file
-	edit
-	view
-	tools
-	   colorpicker
-           fontchooser
-	settings
-           configuring klogo
-               the language
-	       initial values
-	help
-	   using the help
-  
-
-the basics of logo programming
-     first steps... (just a few commands: print, repeat, fw-tr) [just to show how easy it is!]
-     simple calculations: 1+1=...
-     variables: creating 'number containers'
-     strings: creating 'text containers'
-     logic: asking the computer simple questions
-        
-        and/or/not: combining simple questions 
-     if ... do: logic conditions
-        if ... do ... else
-     loops: repeat and friends
-        repeat ... times: the simplelest loop
-	while ... do: a conditioned loop
-        for ... to ... do: a counting loop
-     moving the turlte
-        forward and backward
-        turnleft and turnright
-	direction
-	go/gox/goy
-	center
-     the turtle has a pen
-        penup/pendown
-        pencolor
-	penwidth
-     the canvas
-        canvascolor
-	clean
-	canvassize
-     sprites: turtle has new clothes
-        hiding the turtle
-	
-
-     learn: your own commands!
-        simplify
-	use others code
      
  
 

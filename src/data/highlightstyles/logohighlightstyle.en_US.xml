@@ -55,7 +55,6 @@
     <item> fonttype </item> 
     <item> fontsize </item>
     <item> random </item> 
-    <item> wait </item> 
     <item> wrapon </item> 
     <item> wrapoff </item> 
     <item> reset </item> 
@@ -74,6 +73,7 @@
     <item> else </item>
     <item> return </item>
     <item> break </item>
+    <item> wait </item>
   </list>
 
   <list name="boolops">

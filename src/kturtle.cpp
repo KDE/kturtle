@@ -18,7 +18,7 @@
  
 // BEGIN includes and defines
 
-#include <stdlib.h>
+// #include <stdlib.h>
 
 #include <qregexp.h>
 #include <qpainter.h>
@@ -498,10 +498,13 @@ void MainWindow::startExecution() {
 	
 	kapp->processEvents();
 	
-	string txt = ( ei->text() + "\n" ).latin1(); // the /n is needed for proper parsing
-	stringbuf sbuf(txt, ios_base::in);
-	istream in(&sbuf);
-	Parser parser(in);
+	QString txt = ( ei->text() + "\n" ).latin1(); // the /n is needed for proper parsing
+// 	stringbuf sbuf(txt, ios_base::in);
+// 	istream in(&sbuf);
+
+  QTextIStream in(&txt);
+
+	Parser parser(&in);
 	connect( &parser, SIGNAL(ErrorMsg(QString, uint, uint, uint) ), 
 		this, SLOT(slotErrorDialog(QString, uint, uint, uint) ) );
 	
