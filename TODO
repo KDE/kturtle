@@ -33,7 +33,7 @@ My [cies] TODO list (in this order!):
 		print "Hello"
 	]
 should print Hello, but doesn't. Just a < 5 works correctly, and the same for just b == 5.
------------> i layed the groundwork to fix this when i refactores the interpreter
+-----------> i layed the groundwork to fix this when i refactored the interpreter, main problem: and or and not have never been fully implemented
 
 
 learn multiplyBySelf n
