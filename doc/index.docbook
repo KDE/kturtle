@@ -66,7 +66,7 @@ KTurtle is an educational programming environment using the Logo programming lan
 
 <para>KTurtle is an educational programming environment using the Logo programming language. It tries to make programming as easy and touchable possible. This makes KTurtle suitable for teaching kids the basics of math, geometry and... programming. The commands used to program are in the style of the Logo programming language. The unique feature of Logo is that the commands are often translated into the speaking language of the programmer.</para>
 
-<para>KTurtle is named after 'the turlte' that play a central role in the programming environment. The turlte is programmed,  using the Logo commands,  to draw a picture on the canvas.</para>
+<para>KTurtle is named after 'the turtle' that play a central role in the programming environment. The turtle is programmed,  using the Logo commands,  to draw a picture on the canvas.</para>
 
 <sect1 id="what-is-logo">
 <title>What is Logo?</title>
@@ -754,7 +754,7 @@ If you type 2 instructions in the editor, the turtle will execute them one after
 <screen>
 reset
 </screen>
-everything will be back to defaults: the canvas will be cleared, the pen color becomes black, the background color comes back to white and the turtle goes back in the middle of the canvas and wait for your instructions.
+everything will be back to default: the canvas will be cleared, the pen color becomes black, the background color comes back to white and the turtle goes back in the middle of the canvas and wait for your instructions.
 </para>
 <para>
 You can also clean the canvas but leave the Turtle where it is and keep the current color of the pen. This is done with the
@@ -764,7 +764,7 @@ clear
 command.
 </para>
 <para>
-Usually, you will start with one of these commands, preferably <emphasis>reset</emphasis> to ensure the Turtle playground is clean.
+Usually, you will start your program with one of these commands, preferably <emphasis>reset</emphasis> to ensure the Turtle playground is clean.
 </para>
 </sect2> 
 <sect2 id="printing">
@@ -866,7 +866,7 @@ Draw a maze for example
     <varlistentry>
       <term>forward</term>
       <listitem><para><screen>forward X</screen>
-      <userinput>forward</userinput> moves the turtle forward by the amount of X pixels. When the pen is down the turlte will leave a trail. <userinput>forward</userinput> can be abbreviated to <userinput>fw</userinput></para></listitem>
+      <userinput>forward</userinput> moves the turtle forward by the amount of X pixels. When the pen is down the turtle will leave a trail. <userinput>forward</userinput> can be abbreviated to <userinput>fw</userinput></para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -874,7 +874,7 @@ Draw a maze for example
     <varlistentry>
       <term>backward</term>
       <listitem><para><screen>backward X</screen>
-      <userinput>backward</userinput> moves the turtle backward by the amount of X pixels. When the pen is down the turlte will leave a trail. <userinput>backward</userinput> can be abbreviated to <userinput>bw</userinput>.</para></listitem>
+      <userinput>backward</userinput> moves the turtle backward by the amount of X pixels. When the pen is down the turtle will leave a trail. <userinput>backward</userinput> can be abbreviated to <userinput>bw</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -922,7 +922,7 @@ Draw a maze for example
     <varlistentry>
       <term>gox</term>
       <listitem><para><screen>gox X</screen>
-      <userinput>gox</userinput> using this command the turtle will move to X <glossterm linkend="pixels">pixels</glossterm> from the left of the canvas while he keeps his height.</para></listitem>
+      <userinput>gox</userinput> using this command the turtle will move to X <glossterm linkend="pixels">pixels</glossterm> from the left of the canvas while she keeps his height.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -1011,13 +1011,13 @@ Draw a maze for example
 
 <sect2 id="clean">
 <title>Commands to clean up</title>
-<para>There are two commands to clean up after you have made a mess.</para>
+<para>There are two commands to clean up the canvas after you have made a mess.</para>
   <variablelist>
     <anchor id="clear" />
     <varlistentry>
       <term>clear</term>
       <listitem><para><screen>clear</screen>
-      With <userinput>clear</userinput> you can clean all drawings from the canvas. All other things remain: the position and angle of the turtle, the canvascolor, the visability of the turtle and the canvassize.</para></listitem>
+      With <userinput>clear</userinput> you can clean all drawings from the canvas. All other things remain: the position and angle of the turtle, the canvascolor, the visability of the turtle and the canvas size.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -1040,7 +1040,7 @@ Draw a maze for example
     <varlistentry>
       <term>show</term>
       <listitem><para><screen>show</screen>
-      <userinput>show</userinput> makes the turtle visible again after it has been hidden.</para></listitem>
+      <userinput>show</userinput> makes the turtle visible again after she has been hidden.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -1048,14 +1048,14 @@ Draw a maze for example
     <varlistentry>
       <term>hide</term>
       <listitem><para><screen>hide</screen>
-      <userinput>hide</userinput> hides the turtle. This can be used if the turtle does not fit inot your drawing.</para></listitem>
+      <userinput>hide</userinput> hides the turtle. This can be used if the turtle does not fit in your drawing.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
 
 <sect2 id="writing">
 <title>Can the turtle write?</title>
-<para>The answer is: 'yes'. The turtle can write, she writes just about everything you command him to.</para>
+<para>The answer is: 'yes'. The turtle can write, she writes just about everything you command her to.</para>
   <variablelist>
     <anchor id="print" />
     <varlistentry>
@@ -1065,7 +1065,7 @@ Draw a maze for example
       <screen>
       year = 2004
       author = "Cies"
-      print "KTurtle was made in " + 2004 + " by " + name
+      print "KTurtle was made in " + year + " by " + author
       </screen>
       </para></listitem>
     </varlistentry>
@@ -1081,14 +1081,14 @@ Draw a maze for example
 </sect2>
 
 <sect2 id="dice">
-<title>A command that roles a the dice for you</title>
+<title>A command that rolls a the dice for you</title>
 <para>There is one command that rolls a dice for you</para>
   <variablelist>
     <anchor id="random" />
     <varlistentry>
       <term>random</term>
       <listitem><para><screen>random X,Y</screen>
-      <userinput>random</userinput> is a command that takes input and gives output. As input is requires two numbers, the first (X) set the minimum output, the second (Y) sets the maximum. The output is a randomly chosen number that is equal or greater then the minimum and equal or smaller than the maximum. Here a small example:
+      <userinput>random</userinput> is a command that takes input and gives output. As input are required two numbers, the first (X) sets the minimum output, the second (Y) sets the maximum. The output is a randomly chosen number that is equal or greater then the minimum and equal or smaller than the maximum. Here a small example:
       <screen>
       repeat 500 [
         x = random 1,20
@@ -1145,12 +1145,12 @@ Draw a maze for example
 <chapter id="Glossary">
 <title>Glossary</title>
 
-<para>In this chapter you find the most of the 'uncommon' words that are used in the handbook explained.</para>
+<para>In this chapter you find an explanation of most of the 'uncommon' words that are used in the handbook.</para>
 
 <glosslist>
 <glossentry id="degrees">
 <glossterm>degrees</glossterm>
-<glossdef><para>Degrees a unit to meassure agles or turns. A full turn is 360 degrees, that make a half turn 180 degrees and a quater turn 90 degrees. The <userinput>turnleft</userinput>, <userinput>turnleft</userinput> and <userinput>direction</userinput> need an input in degrees.</para></glossdef>
+<glossdef><para>Degrees a unit to measure angles or turns. A full turn is 360 degrees, that make a half turn 180 degrees and a quater turn 90 degrees. The commands <userinput>turnleft</userinput>, <userinput>turnright</userinput> and <userinput>direction</userinput> need an input in degrees.</para></glossdef>
 </glossentry>
 
 <glossentry id="pixels">
@@ -1232,7 +1232,7 @@ hide
     </textobject>
   </mediaobject>
 </screenshot>
-When the turlte moves off a border of the canvas it is instantly taken to the opposite border so it can continue its move. This way the turtle will allways stay on screen while it moves.</para>
+When the turtle moves off a border of the canvas it is instantly taken to the opposite border so it can continue its move. This way the turtle will allways stay on screen while it moves.</para>
 <para>Wrapping can be turned on and off with the <userinput>wrapon</userinput> and <userinput>wrapoff</userinput> commands. When KTurtle starts wrapping is turned on by default.</para></glossdef>
 </glossentry>
 
