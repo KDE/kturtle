@@ -65,7 +65,7 @@ ErrorMessage::ErrorMessage (QWidget *parent)
 }
 
 
-void ErrorMessage::slotAddError(Token& t, QString s, uint c)
+void ErrorMessage::slotAddError(Token& t, const QString &s, uint c)
 {
 	errorData err;
 	err.code = c;

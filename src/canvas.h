@@ -59,8 +59,8 @@ Q_OBJECT
 	void slotSpritePress();
 	void slotSpriteChange(int x);
 
-	void slotPrint(QString text);
-	void slotFontType(QString family, QString extra);
+	void slotPrint(const QString &text);
+	void slotFontType(const QString &family, const QString &extra);
 	void slotFontSize(int px);
 	void slotWrapOn();
 	void slotWrapOff();
@@ -77,7 +77,7 @@ Q_OBJECT
 	bool EndlessLoop(QPoint begin, QPoint end);
 	bool PointInRange(int px, int py, int xa, int ya, int xb, int yb);
 	QPoint Offset(int x, int y);
-	void loadSpriteFrames(QString name);
+	void loadSpriteFrames(const QString &name);
 	void updateSpritePos();
 	void updateSpriteAngle();
 	

@@ -46,11 +46,11 @@ Q_OBJECT
 
 	signals:
 	void Finished();
-	void ErrorMsg(Token&, QString, uint code);
+	void ErrorMsg(Token&, const QString &, uint code);
 	void setSelection(uint, uint, uint, uint);
 	
-	void InputDialog(QString& value);
-	void MessageDialog(QString text);
+	void InputDialog(const QString& value);
+	void MessageDialog(const QString text);
 
 	void Clear();
 	void Go(int x, int y);
@@ -72,8 +72,8 @@ Q_OBJECT
 	void SpriteHide();
 	void SpritePress();
 	void SpriteChange(int x);
-	void Print(QString text);
-	void FontType(QString family);
+	void Print(const QString text);
+	void FontType(const QString family);
 	void FontSize(int px);
 	void WrapOn();
 	void WrapOff();

@@ -33,7 +33,7 @@ class ColorPicker : public KDialogBase
   
   signals:
     void visible(bool); // for toggling convenience
-    void ColorCode(QString);
+    void ColorCode(const QString &);
    
   private:
     QWidget            *BaseWidget;

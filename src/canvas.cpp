@@ -334,7 +334,7 @@ QPoint Canvas::Offset(int x, int y)
 }
 
 
-void Canvas::loadSpriteFrames(QString name)
+void Canvas::loadSpriteFrames(const QString &name)
 {
 	// read the pixmaps name.0001.png, name.0002.png, ..., name.0035.png: the different rotations
 	// #0000 for 0 or 360, #0001 for 10, #0002 for 20, ..., #0018 for 180, etc.
@@ -551,7 +551,7 @@ void Canvas::slotSpriteChange(int x)
 	Sprite->move(PosX - Sprite->width()/2, PosY - Sprite->height()/2);
 }
 
-void Canvas::slotPrint(QString text)
+void Canvas::slotPrint(const QString &text)
 {
 	QCanvasText* t = new QCanvasText(text, font, TurtleCanvas);
 	// text does not do the wrapping, never... sorry
@@ -560,7 +560,7 @@ void Canvas::slotPrint(QString text)
 	t->show();
 }
 
-void Canvas::slotFontType(QString family, QString extra)
+void Canvas::slotFontType(const QString &family, const QString &extra)
 {
 	font.setFamily(family);
 	font.setBold( extra.contains("bold") > 0 );
