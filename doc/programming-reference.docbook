@@ -12,7 +12,7 @@
 <title>Commands</title>
 <para>Using commands you tell the turtle or &kturtle; to do something. Some commands need input, some give output.
 <screen>
-# forward is a commands that needs input, in this case the number 100:
+# forward is a command that needs input, in this case the number 100:
 forward 100
 </screen>
 </para>
@@ -21,7 +21,7 @@ forward 100
 
 <sect2 id="number">
 <title>Numbers</title>
-<para>Most likely you already know quite a bit about numbers. The way numbers are used in &kturtle; is not much differnet from speaking language, or math. </para>
+<para>Most likely you already know quite a bit about numbers. The way numbers are used in &kturtle; is not much different from spoken language, or math. </para>
 <para>We have the so called natural numbers: <userinput>0</userinput>, <userinput>1</userinput>, <userinput>2</userinput>, <userinput>3</userinput>, <userinput>4</userinput>, <userinput>5</userinput>, etc. The negative numbers: <userinput>-1</userinput>, <userinput>-2</userinput>, <userinput>-3</userinput>, etc. And the numbers with decimals, or dot-numbers, for example: <userinput>0.1</userinput>, <userinput>3.14</userinput>, <userinput>33.3333</userinput>, <userinput>-5.05</userinput>, <userinput>-1.0</userinput>.
 </para>
 <para>Numbers can be used in <link linkend="math">mathematical calculations</link> and <link linkend="questions">questions</link>. They can also be put in <link linkend="containers">containers</link>.</para>
@@ -43,7 +43,7 @@ In this example <userinput>print</userinput> is a command where <userinput>"Hell
 <sect2 id="name">
 <title>Names</title>
 <para>When using the &logo; programming language you create new things. If you write a program you will often need <link linkend="containers">containers</link> and in some cases you need <link linkend="learn">learn</link> to create new commands. When making a <link linkend="containers">container</link> or a new command with <link linkend="learn">learn</link> you will have to specify a name.</para>
-<para>You can choose any name, as long as they do not already have a meaning. For instance you cannot name a container <link linkend="forward">forward</link>, since that name is already used for a command, and thus has a meaning.
+<para>You can choose any name, as long as it does not already have a meaning. For instance you cannot name a container <link linkend="forward">forward</link>, since that name is already used for a command, and thus has a meaning.
 <screen>
 # here forward is used as a container, but it already has a meaning
 # so this will produce an error:
@@ -385,7 +385,7 @@ print author + " started the KTurtle project in " + year + " and still enjoys wo
 
 <sect2 id="random">
 <title>A command that rolls dice for you</title>
-<para>There is one command that rolls dice for you, it is called <userinput>random</userinput>, and it is very usefull for some unexpected results.</para>
+<para>There is one command that rolls dice for you, it is called <userinput>random</userinput>, and it is very useful for some unexpected results.</para>
   <variablelist>
     <varlistentry> 
       <term>random</term>
@@ -405,7 +405,7 @@ repeat 500 [
 
 <sect2 id="dialogs">
 <title>Input and feedback though dialogs</title>
-<para>A dialog is a small pop-up window that provides some feedback or askes for some input. &kturtle; has two commands for dialogs, namely: <userinput>message</userinput> and <userinput>inputwindow</userinput></para>
+<para>A dialog is a small pop-up window that provides some feedback or asks for some input. &kturtle; has two commands for dialogs, namely: <userinput>message</userinput> and <userinput>inputwindow</userinput></para>
 <sect3 id="message">
   <title>message</title>
   <variablelist>
@@ -720,7 +720,7 @@ if x &gt; 5 [
     <varlistentry>
       <term>while</term>
       <listitem><para><screen>while <link linkend="questions">question</link> [ ... ]</screen>
-      The execution controller <userinput>while</userinput> is a lot like <link linkend="if"><userinput>if</userinput></link>. The difference is that <userinput>while</userinput> keeps repeating (looping) the code between the brackets till the answer to the <link linkend="questions">question</link> is <quote>false</quote>.
+      The execution controller <userinput>while</userinput> is a lot like <link linkend="if"><userinput>if</userinput></link>. The difference is that <userinput>while</userinput> keeps repeating (looping) the code between the brackets until the answer to the <link linkend="questions">question</link> is <quote>false</quote>.
       <screen>
 x = 1
 while x &lt; 5 [
@@ -729,7 +729,7 @@ while x &lt; 5 [
   x = x + 1
 ]
 </screen>
-      On the first line <userinput>x</userinput> is set to 1. On the second line the <link linkend="questions">question</link> <userinput>x &lt; 5</userinput> is asked. Since the answer to this question is <quote>true</quote> the execution controller <userinput>while</userinput> starts executing the code between the brackets till the answer to the <link linkend="questions">question</link> is <quote>false</quote>. In this case the code between the brackets will be executed 4 times, because every time the fifth line is executed <userinput>x</userinput> increases by 1.</para></listitem>
+      On the first line <userinput>x</userinput> is set to 1. On the second line the <link linkend="questions">question</link> <userinput>x &lt; 5</userinput> is asked. Since the answer to this question is <quote>true</quote> the execution controller <userinput>while</userinput> starts executing the code between the brackets until the answer to the <link linkend="questions">question</link> is <quote>false</quote>. In this case the code between the brackets will be executed 4 times, because every time the fifth line is executed <userinput>x</userinput> increases by 1.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -772,7 +772,7 @@ for x = 1 to 10 [
   forward 15
 ]
 </screen>
-     Every time the code between the brackets is executed the <userinput>x</userinput> is increased by 1, till <userinput>x</userinput> reaches the value of 10. The code between the brackets prints the <userinput>x</userinput> multiplied by 7. After this program finishes its execution you will see the times table of 7 on the canvas.</para></listitem>
+     Every time the code between the brackets is executed the <userinput>x</userinput> is increased by 1, until <userinput>x</userinput> reaches the value of 10. The code between the brackets prints the <userinput>x</userinput> multiplied by 7. After this program finishes its execution you will see the times table of 7 on the canvas.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>

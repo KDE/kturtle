@@ -22,7 +22,7 @@ In this Getting Started guide we assume that the language of the &logo; commands
 
 <sect2 id="the-turtle-moves">
 <title>The Turtle Moves</title>
-<para>Let's start by getting the turtle moving. Our turtle can do 3 types of moves, (1) it can go forwards and backwards, (2) it can turn left and right and (3) it can go directly to a position on the screen. Try this for example:</para>
+<para>Let us start by getting the turtle moving. Our turtle can do 3 types of moves, (1) it can go forwards and backwards, (2) it can turn left and right and (3) it can go directly to a position on the screen. Try this for example:</para>
 <para>
 <screen>
 forward 100
@@ -87,7 +87,7 @@ Again you can type or copy-paste the code to the code editor or open the <filena
 
 <para><userinput>pencolor 255,0,0</userinput> sets the color of the pen to red. <userinput>255,0,0</userinput> is a <glossterm linkend="rgb">RGB-combination</glossterm> where only the red value is set to <userinput>255</userinput> (fully on) while the others (green and blue) are set to <userinput>0</userinput> (fully off). This results in a bright shade of red.</para>
 
-<para>If you do not understand the color values, makes sure to read the glossary on <glossterm linkend="rgb">RGB-combination</glossterm>s</para>
+<para>If you do not understand the color values, be sure to read the glossary on <glossterm linkend="rgb">RGB-combination</glossterm>s</para>
 
 <para><userinput>penwidth 5</userinput> sets the width (the size) of the pen to <userinput>5</userinput> <glossterm linkend="pixels">pixels</glossterm>. From now on every line the turtle draw will have a thickness of <userinput>5</userinput>, until we change the <userinput>penwidth</userinput> to something else.</para>
 

@@ -41,7 +41,7 @@ For example, translate <quote>while</quote> in: <sgmltag class="starttag">keywor
 Please do not translate anything else and do not translate the English words in <sgmltag class="starttag">command name="english_word"</sgmltag>: these must stay in English.
 </para>
 <para>
-Last bit: dont change the order of this file, this is needed for Rafael Beccar's automatic translation generation scripts.
+Last bit: do not change the order of this file, this is needed for Rafael Beccar's automatic translation generation scripts.
 </para>
 </listitem>
 <listitem><para>Save your file as <acronym>UTF-8</acronym> (in &kate;, use <guimenuitem>Save As...</guimenuitem> and change to <guilabel>utf8</guilabel> in the box on the right of the file name).
@@ -62,7 +62,7 @@ Last bit: dont change the order of this file, this is needed for Rafael Beccar's
 Translating the <filename>logohighlightstyle.en_US.xml</filename> is a breeze when using Rafael Beccar's script in <filename class="directory">kdeedu/kturtle/data/</filename>. Please make sure to read the README file in that directory.
 </para>
 <para>
-For backward compatibility with all people who dont want to the perl scripted blessing mentioned in the previous paragraph, here the old fashioned way of doing it:
+For backward compatibility with all people who do not want to the perl scripted blessing mentioned in the previous paragraph, here the old fashioned way of doing it:
 <itemizedlist>
 <listitem><para>Copy the <filename>logohighlightstyle.en_US.xml</filename> file from <filename class="directory">kdeedu/kturtle/data/</filename> to the directory you created to store the translated keywords file, and rename it to <filename>logohighlightstyle.<replaceable>code</replaceable>.xml</filename>
 where <replaceable>code</replaceable> is your country code (the 2- or 4- letter <acronym>ISO</acronym> code).
@@ -91,7 +91,7 @@ Please do not translate anything else.
 Again this task is simplified a lot by Rafael Beccar's script in <filename class="directory">kdeedu/kturtle/data/</filename>. Please make sure to read the README file in that directory, since some work still has to be done after the example logo files are autotranslated. 
 </para>
 <para>
-When you followed the intrusctions, given in the README file that you found in the scripts directory, you should now be almost ready. Please do not forget to test the translated example logo code you created, since it is very common that an error sneaks in. Also make sure the <userinput>Makefile.am</userinput> in <filename class="directory">kde-i18n/<replaceable>code</replaceable>/data/kdeedu/kturtle/</filename> is updated according to the new files. For the Dutch the <userinput>Makefile.am</userinput> should look like this:
+When you followed the instructions, given in the README file that you found in the scripts directory, you should now be almost ready. Please do not forget to test the translated example logo code you created, since it is very common that an error sneaks in. Also make sure the <userinput>Makefile.am</userinput> in <filename class="directory">kde-i18n/<replaceable>code</replaceable>/data/kdeedu/kturtle/</filename> is updated according to the new files. For the Dutch the <userinput>Makefile.am</userinput> should look like this:
 <screen>
 txt_DATA = advertentie.logo driehoeken.logo krullen.logo tafels.logo \
 bloem.logo driehoek.logo logohighlightstyle.nl.xml pijl.logo vierkanten.logo \
@@ -107,7 +107,7 @@ EXTRA_DIST = $(txt_DATA) $(xml_DATA) $(keywords_DATA)
 </screen> 
 </para>
 <para>
-Here a desciprtion of how to do the translation WITHOUT the use of Rafael's perl scripts:
+Here a description of how to do the translation WITHOUT the use of Rafael's perl scripts:
 <itemizedlist>
 <listitem><para>Copy the English example files from <filename class="directory">kdeedu/kturtle/data/</filename> to the directory used to store the translated keyword and hilighting files.  Translate the filenames of the examples in your directory: this will allow users to easily and quickly understand what the example is about.</para>
 </listitem>
