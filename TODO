@@ -1,1 +1,8 @@
+annma - 29th December 2003
+about the resizing
+I think the canvas size should fill all the right side under the toolbar when KTurtle is started. When resizing the window with the mouse, the canvas grows bigger, everything resize smoothly (-> resizeEvent( QResizeEvent * )).
+You can leave the resizing option of the canvas in the Settings but only for having the canvas bigger. That would mean setting minimums in the config dialog.
+
+
+
 
