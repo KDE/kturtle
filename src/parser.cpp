@@ -1099,7 +1099,7 @@ TreeNode* Parser::Other()
 	if (learnedFunctionList.contains(presevedToken.look) > 0) return FunctionCall(presevedToken);
 	else if (currentToken.type == tokAssign)                  return Assignment(presevedToken);
 	
-	Error(presevedToken, i18n("'%1' is no Logo command nor a learned routine.").arg(presevedToken.look), 1020);
+	Error(presevedToken, i18n("'%1' is neither a Logo command nor a learned routine.").arg(presevedToken.look), 1020);
 	TreeNode* errNode = new TreeNode(presevedToken, Unknown);
 	return errNode;
 }
