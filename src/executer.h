@@ -11,14 +11,13 @@ bugreport(log):/
 #include <fstream>
 #include <iostream>
 #include <stack>
-
-#include <qmap.h>
+#include <map>
 
 #include "treenode.h"
 
 
-typedef QMap<QString,Number>    symtable;
-typedef QMap<QString,TreeNode*> functable;
+typedef map<QString,Number>    symtable;
+typedef map<QString,TreeNode*> functable;
 
 typedef stack<Number> runstack;
 

@@ -140,17 +140,14 @@ void Executer::execFunction( TreeNode* node ) {
   QString funcname = node->firstChild()->getName();
 
   //locate function node  
-  functable::Iterator p = functionTable.find( funcname );
+  functable::iterator p = functionTable.find( funcname );
   if ( p == functionTable.end() ) {
     QString f = funcname;
     emit ErrorMsg( i18n("Call to undefined function: %1.").arg(f), 0, 0, 5010);
     return;
   }
   
-  // Before it was:   TreeNode* funcnode    = p->second;
-  // now it is:
-  TreeNode* funcnode    = funcnode.begin()++;
-  // and now it still makes troubles cauz i changed map into QMap
+  TreeNode* funcnode    = p->second;
   TreeNode* funcIds     = funcnode->secondChild();
   TreeNode* callparams  = node->secondChild();
     
