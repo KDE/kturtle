@@ -209,6 +209,7 @@ void MainWindow::slotNewFile() {
     }
     ei->clear();// clear the editor
     TurtleView->slotClear();// clear the view
+    editor->document()->setModified(false);
     CurrentFile = "";
     setCaption( i18n("Untitled") );
     slotStatusBar(i18n("New file... Happy coding!"), IDS_STATUS); 
@@ -291,13 +292,16 @@ void MainWindow::slotSaveCanvas() {
 }
 
 void MainWindow::slotOpenFile() {
+      slotNewFile();
       KURL url = KFileDialog::getOpenURL( QString(":logo_dir"), QString("*.logo|") +
       i18n("Logo files"), this, i18n("Open logo file...") );
        if( !url.isEmpty() )
            loadFile(url);
+    editor->document()->setModified(false); 
 }
 
 void MainWindow::slotOpen(const KURL& url) {
+	slotNewFile();
        	if( !url.isEmpty() )
            loadFile(url);
 	editor->document()->setModified(false);
