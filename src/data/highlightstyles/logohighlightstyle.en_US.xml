@@ -54,7 +54,6 @@
     <item> print </item> 
     <item> fonttype </item> 
     <item> fontsize </item>
-    <item> rpt </item> 
     <item> random </item> 
     <item> wait </item> 
     <item> wrapon </item> 
@@ -70,6 +69,7 @@
     <item> to </item>
     <item> do </item>
     <item> repeat </item>
+    <item> rpt </item>
     <item> if </item>
     <item> else </item>
     <item> return </item>

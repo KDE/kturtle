@@ -78,6 +78,8 @@ class MainWindow : public KParts::MainWindow
     void slotComment();
     void slotUnComment();
     void slotEditor();
+    void slotSetHighlightstyle(QString langCode);
+    
     void slotConfigureToolbars();
     void slotContextHelp();
     void slotContextHelpUpdate();

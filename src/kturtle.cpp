@@ -156,12 +156,9 @@ void MainWindow::setupEditor() {
     EditorDock->setWidget(editor);
 
     // default the highlightstyle to "logo" someday this needs to be i18nized
-    KTextEditor::HighlightingInterface *hli = dynamic_cast<KTextEditor::HighlightingInterface*>(doc);
-    for(unsigned int i = 0; i < hli->hlModeCount(); i++) {
-         if(hli->hlModeName(i) == "en_US") {
-             hli->setHlMode(i);
-         }
-    }
+    kdDebug(0)<<"init: "<<Settings::translationFilePath().section('.', -2, -2)<<endl;
+    slotSetHighlightstyle( Settings::translationFilePath().section('.', -2, -2) );    
+    
     // allow the cursor position to be indicated in the statusbar
     connect(editor, SIGNAL(cursorPositionChanged()), this, SLOT(slotCursor()));
     // and update the context help menu item
@@ -586,6 +583,22 @@ void MainWindow::slotEditor() {
     KAction *a = editor->actionCollection()->action("set_confdlg");
     a->activate();
 }
+
+void MainWindow::slotSetHighlightstyle(QString langCode) {
+    KTextEditor::HighlightingInterface *hli = dynamic_cast<KTextEditor::HighlightingInterface*>(doc);
+    for(unsigned int i = 0; i < hli->hlModeCount(); i++) {
+         if(hli->hlModeName(i) == langCode) {
+             hli->setHlMode(i);
+             return;
+         }
+    } // and the fallback:
+    for(unsigned int i = 0; i < hli->hlModeCount(); i++) {
+         if(hli->hlModeName(i) == "en_US") {
+             hli->setHlMode(i);
+         }
+    }
+}
+
 void MainWindow::slotConfigureToolbars() {
     // it seems to me that there is a much better way now
     saveMainWindowSettings( KGlobal::config(), autoSaveGroup() );
@@ -772,9 +785,11 @@ void MainWindow::slotSettings() {
 }
 
 void MainWindow::slotUpdateSettings() {
-    	connect( this, SIGNAL( ResizeCanvas(int, int) ), TurtleView, SLOT( slotResizeCanvas(int, int) ) );
-   	 emit ResizeCanvas( Settings::canvasWidth(), Settings::canvasWidth() );
-    	// something with the xml-translation-file
+    // Changing the size of the canvas has to be done using the command
+    // only the inital size can be changed here :)   [ sorry annma :) ]
+    // connect( this, SIGNAL( ResizeCanvas(int, int) ), TurtleView, SLOT( slotResizeCanvas(int, int) ) );
+    // emit ResizeCanvas( Settings::canvasWidth(), Settings::canvasWidth() );
+    slotSetHighlightstyle( Settings::translationFilePath().section('.', -2, -2) );
 }
 
 void MainWindow::slotConfigureKeys() {

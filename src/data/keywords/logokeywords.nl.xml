@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE logokeywords>
 
-<logokeywords lang="nl" ver="0.01">
+<logokeywords lang="en_US" ver="0.01">
 
-<!-- standard BASIC commands -->
-  
+<!-- scope -->
   <command name="begin">
     <keyword>[</keyword>
   </command>
@@ -12,7 +11,8 @@
   <command name="end">
     <keyword>]</keyword>
   </command>
-    
+
+<!-- execution controllers -->
   <command name="while">
     <keyword>terwijl</keyword>
   </command>
@@ -25,18 +25,6 @@
     <keyword>anders</keyword>
   </command>
   
-  <command name="print">
-    <keyword>print</keyword>
-  </command>
-  
-  <command name="println">
-    <keyword>println</keyword>
-  </command>
-  
-  <command name="input">
-    <keyword>input</keyword>
-  </command>
-  
   <command name="for">
     <keyword>voor</keyword>
   </command>
@@ -45,6 +33,33 @@
     <keyword>tot</keyword>
   </command>
   
+  <command name="return">
+    <keyword>geefdoor</keyword>
+  </command>
+  
+  <command name="break">
+    <keyword>kap</keyword>
+  </command>
+  
+  <command name="foreach">
+    <keyword>voorelke</keyword>
+  </command>
+  
+  <command name="in">
+    <keyword>in</keyword>
+  </command>
+
+  <command name="do">
+    <keyword>doe</keyword>
+  </command>
+  
+  <command name="repeat">
+    <keyword>herhaal</keyword>
+    <alias>hh</alias>
+  </command>
+
+
+<!-- boolean operators -->  
   <command name="and">
     <keyword>en</keyword>
   </command>
@@ -57,46 +72,18 @@
     <keyword>niet</keyword>
   </command>
   
-  <command name="return">
-    <keyword>terug</keyword>
-  </command>
   
-  <command name="break">
-    <keyword>kap</keyword>
+<!-- the meta command --> 
+  <command name="learn">
+    <keyword>leer</keyword>
   </command>
+
   
+<!-- normal keywords -->
   <command name="run">
     <keyword>voeruit</keyword>
   </command>
   
-  <command name="write">
-    <keyword>schrijf</keyword>
-  </command>
-  
-  <command name="substr">
-    <keyword>haalaf</keyword>
-  </command>
-  
-  <command name="foreach">
-    <keyword>voorelke</keyword>
-  </command>
-  
-  <command name="in">
-    <keyword>in</keyword>
-  </command>
-  
-  <command name="seperated">
-    <keyword>gescheiden</keyword>
-  </command>
-  
-  <command name="by">
-    <keyword>door</keyword>
-  </command>
-
-
-
-<!-- the LOGO commands -->
-
   <command name="clear">
     <keyword>schoon</keyword>
     <alias>cs</alias>
@@ -128,7 +115,7 @@
 
   <command name="direction">
     <keyword>richting</keyword>
-    <alias>ri</alias>
+    <alias>rt</alias>
   </command>
   
   <command name="turnleft">
@@ -186,20 +173,53 @@
   </command>
 
   <command name="spritepress">
-    <keyword>stempel</keyword>
-    <alias>ss</alias>
+    <keyword>druk</keyword>
+    <alias>ds</alias>
   </command>
 
   <command name="spritechange">
     <keyword>kies</keyword>
     <alias>ks</alias>
   </command>
-
   
-<!-- LOGO dummy words -->
+  <command name="message">
+    <keyword>bericht</keyword>
+  </command>
+  
+  <command name="inputwindow">
+    <keyword>invoervenster</keyword>
+  </command>
+  
+  <command name="print">
+    <keyword>schrijf</keyword>
+  </command>
 
-  <command name="do">
-    <keyword>doe</keyword>
+  <command name="fonttype">
+    <keyword>lettertype</keyword>
+  </command>
+  
+  <command name="fontsize">
+    <keyword>lettermaat</keyword>
+  </command>
+  
+  <command name="random">
+    <keyword>gok</keyword>
+  </command>
+  
+  <command name="wait">
+    <keyword>wacht</keyword>
+  </command>
+  
+  <command name="wrapon">
+    <keyword>wikkelaan</keyword>
+  </command>
+  
+  <command name="wrapoff">
+    <keyword>wikkeluit</keyword>
+  </command>
+  
+  <command name="reset">
+    <keyword>alsnieuw</keyword>
   </command>
 
 </logokeywords>
