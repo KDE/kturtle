@@ -35,6 +35,7 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kprinter.h>
+#include <krun.h>
 #include <ksavefile.h>
 #include <kstatusbar.h>
 
@@ -906,7 +907,6 @@ void MainWindow::readConfig(KConfig *config) {
 }
 
 void MainWindow::slotConfigureToolbars() {
-	// it seems to me that there is a much better way now
 	saveMainWindowSettings( KGlobal::config(), autoSaveGroup() );
 	KEditToolbar dlg(actionCollection());
 	connect(&dlg, SIGNAL(newToolbarConfig()), this, SLOT(newToolbarConfig()));
@@ -920,6 +920,8 @@ void MainWindow::slotConfigureToolbars() {
 // BEGIN help related functions
 
 void MainWindow::slotContextHelp() {
+        QString myString("help:/kturtle/reference.html#"+helpKeyword);
+	KRun::runCommand("konqueror "+myString );
 }
 
 
