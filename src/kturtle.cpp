@@ -69,6 +69,9 @@ if ( !doc )
     //ei is the editor interface which allows us to access the text in the part
     ei = dynamic_cast<KTextEditor::EditInterface*>( doc );
     EditorDock->setWidget(editor);
+   	//dynamic_cast<KTextEditor::Document*>(this)->actionCollection()->remove(action("file_quit"));
+    //doc->actionCollection()->remove(action("edit_find_next")); //works if you suppress file_quit from the kturtleui.rc file
+    doc->actionCollection()->remove(action("file_quit"));
     ///allow to enable run only when some text is written in editor
     connect(editor->document(), SIGNAL(textChanged()), this, SLOT(setRunEnabled()));
     
@@ -99,6 +102,7 @@ MainWindow::~MainWindow() { // The MainWindow destructor
 }
 
 void MainWindow::setupActions() {
+  
     // Set up file menu
     KStdAction::openNew(this, SLOT(slotNewFile()), actionCollection());
     openExAction = new KAction(i18n("Open Examples"), "bookmark_folder", 0, this, SLOT(slotOpenEx()),
@@ -112,6 +116,8 @@ void MainWindow::setupActions() {
     run = new KAction(i18n("&Execute Commands"), "gear", 0, this, SLOT( slotExecute() ),
       actionCollection(), "run");
     run->setEnabled(false);
+
+    //KAction *a = new KAction(i18n("Reloa&d"), "file_reload", KStdAccel::reload(), this, SLOT(reloadFile()), //dynamic_cast<KTextEditor::Document*>(this)->actionCollection(), "file_reload");
     //
     KStdAction::print(this, SLOT(slotPrint()), actionCollection());
     //

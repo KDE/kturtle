@@ -1,27 +1,24 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="KTurtle" version="1" >
-  <MenuBar>
+<kpartgui name="kturtle" version="2" >
+<MenuBar>
     <Menu name="file" noMerge="1"><text>&amp;File</text>
       <Action name="file_new" />
       <Action name="file_open" />
       <Action name="file_open_recent" />
       <Action name="open_examples" />
-      <Separator />
-      <Merge name="file_save" />
-      <Merge name="file_save_as"/>
-      <Separator />
-      <Merge name="file_print" />
-      <Separator />
-      <Action name="run" />
+      <Action name="run"/>
       <Separator />
       <Merge/>
-      <Action name="file_quit" />
     </Menu>
+   
      <Menu name="edit" noMerge="1"><text>&amp;Edit</text>
     </Menu>
+    
     <Menu name="view" noMerge="1"><text>&amp;View</text>
       <Action name="full_screen" />
-      <!--<Action name="line_numbers"/>-->
+
+    </Menu>
+    <Menu name="tools" noMerge="1"><text>&amp;Tools</text>
       <Action name="color_picker" />
     </Menu>
   </MenuBar>
@@ -29,11 +26,12 @@
 <ToolBar name="mainToolBar" noMerge="1" fullWidth="true" >
   <Separator/>
   <Action name="full_screen" />
-  <Action name="color_picker" />
-  <!--<Action name="line_numbers"/>-->
   <Separator/>
+  <Action name="color_picker" />
+
   <Action name="run" />
-  <!--<Action name="line_numbers"/>-->
+  <Separator/>
+  <Action name="show_numbers" />
 </ToolBar>
  
 <ActionProperties>

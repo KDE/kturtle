@@ -1,0 +1,250 @@
+<?xml version="1.0"?>
+<!DOCTYPE logokeywords>
+
+<logokeywords lang="en_US" ver="0.01">
+
+<!-- standard BASIC commands -->
+  
+  <command name="begin">
+    <keyword>[</keyword>
+  </command>
+  
+  <command name="end">
+    <keyword>]</keyword>
+  </command>
+    
+  <command name="while">
+    <keyword>while</keyword>
+  </command>
+  
+  <command name="if">
+    <keyword>if</keyword>
+  </command>
+  
+  <command name="else">
+    <keyword>else</keyword>
+  </command>
+  
+  <command name="for">
+    <keyword>for</keyword>
+  </command>
+  
+  <command name="to">
+    <keyword>to</keyword>
+  </command>
+  
+  <command name="and">
+    <keyword>and</keyword>
+  </command>
+  
+  <command name="or">
+    <keyword>or</keyword>
+  </command>
+  
+  <command name="not">
+    <keyword>not</keyword>
+  </command>
+  
+  <command name="return">
+    <keyword>return</keyword>
+  </command>
+  
+  <command name="break">
+    <keyword>break</keyword>
+  </command>
+  
+  <command name="run">
+    <keyword>run</keyword>
+  </command>
+  
+  <command name="write">
+    <keyword>write</keyword>
+  </command>
+  
+  <command name="substr">
+    <keyword>substr</keyword>
+  </command>
+  
+  <command name="foreach">
+    <keyword>foreach</keyword>
+  </command>
+  
+  <command name="in">
+    <keyword>in</keyword>
+  </command>
+  
+  <command name="seperated">
+    <keyword>seperated</keyword>
+  </command>
+  
+  <command name="by">
+    <keyword>by</keyword>
+  </command>
+
+
+
+<!-- the LOGO commands -->
+
+  <command name="learn">
+    <keyword>learn</keyword>
+  </command>
+
+  <command name="clear">
+    <keyword>clear</keyword>
+    <alias>ccl</alias>
+  </command>
+ 
+  <command name="go">
+    <keyword>go</keyword>
+  </command>
+ 
+  <command name="gox">
+    <keyword>gox</keyword>
+    <alias>gx</alias>
+  </command>
+ 
+  <command name="goy">
+    <keyword>goy</keyword>
+    <alias>gy</alias>
+  </command>
+ 
+  <command name="forward">
+    <keyword>forward</keyword>
+    <alias>fw</alias>
+  </command>
+  
+  <command name="backward">
+    <keyword>backward</keyword>
+    <alias>bw</alias>
+  </command>
+
+  <command name="direction">
+    <keyword>direction</keyword>
+    <alias>dir</alias>
+  </command>
+  
+  <command name="turnleft">
+    <keyword>turnleft</keyword>
+    <alias>tl</alias>
+  </command>
+
+  <command name="turnright">
+    <keyword>turnright</keyword>
+    <alias>tr</alias>
+  </command>
+
+  <command name="center">
+    <keyword>center</keyword>
+  </command>
+  
+  <command name="setpenwidth">
+    <keyword>penwidth</keyword>
+    <alias>pw</alias>
+  </command>
+  
+  <command name="penup">
+    <keyword>penup</keyword>
+    <alias>pu</alias>
+  </command>
+
+  <command name="pendown">
+    <keyword>pendown</keyword>
+    <alias>pd</alias>
+  </command>
+  
+  <command name="setfgcolor">
+    <keyword>pencolor</keyword>
+    <alias>pc</alias>
+  </command>
+  
+  <command name="setbgcolor">
+    <keyword>canvascolor</keyword>
+    <alias>cc</alias>
+  </command>
+   
+  <command name="resizecanvas">
+    <keyword>canvassize</keyword>
+    <alias>cs</alias>
+  </command>
+
+  <command name="spriteshow">
+    <keyword>show</keyword>
+    <alias>ss</alias>
+  </command>
+  
+  <command name="spritehide">
+    <keyword>hide</keyword>
+    <alias>sh</alias>
+  </command>
+
+  <command name="spritepress">
+    <keyword>press</keyword>
+    <alias>sp</alias>
+  </command>
+
+  <command name="spritechange">
+    <keyword>change</keyword>
+    <alias>sc</alias>
+  </command>
+
+
+  <!--
+  still need implementation
+ask **
+speed **
+ -->
+
+  
+  <command name="input">
+    <keyword>input</keyword>
+  </command>
+  
+  <command name="inputwindow">
+    <keyword>inputwindow</keyword>
+  </command>
+  
+  <command name="print">
+    <keyword>print</keyword>
+  </command>
+
+  <command name="fonttype">
+    <keyword>fonttype</keyword>
+  </command>
+  
+  <command name="fontsize">
+    <keyword>fontsize</keyword>
+  </command>
+  
+  <command name="repeat">
+    <keyword>repeat</keyword>
+    <alias>rpt</alias>
+  </command>
+  
+  <command name="random">
+    <keyword>random</keyword>
+  </command>
+  
+  <command name="wait">
+    <keyword>wait</keyword>
+  </command>
+  
+  <command name="wrapon">
+    <keyword>wrapon</keyword>
+  </command>
+  
+  <command name="wrapoff">
+    <keyword>wrapoff</keyword>
+  </command>
+  
+  <command name="reset">
+    <keyword>reset</keyword>
+  </command>
+  
+  
+<!-- LOGO dummy words -->
+
+  <command name="do">
+    <keyword>do</keyword>
+  </command>
+  
+</logokeywords>

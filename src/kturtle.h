@@ -19,6 +19,7 @@
 #include <qwidget.h>
 
 #include <kaction.h> 
+#include <kstdaction.h>
 #include <kurlrequester.h>
 #include <knuminput.h>
 
@@ -79,8 +80,15 @@ class MainWindow : public KParts::MainWindow// public KMainWindow
     QString             CurrentFile;
     QString             filename2saveAs;
     
+    KRecentFilesAction * m_recentFiles;
+    KToggleAction * m_paShowPath;
+    KToggleAction * m_paShowStatusBar;
+    
     KAction            *run;
     KAction             *openExAction;
+    KAction             *openFileAction;
+   // KAction             *openRecentAction;
+    KAction             *newAction;
     KToggleAction      *m_fullscreen;
     KToggleAction      *colorpicker;
     // KRecentFilesAction *m_recentFiles; // TODO waiting on KURL (KURL wainting on KTextEditor)
