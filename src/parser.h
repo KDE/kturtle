@@ -28,97 +28,99 @@
 
 class Parser : public QObject
 {
-Q_OBJECT
-
+	Q_OBJECT
+	
 	public:
-	Parser(QTextIStream& in);
-	virtual ~Parser();
+		Parser(QTextIStream& in);
+		virtual ~Parser();
+	
+		void parse();
+		TreeNode* getTree() const { return tree; }
 
-	void parse();
-	TreeNode* getTree() const { return tree; }
 
 	signals:
-	void ErrorMsg(Token&, QString, uint code);
+		void ErrorMsg(Token&, QString, uint code);
+
 
 	private:
-	bool isAddOp(Token);
-	bool isMulOp(Token);
+		bool isAddOp(Token);
+		bool isMulOp(Token);
+		
+		void getToken();
+		void matchToken(int tokenType);
+		void appendParameters(TreeNode* node);
+		void Error(Token, QString, uint code);
 	
-	void getToken();
-	void matchToken(int tokenType);
-	void appendParameters(TreeNode* node);
-	void Error(Token, QString, uint code);
-
-	TreeNode* Program();
-	TreeNode* ParamList();
-	TreeNode* Block();
-	TreeNode* Statement();
+		TreeNode* Program();
+		TreeNode* ParamList();
+		TreeNode* Block();
+		TreeNode* Statement();
+		
+		TreeNode* ExternalRun();
 	
-	TreeNode* ExternalRun();
-
-	TreeNode* getId();
-	TreeNode* signedFactor();
-	TreeNode* Factor();
-	TreeNode* Term();
-	TreeNode* Expression();
+		TreeNode* getId();
+		TreeNode* signedFactor();
+		TreeNode* Factor();
+		TreeNode* Term();
+		TreeNode* Expression();
+		
+		TreeNode* Assignment(Token);
+		TreeNode* FunctionCall(Token);
+		TreeNode* Other();
+		
+		TreeNode* While();
+		TreeNode* For();
+		TreeNode* ForEach();
+		TreeNode* If();
+		TreeNode* Return();
+		TreeNode* Break();
+		
+		TreeNode* Clear();
+		TreeNode* Go();
+		TreeNode* GoX();
+		TreeNode* GoY();
+		TreeNode* Forward();
+		TreeNode* Backward();
+		TreeNode* Direction();
+		TreeNode* TurnLeft();
+		TreeNode* TurnRight();
+		TreeNode* Center();
+		TreeNode* SetPenWidth();
+		TreeNode* PenUp();
+		TreeNode* PenDown();
+		TreeNode* SetFgColor();
+		TreeNode* SetBgColor();
+		TreeNode* ResizeCanvas();
+		TreeNode* SpriteShow();
+		TreeNode* SpriteHide();
+		TreeNode* SpritePress();
+		TreeNode* SpriteChange();
 	
-	TreeNode* Assignment(Token);
-	TreeNode* FunctionCall(Token);
-	TreeNode* Other();
+		TreeNode* Message();
+		TreeNode* InputWindow();
+		TreeNode* Print();
+		TreeNode* FontType();
+		TreeNode* FontSize();
+		TreeNode* Repeat();
+		TreeNode* Random();
+		TreeNode* Wait();
+		TreeNode* WrapOn();
+		TreeNode* WrapOff();
+		TreeNode* Reset();
+		
+		TreeNode* LineBreak();
+		TreeNode* EndOfFile();
+		
+		TreeNode* Learn();
 	
-	TreeNode* While();
-	TreeNode* For();
-	TreeNode* ForEach();
-	TreeNode* If();
-	TreeNode* Return();
-	TreeNode* Break();
-	
-	TreeNode* Clear();
-	TreeNode* Go();
-	TreeNode* GoX();
-	TreeNode* GoY();
-	TreeNode* Forward();
-	TreeNode* Backward();
-	TreeNode* Direction();
-	TreeNode* TurnLeft();
-	TreeNode* TurnRight();
-	TreeNode* Center();
-	TreeNode* SetPenWidth();
-	TreeNode* PenUp();
-	TreeNode* PenDown();
-	TreeNode* SetFgColor();
-	TreeNode* SetBgColor();
-	TreeNode* ResizeCanvas();
-	TreeNode* SpriteShow();
-	TreeNode* SpriteHide();
-	TreeNode* SpritePress();
-	TreeNode* SpriteChange();
-
-	TreeNode* Message();
-	TreeNode* InputWindow();
-	TreeNode* Print();
-	TreeNode* FontType();
-	TreeNode* FontSize();
-	TreeNode* Repeat();
-	TreeNode* Random();
-	TreeNode* Wait();
-	TreeNode* WrapOn();
-	TreeNode* WrapOff();
-	TreeNode* Reset();
-	
-	TreeNode* LineBreak();
-	TreeNode* EndOfFile();
-	
-	TreeNode* Learn();
-
-	//private locals
-	Lexer       *lexer;
-	TreeNode    *tree;
-	Token        currentToken;
-	Token        preservedToken; // to preserve the currentToken so it wont get lost
-	uint         row;
-	uint         col;
-	QStringList  learnedFunctionList;
+		//private locals
+		Lexer       *lexer;
+		TreeNode    *tree;
+		Token        currentToken;
+		Token        preservedToken; // to preserve the currentToken so it wont get lost
+		uint         row;
+		uint         col;
+		QStringList  learnedFunctionList;
 };
 
 #endif // _PARSER_H_

@@ -209,68 +209,68 @@ enum NodeType
 
 
 
-class TreeNode : public list<TreeNode*>
+class TreeNode : public list<TreeNode*> /*, public Value  <-- maybe oneday */
 {
 	public:
-	TreeNode(); // used for creation of the first node called 'tree', in the contructor of the parser 
-	TreeNode( TreeNode* ); // give parent
-	TreeNode( Token, NodeType = Unknown, QString = QString() );
-	virtual ~TreeNode();
-
-	void init();
-
-	void appendChild(TreeNode*);
-	void appendSibling(TreeNode*); // works only if it has parent set!
-
-	TreeNode* firstChild();
-	TreeNode* secondChild();
-	TreeNode* thirdChild();
-	TreeNode* fourthChild();
-	TreeNode* fifthChild();
-
-	TreeNode* lastChild();    
-	TreeNode* nextSibling();   
-	TreeNode* prevSibling();
-
-	void      setParent(TreeNode* p)     { parent = p; }
-	TreeNode* getParent() const          { return parent; }
+		TreeNode(); // used for creation of the first node called 'tree', in the contructor of the parser 
+		TreeNode( TreeNode* ); // give parent
+		TreeNode( Token, NodeType = Unknown, QString = QString() );
+		virtual ~TreeNode();
 	
-	void      setToken(Token t)          { fTok = t; }
-	Token&    getToken()                 { return fTok; }
+		void init();
 	
-	void      setType(NodeType t)        { fType = t; }
-	NodeType  getType() const            { return fType; }
+		void appendChild(TreeNode*);
+		void appendSibling(TreeNode*); // works only if it has parent set!
 	
-	void      setLook(const QString& s)  { fTok.look = s; }
-	QString   getLook() const            { return fTok.look; }
+		TreeNode* firstChild();
+		TreeNode* secondChild();
+		TreeNode* thirdChild();
+		TreeNode* fourthChild();
+		TreeNode* fifthChild();
 	
-	void      setValue(const Value& n)   { fTok.value = n; }
-	void      setValue(double d)         { fTok.value = d; }
-	void      setValue(const QString& s) { fTok.value = s; }
-	void      setValue(bool b)           { fTok.value.setBool(b); }
-	Value     getValue() const           { return fTok.value; }
+		TreeNode* lastChild();    
+		TreeNode* nextSibling();   
+		TreeNode* prevSibling();
 	
-	uint      getRow() const             { return fTok.start.row; }
-	uint      getCol() const             { return fTok.start.col; }
-
-	bool hasChildren() const             { return size() != 0; }
-	TreeNode::iterator lookup(); // gives location in parent list as iterator (used by prevSibling and nextSibling)
-
-	TreeNode& operator=(const TreeNode&);
-
-	virtual void show(int indent = 0);
-	void showTree(TreeNode* node, int indent = 0) const;
-
-
+		void      setParent(TreeNode* p)     { parent = p; }
+		TreeNode* getParent() const          { return parent; }
+		
+		void      setToken(Token t)          { fTok = t; }
+		Token&    getToken()                 { return fTok; }
+		
+		void      setType(NodeType t)        { fType = t; }
+		NodeType  getType() const            { return fType; }
+		
+		void      setLook(const QString& s)  { fTok.look = s; }
+		QString   getLook() const            { return fTok.look; }
+		
+		void      setValue(const Value& n)   { fTok.value = n; }
+		void      setValue(double d)         { fTok.value = d; }
+		void      setValue(const QString& s) { fTok.value = s; }
+		void      setValue(bool b)           { fTok.value.setBool(b); }
+		Value     getValue() const           { return fTok.value; }
+		
+		uint      getRow() const             { return fTok.start.row; }
+		uint      getCol() const             { return fTok.start.col; }
+	
+		bool hasChildren() const             { return size() != 0; }
+		TreeNode::iterator lookup(); // gives location in parent list as iterator (used by prevSibling and nextSibling)
+	
+		TreeNode& operator=(const TreeNode&);
+	
+		virtual void show(int indent = 0);
+		void showTree(TreeNode* node, int indent = 0) const;
+	
+	
 	private:
-	void destroy(TreeNode*);
-
-	NodeType     fType;
-	Token        fTok;
-
-
+		void destroy(TreeNode*);
+	
+		NodeType     fType;
+		Token        fTok;
+	
+	
 	protected:
-	TreeNode    *parent;
+		TreeNode    *parent;
 };
 
 #endif // _TREENODE_H_

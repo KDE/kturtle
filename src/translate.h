@@ -26,21 +26,21 @@
 class Translate
 {
 	public:
-	Translate();
-	~Translate() {}
-	
-	QString name2fuzzy(const QString &);
-	QString name2key(const QString &);
-	QString alias2key(const QString &);
-	
-	
+		Translate();
+		~Translate() {}
+		
+		QString name2fuzzy(const QString&);
+		QString name2key(const QString&);
+		QString alias2key(const QString&);
+
+
 	private:
-	void loadTranslations();
-	
-	typedef QMap<QString, QString> StringMap;
-	StringMap keyMap;
-	StringMap aliasMap;
-	StringMap reverseAliasMap;
+		void loadTranslations();
+		
+		typedef QMap<QString, QString> StringMap;
+		StringMap keyMap;
+		StringMap aliasMap;
+		StringMap reverseAliasMap;
 };
 
 

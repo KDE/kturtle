@@ -354,12 +354,12 @@ void Executer::execFor(TreeNode* node)
 	
 	execute(startNode);
 	//assign startval to id
-	Value startVal=startNode->getValue();
+	Value startVal = startNode->getValue();
 	( symbolTables.top() )[ name ] = startVal;
 	
 	
 	execute(stopNode);
-	Value stopVal=stopNode->getValue();
+	Value stopVal = stopNode->getValue();
 	
 	if(node->size() == 4 ) //for loop without step part
 	{
@@ -902,10 +902,8 @@ void Executer::execRandom(TreeNode* node)
 	if ( !checkParameterType(node, numberValue, 5060) ) return;
 	double x = nodeX->getValue().Number();
 	double y = nodeY->getValue().Number();
-	double r = (double)( KApplication::random() / RAND_MAX );
-	// kdDebug(0)<<"WHAT THE HECK!?? ya call his random?  ->  "<<r<<endl;
+	double r = (double)( KApplication::random() ) / RAND_MAX;
 	node->setValue( r * ( y - x ) + x );
-	
 }
 
 

@@ -32,25 +32,25 @@
 class Lexer
 {
 	public:
-	Lexer(QTextIStream&);
-	~Lexer() {}
-
-	Token lex(); // returns the next Token, skipping spaces
+		Lexer(QTextIStream&);
+		~Lexer() {}
+	
+		Token lex(); // returns the next Token, skipping spaces
 
 
 	private:
-	QChar getChar();
-	void ungetChar(QChar);
-	int getWord(QString&);
-	void skipSpaces();
-	void setTokenType(Token&);
-	int getNumber(Value&, QString&);
-	void getString(Token&);
-
-	QTextIStream    *inputStream;
-	Translate       *translate;
-	uint             row, col, prevCol;
-	QChar            putBackChar;
+		QChar getChar();
+		void ungetChar(QChar);
+		int getWord(QString&);
+		void skipSpaces();
+		void setTokenType(Token&);
+		int getNumber(Value&, QString&);
+		void getString(Token&);
+	
+		QTextIStream    *inputStream;
+		Translate       *translate;
+		uint             row, col, prevCol;
+		QChar            putBackChar;
 };
 
 

@@ -15,6 +15,7 @@
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+ 
 #include <kaboutdata.h>
 #include <kapplication.h>
 #include <kcmdlineargs.h>
@@ -23,9 +24,9 @@
 
 
 static const char description[] =
-	I18N_NOOP("Educational programming environment using the Logo programming language");
+	I18N_NOOP("Educational Programming Environment using the Logo programming language");
 
-static const char version[] = "0.5";
+static const char version[] = "0.6";
 
 static const char copyright[] = I18N_NOOP("(C) 2003 The KTurtle Authors");
 
@@ -33,7 +34,7 @@ static const char website[] = "http://edu.kde.org/kturtle";
 
 static KCmdLineOptions options[] =
 {
-///   @todo  Do something with command line arguments... Something like:
+///   @todo  so some about the command line arguments... Something like:
 // 	{ "e <argument>", I18N_NOOP( "sets the folder with the examples to <argument>" ), 0 }
 // 	{ "t <argument>", I18N_NOOP( "sets the xml file containing the translatiosns of the Logo commands" ), 0 }
 // 	{ "h <argument>", I18N_NOOP( "sets the xml file containing the highlightstyle" ), 0 }

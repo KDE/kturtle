@@ -15,6 +15,7 @@
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+ 
 #include <qdom.h>
 #include <qfile.h>
 
@@ -60,10 +61,8 @@ void Translate::loadTranslations() {
   	// Read the specified translation file
 	QFile xmlfile( locate("data", "kturtle/data/logokeywords." + Settings::logoLanguage() + ".xml") );
 
-	if ( !xmlfile.open(IO_ReadOnly) )
-	{
-		return;
-	}
+	if ( !xmlfile.open(IO_ReadOnly) ) return;
+	
 	if ( !KeywordsXML.setContent(&xmlfile) )
 	{
 		xmlfile.close();

@@ -794,16 +794,6 @@ TreeNode* Parser::FontSize()
 	return node;
 }
 
-TreeNode* Parser::Random()
-{
-	TreeNode* node = new TreeNode(currentToken, RandomNode);
-	preservedToken = currentToken;
-	getToken();
-	node->appendChild( Expression() );
-	// matchToken(tokEOL);  this command can return values so can be used as expression/parameter
-	return node;
-}
-
 TreeNode* Parser::Wait()
 {
 	TreeNode* node = new TreeNode(currentToken, WaitNode);
@@ -845,6 +835,16 @@ TreeNode* Parser::ResizeCanvas()
 	getToken();
 	appendParameters(node);
 	matchToken(tokEOL);
+	return node;
+}
+
+TreeNode* Parser::Random()
+{
+	TreeNode* node = new TreeNode(currentToken, RandomNode);
+	preservedToken = currentToken;
+	getToken();
+	appendParameters(node);
+	// matchToken(tokEOL);  this command can return values so can be used as expression/parameter
 	return node;
 }
 

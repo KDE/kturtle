@@ -1,5 +1,16 @@
 This document goes on the BUGs and WISHes that regarding KTurtle
 
+
+WHEN ONLINE DO:
+- remove/add dialog(s).{cpp,h}
+- fix randomnaam in ../data
+- find a solution for the website with annma
+- update the kde-apps
+- 
+
+
+
+
 Chapeters in this documents:
 
 BUGs
@@ -38,7 +49,7 @@ if (a < 5) and (b == 5) [
 
 
 
-print inputwindow "bla"  --> wrong error FIXED!!
+print inputwindow "bla"  --> wrong error: FIXED!!
 print "---" + (inputwindow "bla") + "-----" WORX!
 
 
@@ -68,7 +79,7 @@ cies: get all the commands in the logokeywords.*.xml file working properly, and 
 Need to work eventually:
 - input (without window, grabKeyEvents... not easy :)
 - sprite* (i'll maybe look into this when i have Qt3.3 which fixes the nasty crashbug that came across)
-- 'speed' will come later -- me has to focus and concentrate
+- 'speed' will come later [seperate 'move' methods have to be made inaddition to the line methods]
 
 would be nice (not in yet):
 - message, just a dialog with sone user defined text
@@ -128,6 +139,7 @@ the default font can be a bit bigger and sans serif, and default the <tab> on 2 
 
 have a context menu on right-click in the canvas to save the drawing (right-click -> Save Canvas). cies: then also put "print canvas" and "fullscreen" in there
 
+have the coords of the pixel under the mouse on the canvas in the statusbar
 
 
 CLI-file-selection (for mimetype eaz)
