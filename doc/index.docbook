@@ -2,6 +2,7 @@
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
   <!ENTITY kturtle "KTurtle">
   <!ENTITY kapp "&kturtle;"><!-- replace kturtle here -->
+  <!ENTITY kappname "&kturtle;">
   <!ENTITY package "kdeedu">
   <!ENTITY logo "Logo">
   <!ENTITY % addindex "IGNORE">
@@ -15,17 +16,17 @@
 
 <authorgroup>
 <author>
-<firstname>Anne-Marie</firstname>
-<surname>Mahfouf</surname>
-<affiliation>
-<address><email>annma@kde.org</email></address>
-</affiliation>
-</author>
-<author>
 <firstname>Cies</firstname>
 <surname>Breijs</surname>
 <affiliation>
 <address><email>cies # showroommama ! nl</email></address>
+</affiliation>
+</author>
+<author>
+<firstname>Anne-Marie</firstname>
+<surname>Mahfouf</surname>
+<affiliation>
+<address><email>annma@kde.org</email></address>
 </affiliation>
 </author>
 </authorgroup>
@@ -39,7 +40,7 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2004-05-27</date>
+<date>2004-06-27</date>
 <releaseinfo>0.2</releaseinfo>
 
 <abstract>
@@ -59,6 +60,7 @@
 <keyword>code</keyword>
 <keyword>Logo</keyword>
 <keyword>instructions</keyword>
+<keyword>turtle</keyword>
 </keywordset>
 
 </bookinfo>
@@ -72,7 +74,7 @@
 
 <sect1 id="what-is-logo">
 <title>What is &logo;?</title>
-<para>The first version &logo; programming language was created by Seymour Papert of MIT Artificial Intelligence Laboratory in 1967 as an ofshoot of the LISP programming language. From then many versions of &logo; have been released. By 1980 &logo; was gaining momentum, with versions for MSX, Commodore, Atari, and IBM PC systems. These versions were mainly for educational purposes. LCSI released MacLogo in 1985 as a tool for professional programmers, but it never caught on. MIT is still maintaining a site on &logo; which can be found on: <ulink url="http://el.media.mit.edu/logo-foundation/">http://el.media.mit.edu/logo-foundation/</ulink>.</para>
+<para>The first version &logo; programming language was created by Seymour Papert of MIT Artificial Intelligence Laboratory in 1967 as an ofshoot of the LISP programming language. From then many versions of &logo; have been released. By 1980 &logo; was gaining momentum, with versions for MSX, Commodore, Atari, Apple II and IBM PC systems. These versions were mainly for educational purposes. LCSI released <application>MacLogo</application> in 1985 as a tool for professional programmers, but it never caught on. MIT is still maintaining a site on &logo; which can be found on <ulink url="http://el.media.mit.edu/logo-foundation/">http://el.media.mit.edu/logo-foundation/</ulink>.</para>
 
 <para>Today there are several versions of &logo; around which can easily be found on <ulink url="http://el.media.mit.edu/logo-foundation/">MIT's &logo; site</ulink> and by a simple <ulink url="http://www.google.com/search?q=logo+programming+kids">Google search</ulink>. This version of &logo; (&kturtle;) is only focused on the educational qualities of the programming language and will not try to suit professional programmers needs.</para>
 </sect1>
@@ -373,7 +375,7 @@ The canvas is the area where the commands are visualized, where the commands <qu
         <guimenu>Edit</guimenu>
         <guimenuitem>Find Next</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Use this to find the next occurrencef the phrase.</para></listitem>
+      <listitem><para>Use this to find the next occurrence of the phrase.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -404,7 +406,7 @@ The canvas is the area where the commands are visualized, where the commands <qu
         <guimenuitem>Full Screen Mode</guimenuitem>
       </menuchoice></term>
       <listitem><para>With this action you toggle the full screen mode.</para>
-                <para>Note: When code is executed while in full screen mode all but the canvas are hidden. This make is possible to write <quote>full screen</quote> programs in &kturtle;.</para></listitem>
+                <para>Note: When code is executed while in full screen mode all but the canvas are hidden. This makes possible to write <quote>full screen</quote> programs in &kturtle;.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -526,7 +528,7 @@ The canvas is the area where the commands are visualized, where the commands <qu
 </sect2>
 
 <sect2 id="the-help-menu">
-  <title>The Help Menu</title>
+  <title>The <guimenu>Help</guimenu> Menu</title>
   <variablelist>
     <anchor id="help-handbook" />
     <varlistentry>
@@ -560,7 +562,7 @@ The canvas is the area where the commands are visualized, where the commands <qu
         <guimenu>Help</guimenu>
         <guimenuitem>Help on: ...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This is a very usefull function, it provides help on the code where the cursor in the code editor is at. So, for instance, you have used the 'print' command in your code, and you want to read to know what the handbook says on this command. You just move your cursor so it is in the 'print' command and you press <keysym>F1</keysym>. The handbook will then show all info on the print command.</para>
+      <listitem><para>This is a very useful function: it provides help on the code where the cursor in the code editor is at. So, &eg;, you have used the <userinput>print</userinput> command in your code, and you want to read and to know what the handbook says on this command. You just move your cursor so it is in the <userinput>print</userinput> command and you press <keysym>F1</keysym>. The handbook will then show all info on the <userinput>print</userinput> command.</para>
       <para>This function is very important during while learning programming.</para></listitem>
     </varlistentry>
   </variablelist>
@@ -630,7 +632,7 @@ In this Getting Started guide we assume that the language of the &logo; commands
 
 <sect1 id="first-steps">
 <title>First steps with &logo;: meet the Turtle!</title>
-<para>You must have noticed the turtle is in the middle of the canvas, you are just about to learn how to control it using commands in the code editor.</para>
+<para>You must have noticed the turtle is in the middle of the canvas: you are just about to learn how to control it using commands in the code editor.</para>
 
 <sect2 id="the-turtle-moves">
 <title>The Turtle Moves</title>
@@ -644,18 +646,18 @@ Type or copy-paste the code to the code editor and execute it (using <link linke
 
 <para>When you typed and executed the commands like above in the code editor you might have noticed one or more of the following things:</para>
 <para>1. That &mdash; after executing the commands &mdash; the turtle moves up, draws a line and then turns a quarter turn to the left. This because you have used the <link linkend="forward"><userinput>forward</userinput></link> and the <link linkend="turnleft"><userinput>turnleft</userinput></link> commands.</para>
-<para>2. That the color of the code changed while you where typing it, this features is called: intuitive highlighting &mdash; different types of commands are highlighted differently. This makes reading large blocks of code more easy.</para>
+<para>2. That the color of the code changed while you where typing it: this features is called <emphasis>intuitive highlighting</emphasis> &mdash; different types of commands are highlighted differently. This makes reading large blocks of code more easy.</para>
 <para>3. That the turtle draws a thin black line.</para>
-<para>4. Maybe you got an error message. This could simply mean two things: you could have made a mistake while copying the commands, or you should still set the correct language for the &logo; commands (you can do that here: <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kturtle;...</guimenuitem></menuchoice> in the <guilabel>Language</guilabel> section).</para>
+<para>4. Maybe you got an error message. This could simply mean two things: you could have made a mistake while copying the commands, or you should still set the correct language for the &logo; commands (you can do that by choosing <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kturtle;...</guimenuitem></menuchoice>, in the <guilabel>Language</guilabel> section).</para>
 
 <para>You will likely understand that <userinput>forward 90</userinput> commanded the turtle to move forward leaving a line, and that <userinput>turnleft 90</userinput> commanded the turtle to turn 90 <glossterm linkend="degrees">degrees</glossterm> to the left.</para>
 
-<para>Please see the follow the links to the reference manual for a complete explanation of the introduced commands: <userinput>forward</userinput>, <userinput>backward</userinput>, <userinput>turnleft</userinput> and <userinput>turnright</userinput>.</para>
+<para>Please see the following links to the reference manual for a complete explanation of the introduced commands: <userinput>forward</userinput>, <userinput>backward</userinput>, <userinput>turnleft</userinput> and <userinput>turnright</userinput>.</para>
 </sect2>
 
 <sect2 id="more-examples">
 <title>More examples</title>
-<para>The first example was very simple so let's go on!</para>
+<para>The first example was very simple, so let's go on!</para>
 
 <para>
 <screen>
@@ -965,10 +967,10 @@ Draw a maze for example
       <listitem><para><screen>print X</screen>
       The <userinput>print</userinput> command is used to command the turtle to write something on the canvas. <userinput>print</userinput> takes numbers and strings as input. You can <userinput>print</userinput> various numbers and strings using the <quote>+</quote> symbol. See here a small example:
       <screen>
-      year = 2004
-      author = "Cies"
-      print "KTurtle was made in " + year + " by " + author
-      </screen>
+year = 2004
+author = "Cies"
+print "KTurtle was made in " + year + " by " + author
+</screen>
       </para></listitem>
     </varlistentry>
   </variablelist>
@@ -983,7 +985,7 @@ Draw a maze for example
 </sect2>
 
 <sect2 id="dice">
-<title>A command that rolls a the dice for you</title>
+<title>A command that rolls a dice for you</title>
 <para>There is one command that rolls a dice for you</para>
   <variablelist>
     <anchor id="random" />
@@ -992,12 +994,12 @@ Draw a maze for example
       <listitem><para><screen>random X,Y</screen>
       <userinput>random</userinput> is a command that takes input and gives output. As input are required two numbers, the first (X) sets the minimum output, the second (Y) sets the maximum. The output is a randomly chosen number that is equal or greater then the minimum and equal or smaller than the maximum. Here a small example:
       <screen>
-      repeat 500 [
-        x = random 1,20
-        forward x
-        turnleft 10 - x
-      ]
-      </screen>
+repeat 500 [
+  x = random 1,20
+  forward x
+  turnleft 10 - x
+]
+</screen>
       Using the random command you can add a bit of chaos to your program.</para></listitem>
     </varlistentry>
   </variablelist>
@@ -1038,7 +1040,7 @@ AB = A + B
 print AB
 backward 30
 # the next command prints "2004 plus 25"
-print A + " plus " + B
+print "" +  A + " plus " + B
 backward 30
 # the next command prints "1979"
 print A - B
@@ -1088,7 +1090,7 @@ That what is between braces will be calculated first.</para>
 <screen>
 x = 6
 if x &gt; 5 [
-  print hello
+  print "hello"
 ]
 </screen>
 
@@ -1139,7 +1141,7 @@ Questions can also be glued to each other with <quote>question glue</quote>, thi
 a = 1
 b = 5
 if a &lt; 5 and b == 5 [
-  print hello
+  print "hello"
 ]
 </screen>
 <anchor id="question-glue" />In this example the glue-word <userinput>and</userinput> is used to glue 2 questions (<userinput>a &lt; 5</userinput>, <userinput>b == 5</userinput>) together. If one side of the <userinput>and</userinput> would answer <quote>false</quote> the whole question would answer <quote>false</quote>, because with the glue-word <userinput>and</userinput> both sides need to be <quote>true</quote> in order to answer <quote>true</quote>.</para>
@@ -1181,12 +1183,12 @@ if a &lt; 5 and b == 5 [
       <listitem><para><screen>wait X</screen>
       <userinput>wait</userinput> lets the turtle wait for X seconds.
       <screen>
-      repeat 36 [
-        forward 5
-        turnright 10
-        wait 0.5
-      ]
-      </screen>
+repeat 36 [
+  forward 5
+  turnright 10
+  wait 0.5
+]
+</screen>
       This code draws a circle, but the turtle will wait half a second each step. This gives the impression of an easy moving turtle.</para></listitem>
     </varlistentry>
   </variablelist>
@@ -1202,12 +1204,11 @@ if a &lt; 5 and b == 5 [
       <listitem><para><screen>if <link linkend="questions">question</link> [ ... ]</screen>
       The code that is placed on the <quote>...</quote> will only be executed <userinput>if</userinput> the answer to the <link linkend="questions">question</link> is <quote>true</quote>. Please read for more information on <link linkend="questions">questions</link> the <link linkend="questions">question section</link>.
       <screen>
-      
-      x = 6
-      if x &gt; 5 [
-        print "x is greater than five!"
-      ]
-      </screen>
+x = 6
+if x &gt; 5 [
+  print "x is greater than five!"
+]
+</screen>
       On the first line <userinput>x</userinput> is set to 6. On the second line the <link linkend="questions">question</link> <userinput>x &gt; 5</userinput> is asked. Since the answer to this question is <quote>true</quote> the execution controller <userinput>if</userinput> will allow the code between the braces to be executed</para></listitem>
     </varlistentry>
   </variablelist>
@@ -1223,13 +1224,13 @@ if a &lt; 5 and b == 5 [
       <listitem><para><screen>while <link linkend="questions">question</link> [ ... ]</screen>
       The execution controller <userinput>while</userinput> is a lot like the <link linkend="if"><userinput>if</userinput></link>. The difference is that <userinput>while</userinput> keeps repeating the code between the braces till the answer to the <link linkend="questions">question</link> is <quote>false</quote>.
       <screen>
-      x = 1
-      while x &lt; 5 [
-        forward 10
-        wait 1
-        x = x + 1
-      ]
-      </screen>
+x = 1
+while x &lt; 5 [
+  forward 10
+  wait 1
+  x = x + 1
+]
+</screen>
       On the first line <userinput>x</userinput> is set to 1. On the second line the <link linkend="questions">question</link> <userinput>x &lt; 5</userinput> is asked. Since the answer to this question is <quote>true</quote> the execution controller <userinput>while</userinput> starts executing the code between the braces till the answer to the <link linkend="questions">question</link> is <quote>false</quote>. In this case the code between the braces will be executed 4 times, because everytime the fifth line is executed <userinput>x</userinput> get one number higher.</para></listitem>
     </varlistentry>
   </variablelist>
@@ -1245,13 +1246,13 @@ if a &lt; 5 and b == 5 [
       <listitem><para><screen>if question [ ... ] else [ ... ]</screen>
       <userinput>else</userinput> can be used in addition to the execution controller <link linkend="if"><userinput>if</userinput></link>. The code between the braces after <userinput>else</userinput> is only executed if the answer to the <link linkend="questions">question</link> that is asked is <quote>false</quote>. 
       <screen>
-      x = 4
-      if x &gt; 5 [
-        print "x is greater than five!"
-      ] else [
-        print "x is smaller than six!"
-      ]
-      </screen>
+x = 4
+if x &gt; 5 [
+  print "x is greater than five!"
+] else [
+  print "x is smaller than six!"
+]
+</screen>
       The <link linkend="questions">question</link> asks if <userinput>x</userinput> is greater than 5. Since <userinput>x</userinput> is set to 4 on the first line the answer to the question is <quote>false</quote>. This means the code between the braces after <userinput>else</userinput> gets executed.</para></listitem>
     </varlistentry>
   </variablelist>
@@ -1265,13 +1266,13 @@ if a &lt; 5 and b == 5 [
     <varlistentry>
       <term>for</term>
       <listitem><para><screen>for <userinput>start point</userinput> to <userinput>end point</userinput> [ ... ]</screen>
-      The <userinput>for</userinput> loop is a <quote>counting loop</quote>, it keeps count for you.
+      The <userinput>for</userinput> loop is a <quote>counting loop</quote>, &ie; it keeps count for you.
       <screen>
-      for x = 1 to 10 [
-        print x * 7
-        forward 15
-      ]
-      </screen>
+for x = 1 to 10 [
+  print x * 7
+  forward 15
+]
+</screen>
      Everytime the code between the braces is executed the <userinput>x</userinput> is one number higher, till x reaches the count of 10. The code between the braces prints the <userinput>x</userinput> multiplied by 7. After this program finished its execution you will see the times table of 7 on the canvas.</para></listitem>
     </varlistentry>
   </variablelist>
@@ -1353,7 +1354,7 @@ print str
 
 <para>Now some examples of the commands that give output:
 <screen>
-x = inputwindow "please type something and press OK... thanks!"
+x = inputwindow "Please type something and press OK... thanks!"
 r = random 1,100
 </screen>
 The <userinput>inputwindow</userinput> command takes a string as input, and outputs the number or string that is enter. As you see the output of <userinput>inputwindow</userinput> is stored in the container <userinput>x</userinput>. The <userinput>random</userinput> command also gives output. In this case it outputs a number between 1 and 100. The output of the random is again stored in a container, named <userinput>r</userinput>. Note that the containers <userinput>x</userinput> and <userinput>r</userinput> are not used in the example code above.</para>
@@ -1444,7 +1445,7 @@ hide
 
 <glossentry id="rgb">
 <glossterm>RGB combinations (color codes)</glossterm>
-<glossdef><para>RGB combinations are used to describe colors. The <quote>R<quote> stand for <quote>red</quote>, the <quote>G</quote> stands for <quote>green</quote> and the <quote>B</quote> stands for </quote>blue</quote>. An example of an RGB combination is <userinput>255,0,0</userinput>, the first <quote>red</quote> value is 255 and the others are 0, this results in a bright shade of red. Each value of an RGB combination has to be in the range 0 to 255. Here a small list of some often used colors:
+<glossdef><para>RGB combinations are used to describe colors. The <quote>R</quote> stand for <quote>red</quote>, the <quote>G</quote> stands for <quote>green</quote> and the <quote>B</quote> stands for <quote>blue</quote>. An example of an RGB combination is <userinput>255,0,0</userinput>: the first value (<quote>red</quote>) is 255 and the others are 0, so this represents a bright shade of red. Each value of an RGB combination has to be in the range 0 to 255. Here a small list of some often used colors:
 <table frame="none">
 <title>Often used RGB combinations</title>
 <tgroup cols="2" colsep="5" rowsep="1">
@@ -1463,13 +1464,14 @@ hide
 </tgroup>
 </table>
 </para>
-<para>To easily find the RGB combinations of a color you should try the colorpicker! You can find the colorpicker here: <link linkend="tools-color-picker"><menuchoice><guimenu>Tools</guimenu><guimenuitem>Color Picker</guimenuitem></menuchoice></link>.</para>
-<para>Two commands need an RGB combination as input, these commands are: <userinput>canvascolor</userinput> and <userinput>pencolor</userinput>.</para></glossdef>
+<para>To easily find the RGB combinations of a color you should try the color picker! You can open the color picker using <link linkend="tools-color-picker"><menuchoice><guimenu>Tools</guimenu><guimenuitem>Color Picker</guimenuitem></menuchoice></link>.</para>
+<para>Two commands need an RGB combination as input: these commands are <userinput>canvascolor</userinput> and <userinput>pencolor</userinput>.</para></glossdef>
 </glossentry>
 
 <glossentry id="sprite">
 <glossterm>sprite</glossterm>
-<glossdef><para>A sprite is a small picture that can be moved around the screen. Our beloved turtle, for instance, is a sprite. [With this version of &kturtle; the sprite cannot be changed from a turtle into something else. Future versions of &kturtle; will be able to do this.]</para></glossdef>
+<glossdef><para>A sprite is a small picture that can be moved around the screen. Our beloved turtle, for instance, is a sprite.</para>
+<para>Note: with this version of &kturtle; the sprite cannot be changed from a turtle into something else. Future versions of &kturtle; will be able to do this.</para></glossdef>
 </glossentry>
 
 <glossentry id="wrapping">
@@ -1544,8 +1546,8 @@ Please note that the country code must be the same here than in the logokeywords
 <itemizedlist>
 <listitem><para>Copy the <filename>logohighlightstyle.en_US.xml</filename> file by renaming it to <filename>logohighlightstyle.code.xml</filename> where <emphasis>code</emphasis> is your country code (2 or 4 letters ISO code)
 </para></listitem>
-<listitem><para>Line 4 of the file, there is
-&lt;language name="en_US" ..., here you change <quote>en_US</quote> with your language ISO code (2 or 4 letters).
+<listitem><para>In line 4 of the file, there is
+&lt;language name="en_US" ...&gt;: here you change <quote>en_US</quote> with your language ISO code (2 or 4 letters).
 </para></listitem>
 <listitem><para>Translate in your own language the content of the &lt;item&gt; tag &ie; the information between &lt;item&gt; and &lt;/item&gt;. This content must match the logokeyword file.
 For example translate <quote>while</quote> in: &lt;item&gt; while &lt;/item&gt; and leave the spaces as they are (one at the beginning and one at the end).
@@ -1602,7 +1604,7 @@ Contributors:
 <itemizedlist>
 <listitem><para>Coding help, editor part: Anne-Marie Mahfouf <email>annma@kde.org</email></para>
 </listitem>
-<listitem><para>Author of "wsbasic" (wsbasic.sf.net) which is the base for the interpreter of &kturtle;: Walter Schreppers <email>Walter.Schreppers@ua.ac.be</email></para>
+<listitem><para>Author of <quote>wsbasic</quote> (<ulink url="http://wsbasic.sourceforge.net">http://wsbasic.sourceforge.net</ulink>) which is the base for the interpreter of &kturtle;: Walter Schreppers <email>Walter.Schreppers@ua.ac.be</email></para>
 </listitem>
 <listitem><para>German Data Files: Matthias Me&szlig;mer <email>bmlmessmer@web.de</email></para>
 </listitem>
