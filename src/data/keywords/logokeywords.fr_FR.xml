@@ -90,8 +90,8 @@
   </command>
 
   <command name="clear">
-    <keyword>clear</keyword>
-    <alias>ccl</alias>
+    <keyword>nettoietout</keyword>
+    <alias>ntt</alias>
   </command>
  
   <command name="go">
@@ -168,13 +168,13 @@
   </command>
 
   <command name="spriteshow">
-    <keyword>montre</keyword>
-    <alias>ss</alias>
+    <keyword>montreimage</keyword>
+    <alias>mi</alias>
   </command>
   
   <command name="spritehide">
-    <keyword>cache</keyword>
-    <alias>sh</alias>
+    <keyword>cacheimage</keyword>
+    <alias>ci</alias>
   </command>
 
   <command name="spritepress">
@@ -183,8 +183,8 @@
   </command>
 
   <command name="spritechange">
-    <keyword>change</keyword>
-    <alias>sc</alias>
+    <keyword>changeimage</keyword>
+    <alias>ci</alias>
   </command>
 
 

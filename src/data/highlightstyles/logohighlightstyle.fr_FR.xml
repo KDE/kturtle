@@ -11,8 +11,8 @@
 
   <list name="statements">
     <item> run </item>
-    <item> clear </item> 
-    <item> ccl </item> 
+    <item> nettoietout </item> 
+    <item> ntt </item> 
     <item> va </item> 
     <item> vax </item> 
     <item> vx </item> 
@@ -41,14 +41,14 @@
     <item> cc </item> 
     <item> canvassize </item> 
     <item> cs </item> 
-    <item> show </item> 
-    <item> ss </item> 
-    <item> hide </item> 
-    <item> sh </item> 
+    <item> montreimage </item> 
+    <item> mi </item> 
+    <item> cacheimage </item> 
+    <item> ci </item> 
     <item> press </item> 
     <item> sp </item> 
-    <item> change </item> 
-    <item> sc </item> 
+    <item> changeimage </item> 
+    <item> ci </item> 
     <item> message </item>
     <item> inputwindow </item> 
     <item> écris </item> 
