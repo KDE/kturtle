@@ -816,24 +816,26 @@ void MainWindow::slotSettings() {
 	WidthHeightBoxLayout->setAlignment( Qt::AlignTop );
 	QHBoxLayout *layout3 = new QHBoxLayout( 0, 0, 6, "layout3"); 
 	QVBoxLayout *layout2 = new QVBoxLayout( 0, 0, 6, "layout2"); 
-	WidthLabel = new QLabel( kcfg_CanvasWidth, i18n("Canvas Width:"), WidthHeightBox );
-	layout2->addWidget( WidthLabel );
-	HeightLabel = new QLabel( kcfg_CanvasHeight, i18n("Canvas Weight:"), WidthHeightBox );
-	layout2->addWidget( HeightLabel );
-	layout3->addLayout( layout2 );
+
 	QVBoxLayout *layout1 = new QVBoxLayout( 0, 0, 6, "layout1");
-	
+
 	kcfg_CanvasWidth = new KIntNumInput( WidthHeightBox, "kcfg_CanvasWidth" );
 	kcfg_CanvasWidth->setValue( 400 );
 	kcfg_CanvasWidth->setMinValue( 1 );
 	kcfg_CanvasWidth->setReferencePoint( 1 );
 	layout1->addWidget( kcfg_CanvasWidth );
-	
+
 	kcfg_CanvasHeight = new KIntNumInput( WidthHeightBox, "kcfg_CanvasHeight" );
 	kcfg_CanvasHeight->setValue( 300 );
 	kcfg_CanvasHeight->setMinValue( 1 );
 	kcfg_CanvasHeight->setReferencePoint( 1 );
 	layout1->addWidget( kcfg_CanvasHeight );
+	
+	WidthLabel = new QLabel( kcfg_CanvasWidth, i18n("Canvas Width:"), WidthHeightBox );
+	layout2->addWidget( WidthLabel );
+	HeightLabel = new QLabel( kcfg_CanvasHeight, i18n("Canvas Weight:"), WidthHeightBox );
+	layout2->addWidget( HeightLabel );
+	layout3->addLayout( layout2 );
 	
 	layout3->addLayout( layout1 );
 	WidthHeightBoxLayout->addLayout( layout3 );
@@ -856,10 +858,6 @@ void MainWindow::slotSettings() {
 	
 	QVBoxLayout *layout4 = new QVBoxLayout( 0, 0, 6, "layout4"); 
 	
-	LanguageLabel = new QLabel(kcfg_LanguageComboBox, i18n("Select the language for the Logo commands:"), groupBox1);
-	LanguageLabel->setBuddy( kcfg_LanguageComboBox );
-	layout4->addWidget( LanguageLabel );
-	
 	kcfg_LanguageComboBox = new KComboBox(groupBox1, "kcfg_LanguageComboBox");
 	kcfg_LanguageComboBox->setEditable(false);
 	QStringList LogoLanguageList = Settings::logoLanguageList();
@@ -871,6 +869,10 @@ void MainWindow::slotSettings() {
 	kcfg_LanguageComboBox->insertStringList(LogoLanguageList);
 	kcfg_LanguageComboBox->setCurrentText( KGlobal::locale()->twoAlphaToLanguageName( (Settings::logoLanguage() ).left(2) ) + " (" + Settings::logoLanguage() + ")" );
 	layout4->addWidget( kcfg_LanguageComboBox );
+	
+	LanguageLabel = new QLabel(kcfg_LanguageComboBox, i18n("Select the language for the Logo commands:"), groupBox1);
+	LanguageLabel->setBuddy( kcfg_LanguageComboBox );
+	layout4->addWidget( LanguageLabel );
 	
 	groupBox1Layout->addLayout( layout4, 0, 0 );
 	languageLayout->addWidget( groupBox1, 0, 0 ); 
