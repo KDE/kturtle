@@ -1,8 +1,8 @@
 # zeichne ein Quadrat
 
-zurücksetzen
+zurÃ¼cksetzen
 wiederhole 4 
 [
-  vorwärts 100 
+  vorwÃ¤rts 100 
   nachlinks  90
 ]

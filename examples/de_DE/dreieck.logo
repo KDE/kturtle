@@ -1,15 +1,15 @@
 # curly.logo
 
-zur¸cksetzen
+zur√ºcksetzen
 stifthoch
-vorw‰rts 50
+vorw√§rts 50
 stiftrunter
 
 wiederhole 4 
 [
   von x = 1 bis 100 
   [
-    vorw‰rts 10
+    vorw√§rts 10
     nachrechts 100 - x
   ]
 ]
