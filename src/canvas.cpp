@@ -3,7 +3,6 @@
  */
 
 #include <qpainter.h>
-#include <qpixmap.h>
 #include <kdebug.h>
 #include <klocale.h>
 #include <kmessagebox.h>

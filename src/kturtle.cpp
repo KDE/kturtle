@@ -6,7 +6,6 @@
 
 #include <qregexp.h>
 #include <qpainter.h>
-#include <qpixmap.h>
 #include <qtooltip.h>
 #include <qwhatsthis.h>
 
@@ -22,7 +21,6 @@
 #include <kmessagebox.h>
 #include <kprinter.h>
 #include <ksavefile.h>
-#include <kstandarddirs.h> 
 #include <kstatusbar.h>
 
 #include <ktexteditor/clipboardinterface.h>
