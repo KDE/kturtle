@@ -119,7 +119,7 @@ class MainWindow : public KParts::MainWindow// public KMainWindow
     void slotColorPicker();
     void setRunEnabled();
     void slotOpenEx();
-    void loadFile(QString myFile);
+    void loadFile(KURL url);
     void slotUnPauseExecution();
 
   protected:

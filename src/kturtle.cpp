@@ -64,8 +64,8 @@ MainWindow::MainWindow(KTextEditor::Document *doc) : editor(0) {
     ei = dynamic_cast<KTextEditor::EditInterface*>( doc );
     EditorDock->setWidget(editor);
     //dynamic_cast<KTextEditor::Document*>(this)->actionCollection()->remove(action("file_quit"));
-    //doc->actionCollection()->remove(action("edit_find_next")); //works if you suppress file_quit from the kturtleui.rc file
     //doc->actionCollection()->remove(action("file_quit"));
+    
     ///allow to enable run only when some text is written in editor
     connect(editor->document(), SIGNAL(textChanged()), this, SLOT(setRunEnabled()));
     
@@ -203,7 +203,6 @@ void MainWindow::slotNewFile() {
 }
 
 void MainWindow::slotSaveFile() {
-     kdDebug()<<"\nin save \n " << endl;
     // if no filename yet, go get it first
     if ( CurrentFile.isEmpty() && filename2saveAs.isEmpty() ) {
         slotSaveAs();
@@ -237,24 +236,22 @@ void MainWindow::slotSaveFile() {
     CurrentFile = filestr;
     setCaption(CurrentFile);
     slotStatusBar(i18n("Saved file to: %1").arg(CurrentFile), 1); 
+    //@TODO add file in recent files
 }
 
 void MainWindow::slotSaveAs() {
-    /// @todo migrate to KURL
-    //why doesn't it come here???
-    kdDebug()<<"\nin save as\n " << endl;
-    QString filestr; // forward declaration (see end of scope)
-    while(true) {
-        filestr = KFileDialog::getSaveFileName(QString(":logo_dir"), QString("*.logo|") +
-          i18n("Logo files"), this, i18n("Save logo file..."));
-        if (filestr.isEmpty()) { // when cancelled the KFiledialog?
+       KURL url;
+      while(true) {
+      url = KFileDialog::getSaveURL( QString(":logo_dir"), QString("*.logo|") +
+      i18n("Logo files"), this, i18n("Save logo file...") );
+        if (url.isEmpty()) { // when cancelled the KFiledialog?
             return;
         }
-        QFile file(filestr);
+        QFile file(url.url());
         if ( file.exists() ) {
             int result = KMessageBox::warningContinueCancel( this,
                 i18n("A file named \"%1\" already exists.\n"
-                     "Are you sure you want to overwrite it?").arg(filestr),
+                     "Are you sure you want to overwrite it?").arg(url.url()),
                 i18n("Overwrite existing file?"), i18n("Overwrite") );
             if (result != KMessageBox::Continue) {
                 return;
@@ -262,15 +259,15 @@ void MainWindow::slotSaveAs() {
         }
         break;
     }
-    filename2saveAs = filestr;
+    filename2saveAs = url.url();
     slotSaveFile();
 }
 
 void MainWindow::slotOpenFile() {
-   ///@todo migrate to KURL
-    QString filestr = KFileDialog::getOpenFileName(QString(":logo_dir"), QString("*.logo|") +
-      i18n("Logo files"), this, i18n("Open logo file..."));
-      loadFile(filestr);
+      KURL url = KFileDialog::getOpenURL( QString(":logo_dir"), QString("*.logo|") +
+      i18n("Logo files"), this, i18n("Open logo file...") );
+       if( !url.isEmpty() )
+           loadFile(url);
 }
 
 void MainWindow::slotQuit() {
@@ -594,18 +591,23 @@ void MainWindow::setRunEnabled() {
 }
 
 void MainWindow::slotOpenEx() {
-     QString filestr = KFileDialog::getOpenFileName( QString( locate("data", "kturtle/examples/en/") ),
+    KURL url;
+    url.setPath( locate("data", "kturtle/examples/en/"));
+    url = KFileDialog::getOpenURL( url.path() ,
                        QString("*.logo|") + i18n("Logo Examples files"), this,
-                       i18n("Open logo example file...") ); //change en with the user's language 
-     loadFile(filestr);
+                       i18n("Open logo example file..."));
+		       
+     loadFile(url);
 }
 
-void MainWindow::loadFile(QString myFile) {
-if ( !myFile.isEmpty() ) {
+void MainWindow::loadFile(KURL url) {
+        QString myFile = url.path();
+	if ( !myFile.isEmpty() ) {
         QFile file(myFile);
-        if ( !file.open(IO_ReadOnly) ) {
-            return;
-        }
+        //if ( !file.open(IO_ReadWrite) ) {
+         //  return;
+      // }
+       if (file.open(IO_ReadWrite)){
         if ( editor->document()->isModified() ) {
             int result = KMessageBox::warningContinueCancel( this,
               i18n("The changes you have made to the file you "
@@ -617,12 +619,13 @@ if ( !myFile.isEmpty() ) {
                 return;
             }
         }
-        QTextStream stream(&file);
-        ei->setText( stream.read() );
-
+	QTextStream stream(&file);
+        ei->setText(stream.read());
+        file.close();
         CurrentFile = myFile;
-        setCaption(CurrentFile);
-        slotStatusBar(i18n("Opened file: %1").arg(CurrentFile), 1);
+        setCaption(url.fileName());
+        slotStatusBar(i18n("Opened file: %1").arg(url.fileName()), 1);
+	}
     } else { 
         slotStatusBar(i18n("Opening aborted, nothing opened."), 1);
     }
