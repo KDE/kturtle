@@ -36,7 +36,7 @@ class Executer : public QObject
     void abort();
 
   signals:
-    void ErrorMsg(QString s, int row, int col, int code = 2000);
+    void ErrorMsg(QString s, unsigned int row, unsigned int col, unsigned int code = 2000);
     void InputDialog(QString& value);
     void MessageDialog(QString text);
     void Finished();

@@ -118,8 +118,8 @@ class Lexer {
     //public members
     //==============
     token lex(); //return token
-    int getRow();
-    int getCol();
+    unsigned int getRow();
+    unsigned int getCol();
     
     
   private:
@@ -143,7 +143,7 @@ class Lexer {
     //private locals
     //==============
     istream* in;
-    int row,col,prevCol;
+    unsigned int row,col,prevCol;
 };
 
 

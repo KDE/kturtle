@@ -34,6 +34,7 @@
 #include <ktexteditor/printinterface.h>
 #include <ktexteditor/selectioninterface.h>
 #include <ktexteditor/undointerface.h>
+#include <ktexteditor/viewcursorinterface.h>
 
 #include "settings.h"
 #include "kturtle.h"
@@ -126,7 +127,7 @@ void MainWindow::setupActions() {
     KStdAction::replace(this, SLOT(slotReplace()), ac);
     
     // setup view actions
-    new KToggleAction(i18n("Show &Line Numbers"), "linenumbers", Qt::Key_F11, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
+    new KToggleAction(i18n("Show &Line Numbers"), 0, Qt::Key_F11, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
     m_fullscreen = KStdAction::fullScreen(this, SLOT( slotToggleFullscreen() ), ac, this, "full_screen");
     m_fullscreen->setChecked(b_fullscreen);
 
@@ -134,7 +135,7 @@ void MainWindow::setupActions() {
     new KToggleAction(i18n("&Color Picker"), "colorize", 0, this, SLOT(slotColorPicker()), ac, "color_picker");
     new KAction(i18n("&Indent"), "indent", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
     new KAction(i18n("&Unindent"), "unindent", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
-    new KAction(i18n("Cl&ean Indentation"), 0, 0, this, SLOT(slotCleanIndent()), ac, "edit_cleanindent");
+    new KAction(i18n("Cl&ean Indentation"), 0, 0, this, SLOT(slotCleanIndent()), ac, "edit_cleanIndent");
     new KAction(i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
     new KAction(i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
 
@@ -144,6 +145,10 @@ void MainWindow::setupActions() {
     // setup settings actions
     KStdAction::preferences( this, SLOT( slotSettings() ), ac );
     KStdAction::keyBindings( this, SLOT( slotConfigureKeys() ), ac );
+    
+    // setup help actions
+    ContextHelp = new KAction(0, 0, Key_F1, this, SLOT(slotContextHelp()), ac, "context_help");
+    slotContextHelpUpdate(); // this sets the label of this action
 }
 
 void MainWindow::setupEditor() {
@@ -329,8 +334,8 @@ void MainWindow::startExecution() {
     stringbuf sbuf(txt, ios_base::in);
     istream in(&sbuf);
     Parser parser(in);
-    connect( &parser, SIGNAL(ErrorMsg(QString, int, int, int) ), 
-             this, SLOT(slotErrorDialog(QString, int, int, int) ) );
+    connect( &parser, SIGNAL(ErrorMsg(QString, unsigned int, unsigned int, unsigned int) ), 
+             this, SLOT(slotErrorDialog(QString, unsigned int, unsigned int, unsigned int) ) );
     
     // parsing and executing...
     if( parser.parse() ) {
@@ -339,8 +344,8 @@ void MainWindow::startExecution() {
 
         slotStatusBar(i18n("Executing commands..."), 1); 
         exe = new Executer(root); // make Executer object, 'exe', and have it point to the root
-        connect( exe, SIGNAL( ErrorMsg(QString, int, int, int) ), 
-                 this, SLOT( slotErrorDialog(QString, int, int, int) ) );
+        connect( exe, SIGNAL( ErrorMsg(QString, unsigned int, unsigned int, unsigned int) ), 
+                 this, SLOT( slotErrorDialog(QString, unsigned int, unsigned int, unsigned int) ) );
         connect( exe, SIGNAL( InputDialog(QString&) ), 
                  this, SLOT( slotInputDialog(QString&) ) );
         connect( exe, SIGNAL( MessageDialog(QString) ), 
@@ -423,7 +428,7 @@ void MainWindow::finishExecution() {
     executing = false;
 }
 
-void MainWindow::slotErrorDialog(QString msg, int row, int col, int code) {
+void MainWindow::slotErrorDialog(QString msg, unsigned int row, unsigned int col, unsigned int code) {
     if(allreadyError) { return; } // one error dialog per 'run' is enough... (see next line)
     // allreadyError = true; NO I WANT TO SE ALL ERRORS for the time beeing
     QString line;
@@ -431,8 +436,12 @@ void MainWindow::slotErrorDialog(QString msg, int row, int col, int code) {
         line = ".";
     } else {
 //         RowCol = QString(" on row %1, column %2.").arg(row).arg(col); // no column, it over informs
-         line = QString(" on line %1.").arg(row);
+         line = QString(" on line %1.").arg(row - 1);
     }
+    
+    // move cursor to the error
+    dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->setCursorPositionReal(row - 2, col);
+    
     QString ErrorType;
     if( 1000 <= code || code < 2000 ) {
         ErrorType = i18n("Parse Error");
@@ -443,7 +452,8 @@ void MainWindow::slotErrorDialog(QString msg, int row, int col, int code) {
     } else if( code < 1000 ) {
         ErrorType = i18n("Error");
     }
-    KMessageBox::detailedSorry( this, msg + line, i18n("Error code: %1").arg(code), ErrorType );
+    KMessageBox::detailedSorry( this, msg + line, i18n("Error code: %1").arg(code) + "\n" +
+        i18n("Exact location: %1, %2").arg(row - 1).arg(col), ErrorType );
 }
 
 void MainWindow::slotInputDialog(QString& value) {
@@ -705,6 +715,17 @@ void MainWindow::slotConfigureKeys() {
 
 
 
+
+void MainWindow::slotContextHelp() {
+}
+
+void MainWindow::slotContextHelpUpdate() {
+    QString keyword = i18n("<no keyword>");
+    
+    ContextHelp->setText( i18n("Help on:") + " " + keyword );
+}
+
+
 void MainWindow::readConfig(KConfig *config) {
         if ( Settings::translationFilePath().isNull() ) {
         	kdDebug(0)<<"--3--"<<endl;
@@ -723,12 +744,6 @@ void MainWindow::writeConfig(KConfig *config) {
 	config->setGroup("General Options");
 	m_recentFiles->saveEntries(config, "Recent Files");
 }
-
-
-
-
-
-
 
 void MainWindow::setRunEnabled() {
     run->setEnabled(true);

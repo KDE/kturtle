@@ -36,7 +36,7 @@ Parser::~Parser() {
 }
 
 
-void Parser::Error(const QString& s, int code) {
+void Parser::Error(const QString& s, unsigned int code) {
   emit ErrorMsg(s, row, col, code);
   //exit(1); // better = throw exception here!
   bNoErrors=false;

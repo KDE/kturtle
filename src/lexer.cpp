@@ -20,11 +20,11 @@ Lexer::Lexer(istream& ifstr) {
 }
 
 
-int Lexer::getRow() {
+unsigned int Lexer::getRow() {
   return row;
 }
 
-int Lexer::getCol() {
+unsigned int Lexer::getCol() {
   return col;
 }
 

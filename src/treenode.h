@@ -146,8 +146,8 @@ class TreeNode:public list<TreeNode*> {
     void setValue(const string& s){ value = s; }
     
     Number getValue();
-    int getRow(){ return fRow; }
-    int getCol(){ return fCol; }
+    unsigned int getRow(){ return fRow; }
+    unsigned int getCol(){ return fCol; }
 
     void setStrValue(const string&);
     string getStrValue();
@@ -175,7 +175,7 @@ class TreeNode:public list<TreeNode*> {
     Number value;
     string strValue;
     
-    int fRow, fCol; //for runtime error messages.
+    unsigned int fRow, fCol; //for runtime error messages.
     
 };
 

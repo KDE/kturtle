@@ -46,6 +46,10 @@
       <Action name="edit_comment" />
       <Action name="edit_uncomment" />
     </Menu>
+    
+    <Menu name="help"><text>&amp;Help</text>
+      <Action name="context_help" />
+    </Menu>
   </MenuBar>
 
 <ToolBar name="mainToolBar" noMerge="1" fullWidth="true" >

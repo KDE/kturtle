@@ -79,11 +79,14 @@ class MainWindow : public KParts::MainWindow
     void slotCleanIndent();
     void slotComment();
     void slotUnComment();
+    
+    void slotContextHelp();
+    void slotContextHelpUpdate();
 
     void slotStatusBar(QString text, int place);
     void slotUpdateCanvas();
     
-    void slotErrorDialog(QString msg, int row = 0, int col = 0, int code = 0);
+    void slotErrorDialog(QString msg, unsigned int row = 0, unsigned int col = 0, unsigned int code = 0);
     void slotInputDialog(QString& value);
     void slotMessageDialog(QString text);
     
@@ -122,6 +125,7 @@ class MainWindow : public KParts::MainWindow
     KToggleAction      *m_fullscreen;
     KToggleAction      *colorpicker;
     KRecentFilesAction * m_recentFiles;
+    KAction            *ContextHelp;
     
     QWidget            *general;
     QWidget            *language;
