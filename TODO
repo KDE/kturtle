@@ -1,7 +1,10 @@
 This is the TODO file of the KTurtle project, here the things are put that still need implementation.
 This list is divided into URGENT, BIG-TODOs, normalTODOs, TO-oeps-meDOitALLreadies and StillSubjectToDiscussions :-)
 
+
+
 BUGS 
+
 **** URGENT ****
 - when there is an error, display only the most descriptive error
 (error messages: not all errors, only the 1st or the 2 first. Error message related to language non-compatibility)
@@ -56,19 +59,40 @@ BUGS
  
  - functions support in Logo
  
+ 
+*** BUGS THAT OCCURD WHEN CIES UPGRADED TO KDE 3.3 on SUSE 9.1 USING SUSE's bin packs
+
+- settings->configure cauzes crash, because there's no kturtlerc - file
+- default language translation somehow doesnt work, it seems NO Logo language is selected at all
+- this also results in no examples
+- the above two are likely due to the same problem, strangly the HL-style and the default slection in the configure window are correct
+- the default font can be a bit bigger and sans serif
+- on steps of 1 the turtle doesnt move at all
+- when the kturtlerc-file was quite big i also encountered crashes when going settings->configure (i think might be regarding recent files)
+
+
+
+ 
  --------------------------------- below are done
-- About the language: when user is set to fr (not fr_FR but fr like me being in Canada), the parsing does not work because Settings::LogoLanguage() is set to fr and NOT to fr_FR.
+- About the language: when user is set to fr (not fr_FR but fr like me being in Canada), the parsing does not   work because Settings::LogoLanguage() is set to fr and NOT to fr_FR.
   Syntax highlighting does not work for fr        DONE annma
  
 - Default does not work in Language ComboBox -> I am not sure your use of KConfig XT is optimum here, Cies
- and other bug: output: kturtle: desktopLanguage: fr:en_US
-           kturtle: defaultLanguage: en_US
-Why is not default Language fr_FR?  DONE annma 02/04/2004
+  and other bug: output: kturtle: desktopLanguage: fr:en_US
+  kturtle: defaultLanguage: en_US
+  Why is not default Language fr_FR?              DONE annma 02/04/2004
 
 - open recent does not keep the files after quitting DONE annma 02/04/2004
-- crash on quitting after Opening files DONE annma 02/04/2004
 
-DONE
+- crash on quitting after Opening files           DONE annma 02/04/2004
+
+- cies: Make the interpreter (stolen from wsbasic.sf.net) (executer, parser, lexer, number and treenode) more native Qt. Right now they are a mixture of standard-CLI-C++ and Qt thingies (i put the Qt thingies there). I tried do that but i found that i'm not comfortable with the concept of streams -- which are used a lot in the interpreter. Especially streaming QString was an obstacle i couldnt take.     DONE
+>>>>> after this is done we can also make the ()[],.""-configurable 
+
+
+
+
+
 cies: The KconfigXT issue: If an error like this
 """
   make[4]: Entering directory `/home/cies/kdenonbeta/kturtle/src'
@@ -84,23 +108,20 @@ into:
 that will fix it :-)
 
 
+
+
+
 ***** Annma's ideas *****
 
 - have a context menu on right-click in the canvas to save the drawing (right-click -> Save Canvas)
-- display the current command language in StatusBar?
+         then also put "print canvas" and "fullscreen" in there
+- display the current command language in StatusBar? DONE apperetly
 
-**** BIG-TODOs: ****
-
-
-cies: Make the interpreter (stolen from wsbasic.sf.net) (executer, parser, lexer, number and treenode) more native Qt.
-Right now they are a mixture of standard-CLI-C++ and Qt thingies (i put the Qt thingies there). I tried to do that but i found that i'm not comfortable with the concept of streams -- which are used a lot in the interpreter. Especially streaming QString was an obstacle i couldnt take.
->>>>> after this is done we can also make the ()[],.""-configurable
 
 
 
-cies: The manual...
-
-        I DID IT :)) :) :))    --> now the intergration with KTurtle (contaxt menu and several 'help' buttons in dialogs)
+**** BIG-TODOs: ****
+cies: The manual intergration with KTurtle (contaxt menu and several 'help' buttons in dialogs)
 
 
 
@@ -126,11 +147,6 @@ i18n("blabla ") + value    ==> BAD should be  i18n("blabla %1") etc. :)
 
 
 
-Licence: provide a proper licence and have copyrights in all files
----> DONE by annma 01/04/2004 - Please check it, Cies!
-
-
-
 proposal by Simone: have the cursor (the blue bar in katepart) walk with the interpreter 
 (Nice one)
 
@@ -152,15 +168,13 @@ would be nice (not in yet):
 - <joke> and what about a 'goto' command ( you can never make them mistakes young enough, muahoahoaaaa >:-} ) </joke> well?
 
 
-
 - CLI-file-selection (for mimetype eaz)
-- some standadisation, annma i think you know most on encodings (what about MS-DOS <br>'s)
 - ...
 
 
 
 cies: a fontchooser would be fun
-30/12/2003 annma: for the editor font? I can do it
+30/12/2003 annma: for the editor font? I can do it ---> default editor font should be bigger and sans serif
 04/01/2003 we'll see after the editor part is done
 
 
@@ -176,14 +190,6 @@ Press F1 while in a command and see help on it
 
 
 **** TO-oeps-IdidItAllReadies: ****
-
-
-
-cies: Make a dir and put some examples/test in there...
-Let be a little nice to the people how want to get started, or just want to have a peek, right?
-It would also be nice to test for regressions in the future.
-put a sample code file in kturtle/examples and get it load as an example maybe in File -> Open example
-
 
 
 cies: remove some debug crap from the canvas.cpp, I refer to leave it there till mid.03.2003.

@@ -24,7 +24,7 @@
 static const char description[] =
     I18N_NOOP("Educational programming environment using the Logo programming language");
 
-static const char version[] = "0.1";
+static const char version[] = "0.5";
 
 static const char copyright[] = I18N_NOOP("(C) 2003 The KTurtle Authors");
 
@@ -43,31 +43,31 @@ int main(int argc, char **argv)
                      KAboutData::License_GPL, copyright, 0, website);
     about.addAuthor( "Cies Breijs",
            I18N_NOOP("Main developer and initiator"),
-                     "eric # showroommama.nl" );
-    about.addAuthor( "Walter Schreppers",
-           I18N_NOOP("Author of \"wsbasic\" (wsbasic.sf.net) the base for the interpreter of KTurtle"),
-                     "Walter.Schreppers # ua.ac.be" );
+                     "cies # kde.nl" );
     about.addAuthor( "Anne-Marie Mahfouf",
            I18N_NOOP("Big contributor, supporter and fan"),
                       "annemarie.mahfouf # free.fr" );    
+    about.addAuthor( "Walter Schreppers",
+           I18N_NOOP("Author of \"wsbasic\" (wsbasic.sf.net) the base for the interpreter of KTurtle"),
+                     "Walter.Schreppers # ua.ac.be" );
     about.addCredit( "Matthias Meßmer",
            I18N_NOOP("German Data Files"),
-                      "bmlmessmer@web.de" ); 
+                     "bmlmessmer # web.de" ); 
     about.addCredit( "Stefan Asserhäll",
            I18N_NOOP("Swedish Data Files"),
-                      "stefan.asserhall@telia.com" ); 
+                     "stefan.asserhall # telia.com" ); 
     about.addCredit( "Jure Repinc",
            I18N_NOOP("Slovenian Data Files"),
-                      "jlp@holodeck1.com" );
-       about.addCredit( "Chusslove Illich",
+                     "jlp@holodeck1.com" );
+    about.addCredit( "Chusslove Illich",
            I18N_NOOP("Serbian (Latin and Cyrillic) Data Files"),
-                      "caslav.ilic@gmx.net" );
+                     "caslav.ilic # gmx.net" );
     about.addCredit( "Pino Toscano",
            I18N_NOOP("Italian Data Files"),
-                      "toscano.pino@tiscali.it" ); 	
+                     "toscano.pino # tiscali.it" ); 	
     about.addCredit( "Albert Astals Cid",
-                      I18N_NOOP("Parser Cyrillic support" ),
-		      "astals11@terra.es" ); 	
+            18N_NOOP("Parser Cyrillic support" ),
+                     "astals11@terra.es" ); 	
     KCmdLineArgs::init(argc, argv, &about);
     KCmdLineArgs::addCmdLineOptions( options );
     KApplication app;

@@ -52,10 +52,10 @@
 #include "kturtle.h"
 
 // StatusBar field IDs
-#define IDS_INS    0
-#define IDS_STATUS           1
+#define IDS_INS         0
+#define IDS_STATUS      1
 #define IDS_STATUS_CLM  3
-#define IDS_LANG              5
+#define IDS_LANG        5
 
 // END
 
@@ -916,10 +916,36 @@ void MainWindow::slotContextHelp() {
 // Ooh... and we also want a DCOPmethod to close the sidebar since it over-informs...
 // Ooh2... we must probably put the code to translate commands in a seperate .cpp/.h since
 // we want to use it in several places (i.e. here too)
-	kdDebug(0)<<"helpKeyword = "<<helpKeyword<<endl;
-	kapp->invokeHelp(helpKeyword, "kturtle/reference.html#"+helpKeyword, "");
-}
 
+// IDEA!!:  put all the keyword in a i18n("...") this will make translating them a lot easier!!!
+// MAYBE THIS IS ALSO POSSIBLE FOR THE INTERPRETER!!!!
+
+	kdDebug(0)<<"helpKeyword = "<<helpKeyword<<endl;
+	kapp->invokeHelp(helpKeyword, "", "");
+
+// Firts attempt for making smarter use of the helpcenter:
+//
+// 	QString url;
+// 	if ( helpKeyword == i18n("<no keyword>") ) {
+// 		kdWarning() << "Could not launch help, nothing under cursor." << endl;
+// 	} else if ( helpKeyword == i18n("<number>") ) {
+// 		url = QString("help:/kturtle/index.html");
+// 	} else if ( helpKeyword == i18n("<string>") ) {
+// 		url = QString("help:/kturtle/index.html");
+// 	} else {
+// 		url = QString("help:/kturtle/index.html");
+// 	}
+// 
+// 	QString error;
+// 	if ( !dcopClient()->isApplicationRegistered("khelpcenter") ) {
+// 		if (startServiceByDesktopName("khelpcenter", url, &error, 0, 0, startup_id, true) ) {
+// 			kdWarning() << "Could not launch help:\n" << error << endl;
+// 			return;
+// 		}
+// 	} else {
+// 		DCOPRef( "khelpcenter", "KHelpCenterIface" ).send( "openUrl", url, startup_id );
+// 	}
+}
 
 void MainWindow::slotContextHelpUpdate() {
 	uint row, col;

@@ -154,16 +154,16 @@ QPoint Canvas::TranslationFactor(int xa, int ya, int xb, int yb) {
 		// crossing a corner of the canvas.
 		// This code make sure the line is tranlated back onto the canvas.
 		// The -2 and +2 was just something i learnt from examples... I HAVE NO PROOF FOR THIS!
-		if ( -2 <= x_sT && x_sT <= (CanvasWidth + 2) && PointInRange(x_sT, 0, xa, ya, xb, yb) ) {
+		if ( -2 <= x_sT && x_sT <= (CanvasWidth + 3) && PointInRange(x_sT, 0, xa, ya, xb, yb) ) {
 			returnValue = returnValue + QPoint( 0, 1);
 		}
-		if ( -2 <= x_sB && x_sB <= (CanvasWidth + 2) && PointInRange(x_sB, CanvasHeight, xa, ya, xb, yb) ) {
+		if ( -2 <= x_sB && x_sB <= (CanvasWidth + 3) && PointInRange(x_sB, CanvasHeight, xa, ya, xb, yb) ) {
 			returnValue = returnValue + QPoint( 0,-1);
 		} 
-		if ( -2 <= y_sL && y_sL <= (CanvasHeight + 2) && PointInRange(0, y_sL, xa, ya, xb, yb) ) {
+		if ( -2 <= y_sL && y_sL <= (CanvasHeight + 3) && PointInRange(0, y_sL, xa, ya, xb, yb) ) {
 			returnValue = returnValue + QPoint( 1, 0);
 		}
-		if ( -2 <= y_sR && y_sR <= (CanvasHeight + 2)  && PointInRange(CanvasWidth, y_sR, xa, ya, xb, yb) ) {
+		if ( -2 <= y_sR && y_sR <= (CanvasHeight + 3)  && PointInRange(CanvasWidth, y_sR, xa, ya, xb, yb) ) {
 			returnValue = returnValue + QPoint(-1, 0);
 		}
 		
