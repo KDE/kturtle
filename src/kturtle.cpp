@@ -16,7 +16,6 @@
 #include <kkeydialog.h>
 #include <klineedit.h>
 #include <klocale.h>
-//#include <kmainwindow.h>
 #include <kmenubar.h>
 #include <kmessagebox.h>
 #include <kprocess.h>
@@ -95,7 +94,8 @@ if ( !doc )
 }
 
 MainWindow::~MainWindow() { // The MainWindow destructor
-	delete editor->document();
+	if (editor->document())
+		delete editor->document();
 }
 
 void MainWindow::setupActions() {
@@ -107,7 +107,7 @@ void MainWindow::setupActions() {
     /// @todo implement a recent files list
     // recenter = KStdAction::openRecent(this, SLOT(openRecent(int)), actionCollection());
     KStdAction::save(this, SLOT(slotSaveFile()), actionCollection());
-    KStdAction::saveAs(this, SLOT(slotSaveFileAs()), actionCollection());
+    KStdAction::saveAs(this, SLOT(slotSaveAs()), actionCollection());
     //
     run = new KAction(i18n("&Execute Commands"), "gear", 0, this, SLOT( slotExecute() ),
       actionCollection(), "run");
@@ -136,7 +136,7 @@ void MainWindow::setupActions() {
     colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", 0, this, SLOT(slotColorPicker()),
       actionCollection(), "color_picker");
    ///@todo recent file list, but this needs KURL which will be implemented with KTextEditor 
-    // m_recentFiles = KStdAction::openRecent(this, SLOT( slotOpen(const KURL&) ), actionCollection());
+     KStdAction::openRecent(this, SLOT( slotOpen(const KURL&) ), actionCollection());
     
    ///@todo: make the EditorDock hideable, better to do it when on KTextEditor... 
     // (void)new KToggleAction(i18n("&Hide Editor"), 0, 0, this, SLOT(slotToggleHideEditor()),
@@ -202,9 +202,10 @@ void MainWindow::slotNewFile() {
 }
 
 void MainWindow::slotSaveFile() {
+     kdDebug()<<"\nin save \n " << endl;
     // if no filename yet, go get it first
     if ( CurrentFile.isEmpty() && filename2saveAs.isEmpty() ) {
-        slotSaveFileAs();
+        slotSaveAs();
         // cancelled saveAs? -> return
         if ( filename2saveAs.isEmpty() ) {
             return;
@@ -237,8 +238,10 @@ void MainWindow::slotSaveFile() {
     slotStatusBar(i18n("Saved file to: %1").arg(CurrentFile), 1); 
 }
 
-void MainWindow::slotSaveFileAs() {
+void MainWindow::slotSaveAs() {
     /// @todo migrate to KURL
+    //why doesn't it come here???
+    kdDebug()<<"\nin save as\n " << endl;
     QString filestr; // forward declaration (see end of scope)
     while(true) {
         filestr = KFileDialog::getSaveFileName(QString(":logo_dir"), QString("*.logo|") +

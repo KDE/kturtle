@@ -47,7 +47,7 @@ class MainWindow : public KParts::MainWindow// public KMainWindow
     void slotNewFile();
     void slotOpenFile();
     void slotSaveFile();
-    void slotSaveFileAs();
+    void slotSaveAs();
     // TODO: linenumbers; probably when going from KTextEdit to KTextEditor::Editor
     // void slotLineNumbers();
     void slotQuit();
