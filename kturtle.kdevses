@@ -1,32 +1,37 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <!DOCTYPE KDevPrjSession>
 <KDevPrjSession>
- <DocsAndViews NumberOfDocuments="5" >
+ <DocsAndViews NumberOfDocuments="6" >
   <Doc0 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/TODO" >
-   <View0 line="176" Type="???" >
+   <View0 line="290" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc0>
-  <Doc1 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/kturtle.cpp" >
-   <View0 line="8" Type="???" >
+  <Doc1 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/executer.h" >
+   <View0 line="160" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc1>
-  <Doc2 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/kturtle.h" >
-   <View0 line="112" Type="???" >
+  <Doc2 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/executer.cpp" >
+   <View0 line="963" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc2>
-  <Doc3 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/executer.h" >
-   <View0 line="79" Type="???" >
+  <Doc3 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/data/highlightstyles/logohighlightstyle.en_US.xml" >
+   <View0 line="19" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc3>
-  <Doc4 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/executer.cpp" >
-   <View0 line="10" Type="???" >
+  <Doc4 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/data/keywords/logokeywords.en_US.xml" >
+   <View0 line="8" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc4>
+  <Doc5 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/kturtle.cpp" >
+   <View0 line="0" Type="???" >
+    <AdditionalSettings/>
+   </View0>
+  </Doc5>
  </DocsAndViews>
  <pluginList>
   <kdevbookmarks>

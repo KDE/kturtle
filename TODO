@@ -111,23 +111,18 @@ When the print aktion is called give the user a small-choise-kdialog: "print the
 
 cies: get all the commands in the logokeywords.*.xml file working properly, and remove the commands that are not needed:
 Need to work eventually:
-- input/ inputwindow
+- input (without window, grabKeyEvents... not easy :)
 - sprite* (i'll maybe look into this when i have Qt3.3 which fixes the nasty crashbug that came across)
-- foreach-(word,...)-in-<string>-seperated-by-<string>-do-[-...-] needs a lot of work (i like the functionality)
-- 'ask' and 'speed' will come later -- me has to focus and concentrate
+- 'speed' will come later -- me has to focus and concentrate
 
-- textwindow, just a dialog with sone user defined text
-- more expressers: isLetter, isNumber
+would be nice (not in yet):
+- ask (print ask 3>0) <.4999 -> "false",  >.5000 -> "true"
+- message, just a dialog with sone user defined text
+- more expressers: isString, isNumber, isRound
+- round()
+- true and fasle as cunfiguarables
 
 - <joke> and what about a 'goto' command ( you can never make them mistakes young enough, muahoahoaaaa >:-} ) <joke> well?
-Maybe need to be removed:
-- write (writing files from logo... nah)
-- substr (a bit hard to use { a="qwerty"; substr(a,1,3) // outputs "qwe" } for kids not really usefull either) but if called 'cutstring' it might be a nice funktion.
-
-
-
-cies: Ingore case of commands --> DONE
-and remenber how the command was typed so it can be issued properly in i.e. err msgs --> will not do it too much hassle
 
 
 
@@ -145,8 +140,6 @@ annma: color-picker: maybe the code could be pasted directly in the editor at th
 
 cies: a press-F1-for-context-help...
 Press F1 while in a command and see help on it
-- wait for Kate-part?
-- what app does this allready (so I can study it.)
 
 
 
@@ -280,61 +273,29 @@ the basics of logo programming
  
 
 
+        
+
+BUGS: TROUBLE LOGO SCRIPTS!!!!!
+
+# due to lines
+reset
+canvassize 350,350
+canvascolor 0,0,0
+center
+for x = 1 to 255 [
+  fw x
+  pencolor x, 255 - x, 255 - x
+  tr x / 65
+]
+
+# due to lines
+reset
+canvassize 350,350
+center
+for x = 1 to 255 [
+  fw x*x
+  tr x
+]
 
 
-TREADDING, TIMER LOOPS OR SLEEP()/NANOSLEEP() ??
 
-I run into a problem when trying to implement the 'wait' funktion, how to have a C++ program 'wait' without jamming all internals ( what happends with sleep() ). I though threadding, lypanov hates threadding and says its better avoided; he proposes a qtimer trick, see the irc conversation here:
-
-
->cies< but i'm writing an logo interpreter for educational puposes
->cies< and i want to add a 'wait' function
->cies< like: 'wait 5' has the script wait for 5 seconds
->cies< i though (in fact i googled) hmmm sleep() or nanosleep()
->cies< but that wil jam the whole app, right?
-[lypanov] re
->cies< so i need to have the execution class of the interpeter pause it execution
->cies< without jamming the whole program
-[lypanov] qtimer
->cies< ill look into that
->cies< thanks!
->cies< (again)
-[lypanov] np :)
-[lypanov] ;yup. sleep will jam the whole app
-[lypanov] i would say
-[lypanov] add a singleshot timer
-[lypanov] that goes off in 5 minutes
-[lypanov] stop the interpreter
-[lypanov] and make the singleshot timer
-[lypanov] send a "unpauseInterpreter"
-[lypanov] signal
->cies< lypanov: ping?
->cies< i tried ver hard but i dont understand...
->cies< i cant make a solution from the above.
-[lypanov] re
-[lypanov] umm
-[lypanov] you read qtimer doc?
->cies< yes offcourse
->cies< you say 5 minutes... dont you mean 5 seconds?
->cies< well
->cies< right after the qtimer started the execution-class should fall back into the main event loop right?
->cies< ...but without destroying itself
->cies< [i dont know how to do this]
->cies< the when "unpauseInterpreter" is emitted (after 5 secs) the executer should go on exactly where is was 'interrupted', right?
->cies< [i dont know how to do this either]
->cies< please note this is my first qt-app
->cies< and my first c++ app
-[lypanov] dum di dum
-[lypanov] nope
-[lypanov] qtimer
-[lypanov] ::singleshot
-[lypanov] or whatever its called
-[lypanov] sends a signal
-[lypanov] you need to
-[lypanov] make a slot:
-[lypanov] and
-[lypanov] add a "unpauseInterpreter" slot
-[lypanov] which does
-[lypanov] {
-[lypanov]     m_interpreter->unpause()
-[lypanov] }

@@ -68,24 +68,6 @@
   </command>
   
   
-<!-- depricated -->  
-  <command name="write">
-    <keyword>write</keyword>
-  </command>
-  
-  <command name="substr">
-    <keyword>substr</keyword>
-  </command>
-  
-  <command name="seperated">
-    <keyword>seperated</keyword>
-  </command>
-  
-  <command name="by">
-    <keyword>by</keyword>
-  </command>
-
-
 <!-- the meta command --> 
   <command name="learn">
     <keyword>learn</keyword>

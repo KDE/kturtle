@@ -88,8 +88,6 @@ void Executer::execute(TreeNode* node) {
     case breakNode          : execBreak( node );        break;
     
     case runNode            : execRun( node );          break;
-    case writeNode          : execWrite( node );        break;
-    case substrNode         : execSubstr( node );       break;
     
     case ClearNode          : execClear( node );        break;
     case GoNode             : execGo( node );           break;
@@ -238,36 +236,25 @@ void Executer::execBlock( TreeNode* node ) {
 
 void Executer::execForEach( TreeNode* node ) {
   //cout<<"sorry dude not implemented yet"<<endl;
-  TreeNode* id         = node->firstChild();
-  TreeNode* expr       = node->secondChild();
-  TreeNode* seperator  = node->thirdChild();
-  TreeNode* statements = node->fourthChild();
+  TreeNode* expr1      = node->firstChild();
+  TreeNode* expr2      = node->secondChild();
+  TreeNode* statements = node->thirdChild();
   
-  execute( expr );
-  execute( seperator );
+  execute( expr1 );
+  execute( expr2 );
   
-  string idName = id->getName();
-  string expStr = expr->getValue().strVal;
-  string sepStr = seperator->getValue().strVal;
+  QString expStr1 = expr1->getValue().strVal.c_str();
+  QString expStr2 = expr2->getValue().strVal.c_str();
   
   bBreak = false;
-  string::size_type pos;
-  while( expStr.size() > 0 ) {
+  
+  int i = expStr2.contains(expStr1, false);
+  for( ; i > 0; i-- ) {
     if (bAbort) { return; }
     kapp->processEvents();
     
-    pos = expStr.find(sepStr);
-
-    if( pos == string::npos ) { //no seperator found
-      ( symbolTables.top() )[idName] = expStr; //entire string
-      expStr="";
-    } else {
-      ( symbolTables.top() )[idName] = expStr.substr(0,pos);
-      expStr.erase( 0, pos + sepStr.size() );
-    }
-    
     execute( statements );
-    if( bBreak || bReturn ) break; //jump out loop;
+    if( bBreak || bReturn ) break; //jump out loop
   }
   bBreak = false;
 }
@@ -552,32 +539,6 @@ string Executer::runCommand( const string& command ){
 void Executer::execRun( TreeNode* node ) {
   string cmd = getVal( node->firstChild() ).strVal;
   node->setValue( runCommand(cmd) );
-}
-
-void Executer::execWrite( TreeNode* node ){   // DEPRICATED COMMAND!!
-  string fileName = getVal( node->firstChild() ).strVal;
-  ofstream out(fileName.c_str());
-  if(out.is_open()){
-    out<<getVal( node->secondChild() );
-  } else {
-    cerr<<"could not open file :"<<fileName<<" for writing"<<endl;
-  }
-  out.close();
-}
-
-void Executer::execSubstr( TreeNode* node ) {   // DEPRICATED COMMAND!!
-  string id   = node->firstChild()->getName();
-  int from    = (int) getVal( node->secondChild() ).val-1;
-  int to      = (int) getVal( node->thirdChild() ).val;
-  
-  string val  = (symbolTables.top())[id].strVal;
-  
-  if( ( from < to ) && ( from >= 0 ) && ( to < (int)val.size() ) ) {
-    node->setValue( val.substr( from, to-from ) );
-  } else {
-    cerr<<"Substring from, to arguments run out of string boundaries or from pos is not less than to."<<endl;
-    node->setValue( "" );
-  }
 }
 
 
@@ -918,7 +879,7 @@ void Executer::execRepeat( TreeNode* node ) {
     kapp->processEvents();
     
     execute( statements );
-    //if( bBreak || bReturn ) break; //jump out loop
+    if( bBreak || bReturn ) break; //jump out loop
   }
   bBreak=false;
 }

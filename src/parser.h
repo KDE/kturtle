@@ -69,8 +69,6 @@ class Parser : public QObject
     TreeNode* Statement();
     
     TreeNode* runFunction();
-    TreeNode* writeFunction();
-    TreeNode* substrFunction();
 
     TreeNode* getId();
     TreeNode* signedFactor();
@@ -85,7 +83,6 @@ class Parser : public QObject
     TreeNode* While();
     TreeNode* For();
     TreeNode* ForEach();
-    TreeNode* NewLineNode();
     TreeNode* If();
     TreeNode* getString();
     TreeNode* Return();

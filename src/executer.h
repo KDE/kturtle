@@ -107,8 +107,6 @@ class Executer : public QObject
     void execMinus ( TreeNode* );
 
     void execRun   ( TreeNode* );
-    void execWrite ( TreeNode* );
-    void execSubstr( TreeNode* );
 
     void execClear         ( TreeNode* );
     void execGo            ( TreeNode* );

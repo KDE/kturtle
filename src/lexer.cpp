@@ -159,12 +159,8 @@ void Lexer::checkKeywords(token& t) {
     else if( tt == KeyMap["return"]         ) t.type=tokReturn;
     else if( tt == KeyMap["break"]          ) t.type=tokBreak;
     else if( tt == KeyMap["run"]            ) t.type=tokRun;
-    else if( tt == KeyMap["write"]          ) t.type=tokWrite;
-    else if( tt == KeyMap["substr"]         ) t.type=tokSubstr;
     else if( tt == KeyMap["foreach"]        ) t.type=tokForEach;
     else if( tt == KeyMap["in"]             ) t.type=tokIn;
-    else if( tt == KeyMap["seperated"]      ) t.type=tokSeperated;
-    else if( tt == KeyMap["by"]             ) t.type=tokBy;
 
     else if( tt == KeyMap["learn"]          ) t.type=tokLearn;
     

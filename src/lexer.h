@@ -53,12 +53,8 @@ enum types {
 
   tokForEach,
   tokIn,
-  tokSeperated,
-  tokBy,
     
   tokRun,
-  tokWrite,
-  tokSubstr,
   tokEof,
   tokError,
   

@@ -95,12 +95,8 @@ void Parser::Match(int x) {
 
       case tokForEach   : tokStr+="foreach";   break;
       case tokIn        : tokStr+="in";        break;
-      case tokSeperated : tokStr+="seperated"; break;
-      case tokBy        : tokStr+="by";        break;
     
       case tokRun       : tokStr+="run";          break;
-      case tokWrite     : tokStr+="write";        break;
-      case tokSubstr    : tokStr+="substr";       break;
       case tokEof       : tokStr+="end of file";  break;
       case tokError     : tokStr+="error token";  break;
       
@@ -214,36 +210,6 @@ TreeNode* Parser::runFunction() {
   return n;
 }
 
-TreeNode* Parser::writeFunction(){
-  TreeNode* n=new TreeNode( writeNode, row, col );
-  n->setName("writefunction");
-  Match(tokWrite);
-  Match('(');
-  
-  n->appendChild( Expression() );
-  Match(',');
-  n->appendChild( Expression() );
-  
-  Match(')');
-  return n;
-}
-
-TreeNode* Parser::substrFunction(){
-  TreeNode* n=new TreeNode( substrNode, row, col );
-  n->setName("substrfunction");
-  Match(tokSubstr);
-  Match('(');
-  
-  n->appendChild( getId() );
-  Match(',');
-  n->appendChild( Expression() );
-  Match(',');
-  n->appendChild( Expression() );
-  
-  Match(')');
-  return n;
-}
-
 
 /*---------------------------------------------------------------*/
 /* Parse and Translate a Math Factor */
@@ -279,8 +245,6 @@ TreeNode* Parser::Factor() {
     case tokInputWindow: n=InputWindow();     break;
     
     case tokRandom: n=Random();     break;
-    
-    case tokSubstr: n=substrFunction();  break;
                                     
     default:        Error( i18n("Illegal char in expression"), 1020 );
                     n=new TreeNode( Unknown, row, col );
@@ -586,51 +550,24 @@ TreeNode* Parser::For(){
 }
 
 
-/*
-  tokForEach <id> tokIn <expression> (tokSeperated tokBy <expression>)? (<statement>|<block>)
-  4 children 
-  default seperator is "\n"
-*/
 TreeNode* Parser::ForEach(){
-  TreeNode* fNode=new TreeNode( forEachNode, row, col );
+  TreeNode* fNode = new TreeNode( forEachNode, row, col );
   fNode->setName("foreach loop");
   fNode->setKey( lexer->translateCommand("foreach loop") );
 
   Match(tokForEach);
-  fNode->appendChild( getId() ); //loop id
+  fNode->appendChild( Expression() );
   Match(tokIn);
-  fNode->appendChild( Expression() ); //expression (string with \n's)
+  fNode->appendChild( Expression() );
   
-
-  if( look.type == tokSeperated ){
-    Match(tokSeperated);
-    Match(tokBy);
-    fNode->appendChild( Expression() ); //seperator expression
-  } else { //default seperator "\n"
-    fNode->appendChild( NewLineNode() );
-  }
-    
-  if(look.type == tokBegin){ //for followed by a block
+  if(look.type == tokBegin) { //for followed by a block
     fNode->appendChild( Block() ); 
-  } 
-  else{ //while followed by single statement
+  } else { //while followed by single statement
     fNode->appendChild( Statement() );
   }
   
   return fNode;
 }
-
-TreeNode* Parser::NewLineNode() {
-  TreeNode* newline = new TreeNode( stringConstantNode, row, col );
-  newline->setName("newline");
-  Number n;
-  n=string("\n");
-  newline->setValue( n );
-  return newline;
-}
-
-
-
 
 
 /*
@@ -751,8 +688,6 @@ TreeNode* Parser::Statement() {
     case tokWrapOn        : return WrapOn();           break;
     case tokWrapOff       : return WrapOff();          break;
     case tokReset         : return Reset();            break;
-    
-    case tokWrite         : return writeFunction();    break;
         
     case tokEnd           : break; //caught by Block
     

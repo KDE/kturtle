@@ -58,8 +58,6 @@ enum NodeType {
                 notNode,
                 
                 runNode,
-                writeNode,
-                substrNode,
 
                 ClearNode,
                 GoNode,
