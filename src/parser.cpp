@@ -276,6 +276,8 @@ TreeNode* Parser::Factor() {
     
     case tokRun:    n=runFunction();     break;
     
+    case tokInputWindow: n=InputWindow();     break;
+    
     case tokRandom: n=Random();     break;
     
     case tokSubstr: n=substrFunction();  break;
@@ -450,18 +452,18 @@ TreeNode* Parser::Expression()
 
 
 TreeNode* Parser::Assignment( const string& name ){
-  TreeNode* assign=new TreeNode( assignNode, row, col );
+  TreeNode* assign = new TreeNode( assignNode, row, col );
   assign->setName("assignment");
   
   Match(tokAssign);
 
   //first child of assign is id or lhv of assignment
-  TreeNode* left=new TreeNode( idNode, row, col );
+  TreeNode* left = new TreeNode( idNode, row, col );
   left->setName(name);
   assign->appendChild(left);
   
   //next child is expression or rhv of assignment
-  TreeNode* right=Expression();
+  TreeNode* right = Expression();
   assign->appendChild(right);
 
   return assign;
@@ -1165,8 +1167,10 @@ TreeNode* Parser::InputWindow() {
   node->setName("inputwindow");
   node->setKey( lexer->translateCommand("inputwindow") );
   
-  Match( tokInputWindow ); 
-  node->appendChild( getId() ); 
+  getToken();
+  
+  //node->appendChild( getId() ); 
+  node->appendChild( Expression() );
   
   return node;
 }

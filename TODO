@@ -115,7 +115,10 @@ Need to work eventually:
 - sprite* (i'll maybe look into this when i have Qt3.3 which fixes the nasty crashbug that came across)
 - foreach-(word,...)-in-<string>-seperated-by-<string>-do-[-...-] needs a lot of work (i like the functionality)
 - 'ask' and 'speed' will come later -- me has to focus and concentrate
-- 'learn' also needs work: see BIG-TODOs -> "Remove the [ and ]"
+
+- textwindow, just a dialog with sone user defined text
+- more expressers: isLetter, isNumber
+
 - <joke> and what about a 'goto' command ( you can never make them mistakes young enough, muahoahoaaaa >:-} ) <joke> well?
 Maybe need to be removed:
 - write (writing files from logo... nah)

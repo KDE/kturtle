@@ -62,6 +62,7 @@ class MainWindow : public KParts::MainWindow
     void slotUpdateCanvas();
     
     void slotErrorDialog(QString msg, int row = 0, int col = 0, int code = 0);
+    void slotInputDialog(QString& value);
     
   signals:
     void ResizeCanvas(int x, int y);

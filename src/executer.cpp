@@ -10,6 +10,8 @@
 #include "executer.h"
 
 
+#include <kinputdialog.h> 
+
 Executer::Executer(TreeNode* tree) {
   this->tree = tree;
   functionTable.clear();
@@ -547,7 +549,7 @@ string Executer::runCommand( const string& command ){
 }
 
 
-void Executer::execRun( TreeNode* node ){ // COMMAND NOT (YET) IMPLENTED IN LOGO
+void Executer::execRun( TreeNode* node ) {
   string cmd = getVal( node->firstChild() ).strVal;
   node->setValue( runCommand(cmd) );
 }
@@ -848,12 +850,22 @@ void Executer::execInput( TreeNode* node ){
 }
 
 
-void Executer::execInputWindow( TreeNode* node ) {}
+void Executer::execInputWindow( TreeNode* node ) {
+    // check if number of parameters match, or else...
+    if( node->size() != 1 ) {
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), 0, 0, 7070);
+        return;
+    }
+    QString value = node->firstChild()->getValue().strVal.c_str();
+    emit InputDialog( value );
+    //QString bla = KInputDialog::getText (i18n("Input"), "eqdqde");
+    node->setValue( value.latin1() );
+}
 
 void Executer::execPrint( TreeNode* node ) {
   TreeNode::iterator i;
   QString str = "";
-  for( i=node->begin(); i!=node->end(); ++i ) {
+  for( i = node->begin(); i != node->end(); ++i ) {
     execute( *i ); //execute expression
     str = str + (*i)->getValue().strVal.c_str();
   }

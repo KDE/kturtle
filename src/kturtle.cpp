@@ -13,6 +13,7 @@
 #include <kconfigdialog.h>
 #include <kdebug.h>
 #include <kfiledialog.h>
+#include <kinputdialog.h> 
 #include <kkeydialog.h>
 #include <klineedit.h>
 #include <klocale.h>
@@ -330,6 +331,8 @@ void MainWindow::startExecution() {
         exe = new Executer(root); // make Executer object, 'exe', and have it point to the root
         connect( exe, SIGNAL( ErrorMsg(QString, int, int, int) ), 
                  this, SLOT( slotErrorDialog(QString, int, int, int) ) );
+        connect( exe, SIGNAL( InputDialog(QString&) ), 
+                 this, SLOT( slotInputDialog(QString&) ) );
 
         // Connect the signals form Executer to the slots from Canvas:
         connect( exe, SIGNAL( Clear() ),
@@ -394,6 +397,7 @@ void MainWindow::startExecution() {
         }
     } else {
         slotStatusBar(i18n("Parsing failed!"), 1);
+        finishExecution();
     }
 }
 
@@ -468,6 +472,10 @@ void MainWindow::slotErrorDialog(QString msg, int row, int col, int code) {
         ErrorType = i18n("Error");
     }
     KMessageBox::detailedSorry( this, msg + line, i18n("Error code: %1").arg(code), ErrorType );
+}
+
+void MainWindow::slotInputDialog(QString& value) {
+    value = KInputDialog::getText (i18n("Input"), value);
 }
 
 void MainWindow::slotUpdateCanvas() {
