@@ -3,39 +3,39 @@
 <KDevPrjSession>
  <DocsAndViews NumberOfDocuments="12" >
   <Doc0 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/TODO" >
-   <View0 line="104" Type="Source" />
+   <View0 Type="Source" />
   </Doc0>
   <Doc1 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/main.cpp" >
    <View0 Type="Source" />
   </Doc1>
   <Doc2 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/kturtle.h" >
-   <View0 Type="Source" />
+   <View0 line="0" Type="Source" />
   </Doc2>
   <Doc3 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/kturtle.cpp" >
-   <View0 line="1028" Type="Source" />
+   <View0 line="1026" Type="Source" />
   </Doc3>
   <Doc4 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/dialogs.h" >
    <View0 Type="Source" />
   </Doc4>
   <Doc5 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/dialogs.cpp" >
-   <View0 line="87" Type="Source" />
+   <View0 Type="Source" />
   </Doc5>
   <Doc6 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/executer.cpp" >
-   <View0 line="0" Type="Source" />
+   <View0 Type="Source" />
   </Doc6>
   <Doc7 NumberOfViews="1" URL="file:/opt/kde3/share/doc/HTML/en/kdelibs-apidocs/index.html" >
    <View0 Type="Documentation" />
   </Doc7>
   <Doc8 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/translate.h" >
-   <View0 line="33" Type="Source" />
+   <View0 Type="Source" />
   </Doc8>
   <Doc9 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/lexer.cpp" >
-   <View0 line="272" Type="Source" />
+   <View0 Type="Source" />
   </Doc9>
   <Doc10 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/translate.cpp" >
-   <View0 line="105" Type="Source" />
+   <View0 Type="Source" />
   </Doc10>
-  <Doc11 NumberOfViews="1" URL="file:/usr/lib/qt3/doc/html/qstring.html#left" >
+  <Doc11 NumberOfViews="1" URL="file:/usr/lib/qt3/doc/html/qregexp.html#search" >
    <View0 Type="Documentation" />
   </Doc11>
  </DocsAndViews>

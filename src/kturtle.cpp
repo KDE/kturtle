@@ -1002,8 +1002,11 @@ void MainWindow::slotContextHelp()
 		KMessageBox::information( this, i18n("There is currently no text under the cursor to get help on."), i18n("Nothing under cursor") );
 		return;
 	}
-	else if ( helpKeyword == i18n("<number>") ) helpKeyword = "number";
-	else if ( helpKeyword == i18n("<string>") ) helpKeyword = "string";
+	else if ( helpKeyword == i18n("<number>") )     helpKeyword = "number";
+	else if ( helpKeyword == i18n("<string>") )     helpKeyword = "string";
+	else if ( helpKeyword == i18n("<assignment>") ) helpKeyword = "assignment";
+	else if ( helpKeyword == i18n("<question>") )   helpKeyword = "question";
+	else if ( helpKeyword == i18n("<name>") )       helpKeyword = "name";
 	else
 	{
 		Translate *translate = new Translate();
@@ -1017,7 +1020,7 @@ void MainWindow::slotContextHelp()
 		// section/anchor-id that can be used found in the doc
 	}
 	
-	kdDebug(0)<<"trying to open a help page unsing this keyword: "<<helpKeyword<<endl;
+	kdDebug(0)<<"trying to open a help page using this keyword: "<<helpKeyword<<endl;
 	kapp->invokeHelp(helpKeyword, "", "");
 }
 
@@ -1026,25 +1029,91 @@ void MainWindow::slotContextHelpUpdate()
 	uint row, col;
 	dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->cursorPositionReal(&row, &col);
 	QString line = dynamic_cast<KTextEditor::EditInterface*>(doc)->textLine(row);
-	QString cursorWord = line.left(col).section(' ', -1) + line.mid( col, line.length() ).section(' ', 0, 0);
-	QRegExp string("\"[^\"]*\""); // kindly donated by blackie
-	if ( cursorWord.isEmpty() ) helpKeyword = i18n("<no keyword>");
-	else if ( cursorWord.find( QRegExp("[\\d.]+") ) == 0 ) helpKeyword = i18n("<number>");
-	else if ( string.search(line) != -1 ) // check if there are strings in the line
+
+	translate = new Translate();
+	
+	if ( line.stripWhiteSpace().isEmpty() || line.mid(col-1,2).stripWhiteSpace().isEmpty() )
 	{
-		int pos = 0;
-		while ( ( pos = string.search(line, pos) ) != -1 )
+		ContextHelp->setText( i18n("Help on: %1").arg("<no keyword>") );
+		return;
+	}
+	
+	int start, length, pos;
+	
+	pos = 0;
+	if ( line.contains('"') )
+	{
+		QRegExp delimitedStrings("(\"[^\"\\\\\\r\\n]*(\\\\.[^\"\\\\\\r\\n]*)*\")");
+		while ( delimitedStrings.search(line, pos) != -1 )
 		{
-			if ( (int)col >= pos && (int)col <= pos + string.matchedLength() )
+			// kdDebug(0)<<"stringsearch: >>"<<pos<<"<<"<<endl;
+			start  = delimitedStrings.search(line, pos);
+			length = delimitedStrings.matchedLength(); // the length of the last matched string, or -1 if there was no match
+			if ( col >= (uint)start && col < (uint)(start+length) )
 			{
-				// and if the cursor is in the string
-				helpKeyword = i18n("<string>");
+				ContextHelp->setText( i18n("Help on: %1").arg("<string>") );
+				return;
 			}
-			pos++;
+			pos += (length <= 0 ? 1 : length);
 		}
 	}
-	else helpKeyword = cursorWord;  // some CVS error regrding this line CHECK IT OUT
-	ContextHelp->setText( i18n("Help on: %1").arg(helpKeyword) );
+	
+	
+	// except for "strings" this regexp effectively separates logo code in 'words' (in a very broad meaning)
+	QRegExp splitter("(([^ ,+\\-*/()=<>[!]|(?!==|<=|>=|!=))*)|(([ ,+\\-*/()=<>[!]|==|<=|>=|!=))");
+	
+	pos = 0;
+	while (splitter.search(line, pos) != -1)
+	{
+		start  = splitter.search(line, pos);
+		length = splitter.matchedLength();
+		if ( col <  (uint)start ) break;
+		if ( col >= (uint)start && col < (uint)(start+length) )
+		{
+			QString cursorWord = line.mid( (uint)start, (uint)length );
+			// kdDebug(0)<<"splitsearch: >>"<<cursorWord<<"<<"<<endl;
+			
+			if ( cursorWord.stripWhiteSpace().isEmpty() )
+			{
+				ContextHelp->setText( i18n("Help on: %1").arg("<no keyword>") );
+				return;
+			}
+			if ( !translate->name2key(cursorWord).isEmpty() || !translate->alias2key(cursorWord).isEmpty() )
+			{
+				ContextHelp->setText( i18n("Help on: %1").arg(cursorWord) );
+				return;
+			}
+			if ( cursorWord.find( QRegExp("[\\d.]+") ) == 0 )
+			{
+				ContextHelp->setText( i18n("Help on: %1").arg("<number>") );
+				return;
+			}
+			if ( cursorWord.find( QRegExp("[+\\-*/\\(\\)]") ) == 0 )
+			{
+				ContextHelp->setText( i18n("Help on: %1").arg("<math>") );
+				return;
+			}
+			if ( cursorWord == QString("=") )
+			{
+				ContextHelp->setText( i18n("Help on: %1").arg("<assignment>") );
+				return;
+			}
+			if ( cursorWord.find( QRegExp("==|<|>|<=|>=|!=") ) == 0 )
+			{
+				ContextHelp->setText( i18n("Help on: %1").arg("<question>") );
+				return;
+			}
+			// if we come here we either have an ID of some sort or an error
+			// all we can do is try to catch some errors (TODO) and then...
+			
+			ContextHelp->setText( i18n("Help on: %1").arg("<name>") );
+			return;
+		}
+		pos += (length <= 0 ? 1 : length); // the pos had to be increased with at least one
+	}
+	
+	// we allready cached some in the beginning of this method; yet its still needed as fall-through
+	ContextHelp->setText( i18n("Help on: %1").arg("<no keyword>") );
 }
 
 // END

@@ -162,6 +162,7 @@ class MainWindow : public KParts::MainWindow
 		bool                 b_editorShown;
 		
 		QString              helpKeyword;
+		Translate           *translate;
 		KURL                 CurrentFile;
 		
 		// configuration related
