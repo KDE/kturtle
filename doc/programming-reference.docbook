@@ -233,7 +233,7 @@ Comment line we can add comments to the code, for ourself or someone else to rea
     </varlistentry>
   </variablelist>
 </sect3>
-<sect3 id="penwidth">
+<sect3 id="setpenwidth">
   <title>penwidth (pw)</title>
   <variablelist>
     <varlistentry> 
@@ -243,7 +243,7 @@ Comment line we can add comments to the code, for ourself or someone else to rea
     </varlistentry>
   </variablelist>
 </sect3>
-<sect3 id="pencolor">
+<sect3 id="setfgcolor">
   <title>pencolor (pc)</title>
   <variablelist>
     <varlistentry> 
@@ -258,7 +258,7 @@ Comment line we can add comments to the code, for ourself or someone else to rea
 <sect2 id="canvas">
 <title>Commands to control the canvas</title>
 <para>There are several commands to control the canvas.</para>
-<sect3 id="canvassize">
+<sect3 id="resizecanvas">
   <title>canvassize (cs)</title>
   <variablelist>
     <varlistentry>
@@ -268,7 +268,7 @@ Comment line we can add comments to the code, for ourself or someone else to rea
     </varlistentry>
   </variablelist>
 </sect3>
-<sect3 id="canvascolor">
+<sect3 id="setbgcolor">
   <title>canvascolor (cc)</title>
   <variablelist>
     <varlistentry> 
@@ -330,7 +330,7 @@ Comment line we can add comments to the code, for ourself or someone else to rea
 <para>First a brief explanation of what sprites are: sprites are small pictures that can be moved around the screen, like we often see in computer games. Our turtle is also a sprite. For more info see the glossary on <glossterm linkend="sprites">sprites</glossterm>. </para>
 <para>Next you will find a full overview on all commands to work with sprites.</para>
 <para>[The current version of &kturtle; does not yet support the use of sprites other than the turtle. With future versions you will be able to change the turtle into something of your own design]</para>
-<sect3 id="show">
+<sect3 id="spriteshow">
   <title>show</title>
   <variablelist>
     <varlistentry> 
@@ -340,7 +340,7 @@ Comment line we can add comments to the code, for ourself or someone else to rea
     </varlistentry>
   </variablelist>
 </sect3>
-<sect3 id="hide">
+<sect3 id="spritehide">
   <title>hide (sh)</title>
   <variablelist>
     <varlistentry> 
@@ -402,6 +402,44 @@ repeat 500 [
     </varlistentry>
   </variablelist>
 </sect2>
+
+<sect2 id="dialogs">
+<title>Input and feedback though dialogs</title>
+<para>A dialog is a small pop-up window that provides some feedback or askes for some input. &kturtle; has two commands for dialogs, namely: <userinput>message</userinput> and <userinput>inputwindow</userinput></para>
+<sect3 id="message">
+  <title>message</title>
+  <variablelist>
+    <varlistentry> 
+      <term>message</term>
+      <listitem><para><screen>message X</screen>
+      The <userinput>message</userinput> command takes a <link linkend="string">string</link> as input. It shows a pop-up dialog containing the text from the <link linkend="string">string</link>.
+<screen>
+year = 2003
+author = "Cies"
+print author + " started the KTurtle project in " + year + " and still enjoys working on it!"
+</screen>
+      </para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect3>
+<sect3 id="inputwindow">
+  <title>inputwindow</title>
+  <variablelist>
+    <varlistentry> 
+      <term>inputwindow</term>
+      <listitem><para><screen>inputwindow X</screen>
+      <userinput>inputwindow</userinput> takes a <link linkend="string">string</link> as input. It shows a pop-up dialog containing the text from the string, just like the <link linkend="message">message</link>. But in addition to it also puts an input field on the dialog. Through this input filed the user can enter a <link linkend="number">number</link> or a <link linkend="string">string</link> which can be stored in a <link linkend="containers">container</link>. For example
+<screen>
+in = inputwindow "What is you age?"
+out = 2003 - in
+print "In 2003 you where " + out + " years old at some point."
+</screen>
+      When a user cancels the input dialog, or does not enter anything at all the <link linkend="containers">container</link> is emptied.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect3>
+</sect2>
+
 </sect1>
 
 
@@ -455,7 +493,7 @@ In the first two lines the variables <userinput>A</userinput> and <userinput>B</
 print "Hello programmer!"
 </screen>
 The regular is delimited with quotes. These pieces of regular text we call <link linkend="strings">strings</link>.</para>
-<para>Strings can also be stored in <link linkend="containers">containers</link> just like <link linkend="number">containers</link>
+<para>Strings can also be stored in <link linkend="containers">containers</link> just like <link linkend="number">numbers</link>
 Strings are a lot like variables. The biggest difference is that they contain text in stead of numbers. For this reason strings cannot be used in <link linkend="math">mathematical calculations</link> and <link linkend="questions">questions</link>. An example of the use of strings:
 <screen>
 x = "Hello "
