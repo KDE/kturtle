@@ -71,6 +71,11 @@ Maybe need to be removed:
 
 
 
+cies: Ingore case of commands
+and remenber how the command was typed so it can be issued properly in i.e. err msgs
+
+
+
 cies: have that f*cking gear icon update, it should go from gear to cross when executing but for some very misterious reason it doesnt!
 
 
