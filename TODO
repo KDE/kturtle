@@ -11,11 +11,13 @@ BUGS
 
 
 **** URGENT ****
-
+- About the language: when user is set to fr (not fr_FR but fr like me being in Canada), the parsing does not work because Settings::LogoLanguage() is set to fr and NOT to fr_FR.
+  Syntax highlighting does not work for fr
+ 
 - Default does not work in Language ComboBox -> I am not sure your use of KConfig XT is optimum here, Cies
  and other bug: output: kturtle: desktopLanguage: fr:en_US
            kturtle: defaultLanguage: en_US
-Why is not default Language fr_FR? DONE annma 02/04/2004
+Why is not default Language fr_FR?  DONE annma 02/04/2004
 
 - open recent does not keep the files after quitting DONE annma 02/04/2004
 - crash on quitting after Opening files DONE annma 02/04/2004
