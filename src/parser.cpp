@@ -85,93 +85,37 @@ TreeNode* Parser::Program()
 
 void Parser::matchToken(int expectedToken)
 {
-	if (currentToken.type != expectedToken)
-	{
-		// do something sensible here when there is an error!
-		
-// 		QString tokStr = "";
-// 		switch(x) {
-// 			case tokIf            : tokStr += "if";           break;
-// 			case tokElse          : tokStr += "else";         break;
-// 			case tokWhile         : tokStr += "while";        break;
-// 			case tokFfor           : tokStr += "for";          break;
-// 			case tokTo            : tokStr += "to";           break;
-// 			case tokStep          : tokStr += "step";         break;
-// 			case tokNumber        : tokStr += "number";       break;
-// 			case tokString        : tokStr += "string";       break;
-// 			case tokId            : tokStr += "id";           break;
-// 			case tokProcId        : tokStr += "procedure id"; break;
-// 			case tokBegin         : tokStr += "begin";        break;
-// 			case tokEnd           : tokStr += "end";          break;
-// 		
-// 			case tokOr            : tokStr += "or";           break;
-// 			case tokAnd           : tokStr += "and";          break;
-// 			case tokNot           : tokStr += "not";          break;
-// 	
-// 			case tokGe            : tokStr += ">=";           break;
-// 			case tokGt            : tokStr += ">";            break;
-// 			case tokLe            : tokStr += "<=";           break;
-// 			case tokLt            : tokStr += "<";            break;
-// 			case tokNe            : tokStr += "!=";           break;
-// 			case tokEq            : tokStr += "==";           break;
-// 			case tokAssign        : tokStr += "=";            break;
-// 
-// 			case tokReturn        : tokStr += "return";       break;
-// 			case tokBreak         : tokStr += "break";        break;
-// 
-// 			case tokForEach       : tokStr += "foreach";      break;
-// 			case tokIn            : tokStr += "in";           break;
-// 		
-// 			case tokRun           : tokStr += "run";          break;
-// 			case tokEOF           : tokStr += "end of file";  break;
-// 			case tokError         : tokStr += "error token";  break;
-// 			
-// 			case tokLearn         : tokStr += "learn";        break;
-// 			
-// 			case tokClear         : tokStr += "clear";        break;
-// 			case tokGo            : tokStr += "go";           break;
-// 			case tokGoX           : tokStr += "gox";          break;
-// 			case tokGoY           : tokStr += "goy";          break;
-// 			case tokForward       : tokStr += "forward";      break;
-// 			case tokBackward      : tokStr += "backward";     break;
-// 			case tokDirection     : tokStr += "direction";    break;
-// 			case tokTurnLeft      : tokStr += "turnleft";     break;
-// 			case tokTurnRight     : tokStr += "turnright";    break;
-// 			case tokCenter        : tokStr += "center";       break;
-// 			case tokSetPenWidth   : tokStr += "setpenwidth";  break;
-// 			case tokPenUp         : tokStr += "penup";        break;
-// 			case tokPenDown       : tokStr += "pendown";      break;
-// 			case tokSetFgColor    : tokStr += "setfgcolor";   break;
-// 			case tokSetBgColor    : tokStr += "setbgcolor";   break;
-// 			case tokResizeCanvas  : tokStr += "resizecanvas"; break;
-// 			case tokSpriteShow    : tokStr += "spriteshow";   break;
-// 			case tokSpriteHide    : tokStr += "spritehide";   break;
-// 			case tokSpritePress   : tokStr += "spritepress";  break;
-// 			case tokSpriteChange  : tokStr += "spritechange"; break;
-// 
-// 			case tokMessage       : tokStr += "message";      break;
-// 			case tokInputWindow   : tokStr += "inputwindow";  break;
-// 			case tokPrint         : tokStr += "print";        break;
-// 			case tokFontType      : tokStr += "fonttype";     break;
-// 			case tokFontSize      : tokStr += "fontsize";     break;
-// 			case tokRepeat        : tokStr += "repeat";       break;
-// 			case tokRandom        : tokStr += "random";       break;
-// 			case tokWait          : tokStr += "wait";         break;
-// 			case tokWrapOn        : tokStr += "wrapon";       break;
-// 			case tokWrapOff       : tokStr += "wrapoff";      break;
-// 			case tokReset         : tokStr += "reset";        break;
-// 
-// 			default               : tokStr += (char)x; break;
-// 		}
-// 		QString key = lexer->name2key(tokStr); // translate if possible, else key=tokStr
-// 		Error( i18n("Expected %1 on line %2").arg(key).arg( lexer->getRow() ), 1010, lexer->getRow(), lexer->getCol() );
-		Error(currentToken, i18n("Could not match token-number: '%1'").arg(expectedToken), 1010);
-	}
-	else
+	if (currentToken.type == expectedToken)
 	{
 		getToken(); // get a new token
 	}
+	else
+	{
+		switch (expectedToken)
+		{
+			case tokEOL:
+				Error(preservedToken, i18n("Unexpected intruction after the %1 command, please use only one instuction per line.").arg(preservedToken.look), 1010);
+				break;
+				
+			default:
+				Error(currentToken, i18n("Could not match token-number: '%1'").arg(expectedToken), 1010);
+				break;
+		}
+	}
 }
+
+
+void Parser::appendParameters(TreeNode* node)
+{
+	node->appendChild( Expression() ); // append the first papameter
+	while (currentToken.type == tokComma)
+	{
+		matchToken(tokComma); // push through the comma
+		if (currentToken.type == tokEOL) return; // catch forgotten expressions, like "go 10, "
+		node->appendChild( Expression() );
+	}
+}
+
 
 TreeNode* Parser::getId()
 {
@@ -236,11 +180,16 @@ TreeNode* Parser::Factor()
 			node = new TreeNode(currentToken, stringConstantNode);
 			if ( currentToken.look.endsWith("\"") )
 			{
-				currentToken.look.remove(0, 1).truncate( currentToken.look.length() - 2 ); // cut off the quotes 
-				node->setValue(currentToken.look);
-				matchToken(tokString);
+				currentToken.look.remove(0, 1).truncate( currentToken.look.length() - 2 ); // cut off the quotes
 			}
-			else Error(currentToken, i18n("String text not properly delimited with a '\"' (double quote)"), 1060);
+			else // problems but we need to keep it moving
+			{
+				currentToken.look.remove(0, 1); // cut off the first quote only
+				Error(currentToken, i18n("String text not properly delimited with a \" (double quote)"), 1060);
+			}
+			node->setValue(currentToken.look);
+			node->setLook("string-constant");
+			matchToken(tokString);
 			break;
 
 		case tokNumber:
@@ -260,13 +209,19 @@ TreeNode* Parser::Factor()
 		case tokRandom:
 			node = Random();
 			break;
+		
+		case tokEOL:
+			node = new TreeNode(currentToken, Unknown);
+			break;
 
 		default:
 			QString s = currentToken.look;
 			if ( s.isEmpty() || currentToken.type == tokEOF ) {
 				kdDebug(0)<<"EXPECTED AN EXPRESSION"<<endl;
 				Error(currentToken, i18n("DEBUG: This message should be avoided, see the Parser::Repeat for the good solution"), 1020);
-			} else {
+			}
+			else
+			{
 				Error(currentToken, i18n("Cannot understand '%1' in expression").arg(s), 1020);
 			}
 			node = new TreeNode(currentToken, Unknown);
@@ -403,7 +358,8 @@ bool Parser::isAddOp(Token t) {
 
 /*---------------------------------------------------------------*/
 /* Parse and Translate an Expression */
-TreeNode* Parser::Expression() {
+TreeNode* Parser::Expression()
+{
 	TreeNode* retExp = Term();
 	TreeNode* pos = retExp;
 	TreeNode* left = NULL;
@@ -600,6 +556,7 @@ TreeNode* Parser::Block()
 TreeNode* Parser::Clear()
 {
 	TreeNode* node = new TreeNode(currentToken, ClearNode);
+	preservedToken = currentToken;
 	getToken();
 	matchToken(tokEOL);
 	return node;
@@ -608,6 +565,7 @@ TreeNode* Parser::Clear()
 TreeNode* Parser::Center()
 {
 	TreeNode* node = new TreeNode(currentToken, CenterNode);
+	preservedToken = currentToken;
 	getToken();
 	matchToken(tokEOL);
 	return node;
@@ -616,6 +574,7 @@ TreeNode* Parser::Center()
 TreeNode* Parser::PenUp()
 {
 	TreeNode* node = new TreeNode(currentToken, PenUpNode);
+	preservedToken = currentToken;
 	getToken();
 	matchToken(tokEOL);
 	return node;
@@ -624,6 +583,7 @@ TreeNode* Parser::PenUp()
 TreeNode* Parser::PenDown()
 {
 	TreeNode* node = new TreeNode(currentToken, PenDownNode);
+	preservedToken = currentToken;
 	getToken();
 	matchToken(tokEOL);
 	return node;
@@ -632,6 +592,7 @@ TreeNode* Parser::PenDown()
 TreeNode* Parser::SpriteShow()
 {
 	TreeNode* node = new TreeNode(currentToken, SpriteShowNode);
+	preservedToken = currentToken;
 	getToken();
 	matchToken(tokEOL);
 	return node;
@@ -640,6 +601,7 @@ TreeNode* Parser::SpriteShow()
 TreeNode* Parser::SpriteHide()
 {
 	TreeNode* node = new TreeNode(currentToken, SpriteHideNode);
+	preservedToken = currentToken;
 	getToken();
 	matchToken(tokEOL);
 	return node;
@@ -648,6 +610,7 @@ TreeNode* Parser::SpriteHide()
 TreeNode* Parser::SpritePress()
 {
 	TreeNode* node = new TreeNode(currentToken, SpritePressNode);
+	preservedToken = currentToken;
 	getToken();
 	matchToken(tokEOL);
 	return node;
@@ -656,6 +619,7 @@ TreeNode* Parser::SpritePress()
 TreeNode* Parser::WrapOn()
 {
 	TreeNode* node = new TreeNode(currentToken, WrapOnNode);
+	preservedToken = currentToken;
 	getToken();
 	matchToken(tokEOL);
 	return node;
@@ -664,6 +628,7 @@ TreeNode* Parser::WrapOn()
 TreeNode* Parser::WrapOff()
 {
 	TreeNode* node = new TreeNode(currentToken, WrapOffNode);
+	preservedToken = currentToken;
 	getToken();
 	matchToken(tokEOL);
 	return node;
@@ -672,6 +637,7 @@ TreeNode* Parser::WrapOff()
 TreeNode* Parser::Reset()
 {
 	TreeNode* node = new TreeNode(currentToken, ResetNode);
+	preservedToken = currentToken;
 	getToken();
 	matchToken(tokEOL);
 	return node;
@@ -685,8 +651,9 @@ TreeNode* Parser::Reset()
 TreeNode* Parser::GoX()
 {
 	TreeNode* node = new TreeNode(currentToken, GoXNode);
+	preservedToken = currentToken;
 	getToken();
-	node->appendChild( Expression() ); // get the expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -695,8 +662,9 @@ TreeNode* Parser::GoX()
 TreeNode* Parser::GoY()
 {
 	TreeNode* node = new TreeNode(currentToken, GoYNode);
+	preservedToken = currentToken;
 	getToken();
-	node->appendChild( Expression() ); // get the expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -705,8 +673,9 @@ TreeNode* Parser::GoY()
 TreeNode* Parser::Forward()
 {
 	TreeNode* node = new TreeNode(currentToken, ForwardNode);
+	preservedToken = currentToken;
 	getToken();
-	node->appendChild( Expression() ); // get the expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -715,8 +684,9 @@ TreeNode* Parser::Forward()
 TreeNode* Parser::Backward()
 {
 	TreeNode* node = new TreeNode(currentToken, BackwardNode);
+	preservedToken = currentToken;
 	getToken();
-	node->appendChild( Expression() ); // get the expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -724,8 +694,9 @@ TreeNode* Parser::Backward()
 TreeNode* Parser::Direction()
 {
 	TreeNode* node = new TreeNode(currentToken, DirectionNode);
+	preservedToken = currentToken;
 	getToken();
-	node->appendChild( Expression() ); // get the expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -733,8 +704,9 @@ TreeNode* Parser::Direction()
 TreeNode* Parser::TurnLeft()
 {
 	TreeNode* node = new TreeNode(currentToken, TurnLeftNode);
+	preservedToken = currentToken;
 	getToken();
-	node->appendChild( Expression() ); // get the expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -742,8 +714,9 @@ TreeNode* Parser::TurnLeft()
 TreeNode* Parser::TurnRight()
 {
 	TreeNode* node = new TreeNode(currentToken, TurnRightNode);
+	preservedToken = currentToken;
 	getToken();
-	node->appendChild( Expression() ); // get the expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -751,8 +724,9 @@ TreeNode* Parser::TurnRight()
 TreeNode* Parser::SetPenWidth()
 {
 	TreeNode* node = new TreeNode(currentToken, SetPenWidthNode);
+	preservedToken = currentToken;
 	getToken();
-	node->appendChild( Expression() ); // get the expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -760,8 +734,9 @@ TreeNode* Parser::SetPenWidth()
 TreeNode* Parser::Message()
 {
 	TreeNode* node = new TreeNode(currentToken, MessageNode);
+	preservedToken = currentToken;
 	getToken();
-	node->appendChild( Expression() ); // get the expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -769,8 +744,9 @@ TreeNode* Parser::Message()
 TreeNode* Parser::InputWindow()
 {
 	TreeNode* node = new TreeNode(currentToken, InputWindowNode);
+	preservedToken = currentToken;
 	getToken();
-	node->appendChild( Expression() ); // get the expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -778,8 +754,9 @@ TreeNode* Parser::InputWindow()
 TreeNode* Parser::SpriteChange()
 {
 	TreeNode* node = new TreeNode(currentToken, SpriteChangeNode);
+	preservedToken = currentToken;
 	getToken();
-	node->appendChild( Expression() ); // get the expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -787,8 +764,9 @@ TreeNode* Parser::SpriteChange()
 TreeNode* Parser::FontType()
 {
 	TreeNode* node = new TreeNode(currentToken, FontTypeNode);
+	preservedToken = currentToken;
 	getToken();
-	node->appendChild( Expression() ); // get the expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -796,8 +774,9 @@ TreeNode* Parser::FontType()
 TreeNode* Parser::FontSize()
 {
 	TreeNode* node = new TreeNode(currentToken, FontSizeNode);
+	preservedToken = currentToken;
 	getToken();
-	node->appendChild( Expression() ); // get the expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -805,10 +784,9 @@ TreeNode* Parser::FontSize()
 TreeNode* Parser::Random()
 {
 	TreeNode* node = new TreeNode(currentToken, RandomNode);
+	preservedToken = currentToken;
 	getToken();
-	node->appendChild( Expression() ); // first expression
-	matchToken(tokComma);
-	node->appendChild( Expression() ); // second expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -816,8 +794,9 @@ TreeNode* Parser::Random()
 TreeNode* Parser::Wait()
 {
 	TreeNode* node = new TreeNode(currentToken, WaitNode);
+	preservedToken = currentToken;
 	getToken();
-	node->appendChild( Expression() ); // get the expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -825,8 +804,9 @@ TreeNode* Parser::Wait()
 TreeNode* Parser::ExternalRun()
 {
 	TreeNode* node = new TreeNode(currentToken, runNode);
+	preservedToken = currentToken;
 	getToken();
-	node->appendChild( Expression() ); // get the expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -838,10 +818,9 @@ TreeNode* Parser::ExternalRun()
 TreeNode* Parser::Go()
 {
 	TreeNode* node = new TreeNode(currentToken, GoNode);
+	preservedToken = currentToken;
 	getToken();
-	node->appendChild( Expression() ); // first expression
-	matchToken(tokComma);
-	node->appendChild( Expression() ); // second expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -849,10 +828,9 @@ TreeNode* Parser::Go()
 TreeNode* Parser::ResizeCanvas()
 {
 	TreeNode* node = new TreeNode(currentToken, ResizeCanvasNode);
+	preservedToken = currentToken;
 	getToken();
-	node->appendChild( Expression() ); // first expression
-	matchToken(tokComma);
-	node->appendChild( Expression() ); // second expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -866,11 +844,7 @@ TreeNode* Parser::SetFgColor()
 {
 	TreeNode* node = new TreeNode(currentToken, SetFgColorNode);
 	getToken();
-	node->appendChild( Expression() ); // first expression
-	matchToken(tokComma);
-	node->appendChild( Expression() ); // second expression
-	matchToken(tokComma);
-	node->appendChild( Expression() ); // third expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -879,11 +853,7 @@ TreeNode* Parser::SetBgColor()
 {
 	TreeNode* node = new TreeNode(currentToken, SetBgColorNode);
 	getToken();
-	node->appendChild( Expression() ); // first expression
-	matchToken(tokComma);
-	node->appendChild( Expression() ); // second expression
-	matchToken(tokComma);
-	node->appendChild( Expression() ); // third expression
+	appendParameters(node);
 	matchToken(tokEOL);
 	return node;
 }
@@ -928,15 +898,6 @@ TreeNode* Parser::Learn()
 	return func;
 }
 
-TreeNode* Parser::Repeat()
-{
-	TreeNode* node = new TreeNode(currentToken, RepeatNode);
-	matchToken(tokRepeat);
-	node->appendChild( Expression() );
-	
-	node->appendChild( Block() );
-	return node;
-}
 
 /*
   <if> ::= tokIf <expression> ( <statement> | <block> )
@@ -961,7 +922,8 @@ TreeNode* Parser::If()
 		node->appendChild( Statement() );
 	}
 
-	if (currentToken.type == tokElse) { //else part
+	if (currentToken.type == tokElse) // else part
+	{
 		matchToken(tokElse);
 		
 		if (currentToken.type == tokDo) {  // skip the 'do'
@@ -984,19 +946,11 @@ TreeNode* Parser::If()
  */
 TreeNode* Parser::While()
 {
-	TreeNode* wNode = new TreeNode(currentToken, whileNode);
+	TreeNode* node = new TreeNode(currentToken, whileNode);
 	matchToken(tokWhile);
-	wNode->appendChild( Expression() );
-
-	if(currentToken.type == tokBegin) //while followed by a block
-	{
-		wNode->appendChild( Block() ); 
-	} 
-	else{ //while followed by single statement
-		wNode->appendChild( Statement() );
-	}
-
-	return wNode;
+	node->appendChild( Expression() );
+	node->appendChild( Block() ); 
+	return node;
 }
 
 /*
@@ -1021,17 +975,29 @@ TreeNode* Parser::For()
 		fNode->appendChild( Expression() ); //step expression
 	}
 
-	if (currentToken.type == tokBegin)
-	{ //for followed by a block
+	if (currentToken.type == tokBegin) // for followed by a block
+	{
 		fNode->appendChild( Block() ); 
 	} 
-	else
-	{ //while followed by single statement
+	else // while followed by single statement
+	{
 		fNode->appendChild( Statement() );
 	}
 
 	return fNode;
 }
+
+
+TreeNode* Parser::Repeat()
+{
+	TreeNode* node = new TreeNode(currentToken, RepeatNode);
+	matchToken(tokRepeat);
+	node->appendChild( Expression() );
+	node->appendChild( Block() );
+	return node;
+}
+
+
 
 TreeNode* Parser::ForEach()
 {
@@ -1042,9 +1008,12 @@ TreeNode* Parser::ForEach()
 	matchToken(tokIn);
 	fNode->appendChild( Expression() );
 
-	if(currentToken.type == tokBegin) { //for followed by a block
+	if(currentToken.type == tokBegin) // for followed by a block
+	{
 		fNode->appendChild( Block() ); 
-	} else { //while followed by single statement
+	}
+	else // while followed by single statement
+	{
 		fNode->appendChild( Statement() );
 	}
 
@@ -1059,7 +1028,7 @@ TreeNode* Parser::Print()
 	// following strings or expressions
 	while (currentToken.type == tokComma)
 	{
-		getToken(); //the comma
+		getToken(); // the comma
 		node->appendChild( Expression() );
 	}
 	matchToken(tokEOL);

@@ -248,6 +248,7 @@ class TreeNode : public list<TreeNode*>
 	void      setValue(const Value& n)   { fTok.value = n; }
 	void      setValue(double d)         { fTok.value = d; }
 	void      setValue(const QString& s) { fTok.value = s; }
+	void      setValue(bool b)           { fTok.value.setBool(b); }
 	Value     getValue() const           { return fTok.value; }
 	
 	uint      getRow() const             { return fTok.start.row; }

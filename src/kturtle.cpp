@@ -20,9 +20,11 @@
 
 #include <stdlib.h>
 
+#include <qbutton.h>
 #include <qregexp.h>
 #include <qpainter.h>
 #include <qtooltip.h>
+#include <qtimer.h>
 #include <qwhatsthis.h>
 
 #include <kapplication.h>
@@ -34,6 +36,7 @@
 #include <kinputdialog.h>
 #include <klocale.h>
 #include <kmessagebox.h>
+#include <kmenubar.h>
 #include <kprinter.h>
 #include <ksavefile.h>
 #include <kstatusbar.h>
@@ -214,6 +217,8 @@ void MainWindow::setupCanvas()
 	BaseLayout = new QGridLayout(BaseWidget, 0, 0);
 	TurtleView = new Canvas(BaseWidget);
 	BaseLayout->addWidget(TurtleView, 0, 0, AlignCenter);
+	BaseLayout->setRowStretch(0, 1); // this apperntly fixes a pre-usefull scrollbars bug
+	BaseLayout->setColStretch(0, 1);
 	QWhatsThis::add( TurtleView, i18n( "This is the canvas, here the turtle draws a picture." ) );
 	TurtleView->show();
 	connect( TurtleView, SIGNAL( CanvasResized() ), this, SLOT( slotUpdateCanvas() ) );
@@ -498,10 +503,9 @@ void MainWindow::startExecution() {
 	{
 		slotShowEditor();
 		statusBar()->hide();
-		// menuBar()->hide();   <--- seems pretty hard to hide the menubar
+		menuBar()->hide();
 		toolBar()->hide();
 	}
-	// maybe the fullscreen funktion should be a screen ocupying widget with the canvas in the middle and a button that only shows 1 sec after the execution is finished. (what to do with endless loop scripts?) 
 
 	run->setEnabled(false);
 	stop->setEnabled(true);
@@ -523,91 +527,96 @@ void MainWindow::startExecution() {
 	           this, SLOT(slotSetSelection(uint, uint, uint, uint) ) );
 	
 	// parsing and executing...
-	//if( parser.parse() ) { // not executing after parse errors is for pussies
 	parser.parse();
 	
-		TreeNode* root = parser.getTree();
-		kdDebug(0)<<"############## PARSING FINISHED ##############"<<endl;
-		root->showTree(root); // show parsetree  DEBUG OPTION (but nice)
+	TreeNode* root = parser.getTree();
+	kdDebug(0)<<"############## PARSING FINISHED ##############"<<endl;
+	root->showTree(root); // show parsetree  DEBUG OPTION (but nice)
 
-		slotStatusBar(i18n("Executing commands..."),  IDS_STATUS);
-		kdDebug(0)<<"############## EXECUTION STARTED ##############"<<endl;
-		exe = new Executer(root); // make Executer object, 'exe', and have it point to the root
-		connect( exe, SIGNAL( ErrorMsg(Token&, QString, uint) ),
-		      errMsg, SLOT( slotAddError(Token&, QString, uint) ) );
-		connect( exe, SIGNAL( InputDialog(QString&) ),
-		        this, SLOT( slotInputDialog(QString&) ) );
-		connect( exe, SIGNAL( MessageDialog(QString) ),
-		        this, SLOT( slotMessageDialog(QString) ) );
+	slotStatusBar(i18n("Executing commands..."),  IDS_STATUS);
+	kdDebug(0)<<"############## EXECUTION STARTED ##############"<<endl;
+	exe = new Executer(root); // make Executer object, 'exe', and have it point to the root
+	connect( exe, SIGNAL( ErrorMsg(Token&, QString, uint) ), errMsg, SLOT( slotAddError(Token&, QString, uint) ) );
+	connect( exe, SIGNAL( InputDialog(QString&) ), this, SLOT( slotInputDialog(QString&) ) );
+	connect( exe, SIGNAL( MessageDialog(QString) ), this, SLOT( slotMessageDialog(QString) ) );
 
-		// Connect the signals form Executer to the slots from Canvas:
-		connect( exe, SIGNAL( Clear() ), TurtleView, SLOT( slotClear() ) );
-		connect( exe, SIGNAL( Go(int, int) ), TurtleView, SLOT( slotGo(int, int) ) );
-		connect( exe, SIGNAL( GoX(int) ), TurtleView, SLOT( slotGoX(int) ) );
-		connect( exe, SIGNAL( GoY(int) ), TurtleView, SLOT( slotGoY(int) ) );
-		connect( exe, SIGNAL( Forward(int) ), TurtleView, SLOT( slotForward(int) ) );
-		connect( exe, SIGNAL( Backward(int) ), TurtleView, SLOT( slotBackward(int) ) );
-		connect( exe, SIGNAL( Direction(double) ), TurtleView, SLOT( slotDirection(double) ) );
-		connect( exe, SIGNAL( TurnLeft(double) ), TurtleView, SLOT( slotTurnLeft(double) ) );
-		connect( exe, SIGNAL( TurnRight(double) ), TurtleView, SLOT( slotTurnRight(double) ) );
-		connect( exe, SIGNAL( Center() ), TurtleView, SLOT( slotCenter() ) );
-		connect( exe, SIGNAL( SetPenWidth(int) ), TurtleView, SLOT( slotSetPenWidth(int) ) );
-		connect( exe, SIGNAL( PenUp() ), TurtleView, SLOT( slotPenUp() ) );
-		connect( exe, SIGNAL( PenDown() ), TurtleView, SLOT( slotPenDown() ) );
-		connect( exe, SIGNAL( SetFgColor(int, int, int) ), TurtleView, SLOT( slotSetFgColor(int, int, int) ) );
-		connect( exe, SIGNAL( SetBgColor(int, int, int) ), TurtleView, SLOT( slotSetBgColor(int, int, int) ) );
-		connect( exe, SIGNAL( ResizeCanvas(int, int) ), TurtleView, SLOT( slotResizeCanvas(int, int) ) );
-		connect( exe, SIGNAL( SpriteShow() ), TurtleView, SLOT( slotSpriteShow() ) );
-		connect( exe, SIGNAL( SpriteHide() ), TurtleView, SLOT( slotSpriteHide() ) );
-		connect( exe, SIGNAL( SpritePress() ), TurtleView, SLOT( slotSpritePress() ) );
-		connect( exe, SIGNAL( SpriteChange(int) ), TurtleView, SLOT( slotSpriteChange(int) ) );
-		connect( exe, SIGNAL( Print(QString) ), TurtleView, SLOT( slotPrint(QString) ) );
-		connect( exe, SIGNAL( FontType(QString, QString) ), TurtleView, SLOT( slotFontType(QString, QString) ) );
-		connect( exe, SIGNAL( FontSize(int) ), TurtleView, SLOT( slotFontSize(int) ) );
-		connect( exe, SIGNAL( WrapOn() ), TurtleView, SLOT( slotWrapOn() ) );
-		connect( exe, SIGNAL( WrapOff() ), TurtleView, SLOT( slotWrapOff() ) );
-		connect( exe, SIGNAL( Reset() ), TurtleView, SLOT( slotReset() ) );
+	// Connect the signals form Executer to the slots from Canvas:
+	connect( exe, SIGNAL( Clear() ), TurtleView, SLOT( slotClear() ) );
+	connect( exe, SIGNAL( Go(int, int) ), TurtleView, SLOT( slotGo(int, int) ) );
+	connect( exe, SIGNAL( GoX(int) ), TurtleView, SLOT( slotGoX(int) ) );
+	connect( exe, SIGNAL( GoY(int) ), TurtleView, SLOT( slotGoY(int) ) );
+	connect( exe, SIGNAL( Forward(int) ), TurtleView, SLOT( slotForward(int) ) );
+	connect( exe, SIGNAL( Backward(int) ), TurtleView, SLOT( slotBackward(int) ) );
+	connect( exe, SIGNAL( Direction(double) ), TurtleView, SLOT( slotDirection(double) ) );
+	connect( exe, SIGNAL( TurnLeft(double) ), TurtleView, SLOT( slotTurnLeft(double) ) );
+	connect( exe, SIGNAL( TurnRight(double) ), TurtleView, SLOT( slotTurnRight(double) ) );
+	connect( exe, SIGNAL( Center() ), TurtleView, SLOT( slotCenter() ) );
+	connect( exe, SIGNAL( SetPenWidth(int) ), TurtleView, SLOT( slotSetPenWidth(int) ) );
+	connect( exe, SIGNAL( PenUp() ), TurtleView, SLOT( slotPenUp() ) );
+	connect( exe, SIGNAL( PenDown() ), TurtleView, SLOT( slotPenDown() ) );
+	connect( exe, SIGNAL( SetFgColor(int, int, int) ), TurtleView, SLOT( slotSetFgColor(int, int, int) ) );
+	connect( exe, SIGNAL( SetBgColor(int, int, int) ), TurtleView, SLOT( slotSetBgColor(int, int, int) ) );
+	connect( exe, SIGNAL( ResizeCanvas(int, int) ), TurtleView, SLOT( slotResizeCanvas(int, int) ) );
+	connect( exe, SIGNAL( SpriteShow() ), TurtleView, SLOT( slotSpriteShow() ) );
+	connect( exe, SIGNAL( SpriteHide() ), TurtleView, SLOT( slotSpriteHide() ) );
+	connect( exe, SIGNAL( SpritePress() ), TurtleView, SLOT( slotSpritePress() ) );
+	connect( exe, SIGNAL( SpriteChange(int) ), TurtleView, SLOT( slotSpriteChange(int) ) );
+	connect( exe, SIGNAL( Print(QString) ), TurtleView, SLOT( slotPrint(QString) ) );
+	connect( exe, SIGNAL( FontType(QString, QString) ), TurtleView, SLOT( slotFontType(QString, QString) ) );
+	connect( exe, SIGNAL( FontSize(int) ), TurtleView, SLOT( slotFontSize(int) ) );
+	connect( exe, SIGNAL( WrapOn() ), TurtleView, SLOT( slotWrapOn() ) );
+	connect( exe, SIGNAL( WrapOff() ), TurtleView, SLOT( slotWrapOff() ) );
+	connect( exe, SIGNAL( Reset() ), TurtleView, SLOT( slotReset() ) );
 
-		if ( exe->run() )
-		{
-			slotStatusBar(i18n("Done."),  IDS_STATUS);
-			finishExecution();
-		}
-		else
-		{
-			slotStatusBar(i18n("Execution aborted."),  IDS_STATUS);
-			finishExecution();
-		}
-		delete exe;
-// 	} else {
-// 		kdDebug(0)<<"############## PARSING FAILED ##############"<<endl;
-// 		slotStatusBar(i18n("Parsing failed."),  IDS_STATUS);
-// 		finishExecution();
-// 	}
-
-	if (errMsg->containsErrors() == false) {
-		errMsg->display();
+	if ( exe->run() )
+	{
+		slotStatusBar(i18n("Done."),  IDS_STATUS);
+		finishExecution();
 	}
+	else
+	{
+		slotStatusBar(i18n("Execution aborted."),  IDS_STATUS);
+		finishExecution();
+	}
+	delete exe;
+
+	if (errMsg->containsErrors() == false) errMsg->display();
 }
 
-void MainWindow::slotAbortExecution() {
+void MainWindow::slotAbortExecution()
+{
 	exe->abort();
 }
 
-void MainWindow::finishExecution() {
+void MainWindow::finishExecution()
+{
 	kdDebug(0)<<"############## EXECUTION FINISHED ##############"<<endl;
 	run->setEnabled(true);
 	stop->setEnabled(false);
 	executing = false;
 
 	// show the editor, menu- and statusbar
-	if (b_fullscreen)
-	{
-		if (!b_editorShown) slotShowEditor();
-		statusBar()->show();
-		// menuBar()->hide();   <--- seems pretty hard to hide the menubar
-		toolBar()->show();
-	}
+	if (b_fullscreen) QTimer::singleShot( 1000, this, SLOT( slotShowBackToFullScreenButton() ) );
+}
+
+void MainWindow::slotShowBackToFullScreenButton()
+{
+	button = new QButton(BaseWidget, "back_button", Qt::WType_Popup);
+	button->setText( i18n("back") );
+	button->setGeometry( 50,50,100,100 );
+	// BaseLayout->addWidget(button, 0, 0, AlignCenter);
+	// @todo would be nice to have a button to restart execution here too
+	button->show();
+	connect( button, SIGNAL( clicked() ), this, SLOT( slotBackToFullScreen() ) ); 
+}
+
+void MainWindow::slotBackToFullScreen()
+{
+	delete button;
+	if (!b_editorShown) slotShowEditor();
+	statusBar()->show();
+	menuBar()->show();
+	toolBar()->show();
 }
 
 // some other parts of the main window that need to be connected with the mainwindow
@@ -718,12 +727,11 @@ void MainWindow::slotReplace() {
 	a->activate();
 }
 
-void MainWindow::slotToggleInsert() {
+void MainWindow::slotToggleInsert()
+{
 	KToggleAction *a = dynamic_cast<KToggleAction*>(editor->actionCollection()->action("set_insert"));
 	a->activate();
-	if (a) {
-		statusBar()->changeItem(a->isChecked() ? i18n(" OVR ") : i18n(" INS "), IDS_INS);
-	}
+	if (a) statusBar()->changeItem(a->isChecked() ? i18n(" OVR ") : i18n(" INS "), IDS_INS);
 }
 
 void MainWindow::slotIndent() {
@@ -782,32 +790,24 @@ void MainWindow::slotSetSelection(uint StartLine, uint StartCol, uint EndLine, u
 
 // BEGIN fullscreen functions
 
-void MainWindow::slotToggleFullscreen() {
-	if (!b_fullscreen) {
-		showFullScreen(); // both calls will generate event triggering updateFullScreen()
-	} else {
-		if( isFullScreen() ) {
-			showNormal();
-		}
-	}
+void MainWindow::slotToggleFullscreen()
+{
+	if (!b_fullscreen) showFullScreen(); // both calls will generate event triggering updateFullScreen()
+	else if ( isFullScreen() ) showNormal();
 }
 
-bool MainWindow::event(QEvent* e) {
+bool MainWindow::event(QEvent* e)
+{
 	// executes updateFullScreen() after a ShowFullScreen or ShowNormal event got triggered
-	if (e->type() == QEvent::ShowFullScreen || e->type() == QEvent::ShowNormal) {
-		updateFullScreen();
-	}
+	if (e->type() == QEvent::ShowFullScreen || e->type() == QEvent::ShowNormal) updateFullScreen();
 	return KMainWindow::event(e);
 }
 
-void MainWindow::updateFullScreen() {
-	if (isFullScreen() == b_fullscreen) {
-		return;
-	}
+void MainWindow::updateFullScreen()
+{
+	if (isFullScreen() == b_fullscreen) return;
 	b_fullscreen = isFullScreen();
-	if (m_fullscreen) {
-	m_fullscreen->setChecked(b_fullscreen);
-	}
+	if (m_fullscreen) m_fullscreen->setChecked(b_fullscreen);
 }
 
 // END
@@ -816,11 +816,11 @@ void MainWindow::updateFullScreen() {
 
 // BEGIN configuration related functions
 
-void MainWindow::slotSettings() {
+void MainWindow::slotSettings()
+{
 	// Check if there is already a dialog, if so bring it to the foreground.
-	if( KConfigDialog::showDialog("settings") ) {
-		return;
-	}
+	if( KConfigDialog::showDialog("settings") ) return;
+
 	// Create a new dialog with the same name as the above checking code.
 	KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self() );
 	// making the filling for the 'General' settings dept.

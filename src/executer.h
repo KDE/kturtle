@@ -71,7 +71,7 @@ Q_OBJECT
 	void SpritePress();
 	void SpriteChange(int x);
 	void Print(QString text);
-	void FontType(QString family, QString extra);
+	void FontType(QString family);
 	void FontSize(int px);
 	void WrapOn();
 	void WrapOff();
@@ -95,8 +95,6 @@ Q_OBJECT
 	void execRetFunction   (TreeNode*);
 	void execReturn        (TreeNode*);
 	void execBreak         (/*TreeNode*/);
-
-	Value exec2getValue    (TreeNode*);
 	
 	void execAdd           (TreeNode*);
 	void execMul           (TreeNode*);
@@ -149,8 +147,13 @@ Q_OBJECT
 	void execWrapOn        (TreeNode*);
 	void execWrapOff       (TreeNode*);
 	void execReset         (TreeNode*);
-		
+
+	Value exec2getValue    (TreeNode*);
+	
 	QString runCommand(const QString&);
+	
+	bool checkParameterQuantity(TreeNode*, uint quantity, int errorCode);
+	bool checkParameterType(TreeNode*, int valueType, int errorCode);
 
 	void startWaiting(float sec);
 		
@@ -160,10 +163,10 @@ Q_OBJECT
 	functable        functionTable;  // keep track of functionNode's
 	runstack         runStack;       // stores parameters and return value of functions
 	
-	bool bReturn;       // used for return statements
-	bool bBreak;        // used for break statement
-	bool bAbort;        // used to abort execution
-	bool bStopWaiting;  // used for wait-command
+	bool             bReturn;       // used for return statements
+	bool             bBreak;        // used for break statement
+	bool             bAbort;        // used to abort execution
+	bool             bStopWaiting;  // used for wait-command
 	
 	private slots:
 	void slotStopWaiting();

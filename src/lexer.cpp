@@ -396,7 +396,7 @@ int Lexer::getNumber(Value& num, QString& look)
 
 void Lexer::getString(Token& currentToken)
 {
-	QString str = "\"";
+	QString str = "\""; // start with a " cauz it just got lost
 	QChar currentChar = QChar(); // start empty
 	while ( currentChar != '"' && !(currentChar == '\x0a' || currentChar == '\n') && !inputStream->atEnd() )
 	{
@@ -412,7 +412,12 @@ void Lexer::getString(Token& currentToken)
 				case '"': str += '"';  break;
 			}
 		}
-		str += currentChar;
+		else if (currentChar == '\x0a' || currentChar == '\n') // if the user forgot to delimit the string
+		{
+			ungetChar(currentChar);
+			break;
+		}
+		else str += currentChar;
 	}
 	currentToken.type = tokString;
 	currentToken.look = str;

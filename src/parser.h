@@ -46,6 +46,7 @@ Q_OBJECT
 	
 	void getToken();
 	void matchToken(int tokenType);
+	void appendParameters(TreeNode* node);
 	void Error(Token, QString, uint code);
 
 	TreeNode* Program();

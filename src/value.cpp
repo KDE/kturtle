@@ -70,6 +70,7 @@ bool Value::Bool() const
 
 void Value::setBool(bool b)
 {
+	type = boolType;
 	m_bool = b;
 	if (m_bool)
 	{
@@ -98,12 +99,14 @@ double Value::Number() const
 
 void Value::setNumber(double d)
 {
+	type = numberType;
 	m_double = d;
 	m_string.setNum(d);
 }
 
 bool Value::setNumber(QString s)
 {
+	type = numberType;
 	bool ok = true;
 	double d = s.toDouble(&ok);
 	if (ok)
@@ -135,12 +138,14 @@ QString Value::String() const
 
 void Value::setString(double d)
 {
+	type = stringType;
 	m_double = d;
 	m_string.setNum(d);
 }
 
 void Value::setString(QString s)
 {
+	type = stringType;
 	m_string = s;
 }
 
@@ -152,23 +157,21 @@ Value& Value::operator=(const Value& n)
 	{
 		if (type == n.type)
 		{
+			type = n.Type();
 			m_bool = n.Bool();
 			m_double = n.Number();
 			m_string = n.String();
 		}
 		else if (n.Type() == boolType)
 		{
-			setType(boolType);
 			setBool( n.Bool() );
 		}
 		else if (n.Type() == numberType)
 		{
-			setType(numberType);
 			setNumber( n.Number() );
 		}
 		else if (n.Type() == stringType)
 		{
-			setType(stringType);
 			setString( n.String() );
 		}
 	}
@@ -178,14 +181,12 @@ Value& Value::operator=(const Value& n)
 
 Value& Value::operator=(const QString& s)
 {
-	setType(stringType);
 	setString(s);
 	return *this;
 }
 
 Value& Value::operator=(double n)
 {
-	setType(numberType);
 	setNumber(n);
 	return *this;
 }
@@ -309,6 +310,7 @@ bool Value::operator>=(const Value& n) const
 
 void Value::init()
 {
+	type = numberType; // init'ed values are numbers by default
 	m_bool = false;
 	m_double = 0;
 	m_string = "";

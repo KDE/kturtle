@@ -20,7 +20,7 @@ WISHes
 
 My [cies] TODO list (in this order!):
 - the connection with the manual should be fixed (might need a change in kdelibs)
-- bug, wishes, linenumbering, errmsgs concering the interpreter maybe even a redesign [it does quite well now]
+- bug, wishes, errmsgs-fixes concering the interpreter
 - spice up the errormessage window with my great ideas
 
 
@@ -33,7 +33,7 @@ My [cies] TODO list (in this order!):
 		print "Hello"
 	]
 should print Hello, but doesn't. Just a < 5 works correctly, and the same for just b == 5.
------------> i layed the groundwork to fix this when i refactored the interpreter, main problem: and or and not have never been fully implemented
+-----------> i layed the groundwork to fix this when i refactored the interpreter, main problem: and, or & not have never been fully implemented
 
 
 learn multiplyBySelf n
@@ -72,11 +72,11 @@ Need to work eventually:
 - 'speed' will come later -- me has to focus and concentrate
 
 would be nice (not in yet):
-- ask (print ask 3>0) <.4999 -> "false",  >.5000 -> "true"  >>>>  frameworke made for this!!
 - message, just a dialog with sone user defined text
+- and a dialog that return a bool (YesNoDlg)
 - more expressers: isString, isNumber, isRound
 - round()
-- true and fasle as cunfiguarables
+- true and fasle as cunfiguarables  ---> in highlightstyle as Fat/grey
 
 - <joke> and what about a 'goto' command ( you can never make them mistakes young enough, muahoahoaaaa >:-} ) </joke> well?
 

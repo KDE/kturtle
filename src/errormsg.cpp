@@ -73,7 +73,7 @@ void ErrorMessage::slotAddError(Token& t, QString s, uint c)
 	err.msg = s;
 	errList.append(err);
 	
-// 	Token currentToken = err.tok; kdDebug(0)<<"ErrorMessage::slotAddError, got token: '"<<currentToken.look<<"', @ ("<<currentToken.start.row<<", "<<currentToken.start.col<<") - ("<<currentToken.end.row<<", "<<currentToken.end.col<<"), tok-number:"<<currentToken.type<<endl;
+	Token currentToken = err.tok; kdDebug(0)<<"ErrorMessage::slotAddError: >> "<<err.msg<<" <<, token: '"<<currentToken.look<<"', @ ("<<currentToken.start.row<<", "<<currentToken.start.col<<") - ("<<currentToken.end.row<<", "<<currentToken.end.col<<"), tok-number:"<<currentToken.type<<endl;
 	
 	errTable->insertRows(0);
 	errTable->setText( 0, 0, QString::number(errCount) ); // put the count in a hidden field for reference

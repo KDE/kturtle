@@ -368,6 +368,25 @@ void Executer::execFor(TreeNode* node)
 
 
 
+void Executer::execRepeat(TreeNode* node)
+{
+	TreeNode* value = node->firstChild();
+	TreeNode* statements = node->secondChild();
+	
+	bBreak=false;
+	execute( value );
+	for ( int i = ROUND2INT( value->getValue().Number() ); i > 0; i-- )
+	{
+		if (bAbort) return;
+		kapp->processEvents();
+		
+		execute( statements );
+		if (bBreak || bReturn) break; //jump out loop
+	}
+	bBreak = false;
+}
+
+
 void Executer::execWhile(TreeNode* node)
 {
 	TreeNode* condition = node->firstChild();
@@ -442,115 +461,103 @@ Value Executer::exec2getValue(TreeNode* node)
         
 void Executer::execAdd(TreeNode* node)
 {
-	// if one of the values to be summed is not a constant they should be concatenated
-	if (node->firstChild()->getType() == constantNode && node->secondChild()->getType() == constantNode)
-	{
-		node->setValue( exec2getValue( node->firstChild() )
-		                +
-		                exec2getValue( node->secondChild() )
-		              );
-	}
-	else
-	{
-		node->setValue( exec2getValue( node->firstChild() ).String().append( exec2getValue( node->secondChild() ).String() ) );
-		node->setType(stringConstantNode);
-	}
+	Value left( exec2getValue( node->firstChild() ) );
+	Value right( exec2getValue( node->secondChild() ) );
+	
+	if (left.Type() == numberType && right.Type() == numberType)
+		node->setValue( left + right );
+	
+	else node->setValue( left.String().append( right.String() ) );
 }
 
        
 void Executer::execMul(TreeNode* node)
 {
-	if (node->firstChild()->getType() == stringConstantNode ||
-	    node->secondChild()->getType() == stringConstantNode)
-	{
-		emit ErrorMsg(node->getToken(), i18n("Cannot multiply strings"), 9000);
-		return;
-	}
-	node->setValue( exec2getValue( node->firstChild() )
-	                *
-	                exec2getValue( node->secondChild() )
-	              );
+	Value left( exec2getValue( node->firstChild() ) );
+	Value right( exec2getValue( node->secondChild() ) );
+	
+	if (left.Type() == numberType && right.Type() == numberType)
+		node->setValue( left * right );
+	
+	else emit ErrorMsg(node->getToken(), i18n("Can only multiply numbers."), 9000);
 }
 
        
 void Executer::execDiv(TreeNode* node)
 {
-	if (node->firstChild()->getType() == stringConstantNode ||
-	    node->secondChild()->getType() == stringConstantNode)
+	Value left( exec2getValue( node->firstChild() ) );
+	Value right( exec2getValue( node->secondChild() ) );
+	
+	if (left.Type() == numberType && right.Type() == numberType)
 	{
-		emit ErrorMsg(node->getToken(), i18n("Cannot divide strings"), 9000);
-		return;
+		if (right.Number() == 0) emit ErrorMsg(node->getToken(), i18n("Cannot devide by zero."), 9000);
+		else node->setValue( left / right );
 	}
-	node->setValue( exec2getValue( node->firstChild() )
-	                /
-	                exec2getValue( node->secondChild() ) 
-	              );
+	else emit ErrorMsg(node->getToken(), i18n("Can only devide numbers."), 9000);
 }
 
        
 void Executer::execSub(TreeNode* node)
 {
-	if (node->firstChild()->getType() == stringConstantNode ||
-	    node->secondChild()->getType() == stringConstantNode)
-	{
-		emit ErrorMsg(node->getToken(), i18n("Cannot subtract strings"), 9000);
-		return;
-	}
-	node->setValue( exec2getValue( node->firstChild() ) 
-	                - 
-	                exec2getValue( node->secondChild() )
-	              );
+	Value left( exec2getValue( node->firstChild() ) );
+	Value right( exec2getValue( node->secondChild() ) );
+	
+	if (left.Type() == numberType && right.Type() == numberType)
+		node->setValue( left - right );
+	
+	else emit ErrorMsg(node->getToken(), i18n("Can only substract numbers."), 9000);
 }
+
 
        
 void Executer::execLT(TreeNode* node)
 {
-	node->setValue( (double) ( exec2getValue( node->firstChild() )
-	                           <
-	                           exec2getValue( node->secondChild() ) )
-	              );
+	Value left( exec2getValue( node->firstChild() ) );
+	Value right( exec2getValue( node->secondChild() ) );
+	
+	node->setValue( left < right );
 }
 
 void Executer::execLE(TreeNode* node)
 {
-	node->setValue( (double) ( exec2getValue( node->firstChild() )
-	                           <=
-	                           exec2getValue( node->secondChild() ) )
-	              );
+	Value left( exec2getValue( node->firstChild() ) );
+	Value right( exec2getValue( node->secondChild() ) );
+	
+	node->setValue( left <= right );
 }
 
 void Executer::execGT(TreeNode* node)
 {
-	node->setValue( (double) ( exec2getValue( node->firstChild() )
-	                           >
-	                           exec2getValue( node->secondChild() ) )
-	              );
+	Value left( exec2getValue( node->firstChild() ) );
+	Value right( exec2getValue( node->secondChild() ) );
+	
+	node->setValue( left > right );
 }
 
 void Executer::execGE(TreeNode* node)
 {
-	node->setValue( (double) ( exec2getValue( node->firstChild() )
-	                           >=
-	                           exec2getValue( node->secondChild() ) )
-	              );
+	Value left( exec2getValue( node->firstChild() ) );
+	Value right( exec2getValue( node->secondChild() ) );
+	
+	node->setValue( left >= right );
 }
 
 
 void Executer::execEQ(TreeNode* node)
 {
-	node->setValue( (double) ( exec2getValue( node->firstChild() )
-	                           ==
-	                           exec2getValue( node->secondChild() ) )
-	              );
+	Value left( exec2getValue( node->firstChild() ) );
+	Value right( exec2getValue( node->secondChild() ) );
+	
+	node->setValue( left == right );
 }
 
 
 void Executer::execNE(TreeNode* node)
 {
-	node->setValue( (double) ( exec2getValue( node->firstChild() )
-	                           !=
-	                           exec2getValue( node->secondChild() ) )
-	              );
+	Value left( exec2getValue( node->firstChild() ) );
+	Value right( exec2getValue( node->secondChild() ) );
+	
+	node->setValue( left != right );
 }
 
 
@@ -567,19 +574,19 @@ void Executer::execOr(TreeNode* node)
 {
 	bool nl = exec2getValue( node->firstChild() ).Number() != 0;
 	bool nr = exec2getValue( node->secondChild() ).Number() != 0;
-	node->setValue( (double) (nl || nr) );
+	node->setValue(nl || nr);
 }
 
 
 void Executer::execNot(TreeNode* node)
 {
-	node->setValue(1 - exec2getValue( node->firstChild() ).Number() ); 
+	node->setValue( exec2getValue( node->firstChild() ).Number() != 0 ); 
 }
 
 
 void Executer::execMinus(TreeNode* node)
 {
-	node->setValue(-exec2getValue( node->firstChild() ).Number() ); 
+	node->setValue( -exec2getValue( node->firstChild() ).Number() ); 
 }
 
 
@@ -610,326 +617,310 @@ void Executer::execRun(TreeNode* node)
 }
 
 
+
+
 void Executer::execClear(TreeNode* node)
 {
-	// check if number of parameters match, or else...
-	if (node->size() != 0)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 accepts no parameters.").arg( node->getLook() ), 5040);
-		return;
-	}
-	emit Clear();
-}
-
-void Executer::execGo(TreeNode* node)
-{
-	// check if number of parameters match, or else...
-	if (node->size() != 2)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 5050);
-		return;
-	}
-	TreeNode* nodeX = node->firstChild(); // getting
-	TreeNode* nodeY = node->secondChild();
-	execute(nodeX); // executing
-	execute(nodeY);
-	int x = ROUND2INT( nodeX->getValue().Number() ); // converting & rounding to int
-	int y = ROUND2INT( nodeY->getValue().Number() );
-	emit Go(x, y);
-}
-
-void Executer::execGoX(TreeNode* node)
-{
-	// check if number of parameters match, or else...
-	if (node->size() != 1)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 5060);
-		return;
-	}
-	TreeNode* nodeX = node->firstChild(); // getting
-	execute(nodeX); // executing
-	int x = ROUND2INT( nodeX->getValue().Number() ); // converting & rounding to int
-	emit GoX(x);
-}
-
-void Executer::execGoY(TreeNode* node)
-{
-	// check if number of parameters match, or else...
-	if (node->size() != 1)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 5070);
-		return;
-	}
-	TreeNode* nodeY = node->firstChild(); // getting
-	execute(nodeY); // executing
-	int y = ROUND2INT( nodeY->getValue().Number() ); // converting & rounding to int
-	emit GoY(y);
-}
-
-void Executer::execForward(TreeNode* node)
-{
-	// check if number of parameters match, or else...
-	if (node->size() != 1)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 5080);
-		return;
-	}
-	TreeNode* nodeX = node->firstChild(); // getting
-	execute(nodeX); // executing
-	int x = ROUND2INT( nodeX->getValue().Number() ); // converting & rounding to int
-	emit Forward(x);
-}
-
-void Executer::execBackward(TreeNode* node)
-{
-	// check if number of parameters match, or else...
-	if (node->size() != 1)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 5090);
-		return;
-	}
-	TreeNode* nodeX = node->firstChild(); // getting
-	execute(nodeX); // executing
-	int x = ROUND2INT( nodeX->getValue().Number() ); // converting & rounding to int
-	emit Backward(x);
-}
-
-void Executer::execDirection(TreeNode* node)
-{
-	// check if number of parameters match, or else...
-	if (node->size() != 1)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 6000);
-		return;
-	}
-	TreeNode* nodeX = node->firstChild(); // getting
-	execute(nodeX); // executing
-	double x = (nodeX->getValue().Number() ); // converting to double
-	emit Direction(x);  // why the FUCK doesnt this work??
-}
-
-void Executer::execTurnLeft(TreeNode* node)
-{
-	// check if number of parameters match, or else...
-	if (node->size() != 1)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 6010);
-		return;
-	}
-	TreeNode* nodeX = node->firstChild(); // getting
-	execute(nodeX); // executing
-	double x = (nodeX->getValue().Number() ); // converting to double
-	emit TurnLeft(x);
-}
-
-void Executer::execTurnRight(TreeNode* node)
-{
-	// check if number of parameters match, or else...
-	if (node->size() != 1)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 6020);
-		return;
-	}
-	TreeNode* nodeX = node->firstChild(); // getting
-	execute(nodeX); // executing
-	double x = (nodeX->getValue().Number() ); // converting to double
-	emit TurnRight(x);
+	if ( checkParameterQuantity(node, 0, 5060) ) emit Clear();
 }
 
 void Executer::execCenter(TreeNode* node)
 {
-	// check if number of parameters match, or else...
-	if (node->size() != 0)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 accepts no parameters.").arg( node->getLook() ), 6030);
-		return;
-	}
-	emit Center();
-}
-
-void Executer::execSetPenWidth(TreeNode* node)
-{
-	// check if number of parameters match, or else...
-	if (node->size() != 1)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 6040);
-		return;
-	}
-	TreeNode* nodeX = node->firstChild(); // getting
-	execute(nodeX); // executing
-	int x = ROUND2INT( nodeX->getValue().Number() ); // converting & rounding to int
-	if (x < 1)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The parameter of %1 must be smaller than 1.").arg( node->getLook() ), 6050);
-		return;    
-	}
-	emit SetPenWidth(x);
+	if ( checkParameterQuantity(node, 0, 5060) ) emit Center();
 }
 
 void Executer::execPenUp(TreeNode* node)
 {
-	// check if number of parameters match, or else...
-	if (node->size() != 0)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 accepts no parameters.").arg( node->getLook() ), 6060);
-		return;
-	}
-	emit PenUp();
+	if ( checkParameterQuantity(node, 0, 5060) ) emit PenUp();
 }
 
 void Executer::execPenDown(TreeNode* node)
 {
-	// check if number of parameters match, or else...
-	if (node->size() != 0)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 accepts no parameters.").arg( node->getLook() ), 6070);
-		return;
-	}
-	emit PenDown();
-}
-
-void Executer::execSetFgColor(TreeNode* node)
-{
-	// check if number of parameters match, or else...
-	if (node->size() != 3)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 6080);
-		return;
-	}
-	TreeNode* nodeR = node->firstChild(); // getting
-	TreeNode* nodeG = node->secondChild();
-	TreeNode* nodeB = node->thirdChild();
-	execute(nodeR); // executing
-	execute(nodeG);
-	execute(nodeB);
-	int r = ROUND2INT( nodeR->getValue().Number() ); // converting & rounding to int
-	int g = ROUND2INT( nodeG->getValue().Number() );
-	int b = ROUND2INT( nodeB->getValue().Number() );
-	if ( ( r < 0 || g < 0 || b < 0 ) || ( r > 255 || g > 255 || b > 255 ) )
-	{
-		emit ErrorMsg(node->getToken(), i18n("The parameters of function %1 must be within range: 0 to 255.").arg( node->getLook() ), 6090);
-		return;
-	}
-	emit SetFgColor(r, g, b);
-}
-
-void Executer::execSetBgColor(TreeNode* node)
-{
-	// check if number of parameters match, or else...
-	if (node->size() != 3)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 7000);
-		return;
-	}
-	TreeNode* nodeR = node->firstChild(); // getting
-	TreeNode* nodeG = node->secondChild();
-	TreeNode* nodeB = node->thirdChild();
-	execute(nodeR); // executing
-	execute(nodeG);
-	execute(nodeB);
-	int r = ROUND2INT( nodeR->getValue().Number() ); // converting & rounding to int
-	int g = ROUND2INT( nodeG->getValue().Number() );
-	int b = ROUND2INT( nodeB->getValue().Number() );
-	if ( ( r < 0 || g < 0 || b < 0 ) || ( r > 255 || g > 255 || b > 255 ) )
-	{
-		emit ErrorMsg(node->getToken(), i18n("The parameters of function %1 must be within range: 0 to 255.").arg( node->getLook() ), 7010);
-		return;    
-	}
-	emit SetBgColor(r, g, b);
-}
-
-void Executer::execResizeCanvas(TreeNode* node)
-{
-	// check if number of parameters match, or else...
-	if (node->size() != 2)
-	{
-		QString funcname = node->getLook();
-		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 7020);
-		return;
-	}
-	TreeNode* nodeX = node->firstChild(); // getting
-	TreeNode* nodeY = node->secondChild();
-	execute(nodeX); // executing
-	execute(nodeY);
-	int x = ROUND2INT( nodeX->getValue().Number() ); // converting & rounding to int
-	int y = ROUND2INT( nodeY->getValue().Number() );
-	if ( ( x < 1 || y < 1 ) || ( x > 10000 || y > 10000 ) )
-	{
-		emit ErrorMsg(node->getToken(), i18n("The parameters of function %1 must be within range: 1 to 10000.").arg( node->getLook() ), 7030);
-		return;    
-	}
-	emit ResizeCanvas(x, y);
+	if ( checkParameterQuantity(node, 0, 5060) ) emit PenDown();
 }
 
 void Executer::execSpriteShow(TreeNode* node)
 {
-	// check if number of parameters match, or else...
-	if (node->size() != 0)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 accepts no parameters.").arg( node->getLook() ), 7040);
-		return;
-	}
-	emit SpriteShow();
+	if ( checkParameterQuantity(node, 0, 5060) ) emit SpriteShow();
 }
 
 void Executer::execSpriteHide(TreeNode* node)
 {
-	// check if number of parameters match, or else...
-	if (node->size() != 0)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 accepts no parameters.").arg( node->getLook() ), 7050);
-		return;
-	}
-	emit SpriteHide();
+	if ( checkParameterQuantity(node, 0, 5060) ) emit SpriteHide();
 }
 
 void Executer::execSpritePress(TreeNode* node)
 {
-	// check if number of parameters match, or else...
-	if (node->size() != 0)
+	if ( checkParameterQuantity(node, 0, 5060) ) emit SpritePress();
+}
+
+void Executer::execWrapOn(TreeNode* node)
+{
+	if ( checkParameterQuantity(node, 0, 5060) ) emit WrapOn();
+}
+
+void Executer::execWrapOff(TreeNode* node)
+{
+	if ( checkParameterQuantity(node, 0, 5060) ) emit WrapOff();
+}
+
+void Executer::execReset(TreeNode* node)
+{
+	if ( checkParameterQuantity(node, 0, 5060) ) emit Reset();
+}
+
+void Executer::execMessage(TreeNode* node)
+{
+	if ( checkParameterQuantity(node, 1, 5060) && checkParameterType(node, stringType, 5060) )
+		emit MessageDialog( node->firstChild()->getValue().String() );
+}
+
+
+
+
+
+
+void Executer::execGoX(TreeNode* node)
+{
+	if ( !checkParameterQuantity(node, 1, 5060) ) return;
+	TreeNode* param1 = node->firstChild();
+	execute(param1);
+	if ( checkParameterType(node, numberType, 5060) )
 	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 accepts no parameters.").arg( node->getLook() ), 7060);
-		return;
+		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
+		emit GoX(x);
 	}
-	emit SpritePress();
+}
+
+void Executer::execGoY(TreeNode* node)
+{
+	if ( !checkParameterQuantity(node, 1, 5060) ) return;
+	TreeNode* param1 = node->firstChild();
+	execute(param1);
+	if ( checkParameterType(node, numberType, 5060) )
+	{
+		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
+		emit GoY(x);
+	}
+}
+
+void Executer::execForward(TreeNode* node)
+{
+	if ( !checkParameterQuantity(node, 1, 5060) ) return;
+	TreeNode* param1 = node->firstChild();
+	execute(param1);
+	if ( checkParameterType(node, numberType, 5060) )
+	{
+		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
+		emit Forward(x);
+	}
+}
+
+void Executer::execBackward(TreeNode* node)
+{
+	if ( !checkParameterQuantity(node, 1, 5060) ) return;
+	TreeNode* param1 = node->firstChild();
+	execute(param1);
+	if ( checkParameterType(node, numberType, 5060) )
+	{
+		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
+		emit Backward(x);
+	}
+}
+
+void Executer::execDirection(TreeNode* node)
+{
+	if ( !checkParameterQuantity(node, 1, 5060) ) return;
+	TreeNode* param1 = node->firstChild();
+	execute(param1);
+	if ( checkParameterType(node, numberType, 5060) )
+	{
+		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
+		emit Direction(x);
+	}
+}
+
+void Executer::execTurnLeft(TreeNode* node)
+{
+	if ( !checkParameterQuantity(node, 1, 5060) ) return;
+	TreeNode* param1 = node->firstChild();
+	execute(param1);
+	if ( checkParameterType(node, numberType, 5060) )
+	{
+		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
+		emit TurnLeft(x);
+	}
+}
+
+void Executer::execTurnRight(TreeNode* node)
+{
+	if ( !checkParameterQuantity(node, 1, 5060) ) return;
+	TreeNode* param1 = node->firstChild();
+	execute(param1);
+	if ( checkParameterType(node, numberType, 5060) )
+	{
+		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
+		emit TurnRight(x);
+	}
+}
+
+void Executer::execSetPenWidth(TreeNode* node)
+{
+	if ( !checkParameterQuantity(node, 1, 5060) ) return;
+	TreeNode* param1 = node->firstChild();
+	execute(param1);
+	if ( checkParameterType(node, numberType, 5060) )
+	{
+		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
+		if (x < 1)
+			emit ErrorMsg(node->getToken(), i18n("The penwidth cannot be set to something smaller than 1."), 6050);
+		else
+			emit SetPenWidth(x);
+	}
 }
 
 void Executer::execSpriteChange(TreeNode* node)
 {
-	// check if number of parameters match, or else...
-	if( node->size() != 1 )
+	if ( !checkParameterQuantity(node, 1, 5060) ) return;
+	TreeNode* param1 = node->firstChild();
+	execute(param1);
+	if ( checkParameterType(node, numberType, 5060) )
 	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 7070);
-		return;
+		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
+		emit SpriteChange(x);
 	}
-	TreeNode* nodeX = node->firstChild(); // getting
-	execute(nodeX); // executing
-	int x = (int)(nodeX->getValue().Number() ); // converting & rounding to int
-	emit SpriteChange(x);
 }
 
-
-
-void Executer::execMessage(TreeNode* node)
+void Executer::execFontSize(TreeNode* node)
 {
-	// check if number of parameters match, or else...
-	if (node->size() != 1)
+	if ( !checkParameterQuantity(node, 1, 5060) ) return;
+	TreeNode* param1 = node->firstChild();
+	execute(param1);
+	if ( checkParameterType(node, numberType, 5060) )
 	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 7070);
-		return;
+		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
+		if ( x < 0 || x > 350 )
+			emit ErrorMsg(node->getToken(), i18n("The parameters of function %1 must be within range: 0 to 350.").arg( node->getLook() ), 5065);
+		else
+			emit FontSize(x);
 	}
-	emit MessageDialog( node->firstChild()->getValue().String() );
 }
+
+
+
+
+
+
+void Executer::execGo(TreeNode* node)
+{
+	if ( !checkParameterQuantity(node, 2, 5060) ) return;	
+	TreeNode* nodeX = node->firstChild(); // getting
+	TreeNode* nodeY = node->secondChild();
+	execute(nodeX); // executing
+	execute(nodeY);
+	
+	if ( checkParameterType(node, numberType, 5060) )
+	{
+		int x = ROUND2INT( nodeX->getValue().Number() ); // converting & rounding to int
+		int y = ROUND2INT( nodeY->getValue().Number() );
+		emit Go(x, y);
+	}
+}
+
+void Executer::execResizeCanvas(TreeNode* node)
+{
+	if ( !checkParameterQuantity(node, 2, 5060) ) return;
+	TreeNode* nodeX = node->firstChild(); // getting
+	TreeNode* nodeY = node->secondChild();
+	execute(nodeX); // executing
+	execute(nodeY);
+	
+	if ( checkParameterType(node, numberType, 5060) )
+	{
+		int x = ROUND2INT( nodeX->getValue().Number() ); // converting & rounding to int
+		int y = ROUND2INT( nodeY->getValue().Number() );
+		if ( ( x < 1 || y < 1 ) || ( x > 10000 || y > 10000 ) )
+			emit ErrorMsg(node->getToken(), i18n("The parameters of the %1 command must be numbers in the range: 1 to 10000.").arg( node->getLook() ), 7030);
+		else
+			emit ResizeCanvas(x, y);
+	}
+}
+
+void Executer::execRandom(TreeNode* node)
+{
+	if ( !checkParameterQuantity(node, 2, 5060) ) return;
+	TreeNode* nodeX = node->firstChild(); // getting
+	TreeNode* nodeY = node->secondChild();
+	execute(nodeX); // executing
+	execute(nodeY);
+	
+	if ( !checkParameterType(node, numberType, 5060) ) return;
+	double x = nodeX->getValue().Number();
+	double y = nodeY->getValue().Number();
+	double r = (double)( KApplication::random() / RAND_MAX );
+	node->setValue( r * ( y - x ) + x );
+}
+
+
+
+
+
+void Executer::execSetFgColor(TreeNode* node)
+{
+	if ( !checkParameterQuantity(node, 3, 5060) ) return;
+	TreeNode* nodeR = node->firstChild(); // getting
+	TreeNode* nodeG = node->secondChild();
+	TreeNode* nodeB = node->thirdChild();
+	execute(nodeR); // executing
+	execute(nodeG);
+	execute(nodeB);
+	if ( checkParameterType(node, numberType, 5060) )
+	{
+		int r = ROUND2INT( nodeR->getValue().Number() ); // converting & rounding to int
+		int g = ROUND2INT( nodeG->getValue().Number() );
+		int b = ROUND2INT( nodeB->getValue().Number() );
+		if ( ( r < 0 || g < 0 || b < 0 ) || ( r > 255 || g > 255 || b > 255 ) )
+			emit ErrorMsg(node->getToken(), i18n("The parameters the %1 command must be numbers in the range: 0 to 255.").arg( node->getLook() ), 6090);
+		else
+			emit SetFgColor(r, g, b);
+	}
+}
+
+void Executer::execSetBgColor(TreeNode* node)
+{
+	if ( !checkParameterQuantity(node, 3, 5060) ) return;
+	TreeNode* nodeR = node->firstChild(); // getting
+	TreeNode* nodeG = node->secondChild();
+	TreeNode* nodeB = node->thirdChild();
+	execute(nodeR); // executing
+	execute(nodeG);
+	execute(nodeB);
+	if ( checkParameterType(node, numberType, 5060) )
+	{
+		int r = ROUND2INT( nodeR->getValue().Number() ); // converting & rounding to int
+		int g = ROUND2INT( nodeG->getValue().Number() );
+		int b = ROUND2INT( nodeB->getValue().Number() );
+		if ( ( r < 0 || g < 0 || b < 0 ) || ( r > 255 || g > 255 || b > 255 ) )
+			emit ErrorMsg(node->getToken(), i18n("The parameters the %1 command must be numbers in the range: 0 to 255.").arg( node->getLook() ), 6090);
+		else
+			emit SetBgColor(r, g, b);
+	}
+}
+
+
+
+
+
+
+
+
+
 
 
 void Executer::execInputWindow(TreeNode* node)
 {
-	// check if number of parameters match, or else...
-	if (node->size() != 1)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 7070);
-		return;
-	}
+	if ( !checkParameterQuantity(node, 1, 5060) ) return;
+
 	QString value = node->firstChild()->getValue().String();
 	emit InputDialog(value);
 	bool ok = true;
@@ -964,98 +955,26 @@ void Executer::execPrint(TreeNode* node)
 
 void Executer::execFontType(TreeNode* node)
 {
-	// check if number of parameters match, or else...
-	if (node->size() != 2 || node->size() != 1)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 7070);
-		return;
-	}
-	if (node->firstChild()->getType() == stringConstantNode ||
-	    node->secondChild()->getType() == stringConstantNode)
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 only accepts strings as parameters.").arg( node->getLook() ), 9000);
-		return;
-	}
+	// if not 2 params go staight to the checkParam, diplay the error, and return to prevent a crash
+	if ( !checkParameterQuantity(node, 2, 5060) && !checkParameterType(node, stringType, 5060) ) return;
+	
 	QString extra;
 	if (node->size() == 2)
 	{
 		QString extra = node->secondChild()->getValue().String();
 	}
 	QString family = node->firstChild()->getValue().String();
-	emit FontType(family, extra);
+	emit FontType(family);
 }
-
-void Executer::execFontSize(TreeNode* node)
-{
-	// check if number of parameters match, or else...
-	if( node->size() != 1 )
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 5060);
-		return;
-	}
-	TreeNode* nodeX = node->firstChild(); // getting
-	execute(nodeX); // executing
-	int px = ROUND2INT( nodeX->getValue().Number() ); // converting & rounding to int
-	if ( px < 0 || px > 350 )
-	{
-		emit ErrorMsg(node->getToken(), i18n("The parameters of function %1 must be within range: 0 to 350.").arg( node->getLook() ), 5065);
-		return;    
-	}
-	emit FontSize(px);
-}
-
-void Executer::execRepeat(TreeNode* node)
-{
-	TreeNode* value = node->firstChild();
-	TreeNode* statements = node->secondChild();
-	
-	bBreak=false;
-	execute( value );
-	for( int i = ROUND2INT( value->getValue().Number() ); i > 0; i-- )
-	{
-		if (bAbort) return;
-		kapp->processEvents();
-		
-		execute( statements );
-		if (bBreak || bReturn) break; //jump out loop
-	}
-	bBreak = false;
-}
-
-void Executer::execRandom(TreeNode* node)
-{
-	// check if number of parameters match, or else...
-	if( node->size() != 2 )
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 5050);
-		return;
-	}
-	TreeNode* nodeX = node->firstChild(); // getting
-	TreeNode* nodeY = node->secondChild();
-	execute(nodeX); // executing
-	execute(nodeY);
-	float x = nodeX->getValue().Number();
-	float y = nodeY->getValue().Number();
-	
-	float r = (float)( KApplication::random() ) / RAND_MAX;
-	Value value;
-	value = (double)( r * ( y - x ) ) + x;
-	node->setValue(value);
-	return;
-} 
 
 
 void Executer::execWait(TreeNode* node)
 {
-	// check if number of parameters match, or else...
-	if (node->size() != 1) 
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 was called with wrong number of parameters.").arg( node->getLook() ), 5090);
-		return;
-	}
-	TreeNode* nodeX = node->firstChild(); // getting
-	execute(nodeX); // executing
-	float sec = nodeX->getValue().Number();
+	if ( !checkParameterQuantity(node, 1, 5060) ) return;
+	TreeNode* param1 = node->firstChild();
+	execute(param1);
+	if ( !checkParameterType(node, numberType, 5060) ) return;
+	float sec = param1->getValue().Number();
 	startWaiting(sec);
 }
 
@@ -1080,38 +999,74 @@ void Executer::slotStopWaiting()
     bStopWaiting = true;
 }
 
-void Executer::execWrapOn(TreeNode* node)
+
+
+bool Executer::checkParameterQuantity(TreeNode* node, uint quantity, int errorCode)
 {
-	// check if number of parameters match, or else...
-	if( node->size() != 0 )
+	if (quantity == 0)
 	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 accepts no parameters.").arg( node->getLook() ), 6060);
-		return;
+		if (node->size() == 0) return true; // thats easy!
+		emit ErrorMsg(node->getToken(), i18n("The %1 command accepts no parameters.").arg( node->getLook() ), errorCode);
+		return false;
 	}
-	emit WrapOn();
+	
+	uint nodeSize = node->size();
+	if (nodeSize != 0) // when all parameters are forgotten the parser puts a Unknown/tokEOL param, catch this:
+		if (node->firstChild()->getToken().type == tokEOL) nodeSize = 0;
+	
+	if (nodeSize != quantity)
+	{
+		if (nodeSize < quantity)
+		{
+			if (quantity == 1)
+				emit ErrorMsg(node->getToken(), i18n("The %1 command was called with %2 but needs %3 parameter.").arg( node->getLook() ).arg(nodeSize).arg(quantity), errorCode);
+			else
+				emit ErrorMsg(node->getToken(), i18n("The %1 command was called with %2 but needs %3 parameters.").arg( node->getLook() ).arg(nodeSize).arg(quantity), errorCode);
+		}
+		else
+		{
+			if (quantity == 1)
+				emit ErrorMsg(node->getToken(), i18n("The %1 command was called with %2 but only accepts %3 parameter.").arg( node->getLook() ).arg(nodeSize).arg(quantity), errorCode);
+			else
+				emit ErrorMsg(node->getToken(), i18n("The %1 command was called with %2 but only accepts %3 parameters.").arg( node->getLook() ).arg(nodeSize).arg(quantity), errorCode);
+		}
+		return false;
+	}
+	return true; // if all tests passed
 }
 
-void Executer::execWrapOff(TreeNode* node)
-{
-	// check if number of parameters match, or else...
-	if( node->size() != 0 )
-	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 accepts no parameters.").arg( node->getLook() ), 6060);
-		return;
-	}
-	emit WrapOff();
-}
 
-void Executer::execReset(TreeNode* node)
+bool Executer::checkParameterType(TreeNode* node, int valueType, int errorCode)
 {
-	// check if number of parameters match, or else...
-	if( node->size() != 0 )
+	uint quantity = node->size();
+	uint ii = 1;
+	TreeNode::iterator i = node->begin();
+	while ( i != node->end() && ii <= quantity )
 	{
-		emit ErrorMsg(node->getToken(), i18n("The function %1 accepts no parameters.").arg( node->getLook() ), 6060);
-		return;
+		if ( (*i)->getValue().Type() != valueType )
+		{
+			switch (valueType)
+			{
+				case stringType:
+					if (quantity == 1)
+						emit ErrorMsg(node->getToken(), i18n("The %1 command only accepts a string as parameter.").arg( node->getLook() ), errorCode); 
+					else
+						emit ErrorMsg(node->getToken(), i18n("The %1 command only accepts strings as parameters.").arg( node->getLook() ), errorCode);
+					break;
+				
+				case numberType:
+					if (quantity == 1)
+						emit ErrorMsg(node->getToken(), i18n("The %1 command only accepts a number as parameter.").arg( node->getLook() ), errorCode);
+					else
+						emit ErrorMsg(node->getToken(), i18n("The %1 command only accepts numbers as parameters.").arg( node->getLook() ), errorCode);
+					break;
+			}
+			return false;
+		}
+		++i;
+		ii++;
 	}
-	emit Reset();
+	return true; // if all tests passed
 }
-
 
 #include "executer.moc"

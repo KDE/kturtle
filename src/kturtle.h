@@ -115,6 +115,7 @@ class MainWindow : public KParts::MainWindow
 	void finishExecution();
 	Executer           *exe;
 	ErrorMessage       *errMsg;
+	QButton            *button;
 	bool                allreadyError;
 	bool                executing;
 	
@@ -198,6 +199,8 @@ class MainWindow : public KParts::MainWindow
 	void slotColorPicker();
 	///Turn Full Screen mode on or off
 	void slotToggleFullscreen();
+	void slotShowBackToFullScreenButton();
+	void slotBackToFullScreen();
 	void slotUpdateCanvas();
 
 	protected:
