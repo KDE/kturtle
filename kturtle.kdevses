@@ -1,29 +1,29 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <!DOCTYPE KDevPrjSession>
 <KDevPrjSession>
- <DocsAndViews NumberOfDocuments="7" >
+ <DocsAndViews NumberOfDocuments="9" >
   <Doc0 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/TODO" >
-   <View0 line="82" Type="???" >
+   <View0 line="0" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc0>
   <Doc1 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/kturtle.cpp" >
-   <View0 line="63" Type="???" >
+   <View0 line="0" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc1>
   <Doc2 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/kturtle.h" >
-   <View0 line="27" Type="???" >
+   <View0 line="0" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc2>
   <Doc3 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/lexer.h" >
-   <View0 line="16" Type="???" >
+   <View0 line="0" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc3>
   <Doc4 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/lexer.cpp" >
-   <View0 line="291" Type="???" >
+   <View0 line="0" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc4>
@@ -32,11 +32,21 @@
     <AdditionalSettings/>
    </View0>
   </Doc5>
-  <Doc6 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/data/logokeywords.en_US.xml" >
-   <View0 line="234" Type="???" >
+  <Doc6 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/data/highlightstyles/logohighlightstyle.en_US.xml" >
+   <View0 line="16" Type="???" >
     <AdditionalSettings/>
    </View0>
   </Doc6>
+  <Doc7 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/parser.cpp" >
+   <View0 line="157" Type="???" >
+    <AdditionalSettings/>
+   </View0>
+  </Doc7>
+  <Doc8 NumberOfViews="1" URL="file:/home/cies/kdenonbeta/kturtle/src/data/keywords/logokeywords.en_US.xml" >
+   <View0 line="95" Type="???" >
+    <AdditionalSettings/>
+   </View0>
+  </Doc8>
  </DocsAndViews>
  <pluginList>
   <kdevbookmarks>

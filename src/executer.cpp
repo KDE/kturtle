@@ -1,4 +1,7 @@
+#include <unistd.h>
 #include <string.h>
+
+#include <qtimer.h>
 
 #include <kapplication.h>
 #include <kdebug.h>
@@ -11,53 +14,42 @@ Executer::Executer(TreeNode* tree) {
   functionTable.clear();
   bBreak = false;
   bReturn = false;
-  m_pause = false;
 }
 
 Executer::~Executer() {
   emit Finished();
 }
 
-TreeNode::const_iterator Executer::startPoint() {
-  return tree->begin();
-}
-
-TreeNode::const_iterator Executer::endPoint() {
-  return tree->end();
-}
-
-void Executer::Pause() {
-  m_pause = true;
-}
-
-void Executer::unPause() {
-  m_pause = false;
-}
-
-TreeNode::const_iterator Executer::run(TreeNode::const_iterator it) {
+bool Executer::run() {
   bBreak = false;
   bReturn = false;
+  bAbort = false;
   symtable main;
   symbolTables.push( main ); //new symbol table for main block
 
   TreeNode::const_iterator i;
-  for( i = it /*node->begin()*/; i != tree->end(); ++i ){
-    if (m_pause) {
-      kdDebug(0)<<" --mainexec-- "<<endl;
-      return i;
-    }
+  for( i = tree->begin(); i != tree->end(); ++i ){
+    if (bAbort) { return false; }
+    kapp->processEvents();
     
     execute( *i );
   
     symbolTables.pop(); //free up stack
   }
-  return tree->end();
+  return true;
+}
+
+void Executer::abort() {
+  // The next line is within all loops of the Executer
+  //     if(bAbort) { return; }
+  // mostly next to
+  //     kapp->processEvents();
+  bAbort = true;
 }
 
 
-
-void Executer::execute(TreeNode* node){
-  switch( node->getType() ){
+void Executer::execute(TreeNode* node) {
+  switch( node->getType() ) {
     case blockNode          : execBlock( node );        break;
     case forNode            : execFor( node );          break;
     case forEachNode        : execForEach( node );      break;
@@ -150,8 +142,8 @@ void Executer::execFunction( TreeNode* node ) {
   string funcname = node->firstChild()->getName();
 
   //locate function node  
-  functable::iterator p=functionTable.find( funcname );
-  if( p==functionTable.end() ) {
+  functable::iterator p = functionTable.find( funcname );
+  if ( p == functionTable.end() ) {
     QString f = funcname.c_str();
     emit ErrorMsg( i18n("Call to undefined function: %1.").arg(f), 0, 0, 5010);
     return;
@@ -162,7 +154,7 @@ void Executer::execFunction( TreeNode* node ) {
   TreeNode* callparams  = node->secondChild();
     
   //check if number of parameters match
-  if( callparams->size() != funcIds->size() ) {
+  if ( callparams->size() != funcIds->size() ) {
     QString f = funcname.c_str();
     emit ErrorMsg( i18n("Call to function '%1' with wrong number of parameters.").arg(f), 0, 0, 5020);
     return;
@@ -170,10 +162,12 @@ void Executer::execFunction( TreeNode* node ) {
 
   //pass parameters to function
   //by adding them to it's symboltable and setting the values
-  TreeNode::iterator pfrom,pto=funcIds->begin();
+  TreeNode::iterator pfrom,pto = funcIds->begin();
   symtable funcSymTable;
   
-  for(pfrom=callparams->begin(); pfrom!=callparams->end(); ++pfrom ){
+  for (pfrom = callparams->begin(); pfrom != callparams->end(); ++pfrom ){
+    if (bAbort) { return; }
+    kapp->processEvents();
     
     //execute the parameters which can be expressions
     execute( *pfrom ); 
@@ -187,9 +181,9 @@ void Executer::execFunction( TreeNode* node ) {
   symbolTables.push(funcSymTable); //use new symboltable for current function
   
   //execute function statement block
-  bReturn=false; //set to true when return is called
+  bReturn = false; //set to true when return is called
   execute( funcnode->thirdChild() );
-  bReturn=false; //function execution done
+  bReturn = false; //function execution done
   
   symbolTables.pop(); //release function symboltable    
 }
@@ -199,7 +193,7 @@ void Executer::execFunction( TreeNode* node ) {
 //value from stack
 //first child   = function name
 //second child  = parameters
-void Executer::execRetFunction( TreeNode* node ){
+void Executer::execRetFunction( TreeNode* node ) {
   execFunction( node );
   if( runStack.size() == 0 ) {
     emit ErrorMsg( i18n("Function %1 did not return a value.").arg( node->getKey() ), 0, 0, 5030);
@@ -210,26 +204,25 @@ void Executer::execRetFunction( TreeNode* node ){
 }
 
 
-void Executer::execReturn( TreeNode* node ){
+void Executer::execReturn( TreeNode* node ) {
   execute( node->firstChild() ); //execute return expression
   runStack.push( node->firstChild()->getValue() );
-  bReturn=true; //notify blocks of return
+  bReturn = true; //notify blocks of return
 }
 
 
-void Executer::execBreak( TreeNode* node ){
-  bBreak=true; //stops loop block execution
+void Executer::execBreak( TreeNode* node ) {
+  bBreak = true; //stops loop block execution
 }
 
 
-void Executer::execBlock( TreeNode* node ){
+void Executer::execBlock( TreeNode* node ) {
   //execute all statements in block
   TreeNode::iterator i;
-  for( i=node->begin(); i!=node->end(); ++i ){
-    if (m_pause) {
-      kdDebug(0)<<" --blockexec-- "<<endl;
-      return;
-    }
+  for( i = node->begin(); i != node->end(); ++i ){
+    if (bAbort) { return; }
+    kapp->processEvents();
+    
     execute( *i );
 
     if( bReturn || bBreak){
@@ -240,9 +233,7 @@ void Executer::execBlock( TreeNode* node ){
 }
 
 
-
-
-void Executer::execForEach( TreeNode* node ){
+void Executer::execForEach( TreeNode* node ) {
   //cout<<"sorry dude not implemented yet"<<endl;
   TreeNode* id         = node->firstChild();
   TreeNode* expr       = node->secondChild();
@@ -256,16 +247,18 @@ void Executer::execForEach( TreeNode* node ){
   string expStr = expr->getValue().strVal;
   string sepStr = seperator->getValue().strVal;
   
-  bBreak=false;
+  bBreak = false;
   string::size_type pos;
-  while( expStr.size() > 0 ){
-    pos=expStr.find(sepStr);
+  while( expStr.size() > 0 ) {
+    if (bAbort) { return; }
+    kapp->processEvents();
+    
+    pos = expStr.find(sepStr);
 
-    if( pos == string::npos ){ //no seperator found
-      (symbolTables.top())[idName] = expStr; //entire string
+    if( pos == string::npos ) { //no seperator found
+      ( symbolTables.top() )[idName] = expStr; //entire string
       expStr="";
-    }
-    else{
+    } else {
       ( symbolTables.top() )[idName] = expStr.substr(0,pos);
       expStr.erase( 0, pos + sepStr.size() );
     }
@@ -273,19 +266,18 @@ void Executer::execForEach( TreeNode* node ){
     execute( statements );
     if( bBreak || bReturn ) break; //jump out loop;
   }
-  bBreak=false;
-  
+  bBreak = false;
 }
 
 
 
-void Executer::execFor( TreeNode* node ){
-  TreeNode* id=node->firstChild();
-  TreeNode* startNode=node->secondChild();
-  TreeNode* stopNode=node->thirdChild();
-  TreeNode* statements=node->fourthChild();
+void Executer::execFor( TreeNode* node ) {
+  TreeNode* id = node->firstChild();
+  TreeNode* startNode = node->secondChild();
+  TreeNode* stopNode = node->thirdChild();
+  TreeNode* statements = node->fourthChild();
   
-  string name=id->getName();
+  string name = id->getName();
 
   execute(startNode);
   //assign startval to id
@@ -299,6 +291,8 @@ void Executer::execFor( TreeNode* node ){
   if(node->size() == 4 ){ //for loop without step part
     bBreak=false;
     for( double d = startVal.val; d <= stopVal.val; d = d + 1 ) {
+      if (bAbort) { return; }
+      kapp->processEvents();
       (symbolTables.top() )[name] = d;
       execute( statements );
       if( bBreak || bReturn ) break; //jump out loop
@@ -313,12 +307,18 @@ void Executer::execFor( TreeNode* node ){
     bBreak=false;
     if( (stepVal.val >= 0.0) && (startVal.val <= stopVal.val) ) {
       for( double d = startVal.val; d <= stopVal.val; d = d + stepVal.val ) {
+        if (bAbort) { return; }
+        kapp->processEvents();
+        
         (symbolTables.top() )[name] = d;
         execute( statements );
         if( bBreak || bReturn ) break; //jump out loop
       }
     } else if( (stepVal.val < 0.0) && (startVal.val >= stopVal.val) ) {
       for( double d = startVal.val; d >= stopVal.val; d = d + stepVal.val ) {
+        if (bAbort) { return; }
+        kapp->processEvents();
+        
         (symbolTables.top() )[name] = d;
         execute( statements );
         if( bBreak || bReturn ) break; //jump out loop
@@ -331,48 +331,43 @@ void Executer::execFor( TreeNode* node ){
 
 
 
-void Executer::execWhile( TreeNode* node ){
-
+void Executer::execWhile( TreeNode* node ) {
   TreeNode* condition = node->firstChild();
   TreeNode* statements = node->secondChild();
 
-  bBreak=false;
+  bBreak = false;
   execute( condition );
-  while( condition->getValue().val != 0 ){
+  while( condition->getValue().val != 0 ) {
+    if (bAbort) { return; }
+    kapp->processEvents();
+    
     execute( statements );
     //if( bBreak || bReturn ) break; //jump out loop
     execute( condition );
   }
-  bBreak=false;
+  bBreak = false;
 }
 
      
-void Executer::execIf( TreeNode* node ){
-
+void Executer::execIf( TreeNode* node ) {
   TreeNode* condition = node->firstChild();
   TreeNode* ifblok = node->secondChild();
 
   //determine if there is an else part
   if( node->size() == 2 ){ //no else
-    
     execute( condition );
     if( condition->getValue().val != 0 ){
       execute( ifblok );
     }   
- 
-  }
-  else{ //else part given
+  } else { //else part given
     TreeNode* elseblok = node->thirdChild();
     execute( condition );
     if( condition->getValue().val != 0 ){
       execute( ifblok );
-    }
-    else{
+    } else {
       execute( elseblok );
     }
-
   }
-
 }
 
 
@@ -532,12 +527,17 @@ void Executer::execMinus( TreeNode* node ){
 string Executer::runCommand( const string& command ){
   FILE *pstream;
   
-  if(  ( pstream = popen( command.c_str(), "r" ) ) == NULL ) return "";
+  if ( ( pstream = popen( command.c_str(), "r" ) ) == NULL ) {
+    return "";
+  }
   
   string Line;
   char buf[100];
   
-  while( fgets(buf, sizeof(buf), pstream) !=NULL){
+  while( fgets(buf, sizeof(buf), pstream) !=NULL) {
+    if (bAbort) { return ""; }
+    kapp->processEvents();
+    
     Line += buf;
   }
   pclose(pstream);
@@ -556,12 +556,10 @@ void Executer::execWrite( TreeNode* node ){   // DEPRICATED COMMAND!!
   ofstream out(fileName.c_str());
   if(out.is_open()){
     out<<getVal( node->secondChild() );
-  }
-  else{
+  } else {
     cerr<<"could not open file :"<<fileName<<" for writing"<<endl;
   }
   out.close();
-  
 }
 
 void Executer::execSubstr( TreeNode* node ) {   // DEPRICATED COMMAND!!
@@ -569,22 +567,16 @@ void Executer::execSubstr( TreeNode* node ) {   // DEPRICATED COMMAND!!
   int from    = (int) getVal( node->secondChild() ).val-1;
   int to      = (int) getVal( node->thirdChild() ).val;
   
-  
   string val  = (symbolTables.top())[id].strVal;
   
   if( ( from < to ) && ( from >= 0 ) && ( to < (int)val.size() ) ) {
     node->setValue( val.substr( from, to-from ) );
-  }
-  else{
+  } else {
     cerr<<"Substring from, to arguments run out of string boundaries or from pos is not less than to."<<endl;
     node->setValue( "" );
   }
 }
 
-
-//
-//     Signal emmitting commands
-//
 
 void Executer::execClear( TreeNode* node ) {
     // check if number of parameters match, or else...
@@ -908,7 +900,10 @@ void Executer::execRepeat( TreeNode* node ) {
 
   bBreak=false;
   execute( value );
-  for( int i = (int)value->getValue().val + 0.5; i > 0; i-- ){
+  for( int i = (int)value->getValue().val + 0.5; i > 0; i-- ) {
+    if (bAbort) { return; }
+    kapp->processEvents();
+    
     execute( statements );
     //if( bBreak || bReturn ) break; //jump out loop
   }
@@ -949,9 +944,21 @@ void Executer::execWait( TreeNode* node ) {
 }
 
 void Executer::startWaiting(float sec) {
-    Pause();
+    bStopWaiting = false;
     int msec = (int)( sec * 1000 ); // convert
-    emit setPauseTimer(msec);
+    // call a timer that sets stopWaiting to true when it runs 
+    QTimer::singleShot( msec, this, SLOT( slotStopWaiting() ) );
+    while (bStopWaiting == false) {
+        if (bAbort) { return; }
+        kapp->processEvents();
+
+        // only 10 times per second is enough... else the CPU gets 100% loaded ( not nice :)
+        usleep(100000);
+    }
+}
+
+void Executer::slotStopWaiting() {
+    bStopWaiting = true;
 }
 
 void Executer::execWrapOn( TreeNode* node ) {

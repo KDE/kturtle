@@ -33,15 +33,10 @@ class Executer : public QObject
     Executer(TreeNode*);
     virtual ~Executer();
 
-    TreeNode::const_iterator startPoint();
-    TreeNode::const_iterator endPoint();
-    TreeNode::const_iterator run(TreeNode::const_iterator it);
-    void Pause();
-    void unPause();
-    
+    bool run();
+    void abort();
 
   signals:
-    void setPauseTimer(int msec);
     void ErrorMsg(QString s, int row, int col, int code = 2000);
     void Finished();
   
@@ -159,11 +154,15 @@ class Executer : public QObject
     functable       functionTable;  //keep track of functionNode's
     runstack        runStack;       //stores parameters and return value of functions
     
-    bool bReturn;  //used for return statements
-    bool bBreak;   //used for break statement
-    bool m_pause;
+    bool bReturn;       // used for return statements
+    bool bBreak;        // used for break statement
+    bool bAbort;        // used to abort execution
+    bool bStopWaiting;  // used for wait-command
     
     void startWaiting(float sec);
+    
+  private slots:
+    void slotStopWaiting();
 };
 
 #endif // _EXECUTER_H_

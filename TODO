@@ -9,15 +9,10 @@ DONE - the caption of the window does not display the title of the saved file af
 
 **** URGENT ****
 
-cies: Next time the first things i'll do is finish off what lypanov started:
-- fixing 'wait' command using lypanovs paradigm
-- and fallbacks to the main eventloop (using pause/unpause's) so KTurtle wont be locked up during execution
-- implement the ability to stop execution!
-Sorry, cauze somthings dont work/work weird in the mean time :-)
-// somehow i dont seem to understand the TreeNode::const_iterator i vs. it vs various node-pointers yet
-// difficult matter :)
---> just dont use the wait funk and you should not notice any weird things (if you do tell me!)
->>>>>>>>>>>> mail sent to lypanov opening a discussion on his 'hack' which seems 2b a dead end
+
+After a conversiation with lypanov I came to the conclusion that making the executer 'statefull' is a very by thing! So I take the cheap approach using kapp->processEvents();... Maybe someday, later, I'll do it neatly -- the lypanov pointed out.
+
+
 
 
 06 Jan. 2004 - annma: the KConfig XT stuff is done. Please note that locate("data", "kturtle/data/logokeywords.en_US.xml") being the default xml file, it does not appear in the config file. If there is nothing in the config file in TranslationFilePath, then this file is always taken.
@@ -38,6 +33,10 @@ happends when make'ing KTurtle form cvs one should change the first line of conf
 into:
   #MIN_CONFIG(3.2)
 that will fix it :-)
+
+
+
+
 
 **** BIG-TODOs: ****
 
@@ -64,18 +63,21 @@ I *love* to see so much free funktionality in kturtle!
 
 cies: Make the interpreter (stolen from wsbasic.sf.net) (executer, parser, lexer, number and treenode) more native Qt.
 Right now they are a mixture of standard-CLI-C++ and Qt thingies (i put the Qt thingies there). I tried to do that but i found that i'm not comfortable with the concept of streams -- which are used a lot in the interpreter. Especially streaming QString was an obstacle i couldnt take.
->>>>> after this is done we can also make the ()[],.""-confgurable
+>>>>> after this is done we can also make the ()[],.""-configurable
+
 
 
 cies: The manual...
 Au! That is a big one, lets first decide on the chapter structure. See the "StillSubjectToDiscussions" below...
+>>>>> i want to use color (the same a the highlighing scheme) in the docu... i have to find out if that is possible
+I'm still weighting docbook with pain HTML... since the whole KHelpCenter in a bloated beast.
 
 
 
 cies: Make good error messages with links to corresponing help pages.
 - Make an error message class that inherates some dialog thing (it should have: help-link-button, details, short error title and origion (Parse error), 'the-row-of-error', and a small description (maybe the description should contain links to help pagen on certain commands/ methods/ etc.) and maybe even a small hint or hint button
 - Refine the way error message get emitted, problems: Ugly-, short-, technical messages. Sometimes moere than one messages gets emmitted right now only the 1st msg is shown -- the 1st may not allways point to the 'core ot error'.
->>>>does anyone know a K-app that allready uses this F1-context-sensitive-help style?
+>>>>does anyone know a K-app that allready uses this F1-context-sensitive-help style? (no one yet)
 
 
 
@@ -105,6 +107,8 @@ cies:INS, ROW and COL in the statusbar would be nice
 
 
 Licence: provide a proper licence and have copyrights in all files
+
+
 
 cies: Printing.
 When the print aktion is called give the user a small-choise-kdialog: "print the code", "print the canvas" or "print both" (the last one is optional). Maybe a reference (in the manual) to ksnapshot will be nice.

@@ -60,7 +60,6 @@ class MainWindow : public KParts::MainWindow// public KMainWindow
     void slotUpdateCanvas();
     
     void slotErrorDialog(QString msg, int row = 0, int col = 0, int code = 0);
-    void slotPauseTimer(int msec);
     
   signals:
     void ResizeCanvas(int x, int y);
@@ -72,7 +71,8 @@ class MainWindow : public KParts::MainWindow// public KMainWindow
     void readConfig(KConfig *config);
     void writeConfig(KConfig *config);
     void startExecution();
-    void stopExecution();
+    void abortExecution();
+    void finishExecution();
     
     KTextEditor::View * editor;
     Canvas             *TurtleView;
@@ -123,7 +123,6 @@ class MainWindow : public KParts::MainWindow// public KMainWindow
     void setRunEnabled();
     void slotOpenEx();
     void loadFile(KURL url);
-    void slotUnPauseExecution();
 
   protected:
     virtual bool event(QEvent* e);
