@@ -136,6 +136,7 @@ void MainWindow::setupActions() {
     // (void)new KToggleAction(i18n("&Hide Editor"), 0, 0, this, SLOT(slotToggleHideEditor()),
    
     // setup settings actions
+    createStandardStatusBarAction();
     setStandardToolBarMenuEnabled(true);
     KStdAction::preferences( this, SLOT( slotSettings() ), ac );
     KStdAction::keyBindings( this, SLOT( slotConfigureKeys() ), ac );
@@ -529,7 +530,7 @@ void MainWindow::slotEditor() {
     a->activate();
 }
 void MainWindow::slotConfigureToolbars() {
-    // use the standard toolbar editor
+    // it seems to me that there is a much better way now
     saveMainWindowSettings( KGlobal::config(), autoSaveGroup() );
     KEditToolbar dlg(actionCollection());
     connect(&dlg, SIGNAL(newToolbarConfig()), this, SLOT(newToolbarConfig()));
