@@ -67,6 +67,7 @@
 #define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )
 
 const double PI = 3.14159265358979323846;
+const double DEG2RAD = 3.14159265358979323846/180;
 
 // END
 
@@ -177,35 +178,35 @@ void Canvas::slotGoY(double y)
 
 void Canvas::slotForward(double x)
 {
-	double posXnew = posX + ( x * cos(direction) );
-	double posYnew = posY - ( x * sin(direction) );
+	double posXnew = posX + ( x * sin(direction * DEG2RAD) );
+	double posYnew = posY - ( x * cos(direction * DEG2RAD) );
 	if (pen) lineShell(posX, posY, posXnew, posYnew);
 	slotGo(posXnew, posYnew);
 }
 
 void Canvas::slotBackward(double x)
 {
-	double posXnew = posX - ( x * cos(direction) );
-	double posYnew = posY + ( x * sin(direction) );
+	double posXnew = posX - ( x * sin(direction * DEG2RAD) );
+	double posYnew = posY + ( x * cos(direction * DEG2RAD) );
 	if (pen) lineShell(posX, posY, posXnew, posYnew);
 	slotGo(posXnew, posYnew);
 }
 
 void Canvas::slotDirection(double deg)
 {
-	direction = ( -deg + 90 ) * PI / 180;
+	direction = deg;
 	updateSpriteAngle();
 }
 
 void Canvas::slotTurnLeft(double deg)
 {
-	direction = direction + ( deg * PI / 180 );
+	direction = direction - deg;
 	updateSpriteAngle();
 }
 
 void Canvas::slotTurnRight(double deg)
 {
-	direction = direction - ( deg * PI / 180 );
+	direction = direction + deg;
 	updateSpriteAngle();
 }
 
@@ -345,7 +346,7 @@ void Canvas::initValues()
 	penWidth = 0;
 	pen = true;
 	wrap = true;
-	direction = PI/2;
+	direction = 0;
 	font = QFont("serif", 18);
 	// the position
 	posX = canvasWidth / 2;
@@ -624,13 +625,15 @@ void Canvas::updateSpritePos()
 void Canvas::updateSpriteAngle()
 {
 	// get the direction back on the 1st circle 
-	while (direction < 0 || direction >= 2*PI)
+	while (direction < 0 || direction >= 360)
 	{
-		if (direction >= 2*PI) direction = direction - 2*PI;
-		if (direction < 0)     direction = direction + 2*PI;
+		if (direction >= 360)  direction = direction - 360;
+		if (direction <  0)    direction = direction + 360;
 	}
 	// convert to degrees, fix the direction, divide by 10 (for picnr), and round
-	int i = ROUND2INT( ( (-direction * 180) / PI + 90) / 10 );
+	int i = (int) ( direction / 10 );
+	kdDebug(0)<<"########## direction = "<<direction<<";  int i = "<< i << endl;
+	// int i = (int) ( ( ( (-direction * 180) / PI ) / 10) + 0.000000001 );
 	sprite->setFrame(i);
 	updateSpritePos(); // pixmaps of different rotations have different sizes, so refresh
 }
