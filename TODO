@@ -7,7 +7,7 @@ cies: urgent issues are fixed
 
 
 annma: implement KConfigXT properly i.e. set the default xml file in the KConfig XT files plus clean the mess between TranslationFile and TranslationFilePath
-
+06 January 2003: the default xml file should be found properly at first start right now!
 
 **** BIG-TODOs: ****
 
@@ -149,6 +149,8 @@ I dont hav much experience with this (doc an KDE) but i seeing 3 documents 1) Qu
 Maybe 1 & 3 should be combined, what do you think?
 
 annma 30/12/2003 Quick Start might be a wizard run at first start and could be accessed later or the classical 'tips of the day' dialog. A tutorial is indeed needed, maybe within KTurtle, in the Settings menu. I can help with the writing.
+
+A graphical Quick Start wizard was suggested on IRC using flash animations.
 
 cies: I think the syntax of the language should first be more mature, it changes too much right now... This will settle down in a few moths i hope :-)
 For the settingsmenu: if you know a better string than 'initial canvas size' (iirc) feel free to... etc.
