@@ -218,6 +218,7 @@ void MainWindow::setupCanvas() {
 	BaseLayout->addWidget(TurtleView, 0, 0, AlignCenter);
 	QWhatsThis::add( TurtleView, i18n( "This is the canvas, here the turtle draws a picture." ) );
 	TurtleView->show();
+	connect( TurtleView, SIGNAL( CanvasResized() ), this, SLOT( slotUpdateCanvas() ) );
 }
 
 // END
@@ -987,5 +988,12 @@ void MainWindow::slotColorPicker() {
 	}
 }
 
+void MainWindow::slotUpdateCanvas() {
+	// fixes a non updateing bug
+	// I tried doing this by connecting Canvas's resized to BaseWidget's update...
+	// but i had no luck :(     this worked though
+	TurtleView->hide();
+	TurtleView->show();
+}
 
 #include "kturtle.moc"

@@ -195,6 +195,7 @@ class MainWindow : public KParts::MainWindow
 	void slotColorPicker();
 	///Turn Full Screen mode on or off
 	void slotToggleFullscreen();
+	void slotUpdateCanvas();
 
   protected:
     	virtual bool event(QEvent* e);
