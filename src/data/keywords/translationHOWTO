@@ -1,4 +1,4 @@
-How to translate the logo commands
+How to translate the logo keywords (commands)
 
 The commands files are located in kdeedu/kturtle/src/data/keywords/
 Each file is named
@@ -7,7 +7,7 @@ where code is the iso code for your country (note that this must be a valid iso 
 
 1) Copy the logokeywords.en_US.xml file by renaming it to logokeywords.code.xml where code is your country code (2 or 4 letters ISO code)
 
-2) Translate in your own language the content of the <keyword> tag i.e the information between <keyword> and </keyword> whenever it's possible and the conetnt of the <alias> tag, i.e the information between the <alias> and </alias>. These contents are related as the alias is a shortcut for the keyword.
+2) Translate in your own language the content of the <keyword> tag i.e the information between <keyword> and </keyword> whenever it's possible and the content of the <alias> tag, i.e the information between the <alias> and </alias>. These contents are related as the alias is a shortcut for the keyword.
 
 For example translate 'while' in: <keyword>while</keyword>.
 
