@@ -112,3 +112,5 @@ void ErrorMessage::updateSelection() {
 	enableButton (KDialogBase::User1, true);
 }
 
+
+#include "errormsg.moc"
