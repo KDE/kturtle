@@ -1,7 +1,10 @@
 #include <qdom.h>
 #include <qfile.h>
 
-#include "settings.h"
+#include <kapp.h>
+#include <kconfig.h>
+
+//#include "settings.h"
 #include "lexer.h"
 
 
@@ -83,7 +86,17 @@ int Lexer::getName(string& s) {
 void Lexer::getKeywords() {
     QDomDocument KeywordsXML;
     
-    QFile xmlfile( Settings::translationFilePath() ); // Read the specified translation file
+    KConfig *config = kapp->config();
+    
+    // if no translationfile is specified -> return
+    if ( config->readPathEntry("TranslationFile").isNull() ) {
+        return;
+    }    
+        
+    QFile xmlfile( config->readPathEntry("TranslationFile") ); // Read the specified translation file
+//     if ( xmlfile.exists() ) { // if no xmlfile is specified -> return
+//         return;
+//     }
     if ( !xmlfile.open(IO_ReadOnly) ) {
         return;
     }

@@ -533,7 +533,7 @@ void MainWindow::checkTranslationFile() {
     if ( !QFile( Settings::translationFilePath() ).exists() ) {
         kdDebug(0)<<"--1--"<<endl;
         if ( !locate("appdata", "data/logokeywords.en_US.xml").isNull() ) {
-            KConfig *config=kapp->config();
+            KConfig *config = kapp->config();
             config->setGroup("language");
             config->writeEntry("TranslationFile", locate("appdata", "data/logokeywords.en_US.xml") );
             config->sync(); // doesnt work
