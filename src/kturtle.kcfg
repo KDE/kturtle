@@ -13,7 +13,6 @@
   <group name="language"> 
     <entry name="TranslationFilePath" type="Path"> 
       <label>The location of the language xml file</label> 
-      <default code="true">locate("data","kturtle/data/logokeywords.en_US.xml")</default> 
     </entry> 
   </group> 
 </kcfg>

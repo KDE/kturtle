@@ -94,7 +94,8 @@ help (to the far right?)
 bookmarks: as a whole
 tools: only the indentation/commentation should stay imo. (and the picker comes here)
 
-
+Language: "Select the language of the commands" in the config, default to the desktop user (en if not en, nl or fr)
+Keep it in config (already via xml file)
 
 
 cies:INS, ROW and COL in the statusbar would be nice

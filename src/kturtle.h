@@ -138,6 +138,13 @@ class MainWindow : public KParts::MainWindow
     bool                allreadyError;
     bool                executing;
     
+    ///Language codes of available languages
+    QStringList m_languages;
+    ///the language used in KDE for the user
+    QString userLanguage;
+    ///the language that is set to default: either userLanguage or en_US  if userLanguage is not available
+    QString defaultLanguage;
+    
   private slots:
     void slotToggleFullscreen();
     void slotSettings();
