@@ -26,10 +26,10 @@
 #include "treenode.h"
 
 
-typedef map<QString,Number>    symtable;
+typedef map<QString,Value>    symtable;
 typedef map<QString,TreeNode*> functable;
 
-typedef stack<Number>          runstack;
+typedef stack<Value>          runstack;
 
 
 class Executer : public QObject
@@ -96,7 +96,7 @@ Q_OBJECT
 	void execReturn        (TreeNode*);
 	void execBreak         (/*TreeNode*/);
 
-	Number getVal          (TreeNode*);
+	Value getVal          (TreeNode*);
 	
 	void execAdd           (TreeNode*);
 	void execMul           (TreeNode*);

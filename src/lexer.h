@@ -24,9 +24,9 @@
 #include <qstring.h>
 #include <qtextstream.h>
 
-#include "number.h"
 #include "token.h"
 #include "translate.h"
+#include "value.h"
 
 class Lexer
 {
@@ -46,7 +46,7 @@ class Lexer
 	void skipComment();
 	void skipSpaces();
 	void setTokenType(token&);
-	int getNumber(Number&, QString&);
+	int getNumber(Value&, QString&);
 	int getWord(QString&);
 	void getString(token&);
 

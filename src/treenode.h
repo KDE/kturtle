@@ -25,7 +25,7 @@
 #include <qstring.h>
 
 #include "lexer.h"
-#include "number.h"
+#include "value.h"
 
 
 using namespace std;  // i dont know if this is still needed
@@ -247,10 +247,10 @@ class TreeNode : public list<TreeNode*>
 	void      setLook(const QString& s)  { fTok.look = s; }
 	QString   getLook() const            { return fTok.look; }
 	
-	void      setValue(const Number& n)  { fTok.value = n; }
+	void      setValue(const Value& n)  { fTok.value = n; }
 	void      setValue(double d)         { fTok.value = d; }
 	void      setValue(const QString& s) { fTok.value = s; }
-	Number    getValue() const           { return fTok.value; }
+	Value    getValue() const           { return fTok.value; }
 	
 	uint      getRow() const             { return fTok.start.row; }
 	uint      getCol() const             { return fTok.start.col; }

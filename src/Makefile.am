@@ -16,13 +16,13 @@ KDE_ICON = kturtle
 bin_PROGRAMS = kturtle
 
 # the application source, library search path, and link libraries
-kturtle_SOURCES = main.cpp kturtle.cpp canvas.cpp number.cpp lexer.cpp parser.cpp executer.cpp treenode.cpp colorpicker.cpp errormsg.cpp token.cpp translate.cpp settings.kcfgc
+kturtle_SOURCES = main.cpp kturtle.cpp canvas.cpp value.cpp lexer.cpp parser.cpp executer.cpp treenode.cpp colorpicker.cpp errormsg.cpp token.cpp translate.cpp settings.kcfgc
 
 # let automoc handle all the meta source files (moc)
 kturtle_METASOURCES = AUTO
 
 # these are the headers for your project
-noinst_HEADERS = kturtle.h canvas.h number.h lexer.h parser.h executer.h treenode.h colorpicker.h errormsg.h token.h translate.h
+noinst_HEADERS = kturtle.h canvas.h value.h lexer.h parser.h executer.h treenode.h colorpicker.h errormsg.h token.h translate.h
 
 kde_kcfg_DATA = kturtle.kcfg 
 

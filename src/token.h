@@ -22,7 +22,7 @@
 
 #include <qstring.h>
 
-#include "number.h"
+#include "value.h"
 
 
 struct pos // convenience, it codes a bit nicer with this, i.e.: tok.start.row
@@ -35,7 +35,7 @@ struct token
 {
 	int      type;  // filled with enumed tokenTypes
 	QString  look;  // the way the token looks in the text editor
-	Number   value; // if the token is a number it can be stored here
+	Value   value; // if the token is a number it can be stored here
 	pos      start; // row'n'col of the starting/ending point of the token
 	pos      end;
 };

@@ -310,7 +310,7 @@ TreeNode* Parser::signedFactor()
 			node = Factor();
 			if(node->getType() == constantNode)
 			{
-				Number num = node->getValue();
+				Value num = node->getValue();
 				num.val = -num.val;
 				node->setValue(num);
 				return node;
@@ -329,7 +329,7 @@ TreeNode* Parser::signedFactor()
 			node = Factor();
 			if (node->getType() == constantNode)
 			{
-				Number num = node->getValue();
+				Value num = node->getValue();
 				num.val = 1 - num.val;
 				node->setValue(num);
 				return node;

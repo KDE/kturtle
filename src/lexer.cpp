@@ -250,9 +250,9 @@ void Lexer::ungetChar(QChar c)
 
 // PRIVATEs
 
-int Lexer::getNumber(Number& num, QString& look)
+int Lexer::getNumber(Value& num, QString& look)
 {
-	// by reference the value (Number) and look part are set
+	// by reference the value (Value) and look part are set
 	kdDebug(0)<<"Lexer::getNumber()"<<endl;
 	// QString s;
 	bool hasPoint = false;

@@ -308,12 +308,12 @@ void Executer::execFor(TreeNode* node)
 	
 	execute(startNode);
 	//assign startval to id
-	Number startVal=startNode->getValue();
+	Value startVal=startNode->getValue();
 	( symbolTables.top() )[ name ] = startVal;
 	
 	
 	execute(stopNode);
-	Number stopVal=stopNode->getValue();
+	Value stopVal=stopNode->getValue();
 	
 	if(node->size() == 4 ) //for loop without step part
 	{
@@ -334,7 +334,7 @@ void Executer::execFor(TreeNode* node)
 		statements = node->fifthChild();
 		
 		execute(step);
-		Number stepVal = step->getValue();
+		Value stepVal = step->getValue();
 		bBreak=false;
 		if( (stepVal.val >= 0.0) && (startVal.val <= stopVal.val) )
 		{
@@ -431,7 +431,7 @@ void Executer::execConstant(/*TreeNode* node*/)
 	// do nothing, value is already set
 }
 
-Number Executer::getVal(TreeNode* node)
+Value Executer::getVal(TreeNode* node)
 {
 	execute(node);
 	return node->getValue();
@@ -1036,7 +1036,7 @@ void Executer::execRandom(TreeNode* node)
 	float y = nodeY->getValue().val;
 	
 	float r = (float)( KApplication::random() ) / RAND_MAX;
-	Number value;
+	Value value;
 	value = (double)( r * ( y - x ) ) + x;
 	node->setValue(value);
 	return;
