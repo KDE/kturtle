@@ -515,7 +515,7 @@ void MainWindow::slotSettings() {
     dialog->setInitialSize( QSize(610, 400) );
     dialog->show();
     // This need to be placed here for the url to show up in the lineedit
-    kcfg_TranslationFilePath->setURL(locate("data","kturtle/data/logokeywords.en_US.xml"));
+    kcfg_TranslationFilePath->setURL(Settings::translationFilePath());
 }
 
 void MainWindow::slotUpdateSettings() {
@@ -529,29 +529,17 @@ void MainWindow::slotConfigureKeys() {
 }
 
 void MainWindow::readConfig() {
-    // Here we check wether there is a TranslationFile selected in settings...
-    // if not we will set it to 'en_US' by default
-    // TODO use KConfig XT instead of KConfig
-    KConfig *config = kapp->config();
-    config->setGroup("language");
-    if ( !QFile( config->readPathEntry("TranslationFile") ).exists() ) {
-        kdDebug(0)<<"--1--"<<endl;
-        if ( !locate("data", "kturtle/data/logokeywords.en_US.xml").isNull() ) {
-            //config->setGroup("language");
-            config->writeEntry("TranslationFile", locate("data", "kturtle/data/logokeywords.en_US.xml") );
-            config->sync(); // doesnt work
-            // the settings dialog will not show the translationFile the first time it is started
-            // i dont know why or how to fix <- TODO 
-            kdDebug(0)<<"--2--"<<endl;
-        } else {
-        kdDebug(0)<<"--3--"<<endl;
-            slotErrorDialog( i18n("Could not find the command translation file.\n"
+	//in case the xml files are not installed. I believe it should quit in that case as the kstandardirs has been 
+	//searched for the xml files
+        if ( locate("data", "kturtle/data/logokeywords.en_US.xml").isNull() ) {
+        	kdDebug(0)<<"--3--"<<endl;
+            	slotErrorDialog( i18n("Could not find the command translation file.\n"
                                   "Please go to \"Settings -> Configure KTurtle\" and "
                                   "specify the full name and path to "
                                   "\"logokeywords.en_US.xml\" or any other logokeywords "
                                   "file. Otherwise KTurtle will not operate." ) );
         }
-    }
+	
 }
 
 void MainWindow::slotColorPicker() {

@@ -5,9 +5,10 @@ This list is devided into BIG-TODOs, normalTODOs, TO-oeps-meDOitALLreadies and S
 
 cies: urgent issues are fixed
 
-
-annma: implement KConfigXT properly i.e. set the default xml file in the KConfig XT files plus clean the mess between TranslationFile and TranslationFilePath
-06 January 2003: the default xml file should be found properly at first start right now!
+06 Jan. 2004 - annma: the KConfig XT stuff is done. Please note that locate("data", "kturtle/data/logokeywords.en_US.xml") being the default xml file, it does not appear in the config file. If there is nothing in the config file in TranslationFilePath, then this file is always taken.
+Always load the xml file with
+QFile xmlfile( Settings::translationFilePath() );
+note: I left the kdDebug() in the lexer.cpp file.
 
 **** BIG-TODOs: ****
 
