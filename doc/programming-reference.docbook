@@ -598,7 +598,7 @@ if (a &lt; 5) and (b == 5) [
 In this example the glue-word <userinput>and</userinput> is used to glue 2 questions (<userinput>a &lt; 5</userinput>, <userinput>b == 5</userinput>) together. If one side of the <userinput>and</userinput> would answer <quote>false</quote> the whole question would answer <quote>false</quote>, because with the glue-word <userinput>and</userinput> both sides need to be <quote>true</quote> in order to answer <quote>true</quote>. Please do not forget to use the brackets around the questions!</para>
 
 <para>
-A schematic overview, a more detailed explanation follows below:
+Here is a schematic overview; a more detailed explanation follows below:
 <table>
 <title>Question glue-words</title>
 <tgroup cols="2">
