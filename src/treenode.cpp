@@ -203,10 +203,10 @@ TreeNode& TreeNode::operator= (const TreeNode& t)
 		fTok   = t.fTok;
 		parent = t.parent;
 		
-		this->clear();
+		clear();
 		for (TreeNode::const_iterator i = t.begin(); i != t.end(); ++i)
 		{
-			this->push_back(*i);
+			push_back(*i);
 		}
 	}
 	return *this;
