@@ -449,7 +449,7 @@ void Executer::execDiv( TreeNode* node ) {
 void Executer::execSub( TreeNode* node ) {
   if( node->firstChild()->getType() == stringConstantNode ||
 	    node->secondChild()->getType() == stringConstantNode ) {
-    emit ErrorMsg( i18n("Cannot substract strings"), node->getRow(), node->getCol(), 9000);
+    emit ErrorMsg( i18n("Cannot subtract strings"), node->getRow(), node->getCol(), 9000);
     return;
   }
   node->setValue( getVal( node->firstChild() )  -  getVal( node->secondChild() ) );

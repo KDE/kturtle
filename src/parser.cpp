@@ -254,7 +254,7 @@ TreeNode* Parser::ParamList() {
 */
 TreeNode* Parser::FunctionCall(const QString& name, uint r, uint c) {
 	if (learnedFunctionList.contains(name) == 0) {
-		Error( i18n("'%1' is not a Logo command nor a learned command.").arg(name), 1010, r, c);
+		Error( i18n("'%1' is neither a Logo command nor a learned command.").arg(name), 1010, r, c);
 		TreeNode* errNode = new TreeNode(Unknown, r, c, "name");
 		return errNode;
 	}
@@ -758,7 +758,7 @@ TreeNode* Parser::Statement() {
 	if (lookTokenChar == beginChar) {
 		Error( i18n("'%1' is expected").arg(beginChar), 1060);
 	} else {
-		Error( i18n("'%1' is no Logo command").arg(lookTokenChar), 1060); 
+		Error( i18n("'%1' is not a Logo command").arg(lookTokenChar), 1060); 
 	}
 	getToken();
 	return new TreeNode(Unknown, row, col); // fallback for unknowns
