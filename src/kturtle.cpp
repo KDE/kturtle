@@ -32,7 +32,6 @@
 #include <kfiledialog.h>
 #include <kimageio.h>
 #include <kinputdialog.h> 
-#include <kkeydialog.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kprinter.h>
@@ -149,10 +148,7 @@ void MainWindow::setupActions() {
 	new KToggleAction(i18n("Show &Line Numbers"), 0, Key_F11, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
 	m_fullscreen = KStdAction::fullScreen(this, SLOT( slotToggleFullscreen() ), ac, this, "full_screen");
 	m_fullscreen->setChecked(b_fullscreen);
-	// DEPRICATED:
-	//showEditor = new KToggleAction(i18n("Show &Editor"), 0, 0, this, SLOT(slotShowEditor()), ac, "show_editor");
-	//showEditor->setChecked(true);
-	
+
 	// Tools actions
 	colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", ALT+Key_C, this, SLOT(slotColorPicker()), ac, "color_picker");
 	new KAction(i18n("&Indent"), "indent", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
@@ -164,7 +160,7 @@ void MainWindow::setupActions() {
 	// //createStandardStatusBarAction();
 	// //setStandardToolBarMenuEnabled(true);
 	KStdAction::preferences( this, SLOT( slotSettings() ), ac );
-	KStdAction::keyBindings( this, SLOT( slotConfigureKeys() ), ac );
+	KStdAction::keyBindings(guiFactory(), SLOT(configureShortcuts()), ac);
 	new KAction(i18n("&Configure Editor..."), "configure", 0, this, SLOT(slotEditor()), ac, "set_confdlg");
 	KStdAction::configureToolbars( this, SLOT(slotConfigureToolbars()), ac);
 	// Help actions
@@ -181,7 +177,7 @@ void MainWindow::setupEditor() {
 	EditorDock->setFrameShape(QFrame::ToolBarPanel);
 	//   it started to annoy me :( sorry :)
 	//   QToolTip::add( EditorDock, i18n( "The Logo code must be typed or pasted or opened from a file here, in the editor" ) );
-	QWhatsThis::add( EditorDock, i18n( "This is the code editor, you can type your commands here." ) );
+	QWhatsThis::add( EditorDock, i18n( "This is the code editor, you can type your commands here or you can get some code by opening a .logo file." ) );
 	moveDockWindow(EditorDock, Qt::DockLeft);
 	editor = doc->createView (EditorDock, 0L);
 	// ei is the editor interface which allows us to access the text in the part
@@ -894,10 +890,6 @@ void MainWindow::slotUpdateSettings() {
 void MainWindow::readConfig(KConfig *config) {
 	config->setGroup("General Options");
 	m_recentFiles->loadEntries(config, "Recent Files");
-}
-
-void MainWindow::slotConfigureKeys() {
-  	KKeyDialog::configure(actionCollection(), this);
 }
 
 void MainWindow::slotConfigureToolbars() {

@@ -24,10 +24,6 @@ kturtle_METASOURCES = AUTO
 # these are the headers for your project
 noinst_HEADERS = kturtle.h canvas.h number.h lexer.h parser.h executer.h treenode.h colorpicker.h
 
-# this is where the desktop file will go
-shelldesktopdir   = $(kde_appsdir)/Edutainment/Miscellaneous
-shelldesktop_DATA = kturtle.desktop
-
 kde_kcfg_DATA = kturtle.kcfg 
 
 # this is where the shell's XML-GUI resource file goes
