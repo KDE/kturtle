@@ -62,7 +62,9 @@
                   defaultLanguage = testLanguage;
                   break;
               } else if ( testLanguage.left(2) == desktopLanguage.left(2) ) { // close match (different dialect)
-                  defaultLanguage = testLanguage.left(2);
+                  // The default language must still be one of the kturtle languages.
+                  // defaultLanguage = testLanguage.left(2);
+                  defaultLanguage = testLanguage;
                   break;
               }
               itemCount++;
