@@ -497,9 +497,8 @@ void MainWindow::startExecution() {
 
 	kapp->processEvents();
 
-	string txt = ( ei->text() + "\n" ).latin1(); // the /n is needed for proper parsing
-	stringbuf sbuf(txt, ios::in);
-	istream in(&sbuf);
+	QString txt = ei->text() + "\n"; // the /n is needed for proper parsing
+	QTextIStream in(&txt);
 	Parser parser(in);
 	connect( &parser, SIGNAL(ErrorMsg(QString, uint, uint, uint) ),
 		this, SLOT(slotErrorDialog(QString, uint, uint, uint) ) );

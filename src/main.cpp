@@ -56,6 +56,9 @@ int main(int argc, char **argv)
     about.addAuthor( "Stefan Asserhäll",
            I18N_NOOP("Swedish Data Files"),
                       "stefan.asserhall@telia.com" ); 	
+    about.addCredit( "Albert Astals Cid",
+                      0, /* once message freeze is over put "Parser Cyrillic support" */ 
+                      "astals11@terra.es" ); 	
     KCmdLineArgs::init(argc, argv, &about);
     KCmdLineArgs::addCmdLineOptions( options );
     KApplication app;

@@ -20,8 +20,9 @@ bugreport(log):/
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+#include <kdebug.h>
+ 
 #include "number.h"
-
 
 Number::Number() {
   strVal = "";
@@ -34,15 +35,12 @@ Number::Number( const Number& n ) {
 }
 
 void Number::toString() {
-  ostringstream os;
-  os << val;
-  strVal = os.str();
+  strVal.setNum(val);
   bString = true;
 }
 
 void Number::toDouble() {
-  istringstream is(strVal);
-  is >> val;
+  val = strVal.toDouble();
   bString = false;
 }
     
@@ -131,7 +129,7 @@ Number& Number::operator-( const Number& n ) {
   }
   else if(bString && n.bString) {
     //strVal-=n.strVal;
-    cerr<<"cannot subtract strings"<<endl;
+    kdDebug(0)<<"cannot subtract strings"<<endl;
   } else {
     val-=n.val;
     toString();
@@ -148,7 +146,7 @@ Number& Number::operator*( const Number& n ) {
   }
   else if(bString && n.bString) {
     //strVal*=n.strVal;
-    cerr<<"cannot multiply strings"<<endl;
+    kdDebug(0)<<"cannot multiply strings"<<endl; 
   } else{
     val*=n.val;
     toString();
@@ -164,7 +162,7 @@ Number& Number::operator/( const Number& n ) {
   }
   else if(bString && n.bString) {
     //strVal/=n.strVal;
-    cerr<<"cannot divide strings"<<endl;
+    kdDebug(0)<<"cannot divide strings"<<endl;
   } else{
     val/=n.val;
     toString();
@@ -214,23 +212,4 @@ bool Number::operator>=( const Number& n ) const {
   if( bString && n.bString ) return strVal>=n.strVal; 
   if( !bString && !n.bString ) return val >= n.val;
   return false;
-}
-
-
-
-//output double or string
-ostream& operator<<(ostream& os, const Number& n) {
-  if(n.bString){
-    os<<n.strVal;
-  } else {
-    os<<n.val;
-  }
-  return os;
-}
-
-//read double
-istream& operator>>(istream& is, Number& n) {
-  n.bString=false;
-  is>>n.val;
-  return is;
 }

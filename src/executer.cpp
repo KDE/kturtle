@@ -260,8 +260,8 @@ void Executer::execForEach( TreeNode* node ) {
   execute( expr1 );
   execute( expr2 );
   
-  QString expStr1 = expr1->getValue().strVal.c_str();
-  QString expStr2 = expr2->getValue().strVal.c_str();
+  QString expStr1 = expr1->getValue().strVal;
+  QString expStr2 = expr2->getValue().strVal;
   
   bBreak = false;
   
@@ -389,7 +389,7 @@ void Executer::execAssign( TreeNode* node ){
 
     
 void Executer::execExpression( TreeNode* node ){
-  cerr<<"execExpression is not implemented, because it should not be needed!"<<endl;
+  kdDebug(0)<<"execExpression is not implemented, because it should not be needed!"<<endl;
   // cies calls it debug info
 }
 
@@ -554,7 +554,7 @@ QString Executer::runCommand( const QString& command ){
 
 
 void Executer::execRun( TreeNode* node ) {
-  QString cmd = getVal( node->firstChild() ).strVal.c_str();
+  QString cmd = getVal( node->firstChild() ).strVal;
   node->setValue( runCommand(cmd) );
 }
 
@@ -822,7 +822,7 @@ void Executer::execMessage( TreeNode* node ){
         emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), 0, 0, 7070);
         return;
     }
-    emit MessageDialog( node->firstChild()->getValue().strVal.c_str() );
+    emit MessageDialog( node->firstChild()->getValue().strVal );
 }
 
 
@@ -832,7 +832,7 @@ void Executer::execInputWindow( TreeNode* node ) {
         emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), 0, 0, 7070);
         return;
     }
-    QString value = node->firstChild()->getValue().strVal.c_str();
+    QString value = node->firstChild()->getValue().strVal;
     emit InputDialog( value );
     if (value == "") {
         node->setValue(""); // this prevents a crash :)
@@ -846,7 +846,7 @@ void Executer::execPrint( TreeNode* node ) {
   QString str = "";
   for( i = node->begin(); i != node->end(); ++i ) {
     execute( *i ); //execute expression
-    str = str + (*i)->getValue().strVal.c_str();
+    str = str + (*i)->getValue().strVal;
   }
   emit Print(str);
 }
@@ -864,9 +864,9 @@ void Executer::execFontType( TreeNode* node ) {
     }
     QString extra;
     if( node->size() == 2 ) {
-        QString extra = node->secondChild()->getValue().strVal.c_str();
+        QString extra = node->secondChild()->getValue().strVal;
     }
-    QString family = node->firstChild()->getValue().strVal.c_str();
+    QString family = node->firstChild()->getValue().strVal;
     emit FontType(family, extra);
 }
 

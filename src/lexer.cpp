@@ -33,7 +33,7 @@ bugreport(log):column will not be incremented enough when numbers are read
 Lexer::~Lexer() {
 }
 
-Lexer::Lexer(istream& ifstr) {
+Lexer::Lexer(QTextIStream& ifstr) {
   getKeywords();
   in = &ifstr;
   row = 1;
@@ -50,19 +50,26 @@ unsigned int Lexer::getCol() {
   return col;
 }
 
-int Lexer::getChar() {
-  int i = in->get();
-  if( i == '\n' ) {
-    row++;
-    prevCol = col;
-    col = 1;
+QChar Lexer::getChar() {
+  QChar c;
+  
+  if (!putBackChar.isNull()) {
+    c = putBackChar;
   } else {
-    col++;
+    *in >> c;
+    if( c == '\n' ) {
+      row++;
+      prevCol = col;
+      col = 1;
+    } else {
+      col++;
+    }
   }
-  return i;
+  putBackChar = QChar();
+  return c;
 }
 
-void Lexer::ungetChar(int ch){
+void Lexer::ungetChar(QChar ch){
   if( ch == '\n' ){
     row--;
     col=prevCol;
@@ -71,28 +78,35 @@ void Lexer::ungetChar(int ch){
     col--;
   }
   
-  in->unget();
+  putBackChar = ch;
 }
 
 
 int Lexer::getNumber(Number& n) {
-  (*in)>>n;
-  if( in->good() ) {
+  QString s;
+  bool havePoint = false;
+  QChar look=getChar();
+  if( look.isNumber()) {
+    while(( look.isNumber() || (look == '.' && !havePoint) ) && !in->atEnd() ) {
+      if (look == '.') havePoint = true;
+      s+=look;
+      look=getChar();
+    }
+    ungetChar(look); //read one too much
+    n.bString = false;
+    n.val = s.toDouble();
     return tokNumber;
   }
-  else if( in->eof() ) {
-    return tokEof;
-  }
   else{
-    return tokError;
+    return tokError;  
   }
 }
 
 
 int Lexer::getName(QString& s) {
-  char look=getChar();
-if( QChar(look).isLetter() || look=='[' || look==']' ) {
-    while( ( QChar(look).isLetterOrNumber() || look == '_' || look=='[' || look==']' ) && !in->eof() ) {
+  QChar look=getChar();
+  if( look.isLetter() || look=='[' || look==']' ) {
+    while(( look.isLetterOrNumber() || look == '_' || look=='[' || look==']' ) && !in->atEnd() ) {
       s+=look;
       look=getChar();
     }
@@ -149,8 +163,7 @@ void Lexer::getKeywords() {
     }
 }
 
-QString Lexer::translateCommand(string s) {
-    QString qs = s.c_str();
+QString Lexer::translateCommand(QString qs) {
     QString name = "'" + KeyMap[qs] + "'";
     QString alias = "";
     if( !AliasMap[qs].isEmpty() ) { // translate the alias
@@ -227,9 +240,9 @@ void Lexer::checkKeywords(token& t) {
 }
 
 void Lexer::skipComment(){
-  char look=getChar();
-  while ( !in->eof() && look == '#' ){
-    while( !in->eof() && look!='\n' ){
+  QChar look=getChar();
+  while ( !in->atEnd() && look == '#' ){
+    while( !in->atEnd() && look!='\n' ){
       look=getChar();
     }
     skipWhite();
@@ -239,16 +252,16 @@ void Lexer::skipComment(){
 }
 
 void Lexer::skipWhite(){
-  char look=getChar();
-  while( !in->eof() && isspace(look) ) look=getChar();
+  QChar look=getChar();
+  while( !in->atEnd() && look.isSpace()) look=getChar();
   ungetChar(look);
 }
 
 
 void Lexer::getStringConstant(token& t){
-  string constStr="";
-  int ch=getChar();
-  while( ch != '"' && !in->eof() ){
+  QString constStr;
+  QChar ch = getChar();
+  while( ch != '"' && !in->atEnd() ){
     
     if(ch == '\\'){ //escape sequence 
       ch=getChar();
@@ -257,23 +270,23 @@ void Lexer::getStringConstant(token& t){
         case 't': constStr+='\t'; break;
         case 'f': constStr+='\f'; break;
         case '"': constStr+='"';  break;
-        default : cerr<<"Unrecognized escape char \\"
-                      <<(char)ch<<" in stringconstant, skipping!"
+        default : kdDebug(0)<<"Unrecognized escape char \\"
+                      <<ch<<" in stringconstant, skipping!"
                       <<endl; break; // cies calls it debug information... no error dialog
       }
     }
     else if(ch != '"'){ //anything but closing char
-      constStr+=(char) ch;
+      constStr+= ch;
     }
     
     ch=getChar();
   }
   
-  t.str=constStr.c_str();
+  t.str=constStr;
   t.type=tokString;
   t.val=0;
   
-  if(in->eof()) t.type=tokEof;
+  if(in->atEnd()) t.type=tokEof;
 }
 
 
@@ -287,58 +300,56 @@ token Lexer::lex(){
   skipComment();
   skipWhite();
   
-  char look=getChar();
+  QChar look=getChar();
   
-  if( in->eof() ) {
+  if( in->atEnd() ) {
     t.type=tokEof;
     return t;
   }
   
-  if( QChar(look).isLetter() || look=='[' || look==']' ) { //haha
+  if( look.isLetter() || look=='[' || look==']' ) { //haha
     ungetChar(look);
     t.type=getName(t.str);
     checkKeywords(t);
-  } else if( QChar(look).isNumber() ) {
+  } else if( look.isNumber() ) {
     ungetChar(look);
     t.type=getNumber(t.val);
-  } else {
-    switch(look) {
-      case '>': if( getChar() == '=' ) {
-                  t.type=tokGe;
-                } else {
-                  ungetChar(look);
-                  t.type=tokGt;
-                }
-                break;
-      
-      case '<': if( getChar() == '=' ) {
-                  t.type=tokLe;
-                } else {
-                  ungetChar(look);
-                  t.type=tokLt;
-                }
-                break;
-      
-      case '!': if( getChar() == '=' ) {
-                  t.type=tokNe;
-                } else {
-                  ungetChar(look);
-                  t.type='!';
-                }
-                break;
-      
-      case '=': if( getChar() == '=' ){
-                  t.type=tokEq;
-                } else {
-                  ungetChar(look);
-                  t.type=tokAssign;
-                }
-                break;
-      
-      case '"': getStringConstant( t ); break;
-      
-      default : t.type=look;   break;
+  } else if (look == '>') {
+    look = getChar();
+    if( look == '=' ) {
+      t.type=tokGe;
+    } else {
+      ungetChar(look);
+     t.type=tokGt;
     }
+  } else if (look == '<') {
+    look = getChar();
+    if( look == '=' ) {
+      t.type=tokLe;
+    } else {
+      ungetChar(look);
+     t.type=tokLt;
+    }
+  } else if (look == '!') {
+    look = getChar();
+    if( look == '=' ) {
+      t.type=tokNe;
+    } else {
+      ungetChar(look);
+      t.type='!';
+    }
+  } else if (look == '=') {
+    look = getChar();
+    if( look == '=' ) {
+      t.type=tokEq;
+    } else {
+      ungetChar(look);
+     t.type=tokAssign;
+    }
+  } else if (look == '"') {
+    getStringConstant( t );
+  } else {
+    t.type=look;
   }
   
   return t;

@@ -23,11 +23,7 @@ bugreport(log):column will not be incremented enough when numbers are read
 #ifndef _LEXER_H_
 #define _LEXER_H_
 
-#include <fstream>
-#include <stdlib.h>
-
 #include "number.h"
-
 
 using namespace std;
 
@@ -121,9 +117,9 @@ class Lexer {
     
     //constructor and destructor
     //==========================
-    Lexer( istream& );
+    Lexer( QTextIStream& );
     ~Lexer();
-    QString translateCommand(string s);
+    QString translateCommand(QString s);
   
     //public members
     //==============
@@ -136,8 +132,8 @@ class Lexer {
     
     //private members
     //===============
-    int getChar();
-    void ungetChar(int);
+    QChar getChar();
+    void ungetChar(QChar);
     void skipComment();
     void skipWhite();
     void getKeywords();
@@ -152,8 +148,9 @@ class Lexer {
       
     //private locals
     //==============
-    istream* in;
+    QTextIStream* in;
     unsigned int row,col,prevCol;
+	QChar putBackChar;
 };
 
 

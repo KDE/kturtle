@@ -27,10 +27,8 @@ bugreport(log):/
 #ifndef _NUMBER_H_
 #define _NUMBER_H_
 
-#include <iostream>
-#include <sstream>
-
 #include <qstring.h>
+#include <qtextstream.h>
 
 using namespace std;
 
@@ -67,13 +65,9 @@ class Number {
     bool operator>(const Number&) const;
     bool operator>=(const Number&) const;
 
-    friend ostream& operator<<(ostream&, const Number&); //outputs double or string
-    friend istream& operator>>(istream&, Number&); //reads double
-  
-
     //public members  
     bool bString; //set to true if Number represents a string...
-    string strVal;
+    QString strVal;
     double val;
 
 };

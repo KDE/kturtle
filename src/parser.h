@@ -57,7 +57,7 @@ class Parser : public QObject
 {   Q_OBJECT
 
   public:
-    Parser(istream& in);
+    Parser(QTextIStream& in);
     virtual ~Parser();
 
     bool parse();

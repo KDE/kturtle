@@ -46,7 +46,7 @@ bugreport(log):/
 
 =================================================================*/
 
-Parser::Parser(istream& in) {
+Parser::Parser(QTextIStream& in) {
   lexer = new Lexer(in);
   tree = new TreeNode();
 }
@@ -89,7 +89,7 @@ TreeNode* Parser::Program() {
 
 void Parser::Match(int x) {
   if(look.type != x) {
-    string tokStr = "";
+    QString tokStr = "";
     switch(x) {
       case tokIf            : tokStr+="if";           break;
       case tokElse          : tokStr+="else";         break;
@@ -1266,7 +1266,7 @@ TreeNode* Parser::Learn() {
 
 
 void Parser::Error(const QString& s, uint code) {
-  emit ErrorMsg(s, row, col + 1, code);
+  emit ErrorMsg(s, row, col, code);
   //exit(1); // better = throw exception here!
   bNoErrors=false;
 }

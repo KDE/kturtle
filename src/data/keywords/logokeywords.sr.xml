@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<!DOCTYPE logokeywords>
+
+<logokeywords lang="sr" ver="0.01">
+
+<!-- scope -->
+  <command name="begin">
+    <keyword>[</keyword>
+  </command>
+
+  <command name="end">
+    <keyword>]</keyword>
+  </command>
+
+<!-- execution controllers -->
+  <command name="while">
+    <keyword>док</keyword>
+  </command>
+
+  <command name="if">
+    <keyword>ако</keyword>
+  </command>
+
+  <command name="else">
+    <keyword>иначе</keyword>
+  </command>
+
+  <command name="for">
+    <keyword>за</keyword>
+  </command>
+
+  <command name="to">
+    <keyword>до</keyword>
+  </command>
+
+  <command name="return">
+    <keyword>врати</keyword>
+  </command>
+
+  <command name="break">
+    <keyword>пресеци</keyword>
+  </command>
+
+  <command name="foreach">
+    <keyword>засвако</keyword>
+  </command>
+
+  <command name="in">
+    <keyword>у</keyword>
+  </command>
+
+  <command name="do">
+    <keyword>ради</keyword>
+  </command>
+
+  <command name="repeat">
+    <keyword>понављај</keyword>
+    <alias>пон</alias>
+  </command>
+
+  <command name="wait">
+    <keyword>чекај</keyword>
+  </command>
+
+<!-- boolean operators -->
+  <command name="and">
+    <keyword>и</keyword>
+  </command>
+
+  <command name="or">
+    <keyword>или</keyword>
+  </command>
+
+  <command name="not">
+    <keyword>не</keyword>
+  </command>
+
+
+<!-- the meta command -->
+  <command name="learn">
+    <keyword>научи</keyword>
+  </command>
+
+
+<!-- normal keywords -->
+  <command name="run">
+    <keyword>трчи</keyword>
+  </command>
+
+  <command name="clear">
+    <keyword>очисти</keyword>
+    <alias>оч</alias>
+  </command>
+
+  <command name="go">
+    <keyword>иди</keyword>
+  </command>
+
+  <command name="gox">
+    <keyword>идив</keyword>
+    <alias>ив</alias>
+  </command>
+
+  <command name="goy">
+    <keyword>идиу</keyword>
+    <alias>иу</alias>
+  </command>
+
+  <command name="forward">
+    <keyword>напред</keyword>
+    <alias>нп</alias>
+  </command>
+
+  <command name="backward">
+    <keyword>назад</keyword>
+    <alias>нз</alias>
+  </command>
+
+  <command name="direction">
+    <keyword>смер</keyword>
+    <alias>см</alias>
+  </command>
+
+  <command name="turnleft">
+    <keyword>скренилево</keyword>
+    <alias>сл</alias>
+  </command>
+
+  <command name="turnright">
+    <keyword>скренидесно</keyword>
+    <alias>сд</alias>
+  </command>
+
+  <command name="center">
+    <keyword>центар</keyword>
+  </command>
+
+  <command name="setpenwidth">
+    <keyword>ширинапера</keyword>
+    <alias>шп</alias>
+  </command>
+
+  <command name="penup">
+    <keyword>перогоре</keyword>
+    <alias>пг</alias>
+  </command>
+
+  <command name="pendown">
+    <keyword>перодоле</keyword>
+    <alias>пд</alias>
+  </command>
+
+  <command name="setfgcolor">
+    <keyword>бојапера</keyword>
+    <alias>бо</alias>
+  </command>
+
+  <command name="setbgcolor">
+    <keyword>бојаплатна</keyword>
+    <alias>бп</alias>
+  </command>
+
+  <command name="resizecanvas">
+    <keyword>величинаплатна</keyword>
+    <alias>вп</alias>
+  </command>
+
+  <command name="spriteshow">
+    <keyword>прикажи</keyword>
+    <alias>пр</alias>
+  </command>
+
+  <command name="spritehide">
+    <keyword>сакриј</keyword>
+    <alias>ск</alias>
+  </command>
+
+  <command name="spritepress">
+    <keyword>притисни</keyword>
+    <alias>пт</alias>
+  </command>
+
+  <command name="spritechange">
+    <keyword>промени</keyword>
+    <alias>пм</alias>
+  </command>
+
+  <command name="message">
+    <keyword>порука</keyword>
+  </command>
+
+  <command name="inputwindow">
+    <keyword>улазнипрозор</keyword>
+  </command>
+
+  <command name="print">
+    <keyword>штампај</keyword>
+  </command>
+
+  <command name="fonttype">
+    <keyword>типфонта</keyword>
+  </command>
+
+  <command name="fontsize">
+    <keyword>величинафонта</keyword>
+  </command>
+
+  <command name="random">
+    <keyword>случајно</keyword>
+  </command>
+
+  <command name="wrapon">
+    <keyword>прелом</keyword>
+  </command>
+
+  <command name="wrapoff">
+    <keyword>безпрелома</keyword>
+  </command>
+
+  <command name="reset">
+    <keyword>ресетуј</keyword>
+  </command>
+
+</logokeywords>
