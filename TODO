@@ -4,8 +4,8 @@ This list is devided into URGENT, BIG-TODOs, normalTODOs, TO-oeps-meDOitALLreadi
 BUGS
 - when there is an error, display only 1 error, the first.
 - The gear does not come back after errors.
-- the caption of the window does not display the title of the saved file after 'save as'
-kturtle: url is:file:/home/annma/trial.logo
+- get the logo highlight by default - save the config for highlight
+DONE - the caption of the window does not display the title of the saved file after 'save as'
 
 **** URGENT ****
 
