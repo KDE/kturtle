@@ -71,7 +71,7 @@ if ( !doc )
     EditorDock->setWidget(editor);
    	//dynamic_cast<KTextEditor::Document*>(this)->actionCollection()->remove(action("file_quit"));
     //doc->actionCollection()->remove(action("edit_find_next")); //works if you suppress file_quit from the kturtleui.rc file
-    doc->actionCollection()->remove(action("file_quit"));
+    //doc->actionCollection()->remove(action("file_quit"));
     ///allow to enable run only when some text is written in editor
     connect(editor->document(), SIGNAL(textChanged()), this, SLOT(setRunEnabled()));
     

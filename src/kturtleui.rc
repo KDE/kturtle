@@ -9,6 +9,7 @@
       <Action name="run"/>
       <Separator />
       <Merge/>
+      <Action name="file_quit"/>
     </Menu>
    
      <Menu name="edit" noMerge="1"><text>&amp;Edit</text>
