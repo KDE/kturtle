@@ -3,6 +3,7 @@
 
 #include <kapp.h>
 #include <kconfig.h>
+#include <kdebug.h>
 
 //#include "settings.h"
 #include "lexer.h"
@@ -88,11 +89,13 @@ void Lexer::getKeywords() {
     
     KConfig *config = kapp->config();
     
+    kdDebug(0)<<"TRfile:"<<config->readPathEntry("TranslationFile")<<endl;
+        
     // if no translationfile is specified -> return
     if ( config->readPathEntry("TranslationFile").isNull() ) {
         return;
     }    
-        
+    
     QFile xmlfile( config->readPathEntry("TranslationFile") ); // Read the specified translation file
 //     if ( xmlfile.exists() ) { // if no xmlfile is specified -> return
 //         return;

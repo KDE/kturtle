@@ -509,7 +509,7 @@ void MainWindow::slotSettings() {
     dialog->addPage( language, i18n("Language"), "locale", i18n("Language Settings") );
 
     // When the user clicks OK or Apply we want to update our settings.
-    connect( dialog, SIGNAL( settingsChanged() ), this, SLOT( updateSettings() ) );
+    connect( dialog, SIGNAL( settingsChanged() ), this, SLOT( slotUpdateSettings() ) );
 
     // Display the dialog.
     dialog->setInitialSize( QSize(610, 400) );
@@ -530,10 +530,10 @@ void MainWindow::checkTranslationFile() {
     // Here we check wether there is a TranslationFile selected in settings...
     // if not we will set it to 'en_US' by default
     // if ( !QFile( Settings::translationFilePath() ).exists() ) {
-    if ( !QFile( Settings::translationFilePath() ).exists() ) {
+    KConfig *config = kapp->config();
+    if ( !QFile( config->readPathEntry("TranslationFile") ).exists() ) {
         kdDebug(0)<<"--1--"<<endl;
         if ( !locate("appdata", "data/logokeywords.en_US.xml").isNull() ) {
-            KConfig *config = kapp->config();
             config->setGroup("language");
             config->writeEntry("TranslationFile", locate("appdata", "data/logokeywords.en_US.xml") );
             config->sync(); // doesnt work
