@@ -877,8 +877,18 @@ void Executer::execFontSize( TreeNode* node ) {
     emit FontSize(px);
 }
 
-void Executer::execRepeat( TreeNode* node ) {}
+void Executer::execRepeat( TreeNode* node ) {
+  TreeNode* value = node->firstChild();
+  TreeNode* statements = node->secondChild();
 
+  bBreak=false;
+  execute( value );
+  for( int i = (int)value->getValue().val + 0.5; i > 0; i-- ){
+    execute( statements );
+    //if( bBreak || bReturn ) break; //jump out loop
+  }
+  bBreak=false;
+}
 
 int Executer::execRandom( TreeNode* node ) {
     // check if number of parameters match, or else...

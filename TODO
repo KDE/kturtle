@@ -5,32 +5,36 @@ This list is devided into BIG-TODOs, normalTODOs, TO-oeps-meDOitALLreadies and S
 
 **** BIG-TODOs: ****
 
-cies: Implement ether a Kate-part or a KTextEditor as editor widget.
+cies: Implement either a Kate-part or a KTextEditor as editor widget.
 1) Kate-part, will merge it's GUI with ours (preferred by me)
-2) KTextEditor, seems simpler
-I tried both and failed :( so it is now on HOLD [still hoping for a god-sent Kate-developer to make the decision and implement].
-A lot of other issues are more/less waiting for this one (i'm not working on editor-kaction-connections, Qfile->KURL migration, CLI-file-selection, recentfileshistory, linenumbers and highlighting when i might have to redo them in a month.)
+2) KTextEditor, looks like a simpler solution on fisrt sight
+I tried both and failed :( so it is now on HOLD [still hoping for a god-sent Kate-developer to make the decision and do the beginning of the implementation].
+A lot of other issues are more/less waiting for this one. I'm not working on editor-kaction-connections, Qfile->KURL migration, CLI-file-selection, recentfileshistory, linenumbers and highlighting cauz i might have to redo them in a month or so...
 
 
 cies: Make the interpreter (stolen from wsbasic.sf.net) (executer, parser, lexer, number and treenode) more native Qt.
 Right now they are a mixture of standard-CLI-C++ and Qt thingies (i put the Qt thingies there). I tried to do that but i found that i'm not comfortable with the concept of streams -- which are used a lot in the interpreter. Especially streaming QString was an obstacle i couldnt take.
 
 
-cies: Remove the [ and ] that are currently needed for the exectution of commands.
+cies: Remove the [ and ] that are currently needed for the execution of commands.
 These [ and ] tell the interpreter what is the main execution block, the interpreter needs it. Outside the main execution block user-made-funktions can be defined.
-Solution: make the interpreter accept user-made-funktions to be declared within the main execution block AND change the interpreter so it wont need a main execution block, OR give it a hardcoded execution block. 
+Solution: make the interpreter accept user-made-funktions to be declared within the main execution block AND change the interpreter so it wont need a main execution block (give it a hardcoded execution block). 
 
 
 cies: The manual...
-Au! That is a big one, lets first decide on the chapter structure. See the "StillSubjectToDiscussions" below
+Au! That is a big one, lets first decide on the chapter structure. See the "StillSubjectToDiscussions" below...
 
 
 cies: Make good error messages with links to corresponing help pages.
 - Make an error message class that inherates some dialog thing (it should have: help-link-button, details, short error title and origion (Parse error), 'the-row-of-error', and a small description (maybe the description should contain links to help pagen on certain commands/ methods/ etc.) and maybe even a small hint or hint button
 - Refine the way error message get emitted, problems: Ugly-, short-, technical messages. Sometimes moere than one messages gets emmitted right now only the 1st msg is shown -- the 1st may not allways point to the 'core ot error'.
+>>>>does anyone know a K-app that allready uses this F1-context-sensitive-help style?
+
 
 
 cies: Implement an 'abort' funktion into the interpretor. So an endless execution can be aborted.
+
+
 
 
 
@@ -58,15 +62,21 @@ Maybe need to be removed:
 - substr (a bit hard to use { a="qwerty"; substr(a,1,3) // outputs "qwe" } for kids not really usefull either) but if called 'cutstring' it might be a nice funktion.
 
 
+
 cies: have that f*cking gear icon update, it should go from gear to cross when executing but for some very misterious reason it doesnt!
+
 
 
 cies: a fontchooser would be fun
 
 
+
 cies: a press-F1-for-context-help...
 Press F1 while in a command and see help on it
 - wait for Kate-part?
+- what app does this allready (so I can study it.)
+
+
 
 
 
@@ -75,8 +85,14 @@ Press F1 while in a command and see help on it
 
 cies: Get us bugs.kde.org entity
 
-cies: rename the resized() signal in canvas.* to CanvasResized() or any apropriate other letter combi.
+
+
+cies: rename the resized() signal in canvas.* to CanvasResized() or any apropriate other letter combi, to stop the clash with QWidgets resized() signal.
 Off course the connect() in kturtle.cpp should follow. [while typing this i could have fixed it :-)]
+
+
+
+
 
 
 
