@@ -299,7 +299,8 @@ void MainWindow::slotRun() {
 //     run->setEnabled(true);
     slotStatusBar(i18n("Parsing commands..."), 1);
     
-    string txt=editor->text() ; // TODO interpreter shouldnt need extra "[" & "]"
+    //string txt=editor->text() ; // TODO interpreter shouldnt need extra "[" & "]"
+    QString txt(editor->text());
     stringbuf sbuf(txt , ios_base::in);
     istream in(&sbuf);
     
