@@ -718,42 +718,7 @@ void MainWindow::slotConfigureKeys() {
 
 
 void MainWindow::readConfig(KConfig *config) {
-	 QString m_xmlFile;
-	 if (Settings::translationFilePath().isEmpty())//if no config saved
-	 {
-	 	 //detect what languages are present for KTurtle
-   	 	QStringList xmlFiles = KGlobal::dirs()->findAllResources("data", "kturtle/data/*.xml");
-    		for (QStringList::Iterator it = xmlFiles.begin(); it != xmlFiles.end(); ++it ) {
-			QString xmlFile(*it);
-			xmlFile = xmlFile.right(xmlFile.length()-QString(locate("data","kturtle/data/")+"logokeywords.").length());
-			xmlFile = xmlFile.left(xmlFile.length()-4);
-	 		m_languages += xmlFile;
-    		}
-    		//see what language the user has in his settings
-    		KConfigBase *globalConf = KGlobal::config();
-    		globalConf->setGroup("Locale");
-    		userLanguage = globalConf->readEntry("Language");
-    		userLanguage = userLanguage.left(5);
-		//default language is one of the logokeyword or en
-		for (QStringList::Iterator it = m_languages.begin(); it != m_languages.end(); ++it ) {
-			QString m_language(*it);
-			if (m_language == userLanguage || m_language.left(2) == userLanguage) {
-				defaultLanguage = m_language;
-				break;
-				}
-			else
-  				defaultLanguage = "en_US";
-		}    
-		//set the commands language to the default
-		m_xmlFile = QString(locate("data", "kturtle/data/logokeywords."+defaultLanguage +".xml")); 
-		Settings::setTranslationFilePath(m_xmlFile);
-		Settings::writeConfig();
-	}
-	else
-	m_xmlFile = Settings::translationFilePath(); //keep config
-	//in case the xml files are not installed. I believe it should quit in that case as the kstandardirs has been 
-	//searched for the xml files
-        if ( m_xmlFile.isNull() ) {
+        if ( Settings::translationFilePath().isNull() ) {
         	kdDebug(0)<<"--3--"<<endl;
             	slotErrorDialog( i18n("Could not find the command translation file.\n"
                                   "Please go to \"Settings -> Configure KTurtle\" and "

@@ -13,6 +13,35 @@
   <group name="language"> 
     <entry name="TranslationFilePath" type="Path"> 
       <label>The location of the language xml file</label> 
+      <code>
+      		QStringList xmlFiles = KGlobal::dirs()->findAllResources("data", "kturtle/data/*.xml");
+      		QStringList m_languages;
+    		for (QStringList::Iterator it = xmlFiles.begin(); it != xmlFiles.end(); ++it ) {
+			QString xmlFile(*it);
+			xmlFile = xmlFile.right(xmlFile.length()-QString(locate("data","kturtle/data/")+"logokeywords.").length());
+			xmlFile = xmlFile.left(xmlFile.length()-4);
+	 		m_languages += xmlFile;
+    		}
+    		//see what language the user has in his settings
+    		KConfigBase *globalConf = KGlobal::config();
+    		globalConf->setGroup("Locale");
+    		QString userLanguage = globalConf->readEntry("Language");
+    		userLanguage = userLanguage.left(5);
+		//default language is one of the logokeyword or en
+		QString defaultLanguage;
+		for (QStringList::Iterator it = m_languages.begin(); it != m_languages.end(); ++it ) {
+			QString m_language(*it);
+			if (m_language == userLanguage || m_language.left(2) == userLanguage) {
+				defaultLanguage = m_language;
+				break;
+				}
+			else
+  				defaultLanguage = "en_US";
+		}    
+		
+       QString myString = locate("data", "kturtle/data/logokeywords."+ defaultLanguage +".xml");
+      </code>
+      <default code="true">myString</default>
     </entry> 
   </group> 
 </kcfg>
