@@ -1494,17 +1494,42 @@ When the turtle moves off a border of the canvas it is instantly taken to the op
 
 
 
-
-
 <chapter id="translators">
 <title>Translator's Guide to KTurtle</title>
 
+<sect1 id="commands_trans">
+<title>How To Translate the commands</title>
 <para>
 how to translate the commands
 </para>
+</sect1>
+
+<sect1 id="examples_trans">
+<title>How To Translate the examples</title>
 <para>
-how to translate the examples
+The examples are located in the KTurtle source in the <filename class="directory">>kdeedu/kturtle/examples</filename> folder.
 </para>
+<para>
+<itemizedlist>
+<listitem><para>Create a folder with your language iso code as name.</para>
+</listitem>
+<listitem><para>Copy the english example in this folder and rename the files with your language translation. This will allow users to easily and quickly understand what the example is about.</para>
+</listitem>
+<listitem><para>See in <filename class="directory">>kturtle/src/data/keywords/</filename> the file corresponding to your language. This file must be done before translating the examples. 
+Replace in the example files all English keywords with your translated keywords.</para>
+</listitem>
+<listitem><para>Save your file as <emphasis role="bold">utf-8</emphasis> (in Kate, use Save As and change to utf8 in the box on the right of the file name)</para>
+</listitem>
+<listitem><para>Commit your folder or send it to Anne-Marie.</para>
+</listitem>
+<listitem><para>In case of any doubt, please contact Anne-Marie Mahfouf, <email>annemarie.mahfouf@free.fr</email> for more information.</para>
+</listitem>
+<listitem><para>Finally, if you want, you can add your own examples in this folder.</para>
+</listitem>
+</itemizedlist>
+</para>
+</sect1>
+
 </chapter>
 
 <chapter id="credits">
