@@ -421,7 +421,7 @@ void MainWindow::slotSaveCanvas() {
 void MainWindow::slotPrint() {
 	int result = KMessageBox::questionYesNoCancel( this,
 	i18n("Do you want to print the Logo code or the canvas?"),
-	i18n("Print Code or Canvas?"), i18n("Print Logo Code"), i18n("Print Canvas") );
+	i18n("Print Code or Canvas?"), i18n("Print &Logo Code"), i18n("Print &Canvas") );
 	if (result == KMessageBox::Yes) {
 		dynamic_cast<KTextEditor::PrintInterface*>(doc)->printDialog();
 		return;
@@ -587,7 +587,7 @@ void MainWindow::slotErrorDialog(QString msg, uint row, uint col, uint code) {
 		line = ".";
 	} else {
 		// RowCol = QString(" on row %1, column %2.").arg(row).arg(col); // no column, it over informs
-		line = i18n(" on line %1.").arg(row - 1);
+		line = i18n(" on line %1.").arg(row);
 	}
 
 	// move cursor to the error
