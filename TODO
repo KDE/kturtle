@@ -11,7 +11,7 @@ BUGS
 
 
 **** URGENT ****
-
+DONE
 cies: The KconfigXT issue: If an error like this
 """
   make[4]: Entering directory `/home/cies/kdenonbeta/kturtle/src'
@@ -27,8 +27,10 @@ into:
 that will fix it :-)
 
 
+***** Annma's ideas *****
 
-
+- have a context menu on right-click in the canvas to save the drawing (right-click -> Save Canvas)
+- 
 
 **** BIG-TODOs: ****
 
