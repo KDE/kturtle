@@ -34,15 +34,15 @@ Number::Number( const Number& n ) {
 }
 
 void Number::toString() {
-  //ostringstream os;
-  //os << val;
-  //strVal = os.str();
+  ostringstream os;
+  os << val;
+  strVal = os.str();
   bString = true;
 }
 
 void Number::toDouble() {
-  //istringstream is(strVal);
-  //is >> val;
+  istringstream is(strVal);
+  is >> val;
   bString = false;
 }
     
@@ -82,7 +82,7 @@ Number& Number::operator=( const Number& n ) {
 
 
 Number& Number::operator=( const QString& s ) {
-  strVal=s;
+  strVal=s.ascii();
   bString=true;
   return *this;
 }
@@ -220,12 +220,12 @@ bool Number::operator>=( const Number& n ) const {
 
 //output double or string
 ostream& operator<<(ostream& os, const Number& n) {
- /* if(n.bString){
+  if(n.bString){
     os<<n.strVal;
   } else {
     os<<n.val;
   }
-  return os;*/
+  return os;
 }
 
 //read double

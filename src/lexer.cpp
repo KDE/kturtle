@@ -269,8 +269,8 @@ void Lexer::getStringConstant(token& t){
     ch=getChar();
   }
   
-  //t.str=constStr;
-  //t.type=tokString;
+  t.str=constStr.c_str();
+  t.type=tokString;
   t.val=0;
   
   if(in->eof()) t.type=tokEof;

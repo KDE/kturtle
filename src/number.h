@@ -73,7 +73,7 @@ class Number {
 
     //public members  
     bool bString; //set to true if Number represents a string...
-    QString strVal;
+    string strVal;
     double val;
 
 };
