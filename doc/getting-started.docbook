@@ -91,9 +91,9 @@ Again you can type or copy-paste the code to the code editor or open the <filena
 
 <para><userinput>go 20,20</userinput> commands the turtle to go to a certain place on the canvas. Counted from the upper left corner, this place is 20 <glossterm linkend="pixels">pixels</glossterm> from the left, and 20 <glossterm linkend="pixels">pixels</glossterm> from the top of the canvas. Note that using the <userinput>go</userinput> command the turtle will not draw a line.</para>
 
-<para><userinput>direction 135</userinput> set the turtle's direction. The <userinput>turnleft</userinput> and <userinput>turnright</userinput> commands change the turtle's angle starting from its current direction. The <userinput>direction</userinput> command changes the turtles angle from zero, and thus is not relative to the turtle previous direction.</para>
+<para><userinput>direction 135</userinput> set the turtle's direction. The <userinput>turnleft</userinput> and <userinput>turnright</userinput> commands change the turtle's angle starting from its current direction. The <userinput>direction</userinput> command changes the turtle's angle from zero, and thus is not relative to the turtle previous direction.</para>
 
-<para>After the direction command a lot of <userinput>forward</userinput> and <userinput>turnleft</userinput> commands follow. These command do the actual drawing.</para>
+<para>After the <userinput>direction</userinput> command a lot of <userinput>forward</userinput> and <userinput>turnleft</userinput> commands follow. These command do the actual drawing.</para>
 
 <para>At last another <userinput>go</userinput> command is used to move the turtle aside.</para>
 
