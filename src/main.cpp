@@ -66,8 +66,8 @@ int main(int argc, char **argv)
            I18N_NOOP("Italian Data Files"),
                      "toscano.pino # tiscali.it" ); 	
     about.addCredit( "Albert Astals Cid",
-            18N_NOOP("Parser Cyrillic support" ),
-                     "astals11@terra.es" ); 	
+           I18N_NOOP("Parser Cyrillic support" ),
+                     "astals11@terra.es" );
     KCmdLineArgs::init(argc, argv, &about);
     KCmdLineArgs::addCmdLineOptions( options );
     KApplication app;
