@@ -58,12 +58,13 @@ class MainWindow : public KParts::MainWindow
     // setup's (actions, editor, statusbar, canvas)
     void setupActions();
       KAction            *run;
+      KAction            *stop;
       KAction            *openExAction;
       KAction            *openFileAction;
       KAction            *newAction;
       KToggleAction      *m_fullscreen;
       KToggleAction      *colorpicker;
-      KToggleAction      *showEditor;
+      // KToggleAction      *showEditor; // DEPPRICATED
       KRecentFilesAction *m_recentFiles;
       KAction            *ContextHelp;
       bool                b_fullscreen:1;
@@ -78,7 +79,7 @@ class MainWindow : public KParts::MainWindow
 
     // configuration related
     void readConfig(KConfig *config);
-    void writeConfig(KConfig *config);
+    void saveSettings(KConfig *config);
     QWidget            *general;
     QWidget            *language;
     QGroupBox          *WidthHeightBox;
@@ -87,14 +88,12 @@ class MainWindow : public KParts::MainWindow
     KIntNumInput       *kcfg_CanvasWidth;
     KIntNumInput       *kcfg_CanvasHeight;
     KComboBox          *kcfg_LanguageComboBox;
-    KLineEdit          *kcfg_LogoLanguage;
     QLabel             *LanguageLabel;
     ColorPicker        *picker;
     QString             helpKeyword;
     
     // run related
     void startExecution();
-    void abortExecution();
     void finishExecution();
     Executer           *exe;
     bool                allreadyError;
@@ -102,10 +101,7 @@ class MainWindow : public KParts::MainWindow
 
     // fullscreen related
     void updateFullScreen();
-
-//     KToggleAction      *m_paShowPath;  // can this be safely removed??
-//     KToggleAction      *m_paShowStatusBar;
-
+    
   private slots:
     void slotNewFile();
     void slotOpenFile();
@@ -120,6 +116,7 @@ class MainWindow : public KParts::MainWindow
     void slotQuit();
     
     void slotExecute();
+    void slotAbortExecution();
     void slotErrorDialog(QString msg, uint row = 0, uint col = 0, uint code = 0);
     void slotInputDialog(QString& value);
     void slotMessageDialog(QString text);

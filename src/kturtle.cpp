@@ -108,13 +108,15 @@ void MainWindow::setupActions() {
   KActionCollection *ac = actionCollection();
   // File menu
   KStdAction::openNew(this, SLOT(slotNewFile()), ac);
-  openExAction = new KAction(i18n("Open Examples"), "bookmark_folder", 0, this, SLOT(slotOpenEx()), ac, "open_examples");
+  openExAction = new KAction(i18n("Open Examples"), "bookmark_folder", CTRL+Key_E, this, SLOT(slotOpenEx()), ac, "open_examples");
   KStdAction::open(this, SLOT(slotOpenFile()), ac);
   m_recentFiles = KStdAction::openRecent(this, SLOT(slotOpen(const KURL&)), ac);
   KStdAction::save(this, SLOT(slotSaveFile()), ac);
   KStdAction::saveAs(this, SLOT(slotSaveAs()), ac);
   new KAction(i18n("Save &Canvas"), 0, 0, this, SLOT(slotSaveCanvas()), ac, "save_canvas");
-  run = new KAction(i18n("&Execute Commands"), "gear", 0, this, SLOT( slotExecute() ), ac, "run");
+  run = new KAction(i18n("&Execute Commands"), "gear", ALT+Key_Return, this, SLOT( slotExecute() ), ac, "run");
+  stop = new KAction(i18n("Stop E&xecution"), "stop", Key_Escape, this, SLOT( slotAbortExecution() ), ac, "stop");
+  stop->setEnabled(false);
   KStdAction::print(this, SLOT(slotPrint()), ac);
   KStdAction::quit(this, SLOT(slotQuit()), ac);
   // Edit actions
@@ -131,21 +133,23 @@ void MainWindow::setupActions() {
   KStdAction::findPrev(this, SLOT(slotFindPrevious()), ac);
   KStdAction::replace(this, SLOT(slotReplace()), ac);
   // View actions
-  new KToggleAction(i18n("Show &Line Numbers"), 0, Qt::Key_F11, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
+  new KToggleAction(i18n("Show &Line Numbers"), 0, Key_F11, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
   m_fullscreen = KStdAction::fullScreen(this, SLOT( slotToggleFullscreen() ), ac, this, "full_screen");
   m_fullscreen->setChecked(b_fullscreen);
-  showEditor = new KToggleAction(i18n("Show &Editor"), 0, 0, this, SLOT(slotShowEditor()), ac, "show_editor");
-  showEditor->setChecked(true);
+  // DEPRICATED:
+  //showEditor = new KToggleAction(i18n("Show &Editor"), 0, 0, this, SLOT(slotShowEditor()), ac, "show_editor");
+  //showEditor->setChecked(true);
+  
   // Tools actions
-  colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", 0, this, SLOT(slotColorPicker()), ac, "color_picker");
+  colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", ALT+Key_C, this, SLOT(slotColorPicker()), ac, "color_picker");
   new KAction(i18n("&Indent"), "indent", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
   new KAction(i18n("&Unindent"), "unindent", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
   new KAction(i18n("Cl&ean Indentation"), 0, 0, this, SLOT(slotCleanIndent()), ac, "edit_cleanIndent");
   new KAction(i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
   new KAction(i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");  
-  // Settings actiins
-  createStandardStatusBarAction();
-  //setStandardToolBarMenuEnabled(true);
+  // Settings actions
+  // //createStandardStatusBarAction();
+  // //setStandardToolBarMenuEnabled(true);
   KStdAction::preferences( this, SLOT( slotSettings() ), ac );
   KStdAction::keyBindings( this, SLOT( slotConfigureKeys() ), ac );
   new KAction(i18n("&Configure Editor..."), "configure", 0, this, SLOT(slotEditor()), ac, "set_confdlg");
@@ -162,8 +166,9 @@ void MainWindow::setupEditor() {
   EditorDock->setFixedExtentHeight(150);
   EditorDock->setResizeEnabled(true);
   EditorDock->setFrameShape(QFrame::ToolBarPanel);
-  QToolTip::add( EditorDock, i18n( "The Logo code must be typed or pasted or opened from a file here, in the editor" ) );
-  QWhatsThis::add( EditorDock, i18n( "This is the editor, you type your code here." ) );
+//   it started to annoy me :( sorry :)
+//   QToolTip::add( EditorDock, i18n( "The Logo code must be typed or pasted or opened from a file here, in the editor" ) );
+  QWhatsThis::add( EditorDock, i18n( "This is the code editor, you can type your commands here." ) );
   moveDockWindow(EditorDock, Qt::DockLeft);
   editor = doc->createView (EditorDock, 0L);
   // ei is the editor interface which allows us to access the text in the part
@@ -199,8 +204,7 @@ void MainWindow::setupCanvas() {
   BaseLayout = new QGridLayout(BaseWidget, 0, 0);
   TurtleView = new Canvas(BaseWidget);
   BaseLayout->addWidget(TurtleView, 0, 0, AlignCenter);
-  QToolTip::add( TurtleView, i18n( "The canvas is the Turtle playground" ) );
-  QWhatsThis::add( TurtleView, i18n( "This is the canvas where the turtle puts your code into drawing and text." ) );
+  QWhatsThis::add( TurtleView, i18n( "This is the canvas, here the turtle draws a picture." ) );
   TurtleView->show();
   
   connect( TurtleView, SIGNAL( CanvasResized() ), this, SLOT( slotUpdateCanvas() ) );
@@ -447,8 +451,9 @@ void MainWindow::slotQuit() {
       }
     }
   }
+  
   KConfig *config = kapp->config();
-  writeConfig(config);
+  saveSettings(config);
 
   close();
 }
@@ -461,7 +466,7 @@ void MainWindow::slotQuit() {
 
 void MainWindow::slotExecute() {
   if ( executing ) {
-    abortExecution();
+    slotAbortExecution();
   } else {
     startExecution();
   }
@@ -470,9 +475,20 @@ void MainWindow::slotExecute() {
 void MainWindow::startExecution() {
   allreadyError = false;
   executing = true;
-  run->setIcon("stop");
-  run->setText("Stop Execution");   
+  
+  // check if execution should be runnin 'fullscreen'
+  if (b_fullscreen) {
+    slotShowEditor();
+    statusBar()->hide();
+    // menuBar()->hide();   <--- seems pretty hard to hide the menubar
+    toolBar()->hide();
+  }
+  
+  run->setEnabled(false);
+  stop->setEnabled(true);
+    
   slotStatusBar(i18n("Parsing commands..."),  IDS_STATUS);
+  
   kapp->processEvents();
   
   string txt = ( ei->text() + "\n" ).latin1(); // the /n is needed for proper parsing
@@ -537,14 +553,24 @@ void MainWindow::startExecution() {
   }
 }
 
-void MainWindow::abortExecution() {
+void MainWindow::slotAbortExecution() {
   exe->abort();
 }
 
 void MainWindow::finishExecution() {
-  run->setIcon("gear");
-  run->setText( i18n("&Execute Commands") );
+  run->setEnabled(true);
+  stop->setEnabled(false);
   executing = false;
+  
+  // show the editor, menu- and statusbar
+  if (b_fullscreen) {
+    if(!b_editorShown) {
+      slotShowEditor();
+    }
+    statusBar()->show();
+    // menuBar()->hide();   <--- seems pretty hard to hide the menubar
+    toolBar()->show();
+  }
 }
 
 void MainWindow::slotErrorDialog(QString msg, uint row, uint col, uint code) {
@@ -604,7 +630,7 @@ void MainWindow::slotShowEditor() {
     EditorDock->hide();
     b_editorShown = false;
   }
-  showEditor->setChecked(b_editorShown);
+  // showEditor->setChecked(b_editorShown); // DEPRICATED
 }
 
 void MainWindow::slotSetHighlightstyle(QString langCode) {
@@ -820,24 +846,22 @@ void MainWindow::slotSettings() {
   groupBox1Layout->setAlignment( Qt::AlignTop );
   
   QVBoxLayout *layout4 = new QVBoxLayout( 0, 0, 6, "layout4"); 
+  
+  LanguageLabel = new QLabel(kcfg_LanguageComboBox, i18n("Select the language for the LOGO commands:"), groupBox1);
+  LanguageLabel->setBuddy( kcfg_LanguageComboBox );
+  layout4->addWidget( LanguageLabel );
+  
   kcfg_LanguageComboBox = new KComboBox(groupBox1, "kcfg_LanguageComboBox");
   kcfg_LanguageComboBox->setEditable(false);
   QStringList LogoLanguageList = Settings::logoLanguageList();
   kcfg_LanguageComboBox->insertStringList(LogoLanguageList);
   kcfg_LanguageComboBox->setCurrentText( Settings::logoLanguage() );
+  kdDebug(0) << "kcfg_LanguageComboBox->setCurrentText:"<< Settings::logoLanguage() <<endl;
   layout4->addWidget( kcfg_LanguageComboBox );
   
-  LanguageLabel = new QLabel(kcfg_LanguageComboBox, i18n("Select the language for the LOGO commands:"), groupBox1);
-  LanguageLabel->setBuddy( kcfg_LanguageComboBox );
-  layout4->addWidget( LanguageLabel );
-
   groupBox1Layout->addLayout( layout4, 0, 0 );
   languageLayout->addWidget( groupBox1, 0, 0 ); 
   language->resize( QSize(373, 80).expandedTo(minimumSizeHint()) );
-
-  // create the dummy widget, his widget is needed for kconfig skeleton to get the right signals
-  kcfg_LogoLanguage = new KLineEdit(groupBox1, "kcfg_LogoLanguage");
-  kcfg_LogoLanguage->hide();
   
   dialog->addPage( language, i18n("Language"), "locale", i18n("Language Settings") );
 
@@ -849,34 +873,36 @@ void MainWindow::slotSettings() {
   dialog->show();
 }
 
-void MainWindow::readConfig(KConfig *config) {
-  if ( Settings::logoLanguage().isNull() ) {
-    kdDebug(0)<<"--3--"<<endl;
-    slotErrorDialog( i18n("Could not find the command translation file.\n"
-                          "Please go to \"Settings -> Configure KTurtle\" and "
-                          "specify the full name and path to "
-                          "\"logokeywords.en_US.xml\" or any other logokeywords "
-                          "file. Otherwise KTurtle will not operate." ) );
-  }
-  config->setGroup("General Options");
-  m_recentFiles->loadEntries(config, "Recent Files");
-}
-
-void MainWindow::writeConfig(KConfig *config) {
-  config->setGroup("General Options");
-  m_recentFiles->saveEntries(config, "Recent Files");
-}
-
 void MainWindow::slotUpdateSettings() {
   // Changing the size of the canvas has to be done using the command
   // only the inital size can be changed here :)   [ sorry annma :) ]
   // connect( this, SIGNAL( ResizeCanvas(int, int) ), TurtleView, SLOT( slotResizeCanvas(int, int) ) );
   // emit ResizeCanvas( Settings::canvasWidth(), Settings::canvasWidth() );
-  kcfg_LogoLanguage->setText( kcfg_LanguageComboBox->currentText() );
+  
+  slotSetHighlightstyle( kcfg_LanguageComboBox->currentText() );
+  KConfig *config = kapp->config();
+  saveSettings(config);
+}
+
+void MainWindow::readConfig(KConfig *config) {
+  if ( Settings::logoLanguage().isNull() ) {
+    slotErrorDialog( i18n("Could not find the command translation file.\n"
+                          "Please go to \"Settings -> Configure KTurtle\" and "
+                          "specify the code of the language you prefer. "
+                          "Otherwise KTurtle will not operate." ) );
+  }
+  config->setGroup("General Options");
+  m_recentFiles->loadEntries(config, "Recent Files");
+}
+
+void MainWindow::saveSettings(KConfig *config) {
+  config->setGroup("General Options");
+  m_recentFiles->saveEntries(config, "Recent Files");
+  config->setGroup("language");
   Settings::setLogoLanguage( kcfg_LanguageComboBox->currentText() );
-  slotSetHighlightstyle( Settings::logoLanguage() );
-  kdDebug(0) << "logoLanguage after Apply:"<< Settings::logoLanguage() <<endl;
-  kdDebug(0) << "languageComboBox nr after Apply:"<< Settings::languageComboBox() <<endl;
+  Settings::setLanguageComboBox( kcfg_LanguageComboBox->currentItem() );
+  Settings::writeConfig();
+  kdDebug(0) << "logoLanguage set to:"<< Settings::logoLanguage() <<endl;
 }
 
 void MainWindow::slotConfigureKeys() {

@@ -23,16 +23,12 @@
           QStringList LogoLanguageList;
           for ( QStringList::Iterator it = xmlFiles.begin(); it != xmlFiles.end(); ++it ) {
               QString xmlFile(*it);
-              kdDebug(0) &lt;&lt; "xmlFile: "&lt;&lt; xmlFile &lt;&lt;endl;
+              kdDebug(0) &lt;&lt; "xmlTranslationFile: "&lt;&lt; xmlFile &lt;&lt;endl;
               LogoLanguageList += xmlFile.section('.', -2, -2);
           }
+          LogoLanguageList.sort();
       </code>
       <default code="true">LogoLanguageList</default> 
-    </entry>
-    <entry name="LanguageComboBox" type="Int">
-      <!--This is the parameter that actually gets changed (and emits the signal to the dialog)-->
-      <label>The value of the ComboBox</label> 
-      <default>0</default>
     </entry>
     <entry name="LogoLanguage" type="String">
       <!--This is the String that actually get picked up by the app. It is not directly changeable by the ComboBox but is translated from the Ints that ComboBox LogoLanguageList emits. It is better to have the logic that changes the Ints to Strings at the settings dept.-->
@@ -44,6 +40,7 @@
           QString desktopLanguage = globalConf->readEntry("Language");
           kdDebug(0) &lt;&lt; "desktopLanguage: "&lt;&lt; desktopLanguage &lt;&lt;endl;
           QString defaultLanguage = "en_US";
+          int itemCount = 0; // for the LanguageComboBox
           for (QStringList::Iterator it = LogoLanguageList.begin(); it != LogoLanguageList.end(); ++it ) {
               QString testLanguage(*it);
               if (testLanguage == desktopLanguage) { // exact match
@@ -53,10 +50,17 @@
                   defaultLanguage = testLanguage.left(2);
                   break;
               }
+              itemCount++;
           }
           kdDebug(0) &lt;&lt; "defaultLanguage: "&lt;&lt; defaultLanguage &lt;&lt;endl;
       </code>
       <default code="true">defaultLanguage</default> 
+    </entry>
+    <entry name="LanguageComboBox" type="Int">
+      <!--This is the parameter that actually gets changed (and emits the signal to the dialog)-->
+      <label>The value of the ComboBox</label>
+      <code>// see the previous codeblock for int itemCount.</code>
+      <default code="true">itemCount</default>
     </entry>
   </group> 
 </kcfg>

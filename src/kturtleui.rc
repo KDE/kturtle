@@ -8,6 +8,7 @@
       <Action name="open_examples" />
       <Separator />
       <Action name="run" />
+      <Action name="stop" />
       <Separator />
       <Action name="file_save" />
       <Action name="file_save_as" />
@@ -35,10 +36,6 @@
       <Action name="full_screen" />
       <Separator />
       <Action name="line_numbers" />
-      <Separator />
-      <Action name="show_editor" />
-      <Merge name="StandardToolBarMenuHandler" />
-      <Action name="options_show_statusbar" />
     </Menu>
     
     <Menu name="tools" noMerge="1"><text>&amp;Tools</text>
@@ -87,14 +84,7 @@
   <Action name="color_picker" />
   <Separator />
   <Action name="run" />
-  <Separator />
-  <Action name="show_numbers" />
+  <Action name="stop" />
 </ToolBar>
- 
-<ActionProperties>
-  <Action shortcut="Alt+Return" name="run" />
-  <Action shortcut="Alt+C" name="color_picker" />
-  <Action shortcut="Ctrl+E" name="open_examples" />
-</ActionProperties>
 
 </kpartgui>
