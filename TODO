@@ -3,10 +3,10 @@ This list is devided into BIG-TODOs, normalTODOs, TO-oeps-meDOitALLreadies and S
 
 **** URGENT ****
 
-cies: urgets issues are fixed
+cies: urgent issues are fixed
 
 
-
+annma: implement KConfigXT properly i.e. set the default xml file in the KConfig XT files plus clean the mess between TranslationFile and TranslationFilePath
 
 
 **** BIG-TODOs: ****

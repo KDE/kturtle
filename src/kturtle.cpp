@@ -32,7 +32,7 @@ MainWindow::MainWindow() : KMainWindow( 0, i18n("KTurtle") ) {
     
     setMinimumSize(200,200);
     
-    setupActions();
+    setupActions(); 
     setupCanvas();
     setupEditor();
     setupStatusBar();
@@ -46,7 +46,6 @@ MainWindow::MainWindow() : KMainWindow( 0, i18n("KTurtle") ) {
     filename2saveAs = "";
     setCaption( i18n("Untitled") );
     picker = 0; // for the colorpickerdialog
-    //checkTranslationFile(); // translationFile should be know else: error.
     
     // at last; must be sure everything is already set up ;)
     setAutoSaveSettings ("MainWindow Settings");
@@ -55,8 +54,8 @@ MainWindow::MainWindow() : KMainWindow( 0, i18n("KTurtle") ) {
     if ( !initialGeometrySet() && !kapp->config()->hasGroup("MainWindow Settings") ) {
         resize( 640, 480 );
     }
-    
-    //readConfig ();
+             
+    readConfig ();
 }
 
 MainWindow::~MainWindow() { // The MainWindow destructor
@@ -529,15 +528,16 @@ void MainWindow::slotConfigureKeys() {
     KKeyDialog::configure(actionCollection(), this);
 }
 
-void MainWindow::checkTranslationFile() {
+void MainWindow::readConfig() {
     // Here we check wether there is a TranslationFile selected in settings...
     // if not we will set it to 'en_US' by default
-    // if ( !QFile( Settings::translationFilePath() ).exists() ) {
+    // TODO use KConfig XT instead of KConfig
     KConfig *config = kapp->config();
+    config->setGroup("language");
     if ( !QFile( config->readPathEntry("TranslationFile") ).exists() ) {
         kdDebug(0)<<"--1--"<<endl;
         if ( !locate("data", "kturtle/data/logokeywords.en_US.xml").isNull() ) {
-            config->setGroup("language");
+            //config->setGroup("language");
             config->writeEntry("TranslationFile", locate("data", "kturtle/data/logokeywords.en_US.xml") );
             config->sync(); // doesnt work
             // the settings dialog will not show the translationFile the first time it is started
