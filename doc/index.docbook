@@ -87,10 +87,11 @@ full-screen mode
 </itemizedlist>
 </para>
 <para>
-
+Not yet written
 </para>
 <para>
 
+Not yet written
 </para>
 </chapter>
 
@@ -259,21 +260,25 @@ Let's see those 4 commands in action.
 <sect1 id="calculations">
 <title>Simple Calculations</title>
 <para>
+Not yet written
 </para>
 </sect1>
 <sect1 id="variables">
 <title>Using Variables: creating 'number containers'</title>
 <para>
+Not yet written
 </para>
 </sect1>
 <sect1 id="strings">
 <title>Using strings: creating 'text containers'</title>
 <para>
+Not yet written
 </para>
 </sect1>
 <sect1 id="logic">
 <title>Logic: asking the computer simple questions</title>
 <para>
+Not yet written
 </para>
 </sect1>
 <sect1 id="recursion">
@@ -586,12 +591,14 @@ Draw a maze for example
 <sect1  id="kturtle-settings-menu">
 <title>The <guimenu>Settings</guimenu> Menu</title>
 <para>
+Not yet written
 </para>
 </sect1>
 
 <sect1  id="kturtle-help-menu">
 <title>The <guimenu>Help</guimenu> Menu</title>
 <para>
+Not yet written
 </para>
 </sect1>
 
@@ -602,9 +609,11 @@ Draw a maze for example
 
 <para>
 
+Not yet written
 </para>
 <para>
 
+Not yet written
 </para>
 </chapter>
 
