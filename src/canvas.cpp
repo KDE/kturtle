@@ -219,18 +219,15 @@ void Canvas::loadSpriteFrames(QString name) {
 		exit(1);
 	}
     QCanvasPixmapArray* SpriteFrames = new QCanvasPixmapArray(locate("data","kturtle/pics/turtle.png") , 1);
-    QCanvasSprite* Sprite = new QCanvasSprite(SpriteFrames, TurtleCanvas);
+    Sprite = new QCanvasSprite(SpriteFrames, TurtleCanvas);
     Sprite->setZ(1);
-    // (1) updateSprite(CanvasWidth/2, CanvasHeight/2);
-    Sprite->move( (double)(CanvasWidth/2 - ( Sprite->width() / 2 ) ), (double)(CanvasHeight/2 - ( Sprite->height() / 2 ) ), -1 );
+    updateSprite(CanvasWidth/2, CanvasHeight/2);
     
     Sprite->show();
 }
 
 void Canvas::updateSprite(int x, int y) {
-    Sprite->hide();
-    Sprite->move( (double)(x - (Sprite->width() / 2) ), (double)(y - ( Sprite->height() / 2) ), -1 );
-    Sprite->show();
+    Sprite->move( (double)(x - ( Sprite->width() / 2 ) ), (double)(y - ( Sprite->height() / 2 ) ), -1 );
 }
 
 // Slots:
