@@ -54,10 +54,9 @@ class MainWindow : public KParts::MainWindow
     void slotSaveFile();
     void slotSaveAs();
     void slotSave(KURL &);
-    // TODO: linenumbers; probably when going from KTextEdit to KTextEditor::Editor
-    // void slotLineNumbers();
     void slotPrint();
     void slotQuit();
+    /// monitor wether to start the execution or to abort it
     void slotExecute();
     
     void slotUndo();
@@ -72,8 +71,9 @@ class MainWindow : public KParts::MainWindow
     void slotFindNext();
     void slotFindPrevious();
     void slotReplace();
+    /// show/hide the line numbers, from KTextEditor
     void slotToggleLineNumbers();
-    
+    /// get the cursor position indicated in the statusbar
     void slotCursor();
 
     void slotIndent();
@@ -102,6 +102,7 @@ class MainWindow : public KParts::MainWindow
     void setupStatusBar();
     void readConfig(KConfig *config);
     void writeConfig(KConfig *config);
+    /// start parsing the text in the editor
     void startExecution();
     void abortExecution();
     void finishExecution();
@@ -146,13 +147,17 @@ class MainWindow : public KParts::MainWindow
     bool                executing;
 
   private slots:
+     /// Standard full-screen mode
     void slotToggleFullscreen();
     void slotSettings();
     void slotUpdateSettings();
     void slotConfigureKeys();
     void slotColorPicker();
+    /// The 'run' action is available when there is some text in the editor
     void setRunEnabled();
+    /// Open the files that are in the examples folders
     void slotOpenEx();
+    /// Load a logo file and display it in the editor
     void loadFile(KURL url);
 
   protected:

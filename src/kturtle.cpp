@@ -93,8 +93,6 @@ MainWindow::~MainWindow() { // The MainWindow destructor
 }
 
 
-
-
 void MainWindow::setupActions() {
     KActionCollection *ac = actionCollection();
     // Set up file actions
@@ -104,15 +102,11 @@ void MainWindow::setupActions() {
     m_recentFiles = KStdAction::openRecent(this, SLOT(slotOpen(const KURL&)), ac);
     KStdAction::save(this, SLOT(slotSaveFile()), ac);
     KStdAction::saveAs(this, SLOT(slotSaveAs()), ac);
-    //
     run = new KAction(i18n("&Execute Commands"), "gear", 0, this, SLOT( slotExecute() ), ac, "run");
     run->setEnabled(false);
-    //
     KStdAction::print(this, SLOT(slotPrint()), ac);
-    //
     KStdAction::quit(this, SLOT(slotQuit()), ac);
-
-    // setup edit actions
+    // Set up edit actions
     KStdAction::undo(this, SLOT(slotUndo()), ac);
     KStdAction::redo(this, SLOT(slotRedo()), ac);
     KStdAction::cut(this, SLOT(slotCut()), ac);
@@ -125,13 +119,11 @@ void MainWindow::setupActions() {
     KStdAction::findNext(this, SLOT(slotFindNext()), ac);
     KStdAction::findPrev(this, SLOT(slotFindPrevious()), ac);
     KStdAction::replace(this, SLOT(slotReplace()), ac);
-    
-    // setup view actions
-    //new KToggleAction(i18n("Show &Line Numbers"), 0, Qt::Key_F11, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
+    // Set up view actions
+    new KToggleAction(i18n("Show &Line Numbers"), 0, Qt::Key_F11, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
     m_fullscreen = KStdAction::fullScreen(this, SLOT( slotToggleFullscreen() ), ac, this, "full_screen");
     m_fullscreen->setChecked(b_fullscreen);
-
-    // setup tools actions
+    // Set up tools actions
     new KToggleAction(i18n("&Color Picker"), "colorize", 0, this, SLOT(slotColorPicker()), ac, "color_picker");
     new KAction(i18n("&Indent"), "indent", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
     new KAction(i18n("&Unindent"), "unindent", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
@@ -171,22 +163,20 @@ void MainWindow::setupEditor() {
              hli->setHlMode(i);
          }
     }
-    ///allow the cursor position to be indicated in the statusbar
+    // allow the cursor position to be indicated in the statusbar
     connect(editor, SIGNAL(cursorPositionChanged()), this, SLOT(slotCursor()));
-    ///allow to enable run only when some text is written in editor
+    // allow to enable run only when some text is written in editor
     connect( editor->document(), SIGNAL( textChanged() ), this, SLOT( setRunEnabled() ) );
 }
 
 void MainWindow::setupStatusBar() {
     statusBar()->insertItem("", IDS_INS, 0, true);
-    statusBar()->insertItem(" ", 2, 0, true);//blank
+    statusBar()->insertItem(" ", 2, 0, true);//to add a space, ID is 2
     statusBar()->insertItem("",  IDS_STATUS, 1, false);
-    QString linenumber;
-    linenumber = i18n(" Line: %1 Col: %2 ").arg(1).arg(1);
+    QString linenumber = i18n(" Line: %1 Col: %2 ").arg(1).arg(1);
     statusBar()->insertItem(linenumber,  IDS_STATUS_CLM, 0, true);
     statusBar()->setItemAlignment( IDS_STATUS, AlignLeft);
     statusBar()->show();
-
     // fill the statusbar
     slotStatusBar(i18n("INS"), IDS_INS); 
     slotStatusBar(i18n("Welcome to KTurtle..."),  IDS_STATUS); // the message part
@@ -203,7 +193,6 @@ void MainWindow::setupCanvas() {
     connect( TurtleView, SIGNAL( CanvasResized() ), this, SLOT( slotUpdateCanvas() ) );
 }
 
-// Implementation of most of the items in the File and Edit menus //
 void MainWindow::slotNewFile() {
     if ( !editor->document()->isModified() && CurrentFile == "" ) {
         return; // do nothing when nothing is to be done
@@ -469,9 +458,6 @@ void MainWindow::slotMessageDialog(QString text) {
     KMessageBox::information( this, text, i18n("Message") );
 }
 
-
-
-
 void MainWindow::slotUndo() {
     dynamic_cast<KTextEditor::UndoInterface*>(doc)->undo();
 }
@@ -509,7 +495,6 @@ void MainWindow::slotToggleInsert() {
      } 
 }
 
-
 void MainWindow::slotFind() {
 kdDebug(0)<<"qwdqw"<<endl;
     KAction *a = editor->actionCollection()->action("edit_find");
@@ -535,9 +520,6 @@ void MainWindow::slotToggleLineNumbers() {
     KToggleAction *a = dynamic_cast<KToggleAction*>( editor->actionCollection()->action("view_line_numbers") );
     a->activate();
 }
-
-
-
 
 void MainWindow::slotToggleFullscreen() {
     if (!b_fullscreen) {
@@ -587,11 +569,6 @@ void MainWindow::slotUpdateCanvas() {
     TurtleView->show();
 }
 
-
-
-
-
-
 void MainWindow::slotColorPicker() {
     // in the constructor picker is initialised as 0
     // if picker is 0 when this funktion is called a colorpickerdialog is created and connected
@@ -636,7 +613,6 @@ void MainWindow::slotUnComment() {
     KAction *a = editor->actionCollection()->action("tools_uncomment");
     a->activate();
 }
-
 
 void MainWindow::slotSettings() {
     // Check if there is already a dialog, if so bring it to the foreground.
@@ -712,17 +688,14 @@ void MainWindow::slotSettings() {
 }
 
 void MainWindow::slotUpdateSettings() {
-    connect( this, SIGNAL( ResizeCanvas(int, int) ), TurtleView, SLOT( slotResizeCanvas(int, int) ) );
-    emit ResizeCanvas( Settings::canvasWidth(), Settings::canvasWidth() );
-    // something with the xml-translation-file
+    	connect( this, SIGNAL( ResizeCanvas(int, int) ), TurtleView, SLOT( slotResizeCanvas(int, int) ) );
+   	 emit ResizeCanvas( Settings::canvasWidth(), Settings::canvasWidth() );
+    	// something with the xml-translation-file
 }
 
 void MainWindow::slotConfigureKeys() {
     KKeyDialog::configure(actionCollection(), this);
 }
-
-
-
 
 void MainWindow::slotContextHelp() {
 }
@@ -732,7 +705,6 @@ void MainWindow::slotContextHelpUpdate() {
     
     ContextHelp->setText( i18n("Help on:") + " " + keyword );
 }
-
 
 void MainWindow::readConfig(KConfig *config) {
         if ( Settings::translationFilePath().isNull() ) {
@@ -798,13 +770,12 @@ void MainWindow::loadFile(KURL url) {
     }
 }
 
-/// the cursor position is indicated in the statusbar
 void MainWindow::slotCursor() {
-  uint cursorLine;
-  uint cursorCol;
-  dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->cursorPositionReal(&cursorLine, &cursorCol);
-  QString linenumber = i18n(" Line: %1 Col: %2 ").arg(cursorLine+1).arg(cursorCol+1);
-  statusBar()->changeItem(linenumber, IDS_STATUS_CLM);
+  	uint cursorLine;
+  	uint cursorCol;
+ 	 dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->cursorPositionReal(&cursorLine, &cursorCol);
+  	QString linenumber = i18n(" Line: %1 Col: %2 ").arg(cursorLine+1).arg(cursorCol+1);
+  	statusBar()->changeItem(linenumber, IDS_STATUS_CLM);
 }
 
 
