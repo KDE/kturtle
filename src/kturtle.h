@@ -42,6 +42,7 @@ class MainWindow : public KParts::MainWindow
     void slotSaveFile();
     void slotSaveAs();
     void slotSave(KURL &);
+    void slotSaveCanvas();
     void slotPrint();
     void slotQuit();
     /// monitor wether to start the execution or to abort it

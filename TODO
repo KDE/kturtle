@@ -1,20 +1,13 @@
 This is the TODO file of the KTurtle project, here the things are put that still need implmentation.
 This list is devided into URGENT, BIG-TODOs, normalTODOs, TO-oeps-meDOitALLreadies and StillSubjectToDiscussions :-)
 
-
-Cies is working on 2 things at the same time:
-1) if error move cursor to place of error
->>>>>>>> column of error is b0rk3d
-2) context sensitive help menu item...
-   (only the menu item for now... we have to think of something to connect it to the help center later)
-i write this mainly to remind myself :-)
-
-
 BUGS
-- when there is an error, display only 1 error, the first.
-- The gear does not come back after errors.
-- get the logo highlight by default - save the config for highlight    //done
-DONE - the caption of the window does not display the title of the saved file after 'save as'
+- when there is an error, display only the most descriptive error
+- with long lines and wrapping the canvas can get into a endless loop -> 100%CPU
+       i tried a lot to fix this allready, maybe my solution needs some tuning :)
+       maybe i should just catch errors and break the loop :)
+- ...
+
 
 **** URGENT ****
 
@@ -88,6 +81,8 @@ cies: Make good error messages with links to corresponing help pages.
 cies: Have a look a the BUGGING SCRIPTS as mentioned below
 
 
+
+Add a what-to-print (canvas/editor) choise, and add a 'save canvas as' aktion
 
 
 

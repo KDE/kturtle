@@ -2,6 +2,9 @@
  * Copyright (C) 2003 Cies Breijs <cies # showroommama ! nl>
  */
 
+#include <qpainter.h>
+#include <qpixmap.h>
+
 #include <kdebug.h>
 
 #include "settings.h"
@@ -42,6 +45,14 @@ void Canvas::initValues() {
     // construct the default sprite
 //    loadSpriteFrames("logo");
 }
+
+QPixmap* Canvas::Canvas2Pixmap() {
+    pixmap = QPixmap( TurtleCanvas->width(), TurtleCanvas->height() );
+    QPainter painter(&pixmap);
+    TurtleCanvas->drawArea(TurtleCanvas->rect(), &painter);
+    return &pixmap;
+}
+
 
 void Canvas::Line(int xa, int ya, int xb, int yb) {
     QCanvasLine* l = new QCanvasLine(TurtleCanvas);

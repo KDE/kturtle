@@ -11,6 +11,7 @@
       <Separator />
       <Action name="file_save" />
       <Action name="file_save_as" />
+      <Action name="save_canvas" />
       <Separator />
       <Action name="file_print" />
       <Separator />

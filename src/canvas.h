@@ -20,6 +20,7 @@ class Canvas : public QCanvasView
 
   public:
     Canvas(QWidget *parent = 0, const char *name = 0);
+    QPixmap* Canvas2Pixmap();
   
   public slots:
     void slotClear();
@@ -64,9 +65,11 @@ class Canvas : public QCanvasView
     QPoint Offset(int x, int y);
     void loadSpriteFrames(QString name);
     
-    QCanvas *TurtleCanvas;
-    QCanvasSprite* Sprite;
-    QCanvasPixmapArray* SpriteFrames;
+    QCanvas             *TurtleCanvas;
+    QPixmap              pixmap;
+    QCanvasSprite       *Sprite;
+    QCanvasPixmapArray  *SpriteFrames;
+    QFont                font;
     int PosX, PosY;
     int CanvasWidth, CanvasHeight;
     int PenWidth;
@@ -74,7 +77,6 @@ class Canvas : public QCanvasView
     int FgR, FgG, FgB;
     bool Pen;
     bool Wrap;
-    QFont font;
 };
 
 #endif // _CANVAS_H_

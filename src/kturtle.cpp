@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 #include <qregexp.h>
+#include <qpixmap.h>
 
 #include <kapplication.h>
 #include <kconfigdialog.h>
@@ -92,6 +93,7 @@ void MainWindow::setupActions() {
     m_recentFiles = KStdAction::openRecent(this, SLOT(slotOpen(const KURL&)), ac);
     KStdAction::save(this, SLOT(slotSaveFile()), ac);
     KStdAction::saveAs(this, SLOT(slotSaveAs()), ac);
+    new KAction(i18n("Save &Canvas"), 0, 0, this, SLOT(slotSaveCanvas()), ac, "save_canvas");
     run = new KAction(i18n("&Execute Commands"), "gear", 0, this, SLOT( slotExecute() ), ac, "run");
     run->setEnabled(false);
     KStdAction::print(this, SLOT(slotPrint()), ac);
@@ -224,10 +226,10 @@ void MainWindow::slotSaveFile() {
 }
 
 void MainWindow::slotSaveAs() {
-       KURL url;
-      while(true) {
-      url = KFileDialog::getSaveURL( QString(":logo_dir"), QString("*.logo|") +
-      i18n("Logo files"), this, i18n("Save logo file...") );
+    KURL url;
+    while(true) {
+    url = KFileDialog::getSaveURL( QString(":logo_dir"), QString("*.logo|") +
+    i18n("Logo files"), this, i18n("Save logo file...") );
         if (url.isEmpty()) { // when cancelled the KFiledialog?
             return;
         }
@@ -245,24 +247,48 @@ void MainWindow::slotSaveAs() {
     slotSave(url);
 }
 
-void MainWindow::slotSave(KURL &url)
-{
-	if ( !url.isEmpty())
- 	 {
-		filename2saveAs = url.url();
-    		editor->document()->saveAs(url);
-    		CurrentFile = url.fileName();
-    		setCaption(CurrentFile);
-    		slotStatusBar(i18n("Saved file to: %1").arg(CurrentFile),  IDS_STATUS); 
-    		m_recentFiles->addURL( url );
-		editor->document()->setModified(false);
-	}
-	else
-	{
-	  	slotSaveAs();
-	}
+void MainWindow::slotSave(KURL &url) {
+    if ( !url.isEmpty() ) {
+        filename2saveAs = url.url();
+        editor->document()->saveAs(url);
+        CurrentFile = url.fileName();
+        setCaption(CurrentFile);
+        slotStatusBar(i18n("Saved file to: %1").arg(CurrentFile),  IDS_STATUS); 
+        m_recentFiles->addURL( url );
+        editor->document()->setModified(false);
+    } else {
+        slotSaveAs();
+    }
 }
 
+void MainWindow::slotSaveCanvas() {
+    KURL url;
+    while(true) {
+    url = KFileDialog::getSaveURL( QString(":logo_dir"), QString("*.png|") +
+    i18n("Pictures"), this, i18n("Save canvas as picture...") );
+        if (url.isEmpty()) { // when cancelled the KFiledialog?
+            return;
+        }
+        if (QFile(url.path()).exists()) { 
+            int result = KMessageBox::warningContinueCancel( this,
+                i18n("A picture named \"%1\" already exists.\n"
+                     "Are you sure you want to overwrite it?").arg(url.url()),
+                i18n("Overwrite existing picture?"), i18n("Overwrite") );
+            if (result != KMessageBox::Continue) {
+                return;
+            }
+        }
+        break;
+    }
+    QPixmap* pixmap = TurtleView->Canvas2Pixmap();
+    /// NOW THE PIXMAP SHOULD BE SAVED!!! better look at an other app (ksnapshot) how to do that. :-)
+//     editor->document()->saveAs(url);
+//     CurrentFile = url.fileName();
+//     setCaption(CurrentFile);
+//     slotStatusBar(i18n("Saved file to: %1").arg(CurrentFile),  IDS_STATUS); 
+//     m_recentFiles->addURL( url );
+//     editor->document()->setModified(false);
+}
 
 void MainWindow::slotOpenFile() {
       KURL url = KFileDialog::getOpenURL( QString(":logo_dir"), QString("*.logo|") +
