@@ -49,21 +49,39 @@ void Canvas::Line(int xa, int ya, int xb, int yb, bool repeat) {
     i->setPen( QPen( QColor(FgR, FgB, FgG), PenWidth, SolidLine ) );
     i->setZ(1);
     i->show();
-    if ( Wrap && !TurtleCanvas->onCanvas(xb, yb) && repeat == false ) {
+    kdDebug(0)<<"Line:: "<<xa<<", "<<ya<<", "<<xb<<", "<<yb<<endl;
+    if ( Wrap && !TurtleCanvas->onCanvas(xb, yb) ) {
         intpair offset = Offset(xb, yb);
         int xi = offset.x;
         int yi = offset.y;
-        while ( xi != 0 ) {
+	if ( CrossingBorder(xa, ya, xb, yb, false) && offset.x != 0 ) {
+	    kdDebug(0)<<"-Xtranlation"<<endl;
             Line( xa - ( xi * CanvasWidth ), ya, 
                   xb - ( xi * CanvasWidth ), yb, true );
-            if (xi > 0) { xi--; } else if (xi < 0) { xi++; } // offset.x > 0 ? offset.x-- : offset.x++;
-        }
-        while ( yi != 0 ) {
+	} else if ( CrossingBorder(xa, ya, xb, yb, true) && offset.y != 0 ) {
+	    kdDebug(0)<<"-Ytranlation"<<endl;
             Line( xa, ya - ( yi * CanvasHeight ), 
                   xb, yb - ( yi * CanvasHeight ), true );
-            if (yi > 0) { yi--; } else if (yi < 0) { yi++; } // offset.y > 0 ? offset.y-- : offset.y++;
-        }
+	}
     }
+}
+
+bool Canvas::CrossingBorder(int xa, int ya, int xb, int yb, bool XorY) {
+    // this class returns true it the top/bottom border of the canvas is crossed
+    // and return false if the left/right border is crossed
+    //          y = A * x + B
+    float A = (float)( yb - ya ) / (float)( xb - xa );
+    int B = ya - (int)( ( A * xa ) );
+    int x_sT = (int)( ( -B ) / A );  // A * x_sT + B = 0  =>   x_sT = -B / A 
+    int x_sB = (int)( ( CanvasHeight - B ) / A );  // A * x_sB + B = CW  =>   x_sB = (CW - B) / A
+    int y_sL = B;  // A * 0 + B = y_sL  =>  y_sL = B
+    int y_sR = (int)( A * CanvasWidth ) + B;
+    kdDebug(0)<<"CB:: "<<A<<", "<<B<<", "<<x_sT<<", "<<x_sB<<", "<<y_sL<<", "<<y_sR<<", "<<endl;
+    if ( XorY == true  && ( ( 0 < x_sT && x_sT < CanvasWidth )  || 
+                            ( 0 < x_sB && x_sB < CanvasWidth ) ) )  { return true; } 
+    if ( XorY == false && ( ( 0 < y_sL && y_sL < CanvasHeight ) ||
+                            ( 0 < y_sR && y_sR < CanvasHeight ) ) ) { return true; }
+    return false;
 }
 
 intpair Canvas::Offset(int x, int y) {
@@ -74,7 +92,7 @@ intpair Canvas::Offset(int x, int y) {
     if ( y < 0 ) { y = y - CanvasHeight; } 
     offset.x = x / CanvasWidth;
     offset.y = y / CanvasHeight;
-    kdDebug(0)<<"  offset start:"<<x<<", "<<y<<"offset end:"<<offset.x<<", "<<offset.y<<endl;
+    kdDebug(0)<<"Offset::  x:"<<offset.x<<", y:"<<offset.y<<endl;
     return offset;
 }
 
@@ -108,7 +126,7 @@ void Canvas::slotClear() {
 void Canvas::slotGo(int x, int y) {
     if ( Wrap && !TurtleCanvas->onCanvas(x, y) ) {
         intpair offset = Offset(x, y);
-        kdDebug(0)<<"offset:"<<offset.x<<", "<<offset.y<<"  X:"<<x<<", Y:"<<y;
+        kdDebug(0)<<"slotGo:: offset:"<<offset.x<<", "<<offset.y<<"  X:"<<x<<", Y:"<<y;
         PosX = x - (offset.x * CanvasWidth);
         PosY = y - (offset.y * CanvasHeight);
 	kdDebug(0)<<"   PosXnew:"<<PosX<<", PosYnew:"<<PosY<<endl;
