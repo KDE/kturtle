@@ -78,12 +78,12 @@ class Canvas : public QCanvasView
 	private:
 		void initValues();
 		
-		void line(int xa, int ya, int xb, int yb);
-		void lineShell(int xa, int ya, int xb, int yb);
+		void line(double xa, double ya, double xb, double yb);
+		void lineShell(double xa, double ya, double xb, double yb);
 		bool endlessLoop(QPoint begin, QPoint end);
-		bool pointInRange(int px, int py, int xa, int ya, int xb, int yb);
+		bool pointInRange(double px, double py, double xa, double ya, double xb, double yb);
 		QPoint offset(int x, int y);
-		QPoint translationFactor(int xa, int ya, int xb, int yb);
+		QPoint translationFactor(double xa, double ya, double xb, double yb);
 		
 		void loadSpriteFrames(QString name);
 		void updateSpritePos();

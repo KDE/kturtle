@@ -179,17 +179,16 @@ void Canvas::slotGoY(double y)
 void Canvas::slotForward(int x)
 {
 	float f = (float)x;
-	double posXnew = posX + f * cos(direction);
-	double posYnew = posY - f * sin(direction);
+	double posXnew = posX + ( (double)x * cos(direction) );
+	double posYnew = posY - ( (double)x * sin(direction) );
 	if (pen) lineShell( ROUND2INT(posX), ROUND2INT(posY), ROUND2INT(posXnew), ROUND2INT(posYnew) );
 	slotGo(posXnew, posYnew);
 }
 
 void Canvas::slotBackward(int x)
 {
-	float f = (float)x;
-	double posXnew = posX - f * cos(direction);
-	double posYnew = posY + f * sin(direction);
+	double posXnew = posX - ( (double)x * cos(direction) );
+	double posYnew = posY + ( (double)x * sin(direction) );
 	if (pen) lineShell( ROUND2INT(posX), ROUND2INT(posY), ROUND2INT(posXnew), ROUND2INT(posYnew) );
 	slotGo(posXnew, posYnew);
 }
@@ -219,18 +218,18 @@ void Canvas::slotCenter()
 	updateSpritePos();
 }
 
-void Canvas::slotSetpenWidth(int w)
+void Canvas::slotSetPenWidth(int w)
 {
 	if ( w == 1 ) penWidth = 0; // 0 gives 1 pixel lines using fast algorithem
 	else penWidth = w;
 }
 
-void Canvas::slotpenUp()
+void Canvas::slotPenUp()
 {
 	pen = false;
 }
 
-void Canvas::slotpenDown()
+void Canvas::slotPenDown()
 {
 	pen = true;
 }
@@ -361,7 +360,7 @@ void Canvas::initValues()
 }
 
 
-void Canvas::lineShell(int xa, int ya, int xb, int yb)
+void Canvas::lineShell(double xa, double ya, double xb, double yb)
 {
 	// line can fallback into this function in case of cutLoop == true
 	cutLoop = false;
@@ -371,33 +370,41 @@ void Canvas::lineShell(int xa, int ya, int xb, int yb)
 	line(xa, ya, xb, yb);
 }
 
-void Canvas::line(int xa, int ya, int xb, int yb)
+void Canvas::line(double xa, double ya, double xb, double yb)
 {
 	QCanvasLine* l = new QCanvasLine(TurtleCanvas);
-	l->setPoints(xa, ya, xb, yb);
+	int intXa = ROUND2INT(xa);
+	int intYa = ROUND2INT(ya);
+	int intXb = ROUND2INT(xb);
+	int intYb = ROUND2INT(yb);	
+	l->setPoints(intXa, intYa, intXb, intYb);
 	l->setPen( QPen(QColor(fgR, fgG, fgB), penWidth, SolidLine) );
 	l->setZ(1);
 	l->show();
 	// kdDebug(0)<<"Canvas::line(); xa:"<<xa<<", ya:"<<ya<<", xb:"<<xb<<", yb:"<<yb<<endl;
-	if ( wrap && !TurtleCanvas->onCanvas(xb, yb) )
+	if ( wrap && !TurtleCanvas->onCanvas( ROUND2INT(xb), ROUND2INT(yb) ) )
 	{
-		if (endlessLoop( QPoint(xa, ya), QPoint(xb, yb) ) == true) // detect for endless loop
+		if (endlessLoop( QPoint(intXa, intYa), QPoint(intXb, intYb) ) == true) // detect for endless loop
 		{
 			slotCenter();
-			//kdDebug(0)<<"Canvas::line(): ENDLESS LOOP DETECTED, BROKE THE LOOP"<<endl;
+			kdDebug(0)<<"Canvas::line(): ENDLESS LOOP DETECTED, BROKE THE LOOP"<<endl;
 			cutLoop = true;
 			return;
 		}
+		
 		QPoint translation = translationFactor(xa, ya, xb, yb);
 		if (translation == QPoint(0, 0) )
 		{
-			// kdDebug(0)<<"Canvas::line(): ***********ERRORRR***********"<<endl;
+			// this could never happen in theory
+			kdDebug(0)<<"Canvas::line(): ***********ERRORRR***********"<<endl;
 			return;
 		}
 		// kdDebug(0)<<"Canvas::line(); translate by: <<tranlation<<endl;
-		QPoint t_startPos = QPoint(xa, ya) + QPoint(translation.x() * canvasWidth, translation.y() * canvasHeight);
-		QPoint t_endPos   = QPoint(xb, yb) + QPoint(translation.x() * canvasWidth, translation.y() * canvasHeight);
-		line( t_startPos.x(), t_startPos.y(), t_endPos.x(), t_endPos.y() );
+// QPoint t_startPos = QPoint(xa, ya) + QPoint(translation.x() * canvasWidth, translation.y() * canvasHeight);
+// QPoint t_endPos   = QPoint(xb, yb) + QPoint(translation.x() * canvasWidth, translation.y() * canvasHeight);
+// line( t_startPos.x(), t_startPos.y(), t_endPos.x(), t_endPos.y() );
+		line (xa + translation.x() * canvasWidth, ya + translation.y() * canvasHeight, 
+		      xb + translation.x() * canvasWidth, yb + translation.y() * canvasHeight);
 		if (cutLoop == true)
 		{
 			// kdDebug(0)<<"Canvas::line(): cutLoop is set to TRUE!  ABORT LINE MISSION"<<endl;
@@ -410,7 +417,7 @@ bool Canvas::endlessLoop(QPoint begin, QPoint end)
 {
 	// kdDebug(0)<<"prevStartPos3: "<<prevStartPos3<<", prevStartPos2: "<<prevStartPos2<<", prevStartPos1: "<<prevStartPos1<<", prevStartPos0: "<<begin<<", prevEndPos3: "<<prevEndPos3<<", prevEndPos2: "<<prevEndPos2<<", prevEndPos1: "<<prevEndPos1<<", prevEndPos0: "<<end<<endl;
 	if ( prevStartPos2 == begin && prevStartPos3 == prevStartPos1 &&
-	     prevEndPos2 == end && prevEndPos3 == prevEndPos1 )
+	     prevEndPos2   == end   && prevEndPos3   == prevEndPos1 )
 	{
 		// this is to break the horrible endless loop bug that i cannot fix...
 		// i need more simple reproductions of this bug to really find it
@@ -432,7 +439,7 @@ bool Canvas::endlessLoop(QPoint begin, QPoint end)
 	return false; // fallback will not be used
 }
 
-bool Canvas::pointInRange(int px, int py, int xa, int ya, int xb, int yb)
+bool Canvas::pointInRange(double px, double py, double xa, double ya, double xb, double yb)
 {
 	if ( ( ( px >= xa && px <= xb ) || ( px <= xa && px >= xb ) ) &&
 	     ( ( py >= ya && py <= yb ) || ( py <= ya && py >= yb ) ) ) return true;
@@ -449,83 +456,86 @@ QPoint Canvas::offset(int x, int y)
 	return offsetPoint;
 }
 
-QPoint Canvas::translationFactor(int xa, int ya, int xb, int yb)
+QPoint Canvas::translationFactor(double xa, double ya, double xb, double yb)
 {
 	// this class returns a QPoint which can be used to properly 'wrap' a line
-	QPoint CrossPoint[4]; // under wicked circumstances we can need this
+	QPoint crossPoint[4]; // under wicked circumstances we can need this
 	                      // namely when crossing both corners, we have 4 bordercrossings
-	QPoint Translate[4];
+	QPoint translate[4];
 	int i = 0;
-	if ( ( xb - xa ) == 0 ) // check for an infinite direction coefficient
+	if ( (xb - xa) > -0.00001 && (xb - xa) < 0.00001 ) // check for an infinite tangent (direction coefficient)
 	{
 		i++;
-		Translate[i] = QPoint(0, 1);
-		CrossPoint[i] = QPoint(xa, 0);
+		translate[i]  = QPoint( 0, 1 );
+		crossPoint[i] = QPoint( ROUND2INT(xa), 0 );
 		i++;
-		Translate[i] = QPoint(0,-1);
-		CrossPoint[i] = QPoint(xa, canvasHeight);
+		translate[i]  = QPoint(0,-1 );
+		crossPoint[i] = QPoint( ROUND2INT(xa), canvasHeight );
 	}
 	else
 	{
 		// Here we find out what crossing points the line has with canvas border lines (lines are ENDLESS here)
-		float A   = (float)( yb - ya ) / (float)( xb - xa );
-		float Bfl = (float)(ya) - ( A * (float)(xa) ); // floating B
-		int B     = ya - ROUND2INT( A * (float)(xa) ); // int B
-		int x_sT  = ROUND2INT( (-Bfl) / A );                         // A * x_sT + B = 0  =>  x_sT = -B / A 
-		int x_sB  = ROUND2INT( ( (float)(canvasHeight) - Bfl ) / A );// A * x_sB + B = CW =>  x_sB = (CW - B) / A
-		int y_sL  = B;                                               // A * 0 + B = y_sL  =>  y_sL = B
-		int y_sR  = ROUND2INT( A * (float)(canvasWidth) ) + B;
+		
+		// f(t) == (yb - ya) / (xb - xa) * t + ya - (A * xa) == A*t + B
+		double A    = (yb - ya) / (xb - xa);
+		double B    = ya - (A * xa);
+		
+		double x_sT = -B / A;                              // A * x_sT + B == 0   =>  x_sT == -B / A 
+		double x_sB = ( (double)(canvasHeight) - B ) / A;  // A * x_sB + B == CH  =>  x_sB == (CH - B) / A
+		double y_sL = B;                                   // A * 0 + B == y_sL   =>  y_sL == B
+		double y_sR = ( A * (double)(canvasWidth) ) + B;   // A * CW + B == y_sR
 		// kdDebug(0)<<"Canvas::translationFactor; rc:"<<A<<", xTop:"<<x_sT<<", xBot:"<<x_sB<<", yLft:"<<y_sL<<", yRft:"<<y_sR<<". "<<endl;
 		
 		// Here we find out what crossing points are on the borders AND on the linePIECES
+		// pointInRange only checks wether the crossing point of the ENDLESS line is on the line PIECE.
 		if ( 0 <= x_sT && x_sT <= canvasWidth && pointInRange(x_sT, 0, xa, ya, xb, yb) )
 		{
 			i++;
-			Translate[i] = QPoint(0, 1);
-			CrossPoint[i] = QPoint(x_sT, 0);
+			translate[i]  = QPoint( 0, 1 );
+			crossPoint[i] = QPoint( ROUND2INT(x_sT), 0 );
 		}
 		if ( 0 <= x_sB && x_sB <= canvasWidth && pointInRange(x_sB, canvasHeight, xa, ya, xb, yb) )
 		{
 			i++;
-			Translate[i] = QPoint(0,-1);
-			CrossPoint[i] = QPoint(x_sB, canvasHeight);
+			translate[i]  = QPoint( 0,-1 );
+			crossPoint[i] = QPoint( ROUND2INT(x_sB), ROUND2INT(canvasHeight) );
 		} 
 		if ( 0 <= y_sL && y_sL <= canvasHeight && pointInRange(0, y_sL, xa, ya, xb, yb) )
 		{
 			i++;
-			Translate[i] = QPoint(1, 0);
-			CrossPoint[i] = QPoint(0, y_sL);
+			translate[i]  = QPoint( 1, 0 );
+			crossPoint[i] = QPoint( 0, ROUND2INT(y_sL) );
 		}
 		if ( 0 <= y_sR && y_sR <= canvasHeight && pointInRange(canvasWidth, y_sR, xa, ya, xb, yb) )
 		{
 			i++;
-			Translate[i] = QPoint(-1, 0);
-			CrossPoint[i] = QPoint(canvasWidth, y_sR);
+			translate[i]  = QPoint(-1, 0 );
+			crossPoint[i] = QPoint( ROUND2INT(canvasWidth), ROUND2INT(y_sR) );
 		}
 	
 		if ( i == 0 )
 		{
-			// kdDebug(0)<<"Canvas::translationFactor: NO BORDER CROSSINGS DETECTED"<<endl;
+			// kdDebug(0)<<"Canvas::translationFactor:  FIRST NO BORDER CROSSINGS DETECTED"<<endl;
 			QPoint returnValue = QPoint(0, 0); // initiate the returnValue
 			// Here a fallback if the line has no crossings points with any borders.
 			// This mostly happens because of unlucky rounding, when this happens the line is nearly
 			// crossing a corner of the canvas.
 			// This code make sure the line is tranlated back onto the canvas.
-			// The -3 and +3 was just something i learnt from examples... I HAVE NO PROOF FOR THIS!
+			// The -2 and +2 was just something i learnt from examples... I HAVE NO PROOF FOR THIS!
 			// This, luckily, allmost never happens.
-			if ( -3 <= x_sT && x_sT <= (canvasWidth + 3) && pointInRange(x_sT, 0, xa, ya, xb, yb) )
+			if ( -2 <= x_sT && x_sT <= (canvasWidth + 2) && pointInRange(x_sT, 0, xa, ya, xb, yb) )
 			{
 				returnValue = returnValue + QPoint(0, 1);
 			}
-			if ( -3 <= x_sB && x_sB <= (canvasWidth + 3) && pointInRange(x_sB, canvasHeight, xa, ya, xb, yb) )
+			if ( -2 <= x_sB && x_sB <= (canvasWidth + 2) && pointInRange(x_sB, canvasHeight, xa, ya, xb, yb) )
 			{
 				returnValue = returnValue + QPoint(0,-1);
 			} 
-			if ( -3 <= y_sL && y_sL <= (canvasHeight + 3) && pointInRange(0, y_sL, xa, ya, xb, yb) )
+			if ( -2 <= y_sL && y_sL <= (canvasHeight + 2) && pointInRange(0, y_sL, xa, ya, xb, yb) )
 			{
 				returnValue = returnValue + QPoint(1, 0);
 			}
-			if ( -3 <= y_sR && y_sR <= (canvasHeight + 3)  && pointInRange(canvasWidth, y_sR, xa, ya, xb, yb) )
+			if ( -2 <= y_sR && y_sR <= (canvasHeight + 2)  && pointInRange(canvasWidth, y_sR, xa, ya, xb, yb) )
 			{
 				returnValue = returnValue + QPoint(-1, 0);
 			}
@@ -545,22 +555,23 @@ QPoint Canvas::translationFactor(int xa, int ya, int xb, int yb)
 		// only one border crossing, this is normal when the start point
 		// is within the canvas and no corners are crossed
 		// kdDebug(0)<<"***only one border crossing!"<<endl;
-		return Translate[1];
+		return translate[1];
 	}
 	if ( i > 1 ) 
 	{
 		// more than one border crossing starting point if of the canvas
 		// we now have to find out which crossing occurs 'first' to know how to translate the line
-		QPoint endPos(xb, yb);
-		int smallestSize = (QPoint(xa, ya) - endPos).manhattanLength();
+		// NOTE2SELF: the line does NOT have to start on the canvas!!
+		QPoint endPos( ROUND2INT(xb), ROUND2INT(yb));
+		int smallestSize = ( QPoint( ROUND2INT(xa), ROUND2INT(ya) ) - endPos ).manhattanLength();
 		// smallestSize is initiated to the total size of the line
 		for (int ii = 1; ii <= i; ii++)
 		{
-			int testSize = ( CrossPoint[ii] - endPos ).manhattanLength(); // size till the crosspoint
+			int testSize = ( crossPoint[ii] - endPos ).manhattanLength(); // size till the crosspoint
 			if (testSize < smallestSize) // if testSize is smaller then...
 			{
 				smallestSize = testSize;       // ...it becomes smallestSize
-				returnValue = Translate[ii];
+				returnValue = translate[ii];
 				// and the returnValue is updated to the corresponing translaton factors
 				// kdDebug(0)<<"Canvas::translationFactor: UPDATED"<<endl;
 			}
