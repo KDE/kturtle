@@ -34,6 +34,8 @@
 #include <ktexteditor/editinterface.h>
 #include <ktexteditor/view.h>
 
+class KRecentFilesAction;
+
 class MainWindow : public KParts::MainWindow// public KMainWindow
 {   Q_OBJECT
 
@@ -79,8 +81,7 @@ class MainWindow : public KParts::MainWindow// public KMainWindow
     
     QString             CurrentFile;
     QString             filename2saveAs;
-    
-    KRecentFilesAction * m_recentFiles;
+
     KToggleAction * m_paShowPath;
     KToggleAction * m_paShowStatusBar;
     
@@ -91,7 +92,8 @@ class MainWindow : public KParts::MainWindow// public KMainWindow
     KAction             *newAction;
     KToggleAction      *m_fullscreen;
     KToggleAction      *colorpicker;
-    // KRecentFilesAction *m_recentFiles; // TODO waiting on KURL (KURL wainting on KTextEditor)
+    KRecentFilesAction * m_recentFiles;
+    
     bool                b_fullscreen:1;
     void updateFullScreen();
     

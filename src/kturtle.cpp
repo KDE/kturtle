@@ -137,7 +137,9 @@ void MainWindow::setupActions() {
     colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", 0, this, SLOT(slotColorPicker()),
       actionCollection(), "color_picker");
    ///@todo recent file list, but this needs KURL which will be implemented with KTextEditor 
-     KStdAction::openRecent(this, SLOT( slotOpen(const KURL&) ), actionCollection());
+     //KStdAction::openRecent(this, SLOT( slotOpen(const KURL&) ), actionCollection());
+     m_recentFiles = KStdAction::openRecent(this, SLOT(slotOpen(const KURL&)),
+                                         actionCollection());
     
    ///@todo: make the EditorDock hideable, better to do it when on KTextEditor... 
     // (void)new KToggleAction(i18n("&Hide Editor"), 0, 0, this, SLOT(slotToggleHideEditor()),
@@ -601,6 +603,7 @@ void MainWindow::slotOpenEx() {
 }
 
 void MainWindow::loadFile(KURL url) {
+	m_recentFiles->addURL( url );
         QString myFile = url.path();
 	if ( !myFile.isEmpty() ) {
         QFile file(myFile);
