@@ -578,4 +578,22 @@ if ( !myFile.isEmpty() ) {
     }
 }
 
+void MainWindow::slotCopy() {
+     if (editor->hasSelectedText())
+		editor->copy();
+}
+
+void MainWindow::slotPaste() {
+     editor->paste();
+}
+
+void MainWindow::slotCut() {
+    if (editor->hasSelectedText())
+     	editor->cut();
+}
+
+void MainWindow::slotSelectAll() {
+     	editor->selectAll();
+}
+
 #include "kturtle.moc"

@@ -48,6 +48,14 @@ class MainWindow : public KMainWindow
     void slotQuit();
     void slotRun();
     void slotExecutionFinished();
+    // copy the selected text from the editor into the clipboard
+    void slotCopy();
+    // paste the text from the clipboard to the editor
+    void slotPaste();
+    //  cut the selected text from the editor and copy it into the clipboard
+    void slotCut();
+     //  select all the text from the editor 
+    void slotSelectAll();
     
     void slotStatusBar(QString text, int place);
     void slotUpdateCanvas();
