@@ -207,7 +207,7 @@ void Canvas::loadSpriteFrames(QString name) {
     // This will be fixed in qt3.3 and in the current qt-copy
 //     QCanvasPixmapArray* SpriteFrames = new QCanvasPixmapArray("/home/cies/logo/.sprites/"+name+".%1.png", 36);
 //     QCanvasSprite* Sprite = new QCanvasSprite(SpriteFrames, TurtleCanvas);
-    QCanvasPixmapArray* SpriteFrames = new QCanvasPixmapArray("/home/cies/logo/.sprites/turtle.png", 1);
+    QCanvasPixmapArray* SpriteFrames = new QCanvasPixmapArray(locate("data", "kturtle/pics/turtle.png"), 1);
     QCanvasSprite* Sprite = new QCanvasSprite(SpriteFrames, TurtleCanvas);
     Sprite->setZ(1);
     // (1) updateSprite(CanvasWidth/2, CanvasHeight/2);

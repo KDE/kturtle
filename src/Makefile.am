@@ -1,7 +1,7 @@
 # set the include path for X, qt and KDE
 INCLUDES = $(all_includes)
 
-SUBDIRS = data
+SUBDIRS = data pics
 
 # added from kjots
 AM_LDFLAGS   = $(all_libraries) $(KDE_RPATH)
