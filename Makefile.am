@@ -1,4 +1,4 @@
-SUBDIRS = src
+SUBDIRS = src examples
 
 EXTRA_DIST = AUTHORS COPYING INSTALL NEWS TODO COPYING ChangeLog kturtle.lsm
 
