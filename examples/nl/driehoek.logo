@@ -1,0 +1,6 @@
+# teken een driehoek
+
+herhaal 3 [
+  vooruit 100 
+  draailinks 120
+]

@@ -1,0 +1,17 @@
+# krullen.logo
+
+alsnieuw
+penop
+vooruit 50
+penneer
+
+herhaal 4 [
+  voor x = 1 tot 100 [
+    vooruit 10
+    draairechts 100 - x
+  ]
+]
+
+ganaar 40,40
+wacht 1
+richting 0
