@@ -89,7 +89,7 @@ a powerful editor for the Logo commands with intuitive syntax highlighting, line
 the canvas can be saved as an image or printed
 </para></listitem>
 <listitem><para>
-context help for all Logo commands, just press F1 with your cursor a command for the help
+context help for all Logo commands, just press <keysym>F1</keysym> with your cursor a command for the help
 </para></listitem>
 <listitem><para>
 KTurtle is fully translationable (currently only English, Dutch and French are supported)
@@ -98,7 +98,7 @@ KTurtle is fully translationable (currently only English, Dutch and French are s
 full-screen mode
 </para></listitem>
 <listitem><para>
-many internationalized examples make it easy to get started
+many internationalized example logo programs make it easy to get started
 </para></listitem>
 </itemizedlist>
 </para>
@@ -135,8 +135,8 @@ The canvas is the place where the commands 'draw' a picture. Most of the command
 <para>The picture that is drawn can be saved (using File->Save Canvas) or printed (using File->Print).</para>
 </sect1>
 
-<sect1 id="the-menu-bar">
-<title>The Menu Bar</title>
+<sect1 id="the-menubar">
+<title>The Menubar</title>
 <para>In the menu bar you find all the actions of KTurtle. There are in the following groups: File, Edit, View, Tools, Settings and Help.</para>
 
 <sect2 id="the-file-menu">
@@ -187,6 +187,7 @@ The canvas is the place where the commands 'draw' a picture. Most of the command
     </varlistentry>
   </variablelist>
   <variablelist>
+    <anchor id="file-execute" />
     <varlistentry>
       <term><menuchoice>
         <shortcut>
@@ -199,6 +200,7 @@ The canvas is the place where the commands 'draw' a picture. Most of the command
     </varlistentry>
   </variablelist>
   <variablelist>
+    <anchor id="file-stop" />
     <varlistentry>
       <term><menuchoice>
         <shortcut>
@@ -211,6 +213,7 @@ The canvas is the place where the commands 'draw' a picture. Most of the command
     </varlistentry>
   </variablelist>
   <variablelist>
+    <anchor id="file-save" />
     <varlistentry>
       <term><menuchoice>
         <shortcut>
@@ -223,6 +226,7 @@ The canvas is the place where the commands 'draw' a picture. Most of the command
     </varlistentry>
   </variablelist>
   <variablelist>
+    <anchor id="file-save-as" />
     <varlistentry>
       <term><menuchoice>
         <guimenu>File</guimenu>
@@ -232,6 +236,7 @@ The canvas is the place where the commands 'draw' a picture. Most of the command
     </varlistentry>
   </variablelist>
   <variablelist>
+    <anchor id="file-save-canvas" />
     <varlistentry>
       <term><menuchoice>
         <guimenu>File</guimenu>
@@ -241,6 +246,7 @@ The canvas is the place where the commands 'draw' a picture. Most of the command
     </varlistentry>
   </variablelist>
   <variablelist>
+    <anchor id="file-print" />
     <varlistentry>
       <term><menuchoice>
         <shortcut>
@@ -253,6 +259,7 @@ The canvas is the place where the commands 'draw' a picture. Most of the command
     </varlistentry>
   </variablelist>
   <variablelist>
+    <anchor id="file-quit" />
     <varlistentry>
       <term><menuchoice>
         <shortcut>
@@ -268,100 +275,441 @@ The canvas is the place where the commands 'draw' a picture. Most of the command
 
 <sect2 id="the-edit-menu">
   <title>The Edit Menu</title>
-  <sect3 id="undo">
-  <title>Undo</title>
-  <para>Undoes the last change to code. KTurtle has unlimited undo's!</para>
-  </sect3>
-  <sect3 id="redo">
-  <title>Redo</title>
-  <para>Redoes an undone change to the code.</para>
-  </sect3>
-  <sect3 id="cut">
-  <title>Cut</title>
-  <para>Cuts the selected text from the code editor to the clip board.</para>
-  </sect3>
-  <sect3 id="copy">
-  <title>Copy</title>
-  <para>Copies the selected text from the code editor to the clip board.</para>
-  </sect3>
-  <sect3 id="paste">
-  <title>Paste</title>
-  <para>Pastes the text from the clip board to the editor.</para>
-  </sect3>
-  <sect3 id="find">
-  <title>Find...</title>
-  <para>With this action you can find phrases in the code.</para>
-  </sect3>
-  <sect3 id="find-next">
-  <title>Find Next</title>
-  <para>Use this to find the next occurence of the phrase.</para>
-  </sect3>
-  <sect3 id="replace">
-  <title>Replace...</title>
-  <para>With this action you can replace phases in the code.</para>
-  </sect3>
+  <variablelist>
+    <anchor id="edit-undo" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>Z</keycap></keycombo>
+        </shortcut>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Undo</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Undoes the last change to code. KTurtle has unlimited undo's!</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-redo" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;&Shift;<keycap>Z</keycap></keycombo>
+        </shortcut>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Redo</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Redoes an undone change to the code.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-cut" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>X</keycap></keycombo>
+        </shortcut>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Cut</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Cuts the selected text from the code editor to the clip board.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-copy" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>C</keycap></keycombo>
+        </shortcut>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Copy</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Copies the selected text from the code editor to the clip board.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-paste" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>V</keycap></keycombo>
+        </shortcut>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Paste</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Pastes the text from the clip board to the editor.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>F</keycap></keycombo>
+        </shortcut>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Find...</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>With this action you can find phrases in the code.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find-next" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo><keysym>F3</keysym></keycombo>
+        </shortcut>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Find Next</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Use this to find the next occurence of the phrase.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-replace" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>R</keycap></keycombo>
+        </shortcut>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Replace</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>With this action you can replace phases in the code.</para></listitem>
+    </varlistentry>
+  </variablelist>
 </sect2>
 
 <sect2 id="the-view-menu">
   <title>The View Menu</title>
-  <sect3 id="full-screen-mode">
-  <title>Full Screen Mode</title>
-  <para>With this action you toggle the full screen mode.</para>
-  <para>Note: When code is executed while in full screen mode all but the canvas are hidden. This make is possible to write 'full screen' programs in KTurtle.</para>
-  </sect3>
-  <sect3 id="show-line-numbers">
-  <title>Show Line Numbers</title>
-  <para>With this action you can show the line numbers in the code editor.</para>
-  </sect3>
+  <variablelist>
+    <anchor id="view-fullscreen" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;&Shift;<keycap>F</keycap></keycombo>
+        </shortcut>
+        <guimenu>View</guimenu>
+        <guimenuitem>Full Screen Mode</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>With this action you toggle the full screen mode.</para>
+                <para>Note: When code is executed while in full screen mode all but the canvas are hidden. This make is possible to write 'full screen' programs in KTurtle.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="view-linenumbers" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo><keysym>F11</keysym></keycombo>
+        </shortcut>
+        <guimenu>View</guimenu>
+        <guimenuitem>Show Line Numbers</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>With this action you can show the line numbers in the code editor.</para></listitem>
+    </varlistentry>
+  </variablelist>
 </sect2>
 
 <sect2 id="the-tools-menu">
   <title>The Tools Menu</title>
-  <para></para>
+  <variablelist>
+    <anchor id="tools-color-picker" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Alt;<keycap>C</keycap></keycombo>
+        </shortcut>
+        <guimenu>Tools</guimenu>
+        <guimenuitem>Color Picker</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>This action opens the color picker. Using the color picker you can easily select a color and insert it in your logo code.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-indent" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>I</keycap></keycombo>
+        </shortcut>
+        <guimenu>Tools</guimenu>
+        <guimenuitem>Indent</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>This action 'indents' (adds white space at the beginning of) the lines that are selected. When used properly this can make code much easier to read. All examples use indendation, please check them out</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-unindent" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;&Shift;<keycap>I</keycap></keycombo>
+        </shortcut>
+        <guimenu>Tools</guimenu>
+        <guimenuitem>Unindent</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>This action 'unindents' (removes the white space at the beginning of) the lines that are selected.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-clean-indent" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>Tools</guimenu>
+        <guimenuitem>Clean Indentation</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>This action cleans 'indentation' (removes all the white space at the beginning of) the lines that are selected.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-comment" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>D</keycap></keycombo>
+        </shortcut>
+        <guimenu>Tools</guimenu>
+        <guimenuitem>Comment</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>This action add commentation characters (#) in from of the lines that are selected. Lines that start with commentation character are not executed but allow the programmer to expain a bit more about his code or it can prevent a certain piece of code from execution.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-uncomment" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;&Shift;<keycap>D</keycap></keycombo>
+        </shortcut>
+        <guimenu>Tools</guimenu>
+        <guimenuitem>Uncomment</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>This action removes the commentation characters from the selected lines.</para></listitem>
+    </varlistentry>
+  </variablelist>
 </sect2>
 
 <sect2 id="the-setting-menu">
   <title>The Settings Menu</title>
-  <para></para>
+  <variablelist>
+    <anchor id="settings-configure" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>Settings</guimenu>
+        <guimenuitem>Configure KTurtle...</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>This is used to configure KTurtle.Here you can change the language of the logo commands or set a new initial canvas size.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-advanced" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>Settings</guimenu>
+        <guisubmenu>Advanced Settings</guisubmenu>
+      </menuchoice></term>
+      <listitem><para>Here you can change things you normally do not need to change. The advanced settings submenu has three items: Configure Editor, Configure Shortcuts and Configure Toolbars.</para></listitem>
+    </varlistentry>
+  </variablelist>
 </sect2>
 
 <sect2 id="the-help-menu">
   <title>The Help Menu</title>
-  <para></para>
+  <variablelist>
+    <anchor id="help-handbook" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>Help</guimenu>
+        <guimenuitem>KTurtle Handbook</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>This action shows the handbook that you are currenty reading.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="help-whats-this" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Shift;<keysym>F1</keysym></keycombo>
+        </shortcut>
+        <guimenu>Help</guimenu>
+        <guimenuitem>What's This?</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>After activating his action the mouse arrow will be changed into a 'question mark arrow'. When this arrow is used to click on parts of KTurtle's main window a description of the particular part pops-up.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="help-context-help" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo><keysym>F1</keysym></keycombo>
+        </shortcut>
+        <guimenu>Help</guimenu>
+        <guimenuitem>Help on: ...</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>This is a very usefull function, it provides help on the code where the cursor in the code editor is at. So, for instance, you have used the 'print' command in your code, and you want to read to know what the handbook says on this command. You just move your cursor so it is in the 'print' command and you press <keysym>F1</keysym>. The handbook will then show all info on the print command.</para>
+      <para>This function is very important during while learning programming.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="help-report-bug" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>Help</guimenu>
+        <guimenuitem>Report Bug...</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Use this to report a problem with KTurtle to the developers. These reports can be used to make KTurtle even better.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="help-about-kturtle" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>Help</guimenu>
+        <guimenuitem>About KTurtle</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Here you find information on KTurtle like the authors and the licence.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="help-about-kde" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>Help</guimenu>
+        <guimenuitem>About KDE</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Here you can find information on KDE. If you dont know yet what KDE is, this is a place you should not mis!</para></listitem>
+    </varlistentry>
+  </variablelist>
 </sect2>
 
 </sect1>
 
-<sect1 id="the-tool-bar">
-<title>The Tool Bar</title>
+<sect1 id="the-toolbar">
+<title>The Toolbar</title>
 <para>Here you can quickly reach a few of the most used actions.</para>
 </sect1>
 
-<sect1 id="the-status-bar">
-<title>The Status Bar</title>
+<sect1 id="the-statusbar">
+<title>The Statusbar</title>
 <para>On the statusbar you get feedback of the state of KTurtle. On the left side it shows the feedback on the last action. On the right side you find the current location of the cursor.</para>
 </sect1>
 
 </chapter>
 
-<chapter id="logo-programming">
-<title>Logo Programming (Quick Start)</title>
-<para>Here is a quick start to programing with Logo in KTurtle. We start with easy instructions.</para>
+
+
+
+
+
+
+<chapter id="getting-started">
+<title>Getting Started</title>
+<para>When you start KTurtle you will see something like this:
+<screenshot>
+  <screeninfo>Here's a screenshot KTurtle when you start it for the first time</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase>KTurtle's main window</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+In this Gettng Started guide we assume that the language of the logo commands is English. You can check to what language KTurtle is set in <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure KTurtle</guimenuitem></menuchoice> on the Language section.</para>
 
 <sect1 id="first-steps">
 <title>First steps with Logo: meet the Turtle!</title>
+<para>You must have noticed the turtle in the middle of the canvas, you are just about to learn how to control it using commands in the code editor.</para>
 
 <sect2 id="the-turtle-moves">
 <title>The Turtle Moves</title>
-<para>Let's start by getting the Turtle moving. Our Turtle can move (forwards and backwards) and turn (left and right). Remember, you write the instructions in the editor and click execute (File->Execute Commands) them. Try this for example:
+<para>Let's start by getting the turtle moving. Our turtle can do 3 types of moves, (1) it can go forwards and backwards, (2) it can turn left and right and (3) it can go directly to a position on the screen. Try this for example:</para>
+<para>
 <screen>
 forward 90
 turnleft 90 
 </screen>
-When you typed the commands like above in the code editor you might have noticed one or more of the following things:</para>
-<para>1. That -- after clicking executing the commands -- the turtle moves up, draws a line and then turns a quater turn to the left. This because you have used the forward and the turnleft command.</para>
-<para>2. That the color of the text you typed canged while you where typing it, this is on of the features of the ditor of KTurtle, called: intuitive highlighting -- different type of commands are highlighted differently. This makes reading large blocks of code more easy.</para>
-<para>2. That the color of the text you typed canged while you where typing it, this is on of the features of the ditor of KTurtle, called: intuitive highlighting -- different type of commands are highlighted differently. This makes reading large blocks of code more easy.</para>
+Type or copy-paste the code to the code editor and execute it (using <link linkend="file-execute"><menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem></menuchoice></link>) to see the result.</para>
+
+<para>When you typed and executed the commands like above in the code editor you might have noticed one or more of the following things:</para>
+<para>1. That -- after executing the commands -- the turtle moves up, draws a line and then turns a quater turn to the left. This because you have used the <userinput>forward</userinput> and the <userinput>turnleft</userinput> commands.</para>
+<para>2. That the color of the code changed while you where typing it, this features is called: intuitive highlighting -- different types of commands are highlighted differently. This makes reading large blocks of code more easy.</para>
+<para>3. That the turtle draws a thin black line.</para>
+<para>4. Maybe you got an error message. This could simply mean two things: you could have made a mistake while copying the commands, or you should still set the correct language for the logo commands (you can do that here: <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure KTurtle</guimenuitem></menuchoice> in the Language section).</para>
+
+<para>You will likely understand that <userinput>forward 90</userinput> commanded the turtle to move forward leaving a line, and that <userinput>turnleft 90</userinput> commanded the turtle to turn 90 <glossterm linkend="degrees">degrees</glossterm> to the left.</para>
+
+<para>Please see the follow the links to the reference manual for a complete explaination of the introduced commands: forward, backward, turnleft and turnright.</para>
+</sect2>
+
+<sect2 id="more-examples">
+<title>More examples</title>
+<para>The first example was very simple so lets move on!</para>
+
+<para>
+<screen>
+canvassize 200,200
+canvascolor 0,0,0
+pencolor 255,0,0
+penwidth 5
+clear
+
+go 20,20
+direction 135
+
+forward 200
+turnleft 135
+forward 100
+turnleft 135
+forward 141
+turnleft 135
+forward 100
+turnleft 45
+
+go 40, 100
+</screen>
+Again you should type or copy-paste the code to the code editor and execute it (using <link linkend="file-execute"><menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem></menuchoice></link>) to see the result. In the next examples you are expected to know the drill.</para>
+
+<para>You might have noticed that this second example uses a lot more code. You have also seen a couple of new commands. Here a short explaination of all the new commands:</para>
+
+<para><userinput>canvassize 200,200</userinput> sets the canvas width and height to 200 <glossterm linkend="pixels">pixels</glossterm>. The width and the height are equal in length, this means the canvas should now be a square.</para>
+
+<para><userinput>canvascolor 0,0,0</userinput> makes the canvas black. <userinput>0,0,0</userinput> is an <glossterm linkend="rgb">RGB-combination</glossterm> where all values are set to <userinput>0</userinput>, which results in black.</para>
+
+<para><userinput>pencolor 255,0,0</userinput> sets the color of the pen to red. <userinput>255,0,0</userinput> is an <glossterm linkend="rgb">RGB-combination</glossterm> where only the 'red' value is set to <userinput>255</userinput> while the others (green adn blue) are set to <userinput>0</userinput>, this results in a bright shade of red.</para>
+
+<para><userinput>penwidth 5</userinput> sets the width (the size) of pen <userinput>5</userinput> <glossterm linkend="pixels">pixels</glossterm>. From now on every line the turtle draw will have a thickness of <userinput>5</userinput>, until we change the <userinput>penwidth</userinput> to something else.</para>
+
+<para><userinput>clear</userinput> clear the canvas, that is al it does.</para>
+
+<para><userinput>go 20,20</userinput> commands to turtle to go to a certain place on the canvas. Counted from the upper left corner, this place is 20 <glossterm linkend="pixels">pixels</glossterm> from the left, and 20 <glossterm linkend="pixels">pixels</glossterm> form the top of the canvas. Note that using the <userinput>go</userinput> command the turtle will not draw a line.</para>
+
+<para><userinput>direction 135</userinput> set the turtle's direction. The <userinput>turnleft</userinput> and <userinput>turnright</userinput> commands change the turtle's angle starting from its current direction. The <userinput>direction</userinput> command changes the turtles angle from zero, and thus is not relative to the turtle previous direction.</para>
+
+<para>After the direction command a lot of <userinput>forward</userinput> and <userinput>turnleft</userinput> commands follow. These command do the actual drawing.</para>
+
+<para>At last a other <userinput>go</userinput> command is used to move the turtle aside.</para>
+
+<para>Make sure you follow the links to the reference. The reference explains each command more thourroughly.</para>
+
+</sect2>
+
+
+
+
+
+
+
+
+
+<sect2 id="les">
+<title>Moples</title>
+
 <table frame="none">
 <title>Instructions for directions</title>
 <tgroup cols="2" colsep="5" rowsep="1">
@@ -466,19 +814,20 @@ Let's see those 4 commands in action.
 </screenshot>
 </sect2>
 </sect1>
+
 <sect1 id="calculations">
 <title>Simple Calculations</title>
 <para>
 Not yet written
 </para>
 </sect1>
-<sect1 id="variables">
+<sect1 id="variabless">
 <title>Using Variables: creating 'number containers'</title>
 <para>
 Not yet written
 </para>
 </sect1>
-<sect1 id="strings">
+<sect1 id="stringss">
 <title>Using strings: creating 'text containers'</title>
 <para>
 Not yet written
@@ -497,334 +846,415 @@ Draw a maze for example
 </para>
 </sect1>
 </chapter>
+
+
+
+
+
+
      
-<chapter id="commands">
-<title>Command Reference</title>
 
-<sect1 id="kturtle-file-menu">
-<title>The <guimenu>File</guimenu> Menu</title>
-<para>
-<variablelist>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Ctrl;<keycap>N</keycap></keycombo>
-</shortcut>
-<guimenu>File</guimenu>
-<guimenuitem>New</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Opens</action> a new document for KTurtle by clearing both the editor and the canvas.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Ctrl;<keycap>O</keycap></keycombo>
-</shortcut>
-<guimenu>File</guimenu>
-<guimenuitem>Open</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Open</action> a file. It launches a KDE open file dialog box which waits for you to select the file you want. Just click on the choosen file with a .logo extension and this file will be loaded in the editor.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<guimenu>File</guimenu>
-<guimenuitem>Open Recent</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Open</action> recently viewed files. You can see a submenu with the names of the recently viewed files.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Ctrl;<keycap>E</keycap></keycombo>
-</shortcut>
-<guimenu>File</guimenu>
-<guimenuitem>Open Examples</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Open</action> a dialog that allows you to choose an example of a .logo file. The examples files are translated in several languages so be sure to get a file that matches the Language setting you currently have in KTurtle.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Alt;<keycap>Return</keycap></keycombo>
-</shortcut>
-<guimenu>File</guimenu>
-<guimenuitem>Execute Commands</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Run</action> the commands currently written in the editor and display the graphical output in the canvas view.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Ctrl;<keycap>S</keycap></keycombo>
-</shortcut>
-<guimenu>File</guimenu>
-<guimenuitem>Save</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Save</action> your file. Use it often so you will not loose your work. If a file is  <emphasis>Untitled</emphasis> then <action>Save</action> becomes <action>Save As</action>.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<guimenu>File</guimenu>
-<guimenuitem>Save As</guimenuitem>
-</menuchoice></term>
-<listitem><para>Name and rename files with this command. It launches the save file dialog box. Type the name you want to give to your file in the Location field and press <keycap>Enter</keycap> or click the Save button.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<guimenu>File</guimenu>
-<guimenuitem>Save Canvas</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Save</action> your drawing which is currently on the canvas. </para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Ctrl;<keycap>P</keycap></keycombo>
-</shortcut>
-<guimenu>File</guimenu>
-<guimenuitem>Print</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Print</action> the active file in the editor. This launches the Print KDE dialog.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Ctrl;<keycap>Q</keycap></keycombo>
-</shortcut>
-<guimenu>File</guimenu>
-<guimenuitem>Quit</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Quit</action> KTurtle.</para></listitem>
-</varlistentry>
 
-</variablelist>
-</para>
+<chapter id="reference">
+<title>KTurtle's Logo Programing Reference</title>
+
+<sect1 id="commands">
+<title>Commands</title>
+<para>Using commands you tell the turtle or KTurtle to do something. Some commands need input, some give output. In this section we explain all the commands that can be used in KTurtle.</para>
+
+<sect2 id="moving-the-turtle">
+<title>Moving the turtle</title>
+<para>There are several commands to move the turtle over the screen.</para>
+  
+  <variablelist>
+    <anchor id="forward" />
+    <varlistentry>
+      <term>forward</term>
+      <listitem><para><screen>forward X</screen>
+      <userinput>forward</userinput> moves the turtle forward by the amount of X pixels. When the pen is down the turlte will leave a trail. <userinput>forward</userinput> can be abbreviated to <userinput>fw</userinput></para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="backward" />
+    <varlistentry>
+      <term>backward</term>
+      <listitem><para><screen>backward X</screen>
+      <userinput>backward</userinput> moves the turtle backward by the amount of X pixels. When the pen is down the turlte will leave a trail. <userinput>backward</userinput> can be abbreviated to <userinput>bw</userinput>.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnleft" />
+    <varlistentry>
+      <term>turnleft</term>
+      <listitem><para><screen>turnleft X</screen>
+      <userinput>turnleft</userinput> commands the turtle to turn an amount of X degrees to the left. <userinput>turnleft</userinput> can be abbreviated to <userinput>tl</userinput>.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnright" />
+    <varlistentry>
+      <term>turnright</term>
+      <listitem><para><screen>turnright X</screen>
+      <userinput>turnright</userinput>the turtle to turn an amount of X degrees to the right. <userinput>turnright</userinput> can be abbreviated to <userinput>tr</userinput>.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="direction" />
+    <varlistentry>
+      <term>direction</term>
+      <listitem><para><screen>direction X</screen>
+      <userinput>direction</userinput> set the turtle's direction to an amount of X degrees counting from zero, and thus is not relative to the turtle's previous direction. <userinput>direction</userinput> can be abbreviated to <userinput>dir</userinput>.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="center" />
+    <varlistentry>
+      <term>center</term>
+      <listitem><para><screen>center</screen>
+      <userinput>center</userinput> moves the turtle to the center on the canvas.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="go" />
+    <varlistentry>
+      <term>go</term>
+      <listitem><para><screen>go X,Y</screen>
+      <userinput>go</userinput> commands the turtle to go to a certain place on the canvas. This place is X <glossterm linkend="pixels">pixels</glossterm> from the left of the canvas, and Y <glossterm linkend="pixels">pixels</glossterm> form the top of the canvas. Note that using the <userinput>go</userinput> command the turtle will not draw a line.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gox" />
+    <varlistentry>
+      <term>gox</term>
+      <listitem><para><screen>gox X</screen>
+      <userinput>gox</userinput> using this command the turtle will move to X <glossterm linkend="pixels">pixels</glossterm> from the left of the canvas while he keeps his height.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="goy" />
+    <varlistentry>
+      <term>goy</term>
+      <listitem><para><screen>goy Y</screen>
+      <userinput>gox</userinput> using this command the turtle will move to Y <glossterm linkend="pixels">pixels</glossterm> from the top of the canvas while he keeps his on the same diatance from the left border of the canvas.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="pen">
+<title>The turtle has a pen</title>
+<para>The turtle has a pen, that draws a line when the turtle moves. There are a few commands to control the pen. In this section we explain these commands.</para>
+  <variablelist>
+    <anchor id="penup" />
+    <varlistentry>
+      <term>penup</term>
+      <listitem><para><screen>penup</screen>
+      <userinput>penup</userinput> lifts the pen from the canvas. When the pen is 'up' no line will be drawn when the turtle moves.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="pendown" />
+    <varlistentry>
+      <term>pendown</term>
+      <listitem><para><screen>pendown</screen>
+      <userinput>pendown</userinput> presses the pen down on the canvas. When the pen is press 'down' on the canvas a line will be drawn when the turtle moves. See also <userinput>penup</userinput>.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="penwidth" />
+    <varlistentry>
+      <term>penwidth</term>
+      <listitem><para><screen>penwidth X</screen>
+      <userinput>penwidth</userinput> sets the width of the pen to an amount of X <glossterm linkend="pixels">pixels</glossterm>.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="pencolor" />
+    <varlistentry>
+      <term>pencolor</term>
+      <listitem><para><screen>pencolor R,G,B</screen>
+      <userinput>pencolor</userinput> sets the color of the pen. <userinput>pencolor</userinput> takes an <glossterm linkend="rgb">RGB combination</glossterm> as input.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="canvas">
+<title>Commands to control the canvas</title>
+<para>There are several commands to control the canvas.</para>
+  <variablelist>
+    <anchor id="canvassize" />
+    <varlistentry>
+      <term>canvassize</term>
+      <listitem><para><screen>canvassize X,Y</screen>
+      With the <userinput>canvassize</userinput> command you can set the size of the canvas. It takes X and Y as input, where X is the new canvas width in <glossterm linkend="pixels">pixels</glossterm>, and Y id the new height of the canvas in <glossterm linkend="pixels">pixels</glossterm>.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvascolor" />
+    <varlistentry>
+      <term>canvascolor</term>
+      <listitem><para><screen>canvascolor R,G,B</screen>
+      <userinput>canvascolor</userinput> set the color of the canvas. <userinput>canvascolor</userinput> takes an <glossterm linkend="rgb">RGB combination</glossterm> as input.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="wrapon" />
+    <varlistentry>
+      <term>wrapon</term>
+      <listitem><para><screen>wrapon</screen>
+      With the <userinput>wrapon</userinput> command you can set <glossterm linkend="wrapping">wrapping</glossterm> 'on' for the canvas. Please see the glossary if you want to know what is <glossterm linkend="wrapping">wrapping</glossterm>.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="wrapoff" />
+    <varlistentry>
+      <term>wrapoff</term>
+      <listitem><para><screen>wrapoff</screen>
+      With the <userinput>wrapoff</userinput> command you can set <glossterm linkend="wrapping">wrapping</glossterm> 'off' for the canvas. This means the turtle can move off the canvas and can get 'lost'. Please see the glossary if you want to know what is <glossterm linkend="wrapping">wrapping</glossterm>.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="clean">
+<title>Commands to clean up</title>
+<para>There are two commands to clean up after you have made a mess.</para>
+  <variablelist>
+    <anchor id="clear" />
+    <varlistentry>
+      <term>clear</term>
+      <listitem><para><screen>clear</screen>
+      With <userinput>clear</userinput> you can clean all drawings from the canvas. All other things remain: the position and angle of the turtle, the canvascolor, the visability of the turtle and the canvassize.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="reset" />
+    <varlistentry>
+      <term>reset</term>
+      <listitem><para><screen>reset</screen>
+      <userinput>reset</userinput> cleans much more thorrow than the <userinput>clear</userinput> command. After a <userinput>reset</userinput> command everything is like is was when you had just started KTrutle.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="sprites">
+<title>The turtle is a sprite</title>
+<para>Many people do not know what sprites are, so here a short explaination: sprites are small pictures that can be moved arround the screen. (for more info see the glossary on <glossterm linkend="sprites">sprites</glossterm>). So the turtle is a sprite!</para>
+<para>Next you will find a full overview on all commands to work with sprites.</para>
+<para>[The current version of KTurtle does not yet support the use of sprites other that the turtle. With future versions you will be able to change the turtle into something of your own design!]</para>
+  <variablelist>
+    <anchor id="show" />
+    <varlistentry>
+      <term>show</term>
+      <listitem><para><screen>show</screen>
+      <userinput>show</userinput> makes the turtle visible again after it has been hidden.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="hide" />
+    <varlistentry>
+      <term>hide</term>
+      <listitem><para><screen>hide</screen>
+      <userinput>hide</userinput> hides the turtle. This can be used if the turtle does not fit inot your drawing.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="printing">
+<title>Can turtle's write?</title>
+<para>The answer is: 'yes'. The turtle can write, he writes just about everything you command him to.</para>
+  <variablelist>
+    <anchor id="print" />
+    <varlistentry>
+      <term>print</term>
+      <listitem><para><screen>print X</screen>
+      The <userinput>print</userinput> command is used to command the turtle to write something on the canvas. <userinput>print</userinput> takes numbers and strings as input. You can <userinput>print</userinput> various numbers and strings using the '+' symbol. See here a small example:
+      <screen>
+      year = 2004
+      author = "Cies"
+      print "KTurtle was made in " + 2004 + " by " + name
+      </screen>
+      </para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="fontsize" />
+    <varlistentry>
+      <term>fontsize</term>
+      <listitem><para><screen>fontsize X</screen>
+      <userinput>fontsize</userinput> sets the size of the font that is used by <userinput>print</userinput>. <userinput>fontsize</userinput> takes one input which should be a number. The size is set in <glossterm linkend="pixels">pixels</glossterm>.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="dice">
+<title>A command that roles a the dice for you</title>
+<para>There is one command that rolls a dice for you</para>
+  <variablelist>
+    <anchor id="random" />
+    <varlistentry>
+      <term>random</term>
+      <listitem><para><screen>random X,Y</screen>
+      <userinput>random</userinput> is a command that takes input and gives output. As input is requires two numbers, the first (X) set the minimum output, the second (Y) sets the maximum. The output is a randomly chosen number that is equal or greater then the minimum and equal or smaller than the maximum. Here a small example:
+      <screen>
+      repeat 500 [
+        x = random 1,20
+        forward x
+        turnleft 10 - x
+      ]
+      </screen>
+      Using the random command you can add a bit of chaos to your program.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
 </sect1>
 
-<sect1  id="kturtle-edit-menu">
-<title>The <guimenu>Edit</guimenu> Menu</title>
-<para>
-<variablelist>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Ctrl;<keycap>Z</keycap></keycombo>
-</shortcut>
-<guimenu>Edit</guimenu>
-<guimenuitem>Undo</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Undo</action> the last editing command (writing, copying, pasting...).</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Ctrl;<keycap>Shift</keycap><keycap>Z</keycap></keycombo>
-</shortcut>
-<guimenu>Edit</guimenu>
-<guimenuitem>Redo</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Redo</action> the last undo step.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Ctrl;<keycap>X</keycap></keycombo>
-</shortcut>
-<guimenu>Edit</guimenu>
-<guimenuitem>Cut</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Remove</action> the selected text if any and place a copy of that selected text in the clipboard.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Ctrl;<keycap>C</keycap></keycombo>
-</shortcut>
-<guimenu>Edit</guimenu>
-<guimenuitem>Copy</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Copy</action> the selected text, if any, to the clipboard.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Ctrl;<keycap>V</keycap></keycombo>
-</shortcut>
-<guimenu>Edit</guimenu>
-<guimenuitem>Paste</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Copy</action> the first item in the clipboardinto the editor at cursor position.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Ctrl;<keycap>F</keycap></keycombo>
-</shortcut>
-<guimenu>Edit</guimenu>
-<guimenuitem>Find</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Launch</action> the Find dialog to allow to search for text in the editor.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo><keycap>F3</keycap></keycombo>
-</shortcut>
-<guimenu>Edit</guimenu>
-<guimenuitem>Find Next</guimenuitem>
-</menuchoice></term>
-<listitem><para>Go to the nearest downwards match of the last text or regular expressionsarched for, starting from cursor position.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Ctrl;<keycap>R</keycap></keycombo>
-</shortcut>
-<guimenu>Edit</guimenu>
-<guimenuitem>Replace...</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Launch</action> the Replace dialog to replace one or more instances of a defined text with something else.</para></listitem>
-</varlistentry>
-
-</variablelist>
-</para>
+<sect1 id="turtles-doing-math">
+<title>Turtles doing math?</title>
+<para></para>
 </sect1>
 
-<sect1  id="kturtle-view-menu">
-<title>The <guimenu>View</guimenu> Menu</title>
-<para>
-<variablelist>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Ctrl;<keycap>Shift</keycap><keycap>F</keycap></keycombo>
-</shortcut>
-<guimenu>View</guimenu>
-<guimenuitem>Full Screen Mode</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Toggle</action> the full screen mode.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo><keycap>F11</keycap></keycombo>
-</shortcut>
-<guimenu>View</guimenu>
-<guimenuitem>Show Line Numbers</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Toggle</action> the line numbers in the editor. Setting it on checked will make a pane displaying the line numbers of the document visible in the left border of the  editor, and vice versa.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<guimenu>View</guimenu>
-<guimenuitem>Show Editor</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Toggle</action> the editor window to be shown or hidden. Setting it on checked will display the editor and unchecking it will hide the editor. </para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<guimenu>View</guimenu>
-<guimenuitem>Hide Statusbar</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Toggle</action> the display of the statusbar. If it is unchecked, the statusbar is displayed. When it is checked, the statusbar is hidden. </para></listitem>
-</varlistentry>
-</variablelist>
-</para>
+<sect1 id="asking-questions-getting-answers">
+<title>Asking questions, getting answers...</title>
+<para></para>
 </sect1>
 
-<sect1  id="kturtle-toolsmenu">
-<title>The <guimenu>Tools</guimenu> Menu</title>
-<para>
-<variablelist>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Alt;<keycap>C</keycap></keycombo>
-</shortcut>
-<guimenu>Tools</guimenu>
-<guimenuitem>Color Picker</guimenuitem>
-</menuchoice></term>
-<listitem><para>Brings a dialog that allow you to choose a color and then paste its code in the editor for the pen or background color.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Ctrl;<keycap>I</keycap></keycombo>
-</shortcut>
-<guimenu>Tools</guimenu>
-<guimenuitem>Indent</guimenuitem>
-</menuchoice></term>
-<listitem><para>Indent selected code in the editor.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Ctrl;<keycap>Shift</keycap><keycap>I</keycap></keycombo>
-</shortcut>
-<guimenu>Tools</guimenu>
-<guimenuitem>Unindent</guimenuitem>
-</menuchoice></term>
-<listitem><para>Unindent selected code in the editor.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<guimenu>Tools</guimenu>
-<guimenuitem>Clean Indentation</guimenuitem>
-</menuchoice></term>
-<listitem><para>Use correct indentation for the selected code in the editor.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Ctrl;<keycap>D</keycap></keycombo>
-</shortcut>
-<guimenu>Tools</guimenu>
-<guimenuitem>Comment</guimenuitem>
-</menuchoice></term>
-<listitem><para>Comment this selection by putting a # at the beginning of each selected line.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo>&Ctrl;<keycap>Shift</keycap><keycap>D</keycap></keycombo>
-</shortcut>
-<guimenu>Tools</guimenu>
-<guimenuitem>Uncomment</guimenuitem>
-</menuchoice></term>
-<listitem><para>Uncomment selected code in the editor.</para></listitem>
-</varlistentry>
-</variablelist>
-</para>
+<sect1 id="containers">
+<title>Containers</title>
+<para></para>
+
+<sect2 id="variables">
+<title>Variables: number containers</title>
+<para></para>
+</sect2>
+
+<sect2 id="strings">
+<title>Strings: text containers</title>
+<para></para>
+</sect2>
+
 </sect1>
 
-<sect1  id="kturtle-settings-menu">
-<title>The <guimenu>Settings</guimenu> Menu</title>
-<para>
-Not yet written
-</para>
+<sect1 id="controlling-execution">
+<title>Controlling execution</title>
+<para></para>
 </sect1>
 
-<sect1  id="kturtle-help-menu">
-<title>The <guimenu>Help</guimenu> Menu</title>
-<para>
-Not yet written
-</para>
+<sect1 id="learn">
+<title>Create your own commands!</title>
+<para></para>
 </sect1>
 
 </chapter>
 
-<chapter id="developers">
-<title>Developer's Guide to KTurtle</title>
 
-<para>
+<chapter id="Glossary">
+<title>Glossary</title>
 
-Not yet written
+<para>In this chapter you find the most of the 'uncommon' words that are used in the handbook explained.</para>
+
+<glosslist>
+<glossentry id="degrees">
+<glossterm>degrees</glossterm>
+<glossdef><para>Degrees a unit to meassure agles or turns. A full turn is 360 degrees, that make a half turn 180 degrees and a quater turn 90 degrees. The <userinput>turnleft</userinput>, <userinput>turnleft</userinput> and <userinput>direction</userinput> need an input in degrees.</para></glossdef>
+</glossentry>
+
+<glossentry id="pixels">
+<glossterm>pixels</glossterm>
+<glossdef><para>A pixel is a dot on the screen. If you look very close you will see that the screen of your monitor uses pixels. All images on the screen are build with these pixels. A pixel is the smallest thing that can be drawn on the screen.</para>
+<para>A lot of commands need an amount of pixels as input, these commands are: <userinput>forward</userinput>, <userinput>backward</userinput>, <userinput>go</userinput>, <userinput>gox</userinput>, <userinput>goy</userinput>, <userinput>canvassize</userinput> and <userinput>penwidth</userinput>.</para></glossdef>
+</glossentry>
+
+<glossentry id="rgb">
+<glossterm>RGB combinations</glossterm>
+<glossdef><para>RGB combinations are used to describe colors. The 'R' stand for 'red', the 'G' stands for 'green' and the 'B' stands for 'blue'. An example of an RGB combination is <userinput>255,0,0</userinput>, the first 'red' value is 255 and the others are 0, this results in a bright shade of red. Each value of an RGB combination has to be in the range 0 to 255. Here a small list of some often used colors:
+<table frame="none">
+<title>Often used RGB combinations</title>
+<tgroup cols="2" colsep="5" rowsep="1">
+<colspec colname="c1"/>
+<tbody>
+<row><entry><userinput>0,0,0</userinput></entry><entry>black</entry></row>
+<row><entry><userinput>255,255,255</userinput></entry><entry>white</entry></row>
+<row><entry><userinput>255,0,0</userinput></entry><entry>red</entry></row>
+<row><entry><userinput>150,0,0</userinput></entry><entry>dark red</entry></row>
+<row><entry><userinput>0,255,0</userinput></entry><entry>green</entry></row>
+<row><entry><userinput>0,0,255</userinput></entry><entry>blue</entry></row>
+<row><entry><userinput>0,255,255</userinput></entry><entry>light blue</entry></row>
+<row><entry><userinput>255,0,255</userinput></entry><entry>pink</entry></row>
+<row><entry><userinput>255,255,0</userinput></entry><entry>yellow</entry></row>
+</tbody>
+</tgroup>
+</table>
 </para>
-<para>
+<para>To easily find the RGB combinations of a color you should try the colorpicker! You can find the colorpicker here: <link linkend="tools-color-picker"><menuchoice><guimenu>Tools</guimenu><guimenuitem>Color Picker</guimenuitem></menuchoice></link>.</para>
+<para>Two commands need an RGB combination as input, these commands are: <userinput>canvascolor</userinput> and <userinput>pencolor</userinput>.</para></glossdef>
+</glossentry>
 
-Not yet written
+<glossentry id="input-output">
+<glossterm>input and output of commands</glossterm>
+<glossdef><para>Some commands take input, some commands give output, some commands take input and give output and some commands do not take input nor give output.</para>
+<para>Some examples of commands that only take input are:
+<screen>
+forward 50
+pencolor 255,0,0
+print "hello!"
+</screen>
+The <userinput>forward</userinput> command takes <userinput>50</userinput> as input, <userinput>forward</userinput> needs this input to know how much <glossterm linkend="pixels">pixels</glossterm> it should go forward. <userinput>pencolor</userinput> takes an  as input and <userinput>print</userinput> takes a string as input. Please note that the input can also be a container. The next example illustrates this:
+<screen>
+x = 50
+print x
+str = "hello!"
+print str
+</screen></para>
+
+<para>Now some examples of the commands that give output:
+<screen>
+x = inputwindow "please type something and press ok... thanks!"
+r = random 1,100
+</screen>
+The <userinput>inputwindow</userinput> command takes a string as input, and outputs the numer or string that is enter. As you see the output of <userinput>inputwindow</userinput> is stored in the container <userinput>x</userinput>. The <userinput>random</userinput> command also gives output. In this case it outputs a number between 1 and 100. The output of the random is again stored in a container, named <userinput>r</userinput>. Note that the containers <userinput>x</userinput> and <userinput>r</userinput> are not used in the example code above.</para>
+
+<para>There are also commands that neither need input nor give output. Here some examples:
+<screen>
+clear
+penup
+wrapon
+hide
+</screen>
 </para>
+
+<glossentry id="wrapping">
+<glossterm>wrapping</glossterm>
+<glossdef><para>Wrapping is what happens when the turtle draws something that is to big to fix in on the canvas and wrapping is set 'on'.
+<screenshot>
+  <screeninfo>This is what happens when wrapping is 'on'</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="wrapping.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase>An example of wrapping</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+When the turlte moves off a border of the canvas it is instantly taken to the opposite border so it can continue its move. This way the turtle will allways stay on screen while it moves.</para>
+<para>Wrapping can be turned on and off with the <userinput>wrapon</userinput> and <userinput>wrapoff</userinput> commands. When KTurtle starts wrapping is turned on by default.</para></glossdef>
+</glossentry>
+
+<glossentry id="sprite">
+<glossterm>sprite</glossterm>
+<glossdef><para>A sprite is a small picture that can be moved arround the screen. Out beloved turtle, for instance, is a sprite. [With this version of KTurtle the sprite cannot be changed from a turtle into something else. Future versions of KTurtle will be able to do this.]</para></glossdef>
+</glossentry>
+
+</glossdef>
+</glossentry>
+
+</glosslist>
+
 </chapter>
+
+
+
+
 
 <chapter id="translators">
 <title>Translator's Guide to KTurtle</title>
@@ -856,7 +1286,7 @@ Contributors:
 </para>
 
 <para>
-Documentation copyright 2004 Anne-Marie Mahfouf<email>annma@kde.org</email>
+Documentation copyright 2004 Anne-Marie Mahfouf <email>annma@kde.org</email>
 </para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
