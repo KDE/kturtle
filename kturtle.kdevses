@@ -4,22 +4,22 @@
  <DocsAndViews NumberOfDocuments="4" >
   <Doc0 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/kturtle.cpp" >
    <View0 line="478" Type="???" >
-    <AdditionalSettings Top="2" Width="954" Attach="1" Height="507" Left="2" MinMaxMode="0" />
+    <AdditionalSettings Top="2" Width="954" Attach="1" Height="508" Left="2" MinMaxMode="0" />
    </View0>
   </Doc0>
-  <Doc1 context="ctx_doxygen" NumberOfViews="1" URL="file:/opt/kde3/share/doc/HTML/en/kdelibs-apidocs/kdecore/html/kapplication_8cpp-source.html#l02051" >
-   <View0 Type="???" >
-    <AdditionalSettings Top="-10000" Width="1" Attach="1" Height="1" Left="-10000" MinMaxMode="0" />
+  <Doc1 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/TODO" >
+   <View0 line="58" Type="???" >
+    <AdditionalSettings Top="2" Width="954" Attach="1" Height="508" Left="2" MinMaxMode="0" />
    </View0>
   </Doc1>
-  <Doc2 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/TODO" >
-   <View0 line="7" Type="???" >
-    <AdditionalSettings Top="2" Width="954" Attach="1" Height="507" Left="2" MinMaxMode="0" />
+  <Doc2 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/canvas.h" >
+   <View0 line="64" Type="???" >
+    <AdditionalSettings Top="2" Width="954" Attach="1" Height="508" Left="2" MinMaxMode="0" />
    </View0>
   </Doc2>
-  <Doc3 NumberOfViews="1" URL="file:/home/cies/kdecvs/kdeedu/kturtle/src/canvas.h" >
-   <View0 line="64" Type="???" >
-    <AdditionalSettings Top="2" Width="954" Attach="1" Height="478" Left="2" MinMaxMode="0" />
+  <Doc3 NumberOfViews="1" URL="file:/home/cies/KDE_3_3_BRANCH/kdeedu/kturtle/src/kturtle.cpp" >
+   <View0 line="54" Type="???" >
+    <AdditionalSettings Top="2" Width="954" Attach="1" Height="508" Left="2" MinMaxMode="0" />
    </View0>
   </Doc3>
  </DocsAndViews>
