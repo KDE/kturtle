@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 #include <qtimer.h>
+#include <qlayout.h>
 
 #include <kaccel.h>
 #include <kaction.h>
@@ -638,36 +639,67 @@ void MainWindow::slotSettings() {
     }
     // Create a new dialog with the same name as the above checking code.
     KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self() );
-
     // making the filling for the 'General' settings dept.
     general = new QWidget();
-    WidthHeightBox = new QGroupBox(i18n("Initial canvas size"), general);
-    WidthHeightBox->setGeometry(QRect( 20, 40, 440, 160) );
-    kcfg_CanvasWidth = new KIntNumInput(WidthHeightBox, "kcfg_CanvasWidth");
-    kcfg_CanvasWidth->setMinValue(1);
-    kcfg_CanvasWidth->setGeometry( QRect(270, 50, 130, 30) );
-    kcfg_CanvasHeight = new KIntNumInput(WidthHeightBox, "kcfg_CanvasHeight");
-    kcfg_CanvasHeight->setMinValue(1);
-    kcfg_CanvasHeight->setGeometry( QRect(270, 100, 130, 30) );
-    WidthLabel = new QLabel( kcfg_CanvasWidth, i18n("Canvas &width:"), WidthHeightBox );
-    WidthLabel->setGeometry( QRect(40, 50, 190, 30) ); //not OK, does not resize for translation
-    HeightLabel = new QLabel( kcfg_CanvasHeight, i18n("Canvas &height:"), WidthHeightBox );
-    HeightLabel->setGeometry( QRect(40, 100, 190, 30) );
+    QGridLayout *generalLayout = new QGridLayout( general, 1, 1, 11, 6, "generalLayout");
+    WidthHeightBox = new QGroupBox( i18n("Initial Canvas Size"), general );
+    WidthHeightBox->setColumnLayout(0, Qt::Vertical );
+    WidthHeightBox->layout()->setSpacing( 6 );
+    WidthHeightBox->layout()->setMargin( 11 );
+    QVBoxLayout *WidthHeightBoxLayout = new QVBoxLayout( WidthHeightBox->layout() );
+    WidthHeightBoxLayout->setAlignment( Qt::AlignTop );
+    QHBoxLayout *layout3 = new QHBoxLayout( 0, 0, 6, "layout3"); 
+    QVBoxLayout *layout2 = new QVBoxLayout( 0, 0, 6, "layout2"); 
+    WidthLabel = new QLabel( kcfg_CanvasWidth, i18n("Canvas Width:"), WidthHeightBox );
+    layout2->addWidget( WidthLabel );
+    HeightLabel = new QLabel( kcfg_CanvasHeight, i18n("Canvas Weight:"), WidthHeightBox );
+    layout2->addWidget( HeightLabel );
+    layout3->addLayout( layout2 );
+    QVBoxLayout *layout1 = new QVBoxLayout( 0, 0, 6, "layout1"); 
+    kcfg_CanvasWidth = new KIntNumInput( WidthHeightBox, "kcfg_CanvasWidth" );
+    kcfg_CanvasWidth->setValue( 400 );
+    kcfg_CanvasWidth->setMinValue( 1 );
+    kcfg_CanvasWidth->setReferencePoint( 1 );
+    layout1->addWidget( kcfg_CanvasWidth );
+    kcfg_CanvasHeight = new KIntNumInput( WidthHeightBox, "kcfg_CanvasHeight" );
+    kcfg_CanvasHeight->setValue( 300 );
+    kcfg_CanvasHeight->setMinValue( 1 );
+    kcfg_CanvasHeight->setReferencePoint( 1 );
+    layout1->addWidget( kcfg_CanvasHeight );
+    layout3->addLayout( layout1 );
+    WidthHeightBoxLayout->addLayout( layout3 );
+    generalLayout->addWidget( WidthHeightBox, 0, 0 );
+    general->resize( QSize(234, 109).expandedTo(minimumSizeHint()) );
+    
     dialog->addPage( general, i18n("General"), "package_settings", i18n("General Settings") );
 
-    // making the filling for the 'Language' settings dept.    
+    // making the filling for the 'Language' settings dept.   
     QWidget *language = new QWidget();
-    kcfg_TranslationFilePath = new KURLRequester(language, "kcfg_TranslationFilePath");
-    kcfg_TranslationFilePath->setGeometry( QRect(20, 90, 440, 30) ); //not OK
-    TranslationFileLabel = new QLabel(kcfg_TranslationFilePath, i18n("Select the language of the LOGO commands:"), language);
-    TranslationFileLabel->setGeometry( QRect(20, 40, 200, 30) ); //not OK, does not resize properly
+    QGridLayout *languageLayout = new QGridLayout( language, 1, 1, 11, 6, "Form1Layout"); 
+    QGroupBox *groupBox1 = new QGroupBox( language, "groupBox1" );
+    groupBox1->setColumnLayout(0, Qt::Vertical );
+    groupBox1->layout()->setSpacing( 6 );
+    groupBox1->layout()->setMargin( 11 );
+    QGridLayout *groupBox1Layout = new QGridLayout( groupBox1->layout() );
+    groupBox1Layout->setAlignment( Qt::AlignTop );
+    
+    QVBoxLayout *layout4 = new QVBoxLayout( 0, 0, 6, "layout4"); 
+    kcfg_TranslationFilePath = new KURLRequester(groupBox1, "kcfg_TranslationFilePath");
+    TranslationFileLabel = new QLabel(kcfg_TranslationFilePath, i18n("Select the language of the LOGO commands:"), groupBox1);
+    layout4->addWidget( TranslationFileLabel );
+    layout4->addWidget( kcfg_TranslationFilePath );
+    groupBox1Layout->addLayout( layout4, 0, 0 );
+    languageLayout->addWidget( groupBox1, 0, 0 ); 
+    language->resize( QSize(373, 80).expandedTo(minimumSizeHint()) );
+    TranslationFileLabel->setBuddy( kcfg_TranslationFilePath );
+    
     dialog->addPage( language, i18n("Language"), "locale", i18n("Language Settings") );
 
     // When the user clicks OK or Apply we want to update our settings.
     connect( dialog, SIGNAL( settingsChanged() ), this, SLOT( slotUpdateSettings() ) );
 
     // Display the dialog.
-    dialog->setInitialSize( QSize(610, 400) );
+    dialog->setInitialSize( QSize(550, 300));
     dialog->show();
     // This need to be placed here for the url to show up in the lineedit
     kcfg_TranslationFilePath->setURL(Settings::translationFilePath());
