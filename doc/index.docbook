@@ -1,7 +1,9 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
+  <!ENTITY kturtle "KTurtle">
   <!ENTITY kapp "&kturtle;"><!-- replace kturtle here -->
   <!ENTITY package "kdeedu">
+  <!ENTITY logo "Logo">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE"><!-- change language only here -->
 ]>
@@ -9,7 +11,7 @@
 <book lang="&language;">
 
 <bookinfo>
-<title>The KTurtle Handbook</title>
+<title>The &kturtle; Handbook</title>
 
 <authorgroup>
 <author>
@@ -42,7 +44,7 @@
 
 <abstract>
 <para>
-KTurtle is an educational programming environment using the Logo programming language.
+&kturtle; is an educational programming environment using the &logo; programming language.
 </para>
 </abstract>
 
@@ -64,41 +66,41 @@ KTurtle is an educational programming environment using the Logo programming lan
 <chapter id="introduction">
 <title>Introduction</title>
 
-<para>KTurtle is an educational programming environment using the Logo programming language. It tries to make programming as easy and touchable possible. This makes KTurtle suitable for teaching kids the basics of math, geometry and... programming. The commands used to program are in the style of the Logo programming language. The unique feature of Logo is that the commands are often translated into the speaking language of the programmer.</para>
+<para>&kturtle; is an educational programming environment using the &logo; programming language. It tries to make programming as easy and touchable possible. This makes &kturtle; suitable for teaching kids the basics of math, geometry and... programming. The commands used to program are in the style of the &logo; programming language. The unique feature of &logo; is that the commands are often translated into the speaking language of the programmer.</para>
 
-<para>KTurtle is named after 'the turtle' that plays a central role in the programming environment. The user programs the turtle, using the Logo commands, to draw a picture on <link linkend="the-canvas">the canvas</link>.</para>
+<para>&kturtle; is named after <quote>the turtle</quote> that plays a central role in the programming environment. The user programs the turtle, using the &logo; commands, to draw a picture on <link linkend="the-canvas">the canvas</link>.</para>
 
 <sect1 id="what-is-logo">
-<title>What is Logo?</title>
-<para>The first version Logo programming language was created by Seymour Papert of MIT Artificial Intelligence Laboratory in 1967 as an ofshoot of the LISP programming language. From then many versions of Logo have been released. By 1980 Logo was gaining momentum, with versions for MSX, Commodore, Atari, and IBM PC systems. These versions were mainly for educational purposes. LCSI released MacLogo in 1985 as a tool for professional programmers, but it never caught on. MIT is still maintaining a site on Logo which can be found on: <ulink url="http://el.media.mit.edu/logo-foundation/">http://el.media.mit.edu/logo-foundation/</ulink>.</para>
+<title>What is &logo;?</title>
+<para>The first version &logo; programming language was created by Seymour Papert of MIT Artificial Intelligence Laboratory in 1967 as an ofshoot of the LISP programming language. From then many versions of &logo; have been released. By 1980 &logo; was gaining momentum, with versions for MSX, Commodore, Atari, and IBM PC systems. These versions were mainly for educational purposes. LCSI released MacLogo in 1985 as a tool for professional programmers, but it never caught on. MIT is still maintaining a site on &logo; which can be found on: <ulink url="http://el.media.mit.edu/logo-foundation/">http://el.media.mit.edu/logo-foundation/</ulink>.</para>
 
-<para>Today there are several versions of Logo around which can easily be found on <ulink url="http://el.media.mit.edu/logo-foundation/">MIT's Logo site</ulink> and by a simple <ulink url="http://www.google.com/search?q=logo+programming+kids">google search</ulink>. This version of Logo (KTurtle) is only focused on the educational qualities of the programming language and will not try to suit professional programmers needs.</para>
+<para>Today there are several versions of &logo; around which can easily be found on <ulink url="http://el.media.mit.edu/logo-foundation/">MIT's &logo; site</ulink> and by a simple <ulink url="http://www.google.com/search?q=logo+programming+kids">Google search</ulink>. This version of &logo; (&kturtle;) is only focused on the educational qualities of the programming language and will not try to suit professional programmers needs.</para>
 </sect1>
 
 <sect1 id="features-of-kturtle">
-<title>Features of KTurtle</title>
-<para>KTurtle has some nice features that make starting to program a breeze. See here some of the highlights of KTurtle feature set:
+<title>Features of &kturtle;</title>
+<para>&kturtle; has some nice features that make starting to program a breeze. See here some of the highlights of &kturtle; feature set:
 <itemizedlist>
 <listitem><para>
-an integrated Logo interpreter, no need to download any other program
+an integrated &logo; interpreter, no need to download any other program
 </para></listitem>
 <listitem><para>
-a powerful editor for the Logo commands with intuitive syntax highlighting, line numbering and more
+a powerful editor for the &logo; commands with intuitive syntax highlighting, line numbering and more
 </para></listitem>
 <listitem><para>
 <link linkend="the-canvas">the canvas</link> can be saved as an image or printed
 </para></listitem>
 <listitem><para>
-context help for all Logo commands, just press <keysym>F1</keysym> with your cursor a command for the help (not yet)
+context help for all &logo; commands, just press <keysym>F1</keysym> with your cursor a command for the help (not yet)
 </para></listitem>
 <listitem><para>
-the Logo commands are fully translationable (currently only English, Dutch, French, German and Swedish are supported)
+the &logo; commands are fully translationable (currently only English, Dutch, French, German and Swedish are supported)
 </para></listitem>
 <listitem><para>
 full-screen mode
 </para></listitem>
 <listitem><para>
-many integrated internationalized example logo programs make it easy to get started
+many integrated internationalized example &logo; programs make it easy to get started
 </para></listitem>
 </itemizedlist>
 </para>
@@ -106,28 +108,28 @@ many integrated internationalized example logo programs make it easy to get star
 </chapter>
 
 <chapter id="using-kturtle">
-<title>Using KTurtle</title>
+<title>Using &kturtle;</title>
 
 <screenshot>
-  <screeninfo>Here's a screenshot KTurtle in action</screeninfo>
+  <screeninfo>Here's a screenshot &kturtle; in action</screeninfo>
   <mediaobject>
     <imageobject>
       <imagedata fileref="mainwindow_flower_nrs.png" format="PNG"/>
     </imageobject>
     <textobject>
-      <phrase>KTurtle Main Window</phrase>
+      <phrase>&kturtle; Main Window</phrase>
     </textobject>
   </mediaobject>
 </screenshot>
 
-<para>The main window of KTurtle has two main parts, <link linkend="the-code-editor">the code editor</link> (3) on the left where you type the Logo commands and <link linkend="the-canvas">the canvas</link> (4) on the right where the instructions are visualized. <link linkend="the-canvas">The canvas</link> is the turtle's playground, it's on the canvas that the turtle actually moves and draws. The three other places on the main window are: <link linkend="the-menubar">the menu bar</link> (1) from where all the actions can be reached, <link linkend="the-toolbar">the toolbar</link> (4) that allows you to quickly select the most used actions, and <link linkend="the-statusbar">the statusbar</link> (5) where you will find feedback on the state of KTurtle.</para>
+<para>The main window of &kturtle; has two main parts, <link linkend="the-code-editor">the code editor</link> (3) on the left where you type the &logo; commands and <link linkend="the-canvas">the canvas</link> (4) on the right where the instructions are visualized. <link linkend="the-canvas">The canvas</link> is the turtle's playground, it's on the canvas that the turtle actually moves and draws. The three other places on the main window are: <link linkend="the-menubar">the menu bar</link> (1) from where all the actions can be reached, <link linkend="the-toolbar">the toolbar</link> (4) that allows you to quickly select the most used actions, and <link linkend="the-statusbar">the statusbar</link> (5) where you will find feedback on the state of &kturtle;.</para>
 
 <sect1 id="the-code-editor">
 <title>The Code Editor</title>
-<para>In the code editor you type the Logo commands. It has all features you would expect from a modern editor. Most of its features are found in the <link linkend="the-edit-menu">Edit</link> and the <link linkend="the-tools-menu">Tools</link> menus. The code editor can be docked on each border of the main window or it can be detached and placed anywhere on your desktop.</para>
+<para>In the code editor you type the &logo; commands. It has all features you would expect from a modern editor. Most of its features are found in the <link linkend="the-edit-menu">Edit</link> and the <link linkend="the-tools-menu">Tools</link> menus. The code editor can be docked on each border of the main window or it can be detached and placed anywhere on your desktop.</para>
 <para>
-You have several ways to get some code in the editor. The easiest way is to use an already-made example. You choose <guimenu>File</guimenu>-&gt;<guimenuitem>Open Examples</guimenuitem> in the <link linkend="the-file-menu">File menu</link> and you click on a file. The file name will tell you what the example is about (for example: square.logo will draw a square). The file you choose will be opened in the <link linkend="the-code-editor">the code editor</link>, you can then <guimenu>File</guimenu>-&gt;<guimenuitem>Execute Commands</guimenuitem> the code if you like.</para>
-<para>You can open Logo files by choosing <guimenu>File</guimenu>-&gt;<guimenuitem>open</guimenuitem>.</para>
+You have several ways to get some code in the editor. The easiest way is to use an already-made example. You choose <guimenu>File</guimenu>-&gt;<guimenuitem>Open Examples</guimenuitem> in the <link linkend="the-file-menu">File menu</link> and you click on a file. The file name will tell you what the example is about (&eg; <filename>square.logo</filename> will draw a square). The file you choose will be opened in the <link linkend="the-code-editor">the code editor</link>, you can then <guimenu>File</guimenu>-&gt;<guimenuitem>Execute Commands</guimenuitem> the code if you like.</para>
+<para>You can open &logo; files by choosing <guimenu>File</guimenu>-&gt;<guimenuitem>Open...</guimenuitem>.</para>
 <para>The third way is to directly type your own code in the editor or to copy/paste some code from this user guide.
 </para>
 <para>
@@ -138,17 +140,17 @@ The cursor position is indicated in <link linkend="the-statusbar">the statusbar<
 <sect1 id="the-canvas">
 <title>The Canvas</title>
 <para>
-The canvas is the area where the commands are visualized, where the commands 'draw' a picture. In other words it is the turtle's playground. After getting some code in the <link linkend="the-code-editor">the code editor</link>, and executing it by <guimenu>File</guimenu>-&gt;<guimenuitem>Execute Commands</guimenuitem>, two things can happen: 1) the code executes fine and you most likely see some changing on the canvas, or 2) you have an error in your code, there will be a message that will tell you what error you made.</para>
+The canvas is the area where the commands are visualized, where the commands <quote>draw</quote> a picture. In other words it is the turtle's playground. After getting some code in the <link linkend="the-code-editor">the code editor</link>, and executing it by <guimenu>File</guimenu>-&gt;<guimenuitem>Execute Commands</guimenuitem>, two things can happen: 1) the code executes fine and you most likely see some changing on the canvas, or 2) you have an error in your code, there will be a message that will tell you what error you made.</para>
 <para>This message should help you resolving the error.</para>
-<para>The picture that is drawn can be saved as an image (using <guimenu>File</guimenu>-&gt;<guimenuitem>Save Canvas</guimenuitem>) or printed (using <guimenu>File</guimenu>-&gt;<guimenuitem>Print</guimenuitem>).</para>
+<para>The picture that is drawn can be saved as an image (using <guimenu>File</guimenu>-&gt;<guimenuitem>Save Canvas</guimenuitem>) or printed (using <guimenu>File</guimenu>-&gt;<guimenuitem>Print...</guimenuitem>).</para>
 </sect1>
 
 <sect1 id="the-menubar">
 <title>The Menubar</title>
-<para>In the menu bar you find all the actions of KTurtle. There are in the following groups: File, Edit, View, Tools, Settings and Help. This section describes them all.</para>
+<para>In the menu bar you find all the actions of &kturtle;. There are in the following groups: <guimenu>File</guimenu>, <guimenu>Edit</guimenu>, <guimenu>View</guimenu>, <guimenu>Tools</guimenu>, <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>. This section describes them all.</para>
 
 <sect2 id="the-file-menu">
-<title>The File Menu</title>
+<title>The <guimenu>File</guimenu> Menu</title>
   <variablelist>
     <varlistentry>
       <term><menuchoice>
@@ -158,7 +160,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>File</guimenu>
         <guimenuitem>New</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Creates a new, empty logo file.</para></listitem>
+      <listitem><para>Creates a new, empty &logo; file.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -170,7 +172,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>File</guimenu>
         <guimenuitem>Open...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Opens a logo file.</para></listitem>
+      <listitem><para>Opens a &logo; file.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -179,7 +181,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>File</guimenu>
         <guimenuitem>Open Recent</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Opens a logo file that has been opened recently.</para></listitem>
+      <listitem><para>Opens a &logo; file that has been opened recently.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -189,9 +191,9 @@ The canvas is the area where the commands are visualized, where the commands 'dr
           <keycombo>&Ctrl;<keycap>E</keycap></keycombo>
         </shortcut>
         <guimenu>File</guimenu>
-        <guimenuitem>Examples</guimenuitem>
+        <guimenuitem>Open Examples</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Show the folder with examples logo programs. The examples should be in your favorite language that you can choose in here: <guimenu>Settings</guimenu><guimenuitem>Configure KTurtle</guimenuitem>.</para></listitem>
+      <listitem><para>Show the folder with examples &logo; programs. The examples should be in your favorite language that you can choose in  <guimenu>Settings</guimenu><guimenuitem>Configure &kturtle;...</guimenuitem>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -230,7 +232,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>File</guimenu>
         <guimenuitem>Save</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Saves the currently opened logo file.</para></listitem>
+      <listitem><para>Saves the currently opened &logo; file.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -240,7 +242,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>File</guimenu>
         <guimenuitem>Save As...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Saves the currently opened logo file on a specified location.</para></listitem>
+      <listitem><para>Saves the currently opened &logo; file on a specified location.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -261,7 +263,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
           <keycombo>&Ctrl;<keycap>P</keycap></keycombo>
         </shortcut>
         <guimenu>File</guimenu>
-        <guimenuitem>Print</guimenuitem>
+        <guimenuitem>Print...</guimenuitem>
       </menuchoice></term>
       <listitem><para>Prints either the current code in the editor or the current drawing on the canvas.</para></listitem>
     </varlistentry>
@@ -276,13 +278,13 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>File</guimenu>
         <guimenuitem>Quit</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Quits KTurtle.</para></listitem>
+      <listitem><para>Quits &kturtle;.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
 
 <sect2 id="the-edit-menu">
-  <title>The Edit Menu</title>
+  <title>The <guimenu>Edit</guimenu> Menu</title>
   <variablelist>
     <anchor id="edit-undo" />
     <varlistentry>
@@ -293,7 +295,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Edit</guimenu>
         <guimenuitem>Undo</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Undoes the last change to code. KTurtle has unlimited undo's!</para></listitem>
+      <listitem><para>Undoes the last change to code. &kturtle; has unlimited undo's!</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -319,7 +321,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Edit</guimenu>
         <guimenuitem>Cut</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Cuts the selected text from the code editor to the clip board.</para></listitem>
+      <listitem><para>Cuts the selected text from the code editor to the clipboard.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -332,7 +334,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Edit</guimenu>
         <guimenuitem>Copy</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Copies the selected text from the code editor to the clip board.</para></listitem>
+      <listitem><para>Copies the selected text from the code editor to the clipboard.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -345,7 +347,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Edit</guimenu>
         <guimenuitem>Paste</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Pastes the text from the clip board to the editor.</para></listitem>
+      <listitem><para>Pastes the text from the clipboard to the editor.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -382,7 +384,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
           <keycombo>&Ctrl;<keycap>R</keycap></keycombo>
         </shortcut>
         <guimenu>Edit</guimenu>
-        <guimenuitem>Replace</guimenuitem>
+        <guimenuitem>Replace...</guimenuitem>
       </menuchoice></term>
       <listitem><para>With this action you can replace phases in the code.</para></listitem>
     </varlistentry>
@@ -390,7 +392,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
 </sect2>
 
 <sect2 id="the-view-menu">
-  <title>The View Menu</title>
+  <title>The <guimenu>View</guimenu> Menu</title>
   <variablelist>
     <anchor id="view-fullscreen" />
     <varlistentry>
@@ -402,7 +404,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenuitem>Full Screen Mode</guimenuitem>
       </menuchoice></term>
       <listitem><para>With this action you toggle the full screen mode.</para>
-                <para>Note: When code is executed while in full screen mode all but the canvas are hidden. This make is possible to write 'full screen' programs in KTurtle.</para></listitem>
+                <para>Note: When code is executed while in full screen mode all but the canvas are hidden. This make is possible to write <quote>full screen</quote> programs in &kturtle;.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -421,7 +423,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
 </sect2>
 
 <sect2 id="the-tools-menu">
-  <title>The Tools Menu</title>
+  <title>The <guimenu>Tools</guimenu> Menu</title>
   <variablelist>
     <anchor id="tools-color-picker" />
     <varlistentry>
@@ -445,7 +447,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Tools</guimenu>
         <guimenuitem>Indent</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This action 'indents' (adds white space at the beginning of) the lines that are selected. When 'indentation' is used properly this can make code much easier to read. All examples use indentation, please check them out.</para></listitem>
+      <listitem><para>This action <quote>indents</quote> (adds white space at the beginning of) the lines that are selected. When <quote>indentation</quote> is used properly this can make code much easier to read. All examples use indentation, please check them out.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -458,7 +460,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Tools</guimenu>
         <guimenuitem>Unindent</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This action 'unindents' (removes the white space at the beginning of) the lines that are selected.</para></listitem>
+      <listitem><para>This action <quote>unindents</quote> (removes the white space at the beginning of) the lines that are selected.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -468,7 +470,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Tools</guimenu>
         <guimenuitem>Clean Indentation</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This action cleans 'indentation' (removes all the white space at the beginning of) the lines that are selected.</para></listitem>
+      <listitem><para>This action cleans <quote>indentation</quote> (removes all the white space at the beginning of) the lines that are selected.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -500,15 +502,15 @@ The canvas is the area where the commands are visualized, where the commands 'dr
 </sect2>
 
 <sect2 id="the-setting-menu">
-  <title>The Settings Menu</title>
+  <title>The <guimenu>Settings</guimenu> Menu</title>
   <variablelist>
     <anchor id="settings-configure" />
     <varlistentry>
       <term><menuchoice>
         <guimenu>Settings</guimenu>
-        <guimenuitem>Configure KTurtle...</guimenuitem>
+        <guimenuitem>Configure &kturtle;...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This is used to configure KTurtle. Here you can change the language of the logo commands or set a new initial canvas size.</para></listitem>
+      <listitem><para>This is used to configure &kturtle;. Here you can change the language of the &logo; commands or set a new initial canvas size.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -518,7 +520,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Settings</guimenu>
         <guisubmenu>Advanced Settings</guisubmenu>
       </menuchoice></term>
-      <listitem><para>Here you can change things you normally do not need to change. The advanced settings submenu has three items: Configure Editor (the standard Kate editor settings dialog), Configure Shortcuts (the standard KDE shortcut settings dialog) and Configure Toolbars (the standard KDE toolbars setting dialog).</para></listitem>
+      <listitem><para>Here you can change things you normally do not need to change. The <guisubmenu>Advanced Settings</guisubmenu> submenu has three items: <guimenuitem>Configure Editor...</guimenuitem> (the standard Kate editor settings dialog), <guimenuitem>Configure Shortcuts...</guimenuitem> (the standard &kde; shortcut settings dialog) and <guimenuitem>Configure Toolbars...</guimenuitem> (the standard &kde; toolbars setting dialog).</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -530,7 +532,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
     <varlistentry>
       <term><menuchoice>
         <guimenu>Help</guimenu>
-        <guimenuitem>KTurtle Handbook</guimenuitem>
+        <guimenuitem>&kturtle; Handbook</guimenuitem>
       </menuchoice></term>
       <listitem><para>This action shows the handbook that you are currently reading.</para></listitem>
     </varlistentry>
@@ -545,7 +547,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Help</guimenu>
         <guimenuitem>What's This?</guimenuitem>
       </menuchoice></term>
-      <listitem><para>After activating his action the mouse arrow will be changed into a 'question mark arrow'. When this arrow is used to click on parts of KTurtle Main window, a description of the particular part pops-up.</para></listitem>
+      <listitem><para>After activating his action the mouse arrow will be changed into a <quote>question mark arrow</quote>. When this arrow is used to click on parts of &kturtle; main window, a description of the particular part pops-up.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -569,7 +571,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
         <guimenu>Help</guimenu>
         <guimenuitem>Report Bug...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Use this to report a problem with KTurtle to the developers. These reports can be used to make KTurtle future versions better.</para></listitem>
+      <listitem><para>Use this to report a problem with &kturtle; to the developers. These reports can be used to make &kturtle; future versions better.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -577,9 +579,9 @@ The canvas is the area where the commands are visualized, where the commands 'dr
     <varlistentry>
       <term><menuchoice>
         <guimenu>Help</guimenu>
-        <guimenuitem>About KTurtle</guimenuitem>
+        <guimenuitem>About &kturtle;</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Here you find information on KTurtle like the authors and the license it comes with.</para></listitem>
+      <listitem><para>Here you find information on &kturtle; like the authors and the license it comes with.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -587,9 +589,9 @@ The canvas is the area where the commands are visualized, where the commands 'dr
     <varlistentry>
       <term><menuchoice>
         <guimenu>Help</guimenu>
-        <guimenuitem>About KDE</guimenuitem>
+        <guimenuitem>About &kde;</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Here you can find information on KDE. If you do not know yet what KDE is, this is a place you should not miss!</para></listitem>
+      <listitem><para>Here you can find information on &kde;. If you do not know yet what &kde; is, this is a place you should not miss!</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -603,7 +605,7 @@ The canvas is the area where the commands are visualized, where the commands 'dr
 
 <sect1 id="the-statusbar">
 <title>The Statusbar</title>
-<para>On the statusbar you get feedback of the state of KTurtle. On the left side it shows the feedback on the last action. On the right side you find the current location of the cursor (line and column numbers).</para>
+<para>On the statusbar you get feedback of the state of &kturtle;. On the left side it shows the feedback on the last action. On the right side you find the current location of the cursor (line and column numbers).</para>
 </sect1>
 
 </chapter>
@@ -612,22 +614,22 @@ The canvas is the area where the commands are visualized, where the commands 'dr
 
 <chapter id="getting-started">
 <title>Getting Started</title>
-<para>When you start KTurtle you will see something like this:
+<para>When you start &kturtle; you will see something like this:
 <screenshot>
-  <screeninfo>Here's a screenshot KTurtle when you start it for the first time</screeninfo>
+  <screeninfo>Here's a screenshot &kturtle; when you start it for the first time</screeninfo>
   <mediaobject>
     <imageobject>
       <imagedata fileref="mainwindow.png" format="PNG"/>
     </imageobject>
     <textobject>
-      <phrase>KTurtle Main window</phrase>
+      <phrase>&kturtle; Main window</phrase>
     </textobject>
   </mediaobject>
 </screenshot>
-In this Getting Started guide we assume that the language of the logo commands is English. You can change this language in <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure KTurtle</guimenuitem></menuchoice> in the Language section. Be aware that the language you set for KTurtle needs to be the same as the language you use to type the logo commands in.</para>
+In this Getting Started guide we assume that the language of the &logo; commands is English. You can change this language in <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kturtle;...</guimenuitem></menuchoice> in the <guilabel>Language</guilabel> section. Be aware that the language you set for &kturtle; needs to be the same as the language you use to type the &logo; commands in.</para>
 
 <sect1 id="first-steps">
-<title>First steps with Logo: meet the Turtle!</title>
+<title>First steps with &logo;: meet the Turtle!</title>
 <para>You must have noticed the turtle is in the middle of the canvas, you are just about to learn how to control it using commands in the code editor.</para>
 
 <sect2 id="the-turtle-moves">
@@ -641,19 +643,19 @@ turnleft 90
 Type or copy-paste the code to the code editor and execute it (using <link linkend="file-execute"><menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem></menuchoice></link>) to see the result.</para>
 
 <para>When you typed and executed the commands like above in the code editor you might have noticed one or more of the following things:</para>
-<para>1. That -- after executing the commands -- the turtle moves up, draws a line and then turns a quarter turn to the left. This because you have used the <link linkend="forward"><userinput>forward</userinput></link> and the <link linkend="turnleft"><userinput>turnleft</userinput></link> commands.</para>
-<para>2. That the color of the code changed while you where typing it, this features is called: intuitive highlighting -- different types of commands are highlighted differently. This makes reading large blocks of code more easy.</para>
+<para>1. That &mdash; after executing the commands &mdash; the turtle moves up, draws a line and then turns a quarter turn to the left. This because you have used the <link linkend="forward"><userinput>forward</userinput></link> and the <link linkend="turnleft"><userinput>turnleft</userinput></link> commands.</para>
+<para>2. That the color of the code changed while you where typing it, this features is called: intuitive highlighting &mdash; different types of commands are highlighted differently. This makes reading large blocks of code more easy.</para>
 <para>3. That the turtle draws a thin black line.</para>
-<para>4. Maybe you got an error message. This could simply mean two things: you could have made a mistake while copying the commands, or you should still set the correct language for the logo commands (you can do that here: <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure KTurtle</guimenuitem></menuchoice> in the Language section).</para>
+<para>4. Maybe you got an error message. This could simply mean two things: you could have made a mistake while copying the commands, or you should still set the correct language for the &logo; commands (you can do that here: <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kturtle;...</guimenuitem></menuchoice> in the <guilabel>Language</guilabel> section).</para>
 
 <para>You will likely understand that <userinput>forward 90</userinput> commanded the turtle to move forward leaving a line, and that <userinput>turnleft 90</userinput> commanded the turtle to turn 90 <glossterm linkend="degrees">degrees</glossterm> to the left.</para>
 
-<para>Please see the follow the links to the reference manual for a complete explanation of the introduced commands: forward, backward, turnleft and turnright.</para>
+<para>Please see the follow the links to the reference manual for a complete explanation of the introduced commands: <userinput>forward</userinput>, <userinput>backward</userinput>, <userinput>turnleft</userinput> and <userinput>turnright</userinput>.</para>
 </sect2>
 
 <sect2 id="more-examples">
 <title>More examples</title>
-<para>The first example was very simple so lets move on!</para>
+<para>The first example was very simple so let's go on!</para>
 
 <para>
 <screen>
@@ -685,7 +687,7 @@ Again you should type or copy-paste the code to the code editor and execute it (
 
 <para><userinput>canvascolor 0,0,0</userinput> makes the canvas black. <userinput>0,0,0</userinput> is an <glossterm linkend="rgb">RGB-combination</glossterm> where all values are set to <userinput>0</userinput>, which results in black.</para>
 
-<para><userinput>pencolor 255,0,0</userinput> sets the color of the pen to red. <userinput>255,0,0</userinput> is an <glossterm linkend="rgb">RGB-combination</glossterm> where only the 'red' value is set to <userinput>255</userinput> while the others (green and blue) are set to <userinput>0</userinput>, this results in a bright shade of red.</para>
+<para><userinput>pencolor 255,0,0</userinput> sets the color of the pen to red. <userinput>255,0,0</userinput> is an <glossterm linkend="rgb">RGB-combination</glossterm> where only the red value is set to <userinput>255</userinput> while the others (green and blue) are set to <userinput>0</userinput>, this results in a bright shade of red.</para>
 
 <para><userinput>penwidth 5</userinput> sets the width (the size) of pen <userinput>5</userinput> <glossterm linkend="pixels">pixels</glossterm>. From now on every line the turtle draw will have a thickness of <userinput>5</userinput>, until we change the <userinput>penwidth</userinput> to something else.</para>
 
@@ -751,11 +753,11 @@ Draw a maze for example
 
 
 <chapter id="reference">
-<title>KTurtle's Logo Programming Reference</title>
+<title>&kturtle;'s &logo; Programming Reference</title>
 
 <sect1 id="commands">
 <title>Commands</title>
-<para>Using commands you tell the turtle or KTurtle to do something. Some commands need input, some give output. In this section we explain all the commands that can be used in KTurtle.</para>
+<para>Using commands you tell the turtle or &kturtle; to do something. Some commands need input, some give output. In this section we explain all the commands that can be used in &kturtle;.</para>
 
 <sect2 id="moving-the-turtle">
 <title>Moving the turtle</title>
@@ -843,7 +845,7 @@ Draw a maze for example
     <varlistentry>
       <term>penup</term>
       <listitem><para><screen>penup</screen>
-      <userinput>penup</userinput> lifts the pen from the canvas. When the pen is 'up' no line will be drawn when the turtle moves.</para></listitem>
+      <userinput>penup</userinput> lifts the pen from the canvas. When the pen is <quote>up</quote> no line will be drawn when the turtle moves.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -851,7 +853,7 @@ Draw a maze for example
     <varlistentry>
       <term>pendown</term>
       <listitem><para><screen>pendown</screen>
-      <userinput>pendown</userinput> presses the pen down on the canvas. When the pen is press 'down' on the canvas a line will be drawn when the turtle moves. See also <userinput>penup</userinput>.</para></listitem>
+      <userinput>pendown</userinput> presses the pen down on the canvas. When the pen is press <quote>down</quote> on the canvas a line will be drawn when the turtle moves. See also <userinput>penup</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -896,7 +898,7 @@ Draw a maze for example
     <varlistentry>
       <term>wrapon</term>
       <listitem><para><screen>wrapon</screen>
-      With the <userinput>wrapon</userinput> command you can set <glossterm linkend="wrapping">wrapping</glossterm> 'on' for the canvas. Please see the glossary if you want to know what is <glossterm linkend="wrapping">wrapping</glossterm>.</para></listitem>
+      With the <userinput>wrapon</userinput> command you can set <glossterm linkend="wrapping">wrapping</glossterm> <quote>on</quote> for the canvas. Please see the glossary if you want to know what is <glossterm linkend="wrapping">wrapping</glossterm>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -904,7 +906,7 @@ Draw a maze for example
     <varlistentry>
       <term>wrapoff</term>
       <listitem><para><screen>wrapoff</screen>
-      With the <userinput>wrapoff</userinput> command you can set <glossterm linkend="wrapping">wrapping</glossterm> 'off' for the canvas. This means the turtle can move off the canvas and can get 'lost'. Please see the glossary if you want to know what is <glossterm linkend="wrapping">wrapping</glossterm>.</para></listitem>
+      With the <userinput>wrapoff</userinput> command you can set <glossterm linkend="wrapping">wrapping</glossterm> <quote>off</quote> for the canvas. This means the turtle can move off the canvas and can get <quote>lost</quote>. Please see the glossary if you want to know what is <glossterm linkend="wrapping">wrapping</glossterm>.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -925,7 +927,7 @@ Draw a maze for example
     <varlistentry>
       <term>reset</term>
       <listitem><para><screen>reset</screen>
-      <userinput>reset</userinput> cleans much more thoroughly than the <userinput>clear</userinput> command. After a <userinput>reset</userinput> command everything is like is was when you had just started KTurtle.</para></listitem>
+      <userinput>reset</userinput> cleans much more thoroughly than the <userinput>clear</userinput> command. After a <userinput>reset</userinput> command everything is like is was when you had just started &kturtle;.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -934,7 +936,7 @@ Draw a maze for example
 <title>The turtle is a sprite</title>
 <para>Many people do not know what sprites are, so here a short explanation: sprites are small pictures that can be moved around the screen. (for more info see the glossary on <glossterm linkend="sprites">sprites</glossterm>). So the turtle is a sprite!</para>
 <para>Next you will find a full overview on all commands to work with sprites.</para>
-<para>[The current version of KTurtle does not yet support the use of sprites other that the turtle. With future versions you will be able to change the turtle into something of your own design!]</para>
+<para>[The current version of &kturtle; does not yet support the use of sprites other that the turtle. With future versions you will be able to change the turtle into something of your own design!]</para>
   <variablelist>
     <anchor id="show" />
     <varlistentry>
@@ -955,13 +957,13 @@ Draw a maze for example
 
 <sect2 id="writing">
 <title>Can the turtles write text?</title>
-<para>The answer is: 'yes'. The turtle can write, he writes just about everything you command him to.</para>
+<para>The answer is: <quote>yes</quote>. The turtle can write, he writes just about everything you command him to.</para>
   <variablelist>
     <anchor id="print" />
     <varlistentry>
       <term>print</term>
       <listitem><para><screen>print X</screen>
-      The <userinput>print</userinput> command is used to command the turtle to write something on the canvas. <userinput>print</userinput> takes numbers and strings as input. You can <userinput>print</userinput> various numbers and strings using the '+' symbol. See here a small example:
+      The <userinput>print</userinput> command is used to command the turtle to write something on the canvas. <userinput>print</userinput> takes numbers and strings as input. You can <userinput>print</userinput> various numbers and strings using the <quote>+</quote> symbol. See here a small example:
       <screen>
       year = 2004
       author = "Cies"
@@ -1015,13 +1017,13 @@ This will print a 0.
 
 <sect2 id="variables">
 <title>Variables: number containers</title>
-<para>Lets start with an example:
+<para>Let's start with an example:
 <screen>
 x = 3
 print x
 </screen>
 In the first line the letter <userinput>x</userinput> made into a variable (number container). As you see the value of the variable <userinput>x</userinput> is set to 3. On the second line the value is printed.</para>
-<para> Note that if we wanted to print an 'x' that we should have written
+<para> Note that if we wanted to print an <quote>x</quote> that we should have written
 <screen>
 print "x"
 </screen>
@@ -1052,14 +1054,14 @@ x = "Hello "
 name = inputwindow "please enter your name..."
 print x + name + ", how are you?
 </screen>
-On the first line the string <userinput>x</userinput> is set to 'Hello '. On the second line the string <userinput>name</userinput> is set to the output of the <userinput>inputwindow</userinput> command. On the third line the program prints a composition of three strings on the canvas.</para>
-<para>This program ask you to enter your name. When you, for instance, enter the name 'Paul', the program prints 'Hello Paul, how are you?'. Please note that the plus (+) is the only math symbol that you can use with strings.</para>
+On the first line the string <userinput>x</userinput> is set to <quote>Hello </quote>. On the second line the string <userinput>name</userinput> is set to the output of the <userinput>inputwindow</userinput> command. On the third line the program prints a composition of three strings on the canvas.</para>
+<para>This program ask you to enter your name. When you, for instance, enter the name <quote>Paul</quote>, the program prints <quote>Hello Paul, how are you?</quote>. Please note that the plus (+) is the only math symbol that you can use with strings.</para>
 </sect2>
 </sect1>
 
 <sect1 id="math">
 <title>Can the Turtle do math?</title>
-<para>Yes, KTurtle will do your math. You can add (+), substract (-), multiply (*) and divide (/). Here an example in which we use all of them:
+<para>Yes, &kturtle; will do your math. You can add (+), substract (-), multiply (*) and divide (/). This is an example in which we use all of them:
 <screen>
 a = 20 - 5
 b = 15 * 2
@@ -1090,7 +1092,7 @@ if x &gt; 5 [
 ]
 </screen>
 
-In this example the question is the <userinput>x &gt; 5</userinput>, if the answer to this question is 'true' the code between the braces will be executed. Question are an important part of programming and often used together with <link linkend="controlling-execution">execution controllers</link>, like <link linkend="if"><userinput>if</userinput></link>. All numbers and <link linkend="variables">variables</link> (number containers) can be compared to eachother with quesions.</para>
+In this example the question is the <userinput>x &gt; 5</userinput>, if the answer to this question is <quote>true</quote> the code between the braces will be executed. Question are an important part of programming and often used together with <link linkend="controlling-execution">execution controllers</link>, like <link linkend="if"><userinput>if</userinput></link>. All numbers and <link linkend="variables">variables</link> (number containers) can be compared to eachother with quesions.</para>
 <para>
 Here are all possible questions:
 <table>
@@ -1100,39 +1102,39 @@ Here are all possible questions:
 <row>
 <entry><userinput>a == b</userinput></entry>
 <entry>equals</entry>
-<entry>answer is 'true' if <userinput>a</userinput> equals <userinput>b</userinput></entry>
+<entry>answer is <quote>true</quote> if <userinput>a</userinput> equals <userinput>b</userinput></entry>
 </row>
 <row>
 <entry><userinput>a != b</userinput></entry>
 <entry>not-equal</entry>
-<entry>answer is 'true' if <userinput>a</userinput> does not equal <userinput>b</userinput></entry>
+<entry>answer is <quote>true</quote> if <userinput>a</userinput> does not equal <userinput>b</userinput></entry>
 </row>
 <row>
 <entry><userinput>a &gt; b</userinput></entry>
 <entry>greater then</entry>
-<entry>answer is 'true' if <userinput>a</userinput> is greater then <userinput>b</userinput></entry>
+<entry>answer is <quote>true</quote> if <userinput>a</userinput> is greater then <userinput>b</userinput></entry>
 </row>
 <row>
 <entry><userinput>a &lt; b</userinput></entry>
 <entry>smaller then</entry>
-<entry>answer is 'true' if <userinput>a</userinput> is smaller then <userinput>b</userinput></entry>
+<entry>answer is <quote>true</quote> if <userinput>a</userinput> is smaller then <userinput>b</userinput></entry>
 </row>
 <row>
 <entry><userinput>a &gt;= b</userinput></entry>
 <entry>greater then or equals</entry>
-<entry>answer is 'true' if <userinput>a</userinput> is greater then or equals <userinput>b</userinput></entry>
+<entry>answer is <quote>true</quote> if <userinput>a</userinput> is greater then or equals <userinput>b</userinput></entry>
 </row>
 <row>
 <entry><userinput>a &lt;= b</userinput></entry>
 <entry>smaller then or equals</entry>
-<entry>answer is 'true' if <userinput>a</userinput> is smaller then or equals <userinput>b</userinput></entry>
+<entry>answer is <quote>true</quote> if <userinput>a</userinput> is smaller then or equals <userinput>b</userinput></entry>
 </row>
 </tbody>
 </tgroup>
 </table>
 </para>
 <para>
-Questions can also be glued to each other with 'question glue', this way a few questions can become one big question.
+Questions can also be glued to each other with <quote>question glue</quote>, this way a few questions can become one big question.
 <screen>
 a = 1
 b = 5
@@ -1140,7 +1142,7 @@ if a &lt; 5 and b == 5 [
   print hello
 ]
 </screen>
-<anchor id="question-glue" />In this example the glue-word <userinput>and</userinput> is used to glue 2 questions (<userinput>a &lt; 5</userinput>, <userinput>b == 5</userinput>) together. If one side of the <userinput>and</userinput> would answer 'false' the whole question would answer 'false', because with the glue-word <userinput>and</userinput> both sides need to be 'true' in order to answer 'true'.</para>
+<anchor id="question-glue" />In this example the glue-word <userinput>and</userinput> is used to glue 2 questions (<userinput>a &lt; 5</userinput>, <userinput>b == 5</userinput>) together. If one side of the <userinput>and</userinput> would answer <quote>false</quote> the whole question would answer <quote>false</quote>, because with the glue-word <userinput>and</userinput> both sides need to be <quote>true</quote> in order to answer <quote>true</quote>.</para>
 <para>
 <userinput>and</userinput> is not the only glue-word there are two others. They are all in the next table:
 <table>
@@ -1149,15 +1151,15 @@ if a &lt; 5 and b == 5 [
 <tbody>
 <row>
 <entry><userinput>and</userinput></entry>
-<entry>both sides need to be 'true' in order to answer 'true'</entry>
+<entry>both sides need to be <quote>true</quote> in order to answer <quote>true</quote></entry>
 </row>
 <row>
 <entry><userinput>or</userinput></entry>
-<entry>if one of the sides is 'true' the answer is 'true'</entry>
+<entry>if one of the sides is <quote>true</quote> the answer is <quote>true</quote></entry>
 </row>
 <row>
 <entry><userinput>not</userinput></entry>
-<entry>only if both of the sides are 'false' the answer is 'false'</entry>
+<entry>only if both of the sides are <quote>false</quote> the answer is <quote>false</quote></entry>
 </row>
 </tbody>
 </tgroup>
@@ -1167,11 +1169,11 @@ if a &lt; 5 and b == 5 [
 
 <sect1 id="controlling-execution">
 <title>Controlling execution</title>
-<para>The execution controllers enable you to -- as their name implies -- control execution</para>
+<para>The execution controllers enable you to &mdash; as their name implies &mdash; control execution</para>
 
 <sect2 id="easy">
 <title>Have the turtle wait</title>
-<para>If you tried programming some in KTurtle you have might noticed the the turtle can be very quick at drawing. This command makes the turtle take it a little more easy.</para>
+<para>If you tried programming some in &kturtle; you have might noticed the the turtle can be very quick at drawing. This command makes the turtle take it a little more easy.</para>
   <variablelist>
     <anchor id="wait" />
     <varlistentry>
@@ -1198,7 +1200,7 @@ if a &lt; 5 and b == 5 [
     <varlistentry>
       <term>if</term>
       <listitem><para><screen>if <link linkend="questions">question</link> [ ... ]</screen>
-      The code that is placed on the '...' will only be executed <userinput>if</userinput> the answer to the <link linkend="questions">question</link> is 'true'. Please read for more information on <link linkend="questions">questions</link> the <link linkend="questions">question section</link>.
+      The code that is placed on the <quote>...</quote> will only be executed <userinput>if</userinput> the answer to the <link linkend="questions">question</link> is <quote>true</quote>. Please read for more information on <link linkend="questions">questions</link> the <link linkend="questions">question section</link>.
       <screen>
       
       x = 6
@@ -1206,7 +1208,7 @@ if a &lt; 5 and b == 5 [
         print "x is greater than five!"
       ]
       </screen>
-      On the first line <userinput>x</userinput> is set to 6. On the second line the <link linkend="questions">question</link> <userinput>x &gt; 5</userinput> is asked. Since the answer to this question is 'true' the execution controller <userinput>if</userinput> will allow the code between the braces to be executed</para></listitem>
+      On the first line <userinput>x</userinput> is set to 6. On the second line the <link linkend="questions">question</link> <userinput>x &gt; 5</userinput> is asked. Since the answer to this question is <quote>true</quote> the execution controller <userinput>if</userinput> will allow the code between the braces to be executed</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -1219,7 +1221,7 @@ if a &lt; 5 and b == 5 [
     <varlistentry>
       <term>while</term>
       <listitem><para><screen>while <link linkend="questions">question</link> [ ... ]</screen>
-      The execution controller <userinput>while</userinput> is a lot like the <link linkend="if"><userinput>if</userinput></link>. The difference is that <userinput>while</userinput> keeps repeating the code between the braces till the answer to the <link linkend="questions">question</link> is 'false'.
+      The execution controller <userinput>while</userinput> is a lot like the <link linkend="if"><userinput>if</userinput></link>. The difference is that <userinput>while</userinput> keeps repeating the code between the braces till the answer to the <link linkend="questions">question</link> is <quote>false</quote>.
       <screen>
       x = 1
       while x &lt; 5 [
@@ -1228,7 +1230,7 @@ if a &lt; 5 and b == 5 [
         x = x + 1
       ]
       </screen>
-      On the first line <userinput>x</userinput> is set to 1. On the second line the <link linkend="questions">question</link> <userinput>x &lt; 5</userinput> is asked. Since the answer to this question is 'true' the execution controller <userinput>while</userinput> starts executing the code between the braces till the answer to the <link linkend="questions">question</link> is 'false'. In this case the code between the braces will be executed 4 times, because everytime the fifth line is executed <userinput>x</userinput> get one number higher.</para></listitem>
+      On the first line <userinput>x</userinput> is set to 1. On the second line the <link linkend="questions">question</link> <userinput>x &lt; 5</userinput> is asked. Since the answer to this question is <quote>true</quote> the execution controller <userinput>while</userinput> starts executing the code between the braces till the answer to the <link linkend="questions">question</link> is <quote>false</quote>. In this case the code between the braces will be executed 4 times, because everytime the fifth line is executed <userinput>x</userinput> get one number higher.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -1241,7 +1243,7 @@ if a &lt; 5 and b == 5 [
     <varlistentry>
       <term>else</term>
       <listitem><para><screen>if question [ ... ] else [ ... ]</screen>
-      <userinput>else</userinput> can be used in addition to the execution controller <link linkend="if"><userinput>if</userinput></link>. The code between the braces after <userinput>else</userinput> is only executed if the answer to the <link linkend="questions">question</link> that is asked is 'false'. 
+      <userinput>else</userinput> can be used in addition to the execution controller <link linkend="if"><userinput>if</userinput></link>. The code between the braces after <userinput>else</userinput> is only executed if the answer to the <link linkend="questions">question</link> that is asked is <quote>false</quote>. 
       <screen>
       x = 4
       if x &gt; 5 [
@@ -1250,7 +1252,7 @@ if a &lt; 5 and b == 5 [
         print "x is smaller than six!"
       ]
       </screen>
-      The <link linkend="questions">question</link> asks if <userinput>x</userinput> is greater than 5. Since <userinput>x</userinput> is set to 4 on the first line the answer to the question is 'false'. This means the code between the braces after <userinput>else</userinput> gets executed.</para></listitem>
+      The <link linkend="questions">question</link> asks if <userinput>x</userinput> is greater than 5. Since <userinput>x</userinput> is set to 4 on the first line the answer to the question is <quote>false</quote>. This means the code between the braces after <userinput>else</userinput> gets executed.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -1263,7 +1265,7 @@ if a &lt; 5 and b == 5 [
     <varlistentry>
       <term>for</term>
       <listitem><para><screen>for <userinput>start point</userinput> to <userinput>end point</userinput> [ ... ]</screen>
-      The <userinput>for</userinput> loop is a 'counting loop', it keeps count for you.
+      The <userinput>for</userinput> loop is a <quote>counting loop</quote>, it keeps count for you.
       <screen>
       for x = 1 to 10 [
         print x * 7
@@ -1324,7 +1326,7 @@ In this example a new command called <userinput>multiplyBySelf</userinput>. The 
 <chapter id="Glossary">
 <title>Glossary</title>
 
-<para>In this chapter you find an explanation of most of the 'uncommon' words that are used in the handbook.</para>
+<para>In this chapter you find an explanation of most of the <quote>uncommon</quote> words that are used in the handbook.</para>
 
 <glosslist>
 <glossentry id="degrees">
@@ -1368,7 +1370,7 @@ hide
 
 <glossentry id="intuitive-highlighting">
 <glossterm>intuitive highlighting</glossterm>
-<glossdef><para>This is a feature of KTurtle that makes coding even easier. With intuitive highlighting the code that you write gets a color that indicates what type of code it is. In the next list you will find the different types of code and the color they get in <link linkend="the-code-editor">the code editor</link>.
+<glossdef><para>This is a feature of &kturtle; that makes coding even easier. With intuitive highlighting the code that you write gets a color that indicates what type of code it is. In the next list you will find the different types of code and the color they get in <link linkend="the-code-editor">the code editor</link>.
 <table>
 <title>Different types of code and their highlight color</title>
 <tgroup cols="3">
@@ -1406,12 +1408,12 @@ hide
 <row>
 <entry>strings</entry>
 <entry>dark red</entry>
-<entry>Not much to say about (text) string either, except the allway start and end with the "-character.</entry>
+<entry>Not much to say about (text) strings either, except that they always start and end with the double quotes (").</entry>
 </row>
 <row>
 <entry>mathematical characters</entry>
 <entry>grey</entry>
-<entry>This are the mathematical characters: +, -, *, \, (, and ). Read more about them <link linkend="math">here</link>.</entry>
+<entry>This are the mathematical characters: +, -, *, /, (, and ). Read more about them <link linkend="math">here</link>.</entry>
 </row>
 <row>
 <entry>questions characters</entry>
@@ -1442,7 +1444,7 @@ hide
 
 <glossentry id="rgb">
 <glossterm>RGB combinations (color codes)</glossterm>
-<glossdef><para>RGB combinations are used to describe colors. The 'R' stand for 'red', the 'G' stands for 'green' and the 'B' stands for 'blue'. An example of an RGB combination is <userinput>255,0,0</userinput>, the first 'red' value is 255 and the others are 0, this results in a bright shade of red. Each value of an RGB combination has to be in the range 0 to 255. Here a small list of some often used colors:
+<glossdef><para>RGB combinations are used to describe colors. The <quote>R<quote> stand for <quote>red</quote>, the <quote>G</quote> stands for <quote>green</quote> and the <quote>B</quote> stands for </quote>blue</quote>. An example of an RGB combination is <userinput>255,0,0</userinput>, the first <quote>red</quote> value is 255 and the others are 0, this results in a bright shade of red. Each value of an RGB combination has to be in the range 0 to 255. Here a small list of some often used colors:
 <table frame="none">
 <title>Often used RGB combinations</title>
 <tgroup cols="2" colsep="5" rowsep="1">
@@ -1467,14 +1469,14 @@ hide
 
 <glossentry id="sprite">
 <glossterm>sprite</glossterm>
-<glossdef><para>A sprite is a small picture that can be moved around the screen. Our beloved turtle, for instance, is a sprite. [With this version of KTurtle the sprite cannot be changed from a turtle into something else. Future versions of KTurtle will be able to do this.]</para></glossdef>
+<glossdef><para>A sprite is a small picture that can be moved around the screen. Our beloved turtle, for instance, is a sprite. [With this version of &kturtle; the sprite cannot be changed from a turtle into something else. Future versions of &kturtle; will be able to do this.]</para></glossdef>
 </glossentry>
 
 <glossentry id="wrapping">
 <glossterm>wrapping</glossterm>
-<glossdef><para>Wrapping is what happens when the turtle draws something that is to big to fix in on the canvas and wrapping is set 'on'.
+<glossdef><para>Wrapping is what happens when the turtle draws something that is to big to fix in on the canvas and wrapping is set <quote>on</quote>.
 <screenshot>
-  <screeninfo>This is what happens when wrapping is 'on'</screeninfo>
+  <screeninfo>This is what happens when wrapping is <quote>on</quote></screeninfo>
   <mediaobject>
     <imageobject>
       <imagedata fileref="wrapping.png" format="PNG"/>
@@ -1484,8 +1486,8 @@ hide
     </textobject>
   </mediaobject>
 </screenshot>
-When the turtle moves off a border of the canvas it is instantly taken to the opposite border so it can continue its move. This way the turtle will allways stay on the screen while it moves. This is when wrapping is set to on.</para>
-<para>Wrapping can be turned on and off with the <userinput>wrapon</userinput> and <userinput>wrapoff</userinput> commands. When KTurtle starts wrapping is turned on by default.</para></glossdef>
+When the turtle moves off a border of the canvas it is instantly taken to the opposite border so it can continue its move. This way the turtle will allways stay on the screen while it moves. This happens when wrapping is on.</para>
+<para>Wrapping can be turned on and off with the <userinput>wrapon</userinput> and <userinput>wrapoff</userinput> commands. When &kturtle; starts wrapping is turned on by default.</para></glossdef>
 </glossentry>
 
 </glosslist>
@@ -1495,36 +1497,34 @@ When the turtle moves off a border of the canvas it is instantly taken to the op
 
 
 <chapter id="translators">
-<title>Translator's Guide to KTurtle</title>
-<para>As you know, the Logo language great specificity is that the Logo commands can be translated in your own language. This makes it easier for a child to understand the commands.
+<title>Translator's Guide to &kturtle;</title>
+<para>As you know, the &logo; language great specificity is that the &logo; commands can be translated in your own language. This makes it easier for a child to understand the commands.
 For a new language, there are 3 files to translate: first the keywords file (or commands) then the logo-highlight-style file and finally the examples.
 </para>
 <sect1 id="commands_trans">
-<title>How To Translate the Logo keywords (commands)</title>
+<title>How To Translate the &logo; keywords (commands)</title>
 <para>
 The commands files are located in <filename class="directory">kdeedu/kturtle/src/data/keywords/</filename>
-Each file is named
-<filename>
-logokeywords.code.xml</filename>
-where <emphasis>code</emphasis> is the iso code for your country (note that this must be a valid iso code).</para>
+Each file is named <filename>logokeywords.code.xml</filename>
+where <emphasis>code</emphasis> is the ISO code for your country (note that this must be a valid ISO code).</para>
 <para>
 <itemizedlist>
 <listitem><para>
-Copy the logokeywords.en_US.xml file by renaming it to logokeywords.code.xml where code is your country code (2 or 4 letters ISO code)
+Copy the <filename>logokeywords.en_US.xml</filename> file by renaming it to <filename>logokeywords.code.xml</filename> where <emphasis>code</emphasis> is your country code (2 or 4 letters ISO code)
 </para>
 </listitem>
-<listitem><para>Translate in your own language the content of the &lt;keyword&gt; tag i.e the information between &lt;keyword&gt; and &lt;/keyword&gt; whenever it's possible and the content of the &lt;alias&gt; tag, i.e the information between the &lt;alias&gt; and &lt;/alias&gt;. These contents are related as the alias is a shortcut for the keyword.</para>
+<listitem><para>Translate in your own language the content of the &lt;keyword&gt; tag &ie; the information between &lt;keyword&gt; and &lt;/keyword&gt; whenever it's possible and the content of the &lt;alias&gt; tag, &ie; the information between the &lt;alias&gt; and &lt;/alias&gt;. These contents are related as the alias is a shortcut for the keyword.</para>
 <para>
-For example translate 'while' in: &lt;keyword&gt;while&lt;/keyword&gt;.
+For example translate <quote>while</quote> in: &lt;keyword&gt;while&lt;/keyword&gt;.
 </para>
 <para>
 Please don't translate anything else and don't translate English words in &lt;command name="english_word"&gt;. These must stay in English.
 </para>
 </listitem>
-<listitem><para>Save your file as <emphasis role="bold">utf-8</emphasis> (in Kate, use Save As and change to utf8 in the box on the right of the file name)
+<listitem><para>Save your file as <emphasis role="bold">utf-8</emphasis> (in Kate, use <guimenuitem>Save As...</guimenuitem> and change to utf8 in the box on the right of the file name)
 </para>
 </listitem>
-<listitem><para>Commit your file (add your filename in the Makefile.am) or send it to Anne-Marie.
+<listitem><para>Commit your file (add your filename in the <filename>Makefile.am</filename>) or send it to Anne-Marie.
 </para>
 </listitem>
 <listitem><para>In case of any doubt, please contact Anne-Marie Mahfouf <email>annemarie.mahfouf@free.fr</email> for more information.</para>
@@ -1542,18 +1542,18 @@ Please note that the country code must be the same here than in the logokeywords
 </para>
 <para>
 <itemizedlist>
-<listitem><para>Copy the logohighlightstyle.en_US.xml file by renaming it to logohighlightstyle.code.xml where <emphasis>code</emphasis> is your country code (2 or 4 letters ISO code)
+<listitem><para>Copy the <filename>logohighlightstyle.en_US.xml</filename> file by renaming it to <filename>logohighlightstyle.code.xml</filename> where <emphasis>code</emphasis> is your country code (2 or 4 letters ISO code)
 </para></listitem>
 <listitem><para>Line 4 of the file, there is
-&lt;language name="en_US" ..., here you change en_US with your language ISO code (2 or 4 letters).
+&lt;language name="en_US" ..., here you change <quote>en_US</quote> with your language ISO code (2 or 4 letters).
 </para></listitem>
-<listitem><para>Translate in your own language the content of the &lt;item&gt; tag i.e the information between &lt;item&gt; and &lt;/item&gt;. This content must match the logokeyword file.
-For example translate 'while' in: &lt;item&gt; while &lt;/item&gt; and leave the spaces as they are (one at the beginning and one at the end).
+<listitem><para>Translate in your own language the content of the &lt;item&gt; tag &ie; the information between &lt;item&gt; and &lt;/item&gt;. This content must match the logokeyword file.
+For example translate <quote>while</quote> in: &lt;item&gt; while &lt;/item&gt; and leave the spaces as they are (one at the beginning and one at the end).
 Please don't translate anything else.
 </para></listitem>
-<listitem><para>Save your file as <emphasis role="bold">utf-8</emphasis> (in Kate, use Save As and change to utf8 in the box on the right of the file name)
+<listitem><para>Save your file as <emphasis role="bold">utf-8</emphasis> (in Kate, use <guimenuitem>Save As...</guimenuitem> and change to utf8 in the box on the right of the file name)
 </para></listitem>
-<listitem><para>Commit your file (change the Makefile.am by adding your filename) or send it to Anne-Marie.
+<listitem><para>Commit your file (change the <filename>Makefile.am</filename> by adding your filename) or send it to Anne-Marie.
 </para></listitem>
 <listitem><para>In case of any doubt, please contact Anne-Marie Mahfouf <email>annemarie.mahfouf@free.fr</email> for more information.
 </para></listitem>
@@ -1564,20 +1564,20 @@ Please don't translate anything else.
 <sect1 id="examples_trans">
 <title>How To Translate the examples</title>
 <para>
-The examples are located in the KTurtle source in the <filename class="directory">kdeedu/kturtle/examples</filename> folder.
+The examples are located in the &kturtle; source in the <filename class="directory">kdeedu/kturtle/examples</filename> folder.
 </para>
 <para>
 <itemizedlist>
 <listitem><para>Create a folder with your language ISO code as name.</para>
 </listitem>
-<listitem><para>Copy the english example in this folder and rename the files with your language translation. This will allow users to easily and quickly understand what the example is about.</para>
+<listitem><para>Copy the english examples in this folder and rename the files with your language translation. This will allow users to easily and quickly understand what the example is about.</para>
 </listitem>
 <listitem><para>See in <filename class="directory">kturtle/src/data/keywords/</filename> the file corresponding to your language. This file must be done before translating the examples. 
-Replace in the example files all English keywords with your translated keywords.</para>
+Replace, in the example files, all English keywords with your translated keywords.</para>
 </listitem>
-<listitem><para>Save your file as <emphasis role="bold">utf-8</emphasis> (in Kate, use Save As and change to utf8 in the box on the right of the file name)</para>
+<listitem><para>Save your file as <emphasis role="bold">utf-8</emphasis> (in Kate, use <guimenuitem>Save As...</guimenuitem> and change to utf8 in the box on the right of the file name)</para>
 </listitem>
-<listitem><para>Commit your folder (add a Makefile.am inside) or send it to Anne-Marie.</para>
+<listitem><para>Commit your folder (add a <filename>Makefile.am</filename> inside) or send it to Anne-Marie.</para>
 </listitem>
 <listitem><para>In case of any doubt, please contact Anne-Marie Mahfouf, <email>annemarie.mahfouf@free.fr</email> for more information.</para>
 </listitem>
@@ -1594,7 +1594,7 @@ Replace in the example files all English keywords with your translated keywords.
 <title>Credits and License</title>
 
 <para>
-KTurtle
+&kturtle;
 </para>
 <para>Program copyright 2003-2004 Cies Breijs <email>cies # showroommama ! nl</email></para>
 <para>
@@ -1602,7 +1602,7 @@ Contributors:
 <itemizedlist>
 <listitem><para>Coding help, editor part: Anne-Marie Mahfouf <email>annma@kde.org</email></para>
 </listitem>
-<listitem><para>Author of "wsbasic" (wsbasic.sf.net) which is the base for the interpreter of KTurtle: Walter Schreppers <email>Walter.Schreppers@ua.ac.be</email></para>
+<listitem><para>Author of "wsbasic" (wsbasic.sf.net) which is the base for the interpreter of &kturtle;: Walter Schreppers <email>Walter.Schreppers@ua.ac.be</email></para>
 </listitem>
 <listitem><para>German Data Files: Matthias Me&szlig;mer <email>bmlmessmer@web.de</email></para>
 </listitem>
@@ -1636,7 +1636,7 @@ Cies Briej <email>cies # showroommama ! nl</email>
 <title>Installation</title>
 
 <sect1 id="getting-kturtle">
-<title>How to obtain KTurtle</title>
+<title>How to obtain &kturtle;</title>
 
 &install.intro.documentation;
 
