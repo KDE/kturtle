@@ -187,7 +187,7 @@ void Parser::matchToken(int expectedToken)
 // 		}
 // 		QString key = lexer->name2key(tokStr); // translate if possible, else key=tokStr
 // 		Error( i18n("Expected %1 on line %2").arg(key).arg( lexer->getRow() ), 1010, lexer->getRow(), lexer->getCol() );
-		Error(currentToken, i18n("Couldnt match tok-number: '%1'").arg(expectedToken), 1010);
+		Error(currentToken, i18n("Could not match token-number: '%1'").arg(expectedToken), 1010);
 	}
 	else
 	{
@@ -1116,7 +1116,7 @@ TreeNode* Parser::Other()
 	if (learnedFunctionList.contains(presevedToken.look) > 0) return FunctionCall(presevedToken);
 	else if (currentToken.type == tokAssign)                  return Assignment(presevedToken);
 	
-	Error(presevedToken, i18n("'%1' is not (yet) a learned command and neither a Logo command.").arg(presevedToken.look), 1020);
+	Error(presevedToken, i18n("'%1' is neither (yet) a learned command nor a Logo command.").arg(presevedToken.look), 1020);
 	TreeNode* errNode = new TreeNode(presevedToken, Unknown);
 	return errNode;
 }
