@@ -16,17 +16,19 @@ KDE_ICON = kturtle
 bin_PROGRAMS = kturtle
 
 # the application source, library search path, and link libraries
-kturtle_SOURCES = main.cpp kturtle.cpp canvas.cpp number.cpp lexer.cpp parser.cpp executer.cpp treenode.cpp settings.cpp colorpicker.cpp
+kturtle_SOURCES = main.cpp kturtle.cpp canvas.cpp number.cpp lexer.cpp parser.cpp executer.cpp treenode.cpp colorpicker.cpp settings.kcfgc
 
 # let automoc handle all the meta source files (moc)
 kturtle_METASOURCES = AUTO
 
 # these are the headers for your project
-noinst_HEADERS = kturtle.h canvas.h number.h lexer.h parser.h executer.h treenode.h settings.h colorpicker.h
+noinst_HEADERS = kturtle.h canvas.h number.h lexer.h parser.h executer.h treenode.h colorpicker.h
 
 # this is where the desktop file will go
-shelldesktopdir   = $(kde_appsdir)/Utilities
+shelldesktopdir   = $(kde_appsdir)/Edutainment/Miscellaneous
 shelldesktop_DATA = kturtle.desktop
+
+kde_kcfg_DATA = kturtle.kcfg 
 
 # this is where the shell's XML-GUI resource file goes
 shellrcdir   = $(kde_datadir)/kturtle

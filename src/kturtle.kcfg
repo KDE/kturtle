@@ -1,0 +1,19 @@
+<kcfg> 
+  <kcfgfile name="kturtlerc"/> 
+    <group name="general"> 
+        <entry name="CanvasHeight" type="Int"> 
+      <label>The height of the canvas in pixels</label> 
+      <default code="true">300</default> 
+    </entry> 
+    <entry name="CanvasWidth" type="Int"> 
+      <label>The width of the canvas in pixels</label> 
+      <default code="true">400</default> 
+    </entry> 
+  </group> 
+  <group name="language"> 
+    <entry name="TranslationFilePath" type="String"> 
+      <label>The location of the language xml file</label> 
+      <default code="true">locate("data","kturtle/data/logokeywords.en_US.xml")</default> 
+    </entry> 
+  </group> 
+</kcfg>
