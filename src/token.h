@@ -124,7 +124,7 @@ enum tokenTypes
 	tokReset,
 	tokRun,
 
-	tokDo, // a dummy command
+	tokDo // a dummy command
 };
 
 
