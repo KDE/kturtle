@@ -46,7 +46,7 @@ bugreport(log):/
 
 =================================================================*/
 
-Parser::Parser(QTextIStream& in) {
+Parser::Parser(istream& in) {
   lexer = new Lexer(in);
   tree = new TreeNode();
 }

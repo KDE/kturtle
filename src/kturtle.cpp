@@ -18,7 +18,7 @@
  
 // BEGIN includes and defines
 
-// #include <stdlib.h>
+#include <stdlib.h>
 
 #include <qregexp.h>
 #include <qpainter.h>
@@ -32,6 +32,7 @@
 #include <kfiledialog.h>
 #include <kimageio.h>
 #include <kinputdialog.h> 
+#include <kkeydialog.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kprinter.h>
@@ -148,7 +149,10 @@ void MainWindow::setupActions() {
 	new KToggleAction(i18n("Show &Line Numbers"), 0, Key_F11, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
 	m_fullscreen = KStdAction::fullScreen(this, SLOT( slotToggleFullscreen() ), ac, this, "full_screen");
 	m_fullscreen->setChecked(b_fullscreen);
-
+	// DEPRICATED:
+	//showEditor = new KToggleAction(i18n("Show &Editor"), 0, 0, this, SLOT(slotShowEditor()), ac, "show_editor");
+	//showEditor->setChecked(true);
+	
 	// Tools actions
 	colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", ALT+Key_C, this, SLOT(slotColorPicker()), ac, "color_picker");
 	new KAction(i18n("&Indent"), "indent", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
@@ -160,7 +164,7 @@ void MainWindow::setupActions() {
 	// //createStandardStatusBarAction();
 	// //setStandardToolBarMenuEnabled(true);
 	KStdAction::preferences( this, SLOT( slotSettings() ), ac );
-	KStdAction::keyBindings(guiFactory(), SLOT(configureShortcuts()), ac);
+	KStdAction::keyBindings( this, SLOT( slotConfigureKeys() ), ac );
 	new KAction(i18n("&Configure Editor..."), "configure", 0, this, SLOT(slotEditor()), ac, "set_confdlg");
 	KStdAction::configureToolbars( this, SLOT(slotConfigureToolbars()), ac);
 	// Help actions
@@ -498,13 +502,10 @@ void MainWindow::startExecution() {
 	
 	kapp->processEvents();
 	
-	QString txt = ( ei->text() + "\n" ).latin1(); // the /n is needed for proper parsing
-// 	stringbuf sbuf(txt, ios_base::in);
-// 	istream in(&sbuf);
-
-  QTextIStream in(&txt);
-
-	Parser parser(&in);
+	string txt = ( ei->text() + "\n" ).latin1(); // the /n is needed for proper parsing
+	stringbuf sbuf(txt, ios_base::in);
+	istream in(&sbuf);
+	Parser parser(in);
 	connect( &parser, SIGNAL(ErrorMsg(QString, uint, uint, uint) ), 
 		this, SLOT(slotErrorDialog(QString, uint, uint, uint) ) );
 	
@@ -893,6 +894,10 @@ void MainWindow::slotUpdateSettings() {
 void MainWindow::readConfig(KConfig *config) {
 	config->setGroup("General Options");
 	m_recentFiles->loadEntries(config, "Recent Files");
+}
+
+void MainWindow::slotConfigureKeys() {
+  	KKeyDialog::configure(actionCollection(), this);
 }
 
 void MainWindow::slotConfigureToolbars() {
