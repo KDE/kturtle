@@ -70,7 +70,7 @@
     <varlistentry>
       <term>gox</term>
       <listitem><para><screen>gox X</screen>
-      <userinput>gox</userinput> using this command the turtle will move to X <glossterm linkend="pixels">pixels</glossterm> from the left of the canvas while she keeps his height.</para></listitem>
+      <userinput>gox</userinput> using this command the turtle will move to X <glossterm linkend="pixels">pixels</glossterm> from the left of the canvas whilst staying at the same height.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -78,20 +78,20 @@
     <varlistentry>
       <term>goy</term>
       <listitem><para><screen>goy Y</screen>
-      <userinput>gox</userinput> using this command the turtle will move to Y <glossterm linkend="pixels">pixels</glossterm> from the top of the canvas while she keeps his on the same distance from the left border of the canvas.</para></listitem>
+      <userinput>gox</userinput> using this command the turtle will move to Y <glossterm linkend="pixels">pixels</glossterm> from the top of the canvas whilst staying at the same distance from the left border of the canvas.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
 
 <sect2 id="pen">
 <title>The turtle has a pen</title>
-<para>The turtle has a pen, that draws a line when the turtle moves. There are a few commands to control the pen. In this section we explain these commands.</para>
+<para>The turtle has a pen that draws a line when the turtle moves. There are a few commands to control the pen. In this section we explain these commands.</para>
   <variablelist>
     <anchor id="penup" />
     <varlistentry>
       <term>penup</term>
       <listitem><para><screen>penup</screen>
-      <userinput>penup</userinput> lifts the pen from the canvas. When the pen is <quote>up</quote> no line will be drawn when the turtle moves.See also <userinput>pendown</userinput>.<userinput>penup</userinput> can be abbreviated to <userinput>pu</userinput>.</para></listitem>
+      <userinput>penup</userinput> lifts the pen from the canvas. When the pen is <quote>up</quote> no line will be drawn when the turtle moves. See also <userinput>pendown</userinput>. <userinput>penup</userinput> can be abbreviated to <userinput>pu</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -107,7 +107,7 @@
     <varlistentry>
       <term>penwidth</term>
       <listitem><para><screen>penwidth X</screen>
-      <userinput>penwidth</userinput> sets the width of the pen (the ligne width) to an amount of X <glossterm linkend="pixels">pixels</glossterm>.<userinput>penwidth</userinput> can be abbreviated to <userinput>pw</userinput>.</para></listitem>
+      <userinput>penwidth</userinput> sets the width of the pen (the line width) to an amount of X <glossterm linkend="pixels">pixels</glossterm>. <userinput>penwidth</userinput> can be abbreviated to <userinput>pw</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -115,7 +115,7 @@
     <varlistentry>
       <term>pencolor</term>
       <listitem><para><screen>pencolor R,G,B</screen>
-      <userinput>pencolor</userinput> sets the color of the pen. <userinput>pencolor</userinput> takes an <glossterm linkend="rgb">RGB combination</glossterm> as input.<userinput>pencolor</userinput> can be abbreviated to <userinput>pc</userinput>.</para></listitem>
+      <userinput>pencolor</userinput> sets the color of the pen. <userinput>pencolor</userinput> takes an <glossterm linkend="rgb">RGB combination</glossterm> as input. <userinput>pencolor</userinput> can be abbreviated to <userinput>pc</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -128,7 +128,7 @@
     <varlistentry>
       <term>canvassize</term>
       <listitem><para><screen>canvassize X,Y</screen>
-      With the <userinput>canvassize</userinput> command you can set the size of the canvas. It takes X and Y as input, where X is the new canvas width in <glossterm linkend="pixels">pixels</glossterm>, and Y is the new height of the canvas in <glossterm linkend="pixels">pixels</glossterm>.<userinput>canvassize</userinput> can be abbreviated to <userinput>cs</userinput>.</para></listitem>
+      With the <userinput>canvassize</userinput> command you can set the size of the canvas. It takes X and Y as input, where X is the new canvas width in <glossterm linkend="pixels">pixels</glossterm>, and Y is the new height of the canvas in <glossterm linkend="pixels">pixels</glossterm>. <userinput>canvassize</userinput> can be abbreviated to <userinput>cs</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -136,7 +136,7 @@
     <varlistentry>
       <term>canvascolor</term>
       <listitem><para><screen>canvascolor R,G,B</screen>
-      <userinput>canvascolor</userinput> set the color of the canvas. <userinput>canvascolor</userinput> takes an <glossterm linkend="rgb">RGB combination</glossterm> as input.<userinput>canvascolor</userinput> can be abbreviated to <userinput>cc</userinput>.</para></listitem>
+      <userinput>canvascolor</userinput> set the color of the canvas. <userinput>canvascolor</userinput> takes an <glossterm linkend="rgb">RGB combination</glossterm> as input. <userinput>canvascolor</userinput> can be abbreviated to <userinput>cc</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -144,7 +144,7 @@
     <varlistentry>
       <term>wrapon</term>
       <listitem><para><screen>wrapon</screen>
-      With the <userinput>wrapon</userinput> command you can set <glossterm linkend="wrapping">wrapping</glossterm> <quote>on</quote> for the canvas. Please see the glossary if you want to know what is <glossterm linkend="wrapping">wrapping</glossterm>.</para></listitem>
+      With the <userinput>wrapon</userinput> command you can set <glossterm linkend="wrapping">wrapping</glossterm> <quote>on</quote> for the canvas. Please see the glossary if you want to know what <glossterm linkend="wrapping">wrapping</glossterm> is.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -152,7 +152,7 @@
     <varlistentry>
       <term>wrapoff</term>
       <listitem><para><screen>wrapoff</screen>
-      With the <userinput>wrapoff</userinput> command you can set <glossterm linkend="wrapping">wrapping</glossterm> <quote>off</quote> for the canvas. This means the turtle can move off the canvas and can get <quote>lost</quote>. Please see the glossary if you want to know what is <glossterm linkend="wrapping">wrapping</glossterm>.</para></listitem>
+      With the <userinput>wrapoff</userinput> command you can set <glossterm linkend="wrapping">wrapping</glossterm> <quote>off</quote> for the canvas: this means the turtle can move off the canvas and can get <quote>lost</quote>. Please see the glossary if you want to know what <glossterm linkend="wrapping">wrapping</glossterm> is.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -165,7 +165,7 @@
     <varlistentry>
       <term>clear</term>
       <listitem><para><screen>clear</screen>
-      With <userinput>clear</userinput> you can clean all drawings from the canvas. All other things remain: the position and angle of the turtle, the canvascolor, the visibility of the turtle and the canvas size.<userinput>clear</userinput> can be abbreviated to <userinput>ccl</userinput>.</para></listitem>
+      With <userinput>clear</userinput> you can clean all drawings from the canvas. All other things remain: the position and angle of the turtle, the canvascolor, the visibility of the turtle, and the canvas size. <userinput>clear</userinput> can be abbreviated to <userinput>ccl</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -173,22 +173,22 @@
     <varlistentry>
       <term>reset</term>
       <listitem><para><screen>reset</screen>
-      <userinput>reset</userinput> cleans much more thoroughly than the <userinput>clear</userinput> command. After a <userinput>reset</userinput> command everything is like is was when you had just started &kturtle;. The tortle is positionned at the middle of the screen, the canvas color is white and the turtle daws a black line on the canvas.</para></listitem>
+      <userinput>reset</userinput> cleans much more thoroughly than the <userinput>clear</userinput> command. After a <userinput>reset</userinput> command everything is like is was when you had just started &kturtle;. The turtle is positioned at the middle of the screen, the canvas color is white, and the turtle draws a black line on the canvas.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
 
 <sect2 id="sprites">
 <title>The turtle is a sprite</title>
-<para>Many people do not know what sprites are, so here a short explanation: sprites are small pictures that can be moved around the screen. (for more info see the glossary on <glossterm linkend="sprites">sprites</glossterm>). So the turtle is a sprite!</para>
+<para>Many people do not know what sprites are, so here a short explanation: sprites are small pictures that can be moved around the screen. (for more info see the glossary on <glossterm linkend="sprites">sprites</glossterm>). So the turtle is a sprite.</para>
 <para>Next you will find a full overview on all commands to work with sprites.</para>
-<para>[The current version of &kturtle; does not yet support the use of sprites other than the turtle. With future versions you will be able to change the turtle into something of your own design!]</para>
+<para>[The current version of &kturtle; does not yet support the use of sprites other than the turtle. With future versions you will be able to change the turtle into something of your own design]</para>
   <variablelist>
     <anchor id="show" />
     <varlistentry>
       <term>show</term>
       <listitem><para><screen>show</screen>
-      <userinput>show</userinput> makes the turtle visible again after she has been hidden.<userinput>show</userinput> can be abbreviated to <userinput>ss</userinput>.</para></listitem>
+      <userinput>show</userinput> makes the turtle visible again after it has been hidden.<userinput>show</userinput> can be abbreviated to <userinput>ss</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -203,7 +203,7 @@
 
 <sect2 id="writing">
 <title>Can the turtles write text?</title>
-<para>The answer is: <quote>yes</quote>. The turtle can write, he writes just about everything you command him to.</para>
+<para>The answer is: <quote>yes</quote>. The turtle can write: it writes just about everything you command it to.</para>
   <variablelist>
     <anchor id="print" />
     <varlistentry>
@@ -263,7 +263,7 @@ This will print a 0.
 
 <sect2 id="variables">
 <title>Variables: number containers</title>
-<para>Let's start with an example:
+<para>Let us start with an example:
 <screen>
 x = 3
 print x
@@ -307,7 +307,7 @@ On the first line the string <userinput>x</userinput> is set to <quote>Hello </q
 
 <sect1 id="math">
 <title>Can the Turtle do math?</title>
-<para>Yes, &kturtle; will do your math. You can add (+), substract (-), multiply (*) and divide (/). This is an example in which we use all of them:
+<para>Yes, &kturtle; will do your math. You can add (+), substract (-), multiply (*), and divide (/). Here is an example in which we use all of them:
 <screen>
 a = 20 - 5
 b = 15 * 2
@@ -415,11 +415,11 @@ if a &lt; 5 and b == 5 [
 
 <sect1 id="controlling-execution">
 <title>Controlling execution</title>
-<para>The execution controllers enable you &mdash; as their name implies &mdash; to control execution</para>
+<para>The execution controllers enable you &mdash; as their name implies &mdash; to control execution.</para>
 
 <sect2 id="easy">
 <title>Have the turtle wait</title>
-<para>If you have done some programming in &kturtle; you have might noticed that  the turtle can be very quick at drawing. This command makes the turtle take it a little more easy.</para>
+<para>If you have done some programming in &kturtle; you have might noticed that the turtle can be very quick at drawing. This command makes the turtle wait for a given amount of time.</para>
   <variablelist>
     <anchor id="wait" />
     <varlistentry>
@@ -434,7 +434,7 @@ repeat 36 [
 ]
 </screen>
       This code draws a circle, but the turtle will wait half a second
-      after each step. This gives the impression of an easy-moving turtle.</para></listitem>
+      after each step. This gives the impression of a slow-moving turtle.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -527,8 +527,8 @@ for x = 1 to 10 [
 
 
 <sect1 id="learn">
-<title>Create your own commands!</title>
-<para><userinput>learn</userinput> is a very special command, because it is used to create your own commands. The command you create can take <glossterm linkend="input-output">input</glossterm> and return <glossterm linkend="input-output">output</glossterm>. Let's take a look at how a new command is created:
+<title>Create your own commands</title>
+<para><userinput>learn</userinput> is a very special command, because it is used to create your own commands. The command you create can take <glossterm linkend="input-output">input</glossterm> and return <glossterm linkend="input-output">output</glossterm>. Let us take a look at how a new command is created:
 <screen>
 learn circle (x) [
   repeat 36 [
