@@ -178,7 +178,7 @@ void Parser::matchToken(int expectedToken)
 // 		}
 // 		QString key = lexer->name2key(tokStr); // translate if possible, else key=tokStr
 // 		Error( i18n("Expected %1 on line %2").arg(key).arg( lexer->getRow() ), 1010, lexer->getRow(), lexer->getCol() );
-		Error( i18n("Couldnt match tok-number: '%1'").arg(expectedToken), 1010, row, col );
+		Error( i18n("Could not match token-number: '%1'").arg(expectedToken), 1010, row, col );
 	}
 	else
 	{
