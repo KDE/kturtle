@@ -15,7 +15,7 @@
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
- 
+
 // BEGIN includes and defines
 
 #include <stdlib.h>
@@ -31,7 +31,7 @@
 #include <kedittoolbar.h>
 #include <kfiledialog.h>
 #include <kimageio.h>
-#include <kinputdialog.h> 
+#include <kinputdialog.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kprinter.h>
@@ -70,34 +70,34 @@ MainWindow::MainWindow(KTextEditor::Document *document) : editor(0) {
 			KMessageBox::error(this, i18n("A KDE text-editor component could not be found;\n"
 					"please check your KDE installation."));
 			kapp->exit(1);
-		}  
+		}
 		// docList.append(doc);
 	}
 	doc = document;
-	
+
 	setupCanvas();
 	setupEditor();
-	
+
 	setupStatusBar();
 	setupActions();
 	createShellGUI( true );
 	setMinimumSize(200,200);
-	
+
 	// the initial values
 	CurrentFile = "";
 	filename2saveAs = "";
 	setCaption( i18n("Untitled") );
 	picker = 0; // for the colorpickerdialog
 	executing = false;
-	
+
 	// init with more usefull size, stolen from kwite (they stole it from konq)
 	if ( !initialGeometrySet() && !kapp->config()->hasGroup("MainWindow Settings") ) {
 		resize( 640, 480 );
 	}
-	
+
 	KConfig *config = kapp->config();
 	readConfig(config);
-	
+
 	//show();
 }
 
@@ -115,12 +115,12 @@ void MainWindow::setupActions() {
 	KActionCollection *ac = actionCollection();
 	// File menu
 	KStdAction::openNew(this, SLOT(slotNewFile()), ac);
-	openExAction = new KAction(i18n("Open Examples"), "bookmark_folder", CTRL+Key_E, this, SLOT(slotOpenEx()), ac, "open_examples");
+	openExAction = new KAction(i18n("Open Examples..."), "bookmark_folder", CTRL+Key_E, this, SLOT(slotOpenEx()), ac, "open_examples");
 	KStdAction::open(this, SLOT(slotOpenFile()), ac);
 	m_recentFiles = KStdAction::openRecent(this, SLOT(slotOpen(const KURL&)), ac);
 	KStdAction::save(this, SLOT(slotSaveFile()), ac);
 	KStdAction::saveAs(this, SLOT(slotSaveAs()), ac);
-	new KAction(i18n("Save &Canvas"), 0, 0, this, SLOT(slotSaveCanvas()), ac, "save_canvas");
+	new KAction(i18n("Save &Canvas..."), 0, 0, this, SLOT(slotSaveCanvas()), ac, "save_canvas");
 	run = new KAction(i18n("&Execute Commands"), "gear", ALT+Key_Return, this, SLOT( slotExecute() ), ac, "run");
 	stop = new KAction(i18n("Stop E&xecution"), "stop", Key_Escape, this, SLOT( slotAbortExecution() ), ac, "stop");
 	stop->setEnabled(false);
@@ -150,7 +150,7 @@ void MainWindow::setupActions() {
 	new KAction(i18n("&Unindent"), "unindent", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
 	new KAction(i18n("Cl&ean Indentation"), 0, 0, this, SLOT(slotCleanIndent()), ac, "edit_cleanIndent");
 	new KAction(i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
-	new KAction(i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");  
+	new KAction(i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
 	// Settings actions
 	KStdAction::preferences( this, SLOT( slotSettings() ), ac );
 	new KAction(i18n("&Configure Editor..."), "configure", 0, this, SLOT(slotEditor()), ac, "set_confdlg");
@@ -176,11 +176,11 @@ void MainWindow::setupEditor() {
 	// ei is the editor interface which allows us to access the text in the part
 	ei = dynamic_cast<KTextEditor::EditInterface*>(doc);
 	EditorDock->setWidget(editor);
-	
+
 	// default the highlightstyle to "logo" using the needed i18n
 	kdDebug(0)<<"init: "<<Settings::logoLanguage()<<endl;
-	slotSetHighlightstyle( Settings::logoLanguage() );  
-	
+	slotSetHighlightstyle( Settings::logoLanguage() );
+
 	// allow the cursor position to be indicated in the statusbar
 	connect(editor, SIGNAL(cursorPositionChanged()), this, SLOT(slotCursorStatusBar()));
 	// and update the context help menu item
@@ -195,7 +195,7 @@ void MainWindow::setupStatusBar() {
 	statusBar()->setItemAlignment(IDS_LANG, AlignLeft);
 	statusBar()->insertItem("", IDS_STATUS_CLM, 0, true);
 	statusBar()->insertItem("", IDS_INS, 0, true);
-	// fill the statusbar 
+	// fill the statusbar
 	slotStatusBar(i18n("Welcome to KTurtle..."),  IDS_STATUS); // the message part
 	slotStatusBar(i18n(" Line: %1 Column: %2 ").arg(1).arg(1), IDS_STATUS_CLM);
 	slotStatusBar(i18n("INS"), IDS_INS);
@@ -260,9 +260,9 @@ void MainWindow::slotNewFile() {
 	editor->document()->setModified(false);
 	CurrentFile = "";
 	setCaption( i18n("Untitled") );
-	slotStatusBar(i18n("New file... Happy coding!"), IDS_STATUS); 
+	slotStatusBar(i18n("New file... Happy coding!"), IDS_STATUS);
 }
-	
+
 void MainWindow::loadFile(KURL url) {
 	m_recentFiles->addURL( url );
 	QString myFile = url.path();
@@ -292,7 +292,7 @@ void MainWindow::loadFile(KURL url) {
 			slotStatusBar(i18n("Opened file: %1").arg(url.fileName()),  IDS_STATUS);
 			editor->document()->setModified(false);
 		}
-	} else { 
+	} else {
 		slotStatusBar(i18n("Opening aborted, nothing opened."),  IDS_STATUS);
 	}
 }
@@ -304,7 +304,7 @@ void MainWindow::slotOpenFile() {
 	if( !url.isEmpty() ) {
 		loadFile(url);
 	}
-	editor->document()->setModified(false); 
+	editor->document()->setModified(false);
 }
 
 void MainWindow::slotOpen(const KURL& url) {
@@ -324,7 +324,7 @@ void MainWindow::slotOpenEx() {
 	loadFile(url);
 }
 
-void MainWindow::slotSaveFile() {  
+void MainWindow::slotSaveFile() {
 	QString filestr = CurrentFile;
 	// when coming from SaveAs, then dont use CurrentFile but filename2saveAs
 	if ( !filename2saveAs.isEmpty() ) {
@@ -344,7 +344,7 @@ void MainWindow::slotSave(KURL &url) {
 		loadFile(url);//reload the file as utf8 otherwise display weird chars
 		CurrentFile = url.fileName();
 		setCaption(CurrentFile);
-		slotStatusBar(i18n("Saved file to: %1").arg(CurrentFile),  IDS_STATUS); 
+		slotStatusBar(i18n("Saved file to: %1").arg(CurrentFile),  IDS_STATUS);
 		m_recentFiles->addURL( url );
 		editor->document()->setModified(false);
 	} else {
@@ -360,7 +360,7 @@ void MainWindow::slotSaveAs() {
 		if (url.isEmpty()) { // when cancelled the KFiledialog?
 			return;
 		}
-		if (QFile(url.path()).exists()) { 
+		if (QFile(url.path()).exists()) {
 			int result = KMessageBox::warningContinueCancel ( this,
 			i18n("A file named \"%1\" already exists;\n"
 			"are you sure you want to overwrite it?").arg( url.url() ),
@@ -382,7 +382,7 @@ void MainWindow::slotSaveCanvas() {
 		if (url.isEmpty()) { // when cancelled the KFiledialog?
 			return;
 		}
-		if (QFile(url.path()).exists()) { 
+		if (QFile(url.path()).exists()) {
 			int result = KMessageBox::warningContinueCancel( this,
 				i18n("A picture named \"%1\" already exists;\n"
 				"are you sure you want to overwrite it?").arg(url.url()),
@@ -409,13 +409,13 @@ void MainWindow::slotSaveCanvas() {
 	}
 	if ( !ok ) {
 		kdWarning() << "KTurtle was unable to save the canvas drawing" << endl;
-		
+
 		QString caption = i18n("Unable to Save Image");
 		QString text = i18n("KTurtle was unable to save the image to\n%1.").arg(url.prettyURL());
 		KMessageBox::error(this, text, caption);
 	}
 	/// NOW THE PIXMAP SHOULD BE SAVED!!! better look at an other app (ksnapshot) how to do that. :-)
-	slotStatusBar(i18n("Saved canvas to: %1").arg(url.fileName()),  IDS_STATUS); 
+	slotStatusBar(i18n("Saved canvas to: %1").arg(url.fileName()),  IDS_STATUS);
 }
 
 void MainWindow::slotPrint() {
@@ -454,7 +454,7 @@ bool MainWindow::queryClose() {
 			slotSaveFile();
 			if ( CurrentFile.isEmpty() ) {
 				return false; // when saveAs get cancelled or X-ed it should not quit
-			}	
+			}
 		}
 	}
 	KConfig *config = kapp->config();
@@ -481,7 +481,7 @@ void MainWindow::slotExecute() {
 void MainWindow::startExecution() {
 	allreadyError = false;
 	executing = true;
-	
+
 	// check if execution should be runnin 'fullscreen'
 	if (b_fullscreen) {
 		slotShowEditor();
@@ -489,35 +489,35 @@ void MainWindow::startExecution() {
 		// menuBar()->hide();   <--- seems pretty hard to hide the menubar
 		toolBar()->hide();
 	}
-	
+
 	run->setEnabled(false);
 	stop->setEnabled(true);
-	
+
 	slotStatusBar(i18n("Parsing commands..."),  IDS_STATUS);
-	
+
 	kapp->processEvents();
-	
+
 	string txt = ( ei->text() + "\n" ).latin1(); // the /n is needed for proper parsing
 	stringbuf sbuf(txt, ios::in);
 	istream in(&sbuf);
 	Parser parser(in);
-	connect( &parser, SIGNAL(ErrorMsg(QString, uint, uint, uint) ), 
+	connect( &parser, SIGNAL(ErrorMsg(QString, uint, uint, uint) ),
 		this, SLOT(slotErrorDialog(QString, uint, uint, uint) ) );
-	
+
 	// parsing and executing...
 	if( parser.parse() ) {
 		TreeNode* root = parser.getTree();
 		root->showTree(root); // show parsetree  DEBUG OPTION
-		
-		slotStatusBar(i18n("Executing commands..."),  IDS_STATUS); 
+
+		slotStatusBar(i18n("Executing commands..."),  IDS_STATUS);
 		exe = new Executer(root); // make Executer object, 'exe', and have it point to the root
-		connect( exe, SIGNAL( ErrorMsg(QString, uint, uint, uint) ), 
+		connect( exe, SIGNAL( ErrorMsg(QString, uint, uint, uint) ),
 			this, SLOT( slotErrorDialog(QString, uint, uint, uint) ) );
-		connect( exe, SIGNAL( InputDialog(QString&) ), 
+		connect( exe, SIGNAL( InputDialog(QString&) ),
 			this, SLOT( slotInputDialog(QString&) ) );
-		connect( exe, SIGNAL( MessageDialog(QString) ), 
+		connect( exe, SIGNAL( MessageDialog(QString) ),
 			this, SLOT( slotMessageDialog(QString) ) );
-		
+
 		// Connect the signals form Executer to the slots from Canvas:
 		connect( exe, SIGNAL( Clear() ), TurtleView, SLOT( slotClear() ) );
 		connect( exe, SIGNAL( Go(int, int) ), TurtleView, SLOT( slotGo(int, int) ) );
@@ -545,7 +545,7 @@ void MainWindow::startExecution() {
 		connect( exe, SIGNAL( WrapOn() ), TurtleView, SLOT( slotWrapOn() ) );
 		connect( exe, SIGNAL( WrapOff() ), TurtleView, SLOT( slotWrapOff() ) );
 		connect( exe, SIGNAL( Reset() ), TurtleView, SLOT( slotReset() ) );
-		
+
 		if ( exe->run() ) {
 			slotStatusBar(i18n("Done."),  IDS_STATUS);
 			finishExecution();
@@ -568,7 +568,7 @@ void MainWindow::finishExecution() {
 	run->setEnabled(true);
 	stop->setEnabled(false);
 	executing = false;
-	
+
 	// show the editor, menu- and statusbar
 	if (b_fullscreen) {
 		if(!b_editorShown) {
@@ -590,10 +590,10 @@ void MainWindow::slotErrorDialog(QString msg, uint row, uint col, uint code) {
 		// RowCol = QString(" on row %1, column %2.").arg(row).arg(col); // no column, it over informs
 		line = i18n(" on line %1.").arg(row - 1);
 	}
-	
+
 	// move cursor to the error
 	dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->setCursorPositionReal(row - 2, col);
-	
+
 	QString ErrorType;
 	if( 1000 <= code || code < 2000 ) {
 		ErrorType = i18n("Parse Error");
@@ -659,20 +659,20 @@ void MainWindow::slotSetHighlightstyle(QString langCode) {
 void MainWindow::slotUndo() {
   	dynamic_cast<KTextEditor::UndoInterface*>(doc)->undo();
 }
-   
+
 void MainWindow::slotRedo() {
   	dynamic_cast<KTextEditor::UndoInterface*>(doc)->redo();
 }
 
-   
+
 void MainWindow::slotCut() {
   	dynamic_cast<KTextEditor::ClipboardInterface*>(editor)->cut();
 }
-  
+
 void MainWindow::slotCopy() {
   	dynamic_cast<KTextEditor::ClipboardInterface*>(editor)->copy();
 }
-   
+
 void MainWindow::slotPaste() {
   	dynamic_cast<KTextEditor::ClipboardInterface*>(editor)->paste();
 }
@@ -710,8 +710,8 @@ void MainWindow::slotToggleInsert() {
 	KToggleAction *a = dynamic_cast<KToggleAction*>(editor->actionCollection()->action("set_insert"));
 	a->activate();
 	if (a) {
-		statusBar()->changeItem(a->isChecked() ? i18n(" OVR ") : i18n(" INS "), IDS_INS); 
-	} 
+		statusBar()->changeItem(a->isChecked() ? i18n(" OVR ") : i18n(" INS "), IDS_INS);
+	}
 }
 
 void MainWindow::slotIndent() {
@@ -748,7 +748,7 @@ void MainWindow::slotInsertText(QString str) {
 	uint StartLine, StartCol, EndLine, EndCol;
 	dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->cursorPositionReal(&StartLine, &StartCol);
 	dynamic_cast<KTextEditor::EditInterface*>(doc)->insertText(StartLine, StartCol, str);
-	dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->cursorPositionReal(&EndLine, &EndCol);  
+	dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->cursorPositionReal(&EndLine, &EndCol);
 	dynamic_cast<KTextEditor::SelectionInterface*>(doc)->setSelection(StartLine, StartCol, EndLine, EndCol);
 }
 
@@ -775,7 +775,7 @@ bool MainWindow::event(QEvent* e) {
 	}
 	return KMainWindow::event(e);
 }
-	
+
 void MainWindow::updateFullScreen() {
 	if (isFullScreen() == b_fullscreen) {
 		return;
@@ -808,8 +808,8 @@ void MainWindow::slotSettings() {
 	WidthHeightBox->layout()->setMargin( 11 );
 	QVBoxLayout *WidthHeightBoxLayout = new QVBoxLayout( WidthHeightBox->layout() );
 	WidthHeightBoxLayout->setAlignment( Qt::AlignTop );
-	QHBoxLayout *layout3 = new QHBoxLayout( 0, 0, 6, "layout3"); 
-	QVBoxLayout *layout2 = new QVBoxLayout( 0, 0, 6, "layout2"); 
+	QHBoxLayout *layout3 = new QHBoxLayout( 0, 0, 6, "layout3");
+	QVBoxLayout *layout2 = new QVBoxLayout( 0, 0, 6, "layout2");
 
 	QVBoxLayout *layout1 = new QVBoxLayout( 0, 0, 6, "layout1");
 
@@ -824,37 +824,37 @@ void MainWindow::slotSettings() {
 	kcfg_CanvasHeight->setMinValue( 1 );
 	kcfg_CanvasHeight->setReferencePoint( 1 );
 	layout1->addWidget( kcfg_CanvasHeight );
-	
+
 	WidthLabel = new QLabel( kcfg_CanvasWidth, i18n("Canvas width:"), WidthHeightBox );
 	layout2->addWidget( WidthLabel );
 	HeightLabel = new QLabel( kcfg_CanvasHeight, i18n("Canvas height:"), WidthHeightBox );
 	layout2->addWidget( HeightLabel );
 	layout3->addLayout( layout2 );
-	
+
 	layout3->addLayout( layout1 );
 	WidthHeightBoxLayout->addLayout( layout3 );
 	QLabel* WidthHeightLabel = new QLabel(i18n("You need to restart before these settings have effect"), WidthHeightBox);
 	WidthHeightBoxLayout->addWidget( WidthHeightLabel );
 	generalLayout->addWidget( WidthHeightBox, 0, 0 );
 	general->resize( QSize(234, 109).expandedTo(minimumSizeHint()) );
-	
+
 	dialog->addPage( general, i18n("General"), "package_settings", i18n("General Settings") );
-	
-	// making the filling for the 'Language' settings dept.   
+
+	// making the filling for the 'Language' settings dept.
 	QWidget *language = new QWidget();
-	QGridLayout *languageLayout = new QGridLayout( language, 1, 1, 11, 6, "Form1Layout"); 
+	QGridLayout *languageLayout = new QGridLayout( language, 1, 1, 11, 6, "Form1Layout");
 	QGroupBox *groupBox1 = new QGroupBox( language, "groupBox1" );
 	groupBox1->setColumnLayout(0, Qt::Vertical );
 	groupBox1->layout()->setSpacing( 6 );
 	groupBox1->layout()->setMargin( 11 );
 	QGridLayout *groupBox1Layout = new QGridLayout( groupBox1->layout() );
 	groupBox1Layout->setAlignment( Qt::AlignTop );
-	
-	QVBoxLayout *layout4 = new QVBoxLayout( 0, 0, 6, "layout4"); 
-	
+
+	QVBoxLayout *layout4 = new QVBoxLayout( 0, 0, 6, "layout4");
+
 	LanguageLabel = new QLabel(kcfg_LanguageComboBox, i18n("Select the language for the Logo commands:"), groupBox1);
 	layout4->addWidget( LanguageLabel );
-	
+
 	kcfg_LanguageComboBox = new KComboBox(groupBox1, "kcfg_LanguageComboBox");
 	kcfg_LanguageComboBox->setEditable(false);
 	QStringList LogoLanguageList = Settings::logoLanguageList();
@@ -864,20 +864,20 @@ void MainWindow::slotSettings() {
 	}
 	kcfg_LanguageComboBox->insertStringList(LogoLanguageList);
 	layout4->addWidget( kcfg_LanguageComboBox );
-	
+
 
 	LanguageLabel->setBuddy( kcfg_LanguageComboBox );
 
-	
+
 	groupBox1Layout->addLayout( layout4, 0, 0 );
-	languageLayout->addWidget( groupBox1, 0, 0 ); 
+	languageLayout->addWidget( groupBox1, 0, 0 );
 	language->resize( QSize(373, 80).expandedTo(minimumSizeHint()) );
-	
+
 	dialog->addPage( language, i18n("Language"), "locale", i18n("Language Settings") );
-	
+
 	// When the user clicks OK or Apply we want to update our settings.
 	connect( dialog, SIGNAL( settingsChanged() ), this, SLOT( slotUpdateSettings() ) );
-	
+
 	// Display the dialog.
 	dialog->setInitialSize( QSize(550, 300));
 	dialog->show();
