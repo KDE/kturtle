@@ -80,6 +80,23 @@ cies: Implement an 'abort' funktion into the interpretor. So an endless executio
 
 **** normalTODOs ****
 
+
+Blocking funktions:
+file: reload, export
+edit: block selection, gotoline, deselect, find next/previous, overwritemode
+view: wordwrapping-, schema- and codefolding funks, commandline, icon border, colorpicker->tools
+setting (should be left from help?): editor settings? -> with good defaults we can block it right?
+help (to the far right?)
+bookmarks: as a whole
+tools: only the indentation/commentation should stay imo. (and the picker comes here)
+
+
+
+
+cies:INS, ROW and COL in the statusbar would be nice
+
+
+
 Licence: provide a proper licence and have copyrights in all files
 
 cies: Printing.
