@@ -87,6 +87,10 @@ Licence: provide a proper licence and have copyrights in all files
 
 
 
+proposal by Simone: have the cursor (the blue bar in katepart) walk with the interpreter 
+(Nice one)
+
+
 
 cies: get all the commands in the logokeywords.*.xml file working properly, and remove the commands that are not needed:
 Need to work eventually:
