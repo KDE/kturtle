@@ -222,8 +222,6 @@ void MainWindow::slotSaveFile() {
         filestr = filename2saveAs;
         filename2saveAs = "";
     }
-    
-    editor->document()->setModified(false);
     KURL url = KURL(filestr);
     slotSave(url);
 }
@@ -236,7 +234,7 @@ void MainWindow::slotSaveAs() {
         if (url.isEmpty()) { // when cancelled the KFiledialog?
             return;
         }
-        if (QFile(url.fileName()).exists()) { //why that does not work???
+        if (QFile(url.path()).exists()) { 
             int result = KMessageBox::warningContinueCancel( this,
                 i18n("A file named \"%1\" already exists.\n"
                      "Are you sure you want to overwrite it?").arg(url.url()),
@@ -260,6 +258,7 @@ void MainWindow::slotSave(KURL &url)
     		setCaption(CurrentFile);
     		slotStatusBar(i18n("Saved file to: %1").arg(CurrentFile), 1); 
     		m_recentFiles->addURL( url );
+		editor->document()->setModified(false);
 	}
 	else
 	{
@@ -276,8 +275,9 @@ void MainWindow::slotOpenFile() {
 }
 
 void MainWindow::slotOpen(const KURL& url) {
-       if( !url.isEmpty() )
+       	if( !url.isEmpty() )
            loadFile(url);
+	editor->document()->setModified(false);
 }
 
 void MainWindow::slotQuit() {
