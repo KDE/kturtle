@@ -104,7 +104,7 @@ void Value::setNumber(double d)
 	m_string.setNum(d);
 }
 
-bool Value::setNumber(QString s)
+bool Value::setNumber(const QString &s)
 {
 	type = numberValue;
 	bool ok = true;
@@ -142,7 +142,7 @@ void Value::setString(double d)
 	m_string.setNum(d);
 }
 
-void Value::setString(QString s)
+void Value::setString(const QString &s)
 {
 	type = stringValue;
 	m_string = s;

@@ -33,7 +33,7 @@ Translate::Translate()
 }
 
 
-QString Translate::name2fuzzy(QString name)
+QString Translate::name2fuzzy(const QString &name)
 {
 	if( !aliasMap[name].isEmpty() ) // translate the alias if any
 	{
@@ -42,12 +42,12 @@ QString Translate::name2fuzzy(QString name)
 	return QString( "'" + keyMap[name] + "'");
 }
 
-QString Translate::name2key(QString name)
+QString Translate::name2key(const QString &name)
 {
 	return keyMap[name];
 }
 
-QString Translate::alias2key(QString name)
+QString Translate::alias2key(const QString &name)
 {
 	return aliasMap[name];
 }

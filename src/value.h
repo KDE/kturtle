@@ -50,11 +50,11 @@ class Value
 
 	double Number() const;
 	void setNumber(double);
-	bool setNumber(QString);
+	bool setNumber(const QString &);
 
 	QString String() const;
 	void setString(double);
-	void setString(QString);
+	void setString(const QString &);
 
 	Value& operator=(const Value&);
 	Value& operator=(const QString&);

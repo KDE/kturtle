@@ -29,9 +29,9 @@ class Translate
 	Translate();
 	~Translate() {}
 	
-	QString name2fuzzy(QString);
-	QString name2key(QString);
-	QString alias2key(QString);
+	QString name2fuzzy(const QString &);
+	QString name2key(const QString &);
+	QString alias2key(const QString &);
 	
 	
 	private:
