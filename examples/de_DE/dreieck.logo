@@ -1,15 +1,8 @@
-# curly.logo
+# Zeichne ein Dreieck!
 
 zurücksetzen
-stifthoch
-vorwärts 50
-stiftrunter
 
-wiederhole 4 
-[
-  von x = 1 bis 100 
-  [
-    vorwärts 10
-    nachrechts 100 - x
-  ]
+wiederhole 3 [
+  vorwärts 100
+  nachrechts 120
 ]
