@@ -865,9 +865,7 @@ void MainWindow::slotSettings() {
 	for ( QStringList::Iterator it = LogoLanguageList.begin(); it != LogoLanguageList.end(); ++it ) {
 	*it = KGlobal::locale()->twoAlphaToLanguageName( (*it).left(2) ) + " (" + *it + ")";
 	}
-	
 	kcfg_LanguageComboBox->insertStringList(LogoLanguageList);
-	kcfg_LanguageComboBox->setCurrentText( KGlobal::locale()->twoAlphaToLanguageName( (Settings::logoLanguage() ).left(2) ) + " (" + Settings::logoLanguage() + ")" );
 	layout4->addWidget( kcfg_LanguageComboBox );
 	
 	LanguageLabel = new QLabel(kcfg_LanguageComboBox, i18n("Select the language for the Logo commands:"), groupBox1);
@@ -893,6 +891,7 @@ void MainWindow::slotUpdateSettings() {
 	// only the inital size can be changed here :)   [ sorry annma :) ]
 	// connect( this, SIGNAL( ResizeCanvas(int, int) ), TurtleView, SLOT( slotResizeCanvas(int, int) ) );
 	// emit ResizeCanvas( Settings::canvasWidth(), Settings::canvasWidth() );
+	Settings::setLogoLanguage(kcfg_LanguageComboBox->currentText().section( "(", -1, -1 ).remove(")") );
 	slotSetHighlightstyle( kcfg_LanguageComboBox->currentText().section( "(", -1, -1 ).remove(")") );
 	Settings::setLanguageComboBox( kcfg_LanguageComboBox->currentItem() );
 	Settings::writeConfig();

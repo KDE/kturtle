@@ -110,7 +110,6 @@ void Lexer::getKeywords() {
     
     kdDebug(0) << "TRname:"<< "kturtle/data/logokeywords." + Settings::logoLanguage() + ".xml" <<endl;
     kdDebug(0) << "TRfile:"<< locate("data", "kturtle/data/logokeywords." + Settings::logoLanguage() + ".xml") <<endl;
-
     // Read the specified translation file        
     QFile xmlfile( locate("data", "kturtle/data/logokeywords." + Settings::logoLanguage() + ".xml") );
     

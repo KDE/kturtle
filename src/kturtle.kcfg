@@ -46,7 +46,7 @@
               if (testLanguage == desktopLanguage) { // exact match
                   defaultLanguage = testLanguage;
                   break;
-              } else if (testLanguage.left(2) == desktopLanguage) { // close match (no the same dialect)
+              } else if (testLanguage.left(2) == desktopLanguage.left(2)) { // close match (no the same dialect)
                   defaultLanguage = testLanguage.left(2);
                   break;
               }

@@ -15,7 +15,7 @@ BUGS
 - Default does not work in Language ComboBox -> I am not sure your use of KConfig XT is optimum here, Cies
  and other bug: output: kturtle: desktopLanguage: fr:en_US
            kturtle: defaultLanguage: en_US
-Why is not default Language fr_FR?
+Why is not default Language fr_FR? DONE annma 02/04/2004
 
 - open recent does not keep the files after quitting DONE annma 02/04/2004
 - crash on quitting after Opening files DONE annma 02/04/2004
@@ -39,7 +39,7 @@ that will fix it :-)
 ***** Annma's ideas *****
 
 - have a context menu on right-click in the canvas to save the drawing (right-click -> Save Canvas)
-
+- display the current command language in StatusBar?
 
 **** BIG-TODOs: ****
 
