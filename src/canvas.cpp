@@ -140,7 +140,6 @@ void Canvas::slotGo(double x, double y)
 		QPoint offsetPoint = offset(intX, intY);
 		posX = x - ( offsetPoint.x() * canvasWidth );
 		posY = y - ( offsetPoint.y() * canvasHeight );
-
 	}
 	else
 	{

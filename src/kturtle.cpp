@@ -1011,7 +1011,7 @@ void MainWindow::slotContextHelp()
 	else if ( helpKeyword == i18n("<number>") )     helpWord = "number";
 	else if ( helpKeyword == i18n("<string>") )     helpWord = "string";
 	else if ( helpKeyword == i18n("<assignment>") ) helpWord = "assignment";
-	else if ( helpKeyword == i18n("<question>") )   helpWord = "question";
+	else if ( helpKeyword == i18n("<question>") )   helpWord = "questions";
 	else if ( helpKeyword == i18n("<name>") )       helpWord = "name";
 	else
 	{
@@ -1028,7 +1028,13 @@ void MainWindow::slotContextHelp()
 	}
 	
 	kdDebug(0)<<"trying to open a help page using this keyword: "<<helpWord<<endl;
+	
 	kapp->invokeHelp(helpWord, "", "");
+	
+	QString help2statusBar;
+	if ( helpKeyword.startsWith("<") ) help2statusBar = helpKeyword;
+	else                               help2statusBar = i18n("\"%1\"").arg(helpKeyword);
+	slotStatusBar(i18n("Displaying help on %1").arg(help2statusBar), IDS_STATUS);
 }
 
 void MainWindow::slotContextHelpUpdate()
@@ -1097,7 +1103,7 @@ void MainWindow::slotContextHelpUpdate()
 			// if we come here we either have an ID of some sort or an error
 			// all we can do is try to catch some errors (TODO) and then...
 			
-			else helpKeyword = cursorWord; // FOR DEBUGGING I DO IT LIKE THIS NOW!!!    //i18n("<name>");
+			else helpKeyword = i18n("<name>");
 			
 			ContextHelp->setText( i18n("Help on: %1").arg(helpKeyword) );
 			return;
