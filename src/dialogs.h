@@ -66,6 +66,9 @@ class ErrorMessage : public KDialogBase
 		void slotAddError(Token&, const QString&, uint code);
 		void updateSelection();
 
+	private slots:
+		void showHelpOnError();
+
 	signals:
 		void setCursor(uint row, uint column);
 		void setSelection(uint, uint, uint, uint);
@@ -75,6 +78,7 @@ class ErrorMessage : public KDialogBase
 		errorList     errList;
 		QTable       *errTable;
 		uint          errCount;
+		errorData     currentError;
 
 	protected:
 		QDialog      *dialog;

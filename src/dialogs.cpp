@@ -15,7 +15,8 @@
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
  
-   
+
+#include <kapplication.h>   
 #include <kdebug.h>
 #include <klocale.h>
 
@@ -27,6 +28,7 @@
 ErrorMessage::ErrorMessage (QWidget *parent)
 	: KDialogBase (parent, "errorDialog", false, 0, KDialogBase::Close | KDialogBase::Help | KDialogBase::User1, KDialogBase::Close, true, i18n("Help on &Error") )
 {
+	connect( this, SIGNAL( user1Clicked() ), this, SLOT( showHelpOnError() ) );
 	setCaption( i18n("Error Dialog") );
 	setButtonWhatsThis( KDialogBase::Close, i18n("Closes this Error Dialog") );
 	setButtonWhatsThis( KDialogBase::Help, i18n("Click here to read more on this Error Dialog in KTurtle's Handbook.") );
@@ -105,9 +107,16 @@ void ErrorMessage::display()
 void ErrorMessage::updateSelection()
 {
 	int i = errTable->text( errTable->currentRow(), 0 ).toInt(); // get the hidden errCount value
-	errorData err = *errList.at(i - 1);
-	emit setSelection(err.tok.start.row, err.tok.start.col, err.tok.end.row, err.tok.end.col);
-	enableButton (KDialogBase::User1, true);
+	currentError = *errList.at(i - 1);
+	emit setSelection(currentError.tok.start.row, currentError.tok.start.col, 
+	                  currentError.tok.end.row,   currentError.tok.end.col);
+	if ( tokenTypeNames[currentError.tok.type].isEmpty() ) enableButton(KDialogBase::User1, true);
+	else                                                   enableButton(KDialogBase::User1, false);
+}
+
+void ErrorMessage::showHelpOnError()
+{
+	kapp->invokeHelp(tokenTypeNames[currentError.tok.type], "", "");
 }
 
 // END

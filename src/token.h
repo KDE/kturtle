@@ -43,9 +43,9 @@ struct Token
 
 enum tokenTypes
 {
-	tokNotSet  = -1, // inittial type of all tokens
+	tokNotSet  = 0, // inittial type of all tokens
 	tokError   = 1,  // when there is an error
-	tokUnknown = 0,  // when no token was found, a tokUnknown is often a variable, function or error
+	tokUnknown = 2,  // when no token was found, a tokUnknown is often a variable, function or error
 	
 	tokIf, // the execution controlling tokens
 	tokElse,
@@ -127,5 +127,96 @@ enum tokenTypes
 	tokDo // a dummy command
 };
 
+// const QString tokenTypeNames[] =
+// {
+// 	/* tokNotSet  = 0 */   "",
+// 	/* tokError   = 1 */   "",
+// 	/* tokUnknown = 2 */   "name",
+// 
+// 	/* tokIf */            "if",
+// 	/* tokElse */          "else",
+// 	/* tokWhile */         "while",
+// 	/* tokFor */           "for",
+// 	/* tokTo */            "to",
+// 	/* tokStep */          "step",
+// 	/* tokForEach */       "each",
+// 	/* tokIn */            "in",
+// 	/* tokBreak */         "break",
+// 	/* tokReturn */        "return",
+// 	
+// 	/* tokBegin */         "",
+// 	/* tokEnd */           "",
+// 	
+// 	/* tokNumber */        "number",
+// 	/* tokString */        "string",
+// 	
+// 	/* tokAssign */        "asignment",
+// 
+// 	/* tokAnd */           "and",
+// 	/* tokOr */            "or",
+// 	/* tokNot */           "not",
+// 
+// 	/* tokEq */            "questions",
+// 	/* tokNe */            "questions",
+// 	/* tokGe */            "questions",
+// 	/* tokGt */            "questions",
+// 	/* tokLe */            "questions",
+// 	/* tokLt */            "questions",
+// 
+// 	/* tokBraceOpen */     "math",
+// 	/* tokBraceClose */    "math",
+// 	/* tokPlus */          "math",
+// 	/* tokMinus */         "math",
+// 	/* tokMul */           "math",
+// 	/* tokDev */           "math",
+// 
+// 	/* tokComma */         "",
+// 
+// 	/* tokEOL */           "",
+// 	/* tokEOF */           "",
+// 
+// 	/* tokLearn */         "learn",
+// 
+// 	/* tokClear */         "clear",
+// 	/* tokGo */            "go",
+// 	/* tokGoX */           "gox",
+// 	/* tokGoY */           "goy",
+// 	/* tokForward */       "forward",
+// 	/* tokBackward */      "backward",
+// 	/* tokDirection */     "direction",
+// 	/* tokTurnLeft */      "turnleft",
+// 	/* tokTurnRight */     "turnright",
+// 	/* tokCenter */        "center",
+// 	/* tokSetPenWidth */   "setpenwidth",
+// 	/* tokPenUp */         "penup",
+// 	/* tokPenDown */       "pendown",
+// 	/* tokSetFgColor */    "setfgcolor",
+// 	/* tokSetBgColor */    "setbgcolor",
+// 	/* tokResizeCanvas */  "resizecanvas",
+// 	/* tokSpriteShow */    "spriteshow",
+// 	/* tokSpriteHide */    "spritehide",
+// 	/* tokSpritePress */   "",
+// 	/* tokSpriteChange */  "",
+// 	/* tokMessage */       "message",
+// 	/* tokInputWindow */   "inputwindow",
+// 	/* tokPrint */         "print",
+// 	/* tokFontType */      "",
+// 	/* tokFontSize */      "fontsize",
+// 	/* tokRepeat */        "repeat",
+// 	/* tokRandom */        "random",
+// 	/* tokWait */          "wait",
+// 	/* tokWrapOn */        "wrapon",
+// 	/* tokWrapOff */       "wrapoff",
+// 	/* tokReset */         "reset",
+// 	/* tokRun */           "run",
+// 	
+// 	/* tokDo */            "",
+// };
+// 
+// // QString Token::tokenType2name(int tokenType)
+// // {
+// // 	if (tokenType >= 0) return tokenTypeNames[tokenType];
+// // 	else                return "";
+// // }
 
 #endif // _TOKEN_H_

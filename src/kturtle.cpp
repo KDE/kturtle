@@ -1013,6 +1013,7 @@ void MainWindow::slotContextHelp()
 	else if ( helpKeyword == i18n("<assignment>") ) helpWord = "assignment";
 	else if ( helpKeyword == i18n("<question>") )   helpWord = "questions";
 	else if ( helpKeyword == i18n("<name>") )       helpWord = "name";
+	else if ( helpKeyword == i18n("<comment>") )    helpWord = "comment";
 	else
 	{
 		// make lowercase
@@ -1043,9 +1044,15 @@ void MainWindow::slotContextHelpUpdate()
 	dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->cursorPositionReal(&row, &col);
 	QString line = dynamic_cast<KTextEditor::EditInterface*>(doc)->textLine(row);
 	
+	// two shortcuts so we dont do all the CPU intensive regexp stuff when it not needed
+	if ( line.stripWhiteSpace().startsWith("#") )
+	{
+		helpKeyword = i18n("<comment>");
+		ContextHelp->setText( i18n("Help on: %1").arg(helpKeyword) );
+		return;
+	}
 	if ( line.stripWhiteSpace().isEmpty() || line.mid(col-1,2).stripWhiteSpace().isEmpty() )
 	{
-		// just a shortcut so we dont do all the CPU intensive regexp stuff when it not needed
 		helpKeyword = i18n("<no keyword>");
 		ContextHelp->setText( i18n("Help on: %1").arg(helpKeyword) );
 		return;

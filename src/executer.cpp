@@ -810,8 +810,8 @@ void Executer::execSetPenWidth(TreeNode* node)
 	if ( checkParameterType(node, numberValue, 5060) )
 	{
 		int x = ROUND2INT( param1->getValue().Number() ); // pull the number value & round it to int
-		if (x < 1)
-			emit ErrorMsg(node->getToken(), i18n("The penwidth cannot be set to something smaller than 1."), 6050);
+		if (x < 1 || x > 10000)
+			emit ErrorMsg(node->getToken(), i18n("The penwidth cannot be set to something smaller than 1, or bigger than 10000."), 6050);
 		else
 			emit SetPenWidth(x);
 	}
