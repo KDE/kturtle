@@ -133,8 +133,8 @@ Many integrated, internationalized example &logo; programs make it easy to get s
 <para>In the code editor you type the &logo; commands. It has all of the features you would expect from a modern editor. Most of its features are found in the <link linkend="the-edit-menu">Edit</link> and the <link linkend="the-tools-menu">Tools</link> menus. The code editor can be docked on each border of the main window or it can be detached and placed anywhere on your desktop.</para>
 <para>
 You have several ways to get some code in the editor. The easiest way is to use an already-made example. You choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open Examples</guimenuitem>
-</menuchoice> in the <link linkend="the-file-menu">File menu</link> and you click on a file. The file name will tell you what the example is about (&eg; <filename>square.logo</filename> will draw a square). The file you choose will be opened in the <link linkend="the-code-editor">the code editor</link>, you can then <menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem>
-</menuchoice> the code if you like.</para>
+</menuchoice> in the <link linkend="the-file-menu">File menu</link> and you click on a file. The file name will tell you what the example is about (&eg; <filename>square.logo</filename> will draw a square). The file you choose will be opened in the <link linkend="the-code-editor">the code editor</link>, you can then use <menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem>
+</menuchoice> to run the code if you like.</para>
 <para>You can open &logo; files by choosing <menuchoice><guimenu>File</guimenu><guimenuitem>Open...</guimenuitem>
 </menuchoice>.</para>
 <para>The third way is to directly type your own code in the editor or to copy/paste some code from this user guide.
@@ -397,7 +397,7 @@ The canvas is the area where the commands are visualized, where the commands <qu
         <guimenu>Edit</guimenu>
         <guimenuitem>Replace...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>With this action you can replace phases in the code.</para></listitem>
+      <listitem><para>With this action you can replace phrases in the code.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
