@@ -69,6 +69,7 @@ void MainWindow::setupActions() {
     //
     run = new KAction(i18n("&Execute Commands"), "gear", 0, this, SLOT(slotRun()),
       actionCollection(), "run");
+    run->setEnabled(false);
     //
     KStdAction::print(this, SLOT(slotPrint()), actionCollection());
     //
@@ -145,6 +146,8 @@ void MainWindow::setupEditor() {
     /// @todo make the editor look good and internationalize well
     //     probably when going from KTextEdit to KTextEditor::Editor
     EditorDock->setWidget(editor);
+    ///allow to enable run only when some text is written in editor
+    connect(editor, SIGNAL(textChanged()), this, SLOT(setRunEnabled()));
 }
 
 
@@ -295,13 +298,10 @@ void MainWindow::slotQuit() {
 void MainWindow::slotRun() {
     allreadyError = false;
     run->setIcon("stop");
-    run->setText("Stop Execution");
-//     run->setEnabled(false); // Why the fuck doesnt this aktion update?
-//     run->setEnabled(true);
+    run->setText("Stop Execution");   
     slotStatusBar(i18n("Parsing commands..."), 1);
     
     string txt=editor->text().latin1();///@todo interpreter shouldnt need extra "[" & "]"
-    //QString txt(editor->text());
     stringbuf sbuf(txt , ios_base::in);
     istream in(&sbuf);
     
@@ -529,5 +529,8 @@ void MainWindow::slotColorPicker() {
     }
 }
 
+void MainWindow::setRunEnabled(){
+    run->setEnabled(true);
+}
 
 #include "kturtle.moc"

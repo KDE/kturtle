@@ -98,6 +98,7 @@ class MainWindow : public KMainWindow
     void slotUpdateSettings();
     void slotConfigureKeys();
     void slotColorPicker();
+    void setRunEnabled();
 
   protected:
     virtual bool event(QEvent* e);
