@@ -501,7 +501,7 @@ void MainWindow::startExecution() {
 	kapp->processEvents();
 	
 	string txt = ( ei->text() + "\n" ).latin1(); // the /n is needed for proper parsing
-	stringbuf sbuf(txt, ios_base::in);
+	stringbuf sbuf(txt, ios::in);
 	istream in(&sbuf);
 	Parser parser(in);
 	connect( &parser, SIGNAL(ErrorMsg(QString, uint, uint, uint) ), 
