@@ -208,11 +208,11 @@ speed **
   </command>
 
   <command name="fonttype">
-    <keyword>fonttype</keyword>
+    <keyword>typepolice</keyword>
   </command>
   
   <command name="fontsize">
-    <keyword>fontsize</keyword>
+    <keyword>taillepolice</keyword>
   </command>
   
   <command name="repeat">
