@@ -30,5 +30,8 @@ kde_kcfg_DATA = kturtle.kcfg
 shellrcdir   = $(kde_datadir)/kturtle
 shellrc_DATA = kturtleui.rc
 
+# place KTurtle in the start menu under Miscellanous
+xdg_apps_DATA = kturtle.desktop
+
 messages: rc.cpp
 	$(XGETTEXT) *.cpp -o $(podir)/kturtle.pot
