@@ -57,7 +57,7 @@ KTurtle is a Logo interpreter for the KDE Desktop.
 
      <para>The first version Logo programming language was created by Seymour Papert of MIT Artificial Intelligence Laboratory in 1967 as an ofshoot of the LISP programming language. From then many versions of Logo have been released. By 1980 Logo was gaining momentum, with versions for MSX, Commodore, Atari, and IBM PC systems. These versions were mainly for educational purposes. LCSI released MacLogo in 1985 as a tool for professional programmers, but it never caught on. MIT is still maintaining a site on Logo which can be found on: <ulink url="http://el.media.mit.edu/logo-foundation/">http://el.media.mit.edu/logo-foundation/</ulink>.</para>
 
-     <para>Today there are several versions of Logo around which can easily be found on <ulink url="http://el.media.mit.edu/logo-foundation/">MIT's Logo site</ulink> and by a simple <ulink url="http://www.google.com/search?q=logo+programming+kids">google search</ulink>) search. This version of Logo (KTurtle) is only focused on the educational qualities of the programming language and will not try to suit professional progammers needs.</para>
+     <para>Today there are several versions of Logo around which can easily be found on <ulink url="http://el.media.mit.edu/logo-foundation/">MIT's Logo site</ulink> and by a simple <ulink url="http://www.google.com/search?q=logo+programming+kids">google search</ulink>. This version of Logo (KTurtle) is only focused on the educational qualities of the programming language and will not try to suit professional progammers needs.</para>
      
      <para>
      Why Logo? Logo is recommended for teaching kids as you begin by controlling the actions of a cybernetic turtle in a graphic environment that provides immediate feedback. These immediate actions let you "see" what you are thinking. And as you grow, so does Logo, from the immediate graphic environment into a structured and procedural programming environment for exploring mathematics, language, science, computer, number systems and more.
@@ -71,6 +71,9 @@ an integrated Logo interpreter, no need to download any other program.
 </para></listitem>
 <listitem><para>
 a powerful editor for the Logo commands with syntax highlighting, line numbering and more.
+</para></listitem>
+<listitem><para>
+a nice "playground" for the turtle where your commands visualized
 </para></listitem>
 <listitem><para>
 context help for each Logo command.
@@ -476,12 +479,107 @@ Draw a maze for example
 <sect1  id="kturtle-view-menu">
 <title>The <guimenu>View</guimenu> Menu</title>
 <para>
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Ctrl;<keycap>Shift</keycap><keycap>F</keycap></keycombo>
+</shortcut>
+<guimenu>View</guimenu>
+<guimenuitem>Full Screen Mode</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Toggle</action> the full screen mode.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo><keycap>F11</keycap></keycombo>
+</shortcut>
+<guimenu>View</guimenu>
+<guimenuitem>Show Line Numbers</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Toggle</action> the line numbers in the editor. Setting it on checked will make a pane displaying the line numbers of the document visible in the left border of the  editor, and vice versa.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<guimenu>View</guimenu>
+<guimenuitem>Show Editor</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Toggle</action> the editor window to be shown or hidden. Setting it on checked will display the editor and unchecking it will hide the editor. </para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<guimenu>View</guimenu>
+<guimenuitem>Hide Statusbar</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Toggle</action> the display of the statusbar. If it is unchecked, the statusbar is displayed. When it is checked, the statusbar is hidden. </para></listitem>
+</varlistentry>
+</variablelist>
 </para>
 </sect1>
 
 <sect1  id="kturtle-toolsmenu">
 <title>The <guimenu>Tools</guimenu> Menu</title>
 <para>
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Alt;<keycap>C</keycap></keycombo>
+</shortcut>
+<guimenu>Tools</guimenu>
+<guimenuitem>Color Picker</guimenuitem>
+</menuchoice></term>
+<listitem><para>Brings a dialog that allow you to choose a color and then paste its code in the editor for the pen or background color.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Ctrl;<keycap>I</keycap></keycombo>
+</shortcut>
+<guimenu>Tools</guimenu>
+<guimenuitem>Indent</guimenuitem>
+</menuchoice></term>
+<listitem><para>Indent selected code in the editor.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Ctrl;<keycap>Shift</keycap><keycap>I</keycap></keycombo>
+</shortcut>
+<guimenu>Tools</guimenu>
+<guimenuitem>Unindent</guimenuitem>
+</menuchoice></term>
+<listitem><para>Unindent selected code in the editor.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<guimenu>Tools</guimenu>
+<guimenuitem>Clean Indentation</guimenuitem>
+</menuchoice></term>
+<listitem><para>Use correct indentation for the selected code in the editor.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Ctrl;<keycap>D</keycap></keycombo>
+</shortcut>
+<guimenu>Tools</guimenu>
+<guimenuitem>Comment</guimenuitem>
+</menuchoice></term>
+<listitem><para>Comment this selection by putting a # at the beginning of each selected line.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo>&Ctrl;<keycap>Shift</keycap><keycap>D</keycap></keycombo>
+</shortcut>
+<guimenu>Tools</guimenu>
+<guimenuitem>Uncomment</guimenuitem>
+</menuchoice></term>
+<listitem><para>Uncomment selected code in the editor.</para></listitem>
+</varlistentry>
+</variablelist>
 </para>
 </sect1>
 
