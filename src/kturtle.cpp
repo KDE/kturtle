@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 #include <qregexp.h>
+#include <qpainter.h>
 #include <qpixmap.h>
 
 #include <kapplication.h>
@@ -17,6 +18,7 @@
 #include <kkeydialog.h>
 #include <klocale.h>
 #include <kmessagebox.h>
+#include <kprinter.h>
 #include <ksavefile.h>
 #include <kstandarddirs.h> 
 #include <kstatusbar.h>
@@ -344,7 +346,23 @@ void MainWindow::slotQuit() {
 }
 
 void MainWindow::slotPrint() {
-    dynamic_cast<KTextEditor::PrintInterface*>(doc)->printDialog();
+    int result = KMessageBox::questionYesNoCancel( this,
+    i18n("Do you want to print the Logo code or the canvas?"),
+    i18n("Print code or canvas?"), i18n("Print the Logo code"), i18n("Print the canvas") );
+    if (result == KMessageBox::Yes) {
+        dynamic_cast<KTextEditor::PrintInterface*>(doc)->printDialog();
+        return;
+    }
+    if (result == KMessageBox::No) {
+        KPrinter printer;
+        if ( printer.setup(this) ) {
+            QPainter painter(&printer);
+            QPixmap *CanvasPic = TurtleView->Canvas2Pixmap();
+            painter.drawPixmap(0, 0, *CanvasPic);
+        }
+        return;
+    }
+    slotStatusBar(i18n("Printing aborted."),  IDS_STATUS);
 }
 
 void MainWindow::slotExecute() {

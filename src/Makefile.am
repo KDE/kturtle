@@ -7,7 +7,7 @@ SUBDIRS = data
 AM_LDFLAGS   = $(all_libraries) $(KDE_RPATH)
 
 kturtle_LDFLAGS = $(KDE_RPATH) $(all_libraries)
-kturtle_LDADD = $(LIB_KDEUI) $(LIB_KIO) $(LIB_KPARTS) -lkatepartinterfaces
+kturtle_LDADD = $(LIB_KDEUI) $(LIB_KIO)  $(LIB_KDEPRINT) $(LIB_KPARTS) -lkatepartinterfaces
 
 KDE_ICON = kturtle
 

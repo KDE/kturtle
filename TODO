@@ -6,7 +6,12 @@ BUGS
 - with long lines and wrapping the canvas can get into a endless loop -> 100%CPU
        i tried a lot to fix this allready, maybe my solution needs some tuning :)
        maybe i should just catch errors and break the loop :)
-- ...
+- accept the making and calling of parameterless 'learned' commands (without using the '()')
+
+I (cies) installed KTurtle on gentoo/qt3.3/kde3.2 and found the following BUG:
+- highlight style is not by default on logo-sceme
+- cannot open examples
+
 
 
 **** URGENT ****
