@@ -154,7 +154,7 @@ void MainWindow::setupActions() {
 	KStdAction::preferences( this, SLOT( slotSettings() ), ac );
 	new KAction(i18n("&Configure Editor..."), "configure", 0, this, SLOT(slotEditor()), ac, "set_confdlg");
 	// Help actions
-	ContextHelp = new KAction(0, 0, Key_F1, this, SLOT(slotContextHelp()), ac, "context_help");
+	ContextHelp = new KAction(0, 0, Key_F2, this, SLOT(slotContextHelp()), ac, "context_help");
 	slotContextHelpUpdate(); // this sets the label of this action
 	setXMLFile("kturtleui.rc");
 	setupGUI();

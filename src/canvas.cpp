@@ -26,7 +26,10 @@
 
 #include <stdlib.h>
 
-const double PI=3.14159265358979323846;
+// this function is used in executer and canvas:
+#define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )
+
+const double PI = 3.14159265358979323846;
 
 Canvas::Canvas(QWidget *parent, const char *name) : QCanvasView(0, parent, name) {
 	// Create a new canvas for this view
@@ -40,8 +43,7 @@ Canvas::Canvas(QWidget *parent, const char *name) : QCanvasView(0, parent, name)
 	setCanvas(TurtleCanvas);
 }
 
-Canvas::~Canvas()
-{
+Canvas::~Canvas() {
 	delete Sprite;
 	delete SpriteFrames;
 }
@@ -257,8 +259,8 @@ void Canvas::updateSpriteAngle() {
 			Dir = Dir + 2*PI;
 		}
 	}
-	// convert to degrees, fix the direction, divide by 10 (for picnr), and add .5 before casting to int
-	int i = (int)( ( ( (-Dir * 180) / PI + 90) / 10 ) + .5 );
+	// convert to degrees, fix the direction, divide by 10 (for picnr), and round
+	int i = ROUND2INT( ( (-Dir * 180) / PI + 90) / 10 );
 	Sprite->setFrame(i);
 	updateSpritePos(); // pixmaps of different rotations have different sizes, so refresh
 }
@@ -320,9 +322,14 @@ void Canvas::slotGoY(int y) {
 }
 
 void Canvas::slotForward(int x) {
-	float f = (float)x + .5;
-	int PosXnew = PosX + (int)(f * cos(Dir) );
-	int PosYnew = PosY - (int)(f * sin(Dir) );
+	kdDebug(0)<<" x:  "<<x<<endl;
+	float f = (float)x;
+	kdDebug(0)<<" f:  "<<f<<endl;
+	int PosXnew = PosX + ROUND2INT(f * cos(Dir) );
+	int PosYnew = PosY - ROUND2INT(f * sin(Dir) );
+	
+	kdDebug(0)<<" posXnew:  "<<PosXnew<<endl;
+	kdDebug(0)<<" posynew:  "<<PosYnew<<endl;
 	if (Pen) {
 		Line(PosX, PosY, PosXnew, PosYnew);
 	}
@@ -330,9 +337,9 @@ void Canvas::slotForward(int x) {
 }
 
 void Canvas::slotBackward(int x) {
-	float f = (float)x + .5;
-	int PosXnew = PosX - (int)(f * cos(Dir) );
-	int PosYnew = PosY + (int)(f * sin(Dir) );
+	float f = (float)x;
+	int PosXnew = PosX - ROUND2INT(f * cos(Dir) );
+	int PosYnew = PosY + ROUND2INT(f * sin(Dir) );
 	if (Pen) {
 		Line(PosX, PosY, PosXnew, PosYnew);
 	}

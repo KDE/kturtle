@@ -28,6 +28,11 @@
 #include <qtable.h>
 
 
+// this const is used in executer, treenode and errormsg when uint row/col information is N/A
+//const uint NA = 999999999;  --->  leads to redefinition, thats why:
+#include "treenode.h"
+
+
 class ErrorMessage : public KDialogBase {
  Q_OBJECT
 	public:
@@ -39,7 +44,7 @@ class ErrorMessage : public KDialogBase {
 	void display();
 
 	public slots:
-	void slotAddError(QString msg = "", uint row = 0, uint col = 0, uint code = 0);
+	void slotAddError(QString msg = "", uint row = NA, uint col = NA, uint code = NA);
 	void updateSelection();
 
 	signals:

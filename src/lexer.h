@@ -28,129 +28,120 @@ bugreport(log):column will not be incremented enough when numbers are read
 using namespace std;
 
 enum types {
-  
-  tokIf=-40,
-  tokElse,
-  tokWhile,
-  tokFor,
-  tokTo,
-  tokStep,
-  tokNumber,
-  tokString,
-  tokId,
-  tokProcId,
-  tokBegin,
-  tokEnd,
-    
-  tokOr,
-  tokAnd,
-  tokNot,
-  
-  tokGe,
-  tokGt,
-  tokLe,
-  tokLt,
-  tokNe,
-  tokEq,
-  tokAssign,
+	tokIf=-40,
+	tokElse,
+	tokWhile,
+	tokFor,
+	tokTo,
+	tokStep,
+	tokNumber,
+	tokString,
+	tokId,
+	tokProcId,
+	tokBegin,
+	tokEnd,
+		
+	tokOr,
+	tokAnd,
+	tokNot,
+	
+	tokGe,
+	tokGt,
+	tokLe,
+	tokLt,
+	tokNe,
+	tokEq,
+	tokAssign,
 
-  tokReturn,
-  tokBreak,
+	tokReturn,
+	tokBreak,
 
-  tokForEach,
-  tokIn,
-    
-  tokRun,
-  tokEof,
-  tokError,
-  
-  tokLearn,
-  
-  tokClear,
-  tokGo,
-  tokGoX,
-  tokGoY,
-  tokForward,
-  tokBackward,
-  tokDirection,
-  tokTurnLeft,
-  tokTurnRight,
-  tokCenter,
-  tokSetPenWidth,
-  tokPenUp,
-  tokPenDown,
-  tokSetFgColor,
-  tokSetBgColor,
-  tokResizeCanvas,
-  tokSpriteShow,
-  tokSpriteHide,
-  tokSpritePress,
-  tokSpriteChange,
-  
-  tokDo, // this is a dummy command
+	tokForEach,
+	tokIn,
+		
+	tokRun,
+	tokEof,
+	tokError,
+	
+	tokLearn,
+	
+	tokClear,
+	tokGo,
+	tokGoX,
+	tokGoY,
+	tokForward,
+	tokBackward,
+	tokDirection,
+	tokTurnLeft,
+	tokTurnRight,
+	tokCenter,
+	tokSetPenWidth,
+	tokPenUp,
+	tokPenDown,
+	tokSetFgColor,
+	tokSetBgColor,
+	tokResizeCanvas,
+	tokSpriteShow,
+	tokSpriteHide,
+	tokSpritePress,
+	tokSpriteChange,
+	
+	tokDo, // this is a dummy command
 
-  tokMessage,
-  tokInputWindow,
-  tokPrint,
-  tokFontType,
-  tokFontSize,
-  tokRepeat,
-  tokRandom,
-  tokWait,
-  tokWrapOn,
-  tokWrapOff,
-  tokReset
-  
+	tokMessage,
+	tokInputWindow,
+	tokPrint,
+	tokFontType,
+	tokFontSize,
+	tokRepeat,
+	tokRandom,
+	tokWait,
+	tokWrapOn,
+	tokWrapOff,
+	tokReset
 };
 
 
 struct token {
-  Number  val;
-  QString str;
-  int     type;
+	Number  val;
+	QString str;
+	int     type;
 };
 
 
 class Lexer {
-  
-  public:
-    
-    //constructor and destructor
-    //==========================
-    Lexer( QTextIStream& );
-    ~Lexer();
-    QString translateCommand(QString s);
-  
-    //public members
-    //==============
-    token lex(); //return token
-    unsigned int getRow();
-    unsigned int getCol();
-    
-    
-  private:
-    
-    //private members
-    //===============
-    QChar getChar();
-    void ungetChar(QChar);
-    void skipComment();
-    void skipWhite();
-    void getKeywords();
-    void checkKeywords(token&);
-    int getNumber(Number&);
-    int getName(QString&);
-    void getStringConstant(token& t);
+	public:
+	//constructor and destructor
+	Lexer( QTextIStream& );
+	~Lexer() {}
+	QString translateCommand(QString s);
 
-    typedef QMap<QString, QString> StringMap;
-    StringMap KeyMap;
-    StringMap AliasMap;
-      
-    //private locals
-    //==============
-    QTextIStream* in;
-    unsigned int row,col,prevCol;
-	QChar putBackChar;
+	//public members
+	token lex(); //return token
+	uint getRow();
+	uint getCol();
+	
+	
+	private:
+	//private members
+	QChar getChar();
+	void ungetChar(QChar);
+	void skipComment();
+	void skipWhite();
+	void getKeywords();
+	void checkKeywords(token&);
+	int getNumber(Number&);
+	int getName(QString&);
+	void getStringConstant(token& t);
+
+	typedef QMap<QString, QString> StringMap;
+	StringMap KeyMap;
+	StringMap AliasMap;
+
+	//private locals
+	QTextIStream    *in;
+	unsigned int     row,col,prevCol;
+	QChar            putBackChar;
 };
 
 

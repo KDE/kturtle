@@ -48,11 +48,22 @@ when there is an error, display only the most descriptive error
   -IRC discussion: every compiler/interpreter should try to recover from a given error and continue if possible the idea is the compiler tryes to recover from the error and so it can tell you if there is more than one error and not just one by compilation attempt it may be assuming you missed a ; and maybe you missed a ( or something elase and following messages are completely wrong)
 This can be a big issue, maybe I (cies) will have to learn more on interpreters to know how to properly do this error handling
   -have links in there to corresponing help pages --> see WISHes
-  - I pobably need to make an error message class that inherates some dialog thing (it should have: help-link-button, details, short error title and origion (Parse error), 'the-row-of-error', and a small description (maybe the description should contain links to help pagen on certain commands/ methods/ etc.) and maybe even a small hint or hint button
-  - I porbably have to refine the way error message get emitted, problems: Ugly-, short-, technical messages. Sometimes moere than one messages gets emmitted right now only the 1st msg is shown -- the 1st may not allways point to the 'core ot error'.
+  - I pobably need to make an error message class that inherates some dialog thing (it should have: help-link-button, details, short error title and origion (Parse error), 'the-row-of-error', and a small description (maybe the description should contain links to help pagen on certain commands/ methods/ etc.) and maybe even a small hint or hint button      MORE OR LESS DONE
+  - I porbably have to refine the way error message get emitted, problems: Ugly-, short-, technical messages. Sometimes more than one messages gets emmitted right now only the 1st msg is shown -- the 1st may not allways point to the 'core of error'.
+
+How to make the errors more descriptive:  (my TODO for tomorow :) 
+- store row,col numbers in the tree so the executer can feed rows/cols back    DONE
+- learn something about interpreters and errorhandling (check the net)         FOUND NOTHING (ask my neighbour)
+
+-----> line numbering is somehow broken.... most likely in parser/lexer
+
+- try to break up/refine the most common errors
+- Reformulate all the error messages after simulating them
+- Maybe more desciptive error messages should be triggered by the 'Help on Error" and DubleClick, these messages should be stored in/out-side of the executer,parser, but maybe even better, the errormsg file. I18n should then be easy, and it should supply richtext ((k)html) + links to the manual. (this could be in the same dialog)
+- errmsgs should maybe be filtered since there is quite some garbage in the errors that come back.
 
 
-	
+
 >>>>> BUGs::Regular
 With long lines and wrapping the canvas can get into a endless loop -> 100%CPU, i tried a lot to fix this allready, maybe my solution needs some tuning :).
 Maybe i should just catch errors and break that endless loop :)
@@ -61,7 +72,7 @@ There is quite some debugging info in the canvas.cpp class to help me solve this
 
 
 Accept the making and calling of parameterless 'learned' commands (without using the '()')
-
+>> consequece: the interpreter will not now the difference between a typo and a user command, this should be explained in the error message as this is done with most interpreted languages.
 
 cies: get all the commands in the logokeywords.*.xml file working properly, and remove the commands that are not needed:
 Need to work eventually:
@@ -180,9 +191,9 @@ cies: That is a good plan!  I have tux allready in my sprites dir (I'm a fan too
 
 >>>> TROUBLE LOGO SCRIPTS!!!!!
 
-# due to lines        <<<<<<<< this one seems to have solved it self :))
+# due to lines 
 reset
-canvassize 350,350
+canvassize 350,348
 canvascolor 0,0,0
 center
 for x = 1 to 255 [
@@ -191,7 +202,7 @@ for x = 1 to 255 [
   tr x / 65
 ]
 
-# due to lines        <<<  this one not :(
+# due to lines
 reset
 canvassize 350,350
 center

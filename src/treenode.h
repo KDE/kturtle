@@ -28,168 +28,166 @@ bugreport(log):/
 
 #include "number.h"
 
-using namespace std;
+
+// this const is used in executer, treenode and errormsg when uint row/col information is N/A
+const uint NA = 999999999;
+
+using namespace std;  // i dont know if this is still needed
 
 //BUGS: prevSibling and nextSibling sometimes segfault and are not optimal, in short, don't use em! :)
 
 
 enum NodeType { 
-                Unknown = -1,
-                programNode,
-                functionNode,
-                functionCallNode,
-                funcReturnNode,
-                returnNode,
-                breakNode,
-                idListNode,
-                blockNode,
-                forNode,
-                forEachNode,
-                whileNode,
-                ifNode,
-                assignNode,
-                expressionNode,
-                idNode,
-                constantNode,
-                stringConstantNode,
-            
-                addNode,
-                mulNode,
-                divNode,
-                subNode,
-                minusNode,
+	Unknown = -1,
+	programNode,
+	functionNode,
+	functionCallNode,
+	funcReturnNode,
+	returnNode,
+	breakNode,
+	idListNode,
+	blockNode,
+	forNode,
+	forEachNode,
+	whileNode,
+	ifNode,
+	assignNode,
+	expressionNode,
+	idNode,
+	constantNode,
+	stringConstantNode,
 
-                nodeGE,
-                nodeGT,
-                nodeLE,
-                nodeLT,
-                nodeNE,
-                nodeEQ,
+	addNode,
+	mulNode,
+	divNode,
+	subNode,
+	minusNode,
 
-                andNode,
-                orNode,
-                notNode,
-                
-                runNode,
+	nodeGE,
+	nodeGT,
+	nodeLE,
+	nodeLT,
+	nodeNE,
+	nodeEQ,
 
-                ClearNode,
-                GoNode,
-                GoXNode,
-                GoYNode,
-                ForwardNode,
-                BackwardNode,
-                DirectionNode,
-                TurnLeftNode,
-                TurnRightNode,
-                CenterNode,
-                SetPenWidthNode,
-                PenUpNode,
-                PenDownNode,
-                SetFgColorNode,
-                SetBgColorNode,
-                ResizeCanvasNode,
-                SpriteShowNode,
-                SpriteHideNode,
-                SpritePressNode,
-                SpriteChangeNode,
+	andNode,
+	orNode,
+	notNode,
+	
+	runNode,
 
-                MessageNode,
-                InputWindowNode,
-                printNode,
-                FontTypeNode,
-                FontSizeNode,
-                RepeatNode,
-                RandomNode,
-                WaitNode,
-                WrapOnNode,
-                WrapOffNode,
-                ResetNode
-                
-              };
+	ClearNode,
+	GoNode,
+	GoXNode,
+	GoYNode,
+	ForwardNode,
+	BackwardNode,
+	DirectionNode,
+	TurnLeftNode,
+	TurnRightNode,
+	CenterNode,
+	SetPenWidthNode,
+	PenUpNode,
+	PenDownNode,
+	SetFgColorNode,
+	SetBgColorNode,
+	ResizeCanvasNode,
+	SpriteShowNode,
+	SpriteHideNode,
+	SpritePressNode,
+	SpriteChangeNode,
+
+	MessageNode,
+	InputWindowNode,
+	printNode,
+	FontTypeNode,
+	FontSizeNode,
+	RepeatNode,
+	RandomNode,
+	WaitNode,
+	WrapOnNode,
+	WrapOffNode,
+	ResetNode
+};
 
 
 class TreeNode : public list<TreeNode*> {
+	public:
+	//constructors/destructor
+	TreeNode();
+	TreeNode(TreeNode*); //give parent
 
-  public:
-  
-    //constructors/destructor
-    //=======================
-    TreeNode();
-    TreeNode(TreeNode*); //give parent
+	// TreeNode(NodeType);
+	TreeNode(NodeType,
+	         uint row = NA, 
+	         uint col = NA,
+	         QString name = "<name not set>", 
+	         QString key = "<key not set>");
 
-    TreeNode(NodeType);
-    TreeNode(NodeType,int,int); //row and col
-    
-    
-    virtual ~TreeNode();
-  
-    //public members
-    //==============
-    void init();
-    void setParent(TreeNode* p);
-    TreeNode* getParent() {return parent;}
-    
-    virtual void show(int indent=0);
-    void showTree(TreeNode* node, int indent=0) const;
-    
-    void appendChild(TreeNode*);
-    void appendSibling(TreeNode*); //works only if it has parent set!
-    
-    TreeNode* firstChild();
-    TreeNode* secondChild();
-    TreeNode* thirdChild();
-    TreeNode* fourthChild();
-    TreeNode* fifthChild();
-    
-    TreeNode* lastChild();    
-    TreeNode* nextSibling();   
-    TreeNode* prevSibling();
-    
-    NodeType getType();
-    void setType(NodeType t);
+	virtual ~TreeNode();
 
-    void setKey(const QString&);
-    QString getKey();  
-        
-    void setName(const QString&);
-    QString getName() const;  
-    
-    void setValue(const Number&);
-    void setValue(double d){ value = d; }
-    void setValue(const QString& s){ value = s; }
-    
-    Number getValue();
-    uint getRow(){ return fRow; }
-    uint getCol(){ return fCol; }
+	//public members
+	void init();
+	void setParent(TreeNode* p);
+	TreeNode* getParent() {return parent;}
+	
+	virtual void show(int indent = 0);
+	void showTree(TreeNode* node, int indent = 0) const;
+	
+	void appendChild(TreeNode*);
+	void appendSibling(TreeNode*); //works only if it has parent set!
+	
+	TreeNode* firstChild();
+	TreeNode* secondChild();
+	TreeNode* thirdChild();
+	TreeNode* fourthChild();
+	TreeNode* fifthChild();
+	
+	TreeNode* lastChild();    
+	TreeNode* nextSibling();   
+	TreeNode* prevSibling();
+	
+	NodeType getType();
+	void setType(NodeType t);
 
-    void setStrValue(const QString&);
-    QString getStrValue();
-    
-    TreeNode::iterator lookup(); //gives location in parent list as iterator (used by prevSibling and nextSibling)
-    bool hasChildren() { return size()!=0; }
+	void setKey(const QString&);
+	QString getKey();  
+			
+	void setName(const QString&);
+	QString getName() const;  
+	
+	void setValue(const Number&);
+	void setValue(double d){ value = d; }
+	void setValue(const QString& s){ value = s; }
+	
+	Number getValue();
+	uint getRow() { return fRow; }
+	uint getCol() { return fCol; }
 
-    TreeNode& operator=(const TreeNode&);
-  
-  protected:
-    TreeNode* parent;
-    
-        
-  private:
+	void setStrValue(const QString&);
+	QString getStrValue();
+	
+	TreeNode::iterator lookup(); //gives location in parent list as iterator (used by prevSibling and nextSibling)
+	bool hasChildren() { return size()!=0; }
 
-    //private members
-    //===============
-    void destroy(TreeNode*);
+	TreeNode& operator=(const TreeNode&);
 
-    //private locals
-    //==============
-    QString key;
-    QString name;
-    NodeType fType;
-    Number value;
-    QString strValue;
-    
-    uint fRow, fCol; //for runtime error messages.
-    
+
+	protected:
+	TreeNode* parent;
+
+
+	private:
+	void destroy(TreeNode*);
+
+	//private locals
+	QString    key;
+	QString    name;
+	NodeType   fType;
+	Number     value;
+	QString    strValue;
+	
+	uint fRow, fCol; //for runtime error messages.
 };
 
 #endif // _TREENODE_H_
