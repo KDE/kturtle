@@ -68,7 +68,7 @@ cies: have that f*cking gear icon update, it should go from gear to cross when e
 
 
 cies: a fontchooser would be fun
-
+30/12/2003 annma: for the editor font? I can do it
 
 
 cies: a press-F1-for-context-help...
@@ -107,17 +107,11 @@ You can leave the resizing option of the canvas in the Settings but only for hav
 cies: Sorry i have to disagree, let me explain: a lot of logoscripts will be written on a certain canvas size, if the canvas is made bigger the script will give 'broken' output. I also dont have a way to update the 'wrapping' if a canvas is resized. IMHO the canvassize should be changed by a command, nl. canvassize x,y -- which works on my side of mother earth :-) IMHO all changes to the canvas MUST be done by commands and not by clicky-clicky... Putting the 'initial canvas size' in the settings window is only for the teatcher to setup all his computers.
 
 Sorry for beeing so inflexible... *Really*  I am still open for discussion! :-) I just have developed a certain vision of KTurtle's future that is really hard to let go.
+(annma 30/12/2003 ok then, but the config option should be made clearer that the new canvas size will be next start)
 
 
 
-
-
-
-
-
-
-
-
+Annma: Idea from my daughter: have a Tux and a Konqui as alternate turtle for the cursor. I don't know if it's possible and if you like it ;)
 
 
 
@@ -130,8 +124,10 @@ I dont hav much experience with this (doc an KDE) but i seeing 3 documents 1) Qu
 
 Maybe 1 & 3 should be combined, what do you think?
 
-
-
+annma 30/12/2003 Quick Start might be a wizard run at first start and could be accessed later or the classical 'tips of the day'
+ dialog. A tutorial is indeed needed, maybe within KTurtle, in the Settings menu.
+ I can help with the writing.
+ 
 Here a small start with the manual chapters, FEEDBACK NEEDED!
 
 THE MANUAL
@@ -148,7 +144,7 @@ starting logo
 	tools
 	   colorpicker
            fontchooser
-	setings
+	settings
            configuring klogo
                the language
 	       initial values
