@@ -409,9 +409,7 @@ void Canvas::slotGoY(int y) {
 }
 
 void Canvas::slotForward(int x) {
-	kdDebug(0)<<" x:  "<<x<<endl;
 	float f = (float)x;
-	kdDebug(0)<<" f:  "<<f<<endl;
 	int PosXnew = PosX + ROUND2INT(f * cos(Dir) );
 	int PosYnew = PosY - ROUND2INT(f * sin(Dir) );
 	if (Pen) {
