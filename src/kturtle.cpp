@@ -362,6 +362,18 @@ void MainWindow::slotRun() {
                  TurtleView, SLOT( slotSpritePress() ) );
         connect( &exe, SIGNAL( SpriteChange(int) ),
                  TurtleView, SLOT( slotSpriteChange(int) ) );
+        connect( &exe, SIGNAL( Print(QString) ),
+                 TurtleView, SLOT( slotPrint(QString) ) );
+        connect( &exe, SIGNAL( FontType(QString) ),
+                 TurtleView, SLOT( slotFontType(QString) ) );
+        connect( &exe, SIGNAL( FontSize(QString) ),
+                 TurtleView, SLOT( slotFontSize(QString) ) );
+        connect( &exe, SIGNAL( WrapOn() ),
+                 TurtleView, SLOT( slotWrapOn() ) );
+        connect( &exe, SIGNAL( WrapOff() ),
+                 TurtleView, SLOT( slotWrapOff() ) );
+        connect( &exe, SIGNAL( Reset() ),
+                 TurtleView, SLOT( slotReset() ) );
 
         exe.run();
         slotStatusBar(i18n("Done."), 1); // this will override all the err-msgs

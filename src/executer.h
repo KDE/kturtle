@@ -60,6 +60,13 @@ class Executer : public QObject
     void SpritePress();
     void SpriteChange(int x);
     
+    void Print(QString text);
+    void FontType(QString family, QString extra);
+    void FontSize(int px);
+    void WrapOn();
+    void WrapOff();
+    void Reset();
+    
   private:
     void execute( TreeNode* );  
 
@@ -68,8 +75,6 @@ class Executer : public QObject
     void execForEach    ( TreeNode* );
     void execWhile      ( TreeNode* );
     void execIf         ( TreeNode* );
-    void execPrint      ( TreeNode* );
-    void execInput      ( TreeNode* );
     void execAssign     ( TreeNode* );
     void execExpression ( TreeNode* );
     void execId         ( TreeNode* );
@@ -124,6 +129,17 @@ class Executer : public QObject
     void execSpritePress   ( TreeNode* );
     void execSpriteChange  ( TreeNode* );
 
+    void execInput         ( TreeNode* );
+    void execInputWindow   ( TreeNode* );
+    void execPrint         ( TreeNode* );
+    void execFontType      ( TreeNode* );
+    void execFontSize      ( TreeNode* );
+    void execRepeat        ( TreeNode* );
+    int  execRandom        ( TreeNode* );
+    void execWait          ( TreeNode* );
+    void execWrapOn        ( TreeNode* );
+    void execWrapOff       ( TreeNode* );
+    void execReset         ( TreeNode* );
         
     string runCommand( const string& );
         

@@ -6,6 +6,8 @@
 #define _CANVAS_H_
 
 #include <qcanvas.h>
+#include <qfont.h>
+
 #include <cmath>
 
 struct intpair {
@@ -40,11 +42,22 @@ class Canvas : public QCanvasView
     void slotSpriteHide();
     void slotSpritePress();
     void slotSpriteChange(int x);
+    
+    QString slotInput(); // should these two be in canvas?????
+    QString slotInputWindow();
 
+    void slotPrint(QString text);
+    void slotFontType(QString family, QString extra);
+    void slotFontSize(int px);
+    void slotWrapOn();
+    void slotWrapOff();
+    void slotReset();
+    
   signals:
     void resize();
     
   private:
+    void initValues();
     void Line(int xa, int ya, int xb, int yb);
     intpair Offset(int x, int y);
     void loadSpriteFrames(QString name);
@@ -59,6 +72,7 @@ class Canvas : public QCanvasView
     int FgR, FgG, FgB;
     bool Pen;
     bool Wrap;
+    QFont font;
 };
 
 #endif // _CANVAS_H_

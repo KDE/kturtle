@@ -50,8 +50,6 @@ void Executer::execute(TreeNode* node){
     case forEachNode        : execForEach( node );      break;
     case whileNode          : execWhile( node );        break;
     case ifNode             : execIf( node );           break;
-    case printNode          : execPrint( node );        break;
-    case inputNode          : execInput( node );        break;
     case assignNode         : execAssign( node );       break;
     case expressionNode     : execExpression( node );   break;
     case idNode             : execId( node );           break;
@@ -104,6 +102,18 @@ void Executer::execute(TreeNode* node){
     case SpriteHideNode     : execSpriteHide( node );   break;
     case SpritePressNode    : execSpritePress( node );  break;
     case SpriteChangeNode   : execSpriteChange( node ); break;
+
+    case inputNode          : execInput( node );        break;
+    case InputWindowNode    : execInputWindow( node );  break;
+    case printNode          : execPrint( node );        break;
+    case FontTypeNode       : execFontType( node );     break;
+    case FontSizeNode       : execFontSize( node );     break;
+    case RepeatNode         : execRepeat( node );       break;
+    case RandomNode         : execRandom( node );       break;
+    case WaitNode           : execWait( node );         break;
+    case WrapOnNode         : execWrapOn( node );       break;
+    case WrapOffNode        : execWrapOff( node );      break;
+    case ResetNode          : execReset( node );        break;
     
     default:
         QString nodename = node->getName().c_str();
@@ -344,36 +354,6 @@ void Executer::execIf( TreeNode* node ){
 
 }
 
-
-void Executer::execPrint( TreeNode* node ){
-
-  TreeNode::iterator i;
-  for( i=node->begin(); i!=node->end(); ++i ){
-    execute( *i ); //execute expression
-    cout<< (*i)->getValue();
-  }
-  cout<<flush;
-}
-
-
-/*     
-void Executer::execPrintLn( TreeNode* node ){
-  execPrint( node );
-  cout<<endl;
-}
-*/
-
-
-void Executer::execInput( TreeNode* node ){
-  string varName = node->firstChild()->getName();
-  Number val;
-  
-  //ask input from cin
-  //cout<<"?"; // basic style , don't like it :)
-  cin>>val;
-  
-  ( symbolTables.top() )[ varName ] = val;  
-}
 
    
 void Executer::execAssign( TreeNode* node ){
@@ -839,5 +819,120 @@ void Executer::execSpriteChange( TreeNode* node ) {
     int x = (int)(nodeX->getValue().val); // converting & rounding to int
     emit SpriteChange(x);
 }
+
+
+
+void Executer::execInput( TreeNode* node ){
+  string varName = node->firstChild()->getName();
+  Number val;
+  
+  //ask input from cin
+  //cout<<"?"; // basic style , don't like it :) // cies: me neither
+  cin>>val;
+  
+  ( symbolTables.top() )[ varName ] = val;  
+}
+
+
+void Executer::execInputWindow( TreeNode* node ) {}
+
+void Executer::execPrint( TreeNode* node ) {
+  TreeNode::iterator i;
+  QString str = "";
+  for( i=node->begin(); i!=node->end(); ++i ) {
+    execute( *i ); //execute expression
+    str = str + (*i)->getValue().strVal.c_str();
+  }
+  emit Print(str);
+}
+
+void Executer::execFontType( TreeNode* node ) {
+    // check if number of parameters match, or else...
+    if( node->size() != 2 || node->size() != 1 ) {
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), 0, 0, 7070);
+        return;
+    }
+    if( node->firstChild()->getType() == stringConstantNode ||
+        node->secondChild()->getType() == stringConstantNode ) {
+        emit ErrorMsg( i18n("The function %1 only accepts strings as parameters.").arg( node->getKey() ), 0, 0, 9000);
+        return;
+    }
+    QString extra;
+    if( node->size() == 2 ) {
+        QString extra = node->secondChild()->getValue().strVal.c_str();
+    }
+    QString family = node->firstChild()->getValue().strVal.c_str();
+    emit FontType(family, extra);
+}
+
+void Executer::execFontSize( TreeNode* node ) {
+    // check if number of parameters match, or else...
+    if( node->size() != 1 ) {
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), 0, 0, 5060);
+        return;
+    }
+    TreeNode* nodeX = node->firstChild(); // getting
+    execute(nodeX); // executing
+    int px = (int)(nodeX->getValue().val + 0.5); // converting & rounding to int
+    emit FontSize(px);
+}
+
+void Executer::execRepeat( TreeNode* node ) {}
+
+
+int Executer::execRandom( TreeNode* node ) {
+    // check if number of parameters match, or else...
+    if( node->size() != 2 ) {
+        emit ErrorMsg( i18n("The function %1 was called with wrong number of parameters.").arg( node->getKey() ), 0, 0, 5050);
+        return 0;
+    }
+    TreeNode* nodeX = node->firstChild(); // getting
+    TreeNode* nodeY = node->secondChild();
+    execute(nodeX); // executing
+    execute(nodeY);
+    int x = (int)(nodeX->getValue().val + 0.5); // converting & rounding to int
+    int y = (int)(nodeY->getValue().val + 0.5);
+
+    float r;
+    // Set evil seed (initial seed)
+    srand( (unsigned)time( NULL ) );
+    r = (float)( rand() / RAND_MAX );
+    return (int)r * ( y - x ) + y;
+} 
+
+
+void Executer::execWait( TreeNode* node ) {}
+
+void Executer::execWrapOn( TreeNode* node ) {
+    // check if number of parameters match, or else...
+    if( node->size() != 0 ) {
+        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getKey() ), 0, 0, 6060);
+        return;
+    }
+    emit WrapOn();
+}
+
+void Executer::execWrapOff( TreeNode* node ) {
+    // check if number of parameters match, or else...
+    if( node->size() != 0 ) {
+        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getKey() ), 0, 0, 6060);
+        return;
+    }
+    emit WrapOff();
+}
+
+void Executer::execReset( TreeNode* node ) {
+    // check if number of parameters match, or else...
+    if( node->size() != 0 ) {
+        emit ErrorMsg( i18n("The function %1 accepts no parameters.").arg( node->getKey() ), 0, 0, 6060);
+        return;
+    }
+    emit Reset();
+}
+
+
+
+
+
 
 #include "executer.moc"

@@ -13,31 +13,35 @@
 Canvas::Canvas(QWidget *parent, const char *name) : QCanvasView(0, parent, name) {
     // Create a new canvas for this view
     TurtleCanvas = new QCanvas(parent);
-    
+    TurtleCanvas->setAdvancePeriod(250);  // refresh-rate in [ms]
+
     // set initial values
+    initValues();
+
+    // at last we assign the canvas to the view
+    setCanvas(TurtleCanvas);
+}
+
+void Canvas::initValues() {
+    // canvas size
     slotResizeCanvas( Settings::canvasWidth(), Settings::canvasHeight() );
     CanvasWidth = Settings::canvasWidth();
     CanvasHeight = Settings::canvasHeight();
-    
-    TurtleCanvas->setBackgroundColor( QColor(255, 255, 255) );
-    FgR = 0;
+    // colors
+    TurtleCanvas->setBackgroundColor( QColor(255, 255, 255) ); // background
+    FgR = 0; // pencolor (forground)
     FgG = 0;
     FgB = 0;
-    
-    TurtleCanvas->setAdvancePeriod(250);  // refresh-rate in [ms]
-
+    // pen, wrap, direction and font
     PenWidth = 0;
     Pen = true;
     Wrap = true;
     Dir = 3.14159265358979323846 / 2;
-    
+    font = QFont("serif", 10);
+    // the position
     slotCenter();
-
     // construct the default sprite
 //    loadSpriteFrames("logo");
-
-    // at last we assign the canvas to the view
-    setCanvas(TurtleCanvas);
 }
 
 void Canvas::Line(int xa, int ya, int xb, int yb) {
@@ -215,6 +219,45 @@ void Canvas::slotSpriteChange(int x) {
 //     Sprite->setFrame(x);
 //     Sprite->move(PosX - Sprite->width()/2, PosY - Sprite->height()/2);
 }
-    
+
+
+
+QString Canvas::slotInput() {} // should these two be in canvas?????
+QString Canvas::slotInputWindow() {}
+
+void Canvas::slotPrint(QString text) {
+    QCanvasText* t = new QCanvasText(text, font, TurtleCanvas);
+    // text does not do the wrapping, never... sorry
+    t->setColor( QColor(FgR, FgB, FgG) );
+    t->move(PosX, PosY);
+    t->show();
+}
+
+void Canvas::slotFontType(QString family, QString extra) {
+    font.setFamily(family);
+    font.setBold( extra.contains("bold") > 0 );
+    font.setItalic( extra.contains("italic") > 0 );
+    font.setUnderline( extra.contains("underline") > 0 );
+    font.setOverline( extra.contains("overline") > 0 );
+    font.setStrikeOut( extra.contains("strikeout") > 0 );
+}
+
+void Canvas::slotFontSize(int px) {
+    font.setPixelSize(px);
+}
+
+void Canvas::slotWrapOn() {
+    Wrap = true;
+}
+
+void Canvas::slotWrapOff() {
+    Wrap = false;
+}
+
+void Canvas::slotReset() {
+    slotClear();
+    initValues();
+}
+
     
 #include "canvas.moc"

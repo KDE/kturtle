@@ -693,48 +693,58 @@ TreeNode* Parser::Break() {
 
 TreeNode* Parser::Statement() {
   switch(look.type) {
-    case tokIf      : return If();            break;
-    case tokFor     : return For();           break;
-    case tokForEach : return ForEach();       break;
-    case tokWhile   : return While();         break;
-    case tokPrint   : return Print();         break;
-    case tokRun     : return runFunction();   break;
-    case tokInput   : return Input();         break;
-    case tokReturn  : return Return();        break;
-    case tokBreak   : return Break();         break;
-    case tokId      : return Other();         break; //assignment or function call
+    case tokIf            : return If();               break;
+    case tokFor           : return For();              break;
+    case tokForEach       : return ForEach();          break;
+    case tokWhile         : return While();            break;
+    case tokRun           : return runFunction();      break;
+    case tokReturn        : return Return();           break;
+    case tokBreak         : return Break();            break;
+    case tokId            : return Other();            break; //assignment or function call
         
-    case tokClear         : return Clear();        break;
-    case tokGo            : return Go();           break;
-    case tokGoX           : return GoX();          break;
-    case tokGoY           : return GoY();          break;
-    case tokForward       : return Forward();      break;
-    case tokBackward      : return Backward();     break;
-    case tokDirection     : return Direction();    break;
-    case tokTurnLeft      : return TurnLeft();     break;
-    case tokTurnRight     : return TurnRight();    break;
-    case tokCenter        : return Center();       break;
-    case tokSetPenWidth   : return SetPenWidth();  break;
-    case tokPenUp         : return PenUp();        break;
-    case tokPenDown       : return PenDown();      break;
-    case tokSetFgColor    : return SetFgColor();   break;
-    case tokSetBgColor    : return SetBgColor();   break;
-    case tokResizeCanvas  : return ResizeCanvas(); break;
-    case tokSpriteShow    : return SpriteShow();   break;
-    case tokSpriteHide    : return SpriteHide();   break;
-    case tokSpritePress   : return SpritePress();  break;
-    case tokSpriteChange  : return SpriteChange(); break;
-
-    case tokWrite   : return writeFunction(); break;
-        
-    case tokEnd     : break; //caught by Block
+    case tokClear         : return Clear();            break;
+    case tokGo            : return Go();               break;
+    case tokGoX           : return GoX();              break;
+    case tokGoY           : return GoY();              break;
+    case tokForward       : return Forward();          break;
+    case tokBackward      : return Backward();         break;
+    case tokDirection     : return Direction();        break;
+    case tokTurnLeft      : return TurnLeft();         break;
+    case tokTurnRight     : return TurnRight();        break;
+    case tokCenter        : return Center();           break;
+    case tokSetPenWidth   : return SetPenWidth();      break;
+    case tokPenUp         : return PenUp();            break;
+    case tokPenDown       : return PenDown();          break;
+    case tokSetFgColor    : return SetFgColor();       break;
+    case tokSetBgColor    : return SetBgColor();       break;
+    case tokResizeCanvas  : return ResizeCanvas();     break;
+    case tokSpriteShow    : return SpriteShow();       break;
+    case tokSpriteHide    : return SpriteHide();       break;
+    case tokSpritePress   : return SpritePress();      break;
+    case tokSpriteChange  : return SpriteChange();     break;
     
-    case tokBegin   : Error( i18n("Begin without matching end"), 1050 );
-                      getToken();
-                      return new TreeNode(Unknown, row, col );
-                      break;
+    case tokPrint         : return Print();            break;
+    case tokInputWindow   : return InputWindow();      break;
+    case tokInput         : return Input();            break;
+    case tokFontType      : return FontType();         break;
+    case tokFontSize      : return FontSize();         break;
+    case tokRepeat        : return Repeat();           break;
+    case tokRandom        : return Random();           break;
+    case tokWait          : return Wait();             break;
+    case tokWrapOn        : return WrapOn();           break;
+    case tokWrapOff       : return WrapOff();          break;
+    case tokReset         : return Reset();            break;
+    
+    case tokWrite         : return writeFunction();    break;
+        
+    case tokEnd           : break; //caught by Block
+    
+    case tokBegin         : Error( i18n("Begin without matching end"), 1050 );
+                            getToken();
+                            return new TreeNode(Unknown, row, col );
+                            break;
                                             
-    default         : break;    
+    default               : break;    
   }
   QString qstr = look.str.c_str();
   Error( i18n("Incorrect statement: ") + qstr, 1060); 
@@ -1280,17 +1290,6 @@ TreeNode* Parser::Reset() {
     getToken();
     return node;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*
