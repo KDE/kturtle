@@ -1,4 +1,4 @@
-How to translate the syntax highlighting files 
+How to translate the syntax highlighting files
 
 The syntax highlighting files are located in kdeedu/kturtle/src/data/highlightstyles/
 Each file is named
@@ -12,7 +12,7 @@ Please note that the country code must be the same here than in the logokeywords
 <language name="en_US" 
 change en_US with your language ISO code (2 or 4 letters).
 
-3) Translate in your own language the content of the <item> tag i.e the information between <item> and </item>. This content must match the logokeyword file.
+3) Set the encoding in your editor to utf-8 and ranslate in your own language the content of the <item> tag i.e the information between <item> and </item>. This content must match the logokeyword file.
 
 For example translate 'while' in: <item> while </item> and leave the spaces as they are (one at the beginning and one at the end).
 
