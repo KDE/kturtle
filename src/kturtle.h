@@ -69,7 +69,8 @@ class MainWindow : public KParts::MainWindow// public KMainWindow
     void setupActions();
     void setupCanvas();
     void setupStatusBar();
-    void readConfig();
+    void readConfig(KConfig *config);
+    void writeConfig(KConfig *config);
     void startExecution();
     void stopExecution();
     

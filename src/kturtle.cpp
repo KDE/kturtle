@@ -86,7 +86,8 @@ MainWindow::MainWindow(KTextEditor::Document *doc) : editor(0) {
         resize( 640, 480 );
     }
              
-    readConfig ();
+    KConfig *config = kapp->config();
+    readConfig(config);
     show();
 }
 
@@ -197,7 +198,6 @@ void MainWindow::slotNewFile() {
         }
     }
     ei->clear();// clear the editor
-    //new MainWindow(editor->document()); //this opens another instance ;)
     TurtleView->slotClear();// clear the view
     CurrentFile = "";
     setCaption( i18n("Untitled") );
@@ -291,7 +291,9 @@ void MainWindow::slotQuit() {
             }
         }
     }
-    // saveOptions();   / @todo: Implement KConfig
+    KConfig *config = kapp->config();
+    writeConfig(config);
+
     close();
 }
 
@@ -554,7 +556,7 @@ void MainWindow::slotConfigureKeys() {
     KKeyDialog::configure(actionCollection(), this);
 }
 
-void MainWindow::readConfig() {
+void MainWindow::readConfig(KConfig *config) {
 	//in case the xml files are not installed. I believe it should quit in that case as the kstandardirs has been 
 	//searched for the xml files
         if ( locate("data", "kturtle/data/logokeywords.en_US.xml").isNull() ) {
@@ -566,6 +568,13 @@ void MainWindow::readConfig() {
                                   "file. Otherwise KTurtle will not operate." ) );
         }
 	
+	config->setGroup("General Options");
+	m_recentFiles->loadEntries(config, "Recent Files");
+}
+
+void MainWindow::writeConfig(KConfig *config) {
+	config->setGroup("General Options");
+	m_recentFiles->saveEntries(config, "Recent Files");
 }
 
 void MainWindow::slotColorPicker() {
