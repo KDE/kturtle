@@ -1065,6 +1065,10 @@ TreeNode* Parser::Other()
 	
 	Error(rememberedToken, i18n("'%1' is neither a Logo command nor a learned command.").arg(rememberedToken.look), 1020);
 	TreeNode* errNode = new TreeNode(rememberedToken, Unknown);
+	
+	// skip the rest of the line
+	while (currentToken.type != tokEOL) getToken();
+	
 	return errNode;
 }
 
