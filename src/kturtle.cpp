@@ -851,21 +851,18 @@ void MainWindow::slotSettings() {
 
 	QVBoxLayout *layout4 = new QVBoxLayout( 0, 0, 6, "layout4");
 
-	LanguageLabel = new QLabel(kcfg_LanguageComboBox, i18n("Select the language for the Logo commands:"), groupBox1);
-	layout4->addWidget( LanguageLabel );
-
 	kcfg_LanguageComboBox = new KComboBox(groupBox1, "kcfg_LanguageComboBox");
 	kcfg_LanguageComboBox->setEditable(false);
 	QStringList LogoLanguageList = Settings::logoLanguageList();
 	// Ad the full language names to the items
 	for ( QStringList::Iterator it = LogoLanguageList.begin(); it != LogoLanguageList.end(); ++it ) {
-	*it = KGlobal::locale()->twoAlphaToLanguageName( (*it).left(2) ) + " (" + *it + ")";
+		*it = KGlobal::locale()->twoAlphaToLanguageName( (*it).left(2) ) + " (" + *it + ")";
 	}
 	kcfg_LanguageComboBox->insertStringList(LogoLanguageList);
-	layout4->addWidget( kcfg_LanguageComboBox );
-
-
+	LanguageLabel = new QLabel(kcfg_LanguageComboBox, i18n("Select the language for the Logo commands:"), groupBox1);
 	LanguageLabel->setBuddy( kcfg_LanguageComboBox );
+	layout4->addWidget( LanguageLabel ); // after we created all we add the label to the layout first
+	layout4->addWidget( kcfg_LanguageComboBox );
 
 
 	groupBox1Layout->addLayout( layout4, 0, 0 );
