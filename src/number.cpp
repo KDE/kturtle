@@ -23,7 +23,6 @@ bugreport(log):/
 #include <kdebug.h>
  
 #include "number.h"
-#include "constant.h"
 
 Number::Number() {
   strVal = "";
