@@ -193,10 +193,6 @@ void MainWindow::setupCanvas() {
     connect( TurtleView, SIGNAL( CanvasResized() ), this, SLOT( slotUpdateCanvas() ) );
 }
 
-
-
-
-
 // Implementation of most of the items in the File and Edit menus //
 void MainWindow::slotNewFile() {
     if ( !editor->document()->isModified() && CurrentFile == "" ) {
@@ -219,16 +215,7 @@ void MainWindow::slotNewFile() {
     slotStatusBar(i18n("New file... Happy coding!"), 1); 
 }
 
-void MainWindow::slotSaveFile() {
-    // if no filename yet, go get it first
-    if ( CurrentFile.isEmpty() && filename2saveAs.isEmpty() ) {
-        slotSaveAs();
-        // cancelled saveAs? -> return
-        if ( filename2saveAs.isEmpty() ) {
-            return;
-        }
-    }
-    
+void MainWindow::slotSaveFile() {  
     QString filestr = CurrentFile;
     // when coming from SaveAs, then dont use CurrentFile but filename2saveAs
     if ( !filename2saveAs.isEmpty() ) {
@@ -236,24 +223,9 @@ void MainWindow::slotSaveFile() {
         filename2saveAs = "";
     }
     
-    QFile file(filestr);
-    if ( !file.open(IO_WriteOnly) ) {
-        KMessageBox::error( this, i18n("Could not write to \"%1\".\n"
-            "You might not have permission to change that file, "
-            "or some other application is currently using it.").arg( file.name() ),
-            i18n("Error saving file...") );
-        slotStatusBar(i18n("Error saving file, file NOT saved."), 1); 
-        return;
-    }
-    QTextStream stream(&file);
-    stream << ei->text();
-    file.close();
-    
     editor->document()->setModified(false);
-    CurrentFile = filestr;
-    setCaption(CurrentFile);
-    slotStatusBar(i18n("Saved file to: %1").arg(CurrentFile), 1); 
-    //@TODO add file in recent files
+    KURL url = KURL(filestr);
+    slotSave(url);
 }
 
 void MainWindow::slotSaveAs() {
@@ -264,8 +236,7 @@ void MainWindow::slotSaveAs() {
         if (url.isEmpty()) { // when cancelled the KFiledialog?
             return;
         }
-        QFile file(url.url());
-        if ( file.exists() ) {
+        if (QFile(url.fileName()).exists()) { //why that does not work???
             int result = KMessageBox::warningContinueCancel( this,
                 i18n("A file named \"%1\" already exists.\n"
                      "Are you sure you want to overwrite it?").arg(url.url()),
@@ -276,9 +247,26 @@ void MainWindow::slotSaveAs() {
         }
         break;
     }
-    filename2saveAs = url.url();
-    slotSaveFile();
+    slotSave(url);
 }
+
+void MainWindow::slotSave(KURL &url)
+{
+	if ( !url.isEmpty())
+ 	 {
+		filename2saveAs = url.url();
+    		editor->document()->saveAs(url);
+    		CurrentFile = url.fileName();
+    		setCaption(CurrentFile);
+    		slotStatusBar(i18n("Saved file to: %1").arg(CurrentFile), 1); 
+    		m_recentFiles->addURL( url );
+	}
+	else
+	{
+	  	slotSaveAs();
+	}
+}
+
 
 void MainWindow::slotOpenFile() {
       KURL url = KFileDialog::getOpenURL( QString(":logo_dir"), QString("*.logo|") +

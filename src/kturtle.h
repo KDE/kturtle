@@ -53,6 +53,7 @@ class MainWindow : public KParts::MainWindow
     void slotOpen(const KURL&);
     void slotSaveFile();
     void slotSaveAs();
+    void slotSave(KURL &);
     // TODO: linenumbers; probably when going from KTextEdit to KTextEditor::Editor
     // void slotLineNumbers();
     void slotPrint();

@@ -1,5 +1,5 @@
 File=kturtle.kcfg 
-IncludeFiles=kstandarddirs.h,qstring.h
+IncludeFiles=kstandarddirs.h
 ClassName=Settings 
 Singleton=true 
 Mutators=true
