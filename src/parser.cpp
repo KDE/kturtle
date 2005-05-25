@@ -906,9 +906,9 @@ TreeNode* Parser::Learn()
 	}
 	func->appendChild(idList);
 
-	func->appendChild( Block() ); // do the Block() thing
+	learnedFunctionList.append( func->getLook() ); // publish the function
 
-	learnedFunctionList.append( func->getLook() );
+	func->appendChild( Block() );
 
 	return func;
 }

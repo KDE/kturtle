@@ -1102,12 +1102,15 @@ void MainWindow::slotContextHelpUpdate()
 		if ( col >= (uint)start && col < (uint)(start+length) )
 		{
 			QString cursorWord = line.mid( (uint)start, (uint)length );
-			// kdDebug(0)<<"splitsearch: >>"<<cursorWord<<"<<"<<endl;
+			kdDebug(0)<<"cursorWord: '"<<cursorWord<<"'"<<endl;
 			
+			kdDebug(0)<<"(translate->name2key(  cursorWord.lower() )): '"<<translate->name2key(  cursorWord.lower() )<<"'"<<endl;
+			kdDebug(0)<<"(translate->alias2key( cursorWord.lower() )): '"<<translate->alias2key( cursorWord.lower() )<<"'"<<endl;
+
 			if      ( cursorWord.stripWhiteSpace().isEmpty() ) helpKeyword = i18n("<no keyword>");
 
-			else if ( !translate->name2key(  cursorWord.lower() ).isEmpty() ||
-			          !translate->alias2key( cursorWord.lower() ).isEmpty() ) helpKeyword = cursorWord;
+			else if ( !translate->name2key(  cursorWord.lower() ).isEmpty() ) helpKeyword = cursorWord;
+			else if ( !translate->alias2key( cursorWord.lower() ).isEmpty() ) helpKeyword = cursorWord;
 
 			else if ( cursorWord.find( QRegExp("[\\d.]+") ) == 0 ) helpKeyword = i18n("<number>");
 
