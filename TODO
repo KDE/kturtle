@@ -1,5 +1,13 @@
 This document goes on the BUGs and WISHes that regarding KTurtle
 
+18 june 2005
+------------------
+for KDE 3.5
+- add the fractals examples from http://www.stber-koenig.de/markus/kturtle/ in the examples folder
+-> problem when adding examples for translations
+
+- implement KNewStuff to share logo files via kde-files.org per language with png associated on the website
+
 
     CHECKLIST FOR KTURTLE IN KDE 3.4:
 
