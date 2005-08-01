@@ -31,9 +31,9 @@ ErrorMessage::ErrorMessage (QWidget *parent)
 	connect( this, SIGNAL( user1Clicked() ), this, SLOT( showHelpOnError() ) );
 	connect( this, SIGNAL( helpClicked() ), this, SLOT( errorMessageHelp() ) );
 	setCaption( i18n("Error Dialog") );
-	setButtonWhatsThis( KDialogBase::Close, i18n("Closes this Error Dialog") );
-	setButtonWhatsThis( KDialogBase::Help, i18n("Click here to read more on this Error Dialog in KTurtle's Handbook.") );
-	setButtonTip( KDialogBase::Help, i18n("Click here for help using this Error Dialog") );
+	setButtonWhatsThis( KDialogBase::Close, i18n("Closes this error dialog") );
+	setButtonWhatsThis( KDialogBase::Help, i18n("Click here to read more on this error dialog in KTurtle's Handbook.") );
+	setButtonTip( KDialogBase::Help, i18n("Click here for help using this error dialog") );
 	setButtonWhatsThis( KDialogBase::User1, i18n("Click here for help regarding the error you selected in the list. This button will not work when no error is selected.") );
 	setButtonTip( KDialogBase::User1, i18n("Click here for help regarding the error you selected.") );
 	
