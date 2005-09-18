@@ -328,7 +328,7 @@ void Executer::execForEach(TreeNode* node)
 	
 	bBreak = false;
 	
-	int i = expStr2.contains(expStr1, false);
+	int i = expStr2.count(expStr1, Qt::CaseInsensitive /*false*/);
 	for ( ; i > 0; i-- )
 	{
 		if (bAbort) return;

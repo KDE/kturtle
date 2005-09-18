@@ -379,7 +379,7 @@ void Canvas::line(double xa, double ya, double xb, double yb)
 	int intXb = ROUND2INT(xb);
 	int intYb = ROUND2INT(yb);	
 	l->setPoints(intXa, intYa, intXb, intYb);
-	l->setPen( QPen(QColor(fgR, fgG, fgB), penWidth, SolidLine) );
+	l->setPen( QPen(QColor(fgR, fgG, fgB), penWidth, Qt::SolidLine) );
 	l->setZ(1);
 	l->show();
 	// kdDebug(0)<<"Canvas::line(); xa:"<<xa<<", ya:"<<ya<<", xb:"<<xb<<", yb:"<<yb<<endl;

@@ -132,21 +132,21 @@ void MainWindow::setupActions()
 	
 	// File actions
 	KStdAction::openNew(this, SLOT(slotNewFile()), ac);
-	openExAction = new KAction(i18n("Open Exa&mples..."), "bookmark_folder", CTRL+Key_E, this, SLOT(slotOpenExample()), ac, "open_examples");
+	openExAction = new KAction(i18n("Open Exa&mples..."), "bookmark_folder", Qt::CTRL+Qt::Key_E, this, SLOT(slotOpenExample()), ac, "open_examples");
 	KStdAction::open(this, SLOT(slotOpenFile()), ac);
 	m_recentFiles = KStdAction::openRecent(this, SLOT(slotOpenFile(const KURL&)), ac);
 	KStdAction::save(this, SLOT(slotSaveFile()), ac);
 	KStdAction::saveAs(this, SLOT(slotSaveAs()), ac);
 	new KAction(i18n("Save &Canvas..."), 0, 0, this, SLOT(slotSaveCanvas()), ac, "save_canvas");
-	speed = new KSelectAction(i18n("Execution Speed"), 0, ALT+Key_S, this, SLOT( slotChangeSpeed() ), ac, "speed");
+	speed = new KSelectAction(i18n("Execution Speed"), 0, Qt::ALT+Qt::Key_S, this, SLOT( slotChangeSpeed() ), ac, "speed");
 	QStringList speeds; speeds << i18n("Full Speed") << i18n("Slow") << i18n("Slower") << i18n("Slowest");
 	speed->setItems(speeds);
 	speed->setCurrentItem(0);
-	run = new KAction(i18n("&Execute Commands"), "gear", ALT+Key_Return, this, SLOT( slotExecute() ), ac, "run");
-	pause = new KToggleAction(i18n("Pause E&xecution"), "player_pause", Key_Pause, this, SLOT( slotPauseExecution() ), ac, "pause");
+	run = new KAction(i18n("&Execute Commands"), "gear", Qt::ALT+Qt::Key_Return, this, SLOT( slotExecute() ), ac, "run");
+	pause = new KToggleAction(i18n("Pause E&xecution"), "player_pause", Qt::Key_Pause, this, SLOT( slotPauseExecution() ), ac, "pause");
 	pause->setChecked(false);
 	pause->setEnabled(false);
-	stop = new KAction(i18n("Stop E&xecution"), "stop", Key_Escape, this, SLOT( slotAbortExecution() ), ac, "stop");
+	stop = new KAction(i18n("Stop E&xecution"), "stop", Qt::Key_Escape, this, SLOT( slotAbortExecution() ), ac, "stop");
 	stop->setEnabled(false);
 	KStdAction::print(this, SLOT(slotPrint()), ac);
 	KStdAction::quit(this, SLOT(close()), ac);
@@ -159,31 +159,31 @@ void MainWindow::setupActions()
 	KStdAction::paste(this, SLOT(slotPaste()), ac);
 	KStdAction::selectAll(this, SLOT(slotSelectAll()), ac);
 	KStdAction::deselect(this, SLOT(slotClearSelection()), ac);
-	new KToggleAction(i18n("Toggle Insert"), Key_Insert, this, SLOT(slotToggleInsert()), ac, "set_insert");
+	new KToggleAction(i18n("Toggle Insert"), Qt::Key_Insert, this, SLOT(slotToggleInsert()), ac, "set_insert");
 	KStdAction::find(this, SLOT(slotFind()), ac);
 	KStdAction::findNext(this, SLOT(slotFindNext()), ac);
 	KStdAction::findPrev(this, SLOT(slotFindPrevious()), ac);
 	KStdAction::replace(this, SLOT(slotReplace()), ac);
 	
 	// View actions
-	new KToggleAction(i18n("Show &Line Numbers"), 0, Key_F11, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
+	new KToggleAction(i18n("Show &Line Numbers"), 0, Qt::Key_F11, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
 	m_fullscreen = KStdAction::fullScreen(this, SLOT(slotToggleFullscreen()), ac, this, "full_screen");
 	m_fullscreen->setChecked(b_fullscreen);
 
 	// Tools actions
-	colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", ALT+Key_C, this, SLOT(slotColorPicker()), ac, "color_picker");
-	new KAction(i18n("&Indent"), "indent", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
-	new KAction(i18n("&Unindent"), "unindent", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
+	colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", Qt::ALT+Qt::Key_C, this, SLOT(slotColorPicker()), ac, "color_picker");
+	new KAction(i18n("&Indent"), "indent", Qt::CTRL+Qt::Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
+	new KAction(i18n("&Unindent"), "unindent", Qt::CTRL+Qt::SHIFT+Qt::Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
 	new KAction(i18n("Cl&ean Indentation"), 0, 0, this, SLOT(slotCleanIndent()), ac, "edit_cleanIndent");
-	new KAction(i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
-	new KAction(i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
+	new KAction(i18n("Co&mment"), 0, Qt::CTRL+Qt::Key_D, this, SLOT(slotComment()), ac, "edit_comment");
+	new KAction(i18n("Unc&omment"), 0, Qt::CTRL+Qt::SHIFT+Qt::Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
 	
 	// Settings actions
 	KStdAction::preferences( this, SLOT(slotSettings()), ac );
 	new KAction(i18n("&Configure Editor..."), "configure", 0, this, SLOT(slotEditor()), ac, "set_confdlg");
 	
 	// Help actions
-	ContextHelp = new KAction(0, 0, Key_F2, this, SLOT(slotContextHelp()), ac, "context_help");
+	ContextHelp = new KAction(0, 0, Qt::Key_F2, this, SLOT(slotContextHelp()), ac, "context_help");
 	slotContextHelpUpdate(); // this sets the label of this action
 	
 	// other
@@ -221,7 +221,7 @@ void MainWindow::setupEditor()
 void MainWindow::setupStatusBar()
 {
 	statusBar()->insertItem("", IDS_STATUS, 1, false);
-	statusBar()->setItemAlignment(IDS_STATUS, AlignLeft);
+	statusBar()->setItemAlignment(IDS_STATUS, Qt::AlignLeft);
 	statusBar()->insertItem("", IDS_LANG, 0, true);
 	statusBar()->insertItem("", IDS_LINECOLUMN, 0, true);
 	statusBar()->insertItem("", IDS_INS, 0, true);
@@ -238,7 +238,7 @@ void MainWindow::setupCanvas()
 	setCentralWidget(baseWidget);
 	baseLayout = new QGridLayout(baseWidget, 0, 0);
 	canvasView = new Canvas(baseWidget);
-	baseLayout->addWidget(canvasView, 0, 0, AlignCenter);
+	baseLayout->addWidget(canvasView, 0, 0, Qt::AlignCenter);
 	baseLayout->setRowStretch(0, 1); // this apperntly fixes a pre-usefull scrollbars bug
 	baseLayout->setColStretch(0, 1);
 	Q3WhatsThis::add( canvasView, i18n("This is the canvas, here the turtle draws a picture.") );

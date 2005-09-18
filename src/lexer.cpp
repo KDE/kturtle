@@ -388,13 +388,15 @@ void Lexer::getString(Token& currentToken)
 		if (currentChar == '\\') // escape sequence 
 		{
 			currentChar = getChar();
-			switch (currentChar)
-			{
-				case 'n': str += '\n'; break;
-				case 't': str += '\t'; break;
-				case 'f': str += '\f'; break;
-				case '"': str += '"';  break;
-			}
+			if( currentChar == 'n')
+					str += '\n';
+			else if( currentChar == 't')
+					str += '\t';
+			else if( currentChar == 'f')
+					str += '\f';
+			else if( currentChar == '"' )
+					str += '"';
+			
 		}
 		else if (currentChar == '\x0a' || currentChar == '\n') // if the user forgot to delimit the string
 		{
