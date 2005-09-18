@@ -21,6 +21,10 @@
 #include <klocale.h>
 
 #include "dialogs.h"
+//Added by qt3to4:
+#include <QLabel>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 
 
 // BEGIN class ErrorMessage dialog
@@ -50,11 +54,11 @@ ErrorMessage::ErrorMessage (QWidget *parent)
 	spacer = new QSpacerItem( 10, 10, QSizePolicy::Minimum, QSizePolicy::Fixed );
 	baseLayout->addItem(spacer);
 	
-	errTable = new QTable(0, 3, baseWidget);
-	errTable->setSelectionMode(QTable::SingleRow);
+	errTable = new Q3Table(0, 3, baseWidget);
+	errTable->setSelectionMode(Q3Table::SingleRow);
 	errTable->setReadOnly(true);
 	errTable->setShowGrid(false);
-	errTable->setFocusStyle(QTable::FollowStyle);
+	errTable->setFocusStyle(Q3Table::FollowStyle);
 	errTable->setLeftMargin(0);
 	
 	errTable->horizontalHeader()->setLabel( 0, i18n("number") );

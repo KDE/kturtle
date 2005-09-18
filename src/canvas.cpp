@@ -54,6 +54,8 @@
 #include <cmath>
 
 #include <qpainter.h>
+//Added by qt3to4:
+#include <QPixmap>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -75,10 +77,10 @@ const double DEG2RAD = 3.14159265358979323846/180;
 
 // BEGIN public methods
 
-Canvas::Canvas(QWidget *parent, const char *name) : QCanvasView(0, parent, name)
+Canvas::Canvas(QWidget *parent, const char *name) : Q3CanvasView(0, parent, name)
 {
 	// Create a new canvas for this view
-	canvas = new QCanvas(parent);
+	canvas = new Q3Canvas(parent);
 	canvas->setAdvancePeriod(250);  // refresh-rate in [ms]
 	
 	// set initial values
@@ -111,8 +113,8 @@ QPixmap* Canvas::canvas2Pixmap()
 
 void Canvas::slotClear()
 {
-	QCanvasItemList list = canvas->allItems();
-	QCanvasItemList::Iterator it = list.begin();
+	Q3CanvasItemList list = canvas->allItems();
+	Q3CanvasItemList::Iterator it = list.begin();
 	for (; it != list.end(); ++it)
 	{
 		// kill everything but the turtle (who lives on a seperate layer)
@@ -122,8 +124,8 @@ void Canvas::slotClear()
 
 void Canvas::slotClearSpriteToo()
 {
-	QCanvasItemList list = canvas->allItems();
-	QCanvasItemList::Iterator it = list.begin();
+	Q3CanvasItemList list = canvas->allItems();
+	Q3CanvasItemList::Iterator it = list.begin();
 	for (; it != list.end(); ++it)
 	{
 		if (*it) delete *it;
@@ -287,7 +289,7 @@ void Canvas::slotSpriteChange(int x)
 
 void Canvas::slotPrint(QString text)
 {
-	QCanvasText* t = new QCanvasText(text, font, canvas);
+	Q3CanvasText* t = new Q3CanvasText(text, font, canvas);
 	// text does not do the wrapping, never... sorry
 	t->setColor( QColor(fgR, fgG, fgB) );
 	t->move(ROUND2INT(posX), ROUND2INT(posY));
@@ -371,7 +373,7 @@ void Canvas::lineShell(double xa, double ya, double xb, double yb)
 
 void Canvas::line(double xa, double ya, double xb, double yb)
 {
-	QCanvasLine* l = new QCanvasLine(canvas);
+	Q3CanvasLine* l = new Q3CanvasLine(canvas);
 	int intXa = ROUND2INT(xa);
 	int intYa = ROUND2INT(ya);
 	int intXb = ROUND2INT(xb);
@@ -612,8 +614,8 @@ void Canvas::loadSpriteFrames(QString name)
 	}
 	QString spritePath = locate("data","kturtle/pics/"+name+".0000.png");
 	spritePath.remove(".0000.png");
-	spriteFrames = new QCanvasPixmapArray(spritePath+".%1.png", 36);
-	sprite = new QCanvasSprite(spriteFrames, canvas);
+	spriteFrames = new Q3CanvasPixmapArray(spritePath+".%1.png", 36);
+	sprite = new Q3CanvasSprite(spriteFrames, canvas);
 	sprite->setZ(250);
 }
 

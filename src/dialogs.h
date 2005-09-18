@@ -31,8 +31,11 @@
 #include <qlabel.h>
 #include <qlineedit.h>
 #include <qstring.h>
-#include <qtable.h>
-#include <qvaluelist.h>
+#include <q3table.h>
+#include <q3valuelist.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 
 #include <kdialogbase.h>
 #include <kcolordialog.h>
@@ -75,9 +78,9 @@ class ErrorMessage : public KDialogBase
 		void setSelection(uint, uint, uint, uint);
 
 	private:
-		typedef QValueList<errorData> errorList;
+		typedef Q3ValueList<errorData> errorList;
 		errorList     errList;
-		QTable       *errTable;
+		Q3Table       *errTable;
 		uint          errCount;
 		errorData     currentError;
 

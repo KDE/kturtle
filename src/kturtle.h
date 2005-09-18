@@ -24,7 +24,11 @@
 #endif
 
 
-#include <qgroupbox.h>
+#include <q3groupbox.h>
+//Added by qt3to4:
+#include <QLabel>
+#include <QGridLayout>
+#include <QEvent>
 
 #include <kcombobox.h>
 #include <klineedit.h>
@@ -135,7 +139,7 @@ class MainWindow : public KParts::MainWindow
 		Canvas              *canvasView;
 		QWidget             *baseWidget;
 		QGridLayout         *baseLayout;
-		QDockWindow         *editorDock;
+		Q3DockWindow         *editorDock;
 		Executer            *exe;
 		ErrorMessage        *errMsg;
 		ColorPicker         *picker;
@@ -169,7 +173,7 @@ class MainWindow : public KParts::MainWindow
 		// configuration related
 		QWidget             *general;
 		QWidget             *language;
-		QGroupBox           *WidthHeightBox;
+		Q3GroupBox           *WidthHeightBox;
 		QLabel              *WidthLabel;
 		QLabel              *HeightLabel;
 		KIntNumInput        *kcfg_CanvasWidth;

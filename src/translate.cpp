@@ -61,7 +61,7 @@ void Translate::loadTranslations() {
   	// Read the specified translation file
 	QFile xmlfile( locate("data", "kturtle/data/logokeywords." + Settings::logoLanguage() + ".xml") );
 
-	if ( !xmlfile.open(IO_ReadOnly) ) return;
+	if ( !xmlfile.open(QIODevice::ReadOnly) ) return;
 	
 	if ( !KeywordsXML.setContent(&xmlfile) )
 	{

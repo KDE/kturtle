@@ -19,10 +19,12 @@
 #ifndef _CANVAS_H_
 #define _CANVAS_H_
 
-#include <qcanvas.h>
+#include <q3canvas.h>
+//Added by qt3to4:
+#include <QPixmap>
 
 
-class Canvas : public QCanvasView
+class Canvas : public Q3CanvasView
 {
 	Q_OBJECT
 
@@ -82,10 +84,10 @@ class Canvas : public QCanvasView
 		void updateSpritePos();
 		void updateSpriteAngle();
 		
-		QCanvas             *canvas;
+		Q3Canvas             *canvas;
 		QPixmap              pixmap;
-		QCanvasSprite       *sprite;
-		QCanvasPixmapArray  *spriteFrames;
+		Q3CanvasSprite       *sprite;
+		Q3CanvasPixmapArray  *spriteFrames;
 		QFont                font;
 		double               posX, posY;
 		int                  canvasWidth, canvasHeight;

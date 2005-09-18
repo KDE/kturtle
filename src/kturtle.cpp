@@ -20,12 +20,21 @@
 
 #include <stdlib.h>
 
-#include <qbutton.h>
+#include <q3button.h>
 #include <qregexp.h>
 #include <qpainter.h>
 #include <qtooltip.h>
 #include <qtimer.h>
-#include <qwhatsthis.h>
+#include <q3whatsthis.h>
+//Added by qt3to4:
+#include <QPixmap>
+#include <QTextStream>
+#include <QGridLayout>
+#include <QEvent>
+#include <Q3Frame>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QVBoxLayout>
 
 #include <kapplication.h>
 #include <kconfigdialog.h>
@@ -184,13 +193,13 @@ void MainWindow::setupActions()
 
 void MainWindow::setupEditor()
 {
-	editorDock = new QDockWindow(this);
+	editorDock = new Q3DockWindow(this);
 	editorDock->setNewLine(true);
 	editorDock->setFixedExtentWidth(250);
 	editorDock->setFixedExtentHeight(150);
 	editorDock->setResizeEnabled(true);
-	editorDock->setFrameShape(QFrame::ToolBarPanel);
-	QWhatsThis::add( editorDock, i18n( "This is the code editor, here you type the Logo commands to instruct the turtle. You can also open an existing Logo program with File->Open Examples... or File->Open." ) );
+	editorDock->setFrameShape(Q3Frame::ToolBarPanel);
+	Q3WhatsThis::add( editorDock, i18n( "This is the code editor, here you type the Logo commands to instruct the turtle. You can also open an existing Logo program with File->Open Examples... or File->Open." ) );
 	moveDockWindow(editorDock, Qt::DockLeft);
 	editor = doc->createView (editorDock, 0L);
 	// editorInterface is the editor interface which allows us to access the text in the part
@@ -232,7 +241,7 @@ void MainWindow::setupCanvas()
 	baseLayout->addWidget(canvasView, 0, 0, AlignCenter);
 	baseLayout->setRowStretch(0, 1); // this apperntly fixes a pre-usefull scrollbars bug
 	baseLayout->setColStretch(0, 1);
-	QWhatsThis::add( canvasView, i18n("This is the canvas, here the turtle draws a picture.") );
+	Q3WhatsThis::add( canvasView, i18n("This is the canvas, here the turtle draws a picture.") );
 	canvasView->show();
 	connect( canvasView, SIGNAL( CanvasResized() ), this, SLOT( slotUpdateCanvas() ) );
 }
@@ -308,7 +317,7 @@ void MainWindow::loadFile(const KURL &url)
 	if ( !url.isEmpty() )
 	{
 		QFile file( url.path() );
-		if ( file.open(IO_ReadOnly) )
+		if ( file.open(QIODevice::ReadOnly) )
 		{
 			if ( editor->document()->isModified() )
 			{
@@ -557,7 +566,7 @@ void MainWindow::slotExecute()
 	connect( exe, SIGNAL( GoY(double) ), canvasView, SLOT( slotGoY(double) ) );
 	connect( exe, SIGNAL( Forward(double) ), canvasView, SLOT( slotForward(double) ) );
 	connect( exe, SIGNAL( Backward(double) ), canvasView, SLOT( slotBackward(double) ) );
-	connect( exe, SIGNAL( Direction(double) ), canvasView, SLOT( slotDirection(double) ) );
+	connect( exe, SIGNAL( Qt::Orientation(double) ), canvasView, SLOT( slotDirection(double) ) );
 	connect( exe, SIGNAL( TurnLeft(double) ), canvasView, SLOT( slotTurnLeft(double) ) );
 	connect( exe, SIGNAL( TurnRight(double) ), canvasView, SLOT( slotTurnRight(double) ) );
 	connect( exe, SIGNAL( Center() ), canvasView, SLOT( slotCenter() ) );
@@ -875,7 +884,7 @@ void MainWindow::slotSettings()
 	// making the filling for the 'General' settings dept.
 	general = new QWidget();
 	QGridLayout *generalLayout = new QGridLayout( general, 1, 1, 11, 6, "generalLayout");
-	WidthHeightBox = new QGroupBox( i18n("Initial Canvas Size"), general );
+	WidthHeightBox = new Q3GroupBox( i18n("Initial Canvas Size"), general );
 	WidthHeightBox->setColumnLayout(0, Qt::Vertical );
 	WidthHeightBox->layout()->setSpacing( 6 );
 	WidthHeightBox->layout()->setMargin( 11 );
@@ -916,7 +925,7 @@ void MainWindow::slotSettings()
 	// making the filling for the 'Language' settings dept.
 	QWidget *language = new QWidget();
 	QGridLayout *languageLayout = new QGridLayout( language, 1, 1, 11, 6, "Form1Layout");
-	QGroupBox *groupBox1 = new QGroupBox( language, "groupBox1" );
+	Q3GroupBox *groupBox1 = new Q3GroupBox( language, "groupBox1" );
 	groupBox1->setColumnLayout(0, Qt::Vertical );
 	groupBox1->layout()->setSpacing( 6 );
 	groupBox1->layout()->setMargin( 11 );
