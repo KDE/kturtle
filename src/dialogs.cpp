@@ -25,6 +25,7 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <ktoolinvocation.h>
 
 
 // BEGIN class ErrorMessage dialog
@@ -129,13 +130,13 @@ void ErrorMessage::updateSelection()
 void ErrorMessage::showHelpOnError()
 {
 // #if 0 // FIXME
-// 	kapp->invokeHelp(tokenTypeNames[currentError.tok.type], "", "");
+// 	KToolInvocation::invokeHelp(tokenTypeNames[currentError.tok.type], "", "");
 // #endif
 }
 
 void ErrorMessage::errorMessageHelp()
 {
-	kapp->invokeHelp("anchorname", "", "");
+	KToolInvocation::invokeHelp("anchorname", "", "");
 }
 
 // END
@@ -292,7 +293,7 @@ void ColorPicker::slotEmitColorCode()
 
 void ColorPicker::slotColorPickerHelp()
 {
-	kapp->invokeHelp("tools-color-picker", "", "");
+	KToolInvocation::invokeHelp("tools-color-picker", "", "");
 }
 
 // END

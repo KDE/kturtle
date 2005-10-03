@@ -27,6 +27,7 @@
 #include <kapplication.h>
 #include <kdebug.h>
 #include <klocale.h>
+#include <krandom.h>
 
 #include "executer.h"
 
@@ -893,7 +894,7 @@ void Executer::execRandom(TreeNode* node)
 	if ( !checkParameterType(node, numberValue, 5060) ) return;
 	double x = nodeX->getValue().Number();
 	double y = nodeY->getValue().Number();
-	double r = (double)( KApplication::random() ) / RAND_MAX;
+	double r = (double)( KRandom::random() ) / RAND_MAX;
 	node->setValue( r * ( y - x ) + x );
 }
 

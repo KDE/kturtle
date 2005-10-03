@@ -59,6 +59,7 @@
 #include <ktexteditor/selectioninterface.h>
 #include <ktexteditor/undointerface.h>
 #include <ktexteditor/viewcursorinterface.h>
+#include <ktoolinvocation.h>
 
 #include "lexer.h"
 #include "settings.h"
@@ -993,7 +994,7 @@ void MainWindow::readConfig(KConfig *config)
 
 void MainWindow::slotSettingsHelp()
 {
-	kapp->invokeHelp("settings-configure", "", "");
+	KToolInvocation::invokeHelp("settings-configure", "", "");
 }
 
 // END
@@ -1049,7 +1050,7 @@ void MainWindow::slotContextHelp()
 	
 	kdDebug(0)<<"trying to open a help page using this keyword: "<<helpWord<<endl;
 	
-	kapp->invokeHelp(helpWord, "", "");
+	KToolInvocation::invokeHelp(helpWord, "", "");
 	
 	QString help2statusBar;
 	if ( helpKeyword.startsWith("<") ) help2statusBar = helpKeyword;
