@@ -92,7 +92,7 @@ int main(int argc, char **argv)
 	KApplication app;
 	MainWindow *mainwindow = 0;
 
-	if ( app.isRestored() )
+	if ( app.isSessionRestored() )
 	{
 		RESTORE(MainWindow);
 	}
