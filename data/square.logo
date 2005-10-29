@@ -1,6 +1,0 @@
-# draw a square
-
-repeat 4 [
-  forward 100 
-  turnleft  90
-]

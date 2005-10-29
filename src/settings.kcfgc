@@ -1,5 +1,0 @@
-File=kturtle.kcfg 
-IncludeFiles=kstandarddirs.h,kdebug.h
-ClassName=Settings 
-Singleton=true 
-Mutators=true
