@@ -34,9 +34,9 @@
 <address><email>annma AT kde DOT org</email></address>
 </affiliation>
 </author>
+<!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
 
-<!-- TRANS:ROLES_OF_TRANSLATORS -->
 
 <copyright>
 <year>2004</year>
@@ -90,7 +90,7 @@
 <para>&kturtle; has some nice features that make starting to program a breeze. See here some of the highlights of &kturtle; feature set:
 <itemizedlist>
 <listitem><para>
-An integrated &logo; interpreter (no extra dependencies) that uses XML files for the command translations, supports user defined functions and dynamic type switching.
+An integrated &logo; interpreter (no extra dependencies) that uses &XML; files for the command translations, supports user defined functions and dynamic type switching.
 </para></listitem>
 <listitem><para>
 The execution can be slown down, paused or stopped at any time.
@@ -148,7 +148,7 @@ Many integrated, internationalized example &logo; programs make it easy to get s
 <para>
 Contributors:
 <itemizedlist>
-<listitem><para>Coding help, editor part: Anne-Marie Mahfouf <email>annma AT kde DOT org</email></para>
+<listitem><para>Coding help, editor part: &Anne-Marie.Mahfouf; &Anne-Marie.Mahfouf.mail;</para>
 </listitem>
 <listitem><para>Author of <application>WSBASIC</application> (<ulink url="http://wsbasic.sourceforge.net">http://wsbasic.sourceforge.net</ulink>) which is the base for the interpreter of &kturtle;: Walter Schreppers <email>Walter DOT Schreppers AT ua DOT ac DOT be</email></para>
 </listitem>
@@ -184,7 +184,7 @@ Documentation copyright 2004
 Cies Breijs <email>cies AT kde DOT nl</email>
 </para></listitem>
 <listitem><para>
-Anne-Marie Mahfouf <email>annma AT kde DOT org</email>
+&Anne-Marie.Mahfouf; <email>annma AT kde DOT org</email>
 </para></listitem>
 <listitem><para>Some proofreading changes by &Philip.Rodrigues; &Philip.Rodrigues.mail;</para>
 </listitem>
