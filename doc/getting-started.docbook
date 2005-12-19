@@ -77,7 +77,7 @@ turnleft 45
 
 go 40, 100
 </screen>
-Again you can type or copy-paste the code to the code editor or open the <filename>arrow.logo</filename> file in the <guimenu>Open examples</guimenu> folder and execute it (using <link linkend="file-execute"><menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem></menuchoice></link>) to see the result. In the next examples you are expected to know the drill.</para>
+Again you can type or copy-paste the code to the code editor or open the <filename>arrow.logo</filename> file in the <guimenu>Open Examples</guimenu> folder and execute it (using <link linkend="file-execute"><menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem></menuchoice></link>) to see the result. In the next examples you are expected to know the drill.</para>
 
 <para>You might have noticed that this second example uses a lot more code. You have also seen a couple of new commands. Here a short explanation of all the new commands:</para>
 

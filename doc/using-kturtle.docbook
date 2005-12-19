@@ -46,7 +46,7 @@ The canvas is the area where the commands are visualized, where the commands <qu
 
 <sect1 id="the-menubar">
 <title>The Menubar</title>
-<para>In the menu bar you find all the actions of &kturtle;. They are in the following groups: <guimenu>File</guimenu>, <guimenu>Edit</guimenu>, <guimenu>View</guimenu>, <guimenu>Tools</guimenu>, <guimenu>Settings</guimenu>, and <guimenu>Help</guimenu>. This section describes them all.</para>
+<para>In the menubar you find all the actions of &kturtle;. They are in the following groups: <guimenu>File</guimenu>, <guimenu>Edit</guimenu>, <guimenu>View</guimenu>, <guimenu>Tools</guimenu>, <guimenu>Settings</guimenu>, and <guimenu>Help</guimenu>. This section describes them all.</para>
 
 <sect2 id="the-file-menu">
 <title>The <guimenu>File</guimenu> Menu</title>
@@ -109,21 +109,6 @@ The canvas is the area where the commands are visualized, where the commands <qu
     </varlistentry>
   </variablelist>
 </sect3>
-<sect3 id="file-execute">
-<title>Execute</title>
-  <variablelist>
-    <varlistentry>
-      <term><menuchoice>
-        <shortcut>
-          <keycombo>&Alt;<keysym>Return</keysym></keycombo>
-        </shortcut>
-        <guimenu>File</guimenu>
-        <guimenuitem>Execute Commands</guimenuitem>
-      </menuchoice></term>
-      <listitem><para>Starts the execution of the commands in the code editor.</para></listitem>
-    </varlistentry>
-  </variablelist>
-</sect3>
 <sect3 id="file-save">
 <title>Save</title>
   <variablelist>
@@ -163,6 +148,33 @@ The canvas is the area where the commands are visualized, where the commands <qu
     </varlistentry>
   </variablelist>
 </sect3>
+<sect3 id="file-speed">
+<title>Execution Speed</title>
+  <variablelist>
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>File</guimenu>
+        <guimenuitem>Execution Speed</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Present a list of possible execution speeds, consisting of: Full Speed, Slow, Slower and Slowest. When the execution speed is set to 'Full Speed' (default) we can barely keep up with what is happening. Sometimes this behavior is wanted, but sometimes we want to keep track of the execution. In the latter case you want to set the execution speed to 'Slow', 'Slower' or 'Slowest'. When one of the slow modes is selected the current position of the executor will be shown in the editor.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect3>
+<sect3 id="file-execute">
+<title>Execute</title>
+  <variablelist>
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Alt;<keysym>Return</keysym></keycombo>
+        </shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>Execute Commands</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Starts the execution of the commands in the code editor.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect3>
 <sect3 id="file-pause">
 <title>Pause</title>
   <variablelist>
@@ -190,18 +202,6 @@ The canvas is the area where the commands are visualized, where the commands <qu
         <guimenuitem>Stop Execution</guimenuitem>
       </menuchoice></term>
       <listitem><para>Stops the execution. This action is only enabled when the commands are actually executing.</para></listitem>
-    </varlistentry>
-  </variablelist>
-</sect3>
-<sect3 id="file-speed">
-<title>Execution Speed</title>
-  <variablelist>
-    <varlistentry>
-      <term><menuchoice>
-        <guimenu>File</guimenu>
-        <guimenuitem>Execution Speed</guimenuitem>
-      </menuchoice></term>
-      <listitem><para>Present a list of possible execution speeds, consisting of: Full Speed, Slow, Slower and Slowest. When the execution speed is set to 'Full Speed' (default) we can barely keep up with what is happening. Sometimes this behavior is wanted, but sometimes we want to keep track of the execution. In the latter case you want to set the execution speed to 'Slow', 'Slower' or 'Slowest'. When one of the slow modes is selected the current position of the executor will be shown in the editor.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect3>
@@ -506,6 +506,9 @@ The canvas is the area where the commands are visualized, where the commands <qu
     <anchor id="help-handbook" />
     <varlistentry>
       <term><menuchoice>
+        <shortcut>
+          <keycombo><keysym>F1</keysym></keycombo>
+        </shortcut>
         <guimenu>Help</guimenu>
         <guimenuitem>&kturtle; Handbook</guimenuitem>
       </menuchoice></term>
@@ -576,12 +579,12 @@ The canvas is the area where the commands are visualized, where the commands <qu
 <sect1 id="the-toolbar">
 <title>The Toolbar</title>
 <para>Here you can quickly reach the most used actions. By default, you will find here all main useful commands ending with the <guiicon>Execute Commands</guiicon> and <guiicon>Stop Execution</guiicon> icons.</para>
-<para>You can configure the toolbar using <menuchoice><guimenu>Settings</guimenu><guimenuitem>Advanced Settings</guimenuitem><guimenuitem>Configure Toolbar...</guimenuitem></menuchoice></para>
+<para>You can configure the toolbar using <menuchoice><guimenu>Settings</guimenu><guimenuitem>Advanced Settings</guimenuitem><guimenuitem>Configure Toolbars...</guimenuitem></menuchoice></para>
 </sect1>
 
 <sect1 id="the-statusbar">
 <title>The Statusbar</title>
-<para>On the statusbar you get feedback of the state of &kturtle;. On the left side it shows the feedback on the last action. On the right side you find the current location of the cursor (line and column numbers). In the middle of the Statusbar is indicated the current language used for the commands.</para>
+<para>On the status bar you get feedback of the state of &kturtle;. On the left side it shows the feedback on the last action. On the right side you find the current location of the cursor (line and column numbers). In the middle of the Status bar is indicated the current language used for the commands.</para>
 </sect1>
 
 </chapter>
