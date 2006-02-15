@@ -696,7 +696,6 @@ repeat 36 [
 
 <sect2 id="if">
 <title>Execute "if"</title>
-<para></para>
   <variablelist>
     <varlistentry>
       <term>if</term>
@@ -715,7 +714,6 @@ if x &gt; 5 [
 
 <sect2 id="while">
 <title>The "while" loop</title>
-<para></para>
   <variablelist>
     <varlistentry>
       <term>while</term>
@@ -736,7 +734,6 @@ while x &lt; 5 [
 
 <sect2 id="else">
 <title>If not, in other words: "else"</title>
-<para></para>
   <variablelist>
     <varlistentry>
       <term>else</term>
@@ -760,7 +757,6 @@ else
 
 <sect2 id="for">
 <title>The "for" loop, a counting loop</title>
-<para></para>
   <variablelist>
     <varlistentry>
       <term>for</term>
