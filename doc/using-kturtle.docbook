@@ -15,7 +15,7 @@
   </mediaobject>
 </screenshot>
 
-<para>The main window of &kturtle; has two main parts: <link linkend="the-code-editor">the code editor</link> (3) on the left where you type the &logo; commands,  and <link linkend="the-canvas">the canvas</link> (4) on the right where the instructions are visualized. <link linkend="the-canvas">The canvas</link> is the turtle's playground: it is on the canvas that the turtle actually moves and draws. The three other places on the main window are: <link linkend="the-menubar">the menu bar</link> (1) from where all the actions can be reached, <link linkend="the-toolbar">the toolbar</link> (4) that allows you to quickly select the most used actions, and <link linkend="the-statusbar">the statusbar</link> (5) where you will find feedback on the state of &kturtle;.</para>
+<para>The main window of &kturtle; has two main parts: <link linkend="the-code-editor">the code editor</link> (3) on the left where you type the &logo; commands,  and <link linkend="the-canvas">the canvas</link> (4) on the right where the instructions are visualized. <link linkend="the-canvas">The canvas</link> is the turtle's playground: it is on the canvas that the turtle actually moves and draws. The three other places on the main window are: <link linkend="the-menubar">the menu bar</link> (1) from where all the actions can be reached, <link linkend="the-toolbar">the toolbar</link> (2) that allows you to quickly select the most used actions, and <link linkend="the-statusbar">the statusbar</link> (5) where you will find feedback on the state of &kturtle;.</para>
 
 <sect1 id="the-code-editor">
 <title>The Code Editor</title>
