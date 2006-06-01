@@ -15,7 +15,7 @@ Create a directory called
 
 <filename class="directory">kde-i18n/<replaceable>code</replaceable>/data/kdeedu/kturtle/</filename>
 
-in your KDE CVS directory, where <replaceable>code</replaceable> is your country code (the 2- or 4- letter <acronym>ISO</acronym> code).  
+in your KDE SVN directory, where <replaceable>code</replaceable> is your country code (the 2- or 4- letter <acronym>ISO</acronym> code).  
 </para>
 <para>
 Copy the <filename>Makefile.am</filename> file from <filename class="directory">kdeedu/kturtle/data/</filename> into this directory.  Open it using your favorite text editor, replace all instances of <quote>en_US</quote> in the file with your country code (the one used above), and save the file.
