@@ -1,7 +1,6 @@
 <?xml version="1.0" ?>
-<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
-  <!ENTITY kturtle "KTurtle">
-  <!ENTITY kapp "&kturtle;"><!-- replace kturtle here -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN"
+"dtd/kdex.dtd" [
   <!ENTITY kappname "&kturtle;">
   <!ENTITY package "kdeedu">
   <!ENTITY logo "Logo">
@@ -63,7 +62,7 @@
 <keyword>native</keyword>
 <keyword>programming</keyword>
 <keyword>code</keyword>
-<keyword>Logo</keyword>
+<keyword>&logo;</keyword>
 <keyword>instructions</keyword>
 <keyword>turtle</keyword>
 </keywordset>
@@ -80,7 +79,16 @@
 
 <sect1 id="what-is-logo">
 <title>What is &logo;?</title>
-<para>The first version &logo; programming language was created by Seymour Papert of MIT Artificial Intelligence Laboratory in 1967 as an offshoot of the LISP programming language. From then many versions of &logo; have been released. By 1980 &logo; was gaining momentum, with versions for MSX, Commodore, Atari, Apple II and IBM PC systems. These versions were mainly for educational purposes. LCSI released <application>MacLogo</application> in 1985 as a tool for professional programmers, but it never caught on. MIT is still maintaining a site on &logo; which can be found on <ulink url="http://el.media.mit.edu/logo-foundation/">http://el.media.mit.edu/logo-foundation/</ulink>.</para>
+<para>The first version &logo; programming language was created by Seymour
+Papert of MIT Artificial Intelligence Laboratory in 1967 as an offshoot of the
+LISP programming language. From then many versions of &logo; have been released.
+By 1980 &logo; was gaining momentum, with versions for MSX, Commodore, Atari,
+Apple II and IBM PC systems. These versions were mainly for educational
+purposes. LCSI released <application>&Mac;&logo;</application> in 1985 as a tool
+for professional programmers, but it never caught on. MIT is still maintaining a
+site on &logo; which can be found on <ulink
+url="http://el.media.mit.edu/logo-foundation/">http://el.media.mit.edu/logo-
+foundation/</ulink>.</para>
 
 <para>Today there are several versions of &logo; around which can easily be found on <ulink url="http://el.media.mit.edu/logo-foundation/">MIT's &logo; site</ulink> and by a simple <ulink url="http://www.google.com/search?q=logo+programming+kids">Google search</ulink>. This version of &logo; (&kturtle;) is only focused on the educational qualities of the programming language and will not try to suit professional programmers' needs.</para>
 </sect1>
