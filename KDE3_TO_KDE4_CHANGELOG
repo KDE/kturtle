@@ -44,6 +44,7 @@ I break up the change log by (groups of) classes:
  * this should contain most of the kde specific stuff (the rest should be pure-Qt)
  * F2 context help is now done using the tokenizer
  * there is now a way to invoke KTurtle from the command line (for unittests), try: "kturtle --help"
+ * new icons (logo) for kturtle (now svg based: thanks to inkscape)
 
 
 
