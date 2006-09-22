@@ -1,0 +1,24 @@
+
+$a = 12/*3 
+
+for $x = 2 to 10 step 3 [
+  print "x = " + $x
+  for $y = 2 to 10 step 3 [
+    print "y = " + $y
+  ]
+]
+
+### TEST GOAL
+# reset()
+# print("x = "2)
+# print("y = "2)
+# print("y = "5)
+# print("y = "8)
+# print("x = "5)
+# print("y = "2)
+# print("y = "5)
+# print("y = "8)
+# print("x = "8)
+# print("y = "2)
+# print("y = "5)
+# print("y = "8)

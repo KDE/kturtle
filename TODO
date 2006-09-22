@@ -1,0 +1,72 @@
+
+ == mainwindow ==
+ * make the errordialog (hook it up with the highlighting stuff)
+ * make a docked window for inspecting the variables
+ ---
+ * make settings menu (or not: maybe keep all in other menu's) [fonttype, fontsize, language]
+ * make fullscreen mode (hide all GUI elemets but the canvas during execution)
+ * connect statusTips and whatIsThis
+ * get WhatIsThis (et al) help in
+ * make commandline -%U work, and have an option for the unittesting
+ * do reordering (in stead of duping) when adding already existing recent file items
+
+
+ == interpreter ==
+ * make shure recursion over several functions is possible (index learns at execution init time)
+ * make all errors translatable (use i18n(...))
+ ---
+ * verbosity/debugmsg levels
+ * ruby managed unittest suite using the echoer (make the echoer more clever --> maybe put into the executer)
+ * investivate the efficiency of the echoer
+      --> maybe hook feedback mechanism directly on the executer / the parser's AST
+ * make more unittests (redesign the unittest framework using the to-be-created commandline invoke method)
+ * finish all functions
+ * finish and test function learning system
+
+
+ == canvas ==
+ * fucking scrollbars!
+ * fix 'dashed' drawing bug
+ ---
+ * context menu for save and print
+ * add wrapping functionality
+ * make state of all things available to the executer
+
+
+ == editor ==
+ * connect editor to context help (F2) action
+ * make some effects for executing/error
+ ---
+ * highlight the current line like kate
+ * fill tools menu
+ * connect the editor to some statusbar fields
+ * reimplement context menu for cut/copy/paste, undo/redo, show/hide, and context help
+ * make a syntax highlighting nicer
+
+
+ == PR ==
+ * update the e.k.o/kturtle website with some news items and some text
+ * create a mailinglist/newsgroup (google?)
+      --> invite everyone that was ever interested into it
+ * funk up the project page
+ ---
+ * make wikipedia page nicer (screenshots, etc.)
+ * realease a pre-release
+ * maybe: team up with kdelibs-windows team for an early windows version
+ * a wiki for childrens and teachers manual + translations + translators info [or docbook; KDE translated]
+
+
+
+
+
+
+
+
+
+
+
+
+
+ == maybe someday's ==
+ * refactor the generators ruby code
+ * totally hide the implementation of the editor class (use proxies for signal/slots)

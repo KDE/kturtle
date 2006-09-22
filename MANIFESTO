@@ -1,0 +1,13 @@
+ = KTurtle MANIFESTO =
+
+KTurtle is an educatinal programming environment that aims to make programming as easy and touchable as possible.
+
+
+ == Why not use an existing programming language to teach? ==
+
+Specific features:
+ * highlighting during (step) execution
+ * intergrated error messages and help
+ * fully translatable (language itself, error messages, GUI, manual... everything)
+ * yet still RealCoding(tm), no clicky clicky stuff
+

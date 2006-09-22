@@ -1,0 +1,12 @@
+
+ == mainwindow ==
+ * the toolbar has no handle, and i cant set one. probably because of the LocalToolBar subclassing
+ * 
+
+
+ == editor ==
+
+
+
+ == canvas ==
+ * 'dashing' when it should produce straight lines, i.e.: "fw 100"

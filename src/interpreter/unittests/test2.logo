@@ -1,0 +1,90 @@
+# prints your name at random
+
+reset
+canvassize 255,255
+spritehide
+
+$bla = 3
+$b = 10
+
+print $bla+$b
+
+
+if $b == 9
+[
+print "ho's"
+]
+else
+[
+print "......"
+]
+
+while $bla < 10 [
+	print $bla
+	$bla = $bla + 1
+	if $bla == 9 [ print "!!!!" ]
+]
+
+
+# $name = inputwindow "What's your name?"
+
+#repeat 3
+#[
+#	print "33333"
+#	repeat 2
+#	[
+#		print "22222"
+#		repeat 1
+#		[
+#			print "111111"
+#		]
+#	]
+#]
+
+
+go 6, 3
+
+# for bla = 3 to 6 step 1.5 print "eqwqweqweq"
+
+
+#### peretto: here im working on; the 'learning' of new functions
+
+learn xl $x, $y, $z [
+	print $x * $x
+	return $x * $y
+]
+
+xl 3,4,9
+
+print xl 3,4,9
+
+# repeat 50 [
+#   x = random 0, 255
+#   y = random 0, 255
+#   s = random 10, 51
+# 
+#   go x, y
+#   fontsize s
+#   pencolor x,y,s*5
+#   print name
+# ]
+
+
+### TEST GOAL
+# reset()
+# reset()
+# canvasSize(255,255)
+# spriteHide()
+# print(13)
+# print("......")
+# print(3)
+# print(4)
+# print(5)
+# print(6)
+# print(7)
+# print(8)
+# print(9)
+# go(6,3)
+# print(9)
+# print(9)
+# print(12)

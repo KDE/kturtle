@@ -1,0 +1,13 @@
+# curly.logo
+
+reset
+penup
+forward 50
+pendown
+
+repeat 4 {
+  for x = 1 to 100 {
+    forward 10
+    turnright 100 - x
+  }
+}

@@ -1,0 +1,104 @@
+# this unittest tests all KTurlte commands that should emit some sort of signal
+
+reset
+
+clear
+
+center
+
+go 1
+go 3.14
+
+gox 1
+gox 3.14
+
+goy 1
+goy 3.14
+
+forward 1
+forward 3.14
+
+backward 1
+backward 3.14
+
+direction 1
+direction 3.14
+
+turnleft 1
+turnleft 3.14
+
+turnright 1
+turnright 3.14
+
+penwidth 1
+penwidth 3.14
+
+penup
+
+pendown
+
+pencolor 1,2,3
+pencolor 3.14,3.14,3.14
+
+canvascolor 1,2,3
+canvascolor 3.14,3.14,3.14
+
+canvassize 1,2
+canvassize 3.14,3.14
+
+spriteshow
+
+spritehide
+
+print true
+print 1
+print 3.14
+print "hello world!"
+
+fontsize 1
+fontsize 3.14
+
+wrapon
+
+wrapoff
+
+
+### TEST GOAL
+# reset()
+# reset()
+# clear()
+# center()
+# goX(1)
+# goX(3.14)
+# goY(1)
+# goY(3.14)
+# forward(1)
+# forward(3.14)
+# backward(1)
+# backward(3.14)
+# direction(1)
+# direction(3.14)
+# turnLeft(1)
+# turnLeft(3.14)
+# turnRight(1)
+# turnRight(3.14)
+# penWidth(1)
+# penWidth(3.14)
+# penUp()
+# penDown()
+# penColor(1,2,3)
+# penColor(3.14,3.14,3.14)
+# canvasColor(1,2,3)
+# canvasColor(3.14,3.14,3.14)
+# canvasSize(1,2)
+# canvasSize(3.14,3.14)
+# spriteShow()
+# spriteHide()
+# print(true)
+# print(1)
+# print(3.14)
+# print("hello world!")
+# fontSize(1)
+# fontSize(3.14)
+# wrapOn()
+# wrapOff()

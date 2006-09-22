@@ -1,0 +1,320 @@
+<?xml version="1.0"?>
+<!DOCTYPE KTurtleDictionary>
+
+<KTurtleDictionary lang="en_US" ver="0.01">
+
+<!--  If this file is named "KTurtleDictionary.en_US.xml" it is quite likely generated
+      by "generate.rb" according to the definitions specified in "definitions.rb".
+      Please make all changes in the "definitions.rb" file, since all all change you
+      make here will be overwritten the next time "generate.rb" is run.
+      Thanks for looking at the code!
+-->
+
+	<token type="VariablePrefix">
+		<look>$</look>
+	</token>
+
+
+<!-- boolean values  -->
+
+	<token type="True">
+		<look>true</look>
+	</token>
+
+	<token type="False">
+		<look>false</look>
+	</token>
+
+
+<!-- comment  -->
+
+	<token type="Comment">
+		<look>#</look>
+	</token>
+
+
+<!-- string delimiter  -->
+
+	<token type="StringDelimiter">
+		<look>&quot;</look>
+	</token>
+
+
+<!-- scopedelimiters -->
+
+	<token type="ScopeOpen">
+		<look>{</look>
+	</token>
+
+	<token type="ScopeClose">
+		<look>}</look>
+	</token>
+
+
+<!-- parenthesis -->
+
+	<token type="ParenthesisOpen">
+		<look>(</look>
+	</token>
+
+	<token type="ParenthesisClose">
+		<look>)</look>
+	</token>
+
+
+<!-- the argument separator -->
+
+	<token type="ArgumentSeparator">
+		<look>,</look>
+	</token>
+
+
+<!-- the decimal separator -->
+
+	<token type="DecimalSeparator">
+		<look>.</look>
+	</token>
+
+
+<!-- execution controllers -->
+
+	<token type="Exit">
+		<look>exit</look>
+	</token>
+
+	<token type="If">
+		<look>if</look>
+	</token>
+
+	<token type="Else">
+		<look>else</look>
+	</token>
+
+	<token type="Repeat">
+		<look>repeat</look>
+	</token>
+
+	<token type="While">
+		<look>while</look>
+	</token>
+
+	<token type="For">
+		<look>for</look>
+	</token>
+
+	<token type="To">
+		<look>to</look>
+	</token>
+
+	<token type="Step">
+		<look>step</look>
+	</token>
+
+	<token type="Break">
+		<look>break</look>
+	</token>
+
+	<token type="Return">
+		<look>return</look>
+	</token>
+
+	<token type="Wait">
+		<look>wait</look>
+	</token>
+
+
+<!-- boolean operators -->
+
+	<token type="And">
+		<look>and</look>
+	</token>
+
+	<token type="Or">
+		<look>or</look>
+	</token>
+
+	<token type="Not">
+		<look>not</look>
+	</token>
+
+
+<!-- expressions -->
+
+	<token type="Equals">
+		<look>==</look>
+	</token>
+
+	<token type="NotEquals">
+		<look>!=</look>
+	</token>
+
+	<token type="GreaterThan">
+		<look>&gt;</look>
+	</token>
+
+	<token type="LessThan">
+		<look>&lt;</look>
+	</token>
+
+	<token type="GreaterOrEquals">
+		<look>&gt;=</look>
+	</token>
+
+	<token type="LessOrEquals">
+		<look>&lt;=</look>
+	</token>
+
+
+<!-- math operators  -->
+
+	<token type="Addition">
+		<look>+</look>
+	</token>
+
+	<token type="Substracton">
+		<look>-</look>
+	</token>
+
+	<token type="Multiplication">
+		<look>*</look>
+	</token>
+
+	<token type="Division">
+		<look>/</look>
+	</token>
+
+	<token type="Power">
+		<look>^</look>
+	</token>
+
+
+<!-- assignment  -->
+
+	<token type="Assign">
+		<look>=</look>
+	</token>
+
+
+<!-- the command creating command -->
+
+	<token type="Learn">
+		<look>learn</look>
+	</token>
+
+
+<!-- canvas related commands  -->
+
+	<token type="Reset">
+		<look>reset</look>
+	</token>
+
+	<token type="Clear">
+		<look>clear</look>
+		<look>ccl</look>
+	</token>
+
+	<token type="Center">
+		<look>center</look>
+	</token>
+
+	<token type="Go">
+		<look>go</look>
+	</token>
+
+	<token type="GoX">
+		<look>gox</look>
+		<look>gx</look>
+	</token>
+
+	<token type="GoY">
+		<look>goy</look>
+		<look>gy</look>
+	</token>
+
+	<token type="Forward">
+		<look>forward</look>
+		<look>fw</look>
+	</token>
+
+	<token type="Backward">
+		<look>backward</look>
+		<look>bw</look>
+	</token>
+
+	<token type="Direction">
+		<look>direction</look>
+		<look>dir</look>
+	</token>
+
+	<token type="TurnLeft">
+		<look>turnleft</look>
+		<look>tl</look>
+	</token>
+
+	<token type="TurnRight">
+		<look>turnright</look>
+		<look>tr</look>
+	</token>
+
+	<token type="PenWidth">
+		<look>penwidth</look>
+		<look>pw</look>
+	</token>
+
+	<token type="PenUp">
+		<look>penup</look>
+		<look>pu</look>
+	</token>
+
+	<token type="PenDown">
+		<look>pendown</look>
+		<look>pd</look>
+	</token>
+
+	<token type="PenColor">
+		<look>pencolor</look>
+		<look>pc</look>
+	</token>
+
+	<token type="CanvasColor">
+		<look>canvascolor</look>
+		<look>cc</look>
+	</token>
+
+	<token type="CanvasSize">
+		<look>canvassize</look>
+		<look>cs</look>
+	</token>
+
+	<token type="SpriteShow">
+		<look>spriteshow</look>
+		<look>ss</look>
+	</token>
+
+	<token type="SpriteHide">
+		<look>spritehide</look>
+		<look>sh</look>
+	</token>
+
+	<token type="Print">
+		<look>print</look>
+	</token>
+
+	<token type="FontSize">
+		<look>fontsize</look>
+	</token>
+
+
+<!-- math related commands  -->
+
+	<token type="Random">
+		<look>random</look>
+		<look>rnd</look>
+	</token>
+
+
+<!-- misc. commands  -->
+
+
+
+</KTurtleDictionary>

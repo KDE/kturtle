@@ -1,0 +1,95 @@
+Hi,
+
+you are reading the README of the 'KTurtle' project that is initiated
+and maintained by Cies Breijs (cies-AT-showroommama-DOT-nl). In this
+README I will tell you how to get KTurtle running on your computer.
+
+
+
+1. Requirements
+You need to have KDE 3.2 or higher. I don't know if it will work with different
+KDE versions since I did not test it. If it does not work please see
+the Questions section below.
+
+
+
+2. Compiling
+The simplest way to compile this package is:
+
+  1) `cd' to the directory containing the package's source code and type
+     `./configure --prefix=<PATH>' to configure the package for your
+     system.
+     
+     Make sure to replace <PATH> by the path wher your KDE apps are
+     installed. This is mostly '/usr', but sometimes (for SuSE) '/opt/kde'.
+     If you dont know what to do try: `./configure --prefix=/usr'. If you don't give a --prefix the default path /usr/local will be used, resulting that KTurtle will no be with your other apps, and may not run smoothly.
+
+     Running `configure' takes a while.  While running, it prints some
+     messages telling which features it is checking for. If the
+     configure script exits with an error it will probably hint you
+     what it needs in order to succeed.
+
+  2) Type `make' to compile the package.
+     
+     'make' also takes a while, and it also has the possibility to exit
+     with errors. Although the errors messages 'make' produces are mostly
+     not as clear as the error messages from 'configure', they are a hint
+     to what went wrong. Please see the Questions section below if you
+     dont know what to do with these messages.
+
+If it succeeded a binary named 'kturtle' is made and can be find in the
+'src' directory within the directory containing the package's source
+code.
+
+Before you can run KTurtle you need to install it.
+
+     
+     
+3. Installing     
+NOTE: you often need 'root' privilliges to do the following! 
+
+  1) Type `make install' to install the programs and any data files and
+     documentation.
+
+  2) You can remove the program binaries and object files from the
+     source code directory by typing `make clean'. 
+     
+If you want to uninstall KTurtle you should type 'make uninstall' when
+in the source code directory.
+
+Please note that 'make install' will install KTurtle to the path that is provided to the './configure' command with the '--prefix' flag! 
+
+
+4. Running
+Under normal circumstances should be able to run KTurtle from the
+commandline by typing 'kturtle'.
+
+If it does not work please go to the source code directory of KTurtle
+and type:
+
+     cd src
+     ./kturlte
+
+If this does not work please follow instuction form the Question section.
+
+
+
+5. Questions
+Check out the FAQ in the source code directory of KTurtle to see if your
+question has allready been asked.
+
+You can also mail questions to the mail address you find in the
+beginning of this document. Or visit the KTurtle website:
+http://kturlte.sf.net ,   or    http://edu.kde.org/kturtle
+and post it in the forum.
+
+
+
+Thanks for reading!
+
+Cies.
+
+
+
+
+

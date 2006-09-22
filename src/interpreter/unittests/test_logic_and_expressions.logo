@@ -1,0 +1,195 @@
+# test for logic (and, or, not) and expressions (==, !=, <, >, <=, >=)
+
+
+print "expressions"
+
+$a = 2 == 2
+print $a
+
+$a = 3 == 2
+print $a
+
+$a = 3 != 2
+print $a
+
+$a = 2 != 2
+print $a
+
+$a = 3 > 2
+print $a
+
+$a = 3 < 2
+print $a
+
+$a = 1 >= 2
+print $a
+
+$a = 2 >= 2
+print $a
+
+$a = 3 >= 2
+print $a
+
+$a = 1 <= 2
+print $a
+
+$a = 2 <= 2
+print $a
+
+$a = 3 <= 2
+print $a
+
+print 100 == 100
+
+
+
+print "and"
+
+$a = true and true
+print $a
+
+$a = false and false
+print $a
+
+$a = true and false
+print $a
+
+$a = false and true
+print $a
+
+$a = "123" and "0"  #TODO
+print $a
+
+$a = 0 and 1
+print $a
+
+$a = 1 and 0
+print $a
+
+$a = 1 and 1
+print $a
+
+$a = -1 and -1 #TODO
+print $a
+
+$a = -10 and 3.14
+print $a
+
+
+
+print "or"
+
+$a = true or true
+print $a
+
+$a = false or false
+print $a
+
+$a = true or false
+print $a
+
+$a = false or true
+print $a
+
+$a = "123" or "0"
+print $a
+
+$a = 1 or 1 
+print $a
+
+$a = 0 or 0
+print $a
+
+$a = 1 and 1
+print $a
+
+$a = -1 and -1
+print $a
+
+$a = -10 or 3.14
+print $a
+
+
+print "not"
+
+$a = not true
+print $a
+
+$a = not false
+print $a
+
+$a = not 3
+print $a
+
+$a = not 0
+print $a
+
+$a = not 3.14
+print $a
+
+$a = not 0.00
+print $a
+
+$a = not "hello world!"
+print $a
+
+$a = not "0"
+print $a
+
+$a = not ""
+print $a
+
+
+#TODO mixed expression/logic
+
+
+
+
+### TEST GOAL
+# reset()
+# print("expressions")
+# print(true)
+# print(false)
+# print(true)
+# print(false)
+# print(true)
+# print(false)
+# print(false)
+# print(true)
+# print(true)
+# print(true)
+# print(true)
+# print(false)
+# print(true)
+# print("and")
+# print(true)
+# print(false)
+# print(false)
+# print(false)
+# print(false)
+# print(false)
+# print(false)
+# print(true)
+# print(false)
+# print(false)
+# print("or")
+# print(true)
+# print(false)
+# print(true)
+# print(true)
+# print(false)
+# print(true)
+# print(false)
+# print(true)
+# print(false)
+# print(true)
+# print("not")
+# print(false)
+# print(true)
+# print(false)
+# print(true)
+# print(false)
+# print(true)
+# print(true)
+# print(true)
+# print(true)
