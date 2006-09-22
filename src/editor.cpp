@@ -212,7 +212,7 @@ bool Editor::saveFileAs()
 	if (KIO::NetAccess::exists(url, true, this) &&
 		KMessageBox::warningContinueCancel(this,
 			i18n("Are you shure you want to overwrite %1", url.fileName()),
-			i18n("Overwrite Existing File"),
+			i18n("Overwrite Existing File"),KGuiItem(i18n("&Overwrite")),
 			i18n("&Overwrite")
 			) != KMessageBox::Continue
 		) return false;
@@ -226,7 +226,7 @@ bool Editor::maybeSave()
 	int result = KMessageBox::warningContinueCancel(this,
 		i18n("The program you are currently working on is not saved. "
 		     "By continuing you may lose the changes you have made."),
-		i18n("Unsaved File"), i18n("&Discard Changes"));
+		i18n("Unsaved File"), KGuiItem(i18n("&Discard Changes")), i18n("&Discard Changes"));
 	if (result == KMessageBox::Continue) return true;
 	return false;
 }
