@@ -8,6 +8,8 @@ KTurtle is my first programming project; it basically learnt me C++/Qt/KDE devel
 
 A lot of stuff still has to be done: not all features in the kde3 version of kturtle are in this version, work has started on a unittest framework (but it is by no means complete), the interpreter has not been very well tested yet, the documentation is still missing and there are rough edges all over the place. Yet I felt it the code is mature enough to back in kde trunk.
 
+Any issues can be registered as bugs in bugs.kde.org (make shure to file it against 'svn kde'), or contact me directly: cies at kde dot nl.
+
 
 I break up the change log by (groups of) classes:
 
