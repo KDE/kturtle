@@ -1,9 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=KTurtle
-Name[x-test]=xxKTurtlexx
 GenericName=Educational Programming Environment
-GenericName[x-test]=xxEducational Programming Environmentxx
 MimeType=text/plain
 Exec=kturtle -i %U
 Icon=kturtle
