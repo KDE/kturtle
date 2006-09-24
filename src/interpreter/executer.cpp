@@ -386,7 +386,7 @@ void Executer::executeExit(TreeNode* node) {
 }
 void Executer::executeIf(TreeNode* node) {
 	qDebug() << "Executer::executeIf()";
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg((int)node);
+	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
 	if (currentVariableTable()->contains(id)) {
 		currentVariableTable()->remove(id);
 		return;
@@ -406,7 +406,7 @@ void Executer::executeElse(TreeNode* node) {
 void Executer::executeRepeat(TreeNode* node) {
 	qDebug() << "Executer::executeRepeat()";
 	breaking = false;
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg((int)node);
+	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
 	// the iteration state is stored on the variable table
 	if (currentVariableTable()->contains(id)) {
 		int currentCount = ROUND2INT((*currentVariableTable())[id].number());
@@ -428,7 +428,7 @@ void Executer::executeWhile(TreeNode* node) {
 	// so we do the following on every call to executeWhile:
 	//     exec scope, exec expression, exec scope, exec expresion, ...
 
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg((int)node);
+	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
 	if (currentVariableTable()->contains(id)) {
 		newScope = node; // re-execute the expression
 		currentVariableTable()->remove(id);
@@ -464,7 +464,7 @@ void Executer::executeForTo(TreeNode* node) {
 		firstIteration = true;
 	}
 
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg((int)node);
+	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
 
 	if (currentVariableTable()->contains(id)) {
 		newScope = node; // re-execute the expressions
