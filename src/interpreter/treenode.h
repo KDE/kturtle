@@ -78,10 +78,10 @@ class TreeNode
 		void      setToken(Token* token)        { _token = token; }
 
 		/** Sets the pointer to the associated value to @p value. @see setNullValue() @see value() */
-		void      setValue(Value value)         { if (_value != 0) delete _value; _value = new Value(value); }
+		void      setValue(Value value)         { delete _value; _value = new Value(value); }
 
 		/** Sets the pointer to the associated value to zero. @see setValue() @see value() */
-		void      setNullValue()                { if (_value != 0) { delete _value; _value = 0; } } // appears Empty (see value())
+		void      setNullValue()                {  delete _value; _value = 0;  } // appears Empty (see value())
 
 
 
