@@ -133,7 +133,7 @@ class Token
 			SpriteHide,
 			Print,
 			FontSize,
-			Random,
+			Random
 
 //END GENERATED token_type_h CODE
 
@@ -177,7 +177,7 @@ class Token
 			ScopeCategory,
 			VariableCategory,
 			StringCategory,
-			LearnCommandCategory,
+			LearnCommandCategory
 
 //END GENERATED token_category_h CODE
 
