@@ -100,7 +100,7 @@ class Editor : public QFrame
 		bool maybeSave();
 
 		bool isModified() { return editor->document()->isModified(); }
-		QString content() { return QString(editor->document()->toPlainText()); }
+		QString content() { return editor->document()->toPlainText(); }
 
 // 		void setTranslator(Translator*);
 
