@@ -22,7 +22,8 @@
 
 #include <QtGui>
 
-#include "turtle.h"
+// #include "turtle.h"
+#include "sprite.h"
 
 
 class Canvas : public QGraphicsView
@@ -84,10 +85,10 @@ class Canvas : public QGraphicsView
 		
 		QGraphicsScene *scene;
 		QPen *pen;
-		Turtle *turtle;
+		Sprite *turtle;
 		QList<QGraphicsLineItem*> lines;
 		QGraphicsLineItem *line;
 		bool penWidthIsZero;
 };
 
-#endif // _CANVAS_H_
+#endif  // _CANVAS_H_

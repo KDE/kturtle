@@ -45,7 +45,7 @@ Canvas::Canvas(QWidget *parent) : QGraphicsView(parent)
 	pen = new QPen();
 	
 	// the turtle shape
-	turtle = new Turtle();
+	turtle = new Sprite();
 	turtle->setZValue(1);  // above the others
 	scene->addItem(turtle);
 

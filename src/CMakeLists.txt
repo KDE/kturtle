@@ -13,6 +13,7 @@ set (
     errordialog.cpp
     main.cpp
     mainwindow.cpp
+    sprite.cpp
     turtle.cpp
     valueaction.cpp
     interpreter/echoer.cpp
