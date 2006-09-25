@@ -383,7 +383,7 @@ new_item()
 EOS
 @e_def =
 <<EOS
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg((int)node);
+	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
 	if (currentVariableTable()->contains(id)) {
 		currentVariableTable()->remove(id);
 		return;
@@ -440,7 +440,7 @@ new_item()
 @e_def =
 <<EOS
 	breaking = false;
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg((int)node);
+	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
 	// the iteration state is stored on the variable table
 	if (currentVariableTable()->contains(id)) {
 		int currentCount = ROUND2INT((*currentVariableTable())[id].number());
@@ -470,7 +470,7 @@ new_item()
 	// so we do the following on every call to executeWhile:
 	//     exec scope, exec expression, exec scope, exec expresion, ...
 
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg((int)node);
+	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
 	if (currentVariableTable()->contains(id)) {
 		newScope = node; // re-execute the expression
 		currentVariableTable()->remove(id);
@@ -556,7 +556,7 @@ new_item()
 		firstIteration = true;
 	}
 
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg((int)node);
+	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
 
 	if (currentVariableTable()->contains(id)) {
 		newScope = node; // re-execute the expressions
@@ -641,7 +641,7 @@ new_item()
 @e_def =
 <<EOS
 	waiting = true;
-	QTimer::singleShot(1000*((int)node->child(0)->value()->number()), this, SLOT(stopWaiting()));
+	QTimer::singleShot((int)(1000*node->child(0)->value()->number()), this, SLOT(stopWaiting()));
 EOS
 parse_item()
 

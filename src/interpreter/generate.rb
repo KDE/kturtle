@@ -293,10 +293,9 @@ def write_files(diff)
 		end
 		@token_switch_cpp += "\t\t\treturn #{v1}Category;\n\n"
 	end
-	@token_category_h[0..-2]
 
-	parse_and_write("./token.h", @token_type_h, "token_type_h", diff);
-	parse_and_write("./token.h", @token_category_h, "token_category_h", diff);
+	parse_and_write("./token.h", @token_type_h[0..-3]+"\n", "token_type_h", diff);
+	parse_and_write("./token.h", @token_category_h[0..-3]+"\n", "token_category_h", diff);
 	parse_and_write("./token.cpp", @token_switch_cpp, "token_switch_cpp", diff);
 	@dictionary_xml.each_line { @total_generated_lines += 1 }
 	          write("./KTurtleDictionary.en_US.xml", @dictionary_xml, diff);

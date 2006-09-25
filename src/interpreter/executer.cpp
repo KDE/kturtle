@@ -501,7 +501,7 @@ void Executer::executeReturn(TreeNode* node) {
 void Executer::executeWait(TreeNode* node) {
 	qDebug() << "Executer::executeWait()";
 	waiting = true;
-	QTimer::singleShot(1000*((int)node->child(0)->value()->number()), this, SLOT(stopWaiting()));
+	QTimer::singleShot((int)(1000*node->child(0)->value()->number()), this, SLOT(stopWaiting()));
 }
 void Executer::executeAnd(TreeNode* node) {
 	qDebug() << "Executer::executeAnd()";
