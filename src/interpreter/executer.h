@@ -239,6 +239,7 @@ class Executer : public QObject
 
 
 	signals:
+		void currentlyExecuting(int startRow, int startCol, int endRow, int endCol);
 
 // next you find generated signals that can be emited:
 

@@ -113,6 +113,7 @@ void Executer::execute()
 	while (currentNode->hasChildren() && currentNode->token()->type() != Token::Scope)
 		currentNode = currentNode->firstChild();
 	qDebug() << ">> executing: " << currentNode->token()->look();
+
 	execute(currentNode);
 }
 
@@ -120,6 +121,10 @@ void Executer::execute()
 void Executer::execute(TreeNode* node)
 {
 	if (finished) return;
+
+	// emit a signal for GUI
+	Token* t = node->token();
+	emit currentlyExecuting(t->startRow(), t->startCol(), t->endRow(), t->endCol());
 
 	// this method executes one node at the time
 

@@ -394,6 +394,8 @@ void MainWindow::setupInterpreter()
 {
 	interpreter = new Interpreter(this);
 	Executer* executer = interpreter->getExecuter();
+	connect(executer, SIGNAL(currentlyExecuting(int, int, int, int)),
+		editor, SLOT(markCurrentWord(int, int, int, int)));
 
 	// the code to connect the executer with the canvas is auto generated:
 #include "interpreter/gui_connect.inc"
@@ -645,17 +647,9 @@ void MainWindow::run()
 		interpreter->initialize(*codeStream);
 	}
 
+	// start parsing (allways in full speed)
 	iterationTimer->setSingleShot(false);
-	switch (runSpeed) {
-		case 0: iterationTimer->start(1);    break;
-		case 1: iterationTimer->start(1000); break;
-		case 2: iterationTimer->start(2000); break;
-		case 3: iterationTimer->start(3000); break;
-		case 4:
-			iterationTimer->setSingleShot(true);
-			iterationTimer->start();
-			break;
-	}
+	iterationTimer->start(0);
 
 	runAct->setEnabled(false);
 	pauseAct->setChecked(false);
@@ -670,9 +664,21 @@ void MainWindow::iterate()
 		return;
 	}
 
-	interpreter->interpret();
-
-	if (runSpeed == 4) pause();
+	if (interpreter->state() == Interpreter::Executing) {
+		iterationTimer->stop();
+		iterationTimer->setSingleShot(true);
+		switch (runSpeed) {
+			case 0: iterationTimer->start(0);    break;
+			case 1: iterationTimer->start(500);  break;
+			case 2: iterationTimer->start(1000); break;
+			case 3: iterationTimer->start(3000); break;
+			case 4: iterationTimer->start(0);    break;
+		}
+		interpreter->interpret();
+		if (runSpeed == 4) pause();
+	} else {
+		interpreter->interpret();
+	}
 }
 
 void MainWindow::pause()
@@ -696,7 +702,11 @@ void MainWindow::abort()
 	pauseAct->setEnabled(false);
 	abortAct->setEnabled(false);
 
-	if (interpreter->encounteredErrors())  new ErrorDialog(interpreter->getErrorList(), this);
+	if (interpreter->encounteredErrors()) {
+		ErrorDialog* errorDialog = new ErrorDialog(interpreter->getErrorList(), this);
+		connect(errorDialog, SIGNAL(currentlySelectedError(int, int, int, int)),
+			editor, SLOT(markCurrentError(int, int, int, int)));
+	}
 }
 
 

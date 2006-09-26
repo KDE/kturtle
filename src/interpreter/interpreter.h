@@ -78,8 +78,6 @@ class Interpreter : public QObject
 		bool        encounteredErrors() { return errorList->count() > 0; }
 		ErrorList*  getErrorList() { return errorList; }
 
-	public slots:
-
 
 	private:
 		int            _state;
@@ -90,6 +88,7 @@ class Interpreter : public QObject
 		Executer      *executer;
 
 		ErrorList     *errorList;
+
 
 	signals:
 		void parsing();

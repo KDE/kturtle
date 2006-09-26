@@ -95,7 +95,8 @@ ErrorDialog::ErrorDialog(ErrorList* _errorList, QWidget* parent)
 
 void ErrorDialog::selectedErrorChangedProxy()
 {
-	emit selectedErrorChanged(errorList->at(errorTable->selectedItems().first()->row()).token());
+	const Token* t = &errorList->at(errorTable->selectedItems().first()->row()).token();
+	emit currentlySelectedError(t->startRow(), t->startCol(), t->endRow(), t->endCol());
 }
 
 

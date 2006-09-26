@@ -35,7 +35,7 @@ class ErrorDialog : public KDialog
 		ErrorDialog(ErrorList* _errorList, QWidget* parent = 0);
 
 	signals:
-		void selectedErrorChanged(const Token&);
+		void currentlySelectedError(int, int, int, int);
 
 	private slots:
 		void selectedErrorChangedProxy();

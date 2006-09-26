@@ -116,6 +116,11 @@ class Editor : public QFrame
 		void setModified(bool);
 		void setInsertMode(bool b);
 
+		void markCurrentLine();
+		void markCurrentWord(int startRow, int startCol, int endRow, int endCol);
+		void markCurrentError(int startRow, int startCol, int endRow, int endCol);
+		void markChars(const QTextCharFormat& charFormat, int startRow, int startCol, int endRow, int endCol);
+
 	signals:
 		void currentUrlChanged(const KUrl&);
 		void modificationChanged(bool);
@@ -134,6 +139,13 @@ class Editor : public QFrame
 		QHBoxLayout *box;
 		KUrl         m_currentUrl;
 		int          currentLine;
+
+
+		QTextBlockFormat defaultBlockFormat;
+		QTextBlockFormat currentLineFormat;
+		QTextCharFormat defaultCharFormat;
+		QTextCharFormat currentWordFormat;
+		QTextCharFormat currentErrorFormat;
 };
 
 

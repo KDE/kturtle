@@ -39,8 +39,8 @@
 #include "editor.h"
 
 
-static const int CURSOR_WIDTH = 2;
-static const int TAB_WIDTH = 15;
+static const int CURSOR_WIDTH = 2;  // in pixels
+static const int TAB_WIDTH    = 2;  // in character widths
 
 
 Editor::Editor(QWidget *parent)
@@ -52,12 +52,11 @@ Editor::Editor(QWidget *parent)
 
 	// Setup the main view
 	editor = new QTextEdit(this);
-	editor->document()->setDefaultFont(QFont("Courier"));
-	editor->setLineWrapMode(QTextEdit::NoWrap);
+	editor->document()->setDefaultFont(QFont("Courier", 12));
 	editor->setFrameStyle(QFrame::NoFrame);
 	editor->installEventFilter(this);
 	editor->setLineWrapMode(QTextEdit::WidgetWidth);
-	editor->setTabStopWidth(TAB_WIDTH);
+	editor->setTabStopWidth(editor->fontMetrics().width("0") * TAB_WIDTH);
 	editor->setAcceptRichText(false);
 	setFocusProxy(editor);
 	connect(editor->document(), SIGNAL(contentsChange(int,int,int)), this, SLOT(textChanged(int,int,int)));
@@ -78,6 +77,11 @@ Editor::Editor(QWidget *parent)
 	box->setMargin(0);
 	box->addWidget(numbers);
 	box->addWidget(editor);
+
+	// set up the markers
+	currentLineFormat.setBackground(Qt::lightGray);
+	currentWordFormat.setBackground(Qt::yellow);
+	currentErrorFormat.setBackground(Qt::red);
 }
 
 Editor::~Editor()
@@ -104,24 +108,24 @@ void Editor::textChanged(int pos, int removed, int added)
 	Q_UNUSED(pos);
 	if (removed == 0 && added == 0) return;  // save some cpu cycles
 
-	QTextBlock block = highlight.block();
-	QTextBlockFormat fmt = block.blockFormat();
-	QColor bg = editor->palette().base().color();
-	fmt.setBackground(bg);
-	highlight.setBlockFormat(fmt);
+// 	QTextBlock block = highlight.block();
+// 	QTextBlockFormat fmt = block.blockFormat();
+// 	QColor bg = editor->palette().base().color();
+// 	fmt.setBackground(bg);
+// 	highlight.setBlockFormat(fmt);
 
 	int lineCount = 1;
 	for (QTextBlock block = editor->document()->begin(); block.isValid(); block = block.next(), ++lineCount) {
 		if (lineCount == currentLine) {
-			fmt = block.blockFormat();
-			QColor bg = editor->palette().highlight().color().light(175);
-			fmt.setBackground(bg);
-
-			highlight = QTextCursor(block);
-			highlight.movePosition(QTextCursor::EndOfBlock, QTextCursor::KeepAnchor);
-			highlight.setBlockFormat(fmt);
-
-			break;
+// 			fmt = block.blockFormat();
+// 			QColor bg = editor->palette().highlight().color().light(175);
+// 			fmt.setBackground(bg);
+// 
+// 			highlight = QTextCursor(block);
+// 			highlight.movePosition(QTextCursor::EndOfBlock, QTextCursor::KeepAnchor);
+// 			highlight.setBlockFormat(fmt);
+// 
+// 			break;
 		}
 	}
 
@@ -251,6 +255,51 @@ void Editor::setInsertMode(bool b)
 	editor->setCursorWidth(b ? 2 : editor->fontMetrics().width("0"));
 }
 
+void Editor::markCurrentWord(int startRow, int startCol, int endRow, int endCol)
+{
+	markChars(currentWordFormat, startRow, startCol, endRow, endCol);
+}
+
+void Editor::markCurrentError(int startRow, int startCol, int endRow, int endCol)
+{
+	markChars(currentErrorFormat, startRow, startCol, endRow, endCol);
+}
+
+void Editor::markChars(const QTextCharFormat& charFormat, int startRow, int startCol, int endRow, int endCol)
+{
+	// remove all char formatting
+	QTextCursor currentCursor(editor->document());
+	currentCursor.movePosition(QTextCursor::Start, QTextCursor::MoveAnchor);
+	currentCursor.movePosition(QTextCursor::End,   QTextCursor::KeepAnchor);
+	currentCursor.setCharFormat(defaultCharFormat);
+
+	// mark the selection
+	currentCursor.movePosition(QTextCursor::Start,         QTextCursor::MoveAnchor);
+	currentCursor.movePosition(QTextCursor::Down,          QTextCursor::MoveAnchor, startRow);
+	currentCursor.movePosition(QTextCursor::NextCharacter, QTextCursor::MoveAnchor, startCol - 1);
+	currentCursor.movePosition(QTextCursor::Down,          QTextCursor::KeepAnchor, endRow - startRow);
+	currentCursor.movePosition(QTextCursor::StartOfLine,   QTextCursor::KeepAnchor);
+	currentCursor.movePosition(QTextCursor::NextCharacter, QTextCursor::KeepAnchor, endCol);
+	currentCursor.setCharFormat(charFormat);
+}
+
+void Editor::markCurrentLine()
+{
+	// remove all block markings
+	QTextCursor currentCursor(editor->document());
+	currentCursor.movePosition(QTextCursor::Start, QTextCursor::MoveAnchor);
+	currentCursor.movePosition(QTextCursor::End,   QTextCursor::KeepAnchor);
+	currentCursor.setBlockFormat(defaultBlockFormat);
+
+	// mark the line
+	currentCursor = editor->textCursor();
+	currentCursor.movePosition(QTextCursor::StartOfLine, QTextCursor::MoveAnchor);
+	currentCursor.movePosition(QTextCursor::EndOfLine,   QTextCursor::KeepAnchor);
+	currentCursor.setBlockFormat(currentLineFormat);
+}
+
+
+
 void Editor::cursorPositionChanged()
 {
 	// convert the absolute pos into a row/col pair, and return the current line aswell
@@ -269,6 +318,7 @@ void Editor::cursorPositionChanged()
 		}
 	}
 	if (next_break == 0) next_break = s.length();
+	markCurrentLine();
 	emit cursorPositionChanged(row+1, pos-last_break, s.mid(last_break+1, next_break-last_break-1));
 }
 
