@@ -1,6 +1,33 @@
+### 2 PROPOSALS (request for comments):
+
+
+# 1. highlighting (MARKING) the current line/ selected errors/ current executed command
+this probably has to be done using the richttext mode of qtextedit... LETS CALL THIS TEXT 'MARKING'
+first: the text in the editor should be on richtext, but open and save as plaintext
+then:  some tags have to be inserted/removed on some signals
+
+
+# 2. store the commands as commented, "i18nc()", strings
+these strings can be read out for any language by the raw-read functions in KLocalizedString
+read all these strings the specified language when the translator is init'ed
+fill up one or 2 hashes (maybe switches?)
+this can be done using generated code
+big Q: how to know the available translations?
+
+another challenge: put the examples also in i18nc()'ed code
+	pro's: no more irregular external files that need localization
+	con's: not generatable (generator script needs dictionary input and plain text output)
+solution: have a command line option to make translations of example programs (given that the dictionairy is in)
+
+
+
+
+
+
+
 
  == mainwindow ==
- * make the errordialog (hook it up with the highlighting stuff)
+ * hook the errordialog up with the highlighting stuff
  * make a docked window for inspecting the variables
  ---
  * make settings menu (or not: maybe keep all in other menu's) [fonttype, fontsize, language]
