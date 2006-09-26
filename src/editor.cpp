@@ -277,9 +277,11 @@ void Editor::markChars(const QTextCharFormat& charFormat, int startRow, int star
 	currentCursor.movePosition(QTextCursor::Start,         QTextCursor::MoveAnchor);
 	currentCursor.movePosition(QTextCursor::Down,          QTextCursor::MoveAnchor, startRow);
 	currentCursor.movePosition(QTextCursor::NextCharacter, QTextCursor::MoveAnchor, startCol - 1);
-	currentCursor.movePosition(QTextCursor::Down,          QTextCursor::KeepAnchor, endRow - startRow);
-	currentCursor.movePosition(QTextCursor::StartOfLine,   QTextCursor::KeepAnchor);
-	currentCursor.movePosition(QTextCursor::NextCharacter, QTextCursor::KeepAnchor, endCol);
+	currentCursor.movePosition(QTextCursor::NextCharacter, QTextCursor::KeepAnchor, 3);
+
+// 	currentCursor.movePosition(QTextCursor::Down,          QTextCursor::KeepAnchor, endRow - startRow);
+// 	currentCursor.movePosition(QTextCursor::StartOfLine,   QTextCursor::KeepAnchor);
+// 	currentCursor.movePosition(QTextCursor::NextCharacter, QTextCursor::KeepAnchor, endCol);
 	currentCursor.setCharFormat(charFormat);
 }
 

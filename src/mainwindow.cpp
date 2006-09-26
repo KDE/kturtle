@@ -650,11 +650,6 @@ void MainWindow::run()
 	// start parsing (allways in full speed)
 	iterationTimer->setSingleShot(false);
 	iterationTimer->start(0);
-
-	runAct->setEnabled(false);
-	pauseAct->setChecked(false);
-	pauseAct->setEnabled(true);
-	abortAct->setEnabled(true);
 }
 
 void MainWindow::iterate()
@@ -664,6 +659,11 @@ void MainWindow::iterate()
 		return;
 	}
 
+	runAct->setEnabled(false);
+	pauseAct->setChecked(false);
+	pauseAct->setEnabled(true);
+	abortAct->setEnabled(true);
+
 	if (interpreter->state() == Interpreter::Executing) {
 		iterationTimer->stop();
 		iterationTimer->setSingleShot(true);
@@ -672,24 +672,25 @@ void MainWindow::iterate()
 			case 1: iterationTimer->start(500);  break;
 			case 2: iterationTimer->start(1000); break;
 			case 3: iterationTimer->start(3000); break;
-			case 4: iterationTimer->start(0);    break;
+			case 4:
+				iterationTimer->stop();
+				interpreter->interpret();
+				pauseAct->setChecked(true);
+				pause();
+				return;
 		}
-		interpreter->interpret();
-		if (runSpeed == 4) pause();
-	} else {
-		interpreter->interpret();
 	}
+	interpreter->interpret();
 }
 
 void MainWindow::pause()
 {
 	if (pauseAct->isChecked()) {
-		pauseAct->setChecked(true);
 		runAct->setEnabled(true);
 		iterationTimer->stop();
 		return;
 	}
-	run();
+	iterate();
 }
 
 void MainWindow::abort()
