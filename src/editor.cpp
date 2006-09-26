@@ -82,6 +82,9 @@ Editor::Editor(QWidget *parent)
 	currentLineFormat.setBackground(Qt::lightGray);
 	currentWordFormat.setBackground(Qt::yellow);
 	currentErrorFormat.setBackground(Qt::red);
+
+	// mark current line
+	markCurrentLine();
 }
 
 Editor::~Editor()
@@ -107,6 +110,8 @@ void Editor::textChanged(int pos, int removed, int added)
 {
 	Q_UNUSED(pos);
 	if (removed == 0 && added == 0) return;  // save some cpu cycles
+
+// 	removeMarkings();
 
 // 	QTextBlock block = highlight.block();
 // 	QTextBlockFormat fmt = block.blockFormat();
@@ -257,47 +262,51 @@ void Editor::setInsertMode(bool b)
 
 void Editor::markCurrentWord(int startRow, int startCol, int endRow, int endCol)
 {
+	removeMarkings();
 	markChars(currentWordFormat, startRow, startCol, endRow, endCol);
 }
 
 void Editor::markCurrentError(int startRow, int startCol, int endRow, int endCol)
 {
+	removeMarkings();
 	markChars(currentErrorFormat, startRow, startCol, endRow, endCol);
 }
 
 void Editor::markChars(const QTextCharFormat& charFormat, int startRow, int startCol, int endRow, int endCol)
 {
-	// remove all char formatting
-	QTextCursor currentCursor(editor->document());
-	currentCursor.movePosition(QTextCursor::Start, QTextCursor::MoveAnchor);
-	currentCursor.movePosition(QTextCursor::End,   QTextCursor::KeepAnchor);
-	currentCursor.setCharFormat(defaultCharFormat);
-
 	// mark the selection
-	currentCursor.movePosition(QTextCursor::Start,         QTextCursor::MoveAnchor);
-	currentCursor.movePosition(QTextCursor::Down,          QTextCursor::MoveAnchor, startRow);
-	currentCursor.movePosition(QTextCursor::NextCharacter, QTextCursor::MoveAnchor, startCol - 1);
-	currentCursor.movePosition(QTextCursor::NextCharacter, QTextCursor::KeepAnchor, 3);
+	QTextCursor cursor(editor->document());
+	cursor.movePosition(QTextCursor::Start,         QTextCursor::MoveAnchor);
+	cursor.movePosition(QTextCursor::Down,          QTextCursor::MoveAnchor, startRow - 1);
+	cursor.movePosition(QTextCursor::NextCharacter, QTextCursor::MoveAnchor, startCol - 1);
+	cursor.movePosition(QTextCursor::Down,          QTextCursor::KeepAnchor, endRow - startRow);
+	cursor.movePosition(QTextCursor::StartOfLine,   QTextCursor::KeepAnchor);
+	cursor.movePosition(QTextCursor::NextCharacter, QTextCursor::KeepAnchor, endCol - 1);
+	cursor.setCharFormat(charFormat);
+}
 
-// 	currentCursor.movePosition(QTextCursor::Down,          QTextCursor::KeepAnchor, endRow - startRow);
-// 	currentCursor.movePosition(QTextCursor::StartOfLine,   QTextCursor::KeepAnchor);
-// 	currentCursor.movePosition(QTextCursor::NextCharacter, QTextCursor::KeepAnchor, endCol);
-	currentCursor.setCharFormat(charFormat);
+void Editor::removeMarkings()
+{
+	// remove all char formatting (only the char formatting, so not the current line marking (a block))
+	QTextCursor cursor(editor->document());
+	cursor.movePosition(QTextCursor::Start, QTextCursor::MoveAnchor);
+	cursor.movePosition(QTextCursor::End,   QTextCursor::KeepAnchor);
+	cursor.setCharFormat(defaultCharFormat);
 }
 
 void Editor::markCurrentLine()
 {
 	// remove all block markings
-	QTextCursor currentCursor(editor->document());
-	currentCursor.movePosition(QTextCursor::Start, QTextCursor::MoveAnchor);
-	currentCursor.movePosition(QTextCursor::End,   QTextCursor::KeepAnchor);
-	currentCursor.setBlockFormat(defaultBlockFormat);
+	QTextCursor cursor(editor->document());
+	cursor.movePosition(QTextCursor::Start, QTextCursor::MoveAnchor);
+	cursor.movePosition(QTextCursor::End,   QTextCursor::KeepAnchor);
+	cursor.setBlockFormat(defaultBlockFormat);
 
 	// mark the line
-	currentCursor = editor->textCursor();
-	currentCursor.movePosition(QTextCursor::StartOfLine, QTextCursor::MoveAnchor);
-	currentCursor.movePosition(QTextCursor::EndOfLine,   QTextCursor::KeepAnchor);
-	currentCursor.setBlockFormat(currentLineFormat);
+	cursor = editor->textCursor();
+	cursor.movePosition(QTextCursor::StartOfLine, QTextCursor::MoveAnchor);
+	cursor.movePosition(QTextCursor::EndOfLine,   QTextCursor::KeepAnchor);
+	cursor.setBlockFormat(currentLineFormat);
 }
 
 

@@ -28,6 +28,8 @@
 
 #include <QtDebug>
 
+#include <kdebug.h>
+
 #include <klocale.h>
 
 #include "executer.h"
@@ -124,6 +126,7 @@ void Executer::execute(TreeNode* node)
 
 	// emit a signal for GUI
 	Token* t = node->token();
+	kDebug(0) << "emitting token: '" << t->look() << "' - (" << t->startRow() << "," << t->startCol() << " - " << t->endRow() << "," << t->endCol() << ")" << endl;
 	emit currentlyExecuting(t->startRow(), t->startCol(), t->endRow(), t->endCol());
 
 	// this method executes one node at the time

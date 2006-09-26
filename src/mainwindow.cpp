@@ -393,6 +393,7 @@ void MainWindow::setupEditor()
 void MainWindow::setupInterpreter()
 {
 	interpreter = new Interpreter(this);
+	connect(interpreter, SIGNAL(finished()), this, SLOT(abort()));
 	Executer* executer = interpreter->getExecuter();
 	connect(executer, SIGNAL(currentlyExecuting(int, int, int, int)),
 		editor, SLOT(markCurrentWord(int, int, int, int)));

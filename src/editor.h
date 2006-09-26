@@ -132,6 +132,8 @@ class Editor : public QFrame
 
 	private:
 		void setContent(const QString&);
+		void removeMarkings();
+
 		QTextEdit   *editor;
 		Highlighter *highlighter;
 		QTextCursor  highlight;
