@@ -102,9 +102,9 @@ class Editor : public QFrame
 		bool isModified() { return editor->document()->isModified(); }
 		QString content() { return editor->document()->toPlainText(); }
 
-// 		void setTranslator(Translator*);
-
 		Token* currentToken(const QString& text, int cursorIndex) { return highlighter->formatType(text, cursorIndex); }
+
+		void removeMarkings();
 
 
 	public slots:
@@ -116,23 +116,25 @@ class Editor : public QFrame
 		void setModified(bool);
 		void setInsertMode(bool b);
 
-		void markCurrentLine();
 		void markCurrentWord(int startRow, int startCol, int endRow, int endCol);
 		void markCurrentError(int startRow, int startCol, int endRow, int endCol);
-		void markChars(const QTextCharFormat& charFormat, int startRow, int startCol, int endRow, int endCol);
+
 
 	signals:
 		void currentUrlChanged(const KUrl&);
 		void modificationChanged(bool);
 		void cursorPositionChanged(int row, int col, const QString& line);
 
+
 	protected slots:
 		void textChanged(int pos, int added, int removed);
 		void cursorPositionChanged();
 
+
 	private:
+		void markCurrentLine();
+		void markChars(const QTextCharFormat& charFormat, int startRow, int startCol, int endRow, int endCol);
 		void setContent(const QString&);
-		void removeMarkings();
 
 		QTextEdit   *editor;
 		Highlighter *highlighter;
@@ -141,7 +143,8 @@ class Editor : public QFrame
 		QHBoxLayout *box;
 		KUrl         m_currentUrl;
 		int          currentLine;
-
+		bool         isMarked;
+		bool         changingMarkings;
 
 		QTextBlockFormat defaultBlockFormat;
 		QTextBlockFormat currentLineFormat;

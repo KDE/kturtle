@@ -50,7 +50,7 @@ Editor::Editor(QWidget *parent)
 	setLineWidth(CURSOR_WIDTH);
 	setCurrentUrl();
 
-	// Setup the main view
+	// setup the main view
 	editor = new QTextEdit(this);
 	editor->document()->setDefaultFont(QFont("Courier", 12));
 	editor->setFrameStyle(QFrame::NoFrame);
@@ -63,28 +63,29 @@ Editor::Editor(QWidget *parent)
 	connect(editor->document(), SIGNAL(modificationChanged(bool)), this, SLOT(setModified(bool)));
 	connect(editor, SIGNAL(cursorPositionChanged()), this, SLOT(cursorPositionChanged()));
 
-	// Setup the line number pane
+	// setup the line number pane
 	numbers = new LineNumbers(this, editor);
 	numbers->setFont(editor->document()->defaultFont());
 	numbers->setWidth(1);
 	connect(editor->document()->documentLayout(), SIGNAL(update(const QRectF &)), numbers, SLOT(update()));
 	connect(editor->verticalScrollBar(), SIGNAL(valueChanged(int)), numbers, SLOT(update()));
 
-	highlighter = new Highlighter(editor->document());
-
+	// let the line numbers and the editor coexist
 	box = new QHBoxLayout(this);
 	box->setSpacing(0);
 	box->setMargin(0);
 	box->addWidget(numbers);
 	box->addWidget(editor);
 
-	// set up the markers
-	currentLineFormat.setBackground(Qt::lightGray);
-	currentWordFormat.setBackground(Qt::yellow);
-	currentErrorFormat.setBackground(Qt::red);
+	// our syntax highlighter (this does not do any markings)
+	highlighter = new Highlighter(editor->document());
 
-	// mark current line
-	markCurrentLine();
+	// set up the markers
+	currentLineFormat.setBackground(QBrush(QColor(239,247,255)));  // light blue
+	currentWordFormat.setBackground(QBrush(QColor(255,255,156)));  // light yellow
+	currentErrorFormat.setBackground(QBrush(QColor(255,200,200)));  // light red
+
+	newFile();  // sets some more default values
 }
 
 Editor::~Editor()
@@ -99,50 +100,27 @@ void Editor::setContent(const QString& s)
 	editor->document()->setModified(false);
 }
 
-// void Editor::setTranslator(Translator* translator)
-// {
-// // 	if (highlighter != 0) delete highlighter;
-// // 	highlighter = new Highlighter(translator, editor->document());
-// }
-
-
 void Editor::textChanged(int pos, int removed, int added)
 {
 	Q_UNUSED(pos);
-	if (removed == 0 && added == 0) return;  // save some cpu cycles
+	if ((removed == 0 && added == 0) || changingMarkings) return;  // save some cpu cycles
 
-// 	removeMarkings();
-
-// 	QTextBlock block = highlight.block();
-// 	QTextBlockFormat fmt = block.blockFormat();
-// 	QColor bg = editor->palette().base().color();
-// 	fmt.setBackground(bg);
-// 	highlight.setBlockFormat(fmt);
+	removeMarkings();  // removes the character markings if there are any
 
 	int lineCount = 1;
-	for (QTextBlock block = editor->document()->begin(); block.isValid(); block = block.next(), ++lineCount) {
-		if (lineCount == currentLine) {
-// 			fmt = block.blockFormat();
-// 			QColor bg = editor->palette().highlight().color().light(175);
-// 			fmt.setBackground(bg);
-// 
-// 			highlight = QTextCursor(block);
-// 			highlight.movePosition(QTextCursor::EndOfBlock, QTextCursor::KeepAnchor);
-// 			highlight.setBlockFormat(fmt);
-// 
-// 			break;
-		}
-	}
-
-	numbers->setWidth(1 + (int)floor(log10(lineCount-1)));
+	for (QTextBlock block = editor->document()->begin(); block.isValid(); block = block.next()) lineCount++;
+	numbers->setWidth(qMax(1, 1 + (int)floor(log10(lineCount - 1))));
 }
 
 
 bool Editor::newFile()
 {
 	if (maybeSave()) {
+		changingMarkings = false;
+		isMarked = false;  // there are no char markers is a new file
 		editor->document()->clear();
 		setCurrentUrl();
+		markCurrentLine();  // current line marker
 		return true;
 	}
 	return false;
@@ -262,18 +240,27 @@ void Editor::setInsertMode(bool b)
 
 void Editor::markCurrentWord(int startRow, int startCol, int endRow, int endCol)
 {
+	changingMarkings = true;
 	removeMarkings();
 	markChars(currentWordFormat, startRow, startCol, endRow, endCol);
+	changingMarkings = false;
 }
 
 void Editor::markCurrentError(int startRow, int startCol, int endRow, int endCol)
 {
+	changingMarkings = true;
 	removeMarkings();
 	markChars(currentErrorFormat, startRow, startCol, endRow, endCol);
+	changingMarkings = false;
 }
 
 void Editor::markChars(const QTextCharFormat& charFormat, int startRow, int startCol, int endRow, int endCol)
 {
+	changingMarkings = true;
+	bool modified = editor->document()->isModified();  // save modification state
+
+	removeMarkings();  // remove earlier markings
+
 	// mark the selection
 	QTextCursor cursor(editor->document());
 	cursor.movePosition(QTextCursor::Start,         QTextCursor::MoveAnchor);
@@ -283,19 +270,31 @@ void Editor::markChars(const QTextCharFormat& charFormat, int startRow, int star
 	cursor.movePosition(QTextCursor::StartOfLine,   QTextCursor::KeepAnchor);
 	cursor.movePosition(QTextCursor::NextCharacter, QTextCursor::KeepAnchor, endCol - 1);
 	cursor.setCharFormat(charFormat);
+	isMarked = true;
+
+	editor->document()->setModified(modified);  // restore modification state
+	changingMarkings = false;
 }
 
 void Editor::removeMarkings()
 {
+	changingMarkings = true;
+	if (!isMarked) return;  // don't recurse on this method
+	isMarked = false;
+
 	// remove all char formatting (only the char formatting, so not the current line marking (a block))
 	QTextCursor cursor(editor->document());
 	cursor.movePosition(QTextCursor::Start, QTextCursor::MoveAnchor);
 	cursor.movePosition(QTextCursor::End,   QTextCursor::KeepAnchor);
 	cursor.setCharFormat(defaultCharFormat);
+	changingMarkings = false;
 }
 
 void Editor::markCurrentLine()
 {
+	changingMarkings = true;
+	bool modified = editor->document()->isModified();  // save modification state
+
 	// remove all block markings
 	QTextCursor cursor(editor->document());
 	cursor.movePosition(QTextCursor::Start, QTextCursor::MoveAnchor);
@@ -307,6 +306,9 @@ void Editor::markCurrentLine()
 	cursor.movePosition(QTextCursor::StartOfLine, QTextCursor::MoveAnchor);
 	cursor.movePosition(QTextCursor::EndOfLine,   QTextCursor::KeepAnchor);
 	cursor.setBlockFormat(currentLineFormat);
+
+	editor->document()->setModified(modified);  // restore modification state
+	changingMarkings = false;
 }
 
 

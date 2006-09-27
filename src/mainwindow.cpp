@@ -699,6 +699,8 @@ void MainWindow::abort()
 	iterationTimer->stop();
 	interpreter->abort();
 
+	editor->removeMarkings();
+
 	runAct->setEnabled(true);
 	pauseAct->setChecked(false);
 	pauseAct->setEnabled(false);
