@@ -6,7 +6,9 @@ KTurtle is an educatinal programming environment that aims to make programming a
  == Why not use an existing programming language to teach? ==
 
 Specific features:
- * highlighting during (step) execution
+ * highlighting during execution (shows where the executer is executing)
+ * highlighting of errors
+ * all tools are easily available in the environment
  * intergrated error messages and help
  * fully translatable (language itself, error messages, GUI, manual... everything)
  * yet still RealCoding(tm), no clicky clicky stuff

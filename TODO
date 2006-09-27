@@ -1,34 +1,5 @@
-### 2 PROPOSALS (request for comments):
-
-
-# 1. highlighting (MARKING) the current line/ selected errors/ current executed command
-this probably has to be done using the richttext mode of qtextedit... LETS CALL THIS TEXT 'MARKING'
-first: the text in the editor should be on richtext, but open and save as plaintext
-then:  some tags have to be inserted/removed on some signals
-
-
-# 2. store the commands as commented, "i18nc()", strings
-these strings can be read out for any language by the raw-read functions in KLocalizedString
-read all these strings the specified language when the translator is init'ed
-fill up one or 2 hashes (maybe switches?)
-this can be done using generated code
-big Q: how to know the available translations?
-
-another challenge: put the examples also in i18nc()'ed code
-	pro's: no more irregular external files that need localization
-	con's: not generatable (generator script needs dictionary input and plain text output)
-solution: have a command line option to make translations of example programs (given that the dictionairy is in)
-
-
-
-
-
-
-
-
  == mainwindow ==
- * hook the errordialog up with the highlighting stuff
- * make a docked window for inspecting the variables
+ * make a docked window for inspecting the variables (and the state of the canvas)
  ---
  * make settings menu (or not: maybe keep all in other menu's) [fonttype, fontsize, language]
  * make fullscreen mode (hide all GUI elemets but the canvas during execution)
@@ -40,10 +11,10 @@ solution: have a command line option to make translations of example programs (g
 
  == interpreter ==
  * make shure recursion over several functions is possible (index learns at execution init time)
- * make all errors translatable (use i18n(...))
+ * move to a command and example translation method that uses i18nc() strings.
+ * ruby managed unittest suite using the echoer (make the echoer more clever --> maybe put into the executer)
  ---
  * verbosity/debugmsg levels
- * ruby managed unittest suite using the echoer (make the echoer more clever --> maybe put into the executer)
  * investivate the efficiency of the echoer
       --> maybe hook feedback mechanism directly on the executer / the parser's AST
  * make more unittests (redesign the unittest framework using the to-be-created commandline invoke method)
@@ -52,8 +23,9 @@ solution: have a command line option to make translations of example programs (g
 
 
  == canvas ==
- * fucking scrollbars!
- * fix 'dashed' drawing bug
+ * f**king scrollbars!
+ * fix 'dashed' drawing bug (drawing has many artifacts)
+ * resizing of the canvas doesn't resize the actual canvas frame widget
  ---
  * context menu for save and print
  * add wrapping functionality
@@ -62,13 +34,12 @@ solution: have a command line option to make translations of example programs (g
 
  == editor ==
  * connect editor to context help (F2) action
- * make some effects for executing/error
  ---
- * highlight the current line like kate
  * fill tools menu
  * connect the editor to some statusbar fields
  * reimplement context menu for cut/copy/paste, undo/redo, show/hide, and context help
  * make a syntax highlighting nicer
+ * some html export function (just use the toHtml() method)
 
 
  == PR ==
