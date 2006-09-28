@@ -31,7 +31,7 @@ I break up the change log by (groups of) classes:
 
  == canvas ==
  * from QCanvas to QGraphicsView (antialiassing, vectorbased)
- * the turtle figure is now vector (SVG) based (not keeping many rotations in .PNGs)
+ * the turtle figure is now vector (SVG) based (no longer keeping many rotation frames in .PNGs, yay!)
  ---
  * quite some functionality (most notably the 'wrapping' mode) are still missing
  * 3 annoying bugs: 1) i cant get rid of the scrollbars, 2) some glitches while drawing, 3) not resizing
@@ -49,6 +49,13 @@ I break up the change log by (groups of) classes:
  * F2 context help is now done using the tokenizer
  * there is now a way to invoke KTurtle from the command line (for unittests), try: "kturtle --help"
  * new icons (logo) for kturtle (now svg based: thanks to inkscape)
+
+
+ == translator ==
+ * the commands are now translated just like strings in the GUI (through a .po file)
+ * the examples aswell! (examples are now the responsibility of the Translator class)
+ * result: all of KTurtle (except for the manual) is now translated the 'normal' way, just like strings in the GUI!
+ * this will probably make KTurtle available in many more languages
 
 
 
