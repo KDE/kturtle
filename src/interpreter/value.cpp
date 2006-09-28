@@ -39,11 +39,6 @@ Value::Value(Value* n) :
 }
 
 
-int Value::type() const
-{
-	return m_type;
-}
-
 void Value::setType(int newType)  // maybe someday we have to do some type casting logic here
 {
 	if (m_type == newType) return;  // dont change values when type is not changing

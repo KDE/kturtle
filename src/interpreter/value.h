@@ -54,6 +54,7 @@ class Value
 
 		Value();
 		Value(Value*);
+
 		Value(bool b)           { setBool(b); }
 		Value(double d)         { setNumber(d); }
 		Value(const QString& s) { setString(s); }
@@ -61,7 +62,7 @@ class Value
 	
 		void     resetValue() { init(); }
 		
-		int      type() const;
+		int      type() const { return m_type; }
 		void     setType(int);
 	
 		bool     boolean() const;
@@ -101,4 +102,4 @@ class Value
 		QString  m_string;
 };
 
-#endif // _VALUE_H_
+#endif  // _VALUE_H_
