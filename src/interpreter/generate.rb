@@ -42,19 +42,6 @@ def make_headers()
  */\n
 EOS
 
-	dict_header =
-<<EOS
-<?xml version="1.0"?>
-<!DOCTYPE KTurtleDictionary>\n
-<KTurtleDictionary lang="en_US" ver="0.01">\n
-<!--  If this file is named "KTurtleDictionary.en_US.xml" it is quite likely generated
-      by "generate.rb" according to the definitions specified in "definitions.rb".
-      Please make all changes in the "definitions.rb" file, since all all change you
-      make here will be overwritten the next time "generate.rb" is run.
-      Thanks for looking at the code!
--->\n
-EOS
-
 
 	# fills the 'enum Token::Type' in token.h
 	@token_type_h           = c_warning
@@ -64,9 +51,6 @@ EOS
 
 	# fills the switch statement in the typeToCategory() method
 	@token_switch_cpp       = c_warning
-
-	# fills the dictionary
-	@dictionary_xml         = dict_header
 
 	# fills the 'stringType2intType()'
 	@translator_cpp         = c_warning
@@ -110,7 +94,6 @@ end
 def make_footers()
 	puts "making footers\n\n"
 
-	@dictionary_xml += "\n\n</KTurtleDictionary>"
 	# helpfile footer here
 end
 
@@ -157,16 +140,6 @@ def parse_item()
 	@token_type_h += "\t\t\t#{@type},\n"
 
 	@cat_hash[@type] = @cat if @cat
-
-	if !@look.empty?
-		@dictionary_xml += "\t<token type=\"#{@type}\">\n\t\t<look>#{CGI.escapeHTML(@look)}</look>\n"
-		if !@ali.empty?
-			@dictionary_xml += "\t\t<look>#{CGI.escapeHTML(@ali)}</look>\n"
-		end
-		@dictionary_xml += "\t</token>\n\n"
-	end
-
-# 	@translator_cpp += "\tif (typeString == \"#{@type}\")".ljust(40) + " return Token::#{@type};\n"
 
 	unless @look.empty?
 		if @localize
@@ -316,8 +289,6 @@ def write_files(diff)
 	parse_and_write("./token.h", @token_type_h[0..-3]+"\n", "token_type_h", diff);
 	parse_and_write("./token.h", @token_category_h[0..-3]+"\n", "token_category_h", diff);
 	parse_and_write("./token.cpp", @token_switch_cpp, "token_switch_cpp", diff);
-	@dictionary_xml.each_line { @total_generated_lines += 1 }
-	          write("./KTurtleDictionary.en_US.xml", @dictionary_xml, diff);
 	parse_and_write("./translator.cpp", @translator_cpp, "translator_cpp", diff);
 	parse_and_write("./parser.h", @parser_h, "parser_h", diff);
 	parse_and_write("./parser.cpp", @parser_cpp, "parser_cpp", diff);

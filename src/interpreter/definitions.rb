@@ -231,7 +231,6 @@ new_item()
 parse_item()
 
 
-@dictionary_xml += "\n<!-- boolean values  -->\n\n"
 
 new_item()
 @type  = "True"
@@ -248,7 +247,6 @@ new_item()
 parse_item()
 
 
-@dictionary_xml += "\n<!-- comment  -->\n\n"
 
 new_item()
 @type  = "Comment"
@@ -258,7 +256,6 @@ new_item()
 parse_item()
 
 
-@dictionary_xml += "\n<!-- string delimiter  -->\n\n"
 
 new_item()
 # shouldnt thisone also be treated as a normal token
@@ -270,7 +267,6 @@ new_item()
 parse_item()
 
 
-@dictionary_xml += "\n<!-- scopedelimiters -->\n\n"
 
 new_item()
 @type  = "ScopeOpen"
@@ -319,7 +315,6 @@ EOS
 parse_item()
 
 
-@dictionary_xml += "\n<!-- parenthesis -->\n\n"
 
 new_item()
 @type  = "ParenthesisOpen"
@@ -336,7 +331,6 @@ new_item()
 parse_item()
 
 
-@dictionary_xml += "\n<!-- the argument separator -->\n\n"
 
 new_item()
 @type  = "ArgumentSeparator"
@@ -345,7 +339,6 @@ new_item()
 parse_item()
 
 
-@dictionary_xml += "\n<!-- the decimal separator -->\n\n"
 
 new_item()
 @type  = "DecimalSeparator"
@@ -354,7 +347,6 @@ new_item()
 parse_item()
 
 
-@dictionary_xml += "\n<!-- execution controllers -->\n\n"
 
 new_item()
 @type  = "Exit"
@@ -653,7 +645,6 @@ EOS
 parse_item()
 
 
-@dictionary_xml += "\n<!-- boolean operators -->\n\n"
 
 new_item()
 @type  = "And"
@@ -692,7 +683,6 @@ EOS
 parse_item()
 
 
-@dictionary_xml += "\n<!-- expressions -->\n\n"
 
 def e_def_expression_creator(look)
 	# since the looks for expressions are the same in KTurtle-LOGO and C++ we can take this shortcut...
@@ -755,7 +745,6 @@ new_item()
 parse_item()
 
 
-@dictionary_xml += "\n<!-- math operators  -->\n\n"
 
 new_item()
 @type  = "Addition"
@@ -850,7 +839,6 @@ EOS
 parse_item()
 
 
-@dictionary_xml += "\n<!-- assignment  -->\n\n"
 
 new_item()
 @type  = "Assign"
@@ -871,7 +859,6 @@ EOS
 parse_item()
 
 
-@dictionary_xml += "\n<!-- the command creating command -->\n\n"
 
 new_item()
 @type  = "Learn"
@@ -915,7 +902,6 @@ new_item()
 parse_item()
 
 
-@dictionary_xml += "\n<!-- canvas related commands  -->\n\n"
 
 new_item()
 @type  = "Reset"
@@ -1123,7 +1109,6 @@ parse_item()
 # # @args  = [:none]
 # # parse_item()
 
-@dictionary_xml += "\n<!-- math related commands  -->\n\n"
 
 new_item()
 @type  = "Random"
@@ -1135,7 +1120,6 @@ new_item()
 parse_item()
 
 
-@dictionary_xml += "\n<!-- misc. commands  -->\n\n"
 
 # # new_item()
 # # @type  = "Run"
