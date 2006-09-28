@@ -1,6 +1,7 @@
  == mainwindow ==
- * make a docked window for inspecting the variables (and the state of the canvas)
+ * make a docked window for inspecting the variables (and the state of the canvas), and a AST view widget
  ---
+ * commandline flag for parsing an en_US script into c++ example code (bunch of strings)
  * make settings menu (or not: maybe keep all in other menu's) [fonttype, fontsize, language]
  * make fullscreen mode (hide all GUI elemets but the canvas during execution)
  * connect statusTips and whatIsThis
