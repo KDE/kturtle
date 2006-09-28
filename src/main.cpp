@@ -123,7 +123,7 @@ int main(int argc, char* argv[])
 
 		// load dictionary
 		if (args->isSet("lang")) {
-			if (Translator::instance()->loadDictionary(args->getOption("lang"))) {
+			if (Translator::instance()->setLanguage(args->getOption("lang"))) {
 				qDebug() << "Successfully loaded dictionary:" << args->getOption("lang") << "\n";
 			} else {
 				qDebug() << "Could not open dictionary:" << args->getOption("lang") << "\n";
@@ -131,7 +131,7 @@ int main(int argc, char* argv[])
 			}
 		} else {
 			qDebug() << "Using the built in (en_US) dictionary...\n";
-			Translator::instance()->loadDictionary(BUILT_IN_DICTIONARY_RESOURCE);
+			Translator::instance()->setLanguage("en_US");
 		}
 
 		// if output file is specified open it and set dump_signals to TRUE

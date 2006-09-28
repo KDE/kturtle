@@ -23,6 +23,9 @@
 #include <QChar>
 #include <QHash>
 #include <QString>
+#include <QStringList>
+
+#include <klocale.h>
 
 
 /**
@@ -46,10 +49,10 @@ class Translator
 	public:
 		static Translator* instance();
 
-		/** @short   Tries to load an XML dictionary.
-		    @param   xmlFile the file of the dictionary
-		    @returns TRUE is the loading was successful, otherwise FALSE */
-		bool loadDictionary(const QString &xmlFile);
+// // //		/** @short   Tries to load an XML dictionary.
+// // //		    @param   xmlFile the file of the dictionary
+// // //		    @returns TRUE is the loading was successful, otherwise FALSE */
+		bool setLanguage(const QString &lang_code);
 
 		/** @short Converts a unicode string to a token type.
 		    Uses the dictionary to do so.
@@ -76,6 +79,13 @@ class Translator
 
 		QHash<int, QList<QString> > token2stringsMap();
 
+		QString default2localized(QString& defaultLook) { return default2localizedMap[defaultLook]; }
+
+
+		QStringList exampleNames() const { return QStringList(examples.keys()); }
+
+		QString example(const QString& name) const { return examples[name]; }
+
 
 	protected:
 		/** @short Constructor. Does nothing special. */
@@ -91,15 +101,18 @@ class Translator
 	private:
 		static Translator* m_instance;
 
-		typedef QHash<QString, int> StringIntMap;
+		void setDictionary();
+		void setExamples();
 
-		/** The dictionary XML file maps international strings to standard
-		    strings, here these standard strings are mapped to Token types.
-		    In the look2typeMap the international strings are mapped directly
-		    to the types. The look2typeMap is build using this private method. */
-		int stringType2intType(QString typeString);
+		QString parseExampleTranslations(const QString& halfTranslatedExample);
+		QHash<QString, QString> examples;
 
-		StringIntMap look2typeMap;
+		QHash<QString, int> look2typeMap;
+		QHash<QString, QString> default2localizedMap;
+
+		KLocale* localizer;
+
+		QString currentLangugeCode;
 };
 
 

@@ -130,6 +130,7 @@ def new_item()
 
 	@type  = ''
 	@look  = ''
+	@localize = true
 	@ali   = ''
 	@p_def = ''
 	@e_def = ''
@@ -165,7 +166,25 @@ def parse_item()
 		@dictionary_xml += "\t</token>\n\n"
 	end
 
-	@translator_cpp += "\tif (typeString == \"#{@type}\")".ljust(40) + " return Token::#{@type};\n"
+# 	@translator_cpp += "\tif (typeString == \"#{@type}\")".ljust(40) + " return Token::#{@type};\n"
+
+	unless @look.empty?
+		if @localize
+			@translator_cpp +=
+<<EOS
+	localizedCommandLook = ki18nc(
+		"You are about to translate the '#{@type}' COMMAND, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translators.php to learn know how to properly translate it.",
+		"#{@look}").toString(localizer);
+	default2localizedMap["#{@look}"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::#{@type};
+
+EOS
+		else
+			escaped_look = (@look == '"') ? '\"' : @look
+			@translator_cpp += "\tlook2typeMap[\"#{escaped_look}\"] = Token::#{@type};\n\n"
+		end
+	end
 
 	if @funct =~ /statement/
 

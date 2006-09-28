@@ -110,6 +110,7 @@ class Editor : public QFrame
 	public slots:
 		bool newFile();
 		bool openFile(const KUrl &url = KUrl());
+		void openExample(const QString& example, const QString& exampleName);
 		bool saveFile(const KUrl &url = KUrl());
 		bool saveFileAs();
 		void toggleLineNumbers(bool b) { numbers->setVisible(b); }

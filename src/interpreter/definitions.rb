@@ -123,6 +123,7 @@ new_item()
 @type  = "VariablePrefix"
 @cat   = "Variable"
 @look  = "$"
+@localize = false
 parse_item()
 
 new_item()
@@ -253,6 +254,7 @@ new_item()
 @type  = "Comment"
 @cat   = "Comment"
 @look  = "#"
+@localize = false
 parse_item()
 
 
@@ -264,6 +266,7 @@ new_item()
 @type  = "StringDelimiter"
 @cat   = "String"
 @look  = "\""
+@localize = false
 parse_item()
 
 
@@ -273,6 +276,7 @@ new_item()
 @type  = "ScopeOpen"
 @cat   = "Scope"
 @look  = "{"
+@localize = false
 @funct = "statement"
 @p_def =
 <<EOS
@@ -290,6 +294,7 @@ new_item()
 @type  = "ScopeClose"
 @cat   = "Scope"
 @look  = "}"
+@localize = false
 @funct = "statement"
 @p_def =
 <<EOS
@@ -320,12 +325,14 @@ new_item()
 @type  = "ParenthesisOpen"
 @cat   = "Parenthesis"
 @look  = "("
+@localize = false
 parse_item()
 
 new_item()
 @type  = "ParenthesisClose"
 @cat   = "Parenthesis"
 @look  = ")"
+@localize = false
 parse_item()
 
 
@@ -697,6 +704,7 @@ new_item()
 @type  = "Equals"
 @cat   = "Expression"
 @look  = "=="
+@localize = false
 @funct = "node"
 @e_def = e_def_expression_creator(@look)
 parse_item()
@@ -705,6 +713,7 @@ new_item()
 @type  = "NotEquals"
 @cat   = "Expression"
 @look  = "!="
+@localize = false
 @funct = "node"
 @e_def = e_def_expression_creator(@look)
 parse_item()
@@ -713,6 +722,7 @@ new_item()
 @type  = "GreaterThan"
 @cat   = "Expression"
 @look  = ">"
+@localize = false
 @funct = "node"
 @e_def = e_def_expression_creator(@look)
 parse_item()
@@ -721,6 +731,7 @@ new_item()
 @type  = "LessThan"
 @cat   = "Expression"
 @look  = "<"
+@localize = false
 @funct = "node"
 @e_def = e_def_expression_creator(@look)
 parse_item()
@@ -729,6 +740,7 @@ new_item()
 @type  = "GreaterOrEquals"
 @cat   = "Expression"
 @look  = ">="
+@localize = false
 @funct = "node"
 @e_def = e_def_expression_creator(@look)
 parse_item()
@@ -737,6 +749,7 @@ new_item()
 @type  = "LessOrEquals"
 @cat   = "Expression"
 @look  = "<="
+@localize = false
 @funct = "node"
 @e_def = e_def_expression_creator(@look)
 parse_item()
@@ -748,6 +761,7 @@ new_item()
 @type  = "Addition"
 @cat   = "MathOperator"
 @look  = "+"
+@localize = false
 @funct = "node"
 @e_def =
 <<EOS
@@ -763,6 +777,7 @@ new_item()
 @type  = "Substracton"
 @cat   = "MathOperator"
 @look  = "-"
+@localize = false
 @funct = "node"
 @e_def =
 <<EOS
@@ -781,6 +796,7 @@ new_item()
 @type  = "Multiplication"
 @cat   = "MathOperator"
 @look  = "*"
+@localize = false
 @funct = "node"
 @e_def =
 <<EOS
@@ -799,6 +815,7 @@ new_item()
 @type  = "Division"
 @cat   = "MathOperator"
 @look  = "/"
+@localize = false
 @funct = "node"
 @e_def =
 <<EOS
@@ -817,6 +834,7 @@ new_item()
 @type  = "Power"
 @cat   = "MathOperator"
 @look  = "^" # or **
+@localize = false
 @funct = "node"
 @e_def =
 <<EOS
@@ -838,6 +856,7 @@ new_item()
 @type  = "Assign"
 @cat   = "Assignment"
 @look  = "="
+@localize = false
 @funct = "node"
 @e_def =
 <<EOS

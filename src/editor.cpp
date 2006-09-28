@@ -100,6 +100,15 @@ void Editor::setContent(const QString& s)
 	editor->document()->setModified(false);
 }
 
+void Editor::openExample(const QString& example, const QString& exampleName)
+{
+	if (newFile()) {
+		setContent(example);
+		setCurrentUrl(KUrl(exampleName));
+		editor->document()->setModified(false);
+	}
+}
+
 void Editor::textChanged(int pos, int removed, int added)
 {
 	Q_UNUSED(pos);
@@ -117,7 +126,7 @@ bool Editor::newFile()
 {
 	if (maybeSave()) {
 		changingMarkings = false;
-		isMarked = false;  // there are no char markers is a new file
+		isMarked = false;  // there are no char markers in a new file
 		editor->document()->clear();
 		setCurrentUrl();
 		markCurrentLine();  // current line marker

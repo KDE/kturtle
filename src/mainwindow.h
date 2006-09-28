@@ -37,7 +37,7 @@
 #include "editor.h"
 #include "valueaction.h"
 
-static const char* BUILT_IN_DICTIONARY_RESOURCE = ":interpreter/KTurtleDictionary.en_US.xml";
+// // // static const char* BUILT_IN_DICTIONARY_RESOURCE = ":interpreter/KTurtleDictionary.en_US.xml";
 
 
 class KAction;
@@ -103,11 +103,12 @@ class MainWindow : public KMainWindow
 		MainWindow();
 		~MainWindow();
 
-
 	public slots:
 		void open(const QString&);
 
 	private slots:
+		void openExample(const QString&);
+
 		void run();
 		void pause();
 		void abort();
@@ -135,7 +136,7 @@ class MainWindow : public KMainWindow
 		void setupDockWindows();
 		void setupEditor();
 		void setupInterpreter();
-		void setupLanguages();
+// // // 		void setupLanguages();
 		void setupMenus();
 		void setupToolBar();
 		void setupStatusBar();
@@ -170,7 +171,8 @@ class MainWindow : public KMainWindow
 		QString     *codeString;
 		int          runSpeed;
 
-		QHash<QString, QString> dictionaries;  // a <lang_code, dictionary_filename> - map
+// 		QList<QString> availableLanguages;
+// 		QHash<QString, QString> dictionaries;  // a <lang_code, dictionary_filename> - map
 		QHash<QString, ValueAction*> languageActions;  // a <lang_code, dictionary_filename> - map
 		QString currentLanguageCode;
 
