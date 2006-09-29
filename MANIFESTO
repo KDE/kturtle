@@ -8,8 +8,7 @@ KTurtle is an educatinal programming environment that aims to make programming a
 Specific features:
  * highlighting during execution (shows where the executer is executing)
  * highlighting of errors
- * all tools are easily available in the environment
  * intergrated error messages and help
- * fully translatable (language itself, error messages, GUI, manual... everything)
+ * fully translatable (the programming language itself, the examples, the error messages, the GUI, the manual... everything)
  * yet still RealCoding(tm), no clicky clicky stuff
-
+ * and everything in one program (instead of separate: debugger, documentation, IDE, interpreter, etc.)
