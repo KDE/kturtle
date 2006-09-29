@@ -484,13 +484,11 @@ void Translator::setExamples()
 				"@(pendown)\n"
 				"\n"
 				"@(repeat) 4 {\n"
-				"  @(for) $counter = 1 @(to) 100 {\n"
+				"  @(for) $x = 1 @(to) 100 {\n"
 				"    @(forward) 10\n"
-				"    @(turnright) 100 - $counter\n"
+				"    @(turnright) 100 - $x\n"
 				"  }\n"
 				"}\n"
-				"\n"
-				"print \"Finished!\""
 		).subs(exampleName).toString(localizer));
 }
 

@@ -116,4 +116,4 @@ class Translator
 };
 
 
-#endif // _TRANSLATOR_H_
+#endif  // _TRANSLATOR_H_

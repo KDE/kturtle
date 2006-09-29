@@ -65,9 +65,6 @@ class Interpreter : public QObject
 
 		void        interpret();
 
-		void        setDictionary(uint);
-// 		QStringList getDictionaries();
-
 		int         state() { return _state; }
 		void        abort() { _state = Aborted; }
 

@@ -43,17 +43,6 @@ Interpreter::Interpreter(QObject* parent)
 	_state = Uninitialized;
 }
 
-
-void Interpreter::setDictionary(uint)
-{
-	// when there'll be more that noe dictionairy
-}
-
-// QStringList Interpreter::getDictionaries()
-// {
-// 	return QStringList();
-// }
-
 void Interpreter::initialize(QTextStream& inStream)
 {
 	errorList->clear();

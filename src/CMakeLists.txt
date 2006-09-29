@@ -14,7 +14,7 @@ set (
     main.cpp
     mainwindow.cpp
     sprite.cpp
-    turtle.cpp
+#     turtle.cpp
     valueaction.cpp
     interpreter/echoer.cpp
     interpreter/errormsg.cpp

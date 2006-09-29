@@ -19,7 +19,9 @@ right now it _always_ has scrollbars; which is plain ugly. and i have try for ma
 
 
  = editor (QTextEdit) =
-# no bugs.
+# no known bugs.
 
 
 
+ = interpreter =
+# some examples crash
