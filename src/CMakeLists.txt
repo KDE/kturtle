@@ -1,6 +1,3 @@
-include (${CMAKE_ROOT}/Modules/FindQt4.cmake)
-include (${CMAKE_ROOT}/Modules/FindKDE4.cmake)
-
 include_directories (${CMAKE_SOURCE_DIR}/kturtle/interpreter)
 include_directories (${KDE4_INCLUDES})
 
@@ -68,10 +65,10 @@ install (
     ${XDG_APPS_DIR}
 )
 
-install (
-  FILES
-    interpreter/KTurtleDictionary.en_US.xml
-  DESTINATION
-    ${DATA_INSTALL_DIR}/kturtle/dictionaries
-)
+# install (
+#   FILES
+#     interpreter/KTurtleDictionary.en_US.xml
+#   DESTINATION
+#     ${DATA_INSTALL_DIR}/kturtle/dictionaries
+# )
 
