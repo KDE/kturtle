@@ -436,7 +436,7 @@ void Translator::setDictionary()
 
 	localizedCommandLook = ki18nc(
 		"You are about to translate the 'Random' COMMAND, there are some rules on how to translate it."
-		"Please see http://edu.kde.org/kturtle/translators.php to learn know how to properly translate it.",
+		"Please see http://edu.kde.org/kturtle/translators.php to know how to properly translate it.",
 		"random").toString(localizer);
 	default2localizedMap["random"] = localizedCommandLook;
 	look2typeMap[localizedCommandLook] = Token::Random;
@@ -455,11 +455,11 @@ void Translator::setExamples()
 
 	exampleName = ki18nc(
 		"This is an EXAMPLE NAME in KTurtle."
-		"Please see http://edu.kde.org/kturtle/translators.php to learn know how to properly translate it.",
+		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 		"triangle").toString(localizer);
 	examples[exampleName] = parseExampleTranslations(ki18nc(
-		"This is an EXAMPLE PROGRAM in KTurtle, example have to be translated in a speacial way."
-		"Please see http://edu.kde.org/kturtle/translators.php to learn know how to properly translate it.",
+		"You are about to translate the 'triangle' EXAMPLE PROGRAM, examples have to be translated in a speacial way."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
 				"# Example: %1\n"
 				"\n"
 				"@(repeat) 3 {\n"
@@ -470,12 +470,13 @@ void Translator::setExamples()
 
 	exampleName = ki18nc(
 		"This is an EXAMPLE NAME in KTurtle."
-		"Please see http://edu.kde.org/kturtle/translators.php to learn know how to properly translate it.",
+		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 		"curly").toString(localizer);
 	examples[exampleName] = parseExampleTranslations(ki18nc(
-		"This is an EXAMPLE PROGRAM in KTurtle, example have to be translated in a speacial way."
-		"Please see http://edu.kde.org/kturtle/translators.php to learn know how to properly translate it.",
+		"You are about to translate the 'curly' EXAMPLE PROGRAM, examples have to be translated in a speacial way."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 				"# Example: %1\n"
+				"# This example draws some nice curving shapes...\n"
 				"\n"
 				"@(reset)\n"
 				"@(penup)\n"
@@ -483,11 +484,13 @@ void Translator::setExamples()
 				"@(pendown)\n"
 				"\n"
 				"@(repeat) 4 {\n"
-				"  @(for) x = 1 @(to) 100 {\n"
+				"  @(for) $counter = 1 @(to) 100 {\n"
 				"    @(forward) 10\n"
-				"    @(turnright) 100 - x\n"
+				"    @(turnright) 100 - $counter\n"
 				"  }\n"
 				"}\n"
+				"\n"
+				"print \"Finished!\""
 		).subs(exampleName).toString(localizer));
 }
 

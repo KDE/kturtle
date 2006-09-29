@@ -147,7 +147,7 @@ def parse_item()
 <<EOS
 	localizedCommandLook = ki18nc(
 		"You are about to translate the '#{@type}' COMMAND, there are some rules on how to translate it."
-		"Please see http://edu.kde.org/kturtle/translators.php to learn know how to properly translate it.",
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
 		"#{@look}").toString(localizer);
 	default2localizedMap["#{@look}"] = localizedCommandLook;
 	look2typeMap[localizedCommandLook] = Token::#{@type};

@@ -19,8 +19,7 @@
 
 #include <QtDebug>
 
-// get rid of i18n for now...
-#define i18n QString
+#include <klocale.h>
 
 #include "value.h"
 
