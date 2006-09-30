@@ -271,7 +271,7 @@ class Executer : public QObject
 		void canvasSize(double, double);
 		void spriteShow();
 		void spriteHide();
-		void print(QString);
+		void print(const QString&);
 		void fontSize(double);
 
 //END GENERATED executer_emits_h CODE

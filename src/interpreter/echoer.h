@@ -105,8 +105,8 @@ class Echoer : public QObject
 				SLOT(spriteShow()));
 			connect(executer, SIGNAL(spriteHide()), 
 				SLOT(spriteHide()));
-			connect(executer, SIGNAL(print(QString)), 
-				SLOT(print(QString)));
+			connect(executer, SIGNAL(print(const QString&)), 
+				SLOT(print(const QString&)));
 			connect(executer, SIGNAL(fontSize(double)), 
 				SLOT(fontSize(double)));
 
@@ -149,7 +149,7 @@ class Echoer : public QObject
 		void canvasSize(double arg0, double arg1) { *output << "canvasSize" << "(" << arg0 << "," << arg1 << ")\n"; }
 		void spriteShow() { *output << "spriteShow" << "(" << ")\n"; }
 		void spriteHide() { *output << "spriteHide" << "(" << ")\n"; }
-		void print(QString arg0) { *output << "print" << "(" << arg0 << ")\n"; }
+		void print(const QString& arg0) { *output << "print" << "(" << arg0 << ")\n"; }
 		void fontSize(double arg0) { *output << "fontSize" << "(" << arg0 << ")\n"; }
 
 //END GENERATED echoer_slots_h CODE

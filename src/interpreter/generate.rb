@@ -23,7 +23,7 @@ require 'cgi'
 @type_dict = {
 	:bool   => ["Bool",   "bool()",   "bool"],
 	:number => ["Number", "number()", "double"],
-	:string => ["String", "string()", "QString"]
+	:string => ["String", "string()", "const QString&"]
 }
 
 @cat_hash = {}

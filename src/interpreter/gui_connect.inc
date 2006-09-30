@@ -64,8 +64,8 @@
 		canvas, SLOT(slotSpriteShow()));
 	connect(executer, SIGNAL(spriteHide()), 
 		canvas, SLOT(slotSpriteHide()));
-	connect(executer, SIGNAL(print(QString)), 
-		canvas, SLOT(slotPrint(QString)));
+	connect(executer, SIGNAL(print(const QString&)), 
+		canvas, SLOT(slotPrint(const QString&)));
 	connect(executer, SIGNAL(fontSize(double)), 
 		canvas, SLOT(slotFontSize(double)));
 

@@ -59,7 +59,7 @@ class Canvas : public QGraphicsView
 		void slotCanvasSize(double x, double y);
 		void slotSpriteShow();
 		void slotSpriteHide();
-		void slotPrint(QString text);
+		void slotPrint(const QString& text);
 		void slotFontType(QString family, QString extra);
 		void slotFontSize(double px);
 		void slotWrapOn();
@@ -89,6 +89,8 @@ class Canvas : public QGraphicsView
 		QList<QGraphicsLineItem*> lines;
 		QGraphicsLineItem *line;
 		bool penWidthIsZero;
+		QFont textFont;
+		QColor textColor;
 };
 
 #endif  // _CANVAS_H_

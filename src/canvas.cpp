@@ -20,7 +20,7 @@
 #include <cmath>
 
 #include <kdebug.h>
-// #include <klocale.h>
+#include <klocale.h>
 // #include <kmessagebox.h>
 
 // #include "settings.h"
@@ -80,6 +80,8 @@ void Canvas::initValues()
 	pen->setColor(Qt::black);
 	pen->setWidth(1);
 	penWidthIsZero = false;
+	
+	textColor.setRgb(0, 0, 0) ;
 }
 
 void Canvas::resizeEvent(QResizeEvent* event)
@@ -206,6 +208,8 @@ void Canvas::slotPenDown()
 void Canvas::slotPenColor(double r, double g, double b)
 {
 	pen->setColor(rgbDoublesToColor(r, g, b));
+	
+	textColor.setRgb((int)r, (int)g, (int)b);
 }
 
 void Canvas::slotCanvasColor(double r, double g, double b)
@@ -239,34 +243,27 @@ void Canvas::slotSpriteHide()
 	turtle->hide();
 }
 
-void Canvas::slotPrint(QString text)
+void Canvas::slotPrint(const QString& text)
 {
-	text = text;  // get rid of warning
-// 	Q3CanvasText* t = new Q3CanvasText(text, font, canvas);
-// 	// text does not do the wrapping, never... sorry
-// 	t->setColor( QColor(fgR, fgG, fgB) );
-// 	t->move(ROUND2INT(posX), ROUND2INT(posY));
-// 	t->show();
+	QGraphicsTextItem *ti = new QGraphicsTextItem(text.mid(1, text.length() - 2), 0, scene);
+// 	ti->setDefaultTextColor(textColor);
+	ti->setFont(textFont);
+	ti->setPos(turtle->pos().x(), turtle->pos().y());
 }
 
 void Canvas::slotFontType(QString family, QString extra)
 {
-	family = family;  // get rid of warning
-	extra = extra;
-
-// 	font.setFamily(family);
-// 	font.setBold( extra.contains("bold") > 0 );
-// 	font.setItalic( extra.contains("italic") > 0 );
-// 	font.setUnderline( extra.contains("underline") > 0 );
-// 	font.setOverline( extra.contains("overline") > 0 );
-// 	font.setStrikeOut( extra.contains("strikeout") > 0 );
+	textFont.setFamily(family);
+	textFont.setBold(extra.contains(i18n("bold")) > 0);
+	textFont.setItalic(extra.contains(i18n("italic")) > 0);
+	textFont.setUnderline(extra.contains(i18n("underline")) > 0);
+	textFont.setOverline(extra.contains(i18n("overline")) > 0);
+	textFont.setStrikeOut(extra.contains(i18n("strikeout")) > 0);
 }
 
 void Canvas::slotFontSize(double px)
 {
-	px = px;  // get rid of warning
-
-// 	font.setPixelSize(px);
+	textFont.setPixelSize((int)px);
 }
 
 void Canvas::slotWrapOn()
