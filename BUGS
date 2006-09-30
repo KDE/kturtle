@@ -1,9 +1,5 @@
 
  = canvas (QGraphicView) =
-# artifacts when drawing
-for instance a 'dashing' effect when it should produce straight lines, i.e.: "fw 100"
-the problem is gone after the canvas is rewritten (i.e.: after the window is resized) but it just should happen in the first place.
-
 # scrollbars
 i simply want the canvas to be its default size, in the center of the mainwindow; unit the mainwindow is too small for the canvas be fully shown, then it should have scrollbars.
 right now it _always_ has scrollbars; which is plain ugly. and i have try for many hours to solve it, but didn't manage.

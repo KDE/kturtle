@@ -114,17 +114,10 @@ QColor Canvas::rgbDoublesToColor(double r, double g, double b)
 void Canvas::drawLine(double x1, double y1, double x2, double y2)
 {
 	if (penWidthIsZero) return;
-	QGraphicsLineItem* line = scene->addLine(QLineF(x1, y1, x2, y2), *pen);
-// 	line->setPos(x1, y1);
-	line->show();
+	QGraphicsLineItem* line = new QGraphicsLineItem(QLineF(x1, y1, x2, y2), 0, scene);
+	line->setPen(*pen);
 	lines.append(line);
 }
-
-
-
-
-
-
 
 
 void Canvas::slotClear()

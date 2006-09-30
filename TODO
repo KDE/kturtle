@@ -25,7 +25,6 @@
 
  == canvas ==
  * f**king scrollbars!
- * fix 'dashed' drawing bug (drawing has many artifacts)
  * resizing of the canvas doesn't resize the actual canvas frame widget
  ---
  * context menu for save and print
