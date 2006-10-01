@@ -302,6 +302,13 @@ void Translator::setDictionary()
 	look2typeMap[localizedCommandLook] = Token::Clear;
 
 	localizedCommandLook = ki18nc(
+		"You are about to translate the 'Clear' COMMAND ALIAS, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"ccl").toString(localizer);
+	default2localizedMap["ccl"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::Clear;
+
+	localizedCommandLook = ki18nc(
 		"You are about to translate the 'Center' COMMAND, there are some rules on how to translate it."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
 		"center").toString(localizer);
@@ -323,10 +330,24 @@ void Translator::setDictionary()
 	look2typeMap[localizedCommandLook] = Token::GoX;
 
 	localizedCommandLook = ki18nc(
+		"You are about to translate the 'GoX' COMMAND ALIAS, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"gx").toString(localizer);
+	default2localizedMap["gx"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::GoX;
+
+	localizedCommandLook = ki18nc(
 		"You are about to translate the 'GoY' COMMAND, there are some rules on how to translate it."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
 		"goy").toString(localizer);
 	default2localizedMap["goy"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::GoY;
+
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'GoY' COMMAND ALIAS, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"gy").toString(localizer);
+	default2localizedMap["gy"] = localizedCommandLook;
 	look2typeMap[localizedCommandLook] = Token::GoY;
 
 	localizedCommandLook = ki18nc(
@@ -337,10 +358,24 @@ void Translator::setDictionary()
 	look2typeMap[localizedCommandLook] = Token::Forward;
 
 	localizedCommandLook = ki18nc(
+		"You are about to translate the 'Forward' COMMAND ALIAS, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"fw").toString(localizer);
+	default2localizedMap["fw"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::Forward;
+
+	localizedCommandLook = ki18nc(
 		"You are about to translate the 'Backward' COMMAND, there are some rules on how to translate it."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
 		"backward").toString(localizer);
 	default2localizedMap["backward"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::Backward;
+
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'Backward' COMMAND ALIAS, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"bw").toString(localizer);
+	default2localizedMap["bw"] = localizedCommandLook;
 	look2typeMap[localizedCommandLook] = Token::Backward;
 
 	localizedCommandLook = ki18nc(
@@ -351,10 +386,24 @@ void Translator::setDictionary()
 	look2typeMap[localizedCommandLook] = Token::Direction;
 
 	localizedCommandLook = ki18nc(
+		"You are about to translate the 'Direction' COMMAND ALIAS, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"dir").toString(localizer);
+	default2localizedMap["dir"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::Direction;
+
+	localizedCommandLook = ki18nc(
 		"You are about to translate the 'TurnLeft' COMMAND, there are some rules on how to translate it."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
 		"turnleft").toString(localizer);
 	default2localizedMap["turnleft"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::TurnLeft;
+
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'TurnLeft' COMMAND ALIAS, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"tl").toString(localizer);
+	default2localizedMap["tl"] = localizedCommandLook;
 	look2typeMap[localizedCommandLook] = Token::TurnLeft;
 
 	localizedCommandLook = ki18nc(
@@ -365,10 +414,24 @@ void Translator::setDictionary()
 	look2typeMap[localizedCommandLook] = Token::TurnRight;
 
 	localizedCommandLook = ki18nc(
+		"You are about to translate the 'TurnRight' COMMAND ALIAS, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"tr").toString(localizer);
+	default2localizedMap["tr"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::TurnRight;
+
+	localizedCommandLook = ki18nc(
 		"You are about to translate the 'PenWidth' COMMAND, there are some rules on how to translate it."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
 		"penwidth").toString(localizer);
 	default2localizedMap["penwidth"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::PenWidth;
+
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'PenWidth' COMMAND ALIAS, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"pw").toString(localizer);
+	default2localizedMap["pw"] = localizedCommandLook;
 	look2typeMap[localizedCommandLook] = Token::PenWidth;
 
 	localizedCommandLook = ki18nc(
@@ -379,10 +442,24 @@ void Translator::setDictionary()
 	look2typeMap[localizedCommandLook] = Token::PenUp;
 
 	localizedCommandLook = ki18nc(
+		"You are about to translate the 'PenUp' COMMAND ALIAS, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"pu").toString(localizer);
+	default2localizedMap["pu"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::PenUp;
+
+	localizedCommandLook = ki18nc(
 		"You are about to translate the 'PenDown' COMMAND, there are some rules on how to translate it."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
 		"pendown").toString(localizer);
 	default2localizedMap["pendown"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::PenDown;
+
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'PenDown' COMMAND ALIAS, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"pd").toString(localizer);
+	default2localizedMap["pd"] = localizedCommandLook;
 	look2typeMap[localizedCommandLook] = Token::PenDown;
 
 	localizedCommandLook = ki18nc(
@@ -393,10 +470,24 @@ void Translator::setDictionary()
 	look2typeMap[localizedCommandLook] = Token::PenColor;
 
 	localizedCommandLook = ki18nc(
+		"You are about to translate the 'PenColor' COMMAND ALIAS, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"pc").toString(localizer);
+	default2localizedMap["pc"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::PenColor;
+
+	localizedCommandLook = ki18nc(
 		"You are about to translate the 'CanvasColor' COMMAND, there are some rules on how to translate it."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
 		"canvascolor").toString(localizer);
 	default2localizedMap["canvascolor"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::CanvasColor;
+
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'CanvasColor' COMMAND ALIAS, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"cc").toString(localizer);
+	default2localizedMap["cc"] = localizedCommandLook;
 	look2typeMap[localizedCommandLook] = Token::CanvasColor;
 
 	localizedCommandLook = ki18nc(
@@ -407,6 +498,13 @@ void Translator::setDictionary()
 	look2typeMap[localizedCommandLook] = Token::CanvasSize;
 
 	localizedCommandLook = ki18nc(
+		"You are about to translate the 'CanvasSize' COMMAND ALIAS, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"cs").toString(localizer);
+	default2localizedMap["cs"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::CanvasSize;
+
+	localizedCommandLook = ki18nc(
 		"You are about to translate the 'SpriteShow' COMMAND, there are some rules on how to translate it."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
 		"spriteshow").toString(localizer);
@@ -414,10 +512,24 @@ void Translator::setDictionary()
 	look2typeMap[localizedCommandLook] = Token::SpriteShow;
 
 	localizedCommandLook = ki18nc(
+		"You are about to translate the 'SpriteShow' COMMAND ALIAS, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"ss").toString(localizer);
+	default2localizedMap["ss"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::SpriteShow;
+
+	localizedCommandLook = ki18nc(
 		"You are about to translate the 'SpriteHide' COMMAND, there are some rules on how to translate it."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
 		"spritehide").toString(localizer);
 	default2localizedMap["spritehide"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::SpriteHide;
+
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'SpriteHide' COMMAND ALIAS, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"sh").toString(localizer);
+	default2localizedMap["sh"] = localizedCommandLook;
 	look2typeMap[localizedCommandLook] = Token::SpriteHide;
 
 	localizedCommandLook = ki18nc(
@@ -439,6 +551,13 @@ void Translator::setDictionary()
 		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
 		"random").toString(localizer);
 	default2localizedMap["random"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::Random;
+
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'Random' COMMAND ALIAS, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"rnd").toString(localizer);
+	default2localizedMap["rnd"] = localizedCommandLook;
 	look2typeMap[localizedCommandLook] = Token::Random;
 
 

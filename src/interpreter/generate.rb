@@ -143,16 +143,21 @@ def parse_item()
 
 	unless @look.empty?
 		if @localize
-			@translator_cpp +=
-<<EOS
+			def translate_cpp_string(type, what, look)
+				return <<EOS
 	localizedCommandLook = ki18nc(
-		"You are about to translate the '#{@type}' COMMAND, there are some rules on how to translate it."
+		"You are about to translate the '#{type}' #{what}, there are some rules on how to translate it."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
-		"#{@look}").toString(localizer);
-	default2localizedMap["#{@look}"] = localizedCommandLook;
-	look2typeMap[localizedCommandLook] = Token::#{@type};
+		"#{look}").toString(localizer);
+	default2localizedMap["#{look}"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::#{type};
 
 EOS
+			end
+			@translator_cpp += translate_cpp_string(@type, 'COMMAND', @look)
+			unless @ali.empty?
+				@translator_cpp += translate_cpp_string(@type, 'COMMAND ALIAS', @ali)
+			end
 		else
 			escaped_look = (@look == '"') ? '\"' : @look
 			@translator_cpp += "\tlook2typeMap[\"#{escaped_look}\"] = Token::#{@type};\n\n"
