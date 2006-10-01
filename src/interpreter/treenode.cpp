@@ -24,8 +24,7 @@
 
 TreeNode::~TreeNode()
 {
-	if (childList != 0)
-	{
+	if (childList != 0) {
 		// this should work here:
 		qDeleteAll(*childList);
 		childList->clear();
@@ -111,8 +110,7 @@ void TreeNode::showTree(QString& str, int indent)
 	if (childList == 0) return;
 	indent++;
 	TreeNode* node;
-	for (int i = 0; i < childList->size(); i++)
-	{
+	for (int i = 0; i < childList->size(); i++) {
 		node = childList->at(i);
 		node->show(str, indent);
 		node->showTree(str, indent);
