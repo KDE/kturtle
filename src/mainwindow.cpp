@@ -617,7 +617,7 @@ bool MainWindow::setLanguage(const QString& lang_code)
 // // // 	QString dictionary = dictionaries[lang_code];
 	if (Translator::instance()->setLanguage(lang_code)) {
 		currentLanguageCode = lang_code;
-		statusBarLanguageLabel->setText(" " + codeToFullName(lang_code) + " ");
+		statusBarLanguageLabel->setText(' ' + codeToFullName(lang_code) + ' ');
 		updateExamplesMenu(lang_code);
 		result = true;
 	} else {
@@ -631,7 +631,7 @@ const QString& MainWindow::codeToFullName(const QString& lang_code)
 {
 	return *new QString(lang_code.isNull() ?
 			i18n("%1 [built in]", codeToFullName("en_US")) :
-			KGlobal::locale()->twoAlphaToLanguageName(lang_code.left(2)) + " (" + lang_code + ")"
+			KGlobal::locale()->twoAlphaToLanguageName(lang_code.left(2)) + " (" + lang_code + ')'
 		);
 }
 
