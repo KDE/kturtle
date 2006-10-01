@@ -17,7 +17,7 @@
 */
 
 
-// This file is originally written by Walter Scheppers, but allmost
+// This file is originally written by Walter Scheppers, but almost
 // every aspect of it is slightly changed by Cies Breijs.
 
 
@@ -66,7 +66,7 @@ void Executer::execute()
 	qDebug() << "Executer::execute() -- main execute loop called";
 
 	if (executeCurrent) {
-		// executeCurrent is used to make shure the currentNode will be executed
+		// executeCurrent is used to make sure the currentNode will be executed
 		// this way the tree will not be walked before the execution...
 		qDebug() << ">> jumping to tree node, and executing: " << currentNode->token()->look();
 		executeCurrent = false;
@@ -344,7 +344,7 @@ void Executer::executeVariable(TreeNode* node) {
 		qDebug() << "exists globally";
 		node->setValue(globalVariableTable[node->token()->look()]);
 	} else {
-		addError(i18n("The variable '%1' was used without first beeing assigned to a value", node->token()->look()), *node->token(), 0);
+		addError(i18n("The variable '%1' was used without first being assigned to a value", node->token()->look()), *node->token(), 0);
 	}
 }
 void Executer::executeFunctionCall(TreeNode* node) {
@@ -431,7 +431,7 @@ void Executer::executeRepeat(TreeNode* node) {
 }
 void Executer::executeWhile(TreeNode* node) {
 	qDebug() << "Executer::executeWhile()";
-	// first time this gets called the expression is allready executed
+	// first time this gets called the expression is already executed
 	// after one iteration the expression is not automatically re-executed.
 	// so we do the following on every call to executeWhile:
 	//     exec scope, exec expression, exec scope, exec expresion, ...
@@ -456,9 +456,9 @@ void Executer::executeFor(TreeNode* node) {
 }
 void Executer::executeForTo(TreeNode* node) {
 	qDebug() << "Executer::executeForTo()";
-	// first time this gets called the expressions are allready executed
+	// first time this gets called the expressions are already executed
 	// after one iteration the expression is not re-executed.
-	// so we do: exec scope, exec expressions, exec scope, exec expresions, ...
+	// so we do: exec scope, exec expressions, exec scope, exec expressions, ...
 
 	bool firstIteration = false;
 	if (functionStack.isEmpty() || functionStack.top().function != node) {

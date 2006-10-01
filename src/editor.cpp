@@ -207,7 +207,7 @@ bool Editor::saveFileAs()
 	if (url.isEmpty()) return false;
 	if (KIO::NetAccess::exists(url, true, this) &&
 		KMessageBox::warningContinueCancel(this,
-			i18n("Are you shure you want to overwrite %1", url.fileName()),
+			i18n("Are you sure you want to overwrite %1", url.fileName()),
 			i18n("Overwrite Existing File"),KGuiItem(i18n("&Overwrite")),
 			i18n("&Overwrite")
 			) != KMessageBox::Continue

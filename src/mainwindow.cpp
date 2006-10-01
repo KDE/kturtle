@@ -215,10 +215,10 @@ void MainWindow::setupActions()
 	a->setStatusTip(i18n("Search through the code in the editor"));
 
 	a = KStdAction::findNext(editor, SLOT(findNext()), ac);
-	a->setStatusTip(i18n("Find the next occurence"));
+	a->setStatusTip(i18n("Find the next occurrence"));
 
 	a = KStdAction::findPrev(editor, SLOT(findPrev()), ac);
-	a->setStatusTip(i18n("Find the previous occurence"));
+	a->setStatusTip(i18n("Find the previous occurrence"));
 
 	a = KStdAction::replace(editor, SLOT(replace()), ac);
 	a->setStatusTip(i18n("Search and replace"));
@@ -648,7 +648,7 @@ void MainWindow::run()
 		interpreter->initialize(*codeStream);
 	}
 
-	// start parsing (allways in full speed)
+	// start parsing (always in full speed)
 	iterationTimer->setSingleShot(false);
 	iterationTimer->start(0);
 }

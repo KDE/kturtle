@@ -54,7 +54,7 @@ void Interpreter::interpret()
 {
 	switch (_state) {
 		case Uninitialized:
-			qCritical("Interpreter::interpret(): called without beeing initialized");
+			qCritical("Interpreter::interpret(): called without being initialized");
 			return;
 
 
@@ -74,7 +74,7 @@ void Interpreter::interpret()
 				qDebug() << "Error encountered while parsing:";
 				QStringList lines = errorList->asString().split('\n');
 				foreach (QString line, lines) qDebug() << line;
-				qDebug() << "Aborting because parsing was unsuccesful...";
+				qDebug() << "Aborting because parsing was unsuccessful...";
 				return;
 			}
 
@@ -91,7 +91,7 @@ void Interpreter::interpret()
 // 					qDebug() << "Parsing returned " << errorList->count() << " error(s):";
 // 					QStringList lines = errorList->asString().split('\n');
 // 					foreach (QString line, lines) qDebug(line.toLatin1());
-// 					qDebug() << "Aborting because parsing was unsuccesful...";
+// 					qDebug() << "Aborting because parsing was unsuccessful...";
 // 					exit(0);
 // 				}
 
