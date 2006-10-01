@@ -52,15 +52,15 @@ void TreeNode::appendChild(TreeNode* newChild)
 	if (childList == 0) childList = new ChildList();
 	newChild->setParent(this);
 	childList->append(newChild);
-// 		QString out = QString("TreeNode::appendChild(): \"%5\" [%6] @ (%1,%2)-(%3,%4) to parent '%7'")
-// 			.arg(newChild->token()->startRow())
-// 			.arg(newChild->token()->startCol())
-// 			.arg(newChild->token()->endRow())
-// 			.arg(newChild->token()->endCol())
-// 			.arg(newChild->token()->look())
-// 			.arg(newChild->token()->type())
-// 			.arg(_token->look());
-	qDebug() << "TreeNode::appendChild():" << newChild->token()->look() << " on line" << newChild->token()->startRow() << "to parent" << _token->look();
+// // // 		QString out = QString("TreeNode::appendChild(): \"%5\" [%6] @ (%1,%2)-(%3,%4) to parent '%7'")
+// // // 			.arg(newChild->token()->startRow())
+// // // 			.arg(newChild->token()->startCol())
+// // // 			.arg(newChild->token()->endRow())
+// // // 			.arg(newChild->token()->endCol())
+// // // 			.arg(newChild->token()->look())
+// // // 			.arg(newChild->token()->type())
+// // // 			.arg(_token->look());
+// 	qDebug() << "TreeNode::appendChild():" << newChild->token()->look() << " on line" << newChild->token()->startRow() << "to parent" << _token->look();
 }
 
 
@@ -97,7 +97,7 @@ TreeNode* TreeNode::nextSibling()
 }
 
 
-QString TreeNode::asString()
+QString TreeNode::toString()
 {
 	QString str = "";
 	showTree(str);
@@ -120,7 +120,7 @@ void TreeNode::showTree(QString& str, int indent)
 void TreeNode::show(QString& str, int indent) const
 {
 	QString indentString = "";
-	for (int i = 0; i < indent; i++) indentString += ">  ";
+	for (int i = 0; i < indent; i++) indentString += "> ";
 	str += indentString + _token->look() + QString(" @ (%1, %2)-(%3, %4)\n")
 		.arg(_token->startRow())
 		.arg(_token->startCol())

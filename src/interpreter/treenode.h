@@ -117,7 +117,7 @@ class TreeNode
 
 
 		/** @returns the node tree, starting from 'this' node, as a multi line string */
-		QString asString();
+		QString toString();
 
 
 

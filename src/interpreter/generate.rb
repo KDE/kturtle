@@ -201,7 +201,7 @@ EOS
 		@p_def =
 <<EOS
 TreeNode* Parser::parse#{@type}() {
-	qDebug() << "Parser::parse#{@type}()";
+//	qDebug() << "Parser::parse#{@type}()";
 #{@p_def}}
 EOS
 		@parser_cpp += @p_def
@@ -240,7 +240,11 @@ EOS
 					e_def_emit_call_args += "node->child(#{i})->value()->#{@type_dict[arg][1]}, "
 					arguments_str += @type_dict[arg][2] + ", "
 					named_arguments_str += "#{@type_dict[arg][2]} arg#{i}, "
-					output_arguments_code += "arg#{i} << \",\" << "
+					if arg == :string
+						output_arguments_code += "qPrintable(arg#{i}) << \",\" << "
+					else
+						output_arguments_code += "arg#{i} << \",\" << "
+					end
 					i = i + 1
 				end
 				e_def_emit_call_args = e_def_emit_call_args[0..-3]  # strip the extra ', '
@@ -251,8 +255,8 @@ EOS
 
 			@e_def += "\temit #{method_name_str}(#{e_def_emit_call_args});\n"
 			@executer_emits_h += "\t\tvoid #{method_name_str}(#{arguments_str});\n"
-			@echoer_connect_h += "\t\t\tconnect(executer, SIGNAL(#{method_name_str}(#{arguments_str})), \n\t\t\t\tSLOT(#{method_name_str}(#{arguments_str})));\n"
-			@echoer_slots_h   += "\t\tvoid #{method_name_str}(#{named_arguments_str}) { *output << \"#{method_name_str}\" << \"(\" << #{output_arguments_code}\")\\n\"; }\n"
+			@echoer_connect_h += "\t\t\tconnect(executer, SIGNAL(#{method_name_str}(#{arguments_str})),\n\t\t\t\tSLOT(#{method_name_str}(#{arguments_str})));\n"
+			@echoer_slots_h   += "\t\tvoid #{method_name_str}(#{named_arguments_str}) { std::cout << \"SIG> \" << \"#{method_name_str}\" << \"(\" << #{output_arguments_code}\")\" << std::endl; }\n"
 			@gui_connect_inc  += "\tconnect(executer, SIGNAL(#{method_name_str}(#{arguments_str})), \n\t\tcanvas, SLOT(slot#{method_name_str[0..0].upcase+method_name_str[1..-1]}(#{arguments_str})));\n"
 		end
 
@@ -264,7 +268,7 @@ EOS
 			@executer_cpp +=
 <<EOS
 void Executer::execute#{@type}(TreeNode* node) {
-	qDebug() << "Executer::execute#{@type}()";
+//	qDebug() << "Executer::execute#{@type}()";
 #{@e_def}}
 EOS
 		end

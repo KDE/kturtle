@@ -17,77 +17,53 @@
 */
 
 
-// general stuff
-#include <kaboutdata.h>
-#include <kapplication.h>
-#include <kcmdlineargs.h>
-#include <klocale.h>
-
-
-// for gui execution
-#include "mainwindow.h"
-
-
-// for nogui execution
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
 
 #include <QString>
 #include <QFile>
 #include <QTextStream>
 
-#include <QDebug>
+#include <kaboutdata.h>
+#include <kapplication.h>
+#include <kcmdlineargs.h>
+#include <klocale.h>
 
-#include "interpreter/interpreter.h"
+#include "mainwindow.h"  // for gui mode
+
+#include "interpreter/interpreter.h"  // for non gui mode
 #include "interpreter/echoer.h"
-
-
-void messageOutput(QtMsgType type, const char *msg) {
-	// message handler for nogui execution
-	switch (type) {
-		case QtDebugMsg:    fprintf(stderr, "debug: %s\n", msg);    break;
-		case QtWarningMsg:  fprintf(stderr, "warning: %s\n", msg);  break;
-		case QtCriticalMsg: fprintf(stderr, "critical: %s\n", msg); break;
-		case QtFatalMsg:    fprintf(stderr, "fatal: %s\n", msg);    abort();
-	}
-}
 
 
 static const char description[] =
 	I18N_NOOP("KTurtle; an educational programming environment.");
 
 static const char version[]   = "0.8 beta";
-static const char copyright[] = "(C) 2006 Cies Breijs";
+static const char copyright[] = "(c) 2003-2006 Cies Breijs";
 static const char website[]   = "http://edu.kde.org/kturtle";
 
 static KCmdLineOptions options[] = {
-	{"n", 0, 0},
-	{"nogui", I18N_NOOP("Starts KTurtle without a GUI (i.e. for unit testing)"), 0},
 	{"i", 0, 0},
-	{"input <URL or file>", I18N_NOOP("File to open (in noGUI mode it is also run)"), 0},
-	{"o", 0, 0},
-	{"output <file>", I18N_NOOP("File to write the output to, by default the output is printed to the stdout (only works in nonGUI mode)"), 0 },
+	{"input <URL or file>", I18N_NOOP("File to open (in the GUI mode)"), 0},
+	{"t", 0, 0},
+	{"test <file>", I18N_NOOP("Starts KTurtle in testing mode (without a GUI), directly runs the specified local file"), 0},
 	{"l", 0, 0},
-	{"lang <code>", I18N_NOOP("Language code of the dictionary to use, defaults to built in \"en_US\" (only works in nonGUI mode)"), 0},
+	{"lang <code>", I18N_NOOP("Specifies the localization language by a language code, defaults to \"en_US\" (only works in testing mode)"), 0},
 	KCmdLineLastOption
 };
 
 
 int main(int argc, char* argv[])
 {
-	KAboutData about("kturtle", I18N_NOOP("KTurtle"), version, description, KAboutData::License_GPL, copyright, 0, website);
-	about.addAuthor("Cies Breijs",
-	      I18N_NOOP("Initiator and core developer"),
-	                "cies # kde.nl");
+	KAboutData aboutData("kturtle", I18N_NOOP("KTurtle"), version, description, KAboutData::License_GPL, copyright, 0, website);
+	aboutData.addAuthor("Cies Breijs",
+	          I18N_NOOP("Initiator and core developer"),
+	                    "cies # kde.nl");
 
-	// include the only resources, namely: the default language (en_US) files
-// 	Q_INIT_RESOURCE(resources);
-
-	KCmdLineArgs::init(argc, argv, &about);
+	KCmdLineArgs::init(argc, argv, &aboutData);
 	KCmdLineArgs::addCmdLineOptions(options);
 	KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
 
-	if (args->isSet("gui")) {
+	if (!args->isSet("test")) {
 
 		///////////////// run in gui mode /////////////////
 		KApplication app;
@@ -104,72 +80,55 @@ int main(int argc, char* argv[])
 	} else {
 
 		///////////////// run without a gui /////////////////
-		qDebug() << "A command line interface to the KTurtle interpreter";
-		qDebug() << "Copyright (c) 2005-2006 by Cies Breijs\n";
+		std::cout << "KTurtle's interpreter in command line mode (version " << version << ")" << std::endl;
+		std::cout << copyright << std::endl << std::endl;
 
-		QFile inputFile (args->isSet("input")  ? args->getOption("input")  : "");
-		QFile outputFile(args->isSet("output") ? args->getOption("output") : "");
+		QFile inputFile(args->getOption("test"));
 
-		if (args->isSet("input")) {
-			// open input file
-			if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-				qDebug() << "Could not open input file:" << args->getOption("input");
-				return 1;
-			}
-		} else {
-			qDebug() << "No input file was specified, so nothing has to be done...\n";
-			return 0;
+		if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+			std::cout << "Could not open input file: " << qPrintable(QFile::decodeName(args->getOption("test"))) << std::endl;
+			std::cout << "Exitting..." << std::endl;
+			return 1;
 		}
 
-		// load dictionary
+		new KInstance(&aboutData);  // need a KInstance since we're using KLocale in the Translator class
+
 		if (args->isSet("lang")) {
 			if (Translator::instance()->setLanguage(args->getOption("lang"))) {
-				qDebug() << "Successfully loaded dictionary:" << args->getOption("lang") << "\n";
+				std::cout << "Set localization to: " << args->getOption("lang").data() << std::endl;
 			} else {
-				qDebug() << "Could not open dictionary:" << args->getOption("lang") << "\n";
+				std::cout << "Could not set localization to:" << args->getOption("lang").data() << std::endl;
+				std::cout << "Exitting...\n";
 				return 1;
 			}
 		} else {
-			qDebug() << "Using the built in (en_US) dictionary...\n";
-			Translator::instance()->setLanguage("en_US");
-		}
-
-		// if output file is specified open it and set dump_signals to TRUE
-		bool dump_signals = false;
-		if (args->isSet("output")) {
-			if (!outputFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text)) {
-				qDebug() << "Could not open output file:" << args->getOption("output") << "\n";
-				return 1;
-			}
-			dump_signals = true;
+			Translator::instance()->setLanguage();
+			std::cout << "Using the default (en_US) localization..." << std::endl;
 		}
 
 		args->clear();  // free some memory
 
-		// install the msg handler
-		qInstallMsgHandler(messageOutput);
-
 		// init the interpreter
-		Interpreter* interpreter = new Interpreter();
+		Interpreter* interpreter = new Interpreter(0, true);  // set testing to true
 		QTextStream inputStream(&inputFile);
 		interpreter->initialize(inputStream);
 
-		// connect the Executer to the Echoer if dump_signals is TRUE
-		QTextStream* outputStream;  // do not create too locally ;-)
-		Echoer* echoer;
-		if (dump_signals) {
-			Executer* executer = interpreter->getExecuter();
-			outputStream = new QTextStream(&outputFile);
-			echoer = new Echoer(*outputStream);
-			echoer->connectAllSlots(executer);
-		}
+		// install the echoer
+		(new Echoer())->connectAllSlots(interpreter->getExecuter());
 
-		// the actual execution
-		while (interpreter->state() != Interpreter::Finished) interpreter->interpret();
+		// the actual execution (limited to a certainamount of iterations to break endless loops)
+		static const int MAX_ITERATION_STEPS = 5000;
+		int i = 0;
+		for (; interpreter->state() != Interpreter::Finished &&
+		       interpreter->state() != Interpreter::Aborted  &&
+		       i < MAX_ITERATION_STEPS; i++)
+			interpreter->interpret();
 
-		// close the files
+		if (i == MAX_ITERATION_STEPS)
+			std::cout << "ERR> Iterated more than " << MAX_ITERATION_STEPS << " steps... Execution terminated." << std::endl;
+
 		inputFile.close();
-		if (dump_signals) outputFile.close();
+		std::cout << "Finished..." << std::endl;
 	}
 
 	return 0;

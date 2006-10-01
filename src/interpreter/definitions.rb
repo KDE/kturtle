@@ -464,10 +464,10 @@ new_item()
 @p_def = p_def_repeat_while
 @e_def =
 <<EOS
-	// first time this gets called the expression is allready executed
+	// first time this gets called the expression is already executed
 	// after one iteration the expression is not automatically re-executed.
 	// so we do the following on every call to executeWhile:
-	//     exec scope, exec expression, exec scope, exec expresion, ...
+	//     exec scope, exec expression, exec scope, exec expression, ...
 
 	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
 	if (currentVariableTable()->contains(id)) {
@@ -539,9 +539,9 @@ new_item()
 @funct = "node"
 @e_def =
 <<EOS
-	// first time this gets called the expressions are allready executed
+	// first time this gets called the expressions are already executed
 	// after one iteration the expression is not re-executed.
-	// so we do: exec scope, exec expressions, exec scope, exec expresions, ...
+	// so we do: exec scope, exec expressions, exec scope, exec expressions, ...
 
 	bool firstIteration = false;
 	if (functionStack.isEmpty() || functionStack.top().function != node) {

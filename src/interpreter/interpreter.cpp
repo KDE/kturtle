@@ -32,13 +32,13 @@
 #include "interpreter.h"
 
 
-Interpreter::Interpreter(QObject* parent)
-	: QObject(parent)
+Interpreter::Interpreter(QObject* parent, bool testing)
+	: QObject(parent), m_testing(testing)
 {
 	errorList  = new ErrorList();
 	tokenizer  = new Tokenizer();
-	parser     = new Parser();
-	executer   = new Executer();
+	parser     = new Parser(testing);
+	executer   = new Executer(testing);
 
 	_state = Uninitialized;
 }
@@ -59,7 +59,7 @@ void Interpreter::interpret()
 
 
 		case Initialized:
-			qDebug() << "Initializing Parser";
+			qDebug() << "Initializing Parser...";
 			parser->initialize(tokenizer, errorList);
 			_state = Parsing;
 			emit parsing();
@@ -74,18 +74,20 @@ void Interpreter::interpret()
 				qDebug() << "Error encountered while parsing:";
 				QStringList lines = errorList->asString().split('\n');
 				foreach (QString line, lines) qDebug() << line;
-				qDebug() << "Aborting because parsing was unsuccessful...";
+				qDebug() << "Parsing was unsuccessful.";
 				return;
 			}
 
 			if (parser->isFinished()) {
-				qDebug() << "Finished parsing\n\n";
-				TreeNode* tree = parser->getTree();
-				QString treeString = tree->asString();
-				qDebug() << "Node tree as returned by parser:";
-				QStringList lines = treeString.split('\n');
-				foreach (QString line, lines) qDebug() << line;
-				qDebug() << "\n\n";
+				qDebug() << "Finished parsing.\n\n";
+				TreeNode* tree = parser->getRootNode();
+				if (m_testing) {
+					parser->printTree();
+				} else {
+					qDebug() << "Node tree as returned by parser:";
+					parser->printTree();
+					qDebug() << "\n\n";
+				}
 
 // 				if (errorList->count() > 0) {
 // 					qDebug() << "Parsing returned " << errorList->count() << " error(s):";
@@ -108,13 +110,13 @@ void Interpreter::interpret()
 			executer->execute();
 
 			if (executer->isFinished()) {
-				qDebug() << "Finished executing\n\n";
+				qDebug() << "Finished executing.\n\n";
 				if (encounteredErrors()) {
 					qDebug() << "Parsing and execution returned " << errorList->count() << " error(s):";
 					QStringList lines = errorList->asString().split('\n');
 					foreach (QString line, lines) qDebug() << line;
 				} else {
-					qDebug() << "Parsed and executed code without encountering any errors...";
+					qDebug() << "Parsed and executed code without encountering any errors.";
 				}
 				_state = Finished;
 				emit finished();

@@ -27,7 +27,8 @@
 // TODO write in the Dictionary about the limitations of specific looks
 
 
-void Tokenizer::initialize(QTextStream& inStream) {
+void Tokenizer::initialize(QTextStream& inStream)
+{
 	translator  = Translator::instance();
 	inputStream = &inStream;
 	row = 1;
@@ -37,7 +38,8 @@ void Tokenizer::initialize(QTextStream& inStream) {
 }
 
 
-Token* Tokenizer::getToken() {
+Token* Tokenizer::getToken()
+{
 	int startRow = row;
 	int startCol = col;
 	
@@ -164,7 +166,8 @@ Token* Tokenizer::getToken() {
 }
 
 
-QChar Tokenizer::getChar() {
+QChar Tokenizer::getChar()
+{
 	QChar c;
 	if (prevChar.isNull()) {
 // // // // // 		if (inputStream->atEnd()) {             // these 5x commeted blocks are nice but currently not working
@@ -184,7 +187,8 @@ QChar Tokenizer::getChar() {
 }
 
 
-void Tokenizer::ungetChar(QChar c) {
+void Tokenizer::ungetChar(QChar c)
+{
 // // // // // 	if (inputStream->atEnd()) {
 // // // // // 		prevChar = QChar();
 // // // // // 		return;
@@ -202,7 +206,8 @@ void Tokenizer::ungetChar(QChar c) {
 }
 
 
-void Tokenizer::updatePosition(QChar c) {
+void Tokenizer::updatePosition(QChar c)
+{
 	if (c == '\x0a' || c == '\n') {  // TODO something to not use these
 		row++;
 		prevCol = col;

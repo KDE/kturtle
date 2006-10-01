@@ -47,7 +47,7 @@ class Interpreter : public QObject
 		/**
 		 * Default Constructor
 		 */
-		Interpreter(QObject* parent = 0);
+		Interpreter(QObject* parent = 0, bool testing = false);
 
 		/**
 		 * Default Destructor
@@ -86,6 +86,8 @@ class Interpreter : public QObject
 
 		ErrorList     *errorList;
 
+		bool           m_testing;
+
 
 	signals:
 		void parsing();
@@ -93,4 +95,4 @@ class Interpreter : public QObject
 		void finished();
 };
 
-#endif // _INTERPRETER_H_
+#endif  // _INTERPRETER_H_

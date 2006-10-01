@@ -44,7 +44,7 @@ class Parser
 		 * @short Constructor. Initialses the Parser.
 		 * does nothing special. @see initialize().
 		 */
-		Parser() {}
+		Parser(bool testing = false) : m_testing(testing) {}
 
 		/**
 		 * @short Destructor. Does nothing special.
@@ -85,14 +85,15 @@ class Parser
 		 * to the Executer.
 		 * @returns The pointer to the root node.
 		 */
-		TreeNode*    getTree() const    { return rootNode; }
+		TreeNode*    getRootNode() const    { return rootNode; }
 
+		void         printTree() const;
 
 	private:
 		void         nextToken();
 		bool         matchToken(int expectedTokenType);
 		bool         matchToken(int expectedTokenType, Token& byToken);
-		void         addError(const QString& s, const Token& t, int code) { errorList->addError(s, t, code); }
+		void         addError(const QString& s, const Token& t, int code);
 		void         appendArguments(TreeNode* node);
 
 		TreeNode*    parseStatement();
@@ -110,6 +111,7 @@ class Parser
 		Token       *currentToken;
 		bool         finished;
 
+		bool         m_testing;
 
 
 // Next you find individual parse functions as generated:

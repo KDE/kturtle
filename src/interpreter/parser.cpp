@@ -17,6 +17,8 @@
 */
 
 
+#include <iostream>
+
 #include <QtDebug>
 
 #include <klocale.h>
@@ -25,7 +27,8 @@
 
 
 
-void Parser::initialize(Tokenizer* _tokenizer, ErrorList* _errorList) {
+void Parser::initialize(Tokenizer* _tokenizer, ErrorList* _errorList)
+{
 	tokenizer    = _tokenizer;
 	errorList    = _errorList;
 
@@ -37,11 +40,12 @@ void Parser::initialize(Tokenizer* _tokenizer, ErrorList* _errorList) {
 	nextToken();
 }
 
-void Parser::parse() {
+void Parser::parse()
+{
 	if (finished)
 		return;
 
-	qDebug() << "Parser::parse() -- main parse loop called";
+// 	qDebug() << "Parser::parse() -- main parse loop called";
 	TreeNode* resultNode = parseStatement();  // parse the next statement
 	if (resultNode == 0) {  // no statement was found
 		addError(QString("Expected a command, instead got '%1'").arg(currentToken->look()), *currentToken, 0);
@@ -61,7 +65,8 @@ void Parser::parse() {
 	}
 }
 
-void Parser::nextToken() {
+void Parser::nextToken()
+{
 	// get the next relevant token, and store it in currentToken
 
 	// skip spaces and comments:
@@ -86,7 +91,8 @@ void Parser::nextToken() {
 }
 
 
-bool Parser::matchToken(int expectedTokenType) {
+bool Parser::matchToken(int expectedTokenType)
+{
 	if (currentToken->type() == expectedTokenType) {
 		nextToken();
 		return true;
@@ -94,13 +100,13 @@ bool Parser::matchToken(int expectedTokenType) {
 	return false;
 }
 
-bool Parser::matchToken(int expectedTokenType, Token& byToken) {
+bool Parser::matchToken(int expectedTokenType, Token& byToken)
+{
 	// TODO have byToken, and "errorHappenedHereToken"
 
 	if (matchToken(expectedTokenType)) return true;
 
-	switch (expectedTokenType)
-	{
+	switch (expectedTokenType) {
 		case Token::ArgumentSeparator:
 			addError(QString("A comma was expected here..."), byToken, 0);
 			break;
@@ -129,8 +135,26 @@ bool Parser::matchToken(int expectedTokenType, Token& byToken) {
 }
 
 
-TreeNode* Parser::parseStatement() {
-	qDebug() << "Parser::parseStatement()";
+void Parser::addError(const QString& s, const Token& t, int code)
+{
+	if (m_testing)
+		std::cout << "ERR> " << qPrintable(s) << " (parse error)" << std::endl;
+	else
+		errorList->addError(s, t, code);
+}
+
+void Parser::printTree() const
+{
+	const char* prefix = m_testing ? "NTR> " : "";
+	foreach (QString line, rootNode->toString().split('\n', QString::SkipEmptyParts))
+		std::cout << prefix << qPrintable(line.trimmed()) << std::endl;
+}
+
+
+
+TreeNode* Parser::parseStatement()
+{
+// 	qDebug() << "Parser::parseStatement()";
 	// in addition to whitespace and comments (skiped by nextToken()), also skip newlines before statements
 	while (currentToken->type() == Token::EndOfLine)
 		nextToken();
@@ -193,8 +217,9 @@ TreeNode* Parser::parseStatement() {
 }
 
 
-TreeNode* Parser::parseFactor() {
-	qDebug() << "Parser::parseFactor()";
+TreeNode* Parser::parseFactor()
+{
+// 	qDebug() << "Parser::parseFactor()";
 	Token* rememberedToken;
 	TreeNode* node;
 	switch (currentToken->type()) {
@@ -295,8 +320,9 @@ TreeNode* Parser::parseFactor() {
 }
 
 
-TreeNode* Parser::parseSignedFactor() {
-	qDebug() << "Parser::parseSignedFactor()";
+TreeNode* Parser::parseSignedFactor()
+{
+// 	qDebug() << "Parser::parseSignedFactor()";
 	// see if there is a plus, minus or 'not' in front of a factor
 	Token* rememberedToken;
 	TreeNode* node;
@@ -342,8 +368,9 @@ TreeNode* Parser::parseSignedFactor() {
 
 
 
-TreeNode* Parser::parseTerm() {
-	qDebug() << "Parser::parseTerm()";
+TreeNode* Parser::parseTerm()
+{
+// 	qDebug() << "Parser::parseTerm()";
 	TreeNode* termNode = parseSignedFactor();
 	TreeNode* pos = termNode;
 	TreeNode* left = 0;
@@ -369,7 +396,7 @@ TreeNode* Parser::parseTerm() {
 
 TreeNode* Parser::parseExpression()
 {
-	qDebug() << "Parser::parseExpression()";
+// 	qDebug() << "Parser::parseExpression()";
 	TreeNode* expressionNode = parseTerm();
 	TreeNode* pos = expressionNode;
 	TreeNode* left = 0;
@@ -398,7 +425,8 @@ TreeNode* Parser::parseExpression()
 
 
 
-void Parser::appendArguments(TreeNode* node) {
+void Parser::appendArguments(TreeNode* node)
+{
 	// appends the nodes of arguments to the node, does not do any type/quantity checking.
 	// this because it's also used for the user defined 'functionCall' where we don't know type nor quantity
 	// we also don't know if this node is (part of) an argument itself
@@ -429,12 +457,12 @@ void Parser::appendArguments(TreeNode* node) {
  */
 
 TreeNode* Parser::parseUnknown() {
-	qDebug() << "Parser::parseUnknown()";
+//	qDebug() << "Parser::parseUnknown()";
 	// this is usually a function call
 	return parseFunctionCall();
 }
 TreeNode* Parser::parseVariable() {
-	qDebug() << "Parser::parseVariable()";
+//	qDebug() << "Parser::parseVariable()";
 	// This is called the the variable is the first token on a line.
 	// There has to be an assignment token right after it...
 	TreeNode* variableNode = new TreeNode(currentToken);
@@ -447,7 +475,7 @@ TreeNode* Parser::parseVariable() {
 	return assignNode;
 }
 TreeNode* Parser::parseFunctionCall() {
-	qDebug() << "Parser::parseFunctionCall()";
+//	qDebug() << "Parser::parseFunctionCall()";
 	// this method gets usually called through parseUnknown...
 	TreeNode* node = new TreeNode(currentToken);
 	node->token()->setType(Token::FunctionCall);
@@ -456,7 +484,7 @@ TreeNode* Parser::parseFunctionCall() {
 	return node;
 }
 TreeNode* Parser::parseScopeOpen() {
-	qDebug() << "Parser::parseScopeOpen()";
+//	qDebug() << "Parser::parseScopeOpen()";
 	TreeNode* scopeNode = new TreeNode(new Token(Token::Scope, "{...}", currentToken->startRow(), currentToken->startCol(), 0, 0));
 	delete currentToken;
 	nextToken();
@@ -466,7 +494,7 @@ TreeNode* Parser::parseScopeOpen() {
 	return scopeNode;
 }
 TreeNode* Parser::parseScopeClose() {
-	qDebug() << "Parser::parseScopeClose()";
+//	qDebug() << "Parser::parseScopeClose()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	while (currentToken->type() == Token::EndOfLine) nextToken(); // allow newlines before else
@@ -486,14 +514,14 @@ TreeNode* Parser::parseScopeClose() {
 	return node;
 }
 TreeNode* Parser::parseExit() {
-	qDebug() << "Parser::parseExit()";
+//	qDebug() << "Parser::parseExit()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	matchToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parseIf() {
-	qDebug() << "Parser::parseIf()";
+//	qDebug() << "Parser::parseIf()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	node->appendChild(parseExpression());
@@ -507,7 +535,7 @@ TreeNode* Parser::parseIf() {
 	return node;
 }
 TreeNode* Parser::parseElse() {
-	qDebug() << "Parser::parseElse()";
+//	qDebug() << "Parser::parseElse()";
 	nextToken();
 	if (currentToken->type() == Token::ScopeOpen) {
 		return parseScopeOpen();  // if followed by a scope
@@ -515,7 +543,7 @@ TreeNode* Parser::parseElse() {
 	return parseStatement();    // if followed by single statement
 }
 TreeNode* Parser::parseRepeat() {
-	qDebug() << "Parser::parseRepeat()";
+//	qDebug() << "Parser::parseRepeat()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	node->appendChild(parseExpression());
@@ -527,7 +555,7 @@ TreeNode* Parser::parseRepeat() {
 	return node;
 }
 TreeNode* Parser::parseWhile() {
-	qDebug() << "Parser::parseWhile()";
+//	qDebug() << "Parser::parseWhile()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	node->appendChild(parseExpression());
@@ -539,7 +567,7 @@ TreeNode* Parser::parseWhile() {
 	return node;
 }
 TreeNode* Parser::parseFor() {
-	qDebug() << "Parser::parseFor()";
+//	qDebug() << "Parser::parseFor()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	Token* firstToken = currentToken;
@@ -576,21 +604,21 @@ TreeNode* Parser::parseFor() {
 	return node;
 }
 TreeNode* Parser::parseBreak() {
-	qDebug() << "Parser::parseBreak()";
+//	qDebug() << "Parser::parseBreak()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	matchToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parseReturn() {
-	qDebug() << "Parser::parseReturn()";
+//	qDebug() << "Parser::parseReturn()";
 	TreeNode* node = new TreeNode(currentToken);
 	node->appendChild(parseExpression());
 	matchToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parseWait() {
-	qDebug() << "Parser::parseWait()";
+//	qDebug() << "Parser::parseWait()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -598,7 +626,7 @@ TreeNode* Parser::parseWait() {
 	return node;
 }
 TreeNode* Parser::parseLearn() {
-	qDebug() << "Parser::parseLearn()";
+//	qDebug() << "Parser::parseLearn()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	node->appendChild(new TreeNode(currentToken));
@@ -622,28 +650,28 @@ TreeNode* Parser::parseLearn() {
 	return node;
 }
 TreeNode* Parser::parseReset() {
-	qDebug() << "Parser::parseReset()";
+//	qDebug() << "Parser::parseReset()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	matchToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parseClear() {
-	qDebug() << "Parser::parseClear()";
+//	qDebug() << "Parser::parseClear()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	matchToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parseCenter() {
-	qDebug() << "Parser::parseCenter()";
+//	qDebug() << "Parser::parseCenter()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	matchToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parseGo() {
-	qDebug() << "Parser::parseGo()";
+//	qDebug() << "Parser::parseGo()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -651,7 +679,7 @@ TreeNode* Parser::parseGo() {
 	return node;
 }
 TreeNode* Parser::parseGoX() {
-	qDebug() << "Parser::parseGoX()";
+//	qDebug() << "Parser::parseGoX()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -659,7 +687,7 @@ TreeNode* Parser::parseGoX() {
 	return node;
 }
 TreeNode* Parser::parseGoY() {
-	qDebug() << "Parser::parseGoY()";
+//	qDebug() << "Parser::parseGoY()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -667,7 +695,7 @@ TreeNode* Parser::parseGoY() {
 	return node;
 }
 TreeNode* Parser::parseForward() {
-	qDebug() << "Parser::parseForward()";
+//	qDebug() << "Parser::parseForward()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -675,7 +703,7 @@ TreeNode* Parser::parseForward() {
 	return node;
 }
 TreeNode* Parser::parseBackward() {
-	qDebug() << "Parser::parseBackward()";
+//	qDebug() << "Parser::parseBackward()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -683,7 +711,7 @@ TreeNode* Parser::parseBackward() {
 	return node;
 }
 TreeNode* Parser::parseDirection() {
-	qDebug() << "Parser::parseDirection()";
+//	qDebug() << "Parser::parseDirection()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -691,7 +719,7 @@ TreeNode* Parser::parseDirection() {
 	return node;
 }
 TreeNode* Parser::parseTurnLeft() {
-	qDebug() << "Parser::parseTurnLeft()";
+//	qDebug() << "Parser::parseTurnLeft()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -699,7 +727,7 @@ TreeNode* Parser::parseTurnLeft() {
 	return node;
 }
 TreeNode* Parser::parseTurnRight() {
-	qDebug() << "Parser::parseTurnRight()";
+//	qDebug() << "Parser::parseTurnRight()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -707,7 +735,7 @@ TreeNode* Parser::parseTurnRight() {
 	return node;
 }
 TreeNode* Parser::parsePenWidth() {
-	qDebug() << "Parser::parsePenWidth()";
+//	qDebug() << "Parser::parsePenWidth()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -715,21 +743,21 @@ TreeNode* Parser::parsePenWidth() {
 	return node;
 }
 TreeNode* Parser::parsePenUp() {
-	qDebug() << "Parser::parsePenUp()";
+//	qDebug() << "Parser::parsePenUp()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	matchToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parsePenDown() {
-	qDebug() << "Parser::parsePenDown()";
+//	qDebug() << "Parser::parsePenDown()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	matchToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parsePenColor() {
-	qDebug() << "Parser::parsePenColor()";
+//	qDebug() << "Parser::parsePenColor()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -737,7 +765,7 @@ TreeNode* Parser::parsePenColor() {
 	return node;
 }
 TreeNode* Parser::parseCanvasColor() {
-	qDebug() << "Parser::parseCanvasColor()";
+//	qDebug() << "Parser::parseCanvasColor()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -745,7 +773,7 @@ TreeNode* Parser::parseCanvasColor() {
 	return node;
 }
 TreeNode* Parser::parseCanvasSize() {
-	qDebug() << "Parser::parseCanvasSize()";
+//	qDebug() << "Parser::parseCanvasSize()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -753,21 +781,21 @@ TreeNode* Parser::parseCanvasSize() {
 	return node;
 }
 TreeNode* Parser::parseSpriteShow() {
-	qDebug() << "Parser::parseSpriteShow()";
+//	qDebug() << "Parser::parseSpriteShow()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	matchToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parseSpriteHide() {
-	qDebug() << "Parser::parseSpriteHide()";
+//	qDebug() << "Parser::parseSpriteHide()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	matchToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parsePrint() {
-	qDebug() << "Parser::parsePrint()";
+//	qDebug() << "Parser::parsePrint()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -775,7 +803,7 @@ TreeNode* Parser::parsePrint() {
 	return node;
 }
 TreeNode* Parser::parseFontSize() {
-	qDebug() << "Parser::parseFontSize()";
+//	qDebug() << "Parser::parseFontSize()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -783,7 +811,7 @@ TreeNode* Parser::parseFontSize() {
 	return node;
 }
 TreeNode* Parser::parseRandom() {
-	qDebug() << "Parser::parseRandom()";
+//	qDebug() << "Parser::parseRandom()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);

@@ -37,8 +37,6 @@
 #include "editor.h"
 #include "valueaction.h"
 
-// // // static const char* BUILT_IN_DICTIONARY_RESOURCE = ":interpreter/KTurtleDictionary.en_US.xml";
-
 
 class KAction;
 class QListWidget;

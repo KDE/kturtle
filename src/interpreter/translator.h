@@ -28,6 +28,8 @@
 #include <klocale.h>
 
 
+static const char* DEFAULT_LANGUAGE_CODE = "en_US";
+
 /**
  * @short Uses an XML dictionary to translate unicode strings to Token types (if possible).
  *
@@ -52,7 +54,7 @@ class Translator
 // // //		/** @short   Tries to load an XML dictionary.
 // // //		    @param   xmlFile the file of the dictionary
 // // //		    @returns TRUE is the loading was successful, otherwise FALSE */
-		bool setLanguage(const QString &lang_code);
+		bool setLanguage(const QString &lang_code = QString(DEFAULT_LANGUAGE_CODE));
 
 		/** @short Converts a unicode string to a token type.
 		    Uses the dictionary to do so.

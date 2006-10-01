@@ -20,10 +20,10 @@
 #ifndef _ECHOER_H_
 #define _ECHOER_H_
 
-
-#include <QTextStream>
+#include <iostream>
 
 #include "executer.h"
+
 
 /**
  * @short Echoes signals to a QTextStream
@@ -41,16 +41,12 @@ class Echoer : public QObject
 		/**
 		 * Default Constructor
 		 */
-		Echoer(QTextStream& outputStream, QObject* parent = 0) {
-			setParent(parent);
-			output = &outputStream;
-			reset();
-		};
+		Echoer(QObject* parent = 0) { setParent(parent); reset(); }
 
 		/**
 		 * Default Destructor
 		 */
-		virtual ~Echoer() {};
+		virtual ~Echoer() {}
 
 		/**
 		 * Connects all its slots to the signals of the Executer
@@ -67,55 +63,51 @@ class Echoer : public QObject
  * Thanks for looking at the code!
  */
 
-			connect(executer, SIGNAL(reset()), 
+			connect(executer, SIGNAL(reset()),
 				SLOT(reset()));
-			connect(executer, SIGNAL(clear()), 
+			connect(executer, SIGNAL(clear()),
 				SLOT(clear()));
-			connect(executer, SIGNAL(center()), 
+			connect(executer, SIGNAL(center()),
 				SLOT(center()));
-			connect(executer, SIGNAL(go(double, double)), 
+			connect(executer, SIGNAL(go(double, double)),
 				SLOT(go(double, double)));
-			connect(executer, SIGNAL(goX(double)), 
+			connect(executer, SIGNAL(goX(double)),
 				SLOT(goX(double)));
-			connect(executer, SIGNAL(goY(double)), 
+			connect(executer, SIGNAL(goY(double)),
 				SLOT(goY(double)));
-			connect(executer, SIGNAL(forward(double)), 
+			connect(executer, SIGNAL(forward(double)),
 				SLOT(forward(double)));
-			connect(executer, SIGNAL(backward(double)), 
+			connect(executer, SIGNAL(backward(double)),
 				SLOT(backward(double)));
-			connect(executer, SIGNAL(direction(double)), 
+			connect(executer, SIGNAL(direction(double)),
 				SLOT(direction(double)));
-			connect(executer, SIGNAL(turnLeft(double)), 
+			connect(executer, SIGNAL(turnLeft(double)),
 				SLOT(turnLeft(double)));
-			connect(executer, SIGNAL(turnRight(double)), 
+			connect(executer, SIGNAL(turnRight(double)),
 				SLOT(turnRight(double)));
-			connect(executer, SIGNAL(penWidth(double)), 
+			connect(executer, SIGNAL(penWidth(double)),
 				SLOT(penWidth(double)));
-			connect(executer, SIGNAL(penUp()), 
+			connect(executer, SIGNAL(penUp()),
 				SLOT(penUp()));
-			connect(executer, SIGNAL(penDown()), 
+			connect(executer, SIGNAL(penDown()),
 				SLOT(penDown()));
-			connect(executer, SIGNAL(penColor(double, double, double)), 
+			connect(executer, SIGNAL(penColor(double, double, double)),
 				SLOT(penColor(double, double, double)));
-			connect(executer, SIGNAL(canvasColor(double, double, double)), 
+			connect(executer, SIGNAL(canvasColor(double, double, double)),
 				SLOT(canvasColor(double, double, double)));
-			connect(executer, SIGNAL(canvasSize(double, double)), 
+			connect(executer, SIGNAL(canvasSize(double, double)),
 				SLOT(canvasSize(double, double)));
-			connect(executer, SIGNAL(spriteShow()), 
+			connect(executer, SIGNAL(spriteShow()),
 				SLOT(spriteShow()));
-			connect(executer, SIGNAL(spriteHide()), 
+			connect(executer, SIGNAL(spriteHide()),
 				SLOT(spriteHide()));
-			connect(executer, SIGNAL(print(const QString&)), 
+			connect(executer, SIGNAL(print(const QString&)),
 				SLOT(print(const QString&)));
-			connect(executer, SIGNAL(fontSize(double)), 
+			connect(executer, SIGNAL(fontSize(double)),
 				SLOT(fontSize(double)));
 
 //END GENERATED echoer_connect_h CODE
 		}
-
-
-	private:
-		QTextStream* output;
 
 
 	public slots:
@@ -130,27 +122,27 @@ class Echoer : public QObject
  * Thanks for looking at the code!
  */
 
-		void reset() { *output << "reset" << "(" << ")\n"; }
-		void clear() { *output << "clear" << "(" << ")\n"; }
-		void center() { *output << "center" << "(" << ")\n"; }
-		void go(double arg0, double arg1) { *output << "go" << "(" << arg0 << "," << arg1 << ")\n"; }
-		void goX(double arg0) { *output << "goX" << "(" << arg0 << ")\n"; }
-		void goY(double arg0) { *output << "goY" << "(" << arg0 << ")\n"; }
-		void forward(double arg0) { *output << "forward" << "(" << arg0 << ")\n"; }
-		void backward(double arg0) { *output << "backward" << "(" << arg0 << ")\n"; }
-		void direction(double arg0) { *output << "direction" << "(" << arg0 << ")\n"; }
-		void turnLeft(double arg0) { *output << "turnLeft" << "(" << arg0 << ")\n"; }
-		void turnRight(double arg0) { *output << "turnRight" << "(" << arg0 << ")\n"; }
-		void penWidth(double arg0) { *output << "penWidth" << "(" << arg0 << ")\n"; }
-		void penUp() { *output << "penUp" << "(" << ")\n"; }
-		void penDown() { *output << "penDown" << "(" << ")\n"; }
-		void penColor(double arg0, double arg1, double arg2) { *output << "penColor" << "(" << arg0 << "," << arg1 << "," << arg2 << ")\n"; }
-		void canvasColor(double arg0, double arg1, double arg2) { *output << "canvasColor" << "(" << arg0 << "," << arg1 << "," << arg2 << ")\n"; }
-		void canvasSize(double arg0, double arg1) { *output << "canvasSize" << "(" << arg0 << "," << arg1 << ")\n"; }
-		void spriteShow() { *output << "spriteShow" << "(" << ")\n"; }
-		void spriteHide() { *output << "spriteHide" << "(" << ")\n"; }
-		void print(const QString& arg0) { *output << "print" << "(" << arg0 << ")\n"; }
-		void fontSize(double arg0) { *output << "fontSize" << "(" << arg0 << ")\n"; }
+		void reset() { std::cout << "SIG> " << "reset" << "(" << ")" << std::endl; }
+		void clear() { std::cout << "SIG> " << "clear" << "(" << ")" << std::endl; }
+		void center() { std::cout << "SIG> " << "center" << "(" << ")" << std::endl; }
+		void go(double arg0, double arg1) { std::cout << "SIG> " << "go" << "(" << arg0 << "," << arg1 << ")" << std::endl; }
+		void goX(double arg0) { std::cout << "SIG> " << "goX" << "(" << arg0 << ")" << std::endl; }
+		void goY(double arg0) { std::cout << "SIG> " << "goY" << "(" << arg0 << ")" << std::endl; }
+		void forward(double arg0) { std::cout << "SIG> " << "forward" << "(" << arg0 << ")" << std::endl; }
+		void backward(double arg0) { std::cout << "SIG> " << "backward" << "(" << arg0 << ")" << std::endl; }
+		void direction(double arg0) { std::cout << "SIG> " << "direction" << "(" << arg0 << ")" << std::endl; }
+		void turnLeft(double arg0) { std::cout << "SIG> " << "turnLeft" << "(" << arg0 << ")" << std::endl; }
+		void turnRight(double arg0) { std::cout << "SIG> " << "turnRight" << "(" << arg0 << ")" << std::endl; }
+		void penWidth(double arg0) { std::cout << "SIG> " << "penWidth" << "(" << arg0 << ")" << std::endl; }
+		void penUp() { std::cout << "SIG> " << "penUp" << "(" << ")" << std::endl; }
+		void penDown() { std::cout << "SIG> " << "penDown" << "(" << ")" << std::endl; }
+		void penColor(double arg0, double arg1, double arg2) { std::cout << "SIG> " << "penColor" << "(" << arg0 << "," << arg1 << "," << arg2 << ")" << std::endl; }
+		void canvasColor(double arg0, double arg1, double arg2) { std::cout << "SIG> " << "canvasColor" << "(" << arg0 << "," << arg1 << "," << arg2 << ")" << std::endl; }
+		void canvasSize(double arg0, double arg1) { std::cout << "SIG> " << "canvasSize" << "(" << arg0 << "," << arg1 << ")" << std::endl; }
+		void spriteShow() { std::cout << "SIG> " << "spriteShow" << "(" << ")" << std::endl; }
+		void spriteHide() { std::cout << "SIG> " << "spriteHide" << "(" << ")" << std::endl; }
+		void print(const QString& arg0) { std::cout << "SIG> " << "print" << "(" << qPrintable(arg0) << ")" << std::endl; }
+		void fontSize(double arg0) { std::cout << "SIG> " << "fontSize" << "(" << arg0 << ")" << std::endl; }
 
 //END GENERATED echoer_slots_h CODE
 

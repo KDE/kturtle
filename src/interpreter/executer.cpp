@@ -20,7 +20,7 @@
 // This file is originally written by Walter Scheppers, but almost
 // every aspect of it is slightly changed by Cies Breijs.
 
-
+#include <iostream>
 #include <math.h>
 #include <unistd.h>  // for usleep();
 
@@ -63,19 +63,19 @@ void Executer::initialize(TreeNode* tree, ErrorList* _errorList)
 void Executer::execute()
 {
 	if (finished || waiting) return;
-	qDebug() << "Executer::execute() -- main execute loop called";
+// 	qDebug() << "Executer::execute() -- main execute loop called";
 
 	if (executeCurrent) {
 		// executeCurrent is used to make sure the currentNode will be executed
 		// this way the tree will not be walked before the execution...
-		qDebug() << ">> jumping to tree node, and executing: " << currentNode->token()->look();
+// 		qDebug() << ">> jumping to tree node, and executing: " << currentNode->token()->look();
 		executeCurrent = false;
 		execute(currentNode);
 		return;
 	} else if (returning) {
 		delete functionStack.top().variableTable;
 		currentNode = functionStack.pop().function;
-		qDebug() << ">> returning to: " << currentNode->token()->look();
+// 		qDebug() << ">> returning to: " << currentNode->token()->look();
 		currentNode->setValue(returnValue);
 // 		returnValue = 0;      // DONT DO THIS... the the functionCall node that get recalled now handle it...
 // 		returning   = false;
@@ -83,26 +83,26 @@ void Executer::execute()
 		return;
 	} else {
 		if (newScope == 0) {  // same scope
-			qDebug() << ">> to next sibling";
+// 			qDebug() << ">> to next sibling";
 			
 			TreeNode* currentParent = currentNode->parent();
 			currentNode = currentNode->nextSibling();
 		
 			if (currentNode == 0) {  // running off sibling list
-				qDebug() << ">> to parent";
+// 				qDebug() << ">> to parent";
 				currentNode = currentParent;
 				if (currentNode == rootNode) {
-					qDebug() << ">> hit root";
+// 					qDebug() << ">> hit root";
 					finished = true;
 					return;
 				}
 				
-				qDebug() << ">> executing: " << currentNode->token()->look();
+				std::cout << "EXE> " << qPrintable(currentNode->token()->look()) << std::endl;
 				execute(currentNode);
 				return;
 			}
 		} else {  // entering new scope
-			qDebug() << ">> to the new scope";
+// 			qDebug() << ">> to the new scope";
 			currentNode = newScope;
 			newScope = 0;
 			
@@ -111,10 +111,11 @@ void Executer::execute()
 		}
 	}
 	
-	qDebug() << ">> to top";
+// 	qDebug() << ">> to top";
 	while (currentNode->hasChildren() && currentNode->token()->type() != Token::Scope)
 		currentNode = currentNode->firstChild();
-	qDebug() << ">> executing: " << currentNode->token()->look();
+
+	std::cout << "EXE> " << qPrintable(currentNode->token()->look()) << std::endl;
 
 	execute(currentNode);
 }
@@ -126,7 +127,7 @@ void Executer::execute(TreeNode* node)
 
 	// emit a signal for GUI
 	Token* t = node->token();
-	kDebug(0) << "emitting token: '" << t->look() << "' - (" << t->startRow() << "," << t->startCol() << " - " << t->endRow() << "," << t->endCol() << ")" << endl;
+// 	kDebug(0) << "emitting token: '" << t->look() << "' - (" << t->startRow() << "," << t->startCol() << " - " << t->endRow() << "," << t->endCol() << ")" << endl;
 	emit currentlyExecuting(t->startRow(), t->startCol(), t->endRow(), t->endCol());
 
 	// this method executes one node at the time
@@ -207,6 +208,7 @@ void Executer::execute(TreeNode* node)
 
 		default:
 			qDebug() << "No method to execute this tree node, THIS SHOULDN'T HAPPEN!";
+			std::cout << "EXE> " << "No method to execute this tree node, THIS SHOULDN'T HAPPEN!" << std::endl;
 			break;
 
 	}
@@ -292,6 +294,15 @@ bool Executer::checkParameterType(TreeNode* node, int valueType, int errorCode)
 }
 
 
+void Executer::addError(const QString& s, const Token& t, int code)
+{
+	if (m_testing)
+		std::cout << "ERR> " << qPrintable(s) << " (runtime error)" << std::endl;
+	else
+		errorList->addError(s, t, code);
+}
+
+
 
 //BEGIN GENERATED executer_cpp CODE
 
@@ -303,7 +314,7 @@ bool Executer::checkParameterType(TreeNode* node, int valueType, int errorCode)
  */
 
 void Executer::executeUnknown(TreeNode* node) {
-	qDebug() << "Executer::executeUnknown()";
+//	qDebug() << "Executer::executeUnknown()";
 	if (node->parent()->token()->type() == Token::Learn) {
 		currentNode = node->parent();
 		executeCurrent = true;
@@ -311,11 +322,11 @@ void Executer::executeUnknown(TreeNode* node) {
 	}
 }
 void Executer::executeRoot(TreeNode* node) {
-	qDebug() << "Executer::executeRoot()";
+//	qDebug() << "Executer::executeRoot()";
 	node = node; // stop the warnings // this is a stud
 }
 void Executer::executeScope(TreeNode* node) {
-	qDebug() << "Executer::executeScope()";
+//	qDebug() << "Executer::executeScope()";
 	// catch loops, they need to be managed...
 	int parentTokenType = node->parent()->token()->type();
 	if (parentTokenType == Token::If     ||
@@ -330,7 +341,7 @@ void Executer::executeScope(TreeNode* node) {
 	newScope = node;
 }
 void Executer::executeVariable(TreeNode* node) {
-	qDebug() << "Executer::executeVariable()";
+//	qDebug() << "Executer::executeVariable()";
 	// no need to look up when assigning (in a for loop statement)
 	if (node->parent()->token()->type() == Token::Assign ||
 	    node->parent()->token()->type() == Token::ForTo)
@@ -344,11 +355,11 @@ void Executer::executeVariable(TreeNode* node) {
 		qDebug() << "exists globally";
 		node->setValue(globalVariableTable[node->token()->look()]);
 	} else {
-		addError(i18n("The variable '%1' was used without first being assigned to a value", node->token()->look()), *node->token(), 0);
+		addError(i18n("The variable '%1' was used without first beeing assigned to a value", node->token()->look()), *node->token(), 0);
 	}
 }
 void Executer::executeFunctionCall(TreeNode* node) {
-	qDebug() << "Executer::executeFunctionCall()";
+//	qDebug() << "Executer::executeFunctionCall()";
 	if (returning) {  // if the function is already executed and returns now
 		returnValue = 0;
 		returning = false;
@@ -388,12 +399,12 @@ void Executer::executeFunctionCall(TreeNode* node) {
 	newScope = learnNode->child(2);
 }
 void Executer::executeExit(TreeNode* node) {
-	qDebug() << "Executer::executeExit()";
+//	qDebug() << "Executer::executeExit()";
 	node = node; // stop the warnings
 	finished = true;
 }
 void Executer::executeIf(TreeNode* node) {
-	qDebug() << "Executer::executeIf()";
+//	qDebug() << "Executer::executeIf()";
 	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
 	if (currentVariableTable()->contains(id)) {
 		currentVariableTable()->remove(id);
@@ -408,11 +419,11 @@ void Executer::executeIf(TreeNode* node) {
 	}
 }
 void Executer::executeElse(TreeNode* node) {
-	qDebug() << "Executer::executeElse()";
+//	qDebug() << "Executer::executeElse()";
 	execute(node->child(0));  // execute the scope, that's all...
 }
 void Executer::executeRepeat(TreeNode* node) {
-	qDebug() << "Executer::executeRepeat()";
+//	qDebug() << "Executer::executeRepeat()";
 	breaking = false;
 	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
 	// the iteration state is stored on the variable table
@@ -430,11 +441,11 @@ void Executer::executeRepeat(TreeNode* node) {
 	newScope = node->child(1);
 }
 void Executer::executeWhile(TreeNode* node) {
-	qDebug() << "Executer::executeWhile()";
+//	qDebug() << "Executer::executeWhile()";
 	// first time this gets called the expression is already executed
 	// after one iteration the expression is not automatically re-executed.
 	// so we do the following on every call to executeWhile:
-	//     exec scope, exec expression, exec scope, exec expresion, ...
+	//     exec scope, exec expression, exec scope, exec expression, ...
 
 	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
 	if (currentVariableTable()->contains(id)) {
@@ -450,12 +461,12 @@ void Executer::executeWhile(TreeNode* node) {
 		currentVariableTable()->remove(id); // clean-up, keep currenNode on currentNode so the next sibling we be run next
 }
 void Executer::executeFor(TreeNode* node) {
-	qDebug() << "Executer::executeFor()";
+//	qDebug() << "Executer::executeFor()";
 	qCritical("Executer::executeFor(): should have been translated to Token::ForTo by the parser");
 	node = node; // stop the warnings
 }
 void Executer::executeForTo(TreeNode* node) {
-	qDebug() << "Executer::executeForTo()";
+//	qDebug() << "Executer::executeForTo()";
 	// first time this gets called the expressions are already executed
 	// after one iteration the expression is not re-executed.
 	// so we do: exec scope, exec expressions, exec scope, exec expressions, ...
@@ -498,60 +509,60 @@ void Executer::executeForTo(TreeNode* node) {
 	}
 }
 void Executer::executeBreak(TreeNode* node) {
-	qDebug() << "Executer::executeBreak()";
+//	qDebug() << "Executer::executeBreak()";
 	if (!checkParameterQuantity(node, 0, 20000+Token::Break*100+90)) return;
 }
 void Executer::executeReturn(TreeNode* node) {
-	qDebug() << "Executer::executeReturn()";
+//	qDebug() << "Executer::executeReturn()";
 	returnValue = node->child(0)->value();
 	returning   = true;
 }
 void Executer::executeWait(TreeNode* node) {
-	qDebug() << "Executer::executeWait()";
+//	qDebug() << "Executer::executeWait()";
 	waiting = true;
 	QTimer::singleShot((int)(1000*node->child(0)->value()->number()), this, SLOT(stopWaiting()));
 }
 void Executer::executeAnd(TreeNode* node) {
-	qDebug() << "Executer::executeAnd()";
+//	qDebug() << "Executer::executeAnd()";
 	// TODO: maybe add some error handling here...
 	node->value()->setBool(node->child(0)->value()->boolean() && node->child(1)->value()->boolean());
 }
 void Executer::executeOr(TreeNode* node) {
-	qDebug() << "Executer::executeOr()";
+//	qDebug() << "Executer::executeOr()";
 	// TODO: maybe add some error handling here...
 	node->value()->setBool(node->child(0)->value()->boolean() || node->child(1)->value()->boolean());
 }
 void Executer::executeNot(TreeNode* node) {
-	qDebug() << "Executer::executeNot()";
+//	qDebug() << "Executer::executeNot()";
 	// TODO: maybe add some error handling here...
 	node->value()->setBool(!node->child(0)->value()->boolean());
 }
 void Executer::executeEquals(TreeNode* node) {
-	qDebug() << "Executer::executeEquals()";
+//	qDebug() << "Executer::executeEquals()";
 	node->value()->setBool(*node->child(0)->value() == node->child(1)->value());
 }
 void Executer::executeNotEquals(TreeNode* node) {
-	qDebug() << "Executer::executeNotEquals()";
+//	qDebug() << "Executer::executeNotEquals()";
 	node->value()->setBool(*node->child(0)->value() != node->child(1)->value());
 }
 void Executer::executeGreaterThan(TreeNode* node) {
-	qDebug() << "Executer::executeGreaterThan()";
+//	qDebug() << "Executer::executeGreaterThan()";
 	node->value()->setBool(*node->child(0)->value() > node->child(1)->value());
 }
 void Executer::executeLessThan(TreeNode* node) {
-	qDebug() << "Executer::executeLessThan()";
+//	qDebug() << "Executer::executeLessThan()";
 	node->value()->setBool(*node->child(0)->value() < node->child(1)->value());
 }
 void Executer::executeGreaterOrEquals(TreeNode* node) {
-	qDebug() << "Executer::executeGreaterOrEquals()";
+//	qDebug() << "Executer::executeGreaterOrEquals()";
 	node->value()->setBool(*node->child(0)->value() >= node->child(1)->value());
 }
 void Executer::executeLessOrEquals(TreeNode* node) {
-	qDebug() << "Executer::executeLessOrEquals()";
+//	qDebug() << "Executer::executeLessOrEquals()";
 	node->value()->setBool(*node->child(0)->value() <= node->child(1)->value());
 }
 void Executer::executeAddition(TreeNode* node) {
-	qDebug() << "Executer::executeAddition()";
+//	qDebug() << "Executer::executeAddition()";
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
 		node->value()->setNumber(node->child(0)->value()->number() + node->child(1)->value()->number());
 	} else {
@@ -559,7 +570,7 @@ void Executer::executeAddition(TreeNode* node) {
 	}
 }
 void Executer::executeSubstracton(TreeNode* node) {
-	qDebug() << "Executer::executeSubstracton()";
+//	qDebug() << "Executer::executeSubstracton()";
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
 		node->value()->setNumber(node->child(0)->value()->number() - node->child(1)->value()->number());
 	} else {
@@ -570,7 +581,7 @@ void Executer::executeSubstracton(TreeNode* node) {
 	}
 }
 void Executer::executeMultiplication(TreeNode* node) {
-	qDebug() << "Executer::executeMultiplication()";
+//	qDebug() << "Executer::executeMultiplication()";
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
 		node->value()->setNumber(node->child(0)->value()->number() * node->child(1)->value()->number());
 	} else {
@@ -581,7 +592,7 @@ void Executer::executeMultiplication(TreeNode* node) {
 	}
 }
 void Executer::executeDivision(TreeNode* node) {
-	qDebug() << "Executer::executeDivision()";
+//	qDebug() << "Executer::executeDivision()";
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
 		node->value()->setNumber(node->child(0)->value()->number() / node->child(1)->value()->number());
 	} else {
@@ -592,7 +603,7 @@ void Executer::executeDivision(TreeNode* node) {
 	}
 }
 void Executer::executePower(TreeNode* node) {
-	qDebug() << "Executer::executePower()";
+//	qDebug() << "Executer::executePower()";
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
 		node->value()->setNumber(pow(node->child(0)->value()->number(), node->child(1)->value()->number()));
 	} else {
@@ -603,7 +614,7 @@ void Executer::executePower(TreeNode* node) {
 	}
 }
 void Executer::executeAssign(TreeNode* node) {
-	qDebug() << "Executer::executeAssign()";
+//	qDebug() << "Executer::executeAssign()";
 	if (!functionStack.isEmpty() && functionStack.top().variableTable->contains(node->token()->look())) {
 		qDebug() << "exists locally";
 		functionStack.top().variableTable->insert(node->child(0)->token()->look(), node->child(1)->value());
@@ -613,135 +624,135 @@ void Executer::executeAssign(TreeNode* node) {
 	globalVariableTable.insert(node->child(0)->token()->look(), node->child(1)->value());
 }
 void Executer::executeLearn(TreeNode* node) {
-	qDebug() << "Executer::executeLearn()";
+//	qDebug() << "Executer::executeLearn()";
 	functionTable.insert(node->child(0)->token()->look(), node);
 }
 void Executer::executeArgumentList(TreeNode* node) {
-	qDebug() << "Executer::executeArgumentList()";
+//	qDebug() << "Executer::executeArgumentList()";
 	node = node; // stop the warnings // this is a stud
 }
 void Executer::executeReset(TreeNode* node) {
-	qDebug() << "Executer::executeReset()";
+//	qDebug() << "Executer::executeReset()";
 	if (!checkParameterQuantity(node, 0, 20000+Token::Reset*100+90)) return;
 	emit reset();
 }
 void Executer::executeClear(TreeNode* node) {
-	qDebug() << "Executer::executeClear()";
+//	qDebug() << "Executer::executeClear()";
 	if (!checkParameterQuantity(node, 0, 20000+Token::Clear*100+90)) return;
 	emit clear();
 }
 void Executer::executeCenter(TreeNode* node) {
-	qDebug() << "Executer::executeCenter()";
+//	qDebug() << "Executer::executeCenter()";
 	if (!checkParameterQuantity(node, 0, 20000+Token::Center*100+90)) return;
 	emit center();
 }
 void Executer::executeGo(TreeNode* node) {
-	qDebug() << "Executer::executeGo()";
+//	qDebug() << "Executer::executeGo()";
 	if (!checkParameterQuantity(node, 2, 20000+Token::Go*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::Go*100+91)) return;
 	emit go(node->child(0)->value()->number(), node->child(1)->value()->number());
 }
 void Executer::executeGoX(TreeNode* node) {
-	qDebug() << "Executer::executeGoX()";
+//	qDebug() << "Executer::executeGoX()";
 	if (!checkParameterQuantity(node, 1, 20000+Token::GoX*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::GoX*100+91)) return;
 	emit goX(node->child(0)->value()->number());
 }
 void Executer::executeGoY(TreeNode* node) {
-	qDebug() << "Executer::executeGoY()";
+//	qDebug() << "Executer::executeGoY()";
 	if (!checkParameterQuantity(node, 1, 20000+Token::GoY*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::GoY*100+91)) return;
 	emit goY(node->child(0)->value()->number());
 }
 void Executer::executeForward(TreeNode* node) {
-	qDebug() << "Executer::executeForward()";
+//	qDebug() << "Executer::executeForward()";
 	if (!checkParameterQuantity(node, 1, 20000+Token::Forward*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::Forward*100+91)) return;
 	emit forward(node->child(0)->value()->number());
 }
 void Executer::executeBackward(TreeNode* node) {
-	qDebug() << "Executer::executeBackward()";
+//	qDebug() << "Executer::executeBackward()";
 	if (!checkParameterQuantity(node, 1, 20000+Token::Backward*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::Backward*100+91)) return;
 	emit backward(node->child(0)->value()->number());
 }
 void Executer::executeDirection(TreeNode* node) {
-	qDebug() << "Executer::executeDirection()";
+//	qDebug() << "Executer::executeDirection()";
 	if (!checkParameterQuantity(node, 1, 20000+Token::Direction*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::Direction*100+91)) return;
 	emit direction(node->child(0)->value()->number());
 }
 void Executer::executeTurnLeft(TreeNode* node) {
-	qDebug() << "Executer::executeTurnLeft()";
+//	qDebug() << "Executer::executeTurnLeft()";
 	if (!checkParameterQuantity(node, 1, 20000+Token::TurnLeft*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::TurnLeft*100+91)) return;
 	emit turnLeft(node->child(0)->value()->number());
 }
 void Executer::executeTurnRight(TreeNode* node) {
-	qDebug() << "Executer::executeTurnRight()";
+//	qDebug() << "Executer::executeTurnRight()";
 	if (!checkParameterQuantity(node, 1, 20000+Token::TurnRight*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::TurnRight*100+91)) return;
 	emit turnRight(node->child(0)->value()->number());
 }
 void Executer::executePenWidth(TreeNode* node) {
-	qDebug() << "Executer::executePenWidth()";
+//	qDebug() << "Executer::executePenWidth()";
 	if (!checkParameterQuantity(node, 1, 20000+Token::PenWidth*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::PenWidth*100+91)) return;
 	emit penWidth(node->child(0)->value()->number());
 }
 void Executer::executePenUp(TreeNode* node) {
-	qDebug() << "Executer::executePenUp()";
+//	qDebug() << "Executer::executePenUp()";
 	if (!checkParameterQuantity(node, 0, 20000+Token::PenUp*100+90)) return;
 	emit penUp();
 }
 void Executer::executePenDown(TreeNode* node) {
-	qDebug() << "Executer::executePenDown()";
+//	qDebug() << "Executer::executePenDown()";
 	if (!checkParameterQuantity(node, 0, 20000+Token::PenDown*100+90)) return;
 	emit penDown();
 }
 void Executer::executePenColor(TreeNode* node) {
-	qDebug() << "Executer::executePenColor()";
+//	qDebug() << "Executer::executePenColor()";
 	if (!checkParameterQuantity(node, 3, 20000+Token::PenColor*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::PenColor*100+91)) return;
 	emit penColor(node->child(0)->value()->number(), node->child(1)->value()->number(), node->child(2)->value()->number());
 }
 void Executer::executeCanvasColor(TreeNode* node) {
-	qDebug() << "Executer::executeCanvasColor()";
+//	qDebug() << "Executer::executeCanvasColor()";
 	if (!checkParameterQuantity(node, 3, 20000+Token::CanvasColor*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::CanvasColor*100+91)) return;
 	emit canvasColor(node->child(0)->value()->number(), node->child(1)->value()->number(), node->child(2)->value()->number());
 }
 void Executer::executeCanvasSize(TreeNode* node) {
-	qDebug() << "Executer::executeCanvasSize()";
+//	qDebug() << "Executer::executeCanvasSize()";
 	if (!checkParameterQuantity(node, 2, 20000+Token::CanvasSize*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::CanvasSize*100+91)) return;
 	emit canvasSize(node->child(0)->value()->number(), node->child(1)->value()->number());
 }
 void Executer::executeSpriteShow(TreeNode* node) {
-	qDebug() << "Executer::executeSpriteShow()";
+//	qDebug() << "Executer::executeSpriteShow()";
 	if (!checkParameterQuantity(node, 0, 20000+Token::SpriteShow*100+90)) return;
 	emit spriteShow();
 }
 void Executer::executeSpriteHide(TreeNode* node) {
-	qDebug() << "Executer::executeSpriteHide()";
+//	qDebug() << "Executer::executeSpriteHide()";
 	if (!checkParameterQuantity(node, 0, 20000+Token::SpriteHide*100+90)) return;
 	emit spriteHide();
 }
 void Executer::executePrint(TreeNode* node) {
-	qDebug() << "Executer::executePrint()";
+//	qDebug() << "Executer::executePrint()";
 	if (!checkParameterQuantity(node, 1, 20000+Token::Print*100+90))
 		return;
 	qDebug() << "Printing: '" << node->child(0)->value()->string() << "'";
 	emit print(node->child(0)->value()->string());
 }
 void Executer::executeFontSize(TreeNode* node) {
-	qDebug() << "Executer::executeFontSize()";
+//	qDebug() << "Executer::executeFontSize()";
 	if (!checkParameterQuantity(node, 1, 20000+Token::FontSize*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::FontSize*100+91)) return;
 	emit fontSize(node->child(0)->value()->number());
 }
 void Executer::executeRandom(TreeNode* node) {
-	qDebug() << "Executer::executeRandom()";
+//	qDebug() << "Executer::executeRandom()";
 	if (!checkParameterQuantity(node, 2, 20000+Token::Random*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::Random*100+91)) return;
 }

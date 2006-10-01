@@ -70,7 +70,7 @@ class Executer : public QObject
 		 * @short Constructor. Initialses the Executer.
 		 * does nothing special. @see initialize().
 		 */
-		Executer() {}
+		Executer(bool testing = false) : m_testing(testing) {}
 		/**
 		 * @short Destuctor. Does nothing at special.
 		 */
@@ -111,7 +111,7 @@ class Executer : public QObject
 		void           execute(TreeNode* node);
 
 		/// Adds an error to the error list.
-		void           addError(const QString& s, const Token& t, int code) { errorList->addError(s, t, code); }
+		void           addError(const QString& s, const Token& t, int code);
 
 		/// Checks the parameter quantity of @p n matches @p quantity, if not it adds an error with @p errorCode
 		bool           checkParameterQuantity(TreeNode* n, uint quantity, int errorCode);
@@ -164,6 +164,8 @@ class Executer : public QObject
 
 		/// TRUE when the next call of execute() should staight execute the current node (not walk the tree first)
 		bool           executeCurrent;
+
+		bool           m_testing;
 
 
 
