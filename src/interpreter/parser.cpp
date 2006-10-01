@@ -89,9 +89,9 @@ void Parser::nextToken() {
 bool Parser::matchToken(int expectedTokenType) {
 	if (currentToken->type() == expectedTokenType) {
 		nextToken();
-		return TRUE;
+		return true;
 	}
-	return FALSE;
+	return false;
 }
 
 bool Parser::matchToken(int expectedTokenType, Token& byToken) {
