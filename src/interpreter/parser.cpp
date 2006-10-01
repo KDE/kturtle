@@ -97,7 +97,7 @@ bool Parser::matchToken(int expectedTokenType) {
 bool Parser::matchToken(int expectedTokenType, Token& byToken) {
 	// TODO have byToken, and "errorHappenedHereToken"
 
-	if (matchToken(expectedTokenType)) return TRUE;
+	if (matchToken(expectedTokenType)) return true;
 
 	switch (expectedTokenType)
 	{
@@ -125,7 +125,7 @@ bool Parser::matchToken(int expectedTokenType, Token& byToken) {
 			break;
 	}
 
-	return FALSE;
+	return false;
 }
 
 
