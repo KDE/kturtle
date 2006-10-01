@@ -400,8 +400,8 @@ TreeNode* Parser::parseExpression()
 
 void Parser::appendArguments(TreeNode* node) {
 	// appends the nodes of arguments to the node, does not do any type/quantity checking.
-	// this because it's also used for the user defined 'functionCall' where we dont know type nor quantity
-	// we also dont know if this node is (part of) an argument itself
+	// this because it's also used for the user defined 'functionCall' where we don't know type nor quantity
+	// we also don't know if this node is (part of) an argument itself
 	if (currentToken->type() == Token::EndOfLine ||
 	    currentToken->type() == Token::EndOfFile ||
 	    currentToken->type() == Token::ArgumentSeparator ||

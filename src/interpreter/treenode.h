@@ -52,7 +52,7 @@ class TreeNode
 
 		/**
 		 * @short Destructor.
-		 * This deletes the Value and the Token assosiated with this TreeNode.
+		 * This deletes the Value and the Token associated with this TreeNode.
 		 * The childList auto-deletes all the childs, which means that deleting
 		 * the root node deletes the whole tree.
 		 */

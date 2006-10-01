@@ -40,7 +40,7 @@ Value::Value(Value* n) :
 
 void Value::setType(int newType)  // maybe someday we have to do some type casting logic here
 {
-	if (m_type == newType) return;  // dont change values when type is not changing
+	if (m_type == newType) return;  // don't change values when type is not changing
 	else switch (newType) {
 		case Value::Bool:
 			init();

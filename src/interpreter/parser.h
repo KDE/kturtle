@@ -31,7 +31,7 @@
  *
  * The Parser uses a Tokenizer to read the KTurtle code as tokens.
  * It step-by-step parses the tokens to a node tree.
- * When errors occure they are added to the error list.
+ * When errors occur they are added to the error list.
  *
  * A large part of the code of this class is generated code.
  *
@@ -59,7 +59,7 @@ class Parser
 		 * It creates the 'root' node, and gets the first token.
 		 * @param tokenizer pointer to a Tokenizer
 		 * @param errorList pointer to a QList for ErrorMessage objects, when
-		 *                  error occure they will be stored here
+		 *                  error occur they will be stored here
 		 */
 		void initialize(Tokenizer* _tokenizer, ErrorList* _errorList);
 

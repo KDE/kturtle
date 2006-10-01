@@ -82,7 +82,7 @@ bool Translator::setLanguage(const QString &lang_code)
 
 	if (localizer != 0) delete localizer;
 
-// 	if (KGlobal::locale()->language() == lang_code)  // re-use the global localizer TODO maked shure not to delete it!
+// 	if (KGlobal::locale()->language() == lang_code)  // re-use the global localizer TODO maked sure not to delete it!
 // 		localizer = KGlobal::locale();
 // 	else
 

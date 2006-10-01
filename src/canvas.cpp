@@ -126,7 +126,7 @@ void Canvas::slotClear()
 {
 	QList<QGraphicsItem*> list = scene->items();
 	foreach (QGraphicsItem* item, list) {
-		// delete all but the turtle (who lives on a seperate layer with z-value 1)
+		// delete all but the turtle (who lives on a separate layer with z-value 1)
 		if (item->zValue() != 1) delete item;
 	}
 }
@@ -358,7 +358,7 @@ void Canvas::slotReset()
 // 			kdDebug(0)<<"Canvas::line(): ***********ERRORRR***********"<<endl;
 // 			return;
 // 		}
-// 		// kdDebug(0)<<"Canvas::line(); translate by: <<tranlation<<endl;
+// 		// kdDebug(0)<<"Canvas::line(); translate by: <<translation<<endl;
 // 		line (xa + translation.x() * canvasWidth, ya + translation.y() * canvasHeight, 
 // 		      xb + translation.x() * canvasWidth, yb + translation.y() * canvasHeight);
 // 		if (cutLoop == true)
@@ -375,9 +375,9 @@ void Canvas::slotReset()
 // 	if ( prevStartPos2 == begin && prevStartPos3 == prevStartPos1 &&
 // 	     prevEndPos2   == end   && prevEndPos3   == prevEndPos1 )
 // 	{
-// 		// this is to break the horrible endless loop bug that i cannot fix...
-// 		// i need more simple reproductions of this bug to really find it
-// 		// for now i say it is something with QCanvas but i'm likely wrong on thisone
+// 		// this is to break the horrible endless loop bug that I cannot fix...
+// 		// I need more simple reproductions of this bug to really find it
+// 		// for now I say it is something with QCanvas but I'm likely wrong on thisone
 // 		// kdDebug(0)<<"Canvas::endlessLoop TRUE!!"<<endl;
 // 		return true;
 // 	}
@@ -477,8 +477,8 @@ void Canvas::slotReset()
 // 			// This mostly happens because of unlucky rounding, when this happens the line is nearly
 // 			// crossing a corner of the canvas.
 // 			// This code make sure the line is tranlated back onto the canvas.
-// 			// The -2 and +2 was just something i learnt from examples... I HAVE NO PROOF FOR THIS!
-// 			// This, luckily, allmost never happens.
+// 			// The -2 and +2 was just something I learned from examples... I HAVE NO PROOF FOR THIS!
+// 			// This, luckily, almost never happens.
 // 			if ( -2 <= x_sT && x_sT <= (canvasWidth + 2) && pointInRange(x_sT, 0, xa, ya, xb, yb) )
 // 			{
 // 				returnValue = returnValue + QPoint(0, 1);
@@ -499,7 +499,7 @@ void Canvas::slotReset()
 // 			if ( returnValue == QPoint(0, 0) )
 // 			{
 // 				// kdDebug(0)<<"Canvas::translationFactor:  *****This shouldn't happen (1) *****"<<endl;
-// 				// and this doesnt happen, that why +3 and -3 are ok values and the code above works.
+// 				// and this doesn't happen, that why +3 and -3 are ok values and the code above works.
 // 			}
 // 			return returnValue;
 // 		}
@@ -560,7 +560,7 @@ void Canvas::slotReset()
 // 	// read the pixmaps name.0001.png, name.0002.png, ..., name.0035.png: the different rotations
 // 	// #0000 for 0 or 360, #0001 for 10, #0002 for 20, ..., #0018 for 180, etc.
 // 	
-// 	// WARNING if the dir doesnt exists the app will crash!!!
+// 	// WARNING if the dir doesn't exists the app will crash!!!
 // 	// This will be fixed in qt3.3 and in the current qt-copy
 // 	QPixmap turtlePix = QPixmap(locate("data","kturtle/pics/turtle.0000.png") );
 // 	if ( turtlePix.isNull() )
