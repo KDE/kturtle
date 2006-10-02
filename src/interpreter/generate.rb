@@ -172,7 +172,7 @@ EOS
 <<EOS
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
-	matchToken(Token::EndOfLine, *node->token());
+	skipToken(Token::EndOfLine, *node->token());
 	return node;
 EOS
 			end
@@ -183,7 +183,7 @@ EOS
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
-	matchToken(Token::EndOfLine, *node->token());
+	skipToken(Token::EndOfLine, *node->token());
 	return node;
 EOS
 			end

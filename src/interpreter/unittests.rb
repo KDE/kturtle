@@ -19,9 +19,6 @@
 
 require 'open3'
 
-UNITTESTS_DIR = './unittests/'
-RESULTS_TMP_FILE = UNITTESTS_DIR + '.test_results_dump.tmp'
-
 
 def get_test_goal(test_file_name)
 	f = open test_file_name
@@ -35,9 +32,8 @@ def get_test_goal(test_file_name)
 	result
 end
 
-def get_test_results(test_file_name)
-	system("./interpreter #{test_file_name} #{RESULTS_TMP_FILE} 2>/dev/null")
-	open(RESULTS_TMP_FILE).read
+def get_test_results(kturtle_exe, test_file_name)
+	`#{kturtle_exe} --test #{test_file_name}`
 end
 
 # def difference(file_name, string)
@@ -53,29 +49,36 @@ end
 
 
 puts <<EOS
+UnitTesting script for the interpreter of KTurtle
+by Cies Breijs
 
-	UnitTesting script for the interpreter of KTurtle
-	by Cies Breijs
-	
-	This will run some the tests in: #{UNITTESTS_DIR}*.logo
-	Tests should contain their own test goals as commented
-	out lines on the end of the file following a line staring
-	with '### TEST GOAL'.
-	
-	When the flag '-q' is specified it will not ask for QuickFixes.
-
-
-Running the tests...
+Usage: ruby unittests.rb path/to/kturtle path/to/dir/containing/unittests/ [-q]
+('-q' will surpress the quick-fix mechanism)
 
 EOS
 
-quick_fix = ARGV[0] != '-q'
+unless [2,3].include? ARGV.length
+	puts 'Wrong amount of arguments specified... Exitting.'
+	exit
+end
 
-tests = Dir[UNITTESTS_DIR + '*.logo']
+kturtle_exe   = ARGV[0]
+unittests_dir = ARGV[1]
+quick_fix     = ARGV[2] != '-q'
 
+tests = Dir[unittests_dir + '*.turtle']
+
+puts "Running the tests...\n\n"
+
+i = 1
 tests.each do |test_file_name|
+	puts "### test #{i.to_s}: #{test_file_name}"
 	goal = get_test_goal(test_file_name)
-	results = get_test_results(test_file_name)
+	puts goal
+
+	exit
+
+	results = `#{kturtle_exe} --test #{test_file_name}`
 
 	if goal == results
 		puts "#{test_file_name} OK"

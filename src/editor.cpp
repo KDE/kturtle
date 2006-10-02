@@ -92,7 +92,8 @@ Editor::Editor(QWidget *parent)
 Editor::~Editor()
 {
 	delete highlighter;
-	delete editor;
+// 	delete editor;  // shoudl go automagically through QObject ownerships
+// 	delete numbers;
 }
 
 void Editor::setContent(const QString& s)

@@ -129,7 +129,7 @@ class MainWindow : public KMainWindow
 		void writeConfig();
 
 		void setContextHelp(const QString& s = QString());
-		const QString& codeToFullName(const QString& lang_code = QString());
+		QString codeToFullName(const QString& lang_code = QString());
 
 		void updateExamplesMenu();
 

@@ -95,8 +95,12 @@ Token* Highlighter::checkOrApplyHighlighting(const QString &text, int cursorInde
 			else if (cursorIndex >= token->startCol() && cursorIndex <= token->endCol())
 				return token;
 		}
+		delete token;
 		token = tokenizer->getToken();
 	}
+	delete token;
+	delete codeStream;
+	delete codeString;
 	return 0;
 }
 

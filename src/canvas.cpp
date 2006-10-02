@@ -63,9 +63,9 @@ Canvas::Canvas(QWidget *parent) : QGraphicsView(parent)
 
 Canvas::~Canvas()
 {
-	delete scene;
 	delete pen;
 	delete turtle;
+	delete scene;
 }
 
 

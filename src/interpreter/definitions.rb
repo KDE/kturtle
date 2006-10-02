@@ -136,8 +136,8 @@ new_item()
 	// There has to be an assignment token right after it...
 	TreeNode* variableNode = new TreeNode(currentToken);
 	nextToken();
-	Token* remeberedToken = currentToken;
-	matchToken(Token::Assign, *variableNode->token());
+	Token* remeberedToken = new Token(*currentToken);
+	skipToken(Token::Assign, *variableNode->token());
 	TreeNode* assignNode = new TreeNode(remeberedToken);
 	assignNode->appendChild(variableNode);      // the LHV; the symbol
 	assignNode->appendChild(parseExpression()); // the RHV; the expression
@@ -296,7 +296,10 @@ new_item()
 <<EOS
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
-	while (currentToken->type() == Token::EndOfLine) nextToken(); // allow newlines before else
+	while (currentToken->type() == Token::EndOfLine) {  // allow newlines before else
+		delete currentToken;
+		nextToken();
+	}
 	if (currentScope->parent()->token()->type() == Token::If && currentToken->type() == Token::Else) {
 		currentScope->parent()->appendChild(parseElse());
 	}
@@ -500,7 +503,7 @@ new_item()
 		node->appendChild(new TreeNode(firstToken));
 		nextToken();
 		node->appendChild(parseExpression());
-		matchToken(Token::To, *node->token());
+		skipToken(Token::To, *node->token());
 		node->appendChild(parseExpression());
 		if (currentToken->type() == Token::Step) {
 			nextToken();
@@ -621,7 +624,7 @@ new_item()
 <<EOS
 	TreeNode* node = new TreeNode(currentToken);
 	node->appendChild(parseExpression());
-	matchToken(Token::EndOfLine, *node->token());
+	skipToken(Token::EndOfLine, *node->token());
 	return node;
 EOS
 @e_def =
@@ -869,8 +872,8 @@ new_item()
 <<EOS
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
-	node->appendChild(new TreeNode(currentToken));
-	matchToken(Token::Unknown, *node->token());
+	node->appendChild(new TreeNode(new Token(*currentToken)));
+	skipToken(Token::Unknown, *node->token());
 	
 	TreeNode* argumentList = new TreeNode(new Token(Token::ArgumentList, "arguments", 0, 0, 0, 0));
 	while (currentToken->type() == Token::Variable) {

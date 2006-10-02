@@ -594,6 +594,7 @@ void MainWindow::updateOnCursorPositionChange(int row, int col, const QString& l
 			// do nothing with these... yet.
 			break;
 	}
+	delete cursorToken;
 	setContextHelp(i18n("<no keyword>"));
 }
 
@@ -614,9 +615,9 @@ bool MainWindow::setLanguage(const QString& lang_code)
 	return result;
 }
 
-const QString& MainWindow::codeToFullName(const QString& lang_code)
+QString MainWindow::codeToFullName(const QString& lang_code)
 {
-	return *new QString(lang_code.isNull() ?
+	return QString(lang_code.isNull() ?
 			i18n("%1 [built in]", codeToFullName("en_US")) :
 			KGlobal::locale()->twoAlphaToLanguageName(lang_code.left(2)) + " (" + lang_code + ")"
 		);

@@ -91,8 +91,8 @@ class Parser
 
 	private:
 		void         nextToken();
-		bool         matchToken(int expectedTokenType);
-		bool         matchToken(int expectedTokenType, Token& byToken);
+		bool         skipToken(int expectedTokenType);
+		bool         skipToken(int expectedTokenType, Token& byToken);
 		void         addError(const QString& s, const Token& t, int code);
 		void         appendArguments(TreeNode* node);
 
