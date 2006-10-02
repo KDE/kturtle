@@ -24,18 +24,15 @@
 #include <kaboutapplication.h>
 #include <kaboutkde.h>
 #include <kactioncollection.h>
-// #include <ktoggleaction.h>
 #include <kaction.h>
 #include <kconfig.h>
 #include <klocale.h>
 #include <kicon.h>
 #include <kmessagebox.h>
 #include <krecentfilesaction.h>
-// #include <kstandarddirs.h>
 #include <kstatusbar.h>
 #include <kstdaccel.h>
 #include <kstdaction.h>
-// #include <kxmlguifactory.h>
 
 #include "errordialog.h"
 #include "interpreter/errormsg.h"
@@ -451,7 +448,6 @@ void MainWindow::setupMenus()
 				ValueAction* a;
 				// sort the dictionaries using an algorithm found the the qt docs:
 				QMap<QString, QString> map;
-// 				foreach (QString lang_code, dictionaries.keys()) map.insert(codeToFullName(lang_code), lang_code);
 				foreach (QString lang_code, KGlobal::locale()->languageList())
 					map.insert(codeToFullName(lang_code), lang_code);
 				// populate the menu:
@@ -525,7 +521,7 @@ void MainWindow::setupStatusBar()
 }
 
 
-void MainWindow::updateExamplesMenu(const QString& lang_code)
+void MainWindow::updateExamplesMenu()
 {
 	foreach (QAction* action, examplesMenu->actions()) examplesMenu->removeAction(action);
 
@@ -536,13 +532,6 @@ void MainWindow::updateExamplesMenu(const QString& lang_code)
 		connect (a, SIGNAL(triggered(const QString&, bool)), this, SLOT(openExample(const QString&)));
 	}
 
-// // // 	foreach (QString fullName, KGlobal::dirs()->findAllResources("data", "kturtle/examples/" + (lang_code.isNull() ? "en_US" : lang_code) + "/*.turtle")) {
-// // // 		QString name = fullName.section('/', -1, -1);
-// // // 		a = new ValueAction(name, fullName);
-// // // 		examplesMenu->addAction(a);
-// // // 		connect (a, SIGNAL(triggered(const QString&, bool)), this, SLOT(open(const QString&)));
-// // // 	}
-
 	if (examplesMenu->actions().isEmpty()) {
 		QAction* a = new QAction(i18n("(empty)"), this);
 		a->setEnabled(false);
@@ -552,8 +541,7 @@ void MainWindow::updateExamplesMenu(const QString& lang_code)
 
 void MainWindow::open(const QString& pathOrUrl)
 {
-	editor->openFile(KUrl::fromPathOrUrl(pathOrUrl));  // generates a warning... keep this warning!!!
-	// the KUrl constructor should get this functionality: but is hasn't yet.
+	editor->openFile(KUrl(pathOrUrl));
 }
 
 void MainWindow::openExample(const QString& exampleName)
@@ -614,14 +602,13 @@ bool MainWindow::setLanguage(const QString& lang_code)
 {
 	bool result = false;
 	kDebug(0) << "MainWindow::setLanguage: " << lang_code << endl;
-// // // 	QString dictionary = dictionaries[lang_code];
 	if (Translator::instance()->setLanguage(lang_code)) {
 		currentLanguageCode = lang_code;
 		statusBarLanguageLabel->setText(' ' + codeToFullName(lang_code) + ' ');
-		updateExamplesMenu(lang_code);
+		updateExamplesMenu();
 		result = true;
 	} else {
-		KMessageBox::error(this, i18n("Could not change the language to %1.", lang_code));//codeToFullName(lang_code)));
+		KMessageBox::error(this, i18n("Could not change the language to %1.", codeToFullName(lang_code)));
 	}
 	languageActions[currentLanguageCode]->setChecked(true);
 	return result;
@@ -631,7 +618,7 @@ const QString& MainWindow::codeToFullName(const QString& lang_code)
 {
 	return *new QString(lang_code.isNull() ?
 			i18n("%1 [built in]", codeToFullName("en_US")) :
-			KGlobal::locale()->twoAlphaToLanguageName(lang_code.left(2)) + " (" + lang_code + ')'
+			KGlobal::locale()->twoAlphaToLanguageName(lang_code.left(2)) + " (" + lang_code + ")"
 		);
 }
 

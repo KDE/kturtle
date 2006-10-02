@@ -19,7 +19,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-// #include <QHBoxLayout>
 #include <QComboBox>
 #include <QActionGroup>
 #include <QTextStream>
@@ -66,18 +65,6 @@ class LocalDockWidget : public QDockWidget { Q_OBJECT
 	signals:
 		void visibilityChanged(bool);
 };
-
-// // a QMenu tailored for the examples
-// class ExampleMenu : public QMenu { Q_OBJECT
-// 	public:
-// 		ExampleMenu(const QString& title, QWidget* parent = 0) {
-// 			setWindowTitle(title);
-// 			setParent(parent);
-// 			addAction();
-// 		}
-// 	signals:
-// 		void languageChanged(QString);
-// };
 
 
 // just a little test in the process of trying to get rid of the scrollbars around the canvas
@@ -134,7 +121,6 @@ class MainWindow : public KMainWindow
 		void setupDockWindows();
 		void setupEditor();
 		void setupInterpreter();
-// // // 		void setupLanguages();
 		void setupMenus();
 		void setupToolBar();
 		void setupStatusBar();
@@ -145,7 +131,7 @@ class MainWindow : public KMainWindow
 		void setContextHelp(const QString& s = QString());
 		const QString& codeToFullName(const QString& lang_code = QString());
 
-		void updateExamplesMenu(const QString& lang_code);
+		void updateExamplesMenu();
 
 
 	private slots:
@@ -169,8 +155,6 @@ class MainWindow : public KMainWindow
 		QString     *codeString;
 		int          runSpeed;
 
-// 		QList<QString> availableLanguages;
-// 		QHash<QString, QString> dictionaries;  // a <lang_code, dictionary_filename> - map
 		QHash<QString, ValueAction*> languageActions;  // a <lang_code, dictionary_filename> - map
 		QString currentLanguageCode;
 

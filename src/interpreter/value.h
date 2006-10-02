@@ -24,7 +24,7 @@
 
 
 
-// maybe this class has to be slipt-up/sub-classed into (several) Constant's and a Variable class
+// maybe this class has to be split-up/sub-classed into (several) Constant's and a Variable class
 // which is a lot of work for little gain :)
 
 /**
