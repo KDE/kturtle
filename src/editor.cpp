@@ -31,7 +31,7 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <ksavefile.h>
-#include <ktempfile.h>
+#include <ktemporaryfile.h>
 
 #include <kio/netaccess.h>
 
@@ -179,8 +179,10 @@ bool Editor::saveFile(const KUrl &targetUrl)
 		result = saveFileAs();
 	} else {
 		if (url.isEmpty()) url = currentUrl();
-		KTempFile tmp;  // only used for network export
-		QString filename = url.isLocalFile() ? url.path() : tmp.name();
+		KTemporaryFile tmp;  // only used for network export
+		tmp.setAutoRemove(false);
+		tmp.open();
+		QString filename = url.isLocalFile() ? url.path() : tmp.fileName();
 	
 		KSaveFile *savefile = new KSaveFile(filename);
 		if (!savefile->status()) {
