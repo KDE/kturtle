@@ -1,22 +1,16 @@
 
 
-if 3 > 2
-[
+if 3 > 2 {
 	print "3 lager than 2"
-]
-else
-[
+} else {
 	print "3 not larger that 2!?"
-]
+}
 
-if 2 > 3
-[
+if 2 > 3 {
 	print "2 larger than 3!?"
-]
-else
-[
+} else {
 	print "2 not larger than 3"
-]
+}
 
 
 

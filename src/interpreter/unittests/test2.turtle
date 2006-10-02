@@ -1,0 +1,42 @@
+# prints your name at random
+
+reset
+canvassize 255,255
+spritehide
+
+$bla = 3
+$b = 10
+
+print $bla+$b
+
+
+if $b == 9
+{
+print "ho's"
+}
+else
+{
+print "......"
+}
+
+while $bla < 10 {
+	print $bla
+	$bla = $bla + 1
+	if $bla == 9 [ print "!!!!" ]
+}
+
+
+
+
+go 6, 3
+
+
+learn xl $x, $y, $z {
+	print $x * $x
+	return $x * $y
+}
+
+xl 3,4,9
+
+print xl 3,4,9
+
