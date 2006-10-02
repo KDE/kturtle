@@ -2,17 +2,15 @@
  * make a docked window for inspecting the variables (and the state of the canvas), and a AST view widget
  ---
  * commandline flag for parsing an en_US script into c++ example code (bunch of strings)
- * make settings menu (or not: maybe keep all in other menu's) [fonttype, fontsize, language]
+ * make settings menu (or not: maybe keep all in other menu's) [fonttype, fontsize, language, default canvas size]
  * make fullscreen mode (hide all GUI elemets but the canvas during execution)
  * connect statusTips and whatIsThis
  * get WhatIsThis (et al) help in
- * make commandline -%U work, and have an option for the unittesting
  * do reordering (in stead of duping) when adding already existing recent file items
 
 
  == interpreter ==
- * make shure recursion over several functions is possible (index learns at execution init time)
- * move to a command and example translation method that uses i18nc() strings.
+ * make sure recursion over several functions is possible (index learns at execution init time)
  * ruby managed unittest suite using the echoer (make the echoer more clever --> maybe put into the executer)
  ---
  * verbosity/debugmsg levels
@@ -38,7 +36,7 @@
  * fill tools menu
  * connect the editor to some statusbar fields
  * reimplement context menu for cut/copy/paste, undo/redo, show/hide, and context help
- * make a syntax highlighting nicer
+ * make a syntax highlighting nicer (more style categories)
  * some html export function (just use the toHtml() method)
 
 
