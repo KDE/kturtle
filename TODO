@@ -1,3 +1,9 @@
+PROPOSAL:
+make the tokenizer work on strings instead of streams
+right now the highlighter has to put the string into a stream into the tokenizer... this eats cycles.
+
+
+
  == mainwindow ==
  * make a docked window for inspecting the variables (and the state of the canvas), and a AST view widget
  ---
@@ -10,6 +16,7 @@
 
  == interpreter ==
  * make sure recursion over several functions is possible (index learns at execution init time)
+      --> so extend initialize(), and make finalize() to detect/report unclosed stuff
  * fix the ruby managed unittest suite (make it work with the new debug msgs style)
  ---
  * make more unittests (redesign the unittest framework using the to-be-created commandline invoke method)

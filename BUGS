@@ -15,7 +15,8 @@ right now it _always_ has scrollbars; which is plain ugly. and i have try for ma
 
 
  = editor (QTextEdit) =
-# no known bugs.
+# the marker changes are recorded in the undo history
+# the modified state just has a mind of its own...
 
 
 
