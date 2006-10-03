@@ -609,6 +609,76 @@ void Translator::setExamples()
 				"  }\n"
 				"}\n"
 		).subs(exampleName).toString(localizer));
+
+	exampleName = ki18nc(
+		"This is an EXAMPLE NAME in KTurtle."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
+		"arrow").toString(localizer);
+	examples[exampleName] = parseExampleTranslations(ki18nc(
+		"You are about to translate the 'arrow' EXAMPLE PROGRAM, examples have to be translated in a speacial way."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
+				"# Example: %1\n"
+				"# This example draws an arrow...\n"
+				"@(reset)\n"
+				"\n"
+				"@(canvassize) 200@(,) 200\n"
+				"@(canvascolor) 0@(,) 0@(,) 0\n"
+				"@(pencolor) 255@(,) 0@(,) 0\n"
+				"@(penwidth) 5\n"
+				"@(clear)\n"
+				"\n"
+				"@(go) 20@(,)20\n"
+				"@(direction) 135\n"
+				"\n"
+				"@(forward) 200\n"
+				"@(turnleft) 135\n"
+				"@(forward) 100\n"
+				"@(turnleft) 135\n"
+				"@(forward) 141\n"
+				"@(turnleft) 135\n"
+				"@(forward) 100\n"
+				"@(turnleft) 45\n"
+				"\n"
+				"@(go) 40@(,) 100"
+		).subs(exampleName).toString(localizer));
+
+	exampleName = ki18nc(
+		"This is an EXAMPLE NAME in KTurtle."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
+		"flower").toString(localizer);
+	examples[exampleName] = parseExampleTranslations(ki18nc(
+		"You are about to translate the 'flower' EXAMPLE PROGRAM, examples have to be translated in a speacial way."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
+				"# Example: %1\n"
+				"# This example draws a flower...\n"
+				"\n"
+				"@(reset)\n"
+				"@(canvassize) 170@(,) 170\n"
+				"@(canvascolor) 255@(,) 55@(,) 140\n"
+				"@(go) 45@(,) 120\n"
+				"@(pencolor) 160@(,) 0@(,) 255\n"
+				"@(penwidth) 3\n"
+				"\n"
+				"@(repeat) 8 {\n"
+				"  @(repeat) 4 {\n"
+				"    @(forward) 20\n"
+				"    @(turnright) 30\n"
+				"  }\n"
+				"  @(repeat) 7 {\n"
+				"    @(forward) 10\n"
+				"    @(turnright) 15\n"
+				"  }\n"
+				"  @(repeat) 9 {\n"
+				"    @(forward) 3\n"
+				"    @(turnright) 10\n"
+				"  }\n"
+				"}\n"
+				"\n"
+				"@(go) 145@(,) 145\n"
+				"@(direction) 0"
+		).subs(exampleName).toString(localizer));
+
+
 }
 
 QString Translator::parseExampleTranslations(const QString& halfTranslatedExample)
