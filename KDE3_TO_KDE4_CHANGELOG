@@ -2,7 +2,7 @@
 
 This document describes what changed from the kde3 version of KTurtle (<= v0.7) to the kde4 (>= v0.8) version.
 
-Since I (Cies Breijs) was working on the rewrite of the interpreter of KTurtle when the porting of kde3 to qt4 started, I descided to remove KTurtle from kde trunk to avoid dubble efford. In the end the rewrite of the interpreter resulted in a total rewrite for KTurtle. To know all that changed read on for the change log.
+Since I (Cies Breijs) was working on the rewrite of the interpreter of KTurtle when the porting of kde3 to qt4 started, I decided to remove KTurtle from kde trunk to avoid dubble efford. In the end the rewrite of the interpreter resulted in a total rewrite for KTurtle. To know all that changed read on for the change log.
 
 KTurtle is my first programming project; it basically learnt me C++/Qt/KDE development. I started off by massaging GPLed code of other project into what I wanted it to do. Gradually I learn alot about software design and this rewrite tries to set everything straight.
 
@@ -15,16 +15,16 @@ I break up the change log by (groups of) classes:
 
 
  == interpreter ==
- * syntax heavily changed (no longer called 'logo' because of complaint of logo-purists)
- * the interpreter is now fully statefull (instead of doing ugly callbacks)
+ * syntax heavily changed (no longer called 'logo' because of complaints by logo-purists)
+ * the interpreter is now fully statefull (instead of doing ugly callbacks to the Qt event loop)
  * the tokenizer can be (and is) re-used for syntax highlighting and F2 context help
- * almost 1/3 of interpreter code is generated (see: definitions.rb and generate.rb)
- * code generation alows a central place for command definition (in stead of over many files); so not repeating onself
+ * almost 1/3 of interpreter code is generated some ruby code (see: definitions.rb and generate.rb)
+ * code generation allows a central place for command definition (in stead of over many files); so we're not repeating ourself
  * more sophiticated error handling
  * classes have better responsibilities
  * the translator is now a singleton
  * fully unicode ready (QString everywhere)
- * dummy command 'echoer' allows the GUIless unittests
+ * the signal to stdout 'echoer' allows GUIless unittests to cover signals to the canvas
  ---
  * a lot of testing has to be done (crashes occur, bad working functions, insufficient error messages)
 
@@ -34,21 +34,25 @@ I break up the change log by (groups of) classes:
  * the turtle figure is now vector (SVG) based (no longer keeping many rotation frames in .PNGs, yay!)
  ---
  * quite some functionality (most notably the 'wrapping' mode) are still missing
- * 3 annoying bugs: 1) i cant get rid of the scrollbars, 2) some glitches while drawing, 3) not resizing
+ * 2 annoying bugs: 1) i cant get rid of the scrollbars, 2) not properly resizing
 
 
  == editor ==
- * no longer uses katepart, no based on the QTextEdit framework
- * closer coupling with the interpreter (syntax highlighting re-uses the tokenizer!)
- * highlighting the currently executed command and the currently selected error
+ * no longer uses katepart, now based on the QTextEdit framework
+ * closer coupling with the interpreter (clever syntax highlighting that re-uses the tokenizer!)
+ * the currently executed command and the currently selected error are marked
  ---
  * some functions are still missing (like find/replace, and a proper context menu)
 
 
- == main/mainwindow ==
+ == mainwindow ==
  * F2 context help is now done using the tokenizer
- * there is now a way to invoke KTurtle from the command line (for unittests), try: "kturtle --help"
  * new icons (logo) for kturtle (now svg based: thanks to inkscape)
+
+
+ == main ==
+ * there is now a way to invoke KTurtle from the command line (for unittests), try: "kturtle --help"
+ * turtle code can be parsed (by re-using the tokenizer) to embeddable C++ code, try: "kturtle --help"
 
 
  == translator ==

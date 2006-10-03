@@ -83,6 +83,9 @@ class Translator
 
 		QString default2localized(QString& defaultLook) { return default2localizedMap[defaultLook]; }
 
+		/// returns all default looks that have a localized look (for translating examples in main.cpp)
+		QStringList allDefaultLooks() { return QStringList(default2localizedMap.keys()); }
+
 
 		QStringList exampleNames() const { return QStringList(examples.keys()); }
 

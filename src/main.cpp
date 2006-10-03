@@ -48,6 +48,8 @@ static KCmdLineOptions options[] = {
 	{"test <file>", I18N_NOOP("Starts KTurtle in testing mode (without a GUI), directly runs the specified local file"), 0},
 	{"l", 0, 0},
 	{"lang <code>", I18N_NOOP("Specifies the localization language by a language code, defaults to \"en_US\" (only works in testing mode)"), 0},
+	{"p", 0, 0},
+	{"parse <file>", I18N_NOOP("Translates turtle code to embeddable C++ example strings (for developers only)"), 0},
 	KCmdLineLastOption
 };
 
@@ -63,7 +65,7 @@ int main(int argc, char* argv[])
 	KCmdLineArgs::addCmdLineOptions(options);
 	KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
 
-	if (!args->isSet("test")) {
+	if (!args->isSet("test") && !args->isSet("parse")) {
 
 		///////////////// run in gui mode /////////////////
 		KApplication app;
@@ -76,6 +78,38 @@ int main(int argc, char* argv[])
 		}
 		args->clear();  // free some memory
 		return app.exec();  // the mainwindow has WDestructiveClose flag; it will destroy itself.
+
+	} else if (args->isSet("parse")) {
+
+		///////////////// run in example parsing mode /////////////////
+		QFile inputFile(args->getOption("parse"));
+		if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+			std::cout << "Could not open file: " << qPrintable(QFile::decodeName(args->getOption("parse"))) << std::endl;
+			std::cout << "Exitting..." << std::endl;
+			return 1;
+		}
+		
+		new KInstance(&aboutData);  // need a KInstance since we're using KLocale in the Translator class
+		Translator::instance()->setLanguage();
+
+		QTextStream inputStream(&inputFile);
+		Tokenizer tokenizer;
+		tokenizer.initialize(inputStream);
+
+		QStringList defaultLooks(Translator::instance()->allDefaultLooks());
+		QString result;
+		Token* t;
+		while ((t = tokenizer.getToken())->type() != Token::EndOfFile) {
+			if (defaultLooks.contains(t->look()))
+				result.append(QString("@(%1)").arg(t->look()));
+			else
+				result.append(t->look());
+			if (t->type() == Token::EndOfLine) result.append('\n');
+		}
+		inputFile.close();
+
+		foreach (QString line, result.split('\n')) std::cout << qPrintable(QString("\"%1\"").arg(line)) << std::endl;
+		std::cout << std::endl;
 
 	} else {
 
