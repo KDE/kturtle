@@ -59,9 +59,9 @@ void Interpreter::interpret()
 
 
 		case Initialized:
-			qDebug() << "Initializing Parser...";
 			parser->initialize(tokenizer, errorList);
 			_state = Parsing;
+			qDebug() << "Initialized the parser, parsing the code...";
 			emit parsing();
 			break;
 
@@ -79,15 +79,11 @@ void Interpreter::interpret()
 			}
 
 			if (parser->isFinished()) {
-				qDebug() << "Finished parsing.\n\n";
+				qDebug() << "Finished parsing.\n";
 				TreeNode* tree = parser->getRootNode();
-				if (m_testing) {
-					parser->printTree();
-				} else {
-					qDebug() << "Node tree as returned by parser:";
-					parser->printTree();
-					qDebug() << "\n\n";
-				}
+				qDebug() << "Node tree as returned by parser:";
+				parser->printTree();
+				qDebug() << "";
 
 // 				if (errorList->count() > 0) {
 // 					qDebug() << "Parsing returned " << errorList->count() << " error(s):";
@@ -97,9 +93,9 @@ void Interpreter::interpret()
 // 					exit(0);
 // 				}
 
-				qDebug() << "Executing the node tree:";
 				executer->initialize(tree, errorList);
 				_state = Executing;
+				qDebug() << "Initialized the executer, executing the node tree...";
 				emit executing();
 				return;
 			}
@@ -110,13 +106,13 @@ void Interpreter::interpret()
 			executer->execute();
 
 			if (executer->isFinished()) {
-				qDebug() << "Finished executing.\n\n";
+				qDebug() << "Finished executing.\n";
 				if (encounteredErrors()) {
-					qDebug() << "Parsing and execution returned " << errorList->count() << " error(s):";
+					qDebug() << "Execution returned " << errorList->count() << " error(s):";
 					QStringList lines = errorList->asString().split('\n');
 					foreach (QString line, lines) qDebug() << line;
 				} else {
-					qDebug() << "Parsed and executed code without encountering any errors.";
+					qDebug() << "No errors encountered.";
 				}
 				_state = Finished;
 				emit finished();
@@ -126,7 +122,7 @@ void Interpreter::interpret()
 
 
 		case Finished:
-			qCritical("Interpreter::interpret(): called whe already finished");
+			qCritical("Interpreter::interpret(): called while already finished");
 			return;
 	}
 }

@@ -103,7 +103,7 @@ int main(int argc, char* argv[])
 			}
 		} else {
 			Translator::instance()->setLanguage();
-			std::cout << "Using the default (en_US) localization..." << std::endl;
+			std::cout << "Using the default (en_US) localization." << std::endl;
 		}
 
 		args->clear();  // free some memory
@@ -128,7 +128,6 @@ int main(int argc, char* argv[])
 			std::cout << "ERR> Iterated more than " << MAX_ITERATION_STEPS << " steps... Execution terminated." << std::endl;
 
 		inputFile.close();
-		std::cout << "Finished..." << std::endl;
 	}
 
 	return 0;

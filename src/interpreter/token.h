@@ -203,7 +203,7 @@ class Token
 		 * @param endRow   row position of the last character of this token in the code
 		 * @param endCol   column position of the last character of this token in the code
 		 */
-		Token(int type, const QString& look, uint startRow, uint startCol, uint endRow, uint endCol);
+		Token(int type, const QString& look, int startRow, int startCol, int endRow, int endCol);
 
 		/** @short Destructor. Does nothing special. */
 		virtual ~Token() {}
@@ -239,13 +239,13 @@ class Token
 		void setStartRow(int startRow)  { _startRow = startRow; }
 
 		/** Sets the @p startCol of the token. @see startCol() */
-		void setStartCol(int startCol)  { _startRow = startCol; }
+		void setStartCol(int startCol)  { _startCol = startCol; }
 
 		/** Sets the @p endRow of the token. @see endRow() */
-		void setEndRow(int endRow)      { _startRow = endRow; }
+		void setEndRow(int endRow)      { _endRow = endRow; }
 
 		/** Sets the @p endCol of the token. @see endCol() */
-		void setEndCol(int endCol)      { _startRow = endCol; }
+		void setEndCol(int endCol)      { _endCol = endCol; }
 
 		/** Compares 2 Tokens. Needed for ErrorList (QValueList), it needs to compare ErrorMessages which contain Tokens. */
 		bool operator==(const Token&) const;

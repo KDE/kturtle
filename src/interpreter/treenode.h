@@ -153,4 +153,4 @@ class TreeNode
 		Value                           *_value;
 };
 
-#endif // _TREENODE_H_
+#endif  // _TREENODE_H_

@@ -161,7 +161,7 @@ Token* Tokenizer::getToken()
 	if (cType != Token::Unknown)
 		return new Token(cType, static_cast<QString>(c), startRow, startCol, row, col);
 	
-	// fall throu: return an Error token
+	// fall throu: return an Error token (TODO does this neglect used def'ed function names of one character?)
 	return new Token(Token::Error, static_cast<QString>(c), startRow, startCol, row, col);
 }
 

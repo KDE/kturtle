@@ -96,8 +96,10 @@ void Executer::execute()
 					finished = true;
 					return;
 				}
-				
-				std::cout << "EXE> " << qPrintable(currentNode->token()->look()) << std::endl;
+
+				// don't report scopes (their are not really executed)
+				if (currentNode->token()->type() != Token::Scope)
+					std::cout << "EXE> " << qPrintable(currentNode->token()->look()) << std::endl;
 				execute(currentNode);
 				return;
 			}
@@ -115,7 +117,9 @@ void Executer::execute()
 	while (currentNode->hasChildren() && currentNode->token()->type() != Token::Scope)
 		currentNode = currentNode->firstChild();
 
-	std::cout << "EXE> " << qPrintable(currentNode->token()->look()) << std::endl;
+	// don't report scopes (their are not really executed)
+	if (currentNode->token()->type() != Token::Scope)
+		std::cout << "EXE> " << qPrintable(currentNode->token()->look()) << std::endl;
 
 	execute(currentNode);
 }
@@ -128,7 +132,10 @@ void Executer::execute(TreeNode* node)
 	// emit a signal for GUI
 	Token* t = node->token();
 // 	kDebug(0) << "emitting token: '" << t->look() << "' - (" << t->startRow() << "," << t->startCol() << " - " << t->endRow() << "," << t->endCol() << ")" << endl;
-	emit currentlyExecuting(t->startRow(), t->startCol(), t->endRow(), t->endCol());
+
+	// don't report scopes (their are not really executed)
+	if (t->type() != Token::Scope)
+		emit currentlyExecuting(t->startRow(), t->startCol(), t->endRow(), t->endCol());
 
 	// this method executes one node at the time
 

@@ -41,7 +41,7 @@ class Echoer : public QObject
 		/**
 		 * Default Constructor
 		 */
-		Echoer(QObject* parent = 0) { setParent(parent); reset(); }
+		Echoer(QObject* parent = 0) { setParent(parent); }
 
 		/**
 		 * Default Destructor

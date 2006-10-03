@@ -31,7 +31,7 @@ Token::Token()
 }
 
 
-Token::Token(int type, const QString& look, uint startRow, uint startCol, uint endRow, uint endCol)
+Token::Token(int type, const QString& look, int startRow, int startCol, int endRow, int endCol)
 	: _type(type),
 	  _look(look),
 	  _startRow(startRow),

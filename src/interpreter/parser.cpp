@@ -501,6 +501,8 @@ TreeNode* Parser::parseScopeOpen() {
 TreeNode* Parser::parseScopeClose() {
 //	qDebug() << "Parser::parseScopeClose()";
 	TreeNode* node = new TreeNode(currentToken);
+	int endRow = currentToken->endRow();
+	int endCol = currentToken->endCol();
 	nextToken();
 	while (currentToken->type() == Token::EndOfLine) {  // allow newlines before else
 		delete currentToken;
@@ -515,8 +517,8 @@ TreeNode* Parser::parseScopeClose() {
 		do {
 			parentScope = parentScope->parent();
 		} while (parentScope != rootNode && parentScope->token()->type() != Token::Scope);
-		currentScope->token()->setEndRow(currentToken->endRow());
-		currentScope->token()->setEndCol(currentToken->endCol());
+		currentScope->token()->setEndRow(endRow);
+		currentScope->token()->setEndCol(endCol);
 		currentScope = parentScope;
 	}
 	return node;
