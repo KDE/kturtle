@@ -53,7 +53,7 @@ class TreeNode
 		/**
 		 * @short Destructor.
 		 * This deletes the Value and the Token associated with this TreeNode.
-		 * The childList auto-deletes all the childs, which means that deleting
+		 * The childList auto-deletes all the children, which means that deleting
 		 * the root node deletes the whole tree.
 		 */
 		virtual ~TreeNode();
@@ -96,7 +96,7 @@ class TreeNode
 
 		/**
 		 * Appends the pointer to the TreeNode @p newChild to the childList and
-		 * sets the childs parent to this. @see childCount @see hasChildren
+		 * sets the child's parent to this. @see childCount @see hasChildren
 		 */
 		void      appendChild(TreeNode* newChild);
 
@@ -125,7 +125,7 @@ class TreeNode
 		/// Initializes a the TreeNode. Called by the constructor.
 		void init(TreeNode* parent, Token* token);
 
-		/** Calls itself, @ref show(), and @ref showTree() for each of the childs */
+		/** Calls itself, @ref show(), and @ref showTree() for each of the children */
 		virtual void show(QString& str, int indent = 0) const;
 
 		/** Prints an indented string describing itself to de debug info */
@@ -135,7 +135,7 @@ class TreeNode
 		/// typedef for the ChildList.
 		typedef QList<TreeNode*>         ChildList;
 
-		/// The childList, contains pointers to the childs of this node.
+		/// The childList, contains pointers to the children of this node.
 		ChildList                       *childList;
 
 		/// Keeps track of the index of the current child. Zero when no child list is available.

@@ -355,7 +355,7 @@ void Executer::executeVariable(TreeNode* node) {
 		qDebug() << "exists globally";
 		node->setValue(globalVariableTable[node->token()->look()]);
 	} else {
-		addError(i18n("The variable '%1' was used without first beeing assigned to a value", node->token()->look()), *node->token(), 0);
+		addError(i18n("The variable '%1' was used without first being assigned to a value", node->token()->look()), *node->token(), 0);
 	}
 }
 void Executer::executeFunctionCall(TreeNode* node) {

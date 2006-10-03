@@ -619,7 +619,7 @@ QString MainWindow::codeToFullName(const QString& lang_code)
 {
 	return QString(lang_code.isNull() ?
 			i18n("%1 [built in]", codeToFullName("en_US")) :
-			KGlobal::locale()->twoAlphaToLanguageName(lang_code.left(2)) + " (" + lang_code + ")"
+			i18n("%1 (%2)", KGlobal::locale()->twoAlphaToLanguageName(lang_code.left(2)), lang_code);
 		);
 }
 

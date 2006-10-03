@@ -48,7 +48,7 @@
 
 
 new_item()
-# This is used for Tokens that are contructed without beeing initialized
+# This is used for Tokens that are contructed without being initialized
 @type  = "NotSet"
 @cat   = "Meta"
 parse_item()
@@ -158,7 +158,7 @@ EOS
 		qDebug() << "exists globally";
 		node->setValue(globalVariableTable[node->token()->look()]);
 	} else {
-		addError(i18n("The variable '%1' was used without first beeing assigned to a value", node->token()->look()), *node->token(), 0);
+		addError(i18n("The variable '%1' was used without first being assigned to a value", node->token()->look()), *node->token(), 0);
 	}
 EOS
 parse_item()

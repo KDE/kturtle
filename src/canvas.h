@@ -60,7 +60,7 @@ class Canvas : public QGraphicsView
 		void slotSpriteShow();
 		void slotSpriteHide();
 		void slotPrint(const QString& text);
-		void slotFontType(QString family, QString extra);
+		void slotFontType(const QString& family, const QString& extra);
 		void slotFontSize(double px);
 		void slotWrapOn();
 		void slotWrapOff();

@@ -251,7 +251,7 @@ void Canvas::slotPrint(const QString& text)
 	ti->setPos(turtle->pos().x(), turtle->pos().y());
 }
 
-void Canvas::slotFontType(QString family, QString extra)
+void Canvas::slotFontType(const QString& family, const QString& extra)
 {
 	textFont.setFamily(family);
 	textFont.setBold(extra.contains(i18n("bold")) > 0);
