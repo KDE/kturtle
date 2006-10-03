@@ -114,8 +114,16 @@ void Executer::execute()
 	}
 	
 // 	qDebug() << ">> to top";
-	while (currentNode->hasChildren() && currentNode->token()->type() != Token::Scope)
+	while (currentNode->hasChildren() && currentNode->token()->type() != Token::Scope) {
+		if (currentNode->token()->type() == Token::Learn) {
+			currentNode = currentNode->nextSibling();
+			if (currentNode == 0) {
+				finished = true;
+				return;
+			}
+		}
 		currentNode = currentNode->firstChild();
+	}
 
 	// don't report scopes (their are not really executed)
 	if (currentNode->token()->type() != Token::Scope)
