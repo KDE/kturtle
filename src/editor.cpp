@@ -277,10 +277,10 @@ void Editor::markChars(const QTextCharFormat& charFormat, int startRow, int star
 	// mark the selection
 	QTextCursor cursor(editor->document());
 	cursor.movePosition(QTextCursor::Start,         QTextCursor::MoveAnchor);
-	cursor.movePosition(QTextCursor::Down,          QTextCursor::MoveAnchor, startRow - 1);
+	cursor.movePosition(QTextCursor::NextBlock,     QTextCursor::MoveAnchor, startRow - 1);
 	cursor.movePosition(QTextCursor::NextCharacter, QTextCursor::MoveAnchor, startCol - 1);
-	cursor.movePosition(QTextCursor::Down,          QTextCursor::KeepAnchor, endRow - startRow);
-	cursor.movePosition(QTextCursor::StartOfLine,   QTextCursor::KeepAnchor);
+	cursor.movePosition(QTextCursor::NextBlock,     QTextCursor::KeepAnchor, endRow - startRow);
+	cursor.movePosition(QTextCursor::StartOfBlock,  QTextCursor::KeepAnchor);
 	cursor.movePosition(QTextCursor::NextCharacter, QTextCursor::KeepAnchor, endCol - 1);
 	cursor.setCharFormat(charFormat);
 	isMarked = true;
