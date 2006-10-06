@@ -68,13 +68,13 @@ class Parser
 		 * It calls @ref parseStatement() to receive a little piece of tree (some nodes)
 		 * and appends them to the current scope.
 		 *
-		 * When it detects an EndOfFile token it sets finished to TRUE and stops
+		 * When it detects an EndOfInput token it sets finished to TRUE and stops
 		 * working. @see isFinished
 		 */
 		void         parse();
 
 		/**
-		 * @short Reflects if the Parser has finished parsing (got an EndOfFile token).
+		 * @short Reflects if the Parser has finished parsing (got an EndOfInput token).
 		 * @return TRUE when parsing has finished otherwise FALSE.
 		 */
 		bool         isFinished() const { return finished; }

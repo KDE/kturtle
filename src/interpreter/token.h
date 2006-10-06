@@ -67,7 +67,7 @@ class Token
 			Scope,
 			WhiteSpace,
 			EndOfLine,
-			EndOfFile,
+			EndOfInput,
 			VariablePrefix,
 			Variable,
 			FunctionCall,
@@ -160,7 +160,6 @@ class Token
  */
 
 			CommandCategory,
-			MetaCategory,
 			ControllerCommandCategory,
 			NumberCategory,
 			MathOperatorCategory,
@@ -169,6 +168,7 @@ class Token
 			DecimalSeparatorCategory,
 			FunctionCallCategory,
 			ExpressionCategory,
+			MetaCategory,
 			AssignmentCategory,
 			TrueFalseCategory,
 			CommentCategory,

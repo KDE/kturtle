@@ -99,7 +99,7 @@ int main(int argc, char* argv[])
 		QStringList defaultLooks(Translator::instance()->allDefaultLooks());
 		QString result;
 		Token* t;
-		while ((t = tokenizer.getToken())->type() != Token::EndOfFile) {
+		while ((t = tokenizer.getToken())->type() != Token::EndOfInput) {
 			if (defaultLooks.contains(t->look()))
 				result.append(QString("@(%1)").arg(t->look()));
 			else

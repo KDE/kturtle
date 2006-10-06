@@ -61,7 +61,7 @@ Token* Highlighter::checkOrApplyHighlighting(const QString& text, int cursorInde
 
 	QTextCharFormat* format;
 	Token* token = tokenizer->getToken();
-	while (token->type() != Token::EndOfFile) {
+	while (token->type() != Token::EndOfInput) {
 		format = 0;
 		switch (token->category()) {
 				case Token::VariableCategory:          format = &variableFormat;          break;

@@ -45,7 +45,7 @@ Token* Tokenizer::getToken()
 
 	// catch the end of the string
 	if (atEnd)
-		return new Token(Token::EndOfFile, "EOF", row, col, row, col);
+		return new Token(Token::EndOfInput, "END", row, col, row, col);
 
 	int cType = translator->look2type(c);  // since we need to know it often we store it
 

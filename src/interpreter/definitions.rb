@@ -115,7 +115,7 @@ new_item()
 parse_item()
 
 new_item()
-@type  = "EndOfFile"
+@type  = "EndOfInput"
 @cat   = "Meta"
 parse_item()
 

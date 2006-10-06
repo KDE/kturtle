@@ -103,14 +103,6 @@ int Token::typeToCategory(int type)
 		case Direction:
 			return CommandCategory;
 
-		case EndOfFile:
-		case NotSet:
-		case Unknown:
-		case ArgumentList:
-		case Root:
-		case EndOfLine:
-			return MetaCategory;
-
 		case Return:
 		case Else:
 		case Step:
@@ -155,6 +147,14 @@ int Token::typeToCategory(int type)
 		case NotEquals:
 		case GreaterOrEquals:
 			return ExpressionCategory;
+
+		case NotSet:
+		case Unknown:
+		case ArgumentList:
+		case Root:
+		case EndOfLine:
+		case EndOfInput:
+			return MetaCategory;
 
 		case Assign:
 			return AssignmentCategory;

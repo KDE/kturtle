@@ -54,7 +54,7 @@ void Parser::parse()
 	}
 
 	if (resultNode->token()->type() == Token::ScopeClose ||
-	    resultNode->token()->type() == Token::EndOfFile) {
+	    resultNode->token()->type() == Token::EndOfInput) {
 		delete resultNode;
 	} else {
 		currentScope->appendChild(resultNode);
@@ -92,7 +92,7 @@ void Parser::nextToken()
 // 		.arg(currentToken->look())
 // 		.arg(currentToken->type());
 // 	qDebug() << "Parser::nextToken():" << currentToken->look() << " [" << currentToken->type() << "]   on line" << currentToken->startRow();
-	if (currentToken->type() == Token::EndOfFile)
+	if (currentToken->type() == Token::EndOfInput)
 		finished = true;
 }
 
@@ -118,7 +118,7 @@ bool Parser::skipToken(int expectedTokenType, Token& byToken)
 		case Token::ArgumentSeparator:
 			addError(QString("A comma was expected here..."), byToken, 0);
 			break;
-		case Token::EndOfFile:
+		case Token::EndOfInput:
 			addError(QString("Did not expect '%1', instead expected the line to end after %2")
 					.arg(currentToken->look())
 					.arg(byToken.look()), byToken, 0);
@@ -313,7 +313,7 @@ TreeNode* Parser::parseFactor()
 
 // 		default:
 // 			QString s = currentToken->look();
-// 			if ( s.isEmpty() || currentToken->type() == Token::EndOfFile )
+// 			if ( s.isEmpty() || currentToken->type() == Token::EndOfInput )
 // 			{
 // // 				Error(currentToken, i18n("INTERNAL ERROR NR %1: please sent this Logo script to KTurtle developers").arg(1), 1020);
 // 				// if this error occurs the see the Parser::Repeat for the good solution using 'preservedToken'
@@ -440,7 +440,7 @@ void Parser::appendArguments(TreeNode* node)
 	// this because it's also used for the user defined 'functionCall' where we don't know type nor quantity
 	// we also don't know if this node is (part of) an argument itself
 	if (currentToken->type() == Token::EndOfLine ||
-	    currentToken->type() == Token::EndOfFile ||
+	    currentToken->type() == Token::EndOfInput ||
 	    currentToken->type() == Token::ArgumentSeparator ||
 	    currentToken->type() == Token::ParenthesisClose ||
 	    currentToken->type() == Token::ScopeOpen ||
@@ -448,7 +448,7 @@ void Parser::appendArguments(TreeNode* node)
 	node->appendChild(parseExpression()); // append the first parameter
 	while (skipToken(Token::ArgumentSeparator)) {  // pushes through the comma
 		if (currentToken->type() == Token::EndOfLine ||
-		    currentToken->type() == Token::EndOfFile)
+		    currentToken->type() == Token::EndOfInput)
 			return; // catch forgotten expressions (go 10,)
 		node->appendChild(parseExpression());
 	}
