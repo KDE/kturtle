@@ -50,7 +50,6 @@ MainWindow::MainWindow()
 	toolBar->setObjectName("toolbar");
 	addToolBar(toolBar);
 
-// // // 	setupLanguages();
 	setupDockWindows();  // the setup order matters
 	setupActions();
 	setupCanvas();
@@ -314,37 +313,9 @@ void MainWindow::setupActions()
 }
 
 
-
-
-
-
-GrView::GrView(QWidget *parent) : QGraphicsView(parent) {
-	scene = new QGraphicsScene(parent);
-	setSceneRect(0, 0, 400, 400);
-	setScene(scene);
-	setMaximumSize(450, 450);
-	scene->setItemIndexMethod(QGraphicsScene::NoIndex);
-	setAlignment(Qt::AlignLeft|Qt::AlignTop);
-	setInteractive(false);
-}
-
 void MainWindow::setupCanvas()
 {
 		// TODO fix this shit... look at (maybe alter to test) qt examples
-
-
-
-// // // 	QWidget* centralWidget = new QWidget(this);
-// // // 	QHBoxLayout* hboxLayout = new QHBoxLayout(centralWidget);
-// // // 	hboxLayout->setMargin(MARGIN_SIZE);
-// // // // 	QGraphicsScene* scene = new QGraphicsScene(0, 0, 400, 400);
-// // // 	GrView* view = new GrView();
-// // // // 	view->setMaximumSize(402, 402);
-// // // 	view->setFocusPolicy(Qt::NoFocus);
-// // // 	hboxLayout->addWidget(view);
-// // // 	setCentralWidget(centralWidget);
-
-
 
 	// put the canvas in a layout as the cetral widget of the mainwindow
 	QWidget* centralWidget = new QWidget(this);
@@ -628,7 +599,6 @@ void MainWindow::run()
 	    interpreter->state() == Interpreter::Aborted) {
 		interpreter->initialize(editor->content());
 	}
-
 	// start parsing (always in full speed)
 	iterationTimer->setSingleShot(false);
 	iterationTimer->start(0);

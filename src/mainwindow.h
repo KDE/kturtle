@@ -43,11 +43,11 @@ class QMenu;
 class QTextEdit;
 
 
+//BEGIN small sub-classes to make life easy
 // extends the QToolBar with an extra signal
 class LocalToolBar : public QToolBar { Q_OBJECT
 	public:
 		LocalToolBar(const QString& title, QWidget* parent = 0) { setWindowTitle(title); setParent(parent); }
-// 		ToolBar(QWidget* parent = 0) { setParent(parent); }
 		void setVisible(bool b) { QToolBar::setVisible(b); emit visibilityChanged(b); }
 		void show() { QToolBar::show(); emit visibilityChanged(true); }
 		void hide() { QToolBar::hide(); emit visibilityChanged(false); }
@@ -65,20 +65,9 @@ class LocalDockWidget : public QDockWidget { Q_OBJECT
 	signals:
 		void visibilityChanged(bool);
 };
+//END
 
 
-// just a little test in the process of trying to get rid of the scrollbars around the canvas
-class GrView : public QGraphicsView
-{
-	Q_OBJECT
-
-	public:
-		GrView(QWidget *parent = 0);
-		~GrView() { delete scene; }
-
-	private:
-		QGraphicsScene *scene;
-};
 
 class MainWindow : public KMainWindow
 {
@@ -155,8 +144,6 @@ class MainWindow : public KMainWindow
 
 		QHash<QString, ValueAction*> languageActions;  // a <lang_code, dictionary_filename> - map
 		QString currentLanguageCode;
-
-// 		ExamplesMenu *examplesMenu;
 
 		QString contextHelpString;
 	

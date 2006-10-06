@@ -17,7 +17,6 @@
 */
 
 #include <QtGui>
-#include <QTextOStream>
 
 #include <kdebug.h>
 #include <kurl.h>

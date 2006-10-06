@@ -21,7 +21,6 @@
 
 #include <QString>
 #include <QFile>
-#include <QTextStream>
 
 #include <kaboutdata.h>
 #include <kapplication.h>
@@ -32,6 +31,7 @@
 
 #include "interpreter/interpreter.h"  // for non gui mode
 #include "interpreter/echoer.h"
+#include "interpreter/tokenizer.h"
 
 
 static const char description[] =
@@ -48,6 +48,8 @@ static KCmdLineOptions options[] = {
 	{"test <file>", I18N_NOOP("Starts KTurtle in testing mode (without a GUI), directly runs the specified local file"), 0},
 	{"l", 0, 0},
 	{"lang <code>", I18N_NOOP("Specifies the localization language by a language code, defaults to \"en_US\" (only works in testing mode)"), 0},
+	{"k", 0, 0},
+	{"tokenize", I18N_NOOP("Only tokenizes the turtle code (only works in testing mode)"), 0},
 	{"p", 0, 0},
 	{"parse <file>", I18N_NOOP("Translates turtle code to embeddable C++ example strings (for developers only)"), 0},
 	KCmdLineLastOption
@@ -137,6 +139,21 @@ int main(int argc, char* argv[])
 		} else {
 			Translator::instance()->setLanguage();
 			std::cout << "Using the default (en_US) localization." << std::endl;
+		}
+
+		if (args->isSet("tokenize")) {
+			std::cout << "Tokenizing...\n" << std::endl;
+			Tokenizer tokenizer;
+			tokenizer.initialize(inputFile.readAll());
+			Token* t;
+			while ((t = tokenizer.getToken())->type() != Token::EndOfInput) {
+				std::cout << "TOK> "
+				          << qPrintable((QString("\"") + t->look() + '\"').leftJustified(15))
+				          << qPrintable((QString("[") + QString::number(t->type()) + ']').rightJustified(5))
+				          << " @ (" << t->startRow() << "," << t->startCol() << ")"
+				          << " - (" << t->endRow()   << "," << t->endCol()   << ")" << std::endl;
+			}
+			return 0;
 		}
 
 		args->clear();  // free some memory
