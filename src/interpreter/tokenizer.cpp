@@ -50,7 +50,7 @@ Token* Tokenizer::getToken()
 	int cType = translator->look2type(c);  // since we need to know it often we store it
 
 	// catch spaces
-	if (c.category() == QChar::Separator_Space) {
+	if (isSpace(c)) {
 		QString look;
 		do {
 			look += c;
@@ -191,8 +191,14 @@ void Tokenizer::ungetChar()
 
 bool Tokenizer::isBreak(const QChar& c)
 {
-	return (c == '\x0a' || c == '\n' ||
-	        c.category() == QChar::Other_Control ||
-	        c.category() == QChar::Separator_Line ||
-	        c.category() == QChar::Separator_Paragraph);
+	return (c == '\x0a' || c == '\n');
+// 	  c.category() == QChar::Other_Control  // one of these also contains the tab (\t)
+// 	  c.category() == QChar::Separator_Line
+// 	  c.category() == QChar::Separator_Paragraph
+}
+
+
+bool Tokenizer::isSpace(const QChar& c)
+{
+	return (c.category() == QChar::Separator_Space || c == '\x09' || c == ' ' || c == '\t');
 }

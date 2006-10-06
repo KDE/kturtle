@@ -69,7 +69,8 @@ class Tokenizer
 	private:
 		QChar getChar();    // gets a the next QChar and sets the row and col accordingly
 		void  ungetChar();  // undoes a getChar() call
-		static bool isBreak(const QChar& c);  // convenience function
+		static bool isBreak(const QChar& c);  // convenience functions
+		static bool isSpace(const QChar& c);
 
 		Translator *translator;
 		QString     inputString;

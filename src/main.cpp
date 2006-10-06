@@ -22,6 +22,8 @@
 #include <QString>
 #include <QFile>
 
+#include <kdebug.h>
+
 #include <kaboutdata.h>
 #include <kapplication.h>
 #include <kcmdlineargs.h>
@@ -143,15 +145,18 @@ int main(int argc, char* argv[])
 
 		if (args->isSet("tokenize")) {
 			std::cout << "Tokenizing...\n" << std::endl;
+			QString code = inputFile.readAll();
+// 			for (int i = 0; i < code.length(); i++) kDebug() << code.at(i) << endl;
 			Tokenizer tokenizer;
-			tokenizer.initialize(inputFile.readAll());
+			tokenizer.initialize(code);
 			Token* t;
 			while ((t = tokenizer.getToken())->type() != Token::EndOfInput) {
 				std::cout << "TOK> "
-				          << qPrintable((QString("\"") + t->look() + '\"').leftJustified(15))
-				          << qPrintable((QString("[") + QString::number(t->type()) + ']').rightJustified(5))
-				          << " @ (" << t->startRow() << "," << t->startCol() << ")"
-				          << " - (" << t->endRow()   << "," << t->endCol()   << ")" << std::endl;
+				          << qPrintable(QString("\"%1\"").arg(t->look()).leftJustified(15))
+				          << qPrintable(QString("[%1]").arg(QString::number(t->type())).rightJustified(5))
+				          << qPrintable(QString(" @ (%1,%2)").arg(t->startRow()).arg(t->startCol()))
+				          << qPrintable(QString(" - (%1,%2)").arg(t->endRow()).arg(t->endCol()))
+				          << std::endl;
 			}
 			return 0;
 		}
@@ -166,8 +171,8 @@ int main(int argc, char* argv[])
 		// install the echoer
 		(new Echoer())->connectAllSlots(interpreter->getExecuter());
 
-		// the actual execution (limited to a certainamount of iterations to break endless loops)
-		static const int MAX_ITERATION_STEPS = 5000;
+		// the actual execution (limited to a certain amount of iterations to break endless loops)
+		static const int MAX_ITERATION_STEPS = 20000;
 		int i = 0;
 		for (; interpreter->state() != Interpreter::Finished &&
 		       interpreter->state() != Interpreter::Aborted  &&
