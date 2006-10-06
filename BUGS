@@ -8,10 +8,7 @@ right now it _always_ has scrollbars; which is plain ugly. and i have try for ma
 
 
  = mainwindow (KMainWindow) =
-# the toolbar has no handle...
-...and i cant set one. probably because of the LocalToolBar subclassing
-
-
+# no known bugs
 
 
  = editor (QTextEdit) =

@@ -21,6 +21,8 @@
 
 #include <QtDebug>
 
+#include <kdebug.h>
+
 #include <klocale.h>
 
 #include "parser.h"
@@ -42,8 +44,7 @@ void Parser::initialize(Tokenizer* _tokenizer, ErrorList* _errorList)
 
 void Parser::parse()
 {
-	if (finished)
-		return;
+	if (finished) return;
 
 // 	qDebug() << "Parser::parse() -- main parse loop called";
 	TreeNode* resultNode = parseStatement();  // parse the next statement
@@ -71,10 +72,13 @@ void Parser::nextToken()
 
 	// skip spaces and comments:
 	currentToken = tokenizer->getToken();
+// 	kDebug () << "########### got token: " << currentToken->look() << endl;
+
 	while (currentToken->type() == Token::WhiteSpace ||
 	       currentToken->type() == Token::Comment) {
 		delete currentToken;
 		currentToken = tokenizer->getToken();
+// 		kDebug () << "########### got token: " << currentToken->look() << endl;
 	}
 
 	if (currentToken->type() == Token::Error)

@@ -63,9 +63,6 @@ MainWindow::MainWindow()
 	iterationTimer = new QTimer(this);
 	connect(iterationTimer, SIGNAL(timeout()), this, SLOT(iterate()));
 
-	codeString = 0;
-	codeStream = 0;
-
 	statusBar()->showMessage(i18n("Ready"));
 	setCaption();  // also sets the window caption to 'untitled'
 	setRunSpeed(0);
@@ -629,11 +626,7 @@ void MainWindow::run()
 	if (interpreter->state() == Interpreter::Uninitialized ||
 	    interpreter->state() == Interpreter::Finished ||
 	    interpreter->state() == Interpreter::Aborted) {
-		if (codeString != 0) delete codeString;
-		if (codeStream != 0) delete codeStream;
-		codeString = new QString(editor->content());
-		codeStream = new QTextStream(codeString, QIODevice::ReadOnly);
-		interpreter->initialize(*codeStream);
+		interpreter->initialize(editor->content());
 	}
 
 	// start parsing (always in full speed)

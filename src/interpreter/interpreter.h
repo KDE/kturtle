@@ -71,7 +71,7 @@ class Interpreter : public QObject
 		Executer*   getExecuter() { return executer; }
 // 		Translator* getTranslator();
 
-		void        initialize(QTextStream& inputStream);  // resets
+		void        initialize(const QString& inputString);  // resets
 		bool        encounteredErrors() { return errorList->count() > 0; }
 		ErrorList*  getErrorList() { return errorList; }
 

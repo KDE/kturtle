@@ -151,8 +151,6 @@ class MainWindow : public KMainWindow
 		LocalDockWidget*  editorDock;
 		LocalToolBar*     toolBar;
 		QTimer      *iterationTimer;
-		QTextStream *codeStream;
-		QString     *codeString;
 		int          runSpeed;
 
 		QHash<QString, ValueAction*> languageActions;  // a <lang_code, dictionary_filename> - map

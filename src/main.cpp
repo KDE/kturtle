@@ -92,9 +92,9 @@ int main(int argc, char* argv[])
 		new KInstance(&aboutData);  // need a KInstance since we're using KLocale in the Translator class
 		Translator::instance()->setLanguage();
 
-		QTextStream inputStream(&inputFile);
 		Tokenizer tokenizer;
-		tokenizer.initialize(inputStream);
+		tokenizer.initialize(inputFile.readAll());
+		inputFile.close();
 
 		QStringList defaultLooks(Translator::instance()->allDefaultLooks());
 		QString result;
@@ -106,7 +106,6 @@ int main(int argc, char* argv[])
 				result.append(t->look());
 			if (t->type() == Token::EndOfLine) result.append('\n');
 		}
-		inputFile.close();
 
 		foreach (QString line, result.split('\n')) std::cout << qPrintable(QString("\"%1\"").arg(line)) << std::endl;
 		std::cout << std::endl;
@@ -144,8 +143,8 @@ int main(int argc, char* argv[])
 
 		// init the interpreter
 		Interpreter* interpreter = new Interpreter(0, true);  // set testing to true
-		QTextStream inputStream(&inputFile);
-		interpreter->initialize(inputStream);
+		interpreter->initialize(inputFile.readAll());
+		inputFile.close();
 
 		// install the echoer
 		(new Echoer())->connectAllSlots(interpreter->getExecuter());
@@ -161,7 +160,6 @@ int main(int argc, char* argv[])
 		if (i == MAX_ITERATION_STEPS)
 			std::cout << "ERR> Iterated more than " << MAX_ITERATION_STEPS << " steps... Execution terminated." << std::endl;
 
-		inputFile.close();
 	}
 
 	return 0;

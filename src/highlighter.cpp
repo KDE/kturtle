@@ -55,11 +55,9 @@ Highlighter::Highlighter(QTextDocument *parent)
 	tokenizer = new Tokenizer();
 }
 
-Token* Highlighter::checkOrApplyHighlighting(const QString &text, int cursorIndex)
+Token* Highlighter::checkOrApplyHighlighting(const QString& text, int cursorIndex)
 {
-	codeString = new QString(text);
-	codeStream = new QTextStream(codeString, QIODevice::ReadOnly);
-	tokenizer->initialize(*codeStream);
+	tokenizer->initialize(text);
 
 	QTextCharFormat* format;
 	Token* token = tokenizer->getToken();
@@ -99,8 +97,6 @@ Token* Highlighter::checkOrApplyHighlighting(const QString &text, int cursorInde
 		token = tokenizer->getToken();
 	}
 	delete token;
-	delete codeStream;
-	delete codeString;
 	return 0;
 }
 

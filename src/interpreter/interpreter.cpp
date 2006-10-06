@@ -43,10 +43,10 @@ Interpreter::Interpreter(QObject* parent, bool testing)
 	_state = Uninitialized;
 }
 
-void Interpreter::initialize(QTextStream& inStream)
+void Interpreter::initialize(const QString& inString)
 {
 	errorList->clear();
-	tokenizer->initialize(inStream);
+	tokenizer->initialize(inString);
 	_state = Initialized;
 }
 

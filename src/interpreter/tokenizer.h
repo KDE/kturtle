@@ -22,16 +22,15 @@
 
 #include <QChar>
 #include <QString>
-#include <QTextStream>
 
 #include "token.h"
 #include "translator.h"
 
 
 /**
- * @short Generates Token objects from a QTextStream using a Translator.
+ * @short Generates Token objects from a QString using the Translator.
  *
- * The Tokenizer reads characters off a QTextStream (unicode text).
+ * The Tokenizer reads, one-by-one, characters from a QString (unicode text).
  * By trying to translate the the tokens it tries to find out the type of
  * the tokens, since KTurtle code can be in many different languages
  * the programming commands are not known on forehand.
@@ -48,56 +47,37 @@ class Tokenizer
 		Tokenizer() {}
 
 		/** @short Destructor. Does nothing special. */
-		virtual ~Tokenizer() {}
+		~Tokenizer() {}
 
 		/**
 		 * @short Initializes (resets) the Tokenizer
 		 * Use this method to reset the Tokenizer.
-		 * @param inStream   the QTextStream that the Tokenizer will work on
-		 * @param translator the Translator that the Tokenizer will use
+		 * @param inStream the QString that the Tokenizer will tokenize
 		 */
-		void initialize(QTextStream& inStream);
+		void initialize(const QString& inStream);
 
 		/**
 		 * Reads a bunch of characters of the input stream and tries to
-		 * recognize them as a certain token type. Else type NotSet is used.
-		 * The Translator object is used to determain the type.
+		 * recognize them as a certain token type, and returns a Token of that type.
+		 * If nothing is recognized a Token of the type Unknown is returned.
+		 * The singleton Translator object is used to determain the type.
 		 * @returns a pointer to a newly created token as read from the input stream
 		 */
-		Token*          getToken();
+		Token* getToken();
+
 
 	private:
-		/// @returns the temporarily stored character or, if none, a character off the stream.
-		QChar           getChar();
+		QChar getChar();  // gets a the next QChar and sets the row and col accordingly
+		void  ungetChar();  // undoes a getChar() call
+		bool  isBreak(const QChar& c);  // convenience function
 
-		/// Temporarily stores a character.
-		void            ungetChar(QChar c);
+		Translator *translator;
+		QString     inputString;
 
-		/// Convenience function used by getChar().
-		void            updatePosition(QChar c);
+		int at, row, col, prevCol;
 
-
-
-		/// pointer to the Translator object.
-		Translator     *translator;
-
-		/// pointer to the input stream object.
-		QTextStream    *inputStream;
-
-		/// The current row number.
-		int             row;
-
-		/// The current column number.
-		int             col;
-
-
-
-		/// The temporarily stored character (doing this since we cannot write back to the stream).
-		QChar           prevChar;
-
-		/// The column of temporarily stored character.
-		int             prevCol;
+		bool atEnd;  // true if the QString is fully tokanized
 };
 
 
-#endif // _TOKENIZER_H_
+#endif  // _TOKENIZER_H_

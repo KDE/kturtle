@@ -58,9 +58,6 @@ class Highlighter : public QSyntaxHighlighter
 		QTextCharFormat controllerCommandFormat;
 		QTextCharFormat otherCommandFormat;
 		QTextCharFormat learnCommandFormat;
-
-		QTextStream *codeStream;
-		QString     *codeString;
 };
 
 
