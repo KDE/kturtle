@@ -535,7 +535,12 @@ void MainWindow::updateOnCursorPositionChange(int row, int col, const QString& l
 
 	Token* cursorToken = editor->currentToken(line, col);
 	QString desc = QString();
-	if (cursorToken != 0) switch (cursorToken->category()) {
+	if (cursorToken != 0) {
+             QString look = cursorToken->look();
+             int cat = cursorToken->category();
+             delete cursorToken;
+             cursorToken = 0;
+             switch (cat) {
 		case Token::VariableCategory:          setContextHelp(i18n("<variable>"));    return;
 		case Token::NumberCategory:            setContextHelp(i18n("<number>"));      return;
 		case Token::CommentCategory:           setContextHelp(i18n("<comment>"));     return;
@@ -551,7 +556,7 @@ void MainWindow::updateOnCursorPositionChange(int row, int col, const QString& l
 		case Token::CommandCategory:           desc = i18n("command");
 		case Token::ControllerCommandCategory: desc = i18n("command");
 		case Token::LearnCommandCategory:      desc = i18n("command");
-			setContextHelp(QString("\"%1\" (%2)").arg(cursorToken->look()).arg(desc));
+			setContextHelp(QString("\"%1\" (%2)").arg(look).arg(desc));
 			return;
 
 		case Token::MetaCategory:
@@ -561,8 +566,8 @@ void MainWindow::updateOnCursorPositionChange(int row, int col, const QString& l
 		case Token::ArgumentSeparatorCategory:
 			// do nothing with these... yet.
 			break;
+             }
 	}
-	delete cursorToken;
 	setContextHelp(i18n("<no keyword>"));
 }
 
