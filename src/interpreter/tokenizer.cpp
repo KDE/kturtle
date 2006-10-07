@@ -116,13 +116,13 @@ Token* Tokenizer::getToken()
 	if (c.isDigit() || cType == Token::DecimalSeparator) {
 		bool hasDot = false;
 
-		int localType;
+		int localType = cType;
 		QString look;
 		do {
-			localType = translator->look2type(c);
 			if (localType == Token::DecimalSeparator) hasDot = true;
 			look += c;
 			c = getChar();
+			localType = translator->look2type(c);
 		} while (c.isDigit() || (localType == Token::DecimalSeparator && !hasDot));
 		ungetChar();
 		

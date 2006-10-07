@@ -18,4 +18,4 @@ right now it _always_ has scrollbars; which is plain ugly. and i have try for ma
 
 
  = interpreter =
-# some examples crash
+# "a = 0" crashes the parser (should be "$a = 0", or "a 0")
