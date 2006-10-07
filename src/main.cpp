@@ -173,10 +173,13 @@ int main(int argc, char* argv[])
 
 		// the actual execution (limited to a certain amount of iterations to break endless loops)
 		static const int MAX_ITERATION_STEPS = 20000;
-		int i = 0;
-		for (; interpreter->state() != Interpreter::Finished &&
-		       interpreter->state() != Interpreter::Aborted  &&
-		       i < MAX_ITERATION_STEPS; i++)
+		int i;
+		for (i = 0;
+		     interpreter->state() != Interpreter::Finished &&
+		     interpreter->state() != Interpreter::Aborted  &&
+		     interpreter->getErrorList()->isEmpty() &&
+		     i < MAX_ITERATION_STEPS;
+		     i++)
 			interpreter->interpret();
 
 		if (i == MAX_ITERATION_STEPS)
