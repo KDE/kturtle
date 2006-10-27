@@ -48,8 +48,8 @@ def get_test_goal(test_file_name)
 end
 
 def get_test_results(kturtle_exe, test_file_name)
-	(stdin, stdout, stderr) = Open3.popen3("#{kturtle_exe} --test #{test_file_name}")
-	split_in_parts(stderr)
+	stdin, stdout, stderr = Open3.popen3("#{kturtle_exe} --test #{test_file_name}")
+	split_in_parts(stdout)
 end
 
 # def difference(file_name, string)
@@ -89,29 +89,33 @@ puts "Running the tests...\n\n"
 
 i = 1
 tests.each do |test_file_name|
-	puts "### test #{i.to_s}: #{test_file_name}"
+	puts "\n\n### test #{i.to_s}: #{test_file_name}"
 	goal    = get_test_goal(test_file_name)
 	results = get_test_results(kturtle_exe, test_file_name)
 
 	success = true
 	goal.each_key do |k|
+# 		puts goal[k]
+# 		puts results[k]
 		if goal[k] == results[k]
 			puts "#{k} OK"
 		else
-			puts "\n\n#{test_file_name} #{k} test FAILED\n"
-			puts "### got:"
+			puts "\n# #{k} test #{i.to_s} (#{test_file_name}) FAILED\n"
+			puts "# got:"
 			puts results[k]
 			puts "\n"
-			puts "### needed:"
-			puts goal[k]
+			puts "# needed:"
+			puts goal[k].chop.empty? ? '(empty)' : goal[k]
 			success = false
 		end
 	end
 
 	if not success and quick_fix
-		puts "QuickFix (tm) this failure?"
+		puts "QuickFix (tm) this failing test?"
 		puts "(press 'y' and ENTER for a QuickFix, any other input will _not_ QuickFix)"
+# 		until $stdin.gets.nil?; end
 		input = gets.strip
+		p ">>>>>>>>>>>>>>>>>>>>>>>> #{input.to_s}"
 		if input == 'y'
 			old_test = open(test_file_name).read
 			new_test = ''
@@ -119,7 +123,7 @@ tests.each do |test_file_name|
 				break if l =~ /^### TEST GOAL/
 				new_test += l
 			end
-			new_test += "### TEST GOAL\n"
+			new_test += "\n\n### TEST GOAL\n"
 			results.each_key { |k|  results[k].each_line { |l| new_test += "# #{l}" } }
 			f = File.new(test_file_name, 'w')
 			f.write(new_test)
