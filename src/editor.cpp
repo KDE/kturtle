@@ -188,11 +188,11 @@ bool Editor::saveFile(const KUrl &targetUrl)
 	
 		KSaveFile *savefile = new KSaveFile(filename);
 		if (savefile->open()) {
-			QTextStream outputStream ( savefile );
+			QTextStream outputStream(savefile);
 // 			outputStream.setEncoding(QTextStream::UnicodeUTF8);
 			outputStream << editor->document()->toPlainText();
 			outputStream.flush();
-			savefile->finalize(); //check for error here?
+			savefile->finalize();  // check for error here?
 		}
 		delete savefile;
 		if (!url.isLocalFile()) KIO::NetAccess::upload(filename, url, this);

@@ -536,37 +536,37 @@ void MainWindow::updateOnCursorPositionChange(int row, int col, const QString& l
 	Token* cursorToken = editor->currentToken(line, col);
 	QString desc = QString();
 	if (cursorToken != 0) {
-             QString look = cursorToken->look();
-             int cat = cursorToken->category();
-             delete cursorToken;
-             cursorToken = 0;
-             switch (cat) {
-		case Token::VariableCategory:          setContextHelp(i18n("<variable>"));    return;
-		case Token::NumberCategory:            setContextHelp(i18n("<number>"));      return;
-		case Token::CommentCategory:           setContextHelp(i18n("<comment>"));     return;
-		case Token::StringCategory:            setContextHelp(i18n("<string>"));      return;
-		case Token::ScopeCategory:             setContextHelp(i18n("<scope>"));       return;
-		case Token::AssignmentCategory:        setContextHelp(i18n("<assignment>"));  return;
-		case Token::ParenthesisCategory:       setContextHelp(i18n("<parenthesis>")); return;
-
-		case Token::MathOperatorCategory:      desc = i18n("mathmatical operator");
-		case Token::ExpressionCategory:        desc = i18n("expression");
-		case Token::BooleanOperatorCategory:   desc = i18n("boolean operator");
-		case Token::TrueFalseCategory:         desc = i18n("boolean");
-		case Token::CommandCategory:           desc = i18n("command");
-		case Token::ControllerCommandCategory: desc = i18n("command");
-		case Token::LearnCommandCategory:      desc = i18n("command");
-			setContextHelp(QString("\"%1\" (%2)").arg(look).arg(desc));
-			return;
-
-		case Token::MetaCategory:
-		case Token::WhiteSpaceCategory:
-		case Token::DecimalSeparatorCategory:
-		case Token::FunctionCallCategory:
-		case Token::ArgumentSeparatorCategory:
-			// do nothing with these... yet.
-			break;
-             }
+		QString look = cursorToken->look();
+		int cat = cursorToken->category();
+		delete cursorToken;
+		cursorToken = 0;
+		switch (cat) {
+			case Token::VariableCategory:          setContextHelp(i18n("<variable>"));    return;
+			case Token::NumberCategory:            setContextHelp(i18n("<number>"));      return;
+			case Token::CommentCategory:           setContextHelp(i18n("<comment>"));     return;
+			case Token::StringCategory:            setContextHelp(i18n("<string>"));      return;
+			case Token::ScopeCategory:             setContextHelp(i18n("<scope>"));       return;
+			case Token::AssignmentCategory:        setContextHelp(i18n("<assignment>"));  return;
+			case Token::ParenthesisCategory:       setContextHelp(i18n("<parenthesis>")); return;
+		
+			case Token::MathOperatorCategory:      desc = i18n("mathmatical operator");
+			case Token::ExpressionCategory:        desc = i18n("expression");
+			case Token::BooleanOperatorCategory:   desc = i18n("boolean operator");
+			case Token::TrueFalseCategory:         desc = i18n("boolean");
+			case Token::CommandCategory:           desc = i18n("command");
+			case Token::ControllerCommandCategory: desc = i18n("command");
+			case Token::LearnCommandCategory:      desc = i18n("command");
+				setContextHelp(QString("\"%1\" (%2)").arg(look).arg(desc));
+				return;
+		
+			case Token::MetaCategory:
+			case Token::WhiteSpaceCategory:
+			case Token::DecimalSeparatorCategory:
+			case Token::FunctionCallCategory:
+			case Token::ArgumentSeparatorCategory:
+				// do nothing with these... yet.
+				break;
+		}
 	}
 	setContextHelp(i18n("<no keyword>"));
 }
