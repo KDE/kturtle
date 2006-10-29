@@ -52,7 +52,7 @@ Editor::Editor(QWidget *parent)
 	setCurrentUrl();
 
 	// setup the main view
-	editor = new QTextEdit(this);
+	editor = new TextEdit(this);
 	editor->document()->setDefaultFont(QFont("Courier", 12));
 	editor->setFrameStyle(QFrame::NoFrame);
 	editor->installEventFilter(this);
@@ -77,6 +77,13 @@ Editor::Editor(QWidget *parent)
 	box->setMargin(0);
 	box->addWidget(numbers);
 	box->addWidget(editor);
+
+	// calculate the bg color for the highlighted line
+	QColor bgColor = this->palette().brush(this->backgroundRole()).color();
+	highlightedLineBackgroundColor.setHsv(
+		LINE_HIGHLIGHT_COLOR.hue(),
+		bgColor.saturation() + EXTRA_SATURATION,
+		bgColor.value());
 
 	// our syntax highlighter (this does not do any markings)
 	highlighter = new Highlighter(editor->document());
@@ -114,7 +121,8 @@ void Editor::openExample(const QString& example, const QString& exampleName)
 void Editor::textChanged(int pos, int removed, int added)
 {
 	Q_UNUSED(pos);
-	if ((removed == 0 && added == 0) || changingMarkings) return;  // save some cpu cycles
+// 	if ((removed == 0 && added == 0) || changingMarkings) return;  // save some cpu cycles
+	if (removed == 0 && added == 0) return;  // save some cpu cycles
 
 	removeMarkings();  // removes the character markings if there are any
 
@@ -131,7 +139,7 @@ bool Editor::newFile()
 		isMarked = false;  // there are no char markers in a new file
 		editor->document()->clear();
 		setCurrentUrl();
-		markCurrentLine();  // current line marker
+// 		markCurrentLine();  // current line marker
 		return true;
 	}
 	return false;
@@ -303,28 +311,6 @@ void Editor::removeMarkings()
 	changingMarkings = false;
 }
 
-void Editor::markCurrentLine()
-{
-	changingMarkings = true;
-	bool modified = editor->document()->isModified();  // save modification state
-
-	// remove all block markings
-	QTextCursor cursor(editor->document());
-	cursor.movePosition(QTextCursor::Start, QTextCursor::MoveAnchor);
-	cursor.movePosition(QTextCursor::End,   QTextCursor::KeepAnchor);
-	cursor.setBlockFormat(defaultBlockFormat);
-
-	// mark the line
-	cursor = editor->textCursor();
-	cursor.movePosition(QTextCursor::StartOfLine, QTextCursor::MoveAnchor);
-	cursor.movePosition(QTextCursor::EndOfLine,   QTextCursor::KeepAnchor);
-	cursor.setBlockFormat(currentLineFormat);
-
-	editor->document()->setModified(modified);  // restore modification state
-	changingMarkings = false;
-}
-
-
 
 void Editor::cursorPositionChanged()
 {
@@ -344,9 +330,29 @@ void Editor::cursorPositionChanged()
 		}
 	}
 	if (next_break == 0) next_break = s.length();
-	markCurrentLine();
+	if (currentLine != row) {
+		currentLine = row;
+		highlightCurrentLine();
+		editor->highlightCurrentLine();
+	}
 	emit cursorPositionChanged(row+1, pos-last_break, s.mid(last_break+1, next_break-last_break-1));
 }
+
+
+void Editor::paintEvent(QPaintEvent *event)
+{
+	QRect rect = editor->currentLineRect();
+// 	rect.setX(0);
+	rect.setWidth(this->width() - EDITOR_MARGIN);  // don't draw too much
+	rect.translate(0, EDITOR_MARGIN);  // small hack to nicely align the the line highlighting
+	QColor bgColor = this->palette().brush(this->backgroundRole()).color();
+	QPainter painter(this);
+	const QBrush brush(highlightedLineBackgroundColor);
+	painter.fillRect(rect, brush);
+	painter.end();
+	QFrame::paintEvent(event);
+}
+
 
 
 // bool Editor::eventFilter(QObject *obj, QEvent *event)

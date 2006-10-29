@@ -32,9 +32,14 @@
 
 class QTextEdit;
 class QHBoxLayout;
+class QPaintEvent;
+
+static const QColor LINE_HIGHLIGHT_COLOR(239, 247, 255);
+static const int EXTRA_SATURATION = 30;  // used for drawing the highlighted background
+static const int EDITOR_MARGIN = 2;  // some margin I can't set to zero, yet painters should know it
 
 
-//BEGIN class LineNumbers
+//BEGIN LineNumbers class
 
 const int LINENUMBER_SPACING = 2;
 
@@ -81,6 +86,40 @@ class LineNumbers : public QWidget
 };
 
 //END class LineNumbers
+
+
+//BEGIN QTextEditor sub-class
+
+class TextEdit : public QTextEdit
+{
+	Q_OBJECT
+
+	public:
+		explicit TextEdit(QWidget* parent = 0) : QTextEdit(parent) {}
+		void highlightCurrentLine() { viewport()->update(); }
+		QRect currentLineRect() {
+			QTextCursor cursor = textCursor();
+			cursor.movePosition(QTextCursor::StartOfBlock);
+			QRect rect = cursorRect(cursor);
+			cursor.movePosition(QTextCursor::EndOfBlock);
+			rect |= cursorRect(cursor);  // get the bounding rectangle of both rects
+			rect.setX(0);
+			rect.setWidth(viewport()->width());
+			return rect;
+		}
+
+	protected:
+		void paintEvent(QPaintEvent *event) {
+			QPainter painter(viewport());
+			const QBrush brush(LINE_HIGHLIGHT_COLOR);
+			painter.fillRect(currentLineRect(), brush);
+			painter.end();
+			QTextEdit::paintEvent(event);
+		}
+};
+
+//END QTextEditor sub-class
+
 
 
 class Editor : public QFrame
@@ -131,13 +170,17 @@ class Editor : public QFrame
 		void textChanged(int pos, int added, int removed);
 		void cursorPositionChanged();
 
+		void paintEvent(QPaintEvent *event);
+
+	private slots:
+		void highlightCurrentLine() { this->update(); }
 
 	private:
 		void markCurrentLine();
 		void markChars(const QTextCharFormat& charFormat, int startRow, int startCol, int endRow, int endCol);
 		void setContent(const QString&);
 
-		QTextEdit   *editor;
+		TextEdit    *editor;
 		Highlighter *highlighter;
 		QTextCursor  highlight;
 		LineNumbers *numbers;
@@ -146,6 +189,8 @@ class Editor : public QFrame
 		int          currentLine;
 		bool         isMarked;
 		bool         changingMarkings;
+
+		QColor highlightedLineBackgroundColor;
 
 		QTextBlockFormat defaultBlockFormat;
 		QTextBlockFormat currentLineFormat;
