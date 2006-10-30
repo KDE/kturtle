@@ -156,18 +156,16 @@ class TextEdit : public QTextEdit
 			coords.getCoords(&startRow, &startCol, &endRow, &endCol);
 
 			QTextCursor cursor(document());
-			cursor.movePosition(QTextCursor::Start,         QTextCursor::MoveAnchor);
-			cursor.movePosition(QTextCursor::NextBlock,     QTextCursor::MoveAnchor, startRow - 1);
-			cursor.movePosition(QTextCursor::NextCharacter, QTextCursor::MoveAnchor, startCol - 1);
-			QRect rect = cursorRect(cursor).adjusted(CURSOR_RECT_MARGIN, 0, 0, 0);
-
+			cursor.movePosition(QTextCursor::Start);
 			QTextCursor endCursor(cursor);
-			endCursor.movePosition(QTextCursor::NextBlock,     QTextCursor::MoveAnchor, endRow - startRow);
-			endCursor.movePosition(QTextCursor::StartOfBlock,  QTextCursor::MoveAnchor);
+			cursor.movePosition(QTextCursor::NextBlock,        QTextCursor::MoveAnchor, startRow - 1);
+			cursor.movePosition(QTextCursor::NextCharacter,    QTextCursor::MoveAnchor, startCol - 1);
+			endCursor.movePosition(QTextCursor::NextBlock,     QTextCursor::MoveAnchor, endRow - 1);
 			endCursor.movePosition(QTextCursor::NextCharacter, QTextCursor::MoveAnchor, endCol - 1);
 
-			QVector<QRect> rects;
+			QRect rect = cursorRect(cursor).adjusted(CURSOR_RECT_MARGIN, 0, 0, 0);
 			cursor.movePosition(QTextCursor::EndOfLine);
+			QVector<QRect> rects;
 			while (cursor < endCursor) {
 				cursor.movePosition(QTextCursor::PreviousCharacter);
 				rects << (rect | cursorRect(cursor).adjusted(0, 0, fontMetrics().width("0") - CURSOR_RECT_MARGIN, 0));
