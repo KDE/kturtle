@@ -102,22 +102,22 @@ class TextEdit : public QTextEdit
 			: QTextEdit(parent) {}
 
 		void markCurrentWord(int startRow, int startCol, int endRow, int endCol) {
-			currentWordRects = coordsToRects(startRow, startCol, endRow, endCol);
+			currentWord.setCoords(startRow, startCol, endRow, endCol);
 			viewport()->update();
 		}
 
 		void removeCurrentWordMark() {
-			currentWordRects.clear();
+			currentWord = QRect();
 			viewport()->update();
 		}
 
 		void markCurrentError(int startRow, int startCol, int endRow, int endCol) {
-			currentErrorRects = coordsToRects(startRow, startCol, endRow, endCol);
+			currentError.setCoords(startRow, startCol, endRow, endCol);
 			viewport()->update();
 		}
 
 		void removeCurrentErrorMark() {
-			currentErrorRects.clear();
+			currentError = QRect();
 			viewport()->update();
 		}
 
@@ -139,14 +139,22 @@ class TextEdit : public QTextEdit
 		void paintEvent(QPaintEvent *event) {
 			QPainter painter(viewport());
 			painter.fillRect(currentLineRect(), QBrush(LINE_HIGHLIGHT_COLOR));
-			foreach (QRect rect, currentWordRects)  painter.fillRect(rect,  QBrush(WORD_HIGHLIGHT_COLOR));
-			foreach (QRect rect, currentErrorRects) painter.fillRect(rect,  QBrush(ERROR_HIGHLIGHT_COLOR));
+			if (!currentWord.isNull())
+				foreach (QRect rect, coordsToRects(currentWord))
+					painter.fillRect(rect, QBrush(WORD_HIGHLIGHT_COLOR));
+			if (!currentError.isNull())
+				foreach (QRect rect, coordsToRects(currentError))
+					painter.fillRect(rect, QBrush(ERROR_HIGHLIGHT_COLOR));
 			painter.end();
 			QTextEdit::paintEvent(event);
 		}
 
 	private:
-		QVector<QRect> coordsToRects(int startRow, int startCol, int endRow, int endCol) {
+		QVector<QRect> coordsToRects(QRect coords) {
+			// this methods calcultate the viewport rectangles that cover a (multi-line) word or error
+			int startRow, startCol, endRow, endCol;
+			coords.getCoords(&startRow, &startCol, &endRow, &endCol);
+
 			QTextCursor cursor(document());
 			cursor.movePosition(QTextCursor::Start,         QTextCursor::MoveAnchor);
 			cursor.movePosition(QTextCursor::NextBlock,     QTextCursor::MoveAnchor, startRow - 1);
@@ -161,18 +169,19 @@ class TextEdit : public QTextEdit
 			QVector<QRect> rects;
 			cursor.movePosition(QTextCursor::EndOfLine);
 			while (cursor < endCursor) {
-				rects << (rect | cursorRect(cursor).adjusted(0, 0, -CURSOR_RECT_MARGIN, 0));
+				cursor.movePosition(QTextCursor::PreviousCharacter);
+				rects << (rect | cursorRect(cursor).adjusted(0, 0, fontMetrics().width("0") - CURSOR_RECT_MARGIN, 0));
 				cursor.movePosition(QTextCursor::Down);
 				cursor.movePosition(QTextCursor::StartOfLine);
 				rect = cursorRect(cursor).adjusted(CURSOR_RECT_MARGIN, 0, 0, 0);
-				cursor.movePosition(QTextCursor::EndOfLine);  // BUG: somehow this EndOfLine doesn't produce the right rectangle
+				cursor.movePosition(QTextCursor::EndOfLine);
 			}
-			rects << (rect | cursorRect(endCursor).adjusted(0, 0, -CURSOR_RECT_MARGIN, 0));;
+			rects << (rect | cursorRect(endCursor).adjusted(0, 0, -CURSOR_RECT_MARGIN, 0));
 			return rects;
 		}
 
-		// stores the rectangles that cover a certain (multi-line) word of error:
-		QVector<QRect> currentWordRects, currentErrorRects;
+		// stores the start/end row/col of currentWord and currentError in the coods of 2 rectangles
+		QRect currentWord, currentError;
 };
 
 //END QTextEditor sub-class
