@@ -35,13 +35,15 @@ class QHBoxLayout;
 class QPaintEvent;
 
 static const QColor LINE_HIGHLIGHT_COLOR(239, 247, 255);
+static const QColor WORD_HIGHLIGHT_COLOR(255, 255, 156);
+static const QColor ERROR_HIGHLIGHT_COLOR(255, 200, 200);
 static const int EXTRA_SATURATION = 30;  // used for drawing the highlighted background
-static const int EDITOR_MARGIN = 2;  // some margin I can't set to zero, yet painters should know it
+static const int EDITOR_MARGIN = 2;  // some margin that can't be set to zero, yet painters should know it
+static const int CURSOR_RECT_MARGIN = 5;  // another margin that cannot be traced
+static const int LINENUMBER_SPACING = 2;  // sets the margin for the line numbers
 
 
 //BEGIN LineNumbers class
-
-const int LINENUMBER_SPACING = 2;
 
 class LineNumbers : public QWidget
 {
@@ -68,16 +70,16 @@ class LineNumbers : public QWidget
 			const QFontMetrics fm = fontMetrics();
 			const int ascent = fontMetrics().ascent() + 1;  // height = ascent + descent + 1
 			int lineCount = 1;
-			QPainter p(this);
-		
+			QPainter painter(this);
 			for (QTextBlock block = editor->document()->begin(); block.isValid(); block = block.next(), ++lineCount) {
 				const QRectF boundingRect = layout->blockBoundingRect(block);
 				QPointF position = boundingRect.topLeft();
 				if (position.y() + boundingRect.height() < contentsY) continue;
 				if (position.y() > pageBottom) break;
 				const QString txt = QString::number(lineCount);
-				p.drawText(width() - fm.width(txt) - LINENUMBER_SPACING, qRound(position.y()) - contentsY + ascent, txt);
+				painter.drawText(width() - fm.width(txt) - LINENUMBER_SPACING, qRound(position.y()) - contentsY + ascent, txt);
 			}
+			painter.end();
 		}
 
 	private:
@@ -95,9 +97,33 @@ class TextEdit : public QTextEdit
 	Q_OBJECT
 
 	public:
-		explicit TextEdit(QWidget* parent = 0) : QTextEdit(parent) {}
+		explicit TextEdit(QWidget* parent = 0)
+			: QTextEdit(parent), currentWordRect(QRect()), currentErrorRect(QRect()) {}
+
+		void markCurrentWord(int startRow, int startCol, int endRow, int endCol) {
+			currentWordRect = coordsToRect(startRow, startCol, endRow, endCol);
+			viewport()->update();
+		}
+
+		void removeCurrentWordMark() {
+			currentWordRect = QRect();
+			viewport()->update();
+		}
+
+		void markCurrentError(int startRow, int startCol, int endRow, int endCol) {
+			currentErrorRect = coordsToRect(startRow, startCol, endRow, endCol);
+			viewport()->update();
+		}
+
+		void removeCurrentErrorMark() {
+			currentErrorRect = QRect();
+			viewport()->update();
+		}
+
 		void highlightCurrentLine() { viewport()->update(); }
+
 		QRect currentLineRect() {
+			// this method is also used for highlighting the background of the numbers
 			QTextCursor cursor = textCursor();
 			cursor.movePosition(QTextCursor::StartOfBlock);
 			QRect rect = cursorRect(cursor);
@@ -111,11 +137,31 @@ class TextEdit : public QTextEdit
 	protected:
 		void paintEvent(QPaintEvent *event) {
 			QPainter painter(viewport());
-			const QBrush brush(LINE_HIGHLIGHT_COLOR);
-			painter.fillRect(currentLineRect(), brush);
+			painter.fillRect(currentLineRect(), QBrush(LINE_HIGHLIGHT_COLOR));
+			// TODO actually a number of rectangles has to be painted for each line the
+			// the word/error is on. so an array of QRects has to be stored in
+			// currentWordRect and currentErrorRect.
+			if (!currentWordRect.isNull())  painter.fillRect(currentWordRect,  QBrush(WORD_HIGHLIGHT_COLOR));
+			if (!currentErrorRect.isNull()) painter.fillRect(currentErrorRect, QBrush(ERROR_HIGHLIGHT_COLOR));
 			painter.end();
 			QTextEdit::paintEvent(event);
 		}
+
+	private:
+		QRect coordsToRect(int startRow, int startCol, int endRow, int endCol) {
+			QTextCursor cursor(document());
+			cursor.movePosition(QTextCursor::Start,         QTextCursor::MoveAnchor);
+			cursor.movePosition(QTextCursor::NextBlock,     QTextCursor::MoveAnchor, startRow - 1);
+			cursor.movePosition(QTextCursor::NextCharacter, QTextCursor::MoveAnchor, startCol - 1);
+			QRect rect = cursorRect(cursor).adjusted(CURSOR_RECT_MARGIN, 0, 0, 0);
+			cursor.movePosition(QTextCursor::NextBlock,     QTextCursor::MoveAnchor, endRow - startRow);
+			cursor.movePosition(QTextCursor::StartOfBlock,  QTextCursor::MoveAnchor);
+			cursor.movePosition(QTextCursor::NextCharacter, QTextCursor::MoveAnchor, endCol - 1);
+			rect |= cursorRect(cursor).adjusted(0, 0, -CURSOR_RECT_MARGIN, 0);;  // get the bounding rectangle of both rects
+			return rect;
+		}
+
+		QRect currentWordRect, currentErrorRect;
 };
 
 //END QTextEditor sub-class
@@ -143,7 +189,10 @@ class Editor : public QFrame
 
 		Token* currentToken(const QString& text, int cursorIndex) { return highlighter->formatType(text, cursorIndex); }
 
-		void removeMarkings();
+		void removeMarkings() {
+			editor->removeCurrentWordMark();
+			editor->removeCurrentErrorMark();
+		}
 
 
 	public slots:
@@ -156,8 +205,12 @@ class Editor : public QFrame
 		void setModified(bool);
 		void setInsertMode(bool b);
 
-		void markCurrentWord(int startRow, int startCol, int endRow, int endCol);
-		void markCurrentError(int startRow, int startCol, int endRow, int endCol);
+		void markCurrentWord(int startRow, int startCol, int endRow, int endCol) {
+			editor->markCurrentWord(startRow, startCol, endRow, endCol);
+		}
+		void markCurrentError(int startRow, int startCol, int endRow, int endCol) {
+			editor->markCurrentError(startRow, startCol, endRow, endCol);
+		}
 
 
 	signals:
@@ -170,33 +223,23 @@ class Editor : public QFrame
 		void textChanged(int pos, int added, int removed);
 		void cursorPositionChanged();
 
+	protected:
 		void paintEvent(QPaintEvent *event);
+
 
 	private slots:
 		void highlightCurrentLine() { this->update(); }
 
 	private:
-		void markCurrentLine();
-		void markChars(const QTextCharFormat& charFormat, int startRow, int startCol, int endRow, int endCol);
 		void setContent(const QString&);
 
-		TextEdit    *editor;
+		TextEdit    *editor;  // TODO why pointers?
 		Highlighter *highlighter;
-		QTextCursor  highlight;
 		LineNumbers *numbers;
-		QHBoxLayout *box;
+		QHBoxLayout *box;  // TODO is this relly needed?
 		KUrl         m_currentUrl;
+		QColor       highlightedLineBackgroundColor;  // the bg color of the current line's line number space
 		int          currentLine;
-		bool         isMarked;
-		bool         changingMarkings;
-
-		QColor highlightedLineBackgroundColor;
-
-		QTextBlockFormat defaultBlockFormat;
-		QTextBlockFormat currentLineFormat;
-		QTextCharFormat defaultCharFormat;
-		QTextCharFormat currentWordFormat;
-		QTextCharFormat currentErrorFormat;
 };
 
 

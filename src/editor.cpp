@@ -88,18 +88,14 @@ Editor::Editor(QWidget *parent)
 	// our syntax highlighter (this does not do any markings)
 	highlighter = new Highlighter(editor->document());
 
-	// set up the markers
-	currentLineFormat.setBackground(QBrush(QColor(239,247,255)));  // light blue
-	currentWordFormat.setBackground(QBrush(QColor(255,255,156)));  // light yellow
-	currentErrorFormat.setBackground(QBrush(QColor(255,200,200)));  // light red
-
-	newFile();  // sets some more default values
+	// sets some more default values
+	newFile();
 }
 
 Editor::~Editor()
 {
 	delete highlighter;
-// 	delete editor;  // shoudl go automagically through QObject ownerships
+// 	delete editor;  // should go automagically through QObject ownerships
 // 	delete numbers;
 }
 
@@ -121,11 +117,8 @@ void Editor::openExample(const QString& example, const QString& exampleName)
 void Editor::textChanged(int pos, int removed, int added)
 {
 	Q_UNUSED(pos);
-// 	if ((removed == 0 && added == 0) || changingMarkings) return;  // save some cpu cycles
 	if (removed == 0 && added == 0) return;  // save some cpu cycles
-
 	removeMarkings();  // removes the character markings if there are any
-
 	int lineCount = 1;
 	for (QTextBlock block = editor->document()->begin(); block.isValid(); block = block.next()) lineCount++;
 	numbers->setWidth(qMax(1, 1 + (int)floor(log10(lineCount - 1))));
@@ -135,11 +128,8 @@ void Editor::textChanged(int pos, int removed, int added)
 bool Editor::newFile()
 {
 	if (maybeSave()) {
-		changingMarkings = false;
-		isMarked = false;  // there are no char markers in a new file
 		editor->document()->clear();
 		setCurrentUrl();
-// 		markCurrentLine();  // current line marker
 		return true;
 	}
 	return false;
@@ -259,58 +249,6 @@ void Editor::setInsertMode(bool b)
 	editor->setCursorWidth(b ? 2 : editor->fontMetrics().width("0"));
 }
 
-void Editor::markCurrentWord(int startRow, int startCol, int endRow, int endCol)
-{
-	changingMarkings = true;
-	removeMarkings();
-	markChars(currentWordFormat, startRow, startCol, endRow, endCol);
-	changingMarkings = false;
-}
-
-void Editor::markCurrentError(int startRow, int startCol, int endRow, int endCol)
-{
-	changingMarkings = true;
-	removeMarkings();
-	markChars(currentErrorFormat, startRow, startCol, endRow, endCol);
-	changingMarkings = false;
-}
-
-void Editor::markChars(const QTextCharFormat& charFormat, int startRow, int startCol, int endRow, int endCol)
-{
-	changingMarkings = true;
-	bool modified = editor->document()->isModified();  // save modification state
-
-	removeMarkings();  // remove earlier markings
-
-	// mark the selection
-	QTextCursor cursor(editor->document());
-	cursor.movePosition(QTextCursor::Start,         QTextCursor::MoveAnchor);
-	cursor.movePosition(QTextCursor::NextBlock,     QTextCursor::MoveAnchor, startRow - 1);
-	cursor.movePosition(QTextCursor::NextCharacter, QTextCursor::MoveAnchor, startCol - 1);
-	cursor.movePosition(QTextCursor::NextBlock,     QTextCursor::KeepAnchor, endRow - startRow);
-	cursor.movePosition(QTextCursor::StartOfBlock,  QTextCursor::KeepAnchor);
-	cursor.movePosition(QTextCursor::NextCharacter, QTextCursor::KeepAnchor, endCol - 1);
-	cursor.setCharFormat(charFormat);
-	isMarked = true;
-
-	editor->document()->setModified(modified);  // restore modification state
-	changingMarkings = false;
-}
-
-void Editor::removeMarkings()
-{
-	changingMarkings = true;
-	if (!isMarked) return;  // don't recurse on this method
-	isMarked = false;
-
-	// remove all char formatting (only the char formatting, so not the current line marking (a block))
-	QTextCursor cursor(editor->document());
-	cursor.movePosition(QTextCursor::Start, QTextCursor::MoveAnchor);
-	cursor.movePosition(QTextCursor::End,   QTextCursor::KeepAnchor);
-	cursor.setCharFormat(defaultCharFormat);
-	changingMarkings = false;
-}
-
 
 void Editor::cursorPositionChanged()
 {
@@ -342,7 +280,6 @@ void Editor::cursorPositionChanged()
 void Editor::paintEvent(QPaintEvent *event)
 {
 	QRect rect = editor->currentLineRect();
-// 	rect.setX(0);
 	rect.setWidth(this->width() - EDITOR_MARGIN);  // don't draw too much
 	rect.translate(0, EDITOR_MARGIN);  // small hack to nicely align the the line highlighting
 	QColor bgColor = this->palette().brush(this->backgroundRole()).color();
