@@ -12,7 +12,7 @@ right now it _always_ has scrollbars; which is plain ugly. and i have try for ma
 
 
  = editor (QTextEdit) =
-# highlighting a word or an error that has a soft break in it (like "wewerewrrohroewnrewonreoiewnrioewnroewnrewiowenrioewnr" on a small viewport) is highlighted wrongly, see the editor.h code for the TODO's.
+# highlighting a word or an error that has a soft break in it (like "wewerewrrohroewnrewonreoiewnrioewnroewnrewiowenrioewnr" on a small viewport) is highlighted wrongly, see the editor.h code for the 'BUG' comment. (this shouldnt happen too often)
 
 
 

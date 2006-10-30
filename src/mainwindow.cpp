@@ -603,6 +603,7 @@ void MainWindow::run()
 	    interpreter->state() == Interpreter::Finished ||
 	    interpreter->state() == Interpreter::Aborted) {
 		interpreter->initialize(editor->content());
+		editor->removeMarkings();
 	}
 	// start parsing (always in full speed)
 	iterationTimer->setSingleShot(false);
