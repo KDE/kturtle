@@ -19,13 +19,11 @@
 
 
  == canvas ==
- * f**king scrollbars!
- * resizing of the canvas doesn't resize the actual canvas frame widget
  ---
- * add wrapping functionality
  * make state of all things available to the executer
  * add saving to file (png, maybe even svg) and printing functionality
  * context menu for save and print
+ * DON'T add wrapping functionality (not a ToDo, but a DontDo)
 
 
  == editor ==

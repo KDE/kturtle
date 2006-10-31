@@ -95,8 +95,6 @@ class Echoer : public QObject
 				SLOT(penColor(double, double, double)));
 			connect(executer, SIGNAL(canvasColor(double, double, double)),
 				SLOT(canvasColor(double, double, double)));
-			connect(executer, SIGNAL(canvasSize(double, double)),
-				SLOT(canvasSize(double, double)));
 			connect(executer, SIGNAL(spriteShow()),
 				SLOT(spriteShow()));
 			connect(executer, SIGNAL(spriteHide()),
@@ -138,7 +136,6 @@ class Echoer : public QObject
 		void penDown() { std::cout << "SIG> " << "penDown" << "(" << ")" << std::endl; }
 		void penColor(double arg0, double arg1, double arg2) { std::cout << "SIG> " << "penColor" << "(" << arg0 << "," << arg1 << "," << arg2 << ")" << std::endl; }
 		void canvasColor(double arg0, double arg1, double arg2) { std::cout << "SIG> " << "canvasColor" << "(" << arg0 << "," << arg1 << "," << arg2 << ")" << std::endl; }
-		void canvasSize(double arg0, double arg1) { std::cout << "SIG> " << "canvasSize" << "(" << arg0 << "," << arg1 << ")" << std::endl; }
 		void spriteShow() { std::cout << "SIG> " << "spriteShow" << "(" << ")" << std::endl; }
 		void spriteHide() { std::cout << "SIG> " << "spriteHide" << "(" << ")" << std::endl; }
 		void print(const QString& arg0) { std::cout << "SIG> " << "print" << "(" << qPrintable(arg0) << ")" << std::endl; }

@@ -58,8 +58,6 @@
 		canvas, SLOT(slotPenColor(double, double, double)));
 	connect(executer, SIGNAL(canvasColor(double, double, double)), 
 		canvas, SLOT(slotCanvasColor(double, double, double)));
-	connect(executer, SIGNAL(canvasSize(double, double)), 
-		canvas, SLOT(slotCanvasSize(double, double)));
 	connect(executer, SIGNAL(spriteShow()), 
 		canvas, SLOT(slotSpriteShow()));
 	connect(executer, SIGNAL(spriteHide()), 

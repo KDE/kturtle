@@ -44,6 +44,7 @@ class QTextEdit;
 
 
 //BEGIN small sub-classes to make life easy
+
 // extends the QToolBar with an extra signal
 class LocalToolBar : public QToolBar { Q_OBJECT
 	public:
@@ -65,8 +66,8 @@ class LocalDockWidget : public QDockWidget { Q_OBJECT
 	signals:
 		void visibilityChanged(bool);
 };
-//END
 
+//END small sub-classes
 
 
 class MainWindow : public KMainWindow

@@ -491,20 +491,6 @@ void Translator::setDictionary()
 	look2typeMap[localizedCommandLook] = Token::CanvasColor;
 
 	localizedCommandLook = ki18nc(
-		"You are about to translate the 'CanvasSize' COMMAND, there are some rules on how to translate it."
-		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
-		"canvassize").toString(localizer);
-	default2localizedMap["canvassize"] = localizedCommandLook;
-	look2typeMap[localizedCommandLook] = Token::CanvasSize;
-
-	localizedCommandLook = ki18nc(
-		"You are about to translate the 'CanvasSize' COMMAND ALIAS, there are some rules on how to translate it."
-		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
-		"cs").toString(localizer);
-	default2localizedMap["cs"] = localizedCommandLook;
-	look2typeMap[localizedCommandLook] = Token::CanvasSize;
-
-	localizedCommandLook = ki18nc(
 		"You are about to translate the 'SpriteShow' COMMAND, there are some rules on how to translate it."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
 		"spriteshow").toString(localizer);

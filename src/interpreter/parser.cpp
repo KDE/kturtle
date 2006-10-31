@@ -213,7 +213,6 @@ TreeNode* Parser::parseStatement()
 		case Token::PenDown             : return parsePenDown();
 		case Token::PenColor            : return parsePenColor();
 		case Token::CanvasColor         : return parseCanvasColor();
-		case Token::CanvasSize          : return parseCanvasSize();
 		case Token::SpriteShow          : return parseSpriteShow();
 		case Token::SpriteHide          : return parseSpriteHide();
 		case Token::Print               : return parsePrint();
@@ -780,14 +779,6 @@ TreeNode* Parser::parsePenColor() {
 }
 TreeNode* Parser::parseCanvasColor() {
 //	qDebug() << "Parser::parseCanvasColor()";
-	TreeNode* node = new TreeNode(currentToken);
-	nextToken();
-	appendArguments(node);
-	skipToken(Token::EndOfLine, *node->token());
-	return node;
-}
-TreeNode* Parser::parseCanvasSize() {
-//	qDebug() << "Parser::parseCanvasSize()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);

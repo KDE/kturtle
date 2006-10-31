@@ -315,8 +315,6 @@ void MainWindow::setupActions()
 
 void MainWindow::setupCanvas()
 {
-		// TODO fix this shit... look at (maybe alter to test) qt examples
-
 	// put the canvas in a layout as the cetral widget of the mainwindow
 	QWidget* centralWidget = new QWidget(this);
 	QHBoxLayout* hboxLayout = new QHBoxLayout(centralWidget);

@@ -36,39 +36,33 @@ class Canvas : public QGraphicsView
 		
 // 		QPixmap* canvas2Pixmap();
 
-// 		QSize sizeHint() { return QSize(scene->width(), scene->height()); }
-// 		QSize minimunSizeHint() { return QSize(200, 200); } // do it with set
-
-
 	public slots:
 		void slotClear();
-		void slotGo(double x, double y);
-		void slotGoX(double x);
-		void slotGoY(double y);
+		void slotGo(double x, double y) { turtle->setPos(x, y); }
+		void slotGoX(double x) { turtle->setPos(x, turtle->pos().y()); }
+		void slotGoY(double y) { turtle->setPos(turtle->pos().x(), y); }
 		void slotForward(double x);
 		void slotBackward(double x);
-		void slotDirection(double deg);
-		void slotTurnLeft(double deg);
-		void slotTurnRight(double deg);
+		void slotDirection(double deg) { turtle->setAngle(deg); }
+		void slotTurnLeft(double deg)  { turtle->setAngle(turtle->angle() - deg); }
+		void slotTurnRight(double deg) { turtle->setAngle(turtle->angle() + deg); }
 		void slotCenter();
 		void slotPenWidth(double width);
-		void slotPenUp();
-		void slotPenDown();
+		void slotPenUp()   { pen->setStyle(Qt::NoPen); }
+		void slotPenDown() { pen->setStyle(Qt::SolidLine); }
 		void slotPenColor(double r, double g, double b);
 		void slotCanvasColor(double r, double g, double b);
-		void slotCanvasSize(double x, double y);
-		void slotSpriteShow();
-		void slotSpriteHide();
+		void slotSpriteShow() { turtle->show(); }
+		void slotSpriteHide() { turtle->hide(); }
 		void slotPrint(const QString& text);
 		void slotFontType(const QString& family, const QString& extra);
-		void slotFontSize(double px);
-		void slotWrapOn();
-		void slotWrapOff();
+		void slotFontSize(double px) { textFont.setPixelSize((int)px); }
 		void slotReset();
-// 
-// 
+
+
 // 	signals:
 // 		void resized();
+
 
 	protected:
 		void resizeEvent(QResizeEvent* event);
@@ -78,19 +72,18 @@ class Canvas : public QGraphicsView
 		void initValues();
 		QColor rgbDoublesToColor(double r, double g, double b);
 		void drawLine(double x1, double y1, double x2, double y2);
+		void wheelEvent(QWheelEvent *event);
+		void scaleView(double scaleFactor);
 
-// 		void line(double xa, double ya, double xb, double yb);
-// 		void updateTurtlePosition();
-// 		void updateTurtleAngle();
-		
-		QGraphicsScene *scene;
-		QPen *pen;
-		Sprite *turtle;
-		QList<QGraphicsLineItem*> lines;
-		QGraphicsLineItem *line;
-		bool penWidthIsZero;
-		QFont textFont;
-		QColor textColor;
+		QGraphicsScene            *scene;
+		QPen                      *pen;
+		Sprite                    *turtle;
+		QList<QGraphicsLineItem*>  lines;
+		QGraphicsLineItem         *line;
+		bool                       penWidthIsZero;
+		QFont                      textFont;
+		QColor                     textColor;
 };
+
 
 #endif  // _CANVAS_H_

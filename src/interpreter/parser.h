@@ -156,7 +156,6 @@ class Parser
 		TreeNode* parsePenDown();
 		TreeNode* parsePenColor();
 		TreeNode* parseCanvasColor();
-		TreeNode* parseCanvasSize();
 		TreeNode* parseSpriteShow();
 		TreeNode* parseSpriteHide();
 		TreeNode* parsePrint();
