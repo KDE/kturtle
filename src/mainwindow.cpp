@@ -147,18 +147,18 @@ void MainWindow::setupActions()
 	a->setStatusTip(i18n("Save the current file under a different name"));
 
 	runAct = new KAction(KIcon("player_play"), i18n("&Run"), ac, "run");
-	runAct->setShortcut(Qt::Key_F5);
+	runAct->setShortcut(QKeySequence(Qt::Key_F5));
 	runAct->setStatusTip(i18n("Execute the code in the Code Editor"));
 	connect(runAct, SIGNAL(triggered()), this, SLOT(run()));
 
 	pauseAct = new KAction(KIcon("player_pause"), i18n("&Pause"), ac, "pause");
 	pauseAct->setCheckable(true);
-	pauseAct->setShortcut(Qt::Key_F6);
+	pauseAct->setShortcut(QKeySequence(Qt::Key_F6));
 	pauseAct->setStatusTip(i18n("Pause execution"));
 	connect(pauseAct, SIGNAL(triggered()), this, SLOT(pause()));
 
 	abortAct = new KAction(KIcon("stop"), i18n("&Abort"), ac, "abort");
-	abortAct->setShortcut(Qt::Key_F7);
+	abortAct->setShortcut(QKeySequence(Qt::Key_F7));
 	abortAct->setStatusTip(i18n("Abort execution"));
 	connect(abortAct, SIGNAL(triggered()), this, SLOT(abort()));
 
@@ -199,7 +199,7 @@ void MainWindow::setupActions()
 
 	a = new KAction(i18n("Toggle &Insert"), ac, "set_insert");
 	a->setStatusTip(i18n("Toggle between the 'insert' and 'overwrite' mode"));
-	a->setShortcut(Qt::Key_Insert);
+	a->setShortcut(QKeySequence(Qt::Key_Insert));
 	a->setCheckable(true);
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), this, SLOT(toggleInsertMode(bool)));
@@ -261,7 +261,7 @@ void MainWindow::setupActions()
 
 	// Help menu actions
 	contextHelpAct = new KAction(KIcon("help"), "", ac, "context_help");
-	contextHelpAct->setShortcut(Qt::Key_F2);
+	contextHelpAct->setShortcut(QKeySequence(Qt::Key_F2));
 	contextHelpAct->setStatusTip(i18n("Get help on the command under the cursor"));
 	connect(contextHelpAct, SIGNAL(triggered()), this, SLOT(contextHelp()));
 	setContextHelp();
