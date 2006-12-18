@@ -26,6 +26,7 @@
 #include <kactioncollection.h>
 #include <kaction.h>
 #include <kconfig.h>
+#include <kglobal.h>
 #include <klocale.h>
 #include <kicon.h>
 #include <kmessagebox.h>
