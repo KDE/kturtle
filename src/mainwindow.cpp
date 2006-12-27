@@ -26,13 +26,14 @@
 #include <kactioncollection.h>
 #include <kaction.h>
 #include <kconfig.h>
+#include <kglobal.h>
 #include <klocale.h>
 #include <kicon.h>
 #include <kmessagebox.h>
 #include <krecentfilesaction.h>
 #include <kstatusbar.h>
-#include <kstdaccel.h>
-#include <kstdaction.h>
+#include <KStandardShortcut>
+#include <kstandardaction.h>
 
 #include "errordialog.h"
 #include "interpreter/errormsg.h"
@@ -130,20 +131,20 @@ void MainWindow::setupActions()
 		//TODO WHATISTHIS to each action (same as statustip?)
 
   // File menu actions
-  a = KStdAction::openNew(editor, SLOT(newFile()), ac, "file_new");
+  a = KStandardAction::openNew(editor, SLOT(newFile()), ac, "file_new");
 	a->setStatusTip(i18n("Create a new file"));
 
-	a = KStdAction::open(editor, SLOT(openFile()), ac, "file_open");
+	a = KStandardAction::open(editor, SLOT(openFile()), ac, "file_open");
 	a->setStatusTip(i18n("Open an existing file"));
 
-	recentFilesAction = KStdAction::openRecent(editor, SLOT(openFile(const KUrl&)), ac, "file_recent");
+	recentFilesAction = KStandardAction::openRecent(editor, SLOT(openFile(const KUrl&)), ac, "file_recent");
 	recentFilesAction->setStatusTip(i18n("Open a recently used file"));
 
-	a = KStdAction::save(editor, SLOT(saveFile()), ac, "file_save");
+	a = KStandardAction::save(editor, SLOT(saveFile()), ac, "file_save");
 	a->setStatusTip(i18n("Save the current file to disk"));
 	connect(editor, SIGNAL(modificationChanged(bool)), a, SLOT(setEnabled(bool)));
 
-	a = KStdAction::saveAs(editor, SLOT(saveFileAs()), ac, "file_save_as");
+	a = KStandardAction::saveAs(editor, SLOT(saveFileAs()), ac, "file_save_as");
 	a->setStatusTip(i18n("Save the current file under a different name"));
 
 	runAct = new KAction(KIcon("player_play"), i18n("&Run"), ac, "run");
@@ -162,38 +163,38 @@ void MainWindow::setupActions()
 	abortAct->setStatusTip(i18n("Abort execution"));
 	connect(abortAct, SIGNAL(triggered()), this, SLOT(abort()));
 
-	a = KStdAction::print(this, SLOT(printDlg()), ac, "file_print");
+	a = KStandardAction::print(this, SLOT(printDlg()), ac, "file_print");
 	a->setStatusTip(i18n("Print the code"));
 
-	a = KStdAction::quit(this, SLOT(close()), ac, "file_quit");
+	a = KStandardAction::quit(this, SLOT(close()), ac, "file_quit");
 	a->setStatusTip(i18n("Quit KTurtle"));
 
 
 	// Edit menu actions
-	a = KStdAction::undo(editor->view(), SLOT(undo()), ac);
+	a = KStandardAction::undo(editor->view(), SLOT(undo()), ac);
 	a->setStatusTip(i18n("Undo a change in the Code Editor"));
 	a->setEnabled(false);
 	connect(editor->view(), SIGNAL(undoAvailable(bool)), a, SLOT(setEnabled(bool)));
 
-	a = KStdAction::redo(editor->view(), SLOT(redo()), ac);
+	a = KStandardAction::redo(editor->view(), SLOT(redo()), ac);
 	a->setStatusTip(i18n("Redo a previously undone change in the Code Editor"));
 	a->setEnabled(false);
 	connect(editor->view(), SIGNAL(redoAvailable(bool)), a, SLOT(setEnabled(bool)));
 
-	a = KStdAction::cut(editor->view(), SLOT(cut()), ac);
+	a = KStandardAction::cut(editor->view(), SLOT(cut()), ac);
 	a->setStatusTip(i18n("Cut the selected text to the clipboard"));
 	a->setEnabled(false);
 	connect(editor->view(), SIGNAL(copyAvailable(bool)), a, SLOT(setEnabled(bool)));
 
-	a = KStdAction::copy(editor->view(), SLOT(copy()), ac);
+	a = KStandardAction::copy(editor->view(), SLOT(copy()), ac);
 	a->setStatusTip(i18n("Copy the selected text to the clipboard"));
 	a->setEnabled(false);
 	connect(editor->view(), SIGNAL(copyAvailable(bool)), a, SLOT(setEnabled(bool)));
 
-	a = KStdAction::paste(editor->view(), SLOT(paste()), ac);
+	a = KStandardAction::paste(editor->view(), SLOT(paste()), ac);
 	a->setStatusTip(i18n("Paste the clipboard's content into the current selection"));
 
-	a = KStdAction::selectAll(editor->view(), SLOT(selectAll()), ac);
+	a = KStandardAction::selectAll(editor->view(), SLOT(selectAll()), ac);
 	a->setStatusTip(i18n("Select all the code in the editor"));
 	a->setEnabled(true);
 
@@ -204,16 +205,16 @@ void MainWindow::setupActions()
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), this, SLOT(toggleInsertMode(bool)));
 
-	a = KStdAction::find(editor, SLOT(find()), ac);
+	a = KStandardAction::find(editor, SLOT(find()), ac);
 	a->setStatusTip(i18n("Search through the code in the editor"));
 
-	a = KStdAction::findNext(editor, SLOT(findNext()), ac);
+	a = KStandardAction::findNext(editor, SLOT(findNext()), ac);
 	a->setStatusTip(i18n("Find the next occurrence"));
 
-	a = KStdAction::findPrev(editor, SLOT(findPrev()), ac);
+	a = KStandardAction::findPrev(editor, SLOT(findPrev()), ac);
 	a->setStatusTip(i18n("Find the previous occurrence"));
 
-	a = KStdAction::replace(editor, SLOT(replace()), ac);
+	a = KStandardAction::replace(editor, SLOT(replace()), ac);
 	a->setStatusTip(i18n("Search and replace"));
 
 
@@ -255,7 +256,7 @@ void MainWindow::setupActions()
 
 
 	// Settings menu actions
-	a = KStdAction::keyBindings(this, SLOT(editKeys()), ac);
+	a = KStandardAction::keyBindings(this, SLOT(editKeys()), ac);
 	a->setStatusTip(i18n("Configure the application's keyboard shortcut assignments."));
 
 
@@ -266,19 +267,19 @@ void MainWindow::setupActions()
 	connect(contextHelpAct, SIGNAL(triggered()), this, SLOT(contextHelp()));
 	setContextHelp();
 
-	a = KStdAction::aboutApp(this, SLOT(about()), ac, "about_app");
+	a = KStandardAction::aboutApp(this, SLOT(about()), ac, "about_app");
 	a->setStatusTip(i18n("Information about KTurtle"));
 
-	a = KStdAction::aboutKDE(this, SLOT(aboutKDE()), ac, "about_kde");
+	a = KStandardAction::aboutKDE(this, SLOT(aboutKDE()), ac, "about_kde");
 	a->setStatusTip(i18n("Information about KDE"));
 
-	a = KStdAction::help(this, SLOT(about()), ac, "help");
+	a = KStandardAction::help(this, SLOT(about()), ac, "help");
 	a->setStatusTip(i18n("Help"));
 
-	a = KStdAction::helpContents(this, SLOT(appHelpActivated()), ac, "help_contents");
+	a = KStandardAction::helpContents(this, SLOT(appHelpActivated()), ac, "help_contents");
 	a->setStatusTip(i18n("Help"));
 
-	a = KStdAction::whatsThis(this, SLOT(about()), ac, "whatsthis");
+	a = KStandardAction::whatsThis(this, SLOT(about()), ac, "whatsthis");
 	a->setStatusTip(i18n("Point and click information about the interface of KTurtle"));
 
 
