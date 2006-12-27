@@ -32,7 +32,7 @@
 #include <kmessagebox.h>
 #include <krecentfilesaction.h>
 #include <kstatusbar.h>
-#include <kstdaccel.h>
+#include <KStandardShortcut>
 #include <kstandardaction.h>
 
 #include "errordialog.h"
