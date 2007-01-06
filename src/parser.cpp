@@ -94,7 +94,7 @@ void Parser::matchToken(int expectedToken)
 	switch (expectedToken)
 	{
 		case tokEOL:
-			Error(currentToken, i18n("Unexpected intruction after the '%1' command, please use only one instuction per line").arg(preservedToken.look), 1010);
+			Error(currentToken, i18n("Unexpected intruction after the '%1' command, please use only one instruction per line").arg(preservedToken.look), 1010);
 			break;
 		
 		case tokBegin:
@@ -118,7 +118,7 @@ void Parser::matchToken(int expectedToken)
 			break;
 		
 		default:
-			Error(currentToken, i18n("UNDEFINED ERROR NR %1: please sent this Logo script to the KTurtle developers").arg(expectedToken), 1010);
+			Error(currentToken, i18n("UNDEFINED ERROR NR %1: please send this Logo script to the KTurtle developers").arg(expectedToken), 1010);
 			break;
 	}
 }
