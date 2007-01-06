@@ -51,6 +51,8 @@ class Inspector : public QFrame
 
 
 	private:
+		int findVariable(const QString& name);
+
 		QHBoxLayout  *mainLayout;
 		QTabWidget   *tabWidget;
 

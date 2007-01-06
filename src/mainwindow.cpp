@@ -626,6 +626,8 @@ void MainWindow::run()
 	if (interpreter->state() == Interpreter::Uninitialized ||
 	    interpreter->state() == Interpreter::Finished ||
 	    interpreter->state() == Interpreter::Aborted) {
+		//Reset inspector and interpreter
+		inspector->clear();
 		interpreter->initialize(editor->content());
 		editor->removeMarkings();
 	}

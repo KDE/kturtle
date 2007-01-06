@@ -81,18 +81,39 @@ Inspector::~Inspector()
 
 void Inspector::clear()
 {
+	variableTable->setRowCount(0);
+	functionTable->setRowCount(0);
 }
 
 
 void Inspector::updateVariable(const QString& name, const Value& value)
 {
-	variableTable->insertRow(0);
-	variableTable->setItem(0, 0, new QTableWidgetItem(name));
-	variableTable->setItem(0, 1, new QTableWidgetItem(value.string()));
+	//Check if the variable has already been added to the table
+	int row = findVariable(name);
+	if(row==-1) {
+		//We are dealing with a new variable
+		variableTable->insertRow(0);
+		row = 0;
+	}
+
+	QTableWidgetItem* nameItem;
+	nameItem = new QTableWidgetItem(name);
+	nameItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	variableTable->setItem(row, 0, nameItem);
+
+	QTableWidgetItem* valueItem;
+	valueItem = new QTableWidgetItem(value.string());
+	valueItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	variableTable->setItem(row, 1, valueItem);
+
 	QTableWidgetItem* typeItem;
 	switch (value.type()) {
-		case Value::Empty:
-			typeItem  = new QTableWidgetItem(QString("<qt><i>%1</i></qt>").arg(i18n("empty")));
+		case Value::Empty: {
+			typeItem  = new QTableWidgetItem(QString("empty"));
+			QFont font = typeItem->font();
+			font.setItalic(true);
+			typeItem->setFont(font);
+			}
 			break;
 		case Value::Bool:
 			typeItem  = new QTableWidgetItem(i18n("boolean"));
@@ -108,15 +129,23 @@ void Inspector::updateVariable(const QString& name, const Value& value)
 			typeItem  = new QTableWidgetItem("ERROR! please report to KTurtle developers");
 			break;
 	}
-	variableTable->setItem(0, 2, typeItem);
+	typeItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	variableTable->setItem(row, 2, typeItem);
 }
 
 void Inspector::updateFunction(const QString& name, const QStringList& parameters)
 {
 	functionTable->insertRow(0);
-	functionTable->setItem(0, 0, new QTableWidgetItem(name));
+
+	QTableWidgetItem* nameItem = new QTableWidgetItem(name);
+	nameItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	functionTable->setItem(0, 0, nameItem);
+	
 	QString paramList = parameters.join(Translator::instance()->default2localized(QString(",")));
-	functionTable->setItem(0, 1, new QTableWidgetItem(paramList));
+	
+	QTableWidgetItem* paramItem = new QTableWidgetItem(paramList);
+	paramItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	functionTable->setItem(0, 1, paramItem);
 }
 
 void Inspector::updateTree(TreeNode* rootNode)
@@ -127,5 +156,17 @@ void Inspector::highlightSymbol(const QString& name)
 {
 }
 
+int Inspector::findVariable(const QString& name)
+{
+	//This function will search for a specified variable
+	// and return the row number of this variable.
+	QList<QTableWidgetItem*> matches = variableTable->findItems(name, Qt::MatchExactly);
+	QList<QTableWidgetItem*>::iterator i;
+	for (i = matches.begin(); i != matches.end(); ++i) {
+		if((*i)->column()==0) //Only check the first column
+			return (*i)->row();
+	}
+	return -1;
+}
 
 #include "inspector.moc"

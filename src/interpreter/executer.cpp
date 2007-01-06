@@ -716,6 +716,7 @@ void Executer::executeAssign(TreeNode* node) {
 }
 void Executer::executeLearn(TreeNode* node) {
 //	qDebug() << "Executer::executeLearn()";
+	//TODO: Add Error when function already exists
 	functionTable.insert(node->child(0)->token()->look(), node);
 	qDebug() << "functionTable updated!";	QStringList parameters;
 	for (uint i = 0; i < node->child(1)->childCount(); i++)
