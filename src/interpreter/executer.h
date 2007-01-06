@@ -241,6 +241,8 @@ class Executer : public QObject
 
 	signals:
 		void currentlyExecuting(int startRow, int startCol, int endRow, int endCol);
+		void variableTableUpdated(const QString& name, const Value& value);
+		void functionTableUpdated(const QString& name, const QStringList& parameters);
 
 // next you find generated signals that can be emited:
 

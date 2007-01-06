@@ -226,6 +226,13 @@ void MainWindow::setupActions()
 	connect(a, SIGNAL(toggled(bool)), editorDock, SLOT(setVisible(bool)));
 	connect(editorDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
 
+	a = new KAction(i18n("Show &Inspector"), ac, "show_inspector");
+	a->setStatusTip(i18n("Show or hide the Inspector"));
+	a->setCheckable(true);
+	a->setChecked(true);
+	connect(a, SIGNAL(toggled(bool)), inspectorDock, SLOT(setVisible(bool)));
+	connect(inspectorDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
+
 	a = new KAction(i18n("Show &Statusbar"), ac, "show_statusbar");
 	a->setStatusTip(i18n("Show or hide the Statusbar"));
 	a->setCheckable(true);
@@ -329,20 +336,32 @@ void MainWindow::setupCanvas()
 
 void MainWindow::setupDockWindows()
 {
-	editorDock = new LocalDockWidget(i18n("Code Editor"), this);
+	editorDock = new LocalDockWidget(i18n("&Code Editor"), this);
 	editorDock->setObjectName("editor");
-	QWidget* wrapWidget = new QWidget(editorDock);
-	QHBoxLayout* hboxLayout = new QHBoxLayout(wrapWidget);
- 	hboxLayout->setMargin(MARGIN_SIZE);
- 	wrapWidget->setLayout(hboxLayout);
+	QWidget* editorWrapWidget = new QWidget(editorDock);
+	QHBoxLayout* editorDockLayout = new QHBoxLayout(editorWrapWidget);
+ 	editorDockLayout->setMargin(MARGIN_SIZE);
+ 	editorWrapWidget->setLayout(editorDockLayout);
 // 	dock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-	editor = new Editor(wrapWidget);  // create this here to prevent crashes
-	hboxLayout->addWidget(editor);
-	editorDock->setWidget(wrapWidget);
+	editor = new Editor(editorWrapWidget);  // create this here to prevent crashes
+	editorDockLayout->addWidget(editor);
+	editorDock->setWidget(editorWrapWidget);
 // 	editorDock->setFeatures(QDockWidget::DockWidgetMovable|QDockWidget::DockWidgetFloatable);
 	addDockWidget(Qt::LeftDockWidgetArea, editorDock);
 	editor->show();
 	editor->setFocus();
+
+	//Creating the debug window
+	inspectorDock = new LocalDockWidget(i18n("&Inspector"), this);
+	inspectorDock->setObjectName("inspector");
+	QWidget* inspectorWrapWidget = new QWidget(inspectorDock);
+	QHBoxLayout* inspectorDockLayout = new QHBoxLayout(inspectorWrapWidget);
+	inspectorDockLayout->setMargin(MARGIN_SIZE);
+	inspectorWrapWidget->setLayout(inspectorDockLayout);
+	inspector = new Inspector(inspectorWrapWidget);
+	inspectorDockLayout->addWidget(inspector);
+	inspectorDock->setWidget(inspectorWrapWidget);
+	addDockWidget(Qt::LeftDockWidgetArea, inspectorDock);
 }
 
 void MainWindow::setupEditor()
@@ -364,6 +383,12 @@ void MainWindow::setupInterpreter()
 
 	// the code to connect the executer with the canvas is auto generated:
 #include "interpreter/gui_connect.inc"
+	connect(executer, SIGNAL(variableTableUpdated(const QString&, const Value&)),
+		inspector, SLOT(updateVariable(const QString&, const Value&)));
+	connect(executer, SIGNAL(functionTableUpdated(const QString&, const QStringList&)),
+		inspector, SLOT(updateFunction(const QString&, const QStringList&)));
+	connect(interpreter, SIGNAL(variableTableUpdated(const QString& name, const Value& value)),
+		inspector, SLOT(updateTree(TreeNode* rootNode)));
 }
 
 void MainWindow::setupMenus()
@@ -383,7 +408,7 @@ void MainWindow::setupMenus()
 // 	      << "edit_find" << "edit_find_next" << "edit_find_prev" << "edit_replace" << "-"
 	      << i18n("&View")
 	      << "full_screen" << "-"
-	      << "show_editor" << "show_statusbar" << "show_toolbar" << "-"
+	      << "show_editor" << "show_inspector" << "show_statusbar" << "show_toolbar" << "-"
 	      << i18n("&Tools")
 	      << "line_numbers" << "-"
 	      << "edit_indent" << "edit_unindent" << "-"

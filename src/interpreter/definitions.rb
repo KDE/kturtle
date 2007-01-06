@@ -100,6 +100,12 @@ new_item()
 		executeCurrent = true;
 		return;
 	}
+	if(parentTokenType == Token::Learn) {
+		//We have the end of a Learn, so we should return
+		returning = true;
+		returnValue = 0;
+		return;
+	}
 	newScope = node;
 EOS
 parse_item()
@@ -625,6 +631,7 @@ new_item()
 @p_def =
 <<EOS
 	TreeNode* node = new TreeNode(currentToken);
+	nextToken();
 	node->appendChild(parseExpression());
 	skipToken(Token::EndOfLine, *node->token());
 	return node;
@@ -644,6 +651,8 @@ new_item()
 @args  = [:number]
 @e_def =
 <<EOS
+	if (!checkParameterQuantity(node, 1, 20000+Token::Wait*100+90)) return;
+	if (!checkParameterType(node, Value::Number, 20000+Token::Wait*100+91) ) return;
 	waiting = true;
 	QTimer::singleShot((int)(1000*node->child(0)->value()->number()), this, SLOT(stopWaiting()));
 EOS
@@ -658,7 +667,11 @@ new_item()
 @funct = "node"
 @e_def =
 <<EOS
-	// TODO: maybe add some error handling here...
+	//Niels: See 'Not'
+	if(node->childCount()!=2) {
+		addError(i18n("'And' needs two variables"), *node->token(), 0);
+		return;
+	}
 	node->value()->setBool(node->child(0)->value()->boolean() && node->child(1)->value()->boolean());
 EOS
 parse_item()
@@ -670,7 +683,11 @@ new_item()
 @funct = "node"
 @e_def =
 <<EOS
-	// TODO: maybe add some error handling here...
+	//Niels: See 'Not'
+	if(node->childCount()!=2) {
+		addError(i18n("'Or' needs two variables"), *node->token(), 0);
+		return;
+	}
 	node->value()->setBool(node->child(0)->value()->boolean() || node->child(1)->value()->boolean());
 EOS
 parse_item()
@@ -682,7 +699,12 @@ new_item()
 @funct = "node"
 @e_def =
 <<EOS
-	// TODO: maybe add some error handling here...
+	// OLD-TODO: maybe add some error handling here...
+	//Niels: Ok, now we check if the node has children. Should we also check whether the child value is a boolean?
+	if(node->childCount()!=1) {
+		addError(i18n("I need something to do a not on"), *node->token(), 0);
+		return;
+	}
 	node->value()->setBool(!node->child(0)->value()->boolean());
 EOS
 parse_item()
@@ -692,7 +714,7 @@ parse_item()
 def e_def_expression_creator(look)
 	# since the looks for expressions are the same in KTurtle-LOGO and C++ we can take this shortcut...
 	# all the logic doing the expressioning is in the Value class
-	return "\tnode->value()->setBool(*node->child(0)->value() #{look} node->child(1)->value());\n"
+	return "\tif(node->childCount()!=2) { \n\t\taddError(i18n(\"I can't do a '#{look}' without 2 variables\"), *node->token(), 0);\n\t\treturn;\n\t}\n\tnode->value()->setBool(*node->child(0)->value() #{look} node->child(1)->value());\n"
 end
 
 new_item()
@@ -759,6 +781,10 @@ new_item()
 @funct = "node"
 @e_def =
 <<EOS
+	if(node->childCount()!=2) {
+		addError(i18n("You need two numbers or string to do an addition"), *node->token(), 0);
+		return;
+	}
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
 		node->value()->setNumber(node->child(0)->value()->number() + node->child(1)->value()->number());
 	} else {
@@ -775,6 +801,10 @@ new_item()
 @funct = "node"
 @e_def =
 <<EOS
+	if(node->childCount()!=2) {
+		addError(i18n("You need two numbers to substract"), *node->token(), 0);
+		return;
+	}
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
 		node->value()->setNumber(node->child(0)->value()->number() - node->child(1)->value()->number());
 	} else {
@@ -794,6 +824,10 @@ new_item()
 @funct = "node"
 @e_def =
 <<EOS
+	if(node->childCount()!=2) {
+		addError(i18n("You need two numbers to multiplicate"), *node->token(), 0);
+		return;
+	}
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
 		node->value()->setNumber(node->child(0)->value()->number() * node->child(1)->value()->number());
 	} else {
@@ -813,6 +847,10 @@ new_item()
 @funct = "node"
 @e_def =
 <<EOS
+	if(node->childCount()!=2) {
+		addError(i18n("You need two numbers to devide"), *node->token(), 0);
+		return;
+	}
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
 		node->value()->setNumber(node->child(0)->value()->number() / node->child(1)->value()->number());
 	} else {
@@ -832,6 +870,10 @@ new_item()
 @funct = "node"
 @e_def =
 <<EOS
+	if(node->childCount()!=2) {
+		addError(i18n("You need two numbers to raise a power"), *node->token(), 0);
+		return;
+	}
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
 		node->value()->setNumber(pow(node->child(0)->value()->number(), node->child(1)->value()->number()));
 	} else {
@@ -853,6 +895,10 @@ new_item()
 @funct = "node"
 @e_def =
 <<EOS
+	if(node->childCount()!=2) {
+		addError(i18n("You need one variable and a value or variable to do a '='"), *node->token(), 0);
+		return;
+	}
 	if (!functionStack.isEmpty() && functionStack.top().variableTable->contains(node->token()->look())) {
 		qDebug() << "exists locally";
 		functionStack.top().variableTable->insert(node->child(0)->token()->look(), node->child(1)->value());
@@ -860,6 +906,8 @@ new_item()
 	}
 	// insterts unless already exists then replaces
 	globalVariableTable.insert(node->child(0)->token()->look(), node->child(1)->value());
+	qDebug() << "variableTable updated!";
+	emit variableTableUpdated(node->child(0)->token()->look(), node->child(1)->value());
 EOS
 parse_item()
 
@@ -897,6 +945,10 @@ EOS
 @e_def =
 <<EOS
 	functionTable.insert(node->child(0)->token()->look(), node);
+	qDebug() << "functionTable updated!";	QStringList parameters;
+	for (uint i = 0; i < node->child(1)->childCount(); i++)
+		parameters << node->child(1)->child(i)->token()->look();
+	emit functionTableUpdated(node->child(0)->token()->look(), parameters);
 EOS
 parse_item()
 
@@ -1122,6 +1174,20 @@ new_item()
 @ali   = "rnd"
 @funct = "statement, node"
 @args  = [:number, :number]
+@e_def =
+<<EOS
+	if (!checkParameterQuantity(node, 2, 20000+Token::Random*100+90)) return;
+	TreeNode* nodeX = node->child(0);  // getting
+	TreeNode* nodeY = node->child(1);
+	execute(nodeX);  // executing
+	execute(nodeY);
+	
+	if (!checkParameterType(node, Value::Number, 20000+Token::Random*100+91)) return;
+	double x = nodeX->value()->number();
+	double y = nodeY->value()->number();
+	double r = (double)(KRandom::random()) / RAND_MAX;
+	node->value()->setNumber(r * (y - x) + x);
+EOS
 parse_item()
 
 

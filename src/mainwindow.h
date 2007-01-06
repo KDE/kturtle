@@ -31,9 +31,9 @@
 #include <kstatusbar.h>
 
 #include "interpreter/interpreter.h"
-
 #include "canvas.h"
 #include "editor.h"
+#include "inspector.h"
 #include "valueaction.h"
 
 
@@ -134,11 +134,13 @@ class MainWindow : public KMainWindow
 
 
 	private:
-		Editor      *editor;
 		Canvas      *canvas;
+		Editor      *editor;
 		Interpreter *interpreter;
+		Inspector   *inspector;
 
 		LocalDockWidget*  editorDock;
+		LocalDockWidget*  inspectorDock;
 		LocalToolBar*     toolBar;
 		QTimer      *iterationTimer;
 		int          runSpeed;

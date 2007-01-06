@@ -11,6 +11,7 @@ set (
     main.cpp
     mainwindow.cpp
     sprite.cpp
+    inspector.cpp
 #     turtle.cpp
     valueaction.cpp
     interpreter/echoer.cpp

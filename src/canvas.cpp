@@ -162,7 +162,7 @@ void Canvas::slotCanvasColor(double r, double g, double b)
 
 void Canvas::slotPrint(const QString& text)
 {
-	QGraphicsTextItem *ti = new QGraphicsTextItem(text.mid(1, text.length() - 2), 0, scene);
+	QGraphicsTextItem *ti = new QGraphicsTextItem(text, 0, scene);
 // 	ti->setDefaultTextColor(textColor);
 	ti->setFont(textFont);
 	ti->setPos(turtle->pos().x(), turtle->pos().y());
