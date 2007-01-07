@@ -220,9 +220,12 @@ TreeNode* Parser::parseStatement()
 		case Token::Random              : return parseRandom();
 
 //END GENERATED parser_statements_cpp CODE
+		default : {
+			//Token type is Token:;Error or something else...
+			//qDebug() << "Parser::parseStatement(): I don't know this Token type.";
+			return new TreeNode(currentToken);
+		}
 	}
-
-	return 0;
 }
 
 
@@ -256,7 +259,9 @@ TreeNode* Parser::parseFactor()
 					str += "\"";
 					addError(QString("Text string was no properly closed, expected a dubble quote, ' \" ' to close the string"), *currentToken, 0);
 				}
-				node->value()->setString(str);
+				//Niels: I don't think we need the two " anymore...
+				//So let's transform a "string" to string
+				node->value()->setString(str.mid(1, str.length() - 2));
 			}
 			nextToken();
 			break;
@@ -626,6 +631,7 @@ TreeNode* Parser::parseBreak() {
 TreeNode* Parser::parseReturn() {
 //	qDebug() << "Parser::parseReturn()";
 	TreeNode* node = new TreeNode(currentToken);
+	nextToken();
 	node->appendChild(parseExpression());
 	skipToken(Token::EndOfLine, *node->token());
 	return node;

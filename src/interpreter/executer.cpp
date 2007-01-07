@@ -24,13 +24,15 @@
 #include <math.h>
 #include <unistd.h>  // for usleep();
 
+#include <QStringList>
 #include <QTimer>  // for wait
 
 #include <QtDebug>
 
-#include <kdebug.h>
-
 #include <klocale.h>
+#include <krandom.h>
+
+#include <kdebug.h>
 
 #include "executer.h"
 
@@ -76,9 +78,12 @@ void Executer::execute()
 		delete functionStack.top().variableTable;
 		currentNode = functionStack.pop().function;
 // 		qDebug() << ">> returning to: " << currentNode->token()->look();
-		currentNode->setValue(returnValue);
-// 		returnValue = 0;      // DONT DO THIS... the the functionCall node that get recalled now handle it...
-// 		returning   = false;
+
+		if (returnValue == 0) currentNode->setNullValue();  // Handle an empty return value
+		else currentNode->setValue(returnValue);
+// // // 		returnValue = 0;  // DONT DO THIS... the the functionCall node that get recalled now handle it...
+// // // 		returning   = false;
+
 		execute(currentNode);
 		return;
 	} else {
@@ -115,13 +120,14 @@ void Executer::execute()
 	
 // 	qDebug() << ">> to top";
 	while (currentNode->hasChildren() && currentNode->token()->type() != Token::Scope) {
-		if (currentNode->token()->type() == Token::Learn) {
-			currentNode = currentNode->nextSibling();
-			if (currentNode == 0) {
-				finished = true;
-				return;
-			}
-		}
+//Niels: I don't know why, but the following lines break learn
+//		if (currentNode->token()->type() == Token::Learn) {
+//			currentNode = currentNode->nextSibling();
+//			if (currentNode == 0) {
+//				finished = true;
+//				return;
+//			}
+//		}
 		currentNode = currentNode->firstChild();
 	}
 
@@ -352,6 +358,12 @@ void Executer::executeScope(TreeNode* node) {
 		executeCurrent = true;
 		return;
 	}
+	if(parentTokenType == Token::Learn) {
+		//We have the end of a Learn, so we should return
+		returning = true;
+		returnValue = 0;
+		return;
+	}
 	newScope = node;
 }
 void Executer::executeVariable(TreeNode* node) {
@@ -533,50 +545,93 @@ void Executer::executeReturn(TreeNode* node) {
 }
 void Executer::executeWait(TreeNode* node) {
 //	qDebug() << "Executer::executeWait()";
+	if (!checkParameterQuantity(node, 1, 20000+Token::Wait*100+90)) return;
+	if (!checkParameterType(node, Value::Number, 20000+Token::Wait*100+91) ) return;
 	waiting = true;
 	QTimer::singleShot((int)(1000*node->child(0)->value()->number()), this, SLOT(stopWaiting()));
 }
 void Executer::executeAnd(TreeNode* node) {
 //	qDebug() << "Executer::executeAnd()";
-	// TODO: maybe add some error handling here...
+	//Niels: See 'Not'
+	if(node->childCount()!=2) {
+		addError(i18n("'And' needs two variables"), *node->token(), 0);
+		return;
+	}
 	node->value()->setBool(node->child(0)->value()->boolean() && node->child(1)->value()->boolean());
 }
 void Executer::executeOr(TreeNode* node) {
 //	qDebug() << "Executer::executeOr()";
-	// TODO: maybe add some error handling here...
+	//Niels: See 'Not'
+	if(node->childCount()!=2) {
+		addError(i18n("'Or' needs two variables"), *node->token(), 0);
+		return;
+	}
 	node->value()->setBool(node->child(0)->value()->boolean() || node->child(1)->value()->boolean());
 }
 void Executer::executeNot(TreeNode* node) {
 //	qDebug() << "Executer::executeNot()";
-	// TODO: maybe add some error handling here...
+	// OLD-TODO: maybe add some error handling here...
+	//Niels: Ok, now we check if the node has children. Should we also check whether the child value is a boolean?
+	if(node->childCount()!=1) {
+		addError(i18n("I need something to do a not on"), *node->token(), 0);
+		return;
+	}
 	node->value()->setBool(!node->child(0)->value()->boolean());
 }
 void Executer::executeEquals(TreeNode* node) {
 //	qDebug() << "Executer::executeEquals()";
+	if(node->childCount()!=2) { 
+		addError(i18n("I can't do a '==' without 2 variables"), *node->token(), 0);
+		return;
+	}
 	node->value()->setBool(*node->child(0)->value() == node->child(1)->value());
 }
 void Executer::executeNotEquals(TreeNode* node) {
 //	qDebug() << "Executer::executeNotEquals()";
+	if(node->childCount()!=2) { 
+		addError(i18n("I can't do a '!=' without 2 variables"), *node->token(), 0);
+		return;
+	}
 	node->value()->setBool(*node->child(0)->value() != node->child(1)->value());
 }
 void Executer::executeGreaterThan(TreeNode* node) {
 //	qDebug() << "Executer::executeGreaterThan()";
+	if(node->childCount()!=2) { 
+		addError(i18n("I can't do a '>' without 2 variables"), *node->token(), 0);
+		return;
+	}
 	node->value()->setBool(*node->child(0)->value() > node->child(1)->value());
 }
 void Executer::executeLessThan(TreeNode* node) {
 //	qDebug() << "Executer::executeLessThan()";
+	if(node->childCount()!=2) { 
+		addError(i18n("I can't do a '<' without 2 variables"), *node->token(), 0);
+		return;
+	}
 	node->value()->setBool(*node->child(0)->value() < node->child(1)->value());
 }
 void Executer::executeGreaterOrEquals(TreeNode* node) {
 //	qDebug() << "Executer::executeGreaterOrEquals()";
+	if(node->childCount()!=2) { 
+		addError(i18n("I can't do a '>=' without 2 variables"), *node->token(), 0);
+		return;
+	}
 	node->value()->setBool(*node->child(0)->value() >= node->child(1)->value());
 }
 void Executer::executeLessOrEquals(TreeNode* node) {
 //	qDebug() << "Executer::executeLessOrEquals()";
+	if(node->childCount()!=2) { 
+		addError(i18n("I can't do a '<=' without 2 variables"), *node->token(), 0);
+		return;
+	}
 	node->value()->setBool(*node->child(0)->value() <= node->child(1)->value());
 }
 void Executer::executeAddition(TreeNode* node) {
 //	qDebug() << "Executer::executeAddition()";
+	if(node->childCount()!=2) {
+		addError(i18n("You need two numbers or string to do an addition"), *node->token(), 0);
+		return;
+	}
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
 		node->value()->setNumber(node->child(0)->value()->number() + node->child(1)->value()->number());
 	} else {
@@ -585,6 +640,10 @@ void Executer::executeAddition(TreeNode* node) {
 }
 void Executer::executeSubstracton(TreeNode* node) {
 //	qDebug() << "Executer::executeSubstracton()";
+	if(node->childCount()!=2) {
+		addError(i18n("You need two numbers to substract"), *node->token(), 0);
+		return;
+	}
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
 		node->value()->setNumber(node->child(0)->value()->number() - node->child(1)->value()->number());
 	} else {
@@ -596,6 +655,10 @@ void Executer::executeSubstracton(TreeNode* node) {
 }
 void Executer::executeMultiplication(TreeNode* node) {
 //	qDebug() << "Executer::executeMultiplication()";
+	if(node->childCount()!=2) {
+		addError(i18n("You need two numbers to multiplicate"), *node->token(), 0);
+		return;
+	}
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
 		node->value()->setNumber(node->child(0)->value()->number() * node->child(1)->value()->number());
 	} else {
@@ -607,6 +670,10 @@ void Executer::executeMultiplication(TreeNode* node) {
 }
 void Executer::executeDivision(TreeNode* node) {
 //	qDebug() << "Executer::executeDivision()";
+	if(node->childCount()!=2) {
+		addError(i18n("You need two numbers to devide"), *node->token(), 0);
+		return;
+	}
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
 		node->value()->setNumber(node->child(0)->value()->number() / node->child(1)->value()->number());
 	} else {
@@ -618,6 +685,10 @@ void Executer::executeDivision(TreeNode* node) {
 }
 void Executer::executePower(TreeNode* node) {
 //	qDebug() << "Executer::executePower()";
+	if(node->childCount()!=2) {
+		addError(i18n("You need two numbers to raise a power"), *node->token(), 0);
+		return;
+	}
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
 		node->value()->setNumber(pow(node->child(0)->value()->number(), node->child(1)->value()->number()));
 	} else {
@@ -629,6 +700,10 @@ void Executer::executePower(TreeNode* node) {
 }
 void Executer::executeAssign(TreeNode* node) {
 //	qDebug() << "Executer::executeAssign()";
+	if(node->childCount()!=2) {
+		addError(i18n("You need one variable and a value or variable to do a '='"), *node->token(), 0);
+		return;
+	}
 	if (!functionStack.isEmpty() && functionStack.top().variableTable->contains(node->token()->look())) {
 		qDebug() << "exists locally";
 		functionStack.top().variableTable->insert(node->child(0)->token()->look(), node->child(1)->value());
@@ -636,10 +711,17 @@ void Executer::executeAssign(TreeNode* node) {
 	}
 	// insterts unless already exists then replaces
 	globalVariableTable.insert(node->child(0)->token()->look(), node->child(1)->value());
+	qDebug() << "variableTable updated!";
+	emit variableTableUpdated(node->child(0)->token()->look(), node->child(1)->value());
 }
 void Executer::executeLearn(TreeNode* node) {
 //	qDebug() << "Executer::executeLearn()";
+	//TODO: Add Error when function already exists
 	functionTable.insert(node->child(0)->token()->look(), node);
+	qDebug() << "functionTable updated!";	QStringList parameters;
+	for (uint i = 0; i < node->child(1)->childCount(); i++)
+		parameters << node->child(1)->child(i)->token()->look();
+	emit functionTableUpdated(node->child(0)->token()->look(), parameters);
 }
 void Executer::executeArgumentList(TreeNode* node) {
 //	qDebug() << "Executer::executeArgumentList()";
@@ -761,8 +843,17 @@ void Executer::executeFontSize(TreeNode* node) {
 }
 void Executer::executeRandom(TreeNode* node) {
 //	qDebug() << "Executer::executeRandom()";
-	if (!checkParameterQuantity(node, 2, 20000+Token::Random*100+90) ||
-		!checkParameterType(node, Value::Number, 20000+Token::Random*100+91)) return;
+	if (!checkParameterQuantity(node, 2, 20000+Token::Random*100+90)) return;
+	TreeNode* nodeX = node->child(0);  // getting
+	TreeNode* nodeY = node->child(1);
+	execute(nodeX);  // executing
+	execute(nodeY);
+	
+	if (!checkParameterType(node, Value::Number, 20000+Token::Random*100+91)) return;
+	double x = nodeX->value()->number();
+	double y = nodeY->value()->number();
+	double r = (double)(KRandom::random()) / RAND_MAX;
+	node->value()->setNumber(r * (y - x) + x);
 }
 
 //END GENERATED executer_cpp CODE
