@@ -111,6 +111,7 @@ bool Parser::skipToken(int expectedTokenType)
 bool Parser::skipToken(int expectedTokenType, Token& byToken)
 {
 	// TODO have byToken, and "errorHappenedHereToken"
+	//TODO: Translate the following QStrings?
 
 	if (skipToken(expectedTokenType)) return true;
 
@@ -220,9 +221,13 @@ TreeNode* Parser::parseStatement()
 		case Token::Random              : return parseRandom();
 
 //END GENERATED parser_statements_cpp CODE
+		case Token::Error		: return new TreeNode(currentToken);
 		default : {
-			//Token type is Token:;Error or something else...
+			//Token type is something else...
 			//qDebug() << "Parser::parseStatement(): I don't know this Token type.";
+			//kDebug() << "Look: " << currentToken->look() << " type: " << currentToken->type() << endl;
+			addError(i18n("You can't put '%1' here!", currentToken->look()), *currentToken, 0);
+			finished = true;
 			return new TreeNode(currentToken);
 		}
 	}
