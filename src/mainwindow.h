@@ -182,7 +182,7 @@ class MainWindow : public KMainWindow
 // 		KAction *aboutAct;
 // 		KAction *aboutKdeAct;
 
-		KAction *contextHelpAct;
+		QAction *contextHelpAct;
 
 		KAction *fullSpeedAct;
 		KAction *slowSpeedAct;
