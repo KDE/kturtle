@@ -49,6 +49,7 @@ Inspector::Inspector(QWidget *parent)
 	headers << i18n("name") << i18n("value") << i18n("type");
 	variableTable->setColumnCount(3);
 	variableTable->setHorizontalHeaderLabels(headers);
+	variableTable->setShowGrid(false);
 
 	functionTab    = new QWidget();
 	functionLayout = new QHBoxLayout(functionTab);
@@ -61,6 +62,7 @@ Inspector::Inspector(QWidget *parent)
 	headers << i18n("name") << i18n("parameters");
 	functionTable->setColumnCount(2);
 	functionTable->setHorizontalHeaderLabels(headers);
+	functionTable->setShowGrid(false);
 
 	treeTab    = new QWidget();
 	treeLayout = new QHBoxLayout(treeTab);
@@ -81,8 +83,22 @@ Inspector::~Inspector()
 
 void Inspector::clear()
 {
-	variableTable->setRowCount(0);
-	functionTable->setRowCount(0);
+	variableTableEmpty = true;
+	functionTableEmpty = true;
+
+	variableTable->setRowCount(1);
+	functionTable->setRowCount(1);
+
+	QTableWidgetItem* emptyItem;
+	emptyItem = new QTableWidgetItem(i18n("Nothing to show here"));
+	emptyItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	variableTable->setItem(0, 0, emptyItem);
+	variableTable->resizeColumnsToContents();
+
+	emptyItem = new QTableWidgetItem(i18n("Nothing to show here"));
+	emptyItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	functionTable->setItem(0, 0, emptyItem);
+	functionTable->resizeColumnsToContents();
 }
 
 
@@ -92,7 +108,11 @@ void Inspector::updateVariable(const QString& name, const Value& value)
 	int row = findVariable(name);
 	if(row==-1) {
 		//We are dealing with a new variable
-		variableTable->insertRow(0);
+		if(variableTableEmpty) //Check whether we have to add a new row
+			variableTableEmpty = false;
+		else
+			variableTable->insertRow(0);
+		
 		row = 0;
 	}
 
@@ -135,15 +155,30 @@ void Inspector::updateVariable(const QString& name, const Value& value)
 
 void Inspector::updateFunction(const QString& name, const QStringList& parameters)
 {
-	functionTable->insertRow(0);
+	//When there is already a first line
+	// (the 'Nothing to show' line), don't add another
+	if(functionTableEmpty)
+		functionTableEmpty = false;
+	else
+		functionTable->insertRow(0);
 
 	QTableWidgetItem* nameItem = new QTableWidgetItem(name);
 	nameItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	functionTable->setItem(0, 0, nameItem);
 	
-	QString paramList = parameters.join(Translator::instance()->default2localized(QString(",")));
+	QTableWidgetItem* paramItem;
+	if(parameters.empty())
+	{
+		paramItem = new QTableWidgetItem(i18n("None"));
+		QFont font = paramItem->font();
+		font.setItalic(true);
+		paramItem->setFont(font);
+	}else{
+		QString paramList = parameters.join(
+			Translator::instance()->default2localized(QString(",")));
+		paramItem = new QTableWidgetItem(paramList);
+	}
 	
-	QTableWidgetItem* paramItem = new QTableWidgetItem(paramList);
 	paramItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	functionTable->setItem(0, 1, paramItem);
 }

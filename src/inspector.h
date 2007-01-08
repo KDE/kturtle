@@ -67,6 +67,9 @@ class Inspector : public QFrame
 		QWidget      *treeTab;
 		QHBoxLayout  *treeLayout;
 		QTreeWidget  *treeView;
+
+		bool         variableTableEmpty;
+		bool         functionTableEmpty;
 };
 
 

@@ -77,6 +77,7 @@ void Canvas::initValues()
 // 	int width  = qMin(qMax(settings.value("canvasWidth",  400).toInt(), 20), 10000);
 // 	int height = qMin(qMax(settings.value("canvasHeight", 300).toInt(), 20), 10000);
 	turtle->setPos(0, 0);
+	turtle->setAngle(0);
 	scene->setBackgroundBrush(QBrush(Qt::white));
 	pen->setColor(Qt::black);
 	pen->setWidth(1);
@@ -165,6 +166,7 @@ void Canvas::slotPrint(const QString& text)
 	QGraphicsTextItem *ti = new QGraphicsTextItem(text, 0, scene);
 // 	ti->setDefaultTextColor(textColor);
 	ti->setFont(textFont);
+	ti->rotate(turtle->angle());
 	ti->setPos(turtle->pos().x(), turtle->pos().y());
 }
 
