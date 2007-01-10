@@ -128,49 +128,49 @@ void MainWindow::setupActions()
 	QAction * a;
 	KActionCollection* ac = actionCollection();
 
-		//TODO WHATISTHIS to each action (same as statustip?)
-#warning "port it"		
-#if 0
-  // File menu actions
-    a = actionCollection()->addAction(KStandardAction::OpenNew,  "file_new", editor, SLOT(newFile()));
+	//TODO WHATISTHIS to each action (same as statustip?)
+
+	// File menu actions
+	a = actionCollection()->addAction(KStandardAction::New,  "file_new", editor, SLOT(newFile()));
 	a->setStatusTip(i18n("Create a new file"));
 
-    a = actionCollection()->addAction(KStandardAction::Open,  "file_open", editor, SLOT(openFile()));
+	a = actionCollection()->addAction(KStandardAction::Open,  "file_open", editor, SLOT(openFile()));
 	a->setStatusTip(i18n("Open an existing file"));
 
-    recentFilesAction = actionCollection()->addAction(KStandardAction::OpenRecent,  "file_recent", editor, SLOT(openFile(const KUrl&)));
+	//TODO: Is this correct?
+	recentFilesAction = (KRecentFilesAction*)actionCollection()->addAction(KStandardAction::OpenRecent,  "file_recent", editor, SLOT(openFile(const KUrl&)));
 	recentFilesAction->setStatusTip(i18n("Open a recently used file"));
-#endif
-    a = actionCollection()->addAction(KStandardAction::Save,  "file_save", editor, SLOT(saveFile()));
+
+	a = actionCollection()->addAction(KStandardAction::Save,  "file_save", editor, SLOT(saveFile()));
 	a->setStatusTip(i18n("Save the current file to disk"));
 	connect(editor, SIGNAL(modificationChanged(bool)), a, SLOT(setEnabled(bool)));
 
-    a = actionCollection()->addAction(KStandardAction::SaveAs,  "file_save_as", editor, SLOT(saveFileAs()));
+	a = actionCollection()->addAction(KStandardAction::SaveAs,  "file_save_as", editor, SLOT(saveFileAs()));
 	a->setStatusTip(i18n("Save the current file under a different name"));
 
-    runAct  = new KAction(KIcon("player_play"), i18n("&Run"), this);
-    actionCollection()->addAction("run", runAct );
+	runAct  = new KAction(KIcon("player_play"), i18n("&Run"), this);
+	actionCollection()->addAction("run", runAct );
 	runAct->setShortcut(QKeySequence(Qt::Key_F5));
 	runAct->setStatusTip(i18n("Execute the code in the Code Editor"));
 	connect(runAct, SIGNAL(triggered()), this, SLOT(run()));
 
-    pauseAct  = new KAction(KIcon("player_pause"), i18n("&Pause"), this);
-    actionCollection()->addAction("pause", pauseAct );
+	pauseAct  = new KAction(KIcon("player_pause"), i18n("&Pause"), this);
+	actionCollection()->addAction("pause", pauseAct );
 	pauseAct->setCheckable(true);
 	pauseAct->setShortcut(QKeySequence(Qt::Key_F6));
 	pauseAct->setStatusTip(i18n("Pause execution"));
 	connect(pauseAct, SIGNAL(triggered()), this, SLOT(pause()));
 
-    abortAct  = new KAction(KIcon("stop"), i18n("&Abort"), this);
-    actionCollection()->addAction("abort", abortAct );
+	abortAct  = new KAction(KIcon("stop"), i18n("&Abort"), this);
+	actionCollection()->addAction("abort", abortAct );
 	abortAct->setShortcut(QKeySequence(Qt::Key_F7));
 	abortAct->setStatusTip(i18n("Abort execution"));
 	connect(abortAct, SIGNAL(triggered()), this, SLOT(abort()));
 
-    a = actionCollection()->addAction(KStandardAction::Print,  "file_print", this, SLOT(printDlg()));
+	a = actionCollection()->addAction(KStandardAction::Print,  "file_print", this, SLOT(printDlg()));
 	a->setStatusTip(i18n("Print the code"));
 
-    a = actionCollection()->addAction(KStandardAction::Quit,  "file_quit", this, SLOT(close()));
+	a = actionCollection()->addAction(KStandardAction::Quit,  "file_quit", this, SLOT(close()));
 	a->setStatusTip(i18n("Quit KTurtle"));
 
 
@@ -202,8 +202,8 @@ void MainWindow::setupActions()
 	a->setStatusTip(i18n("Select all the code in the editor"));
 	a->setEnabled(true);
 
-    a  = new KAction(i18n("Toggle &Insert"), this);
-    actionCollection()->addAction("set_insert", a );
+	a  = new KAction(i18n("Toggle &Insert"), this);
+	actionCollection()->addAction("set_insert", a );
 	a->setStatusTip(i18n("Toggle between the 'insert' and 'overwrite' mode"));
 	a->setShortcut(QKeySequence(Qt::Key_Insert));
 	a->setCheckable(true);
@@ -224,31 +224,31 @@ void MainWindow::setupActions()
 
 
 	// View menu actions
-    a  = new KAction(i18n("Show &Code Editor"), this);
-    actionCollection()->addAction("show_editor", a );
+	a  = new KAction(i18n("Show &Code Editor"), this);
+	actionCollection()->addAction("show_editor", a );
 	a->setStatusTip(i18n("Show or hide the Code Editor"));
 	a->setCheckable(true);
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), editorDock, SLOT(setVisible(bool)));
 	connect(editorDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
 
-    a  = new KAction(i18n("Show &Inspector"), this);
-    actionCollection()->addAction("show_inspector", a );
+	a  = new KAction(i18n("Show &Inspector"), this);
+	actionCollection()->addAction("show_inspector", a );
 	a->setStatusTip(i18n("Show or hide the Inspector"));
 	a->setCheckable(true);
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), inspectorDock, SLOT(setVisible(bool)));
 	connect(inspectorDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
 
-    a  = new KAction(i18n("Show &Statusbar"), this);
-    actionCollection()->addAction("show_statusbar", a );
+	a  = new KAction(i18n("Show &Statusbar"), this);
+	actionCollection()->addAction("show_statusbar", a );
 	a->setStatusTip(i18n("Show or hide the Statusbar"));
 	a->setCheckable(true);
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), statusBar(), SLOT(setVisible(bool)));
 
-    a  = new KAction(i18n("Show &Toolbar"), this);
-    actionCollection()->addAction("show_toolbar", a );
+	a  = new KAction(i18n("Show &Toolbar"), this);
+	actionCollection()->addAction("show_toolbar", a );
 	a->setStatusTip(i18n("Show or hide the Toolbar"));
 	a->setCheckable(true);
 	a->setChecked(true);
@@ -257,8 +257,8 @@ void MainWindow::setupActions()
 
 
 	// Tools menu actions
-    a  = new KAction(i18n("Show &Line Numbers"), this);
-    actionCollection()->addAction("line_numbers", a );
+	a  = new KAction(i18n("Show &Line Numbers"), this);
+	actionCollection()->addAction("line_numbers", a );
 	a->setStatusTip(i18n("Turn the editors line numbers on/off"));
 	a->setCheckable(true);
 	a->setChecked(true);
@@ -287,52 +287,52 @@ void MainWindow::setupActions()
 	connect(contextHelpAct, SIGNAL(triggered()), this, SLOT(contextHelp()));
 	setContextHelp();
 
-    a = actionCollection()->addAction(KStandardAction::AboutApp,  "about_app", this, SLOT(about()));
+	a = actionCollection()->addAction(KStandardAction::AboutApp,  "about_app", this, SLOT(about()));
 	a->setStatusTip(i18n("Information about KTurtle"));
 
-    a = actionCollection()->addAction(KStandardAction::AboutKDE,  "about_kde", this, SLOT(aboutKDE()));
+	a = actionCollection()->addAction(KStandardAction::AboutKDE,  "about_kde", this, SLOT(aboutKDE()));
 	a->setStatusTip(i18n("Information about KDE"));
 
-    a = actionCollection()->addAction(KStandardAction::Help,  "help", this, SLOT(about()));
+	a = actionCollection()->addAction(KStandardAction::Help,  "help", this, SLOT(about()));
 	a->setStatusTip(i18n("Help"));
 
-    a = actionCollection()->addAction(KStandardAction::HelpContents,  "help_contents", this, SLOT(appHelpActivated()));
+	a = actionCollection()->addAction(KStandardAction::HelpContents,  "help_contents", this, SLOT(appHelpActivated()));
 	a->setStatusTip(i18n("Help"));
 
-    a = actionCollection()->addAction(KStandardAction::WhatsThis,  "whatsthis", this, SLOT(about()));
+	a = actionCollection()->addAction(KStandardAction::WhatsThis,  "whatsthis", this, SLOT(about()));
 	a->setStatusTip(i18n("Point and click information about the interface of KTurtle"));
 
 
 	// The run speed action group
 	QActionGroup* runSpeedGroup = new QActionGroup(this);
 
-    fullSpeedAct  = new KAction(i18n("&Full Speed"), this);
-    actionCollection()->addAction("full_speed", fullSpeedAct );
+	fullSpeedAct  = new KAction(i18n("&Full Speed"), this);
+	actionCollection()->addAction("full_speed", fullSpeedAct );
 	fullSpeedAct->setCheckable(true);
 	fullSpeedAct->setChecked(true);
 	connect(fullSpeedAct, SIGNAL(triggered()), this, SLOT(setFullSpeed()));
 	runSpeedGroup->addAction(fullSpeedAct);
 
-    slowSpeedAct  = new KAction(i18n("&Slow"), this);
-    actionCollection()->addAction("slow_speed", slowSpeedAct );
+	slowSpeedAct  = new KAction(i18n("&Slow"), this);
+	actionCollection()->addAction("slow_speed", slowSpeedAct );
 	slowSpeedAct->setCheckable(true);
 	connect(slowSpeedAct, SIGNAL(triggered()), this, SLOT(setSlowSpeed()));
 	runSpeedGroup->addAction(slowSpeedAct);
 
-    slowerSpeedAct  = new KAction(i18n("S&lower"), this);
-    actionCollection()->addAction("slower_speed", slowerSpeedAct );
+	slowerSpeedAct  = new KAction(i18n("S&lower"), this);
+	actionCollection()->addAction("slower_speed", slowerSpeedAct );
 	slowerSpeedAct->setCheckable(true);
 	connect(slowerSpeedAct, SIGNAL(triggered()), this, SLOT(setSlowerSpeed()));
 	runSpeedGroup->addAction(slowerSpeedAct);
 
-    slowestSpeedAct  = new KAction(i18n("Sl&owest"), this);
-    actionCollection()->addAction("slowest_speed", slowestSpeedAct );
+	slowestSpeedAct  = new KAction(i18n("Sl&owest"), this);
+	actionCollection()->addAction("slowest_speed", slowestSpeedAct );
 	slowestSpeedAct->setCheckable(true);
 	connect(slowestSpeedAct, SIGNAL(triggered()), this, SLOT(setSlowestSpeed()));
 	runSpeedGroup->addAction(slowestSpeedAct);
 
-    stepSpeedAct  = new KAction(i18n("S&tep-by-Step"), this);
-    actionCollection()->addAction("step_speed", stepSpeedAct );
+	stepSpeedAct  = new KAction(i18n("S&tep-by-Step"), this);
+	actionCollection()->addAction("step_speed", stepSpeedAct );
 	stepSpeedAct->setCheckable(true);
 	connect(stepSpeedAct, SIGNAL(triggered()), this, SLOT(setStepSpeed()));
 	runSpeedGroup->addAction(stepSpeedAct);
