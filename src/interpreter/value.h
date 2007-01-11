@@ -60,11 +60,11 @@ class Value
 		Value(const QString& s) { setString(s); }
 		~Value() {}
 	
-		void     resetValue() { init(); }
-		
 		int      type() const { return m_type; }
 		void     setType(int);
-	
+
+		void     setNull()    { init(); }
+
 		bool     boolean() const;
 		void     setBool(bool);
 	
