@@ -111,7 +111,7 @@ int main(int argc, char* argv[])
 			if (t->type() == Token::EndOfLine) result.append('\n');
 		}
 
-		foreach (QString line, result.split('\n')) std::cout << qPrintable(QString("\"%1\"").arg(line)) << std::endl;
+		foreach (const QString &line, result.split('\n')) std::cout << qPrintable(QString("\"%1\"").arg(line)) << std::endl;
 		std::cout << std::endl;
 
 	} else {

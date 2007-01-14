@@ -439,7 +439,7 @@ void MainWindow::setupMenus()
 	      ;
 
 	QMenu* currentMenu = 0;
-	foreach (QString item, items) {
+	foreach (const QString &item, items) {
 		if (item.contains('&')) {
 			currentMenu = menuBar()->addMenu(item);
 		} else {
@@ -458,10 +458,10 @@ void MainWindow::setupMenus()
 				ValueAction* a;
 				// sort the dictionaries using an algorithm found the the qt docs:
 				QMap<QString, QString> map;
-				foreach (QString lang_code, KGlobal::locale()->languageList())
+				foreach (const QString &lang_code, KGlobal::locale()->languageList())
 					map.insert(codeToFullName(lang_code), lang_code);
 				// populate the menu:
-				foreach (QString lang_code, map.values()) {
+				foreach (const QString &lang_code, map.values()) {
 					a = new ValueAction(codeToFullName(lang_code), lang_code);
 					a->setStatusTip(i18n("Switch to the %1 dictionary", codeToFullName(lang_code)));
 					a->setCheckable(true);
@@ -490,7 +490,7 @@ void MainWindow::setupToolBar()
 
 	toolBar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
-	foreach (QString item, items) {
+	foreach (const QString &item, items) {
 		if (item == "-") {
 			toolBar->addSeparator();
 		} else if (item == "#speed") {
@@ -536,7 +536,7 @@ void MainWindow::updateExamplesMenu()
 	foreach (QAction* action, examplesMenu->actions()) examplesMenu->removeAction(action);
 
 	ValueAction* a;
-	foreach (QString exampleName, Translator::instance()->exampleNames()) {
+	foreach (const QString &exampleName, Translator::instance()->exampleNames()) {
 		a = new ValueAction(exampleName, exampleName);
 		examplesMenu->addAction(a);
 		connect (a, SIGNAL(triggered(const QString&, bool)), this, SLOT(openExample(const QString&)));

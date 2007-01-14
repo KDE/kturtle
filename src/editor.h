@@ -140,10 +140,10 @@ class TextEdit : public QTextEdit
 			QPainter painter(viewport());
 			painter.fillRect(currentLineRect(), QBrush(LINE_HIGHLIGHT_COLOR));
 			if (!currentWord.isNull())
-				foreach (QRect rect, coordsToRects(currentWord))
+				foreach (const QRect &rect, coordsToRects(currentWord))
 					painter.fillRect(rect, QBrush(WORD_HIGHLIGHT_COLOR));
 			if (!currentError.isNull())
-				foreach (QRect rect, coordsToRects(currentError))
+				foreach (const QRect &rect, coordsToRects(currentError))
 					painter.fillRect(rect, QBrush(ERROR_HIGHLIGHT_COLOR));
 			painter.end();
 			QTextEdit::paintEvent(event);

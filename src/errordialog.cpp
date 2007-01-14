@@ -74,11 +74,11 @@ ErrorDialog::ErrorDialog(ErrorList* _errorList, QWidget* parent)
 	baseLayout->addWidget(errorTable);
 
 	int row = 0;
-	foreach (ErrorMessage error, *errorList) {
+	foreach (const ErrorMessage &error, *errorList) {
 		int col = 0;
 		QStringList itemTexts;
 		itemTexts << QString::number(error.token().startRow()) << error.text() << QString::number(error.code());
-		foreach (QString itemText, itemTexts) {
+		foreach (const QString &itemText, itemTexts) {
 			errorTable->setItem(row, col, new QTableWidgetItem(itemText));
 			col++;
 		}
