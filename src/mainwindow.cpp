@@ -405,8 +405,8 @@ void MainWindow::setupInterpreter()
 		inspector, SLOT(updateVariable(const QString&, const Value&)));
 	connect(executer, SIGNAL(functionTableUpdated(const QString&, const QStringList&)),
 		inspector, SLOT(updateFunction(const QString&, const QStringList&)));
-	connect(interpreter, SIGNAL(variableTableUpdated(const QString& name, const Value& value)),
-		inspector, SLOT(updateTree(TreeNode* rootNode)));
+	connect(interpreter, SIGNAL(variableTableUpdated(const QString&, const Value&)),
+		inspector, SLOT(updateTree(TreeNode*)));
 }
 
 void MainWindow::setupMenus()
