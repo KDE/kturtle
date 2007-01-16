@@ -414,9 +414,7 @@ repeat 500 [
       <listitem><para><screen>message X</screen>
       The <userinput>message</userinput> command takes a <link linkend="string">string</link> as input. It shows a pop-up dialog containing the text from the <link linkend="string">string</link>.
 <screen>
-year = 2003
-author = "Cies"
-print author + " started the KTurtle project in " + year + " and still enjoys working on it!"
+message "Cies started the KTurtle project in 2003 and still enjoys working on it!"
 </screen>
       </para></listitem>
     </varlistentry>
