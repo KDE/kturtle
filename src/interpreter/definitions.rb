@@ -935,6 +935,12 @@ new_item()
 	}
 	node->appendChild(argumentList);
 	
+	//Skip all the following EndOfLine's
+	while (currentToken->type() == Token::EndOfLine) {
+		delete currentToken;
+		nextToken();
+	}
+
 	if (currentToken->type() == Token::ScopeOpen) {
 		node->appendChild(parseScopeOpen());  // if followed by a scope
 	} else {
@@ -944,8 +950,13 @@ new_item()
 EOS
 @e_def =
 <<EOS
+	if(functionTable.contains(node->child(0)->token()->look())) {
+		addError(i18n("The function '%1' is already defined!", node->child(0)->token()->look()), *node->token(), 0);
+		return;
+	}
 	functionTable.insert(node->child(0)->token()->look(), node);
-	qDebug() << "functionTable updated!";	QStringList parameters;
+	qDebug() << "functionTable updated!";
+	QStringList parameters;
 	for (uint i = 0; i < node->child(1)->childCount(); i++)
 		parameters << node->child(1)->child(i)->token()->look();
 	emit functionTableUpdated(node->child(0)->token()->look(), parameters);

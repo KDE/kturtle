@@ -716,9 +716,13 @@ void Executer::executeAssign(TreeNode* node) {
 }
 void Executer::executeLearn(TreeNode* node) {
 //	qDebug() << "Executer::executeLearn()";
-	//TODO: Add Error when function already exists
+	if(functionTable.contains(node->child(0)->token()->look())) {
+		addError(i18n("The function '%1' is already defined!", node->child(0)->token()->look()), *node->token(), 0);
+		return;
+	}
 	functionTable.insert(node->child(0)->token()->look(), node);
-	qDebug() << "functionTable updated!";	QStringList parameters;
+	qDebug() << "functionTable updated!";
+	QStringList parameters;
 	for (uint i = 0; i < node->child(1)->childCount(); i++)
 		parameters << node->child(1)->child(i)->token()->look();
 	emit functionTableUpdated(node->child(0)->token()->look(), parameters);

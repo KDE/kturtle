@@ -666,6 +666,12 @@ TreeNode* Parser::parseLearn() {
 	}
 	node->appendChild(argumentList);
 	
+	//Skip all the following EndOfLine's
+	while (currentToken->type() == Token::EndOfLine) {
+		delete currentToken;
+		nextToken();
+	}
+
 	if (currentToken->type() == Token::ScopeOpen) {
 		node->appendChild(parseScopeOpen());  // if followed by a scope
 	} else {
