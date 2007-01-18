@@ -83,6 +83,7 @@ class MainWindow : public KMainWindow
 
 	private slots:
 		void openExample(const QString&);
+		void printDlg();
 
 		void run();
 		void pause();

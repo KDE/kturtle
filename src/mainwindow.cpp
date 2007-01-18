@@ -34,6 +34,7 @@
 #include <kstatusbar.h>
 #include <KStandardShortcut>
 #include <kstandardaction.h>
+#include <kprinter.h>
 
 #include "errordialog.h"
 #include "interpreter/errormsg.h"
@@ -90,7 +91,19 @@ void MainWindow::closeEvent(QCloseEvent *event)
 	}
 }
 
+void MainWindow::printDlg()
+{
+	KPrinter printer;
+	if (printer.setup(this))
+	{
+		QPainter painter;
+		painter.begin(&printer);
+		
+		editor->document()->drawContents(&painter);
 
+		painter.end();
+	}
+}
 
 void MainWindow::about()
 {
