@@ -81,6 +81,8 @@ bool Value::boolean() const
 			return m_bool;
 		case Value::Empty:
 			return false;
+		case Value::Number:
+			return (m_double==0 ? false : true);
 	}
 	return true;  // numbers and strings
 }
