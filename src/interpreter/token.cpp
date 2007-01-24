@@ -97,7 +97,9 @@ int Token::typeToCategory(int type)
 		case PenDown:
 		case Reset:
 		case Center:
+		case GetX:
 		case Clear:
+		case GetY:
 		case PenColor:
 		case Direction:
 			return CommandCategory;

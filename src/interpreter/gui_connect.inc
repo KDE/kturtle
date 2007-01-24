@@ -69,3 +69,7 @@
 
 //END GENERATED gui_connect_inc CODE
 
+	connect(executer, SIGNAL(getX(double&)),
+		canvas, SLOT(getX(double&)));
+	connect(executer, SIGNAL(getY(double&)),
+		canvas, SLOT(getY(double&)));

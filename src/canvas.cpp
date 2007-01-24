@@ -120,7 +120,7 @@ void Canvas::slotForward(double x)
 {
 	double x2 = turtle->pos().x() + (x * sin(turtle->angle() * DegToRad));
 	double y2 = turtle->pos().y() - (x * cos(turtle->angle() * DegToRad));
-	drawLine(turtle->pos().x(), turtle->pos().y(), x2, y2);
+	//drawLine(turtle->pos().x(), turtle->pos().y(), x2, y2);
 	slotGo(x2, y2);
 }
 
@@ -128,13 +128,19 @@ void Canvas::slotBackward(double x)
 {
 	double x2 = turtle->pos().x() - ( x * sin(turtle->angle() * DegToRad) );
 	double y2 = turtle->pos().y() + ( x * cos(turtle->angle() * DegToRad) );
-	drawLine(turtle->pos().x(), turtle->pos().y(), x2, y2);
+	//drawLine(turtle->pos().x(), turtle->pos().y(), x2, y2);
 	slotGo(x2, y2);
 }
 
 void Canvas::slotCenter()
 {
 	slotGo(scene->width()/2, scene->height()/2);
+}
+
+void Canvas::slotGo(double x, double y)
+{
+	drawLine(turtle->pos().x(), turtle->pos().y(), x, y);
+	turtle->setPos(x, y);
 }
 
 void Canvas::slotPenWidth(double width)
@@ -198,6 +204,14 @@ void Canvas::scaleView(double scaleFactor)
 	scale(scaleFactor, scaleFactor);
 }
 
+void Canvas::getX(double& value)
+{
+	value = turtle->pos().x();
+}
 
+void Canvas::getY(double& value)
+{
+	value = turtle->pos().y();
+}
 
 #include "canvas.moc"

@@ -219,6 +219,8 @@ TreeNode* Parser::parseStatement()
 		case Token::Print               : return parsePrint();
 		case Token::FontSize            : return parseFontSize();
 		case Token::Random              : return parseRandom();
+		case Token::GetX                : return parseGetX();
+		case Token::GetY                : return parseGetY();
 
 //END GENERATED parser_statements_cpp CODE
 		case Token::Error		: return new TreeNode(currentToken);
@@ -637,7 +639,7 @@ TreeNode* Parser::parseReturn() {
 //	qDebug() << "Parser::parseReturn()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
-	node->appendChild(parseExpression());
+	appendArguments(node);
 	skipToken(Token::EndOfLine, *node->token());
 	return node;
 }
@@ -837,6 +839,20 @@ TreeNode* Parser::parseRandom() {
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
+	skipToken(Token::EndOfLine, *node->token());
+	return node;
+}
+TreeNode* Parser::parseGetX() {
+//	qDebug() << "Parser::parseGetX()";
+	TreeNode* node = new TreeNode(currentToken);
+	nextToken();
+	skipToken(Token::EndOfLine, *node->token());
+	return node;
+}
+TreeNode* Parser::parseGetY() {
+//	qDebug() << "Parser::parseGetY()";
+	TreeNode* node = new TreeNode(currentToken);
+	nextToken();
 	skipToken(Token::EndOfLine, *node->token());
 	return node;
 }

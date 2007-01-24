@@ -132,7 +132,9 @@ class Token
 			SpriteHide,
 			Print,
 			FontSize,
-			Random
+			Random,
+			GetX,
+			GetY
 
 //END GENERATED token_type_h CODE
 

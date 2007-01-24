@@ -38,7 +38,7 @@ class Canvas : public QGraphicsView
 
 	public slots:
 		void slotClear();
-		void slotGo(double x, double y) { turtle->setPos(x, y); }
+		void slotGo(double x, double y);
 		void slotGoX(double x) { turtle->setPos(x, turtle->pos().y()); }
 		void slotGoY(double y) { turtle->setPos(turtle->pos().x(), y); }
 		void slotForward(double x);
@@ -58,6 +58,8 @@ class Canvas : public QGraphicsView
 		void slotFontType(const QString& family, const QString& extra);
 		void slotFontSize(double px) { textFont.setPixelSize((int)px); }
 		void slotReset();
+		void getX(double& value);
+		void getY(double& value);
 
 
 // 	signals:

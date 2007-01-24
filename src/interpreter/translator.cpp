@@ -546,6 +546,20 @@ void Translator::setDictionary()
 	default2localizedMap["rnd"] = localizedCommandLook;
 	look2typeMap[localizedCommandLook] = Token::Random;
 
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'GetX' COMMAND, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"getx").toString(localizer);
+	default2localizedMap["getx"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::GetX;
+
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'GetY' COMMAND, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"gety").toString(localizer);
+	default2localizedMap["gety"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::GetY;
+
 
 //END GENERATED translator_cpp CODE
 

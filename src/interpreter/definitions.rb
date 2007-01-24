@@ -632,13 +632,16 @@ new_item()
 <<EOS
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
-	node->appendChild(parseExpression());
+	appendArguments(node);
 	skipToken(Token::EndOfLine, *node->token());
 	return node;
 EOS
 @e_def =
 <<EOS
-	returnValue = node->child(0)->value();
+	if(node->childCount()>0)
+		returnValue = node->child(0)->value();
+	else
+		returnValue = 0;
 	returning   = true;
 EOS
 parse_item()
@@ -1201,7 +1204,35 @@ new_item()
 EOS
 parse_item()
 
+new_item()
+@type      = "GetX"
+@cat       = "Command"
+@look      = "getx"
+@funct     = "statement, node"
+@args      = [:none]
+@e_def      =
+<<EOS
+	if (!checkParameterQuantity(node, 0, 20000+Token::GetX*100+90)) return;
+	double value = 0;
+	emit getX(value);
+	node->value()->setNumber(value);
+EOS
+parse_item()
 
+new_item()
+@type      = "GetY"
+@cat       = "Command"
+@look      = "gety"
+@funct     = "statement, node"
+@args      = [:none]
+@e_def      =
+<<EOS
+	if (!checkParameterQuantity(node, 0, 20000+Token::GetY*100+90)) return;
+	double value = 0;
+	emit getY(value);
+	node->value()->setNumber(value);
+EOS
+parse_item()
 
 # # new_item()
 # # @type  = "Run"

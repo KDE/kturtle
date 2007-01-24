@@ -161,6 +161,8 @@ class Parser
 		TreeNode* parsePrint();
 		TreeNode* parseFontSize();
 		TreeNode* parseRandom();
+		TreeNode* parseGetX();
+		TreeNode* parseGetY();
 
 //END GENERATED parser_h CODE
 

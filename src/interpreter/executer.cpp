@@ -223,6 +223,8 @@ void Executer::execute(TreeNode* node)
 		case Token::Print               : executePrint(node);               break;
 		case Token::FontSize            : executeFontSize(node);            break;
 		case Token::Random              : executeRandom(node);              break;
+		case Token::GetX                : executeGetX(node);                break;
+		case Token::GetY                : executeGetY(node);                break;
 
 //END GENERATED executer_switch_cpp CODE
 
@@ -540,7 +542,10 @@ void Executer::executeBreak(TreeNode* node) {
 }
 void Executer::executeReturn(TreeNode* node) {
 //	qDebug() << "Executer::executeReturn()";
-	returnValue = node->child(0)->value();
+	if(node->childCount()>0)
+		returnValue = node->child(0)->value();
+	else
+		returnValue = 0;
 	returning   = true;
 }
 void Executer::executeWait(TreeNode* node) {
@@ -858,6 +863,20 @@ void Executer::executeRandom(TreeNode* node) {
 	double y = nodeY->value()->number();
 	double r = (double)(KRandom::random()) / RAND_MAX;
 	node->value()->setNumber(r * (y - x) + x);
+}
+void Executer::executeGetX(TreeNode* node) {
+//	qDebug() << "Executer::executeGetX()";
+	if (!checkParameterQuantity(node, 0, 20000+Token::GetX*100+90)) return;
+	double value = 0;
+	emit getX(value);
+	node->value()->setNumber(value);
+}
+void Executer::executeGetY(TreeNode* node) {
+//	qDebug() << "Executer::executeGetY()";
+	if (!checkParameterQuantity(node, 0, 20000+Token::GetY*100+90)) return;
+	double value = 0;
+	emit getY(value);
+	node->value()->setNumber(value);
 }
 
 //END GENERATED executer_cpp CODE

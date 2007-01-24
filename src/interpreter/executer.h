@@ -233,6 +233,8 @@ class Executer : public QObject
 		void executePrint(TreeNode* node);
 		void executeFontSize(TreeNode* node);
 		void executeRandom(TreeNode* node);
+		void executeGetX(TreeNode* node);
+		void executeGetY(TreeNode* node);
 
 //END GENERATED executer_h CODE
 
@@ -243,6 +245,9 @@ class Executer : public QObject
 		void currentlyExecuting(int startRow, int startCol, int endRow, int endCol);
 		void variableTableUpdated(const QString& name, const Value& value);
 		void functionTableUpdated(const QString& name, const QStringList& parameters);
+
+		void getX(double&);
+		void getY(double&);
 
 // next you find generated signals that can be emited:
 
