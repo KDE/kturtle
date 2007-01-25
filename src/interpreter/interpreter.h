@@ -93,6 +93,8 @@ class Interpreter : public QObject
 		void parsing();
 		void executing();
 		void finished();
+		
+		void treeUpdated(TreeNode* rootNode);
 };
 
 #endif  // _INTERPRETER_H_

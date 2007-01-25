@@ -418,7 +418,7 @@ void MainWindow::setupInterpreter()
 		inspector, SLOT(updateVariable(const QString&, const Value&)));
 	connect(executer, SIGNAL(functionTableUpdated(const QString&, const QStringList&)),
 		inspector, SLOT(updateFunction(const QString&, const QStringList&)));
-	connect(interpreter, SIGNAL(variableTableUpdated(const QString&, const Value&)),
+       connect(interpreter, SIGNAL(treeUpdated(TreeNode*)),
 		inspector, SLOT(updateTree(TreeNode*)));
 }
 

@@ -81,6 +81,7 @@ void Interpreter::interpret()
 			if (parser->isFinished()) {
 				qDebug() << "Finished parsing.\n";
 				TreeNode* tree = parser->getRootNode();
+				emit treeUpdated(tree);
 				qDebug() << "Node tree as returned by parser:";
 				parser->printTree();
 				qDebug() << "";

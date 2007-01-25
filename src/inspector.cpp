@@ -99,6 +99,8 @@ void Inspector::clear()
 	emptyItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	functionTable->setItem(0, 0, emptyItem);
 	functionTable->resizeColumnsToContents();
+
+	//Treeview gets cleared in updateTree()
 }
 
 
@@ -185,6 +187,21 @@ void Inspector::updateFunction(const QString& name, const QStringList& parameter
 
 void Inspector::updateTree(TreeNode* rootNode)
 {
+	treeView->clear();
+	treeView->addTopLevelItem(walkTree(rootNode));
+}
+
+QTreeWidgetItem* Inspector::walkTree(TreeNode* node)
+{
+	QTreeWidgetItem* result = new QTreeWidgetItem();
+	result->setText(0, node->token()->look());
+	if(node->hasChildren()) {
+		for(uint i = 0; i < node->childCount(); i++) {
+			result->addChild(walkTree(node->child(i)));
+		}
+	}
+
+	return result;
 }
 
 void Inspector::highlightSymbol(const QString& name)

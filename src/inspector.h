@@ -25,6 +25,7 @@
 #include <QTabWidget>
 #include <QTableWidget>
 #include <QTreeWidget>
+#include <QTreeWidgetItem>
 #include <QWidget>
 
 #include "interpreter/value.h"
@@ -52,6 +53,7 @@ class Inspector : public QFrame
 
 	private:
 		int findVariable(const QString& name);
+		QTreeWidgetItem* walkTree(TreeNode* node);
 
 		QHBoxLayout  *mainLayout;
 		QTabWidget   *tabWidget;
