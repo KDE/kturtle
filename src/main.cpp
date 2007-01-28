@@ -93,7 +93,7 @@ int main(int argc, char* argv[])
 			return 1;
 		}
 		
-		KComponentData(&aboutData);  // need a KComponentData since we're using KLocale in the Translator class
+		KComponentData componentData(&aboutData);  // need a KComponentData since we're using KLocale in the Translator class
 		Translator::instance()->setLanguage();
 
 		Tokenizer tokenizer;
@@ -128,7 +128,7 @@ int main(int argc, char* argv[])
 			return 1;
 		}
 
-		KComponentData(&aboutData);  // need a KComponentData since we're using KLocale in the Translator class
+		KComponentData componentData(&aboutData);  // need a KComponentData since we're using KLocale in the Translator class
 
 		if (args->isSet("lang")) {
 			if (Translator::instance()->setLanguage(args->getOption("lang"))) {
