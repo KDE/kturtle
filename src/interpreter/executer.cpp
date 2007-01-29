@@ -225,6 +225,8 @@ void Executer::execute(TreeNode* node)
 		case Token::Random              : executeRandom(node);              break;
 		case Token::GetX                : executeGetX(node);                break;
 		case Token::GetY                : executeGetY(node);                break;
+		case Token::Message             : executeMessage(node);             break;
+		case Token::Ask                 : executeAsk(node);                 break;
 
 //END GENERATED executer_switch_cpp CODE
 
@@ -877,6 +879,18 @@ void Executer::executeGetY(TreeNode* node) {
 	double value = 0;
 	emit getY(value);
 	node->value()->setNumber(value);
+}
+void Executer::executeMessage(TreeNode* node) {
+//	qDebug() << "Executer::executeMessage()";
+	if (!checkParameterQuantity(node, 1, 20000+Token::Message*100+90)) return;
+	emit message(node->child(0)->value()->string());
+}
+void Executer::executeAsk(TreeNode* node) {
+//	qDebug() << "Executer::executeAsk()";
+	if (!checkParameterQuantity(node, 1, 20000+Token::Ask*100+90)) return;
+	QString value = node->child(0)->value()->string();
+	emit ask(value);
+	node->value()->setString(value);
 }
 
 //END GENERATED executer_cpp CODE

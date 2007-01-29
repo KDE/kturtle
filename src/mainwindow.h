@@ -92,6 +92,7 @@ class MainWindow : public KMainWindow
 
 		void about();
 		void aboutKDE();
+		void whatsThis();
 		void documentWasModified();
 		void setRunSpeed(int);
 
@@ -103,6 +104,8 @@ class MainWindow : public KMainWindow
 		void setSlowestSpeed() { setRunSpeed(3); }
 		void setStepSpeed()    { setRunSpeed(4); }
 
+		void slotInputDialog(QString& value);
+		void slotMessageDialog(const QString& text);
 
 	protected:
 		void closeEvent(QCloseEvent *event);

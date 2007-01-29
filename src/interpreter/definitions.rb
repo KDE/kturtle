@@ -1242,18 +1242,30 @@ parse_item()
 # # @args  = [:string]
 # # parse_item()
 # # 
-# # new_item()
-# # @type  = "Message"
-# # @cat   = "Command"
-# # @look  = "message"
-# # @funct = "statement, node"
-# # @args  = [:string]
-# # parse_item()
-# # 
-# # new_item()
-# # @type  = "Ask" # used to be "inputwindow"
-# # @cat   = "Command"
-# # @look  = "ask"
-# # @funct = "statement, node"
-# # @args  = [:string]
-# # parse_item()
+new_item()
+@type  = "Message"
+@cat   = "Command"
+@look  = "message"
+@funct = "statement, node"
+@args  = [:string]
+@e_def      =
+<<EOS
+	if (!checkParameterQuantity(node, 1, 20000+Token::Message*100+90)) return;
+	emit message(node->child(0)->value()->string());
+EOS
+parse_item()
+
+new_item()
+@type  = "Ask" # used to be "inputwindow"
+@cat   = "Command"
+@look  = "ask"
+@funct = "statement, node"
+@args  = [:string]
+@e_def      =
+<<EOS
+	if (!checkParameterQuantity(node, 1, 20000+Token::Ask*100+90)) return;
+	QString value = node->child(0)->value()->string();
+	emit ask(value);
+	node->value()->setString(value);
+EOS
+parse_item()

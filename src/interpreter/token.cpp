@@ -85,9 +85,11 @@ int Token::typeToCategory(int type)
 		case CanvasColor:
 		case Backward:
 		case Forward:
+		case Message:
 		case Random:
 		case Go:
 		case TurnRight:
+		case Ask:
 		case Print:
 		case SpriteHide:
 		case TurnLeft:

@@ -134,7 +134,9 @@ class Token
 			FontSize,
 			Random,
 			GetX,
-			GetY
+			GetY,
+			Message,
+			Ask
 
 //END GENERATED token_type_h CODE
 

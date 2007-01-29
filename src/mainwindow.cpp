@@ -18,6 +18,7 @@
 
 
 #include <QtGui>
+#include <QWhatsThis>
 
 #include <kdebug.h>
 
@@ -29,6 +30,7 @@
 #include <kglobal.h>
 #include <klocale.h>
 #include <kicon.h>
+#include <kinputdialog.h>
 #include <kmessagebox.h>
 #include <krecentfilesaction.h>
 #include <kstatusbar.h>
@@ -126,6 +128,10 @@ void MainWindow::aboutKDE()
 // 	new KAboutKDE(this);
 }
 
+void MainWindow::whatsThis()
+{
+	QWhatsThis::enterWhatsThisMode();
+}
 
 void MainWindow::documentWasModified()
 {
@@ -326,7 +332,7 @@ void MainWindow::setupActions()
 	a = actionCollection()->addAction(KStandardAction::HelpContents,  "help_contents", this, SLOT(appHelpActivated()));
 	a->setStatusTip(i18n("Help"));
 
-	a = actionCollection()->addAction(KStandardAction::WhatsThis,  "whatsthis", this, SLOT(about()));
+	a = actionCollection()->addAction(KStandardAction::WhatsThis,  "whatsthis", this, SLOT(whatsThis()));
 	a->setStatusTip(i18n("Point and click information about the interface of KTurtle"));
 
 
@@ -788,6 +794,23 @@ void MainWindow::writeConfig()
 	config->sync();
 }
 
+// slots for logo functions that need to use the MainWindow class:
+
+void MainWindow::slotInputDialog(QString& value)
+{
+	iterationTimer->stop();
+	value = KInputDialog::getText(i18n("Input"), value);
+	run();
+}
+
+void MainWindow::slotMessageDialog(const QString& text)
+{
+	iterationTimer->stop();
+	KMessageBox::information( this, text, i18n("Message") );
+	run();
+}
+
+// END
 
 
 #include "mainwindow.moc"

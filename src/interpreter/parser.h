@@ -163,6 +163,8 @@ class Parser
 		TreeNode* parseRandom();
 		TreeNode* parseGetX();
 		TreeNode* parseGetY();
+		TreeNode* parseMessage();
+		TreeNode* parseAsk();
 
 //END GENERATED parser_h CODE
 

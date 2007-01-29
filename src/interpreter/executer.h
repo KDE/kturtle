@@ -235,6 +235,8 @@ class Executer : public QObject
 		void executeRandom(TreeNode* node);
 		void executeGetX(TreeNode* node);
 		void executeGetY(TreeNode* node);
+		void executeMessage(TreeNode* node);
+		void executeAsk(TreeNode* node);
 
 //END GENERATED executer_h CODE
 
@@ -248,6 +250,8 @@ class Executer : public QObject
 
 		void getX(double&);
 		void getY(double&);
+		void ask(QString& value);
+		void message(const QString& text);
 
 // next you find generated signals that can be emited:
 

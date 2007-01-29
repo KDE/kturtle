@@ -221,6 +221,8 @@ TreeNode* Parser::parseStatement()
 		case Token::Random              : return parseRandom();
 		case Token::GetX                : return parseGetX();
 		case Token::GetY                : return parseGetY();
+		case Token::Message             : return parseMessage();
+		case Token::Ask                 : return parseAsk();
 
 //END GENERATED parser_statements_cpp CODE
 		case Token::Error		: return new TreeNode(currentToken);
@@ -853,6 +855,22 @@ TreeNode* Parser::parseGetY() {
 //	qDebug() << "Parser::parseGetY()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
+	skipToken(Token::EndOfLine, *node->token());
+	return node;
+}
+TreeNode* Parser::parseMessage() {
+//	qDebug() << "Parser::parseMessage()";
+	TreeNode* node = new TreeNode(currentToken);
+	nextToken();
+	appendArguments(node);
+	skipToken(Token::EndOfLine, *node->token());
+	return node;
+}
+TreeNode* Parser::parseAsk() {
+//	qDebug() << "Parser::parseAsk()";
+	TreeNode* node = new TreeNode(currentToken);
+	nextToken();
+	appendArguments(node);
 	skipToken(Token::EndOfLine, *node->token());
 	return node;
 }
