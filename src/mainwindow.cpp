@@ -758,12 +758,12 @@ void MainWindow::addToRecentFiles(const KUrl &url)
 
 void MainWindow::readConfig()
 {
-  KConfig *config = KGlobal::config();
+  KSharedConfig::Ptr config = KGlobal::config();
 	config->setGroup("General Options");
 
 //   m_paShowStatusBar->setChecked(config->readEntry("ShowStatusBar", QVariant(false)).toBool());
 //   m_paShowPath->setChecked(config->readEntry("ShowPath", QVariant(false)).toBool());
-	recentFilesAction->loadEntries(config, "Recent Files");
+	recentFilesAction->loadEntries(config.data(), "Recent Files");
 
 	QString lang_code(config->readEntry("currentLanguageCode", QVariant(QString())).toString());
 	if (lang_code.isEmpty()) lang_code = "en_US";  // null-string are saved as empty-strings
@@ -777,12 +777,12 @@ void MainWindow::readConfig()
 
 void MainWindow::writeConfig()
 {
-  KConfig *config = KGlobal::config();
+  KSharedConfig::Ptr config = KGlobal::config();
 	config->setGroup("General Options");
 	
 // 	config->writeEntry("ShowStatusBar",m_paShowStatusBar->isChecked());
 // 	config->writeEntry("ShowPath",m_paShowPath->isChecked());
-	recentFilesAction->saveEntries(config, "Recent Files");
+	recentFilesAction->saveEntries(config.data(), "Recent Files");
 	config->writeEntry("currentLanguageCode", currentLanguageCode);
 
 	config->sync();
