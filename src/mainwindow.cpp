@@ -22,8 +22,6 @@
 
 #include <kdebug.h>
 
-#include <kaboutapplication.h>
-#include <kaboutkde.h>
 #include <kactioncollection.h>
 #include <kaction.h>
 #include <kconfig.h>
