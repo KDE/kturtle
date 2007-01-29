@@ -95,6 +95,8 @@ class MainWindow : public KMainWindow
 		void documentWasModified();
 		void setRunSpeed(int);
 
+		void directionDialog();
+
 		void setFullSpeed()    { setRunSpeed(0); }
 		void setSlowSpeed()    { setRunSpeed(1); }
 		void setSlowerSpeed()  { setRunSpeed(2); }

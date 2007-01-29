@@ -42,6 +42,7 @@
 
 #include "mainwindow.h"
 
+#include "directiondialog.h"
 
 
 static const int MARGIN_SIZE = 3;  // defaultly styled margins look shitty
@@ -102,6 +103,14 @@ void MainWindow::printDlg()
 		editor->document()->drawContents(&painter);
 
 		painter.end();
+	}
+}
+
+void MainWindow::directionDialog()
+{
+	DirectionDialog ddialog(canvas->turtleAngle(), this);
+	if(ddialog.exec()==QDialog::Accepted) {
+		editor->view()->insertPlainText(ddialog.command());
 	}
 }
 
@@ -270,6 +279,11 @@ void MainWindow::setupActions()
 
 
 	// Tools menu actions
+	a  = new KAction(i18n("&Direction chooser"), this);
+	actionCollection()->addAction("direction", a);
+	a->setStatusTip(i18n("Shows the direction chooser dialog"));
+	connect(a, SIGNAL(triggered()), this, SLOT(directionDialog()));
+
 	a  = new KAction(i18n("Show &Line Numbers"), this);
 	actionCollection()->addAction("line_numbers", a );
 	a->setStatusTip(i18n("Turn the editors line numbers on/off"));
@@ -418,7 +432,7 @@ void MainWindow::setupInterpreter()
 		inspector, SLOT(updateVariable(const QString&, const Value&)));
 	connect(executer, SIGNAL(functionTableUpdated(const QString&, const QStringList&)),
 		inspector, SLOT(updateFunction(const QString&, const QStringList&)));
-       connect(interpreter, SIGNAL(treeUpdated(TreeNode*)),
+	connect(interpreter, SIGNAL(treeUpdated(TreeNode*)),
 		inspector, SLOT(updateTree(TreeNode*)));
 }
 
@@ -441,6 +455,7 @@ void MainWindow::setupMenus()
 	      << "full_screen" << "-"
 	      << "show_editor" << "show_inspector" << "show_statusbar" << "show_toolbar" << "-"
 	      << i18n("&Tools")
+	      << "direction" << "-"
 	      << "line_numbers" << "-"
 	      << "edit_indent" << "edit_unindent" << "-"
 	      << "edit_comment" << "edit_uncomment" << "-"
