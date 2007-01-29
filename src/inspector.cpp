@@ -45,24 +45,11 @@ Inspector::Inspector(QWidget *parent)
 	variableLayout->addWidget(variableTable);
 	tabWidget->addTab(variableTab, i18n("&Variables"));
 
-	QStringList headers;
-	headers << i18n("name") << i18n("value") << i18n("type");
-	variableTable->setColumnCount(3);
-	variableTable->setHorizontalHeaderLabels(headers);
-	variableTable->setShowGrid(false);
-
 	functionTab    = new QWidget();
 	functionLayout = new QHBoxLayout(functionTab);
 	functionTable  = new QTableWidget(functionTab);
 	functionLayout->addWidget(functionTable);
 	tabWidget->addTab(functionTab, i18n("&Learned Functions"));
-
-// 	QStringList headers;
-	headers.clear();
-	headers << i18n("name") << i18n("parameters");
-	functionTable->setColumnCount(2);
-	functionTable->setHorizontalHeaderLabels(headers);
-	functionTable->setShowGrid(false);
 
 	treeTab    = new QWidget();
 	treeLayout = new QHBoxLayout(treeTab);
@@ -85,6 +72,16 @@ void Inspector::clear()
 {
 	variableTableEmpty = true;
 	functionTableEmpty = true;
+
+	variableTable->clear();
+	
+	QStringList headers;
+	headers << i18n("name") << i18n("value") << i18n("type");
+	variableTable->setColumnCount(3);
+	variableTable->setHorizontalHeaderLabels(headers);
+	variableTable->setShowGrid(false);
+
+	functionTable->clear();
 
 	variableTable->setRowCount(1);
 	functionTable->setRowCount(1);
