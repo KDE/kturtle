@@ -83,6 +83,12 @@ void Inspector::clear()
 
 	functionTable->clear();
 
+	headers.clear();
+	headers << i18n("name") << i18n("parameters");
+	functionTable->setColumnCount(2);
+	functionTable->setHorizontalHeaderLabels(headers);
+	functionTable->setShowGrid(false);
+
 	variableTable->setRowCount(1);
 	functionTable->setRowCount(1);
 
