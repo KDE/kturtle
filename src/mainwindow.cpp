@@ -99,7 +99,7 @@ void MainWindow::printDlg()
 	{
 		QPainter painter;
 		painter.begin(&printer);
-		
+
 		editor->document()->drawContents(&painter);
 
 		painter.end();
@@ -312,7 +312,7 @@ void MainWindow::setupActions()
 	contextHelpAct = ac->addAction("context_help");
 	contextHelpAct->setText("");
 	contextHelpAct->setIcon(KIcon("help"));
-	
+
 	contextHelpAct->setShortcut(QKeySequence(Qt::Key_F2));
 	contextHelpAct->setStatusTip(i18n("Get help on the command under the cursor"));
 	connect(contextHelpAct, SIGNAL(triggered()), this, SLOT(contextHelp()));
@@ -622,7 +622,7 @@ void MainWindow::updateOnCursorPositionChange(int row, int col, const QString& l
 			case Token::ScopeCategory:             setContextHelp(i18n("<scope>"));       return;
 			case Token::AssignmentCategory:        setContextHelp(i18n("<assignment>"));  return;
 			case Token::ParenthesisCategory:       setContextHelp(i18n("<parenthesis>")); return;
-		
+
 			case Token::MathOperatorCategory:      desc = i18n("mathmatical operator");
 			case Token::ExpressionCategory:        desc = i18n("expression");
 			case Token::BooleanOperatorCategory:   desc = i18n("boolean operator");
@@ -632,7 +632,7 @@ void MainWindow::updateOnCursorPositionChange(int row, int col, const QString& l
 			case Token::LearnCommandCategory:      desc = i18n("command");
 				setContextHelp(QString("\"%1\" (%2)").arg(look).arg(desc));
 				return;
-		
+
 			case Token::MetaCategory:
 			case Token::WhiteSpaceCategory:
 			case Token::DecimalSeparatorCategory:
@@ -762,17 +762,16 @@ void MainWindow::addToRecentFiles(const KUrl &url)
 
 void MainWindow::readConfig()
 {
-  KSharedConfig::Ptr config = KGlobal::config();
-	config->setGroup("General Options");
+    KConfigGroup config( KGlobal::config(), "General Options");
 
 //   m_paShowStatusBar->setChecked(config->readEntry("ShowStatusBar", QVariant(false)).toBool());
 //   m_paShowPath->setChecked(config->readEntry("ShowPath", QVariant(false)).toBool());
-	recentFilesAction->loadEntries(config.data(), "Recent Files");
+    recentFilesAction->loadEntries(KGlobal::config()->group( "Recent Files") );
 
-	QString lang_code(config->readEntry("currentLanguageCode", QVariant(QString())).toString());
+	QString lang_code(config.readEntry("currentLanguageCode", QVariant(QString())).toString());
 	if (lang_code.isEmpty()) lang_code = "en_US";  // null-string are saved as empty-strings
 	setLanguage(lang_code);
-	
+
 // 	if(m_paShowStatusBar->isChecked())
 // 		statusBar()->show();
 // 	else
@@ -781,15 +780,14 @@ void MainWindow::readConfig()
 
 void MainWindow::writeConfig()
 {
-  KSharedConfig::Ptr config = KGlobal::config();
-	config->setGroup("General Options");
-	
-// 	config->writeEntry("ShowStatusBar",m_paShowStatusBar->isChecked());
-// 	config->writeEntry("ShowPath",m_paShowPath->isChecked());
-	recentFilesAction->saveEntries(config.data(), "Recent Files");
-	config->writeEntry("currentLanguageCode", currentLanguageCode);
+        KConfigGroup config( KGlobal::config(), "General Options");
 
-	config->sync();
+// 	config.writeEntry("ShowStatusBar",m_paShowStatusBar->isChecked());
+// 	config.writeEntry("ShowPath",m_paShowPath->isChecked());
+        recentFilesAction->saveEntries( KGlobal::config()->group( "Recent Files") );
+	config.writeEntry("currentLanguageCode", currentLanguageCode);
+
+	config.sync();
 }
 
 // slots for logo functions that need to use the MainWindow class:
