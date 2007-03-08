@@ -174,20 +174,20 @@ void MainWindow::setupActions()
 	a = actionCollection()->addAction(KStandardAction::SaveAs,  "file_save_as", editor, SLOT(saveFileAs()));
 	a->setStatusTip(i18n("Save the current file under a different name"));
 
-	runAct  = new KAction(KIcon("player_play"), i18n("&Run"), this);
+	runAct  = new KAction(KIcon("media-playback-start"), i18n("&Run"), this);
 	actionCollection()->addAction("run", runAct );
 	runAct->setShortcut(QKeySequence(Qt::Key_F5));
 	runAct->setStatusTip(i18n("Execute the code in the Code Editor"));
 	connect(runAct, SIGNAL(triggered()), this, SLOT(run()));
 
-	pauseAct  = new KAction(KIcon("player_pause"), i18n("&Pause"), this);
+	pauseAct  = new KAction(KIcon("media-playback-pause"), i18n("&Pause"), this);
 	actionCollection()->addAction("pause", pauseAct );
 	pauseAct->setCheckable(true);
 	pauseAct->setShortcut(QKeySequence(Qt::Key_F6));
 	pauseAct->setStatusTip(i18n("Pause execution"));
 	connect(pauseAct, SIGNAL(triggered()), this, SLOT(pause()));
 
-	abortAct  = new KAction(KIcon("stop"), i18n("&Abort"), this);
+	abortAct  = new KAction(KIcon("process-stop"), i18n("&Abort"), this);
 	actionCollection()->addAction("abort", abortAct );
 	abortAct->setShortcut(QKeySequence(Qt::Key_F7));
 	abortAct->setStatusTip(i18n("Abort execution"));
@@ -296,8 +296,8 @@ void MainWindow::setupActions()
 	connect(a, SIGNAL(toggled(bool)), editor, SLOT(toggleLineNumbers(bool)));
 
     // 	colorpicker  = new KToggleAction(i18n("&Color Picker"), "colorize"), this);
-// 	new KAction(i18n("&Indent"), "indent", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
-// 	new KAction(i18n("&Unindent"), "unindent", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
+// 	new KAction(i18n("&Indent"), "format-indent-more", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
+// 	new KAction(i18n("&Unindent"), "format-indent-less", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
 // 	new KAction(i18n("Cl&ean Indentation"), 0, 0, this, SLOT(slotCleanIndent()), ac, "edit_cleanIndent");
 // 	new KAction(i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
 // 	new KAction(i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
@@ -311,7 +311,7 @@ void MainWindow::setupActions()
 	// Help menu actions
 	contextHelpAct = ac->addAction("context_help");
 	contextHelpAct->setText("");
-	contextHelpAct->setIcon(KIcon("help"));
+	contextHelpAct->setIcon(KIcon("help-contents"));
 
 	contextHelpAct->setShortcut(QKeySequence(Qt::Key_F2));
 	contextHelpAct->setStatusTip(i18n("Get help on the command under the cursor"));
