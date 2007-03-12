@@ -16,11 +16,12 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-// This file is originally written by Walter Scheppers, but allmost
+// This file is originally written by Walter Scheppers, but almost
 // every aspect of it is slightly changed by Cies Breijs.
   
  
 #include <unistd.h> // for usleep();
+#include <stdlib.h>
 
 #include <qtimer.h>
 
