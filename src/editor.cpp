@@ -211,6 +211,7 @@ bool Editor::saveFileAs()
 		KMessageBox::warningContinueCancel(this,
 			i18n("Are you sure you want to overwrite %1", url.fileName()),
 			i18n("Overwrite Existing File"),KGuiItem(i18n("&Overwrite")),
+			KStandardGuiItem::cancel(),
 			i18n("&Overwrite")
 			) != KMessageBox::Continue
 		) return false;
@@ -224,7 +225,7 @@ bool Editor::maybeSave()
 	int result = KMessageBox::warningContinueCancel(this,
 		i18n("The program you are currently working on is not saved. "
 		     "By continuing you may lose the changes you have made."),
-		i18n("Unsaved File"), KGuiItem(i18n("&Discard Changes")), i18n("&Discard Changes"));
+		i18n("Unsaved File"), KGuiItem(i18n("&Discard Changes")), KStandardGuiItem::cancel(), i18n("&Discard Changes"));
 	if (result == KMessageBox::Continue) return true;
 	return false;
 }
