@@ -1269,3 +1269,135 @@ new_item()
 	node->value()->setString(value);
 EOS
 parse_item()
+
+new_item()
+@type  = "Pi"
+@cat   = "Command"
+@look  = "pi"
+@funct = "statement, node"
+@args  = [:none]
+@e_def =
+<<EOS
+	node->value()->setNumber(M_PI);
+EOS
+parse_item()
+
+new_item()
+@type  = "Tan"
+@cat   = "Command"
+@look  = "tan"
+@funct = "statement, node"
+@args  = [:number]
+@e_def =
+<<EOS
+	if (!checkParameterQuantity(node, 1, 20000+Token::Tan*100+90)) return;
+	
+	double deg = node->child(0)->value()->number();
+	node->value()->setNumber(tan(DEG2RAD(deg)));
+EOS
+parse_item()
+
+new_item()
+@type  = "Sin"
+@cat   = "Command"
+@look  = "sin"
+@funct = "statement, node"
+@args  = [:number]
+@e_def =
+<<EOS
+	if (!checkParameterQuantity(node, 1, 20000+Token::Sin*100+90)) return;
+	
+	double deg = node->child(0)->value()->number();
+	node->value()->setNumber(sin(DEG2RAD(deg)));
+EOS
+parse_item()
+
+new_item()
+@type  = "Cos"
+@cat   = "Command"
+@look  = "cos"
+@funct = "statement, node"
+@args  = [:number]
+@e_def =
+<<EOS
+	if (!checkParameterQuantity(node, 1, 20000+Token::Cos*100+90)) return;
+	
+	double deg = node->child(0)->value()->number();
+	node->value()->setNumber(cos(DEG2RAD(deg)));
+EOS
+parse_item()
+
+new_item()
+@type  = "ArcTan"
+@cat   = "Command"
+@look  = "arctan"
+@funct = "statement, node"
+@args  = [:number]
+@e_def =
+<<EOS
+	if (!checkParameterQuantity(node, 1, 20000+Token::ArcTan*100+90)) return;
+	
+	double deg = node->child(0)->value()->number();
+	node->value()->setNumber(RAD2DEG(atan(deg)));
+EOS
+parse_item()
+
+new_item()
+@type  = "ArcSin"
+@cat   = "Command"
+@look  = "arcsin"
+@funct = "statement, node"
+@args  = [:number]
+@e_def =
+<<EOS
+	if (!checkParameterQuantity(node, 1, 20000+Token::ArcSin*100+90)) return;
+	
+	double deg = node->child(0)->value()->number();
+	node->value()->setNumber(RAD2DEG(asin(deg)));
+EOS
+parse_item()
+
+new_item()
+@type  = "ArcCos"
+@cat   = "Command"
+@look  = "arccos"
+@funct = "statement, node"
+@args  = [:number]
+@e_def =
+<<EOS
+	if (!checkParameterQuantity(node, 1, 20000+Token::ArcCos*100+90)) return;
+	
+	double deg = node->child(0)->value()->number();
+	node->value()->setNumber(RAD2DEG(acos(deg)));
+EOS
+parse_item()
+
+new_item()
+@type  = "Sqrt"
+@cat   = "Command"
+@look  = "sqrt"
+@funct = "statement, node"
+@args  = [:number]
+@e_def =
+<<EOS
+	if (!checkParameterQuantity(node, 1, 20000+Token::Sqrt*100+90)) return;
+	
+	double val = node->child(0)->value()->number();
+	node->value()->setNumber(sqrt(val));
+EOS
+parse_item()
+
+new_item()
+@type  = "Exp"
+@cat   = "Command"
+@look  = "exp"
+@funct = "statement, node"
+@args  = [:number]
+@e_def =
+<<EOS
+	if (!checkParameterQuantity(node, 1, 20000+Token::Exp*100+90)) return;
+	
+	double val = node->child(0)->value()->number();
+	node->value()->setNumber(exp(val));
+EOS
+parse_item()

@@ -39,6 +39,8 @@
 // this function is used in executer and canvas:
 #define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )
 
+#define DEG2RAD(deg) ( deg * (M_PI / 180) )
+#define RAD2DEG(rad) ( rad * (180 / M_PI) )
 
 void Executer::initialize(TreeNode* tree, ErrorList* _errorList)
 {
@@ -227,6 +229,15 @@ void Executer::execute(TreeNode* node)
 		case Token::GetY                : executeGetY(node);                break;
 		case Token::Message             : executeMessage(node);             break;
 		case Token::Ask                 : executeAsk(node);                 break;
+		case Token::Pi                  : executePi(node);                  break;
+		case Token::Tan                 : executeTan(node);                 break;
+		case Token::Sin                 : executeSin(node);                 break;
+		case Token::Cos                 : executeCos(node);                 break;
+		case Token::ArcTan              : executeArcTan(node);              break;
+		case Token::ArcSin              : executeArcSin(node);              break;
+		case Token::ArcCos              : executeArcCos(node);              break;
+		case Token::Sqrt                : executeSqrt(node);                break;
+		case Token::Exp                 : executeExp(node);                 break;
 
 //END GENERATED executer_switch_cpp CODE
 
@@ -891,6 +902,66 @@ void Executer::executeAsk(TreeNode* node) {
 	QString value = node->child(0)->value()->string();
 	emit ask(value);
 	node->value()->setString(value);
+}
+void Executer::executePi(TreeNode* node) {
+//	qDebug() << "Executer::executePi()";
+	node->value()->setNumber(M_PI);
+}
+void Executer::executeTan(TreeNode* node) {
+//	qDebug() << "Executer::executeTan()";
+	if (!checkParameterQuantity(node, 1, 20000+Token::Tan*100+90)) return;
+	
+	double deg = node->child(0)->value()->number();
+	node->value()->setNumber(tan(DEG2RAD(deg)));
+}
+void Executer::executeSin(TreeNode* node) {
+//	qDebug() << "Executer::executeSin()";
+	if (!checkParameterQuantity(node, 1, 20000+Token::Sin*100+90)) return;
+	
+	double deg = node->child(0)->value()->number();
+	node->value()->setNumber(sin(DEG2RAD(deg)));
+}
+void Executer::executeCos(TreeNode* node) {
+//	qDebug() << "Executer::executeCos()";
+	if (!checkParameterQuantity(node, 1, 20000+Token::Cos*100+90)) return;
+	
+	double deg = node->child(0)->value()->number();
+	node->value()->setNumber(cos(DEG2RAD(deg)));
+}
+void Executer::executeArcTan(TreeNode* node) {
+//	qDebug() << "Executer::executeArcTan()";
+	if (!checkParameterQuantity(node, 1, 20000+Token::ArcTan*100+90)) return;
+	
+	double deg = node->child(0)->value()->number();
+	node->value()->setNumber(RAD2DEG(atan(deg)));
+}
+void Executer::executeArcSin(TreeNode* node) {
+//	qDebug() << "Executer::executeArcSin()";
+	if (!checkParameterQuantity(node, 1, 20000+Token::ArcSin*100+90)) return;
+	
+	double deg = node->child(0)->value()->number();
+	node->value()->setNumber(RAD2DEG(asin(deg)));
+}
+void Executer::executeArcCos(TreeNode* node) {
+//	qDebug() << "Executer::executeArcCos()";
+	if (!checkParameterQuantity(node, 1, 20000+Token::ArcCos*100+90)) return;
+	
+	double deg = node->child(0)->value()->number();
+	node->value()->setNumber(RAD2DEG(acos(deg)));
+}
+void Executer::executeSqrt(TreeNode* node) {
+//	qDebug() << "Executer::executeSqrt()";
+	if (!checkParameterQuantity(node, 1, 20000+Token::Sqrt*100+90)) return;
+	
+	double val = node->child(0)->value()->number();
+	node->value()->setNumber(sqrt(val));
+}
+void Executer::executeExp(TreeNode* node) {
+//	qDebug() << "Executer::executeExp()";
+	if (!checkParameterQuantity(node, 1, 20000+Token::Exp*100+90)) return;
+	
+	double val = node->child(0)->value()->number();
+	node->value()->setNumber(exp(val));
 }
 
 //END GENERATED executer_cpp CODE

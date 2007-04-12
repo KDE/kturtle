@@ -165,6 +165,15 @@ class Parser
 		TreeNode* parseGetY();
 		TreeNode* parseMessage();
 		TreeNode* parseAsk();
+		TreeNode* parsePi();
+		TreeNode* parseTan();
+		TreeNode* parseSin();
+		TreeNode* parseCos();
+		TreeNode* parseArcTan();
+		TreeNode* parseArcSin();
+		TreeNode* parseArcCos();
+		TreeNode* parseSqrt();
+		TreeNode* parseExp();
 
 //END GENERATED parser_h CODE
 

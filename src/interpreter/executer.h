@@ -237,6 +237,15 @@ class Executer : public QObject
 		void executeGetY(TreeNode* node);
 		void executeMessage(TreeNode* node);
 		void executeAsk(TreeNode* node);
+		void executePi(TreeNode* node);
+		void executeTan(TreeNode* node);
+		void executeSin(TreeNode* node);
+		void executeCos(TreeNode* node);
+		void executeArcTan(TreeNode* node);
+		void executeArcSin(TreeNode* node);
+		void executeArcCos(TreeNode* node);
+		void executeSqrt(TreeNode* node);
+		void executeExp(TreeNode* node);
 
 //END GENERATED executer_h CODE
 

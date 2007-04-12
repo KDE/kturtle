@@ -79,16 +79,23 @@ int Token::typeToCategory(int type)
  * Thanks for looking at the code!
  */
 
+		case Sin:
 		case GoX:
 		case GoY:
 		case FontSize:
+		case Cos:
 		case CanvasColor:
+		case Tan:
 		case Backward:
+		case Sqrt:
+		case Exp:
+		case Pi:
 		case Forward:
 		case Message:
 		case Random:
 		case Go:
 		case TurnRight:
+		case ArcSin:
 		case Ask:
 		case Print:
 		case SpriteHide:
@@ -96,8 +103,10 @@ int Token::typeToCategory(int type)
 		case PenWidth:
 		case PenUp:
 		case SpriteShow:
+		case ArcCos:
 		case PenDown:
 		case Reset:
+		case ArcTan:
 		case Center:
 		case GetX:
 		case Clear:

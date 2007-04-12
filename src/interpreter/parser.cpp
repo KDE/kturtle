@@ -223,6 +223,15 @@ TreeNode* Parser::parseStatement()
 		case Token::GetY                : return parseGetY();
 		case Token::Message             : return parseMessage();
 		case Token::Ask                 : return parseAsk();
+		case Token::Pi                  : return parsePi();
+		case Token::Tan                 : return parseTan();
+		case Token::Sin                 : return parseSin();
+		case Token::Cos                 : return parseCos();
+		case Token::ArcTan              : return parseArcTan();
+		case Token::ArcSin              : return parseArcSin();
+		case Token::ArcCos              : return parseArcCos();
+		case Token::Sqrt                : return parseSqrt();
+		case Token::Exp                 : return parseExp();
 
 //END GENERATED parser_statements_cpp CODE
 		case Token::Error		: return new TreeNode(currentToken);
@@ -868,6 +877,77 @@ TreeNode* Parser::parseMessage() {
 }
 TreeNode* Parser::parseAsk() {
 //	qDebug() << "Parser::parseAsk()";
+	TreeNode* node = new TreeNode(currentToken);
+	nextToken();
+	appendArguments(node);
+	skipToken(Token::EndOfLine, *node->token());
+	return node;
+}
+TreeNode* Parser::parsePi() {
+//	qDebug() << "Parser::parsePi()";
+	TreeNode* node = new TreeNode(currentToken);
+	nextToken();
+	skipToken(Token::EndOfLine, *node->token());
+	return node;
+}
+TreeNode* Parser::parseTan() {
+//	qDebug() << "Parser::parseTan()";
+	TreeNode* node = new TreeNode(currentToken);
+	nextToken();
+	appendArguments(node);
+	skipToken(Token::EndOfLine, *node->token());
+	return node;
+}
+TreeNode* Parser::parseSin() {
+//	qDebug() << "Parser::parseSin()";
+	TreeNode* node = new TreeNode(currentToken);
+	nextToken();
+	appendArguments(node);
+	skipToken(Token::EndOfLine, *node->token());
+	return node;
+}
+TreeNode* Parser::parseCos() {
+//	qDebug() << "Parser::parseCos()";
+	TreeNode* node = new TreeNode(currentToken);
+	nextToken();
+	appendArguments(node);
+	skipToken(Token::EndOfLine, *node->token());
+	return node;
+}
+TreeNode* Parser::parseArcTan() {
+//	qDebug() << "Parser::parseArcTan()";
+	TreeNode* node = new TreeNode(currentToken);
+	nextToken();
+	appendArguments(node);
+	skipToken(Token::EndOfLine, *node->token());
+	return node;
+}
+TreeNode* Parser::parseArcSin() {
+//	qDebug() << "Parser::parseArcSin()";
+	TreeNode* node = new TreeNode(currentToken);
+	nextToken();
+	appendArguments(node);
+	skipToken(Token::EndOfLine, *node->token());
+	return node;
+}
+TreeNode* Parser::parseArcCos() {
+//	qDebug() << "Parser::parseArcCos()";
+	TreeNode* node = new TreeNode(currentToken);
+	nextToken();
+	appendArguments(node);
+	skipToken(Token::EndOfLine, *node->token());
+	return node;
+}
+TreeNode* Parser::parseSqrt() {
+//	qDebug() << "Parser::parseSqrt()";
+	TreeNode* node = new TreeNode(currentToken);
+	nextToken();
+	appendArguments(node);
+	skipToken(Token::EndOfLine, *node->token());
+	return node;
+}
+TreeNode* Parser::parseExp() {
+//	qDebug() << "Parser::parseExp()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);

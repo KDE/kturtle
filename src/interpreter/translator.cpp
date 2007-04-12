@@ -574,6 +574,69 @@ void Translator::setDictionary()
 	default2localizedMap["ask"] = localizedCommandLook;
 	look2typeMap[localizedCommandLook] = Token::Ask;
 
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'Pi' COMMAND, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"pi").toString(localizer);
+	default2localizedMap["pi"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::Pi;
+
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'Tan' COMMAND, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"tan").toString(localizer);
+	default2localizedMap["tan"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::Tan;
+
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'Sin' COMMAND, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"sin").toString(localizer);
+	default2localizedMap["sin"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::Sin;
+
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'Cos' COMMAND, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"cos").toString(localizer);
+	default2localizedMap["cos"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::Cos;
+
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'ArcTan' COMMAND, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"arctan").toString(localizer);
+	default2localizedMap["arctan"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::ArcTan;
+
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'ArcSin' COMMAND, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"arcsin").toString(localizer);
+	default2localizedMap["arcsin"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::ArcSin;
+
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'ArcCos' COMMAND, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"arccos").toString(localizer);
+	default2localizedMap["arccos"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::ArcCos;
+
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'Sqrt' COMMAND, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"sqrt").toString(localizer);
+	default2localizedMap["sqrt"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::Sqrt;
+
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'Exp' COMMAND, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"exp").toString(localizer);
+	default2localizedMap["exp"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::Exp;
+
 
 //END GENERATED translator_cpp CODE
 

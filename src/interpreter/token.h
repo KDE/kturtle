@@ -136,7 +136,16 @@ class Token
 			GetX,
 			GetY,
 			Message,
-			Ask
+			Ask,
+			Pi,
+			Tan,
+			Sin,
+			Cos,
+			ArcTan,
+			ArcSin,
+			ArcCos,
+			Sqrt,
+			Exp
 
 //END GENERATED token_type_h CODE
 
