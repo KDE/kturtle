@@ -23,9 +23,8 @@
 #include <QFile>
 
 #include <kdebug.h>
-
-#include <kaboutdata.h>
 #include <kapplication.h>
+#include <kaboutdata.h>
 #include <kcmdlineargs.h>
 #include <klocale.h>
 
