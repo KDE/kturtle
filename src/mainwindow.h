@@ -25,7 +25,7 @@
 #include <QToolBar>
 
 #include <kaction.h>
-#include <kmainwindow.h>
+#include <kxmlguiwindow.h>
 #include <kmenubar.h>
 #include <krecentfilesaction.h>
 #include <kstatusbar.h>
@@ -70,7 +70,7 @@ class LocalDockWidget : public QDockWidget { Q_OBJECT
 //END small sub-classes
 
 
-class MainWindow : public KMainWindow
+class MainWindow : public KXmlGuiWindow
 {
 	Q_OBJECT
 

@@ -7,12 +7,12 @@ right now it _always_ has scrollbars; which is plain ugly. and i have try for ma
 # printing: no textcolor, can't print numbers, make font larger by default, decided where to print the text in relation to the turtle (centered?)
 
 
- = mainwindow (KMainWindow) =
+ = mainwindow (KXmlGuiWindow) =
 # no known bugs
 
 
  = editor (QTextEdit) =
- = mainwindow (KMainWindow) =
+ = mainwindow (KXmlGuiWindow) =
 # no known bugs
 
 

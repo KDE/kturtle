@@ -750,7 +750,7 @@ void MainWindow::abort()
 void MainWindow::setCaption(const KUrl &url, bool modified)
 {
 	QString filename = url.isEmpty() ? i18n("untitled") : url.fileName();
-	KMainWindow::setCaption(filename, modified);
+	KXmlGuiWindow::setCaption(filename, modified);
 	statusBarFileNameLabel->setText(QString(" %1%2 ").arg(filename).arg(modified ? "*" : ""));
 }
 
