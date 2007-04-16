@@ -321,7 +321,7 @@ void MainWindow::setupActions()
 	a = actionCollection()->addAction(KStandardAction::AboutApp,  "about_app", this, SLOT(about()));
 	a->setStatusTip(i18n("Information about KTurtle"));
 
-	a = actionCollection()->addAction(KStandardAction::AboutKDE,  "about_kde", this, SLOT(aboutKDE()));
+	a = actionCollection()->addAction(KStandardAction::AboutKDE,  "about-kde", this, SLOT(aboutKDE()));
 	a->setStatusTip(i18n("Information about KDE"));
 
 	a = actionCollection()->addAction(KStandardAction::Help,  "help", this, SLOT(about()));
