@@ -20,7 +20,7 @@
 #define _TREENODE_H_
 
 #include <QList>
-#include <QString>
+
 
 #include "token.h"
 #include "value.h"

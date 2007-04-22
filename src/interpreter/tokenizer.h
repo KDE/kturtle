@@ -21,7 +21,7 @@
 #define _TOKENIZER_H_
 
 #include <QChar>
-#include <QString>
+
 
 #include "token.h"
 #include "translator.h"

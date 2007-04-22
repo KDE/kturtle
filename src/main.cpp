@@ -19,7 +19,7 @@
 
 #include <iostream>
 
-#include <QString>
+
 #include <QFile>
 
 #include <kdebug.h>

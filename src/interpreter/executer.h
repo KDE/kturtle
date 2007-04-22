@@ -22,7 +22,7 @@
 #include <QHash>
 #include <QObject>
 #include <QStack>
-#include <QString>
+
 
 #include "errormsg.h"
 #include "token.h"

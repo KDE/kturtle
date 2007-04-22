@@ -20,7 +20,7 @@
 #include <QtDebug>
 
 #include <QFile>
-#include <QString>
+
 #include <QStringList>
 
 #include "errormsg.h"

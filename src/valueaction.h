@@ -20,7 +20,7 @@
 #define _VALUEACTION_H_
 
 #include <QAction>
-#include <QString>
+
 
 
 // extends an QAction to remember a simple QString and to pass that QString in its triggered signal

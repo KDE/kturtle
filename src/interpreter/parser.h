@@ -19,7 +19,7 @@
 #ifndef _PARSER_H_
 #define _PARSER_H_
 
-#include <QString>
+
 
 #include "errormsg.h"
 #include "tokenizer.h"

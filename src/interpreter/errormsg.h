@@ -22,7 +22,7 @@
 
 #include <QtDebug>  // no kde stuff in the interpreter
 
-#include <QString>
+
 #include <QList>
 
 #include "token.h"
