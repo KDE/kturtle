@@ -23,7 +23,7 @@
 #include <QScrollBar>
 #include <QPainter>
 #include <QAbstractTextDocumentLayout>
-#include <QToolTip>
+
 #include <QTextStream>
 
 #include <kdebug.h>
