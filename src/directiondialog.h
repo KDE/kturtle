@@ -62,7 +62,7 @@ class DirectionDialog : public KDialog
 	Q_OBJECT
 
 	public:
-		DirectionDialog(double deg = 0, QWidget* parent = 0);
+		DirectionDialog(double deg, QWidget* parent);
 		
 		enum Command {
 			Left,

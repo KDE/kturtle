@@ -16,11 +16,11 @@
 	Boston, MA 02110-1301, USA.
 */
 
+#include "sprite.h"
+
 #include <math.h>
 
 #include <QSvgRenderer>
-
-#include "sprite.h"
 
 
 const int SPRITE_SIZE = 30;

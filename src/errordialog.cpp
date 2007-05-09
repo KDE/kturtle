@@ -16,12 +16,12 @@
 	Boston, MA 02110-1301, USA.
 */
 
+#include "errordialog.h"
+
 #include <kdebug.h>
 
 #include <kdialog.h>
 #include <klocale.h>
-
-#include "errordialog.h"
 
 
 ErrorDialog::ErrorDialog(ErrorList* _errorList, QWidget* parent)

@@ -24,6 +24,8 @@
 #include <QSpacerItem>
 #include <QLabel>
 
+#include <KDialog>
+
 #include "interpreter/errormsg.h"
 
 
@@ -32,7 +34,7 @@ class ErrorDialog : public KDialog
 	Q_OBJECT
 
 	public:
-		ErrorDialog(ErrorList* _errorList, QWidget* parent = 0);
+		ErrorDialog(ErrorList* _errorList, QWidget* parent);
 
 	signals:
 		void currentlySelectedError(int, int, int, int);

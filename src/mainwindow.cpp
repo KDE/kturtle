@@ -16,9 +16,10 @@
 	Boston, MA 02110-1301, USA.
 */
 
+#include "mainwindow.h"
 
-#include <QtGui>
 #include <QWhatsThis>
+#include <QTimer>
 
 #include <kdebug.h>
 
@@ -40,7 +41,6 @@
 #include "interpreter/errormsg.h"
 #include "interpreter/translator.h"
 
-#include "mainwindow.h"
 
 #include "directiondialog.h"
 
@@ -116,8 +116,8 @@ void MainWindow::directionDialog()
 
 void MainWindow::about()
 {
-	QMessageBox::about(this, i18n("About KTurtle"),
-		i18n("KTurtle is an educational programming environment, that aims to make programming as easy and touchable as possible. KTurtle intends to help teaching kids the basics of math, geometry and... programming."));
+	KMessageBox::about(this,
+		i18n("KTurtle is an educational programming environment, that aims to make programming as easy and touchable as possible. KTurtle intends to help teaching kids the basics of math, geometry and... programming."), i18n("About KTurtle"));
 // 	new KAboutApplication();
 }
 
@@ -424,7 +424,7 @@ void MainWindow::setupEditor()
 
 void MainWindow::setupInterpreter()
 {
-	interpreter = new Interpreter(this);
+	interpreter = new Interpreter(this, false);
 	connect(interpreter, SIGNAL(finished()), this, SLOT(abort()));
 	Executer* executer = interpreter->getExecuter();
 	connect(executer, SIGNAL(currentlyExecuting(int, int, int, int)),

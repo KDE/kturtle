@@ -16,15 +16,17 @@
 	Boston, MA 02110-1301, USA.
 */
 
+#include "canvas.h"
 
 #include <cmath>
+
+#include <QResizeEvent>
 
 #include <kdebug.h>
 #include <klocale.h>
 // #include <kmessagebox.h>
 
 // #include "settings.h"
-#include "canvas.h"
 
 
 // this function is used in executer and canvas:

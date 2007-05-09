@@ -16,16 +16,14 @@
 	Boston, MA 02110-1301, USA.
 */
 
+#include "translator.h"
+
 #include <QDomDocument>
 #include <QFile>
 
 #include <QtDebug>
 
-
 #include "token.h"
-
-#include "translator.h"
-
 
 
 Translator* Translator::m_instance = 0;  // initialize pointer

@@ -20,6 +20,8 @@
 // This file is originally written by Walter Scheppers, but almost
 // every aspect of it is slightly changed by Cies Breijs.
 
+#include "executer.h"
+
 #include <iostream>
 #include <math.h>
 #include <unistd.h>  // for usleep();
@@ -33,8 +35,6 @@
 #include <krandom.h>
 
 #include <kdebug.h>
-
-#include "executer.h"
 
 // this function is used in executer and canvas:
 #define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )
@@ -599,7 +599,7 @@ void Executer::executeNot(TreeNode* node) {
 void Executer::executeEquals(TreeNode* node) {
 //	qDebug() << "Executer::executeEquals()";
 	if(node->childCount()!=2) { 
-		addError(i18n("I can't do a '==' without 2 variables"), *node->token(), 0);
+		addError(i18n("I cannot do a '==' without 2 variables"), *node->token(), 0);
 		return;
 	}
 	node->value()->setBool(*node->child(0)->value() == node->child(1)->value());
@@ -607,7 +607,7 @@ void Executer::executeEquals(TreeNode* node) {
 void Executer::executeNotEquals(TreeNode* node) {
 //	qDebug() << "Executer::executeNotEquals()";
 	if(node->childCount()!=2) { 
-		addError(i18n("I can't do a '!=' without 2 variables"), *node->token(), 0);
+		addError(i18n("I cannot do a '!=' without 2 variables"), *node->token(), 0);
 		return;
 	}
 	node->value()->setBool(*node->child(0)->value() != node->child(1)->value());
@@ -615,7 +615,7 @@ void Executer::executeNotEquals(TreeNode* node) {
 void Executer::executeGreaterThan(TreeNode* node) {
 //	qDebug() << "Executer::executeGreaterThan()";
 	if(node->childCount()!=2) { 
-		addError(i18n("I can't do a '>' without 2 variables"), *node->token(), 0);
+		addError(i18n("I cannot do a '>' without 2 variables"), *node->token(), 0);
 		return;
 	}
 	node->value()->setBool(*node->child(0)->value() > node->child(1)->value());
@@ -623,7 +623,7 @@ void Executer::executeGreaterThan(TreeNode* node) {
 void Executer::executeLessThan(TreeNode* node) {
 //	qDebug() << "Executer::executeLessThan()";
 	if(node->childCount()!=2) { 
-		addError(i18n("I can't do a '<' without 2 variables"), *node->token(), 0);
+		addError(i18n("I cannot do a '<' without 2 variables"), *node->token(), 0);
 		return;
 	}
 	node->value()->setBool(*node->child(0)->value() < node->child(1)->value());
@@ -631,7 +631,7 @@ void Executer::executeLessThan(TreeNode* node) {
 void Executer::executeGreaterOrEquals(TreeNode* node) {
 //	qDebug() << "Executer::executeGreaterOrEquals()";
 	if(node->childCount()!=2) { 
-		addError(i18n("I can't do a '>=' without 2 variables"), *node->token(), 0);
+		addError(i18n("I cannot do a '>=' without 2 variables"), *node->token(), 0);
 		return;
 	}
 	node->value()->setBool(*node->child(0)->value() >= node->child(1)->value());
@@ -639,7 +639,7 @@ void Executer::executeGreaterOrEquals(TreeNode* node) {
 void Executer::executeLessOrEquals(TreeNode* node) {
 //	qDebug() << "Executer::executeLessOrEquals()";
 	if(node->childCount()!=2) { 
-		addError(i18n("I can't do a '<=' without 2 variables"), *node->token(), 0);
+		addError(i18n("I cannot do a '<=' without 2 variables"), *node->token(), 0);
 		return;
 	}
 	node->value()->setBool(*node->child(0)->value() <= node->child(1)->value());
@@ -689,7 +689,7 @@ void Executer::executeMultiplication(TreeNode* node) {
 void Executer::executeDivision(TreeNode* node) {
 //	qDebug() << "Executer::executeDivision()";
 	if(node->childCount()!=2) {
-		addError(i18n("You need two numbers to devide"), *node->token(), 0);
+		addError(i18n("You need two numbers to divide"), *node->token(), 0);
 		return;
 	}
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {

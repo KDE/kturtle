@@ -20,7 +20,7 @@
 #ifndef _CANVAS_H_
 #define _CANVAS_H_
 
-#include <QtGui>
+#include <QGraphicsView>
 
 // #include "turtle.h"
 #include "sprite.h"

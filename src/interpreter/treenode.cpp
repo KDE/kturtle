@@ -16,10 +16,9 @@
 	Boston, MA 02110-1301, USA.
 */
 
+#include "treenode.h"
 
 #include <QtDebug>
-
-#include "treenode.h"
 
 
 TreeNode::~TreeNode()

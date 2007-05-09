@@ -16,14 +16,13 @@
 	Boston, MA 02110-1301, USA.
 */
 
+#include "value.h"
 
 #include <QtDebug>
 
 #include <klocale.h>
 
 #include "translator.h"  // for the boolean (true and false) to string translation
-
-#include "value.h"
 
 
 Value::Value()

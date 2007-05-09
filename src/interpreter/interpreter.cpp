@@ -16,6 +16,7 @@
 	Boston, MA 02110-1301, USA.
 */
 
+#include "interpreter.h"
 
 #include <QtDebug>
 
@@ -28,9 +29,6 @@
 #include "parser.h"
 #include "tokenizer.h"
 #include "translator.h"
-
-#include "interpreter.h"
-
 
 Interpreter::Interpreter(QObject* parent, bool testing)
 	: QObject(parent), m_testing(testing)

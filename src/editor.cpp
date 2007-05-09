@@ -16,6 +16,7 @@
 	Boston, MA 02110-1301, USA.
 */
 
+#include "editor.h"
 
 #include <QTextDocument>
 #include <QTextBlock>
@@ -35,9 +36,6 @@
 #include <ktemporaryfile.h>
 
 #include <kio/netaccess.h>
-
-
-#include "editor.h"
 
 
 static const int CURSOR_WIDTH = 2;  // in pixels

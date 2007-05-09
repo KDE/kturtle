@@ -16,6 +16,7 @@
 	Boston, MA 02110-1301, USA.
 */
 
+#include "parser.h"
 
 #include <iostream>
 
@@ -24,9 +25,6 @@
 #include <kdebug.h>
 
 #include <klocale.h>
-
-#include "parser.h"
-
 
 
 void Parser::initialize(Tokenizer* _tokenizer, ErrorList* _errorList)
@@ -239,7 +237,7 @@ TreeNode* Parser::parseStatement()
 			//Token type is something else...
 			//qDebug() << "Parser::parseStatement(): I don't know this Token type.";
 			//kDebug() << "Look: " << currentToken->look() << " type: " << currentToken->type() << endl;
-			addError(i18n("You can't put '%1' here!", currentToken->look()), *currentToken, 0);
+			addError(i18n("You cannot put '%1' here!", currentToken->look()), *currentToken, 0);
 			finished = true;
 			return new TreeNode(currentToken);
 		}

@@ -16,15 +16,13 @@
 	Boston, MA 02110-1301, USA.
 */
 
-
+#include "inspector.h"
 
 #include <klocale.h>
 
 #include <kdebug.h>
 
-
 #include "interpreter/translator.h"  // for getting the translated ArgumentSeparator
-#include "inspector.h"
 
 
 // // static const int CURSOR_WIDTH = 2;  // in pixels

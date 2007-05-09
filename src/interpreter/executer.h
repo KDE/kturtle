@@ -262,7 +262,7 @@ class Executer : public QObject
 		void ask(QString& value);
 		void message(const QString& text);
 
-// next you find generated signals that can be emited:
+// next you find generated signals that can be emitted:
 
 //BEGIN GENERATED executer_emits_h CODE
 

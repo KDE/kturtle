@@ -16,14 +16,15 @@
 	Boston, MA 02110-1301, USA.
 */
 
-#include <QtGui>
+#include "highlighter.h"
+
+
 
 #include <kdebug.h>
 #include <kurl.h>
 
 #include "interpreter/tokenizer.h"
 
-#include "highlighter.h"
 
 
 Highlighter::Highlighter(QTextDocument *parent)

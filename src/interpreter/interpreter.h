@@ -47,7 +47,7 @@ class Interpreter : public QObject
 		/**
 		 * Default Constructor
 		 */
-		Interpreter(QObject* parent = 0, bool testing = false);
+		Interpreter(QObject* parent, bool testing);
 
 		/**
 		 * Default Destructor

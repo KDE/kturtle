@@ -26,12 +26,14 @@
 #include <QTextCursor>
 #include <QTextEdit>
 #include <QVector>
+#include <QScrollBar>
+#include <QPainter>
+#include <QAbstractTextDocumentLayout>
 
 #include <kurl.h>
 
 #include "highlighter.h"
 
-class QTextEdit;
 class QHBoxLayout;
 class QPaintEvent;
 

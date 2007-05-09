@@ -16,13 +16,14 @@
 	Boston, MA 02110-1301, USA.
 */
 
+#include "turtle.h"
+
 #include <cmath>
 
 #include <QGraphicsScene>
 #include <QPainter>
 #include <QStyleOption>
 
-#include "turtle.h"
 
 
 static const double Pi = 3.14159265358979323846264338327950288419717;
