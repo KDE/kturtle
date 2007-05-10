@@ -36,7 +36,6 @@
 #include "canvas.h"
 #include "editor.h"
 #include "inspector.h"
-#include "valueaction.h"
 
 
 class KAction;
@@ -84,7 +83,7 @@ class MainWindow : public KXmlGuiWindow
 		void open(const QString&);
 
 	private slots:
-		void openExample(const QString&);
+		void openExample(QAction *);
 		void printDlg();
 
 		void run();
@@ -130,12 +129,12 @@ class MainWindow : public KXmlGuiWindow
 		QString codeToFullName(const QString& lang_code = QString());
 
 		void updateExamplesMenu();
-
+		bool setCurrentLanguage(const QString &);
 
 	private slots:
 		void setCaption(const KUrl& url = KUrl(), bool b = false);
 		void setWindowModified(bool b) { setCaption(editor->currentUrl(), b); }
-		bool setLanguage(const QString& lang_code = QString());
+		void setLanguage(QAction *);
 		void addToRecentFiles(const KUrl&);
 		void toggleInsertMode(bool b);
 		void updateOnCursorPositionChange(int row, int col, const QString& line);
@@ -153,7 +152,6 @@ class MainWindow : public KXmlGuiWindow
 		QTimer      *iterationTimer;
 		int          runSpeed;
 
-		QHash<QString, ValueAction*> languageActions;  // a <lang_code, dictionary_filename> - map
 		QString currentLanguageCode;
 
 		QString contextHelpString;

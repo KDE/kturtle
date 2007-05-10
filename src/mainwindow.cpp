@@ -487,23 +487,24 @@ void MainWindow::setupMenus()
 			} else if (item == "#language") {
 				QMenu* languageMenu = currentMenu->addMenu(i18n("&Language"));
 				QActionGroup* languageGroup = new QActionGroup(this);
-				ValueAction* a;
+				connect(languageGroup, SIGNAL(triggered(QAction *)), this, SLOT(setLanguage(QAction *)));
+				QAction* a;
 				// sort the dictionaries using an algorithm found the the qt docs:
 				QMap<QString, QString> map;
 				foreach (const QString &lang_code, KGlobal::locale()->languageList())
 					map.insert(codeToFullName(lang_code), lang_code);
 				// populate the menu:
 				foreach (const QString &lang_code, map.values()) {
-					a = new ValueAction(codeToFullName(lang_code), lang_code);
+					a = new QAction(codeToFullName(lang_code), actionCollection());
+					a->setData(lang_code);
 					a->setStatusTip(i18n("Switch to the %1 dictionary", codeToFullName(lang_code)));
 					a->setCheckable(true);
 					languageMenu->addAction(a);
 					languageGroup->addAction(a);
-					languageActions.insert(lang_code, a);
-					connect(a, SIGNAL(triggered(const QString&, bool)), this, SLOT(setLanguage(const QString&)));
 				}
 			} else if (item == "#examples") {
 				examplesMenu = currentMenu->addMenu(i18n("&Open Example"));
+				connect(examplesMenu, SIGNAL(triggered(QAction *)), this, SLOT(openExample(QAction *)));
 			} else {
 				currentMenu->addAction(actionCollection()->action(item));
 			}
@@ -565,13 +566,13 @@ void MainWindow::setupStatusBar()
 
 void MainWindow::updateExamplesMenu()
 {
-	foreach (QAction* action, examplesMenu->actions()) examplesMenu->removeAction(action);
+	examplesMenu->clear();
 
-	ValueAction* a;
+	QAction* a;
 	foreach (const QString &exampleName, Translator::instance()->exampleNames()) {
-		a = new ValueAction(exampleName, exampleName);
+		a = new QAction(exampleName, actionCollection());
+		a->setData(exampleName); 
 		examplesMenu->addAction(a);
-		connect (a, SIGNAL(triggered(const QString&, bool)), this, SLOT(openExample(const QString&)));
 	}
 
 	if (examplesMenu->actions().isEmpty()) {
@@ -586,8 +587,9 @@ void MainWindow::open(const QString& pathOrUrl)
 	editor->openFile(KUrl(pathOrUrl));
 }
 
-void MainWindow::openExample(const QString& exampleName)
+void MainWindow::openExample(QAction *action)
 {
+	QString exampleName = action->data().toString();
 	editor->openExample(Translator::instance()->example(exampleName), exampleName);
 }
 
@@ -646,10 +648,16 @@ void MainWindow::updateOnCursorPositionChange(int row, int col, const QString& l
 }
 
 
-bool MainWindow::setLanguage(const QString& lang_code)
+void MainWindow::setLanguage(QAction *action)
+{
+	if (setCurrentLanguage(action->data().toString()))
+		action->setChecked(true);
+}
+
+bool MainWindow::setCurrentLanguage(const QString &lang_code)
 {
 	bool result = false;
-	kDebug(0) << "MainWindow::setLanguage: " << lang_code << endl;
+	kDebug(0) << "MainWindow::setCurrentLanguage: " << lang_code << endl;
 	if (Translator::instance()->setLanguage(lang_code)) {
 		currentLanguageCode = lang_code;
 		statusBarLanguageLabel->setText(' ' + codeToFullName(lang_code) + ' ');
@@ -658,7 +666,6 @@ bool MainWindow::setLanguage(const QString& lang_code)
 	} else {
 		KMessageBox::error(this, i18n("Could not change the language to %1.", codeToFullName(lang_code)));
 	}
-	languageActions[currentLanguageCode]->setChecked(true);
 	return result;
 }
 
@@ -762,7 +769,7 @@ void MainWindow::addToRecentFiles(const KUrl &url)
 
 void MainWindow::readConfig()
 {
-    KConfigGroup config( KGlobal::config(), "General Options");
+	KConfigGroup config(KGlobal::config(), "General Options");
 
 //   m_paShowStatusBar->setChecked(config->readEntry("ShowStatusBar", QVariant(false)).toBool());
 //   m_paShowPath->setChecked(config->readEntry("ShowPath", QVariant(false)).toBool());
@@ -770,7 +777,7 @@ void MainWindow::readConfig()
 
 	QString lang_code(config.readEntry("currentLanguageCode", QVariant(QString())).toString());
 	if (lang_code.isEmpty()) lang_code = "en_US";  // null-string are saved as empty-strings
-	setLanguage(lang_code);
+	setCurrentLanguage(lang_code);
 
 // 	if(m_paShowStatusBar->isChecked())
 // 		statusBar()->show();
@@ -780,11 +787,11 @@ void MainWindow::readConfig()
 
 void MainWindow::writeConfig()
 {
-        KConfigGroup config( KGlobal::config(), "General Options");
+	KConfigGroup config(KGlobal::config(), "General Options");
 
 // 	config.writeEntry("ShowStatusBar",m_paShowStatusBar->isChecked());
 // 	config.writeEntry("ShowPath",m_paShowPath->isChecked());
-        recentFilesAction->saveEntries( KGlobal::config()->group( "Recent Files") );
+	recentFilesAction->saveEntries(KGlobal::config()->group( "Recent Files"));
 	config.writeEntry("currentLanguageCode", currentLanguageCode);
 
 	config.sync();

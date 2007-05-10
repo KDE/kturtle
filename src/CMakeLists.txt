@@ -14,7 +14,6 @@ set (
     sprite.cpp
     inspector.cpp
 #     turtle.cpp
-    valueaction.cpp
     interpreter/echoer.cpp
     interpreter/errormsg.cpp
     interpreter/executer.cpp
