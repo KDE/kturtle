@@ -209,8 +209,8 @@ EOS
 		addError(
 			i18n("The function '%1' was called with %2, while it should should be called with %3",
 				node->token()->look(),
-				i18np("1 parameter", "%n parameters", node->childCount()),
-				i18np("1 parameter", "%n parameters", learnNode->child(1)->childCount())
+				i18np("1 parameter", "%1 parameters", node->childCount()),
+				i18np("1 parameter", "%1 parameters", learnNode->child(1)->childCount())
 			),
 			*node->token(), 0);
 		return;
@@ -717,7 +717,7 @@ parse_item()
 def e_def_expression_creator(look)
 	# since the looks for expressions are the same in KTurtle-LOGO and C++ we can take this shortcut...
 	# all the logic doing the expressioning is in the Value class
-	return "\tif(node->childCount()!=2) { \n\t\taddError(i18n(\"I can't do a '#{look}' without 2 variables\"), *node->token(), 0);\n\t\treturn;\n\t}\n\tnode->value()->setBool(*node->child(0)->value() #{look} node->child(1)->value());\n"
+	return "\tif(node->childCount()!=2) { \n\t\taddError(i18n(\"I cannot do a '#{look}' without 2 variables\"), *node->token(), 0);\n\t\treturn;\n\t}\n\tnode->value()->setBool(*node->child(0)->value() #{look} node->child(1)->value());\n"
 end
 
 new_item()
@@ -851,7 +851,7 @@ new_item()
 @e_def =
 <<EOS
 	if(node->childCount()!=2) {
-		addError(i18n("You need two numbers to devide"), *node->token(), 0);
+		addError(i18n("You need two numbers to divide"), *node->token(), 0);
 		return;
 	}
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {

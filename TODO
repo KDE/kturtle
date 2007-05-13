@@ -1,5 +1,4 @@
  == mainwindow ==
- * make a docked window for inspecting the variables (and the state of the canvas), and an AST view widget
  ---
  * make settings menu (or not: maybe keep all in other menu's) [fonttype, fontsize, language, default canvas size]
  * make fullscreen mode (hide all GUI elemets but the canvas during execution)

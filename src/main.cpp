@@ -63,6 +63,9 @@ int main(int argc, char* argv[])
 	aboutData.addAuthor("Cies Breijs",
 	          I18N_NOOP("Initiator and core developer"),
 	                    "cies # kde.nl");
+	aboutData.addAuthor("Niels Slot",
+	          I18N_NOOP("Core developer"),
+	                    "nielsslot # gmail.com");
 
 	KCmdLineArgs::init(argc, argv, &aboutData);
 	KCmdLineArgs::addCmdLineOptions(options);

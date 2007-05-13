@@ -4,7 +4,7 @@
 i simply want the canvas to be its default size, in the center of the mainwindow; unit the mainwindow is too small for the canvas be fully shown, then it should have scrollbars.
 right now it _always_ has scrollbars; which is plain ugly. and i have try for many hours to solve it, but didn't manage.
 
-# printing: no textcolor, can't print numbers, make font larger by default, decided where to print the text in relation to the turtle (centered?)
+# printing: no textcolor, make font larger by default, decided where to print the text in relation to the turtle (centered?)
 
 
  = mainwindow (KXmlGuiWindow) =
@@ -12,9 +12,12 @@ right now it _always_ has scrollbars; which is plain ugly. and i have try for ma
 
 
  = editor (QTextEdit) =
- = mainwindow (KXmlGuiWindow) =
 # no known bugs
 
 
  = interpreter =
-# "a = 0" crashes the parser (should be "$a = 0", or "a 0")
+# doesn't handle recursion very well right now
+
+ 
+ = inspector =
+# no known bugs
