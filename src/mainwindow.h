@@ -39,9 +39,7 @@
 
 
 class KAction;
-class QListWidget;
 class QMenu;
-class QTextEdit;
 
 
 //BEGIN small sub-classes to make life easy
