@@ -10,6 +10,7 @@ Name[sv]=Kturtle
 Name[tg]=KСангпушт
 Name[x-test]=xxKTurtlexx
 GenericName=Educational Programming Environment
+GenericName[ja]=子供のためのプログラミング環境
 GenericName[sv]=Programmeringsmiljö för utbildning
 GenericName[x-test]=xxEducational Programming Environmentxx
 MimeType=text/plain
