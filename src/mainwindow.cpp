@@ -117,7 +117,7 @@ void MainWindow::directionDialog()
 void MainWindow::about()
 {
 	KMessageBox::about(this,
-		i18n("KTurtle is an educational programming environment, that aims to make programming as easy and touchable as possible. KTurtle intends to help teaching kids the basics of math, geometry and... programming."), i18n("About KTurtle"));
+		i18n("KTurtle is an educational programming environment that aims to make programming as easy as possible, especially for young children. KTurtle intends to help teaching kids the basics of math, geometry and... programming."), i18n("About KTurtle"));
 // 	new KAboutApplication();
 }
 
@@ -625,7 +625,7 @@ void MainWindow::updateOnCursorPositionChange(int row, int col, const QString& l
 			case Token::AssignmentCategory:        setContextHelp(i18n("<assignment>"));  return;
 			case Token::ParenthesisCategory:       setContextHelp(i18n("<parenthesis>")); return;
 
-			case Token::MathOperatorCategory:      desc = i18n("mathmatical operator");
+			case Token::MathOperatorCategory:      desc = i18n("mathematical operator");
 			case Token::ExpressionCategory:        desc = i18n("expression");
 			case Token::BooleanOperatorCategory:   desc = i18n("boolean operator");
 			case Token::TrueFalseCategory:         desc = i18n("boolean");
