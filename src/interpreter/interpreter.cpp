@@ -22,7 +22,6 @@
 
 #include <QFile>
 
-#include <QStringList>
 
 #include "errormsg.h"
 #include "executer.h"

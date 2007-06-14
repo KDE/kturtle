@@ -26,7 +26,6 @@
 #include <math.h>
 #include <unistd.h>  // for usleep();
 
-#include <QStringList>
 #include <QTimer>  // for wait
 
 #include <QtDebug>

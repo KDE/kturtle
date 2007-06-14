@@ -23,7 +23,6 @@
 #include <QChar>
 #include <QHash>
 
-#include <QStringList>
 
 #include <klocale.h>
 
