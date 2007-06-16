@@ -379,8 +379,6 @@ void MainWindow::writeFile(const KURL &url)
 	if ( url.isEmpty() ) slotSaveAs();
 	else
 	{
-		QString mString = editorInterface->text(); // get the text
-		editorInterface->setText( mString.utf8() ); // convert it to utf8
 		editor->document()->saveAs(url); // use the KateParts method for saving
 		loadFile(url); // reload the file as utf8 otherwise display weird chars
 		setCaption( url.fileName() );
