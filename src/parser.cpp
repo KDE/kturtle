@@ -932,7 +932,7 @@ TreeNode* Parser::If()
 	if (currentToken.type == tokElse) // else part
 	{
 		matchToken(tokElse);
-		
+		while (currentToken.type == tokEOL) getToken();
 		if (currentToken.type == tokDo) getToken(); // next word
 
 		if(currentToken.type == tokBegin) node->appendChild( Block() ); // else is followed by block
