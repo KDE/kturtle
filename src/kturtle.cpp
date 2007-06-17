@@ -50,6 +50,7 @@
 #include <ktexteditor/selectioninterface.h>
 #include <ktexteditor/undointerface.h>
 #include <ktexteditor/viewcursorinterface.h>
+#include <ktexteditor/encodinginterface.h>
 
 #include "lexer.h"
 #include "settings.h"
@@ -195,6 +196,7 @@ void MainWindow::setupEditor()
 	editor = doc->createView (editorDock, 0L);
 	// editorInterface is the editor interface which allows us to access the text in the part
 	editorInterface = dynamic_cast<KTextEditor::EditInterface*>(doc);
+	dynamic_cast<KTextEditor::EncodingInterface*>(doc)->setEncoding("UTF-8");
 	editorDock->setWidget(editor);
 
 	// default the highlightstyle to "logo" using the needed i18n
