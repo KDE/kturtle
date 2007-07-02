@@ -42,32 +42,30 @@ static const char version[]   = "0.8 beta";
 static const char copyright[] = "(c) 2003-2006 Cies Breijs";
 static const char website[]   = "http://edu.kde.org/kturtle";
 
-static KCmdLineOptions options[] = {
-	{"i", 0, 0},
-	{"input <URL or file>", I18N_NOOP("File to open (in the GUI mode)"), 0},
-	{"t", 0, 0},
-	{"test <file>", I18N_NOOP("Starts KTurtle in testing mode (without a GUI), directly runs the specified local file"), 0},
-	{"l", 0, 0},
-	{"lang <code>", I18N_NOOP("Specifies the localization language by a language code, defaults to \"en_US\" (only works in testing mode)"), 0},
-	{"k", 0, 0},
-	{"tokenize", I18N_NOOP("Only tokenizes the turtle code (only works in testing mode)"), 0},
-	{"p", 0, 0},
-	{"parse <file>", I18N_NOOP("Translates turtle code to embeddable C++ example strings (for developers only)"), 0},
-	KCmdLineLastOption
-};
-
 
 int main(int argc, char* argv[])
 {
-	KAboutData aboutData("kturtle", I18N_NOOP("KTurtle"), version, description, KAboutData::License_GPL, copyright, 0, website);
-	aboutData.addAuthor("Cies Breijs",
-	          I18N_NOOP("Initiator and core developer"),
+	KAboutData aboutData("kturtle", 0, ki18n("KTurtle"), version, ki18n(description), KAboutData::License_GPL, ki18n(copyright), KLocalizedString(), website);
+	aboutData.addAuthor(ki18n("Cies Breijs"),
+	          ki18n("Initiator and core developer"),
 	                    "cies # kde.nl");
-	aboutData.addAuthor("Niels Slot",
-	          I18N_NOOP("Core developer"),
+	aboutData.addAuthor(ki18n("Niels Slot"),
+	          ki18n("Core developer"),
 	                    "nielsslot # gmail.com");
 
 	KCmdLineArgs::init(argc, argv, &aboutData);
+
+	KCmdLineOptions options;
+	options.add("i");
+	options.add("input <URL or file>", ki18n("File to open (in the GUI mode)"));
+	options.add("t");
+	options.add("test <file>", ki18n("Starts KTurtle in testing mode (without a GUI), directly runs the specified local file"));
+	options.add("l");
+	options.add("lang <code>", ki18n("Specifies the localization language by a language code, defaults to \"en_US\" (only works in testing mode)"));
+	options.add("k");
+	options.add("tokenize", ki18n("Only tokenizes the turtle code (only works in testing mode)"));
+	options.add("p");
+	options.add("parse <file>", ki18n("Translates turtle code to embeddable C++ example strings (for developers only)"));
 	KCmdLineArgs::addCmdLineOptions(options);
 	KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
 
@@ -90,7 +88,7 @@ int main(int argc, char* argv[])
 		///////////////// run in example parsing mode /////////////////
 		QFile inputFile(args->getOption("parse"));
 		if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-			std::cout << "Could not open file: " << qPrintable(QFile::decodeName(args->getOption("parse"))) << std::endl;
+			std::cout << "Could not open file: " << qPrintable(args->getOption("parse")) << std::endl;
 			std::cout << "Exitting..." << std::endl;
 			return 1;
 		}
@@ -125,7 +123,7 @@ int main(int argc, char* argv[])
 		QFile inputFile(args->getOption("test"));
 
 		if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-			std::cout << "Could not open input file: " << qPrintable(QFile::decodeName(args->getOption("test"))) << std::endl;
+			std::cout << "Could not open input file: " << qPrintable(args->getOption("test")) << std::endl;
 			std::cout << "Exitting..." << std::endl;
 			return 1;
 		}
