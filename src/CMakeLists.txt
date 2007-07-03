@@ -46,8 +46,6 @@ target_link_libraries (
     ${QT_QTCORE_LIBRARY}
     ${QT_QTGUI_LIBRARY}
     ${QT_QTXML_LIBRARY}
-    ${KDE4_KDECORE_LIBS}
-    ${KDE4_KDEUI_LIBS}
     ${KDE4_KIO_LIBS}
     ${KDE4_KDEPRINT_LIBS}
 )
