@@ -31,7 +31,6 @@ set (kturtle_RCCS resources.qrc)
 qt4_add_resources (kturtle_RCC_SRCS ${kturtle_RCCS})
 
 
-kde4_automoc (${kturtle_SRCS})
 
 
 kde4_add_executable (
