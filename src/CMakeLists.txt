@@ -61,7 +61,7 @@ install (
   FILES
     kturtle.desktop
   DESTINATION
-    ${XDG_APPS_DIR}
+    ${XDG_APPS_INSTALL_DIR}
 )
 
 # install (
