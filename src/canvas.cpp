@@ -89,7 +89,7 @@ void Canvas::initValues()
 
 void Canvas::resizeEvent(QResizeEvent* event)
 {
-	kDebug() << ">>>>>>" << event->size() << endl;
+	kDebug() << ">>>>>>" << event->size();
 	event->accept();
 }
 

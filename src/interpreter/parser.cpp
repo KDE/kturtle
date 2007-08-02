@@ -70,13 +70,13 @@ void Parser::nextToken()
 
 	// skip spaces and comments:
 	currentToken = tokenizer->getToken();
-// 	kDebug () << "########### got token: " << currentToken->look() << endl;
+// 	kDebug () << "########### got token: " << currentToken->look();
 
 	while (currentToken->type() == Token::WhiteSpace ||
 	       currentToken->type() == Token::Comment) {
 		delete currentToken;
 		currentToken = tokenizer->getToken();
-// 		kDebug () << "########### got token: " << currentToken->look() << endl;
+// 		kDebug () << "########### got token: " << currentToken->look();
 	}
 
 	if (currentToken->type() == Token::Error)
@@ -236,7 +236,7 @@ TreeNode* Parser::parseStatement()
 		default : {
 			//Token type is something else...
 			//qDebug() << "Parser::parseStatement(): I don't know this Token type.";
-			//kDebug() << "Look: " << currentToken->look() << " type: " << currentToken->type() << endl;
+			//kDebug() << "Look: " << currentToken->look() << " type: " << currentToken->type();
 			addError(i18n("You cannot put '%1' here!", currentToken->look()), *currentToken, 0);
 			finished = true;
 			return new TreeNode(currentToken);

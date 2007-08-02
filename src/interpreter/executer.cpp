@@ -146,7 +146,7 @@ void Executer::execute(TreeNode* node)
 
 	// emit a signal for GUI
 	Token* t = node->token();
-// 	kDebug(0) << "emitting token: '" << t->look() << "' - (" << t->startRow() << "," << t->startCol() << " - " << t->endRow() << "," << t->endCol() << ")" << endl;
+// 	kDebug(0) << "emitting token: '" << t->look() << "' - (" << t->startRow() << "," << t->startCol() << " - " << t->endRow() << "," << t->endCol() << ")";
 
 	// don't report scopes (their are not really executed)
 	if (t->type() != Token::Scope)

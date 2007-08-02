@@ -36,7 +36,7 @@ void Tokenizer::initialize(const QString& inString)
 
 Token* Tokenizer::getToken()
 {
-// 	kDebug() << "Tokenizer::getToken()" << endl;
+// 	kDebug() << "Tokenizer::getToken()";
 
 	int startRow = row;
 	int startCol = col;
@@ -155,7 +155,7 @@ QChar Tokenizer::getChar()
 {
 	if (at >= inputString.size()) {
 		atEnd = true;
-// 		kDebug() << "Tokenizer::getChar() returns: a ZERO CHAR " << " @ " << at - 1 << endl;
+// 		kDebug() << "Tokenizer::getChar() returns: a ZERO CHAR " << " @ " << at - 1;
 		return QChar();
 	}
 	QChar c(inputString.at(at));
@@ -167,7 +167,7 @@ QChar Tokenizer::getChar()
 	} else {
 		col++;
 	}
-// 	kDebug() << "Tokenizer::getChar() returns: " << c << " @ " << at - 1 << endl;
+// 	kDebug() << "Tokenizer::getChar() returns: " << c << " @ " << at - 1;
 	return c;
 }
 

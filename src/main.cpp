@@ -146,7 +146,7 @@ int main(int argc, char* argv[])
 		if (args->isSet("tokenize")) {
 			std::cout << "Tokenizing...\n" << std::endl;
 			QString code = inputFile.readAll();
-// 			for (int i = 0; i < code.length(); i++) kDebug() << code.at(i) << endl;
+// 			for (int i = 0; i < code.length(); i++) kDebug() << code.at(i);
 			Tokenizer tokenizer;
 			tokenizer.initialize(code);
 			Token* t;

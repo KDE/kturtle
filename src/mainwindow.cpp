@@ -657,7 +657,7 @@ void MainWindow::setLanguage(QAction *action)
 bool MainWindow::setCurrentLanguage(const QString &lang_code)
 {
 	bool result = false;
-	kDebug(0) << "MainWindow::setCurrentLanguage: " << lang_code << endl;
+	kDebug(0) << "MainWindow::setCurrentLanguage: " << lang_code;
 	if (Translator::instance()->setLanguage(lang_code)) {
 		currentLanguageCode = lang_code;
 		statusBarLanguageLabel->setText(' ' + codeToFullName(lang_code) + ' ');
