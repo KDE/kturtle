@@ -19,7 +19,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QComboBox>
 #include <QActionGroup>
 #include <QTextStream>
 #include <QToolBar>
@@ -39,6 +38,7 @@
 
 
 class KAction;
+class KComboBox;
 class QMenu;
 
 
@@ -195,7 +195,7 @@ class MainWindow : public KXmlGuiWindow
 		KAction *stepSpeedAct;
 
 		QActionGroup *runSpeedGroup;
-		QComboBox *runOptionBox;
+		KComboBox *runOptionBox;
 
 		QLabel *statusBarMessageLabel;
 		QLabel *statusBarLanguageLabel;

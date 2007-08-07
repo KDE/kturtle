@@ -22,9 +22,14 @@
 
 #include <klocale.h>
 
+#include <QHBoxLayout>
 #include <QGroupBox>
 #include <QLabel>
+#include <QMouseEvent>
 #include <QPainter>
+#include <QPaintEvent>
+#include <QRadioButton>
+#include <QSpinBox>
 #include <QVBoxLayout>
 
 #define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )
@@ -228,7 +233,7 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	baseLayout->addWidget(rightWidget);
 	
 	//Order matters...
-	cmdLineEdit = new QLineEdit(translator->default2localized("turnleft") + " 0", rightWidget);
+	cmdLineEdit = new KLineEdit(translator->default2localized("turnleft") + " 0", rightWidget);
 	cmdLineEdit->setReadOnly(true);
 
 	QVBoxLayout* rightLayout = new QVBoxLayout(rightWidget);

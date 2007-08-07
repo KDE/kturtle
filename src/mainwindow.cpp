@@ -26,6 +26,7 @@
 #include <kactioncollection.h>
 #include <kaction.h>
 #include <kconfig.h>
+#include <kcombobox.h>
 #include <kglobal.h>
 #include <klocale.h>
 #include <kicon.h>
@@ -65,7 +66,7 @@ MainWindow::MainWindow()
 	iterationTimer = new QTimer(this);
 	connect(iterationTimer, SIGNAL(timeout()), this, SLOT(iterate()));
 
-	statusBar()->showMessage(i18n("Ready"));
+	statusBar()->showMessage(i18nc("@label:status the application is ready for commands", "Ready"));
 	setCaption();  // also sets the window caption to 'untitled'
 	setRunSpeed(0);
 	abort();  // sets the run-states for the actions right
@@ -337,32 +338,32 @@ void MainWindow::setupActions()
 	// The run speed action group
 	QActionGroup* runSpeedGroup = new QActionGroup(this);
 
-	fullSpeedAct  = new KAction(i18n("&Full Speed"), this);
+	fullSpeedAct  = new KAction(i18nc("@option:radio", "&Full Speed"), this);
 	actionCollection()->addAction("full_speed", fullSpeedAct );
 	fullSpeedAct->setCheckable(true);
 	fullSpeedAct->setChecked(true);
 	connect(fullSpeedAct, SIGNAL(triggered()), this, SLOT(setFullSpeed()));
 	runSpeedGroup->addAction(fullSpeedAct);
 
-	slowSpeedAct  = new KAction(i18n("&Slow"), this);
+	slowSpeedAct  = new KAction(i18nc("@option:radio choose the slow speed", "&Slow"), this);
 	actionCollection()->addAction("slow_speed", slowSpeedAct );
 	slowSpeedAct->setCheckable(true);
 	connect(slowSpeedAct, SIGNAL(triggered()), this, SLOT(setSlowSpeed()));
 	runSpeedGroup->addAction(slowSpeedAct);
 
-	slowerSpeedAct  = new KAction(i18n("S&lower"), this);
+	slowerSpeedAct  = new KAction(i18nc("@option:radio", "S&lower"), this);
 	actionCollection()->addAction("slower_speed", slowerSpeedAct );
 	slowerSpeedAct->setCheckable(true);
 	connect(slowerSpeedAct, SIGNAL(triggered()), this, SLOT(setSlowerSpeed()));
 	runSpeedGroup->addAction(slowerSpeedAct);
 
-	slowestSpeedAct  = new KAction(i18n("Sl&owest"), this);
+	slowestSpeedAct  = new KAction(i18nc("@option:radio", "Sl&owest"), this);
 	actionCollection()->addAction("slowest_speed", slowestSpeedAct );
 	slowestSpeedAct->setCheckable(true);
 	connect(slowestSpeedAct, SIGNAL(triggered()), this, SLOT(setSlowestSpeed()));
 	runSpeedGroup->addAction(slowestSpeedAct);
 
-	stepSpeedAct  = new KAction(i18n("S&tep-by-Step"), this);
+	stepSpeedAct  = new KAction(i18nc("@option:radio", "S&tep-by-Step"), this);
 	actionCollection()->addAction("step_speed", stepSpeedAct );
 	stepSpeedAct->setCheckable(true);
 	connect(stepSpeedAct, SIGNAL(triggered()), this, SLOT(setStepSpeed()));
@@ -527,12 +528,12 @@ void MainWindow::setupToolBar()
 		if (item == "-") {
 			toolBar->addSeparator();
 		} else if (item == "#speed") {
-			runOptionBox = new QComboBox(toolBar);
-			runOptionBox->addItem(i18n("Full Speed"));
-			runOptionBox->addItem(i18n("Slow"));
-			runOptionBox->addItem(i18n("Slower"));
-			runOptionBox->addItem(i18n("Slowest"));
-			runOptionBox->addItem(i18n("Step by Step"));
+			runOptionBox = new KComboBox(toolBar);
+			runOptionBox->addItem(i18nc("@option:radio", "Full Speed"));
+			runOptionBox->addItem(i18nc("@option:radio choose slow speed", "Slow"));
+			runOptionBox->addItem(i18nc("@option:radio", "Slower"));
+			runOptionBox->addItem(i18nc("@option:radio", "Slowest"));
+			runOptionBox->addItem(i18nc("@option:radio", "Step by Step"));
 			connect(runOptionBox, SIGNAL(activated(int)), this, SLOT(setRunSpeed(int)));
 			toolBar->addWidget(runOptionBox);
 		} else {
@@ -576,7 +577,7 @@ void MainWindow::updateExamplesMenu()
 	}
 
 	if (examplesMenu->actions().isEmpty()) {
-		QAction* a = new QAction(i18n("(empty)"), this);
+		QAction* a = new QAction(i18nc("@info:status there are no examples", "(empty)"), this);
 		a->setEnabled(false);
 		examplesMenu->addAction(a);
 	}

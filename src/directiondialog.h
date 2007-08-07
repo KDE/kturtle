@@ -19,18 +19,19 @@
 #ifndef _DIRECTIONDIALOG_H_
 #define _DIRECTIONDIALOG_H_
 
-#include <QHBoxLayout>
-#include <QLineEdit>
-#include <QMouseEvent>
-#include <QPaintEvent>
-#include <QRadioButton>
-#include <QSpinBox>
 #include <QSvgRenderer>
 #include <QWidget>
 
 #include <kdialog.h>
+#include <klineedit.h>
 
 #include "interpreter/translator.h"
+
+class QHBoxLayout;
+class QMouseEvent;
+class QPaintEvent;
+class QRadioButton;
+class QSpinBox;
 
 class DirectionCanvas : public QWidget
 {
@@ -83,7 +84,7 @@ class DirectionDialog : public KDialog
 		QRadioButton *rightRadio;
 		QRadioButton *directionRadio;
 
-		QLineEdit* cmdLineEdit;
+		KLineEdit* cmdLineEdit;
 
 		Command cmd;
 
