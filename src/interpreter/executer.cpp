@@ -622,7 +622,7 @@ void Executer::executeGreaterThan(TreeNode* node) {
 void Executer::executeLessThan(TreeNode* node) {
 //	qDebug() << "Executer::executeLessThan()";
 	if(node->childCount()!=2) { 
-		addError(i18n("I cannot do a '<' without 2 variables"), *node->token(), 0);
+		addError(i18n("I cannot do a '&lt;' without 2 variables"), *node->token(), 0);
 		return;
 	}
 	node->value()->setBool(*node->child(0)->value() < node->child(1)->value());
@@ -638,7 +638,7 @@ void Executer::executeGreaterOrEquals(TreeNode* node) {
 void Executer::executeLessOrEquals(TreeNode* node) {
 //	qDebug() << "Executer::executeLessOrEquals()";
 	if(node->childCount()!=2) { 
-		addError(i18n("I cannot do a '<=' without 2 variables"), *node->token(), 0);
+		addError(i18n("I cannot do a '&lt;=' without 2 variables"), *node->token(), 0);
 		return;
 	}
 	node->value()->setBool(*node->child(0)->value() <= node->child(1)->value());

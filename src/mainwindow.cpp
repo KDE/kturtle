@@ -66,7 +66,7 @@ MainWindow::MainWindow()
 	iterationTimer = new QTimer(this);
 	connect(iterationTimer, SIGNAL(timeout()), this, SLOT(iterate()));
 
-	statusBar()->showMessage(i18nc("@label:status the application is ready for commands", "Ready"));
+	statusBar()->showMessage(i18nc("@info:status the application is ready for commands", "Ready"));
 	setCaption();  // also sets the window caption to 'untitled'
 	setRunSpeed(0);
 	abort();  // sets the run-states for the actions right
@@ -602,7 +602,7 @@ void MainWindow::toggleInsertMode(bool b)
 
 void MainWindow::setContextHelp(const QString& s)
 {
-	contextHelpString = s.isEmpty() ? i18n("<no keyword>") : s;
+	contextHelpString = s.isEmpty() ? i18n("<placeholder>no keyword</placeholder>") : s;
 	contextHelpAct->setText(i18n("Help on: %1", contextHelpString));
 }
 
@@ -618,13 +618,13 @@ void MainWindow::updateOnCursorPositionChange(int row, int col, const QString& l
 		delete cursorToken;
 		cursorToken = 0;
 		switch (cat) {
-			case Token::VariableCategory:          setContextHelp(i18n("<variable>"));    return;
-			case Token::NumberCategory:            setContextHelp(i18n("<number>"));      return;
-			case Token::CommentCategory:           setContextHelp(i18n("<comment>"));     return;
-			case Token::StringCategory:            setContextHelp(i18n("<string>"));      return;
-			case Token::ScopeCategory:             setContextHelp(i18n("<scope>"));       return;
-			case Token::AssignmentCategory:        setContextHelp(i18n("<assignment>"));  return;
-			case Token::ParenthesisCategory:       setContextHelp(i18n("<parenthesis>")); return;
+			case Token::VariableCategory:          setContextHelp(i18n("<placeholder>variable</placeholder>"));    return;
+			case Token::NumberCategory:            setContextHelp(i18n("<placeholder>number</placeholder>"));      return;
+			case Token::CommentCategory:           setContextHelp(i18n("<placeholder>comment</placeholder>"));     return;
+			case Token::StringCategory:            setContextHelp(i18n("<placeholder>string</placeholder>"));      return;
+			case Token::ScopeCategory:             setContextHelp(i18n("<placeholder>scope</placeholder>"));       return;
+			case Token::AssignmentCategory:        setContextHelp(i18n("<placeholder>assignment</placeholder>"));  return;
+			case Token::ParenthesisCategory:       setContextHelp(i18n("<placeholder>parenthesis</placeholder>")); return;
 
 			case Token::MathOperatorCategory:      desc = i18n("mathematical operator");
 			case Token::ExpressionCategory:        desc = i18n("expression");
@@ -645,7 +645,7 @@ void MainWindow::updateOnCursorPositionChange(int row, int col, const QString& l
 				break;
 		}
 	}
-	setContextHelp(i18n("<no keyword>"));
+	setContextHelp(i18n("<placeholder>no keyword</placeholder>"));
 }
 
 

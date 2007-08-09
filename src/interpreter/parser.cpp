@@ -271,7 +271,7 @@ TreeNode* Parser::parseFactor()
 			node = new TreeNode(currentToken);
 			{ // extra scope to localize the QString 'str'
 				QString str = currentToken->look();
-				if (!currentToken->look().endsWith("\"")) {
+				if (!currentToken->look().endsWith('\"')) {
 					str += "\"";
 					addError(QString("Text string was no properly closed, expected a dubble quote, ' \" ' to close the string"), *currentToken, 0);
 				}
