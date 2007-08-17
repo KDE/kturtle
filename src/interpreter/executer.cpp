@@ -268,7 +268,7 @@ bool Executer::checkParameterQuantity(TreeNode* node, uint quantity, int errorCo
 
 	if (quantity == 0) {
 		if (nodeSize == 0) return true;  // thats easy!
-		i18n("Internationlalized string with an %1", QString("argument"));
+		i18n("Internationalized string with an %1", QString("argument"));
 		addError(i18n("The %1 command accepts no parameters.", node->token()->look()), *node->token(), errorCode);
 		return false;
 	}

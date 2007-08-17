@@ -40,7 +40,7 @@ ErrorDialog::ErrorDialog(ErrorList* _errorList, QWidget* parent)
 	baseLayout = new QVBoxLayout(baseWidget); 
 	
 	label = new QLabel(baseWidget);
-	label->setText(i18n("In this list you find the error(s) that resulted from running your Logo code. \nGood luck!"));
+	label->setText(i18n("In this list you find the error(s) that resulted from running your Logo code.\nGood luck!"));
 	// \nYou can select an error and click the 'Help on Error' button for help.
 	label->setScaledContents(true);
 	baseLayout->addWidget(label);
