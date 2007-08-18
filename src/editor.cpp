@@ -141,7 +141,7 @@ bool Editor::openFile(const KUrl &_url)
 			url = KFileDialog::getOpenUrl(KUrl(), QString("*.turtle|%1\n*|%2").arg(i18n("Turtle code files")).arg(i18n("All files")), this, i18n("Open"));
 		}
 		if (!url.isEmpty()) {
-// 			if (!KIO::NetAccess::exists(url, true, this)) {
+// 			if (!KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this)) {
 // 				KMessageBox::error(this, i18n("The given file could not be read, check if it exists and if it is readable for the current user."));
 // 				return false;
 // 			}
@@ -205,7 +205,7 @@ bool Editor::saveFileAs()
 {
 	KUrl url = KFileDialog::getSaveUrl(QString(), QString("*.turtle|%1\n*|%2").arg(i18n("Turtle code files")).arg(i18n("All files")), this, i18n("Save As"));
 	if (url.isEmpty()) return false;
-	if (KIO::NetAccess::exists(url, true, this) &&
+	if (KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this) &&
 		KMessageBox::warningContinueCancel(this,
 			i18n("Are you sure you want to overwrite %1?", url.fileName()),
 			i18n("Overwrite Existing File"),KGuiItem(i18n("&Overwrite")),
