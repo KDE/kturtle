@@ -28,6 +28,6 @@ GenericName[zh_TW]=教育程式環境
 MimeType=text/plain;
 Exec=kturtle -i %U
 Icon=kturtle
-DocPath=kturtle/index.html
+X-DocPath=kturtle/index.html
 Type=Application
 Categories=Qt;KDE;Education;X-KDE-Edu-Misc;
