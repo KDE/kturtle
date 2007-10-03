@@ -18,7 +18,7 @@
 
 #include "directiondialog.h"
 
-#include <math.h>
+#include <cmath>
 
 #include <klocale.h>
 
@@ -43,8 +43,8 @@ DirectionCanvas::DirectionCanvas(QWidget* parent)
 	setAutoFillBackground(true);
 	turtle.load(QString(":turtle.svg"));
 
-	deg = 0;
-	previousDeg = 0;
+	deg = 90;
+	previousDeg = 90;
 }
 
 void DirectionCanvas::paintEvent(QPaintEvent *event)
@@ -68,7 +68,7 @@ void DirectionCanvas::paintEvent(QPaintEvent *event)
 
 	painter.save();
 	//Rotate for the circle lines.
-	painter.rotate(previousDeg);
+	painter.rotate(90);
 	
 	//Draw the lines in the circle
 	painter.save();
@@ -81,26 +81,17 @@ void DirectionCanvas::paintEvent(QPaintEvent *event)
 	painter.drawText(-100, -100, 200, 20, Qt::AlignHCenter, "0");
 	painter.drawText(-100, 80, 200, 20, Qt::AlignHCenter, "180");
 	painter.restore(); //Rotate back
-	
-	//TODO: The 0 and 180 labels are now rotated with the circle lines.
-	// This should be fixed. It already tried, see below :)
-	/*
-	int r = 0;
 
-	if(((previousDeg+45)<=180) || ((previousDeg+45)>=360)) {
-		r = 80;
-	}else{
-		r = 100;
-	}
+	painter.save();
+	//Rotate for the previousDeg pointer
+	painter.rotate(90-previousDeg);
 
-	double x = (r * sin((previousDeg+45) * (M_PI/180)));
-	double y = 0 - (r * cos((previousDeg+45) * (M_PI/180)));
-	
-	//painter.drawText(ROUND2INT(x), ROUND2INT(y), 20, 20, Qt::AlignHCenter, "45?");
-	painter.drawText(ROUND2INT(x), ROUND2INT(y), "45");
-	*/
+	painter.setBrush(QColor(0, 180, 0, 128));
+	painter.drawPie(-20, -88, 40, 30, 60*16, 60*16);
+	painter.restore();
 
-	painter.rotate(deg); //Rotate for the turtle
+	painter.save();
+	painter.rotate(90-deg); //Rotate for the turtle
 
 	painter.setPen(Qt::red);
 	painter.drawLine(0, -80, 0, 0);
@@ -108,6 +99,7 @@ void DirectionCanvas::paintEvent(QPaintEvent *event)
 	//Draw the turtle 50 by 50, in the middle of the widget
 	QRectF pos(-25,-25,50,50);
 	turtle.render(&painter, pos);
+	painter.restore();
 
 	painter.restore();
 
@@ -132,69 +124,33 @@ void DirectionCanvas::mousePressEvent(QMouseEvent *event)
 	if(trans_x>=0 && trans_y>=0) {
 		//Right down
 		double arc_tan = trans_y / trans_x;
-		deg = 90+(atan(arc_tan))*(180/M_PI);
+		deg = -(atan(arc_tan))*(180/M_PI);
 	}else if(trans_x<=0 && trans_y>=0) {
 		//Left down
 		trans_x = trans_x * -1;
 		double arc_tan = trans_y / trans_x;
-		deg = 270-(atan(arc_tan))*(180/M_PI);
+		deg = 180+(atan(arc_tan))*(180/M_PI);
 	}else if(trans_x>=0 && trans_y<=0) {
 		//Right up
 		trans_y = trans_y * -1;
 		double arc_tan = trans_y / trans_x;
-		deg = 90-(atan(arc_tan))*(180/M_PI);
+		deg = (atan(arc_tan))*(180/M_PI);
 	}else if(trans_x<=0 && trans_y<=0) {
 		//Left up
 		trans_x = trans_x * -1;
 		trans_y = trans_y * -1;
 		double arc_tan = trans_y / trans_x;
-		deg = 270+(atan(arc_tan))*(180/M_PI);
+		deg = 180-(atan(arc_tan))*(180/M_PI);
 	}
 
-	double deg_out = deg;
-
-	//If the command is right or left,
-	// we should take the previousDeg in our
-	// calculation.
-	if(cmd!=DirectionDialog::Direction) {
-		deg_out = deg - previousDeg;
-		if(deg_out<0)
-			deg_out = deg_out + 360;
-	}
-
-	if(cmd==DirectionDialog::Left) {
-		deg_out = 360 - deg_out;
-	}
-
-	emit degreeChanged(deg_out);
+	emit degreeChanged(deg);
 	update();
 }
 
 
 void DirectionCanvas::changed(double previousDeg, double deg, int cmd)
 {
-	//Because we use this->deg to store the number of deg
-	// we should rotate from a rotation of 0,
-	// we have to convert the user interfaces values.
-	switch(cmd) {
-		case DirectionDialog::Right : {
-			this->deg = previousDeg + deg;
-			if(this->deg>359)
-				this->deg = this->deg - 360;
-		}
-		break;
-		case DirectionDialog::Left : {
-			this->deg = previousDeg - deg;
-			if(this->deg<0)
-				this->deg = this->deg + 360;
-		}
-		break;
-		case DirectionDialog::Direction : {
-			this->deg = deg;
-		}
-		break;
-	}
-
+	this->deg = deg;
 	this->previousDeg = previousDeg;
 	this->cmd = cmd;
 	update();
@@ -244,7 +200,10 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	rightLayout->addWidget(previousDirection);
 
 	previousDirectionSpin = new QSpinBox(rightWidget);
-	previousDirectionSpin->setRange(0, 360);
+	// Use -360 to 720 instead of 0 to 360
+	// If 0 to 360 is used, then wrap-around goes from 360 to 0 (which isn't really a step at all)
+	// Instead use larger range and then convert it into the 0 to 359 range whenever it is changed.
+	previousDirectionSpin->setRange(-360, 720);
 	previousDirectionSpin->setWrapping(true);
 	previousDirectionSpin->setSingleStep(10);
 	previousDirectionSpin->setValue((int)deg);
@@ -258,9 +217,13 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	rightLayout->addWidget(directionLabel);
 
 	directionSpin = new QSpinBox(rightWidget);
-	directionSpin->setRange(0, 360);
+	// Use -360 to 720 instead of 0 to 360
+	// If 0 to 360 is used, then wrap-around goes from 360 to 0 (which isn't really a step at all)
+	// Instead use larger range and then convert it into the 0 to 359 range whenever it is changed.
+	directionSpin->setRange(-360, 720);
 	directionSpin->setWrapping(true);
 	directionSpin->setSingleStep(10);
+	directionSpin->setValue((int)deg);
 	rightLayout->addWidget(directionSpin);
 
 	connect(directionSpin, SIGNAL(valueChanged(int)),
@@ -304,6 +267,22 @@ void DirectionDialog::directionChanged(int value)
 	//Don't update the canvas when we just
 	// updated the	direction spinbox.
 	// (Only update when the users changes the spinbox.)
+
+	// if value is outside of the 0 to 359 range, then move it into that range
+	if(previousDirectionSpin->value() < 0) {
+		previousDirectionSpin->setValue(previousDirectionSpin->value() + 360);
+	}
+	else if(previousDirectionSpin->value() >= 360) {
+		previousDirectionSpin->setValue(previousDirectionSpin->value() - 360);
+	}
+
+	// if value is outside of the 0 to 359 range, then move it into that range
+	if(directionSpin->value() < 0) {
+		directionSpin->setValue(directionSpin->value() + 360);
+	}
+	else if(directionSpin->value() >= 360) {
+		directionSpin->setValue(directionSpin->value() - 360);
+	}
 
 	if(skipValueChangedEvent) {
 		skipValueChangedEvent = false;
@@ -352,22 +331,32 @@ void DirectionDialog::updateCmdLineEdit()
 {
 	//Generate a new value for the command-LineEdit.
 	QString output;
+	int degree;
 	switch(cmd) {
 		case Left : {
 			output.append(translator->default2localized("turnleft"));
+			degree = directionSpin->value() - previousDirectionSpin->value();
 		}
 		break;
 		case Right : {
 			output.append(translator->default2localized("turnright"));
+			degree = 360 - (directionSpin->value() - previousDirectionSpin->value());
 		}
 		break;
 		case Direction : {
 			output.append(translator->default2localized("direction"));
+			degree = directionSpin->value();
 		}
 		break;
 	}
-	output.append(" ");
-	output.append(directionSpin->cleanText());
+
+	if(degree < 0) {
+		degree += 360;
+	} else if(degree >= 360) {
+		degree -= 360;
+	}
+	
+	output.append(QString(" %1\n").arg(degree));
 	cmdLineEdit->setText(output);
 }
 
