@@ -46,8 +46,8 @@ class Canvas : public QGraphicsView
 		void slotForward(double x);
 		void slotBackward(double x);
 		void slotDirection(double deg) { turtle->setAngle(deg); }
-		void slotTurnLeft(double deg)  { turtle->setAngle(turtle->angle() - deg); }
-		void slotTurnRight(double deg) { turtle->setAngle(turtle->angle() + deg); }
+		void slotTurnLeft(double deg)  { turtle->setAngle(turtle->angle() + deg); }
+		void slotTurnRight(double deg) { turtle->setAngle(turtle->angle() - deg); }
 		void slotCenter();
 		void slotPenWidth(double width);
 		void slotPenUp()   { pen->setStyle(Qt::NoPen); }
