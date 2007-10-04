@@ -43,8 +43,8 @@ DirectionCanvas::DirectionCanvas(QWidget* parent)
 	setAutoFillBackground(true);
 	turtle.load(QString(":turtle.svg"));
 
-	deg = 90;
-	previousDeg = 90;
+	deg = 0;
+	previousDeg = 0;
 }
 
 void DirectionCanvas::paintEvent(QPaintEvent *event)
@@ -66,9 +66,9 @@ void DirectionCanvas::paintEvent(QPaintEvent *event)
 	//Draw the ellipse. With a nice border of 10
 	painter.drawEllipse(-80, -80, 160, 160);
 
-	painter.save();
+	//painter.save();
 	//Rotate for the circle lines.
-	painter.rotate(90);
+	//painter.rotate(90);
 	
 	//Draw the lines in the circle
 	painter.save();
@@ -80,18 +80,18 @@ void DirectionCanvas::paintEvent(QPaintEvent *event)
 
 	painter.drawText(-100, -100, 200, 20, Qt::AlignHCenter, "0");
 	painter.drawText(-100, 80, 200, 20, Qt::AlignHCenter, "180");
-	painter.restore(); //Rotate back
+	//painter.restore(); //Rotate back
 
 	painter.save();
 	//Rotate for the previousDeg pointer
-	painter.rotate(90-previousDeg);
+	painter.rotate(previousDeg);
 
 	painter.setBrush(QColor(0, 180, 0, 128));
 	painter.drawPie(-20, -88, 40, 30, 60*16, 60*16);
 	painter.restore();
 
 	painter.save();
-	painter.rotate(90-deg); //Rotate for the turtle
+	painter.rotate(deg); //Rotate for the turtle
 
 	painter.setPen(Qt::red);
 	painter.drawLine(0, -80, 0, 0);
@@ -124,23 +124,23 @@ void DirectionCanvas::mousePressEvent(QMouseEvent *event)
 	if(trans_x>=0 && trans_y>=0) {
 		//Right down
 		double arc_tan = trans_y / trans_x;
-		deg = -(atan(arc_tan))*(180/M_PI);
+		deg = 90+(atan(arc_tan))*(180/M_PI);
 	}else if(trans_x<=0 && trans_y>=0) {
 		//Left down
 		trans_x = trans_x * -1;
 		double arc_tan = trans_y / trans_x;
-		deg = 180+(atan(arc_tan))*(180/M_PI);
+		deg = 270-(atan(arc_tan))*(180/M_PI);
 	}else if(trans_x>=0 && trans_y<=0) {
 		//Right up
 		trans_y = trans_y * -1;
 		double arc_tan = trans_y / trans_x;
-		deg = (atan(arc_tan))*(180/M_PI);
+		deg = 90-(atan(arc_tan))*(180/M_PI);
 	}else if(trans_x<=0 && trans_y<=0) {
 		//Left up
 		trans_x = trans_x * -1;
 		trans_y = trans_y * -1;
 		double arc_tan = trans_y / trans_x;
-		deg = 180-(atan(arc_tan))*(180/M_PI);
+		deg = 270+(atan(arc_tan))*(180/M_PI);
 	}
 
 	emit degreeChanged(deg);
@@ -335,12 +335,12 @@ void DirectionDialog::updateCmdLineEdit()
 	switch(cmd) {
 		case Left : {
 			output.append(translator->default2localized("turnleft"));
-			degree = directionSpin->value() - previousDirectionSpin->value();
+			degree = 360 - (directionSpin->value() - previousDirectionSpin->value());
 		}
 		break;
 		case Right : {
 			output.append(translator->default2localized("turnright"));
-			degree = 360 - (directionSpin->value() - previousDirectionSpin->value());
+			degree = directionSpin->value() - previousDirectionSpin->value();
 		}
 		break;
 		case Direction : {
