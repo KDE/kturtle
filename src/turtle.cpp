@@ -40,7 +40,7 @@ static double TwoPi = 2.0 * Pi;
 
 Turtle::Turtle()
 {
-	_angle = 90;
+	_angle = 0;
 	_speed = 0;
 // 	startTimer(1000 / 33);
 }

@@ -18,7 +18,7 @@
 
 #include "sprite.h"
 
-#include <cmath>
+#include <math.h>
 
 #include <QSvgRenderer>
 
@@ -28,10 +28,10 @@ const int SPRITE_SIZE = 30;
 Sprite::Sprite()
 	: QGraphicsSvgItem(":turtle.svg")
 {
-	_angle = 90;	
+	_angle = 0;	
 	_speed = 0;
 
-	setAngle(90);
+	setAngle(0);
 }
 
 void Sprite::setSpriteSize(int size_in_pixels)
@@ -55,10 +55,10 @@ void Sprite::setAngle(double deg)
 	// but we want to the rotation to be around the SVG's center...
 	// This is why this "translation" is needed before the actual rotation.
 	translate(
-		renderer()->defaultSize().width()  * cos((-deg-45) * M_PI/180) * sqrt(2)/2,
-		renderer()->defaultSize().height() * sin((-deg-45) * M_PI/180) * sqrt(2)/2
+		renderer()->defaultSize().width()  * cos((deg-135) * M_PI/180) * sqrt(2)/2,
+		renderer()->defaultSize().height() * sin((deg-135) * M_PI/180) * sqrt(2)/2
 	);
-	rotate(90-deg);
+	rotate(deg);
 	_angle = deg;
 }
 
