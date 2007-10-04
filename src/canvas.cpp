@@ -79,7 +79,7 @@ void Canvas::initValues()
 // 	int width  = qMin(qMax(settings.value("canvasWidth",  400).toInt(), 20), 10000);
 // 	int height = qMin(qMax(settings.value("canvasHeight", 300).toInt(), 20), 10000);
 	turtle->setPos(0, 0);
-	turtle->setAngle(0);
+	turtle->setAngle(90);
 	scene->setBackgroundBrush(QBrush(Qt::white));
 	pen->setColor(Qt::black);
 	pen->setWidth(1);
@@ -120,16 +120,16 @@ void Canvas::slotClear()
 
 void Canvas::slotForward(double x)
 {
-	double x2 = turtle->pos().x() + (x * sin(turtle->angle() * DegToRad));
-	double y2 = turtle->pos().y() - (x * cos(turtle->angle() * DegToRad));
+	double x2 = turtle->pos().x() + (x * cos(turtle->angle() * DegToRad));
+	double y2 = turtle->pos().y() - (x * sin(turtle->angle() * DegToRad));
 	//drawLine(turtle->pos().x(), turtle->pos().y(), x2, y2);
 	slotGo(x2, y2);
 }
 
 void Canvas::slotBackward(double x)
 {
-	double x2 = turtle->pos().x() - ( x * sin(turtle->angle() * DegToRad) );
-	double y2 = turtle->pos().y() + ( x * cos(turtle->angle() * DegToRad) );
+	double x2 = turtle->pos().x() - ( x * cos(turtle->angle() * DegToRad) );
+	double y2 = turtle->pos().y() + ( x * sin(turtle->angle() * DegToRad) );
 	//drawLine(turtle->pos().x(), turtle->pos().y(), x2, y2);
 	slotGo(x2, y2);
 }
@@ -174,8 +174,8 @@ void Canvas::slotPrint(const QString& text)
 	QGraphicsTextItem *ti = new QGraphicsTextItem(text, 0, scene);
 // 	ti->setDefaultTextColor(textColor);
 	ti->setFont(textFont);
-	ti->rotate(turtle->angle());
 	ti->setPos(turtle->pos().x(), turtle->pos().y());
+	ti->rotate(90-turtle->angle());
 }
 
 void Canvas::slotFontType(const QString& family, const QString& extra)
