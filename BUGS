@@ -12,7 +12,8 @@ right now it _always_ has scrollbars; which is plain ugly. and i have try for ma
 
 
  = editor (QTextEdit) =
-# no known bugs
+# floating bug
+If you pull the editor out of kturtle and resize it, then close kturtle, on subsequent executions the editor window will not paint itself and will be basically unusable.  It is possible but not easy to get it back into the window and make it usable again for future executions
 
 
  = interpreter =
