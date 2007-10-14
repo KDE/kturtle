@@ -20,6 +20,8 @@
 
 #include <QWhatsThis>
 #include <QTimer>
+#include <QtGui/QPrinter>
+#include <QtGui/QPrintDialog>
 
 #include <kdebug.h>
 
@@ -36,7 +38,6 @@
 #include <kstatusbar.h>
 #include <KStandardShortcut>
 #include <kstandardaction.h>
-#include <kprinter.h>
 
 #include "errordialog.h"
 #include "interpreter/errormsg.h"
@@ -95,8 +96,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::printDlg()
 {
-	KPrinter printer;
-	if (printer.setup(this))
+	QPrinter printer;
+	QPrintDialog printDialog(&printer, this);
+	if (printDialog.exec())
 	{
 		QPainter painter;
 		painter.begin(&printer);
