@@ -129,6 +129,11 @@ void MainWindow::aboutKDE()
 // 	new KAboutKDE(this);
 }
 
+void MainWindow::contextHelp()
+{
+//TODO
+}
+
 void MainWindow::whatsThis()
 {
 	QWhatsThis::enterWhatsThisMode();
@@ -239,17 +244,18 @@ void MainWindow::setupActions()
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), this, SLOT(toggleInsertMode(bool)));
 
-	a = KStandardAction::find(editor, SLOT(find()), ac);
-	a->setStatusTip(i18n("Search through the code in the editor"));
+        //FIX: slots not implemented
+	//a = KStandardAction::find(editor, SLOT(find()), ac);
+	//a->setStatusTip(i18n("Search through the code in the editor"));
 
-	a = KStandardAction::findNext(editor, SLOT(findNext()), ac);
-	a->setStatusTip(i18n("Find the next occurrence"));
+	//a = KStandardAction::findNext(editor, SLOT(findNext()), ac);
+	//a->setStatusTip(i18n("Find the next occurrence"));
 
-	a = KStandardAction::findPrev(editor, SLOT(findPrev()), ac);
-	a->setStatusTip(i18n("Find the previous occurrence"));
+	//a = KStandardAction::findPrev(editor, SLOT(findPrev()), ac);
+	//a->setStatusTip(i18n("Find the previous occurrence"));
 
-	a = KStandardAction::replace(editor, SLOT(replace()), ac);
-	a->setStatusTip(i18n("Search and replace"));
+	//a = KStandardAction::replace(editor, SLOT(replace()), ac);
+	//a->setStatusTip(i18n("Search and replace"));
 
 
 	// View menu actions
@@ -307,11 +313,13 @@ void MainWindow::setupActions()
 
 
 	// Settings menu actions
-	a = KStandardAction::keyBindings(this, SLOT(editKeys()), ac);
-	a->setStatusTip(i18n("Configure the application's keyboard shortcut assignments."));
+        //TODO: implement
+	//a = KStandardAction::keyBindings(this, SLOT(editKeys()), ac);
+	//a->setStatusTip(i18n("Configure the application's keyboard shortcut assignments."));
 
 
 	// Help menu actions
+        //TODO: implement context help
 	contextHelpAct = ac->addAction("context_help");
 	contextHelpAct->setText("");
 	contextHelpAct->setIcon(KIcon("help-contents"));
@@ -335,7 +343,6 @@ void MainWindow::setupActions()
 
 	a = actionCollection()->addAction(KStandardAction::WhatsThis,  "whatsthis", this, SLOT(whatsThis()));
 	a->setStatusTip(i18n("Point and click information about the interface of KTurtle"));
-
 
 	// The run speed action group
 	QActionGroup* runSpeedGroup = new QActionGroup(this);
@@ -459,18 +466,19 @@ void MainWindow::setupMenus()
 	      << "set_insert" << "-"
 // 	      << "edit_find" << "edit_find_next" << "edit_find_prev" << "edit_replace" << "-"
 	      << i18n("&View")
-	      << "full_screen" << "-"
+	      //<< "full_screen" << "-"
 	      << "show_editor" << "show_inspector" << "show_statusbar" << "show_toolbar" << "-"
 	      << i18n("&Tools")
 	      << "direction" << "-"
 	      << "line_numbers" << "-"
-	      << "edit_indent" << "edit_unindent" << "-"
-	      << "edit_comment" << "edit_uncomment" << "-"
+	      //<< "edit_indent" << "edit_unindent" << "-"
+	      //<< "edit_comment" << "edit_uncomment" << "-"
 	      << i18n("&Settings")
 	      << "#language" << "-"
-	      << "set_font_size" << "set_font_type" << "-"
+	      //<< "set_font_size" << "set_font_type" << "-"
 	      << i18n("&Help")
-	      << "help_contents" << "whatsthis" << "-" << "context_help" << "-" << "about_app" << "about_kde" << "-"
+	      << "help_contents" << "whatsthis" << "-" << "context_help" << "-" << "about_app" 
+            //FIX it << "about_kde" << "-"
 	      ;
 
 	QMenu* currentMenu = 0;
@@ -817,6 +825,5 @@ void MainWindow::slotMessageDialog(const QString& text)
 }
 
 // END
-
 
 #include "mainwindow.moc"

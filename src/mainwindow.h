@@ -91,6 +91,7 @@ class MainWindow : public KXmlGuiWindow
 
 		void about();
 		void aboutKDE();
+		void contextHelp();
 		void whatsThis();
 		void documentWasModified();
 		void setRunSpeed(int);
