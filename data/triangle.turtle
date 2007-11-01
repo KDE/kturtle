@@ -1,8 +1,0 @@
-# draw a triangle
-
-repeat 3 {
-  forward 100 
-  turnleft 120
-}
-
-# trr 
