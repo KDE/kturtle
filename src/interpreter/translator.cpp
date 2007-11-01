@@ -36,7 +36,7 @@ Translator* Translator::instance()
 }
 
 Translator::Translator()
-	: localizer(KGlobal::locale()), currentLangugeCode("")
+	: localizer(KGlobal::locale())
 {
 }
 
@@ -77,14 +77,18 @@ QHash<int, QList<QString> > Translator::token2stringsMap()
 
 bool Translator::setLanguage(const QString &lang_code)
 {
-	//if (currentLangugeCode == lang_code) return true;
+	//Save UI language
+	QString mainLanguage = localizer->language();
+	
+	//Set language for construction of translation dictionaries and examples
 	localizer->setLanguage(lang_code, KGlobal::config().data());
 	if (localizer->language() != lang_code) return false;  // the GUI needs to give feedback if it didn't work
 
-	currentLangugeCode = lang_code;
 	setDictionary();
 	setExamples();
 
+	//Restore UI language
+	localizer->setLanguage(mainLanguage , KGlobal::config().data());
 	return true;
 }
 

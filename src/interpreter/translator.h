@@ -115,8 +115,6 @@ class Translator
 		QHash<QString, QString> default2localizedMap;
 
 		KLocale* localizer;
-
-		QString currentLangugeCode;
 };
 
 
