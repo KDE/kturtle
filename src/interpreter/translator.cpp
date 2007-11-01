@@ -21,7 +21,8 @@
 #include <QDomDocument>
 #include <QFile>
 
-#include <QtDebug>
+#include <KDebug>
+#include <KGlobal>
 
 #include "token.h"
 
@@ -35,7 +36,7 @@ Translator* Translator::instance()
 }
 
 Translator::Translator()
-	: localizer(0), currentLangugeCode("")
+	: localizer(KGlobal::locale()), currentLangugeCode("")
 {
 }
 
@@ -76,20 +77,11 @@ QHash<int, QList<QString> > Translator::token2stringsMap()
 
 bool Translator::setLanguage(const QString &lang_code)
 {
-	if (currentLangugeCode == lang_code) return true;
-
-	if (localizer != 0) delete localizer;
-
-// 	if (KGlobal::locale()->language() == lang_code)  // re-use the global localizer TODO maked sure not to delete it!
-// 		localizer = KGlobal::locale();
-// 	else
-
-	localizer = new KLocale(lang_code);
-
+	//if (currentLangugeCode == lang_code) return true;
+	localizer->setLanguage(lang_code, KGlobal::config().data());
 	if (localizer->language() != lang_code) return false;  // the GUI needs to give feedback if it didn't work
 
 	currentLangugeCode = lang_code;
-
 	setDictionary();
 	setExamples();
 
