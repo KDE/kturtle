@@ -30,6 +30,7 @@
 #include <QPainter>
 #include <QAbstractTextDocumentLayout>
 
+#include <kfinddialog.h>
 #include <kurl.h>
 
 #include "highlighter.h"
@@ -91,7 +92,6 @@ class LineNumbers : public QWidget
 };
 
 //END class LineNumbers
-
 
 //BEGIN QTextEditor sub-class
 
@@ -231,6 +231,9 @@ class Editor : public QFrame
 		void markCurrentError(int startRow, int startCol, int endRow, int endCol) {
 			editor->markCurrentError(startRow, startCol, endRow, endCol);
 		}
+		void find();
+		void findNext();
+		void findPrev();
 
 
 	signals:
@@ -257,6 +260,7 @@ class Editor : public QFrame
 		Highlighter *highlighter;
 		LineNumbers *numbers;
 		QHBoxLayout *box;  // TODO is this relly needed?
+		KFindDialog *fdialog;
 		KUrl         m_currentUrl;
 		QColor       highlightedLineBackgroundColor;  // the bg color of the current line's line number space
 		int          currentLine;

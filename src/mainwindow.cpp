@@ -244,15 +244,22 @@ void MainWindow::setupActions()
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), this, SLOT(toggleInsertMode(bool)));
 
-        //FIX: slots not implemented
-	//a = KStandardAction::find(editor, SLOT(find()), ac);
-	//a->setStatusTip(i18n("Search through the code in the editor"));
 
-	//a = KStandardAction::findNext(editor, SLOT(findNext()), ac);
-	//a->setStatusTip(i18n("Find the next occurrence"));
 
-	//a = KStandardAction::findPrev(editor, SLOT(findPrev()), ac);
-	//a->setStatusTip(i18n("Find the previous occurrence"));
+	/*fullSpeedAct  = new KAction(i18nc("@option:radio", "&Full Speed"), this);
+	actionCollection()->addAction("full_speed", fullSpeedAct );
+	fullSpeedAct->setCheckable(true);
+	fullSpeedAct->setChecked(true);
+	connect(fullSpeedAct, SIGNAL(triggered()), this, SLOT(setFullSpeed()));*/
+
+	a = KStandardAction::find(editor, SLOT(find()), ac);
+	a->setStatusTip(i18n("Search through the code in the editor"));
+
+	a = KStandardAction::findNext(editor, SLOT(findNext()), ac);
+	a->setStatusTip(i18n("Find the next occurrence"));
+
+	a = KStandardAction::findPrev(editor, SLOT(findPrev()), ac);
+	a->setStatusTip(i18n("Find the previous occurrence"));
 
 	//a = KStandardAction::replace(editor, SLOT(replace()), ac);
 	//a->setStatusTip(i18n("Search and replace"));
@@ -464,7 +471,7 @@ void MainWindow::setupMenus()
 	      << "edit_undo" << "edit_redo" << "-"
 	      << "edit_cut" << "edit_copy" << "edit_paste" << "-"
 	      << "set_insert" << "-"
-// 	      << "edit_find" << "edit_find_next" << "edit_find_prev" << "edit_replace" << "-"
+	      << "edit_find" << "edit_find_next" << "edit_find_prev" << "edit_replace" << "-"
 	      << i18n("&View")
 	      //<< "full_screen" << "-"
 	      << "show_editor" << "show_inspector" << "show_statusbar" << "show_toolbar" << "-"
@@ -530,6 +537,7 @@ void MainWindow::setupToolBar()
 	items << "file_new" << "file_open" << "file_save" << "-"
 	      << "edit_undo" << "edit_redo" << "-"
 	      << "edit_cut" << "edit_copy" << "edit_paste" << "-"
+              << "edit_find" << "-"
 	      << "run" << "#speed" << "pause" << "abort";
 
 	toolBar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);

@@ -30,6 +30,7 @@
 #include <kdebug.h>
 
 #include <kfiledialog.h>
+#include <kfind.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <ksavefile.h>
@@ -85,6 +86,12 @@ Editor::Editor(QWidget *parent)
 
 	// our syntax highlighter (this does not do any markings)
 	highlighter = new Highlighter(editor->document());
+
+	// create a find dialog
+	fdialog = new KFindDialog();
+	fdialog->setSupportsRegularExpressionFind(false);
+	fdialog->setHasSelection(false);
+	fdialog->setHasCursor(false);
 
 	// sets some more default values
 	newFile();
@@ -233,6 +240,67 @@ void Editor::setModified(bool b)
 {
 	editor->document()->setModified(b);
 	emit modificationChanged(b);
+}
+
+// TODO: improve find to be able to search within a selection
+void Editor::find()
+{
+	// find selection, etc
+	if(editor->textCursor().hasSelection())
+	{
+		QString selectedText = editor->textCursor().selectedText();
+		// If the selection is too big, then we don't want to automatically
+		// populate the search text box with the selection text
+		if(selectedText.length() < 30)
+		{
+			fdialog->setPattern(selectedText);
+		}
+	}
+	if(fdialog->exec()==QDialog::Accepted && !fdialog->pattern().isEmpty())
+	{
+		long kOpts = fdialog->options();
+		QTextDocument::FindFlags qOpts = 0;
+		if(kOpts & KFind::CaseSensitive)
+		{ qOpts |= QTextDocument::FindCaseSensitively; }
+		if(kOpts & KFind::FindBackwards)
+		{ qOpts |= QTextDocument::FindBackward; }
+		if(kOpts & KFind::WholeWordsOnly)
+		{ qOpts |= QTextDocument::FindWholeWords; }
+		editor->find(fdialog->pattern(), qOpts);
+	}
+}
+
+void Editor::findNext()
+{
+	if(!fdialog->pattern().isEmpty())
+	{
+		long kOpts = fdialog->options();
+		QTextDocument::FindFlags qOpts = 0;
+		if(kOpts & KFind::CaseSensitive)
+		{ qOpts |= QTextDocument::FindCaseSensitively; }
+		if(kOpts & KFind::FindBackwards)
+		{ qOpts |= QTextDocument::FindBackward; }
+		if(kOpts & KFind::WholeWordsOnly)
+		{ qOpts |= QTextDocument::FindWholeWords; }
+		editor->find(fdialog->pattern(), qOpts);
+	}
+}
+
+void Editor::findPrev()
+{
+	if(!fdialog->pattern().isEmpty())
+	{
+		long kOpts = fdialog->options();
+		QTextDocument::FindFlags qOpts = 0;
+		if(kOpts & KFind::CaseSensitive)
+		{ qOpts |= QTextDocument::FindCaseSensitively; }
+		// search in the opposite direction as findNext()
+		if(!(kOpts & KFind::FindBackwards))
+		{ qOpts |= QTextDocument::FindBackward; }
+		if(kOpts & KFind::WholeWordsOnly)
+		{ qOpts |= QTextDocument::FindWholeWords; }
+		editor->find(fdialog->pattern(), qOpts);
+	}
 }
 
 void Editor::setCurrentUrl(const KUrl& url)
