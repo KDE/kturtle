@@ -244,14 +244,6 @@ void MainWindow::setupActions()
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), this, SLOT(toggleInsertMode(bool)));
 
-
-
-	/*fullSpeedAct  = new KAction(i18nc("@option:radio", "&Full Speed"), this);
-	actionCollection()->addAction("full_speed", fullSpeedAct );
-	fullSpeedAct->setCheckable(true);
-	fullSpeedAct->setChecked(true);
-	connect(fullSpeedAct, SIGNAL(triggered()), this, SLOT(setFullSpeed()));*/
-
 	a = KStandardAction::find(editor, SLOT(find()), ac);
 	a->setStatusTip(i18n("Search through the code in the editor"));
 
