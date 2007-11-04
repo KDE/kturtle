@@ -462,8 +462,8 @@ void MainWindow::setupMenus()
 	      << i18n("&Edit")
 	      << "edit_undo" << "edit_redo" << "-"
 	      << "edit_cut" << "edit_copy" << "edit_paste" << "-"
-	      << "set_insert" << "-"
 	      << "edit_find" << "edit_find_next" << "edit_find_prev" << "edit_replace" << "-"
+	      << "set_insert" << "-"
 	      << i18n("&View")
 	      //<< "full_screen" << "-"
 	      << "show_editor" << "show_inspector" << "show_statusbar" << "show_toolbar" << "-"
