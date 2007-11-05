@@ -120,18 +120,19 @@ void MainWindow::directionDialog()
 void MainWindow::about()
 {
 	KMessageBox::about(this,
-		i18n("KTurtle is an educational programming environment that aims to make programming as easy as possible, especially for young children. KTurtle intends to help teaching kids the basics of math, geometry and... programming."), i18n("About KTurtle"));
+		i18n("KTurtle is an educational programming environment that aims to make programming as easy as possible, especially for young children. KTurtle intends to help teaching kids the basics of math, geometry, and programming."), i18n("About KTurtle"));
 // 	new KAboutApplication();
 }
 
 void MainWindow::aboutKDE()
 {
+//TODO remove this function or make it do something
 // 	new KAboutKDE(this);
 }
 
 void MainWindow::contextHelp()
 {
-//TODO
+//TODO display a help dialog about syntax commands
 }
 
 void MainWindow::whatsThis()
@@ -141,6 +142,7 @@ void MainWindow::whatsThis()
 
 void MainWindow::documentWasModified()
 {
+//TODO remove this function or make it do something
 // 	setWindowModified(textEdit->document()->isModified());
 }
 
@@ -162,30 +164,39 @@ void MainWindow::setupActions()
 	QAction * a;
 	KActionCollection* ac = actionCollection();
 
-	//TODO WHATISTHIS to each action (same as statustip?)
+	//TODO WHATISTHIS to each action
+	//Similar to a status tip, but not the same.
+	//A status tip is displayed on hover, a whatisthis is displayed when
+	//an item is clicked on it whatisthis mode
 
 	// File menu actions
 	a = actionCollection()->addAction(KStandardAction::New,  "file_new", editor, SLOT(newFile()));
 	a->setStatusTip(i18n("Create a new file"));
+	a->setWhatsThis(i18n("New File: Create a new file"));
 
 	a = actionCollection()->addAction(KStandardAction::Open,  "file_open", editor, SLOT(openFile()));
 	a->setStatusTip(i18n("Open an existing file"));
+	a->setWhatsThis(i18n("Open File: Open an existing file"));
 
-	//TODO: Is this correct?
+	//TODO: Is this correct? -- It doesn't seem to be working
 	recentFilesAction = (KRecentFilesAction*)actionCollection()->addAction(KStandardAction::OpenRecent,  "file_recent", editor, SLOT(openFile(const KUrl&)));
 	recentFilesAction->setStatusTip(i18n("Open a recently used file"));
+	recentFilesAction->setWhatsThis(i18n("Open Recent File: Open a recently used file"));
 
 	a = actionCollection()->addAction(KStandardAction::Save,  "file_save", editor, SLOT(saveFile()));
 	a->setStatusTip(i18n("Save the current file to disk"));
+	a->setWhatsThis(i18n("Save File: Save the current file to disk"));
 	connect(editor, SIGNAL(modificationChanged(bool)), a, SLOT(setEnabled(bool)));
 
 	a = actionCollection()->addAction(KStandardAction::SaveAs,  "file_save_as", editor, SLOT(saveFileAs()));
 	a->setStatusTip(i18n("Save the current file under a different name"));
+	a->setWhatsThis(i18n("Save File As: Save the current file under a different name"));
 
 	runAct  = new KAction(KIcon("media-playback-start"), i18n("&Run"), this);
 	actionCollection()->addAction("run", runAct );
 	runAct->setShortcut(QKeySequence(Qt::Key_F5));
 	runAct->setStatusTip(i18n("Execute the code in the Code Editor"));
+	runAct->setWhatsThis(i18n("Run: Execute the code in the Code Editor"));
 	connect(runAct, SIGNAL(triggered()), this, SLOT(run()));
 
 	pauseAct  = new KAction(KIcon("media-playback-pause"), i18n("&Pause"), this);
@@ -193,52 +204,62 @@ void MainWindow::setupActions()
 	pauseAct->setCheckable(true);
 	pauseAct->setShortcut(QKeySequence(Qt::Key_F6));
 	pauseAct->setStatusTip(i18n("Pause execution"));
+	pauseAct->setWhatsThis(i18n("Pause: Pause execution"));
 	connect(pauseAct, SIGNAL(triggered()), this, SLOT(pause()));
 
 	abortAct  = new KAction(KIcon("process-stop"), i18n("&Abort"), this);
 	actionCollection()->addAction("abort", abortAct );
 	abortAct->setShortcut(QKeySequence(Qt::Key_F7));
 	abortAct->setStatusTip(i18n("Abort execution"));
+	abortAct->setWhatsThis(i18n("Abort: Stop executing code"));
 	connect(abortAct, SIGNAL(triggered()), this, SLOT(abort()));
 
 	a = actionCollection()->addAction(KStandardAction::Print,  "file_print", this, SLOT(printDlg()));
 	a->setStatusTip(i18n("Print the code"));
+	a->setWhatsThis(i18n("Print: Print the code"));
 
 	a = actionCollection()->addAction(KStandardAction::Quit,  "file_quit", this, SLOT(close()));
 	a->setStatusTip(i18n("Quit KTurtle"));
-
+	a->setWhatsThis(i18n("Quit: Quit KTurtle"));
 
 	// Edit menu actions
 	a = KStandardAction::undo(editor->view(), SLOT(undo()), ac);
-	a->setStatusTip(i18n("Undo a change in the Code Editor"));
+	a->setStatusTip(i18n("Undo a change in the editor"));
+	a->setWhatsThis(i18n("Undo: Undo a change in the editor"));
 	a->setEnabled(false);
 	connect(editor->view(), SIGNAL(undoAvailable(bool)), a, SLOT(setEnabled(bool)));
 
 	a = KStandardAction::redo(editor->view(), SLOT(redo()), ac);
-	a->setStatusTip(i18n("Redo a previously undone change in the Code Editor"));
+	a->setStatusTip(i18n("Redo a previously undone change in the editor"));
+	a->setWhatsThis(i18n("Redo: Redo a previously undone change in the editor"));
 	a->setEnabled(false);
 	connect(editor->view(), SIGNAL(redoAvailable(bool)), a, SLOT(setEnabled(bool)));
 
 	a = KStandardAction::cut(editor->view(), SLOT(cut()), ac);
 	a->setStatusTip(i18n("Cut the selected text to the clipboard"));
+	a->setWhatsThis(i18n("Cut: Cut the selected text to the clipboard"));
 	a->setEnabled(false);
 	connect(editor->view(), SIGNAL(copyAvailable(bool)), a, SLOT(setEnabled(bool)));
 
 	a = KStandardAction::copy(editor->view(), SLOT(copy()), ac);
 	a->setStatusTip(i18n("Copy the selected text to the clipboard"));
+	a->setWhatsThis(i18n("Copy: Copy the selected text to the clipboard"));
 	a->setEnabled(false);
 	connect(editor->view(), SIGNAL(copyAvailable(bool)), a, SLOT(setEnabled(bool)));
 
 	a = KStandardAction::paste(editor->view(), SLOT(paste()), ac);
 	a->setStatusTip(i18n("Paste the clipboard's content into the current selection"));
+	a->setWhatsThis(i18n("Paste: Paste the clipboard's content into the current selection"));
 
 	a = KStandardAction::selectAll(editor->view(), SLOT(selectAll()), ac);
 	a->setStatusTip(i18n("Select all the code in the editor"));
+	a->setWhatsThis(i18n("Select All: Select all the code in the editor"));
 	a->setEnabled(true);
 
 	a  = new KAction(i18n("Toggle &Insert"), this);
 	actionCollection()->addAction("set_insert", a );
 	a->setStatusTip(i18n("Toggle between the 'insert' and 'overwrite' mode"));
+	a->setWhatsThis(i18n("Toggle Insert: Toggle between the 'insert' and 'overwrite' mode"));
 	a->setShortcut(QKeySequence(Qt::Key_Insert));
 	a->setCheckable(true);
 	a->setChecked(true);
@@ -246,21 +267,26 @@ void MainWindow::setupActions()
 
 	a = KStandardAction::find(editor, SLOT(find()), ac);
 	a->setStatusTip(i18n("Search through the code in the editor"));
+	a->setWhatsThis(i18n("Find: Search through the code in the editor"));
 
 	a = KStandardAction::findNext(editor, SLOT(findNext()), ac);
 	a->setStatusTip(i18n("Find the next occurrence"));
+	a->setWhatsThis(i18n("Find Next: Continue searching through the code in the editor"));
 
 	a = KStandardAction::findPrev(editor, SLOT(findPrev()), ac);
 	a->setStatusTip(i18n("Find the previous occurrence"));
+	a->setWhatsThis(i18n("Find Previous: Continue searching backwards through the code in the editor"));
 
+	//TODO: Implement search/replace
 	//a = KStandardAction::replace(editor, SLOT(replace()), ac);
 	//a->setStatusTip(i18n("Search and replace"));
-
+	//a->setWhatsThis(i18n("Replace: Replace text in the editor"));
 
 	// View menu actions
 	a  = new KAction(i18n("Show &Code Editor"), this);
 	actionCollection()->addAction("show_editor", a );
 	a->setStatusTip(i18n("Show or hide the Code Editor"));
+	a->setWhatsThis(i18n("Show Code Editor: Show or hide the Code Editor"));
 	a->setCheckable(true);
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), editorDock, SLOT(setVisible(bool)));
@@ -269,6 +295,7 @@ void MainWindow::setupActions()
 	a  = new KAction(i18n("Show &Inspector"), this);
 	actionCollection()->addAction("show_inspector", a );
 	a->setStatusTip(i18n("Show or hide the Inspector"));
+	a->setWhatsThis(i18n("Show Inspector: Show or hide the Inspector"));
 	a->setCheckable(true);
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), inspectorDock, SLOT(setVisible(bool)));
@@ -277,6 +304,7 @@ void MainWindow::setupActions()
 	a  = new KAction(i18n("Show &Statusbar"), this);
 	actionCollection()->addAction("show_statusbar", a );
 	a->setStatusTip(i18n("Show or hide the Statusbar"));
+	a->setWhatsThis(i18n("Show Statusbar: Show or hide the Statusbar"));
 	a->setCheckable(true);
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), statusBar(), SLOT(setVisible(bool)));
@@ -284,6 +312,7 @@ void MainWindow::setupActions()
 	a  = new KAction(i18n("Show &Toolbar"), this);
 	actionCollection()->addAction("show_toolbar", a );
 	a->setStatusTip(i18n("Show or hide the Toolbar"));
+	a->setWhatsThis(i18n("Show Toolbar: Show or hide the Toolbar"));
 	a->setCheckable(true);
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), toolBar, SLOT(setVisible(bool)));
@@ -294,15 +323,18 @@ void MainWindow::setupActions()
 	a  = new KAction(i18n("&Direction chooser"), this);
 	actionCollection()->addAction("direction", a);
 	a->setStatusTip(i18n("Shows the direction chooser dialog"));
+	a->setWhatsThis(i18n("Direction Chooser: Show the direction chooser dialog"));
 	connect(a, SIGNAL(triggered()), this, SLOT(directionDialog()));
 
 	a  = new KAction(i18n("Show &Line Numbers"), this);
 	actionCollection()->addAction("line_numbers", a );
-	a->setStatusTip(i18n("Turn the editors line numbers on/off"));
+	a->setStatusTip(i18n("Turn the line numbers on/off in the editor"));
+	a->setWhatsThis(i18n("Show Line Numbers: Turn the line numbers on/off in the editor"));
 	a->setCheckable(true);
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), editor, SLOT(toggleLineNumbers(bool)));
 
+//TODO: Bring back the colorpicker?
     // 	colorpicker  = new KToggleAction(i18n("&Color Picker"), "colorize"), this);
 // 	new KAction(i18n("&Indent"), "format-indent-more", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
 // 	new KAction(i18n("&Unindent"), "format-indent-less", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
@@ -322,26 +354,31 @@ void MainWindow::setupActions()
 	contextHelpAct = ac->addAction("context_help");
 	contextHelpAct->setText("");
 	contextHelpAct->setIcon(KIcon("help-contents"));
-
 	contextHelpAct->setShortcut(QKeySequence(Qt::Key_F2));
 	contextHelpAct->setStatusTip(i18n("Get help on the command under the cursor"));
+	contextHelpAct->setWhatsThis(i18n("Context Help: Get help on the command under the cursor"));
 	connect(contextHelpAct, SIGNAL(triggered()), this, SLOT(contextHelp()));
 	setContextHelp();
 
 	a = actionCollection()->addAction(KStandardAction::AboutApp,  "about_app", this, SLOT(about()));
 	a->setStatusTip(i18n("Information about KTurtle"));
+	a->setWhatsThis(i18n("About KTurtle: Information about KTurtle"));
 
 	a = actionCollection()->addAction(KStandardAction::AboutKDE,  "about-kde", this, SLOT(aboutKDE()));
 	a->setStatusTip(i18n("Information about KDE"));
+	a->setWhatsThis(i18n("About KDE: Information about KDE"));
 
 	a = actionCollection()->addAction(KStandardAction::Help,  "help", this, SLOT(about()));
 	a->setStatusTip(i18n("Help"));
+	a->setWhatsThis(i18n("Help: Information about KTurtle"));
 
 	a = actionCollection()->addAction(KStandardAction::HelpContents,  "help_contents", this, SLOT(appHelpActivated()));
 	a->setStatusTip(i18n("Help"));
+	a->setWhatsThis(i18n("Help: Open manual for KTurtle"));
 
 	a = actionCollection()->addAction(KStandardAction::WhatsThis,  "whatsthis", this, SLOT(whatsThis()));
 	a->setStatusTip(i18n("Point and click information about the interface of KTurtle"));
+	a->setWhatsThis(i18n("Whats This?: Point and click information about the interface of KTurtle"));
 
 	// The run speed action group
 	QActionGroup* runSpeedGroup = new QActionGroup(this);
@@ -350,30 +387,40 @@ void MainWindow::setupActions()
 	actionCollection()->addAction("full_speed", fullSpeedAct );
 	fullSpeedAct->setCheckable(true);
 	fullSpeedAct->setChecked(true);
+	fullSpeedAct->setStatusTip(i18n("Run the program at full speed"));
+	fullSpeedAct->setWhatsThis(i18n("Full Speed: Run the program at full speed"));
 	connect(fullSpeedAct, SIGNAL(triggered()), this, SLOT(setFullSpeed()));
 	runSpeedGroup->addAction(fullSpeedAct);
 
 	slowSpeedAct  = new KAction(i18nc("@option:radio choose the slow speed", "&Slow"), this);
 	actionCollection()->addAction("slow_speed", slowSpeedAct );
 	slowSpeedAct->setCheckable(true);
+	slowSpeedAct->setStatusTip(i18n("Run the program at slow speed"));
+	slowSpeedAct->setWhatsThis(i18n("Slow Speed: Run the program at slow speed"));
 	connect(slowSpeedAct, SIGNAL(triggered()), this, SLOT(setSlowSpeed()));
 	runSpeedGroup->addAction(slowSpeedAct);
 
 	slowerSpeedAct  = new KAction(i18nc("@option:radio", "S&lower"), this);
 	actionCollection()->addAction("slower_speed", slowerSpeedAct );
 	slowerSpeedAct->setCheckable(true);
+	slowerSpeedAct->setStatusTip(i18n("Run the program at slower speed"));
+	slowerSpeedAct->setWhatsThis(i18n("Slower Speed: Run the program at slower speed"));
 	connect(slowerSpeedAct, SIGNAL(triggered()), this, SLOT(setSlowerSpeed()));
 	runSpeedGroup->addAction(slowerSpeedAct);
 
 	slowestSpeedAct  = new KAction(i18nc("@option:radio", "Sl&owest"), this);
 	actionCollection()->addAction("slowest_speed", slowestSpeedAct );
 	slowestSpeedAct->setCheckable(true);
+	slowestSpeedAct->setStatusTip(i18n("Run the program at slowest speed"));
+	slowestSpeedAct->setWhatsThis(i18n("Slowest Speed: Run the program at slowest speed"));
 	connect(slowestSpeedAct, SIGNAL(triggered()), this, SLOT(setSlowestSpeed()));
 	runSpeedGroup->addAction(slowestSpeedAct);
 
 	stepSpeedAct  = new KAction(i18nc("@option:radio", "S&tep-by-Step"), this);
 	actionCollection()->addAction("step_speed", stepSpeedAct );
 	stepSpeedAct->setCheckable(true);
+	stepSpeedAct->setStatusTip(i18n("Run the program one step at a time"));
+	stepSpeedAct->setWhatsThis(i18n("Step Speed: Run the program one step at a time"));
 	connect(stepSpeedAct, SIGNAL(triggered()), this, SLOT(setStepSpeed()));
 	runSpeedGroup->addAction(stepSpeedAct);
 }
@@ -390,6 +437,7 @@ void MainWindow::setupCanvas()
 	canvas->setRenderHint(QPainter::Antialiasing);
 	hboxLayout->addWidget(canvas);
 	setCentralWidget(centralWidget);
+	canvas->setWhatsThis(i18n("Canvas: This is where the turtle moves and draws when the program is running"));
 }
 
 void MainWindow::setupDockWindows()
@@ -408,6 +456,7 @@ void MainWindow::setupDockWindows()
 	addDockWidget(Qt::LeftDockWidgetArea, editorDock);
 	editor->show();
 	editor->setFocus();
+	editor->setWhatsThis(i18n("Code Editor: Type your KTurtle programs here"));
 
 	//Creating the debug window
 	inspectorDock = new LocalDockWidget(i18n("&Inspector"), this);
@@ -420,6 +469,7 @@ void MainWindow::setupDockWindows()
 	inspectorDockLayout->addWidget(inspector);
 	inspectorDock->setWidget(inspectorWrapWidget);
 	addDockWidget(Qt::LeftDockWidgetArea, inspectorDock);
+	inspector->setWhatsThis(i18n("Inspector: See information about variables and functions when the program runs"));
 }
 
 void MainWindow::setupEditor()
@@ -466,10 +516,9 @@ void MainWindow::setupMenus()
 	      << "set_insert" << "-"
 	      << i18n("&View")
 	      //<< "full_screen" << "-"
-	      << "show_editor" << "show_inspector" << "show_statusbar" << "show_toolbar" << "-"
+	      << "show_editor" << "line_numbers" << "show_inspector" << "show_statusbar" << "show_toolbar" << "-"
 	      << i18n("&Tools")
 	      << "direction" << "-"
-	      << "line_numbers" << "-"
 	      //<< "edit_indent" << "edit_unindent" << "-"
 	      //<< "edit_comment" << "edit_uncomment" << "-"
 	      << i18n("&Settings")
@@ -544,6 +593,8 @@ void MainWindow::setupToolBar()
 			runOptionBox->addItem(i18nc("@option:radio", "Slower"));
 			runOptionBox->addItem(i18nc("@option:radio", "Slowest"));
 			runOptionBox->addItem(i18nc("@option:radio", "Step by Step"));
+			runOptionBox->setStatusTip(i18n("Choose program run speed"));
+			runOptionBox->setWhatsThis(i18n("Run Speed: Choose program run speed"));
 			connect(runOptionBox, SIGNAL(activated(int)), this, SLOT(setRunSpeed(int)));
 			toolBar->addWidget(runOptionBox);
 		} else {
