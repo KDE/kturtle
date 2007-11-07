@@ -34,11 +34,11 @@ qt4_add_resources (kturtle_RCC_SRCS ${kturtle_RCCS})
 
 
 if(MSVC)
-  set(kturtle_SRCS ${kurtle_SRCS} kurtle.rc)
+  set(kturtle_SRCS ${kturtle_SRCS} kturtle.rc)
 endif(MSVC)
 
 if(MINGW)
-   KDE_ADD_RESOURCES2(kurtle_SRCS kurtle.rc)
+   KDE_ADD_RESOURCES2(kturtle_SRCS kturtle.rc)
 endif(MINGW)
 
 kde4_add_executable (
