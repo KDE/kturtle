@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+<gui name="kturtle" version="1">
+
+<MenuBar>
+  <Menu name="file"><text>&amp;File</text>
+    <Action name="file_new" />
+    <Action name="file_open" />
+    <Separator />
+    <Action name="file_recent" />
+    <Action name="file_save" />
+    <Action name="file_saveas" />
+    <Separator />
+    <Menu name="examples"><text>&amp;Examples</text>
+    </Menu>
+    <Separator />
+    <Menu name="speed"><text>&amp;Speed</text>
+        <Action name="full_speed" />
+        <Action name="slow_speed" />
+        <Action name="slower_speed" />
+        <Action name="slowest_speed" />
+	<Action name="step_speed" />
+    </Menu>
+    <Action name="run" />
+    <Action name="pause" />
+    <Action name="abort" />
+    <Separator />
+    <Action name="file_print" />
+    <Action name="file_quit" />
+  </Menu>
+  <Menu name="edit"><text>&amp;Edit</text>
+    <Action name="edit_undo" />
+    <Action name="edit_redo" />
+    <Separator />
+    <Action name="edit_cut" />
+    <Action name="edit_paste" />
+    <Separator />
+    <Action name="edit_find" />
+    <Action name="edit_find_next" />
+    <Action name="edit_find_prev" />
+    <Action name="edit_replace" />
+    <Separator />
+    <Action name="set_insert" />
+  </Menu>
+  <Menu name="view"><text>&amp;View</text>
+    <Action name="show_editor" />
+    <Action name="line_numbers" />
+    <Action name="show_inspector" />
+  </Menu>
+  <Menu name="tools"><text>&amp;Tools</text>
+    <Action name="direction" />
+  </Menu>
+  <Menu name="settings"><text>&amp;Settings</text>
+    <Action name="language" />
+  </Menu>
+</MenuBar>
+
+<ToolBar name="mainToolBar"><text>Main Toolbar</text>
+  <Action name="file_new" />
+  <Action name="file_open" />
+  <Action name="file_save" />
+  <Separator />
+  <Action name="run" />
+  <Action name="pause" />
+  <Action name="abort" />
+</ToolBar>
+
+</gui>

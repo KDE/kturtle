@@ -71,6 +71,8 @@ install (
     ${XDG_APPS_INSTALL_DIR}
 )
 
+install( FILES kturtleui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kturtle )
+
 # install (
 #   FILES
 #     interpreter/KTurtleDictionary.en_US.xml

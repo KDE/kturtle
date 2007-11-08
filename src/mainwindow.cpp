@@ -51,18 +51,14 @@ static const int MARGIN_SIZE = 3;  // defaultly styled margins look shitty
 
 MainWindow::MainWindow()
 {
-	toolBar = new LocalToolBar(i18n("Toolbar"), this);  // forward definition
-	toolBar->setObjectName("toolbar");
-	addToolBar(toolBar);
-
 	setupDockWindows();  // the setup order matters
 	setupActions();
 	setupCanvas();
 	setupInterpreter();
 	setupEditor();
-	setupMenus();
+//	setupMenus();
 	setupStatusBar();
-	setupToolBar();
+//	setupToolBar();
 
 	iterationTimer = new QTimer(this);
 	connect(iterationTimer, SIGNAL(timeout()), this, SLOT(iterate()));
@@ -70,8 +66,9 @@ MainWindow::MainWindow()
 	statusBar()->showMessage(i18nc("@info:status the application is ready for commands", "Ready"));
 	setCaption();  // also sets the window caption to 'untitled'
 	setRunSpeed(0);
-	abort();  // sets the run-states for the actions right
+	abort();  // sets the run-states for the actions right*/
 
+	setupGUI();
 	// after all is set up:
 	setAutoSaveSettings();
 	readConfig();
@@ -117,28 +114,23 @@ void MainWindow::directionDialog()
 	}
 }
 
-void MainWindow::about()
+/*void MainWindow::about()
 {
 	KMessageBox::about(this,
 		i18n("KTurtle is an educational programming environment that aims to make programming as easy as possible, especially for young children. KTurtle intends to help teaching kids the basics of math, geometry, and programming."), i18n("About KTurtle"));
 // 	new KAboutApplication();
-}
+}*/
 
-void MainWindow::aboutKDE()
-{
-//TODO remove this function or make it do something
-// 	new KAboutKDE(this);
-}
 
 void MainWindow::contextHelp()
 {
 //TODO display a help dialog about syntax commands
 }
 
-void MainWindow::whatsThis()
+/*void MainWindow::whatsThis()
 {
 	QWhatsThis::enterWhatsThisMode();
-}
+}*/
 
 void MainWindow::documentWasModified()
 {
@@ -155,7 +147,7 @@ void MainWindow::setRunSpeed(int speed)
 		case 3: slowestSpeedAct->setChecked(true); break;
 		case 4: stepSpeedAct->setChecked(true);    break;
 	}
-	runOptionBox->setCurrentIndex(speed);
+	//TODO runOptionBox->setCurrentIndex(speed);
 	runSpeed = speed;
 }
 
@@ -301,24 +293,6 @@ void MainWindow::setupActions()
 	connect(a, SIGNAL(toggled(bool)), inspectorDock, SLOT(setVisible(bool)));
 	connect(inspectorDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
 
-	a  = new KAction(i18n("Show &Statusbar"), this);
-	actionCollection()->addAction("show_statusbar", a );
-	a->setStatusTip(i18n("Show or hide the Statusbar"));
-	a->setWhatsThis(i18n("Show Statusbar: Show or hide the Statusbar"));
-	a->setCheckable(true);
-	a->setChecked(true);
-	connect(a, SIGNAL(toggled(bool)), statusBar(), SLOT(setVisible(bool)));
-
-	a  = new KAction(i18n("Show &Toolbar"), this);
-	actionCollection()->addAction("show_toolbar", a );
-	a->setStatusTip(i18n("Show or hide the Toolbar"));
-	a->setWhatsThis(i18n("Show Toolbar: Show or hide the Toolbar"));
-	a->setCheckable(true);
-	a->setChecked(true);
-	connect(a, SIGNAL(toggled(bool)), toolBar, SLOT(setVisible(bool)));
-	connect(toolBar, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
-
-
 	// Tools menu actions
 	a  = new KAction(i18n("&Direction chooser"), this);
 	actionCollection()->addAction("direction", a);
@@ -343,12 +317,6 @@ void MainWindow::setupActions()
 // 	new KAction(i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
 
 
-	// Settings menu actions
-        //TODO: implement
-	//a = KStandardAction::keyBindings(this, SLOT(editKeys()), ac);
-	//a->setStatusTip(i18n("Configure the application's keyboard shortcut assignments."));
-
-
 	// Help menu actions
         //TODO: implement context help
 	contextHelpAct = ac->addAction("context_help");
@@ -360,25 +328,13 @@ void MainWindow::setupActions()
 	connect(contextHelpAct, SIGNAL(triggered()), this, SLOT(contextHelp()));
 	setContextHelp();
 
-	a = actionCollection()->addAction(KStandardAction::AboutApp,  "about_app", this, SLOT(about()));
-	a->setStatusTip(i18n("Information about KTurtle"));
-	a->setWhatsThis(i18n("About KTurtle: Information about KTurtle"));
-
-	a = actionCollection()->addAction(KStandardAction::AboutKDE,  "about-kde", this, SLOT(aboutKDE()));
-	a->setStatusTip(i18n("Information about KDE"));
-	a->setWhatsThis(i18n("About KDE: Information about KDE"));
-
-	a = actionCollection()->addAction(KStandardAction::Help,  "help", this, SLOT(about()));
-	a->setStatusTip(i18n("Help"));
-	a->setWhatsThis(i18n("Help: Information about KTurtle"));
-
 	a = actionCollection()->addAction(KStandardAction::HelpContents,  "help_contents", this, SLOT(appHelpActivated()));
 	a->setStatusTip(i18n("Help"));
 	a->setWhatsThis(i18n("Help: Open manual for KTurtle"));
 
-	a = actionCollection()->addAction(KStandardAction::WhatsThis,  "whatsthis", this, SLOT(whatsThis()));
+	/*a = actionCollection()->addAction(KStandardAction::WhatsThis,  "whatsthis", this, SLOT(whatsThis()));
 	a->setStatusTip(i18n("Point and click information about the interface of KTurtle"));
-	a->setWhatsThis(i18n("Whats This?: Point and click information about the interface of KTurtle"));
+	a->setWhatsThis(i18n("Whats This?: Point and click information about the interface of KTurtle"));*/
 
 	// The run speed action group
 	QActionGroup* runSpeedGroup = new QActionGroup(this);
@@ -499,7 +455,7 @@ void MainWindow::setupInterpreter()
 		inspector, SLOT(updateTree(TreeNode*)));
 }
 
-void MainWindow::setupMenus()
+/*void MainWindow::setupMenus()
 {
 	QList<QString> items;
 	items << i18n("&File")
@@ -601,7 +557,7 @@ void MainWindow::setupToolBar()
 			toolBar->addAction(actionCollection()->action(item));
 		}
 	}
-}
+}*/
 
 void MainWindow::setupStatusBar()
 {
@@ -628,6 +584,7 @@ void MainWindow::setupStatusBar()
 
 void MainWindow::updateExamplesMenu()
 {
+/*TODO reimplement after XMLGUI
 	examplesMenu->clear();
 
 	QAction* a;
@@ -641,7 +598,7 @@ void MainWindow::updateExamplesMenu()
 		QAction* a = new QAction(i18nc("@info:status there are no examples", "(empty)"), this);
 		a->setEnabled(false);
 		examplesMenu->addAction(a);
-	}
+	}*/
 }
 
 void MainWindow::open(const QString& pathOrUrl)

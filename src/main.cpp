@@ -36,7 +36,7 @@
 
 
 static const char description[] =
-	I18N_NOOP("KTurtle; an educational programming environment.");
+	I18N_NOOP("KTurtle is an educational programming environment that aims to make programming as easy as possible, especially for young children. KTurtle intends to help teaching kids the basics of math, geometry, and programming.");
 
 static const char version[]   = "0.8 beta";
 static const char copyright[] = "(c) 2003-2006 Cies Breijs";

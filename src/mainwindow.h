@@ -89,10 +89,8 @@ class MainWindow : public KXmlGuiWindow
 		void abort();
 		void iterate();
 
-		void about();
-		void aboutKDE();
 		void contextHelp();
-		void whatsThis();
+		//void whatsThis();
 		void documentWasModified();
 		void setRunSpeed(int);
 
@@ -117,8 +115,8 @@ class MainWindow : public KXmlGuiWindow
 		void setupDockWindows();
 		void setupEditor();
 		void setupInterpreter();
-		void setupMenus();
-		void setupToolBar();
+		//void setupMenus();
+		//void setupToolBar();
 		void setupStatusBar();
 
 		void readConfig();
@@ -147,7 +145,6 @@ class MainWindow : public KXmlGuiWindow
 
 		LocalDockWidget*  editorDock;
 		LocalDockWidget*  inspectorDock;
-		LocalToolBar*     toolBar;
 		QTimer      *iterationTimer;
 		int          runSpeed;
 
@@ -168,24 +165,6 @@ class MainWindow : public KXmlGuiWindow
 		KAction *pauseAct;
 		KAction *abortAct;
 		KAction *quitAct;
-
-// 		KAction *undoAct;
-// 		KAction *redoAct;
-// 		KAction *cutAct;
-// 		KAction *copyAct;
-// 		KAction *pasteAct;
-// 		KAction *selectAllAct;
-// 		KAction *deselectAllAct;
-// 		KAction *toggleInsertAct;
-// 		KAction *findAct;
-// 		KAction *findNextAct;
-// 		KAction *findPreviousAct;
-// 		KAction *replaceAct;
-
-// 		KToggleAction* showStatusbarAct;
-//
-// 		KAction *aboutAct;
-// 		KAction *aboutKdeAct;
 
 		QAction *contextHelpAct;
 
