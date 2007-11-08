@@ -187,8 +187,8 @@ void MainWindow::setupActions()
 	runAct  = new KAction(KIcon("media-playback-start"), i18n("&Run"), this);
 	actionCollection()->addAction("run", runAct );
 	runAct->setShortcut(QKeySequence(Qt::Key_F5));
-	runAct->setStatusTip(i18n("Execute the code in the Code Editor"));
-	runAct->setWhatsThis(i18n("Run: Execute the code in the Code Editor"));
+	runAct->setStatusTip(i18n("Execute the program"));
+	runAct->setWhatsThis(i18n("Run: Execute the program"));
 	connect(runAct, SIGNAL(triggered()), this, SLOT(run()));
 
 	pauseAct  = new KAction(KIcon("media-playback-pause"), i18n("&Pause"), this);
@@ -202,8 +202,8 @@ void MainWindow::setupActions()
 	abortAct  = new KAction(KIcon("process-stop"), i18n("&Abort"), this);
 	actionCollection()->addAction("abort", abortAct );
 	abortAct->setShortcut(QKeySequence(Qt::Key_F7));
-	abortAct->setStatusTip(i18n("Abort execution"));
-	abortAct->setWhatsThis(i18n("Abort: Stop executing code"));
+	abortAct->setStatusTip(i18n("Stop executing program"));
+	abortAct->setWhatsThis(i18n("Abort: Stop executing program"));
 	connect(abortAct, SIGNAL(triggered()), this, SLOT(abort()));
 
 	a = actionCollection()->addAction(KStandardAction::Print,  "file_print", this, SLOT(printDlg()));
@@ -262,11 +262,11 @@ void MainWindow::setupActions()
 	a->setWhatsThis(i18n("Find: Search through the code in the editor"));
 
 	a = KStandardAction::findNext(editor, SLOT(findNext()), ac);
-	a->setStatusTip(i18n("Find the next occurrence"));
+	a->setStatusTip(i18n("Continue searching through the code in the editor"));
 	a->setWhatsThis(i18n("Find Next: Continue searching through the code in the editor"));
 
 	a = KStandardAction::findPrev(editor, SLOT(findPrev()), ac);
-	a->setStatusTip(i18n("Find the previous occurrence"));
+	a->setStatusTip(i18n("Continue searching backwards through the code in the editor"));
 	a->setWhatsThis(i18n("Find Previous: Continue searching backwards through the code in the editor"));
 
 	//TODO: Implement search/replace
