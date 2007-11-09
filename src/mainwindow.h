@@ -81,7 +81,7 @@ class MainWindow : public KXmlGuiWindow
 		void open(const QString&);
 
 	private slots:
-		void openExample(QAction *);
+		void openExample();
 		void printDlg();
 
 		void run();

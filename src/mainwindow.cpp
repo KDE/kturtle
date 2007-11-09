@@ -584,21 +584,21 @@ void MainWindow::setupStatusBar()
 
 void MainWindow::updateExamplesMenu()
 {
-/*TODO reimplement after XMLGUI
-	examplesMenu->clear();
+	KAction * newExample;
+	QString actionName;
+	QList<QAction *> exampleList;
+	QActionGroup * exampleGroup = new QActionGroup (this);
 
-	QAction* a;
 	foreach (const QString &exampleName, Translator::instance()->exampleNames()) {
-		a = new QAction(exampleName, actionCollection());
-		a->setData(exampleName); 
-		examplesMenu->addAction(a);
-	}
+		newExample = new KAction (exampleName, this);
+		newExample->setData(exampleName);
+		exampleGroup->addAction (newExample);
 
-	if (examplesMenu->actions().isEmpty()) {
-		QAction* a = new QAction(i18nc("@info:status there are no examples", "(empty)"), this);
-		a->setEnabled(false);
-		examplesMenu->addAction(a);
-	}*/
+		connect (newExample, SIGNAL(triggered()), this, SLOT(openExample()));
+		exampleList.append (newExample);
+	}
+	unplugActionList ("examples_actionlist");
+	plugActionList   ("examples_actionlist", exampleList);
 }
 
 void MainWindow::open(const QString& pathOrUrl)
@@ -606,8 +606,9 @@ void MainWindow::open(const QString& pathOrUrl)
 	editor->openFile(KUrl(pathOrUrl));
 }
 
-void MainWindow::openExample(QAction *action)
+void MainWindow::openExample()
 {
+	QAction *action = qobject_cast<QAction*>(sender());
 	QString exampleName = action->data().toString();
 	editor->openExample(Translator::instance()->example(exampleName), exampleName);
 }

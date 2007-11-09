@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<gui name="kturtle" version="1">
+<gui name="kturtle" version="2">
 
 <MenuBar>
   <Menu name="file"><text>&amp;File</text>
@@ -12,6 +12,7 @@
     <Action name="file_saveas" />
     <Separator />
     <Menu name="examples"><text>&amp;Examples</text>
+	<ActionList name="examples_actionlist" />
     </Menu>
     <Separator />
     <Menu name="speed"><text>&amp;Speed</text>
