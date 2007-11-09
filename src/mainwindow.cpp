@@ -70,6 +70,7 @@ MainWindow::MainWindow()
 
 	setupGUI();
 	// after all is set up:
+	updateLanguagesMenu();
 	setAutoSaveSettings();
 	readConfig();
 }
@@ -581,6 +582,29 @@ void MainWindow::setupStatusBar()
 	updateOnCursorPositionChange(1, 1, "");
 }
 
+void MainWindow::updateLanguagesMenu()
+{
+	QList<QAction *> languageList;
+	QActionGroup* languageGroup = new QActionGroup(this);
+	connect(languageGroup, SIGNAL(triggered(QAction *)), this, SLOT(setLanguage(QAction *)));
+	QAction* a;
+	// sort the dictionaries using an algorithm found the the qt docs:
+	QMap<QString, QString> map;
+	foreach (const QString &lang_code, KGlobal::locale()->languageList())
+		map.insert(codeToFullName(lang_code), lang_code);
+				// populate the menu:
+	foreach (const QString &lang_code, map.values()) {
+		a = new QAction(codeToFullName(lang_code), actionCollection());
+		a->setData(lang_code);
+		a->setStatusTip(i18n("Switch to the %1 dictionary", codeToFullName(lang_code)));
+		a->setCheckable(true);
+		//languageMenu->addAction(a);
+		languageGroup->addAction(a);
+		languageList.append(a);
+	}
+	unplugActionList ("languages_actionlist");
+	plugActionList   ("languages_actionlist", languageList);
+}
 
 void MainWindow::updateExamplesMenu()
 {

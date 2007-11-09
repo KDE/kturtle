@@ -126,6 +126,7 @@ class MainWindow : public KXmlGuiWindow
 		QString codeToFullName(const QString& lang_code = QString());
 
 		void updateExamplesMenu();
+		void updateLanguagesMenu();
 		bool setCurrentLanguage(const QString &);
 
 	private slots:

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<gui name="kturtle" version="2">
+<gui name="kturtle" version="3">
 
 <MenuBar>
   <Menu name="file"><text>&amp;File</text>
@@ -52,7 +52,9 @@
     <Action name="direction" />
   </Menu>
   <Menu name="settings"><text>&amp;Settings</text>
-    <Action name="language" />
+    <Menu name="language"><text>&amp;Script Language</text>
+        <ActionList name="languages_actionlist" />
+    </Menu>
   </Menu>
 </MenuBar>
 
