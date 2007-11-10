@@ -408,7 +408,7 @@ void Executer::executeFunctionCall(TreeNode* node) {
 	}
 
 	if (!functionTable.contains(node->token()->look())) {
-		addError(i18n("An unknown function with named '%1' was called", node->token()->look()), *node->token(), 0);
+		addError(i18n("An unknown function named '%1' was called", node->token()->look()), *node->token(), 0);
 		return;
 	}
 	
@@ -423,7 +423,7 @@ void Executer::executeFunctionCall(TreeNode* node) {
 	// if the parameter numbers are not equal...
 	if (node->childCount() != learnNode->child(1)->childCount()) {
 		addError(
-			i18n("The function '%1' was called with %2, while it should should be called with %3",
+			i18n("The function '%1' was called with %2, while it should be called with %3",
 				node->token()->look(),
 				i18np("1 parameter", "%1 parameters", node->childCount()),
 				i18np("1 parameter", "%1 parameters", learnNode->child(1)->childCount())
