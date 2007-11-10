@@ -33,13 +33,22 @@ qt4_add_resources (kturtle_RCC_SRCS ${kturtle_RCCS})
 
 
 
-if(MSVC)
-  set(kturtle_SRCS ${kturtle_SRCS} kturtle.rc)
-endif(MSVC)
-
-if(MINGW)
-   KDE_ADD_RESOURCES2(kturtle_SRCS kturtle.rc)
-endif(MINGW)
+#uncomment this if oxygen icons for kturtle are available
+#set(kturtle_icons
+#    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/16x16/apps/kturtle.png
+#    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/32x32/apps/kturtle.png
+#    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/48x48/apps/kturtle.png
+#    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/64x64/apps/kturtle.png
+#    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/128x128/apps/kturtle.png
+#)
+set(kturtle_icons
+    ${CMAKE_CURRENT_SOURCE_DIR}/kturtle/icons/hi16-app-kturtle.png
+    ${CMAKE_CURRENT_SOURCE_DIR}/kturtle/icons/hi32-app-kturtle.png
+    ${CMAKE_CURRENT_SOURCE_DIR}/kturtle/icons/hi48-app-kturtle.png
+    ${CMAKE_CURRENT_SOURCE_DIR}/kturtle/icons/hi64-app-kturtle.png
+    ${CMAKE_CURRENT_SOURCE_DIR}/kturtle/icons/hi128-app-kturtle.png
+)
+kde4_add_win32_app_icon(kturtle kturtle_SRCS ${kturtle_icons})
 
 kde4_add_executable (
   kturtle
