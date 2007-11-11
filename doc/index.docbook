@@ -42,14 +42,22 @@
 <holder>Cies Breijs</holder>
 </copyright>
 
+<copyright>
+<year>2004</year><year>2007</year>
+<holder>&Anne-Marie.Mahfouf;</holder>
+</copyright>
+
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2005-12-10</date>
-<releaseinfo>0.6</releaseinfo>
+<date>2007-11-09</date>
+<releaseinfo>0.8</releaseinfo>
 
 <abstract>
 <para>
-&kturtle; is an educational programming environment using the &logo; programming language. The unique quality of LOGO is that the programming commands are translated to the language of the 'programmer' so he/she can program in his/her native language.
+&kturtle; is an educational programming environment based on the &logo;
+programming language (but not using an existing &logo;). The unique quality of
+&logo; is that the programming commands are translated to the language of the
+'programmer' so he/she can program in his/her native language.
 </para>
 </abstract>
 
@@ -72,10 +80,19 @@
 <chapter id="introduction">
 <title>Introduction</title>
 
-<para>&kturtle; is an educational programming environment using the
-<link linkend="what-is-logo">&logo;</link> programming language. The goal of &kturtle; is to make programming as easy and accessible as possible. This makes &kturtle; suitable for teaching kids the basics of math, geometry and... programming. The commands used to program are in the style of the &logo; programming language. The unique feature of the &logo; programming language is that the commands are often translated into the speaking language of the programmer.</para>
+<para>&kturtle; is an educational programming environment based on the
+<link linkend="what-is-logo">&logo;</link> programming language. The goal of
+&kturtle; is to make programming  as easy and accessible as possible. This makes
+&kturtle; suitable for teaching kids the basics of math, geometry and...
+programming. The commands used to program are in the style of the &logo;
+programming language. The unique feature of the &logo; programming language is
+that the commands are often translated into the speaking language of the
+programmer.</para>
 
-<para>&kturtle; is named after <quote>the turtle</quote> that plays a central role in the programming environment. The user programs the turtle, using the &logo; commands, to draw a picture on <link linkend="the-canvas">the canvas</link>.</para>
+<para>&kturtle; is named after <quote>the turtle</quote> that plays a central
+role in the programming environment. The user programs the turtle, using the
+&logo; commands, to draw a picture on <link linkend="the-canvas">the
+canvas</link>.</para>
 
 <sect1 id="what-is-logo">
 <title>What is &logo;?</title>
@@ -98,15 +115,17 @@ foundation/</ulink>.</para>
 <para>&kturtle; has some nice features that make starting to program a breeze. See here some of the highlights of &kturtle; feature set:
 <itemizedlist>
 <listitem><para>
-An integrated &logo; interpreter (no extra dependencies) that uses &XML; files for the command translations, supports user defined functions and dynamic type switching.
+An integrated &logo; interpreter (no extra dependencies) that uses &XML; files
+fo  the command translations, supports user defined functions and dynamic type
+switching.
 </para></listitem>
 <listitem><para>
 The execution can be slown down, paused or stopped at any time.
 </para></listitem>
-<listitem><para>
-A powerful editor for the &logo; commands with intuitive syntax highlighting, line numbering and more.
+<listitem><para>A powerful editor for the &logo; commands with intuitive syntax
+highlighting, line numbering and more.
 </para></listitem>
-<listitem><para>
+<listitem><para>                                                         
 <link linkend="the-canvas">The canvas</link> can be saved as an image or printed.
 </para></listitem>
 <listitem><para>
@@ -116,7 +135,9 @@ A powerful editor for the &logo; commands with intuitive syntax highlighting, li
 Context help for all &logo; commands: Just press <keysym>F2</keysym>.
 </para></listitem>
 <listitem><para>
-The &logo; commands are fully translatable (at the moment of writing Brazilian Portuguese, Dutch, French, German, Italian, Slovenian, Serbian (Cyrillic and Latin), Spanish and Swedish are in &kde;).
+The &logo; commands are fully translatable (at the moment of writing
+Brazilian Portuguese, Dutch, French, German, Italian, Slovenian, Serbian
+(Cyrillic and Latin), Spanish and Swedish are in &kde;).
 </para></listitem>
 <listitem><para>
 An error dialog that links the error messages to the mistakes in the program.
@@ -128,7 +149,8 @@ Simplified programming terminology.
 Full-screen mode.
 </para></listitem>
 <listitem><para>
-Many integrated, internationalized example &logo; programs make it easy to get started.
+Many integrated, internationalized example &logo; programs make it easy to get
+started.
 </para></listitem>
 </itemizedlist>
 </para>
@@ -152,41 +174,56 @@ Many integrated, internationalized example &logo; programs make it easy to get s
 <para>
 &kturtle;
 </para>
-<para>Program copyright 2003-2005 Cies Breijs <email>cies AT kde DOT nl</email></para>
+<para>Program copyright 2003-2007 Cies Breijs <email>cies AT kde DOT
+nl</email></para>
 <para>
 Contributors:
 <itemizedlist>
-<listitem><para>Coding help, editor part: &Anne-Marie.Mahfouf; &Anne-Marie.Mahfouf.mail;</para>
+<listitem><para>Coding help, editor part: &Anne-Marie.Mahfouf;
+&Anne-Marie.Mahfouf.mail;</para>
 </listitem>
-<listitem><para>Author of <application>WSBASIC</application> (<ulink url="http://wsbasic.sourceforge.net">http://wsbasic.sourceforge.net</ulink>) which is the base for the interpreter of &kturtle;: Walter Schreppers <email>Walter DOT Schreppers AT ua DOT ac DOT be</email></para>
+<listitem><para>Author of <application>WSBASIC</application> (<ulink
+url="http://wsbasic.sourceforge.net">http://wsbasic.sourceforge.net</ulink>)
+which is the base for the interpreter of &kturtle;: Walter Schreppers
+<email>Walter DOT Schreppers AT ua DOT ac DOT be</email></para>
 </listitem>
-<listitem><para>German Data Files: Matthias Me&szlig;mer <email>bmlmessmer AT web DOT de</email></para>
+<listitem><para>German Data Files: Matthias Me&szlig;mer <email>bmlmessmer AT
+web DOT de</email></para>
 </listitem>
 <listitem><para>German Data Files: Burkhard L&uuml;ck <email>lueck AT hube-lueck DOT de</email></para>
+</listitem>                        
+<listitem><para>Swedish Data Files: Stefan Asserh&#228;ll <email>stefan DOT
+asserhal AT telia DOT com</email></para>
+</listitem>                                
+<listitem><para>Slovenian Data Files: Jure Repinc
+<email>jlp@holodeck1.com</email></para>
 </listitem>
-<listitem><para>Swedish Data Files: Stefan Asserh&#228;ll <email>stefan DOT asserhal AT telia DOT com</email></para>
+<listitem><para>Serbian (Cyrillic and Latin) Data Files: Chusslove
+Illich <email>caslav.ilic@gmx.net</email></para>
 </listitem>
-<listitem><para>Slovenian Data Files: Jure Repinc <email>jlp@holodeck1.com</email></para>
+<listitem><para>Italian Data Files: Pino
+Toscano <email>toscano.pino@tiscali.it</email></para>
 </listitem>
-<listitem><para>Serbian (Cyrillic and Latin) Data Files: Chusslove Illich <email>caslav.ilic@gmx.net</email></para>
+<listitem><para>English GB Data Files: Andy
+Potter <email>A.J.Potter@rhul.ac.uk</email></para>
 </listitem>
-<listitem><para>Italian Data Files: Pino Toscano <email>toscano.pino@tiscali.it</email></para>
+<listitem><para>Spanish Data Files: Rafael
+Beccar <email>rafael.beccar@kdemail.net</email></para>
 </listitem>
-<listitem><para>English GB Data Files: Andy Potter <email>A.J.Potter@rhul.ac.uk</email></para>
+<listitem><para>Brazilian Portuguese Data Files: Riverson Rios
+<email>riverson@ccv.ufc.br</email></para>
 </listitem>
-<listitem><para>Spanish Data Files: Rafael Beccar <email>rafael.beccar@kdemail.net</email></para>
+<listitem><para>Norwegian Nynorsk and Bokmål Data Files: Karl Ove Hufthammer
+<email>karl@huftis.org</email></para>
 </listitem>
-<listitem><para>Brazilian Portuguese Data Files: Riverson Rios <email>riverson@ccv.ufc.br</email></para>
-</listitem>
-<listitem><para>Norwegian Nynorsk and Bokmål Data Files: Karl Ove Hufthammer <email>karl@huftis.org</email></para>
-</listitem>
-<listitem><para>Parser Cyrillic support: Albert Astals Cid <email>astals11@terra.es</email></para>
+<listitem><para>Parser Cyrillic support: Albert Astals
+Cid <email>astals11@terra.es</email></para>
 </listitem>
 </itemizedlist>
 </para>
 
 <para>
-Documentation copyright 2004
+Documentation copyright 2004, 2007
 <itemizedlist>
 <listitem><para>
 Cies Breijs <email>cies AT kde DOT nl</email>
@@ -194,9 +231,11 @@ Cies Breijs <email>cies AT kde DOT nl</email>
 <listitem><para>
 &Anne-Marie.Mahfouf; <email>annma AT kde DOT org</email>
 </para></listitem>
-<listitem><para>Some proofreading changes by &Philip.Rodrigues; &Philip.Rodrigues.mail;</para>
+<listitem><para>Some proofreading changes by &Philip.Rodrigues;
+&Philip.Rodrigues.mail;</para>
 </listitem>
-<listitem><para>Updated translation how-to and some proofreading changes by Andrew Coles <email>andrew_coles AT yahoo DOT co DOT uk</email></para>
+<listitem><para>Updated translation how-to and some proofreading changes by
+Andrew Coles <email>andrew_coles AT yahoo DOT co DOT uk</email></para>
 </listitem>
 
 </itemizedlist>

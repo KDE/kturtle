@@ -15,7 +15,18 @@
   </mediaobject>
 </screenshot>
 
-<para>The main window of &kturtle; has two main parts: <link linkend="the-code-editor">the code editor</link> (3) on the left where you type the &logo; commands,  and <link linkend="the-canvas">the canvas</link> (4) on the right where the instructions are visualized. <link linkend="the-canvas">The canvas</link> is the turtle's playground: it is on the canvas that the turtle actually moves and draws. The three other places on the main window are: <link linkend="the-menubar">the menu bar</link> (1) from where all the actions can be reached, <link linkend="the-toolbar">the toolbar</link> (2) that allows you to quickly select the most used actions, and <link linkend="the-statusbar">the statusbar</link> (5) where you will find feedback on the state of &kturtle;.</para>
+<para>The main window of &kturtle; has three main parts: <link
+linkend="the-code-editor">the code editor</link> (3) on the left where you type
+the &logo; commands, the <link linkend="the-inspector">inspector</link> (4)
+which gives you information baout variables when the program runs, and <link
+linkend="the-canvas">the canvas</link> (5) on the right where the instructions
+are visualized. <link linkend="the-canvas">The canvas</link> is the turtle's
+playground: it is on the canvas that the turtle actually moves and draws. The
+three other places on the main window are: <link linkend="the-menubar">the menu
+bar</link> (1) from where all the actions can be reached, <link
+linkend="the-toolbar">the toolbar</link> (2) that allows you to quickly select
+the most used actions, and <link linkend="the-statusbar">the statusbar</link>
+(6) where you will find feedback on the state of &kturtle;.</para>
 
 <sect1 id="the-code-editor">
 <title>The Code Editor</title>
@@ -33,15 +44,23 @@ The cursor position is indicated in <link linkend="the-statusbar">the statusbar<
 </para>
 </sect1>
 
+<sect1 id="the-inspector">
+<title>The Inspector</title>
+<para>
+...
+</para>
+</sect1>
+
 <sect1 id="the-canvas">
 <title>The Canvas</title>
 <para>
-The canvas is the area where the commands are visualized, where the commands <quote>draw</quote> a picture. In other words, it is the turtle's playground. After getting some code in the <link linkend="the-code-editor">the code editor</link>, and executing it using <menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem>
+The canvas is the area where the commands are visualized, where the commands <quote>draw</quote> a picture. In other words, it is the turtle's playground. After getting some code in the <link linkend="the-code-editor">the code editor</link>, and executing it using <menuchoice><guimenu>File</guimenu><guimenuitem>Run</guimenuitem>
 </menuchoice>, two things can happen: either the code executes fine, and will you most likely see something change on the canvas; or you have made an error in your code and there will be a message telling you what error you made.</para>
 <para>This message should help you to resolve the error.</para>
 <para>The picture that is drawn can be saved as an image (using <menuchoice><guimenu>File</guimenu><guimenuitem>Save Canvas</guimenuitem>
 </menuchoice>) or printed (using <menuchoice><guimenu>File</guimenu><guimenuitem>Print...</guimenuitem>
 </menuchoice>).</para>
+<para>You can zoom in and out the canvas with your mouse wheel.</para>
 </sect1>
 
 <sect1 id="the-menubar">
