@@ -648,7 +648,7 @@ void Translator::setExamples()
 		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 		"triangle").toString(localizer);
 	examples[exampleName] = parseExampleTranslations(ki18nc(
-		"You are about to translate the 'triangle' EXAMPLE PROGRAM, examples have to be translated in a speacial way."
+		"You are about to translate the 'triangle' EXAMPLE PROGRAM, examples have to be translated in a special way."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
 				"# Example: %1\n"
 				"\n"
@@ -663,7 +663,7 @@ void Translator::setExamples()
 		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 		"curly").toString(localizer);
 	examples[exampleName] = parseExampleTranslations(ki18nc(
-		"You are about to translate the 'curly' EXAMPLE PROGRAM, examples have to be translated in a speacial way."
+		"You are about to translate the 'curly' EXAMPLE PROGRAM, examples have to be translated in a special way."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 				"# Example: %1\n"
 				"# This example draws some nice curving shapes...\n"
@@ -686,7 +686,7 @@ void Translator::setExamples()
 		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 		"arrow").toString(localizer);
 	examples[exampleName] = parseExampleTranslations(ki18nc(
-		"You are about to translate the 'arrow' EXAMPLE PROGRAM, examples have to be translated in a speacial way."
+		"You are about to translate the 'arrow' EXAMPLE PROGRAM, examples have to be translated in a special way."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 				"# Example: %1\n"
 				"# This example draws an arrow...\n"
@@ -720,7 +720,7 @@ void Translator::setExamples()
 		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 		"flower").toString(localizer);
 	examples[exampleName] = parseExampleTranslations(ki18nc(
-		"You are about to translate the 'flower' EXAMPLE PROGRAM, examples have to be translated in a speacial way."
+		"You are about to translate the 'flower' EXAMPLE PROGRAM, examples have to be translated in a special way."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 				"# Example: %1\n"
 				"# This example draws a flower...\n"
@@ -728,7 +728,6 @@ void Translator::setExamples()
 				"@(reset)\n"
 				"@(penup)\n"
 				"@(canvascolor) 255@(,) 55@(,) 140\n"
-				"@(go) 45@(,) 120\n"
 				"@(pencolor) 160@(,) 0@(,) 255\n"
 				"@(penwidth) 3\n"
 				"\n"
