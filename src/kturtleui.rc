@@ -9,7 +9,7 @@
     <Separator />
     <Action name="file_recent" />
     <Action name="file_save" />
-    <Action name="file_saveas" />
+    <Action name="file_save_as" />
     <Separator />
     <Menu name="examples"><text>&amp;Examples</text>
 	<ActionList name="examples_actionlist" />
