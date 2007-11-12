@@ -18,7 +18,7 @@
 <para>The main window of &kturtle; has three main parts: <link
 linkend="the-code-editor">the code editor</link> (3) on the left where you type
 the &logo; commands, the <link linkend="the-inspector">inspector</link> (4)
-which gives you information baout variables when the program runs, and <link
+which gives you information about variables when the program runs, and <link
 linkend="the-canvas">the canvas</link> (5) on the right where the instructions
 are visualized. <link linkend="the-canvas">The canvas</link> is the turtle's
 playground: it is on the canvas that the turtle actually moves and draws. The
@@ -30,24 +30,38 @@ the most used actions, and <link linkend="the-statusbar">the statusbar</link>
 
 <sect1 id="the-code-editor">
 <title>The Code Editor</title>
-<para>In the code editor you type the &logo; commands. It has all of the features you would expect from a modern editor. Most of its features are found in the <link linkend="the-edit-menu">Edit</link> and the <link linkend="the-tools-menu">Tools</link> menus. The code editor can be docked on each border of the main window or it can be detached and placed anywhere on your desktop.</para>
+<para>In the code editor you type the &logo; commands. It has all of the
+features you would expect from a modern editor. Most of its features are found
+in the <link linkend="the-edit-menu">Edit</link> menu. The code editor can be
+docked on each border of the main window or it can be detached and placed
+anywhere on your desktop.</para>
 <para>
-You have several ways to get some code in the editor. The easiest way is to use an already-made example: choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open Examples</guimenuitem>
-</menuchoice> in the <link linkend="the-file-menu">File menu</link> and click on a file. The filename will tell you what the example is about (&eg; <filename>square.logo</filename> will draw a square). The file you choose will be opened in the <link linkend="the-code-editor">the code editor</link>, you can then use <menuchoice><guimenu>File</guimenu><guimenuitem>Execute Commands</guimenuitem>
+You have several ways to get some code in the editor. The easiest way is to use
+an already-made example: choose
+<menuchoice><guimenu>File</guimenu><guimenuitem>Examples</guimenuitem>
+</menuchoice> in the <link linkend="the-file-menu">File menu</link> and click on
+a file. The filename will tell you what the example is about (&eg;
+<filename>square</filename> will draw a square). The file you choose will
+be opened in the <link linkend="the-code-editor">the code editor</link>, you can
+then use <menuchoice><guimenu>File</guimenu><guimenuitem>Run</guimenuitem>
 </menuchoice> to run the code if you like.</para>
-<para>You can open &logo; files by choosing <menuchoice><guimenu>File</guimenu><guimenuitem>Open...</guimenuitem>
+<para>You can open &logo; files by choosing
+<menuchoice><guimenu>File</guimenu><guimenuitem>Open...</guimenuitem>
 </menuchoice>.</para>
-<para>The third way is to directly type your own code in the editor or to copy/paste some code from this user guide.
+<para>The third way is to directly type your own code in the editor or to
+copy/paste some code from this user guide.
 </para>
 <para>
-The cursor position is indicated in <link linkend="the-statusbar">the statusbar</link>, on the right with the Line number and Column number.
+The cursor position is indicated in <link
+linkend="the-statusbar">the statusbar</link>, on the right with the Line number
+and Column number.
 </para>
 </sect1>
 
 <sect1 id="the-inspector">
 <title>The Inspector</title>
 <para>
-...
+The inspector informs you about the variables while the program is running.
 </para>
 </sect1>
 
@@ -57,15 +71,15 @@ The cursor position is indicated in <link linkend="the-statusbar">the statusbar<
 The canvas is the area where the commands are visualized, where the commands <quote>draw</quote> a picture. In other words, it is the turtle's playground. After getting some code in the <link linkend="the-code-editor">the code editor</link>, and executing it using <menuchoice><guimenu>File</guimenu><guimenuitem>Run</guimenuitem>
 </menuchoice>, two things can happen: either the code executes fine, and will you most likely see something change on the canvas; or you have made an error in your code and there will be a message telling you what error you made.</para>
 <para>This message should help you to resolve the error.</para>
-<para>The picture that is drawn can be saved as an image (using <menuchoice><guimenu>File</guimenu><guimenuitem>Save Canvas</guimenuitem>
-</menuchoice>) or printed (using <menuchoice><guimenu>File</guimenu><guimenuitem>Print...</guimenuitem>
-</menuchoice>).</para>
 <para>You can zoom in and out the canvas with your mouse wheel.</para>
 </sect1>
 
 <sect1 id="the-menubar">
 <title>The Menubar</title>
-<para>In the menubar you find all the actions of &kturtle;. They are in the following groups: <guimenu>File</guimenu>, <guimenu>Edit</guimenu>, <guimenu>View</guimenu>, <guimenu>Tools</guimenu>, <guimenu>Settings</guimenu>, and <guimenu>Help</guimenu>. This section describes them all.</para>
+<para>In the menubar you find all the actions of &kturtle;. They are in the
+following groups: <guimenu>File</guimenu>, <guimenu>Edit</guimenu>,
+<guimenu>View</guimenu>, <guimenu>Tools</guimenu>, <guimenu>Settings</guimenu>,
+and <guimenu>Help</guimenu>. This section describes them all.</para>
 
 <sect2 id="the-file-menu">
 <title>The <guimenu>File</guimenu> Menu</title>
@@ -112,22 +126,6 @@ The canvas is the area where the commands are visualized, where the commands <qu
     </varlistentry>
   </variablelist>
 </sect3>
-<sect3 id="file-open-examples">
-<title>Open Examples</title>
-  <variablelist>
-    <varlistentry>
-      <term><menuchoice>
-        <shortcut>
-          <keycombo>&Ctrl;<keycap>E</keycap></keycombo>
-        </shortcut>
-        <guimenu>File</guimenu>
-        <guimenuitem>Open Examples</guimenuitem>
-      </menuchoice></term>
-      <listitem><para>Show the folder with examples &logo; programs. The examples should be in your favorite language that you can choose in  <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kturtle;...</guimenuitem>
-</menuchoice>.</para></listitem>
-    </varlistentry>
-  </variablelist>
-</sect3>
 <sect3 id="file-save">
 <title>Save</title>
   <variablelist>
@@ -151,19 +149,24 @@ The canvas is the area where the commands are visualized, where the commands <qu
         <guimenu>File</guimenu>
         <guimenuitem>Save As...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Saves the currently opened &logo; file on a specified location.</para></listitem>
+      <listitem><para>Saves the currently opened &logo; file on a specified
+location.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect3>
-<sect3 id="file-save-canvas">
-<title>Save Canvas</title>
+<sect3 id="file-open-examples">
+<title>Examples</title>
   <variablelist>
     <varlistentry>
       <term><menuchoice>
         <guimenu>File</guimenu>
-        <guimenuitem>Save Canvas</guimenuitem>
+        <guimenuitem>Examples</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Saves the current drawing on canvas into an image.</para></listitem>
+      <listitem><para>Show the folder with examples &logo; programs. The
+examples should be in your favorite language that you can choose in 
+<menuchoice><guimenu>Settings</guimenu><guimenuitem>Script
+Language</guimenuitem>
+</menuchoice>.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect3>
@@ -175,20 +178,26 @@ The canvas is the area where the commands are visualized, where the commands <qu
         <guimenu>File</guimenu>
         <guimenuitem>Execution Speed</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Present a list of possible execution speeds, consisting of: Full Speed, Slow, Slower and Slowest. When the execution speed is set to 'Full Speed' (default) we can barely keep up with what is happening. Sometimes this behavior is wanted, but sometimes we want to keep track of the execution. In the latter case you want to set the execution speed to 'Slow', 'Slower' or 'Slowest'. When one of the slow modes is selected the current position of the executor will be shown in the editor.</para></listitem>
+      <listitem><para>Present a list of possible execution speeds, consisting
+of: Full Speed, Slow, Slower, Slowest and Step-by-Step. When the execution
+speed is set to 'Full Speed' (default) we can barely keep up with what is
+happening. Sometimes this behavior is wanted, but sometimes we want to keep
+track of the execution. In the latter case you want to set the execution speed
+to 'Slow', 'Slower' or 'Slowest'. When one of the slow modes is selected the
+current position of the executor will be shown in the editor.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect3>
 <sect3 id="file-execute">
-<title>Execute</title>
+<title>Run</title>
   <variablelist>
     <varlistentry>
       <term><menuchoice>
         <shortcut>
-          <keycombo>&Alt;<keysym>Return</keysym></keycombo>
+          <keycombo><keysym>F5</keysym></keycombo>
         </shortcut>
         <guimenu>File</guimenu>
-        <guimenuitem>Execute Commands</guimenuitem>
+        <guimenuitem>Run</guimenuitem>
       </menuchoice></term>
       <listitem><para>Starts the execution of the commands in the code editor.</para></listitem>
     </varlistentry>
