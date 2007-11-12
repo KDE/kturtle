@@ -34,6 +34,7 @@
     <Action name="edit_redo" />
     <Separator />
     <Action name="edit_cut" />
+    <Action name="edit_copy" />
     <Action name="edit_paste" />
     <Separator />
     <Action name="edit_select_all" />

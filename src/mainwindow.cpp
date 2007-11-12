@@ -305,6 +305,7 @@ void MainWindow::setupActions()
 	actionCollection()->addAction("line_numbers", a );
 	a->setStatusTip(i18n("Turn the line numbers on/off in the editor"));
 	a->setWhatsThis(i18n("Show Line Numbers: Turn the line numbers on/off in the editor"));
+	a->setShortcut(QKeySequence(Qt::Key_F11));
 	a->setCheckable(true);
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), editor, SLOT(toggleLineNumbers(bool)));
