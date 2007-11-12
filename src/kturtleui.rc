@@ -29,12 +29,14 @@
     <Action name="file_print" />
     <Action name="file_quit" />
   </Menu>
-  <Menu name="edit"><text>&amp;Edit</text>
+  <Menu name="edit" noMerge="1"><text>&amp;Edit</text>
     <Action name="edit_undo" />
     <Action name="edit_redo" />
     <Separator />
     <Action name="edit_cut" />
     <Action name="edit_paste" />
+    <Separator />
+    <Action name="edit_select_all" />
     <Separator />
     <Action name="edit_find" />
     <Action name="edit_find_next" />
