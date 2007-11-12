@@ -1,14 +1,12 @@
 <!--Dear translator: please NEVER translate the id or anything inside the tags as they are needed in english by the application
      Thanks a lot in advance.-->
 <chapter id="reference">
-<title>&kturtle; Programming Reference</title>
-<para>This is the reference for &kturtle; programming language. In this chapter we first briefly touch all the <link linkend="different-instructions">different instruction types</link>. Then the <link linkend="commands">commands</link> are explained one by one. Then <link linkend="containers">containers</link>, <link linkend="math">math</link>, <link linkend="questions">questions</link> and <link linkend="controlling-execution">execution controllers</link> are explained. At last you are shown how to create you own commands with <link linkend="learn">learn</link>.</para>
+<title>&turtlelang; Programming Reference</title>
+<para>This is the reference for &kturtle;'s &turtlelang;. In this chapter we first briefly touch all the <link linkend="different-instructions">different instruction types</link>. Then the <link linkend="commands">commands</link> are explained one by one. Then <link linkend="containers">containers</link>, <link linkend="math">math</link>, <link linkend="questions">questions</link> and <link linkend="controlling-execution">execution controllers</link> are explained. At last you are shown how to create you own commands with <link linkend="learn">learn</link>.</para>
 
 <sect1 id="different-instructions">
 <title>Different Instruction Types</title>
-<para>As in any language, the &kturtle; programming language has different types
-of words and symbols. Here the differences between the types are briefly
-explained.</para>
+<para>As in any language, &turtlelang; has different types of words and symbols. Here the differences between the types are briefly explained.</para>
 
 <sect2 id="command">
 <title>Commands</title>
@@ -44,7 +42,7 @@ In this example <userinput>print</userinput> is a command where <userinput>"Hell
 
 <sect2 id="name">
 <title>Names</title>
-<para>When using the &logo; programming language you create new things. If you write a program you will often need <link linkend="containers">containers</link> and in some cases you need <link linkend="learn">learn</link> to create new commands. When making a <link linkend="containers">container</link> or a new command with <link linkend="learn">learn</link> you will have to specify a name.</para>
+<para>When using the &turtlelang; programming language you create new things. If you write a program you will often need <link linkend="containers">containers</link> and in some cases you need <link linkend="learn">learn</link> to create new commands. When making a <link linkend="containers">container</link> or a new command with <link linkend="learn">learn</link> you will have to specify a name.</para>
 <para>You can choose any name, as long as it does not already have a meaning. For instance you cannot name a container <link linkend="forward">forward</link>, since that name is already used for a command, and thus has a meaning.
 <screen>
 # here forward is used as a container, but it already has a meaning

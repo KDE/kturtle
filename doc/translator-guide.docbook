@@ -1,9 +1,9 @@
 <chapter id="translators">
 <title>Translator's Guide to &kturtle;</title>
 <para>As you probably already know, the unique feature of the &logo; programming language is that the &logo; commands are often translated to language of the programmer. This takes away a barrier for some learners to understand the basics of programming.
-When translating &kturtle; to a new language, the commands are included in the .pot files.</para>
+When translating &kturtle; to a new language, the commands are included in the standard .pot files used for translation in &kde;.</para>
 <para>
 Please look at <ulink
-url="http://edu.kde.org/kturtle/translator.php">http://edu.kde.org/kturtle/translator.php</ulink> for more information. Thanks a lot for your work!
+url="http://edu.kde.org/kturtle/translator.php">http://edu.kde.org/kturtle/translator.php</ulink> for more information about the tranlation process.  Thanks a lot for your work!
 </para>
 </chapter>

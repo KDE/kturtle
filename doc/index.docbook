@@ -3,6 +3,7 @@
 "dtd/kdex.dtd" [
   <!ENTITY kappname "&kturtle;">
   <!ENTITY package "kdeedu">
+  <!ENTITY turtlelang "TurtleScript">
   <!ENTITY logo "Logo">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE"><!-- change language only here -->
@@ -33,6 +34,13 @@
 <address><email>annma AT kde DOT org</email></address>
 </affiliation>
 </author>
+<author>
+<firstname>Mauricio</firstname>
+<surname>Piacentini</surname>
+<affiliation>
+<address><email>piacentini AT kde DOT org</email></address>
+</affiliation>
+</author>
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
 
@@ -47,6 +55,11 @@
 <holder>&Anne-Marie.Mahfouf;</holder>
 </copyright>
 
+<copyright>
+<year>2007</year>
+<holder>Mauricio Piacentini</holder>
+</copyright>
+
 <legalnotice>&FDLNotice;</legalnotice>
 
 <date>2007-11-09</date>
@@ -54,9 +67,9 @@
 
 <abstract>
 <para>
-&kturtle; is an educational programming environment loosely based on the &logo;
-programming language (but not using an existing &logo;). The unique quality of
-&logo; is that the programming commands are translated to the language of the
+&kturtle; is an educational programming environment that uses &turtlelang;,
+a programming language inspired by &logo;. The main quality of
+&turtlelang; is that the programming commands can be translated to the language of the
 'programmer' so he/she can program in his/her native language and
 &kturtle; programming language reproduces this feature.
 </para>
@@ -81,23 +94,22 @@ programming language (but not using an existing &logo;). The unique quality of
 <chapter id="introduction">
 <title>Introduction</title>
 
-<para>&kturtle; is an educational programming environment based on the
-<link linkend="what-is-logo">&logo;</link> programming language. The goal of
+<para>&kturtle; is an educational programming environment that uses <link linkend="what-is-turtlelang">&turtlelang;</link>, 
+a programming language loosely based on and inspired by &logo;. The goal of
 &kturtle; is to make programming  as easy and accessible as possible. This makes
 &kturtle; suitable for teaching kids the basics of math, geometry and...
-programming. The commands used to program are in the style of the &logo;
-programming language. The unique feature of the &logo; programming language is
-that the commands are often translated into the speaking language of the
+programming. One of the main features of &turtlelang; is the ability
+to translate the commands into the speaking language of the
 programmer.</para>
 
 <para>&kturtle; is named after <quote>the turtle</quote> that plays a central
 role in the programming environment. The user programs the turtle, using the
-&logo; commands, to draw a picture on <link linkend="the-canvas">the
+&turtlelang; commands, to draw a picture on <link linkend="the-canvas">the
 canvas</link>.</para>
 
-<sect1 id="what-is-logo">
-<title>What is &logo;?</title>
-<para>The first version &logo; programming language was created by Seymour
+<sect1 id="what-is-turtlelang">
+<title>What is &turtlelang;?</title>
+<para>&turtlelang;, the programming language used in &kturtle;, is heavily inspired by some of the fundamental concepts of the &logo; programming language. The first version of &logo; was created by Seymour
 Papert of MIT Artificial Intelligence Laboratory in 1967 as an offshoot of the
 LISP programming language. From then many versions of &logo; have been released.
 By 1980 &logo; was gaining momentum, with versions for MSX, Commodore, Atari,
@@ -108,7 +120,11 @@ site on &logo; which can be found on <ulink
 url="http://el.media.mit.edu/logo-foundation/">http://el.media.mit.edu/logo-
 foundation/</ulink>.</para>
 
-<para>Today there are several versions of &logo; around which can easily be found on <ulink url="http://el.media.mit.edu/logo-foundation/">MIT's &logo; site</ulink> and by a simple <ulink url="http://www.google.com/search?q=logo+programming+kids">Google search</ulink>. This version of &logo; (&kturtle;) is only focused on the educational qualities of the programming language and will not try to suit professional programmers' needs.</para>
+<para>Today there are several versions of &logo; around which can easily be found on <ulink url="http://el.media.mit.edu/logo-foundation/">MIT's &logo; site</ulink> and by a simple <ulink url="http://www.google.com/search?q=logo+programming+kids">Google search</ulink>.</para>
+
+<para>In comparison with most modern versions of &logo;, &turtlelang; implements only the basic commands best suited for the educational purposes of the language, and does not try to fulfill professional programmer's needs.</para>
+
+
 </sect1>
 
 <sect1 id="features-of-kturtle">
@@ -116,14 +132,12 @@ foundation/</ulink>.</para>
 <para>&kturtle; has some nice features that make starting to program a breeze. See here some of the highlights of &kturtle; feature set:
 <itemizedlist>
 <listitem><para>
-An integrated interpreter (no extra dependencies) that uses Ruby files
-for  the command translations, supports user defined functions and dynamic type
-switching.
+An integrated &turtlelang; interpreter (no extra dependencies) that includes the ability to use a fully translated set of commands, and supports user defined functions and dynamic type switching.
 </para></listitem>
 <listitem><para>
 The execution can be slown down, paused or stopped at any time.
 </para></listitem>
-<listitem><para>A powerful editor for the &logo; commands with intuitive syntax
+<listitem><para>A powerful editor for the &turtlelang; commands with intuitive syntax
 highlighting, line numbering and more.
 </para></listitem>
 <listitem><para>                                                         
@@ -133,7 +147,7 @@ highlighting, line numbering and more.
 Context help for all commands: Just press <keysym>F2</keysym>.
 </para></listitem>
 <listitem><para>
-The &kturtle; commands are fully translatable.
+The &turtlelang; commands are fully translatable.
 </para></listitem>
 <listitem><para>
 An error dialog that links the error messages to the mistakes in the program.
