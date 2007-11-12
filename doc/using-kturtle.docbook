@@ -63,6 +63,8 @@ and Column number.
 <para>
 The inspector informs you about the variables while the program is running.
 </para>
+<para>The inspector can be docked on each border of the main window or it can be
+detached and placed anywhere on your desktop.</para>
 </sect1>
 
 <sect1 id="the-canvas">
@@ -155,14 +157,14 @@ location.</para></listitem>
   </variablelist>
 </sect3>
 <sect3 id="file-open-examples">
-<title>Examples</title>
+<title>Try Examples</title>
   <variablelist>
     <varlistentry>
       <term><menuchoice>
         <guimenu>File</guimenu>
         <guimenuitem>Examples</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Show the folder with examples &logo; programs. The
+      <listitem><para>Show the folder with examples &kturtle; programs. The
 examples should be in your favorite language that you can choose in 
 <menuchoice><guimenu>Settings</guimenu><guimenuitem>Script
 Language</guimenuitem>
@@ -176,7 +178,7 @@ Language</guimenuitem>
     <varlistentry>
       <term><menuchoice>
         <guimenu>File</guimenu>
-        <guimenuitem>Execution Speed</guimenuitem>
+        <guimenuitem>Speed</guimenuitem>
       </menuchoice></term>
       <listitem><para>Present a list of possible execution speeds, consisting
 of: Full Speed, Slow, Slower, Slowest and Step-by-Step. When the execution
@@ -184,7 +186,8 @@ speed is set to 'Full Speed' (default) we can barely keep up with what is
 happening. Sometimes this behavior is wanted, but sometimes we want to keep
 track of the execution. In the latter case you want to set the execution speed
 to 'Slow', 'Slower' or 'Slowest'. When one of the slow modes is selected the
-current position of the executor will be shown in the editor.</para></listitem>
+current position of the executor will be shown in the editor.
+Step-by-Step will execute one command at a time.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect3>
@@ -209,25 +212,25 @@ current position of the executor will be shown in the editor.</para></listitem>
     <varlistentry>
       <term><menuchoice>
         <shortcut>
-          <keycombo><keysym>Pause</keysym></keycombo>
+          <keycombo><keysym>F6</keysym></keycombo>
         </shortcut>
         <guimenu>File</guimenu>
-        <guimenuitem>Pause Execution</guimenuitem>
+        <guimenuitem>Pause</guimenuitem>
       </menuchoice></term>
       <listitem><para>Pauses the execution. This action is only enabled when the commands are actually executing.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect3>
 <sect3 id="file-stop">
-<title>Stop</title>
+<title>Abort</title>
   <variablelist>
     <varlistentry>
       <term><menuchoice>
         <shortcut>
-          <keycombo><keysym>Escape</keysym></keycombo>
+          <keycombo><keysym>F7</keysym></keycombo>
         </shortcut>
         <guimenu>File</guimenu>
-        <guimenuitem>Stop Execution</guimenuitem>
+        <guimenuitem>Abort</guimenuitem>
       </menuchoice></term>
       <listitem><para>Stops the execution. This action is only enabled when the commands are actually executing.</para></listitem>
     </varlistentry>
@@ -333,6 +336,19 @@ current position of the executor will be shown in the editor.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
+    <anchor id="edit-select-all" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>A</keycap></keycombo>
+        </shortcut>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Select All</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Selects all the text from the editor.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
     <anchor id="edit-find" />
     <varlistentry>
       <term><menuchoice>
@@ -357,8 +373,22 @@ current position of the executor will be shown in the editor.</para></listitem>
       </menuchoice></term>
       <listitem><para>Use this to find the next occurrence of the phrase.</para></listitem>
     </varlistentry>
-  </variablelist>
+  </variablelist>  
   <variablelist>
+    <anchor id="edit-find-previous" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Shift;<keysym>F3</keysym></keycombo>
+        </shortcut>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Find Previous</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Use this to find the previous occurrence of the
+phrase.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <!--<variablelist>
     <anchor id="edit-replace" />
     <varlistentry>
       <term><menuchoice>
@@ -368,7 +398,20 @@ current position of the executor will be shown in the editor.</para></listitem>
         <guimenu>Edit</guimenu>
         <guimenuitem>Replace...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>With this action you can replace phrases in the code.</para></listitem>
+      <listitem><para>With this action you can replace text in the code.</para></listitem>
+    </varlistentry>
+  </variablelist>-->
+<variablelist>
+    <anchor id="toggle-insert" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo><keycap>INS</keycap></keycombo>
+        </shortcut>
+        <guimenu>Edit</guimenu>
+        <guimenuitem>Toggle Insert</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Toggle between the 'insert' and 'overwrite' mode.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -376,17 +419,14 @@ current position of the executor will be shown in the editor.</para></listitem>
 <sect2 id="the-view-menu">
   <title>The <guimenu>View</guimenu> Menu</title>
   <variablelist>
-    <anchor id="view-fullscreen" />
+    <anchor id="view-codeeditor" />
     <varlistentry>
       <term><menuchoice>
-        <shortcut>
-          <keycombo>&Ctrl;&Shift;<keycap>F</keycap></keycombo>
-        </shortcut>
         <guimenu>View</guimenu>
-        <guimenuitem>Full Screen Mode</guimenuitem>
+        <guimenuitem>Show Code Editor</guimenuitem>
       </menuchoice></term>
-      <listitem><para>With this action you toggle the full screen mode.</para>
-                <para>Note: When code is executed while in full screen mode everything but the canvas is hidden. This makes it possible to write <quote>full screen</quote> programs in &kturtle;.</para></listitem>
+      <listitem><para>Show or hide the Code Editor.</para>
+</listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -402,83 +442,32 @@ current position of the executor will be shown in the editor.</para></listitem>
       <listitem><para>With this action you can show the line numbers in the code editor. This can be handy for finding errors.</para></listitem>
     </varlistentry>
   </variablelist>
+  <variablelist>
+    <anchor id="view-inspector" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>View</guimenu>
+        <guimenuitem>Show Inspector</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Show or hide the Inspector.</para>
+</listitem>
+    </varlistentry>
+  </variablelist>
 </sect2>
 
 <sect2 id="the-tools-menu">
   <title>The <guimenu>Tools</guimenu> Menu</title>
   <variablelist>
-    <anchor id="tools-color-picker" />
+    <anchor id="tools-direction-chooser" />
     <varlistentry>
       <term><menuchoice>
         <shortcut>
           <keycombo>&Alt;<keycap>C</keycap></keycombo>
         </shortcut>
         <guimenu>Tools</guimenu>
-        <guimenuitem>Color Picker</guimenuitem>
+        <guimenuitem>Direction Chooser</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This action opens the color picker. Using the color picker you can easily select a <glossterm linkend="rgb">color code</glossterm> and insert it in <link linkend="the-code-editor">the code editor</link>.</para></listitem>
-    </varlistentry>
-  </variablelist>
-  <variablelist>
-    <anchor id="tools-indent" />
-    <varlistentry>
-      <term><menuchoice>
-        <shortcut>
-          <keycombo>&Ctrl;<keycap>I</keycap></keycombo>
-        </shortcut>
-        <guimenu>Tools</guimenu>
-        <guimenuitem>Indent</guimenuitem>
-      </menuchoice></term>
-      <listitem><para>This action <quote>indents</quote> (adds white space at the beginning of) the lines that are selected. When <quote>indentation</quote> is used properly this can make code much easier to read. All examples use indentation, please check them out.</para></listitem>
-    </varlistentry>
-  </variablelist>
-  <variablelist>
-    <anchor id="tools-unindent" />
-    <varlistentry>
-      <term><menuchoice>
-        <shortcut>
-          <keycombo>&Ctrl;&Shift;<keycap>I</keycap></keycombo>
-        </shortcut>
-        <guimenu>Tools</guimenu>
-        <guimenuitem>Unindent</guimenuitem>
-      </menuchoice></term>
-      <listitem><para>This action <quote>unindents</quote> (removes the white space at the beginning of) the lines that are selected.</para></listitem>
-    </varlistentry>
-  </variablelist>
-  <variablelist>
-    <anchor id="tools-clean-indent" />
-    <varlistentry>
-      <term><menuchoice>
-        <guimenu>Tools</guimenu>
-        <guimenuitem>Clean Indentation</guimenuitem>
-      </menuchoice></term>
-      <listitem><para>This action cleans <quote>indentation</quote> (removes all the white space at the beginning of) the lines that are selected.</para></listitem>
-    </varlistentry>
-  </variablelist>
-  <variablelist>
-    <anchor id="tools-comment" />
-    <varlistentry>
-      <term><menuchoice>
-        <shortcut>
-          <keycombo>&Ctrl;<keycap>D</keycap></keycombo>
-        </shortcut>
-        <guimenu>Tools</guimenu>
-        <guimenuitem>Comment</guimenuitem>
-      </menuchoice></term>
-      <listitem><para>This action add comment characters (#) in from of the lines that are selected. Lines that start with a comment character are ignored when the code is executed. Comments allow the programmer to explain a bit about his code or they can be used to temporarily prevent a certain piece of code from being  executed.</para></listitem>
-    </varlistentry>
-  </variablelist>
-  <variablelist>
-    <anchor id="tools-uncomment" />
-    <varlistentry>
-      <term><menuchoice>
-        <shortcut>
-          <keycombo>&Ctrl;&Shift;<keycap>D</keycap></keycombo>
-        </shortcut>
-        <guimenu>Tools</guimenu>
-        <guimenuitem>Uncomment</guimenuitem>
-      </menuchoice></term>
-      <listitem><para>This action removes the comment characters from the selected lines.</para></listitem>
+      <listitem><para>This action opens the direction chooser dialog.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -486,11 +475,21 @@ current position of the executor will be shown in the editor.</para></listitem>
 <sect2 id="the-setting-menu">
   <title>The <guimenu>Settings</guimenu> Menu</title>
     <variablelist>
+    <anchor id="script-language" />
+    <varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Script Language</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Choose</action> the language for the code.</para></listitem>
+</varlistentry>
+  </variablelist>  
+<variablelist>
     <anchor id="toggle-toolbar" />
     <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Show/Hide Toolbar</guimenuitem>
+<guimenuitem>Show Toolbar</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>Toggle</action> the Main Toolbar</para></listitem>
 </varlistentry>
@@ -500,32 +499,31 @@ current position of the executor will be shown in the editor.</para></listitem>
    <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Show/Hide Statusbar</guimenuitem>
+<guimenuitem>Show Statusbar</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>Toggle</action> the Statusbar</para></listitem>
 </varlistentry>
   </variablelist>
-    <variablelist>
-    <anchor id="tools-advanced" />
+  <variablelist>
+    <anchor id="settings-configure-shortcuts" />
     <varlistentry>
       <term><menuchoice>
         <guimenu>Settings</guimenu>
-        <guisubmenu>Advanced Settings</guisubmenu>
+        <guimenuitem>Configure Shortcuts...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Here you can change things you normally do not need to change. The <guisubmenu>Advanced Settings</guisubmenu> submenu has three items: <guimenuitem>Configure Editor...</guimenuitem> (the standard &kate; editor settings dialog), <guimenuitem>Configure Shortcuts...</guimenuitem> (the standard &kde; shortcut settings dialog), and <guimenuitem>Configure Toolbars...</guimenuitem> (the standard &kde; toolbars setting dialog).</para></listitem>
+      <listitem><para>Standard &kde; dialog to configure the shortcuts.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
-    <anchor id="settings-configure" />
+    <anchor id="settings-configure-toolbars" />
     <varlistentry>
       <term><menuchoice>
         <guimenu>Settings</guimenu>
-        <guimenuitem>Configure &kturtle;...</guimenuitem>
+        <guimenuitem>Configure Toolbars...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This is used to configure &kturtle;. Here you can change the language of the &logo; commands or set a new initial canvas size.</para></listitem>
+      <listitem><para>Standard &kde; dialog to configure the toolbars.</para></listitem>
     </varlistentry>
   </variablelist>
-
 </sect2>
 
 <sect2 id="the-help-menu">
@@ -606,8 +604,8 @@ current position of the executor will be shown in the editor.</para></listitem>
 
 <sect1 id="the-toolbar">
 <title>The Toolbar</title>
-<para>Here you can quickly reach the most used actions. By default, you will find here all main useful commands ending with the <guiicon>Execute Commands</guiicon> and <guiicon>Stop Execution</guiicon> icons.</para>
-<para>You can configure the toolbar using <menuchoice><guimenu>Settings</guimenu><guimenuitem>Advanced Settings</guimenuitem><guimenuitem>Configure Toolbars...</guimenuitem></menuchoice></para>
+<para>Here you can quickly reach the most used actions. By default, you will find here all main useful commands ending with the <guiicon>Run</guiicon>, <guiicon>Pause</guiicon> and <guiicon>Abort</guiicon> icons.</para>
+<para>You can configure the toolbar using <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Toolbars...</guimenuitem></menuchoice></para>
 </sect1>
 
 <sect1 id="the-statusbar">

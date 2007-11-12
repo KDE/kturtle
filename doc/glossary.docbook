@@ -140,7 +140,6 @@ hide
 </tgroup>
 </table>
 </para>
-<para>To easily find the RGB combinations of a color you should try the color picker! You can open the color picker using <link linkend="tools-color-picker"><menuchoice><guimenu>Tools</guimenu><guimenuitem>Color Picker</guimenuitem></menuchoice></link>.</para>
 <para>Two commands need an RGB combination as input: these commands are <userinput>canvascolor</userinput> and <userinput>pencolor</userinput>.</para></glossdef>
 </glossentry>
 
