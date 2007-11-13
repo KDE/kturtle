@@ -48,7 +48,7 @@ set(kturtle_icons
     ${CMAKE_CURRENT_SOURCE_DIR}/kturtle/icons/hi64-app-kturtle.png
     ${CMAKE_CURRENT_SOURCE_DIR}/kturtle/icons/hi128-app-kturtle.png
 )
-kde4_add_win32_app_icon(kturtle kturtle_SRCS ${kturtle_icons})
+kde4_add_win32_app_icon(kturtle_SRCS ${kturtle_icons})
 
 kde4_add_executable (
   kturtle
