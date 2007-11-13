@@ -47,7 +47,7 @@ In this example <userinput>print</userinput> is a command where <userinput>"Hell
 <screen>
 # here forward is used as a container, but it already has a meaning
 # so this will produce an error:
-forward = 20
+$forward = 20
 
 # this works:
 forward 20
@@ -64,12 +64,12 @@ Please read the documentation on <link linkend="containers">containers</link> an
 <para>Assignment are done with the <userinput>=</userinput> symbol. In programming languages it is better to read the single <userinput>=</userinput> not as 'equals' but as 'becomes'. The word 'equals' is more appropriate for the <userinput>==</userinput> which is a <link linkend="questions">question</link>.</para>
 <para>Assignments are generally use for two reasons, (1) to add content <link linkend="containers">containers</link>, and (2) to modify the content of a container. For example:
 <screen>
-x = 10
+$x = 10
 # the container x now contains the number 10
-W = "My age is: "
+$W = "My age is: "
 # the container W now contains the string "My age is: "
 # this prints the content of the containers 'W' and 'x' on the canvas
-print W + x
+print $W + $x
 </screen>
 </para>
 <para>For more examples see the section that explains <link linkend="containers">containers</link>.</para>
@@ -278,7 +278,7 @@ We can add comments to the code for ourselves or for someone else to read. Comme
     </varlistentry>
   </variablelist>
 </sect3>
-<sect3 id="wrapon">
+<!-- <sect3 id="wrapon">
   <title>wrapon</title>
   <variablelist>
     <varlistentry> 
@@ -297,7 +297,7 @@ We can add comments to the code for ourselves or for someone else to read. Comme
       With the <userinput>wrapoff</userinput> command you can set <glossterm linkend="wrapping">wrapping</glossterm> <quote>off</quote> for the canvas: this means the turtle can move off the canvas and can get <quote>lost</quote>. Please see the glossary if you want to know what <glossterm linkend="wrapping">wrapping</glossterm> is.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
+</sect3> -->
 </sect2>
 
 <sect2 id="clean">
@@ -363,9 +363,9 @@ We can add comments to the code for ourselves or for someone else to read. Comme
       <listitem><para><screen>print X</screen>
       The <userinput>print</userinput> command is used to command the turtle to write something on the canvas. <userinput>print</userinput> takes numbers and strings as input. You can <userinput>print</userinput> various numbers and strings using the <quote>+</quote> symbol. See here a small example:
 <screen>
-year = 2003
-author = "Cies"
-print author + " started the KTurtle project in " + year + " and still enjoys working on it!"
+$year = 2003
+$author = "Cies"
+print $author + " started the KTurtle project in " + $year + " and still enjoys working on it!"
 </screen>
       </para></listitem>
     </varlistentry>
@@ -392,11 +392,11 @@ print author + " started the KTurtle project in " + year + " and still enjoys wo
       <listitem><para><screen>random X,Y</screen>
       <userinput>random</userinput> is a command that takes input and gives output. As input are required two numbers, the first (X) sets the minimum output, the second (Y) sets the maximum. The output is a randomly chosen number that is equal or greater then the minimum and equal or smaller than the maximum. Here a small example:
       <screen>
-repeat 500 [
-  x = random 1,20
-  forward x
-  turnleft 10 - x
-]
+repeat 500 {
+  $x = random 1,20
+  forward $x
+  turnleft 10 - $x
+}
 </screen>
       Using the <userinput>random</userinput> command you can add a bit of chaos to your program.</para></listitem>
     </varlistentry>
@@ -420,17 +420,17 @@ message "Cies started the KTurtle project in 2003 and still enjoys working on it
     </varlistentry>
   </variablelist>
 </sect3>
-<sect3 id="inputwindow">
-  <title>inputwindow</title>
+<sect3 id="ask">
+  <title>ask</title>
   <variablelist>
     <varlistentry> 
-      <term>inputwindow</term>
-      <listitem><para><screen>inputwindow X</screen>
-      <userinput>inputwindow</userinput> takes a <link linkend="string">string</link> as input. It shows a pop-up dialog containing the text from the string, just like the <link linkend="message">message</link>. But in addition to it also puts an input field on the dialog. Through this input filed the user can enter a <link linkend="number">number</link> or a <link linkend="string">string</link> which can be stored in a <link linkend="containers">container</link>. For example
+      <term>ask</term>
+      <listitem><para><screen>ask X</screen>
+      <userinput>ask</userinput> takes a <link linkend="string">string</link> as input. It shows a pop-up dialog containing the text from the string, just like the <link linkend="message">message</link>. But in addition to it also puts an input field on the dialog. Through this input filed the user can enter a <link linkend="number">number</link> or a <link linkend="string">string</link> which can be stored in a <link linkend="containers">container</link>. For example
 <screen>
-in = inputwindow "What is you age?"
-out = 2003 - in
-print "In 2003 you where " + out + " years old at some point."
+$in = ask "What is you age?"
+$out = 2003 - $in
+print "In 2003 you where " + $out + " years old at some point."
 </screen>
       When a user cancels the input dialog, or does not enter anything at all the <link linkend="containers">container</link> is emptied.</para></listitem>
     </varlistentry>
@@ -444,11 +444,11 @@ print "In 2003 you where " + out + " years old at some point."
 
 <sect1 id="containers">
 <title>Containers</title>
-<para>Containers are letters or words that can be used by the programmer to store a number or a text. Containers that contain a number are called <link linkend="variables">variables</link>, containers that can contain text are called <link linkend="string">string</link>.</para>
+<para>Containers are letters or words that can be used by the programmer to store a number or a text. Containers that contain a number are called <link linkend="variables">variables</link>, containers that can contain text are called <link linkend="string">string</link>. Containers can be identified by the container character <quote>$</quote> that precedes their usage.</para>
 
 <para>Containers that are not used contain nothing. An example:
 <screen>
-print N
+print $N
 </screen>
 This will print nothing. If we try to do <link linkend="math">math</link> with empty containers we will get errors.
 </para>
@@ -457,29 +457,29 @@ This will print nothing. If we try to do <link linkend="math">math</link> with e
 <title>Variables: number containers</title>
 <para>Let us start with an example:
 <screen>
-x = 3
-print x
+$x = 3
+print $x
 </screen>
-In the first line the letter <userinput>x</userinput> made into a variable (number container). As you see the value of the variable <userinput>x</userinput> is set to 3. On the second line the value is printed.</para>
+In the first line the letter <userinput>x</userinput> is made into a variable (number container). As you see the value of the variable <userinput>x</userinput> is set to 3. On the second line the value is printed.</para>
 <para> Note that if we wanted to print an <quote>x</quote> that we should have written
 <screen>
-print "x"
+print "$x"
 </screen>
 </para>
 <para>That was easy, now a bit harder example:
 <screen>
-A = 2004
-B = 25
-C = A + B
+$A = 2004
+$B = 25
+$C = A + B
 
 # the next command prints "2029"
-print C
+$print C
 backward 30
 # the next command prints "2004 plus 25"
-print A + " plus " + B
+print $A + " plus " + $B
 backward 30
 # the next command prints "1979"
-print A - B
+print $A - $B
 </screen>
 In the first two lines the variables <userinput>A</userinput> and <userinput>B</userinput> are set to 2004 and 25. On the third line the variable <userinput>C</userinput> is set to <userinput>A + B</userinput>, which is 2029. The rest of the example consists of 3 <userinput>print</userinput> commands with <userinput>backward 30</userinput> in between. The <userinput>backward 30</userinput> is there to make sure every output is on a new line. In this example you also see that variables can be used in <link linkend="math">mathematical calculations</link>.</para>
 </sect2>
@@ -494,9 +494,9 @@ The regular is delimited with quotes. These pieces of regular text we call <link
 <para>Strings can also be stored in <link linkend="containers">containers</link> just like <link linkend="number">numbers</link>
 Strings are a lot like variables. The biggest difference is that they contain text in stead of numbers. For this reason strings cannot be used in <link linkend="math">mathematical calculations</link> and <link linkend="questions">questions</link>. An example of the use of strings:
 <screen>
-x = "Hello "
-name = inputwindow "Please enter your name..."
-print x + name + ", how are you?"
+$x = "Hello "
+$name = ask "Please enter your name..."
+print $x + $name + ", how are you?"
 </screen>
 On the first line the string <userinput>x</userinput> is set to <quote>Hello </quote>. On the second line the string <userinput>name</userinput> is set to the output of the <userinput>inputwindow</userinput> command. On the third line the program prints a composition of three strings on the canvas.</para>
 <para>This program ask you to enter your name. When you, for instance, enter the name <quote>Paul</quote>, the program prints <quote>Hello Paul, how are you?</quote>. Please note that the plus (+) is the only math symbol that you can use with strings.</para>
@@ -507,11 +507,11 @@ On the first line the string <userinput>x</userinput> is set to <quote>Hello </q
 <title>Can the Turtle do math?</title>
 <para>Yes, &kturtle; will do your math. You can add (+), substract (-), multiply (*), and divide (/). Here is an example in which we use all of them:
 <screen>
-a = 20 - 5
-b = 15 * 2
-c = 30 / 30
-d = 1 + 1
-print "a: "+a+", b: "+b+", c: "+c+", d: "+d 
+$a = 20 - 5
+$b = 15 * 2
+$c = 30 / 30
+$d = 1 + 1
+print "a: "+$a+", b: "+$b+", c: "+$c+", d: "+$d 
 </screen>
 Do you know what value a, b, c and d have? Please note the use of the <link linkend="assignment">assignment</link> symbol <userinput>=</userinput>.</para>
 <para>If you just want a simple calculation to be done you can do something like this:
@@ -532,10 +532,10 @@ The expressions inside parentheses will be calculated first. In this example, 20
 <title>Questions</title>
 <para>A simple example of a question:
 <screen>
-x = 6
-if x &gt; 5 [
+$x = 6
+if $x &gt; 5 {
   print "hello"
-]
+}
 </screen>
 
 In this example the question is the <userinput>x &gt; 5</userinput> part. If the answer to this question is 'true' the code between the brackets will be executed. Questions are an important part of programming and often used together with <link linkend="controlling-execution">execution controllers</link>, like <link linkend="if"><userinput>if</userinput></link>. All numbers and <link linkend="variables">variables</link> (number containers) can be compared to each other with questions.</para>
@@ -587,11 +587,11 @@ Here are all possible questions:
 <para>
 Question glue-words enable us to glue questions into one big question.
 <screen>
-a = 1
-b = 5
-if (a &lt; 5) and (b == 5) [
+$a = 1
+$b = 5
+if ($a &lt; $5) and ($b == 5) {
   print "hello"
-]
+}
 </screen>
 In this example the glue-word <userinput>and</userinput> is used to glue 2 questions (<userinput>a &lt; 5</userinput>, <userinput>b == 5</userinput>) together. If one side of the <userinput>and</userinput> would answer <quote>false</quote> the whole question would answer <quote>false</quote>, because with the glue-word <userinput>and</userinput> both sides need to be <quote>true</quote> in order to answer <quote>true</quote>. Please do not forget to use the brackets around the questions!</para>
 
@@ -623,11 +623,11 @@ Here is a schematic overview; a more detailed explanation follows below:
 <title>and</title>
 <para>When two questions are glued together with <userinput>and</userinput>, both sides of the <userinput>and</userinput> have to be 'true' in order to result in 'true'. An example:
 <screen>
-a = 1
-b = 5
-if ((a &lt; 10) and (b == 5)) and (a &lt; b) [
+$a = 1
+$b = 5
+if (($a &lt; 10) and ($b == 5)) and ($a &lt; $b) {
   print "hello"
-]
+}
 </screen>
 In this example you see a glued question glued onto an other question.</para>
 </sect3>
@@ -636,11 +636,11 @@ In this example you see a glued question glued onto an other question.</para>
 <title>or</title>
 <para>If one of the two questions that are glued together with <userinput>or</userinput> is 'true' the result will be 'true'. An example:
 <screen>
-a = 1
-b = 5
-if ((a &lt; 10) or (b == 10)) or (a == 0) [
+$a = 1
+$b = 5
+if (($a &lt; 10) or ($b == 10)) or ($a == 0) {
   print "hello"
-]
+}
 </screen>
 In this example you see a glued question glued onto an other question.</para>
 </sect3>
@@ -649,15 +649,15 @@ In this example you see a glued question glued onto an other question.</para>
 <title>not</title>
 <para><userinput>not</userinput> is a special question glue-word because it only works for one question at the time. <userinput>not</userinput> changes 'true' into 'false' and 'false' into 'true'. An example:
 <screen>
-a = 1
-b = 5
-if not ((a &lt; 10) and (b == 5)) [
+$a = 1
+$b = 5
+if not (($a &lt; 10) and ($b == 5)) {
   print "hello"
-]
+}
 else
-[
+{
   print "not hello ;-)"
-]
+}
 </screen>
 In this example the glued question is 'true' yet the <userinput>not</userinput> changes it to 'false'. So in the end <userinput>"not hello ;-)"</userinput> is printed on the <link linkend="the-canvas">canvas</link>.</para>
 </sect3>
@@ -680,11 +680,11 @@ In this example the glued question is 'true' yet the <userinput>not</userinput> 
       <listitem><para><screen>wait X</screen>
       <userinput>wait</userinput> makes the turtle wait for X seconds.
 <screen>
-repeat 36 [
+repeat 36 {
   forward 5
   turnright 10
   wait 0.5
-]
+}
 </screen>
       This code draws a circle, but the turtle will wait half a second
       after each step. This gives the impression of a slow-moving turtle.</para></listitem>
@@ -700,10 +700,10 @@ repeat 36 [
       <listitem><para><screen>if <link linkend="questions">question</link> [ ... ]</screen>
       The code that is placed between the brackets will only be executed <userinput>if</userinput> the answer to the <link linkend="questions">question</link> is <quote>true</quote>. Please read for more information on <link linkend="questions">questions</link> in the <link linkend="questions">question section</link>.
       <screen>
-x = 6
-if x &gt; 5 [
+$x = 6
+if $x &gt; 5 {
   print "x is greater than five!"
-]
+}
 </screen>
       On the first line <userinput>x</userinput> is set to 6. On the second line the <link linkend="questions">question</link> <userinput>x &gt; 5</userinput> is asked. Since the answer to this question is <quote>true</quote> the execution controller <userinput>if</userinput> will allow the code between the brackets to be executed</para></listitem>
     </varlistentry>
@@ -718,12 +718,12 @@ if x &gt; 5 [
       <listitem><para><screen>while <link linkend="questions">question</link> [ ... ]</screen>
       The execution controller <userinput>while</userinput> is a lot like <link linkend="if"><userinput>if</userinput></link>. The difference is that <userinput>while</userinput> keeps repeating (looping) the code between the brackets until the answer to the <link linkend="questions">question</link> is <quote>false</quote>.
       <screen>
-x = 1
-while x &lt; 5 [
+$x = 1
+while 4x &lt; 5 {
   forward 10
   wait 1
-  x = x + 1
-]
+  $x = $x + 1
+}
 </screen>
       On the first line <userinput>x</userinput> is set to 1. On the second line the <link linkend="questions">question</link> <userinput>x &lt; 5</userinput> is asked. Since the answer to this question is <quote>true</quote> the execution controller <userinput>while</userinput> starts executing the code between the brackets until the answer to the <link linkend="questions">question</link> is <quote>false</quote>. In this case the code between the brackets will be executed 4 times, because every time the fifth line is executed <userinput>x</userinput> increases by 1.</para></listitem>
     </varlistentry>
@@ -739,14 +739,14 @@ while x &lt; 5 [
       <userinput>else</userinput> can be used in addition to the execution controller <link linkend="if"><userinput>if</userinput></link>. The code between the brackets after <userinput>else</userinput> is only executed if the answer to the <link linkend="questions">question</link> that is asked is <quote>false</quote>. 
       <screen>
 reset
-x = 4
-if x &gt; 5 [
+$x = 4
+if $x &gt; 5 {
   print "x is greater than five!"
-]
+}
 else
-[
+{
   print "x is smaller than six!"
-]
+}
 </screen>
       The <link linkend="questions">question</link> asks if <userinput>x</userinput> is greater than 5. Since <userinput>x</userinput> is set to 4 on the first line the answer to the question is <quote>false</quote>. This means the code between the brackets after <userinput>else</userinput> gets executed.</para></listitem>
     </varlistentry>
@@ -761,10 +761,10 @@ else
       <listitem><para><screen>for <userinput>start point</userinput> to <userinput>end point</userinput> [ ... ]</screen>
       The <userinput>for</userinput> loop is a <quote>counting loop</quote>, &ie; it keeps count for you.
       <screen>
-for x = 1 to 10 [
-  print x * 7
+for $x = 1 to 10 {
+  print $x * 7
   forward 15
-]
+}
 </screen>
      Every time the code between the brackets is executed the <userinput>x</userinput> is increased by 1, until <userinput>x</userinput> reaches the value of 10. The code between the brackets prints the <userinput>x</userinput> multiplied by 7. After this program finishes its execution you will see the times table of 7 on the canvas.</para></listitem>
     </varlistentry>
@@ -778,21 +778,21 @@ for x = 1 to 10 [
 <title>Create your own commands with <quote>learn</quote></title>
 <para><userinput>learn</userinput> is a very special command, because it is used to create your own commands. The command you create can take <glossterm linkend="input-output">input</glossterm> and return <glossterm linkend="input-output">output</glossterm>. Let us take a look at how a new command is created:
 <screen>
-learn circle x [
-  repeat 36 [
-    forward x
+learn circle $x {
+  repeat 36 {
+    forward $x
     turnleft 10
-  ]
-]
+  }
+}
 </screen>
 The new command is called <userinput>circle</userinput>. <userinput>circle</userinput> takes one <glossterm linkend="input-output">input</glossterm>, a number, to set the size of the circle. <userinput>circle</userinput> returns no <glossterm linkend="input-output">output</glossterm>. The <userinput>circle</userinput> command can now be used like a normal command in the rest of the code. See this example:
 <screen>
-learn circle X [
-  repeat 36 [ 
-    forward X 
+learn circle $X {
+  repeat 36 {
+    forward $X 
     turnleft 10 
-  ] 
-] 
+  }
+}
 
 go 30,30 
 circle 20
@@ -805,13 +805,13 @@ circle 50
 <screen>
 reset
 
-learn multiplyBySelf n [
-  r = n * 1
-  r = n * n
-  return r
-]
-i = inputwindow "Please enter a number and press OK"
-print i + " multiplied by itself is: " + multiplyBySelf i
+learn multiplyBySelf $n {
+  $r = $n * 1
+  $r = $n * $n
+  return $r
+}
+$i = ask "Please enter a number and press OK"
+print $i + " multiplied by itself is: " + multiplyBySelf $i
 </screen>
 In this example a new command called <userinput>multiplyBySelf</userinput> is created. The input of this command is multiplied by itself and then returned, using the <anchor id="return" /><userinput>return</userinput> command. The <userinput>return</userinput> command is the way to output a value from a function you have created.
 </para>
