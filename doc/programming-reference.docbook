@@ -25,7 +25,7 @@ forward 100
 <para>We have the so called natural numbers: <userinput>0</userinput>, <userinput>1</userinput>, <userinput>2</userinput>, <userinput>3</userinput>, <userinput>4</userinput>, <userinput>5</userinput>, etc. The negative numbers: <userinput>-1</userinput>, <userinput>-2</userinput>, <userinput>-3</userinput>, etc. And the numbers with decimals, or dot-numbers, for example: <userinput>0.1</userinput>, <userinput>3.14</userinput>, <userinput>33.3333</userinput>, <userinput>-5.05</userinput>, <userinput>-1.0</userinput>.
 </para>
 <para>Numbers can be used in <link linkend="math">mathematical calculations</link> and <link linkend="questions">questions</link>. They can also be put in <link linkend="containers">containers</link>.</para>
-<para>Numbers are <glossterm>highlighted</glossterm> with blue in the <link linkend="the-code-editor">code editor</link>.</para>
+<para>Numbers are <glossterm>highlighted</glossterm> with dark red in the <link linkend="the-code-editor">code editor</link>.</para>
 </sect2>
 
 <sect2 id="string">
@@ -36,7 +36,7 @@ print "Hello, I'm a string."
 </screen>
 In this example <userinput>print</userinput> is a command where <userinput>"Hello, I'm a string."</userinput> is a string. Strings start and end with the <userinput>"</userinput> mark, by these marks &kturtle; knows it is a string.</para>
 <para>Strings can be put in <link linkend="containers">containers</link>. Yet they cannot be used in <link linkend="math">mathematical calculations</link> and <link linkend="questions">questions</link>.</para>
-<para>Strings are <glossterm>highlighted</glossterm> with dark red in the <link linkend="the-code-editor">code editor</link>.</para>
+<para>Strings are <glossterm>highlighted</glossterm> with red in the <link linkend="the-code-editor">code editor</link>.</para>
 </sect2>
 
 
@@ -54,6 +54,7 @@ forward 20
 </screen>
 Names can contain only letters, numbers and underscores (_). Yet they have to start with a letter. 
 </para>
+<para>Containers are <glossterm>highlighted</glossterm> with bolded purple in the <link linkend="the-code-editor">code editor</link>.</para>
 <para>
 Please read the documentation on <link linkend="containers">containers</link> and the <link linkend="learn">learn</link> command for a better explanation and more examples.
 </para>
@@ -104,7 +105,7 @@ print "this is not a comment"
 # print "this is not a comment"
 </screen>
 We can add comments to the code for ourselves or for someone else to read. Comments are used for: (1) adding a small description to the program, (2) explaining how a piece of code works if it is a bit cryptic, and (3) to 'comment-out' lines of code that should be (temporarily) ignored (see the last line of the example).</para>
-<para>Commented lines are <glossterm>highlighted</glossterm> with dark yellow in the <link linkend="the-code-editor">code editor</link>.</para>
+<para>Commented lines are <glossterm>highlighted</glossterm> with light grey in the <link linkend="the-code-editor">code editor</link>.</para>
 </sect2>
 
 </sect1>
@@ -112,7 +113,7 @@ We can add comments to the code for ourselves or for someone else to read. Comme
 
 <sect1 id="commands">
 <title>Commands</title>
-<para>Using commands you tell the turtle or &kturtle; to do something. Some commands need input, some give output. In this section we explain all the commands that can be used in &kturtle;. Please note that all build in commands we discuss here are <glossterm>highlighted</glossterm> with dark green in the <link linkend="the-code-editor">code editor</link>, this can help you to distinguish them.</para>
+<para>Using commands you tell the turtle or &kturtle; to do something. Some commands need input, some give output. In this section we explain all the commands that can be used in &kturtle;. Please note that all build in commands we discuss here are <glossterm>highlighted</glossterm> with blue in the <link linkend="the-code-editor">code editor</link>, this can help you to distinguish them.</para>
 
 <sect2 id="moving-the-turtle">
 <title>Moving the turtle</title>
@@ -255,7 +256,7 @@ We can add comments to the code for ourselves or for someone else to read. Comme
 </sect3>
 </sect2>
 
-<sect2 id="canvas">
+<!--<sect2 id="canvas">
 <title>Commands to control the canvas</title>
 <para>There are several commands to control the canvas.</para>
 <sect3 id="resizecanvas">
@@ -277,7 +278,7 @@ We can add comments to the code for ourselves or for someone else to read. Comme
       <userinput>canvascolor</userinput> set the color of the canvas. <userinput>canvascolor</userinput> takes an <glossterm linkend="rgb">RGB combination</glossterm> as input. <userinput>canvascolor</userinput> can be abbreviated to <userinput>cc</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
+</sect3> -->
 <!-- <sect3 id="wrapon">
   <title>wrapon</title>
   <variablelist>
@@ -304,12 +305,12 @@ We can add comments to the code for ourselves or for someone else to read. Comme
 <title>Commands to clean up</title>
 <para>There are two commands to clean up the canvas after you have made a mess.</para>
 <sect3 id="clear">
-  <title>clear (cr)</title>
+  <title>clear</title>
   <variablelist>
     <varlistentry> 
       <term>clear</term>
       <listitem><para><screen>clear</screen>
-      With <userinput>clear</userinput> you can clean all drawings from the canvas. All other things remain: the position and angle of the turtle, the canvascolor, the visibility of the turtle, and the canvas size. <userinput>clear</userinput> can be abbreviated to <userinput>cr</userinput>.</para></listitem>
+      With <userinput>clear</userinput> you can clean all drawings from the canvas. All other things remain: the position and angle of the turtle, the canvascolor, the visibility of the turtle, and the canvas size.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect3>
@@ -463,17 +464,17 @@ print $x
 In the first line the letter <userinput>x</userinput> is made into a variable (number container). As you see the value of the variable <userinput>x</userinput> is set to 3. On the second line the value is printed.</para>
 <para> Note that if we wanted to print an <quote>x</quote> that we should have written
 <screen>
-print "$x"
+print "x"
 </screen>
 </para>
 <para>That was easy, now a bit harder example:
 <screen>
 $A = 2004
 $B = 25
-$C = A + B
+$C = $A + $B
 
 # the next command prints "2029"
-$print C
+print $C
 backward 30
 # the next command prints "2004 plus 25"
 print $A + " plus " + $B
@@ -552,7 +553,7 @@ Here are all possible questions:
 </row>
 <row>
 <entry><userinput>a != b</userinput></entry>
-<entry>not-equal</entry>
+<entry>not-equals</entry>
 <entry>answer is <quote>true</quote> if <userinput>a</userinput> does not equal <userinput>b</userinput></entry>
 </row>
 <row>
@@ -579,7 +580,6 @@ Here are all possible questions:
 </tgroup>
 </table>
 </para>
-<para>Questions are <glossterm>highlighted</glossterm> with light blue in the <link linkend="the-code-editor">code editor</link>.</para> 
 </sect2>
 
 <sect2 id="question-glue">
@@ -617,7 +617,6 @@ Here is a schematic overview; a more detailed explanation follows below:
 </tgroup>
 </table>
 </para>
-<para>Question glue-words are <glossterm>highlighted</glossterm> with purple in the <link linkend="the-code-editor">code editor</link>.</para>
 
 <sect3 id="and">
 <title>and</title>
@@ -669,7 +668,7 @@ In this example the glued question is 'true' yet the <userinput>not</userinput> 
 <sect1 id="controlling-execution">
 <title>Controlling execution</title>
 <para>The execution controllers enable you &mdash; as their name implies &mdash; to control execution.</para>
-<para>Execution controlling commands are <glossterm>highlighted</glossterm> with dark green in a bold font type. The square brackets are mostly used together with execution controllers and they are <glossterm>highlighted</glossterm> with light green.</para>
+<para>Execution controlling commands are <glossterm>highlighted</glossterm> with dark green in a bold font type. The square brackets are mostly used together with execution controllers and they are <glossterm>highlighted</glossterm> with bolded black.</para>
 
 <sect2 id="wait">
 <title>Have the turtle wait</title>
@@ -697,7 +696,7 @@ repeat 36 {
   <variablelist>
     <varlistentry>
       <term>if</term>
-      <listitem><para><screen>if <link linkend="questions">question</link> [ ... ]</screen>
+      <listitem><para><screen>if <link linkend="questions">question</link> { ... }</screen>
       The code that is placed between the brackets will only be executed <userinput>if</userinput> the answer to the <link linkend="questions">question</link> is <quote>true</quote>. Please read for more information on <link linkend="questions">questions</link> in the <link linkend="questions">question section</link>.
       <screen>
 $x = 6
@@ -715,7 +714,7 @@ if $x &gt; 5 {
   <variablelist>
     <varlistentry>
       <term>while</term>
-      <listitem><para><screen>while <link linkend="questions">question</link> [ ... ]</screen>
+      <listitem><para><screen>while <link linkend="questions">question</link> { ... }</screen>
       The execution controller <userinput>while</userinput> is a lot like <link linkend="if"><userinput>if</userinput></link>. The difference is that <userinput>while</userinput> keeps repeating (looping) the code between the brackets until the answer to the <link linkend="questions">question</link> is <quote>false</quote>.
       <screen>
 $x = 1
@@ -735,7 +734,7 @@ while 4x &lt; 5 {
   <variablelist>
     <varlistentry>
       <term>else</term>
-      <listitem><para><screen>if question [ ... ] else [ ... ]</screen>
+      <listitem><para><screen>if question { ... } else { ... }</screen>
       <userinput>else</userinput> can be used in addition to the execution controller <link linkend="if"><userinput>if</userinput></link>. The code between the brackets after <userinput>else</userinput> is only executed if the answer to the <link linkend="questions">question</link> that is asked is <quote>false</quote>. 
       <screen>
 reset
@@ -815,6 +814,21 @@ print $i + " multiplied by itself is: " + multiplyBySelf $i
 </screen>
 In this example a new command called <userinput>multiplyBySelf</userinput> is created. The input of this command is multiplied by itself and then returned, using the <anchor id="return" /><userinput>return</userinput> command. The <userinput>return</userinput> command is the way to output a value from a function you have created.
 </para>
+<para>Commands can have more than one <glossterm linkend="input-output">input</glossterm>. In the next example, a command that draws a rectangle is created.
+<screen>
+learn box $X, $Y {
+  forward $Y
+  turnright 90
+  forward $X
+  turnright 90
+  forward $Y
+  turnright 90
+  forward $X
+  turnright 90
+}
+</screen>
+</para>
+  
 </sect1>
 
 </chapter>
