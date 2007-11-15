@@ -42,11 +42,11 @@ qt4_add_resources (kturtle_RCC_SRCS ${kturtle_RCCS})
 #    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/128x128/apps/kturtle.png
 #)
 set(kturtle_icons
-    ${CMAKE_CURRENT_SOURCE_DIR}/kturtle/icons/hi16-app-kturtle.png
-    ${CMAKE_CURRENT_SOURCE_DIR}/kturtle/icons/hi32-app-kturtle.png
-    ${CMAKE_CURRENT_SOURCE_DIR}/kturtle/icons/hi48-app-kturtle.png
-    ${CMAKE_CURRENT_SOURCE_DIR}/kturtle/icons/hi64-app-kturtle.png
-    ${CMAKE_CURRENT_SOURCE_DIR}/kturtle/icons/hi128-app-kturtle.png
+    ${CMAKE_CURRENT_SOURCE_DIR}/../icons/hi16-app-kturtle.png
+    ${CMAKE_CURRENT_SOURCE_DIR}/../icons/hi32-app-kturtle.png
+    ${CMAKE_CURRENT_SOURCE_DIR}/../icons/hi48-app-kturtle.png
+    ${CMAKE_CURRENT_SOURCE_DIR}/../icons/hi64-app-kturtle.png
+    ${CMAKE_CURRENT_SOURCE_DIR}/../icons/hi128-app-kturtle.png
 )
 kde4_add_win32_app_icon(kturtle_SRCS ${kturtle_icons})
 
