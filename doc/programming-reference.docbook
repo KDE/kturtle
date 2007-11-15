@@ -298,8 +298,8 @@ We can add comments to the code for ourselves or for someone else to read. Comme
       With the <userinput>wrapoff</userinput> command you can set <glossterm linkend="wrapping">wrapping</glossterm> <quote>off</quote> for the canvas: this means the turtle can move off the canvas and can get <quote>lost</quote>. Please see the glossary if you want to know what <glossterm linkend="wrapping">wrapping</glossterm> is.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3> -->
-</sect2>
+</sect3>
+</sect2> -->
 
 <sect2 id="clean">
 <title>Commands to clean up</title>
