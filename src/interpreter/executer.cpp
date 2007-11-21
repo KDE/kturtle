@@ -382,11 +382,18 @@ void Executer::executeScope(TreeNode* node) {
 }
 void Executer::executeVariable(TreeNode* node) {
 //	qDebug() << "Executer::executeVariable()";
+	bool aValueIsNeeded = true;
 	// no need to look up when assigning (in a for loop statement)
-	if (node->parent()->token()->type() == Token::Assign ||
-	    node->parent()->token()->type() == Token::ForTo)
+	if (node->parent()->token()->type() == Token::ForTo)
 		return;
-
+	// we need to executeVariables in assignments for things like $x=$y to work
+	if (node->parent()->token()->type() == Token::Assign) {
+		// Test if we are in the LHS of the assignment
+		if  (node == node->parent()->child(0)) {
+			// In this case we do not need to be initialized, we will get a value in executeAssign
+			aValueIsNeeded = false;
+	}
+	}
 	if (!functionStack.isEmpty() && 
 	    functionStack.top().variableTable->contains(node->token()->look())) {
 		qDebug() << "exists locally";
@@ -394,7 +401,8 @@ void Executer::executeVariable(TreeNode* node) {
 	} else if (globalVariableTable.contains(node->token()->look())) {
 		qDebug() << "exists globally";
 		node->setValue(globalVariableTable[node->token()->look()]);
-	} else {
+	} else if (aValueIsNeeded)
+	{
 		addError(i18n("The variable '%1' was used without first being assigned to a value", node->token()->look()), *node->token(), 0);
 	}
 }
