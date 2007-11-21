@@ -899,16 +899,17 @@ new_item()
 @e_def =
 <<EOS
 	if(node->childCount()!=2) {
-		addError(i18n("You need one variable and a value or variable to do a '='"), *node->token(), 0);
+	addError(i18n("You need one variable and a value or variable to do a '='"), *node->token(), 0);
 		return;
 	}
-	if (!functionStack.isEmpty() && functionStack.top().variableTable->contains(node->token()->look())) {
-		qDebug() << "exists locally";
+	if (!functionStack.isEmpty()) // &&functionStack.top().variableTable->contains(node->token()->look())) 
+	{
+	qDebug() << "function scope";
 		functionStack.top().variableTable->insert(node->child(0)->token()->look(), node->child(1)->value());
-		return;
-	}
-	// insterts unless already exists then replaces
+	} else {
+	// inserts unless already exists then replaces
 	globalVariableTable.insert(node->child(0)->token()->look(), node->child(1)->value());
+	}
 	qDebug() << "variableTable updated!";
 	emit variableTableUpdated(node->child(0)->token()->look(), node->child(1)->value());
 EOS
