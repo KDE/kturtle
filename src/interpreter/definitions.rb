@@ -723,7 +723,7 @@ parse_item()
 
 
 def e_def_expression_creator(look)
-	# since the looks for expressions are the same in KTurtle-LOGO and C++ we can take this shortcut...
+	# since the looks for expressions are the same in TurtleScript and C++ we can take this shortcut...
 	# all the logic doing the expressioning is in the Value class
 	return "\tif(node->childCount()!=2) { \n\t\taddError(i18n(\"I cannot do a '#{look}' without 2 variables\"), *node->token(), 0);\n\t\treturn;\n\t}\n\tnode->value()->setBool(*node->child(0)->value() #{look} node->child(1)->value());\n"
 end
