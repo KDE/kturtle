@@ -139,7 +139,7 @@ QString Value::string() const
 		if (m_bool)
 			return QString(Translator::instance()->default2localized("true"));
 		else
-			return QString(Translator::instance()->default2localized("true"));
+			return QString(Translator::instance()->default2localized("false"));
 	}
 	else if (m_type == Value::Number)
 	{
