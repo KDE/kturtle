@@ -408,8 +408,7 @@ TreeNode* Parser::parseTerm()
 
 	while ( (currentToken->type() == Token::Multiplication) ||
 	        (currentToken->type() == Token::Division) ||
-	        (currentToken->type() == Token::Power) ||
-	        (currentToken->type() == Token::And) ) {
+	        (currentToken->type() == Token::Power)  ) {
 		// while we find a multiplicative operator do...
 		left = pos;
 		pos = new TreeNode(currentToken);
@@ -432,6 +431,8 @@ TreeNode* Parser::parseExpression()
 	TreeNode* left = 0;
 	TreeNode* right = 0;
 
+	Token* prevToken = 0;
+
 	while ((currentToken->type() == Token::Addition) ||
 	       (currentToken->type() == Token::Substracton) ||
 	       (currentToken->type() == Token::GreaterThan) ||
@@ -440,12 +441,19 @@ TreeNode* Parser::parseExpression()
 	       (currentToken->type() == Token::LessOrEquals) ||
 	       (currentToken->type() == Token::Equals) ||
 	       (currentToken->type() == Token::NotEquals) ||
-	       (currentToken->type() == Token::Or)) {
+	       (currentToken->type() == Token::Or) ||
+	       (currentToken->type() == Token::And)) {
 		left = pos;
 		pos = new TreeNode(currentToken);
 		pos->appendChild(left);
+		prevToken = currentToken;
 		nextToken();
-		right = parseTerm();
+		
+		if(prevToken->type() == Token::And ||
+		   prevToken->type() == Token::Or)
+			right = parseExpression();
+		else
+			right = parseTerm();
 		if (right != 0) pos->appendChild(right);
 		expressionNode = pos;
 	}
