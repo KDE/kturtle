@@ -1275,7 +1275,13 @@ new_item()
 	if (!checkParameterQuantity(node, 1, 20000+Token::Ask*100+90)) return;
 	QString value = node->child(0)->value()->string();
 	emit ask(value);
-	node->value()->setString(value);
+	
+	bool convertOk;
+	double d = value.toDouble(&convertOk);
+	if(convertOk)
+		node->value()->setNumber(d);
+	else
+		node->value()->setString(value);
 EOS
 parse_item()
 
