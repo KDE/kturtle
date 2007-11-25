@@ -131,6 +131,7 @@ class TreeNode
 		/** Prints an indented string describing itself to de debug info */
 		void showTree(QString& str, int indent = 0);
 
+		int findChildIndex(TreeNode* child);
 	
 		/// typedef for the ChildList.
 		typedef QList<TreeNode*>         ChildList;

@@ -87,12 +87,16 @@ TreeNode* TreeNode::nextChild()
 }
 
 
+int TreeNode::findChildIndex(TreeNode* child)
+{
+	return childList->indexOf(child);
+}
 
 
 TreeNode* TreeNode::nextSibling()
 {
 	if (_parent == 0) return 0;
-	return _parent->nextChild();
+	return _parent->child(_parent->findChildIndex(this)+1);
 }
 
 
