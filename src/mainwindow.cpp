@@ -583,6 +583,15 @@ void MainWindow::setupStatusBar()
 	updateOnCursorPositionChange(1, 1, "");
 }
 
+void MainWindow::saveNewToolbarConfig()
+{
+	// this destroys our actions lists ...
+	KXmlGuiWindow::saveNewToolbarConfig();
+	// ... so plug them again
+	updateLanguagesMenu();
+	updateExamplesMenu();
+}
+
 void MainWindow::updateLanguagesMenu()
 {
 	QList<QAction *> languageList;

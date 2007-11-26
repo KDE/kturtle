@@ -104,6 +104,9 @@ class MainWindow : public KXmlGuiWindow
 
 		void slotInputDialog(QString& value);
 		void slotMessageDialog(const QString& text);
+		
+	protected slots:
+		void saveNewToolbarConfig();
 
 	protected:
 		void closeEvent(QCloseEvent *event);
