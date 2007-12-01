@@ -165,6 +165,7 @@ bool Editor::openFile(const KUrl &_url)
 				setCurrentUrl(url);
 				editor->document()->setModified(false);
 // 				statusbar
+				emit fileOpened(url);
 				return true;
 			} else {
 				KMessageBox::error(this, KIO::NetAccess::lastErrorString());

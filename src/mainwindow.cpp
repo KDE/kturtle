@@ -435,6 +435,7 @@ void MainWindow::setupEditor()
 // 	editor->setTranslator(Translator::instance());
 	connect(editor, SIGNAL(modificationChanged(bool)), this, SLOT(setWindowModified(bool)));
 	connect(editor, SIGNAL(currentUrlChanged(const KUrl&)), this, SLOT(setCaption(const KUrl&)));
+	connect(editor, SIGNAL(fileOpened(const KUrl&)), this, SLOT(addToRecentFilesList(const KUrl&)));
 	connect(editor, SIGNAL(cursorPositionChanged(int, int, const QString&)),
 		this, SLOT(updateOnCursorPositionChange(int, int, const QString&)));
 }
@@ -638,6 +639,11 @@ void MainWindow::updateExamplesMenu()
 void MainWindow::open(const QString& pathOrUrl)
 {
 	editor->openFile(KUrl(pathOrUrl));
+}
+
+void MainWindow::addToRecentFilesList(const KUrl& url)
+{
+	recentFilesAction->addUrl(url);
 }
 
 void MainWindow::openExample()

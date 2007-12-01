@@ -79,6 +79,7 @@ class MainWindow : public KXmlGuiWindow
 
 	public slots:
 		void open(const QString&);
+		void addToRecentFilesList(const KUrl&);
 
 	private slots:
 		void openExample();

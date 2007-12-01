@@ -238,6 +238,7 @@ class Editor : public QFrame
 
 	signals:
 		void currentUrlChanged(const KUrl&);
+		void fileOpened(const KUrl&);
 		void modificationChanged(bool);
 		void cursorPositionChanged(int row, int col, const QString& line);
 
