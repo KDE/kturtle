@@ -199,11 +199,9 @@ bool Editor::saveFile(const KUrl &targetUrl)
 		}
 		delete savefile;
 		if (!url.isLocalFile()) KIO::NetAccess::upload(filename, url, this);
-		result = true;
-	}
-	if (result) {
 		setCurrentUrl(url);
 		editor->document()->setModified(false);
+		result = true; // fix GUI for saveAs and saveExamples. TODO: check 5 lines above
 	}
 	return result;
 }
