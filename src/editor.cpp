@@ -114,7 +114,7 @@ void Editor::openExample(const QString& example, const QString& exampleName)
 {
 	if (newFile()) {
 		setContent(example);
-		setCurrentUrl(KUrl(exampleName));
+		setCurrentUrl();
 		editor->document()->setModified(false);
 	}
 }
