@@ -93,6 +93,8 @@ void Canvas::initValues()
 	textColor.setRgb(0, 0, 0) ;
 	delete textFont;
 	textFont = new QFont();
+	//Reset our pen to the default position
+	slotPenDown();
 }
 
 void Canvas::resizeEvent(QResizeEvent* event)
