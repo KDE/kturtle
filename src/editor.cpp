@@ -160,6 +160,15 @@ bool Editor::openFile(const KUrl &_url)
 					return false;
 				}
 				QTextStream in(&file);
+				//Check for our magic identifier
+				QString s;
+				s = in.readLine();
+				kDebug() << s;
+				if (s != kturtle_magic_1_0) {
+					//TODO give better description after string freeze
+					KMessageBox::error(this, i18n("Cannot read %1", fileString));
+					return false;
+				}
 				QString localizedScript;
 				localizedScript = Translator::instance()->localizeScript(in.readAll());
 				setContent(localizedScript);
@@ -217,6 +226,7 @@ bool Editor::saveFile(const KUrl &targetUrl)
 						unstranslated.append(t->look());
 				}
 			}
+			outputStream << kturtle_magic_1_0 << '\n';
 			outputStream << unstranslated;
 			outputStream.flush();
 			savefile->finalize();  // check for error here?

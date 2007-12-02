@@ -46,6 +46,8 @@ static const int EDITOR_MARGIN = 2;  // some margin that can't be set to zero, y
 static const int CURSOR_RECT_MARGIN = 5;  // another margin that cannot be traced
 static const int LINENUMBER_SPACING = 2;  // sets the margin for the line numbers
 
+const QString kturtle_magic_1_0 = "kturtle-script-v1.0";
+
 
 //BEGIN LineNumbers class
 
