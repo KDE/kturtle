@@ -51,6 +51,9 @@ Canvas::Canvas(QWidget *parent) : QGraphicsView(parent)
 
 	// foreground pen for drawing
 	pen = new QPen();
+	
+	// font
+	textFont = new QFont();
 
 	// the turtle shape
 	turtle = new Sprite();
@@ -69,6 +72,7 @@ Canvas::~Canvas()
 {
 	delete pen;
 	delete turtle;
+	delete textFont;
 	delete scene;
 }
 
@@ -183,19 +187,19 @@ void Canvas::slotPrint(const QString& text)
 {
 	QGraphicsTextItem *ti = new QGraphicsTextItem(text, 0, scene);
 // 	ti->setDefaultTextColor(textColor);
-	ti->setFont(textFont);
+	ti->setFont(*textFont);
 	ti->rotate(turtle->angle());
 	ti->setPos(turtle->pos().x(), turtle->pos().y());
 }
 
 void Canvas::slotFontType(const QString& family, const QString& extra)
 {
-	textFont.setFamily(family);
-	textFont.setBold(extra.contains(i18n("bold")) > 0);
-	textFont.setItalic(extra.contains(i18n("italic")) > 0);
-	textFont.setUnderline(extra.contains(i18n("underline")) > 0);
-	textFont.setOverline(extra.contains(i18n("overline")) > 0);
-	textFont.setStrikeOut(extra.contains(i18n("strikeout")) > 0);
+	textFont->setFamily(family);
+	textFont->setBold(extra.contains(i18n("bold")) > 0);
+	textFont->setItalic(extra.contains(i18n("italic")) > 0);
+	textFont->setUnderline(extra.contains(i18n("underline")) > 0);
+	textFont->setOverline(extra.contains(i18n("overline")) > 0);
+	textFont->setStrikeOut(extra.contains(i18n("strikeout")) > 0);
 }
 
 void Canvas::slotReset()

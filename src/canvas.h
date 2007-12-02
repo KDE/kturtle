@@ -59,7 +59,7 @@ class Canvas : public QGraphicsView
 		void slotSpriteHide() { turtle->hide(); }
 		void slotPrint(const QString& text);
 		void slotFontType(const QString& family, const QString& extra);
-		void slotFontSize(double px) { textFont.setPixelSize((int)px); }
+		void slotFontSize(double px) { textFont->setPixelSize((int)px); }
 		void slotReset();
 		void getX(double& value);
 		void getY(double& value);
@@ -86,7 +86,7 @@ class Canvas : public QGraphicsView
 		QList<QGraphicsLineItem*>  lines;
 		QGraphicsLineItem         *line;
 		bool                       penWidthIsZero;
-		QFont                      textFont;
+		QFont                      *textFont;
 		QColor                     textColor;
 };
 
