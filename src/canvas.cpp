@@ -41,7 +41,7 @@ Canvas::Canvas(QWidget *parent) : QGraphicsView(parent)
 	// create a new scene for this view
 	scene = new QGraphicsScene(parent);
 	scene->setItemIndexMethod(QGraphicsScene::NoIndex);
-	scene->setSceneRect(-200, -200, 400, 400);  // (-50, -50, 50, 50);
+	//scene->setSceneRect(-200, -200, 400, 400);  // (-50, -50, 50, 50);
 
 	setCacheMode(CacheBackground);
 	setRenderHint(QPainter::Antialiasing);
@@ -78,7 +78,9 @@ void Canvas::initValues()
 // 	QSettings settings("KDE", "KTurtle");
 // 	int width  = qMin(qMax(settings.value("canvasWidth",  400).toInt(), 20), 10000);
 // 	int height = qMin(qMax(settings.value("canvasHeight", 300).toInt(), 20), 10000);
-	turtle->setPos(0, 0);
+	scene->setSceneRect(QRectF(0,0,400,400));
+	fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
+	turtle->setPos(200, 200);
 	turtle->setAngle(0);
 	scene->setBackgroundBrush(QBrush(Qt::white));
 	pen->setColor(Qt::black);
@@ -89,7 +91,9 @@ void Canvas::initValues()
 
 void Canvas::resizeEvent(QResizeEvent* event)
 {
-	kDebug() << ">>>>>>" << event->size();
+	//kDebug() << ">>>>>>" << event->size();
+	//scene->setSceneRect(scene->itemsBoundingRect());
+	fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
 	event->accept();
 }
 
@@ -167,6 +171,12 @@ void Canvas::slotPenColor(double r, double g, double b)
 void Canvas::slotCanvasColor(double r, double g, double b)
 {
 	scene->setBackgroundBrush(QBrush(rgbDoublesToColor(r, g, b)));
+}
+
+void Canvas::slotCanvasSize(double r, double g)
+{
+	scene->setSceneRect(QRectF(0,0,r,g));
+	fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
 }
 
 void Canvas::slotPrint(const QString& text)

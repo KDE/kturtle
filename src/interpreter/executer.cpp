@@ -219,6 +219,7 @@ void Executer::execute(TreeNode* node)
 		case Token::PenDown             : executePenDown(node);             break;
 		case Token::PenColor            : executePenColor(node);            break;
 		case Token::CanvasColor         : executeCanvasColor(node);         break;
+		case Token::CanvasSize          : executeCanvasSize(node);          break;
 		case Token::SpriteShow          : executeSpriteShow(node);          break;
 		case Token::SpriteHide          : executeSpriteHide(node);          break;
 		case Token::Print               : executePrint(node);               break;
@@ -847,6 +848,12 @@ void Executer::executeCanvasColor(TreeNode* node) {
 	if (!checkParameterQuantity(node, 3, 20000+Token::CanvasColor*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::CanvasColor*100+91)) return;
 	emit canvasColor(node->child(0)->value()->number(), node->child(1)->value()->number(), node->child(2)->value()->number());
+}
+void Executer::executeCanvasSize(TreeNode* node) {
+//	qDebug() << "Executer::executeCanvasSize()";
+	if (!checkParameterQuantity(node, 2, 20000+Token::CanvasSize*100+90) ||
+		!checkParameterType(node, Value::Number, 20000+Token::CanvasSize*100+91)) return;
+	emit canvasSize(node->child(0)->value()->number(), node->child(1)->value()->number());
 }
 void Executer::executeSpriteShow(TreeNode* node) {
 //	qDebug() << "Executer::executeSpriteShow()";

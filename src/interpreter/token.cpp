@@ -83,6 +83,7 @@ int Token::typeToCategory(int type)
 		case GoX:
 		case GoY:
 		case FontSize:
+		case CanvasSize:
 		case Cos:
 		case CanvasColor:
 		case Tan:

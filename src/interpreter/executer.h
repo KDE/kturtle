@@ -228,6 +228,7 @@ class Executer : public QObject
 		void executePenDown(TreeNode* node);
 		void executePenColor(TreeNode* node);
 		void executeCanvasColor(TreeNode* node);
+		void executeCanvasSize(TreeNode* node);
 		void executeSpriteShow(TreeNode* node);
 		void executeSpriteHide(TreeNode* node);
 		void executePrint(TreeNode* node);
@@ -289,6 +290,7 @@ class Executer : public QObject
 		void penDown();
 		void penColor(double, double, double);
 		void canvasColor(double, double, double);
+		void canvasSize(double, double);
 		void spriteShow();
 		void spriteHide();
 		void print(const QString&);

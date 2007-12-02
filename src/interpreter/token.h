@@ -128,6 +128,7 @@ class Token
 			PenDown,
 			PenColor,
 			CanvasColor,
+			CanvasSize,
 			SpriteShow,
 			SpriteHide,
 			Print,

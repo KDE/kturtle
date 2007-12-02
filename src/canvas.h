@@ -54,6 +54,7 @@ class Canvas : public QGraphicsView
 		void slotPenDown() { pen->setStyle(Qt::SolidLine); }
 		void slotPenColor(double r, double g, double b);
 		void slotCanvasColor(double r, double g, double b);
+		void slotCanvasSize(double r, double g);
 		void slotSpriteShow() { turtle->show(); }
 		void slotSpriteHide() { turtle->hide(); }
 		void slotPrint(const QString& text);

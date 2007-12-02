@@ -1124,14 +1124,14 @@ new_item()
 @args  = [:number, :number, :number]
 parse_item()
 
-# # new_item()
-# # @type  = "CanvasSize"
-# # @cat   = "Command"
-# # @look  = "canvassize"
-# # @ali   = "cs"
-# # @funct = "statement, node, auto-emit"
-# # @args  = [:number, :number]
-# # parse_item()
+new_item()
+@type  = "CanvasSize"
+@cat   = "Command"
+@look  = "canvassize"
+@ali   = "cs"
+@funct = "statement, node, auto-emit"
+@args  = [:number, :number]
+parse_item()
 
 new_item()
 @type  = "SpriteShow"
