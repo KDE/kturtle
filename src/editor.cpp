@@ -163,7 +163,6 @@ bool Editor::openFile(const KUrl &_url)
 				//Check for our magic identifier
 				QString s;
 				s = in.readLine();
-				kDebug() << s;
 				if (s != kturtle_magic_1_0) {
 					//TODO give better description after string freeze
 					KMessageBox::error(this, i18n("Cannot read %1", fileString));
@@ -208,7 +207,7 @@ bool Editor::saveFile(const KUrl &targetUrl)
 			//This allows sharing of scripts written in different languages
 			Tokenizer tokenizer;
 			tokenizer.initialize(editor->document()->toPlainText());
-			QStringList defaultLooks(Translator::instance()->allDefaultLooks());
+			QStringList localizedLooks(Translator::instance()->allLocalizedLooks());
 			QString unstranslated;
 			Token* t;
 			bool pendingEOL = false; //to avoid writing a final EOL token
@@ -217,8 +216,9 @@ bool Editor::saveFile(const KUrl &targetUrl)
 					unstranslated.append('\n');
 					pendingEOL=false;
 				}
-				if (defaultLooks.contains(t->look())) {
-					unstranslated.append(QString("@(%1)").arg(t->look()));
+				if (localizedLooks.contains(t->look())) {
+					QString defaultLook(Translator::instance()->defaultLook(t->look()));
+					unstranslated.append(QString("@(%1)").arg(defaultLook));
 				} else {
 					if (t->type() == Token::EndOfLine) 
 						pendingEOL=true;
