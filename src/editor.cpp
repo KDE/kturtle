@@ -211,7 +211,8 @@ bool Editor::saveFile(const KUrl &targetUrl)
 				if (defaultLooks.contains(t->look())) {
 					unstranslated.append(QString("@(%1)").arg(t->look()));
 				} else {
-					if (t->type() == Token::EndOfLine) 		pendingEOL=true;
+					if (t->type() == Token::EndOfLine) 
+						pendingEOL=true;
 					else
 						unstranslated.append(t->look());
 				}
