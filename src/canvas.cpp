@@ -91,6 +91,8 @@ void Canvas::initValues()
 	pen->setWidth(1);
 	penWidthIsZero = false;
 	textColor.setRgb(0, 0, 0) ;
+	delete textFont;
+	textFont = new QFont();
 }
 
 void Canvas::resizeEvent(QResizeEvent* event)
