@@ -661,7 +661,7 @@ void Translator::setExamples()
 		"This is an EXAMPLE NAME in KTurtle."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 		"triangle").toString(localizer);
-	examples[exampleName] = parseExampleTranslations(ki18nc(
+	examples[exampleName] = localizeScript(ki18nc(
 		"You are about to translate the 'triangle' EXAMPLE PROGRAM, examples have to be translated in a special way."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
 				"# Example: %1\n"
@@ -676,7 +676,7 @@ void Translator::setExamples()
 		"This is an EXAMPLE NAME in KTurtle."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 		"curly").toString(localizer);
-	examples[exampleName] = parseExampleTranslations(ki18nc(
+	examples[exampleName] = localizeScript(ki18nc(
 		"You are about to translate the 'curly' EXAMPLE PROGRAM, examples have to be translated in a special way."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 				"# Example: %1\n"
@@ -699,7 +699,7 @@ void Translator::setExamples()
 		"This is an EXAMPLE NAME in KTurtle."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 		"arrow").toString(localizer);
-	examples[exampleName] = parseExampleTranslations(ki18nc(
+	examples[exampleName] = localizeScript(ki18nc(
 		"You are about to translate the 'arrow' EXAMPLE PROGRAM, examples have to be translated in a special way."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 				"# Example: %1\n"
@@ -733,7 +733,7 @@ void Translator::setExamples()
 		"This is an EXAMPLE NAME in KTurtle."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 		"flower").toString(localizer);
-	examples[exampleName] = parseExampleTranslations(ki18nc(
+	examples[exampleName] = localizeScript(ki18nc(
 		"You are about to translate the 'flower' EXAMPLE PROGRAM, examples have to be translated in a special way."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 				"# Example: %1\n"
@@ -769,9 +769,9 @@ void Translator::setExamples()
 
 }
 
-QString Translator::parseExampleTranslations(const QString& halfTranslatedExample)
+QString Translator::localizeScript(const QString& untranslatedScript)
 {
-	QString result = halfTranslatedExample;
+	QString result = untranslatedScript;
 	Translator* translator = Translator::instance();
 	QRegExp rx("@\\(.*\\)");
 	rx.setMinimal(true);  // make it not greedy

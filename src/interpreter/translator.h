@@ -90,6 +90,8 @@ class Translator
 
 		QString example(const QString& name) const { return examples[name]; }
 
+		QString localizeScript(const QString& untranslatedScript);
+
 
 	protected:
 		/** @short Constructor. Does nothing special. */
@@ -108,7 +110,6 @@ class Translator
 		void setDictionary();
 		void setExamples();
 
-		QString parseExampleTranslations(const QString& halfTranslatedExample);
 		QHash<QString, QString> examples;
 
 		QHash<QString, int> look2typeMap;

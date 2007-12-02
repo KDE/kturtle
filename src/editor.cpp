@@ -160,7 +160,9 @@ bool Editor::openFile(const KUrl &_url)
 					return false;
 				}
 				QTextStream in(&file);
-				setContent(in.readAll());
+				QString localizedScript;
+				localizedScript = Translator::instance()->localizeScript(in.readAll());
+				setContent(localizedScript);
 				KIO::NetAccess::removeTempFile(fileString);
 				setCurrentUrl(url);
 				editor->document()->setModified(false);
@@ -193,8 +195,28 @@ bool Editor::saveFile(const KUrl &targetUrl)
 		KSaveFile *savefile = new KSaveFile(filename);
 		if (savefile->open()) {
 			QTextStream outputStream(savefile);
-// 			outputStream.setEncoding(QTextStream::UnicodeUTF8);
-			outputStream << editor->document()->toPlainText();
+			//Store commands in their generic format, to be translatable when reopened
+			//This allows sharing of scripts written in different languages
+			Tokenizer tokenizer;
+			tokenizer.initialize(editor->document()->toPlainText());
+			QStringList defaultLooks(Translator::instance()->allDefaultLooks());
+			QString unstranslated;
+			Token* t;
+			bool pendingEOL = false; //to avoid writing a final EOL token
+			while ((t = tokenizer.getToken())->type() != Token::EndOfInput) {
+				if (pendingEOL) {
+					unstranslated.append('\n');
+					pendingEOL=false;
+				}
+				if (defaultLooks.contains(t->look())) {
+					unstranslated.append(QString("@(%1)").arg(t->look()));
+				} else {
+					if (t->type() == Token::EndOfLine) 		pendingEOL=true;
+					else
+						unstranslated.append(t->look());
+				}
+			}
+			outputStream << unstranslated;
 			outputStream.flush();
 			savefile->finalize();  // check for error here?
 		}
