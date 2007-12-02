@@ -661,27 +661,18 @@ void Translator::setExamples()
 		"This is an EXAMPLE NAME in KTurtle."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 		"triangle").toString(localizer);
-	examples[exampleName] = localizeScript(ki18nc(
-		"You are about to translate the 'triangle' EXAMPLE PROGRAM, examples have to be translated in a special way."
-		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
-				"# Example: %1\n"
-				"\n"
+	examples[exampleName] = localizeScript(QString(
 				"@(repeat) 3 {\n"
 				"  @(forward) 100\n"
 				"  @(turnleft) 120\n"
 				"}\n"
-		).subs(exampleName).toString(localizer));
+		));
 
 	exampleName = ki18nc(
 		"This is an EXAMPLE NAME in KTurtle."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 		"curly").toString(localizer);
-	examples[exampleName] = localizeScript(ki18nc(
-		"You are about to translate the 'curly' EXAMPLE PROGRAM, examples have to be translated in a special way."
-		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
-				"# Example: %1\n"
-				"# This example draws some nice curving shapes...\n"
-				"\n"
+	examples[exampleName] = localizeScript(QString(
 				"@(reset)\n"
 				"@(penup)\n"
 				"@(forward) 50\n"
@@ -693,17 +684,13 @@ void Translator::setExamples()
 				"    @(turnright) 100 - $x\n"
 				"  }\n"
 				"}\n"
-		).subs(exampleName).toString(localizer));
+		));
 
 	exampleName = ki18nc(
 		"This is an EXAMPLE NAME in KTurtle."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 		"arrow").toString(localizer);
-	examples[exampleName] = localizeScript(ki18nc(
-		"You are about to translate the 'arrow' EXAMPLE PROGRAM, examples have to be translated in a special way."
-		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
-				"# Example: %1\n"
-				"# This example draws an arrow...\n"
+	examples[exampleName] = localizeScript(QString(
 				"@(reset)\n"
 				"\n"
 				"@(canvascolor) 0@(,) 0@(,) 0\n"
@@ -727,18 +714,13 @@ void Translator::setExamples()
 				"\n"
 				"@(penup)\n"
 				"@(go) 40@(,) 100"
-		).subs(exampleName).toString(localizer));
+		));
 
 	exampleName = ki18nc(
 		"This is an EXAMPLE NAME in KTurtle."
 		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
-		"flower").toString(localizer);
-	examples[exampleName] = localizeScript(ki18nc(
-		"You are about to translate the 'flower' EXAMPLE PROGRAM, examples have to be translated in a special way."
-		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
-				"# Example: %1\n"
-				"# This example draws a flower...\n"
-				"\n"
+		  "flower").toString(localizer);
+	examples[exampleName] = localizeScript(QString(
 				"@(reset)\n"
 				"@(penup)\n"
 				"@(canvascolor) 255@(,) 55@(,) 140\n"
@@ -764,8 +746,7 @@ void Translator::setExamples()
 				"@(penup)\n"
 				"@(go) 145@(,) 145\n"
 				"@(direction) 0"
-		).subs(exampleName).toString(localizer));
-
+		));
 
 }
 
