@@ -109,8 +109,17 @@ void DirectionCanvas::paintEvent(QPaintEvent *event)
 	painter.drawRect(QRect(0, 0, width() - 1, height() - 1));
 }
 
+void DirectionCanvas::mouseMoveEvent(QMouseEvent *event)
+{
+	mousePressEvent(event);
+}
+
 void DirectionCanvas::mousePressEvent(QMouseEvent *event)
 {
+	// Only do something if event is caused by the left mouse button
+	if (!(event->buttons() & Qt::LeftButton))
+		return;
+	
 	//'Translate' the X and Y coordinates so that 
 	// 0,0 is in the middle of the widget.
 	double trans_x = event->x() - (width() / 2);
