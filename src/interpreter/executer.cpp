@@ -546,9 +546,12 @@ void Executer::executeForTo(TreeNode* node) {
 	double endCondition   = node->child(2)->value()->number();
 	double step           = node->child(3)->value()->number();
 
-	if ((startCondition < endCondition && currentCount + step < endCondition) ||
-	    (startCondition > endCondition && currentCount + step > endCondition)) {
-		if (!firstIteration)
+	if (
+ 	(startCondition < endCondition && currentCount + step <= endCondition) ||
+	    (startCondition > endCondition && currentCount - step >= endCondition && step<0) //negative loop sanity check, is it implemented?
+		|| (startCondition==endCondition && firstIteration) // for expressions like for $n=1 to 1
+	   ) {
+	if (!firstIteration)
 			(*currentVariableTable())[node->child(0)->token()->look()].setNumber(currentCount + step);
 		newScope = node->child(4); // (re-)execute the scope
 	} else {
