@@ -35,7 +35,6 @@
 static const double Pi = 3.14159265358979323846264338327950288419717;
 const double DegToRad = Pi / 180.0;
 
-
 Canvas::Canvas(QWidget *parent) : QGraphicsView(parent)
 {
 	// create a new scene for this view
@@ -54,6 +53,12 @@ Canvas::Canvas(QWidget *parent) : QGraphicsView(parent)
 	
 	// font
 	textFont = new QFont();
+	
+	// Canvas area marker
+	canvasFrame = new QGraphicsRectItem();
+	canvasFrame->setZValue(-10000);
+	scene->addItem(canvasFrame);
+	
 
 	// the turtle shape
 	turtle = new Sprite();
@@ -72,6 +77,7 @@ Canvas::~Canvas()
 {
 	delete pen;
 	delete turtle;
+	delete canvasFrame;
 	delete textFont;
 	delete scene;
 }
@@ -83,6 +89,8 @@ void Canvas::initValues()
 // 	int width  = qMin(qMax(settings.value("canvasWidth",  400).toInt(), 20), 10000);
 // 	int height = qMin(qMax(settings.value("canvasHeight", 300).toInt(), 20), 10000);
 	scene->setSceneRect(QRectF(0,0,400,400));
+	canvasFrame->setBrush(QBrush());
+	canvasFrame->setRect(scene->sceneRect());
 	fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
 	turtle->setPos(200, 200);
 	turtle->setAngle(0);
@@ -126,7 +134,7 @@ void Canvas::slotClear()
 	QList<QGraphicsItem*> list = scene->items();
 	foreach (QGraphicsItem* item, list) {
 		// delete all but the turtle (who lives on a separate layer with z-value 1)
-		if (item->zValue() != 1) delete item;
+		if ((item->zValue() != 1)&&(item->zValue() !=-10000)) delete item;
 	}
 }
 
@@ -178,12 +186,14 @@ void Canvas::slotPenColor(double r, double g, double b)
 
 void Canvas::slotCanvasColor(double r, double g, double b)
 {
-	scene->setBackgroundBrush(QBrush(rgbDoublesToColor(r, g, b)));
+	//scene->setBackgroundBrush(QBrush(rgbDoublesToColor(r, g, b)));
+	canvasFrame->setBrush(QBrush(rgbDoublesToColor(r, g, b)));
 }
 
 void Canvas::slotCanvasSize(double r, double g)
 {
 	scene->setSceneRect(QRectF(0,0,r,g));
+	canvasFrame->setRect(scene->sceneRect());
 	fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
 }
 

@@ -85,6 +85,7 @@ class Canvas : public QGraphicsView
 		Sprite                    *turtle;
 		QList<QGraphicsLineItem*>  lines;
 		QGraphicsLineItem         *line;
+		QGraphicsRectItem	  *canvasFrame;
 		bool                       penWidthIsZero;
 		QFont                      *textFont;
 		QColor                     textColor;
