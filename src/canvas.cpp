@@ -107,6 +107,8 @@ void Canvas::initValues()
 	textFont = new QFont();
 	//Reset our pen to the default position
 	slotPenDown();
+	//Show turtle, might have been hidden in the last run
+	slotSpriteShow();
 }
 
 void Canvas::resizeEvent(QResizeEvent* event)
