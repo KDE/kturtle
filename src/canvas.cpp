@@ -109,7 +109,7 @@ void Canvas::resizeEvent(QResizeEvent* event)
 {
 	//kDebug() << ">>>>>>" << event->size();
 	//scene->setSceneRect(scene->itemsBoundingRect());
-	fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
+	fitInView(scene->sceneRect().adjusted(-20.0,-20.0,20.0,20.0), Qt::KeepAspectRatio);
 	event->accept();
 }
 
