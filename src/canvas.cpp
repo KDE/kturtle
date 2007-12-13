@@ -34,6 +34,9 @@
 
 static const double Pi = 3.14159265358979323846264338327950288419717;
 const double DegToRad = Pi / 180.0;
+int kTurtleZValue = 1;
+int kCanvasFrameZValue = -10000;
+int kCanvasMargin = 20;
 
 Canvas::Canvas(QWidget *parent) : QGraphicsView(parent)
 {
@@ -56,13 +59,13 @@ Canvas::Canvas(QWidget *parent) : QGraphicsView(parent)
 	
 	// Canvas area marker
 	canvasFrame = new QGraphicsRectItem();
-	canvasFrame->setZValue(-10000);
+	canvasFrame->setZValue(kCanvasFrameZValue);
 	scene->addItem(canvasFrame);
 	
 
 	// the turtle shape
 	turtle = new Sprite();
-	turtle->setZValue(1);  // above the others
+	turtle->setZValue(kTurtleZValue);  // above the others
 	scene->addItem(turtle);
 
 	// set initial values
@@ -91,7 +94,7 @@ void Canvas::initValues()
 	scene->setSceneRect(QRectF(0,0,400,400));
 	canvasFrame->setBrush(QBrush());
 	canvasFrame->setRect(scene->sceneRect());
-	fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
+	fitInView(scene->sceneRect().adjusted(kCanvasMargin*-1,kCanvasMargin*-1,kCanvasMargin,kCanvasMargin), Qt::KeepAspectRatio);
 	turtle->setPos(200, 200);
 	turtle->setAngle(0);
 	scene->setBackgroundBrush(QBrush(Qt::white));
@@ -109,7 +112,7 @@ void Canvas::resizeEvent(QResizeEvent* event)
 {
 	//kDebug() << ">>>>>>" << event->size();
 	//scene->setSceneRect(scene->itemsBoundingRect());
-	fitInView(scene->sceneRect().adjusted(-20.0,-20.0,20.0,20.0), Qt::KeepAspectRatio);
+	fitInView(scene->sceneRect().adjusted(kCanvasMargin*-1,kCanvasMargin*-1,kCanvasMargin,kCanvasMargin), Qt::KeepAspectRatio);
 	event->accept();
 }
 
@@ -134,7 +137,7 @@ void Canvas::slotClear()
 	QList<QGraphicsItem*> list = scene->items();
 	foreach (QGraphicsItem* item, list) {
 		// delete all but the turtle (who lives on a separate layer with z-value 1)
-		if ((item->zValue() != 1)&&(item->zValue() !=-10000)) delete item;
+		if ((item->zValue() != kTurtleZValue)&&(item->zValue() !=kCanvasFrameZValue)) delete item;
 	}
 }
 
