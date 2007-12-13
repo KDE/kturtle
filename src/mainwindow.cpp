@@ -436,6 +436,7 @@ void MainWindow::setupEditor()
 	connect(editor, SIGNAL(modificationChanged(bool)), this, SLOT(setWindowModified(bool)));
 	connect(editor, SIGNAL(currentUrlChanged(const KUrl&)), this, SLOT(setCaption(const KUrl&)));
 	connect(editor, SIGNAL(fileOpened(const KUrl&)), this, SLOT(addToRecentFilesList(const KUrl&)));
+	connect(editor, SIGNAL(fileSaved(const KUrl&)), this, SLOT(addToRecentFilesList(const KUrl&)));
 	connect(editor, SIGNAL(cursorPositionChanged(int, int, const QString&)),
 		this, SLOT(updateOnCursorPositionChange(int, int, const QString&)));
 }

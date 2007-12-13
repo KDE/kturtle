@@ -235,6 +235,8 @@ bool Editor::saveFile(const KUrl &targetUrl)
 		if (!url.isLocalFile()) KIO::NetAccess::upload(filename, url, this);
 		setCurrentUrl(url);
 		editor->document()->setModified(false);
+		//MainWindow will add us to the recent file list
+		emit fileSaved(url);
 		result = true; // fix GUI for saveAs and saveExamples. TODO: check 5 lines above
 	}
 	return result;
