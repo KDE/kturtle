@@ -31,9 +31,10 @@
 
 // this function is used in executer and canvas:
 #define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )
-
-static const double Pi = 3.14159265358979323846264338327950288419717;
-const double DegToRad = Pi / 180.0;
+#ifndef M_PI 
+#define M_PI 3.14159265358979323846264338327950288419717;
+#endif
+const double DegToRad = M_PI / 180.0;
 int kTurtleZValue = 1;
 int kCanvasFrameZValue = -10000;
 int kCanvasMargin = 20;
