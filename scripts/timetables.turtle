@@ -1,0 +1,15 @@
+kturtle-script-v1.0
+#print time tables
+@(reset)
+@(penup)
+@(go) 10@(,)0
+
+$n = @(ask) "Enter the number for which I will print the time tables"
+
+@(for) $x=0 @(to) 10 {
+  @(backward) 20
+  $r = $x * $n
+  @(print) $x+" * "+$n+" = "+$r
+}
+@(spritehide)
+@(backward) 40

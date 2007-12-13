@@ -1,0 +1,23 @@
+kturtle-script-v1.0
+# draw many squares
+
+@(learn) square $X {
+  @(repeat) 4 {
+    @(forward) $X
+    @(turnleft) 90
+  }
+}
+
+@(reset)
+@(penup)
+@(go) 150@(,) 200
+@(pendown)
+@(penwidth) 5
+
+@(repeat) 12 {
+  @(penup)
+  @(forward) 30
+  @(pendown)
+  square 80
+  @(turnright) 30
+}

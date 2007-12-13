@@ -1,0 +1,21 @@
+kturtle-script-v1.0
+@(reset)
+
+@(learn) triangle $X {
+	@(repeat) 3 {
+		@(forward) $X
+   @(turnleft) 120
+ }
+}
+
+@(for) $r = 1 @(to) 10 {
+  @(clear)
+  @(repeat) 18 {
+    triangle $r*$r*2
+    @(turnright) 20
+  }
+  @(wait) 1
+}
+
+@(wait) 3
+@(clear)

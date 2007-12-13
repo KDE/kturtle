@@ -1,0 +1,27 @@
+kturtle-script-v1.0
+@(reset)
+@(penup)
+@(go) 125@(,) 130
+@(pendown)
+@(turnleft) 90
+
+@(learn) koch $laenge@(,) $stufe {
+  @(if)($stufe>0) {
+    $stufe=$stufe-1
+    $laenge=$laenge/3
+    koch $laenge@(,) $stufe
+    @(turnleft) 60
+    koch $laenge@(,) $stufe
+    @(turnright) 120
+    koch $laenge@(,) $stufe
+    @(turnleft) 60
+    koch $laenge@(,) $stufe
+  } @(else) {
+  	@(forward) 3*$laenge 
+  }
+}
+
+@(repeat)  3 {
+  koch 150@(,)5
+  @(turnleft) 120
+}
