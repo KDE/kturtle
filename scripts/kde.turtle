@@ -96,8 +96,8 @@ kturtle-script-v1.0
 @(turnright) 39
 @(forward) 3
 @(turnright) 39
-@(forward) 43
-@(turnleft) 63
+@(forward) 41
+@(turnleft) 73
 
 @(repeat) 2
 {
