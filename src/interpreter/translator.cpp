@@ -663,6 +663,7 @@ void Translator::setExamples()
 		"Please see http://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 		"triangle").toString(localizer);
 	examples[exampleName] = localizeScript(QString(
+				"@(reset)\n"
 				"@(repeat) 3 {\n"
 				"  @(forward) 100\n"
 				"  @(turnleft) 120\n"
