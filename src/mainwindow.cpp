@@ -71,9 +71,9 @@ MainWindow::MainWindow()
 
 	setupGUI();
 	// after all is set up:
-	updateLanguagesMenu();
 	setAutoSaveSettings();
 	readConfig();
+	updateLanguagesMenu();
 }
 
 MainWindow::~MainWindow()
@@ -611,6 +611,9 @@ void MainWindow::updateLanguagesMenu()
 		a->setData(lang_code);
 		a->setStatusTip(i18n("Switch to the %1 dictionary", codeToFullName(lang_code)));
 		a->setCheckable(true);
+		if (lang_code == currentLanguageCode) {
+			a->setChecked(true);
+		}
 		//languageMenu->addAction(a);
 		languageGroup->addAction(a);
 		languageList.append(a);
