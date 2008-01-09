@@ -695,6 +695,7 @@ void Translator::setExamples()
 	examples[exampleName] = localizeScript(QString(
 				"@(reset)\n"
 				"\n"
+				"@(canvassize) 200@(,) 200\n"
 				"@(canvascolor) 0@(,) 0@(,) 0\n"
 				"@(penup)\n"
 				"@(pencolor) 255@(,) 0@(,) 0\n"
