@@ -42,17 +42,29 @@ In this example <userinput>print</userinput> is a command where <userinput>"Hell
 
 <sect2 id="name">
 <title>Names</title>
-<para>When using the &turtlelang; programming language you create new things. If you write a program you will often need <link linkend="containers">containers</link> and in some cases you need <link linkend="learn">learn</link> to create new commands. When making a <link linkend="containers">container</link> or a new command with <link linkend="learn">learn</link> you will have to specify a name.</para>
-<para>You can choose any name, as long as it does not already have a meaning. For instance you cannot name a container <link linkend="forward">forward</link>, since that name is already used for a command, and thus has a meaning.
+<para>When using the &turtlelang; programming language you create new things. If you write a program you will often need <link linkend="containers">containers</link> and in some cases you need <link linkend="learn">learn</link> to create new commands. When making a new command with <link linkend="learn">learn</link> you will have to specify a name.</para>
+<para>You can choose any name, as long as it does not already have a meaning. For instance you cannot name a function <link linkend="forward">forward</link>, since that name is already used for an internal command.
 <screen>
-# here forward is used as a container, but it already has a meaning
-# so this will produce an error:
-$forward = 20
+# here forward is used as a new command, 
+# but it already has a meaning so 
+# this will produce an error:
+learn forward {
+  print "this is invalid"
+}
 
 # this works:
-forward 20
+learn myforward {
+  print "this is ok"
+}
 </screen>
-Names can contain only letters, numbers and underscores (_). Yet they have to start with a letter. 
+Names can contain only letters, numbers and underscores (_). Yet they have to start with a letter. Container names have to start with the container prefix ($).
+<screen>
+# here forward is used as a container, 
+# starting with the $ prefix, so it does
+# not conflict with the forward command
+$forward = 20
+print $forward
+</screen>
 </para>
 <para>Containers are <glossterm>highlighted</glossterm> with bolded purple in the <link linkend="the-code-editor">code editor</link>.</para>
 <para>
