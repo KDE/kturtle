@@ -8,7 +8,7 @@ kturtle-script-v1.0
 @(canvassize) 620@(,) 480
 @(canvascolor) 10@(,)50@(,)200
 @(pencolor) 255@(,)255@(,)255
-@(penwidth) 3
+@(penwidth) 2
 
 @(pu)
 @(go) 294@(,)280
@@ -96,8 +96,8 @@ kturtle-script-v1.0
 @(turnright) 39
 @(forward) 3
 @(turnright) 39
-@(forward) 41
-@(turnleft) 73
+@(forward) 39 
+@(turnleft) 63
 
 @(repeat) 2
 {
@@ -106,22 +106,56 @@ kturtle-script-v1.0
 }
 
 @(pu)
-@(go) 320@(,)395
+@(go) 480@(,)395
 @(pd)
 @(direction) 90
 
-@(penwidth) 5
+@(penwidth) 3
 
-@(repeat) 4
+@(repeat) 6
 {
-  @(forward) 160
+  @(forward) 4
+  @(turnleft) 15
+}
+@(repeat) 20
+{
+  @(forward) 8
+}
+@(repeat) 3
+{
+	 @(repeat) 20
+  {
+    @(forward) 8
+  }
   @(repeat) 6
   {
     @(forward) 4
     @(turnleft) 15
 
   }
-  @(forward) 160
+  @(repeat) 20
+  {
+    @(forward) 8
+  }
+}
+@(repeat) 20
+{
+	@(forward) 4
+}
+
+@(repeat) 20
+{
+	@(forward) 2
+}
+
+@(repeat) 20
+{
+	@(forward) 1
+}
+@(repeat) 20
+{
+  @(forward) 1.25
+  
 }
 
 @(pu)
