@@ -671,16 +671,16 @@ void Executer::executeAddition(TreeNode* node) {
 void Executer::executeSubstracton(TreeNode* node) {
 //	qDebug() << "Executer::executeSubstracton()";
 	if(node->childCount()!=2) {
-		addError(i18n("You need two numbers to substract"), *node->token(), 0);
+		addError(i18n("You need two numbers to subtract"), *node->token(), 0);
 		return;
 	}
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
 		node->value()->setNumber(node->child(0)->value()->number() - node->child(1)->value()->number());
 	} else {
 		if (node->child(0)->value()->type() != Value::Number)
-			addError(i18n("You tried to substract from a non-number, '%1'", node->child(0)->token()->look()), *node->token(), 0);
+			addError(i18n("You tried to subtract from a non-number, '%1'", node->child(0)->token()->look()), *node->token(), 0);
 		if (node->child(1)->value()->type() != Value::Number)
-			addError(i18n("You tried to substract a non-number, '%1'", node->child(1)->token()->look()), *node->token(), 0);
+			addError(i18n("You tried to subtract a non-number, '%1'", node->child(1)->token()->look()), *node->token(), 0);
 	}
 }
 void Executer::executeMultiplication(TreeNode* node) {
