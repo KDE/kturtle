@@ -697,15 +697,12 @@ void Translator::setExamples()
 				"\n"
 				"@(canvassize) 200@(,) 200\n"
 				"@(canvascolor) 0@(,) 0@(,) 0\n"
-				"@(penup)\n"
 				"@(pencolor) 255@(,) 0@(,) 0\n"
 				"@(penwidth) 5\n"
-				"@(clear)\n"
 				"\n"
 				"@(go) 20@(,)20\n"
 				"@(direction) 135\n"
 				"\n"
-				"@(pendown)\n"
 				"@(forward) 200\n"
 				"@(turnleft) 135\n"
 				"@(forward) 100\n"
@@ -715,7 +712,6 @@ void Translator::setExamples()
 				"@(forward) 100\n"
 				"@(turnleft) 45\n"
 				"\n"
-				"@(penup)\n"
 				"@(go) 40@(,) 100"
 		));
 
@@ -725,12 +721,10 @@ void Translator::setExamples()
 		  "flower").toString(localizer);
 	examples[exampleName] = localizeScript(QString(
 				"@(reset)\n"
-				"@(penup)\n"
 				"@(canvascolor) 255@(,) 55@(,) 140\n"
 				"@(pencolor) 160@(,) 0@(,) 255\n"
 				"@(penwidth) 3\n"
 				"\n"
-				"@(pendown)\n"
 				"@(repeat) 8 {\n"
 				"  @(repeat) 4 {\n"
 				"    @(forward) 20\n"
@@ -746,7 +740,6 @@ void Translator::setExamples()
 				"  }\n"
 				"}\n"
 				"\n"
-				"@(penup)\n"
 				"@(go) 145@(,) 145\n"
 				"@(direction) 0"
 		));
