@@ -41,7 +41,7 @@ class Canvas : public QGraphicsView
 
 	public slots:
 		void slotClear();
-		void slotGo(double x, double y);
+		void slotGo(double x, double y) { turtle->setPos(x, y); };
 		void slotGoX(double x) { turtle->setPos(x, turtle->pos().y()); }
 		void slotGoY(double y) { turtle->setPos(turtle->pos().x(), y); }
 		void slotForward(double x);
