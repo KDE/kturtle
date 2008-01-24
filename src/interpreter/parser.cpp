@@ -542,7 +542,9 @@ TreeNode* Parser::parseScopeClose() {
 		delete currentToken;
 		nextToken();
 	}
-	if (currentScope->parent()->token()->type() == Token::If && currentToken->type() == Token::Else) {
+	if (currentScope->parent() && 
+		currentScope->parent()->token()->type() == Token::If && 
+		currentToken->type() == Token::Else) {
 		currentScope->parent()->appendChild(parseElse());
 	}
 	if (currentScope != rootNode) {
