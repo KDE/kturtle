@@ -22,25 +22,23 @@ print "Hello!"
 </screen>
 The <userinput>forward</userinput> command takes <userinput>50</userinput> as input. <userinput>forward</userinput> needs this input to know how many <glossterm linkend="pixels">pixels</glossterm> it should go forward. <userinput>pencolor</userinput> takes a color as input and <userinput>print</userinput> takes a string (a piece of text) as input. Please note that the input can also be a container. The next example illustrates this:
 <screen>
-x = 50
-print x
-str = "hello!"
-print str
+$x = 50
+print $x
+$str = "hello!"
+print $str
 </screen></para>
 
 <para>Now some examples of commands that give output:
 <screen>
-x = inputwindow "Please type something and press OK... thanks!"
-r = random 1,100
+$x = ask "Please type something and press OK... thanks!"
+$r = random 1,100
 </screen>
-The <userinput>inputwindow</userinput> command takes a string as input, and outputs the number or string that is entered. As you can see, the output of <userinput>inputwindow</userinput> is stored in the container <userinput>x</userinput>. The <userinput>random</userinput> command also gives output. In this case it outputs a number between 1 and 100. The output of the random is again stored in a container, named <userinput>r</userinput>. Note that the containers <userinput>x</userinput> and <userinput>r</userinput> are not used in the example code above.</para>
+The <userinput>ask</userinput> command takes a string as input, and outputs the number or string that is entered. As you can see, the output of <userinput>ask</userinput> is stored in the container <userinput>x</userinput>. The <userinput>random</userinput> command also gives output. In this case it outputs a number between 1 and 100. The output of the random is again stored in a container, named <userinput>r</userinput>. Note that the containers <userinput>x</userinput> and <userinput>r</userinput> are not used in the example code above.</para>
 
 <para>There are also commands that neither need input nor give output. Here are some examples:
 <screen>
 clear
 penup
-wrapon
-hide
 </screen>
 </para></glossdef>
 </glossentry>
@@ -68,7 +66,7 @@ hide
 <entry>Lines that are commented start with a comment characters (#). These lines are ignored when the code is executed. Comments allow the programmer to explain a bit about his code or can be used to temporarily prevent a certain piece of code from executing.</entry>
 </row>
 <row>
-<entry>brackets [, ]</entry>
+<entry>brackets {, }</entry>
 <entry>light green (bold)</entry>
 <entry>Brackets are used to group portions of code. Brackets are often used together with <link linkend="controlling-execution">execution controllers</link>.</entry>
 </row>
@@ -149,6 +147,7 @@ hide
 <para>Note: with this version of &kturtle; the sprite cannot be changed from a turtle into something else. Future versions of &kturtle; will be able to do this.</para></glossdef>
 </glossentry>
 
+<!--
 <glossentry id="wrapping">
 <glossterm>wrapping</glossterm>
 <glossdef><para>Wrapping is what happens when the turtle draws something that is to big to fix in on the canvas and wrapping is set <quote>on</quote>.
@@ -166,7 +165,7 @@ hide
 When the turtle moves off a border of the canvas it is instantly taken to the opposite border so it can continue its move. This way the turtle will always stay on the screen while it moves. This happens when wrapping is on.</para>
 <para>Wrapping can be turned on and off with the <userinput>wrapon</userinput> and <userinput>wrapoff</userinput> commands. When &kturtle; starts wrapping is turned on by default.</para></glossdef>
 </glossentry>
-
+<-->
 </glosslist>
 
 </chapter>

@@ -28,6 +28,8 @@ forward 100
 <para>Numbers are <glossterm>highlighted</glossterm> with dark red in the <link linkend="the-code-editor">code editor</link>.</para>
 </sect2>
 
+<!-- constants like pi? -->
+
 <sect2 id="string">
 <title>Strings</title>
 <para>First an example:
@@ -90,7 +92,7 @@ print $W + $x
 
 <sect2 id="math-symbols">
 <title>Math Symbols</title>
-<para>&kturtle; supports all basic math symbols: add (<userinput>+</userinput>), substract (<userinput>-</userinput>), multiply (<userinput>*</userinput>), divide (<userinput>/</userinput>) and the brackets <userinput>(</userinput> and <userinput>)</userinput>.</para>
+<para>&kturtle; supports all basic math symbols: add (<userinput>+</userinput>), subtract (<userinput>-</userinput>), multiply (<userinput>*</userinput>), divide (<userinput>/</userinput>) and the brackets <userinput>(</userinput> and <userinput>)</userinput>.</para>
 <para>For a complete explanation and more examples see the <link linkend="math">math</link> section.</para>
 </sect2>
 
@@ -130,167 +132,161 @@ We can add comments to the code for ourselves or for someone else to read. Comme
 <sect2 id="moving-the-turtle">
 <title>Moving the turtle</title>
 <para>There are several commands to move the turtle over the screen.</para>
-  
-<sect3 id="forward">
-  <title>forward (fw)</title>
+
   <variablelist>
+    <anchor id="forward" />
     <varlistentry> 
-      <term>forward</term>
+      <term>forward (fw)<indexterm><primary>forward (fw)</primary></indexterm></term>
       <listitem><para><screen>forward X</screen>
       <userinput>forward</userinput> moves the turtle forward by the amount of X pixels. When the pen is down the turtle will leave a trail. <userinput>forward</userinput> can be abbreviated to <userinput>fw</userinput></para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="backward">
-  <title>backward (bw)</title>
   <variablelist>
+    <anchor id="backward" />
     <varlistentry>  
-      <term>backward</term>
+      <term>backward (bw)<indexterm><primary>backward (bw)</primary></indexterm></term>
       <listitem><para><screen>backward X</screen>
       <userinput>backward</userinput> moves the turtle backward by the amount of X pixels. When the pen is down the turtle will leave a trail. <userinput>backward</userinput> can be abbreviated to <userinput>bw</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="turnleft">
-  <title>turnleft (tl)</title>
   <variablelist>
+    <anchor id="turnleft" />
     <varlistentry> 
-      <term>turnleft</term>
+      <term>turnleft (tl)<indexterm><primary>turnleft (tl)</primary></indexterm></term>
       <listitem><para><screen>turnleft X</screen>
       <userinput>turnleft</userinput> commands the turtle to turn an amount of X degrees to the left. <userinput>turnleft</userinput> can be abbreviated to <userinput>tl</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="turnright">
-  <title>turnright (tr)</title>
   <variablelist>
+    <anchor id="turnright" />
     <varlistentry> 
-      <term>turnright</term>
+      <term>turnright (tr)<indexterm><primary>turnright (tr)</primary></indexterm></term>
       <listitem><para><screen>turnright X</screen>
-      <userinput>turnright</userinput>the turtle to turn an amount of X degrees to the right. <userinput>turnright</userinput> can be abbreviated to <userinput>tr</userinput>.</para></listitem>
+      <userinput>turnright</userinput> the turtle to turn an amount of X degrees to the right. <userinput>turnright</userinput> can be abbreviated to <userinput>tr</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="direction">
-  <title>direction (dir)</title>
   <variablelist>
+    <anchor id="direction" />
     <varlistentry> 
-      <term>direction</term>
+      <term>direction (dir)<indexterm><primary>direction (dir)</primary></indexterm></term>
       <listitem><para><screen>direction X</screen>
       <userinput>direction</userinput> set the turtle's direction to an amount of X degrees counting from zero, and thus is not relative to the turtle's previous direction. <userinput>direction</userinput> can be abbreviated to <userinput>dir</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="center">
-  <title>center</title>
   <variablelist>
+    <anchor id="center" />
     <varlistentry> 
-      <term>center</term>
+      <term>center<indexterm><primary>center</primary></indexterm></term>
       <listitem><para><screen>center</screen>
       <userinput>center</userinput> moves the turtle to the center on the canvas.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="go">
-  <title>go</title>
   <variablelist>
+    <anchor id="go" />
     <varlistentry> 
-      <term>go</term>
+      <term>go<indexterm><primary>go</primary></indexterm></term>
       <listitem><para><screen>go X,Y</screen>
-      <userinput>go</userinput> commands the turtle to go to a certain place on the canvas. This place is X <glossterm linkend="pixels">pixels</glossterm> from the left of the canvas, and Y <glossterm linkend="pixels">pixels</glossterm> form the top of the canvas. Note that using the <userinput>go</userinput> command the turtle will not draw a line.</para></listitem>
+      <userinput>go</userinput> commands the turtle to go to a certain place on the canvas. This place is X <glossterm linkend="pixels">pixels</glossterm> from the left of the canvas, and Y <glossterm linkend="pixels">pixels</glossterm> form the top of the canvas. </para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="gox">
-  <title>gox</title>
   <variablelist>
+    <anchor id="gox" />
     <varlistentry> 
-      <term>gox</term>
+      <term>gox<indexterm><primary>gox</primary></indexterm></term>
       <listitem><para><screen>gox X</screen>
       <userinput>gox</userinput> using this command the turtle will move to X <glossterm linkend="pixels">pixels</glossterm> from the left of the canvas whilst staying at the same height.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="goy">
-  <title>goy</title>
   <variablelist>
+    <anchor id="goy" />
     <varlistentry> 
-      <term>goy</term>
+      <term>goy<indexterm><primary>goy</primary></indexterm></term>
       <listitem><para><screen>goy Y</screen>
       <userinput>gox</userinput> using this command the turtle will move to Y <glossterm linkend="pixels">pixels</glossterm> from the top of the canvas whilst staying at the same distance from the left border of the canvas.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
+  <note><para>Using the commands <userinput>go</userinput>, <userinput>gox</userinput>, <userinput>goy</userinput> and <userinput>center</userinput> the turtle will not draw a line, no matter if the pen is up or down.</para>
+  </note>
+</sect2>
+
+<sect2 id="locate-the-turtle">
+<title>Where is the turtle?</title>
+<para>There are two commands which return the position of the turtle on the screen.</para>
+
+  <variablelist>
+    <anchor id="getx" />
+    <varlistentry> 
+      <term>getx<indexterm><primary>getx</primary></indexterm></term>
+      <listitem><para>
+      <userinput>getx</userinput> returns the number of pixels from the left of the canvas to the current position of the turtle.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gety" />
+    <varlistentry> 
+      <term>gety<indexterm><primary>gety</primary></indexterm></term>
+      <listitem><para>
+      <userinput>gety</userinput> returns the number of pixels from the top of the canvas to the current position of the turtle.</para></listitem>
+    </varlistentry>
+  </variablelist>
 </sect2>
 
 <sect2 id="pen">
 <title>The turtle has a pen</title>
 <para>The turtle has a pen that draws a line when the turtle moves. There are a few commands to control the pen. In this section we explain these commands.</para>
-<sect3 id="penup">
-  <title>penup (pu)</title>
   <variablelist>
+    <anchor id="penup" />
     <varlistentry> 
-      <term>penup</term>
+      <term>penup (pu)<indexterm><primary>penup (pu)</primary></indexterm></term>
       <listitem><para><screen>penup</screen>
       <userinput>penup</userinput> lifts the pen from the canvas. When the pen is <quote>up</quote> no line will be drawn when the turtle moves. See also <userinput>pendown</userinput>. <userinput>penup</userinput> can be abbreviated to <userinput>pu</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="pendown">
-  <title>pendown (pd)</title>
   <variablelist>
+    <anchor id="pendown" />
     <varlistentry> 
-      <term>pendown</term>
+      <term>pendown (pd)<indexterm><primary>pendown (pd)</primary></indexterm></term>
       <listitem><para><screen>pendown</screen>
       <userinput>pendown</userinput> presses the pen down on the canvas. When the pen is press <quote>down</quote> on the canvas a line will be drawn when the turtle moves. See also <userinput>penup</userinput>. <userinput>pendown</userinput> can be abbreviated to <userinput>pd</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="setpenwidth">
-  <title>penwidth (pw)</title>
   <variablelist>
+    <anchor id="setpenwidth" />
     <varlistentry> 
-      <term>penwidth</term>
+      <term>penwidth (pw)<indexterm><primary>penwidth (pw)</primary></indexterm></term>
       <listitem><para><screen>penwidth X</screen>
       <userinput>penwidth</userinput> sets the width of the pen (the line width) to an amount of X <glossterm linkend="pixels">pixels</glossterm>. <userinput>penwidth</userinput> can be abbreviated to <userinput>pw</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="setfgcolor">
-  <title>pencolor (pc)</title>
   <variablelist>
+    <anchor id="setfgcolor" />
     <varlistentry> 
-      <term>pencolor</term>
+      <term>pencolor (pc)<indexterm><primary>pencolor (pc)</primary></indexterm></term>
       <listitem><para><screen>pencolor R,G,B</screen>
       <userinput>pencolor</userinput> sets the color of the pen. <userinput>pencolor</userinput> takes an <glossterm linkend="rgb">RGB combination</glossterm> as input. <userinput>pencolor</userinput> can be abbreviated to <userinput>pc</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
 </sect2>
 
-<!--<sect2 id="canvas">
+<sect2 id="canvas">
 <title>Commands to control the canvas</title>
 <para>There are several commands to control the canvas.</para>
-<sect3 id="resizecanvas">
-  <title>canvassize (cs)</title>
   <variablelist>
+    <anchor id="resizecanvas" />
     <varlistentry>
-      <term>canvassize</term>
+      <term>canvassize (cs)<indexterm><primary>canvassize (cs)</primary></indexterm></term>
       <listitem><para><screen>canvassize X,Y</screen>
       With the <userinput>canvassize</userinput> command you can set the size of the canvas. It takes X and Y as input, where X is the new canvas width in <glossterm linkend="pixels">pixels</glossterm>, and Y is the new height of the canvas in <glossterm linkend="pixels">pixels</glossterm>. <userinput>canvassize</userinput> can be abbreviated to <userinput>cs</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="setbgcolor">
-  <title>canvascolor (cc)</title>
   <variablelist>
+    <anchor id="setbgcolor" />
     <varlistentry> 
-      <term>canvascolor</term>
+      <term>canvascolor (cc)<indexterm><primary>canvascolor (cc)</primary></indexterm></term>
       <listitem><para><screen>canvascolor R,G,B</screen>
       <userinput>canvascolor</userinput> set the color of the canvas. <userinput>canvascolor</userinput> takes an <glossterm linkend="rgb">RGB combination</glossterm> as input. <userinput>canvascolor</userinput> can be abbreviated to <userinput>cc</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3> -->
 <!-- <sect3 id="wrapon">
   <title>wrapon</title>
   <variablelist>
@@ -310,32 +306,28 @@ We can add comments to the code for ourselves or for someone else to read. Comme
       With the <userinput>wrapoff</userinput> command you can set <glossterm linkend="wrapping">wrapping</glossterm> <quote>off</quote> for the canvas: this means the turtle can move off the canvas and can get <quote>lost</quote>. Please see the glossary if you want to know what <glossterm linkend="wrapping">wrapping</glossterm> is.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-</sect2> -->
+</sect3>  -->
+</sect2>
 
 <sect2 id="clean">
 <title>Commands to clean up</title>
 <para>There are two commands to clean up the canvas after you have made a mess.</para>
-<sect3 id="clear">
-  <title>clear</title>
   <variablelist>
+    <anchor id="clear" />
     <varlistentry> 
-      <term>clear</term>
+      <term>clear (ccl)<indexterm><primary>clear (ccl)</primary></indexterm></term>
       <listitem><para><screen>clear</screen>
       With <userinput>clear</userinput> you can clean all drawings from the canvas. All other things remain: the position and angle of the turtle, the canvascolor, the visibility of the turtle, and the canvas size.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="reset">
-  <title>reset</title>
   <variablelist>
+    <anchor id="reset" />
     <varlistentry> 
-      <term>reset</term>
+      <term>reset<indexterm><primary>reset</primary></indexterm></term>
       <listitem><para><screen>reset</screen>
-      <userinput>reset</userinput> cleans much more thoroughly than the <userinput>clear</userinput> command. After a <userinput>reset</userinput> command everything is like is was when you had just started &kturtle;. The turtle is positioned at the middle of the screen, the canvas color is white, and the turtle draws a black line on the canvas.</para></listitem>
+      <userinput>reset</userinput> cleans much more thoroughly than the <userinput>clear</userinput> command. After a <userinput>reset</userinput> command everything is like is was when you had just started &kturtle;. The turtle is positioned at the middle of the screen, the canvas color is white, the turtle draws a black line on the canvas and the canvassize is set to 400 x 400 pixels.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
 </sect2>
 
 <sect2 id="sprites">
@@ -343,36 +335,31 @@ We can add comments to the code for ourselves or for someone else to read. Comme
 <para>First a brief explanation of what sprites are: sprites are small pictures that can be moved around the screen, like we often see in computer games. Our turtle is also a sprite. For more info see the glossary on <glossterm linkend="sprites">sprites</glossterm>. </para>
 <para>Next you will find a full overview on all commands to work with sprites.</para>
 <para>[The current version of &kturtle; does not yet support the use of sprites other than the turtle. With future versions you will be able to change the turtle into something of your own design]</para>
-<sect3 id="spriteshow">
-  <title>show</title>
   <variablelist>
+    <anchor id="spriteshow" />
     <varlistentry> 
-      <term>show (ss)</term>
+      <term>spriteshow (ss)<indexterm><primary>spriteshow (ss)</primary></indexterm></term>
       <listitem><para><screen>show</screen>
-      <userinput>show</userinput> makes the turtle visible again after it has been hidden. <userinput>show</userinput> can be abbreviated to <userinput>ss</userinput>.</para></listitem>
+      <userinput>spriteshow</userinput> makes the turtle visible again after it has been hidden. <userinput>show</userinput> can be abbreviated to <userinput>ss</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="spritehide">
-  <title>hide (sh)</title>
   <variablelist>
+    <anchor id="spritehide" />
     <varlistentry> 
-      <term>hide</term>
+      <term>spritehide (sh)<indexterm><primary>spritehide (sh)</primary></indexterm></term>
       <listitem><para><screen>hide</screen>
-      <userinput>hide</userinput> hides the turtle. This can be used if the turtle does not fit in your drawing. <userinput>hide</userinput> can be abbreviated to <userinput>sh</userinput>.</para></listitem>
+      <userinput>spritehide</userinput> hides the turtle. This can be used if the turtle does not fit in your drawing. <userinput>hide</userinput> can be abbreviated to <userinput>sh</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
 </sect2>
 
 <sect2 id="writing">
-<title>Can the turtles write?</title>
+<title>Can the turtle write?</title>
 <para>The answer is: <quote>yes</quote>. The turtle can write: it writes just about everything you command it to.</para>
-<sect3 id="print">
-  <title>print</title>
   <variablelist>
+    <anchor id="print" />
     <varlistentry> 
-      <term>print</term>
+      <term>print<indexterm><primary>print</primary></indexterm></term>
       <listitem><para><screen>print X</screen>
       The <userinput>print</userinput> command is used to command the turtle to write something on the canvas. <userinput>print</userinput> takes numbers and strings as input. You can <userinput>print</userinput> various numbers and strings using the <quote>+</quote> symbol. See here a small example:
 <screen>
@@ -383,17 +370,14 @@ print $author + " started the KTurtle project in " + $year + " and still enjoys 
       </para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="fontsize">
-  <title>fontsize</title>
   <variablelist>
+    <anchor id="fontsize" />
     <varlistentry> 
-      <term>fontsize</term>
+      <term>fontsize<indexterm><primary>fontsize</primary></indexterm></term>
       <listitem><para><screen>fontsize X</screen>
       <userinput>fontsize</userinput> sets the size of the font that is used by <userinput>print</userinput>. <userinput>fontsize</userinput> takes one input which should be a number. The size is set in <glossterm linkend="pixels">pixels</glossterm>.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
 </sect2>
 
 <sect2 id="random">
@@ -401,7 +385,7 @@ print $author + " started the KTurtle project in " + $year + " and still enjoys 
 <para>There is one command that rolls dice for you, it is called <userinput>random</userinput>, and it is very useful for some unexpected results.</para>
   <variablelist>
     <varlistentry> 
-      <term>random</term>
+      <term>random (rnd)<indexterm><primary>random (rnd)</primary></indexterm></term>
       <listitem><para><screen>random X,Y</screen>
       <userinput>random</userinput> is a command that takes input and gives output. As input are required two numbers, the first (X) sets the minimum output, the second (Y) sets the maximum. The output is a randomly chosen number that is equal or greater then the minimum and equal or smaller than the maximum. Here a small example:
       <screen>
@@ -418,12 +402,11 @@ repeat 500 {
 
 <sect2 id="dialogs">
 <title>Input and feedback though dialogs</title>
-<para>A dialog is a small pop-up window that provides some feedback or asks for some input. &kturtle; has two commands for dialogs, namely: <userinput>message</userinput> and <userinput>inputwindow</userinput></para>
-<sect3 id="message">
-  <title>message</title>
+<para>A dialog is a small pop-up window that provides some feedback or asks for some input. &kturtle; has two commands for dialogs, namely: <userinput>message</userinput> and <userinput>ask</userinput></para>
   <variablelist>
+    <anchor id="message" />
     <varlistentry> 
-      <term>message</term>
+      <term>message<indexterm><primary>message</primary></indexterm></term>
       <listitem><para><screen>message X</screen>
       The <userinput>message</userinput> command takes a <link linkend="string">string</link> as input. It shows a pop-up dialog containing the text from the <link linkend="string">string</link>.
 <screen>
@@ -432,12 +415,10 @@ message "Cies started the KTurtle project in 2003 and still enjoys working on it
       </para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="ask">
-  <title>ask</title>
   <variablelist>
+    <anchor id="ask" />
     <varlistentry> 
-      <term>ask</term>
+      <term>ask<indexterm><primary>ask</primary></indexterm></term>
       <listitem><para><screen>ask X</screen>
       <userinput>ask</userinput> takes a <link linkend="string">string</link> as input. It shows a pop-up dialog containing the text from the string, just like the <link linkend="message">message</link>. But in addition to it also puts an input field on the dialog. Through this input filed the user can enter a <link linkend="number">number</link> or a <link linkend="string">string</link> which can be stored in a <link linkend="containers">container</link>. For example
 <screen>
@@ -448,7 +429,6 @@ print "In 2003 you where " + $out + " years old at some point."
       When a user cancels the input dialog, or does not enter anything at all the <link linkend="containers">container</link> is emptied.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
 </sect2>
 
 </sect1>
@@ -511,14 +491,14 @@ $x = "Hello "
 $name = ask "Please enter your name..."
 print $x + $name + ", how are you?"
 </screen>
-On the first line the string <userinput>x</userinput> is set to <quote>Hello </quote>. On the second line the string <userinput>name</userinput> is set to the output of the <userinput>inputwindow</userinput> command. On the third line the program prints a composition of three strings on the canvas.</para>
+On the first line the string <userinput>x</userinput> is set to <quote>Hello </quote>. On the second line the string <userinput>name</userinput> is set to the output of the <userinput>ask</userinput> command. On the third line the program prints a composition of three strings on the canvas.</para>
 <para>This program ask you to enter your name. When you, for instance, enter the name <quote>Paul</quote>, the program prints <quote>Hello Paul, how are you?</quote>. Please note that the plus (+) is the only math symbol that you can use with strings.</para>
 </sect2>
 </sect1>
 
 <sect1 id="math">
 <title>Can the Turtle do math?</title>
-<para>Yes, &kturtle; will do your math. You can add (+), substract (-), multiply (*), and divide (/). Here is an example in which we use all of them:
+<para>Yes, &kturtle; will do your math. You can add (+), subtract (-), multiply (*), and divide (/). Here is an example in which we use all of them:
 <screen>
 $a = 20 - 5
 $b = 15 * 2
@@ -536,6 +516,12 @@ print 2004-12
 print ( ( 20 - 5 ) * 2 / 30 ) + 1
 </screen>
 The expressions inside parentheses will be calculated first. In this example, 20-5 will be calculated, then multiplied by 2, divided by 30, and then 1 is added (giving 2).</para>
+<para>&kturtle; has advanced mathematical features. It knows the number <userinput>pi</userinput> and trigonometrical functions like <userinput>sin</userinput>, <userinput>cos</userinput>, <userinput>tan</userinput>, <userinput>arcsin</userinput>, <userinput>arccos</userinput>, <userinput>arctan</userinput> and the functions <userinput>sqrt</userinput> and <userinput>exp</userinput>.
+<indexterm><primary>pi</primary></indexterm>
+<indexterm><primary>sin, cos, tan</primary></indexterm>
+<indexterm><primary>arcsin, arccos, arctan</primary></indexterm>
+<indexterm><primary>sqrt, exp</primary></indexterm>
+</para>
 </sect1>
 
 <sect1 id="questions">
@@ -601,7 +587,7 @@ Question glue-words enable us to glue questions into one big question.
 <screen>
 $a = 1
 $b = 5
-if ($a &lt; $5) and ($b == 5) {
+if ($a &lt; $b) and ($b == 5) {
   print "hello"
 }
 </screen>
@@ -680,14 +666,14 @@ In this example the glued question is 'true' yet the <userinput>not</userinput> 
 <sect1 id="controlling-execution">
 <title>Controlling execution</title>
 <para>The execution controllers enable you &mdash; as their name implies &mdash; to control execution.</para>
-<para>Execution controlling commands are <glossterm>highlighted</glossterm> with dark green in a bold font type. The square brackets are mostly used together with execution controllers and they are <glossterm>highlighted</glossterm> with bolded black.</para>
+<para>Execution controlling commands are <glossterm>highlighted</glossterm> with dark green in a bold font type. The brackets are mostly used together with execution controllers and they are <glossterm>highlighted</glossterm> with bolded black.</para>
 
 <sect2 id="wait">
 <title>Have the turtle wait</title>
 <para>If you have done some programming in &kturtle; you have might noticed that the turtle can be very quick at drawing. This command makes the turtle wait for a given amount of time.</para>
   <variablelist>
     <varlistentry>
-      <term>wait</term>
+      <term>wait<indexterm><primary>wait</primary></indexterm></term>
       <listitem><para><screen>wait X</screen>
       <userinput>wait</userinput> makes the turtle wait for X seconds.
 <screen>
@@ -707,7 +693,7 @@ repeat 36 {
 <title>Execute "if"</title>
   <variablelist>
     <varlistentry>
-      <term>if</term>
+      <term>if<indexterm><primary>if</primary></indexterm></term>
       <listitem><para><screen>if <link linkend="questions">question</link> { ... }</screen>
       The code that is placed between the brackets will only be executed <userinput>if</userinput> the answer to the <link linkend="questions">question</link> is <quote>true</quote>. Please read for more information on <link linkend="questions">questions</link> in the <link linkend="questions">question section</link>.
       <screen>
@@ -721,31 +707,11 @@ if $x &gt; 5 {
   </variablelist>
 </sect2>
 
-<sect2 id="while">
-<title>The "while" loop</title>
-  <variablelist>
-    <varlistentry>
-      <term>while</term>
-      <listitem><para><screen>while <link linkend="questions">question</link> { ... }</screen>
-      The execution controller <userinput>while</userinput> is a lot like <link linkend="if"><userinput>if</userinput></link>. The difference is that <userinput>while</userinput> keeps repeating (looping) the code between the brackets until the answer to the <link linkend="questions">question</link> is <quote>false</quote>.
-      <screen>
-$x = 1
-while 4x &lt; 5 {
-  forward 10
-  wait 1
-  $x = $x + 1
-}
-</screen>
-      On the first line <userinput>x</userinput> is set to 1. On the second line the <link linkend="questions">question</link> <userinput>x &lt; 5</userinput> is asked. Since the answer to this question is <quote>true</quote> the execution controller <userinput>while</userinput> starts executing the code between the brackets until the answer to the <link linkend="questions">question</link> is <quote>false</quote>. In this case the code between the brackets will be executed 4 times, because every time the fifth line is executed <userinput>x</userinput> increases by 1.</para></listitem>
-    </varlistentry>
-  </variablelist>
-</sect2>
-
 <sect2 id="else">
 <title>If not, in other words: "else"</title>
   <variablelist>
     <varlistentry>
-      <term>else</term>
+      <term>else<indexterm><primary>else</primary></indexterm></term>
       <listitem><para><screen>if question { ... } else { ... }</screen>
       <userinput>else</userinput> can be used in addition to the execution controller <link linkend="if"><userinput>if</userinput></link>. The code between the brackets after <userinput>else</userinput> is only executed if the answer to the <link linkend="questions">question</link> that is asked is <quote>false</quote>. 
       <screen>
@@ -764,12 +730,43 @@ else
   </variablelist>
 </sect2>
 
+<sect2 id="while">
+<title>The "while" loop</title>
+  <variablelist>
+    <varlistentry>
+      <term>while<indexterm><primary>while</primary></indexterm></term>
+      <listitem><para><screen>while <link linkend="questions">question</link> { ... }</screen>
+      The execution controller <userinput>while</userinput> is a lot like <link linkend="if"><userinput>if</userinput></link>. The difference is that <userinput>while</userinput> keeps repeating (looping) the code between the brackets until the answer to the <link linkend="questions">question</link> is <quote>false</quote>.
+      <screen>
+$x = 1
+while $x &lt; 5 {
+  forward 10
+  wait 1
+  $x = $x + 1
+}
+</screen>
+      On the first line <userinput>x</userinput> is set to 1. On the second line the <link linkend="questions">question</link> <userinput>x &lt; 5</userinput> is asked. Since the answer to this question is <quote>true</quote> the execution controller <userinput>while</userinput> starts executing the code between the brackets until the answer to the <link linkend="questions">question</link> is <quote>false</quote>. In this case the code between the brackets will be executed 4 times, because every time the fifth line is executed <userinput>x</userinput> increases by 1.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="repeat">
+<title>The "repeat" loop</title>
+  <variablelist>
+    <varlistentry>
+      <term>repeat<indexterm><primary>repeat</primary></indexterm></term>
+      <listitem><para><screen>repeat number { ... }</screen>
+      The execution controller <userinput>repeat</userinput> is a lot like <link linkend="while"><userinput>while</userinput></link>. The difference is that <userinput>repeat</userinput> keeps repeating (looping) the code between the brackets for the given number.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
 <sect2 id="for">
 <title>The "for" loop, a counting loop</title>
   <variablelist>
     <varlistentry>
-      <term>for</term>
-      <listitem><para><screen>for <userinput>start point</userinput> to <userinput>end point</userinput> [ ... ]</screen>
+      <term>for<indexterm><primary>for</primary></indexterm></term>
+      <listitem><para><screen>for <userinput>start point</userinput> to <userinput>end point</userinput> { ... }</screen>
       The <userinput>for</userinput> loop is a <quote>counting loop</quote>, &ie; it keeps count for you.
       <screen>
 for $x = 1 to 10 {
@@ -781,13 +778,13 @@ for $x = 1 to 10 {
     </varlistentry>
   </variablelist>
 </sect2>
-
+<!-- missing commands break and exit -->
 </sect1>
 
 
 <sect1 id="learn">
 <title>Create your own commands with <quote>learn</quote></title>
-<para><userinput>learn</userinput> is a very special command, because it is used to create your own commands. The command you create can take <glossterm linkend="input-output">input</glossterm> and return <glossterm linkend="input-output">output</glossterm>. Let us take a look at how a new command is created:
+<para><userinput>learn</userinput><indexterm><primary>learn</primary></indexterm> is a very special command, because it is used to create your own commands. The command you create can take <glossterm linkend="input-output">input</glossterm> and return <glossterm linkend="input-output">output</glossterm>. Let us take a look at how a new command is created:
 <screen>
 learn circle $x {
   repeat 36 {
@@ -817,7 +814,6 @@ circle 50
 reset
 
 learn multiplyBySelf $n {
-  $r = $n * 1
   $r = $n * $n
   return $r
 }
@@ -839,6 +835,7 @@ learn box $X, $Y {
   turnright 90
 }
 </screen>
+Now you can run <userinput>box 50, 100</userinput> and the turtle will draw a rectangle on the canvas. 
 </para>
   
 </sect1>
