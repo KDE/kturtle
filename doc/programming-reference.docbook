@@ -443,7 +443,7 @@ print "In 2003 you where " + $out + " years old at some point."
 <screen>
 print $N
 </screen>
-This will print nothing. If we try to do <link linkend="math">math</link> with empty containers we will get errors.
+This will print nothing and you get an error message.
 </para>
 
 <sect2 id="variables">
@@ -618,6 +618,7 @@ Here is a schematic overview; a more detailed explanation follows below:
 
 <sect3 id="and">
 <title>and</title>
+<indexterm><primary>and</primary></indexterm>
 <para>When two questions are glued together with <userinput>and</userinput>, both sides of the <userinput>and</userinput> have to be 'true' in order to result in 'true'. An example:
 <screen>
 $a = 1
@@ -631,6 +632,7 @@ In this example you see a glued question glued onto an other question.</para>
 
 <sect3 id="or">
 <title>or</title>
+<indexterm><primary>or</primary></indexterm>
 <para>If one of the two questions that are glued together with <userinput>or</userinput> is 'true' the result will be 'true'. An example:
 <screen>
 $a = 1
@@ -644,6 +646,7 @@ In this example you see a glued question glued onto an other question.</para>
 
 <sect3 id="not">
 <title>not</title>
+<indexterm><primary>not</primary></indexterm>
 <para><userinput>not</userinput> is a special question glue-word because it only works for one question at the time. <userinput>not</userinput> changes 'true' into 'false' and 'false' into 'true'. An example:
 <screen>
 $a = 1
@@ -765,7 +768,7 @@ while $x &lt; 5 {
 <title>The "for" loop, a counting loop</title>
   <variablelist>
     <varlistentry>
-      <term>for<indexterm><primary>for</primary></indexterm></term>
+      <term>for<indexterm><primary>for</primary></indexterm><indexterm><primary>step</primary></indexterm></term>
       <listitem><para><screen>for <userinput>start point</userinput> to <userinput>end point</userinput> { ... }</screen>
       The <userinput>for</userinput> loop is a <quote>counting loop</quote>, &ie; it keeps count for you.
       <screen>
@@ -774,11 +777,34 @@ for $x = 1 to 10 {
   forward 15
 }
 </screen>
-     Every time the code between the brackets is executed the <userinput>x</userinput> is increased by 1, until <userinput>x</userinput> reaches the value of 10. The code between the brackets prints the <userinput>x</userinput> multiplied by 7. After this program finishes its execution you will see the times table of 7 on the canvas.</para></listitem>
+     Every time the code between the brackets is executed the <userinput>x</userinput> is increased by 1, until <userinput>x</userinput> reaches the value of 10. The code between the brackets prints the <userinput>x</userinput> multiplied by 7. After this program finishes its execution you will see the times table of 7 on the canvas.</para>
+     <para>The default step size of a loop is 1, you can use an other value with</para>
+     <para><screen>for <userinput>start point</userinput> to <userinput>end point</userinput> step <userinput>step size</userinput> { ... }</screen></para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
-<!-- missing commands break and exit -->
+<!-- missing command break, according to Mauricio Piacentini, it seems to be non-operative at the moment 4.0.0, so not documented 
+<sect2 id="break">
+<title>Leave a loop</title>
+  <variablelist>
+    <varlistentry>
+      <term>break<indexterm><primary>break</primary></indexterm></term>
+      <listitem><para><screen>break</screen>
+      ??????</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+-->
+<sect2 id="exit">
+<title>Stop the turtle</title>
+  <variablelist>
+    <varlistentry>
+      <term>exit<indexterm><primary>exit</primary></indexterm></term>
+      <listitem><para><screen>exit</screen>
+      Finishes the execution of the code.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
 </sect1>
 
 
@@ -802,11 +828,11 @@ learn circle $X {
   }
 }
 
-go 30,30 
+go 200,200 
 circle 20
 
-go 40,40 
-circle 50  
+go 300,200 
+circle 40  
 </screen>
 </para>
 <para>In the next example, a command with a return value is created.

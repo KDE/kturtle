@@ -24,6 +24,7 @@ The <userinput>forward</userinput> command takes <userinput>50</userinput> as in
 <screen>
 $x = 50
 print $x
+forward 50
 $str = "hello!"
 print $str
 </screen></para>
@@ -147,25 +148,6 @@ penup
 <para>Note: with this version of &kturtle; the sprite cannot be changed from a turtle into something else. Future versions of &kturtle; will be able to do this.</para></glossdef>
 </glossentry>
 
-<!--
-<glossentry id="wrapping">
-<glossterm>wrapping</glossterm>
-<glossdef><para>Wrapping is what happens when the turtle draws something that is to big to fix in on the canvas and wrapping is set <quote>on</quote>.
-<screenshot>
-  <screeninfo>This is what happens when wrapping is <quote>on</quote></screeninfo>
-  <mediaobject>
-    <imageobject>
-      <imagedata fileref="wrapping.png" format="PNG"/>
-    </imageobject>
-    <textobject>
-      <phrase>An example of wrapping</phrase>
-    </textobject>
-  </mediaobject>
-</screenshot>
-When the turtle moves off a border of the canvas it is instantly taken to the opposite border so it can continue its move. This way the turtle will always stay on the screen while it moves. This happens when wrapping is on.</para>
-<para>Wrapping can be turned on and off with the <userinput>wrapon</userinput> and <userinput>wrapoff</userinput> commands. When &kturtle; starts wrapping is turned on by default.</para></glossdef>
-</glossentry>
-<-->
 </glosslist>
 
 </chapter>
