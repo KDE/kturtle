@@ -408,12 +408,16 @@ EOS
 		currentVariableTable()->remove(id);
 		return;
 	}
-	currentVariableTable()->insert(id, Value()); // store a empty Value just to know we executed once
+	
 	if (node->child(0)->value()->boolean()) {
+		// store a empty Value just to know we executed once
+		currentVariableTable()->insert(id, Value());
 		newScope = node->child(1);
 	} else {
-		if (node->childCount() >= 3)
+		if (node->childCount() >= 3) {
+			currentVariableTable()->insert(id, Value());
 			newScope = node->child(2); // execute the else part
+		}
 	}
 EOS
 parse_item()
