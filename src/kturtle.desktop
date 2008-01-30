@@ -2,7 +2,6 @@
 Name=KTurtle
 Name[af]=KSkilpad
 Name[bn]=কে-টার্টল
-Name[fi]=Konna
 Name[hi]=के-टर्टल
 Name[hr]=KKornjača
 Name[is]=KSkjaldbaka
@@ -20,6 +19,7 @@ GenericName[eo]=Edukema programara ĉirkaŭaĵo
 GenericName[es]=Entorno de programación educativo
 GenericName[et]=Hariv programmeerimise keskkond
 GenericName[fa]=محیط برنامه‌سازی آموزشی
+GenericName[fi]=Logo-ohjelmointiympäristö
 GenericName[fr]=Environnement éducatif de programmation
 GenericName[ga]=Timpeallacht Ríomhchláraithe Oideachasúil
 GenericName[gl]=Ambiente de Programación Educativo
