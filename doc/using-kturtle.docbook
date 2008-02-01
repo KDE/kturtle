@@ -32,7 +32,7 @@ the most used actions, and <link linkend="the-statusbar">the statusbar</link>
 <title>The Code Editor</title>
 <para>In the code editor you type the &turtlelang; commands. It has all of the features you would expect from a modern editor. Most of its features are found in the <link linkend="the-edit-menu">Edit</link> and the <link linkend="the-tools-menu">Tools</link> menus. The code editor can be docked on each border of the main window or it can be detached and placed anywhere on your desktop.</para>
 <para>
-You have several ways to get some code in the editor. The easiest way is to use an already-made example: choose <menuchoice><guimenu>File</guimenu><guimenuitem>Examples</guimenuitem>
+You have several ways to get some code in the editor. The easiest way is to use an already-made example: choose <menuchoice><guimenu>File</guimenu><guisubmenu>Examples</guisubmenu>
 </menuchoice> in the <link linkend="the-file-menu">File menu</link> and select an example. The file example you choose will be opened in the <link linkend="the-code-editor">the code editor</link>, you can then use <menuchoice><guimenu>File</guimenu><guimenuitem>Run</guimenuitem>
 </menuchoice> to run the code if you like.</para>
 <para>You can open &turtlelang; files by choosing <menuchoice><guimenu>File</guimenu><guimenuitem>Open...</guimenuitem>
@@ -50,7 +50,7 @@ and Column number.
 <sect1 id="the-inspector">
 <title>The Inspector</title>
 <para>
-The inspector informs you about the variables while the program is running.
+The inspector informs you about the variables, the learned functions and the code treee while the program is running.
 </para>
 <para>The inspector can be docked on each border of the main window or it can be
 detached and placed anywhere on your desktop.</para>
@@ -75,9 +75,8 @@ and <guimenu>Help</guimenu>. This section describes them all.</para>
 <sect2 id="the-file-menu">
 <title>The <guimenu>File</guimenu> Menu</title>
 
-<sect3 id="file-new">
-<title>New</title>
   <variablelist>
+    <anchor id="file-new" />
     <varlistentry>
       <term><menuchoice>
         <shortcut>
@@ -89,10 +88,8 @@ and <guimenu>Help</guimenu>. This section describes them all.</para>
       <listitem><para>Creates a new, empty &turtlelang; file.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="file-open">
-<title>Open</title>
   <variablelist>
+    <anchor id="file-open" />
     <varlistentry>
       <term><menuchoice>
         <shortcut>
@@ -104,22 +101,18 @@ and <guimenu>Help</guimenu>. This section describes them all.</para>
       <listitem><para>Opens a &turtlelang; file.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="file-open-recent">
-<title>Open Recent</title>
   <variablelist>
+    <anchor id="file-open-recent" />
     <varlistentry>
       <term><menuchoice>
         <guimenu>File</guimenu>
-        <guimenuitem>Open Recent</guimenuitem>
+        <guisubmenu>Open Recent</guisubmenu>
       </menuchoice></term>
       <listitem><para>Opens a &turtlelang; file that has been opened recently.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="file-save">
-<title>Save</title>
   <variablelist>
+    <anchor id="file-save" />
     <varlistentry>
       <term><menuchoice>
         <shortcut>
@@ -131,10 +124,8 @@ and <guimenu>Help</guimenu>. This section describes them all.</para>
       <listitem><para>Saves the currently opened &turtlelang; file.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="file-save-as">
-<title>Save As</title>
   <variablelist>
+    <anchor id="file-save-as" />
     <varlistentry>
       <term><menuchoice>
         <guimenu>File</guimenu>
@@ -143,45 +134,41 @@ and <guimenu>Help</guimenu>. This section describes them all.</para>
       <listitem><para>Saves the currently opened &turtlelang; file on a specified location.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="file-open-examples">
-<title>Try Examples</title>
   <variablelist>
+    <anchor id="file-open-examples" />
     <varlistentry>
       <term><menuchoice>
         <guimenu>File</guimenu>
-        <guimenuitem>Examples</guimenuitem>
+        <guisubmenu>Examples</guisubmenu>
       </menuchoice></term>
       <listitem><para>Open example &turtlelang; programs. The
-examples should be in your favorite language that you can choose in 
+examples are in your favorite language that you can choose in 
 <menuchoice><guimenu>Settings</guimenu><guimenuitem>Script
 Language</guimenuitem>
 </menuchoice>.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="file-speed">
-<title>Execution Speed</title>
   <variablelist>
+    <anchor id="file-speed" />
     <varlistentry>
       <term><menuchoice>
         <guimenu>File</guimenu>
-        <guimenuitem>Speed</guimenuitem>
+        <guisubmenu>Speed</guisubmenu>
       </menuchoice></term>
       <listitem><para>Present a list of possible execution speeds, consisting
-of: Full Speed, Slow, Slower, Slowest and Step-by-Step. When the execution
-speed is set to 'Full Speed' (default) we can barely keep up with what is
-happening. Sometimes this behavior is wanted, but sometimes we want to keep
-track of the execution. In the latter case you want to set the execution speed
-to 'Slow', 'Slower' or 'Slowest'. When one of the slow modes is selected the
-current position of the executor will be shown in the editor.
-Step-by-Step will execute one command at a time.</para></listitem>
+of: <guimenuitem>Full Speed</guimenuitem>, <guimenuitem>Slow</guimenuitem>, 
+<guimenuitem>Slower</guimenuitem>, <guimenuitem>Slowest</guimenuitem> and 
+<guimenuitem>Step-by-Step</guimenuitem>. When the execution
+speed is set to <guimenuitem>Full Speed</guimenuitem> (default) we can barely 
+keep up with what is happening. Sometimes this behavior is wanted, but sometimes 
+we want to keeptrack of the execution. In the latter case you want to set the execution speed
+to <guimenuitem>Slow</guimenuitem>, <guimenuitem>Slower</guimenuitem> or <guimenuitem>Slowest</guimenuitem>. 
+When one of the slow modes is selected thecurrent position of the executor will be shown in the editor.
+<guimenuitem>Step-by-Step</guimenuitem> will execute one command at a time.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="file-execute">
-<title>Run</title>
   <variablelist>
+    <anchor id="file-execute" />
     <varlistentry>
       <term><menuchoice>
         <shortcut>
@@ -193,10 +180,8 @@ Step-by-Step will execute one command at a time.</para></listitem>
       <listitem><para>Starts the execution of the commands in the code editor.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="file-pause">
-<title>Pause</title>
   <variablelist>
+    <anchor id="file-pause" />
     <varlistentry>
       <term><menuchoice>
         <shortcut>
@@ -208,10 +193,8 @@ Step-by-Step will execute one command at a time.</para></listitem>
       <listitem><para>Pauses the execution. This action is only enabled when the commands are actually executing.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="file-stop">
-<title>Abort</title>
   <variablelist>
+    <anchor id="file-stop" />
     <varlistentry>
       <term><menuchoice>
         <shortcut>
@@ -223,10 +206,8 @@ Step-by-Step will execute one command at a time.</para></listitem>
       <listitem><para>Stops the execution. This action is only enabled when the commands are actually executing.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="file-print">
-<title>Print</title>
   <variablelist>
+    <anchor id="file-print" />
     <varlistentry>
       <term><menuchoice>
         <shortcut>
@@ -238,10 +219,8 @@ Step-by-Step will execute one command at a time.</para></listitem>
       <listitem><para>Prints either the current code in the editor or the current drawing on the canvas.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
-<sect3 id="file-quit">
-<title>Quit</title>
   <variablelist>
+    <anchor id="file-quit" />
     <varlistentry>
       <term><menuchoice>
         <shortcut>
@@ -253,7 +232,6 @@ Step-by-Step will execute one command at a time.</para></listitem>
       <listitem><para>Quits &kturtle;.</para></listitem>
     </varlistentry>
   </variablelist>
-</sect3>
 </sect2>
 
 <sect2 id="the-edit-menu">
@@ -394,7 +372,7 @@ phrase.</para></listitem>
     <varlistentry>
       <term><menuchoice>
         <shortcut>
-          <keycombo><keycap>INS</keycap></keycombo>
+          <keycombo><keycap>Ins</keycap></keycombo>
         </shortcut>
         <guimenu>Edit</guimenu>
         <guimenuitem>Toggle Insert</guimenuitem>
@@ -449,9 +427,6 @@ phrase.</para></listitem>
     <anchor id="tools-direction-chooser" />
     <varlistentry>
       <term><menuchoice>
-        <shortcut>
-          <keycombo>&Alt;<keycap>C</keycap></keycombo>
-        </shortcut>
         <guimenu>Tools</guimenu>
         <guimenuitem>Direction Chooser</guimenuitem>
       </menuchoice></term>
@@ -467,7 +442,7 @@ phrase.</para></listitem>
     <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Script Language</guimenuitem>
+<guisubmenu>Script Language</guisubmenu>
 </menuchoice></term>
 <listitem><para><action>Choose</action> the language for the code.</para></listitem>
 </varlistentry>
@@ -542,6 +517,7 @@ phrase.</para></listitem>
       <listitem><para>After activating this action the mouse arrow will be changed into a <quote>question mark arrow</quote>. When this arrow is used to click on parts of &kturtle; main window, a description of the particular part pops-up.</para></listitem>
     </varlistentry>
   </variablelist>
+<!-->
   <variablelist>
     <anchor id="help-context-help" />
     <varlistentry>
@@ -556,6 +532,7 @@ phrase.</para></listitem>
       <para>This function is very important while learning programming.</para></listitem>
     </varlistentry>
   </variablelist>
+<-->
   <variablelist>
     <anchor id="help-report-bug" />
     <varlistentry>
@@ -598,7 +575,7 @@ phrase.</para></listitem>
 
 <sect1 id="the-statusbar">
 <title>The Statusbar</title>
-<para>On the status bar you get feedback of the state of &kturtle;. On the left side it shows the feedback on the last action. On the right side you find the current location of the cursor (line and column numbers). In the middle of the Status bar is indicated the current language used for the commands.</para>
+<para>On the status bar you get feedback of the state of &kturtle;. On the left side it shows the feedback on the last action. On the right side you find the current location of the cursor (line and column numbers). In the middle of the status bar is indicated the current language used for the commands.</para>
 </sect1>
 
 </chapter>
