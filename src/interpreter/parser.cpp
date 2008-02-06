@@ -232,6 +232,7 @@ TreeNode* Parser::parseStatement()
 		case Token::ArcCos              : return parseArcCos();
 		case Token::Sqrt                : return parseSqrt();
 		case Token::Exp                 : return parseExp();
+		case Token::Round               : return parseRound();
 
 //END GENERATED parser_statements_cpp CODE
 		case Token::Error		: return new TreeNode(currentToken);
@@ -966,6 +967,14 @@ TreeNode* Parser::parseSqrt() {
 }
 TreeNode* Parser::parseExp() {
 //	qDebug() << "Parser::parseExp()";
+	TreeNode* node = new TreeNode(currentToken);
+	nextToken();
+	appendArguments(node);
+	skipToken(Token::EndOfLine, *node->token());
+	return node;
+}
+TreeNode* Parser::parseRound() {
+//	qDebug() << "Parser::parseRound()";
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);

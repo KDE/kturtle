@@ -248,6 +248,7 @@ class Executer : public QObject
 		void executeArcCos(TreeNode* node);
 		void executeSqrt(TreeNode* node);
 		void executeExp(TreeNode* node);
+		void executeRound(TreeNode* node);
 
 //END GENERATED executer_h CODE
 

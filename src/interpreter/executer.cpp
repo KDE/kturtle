@@ -239,6 +239,7 @@ void Executer::execute(TreeNode* node)
 		case Token::ArcCos              : executeArcCos(node);              break;
 		case Token::Sqrt                : executeSqrt(node);                break;
 		case Token::Exp                 : executeExp(node);                 break;
+		case Token::Round               : executeRound(node);               break;
 
 //END GENERATED executer_switch_cpp CODE
 
@@ -991,6 +992,13 @@ void Executer::executeExp(TreeNode* node) {
 	
 	double val = node->child(0)->value()->number();
 	node->value()->setNumber(exp(val));
+}
+void Executer::executeRound(TreeNode* node) {
+//	qDebug() << "Executer::executeRound()";
+    if (!checkParameterQuantity(node, 1, 20000+Token::Round*100+90)) return;
+   
+    double val = node->child(0)->value()->number();
+    node->value()->setNumber((double)ROUND2INT(val));
 }
 
 //END GENERATED executer_cpp CODE

@@ -147,7 +147,8 @@ class Token
 			ArcSin,
 			ArcCos,
 			Sqrt,
-			Exp
+			Exp,
+			Round
 
 //END GENERATED token_type_h CODE
 

@@ -646,6 +646,13 @@ void Translator::setDictionary()
 	default2localizedMap["exp"] = localizedCommandLook;
 	look2typeMap[localizedCommandLook] = Token::Exp;
 
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'Round' COMMAND, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"round").toString(localizer);
+	default2localizedMap["round"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::Round;
+
 
 //END GENERATED translator_cpp CODE
 

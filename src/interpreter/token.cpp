@@ -110,6 +110,7 @@ int Token::typeToCategory(int type)
 		case Reset:
 		case ArcTan:
 		case Center:
+		case Round:
 		case GetX:
 		case Clear:
 		case GetY:

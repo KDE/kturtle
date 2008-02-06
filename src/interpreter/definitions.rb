@@ -1425,3 +1425,19 @@ new_item()
 	node->value()->setNumber(exp(val));
 EOS
 parse_item()
+
+new_item()
+@type  = "Round"
+@cat   = "Command"
+@look  = "round"
+@funct = "statement, node"
+@args  = [:number]
+@e_def =
+<<EOS
+    if (!checkParameterQuantity(node, 1, 20000+Token::Round*100+90)) return;
+   
+    double val = node->child(0)->value()->number();
+    node->value()->setNumber((double)ROUND2INT(val));
+EOS
+parse_item()
+
