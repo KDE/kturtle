@@ -216,7 +216,7 @@ When one of the slow modes is selected the current position of the executor will
         <guimenu>File</guimenu>
         <guimenuitem>Print...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Prints either the current code in the editor or the current drawing on the canvas.</para></listitem>
+      <listitem><para>Prints the current code in the editor.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
