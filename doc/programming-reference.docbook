@@ -339,16 +339,16 @@ We can add comments to the code for ourselves or for someone else to read. Comme
     <anchor id="spriteshow" />
     <varlistentry> 
       <term>spriteshow (ss)<indexterm><primary>spriteshow (ss)</primary></indexterm></term>
-      <listitem><para><screen>show</screen>
-      <userinput>spriteshow</userinput> makes the turtle visible again after it has been hidden. <userinput>show</userinput> can be abbreviated to <userinput>ss</userinput>.</para></listitem>
+      <listitem><para><screen>spriteshow</screen>
+      <userinput>spriteshow</userinput> makes the turtle visible again after it has been hidden. <userinput>spriteshow</userinput> can be abbreviated to <userinput>ss</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
     <anchor id="spritehide" />
     <varlistentry> 
       <term>spritehide (sh)<indexterm><primary>spritehide (sh)</primary></indexterm></term>
-      <listitem><para><screen>hide</screen>
-      <userinput>spritehide</userinput> hides the turtle. This can be used if the turtle does not fit in your drawing. <userinput>hide</userinput> can be abbreviated to <userinput>sh</userinput>.</para></listitem>
+      <listitem><para><screen>spritehide</screen>
+      <userinput>spritehide</userinput> hides the turtle. This can be used if the turtle does not fit in your drawing. <userinput>spritehide</userinput> can be abbreviated to <userinput>sh</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>

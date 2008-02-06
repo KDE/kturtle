@@ -161,9 +161,9 @@ of: <guimenuitem>Full Speed</guimenuitem>, <guimenuitem>Slow</guimenuitem>,
 <guimenuitem>Step-by-Step</guimenuitem>. When the execution
 speed is set to <guimenuitem>Full Speed</guimenuitem> (default) we can barely 
 keep up with what is happening. Sometimes this behavior is wanted, but sometimes 
-we want to keeptrack of the execution. In the latter case you want to set the execution speed
+we want to keep track of the execution. In the latter case you want to set the execution speed
 to <guimenuitem>Slow</guimenuitem>, <guimenuitem>Slower</guimenuitem> or <guimenuitem>Slowest</guimenuitem>. 
-When one of the slow modes is selected thecurrent position of the executor will be shown in the editor.
+When one of the slow modes is selected the current position of the executor will be shown in the editor.
 <guimenuitem>Step-by-Step</guimenuitem> will execute one command at a time.</para></listitem>
     </varlistentry>
   </variablelist>
@@ -216,7 +216,7 @@ When one of the slow modes is selected thecurrent position of the executor will 
         <guimenu>File</guimenu>
         <guimenuitem>Print...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Prints either the current code in the editor or the current drawing on the canvas.</para></listitem>
+      <listitem><para>Prints the current code in the editor.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
