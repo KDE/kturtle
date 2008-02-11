@@ -394,7 +394,7 @@ void Executer::executeVariable(TreeNode* node) {
 		if  (node == node->parent()->child(0)) {
 			// In this case we do not need to be initialized, we will get a value in executeAssign
 			aValueIsNeeded = false;
-	}
+		}
 	}
 	if (!functionStack.isEmpty() && 
 	    functionStack.top().variableTable->contains(node->token()->look())) {
@@ -738,13 +738,13 @@ void Executer::executeAssign(TreeNode* node) {
 	addError(i18n("You need one variable and a value or variable to do a '='"), *node->token(), 0);
 		return;
 	}
-	if (!functionStack.isEmpty()) // &&functionStack.top().variableTable->contains(node->token()->look())) 
+	if (!functionStack.isEmpty() && !globalVariableTable.contains(node->child(0)->token()->look())) // &&functionStack.top().variableTable->contains(node->token()->look())) 
 	{
-	qDebug() << "function scope";
+		qDebug() << "function scope";
 		functionStack.top().variableTable->insert(node->child(0)->token()->look(), node->child(1)->value());
 	} else {
-	// inserts unless already exists then replaces
-	globalVariableTable.insert(node->child(0)->token()->look(), node->child(1)->value());
+		// inserts unless already exists then replaces
+		globalVariableTable.insert(node->child(0)->token()->look(), node->child(1)->value());
 	}
 	qDebug() << "variableTable updated!";
 	emit variableTableUpdated(node->child(0)->token()->look(), node->child(1)->value());
