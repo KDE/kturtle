@@ -1,18 +1,18 @@
 kturtle-script-v1.0
-# The KDE Logo for a KDE logo
-# interpreter.
-# Copyright 2005 Andy Teijelo <ateijelo@uh.cu>
-# GNU General Public License version 2
+# The KDE Logo for
+# KTurtle 4
+# Copyright (C) 2008 Andy Teijelo <ateijelo@gmail.com>
+# GPL 2 or later
 
 @(reset)
 @(canvassize) 620@(,) 480
 @(canvascolor) 10@(,)50@(,)200
 @(pencolor) 255@(,)255@(,)255
-@(penwidth) 2
+@(penwidth) 3
 
-@(pu)
+@(penup)
 @(go) 294@(,)280
-@(pd)
+@(pendown)
 
 @(turnright) 81
 @(forward) 50
@@ -37,19 +37,19 @@ kturtle-script-v1.0
 @(turnleft) 84
 @(forward) 209
 
-@(pu)
+@(penup)
 @(go) 358@(,)322
-@(pd)
+@(pendown)
 
 @(direction) -112.5
 
 @(repeat) 4
 {
   @(repeat) 2
-  {
+{
     @(forward) 6
     @(turnright) 3.75
-  }
+}
 
   @(turnleft) 63
   @(forward) 43
@@ -64,10 +64,10 @@ kturtle-script-v1.0
   @(turnleft) 63
 
   @(repeat) 2
-  {
+{
     @(forward) 6
     @(turnright) 3.75
-  }
+}
 }
 
 @(forward) 4
@@ -75,20 +75,20 @@ kturtle-script-v1.0
 @(forward) 25
 
 @(turnright) 58
-@(repeat) 21
+@(repeat) 26
 {
-  @(forward) 13.5
-  @(turnleft) 10
+  @(forward) 11
+  @(turnleft) 8
 }
 
-@(forward) 9
+@(forward) 7
 @(turnright) 117
-@(forward) 34
-@(turnleft) 60
-@(forward) 8
-@(turnright) 62
+@(forward) 33
+@(turnleft) 70
+@(forward) 9
+@(turnright) 71
 
-@(forward) 25
+@(forward) 27
 @(turnright) 39
 @(forward) 3
 @(turnright) 39
@@ -96,68 +96,34 @@ kturtle-script-v1.0
 @(turnright) 39
 @(forward) 3
 @(turnright) 39
-@(forward) 39 
-@(turnleft) 63
+@(forward) 43
+@(turnleft) 62
 
-@(repeat) 2
+@(repeat) 1
 {
-  @(forward) 6
+  @(forward) 8
   @(turnright) 3.75
 }
 
-@(pu)
-@(go) 480@(,)395
-@(pd)
+@(penup)
+@(go) 320@(,)395
+@(pendown)
 @(direction) 90
 
-@(penwidth) 3
+@(penwidth) 5
 
-@(repeat) 6
+@(repeat) 4
 {
-  @(forward) 4
-  @(turnleft) 15
-}
-@(repeat) 20
-{
-  @(forward) 8
-}
-@(repeat) 3
-{
-	 @(repeat) 20
-  {
-    @(forward) 8
-  }
+  @(forward) 160
   @(repeat) 6
-  {
+{
     @(forward) 4
     @(turnleft) 15
 
-  }
-  @(repeat) 20
-  {
-    @(forward) 8
-  }
 }
-@(repeat) 20
-{
-	@(forward) 4
+  @(forward) 160
 }
 
-@(repeat) 20
-{
-	@(forward) 2
-}
-
-@(repeat) 20
-{
-	@(forward) 1
-}
-@(repeat) 20
-{
-  @(forward) 1.25
-  
-}
-
-@(pu)
+@(penup)
 @(go) 320@(,)440
-@(pd)
+@(direction) 0
