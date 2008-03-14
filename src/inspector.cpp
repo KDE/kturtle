@@ -20,7 +20,6 @@
 #include "inspector.h"
 
 #include <klocale.h>
-
 #include <kdebug.h>
 
 #include "interpreter/translator.h"  // for getting the translated ArgumentSeparator
@@ -48,15 +47,17 @@ Inspector::Inspector(QWidget *parent)
 	functionLayout = new QHBoxLayout(functionTab);
 	functionTable  = new QTableWidget(functionTab);
 	functionLayout->addWidget(functionTable);
-	tabWidget->addTab(functionTab, i18n("&Learned Functions"));
+	tabWidget->addTab(functionTab, i18n("&Functions"));
 
 	treeTab    = new QWidget();
 	treeLayout = new QHBoxLayout(treeTab);
 	treeView   = new QTreeWidget(treeTab);
 	treeLayout->addWidget(treeView);
-	tabWidget->addTab(treeTab, i18n("Code &Tree"));
+	tabWidget->addTab(treeTab, i18n("&Tree"));
 
 	mainLayout->addWidget(tabWidget);
+
+  disable();
 
 	clear();
 }
@@ -66,6 +67,19 @@ Inspector::~Inspector()
 {
 }
 
+void Inspector::enable()
+{
+	variableTable->setEnabled(true);
+	functionTable->setEnabled(true);
+	treeView->setEnabled(true);
+}
+
+void Inspector::disable()
+{
+	variableTable->setEnabled(false);
+	functionTable->setEnabled(false);
+	treeView->setEnabled(false);
+}
 
 void Inspector::clear()
 {
@@ -110,7 +124,7 @@ void Inspector::updateVariable(const QString& name, const Value& value)
 {
 	//Check if the variable has already been added to the table
 	int row = findVariable(name);
-	if(row==-1) {
+	if (row == -1) {
 		//We are dealing with a new variable
 		if(variableTableEmpty) //Check whether we have to add a new row
 			variableTableEmpty = false;

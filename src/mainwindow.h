@@ -21,6 +21,8 @@
 #define MAINWINDOW_H
 
 #include <QActionGroup>
+#include <QStackedWidget>
+#include <QTabWidget>
 #include <QTextStream>
 #include <QToolBar>
 #include <QDockWidget>
@@ -35,6 +37,7 @@
 #include "interpreter/interpreter.h"
 #include "canvas.h"
 #include "editor.h"
+#include "errordialog.h"
 #include "inspector.h"
 
 
@@ -81,6 +84,7 @@ class MainWindow : public KXmlGuiWindow
 	public slots:
 		void open(const QString&);
 		void addToRecentFilesList(const KUrl&);
+		void showErrorDialog(bool show = false);
 
 	private slots:
 		void openExample();
@@ -128,7 +132,7 @@ class MainWindow : public KXmlGuiWindow
 		void writeConfig();
 
 		void setContextHelp(const QString& s = QString());
-		QString codeToFullName(const QString& lang_code = QString());
+		QString codeToFullName(const QString&);
 
 		void updateExamplesMenu();
 		void updateLanguagesMenu();
@@ -139,7 +143,7 @@ class MainWindow : public KXmlGuiWindow
 		void setWindowModified(bool b) { setCaption(editor->currentUrl(), b); }
 		void setLanguage(QAction *);
 		void addToRecentFiles(const KUrl&);
-		void toggleInsertMode(bool b);
+		void toggleOverwriteMode(bool b);
 		void updateOnCursorPositionChange(int row, int col, const QString& line);
 
 
@@ -148,11 +152,14 @@ class MainWindow : public KXmlGuiWindow
 		Editor      *editor;
 		Interpreter *interpreter;
 		Inspector   *inspector;
-
-		LocalDockWidget*  editorDock;
-		LocalDockWidget*  inspectorDock;
-		QTimer      *iterationTimer;
-		int          runSpeed;
+		ErrorDialog *errorDialog;
+		QTabWidget      *canvasTabWidget;
+		QWidget         *canvasTab;
+		QStackedWidget  *stackedWidget;
+		LocalDockWidget *editorDock;
+		LocalDockWidget *inspectorDock;
+		QTimer          *iterationTimer;
+		int              runSpeed;
 
 		QString currentLanguageCode;
 
@@ -186,7 +193,7 @@ class MainWindow : public KXmlGuiWindow
 		QLabel *statusBarMessageLabel;
 		QLabel *statusBarLanguageLabel;
 		QLabel *statusBarPositionLabel;
-		QLabel *statusBarInsertModeLabel;
+		QLabel *statusBarOverwriteModeLabel;
 		QLabel *statusBarFileNameLabel;
 };
 

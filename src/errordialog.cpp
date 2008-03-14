@@ -19,20 +19,26 @@
 
 #include "errordialog.h"
 
+#include <QtDebug>
+
 #include <kdebug.h>
 
 #include <kdialog.h>
+#include <kglobalsettings.h>
 #include <klocale.h>
 
 
-ErrorDialog::ErrorDialog(ErrorList* _errorList, QWidget* parent)
-	: KDialog(parent), errorList(_errorList)
+ErrorDialog::ErrorDialog(QWidget* parent)
+	: KDialog(parent)
 {
+	errorList = 0;
+
 	setCaption(i18n("Errors"));
 	setModal(false);
-	setButtons(Close | Help);  // | User1);
-// 	setButtonGuiItem(User1, i18n("Help on &Error"));
-	setDefaultButton(Close);
+	setButtons(User1 | Help);
+	setButtonGuiItem(User1, KGuiItem(i18n("Hide Errors"), "dialog-close", i18n("This button hides the Errors tab")));
+// 	setButtonGuiItem(User1, i18n("Help on &Error"));  // TODO context help in the error dialog
+	setDefaultButton(User1);
 	showButtonSeparator(false);
 
 
@@ -49,31 +55,62 @@ ErrorDialog::ErrorDialog(ErrorList* _errorList, QWidget* parent)
 	spacer = new QSpacerItem(10, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
 	baseLayout->addItem(spacer);
 	
-	errorTable = new QTableWidget(errorList->count(), 3, baseWidget);
+	errorTable = new QTableWidget(baseWidget);
 	errorTable->setSelectionMode(QAbstractItemView::SingleSelection);
 	errorTable->setSelectionBehavior(QAbstractItemView::SelectRows);
-// 	errorTable->setReadOnly(true);
 	errorTable->setShowGrid(false);
-// 	errorTable->setFocusStyle(QTable::FollowStyle);
-// 	errorTable->setLeftMargin(0);
-	
-// 	errorTable->horizontalHeader()->setLabel(0, i18n("number"));
-// 	errorTable->hideColumn(0); // needed to link with the errorData which stores the tokens, codes, etc.
-// 	
-// 	errorTable->horizontalHeader()->setLabel(1, i18n("line") );
-// 	
-// 	errorTable->horizontalHeader()->setLabel(2, i18n("description"));
-// 	errorTable->setColumnStretchable(2, true);
 
+	errorTable->setColumnCount(3);
 	QStringList horizontalHeaderTexts;
 	horizontalHeaderTexts << i18n("line") << i18n("description") << i18n("code");
 	errorTable->setHorizontalHeaderLabels(horizontalHeaderTexts);
 	errorTable->setColumnWidth(0, baseWidget->fontMetrics().width("88888"));
-
 	errorTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
 	baseLayout->addWidget(errorTable);
 
+	clear();
+// 	errorTable->resizeColumnsToContents();
+	show();
+}
+
+
+
+void ErrorDialog::clear()
+{
+	disable();
+	errorList = 0;
+	errorTable->clearContents();
+
+	// put a friendly 'nothing to see here' notice in the empty table
+	errorTable->setRowCount(1);
+	QTableWidgetItem* emptyItem = new QTableWidgetItem(i18n("no errors"));
+	QFont emptyFont(KGlobalSettings::generalFont());
+	emptyFont.setItalic(true);
+	emptyItem->setFont(emptyFont);
+	errorTable->setItem(0, 1, emptyItem);
+}
+
+void ErrorDialog::enable()
+{
+	Q_ASSERT (errorList != 0);
+	errorTable->setEnabled(true);
+	enableButton(Help, true);
+	connect (errorTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectedErrorChangedProxy()));
+}
+
+void ErrorDialog::disable()
+{
+	disconnect (errorTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectedErrorChangedProxy()));
+	errorTable->setEnabled(false);
+	enableButton(Help, false);
+}
+
+
+void ErrorDialog::setErrorList(ErrorList *list)
+{
+	errorList = list;
+	errorTable->setRowCount(errorList->size());
 	int row = 0;
 	foreach (const ErrorMessage &error, *errorList) {
 		int col = 0;
@@ -85,17 +122,13 @@ ErrorDialog::ErrorDialog(ErrorList* _errorList, QWidget* parent)
 		}
 		row++;
 	}
-
-	errorTable->resizeColumnsToContents();
-
-	connect (errorTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectedErrorChangedProxy()));
-
-	show();
+	errorTable->clearSelection();
+	enable();
 }
-
 
 void ErrorDialog::selectedErrorChangedProxy()
 {
+	Q_ASSERT (errorList != 0);
 	const Token* t = &errorList->at(errorTable->selectedItems().first()->row()).token();
 	emit currentlySelectedError(t->startRow(), t->startCol(), t->endRow(), t->endCol());
 }

@@ -32,6 +32,7 @@
 
 #include <kfiledialog.h>
 #include <kfind.h>
+#include <kglobalsettings.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <ksavefile.h>
@@ -53,7 +54,7 @@ Editor::Editor(QWidget *parent)
 
 	// setup the main view
 	editor = new TextEdit(this);
-	editor->document()->setDefaultFont(QFont("Courier", 12));
+	editor->document()->setDefaultFont(KGlobalSettings::fixedFont());
 	editor->setFrameStyle(QFrame::NoFrame);
 	editor->installEventFilter(this);
 	editor->setLineWrapMode(QTextEdit::WidgetWidth);
@@ -128,6 +129,7 @@ void Editor::textChanged(int pos, int removed, int added)
 	int lineCount = 1;
 	for (QTextBlock block = editor->document()->begin(); block.isValid(); block = block.next()) lineCount++;
 	numbers->setWidth(qMax(1, 1 + (int)floor(log10(lineCount - 1))));
+	emit contentChanged();
 }
 
 
@@ -215,14 +217,14 @@ bool Editor::saveFile(const KUrl &targetUrl)
 			while ((t = tokenizer.getToken())->type() != Token::EndOfInput) {
 				if (pendingEOL) {
 					unstranslated.append('\n');
-					pendingEOL=false;
+					pendingEOL = false;
 				}
 				if (localizedLooks.contains(t->look())) {
 					QString defaultLook(Translator::instance()->defaultLook(t->look()));
 					unstranslated.append(QString("@(%1)").arg(defaultLook));
 				} else {
 					if (t->type() == Token::EndOfLine) 
-						pendingEOL=true;
+						pendingEOL = true;
 					else
 						unstranslated.append(t->look());
 				}
@@ -345,10 +347,10 @@ void Editor::setCurrentUrl(const KUrl& url)
 	emit currentUrlChanged(m_currentUrl);
 }
 
-void Editor::setInsertMode(bool b)
+void Editor::setOverwriteMode(bool b)
 {
-	editor->setOverwriteMode(!b);
-	editor->setCursorWidth(b ? 2 : editor->fontMetrics().width("0"));
+	editor->setOverwriteMode(b);
+	editor->setCursorWidth(b ? editor->fontMetrics().width("0") : 2);
 }
 
 

@@ -5,28 +5,29 @@
 <MenuBar>
   <Menu name="file"><text>&amp;File</text>
     <Action name="file_new" />
-    <Action name="file_open" />
     <Separator />
+    <Action name="file_open" />
     <Action name="file_recent" />
+    <Menu name="examples"><text>&amp;Examples</text>
+      <ActionList name="examples_actionlist" />
+    </Menu>
+    <Separator />
     <Action name="file_save" />
     <Action name="file_save_as" />
     <Separator />
-    <Menu name="examples"><text>&amp;Examples</text>
-	<ActionList name="examples_actionlist" />
-    </Menu>
-    <Separator />
-    <Menu name="speed"><text>&amp;Speed</text>
-        <Action name="full_speed" />
-        <Action name="slow_speed" />
-        <Action name="slower_speed" />
-        <Action name="slowest_speed" />
-	<Action name="step_speed" />
-    </Menu>
     <Action name="run" />
     <Action name="pause" />
     <Action name="abort" />
+    <Menu name="speed"><text>&amp;Run Speed</text>
+      <Action name="full_speed" />
+      <Action name="slow_speed" />
+      <Action name="slower_speed" />
+      <Action name="slowest_speed" />
+      <Action name="step_speed" />
+    </Menu>
     <Separator />
     <Action name="file_print" />
+    <Separator />
     <Action name="file_quit" />
   </Menu>
   <Menu name="edit" noMerge="1"><text>&amp;Edit</text>
@@ -44,31 +45,36 @@
     <Action name="edit_find_prev" />
     <Action name="edit_replace" />
     <Separator />
-    <Action name="set_insert" />
+    <Action name="overwrite" />
   </Menu>
   <Menu name="view"><text>&amp;View</text>
     <Action name="show_editor" />
-    <Action name="line_numbers" />
     <Action name="show_inspector" />
+    <Action name="show_errors" />
+    <Separator />
+    <Action name="line_numbers" />
   </Menu>
   <Menu name="tools"><text>&amp;Tools</text>
     <Action name="direction" />
   </Menu>
   <Menu name="settings"><text>&amp;Settings</text>
     <Menu name="language"><text>&amp;Script Language</text>
-        <ActionList name="languages_actionlist" />
+      <ActionList name="languages_actionlist" />
     </Menu>
   </Menu>
 </MenuBar>
 
-<ToolBar name="mainToolBar"><text>Main Toolbar</text>
+<ToolBar name="mainToolBar" fullWidth="true" name="mainToolBar" newline="true" noMerge="1"><text>Main Toolbar</text>
   <Action name="file_new" />
   <Action name="file_open" />
-  <Action name="file_save" />
   <Separator />
-  <Action name="run" />
+  <Action name="file_save" />
+  <Action name="file_save_as" />
+  <Separator />
+  <Action name="run_speed" />
   <Action name="pause" />
   <Action name="abort" />
+  <Separator />
 </ToolBar>
 
 </gui>

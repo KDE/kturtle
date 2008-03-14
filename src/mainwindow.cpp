@@ -26,8 +26,8 @@
 
 #include <kdebug.h>
 
-#include <kactioncollection.h>
 #include <kaction.h>
+#include <kactioncollection.h>
 #include <kconfig.h>
 #include <kcombobox.h>
 #include <kglobal.h>
@@ -39,8 +39,8 @@
 #include <kstatusbar.h>
 #include <KStandardShortcut>
 #include <kstandardaction.h>
+#include <ktoolbarpopupaction.h>
 
-#include "errordialog.h"
 #include "interpreter/errormsg.h"
 #include "interpreter/translator.h"
 
@@ -64,10 +64,14 @@ MainWindow::MainWindow()
 	iterationTimer = new QTimer(this);
 	connect(iterationTimer, SIGNAL(timeout()), this, SLOT(iterate()));
 
+	connect(editor, SIGNAL(contentChanged()), inspector, SLOT(disable()));
+	connect(editor, SIGNAL(contentChanged()), errorDialog, SLOT(disable()));
+	connect(interpreter, SIGNAL(parsing()), inspector, SLOT(enable()));
+
 	statusBar()->showMessage(i18nc("@info:status the application is ready for commands", "Ready"));
 	setCaption();  // also sets the window caption to 'untitled'
 	setRunSpeed(0);
-	abort();  // sets the run-states for the actions right*/
+	abort();  // sets the run-states for the actions right
 
 	setupGUI();
 	// after all is set up:
@@ -116,12 +120,6 @@ void MainWindow::directionDialog()
 	}
 }
 
-/*void MainWindow::about()
-{
-	KMessageBox::about(this,
-		i18n("KTurtle is an educational programming environment that aims to make programming as easy as possible, especially for young children. KTurtle intends to help teaching kids the basics of math, geometry, and programming."), i18n("About KTurtle"));
-// 	new KAboutApplication();
-}*/
 
 
 void MainWindow::contextHelp()
@@ -161,7 +159,7 @@ void MainWindow::setupActions()
 	//TODO WHATISTHIS to each action
 	//Similar to a status tip, but not the same.
 	//A status tip is displayed on hover, a whatisthis is displayed when
-	//an item is clicked on it whatisthis mode
+	//an item is clicked on it whatisthis mode  (cies doesnt like whatis mode for every litlle widget)
 
 	// File menu actions
 	a = actionCollection()->addAction(KStandardAction::New,  "file_new", editor, SLOT(newFile()));
@@ -250,14 +248,14 @@ void MainWindow::setupActions()
 	a->setWhatsThis(i18n("Select All: Select all the code in the editor"));
 	a->setEnabled(true);
 
-	a  = new KAction(i18n("Toggle &Insert"), this);
-	actionCollection()->addAction("set_insert", a );
+	a  = new KAction(i18n("Overwrite Mode"), this);
+	actionCollection()->addAction("overwrite", a );
 	a->setStatusTip(i18n("Toggle between the 'insert' and 'overwrite' mode"));
-	a->setWhatsThis(i18n("Toggle Insert: Toggle between the 'insert' and 'overwrite' mode"));
+	a->setWhatsThis(i18n("Overwrite Mode: Toggle between the 'insert' and 'overwrite' mode"));
 	a->setShortcut(QKeySequence(Qt::Key_Insert));
 	a->setCheckable(true);
-	a->setChecked(true);
-	connect(a, SIGNAL(toggled(bool)), this, SLOT(toggleInsertMode(bool)));
+	a->setChecked(false);
+	connect(a, SIGNAL(toggled(bool)), this, SLOT(toggleOverwriteMode(bool)));
 
 	a = KStandardAction::find(editor, SLOT(find()), ac);
 	a->setStatusTip(i18n("Search through the code in the editor"));
@@ -277,33 +275,36 @@ void MainWindow::setupActions()
 	//a->setWhatsThis(i18n("Replace: Replace text in the editor"));
 
 	// View menu actions
-	a  = new KAction(i18n("Show &Code Editor"), this);
-	actionCollection()->addAction("show_editor", a );
+	a = new KAction(i18n("Show &Editor"), this);
+	actionCollection()->addAction("show_editor", a);
 	a->setStatusTip(i18n("Show or hide the Code Editor"));
 	a->setWhatsThis(i18n("Show Code Editor: Show or hide the Code Editor"));
+	a->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_E));
 	a->setCheckable(true);
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), editorDock, SLOT(setVisible(bool)));
 	connect(editorDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
 
-	a  = new KAction(i18n("Show &Inspector"), this);
-	actionCollection()->addAction("show_inspector", a );
+	a = new KAction(i18n("Show &Inspector"), this);
+	actionCollection()->addAction("show_inspector", a);
 	a->setStatusTip(i18n("Show or hide the Inspector"));
 	a->setWhatsThis(i18n("Show Inspector: Show or hide the Inspector"));
+	a->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_I));
 	a->setCheckable(true);
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), inspectorDock, SLOT(setVisible(bool)));
 	connect(inspectorDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
 
-	// Tools menu actions
-	a  = new KAction(i18n("&Direction chooser"), this);
-	actionCollection()->addAction("direction", a);
-	a->setStatusTip(i18n("Shows the direction chooser dialog"));
-	a->setWhatsThis(i18n("Direction Chooser: Show the direction chooser dialog"));
-	connect(a, SIGNAL(triggered()), this, SLOT(directionDialog()));
+	a = new KAction(i18n("Show E&rrors"), this);
+	actionCollection()->addAction("show_errors", a);
+	a->setStatusTip(i18n("Show or hide the Errors tab"));
+	a->setWhatsThis(i18n("Show Errors: Show or hide the Errors tab"));
+	a->setCheckable(true);
+	a->setChecked(false);
+	connect(a, SIGNAL(toggled(bool)), this, SLOT(showErrorDialog(bool)));
 
-	a  = new KAction(i18n("Show &Line Numbers"), this);
-	actionCollection()->addAction("line_numbers", a );
+	a = new KAction(i18n("Show &Line Numbers"), this);
+	actionCollection()->addAction("line_numbers", a);
 	a->setStatusTip(i18n("Turn the line numbers on/off in the editor"));
 	a->setWhatsThis(i18n("Show Line Numbers: Turn the line numbers on/off in the editor"));
 	a->setShortcut(QKeySequence(Qt::Key_F11));
@@ -311,8 +312,16 @@ void MainWindow::setupActions()
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), editor, SLOT(toggleLineNumbers(bool)));
 
+
+	// Tools menu actions
+	a = new KAction(i18n("&Direction Chooser..."), this);
+	actionCollection()->addAction("direction", a);
+	a->setStatusTip(i18n("Shows the direction chooser dialog"));
+	a->setWhatsThis(i18n("Direction Chooser: Show the direction chooser dialog"));
+	connect(a, SIGNAL(triggered()), this, SLOT(directionDialog()));
+
 //TODO: Bring back the colorpicker?
-    // 	colorpicker  = new KToggleAction(i18n("&Color Picker"), "colorize"), this);
+    // 	colorpicker  = new KToggleAction(i18n("&Color Picker..."), "colorize"), this);
 // 	new KAction(i18n("&Indent"), "format-indent-more", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
 // 	new KAction(i18n("&Unindent"), "format-indent-less", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
 // 	new KAction(i18n("Cl&ean Indentation"), 0, 0, this, SLOT(slotCleanIndent()), ac, "edit_cleanIndent");
@@ -321,7 +330,7 @@ void MainWindow::setupActions()
 
 
 	// Help menu actions
-        //TODO: implement context help
+	//TODO: implement context help
 	contextHelpAct = ac->addAction("context_help");
 	contextHelpAct->setText("");
 	contextHelpAct->setIcon(KIcon("help-contents"));
@@ -342,7 +351,17 @@ void MainWindow::setupActions()
 	// The run speed action group
 	QActionGroup* runSpeedGroup = new QActionGroup(this);
 
-	fullSpeedAct  = new KAction(i18nc("@option:radio", "&Full Speed"), this);
+	// The run action collection, this is used in the toolbar to create a dropdown menu on the run button
+	KToolBarPopupAction* runSpeedAction = new KToolBarPopupAction(KIcon("media-playback-start"), i18n("&Run"), this);
+	connect(runSpeedAction, SIGNAL(triggered()), this, SLOT(run()));
+	QMenu* runSpeedActionMenu = runSpeedAction->menu();
+	actionCollection()->addAction("run_speed", runSpeedAction);
+	runSpeedActionMenu->setStatusTip(i18n("Execute the program"));
+	runSpeedActionMenu->setWhatsThis(i18n("Run: Execute the program"));
+	connect(runSpeedActionMenu, SIGNAL(triggered()), this, SLOT(run()));
+
+
+	fullSpeedAct = new KAction(i18nc("@option:radio", "&Full Speed"), this);
 	actionCollection()->addAction("full_speed", fullSpeedAct );
 	fullSpeedAct->setCheckable(true);
 	fullSpeedAct->setChecked(true);
@@ -350,38 +369,43 @@ void MainWindow::setupActions()
 	fullSpeedAct->setWhatsThis(i18n("Full Speed: Run the program at full speed"));
 	connect(fullSpeedAct, SIGNAL(triggered()), this, SLOT(setFullSpeed()));
 	runSpeedGroup->addAction(fullSpeedAct);
+	runSpeedActionMenu->addAction(fullSpeedAct);
 
-	slowSpeedAct  = new KAction(i18nc("@option:radio choose the slow speed", "&Slow"), this);
+	slowSpeedAct = new KAction(i18nc("@option:radio choose the slow speed", "&Slow"), this);
 	actionCollection()->addAction("slow_speed", slowSpeedAct );
 	slowSpeedAct->setCheckable(true);
 	slowSpeedAct->setStatusTip(i18n("Run the program at slow speed"));
 	slowSpeedAct->setWhatsThis(i18n("Slow Speed: Run the program at slow speed"));
 	connect(slowSpeedAct, SIGNAL(triggered()), this, SLOT(setSlowSpeed()));
 	runSpeedGroup->addAction(slowSpeedAct);
+	runSpeedActionMenu->addAction(slowSpeedAct);
 
-	slowerSpeedAct  = new KAction(i18nc("@option:radio", "S&lower"), this);
+	slowerSpeedAct = new KAction(i18nc("@option:radio", "S&lower"), this);
 	actionCollection()->addAction("slower_speed", slowerSpeedAct );
 	slowerSpeedAct->setCheckable(true);
 	slowerSpeedAct->setStatusTip(i18n("Run the program at slower speed"));
 	slowerSpeedAct->setWhatsThis(i18n("Slower Speed: Run the program at slower speed"));
 	connect(slowerSpeedAct, SIGNAL(triggered()), this, SLOT(setSlowerSpeed()));
 	runSpeedGroup->addAction(slowerSpeedAct);
+	runSpeedActionMenu->addAction(slowerSpeedAct);
 
-	slowestSpeedAct  = new KAction(i18nc("@option:radio", "Sl&owest"), this);
+	slowestSpeedAct = new KAction(i18nc("@option:radio", "Sl&owest"), this);
 	actionCollection()->addAction("slowest_speed", slowestSpeedAct );
 	slowestSpeedAct->setCheckable(true);
 	slowestSpeedAct->setStatusTip(i18n("Run the program at slowest speed"));
 	slowestSpeedAct->setWhatsThis(i18n("Slowest Speed: Run the program at slowest speed"));
 	connect(slowestSpeedAct, SIGNAL(triggered()), this, SLOT(setSlowestSpeed()));
 	runSpeedGroup->addAction(slowestSpeedAct);
+	runSpeedActionMenu->addAction(slowestSpeedAct);
 
-	stepSpeedAct  = new KAction(i18nc("@option:radio", "S&tep-by-Step"), this);
+	stepSpeedAct = new KAction(i18nc("@option:radio", "S&tep-by-Step"), this);
 	actionCollection()->addAction("step_speed", stepSpeedAct );
 	stepSpeedAct->setCheckable(true);
 	stepSpeedAct->setStatusTip(i18n("Run the program one step at a time"));
 	stepSpeedAct->setWhatsThis(i18n("Step Speed: Run the program one step at a time"));
 	connect(stepSpeedAct, SIGNAL(triggered()), this, SLOT(setStepSpeed()));
 	runSpeedGroup->addAction(stepSpeedAct);
+	runSpeedActionMenu->addAction(stepSpeedAct);
 }
 
 
@@ -389,19 +413,56 @@ void MainWindow::setupCanvas()
 {
 	// put the canvas in a layout as the cetral widget of the mainwindow
 	QWidget* centralWidget = new QWidget(this);
-	QHBoxLayout* hboxLayout = new QHBoxLayout(centralWidget);
-	hboxLayout->setMargin(MARGIN_SIZE);
-	canvas = new Canvas();
+	QHBoxLayout* centralLayout = new QHBoxLayout(centralWidget);
+	centralLayout->setMargin(0); // MARGIN_SIZE);
+
+	canvasTabWidget = new QTabWidget(this);
+
+	canvasTab = new QWidget();
+	QHBoxLayout* canvasLayout = new QHBoxLayout(canvasTab);
+	canvas = new Canvas(this);
 	canvas->setFocusPolicy(Qt::NoFocus);
 	canvas->setRenderHint(QPainter::Antialiasing);
-	hboxLayout->addWidget(canvas);
-	setCentralWidget(centralWidget);
 	canvas->setWhatsThis(i18n("Canvas: This is where the turtle moves and draws when the program is running"));
+	canvasLayout->addWidget(canvas);
+	canvasTabWidget->insertTab(0, canvasTab, i18n("&Canvas"));
+
+	QWidget* errorTab = new QWidget();
+	QHBoxLayout* errorLayout = new QHBoxLayout(errorTab);
+	errorDialog = new ErrorDialog(this);
+	connect(errorDialog, SIGNAL(user1Clicked()), this, SLOT(showErrorDialog()));
+	errorLayout->addWidget(errorDialog);
+	canvasTabWidget->insertTab(1, errorTab, i18n("E&rrors"));
+
+	// a widget stach with 2 layers: 1st with only a canvas, 2nd with the canvas/error tabs 
+	stackedWidget = new QStackedWidget;
+	stackedWidget->insertWidget(0, canvasTab);
+	stackedWidget->insertWidget(1, canvasTabWidget);
+
+	centralLayout->addWidget(stackedWidget);
+	setCentralWidget(centralWidget);
 }
+
+void MainWindow::showErrorDialog(bool show)
+{
+	if (show) {
+		// show the canvas and errors in a tab widget, focussing on the errors
+		stackedWidget->setCurrentIndex(1);
+		canvasTabWidget->insertTab(0, canvasTab, i18n("&Canvas"));
+		canvasTabWidget->setCurrentIndex(1);
+		actionCollection()->action("show_errors")->setChecked(true);
+	} else {
+		// show the canvas only
+		stackedWidget->insertWidget(0, canvasTab);
+		stackedWidget->setCurrentIndex(0);
+		actionCollection()->action("show_errors")->setChecked(false);
+	}
+}
+
 
 void MainWindow::setupDockWindows()
 {
-	editorDock = new LocalDockWidget(i18n("&Code Editor"), this);
+	editorDock = new LocalDockWidget(i18n("&Editor"), this);
 	editorDock->setObjectName("editor");
 	QWidget* editorWrapWidget = new QWidget(editorDock);
 	QHBoxLayout* editorDockLayout = new QHBoxLayout(editorWrapWidget);
@@ -415,7 +476,7 @@ void MainWindow::setupDockWindows()
 	addDockWidget(Qt::LeftDockWidgetArea, editorDock);
 	editor->show();
 	editor->setFocus();
-	editor->setWhatsThis(i18n("Code Editor: Type your KTurtle programs here"));
+	editor->setWhatsThis(i18n("Editor: Write your KTurtle commands here"));
 
 	//Creating the debug window
 	inspectorDock = new LocalDockWidget(i18n("&Inspector"), this);
@@ -460,110 +521,6 @@ void MainWindow::setupInterpreter()
 		inspector, SLOT(updateTree(TreeNode*)));
 }
 
-/*void MainWindow::setupMenus()
-{
-	QList<QString> items;
-	items << i18n("&File")
-	      << "file_new" << "file_open" << "file_recent" << "#examples" << "-"
-	      << "file_save" << "file_save_as" << "-"
-	      << "#speed"
-	      << "run" << "pause" << "abort" << "-"
-	      << "file_print" << "-"
-	      << "file_quit" << "-"
-	      << i18n("&Edit")
-	      << "edit_undo" << "edit_redo" << "-"
-	      << "edit_cut" << "edit_copy" << "edit_paste" << "-"
-	      << "edit_find" << "edit_find_next" << "edit_find_prev" << "edit_replace" << "-"
-	      << "set_insert" << "-"
-	      << i18n("&View")
-	      //<< "full_screen" << "-"
-	      << "show_editor" << "line_numbers" << "show_inspector" << "show_statusbar" << "show_toolbar" << "-"
-	      << i18n("&Tools")
-	      << "direction" << "-"
-	      //<< "edit_indent" << "edit_unindent" << "-"
-	      //<< "edit_comment" << "edit_uncomment" << "-"
-	      << i18n("&Settings")
-	      << "#language" << "-"
-	      //<< "set_font_size" << "set_font_type" << "-"
-	      << i18n("&Help")
-	      << "help_contents" << "whatsthis" << "-" << "context_help" << "-" << "about_app" 
-            //FIX it << "about_kde" << "-"
-	      ;
-
-	QMenu* currentMenu = 0;
-	foreach (const QString &item, items) {
-		if (item.contains('&')) {
-			currentMenu = menuBar()->addMenu(item);
-		} else {
-			if (item == "-") {
-				currentMenu->addSeparator();
-			} else if (item == "#speed") {
-				QMenu* runSpeedMenu = currentMenu->addMenu(i18n("R&un Speed"));
-				runSpeedMenu->addAction(fullSpeedAct);
-				runSpeedMenu->addAction(slowSpeedAct);
-				runSpeedMenu->addAction(slowerSpeedAct);
-				runSpeedMenu->addAction(slowestSpeedAct);
-				runSpeedMenu->addAction(stepSpeedAct);
-			} else if (item == "#language") {
-				QMenu* languageMenu = currentMenu->addMenu(i18n("&Language"));
-				QActionGroup* languageGroup = new QActionGroup(this);
-				connect(languageGroup, SIGNAL(triggered(QAction *)), this, SLOT(setLanguage(QAction *)));
-				QAction* a;
-				// sort the dictionaries using an algorithm found the the qt docs:
-				QMap<QString, QString> map;
-				foreach (const QString &lang_code, KGlobal::locale()->languageList())
-					map.insert(codeToFullName(lang_code), lang_code);
-				// populate the menu:
-				foreach (const QString &lang_code, map.values()) {
-					a = new QAction(codeToFullName(lang_code), actionCollection());
-					a->setData(lang_code);
-					a->setStatusTip(i18n("Switch to the %1 dictionary", codeToFullName(lang_code)));
-					a->setCheckable(true);
-					languageMenu->addAction(a);
-					languageGroup->addAction(a);
-				}
-			} else if (item == "#examples") {
-				examplesMenu = currentMenu->addMenu(i18n("&Open Example"));
-				connect(examplesMenu, SIGNAL(triggered(QAction *)), this, SLOT(openExample(QAction *)));
-			} else {
-				currentMenu->addAction(actionCollection()->action(item));
-			}
-		}
-	}
-}
-
-
-void MainWindow::setupToolBar()
-{
-	QList<QString> items;
-	items << "file_new" << "file_open" << "file_save" << "-"
-	      << "edit_undo" << "edit_redo" << "-"
-	      << "edit_cut" << "edit_copy" << "edit_paste" << "-"
-              << "edit_find" << "-"
-	      << "run" << "#speed" << "pause" << "abort";
-
-	toolBar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-
-	foreach (const QString &item, items) {
-		if (item == "-") {
-			toolBar->addSeparator();
-		} else if (item == "#speed") {
-			runOptionBox = new KComboBox(toolBar);
-			runOptionBox->addItem(i18nc("@option:radio", "Full Speed"));
-			runOptionBox->addItem(i18nc("@option:radio choose slow speed", "Slow"));
-			runOptionBox->addItem(i18nc("@option:radio", "Slower"));
-			runOptionBox->addItem(i18nc("@option:radio", "Slowest"));
-			runOptionBox->addItem(i18nc("@option:radio", "Step by Step"));
-			runOptionBox->setStatusTip(i18n("Choose program run speed"));
-			runOptionBox->setWhatsThis(i18n("Run Speed: Choose program run speed"));
-			connect(runOptionBox, SIGNAL(activated(int)), this, SLOT(setRunSpeed(int)));
-			toolBar->addWidget(runOptionBox);
-		} else {
-			toolBar->addAction(actionCollection()->action(item));
-		}
-	}
-}*/
-
 void MainWindow::setupStatusBar()
 {
 	statusBarLanguageLabel = new QLabel(statusBar());
@@ -574,15 +531,15 @@ void MainWindow::setupStatusBar()
 	statusBar()->addPermanentWidget(statusBarPositionLabel, 0);
 	statusBarPositionLabel->setAlignment(Qt::AlignRight);
 
-	statusBarInsertModeLabel = new QLabel(statusBar());
-	statusBar()->addPermanentWidget(statusBarInsertModeLabel, 0);
-	statusBarInsertModeLabel->setAlignment(Qt::AlignRight);
+	statusBarOverwriteModeLabel = new QLabel(statusBar());
+	statusBar()->addPermanentWidget(statusBarOverwriteModeLabel, 0);
+	statusBarOverwriteModeLabel->setAlignment(Qt::AlignRight);
 
 	statusBarFileNameLabel = new QLabel(statusBar());
 	statusBar()->addPermanentWidget(statusBarFileNameLabel, 0);
 	statusBarFileNameLabel->setAlignment(Qt::AlignRight);
 
-	toggleInsertMode(true);
+	toggleOverwriteMode(false);
 	updateOnCursorPositionChange(1, 1, "");
 }
 
@@ -658,10 +615,10 @@ void MainWindow::openExample()
 	editor->openExample(Translator::instance()->example(exampleName), exampleName);
 }
 
-void MainWindow::toggleInsertMode(bool b)
+void MainWindow::toggleOverwriteMode(bool b)
 {
-	statusBarInsertModeLabel->setText(b ? i18n(" INS ") : i18n(" OVR "));
-	editor->setInsertMode(b);
+	statusBarOverwriteModeLabel->setText(b ? i18n(" OVR ") : i18n(" INS "));
+	editor->setOverwriteMode(b);
 }
 
 void MainWindow::setContextHelp(const QString& s)
@@ -719,7 +676,7 @@ void MainWindow::setLanguage(QAction *action)
 		action->setChecked(true);
 }
 
-bool MainWindow::setCurrentLanguage(const QString &lang_code)
+bool MainWindow::setCurrentLanguage(const QString &lang_code)  // 2 or 5 digit code (en, en_US, nl, pt_BR)
 {
 	bool result = false;
 	kDebug(0) << "MainWindow::setCurrentLanguage: " << lang_code;
@@ -736,8 +693,9 @@ bool MainWindow::setCurrentLanguage(const QString &lang_code)
 
 QString MainWindow::codeToFullName(const QString& lang_code)
 {
-	return QString(lang_code.isNull() ?
-			i18n("%1 [built in]", codeToFullName("en_US")) :
+	// TODO test this function with more than one language loaded into KDE
+	return QString(lang_code == "en_US" ?
+			i18n("English [built in]") :
 			i18n("%1 (%2)", KGlobal::locale()->languageCodeToName(lang_code.left(2)), lang_code)
 		);
 }
@@ -748,11 +706,13 @@ void MainWindow::run()
 	if (interpreter->state() == Interpreter::Uninitialized ||
 	    interpreter->state() == Interpreter::Finished ||
 	    interpreter->state() == Interpreter::Aborted) {
-		//Reset inspector and interpreter
-		inspector->clear();
-		interpreter->initialize(editor->content());
+		// reset inspector and interpreter
 		editor->removeMarkings();
+		inspector->clear();
+		errorDialog->clear();
+		interpreter->initialize(editor->content());
 	}
+	editor->disable();
 	// start parsing (always in full speed)
 	iterationTimer->setSingleShot(false);
 	iterationTimer->start(0);
@@ -811,10 +771,13 @@ void MainWindow::abort()
 	pauseAct->setEnabled(false);
 	abortAct->setEnabled(false);
 
+	editor->enable();
+
 	if (interpreter->encounteredErrors()) {
-		ErrorDialog* errorDialog = new ErrorDialog(interpreter->getErrorList(), this);
+		errorDialog->setErrorList(interpreter->getErrorList());
 		connect(errorDialog, SIGNAL(currentlySelectedError(int, int, int, int)),
 			editor, SLOT(markCurrentError(int, int, int, int)));
+		showErrorDialog(true);
 	}
 }
 

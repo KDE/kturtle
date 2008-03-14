@@ -202,6 +202,9 @@ class Editor : public QFrame
 		QTextEdit* view() const { return editor; }
 		QTextDocument* document() const { return editor->document(); }
 
+		void enable()  { editor->setEnabled(true); }
+		void disable() { editor->setEnabled(false); }
+
 		const KUrl& currentUrl() { return m_currentUrl; }
 		void setCurrentUrl(const KUrl& url = KUrl());
 
@@ -226,7 +229,7 @@ class Editor : public QFrame
 		bool saveFileAs();
 		void toggleLineNumbers(bool b) { numbers->setVisible(b); }
 		void setModified(bool);
-		void setInsertMode(bool b);
+		void setOverwriteMode(bool b);
 
 		void markCurrentWord(int startRow, int startCol, int endRow, int endCol) {
 			editor->markCurrentWord(startRow, startCol, endRow, endCol);
@@ -244,6 +247,7 @@ class Editor : public QFrame
 		void fileOpened(const KUrl&);
 		void fileSaved(const KUrl&);
 		void modificationChanged(bool);
+		void contentChanged();
 		void cursorPositionChanged(int row, int col, const QString& line);
 
 

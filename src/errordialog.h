@@ -35,10 +35,17 @@ class ErrorDialog : public KDialog
 	Q_OBJECT
 
 	public:
-		ErrorDialog(ErrorList* _errorList, QWidget* parent);
+		ErrorDialog(QWidget* parent);
+
+		void setErrorList(ErrorList*);
+		void clear();
 
 	signals:
 		void currentlySelectedError(int, int, int, int);
+
+	public slots:
+		void enable();
+		void disable();
 
 	private slots:
 		void selectedErrorChangedProxy();

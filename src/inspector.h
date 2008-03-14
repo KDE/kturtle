@@ -51,6 +51,9 @@ class Inspector : public QFrame
 
 		void highlightSymbol(const QString& name);
 
+		void enable();
+		void disable();
+
 
 	private:
 		int findVariable(const QString& name);
