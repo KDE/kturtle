@@ -493,7 +493,7 @@ void MainWindow::setupDockWindows()
 	
 	//Creating the console window
 	consoleDock = new LocalDockWidget(i18n("&Console"), this);
-	inspectorDock->setObjectName("console");
+	consoleDock->setObjectName("console");
 	QWidget* consoleWrapWidget = new QWidget(consoleDock);
 	QHBoxLayout* consoleDockLayout = new QHBoxLayout(consoleWrapWidget);
 	consoleDockLayout->setMargin(MARGIN_SIZE);
