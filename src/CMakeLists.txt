@@ -5,6 +5,7 @@ include_directories (${KDE4_INCLUDES})
 set (
   kturtle_SRCS
     canvas.cpp
+    console.cpp
     directiondialog.cpp
     highlighter.cpp
     editor.cpp

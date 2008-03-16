@@ -490,6 +490,20 @@ void MainWindow::setupDockWindows()
 	inspectorDock->setWidget(inspectorWrapWidget);
 	addDockWidget(Qt::LeftDockWidgetArea, inspectorDock);
 	inspector->setWhatsThis(i18n("Inspector: See information about variables and functions when the program runs"));
+	
+	//Creating the console window
+	consoleDock = new LocalDockWidget(i18n("&Console"), this);
+	inspectorDock->setObjectName("console");
+	QWidget* consoleWrapWidget = new QWidget(consoleDock);
+	QHBoxLayout* consoleDockLayout = new QHBoxLayout(consoleWrapWidget);
+	consoleDockLayout->setMargin(MARGIN_SIZE);
+	consoleWrapWidget->setLayout(consoleDockLayout);
+	console = new Console(consoleWrapWidget);
+	consoleDockLayout->addWidget(console);
+	consoleDock->setWidget(consoleWrapWidget);
+	addDockWidget(Qt::RightDockWidgetArea, consoleDock);
+	console->setWhatsThis(i18n("Console: Lets you check what a line does."));
+	connect(console, SIGNAL(execute(const QString&)), this, SLOT(execute(const QString&)));
 }
 
 void MainWindow::setupEditor()
@@ -713,6 +727,19 @@ void MainWindow::run()
 		interpreter->initialize(editor->content());
 	}
 	editor->disable();
+	// start parsing (always in full speed)
+	iterationTimer->setSingleShot(false);
+	iterationTimer->start(0);
+}
+
+void MainWindow::execute(const QString &operation)
+{
+	if (interpreter->state() == Interpreter::Uninitialized ||
+	    interpreter->state() == Interpreter::Finished ||
+	    interpreter->state() == Interpreter::Aborted) {
+		interpreter->initialize(operation);
+		editor->removeMarkings();
+	}
 	// start parsing (always in full speed)
 	iterationTimer->setSingleShot(false);
 	iterationTimer->start(0);

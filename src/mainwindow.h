@@ -36,6 +36,7 @@
 
 #include "interpreter/interpreter.h"
 #include "canvas.h"
+#include "console.h"
 #include "editor.h"
 #include "errordialog.h"
 #include "inspector.h"
@@ -94,6 +95,7 @@ class MainWindow : public KXmlGuiWindow
 		void pause();
 		void abort();
 		void iterate();
+		void execute(const QString&);
 
 		void contextHelp();
 		//void whatsThis();
@@ -152,12 +154,14 @@ class MainWindow : public KXmlGuiWindow
 		Editor      *editor;
 		Interpreter *interpreter;
 		Inspector   *inspector;
+                Console     *console;
 		ErrorDialog *errorDialog;
 		QTabWidget      *canvasTabWidget;
 		QWidget         *canvasTab;
 		QStackedWidget  *stackedWidget;
 		LocalDockWidget *editorDock;
 		LocalDockWidget *inspectorDock;
+                LocalDockWidget *consoleDock;
 		QTimer          *iterationTimer;
 		int              runSpeed;
 
