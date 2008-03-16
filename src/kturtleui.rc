@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<gui name="kturtle" version="3">
+<gui name="kturtle" version="4">
 
 <MenuBar>
   <Menu name="file"><text>&amp;File</text>
@@ -51,6 +51,7 @@
     <Action name="show_editor" />
     <Action name="show_inspector" />
     <Action name="show_errors" />
+    <Action name="show_console" />
     <Separator />
     <Action name="line_numbers" />
   </Menu>

@@ -302,6 +302,15 @@ void MainWindow::setupActions()
 	a->setCheckable(true);
 	a->setChecked(false);
 	connect(a, SIGNAL(toggled(bool)), this, SLOT(showErrorDialog(bool)));
+        
+        a = new KAction(i18n("Show Co&nsole"), this);
+        actionCollection()->addAction("show_console", a);
+        a->setStatusTip(i18n("Show or hide the interative Console tab"));
+        a->setWhatsThis(i18n("Show Errors: Show or hide the interactive Console tab"));
+        a->setCheckable(true);
+        a->setChecked(false);
+        connect(a, SIGNAL(toggled(bool)), consoleDock, SLOT(setVisible(bool)));
+        connect(consoleDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
 
 	a = new KAction(i18n("Show &Line Numbers"), this);
 	actionCollection()->addAction("line_numbers", a);
