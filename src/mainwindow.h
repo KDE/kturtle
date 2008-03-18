@@ -36,6 +36,7 @@
 
 #include "interpreter/interpreter.h"
 #include "canvas.h"
+#include "directiondialog.h"
 #include "console.h"
 #include "editor.h"
 #include "errordialog.h"
@@ -102,7 +103,7 @@ class MainWindow : public KXmlGuiWindow
 		void documentWasModified();
 		void setRunSpeed(int);
 
-		void directionDialog();
+		void showDirectionDialog();
 
 		void setFullSpeed()    { setRunSpeed(0); }
 		void setSlowSpeed()    { setRunSpeed(1); }
@@ -150,18 +151,19 @@ class MainWindow : public KXmlGuiWindow
 
 
 	private:
-		Canvas      *canvas;
-		Editor      *editor;
-		Interpreter *interpreter;
-		Inspector   *inspector;
-                Console     *console;
-		ErrorDialog *errorDialog;
+		Canvas          *canvas;
+		Console         *console;
+		Editor          *editor;
+		Interpreter     *interpreter;
+		Inspector       *inspector;
+		ErrorDialog     *errorDialog;
+		DirectionDialog *directionDialog;
 		QTabWidget      *canvasTabWidget;
 		QWidget         *canvasTab;
 		QStackedWidget  *stackedWidget;
 		LocalDockWidget *editorDock;
 		LocalDockWidget *inspectorDock;
-                LocalDockWidget *consoleDock;
+		LocalDockWidget *consoleDock;
 		QTimer          *iterationTimer;
 		int              runSpeed;
 
@@ -201,4 +203,4 @@ class MainWindow : public KXmlGuiWindow
 		QLabel *statusBarFileNameLabel;
 };
 
-#endif
+#endif // MAINWINDOW_H

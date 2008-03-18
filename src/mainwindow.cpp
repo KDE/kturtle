@@ -45,9 +45,6 @@
 #include "interpreter/translator.h"
 
 
-#include "directiondialog.h"
-
-
 static const int MARGIN_SIZE = 3;  // defaultly styled margins look shitty
 
 MainWindow::MainWindow()
@@ -67,6 +64,10 @@ MainWindow::MainWindow()
 	connect(editor, SIGNAL(contentChanged()), inspector, SLOT(disable()));
 	connect(editor, SIGNAL(contentChanged()), errorDialog, SLOT(disable()));
 	connect(interpreter, SIGNAL(parsing()), inspector, SLOT(enable()));
+
+	connect(errorDialog, SIGNAL(currentlySelectedError(int, int, int, int)),
+		editor, SLOT(markCurrentError(int, int, int, int)));
+
 
 	statusBar()->showMessage(i18nc("@info:status the application is ready for commands", "Ready"));
 	setCaption();  // also sets the window caption to 'untitled'
@@ -112,12 +113,10 @@ void MainWindow::printDlg()
 	}
 }
 
-void MainWindow::directionDialog()
+void MainWindow::showDirectionDialog()
 {
-	DirectionDialog ddialog(canvas->turtleAngle(), this);
-	if(ddialog.exec()==QDialog::Accepted) {
-		editor->view()->insertPlainText(ddialog.command());
-	}
+	directionDialog = new DirectionDialog(canvas->turtleAngle(), this);
+	connect(directionDialog, SIGNAL(pasteText(const QString&)), editor, SLOT(insertPlainText(const QString&)));
 }
 
 
@@ -303,14 +302,14 @@ void MainWindow::setupActions()
 	a->setChecked(false);
 	connect(a, SIGNAL(toggled(bool)), this, SLOT(showErrorDialog(bool)));
         
-        a = new KAction(i18n("Show Co&nsole"), this);
-        actionCollection()->addAction("show_console", a);
-        a->setStatusTip(i18n("Show or hide the interative Console tab"));
-        a->setWhatsThis(i18n("Show Console: Show or hide the interactive Console tab"));
-        a->setCheckable(true);
-        a->setChecked(false);
-        connect(a, SIGNAL(toggled(bool)), consoleDock, SLOT(setVisible(bool)));
-        connect(consoleDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
+	a = new KAction(i18n("Show &Console"), this);
+	actionCollection()->addAction("show_console", a);
+	a->setStatusTip(i18n("Show or hide the interative Console tab"));
+	a->setWhatsThis(i18n("Show Console: Show or hide the interactive Console tab"));
+	a->setCheckable(true);
+	a->setChecked(false);
+	connect(a, SIGNAL(toggled(bool)), consoleDock, SLOT(setVisible(bool)));
+	connect(consoleDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
 
 	a = new KAction(i18n("Show &Line Numbers"), this);
 	actionCollection()->addAction("line_numbers", a);
@@ -327,7 +326,7 @@ void MainWindow::setupActions()
 	actionCollection()->addAction("direction", a);
 	a->setStatusTip(i18n("Shows the direction chooser dialog"));
 	a->setWhatsThis(i18n("Direction Chooser: Show the direction chooser dialog"));
-	connect(a, SIGNAL(triggered()), this, SLOT(directionDialog()));
+	connect(a, SIGNAL(triggered()), this, SLOT(showDirectionDialog()));
 
 //TODO: Bring back the colorpicker?
     // 	colorpicker  = new KToggleAction(i18n("&Color Picker..."), "colorize"), this);
@@ -487,7 +486,7 @@ void MainWindow::setupDockWindows()
 	editor->setFocus();
 	editor->setWhatsThis(i18n("Editor: Write your KTurtle commands here"));
 
-	//Creating the debug window
+	// Creating the debug window
 	inspectorDock = new LocalDockWidget(i18n("&Inspector"), this);
 	inspectorDock->setObjectName("inspector");
 	QWidget* inspectorWrapWidget = new QWidget(inspectorDock);
@@ -500,7 +499,7 @@ void MainWindow::setupDockWindows()
 	addDockWidget(Qt::LeftDockWidgetArea, inspectorDock);
 	inspector->setWhatsThis(i18n("Inspector: See information about variables and functions when the program runs"));
 	
-	//Creating the console window
+	// Creating the console window
 	consoleDock = new LocalDockWidget(i18n("&Console"), this);
 	consoleDock->setObjectName("console");
 	QWidget* consoleWrapWidget = new QWidget(consoleDock);
@@ -811,8 +810,6 @@ void MainWindow::abort()
 
 	if (interpreter->encounteredErrors()) {
 		errorDialog->setErrorList(interpreter->getErrorList());
-		connect(errorDialog, SIGNAL(currentlySelectedError(int, int, int, int)),
-			editor, SLOT(markCurrentError(int, int, int, int)));
 		showErrorDialog(true);
 	}
 }

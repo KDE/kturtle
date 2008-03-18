@@ -96,7 +96,7 @@ class LineNumbers : public QWidget
 
 //END class LineNumbers
 
-//BEGIN QTextEditor sub-class
+//BEGIN QTextEdit sub-class
 
 class TextEdit : public QTextEdit
 {
@@ -187,7 +187,7 @@ class TextEdit : public QTextEdit
 		QRect currentWord, currentError;
 };
 
-//END QTextEditor sub-class
+//END QTextEdit sub-class
 
 
 
@@ -202,8 +202,8 @@ class Editor : public QFrame
 		QTextEdit* view() const { return editor; }
 		QTextDocument* document() const { return editor->document(); }
 
-		void enable()  { editor->setEnabled(true); }
-		void disable() { editor->setEnabled(false); }
+		void enable();
+		void disable();
 
 		const KUrl& currentUrl() { return m_currentUrl; }
 		void setCurrentUrl(const KUrl& url = KUrl());
@@ -240,6 +240,7 @@ class Editor : public QFrame
 		void find();
 		void findNext();
 		void findPrev();
+		void insertPlainText(const QString& txt);
 
 
 	signals:

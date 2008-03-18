@@ -106,6 +106,18 @@ Editor::~Editor()
 // 	delete numbers;
 }
 
+void Editor::enable() {
+	editor->viewport()->setEnabled(true);
+	editor->setReadOnly(false);
+}
+
+void Editor::disable() {
+	editor->viewport()->setEnabled(false);
+	editor->setReadOnly(true);
+}
+
+
+
 void Editor::setContent(const QString& s)
 {
 	editor->document()->setPlainText(s);
@@ -378,6 +390,12 @@ void Editor::cursorPositionChanged()
 		editor->highlightCurrentLine();
 	}
 	emit cursorPositionChanged(row+1, pos-last_break, s.mid(last_break+1, next_break-last_break-1));
+}
+
+
+void Editor::insertPlainText(const QString& txt)
+{
+	editor->textCursor().insertText(txt);
 }
 
 

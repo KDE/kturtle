@@ -19,7 +19,7 @@
 
 #include "errordialog.h"
 
-#include <QtDebug>
+#include <QHeaderView>
 
 #include <kdebug.h>
 
@@ -58,19 +58,18 @@ ErrorDialog::ErrorDialog(QWidget* parent)
 	errorTable = new QTableWidget(baseWidget);
 	errorTable->setSelectionMode(QAbstractItemView::SingleSelection);
 	errorTable->setSelectionBehavior(QAbstractItemView::SelectRows);
+	errorTable->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
 	errorTable->setShowGrid(false);
 
 	errorTable->setColumnCount(3);
 	QStringList horizontalHeaderTexts;
 	horizontalHeaderTexts << i18n("line") << i18n("description") << i18n("code");
 	errorTable->setHorizontalHeaderLabels(horizontalHeaderTexts);
-	errorTable->setColumnWidth(0, baseWidget->fontMetrics().width("88888"));
 	errorTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
 	baseLayout->addWidget(errorTable);
 
 	clear();
-// 	errorTable->resizeColumnsToContents();
 	show();
 }
 
@@ -89,6 +88,11 @@ void ErrorDialog::clear()
 	emptyFont.setItalic(true);
 	emptyItem->setFont(emptyFont);
 	errorTable->setItem(0, 1, emptyItem);
+
+	errorTable->resizeColumnsToContents();
+// 	errorTable->setColumnWidth(0, errorTable->fontMetrics().width("88888"));
+// 	errorTable->setColumnWidth(2, errorTable->fontMetrics().width("88888"));
+// 	errorTable->setColumnWidth(1, errorTable->width() - errorTable->verticalHeader()->width() - errorTable->columnWidth(0) - errorTable->columnWidth(2));
 }
 
 void ErrorDialog::enable()
@@ -97,6 +101,7 @@ void ErrorDialog::enable()
 	errorTable->setEnabled(true);
 	enableButton(Help, true);
 	connect (errorTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectedErrorChangedProxy()));
+	errorTable->selectRow(0);
 }
 
 void ErrorDialog::disable()
@@ -104,6 +109,7 @@ void ErrorDialog::disable()
 	disconnect (errorTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectedErrorChangedProxy()));
 	errorTable->setEnabled(false);
 	enableButton(Help, false);
+	errorTable->clearSelection();
 }
 
 
@@ -123,6 +129,7 @@ void ErrorDialog::setErrorList(ErrorList *list)
 		row++;
 	}
 	errorTable->clearSelection();
+	errorTable->resizeColumnsToContents();
 	enable();
 }
 
@@ -131,6 +138,7 @@ void ErrorDialog::selectedErrorChangedProxy()
 	Q_ASSERT (errorList != 0);
 	const Token* t = &errorList->at(errorTable->selectedItems().first()->row()).token();
 	emit currentlySelectedError(t->startRow(), t->startCol(), t->endRow(), t->endCol());
+	kDebug() << "EMITTED: " << t->startRow() << ", " << t->startCol() << ", " << t->endRow() << ", " << t->endCol();
 }
 
 

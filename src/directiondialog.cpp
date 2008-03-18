@@ -21,8 +21,11 @@
 
 #include <cmath>
 
+#include <kapplication.h>
+#include <kglobalsettings.h>
 #include <klocale.h>
 
+#include <QClipboard>
 #include <QHBoxLayout>
 #include <QGroupBox>
 #include <QLabel>
@@ -35,17 +38,28 @@
 
 #define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )
 
+
+//BEGIN DirectionCanvas widget
+
 DirectionCanvas::DirectionCanvas(QWidget* parent)
-: QWidget(parent)
+	: QWidget(parent)
 {
 	setFocusPolicy(Qt::ClickFocus);
-	setMinimumSize(200, 200);
+	setMinimumSize(230, 200);
 	setBackgroundRole(QPalette::Base);
 	setAutoFillBackground(true);
 	turtle.load(QString(":turtle.svg"));
+	greyTurtle.load(QString(":turtle_grey.svg"));
 
 	deg = 0;
 	previousDeg = 0;
+	greyTurtleEnabled = true;
+}
+
+void DirectionCanvas::enableGreyTurtle(bool enable)
+{
+	greyTurtleEnabled = enable;
+	update();
 }
 
 void DirectionCanvas::paintEvent(QPaintEvent *event)
@@ -58,53 +72,65 @@ void DirectionCanvas::paintEvent(QPaintEvent *event)
 	
 	painter.save();
 	
-	//Place us in the middle of the widget
+	// Place us in the middle of the widget
 	painter.translate(width() / 2, height() / 2);
 
-	//Scale the widget to a square of 200 by 200
+	// Scale the widget to a square of 200 by 200
 	painter.scale(side / 200.0, side / 200.0);
 
-	//Draw the ellipse. With a nice border of 10
+	// Draw the ellipse. With a nice border of 10
 	painter.drawEllipse(-80, -80, 160, 160);
 
-	//painter.save();
-	//Rotate for the circle lines.
-	//painter.rotate(90);
+//	painter.save();
+//	// Rotate for the circle lines.
+//	painter.rotate(90);
 	
-	//Draw the lines in the circle
+	// Draw the lines in the circle
 	painter.save();
-	for(int i = 0; i < 4; i++) {
+	for (int i = 0; i < 4; i++) {
 		painter.drawLine(0, -80, 0, 80);
 		painter.rotate(45);
 	}
 	painter.restore();
 
-	painter.drawText(-100, -100, 200, 20, Qt::AlignHCenter, "0");
-	painter.drawText(-100, 80, 200, 20, Qt::AlignHCenter, "180");
+	painter.drawText(-100, -98, 200, 200, Qt::AlignHCenter|Qt::AlignTop, "0");
+	painter.drawText(-100, -100, 200, 200, Qt::AlignHCenter|Qt::AlignBottom, "180");
+	painter.drawText(-100, -100, 203, 200, Qt::AlignRight|Qt::AlignVCenter, "90");
+	painter.drawText(-109, -100, 200, 200, Qt::AlignLeft|Qt::AlignVCenter, "270");
 	//painter.restore(); //Rotate back
 
 	painter.save();
-	//Rotate for the previousDeg pointer
-	painter.rotate(previousDeg);
 
-	painter.setBrush(QColor(0, 180, 0, 128));
-	painter.drawPie(-20, -88, 40, 30, 60*16, 60*16);
-	painter.restore();
+// 	// Rotate for the previousDeg pointer
+// 	painter.rotate(previousDeg);
+// 	painter.setBrush(QColor(0, 180, 0, 128));
+// 	painter.drawPie(-20, -88, 40, 30, 60*16, 60*16);
 
-	painter.save();
-	painter.rotate(deg); //Rotate for the turtle
+	if (greyTurtleEnabled) {
+		// Rotate for the turtle
+		painter.rotate(previousDeg);
+		painter.setPen(Qt::blue);
+		painter.drawLine(0, -80, 0, 0);
+		// Draw the turtle 70 by 70, in the middle of the widget
+	// 	QRectF greyTurtleRect(-35, -35, 70, 70);
+		QRectF greyTurtleRect(-25, -25, 50, 50);
+		greyTurtle.render(&painter, greyTurtleRect);
+		painter.restore();
+		painter.save();
+	}
 
+	// Rotate for the turtle
+	painter.rotate(deg);
 	painter.setPen(Qt::red);
 	painter.drawLine(0, -80, 0, 0);
-
-	//Draw the turtle 50 by 50, in the middle of the widget
-	QRectF pos(-25,-25,50,50);
-	turtle.render(&painter, pos);
-	painter.restore();
+	// Draw the turtle 50 by 50, in the middle of the widget
+	QRectF turtleRect(-25, -25, 50, 50);
+	turtle.render(&painter, turtleRect);
 
 	painter.restore();
+	painter.restore();
 
-	//Draw the widget's border
+	// Draw the widget's border
 	painter.setPen(palette().dark().color());
 	painter.setBrush(Qt::NoBrush);
 	painter.drawRect(QRect(0, 0, width() - 1, height() - 1));
@@ -117,98 +143,125 @@ void DirectionCanvas::mouseMoveEvent(QMouseEvent *event)
 
 void DirectionCanvas::mousePressEvent(QMouseEvent *event)
 {
+	bool leftOrRight;
 	// Only do something if event is caused by the left mouse button
-	if (!(event->buttons() & Qt::LeftButton))
-		return;
+	if (event->buttons() & Qt::LeftButton) {
+		leftOrRight = true;  // left
+	} else if (event->buttons() & Qt::RightButton) {
+		leftOrRight = false;
+	} else return;
 	
-	//'Translate' the X and Y coordinates so that 
+	// 'Translate' the X and Y coordinates so that 
 	// 0,0 is in the middle of the widget.
 	double trans_x = event->x() - (width() / 2);
 	double trans_y = (event->y() - (height() / 2));
 
-	//We now have 4 squares. One four every corner.
-	//With a cross in the middle.
-	//For every square we calculate a different tangent
-	//therefore we have to add of substract a number of degrees
+	// We now have 4 squares. One four every corner.
+	// With a cross in the middle.
+	// For every square we calculate a different tangent
+	// therefore we have to add of substract a number of degrees
 
-	if(trans_x>=0 && trans_y>=0) {
-		//Right down
+	double tempDeg;
+
+	if (trans_x >= 0 && trans_y >= 0) {
+		// Right down
 		double arc_tan = trans_y / trans_x;
-		deg = 90+(atan(arc_tan))*(180/M_PI);
-	}else if(trans_x<=0 && trans_y>=0) {
-		//Left down
+		tempDeg = 90 + (atan(arc_tan)) * (180/M_PI);
+	} else if (trans_x <= 0 && trans_y >= 0) {
+		// Left down
 		trans_x = trans_x * -1;
 		double arc_tan = trans_y / trans_x;
-		deg = 270-(atan(arc_tan))*(180/M_PI);
-	}else if(trans_x>=0 && trans_y<=0) {
-		//Right up
+		tempDeg = 270 - (atan(arc_tan)) * (180/M_PI);
+	} else if (trans_x >= 0 && trans_y <= 0) {
+		// Right up
 		trans_y = trans_y * -1;
 		double arc_tan = trans_y / trans_x;
-		deg = 90-(atan(arc_tan))*(180/M_PI);
-	}else if(trans_x<=0 && trans_y<=0) {
-		//Left up
+		tempDeg = 90 - (atan(arc_tan)) * (180/M_PI);
+	} else if (trans_x <= 0 && trans_y <= 0) {
+		// Left up
 		trans_x = trans_x * -1;
 		trans_y = trans_y * -1;
 		double arc_tan = trans_y / trans_x;
-		deg = 270+(atan(arc_tan))*(180/M_PI);
+		tempDeg = 270 + (atan(arc_tan)) * (180/M_PI);
 	}
 
-	emit degreeChanged(deg);
+	if (leftOrRight) {
+		deg = tempDeg;
+		emit degreeChanged(deg);
+	} else {
+		previousDeg = tempDeg;
+		emit previousDegreeChanged(previousDeg);
+	}
 	update();
 }
-
 
 void DirectionCanvas::changed(double previousDeg, double deg, int cmd)
 {
+	Q_UNUSED(cmd);
 	this->deg = deg;
 	this->previousDeg = previousDeg;
-	this->cmd = cmd;
 	update();
 }
 
+//END DirectionCanvas widget
+
+
 DirectionDialog::DirectionDialog(double deg, QWidget* parent) 
-: KDialog(parent)
+	: KDialog(parent)
 {
 	skipValueChangedEvent = false;
 
-	if(deg<0)
+	if (deg < 0)
 		deg = deg + 360;
-	else if(deg>359)
+	else if (deg > 359)
 		deg = deg - 360;
 
 	translator = Translator::instance();
 
-	setCaption(i18n("Set a direction"));
+	setCaption(i18n("Direction Chooser"));
 	setModal(false);
-	setButtons(Ok | Cancel);
-	setDefaultButton(Ok);
+	setButtons(User1);
+	setDefaultButton(User1);
+	setButtonGuiItem(User1, KGuiItem(i18n("&Quit"), "dialog-close"));
+	connect(this, SIGNAL(user1Clicked()), this, SLOT(delayedDestruct()));
 	showButtonSeparator(false);
 
-	QWidget *baseWidget = new QWidget(this);
+	QWidget* baseWidget = new QWidget(this);
 	setMainWidget(baseWidget);
 
-	baseLayout = new QHBoxLayout(baseWidget);
+	QVBoxLayout* baseLayout = new QVBoxLayout(baseWidget);
+	QHBoxLayout* degreeChooserLayout = new QHBoxLayout(baseWidget);
+	baseLayout->addLayout(degreeChooserLayout);
 
 	canvas = new DirectionCanvas(baseWidget);
-	connect(canvas, SIGNAL(degreeChanged(double)),
-		this, SLOT(updateDegrees(double)));	
+	connect(canvas, SIGNAL(degreeChanged(double)), this, SLOT(updateDegrees(double)));
+	connect(canvas, SIGNAL(previousDegreeChanged(double)), this, SLOT(updatePreviousDegrees(double)));
 
-	baseLayout->addWidget(canvas);
+	degreeChooserLayout->addWidget(canvas);
 
 	QWidget* rightWidget = new QWidget(baseWidget);
-	baseLayout->addWidget(rightWidget);
-	
-	//Order matters...
-	cmdLineEdit = new KLineEdit(translator->default2localized("turnleft") + " 0", rightWidget);
-	cmdLineEdit->setReadOnly(true);
+	degreeChooserLayout->addWidget(rightWidget);
 
 	QVBoxLayout* rightLayout = new QVBoxLayout(rightWidget);
 
-	QLabel* previousDirection = new QLabel(rightWidget);
-	previousDirection->setText(i18n("Previous direction"));
-	previousDirection->setScaledContents(true);
-	rightLayout->addWidget(previousDirection);
+	QLabel* commandPickerLabel = new QLabel(rightWidget);
+	commandPickerLabel->setText(i18n("Command &type:"));
+	commandPickerLabel->setScaledContents(true);
+	rightLayout->addWidget(commandPickerLabel);
+	commandPicker = new QComboBox(rightWidget);
+	commandPicker->insertItem(Turnleft, translator->default2localized("turnleft"));
+	commandPicker->insertItem(Turnright, translator->default2localized("turnright"));
+	commandPicker->insertItem(Direction, translator->default2localized("direction"));
+	rightLayout->addWidget(commandPicker);
+	commandPickerLabel->setBuddy(commandPicker);
+	connect(commandPicker, SIGNAL(currentIndexChanged(int)), this, SLOT(changeCommand(int)));
 
+	rightLayout->addStretch();
+
+	QLabel* previousDirectionLabel = new QLabel(rightWidget);
+	previousDirectionLabel->setText(i18n("&Previous direction:"));
+	previousDirectionLabel->setScaledContents(true);
+	rightLayout->addWidget(previousDirectionLabel);
 	previousDirectionSpin = new QSpinBox(rightWidget);
 	// Use -360 to 720 instead of 0 to 360
 	// If 0 to 360 is used, then wrap-around goes from 360 to 0 (which isn't really a step at all)
@@ -218,14 +271,12 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	previousDirectionSpin->setSingleStep(10);
 	previousDirectionSpin->setValue((int)deg);
 	rightLayout->addWidget(previousDirectionSpin);
-
-	connect(previousDirectionSpin, SIGNAL(valueChanged(int)),
-		this, SLOT(directionChanged(int)));
+	previousDirectionLabel->setBuddy(previousDirectionSpin);
+	connect(previousDirectionSpin, SIGNAL(valueChanged(int)), this, SLOT(directionChanged(int)));
 
 	QLabel* directionLabel = new QLabel(rightWidget);
-	directionLabel->setText(i18n("Direction"));
+	directionLabel->setText(i18n("&New direction:"));
 	rightLayout->addWidget(directionLabel);
-
 	directionSpin = new QSpinBox(rightWidget);
 	// Use -360 to 720 instead of 0 to 360
 	// If 0 to 360 is used, then wrap-around goes from 360 to 0 (which isn't really a step at all)
@@ -235,66 +286,57 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	directionSpin->setSingleStep(10);
 	directionSpin->setValue((int)deg);
 	rightLayout->addWidget(directionSpin);
+	directionLabel->setBuddy(directionSpin);
+	connect(directionSpin, SIGNAL(valueChanged(int)), this, SLOT(directionChanged(int)));
 
-	connect(directionSpin, SIGNAL(valueChanged(int)),
-		this, SLOT(directionChanged(int)));
+	baseLayout->addSpacing(20);
 
-	QGroupBox *commandBox = new QGroupBox(i18n("Command"), rightWidget);
+// 	QVBoxLayout* commandPasteLayout = new QVBoxLayout(baseWidget);
+// 	baseLayout->addLayout(commandPasteLayout);
+	QHBoxLayout *pasteRowLayout = new QHBoxLayout(baseWidget);
+	baseLayout->addLayout(pasteRowLayout);
 
-	leftRadio = new QRadioButton(i18n("Turnleft"), commandBox);
-	connect(leftRadio, SIGNAL(toggled(bool)),
-            this, SLOT(changeCommand(bool)));
+	pasteRowLayout->addStretch();
+	cmdLineEdit = new KLineEdit(rightWidget);
+	cmdLineEdit->setMinimumWidth(cmdLineEdit->fontMetrics().width("000000000_360"));
+	cmdLineEdit->setReadOnly(true);
+	cmdLineEdit->setFont(KGlobalSettings::fixedFont());
+	pasteRowLayout->addWidget(cmdLineEdit);
+	KPushButton* copyButton = new KPushButton(KIcon("edit-copy"), i18n("&Copy to clipboard"), baseWidget);
+	pasteRowLayout->addWidget(copyButton);
+	connect(copyButton, SIGNAL(clicked()), this, SLOT(copyProxy()));
+	KPushButton* pasteButton = new KPushButton(KIcon("edit-paste"), i18n("&Paste to editor"), baseWidget);
+	pasteRowLayout->addWidget(pasteButton);
+	connect(pasteButton, SIGNAL(clicked()), this, SLOT(pasteProxy()));
+	pasteRowLayout->addStretch();
 
-	rightRadio = new QRadioButton(i18n("Turnright"), commandBox);
-	connect(rightRadio, SIGNAL(toggled(bool)),
-            this, SLOT(changeCommand(bool)));
+	baseLayout->addSpacing(10);
 
-	directionRadio = new QRadioButton(i18n("Direction"), commandBox);
-	connect(directionRadio, SIGNAL(toggled(bool)),
-            this, SLOT(changeCommand(bool)));
-
-	leftRadio->setChecked(true);
-	cmd = Left;
-
-	QVBoxLayout *commandBoxLayout = new QVBoxLayout(commandBox);
-	commandBoxLayout->addWidget(leftRadio);
-	commandBoxLayout->addWidget(rightRadio);
-	commandBoxLayout->addWidget(directionRadio);
-	commandBox->setLayout(commandBoxLayout);
-
-	rightLayout->addWidget(commandBox);
-
-	rightLayout->addWidget(cmdLineEdit);
-
-	rightLayout->addStretch();
-
+	changeCommand(0);
 	show();
 }
 
 void DirectionDialog::directionChanged(int value)
 {
 	Q_UNUSED(value);
-	//Don't update the canvas when we just
-	// updated the	direction spinbox.
-	// (Only update when the users changes the spinbox.)
+	// Don't update the canvas when we just updated the	direction spinbox.
+	// (only update when the users changes the spinbox)
 
 	// if value is outside of the 0 to 359 range, then move it into that range
-	if(previousDirectionSpin->value() < 0) {
+	if (previousDirectionSpin->value() < 0) {
 		previousDirectionSpin->setValue(previousDirectionSpin->value() + 360);
-	}
-	else if(previousDirectionSpin->value() >= 360) {
+	} else if (previousDirectionSpin->value() >= 360) {
 		previousDirectionSpin->setValue(previousDirectionSpin->value() - 360);
 	}
 
 	// if value is outside of the 0 to 359 range, then move it into that range
-	if(directionSpin->value() < 0) {
+	if (directionSpin->value() < 0) {
 		directionSpin->setValue(directionSpin->value() + 360);
-	}
-	else if(directionSpin->value() >= 360) {
+	} else if (directionSpin->value() >= 360) {
 		directionSpin->setValue(directionSpin->value() - 360);
 	}
 
-	if(skipValueChangedEvent) {
+	if (skipValueChangedEvent) {
 		skipValueChangedEvent = false;
 		return;
 	}
@@ -311,63 +353,71 @@ void DirectionDialog::updateCanvas()
 	updateCmdLineEdit();
 }
 
-void DirectionDialog::changeCommand(bool checked)
+void DirectionDialog::changeCommand(int command)
 {
-	//Another command has been selected through the radio
-	// buttons by the user. Update cmd and the canvas.
-	if(!checked)
-		return;
-	
-	if(leftRadio->isChecked()) {
-		cmd = Left;
-	} else if(rightRadio->isChecked()) {
-		cmd = Right;
-	} else if(directionRadio->isChecked()) {
-		cmd = Direction;
+	cmd = command;
+	if (cmd == Direction) {
+		previousDirectionSpin->setEnabled(false);
+		canvas->enableGreyTurtle(false);
+	} else {
+		previousDirectionSpin->setEnabled(true);
+		canvas->enableGreyTurtle(true);
 	}
-	
 	updateCanvas();
 }
 
 void DirectionDialog::updateDegrees(double deg)
 {
-	//The canvas has changed, update the spinbox and command-LineEdit
+	// The canvas has changed, update the spinbox and command-LineEdit
 	skipValueChangedEvent = true;
 	directionSpin->setValue(ROUND2INT(deg));
 	updateCmdLineEdit();
 }
 
+void DirectionDialog::updatePreviousDegrees(double deg)
+{
+	// The canvas has changed, update the spinbox and command-LineEdit
+	skipValueChangedEvent = true;
+	previousDirectionSpin->setValue(ROUND2INT(deg));
+	updateCmdLineEdit();
+}
+
 void DirectionDialog::updateCmdLineEdit()
 {
-	//Generate a new value for the command-LineEdit.
+	// Generate a new value for the command-LineEdit.
 	QString output;
 	int degree;
-	switch(cmd) {
-		case Left : {
+	switch (cmd) {
+		case Turnleft:
 			output.append(translator->default2localized("turnleft"));
 			degree = 360 - (directionSpin->value() - previousDirectionSpin->value());
-		}
-		break;
-		case Right : {
+			break;
+		case Turnright:
 			output.append(translator->default2localized("turnright"));
 			degree = directionSpin->value() - previousDirectionSpin->value();
-		}
-		break;
-		case Direction : {
+			break;
+		case Direction:
 			output.append(translator->default2localized("direction"));
 			degree = directionSpin->value();
-		}
-		break;
+			break;
 	}
-
-	if(degree < 0) {
+	if (degree < 0) {
 		degree += 360;
-	} else if(degree >= 360) {
+	} else if (degree >= 360) {
 		degree -= 360;
 	}
-	
 	output.append(QString(" %1\n").arg(degree));
 	cmdLineEdit->setText(output);
+}
+
+void DirectionDialog::copyProxy()
+{
+	KApplication::clipboard()->setText(cmdLineEdit->text());
+}
+
+void DirectionDialog::pasteProxy()
+{
+	emit pasteText(cmdLineEdit->text());
 }
 
 #include "directiondialog.moc"

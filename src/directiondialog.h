@@ -20,13 +20,16 @@
 #ifndef _DIRECTIONDIALOG_H_
 #define _DIRECTIONDIALOG_H_
 
+#include "interpreter/translator.h"
+
+#include <QComboBox>
 #include <QSvgRenderer>
 #include <QWidget>
 
 #include <kdialog.h>
 #include <klineedit.h>
+#include <kpushbutton.h>
 
-#include "interpreter/translator.h"
 
 class QHBoxLayout;
 class QMouseEvent;
@@ -40,12 +43,14 @@ class DirectionCanvas : public QWidget
 	
 	public:
 		DirectionCanvas(QWidget* parent = 0);
+		void enableGreyTurtle(bool);
 
 	public slots:
 		void changed(double previousDeg, double deg, int cmd);
 	
 	signals:
 		void degreeChanged(double deg);
+		void previousDegreeChanged(double deg);
 
 	protected:
 		void paintEvent(QPaintEvent *event);
@@ -53,10 +58,11 @@ class DirectionCanvas : public QWidget
 		void mousePressEvent(QMouseEvent *event);
 
 	private:
-		int cmd;
+		bool greyTurtleEnabled;
 		double deg;
 		double previousDeg;
 		QSvgRenderer turtle;
+		QSvgRenderer greyTurtle;
 };
 
 
@@ -68,27 +74,27 @@ class DirectionDialog : public KDialog
 		DirectionDialog(double deg, QWidget* parent);
 		
 		enum Command {
-			Left,
-			Right,
-			Direction
+			Turnleft = 0,
+			Turnright = 1,
+			Direction = 2
 		};
 
-		QString command() { return cmdLineEdit->text(); }
+	signals:
+		void pasteText(const QString&);
 
 	private:
-		QHBoxLayout* baseLayout;
 		DirectionCanvas* canvas;
 
+		QComboBox* commandPicker;
 		QSpinBox* previousDirectionSpin;
 		QSpinBox* directionSpin;
 
-		QRadioButton *leftRadio;
-		QRadioButton *rightRadio;
-		QRadioButton *directionRadio;
+		KPushButton *copyButton;
+		KPushButton *pasteButton;
 
 		KLineEdit* cmdLineEdit;
 
-		Command cmd;
+		int cmd;  // enum DirectionChooser::Command
 
 		Translator* translator;
 
@@ -99,10 +105,11 @@ class DirectionDialog : public KDialog
 
 	private slots:
 		void directionChanged(int value);
-
-		void changeCommand(bool checked);
-
+		void changeCommand(int command);
 		void updateDegrees(double deg);
+		void updatePreviousDegrees(double deg);
+		void copyProxy();
+		void pasteProxy();
 };
 
-#endif // _DIRECTIONDIALOG_H_
+#endif  // _DIRECTIONDIALOG_H_

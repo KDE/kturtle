@@ -19,8 +19,11 @@
 
 #include "inspector.h"
 
-#include <klocale.h>
+#include <QHeaderView>
+
 #include <kdebug.h>
+
+#include <klocale.h>
 
 #include "interpreter/translator.h"  // for getting the translated ArgumentSeparator
 
@@ -40,24 +43,27 @@ Inspector::Inspector(QWidget *parent)
 	variableTab    = new QWidget();
 	variableLayout = new QHBoxLayout(variableTab);
 	variableTable  = new QTableWidget(variableTab);
+	variableTable->setAlternatingRowColors(true);
 	variableLayout->addWidget(variableTable);
 	tabWidget->addTab(variableTab, i18n("&Variables"));
 
 	functionTab    = new QWidget();
 	functionLayout = new QHBoxLayout(functionTab);
 	functionTable  = new QTableWidget(functionTab);
+	functionTable->setAlternatingRowColors(true);
 	functionLayout->addWidget(functionTable);
 	tabWidget->addTab(functionTab, i18n("&Functions"));
 
 	treeTab    = new QWidget();
 	treeLayout = new QHBoxLayout(treeTab);
 	treeView   = new QTreeWidget(treeTab);
+	treeView->header()->setVisible(false);
 	treeLayout->addWidget(treeView);
 	tabWidget->addTab(treeTab, i18n("&Tree"));
 
 	mainLayout->addWidget(tabWidget);
 
-  disable();
+	disable();
 
 	clear();
 }
@@ -69,9 +75,9 @@ Inspector::~Inspector()
 
 void Inspector::enable()
 {
-	variableTable->setEnabled(true);
-	functionTable->setEnabled(true);
-	treeView->setEnabled(true);
+// 	variableTable->setEnabled(true);
+// 	functionTable->setEnabled(true);
+// 	treeView->setEnabled(true);
 }
 
 void Inspector::disable()
@@ -92,6 +98,10 @@ void Inspector::clear()
 	headers << i18n("name") << i18n("value") << i18n("type");
 	variableTable->setColumnCount(3);
 	variableTable->setHorizontalHeaderLabels(headers);
+	variableTable->setSelectionMode(QAbstractItemView::SingleSelection);
+	variableTable->setSelectionBehavior(QAbstractItemView::SelectRows);
+	variableTable->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
+	variableTable->verticalHeader()->setVisible(false);
 	variableTable->setShowGrid(false);
 
 	functionTable->clear();
@@ -100,6 +110,10 @@ void Inspector::clear()
 	headers << i18n("name") << i18n("parameters");
 	functionTable->setColumnCount(2);
 	functionTable->setHorizontalHeaderLabels(headers);
+	functionTable->setSelectionMode(QAbstractItemView::SingleSelection);
+	functionTable->setSelectionBehavior(QAbstractItemView::SelectRows);
+	functionTable->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
+	functionTable->verticalHeader()->setVisible(false);
 	functionTable->setShowGrid(false);
 
 	variableTable->setRowCount(1);
@@ -107,30 +121,31 @@ void Inspector::clear()
 
 	QTableWidgetItem* emptyItem;
 	emptyItem = new QTableWidgetItem(i18n("Nothing to show here"));
-	emptyItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	// emptyItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	variableTable->setItem(0, 0, emptyItem);
 	variableTable->resizeColumnsToContents();
 
 	emptyItem = new QTableWidgetItem(i18n("Nothing to show here"));
-	emptyItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	// emptyItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	functionTable->setItem(0, 0, emptyItem);
 	functionTable->resizeColumnsToContents();
 
-	//Treeview gets cleared in updateTree()
+	// Treeview gets cleared in updateTree()
+	disable();
 }
 
 
 void Inspector::updateVariable(const QString& name, const Value& value)
 {
-	//Check if the variable has already been added to the table
+	// Check if the variable has already been added to the table
 	int row = findVariable(name);
 	if (row == -1) {
-		//We are dealing with a new variable
-		if(variableTableEmpty) //Check whether we have to add a new row
+		// We are dealing with a new variable
+		if (variableTableEmpty) {  // Check whether we have to add a new row
 			variableTableEmpty = false;
-		else
+		} else {
 			variableTable->insertRow(0);
-		
+		}
 		row = 0;
 	}
 
@@ -169,54 +184,61 @@ void Inspector::updateVariable(const QString& name, const Value& value)
 	}
 	typeItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	variableTable->setItem(row, 2, typeItem);
+	variableTable->resizeColumnsToContents();
+	variableTable->setEnabled(true);
 }
 
 void Inspector::updateFunction(const QString& name, const QStringList& parameters)
 {
-	//When there is already a first line
-	// (the 'Nothing to show' line), don't add another
-	if(functionTableEmpty)
+	// When there is already a the 'Nothing to show' line re-use that one and don't add another
+	if (functionTableEmpty) {
 		functionTableEmpty = false;
-	else
+	} else {
 		functionTable->insertRow(0);
+	}
 
 	QTableWidgetItem* nameItem = new QTableWidgetItem(name);
 	nameItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	functionTable->setItem(0, 0, nameItem);
 	
 	QTableWidgetItem* paramItem;
-	if(parameters.empty())
-	{
+	if (parameters.empty()) {
 		paramItem = new QTableWidgetItem(i18n("None"));
 		QFont font = paramItem->font();
 		font.setItalic(true);
 		paramItem->setFont(font);
-	}else{
-		QString paramList = parameters.join(
-			Translator::instance()->default2localized(QString(",")));
+	} else {
+		QString paramList = parameters.join(Translator::instance()->default2localized(QString(",")));
 		paramItem = new QTableWidgetItem(paramList);
 	}
 	
 	paramItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	functionTable->setItem(0, 1, paramItem);
+	functionTable->resizeColumnsToContents();
+	functionTable->setEnabled(true);
 }
 
 void Inspector::updateTree(TreeNode* rootNode)
 {
 	treeView->clear();
-	treeView->addTopLevelItem(walkTree(rootNode));
+	QTreeWidgetItem* rootItem = walkTree(rootNode);
+	foreach (QTreeWidgetItem* item, rootItem->takeChildren()) {
+		treeView->addTopLevelItem(item);
+	}
+	delete rootItem;
+	treeView->expandAll();
+	treeView->setEnabled(true);
 }
 
 QTreeWidgetItem* Inspector::walkTree(TreeNode* node)
 {
 	QTreeWidgetItem* result = new QTreeWidgetItem();
 	result->setText(0, node->token()->look());
-	if(node->hasChildren()) {
-		for(uint i = 0; i < node->childCount(); i++) {
+	if (node->hasChildren()) {
+		for (uint i = 0; i < node->childCount(); i++) {
 			result->addChild(walkTree(node->child(i)));
 		}
 	}
-
 	return result;
 }
 
@@ -226,12 +248,11 @@ void Inspector::highlightSymbol(const QString& name)
 
 int Inspector::findVariable(const QString& name)
 {
-	//This function will search for a specified variable
-	// and return the row number of this variable.
+	// This function will search for a specified variable and return the row number of this variable.
 	QList<QTableWidgetItem*> matches = variableTable->findItems(name, Qt::MatchExactly);
 	QList<QTableWidgetItem*>::iterator i;
 	for (i = matches.begin(); i != matches.end(); ++i) {
-		if((*i)->column()==0) //Only check the first column
+		if ((*i)->column() == 0) // only check the first column
 			return (*i)->row();
 	}
 	return -1;
