@@ -17,8 +17,8 @@
 	Boston, MA 02110-1301, USA.
 */
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef _MAINWINDOW_H_
+#define _MAINWINDOW_H_
 
 #include <QActionGroup>
 #include <QStackedWidget>
@@ -96,7 +96,7 @@ class MainWindow : public KXmlGuiWindow
 		void pause();
 		void abort();
 		void iterate();
-		void execute(const QString&);
+		QString execute(const QString&);
 
 		void contextHelp();
 		//void whatsThis();
@@ -163,7 +163,7 @@ class MainWindow : public KXmlGuiWindow
 		QStackedWidget  *stackedWidget;
 		LocalDockWidget *editorDock;
 		LocalDockWidget *inspectorDock;
-		LocalDockWidget *consoleDock;
+// 		LocalDockWidget *consoleDock;
 		QTimer          *iterationTimer;
 		int              runSpeed;
 
@@ -203,4 +203,4 @@ class MainWindow : public KXmlGuiWindow
 		QLabel *statusBarFileNameLabel;
 };
 
-#endif // MAINWINDOW_H
+#endif  // _MAINWINDOW_H_

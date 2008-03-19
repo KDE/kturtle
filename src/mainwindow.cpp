@@ -23,6 +23,7 @@
 #include <QTimer>
 #include <QtGui/QPrinter>
 #include <QtGui/QPrintDialog>
+#include <QWidgetAction>
 
 #include <kdebug.h>
 
@@ -39,6 +40,8 @@
 #include <kstatusbar.h>
 #include <KStandardShortcut>
 #include <kstandardaction.h>
+#include <ktoolbar.h>
+#include <ktoolbarlabelaction.h>
 #include <ktoolbarpopupaction.h>
 
 #include "interpreter/errormsg.h"
@@ -75,6 +78,7 @@ MainWindow::MainWindow()
 	abort();  // sets the run-states for the actions right
 
 	setupGUI();
+
 	// after all is set up:
 	setAutoSaveSettings();
 	readConfig();
@@ -302,14 +306,14 @@ void MainWindow::setupActions()
 	a->setChecked(false);
 	connect(a, SIGNAL(toggled(bool)), this, SLOT(showErrorDialog(bool)));
         
-	a = new KAction(i18n("Show &Console"), this);
-	actionCollection()->addAction("show_console", a);
-	a->setStatusTip(i18n("Show or hide the interative Console tab"));
-	a->setWhatsThis(i18n("Show Console: Show or hide the interactive Console tab"));
-	a->setCheckable(true);
-	a->setChecked(false);
-	connect(a, SIGNAL(toggled(bool)), consoleDock, SLOT(setVisible(bool)));
-	connect(consoleDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
+// 	a = new KAction(i18n("Show &Console"), this);
+// 	actionCollection()->addAction("show_console", a);
+// 	a->setStatusTip(i18n("Show or hide the interative Console tab"));
+// 	a->setWhatsThis(i18n("Show Console: Show or hide the interactive Console tab"));
+// 	a->setCheckable(true);
+// 	a->setChecked(false);
+// 	connect(a, SIGNAL(toggled(bool)), consoleDock, SLOT(setVisible(bool)));
+// 	connect(consoleDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
 
 	a = new KAction(i18n("Show &Line Numbers"), this);
 	actionCollection()->addAction("line_numbers", a);
@@ -335,6 +339,14 @@ void MainWindow::setupActions()
 // 	new KAction(i18n("Cl&ean Indentation"), 0, 0, this, SLOT(slotCleanIndent()), ac, "edit_cleanIndent");
 // 	new KAction(i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
 // 	new KAction(i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
+
+//	QWidgetAction* a = new QWidgetAction(console, i18n("Console"), Qt::Key_F4, this, SLOT(slotFocus()), ac, "console");
+
+	console = new Console(this);
+	console->setText(i18n("Console"));
+	console->setShortcut(QKeySequence(Qt::Key_F4));
+	actionCollection()->addAction("console", console);
+	connect(console, SIGNAL(execute(const QString&)), this, SLOT(execute(const QString&)));
 
 
 	// Help menu actions
@@ -500,18 +512,18 @@ void MainWindow::setupDockWindows()
 	inspector->setWhatsThis(i18n("Inspector: See information about variables and functions when the program runs"));
 	
 	// Creating the console window
-	consoleDock = new LocalDockWidget(i18n("&Console"), this);
-	consoleDock->setObjectName("console");
-	QWidget* consoleWrapWidget = new QWidget(consoleDock);
-	QHBoxLayout* consoleDockLayout = new QHBoxLayout(consoleWrapWidget);
-	consoleDockLayout->setMargin(MARGIN_SIZE);
-	consoleWrapWidget->setLayout(consoleDockLayout);
-	console = new Console(consoleWrapWidget);
-	consoleDockLayout->addWidget(console);
-	consoleDock->setWidget(consoleWrapWidget);
-	addDockWidget(Qt::RightDockWidgetArea, consoleDock);
-	console->setWhatsThis(i18n("Console: Lets you check what a line does."));
-	connect(console, SIGNAL(execute(const QString&)), this, SLOT(execute(const QString&)));
+// 	consoleDock = new LocalDockWidget(i18n("&Console"), this);
+// 	consoleDock->setObjectName("console");
+// 	QWidget* consoleWrapWidget = new QWidget(consoleDock);
+// 	QHBoxLayout* consoleDockLayout = new QHBoxLayout(consoleWrapWidget);
+// 	consoleDockLayout->setMargin(MARGIN_SIZE);
+// 	consoleWrapWidget->setLayout(consoleDockLayout);
+// 	console = new Console(consoleWrapWidget);
+// 	consoleDockLayout->addWidget(console);
+// 	consoleDock->setWidget(consoleWrapWidget);
+// 	addDockWidget(Qt::RightDockWidgetArea, consoleDock);
+// 	console->setWhatsThis(i18n("Console: Lets you check what a line does."));
+// 	connect(console, SIGNAL(execute(const QString&)), this, SLOT(execute(const QString&)));
 }
 
 void MainWindow::setupEditor()
@@ -735,22 +747,63 @@ void MainWindow::run()
 		interpreter->initialize(editor->content());
 	}
 	editor->disable();
+	console->disable();
 	// start parsing (always in full speed)
 	iterationTimer->setSingleShot(false);
 	iterationTimer->start(0);
 }
 
-void MainWindow::execute(const QString &operation)
+QString MainWindow::execute(const QString &operation)
 {
+	disconnect(interpreter, SIGNAL(parsing()), inspector, SLOT(enable()));
+	disconnect(interpreter, SIGNAL(finished()), this, SLOT(abort()));
+	disconnect(interpreter, SIGNAL(treeUpdated(TreeNode*)), inspector, SLOT(updateTree(TreeNode*)));
+	Executer* executer = interpreter->getExecuter();
+	disconnect(executer, SIGNAL(currentlyExecuting(int, int, int, int)),
+		editor, SLOT(markCurrentWord(int, int, int, int)));
+	disconnect(executer, SIGNAL(variableTableUpdated(const QString&, const Value&)),
+		inspector, SLOT(updateVariable(const QString&, const Value&)));
+	disconnect(executer, SIGNAL(functionTableUpdated(const QString&, const QStringList&)),
+		inspector, SLOT(updateFunction(const QString&, const QStringList&)));
+
 	if (interpreter->state() == Interpreter::Uninitialized ||
 	    interpreter->state() == Interpreter::Finished ||
 	    interpreter->state() == Interpreter::Aborted) {
 		interpreter->initialize(operation);
-		editor->removeMarkings();
 	}
-	// start parsing (always in full speed)
-	iterationTimer->setSingleShot(false);
-	iterationTimer->start(0);
+
+	runAct->setEnabled(false);
+	pauseAct->setEnabled(false);
+	abortAct->setEnabled(false);
+
+	while (!(interpreter->state() == Interpreter::Finished ||
+	         interpreter->state() == Interpreter::Aborted)) {
+		interpreter->interpret();
+	}
+
+	runAct->setEnabled(true);
+	pauseAct->setEnabled(false);
+	abortAct->setEnabled(false);
+
+	QString errorMessage = QString();
+
+	if (interpreter->encounteredErrors()) {
+		ErrorList* errorList = interpreter->getErrorList();
+		kDebug() << errorList->first().text();
+		errorMessage = errorList->first().text();
+	}
+
+	connect(interpreter, SIGNAL(parsing()), inspector, SLOT(enable()));
+	connect(interpreter, SIGNAL(finished()), this, SLOT(abort()));
+	connect(interpreter, SIGNAL(treeUpdated(TreeNode*)), inspector, SLOT(updateTree(TreeNode*)));
+	connect(executer, SIGNAL(currentlyExecuting(int, int, int, int)),
+		editor, SLOT(markCurrentWord(int, int, int, int)));
+	connect(executer, SIGNAL(variableTableUpdated(const QString&, const Value&)),
+		inspector, SLOT(updateVariable(const QString&, const Value&)));
+	connect(executer, SIGNAL(functionTableUpdated(const QString&, const QStringList&)),
+		inspector, SLOT(updateFunction(const QString&, const QStringList&)));
+
+	return errorMessage;
 }
 
 void MainWindow::iterate()
@@ -807,6 +860,7 @@ void MainWindow::abort()
 	abortAct->setEnabled(false);
 
 	editor->enable();
+	console->enable();
 
 	if (interpreter->encounteredErrors()) {
 		errorDialog->setErrorList(interpreter->getErrorList());

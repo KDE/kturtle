@@ -1,9 +1,10 @@
 /*
-	Copyright (C) 2007 Aleix Pol Gonzalez <aleixpol@gmail.com>
+	Copyright (C) 2003-2008 Cies Breijs <cies AT kde DOT nl>
 
-	This program is free software; you can redistribute it and/or
-	modify it under the terms of version 2 of the GNU General Public
-	License as published by the Free Software Foundation.
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public
+    License as published by the Free Software Foundation; either
+    version 2 of the License, or (at your option) any later version.
 
 	This program is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -16,28 +17,37 @@
 	Boston, MA 02110-1301, USA.
 */
 
-#ifndef CONSOLE_H
-#define CONSOLE_H
+#ifndef _CONSOLE_H_
+#define _CONSOLE_H_
 
-#include <QWidget>
-#include <QListWidget>
-#include <QComboBox>
+#include <QWidgetAction>
 
-class Interpreter;
+#include <kcombobox.h>
 
-class Console : public QWidget
+
+
+class Console : public QWidgetAction
 {
 	Q_OBJECT
+
 	public:
 		Console(QWidget *parent);
+
+		void disable();
+		void enable();
+
+		void showError(const QString&);
+
 	public slots:
-		void addOperation();
-		
+		void run();
+		void clearMarkings();
+
 	signals:
-		void execute(const QString &);
+		QString execute(const QString&);
+
 	private:
-		QComboBox *m_input;
-		QListWidget *m_log;
+		KComboBox *comboBox;
+		QWidget   *baseWidget;
 };
 
-#endif
+#endif  // _CONSOLE_H_

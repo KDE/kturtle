@@ -1,9 +1,10 @@
 /*
-	Copyright (C) 2007 Aleix Pol Gonzalez <aleixpol@gmail.com>
+	Copyright (C) 2003-2008 Cies Breijs <cies AT kde DOT nl>
 
-	This program is free software; you can redistribute it and/or
-	modify it under the terms of version 2 of the GNU General Public
-	License as published by the Free Software Foundation.
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public
+    License as published by the Free Software Foundation; either
+    version 2 of the License, or (at your option) any later version.
 
 	This program is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -16,32 +17,79 @@
 	Boston, MA 02110-1301, USA.
 */
 
-#include "console.h"
-#include <QLayout>
-#include <QLineEdit>
-#include <QDebug>
 
-Console::Console(QWidget * parent)
-	: QWidget(parent)
+#include "console.h"
+#include "editor.h"  // for the error highlight color
+
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QToolTip>
+#include <QWidget>
+
+#include <kdebug.h>
+
+#include <klocale.h>
+
+
+
+Console::Console(QWidget* parent)
+	: QWidgetAction(parent)
 {
-	QVBoxLayout *consoleLayout = new QVBoxLayout(this);
-	m_log = new QListWidget(this);
-	m_input = new QComboBox(this);
-	m_input->setEditable(true);
-	
-	consoleLayout->addWidget(m_log);
-	consoleLayout->addWidget(m_input);
-	
-	connect(m_input->lineEdit(), SIGNAL(returnPressed()), this, SLOT(addOperation()));
+	baseWidget = new QWidget(parent);
+	QHBoxLayout* baseLayout = new QHBoxLayout();
+	baseWidget->setLayout(baseLayout);
+
+	comboBox = new KComboBox(true, baseWidget);
+	comboBox->setMinimumWidth(200);
+	comboBox->setDuplicatesEnabled(true);
+	comboBox->setFont(KGlobalSettings::fixedFont());
+	comboBox->setToolTip(i18n("Write a command here and press enter..."));
+	comboBox->setWhatsThis(i18n("Console: quickly run single commands -- write a command here and press enter."));
+
+	QLabel* consoleLabel = new QLabel(i18n("Console:"), baseWidget);
+	consoleLabel->setBuddy(comboBox);
+	consoleLabel->setWhatsThis(comboBox->whatsThis());
+
+	baseLayout->addWidget(consoleLabel);
+	baseLayout->addWidget(comboBox);
+	setDefaultWidget(baseWidget);
+
+	connect(comboBox, SIGNAL(returnPressed()), this, SLOT(run()));
+	connect(comboBox, SIGNAL(editTextChanged(const QString&)), this, SLOT(clearMarkings()));
 }
 
-void Console::addOperation()
+void Console::disable()
 {
-	qDebug() << "adding " << m_input->lineEdit()->text();
-	m_log->addItem(m_input->lineEdit()->text());
-	m_input->lineEdit()->selectAll();
-	
-	emit execute(m_input->lineEdit()->text());
+	comboBox->setEnabled(false);
+}
+
+void Console::enable()
+{
+	comboBox->setEnabled(true);
+}
+
+void Console::clearMarkings()
+{
+	comboBox->setToolTip(i18n("Write a command here and press enter..."));
+	comboBox->setStyleSheet("");
+	comboBox->setFont(KGlobalSettings::fixedFont());
+}
+
+
+void Console::run()
+{
+	QString errorMessage = emit execute(comboBox->currentText());
+	if (errorMessage.isNull()) return;
+	showError(errorMessage);
+}
+
+void Console::showError(const QString& msg)
+{
+	comboBox->setStyleSheet("QComboBox:editable{background:"+ERROR_HIGHLIGHT_COLOR.name()+";}");
+	comboBox->setFont(KGlobalSettings::fixedFont());
+	QString toolTipText("<p style='white-space:pre'><b>ERROR:</b> " + msg + "</p>");
+	comboBox->setToolTip(toolTipText);
+// 	QToolTip::showText(baseWidget->mapToGlobal(baseWidget->pos()) /*+ QPoint(comboBox->width()/2, comboBox->height())*/, toolTipText, comboBox, QRect(comboBox->rect()));
 }
 
 #include "console.moc"
