@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003-2006 Cies Breijs <cies AT kde DOT nl>
+	Copyright (C) 2003-2008 Cies Breijs <cies AT kde DOT nl>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public
@@ -83,7 +83,7 @@ void ErrorDialog::clear()
 
 	// put a friendly 'nothing to see here' notice in the empty table
 	errorTable->setRowCount(1);
-	QTableWidgetItem* emptyItem = new QTableWidgetItem(i18n("no errors"));
+	QTableWidgetItem* emptyItem = new QTableWidgetItem(i18n("No errors occured yet."));
 	QFont emptyFont(KGlobalSettings::generalFont());
 	emptyFont.setItalic(true);
 	emptyItem->setFont(emptyFont);
@@ -138,7 +138,7 @@ void ErrorDialog::selectedErrorChangedProxy()
 	Q_ASSERT (errorList != 0);
 	const Token* t = &errorList->at(errorTable->selectedItems().first()->row()).token();
 	emit currentlySelectedError(t->startRow(), t->startCol(), t->endRow(), t->endCol());
-	kDebug() << "EMITTED: " << t->startRow() << ", " << t->startCol() << ", " << t->endRow() << ", " << t->endCol();
+	// kDebug() << "EMITTED: " << t->startRow() << ", " << t->startCol() << ", " << t->endRow() << ", " << t->endCol();
 }
 
 

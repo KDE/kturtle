@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003-2007 Cies Breijs <cies AT kde DOT nl>
+	Copyright (C) 2003-2008 Cies Breijs <cies AT kde DOT nl>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public
@@ -19,17 +19,13 @@
 
 #include "inspector.h"
 
-#include <QHeaderView>
-
-#include <kdebug.h>
-
-#include <klocale.h>
-
 #include "interpreter/translator.h"  // for getting the translated ArgumentSeparator
 
+#include <QHeaderView>
+#include <QTextCharFormat>
 
-// // static const int CURSOR_WIDTH = 2;  // in pixels
-// // static const int TAB_WIDTH    = 2;  // in character widths
+#include <kdebug.h>
+#include <klocale.h>
 
 
 Inspector::Inspector(QWidget *parent)
@@ -63,37 +59,35 @@ Inspector::Inspector(QWidget *parent)
 
 	mainLayout->addWidget(tabWidget);
 
+	// our syntax highlighter (this does not do any markings)
+	highlighter = new Highlighter();
+
 	disable();
 
 	clear();
 }
 
-
 Inspector::~Inspector()
 {
+	delete highlighter;
 }
 
-void Inspector::enable()
-{
-// 	variableTable->setEnabled(true);
-// 	functionTable->setEnabled(true);
-// 	treeView->setEnabled(true);
-}
 
 void Inspector::disable()
 {
 	variableTable->setEnabled(false);
 	functionTable->setEnabled(false);
 	treeView->setEnabled(false);
+	// enabling happend when the inspector gets filled with data
 }
 
 void Inspector::clear()
 {
-	variableTableEmpty = true;
-	functionTableEmpty = true;
+	// Question: is the code duplication below enough
+	// for a subclass-of-QTableWidget based approach?
 
+	variableTableEmpty = true;
 	variableTable->clear();
-	
 	QStringList headers;
 	headers << i18n("name") << i18n("value") << i18n("type");
 	variableTable->setColumnCount(3);
@@ -103,9 +97,14 @@ void Inspector::clear()
 	variableTable->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
 	variableTable->verticalHeader()->setVisible(false);
 	variableTable->setShowGrid(false);
+	variableTable->setRowCount(1);
+	QTableWidgetItem* emptyItem;
+	emptyItem = new QTableWidgetItem(i18n("Nothing to show here"));
+	variableTable->setItem(0, 0, emptyItem);
+	variableTable->resizeColumnsToContents();
 
+	functionTableEmpty = true;
 	functionTable->clear();
-
 	headers.clear();
 	headers << i18n("name") << i18n("parameters");
 	functionTable->setColumnCount(2);
@@ -115,18 +114,8 @@ void Inspector::clear()
 	functionTable->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
 	functionTable->verticalHeader()->setVisible(false);
 	functionTable->setShowGrid(false);
-
-	variableTable->setRowCount(1);
 	functionTable->setRowCount(1);
-
-	QTableWidgetItem* emptyItem;
 	emptyItem = new QTableWidgetItem(i18n("Nothing to show here"));
-	// emptyItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
-	variableTable->setItem(0, 0, emptyItem);
-	variableTable->resizeColumnsToContents();
-
-	emptyItem = new QTableWidgetItem(i18n("Nothing to show here"));
-	// emptyItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	functionTable->setItem(0, 0, emptyItem);
 	functionTable->resizeColumnsToContents();
 
@@ -152,11 +141,18 @@ void Inspector::updateVariable(const QString& name, const Value& value)
 	QTableWidgetItem* nameItem;
 	nameItem = new QTableWidgetItem(name);
 	nameItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	QTextCharFormat* format = highlighter->formatForStatement(name);
+	nameItem->setFont(format->font());
+	nameItem->setForeground(format->foreground());
 	variableTable->setItem(row, 0, nameItem);
 
 	QTableWidgetItem* valueItem;
 	valueItem = new QTableWidgetItem(value.string());
 	valueItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+// TODO varialble coloring when tokens are available in the inspector!
+// 	format = highlighter->formatForStatement(value.string());
+// 	valueItem->setFont(format->font());
+// 	valueItem->setForeground(format->foreground());
 	variableTable->setItem(row, 1, valueItem);
 
 	QTableWidgetItem* typeItem;
@@ -240,10 +236,6 @@ QTreeWidgetItem* Inspector::walkTree(TreeNode* node)
 		}
 	}
 	return result;
-}
-
-void Inspector::highlightSymbol(const QString& name)
-{
 }
 
 int Inspector::findVariable(const QString& name)

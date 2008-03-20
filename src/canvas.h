@@ -23,7 +23,6 @@
 
 #include <QGraphicsView>
 
-// #include "turtle.h"
 #include "sprite.h"
 
 
@@ -36,8 +35,6 @@ class Canvas : public QGraphicsView
 		~Canvas();
 
 		double turtleAngle() { return turtle->angle(); }
-		
-// 		QPixmap* canvas2Pixmap();
 
 	public slots:
 		void slotClear();
@@ -65,14 +62,8 @@ class Canvas : public QGraphicsView
 		void getX(double& value);
 		void getY(double& value);
 
-
-// 	signals:
-// 		void resized();
-
-
 	protected:
 		void resizeEvent(QResizeEvent* event);
-
 
 	private:
 		void initValues();
@@ -86,7 +77,7 @@ class Canvas : public QGraphicsView
 		Sprite                    *turtle;
 		QList<QGraphicsLineItem*>  lines;
 		QGraphicsLineItem         *line;
-		QGraphicsRectItem	  *canvasFrame;
+		QGraphicsRectItem         *canvasFrame;
 		bool                       penWidthIsZero;
 		QFont                      *textFont;
 		QColor                     textColor;

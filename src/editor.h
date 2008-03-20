@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003-2006 Cies Breijs <cies AT kde DOT nl>
+	Copyright (C) 2003-2008 Cies Breijs <cies AT kde DOT nl>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public
@@ -42,12 +42,13 @@ class QPaintEvent;
 static const QColor LINE_HIGHLIGHT_COLOR(239, 247, 255);
 static const QColor WORD_HIGHLIGHT_COLOR(255, 255, 156);
 static const QColor ERROR_HIGHLIGHT_COLOR(255, 200, 200);
-static const int EXTRA_SATURATION = 30;  // used for drawing the highlighted background
-static const int EDITOR_MARGIN = 2;  // some margin that can't be set to zero, yet painters should know it
+
+static const int EXTRA_SATURATION = 30;   // used for drawing the highlighted background
+static const int EDITOR_MARGIN = 2;       // some margin that can't be set to zero, yet painters should know it
 static const int CURSOR_RECT_MARGIN = 5;  // another margin that cannot be traced
 static const int LINENUMBER_SPACING = 2;  // sets the margin for the line numbers
 
-const QString kturtle_magic_1_0 = "kturtle-script-v1.0";
+const QString KTURTLE_MAGIC_1_0 = "kturtle-script-v1.0";
 
 
 //BEGIN LineNumbers class
@@ -95,6 +96,8 @@ class LineNumbers : public QWidget
 };
 
 //END class LineNumbers
+
+
 
 //BEGIN QTextEdit sub-class
 
@@ -191,6 +194,7 @@ class TextEdit : public QTextEdit
 
 
 
+
 class Editor : public QFrame
 {
 	Q_OBJECT
@@ -267,7 +271,7 @@ class Editor : public QFrame
 		void setContent(const QString&);
 
 		TextEdit    *editor;  // TODO why pointers?
-		Highlighter *highlighter;
+		Highlighter *highlighter;  // TODO could this class become a singleton? (shared with the inspector, errdlg)
 		LineNumbers *numbers;
 		QHBoxLayout *box;  // TODO is this relly needed?
 		KFindDialog *fdialog;

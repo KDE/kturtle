@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003-2006 Cies Breijs <cies AT kde DOT nl>
+	Copyright (C) 2003-2008 Cies Breijs <cies AT kde DOT nl>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public
@@ -102,8 +102,6 @@ Editor::Editor(QWidget *parent)
 Editor::~Editor()
 {
 	delete highlighter;
-// 	delete editor;  // should go automagically through QObject ownerships
-// 	delete numbers;
 }
 
 void Editor::enable() {
@@ -160,14 +158,16 @@ bool Editor::openFile(const KUrl &_url)
 	KUrl url = _url;
 	if (maybeSave()) {
 		if (url.isEmpty()) {
-			url = KFileDialog::getOpenUrl(KUrl(), QString("*.turtle|%1\n*|%2").arg(i18n("Turtle code files")).arg(i18n("All files")), this, i18n("Open"));
+			url = KFileDialog::getOpenUrl(KUrl(), 
+				QString("*.turtle|%1\n*|%2").arg(i18n("Turtle code files")).arg(i18n("All files")),
+				this, i18n("Open"));
 		}
 		if (!url.isEmpty()) {
 // 			if (!KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this)) {
 // 				KMessageBox::error(this, i18n("The given file could not be read, check if it exists and if it is readable for the current user."));
 // 				return false;
 // 			}
-			QString fileString;  // tmp file or local file
+			QString fileString;  // could be a tmp file or local file
 			if (KIO::NetAccess::download(url, fileString, this)) {
 				QFile file(fileString);
 				if (!file.open(QFile::ReadOnly | QFile::Text)) {
@@ -175,12 +175,11 @@ bool Editor::openFile(const KUrl &_url)
 					return false;
 				}
 				QTextStream in(&file);
-				//Check for our magic identifier
+				// check for our magic identifier
 				QString s;
 				s = in.readLine();
-				if (s != kturtle_magic_1_0) {
-					//TODO give better description after string freeze
-					KMessageBox::error(this, i18n("Cannot read %1", fileString));
+				if (s != KTURTLE_MAGIC_1_0) {
+					KMessageBox::error(this, i18n("The file you try to open is not a valid KTurtle script, or incompatible with this version of KTurtle.\nCannot open %1", fileString));
 					return false;
 				}
 				QString localizedScript;
@@ -189,7 +188,6 @@ bool Editor::openFile(const KUrl &_url)
 				KIO::NetAccess::removeTempFile(fileString);
 				setCurrentUrl(url);
 				editor->document()->setModified(false);
-// 				statusbar
 				emit fileOpened(url);
 				return true;
 			} else {
@@ -241,7 +239,7 @@ bool Editor::saveFile(const KUrl &targetUrl)
 						unstranslated.append(t->look());
 				}
 			}
-			outputStream << kturtle_magic_1_0 << '\n';
+			outputStream << KTURTLE_MAGIC_1_0 << '\n';
 			outputStream << unstranslated;
 			outputStream.flush();
 			savefile->finalize();  // check for error here?

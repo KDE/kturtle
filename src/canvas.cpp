@@ -25,20 +25,20 @@
 
 #include <kdebug.h>
 #include <klocale.h>
-// #include <kmessagebox.h>
-
-// #include "settings.h"
 
 
 // this function is used in executer and canvas:
 #define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )
+
 #ifndef M_PI 
 #define M_PI 3.14159265358979323846264338327950288419717;
 #endif
+
 const double DegToRad = M_PI / 180.0;
 int kTurtleZValue = 1;
 int kCanvasFrameZValue = -10000;
 int kCanvasMargin = 20;
+
 
 Canvas::Canvas(QWidget *parent) : QGraphicsView(parent)
 {
@@ -90,13 +90,10 @@ Canvas::~Canvas()
 
 void Canvas::initValues()
 {
-// 	QSettings settings("KDE", "KTurtle");
-// 	int width  = qMin(qMax(settings.value("canvasWidth",  400).toInt(), 20), 10000);
-// 	int height = qMin(qMax(settings.value("canvasHeight", 300).toInt(), 20), 10000);
-	scene->setSceneRect(QRectF(0,0,400,400));
+	scene->setSceneRect(QRectF(0, 0, 400, 400));
 	canvasFrame->setBrush(QBrush());
 	canvasFrame->setRect(scene->sceneRect());
-	fitInView(scene->sceneRect().adjusted(kCanvasMargin*-1,kCanvasMargin*-1,kCanvasMargin,kCanvasMargin), Qt::KeepAspectRatio);
+	fitInView(scene->sceneRect().adjusted(kCanvasMargin * -1, kCanvasMargin * -1, kCanvasMargin, kCanvasMargin), Qt::KeepAspectRatio);
 	turtle->setPos(200, 200);
 	turtle->setAngle(0);
 	scene->setBackgroundBrush(QBrush(Qt::white));
@@ -106,16 +103,14 @@ void Canvas::initValues()
 	textColor.setRgb(0, 0, 0) ;
 	delete textFont;
 	textFont = new QFont();
-	//Reset our pen to the default position
+	// Reset our pen to the default position
 	slotPenDown();
-	//Show turtle, might have been hidden in the last run
+	// Show turtle, might have been hidden in the last run
 	slotSpriteShow();
 }
 
 void Canvas::resizeEvent(QResizeEvent* event)
 {
-	//kDebug() << ">>>>>>" << event->size();
-	//scene->setSceneRect(scene->itemsBoundingRect());
 	fitInView(scene->sceneRect().adjusted(kCanvasMargin*-1,kCanvasMargin*-1,kCanvasMargin,kCanvasMargin), Qt::KeepAspectRatio);
 	event->accept();
 }
@@ -141,7 +136,8 @@ void Canvas::slotClear()
 	QList<QGraphicsItem*> list = scene->items();
 	foreach (QGraphicsItem* item, list) {
 		// delete all but the turtle (who lives on a separate layer with z-value 1)
-		if ((item->zValue() != kTurtleZValue)&&(item->zValue() !=kCanvasFrameZValue)) delete item;
+		if ((item->zValue() != kTurtleZValue) && (item->zValue() != kCanvasFrameZValue))
+			delete item;
 	}
 }
 
@@ -174,8 +170,10 @@ void Canvas::slotPenWidth(double width)
 		return;
 	} else {
 		penWidthIsZero = false;
-		if (w == 1) pen->setWidth(0);
-		else        pen->setWidthF(width);
+		if (w == 1)
+			pen->setWidth(0);
+		else
+			pen->setWidthF(width);
 	}
 }
 

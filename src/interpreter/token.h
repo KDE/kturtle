@@ -270,12 +270,11 @@ class Token
 		
 //		static QString key(int type);    maybe needed in the future when the tokenizer is used for context help
 
-
-
-	private:
 		/// returns the category a type belongs to (generated)
 		static int typeToCategory(int);
 
+
+	private:
 		/// The tokens type.
 		int            _type;
 

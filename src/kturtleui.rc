@@ -56,7 +56,8 @@
     <Action name="line_numbers" />
   </Menu>
   <Menu name="tools"><text>&amp;Tools</text>
-    <Action name="direction" />
+    <Action name="direction_chooser" />
+    <Action name="color_picker" />
   </Menu>
   <Menu name="settings"><text>&amp;Settings</text>
     <Menu name="language"><text>&amp;Script Language</text>
@@ -76,6 +77,7 @@
   <Action name="pause" />
   <Action name="abort" />
   <Separator />
+  <Action name="console" />
 </ToolBar>
 
 </gui>

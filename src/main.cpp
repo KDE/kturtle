@@ -40,22 +40,16 @@ static const char description[] =
 	I18N_NOOP("KTurtle is an educational programming environment that aims to make programming as easy as possible, especially for young children. KTurtle intends to help teaching kids the basics of math, geometry, and programming.");
 
 static const char version[]   = "0.8 beta";
-static const char copyright[] = "(c) 2003-2006 Cies Breijs";
+static const char copyright[] = "(c) 2003-2008 Cies Breijs";
 static const char website[]   = "http://edu.kde.org/kturtle";
 
 
 int main(int argc, char* argv[])
 {
 	KAboutData aboutData("kturtle", 0, ki18n("KTurtle"), version, ki18n(description), KAboutData::License_GPL, ki18n(copyright), KLocalizedString(), website);
-	aboutData.addAuthor(ki18n("Cies Breijs"),
-	          ki18n("Initiator and core developer"),
-	                    "cies@kde.nl");
-	aboutData.addAuthor(ki18n("Niels Slot"),
-	          ki18n("Core developer"),
-	                    "nielsslot@gmail.com");
-	aboutData.addAuthor(ki18n("Mauricio Piacentini"),
-			    ki18n("Core developer"),
-				  "piacentini@kde.org");
+	aboutData.addAuthor(ki18n("Cies Breijs"), ki18n("Initiator and core developer"), "cies@kde.nl");
+	aboutData.addAuthor(ki18n("Niels Slot"), ki18n("Core developer"), "nielsslot@gmail.com");
+	aboutData.addAuthor(ki18n("Mauricio Piacentini"), ki18n("Core developer"), "piacentini@kde.org");
 
 	KCmdLineArgs::init(argc, argv, &aboutData);
 

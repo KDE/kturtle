@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003-2006 Cies Breijs <cies AT kde DOT nl>
+	Copyright (C) 2003-2008 Cies Breijs <cies AT kde DOT nl>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public
@@ -66,11 +66,11 @@ MainWindow::MainWindow()
 
 	connect(editor, SIGNAL(contentChanged()), inspector, SLOT(disable()));
 	connect(editor, SIGNAL(contentChanged()), errorDialog, SLOT(disable()));
-	connect(interpreter, SIGNAL(parsing()), inspector, SLOT(enable()));
 
 	connect(errorDialog, SIGNAL(currentlySelectedError(int, int, int, int)),
 		editor, SLOT(markCurrentError(int, int, int, int)));
 
+	colorPicker = 0;
 
 	statusBar()->showMessage(i18nc("@info:status the application is ready for commands", "Ready"));
 	setCaption();  // also sets the window caption to 'untitled'
@@ -122,7 +122,14 @@ void MainWindow::showDirectionDialog()
 	directionDialog = new DirectionDialog(canvas->turtleAngle(), this);
 	connect(directionDialog, SIGNAL(pasteText(const QString&)), editor, SLOT(insertPlainText(const QString&)));
 }
-
+void MainWindow::showColorPicker()
+{
+	if (colorPicker == 0) {
+		colorPicker = new ColorPicker(this);
+		connect(colorPicker, SIGNAL(pasteText(const QString&)), editor, SLOT(insertPlainText(const QString&)));
+	}
+	colorPicker->show();
+}
 
 
 void MainWindow::contextHelp()
@@ -327,13 +334,18 @@ void MainWindow::setupActions()
 
 	// Tools menu actions
 	a = new KAction(i18n("&Direction Chooser..."), this);
-	actionCollection()->addAction("direction", a);
+	actionCollection()->addAction("direction_chooser", a);
 	a->setStatusTip(i18n("Shows the direction chooser dialog"));
 	a->setWhatsThis(i18n("Direction Chooser: Show the direction chooser dialog"));
 	connect(a, SIGNAL(triggered()), this, SLOT(showDirectionDialog()));
 
-//TODO: Bring back the colorpicker?
-    // 	colorpicker  = new KToggleAction(i18n("&Color Picker..."), "colorize"), this);
+	a = new KAction(i18n("&Color Picker..."), this);
+	actionCollection()->addAction("color_picker", a);
+	a->setStatusTip(i18n("Shows the color picker dialog"));
+	a->setWhatsThis(i18n("Color Picker: Show the color picker dialog"));
+	connect(a, SIGNAL(triggered()), this, SLOT(showColorPicker()));
+
+
 // 	new KAction(i18n("&Indent"), "format-indent-more", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
 // 	new KAction(i18n("&Unindent"), "format-indent-less", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
 // 	new KAction(i18n("Cl&ean Indentation"), 0, 0, this, SLOT(slotCleanIndent()), ac, "edit_cleanIndent");
@@ -510,20 +522,6 @@ void MainWindow::setupDockWindows()
 	inspectorDock->setWidget(inspectorWrapWidget);
 	addDockWidget(Qt::LeftDockWidgetArea, inspectorDock);
 	inspector->setWhatsThis(i18n("Inspector: See information about variables and functions when the program runs"));
-	
-	// Creating the console window
-// 	consoleDock = new LocalDockWidget(i18n("&Console"), this);
-// 	consoleDock->setObjectName("console");
-// 	QWidget* consoleWrapWidget = new QWidget(consoleDock);
-// 	QHBoxLayout* consoleDockLayout = new QHBoxLayout(consoleWrapWidget);
-// 	consoleDockLayout->setMargin(MARGIN_SIZE);
-// 	consoleWrapWidget->setLayout(consoleDockLayout);
-// 	console = new Console(consoleWrapWidget);
-// 	consoleDockLayout->addWidget(console);
-// 	consoleDock->setWidget(consoleWrapWidget);
-// 	addDockWidget(Qt::RightDockWidgetArea, consoleDock);
-// 	console->setWhatsThis(i18n("Console: Lets you check what a line does."));
-// 	connect(console, SIGNAL(execute(const QString&)), this, SLOT(execute(const QString&)));
 }
 
 void MainWindow::setupEditor()
@@ -755,7 +753,6 @@ void MainWindow::run()
 
 QString MainWindow::execute(const QString &operation)
 {
-	disconnect(interpreter, SIGNAL(parsing()), inspector, SLOT(enable()));
 	disconnect(interpreter, SIGNAL(finished()), this, SLOT(abort()));
 	disconnect(interpreter, SIGNAL(treeUpdated(TreeNode*)), inspector, SLOT(updateTree(TreeNode*)));
 	Executer* executer = interpreter->getExecuter();
@@ -793,7 +790,6 @@ QString MainWindow::execute(const QString &operation)
 		errorMessage = errorList->first().text();
 	}
 
-	connect(interpreter, SIGNAL(parsing()), inspector, SLOT(enable()));
 	connect(interpreter, SIGNAL(finished()), this, SLOT(abort()));
 	connect(interpreter, SIGNAL(treeUpdated(TreeNode*)), inspector, SLOT(updateTree(TreeNode*)));
 	connect(executer, SIGNAL(currentlyExecuting(int, int, int, int)),

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003-2007 Cies Breijs <cies AT kde DOT nl>
+	Copyright (C) 2003-2008 Cies Breijs <cies AT kde DOT nl>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public
@@ -17,10 +17,8 @@
 	Boston, MA 02110-1301, USA.
 */
 
-
 #ifndef _INSPECTOR_H_
 #define _INSPECTOR_H_
-
 
 #include <QHBoxLayout>
 #include <QTabWidget>
@@ -29,6 +27,7 @@
 #include <QTreeWidgetItem>
 #include <QWidget>
 
+#include "highlighter.h"
 #include "interpreter/value.h"
 #include "interpreter/treenode.h"
 
@@ -41,7 +40,7 @@ class Inspector : public QFrame
 		Inspector(QWidget *parent = 0);
 		~Inspector();
 
-		void clear();  // TODO have some notice in the empty tables and treeview
+		void clear();
 
 
 	public slots:
@@ -49,15 +48,14 @@ class Inspector : public QFrame
 		void updateFunction(const QString& name, const QStringList& parameters);
 		void updateTree(TreeNode* rootNode);
 
-		void highlightSymbol(const QString& name);
-
-		void enable();
 		void disable();
 
 
 	private:
 		int findVariable(const QString& name);
 		QTreeWidgetItem* walkTree(TreeNode* node);
+
+		Highlighter  *highlighter;
 
 		QHBoxLayout  *mainLayout;
 		QTabWidget   *tabWidget;

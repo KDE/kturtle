@@ -89,6 +89,7 @@ void Console::showError(const QString& msg)
 	comboBox->setFont(KGlobalSettings::fixedFont());
 	QString toolTipText("<p style='white-space:pre'><b>ERROR:</b> " + msg + "</p>");
 	comboBox->setToolTip(toolTipText);
+	// TODO make a tooltip show for one second showing the errorr
 // 	QToolTip::showText(baseWidget->mapToGlobal(baseWidget->pos()) /*+ QPoint(comboBox->width()/2, comboBox->height())*/, toolTipText, comboBox, QRect(comboBox->rect()));
 }
 

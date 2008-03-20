@@ -23,12 +23,12 @@
 
 #include <QFile>
 
-
 #include "errormsg.h"
 #include "executer.h"
 #include "parser.h"
 #include "tokenizer.h"
 #include "translator.h"
+
 
 Interpreter::Interpreter(QObject* parent, bool testing)
 	: QObject(parent), m_testing(testing)
@@ -38,19 +38,19 @@ Interpreter::Interpreter(QObject* parent, bool testing)
 	parser     = new Parser(testing);
 	executer   = new Executer(testing);
 
-	_state = Uninitialized;
+	m_state = Uninitialized;
 }
 
 void Interpreter::initialize(const QString& inString)
 {
 	errorList->clear();
 	tokenizer->initialize(inString);
-	_state = Initialized;
+	m_state = Initialized;
 }
 
 void Interpreter::interpret()
 {
-	switch (_state) {
+	switch (m_state) {
 		case Uninitialized:
 			qCritical("Interpreter::interpret(): called without being initialized");
 			return;
@@ -58,7 +58,7 @@ void Interpreter::interpret()
 
 		case Initialized:
 			parser->initialize(tokenizer, errorList);
-			_state = Parsing;
+			m_state = Parsing;
 			qDebug() << "Initialized the parser, parsing the code...";
 			emit parsing();
 			break;
@@ -68,7 +68,7 @@ void Interpreter::interpret()
 			parser->parse();
 
 			if (encounteredErrors()) {
-				_state = Aborted;
+				m_state = Aborted;
 				qDebug() << "Error encountered while parsing:";
 				QStringList lines = errorList->asString().split('\n');
 				foreach (const QString &line, lines) qDebug() << line;
@@ -84,16 +84,8 @@ void Interpreter::interpret()
 				parser->printTree();
 				qDebug() << "";
 
-// 				if (errorList->count() > 0) {
-// 					qDebug() << "Parsing returned " << errorList->count() << " error(s):";
-// 					QStringList lines = errorList->asString().split('\n');
-// 					foreach (const QString &line, lines) qDebug(line.toLatin1());
-// 					qDebug() << "Aborting because parsing was unsuccessful...";
-// 					exit(0);
-// 				}
-
 				executer->initialize(tree, errorList);
-				_state = Executing;
+				m_state = Executing;
 				qDebug() << "Initialized the executer, executing the node tree...";
 				emit executing();
 				return;
@@ -113,7 +105,7 @@ void Interpreter::interpret()
 				} else {
 					qDebug() << "No errors encountered.";
 				}
-				_state = Finished;
+				m_state = Finished;
 				emit finished();
 				return;
 			}

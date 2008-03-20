@@ -46,7 +46,7 @@ class DirectionCanvas : public QWidget
 		void enableGreyTurtle(bool);
 
 	public slots:
-		void changed(double previousDeg, double deg, int cmd);
+		void updateDirections(double previousDeg, double deg);
 	
 	signals:
 		void degreeChanged(double deg);
@@ -58,11 +58,13 @@ class DirectionCanvas : public QWidget
 		void mousePressEvent(QMouseEvent *event);
 
 	private:
-		bool greyTurtleEnabled;
+		double translateMouseCoords(double x, double y);
+
 		double deg;
 		double previousDeg;
 		QSvgRenderer turtle;
 		QSvgRenderer greyTurtle;
+		bool greyTurtleEnabled;
 };
 
 
@@ -92,16 +94,16 @@ class DirectionDialog : public KDialog
 		KPushButton *copyButton;
 		KPushButton *pasteButton;
 
-		KLineEdit* cmdLineEdit;
+		KLineEdit* commandBox;
 
-		int cmd;  // enum DirectionChooser::Command
+		int currentCommand;  // enum DirectionChooser::Command
 
 		Translator* translator;
 
 		bool skipValueChangedEvent;
 
 		void updateCanvas();
-		void updateCmdLineEdit();
+		void updateCommandBox();
 
 	private slots:
 		void directionChanged(int value);

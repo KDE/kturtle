@@ -25,7 +25,6 @@
 #include <kcombobox.h>
 
 
-
 class Console : public QWidgetAction
 {
 	Q_OBJECT

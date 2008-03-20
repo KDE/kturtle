@@ -5,16 +5,16 @@ include_directories (${KDE4_INCLUDES})
 set (
   kturtle_SRCS
     canvas.cpp
+    colorpicker.cpp
     console.cpp
     directiondialog.cpp
     highlighter.cpp
+    inspector.cpp
     editor.cpp
     errordialog.cpp
     main.cpp
     mainwindow.cpp
     sprite.cpp
-    inspector.cpp
-#     turtle.cpp
     interpreter/echoer.cpp
     interpreter/errormsg.cpp
     interpreter/executer.cpp

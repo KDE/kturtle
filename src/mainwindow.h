@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003-2006 Cies Breijs <cies AT kde DOT nl>
+	Copyright (C) 2003-2008 Cies Breijs <cies AT kde DOT nl>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public
@@ -36,6 +36,7 @@
 
 #include "interpreter/interpreter.h"
 #include "canvas.h"
+#include "colorpicker.h"
 #include "directiondialog.h"
 #include "console.h"
 #include "editor.h"
@@ -48,19 +49,6 @@ class KComboBox;
 class QMenu;
 
 
-//BEGIN small sub-classes to make life easy
-
-// extends the QToolBar with an extra signal
-class LocalToolBar : public QToolBar { Q_OBJECT
-	public:
-		LocalToolBar(const QString& title, QWidget* parent) { setWindowTitle(title); setParent(parent); }
-		void setVisible(bool b) { QToolBar::setVisible(b); emit visibilityChanged(b); }
-		void show() { QToolBar::show(); emit visibilityChanged(true); }
-		void hide() { QToolBar::hide(); emit visibilityChanged(false); }
-	signals:
-		void visibilityChanged(bool);
-};
-
 // extends the QDockWidget with an extra signal
 class LocalDockWidget : public QDockWidget { Q_OBJECT
 	public:
@@ -72,7 +60,6 @@ class LocalDockWidget : public QDockWidget { Q_OBJECT
 		void visibilityChanged(bool);
 };
 
-//END small sub-classes
 
 
 class MainWindow : public KXmlGuiWindow
@@ -96,7 +83,7 @@ class MainWindow : public KXmlGuiWindow
 		void pause();
 		void abort();
 		void iterate();
-		QString execute(const QString&);
+		QString execute(const QString&);  // for single command execution as by the console
 
 		void contextHelp();
 		//void whatsThis();
@@ -104,6 +91,7 @@ class MainWindow : public KXmlGuiWindow
 		void setRunSpeed(int);
 
 		void showDirectionDialog();
+		void showColorPicker();
 
 		void setFullSpeed()    { setRunSpeed(0); }
 		void setSlowSpeed()    { setRunSpeed(1); }
@@ -113,13 +101,12 @@ class MainWindow : public KXmlGuiWindow
 
 		void slotInputDialog(QString& value);
 		void slotMessageDialog(const QString& text);
-		
+
 	protected slots:
 		void saveNewToolbarConfig();
 
 	protected:
 		void closeEvent(QCloseEvent *event);
-
 
 	private:
 		void setupActions();
@@ -127,8 +114,6 @@ class MainWindow : public KXmlGuiWindow
 		void setupDockWindows();
 		void setupEditor();
 		void setupInterpreter();
-		//void setupMenus();
-		//void setupToolBar();
 		void setupStatusBar();
 
 		void readConfig();
@@ -149,7 +134,6 @@ class MainWindow : public KXmlGuiWindow
 		void toggleOverwriteMode(bool b);
 		void updateOnCursorPositionChange(int row, int col, const QString& line);
 
-
 	private:
 		Canvas          *canvas;
 		Console         *console;
@@ -158,12 +142,12 @@ class MainWindow : public KXmlGuiWindow
 		Inspector       *inspector;
 		ErrorDialog     *errorDialog;
 		DirectionDialog *directionDialog;
+		ColorPicker     *colorPicker;
 		QTabWidget      *canvasTabWidget;
 		QWidget         *canvasTab;
 		QStackedWidget  *stackedWidget;
 		LocalDockWidget *editorDock;
 		LocalDockWidget *inspectorDock;
-// 		LocalDockWidget *consoleDock;
 		QTimer          *iterationTimer;
 		int              runSpeed;
 
@@ -184,9 +168,7 @@ class MainWindow : public KXmlGuiWindow
 		KAction *pauseAct;
 		KAction *abortAct;
 		KAction *quitAct;
-
 		QAction *contextHelpAct;
-
 		KAction *fullSpeedAct;
 		KAction *slowSpeedAct;
 		KAction *slowerSpeedAct;

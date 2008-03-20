@@ -19,13 +19,10 @@
 
 #include "highlighter.h"
 
-
+#include "interpreter/tokenizer.h"
 
 #include <kdebug.h>
 #include <kurl.h>
-
-#include "interpreter/tokenizer.h"
-
 
 
 Highlighter::Highlighter(QTextDocument *parent)
@@ -56,6 +53,13 @@ Highlighter::Highlighter(QTextDocument *parent)
 	tokenizer = new Tokenizer();
 }
 
+QTextCharFormat* Highlighter::formatForStatement(const QString &text)
+{
+	// TODO store the Token (pointer) in the respective inspector lists so we dont have to re-tokenize here...
+	tokenizer->initialize(text);
+	return tokenToFormat(tokenizer->getToken());
+}
+
 Token* Highlighter::checkOrApplyHighlighting(const QString& text, int cursorIndex)
 {
 	tokenizer->initialize(text);
@@ -63,31 +67,7 @@ Token* Highlighter::checkOrApplyHighlighting(const QString& text, int cursorInde
 	QTextCharFormat* format;
 	Token* token = tokenizer->getToken();
 	while (token->type() != Token::EndOfInput) {
-		format = 0;
-		switch (token->category()) {
-				case Token::VariableCategory:          format = &variableFormat;          break;
-				case Token::TrueFalseCategory:         format = &trueFalseFormat;         break;
-				case Token::NumberCategory:            format = &numberFormat;            break;
-				case Token::CommentCategory:           format = &commentFormat;           break;
-				case Token::StringCategory:            format = &stringFormat;            break;
-				case Token::ScopeCategory:             format = &scopeFormat;             break;
-				case Token::CommandCategory:           format = &otherCommandFormat;      break;
-				case Token::ControllerCommandCategory: format = &controllerCommandFormat; break;
-				case Token::LearnCommandCategory:      format = &learnCommandFormat;      break;
-	
-				case Token::MetaCategory:
-				case Token::MathOperatorCategory:
-				case Token::WhiteSpaceCategory:
-				case Token::ParenthesisCategory:
-				case Token::DecimalSeparatorCategory:
-				case Token::FunctionCallCategory:
-				case Token::ExpressionCategory:
-				case Token::AssignmentCategory:
-				case Token::ArgumentSeparatorCategory:
-				case Token::BooleanOperatorCategory:
-					// do nothing with these... yet.
-					break;
-		}
+		format = tokenToFormat(token);
 		if (format != 0) {
 			if (cursorIndex == -1)
 				setFormat(token->startCol() - 1, token->endCol() - token->startCol(), *format);
@@ -98,6 +78,35 @@ Token* Highlighter::checkOrApplyHighlighting(const QString& text, int cursorInde
 		token = tokenizer->getToken();
 	}
 	delete token;
+	return 0;
+}
+
+QTextCharFormat* Highlighter::tokenToFormat(Token* token)
+{
+	switch (token->category()) {
+		case Token::VariableCategory:          return &variableFormat;
+		case Token::TrueFalseCategory:         return &trueFalseFormat;
+		case Token::NumberCategory:            return &numberFormat;
+		case Token::CommentCategory:           return &commentFormat;
+		case Token::StringCategory:            return &stringFormat;
+		case Token::ScopeCategory:             return &scopeFormat;
+		case Token::CommandCategory:           return &otherCommandFormat;
+		case Token::ControllerCommandCategory: return &controllerCommandFormat;
+		case Token::LearnCommandCategory:      return &learnCommandFormat;
+
+		case Token::MetaCategory:
+		case Token::MathOperatorCategory:
+		case Token::WhiteSpaceCategory:
+		case Token::ParenthesisCategory:
+		case Token::DecimalSeparatorCategory:
+		case Token::FunctionCallCategory:
+		case Token::ExpressionCategory:
+		case Token::AssignmentCategory:
+		case Token::ArgumentSeparatorCategory:
+		case Token::BooleanOperatorCategory:
+			// do nothing with these... yet.
+			break;
+	}
 	return 0;
 }
 

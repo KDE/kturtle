@@ -56,21 +56,20 @@ class Interpreter : public QObject
 		virtual ~Interpreter() {}
 
 		enum State {
-			Uninitialized,
-			Initialized,
-			Parsing,
-			Executing,
-			Finished,
-			Aborted
+			Uninitialized, // unusable
+			Initialized,   // ready to interpret something
+			Parsing,       // parsing the code string to a tree
+			Executing,     // executing the tree
+			Finished,      // successfully finished executing
+			Aborted        // unsuccessfully finished
 		};
 
 		void        interpret();
 
-		int         state() { return _state; }
-		void        abort() { _state = Aborted; }
+		int         state() { return m_state; }
+		void        abort() { m_state = Aborted; }
 
 		Executer*   getExecuter() { return executer; }
-// 		Translator* getTranslator();
 
 		void        initialize(const QString& inputString);  // resets
 		bool        encounteredErrors() { return errorList->count() > 0; }
@@ -78,7 +77,7 @@ class Interpreter : public QObject
 
 
 	private:
-		int            _state;
+		int            m_state;
 
 		Translator    *translator;
 		Tokenizer     *tokenizer;
