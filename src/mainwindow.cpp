@@ -540,8 +540,8 @@ void MainWindow::setupInterpreter()
 	interpreter = new Interpreter(this, false);
 	connect(interpreter, SIGNAL(finished()), this, SLOT(abort()));
 	Executer* executer = interpreter->getExecuter();
-	connect(executer, SIGNAL(currentlyExecuting(int, int, int, int)),
-		editor, SLOT(markCurrentWord(int, int, int, int)));
+	connect(executer, SIGNAL(currentlyExecuting(TreeNode*)), editor, SLOT(markCurrentWord(TreeNode*)));
+	connect(executer, SIGNAL(currentlyExecuting(TreeNode*)), inspector, SLOT(markTreeNode(TreeNode*)));
 
 	// the code to connect the executer with the canvas is auto generated:
 #include "interpreter/gui_connect.inc"
@@ -756,8 +756,8 @@ QString MainWindow::execute(const QString &operation)
 	disconnect(interpreter, SIGNAL(finished()), this, SLOT(abort()));
 	disconnect(interpreter, SIGNAL(treeUpdated(TreeNode*)), inspector, SLOT(updateTree(TreeNode*)));
 	Executer* executer = interpreter->getExecuter();
-	disconnect(executer, SIGNAL(currentlyExecuting(int, int, int, int)),
-		editor, SLOT(markCurrentWord(int, int, int, int)));
+	disconnect(executer, SIGNAL(currentlyExecuting(TreeNode*)), editor, SLOT(markCurrentWord(TreeNode*)));
+	disconnect(executer, SIGNAL(currentlyExecuting(TreeNode*)), inspector, SLOT(markTreeNode(TreeNode*)));
 	disconnect(executer, SIGNAL(variableTableUpdated(const QString&, const Value&)),
 		inspector, SLOT(updateVariable(const QString&, const Value&)));
 	disconnect(executer, SIGNAL(functionTableUpdated(const QString&, const QStringList&)),
@@ -792,8 +792,8 @@ QString MainWindow::execute(const QString &operation)
 
 	connect(interpreter, SIGNAL(finished()), this, SLOT(abort()));
 	connect(interpreter, SIGNAL(treeUpdated(TreeNode*)), inspector, SLOT(updateTree(TreeNode*)));
-	connect(executer, SIGNAL(currentlyExecuting(int, int, int, int)),
-		editor, SLOT(markCurrentWord(int, int, int, int)));
+	connect(executer, SIGNAL(currentlyExecuting(TreeNode*)), editor, SLOT(markCurrentWord(TreeNode*)));
+	connect(executer, SIGNAL(currentlyExecuting(TreeNode*)), inspector, SLOT(markTreeNode(TreeNode*)));
 	connect(executer, SIGNAL(variableTableUpdated(const QString&, const Value&)),
 		inspector, SLOT(updateVariable(const QString&, const Value&)));
 	connect(executer, SIGNAL(functionTableUpdated(const QString&, const QStringList&)),
@@ -849,6 +849,7 @@ void MainWindow::abort()
 	interpreter->abort();
 
 	editor->removeMarkings();
+	inspector->clearAllMarks();
 
 	runAct->setEnabled(true);
 	pauseAct->setChecked(false);

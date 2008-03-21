@@ -20,6 +20,7 @@
 #ifndef _INSPECTOR_H_
 #define _INSPECTOR_H_
 
+#include <QHash>
 #include <QHBoxLayout>
 #include <QTabWidget>
 #include <QTableWidget>
@@ -27,6 +28,9 @@
 #include <QTreeWidgetItem>
 #include <QWidget>
 
+#include <kglobalsettings.h>
+
+#include "editor.h"
 #include "highlighter.h"
 #include "interpreter/value.h"
 #include "interpreter/treenode.h"
@@ -48,6 +52,12 @@ class Inspector : public QFrame
 		void updateFunction(const QString& name, const QStringList& parameters);
 		void updateTree(TreeNode* rootNode);
 
+		void markVariable(const QString&);
+		void markFunction(const QString&);
+		void markTreeNode(TreeNode*);
+
+		void clearAllMarks();
+
 		void disable();
 
 
@@ -55,7 +65,15 @@ class Inspector : public QFrame
 		int findVariable(const QString& name);
 		QTreeWidgetItem* walkTree(TreeNode* node);
 
+		void clearTreeMark();
+
 		Highlighter  *highlighter;
+
+		// map the names of the variables/functions to their respective items in the tabelwidget
+		QHash<QString, QTableWidgetItem*> variableMap;
+		QHash<QString, QTableWidgetItem*> functionMap;
+		// map the treenodes to their respective items in the treewidget
+		QHash<TreeNode*, QTreeWidgetItem*> treeMap;
 
 		QHBoxLayout  *mainLayout;
 		QTabWidget   *tabWidget;
@@ -71,6 +89,9 @@ class Inspector : public QFrame
 		QWidget      *treeTab;
 		QHBoxLayout  *treeLayout;
 		QTreeWidget  *treeView;
+
+		QBrush previousTreeBackground;
+		QTreeWidgetItem *currentlyMarkedTreeItem;
 
 		bool         variableTableEmpty;
 		bool         functionTableEmpty;

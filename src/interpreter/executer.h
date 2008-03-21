@@ -256,7 +256,7 @@ class Executer : public QObject
 
 
 	signals:
-		void currentlyExecuting(int startRow, int startCol, int endRow, int endCol);
+		void currentlyExecuting(TreeNode* node);
 		void variableTableUpdated(const QString& name, const Value& value);
 		void functionTableUpdated(const QString& name, const QStringList& parameters);
 

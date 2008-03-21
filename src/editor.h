@@ -35,6 +35,8 @@
 #include <kurl.h>
 
 #include "highlighter.h"
+#include "interpreter/token.h"
+#include "interpreter/treenode.h"
 
 class QHBoxLayout;
 class QPaintEvent;
@@ -235,8 +237,12 @@ class Editor : public QFrame
 		void setModified(bool);
 		void setOverwriteMode(bool b);
 
-		void markCurrentWord(int startRow, int startCol, int endRow, int endCol) {
-			editor->markCurrentWord(startRow, startCol, endRow, endCol);
+		void markCurrentWord(TreeNode* node) {
+			editor->markCurrentWord(
+				node->token()->startRow(),
+				node->token()->startCol(),
+				node->token()->endRow(),
+				node->token()->endCol());
 		}
 		void markCurrentError(int startRow, int startCol, int endRow, int endCol) {
 			editor->markCurrentError(startRow, startCol, endRow, endCol);

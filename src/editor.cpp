@@ -52,6 +52,8 @@ Editor::Editor(QWidget *parent)
 	setLineWidth(CURSOR_WIDTH);
 	setCurrentUrl();
 
+	currentLine = 0;
+
 	// setup the main view
 	editor = new TextEdit(this);
 	editor->document()->setDefaultFont(KGlobalSettings::fixedFont());

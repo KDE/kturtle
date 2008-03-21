@@ -62,6 +62,13 @@ Inspector::Inspector(QWidget *parent)
 	// our syntax highlighter (this does not do any markings)
 	highlighter = new Highlighter();
 
+// 	// the maps used when marking table/tree items later
+// 	variableMap = new QHash<QString, QTableWidgetItem*>();
+// 	functionMap = new QHash<QString, QTableWidgetItem*>();
+// 	treeMap = new QHash<TreeNode*, QTableWidgetItem*>();
+
+	currentlyMarkedTreeItem = 0;
+
 	disable();
 
 	clear();
@@ -83,9 +90,12 @@ void Inspector::disable()
 
 void Inspector::clear()
 {
+	clearAllMarks();
+
 	// Question: is the code duplication below enough
 	// for a subclass-of-QTableWidget based approach?
 
+	variableMap.clear();
 	variableTableEmpty = true;
 	variableTable->clear();
 	QStringList headers;
@@ -103,6 +113,7 @@ void Inspector::clear()
 	variableTable->setItem(0, 0, emptyItem);
 	variableTable->resizeColumnsToContents();
 
+	functionMap.clear();
 	functionTableEmpty = true;
 	functionTable->clear();
 	headers.clear();
@@ -145,6 +156,7 @@ void Inspector::updateVariable(const QString& name, const Value& value)
 	nameItem->setFont(format->font());
 	nameItem->setForeground(format->foreground());
 	variableTable->setItem(row, 0, nameItem);
+	variableMap[name] = nameItem;
 
 	QTableWidgetItem* valueItem;
 	valueItem = new QTableWidgetItem(value.string());
@@ -153,7 +165,6 @@ void Inspector::updateVariable(const QString& name, const Value& value)
 // 	format = highlighter->formatForStatement(value.string());
 // 	valueItem->setFont(format->font());
 // 	valueItem->setForeground(format->foreground());
-	variableTable->setItem(row, 1, valueItem);
 
 	QTableWidgetItem* typeItem;
 	switch (value.type()) {
@@ -179,7 +190,10 @@ void Inspector::updateVariable(const QString& name, const Value& value)
 			break;
 	}
 	typeItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	variableTable->setItem(row, 1, valueItem);
 	variableTable->setItem(row, 2, typeItem);
+
+	variableTable->sortItems(0);
 	variableTable->resizeColumnsToContents();
 	variableTable->setEnabled(true);
 }
@@ -196,7 +210,8 @@ void Inspector::updateFunction(const QString& name, const QStringList& parameter
 	QTableWidgetItem* nameItem = new QTableWidgetItem(name);
 	nameItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	functionTable->setItem(0, 0, nameItem);
-	
+	functionMap[name] = nameItem;
+
 	QTableWidgetItem* paramItem;
 	if (parameters.empty()) {
 		paramItem = new QTableWidgetItem(i18n("None"));
@@ -210,12 +225,14 @@ void Inspector::updateFunction(const QString& name, const QStringList& parameter
 	
 	paramItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	functionTable->setItem(0, 1, paramItem);
+	functionTable->sortItems(0);
 	functionTable->resizeColumnsToContents();
 	functionTable->setEnabled(true);
 }
 
 void Inspector::updateTree(TreeNode* rootNode)
 {
+	treeMap.clear();
 	treeView->clear();
 	QTreeWidgetItem* rootItem = walkTree(rootNode);
 	foreach (QTreeWidgetItem* item, rootItem->takeChildren()) {
@@ -230,6 +247,14 @@ QTreeWidgetItem* Inspector::walkTree(TreeNode* node)
 {
 	QTreeWidgetItem* result = new QTreeWidgetItem();
 	result->setText(0, node->token()->look());
+	QTextCharFormat* format = highlighter->tokenToFormat(node->token());
+	if (format != 0) {
+		result->setForeground(0, format->foreground());
+		QFont font(KGlobalSettings::fixedFont());
+		font.setBold(format->font().bold());
+		result->setFont(0, font);
+	}
+	treeMap[node] = result;
 	if (node->hasChildren()) {
 		for (uint i = 0; i < node->childCount(); i++) {
 			result->addChild(walkTree(node->child(i)));
@@ -240,14 +265,51 @@ QTreeWidgetItem* Inspector::walkTree(TreeNode* node)
 
 int Inspector::findVariable(const QString& name)
 {
-	// This function will search for a specified variable and return the row number of this variable.
-	QList<QTableWidgetItem*> matches = variableTable->findItems(name, Qt::MatchExactly);
-	QList<QTableWidgetItem*>::iterator i;
-	for (i = matches.begin(); i != matches.end(); ++i) {
-		if ((*i)->column() == 0) // only check the first column
-			return (*i)->row();
-	}
-	return -1;
+	QTableWidgetItem* item = variableMap[name];
+	if (item == 0) return -1;
+	return item->row();
+
+// old implementation before we had a variableMap
+
+// 	// This function will search for a specified variable and return the row number of this variable.
+// 	QList<QTableWidgetItem*> matches = variableTable->findItems(name, Qt::MatchExactly);
+// 	QList<QTableWidgetItem*>::iterator i;
+// 	for (i = matches.begin(); i != matches.end(); ++i) {
+// 		if ((*i)->column() == 0) // only check the first column
+// 			return (*i)->row();
+// 	}
+// 	return -1;
+}
+
+void Inspector::markVariable(const QString& name)
+{
+	kDebug() << variableMap[name]->row();
+}
+
+void Inspector::markFunction(const QString& name)
+{
+	kDebug() << functionMap[name]->row();
+}
+
+void Inspector::markTreeNode(TreeNode* node)
+{
+// 	kDebug() << treeMap[node]->text(0);
+	clearTreeMark();
+	currentlyMarkedTreeItem = treeMap[node];
+	previousTreeBackground = currentlyMarkedTreeItem->background(0);
+	currentlyMarkedTreeItem->setBackground(0, QBrush(WORD_HIGHLIGHT_COLOR));
+}
+
+void Inspector::clearTreeMark()
+{
+	if (currentlyMarkedTreeItem == 0) return;
+	currentlyMarkedTreeItem->setBackground(0, previousTreeBackground);
+	currentlyMarkedTreeItem = 0;
+}
+
+void Inspector::clearAllMarks()
+{
+	clearTreeMark();
 }
 
 #include "inspector.moc"

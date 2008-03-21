@@ -151,7 +151,7 @@ void Executer::execute(TreeNode* node)
 
 	// don't report scopes (their are not really executed)
 	if (t->type() != Token::Scope)
-		emit currentlyExecuting(t->startRow(), t->startCol(), t->endRow(), t->endCol());
+		emit currentlyExecuting(node);
 
 	// this method executes one node at the time
 

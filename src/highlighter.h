@@ -43,13 +43,13 @@ class Highlighter : public QSyntaxHighlighter
 
 		// this function gives the text format for a single statement (first in the text), and is used by the inspector
 		QTextCharFormat* formatForStatement(const QString &text);
+		QTextCharFormat* tokenToFormat(Token* token);
 
 	protected:
 		void highlightBlock(const QString &text) { checkOrApplyHighlighting(text); }
 
 	private:
 		Token* checkOrApplyHighlighting(const QString &text, int cursorIndex = -1);
-		QTextCharFormat* tokenToFormat(Token* token);
 
 		Tokenizer *tokenizer;
 
