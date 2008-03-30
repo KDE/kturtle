@@ -31,7 +31,7 @@
 #define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )
 
 #ifndef M_PI 
-#define M_PI 3.14159265358979323846264338327950288419717;
+#define M_PI 3.14159265358979323846264338327950288419717
 #endif
 
 const double DegToRad = M_PI / 180.0;
@@ -143,16 +143,16 @@ void Canvas::slotClear()
 
 void Canvas::slotForward(double x)
 {
-	double x2 = turtle->pos().x() + (x * sin(turtle->angle() * DegToRad));
-	double y2 = turtle->pos().y() - (x * cos(turtle->angle() * DegToRad));
+	double x2 = turtle->pos().x() + (x * std::sin(turtle->angle() * DegToRad));
+	double y2 = turtle->pos().y() - (x * std::cos(turtle->angle() * DegToRad));
 	drawLine(turtle->pos().x(), turtle->pos().y(), x2, y2);
 	slotGo(x2, y2);
 }
 
 void Canvas::slotBackward(double x)
 {
-	double x2 = turtle->pos().x() - ( x * sin(turtle->angle() * DegToRad) );
-	double y2 = turtle->pos().y() + ( x * cos(turtle->angle() * DegToRad) );
+	double x2 = turtle->pos().x() - ( x * std::sin(turtle->angle() * DegToRad) );
+	double y2 = turtle->pos().y() + ( x * std::cos(turtle->angle() * DegToRad) );
 	drawLine(turtle->pos().x(), turtle->pos().y(), x2, y2);
 	slotGo(x2, y2);
 }
@@ -223,7 +223,7 @@ void Canvas::slotReset()
 
 void Canvas::wheelEvent(QWheelEvent *event)
 {
-	scaleView(pow((double)2, -event->delta() / 240.0));
+	scaleView(std::pow((double)2.0, -event->delta() / 240.0));
 }
 
 void Canvas::scaleView(double scaleFactor)
