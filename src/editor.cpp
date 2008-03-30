@@ -140,7 +140,8 @@ void Editor::textChanged(int pos, int removed, int added)
 	removeMarkings();  // removes the character markings if there are any
 	int lineCount = 1;
 	for (QTextBlock block = editor->document()->begin(); block.isValid(); block = block.next()) lineCount++;
-	numbers->setWidth(qMax(1, 1 + (int)floor(log10(lineCount - 1))));
+	numbers->setWidth(qMax(1, 1 + (int)std::floor(std::log10((double)lineCount - 1))));
+
 	emit contentChanged();
 }
 

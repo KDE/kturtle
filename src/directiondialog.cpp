@@ -20,6 +20,12 @@
 #include "directiondialog.h"
 
 #include <cmath>
+using std::atan;
+
+#ifndef M_PI 
+#define M_PI 3.14159265358979323846264338327950288419717
+#endif
+
 
 #include <kapplication.h>
 #include <kglobalsettings.h>

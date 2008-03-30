@@ -56,8 +56,8 @@ void Sprite::setAngle(double degrees)
 	// but we want to the rotation to be around the SVG's center...
 	// This is why this "translation" is needed before the actual rotation.
 	translate(
-		renderer()->defaultSize().width()  * cos((degrees-135) * M_PI/180) * sqrt(2)/2,
-		renderer()->defaultSize().height() * sin((degrees-135) * M_PI/180) * sqrt(2)/2
+		renderer()->defaultSize().width()  * cos((degrees-135) * M_PI/180) * sqrt((double)2.0)/2,
+		renderer()->defaultSize().height() * sin((degrees-135) * M_PI/180) * sqrt((double)2.0)/2
 	);
 	rotate(degrees);
 	m_angle = degrees;
