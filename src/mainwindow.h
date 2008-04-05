@@ -156,7 +156,6 @@ class MainWindow : public KXmlGuiWindow
 		QString contextHelpString;
 	
 		QMenu *examplesMenu;
-		QMenu *runSpeedMenu;
 
 		KRecentFilesAction *recentFilesAction;
 
