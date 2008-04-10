@@ -276,7 +276,7 @@ TreeNode* Parser::parseFactor()
 				QString str = currentToken->look();
 				if (!currentToken->look().endsWith('\"')) {
 					str += "\"";
-					addError(i18n("Text string was no properly closed, expected a dubble quote, ' \" ' to close the string"), *currentToken, 0);
+					addError(i18n("Text string was not properly closed, expected a double quote, ' \" ' to close the string"), *currentToken, 0);
 				}
 				node->value()->setString(str.mid(1, str.length() - 2));
 			}
