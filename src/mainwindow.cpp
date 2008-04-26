@@ -595,7 +595,7 @@ void MainWindow::updateLanguagesMenu()
 	foreach (const QString &lang_code, KGlobal::locale()->languageList())
 		map.insert(codeToFullName(lang_code), lang_code);
 				// populate the menu:
-	foreach (const QString &lang_code, map.values()) {
+	foreach (const QString &lang_code, map) {
 		a = new QAction(codeToFullName(lang_code), actionCollection());
 		a->setData(lang_code);
 		a->setStatusTip(i18n("Switch to the %1 dictionary", codeToFullName(lang_code)));
