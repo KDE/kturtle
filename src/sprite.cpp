@@ -61,6 +61,9 @@ void Sprite::setAngle(double degrees)
 	);
 	rotate(degrees);
 	m_angle = degrees;
+
+	//TODO: Check if the update can be done more efficiently
+	update();
 }
 
 #include "sprite.moc"
