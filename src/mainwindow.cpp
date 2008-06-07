@@ -43,6 +43,7 @@
 #include <ktoolbar.h>
 #include <ktoolbarlabelaction.h>
 #include <ktoolbarpopupaction.h>
+#include <kdeprintdialog.h>
 
 #include "interpreter/errormsg.h"
 #include "interpreter/translator.h"
@@ -105,8 +106,8 @@ void MainWindow::closeEvent(QCloseEvent *event)
 void MainWindow::printDlg()
 {
 	QPrinter printer;
-	QPrintDialog printDialog(&printer, this);
-	if (printDialog.exec())
+	QPrintDialog *printDialog = KdePrint::createPrintDialog(&printer, this);
+	if (printDialog->exec())
 	{
 		QPainter painter;
 		painter.begin(&printer);
@@ -115,6 +116,7 @@ void MainWindow::printDlg()
 
 		painter.end();
 	}
+	delete printDialog;
 }
 
 void MainWindow::showDirectionDialog()
