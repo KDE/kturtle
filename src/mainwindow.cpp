@@ -392,7 +392,7 @@ void MainWindow::setupActions()
 	actionCollection()->addAction("run_speed", runSpeedAction);
 	runSpeedActionMenu->setStatusTip(i18n("Execute the program"));
 	runSpeedActionMenu->setWhatsThis(i18n("Run: Execute the program"));
-	connect(runSpeedActionMenu, SIGNAL(triggered()), this, SLOT(run()));
+	connect(runSpeedActionMenu, SIGNAL(triggered ( QAction *)), this, SLOT(run()));
 
 
 	fullSpeedAct = new KAction(i18nc("@option:radio", "&Full Speed"), this);
