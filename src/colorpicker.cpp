@@ -31,7 +31,7 @@
 #include <kpushbutton.h>
 
 
-ColorPicker::ColorPicker(QWidget* parent) 
+ColorPicker::ColorPicker(QWidget* parent)
 	: KDialog(parent)
 {
 	setCaption(i18n("Color Picker"));
@@ -45,9 +45,9 @@ ColorPicker::ColorPicker(QWidget* parent)
 	QWidget* baseWidget = new QWidget(this);
 	setMainWidget(baseWidget);
 
-	QVBoxLayout* baseLayout = new QVBoxLayout(baseWidget);
-
-	QGridLayout* gridLayout = new QGridLayout(baseWidget);
+	QVBoxLayout* baseLayout = new QVBoxLayout;
+        baseWidget->setLayout( baseLayout );
+	QGridLayout* gridLayout = new QGridLayout;
 	baseLayout->addLayout(gridLayout);
 
 	redSlider = new QSlider(Qt::Horizontal, this);
@@ -99,7 +99,7 @@ ColorPicker::ColorPicker(QWidget* parent)
 
 	baseLayout->addSpacing(20);
 
-	QHBoxLayout* resultLayout = new QHBoxLayout(baseWidget);
+	QHBoxLayout* resultLayout = new QHBoxLayout;
 	resultLayout->addStretch();
 
 	baseLayout->addLayout(resultLayout);

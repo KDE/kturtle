@@ -22,7 +22,7 @@
 #include <cmath>
 using std::atan;
 
-#ifndef M_PI 
+#ifndef M_PI
 #define M_PI 3.14159265358979323846264338327950288419717
 #endif
 
@@ -75,9 +75,9 @@ void DirectionCanvas::paintEvent(QPaintEvent *event)
 
 	QPainter painter(this);
 	painter.setRenderHint(QPainter::Antialiasing);
-	
+
 	painter.save();
-	
+
 	// Place us in the middle of the widget
 	painter.translate(width() / 2, height() / 2);
 
@@ -136,8 +136,8 @@ void DirectionCanvas::mouseMoveEvent(QMouseEvent *event)
 
 void DirectionCanvas::mousePressEvent(QMouseEvent *event)
 {
-	// Only act upon left and right mouse button clicks, 
-	// then translate the X and Y coordinates so that 
+	// Only act upon left and right mouse button clicks,
+	// then translate the X and Y coordinates so that
 	// (0, 0) is in the middle of the widget, sent the
 	// signals and update the widget.
 	if (event->buttons() & Qt::LeftButton) {
@@ -192,7 +192,7 @@ double DirectionCanvas::translateMouseCoords(double trans_x, double trans_y)
 //END DirectionCanvas widget
 
 
-DirectionDialog::DirectionDialog(double deg, QWidget* parent) 
+DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	: KDialog(parent)
 {
 	skipValueChangedEvent = false;
@@ -217,8 +217,9 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	QWidget* baseWidget = new QWidget(this);
 	setMainWidget(baseWidget);
 
-	QVBoxLayout* baseLayout = new QVBoxLayout(baseWidget);
-	QHBoxLayout* degreeChooserLayout = new QHBoxLayout(baseWidget);
+	QVBoxLayout* baseLayout = new QVBoxLayout;
+        baseWidget->setLayout( baseLayout );
+	QHBoxLayout* degreeChooserLayout = new QHBoxLayout;
 	baseLayout->addLayout(degreeChooserLayout);
 
 	canvas = new DirectionCanvas(baseWidget);
@@ -283,7 +284,7 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	baseLayout->addSpacing(20);
 
 	// commandBox and copy/paste buttons
-	QHBoxLayout *pasteRowLayout = new QHBoxLayout(baseWidget);
+	QHBoxLayout *pasteRowLayout = new QHBoxLayout;
 	baseLayout->addLayout(pasteRowLayout);
 	pasteRowLayout->addStretch();
 	commandBox = new KLineEdit(rightWidget);
