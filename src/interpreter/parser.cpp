@@ -48,7 +48,7 @@ void Parser::parse()
 // 	qDebug() << "Parser::parse() -- main parse loop called";
 	TreeNode* resultNode = parseStatement();  // parse the next statement
 	if (resultNode == 0) {  // no statement was found
-		addError(i18n("Expected a command, instead got '%1'").arg(currentToken->look()), *currentToken, 0);
+		addError(i18n("Expected a command, instead got '%1'", currentToken->look()), *currentToken, 0);
 		return;
 	}
 
@@ -81,7 +81,7 @@ void Parser::nextToken()
 	}
 
 	if (currentToken->type() == Token::Error)
-		addError(i18n("Could not understand '%1'").arg(currentToken->look()), *currentToken, 100);
+		addError(i18n("Could not understand '%1'", currentToken->look()), *currentToken, 100);
 
 // 	QString out = QString("Parser::nextToken(): \"%5\" [%6] @ (%1,%2)-(%3,%4)")
 // 		.arg(currentToken->startRow())
@@ -119,17 +119,18 @@ bool Parser::skipToken(int expectedTokenType, Token& byToken)
 			addError(i18n("A comma was expected here..."), byToken, 0);
 			break;
 		case Token::EndOfInput:
-			addError(i18n("Did not expect '%1', instead expected the line to end after %2")
-					.arg(currentToken->look())
-					.arg(byToken.look()), byToken, 0);
+			addError(i18n("Did not expect '%1', instead expected the line to end after %2",
+                    currentToken->look(),
+                    byToken.look()),
+               byToken, 0);
 			break;
 		case Token::Assign:
-			addError(i18n("Expected an assignment, '=', after the variable '%1'")
-					.arg(byToken.look()), byToken, 0);
+			addError(i18n("Expected an assignment, '=', after the variable '%1'",
+                    byToken.look()), byToken, 0);
 			break;
 		case Token::ParenthesisClose:
-			addError(i18n("Did not expect '%1', instead expected the a closing parenthesis, ')'")
-					.arg(currentToken->look()), byToken, 0);
+			addError(i18n("Did not expect '%1', instead expected the a closing parenthesis, ')'",
+                    currentToken->look()), byToken, 0);
 			break;
 		case Token::To:
 			addError(i18n("Expected 'to' after 'for'"), byToken, 0);
