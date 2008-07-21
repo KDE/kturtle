@@ -22,7 +22,6 @@
 
 #include <QActionGroup>
 #include <QStackedWidget>
-#include <QTabWidget>
 #include <QTextStream>
 #include <QToolBar>
 #include <QDockWidget>
@@ -46,6 +45,7 @@
 
 class KAction;
 class KComboBox;
+class KTabWidget;
 class QMenu;
 
 
@@ -143,7 +143,7 @@ class MainWindow : public KXmlGuiWindow
 		ErrorDialog     *errorDialog;
 		DirectionDialog *directionDialog;
 		ColorPicker     *colorPicker;
-		QTabWidget      *canvasTabWidget;
+		KTabWidget      *canvasTabWidget;
 		QWidget         *canvasTab;
 		QStackedWidget  *stackedWidget;
 		LocalDockWidget *editorDock;

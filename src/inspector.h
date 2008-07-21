@@ -22,7 +22,6 @@
 
 #include <QHash>
 #include <QHBoxLayout>
-#include <QTabWidget>
 #include <QTableWidget>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
@@ -35,6 +34,7 @@
 #include "interpreter/value.h"
 #include "interpreter/treenode.h"
 
+class KTabWidget;
 
 class Inspector : public QFrame
 {
@@ -76,7 +76,7 @@ class Inspector : public QFrame
 		QHash<TreeNode*, QTreeWidgetItem*> treeMap;
 
 		QHBoxLayout  *mainLayout;
-		QTabWidget   *tabWidget;
+		KTabWidget   *tabWidget;
 
 		QWidget      *variableTab;
 		QHBoxLayout  *variableLayout;

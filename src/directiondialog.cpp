@@ -42,6 +42,9 @@ using std::atan;
 #include <QSpinBox>
 #include <QVBoxLayout>
 
+#include <KComboBox>
+
+
 #define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )
 
 
@@ -238,7 +241,7 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	commandPickerLabel->setText(i18n("Command &type:"));
 	commandPickerLabel->setScaledContents(true);
 	rightLayout->addWidget(commandPickerLabel);
-	commandPicker = new QComboBox(rightWidget);
+	commandPicker = new KComboBox(rightWidget);
 	commandPicker->insertItem(Turnleft, translator->default2localized("turnleft"));
 	commandPicker->insertItem(Turnright, translator->default2localized("turnright"));
 	commandPicker->insertItem(Direction, translator->default2localized("direction"));

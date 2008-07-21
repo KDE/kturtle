@@ -44,6 +44,7 @@
 #include <ktoolbarlabelaction.h>
 #include <ktoolbarpopupaction.h>
 #include <kdeprintdialog.h>
+#include <KTabWidget>
 
 #include "interpreter/errormsg.h"
 #include "interpreter/translator.h"
@@ -450,7 +451,7 @@ void MainWindow::setupCanvas()
 	QHBoxLayout* centralLayout = new QHBoxLayout(centralWidget);
 	centralLayout->setMargin(0); // MARGIN_SIZE);
 
-	canvasTabWidget = new QTabWidget(this);
+	canvasTabWidget = new KTabWidget(this);
 
 	canvasTab = new QWidget();
 	QHBoxLayout* canvasLayout = new QHBoxLayout(canvasTab);
@@ -666,7 +667,7 @@ void MainWindow::updateOnCursorPositionChange(int row, int col, const QString& l
 	statusBarPositionLabel->setText(i18n(" Line: %1 Column: %2 ", row, col));
 
 	Token* cursorToken = editor->currentToken(line, col);
-	QString desc = QString();
+	QString desc;
 	if (cursorToken != 0) {
 		QString look = cursorToken->look();
 		int cat = cursorToken->category();
@@ -784,7 +785,7 @@ QString MainWindow::execute(const QString &operation)
 	pauseAct->setEnabled(false);
 	abortAct->setEnabled(false);
 
-	QString errorMessage = QString();
+	QString errorMessage;
 
 	if (interpreter->encounteredErrors()) {
 		ErrorList* errorList = interpreter->getErrorList();
