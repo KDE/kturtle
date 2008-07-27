@@ -90,7 +90,7 @@ Again you can type or copy-paste the code to the code editor or open the <filena
 
 <para><userinput>pencolor 255,0,0</userinput> sets the color of the pen to red. <userinput>255,0,0</userinput> is a <glossterm linkend="rgb">RGB-combination</glossterm> where only the red value is set to <userinput>255</userinput> (fully on) while the others (green and blue) are set to <userinput>0</userinput> (fully off). This results in a bright shade of red.</para>
 
-<para>If you do not understand the color values, be sure to read the glossary on <glossterm linkend="rgb">RGB-combination</glossterm>s</para>
+<para>If you do not understand the color values, be sure to read the glossary on <glossterm linkend="rgb">RGB-combination</glossterm>.</para>
 
 <para><userinput>penwidth 5</userinput> sets the width (the size) of the pen to <userinput>5</userinput> <glossterm linkend="pixels">pixels</glossterm>. From now on every line the turtle draw will have a thickness of <userinput>5</userinput>, until we change the <userinput>penwidth</userinput> to something else.</para>
 
