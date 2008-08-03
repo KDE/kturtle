@@ -50,7 +50,7 @@ and Column number.
 <sect1 id="the-inspector">
 <title>The Inspector</title>
 <para>
-The inspector informs you about the variables, the learned functions and the code treee while the program is running.
+The inspector informs you about the variables, the learned functions and the code tree while the program is running.
 </para>
 <para>The inspector can be docked on each border of the main window or it can be
 detached and placed anywhere on your desktop.</para>
