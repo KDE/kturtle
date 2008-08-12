@@ -79,7 +79,10 @@ void Console::clearMarkings()
 void Console::run()
 {
 	QString errorMessage = emit execute(comboBox->currentText());
-	if (errorMessage.isNull()) return;
+	if (errorMessage.isNull()) {
+		comboBox->clearEditText();
+		return;
+	}
 	showError(errorMessage);
 }
 
