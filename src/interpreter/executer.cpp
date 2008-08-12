@@ -282,9 +282,9 @@ bool Executer::checkParameterQuantity(TreeNode* node, uint quantity, int errorCo
 	
 	if (nodeSize != quantity) {
 		if (nodeSize < quantity) {
-			addError(i18n("The %1 command was called with %2 but needs 1 parameter.", node->token()->look(), nodeSize), *node->token(), errorCode);
+			addError(i18np("The %2 command was called with %3 but needs 1 parameter.", "The %2 command was called with %3 but needs %1 parameters.", quantity, node->token()->look(), nodeSize), *node->token(), errorCode);
 		} else {
-			addError(i18n("The %1 command was called with %2 but only accepts 1 parameter.", node->token()->look(), nodeSize), *node->token(), errorCode);
+			addError(i18np("The %2 command was called with %3 but only accepts 1 parameter.", "The %2 command was called with %3 but only accepts %1 parameters.", quantity, node->token()->look(), nodeSize), *node->token(), errorCode);
 		}
 		return false;
 	}
