@@ -479,8 +479,14 @@ void Executer::executeElse(TreeNode* node) {
 }
 void Executer::executeRepeat(TreeNode* node) {
 //	qDebug() << "Executer::executeRepeat()";
-	breaking = false;
 	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
+
+	if(breaking) {
+		breaking = false;
+		currentVariableTable()->remove(id);
+		return;
+	}
+
 	// the iteration state is stored on the variable table
 	if (currentVariableTable()->contains(id)) {
 		int currentCount = ROUND2INT((*currentVariableTable())[id].number());
@@ -503,6 +509,14 @@ void Executer::executeWhile(TreeNode* node) {
 	//     exec scope, exec expression, exec scope, exec expression, ...
 
 	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
+
+	if (breaking) {
+		// We hit a break command while executing the scope
+		breaking = false; // Not breaking anymore
+		currentVariableTable()->remove(id); // remove the value (cleanup)
+		return; // Move to the next sibbling
+	}
+
 	if (currentVariableTable()->contains(id)) {
 		newScope = node; // re-execute the expression
 		currentVariableTable()->remove(id);
@@ -538,6 +552,13 @@ void Executer::executeForTo(TreeNode* node) {
 		firstIteration = true;
 	}
 
+	if(breaking) {
+		breaking = false;
+		delete functionStack.top().variableTable;
+		functionStack.pop();
+		return;
+	}
+
 	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
 
 	if (currentVariableTable()->contains(id)) {
@@ -569,6 +590,22 @@ void Executer::executeForTo(TreeNode* node) {
 void Executer::executeBreak(TreeNode* node) {
 //	qDebug() << "Executer::executeBreak()";
 	if (!checkParameterQuantity(node, 0, 20000+Token::Break*100+90)) return;
+
+	breaking = true;
+
+	// Check for the first parent which is a repeat, while of for loop.
+	// If found, switch the newScope to them so they can break.
+	QList<int> tokenTypes;
+	tokenTypes.append(Token::Repeat);
+	tokenTypes.append(Token::While);
+	tokenTypes.append(Token::ForTo);
+
+	TreeNode* ns = getParentOfTokenTypes(node, &tokenTypes);
+
+	if(ns!=0)
+		newScope = ns;
+	// If ns is 0 then very weird things are happening since we then couldn't find the correct parent
+	// therefor it might be best to just let the executer continue.
 }
 void Executer::executeReturn(TreeNode* node) {
 //	qDebug() << "Executer::executeReturn()";
@@ -1003,5 +1040,14 @@ void Executer::executeRound(TreeNode* node) {
 
 //END GENERATED executer_cpp CODE
 
+TreeNode* Executer::getParentOfTokenTypes(TreeNode* child, QList<int>* types) {
+	foreach(int type, *types) {
+		if(child->parent()->token()->type()==type)
+			return child->parent();
+		else if(child->parent()->token()->type()==Token::Root)
+			return 0;
+	}
+	return getParentOfTokenTypes(child->parent(), types);
+}
 
 #include "executer.moc"

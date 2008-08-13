@@ -161,7 +161,7 @@ EOS
 		if  (node == node->parent()->child(0)) {
 			// In this case we do not need to be initialized, we will get a value in executeAssign
 			aValueIsNeeded = false;
-	}
+		}
 	}
 	if (!functionStack.isEmpty() && 
 	    functionStack.top().variableTable->contains(node->token()->look())) {
@@ -463,8 +463,14 @@ new_item()
 @p_def = p_def_repeat_while
 @e_def =
 <<EOS
-	breaking = false;
 	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
+
+	if(breaking) {
+		breaking = false;
+		currentVariableTable()->remove(id);
+		return;
+	}
+
 	// the iteration state is stored on the variable table
 	if (currentVariableTable()->contains(id)) {
 		int currentCount = ROUND2INT((*currentVariableTable())[id].number());
@@ -495,6 +501,14 @@ new_item()
 	//     exec scope, exec expression, exec scope, exec expression, ...
 
 	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
+
+	if (breaking) {
+		// We hit a break command while executing the scope
+		breaking = false; // Not breaking anymore
+		currentVariableTable()->remove(id); // remove the value (cleanup)
+		return; // Move to the next sibbling
+	}
+
 	if (currentVariableTable()->contains(id)) {
 		newScope = node; // re-execute the expression
 		currentVariableTable()->remove(id);
@@ -580,6 +594,13 @@ new_item()
 		firstIteration = true;
 	}
 
+	if(breaking) {
+		breaking = false;
+		delete functionStack.top().variableTable;
+		functionStack.pop();
+		return;
+	}
+
 	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
 
 	if (currentVariableTable()->contains(id)) {
@@ -638,6 +659,26 @@ new_item()
 @look  = "break"
 @funct = "statement, node"
 @args  = [:none]
+@e_def =
+<<EOS
+	if (!checkParameterQuantity(node, 0, 20000+Token::Break*100+90)) return;
+
+	breaking = true;
+
+	// Check for the first parent which is a repeat, while of for loop.
+	// If found, switch the newScope to them so they can break.
+	QList<int> tokenTypes;
+	tokenTypes.append(Token::Repeat);
+	tokenTypes.append(Token::While);
+	tokenTypes.append(Token::ForTo);
+
+	TreeNode* ns = getParentOfTokenTypes(node, &tokenTypes);
+
+	if(ns!=0)
+		newScope = ns;
+	// If ns is 0 then very weird things are happening since we then couldn't find the correct parent
+	// therefor it might be best to just let the executer continue.
+EOS
 parse_item()
 
 new_item()
@@ -919,13 +960,13 @@ new_item()
 	addError(i18n("You need one variable and a value or variable to do a '='"), *node->token(), 0);
 		return;
 	}
-	if (!functionStack.isEmpty()) // &&functionStack.top().variableTable->contains(node->token()->look())) 
+	if (!functionStack.isEmpty() && !globalVariableTable.contains(node->child(0)->token()->look())) // &&functionStack.top().variableTable->contains(node->token()->look())) 
 	{
-	qDebug() << "function scope";
+		qDebug() << "function scope";
 		functionStack.top().variableTable->insert(node->child(0)->token()->look(), node->child(1)->value());
 	} else {
-	// inserts unless already exists then replaces
-	globalVariableTable.insert(node->child(0)->token()->look(), node->child(1)->value());
+		// inserts unless already exists then replaces
+		globalVariableTable.insert(node->child(0)->token()->look(), node->child(1)->value());
 	}
 	qDebug() << "variableTable updated!";
 	emit variableTableUpdated(node->child(0)->token()->look(), node->child(1)->value());
