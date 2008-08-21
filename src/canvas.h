@@ -35,6 +35,7 @@ class Canvas : public QGraphicsView
 		~Canvas();
 
 		double turtleAngle() { return turtle->angle(); }
+		QImage getPicture();
 
 	public slots:
 		void slotClear();

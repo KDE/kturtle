@@ -78,7 +78,7 @@ class MainWindow : public KXmlGuiWindow
 	private slots:
 		void openExample();
 		void printDlg();
-
+		void saveAsPicture();
 		void run();
 		void pause();
 		void abort();
@@ -163,6 +163,7 @@ class MainWindow : public KXmlGuiWindow
 		KAction *openAct;
 		KAction *saveAct;
 		KAction *saveAsAct;
+		KAction *saveAsPictureAct;
 		KAction *runAct;
 		KAction *pauseAct;
 		KAction *abortAct;

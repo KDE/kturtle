@@ -243,4 +243,15 @@ void Canvas::getY(double& value)
 	value = turtle->pos().y();
 }
 
+QImage Canvas::getPicture()
+{
+	QImage png(rect().size(), QImage::Format_RGB32);
+	//Create a painter to draw on the image
+	QPainter p(&png);
+	//And simply render using default settings
+	scene->render(&p);
+	p.end();
+	return png;
+}
+
 #include "canvas.moc"

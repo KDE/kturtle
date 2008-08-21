@@ -44,6 +44,9 @@
 #include <ktoolbarlabelaction.h>
 #include <ktoolbarpopupaction.h>
 #include <kdeprintdialog.h>
+#include <kfiledialog.h>
+#include <ksavefile.h>
+#include <kio/netaccess.h>
 #include <KTabWidget>
 
 #include "interpreter/errormsg.h"
@@ -196,6 +199,12 @@ void MainWindow::setupActions()
 	a = actionCollection()->addAction(KStandardAction::SaveAs,  "file_save_as", editor, SLOT(saveFileAs()));
 	a->setStatusTip(i18n("Save the current file under a different name"));
 	a->setWhatsThis(i18n("Save File As: Save the current file under a different name"));
+
+	saveAsPictureAct  = actionCollection()->addAction("save_as_picture");
+	saveAsPictureAct->setText(i18n("Save &as Picture..."));
+	saveAsPictureAct->setStatusTip(i18n("Save the current canvas as a picture"));
+	saveAsPictureAct->setWhatsThis(i18n("Save as Picture: Save the current canvas as a picture"));
+	connect(saveAsPictureAct, SIGNAL(triggered()), this, SLOT(saveAsPicture()));
 
 	runAct  = new KAction(KIcon("media-playback-start"), i18n("&Run"), this);
 	actionCollection()->addAction("run", runAct );
@@ -926,6 +935,25 @@ void MainWindow::slotMessageDialog(const QString& text)
 	iterationTimer->stop();
 	KMessageBox::information( this, text, i18n("Message") );
 	run();
+}
+
+void MainWindow::saveAsPicture()
+{
+	//Copied from edit code for file selection
+	KUrl url = KFileDialog::getSaveUrl(QString(), QString("*.png|%1\n*|%2").arg(i18n("png files")).arg(i18n("All files")), this, i18n("Save as Picture"));
+	if (url.isEmpty()) return;
+	if (KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this) &&
+		KMessageBox::warningContinueCancel(this,
+			i18n("Are you sure you want to overwrite %1?", url.fileName()),
+			i18n("Overwrite Existing File"),KGuiItem(i18n("&Overwrite")),
+			KStandardGuiItem::cancel(),
+			i18n("&Overwrite")
+			) != KMessageBox::Continue
+		) return;
+	//Get our image from the canvas
+	QImage pict = canvas->getPicture();
+	//Save as png
+	pict.save(url.path(), "PNG");
 }
 
 // END
