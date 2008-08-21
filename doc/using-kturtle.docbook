@@ -25,7 +25,7 @@ playground: it is on the canvas that the turtle actually moves and draws. The
 three other places on the main window are: <link linkend="the-menubar">the menu
 bar</link> (1) from where all the actions can be reached, <link
 linkend="the-toolbar">the toolbar</link> (2) that allows you to quickly select
-the most used actions,the <guilabel>Console</guilabel>, that you can use to 
+the most used actions, the <guilabel>Console</guilabel>, that you can use to 
 enter a one line command to test it, and <link linkend="the-statusbar">the statusbar</link>
 (6) where you will find feedback on the state of &kturtle;.</para>
 
