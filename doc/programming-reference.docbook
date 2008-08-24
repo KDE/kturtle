@@ -525,7 +525,7 @@ The expressions inside parentheses will be calculated first. In this example, 20
 
 <sect2 id="round">
 <title>Let the turtle round your numbers</title>
-<para>If you need integers in calculations, use this funktion.</para>
+<para>If you need integers in calculations, use this function.</para>
   <variablelist>
     <varlistentry>
       <term>round<indexterm><primary>round</primary></indexterm></term>
