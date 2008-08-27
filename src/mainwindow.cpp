@@ -85,7 +85,6 @@ MainWindow::MainWindow()
 	setupGUI();
 
 	// after all is set up:
-	setAutoSaveSettings();
 	readConfig();
 	updateLanguagesMenu();
 }
