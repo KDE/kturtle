@@ -25,7 +25,8 @@ playground: it is on the canvas that the turtle actually moves and draws. The
 three other places on the main window are: <link linkend="the-menubar">the menu
 bar</link> (1) from where all the actions can be reached, <link
 linkend="the-toolbar">the toolbar</link> (2) that allows you to quickly select
-the most used actions, and <link linkend="the-statusbar">the statusbar</link>
+the most used actions, the <guilabel>Console</guilabel>, that you can use to 
+enter a one line command to test it, and <link linkend="the-statusbar">the statusbar</link>
 (6) where you will find feedback on the state of &kturtle;.</para>
 
 <sect1 id="the-code-editor">
@@ -50,7 +51,7 @@ and Column number.
 <sect1 id="the-inspector">
 <title>The Inspector</title>
 <para>
-The inspector informs you about the variables, the learned functions and the code treee while the program is running.
+The inspector informs you about the variables, the learned functions and the code tree while the program is running.
 </para>
 <para>The inspector can be docked on each border of the main window or it can be
 detached and placed anywhere on your desktop.</para>
@@ -112,6 +113,20 @@ and <guimenu>Help</guimenu>. This section describes them all.</para>
     </varlistentry>
   </variablelist>
   <variablelist>
+    <anchor id="file-open-examples" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>File</guimenu>
+        <guisubmenu>Examples</guisubmenu>
+      </menuchoice></term>
+      <listitem><para>Open example &turtlelang; programs. The
+examples are in your favorite language that you can choose in 
+<menuchoice><guimenu>Settings</guimenu><guisubmenu>Script
+Language</guisubmenu>
+</menuchoice>.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
     <anchor id="file-save" />
     <varlistentry>
       <term><menuchoice>
@@ -132,39 +147,6 @@ and <guimenu>Help</guimenu>. This section describes them all.</para>
         <guimenuitem>Save As...</guimenuitem>
       </menuchoice></term>
       <listitem><para>Saves the currently opened &turtlelang; file on a specified location.</para></listitem>
-    </varlistentry>
-  </variablelist>
-  <variablelist>
-    <anchor id="file-open-examples" />
-    <varlistentry>
-      <term><menuchoice>
-        <guimenu>File</guimenu>
-        <guisubmenu>Examples</guisubmenu>
-      </menuchoice></term>
-      <listitem><para>Open example &turtlelang; programs. The
-examples are in your favorite language that you can choose in 
-<menuchoice><guimenu>Settings</guimenu><guimenuitem>Script
-Language</guimenuitem>
-</menuchoice>.</para></listitem>
-    </varlistentry>
-  </variablelist>
-  <variablelist>
-    <anchor id="file-speed" />
-    <varlistentry>
-      <term><menuchoice>
-        <guimenu>File</guimenu>
-        <guisubmenu>Speed</guisubmenu>
-      </menuchoice></term>
-      <listitem><para>Present a list of possible execution speeds, consisting
-of: <guimenuitem>Full Speed</guimenuitem>, <guimenuitem>Slow</guimenuitem>, 
-<guimenuitem>Slower</guimenuitem>, <guimenuitem>Slowest</guimenuitem> and 
-<guimenuitem>Step-by-Step</guimenuitem>. When the execution
-speed is set to <guimenuitem>Full Speed</guimenuitem> (default) we can barely 
-keep up with what is happening. Sometimes this behavior is wanted, but sometimes 
-we want to keep track of the execution. In the latter case you want to set the execution speed
-to <guimenuitem>Slow</guimenuitem>, <guimenuitem>Slower</guimenuitem> or <guimenuitem>Slowest</guimenuitem>. 
-When one of the slow modes is selected the current position of the executor will be shown in the editor.
-<guimenuitem>Step-by-Step</guimenuitem> will execute one command at a time.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -204,6 +186,25 @@ When one of the slow modes is selected the current position of the executor will
         <guimenuitem>Abort</guimenuitem>
       </menuchoice></term>
       <listitem><para>Stops the execution. This action is only enabled when the commands are actually executing.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-speed" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>File</guimenu>
+        <guisubmenu>Run Speed</guisubmenu>
+      </menuchoice></term>
+      <listitem><para>Present a list of possible execution speeds, consisting
+of: <guimenuitem>Full Speed</guimenuitem>, <guimenuitem>Slow</guimenuitem>, 
+<guimenuitem>Slower</guimenuitem>, <guimenuitem>Slowest</guimenuitem> and 
+<guimenuitem>Step-by-Step</guimenuitem>. When the execution
+speed is set to <guimenuitem>Full Speed</guimenuitem> (default) we can barely 
+keep up with what is happening. Sometimes this behavior is wanted, but sometimes 
+we want to keep track of the execution. In the latter case you want to set the execution speed
+to <guimenuitem>Slow</guimenuitem>, <guimenuitem>Slower</guimenuitem> or <guimenuitem>Slowest</guimenuitem>. 
+When one of the slow modes is selected the current position of the executor will be shown in the editor.
+<guimenuitem>Step-by-Step</guimenuitem> will execute one command at a time.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -375,7 +376,7 @@ phrase.</para></listitem>
           <keycombo><keycap>Ins</keycap></keycombo>
         </shortcut>
         <guimenu>Edit</guimenu>
-        <guimenuitem>Toggle Insert</guimenuitem>
+        <guimenuitem>Overwrite Mode</guimenuitem>
       </menuchoice></term>
       <listitem><para>Toggle between the 'insert' and 'overwrite' mode.</para></listitem>
     </varlistentry>
@@ -388,11 +389,41 @@ phrase.</para></listitem>
     <anchor id="view-codeeditor" />
     <varlistentry>
       <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>E</keycap></keycombo>
+        </shortcut>
         <guimenu>View</guimenu>
-        <guimenuitem>Show Code Editor</guimenuitem>
+        <guimenuitem>Show Editor</guimenuitem>
       </menuchoice></term>
       <listitem><para>Show or hide the Code Editor.</para>
 </listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="view-inspector" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>I</keycap></keycombo>
+        </shortcut>
+        <guimenu>View</guimenu>
+        <guimenuitem>Show Inspector</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Show or hide the Inspector.</para>
+</listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="view-error" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>View</guimenu>
+        <guimenuitem>Show Errors</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Show or hide the <guilabel>Error</guilabel> tab with a list 
+       of errors resulting from running the code. If this option is enabled, click on 
+       <guilabel>Canvas</guilabel> to see the turtle again.</para>
+      </listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -408,17 +439,6 @@ phrase.</para></listitem>
       <listitem><para>With this action you can show the line numbers in the code editor. This can be handy for finding errors.</para></listitem>
     </varlistentry>
   </variablelist>
-  <variablelist>
-    <anchor id="view-inspector" />
-    <varlistentry>
-      <term><menuchoice>
-        <guimenu>View</guimenu>
-        <guimenuitem>Show Inspector</guimenuitem>
-      </menuchoice></term>
-      <listitem><para>Show or hide the Inspector.</para>
-</listitem>
-    </varlistentry>
-  </variablelist>
 </sect2>
 
 <sect2 id="the-tools-menu">
@@ -428,9 +448,19 @@ phrase.</para></listitem>
     <varlistentry>
       <term><menuchoice>
         <guimenu>Tools</guimenu>
-        <guimenuitem>Direction Chooser</guimenuitem>
+        <guimenuitem>Direction Chooser...</guimenuitem>
       </menuchoice></term>
       <listitem><para>This action opens the direction chooser dialog.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-color-chooser" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>Tools</guimenu>
+        <guimenuitem>Color Picker...</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>This action opens the color picker dialog.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -491,33 +521,8 @@ phrase.</para></listitem>
 
 <sect2 id="the-help-menu">
   <title>The <guimenu>Help</guimenu> Menu</title>
-  <variablelist>
-    <anchor id="help-handbook" />
-    <varlistentry>
-      <term><menuchoice>
-        <shortcut>
-          <keycombo><keysym>F1</keysym></keycombo>
-        </shortcut>
-        <guimenu>Help</guimenu>
-        <guimenuitem>&kturtle; Handbook</guimenuitem>
-      </menuchoice></term>
-      <listitem><para>This action shows the handbook that you are currently reading.</para></listitem>
-    </varlistentry>
-  </variablelist>
-  <variablelist>
-    <anchor id="help-whats-this" />
-    <varlistentry>
-      <term><menuchoice>
-        <shortcut>
-          <keycombo>&Shift;<keysym>F1</keysym></keycombo>
-        </shortcut>
-        <guimenu>Help</guimenu>
-        <guimenuitem>What's This?</guimenuitem>
-      </menuchoice></term>
-      <listitem><para>After activating this action the mouse arrow will be changed into a <quote>question mark arrow</quote>. When this arrow is used to click on parts of &kturtle; main window, a description of the particular part pops-up.</para></listitem>
-    </varlistentry>
-  </variablelist>
-<!-->
+  &help.menu.documentation;
+<!-- context help removed in kde4>
   <variablelist>
     <anchor id="help-context-help" />
     <varlistentry>
@@ -533,43 +538,13 @@ phrase.</para></listitem>
     </varlistentry>
   </variablelist>
 <-->
-  <variablelist>
-    <anchor id="help-report-bug" />
-    <varlistentry>
-      <term><menuchoice>
-        <guimenu>Help</guimenu>
-        <guimenuitem>Report Bug...</guimenuitem>
-      </menuchoice></term>
-      <listitem><para>Use this to report a problem with &kturtle; to the developers. These reports can be used to make future versions of &kturtle; even better.</para></listitem>
-    </varlistentry>
-  </variablelist>
-  <variablelist>
-    <anchor id="help-about-kturtle" />
-    <varlistentry>
-      <term><menuchoice>
-        <guimenu>Help</guimenu>
-        <guimenuitem>About &kturtle;</guimenuitem>
-      </menuchoice></term>
-      <listitem><para>Here you find information on &kturtle;, like the authors and the license it comes with.</para></listitem>
-    </varlistentry>
-  </variablelist>
-  <variablelist>
-    <anchor id="help-about-kde" />
-    <varlistentry>
-      <term><menuchoice>
-        <guimenu>Help</guimenu>
-        <guimenuitem>About &kde;</guimenuitem>
-      </menuchoice></term>
-      <listitem><para>Here you can find information on &kde;. If you do not know yet what &kde; is, this is a place you should not miss.</para></listitem>
-    </varlistentry>
-  </variablelist>
 </sect2>
 
 </sect1>
 
 <sect1 id="the-toolbar">
 <title>The Toolbar</title>
-<para>Here you can quickly reach the most used actions. By default, you will find here all main useful commands ending with the <guiicon>Run</guiicon>, <guiicon>Pause</guiicon> and <guiicon>Abort</guiicon> icons.</para>
+<para>Here you can quickly reach the most used actions. By default, you will find here all main useful commands ending with the <guiicon>Run</guiicon>, <guiicon>Pause</guiicon> and <guiicon>Abort</guiicon> icons. The last item at the end of the toolbar is the <guilabel>Console</guilabel>, that you can use to enter a one line command and test it.</para>
 <para>You can configure the toolbar using <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Toolbars...</guimenuitem></menuchoice></para>
 </sect1>
 

@@ -522,6 +522,25 @@ The expressions inside parentheses will be calculated first. In this example, 20
 <indexterm><primary>arcsin, arccos, arctan</primary></indexterm>
 <indexterm><primary>sqrt, exp</primary></indexterm>
 </para>
+
+<sect2 id="round">
+<title>Let the turtle round your numbers</title>
+<para>If you need integers in calculations, use this function.</para>
+  <variablelist>
+    <varlistentry>
+      <term>round<indexterm><primary>round</primary></indexterm></term>
+      <listitem><para><screen>round(x)</screen>
+      <userinput>round</userinput> the given number to the nearest integer.
+<screen>
+print round(10.8)
+forward 20
+print round(10.3)
+forward 20
+</screen>
+      With this code the turtle will print the numbers 11 and 10.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
 </sect1>
 
 <sect1 id="questions">
@@ -777,24 +796,24 @@ for $x = 1 to 10 {
   forward 15
 }
 </screen>
-     Every time the code between the brackets is executed the <userinput>x</userinput> is increased by 1, until <userinput>x</userinput> reaches the value of 10. The code between the brackets prints the <userinput>x</userinput> multiplied by 7. After this program finishes its execution you will see the times table of 7 on the canvas.</para>
-     <para>The default step size of a loop is 1, you can use an other value with</para>
-     <para><screen>for <userinput>start point</userinput> to <userinput>end point</userinput> step <userinput>step size</userinput> { ... }</screen></para></listitem>
+     Every time the code between the brackets is executed the <userinput>x</userinput> is increased by 1, until <userinput>x</userinput> reaches the value of 10. The code between the brackets prints the <userinput>x</userinput> multiplied by 7. After this program finishes its execution you will see the times table of 7 on the canvas.
+     The default step size of a loop is 1, you can use an other value with
+     <screen>for <userinput>start point</userinput> to <userinput>end point</userinput> step <userinput>step size</userinput> { ... }</screen></para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
-<!-- missing command break, according to Mauricio Piacentini, it seems to be non-operative at the moment 4.0.0, so not documented 
+
 <sect2 id="break">
 <title>Leave a loop</title>
   <variablelist>
     <varlistentry>
       <term>break<indexterm><primary>break</primary></indexterm></term>
       <listitem><para><screen>break</screen>
-      ??????</para></listitem>
+      Terminates the current loop immediately and transfers control to the statement immediately following that loop</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
--->
+
 <sect2 id="exit">
 <title>Stop the turtle</title>
   <variablelist>
