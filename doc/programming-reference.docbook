@@ -797,6 +797,8 @@ for $x = 1 to 10 {
 }
 </screen>
      Every time the code between the brackets is executed the <userinput>x</userinput> is increased by 1, until <userinput>x</userinput> reaches the value of 10. The code between the brackets prints the <userinput>x</userinput> multiplied by 7. After this program finishes its execution you will see the times table of 7 on the canvas.
+     </para>
+     <para>
      The default step size of a loop is 1, you can use an other value with
      <screen>for <userinput>start point</userinput> to <userinput>end point</userinput> step <userinput>step size</userinput> { ... }</screen></para></listitem>
     </varlistentry>
