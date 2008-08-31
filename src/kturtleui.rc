@@ -67,7 +67,7 @@
   </Menu>
 </MenuBar>
 
-<ToolBar name="mainToolBar" fullWidth="true" name="mainToolBar" newline="true" noMerge="1"><text>Main Toolbar</text>
+<ToolBar name="mainToolBar" fullWidth="true" newline="true" noMerge="1"><text>Main Toolbar</text>
   <Action name="file_new" />
   <Action name="file_open" />
   <Separator />
