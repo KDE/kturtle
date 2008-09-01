@@ -63,7 +63,7 @@
 <legalnotice>&FDLNotice;</legalnotice>
 
 <date>2008-08-20</date>
-<releaseinfo>0.8 beta (&kde; 4.1.1)</releaseinfo>
+<releaseinfo>0.8 beta (&kde; 4.2)</releaseinfo>
 
 <abstract>
 <para>
@@ -140,10 +140,11 @@ The execution can be slown down, paused or stopped at any time.
 <listitem><para>A powerful editor for the &turtlelang; commands with intuitive syntax
 highlighting, line numbering and more.
 </para></listitem>
-<!-- not yet in kde 4.0
-<listitem><para>                                                         
-<link linkend="the-canvas">The canvas</link> can be saved as an image or printed.
+<listitem><para>
+<link linkend="the-canvas">The canvas</link> can be saved as an image.
 </para></listitem>
+<!-- not yet in kde 4.2 printing of canvas-->
+<!-- not yet in kde 4.2
 <listitem><para>
 Context help for all commands: Just press <keysym>F2</keysym>.
 </para></listitem>

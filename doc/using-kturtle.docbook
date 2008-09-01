@@ -150,6 +150,16 @@ Language</guisubmenu>
     </varlistentry>
   </variablelist>
   <variablelist>
+    <anchor id="file-save-as-picture" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>File</guimenu>
+        <guimenuitem>Save as Picture...</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Save the current canvas as a picture.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
     <anchor id="file-execute" />
     <varlistentry>
       <term><menuchoice>
