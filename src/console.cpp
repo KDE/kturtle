@@ -98,7 +98,7 @@ void Console::showError(const QString& msg)
 // 	QToolTip::showText(baseWidget->mapToGlobal(baseWidget->pos()) /*+ QPoint(comboBox->width()/2, comboBox->height())*/, toolTipText, comboBox, QRect(comboBox->rect()));
 }
 
-void Console::slotExecuteButton()
+void Console::executeActionTriggered()
 {
   QLineEdit *lineEdit = comboBox->lineEdit();
   if ( !lineEdit )

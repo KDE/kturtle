@@ -375,7 +375,7 @@ void MainWindow::setupActions()
 	QAction *executeConsole = actionCollection()->addAction("execute_console");
 	executeConsole->setIcon(KIcon("go-jump-locationbar"));
 	executeConsole->setText(i18n("Execute"));
-	connect(executeConsole, SIGNAL(triggered()), console, SLOT(slotExecuteButton()));
+	connect(executeConsole, SIGNAL(triggered()), console, SLOT(executeActionTriggered()));
 	executeConsole->setWhatsThis(i18n("Execute: Executes the current line in the console"));
 
 	// Help menu actions
