@@ -245,7 +245,7 @@ void Canvas::getY(double& value)
 
 QImage Canvas::getPicture()
 {
-	QImage png(rect().size(), QImage::Format_RGB32);
+	QImage png(sceneRect().size().toSize(), QImage::Format_RGB32);
 	//Create a painter to draw on the image
 	QPainter p(&png);
 	//And simply render using default settings

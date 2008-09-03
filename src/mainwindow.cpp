@@ -372,6 +372,12 @@ void MainWindow::setupActions()
 	connect(console, SIGNAL(execute(const QString&)), this, SLOT(execute(const QString&)));
 
 
+	QAction *executeConsole = actionCollection()->addAction("execute_console");
+	executeConsole->setIcon(KIcon("go-jump-locationbar"));
+	executeConsole->setText(i18n("Execute"));
+	connect(executeConsole, SIGNAL(triggered()), console, SLOT(slotExecuteButton()));
+	executeConsole->setWhatsThis(i18n("Execute: Executes the current line in the console"));
+
 	// Help menu actions
 	//TODO: implement context help
 	contextHelpAct = ac->addAction("context_help");

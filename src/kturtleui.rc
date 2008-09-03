@@ -79,6 +79,7 @@
   <Action name="abort" />
   <Separator />
   <Action name="console" />
+  <Action name="execute_console" />
 </ToolBar>
 
 </gui>

@@ -21,8 +21,10 @@
 #include "console.h"
 #include "editor.h"  // for the error highlight color
 
+#include <QApplication>
 #include <QHBoxLayout>
 #include <QLabel>
+#include <QLineEdit>
 #include <QToolTip>
 #include <QWidget>
 
@@ -94,6 +96,16 @@ void Console::showError(const QString& msg)
 	comboBox->setToolTip(toolTipText);
 	// TODO make a tooltip show for one second showing the errorr
 // 	QToolTip::showText(baseWidget->mapToGlobal(baseWidget->pos()) /*+ QPoint(comboBox->width()/2, comboBox->height())*/, toolTipText, comboBox, QRect(comboBox->rect()));
+}
+
+void Console::slotExecuteButton()
+{
+  QLineEdit *lineEdit = comboBox->lineEdit();
+  if ( !lineEdit )
+    return;
+
+  QKeyEvent event( QEvent::KeyPress, Qt::Key_Return, Qt::NoModifier, QChar('\n') );
+  QApplication::sendEvent( lineEdit, &event );
 }
 
 #include "console.moc"

@@ -40,6 +40,7 @@ class Console : public QWidgetAction
 	public slots:
 		void run();
 		void clearMarkings();
+		void slotExecuteButton();
 
 	signals:
 		QString execute(const QString&);
