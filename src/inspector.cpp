@@ -42,21 +42,21 @@ Inspector::Inspector(QWidget *parent)
 	variableTable  = new QTableWidget(variableTab);
 	variableTable->setAlternatingRowColors(true);
 	variableLayout->addWidget(variableTable);
-	tabWidget->addTab(variableTab, i18n("&Variables"));
+	tabWidget->addTab(variableTab, i18n("Variables"));
 
 	functionTab    = new QWidget();
 	functionLayout = new QHBoxLayout(functionTab);
 	functionTable  = new QTableWidget(functionTab);
 	functionTable->setAlternatingRowColors(true);
 	functionLayout->addWidget(functionTable);
-	tabWidget->addTab(functionTab, i18n("&Functions"));
+	tabWidget->addTab(functionTab, i18n("Functions"));
 
 	treeTab    = new QWidget();
 	treeLayout = new QHBoxLayout(treeTab);
 	treeView   = new QTreeWidget(treeTab);
 	treeView->header()->setVisible(false);
 	treeLayout->addWidget(treeView);
-	tabWidget->addTab(treeTab, i18n("&Tree"));
+	tabWidget->addTab(treeTab, i18n("Tree"));
 
 	mainLayout->addWidget(tabWidget);
 
