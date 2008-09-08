@@ -929,8 +929,6 @@ void Executer::executeRandom(TreeNode* node) {
 	if (!checkParameterQuantity(node, 2, 20000+Token::Random*100+90)) return;
 	TreeNode* nodeX = node->child(0);  // getting
 	TreeNode* nodeY = node->child(1);
-	execute(nodeX);  // executing
-	execute(nodeY);
 	
 	if (!checkParameterType(node, Value::Number, 20000+Token::Random*100+91)) return;
 	double x = nodeX->value()->number();
