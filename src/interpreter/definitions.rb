@@ -679,8 +679,11 @@ new_item()
 
 	if(ns!=0)
 		newScope = ns;
-	// If ns is 0 then very weird things are happening since we then couldn't find the correct parent
-	// therefor it might be best to just let the executer continue.
+	//else
+		// We could add an error right HERE
+	
+	// At the moment we just ignore a break when we couldn't 
+	// find a matching parent
 EOS
 parse_item()
 

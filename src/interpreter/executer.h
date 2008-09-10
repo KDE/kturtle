@@ -253,6 +253,7 @@ class Executer : public QObject
 //END GENERATED executer_h CODE
 
 		TreeNode* getParentOfTokenTypes(TreeNode* child, QList<int>* types);
+		inline void printExe();
 
 
 

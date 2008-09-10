@@ -66,76 +66,70 @@ void Executer::initialize(TreeNode* tree, ErrorList* _errorList)
 
 void Executer::execute()
 {
+	//Do we have to do anything?
 	if (finished || waiting) return;
-// 	qDebug() << "Executer::execute() -- main execute loop called";
 
-	if (executeCurrent) {
+	if(executeCurrent) {
 		// executeCurrent is used to make sure the currentNode will be executed
 		// this way the tree will not be walked before the execution...
-// 		qDebug() << ">> jumping to tree node, and executing: " << currentNode->token()->look();
 		executeCurrent = false;
 		execute(currentNode);
 		return;
-	} else if (returning) {
-		delete functionStack.top().variableTable;
-		currentNode = functionStack.pop().function;
-// 		qDebug() << ">> returning to: " << currentNode->token()->look();
+	}
 
-		if (returnValue == 0) currentNode->setNullValue();  // Handle an empty return value
-		else currentNode->setValue(returnValue);
-// // // 		returnValue = 0;  // DONT DO THIS... the the functionCall node that get recalled now handle it...
-// // // 		returning   = false;
+	if(returning) {
+		//We are returning from a function call
+		
+		// Take the last called function from the function stack
+		CalledFunction calledFunction = functionStack.pop();
+		
+		// Delete the local variables of the called function
+		delete calledFunction.variableTable;
+		currentNode = calledFunction.function;
+
+		if (returnValue == 0)
+			currentNode->setNullValue(); // Handle an empty return value
+		else
+			currentNode->setValue(returnValue);
 
 		execute(currentNode);
 		return;
-	} else {
-		if (newScope == 0) {  // same scope
-// 			qDebug() << ">> to next sibling";
-			
-			TreeNode* currentParent = currentNode->parent();
-			currentNode = currentNode->nextSibling();
-		
-			if (currentNode == 0) {  // running off sibling list
-// 				qDebug() << ">> to parent";
-				currentNode = currentParent;
-				if (currentNode == rootNode) {
-// 					qDebug() << ">> hit root";
-					finished = true;
-					return;
-				}
+	}
 
-				// don't report scopes (their are not really executed)
-				if (currentNode->token()->type() != Token::Scope)
-					std::cout << "EXE> " << qPrintable(currentNode->token()->look()) << std::endl;
-				execute(currentNode);
+	if(newScope == 0) {
+		TreeNode* currentParent = currentNode->parent();
+		currentNode = currentNode->nextSibling();
+		
+		if(currentNode == 0) { //running off sibling list
+			currentNode = currentParent;
+			
+			if(currentNode == rootNode) {
+				finished = true;
 				return;
 			}
-		} else {  // entering new scope
-// 			qDebug() << ">> to the new scope";
-			currentNode = newScope;
-			newScope = 0;
-			
-			// skip ahead to frist child (if any) else we will not get into the scope
-			if (currentNode->hasChildren()) currentNode = currentNode->firstChild();
+
+			printExe();
+
+			execute(currentNode);
+			return;
 		}
-	}
-	
-// 	qDebug() << ">> to top";
-	while (currentNode->hasChildren() && currentNode->token()->type() != Token::Scope) {
-//Niels: I don't know why, but the following lines break learn
-//		if (currentNode->token()->type() == Token::Learn) {
-//			currentNode = currentNode->nextSibling();
-//			if (currentNode == 0) {
-//				finished = true;
-//				return;
-//			}
-//		}
-		currentNode = currentNode->firstChild();
+
+	}else{
+		// We're entering a new scope
+		// skip ahead to frist child (if any) else we will not get into the scope
+		if(newScope->hasChildren())
+			currentNode = newScope->firstChild();
+		else
+			currentNode = newScope;
+
+		newScope = 0;
 	}
 
-	// don't report scopes (their are not really executed)
-	if (currentNode->token()->type() != Token::Scope)
-		std::cout << "EXE> " << qPrintable(currentNode->token()->look()) << std::endl;
+
+	while (currentNode->hasChildren() && currentNode->token()->type() != Token::Scope)
+		currentNode = currentNode->firstChild();
+	
+	printExe();
 
 	execute(currentNode);
 }
@@ -607,8 +601,11 @@ void Executer::executeBreak(TreeNode* node) {
 
 	if(ns!=0)
 		newScope = ns;
-	// If ns is 0 then very weird things are happening since we then couldn't find the correct parent
-	// therefor it might be best to just let the executer continue.
+	//else
+		// We could add an error right HERE
+	
+	// At the moment we just ignore a break when we couldn't 
+	// find a matching parent
 }
 void Executer::executeReturn(TreeNode* node) {
 //	qDebug() << "Executer::executeReturn()";
@@ -1049,6 +1046,11 @@ TreeNode* Executer::getParentOfTokenTypes(TreeNode* child, QList<int>* types) {
 			return 0;
 	}
 	return getParentOfTokenTypes(child->parent(), types);
+}
+
+void Executer::printExe() {
+	if (currentNode->token()->type() != Token::Scope)
+		std::cout << "EXE> " << qPrintable(currentNode->token()->look()) << std::endl;
 }
 
 #include "executer.moc"
