@@ -491,7 +491,7 @@ void Executer::executeRepeat(TreeNode* node) {
 			return;
 		}
 	} else {
-		if(node->child(0)->value()->number()==0) // handle 'repeat 0'
+		if(node->child(0)->value()->number()<=0) // handle 'repeat 0'
 			return;
 		
 		currentVariableTable()->insert(id, Value((double)(ROUND2INT(node->child(0)->value()->number()) - 1)));
