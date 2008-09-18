@@ -80,6 +80,7 @@ Canvas::Canvas(QWidget *parent) : QGraphicsView(parent)
 
 Canvas::~Canvas()
 {
+        kDebug()<<"canva !!!!!!!!!!!";
 	delete pen;
 	delete turtle;
 	delete canvasFrame;
