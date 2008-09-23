@@ -733,6 +733,7 @@ bool MainWindow::setCurrentLanguage(const QString &lang_code)  // 2 or 5 digit c
 		currentLanguageCode = lang_code;
 		statusBarLanguageLabel->setText(' ' + codeToFullName(lang_code) + ' ');
 		updateExamplesMenu();
+		editor->rehighlight();
 		result = true;
 	} else {
 		KMessageBox::error(this, i18n("Could not change the language to %1.", codeToFullName(lang_code)));

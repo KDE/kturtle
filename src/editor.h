@@ -251,6 +251,7 @@ class Editor : public QFrame
 		void findNext();
 		void findPrev();
 		void insertPlainText(const QString& txt);
+		void rehighlight() { highlighter->rehighlight(); }
 
 
 	signals:
