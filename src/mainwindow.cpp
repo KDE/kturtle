@@ -607,7 +607,7 @@ void MainWindow::updateLanguagesMenu()
 	QActionGroup* languageGroup = new QActionGroup(this);
 	connect(languageGroup, SIGNAL(triggered(QAction *)), this, SLOT(setLanguage(QAction *)));
 	QAction* a;
-	// sort the dictionaries using an algorithm found the the qt docs:
+	// sort the dictionaries using an algorithm found in the qt docs:
 	QMap<QString, QString> map;
 	foreach (const QString &lang_code, KGlobal::locale()->languageList())
 		map.insert(codeToFullName(lang_code), lang_code);

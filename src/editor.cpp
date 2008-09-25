@@ -404,7 +404,7 @@ void Editor::paintEvent(QPaintEvent *event)
 {
 	QRect rect = editor->currentLineRect();
 	rect.setWidth(this->width() - EDITOR_MARGIN);  // don't draw too much
-	rect.translate(0, EDITOR_MARGIN);  // small hack to nicely align the the line highlighting
+	rect.translate(0, EDITOR_MARGIN);  // small hack to nicely align the line highlighting
 	QColor bgColor = this->palette().brush(this->backgroundRole()).color();
 	QPainter painter(this);
 	const QBrush brush(highlightedLineBackgroundColor);

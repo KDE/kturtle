@@ -31,7 +31,7 @@
  * Because of the goals of KTurtle it this class very extended, it stores much info
  * about each token so descriptive error messages can be printed.
  *
- * Basically it is a wrapper around the the tokens look, type and start/end position.
+ * Basically it is a wrapper around the tokens look, type and start/end position.
  *
  * The tokens made by the Tokeniser accorind to the KTurtle code, then they are stored
  * in the node tree by the Parser. The Executer makes use of tokens while executing.

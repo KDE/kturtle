@@ -502,7 +502,7 @@ TreeNode* Parser::parseUnknown() {
 }
 TreeNode* Parser::parseVariable() {
 //	qDebug() << "Parser::parseVariable()";
-	// This is called the the variable is the first token on a line.
+	// This is called to the variable is the first token on a line.
 	// There has to be an assignment token right after it...
 	TreeNode* variableNode = new TreeNode(currentToken);
 	nextToken();

@@ -32,7 +32,7 @@
  * @short Generates Token objects from a QString using the Translator.
  *
  * The Tokenizer reads, one-by-one, characters from a QString (unicode text).
- * By trying to translate the the tokens it tries to find out the type of
+ * By trying to translate the tokens it tries to find out the type of
  * the tokens, since KTurtle code can be in many different languages
  * the programming commands are not known on forehand.
  *
