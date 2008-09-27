@@ -55,7 +55,7 @@ Highlighter::Highlighter(QTextDocument *parent)
 
 QTextCharFormat* Highlighter::formatForStatement(const QString &text)
 {
-	// TODO store the Token (pointer) in the respective inspector lists so we dont have to re-tokenize here...
+	// TODO store the Token (pointer) in the respective inspector lists so we don't have to re-tokenize here...
 	tokenizer->initialize(text);
 	return tokenToFormat(tokenizer->getToken());
 }

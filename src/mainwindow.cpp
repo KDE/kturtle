@@ -174,7 +174,7 @@ void MainWindow::setupActions()
 	//TODO WHATISTHIS to each action
 	//Similar to a status tip, but not the same.
 	//A status tip is displayed on hover, a whatisthis is displayed when
-	//an item is clicked on it whatisthis mode  (cies doesnt like whatis mode for every litlle widget)
+	//an item is clicked on it whatisthis mode  (cies doesn't like whatis mode for every little widget)
 
 	// File menu actions
 	a = actionCollection()->addAction(KStandardAction::New,  "file_new", editor, SLOT(newFile()));

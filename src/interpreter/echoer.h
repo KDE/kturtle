@@ -30,7 +30,7 @@
  * @short Echoes signals to a QTextStream
  *
  * Just echos the signals it gets.
- * Usefull for creating UnitTests.
+ * Useful for creating UnitTests.
  *
  * @author Cies Breijs
  */

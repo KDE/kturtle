@@ -83,7 +83,7 @@ void ErrorDialog::clear()
 
 	// put a friendly 'nothing to see here' notice in the empty table
 	errorTable->setRowCount(1);
-	QTableWidgetItem* emptyItem = new QTableWidgetItem(i18n("No errors occured yet."));
+	QTableWidgetItem* emptyItem = new QTableWidgetItem(i18n("No errors occurred yet."));
 	QFont emptyFont(KGlobalSettings::generalFont());
 	emptyFont.setItalic(true);
 	emptyItem->setFont(emptyFont);
