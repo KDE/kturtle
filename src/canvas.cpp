@@ -203,6 +203,7 @@ void Canvas::slotPrint(const QString& text)
 	ti->setFont(*textFont);
 	ti->rotate(turtle->angle());
 	ti->setPos(turtle->pos().x(), turtle->pos().y());
+	ti->setDefaultTextColor(textColor);
 }
 
 void Canvas::slotFontType(const QString& family, const QString& extra)
