@@ -387,7 +387,7 @@ print $author + " started the KTurtle project in " + $year + " and still enjoys 
     <varlistentry> 
       <term>random (rnd)<indexterm><primary>random (rnd)</primary></indexterm></term>
       <listitem><para><screen>random X,Y</screen>
-      <userinput>random</userinput> is a command that takes input and gives output. As input are required two numbers, the first (X) sets the minimum output, the second (Y) sets the maximum. The output is a randomly chosen number that is equal or greater then the minimum and equal or smaller than the maximum. Here a small example:
+      <userinput>random</userinput> is a command that takes input and gives output. As input are required two numbers, the first (X) sets the minimum output, the second (Y) sets the maximum. The output is a randomly chosen number that is equal or greater than the minimum and equal or smaller than the maximum. Here a small example:
       <screen>
 repeat 500 {
   $x = random 1,20
