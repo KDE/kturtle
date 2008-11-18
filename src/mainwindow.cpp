@@ -946,7 +946,7 @@ void MainWindow::slotMessageDialog(const QString& text)
 void MainWindow::saveAsPicture()
 {
 	//Copied from edit code for file selection
-	KUrl url = KFileDialog::getSaveUrl(QString(), QString("*.png|%1\n*|%2").arg(i18n("png files")).arg(i18n("All files")), this, i18n("Save as Picture"));
+	KUrl url = KFileDialog::getSaveUrl(QString(), QString("*.png|%1\n*|%2").arg(i18n("PNG Images")).arg(i18n("All files")), this, i18n("Save as Picture"));
 	if (url.isEmpty()) return;
 	if (KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this) &&
 		KMessageBox::warningContinueCancel(this,
