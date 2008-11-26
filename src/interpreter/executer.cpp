@@ -381,7 +381,7 @@ void Executer::executeVariable(TreeNode* node) {
 //	qDebug() << "Executer::executeVariable()";
 	bool aValueIsNeeded = true;
 	// no need to look up when assigning (in a for loop statement)
-	if (node->parent()->token()->type() == Token::ForTo)
+	if ((node->parent()->token()->type() == Token::ForTo) && (node->parent()->child(0)==node))
 		return;
 	// we need to executeVariables in assignments for things like $x=$y to work
 	if (node->parent()->token()->type() == Token::Assign) {
