@@ -542,7 +542,9 @@ void Executer::executeForTo(TreeNode* node) {
 		// if this for loop is called for the first time...
 		CalledFunction c;
 		c.function      = node;
-		c.variableTable = new VariableTable();
+		// TODO: Find a better solution then this for nested for loops
+		//c.variableTable = new VariableTable();
+		c.variableTable = currentVariableTable();
 		functionStack.push(c);
 
 		currentVariableTable()->insert(node->child(0)->token()->look(), Value(node->child(1)->value()->number()));
@@ -580,7 +582,7 @@ void Executer::executeForTo(TreeNode* node) {
 		newScope = node->child(4); // (re-)execute the scope
 	} else {
 		// cleaning up after last iteration...
-		delete functionStack.top().variableTable;
+		//delete functionStack.top().variableTable;
 		functionStack.pop();
 	}
 }
