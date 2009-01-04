@@ -100,7 +100,7 @@ void Console::showError(const QString& msg)
 
 void Console::executeActionTriggered()
 {
-  QLineEdit *lineEdit = comboBox->lineEdit();
+  QLineEdit *lineEdit = comboBox->lineEdit(); //krazy:exclude=qclasses
   if ( !lineEdit )
     return;
 
