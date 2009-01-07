@@ -537,6 +537,9 @@ void Executer::executeForTo(TreeNode* node) {
 	// after one iteration the expression is not re-executed.
 	// so we do: exec scope, exec expressions, exec scope, exec expressions, ...
 
+	//TODO: We have the cleanup part twice (after breaking and after the last iteration
+	// perhaps clean it up by putting in in one place?
+
 	bool firstIteration = false;
 	if (functionStack.isEmpty() || functionStack.top().function != node) {
 		// if this for loop is called for the first time...
@@ -553,8 +556,11 @@ void Executer::executeForTo(TreeNode* node) {
 
 	if(breaking) {
 		breaking = false;
-		delete functionStack.top().variableTable;
+		//delete functionStack.top().variableTable;
 		functionStack.pop();
+		// if we don't delete the functionStack's varibleTable any more
+		// do remove the for loops id..
+		currentVariableTable()->remove(id);
 		return;
 	}
 
@@ -584,6 +590,9 @@ void Executer::executeForTo(TreeNode* node) {
 		// cleaning up after last iteration...
 		//delete functionStack.top().variableTable;
 		functionStack.pop();
+		// if we don't delete the functionStack's varibleTable any more
+		// do remove the for loops id..
+		currentVariableTable()->remove(id);
 	}
 }
 void Executer::executeBreak(TreeNode* node) {

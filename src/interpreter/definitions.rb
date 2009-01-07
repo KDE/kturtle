@@ -585,12 +585,17 @@ new_item()
 	// after one iteration the expression is not re-executed.
 	// so we do: exec scope, exec expressions, exec scope, exec expressions, ...
 
+	//TODO: We have the cleanup part twice (after breaking and after the last iteration
+	// perhaps clean it up by putting in in one place?
+
 	bool firstIteration = false;
 	if (functionStack.isEmpty() || functionStack.top().function != node) {
 		// if this for loop is called for the first time...
 		CalledFunction c;
 		c.function      = node;
-		c.variableTable = new VariableTable();
+		// TODO: Find a better solution then this for nested for loops
+		//c.variableTable = new VariableTable();
+		c.variableTable = currentVariableTable();
 		functionStack.push(c);
 
 		currentVariableTable()->insert(node->child(0)->token()->look(), Value(node->child(1)->value()->number()));
@@ -599,8 +604,11 @@ new_item()
 
 	if(breaking) {
 		breaking = false;
-		delete functionStack.top().variableTable;
+		//delete functionStack.top().variableTable;
 		functionStack.pop();
+		// if we don't delete the functionStack's varibleTable any more
+		// do remove the for loops id..
+		currentVariableTable()->remove(id);
 		return;
 	}
 
@@ -628,8 +636,11 @@ new_item()
 		newScope = node->child(4); // (re-)execute the scope
 	} else {
 		// cleaning up after last iteration...
-		delete functionStack.top().variableTable;
+		//delete functionStack.top().variableTable;
 		functionStack.pop();
+		// if we don't delete the functionStack's varibleTable any more
+		// do remove the for loops id..
+		currentVariableTable()->remove(id);
 	}
 EOS
 parse_item()
