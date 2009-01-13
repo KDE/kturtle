@@ -98,7 +98,7 @@ void Parser::nextToken()
 
 bool Parser::skipToken(int expectedTokenType)
 {
-	// if the expectedTokenType matches teh currentToken's type, dispose the currentToken and get a new one
+	// if the expectedTokenType matches the currentToken's type, dispose the currentToken and get a new one
 	if (currentToken->type() == expectedTokenType) {
 		delete currentToken;
 		nextToken();
