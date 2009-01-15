@@ -223,7 +223,7 @@ bool Editor::saveFile(const KUrl &targetUrl)
 			//This allows sharing of scripts written in different languages
 			Tokenizer tokenizer;
 			tokenizer.initialize(editor->document()->toPlainText());
-			QStringList localizedLooks(Translator::instance()->allLocalizedLooks());
+			const QStringList localizedLooks(Translator::instance()->allLocalizedLooks());
 			QString unstranslated;
 			Token* t;
 			bool pendingEOL = false; //to avoid writing a final EOL token

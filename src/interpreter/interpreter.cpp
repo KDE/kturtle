@@ -70,7 +70,7 @@ void Interpreter::interpret()
 			if (encounteredErrors()) {
 				m_state = Aborted;
 				qDebug() << "Error encountered while parsing:";
-				QStringList lines = errorList->asString().split('\n');
+				const QStringList lines = errorList->asString().split('\n');
 				foreach (const QString &line, lines) qDebug() << line;
 				qDebug() << "Parsing was unsuccessful.";
 				return;
@@ -100,7 +100,7 @@ void Interpreter::interpret()
 				qDebug() << "Finished executing.\n";
 				if (encounteredErrors()) {
 					qDebug() << "Execution returned " << errorList->count() << " error(s):";
-					QStringList lines = errorList->asString().split('\n');
+					const QStringList lines = errorList->asString().split('\n');
 					foreach (const QString &line, lines) qDebug() << line;
 				} else {
 					qDebug() << "No errors encountered.";

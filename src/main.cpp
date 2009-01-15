@@ -98,7 +98,7 @@ int main(int argc, char* argv[])
 		tokenizer.initialize(inputFile.readAll());
 		inputFile.close();
 
-		QStringList defaultLooks(Translator::instance()->allDefaultLooks());
+		const QStringList defaultLooks(Translator::instance()->allDefaultLooks());
 		QString result;
 		Token* t;
 		while ((t = tokenizer.getToken())->type() != Token::EndOfInput) {
