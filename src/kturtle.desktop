@@ -57,4 +57,4 @@ Exec=kturtle %i -caption "%c"
 Icon=kturtle
 X-DocPath=kturtle/index.html
 Type=Application
-Categories=Qt;KDE;Education;X-KDE-Edu-Misc;
+Categories=Qt;KDE;Education;ComputerScience;X-KDE-Edu-Misc;
