@@ -168,7 +168,7 @@ void MainWindow::setRunSpeed(int speed)
 
 void MainWindow::setupActions()
 {
-	QAction * a;
+	KAction * a;
 	KActionCollection* ac = actionCollection();
 
 	//TODO WHATISTHIS to each action
