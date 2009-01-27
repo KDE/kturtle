@@ -602,6 +602,8 @@ new_item()
 		firstIteration = true;
 	}
 
+	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
+
 	if(breaking) {
 		breaking = false;
 		//delete functionStack.top().variableTable;
@@ -611,8 +613,6 @@ new_item()
 		currentVariableTable()->remove(id);
 		return;
 	}
-
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
 
 	if (currentVariableTable()->contains(id)) {
 		newScope = node; // re-execute the expressions

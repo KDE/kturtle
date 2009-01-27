@@ -554,7 +554,7 @@ void Executer::executeForTo(TreeNode* node) {
 		firstIteration = true;
 	}
 
-        QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
+	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
 
 	if(breaking) {
 		breaking = false;
@@ -565,7 +565,6 @@ void Executer::executeForTo(TreeNode* node) {
 		currentVariableTable()->remove(id);
 		return;
 	}
-
 
 	if (currentVariableTable()->contains(id)) {
 		newScope = node; // re-execute the expressions
