@@ -628,7 +628,7 @@ new_item()
 
 	if (
  	(startCondition < endCondition && currentCount + step <= endCondition) ||
-	    (startCondition > endCondition && currentCount - step >= endCondition && step<0) //negative loop sanity check, is it implemented?
+	    (startCondition > endCondition && currentCount + step >= endCondition && step<0) //negative loop sanity check, is it implemented?
 		|| (startCondition==endCondition && firstIteration) // for expressions like for $n=1 to 1
 	   ) {
 	if (!firstIteration)
