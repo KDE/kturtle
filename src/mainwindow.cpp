@@ -423,8 +423,8 @@ void MainWindow::setupActions()
 	slowSpeedAct = new KAction(i18nc("@option:radio choose the slow speed", "&Slow"), this);
 	actionCollection()->addAction("slow_speed", slowSpeedAct );
 	slowSpeedAct->setCheckable(true);
-	slowSpeedAct->setStatusTip(i18n("Run the program at slow speed"));
-	slowSpeedAct->setWhatsThis(i18n("Slow Speed: Run the program at slow speed"));
+	slowSpeedAct->setStatusTip(i18n("Run the program at a slow speed"));
+	slowSpeedAct->setWhatsThis(i18n("Slow Speed: Run the program at a slow speed"));
 	connect(slowSpeedAct, SIGNAL(triggered()), this, SLOT(setSlowSpeed()));
 	runSpeedGroup->addAction(slowSpeedAct);
 	runSpeedActionMenu->addAction(slowSpeedAct);
@@ -432,8 +432,8 @@ void MainWindow::setupActions()
 	slowerSpeedAct = new KAction(i18nc("@option:radio", "S&lower"), this);
 	actionCollection()->addAction("slower_speed", slowerSpeedAct );
 	slowerSpeedAct->setCheckable(true);
-	slowerSpeedAct->setStatusTip(i18n("Run the program at slower speed"));
-	slowerSpeedAct->setWhatsThis(i18n("Slower Speed: Run the program at slower speed"));
+	slowerSpeedAct->setStatusTip(i18n("Run the program at a slower speed"));
+	slowerSpeedAct->setWhatsThis(i18n("Slower Speed: Run the program at a slower speed"));
 	connect(slowerSpeedAct, SIGNAL(triggered()), this, SLOT(setSlowerSpeed()));
 	runSpeedGroup->addAction(slowerSpeedAct);
 	runSpeedActionMenu->addAction(slowerSpeedAct);
@@ -441,8 +441,8 @@ void MainWindow::setupActions()
 	slowestSpeedAct = new KAction(i18nc("@option:radio", "Sl&owest"), this);
 	actionCollection()->addAction("slowest_speed", slowestSpeedAct );
 	slowestSpeedAct->setCheckable(true);
-	slowestSpeedAct->setStatusTip(i18n("Run the program at slowest speed"));
-	slowestSpeedAct->setWhatsThis(i18n("Slowest Speed: Run the program at slowest speed"));
+	slowestSpeedAct->setStatusTip(i18n("Run the program at the slowest speed"));
+	slowestSpeedAct->setWhatsThis(i18n("Slowest Speed: Run the program at the slowest speed"));
 	connect(slowestSpeedAct, SIGNAL(triggered()), this, SLOT(setSlowestSpeed()));
 	runSpeedGroup->addAction(slowestSpeedAct);
 	runSpeedActionMenu->addAction(slowestSpeedAct);

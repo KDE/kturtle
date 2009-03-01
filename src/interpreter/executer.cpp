@@ -710,7 +710,7 @@ void Executer::executeLessOrEquals(TreeNode* node) {
 void Executer::executeAddition(TreeNode* node) {
 //	qDebug() << "Executer::executeAddition()";
 	if(node->childCount()!=2) {
-		addError(i18n("You need two numbers or string to do an addition"), *node->token(), 0);
+		addError(i18n("You need two numbers or strings to do an addition"), *node->token(), 0);
 		return;
 	}
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
@@ -737,16 +737,16 @@ void Executer::executeSubstracton(TreeNode* node) {
 void Executer::executeMultiplication(TreeNode* node) {
 //	qDebug() << "Executer::executeMultiplication()";
 	if(node->childCount()!=2) {
-		addError(i18n("You need two numbers to multiplicate"), *node->token(), 0);
+		addError(i18n("You need two numbers to multiply"), *node->token(), 0);
 		return;
 	}
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
 		node->value()->setNumber(node->child(0)->value()->number() * node->child(1)->value()->number());
 	} else {
 		if (node->child(0)->value()->type() != Value::Number)
-			addError(i18n("You tried to multiplicate a non-number, '%1'", node->child(0)->token()->look()), *node->token(), 0);
+			addError(i18n("You tried to multiply a non-number, '%1'", node->child(0)->token()->look()), *node->token(), 0);
 		if (node->child(1)->value()->type() != Value::Number)
-			addError(i18n("You tried to multiplicate by a non-number, '%1'", node->child(1)->token()->look()), *node->token(), 0);
+			addError(i18n("You tried to multiply by a non-number, '%1'", node->child(1)->token()->look()), *node->token(), 0);
 	}
 }
 void Executer::executeDivision(TreeNode* node) {
@@ -799,7 +799,7 @@ void Executer::executeAssign(TreeNode* node) {
 void Executer::executeLearn(TreeNode* node) {
 //	qDebug() << "Executer::executeLearn()";
 	if(functionTable.contains(node->child(0)->token()->look())) {
-		addError(i18n("The function '%1' is already defined!", node->child(0)->token()->look()), *node->token(), 0);
+		addError(i18n("The function '%1' is already defined.", node->child(0)->token()->look()), *node->token(), 0);
 		return;
 	}
 	functionTable.insert(node->child(0)->token()->look(), node);

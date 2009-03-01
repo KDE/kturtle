@@ -129,7 +129,7 @@ bool Parser::skipToken(int expectedTokenType, Token& byToken)
                     byToken.look()), byToken, 0);
 			break;
 		case Token::ParenthesisClose:
-			addError(i18n("Did not expect '%1', instead expected the a closing parenthesis, ')'",
+			addError(i18n("Did not expect '%1', instead expected a closing parenthesis, ')'",
                     currentToken->look()), byToken, 0);
 			break;
 		case Token::To:
@@ -241,7 +241,7 @@ TreeNode* Parser::parseStatement()
 			//Token type is something else...
 			//qDebug() << "Parser::parseStatement(): I don't know this Token type.";
 			//kDebug() << "Look: " << currentToken->look() << " type: " << currentToken->type();
-			addError(i18n("You cannot put '%1' here!", currentToken->look()), *currentToken, 0);
+			addError(i18n("You cannot put '%1' here.", currentToken->look()), *currentToken, 0);
 			finished = true;
 			return new TreeNode(currentToken);
 		}
@@ -277,7 +277,7 @@ TreeNode* Parser::parseFactor()
 				QString str = currentToken->look();
 				if (!currentToken->look().endsWith('\"')) {
 					str += "\"";
-					addError(i18n("Text string was not properly closed, expected a double quote, ' \" ' to close the string"), *currentToken, 0);
+					addError(i18n("Text string was not properly closed, expected a double quote, ' \" ', to close the string."), *currentToken, 0);
 				}
 				node->value()->setString(str.mid(1, str.length() - 2));
 			}

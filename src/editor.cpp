@@ -182,7 +182,7 @@ bool Editor::openFile(const KUrl &_url)
 				QString s;
 				s = in.readLine();
 				if (s != KTURTLE_MAGIC_1_0) {
-					KMessageBox::error(this, i18n("The file you try to open is not a valid KTurtle script, or incompatible with this version of KTurtle.\nCannot open %1", fileString));
+					KMessageBox::error(this, i18n("The file you try to open is not a valid KTurtle script, or is incompatible with this version of KTurtle.\nCannot open %1", fileString));
 					return false;
 				}
 				QString localizedScript;
