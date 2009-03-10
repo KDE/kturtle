@@ -621,6 +621,9 @@ void Executer::executeBreak(TreeNode* node) {
 }
 void Executer::executeReturn(TreeNode* node) {
 //	qDebug() << "Executer::executeReturn()";
+	if(functionStack.isEmpty())
+		return;
+
 	if(node->childCount()>0)
 		returnValue = node->child(0)->value();
 	else
