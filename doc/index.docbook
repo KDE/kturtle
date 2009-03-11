@@ -135,7 +135,7 @@ foundation/</ulink>.</para>
 An integrated &turtlelang; interpreter (no extra dependencies) that includes the ability to use a fully translated set of commands, and supports user defined functions and dynamic type switching.
 </para></listitem>
 <listitem><para>
-The execution can be slown down, paused or stopped at any time.
+The execution can be slowed down, paused or stopped at any time.
 </para></listitem>
 <listitem><para>A powerful editor for the &turtlelang; commands with intuitive syntax
 highlighting, line numbering and more.
