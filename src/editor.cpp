@@ -214,7 +214,7 @@ bool Editor::saveFile(const KUrl &targetUrl)
 		KTemporaryFile tmp;  // only used for network export
 		tmp.setAutoRemove(false);
 		tmp.open();
-		QString filename = url.isLocalFile() ? url.path() : tmp.fileName();
+		QString filename = url.isLocalFile() ? url.toLocalFile() : tmp.fileName();
 	
 		KSaveFile *savefile = new KSaveFile(filename);
 		if (savefile->open()) {
