@@ -60,7 +60,13 @@ void Executer::initialize(TreeNode* tree, ErrorList* _errorList)
 	functionTable.clear();
 	globalVariableTable.clear();
 
-	while (!functionStack.isEmpty()) delete functionStack.pop().variableTable;
+	while (!functionStack.isEmpty()) {
+	    // In the ForTo loop, we can assign the globalVariableTable to an entry in the functionStack
+	    // we shouldn't delete this variableTable, so check for it.
+	    VariableTable* variableTable = functionStack.pop().variableTable;
+	    if(variableTable!=&globalVariableTable)
+		delete variableTable;
+	}
 }
 
 
