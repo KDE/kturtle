@@ -65,12 +65,6 @@ therefor this should not be started before a proper unittest framework is in pla
 
 
 
-tada:
-made conext help work. along the way i had to work out some other things aswel. now update the KTurtle Handbook so it becomes actually helpful. fixed a modification state bug.  ohh... kturlte builds clean again on my machine.
-
-when though the documentation from the start, readying it for context help integration. redid some screenshots.
-
-
 
 
 
