@@ -1,9 +1,9 @@
 kturtle-script-v1.0
 # draw many squares
 
-@(learn) square $x {
+@(learn) square $X {
   @(repeat) 4 {
-    @(forward) $x
+    @(forward) $X
     @(turnleft) 90
   }
 }

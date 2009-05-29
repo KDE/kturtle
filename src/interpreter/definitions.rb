@@ -1,4 +1,4 @@
-#  Copyright (C) 2005-2009 by Cies Breijs
+#  Copyright (C) 2005-2006 by Cies Breijs
 #
 #  This program is free software; you can redistribute it and/or
 #  modify it under the terms of version 2 of the GNU General Public
@@ -48,7 +48,38 @@
 
 
 new_item()
+# This is used for Tokens that are contructed without being initialized
+@type  = "NotSet"
+@cat   = "Meta"
+parse_item()
+
+new_item()
+@type  = "Unknown"
+@cat   = "Meta"
+@funct = "statement, node"
+@p_def =
+<<EOS
+	// this is usually a function call
+	return parseFunctionCall();
+EOS
+@e_def =
+<<EOS
+	if (node->parent()->token()->type() == Token::Learn) {
+		currentNode = node->parent();
+		executeCurrent = true;
+		return;
+	}
+EOS
+parse_item()
+
+new_item()
+# This is used when a no token can be created
+@type  = "Error"
+parse_item()
+
+new_item()
 @type  = "Root"
+@cat   = "Meta"
 @funct = "node"
 parse_item()
 
@@ -81,18 +112,22 @@ parse_item()
 
 new_item()
 @type  = "WhiteSpace"
+@cat   = "WhiteSpace"
 parse_item()
 
 new_item()
 @type  = "EndOfLine"
+@cat   = "Meta"
 parse_item()
 
 new_item()
 @type  = "EndOfInput"
+@cat   = "Meta"
 parse_item()
 
 new_item()
 @type  = "VariablePrefix"
+@cat   = "Variable"
 @look  = "$"
 @localize = false
 parse_item()
@@ -148,6 +183,7 @@ new_item()
 @funct = "statement, node"
 @p_def =
 <<EOS
+	// this method gets usually called through parseUnknown...
 	TreeNode* node = new TreeNode(currentToken);
 	node->token()->setType(Token::FunctionCall);
 	nextToken();
@@ -156,12 +192,6 @@ new_item()
 EOS
 @e_def =
 <<EOS
-	if (node->parent()->token()->type() == Token::Learn) {  // in case we're defining a function
-		currentNode = node->parent();
-		executeCurrent = true;
-		return;
-	}
-
 	if (returning) {  // if the function is already executed and returns now
 		returnValue = 0;
 		returning = false;
@@ -333,6 +363,7 @@ parse_item()
 
 new_item()
 @type  = "DecimalSeparator"
+@cat   = "DecimalSeparator"
 @look  = "."
 parse_item()
 
@@ -969,7 +1000,7 @@ new_item()
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	node->appendChild(new TreeNode(new Token(*currentToken)));
-	skipToken(Token::FunctionCall, *node->token());
+	skipToken(Token::Unknown, *node->token());
 	
 	TreeNode* argumentList = new TreeNode(new Token(Token::ArgumentList, "arguments", 0, 0, 0, 0));
 	while (currentToken->type() == Token::Variable) {
@@ -1011,6 +1042,7 @@ parse_item()
 
 new_item()
 @type  = "ArgumentList"
+@cat   = "Meta"
 @funct = "node"
 parse_item()
 

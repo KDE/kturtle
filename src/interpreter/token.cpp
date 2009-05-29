@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003-2009 Cies Breijs <cies AT kde DOT nl>
+	Copyright (C) 2003-2006 Cies Breijs <cies AT kde DOT nl>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public
@@ -84,50 +84,50 @@ int Token::typeToCategory(int type)
 		case GoX:
 		case GoY:
 		case FontSize:
+		case CanvasSize:
 		case Cos:
 		case CanvasColor:
 		case Tan:
 		case Backward:
-		case CanvasSize:
-		case TurnRight:
+		case Sqrt:
 		case Exp:
 		case Pi:
 		case Forward:
 		case Message:
 		case Random:
-		case Sqrt:
 		case Go:
+		case TurnRight:
 		case ArcSin:
 		case Ask:
-		case PenUp:
 		case Print:
-		case Clear:
-		case ArcCos:
 		case SpriteHide:
 		case TurnLeft:
 		case PenWidth:
-		case Direction:
-		case ArcTan:
+		case PenUp:
 		case SpriteShow:
+		case ArcCos:
+		case PenDown:
+		case Reset:
+		case ArcTan:
 		case Center:
 		case Round:
 		case GetX:
-		case PenColor:
-		case PenDown:
-		case Reset:
+		case Clear:
 		case GetY:
+		case PenColor:
+		case Direction:
 			return CommandCategory;
 
-		case Else:
-		case Break:
 		case Return:
-		case While:
+		case Else:
 		case Step:
+		case While:
 		case For:
+		case Repeat:
 		case Wait:
 		case ForTo:
-		case Repeat:
 		case To:
+		case Break:
 		case Exit:
 		case If:
 			return ControllerCommandCategory;
@@ -135,40 +135,54 @@ int Token::typeToCategory(int type)
 		case Number:
 			return NumberCategory;
 
+		case Substracton:
+		case Multiplication:
+		case Power:
+		case Division:
+		case Addition:
+			return MathOperatorCategory;
+
+		case WhiteSpace:
+			return WhiteSpaceCategory;
+
 		case ParenthesisOpen:
 		case ParenthesisClose:
 			return ParenthesisCategory;
 
-		case True:
-		case False:
-			return TrueFalseCategory;
+		case DecimalSeparator:
+			return DecimalSeparatorCategory;
 
 		case FunctionCall:
 			return FunctionCallCategory;
 
 		case GreaterThan:
-		case LessOrEquals:
 		case Equals:
+		case LessOrEquals:
 		case LessThan:
-		case GreaterOrEquals:
 		case NotEquals:
+		case GreaterOrEquals:
 			return ExpressionCategory;
 
-		case ArgumentSeparator:
-			return ArgumentSeparatorCategory;
+		case NotSet:
+		case Unknown:
+		case ArgumentList:
+		case Root:
+		case EndOfLine:
+		case EndOfInput:
+			return MetaCategory;
 
-		case Power:
-		case Substracton:
-		case Multiplication:
-		case Division:
-		case Addition:
-			return MathOperatorCategory;
+		case Assign:
+			return AssignmentCategory;
+
+		case True:
+		case False:
+			return TrueFalseCategory;
 
 		case Comment:
 			return CommentCategory;
 
-		case Assign:
-			return AssignmentCategory;
+		case ArgumentSeparator:
+			return ArgumentSeparatorCategory;
 
 		case Or:
 		case And:
@@ -181,6 +195,7 @@ int Token::typeToCategory(int type)
 			return ScopeCategory;
 
 		case Variable:
+		case VariablePrefix:
 			return VariableCategory;
 
 		case StringDelimiter:

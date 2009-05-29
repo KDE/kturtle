@@ -1,13 +1,15 @@
 kturtle-script-v1.0
-@(learn) quadrat{
-  @(repeat) 4 {
-    @(forward) 40
-    @(turnleft) 90
-  }
-  @(turnleft) 90
+@(learn) Quadrat{
+  @(forward) 40 
+  @(turnleft) 90 
+  @(forward) 40
+  @(turnleft) 90 
+  @(forward) 40
+  @(turnleft) 90 
+  @(forward) 40
 }
 
 @(reset)
 @(repeat) 4 {
-  quadrat
+   Quadrat
 }

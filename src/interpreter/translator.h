@@ -51,23 +51,21 @@ class Translator
 	public:
 		static Translator* instance();
 
-		/** @short   Sets the dictionary language.
-		    By setting the dictionary KTurtle will use a different translation of TurtleScript.
-		    Examples are managed by the Translator aswell. Easy.
-		    TODO: is this redundant no KDE has a 'switch application langugae' in the Help(???) menu?
-		    @param   lang_code the ISO language code of the dictionary (eg: "en_US", "fr", "pt_BR", "nl")
-		    @returns TRUE is the loading was successful, otherwise FALSE */
+// // //		/** @short   Tries to load an XML dictionary.
+// // //		    @param   xmlFile the file of the dictionary
+// // //		    @returns TRUE is the loading was successful, otherwise FALSE */
 		bool setLanguage(const QString &lang_code = QString(DEFAULT_LANGUAGE_CODE));
 
 		/** @short Converts a unicode string to a token type.
 		    Uses the dictionary to do so.
-		    If the string could not translated to a Token type, Token::Unknown is returned.
+		    If the string could not be turned into a Token type, the Token
+		    type Unknown is returned.
 		    @param   look the unicode string a bit of KTurtle code
 		    @returns the token type, Token::Unknown if not recognised */
 		int look2type(QString& look);
 
 		/** @short Converts a unicode character to a token type.
-		    Overloaded for convenience, behaves like the method it overloads.
+		    Convenience method, essentially behaves like the above.
 		    @param   look one unicode character of KTurtle code
 		    @returns the token type, Token::Unknown if not recognised */
 		int look2type(QChar& look);
@@ -90,7 +88,6 @@ class Translator
 		
 		QStringList allLocalizedLooks() { return QStringList(default2localizedMap.values()); }
 
-		/// used by the MainWindow's context help logic, and main.cpp
 		QString defaultLook(const QString& localizedEntry) { return default2localizedMap.key(localizedEntry); }
 
 		QStringList exampleNames() const { return QStringList(examples.keys()); }

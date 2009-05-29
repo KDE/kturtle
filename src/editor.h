@@ -36,9 +36,7 @@
 
 #include "highlighter.h"
 #include "interpreter/token.h"
-#include "interpreter/tokenizer.h"
 #include "interpreter/treenode.h"
-
 
 class QHBoxLayout;
 class QPaintEvent;
@@ -221,9 +219,7 @@ class Editor : public QFrame
 		bool isModified() { return editor->document()->isModified(); }
 		QString content() { return editor->document()->toPlainText(); }
 
-		int row() { return currentRow; }
-		int col() { return currentCol; }
-		Token* currentToken();
+		Token* currentToken(const QString& text, int cursorIndex) { return highlighter->formatType(text, cursorIndex); }
 
 		void removeMarkings() {
 			editor->removeCurrentWordMark();
@@ -259,24 +255,23 @@ class Editor : public QFrame
 
 
 	signals:
-		void contentNameChanged(const QString&);
+		void currentUrlChanged(const KUrl&);
 		void fileOpened(const KUrl&);
 		void fileSaved(const KUrl&);
-		void modificationChanged();
+		void modificationChanged(bool);
 		void contentChanged();
-		void cursorPositionChanged();
+		void cursorPositionChanged(int row, int col, const QString& line);
 
 
 	protected slots:
 		void textChanged(int pos, int added, int removed);
-// 		void cursorPositionChanged();
+		void cursorPositionChanged();
 
 	protected:
 		void paintEvent(QPaintEvent *event);
 
 
 	private slots:
-		void updateOnCursorPositionChange();
 		void highlightCurrentLine() { this->update(); }
 
 	private:
@@ -284,15 +279,12 @@ class Editor : public QFrame
 
 		TextEdit    *editor;  // TODO why pointers?
 		Highlighter *highlighter;  // TODO could this class become a singleton? (shared with the inspector, errdlg)
-		Tokenizer   *tokenizer;  // TODO could this class become a singleton? (shared with the highlighter, interpreter)
 		LineNumbers *numbers;
 		QHBoxLayout *box;  // TODO is this relly needed?
 		KFindDialog *fdialog;
-		KUrl         m_currentUrl;  // contains url to the currently load file or the exampleName
+		KUrl         m_currentUrl;
 		QColor       highlightedLineBackgroundColor;  // the bg color of the current line's line number space
-		QString      currentLine;
-		int          currentRow;
-		int          currentCol;
+		int          currentLine;
 };
 
 

@@ -110,7 +110,7 @@ void Inspector::clear()
 	variableTable->setShowGrid(false);
 	variableTable->setRowCount(1);
 	QTableWidgetItem* emptyItem;
-	emptyItem = new QTableWidgetItem(i18n("No variables"));
+	emptyItem = new QTableWidgetItem(i18n("Nothing to show here"));
 	variableTable->setItem(0, 0, emptyItem);
 	variableTable->resizeColumnsToContents();
 
@@ -127,7 +127,7 @@ void Inspector::clear()
 	functionTable->verticalHeader()->setVisible(false);
 	functionTable->setShowGrid(false);
 	functionTable->setRowCount(1);
-	emptyItem = new QTableWidgetItem(i18n("No learned functions"));
+	emptyItem = new QTableWidgetItem(i18n("Nothing to show here"));
 	functionTable->setItem(0, 0, emptyItem);
 	functionTable->resizeColumnsToContents();
 

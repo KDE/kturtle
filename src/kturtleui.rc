@@ -65,9 +65,6 @@
       <ActionList name="languages_actionlist" />
     </Menu>
   </Menu>
-  <Menu name="help"><text>&amp;Help</text>
-    <Action name="context_help" />
-  </Menu>
 </MenuBar>
 
 <ToolBar name="mainToolBar" fullWidth="true" newline="true" noMerge="1"><text>Main Toolbar</text>

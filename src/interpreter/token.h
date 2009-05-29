@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003-2009 Cies Breijs <cies AT kde DOT nl>
+	Copyright (C) 2003-2006 Cies Breijs <cies AT kde DOT nl>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public
@@ -24,17 +24,19 @@
 #include <QString>
 
 
+
 /**
- * @short The Token object, represents a piece of TurtleScript as found by the Tokenizer.
+ * @short The Token object, represents a token in programming language.
  *
- * Because of the goals of KTurtle it this class very elaborate. Much info
- * about each token is kept so descriptive error messages can be printed,
- * and proper highlighting and context help made possible.
+ * Because of the goals of KTurtle it this class very extended, it stores much info
+ * about each token so descriptive error messages can be printed.
  *
- * Tokens are made by the Tokenizer accoring to the TurtleScript, then they are stored
- * in the node tree by the Parser or used by the Highlighter of for context help.
+ * Basically it is a wrapper around the tokens look, type and start/end position.
  *
- * A large potion of the code of this class (the Type enum) is generated code.
+ * The tokens made by the Tokeniser accorind to the KTurtle code, then they are stored
+ * in the node tree by the Parser. The Executer makes use of tokens while executing.
+ *
+ * A large part of the code of this class (the Type enum) is generated code.
  *
  * @TODO investigate if it will be beter to replace this class by a struct for speed.
  *
@@ -49,9 +51,6 @@ class Token
 		 */
 		enum Type
 		{
-			Error   = -2,  // when the Tokenizer finds something it cannot deal with (like a single dot)
-			Unknown = -1,  // when the Translator found no translation (like when calling a learned function)
-			NotSet  =  0,  // when Tokens are contructed without being initialized (needed for ErrorList)
 
 //BEGIN GENERATED token_type_h CODE
 
@@ -62,6 +61,9 @@ class Token
  * Thanks for looking at the code!
  */
 
+			NotSet,
+			Unknown,
+			Error,
 			Root,
 			Scope,
 			WhiteSpace,
@@ -175,14 +177,17 @@ class Token
 			CommandCategory,
 			ControllerCommandCategory,
 			NumberCategory,
+			MathOperatorCategory,
+			WhiteSpaceCategory,
 			ParenthesisCategory,
-			TrueFalseCategory,
+			DecimalSeparatorCategory,
 			FunctionCallCategory,
 			ExpressionCategory,
-			ArgumentSeparatorCategory,
-			MathOperatorCategory,
-			CommentCategory,
+			MetaCategory,
 			AssignmentCategory,
+			TrueFalseCategory,
+			CommentCategory,
+			ArgumentSeparatorCategory,
 			BooleanOperatorCategory,
 			ScopeCategory,
 			VariableCategory,
@@ -215,39 +220,70 @@ class Token
 		 */
 		Token(int type, const QString& look, int startRow, int startCol, int endRow, int endCol);
 
+		/** @short Destructor. Does nothing special. */
 		virtual ~Token() {}
 
 
-		const QString& look()
-		               const { return _look; }
-		int type()     const { return _type; }
-		int category() const { return typeToCategory(_type); }
-		int startRow() const { return _startRow; }
-		int startCol() const { return _startCol; }
-		int endRow()   const { return _endRow; }
-		int endCol()   const { return _endCol; }
+		
+		/** @returns the unicode string of code that sit behind this token. */
+		const QString& look()     const { return _look; }
+		
+		/** @returns the type of the token. @see setType() */
+		int            type()     const { return _type; }
 
-		void setType(int type)         { _type = type; }
-		void setStartRow(int startRow) { _startRow = startRow; }
-		void setStartCol(int startCol) { _startCol = startCol; }
-		void setEndRow(int endRow)     { _endRow = endRow; }
-		void setEndCol(int endCol)     { _endCol = endCol; }
+		/** @returns the category of the token. */
+		int            category() const { return typeToCategory(_type); }
+		
+		/** @returns the startRow of the token. @see setStartRow() */
+		int           startRow() const { return _startRow; }
+		
+		/** @returns the startCol of the token. @see setStartCol() */
+		int           startCol() const { return _startCol; }
+		
+		/** @returns the endRow of the token. @see setEndRow() */
+		int           endRow()   const { return _endRow; }
+		
+		/** @returns the endCol of the token. @see setEndCol() */
+		int           endCol()   const { return _endCol; }
 
-		/// Compares 2 Tokens. Needed for ErrorList (QValueList) to compare ErrorMessages which contain Tokens.
+
+		/** Sets the @p type of the token. @see type() */
+		void setType(int type)          { _type = type; }
+
+		/** Sets the @p startRow of the token. @see startRow() */
+		void setStartRow(int startRow)  { _startRow = startRow; }
+
+		/** Sets the @p startCol of the token. @see startCol() */
+		void setStartCol(int startCol)  { _startCol = startCol; }
+
+		/** Sets the @p endRow of the token. @see endRow() */
+		void setEndRow(int endRow)      { _endRow = endRow; }
+
+		/** Sets the @p endCol of the token. @see endCol() */
+		void setEndCol(int endCol)      { _endCol = endCol; }
+
+		/** Compares 2 Tokens. Needed for ErrorList (QValueList), it needs to compare ErrorMessages which contain Tokens. */
 		bool operator==(const Token&) const;
 
-		/// Assigns a Token, it needs to compare ErrorMessages which contain Tokens.
+		/** Assigns a Token, it needs to compare ErrorMessages which contain Tokens. */
 		Token& operator=(const Token&);
+		
+//		static QString key(int type);    maybe needed in the future when the tokenizer is used for context help
 
 		/// returns the category a type belongs to (generated)
 		static int typeToCategory(int);
 
 
 	private:
-		int     _type;
-		QString _look;
-		int     _startRow, _startCol, _endRow, _endCol;
+		/// The tokens type.
+		int            _type;
+
+		/// The tokens look (unicode). Constant; can only set at construction time.
+		QString        _look;
+
+		/// The tokens start/end positions.
+		int           _startRow, _startCol, _endRow, _endCol;
 };
 
 
-#endif  // _TOKEN_H_
+#endif // _TOKEN_H_

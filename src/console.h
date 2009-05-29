@@ -20,11 +20,12 @@
 #ifndef _CONSOLE_H_
 #define _CONSOLE_H_
 
-#include <KAction>
-#include <KComboBox>
+#include <QWidgetAction>
+
+#include <kcombobox.h>
 
 
-class Console : public KAction
+class Console : public QWidgetAction
 {
 	Q_OBJECT
 

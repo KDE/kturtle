@@ -53,12 +53,6 @@ Highlighter::Highlighter(QTextDocument *parent)
 	tokenizer = new Tokenizer();
 }
 
-Highlighter::~Highlighter()
-{
-	delete tokenizer;
-}
-
-
 QTextCharFormat* Highlighter::formatForStatement(const QString &text)
 {
 	// TODO store the Token (pointer) in the respective inspector lists so we don't have to re-tokenize here...
@@ -100,14 +94,18 @@ QTextCharFormat* Highlighter::tokenToFormat(Token* token)
 		case Token::ControllerCommandCategory: return &controllerCommandFormat;
 		case Token::LearnCommandCategory:      return &learnCommandFormat;
 
-		// do nothing with these... yet.
-		case Token::MathOperatorCategory:      return 0;
-		case Token::ParenthesisCategory:       return 0;
-		case Token::FunctionCallCategory:      return 0;
-		case Token::ExpressionCategory:        return 0;
-		case Token::AssignmentCategory:        return 0;
-		case Token::ArgumentSeparatorCategory: return 0;
-		case Token::BooleanOperatorCategory:   return 0;
+		case Token::MetaCategory:
+		case Token::MathOperatorCategory:
+		case Token::WhiteSpaceCategory:
+		case Token::ParenthesisCategory:
+		case Token::DecimalSeparatorCategory:
+		case Token::FunctionCallCategory:
+		case Token::ExpressionCategory:
+		case Token::AssignmentCategory:
+		case Token::ArgumentSeparatorCategory:
+		case Token::BooleanOperatorCategory:
+			// do nothing with these... yet.
+			break;
 	}
 	return 0;
 }

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003-2009 Cies Breijs <cies AT kde DOT nl>
+	Copyright (C) 2003-2008 Cies Breijs <cies AT kde DOT nl>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public
@@ -43,7 +43,6 @@
 #include <ktoolbar.h>
 #include <ktoolbarlabelaction.h>
 #include <ktoolbarpopupaction.h>
-#include <ktoolinvocation.h>
 #include <kdeprintdialog.h>
 #include <kfiledialog.h>
 #include <ksavefile.h>
@@ -79,7 +78,7 @@ MainWindow::MainWindow()
 	colorPicker = 0;
 
 	statusBar()->showMessage(i18nc("@info:status the application is ready for commands", "Ready"));
-	updateContentName();  // also sets the window caption to 'untitled'
+	setCaption();  // also sets the window caption to 'untitled'
 	setRunSpeed(0);
 	abort();  // sets the run-states for the actions right
 
@@ -111,10 +110,13 @@ void MainWindow::printDlg()
 {
 	QPrinter printer;
 	QPrintDialog *printDialog = KdePrint::createPrintDialog(&printer, this);
-	if (printDialog->exec()) {
+	if (printDialog->exec())
+	{
 		QPainter painter;
 		painter.begin(&printer);
+
 		editor->document()->drawContents(&painter);
+
 		painter.end();
 	}
 	delete printDialog;
@@ -137,7 +139,7 @@ void MainWindow::showColorPicker()
 
 void MainWindow::contextHelp()
 {
-  KToolInvocation::invokeHelp(contextHelpAnchor);
+//TODO display a help dialog about syntax commands
 }
 
 /*void MainWindow::whatsThis()
@@ -377,16 +379,17 @@ void MainWindow::setupActions()
 	executeConsole->setWhatsThis(i18n("Execute: Executes the current line in the console"));
 
 	// Help menu actions
+	//TODO: implement context help
 	contextHelpAct = ac->addAction("context_help");
 	contextHelpAct->setText("");
-	contextHelpAct->setIcon(KIcon("help-about"));
+	contextHelpAct->setIcon(KIcon("help-contents"));
 	contextHelpAct->setShortcut(QKeySequence(Qt::Key_F2));
 	contextHelpAct->setStatusTip(i18n("Get help on the command under the cursor"));
 	contextHelpAct->setWhatsThis(i18n("Context Help: Get help on the command under the cursor"));
 	connect(contextHelpAct, SIGNAL(triggered()), this, SLOT(contextHelp()));
-	updateContextHelpAction();
+	setContextHelp();
 
-	a = actionCollection()->addAction(KStandardAction::HelpContents, "help_contents", this, SLOT(appHelpActivated()));
+	a = actionCollection()->addAction(KStandardAction::HelpContents,  "help_contents", this, SLOT(appHelpActivated()));
 	a->setStatusTip(i18n("Help"));
 	a->setWhatsThis(i18n("Help: Open manual for KTurtle"));
 
@@ -402,8 +405,8 @@ void MainWindow::setupActions()
 	connect(runSpeedAction, SIGNAL(triggered()), this, SLOT(run()));
 	QMenu* runSpeedActionMenu = runSpeedAction->menu();
 	actionCollection()->addAction("run_speed", runSpeedAction);
-	runSpeedActionMenu->setStatusTip(i18n("Execute the program, or use the drop down menu to select the run speed"));
-	runSpeedActionMenu->setWhatsThis(i18n("Run: Execute the program, or use the drop down menu to select the run speed"));
+	runSpeedActionMenu->setStatusTip(i18n("Execute the program"));
+	runSpeedActionMenu->setWhatsThis(i18n("Run: Execute the program"));
 	connect(runSpeedActionMenu, SIGNAL(triggered ( QAction *)), this, SLOT(run()));
 
 
@@ -534,18 +537,19 @@ void MainWindow::setupDockWindows()
 	inspector = new Inspector(inspectorWrapWidget);
 	inspectorDockLayout->addWidget(inspector);
 	inspectorDock->setWidget(inspectorWrapWidget);
-	addDockWidget(Qt::RightDockWidgetArea, inspectorDock);
+	addDockWidget(Qt::LeftDockWidgetArea, inspectorDock);
 	inspector->setWhatsThis(i18n("Inspector: See information about variables and functions when the program runs"));
 }
 
 void MainWindow::setupEditor()
 {
 // 	editor->setTranslator(Translator::instance());
-	connect(editor, SIGNAL(modificationChanged()), this, SLOT(updateModificationState()));
-	connect(editor, SIGNAL(contentNameChanged(const QString&)), this, SLOT(updateContentName(const QString&)));
+	connect(editor, SIGNAL(modificationChanged(bool)), this, SLOT(setWindowModified(bool)));
+	connect(editor, SIGNAL(currentUrlChanged(const KUrl&)), this, SLOT(setCaption(const KUrl&)));
 	connect(editor, SIGNAL(fileOpened(const KUrl&)), this, SLOT(addToRecentFilesList(const KUrl&)));
 	connect(editor, SIGNAL(fileSaved(const KUrl&)), this, SLOT(addToRecentFilesList(const KUrl&)));
-	connect(editor, SIGNAL(cursorPositionChanged()), this, SLOT(updateOnCursorPositionChange()));
+	connect(editor, SIGNAL(cursorPositionChanged(int, int, const QString&)),
+		this, SLOT(updateOnCursorPositionChange(int, int, const QString&)));
 }
 
 void MainWindow::setupInterpreter()
@@ -585,7 +589,7 @@ void MainWindow::setupStatusBar()
 	statusBarFileNameLabel->setAlignment(Qt::AlignRight);
 
 	toggleOverwriteMode(false);
-	updateOnCursorPositionChange();
+	updateOnCursorPositionChange(1, 1, "");
 }
 
 void MainWindow::saveNewToolbarConfig()
@@ -607,7 +611,7 @@ void MainWindow::updateLanguagesMenu()
 	QMap<QString, QString> map;
 	foreach (const QString &lang_code, KGlobal::locale()->languageList())
 		map.insert(codeToFullName(lang_code), lang_code);
-	// populate the menu:
+				// populate the menu:
 	foreach (const QString &lang_code, map) {
 		a = new QAction(codeToFullName(lang_code), actionCollection());
 		a->setData(lang_code);
@@ -626,10 +630,10 @@ void MainWindow::updateLanguagesMenu()
 
 void MainWindow::updateExamplesMenu()
 {
-	KAction* newExample;
+	KAction * newExample;
 	QString actionName;
-	QList<QAction*> exampleList;
-	QActionGroup* exampleGroup = new QActionGroup (this);
+	QList<QAction *> exampleList;
+	QActionGroup * exampleGroup = new QActionGroup (this);
 
 	foreach (const QString &exampleName, Translator::instance()->exampleNames()) {
 		newExample = new KAction (exampleName, this);
@@ -655,7 +659,7 @@ void MainWindow::addToRecentFilesList(const KUrl& url)
 
 void MainWindow::openExample()
 {
-	QAction* action = qobject_cast<QAction*>(sender());
+	QAction *action = qobject_cast<QAction*>(sender());
 	QString exampleName = action->data().toString();
 	editor->openExample(Translator::instance()->example(exampleName), exampleName);
 }
@@ -666,62 +670,52 @@ void MainWindow::toggleOverwriteMode(bool b)
 	editor->setOverwriteMode(b);
 }
 
-void MainWindow::updateContextHelpAction(const QString& s, const QString& anchor)
+void MainWindow::setContextHelp(const QString& s)
 {
-	kDebug(0) << QString("%1 (help anchor: %2)").arg(s).arg(anchor);
-	contextHelpAnchor = anchor;
-	contextHelpString = s.isEmpty() ? i18n("<nothing under cursor>") : s;
+	contextHelpString = s.isEmpty() ? i18n("<placeholder>no keyword</placeholder>") : s;
 	contextHelpAct->setText(i18n("Help on: %1", contextHelpString));
 }
 
-void MainWindow::updateOnCursorPositionChange()
+void MainWindow::updateOnCursorPositionChange(int row, int col, const QString& line)
 {
-	statusBarPositionLabel->setText(i18n(" Line: %1 Column: %2 ", editor->row(), editor->col()));
+	statusBarPositionLabel->setText(i18n(" Line: %1 Column: %2 ", row, col));
 
-	Token* cursorToken = editor->currentToken();
+	Token* cursorToken = editor->currentToken(line, col);
 	QString desc;
 	if (cursorToken != 0) {
 		QString look = cursorToken->look();
 		int cat = cursorToken->category();
 		delete cursorToken;
 		cursorToken = 0;
-		QString layout = i18n("\"%1\" <%2>");
 		switch (cat) {
-			// not showing the look (only the name):
-			case Token::VariableCategory:     updateContextHelpAction(i18n("<variable>"), "variable"); return;
-			case Token::NumberCategory:       updateContextHelpAction(i18n("<number>"), "number");     return;
-			case Token::CommentCategory:      updateContextHelpAction(i18n("<comment>"), "comment");   return;
-			case Token::StringCategory:       updateContextHelpAction(i18n("<string>"), "string");     return;
-			// only showing the look:
-			case Token::LearnCommandCategory: updateContextHelpAction(look, "learn");                  return;
-			case Token::TrueFalseCategory:    updateContextHelpAction(look, "boolean");                return;
-			// showing the look and the name:
-			case Token::ScopeCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("scope")), "scope"); return;
-			case Token::AssignmentCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("assignment")), "assignment"); return;
-			case Token::ParenthesisCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("parenthesis")), "parenthesis"); return;
-			case Token::MathOperatorCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("mathematical operator")), "math-operator"); return;
-			case Token::ExpressionCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("expression")), "expression"); return;
-			case Token::BooleanOperatorCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("boolean operator")), "boolean-operator"); return;
+			case Token::VariableCategory:          setContextHelp(i18n("<placeholder>variable</placeholder>"));    return;
+			case Token::NumberCategory:            setContextHelp(i18n("<placeholder>number</placeholder>"));      return;
+			case Token::CommentCategory:           setContextHelp(i18n("<placeholder>comment</placeholder>"));     return;
+			case Token::StringCategory:            setContextHelp(i18n("<placeholder>string</placeholder>"));      return;
+			case Token::ScopeCategory:             setContextHelp(i18n("<placeholder>scope</placeholder>"));       return;
+			case Token::AssignmentCategory:        setContextHelp(i18n("<placeholder>assignment</placeholder>"));  return;
+			case Token::ParenthesisCategory:       setContextHelp(i18n("<placeholder>parenthesis</placeholder>")); return;
+
+			case Token::MathOperatorCategory:      desc = i18n("mathematical operator");
+			case Token::ExpressionCategory:        desc = i18n("expression");
+			case Token::BooleanOperatorCategory:   desc = i18n("boolean operator");
+			case Token::TrueFalseCategory:         desc = i18n("boolean");
+			case Token::CommandCategory:           desc = i18n("command");
+			case Token::ControllerCommandCategory: desc = i18n("command");
+			case Token::LearnCommandCategory:      desc = i18n("command");
+				setContextHelp(QString("\"%1\" (%2)").arg(look).arg(desc));
+				return;
+
+			case Token::MetaCategory:
+			case Token::WhiteSpaceCategory:
+			case Token::DecimalSeparatorCategory:
 			case Token::FunctionCallCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("learned command")), "learned-command"); return;
 			case Token::ArgumentSeparatorCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("argument separator")), "argument-separator"); return;
-			// showing the look and the name, and linking to the help through their default look (en_US):
-			case Token::CommandCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("command")), Translator::instance()->defaultLook(look));
-				return;
-			case Token::ControllerCommandCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("controller command")), Translator::instance()->defaultLook(look));
-				return;
+				// do nothing with these... yet.
+				break;
 		}
 	}
-	updateContextHelpAction();  // display the 'nothing under cursor thing'
+	setContextHelp(i18n("<placeholder>no keyword</placeholder>"));
 }
 
 
@@ -890,12 +884,11 @@ void MainWindow::abort()
 }
 
 
-void MainWindow::updateContentName(const QString& str)
+void MainWindow::setCaption(const KUrl &url, bool modified)
 {
-	QString caption = str.isEmpty() ? i18n("untitled") : str;
-	bool modified = editor->isModified();
-	KXmlGuiWindow::setCaption(caption, modified);
-	statusBarFileNameLabel->setText(QString(" %1%2 ").arg(caption).arg(modified ? "*" : ""));
+	QString filename = url.isEmpty() ? i18n("untitled") : url.fileName();
+	KXmlGuiWindow::setCaption(filename, modified);
+	statusBarFileNameLabel->setText(QString(" %1%2 ").arg(filename).arg(modified ? "*" : ""));
 }
 
 void MainWindow::addToRecentFiles(const KUrl &url)
@@ -910,7 +903,7 @@ void MainWindow::readConfig()
 
 //   m_paShowStatusBar->setChecked(config->readEntry("ShowStatusBar", QVariant(false)).toBool());
 //   m_paShowPath->setChecked(config->readEntry("ShowPath", QVariant(false)).toBool());
-    recentFilesAction->loadEntries(KGlobal::config()->group("Recent Files"));
+    recentFilesAction->loadEntries(KGlobal::config()->group( "Recent Files") );
 
 	QString lang_code(config.readEntry("currentLanguageCode", QVariant(QString())).toString());
 	if (lang_code.isEmpty()) lang_code = "en_US";  // null-string are saved as empty-strings
@@ -952,7 +945,7 @@ void MainWindow::slotMessageDialog(const QString& text)
 
 void MainWindow::saveAsPicture()
 {
-	// copied from edit code for file selection
+	//Copied from edit code for file selection
 	KUrl url = KFileDialog::getSaveUrl(QString(), QString("*.png|%1\n*|%2").arg(i18n("PNG Images")).arg(i18n("All files")), this, i18n("Save as Picture"));
 	if (url.isEmpty()) return;
 	if (KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this) &&
@@ -963,11 +956,12 @@ void MainWindow::saveAsPicture()
 			i18n("&Overwrite")
 			) != KMessageBox::Continue
 		) return;
-	// get our image from the canvas
+	//Get our image from the canvas
 	QImage pict = canvas->getPicture();
-	// save as png
+	//Save as png
 	pict.save(url.path(), "PNG");
 }
 
+// END
 
 #include "mainwindow.moc"

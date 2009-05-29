@@ -1,73 +1,59 @@
- = KTurtle TODOs =
-
-Besides this document you can find TODO items in the code (try grepping for 'TODO'), in the BUGS file and on bugs.kde.org.
-
- == general ==
- * complain about the 'Switch Application Language...' in the Help menu.
- * Run action group has WhatIsThis, but it doesnt work -- file a bug...
-
-
  == mainwindow ==
- * have a look at KDE's new build-in 'Switch Application Language...', could it fully replaces ours.
+ ---
+ * make settings menu (or not: maybe keep all in other menu's) [fonttype, fontsize, language, default canvas size]
  * make fullscreen mode (hide all GUI elemets but the canvas during execution)
  * connect statusTips and whatIsThis
+ * get WhatIsThis (et al) help in
  * do reordering (in stead of duping) when adding already existing recent file items
- * when looking at errors tab and running again switch back to canvas automatically
- * maybe make a menu for Run actions and a menu for Canvas (export, print)
- * bug: column shows a huge number on start up in the statusbar
- * bug: line number is 1 to low on start up in the statusbar
+
 
  == interpreter ==
  * make sure recursion over several functions is possible (index learns at execution init time)
       --> so extend initialize(), and make finalize() to detect/report unclosed stuff
- * make/fix the ruby managed unittest suite (make it work with the new debug msgs style)
+ * fix the ruby managed unittest suite (make it work with the new debug msgs style)
+ ---
  * make more unittests (redesign the unittest framework using the to-be-created commandline invoke method)
- * make tests for all statements
- * add no-highlighting run mode (speed things up drastically)
+ * finish all functions
+ * finish and test function learning system
+
 
  == canvas ==
- * make state of all things available to the executer (add more get* commands)
- * add saving to svg and printing functionality
- * context menu (right click) for export and print
+ ---
+ * make state of all things available to the executer
+ * add saving to file (png, maybe even svg) and printing functionality
+ * context menu for save and print
  * DON'T add wrapping functionality (not a ToDo, but a DontDo)
 
 
  == editor ==
- * finish context help (F2) action
- * disable save (not saveAs), or make it work properly for examples
- * save can be disabled after a code has been saved
+ * connect editor to context help (F2) action
+ ---
+ * fill tools menu
+ * connect the editor to some statusbar fields
+ * reimplement context menu for cut/copy/paste, undo/redo, show/hide, and context help
  * make a syntax highlighting nicer (more style categories)
  * some html export function (just use the toHtml() method)
 
 
  == PR ==
+ ---
  * make wikipedia page nicer (screenshots, etc.)
- * release a pre-release
- * maybe: team up with windows/osx team for a kturtle only installes
- * a a page (wiki?) for childrens and teachers manual + translations + translators info [or docbook; KDE translated] (userbase??)
+ * realease a pre-release
+ * maybe: team up with kdelibs-windows team for an early windows version
+ * a wiki for childrens and teachers manual + translations + translators info [or docbook; KDE translated]
+
+
+
+
+
+
+
+
+
+
+
 
 
  == maybe someday's ==
  * refactor the generators ruby code
- * create a generated parser (yacc/bison style; Qt has a parser, KDevelop too)
-
-
-
-
-PLAN: SOLVE GENERAL AMBIGUITY REGARDING THE TOKEN thingy
-right now token types are used all over the place. this is not the right way because:
- - Token types should be used for tokenizing of the string only. (ie: fw,{,"s",$a, ,#littlecomment,2.2,EOL,+,= are tokens)
- - right now their are also used as TreeNode types (ie: Scope, Root, ArgumentList)
- - and they are used as translatables in the translation lookup table (especially $,.,# are not tokens by them selves)
-currently this is not really a problem -- it works. yet it is not 'how it should be'.
-fixing this involved a big rewrite of the generator code, which result be a major refactor of the interpreter.
-therefor this should not be started before a proper unittest framework is in place.
-
-
-
-
-
-
-
-
-
+ * totally hide the implementation of the editor class (use proxies for signal/slots)

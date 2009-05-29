@@ -126,6 +126,7 @@ class Parser
  * Thanks for looking at the code!
  */
 
+		TreeNode* parseUnknown();
 		TreeNode* parseVariable();
 		TreeNode* parseFunctionCall();
 		TreeNode* parseScopeOpen();
