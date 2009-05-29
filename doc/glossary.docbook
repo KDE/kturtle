@@ -1,5 +1,9 @@
-<!--Dear translator: please NEVER translate the id or anything inside the tags as they are needed in english by the application
-     Thanks a lot in advance.-->
+<!--
+Dear translator, please NEVER translate the ids or any tag attributes
+as the context help feature expects them the way they are...
+Thanks a lot for your translation effort!
+-->
+
 <chapter id="Glossary">
 <title>Glossary</title>
 
@@ -46,7 +50,7 @@ penup
 
 <glossentry id="intuitive-highlighting">
 <glossterm>intuitive highlighting</glossterm>
-<glossdef><para>This is a feature of &kturtle; that makes coding even easier. With intuitive highlighting the code that you write gets a color that indicates what type of code it is. In the next list you will find the different types of code and the color they get in <link linkend="the-code-editor">the code editor</link>.
+<glossdef><para>This is a feature of &kturtle; that makes coding even easier. With intuitive highlighting the code that you write gets a color that indicates what type of code it is. In the next list you will find the different types of code and the color they get in <link linkend="the-editor">the editor</link>.
 <table>
 <title>Different types of code and their highlight color</title>
 <tgroup cols="3">
