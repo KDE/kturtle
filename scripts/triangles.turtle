@@ -1,21 +1,22 @@
 kturtle-script-v1.0
 @(reset)
+@(canvascolor) 0@(,) 0@(,) 0
 
-@(learn) triangle $X {
+@(learn) triangle $size {
 	@(repeat) 3 {
-		@(forward) $X
-   @(turnleft) 120
- }
-}
-
-@(for) $r = 1 @(to) 10 {
-  @(clear)
-  @(repeat) 18 {
-    triangle $r*$r*2
-    @(turnright) 20
+		@(forward) $size
+    @(turnleft) 120
   }
-  @(wait) 1
 }
 
-@(wait) 3
-@(clear)
+@(for) $r = 1 @(to) 12 {
+  @(for) $n = 1 @(to) 12 {
+		$c = $n * $n * 1.7
+		@(pencolor) $c@(,) 256 - $c@(,) 256 - $r * 21 
+    triangle 200 - $r * $r
+    @(turnright) 30.25
+  }
+	@(turnright) 2
+}
+
+@(direction) 0

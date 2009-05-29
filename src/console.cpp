@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003-2008 Cies Breijs <cies AT kde DOT nl>
+	Copyright (C) 2003-2009 Cies Breijs <cies AT kde DOT nl>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public
@@ -19,7 +19,7 @@
 
 
 #include "console.h"
-#include "editor.h"  // for the error highlight color
+#include "editor.h"  // only for the error highlight color value
 
 #include <QApplication>
 #include <QHBoxLayout>
@@ -28,14 +28,11 @@
 #include <QToolTip>
 #include <QWidget>
 
-#include <kdebug.h>
-
 #include <klocale.h>
 
 
-
 Console::Console(QWidget* parent)
-	: QWidgetAction(parent)
+	: KAction(parent)
 {
 	baseWidget = new QWidget(parent);
 	QHBoxLayout* baseLayout = new QHBoxLayout();
@@ -77,7 +74,6 @@ void Console::clearMarkings()
 	comboBox->setFont(KGlobalSettings::fixedFont());
 }
 
-
 void Console::run()
 {
 	QString errorMessage = emit execute(comboBox->currentText());
@@ -90,22 +86,19 @@ void Console::run()
 
 void Console::showError(const QString& msg)
 {
-	comboBox->setStyleSheet("QComboBox:editable{background:"+ERROR_HIGHLIGHT_COLOR.name()+";}");
+	comboBox->setStyleSheet("QComboBox:editable{background:" + ERROR_HIGHLIGHT_COLOR.name() + ";}");
 	comboBox->setFont(KGlobalSettings::fixedFont());
-	QString toolTipText("<p style='white-space:pre'><b>ERROR:</b> " + msg + "</p>");
+	QString toolTipText(i18n("<p style='white-space:pre'><b>ERROR:</b> %1</p>").arg(msg));
 	comboBox->setToolTip(toolTipText);
-	// TODO make a tooltip show for one second showing the errorr
-// 	QToolTip::showText(baseWidget->mapToGlobal(baseWidget->pos()) /*+ QPoint(comboBox->width()/2, comboBox->height())*/, toolTipText, comboBox, QRect(comboBox->rect()));
 }
 
 void Console::executeActionTriggered()
 {
-  QLineEdit *lineEdit = comboBox->lineEdit(); //krazy:exclude=qclasses
-  if ( !lineEdit )
-    return;
-
-  QKeyEvent event( QEvent::KeyPress, Qt::Key_Return, Qt::NoModifier, QChar('\n') );
-  QApplication::sendEvent( lineEdit, &event );
+	QLineEdit* lineEdit = comboBox->lineEdit();
+	if (!lineEdit)
+		return;
+	QKeyEvent event(QEvent::KeyPress, Qt::Key_Return, Qt::NoModifier, QChar('\n'));
+	QApplication::sendEvent(lineEdit, &event);
 }
 
 #include "console.moc"

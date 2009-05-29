@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003-2008 Cies Breijs <cies AT kde DOT nl>
+	Copyright (C) 2003-2009 Cies Breijs <cies AT kde DOT nl>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public
@@ -119,20 +119,20 @@ class MainWindow : public KXmlGuiWindow
 		void readConfig();
 		void writeConfig();
 
-		void setContextHelp(const QString& s = QString());
+		void updateContextHelpAction(const QString& s = QString(), const QString& anchor = QString());
 		QString codeToFullName(const QString&);
 
 		void updateExamplesMenu();
 		void updateLanguagesMenu();
-		bool setCurrentLanguage(const QString &);
+		bool setCurrentLanguage(const QString&);
 
 	private slots:
-		void setCaption(const KUrl& url = KUrl(), bool b = false);
-		void setWindowModified(bool b) { setCaption(editor->currentUrl(), b); }
-		void setLanguage(QAction *);
+		void updateContentName(const QString& str = QString());
+		void updateModificationState() { setCaption(editor->currentUrl().fileName()); }
+		void setLanguage(QAction*);
 		void addToRecentFiles(const KUrl&);
 		void toggleOverwriteMode(bool b);
-		void updateOnCursorPositionChange(int row, int col, const QString& line);
+		void updateOnCursorPositionChange();
 
 	private:
 		Canvas          *canvas;
@@ -154,6 +154,7 @@ class MainWindow : public KXmlGuiWindow
 		QString currentLanguageCode;
 
 		QString contextHelpString;
+    QString contextHelpAnchor;
 	
 		QMenu *examplesMenu;
 

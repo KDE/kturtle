@@ -168,7 +168,6 @@ void Executer::execute(TreeNode* node)
  * Thanks for looking at the code!
  */
 
-		case Token::Unknown             : executeUnknown(node);             break;
 		case Token::Root                : executeRoot(node);                break;
 		case Token::Scope               : executeScope(node);               break;
 		case Token::Variable            : executeVariable(node);            break;
@@ -350,14 +349,6 @@ void Executer::addError(const QString& s, const Token& t, int code)
  * Thanks for looking at the code!
  */
 
-void Executer::executeUnknown(TreeNode* node) {
-//	qDebug() << "Executer::executeUnknown()";
-	if (node->parent()->token()->type() == Token::Learn) {
-		currentNode = node->parent();
-		executeCurrent = true;
-		return;
-	}
-}
 void Executer::executeRoot(TreeNode* node) {
 //	qDebug() << "Executer::executeRoot()";
 	node = node; // stop the warnings // this is a stud
@@ -411,6 +402,12 @@ void Executer::executeVariable(TreeNode* node) {
 }
 void Executer::executeFunctionCall(TreeNode* node) {
 //	qDebug() << "Executer::executeFunctionCall()";
+	if (node->parent()->token()->type() == Token::Learn) {  // in case we're defining a function
+		currentNode = node->parent();
+		executeCurrent = true;
+		return;
+	}
+
 	if (returning) {  // if the function is already executed and returns now
 		returnValue = 0;
 		returning = false;
@@ -624,9 +621,6 @@ void Executer::executeBreak(TreeNode* node) {
 }
 void Executer::executeReturn(TreeNode* node) {
 //	qDebug() << "Executer::executeReturn()";
-	if(functionStack.isEmpty())
-		return;
-
 	if(node->childCount()>0)
 		returnValue = node->child(0)->value();
 	else
@@ -719,7 +713,7 @@ void Executer::executeLessOrEquals(TreeNode* node) {
 void Executer::executeAddition(TreeNode* node) {
 //	qDebug() << "Executer::executeAddition()";
 	if(node->childCount()!=2) {
-		addError(i18n("You need two numbers or strings to do an addition"), *node->token(), 0);
+		addError(i18n("You need two numbers or string to do an addition"), *node->token(), 0);
 		return;
 	}
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
@@ -746,16 +740,16 @@ void Executer::executeSubstracton(TreeNode* node) {
 void Executer::executeMultiplication(TreeNode* node) {
 //	qDebug() << "Executer::executeMultiplication()";
 	if(node->childCount()!=2) {
-		addError(i18n("You need two numbers to multiply"), *node->token(), 0);
+		addError(i18n("You need two numbers to multiplicate"), *node->token(), 0);
 		return;
 	}
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
 		node->value()->setNumber(node->child(0)->value()->number() * node->child(1)->value()->number());
 	} else {
 		if (node->child(0)->value()->type() != Value::Number)
-			addError(i18n("You tried to multiply a non-number, '%1'", node->child(0)->token()->look()), *node->token(), 0);
+			addError(i18n("You tried to multiplicate a non-number, '%1'", node->child(0)->token()->look()), *node->token(), 0);
 		if (node->child(1)->value()->type() != Value::Number)
-			addError(i18n("You tried to multiply by a non-number, '%1'", node->child(1)->token()->look()), *node->token(), 0);
+			addError(i18n("You tried to multiplicate by a non-number, '%1'", node->child(1)->token()->look()), *node->token(), 0);
 	}
 }
 void Executer::executeDivision(TreeNode* node) {
@@ -808,7 +802,7 @@ void Executer::executeAssign(TreeNode* node) {
 void Executer::executeLearn(TreeNode* node) {
 //	qDebug() << "Executer::executeLearn()";
 	if(functionTable.contains(node->child(0)->token()->look())) {
-		addError(i18n("The function '%1' is already defined.", node->child(0)->token()->look()), *node->token(), 0);
+		addError(i18n("The function '%1' is already defined!", node->child(0)->token()->look()), *node->token(), 0);
 		return;
 	}
 	functionTable.insert(node->child(0)->token()->look(), node);

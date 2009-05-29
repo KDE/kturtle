@@ -135,7 +135,7 @@ bool Parser::skipToken(int expectedTokenType, Token& byToken)
 		case Token::To:
 			addError(i18n("Expected 'to' after 'for'"), byToken, 0);
 			break;
-		case Token::Unknown:
+		case Token::FunctionCall:
 			addError(i18n("Expected a name for a command after 'learn' command"), byToken, 0);
 			break;
 	}
@@ -184,7 +184,6 @@ TreeNode* Parser::parseStatement()
  * Thanks for looking at the code!
  */
 
-		case Token::Unknown             : return parseUnknown();
 		case Token::Variable            : return parseVariable();
 		case Token::FunctionCall        : return parseFunctionCall();
 		case Token::ScopeOpen           : return parseScopeOpen();
@@ -262,7 +261,7 @@ TreeNode* Parser::parseFactor()
 			skipToken(Token::ParenthesisClose, *rememberedToken);
 			break;
 
-		case Token::Unknown:
+		case Token::FunctionCall:
 			node = parseFunctionCall();
 			break;
 
@@ -495,11 +494,6 @@ void Parser::appendArguments(TreeNode* node)
  * Thanks for looking at the code!
  */
 
-TreeNode* Parser::parseUnknown() {
-//	qDebug() << "Parser::parseUnknown()";
-	// this is usually a function call
-	return parseFunctionCall();
-}
 TreeNode* Parser::parseVariable() {
 //	qDebug() << "Parser::parseVariable()";
 	// This is called to the variable is the first token on a line.
@@ -515,7 +509,6 @@ TreeNode* Parser::parseVariable() {
 }
 TreeNode* Parser::parseFunctionCall() {
 //	qDebug() << "Parser::parseFunctionCall()";
-	// this method gets usually called through parseUnknown...
 	TreeNode* node = new TreeNode(currentToken);
 	node->token()->setType(Token::FunctionCall);
 	nextToken();
@@ -677,7 +670,7 @@ TreeNode* Parser::parseLearn() {
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	node->appendChild(new TreeNode(new Token(*currentToken)));
-	skipToken(Token::Unknown, *node->token());
+	skipToken(Token::FunctionCall, *node->token());
 	
 	TreeNode* argumentList = new TreeNode(new Token(Token::ArgumentList, "arguments", 0, 0, 0, 0));
 	while (currentToken->type() == Token::Variable) {

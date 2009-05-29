@@ -181,7 +181,6 @@ class Executer : public QObject
  * Thanks for looking at the code!
  */
 
-		void executeUnknown(TreeNode* node);
 		void executeRoot(TreeNode* node);
 		void executeScope(TreeNode* node);
 		void executeVariable(TreeNode* node);

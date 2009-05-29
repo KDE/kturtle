@@ -52,7 +52,7 @@ Editor::Editor(QWidget *parent)
 	setLineWidth(CURSOR_WIDTH);
 	setCurrentUrl();
 
-	currentLine = 0;
+	currentRow = 0;
 
 	// setup the main view
 	editor = new TextEdit(this);
@@ -65,7 +65,7 @@ Editor::Editor(QWidget *parent)
 	setFocusProxy(editor);
 	connect(editor->document(), SIGNAL(contentsChange(int,int,int)), this, SLOT(textChanged(int,int,int)));
 	connect(editor->document(), SIGNAL(modificationChanged(bool)), this, SLOT(setModified(bool)));
-	connect(editor, SIGNAL(cursorPositionChanged()), this, SLOT(cursorPositionChanged()));
+	connect(editor, SIGNAL(cursorPositionChanged()), this, SLOT(updateOnCursorPositionChange()));
 
 	// setup the line number pane
 	numbers = new LineNumbers(this, editor);
@@ -99,11 +99,13 @@ Editor::Editor(QWidget *parent)
 
 	// sets some more default values
 	newFile();
+	tokenizer = new Tokenizer();
 }
 
 Editor::~Editor()
 {
 	delete highlighter;
+	delete tokenizer;
 }
 
 void Editor::enable() {
@@ -128,8 +130,8 @@ void Editor::openExample(const QString& example, const QString& exampleName)
 {
 	if (newFile()) {
 		setContent(example);
-		setCurrentUrl();
 		editor->document()->setModified(false);
+		setCurrentUrl(exampleName);
 	}
 }
 
@@ -251,7 +253,7 @@ bool Editor::saveFile(const KUrl &targetUrl)
 		if (!url.isLocalFile()) KIO::NetAccess::upload(filename, url, this);
 		setCurrentUrl(url);
 		editor->document()->setModified(false);
-		//MainWindow will add us to the recent file list
+		// MainWindow will add us to the recent file list
 		emit fileSaved(url);
 		result = true; // fix GUI for saveAs and saveExamples. TODO: check 5 lines above
 	}
@@ -264,12 +266,9 @@ bool Editor::saveFileAs()
 	if (url.isEmpty()) return false;
 	if (KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this) &&
 		KMessageBox::warningContinueCancel(this,
-			i18n("Are you sure you want to overwrite %1?", url.fileName()),
-			i18n("Overwrite Existing File"),KGuiItem(i18n("&Overwrite")),
-			KStandardGuiItem::cancel(),
-			i18n("&Overwrite")
-			) != KMessageBox::Continue
-		) return false;
+			i18n("Are you sure you want to overwrite %1?", url.fileName()), i18n("Overwrite Existing File"),
+			KGuiItem(i18n("&Overwrite")), KStandardGuiItem::cancel(), i18n("&Overwrite")
+			) != KMessageBox::Continue) return false;
 	bool result = saveFile(url);
 	return result;
 }
@@ -289,75 +288,60 @@ bool Editor::maybeSave()
 void Editor::setModified(bool b)
 {
 	editor->document()->setModified(b);
-	emit modificationChanged(b);
+	emit modificationChanged();
 }
 
 // TODO: improve find to be able to search within a selection
 void Editor::find()
 {
 	// find selection, etc
-	if(editor->textCursor().hasSelection())
-	{
+	if (editor->textCursor().hasSelection()) {
 		QString selectedText = editor->textCursor().selectedText();
 		// If the selection is too big, then we don't want to automatically
 		// populate the search text box with the selection text
-		if(selectedText.length() < 30)
-		{
+		if (selectedText.length() < 30) {
 			fdialog->setPattern(selectedText);
 		}
 	}
-	if(fdialog->exec()==QDialog::Accepted && !fdialog->pattern().isEmpty())
-	{
+	if (fdialog->exec() == QDialog::Accepted && !fdialog->pattern().isEmpty()) {
 		long kOpts = fdialog->options();
 		QTextDocument::FindFlags qOpts = 0;
-		if(kOpts & KFind::CaseSensitive)
-		{ qOpts |= QTextDocument::FindCaseSensitively; }
-		if(kOpts & KFind::FindBackwards)
-		{ qOpts |= QTextDocument::FindBackward; }
-		if(kOpts & KFind::WholeWordsOnly)
-		{ qOpts |= QTextDocument::FindWholeWords; }
+		if (kOpts & KFind::CaseSensitive)  { qOpts |= QTextDocument::FindCaseSensitively; }
+		if (kOpts & KFind::FindBackwards)  { qOpts |= QTextDocument::FindBackward; }
+		if (kOpts & KFind::WholeWordsOnly) { qOpts |= QTextDocument::FindWholeWords; }
 		editor->find(fdialog->pattern(), qOpts);
 	}
 }
 
 void Editor::findNext()
 {
-	if(!fdialog->pattern().isEmpty())
-	{
+	if (!fdialog->pattern().isEmpty()) {
 		long kOpts = fdialog->options();
 		QTextDocument::FindFlags qOpts = 0;
-		if(kOpts & KFind::CaseSensitive)
-		{ qOpts |= QTextDocument::FindCaseSensitively; }
-		if(kOpts & KFind::FindBackwards)
-		{ qOpts |= QTextDocument::FindBackward; }
-		if(kOpts & KFind::WholeWordsOnly)
-		{ qOpts |= QTextDocument::FindWholeWords; }
+		if (kOpts & KFind::CaseSensitive)  { qOpts |= QTextDocument::FindCaseSensitively; }
+		if (kOpts & KFind::FindBackwards)  { qOpts |= QTextDocument::FindBackward; }
+		if (kOpts & KFind::WholeWordsOnly) { qOpts |= QTextDocument::FindWholeWords; }
 		editor->find(fdialog->pattern(), qOpts);
 	}
 }
 
 void Editor::findPrev()
 {
-	if(!fdialog->pattern().isEmpty())
-	{
+	if(!fdialog->pattern().isEmpty()) {
 		long kOpts = fdialog->options();
 		QTextDocument::FindFlags qOpts = 0;
-		if(kOpts & KFind::CaseSensitive)
-		{ qOpts |= QTextDocument::FindCaseSensitively; }
+		if (kOpts & KFind::CaseSensitive)    { qOpts |= QTextDocument::FindCaseSensitively; }
 		// search in the opposite direction as findNext()
-		if(!(kOpts & KFind::FindBackwards))
-		{ qOpts |= QTextDocument::FindBackward; }
-		if(kOpts & KFind::WholeWordsOnly)
-		{ qOpts |= QTextDocument::FindWholeWords; }
+		if (!(kOpts & KFind::FindBackwards)) { qOpts |= QTextDocument::FindBackward; }
+		if (kOpts & KFind::WholeWordsOnly)   { qOpts |= QTextDocument::FindWholeWords; }
 		editor->find(fdialog->pattern(), qOpts);
 	}
 }
 
 void Editor::setCurrentUrl(const KUrl& url)
 {
-	if (url == m_currentUrl) return;
 	m_currentUrl = KUrl(url);
-	emit currentUrlChanged(m_currentUrl);
+	emit contentNameChanged(m_currentUrl.fileName());
 }
 
 void Editor::setOverwriteMode(bool b)
@@ -367,7 +351,7 @@ void Editor::setOverwriteMode(bool b)
 }
 
 
-void Editor::cursorPositionChanged()
+void Editor::updateOnCursorPositionChange()
 {
 	// convert the absolute pos into a row/col pair, and return the current line aswell
 	QString s = editor->toPlainText();
@@ -385,12 +369,28 @@ void Editor::cursorPositionChanged()
 		}
 	}
 	if (next_break == 0) next_break = s.length();
-	if (currentLine != row) {
-		currentLine = row;
+	if (currentRow != row) {
+		currentRow = row;
 		highlightCurrentLine();
 		editor->highlightCurrentLine();
 	}
-	emit cursorPositionChanged(row+1, pos-last_break, s.mid(last_break+1, next_break-last_break-1));
+	currentCol = pos - last_break;
+	currentLine = s.mid(last_break+1, next_break-last_break-1);
+	emit cursorPositionChanged();
+}
+
+Token* Editor::currentToken()
+{
+	tokenizer->initialize(currentLine);
+	Token* token = tokenizer->getToken();
+	while (token->type() != Token::EndOfInput) {
+		if (currentCol >= token->startCol() && currentCol <= token->endCol())
+			return token;
+		delete token;
+		token = tokenizer->getToken();
+	}
+	delete token;
+	return 0;
 }
 
 
