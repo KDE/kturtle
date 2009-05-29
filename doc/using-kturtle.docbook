@@ -1,9 +1,5 @@
-<!--
-Dear translator, please NEVER translate the ids or any tag attributes
-as the context help feature expects them the way they are...
-Thanks a lot for your translation effort!
--->
-
+<!--Dear translator: please NEVER translate the id or anything inside the tags as they are needed in english by the application
+     Thanks a lot in advance.-->
 <chapter id="using-kturtle">
 <title>Using &kturtle;</title>
 
@@ -19,32 +15,63 @@ Thanks a lot for your translation effort!
   </mediaobject>
 </screenshot>
 
-<para>The main window of &kturtle; has three main parts: <link linkend="the-editor">the editor</link> (1) on the left where you type the &turtlelang; commands, the <link linkend="the-canvas">the canvas</link> (2) on the right where the turtle make your drawing, and the <link linkend="the-inspector">inspector</link> (3) which gives you information when your program executes. Besides these you find <link linkend="the-menubar">the menu bar</link> (5) from where all the actions can be reached, <link linkend="the-toolbar">the toolbar</link> (4) that allows you to quickly select the most used actions, the <guilabel>Console</guilabel>, that you can use to enter a one line command to test it, and <link linkend="the-statusbar">the statusbar</link> (along the bottom of the window) where you will find feedback on the state of &kturtle;.</para>
+<para>The main window of &kturtle; has three main parts: <link
+linkend="the-code-editor">the code editor</link> (3) on the left where you type
+the &turtlelang; commands, the <link linkend="the-inspector">inspector</link> (4)
+which gives you information about variables when the program runs, and <link
+linkend="the-canvas">the canvas</link> (5) on the right where the instructions
+are visualized. <link linkend="the-canvas">The canvas</link> is the turtle's
+playground: it is on the canvas that the turtle actually moves and draws. The
+four other places on the main window are: <link linkend="the-menubar">the menu
+bar</link> (1) from where all the actions can be reached, <link
+linkend="the-toolbar">the toolbar</link> (2) that allows you to quickly select
+the most used actions, the <guilabel>Console</guilabel>, that you can use to 
+enter a one line command to test it, and <link linkend="the-statusbar">the statusbar</link>
+(6) where you will find feedback on the state of &kturtle;.</para>
 
-<sect1 id="the-editor">
-<title>The Editor</title>
-<para>In the editor you type the &turtlelang; commands. Most of functions of the editor can be found in the <link linkend="the-file-menu">File</link>, <link linkend="the-edit-menu">Edit</link> and <link linkend="the-tools-menu">Tools</link> menus. The editor can be docked on each border of the main window or it can be detached and placed anywhere on your desktop.</para>
-<para>You have several ways to get some code in the editor. The easiest way is to use an example: choose <menuchoice><guimenu>File</guimenu><guisubmenu>Examples</guisubmenu></menuchoice> in the <link linkend="the-file-menu">File menu</link> and select an example. The file example you choose will be opened in the <link linkend="the-editor">the editor</link>, you can then use <menuchoice><guimenu>File</guimenu><guimenuitem>Run</guimenuitem></menuchoice> to run the code if you like.</para>
-<para>You can open &turtlelang; files by choosing <menuchoice><guimenu>File</guimenu><guimenuitem>Open...</guimenuitem></menuchoice>.</para>
-<para>The third way is to directly type your own code in the editor or to copy/paste some code.</para>
-<para>The cursor position is indicated in <link linkend="the-statusbar">the statusbar</link>, on the right with the Line number and Column number.</para>
+<sect1 id="the-code-editor">
+<title>The Code Editor</title>
+<para>In the code editor you type the &turtlelang; commands. It has all of the features you would expect from a modern editor. Most of its features are found in the <link linkend="the-edit-menu">Edit</link> and the <link linkend="the-tools-menu">Tools</link> menus. The code editor can be docked on each border of the main window or it can be detached and placed anywhere on your desktop.</para>
+<para>
+You have several ways to get some code in the editor. The easiest way is to use an already-made example: choose <menuchoice><guimenu>File</guimenu><guisubmenu>Examples</guisubmenu>
+</menuchoice> in the <link linkend="the-file-menu">File menu</link> and select an example. The file example you choose will be opened in the <link linkend="the-code-editor">the code editor</link>, you can then use <menuchoice><guimenu>File</guimenu><guimenuitem>Run</guimenuitem>
+</menuchoice> to run the code if you like.</para>
+<para>You can open &turtlelang; files by choosing <menuchoice><guimenu>File</guimenu><guimenuitem>Open...</guimenuitem>
+</menuchoice>.</para>
+<para>The third way is to directly type your own code in the editor or to
+copy/paste some code from this user guide.
+</para>
+<para>
+The cursor position is indicated in <link
+linkend="the-statusbar">the statusbar</link>, on the right with the Line number
+and Column number.
+</para>
 </sect1>
 
 <sect1 id="the-inspector">
 <title>The Inspector</title>
-<para>The inspector informs you about the variables, the learned functions and show the code tree while the program is running.</para>
-<para>The inspector can be docked on each border of the main window or it can be detached and placed anywhere on your desktop.</para>
+<para>
+The inspector informs you about the variables, the learned functions and the code tree while the program is running.
+</para>
+<para>The inspector can be docked on each border of the main window or it can be
+detached and placed anywhere on your desktop.</para>
 </sect1>
 
 <sect1 id="the-canvas">
 <title>The Canvas</title>
-<para>The canvas is the domain of the turtle, here the turtle draws according to the commands it gets. After getting some code in the <link linkend="the-editor">the editor</link>, and executing it using <menuchoice><guimenu>File</guimenu><guimenuitem>Run</guimenuitem></menuchoice>, two things can happen: either the code executes fine, and will you most likely see something change on the canvas; or you have made an error in your code in that case the error tab will appear explaining you what mistake you made.</para>
+<para>
+The canvas is the area where the commands are visualized, where the commands <quote>draw</quote> a picture. In other words, it is the turtle's playground. After getting some code in the <link linkend="the-code-editor">the code editor</link>, and executing it using <menuchoice><guimenu>File</guimenu><guimenuitem>Run</guimenuitem>
+</menuchoice>, two things can happen: either the code executes fine, and will you most likely see something change on the canvas; or you have made an error in your code and there will be a message telling you what error you made.</para>
+<para>This message should help you to resolve the error.</para>
 <para>You can zoom in and out the canvas with your mouse wheel.</para>
 </sect1>
 
 <sect1 id="the-menubar">
 <title>The Menubar</title>
-<para>In the menubar you find all the actions of &kturtle;. They are in the following groups: <guimenu>File</guimenu>, <guimenu>Edit</guimenu>, <guimenu>View</guimenu>, <guimenu>Tools</guimenu>, <guimenu>Settings</guimenu>, and <guimenu>Help</guimenu>. This section describes them all.</para>
+<para>In the menubar you find all the actions of &kturtle;. They are in the
+following groups: <guimenu>File</guimenu>, <guimenu>Edit</guimenu>,
+<guimenu>View</guimenu>, <guimenu>Tools</guimenu>, <guimenu>Settings</guimenu>,
+and <guimenu>Help</guimenu>. This section describes them all.</para>
 
 <sect2 id="the-file-menu">
 <title>The <guimenu>File</guimenu> Menu</title>
@@ -92,7 +119,11 @@ Thanks a lot for your translation effort!
         <guimenu>File</guimenu>
         <guisubmenu>Examples</guisubmenu>
       </menuchoice></term>
-      <listitem><para>Open example &turtlelang; programs. The examples are in your favorite language that you can choose in <menuchoice><guimenu>Settings</guimenu><guisubmenu>Script Language</guisubmenu></menuchoice>.</para></listitem>
+      <listitem><para>Open example &turtlelang; programs. The
+examples are in your favorite language that you can choose in 
+<menuchoice><guimenu>Settings</guimenu><guisubmenu>Script
+Language</guisubmenu>
+</menuchoice>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -138,7 +169,7 @@ Thanks a lot for your translation effort!
         <guimenu>File</guimenu>
         <guimenuitem>Run</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Starts the execution of the commands in the editor.</para></listitem>
+      <listitem><para>Starts the execution of the commands in the code editor.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -174,7 +205,16 @@ Thanks a lot for your translation effort!
         <guimenu>File</guimenu>
         <guisubmenu>Run Speed</guisubmenu>
       </menuchoice></term>
-      <listitem><para>Present a list of possible execution speeds, consisting of: <guimenuitem>Full Speed</guimenuitem>, <guimenuitem>Slow</guimenuitem>, <guimenuitem>Slower</guimenuitem>, <guimenuitem>Slowest</guimenuitem> and  <guimenuitem>Step-by-Step</guimenuitem>. When the execution speed is set to <guimenuitem>Full Speed</guimenuitem> (default) we can barely keep up with what is happening. Sometimes this behavior is wanted, but sometimes  we want to keep track of the execution. In the latter case you want to set the execution speed to <guimenuitem>Slow</guimenuitem>, <guimenuitem>Slower</guimenuitem> or <guimenuitem>Slowest</guimenuitem>. When one of the slow modes is selected the current position of the executor will be shown in the editor. <guimenuitem>Step-by-Step</guimenuitem> will execute one command at a time.</para></listitem>
+      <listitem><para>Present a list of possible execution speeds, consisting
+of: <guimenuitem>Full Speed</guimenuitem>, <guimenuitem>Slow</guimenuitem>, 
+<guimenuitem>Slower</guimenuitem>, <guimenuitem>Slowest</guimenuitem> and 
+<guimenuitem>Step-by-Step</guimenuitem>. When the execution
+speed is set to <guimenuitem>Full Speed</guimenuitem> (default) we can barely 
+keep up with what is happening. Sometimes this behavior is wanted, but sometimes 
+we want to keep track of the execution. In the latter case you want to set the execution speed
+to <guimenuitem>Slow</guimenuitem>, <guimenuitem>Slower</guimenuitem> or <guimenuitem>Slowest</guimenuitem>. 
+When one of the slow modes is selected the current position of the executor will be shown in the editor.
+<guimenuitem>Step-by-Step</guimenuitem> will execute one command at a time.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -243,7 +283,7 @@ Thanks a lot for your translation effort!
         <guimenu>Edit</guimenu>
         <guimenuitem>Cut</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Cuts the selected text from <link linkend="the-editor">the editor</link> to the clipboard.</para></listitem>
+      <listitem><para>Cuts the selected text from the code editor to the clipboard.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -256,7 +296,7 @@ Thanks a lot for your translation effort!
         <guimenu>Edit</guimenu>
         <guimenuitem>Copy</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Copies the selected text from <link linkend="the-editor">the editor</link> to the clipboard.</para></listitem>
+      <listitem><para>Copies the selected text from the code editor to the clipboard.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -269,7 +309,7 @@ Thanks a lot for your translation effort!
         <guimenu>Edit</guimenu>
         <guimenuitem>Paste</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Pastes the text from the clipboard to <link linkend="the-editor">the editor</link>.</para></listitem>
+      <listitem><para>Pastes the text from the clipboard to the editor.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -282,7 +322,7 @@ Thanks a lot for your translation effort!
         <guimenu>Edit</guimenu>
         <guimenuitem>Select All</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Selects all the text from <link linkend="the-editor">the editor</link>.</para></listitem>
+      <listitem><para>Selects all the text from the editor.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -308,7 +348,7 @@ Thanks a lot for your translation effort!
         <guimenu>Edit</guimenu>
         <guimenuitem>Find Next</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Use this to find the next occurrence of the phrase you searched for.</para></listitem>
+      <listitem><para>Use this to find the next occurrence of the phrase.</para></listitem>
     </varlistentry>
   </variablelist>  
   <variablelist>
@@ -321,7 +361,8 @@ Thanks a lot for your translation effort!
         <guimenu>Edit</guimenu>
         <guimenuitem>Find Previous</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Use this to find the previous occurrence of the phrase you searched for.</para></listitem>
+      <listitem><para>Use this to find the previous occurrence of the
+phrase.</para></listitem>
     </varlistentry>
   </variablelist>
   <!--<variablelist>
@@ -364,7 +405,7 @@ Thanks a lot for your translation effort!
         <guimenu>View</guimenu>
         <guimenuitem>Show Editor</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Show or hide <link linkend="the-editor">the editor</link>.</para>
+      <listitem><para>Show or hide the Code Editor.</para>
 </listitem>
     </varlistentry>
   </variablelist>
@@ -378,7 +419,7 @@ Thanks a lot for your translation effort!
         <guimenu>View</guimenu>
         <guimenuitem>Show Inspector</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Show or hide <link linkend="the-inspector">the inspector</link>.</para>
+      <listitem><para>Show or hide the Inspector.</para>
 </listitem>
     </varlistentry>
   </variablelist>
@@ -389,7 +430,9 @@ Thanks a lot for your translation effort!
         <guimenu>View</guimenu>
         <guimenuitem>Show Errors</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Show or hide the <guilabel>Error</guilabel> tab with a list of errors resulting from running the code. If this option is enabled, click on <guilabel>Canvas</guilabel> to see the turtle again.</para>
+      <listitem><para>Show or hide the <guilabel>Error</guilabel> tab with a list 
+       of errors resulting from running the code. If this option is enabled, click on 
+       <guilabel>Canvas</guilabel> to see the turtle again.</para>
       </listitem>
     </varlistentry>
   </variablelist>
@@ -403,7 +446,7 @@ Thanks a lot for your translation effort!
         <guimenu>View</guimenu>
         <guimenuitem>Show Line Numbers</guimenuitem>
       </menuchoice></term>
-      <listitem><para>With this action you can show the line numbers in <link linkend="the-editor">the editor</link>. This can be handy for finding errors.</para></listitem>
+      <listitem><para>With this action you can show the line numbers in the code editor. This can be handy for finding errors.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -489,6 +532,7 @@ Thanks a lot for your translation effort!
 <sect2 id="the-help-menu">
   <title>The <guimenu>Help</guimenu> Menu</title>
   &help.menu.documentation;
+<!-- context help removed in kde4>
   <variablelist>
     <anchor id="help-context-help" />
     <varlistentry>
@@ -499,10 +543,11 @@ Thanks a lot for your translation effort!
         <guimenu>Help</guimenu>
         <guimenuitem>Help on: ...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This is a very useful function: it provides help on the code where the cursor in the editor is at. So, &eg;, you have used the <userinput>print</userinput> command in your code, and you want to read and to know what the handbook says on this command. You just move your cursor so it is in the <userinput>print</userinput> command and you press <keysym>F2</keysym>. The handbook will then show all info on the <userinput>print</userinput> command.</para>
-      <para>This function can prove to be useful while learning &turtlelang;.</para></listitem>
+      <listitem><para>This is a very useful function: it provides help on the code where the cursor in the code editor is at. So, &eg;, you have used the <userinput>print</userinput> command in your code, and you want to read and to know what the handbook says on this command. You just move your cursor so it is in the <userinput>print</userinput> command and you press <keysym>F2</keysym>. The handbook will then show all info on the <userinput>print</userinput> command.</para>
+      <para>This function is very important while learning programming.</para></listitem>
     </varlistentry>
   </variablelist>
+<-->
 </sect2>
 
 </sect1>

@@ -1,9 +1,5 @@
-<!--
-Dear translator, please NEVER translate the ids or any tag attributes
-as the context help feature expects them the way they are...
-Thanks a lot for your translation effort!
--->
-
+<!--Dear translator: please NEVER translate the id or anything inside the tags as they are needed in english by the application
+     Thanks a lot in advance.-->
 <chapter id="reference">
 <title>&turtlelang; Programming Reference</title>
 <para>This is the reference for &kturtle;'s &turtlelang;. In this chapter we first briefly touch all the <link linkend="different-instructions">different instruction types</link>. Then the <link linkend="commands">commands</link> are explained one by one. Then <link linkend="containers">containers</link>, <link linkend="math">math</link>, <link linkend="questions">questions</link> and <link linkend="controlling-execution">execution controllers</link> are explained. At last you are shown how to create you own commands with <link linkend="learn">learn</link>.</para>
@@ -29,7 +25,7 @@ forward 100
 <para>We have the so called natural numbers: <userinput>0</userinput>, <userinput>1</userinput>, <userinput>2</userinput>, <userinput>3</userinput>, <userinput>4</userinput>, <userinput>5</userinput>, etc. The negative numbers: <userinput>-1</userinput>, <userinput>-2</userinput>, <userinput>-3</userinput>, etc. And the numbers with decimals, or dot-numbers, for example: <userinput>0.1</userinput>, <userinput>3.14</userinput>, <userinput>33.3333</userinput>, <userinput>-5.05</userinput>, <userinput>-1.0</userinput>.
 </para>
 <para>Numbers can be used in <link linkend="math">mathematical calculations</link> and <link linkend="questions">questions</link>. They can also be put in <link linkend="containers">containers</link>.</para>
-<para>Numbers are <glossterm>highlighted</glossterm> with dark red in the <link linkend="the-editor">code editor</link>.</para>
+<para>Numbers are <glossterm>highlighted</glossterm> with dark red in the <link linkend="the-code-editor">code editor</link>.</para>
 </sect2>
 
 <!-- constants like pi? -->
@@ -42,7 +38,7 @@ print "Hello, I'm a string."
 </screen>
 In this example <userinput>print</userinput> is a command where <userinput>"Hello, I'm a string."</userinput> is a string. Strings start and end with the <userinput>"</userinput> mark, by these marks &kturtle; knows it is a string.</para>
 <para>Strings can be put in <link linkend="containers">containers</link>. Yet they cannot be used in <link linkend="math">mathematical calculations</link> and <link linkend="questions">questions</link>.</para>
-<para>Strings are <glossterm>highlighted</glossterm> with red in the <link linkend="the-editor">code editor</link>.</para>
+<para>Strings are <glossterm>highlighted</glossterm> with red in the <link linkend="the-code-editor">code editor</link>.</para>
 </sect2>
 
 
@@ -72,7 +68,7 @@ $forward = 20
 print $forward
 </screen>
 </para>
-<para>Containers are <glossterm>highlighted</glossterm> with bolded purple in the <link linkend="the-editor">code editor</link>.</para>
+<para>Containers are <glossterm>highlighted</glossterm> with bolded purple in the <link linkend="the-code-editor">code editor</link>.</para>
 <para>
 Please read the documentation on <link linkend="containers">containers</link> and the <link linkend="learn">learn</link> command for a better explanation and more examples.
 </para>
@@ -123,7 +119,7 @@ print "this is not a comment"
 # print "this is not a comment"
 </screen>
 We can add comments to the code for ourselves or for someone else to read. Comments are used for: (1) adding a small description to the program, (2) explaining how a piece of code works if it is a bit cryptic, and (3) to 'comment-out' lines of code that should be (temporarily) ignored (see the last line of the example).</para>
-<para>Commented lines are <glossterm>highlighted</glossterm> with light grey in the <link linkend="the-editor">code editor</link>.</para>
+<para>Commented lines are <glossterm>highlighted</glossterm> with light grey in the <link linkend="the-code-editor">code editor</link>.</para>
 </sect2>
 
 </sect1>
@@ -131,7 +127,7 @@ We can add comments to the code for ourselves or for someone else to read. Comme
 
 <sect1 id="commands">
 <title>Commands</title>
-<para>Using commands you tell the turtle or &kturtle; to do something. Some commands need input, some give output. In this section we explain all the commands that can be used in &kturtle;. Please note that all build in commands we discuss here are <glossterm>highlighted</glossterm> with blue in the <link linkend="the-editor">code editor</link>, this can help you to distinguish them.</para>
+<para>Using commands you tell the turtle or &kturtle; to do something. Some commands need input, some give output. In this section we explain all the commands that can be used in &kturtle;. Please note that all build in commands we discuss here are <glossterm>highlighted</glossterm> with blue in the <link linkend="the-code-editor">code editor</link>, this can help you to distinguish them.</para>
 
 <sect2 id="moving-the-turtle">
 <title>Moving the turtle</title>
