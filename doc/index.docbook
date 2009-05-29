@@ -79,7 +79,7 @@ Thanks a lot for your translation effort!
 <keywordset>
 <keyword>KDE</keyword>
 <keyword>&package;</keyword>
-<keyword>&kturtle;</keyword>
+<keyword>KTurtle</keyword>
 <keyword>education</keyword>
 <keyword>language</keyword>
 <keyword>native</keyword>
@@ -123,7 +123,7 @@ url="http://el.media.mit.edu/logo-foundation/">a website on &logo;</ulink> conta
 <listitem><para>Context help for all commands: just press <keysym>F2</keysym> using the cursor to specify the command, or alternatively in the <menuchoice><guimenu>Help</guimenu></menuchoice>.</para></listitem>
 <listitem><para>An error dialog that links the error messages to the mistakes in the program and marks them red.</para></listitem>
 <listitem><para>Simplified programming terminology.</para></listitem>
-<listitem><para>Integrated example programs to make it easy to get started. Needless to mention these are also tranlated using &kde; translation framework.</para></listitem>
+<listitem><para>Integrated example programs to make it easy to get started. Needless to mention these are also translated using &kde; translation framework.</para></listitem>
 </itemizedlist>
 </para>
 </sect1>
