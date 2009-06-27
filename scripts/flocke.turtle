@@ -5,23 +5,23 @@ kturtle-script-v1.0
 @(pendown)
 @(turnleft) 90
 
-@(learn) koch $laenge@(,) $stufe {
-  @(if)($stufe>0) {
-    $stufe=$stufe-1
-    $laenge=$laenge/3
-    koch $laenge@(,) $stufe
+@(learn) koch $length@(,) $step {
+  @(if) $step > 0 {
+    $step = $step - 1
+    $length = $length / 3
+    koch $length@(,) $step
     @(turnleft) 60
-    koch $laenge@(,) $stufe
+    koch $length@(,) $step
     @(turnright) 120
-    koch $laenge@(,) $stufe
+    koch $length@(,) $step
     @(turnleft) 60
-    koch $laenge@(,) $stufe
+    koch $length@(,) $step
   } @(else) {
-  	@(forward) 3*$laenge 
+    @(forward) 3 * $length 
   }
 }
 
-@(repeat)  3 {
-  koch 150@(,)5
+@(repeat) 3 {
+  koch 150@(,) 5
   @(turnleft) 120
 }

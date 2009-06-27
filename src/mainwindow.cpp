@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003-2008 Cies Breijs <cies AT kde DOT nl>
+	Copyright (C) 2003-2009 Cies Breijs <cies AT kde DOT nl>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public
@@ -43,6 +43,7 @@
 #include <ktoolbar.h>
 #include <ktoolbarlabelaction.h>
 #include <ktoolbarpopupaction.h>
+#include <ktoolinvocation.h>
 #include <kdeprintdialog.h>
 #include <kfiledialog.h>
 #include <ksavefile.h>
@@ -62,9 +63,7 @@ MainWindow::MainWindow()
 	setupCanvas();
 	setupInterpreter();
 	setupEditor();
-//	setupMenus();
 	setupStatusBar();
-//	setupToolBar();
 
 	iterationTimer = new QTimer(this);
 	connect(iterationTimer, SIGNAL(timeout()), this, SLOT(iterate()));
@@ -78,8 +77,8 @@ MainWindow::MainWindow()
 	colorPicker = 0;
 
 	statusBar()->showMessage(i18nc("@info:status the application is ready for commands", "Ready"));
-	setCaption();  // also sets the window caption to 'untitled'
-	setRunSpeed(0);
+	updateContentName();  // also sets the window caption to 'untitled'
+	setRunSpeed(1);  // full speed with highlighting
 	abort();  // sets the run-states for the actions right
 
 	setupGUI();
@@ -106,17 +105,27 @@ void MainWindow::closeEvent(QCloseEvent *event)
 	}
 }
 
-void MainWindow::printDlg()
+void MainWindow::filePrintDialog()
 {
 	QPrinter printer;
 	QPrintDialog *printDialog = KdePrint::createPrintDialog(&printer, this);
-	if (printDialog->exec())
-	{
+	if (printDialog->exec()) {
 		QPainter painter;
 		painter.begin(&printer);
-
 		editor->document()->drawContents(&painter);
+		painter.end();
+	}
+	delete printDialog;
+}
 
+void MainWindow::canvasPrintDialog()
+{
+	QPrinter printer;
+	QPrintDialog *printDialog = KdePrint::createPrintDialog(&printer, this);
+	if (printDialog->exec()) {
+		QPainter painter;
+		painter.begin(&printer);
+		canvas->scene()->render(&painter);
 		painter.end();
 	}
 	delete printDialog;
@@ -139,7 +148,7 @@ void MainWindow::showColorPicker()
 
 void MainWindow::contextHelp()
 {
-//TODO display a help dialog about syntax commands
+  KToolInvocation::invokeHelp(contextHelpAnchor);
 }
 
 /*void MainWindow::whatsThis()
@@ -156,11 +165,12 @@ void MainWindow::documentWasModified()
 void MainWindow::setRunSpeed(int speed)
 {
 	switch (speed) {
-		case 0: fullSpeedAct->setChecked(true);    break;
-		case 1: slowSpeedAct->setChecked(true);    break;
-		case 2: slowerSpeedAct->setChecked(true);  break;
-		case 3: slowestSpeedAct->setChecked(true); break;
-		case 4: stepSpeedAct->setChecked(true);    break;
+		case 0: dedicatedSpeedAct->setChecked(true); break;
+		case 1: fullSpeedAct->setChecked(true);      break;
+		case 2: slowSpeedAct->setChecked(true);      break;
+		case 3: slowerSpeedAct->setChecked(true);    break;
+		case 4: slowestSpeedAct->setChecked(true);   break;
+		case 5: stepSpeedAct->setChecked(true);      break;
 	}
 	//TODO runOptionBox->setCurrentIndex(speed);
 	runSpeed = speed;
@@ -168,13 +178,14 @@ void MainWindow::setRunSpeed(int speed)
 
 void MainWindow::setupActions()
 {
-	KAction * a;
+	KAction* a;
 	KActionCollection* ac = actionCollection();
 
-	//TODO WHATISTHIS to each action
-	//Similar to a status tip, but not the same.
-	//A status tip is displayed on hover, a whatisthis is displayed when
-	//an item is clicked on it whatisthis mode  (cies doesn't like whatis mode for every little widget)
+	// WHAT IS THIS?
+	// Similar to a status tip, but not the same.
+	// A status tip is displayed on hover, a whatisthis is displayed when
+	// an item is clicked on it whatisthis mode  (cies doesn't like whatis mode for every little widget)
+	// (he thinks whatis is to give the translators even more work)
 
 	// File menu actions
 	a = actionCollection()->addAction(KStandardAction::New,  "file_new", editor, SLOT(newFile()));
@@ -199,39 +210,17 @@ void MainWindow::setupActions()
 	a->setStatusTip(i18n("Save the current file under a different name"));
 	a->setWhatsThis(i18n("Save File As: Save the current file under a different name"));
 
-	saveAsPictureAct  = actionCollection()->addAction("save_as_picture");
-	saveAsPictureAct->setText(i18n("Save &as Picture..."));
-	saveAsPictureAct->setStatusTip(i18n("Save the current canvas as a picture"));
-	saveAsPictureAct->setWhatsThis(i18n("Save as Picture: Save the current canvas as a picture"));
-	connect(saveAsPictureAct, SIGNAL(triggered()), this, SLOT(saveAsPicture()));
+	exportToHtmlAct = actionCollection()->addAction("file_export_to_html");
+	exportToHtmlAct->setText(i18n("Export to &HTML..."));
+	exportToHtmlAct->setStatusTip(i18n("Export the contents of the editor as HTML"));
+	exportToHtmlAct->setWhatsThis(i18n("Export to HTML: Export the contents of the editor as HTML"));
+	connect(exportToHtmlAct, SIGNAL(triggered()), this, SLOT(exportToHtml()));
 
-	runAct  = new KAction(KIcon("media-playback-start"), i18n("&Run"), this);
-	actionCollection()->addAction("run", runAct );
-	runAct->setShortcut(QKeySequence(Qt::Key_F5));
-	runAct->setStatusTip(i18n("Execute the program"));
-	runAct->setWhatsThis(i18n("Run: Execute the program"));
-	connect(runAct, SIGNAL(triggered()), this, SLOT(run()));
-
-	pauseAct  = new KAction(KIcon("media-playback-pause"), i18n("&Pause"), this);
-	actionCollection()->addAction("pause", pauseAct );
-	pauseAct->setCheckable(true);
-	pauseAct->setShortcut(QKeySequence(Qt::Key_F6));
-	pauseAct->setStatusTip(i18n("Pause execution"));
-	pauseAct->setWhatsThis(i18n("Pause: Pause execution"));
-	connect(pauseAct, SIGNAL(triggered()), this, SLOT(pause()));
-
-	abortAct  = new KAction(KIcon("process-stop"), i18n("&Abort"), this);
-	actionCollection()->addAction("abort", abortAct );
-	abortAct->setShortcut(QKeySequence(Qt::Key_F7));
-	abortAct->setStatusTip(i18n("Stop executing program"));
-	abortAct->setWhatsThis(i18n("Abort: Stop executing program"));
-	connect(abortAct, SIGNAL(triggered()), this, SLOT(abort()));
-
-	a = actionCollection()->addAction(KStandardAction::Print,  "file_print", this, SLOT(printDlg()));
+	a = actionCollection()->addAction(KStandardAction::Print, "file_print", this, SLOT(filePrintDialog()));
 	a->setStatusTip(i18n("Print the code"));
 	a->setWhatsThis(i18n("Print: Print the code"));
 
-	a = actionCollection()->addAction(KStandardAction::Quit,  "file_quit", this, SLOT(close()));
+	a = actionCollection()->addAction(KStandardAction::Quit, "file_quit", this, SLOT(close()));
 	a->setStatusTip(i18n("Quit KTurtle"));
 	a->setWhatsThis(i18n("Quit: Quit KTurtle"));
 
@@ -295,7 +284,68 @@ void MainWindow::setupActions()
 	//a->setStatusTip(i18n("Search and replace"));
 	//a->setWhatsThis(i18n("Replace: Replace text in the editor"));
 
-	// View menu actions
+	// Canvas menu action
+	exportToPngAct = actionCollection()->addAction("canvas_export_to_png");
+	exportToPngAct->setText(i18n("Export to &Image (PNG)..."));
+	exportToPngAct->setStatusTip(i18n("Export the current canvas to a PNG raster image"));
+	exportToPngAct->setWhatsThis(i18n("Export to PNG: Export the current canvas to a PNG raster image"));
+	connect(exportToPngAct, SIGNAL(triggered()), this, SLOT(exportToPng()));
+
+	exportToSvgAct = actionCollection()->addAction("canvas_export_to_svg");
+	exportToSvgAct->setText(i18n("Export to &Drawing (SVG)..."));
+	exportToSvgAct->setStatusTip(i18n("Export the current canvas to Scalable Vector Graphics"));
+	exportToSvgAct->setWhatsThis(i18n("Export to SVG: Export the current canvas to Scalable Vector Graphics"));
+	connect(exportToSvgAct, SIGNAL(triggered()), this, SLOT(exportToSvg()));
+
+	printCanvasAct = new KAction(KIcon("document-print"), i18n("&Print Canvas..."), this);
+	actionCollection()->addAction("canvas_print", printCanvasAct);
+	printCanvasAct->setStatusTip(i18n("Print the canvas"));
+	printCanvasAct->setWhatsThis(i18n("Print: Print the canvas"));
+	connect(exportToSvgAct, SIGNAL(triggered()), this, SLOT(canvasPrintDialog()));
+
+	// Run menu actions
+	runAct = new KAction(KIcon("media-playback-start"), i18n("&Run"), this);
+	actionCollection()->addAction("run", runAct);
+	runAct->setShortcut(QKeySequence(Qt::Key_F5));
+	runAct->setStatusTip(i18n("Execute the program"));
+	runAct->setWhatsThis(i18n("Run: Execute the program"));
+	connect(runAct, SIGNAL(triggered()), this, SLOT(run()));
+
+	pauseAct = new KAction(KIcon("media-playback-pause"), i18n("&Pause"), this);
+	actionCollection()->addAction("pause", pauseAct);
+	pauseAct->setCheckable(true);
+	pauseAct->setShortcut(QKeySequence(Qt::Key_F6));
+	pauseAct->setStatusTip(i18n("Pause execution"));
+	pauseAct->setWhatsThis(i18n("Pause: Pause execution"));
+	connect(pauseAct, SIGNAL(triggered()), this, SLOT(pause()));
+
+	abortAct = new KAction(KIcon("process-stop"), i18n("&Abort"), this);
+	actionCollection()->addAction("abort", abortAct);
+	abortAct->setShortcut(QKeySequence(Qt::Key_F7));
+	abortAct->setStatusTip(i18n("Stop executing program"));
+	abortAct->setWhatsThis(i18n("Abort: Stop executing program"));
+	connect(abortAct, SIGNAL(triggered()), this, SLOT(abort()));
+
+// 	new KAction(i18n("&Indent"), "format-indent-more", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
+// 	new KAction(i18n("&Unindent"), "format-indent-less", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
+// 	new KAction(i18n("Cl&ean Indentation"), 0, 0, this, SLOT(slotCleanIndent()), ac, "edit_cleanIndent");
+// 	new KAction(i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
+// 	new KAction(i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
+
+	// Tools menu actions
+	a = new KAction(i18n("&Direction Chooser..."), this);
+	actionCollection()->addAction("direction_chooser", a);
+	a->setStatusTip(i18n("Shows the direction chooser dialog"));
+	a->setWhatsThis(i18n("Direction Chooser: Show the direction chooser dialog"));
+	connect(a, SIGNAL(triggered()), this, SLOT(showDirectionDialog()));
+
+	a = new KAction(i18n("&Color Picker..."), this);
+	actionCollection()->addAction("color_picker", a);
+	a->setStatusTip(i18n("Shows the color picker dialog"));
+	a->setWhatsThis(i18n("Color Picker: Show the color picker dialog"));
+	connect(a, SIGNAL(triggered()), this, SLOT(showColorPicker()));
+
+	// Settings menu action
 	a = new KAction(i18n("Show &Editor"), this);
 	actionCollection()->addAction("show_editor", a);
 	a->setStatusTip(i18n("Show or hide the Code Editor"));
@@ -342,60 +392,32 @@ void MainWindow::setupActions()
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), editor, SLOT(toggleLineNumbers(bool)));
 
+	// Help menu actions
+	contextHelpAct = ac->addAction("context_help");
+	contextHelpAct->setText("");
+	contextHelpAct->setIcon(KIcon("help-about"));
+	contextHelpAct->setShortcut(QKeySequence(Qt::Key_F2));
+	contextHelpAct->setStatusTip(i18n("Get help on the command under the cursor"));
+	contextHelpAct->setWhatsThis(i18n("Context Help: Get help on the command under the cursor"));
+	connect(contextHelpAct, SIGNAL(triggered()), this, SLOT(contextHelp()));
+	updateContextHelpAction();
 
-	// Tools menu actions
-	a = new KAction(i18n("&Direction Chooser..."), this);
-	actionCollection()->addAction("direction_chooser", a);
-	a->setStatusTip(i18n("Shows the direction chooser dialog"));
-	a->setWhatsThis(i18n("Direction Chooser: Show the direction chooser dialog"));
-	connect(a, SIGNAL(triggered()), this, SLOT(showDirectionDialog()));
+	a = actionCollection()->addAction(KStandardAction::HelpContents, "help_contents", this, SLOT(appHelpActivated()));
+	a->setStatusTip(i18n("Help"));
+	a->setWhatsThis(i18n("Help: Open manual for KTurtle"));
 
-	a = new KAction(i18n("&Color Picker..."), this);
-	actionCollection()->addAction("color_picker", a);
-	a->setStatusTip(i18n("Shows the color picker dialog"));
-	a->setWhatsThis(i18n("Color Picker: Show the color picker dialog"));
-	connect(a, SIGNAL(triggered()), this, SLOT(showColorPicker()));
-
-
-// 	new KAction(i18n("&Indent"), "format-indent-more", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
-// 	new KAction(i18n("&Unindent"), "format-indent-less", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
-// 	new KAction(i18n("Cl&ean Indentation"), 0, 0, this, SLOT(slotCleanIndent()), ac, "edit_cleanIndent");
-// 	new KAction(i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
-// 	new KAction(i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
-
-//	QWidgetAction* a = new QWidgetAction(console, i18n("Console"), Qt::Key_F4, this, SLOT(slotFocus()), ac, "console");
-
+	// Menuless actions
 	console = new Console(this);
 	console->setText(i18n("Console"));
 	console->setShortcut(QKeySequence(Qt::Key_F4));
 	actionCollection()->addAction("console", console);
 	connect(console, SIGNAL(execute(const QString&)), this, SLOT(execute(const QString&)));
 
-
 	QAction *executeConsole = actionCollection()->addAction("execute_console");
 	executeConsole->setIcon(KIcon("go-jump-locationbar"));
 	executeConsole->setText(i18n("Execute"));
 	connect(executeConsole, SIGNAL(triggered()), console, SLOT(executeActionTriggered()));
 	executeConsole->setWhatsThis(i18n("Execute: Executes the current line in the console"));
-
-	// Help menu actions
-	//TODO: implement context help
-	contextHelpAct = ac->addAction("context_help");
-	contextHelpAct->setText("");
-	contextHelpAct->setIcon(KIcon("help-contents"));
-	contextHelpAct->setShortcut(QKeySequence(Qt::Key_F2));
-	contextHelpAct->setStatusTip(i18n("Get help on the command under the cursor"));
-	contextHelpAct->setWhatsThis(i18n("Context Help: Get help on the command under the cursor"));
-	connect(contextHelpAct, SIGNAL(triggered()), this, SLOT(contextHelp()));
-	setContextHelp();
-
-	a = actionCollection()->addAction(KStandardAction::HelpContents,  "help_contents", this, SLOT(appHelpActivated()));
-	a->setStatusTip(i18n("Help"));
-	a->setWhatsThis(i18n("Help: Open manual for KTurtle"));
-
-	/*a = actionCollection()->addAction(KStandardAction::WhatsThis,  "whatsthis", this, SLOT(whatsThis()));
-	a->setStatusTip(i18n("Point and click information about the interface of KTurtle"));
-	a->setWhatsThis(i18n("Whats This?: Point and click information about the interface of KTurtle"));*/
 
 	// The run speed action group
 	QActionGroup* runSpeedGroup = new QActionGroup(this);
@@ -405,13 +427,21 @@ void MainWindow::setupActions()
 	connect(runSpeedAction, SIGNAL(triggered()), this, SLOT(run()));
 	QMenu* runSpeedActionMenu = runSpeedAction->menu();
 	actionCollection()->addAction("run_speed", runSpeedAction);
-	runSpeedActionMenu->setStatusTip(i18n("Execute the program"));
-	runSpeedActionMenu->setWhatsThis(i18n("Run: Execute the program"));
-	connect(runSpeedActionMenu, SIGNAL(triggered ( QAction *)), this, SLOT(run()));
+	runSpeedActionMenu->setStatusTip(i18n("Execute the program, or use the drop down menu to select the run speed"));
+	runSpeedActionMenu->setWhatsThis(i18n("Run: Execute the program, or use the drop down menu to select the run speed"));
+	connect(runSpeedActionMenu, SIGNAL(triggered (QAction*)), this, SLOT(run()));
 
+	dedicatedSpeedAct = new KAction(i18nc("@option:radio", "Full Speed (&no highlighting)"), this);
+	actionCollection()->addAction("dedicated_speed", dedicatedSpeedAct);
+	dedicatedSpeedAct->setCheckable(true);
+	dedicatedSpeedAct->setStatusTip(i18n("Run the program at full speed, with highlighting disabled"));
+	dedicatedSpeedAct->setWhatsThis(i18n("Full Speed: Run the program at full speed, with highlighting disabled"));
+	connect(dedicatedSpeedAct, SIGNAL(triggered()), this, SLOT(setDedicatedSpeed()));
+	runSpeedGroup->addAction(dedicatedSpeedAct);
+	runSpeedActionMenu->addAction(dedicatedSpeedAct);
 
 	fullSpeedAct = new KAction(i18nc("@option:radio", "&Full Speed"), this);
-	actionCollection()->addAction("full_speed", fullSpeedAct );
+	actionCollection()->addAction("full_speed", fullSpeedAct);
 	fullSpeedAct->setCheckable(true);
 	fullSpeedAct->setChecked(true);
 	fullSpeedAct->setStatusTip(i18n("Run the program at full speed"));
@@ -421,7 +451,7 @@ void MainWindow::setupActions()
 	runSpeedActionMenu->addAction(fullSpeedAct);
 
 	slowSpeedAct = new KAction(i18nc("@option:radio choose the slow speed", "&Slow"), this);
-	actionCollection()->addAction("slow_speed", slowSpeedAct );
+	actionCollection()->addAction("slow_speed", slowSpeedAct);
 	slowSpeedAct->setCheckable(true);
 	slowSpeedAct->setStatusTip(i18n("Run the program at a slow speed"));
 	slowSpeedAct->setWhatsThis(i18n("Slow Speed: Run the program at a slow speed"));
@@ -430,7 +460,7 @@ void MainWindow::setupActions()
 	runSpeedActionMenu->addAction(slowSpeedAct);
 
 	slowerSpeedAct = new KAction(i18nc("@option:radio", "S&lower"), this);
-	actionCollection()->addAction("slower_speed", slowerSpeedAct );
+	actionCollection()->addAction("slower_speed", slowerSpeedAct);
 	slowerSpeedAct->setCheckable(true);
 	slowerSpeedAct->setStatusTip(i18n("Run the program at a slower speed"));
 	slowerSpeedAct->setWhatsThis(i18n("Slower Speed: Run the program at a slower speed"));
@@ -439,7 +469,7 @@ void MainWindow::setupActions()
 	runSpeedActionMenu->addAction(slowerSpeedAct);
 
 	slowestSpeedAct = new KAction(i18nc("@option:radio", "Sl&owest"), this);
-	actionCollection()->addAction("slowest_speed", slowestSpeedAct );
+	actionCollection()->addAction("slowest_speed", slowestSpeedAct);
 	slowestSpeedAct->setCheckable(true);
 	slowestSpeedAct->setStatusTip(i18n("Run the program at the slowest speed"));
 	slowestSpeedAct->setWhatsThis(i18n("Slowest Speed: Run the program at the slowest speed"));
@@ -448,7 +478,7 @@ void MainWindow::setupActions()
 	runSpeedActionMenu->addAction(slowestSpeedAct);
 
 	stepSpeedAct = new KAction(i18nc("@option:radio", "S&tep-by-Step"), this);
-	actionCollection()->addAction("step_speed", stepSpeedAct );
+	actionCollection()->addAction("step_speed", stepSpeedAct);
 	stepSpeedAct->setCheckable(true);
 	stepSpeedAct->setStatusTip(i18n("Run the program one step at a time"));
 	stepSpeedAct->setWhatsThis(i18n("Step Speed: Run the program one step at a time"));
@@ -463,7 +493,7 @@ void MainWindow::setupCanvas()
 	// put the canvas in a layout as the cetral widget of the mainwindow
 	QWidget* centralWidget = new QWidget(this);
 	QHBoxLayout* centralLayout = new QHBoxLayout(centralWidget);
-	centralLayout->setMargin(0); // MARGIN_SIZE);
+	centralLayout->setMargin(0);  // MARGIN_SIZE);
 
 	canvasTabWidget = new KTabWidget(this);
 
@@ -537,19 +567,18 @@ void MainWindow::setupDockWindows()
 	inspector = new Inspector(inspectorWrapWidget);
 	inspectorDockLayout->addWidget(inspector);
 	inspectorDock->setWidget(inspectorWrapWidget);
-	addDockWidget(Qt::LeftDockWidgetArea, inspectorDock);
+	addDockWidget(Qt::RightDockWidgetArea, inspectorDock);
 	inspector->setWhatsThis(i18n("Inspector: See information about variables and functions when the program runs"));
 }
 
 void MainWindow::setupEditor()
 {
 // 	editor->setTranslator(Translator::instance());
-	connect(editor, SIGNAL(modificationChanged(bool)), this, SLOT(setWindowModified(bool)));
-	connect(editor, SIGNAL(currentUrlChanged(const KUrl&)), this, SLOT(setCaption(const KUrl&)));
+	connect(editor, SIGNAL(modificationChanged()), this, SLOT(updateModificationState()));
+	connect(editor, SIGNAL(contentNameChanged(const QString&)), this, SLOT(updateContentName(const QString&)));
 	connect(editor, SIGNAL(fileOpened(const KUrl&)), this, SLOT(addToRecentFilesList(const KUrl&)));
 	connect(editor, SIGNAL(fileSaved(const KUrl&)), this, SLOT(addToRecentFilesList(const KUrl&)));
-	connect(editor, SIGNAL(cursorPositionChanged(int, int, const QString&)),
-		this, SLOT(updateOnCursorPositionChange(int, int, const QString&)));
+	connect(editor, SIGNAL(cursorPositionChanged()), this, SLOT(updateOnCursorPositionChange()));
 }
 
 void MainWindow::setupInterpreter()
@@ -568,6 +597,19 @@ void MainWindow::setupInterpreter()
 		inspector, SLOT(updateFunction(const QString&, const QStringList&)));
 	connect(interpreter, SIGNAL(treeUpdated(TreeNode*)),
 		inspector, SLOT(updateTree(TreeNode*)));
+}
+
+void MainWindow::toggleGuiFeedback(bool b)
+{
+	Executer* executer = interpreter->getExecuter();
+	if (b) {
+		connect(executer, SIGNAL(currentlyExecuting(TreeNode*)), editor, SLOT(markCurrentWord(TreeNode*)));
+		connect(executer, SIGNAL(currentlyExecuting(TreeNode*)), inspector, SLOT(markTreeNode(TreeNode*)));
+	} else {
+		disconnect(executer, SIGNAL(currentlyExecuting(TreeNode*)), editor, SLOT(markCurrentWord(TreeNode*)));
+		disconnect(executer, SIGNAL(currentlyExecuting(TreeNode*)), inspector, SLOT(markTreeNode(TreeNode*)));
+		editor->removeMarkings();
+	}
 }
 
 void MainWindow::setupStatusBar()
@@ -589,7 +631,7 @@ void MainWindow::setupStatusBar()
 	statusBarFileNameLabel->setAlignment(Qt::AlignRight);
 
 	toggleOverwriteMode(false);
-	updateOnCursorPositionChange(1, 1, "");
+	updateOnCursorPositionChange();
 }
 
 void MainWindow::saveNewToolbarConfig()
@@ -611,7 +653,7 @@ void MainWindow::updateLanguagesMenu()
 	QMap<QString, QString> map;
 	foreach (const QString &lang_code, KGlobal::locale()->languageList())
 		map.insert(codeToFullName(lang_code), lang_code);
-				// populate the menu:
+	// populate the menu:
 	foreach (const QString &lang_code, map) {
 		a = new QAction(codeToFullName(lang_code), actionCollection());
 		a->setData(lang_code);
@@ -630,10 +672,10 @@ void MainWindow::updateLanguagesMenu()
 
 void MainWindow::updateExamplesMenu()
 {
-	KAction * newExample;
+	KAction* newExample;
 	QString actionName;
-	QList<QAction *> exampleList;
-	QActionGroup * exampleGroup = new QActionGroup (this);
+	QList<QAction*> exampleList;
+	QActionGroup* exampleGroup = new QActionGroup (this);
 
 	foreach (const QString &exampleName, Translator::instance()->exampleNames()) {
 		newExample = new KAction (exampleName, this);
@@ -647,11 +689,6 @@ void MainWindow::updateExamplesMenu()
 	plugActionList   ("examples_actionlist", exampleList);
 }
 
-void MainWindow::open(const QString& pathOrUrl)
-{
-	editor->openFile(KUrl(pathOrUrl));
-}
-
 void MainWindow::addToRecentFilesList(const KUrl& url)
 {
 	recentFilesAction->addUrl(url);
@@ -659,7 +696,7 @@ void MainWindow::addToRecentFilesList(const KUrl& url)
 
 void MainWindow::openExample()
 {
-	QAction *action = qobject_cast<QAction*>(sender());
+	QAction* action = qobject_cast<QAction*>(sender());
 	QString exampleName = action->data().toString();
 	editor->openExample(Translator::instance()->example(exampleName), exampleName);
 }
@@ -670,52 +707,62 @@ void MainWindow::toggleOverwriteMode(bool b)
 	editor->setOverwriteMode(b);
 }
 
-void MainWindow::setContextHelp(const QString& s)
+void MainWindow::updateContextHelpAction(const QString& s, const QString& anchor)
 {
-	contextHelpString = s.isEmpty() ? i18n("<placeholder>no keyword</placeholder>") : s;
+	kDebug(0) << QString("%1 (help anchor: %2)").arg(s).arg(anchor);
+	contextHelpAnchor = anchor;
+	contextHelpString = s.isEmpty() ? i18n("<nothing under cursor>") : s;
 	contextHelpAct->setText(i18n("Help on: %1", contextHelpString));
 }
 
-void MainWindow::updateOnCursorPositionChange(int row, int col, const QString& line)
+void MainWindow::updateOnCursorPositionChange()
 {
-	statusBarPositionLabel->setText(i18n(" Line: %1 Column: %2 ", row, col));
+	statusBarPositionLabel->setText(i18n(" Line: %1 Column: %2 ", editor->row(), editor->col()));
 
-	Token* cursorToken = editor->currentToken(line, col);
+	Token* cursorToken = editor->currentToken();
 	QString desc;
 	if (cursorToken != 0) {
 		QString look = cursorToken->look();
 		int cat = cursorToken->category();
 		delete cursorToken;
 		cursorToken = 0;
+		QString layout = i18n("\"%1\" <%2>");
 		switch (cat) {
-			case Token::VariableCategory:          setContextHelp(i18n("<placeholder>variable</placeholder>"));    return;
-			case Token::NumberCategory:            setContextHelp(i18n("<placeholder>number</placeholder>"));      return;
-			case Token::CommentCategory:           setContextHelp(i18n("<placeholder>comment</placeholder>"));     return;
-			case Token::StringCategory:            setContextHelp(i18n("<placeholder>string</placeholder>"));      return;
-			case Token::ScopeCategory:             setContextHelp(i18n("<placeholder>scope</placeholder>"));       return;
-			case Token::AssignmentCategory:        setContextHelp(i18n("<placeholder>assignment</placeholder>"));  return;
-			case Token::ParenthesisCategory:       setContextHelp(i18n("<placeholder>parenthesis</placeholder>")); return;
-
-			case Token::MathOperatorCategory:      desc = i18n("mathematical operator");
-			case Token::ExpressionCategory:        desc = i18n("expression");
-			case Token::BooleanOperatorCategory:   desc = i18n("boolean operator");
-			case Token::TrueFalseCategory:         desc = i18n("boolean");
-			case Token::CommandCategory:           desc = i18n("command");
-			case Token::ControllerCommandCategory: desc = i18n("command");
-			case Token::LearnCommandCategory:      desc = i18n("command");
-				setContextHelp(QString("\"%1\" (%2)").arg(look).arg(desc));
-				return;
-
-			case Token::MetaCategory:
-			case Token::WhiteSpaceCategory:
-			case Token::DecimalSeparatorCategory:
+			// not showing the look (only the name):
+			case Token::VariableCategory:     updateContextHelpAction(i18n("<variable>"), "variable"); return;
+			case Token::NumberCategory:       updateContextHelpAction(i18n("<number>"), "number");     return;
+			case Token::CommentCategory:      updateContextHelpAction(i18n("<comment>"), "comment");   return;
+			case Token::StringCategory:       updateContextHelpAction(i18n("<string>"), "string");     return;
+			// only showing the look:
+			case Token::LearnCommandCategory: updateContextHelpAction(look, "learn");                  return;
+			case Token::TrueFalseCategory:    updateContextHelpAction(look, "boolean");                return;
+			// showing the look and the name:
+			case Token::ScopeCategory:
+				updateContextHelpAction(layout.arg(look).arg(i18n("scope")), "scope"); return;
+			case Token::AssignmentCategory:
+				updateContextHelpAction(layout.arg(look).arg(i18n("assignment")), "assignment"); return;
+			case Token::ParenthesisCategory:
+				updateContextHelpAction(layout.arg(look).arg(i18n("parenthesis")), "parenthesis"); return;
+			case Token::MathOperatorCategory:
+				updateContextHelpAction(layout.arg(look).arg(i18n("mathematical operator")), "math-operator"); return;
+			case Token::ExpressionCategory:
+				updateContextHelpAction(layout.arg(look).arg(i18n("expression")), "expression"); return;
+			case Token::BooleanOperatorCategory:
+				updateContextHelpAction(layout.arg(look).arg(i18n("boolean operator")), "boolean-operator"); return;
 			case Token::FunctionCallCategory:
+				updateContextHelpAction(layout.arg(look).arg(i18n("learned command")), "learned-command"); return;
 			case Token::ArgumentSeparatorCategory:
-				// do nothing with these... yet.
-				break;
+				updateContextHelpAction(layout.arg(look).arg(i18n("argument separator")), "argument-separator"); return;
+			// showing the look and the name, and linking to the help through their default look (en_US):
+			case Token::CommandCategory:
+				updateContextHelpAction(layout.arg(look).arg(i18n("command")), Translator::instance()->defaultLook(look));
+				return;
+			case Token::ControllerCommandCategory:
+				updateContextHelpAction(layout.arg(look).arg(i18n("controller command")), Translator::instance()->defaultLook(look));
+				return;
 		}
 	}
-	setContextHelp(i18n("<placeholder>no keyword</placeholder>"));
+	updateContextHelpAction();  // display the 'nothing under cursor thing'
 }
 
 
@@ -760,10 +807,13 @@ void MainWindow::run()
 		editor->removeMarkings();
 		inspector->clear();
 		errorDialog->clear();
+		showErrorDialog(false);
 		interpreter->initialize(editor->content());
 	}
 	editor->disable();
 	console->disable();
+	toggleGuiFeedback(runSpeed != 0);
+
 	// start parsing (always in full speed)
 	iterationTimer->setSingleShot(false);
 	iterationTimer->start(0);
@@ -837,10 +887,11 @@ void MainWindow::iterate()
 		iterationTimer->setSingleShot(true);
 		switch (runSpeed) {
 			case 0: iterationTimer->start(0);    break;
-			case 1: iterationTimer->start(500);  break;
-			case 2: iterationTimer->start(1000); break;
-			case 3: iterationTimer->start(3000); break;
-			case 4:
+			case 1: iterationTimer->start(0);    break;
+			case 2: iterationTimer->start(500);  break;
+			case 3: iterationTimer->start(1000); break;
+			case 4: iterationTimer->start(3000); break;
+			case 5:
 				iterationTimer->stop();
 				interpreter->interpret();
 				pauseAct->setChecked(true);
@@ -884,11 +935,12 @@ void MainWindow::abort()
 }
 
 
-void MainWindow::setCaption(const KUrl &url, bool modified)
+void MainWindow::updateContentName(const QString& str)
 {
-	QString filename = url.isEmpty() ? i18n("untitled") : url.fileName();
-	KXmlGuiWindow::setCaption(filename, modified);
-	statusBarFileNameLabel->setText(QString(" %1%2 ").arg(filename).arg(modified ? "*" : ""));
+	QString caption = str.isEmpty() ? i18n("untitled") : str;
+	bool modified = editor->isModified();
+	KXmlGuiWindow::setCaption(caption, modified);
+	statusBarFileNameLabel->setText(QString(" %1%2 ").arg(caption).arg(modified ? "*" : ""));
 }
 
 void MainWindow::addToRecentFiles(const KUrl &url)
@@ -900,15 +952,12 @@ void MainWindow::addToRecentFiles(const KUrl &url)
 void MainWindow::readConfig()
 {
 	KConfigGroup config(KGlobal::config(), "General Options");
-
-//   m_paShowStatusBar->setChecked(config->readEntry("ShowStatusBar", QVariant(false)).toBool());
-//   m_paShowPath->setChecked(config->readEntry("ShowPath", QVariant(false)).toBool());
-    recentFilesAction->loadEntries(KGlobal::config()->group( "Recent Files") );
-
+// 	m_paShowStatusBar->setChecked(config->readEntry("ShowStatusBar", QVariant(false)).toBool());
+// 	m_paShowPath->setChecked(config->readEntry("ShowPath", QVariant(false)).toBool());
+	recentFilesAction->loadEntries(KGlobal::config()->group("Recent Files"));
 	QString lang_code(config.readEntry("currentLanguageCode", QVariant(QString())).toString());
 	if (lang_code.isEmpty()) lang_code = "en_US";  // null-string are saved as empty-strings
 	setCurrentLanguage(lang_code);
-
 // 	if(m_paShowStatusBar->isChecked())
 // 		statusBar()->show();
 // 	else
@@ -918,14 +967,67 @@ void MainWindow::readConfig()
 void MainWindow::writeConfig()
 {
 	KConfigGroup config(KGlobal::config(), "General Options");
-
 // 	config.writeEntry("ShowStatusBar",m_paShowStatusBar->isChecked());
 // 	config.writeEntry("ShowPath",m_paShowPath->isChecked());
 	recentFilesAction->saveEntries(KGlobal::config()->group( "Recent Files"));
 	config.writeEntry("currentLanguageCode", currentLanguageCode);
-
 	config.sync();
 }
+
+void MainWindow::exportToPng()
+{
+	// copied from edit code for file selection
+	KUrl url = KFileDialog::getSaveUrl(QString(), QString("*.png|%1\n*|%2").arg(i18n("PNG Images")).arg(i18n("All files")), this, i18n("Save as Picture"));
+	if (url.isEmpty())
+		return;
+	if (KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this) &&
+	    KMessageBox::warningContinueCancel(this,
+			i18n("Are you sure you want to overwrite %1?", url.fileName()),
+			i18n("Overwrite Existing File"),KGuiItem(i18n("&Overwrite")),
+			KStandardGuiItem::cancel(), i18n("&Overwrite")) != KMessageBox::Continue)
+		return;
+	// get our image from the canvas
+	QImage pict = canvas->getPicture();
+	// save as png
+	pict.save(url.path(), "PNG");
+}
+
+void MainWindow::exportToSvg()
+{
+	// copied from edit code for file selection
+	QString path = KFileDialog::getSaveFileName(QString(), QString("*.svg|%1\n*|%2").arg(i18n("Scalable Vector Graphics")).arg(i18n("All files")), this, i18n("Save as SVG"));
+	if (path.isEmpty())
+		return;
+	if (KIO::NetAccess::exists(path, KIO::NetAccess::SourceSide, this) &&
+	    KMessageBox::warningContinueCancel(this,
+			i18n("Are you sure you want to overwrite %1?", path),
+			i18n("Overwrite Existing File"),KGuiItem(i18n("&Overwrite")),
+			KStandardGuiItem::cancel(), i18n("&Overwrite")) != KMessageBox::Continue)
+		return;
+	canvas->saveAsSvg(windowTitle(), path);
+}
+
+void MainWindow::exportToHtml()
+{
+	// copied from edit code for file selection
+	QString path = KFileDialog::getSaveFileName(QString(), QString("*.html|%1\n*|%2").arg(i18n("HTML documents")).arg(i18n("All files")), this, i18n("Save code as HTML"));
+	if (path.isEmpty())
+		return;
+	if (KIO::NetAccess::exists(path, KIO::NetAccess::SourceSide, this) &&
+	    KMessageBox::warningContinueCancel(this,
+			i18n("Are you sure you want to overwrite %1?", path),
+			i18n("Overwrite Existing File"),KGuiItem(i18n("&Overwrite")),
+			KStandardGuiItem::cancel(), i18n("&Overwrite")) != KMessageBox::Continue)
+		return;
+	KSaveFile file(path);
+	if (!file.open())
+		return;
+	QTextStream out(&file);
+	out << editor->toHtml(windowTitle(), currentLanguageCode);
+	out.flush();
+	file.finalize();
+}
+
 
 // slots for logo functions that need to use the MainWindow class:
 
@@ -939,29 +1041,8 @@ void MainWindow::slotInputDialog(QString& value)
 void MainWindow::slotMessageDialog(const QString& text)
 {
 	iterationTimer->stop();
-	KMessageBox::information( this, text, i18n("Message") );
+	KMessageBox::information(this, text, i18n("Message"));
 	run();
 }
-
-void MainWindow::saveAsPicture()
-{
-	//Copied from edit code for file selection
-	KUrl url = KFileDialog::getSaveUrl(QString(), QString("*.png|%1\n*|%2").arg(i18n("PNG Images")).arg(i18n("All files")), this, i18n("Save as Picture"));
-	if (url.isEmpty()) return;
-	if (KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this) &&
-		KMessageBox::warningContinueCancel(this,
-			i18n("Are you sure you want to overwrite %1?", url.fileName()),
-			i18n("Overwrite Existing File"),KGuiItem(i18n("&Overwrite")),
-			KStandardGuiItem::cancel(),
-			i18n("&Overwrite")
-			) != KMessageBox::Continue
-		) return;
-	//Get our image from the canvas
-	QImage pict = canvas->getPicture();
-	//Save as png
-	pict.save(url.path(), "PNG");
-}
-
-// END
 
 #include "mainwindow.moc"

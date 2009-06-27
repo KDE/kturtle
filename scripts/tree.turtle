@@ -1,0 +1,21 @@
+kturtle-script-v1.0
+@(learn) tree $s@(,) $l {
+  @(if) $s > 0 {
+		@(penwidth) $l/5
+		@(pencolor) 50@(,) 200-$l*2@(,) 50
+    @(forward) $l
+    @(turnleft) 60
+    tree $s-1@(,) 0.7*$l
+		@(turnright) 120
+    tree $s-1@(,) 0.7*$l
+		@(turnleft) 240
+    @(forward) $l
+		@(turnleft) 180
+  }
+}
+
+@(reset)
+@(spritehide)
+@(backward) 100
+@(canvascolor) 160@(,) 180@(,) 250
+tree 10@(,) 100

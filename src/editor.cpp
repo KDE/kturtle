@@ -19,6 +19,9 @@
 
 #include "editor.h"
 
+#include "interpreter/token.h"
+#include "interpreter/tokenizer.h"
+
 #include <QTextDocument>
 #include <QTextBlock>
 #include <QHBoxLayout>
@@ -51,8 +54,8 @@ Editor::Editor(QWidget *parent)
 	setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
 	setLineWidth(CURSOR_WIDTH);
 	setCurrentUrl();
-
-	currentLine = 0;
+	currentRow = 1;
+	currentCol = 1;
 
 	// setup the main view
 	editor = new TextEdit(this);
@@ -65,7 +68,7 @@ Editor::Editor(QWidget *parent)
 	setFocusProxy(editor);
 	connect(editor->document(), SIGNAL(contentsChange(int,int,int)), this, SLOT(textChanged(int,int,int)));
 	connect(editor->document(), SIGNAL(modificationChanged(bool)), this, SLOT(setModified(bool)));
-	connect(editor, SIGNAL(cursorPositionChanged()), this, SLOT(cursorPositionChanged()));
+	connect(editor, SIGNAL(cursorPositionChanged()), this, SLOT(updateOnCursorPositionChange()));
 
 	// setup the line number pane
 	numbers = new LineNumbers(this, editor);
@@ -99,11 +102,13 @@ Editor::Editor(QWidget *parent)
 
 	// sets some more default values
 	newFile();
+	tokenizer = new Tokenizer();
 }
 
 Editor::~Editor()
 {
 	delete highlighter;
+	delete tokenizer;
 }
 
 void Editor::enable() {
@@ -128,8 +133,8 @@ void Editor::openExample(const QString& example, const QString& exampleName)
 {
 	if (newFile()) {
 		setContent(example);
-		setCurrentUrl();
 		editor->document()->setModified(false);
+		setCurrentUrl(exampleName);
 	}
 }
 
@@ -219,14 +224,14 @@ bool Editor::saveFile(const KUrl &targetUrl)
 		KSaveFile *savefile = new KSaveFile(filename);
 		if (savefile->open()) {
 			QTextStream outputStream(savefile);
-			//Store commands in their generic format, to be translatable when reopened
-			//This allows sharing of scripts written in different languages
+			// store commands in their generic @(...) notation format, to be translatable when reopened
+			// this allows sharing of scripts written in different languages
 			Tokenizer tokenizer;
 			tokenizer.initialize(editor->document()->toPlainText());
 			const QStringList localizedLooks(Translator::instance()->allLocalizedLooks());
 			QString unstranslated;
 			Token* t;
-			bool pendingEOL = false; //to avoid writing a final EOL token
+			bool pendingEOL = false;  // to avoid writing a final EOL token
 			while ((t = tokenizer.getToken())->type() != Token::EndOfInput) {
 				if (pendingEOL) {
 					unstranslated.append('\n');
@@ -248,10 +253,11 @@ bool Editor::saveFile(const KUrl &targetUrl)
 			savefile->finalize();  // check for error here?
 		}
 		delete savefile;
-		if (!url.isLocalFile()) KIO::NetAccess::upload(filename, url, this);
+		if (!url.isLocalFile())
+			KIO::NetAccess::upload(filename, url, this);
 		setCurrentUrl(url);
 		editor->document()->setModified(false);
-		//MainWindow will add us to the recent file list
+		// MainWindow will add us to the recent file list
 		emit fileSaved(url);
 		result = true; // fix GUI for saveAs and saveExamples. TODO: check 5 lines above
 	}
@@ -264,12 +270,9 @@ bool Editor::saveFileAs()
 	if (url.isEmpty()) return false;
 	if (KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this) &&
 		KMessageBox::warningContinueCancel(this,
-			i18n("Are you sure you want to overwrite %1?", url.fileName()),
-			i18n("Overwrite Existing File"),KGuiItem(i18n("&Overwrite")),
-			KStandardGuiItem::cancel(),
-			i18n("&Overwrite")
-			) != KMessageBox::Continue
-		) return false;
+			i18n("Are you sure you want to overwrite %1?", url.fileName()), i18n("Overwrite Existing File"),
+			KGuiItem(i18n("&Overwrite")), KStandardGuiItem::cancel(), i18n("&Overwrite")
+			) != KMessageBox::Continue) return false;
 	bool result = saveFile(url);
 	return result;
 }
@@ -289,75 +292,60 @@ bool Editor::maybeSave()
 void Editor::setModified(bool b)
 {
 	editor->document()->setModified(b);
-	emit modificationChanged(b);
+	emit modificationChanged();
 }
 
 // TODO: improve find to be able to search within a selection
 void Editor::find()
 {
 	// find selection, etc
-	if(editor->textCursor().hasSelection())
-	{
+	if (editor->textCursor().hasSelection()) {
 		QString selectedText = editor->textCursor().selectedText();
 		// If the selection is too big, then we don't want to automatically
 		// populate the search text box with the selection text
-		if(selectedText.length() < 30)
-		{
+		if (selectedText.length() < 30) {
 			fdialog->setPattern(selectedText);
 		}
 	}
-	if(fdialog->exec()==QDialog::Accepted && !fdialog->pattern().isEmpty())
-	{
+	if (fdialog->exec() == QDialog::Accepted && !fdialog->pattern().isEmpty()) {
 		long kOpts = fdialog->options();
 		QTextDocument::FindFlags qOpts = 0;
-		if(kOpts & KFind::CaseSensitive)
-		{ qOpts |= QTextDocument::FindCaseSensitively; }
-		if(kOpts & KFind::FindBackwards)
-		{ qOpts |= QTextDocument::FindBackward; }
-		if(kOpts & KFind::WholeWordsOnly)
-		{ qOpts |= QTextDocument::FindWholeWords; }
+		if (kOpts & KFind::CaseSensitive)  { qOpts |= QTextDocument::FindCaseSensitively; }
+		if (kOpts & KFind::FindBackwards)  { qOpts |= QTextDocument::FindBackward; }
+		if (kOpts & KFind::WholeWordsOnly) { qOpts |= QTextDocument::FindWholeWords; }
 		editor->find(fdialog->pattern(), qOpts);
 	}
 }
 
 void Editor::findNext()
 {
-	if(!fdialog->pattern().isEmpty())
-	{
+	if (!fdialog->pattern().isEmpty()) {
 		long kOpts = fdialog->options();
 		QTextDocument::FindFlags qOpts = 0;
-		if(kOpts & KFind::CaseSensitive)
-		{ qOpts |= QTextDocument::FindCaseSensitively; }
-		if(kOpts & KFind::FindBackwards)
-		{ qOpts |= QTextDocument::FindBackward; }
-		if(kOpts & KFind::WholeWordsOnly)
-		{ qOpts |= QTextDocument::FindWholeWords; }
+		if (kOpts & KFind::CaseSensitive)  { qOpts |= QTextDocument::FindCaseSensitively; }
+		if (kOpts & KFind::FindBackwards)  { qOpts |= QTextDocument::FindBackward; }
+		if (kOpts & KFind::WholeWordsOnly) { qOpts |= QTextDocument::FindWholeWords; }
 		editor->find(fdialog->pattern(), qOpts);
 	}
 }
 
 void Editor::findPrev()
 {
-	if(!fdialog->pattern().isEmpty())
-	{
+	if(!fdialog->pattern().isEmpty()) {
 		long kOpts = fdialog->options();
 		QTextDocument::FindFlags qOpts = 0;
-		if(kOpts & KFind::CaseSensitive)
-		{ qOpts |= QTextDocument::FindCaseSensitively; }
+		if (kOpts & KFind::CaseSensitive)    { qOpts |= QTextDocument::FindCaseSensitively; }
 		// search in the opposite direction as findNext()
-		if(!(kOpts & KFind::FindBackwards))
-		{ qOpts |= QTextDocument::FindBackward; }
-		if(kOpts & KFind::WholeWordsOnly)
-		{ qOpts |= QTextDocument::FindWholeWords; }
+		if (!(kOpts & KFind::FindBackwards)) { qOpts |= QTextDocument::FindBackward; }
+		if (kOpts & KFind::WholeWordsOnly)   { qOpts |= QTextDocument::FindWholeWords; }
 		editor->find(fdialog->pattern(), qOpts);
 	}
 }
 
 void Editor::setCurrentUrl(const KUrl& url)
 {
-	if (url == m_currentUrl) return;
 	m_currentUrl = KUrl(url);
-	emit currentUrlChanged(m_currentUrl);
+	emit contentNameChanged(m_currentUrl.fileName());
 }
 
 void Editor::setOverwriteMode(bool b)
@@ -367,12 +355,12 @@ void Editor::setOverwriteMode(bool b)
 }
 
 
-void Editor::cursorPositionChanged()
+void Editor::updateOnCursorPositionChange()
 {
-	// convert the absolute pos into a row/col pair, and return the current line aswell
+	// convert the absolute pos into a row/col pair, and set current line aswell
 	QString s = editor->toPlainText();
 	int pos = editor->textCursor().position();
-	int row = 0;
+	int row = 1;
 	int last_break = -1;
 	int next_break = 0;
 	for (int i = 0; i < s.length(); i++) {
@@ -384,13 +372,30 @@ void Editor::cursorPositionChanged()
 			break;
 		}
 	}
-	if (next_break == 0) next_break = s.length();
-	if (currentLine != row) {
-		currentLine = row;
+	if (next_break == 0)
+		next_break = s.length();
+	if (currentRow != row) {
+		currentRow = row;
 		highlightCurrentLine();
 		editor->highlightCurrentLine();
 	}
-	emit cursorPositionChanged(row+1, pos-last_break, s.mid(last_break+1, next_break-last_break-1));
+	currentCol = pos - last_break;
+	currentLine = s.mid(last_break+1, next_break-last_break-1);
+	emit cursorPositionChanged();
+}
+
+Token* Editor::currentToken()
+{
+	tokenizer->initialize(currentLine);
+	Token* token = tokenizer->getToken();
+	while (token->type() != Token::EndOfInput) {
+		if (currentCol >= token->startCol() && currentCol <= token->endCol())
+			return token;
+		delete token;
+		token = tokenizer->getToken();
+	}
+	delete token;
+	return 0;
 }
 
 
@@ -413,6 +418,38 @@ void Editor::paintEvent(QPaintEvent *event)
 	QFrame::paintEvent(event);
 }
 
+QString Editor::toHtml(const QString& title, const QString& lang)
+{
+	Tokenizer* tokenizer = new Tokenizer();
+	tokenizer->initialize(editor->document()->toPlainText());
+	QString html = QString();
+	QTextCharFormat* format;
+	Token* token = tokenizer->getToken();
+	while (token->type() != Token::EndOfInput) {
+		QString escaped;
+		switch (token->type()) {
+			case Token::EndOfLine:  escaped = "<br />"; break;
+			case Token::WhiteSpace: escaped = ""; for (int n = 0; n < token->look().length(); n++) { escaped += "&nbsp;"; } break;
+			default:                escaped = Qt::escape(token->look()); break;
+		}
+		format = highlighter->tokenToFormat(token);
+		if (format != 0) {
+			bool bold = format->fontWeight() > 50;
+			html += QString("<span style=\"color: %1;%2\">%3</span>")
+				.arg(format->foreground().color().name())
+				.arg(bold ? " font-weight: bold;" : "")
+				.arg(escaped);
+		} else {
+			html += escaped;
+		}
+		token = tokenizer->getToken();
+	}
+	delete tokenizer;
+	return QString("<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"%1\" lang=\"%1\">"
+	               "<head><meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\" />"
+	               "<title>%2</title></head>"
+	               "<body style=\"font-family: monospace;\">%3</body></html>").arg(lang).arg(title).arg(html);
+}
 
 
 // bool Editor::eventFilter(QObject *obj, QEvent *event)

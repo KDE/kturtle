@@ -50,8 +50,26 @@ Highlighter::Highlighter(QTextDocument *parent)
 	learnCommandFormat.setFontWeight(QFont::Bold);
 	learnCommandFormat.setForeground(Qt::green);
 
+	booleanOperatorFormat.setFontWeight(QFont::Bold);
+	booleanOperatorFormat.setForeground(QColor(255, 90, 255));  // pink
+
+	expressionFormat.setFontWeight(QFont::Bold);
+	expressionFormat.setForeground(QColor(90, 100, 255));  // light blue
+
+	mathOperatorFormat.setFontWeight(QFont::Bold);
+	mathOperatorFormat.setForeground(Qt::darkGray);
+
+	assignmentFormat.setFontWeight(QFont::Bold);
+	assignmentFormat.setForeground(Qt::black);
+
 	tokenizer = new Tokenizer();
 }
+
+Highlighter::~Highlighter()
+{
+	delete tokenizer;
+}
+
 
 QTextCharFormat* Highlighter::formatForStatement(const QString &text)
 {
@@ -93,19 +111,15 @@ QTextCharFormat* Highlighter::tokenToFormat(Token* token)
 		case Token::CommandCategory:           return &otherCommandFormat;
 		case Token::ControllerCommandCategory: return &controllerCommandFormat;
 		case Token::LearnCommandCategory:      return &learnCommandFormat;
+		case Token::ExpressionCategory:        return &expressionFormat;
+		case Token::BooleanOperatorCategory:   return &booleanOperatorFormat;
+		case Token::MathOperatorCategory:      return &mathOperatorFormat;
+		case Token::AssignmentCategory:        return &assignmentFormat;
 
-		case Token::MetaCategory:
-		case Token::MathOperatorCategory:
-		case Token::WhiteSpaceCategory:
-		case Token::ParenthesisCategory:
-		case Token::DecimalSeparatorCategory:
-		case Token::FunctionCallCategory:
-		case Token::ExpressionCategory:
-		case Token::AssignmentCategory:
-		case Token::ArgumentSeparatorCategory:
-		case Token::BooleanOperatorCategory:
-			// do nothing with these... yet.
-			break;
+		// do nothing with these...
+		case Token::ParenthesisCategory:       return 0;
+		case Token::FunctionCallCategory:      return 0;
+		case Token::ArgumentSeparatorCategory: return 0;
 	}
 	return 0;
 }

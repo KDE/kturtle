@@ -78,17 +78,18 @@ QHash<int, QList<QString> > Translator::token2stringsMap()
 
 bool Translator::setLanguage(const QString &lang_code)
 {
-	//Save UI language
+	// save UI language
 	QString mainLanguage = localizer->language();
 	
-	//Set language for construction of translation dictionaries and examples
+	// set language for construction of translation dictionaries and examples
 	localizer->setLanguage(lang_code, KGlobal::config().data());
-	if (localizer->language() != lang_code) return false;  // the GUI needs to give feedback if it didn't work
+	if (localizer->language() != lang_code)
+		return false;  // up to the GUI to give feedback if it didn't work
 
 	setDictionary();
 	setExamples();
 
-	//Restore UI language
+	// restore UI language
 	localizer->setLanguage(mainLanguage , KGlobal::config().data());
 	return true;
 }
@@ -229,6 +230,13 @@ void Translator::setDictionary()
 		"wait").toString(localizer);
 	default2localizedMap["wait"] = localizedCommandLook;
 	look2typeMap[localizedCommandLook] = Token::Wait;
+
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'Assert' COMMAND, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"assert").toString(localizer);
+	default2localizedMap["assert"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::Assert;
 
 	localizedCommandLook = ki18nc(
 		"You are about to translate the 'And' COMMAND, there are some rules on how to translate it."
@@ -638,13 +646,6 @@ void Translator::setDictionary()
 		"sqrt").toString(localizer);
 	default2localizedMap["sqrt"] = localizedCommandLook;
 	look2typeMap[localizedCommandLook] = Token::Sqrt;
-
-	localizedCommandLook = ki18nc(
-		"You are about to translate the 'Exp' COMMAND, there are some rules on how to translate it."
-		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
-		"exp").toString(localizer);
-	default2localizedMap["exp"] = localizedCommandLook;
-	look2typeMap[localizedCommandLook] = Token::Exp;
 
 	localizedCommandLook = ki18nc(
 		"You are about to translate the 'Round' COMMAND, there are some rules on how to translate it."

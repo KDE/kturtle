@@ -72,6 +72,7 @@ class Tokenizer
 		void  ungetChar();  // undoes a getChar() call
 		static bool isBreak(const QChar& c);  // convenience functions
 		static bool isSpace(const QChar& c);
+		static bool isTab(const QChar& c);
 
 		Translator *translator;
 		QString     inputString;

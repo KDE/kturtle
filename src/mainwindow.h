@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003-2008 Cies Breijs <cies AT kde DOT nl>
+	Copyright (C) 2003-2009 Cies Breijs <cies AT kde DOT nl>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public
@@ -69,38 +69,50 @@ class MainWindow : public KXmlGuiWindow
 	public:
 		MainWindow();
 		~MainWindow();
+		void open(const QString& pathOrUrl) { editor->openFile(KUrl(pathOrUrl)); }  // for main.cpp
 
-	public slots:
-		void open(const QString&);
-		void addToRecentFilesList(const KUrl&);
-		void showErrorDialog(bool show = false);
+// 	public slots:
 
 	private slots:
+		void addToRecentFilesList(const KUrl&);
+		void showErrorDialog(bool show = false);
 		void openExample();
-		void printDlg();
-		void saveAsPicture();
+		void filePrintDialog();
+		void canvasPrintDialog();
+		void exportToPng();
+		void exportToSvg();
+		void exportToHtml();
+
+		void contextHelp();
+		//void whatsThis();
+		void documentWasModified();
+
+		void showDirectionDialog();
+		void showColorPicker();
+
+		void setRunSpeed(int);
 		void run();
 		void pause();
 		void abort();
 		void iterate();
 		QString execute(const QString&);  // for single command execution as by the console
-
-		void contextHelp();
-		//void whatsThis();
-		void documentWasModified();
-		void setRunSpeed(int);
-
-		void showDirectionDialog();
-		void showColorPicker();
-
-		void setFullSpeed()    { setRunSpeed(0); }
-		void setSlowSpeed()    { setRunSpeed(1); }
-		void setSlowerSpeed()  { setRunSpeed(2); }
-		void setSlowestSpeed() { setRunSpeed(3); }
-		void setStepSpeed()    { setRunSpeed(4); }
+		void setDedicatedSpeed() { setRunSpeed(0); }
+		void setFullSpeed()      { setRunSpeed(1); }
+		void setSlowSpeed()      { setRunSpeed(2); }
+		void setSlowerSpeed()    { setRunSpeed(3); }
+		void setSlowestSpeed()   { setRunSpeed(4); }
+		void setStepSpeed()      { setRunSpeed(5); }
 
 		void slotInputDialog(QString& value);
 		void slotMessageDialog(const QString& text);
+
+		bool setCurrentLanguage(const QString&);
+		void setLanguage(QAction*);
+		void updateContentName(const QString& str = QString());
+		void updateModificationState() { setCaption(editor->currentUrl().fileName()); }
+		void addToRecentFiles(const KUrl&);
+		void toggleOverwriteMode(bool b);
+		void updateOnCursorPositionChange();
 
 	protected slots:
 		void saveNewToolbarConfig();
@@ -119,22 +131,13 @@ class MainWindow : public KXmlGuiWindow
 		void readConfig();
 		void writeConfig();
 
-		void setContextHelp(const QString& s = QString());
+		void updateContextHelpAction(const QString& s = QString(), const QString& anchor = QString());
 		QString codeToFullName(const QString&);
 
 		void updateExamplesMenu();
 		void updateLanguagesMenu();
-		bool setCurrentLanguage(const QString &);
+		void toggleGuiFeedback(bool b);
 
-	private slots:
-		void setCaption(const KUrl& url = KUrl(), bool b = false);
-		void setWindowModified(bool b) { setCaption(editor->currentUrl(), b); }
-		void setLanguage(QAction *);
-		void addToRecentFiles(const KUrl&);
-		void toggleOverwriteMode(bool b);
-		void updateOnCursorPositionChange(int row, int col, const QString& line);
-
-	private:
 		Canvas          *canvas;
 		Console         *console;
 		Editor          *editor;
@@ -154,6 +157,7 @@ class MainWindow : public KXmlGuiWindow
 		QString currentLanguageCode;
 
 		QString contextHelpString;
+    QString contextHelpAnchor;
 	
 		QMenu *examplesMenu;
 
@@ -163,12 +167,16 @@ class MainWindow : public KXmlGuiWindow
 		KAction *openAct;
 		KAction *saveAct;
 		KAction *saveAsAct;
-		KAction *saveAsPictureAct;
+		KAction *exportToPngAct;
+		KAction *exportToSvgAct;
+		KAction *exportToHtmlAct;
+		KAction *printCanvasAct;
 		KAction *runAct;
 		KAction *pauseAct;
 		KAction *abortAct;
 		KAction *quitAct;
 		KAction *contextHelpAct;
+		KAction *dedicatedSpeedAct;
 		KAction *fullSpeedAct;
 		KAction *slowSpeedAct;
 		KAction *slowerSpeedAct;

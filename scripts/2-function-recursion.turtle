@@ -1,0 +1,23 @@
+kturtle-script-v1.0
+@(learn) a $n {
+  $n = $n - 2
+  @(fw) 10
+  @(print) "a: " + $n
+	@(if) $n <= 0 {
+    @(return)
+	}
+  b $n
+}
+
+@(learn) b $n {
+  $n = $n - 1
+  @(fw) 10
+  @(print) "b: " + $n
+	@(if) $n <= 0 {
+    @(return)
+	}
+  a $n
+}
+
+@(reset)
+a 20

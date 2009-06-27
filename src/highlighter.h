@@ -36,13 +36,15 @@ class Highlighter : public QSyntaxHighlighter
 
 	public:
 		Highlighter(QTextDocument *parent = 0);
-		~Highlighter() {}
+		~Highlighter();
 
-		// this function is used by the Editor
+		/// used by the Editor for highlighting
 		Token* formatType(const QString &text, int cursorIndex) { return checkOrApplyHighlighting(text, cursorIndex); }
 
-		// this function gives the text format for a single statement (first in the text), and is used by the inspector
+		/// used by the Inspector to give the text format for a single statement (first in the text)
 		QTextCharFormat* formatForStatement(const QString &text);
+
+		/// used by internally and by the Inspector
 		QTextCharFormat* tokenToFormat(Token* token);
 
 	protected:
@@ -51,7 +53,7 @@ class Highlighter : public QSyntaxHighlighter
 	private:
 		Token* checkOrApplyHighlighting(const QString &text, int cursorIndex = -1);
 
-		Tokenizer *tokenizer;
+		Tokenizer* tokenizer;
 
 		QTextCharFormat variableFormat;
 		QTextCharFormat trueFalseFormat;
@@ -62,6 +64,10 @@ class Highlighter : public QSyntaxHighlighter
 		QTextCharFormat controllerCommandFormat;
 		QTextCharFormat otherCommandFormat;
 		QTextCharFormat learnCommandFormat;
+		QTextCharFormat booleanOperatorFormat;
+		QTextCharFormat expressionFormat;
+		QTextCharFormat assignmentFormat;
+		QTextCharFormat mathOperatorFormat;
 };
 
 

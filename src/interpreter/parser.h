@@ -126,7 +126,6 @@ class Parser
  * Thanks for looking at the code!
  */
 
-		TreeNode* parseUnknown();
 		TreeNode* parseVariable();
 		TreeNode* parseFunctionCall();
 		TreeNode* parseScopeOpen();
@@ -140,6 +139,7 @@ class Parser
 		TreeNode* parseBreak();
 		TreeNode* parseReturn();
 		TreeNode* parseWait();
+		TreeNode* parseAssert();
 		TreeNode* parseLearn();
 		TreeNode* parseReset();
 		TreeNode* parseClear();
@@ -175,7 +175,6 @@ class Parser
 		TreeNode* parseArcSin();
 		TreeNode* parseArcCos();
 		TreeNode* parseSqrt();
-		TreeNode* parseExp();
 		TreeNode* parseRound();
 
 //END GENERATED parser_h CODE

@@ -14,19 +14,8 @@
     <Separator />
     <Action name="file_save" />
     <Action name="file_save_as" />
-    <Action name="save_as_picture" />
     <Separator />
-    <Action name="run" />
-    <Action name="pause" />
-    <Action name="abort" />
-    <Menu name="speed"><text>&amp;Run Speed</text>
-      <Action name="full_speed" />
-      <Action name="slow_speed" />
-      <Action name="slower_speed" />
-      <Action name="slowest_speed" />
-      <Action name="step_speed" />
-    </Menu>
-    <Separator />
+    <Action name="file_export_to_html" />
     <Action name="file_print" />
     <Separator />
     <Action name="file_quit" />
@@ -48,13 +37,24 @@
     <Separator />
     <Action name="overwrite" />
   </Menu>
-  <Menu name="view"><text>&amp;View</text>
-    <Action name="show_editor" />
-    <Action name="show_inspector" />
-    <Action name="show_errors" />
-    <Action name="show_console" />
+  <Menu name="canvas"><text>&amp;Canvas</text>
+    <Action name="canvas_export_to_png" />
+    <Action name="canvas_export_to_svg" />
     <Separator />
-    <Action name="line_numbers" />
+    <Action name="canvas_print" />
+  </Menu>
+  <Menu name="run"><text>&amp;Run</text>
+    <Action name="run" />
+    <Action name="pause" />
+    <Action name="abort" />
+    <Menu name="speed"><text>&amp;Run Speed</text>
+      <Action name="dedicated_speed" />
+      <Action name="full_speed" />
+      <Action name="slow_speed" />
+      <Action name="slower_speed" />
+      <Action name="slowest_speed" />
+      <Action name="step_speed" />
+    </Menu>
   </Menu>
   <Menu name="tools"><text>&amp;Tools</text>
     <Action name="direction_chooser" />
@@ -64,6 +64,15 @@
     <Menu name="language"><text>&amp;Script Language</text>
       <ActionList name="languages_actionlist" />
     </Menu>
+    <Separator />
+    <Action name="show_editor" />
+    <Action name="show_inspector" />
+    <Action name="show_errors" />
+    <Separator />
+    <Action name="line_numbers" />
+  </Menu>
+  <Menu name="help"><text>&amp;Help</text>
+    <Action name="context_help" />
   </Menu>
 </MenuBar>
 

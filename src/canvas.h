@@ -22,6 +22,7 @@
 #define _CANVAS_H_
 
 #include <QGraphicsView>
+#include <QSvgGenerator>
 
 #include "sprite.h"
 
@@ -36,6 +37,8 @@ class Canvas : public QGraphicsView
 
 		double turtleAngle() { return turtle->angle(); }
 		QImage getPicture();
+		void saveAsSvg(const QString&, const QString&);
+// 		void scene() { return _scene; }
 
 	public slots:
 		void slotClear();
@@ -73,7 +76,7 @@ class Canvas : public QGraphicsView
 		void wheelEvent(QWheelEvent *event);
 		void scaleView(double scaleFactor);
 
-		QGraphicsScene            *scene;
+		QGraphicsScene            *_scene;
 		QPen                      *pen;
 		Sprite                    *turtle;
 		QList<QGraphicsLineItem*>  lines;

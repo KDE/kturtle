@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003-2006 Cies Breijs <cies AT kde DOT nl>
+	Copyright (C) 2003-2009 Cies Breijs <cies AT kde DOT nl>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public
@@ -37,14 +37,12 @@ void Tokenizer::initialize(const QString& inString)
 
 Token* Tokenizer::getToken()
 {
-// 	kDebug() << "Tokenizer::getToken()";
-
 	int startRow = row;
 	int startCol = col;
 
 	QChar c = getChar();  // get and store the next character from the string
 
-	// catch the end of the string
+	// catch the end of the input string
 	if (atEnd)
 		return new Token(Token::EndOfInput, "END", row, col, row, col);
 
@@ -54,9 +52,9 @@ Token* Tokenizer::getToken()
 	if (isSpace(c)) {
 		QString look;
 		do {
-			look += c;
+			look += (isTab(c) ? "  " : " ");
 			c = getChar();
-		} while (c.category() == QChar::Separator_Space && !atEnd);
+		} while (isSpace(c) && !atEnd);
 		ungetChar();
 		return new Token(Token::WhiteSpace, look, startRow, startCol, row, col);
 	}
@@ -84,8 +82,7 @@ Token* Tokenizer::getToken()
 			c = getChar();
 			look += c;
 		} while (!(translator->look2type(c) == Token::StringDelimiter && look.right(2) != "\\\"") &&
-		         !isBreak(c) &&
-		         !atEnd);
+		         !isBreak(c) && !atEnd);
 		return new Token(Token::String, look, startRow, startCol, row, col);
 	}
 
@@ -95,22 +92,23 @@ Token* Tokenizer::getToken()
 		do {
 			look += c;
 			c = getChar();
-		} while (c.isLetter() ||
-		         c.category() == QChar::Number_DecimalDigit ||
-		         c == '_');
+		} while (c.isLetter() || c.category() == QChar::Number_DecimalDigit || c == '_');
 		ungetChar();
 		return new Token(Token::Variable, look, startRow, startCol, row, col);
 	}
 
-	// catch words (known or unknown function calls)
-	if (c.isLetter()) {
+	// catch words (known commands or function calls)
+	if (c.isLetter()) {  // first char has to be a letter
 		QString look;
 		do {
 			look += c;
 			c = getChar();
-		} while (c.isLetter() || c.isDigit() || c == '_');
+		} while (c.isLetter() || c.isDigit() || c == '_');  // next chars
 		ungetChar();
-		return new Token(translator->look2type(look), look, startRow, startCol, row, col);
+		int type = translator->look2type(look);
+		if (type == Token::Unknown)
+			type = Token::FunctionCall;
+		return new Token(type, look, startRow, startCol, row, col);
 	}
 
 	// catch numbers
@@ -137,9 +135,9 @@ Token* Tokenizer::getToken()
 	// catch previously uncatched 'double charactered tokens' (tokens that ar not in letters, like: == != >= <=)
 	{
 		QString look = QString(c).append(getChar());
-		int localType = translator->look2type(look);
-		if (localType != Token::Unknown)
-			return new Token(localType, look, startRow, startCol, row, col);
+		int type = translator->look2type(look);
+		if (type != Token::Unknown)
+			return new Token(type, look, startRow, startCol, row, col);
 		ungetChar();
 	}
 
@@ -147,7 +145,7 @@ Token* Tokenizer::getToken()
 	if (cType != Token::Unknown)
 		return new Token(cType, static_cast<QString>(c), startRow, startCol, row, col);
 
-	// fall throu: return an Error token (TODO does this neglect used def'ed function names of one character?)
+	// this does not neglect calls to functions with a name of length one (checked it)
 	return new Token(Token::Error, static_cast<QString>(c), startRow, startCol, row, col);
 }
 
@@ -201,5 +199,10 @@ bool Tokenizer::isBreak(const QChar& c)
 
 bool Tokenizer::isSpace(const QChar& c)
 {
-	return (c.category() == QChar::Separator_Space || c == '\x09' || c == ' ' || c == '\t');
+	return (c.category() == QChar::Separator_Space || c == ' ' || isTab(c));
+}
+
+bool Tokenizer::isTab(const QChar& c)
+{
+	return (c == '\x09' || c == '\t');
 }

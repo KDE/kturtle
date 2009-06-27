@@ -181,7 +181,6 @@ class Executer : public QObject
  * Thanks for looking at the code!
  */
 
-		void executeUnknown(TreeNode* node);
 		void executeRoot(TreeNode* node);
 		void executeScope(TreeNode* node);
 		void executeVariable(TreeNode* node);
@@ -196,6 +195,7 @@ class Executer : public QObject
 		void executeBreak(TreeNode* node);
 		void executeReturn(TreeNode* node);
 		void executeWait(TreeNode* node);
+		void executeAssert(TreeNode* node);
 		void executeAnd(TreeNode* node);
 		void executeOr(TreeNode* node);
 		void executeNot(TreeNode* node);
@@ -247,7 +247,6 @@ class Executer : public QObject
 		void executeArcSin(TreeNode* node);
 		void executeArcCos(TreeNode* node);
 		void executeSqrt(TreeNode* node);
-		void executeExp(TreeNode* node);
 		void executeRound(TreeNode* node);
 
 //END GENERATED executer_h CODE

@@ -18,6 +18,7 @@
 */
 
 #include "interpreter.h"
+#include "interpreteradaptor.h"
 
 #include <QtDebug>
 
@@ -33,6 +34,12 @@
 Interpreter::Interpreter(QObject* parent, bool testing)
 	: QObject(parent), m_testing(testing)
 {
+	if (testing) {
+		new InterpreterAdaptor(this);
+		QDBusConnection dbus = QDBusConnection::sessionBus();
+		dbus.registerObject("/Interpreter", this);
+	}
+
 	errorList  = new ErrorList();
 	tokenizer  = new Tokenizer();
 	parser     = new Parser(testing);
@@ -59,7 +66,7 @@ void Interpreter::interpret()
 		case Initialized:
 			parser->initialize(tokenizer, errorList);
 			m_state = Parsing;
-			qDebug() << "Initialized the parser, parsing the code...";
+// 			kDebug(0) << "Initialized the parser, parsing the code...";
 			emit parsing();
 			break;
 
@@ -69,24 +76,25 @@ void Interpreter::interpret()
 
 			if (encounteredErrors()) {
 				m_state = Aborted;
-				qDebug() << "Error encountered while parsing:";
-				const QStringList lines = errorList->asString().split('\n');
-				foreach (const QString &line, lines) qDebug() << line;
-				qDebug() << "Parsing was unsuccessful.";
+// 				kDebug(0) << "Error encountered while parsing:";
+				const QStringList lines = errorList->asStringList();
+				foreach (const QString &line, lines)
+					kDebug(0) << line;
+// 				kDebug(0) << "Parsing was unsuccessful.";
 				return;
 			}
 
 			if (parser->isFinished()) {
-				qDebug() << "Finished parsing.\n";
+// 				kDebug(0) << "Finished parsing.\n";
 				TreeNode* tree = parser->getRootNode();
 				emit treeUpdated(tree);
-				qDebug() << "Node tree as returned by parser:";
-				parser->printTree();
-				qDebug() << "";
+// 				kDebug(0) << "Node tree as returned by parser:";
+// 				parser->printTree();
+// 				kDebug(0) << "";
 
 				executer->initialize(tree, errorList);
 				m_state = Executing;
-				qDebug() << "Initialized the executer, executing the node tree...";
+// 				kDebug(0) << "Initialized the executer, executing the node tree...";
 				emit executing();
 				return;
 			}
@@ -97,13 +105,14 @@ void Interpreter::interpret()
 			executer->execute();
 
 			if (executer->isFinished()) {
-				qDebug() << "Finished executing.\n";
+// 				kDebug(0) << "Finished executing.\n";
 				if (encounteredErrors()) {
-					qDebug() << "Execution returned " << errorList->count() << " error(s):";
-					const QStringList lines = errorList->asString().split('\n');
-					foreach (const QString &line, lines) qDebug() << line;
+// 					kDebug(0) << "Execution returned " << errorList->count() << " error(s):";
+// 					const QStringList lines = errorList->asStringList();
+// 					foreach (const QString &line, lines)
+// 						kDebug(0) << line;
 				} else {
-					qDebug() << "No errors encountered.";
+// 					kDebug(0) << "No errors encountered.";
 				}
 				m_state = Finished;
 				emit finished();

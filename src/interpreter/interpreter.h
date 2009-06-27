@@ -21,6 +21,7 @@
 #ifndef _INTERPRETER_H_
 #define _INTERPRETER_H_
 
+#include <QStringList>
 #include <QTextStream>
 
 #include "errormsg.h"
@@ -43,6 +44,7 @@
 class Interpreter : public QObject
 {
 	Q_OBJECT
+	Q_CLASSINFO("D-Bus Interface", "org.kde.kturtle.Interpreter");
 
 	public:
 		/**
@@ -64,17 +66,24 @@ class Interpreter : public QObject
 			Aborted        // unsuccessfully finished
 		};
 
-		void        interpret();
-
-		int         state() { return m_state; }
 		void        abort() { m_state = Aborted; }
 
 		Executer*   getExecuter() { return executer; }
-
-		void        initialize(const QString& inputString);  // resets
-		bool        encounteredErrors() { return errorList->count() > 0; }
 		ErrorList*  getErrorList() { return errorList; }
 
+	public slots:
+		void        interpret();
+		int         state() { return m_state; }
+		void        initialize(const QString& inputString);  // resets
+		bool        encounteredErrors() { return errorList->count() > 0; }
+		QStringList getErrorStrings() { return errorList->asStringList(); }
+
+	signals:
+		void parsing();
+		void executing();
+		void finished();
+		
+		void treeUpdated(TreeNode* rootNode);
 
 	private:
 		int            m_state;
@@ -87,14 +96,6 @@ class Interpreter : public QObject
 		ErrorList     *errorList;
 
 		bool           m_testing;
-
-
-	signals:
-		void parsing();
-		void executing();
-		void finished();
-		
-		void treeUpdated(TreeNode* rootNode);
 };
 
 #endif  // _INTERPRETER_H_

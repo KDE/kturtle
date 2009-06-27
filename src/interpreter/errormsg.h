@@ -20,13 +20,13 @@
 #ifndef _ERRORMSG_H_
 #define _ERRORMSG_H_
 
+#include "token.h"
 
-#include <QtDebug>  // no kde stuff in the interpreter
-
+#include <kdebug.h>
 
 #include <QList>
+#include <QStringList>
 
-#include "token.h"
 
 
 
@@ -69,18 +69,18 @@ class ErrorMessage
 class ErrorList : public QList<ErrorMessage>
 {
 	public:
-		QString asString()
+		QStringList asStringList()
 		{
-			QString result = "";
+			QStringList result;
 			ErrorList::iterator error;
 			int i = 1;
 			for (error = this->begin(); error != this->end(); ++error) {
-				result += QString("%1: %2 [by %3 on line %4], code %5")
+				result.append(QString("%1: %2 [by %3 on line %4], code %5")
 					.arg(i)
 					.arg((*error).text())
 					.arg((*error).token().look())
 					.arg((*error).token().startRow())
-					.arg((*error).code());
+					.arg((*error).code()));
 				i++;
 			}
 			return result;
@@ -95,12 +95,12 @@ class ErrorList : public QList<ErrorMessage>
 		void addError(ErrorMessage error)
 		{
 			if (!this->contains(error)) this->append(error);
-			qDebug() <<
-				QString("ErrorList::addError(): %1 [by %2 on line %3], code %4")
-					.arg(error.text())
-					.arg(error.token().look())
-					.arg(error.token().startRow())
-					.arg(error.code());
+// 			kDebug(0) <<
+// 				QString("ErrorList::addError(): %1 [by %2 on line %3], code %4")
+// 					.arg(error.text())
+// 					.arg(error.token().look())
+// 					.arg(error.token().startRow())
+// 					.arg(error.code());
 		}
 };
 

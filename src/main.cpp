@@ -37,10 +37,10 @@
 
 
 static const char description[] =
-	I18N_NOOP("KTurtle is an educational programming environment that aims to make programming as easy as possible, especially for young children. KTurtle intends to help teaching kids the basics of math, geometry, and programming.");
+	I18N_NOOP("KTurtle is an educational programming environment that aims to make learning how to program as easy as possible. To achieve this KTurtle makes all programming tools available from the user interface. The programming language used is TurtleScript which allows its commands to be translated.");
 
-static const char version[]   = "0.8 beta";
-static const char copyright[] = "(c) 2003-2008 Cies Breijs";
+static const char version[]   = "0.8.1 beta";
+static const char copyright[] = "(c) 2003-2009 Cies Breijs";
 static const char website[]   = "http://edu.kde.org/kturtle";
 
 
@@ -55,21 +55,23 @@ int main(int argc, char* argv[])
 
 	KCmdLineOptions options;
 	options.add("i");
-	options.add("input <URL or file>", ki18n("File to open (in the GUI mode)"));
+	options.add("input <URL or file>", ki18n("File or URL to open (in the GUI mode)"));
+	options.add("d");
+	options.add("dbus", ki18n("Starts KTurtle in DBus mode (without a GUI), good for automated unit test scripts"));
 	options.add("t");
 	options.add("test <file>", ki18n("Starts KTurtle in testing mode (without a GUI), directly runs the specified local file"));
 	options.add("l");
 	options.add("lang <code>", ki18n("Specifies the localization language by a language code, defaults to \"en_US\" (only works in testing mode)"));
-	options.add("k");
-	options.add("tokenize", ki18n("Only tokenizes the turtle code (only works in testing mode)"));
+// 	options.add("k");
+// 	options.add("tokenize", ki18n("Only tokenizes the turtle code (only works in testing mode)"));
 	options.add("p");
 	options.add("parse <file>", ki18n("Translates turtle code to embeddable C++ example strings (for developers only)"));
 	KCmdLineArgs::addCmdLineOptions(options);
 	KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
 
-	if (!args->isSet("test") && !args->isSet("parse")) {
+	if (!args->isSet("test") && !args->isSet("parse") && !args->isSet("dbus")) {
 
-		///////////////// run in gui mode /////////////////
+		///////////////// run in GUI mode /////////////////
 		KApplication app;
 		if (app.isSessionRestored()) {
 			RESTORE(MainWindow);
@@ -81,9 +83,19 @@ int main(int argc, char* argv[])
 		args->clear();  // free some memory
 		return app.exec();  // the mainwindow has WDestructiveClose flag; it will destroy itself.
 
+	} else if (args->isSet("dbus")) {
+
+		///////////////// run in DBUS mode /////////////////
+		KApplication app;
+		KComponentData componentData(&aboutData);  // need a KComponentData since we're using KLocale in the Translator class
+		Translator::instance()->setLanguage();
+		new Interpreter(0, true);
+		args->clear();
+		return app.exec();
+
 	} else if (args->isSet("parse")) {
 
-		///////////////// run in example parsing mode /////////////////
+		///////////////// run in example PARSING mode /////////////////
 		QFile inputFile(args->getOption("parse"));
 		if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
 			std::cout << "Could not open file: " << qPrintable(args->getOption("parse")) << std::endl;
@@ -118,7 +130,8 @@ int main(int argc, char* argv[])
 		std::cout << "KTurtle's interpreter in command line mode (version " << version << ")" << std::endl;
 		std::cout << copyright << std::endl << std::endl;
 
-		QFile inputFile(args->getOption("test"));
+		QString fileString = args->getOption("test");
+		QFile inputFile(fileString);
 
 		if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
 			std::cout << "Could not open input file: " << qPrintable(args->getOption("test")) << std::endl;
@@ -126,8 +139,17 @@ int main(int argc, char* argv[])
 			return 1;
 		}
 
-		KComponentData componentData(&aboutData);  // need a KComponentData since we're using KLocale in the Translator class
+		QTextStream in(&inputFile);
 
+		// check for our magic identifier
+		QString s;
+		s = in.readLine();
+		if (s != KTURTLE_MAGIC_1_0) {
+			std::cout << "The file you try to open is not a valid KTurtle script, or is incompatible with this version of KTurtle.\n";
+			return 1;
+		}
+
+		KComponentData componentData(&aboutData);  // need a KComponentData since we're using KLocale in the Translator class
 		if (args->isSet("lang")) {
 			if (Translator::instance()->setLanguage(args->getOption("lang"))) {
 				std::cout << "Set localization to: " << args->getOption("lang").data() << std::endl;
@@ -141,30 +163,32 @@ int main(int argc, char* argv[])
 			std::cout << "Using the default (en_US) localization." << std::endl;
 		}
 
-		if (args->isSet("tokenize")) {
-			std::cout << "Tokenizing...\n" << std::endl;
-			QString code = inputFile.readAll();
-// 			for (int i = 0; i < code.length(); i++) kDebug() << code.at(i);
-			Tokenizer tokenizer;
-			tokenizer.initialize(code);
-			Token* t;
-			while ((t = tokenizer.getToken())->type() != Token::EndOfInput) {
-				std::cout << "TOK> "
-				          << qPrintable(QString("\"%1\"").arg(t->look()).leftJustified(15))
-				          << qPrintable(QString("[%1]").arg(QString::number(t->type())).rightJustified(5))
-				          << qPrintable(QString(" @ (%1,%2)").arg(t->startRow()).arg(t->startCol()))
-				          << qPrintable(QString(" - (%1,%2)").arg(t->endRow()).arg(t->endCol()))
-				          << std::endl;
-			}
-			return 0;
-		}
+		QString localizedScript;
+		localizedScript = Translator::instance()->localizeScript(in.readAll());
+
+// /*		if (args->isSet("tokenize")) {
+// 			std::cout << "Tokenizing...\n" << std::endl;
+// 			QString code = inputFile.readAll();
+// // 			for (int i = 0; i < code.length(); i++) kDebug() << code.at(i);
+// 			Tokenizer tokenizer;
+// 			tokenizer.initialize(code);
+// 			Token* t;
+// 			while ((t = tokenizer.getToken())->type() != Token::EndOfInput) {
+// 				std::cout << "TOK> "
+// 				          << qPrintable(QString("\"%1\"").arg(t->look()).leftJustified(15))
+// 				          << qPrintable(QString("[%1]").arg(QString::number(t->type())).rightJustified(5))
+// 				          << qPrintable(QString(" @ (%1,%2)").arg(t->startRow()).arg(t->startCol()))
+// 				          << qPrintable(QString(" - (%1,%2)").arg(t->endRow()).arg(t->endCol()))
+// 				          << std::endl;
+// 			}
+// 			return 0;
+// 		}*/
 
 		args->clear();  // free some memory
 
 		// init the interpreter
 		Interpreter* interpreter = new Interpreter(0, true);  // set testing to true
-		interpreter->initialize(inputFile.readAll());
-		inputFile.close();
+		interpreter->initialize(localizedScript);
 
 		// install the echoer
 		(new Echoer())->connectAllSlots(interpreter->getExecuter());

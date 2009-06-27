@@ -19,8 +19,7 @@
 
 #include "value.h"
 
-#include <QtDebug>
-
+#include <kdebug.h>
 #include <klocale.h>
 
 #include "translator.h"  // for the boolean (true and false) to string translation
@@ -42,12 +41,9 @@ Value::Value(Value* n) :
 
 void Value::setType(int newType)  // maybe someday we have to do some type casting logic here
 {
-	if (m_type == newType)
-	{
+	if (m_type == newType) {
 		return;  // don't change values when type is not changing
-	}
-	else
-	{
+	} else {
 		switch (newType)
 		{
 			case Value::Bool:
@@ -75,8 +71,7 @@ void Value::setType(int newType)  // maybe someday we have to do some type casti
 
 bool Value::boolean() const
 {
-	switch (m_type)
-	{
+	switch (m_type) {
 		case Value::Bool:
 			return m_bool;
 		case Value::Empty:
@@ -96,8 +91,7 @@ void Value::setBool(bool b)
 
 double Value::number() const
 {
-	switch (m_type)
-	{
+	switch (m_type) {
 		case Value::Bool:
 			return (m_bool ? 1 : 0);
 
@@ -123,8 +117,7 @@ bool Value::setNumber(const QString &s)
 	m_type = Value::Number;
 	bool ok = true;
 	double num = s.toDouble(&ok);
-	if (ok)
-	{
+	if (ok) {
 		m_double = num;
 		return true;
 	}
@@ -135,15 +128,12 @@ bool Value::setNumber(const QString &s)
 
 QString Value::string() const
 {
-	if (m_type == Value::Bool)
-	{
+	if (m_type == Value::Bool) {
 		if (m_bool)
 			return QString(Translator::instance()->default2localized("true"));
 		else
 			return QString(Translator::instance()->default2localized("false"));
-	}
-	else if (m_type == Value::Number)
-	{
+	} else if (m_type == Value::Number) {
 		QString s;
 		s.setNum(m_double);
 		return s;
@@ -209,12 +199,9 @@ Value& Value::operator=(double n)
 
 Value& Value::operator+(Value* n)
 {
-	if (m_type == Value::Number && n->type() == Value::Number)
-	{
+	if (m_type == Value::Number && n->type() == Value::Number) {
 		m_double += n->number();
-	}
-	else
-	{
+	} else {
 		m_type = Value::String;
 		m_string = string() + n->string();
 	}
@@ -224,13 +211,10 @@ Value& Value::operator+(Value* n)
 
 Value& Value::operator-(Value* n)
 {
-	if (m_type == Value::Number && n->type() == Value::Number)
-	{
+	if (m_type == Value::Number && n->type() == Value::Number) {
 		m_double -= n->number();
-	}
-	else
-	{
-		qDebug()<<"Value::operator; cannot subtract strings"<<endl;
+	} else {
+		kDebug(0) << "cannot subtract strings" << endl;
 	}
 	return *this;
 }
@@ -238,13 +222,10 @@ Value& Value::operator-(Value* n)
 
 Value& Value::operator*(Value* n)
 {
-	if (m_type == Value::Number && n->type() == Value::Number)
-	{
+	if (m_type == Value::Number && n->type() == Value::Number) {
 		m_double *= n->number();
-	}
-	else
-	{
-		qDebug()<<"Value::operator; cannot multiply strings"<<endl; 
+	} else {
+		kDebug(0) << "cannot multiply strings" << endl; 
 	}
 	return *this;
 }
@@ -252,13 +233,10 @@ Value& Value::operator*(Value* n)
 
 Value& Value::operator/(Value* n)
 {
-	if (m_type == Value::Number && n->type() == Value::Number)
-	{
+	if (m_type == Value::Number && n->type() == Value::Number) {
 		m_double /= n->number();
-	}
-	else
-	{
-		qDebug()<<"Value::operator; cannot divide strings"<<endl;
+	} else {
+		kDebug(0) << "cannot divide strings" << endl;
 	}
 	return *this;
 }

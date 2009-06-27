@@ -17,6 +17,7 @@
 	Boston, MA 02110-1301, USA.
 */
 
+
 #include "canvas.h"
 
 #include <cmath>
@@ -43,9 +44,9 @@ int kCanvasMargin = 20;
 Canvas::Canvas(QWidget *parent) : QGraphicsView(parent)
 {
 	// create a new scene for this view
-	scene = new QGraphicsScene(parent);
-	scene->setItemIndexMethod(QGraphicsScene::NoIndex);
-	//scene->setSceneRect(-200, -200, 400, 400);  // (-50, -50, 50, 50);
+	_scene = new QGraphicsScene(parent);
+	_scene->setItemIndexMethod(QGraphicsScene::NoIndex);
+	//_scene->setSceneRect(-200, -200, 400, 400);  // (-50, -50, 50, 50);
 
 	setCacheMode(CacheBackground);
 	setRenderHint(QPainter::Antialiasing);
@@ -62,20 +63,19 @@ Canvas::Canvas(QWidget *parent) : QGraphicsView(parent)
 	// Canvas area marker
 	canvasFrame = new QGraphicsRectItem();
 	canvasFrame->setZValue(kCanvasFrameZValue);
-	scene->addItem(canvasFrame);
+	_scene->addItem(canvasFrame);
 	
-
 	// the turtle shape
 	turtle = new Sprite();
 	turtle->setZValue(kTurtleZValue);  // above the others
-	scene->addItem(turtle);
+	_scene->addItem(turtle);
 
 	// set initial values
 	initValues();
 	setInteractive(false);
 
 	// at last we assign the scene to the view
-	setScene(scene);
+	setScene(_scene);
 }
 
 Canvas::~Canvas()
@@ -84,19 +84,19 @@ Canvas::~Canvas()
 	delete turtle;
 	delete canvasFrame;
 	delete textFont;
-	delete scene;
+	delete _scene;
 }
 
 
 void Canvas::initValues()
 {
-	scene->setSceneRect(QRectF(0, 0, 400, 400));
+	_scene->setSceneRect(QRectF(0, 0, 400, 400));
 	canvasFrame->setBrush(QBrush());
-	canvasFrame->setRect(scene->sceneRect());
-	fitInView(scene->sceneRect().adjusted(kCanvasMargin * -1, kCanvasMargin * -1, kCanvasMargin, kCanvasMargin), Qt::KeepAspectRatio);
+	canvasFrame->setRect(_scene->sceneRect());
+	fitInView(_scene->sceneRect().adjusted(kCanvasMargin * -1, kCanvasMargin * -1, kCanvasMargin, kCanvasMargin), Qt::KeepAspectRatio);
 	turtle->setPos(200, 200);
 	turtle->setAngle(0);
-	scene->setBackgroundBrush(QBrush(Qt::white));
+	_scene->setBackgroundBrush(QBrush(Qt::white));
 	pen->setColor(Qt::black);
 	pen->setWidth(1);
 	penWidthIsZero = false;
@@ -111,7 +111,7 @@ void Canvas::initValues()
 
 void Canvas::resizeEvent(QResizeEvent* event)
 {
-	fitInView(scene->sceneRect().adjusted(kCanvasMargin*-1,kCanvasMargin*-1,kCanvasMargin,kCanvasMargin), Qt::KeepAspectRatio);
+	fitInView(_scene->sceneRect().adjusted(kCanvasMargin*-1,kCanvasMargin*-1,kCanvasMargin,kCanvasMargin), Qt::KeepAspectRatio);
 	event->accept();
 }
 
@@ -125,7 +125,7 @@ QColor Canvas::rgbDoublesToColor(double r, double g, double b)
 void Canvas::drawLine(double x1, double y1, double x2, double y2)
 {
 	if (penWidthIsZero) return;
-	QGraphicsLineItem* line = new QGraphicsLineItem(QLineF(x1, y1, x2, y2), 0, scene);
+	QGraphicsLineItem* line = new QGraphicsLineItem(QLineF(x1, y1, x2, y2), 0, _scene);
 	line->setPen(*pen);
 	lines.append(line);
 }
@@ -133,7 +133,7 @@ void Canvas::drawLine(double x1, double y1, double x2, double y2)
 
 void Canvas::slotClear()
 {
-	QList<QGraphicsItem*> list = scene->items();
+	QList<QGraphicsItem*> list = _scene->items();
 	foreach (QGraphicsItem* item, list) {
 		// delete all but the turtle (who lives on a separate layer with z-value 1)
 		if ((item->zValue() != kTurtleZValue) && (item->zValue() != kCanvasFrameZValue))
@@ -159,7 +159,7 @@ void Canvas::slotBackward(double x)
 
 void Canvas::slotCenter()
 {
-	slotGo(scene->width()/2, scene->height()/2);
+	slotGo(_scene->width()/2, _scene->height()/2);
 }
 
 void Canvas::slotPenWidth(double width)
@@ -185,20 +185,20 @@ void Canvas::slotPenColor(double r, double g, double b)
 
 void Canvas::slotCanvasColor(double r, double g, double b)
 {
-	//scene->setBackgroundBrush(QBrush(rgbDoublesToColor(r, g, b)));
+	//_scene->setBackgroundBrush(QBrush(rgbDoublesToColor(r, g, b)));
 	canvasFrame->setBrush(QBrush(rgbDoublesToColor(r, g, b)));
 }
 
 void Canvas::slotCanvasSize(double r, double g)
 {
-	scene->setSceneRect(QRectF(0,0,r,g));
-	canvasFrame->setRect(scene->sceneRect());
-	fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
+	_scene->setSceneRect(QRectF(0,0,r,g));
+	canvasFrame->setRect(_scene->sceneRect());
+	fitInView(_scene->sceneRect(), Qt::KeepAspectRatio);
 }
 
 void Canvas::slotPrint(const QString& text)
 {
-	QGraphicsTextItem *ti = new QGraphicsTextItem(text, 0, scene);
+	QGraphicsTextItem *ti = new QGraphicsTextItem(text, 0, _scene);
 // 	ti->setDefaultTextColor(textColor);
 	ti->setFont(*textFont);
 	ti->rotate(turtle->angle());
@@ -247,12 +247,32 @@ void Canvas::getY(double& value)
 QImage Canvas::getPicture()
 {
 	QImage png(sceneRect().size().toSize(), QImage::Format_RGB32);
-	//Create a painter to draw on the image
+	// create a painter to draw on the image
 	QPainter p(&png);
-	//And simply render using default settings
-	scene->render(&p);
+	p.setRenderHint(QPainter::Antialiasing);  // antialiasing like our Canvas
+	_scene->render(&p);
 	p.end();
 	return png;
 }
+
+void Canvas::saveAsSvg(const QString& title, const QString& fileName)
+{
+	// it would have been nicer if this method didn't needed to be passed a filename..
+	// but otherwise some QBuffer, QByteArray, etc. thing had to be set up.
+	QSvgGenerator generator;
+	generator.setFileName(fileName);
+// 	generator.setSize(_scene->sceneRect().size().toSize());   // Qt 4.5
+// 	generator.setViewBox(_scene->sceneRect().size());
+// 	generator.setTitle(title);
+//	generator.setDescription(i18n("Created with KTurtle %1 -- %2").arg(version).arg(website));
+	// create a painter to draw on the image
+	QPainter p(&generator);
+// 	p.setRenderHint(QPainter::Antialiasing);  // antialiasing like our Canvas
+	slotSpriteHide();  // hide the sprite as it draws really ugly (especially when Qt < 4.5)
+	_scene->render(&p);
+	slotSpriteShow();
+	p.end();
+}
+
 
 #include "canvas.moc"

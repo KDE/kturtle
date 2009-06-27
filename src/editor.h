@@ -36,7 +36,9 @@
 
 #include "highlighter.h"
 #include "interpreter/token.h"
+#include "interpreter/tokenizer.h"
 #include "interpreter/treenode.h"
+
 
 class QHBoxLayout;
 class QPaintEvent;
@@ -218,8 +220,11 @@ class Editor : public QFrame
 
 		bool isModified() { return editor->document()->isModified(); }
 		QString content() { return editor->document()->toPlainText(); }
+		QString toHtml(const QString& title, const QString& lang);
 
-		Token* currentToken(const QString& text, int cursorIndex) { return highlighter->formatType(text, cursorIndex); }
+		int row() { return currentRow; }
+		int col() { return currentCol; }
+		Token* currentToken();
 
 		void removeMarkings() {
 			editor->removeCurrentWordMark();
@@ -255,23 +260,24 @@ class Editor : public QFrame
 
 
 	signals:
-		void currentUrlChanged(const KUrl&);
+		void contentNameChanged(const QString&);
 		void fileOpened(const KUrl&);
 		void fileSaved(const KUrl&);
-		void modificationChanged(bool);
+		void modificationChanged();
 		void contentChanged();
-		void cursorPositionChanged(int row, int col, const QString& line);
+		void cursorPositionChanged();
 
 
 	protected slots:
 		void textChanged(int pos, int added, int removed);
-		void cursorPositionChanged();
+// 		void cursorPositionChanged();
 
 	protected:
 		void paintEvent(QPaintEvent *event);
 
 
 	private slots:
+		void updateOnCursorPositionChange();
 		void highlightCurrentLine() { this->update(); }
 
 	private:
@@ -279,12 +285,15 @@ class Editor : public QFrame
 
 		TextEdit    *editor;  // TODO why pointers?
 		Highlighter *highlighter;  // TODO could this class become a singleton? (shared with the inspector, errdlg)
+		Tokenizer   *tokenizer;  // TODO could this class become a singleton? (shared with the highlighter, interpreter)
 		LineNumbers *numbers;
 		QHBoxLayout *box;  // TODO is this relly needed?
 		KFindDialog *fdialog;
-		KUrl         m_currentUrl;
+		KUrl         m_currentUrl;  // contains url to the currently load file or the exampleName
 		QColor       highlightedLineBackgroundColor;  // the bg color of the current line's line number space
-		int          currentLine;
+		QString      currentLine;
+		int          currentRow;
+		int          currentCol;
 };
 
 

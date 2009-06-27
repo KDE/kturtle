@@ -1,4 +1,4 @@
-#  Copyright (C) 2005-2006 by Cies Breijs
+#  Copyright (C) 2005-2009 by Cies Breijs
 #
 #  This program is free software; you can redistribute it and/or
 #  modify it under the terms of version 2 of the GNU General Public
@@ -48,38 +48,7 @@
 
 
 new_item()
-# This is used for Tokens that are contructed without being initialized
-@type  = "NotSet"
-@cat   = "Meta"
-parse_item()
-
-new_item()
-@type  = "Unknown"
-@cat   = "Meta"
-@funct = "statement, node"
-@p_def =
-<<EOS
-	// this is usually a function call
-	return parseFunctionCall();
-EOS
-@e_def =
-<<EOS
-	if (node->parent()->token()->type() == Token::Learn) {
-		currentNode = node->parent();
-		executeCurrent = true;
-		return;
-	}
-EOS
-parse_item()
-
-new_item()
-# This is used when a no token can be created
-@type  = "Error"
-parse_item()
-
-new_item()
 @type  = "Root"
-@cat   = "Meta"
 @funct = "node"
 parse_item()
 
@@ -112,22 +81,18 @@ parse_item()
 
 new_item()
 @type  = "WhiteSpace"
-@cat   = "WhiteSpace"
 parse_item()
 
 new_item()
 @type  = "EndOfLine"
-@cat   = "Meta"
 parse_item()
 
 new_item()
 @type  = "EndOfInput"
-@cat   = "Meta"
 parse_item()
 
 new_item()
 @type  = "VariablePrefix"
-@cat   = "Variable"
 @look  = "$"
 @localize = false
 parse_item()
@@ -165,10 +130,10 @@ EOS
 	}
 	if (!functionStack.isEmpty() && 
 	    functionStack.top().variableTable->contains(node->token()->look())) {
-		qDebug() << "exists locally";
+		// kDebug(0) << "exists locally";
 		node->setValue( (*functionStack.top().variableTable)[node->token()->look()] );
 	} else if (globalVariableTable.contains(node->token()->look())) {
-		qDebug() << "exists globally";
+		// kDebug(0) << "exists globally";
 		node->setValue(globalVariableTable[node->token()->look()]);
 	} else if (aValueIsNeeded)
 	{
@@ -183,7 +148,6 @@ new_item()
 @funct = "statement, node"
 @p_def =
 <<EOS
-	// this method gets usually called through parseUnknown...
 	TreeNode* node = new TreeNode(currentToken);
 	node->token()->setType(Token::FunctionCall);
 	nextToken();
@@ -192,10 +156,16 @@ new_item()
 EOS
 @e_def =
 <<EOS
+	if (node->parent()->token()->type() == Token::Learn) {  // in case we're defining a function
+		currentNode = node->parent();
+		executeCurrent = true;
+		return;
+	}
+
 	if (returning) {  // if the function is already executed and returns now
 		returnValue = 0;
 		returning = false;
-		qDebug() << "==> functionReturned!";
+		// kDebug(0) << "==> functionReturned!";
 		return;
 	}
 
@@ -208,7 +178,7 @@ EOS
 	c.function      = node;
 	c.variableTable = new VariableTable();
 	functionStack.push(c);
-	qDebug() << "==> functionCalled!";
+	// kDebug(0) << "==> functionCalled!";
 	
 	TreeNode* learnNode = functionTable[node->token()->look()];
 
@@ -226,7 +196,7 @@ EOS
 		
 	for (uint i = 0; i < node->childCount(); i++) {
 		functionStack.top().variableTable->insert(learnNode->child(1)->child(i)->token()->look(), node->child(i)->value());
-		qDebug() << "inserted variable " << learnNode->child(1)->child(i)->token()->look() << " on function stack";
+		// kDebug(0) << "inserted variable " << learnNode->child(1)->child(i)->token()->look() << " on function stack";
 	}
 	newScope = learnNode->child(2);
 EOS
@@ -363,7 +333,6 @@ parse_item()
 
 new_item()
 @type  = "DecimalSeparator"
-@cat   = "DecimalSeparator"
 @look  = "."
 parse_item()
 
@@ -735,6 +704,20 @@ EOS
 parse_item()
 
 
+new_item()
+@type  = "Assert"
+@cat   = "Command"
+@look  = "assert"
+@funct = "statement, node"
+@args  = [:bool]
+@e_def =
+<<EOS
+	if (!checkParameterQuantity(node, 1, 20000+Token::Wait*100+90)) return;
+	if (!checkParameterType(node, Value::Bool, 20000+Token::Wait*100+91) ) return;
+	if (!node->child(0)->value()->boolean()) addError(i18n("ASSERT failed"), *node->token(), 0);
+EOS
+parse_item()
+
 
 new_item()
 @type  = "And"
@@ -977,13 +960,13 @@ new_item()
 	}
 	if (!functionStack.isEmpty() && !globalVariableTable.contains(node->child(0)->token()->look())) // &&functionStack.top().variableTable->contains(node->token()->look())) 
 	{
-		qDebug() << "function scope";
+		// kDebug(0) << "function scope";
 		functionStack.top().variableTable->insert(node->child(0)->token()->look(), node->child(1)->value());
 	} else {
 		// inserts unless already exists then replaces
 		globalVariableTable.insert(node->child(0)->token()->look(), node->child(1)->value());
 	}
-	qDebug() << "variableTable updated!";
+	// kDebug(0) << "variableTable updated!";
 	emit variableTableUpdated(node->child(0)->token()->look(), node->child(1)->value());
 EOS
 parse_item()
@@ -1000,7 +983,7 @@ new_item()
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	node->appendChild(new TreeNode(new Token(*currentToken)));
-	skipToken(Token::Unknown, *node->token());
+	skipToken(Token::FunctionCall, *node->token());
 	
 	TreeNode* argumentList = new TreeNode(new Token(Token::ArgumentList, "arguments", 0, 0, 0, 0));
 	while (currentToken->type() == Token::Variable) {
@@ -1032,7 +1015,7 @@ EOS
 		return;
 	}
 	functionTable.insert(node->child(0)->token()->look(), node);
-	qDebug() << "functionTable updated!";
+	// kDebug(0) << "functionTable updated!";
 	QStringList parameters;
 	for (uint i = 0; i < node->child(1)->childCount(); i++)
 		parameters << node->child(1)->child(i)->token()->look();
@@ -1042,7 +1025,6 @@ parse_item()
 
 new_item()
 @type  = "ArgumentList"
-@cat   = "Meta"
 @funct = "node"
 parse_item()
 
@@ -1226,7 +1208,7 @@ new_item()
 <<EOS
 	if (!checkParameterQuantity(node, 1, 20000+Token::Print*100+90))
 		return;
-	qDebug() << "Printing: '" << node->child(0)->value()->string() << "'";
+	// kDebug(0) << "Printing: '" << node->child(0)->value()->string() << "'";
 EOS
 parse_item()
 
@@ -1465,20 +1447,21 @@ new_item()
 EOS
 parse_item()
 
-new_item()
-@type  = "Exp"
-@cat   = "Command"
-@look  = "exp"
-@funct = "statement, node"
-@args  = [:number]
-@e_def =
-<<EOS
-	if (!checkParameterQuantity(node, 1, 20000+Token::Exp*100+90)) return;
-	
-	double val = node->child(0)->value()->number();
-	node->value()->setNumber(exp(val));
-EOS
-parse_item()
+#  i commented this one out because exp will need logarithm and the e number in order to be complete
+# new_item()
+# @type  = "Exp"
+# @cat   = "Command"
+# @look  = "exp"
+# @funct = "statement, node"
+# @args  = [:number]
+# @e_def =
+# <<EOS
+# 	if (!checkParameterQuantity(node, 1, 20000+Token::Exp*100+90)) return;
+# 	
+# 	double val = node->child(0)->value()->number();
+# 	node->value()->setNumber(exp(val));
+# EOS
+# parse_item()
 
 new_item()
 @type  = "Round"

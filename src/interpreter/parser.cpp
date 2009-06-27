@@ -19,10 +19,6 @@
 
 #include "parser.h"
 
-#include <iostream>
-
-#include <QtDebug>
-
 #include <kdebug.h>
 
 #include <klocale.h>
@@ -45,7 +41,7 @@ void Parser::parse()
 {
 	if (finished) return;
 
-// 	qDebug() << "Parser::parse() -- main parse loop called";
+// 	kDebug(0) << "Parser::parse() -- main parse loop called";
 	TreeNode* resultNode = parseStatement();  // parse the next statement
 	if (resultNode == 0) {  // no statement was found
 		addError(i18n("Expected a command, instead got '%1'", currentToken->look()), *currentToken, 0);
@@ -90,7 +86,7 @@ void Parser::nextToken()
 // 		.arg(currentToken->endCol())
 // 		.arg(currentToken->look())
 // 		.arg(currentToken->type());
-// 	qDebug() << "Parser::nextToken():" << currentToken->look() << " [" << currentToken->type() << "]   on line" << currentToken->startRow();
+// 	kDebug(0) << "Parser::nextToken():" << currentToken->look() << " [" << currentToken->type() << "]   on line" << currentToken->startRow();
 	if (currentToken->type() == Token::EndOfInput)
 		finished = true;
 }
@@ -135,7 +131,7 @@ bool Parser::skipToken(int expectedTokenType, Token& byToken)
 		case Token::To:
 			addError(i18n("Expected 'to' after 'for'"), byToken, 0);
 			break;
-		case Token::Unknown:
+		case Token::FunctionCall:
 			addError(i18n("Expected a name for a command after 'learn' command"), byToken, 0);
 			break;
 	}
@@ -147,23 +143,22 @@ bool Parser::skipToken(int expectedTokenType, Token& byToken)
 void Parser::addError(const QString& s, const Token& t, int code)
 {
 	if (m_testing)
-		std::cout << "ERR> " << qPrintable(s) << " (parse error)" << std::endl;
-	else
-		errorList->addError(s, t, code);
+// 		kDebug(0) << "ERR> " << qPrintable(s) << " (parse error)";
+	errorList->addError(s, t, code);
 }
 
 void Parser::printTree() const
 {
 	const char* prefix = m_testing ? "NTR> " : "";
 	foreach (const QString &line, rootNode->toString().split('\n', QString::SkipEmptyParts))
-		std::cout << prefix << qPrintable(line.trimmed()) << std::endl;
+		kDebug(0) << prefix << qPrintable(line.trimmed());
 }
 
 
 
 TreeNode* Parser::parseStatement()
 {
-// 	qDebug() << "Parser::parseStatement()";
+// 	kDebug(0) << "called";
 	// in addition to whitespace and comments (skiped by nextToken()), also skip newlines before statements
 	while (currentToken->type() == Token::EndOfLine) {
 		delete currentToken;
@@ -184,7 +179,6 @@ TreeNode* Parser::parseStatement()
  * Thanks for looking at the code!
  */
 
-		case Token::Unknown             : return parseUnknown();
 		case Token::Variable            : return parseVariable();
 		case Token::FunctionCall        : return parseFunctionCall();
 		case Token::ScopeOpen           : return parseScopeOpen();
@@ -197,6 +191,7 @@ TreeNode* Parser::parseStatement()
 		case Token::Break               : return parseBreak();
 		case Token::Return              : return parseReturn();
 		case Token::Wait                : return parseWait();
+		case Token::Assert              : return parseAssert();
 		case Token::Learn               : return parseLearn();
 		case Token::Reset               : return parseReset();
 		case Token::Clear               : return parseClear();
@@ -232,15 +227,14 @@ TreeNode* Parser::parseStatement()
 		case Token::ArcSin              : return parseArcSin();
 		case Token::ArcCos              : return parseArcCos();
 		case Token::Sqrt                : return parseSqrt();
-		case Token::Exp                 : return parseExp();
 		case Token::Round               : return parseRound();
 
 //END GENERATED parser_statements_cpp CODE
 		case Token::Error		: return new TreeNode(currentToken);
 		default : {
 			//Token type is something else...
-			//qDebug() << "Parser::parseStatement(): I don't know this Token type.";
-			//kDebug() << "Look: " << currentToken->look() << " type: " << currentToken->type();
+			//kDebug(0) << "Parser::parseStatement(): I don't know this Token type.";
+			//kDebug(0) << "Look: " << currentToken->look() << " type: " << currentToken->type();
 			addError(i18n("You cannot put '%1' here.", currentToken->look()), *currentToken, 0);
 			finished = true;
 			return new TreeNode(currentToken);
@@ -251,7 +245,7 @@ TreeNode* Parser::parseStatement()
 
 TreeNode* Parser::parseFactor()
 {
-// 	qDebug() << "Parser::parseFactor()";
+// 	kDebug(0) << "Parser::parseFactor()";
 	Token* rememberedToken;
 	TreeNode* node;
 	switch (currentToken->type()) {
@@ -262,7 +256,7 @@ TreeNode* Parser::parseFactor()
 			skipToken(Token::ParenthesisClose, *rememberedToken);
 			break;
 
-		case Token::Unknown:
+		case Token::FunctionCall:
 			node = parseFunctionCall();
 			break;
 
@@ -354,7 +348,7 @@ TreeNode* Parser::parseFactor()
 
 TreeNode* Parser::parseSignedFactor()
 {
-// 	qDebug() << "Parser::parseSignedFactor()";
+// 	kDebug(0) << "Parser::parseSignedFactor()";
 	// see if there is a plus, minus or 'not' in front of a factor
 	Token* rememberedToken;
 	TreeNode* node;
@@ -402,7 +396,7 @@ TreeNode* Parser::parseSignedFactor()
 
 TreeNode* Parser::parseTerm()
 {
-// 	qDebug() << "Parser::parseTerm()";
+// 	kDebug(0) << "Parser::parseTerm()";
 	TreeNode* termNode = parseSignedFactor();
 	TreeNode* pos = termNode;
 	TreeNode* left = 0;
@@ -427,7 +421,7 @@ TreeNode* Parser::parseTerm()
 
 TreeNode* Parser::parseExpression()
 {
-// 	qDebug() << "Parser::parseExpression()";
+// 	kDebug(0) << "Parser::parseExpression()";
 	TreeNode* expressionNode = parseTerm();
 	TreeNode* pos = expressionNode;
 	TreeNode* left = 0;
@@ -495,13 +489,8 @@ void Parser::appendArguments(TreeNode* node)
  * Thanks for looking at the code!
  */
 
-TreeNode* Parser::parseUnknown() {
-//	qDebug() << "Parser::parseUnknown()";
-	// this is usually a function call
-	return parseFunctionCall();
-}
 TreeNode* Parser::parseVariable() {
-//	qDebug() << "Parser::parseVariable()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	// This is called to the variable is the first token on a line.
 	// There has to be an assignment token right after it...
 	TreeNode* variableNode = new TreeNode(currentToken);
@@ -514,8 +503,7 @@ TreeNode* Parser::parseVariable() {
 	return assignNode;
 }
 TreeNode* Parser::parseFunctionCall() {
-//	qDebug() << "Parser::parseFunctionCall()";
-	// this method gets usually called through parseUnknown...
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	node->token()->setType(Token::FunctionCall);
 	nextToken();
@@ -523,7 +511,7 @@ TreeNode* Parser::parseFunctionCall() {
 	return node;
 }
 TreeNode* Parser::parseScopeOpen() {
-//	qDebug() << "Parser::parseScopeOpen()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* scopeNode = new TreeNode(new Token(Token::Scope, "{...}", currentToken->startRow(), currentToken->startCol(), 0, 0));
 	delete currentToken;
 	nextToken();
@@ -533,7 +521,7 @@ TreeNode* Parser::parseScopeOpen() {
 	return scopeNode;
 }
 TreeNode* Parser::parseScopeClose() {
-//	qDebug() << "Parser::parseScopeClose()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	int endRow = currentToken->endRow();
 	int endCol = currentToken->endCol();
@@ -560,14 +548,14 @@ TreeNode* Parser::parseScopeClose() {
 	return node;
 }
 TreeNode* Parser::parseExit() {
-//	qDebug() << "Parser::parseExit()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	skipToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parseIf() {
-//	qDebug() << "Parser::parseIf()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	node->appendChild(parseExpression());
@@ -581,7 +569,7 @@ TreeNode* Parser::parseIf() {
 	return node;
 }
 TreeNode* Parser::parseElse() {
-//	qDebug() << "Parser::parseElse()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	nextToken();
 	if (currentToken->type() == Token::ScopeOpen) {
 		return parseScopeOpen();  // if followed by a scope
@@ -589,7 +577,7 @@ TreeNode* Parser::parseElse() {
 	return parseStatement();    // if followed by single statement
 }
 TreeNode* Parser::parseRepeat() {
-//	qDebug() << "Parser::parseRepeat()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	node->appendChild(parseExpression());
@@ -601,7 +589,7 @@ TreeNode* Parser::parseRepeat() {
 	return node;
 }
 TreeNode* Parser::parseWhile() {
-//	qDebug() << "Parser::parseWhile()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	node->appendChild(parseExpression());
@@ -613,7 +601,7 @@ TreeNode* Parser::parseWhile() {
 	return node;
 }
 TreeNode* Parser::parseFor() {
-//	qDebug() << "Parser::parseFor()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	Token* firstToken = currentToken;
@@ -650,14 +638,14 @@ TreeNode* Parser::parseFor() {
 	return node;
 }
 TreeNode* Parser::parseBreak() {
-//	qDebug() << "Parser::parseBreak()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	skipToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parseReturn() {
-//	qDebug() << "Parser::parseReturn()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -665,7 +653,15 @@ TreeNode* Parser::parseReturn() {
 	return node;
 }
 TreeNode* Parser::parseWait() {
-//	qDebug() << "Parser::parseWait()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
+	TreeNode* node = new TreeNode(currentToken);
+	nextToken();
+	appendArguments(node);
+	skipToken(Token::EndOfLine, *node->token());
+	return node;
+}
+TreeNode* Parser::parseAssert() {
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -673,11 +669,11 @@ TreeNode* Parser::parseWait() {
 	return node;
 }
 TreeNode* Parser::parseLearn() {
-//	qDebug() << "Parser::parseLearn()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	node->appendChild(new TreeNode(new Token(*currentToken)));
-	skipToken(Token::Unknown, *node->token());
+	skipToken(Token::FunctionCall, *node->token());
 	
 	TreeNode* argumentList = new TreeNode(new Token(Token::ArgumentList, "arguments", 0, 0, 0, 0));
 	while (currentToken->type() == Token::Variable) {
@@ -703,28 +699,28 @@ TreeNode* Parser::parseLearn() {
 	return node;
 }
 TreeNode* Parser::parseReset() {
-//	qDebug() << "Parser::parseReset()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	skipToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parseClear() {
-//	qDebug() << "Parser::parseClear()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	skipToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parseCenter() {
-//	qDebug() << "Parser::parseCenter()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	skipToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parseGo() {
-//	qDebug() << "Parser::parseGo()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -732,7 +728,7 @@ TreeNode* Parser::parseGo() {
 	return node;
 }
 TreeNode* Parser::parseGoX() {
-//	qDebug() << "Parser::parseGoX()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -740,7 +736,7 @@ TreeNode* Parser::parseGoX() {
 	return node;
 }
 TreeNode* Parser::parseGoY() {
-//	qDebug() << "Parser::parseGoY()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -748,7 +744,7 @@ TreeNode* Parser::parseGoY() {
 	return node;
 }
 TreeNode* Parser::parseForward() {
-//	qDebug() << "Parser::parseForward()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -756,7 +752,7 @@ TreeNode* Parser::parseForward() {
 	return node;
 }
 TreeNode* Parser::parseBackward() {
-//	qDebug() << "Parser::parseBackward()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -764,7 +760,7 @@ TreeNode* Parser::parseBackward() {
 	return node;
 }
 TreeNode* Parser::parseDirection() {
-//	qDebug() << "Parser::parseDirection()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -772,7 +768,7 @@ TreeNode* Parser::parseDirection() {
 	return node;
 }
 TreeNode* Parser::parseTurnLeft() {
-//	qDebug() << "Parser::parseTurnLeft()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -780,7 +776,7 @@ TreeNode* Parser::parseTurnLeft() {
 	return node;
 }
 TreeNode* Parser::parseTurnRight() {
-//	qDebug() << "Parser::parseTurnRight()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -788,7 +784,7 @@ TreeNode* Parser::parseTurnRight() {
 	return node;
 }
 TreeNode* Parser::parsePenWidth() {
-//	qDebug() << "Parser::parsePenWidth()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -796,21 +792,21 @@ TreeNode* Parser::parsePenWidth() {
 	return node;
 }
 TreeNode* Parser::parsePenUp() {
-//	qDebug() << "Parser::parsePenUp()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	skipToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parsePenDown() {
-//	qDebug() << "Parser::parsePenDown()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	skipToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parsePenColor() {
-//	qDebug() << "Parser::parsePenColor()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -818,7 +814,7 @@ TreeNode* Parser::parsePenColor() {
 	return node;
 }
 TreeNode* Parser::parseCanvasColor() {
-//	qDebug() << "Parser::parseCanvasColor()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -826,7 +822,7 @@ TreeNode* Parser::parseCanvasColor() {
 	return node;
 }
 TreeNode* Parser::parseCanvasSize() {
-//	qDebug() << "Parser::parseCanvasSize()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -834,21 +830,21 @@ TreeNode* Parser::parseCanvasSize() {
 	return node;
 }
 TreeNode* Parser::parseSpriteShow() {
-//	qDebug() << "Parser::parseSpriteShow()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	skipToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parseSpriteHide() {
-//	qDebug() << "Parser::parseSpriteHide()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	skipToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parsePrint() {
-//	qDebug() << "Parser::parsePrint()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -856,7 +852,7 @@ TreeNode* Parser::parsePrint() {
 	return node;
 }
 TreeNode* Parser::parseFontSize() {
-//	qDebug() << "Parser::parseFontSize()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -864,7 +860,7 @@ TreeNode* Parser::parseFontSize() {
 	return node;
 }
 TreeNode* Parser::parseRandom() {
-//	qDebug() << "Parser::parseRandom()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -872,21 +868,21 @@ TreeNode* Parser::parseRandom() {
 	return node;
 }
 TreeNode* Parser::parseGetX() {
-//	qDebug() << "Parser::parseGetX()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	skipToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parseGetY() {
-//	qDebug() << "Parser::parseGetY()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	skipToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parseMessage() {
-//	qDebug() << "Parser::parseMessage()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -894,7 +890,7 @@ TreeNode* Parser::parseMessage() {
 	return node;
 }
 TreeNode* Parser::parseAsk() {
-//	qDebug() << "Parser::parseAsk()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -902,14 +898,14 @@ TreeNode* Parser::parseAsk() {
 	return node;
 }
 TreeNode* Parser::parsePi() {
-//	qDebug() << "Parser::parsePi()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	skipToken(Token::EndOfLine, *node->token());
 	return node;
 }
 TreeNode* Parser::parseTan() {
-//	qDebug() << "Parser::parseTan()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -917,7 +913,7 @@ TreeNode* Parser::parseTan() {
 	return node;
 }
 TreeNode* Parser::parseSin() {
-//	qDebug() << "Parser::parseSin()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -925,7 +921,7 @@ TreeNode* Parser::parseSin() {
 	return node;
 }
 TreeNode* Parser::parseCos() {
-//	qDebug() << "Parser::parseCos()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -933,7 +929,7 @@ TreeNode* Parser::parseCos() {
 	return node;
 }
 TreeNode* Parser::parseArcTan() {
-//	qDebug() << "Parser::parseArcTan()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -941,7 +937,7 @@ TreeNode* Parser::parseArcTan() {
 	return node;
 }
 TreeNode* Parser::parseArcSin() {
-//	qDebug() << "Parser::parseArcSin()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -949,7 +945,7 @@ TreeNode* Parser::parseArcSin() {
 	return node;
 }
 TreeNode* Parser::parseArcCos() {
-//	qDebug() << "Parser::parseArcCos()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -957,15 +953,7 @@ TreeNode* Parser::parseArcCos() {
 	return node;
 }
 TreeNode* Parser::parseSqrt() {
-//	qDebug() << "Parser::parseSqrt()";
-	TreeNode* node = new TreeNode(currentToken);
-	nextToken();
-	appendArguments(node);
-	skipToken(Token::EndOfLine, *node->token());
-	return node;
-}
-TreeNode* Parser::parseExp() {
-//	qDebug() << "Parser::parseExp()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
@@ -973,7 +961,7 @@ TreeNode* Parser::parseExp() {
 	return node;
 }
 TreeNode* Parser::parseRound() {
-//	qDebug() << "Parser::parseRound()";
+//	kDebug(0) << "called";  // method name is appended by kDebug
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
