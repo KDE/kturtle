@@ -301,7 +301,7 @@ void MainWindow::setupActions()
 	actionCollection()->addAction("canvas_print", printCanvasAct);
 	printCanvasAct->setStatusTip(i18n("Print the canvas"));
 	printCanvasAct->setWhatsThis(i18n("Print: Print the canvas"));
-	connect(exportToSvgAct, SIGNAL(triggered()), this, SLOT(canvasPrintDialog()));
+	connect(printCanvasAct, SIGNAL(triggered()), this, SLOT(canvasPrintDialog()));
 
 	// Run menu actions
 	runAct = new KAction(KIcon("media-playback-start"), i18n("&Run"), this);
