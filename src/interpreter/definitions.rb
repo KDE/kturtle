@@ -911,6 +911,10 @@ new_item()
 		return;
 	}
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
+		if(node->child(1)->value()->number()==0) {
+			addError(i18n("You tried to divide by zero"), *node->token(), 0);
+			return;
+		}
 		node->value()->setNumber(node->child(0)->value()->number() / node->child(1)->value()->number());
 	} else {
 		if (node->child(0)->value()->type() != Value::Number)
