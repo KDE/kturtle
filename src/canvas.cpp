@@ -257,6 +257,7 @@ QImage Canvas::getPicture()
 
 void Canvas::saveAsSvg(const QString& title, const QString& fileName)
 {
+	Q_UNUSED(title);
 	// it would have been nicer if this method didn't needed to be passed a filename..
 	// but otherwise some QBuffer, QByteArray, etc. thing had to be set up.
 	QSvgGenerator generator;
@@ -268,9 +269,14 @@ void Canvas::saveAsSvg(const QString& title, const QString& fileName)
 	// create a painter to draw on the image
 	QPainter p(&generator);
 // 	p.setRenderHint(QPainter::Antialiasing);  // antialiasing like our Canvas
+
+	bool spriteWasVisible = turtle->isVisible();
+
 	slotSpriteHide();  // hide the sprite as it draws really ugly (especially when Qt < 4.5)
 	_scene->render(&p);
-	slotSpriteShow();
+
+	if(spriteWasVisible)
+		slotSpriteShow();
 	p.end();
 }
 
