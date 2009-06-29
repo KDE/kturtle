@@ -1,9 +1,3 @@
-<!--
-Dear translator, please NEVER translate the ids or any tag attributes
-as the context help feature expects them the way they are...
-Thanks a lot for your translation effort!
--->
-
 <chapter id="reference">
 <title>&turtlescript; Programming Reference</title>
 <para>This is the reference for &kturtle;'s &turtlescript;. In the first section of this chapter have a look at some aspects of the <link linkend="grammar">grammar</link> of &turtlescript; programs. The second section deals exclusively with <link linkend="mathematical-operators">mathematical operators</link>, <link linkend="boolean-operators">boolean (true/false) operators</link> and <link linkend="comparing-operators">comparison operators</link>. The third section is basically a giant list of all <link linkend="commands">commands</link> explaining them one-by-one. Section four explains how to <link linkend="assignment-of-variables">assign</link> values to <link linkend="assignment-of-variables">variables</link>. Finally we explain how to arrange the execution of commands with <link linkend="controlling-execution">execution controlling statements</link> in section five and how to create you own commands with <link linkend="learn">learn</link> in section six.</para>

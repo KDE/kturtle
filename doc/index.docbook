@@ -14,13 +14,6 @@
   <!ENTITY glossary SYSTEM "glossary.docbook">
 ]>
 
-<!--
-Dear translator, please NEVER translate the ids or any tag attributes
-as the context help feature expects them the way they are...
-Thanks a lot for your translation effort!
--->
-
-
 <book lang="&language;">
 
 <bookinfo>

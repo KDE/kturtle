@@ -1,9 +1,3 @@
-<!--
-Dear translator, please NEVER translate the ids or any tag attributes
-as the context help feature expects them the way they are...
-Thanks a lot for your translation effort!
--->
-
 <chapter id="getting-started">
 <title>Getting Started</title>
 <para>When you start &kturtle; you will see something like this:
