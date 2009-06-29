@@ -1,12 +1,36 @@
-<!--Dear translator: please NEVER translate the id or anything inside the tags as they are needed in english by the application
-     Thanks a lot in advance.-->
-<chapter id="reference">
-<title>&turtlelang; Programming Reference</title>
-<para>This is the reference for &kturtle;'s &turtlelang;. In this chapter we first briefly touch all the <link linkend="different-instructions">different instruction types</link>. Then the <link linkend="commands">commands</link> are explained one by one. Then <link linkend="containers">containers</link>, <link linkend="math">math</link>, <link linkend="questions">questions</link> and <link linkend="controlling-execution">execution controllers</link> are explained. At last you are shown how to create you own commands with <link linkend="learn">learn</link>.</para>
+<!--
+Dear translator, please NEVER translate the ids or any tag attributes
+as the context help feature expects them the way they are...
+Thanks a lot for your translation effort!
+-->
 
-<sect1 id="different-instructions">
-<title>Different Instruction Types</title>
-<para>As in any language, &turtlelang; has different types of words and symbols. Here the differences between the types are briefly explained.</para>
+<chapter id="reference">
+<title>&turtlescript; Programming Reference</title>
+<para>This is the reference for &kturtle;'s &turtlescript;. In the first section of this chapter have a look at some aspects of the <link linkend="grammar">grammar</link> of &turtlescript; programs. The second section deals exclusively with <link linkend="mathematical-operators">mathematical operators</link>, <link linkend="boolean-operators">boolean (true/false) operators</link> and <link linkend="comparing-operators">comparison operators</link>. The third section is basically a giant list of all <link linkend="commands">commands</link> explaining them one-by-one. Section four explains how to <link linkend="assignment-of-variables">assign</link> values to <link linkend="assignment-of-variables">variables</link>. Finally we explain how to arrange the execution of commands with <link linkend="controlling-execution">execution controlling statements</link> in section five and how to create you own commands with <link linkend="learn">learn</link> in section six.</para>
+
+<sect1 id="grammar">
+<title>The Grammar of &turtlescript;</title>
+<para>As in any language, &turtlescript; has different types of words and symbols. In English we distinguish verbs (like 'to walk' or 'to sing') and nouns (like 'sister' or 'house'), they are used for different purposes. &turtlescript; is a programming language, it is used to instruct &kturtle; what to do.</para>
+<para>In this section some of &turtlescript;'s different types of words and symbols are briefly explained. We explain <link linkend="comment">comments</link>, <link linkend="command">commands</link> and the three different kinds of literals: <link linkend="number">numbers</link>, <link linkend="string">strings</link> and <link linkend="boolean-value">boolean (true/false) values</link>.</para>
+
+
+<sect2 id="comment">
+<title>Comments</title>
+<para>A program consists instructions that are executed when the program is run and so called comments. Comments are not executed, &kturtle; simply ignores them when executing your program. Comment are there for other programmers to make them understand your program better. Everything that follows on a <userinput>#</userinput> symbol is considered a comment in &turtlescript;. For example this little program that does nothing:
+<screen>
+# this little program does nothing, it is only a comment!
+</screen>
+It is a bit useless but it explain the matter well.</para>
+<para>Comments get very useful when the program gets a little bit more complex. It can help to give some advice to other programmers. In the following program you see comments being used together with the <link linkend="print">print</link> command.
+<screen>
+# this program has been made by Cies Breijs.
+print "this text will get printed on the canvas"
+# the previous line is not a comment, but the next line is:
+# print "this text will not get printed!"
+</screen>
+The first line describes the program. The second line is executed by &kturtle; and prints <userinput>this text will get printed on the canvas</userinput> on the canvas. The third line is a comment. And the forth line is a comment that contains a piece of &turtlescript;, if the <userinput>#</userinput> symbol would be removed on the fourth line the print statement will we executed by &kturtle;. Programmers say: the print statement on the fourth line is 'commented out'.</para>
+<para>Commented lines are <glossterm>highlighted</glossterm> with light gray in the <link linkend="the-editor">code editor</link>.</para>
+</sect2>
 
 <sect2 id="command">
 <title>Commands</title>
@@ -15,8 +39,8 @@
 # forward is a command that needs input, in this case the number 100:
 forward 100
 </screen>
-</para>
-<para>For a detailed overview of all commands that &kturtle; supports go <link linkend="commands">here</link>.</para>
+The first line is a <link linkend="comment">comment</link>. The second line contains the <userinput>forward</userinput> command and the <link linkend="number">number</link> <userinput>100</userinput>. The number is not part of command, it is considered 'input' for the command.</para>
+<para> For a detailed overview of all commands that &kturtle; supports go <link linkend="commands">here</link>. Build in commands are <glossterm>highlighted</glossterm> in dark blue</para>
 </sect2>
 
 <sect2 id="number">
@@ -24,8 +48,7 @@ forward 100
 <para>Most likely you already know quite a bit about numbers. The way numbers are used in &kturtle; is not much different from spoken language, or math. </para>
 <para>We have the so called natural numbers: <userinput>0</userinput>, <userinput>1</userinput>, <userinput>2</userinput>, <userinput>3</userinput>, <userinput>4</userinput>, <userinput>5</userinput>, etc. The negative numbers: <userinput>-1</userinput>, <userinput>-2</userinput>, <userinput>-3</userinput>, etc. And the numbers with decimals, or dot-numbers, for example: <userinput>0.1</userinput>, <userinput>3.14</userinput>, <userinput>33.3333</userinput>, <userinput>-5.05</userinput>, <userinput>-1.0</userinput>.
 </para>
-<para>Numbers can be used in <link linkend="math">mathematical calculations</link> and <link linkend="questions">questions</link>. They can also be put in <link linkend="containers">containers</link>.</para>
-<para>Numbers are <glossterm>highlighted</glossterm> with dark red in the <link linkend="the-code-editor">code editor</link>.</para>
+<para>Numbers can be used in <link linkend="mathematical-operators">mathematical operators</link> and <link linkend="comparing-operators">comparison operators</link>. They can also be stored in <link linkend="assignment-of-variables">variables</link>. Numbers are <glossterm>highlighted</glossterm> in dark red.</para>
 </sect2>
 
 <!-- constants like pi? -->
@@ -37,97 +60,168 @@ forward 100
 print "Hello, I'm a string."
 </screen>
 In this example <userinput>print</userinput> is a command where <userinput>"Hello, I'm a string."</userinput> is a string. Strings start and end with the <userinput>"</userinput> mark, by these marks &kturtle; knows it is a string.</para>
-<para>Strings can be put in <link linkend="containers">containers</link>. Yet they cannot be used in <link linkend="math">mathematical calculations</link> and <link linkend="questions">questions</link>.</para>
-<para>Strings are <glossterm>highlighted</glossterm> with red in the <link linkend="the-code-editor">code editor</link>.</para>
+<para>Strings can be put in <link linkend="assignment-of-variables">variables</link>, just like <link linkend="number">numbers</link>. Yet, unlike numbers, strings cannot be used in <link linkend="mathematical-operators">mathematical operators</link> or <link linkend="comparing-operators">comparison operators</link>. Strings are <glossterm>highlighted</glossterm> with red.</para>
 </sect2>
 
-
-<sect2 id="name">
-<title>Names</title>
-<para>When using the &turtlelang; programming language you create new things. If you write a program you will often need <link linkend="containers">containers</link> and in some cases you need <link linkend="learn">learn</link> to create new commands. When making a new command with <link linkend="learn">learn</link> you will have to specify a name.</para>
-<para>You can choose any name, as long as it does not already have a meaning. For instance you cannot name a function <link linkend="forward">forward</link>, since that name is already used for an internal command.
+<sect2 id="boolean-value">
+<title>Boolean (true/false) values</title>
+<para>There are only two boolean values: <userinput>true</userinput> and <userinput>false</userinput>. Sometimes they are also called: on and off, yes and no, one and zero. But in &turtlescript; we call them, always, <userinput>true</userinput> and <userinput>false</userinput>. Have a look at this piece of &turtlescript;:
 <screen>
-# here forward is used as a new command, 
-# but it already has a meaning so 
-# this will produce an error:
-learn forward {
-  print "this is invalid"
-}
-
-# this works:
-learn myforward {
-  print "this is ok"
-}
+$a = true
 </screen>
-Names can contain only letters, numbers and underscores (_). Yet they have to start with a letter. Container names have to start with the container prefix ($).
+If you look in the <link linkend="the-inspector">inspector</link> you can see that the <link linkend="assignment-of-variables">variable</link> <userinput>$a</userinput> is set to <userinput>true</userinput>, and has the boolean type.</para>
+<para>Often boolean values are the result of a <link linkend="comparing-operators">comparison operator</link>, like in the following piece of &turtlescript;:
 <screen>
-# here forward is used as a container, 
-# starting with the $ prefix, so it does
-# not conflict with the forward command
-$forward = 20
-print $forward
+$answer = 10 &gt; 3
 </screen>
-</para>
-<para>Containers are <glossterm>highlighted</glossterm> with bolded purple in the <link linkend="the-code-editor">code editor</link>.</para>
-<para>
-Please read the documentation on <link linkend="containers">containers</link> and the <link linkend="learn">learn</link> command for a better explanation and more examples.
-</para>
-</sect2>
-
-<sect2 id="assignment">
-<title>Assignments</title>
-<para>Assignment are done with the <userinput>=</userinput> symbol. In programming languages it is better to read the single <userinput>=</userinput> not as 'equals' but as 'becomes'. The word 'equals' is more appropriate for the <userinput>==</userinput> which is a <link linkend="questions">question</link>.</para>
-<para>Assignments are generally use for two reasons, (1) to add content <link linkend="containers">containers</link>, and (2) to modify the content of a container. For example:
-<screen>
-$x = 10
-# the container x now contains the number 10
-$W = "My age is: "
-# the container W now contains the string "My age is: "
-# this prints the content of the containers 'W' and 'x' on the canvas
-print $W + $x
-</screen>
-</para>
-<para>For more examples see the section that explains <link linkend="containers">containers</link>.</para>
-</sect2>
-
-<sect2 id="math-symbols">
-<title>Math Symbols</title>
-<para>&kturtle; supports all basic math symbols: add (<userinput>+</userinput>), subtract (<userinput>-</userinput>), multiply (<userinput>*</userinput>), divide (<userinput>/</userinput>) and the brackets <userinput>(</userinput> and <userinput>)</userinput>.</para>
-<para>For a complete explanation and more examples see the <link linkend="math">math</link> section.</para>
-</sect2>
-
-<sect2 id="question">
-<title>Questions</title>
-<para>We can ask simple questions on which the answer will be 'true' or 'false'.</para>
-<para>Using questions is extensively explained in the <link linkend="questions">questions</link> section.</para>
-</sect2>
-
-<sect2 id="questions-glue">
-<title>Question Glue-Words</title>
-<para>Questions can be glued together with so called 'question glue'. The glue words are <userinput>and</userinput>, <userinput>or</userinput>, and a special glue-word: <userinput>not</userinput>.</para>
-<para>Using question-glue is explained in the <link linkend="question-glue">Question Glue</link> section.</para>
-</sect2>
-
-
-<sect2 id="comment">
-<title>Comments</title>
-<para>Comments are lines that start with a <userinput>#</userinput>. For example:
-<screen>
-# this is a comment!
-print "this is not a comment"
-# the previous line is not a comment, but the next line is:
-# print "this is not a comment"
-</screen>
-We can add comments to the code for ourselves or for someone else to read. Comments are used for: (1) adding a small description to the program, (2) explaining how a piece of code works if it is a bit cryptic, and (3) to 'comment-out' lines of code that should be (temporarily) ignored (see the last line of the example).</para>
-<para>Commented lines are <glossterm>highlighted</glossterm> with light grey in the <link linkend="the-code-editor">code editor</link>.</para>
+The <link linkend="assignment-of-variables">variable</link> <userinput>$answer</userinput> is set to <userinput>true</userinput> because <userinput>10</userinput> is larger than <userinput>3</userinput>.</para>
+<para>Boolean values, <userinput>true</userinput> and <userinput>false</userinput>, are <glossterm>highlighted</glossterm> with dark red.</para>
 </sect2>
 
 </sect1>
 
 
+
+<sect1 id="operators">
+<title>Mathmatical, boolean and comparing operators</title>
+<para>The title of this section might sound very difficult, yet it is not as difficult as it sound.</para>
+
+<sect2 id="mathematical-operators">
+<title>Mathmatical operators</title>
+<para>These are the basic math symbols known as: add (<userinput>+</userinput>), subtract (<userinput>-</userinput>), multiply (<userinput>*</userinput>), divide (<userinput>/</userinput>) and power <userinput>(</userinput>^<userinput>)</userinput>.</para>
+
+<para>Here a small example of the mathematical operators you can use in &turtlescript;:
+<screen>
+$add      = 1 + 1
+$subtract = 20 - 5
+$multiply = 15 * 2
+$divide   = 30 / 30
+$power    = 2 ^ 2
+</screen>
+The values resulting from the mathematical operations get <link linkend="assignment-of-variables">assigned</link> to various <link linkend="assignment-of-variables">variables</link>. Using the <link linkend="the-inspector">inspector</link> you can see the values.</para>
+<para>If you just want a simple calculation to be done you can do something like this:
+<screen>
+print 2010-12
+</screen></para>
+<para>Now an example with parentheses:
+<screen>
+print ( ( 20 - 5 ) * 2 / 30 ) + 1
+</screen>
+The expressions inside parentheses will be calculated first. In this example, 20-5 will be calculated, then multiplied by 2, divided by 30, and then 1 is added (giving 2). Parentheses can also be used in other cases.</para>
+<para>&kturtle; also has more advanced mathematical features in the form of commands. Have a look at the following commands but be aware that it concerns advanced operations: <link linkend="round">round</link>, <link linkend="random">random</link>, <link linkend="sqrt">sqrt</link>, <link linkend="exp">exp</link>, <link linkend="pi">pi</link>, <link linkend="sin">sin</link>, <link linkend="cos">cos</link>, <link linkend="tan">tan</link>, <link linkend="arcsin">arcsin</link>, <link linkend="arccos">arccos</link>, <link linkend="arctan">arctan</link>.</para>
+</sect2>
+
+<sect2 id="boolean-operators">
+<title>Boolean (true/false) operators</title>
+<para>Where <link linkend="mathematical-operators">mathematical operators</link> are mainly for <link linkend="number">numbers</link>, boolean operators are for <link linkend="boolean-value">boolean values</link> (<userinput>true</userinput> and <userinput>false</userinput>). There are only three boolean operators, namely: <userinput>and</userinput>, <userinput>or</userinput>, and <userinput>not</userinput>. The following piece of &turtlescript; shows how to use them:
+<screen>
+$and_1_1 = true and true    # -> true
+$and_1_0 = true and false   # -> false
+$and_0_1 = false and true   # -> false
+$and_0_0 = false and false  # -> false
+
+$or_1_1 = true and true    # -> true
+$or_1_0 = true and false   # -> true
+$or_0_1 = false and true   # -> true
+$or_0_0 = false and false  # -> false
+
+$not_1 = not true   # -> false
+$not_0 = not false  # -> true
+</screen>
+Using the <link linkend="the-inspector">inspector</link> you can see the values, yet we also supply these results as little comments at the end of the lines. <userinput>and</userinput> evaluates <userinput>true</userinput> only if both sides are <userinput>true</userinput>. <userinput>or</userinput> evaluates <userinput>true</userinput> if either side of <userinput>true</userinput>. And <userinput>not</userinput> turns a <userinput>true</userinput> into <userinput>false</userinput> and a <userinput>false</userinput> into <userinput>true</userinput>.</para>
+<para>Boolean operators are <glossterm>highlighted</glossterm> with pink.</para>
+
+<sect3 id="boolean-operators-advanced-examples">
+<title>Some more advanced examples</title>
+<para>Consider the following example with <userinput>and</userinput>:
+<screen>
+$a = 1
+$b = 5
+if (($a &lt; 10) and ($b == 5)) and ($a &lt; $b) {
+  print "hello"
+}
+</screen>
+In this piece of &turtlescript; the result of three <link linkend="comparing-operators">comparing operators</link> are merged using <userinput>and</userinput> operators. This means that all three have to evaluate "true" in order for the "hello" to be printed.</para>
+
+<para>An example with <userinput>or</userinput>:
+<screen>
+$n = 1
+if ($n &lt; 10) or ($n == 2) {
+  print "hello"
+}
+</screen>
+In this piece of &turtlescript; the left side of the <userinput>or</userinput> is evaluating to 'true', the right side to 'false'. Since of of the two side of the <userinput>or</userinput> operator is 'true', the <userinput>or</userinput> operator evaluates 'true'. That means "hello" gets printed.</para>
+
+<para>And finally an example with <userinput>not</userinput> which changes 'true' into 'false' and 'false' into 'true'. Have a look:
+<screen>
+$n = 1
+if not ($n == 3) {
+  print "hello"
+} else {
+  print "not hello ;-)"
+}
+</screen></para>
+</sect3>
+</sect2>
+
+<sect2 id="comparing-operators">
+<title>Comparing operators</title>
+<para>Consider this simple comparison:
+<screen>
+$answer = 10 &gt; 3
+</screen>
+Here <userinput>10</userinput> is compared to <userinput>3</userinput> with the 'greater than' operator. The result of this comparison, the <link linkend="boolean-value">boolean values</link> <userinput>true</userinput> is stored in the <link linkend="assignment-of-variables">variable</link> <userinput>$answer</userinput>.</para>
+<para>All <link linkend="number">numbers</link> and <link linkend="assignment-of-variables">variables</link> (that contain numbers) can be compared to each other with comparing operators.</para>
+<para>
+Here are all possible comparing operators:
+<table>
+<title>Types of questions</title>
+<tgroup cols="3">
+<tbody>
+<row>
+<entry><userinput>A == B</userinput></entry>
+<entry>equals</entry>
+<entry>answer is <quote>true</quote> if <userinput>A</userinput> equals <userinput>B</userinput></entry>
+</row>
+<row>
+<entry><userinput>A != B</userinput></entry>
+<entry>not-equals</entry>
+<entry>answer is <quote>true</quote> if <userinput>A</userinput> does not equal <userinput>B</userinput></entry>
+</row>
+<row>
+<entry><userinput>A &gt; B</userinput></entry>
+<entry>greater than</entry>
+<entry>answer is <quote>true</quote> if <userinput>A</userinput> is greater than <userinput>B</userinput></entry>
+</row>
+<row>
+<entry><userinput>A &lt; B</userinput></entry>
+<entry>smaller than</entry>
+<entry>answer is <quote>true</quote> if <userinput>A</userinput> is smaller than <userinput>B</userinput></entry>
+</row>
+<row>
+<entry><userinput>A &gt;= B</userinput></entry>
+<entry>greater than or equals</entry>
+<entry>answer is <quote>true</quote> if <userinput>A</userinput> is greater than or equals <userinput>B</userinput></entry>
+</row>
+<row>
+<entry><userinput>A &lt;= B</userinput></entry>
+<entry>smaller than or equals</entry>
+<entry>answer is <quote>true</quote> if <userinput>A</userinput> is smaller than or equals <userinput>B</userinput></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+Please note that A and B have to be <link linkend="number">numbers</link> and <link linkend="assignment-of-variables">variables</link> that contain numbers.</para>
+</sect2>
+
+
+</sect1>
+
+
+
 <sect1 id="commands">
 <title>Commands</title>
-<para>Using commands you tell the turtle or &kturtle; to do something. Some commands need input, some give output. In this section we explain all the commands that can be used in &kturtle;. Please note that all build in commands we discuss here are <glossterm>highlighted</glossterm> with blue in the <link linkend="the-code-editor">code editor</link>, this can help you to distinguish them.</para>
+<para>Using commands you tell the turtle or &kturtle; to do something. Some commands need input, some give output. In this section we explain all the build-in commands of &kturtle;. Alternatively, using <link linkend="learn">learn</link>, you can create your own commands. Build in commands we discuss here are <glossterm>highlighted</glossterm> with dark blue.</para>
 
 <sect2 id="moving-the-turtle">
 <title>Moving the turtle</title>
@@ -287,26 +381,6 @@ We can add comments to the code for ourselves or for someone else to read. Comme
       <userinput>canvascolor</userinput> set the color of the canvas. <userinput>canvascolor</userinput> takes an <glossterm linkend="rgb">RGB combination</glossterm> as input. <userinput>canvascolor</userinput> can be abbreviated to <userinput>cc</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
-<!-- <sect3 id="wrapon">
-  <title>wrapon</title>
-  <variablelist>
-    <varlistentry> 
-      <term>wrapon</term>
-      <listitem><para><screen>wrapon</screen>
-      With the <userinput>wrapon</userinput> command you can set <glossterm linkend="wrapping">wrapping</glossterm> <quote>on</quote> for the canvas. Please see the glossary if you want to know what <glossterm linkend="wrapping">wrapping</glossterm> is.</para></listitem>
-    </varlistentry>
-  </variablelist>
-</sect3>
-<sect3 id="wrapoff">
-  <title>wrapoff</title>
-  <variablelist>
-    <varlistentry> 
-      <term>wrapoff</term>
-      <listitem><para><screen>wrapoff</screen>
-      With the <userinput>wrapoff</userinput> command you can set <glossterm linkend="wrapping">wrapping</glossterm> <quote>off</quote> for the canvas: this means the turtle can move off the canvas and can get <quote>lost</quote>. Please see the glossary if you want to know what <glossterm linkend="wrapping">wrapping</glossterm> is.</para></listitem>
-    </varlistentry>
-  </variablelist>
-</sect3>  -->
 </sect2>
 
 <sect2 id="clean">
@@ -380,10 +454,25 @@ print $author + " started the KTurtle project in " + $year + " and still enjoys 
   </variablelist>
 </sect2>
 
-<sect2 id="random">
-<title>A command that rolls dice for you</title>
-<para>There is one command that rolls dice for you, it is called <userinput>random</userinput>, and it is very useful for some unexpected results.</para>
+<sect2 id="math-commands">
+<title>Mathmatical commands</title>
+<para>The following commands are &kturtle;'s more advanced mathematical commands.</para>
   <variablelist>
+    <anchor id="round" />
+    <varlistentry>
+      <term>round<indexterm><primary>round</primary></indexterm></term>
+      <listitem><para><screen>round(x)</screen>
+      <userinput>round</userinput> the given number to the nearest integer.
+<screen>
+print round(10.8)
+forward 20
+print round(10.3)
+</screen>
+      With this code the turtle will print the numbers 11 and 10.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="random" />
     <varlistentry> 
       <term>random (rnd)<indexterm><primary>random (rnd)</primary></indexterm></term>
       <listitem><para><screen>random X,Y</screen>
@@ -398,6 +487,60 @@ repeat 500 {
       Using the <userinput>random</userinput> command you can add a bit of chaos to your program.</para></listitem>
     </varlistentry>
   </variablelist>
+  <variablelist>
+    <anchor id="sqrt" />
+    <varlistentry> 
+      <term>sqrt<indexterm><primary>sqrt</primary></indexterm></term>
+      <listitem><para><screen>sqrt X</screen>
+      The <userinput>sqrt</userinput> command is sued to find the square root of a number, X.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="exp" />
+    <varlistentry> 
+      <term>exp<indexterm><primary>exp</primary></indexterm></term>
+      <listitem><para><screen>sqrt X</screen>
+      </para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="pi" />
+    <varlistentry> 
+      <term>pi<indexterm><primary>pi</primary></indexterm></term>
+      <listitem><para><screen>pi</screen>
+      This command returns the constant Pi, <userinput>3.14159</userinput>.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sin" />
+    <anchor id="cos" />
+    <anchor id="tan" />
+    <varlistentry>
+      <term>sin<indexterm><primary>sin</primary></indexterm>, cos<indexterm><primary>cos</primary></indexterm>, tan<indexterm><primary>tan</primary></indexterm></term>
+      <listitem><para>
+<screen>
+sin X
+cos X
+tan X
+</screen>
+      These three commands represent the world famous trigoniometrical functions <userinput>sin</userinput>, <userinput>cos</userinput> and <userinput>tan</userinput>. The input argument of these commands, X, is a <link linkend="number">number</link>.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="arcsin" />
+    <anchor id="arccos" />
+    <anchor id="arctan" />
+    <varlistentry>
+      <term>arcsin<indexterm><primary>arcsin</primary></indexterm>, arccos<indexterm><primary>arccos</primary></indexterm>, arctan<indexterm><primary>arctan</primary></indexterm></term>
+      <listitem><para>
+<screen>
+arcsin X
+arccos X
+arctan X
+</screen>
+      These commands are the invese functions of <link linkend="sin">sin</link>, <link linkend="cos">cos</link> and <link linkend="tan">tan</link>. The input argument of these commands, X, is a <link linkend="number">number</link>.</para></listitem>
+    </varlistentry>
+  </variablelist>
 </sect2>
 
 <sect2 id="dialogs">
@@ -410,7 +553,7 @@ repeat 500 {
       <listitem><para><screen>message X</screen>
       The <userinput>message</userinput> command takes a <link linkend="string">string</link> as input. It shows a pop-up dialog containing the text from the <link linkend="string">string</link>.
 <screen>
-message "Cies started the KTurtle project in 2003 and still enjoys working on it!"
+message "Cies started KTurtle in 2003 and still enjoys working on it!"
 </screen>
       </para></listitem>
     </varlistentry>
@@ -420,13 +563,13 @@ message "Cies started the KTurtle project in 2003 and still enjoys working on it
     <varlistentry> 
       <term>ask<indexterm><primary>ask</primary></indexterm></term>
       <listitem><para><screen>ask X</screen>
-      <userinput>ask</userinput> takes a <link linkend="string">string</link> as input. It shows a pop-up dialog containing the text from the string, just like the <link linkend="message">message</link>. But in addition to it also puts an input field on the dialog. Through this input filed the user can enter a <link linkend="number">number</link> or a <link linkend="string">string</link> which can be stored in a <link linkend="containers">container</link>. For example
+      <userinput>ask</userinput> takes a <link linkend="string">string</link> as input. It shows a pop-up dialog containing the text from the string, just like the <link linkend="message">message</link>. But in addition to it also puts an input field on the dialog. Through this input filed the user can enter a <link linkend="number">number</link> or a <link linkend="string">string</link> which can be stored in a <link linkend="assignment-of-variables">variable</link> or passed as an argument to a <link linkend="commands">command</link>. For example:
 <screen>
 $in = ask "What is you age?"
 $out = 2003 - $in
 print "In 2003 you where " + $out + " years old at some point."
 </screen>
-      When a user cancels the input dialog, or does not enter anything at all the <link linkend="containers">container</link> is emptied.</para></listitem>
+      When a user cancels the input dialog, or does not enter anything at all the <link linkend="assignment-of-variables">variable</link> is emptied.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -435,260 +578,59 @@ print "In 2003 you where " + $out + " years old at some point."
 
 
 
-<sect1 id="containers">
-<title>Containers</title>
-<para>Containers are letters or words that can be used by the programmer to store a number or a text. Containers that contain a number are called <link linkend="variables">variables</link>, containers that can contain text are called <link linkend="string">string</link>. Containers can be identified by the container character <quote>$</quote> that precedes their usage.</para>
-
-<para>Containers that are not used contain nothing. An example:
-<screen>
-print $N
-</screen>
-This will print nothing and you get an error message.
+<sect1 id="assignment-of-variables">
+<title>Assignment of variables</title>
+<para>First we have a look at variables, then we look at assigning values to those variables.
+<!-- The final part of this section considers <link linkend="scoping">scoping of variables</link>. -->
 </para>
 
-<sect2 id="variables">
-<title>Variables: number containers</title>
-<para>Let us start with an example:
+<para>Variables are words that start with a <quote>$</quote>, in the <link linkend="the-editor">editor</link> they are <glossterm>highlighted</glossterm> with purple.</para>
+
+<para>Variables can contain any <link linkend="number">number</link>, <link linkend="string">string</link> or <link linkend="boolean-value">boolean (true/false) value</link>. Using the assignment, <userinput>=</userinput>, a variable is given its content. It will keep that content until the program finishes executing or until the variable is reassigned to something else.</para>
+
+<para>You can use variables, once assigned, just as if they are their content. For instance in the following piece of &turtlescript;:
 <screen>
-$x = 3
+$x = 10
+$x = $x / 3
 print $x
 </screen>
-In the first line the letter <userinput>x</userinput> is made into a variable (number container). As you see the value of the variable <userinput>x</userinput> is set to 3. On the second line the value is printed.</para>
-<para> Note that if we wanted to print an <quote>x</quote> that we should have written
+First the variable <userinput>$x</userinput> is assigned to <userinput>10</userinput>. Then <userinput>$x</userinput> is reassigned to itself divided by <userinput>3</userinput> &mdash; this effectively means <userinput>$x</userinput> is reassigned to product of <userinput>10 / 3</userinput>. Finally <userinput>$x</userinput> is printed. In line two and three you see that <userinput>$x</userinput> is used as if it is its contents.</para>
+
+<para>Variables have to be assigned in order to be used. For example:
 <screen>
-print "x"
+print $n
 </screen>
-</para>
-<para>That was easy, now a bit harder example:
+Will result in an error message.</para>
+
+<para>Please consider the following piece of &turtlescript;:
 <screen>
-$A = 2004
-$B = 25
-$C = $A + $B
+$a = 2004
+$b = 25
 
 # the next command prints "2029"
-print $C
+print $a + $b
 backward 30
-# the next command prints "2004 plus 25"
-print $A + " plus " + $B
-backward 30
-# the next command prints "1979"
-print $A - $B
+# the next command prints "2004 plus 25 equals 2029"
+print $a + " plus " + $b + " equals " + ($a + $b)
 </screen>
-In the first two lines the variables <userinput>A</userinput> and <userinput>B</userinput> are set to 2004 and 25. On the third line the variable <userinput>C</userinput> is set to <userinput>A + B</userinput>, which is 2029. The rest of the example consists of 3 <userinput>print</userinput> commands with <userinput>backward 30</userinput> in between. The <userinput>backward 30</userinput> is there to make sure every output is on a new line. In this example you also see that variables can be used in <link linkend="math">mathematical calculations</link>.</para>
-</sect2>
+In the first two lines the variables <userinput>a</userinput> and <userinput>a</userinput> are set to 2004 and 25. Then in two <userinput>print</userinput> commands with a <userinput>backward 30</userinput> in between. The comments before the <userinput>print</userinput> commands explain what they are doing. As you see variables can be used just as if their where what they contain, you can use them with any kind of <link linkend="operators">operators</link> or give them as input when invoking <link linkend="commands">commands</link>.</para>
 
-<sect2 id="strings">
-<title>Containers that contain text (strings)</title>
-<para>In programming code the regular text is usually started and ended with quotes. As we have already seen:
+<para>One more example:
 <screen>
-print "Hello programmer!"
+$name = ask "What is your name?"
+print "Hi " + $name + "! Good luck while learning the art of programming..."
 </screen>
-The regular is delimited with quotes. These pieces of regular text we call <link linkend="strings">strings</link>.</para>
-<para>Strings can also be stored in <link linkend="containers">containers</link> just like <link linkend="number">numbers</link>
-Strings are a lot like variables. The biggest difference is that they contain text in stead of numbers. For this reason strings cannot be used in <link linkend="math">mathematical calculations</link> and <link linkend="questions">questions</link>. An example of the use of strings:
-<screen>
-$x = "Hello "
-$name = ask "Please enter your name..."
-print $x + $name + ", how are you?"
-</screen>
-On the first line the string <userinput>x</userinput> is set to <quote>Hello </quote>. On the second line the string <userinput>name</userinput> is set to the output of the <userinput>ask</userinput> command. On the third line the program prints a composition of three strings on the canvas.</para>
-<para>This program ask you to enter your name. When you, for instance, enter the name <quote>Paul</quote>, the program prints <quote>Hello Paul, how are you?</quote>. Please note that the plus (+) is the only math symbol that you can use with strings.</para>
-</sect2>
+Pretty straight forward. Again you can see that the variable <userinput>$name</userinput>, treated just like a string.</para>
+
+<para>When using variables the <link linkend="the-inspector">inspector</link> is very helpful. It shows you the contents of all variables that are currently in use.</para>
 </sect1>
 
-<sect1 id="math">
-<title>Can the Turtle do math?</title>
-<para>Yes, &kturtle; will do your math. You can add (+), subtract (-), multiply (*), and divide (/). Here is an example in which we use all of them:
-<screen>
-$a = 20 - 5
-$b = 15 * 2
-$c = 30 / 30
-$d = 1 + 1
-print "a: "+$a+", b: "+$b+", c: "+$c+", d: "+$d 
-</screen>
-Do you know what value a, b, c and d have? Please note the use of the <link linkend="assignment">assignment</link> symbol <userinput>=</userinput>.</para>
-<para>If you just want a simple calculation to be done you can do something like this:
-<screen>
-print 2004-12
-</screen></para>
-<para>Now an example with parentheses:
-<screen>
-print ( ( 20 - 5 ) * 2 / 30 ) + 1
-</screen>
-The expressions inside parentheses will be calculated first. In this example, 20-5 will be calculated, then multiplied by 2, divided by 30, and then 1 is added (giving 2).</para>
-<para>&kturtle; has advanced mathematical features. It knows the number <userinput>pi</userinput> and trigonometrical functions like <userinput>sin</userinput>, <userinput>cos</userinput>, <userinput>tan</userinput>, <userinput>arcsin</userinput>, <userinput>arccos</userinput>, <userinput>arctan</userinput> and the functions <userinput>sqrt</userinput> and <userinput>exp</userinput>.
-<indexterm><primary>pi</primary></indexterm>
-<indexterm><primary>sin, cos, tan</primary></indexterm>
-<indexterm><primary>arcsin, arccos, arctan</primary></indexterm>
-<indexterm><primary>sqrt, exp</primary></indexterm>
-</para>
 
-<sect2 id="round">
-<title>Let the turtle round your numbers</title>
-<para>If you need integers in calculations, use this function.</para>
-  <variablelist>
-    <varlistentry>
-      <term>round<indexterm><primary>round</primary></indexterm></term>
-      <listitem><para><screen>round(x)</screen>
-      <userinput>round</userinput> the given number to the nearest integer.
-<screen>
-print round(10.8)
-forward 20
-print round(10.3)
-forward 20
-</screen>
-      With this code the turtle will print the numbers 11 and 10.</para></listitem>
-    </varlistentry>
-  </variablelist>
-</sect2>
-</sect1>
-
-<sect1 id="questions">
-<title>Asking questions, getting answers...</title>
-<para><link linkend="if"><userinput>if</userinput></link> and <link linkend="while"><userinput>while</userinput></link> are <link linkend="controlling-execution">execution controllers</link> that we will discuss in the next section. In this section we use the <link linkend="if"><userinput>if</userinput></link> command to explain questions.</para>
-<sect2 id="q">
-<title>Questions</title>
-<para>A simple example of a question:
-<screen>
-$x = 6
-if $x &gt; 5 {
-  print "hello"
-}
-</screen>
-
-In this example the question is the <userinput>x &gt; 5</userinput> part. If the answer to this question is 'true' the code between the brackets will be executed. Questions are an important part of programming and often used together with <link linkend="controlling-execution">execution controllers</link>, like <link linkend="if"><userinput>if</userinput></link>. All numbers and <link linkend="variables">variables</link> (number containers) can be compared to each other with questions.</para>
-<para>
-Here are all possible questions:
-<table>
-<title>Types of questions</title>
-<tgroup cols="3">
-<tbody>
-<row>
-<entry><userinput>a == b</userinput></entry>
-<entry>equals</entry>
-<entry>answer is <quote>true</quote> if <userinput>a</userinput> equals <userinput>b</userinput></entry>
-</row>
-<row>
-<entry><userinput>a != b</userinput></entry>
-<entry>not-equals</entry>
-<entry>answer is <quote>true</quote> if <userinput>a</userinput> does not equal <userinput>b</userinput></entry>
-</row>
-<row>
-<entry><userinput>a &gt; b</userinput></entry>
-<entry>greater than</entry>
-<entry>answer is <quote>true</quote> if <userinput>a</userinput> is greater than <userinput>b</userinput></entry>
-</row>
-<row>
-<entry><userinput>a &lt; b</userinput></entry>
-<entry>smaller than</entry>
-<entry>answer is <quote>true</quote> if <userinput>a</userinput> is smaller than <userinput>b</userinput></entry>
-</row>
-<row>
-<entry><userinput>a &gt;= b</userinput></entry>
-<entry>greater than or equals</entry>
-<entry>answer is <quote>true</quote> if <userinput>a</userinput> is greater than or equals <userinput>b</userinput></entry>
-</row>
-<row>
-<entry><userinput>a &lt;= b</userinput></entry>
-<entry>smaller than or equals</entry>
-<entry>answer is <quote>true</quote> if <userinput>a</userinput> is smaller than or equals <userinput>b</userinput></entry>
-</row>
-</tbody>
-</tgroup>
-</table>
-</para>
-</sect2>
-
-<sect2 id="question-glue">
-<title>Question Glue</title>
-<para>
-Question glue-words enable us to glue questions into one big question.
-<screen>
-$a = 1
-$b = 5
-if ($a &lt; $b) and ($b == 5) {
-  print "hello"
-}
-</screen>
-In this example the glue-word <userinput>and</userinput> is used to glue 2 questions (<userinput>a &lt; 5</userinput>, <userinput>b == 5</userinput>) together. If one side of the <userinput>and</userinput> would answer <quote>false</quote> the whole question would answer <quote>false</quote>, because with the glue-word <userinput>and</userinput> both sides need to be <quote>true</quote> in order to answer <quote>true</quote>. Please do not forget to use the brackets around the questions!</para>
-
-<para>
-Here is a schematic overview; a more detailed explanation follows below:
-<table>
-<title>Question glue-words</title>
-<tgroup cols="2">
-<tbody>
-<row>
-<entry><userinput>and</userinput></entry>
-<entry>Both sides need to be 'true' in order to answer 'true'</entry>
-</row>
-<row>
-<entry><userinput>or</userinput></entry>
-<entry>If one of the sides is 'true' the answer is 'true'</entry>
-</row>
-<row>
-<entry><userinput>not</userinput></entry>
-<entry>Special case: only works on one question! Changes 'true' into 'false' and 'false' into 'true'.</entry>
-</row>
-</tbody>
-</tgroup>
-</table>
-</para>
-
-<sect3 id="and">
-<title>and</title>
-<indexterm><primary>and</primary></indexterm>
-<para>When two questions are glued together with <userinput>and</userinput>, both sides of the <userinput>and</userinput> have to be 'true' in order to result in 'true'. An example:
-<screen>
-$a = 1
-$b = 5
-if (($a &lt; 10) and ($b == 5)) and ($a &lt; $b) {
-  print "hello"
-}
-</screen>
-In this example you see a glued question glued onto an other question.</para>
-</sect3>
-
-<sect3 id="or">
-<title>or</title>
-<indexterm><primary>or</primary></indexterm>
-<para>If one of the two questions that are glued together with <userinput>or</userinput> is 'true' the result will be 'true'. An example:
-<screen>
-$a = 1
-$b = 5
-if (($a &lt; 10) or ($b == 10)) or ($a == 0) {
-  print "hello"
-}
-</screen>
-In this example you see a glued question glued onto an other question.</para>
-</sect3>
-
-<sect3 id="not">
-<title>not</title>
-<indexterm><primary>not</primary></indexterm>
-<para><userinput>not</userinput> is a special question glue-word because it only works for one question at the time. <userinput>not</userinput> changes 'true' into 'false' and 'false' into 'true'. An example:
-<screen>
-$a = 1
-$b = 5
-if not (($a &lt; 10) and ($b == 5)) {
-  print "hello"
-}
-else
-{
-  print "not hello ;-)"
-}
-</screen>
-In this example the glued question is 'true' yet the <userinput>not</userinput> changes it to 'false'. So in the end <userinput>"not hello ;-)"</userinput> is printed on the <link linkend="the-canvas">canvas</link>.</para>
-</sect3>
-
-</sect2>
-
-</sect1>
 
 <sect1 id="controlling-execution">
 <title>Controlling execution</title>
 <para>The execution controllers enable you &mdash; as their name implies &mdash; to control execution.</para>
-<para>Execution controlling commands are <glossterm>highlighted</glossterm> with dark green in a bold font type. The brackets are mostly used together with execution controllers and they are <glossterm>highlighted</glossterm> with bolded black.</para>
+<para>Execution controlling commands are <glossterm>highlighted</glossterm> with dark green in a bold font type. The brackets are mostly used together with execution controllers and they are <glossterm>highlighted</glossterm> with black.</para>
 
 <sect2 id="wait">
 <title>Have the turtle wait</title>
@@ -716,15 +658,15 @@ repeat 36 {
   <variablelist>
     <varlistentry>
       <term>if<indexterm><primary>if</primary></indexterm></term>
-      <listitem><para><screen>if <link linkend="questions">question</link> { ... }</screen>
-      The code that is placed between the brackets will only be executed <userinput>if</userinput> the answer to the <link linkend="questions">question</link> is <quote>true</quote>. Please read for more information on <link linkend="questions">questions</link> in the <link linkend="questions">question section</link>.
+      <listitem><para><screen>if <link linkend="boolean-value">boolean</link> { ... }</screen>
+      The code that is placed between the brackets will only be executed <userinput>if</userinput> the <link linkend="boolean-value">boolean value</link> evaluates <quote>true</quote>.
       <screen>
 $x = 6
 if $x &gt; 5 {
-  print "x is greater than five!"
+  print "$x is greater than five!"
 }
 </screen>
-      On the first line <userinput>x</userinput> is set to 6. On the second line the <link linkend="questions">question</link> <userinput>x &gt; 5</userinput> is asked. Since the answer to this question is <quote>true</quote> the execution controller <userinput>if</userinput> will allow the code between the brackets to be executed</para></listitem>
+      On the first line <userinput>$x</userinput> is set to 6. On the second line a <link linkend="comparing-operators">comparing operator</link> is used to evaluate <userinput>$x &gt; 5</userinput>. Since this evaluates <quote>true</quote>, 6 is larger than 5, the execution controller <userinput>if</userinput> will allow the code between the brackets to be executed.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -734,20 +676,18 @@ if $x &gt; 5 {
   <variablelist>
     <varlistentry>
       <term>else<indexterm><primary>else</primary></indexterm></term>
-      <listitem><para><screen>if question { ... } else { ... }</screen>
-      <userinput>else</userinput> can be used in addition to the execution controller <link linkend="if"><userinput>if</userinput></link>. The code between the brackets after <userinput>else</userinput> is only executed if the answer to the <link linkend="questions">question</link> that is asked is <quote>false</quote>. 
+      <listitem><para><screen>if <link linkend="boolean-value">boolean</link> { ... } else { ... }</screen>
+      <userinput>else</userinput> can be used in addition to the execution controller <link linkend="if"><userinput>if</userinput></link>. The code between the brackets after <userinput>else</userinput> is only executed if the <link linkend="boolean-value">boolean</link> evaluates <quote>false</quote>.
       <screen>
 reset
 $x = 4
 if $x &gt; 5 {
-  print "x is greater than five!"
-}
-else
-{
-  print "x is smaller than six!"
+  print "$x is greater than five!"
+} else {
+  print "$x is smaller than six!"
 }
 </screen>
-      The <link linkend="questions">question</link> asks if <userinput>x</userinput> is greater than 5. Since <userinput>x</userinput> is set to 4 on the first line the answer to the question is <quote>false</quote>. This means the code between the brackets after <userinput>else</userinput> gets executed.</para></listitem>
+      The <link linkend="comparing-operators">comparing operator</link> the expression <userinput>$x &gt; 5</userinput> is evaluated. Since 4 is not greater than 5 the expression evaluates <quote>false</quote>. This means the code between the brackets after <userinput>else</userinput> gets executed.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -757,8 +697,8 @@ else
   <variablelist>
     <varlistentry>
       <term>while<indexterm><primary>while</primary></indexterm></term>
-      <listitem><para><screen>while <link linkend="questions">question</link> { ... }</screen>
-      The execution controller <userinput>while</userinput> is a lot like <link linkend="if"><userinput>if</userinput></link>. The difference is that <userinput>while</userinput> keeps repeating (looping) the code between the brackets until the answer to the <link linkend="questions">question</link> is <quote>false</quote>.
+      <listitem><para><screen>while <link linkend="boolean-value">boolean</link> { ... }</screen>
+      The execution controller <userinput>while</userinput> is a lot like <link linkend="if"><userinput>if</userinput></link>. The difference is that <userinput>while</userinput> keeps repeating (looping) the code between the brackets until the <link linkend="boolean-value">boolean</link> evaluates <quote>false</quote>.
       <screen>
 $x = 1
 while $x &lt; 5 {
@@ -767,7 +707,7 @@ while $x &lt; 5 {
   $x = $x + 1
 }
 </screen>
-      On the first line <userinput>x</userinput> is set to 1. On the second line the <link linkend="questions">question</link> <userinput>x &lt; 5</userinput> is asked. Since the answer to this question is <quote>true</quote> the execution controller <userinput>while</userinput> starts executing the code between the brackets until the answer to the <link linkend="questions">question</link> is <quote>false</quote>. In this case the code between the brackets will be executed 4 times, because every time the fifth line is executed <userinput>x</userinput> increases by 1.</para></listitem>
+      On the first line <userinput>$x</userinput> is set to 1. On the second line <userinput>$x &lt; 5</userinput> is evaluated. Since the answer to this question is <quote>true</quote> the execution controller <userinput>while</userinput> starts executing the code between the brackets until the <userinput>$x &lt; 5</userinput> evaluates <quote>false</quote>. In this case the code between the brackets will be executed 4 times, because every time the fifth line is executed <userinput>$x</userinput> increases by 1.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -777,8 +717,8 @@ while $x &lt; 5 {
   <variablelist>
     <varlistentry>
       <term>repeat<indexterm><primary>repeat</primary></indexterm></term>
-      <listitem><para><screen>repeat number { ... }</screen>
-      The execution controller <userinput>repeat</userinput> is a lot like <link linkend="while"><userinput>while</userinput></link>. The difference is that <userinput>repeat</userinput> keeps repeating (looping) the code between the brackets for the given number.</para></listitem>
+      <listitem><para><screen>repeat <link linkend="number">number</link> { ... }</screen>
+      The execution controller <userinput>repeat</userinput> is a lot like <link linkend="while"><userinput>while</userinput></link>. The difference is that <userinput>repeat</userinput> keeps repeating (looping) the code between the brackets for as many times as the given number.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -788,19 +728,19 @@ while $x &lt; 5 {
   <variablelist>
     <varlistentry>
       <term>for<indexterm><primary>for</primary></indexterm><indexterm><primary>step</primary></indexterm></term>
-      <listitem><para><screen>for <userinput>start point</userinput> to <userinput>end point</userinput> { ... }</screen>
-      The <userinput>for</userinput> loop is a <quote>counting loop</quote>, &ie; it keeps count for you.
+      <listitem><para><screen>for <link linkend="assignment-of-variables">variable`</link> = <link linkend="number">number</link> to <link linkend="number">number</link> { ... }</screen>
+      The <userinput>for</userinput> loop is a <quote>counting loop</quote>, &ie; it keeps count for you. The first number sets the variable to the value in the first loop. Every loop the number is increased until the second number is reached.
       <screen>
 for $x = 1 to 10 {
   print $x * 7
   forward 15
 }
 </screen>
-     Every time the code between the brackets is executed the <userinput>x</userinput> is increased by 1, until <userinput>x</userinput> reaches the value of 10. The code between the brackets prints the <userinput>x</userinput> multiplied by 7. After this program finishes its execution you will see the times table of 7 on the canvas.
+     Every time the code between the brackets is executed the <userinput>$x</userinput> is increased by 1, until <userinput>x</userinput> reaches the value of 10. The code between the brackets prints the <userinput>$x</userinput> multiplied by 7. After this program finishes its execution you will see the times table of 7 on the canvas.
      </para>
      <para>
      The default step size of a loop is 1, you can use an other value with
-     <screen>for <userinput>start point</userinput> to <userinput>end point</userinput> step <userinput>step size</userinput> { ... }</screen></para></listitem>
+     <screen>for <link linkend="assignment-of-variables">variable`</link> = <link linkend="number">number</link> to <link linkend="number">number</link> step <link linkend="number">number</link> { ... }</screen></para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -811,18 +751,18 @@ for $x = 1 to 10 {
     <varlistentry>
       <term>break<indexterm><primary>break</primary></indexterm></term>
       <listitem><para><screen>break</screen>
-      Terminates the current loop immediately and transfers control to the statement immediately following that loop</para></listitem>
+      Terminates the current loop immediately and transfers control to the statement immediately following that loop.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
 
 <sect2 id="exit">
-<title>Stop the turtle</title>
+<title>Stop executing your program</title>
   <variablelist>
     <varlistentry>
       <term>exit<indexterm><primary>exit</primary></indexterm></term>
       <listitem><para><screen>exit</screen>
-      Finishes the execution of the code.</para></listitem>
+      Finishes the execution of your program.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -830,8 +770,46 @@ for $x = 1 to 10 {
 
 
 <sect1 id="learn">
+
+
+<!--<sect2 id="name">
+<title>Names</title>
+<para>When using the &turtlescript; programming language you create new things. If you write a program you will often need <link linkend="containers">containers</link> and in some cases you need <link linkend="learn">learn</link> to create new commands. When making a new command with <link linkend="learn">learn</link> you will have to specify a name.</para>
+<para>You can choose any name, as long as it does not already have a meaning. For instance you cannot name a function <link linkend="forward">forward</link>, since that name is already used for an internal command.
+<screen>
+# here forward is used as a new command, 
+# but it already has a meaning so 
+# this will produce an error:
+learn forward {
+  print "this is invalid"
+}
+
+# this works:
+learn myforward {
+  print "this is ok"
+}
+</screen>
+Names can contain only letters, numbers and underscores (_). Yet they have to start with a letter. Container names have to start with the container prefix ($).
+<screen>
+# here forward is used as a container, 
+# starting with the $ prefix, so it does
+# not conflict with the forward command
+$forward = 20
+print $forward
+</screen>
+</para>
+<para>Containers are <glossterm>highlighted</glossterm> with bolded purple in the <link linkend="the-editor">code editor</link>.</para>
+<para>
+Please read the documentation on <link linkend="containers">containers</link> and the <link linkend="learn">learn</link> command for a better explanation and more examples.
+</para>
+</sect2>-->
+
+
+
+
+
 <title>Create your own commands with <quote>learn</quote></title>
-<para><userinput>learn</userinput><indexterm><primary>learn</primary></indexterm> is a very special command, because it is used to create your own commands. The command you create can take <glossterm linkend="input-output">input</glossterm> and return <glossterm linkend="input-output">output</glossterm>. Let us take a look at how a new command is created:
+<para><userinput>learn</userinput> is special as it is used to create your own commands. The commands you create can take <glossterm linkend="input-output">input</glossterm> and return <glossterm linkend="input-output">output</glossterm>. Let us take a look at how a new command is created:
 <screen>
 learn circle $x {
   repeat 36 {
@@ -840,7 +818,7 @@ learn circle $x {
   }
 }
 </screen>
-The new command is called <userinput>circle</userinput>. <userinput>circle</userinput> takes one <glossterm linkend="input-output">input</glossterm>, a number, to set the size of the circle. <userinput>circle</userinput> returns no <glossterm linkend="input-output">output</glossterm>. The <userinput>circle</userinput> command can now be used like a normal command in the rest of the code. See this example:
+The new command is called <userinput>circle</userinput>. <userinput>circle</userinput> takes one <glossterm linkend="input-output">input</glossterm> argument, to set the size of the circle. <userinput>circle</userinput> returns no <glossterm linkend="input-output">output</glossterm>. The <userinput>circle</userinput> command can now be used like a normal command in the rest of the code. See this example:
 <screen>
 learn circle $X {
   repeat 36 {
@@ -858,27 +836,27 @@ circle 40
 </para>
 <para>In the next example, a command with a return value is created.
 <screen>
-reset
-
-learn multiplyBySelf $n {
-  $r = $n * $n
+learn faculty $x {
+  $r = 1
+  for $i = 1 to $x {
+    $r = $r * $i
+  }
   return $r
 }
-$i = ask "Please enter a number and press OK"
-print $i + " multiplied by itself is: " + multiplyBySelf $i
+
+print faculty 5
 </screen>
-In this example a new command called <userinput>multiplyBySelf</userinput> is created. The input of this command is multiplied by itself and then returned, using the <anchor id="return" /><userinput>return</userinput> command. The <userinput>return</userinput> command is the way to output a value from a function you have created.
-</para>
-<para>Commands can have more than one <glossterm linkend="input-output">input</glossterm>. In the next example, a command that draws a rectangle is created.
+In this example a new command called <userinput>faculty</userinput> is created. The if the input of this command is <userinput>5</userinput> then the output is <userinput>5*4*3*2*1</userinput>. By using <userinput>return</userinput> the <glossterm linkend="input-output">output</glossterm> value is specified and the execution is returned.</para>
+<para>Commands can have more than one <glossterm linkend="input-output">input</glossterm>. In the next example, a command that draws a rectangle is created:
 <screen>
-learn box $X, $Y {
-  forward $Y
+learn box $x, $u {
+  forward $y
   turnright 90
-  forward $X
+  forward $x
   turnright 90
-  forward $Y
+  forward $y
   turnright 90
-  forward $X
+  forward $x
   turnright 90
 }
 </screen>

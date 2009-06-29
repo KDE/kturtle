@@ -1,5 +1,9 @@
-<!--Dear translator: please NEVER translate the id or anything inside the tags as they are needed in english by the application
-     Thanks a lot in advance.-->
+<!--
+Dear translator, please NEVER translate the ids or any tag attributes
+as the context help feature expects them the way they are...
+Thanks a lot for your translation effort!
+-->
+
 <chapter id="Glossary">
 <title>Glossary</title>
 
@@ -46,29 +50,29 @@ penup
 
 <glossentry id="intuitive-highlighting">
 <glossterm>intuitive highlighting</glossterm>
-<glossdef><para>This is a feature of &kturtle; that makes coding even easier. With intuitive highlighting the code that you write gets a color that indicates what type of code it is. In the next list you will find the different types of code and the color they get in <link linkend="the-code-editor">the code editor</link>.
+<glossdef><para>This is a feature of &kturtle; that makes coding even easier. With intuitive highlighting the code that you write gets a color that indicates what type of code it is. In the next list you will find the different types of code and the color they get in <link linkend="the-editor">the editor</link>.
 <table>
 <title>Different types of code and their highlight color</title>
 <tgroup cols="3">
 <tbody>
 <row>
 <entry>regular commands</entry>
-<entry>dark green</entry>
+<entry>dark blue</entry>
 <entry>The regular commands are described <link linkend="commands">here</link>.</entry>
 </row>
 <row>
-<entry>execution controllers</entry>
+<entry>execution controlling commands</entry>
 <entry>black (bold)</entry>
-<entry>The special commands control execution, read more on them <link linkend="controlling-execution">here</link>.</entry>
+<entry>These special commands control execution, read more on them <link linkend="controlling-execution">here</link>.</entry>
 </row>
 <row>
 <entry>comments</entry>
-<entry>dark yellow</entry>
+<entry>gray</entry>
 <entry>Lines that are commented start with a comment characters (#). These lines are ignored when the code is executed. Comments allow the programmer to explain a bit about his code or can be used to temporarily prevent a certain piece of code from executing.</entry>
 </row>
 <row>
 <entry>brackets {, }</entry>
-<entry>light green (bold)</entry>
+<entry>dark green (bold)</entry>
 <entry>Brackets are used to group portions of code. Brackets are often used together with <link linkend="controlling-execution">execution controllers</link>.</entry>
 </row>
 <row>
@@ -77,29 +81,39 @@ penup
 <entry>The <link linkend="learn">learn</link> command is used to create new commands.</entry>
 </row>
 <row>
-<entry>numbers</entry>
-<entry>blue</entry>
-<entry>Numbers, well not much to say about them.</entry>
-</row>
-<row>
 <entry>strings</entry>
-<entry>dark red</entry>
+<entry>red</entry>
 <entry>Not much to say about (text) strings either, except that they always start and end with the double quotes (").</entry>
 </row>
 <row>
-<entry>mathematical characters</entry>
-<entry>grey</entry>
-<entry>These are the mathematical characters: +, -, *, /, (, and ). Read more about them <link linkend="math">here</link>.</entry>
+<entry>numbers</entry>
+<entry>dark red</entry>
+<entry>Numbers, well not much to say about them.</entry>
 </row>
 <row>
-<entry>questions characters</entry>
-<entry>blue (bold)</entry>
-<entry>Read more about questions <link linkend="questions">here</link>.</entry>
+<entry>boolean values</entry>
+<entry>dark red</entry>
+<entry>There are exactly two boolean values, namely: true and false.</entry>
 </row>
 <row>
-<entry>question glue-words</entry>
-<entry>pink</entry>
-<entry>Read more about the question glue-words (and, or, not) <link linkend="question-glue">here</link>.</entry>
+<entry>variables</entry>
+<entry>purple</entry>
+<entry>Start with a '$' and can contain numbers, strings or boolean values.</entry>
+</row>
+<row>
+<entry>mathematical operators</entry>
+<entry>gray</entry>
+<entry>These are the mathematical characters: <userinput>+</userinput>, <userinput>-</userinput>, <userinput>*</userinput>, <userinput>/</userinput> and <userinput>^</userinput>.</entry>
+</row>
+<row>
+<entry>comparison operators</entry>
+<entry>light blue (bold)</entry>
+<entry>These are the boolean operators: <userinput>==</userinput>, <userinput>!=</userinput>, <userinput>&lt;</userinput>, <userinput>&gt;</userinput>, <userinput>&lt;=</userinput> and <userinput>&gt;=</userinput>.</entry>
+</row>
+<row>
+<entry>boolean operators</entry>
+<entry>pink (bold)</entry>
+<entry>These are the boolean operators: <userinput>and</userinput>, <userinput>or</userinput> and <userinput>not</userinput>.</entry>
 </row>
 <row>
 <entry>regular text</entry>
@@ -115,7 +129,9 @@ penup
 <glossentry id="pixels">
 <glossterm>pixels</glossterm>
 <glossdef><para>A pixel is a dot on the screen. If you look very close you will see that the screen of your monitor uses pixels. All images on the screen are built with these pixels. A pixel is the smallest thing that can be drawn on the screen.</para>
-<para>A lot of commands need a number of pixels as input. These commands are: <userinput>forward</userinput>, <userinput>backward</userinput>, <userinput>go</userinput>, <userinput>gox</userinput>, <userinput>goy</userinput>, <userinput>canvassize</userinput> and <userinput>penwidth</userinput>.</para></glossdef>
+<para>A lot of commands need a number of pixels as input. These commands are: <userinput>forward</userinput>, <userinput>backward</userinput>, <userinput>go</userinput>, <userinput>gox</userinput>, <userinput>goy</userinput>, <userinput>canvassize</userinput> and <userinput>penwidth</userinput>.</para>
+<para>In early versions of &kturtle; the canvas was essentially a raster image, yet for recent versions the canvas is a vector drawing. This means that the canvas can be zoomed in and out, therefore a pixel does not necessarily has to translate to one dot on the screen.</para>
+</glossdef>
 </glossentry>
 
 <glossentry id="rgb">

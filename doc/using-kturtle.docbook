@@ -1,5 +1,9 @@
-<!--Dear translator: please NEVER translate the id or anything inside the tags as they are needed in english by the application
-     Thanks a lot in advance.-->
+<!--
+Dear translator, please NEVER translate the ids or any tag attributes
+as the context help feature expects them the way they are...
+Thanks a lot for your translation effort!
+-->
+
 <chapter id="using-kturtle">
 <title>Using &kturtle;</title>
 
@@ -15,63 +19,41 @@
   </mediaobject>
 </screenshot>
 
-<para>The main window of &kturtle; has three main parts: <link
-linkend="the-code-editor">the code editor</link> (3) on the left where you type
-the &turtlelang; commands, the <link linkend="the-inspector">inspector</link> (4)
-which gives you information about variables when the program runs, and <link
-linkend="the-canvas">the canvas</link> (5) on the right where the instructions
-are visualized. <link linkend="the-canvas">The canvas</link> is the turtle's
-playground: it is on the canvas that the turtle actually moves and draws. The
-four other places on the main window are: <link linkend="the-menubar">the menu
-bar</link> (1) from where all the actions can be reached, <link
-linkend="the-toolbar">the toolbar</link> (2) that allows you to quickly select
-the most used actions, the <guilabel>Console</guilabel>, that you can use to 
-enter a one line command to test it, and <link linkend="the-statusbar">the statusbar</link>
-(6) where you will find feedback on the state of &kturtle;.</para>
+<para>The main window of &kturtle; has three main parts: <link linkend="the-editor">the editor</link> (1) on the left where you type the &turtlescript; commands, the <link linkend="the-canvas">the canvas</link> (2) on the right where the turtle make your drawing, and the <link linkend="the-inspector">inspector</link> (3) which gives you information when your program executes. Besides these you find <link linkend="the-menubar">the menu bar</link> (5) from where all the actions can be reached, <link linkend="the-toolbar">the toolbar</link> (4) that allows you to quickly select the most used actions, the <guilabel>Console</guilabel>, that you can use to enter a one line command to test it, and <link linkend="the-statusbar">the statusbar</link> (along the bottom of the window) where you will find feedback on the state of &kturtle;.</para>
 
-<sect1 id="the-code-editor">
-<title>The Code Editor</title>
-<para>In the code editor you type the &turtlelang; commands. It has all of the features you would expect from a modern editor. Most of its features are found in the <link linkend="the-edit-menu">Edit</link> and the <link linkend="the-tools-menu">Tools</link> menus. The code editor can be docked on each border of the main window or it can be detached and placed anywhere on your desktop.</para>
-<para>
-You have several ways to get some code in the editor. The easiest way is to use an already-made example: choose <menuchoice><guimenu>File</guimenu><guisubmenu>Examples</guisubmenu>
-</menuchoice> in the <link linkend="the-file-menu">File menu</link> and select an example. The file example you choose will be opened in the <link linkend="the-code-editor">the code editor</link>, you can then use <menuchoice><guimenu>File</guimenu><guimenuitem>Run</guimenuitem>
-</menuchoice> to run the code if you like.</para>
-<para>You can open &turtlelang; files by choosing <menuchoice><guimenu>File</guimenu><guimenuitem>Open...</guimenuitem>
-</menuchoice>.</para>
-<para>The third way is to directly type your own code in the editor or to
-copy/paste some code from this user guide.
-</para>
-<para>
-The cursor position is indicated in <link
-linkend="the-statusbar">the statusbar</link>, on the right with the Line number
-and Column number.
-</para>
+<sect1 id="the-editor">
+<title>The Editor</title>
+<para>In the editor you type the &turtlescript; commands. Most of functions of the editor can be found in the <link linkend="the-file-menu">File</link> and <link linkend="the-edit-menu">Edit</link> menus. The editor can be docked on each border of the main window or it can be detached and placed anywhere on your desktop.</para>
+<para>You have several ways to get some code in the editor. The easiest way is to use an example: choose <menuchoice><guimenu>File</guimenu><guisubmenu>Examples</guisubmenu></menuchoice> in the <link linkend="the-file-menu">File menu</link> and select an example. The file example you choose will be opened in the <link linkend="the-editor">the editor</link>, you can then use <menuchoice><guimenu>Run</guimenu><guimenuitem>Run</guimenuitem></menuchoice> to run the code if you like.</para>
+<para>You can open &turtlescript; files by choosing <menuchoice><guimenu>File</guimenu><guimenuitem>Open...</guimenuitem></menuchoice>.</para>
+<para>The third way is to directly type your own code in the editor or to copy/paste some code.</para>
 </sect1>
 
-<sect1 id="the-inspector">
-<title>The Inspector</title>
-<para>
-The inspector informs you about the variables, the learned functions and the code tree while the program is running.
-</para>
-<para>The inspector can be docked on each border of the main window or it can be
-detached and placed anywhere on your desktop.</para>
-</sect1>
 
 <sect1 id="the-canvas">
 <title>The Canvas</title>
-<para>
-The canvas is the area where the commands are visualized, where the commands <quote>draw</quote> a picture. In other words, it is the turtle's playground. After getting some code in the <link linkend="the-code-editor">the code editor</link>, and executing it using <menuchoice><guimenu>File</guimenu><guimenuitem>Run</guimenuitem>
-</menuchoice>, two things can happen: either the code executes fine, and will you most likely see something change on the canvas; or you have made an error in your code and there will be a message telling you what error you made.</para>
-<para>This message should help you to resolve the error.</para>
+<para>The canvas is the domain of the turtle, here the turtle draws according to the commands it gets. After getting some code in the <link linkend="the-editor">Editor</link> and executing it, two things can happen: either the code executes fine, and will you most likely see something change on the canvas; or you have made an error in your code in that case the error tab will appear explaining you what mistake you made.</para>
 <para>You can zoom in and out the canvas with your mouse wheel.</para>
 </sect1>
 
+
+<sect1 id="the-inspector">
+<title>The Inspector</title>
+<para>The inspector informs you about the variables, the learned functions and show the code tree while the program is running.</para>
+<para>The inspector can be docked on each border of the main window or it can be detached and placed anywhere on your desktop.</para>
+</sect1>
+
+
+<sect1 id="the-toolbar">
+<title>The Toolbar</title>
+<para>Here you can quickly reach the most used actions. The Toolbar also contains the <guilabel>Console</guilabel> where you can quickly invoke commands, this might be useful in case you want to test a command without modifying the content of the <link linkend="the-editor">Editor</link>.</para>
+<para>You can configure the toolbar using <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Toolbars...</guimenuitem></menuchoice> to better fit your preferences.</para>
+</sect1>
+
+
 <sect1 id="the-menubar">
 <title>The Menubar</title>
-<para>In the menubar you find all the actions of &kturtle;. They are in the
-following groups: <guimenu>File</guimenu>, <guimenu>Edit</guimenu>,
-<guimenu>View</guimenu>, <guimenu>Tools</guimenu>, <guimenu>Settings</guimenu>,
-and <guimenu>Help</guimenu>. This section describes them all.</para>
+<para>In the menubar you find all the actions of &kturtle;. They are in the following groups: <guimenu>File</guimenu>, <guimenu>Edit</guimenu>, <guimenu>View</guimenu>, <guimenu>Tools</guimenu>, <guimenu>Settings</guimenu>, and <guimenu>Help</guimenu>. This section describes them all.</para>
 
 <sect2 id="the-file-menu">
 <title>The <guimenu>File</guimenu> Menu</title>
@@ -86,7 +68,7 @@ and <guimenu>Help</guimenu>. This section describes them all.</para>
         <guimenu>File</guimenu>
         <guimenuitem>New</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Creates a new, empty &turtlelang; file.</para></listitem>
+      <listitem><para>Creates a new, empty &turtlescript; file.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -99,7 +81,7 @@ and <guimenu>Help</guimenu>. This section describes them all.</para>
         <guimenu>File</guimenu>
         <guimenuitem>Open...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Opens a &turtlelang; file.</para></listitem>
+      <listitem><para>Opens a &turtlescript; file.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -109,7 +91,7 @@ and <guimenu>Help</guimenu>. This section describes them all.</para>
         <guimenu>File</guimenu>
         <guisubmenu>Open Recent</guisubmenu>
       </menuchoice></term>
-      <listitem><para>Opens a &turtlelang; file that has been opened recently.</para></listitem>
+      <listitem><para>Opens a &turtlescript; file that has been opened recently.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -119,11 +101,7 @@ and <guimenu>Help</guimenu>. This section describes them all.</para>
         <guimenu>File</guimenu>
         <guisubmenu>Examples</guisubmenu>
       </menuchoice></term>
-      <listitem><para>Open example &turtlelang; programs. The
-examples are in your favorite language that you can choose in 
-<menuchoice><guimenu>Settings</guimenu><guisubmenu>Script
-Language</guisubmenu>
-</menuchoice>.</para></listitem>
+      <listitem><para>Open example &turtlescript; programs. The examples are in your favorite language that you can choose in <menuchoice><guimenu>Settings</guimenu><guisubmenu>Script Language</guisubmenu></menuchoice>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -136,7 +114,7 @@ Language</guisubmenu>
         <guimenu>File</guimenu>
         <guimenuitem>Save</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Saves the currently opened &turtlelang; file.</para></listitem>
+      <listitem><para>Saves the currently opened &turtlescript; file.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -146,10 +124,10 @@ Language</guisubmenu>
         <guimenu>File</guimenu>
         <guimenuitem>Save As...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Saves the currently opened &turtlelang; file on a specified location.</para></listitem>
+      <listitem><para>Saves the currently opened &turtlescript; file on a specified location.</para></listitem>
     </varlistentry>
   </variablelist>
-  <variablelist>
+<!--  <variablelist>
     <anchor id="file-save-as-picture" />
     <varlistentry>
       <term><menuchoice>
@@ -159,62 +137,16 @@ Language</guisubmenu>
       <listitem><para>Save the current canvas as a picture.</para></listitem>
     </varlistentry>
   </variablelist>
+-->
+
   <variablelist>
-    <anchor id="file-execute" />
-    <varlistentry>
-      <term><menuchoice>
-        <shortcut>
-          <keycombo><keysym>F5</keysym></keycombo>
-        </shortcut>
-        <guimenu>File</guimenu>
-        <guimenuitem>Run</guimenuitem>
-      </menuchoice></term>
-      <listitem><para>Starts the execution of the commands in the code editor.</para></listitem>
-    </varlistentry>
-  </variablelist>
-  <variablelist>
-    <anchor id="file-pause" />
-    <varlistentry>
-      <term><menuchoice>
-        <shortcut>
-          <keycombo><keysym>F6</keysym></keycombo>
-        </shortcut>
-        <guimenu>File</guimenu>
-        <guimenuitem>Pause</guimenuitem>
-      </menuchoice></term>
-      <listitem><para>Pauses the execution. This action is only enabled when the commands are actually executing.</para></listitem>
-    </varlistentry>
-  </variablelist>
-  <variablelist>
-    <anchor id="file-stop" />
-    <varlistentry>
-      <term><menuchoice>
-        <shortcut>
-          <keycombo><keysym>F7</keysym></keycombo>
-        </shortcut>
-        <guimenu>File</guimenu>
-        <guimenuitem>Abort</guimenuitem>
-      </menuchoice></term>
-      <listitem><para>Stops the execution. This action is only enabled when the commands are actually executing.</para></listitem>
-    </varlistentry>
-  </variablelist>
-  <variablelist>
-    <anchor id="file-speed" />
+    <anchor id="file-export-to-html" />
     <varlistentry>
       <term><menuchoice>
         <guimenu>File</guimenu>
-        <guisubmenu>Run Speed</guisubmenu>
+        <guimenuitem>Export to HTML...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Present a list of possible execution speeds, consisting
-of: <guimenuitem>Full Speed</guimenuitem>, <guimenuitem>Slow</guimenuitem>, 
-<guimenuitem>Slower</guimenuitem>, <guimenuitem>Slowest</guimenuitem> and 
-<guimenuitem>Step-by-Step</guimenuitem>. When the execution
-speed is set to <guimenuitem>Full Speed</guimenuitem> (default) we can barely 
-keep up with what is happening. Sometimes this behavior is wanted, but sometimes 
-we want to keep track of the execution. In the latter case you want to set the execution speed
-to <guimenuitem>Slow</guimenuitem>, <guimenuitem>Slower</guimenuitem> or <guimenuitem>Slowest</guimenuitem>. 
-When one of the slow modes is selected the current position of the executor will be shown in the editor.
-<guimenuitem>Step-by-Step</guimenuitem> will execute one command at a time.</para></listitem>
+      <listitem><para>Exports the current content of the Editor as an HTML file that includes highlighting colors.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -283,7 +215,7 @@ When one of the slow modes is selected the current position of the executor will
         <guimenu>Edit</guimenu>
         <guimenuitem>Cut</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Cuts the selected text from the code editor to the clipboard.</para></listitem>
+      <listitem><para>Cuts the selected text from <link linkend="the-editor">the editor</link> to the clipboard.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -296,7 +228,7 @@ When one of the slow modes is selected the current position of the executor will
         <guimenu>Edit</guimenu>
         <guimenuitem>Copy</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Copies the selected text from the code editor to the clipboard.</para></listitem>
+      <listitem><para>Copies the selected text from <link linkend="the-editor">the editor</link> to the clipboard.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -309,7 +241,7 @@ When one of the slow modes is selected the current position of the executor will
         <guimenu>Edit</guimenu>
         <guimenuitem>Paste</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Pastes the text from the clipboard to the editor.</para></listitem>
+      <listitem><para>Pastes the text from the clipboard to <link linkend="the-editor">the editor</link>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -322,7 +254,7 @@ When one of the slow modes is selected the current position of the executor will
         <guimenu>Edit</guimenu>
         <guimenuitem>Select All</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Selects all the text from the editor.</para></listitem>
+      <listitem><para>Selects all the text from <link linkend="the-editor">the editor</link>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -348,7 +280,7 @@ When one of the slow modes is selected the current position of the executor will
         <guimenu>Edit</guimenu>
         <guimenuitem>Find Next</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Use this to find the next occurrence of the phrase.</para></listitem>
+      <listitem><para>Use this to find the next occurrence of the phrase you searched for.</para></listitem>
     </varlistentry>
   </variablelist>  
   <variablelist>
@@ -361,8 +293,7 @@ When one of the slow modes is selected the current position of the executor will
         <guimenu>Edit</guimenu>
         <guimenuitem>Find Previous</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Use this to find the previous occurrence of the
-phrase.</para></listitem>
+      <listitem><para>Use this to find the previous occurrence of the phrase you searched for.</para></listitem>
     </varlistentry>
   </variablelist>
   <!--<variablelist>
@@ -393,63 +324,95 @@ phrase.</para></listitem>
   </variablelist>
 </sect2>
 
-<sect2 id="the-view-menu">
-  <title>The <guimenu>View</guimenu> Menu</title>
+
+<sect2 id="the-canvas-menu">
+  <title>The <guimenu>Canvas</guimenu> Menu</title>
   <variablelist>
-    <anchor id="view-codeeditor" />
+    <anchor id="canvas-export-to-image" />
     <varlistentry>
       <term><menuchoice>
-        <shortcut>
-          <keycombo>&Ctrl;<keycap>E</keycap></keycombo>
-        </shortcut>
-        <guimenu>View</guimenu>
-        <guimenuitem>Show Editor</guimenuitem>
+        <guimenu>Canvas</guimenu>
+        <guimenuitem>Export to Image (PNG)...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Show or hide the Code Editor.</para>
-</listitem>
+      <listitem><para>Exports the current content of the <link linkend="the-canvas">Canvas</link> as a raster image of the PNG (Portable Network Graphics) type.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
-    <anchor id="view-inspector" />
+    <anchor id="canvas-export-to-drawing" />
     <varlistentry>
       <term><menuchoice>
-        <shortcut>
-          <keycombo>&Ctrl;<keycap>I</keycap></keycombo>
-        </shortcut>
-        <guimenu>View</guimenu>
-        <guimenuitem>Show Inspector</guimenuitem>
+        <guimenu>Canvas</guimenu>
+        <guimenuitem>Export to Drawing (SVG)...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Show or hide the Inspector.</para>
-</listitem>
+      <listitem><para>Exports the current content of the <link linkend="the-canvas">Canvas</link> as a vector drawing of the SVG (Scalable Vector Graphics) type.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
-    <anchor id="view-error" />
+    <anchor id="canvas-print" />
     <varlistentry>
       <term><menuchoice>
-        <guimenu>View</guimenu>
-        <guimenuitem>Show Errors</guimenuitem>
+        <guimenu>Canvas</guimenu>
+        <guimenuitem>Print Canvas...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Show or hide the <guilabel>Error</guilabel> tab with a list 
-       of errors resulting from running the code. If this option is enabled, click on 
-       <guilabel>Canvas</guilabel> to see the turtle again.</para>
-      </listitem>
-    </varlistentry>
-  </variablelist>
-  <variablelist>
-    <anchor id="view-linenumbers" />
-    <varlistentry>
-      <term><menuchoice>
-        <shortcut>
-          <keycombo><keysym>F11</keysym></keycombo>
-        </shortcut>
-        <guimenu>View</guimenu>
-        <guimenuitem>Show Line Numbers</guimenuitem>
-      </menuchoice></term>
-      <listitem><para>With this action you can show the line numbers in the code editor. This can be handy for finding errors.</para></listitem>
+      <listitem><para>Prints the current content of the <link linkend="the-canvas">Canvas</link>.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
+
+<sect2 id="the-run-menu">
+  <title>The <guimenu>Run</guimenu> Menu</title>
+  <variablelist>
+    <anchor id="run-execute" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo><keysym>F5</keysym></keycombo>
+        </shortcut>
+        <guimenu>Run</guimenu>
+        <guimenuitem>Run</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Starts the execution of the commands in the editor.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-pause" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo><keysym>F6</keysym></keycombo>
+        </shortcut>
+        <guimenu>Run</guimenu>
+        <guimenuitem>Pause</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Pauses the execution. This action is only enabled when the commands are actually executing.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-stop" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo><keysym>F7</keysym></keycombo>
+        </shortcut>
+        <guimenu>Run</guimenu>
+        <guimenuitem>Abort</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Stops the execution. This action is only enabled when the commands are actually executing.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-speed" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>Run</guimenu>
+        <guisubmenu>Run Speed</guisubmenu>
+      </menuchoice></term>
+      <listitem><para>Present a list of possible execution speeds, consisting of: <guimenuitem>Full Speed</guimenuitem>, <guimenuitem>Slow</guimenuitem>, <guimenuitem>Slower</guimenuitem>, <guimenuitem>Slowest</guimenuitem> and  <guimenuitem>Step-by-Step</guimenuitem>. When the execution speed is set to <guimenuitem>Full Speed</guimenuitem> (default) we can barely keep up with what is happening. Sometimes this behavior is wanted, but sometimes  we want to keep track of the execution. In the latter case you want to set the execution speed to <guimenuitem>Slow</guimenuitem>, <guimenuitem>Slower</guimenuitem> or <guimenuitem>Slowest</guimenuitem>. When one of the slow modes is selected the current position of the executor will be shown in the editor. <guimenuitem>Step-by-Step</guimenuitem> will execute one command at a time.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
 
 <sect2 id="the-tools-menu">
   <title>The <guimenu>Tools</guimenu> Menu</title>
@@ -477,35 +440,75 @@ phrase.</para></listitem>
 
 <sect2 id="the-setting-menu">
   <title>The <guimenu>Settings</guimenu> Menu</title>
-    <variablelist>
-    <anchor id="script-language" />
+  <variablelist>
+    <anchor id="settings-set-script-language" />
     <varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guisubmenu>Script Language</guisubmenu>
-</menuchoice></term>
-<listitem><para><action>Choose</action> the language for the code.</para></listitem>
-</varlistentry>
-  </variablelist>  
-<variablelist>
-    <anchor id="toggle-toolbar" />
+      <term><menuchoice><guimenu>Settings</guimenu><guisubmenu>Script Language</guisubmenu></menuchoice></term>
+      <listitem><para><action>Choose</action> the language for the code.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-editor" />
     <varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Show Toolbar</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Toggle</action> the Main Toolbar</para></listitem>
-</varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>E</keycap></keycombo>
+        </shortcut>
+        <guimenu>Settings</guimenu>
+        <guimenuitem>Show Editor</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Show or hide the <link linkend="the-editor">Editor</link>.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-inspector" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;<keycap>I</keycap></keycombo>
+        </shortcut>
+        <guimenu>Settings</guimenu>
+        <guimenuitem>Show Inspector</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Show or hide <link linkend="the-inspector">the inspector</link>.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-errors" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>Settings</guimenu>
+        <guimenuitem>Show Errors</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>Show or hide the <guilabel>Error</guilabel> tab with a list of errors resulting from running the code. If this option is enabled, click on <guilabel>Canvas</guilabel> to see the turtle again.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-linenumbers" />
+    <varlistentry>
+      <term><menuchoice>
+        <shortcut>
+          <keycombo><keysym>F11</keysym></keycombo>
+        </shortcut>
+        <guimenu>View</guimenu>
+        <guimenuitem>Show Line Numbers</guimenuitem>
+      </menuchoice></term>
+      <listitem><para>With this action you can show the line numbers in <link linkend="the-editor">the editor</link>. This can be handy for finding errors.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-toolbar" />
+    <varlistentry>
+      <term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show Toolbar</guimenuitem></menuchoice></term>
+      <listitem><para><action>Toggle</action> the Main Toolbar</para></listitem>
+    </varlistentry>
   </variablelist>  
   <variablelist>
-      <anchor id="toggle-statusbar" />
-   <varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Show Statusbar</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Toggle</action> the Statusbar</para></listitem>
-</varlistentry>
+    <anchor id="settings-toggle-statusbar" />
+    <varlistentry>
+      <term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show Statusbar</guimenuitem></menuchoice></term>
+      <listitem><para><action>Toggle</action> the Statusbar</para></listitem>
+    </varlistentry>
   </variablelist>
   <variablelist>
     <anchor id="settings-configure-shortcuts" />
@@ -524,7 +527,7 @@ phrase.</para></listitem>
         <guimenu>Settings</guimenu>
         <guimenuitem>Configure Toolbars...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Standard &kde; dialog to configure the toolbars.</para></listitem>
+      <listitem><para>The standard &kde; dialog for configuring the toolbars.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -532,7 +535,6 @@ phrase.</para></listitem>
 <sect2 id="the-help-menu">
   <title>The <guimenu>Help</guimenu> Menu</title>
   &help.menu.documentation;
-<!-- context help removed in kde4>
   <variablelist>
     <anchor id="help-context-help" />
     <varlistentry>
@@ -543,20 +545,14 @@ phrase.</para></listitem>
         <guimenu>Help</guimenu>
         <guimenuitem>Help on: ...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>This is a very useful function: it provides help on the code where the cursor in the code editor is at. So, &eg;, you have used the <userinput>print</userinput> command in your code, and you want to read and to know what the handbook says on this command. You just move your cursor so it is in the <userinput>print</userinput> command and you press <keysym>F2</keysym>. The handbook will then show all info on the <userinput>print</userinput> command.</para>
-      <para>This function is very important while learning programming.</para></listitem>
+      <listitem><para>This is a very useful function: it provides help on the code where the cursor in the editor is at. So, &eg;, you have used the <userinput>print</userinput> command in your code, and you want to read and to know what the handbook says on this command. You just move your cursor so it is in the <userinput>print</userinput> command and you press <keysym>F2</keysym>. The handbook will then show all info on the <userinput>print</userinput> command.</para>
+      <para>This function can prove to be useful while learning &turtlescript;.</para></listitem>
     </varlistentry>
   </variablelist>
-<-->
 </sect2>
 
 </sect1>
 
-<sect1 id="the-toolbar">
-<title>The Toolbar</title>
-<para>Here you can quickly reach the most used actions. By default, you will find here all main useful commands ending with the <guiicon>Run</guiicon>, <guiicon>Pause</guiicon> and <guiicon>Abort</guiicon> icons. The last item at the end of the toolbar is the <guilabel>Console</guilabel>, that you can use to enter a one line command and test it.</para>
-<para>You can configure the toolbar using <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Toolbars...</guimenuitem></menuchoice></para>
-</sect1>
 
 <sect1 id="the-statusbar">
 <title>The Statusbar</title>

@@ -1,5 +1,9 @@
-<!--Dear translator: please NEVER translate the id or anything inside the tags as they are needed in english by the application
-     Thanks a lot in advance.-->
+<!--
+Dear translator, please NEVER translate the ids or any tag attributes
+as the context help feature expects them the way they are...
+Thanks a lot for your translation effort!
+-->
+
 <chapter id="getting-started">
 <title>Getting Started</title>
 <para>When you start &kturtle; you will see something like this:
@@ -10,27 +14,27 @@
       <imagedata fileref="mainwindow.png" format="PNG"/>
     </imageobject>
     <textobject>
-      <phrase>&kturtle; Main window</phrase>
+      <phrase>&kturtle; on a fresh start</phrase>
     </textobject>
   </mediaobject>
 </screenshot>
-In this Getting Started guide we assume that the language of the &turtlelang; commands is English. You can change this language with <menuchoice><guimenu>Settings</guimenu><guisubmenu>Script Language</guisubmenu></menuchoice>. Be aware that the language you set here for &kturtle; is the one you use to type the &turtlelang; commands, not the language used by &kde; on your computer and used to display the &kturtle; interface and menus.</para>
+In this Getting Started guide we assume that the language of the &turtlescript; commands is English. You can change this language with <menuchoice><guimenu>Settings</guimenu><guisubmenu>Script Language</guisubmenu></menuchoice>. Be aware that the language you set here for &kturtle; is the one you use to type the &turtlescript; commands, not the language used by &kde; on your computer and used to display the &kturtle; interface and menus.</para>
 
 <sect1 id="first-steps">
-<title>First steps with &turtlelang;: meet the Turtle!</title>
-<para>You must have noticed the turtle in the middle of the canvas: you are just about to learn how to control it using commands in the code editor.</para>
+<title>First steps with &turtlescript;: meet the Turtle!</title>
+<para>You must have noticed the turtle in the middle of the canvas: you are just about to learn how to control it using commands in the editor.</para>
 
 <sect2 id="the-turtle-moves">
 <title>The Turtle Moves</title>
-<para>Let us start by getting the turtle moving. Our turtle can do 3 types of moves, (1) it can go forwards and backwards, (2) it can turn left and right and (3) it can go directly to a position on the screen. Try this for example:</para>
+<para>Let us start by getting the turtle moving. Our turtle can do 3 types of moves, (1) it can move forwards and backwards, (2) it can turn left and right and (3) it can go (jump) directly to a position on the screen. Try this for example:</para>
 <para>
 <screen>
 forward 100
 turnleft 90 
 </screen>
-Type or copy-paste the code to the code editor and execute it (using <link linkend="file-execute"><menuchoice><guimenu>File</guimenu><guimenuitem>Run</guimenuitem></menuchoice></link>) to see the result.</para>
+Type or copy-paste the code to the editor and execute it (using <link linkend="run-execute"><menuchoice><guimenu>File</guimenu><guimenuitem>Run</guimenuitem></menuchoice></link>) to see the result.</para>
 
-<para>When you typed and executed the commands like above in the code editor you might have noticed one or more of the following things:</para>
+<para>When you typed and executed the commands like above in the editor you might have noticed one or more of the following things:</para>
 <orderedlist>
 <listitem><para>That &mdash; after executing the commands &mdash; the turtle moves up, draws a line, and then turns a quarter turn to the left. This because you have used the <link linkend="forward"><userinput>forward</userinput></link> and the <link linkend="turnleft"><userinput>turnleft</userinput></link> commands.</para>
 </listitem>
@@ -41,11 +45,11 @@ Type or copy-paste the code to the code editor and execute it (using <link linke
 <para>That the turtle draws a thin black line.</para>
 </listitem>
 <listitem>
-<para>Maybe you got an error message. This could simply mean two things: you could have made a mistake while copying the commands, or you should still set the correct language for the &turtlelang; commands (you can do that by choosing <menuchoice><guimenu>Settings</guimenu><guisubmenu>Script Language</guisubmenu></menuchoice>).</para>
+<para>Maybe you got an error message. This could simply mean two things: you could have made a mistake while copying the commands, or you should still set the correct language for the &turtlescript; commands (you can do that by choosing <menuchoice><guimenu>Settings</guimenu><guisubmenu>Script Language</guisubmenu></menuchoice>).</para>
 </listitem>
 </orderedlist>
 
-<para>You will likely understand that <userinput>forward 100</userinput> commanded the turtle to move forward leaving a line, and that <userinput>turnleft 90</userinput> commanded the turtle to turn 90 <glossterm linkend="degrees">degrees</glossterm> to the left.</para>
+<para>You will likely understand that <userinput>forward 100</userinput> instructed the turtle to move forward leaving a line, and that <userinput>turnleft 90</userinput> instructed the turtle to turn 90 <glossterm linkend="degrees">degrees</glossterm> to the left.</para>
 
 <para>Please see the following links to the reference manual for a complete explanation of the new commands: <link linkend="forward"><userinput>forward</userinput></link>, <link linkend="backward"><userinput>backward</userinput></link>, <link linkend="turnleft"><userinput>turnleft</userinput></link>, and <link linkend="turnright"><userinput>turnright</userinput></link>.</para>
 </sect2>
@@ -76,9 +80,9 @@ turnleft 135
 forward 100
 turnleft 45
 
-go 40, 100
+go 40,100
 </screen>
-Again you can type or copy-paste the code to the code editor or open the <filename>arrow</filename> example in the <guimenu>Examples</guimenu> menu and execute it (using <link linkend="file-execute"><menuchoice><guimenu>File</guimenu><guimenuitem>Run</guimenuitem></menuchoice></link>) to see the result. In the next examples you are expected to know the drill.</para>
+Again you can type or copy-paste the code to the editor or open the <filename>arrow</filename> example in the <guimenu>Examples</guimenu> menu and execute it (using <link linkend="run-execute"><menuchoice><guimenu>File</guimenu><guimenuitem>Run</guimenuitem></menuchoice></link>) to see the result. In the next examples you are expected to know the drill.</para>
 
 <para>You might have noticed that this second example uses a lot more code. You have also seen a couple of new commands. Here a short explanation of all the new commands:</para>
 
