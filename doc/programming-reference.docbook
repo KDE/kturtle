@@ -144,7 +144,7 @@ if ($n &lt; 10) or ($n == 2) {
   print "hello"
 }
 </screen>
-In this piece of &turtlescript; the left side of the <userinput>or</userinput> is evaluating to 'true', the right side to 'false'. Since of of the two side of the <userinput>or</userinput> operator is 'true', the <userinput>or</userinput> operator evaluates 'true'. That means "hello" gets printed.</para>
+In this piece of &turtlescript; the left side of the <userinput>or</userinput> is evaluating to 'true', the right side to 'false'. Since of the two side of the <userinput>or</userinput> operator is 'true', the <userinput>or</userinput> operator evaluates 'true'. That means "hello" gets printed.</para>
 
 <para>And finally an example with <userinput>not</userinput> which changes 'true' into 'false' and 'false' into 'true'. Have a look:
 <screen>
@@ -164,7 +164,7 @@ if not ($n == 3) {
 <screen>
 $answer = 10 &gt; 3
 </screen>
-Here <userinput>10</userinput> is compared to <userinput>3</userinput> with the 'greater than' operator. The result of this comparison, the <link linkend="boolean-value">boolean values</link> <userinput>true</userinput> is stored in the <link linkend="assignment-of-variables">variable</link> <userinput>$answer</userinput>.</para>
+Here <userinput>10</userinput> is compared to <userinput>3</userinput> with the 'greater than' operator. The result of this comparison, the <link linkend="boolean-value">boolean value</link> <userinput>true</userinput> is stored in the <link linkend="assignment-of-variables">variable</link> <userinput>$answer</userinput>.</para>
 <para>All <link linkend="number">numbers</link> and <link linkend="assignment-of-variables">variables</link> (that contain numbers) can be compared to each other with comparing operators.</para>
 <para>
 Here are all possible comparing operators:
