@@ -97,12 +97,12 @@ penup
 <row>
 <entry>mathematical operators</entry>
 <entry>gray</entry>
-<entry>These are the mathematical characters: <userinput>+</userinput>, <userinput>-</userinput>, <userinput>*</userinput>, <userinput>/</userinput> and <userinput>^</userinput>.</entry>
+<entry>These are the mathematical operators: <userinput>+</userinput>, <userinput>-</userinput>, <userinput>*</userinput>, <userinput>/</userinput> and <userinput>^</userinput>.</entry>
 </row>
 <row>
 <entry>comparison operators</entry>
 <entry>light blue (bold)</entry>
-<entry>These are the boolean operators: <userinput>==</userinput>, <userinput>!=</userinput>, <userinput>&lt;</userinput>, <userinput>&gt;</userinput>, <userinput>&lt;=</userinput> and <userinput>&gt;=</userinput>.</entry>
+<entry>These are the comparison operators: <userinput>==</userinput>, <userinput>!=</userinput>, <userinput>&lt;</userinput>, <userinput>&gt;</userinput>, <userinput>&lt;=</userinput> and <userinput>&gt;=</userinput>.</entry>
 </row>
 <row>
 <entry>boolean operators</entry>

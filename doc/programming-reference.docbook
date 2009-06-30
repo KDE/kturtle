@@ -34,7 +34,7 @@ The first line describes the program. The second line is executed by &kturtle; a
 forward 100
 </screen>
 The first line is a <link linkend="comment">comment</link>. The second line contains the <userinput>forward</userinput> command and the <link linkend="number">number</link> <userinput>100</userinput>. The number is not part of command, it is considered 'input' for the command.</para>
-<para> For a detailed overview of all commands that &kturtle; supports go <link linkend="commands">here</link>. Build in commands are <glossterm>highlighted</glossterm> in dark blue</para>
+<para> For a detailed overview of all commands that &kturtle; supports go <link linkend="commands">here</link>. Built-in commands are <glossterm>highlighted</glossterm> in dark blue</para>
 </sect2>
 
 <sect2 id="number">
@@ -77,12 +77,12 @@ The <link linkend="assignment-of-variables">variable</link> <userinput>$answer</
 
 
 <sect1 id="operators">
-<title>Mathmatical, boolean and comparing operators</title>
+<title>Mathematical, boolean and comparing operators</title>
 <para>The title of this section might sound very difficult, yet it is not as difficult as it sound.</para>
 
 <sect2 id="mathematical-operators">
-<title>Mathmatical operators</title>
-<para>These are the basic math symbols known as: add (<userinput>+</userinput>), subtract (<userinput>-</userinput>), multiply (<userinput>*</userinput>), divide (<userinput>/</userinput>) and power <userinput>(</userinput>^<userinput>)</userinput>.</para>
+<title>Mathematical operators</title>
+<para>These are the basic math symbols known as: add (<userinput>+</userinput>), subtract (<userinput>-</userinput>), multiply (<userinput>*</userinput>), divide (<userinput>/</userinput>) and power (<userinput>^</userinput>).</para>
 
 <para>Here a small example of the mathematical operators you can use in &turtlescript;:
 <screen>
@@ -215,7 +215,7 @@ Please note that A and B have to be <link linkend="number">numbers</link> and <l
 
 <sect1 id="commands">
 <title>Commands</title>
-<para>Using commands you tell the turtle or &kturtle; to do something. Some commands need input, some give output. In this section we explain all the build-in commands of &kturtle;. Alternatively, using <link linkend="learn">learn</link>, you can create your own commands. Build in commands we discuss here are <glossterm>highlighted</glossterm> with dark blue.</para>
+<para>Using commands you tell the turtle or &kturtle; to do something. Some commands need input, some give output. In this section we explain all the built-in commands of &kturtle;. Alternatively, using <link linkend="learn">learn</link>, you can create your own commands. Built-in commands we discuss here are <glossterm>highlighted</glossterm> with dark blue.</para>
 
 <sect2 id="moving-the-turtle">
 <title>Moving the turtle</title>
@@ -449,7 +449,7 @@ print $author + " started the KTurtle project in " + $year + " and still enjoys 
 </sect2>
 
 <sect2 id="math-commands">
-<title>Mathmatical commands</title>
+<title>Mathematical commands</title>
 <para>The following commands are &kturtle;'s more advanced mathematical commands.</para>
   <variablelist>
     <anchor id="round" />
@@ -532,7 +532,7 @@ arcsin X
 arccos X
 arctan X
 </screen>
-      These commands are the invese functions of <link linkend="sin">sin</link>, <link linkend="cos">cos</link> and <link linkend="tan">tan</link>. The input argument of these commands, X, is a <link linkend="number">number</link>.</para></listitem>
+      These commands are the inverse functions of <link linkend="sin">sin</link>, <link linkend="cos">cos</link> and <link linkend="tan">tan</link>. The input argument of these commands, X, is a <link linkend="number">number</link>.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -607,7 +607,7 @@ backward 30
 # the next command prints "2004 plus 25 equals 2029"
 print $a + " plus " + $b + " equals " + ($a + $b)
 </screen>
-In the first two lines the variables <userinput>a</userinput> and <userinput>a</userinput> are set to 2004 and 25. Then in two <userinput>print</userinput> commands with a <userinput>backward 30</userinput> in between. The comments before the <userinput>print</userinput> commands explain what they are doing. As you see variables can be used just as if their where what they contain, you can use them with any kind of <link linkend="operators">operators</link> or give them as input when invoking <link linkend="commands">commands</link>.</para>
+In the first two lines the variables <userinput>a</userinput> and <userinput>b</userinput> are set to 2004 and 25. Then in two <userinput>print</userinput> commands with a <userinput>backward 30</userinput> in between. The comments before the <userinput>print</userinput> commands explain what they are doing. As you see variables can be used just as if their where what they contain, you can use them with any kind of <link linkend="operators">operators</link> or give them as input when invoking <link linkend="commands">commands</link>.</para>
 
 <para>One more example:
 <screen>
@@ -681,7 +681,7 @@ if $x &gt; 5 {
   print "$x is smaller than six!"
 }
 </screen>
-      The <link linkend="comparing-operators">comparing operator</link> the expression <userinput>$x &gt; 5</userinput> is evaluated. Since 4 is not greater than 5 the expression evaluates <quote>false</quote>. This means the code between the brackets after <userinput>else</userinput> gets executed.</para></listitem>
+      The <link linkend="comparing-operators">comparing operator</link> evaluates the expression <userinput>$x &gt; 5</userinput>. Since 4 is not greater than 5 the expression evaluates <quote>false</quote>. This means the code between the brackets after <userinput>else</userinput> gets executed.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -722,7 +722,7 @@ while $x &lt; 5 {
   <variablelist>
     <varlistentry>
       <term>for<indexterm><primary>for</primary></indexterm><indexterm><primary>step</primary></indexterm></term>
-      <listitem><para><screen>for <link linkend="assignment-of-variables">variable`</link> = <link linkend="number">number</link> to <link linkend="number">number</link> { ... }</screen>
+      <listitem><para><screen>for <link linkend="assignment-of-variables">variable</link> = <link linkend="number">number</link> to <link linkend="number">number</link> { ... }</screen>
       The <userinput>for</userinput> loop is a <quote>counting loop</quote>, &ie; it keeps count for you. The first number sets the variable to the value in the first loop. Every loop the number is increased until the second number is reached.
       <screen>
 for $x = 1 to 10 {
@@ -734,7 +734,7 @@ for $x = 1 to 10 {
      </para>
      <para>
      The default step size of a loop is 1, you can use an other value with
-     <screen>for <link linkend="assignment-of-variables">variable`</link> = <link linkend="number">number</link> to <link linkend="number">number</link> step <link linkend="number">number</link> { ... }</screen></para></listitem>
+     <screen>for <link linkend="assignment-of-variables">variable</link> = <link linkend="number">number</link> to <link linkend="number">number</link> step <link linkend="number">number</link> { ... }</screen></para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -840,7 +840,7 @@ learn faculty $x {
 
 print faculty 5
 </screen>
-In this example a new command called <userinput>faculty</userinput> is created. The if the input of this command is <userinput>5</userinput> then the output is <userinput>5*4*3*2*1</userinput>. By using <userinput>return</userinput> the <glossterm linkend="input-output">output</glossterm> value is specified and the execution is returned.</para>
+In this example a new command called <userinput>faculty</userinput> is created. If the input of this command is <userinput>5</userinput> then the output is <userinput>5*4*3*2*1</userinput>. By using <userinput>return</userinput> the <glossterm linkend="input-output">output</glossterm> value is specified and the execution is returned.</para>
 <para>Commands can have more than one <glossterm linkend="input-output">input</glossterm>. In the next example, a command that draws a rectangle is created:
 <screen>
 learn box $x, $u {
