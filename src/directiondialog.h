@@ -34,7 +34,7 @@ class QHBoxLayout;
 class QMouseEvent;
 class QPaintEvent;
 class QRadioButton;
-class QSpinBox;
+class KIntSpinBox;
 class KComboBox;
 
 class DirectionCanvas : public QWidget
@@ -88,8 +88,8 @@ class DirectionDialog : public KDialog
 		DirectionCanvas* canvas;
 
 		KComboBox* commandPicker;
-		QSpinBox* previousDirectionSpin;
-		QSpinBox* directionSpin;
+		KIntSpinBox* previousDirectionSpin;
+		KIntSpinBox* directionSpin;
 
 		KPushButton *copyButton;
 		KPushButton *pasteButton;

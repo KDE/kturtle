@@ -30,6 +30,7 @@ using std::atan;
 #include <kapplication.h>
 #include <kglobalsettings.h>
 #include <klocale.h>
+#include <KNumInput>
 
 #include <QClipboard>
 #include <QHBoxLayout>
@@ -39,7 +40,6 @@ using std::atan;
 #include <QPainter>
 #include <QPaintEvent>
 #include <QRadioButton>
-#include <QSpinBox>
 #include <QVBoxLayout>
 
 #include <KComboBox>
@@ -256,7 +256,7 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	previousDirectionLabel->setText(i18n("&Previous direction:"));
 	previousDirectionLabel->setScaledContents(true);
 	rightLayout->addWidget(previousDirectionLabel);
-	previousDirectionSpin = new QSpinBox(rightWidget);
+	previousDirectionSpin = new KIntSpinBox(rightWidget);
 	// Use -360 to 720 instead of 0 to 360
 	// If 0 to 360 is used, then wrap-around goes from 360 to 0 (which isn't really a step at all)
 	// Instead use larger range and then convert it into the 0 to 359 range whenever it is changed.
@@ -272,7 +272,7 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	QLabel* directionLabel = new QLabel(rightWidget);
 	directionLabel->setText(i18n("&New direction:"));
 	rightLayout->addWidget(directionLabel);
-	directionSpin = new QSpinBox(rightWidget);
+	directionSpin = new KIntSpinBox(rightWidget);
 	// Use -360 to 720 instead of 0 to 360
 	// If 0 to 360 is used, then wrap-around goes from 360 to 0 (which isn't really a step at all)
 	// Instead use larger range and then convert it into the 0 to 359 range whenever it is changed.
