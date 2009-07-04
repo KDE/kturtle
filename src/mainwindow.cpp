@@ -726,7 +726,7 @@ void MainWindow::updateOnCursorPositionChange()
 		int cat = cursorToken->category();
 		delete cursorToken;
 		cursorToken = 0;
-		QString layout = i18n("\"%1\" <%2>");
+		KLocalizedString layout = ki18n("\"%1\" <%2>");
 		switch (cat) {
 			// not showing the look (only the name):
 			case Token::VariableCategory:     updateContextHelpAction(i18n("<variable>"), "variable"); return;
@@ -738,27 +738,27 @@ void MainWindow::updateOnCursorPositionChange()
 			case Token::TrueFalseCategory:    updateContextHelpAction(look, "boolean");                return;
 			// showing the look and the name:
 			case Token::ScopeCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("scope")), "scope"); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("scope")).toString(), "scope"); return;
 			case Token::AssignmentCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("assignment")), "assignment"); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("assignment")).toString(), "assignment"); return;
 			case Token::ParenthesisCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("parenthesis")), "parenthesis"); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("parenthesis")).toString(), "parenthesis"); return;
 			case Token::MathOperatorCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("mathematical operator")), "math-operator"); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("mathematical operator")).toString(), "math-operator"); return;
 			case Token::ExpressionCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("expression")), "expression"); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("expression")).toString(), "expression"); return;
 			case Token::BooleanOperatorCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("boolean operator")), "boolean-operator"); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("boolean operator")).toString(), "boolean-operator"); return;
 			case Token::FunctionCallCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("learned command")), "learned-command"); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("learned command")).toString(), "learned-command"); return;
 			case Token::ArgumentSeparatorCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("argument separator")), "argument-separator"); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("argument separator")).toString(), "argument-separator"); return;
 			// showing the look and the name, and linking to the help through their default look (en_US):
 			case Token::CommandCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("command")), Translator::instance()->defaultLook(look));
+				updateContextHelpAction(layout.subs(look).subs(i18n("command")).toString(), Translator::instance()->defaultLook(look));
 				return;
 			case Token::ControllerCommandCategory:
-				updateContextHelpAction(layout.arg(look).arg(i18n("controller command")), Translator::instance()->defaultLook(look));
+				updateContextHelpAction(layout.subs(look).subs(i18n("controller command")).toString(), Translator::instance()->defaultLook(look));
 				return;
 		}
 	}

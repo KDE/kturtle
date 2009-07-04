@@ -88,7 +88,7 @@ void Console::showError(const QString& msg)
 {
 	comboBox->setStyleSheet("QComboBox:editable{background:" + ERROR_HIGHLIGHT_COLOR.name() + ";}");
 	comboBox->setFont(KGlobalSettings::fixedFont());
-	QString toolTipText(i18n("<p style='white-space:pre'><b>ERROR:</b> %1</p>").arg(msg));
+	QString toolTipText(i18n("<p style='white-space:pre'><b>ERROR:</b> %1</p>", msg));
 	comboBox->setToolTip(toolTipText);
 }
 
