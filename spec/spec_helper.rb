@@ -6,7 +6,7 @@ class Interpreter
   include Singleton
 
   def connect
-    @pid = ENV['KTURTLE_INTERPRETER_DBUS_PID']
+    @pid = ENV['KTURTLE_INTERPRETER_DBUS_PID'] || IO.readlines("pid")[0].to_i
     puts "Opening DBus connection with KTurtle (pid: #{@pid})..."
     @interpreter = RBus.session_bus.get_object("org.kde.kturtle-#{@pid}", '/Interpreter')
     @interpreter.interface!('org.kde.kturtle.Interpreter')
