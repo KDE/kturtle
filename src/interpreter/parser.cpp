@@ -561,10 +561,6 @@ TreeNode* Parser::parseIf() {
 	node->appendChild(parseExpression());
 	if (currentToken->type() == Token::ScopeOpen) {
 		node->appendChild(parseScopeOpen());  // if followed by a scope
-	} else {
-		node->appendChild(parseStatement());  // if followed by single statement
-		if (currentToken->type() == Token::Else)
-			node->appendChild(parseElse()); // parse else
 	}
 	return node;
 }
