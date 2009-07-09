@@ -363,10 +363,6 @@ new_item()
 	node->appendChild(parseExpression());
 	if (currentToken->type() == Token::ScopeOpen) {
 		node->appendChild(parseScopeOpen());  // if followed by a scope
-	} else {
-		node->appendChild(parseStatement());  // if followed by single statement
-		if (currentToken->type() == Token::Else)
-			node->appendChild(parseElse()); // parse else
 	}
 	return node;
 EOS
@@ -450,7 +446,7 @@ new_item()
 			return;
 		}
 	} else {
-		if(node->child(0)->value()->number()<=0) // handle 'repeat 0'
+		if(ROUND2INT(node->child(0)->value()->number())<=0) // handle 'repeat 0'
 			return;
 		
 		currentVariableTable()->insert(id, Value((double)(ROUND2INT(node->child(0)->value()->number()) - 1)));
