@@ -49,7 +49,7 @@ target_link_libraries (
     ${KDE4_KIO_LIBS}
 )
 
-install (TARGETS  kturtle          DESTINATION ${BIN_INSTALL_DIR})
+install (TARGETS  kturtle          ${INSTALL_TARGETS_DEFAULT_ARGS})
 install (FILES    kturtle.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR})
 install (FILES    kturtleui.rc     DESTINATION ${DATA_INSTALL_DIR}/kturtle)
 
