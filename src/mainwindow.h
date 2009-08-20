@@ -167,6 +167,7 @@ class MainWindow : public KXmlGuiWindow
 		KAction *runAct;
 		KAction *pauseAct;
 		KAction *abortAct;
+		KAction *executeConsoleAct;
 		KAction *quitAct;
 		KAction *contextHelpAct;
 		KAction *fullSpeedAct;
