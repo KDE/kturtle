@@ -413,11 +413,11 @@ void MainWindow::setupActions()
 	actionCollection()->addAction("console", console);
 	connect(console, SIGNAL(execute(const QString&)), this, SLOT(execute(const QString&)));
 
-	QAction *executeConsole = actionCollection()->addAction("execute_console");
-	executeConsole->setIcon(KIcon("go-jump-locationbar"));
-	executeConsole->setText(i18n("Execute"));
-	connect(executeConsole, SIGNAL(triggered()), console, SLOT(executeActionTriggered()));
-	executeConsole->setWhatsThis(i18n("Execute: Executes the current line in the console"));
+	executeConsoleAct = actionCollection()->addAction("execute_console");
+	executeConsoleAct->setIcon(KIcon("go-jump-locationbar"));
+	executeConsoleAct->setText(i18n("Execute"));
+	connect(executeConsoleAct, SIGNAL(triggered()), console, SLOT(executeActionTriggered()));
+	executeConsoleAct->setWhatsThis(i18n("Execute: Executes the current line in the console"));
 
 	// The run speed action group
 	QActionGroup* runSpeedGroup = new QActionGroup(this);
@@ -812,6 +812,7 @@ void MainWindow::run()
 	}
 	editor->disable();
 	console->disable();
+	executeConsoleAct->setEnabled(false);
 	toggleGuiFeedback(runSpeed != 0);
 
 	// start parsing (always in full speed)
@@ -927,6 +928,7 @@ void MainWindow::abort()
 
 	editor->enable();
 	console->enable();
+	executeConsoleAct->setEnabled(true);
 
 	if (interpreter->encounteredErrors()) {
 		errorDialog->setErrorList(interpreter->getErrorList());
