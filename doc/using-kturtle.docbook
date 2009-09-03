@@ -18,7 +18,7 @@
 <sect1 id="the-editor">
 <title>The Editor</title>
 <para>In the editor you type the &turtlescript; commands. Most of functions of the editor can be found in the <link linkend="the-file-menu">File</link> and <link linkend="the-edit-menu">Edit</link> menus. The editor can be docked on each border of the main window or it can be detached and placed anywhere on your desktop.</para>
-<para>You have several ways to get some code in the editor. The easiest way is to use an example: choose <menuchoice><guimenu>File</guimenu><guisubmenu>Examples</guisubmenu></menuchoice> in the <link linkend="the-file-menu">File menu</link> and select an example. The file example you choose will be opened in the <link linkend="the-editor">the editor</link>, you can then use <menuchoice><guimenu>Run</guimenu><guimenuitem>Run</guimenuitem></menuchoice> to run the code if you like.</para>
+<para>You have several ways to get some code in the editor. The easiest way is to use an example: choose <menuchoice><guimenu>File</guimenu><guisubmenu>Examples</guisubmenu></menuchoice> in the <link linkend="the-file-menu">File menu</link> and select an example. The file example you choose will be opened in the <link linkend="the-editor">the editor</link>, you can then use <menuchoice><guimenu>File</guimenu><guimenuitem>Run</guimenuitem></menuchoice> from the menubar or the <guibutton>Run</guibutton> from the toolbar to run the code if you like.</para>
 <para>You can open &turtlescript; files by choosing <menuchoice><guimenu>File</guimenu><guimenuitem>Open...</guimenuitem></menuchoice>.</para>
 <para>The third way is to directly type your own code in the editor or to copy/paste some code.</para>
 </sect1>
@@ -47,7 +47,7 @@
 
 <sect1 id="the-menubar">
 <title>The Menubar</title>
-<para>In the menubar you find all the actions of &kturtle;. They are in the following groups: <guimenu>File</guimenu>, <guimenu>Edit</guimenu>, <guimenu>View</guimenu>, <guimenu>Tools</guimenu>, <guimenu>Settings</guimenu>, and <guimenu>Help</guimenu>. This section describes them all.</para>
+<para>In the menubar you find all the actions of &kturtle;. They are in the following groups: <guimenu>File</guimenu>, <guimenu>Edit</guimenu>, <guimenu>Canvas</guimenu>, <guimenu>Run</guimenu>, <guimenu>Tools</guimenu>, <guimenu>Settings</guimenu>, and <guimenu>Help</guimenu>. This section describes them all.</para>
 
 <sect2 id="the-file-menu">
 <title>The <guimenu>File</guimenu> Menu</title>
