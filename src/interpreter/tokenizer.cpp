@@ -18,7 +18,7 @@
 */
 
 
-// #include <kdebug.h>
+#include <kdebug.h>
 
 #include "tokenizer.h"
 
@@ -92,18 +92,18 @@ Token* Tokenizer::getToken()
 		do {
 			look += c;
 			c = getChar();
-		} while (c.isLetter() || c.category() == QChar::Number_DecimalDigit || c == '_');
+		} while (isWordChar(c) || c.category() == QChar::Number_DecimalDigit || c == '_');
 		ungetChar();
 		return new Token(Token::Variable, look, startRow, startCol, row, col);
 	}
 
 	// catch words (known commands or function calls)
-	if (c.isLetter()) {  // first char has to be a letter
+	if (isWordChar(c)) {  // first char has to be a letter
 		QString look;
 		do {
 			look += c;
 			c = getChar();
-		} while (c.isLetter() || c.isDigit() || c == '_');  // next chars
+		} while (isWordChar(c) || c.isDigit() || c == '_');  // next chars
 		ungetChar();
 		int type = translator->look2type(look);
 		if (type == Token::Unknown)
@@ -166,7 +166,7 @@ QChar Tokenizer::getChar()
 	} else {
 		col++;
 	}
-// 	kDebug() << "Tokenizer::getChar() returns: " << c << " @ " << at - 1;
+// 	kDebug() << "Tokenizer::getChar() returns: " << c << " (" << c.category() << ") " << " @ " << at - 1;
 	return c;
 }
 
@@ -187,6 +187,15 @@ void Tokenizer::ungetChar()
 	}
 }
 
+
+bool Tokenizer::isWordChar(const QChar& c)
+{
+	// this method exists because some languages have non-letter category charaters
+	// mixed with their letter character to make words (like hindi)
+	// NOTE: this has to be extended then languages give problems,
+	//       just add a category in the following test
+	return (c.isLetter() || c.isMark());
+}
 
 bool Tokenizer::isBreak(const QChar& c)
 {

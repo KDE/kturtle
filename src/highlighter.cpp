@@ -81,16 +81,15 @@ QTextCharFormat* Highlighter::formatForStatement(const QString &text)
 Token* Highlighter::checkOrApplyHighlighting(const QString& text, int cursorIndex)
 {
 	tokenizer->initialize(text);
-
-	QTextCharFormat* format;
 	Token* token = tokenizer->getToken();
+	QTextCharFormat* format;
 	while (token->type() != Token::EndOfInput) {
 		format = tokenToFormat(token);
 		if (format != 0) {
-			if (cursorIndex == -1)
+			if (cursorIndex == -1)  // does not return, but keeps running
 				setFormat(token->startCol() - 1, token->endCol() - token->startCol(), *format);
 			else if (cursorIndex >= token->startCol() && cursorIndex <= token->endCol())
-				return token;
+				return token;  // returns, one shot only
 		}
 		delete token;
 		token = tokenizer->getToken();
