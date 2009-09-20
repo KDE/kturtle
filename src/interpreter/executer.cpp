@@ -427,8 +427,8 @@ void Executer::executeFunctionCall(TreeNode* node) {
 		addError(
 			i18n("The function '%1' was called with %2, while it should be called with %3",
 				node->token()->look(),
-				i18np("1 parameter", "%1 parameters", node->childCount()),
-				i18np("1 parameter", "%1 parameters", learnNode->child(1)->childCount())
+				i18ncp("The function '%1' was called with %2, while it should be called with %3", "1 parameter", "%1 parameters", node->childCount()),
+				i18ncp("The function '%1' was called with %2, while it should be called with %3", "1 parameter", "%1 parameters", learnNode->child(1)->childCount())
 			),
 			*node->token(), 0);
 		return;
