@@ -557,13 +557,13 @@ message "Cies started KTurtle in 2003 and still enjoys working on it!"
     <varlistentry> 
       <term>ask<indexterm><primary>ask</primary></indexterm></term>
       <listitem><para><screen>ask X</screen>
-      <userinput>ask</userinput> takes a <link linkend="string">string</link> as input. It shows a pop-up dialog containing the text from the string, just like the <link linkend="message">message</link>. But in addition to it also puts an input field on the dialog. Through this input filed the user can enter a <link linkend="number">number</link> or a <link linkend="string">string</link> which can be stored in a <link linkend="assignment-of-variables">variable</link> or passed as an argument to a <link linkend="commands">command</link>. For example:
+      <userinput>ask</userinput> takes a <link linkend="string">string</link> as input.  It shows this string in a pop-up dialog (similar to <link linkend="message">message</link>), along with an input field.  After the user has entered a <link linkend="number">number</link> or a <link linkend="string">string</link> into this, the result can be stored in a <link linkend="assignment-of-variables">variable</link> or passed as an argument to a <link linkend="commands">command</link>. For example:
 <screen>
-$in = ask "What is you age?"
+$in = ask "What is your year of birth?"
 $out = 2003 - $in
-print "In 2003 you where " + $out + " years old at some point."
+print "In 2003 you were " + $out + " years old at some point."
 </screen>
-      When a user cancels the input dialog, or does not enter anything at all the <link linkend="assignment-of-variables">variable</link> is emptied.</para></listitem>
+      If the user cancels the input dialog, or does not enter anything at all, the <link linkend="assignment-of-variables">variable</link> is empty.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
