@@ -806,7 +806,7 @@ void Executer::executeAssign(TreeNode* node) {
 void Executer::executeLearn(TreeNode* node) {
 //	kDebug() << "called";  // method name is appended by kDebug
 	if(functionTable.contains(node->child(0)->token()->look())) {
-		addError(i18n("The function '%1' is already defined!", node->child(0)->token()->look()), *node->token(), 0);
+		addError(i18n("The function '%1' is already defined.", node->child(0)->token()->look()), *node->token(), 0);
 		return;
 	}
 	functionTable.insert(node->child(0)->token()->look(), node);
