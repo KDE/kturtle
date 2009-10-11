@@ -981,17 +981,28 @@ void MainWindow::exportToPng()
 	// copied from edit code for file selection
 	KUrl url = KFileDialog::getSaveUrl(QString(), QString("*.png|%1\n*|%2").arg(i18n("PNG Images")).arg(i18n("All files")), this, i18n("Save as Picture"));
 	if (url.isEmpty())
-		return;
+    {
+        return;
+    }
 	if (KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this) &&
 	    KMessageBox::warningContinueCancel(this,
 			i18n("Are you sure you want to overwrite %1?", url.fileName()),
 			i18n("Overwrite Existing File"),KGuiItem(i18n("&Overwrite")),
 			KStandardGuiItem::cancel(), i18n("&Overwrite")) != KMessageBox::Continue)
+    {
 		return;
+    }
 	// get our image from the canvas
 	QImage pict = canvas->getPicture();
 	// save as png
-	pict.save(url.path(), "PNG");
+    if(url.isLocalFile())
+    {
+        pict.save(url.toLocalFile(), "PNG");
+    }
+    else
+    {
+        pict.save(url.path(), "PNG");
+    }
 }
 
 void MainWindow::exportToSvg()
