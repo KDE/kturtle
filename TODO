@@ -1,3 +1,11 @@
+
+see John Holloway in “Can we change the world without taking power?,” a debate with Alex Callinicos at the 2005 World social Forum. International Socialism Journal, 106, Spring 2005, p. 114.
+
+
+
+
+
+
  = KTurtle TODOs =
 
 Besides this document you can find TODO items in the code (try grepping for 'TODO'), in the BUGS file and on bugs.kde.org.
@@ -20,10 +28,10 @@ Besides this document you can find TODO items in the code (try grepping for 'TOD
  * fix failing unittests (division by zero, sqrt of a negtive)
  * maybe make some switch statement to flip between DEG and RAD
  * profile the whole thing... just curiosity -- how much time is spend in what functions
- * commanline invoke doesnt handle local files well (like: ../script.turtle)
+ * commandline invoke doesnt handle local files well (like: ../script.turtle)
+ * make state of more things available to the executer (add more get* commands, add some day/month/year commands)
 
  == canvas ==
- * make state of all things available to the executer (add more get* commands)
  * context menu (right click) for export and print
  * DON'T add wrapping functionality (not a ToDo, but a DontDo)
 
@@ -32,12 +40,20 @@ Besides this document you can find TODO items in the code (try grepping for 'TOD
  * disable save (not saveAs), or make it work properly for examples
  * save can be disabled after a code has been saved
 
+ == handbook ==
+ * maybe a section on parenthesis and/or scopes
+ * spellchecking
+
  == PR ==
  * make wikipedia page nicer (screenshots, etc.)
  * release a pre-release
  * maybe: team up with windows/osx team for a kturtle only installers
  * a page (wiki?) for childrens and teachers manual + translations + translators info [or docbook; KDE translated] (userbase??)
+ * get someone with some english writing/ marketing writing skills to write a small, medium and long intro to kturtle
+ * use these new writings in: handbook, main.cpp, kde-apps, wikipedia, edu.kde.org/kturtle
 
+ == website ==
+ * move all screenies to userbase
 
  == maybe someday's ==
  * refactor the generators ruby code
@@ -54,20 +70,3 @@ right now token types are used all over the place. this is not the right way bec
 currently this is not really a problem -- it works. yet it is not 'how it should be'.
 fixing this involved a big rewrite of the generator code, which result may be a major refactor of the interpreter.
 therefor this should not be started before a proper unittest framework is in place.
-
-
-
-tada:
- * add no-highlighting run mode (speed things up drastically)
- * F2 context help works now (still have to update the handbook pages)
- * antialiassing for export to PNG, like on Canvas itseelf
- * export to SVG added.. turtle not exported into the picture (have to wait for later Qt, or very ugly, or someones clever workaround)
- * row/col statusbar bug fixed
- * when looking at errors tab and running again switch back to canvas automatically
- * added html export for code
- * shuffled the menu items around a bit. new: Canvas and Run menus; moved View action sinto Settings
- * added printing of the canvas
- * replaced commandline execution mode with DBUS interface
- * added RSpec some initial unittests (in Ruby) that make use of the DBUS interface
- * made a syntax highlighting nicer (more style categories)
-
