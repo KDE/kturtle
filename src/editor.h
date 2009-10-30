@@ -164,6 +164,7 @@ class TextEdit : public QTextEdit
 	private:
 		QVector<QRect> coordsToRects(QRect coords) {
 			// this methods calcultate the viewport rectangles that cover a (multi-line) word or error
+            // after switching the tokenizer to use the QTextDocument we might optimize this methods
 			int startRow, startCol, endRow, endCol;
 			coords.getCoords(&startRow, &startCol, &endRow, &endCol);
 

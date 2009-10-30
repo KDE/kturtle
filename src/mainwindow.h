@@ -157,7 +157,7 @@ class MainWindow : public KXmlGuiWindow
 		QString currentLanguageCode;
 
 		QString contextHelpString;
-    QString contextHelpAnchor;
+        QString contextHelpAnchor;
 	
 		QMenu *examplesMenu;
 

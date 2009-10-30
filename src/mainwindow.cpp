@@ -980,34 +980,28 @@ void MainWindow::exportToPng()
 {
 	// copied from edit code for file selection
 	KUrl url = KFileDialog::getSaveUrl(QString(), QString("*.png|%1\n*|%2").arg(i18n("PNG Images")).arg(i18n("All files")), this, i18n("Save as Picture"));
-	if (url.isEmpty())
-    {
+    if (url.isEmpty())
         return;
-    }
 	if (KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this) &&
 	    KMessageBox::warningContinueCancel(this,
 			i18n("Are you sure you want to overwrite %1?", url.fileName()),
 			i18n("Overwrite Existing File"),KGuiItem(i18n("&Overwrite")),
-			KStandardGuiItem::cancel(), i18n("&Overwrite")) != KMessageBox::Continue)
-    {
+            KStandardGuiItem::cancel(), i18n("&Overwrite")) != KMessageBox::Continue) {
 		return;
     }
-	// get our image from the canvas
-	QImage pict = canvas->getPicture();
-	// save as png
-    if(url.isLocalFile())
-    {
+    // get our image from the canvas and save to png
+    QImage pict = canvas->getPicture();
+    if (url.isLocalFile()) {
         pict.save(url.toLocalFile(), "PNG");
-    }
-    else
-    {
+    } else {
         pict.save(url.path(), "PNG");
     }
 }
 
 void MainWindow::exportToSvg()
 {
-	// copied from edit code for file selection
+    // copied from edit code for file selection
+    // canvas->saveAsSvg() does not handle KUrl, so only local files are accepted
 	QString path = KFileDialog::getSaveFileName(QString(), QString("*.svg|%1\n*|%2").arg(i18n("Scalable Vector Graphics")).arg(i18n("All files")), this, i18n("Save as SVG"));
 	if (path.isEmpty())
 		return;
@@ -1022,7 +1016,8 @@ void MainWindow::exportToSvg()
 
 void MainWindow::exportToHtml()
 {
-	// copied from edit code for file selection
+    // copied from edit code for file selection
+    // we do not handle KUrl, so only local files are accepted
 	QString path = KFileDialog::getSaveFileName(QString(), QString("*.html|%1\n*|%2").arg(i18n("HTML documents")).arg(i18n("All files")), this, i18n("Save code as HTML"));
 	if (path.isEmpty())
 		return;
