@@ -170,7 +170,7 @@ void Inspector::updateVariable(const QString& name, const Value& value)
 	QTableWidgetItem* typeItem;
 	switch (value.type()) {
 		case Value::Empty: {
-			typeItem  = new QTableWidgetItem(QString("empty"));
+                        typeItem  = new QTableWidgetItem(i18nc("undefined type of a variable","empty"));
 			QFont font = typeItem->font();
 			font.setItalic(true);
 			typeItem->setFont(font);
