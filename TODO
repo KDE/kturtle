@@ -3,11 +3,8 @@
 
 - QTextDocument to replace QString in the tokenizer for full unicode support
 - DBUS interface for SVG
-- celeste: "what the hell?"
+- ask HIG/celeste about 'Switch application Language'
 - cmd language selection _only_ as commandline option
--
-
-
 
 
  = KTurtle TODOs =
