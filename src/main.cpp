@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
 	options.add("i");
 	options.add("input <URL or file>", ki18n("File or URL to open (in the GUI mode)"));
 	options.add("d");
-	options.add("dbus", ki18n("Starts KTurtle in DBus mode (without a GUI), good for automated unit test scripts"));
+	options.add("dbus", ki18n("Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test scripts"));
 	options.add("t");
 	options.add("test <file>", ki18n("Starts KTurtle in testing mode (without a GUI), directly runs the specified local file"));
 	options.add("l");
