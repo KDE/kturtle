@@ -114,10 +114,10 @@ $and_1_0 = true and false   # -> false
 $and_0_1 = false and true   # -> false
 $and_0_0 = false and false  # -> false
 
-$or_1_1 = true and true    # -> true
-$or_1_0 = true and false   # -> true
-$or_0_1 = false and true   # -> true
-$or_0_0 = false and false  # -> false
+$or_1_1 = true or true    # -> true
+$or_1_0 = true or false   # -> true
+$or_0_1 = false or true   # -> true
+$or_0_0 = false or false  # -> false
 
 $not_1 = not true   # -> false
 $not_0 = not false  # -> true
