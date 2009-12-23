@@ -843,7 +843,7 @@ print faculty 5
 In this example a new command called <userinput>faculty</userinput> is created. If the input of this command is <userinput>5</userinput> then the output is <userinput>5*4*3*2*1</userinput>. By using <userinput>return</userinput> the <glossterm linkend="input-output">output</glossterm> value is specified and the execution is returned.</para>
 <para>Commands can have more than one <glossterm linkend="input-output">input</glossterm>. In the next example, a command that draws a rectangle is created:
 <screen>
-learn box $x, $u {
+learn box $x, $y {
   forward $y
   turnright 90
   forward $x
