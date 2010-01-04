@@ -45,7 +45,7 @@ Canvas::Canvas(QWidget *parent) : QGraphicsView(parent)
 {
 	// create a new scene for this view
 	_scene = new QGraphicsScene(parent);
-	_scene->setItemIndexMethod(QGraphicsScene::NoIndex);
+	//_scene->setItemIndexMethod(QGraphicsScene::NoIndex);
 	//_scene->setSceneRect(-200, -200, 400, 400);  // (-50, -50, 50, 50);
 
 	setCacheMode(CacheBackground);
