@@ -102,7 +102,9 @@ print 2010-12
 print ( ( 20 - 5 ) * 2 / 30 ) + 1
 </screen>
 The expressions inside parentheses will be calculated first. In this example, 20-5 will be calculated, then multiplied by 2, divided by 30, and then 1 is added (giving 2). Parentheses can also be used in other cases.</para>
-<para>&kturtle; also has more advanced mathematical features in the form of commands. Have a look at the following commands but be aware that it concerns advanced operations: <link linkend="round">round</link>, <link linkend="random">random</link>, <link linkend="sqrt">sqrt</link>, <link linkend="exp">exp</link>, <link linkend="pi">pi</link>, <link linkend="sin">sin</link>, <link linkend="cos">cos</link>, <link linkend="tan">tan</link>, <link linkend="arcsin">arcsin</link>, <link linkend="arccos">arccos</link>, <link linkend="arctan">arctan</link>.</para>
+<para>&kturtle; also has more advanced mathematical features in the form of commands. Have a look at the following commands but be aware that it concerns advanced operations: <link linkend="round">round</link>, <link linkend="random">random</link>, <link linkend="sqrt">sqrt</link>
+<!--, <link linkend="exp">exp</link> -->
+, <link linkend="pi">pi</link>, <link linkend="sin">sin</link>, <link linkend="cos">cos</link>, <link linkend="tan">tan</link>, <link linkend="arcsin">arcsin</link>, <link linkend="arccos">arccos</link>, <link linkend="arctan">arctan</link>.</para>
 </sect2>
 
 <sect2 id="boolean-operators">
@@ -489,6 +491,7 @@ repeat 500 {
       The <userinput>sqrt</userinput> command is sued to find the square root of a number, X.</para></listitem>
     </varlistentry>
   </variablelist>
+<!--
   <variablelist>
     <anchor id="exp" />
     <varlistentry> 
@@ -497,6 +500,7 @@ repeat 500 {
       </para></listitem>
     </varlistentry>
   </variablelist>
+-->
   <variablelist>
     <anchor id="pi" />
     <varlistentry> 
