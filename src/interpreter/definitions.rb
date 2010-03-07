@@ -187,8 +187,8 @@ EOS
 		addError(
 			i18n("The function '%1' was called with %2, while it should be called with %3",
 				node->token()->look(),
-				i18np("1 parameter", "%1 parameters", node->childCount()),
-				i18np("1 parameter", "%1 parameters", learnNode->child(1)->childCount())
+				i18ncp("The function '%1' was called with %2, while it should be called with %3", "1 parameter", "%1 parameters", node->childCount()),
+				i18ncp("The function '%1' was called with %2, while it should be called with %3", "1 parameter", "%1 parameters", learnNode->child(1)->childCount())
 			),
 			*node->token(), 0);
 		return;
@@ -1021,7 +1021,7 @@ EOS
 @e_def =
 <<EOS
 	if(functionTable.contains(node->child(0)->token()->look())) {
-		addError(i18n("The function '%1' is already defined!", node->child(0)->token()->look()), *node->token(), 0);
+		addError(i18n("The function '%1' is already defined.", node->child(0)->token()->look()), *node->token(), 0);
 		return;
 	}
 	functionTable.insert(node->child(0)->token()->look(), node);
