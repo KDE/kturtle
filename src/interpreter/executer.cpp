@@ -23,6 +23,7 @@
 
 #include "executer.h"
 
+#include <errno.h>
 #include <math.h>
 #include <unistd.h>  // for usleep();
 
@@ -779,6 +780,16 @@ void Executer::executePower(TreeNode* node) {
 	}
 	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
 		node->value()->setNumber(pow(node->child(0)->value()->number(), node->child(1)->value()->number()));
+		
+		double result = pow(node->child(0)->value()->number(), node->child(1)->value()->number());
+
+		int error = errno;
+		if(error==ERANGE) {
+			node->value()->setNumber(0);
+			addError(i18n("The result of an exponentiation was too large"), *node->token(), 0);
+		}else{
+			node->value()->setNumber(result);
+		}
 	} else {
 		if (node->child(0)->value()->type() != Value::Number)
 			addError(i18n("You tried to raise a non-number to a power, '%1'", node->child(0)->token()->look()), *node->token(), 0);
