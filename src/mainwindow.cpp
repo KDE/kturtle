@@ -86,6 +86,8 @@ MainWindow::MainWindow()
 	// after all is set up:
 	readConfig();
 	updateLanguagesMenu();
+	
+	currentlyRunningConsole = false;
 }
 
 MainWindow::~MainWindow()
@@ -842,10 +844,14 @@ QString MainWindow::execute(const QString &operation)
 	pauseAct->setEnabled(false);
 	abortAct->setEnabled(false);
 
+	currentlyRunningConsole = true;
+
 	while (!(interpreter->state() == Interpreter::Finished ||
 	         interpreter->state() == Interpreter::Aborted)) {
 		interpreter->interpret();
 	}
+	
+	currentlyRunningConsole = false;
 
 	runAct->setEnabled(true);
 	pauseAct->setEnabled(false);
@@ -1043,14 +1049,17 @@ void MainWindow::slotInputDialog(QString& value)
 {
 	iterationTimer->stop();
 	value = KInputDialog::getText(i18n("Input"), value);
-	run();
+	
+	if(!currentlyRunningConsole)
+		run();
 }
 
 void MainWindow::slotMessageDialog(const QString& text)
 {
 	iterationTimer->stop();
 	KMessageBox::information(this, text, i18n("Message"));
-	run();
+	if(!currentlyRunningConsole)
+		run();
 }
 
 #include "mainwindow.moc"

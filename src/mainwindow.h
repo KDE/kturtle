@@ -153,6 +153,7 @@ class MainWindow : public KXmlGuiWindow
 		LocalDockWidget *inspectorDock;
 		QTimer          *iterationTimer;
 		int              runSpeed;
+		bool             currentlyRunningConsole;
 
 		QString currentLanguageCode;
 
