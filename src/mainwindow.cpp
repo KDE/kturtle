@@ -433,11 +433,11 @@ void MainWindow::setupActions()
 	runSpeedActionMenu->setWhatsThis(i18n("Run: Execute the program, or use the drop down menu to select the run speed"));
 	connect(runSpeedActionMenu, SIGNAL(triggered (QAction*)), this, SLOT(run()));
 
-	dedicatedSpeedAct = new KAction(i18nc("@option:radio", "Full Speed (&no highlighting)"), this);
+	dedicatedSpeedAct = new KAction(i18nc("@option:radio", "Full Speed (&no highlighting and inspector)"), this);
 	actionCollection()->addAction("dedicated_speed", dedicatedSpeedAct);
 	dedicatedSpeedAct->setCheckable(true);
-	dedicatedSpeedAct->setStatusTip(i18n("Run the program at full speed, with highlighting disabled"));
-	dedicatedSpeedAct->setWhatsThis(i18n("Full Speed: Run the program at full speed, with highlighting disabled"));
+	dedicatedSpeedAct->setStatusTip(i18n("Run the program at full speed, with highlighting and inspector disabled"));
+	dedicatedSpeedAct->setWhatsThis(i18n("Full Speed: Run the program at full speed, with highlighting and inspector disabled"));
 	connect(dedicatedSpeedAct, SIGNAL(triggered()), this, SLOT(setDedicatedSpeed()));
 	runSpeedGroup->addAction(dedicatedSpeedAct);
 	runSpeedActionMenu->addAction(dedicatedSpeedAct);
@@ -588,17 +588,13 @@ void MainWindow::setupInterpreter()
 	interpreter = new Interpreter(this, false);
 	connect(interpreter, SIGNAL(finished()), this, SLOT(abort()));
 	Executer* executer = interpreter->getExecuter();
-	connect(executer, SIGNAL(currentlyExecuting(TreeNode*)), editor, SLOT(markCurrentWord(TreeNode*)));
-	connect(executer, SIGNAL(currentlyExecuting(TreeNode*)), inspector, SLOT(markTreeNode(TreeNode*)));
 
 	// the code to connect the executer with the canvas is auto generated:
 #include "interpreter/gui_connect.inc"
-	connect(executer, SIGNAL(variableTableUpdated(const QString&, const Value&)),
-		inspector, SLOT(updateVariable(const QString&, const Value&)));
-	connect(executer, SIGNAL(functionTableUpdated(const QString&, const QStringList&)),
-		inspector, SLOT(updateFunction(const QString&, const QStringList&)));
 	connect(interpreter, SIGNAL(treeUpdated(TreeNode*)),
 		inspector, SLOT(updateTree(TreeNode*)));
+
+	toggleGuiFeedback(true);
 }
 
 void MainWindow::toggleGuiFeedback(bool b)
@@ -607,9 +603,19 @@ void MainWindow::toggleGuiFeedback(bool b)
 	if (b) {
 		connect(executer, SIGNAL(currentlyExecuting(TreeNode*)), editor, SLOT(markCurrentWord(TreeNode*)));
 		connect(executer, SIGNAL(currentlyExecuting(TreeNode*)), inspector, SLOT(markTreeNode(TreeNode*)));
+			
+		connect(executer, SIGNAL(variableTableUpdated(const QString&, const Value&)),
+			inspector, SLOT(updateVariable(const QString&, const Value&)));
+		connect(executer, SIGNAL(functionTableUpdated(const QString&, const QStringList&)),
+			inspector, SLOT(updateFunction(const QString&, const QStringList&)));
 	} else {
 		disconnect(executer, SIGNAL(currentlyExecuting(TreeNode*)), editor, SLOT(markCurrentWord(TreeNode*)));
 		disconnect(executer, SIGNAL(currentlyExecuting(TreeNode*)), inspector, SLOT(markTreeNode(TreeNode*)));
+		
+		disconnect(executer, SIGNAL(variableTableUpdated(const QString&, const Value&)),
+			inspector, SLOT(updateVariable(const QString&, const Value&)));
+		disconnect(executer, SIGNAL(functionTableUpdated(const QString&, const QStringList&)),
+			inspector, SLOT(updateFunction(const QString&, const QStringList&)));
 		editor->removeMarkings();
 	}
 }
