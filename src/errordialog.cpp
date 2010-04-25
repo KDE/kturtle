@@ -70,7 +70,6 @@ ErrorDialog::ErrorDialog(QWidget* parent)
 	baseLayout->addWidget(errorTable);
 
 	clear();
-	show();
 }
 
 

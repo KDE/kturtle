@@ -52,7 +52,7 @@ class QMenu;
 // extends the QDockWidget with an extra signal
 class LocalDockWidget : public QDockWidget { Q_OBJECT
 	public:
-		LocalDockWidget(const QString& title, QWidget* parent) { setWindowTitle(title); setParent(parent); }
+		LocalDockWidget(const QString& title, QWidget* parent) : QDockWidget(parent) { setWindowTitle(title); }
 		void setVisible(bool b) { QDockWidget::setVisible(b); emit visibilityChanged(b); }
 		void show() { QDockWidget::show(); emit visibilityChanged(true); }
 		void hide() { QDockWidget::hide(); emit visibilityChanged(false); }

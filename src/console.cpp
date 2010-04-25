@@ -36,6 +36,7 @@ Console::Console(QWidget* parent)
 {
 	baseWidget = new QWidget(parent);
 	QHBoxLayout* baseLayout = new QHBoxLayout();
+        baseLayout->setMargin(0);
 	baseWidget->setLayout(baseLayout);
 
 	comboBox = new KComboBox(true, baseWidget);

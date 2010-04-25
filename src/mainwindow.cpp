@@ -506,6 +506,7 @@ void MainWindow::setupCanvas()
 	canvas->setRenderHint(QPainter::Antialiasing);
 	canvas->setWhatsThis(i18n("Canvas: This is where the turtle moves and draws when the program is running"));
 	canvasLayout->addWidget(canvas);
+        canvasLayout->setMargin(0);
 	canvasTabWidget->insertTab(0, canvasTab, i18n("&Canvas"));
 
 	QWidget* errorTab = new QWidget();
