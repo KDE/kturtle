@@ -20,7 +20,7 @@ Specific features of KTurtle:
  * and everything in one program (instead of separate: debugger, documentation, IDE, interpreter, etc.)
 
 
- == Why not implement LOGO? ==
+ == Why do you not implement LOGO? ==
 
 KTurtle started off with a syntax that was more close to LOGO. Many complaints arose claiming KTurtle was not LOGO enough (doing things different, missing features, or just not being 100% compliant). While there is no such thing as a LOGO standard, most refered to UCB-LOGO as the defacto standard.
 
