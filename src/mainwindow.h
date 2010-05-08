@@ -77,6 +77,8 @@ class MainWindow : public KXmlGuiWindow
 		void addToRecentFilesList(const KUrl&);
 		void showErrorDialog(bool show = false);
 		void openExample();
+		void getNewExampleDialog();
+		void openDownloadedExample();
 		void filePrintDialog();
 		void canvasPrintDialog();
 		void exportToPng();

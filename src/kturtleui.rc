@@ -11,6 +11,7 @@
     <Menu name="examples"><text>&amp;Examples</text>
       <ActionList name="examples_actionlist" />
     </Menu>
+    <Action name="get_new_examples" />
     <Separator />
     <Action name="file_save" />
     <Action name="file_save_as" />

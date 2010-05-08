@@ -47,9 +47,11 @@ target_link_libraries (
     ${QT_QTGUI_LIBRARY}
     ${QT_QTXML_LIBRARY}
     ${KDE4_KIO_LIBS}
+    ${KDE4_KNEWSTUFF3_LIBS}
 )
 
 install (TARGETS  kturtle          ${INSTALL_TARGETS_DEFAULT_ARGS})
 install (FILES    kturtle.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR})
 install (FILES    kturtleui.rc     DESTINATION ${DATA_INSTALL_DIR}/kturtle)
+install (FILES    kturtle.knsrc    DESTINATION ${CONFIG_INSTALL_DIR}) 
 

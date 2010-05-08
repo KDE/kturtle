@@ -49,12 +49,15 @@
 #include <ksavefile.h>
 #include <kio/netaccess.h>
 #include <KTabWidget>
+#include <knewstuff3/downloaddialog.h>
+#include <kstandarddirs.h>
 
 #include "interpreter/errormsg.h"
 #include "interpreter/translator.h"
 
 
 static const int MARGIN_SIZE = 3;  // defaultly styled margins look shitty
+static const char* GHNS_TARGET = "kturtle/examples/*.turtle";
 
 MainWindow::MainWindow()
 {
@@ -202,6 +205,11 @@ void MainWindow::setupActions()
 	recentFilesAction = (KRecentFilesAction*)actionCollection()->addAction(KStandardAction::OpenRecent,  "file_recent", editor, SLOT(openFile(const KUrl&)));
 	recentFilesAction->setStatusTip(i18n("Open a recently used file"));
 	recentFilesAction->setWhatsThis(i18n("Open Recent File: Open a recently used file"));
+	
+	a = new KAction(KIcon("get-hot-new-stuff"), i18n("Get more examples..."), this);
+	actionCollection()->addAction("get_new_examples", a);
+	a->setText(i18n("Get more examples..."));
+	connect(a, SIGNAL(triggered()), this, SLOT(getNewExampleDialog()));
 
 	a = actionCollection()->addAction(KStandardAction::Save,  "file_save", editor, SLOT(saveFile()));
 	a->setStatusTip(i18n("Save the current file to disk"));
@@ -694,6 +702,26 @@ void MainWindow::updateExamplesMenu()
 		connect (newExample, SIGNAL(triggered()), this, SLOT(openExample()));
 		exampleList.append (newExample);
 	}
+
+	QStringList allExamples = KGlobal::dirs()->findAllResources("data", GHNS_TARGET, KStandardDirs::NoDuplicates);
+
+	if(allExamples.size()>0) {
+		newExample = new KAction(this);
+		newExample->setSeparator(true);
+		exampleGroup->addAction(newExample);
+		exampleList.append(newExample);
+	}
+
+	foreach(const QString& exampleFilename, allExamples) {
+		QFileInfo fileInfo(exampleFilename);
+		newExample = new KAction (fileInfo.baseName(), this);
+		newExample->setData(exampleFilename);
+		exampleGroup->addAction (newExample);
+		exampleList.append (newExample);
+			
+		connect(newExample, SIGNAL(triggered()), this, SLOT(openDownloadedExample()));
+	}
+
 	unplugActionList ("examples_actionlist");
 	plugActionList   ("examples_actionlist", exampleList);
 }
@@ -708,6 +736,15 @@ void MainWindow::openExample()
 	QAction* action = qobject_cast<QAction*>(sender());
 	QString exampleName = action->data().toString();
 	editor->openExample(Translator::instance()->example(exampleName), exampleName);
+}
+
+void MainWindow::openDownloadedExample()
+{
+	QAction* action = qobject_cast<QAction*>(sender());
+	QString exampleFilename = action->data().toString();
+	editor->openFile(KUrl(exampleFilename));
+	QFileInfo fileInfo(exampleFilename);
+	editor->setCurrentUrl(fileInfo.baseName());
 }
 
 void MainWindow::toggleOverwriteMode(bool b)
@@ -1067,6 +1104,13 @@ void MainWindow::slotMessageDialog(const QString& text)
 	KMessageBox::information(this, text, i18n("Message"));
 	if(!currentlyRunningConsole)
 		run();
+}
+
+void MainWindow::getNewExampleDialog()
+{
+	KNS3::DownloadDialog dialog(this);
+	dialog.exec();
+	updateExamplesMenu();
 }
 
 #include "mainwindow.moc"
