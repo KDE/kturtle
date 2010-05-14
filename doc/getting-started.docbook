@@ -26,7 +26,7 @@ In this Getting Started guide we assume that the language of the &turtlescript; 
 forward 100
 turnleft 90 
 </screen>
-Type or copy-paste the code to the editor and execute it (using <link linkend="run-execute"><menuchoice><guimenu>File</guimenu><guimenuitem>Run</guimenuitem></menuchoice></link>) to see the result.</para>
+Type or copy-paste the code to the editor and execute it (using <link linkend="run-execute"><menuchoice><guimenu>Run</guimenu><guimenuitem>Run</guimenuitem></menuchoice></link>) to see the result.</para>
 
 <para>When you typed and executed the commands like above in the editor you might have noticed one or more of the following things:</para>
 <orderedlist>
@@ -76,7 +76,7 @@ turnleft 45
 
 go 40,100
 </screen>
-Again you can type or copy-paste the code to the editor or open the <filename>arrow</filename> example in the <guimenu>Examples</guimenu> menu and execute it (using <link linkend="run-execute"><menuchoice><guimenu>File</guimenu><guimenuitem>Run</guimenuitem></menuchoice></link>) to see the result. In the next examples you are expected to know the drill.</para>
+Again you can type or copy-paste the code to the editor or open the <filename>arrow</filename> example in the <guimenu>Examples</guimenu> menu and execute it (using <link linkend="run-execute"><menuchoice><guimenu>Run</guimenu><guimenuitem>Run</guimenuitem></menuchoice></link>) to see the result. In the next examples you are expected to know the drill.</para>
 
 <para>You might have noticed that this second example uses a lot more code. You have also seen a couple of new commands. Here a short explanation of all the new commands:</para>
 
