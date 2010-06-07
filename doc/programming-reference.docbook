@@ -146,7 +146,7 @@ if ($n &lt; 10) or ($n == 2) {
   print "hello"
 }
 </screen>
-In this piece of &turtlescript; the left side of the <userinput>or</userinput> is evaluating to 'true', the right side to 'false'. Since of the two side of the <userinput>or</userinput> operator is 'true', the <userinput>or</userinput> operator evaluates 'true'. That means "hello" gets printed.</para>
+In this piece of &turtlescript; the left side of the <userinput>or</userinput> is evaluating to 'true', the right side to 'false'. Since one of the two sides of the <userinput>or</userinput> operator is 'true', the <userinput>or</userinput> operator evaluates 'true'. That means "hello" gets printed.</para>
 
 <para>And finally an example with <userinput>not</userinput> which changes 'true' into 'false' and 'false' into 'true'. Have a look:
 <screen>
