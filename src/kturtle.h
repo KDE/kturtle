@@ -24,7 +24,7 @@
 #endif
 
 
-#include <qgroupbox.h>
+#include <tqgroupbox.h>
 
 #include <kcombobox.h>
 #include <klineedit.h>
@@ -70,11 +70,11 @@ class MainWindow : public KParts::MainWindow
 		void slotPauseExecution();
 		void slotAbortExecution();
 		void slotChangeSpeed();
-		void slotInputDialog(QString& value);
-		void slotMessageDialog(QString text);
+		void slotInputDialog(TQString& value);
+		void slotMessageDialog(TQString text);
 		
 		void slotEditor();
-		void slotSetHighlightstyle(QString langCode);  
+		void slotSetHighlightstyle(TQString langCode);  
 		void slotUndo();
 		void slotRedo();
 		void slotCut();
@@ -87,7 +87,7 @@ class MainWindow : public KParts::MainWindow
 		void slotFindPrevious();
 		void slotReplace();
 		void slotToggleInsert();
-		void slotInsertText(QString);
+		void slotInsertText(TQString);
 		void slotToggleLineNumbers();
 		void slotIndent();
 		void slotUnIndent();
@@ -104,7 +104,7 @@ class MainWindow : public KParts::MainWindow
 		void slotContextHelp();
 		void slotContextHelpUpdate();
 		
-		void slotStatusBar(QString text, int place);
+		void slotStatusBar(TQString text, int place);
 		void slotCursorStatusBar();
 		
 		void slotToggleFullscreen();
@@ -130,12 +130,12 @@ class MainWindow : public KParts::MainWindow
 		void readConfig(KConfig *config);
 		
 		void updateFullScreen();
-		virtual bool event(QEvent* e);
+		virtual bool event(TQEvent* e);
 		
 		Canvas              *canvasView;
-		QWidget             *baseWidget;
-		QGridLayout         *baseLayout;
-		QDockWindow         *editorDock;
+		TQWidget             *baseWidget;
+		TQGridLayout         *baseLayout;
+		TQDockWindow         *editorDock;
 		Executer            *exe;
 		ErrorMessage        *errMsg;
 		ColorPicker         *picker;
@@ -162,20 +162,20 @@ class MainWindow : public KParts::MainWindow
 		bool                 b_fullscreen;
 		bool                 b_editorShown;
 		
-		QString              helpKeyword;
+		TQString              helpKeyword;
 		Translate           *translate;
 		KURL                 CurrentFile;
 		
 		// configuration related
-		QWidget             *general;
-		QWidget             *language;
-		QGroupBox           *WidthHeightBox;
-		QLabel              *WidthLabel;
-		QLabel              *HeightLabel;
+		TQWidget             *general;
+		TQWidget             *language;
+		TQGroupBox           *WidthHeightBox;
+		TQLabel              *WidthLabel;
+		TQLabel              *HeightLabel;
 		KIntNumInput        *kcfg_CanvasWidth;
 		KIntNumInput        *kcfg_CanvasHeight;
 		KComboBox           *kcfg_LanguageComboBox;
-		QLabel              *LanguageLabel;
+		TQLabel              *LanguageLabel;
 };
 
 

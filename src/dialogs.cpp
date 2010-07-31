@@ -25,11 +25,11 @@
 
 // BEGIN class ErrorMessage dialog
 
-ErrorMessage::ErrorMessage (QWidget *parent)
+ErrorMessage::ErrorMessage (TQWidget *parent)
 	: KDialogBase (parent, "errorDialog", false, 0, KDialogBase::Close | KDialogBase::Help | KDialogBase::User1, KDialogBase::Close, true, i18n("Help on &Error") )
 {
-	connect( this, SIGNAL( user1Clicked() ), this, SLOT( showHelpOnError() ) );
-	connect( this, SIGNAL( helpClicked() ), this, SLOT( errorMessageHelp() ) );
+	connect( this, TQT_SIGNAL( user1Clicked() ), this, TQT_SLOT( showHelpOnError() ) );
+	connect( this, TQT_SIGNAL( helpClicked() ), this, TQT_SLOT( errorMessageHelp() ) );
 	setCaption( i18n("Error Dialog") );
 	setButtonWhatsThis( KDialogBase::Close, i18n("Closes this error dialog") );
 	setButtonWhatsThis( KDialogBase::Help, i18n("Click here to read more on this error dialog in KTurtle's Handbook.") );
@@ -37,24 +37,24 @@ ErrorMessage::ErrorMessage (QWidget *parent)
 	setButtonWhatsThis( KDialogBase::User1, i18n("Click here for help regarding the error you selected in the list. This button will not work when no error is selected.") );
 	setButtonTip( KDialogBase::User1, i18n("Click here for help regarding the error you selected.") );
 	
-	QWidget *baseWidget = new QWidget(this);
+	TQWidget *baseWidget = new TQWidget(this);
 	setMainWidget(baseWidget);
-	baseLayout = new QVBoxLayout(baseWidget); 
+	baseLayout = new TQVBoxLayout(baseWidget); 
 	
-	label = new QLabel(baseWidget);
+	label = new TQLabel(baseWidget);
 	label->setText( i18n("In this list you find the error(s) that resulted from running your Logo code. \nGood luck!") );
 	// \nYou can select an error and click the 'Help on Error' button for help.
 	label->setScaledContents(true);
 	baseLayout->addWidget(label);
 	
-	spacer = new QSpacerItem( 10, 10, QSizePolicy::Minimum, QSizePolicy::Fixed );
+	spacer = new TQSpacerItem( 10, 10, TQSizePolicy::Minimum, TQSizePolicy::Fixed );
 	baseLayout->addItem(spacer);
 	
-	errTable = new QTable(0, 3, baseWidget);
-	errTable->setSelectionMode(QTable::SingleRow);
+	errTable = new TQTable(0, 3, baseWidget);
+	errTable->setSelectionMode(TQTable::SingleRow);
 	errTable->setReadOnly(true);
 	errTable->setShowGrid(false);
-	errTable->setFocusStyle(QTable::FollowStyle);
+	errTable->setFocusStyle(TQTable::FollowStyle);
 	errTable->setLeftMargin(0);
 	
 	errTable->horizontalHeader()->setLabel( 0, i18n("number") );
@@ -76,7 +76,7 @@ ErrorMessage::ErrorMessage (QWidget *parent)
 }
 
 
-void ErrorMessage::slotAddError(Token& t, const QString& s, uint c)
+void ErrorMessage::slotAddError(Token& t, const TQString& s, uint c)
 {
 	errorData err;
 	err.code = c;
@@ -87,8 +87,8 @@ void ErrorMessage::slotAddError(Token& t, const QString& s, uint c)
 	Token currentToken = err.tok; kdDebug(0)<<"ErrorMessage::slotAddError(); >> "<<err.msg<<" <<, token: '"<<currentToken.look<<"', @ ("<<currentToken.start.row<<", "<<currentToken.start.col<<") - ("<<currentToken.end.row<<", "<<currentToken.end.col<<"), tok-number:"<<currentToken.type<<endl;
 	
 	errTable->insertRows(0);
-	errTable->setText( 0, 0, QString::number(errCount) ); // put the count in a hidden field for reference
-	errTable->setText( 0, 1, QString::number(err.tok.start.row) );
+	errTable->setText( 0, 0, TQString::number(errCount) ); // put the count in a hidden field for reference
+	errTable->setText( 0, 1, TQString::number(err.tok.start.row) );
 	errTable->setText( 0, 2, err.msg );
 	
 	errCount++;
@@ -107,7 +107,7 @@ void ErrorMessage::display()
 	enableButton (KDialogBase::User1, false);
 	errTable->sortColumn(0, true, true);
 	show();
-	connect( errTable, SIGNAL( selectionChanged() ), this, SLOT( updateSelection() ) );
+	connect( errTable, TQT_SIGNAL( selectionChanged() ), this, TQT_SLOT( updateSelection() ) );
 }
 
 void ErrorMessage::updateSelection()
@@ -140,29 +140,29 @@ void ErrorMessage::errorMessageHelp()
 
 // BEGIN class ColorPicker dialog
 
-ColorPicker::ColorPicker(QWidget *parent)
+ColorPicker::ColorPicker(TQWidget *parent)
 	: KDialogBase(parent, "colorpicker", false, i18n("Color Picker"), KDialogBase::Close | KDialogBase::Help | KDialogBase::User1, KDialogBase::Close, true )
 {
 	// connect to help
-	connect( this, SIGNAL( helpClicked() ), SLOT( slotColorPickerHelp() ) );
+	connect( this, TQT_SIGNAL( helpClicked() ), TQT_SLOT( slotColorPickerHelp() ) );
 	
 	// for toggling convenience
-	connect( this, SIGNAL( finished() ), SLOT( slotEmitVisibility() ) );
+	connect( this, TQT_SIGNAL( finished() ), TQT_SLOT( slotEmitVisibility() ) );
     
 	// Create the top level page and its layout
-	BaseWidget = new QWidget(this);
+	BaseWidget = new TQWidget(this);
 	setMainWidget(BaseWidget);
     
 	// the User1 button:
 	setButtonText( KDialogBase::User1, i18n("Insert Color Code at Cursor") );
-	connect( this, SIGNAL( user1Clicked() ), SLOT( slotEmitColorCode() ) );
+	connect( this, TQT_SIGNAL( user1Clicked() ), TQT_SLOT( slotEmitColorCode() ) );
  
-	QVBoxLayout *vlayout = new QVBoxLayout(BaseWidget);
+	TQVBoxLayout *vlayout = new TQVBoxLayout(BaseWidget);
     
 	vlayout->addSpacing(5); // spacing on top
 
 	// the palette and value selector go into a H-box
-	QHBoxLayout *h1layout = new QHBoxLayout(BaseWidget);
+	TQHBoxLayout *h1layout = new TQHBoxLayout(BaseWidget);
 	vlayout->addLayout(h1layout);
     
 	h1layout->addSpacing(10); // space on the left border
@@ -170,19 +170,19 @@ ColorPicker::ColorPicker(QWidget *parent)
 	hsSelector = new KHSSelector(BaseWidget); // the color (SH) selector
 	hsSelector->setMinimumSize(300, 150);
 	h1layout->addWidget(hsSelector);
-	connect( hsSelector, SIGNAL( valueChanged(int, int) ), SLOT( slotSelectorChanged(int, int) ) );
+	connect( hsSelector, TQT_SIGNAL( valueChanged(int, int) ), TQT_SLOT( slotSelectorChanged(int, int) ) );
 
 	h1layout->addSpacing(5); // space in between
    
 	valuePal = new KValueSelector(BaseWidget); // the darkness (V) pal
 	valuePal->setFixedWidth(30);
 	h1layout->addWidget(valuePal);
-	connect( valuePal, SIGNAL( valueChanged(int) ), SLOT( slotPalChanged(int) ) );   
+	connect( valuePal, TQT_SIGNAL( valueChanged(int) ), TQT_SLOT( slotPalChanged(int) ) );   
     
 	vlayout->addSpacing(15); // space in between the top and the bottom widgets
 
 	// the patch and the codegenerator also go into a H-box
-	QHBoxLayout *h2layout = new QHBoxLayout(BaseWidget);
+	TQHBoxLayout *h2layout = new TQHBoxLayout(BaseWidget);
 	vlayout->addLayout(h2layout);
     
 	h2layout->addSpacing(10); // space on the left border
@@ -194,16 +194,16 @@ ColorPicker::ColorPicker(QWidget *parent)
 	h2layout->addSpacing(10); // space in between
 
 	// the label and the codegenerator go in a V-box
-	QVBoxLayout *v2layout = new QVBoxLayout(BaseWidget);
+	TQVBoxLayout *v2layout = new TQVBoxLayout(BaseWidget);
 	h2layout->addLayout(v2layout); 
     
-	copyable = new QLabel(i18n("Color code:"), BaseWidget); // tha label
+	copyable = new TQLabel(i18n("Color code:"), BaseWidget); // tha label
 	v2layout->addWidget(copyable);
         
-	colorcode = new QLineEdit(BaseWidget); // the code generator
+	colorcode = new TQLineEdit(BaseWidget); // the code generator
 	colorcode->setReadOnly(true);
 	v2layout->addWidget(colorcode);
-	connect( colorcode, SIGNAL( selectionChanged() ), SLOT( slotReselect() ) );
+	connect( colorcode, TQT_SIGNAL( selectionChanged() ), TQT_SLOT( slotReselect() ) );
     
 	h2layout->addSpacing(5); // spacing on the right border
     
@@ -239,7 +239,7 @@ void ColorPicker::updatePatch()
 void ColorPicker::updateColorCode()
 {
 	color.getRgb(&r, &g, &b);
-	colorcode->setText( QString("%1, %2, %3").arg(r).arg(g).arg(b) );
+	colorcode->setText( TQString("%1, %2, %3").arg(r).arg(g).arg(b) );
 	colorcode->selectAll();
 }
 
@@ -269,9 +269,9 @@ void ColorPicker::slotPalChanged(int v_)
 void ColorPicker::slotReselect()
 {
 	// reselect by selectAll(), but make sure no looping occurs
-	disconnect( colorcode, SIGNAL( selectionChanged() ), 0, 0 );
+	disconnect( colorcode, TQT_SIGNAL( selectionChanged() ), 0, 0 );
 	colorcode->selectAll();
-	connect( colorcode, SIGNAL( selectionChanged() ), SLOT( slotReselect() ) );
+	connect( colorcode, TQT_SIGNAL( selectionChanged() ), TQT_SLOT( slotReselect() ) );
 }
 
 void ColorPicker::slotEmitVisibility()
@@ -297,17 +297,17 @@ void ColorPicker::slotColorPickerHelp()
 
 // BEGIN class RestartOrBack dialog
 
-RestartOrBack::RestartOrBack (QWidget *parent)
+RestartOrBack::RestartOrBack (TQWidget *parent)
 	: KDialogBase (parent, "rbDialog", true, 0, KDialogBase::User1 | KDialogBase::User2, KDialogBase::User2, false, i18n("&Restart"), i18n("&Back") )
 {
 	setPlainCaption( i18n("Finished Execution") );
 	setButtonWhatsThis( KDialogBase::User1, i18n("Click here to restart the current logo program.") );
 	setButtonWhatsThis( KDialogBase::User2, i18n("Click here to switch back to the edit mode.") );
-	QWidget *baseWidget = new QWidget(this);
+	TQWidget *baseWidget = new TQWidget(this);
 	setMainWidget(baseWidget);
-	baseLayout = new QVBoxLayout(baseWidget);
+	baseLayout = new TQVBoxLayout(baseWidget);
 	
-	label = new QLabel(baseWidget);
+	label = new TQLabel(baseWidget);
 	label->setText( i18n("Execution was finished without errors.\nWhat do you want to do next?") );
 	label->setScaledContents(true);
 	baseLayout->addWidget(label);

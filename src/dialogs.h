@@ -27,12 +27,12 @@
 #define _DIALOGS_H_
 
 
-#include <qlayout.h>
-#include <qlabel.h>
-#include <qlineedit.h>
-#include <qstring.h>
-#include <qtable.h>
-#include <qvaluelist.h>
+#include <tqlayout.h>
+#include <tqlabel.h>
+#include <tqlineedit.h>
+#include <tqstring.h>
+#include <tqtable.h>
+#include <tqvaluelist.h>
 
 #include <kdialogbase.h>
 #include <kcolordialog.h>
@@ -46,7 +46,7 @@ struct errorData
 {
 	uint    code;
 	Token   tok;
-	QString msg;
+	TQString msg;
 };
 
 
@@ -55,7 +55,7 @@ class ErrorMessage : public KDialogBase
 	Q_OBJECT
 	
 	public:
-		ErrorMessage(QWidget *parent);
+		ErrorMessage(TQWidget *parent);
 		~ErrorMessage() {}
 	
 		bool containsErrors();
@@ -63,7 +63,7 @@ class ErrorMessage : public KDialogBase
 		void display();
 
 	public slots:
-		void slotAddError(Token&, const QString&, uint code);
+		void slotAddError(Token&, const TQString&, uint code);
 		void updateSelection();
 
 	private slots:
@@ -75,17 +75,17 @@ class ErrorMessage : public KDialogBase
 		void setSelection(uint, uint, uint, uint);
 
 	private:
-		typedef QValueList<errorData> errorList;
+		typedef TQValueList<errorData> errorList;
 		errorList     errList;
-		QTable       *errTable;
+		TQTable       *errTable;
 		uint          errCount;
 		errorData     currentError;
 
 	protected:
-		QDialog      *dialog;
-		QVBoxLayout  *baseLayout;
-		QLabel       *label;
-		QSpacerItem  *spacer;
+		TQDialog      *dialog;
+		TQVBoxLayout  *baseLayout;
+		TQLabel       *label;
+		TQSpacerItem  *spacer;
 };
 
 // END
@@ -99,13 +99,13 @@ class ColorPicker : public KDialogBase
 	Q_OBJECT
   
 	public:
-		ColorPicker(QWidget *parent);
+		ColorPicker(TQWidget *parent);
 		virtual ~ColorPicker() {}
 
 
 	signals:
 		void visible(bool); // for toggling convenience
-		void ColorCode(QString);
+		void ColorCode(TQString);
 
 
 	private:
@@ -114,16 +114,16 @@ class ColorPicker : public KDialogBase
 		void updatePatch();
 		void updateColorCode();
 		
-		QWidget            *BaseWidget;
+		TQWidget            *BaseWidget;
 		KHSSelector        *hsSelector;
 		KValueSelector     *valuePal;
-		QVBoxLayout        *vlayout;
-		QHBoxLayout        *h1layout;
-		QHBoxLayout        *h2layout;
+		TQVBoxLayout        *vlayout;
+		TQHBoxLayout        *h1layout;
+		TQHBoxLayout        *h2layout;
 		KColorPatch        *patch;
-		QLabel             *copyable;
-		QLineEdit          *colorcode;
-		QColor              color;
+		TQLabel             *copyable;
+		TQLineEdit          *colorcode;
+		TQColor              color;
 		int                 h, s, v, r, g, b;
 
 
@@ -151,12 +151,12 @@ class RestartOrBack : public KDialogBase
 	Q_OBJECT
 	
 	public:
-		RestartOrBack (QWidget *parent);
+		RestartOrBack (TQWidget *parent);
 		~RestartOrBack() {}
 
 	protected:
-		QVBoxLayout  *baseLayout;
-		QLabel       *label;
+		TQVBoxLayout  *baseLayout;
+		TQLabel       *label;
 };
 
 // END

@@ -31,7 +31,7 @@ TreeNode::TreeNode()
 	fType = Unknown;
 }
 
-TreeNode::TreeNode(Token t, NodeType nodeType, QString name)
+TreeNode::TreeNode(Token t, NodeType nodeType, TQString name)
 {
 	init();
 	fType = nodeType;
@@ -59,7 +59,7 @@ void TreeNode::init()
 {
 	clear();
 	parent = NULL;
-	// fTok.look (QString) and fTok.value (Value) are properly init'ed when constructed
+	// fTok.look (TQString) and fTok.value (Value) are properly init'ed when constructed
 	fTok.start.row = 0;
 	fTok.start.col = 0;
 	fTok.end.row = 0;
@@ -231,7 +231,7 @@ void TreeNode::showTree(TreeNode* node, int indent) const
 
 void TreeNode::show(int indent)
 {
-	QString s = "";
+	TQString s = "";
 	for (int i = 0; i < indent; i++)
 	{
 		s += ">  ";

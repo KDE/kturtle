@@ -20,9 +20,9 @@
 #ifndef _LEXER_H_
 #define _LEXER_H_
 
-#include <qmap.h>
-#include <qstring.h>
-#include <qtextstream.h>
+#include <tqmap.h>
+#include <tqstring.h>
+#include <tqtextstream.h>
 
 #include "token.h"
 #include "translate.h"
@@ -32,25 +32,25 @@
 class Lexer
 {
 	public:
-		Lexer(QTextIStream&);
+		Lexer(TQTextIStream&);
 		~Lexer() {}
 	
 		Token lex(); // returns the next Token, skipping spaces
 
 
 	private:
-		QChar getChar();
-		void ungetChar(QChar);
-		int getWord(QString&);
+		TQChar getChar();
+		void ungetChar(TQChar);
+		int getWord(TQString&);
 		void skipSpaces();
 		void setTokenType(Token&);
-		int getNumber(Value&, QString&);
+		int getNumber(Value&, TQString&);
 		void getString(Token&);
 	
-		QTextIStream    *inputStream;
+		TQTextIStream    *inputStream;
 		Translate       *translate;
 		uint             row, col, prevCol;
-		QChar            putBackChar;
+		TQChar            putBackChar;
 };
 
 

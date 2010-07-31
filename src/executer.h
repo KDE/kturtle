@@ -26,8 +26,8 @@
 #include "treenode.h"
 
 
-typedef map<QString,Value>     symtable;
-typedef map<QString,TreeNode*> functable;
+typedef map<TQString,Value>     symtable;
+typedef map<TQString,TreeNode*> functable;
 
 typedef stack<Value>           runstack;
 
@@ -47,11 +47,11 @@ class Executer : public QObject
 
 	signals:
 		void Finished();
-		void ErrorMsg(Token&, const QString&, uint code);
+		void ErrorMsg(Token&, const TQString&, uint code);
 		void setSelection(uint, uint, uint, uint);
 		
-		void InputDialog(QString& value);
-		void MessageDialog(QString text);
+		void InputDialog(TQString& value);
+		void MessageDialog(TQString text);
 	
 		void Clear();
 		void Go(double x, double y);
@@ -73,8 +73,8 @@ class Executer : public QObject
 		void SpriteHide();
 		void SpritePress();
 		void SpriteChange(int x);
-		void Print(QString text);
-		void FontType(QString family, QString extra);
+		void Print(TQString text);
+		void FontType(TQString family, TQString extra);
 		void FontSize(int px);
 		void WrapOn();
 		void WrapOff();
@@ -154,7 +154,7 @@ class Executer : public QObject
 	
 		Value exec2getValue    (TreeNode*);
 		
-		QString runCommand(const QString&);
+		TQString runCommand(const TQString&);
 		
 		bool checkParameterQuantity(TreeNode*, uint quantity, int errorCode);
 		bool checkParameterType(TreeNode*, int valueType, int errorCode);

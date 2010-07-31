@@ -23,7 +23,7 @@
 #include <unistd.h> // for usleep();
 #include <stdlib.h>
 
-#include <qtimer.h>
+#include <tqtimer.h>
 
 #include <kapplication.h>
 #include <kdebug.h>
@@ -206,7 +206,7 @@ void Executer::execute(TreeNode* node)
 
 void Executer::createFunction(TreeNode* node)
 {
-	QString funcname = node->getLook();
+	TQString funcname = node->getLook();
 	functionTable[funcname] = node; //store for later use
 }
 
@@ -214,7 +214,7 @@ void Executer::createFunction(TreeNode* node)
 //execute a function
 void Executer::execFunction(TreeNode* node)
 {
-	QString funcname = node->getLook();
+	TQString funcname = node->getLook();
 
 	// locate function node  
 	functable::iterator p = functionTable.find(funcname);
@@ -249,7 +249,7 @@ void Executer::execFunction(TreeNode* node)
 		// execute the parameters which can be expressions
 		execute(*pfrom); 
 		
-		QString idname = (*pto)->getLook();
+		TQString idname = (*pto)->getLook();
 		funcSymTable[idname] = (*pfrom)->getValue();
 		++pto;
 	}
@@ -324,8 +324,8 @@ void Executer::execForEach(TreeNode* node)
 	execute(expr1);
 	execute(expr2);
 	
-	QString expStr1 = expr1->getValue().String();
-	QString expStr2 = expr2->getValue().String();
+	TQString expStr1 = expr1->getValue().String();
+	TQString expStr2 = expr2->getValue().String();
 	
 	bBreak = false;
 	
@@ -351,7 +351,7 @@ void Executer::execFor(TreeNode* node)
 	TreeNode* stopNode = node->thirdChild();
 	TreeNode* statements = node->fourthChild();
 	
-	QString name = id->getLook();
+	TQString name = id->getLook();
 	
 	execute(startNode);
 	//assign startval to id
@@ -636,13 +636,13 @@ void Executer::execMinus(TreeNode* node)
 }
 
 
-QString Executer::runCommand(const QString& command)
+TQString Executer::runCommand(const TQString& command)
 {
 	FILE *pstream;
 	
 	if ( ( pstream = popen( command.ascii(), "r" ) ) == NULL ) return ("");
 	
-	QString Line;
+	TQString Line;
 	char buf[100];
 	
 	while( fgets(buf, sizeof(buf), pstream) !=NULL) {
@@ -658,7 +658,7 @@ QString Executer::runCommand(const QString& command)
 
 void Executer::execRun(TreeNode* node)
 {
-	QString cmd = exec2getValue( node->firstChild() ).String();
+	TQString cmd = exec2getValue( node->firstChild() ).String();
 	node->setValue( runCommand(cmd) );
 }
 
@@ -958,7 +958,7 @@ void Executer::execInputWindow(TreeNode* node)
 {
 	if ( !checkParameterQuantity(node, 1, 5060) ) return;
 
-	QString value = node->firstChild()->getValue().String();
+	TQString value = node->firstChild()->getValue().String();
 	emit InputDialog(value);
 	
 	node->setType(constantNode);
@@ -980,7 +980,7 @@ void Executer::execPrint(TreeNode* node)
 		return;
 	}
 	TreeNode::iterator i;
-	QString str = "";
+	TQString str = "";
 	for (i = node->begin(); i != node->end(); ++i)
 	{
 		execute(*i); // execute expression
@@ -994,9 +994,9 @@ void Executer::execFontType(TreeNode* node)
 	// if not 2 params go staight to the checkParam, diplay the error, and return to prevent a crash
 	if ( !checkParameterQuantity(node, 2, 5060) && !checkParameterType(node, stringValue, 5060) ) return;
 	
-	QString extra;
-	if (node->size() == 2) QString extra = node->secondChild()->getValue().String();
-	QString family = node->firstChild()->getValue().String();
+	TQString extra;
+	if (node->size() == 2) TQString extra = node->secondChild()->getValue().String();
+	TQString family = node->firstChild()->getValue().String();
 	emit FontType(family, extra);
 }
 
@@ -1015,7 +1015,7 @@ void Executer::startWaiting(int msec)
 {
 	bStopWaiting = false;
 	// call a timer that sets stopWaiting to true when it runs 
-	QTimer::singleShot( msec, this, SLOT( slotStopWaiting() ) );
+	TQTimer::singleShot( msec, this, TQT_SLOT( slotStopWaiting() ) );
 	while (bStopWaiting == false)
 	{
 		if (bAbort) return; // waits need to be interrupted by the stop action

@@ -19,8 +19,8 @@
 #ifndef _TRANSLATE_H_
 #define _TRANSLATE_H_
 
-#include <qmap.h>
-#include <qstring.h>
+#include <tqmap.h>
+#include <tqstring.h>
 
 
 class Translate
@@ -29,15 +29,15 @@ class Translate
 		Translate();
 		~Translate() {}
 		
-		QString name2fuzzy(const QString&);
-		QString name2key(const QString&);
-		QString alias2key(const QString&);
+		TQString name2fuzzy(const TQString&);
+		TQString name2key(const TQString&);
+		TQString alias2key(const TQString&);
 
 
 	private:
 		void loadTranslations();
 		
-		typedef QMap<QString, QString> StringMap;
+		typedef TQMap<TQString, TQString> StringMap;
 		StringMap keyMap;
 		StringMap aliasMap;
 		StringMap reverseAliasMap;

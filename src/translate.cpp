@@ -16,8 +16,8 @@
  */
 
  
-#include <qdom.h>
-#include <qfile.h>
+#include <tqdom.h>
+#include <tqfile.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -34,32 +34,32 @@ Translate::Translate()
 }
 
 
-QString Translate::name2fuzzy(const QString &name)
+TQString Translate::name2fuzzy(const TQString &name)
 {
 	if ( !aliasMap[name].isEmpty() ) // translate the alias if any
 	{
-		return QString( i18n("'%1' (%2)").arg(keyMap[name]).arg(reverseAliasMap[name]) );
+		return TQString( i18n("'%1' (%2)").arg(keyMap[name]).arg(reverseAliasMap[name]) );
 	}
-	return QString( "'" + keyMap[name] + "'");
+	return TQString( "'" + keyMap[name] + "'");
 }
 
-QString Translate::name2key(const QString &name)
+TQString Translate::name2key(const TQString &name)
 {
 	return keyMap[name];
 }
 
-QString Translate::alias2key(const QString &name)
+TQString Translate::alias2key(const TQString &name)
 {
 	return aliasMap[name];
 }
 
 
 void Translate::loadTranslations() {
-	QDomDocument KeywordsXML;
+	TQDomDocument KeywordsXML;
 
 	kdDebug(0) << "Loading translation dictionary: "<< locate("data", "kturtle/data/logokeywords." + Settings::logoLanguage() + ".xml") <<endl;
   	// Read the specified translation file
-	QFile xmlfile( locate("data", "kturtle/data/logokeywords." + Settings::logoLanguage() + ".xml") );
+	TQFile xmlfile( locate("data", "kturtle/data/logokeywords." + Settings::logoLanguage() + ".xml") );
 
 	if ( !xmlfile.open(IO_ReadOnly) ) return;
 	
@@ -71,14 +71,14 @@ void Translate::loadTranslations() {
 	xmlfile.close();
 
 	// get into the first child of the root element (in our case a <command> tag)
-	QDomElement rootElement = KeywordsXML.documentElement();
-	QDomNode n = rootElement.firstChild();
+	TQDomElement rootElement = KeywordsXML.documentElement();
+	TQDomNode n = rootElement.firstChild();
 
 	while ( !n.isNull() )
 	{
-		QString name, key, alias;
+		TQString name, key, alias;
 		name = n.toElement().attribute("name"); // get the name attribute of <command>
-		QDomNode m = n.firstChild(); // get into the first child of a <command>
+		TQDomNode m = n.firstChild(); // get into the first child of a <command>
 		while (true)
 		{
 			if( !m.toElement().text().isEmpty() )

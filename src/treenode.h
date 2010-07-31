@@ -25,7 +25,7 @@
 
 #include <list>
 
-#include <qstring.h>
+#include <tqstring.h>
 
 #include "lexer.h"
 #include "token.h"
@@ -214,7 +214,7 @@ class TreeNode : public list<TreeNode*> /*, public Value  <-- maybe oneday */
 	public:
 		TreeNode(); // used for creation of the first node called 'tree', in the contructor of the parser 
 		TreeNode( TreeNode* ); // give parent
-		TreeNode( Token, NodeType = Unknown, QString = QString() );
+		TreeNode( Token, NodeType = Unknown, TQString = TQString() );
 		virtual ~TreeNode();
 	
 		void init();
@@ -241,12 +241,12 @@ class TreeNode : public list<TreeNode*> /*, public Value  <-- maybe oneday */
 		void      setType(NodeType t)        { fType = t; }
 		NodeType  getType() const            { return fType; }
 		
-		void      setLook(const QString& s)  { fTok.look = s; }
-		QString   getLook() const            { return fTok.look; }
+		void      setLook(const TQString& s)  { fTok.look = s; }
+		TQString   getLook() const            { return fTok.look; }
 		
 		void      setValue(const Value& n)   { fTok.value = n; }
 		void      setValue(double d)         { fTok.value = d; }
-		void      setValue(const QString& s) { fTok.value = s; }
+		void      setValue(const TQString& s) { fTok.value = s; }
 		void      setValue(bool b)           { fTok.value.setBool(b); }
 		Value     getValue() const           { return fTok.value; }
 		

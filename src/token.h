@@ -20,7 +20,7 @@
 #ifndef _TOKEN_H_
 #define _TOKEN_H_
 
-#include <qstring.h>
+#include <tqstring.h>
 
 #include "value.h"
 
@@ -34,7 +34,7 @@ struct Pos // convenience, it codes a bit nicer with this, i.e.: "int row = tok.
 struct Token
 {
 	int      type;  // filled with enumed tokenTypes
-	QString  look;  // the way the token looks in the text editor
+	TQString  look;  // the way the token looks in the text editor
 	Value    value; // if the token is a number it can be stored here
 	Pos      start; // row'n'col of the starting/ending point of the token
 	Pos      end;
@@ -127,7 +127,7 @@ enum tokenTypes
 	tokDo // a dummy command
 };
 
-// const QString tokenTypeNames[] =
+// const TQString tokenTypeNames[] =
 // {
 // 	/* tokNotSet  = 0 */   "",
 // 	/* tokError   = 1 */   "",
@@ -213,7 +213,7 @@ enum tokenTypes
 // 	/* tokDo */            "",
 // };
 // 
-// // QString Token::tokenType2name(int tokenType)
+// // TQString Token::tokenType2name(int tokenType)
 // // {
 // // 	if (tokenType >= 0) return tokenTypeNames[tokenType];
 // // 	else                return "";

@@ -20,8 +20,8 @@
 #ifndef _VALUE_H_
 #define _VALUE_H_
 
-#include <qstring.h>
-#include <qtextstream.h>
+#include <tqstring.h>
+#include <tqtextstream.h>
 
 
 enum valueType
@@ -50,14 +50,14 @@ class Value
 	
 		double Number() const;
 		void setNumber(double);
-		bool setNumber(const QString&);
+		bool setNumber(const TQString&);
 	
-		QString String() const;
+		TQString String() const;
 		void setString(double);
-		void setString(const QString&);
+		void setString(const TQString&);
 	
 		Value& operator=(const Value&);
-		Value& operator=(const QString&);
+		Value& operator=(const TQString&);
 		Value& operator=(double);
 	
 		Value& operator+(const Value&);
@@ -79,7 +79,7 @@ class Value
 		int      type;
 		bool     m_bool;
 		double   m_double;
-		QString  m_string;
+		TQString  m_string;
 };
 
 #endif // _VALUE_H_

@@ -19,7 +19,7 @@
 #ifndef _CANVAS_H_
 #define _CANVAS_H_
 
-#include <qcanvas.h>
+#include <tqcanvas.h>
 
 
 class Canvas : public QCanvasView
@@ -27,10 +27,10 @@ class Canvas : public QCanvasView
 	Q_OBJECT
 
 	public:
-		Canvas(QWidget *parent = 0, const char *name = 0);
+		Canvas(TQWidget *parent = 0, const char *name = 0);
 		~Canvas();
 		
-		QPixmap* canvas2Pixmap();
+		TQPixmap* canvas2Pixmap();
 
 
 	public slots:
@@ -56,8 +56,8 @@ class Canvas : public QCanvasView
 		void slotSpritePress();
 		void slotSpriteChange(int x);
 	
-		void slotPrint(QString text);
-		void slotFontType(QString family, QString extra);
+		void slotPrint(TQString text);
+		void slotFontType(TQString family, TQString extra);
 		void slotFontSize(int px);
 		void slotWrapOn();
 		void slotWrapOff();
@@ -73,20 +73,20 @@ class Canvas : public QCanvasView
 		
 		void line(double xa, double ya, double xb, double yb);
 		void lineShell(double xa, double ya, double xb, double yb);
-		bool endlessLoop(QPoint begin, QPoint end);
+		bool endlessLoop(TQPoint begin, TQPoint end);
 		bool pointInRange(double px, double py, double xa, double ya, double xb, double yb);
-		QPoint offset(int x, int y);
-		QPoint translationFactor(double xa, double ya, double xb, double yb);
+		TQPoint offset(int x, int y);
+		TQPoint translationFactor(double xa, double ya, double xb, double yb);
 		
-		void loadSpriteFrames(QString name);
+		void loadSpriteFrames(TQString name);
 		void updateSpritePos();
 		void updateSpriteAngle();
 		
-		QCanvas             *canvas;
-		QPixmap              pixmap;
-		QCanvasSprite       *sprite;
-		QCanvasPixmapArray  *spriteFrames;
-		QFont                font;
+		TQCanvas             *canvas;
+		TQPixmap              pixmap;
+		TQCanvasSprite       *sprite;
+		TQCanvasPixmapArray  *spriteFrames;
+		TQFont                font;
 		double               posX, posY;
 		int                  canvasWidth, canvasHeight;
 		int                  penWidth;
@@ -95,7 +95,7 @@ class Canvas : public QCanvasView
 		bool                 pen;
 		bool                 wrap;
 		bool                 cutLoop;
-		QPoint               prevStartPos3, prevStartPos2, prevStartPos1, prevEndPos3, prevEndPos2, prevEndPos1;
+		TQPoint               prevStartPos3, prevStartPos2, prevStartPos1, prevEndPos3, prevEndPos2, prevEndPos1;
 };
 
 #endif // _CANVAS_H_

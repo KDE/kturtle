@@ -20,12 +20,12 @@
 
 #include <stdlib.h>
 
-#include <qbutton.h>
-#include <qregexp.h>
-#include <qpainter.h>
-#include <qtooltip.h>
-#include <qtimer.h>
-#include <qwhatsthis.h>
+#include <tqbutton.h>
+#include <tqregexp.h>
+#include <tqpainter.h>
+#include <tqtooltip.h>
+#include <tqtimer.h>
+#include <tqwhatsthis.h>
 
 #include <kapplication.h>
 #include <kconfigdialog.h>
@@ -123,59 +123,59 @@ void MainWindow::setupActions()
 	KActionCollection *ac = actionCollection(); // abbreviation
 	
 	// File actions
-	KStdAction::openNew(this, SLOT(slotNewFile()), ac);
-	openExAction = new KAction(i18n("Open Exa&mples..."), "bookmark_folder", CTRL+Key_E, this, SLOT(slotOpenExample()), ac, "open_examples");
-	KStdAction::open(this, SLOT(slotOpenFile()), ac);
-	m_recentFiles = KStdAction::openRecent(this, SLOT(slotOpenFile(const KURL&)), ac);
-	KStdAction::save(this, SLOT(slotSaveFile()), ac);
-	KStdAction::saveAs(this, SLOT(slotSaveAs()), ac);
-	new KAction(i18n("Save &Canvas..."), 0, 0, this, SLOT(slotSaveCanvas()), ac, "save_canvas");
-	speed = new KSelectAction(i18n("Execution Speed"), 0, ALT+Key_S, this, SLOT( slotChangeSpeed() ), ac, "speed");
-	QStringList speeds; speeds << i18n("Full Speed") << i18n("Slow") << i18n("Slower") << i18n("Slowest");
+	KStdAction::openNew(this, TQT_SLOT(slotNewFile()), ac);
+	openExAction = new KAction(i18n("Open Exa&mples..."), "bookmark_folder", CTRL+Key_E, this, TQT_SLOT(slotOpenExample()), ac, "open_examples");
+	KStdAction::open(this, TQT_SLOT(slotOpenFile()), ac);
+	m_recentFiles = KStdAction::openRecent(this, TQT_SLOT(slotOpenFile(const KURL&)), ac);
+	KStdAction::save(this, TQT_SLOT(slotSaveFile()), ac);
+	KStdAction::saveAs(this, TQT_SLOT(slotSaveAs()), ac);
+	new KAction(i18n("Save &Canvas..."), 0, 0, this, TQT_SLOT(slotSaveCanvas()), ac, "save_canvas");
+	speed = new KSelectAction(i18n("Execution Speed"), 0, ALT+Key_S, this, TQT_SLOT( slotChangeSpeed() ), ac, "speed");
+	TQStringList speeds; speeds << i18n("Full Speed") << i18n("Slow") << i18n("Slower") << i18n("Slowest");
 	speed->setItems(speeds);
 	speed->setCurrentItem(0);
-	run = new KAction(i18n("&Execute Commands"), "gear", ALT+Key_Return, this, SLOT( slotExecute() ), ac, "run");
-	pause = new KToggleAction(i18n("Pause E&xecution"), "player_pause", Key_Pause, this, SLOT( slotPauseExecution() ), ac, "pause");
+	run = new KAction(i18n("&Execute Commands"), "gear", ALT+Key_Return, this, TQT_SLOT( slotExecute() ), ac, "run");
+	pause = new KToggleAction(i18n("Pause E&xecution"), "player_pause", Key_Pause, this, TQT_SLOT( slotPauseExecution() ), ac, "pause");
 	pause->setChecked(false);
 	pause->setEnabled(false);
-	stop = new KAction(i18n("Stop E&xecution"), "stop", Key_Escape, this, SLOT( slotAbortExecution() ), ac, "stop");
+	stop = new KAction(i18n("Stop E&xecution"), "stop", Key_Escape, this, TQT_SLOT( slotAbortExecution() ), ac, "stop");
 	stop->setEnabled(false);
-	KStdAction::print(this, SLOT(slotPrint()), ac);
-	KStdAction::quit(this, SLOT(close()), ac);
+	KStdAction::print(this, TQT_SLOT(slotPrint()), ac);
+	KStdAction::quit(this, TQT_SLOT(close()), ac);
 	
 	// Edit actions
-	KStdAction::undo(this, SLOT(slotUndo()), ac);
-	KStdAction::redo(this, SLOT(slotRedo()), ac);
-	KStdAction::cut(this, SLOT(slotCut()), ac);
-	KStdAction::copy(this, SLOT(slotCopy()), ac);
-	KStdAction::paste(this, SLOT(slotPaste()), ac);
-	KStdAction::selectAll(this, SLOT(slotSelectAll()), ac);
-	KStdAction::deselect(this, SLOT(slotClearSelection()), ac);
-	new KToggleAction(i18n("Toggle Insert"), Key_Insert, this, SLOT(slotToggleInsert()), ac, "set_insert");
-	KStdAction::find(this, SLOT(slotFind()), ac);
-	KStdAction::findNext(this, SLOT(slotFindNext()), ac);
-	KStdAction::findPrev(this, SLOT(slotFindPrevious()), ac);
-	KStdAction::replace(this, SLOT(slotReplace()), ac);
+	KStdAction::undo(this, TQT_SLOT(slotUndo()), ac);
+	KStdAction::redo(this, TQT_SLOT(slotRedo()), ac);
+	KStdAction::cut(this, TQT_SLOT(slotCut()), ac);
+	KStdAction::copy(this, TQT_SLOT(slotCopy()), ac);
+	KStdAction::paste(this, TQT_SLOT(slotPaste()), ac);
+	KStdAction::selectAll(this, TQT_SLOT(slotSelectAll()), ac);
+	KStdAction::deselect(this, TQT_SLOT(slotClearSelection()), ac);
+	new KToggleAction(i18n("Toggle Insert"), Key_Insert, this, TQT_SLOT(slotToggleInsert()), ac, "set_insert");
+	KStdAction::find(this, TQT_SLOT(slotFind()), ac);
+	KStdAction::findNext(this, TQT_SLOT(slotFindNext()), ac);
+	KStdAction::findPrev(this, TQT_SLOT(slotFindPrevious()), ac);
+	KStdAction::replace(this, TQT_SLOT(slotReplace()), ac);
 	
 	// View actions
-	new KToggleAction(i18n("Show &Line Numbers"), 0, Key_F11, this, SLOT(slotToggleLineNumbers()), ac, "line_numbers");
-	m_fullscreen = KStdAction::fullScreen(this, SLOT(slotToggleFullscreen()), ac, this, "full_screen");
+	new KToggleAction(i18n("Show &Line Numbers"), 0, Key_F11, this, TQT_SLOT(slotToggleLineNumbers()), ac, "line_numbers");
+	m_fullscreen = KStdAction::fullScreen(this, TQT_SLOT(slotToggleFullscreen()), ac, this, "full_screen");
 	m_fullscreen->setChecked(b_fullscreen);
 
 	// Tools actions
-	colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", ALT+Key_C, this, SLOT(slotColorPicker()), ac, "color_picker");
-	new KAction(i18n("&Indent"), "indent", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
-	new KAction(i18n("&Unindent"), "unindent", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
-	new KAction(i18n("Cl&ean Indentation"), 0, 0, this, SLOT(slotCleanIndent()), ac, "edit_cleanIndent");
-	new KAction(i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
-	new KAction(i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
+	colorpicker = new KToggleAction(i18n("&Color Picker"), "colorize", ALT+Key_C, this, TQT_SLOT(slotColorPicker()), ac, "color_picker");
+	new KAction(i18n("&Indent"), "indent", CTRL+Key_I, this, TQT_SLOT(slotIndent()), ac, "edit_indent");
+	new KAction(i18n("&Unindent"), "unindent", CTRL+SHIFT+Key_I, this, TQT_SLOT(slotUnIndent()), ac, "edit_unindent");
+	new KAction(i18n("Cl&ean Indentation"), 0, 0, this, TQT_SLOT(slotCleanIndent()), ac, "edit_cleanIndent");
+	new KAction(i18n("Co&mment"), 0, CTRL+Key_D, this, TQT_SLOT(slotComment()), ac, "edit_comment");
+	new KAction(i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, TQT_SLOT(slotUnComment()), ac, "edit_uncomment");
 	
 	// Settings actions
-	KStdAction::preferences( this, SLOT(slotSettings()), ac );
-	new KAction(i18n("&Configure Editor..."), "configure", 0, this, SLOT(slotEditor()), ac, "set_confdlg");
+	KStdAction::preferences( this, TQT_SLOT(slotSettings()), ac );
+	new KAction(i18n("&Configure Editor..."), "configure", 0, this, TQT_SLOT(slotEditor()), ac, "set_confdlg");
 	
 	// Help actions
-	ContextHelp = new KAction(0, 0, Key_F2, this, SLOT(slotContextHelp()), ac, "context_help");
+	ContextHelp = new KAction(0, 0, Key_F2, this, TQT_SLOT(slotContextHelp()), ac, "context_help");
 	slotContextHelpUpdate(); // this sets the label of this action
 	
 	// other
@@ -185,13 +185,13 @@ void MainWindow::setupActions()
 
 void MainWindow::setupEditor()
 {
-	editorDock = new QDockWindow(this);
+	editorDock = new TQDockWindow(this);
 	editorDock->setNewLine(true);
 	editorDock->setFixedExtentWidth(250);
 	editorDock->setFixedExtentHeight(150);
 	editorDock->setResizeEnabled(true);
-	editorDock->setFrameShape(QFrame::ToolBarPanel);
-	QWhatsThis::add( editorDock, i18n( "This is the code editor, here you type the Logo commands to instruct the turtle. You can also open an existing Logo program with File->Open Examples... or File->Open." ) );
+	editorDock->setFrameShape(TQFrame::ToolBarPanel);
+	TQWhatsThis::add( editorDock, i18n( "This is the code editor, here you type the Logo commands to instruct the turtle. You can also open an existing Logo program with File->Open Examples... or File->Open." ) );
 	moveDockWindow(editorDock, Qt::DockLeft);
 	editor = doc->createView (editorDock, 0L);
 	// editorInterface is the editor interface which allows us to access the text in the part
@@ -204,9 +204,9 @@ void MainWindow::setupEditor()
 	slotSetHighlightstyle( Settings::logoLanguage() );
 
 	// allow the cursor position to be indicated in the statusbar
-	connect( editor, SIGNAL(cursorPositionChanged()), this, SLOT(slotCursorStatusBar()) );
+	connect( editor, TQT_SIGNAL(cursorPositionChanged()), this, TQT_SLOT(slotCursorStatusBar()) );
 	// and update the context help menu item
-	connect( editor, SIGNAL(cursorPositionChanged()), this, SLOT(slotContextHelpUpdate()) );
+	connect( editor, TQT_SIGNAL(cursorPositionChanged()), this, TQT_SLOT(slotContextHelpUpdate()) );
 	
 	translate = new Translate();
 }
@@ -227,16 +227,16 @@ void MainWindow::setupStatusBar()
 
 void MainWindow::setupCanvas()
 {
-	baseWidget = new QWidget(this);
+	baseWidget = new TQWidget(this);
 	setCentralWidget(baseWidget);
-	baseLayout = new QGridLayout(baseWidget, 0, 0);
+	baseLayout = new TQGridLayout(baseWidget, 0, 0);
 	canvasView = new Canvas(baseWidget);
 	baseLayout->addWidget(canvasView, 0, 0, AlignCenter);
 	baseLayout->setRowStretch(0, 1); // this apperntly fixes a pre-usefull scrollbars bug
 	baseLayout->setColStretch(0, 1);
-	QWhatsThis::add( canvasView, i18n("This is the canvas, here the turtle draws a picture.") );
+	TQWhatsThis::add( canvasView, i18n("This is the canvas, here the turtle draws a picture.") );
 	canvasView->show();
-	connect( canvasView, SIGNAL( CanvasResized() ), this, SLOT( slotUpdateCanvas() ) );
+	connect( canvasView, TQT_SIGNAL( CanvasResized() ), this, TQT_SLOT( slotUpdateCanvas() ) );
 }
 
 // END
@@ -245,7 +245,7 @@ void MainWindow::setupCanvas()
 
 // BEGIN staturbar related functions
 
-void MainWindow::slotStatusBar(QString text, int id)
+void MainWindow::slotStatusBar(TQString text, int id)
 {
 	text = " " + text + " "; // help the layout
 	statusBar()->changeItem(text, id);
@@ -256,7 +256,7 @@ void MainWindow::slotCursorStatusBar()
 	uint cursorLine;
 	uint cursorCol;
 	dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->cursorPositionReal(&cursorLine, &cursorCol);
-	QString linenumber = i18n(" Line: %1 Column: %2 ").arg(cursorLine + 1).arg(cursorCol + 1);
+	TQString linenumber = i18n(" Line: %1 Column: %2 ").arg(cursorLine + 1).arg(cursorCol + 1);
 	statusBar()->changeItem(linenumber, IDS_LINECOLUMN);
 }
 
@@ -292,7 +292,7 @@ void MainWindow::slotOpenFile(const KURL &urlRef)
 	KURL url = urlRef;
 	if ( url.isEmpty() )
 	{
-		url = KFileDialog::getOpenURL( QString(":logo_dir"), QString("*.logo|") + i18n("Logo Files"), this, i18n("Open Logo File") );
+		url = KFileDialog::getOpenURL( TQString(":logo_dir"), TQString("*.logo|") + i18n("Logo Files"), this, i18n("Open Logo File") );
 	}
 	loadFile(url);
 }
@@ -301,7 +301,7 @@ void MainWindow::slotOpenExample()
 {
 	KURL url;
 	url.setPath( locate("data", "kturtle/examples/" + Settings::logoLanguage() + "/") );
-	url = KFileDialog::getOpenURL( url.path(), QString("*.logo|") + i18n("Logo Examples Files"), this, i18n("Open Logo Example File") );
+	url = KFileDialog::getOpenURL( url.path(), TQString("*.logo|") + i18n("Logo Examples Files"), this, i18n("Open Logo Example File") );
 	loadFile(url);
 }
 
@@ -309,7 +309,7 @@ void MainWindow::loadFile(const KURL &url)
 {
 	if ( !url.isEmpty() )
 	{
-		QFile file( url.path() );
+		TQFile file( url.path() );
 		if ( file.open(IO_ReadOnly) )
 		{
 			if ( editor->document()->isModified() )
@@ -324,8 +324,8 @@ void MainWindow::loadFile(const KURL &url)
 					return;
 				}
 			}
-			QTextStream stream(&file);
-			stream.setEncoding(QTextStream::UnicodeUTF8);
+			TQTextStream stream(&file);
+			stream.setEncoding(TQTextStream::UnicodeUTF8);
 			editorInterface->setText( stream.read() );
 			file.close();
 			m_recentFiles->addURL(url);
@@ -357,13 +357,13 @@ void MainWindow::slotSaveAs()
 	KURL url;
 	while (true)
 	{
-		url = KFileDialog::getSaveURL( QString(":logo_dir"), QString("*.logo|") + i18n("Logo Files"), this, i18n("Save As") );
+		url = KFileDialog::getSaveURL( TQString(":logo_dir"), TQString("*.logo|") + i18n("Logo Files"), this, i18n("Save As") );
 		if ( url.isEmpty() ) // cancelled the save dialog
 		{
 			slotStatusBar(i18n("Saving aborted."),  IDS_STATUS);
 			return;
 		}
-		if ( QFile( url.path() ).exists() )
+		if ( TQFile( url.path() ).exists() )
 		{
 			int result = KMessageBox::warningContinueCancel ( this,
 					i18n("A program named \"%1\" already exists in this folder. "
@@ -398,10 +398,10 @@ void MainWindow::slotSaveCanvas()
 	KURL url;
 	while (true)
 	{
-		url = KFileDialog::getSaveURL( QString(":logo_dir"), QString("*.png|") +
+		url = KFileDialog::getSaveURL( TQString(":logo_dir"), TQString("*.png|") +
 		i18n("Pictures"), this, i18n("Save Canvas as Picture") );
 		if ( url.isEmpty() ) return; // when cancelled the KFiledialog?
-		if ( QFile( url.path() ).exists() )
+		if ( TQFile( url.path() ).exists() )
 		{
 			int result = KMessageBox::warningContinueCancel( this,
 				i18n("A picture named \"%1\" already in this folder. "
@@ -412,10 +412,10 @@ void MainWindow::slotSaveCanvas()
 		break;
 	}
 	
-	QString type( KImageIO::type( url.path() ) );
+	TQString type( KImageIO::type( url.path() ) );
 	if ( type.isNull() ) type = "PNG";
 	bool ok = false;
-	QPixmap* pixmap = canvasView->canvas2Pixmap();
+	TQPixmap* pixmap = canvasView->canvas2Pixmap();
 	if ( url.isLocalFile() )
 	{
 		KSaveFile saveFile( url.path() );
@@ -453,8 +453,8 @@ void MainWindow::slotPrint()
 		KPrinter printer;
 		if ( printer.setup(this) )
 		{
-			QPainter painter(&printer);
-			QPixmap *CanvasPic = canvasView->canvas2Pixmap();
+			TQPainter painter(&printer);
+			TQPixmap *CanvasPic = canvasView->canvas2Pixmap();
 			painter.drawPixmap(0, 0, *CanvasPic);
 		}
 		return;
@@ -522,13 +522,13 @@ void MainWindow::slotExecute()
 	kdDebug(0)<<"############## PARSING STARTED ##############"<<endl;
 	kapp->processEvents();
 	errMsg = new ErrorMessage(this); // create an empty errorDialog
-	QString txt = editorInterface->text() + "\x0a\x0a"; // parser expects input to have 2 delimiting newlines
-	QTextIStream in(&txt); // create the stream
+	TQString txt = editorInterface->text() + "\x0a\x0a"; // parser expects input to have 2 delimiting newlines
+	TQTextIStream in(&txt); // create the stream
 	Parser parser(in); // pass the reference to the stream to the parse object
-	connect(&parser, SIGNAL( ErrorMsg(Token&, const QString&, uint) ),
-	         errMsg, SLOT( slotAddError(Token&, const QString&, uint) ) );
-	connect( errMsg, SIGNAL(setSelection(uint, uint, uint, uint) ),
-	           this, SLOT(slotSetSelection(uint, uint, uint, uint) ) );
+	connect(&parser, TQT_SIGNAL( ErrorMsg(Token&, const TQString&, uint) ),
+	         errMsg, TQT_SLOT( slotAddError(Token&, const TQString&, uint) ) );
+	connect( errMsg, TQT_SIGNAL(setSelection(uint, uint, uint, uint) ),
+	           this, TQT_SLOT(slotSetSelection(uint, uint, uint, uint) ) );
 	parser.parse(); // and GO!
 	TreeNode* root = parser.getTree(); // when finished parsing get the nodeTree
 	kdDebug(0)<<"############## PARSING FINISHED ##############"<<endl;
@@ -541,42 +541,42 @@ void MainWindow::slotExecute()
 	kdDebug(0)<<"############## EXECUTION STARTED ##############"<<endl;
 	exe = new Executer(root); // make Executer object, 'exe', and pass it the nodeTree
 	
-	connect(this, SIGNAL( changeSpeed(int) ), exe, SLOT(slotChangeSpeed(int) ) );
-	connect(this, SIGNAL( unpauseExecution() ), exe, SLOT( slotStopPausing() ) );
-	connect( exe, SIGNAL( setSelection(uint, uint, uint, uint) ),
-	        this, SLOT  ( slotSetSelection(uint, uint, uint, uint) ) );
-	connect( exe, SIGNAL( ErrorMsg(Token&, const QString&, uint) ),
-	      errMsg, SLOT  ( slotAddError(Token&, const QString&, uint) ) );
-	connect( exe, SIGNAL( InputDialog(QString&) ), this, SLOT( slotInputDialog(QString&) ) );
-	connect( exe, SIGNAL( MessageDialog(QString) ), this, SLOT( slotMessageDialog(QString) ) );
+	connect(this, TQT_SIGNAL( changeSpeed(int) ), exe, TQT_SLOT(slotChangeSpeed(int) ) );
+	connect(this, TQT_SIGNAL( unpauseExecution() ), exe, TQT_SLOT( slotStopPausing() ) );
+	connect( exe, TQT_SIGNAL( setSelection(uint, uint, uint, uint) ),
+	        this, TQT_SLOT  ( slotSetSelection(uint, uint, uint, uint) ) );
+	connect( exe, TQT_SIGNAL( ErrorMsg(Token&, const TQString&, uint) ),
+	      errMsg, TQT_SLOT  ( slotAddError(Token&, const TQString&, uint) ) );
+	connect( exe, TQT_SIGNAL( InputDialog(TQString&) ), this, TQT_SLOT( slotInputDialog(TQString&) ) );
+	connect( exe, TQT_SIGNAL( MessageDialog(TQString) ), this, TQT_SLOT( slotMessageDialog(TQString) ) );
 
 	// Connect the signals form Executer to the slots from Canvas:
-	connect( exe, SIGNAL( Clear() ), canvasView, SLOT( slotClear() ) );
-	connect( exe, SIGNAL( Go(double, double) ), canvasView, SLOT( slotGo(double, double) ) );
-	connect( exe, SIGNAL( GoX(double) ), canvasView, SLOT( slotGoX(double) ) );
-	connect( exe, SIGNAL( GoY(double) ), canvasView, SLOT( slotGoY(double) ) );
-	connect( exe, SIGNAL( Forward(double) ), canvasView, SLOT( slotForward(double) ) );
-	connect( exe, SIGNAL( Backward(double) ), canvasView, SLOT( slotBackward(double) ) );
-	connect( exe, SIGNAL( Direction(double) ), canvasView, SLOT( slotDirection(double) ) );
-	connect( exe, SIGNAL( TurnLeft(double) ), canvasView, SLOT( slotTurnLeft(double) ) );
-	connect( exe, SIGNAL( TurnRight(double) ), canvasView, SLOT( slotTurnRight(double) ) );
-	connect( exe, SIGNAL( Center() ), canvasView, SLOT( slotCenter() ) );
-	connect( exe, SIGNAL( SetPenWidth(int) ), canvasView, SLOT( slotSetPenWidth(int) ) );
-	connect( exe, SIGNAL( PenUp() ), canvasView, SLOT( slotPenUp() ) );
-	connect( exe, SIGNAL( PenDown() ), canvasView, SLOT( slotPenDown() ) );
-	connect( exe, SIGNAL( SetFgColor(int, int, int) ), canvasView, SLOT( slotSetFgColor(int, int, int) ) );
-	connect( exe, SIGNAL( SetBgColor(int, int, int) ), canvasView, SLOT( slotSetBgColor(int, int, int) ) );
-	connect( exe, SIGNAL( ResizeCanvas(int, int) ), canvasView, SLOT( slotResizeCanvas(int, int) ) );
-	connect( exe, SIGNAL( SpriteShow() ), canvasView, SLOT( slotSpriteShow() ) );
-	connect( exe, SIGNAL( SpriteHide() ), canvasView, SLOT( slotSpriteHide() ) );
-	connect( exe, SIGNAL( SpritePress() ), canvasView, SLOT( slotSpritePress() ) );
-	connect( exe, SIGNAL( SpriteChange(int) ), canvasView, SLOT( slotSpriteChange(int) ) );
-	connect( exe, SIGNAL( Print(QString) ), canvasView, SLOT( slotPrint(QString) ) );
-	connect( exe, SIGNAL( FontType(QString, QString) ), canvasView, SLOT( slotFontType(QString, QString) ) );
-	connect( exe, SIGNAL( FontSize(int) ), canvasView, SLOT( slotFontSize(int) ) );
-	connect( exe, SIGNAL( WrapOn() ), canvasView, SLOT( slotWrapOn() ) );
-	connect( exe, SIGNAL( WrapOff() ), canvasView, SLOT( slotWrapOff() ) );
-	connect( exe, SIGNAL( Reset() ), canvasView, SLOT( slotReset() ) );
+	connect( exe, TQT_SIGNAL( Clear() ), canvasView, TQT_SLOT( slotClear() ) );
+	connect( exe, TQT_SIGNAL( Go(double, double) ), canvasView, TQT_SLOT( slotGo(double, double) ) );
+	connect( exe, TQT_SIGNAL( GoX(double) ), canvasView, TQT_SLOT( slotGoX(double) ) );
+	connect( exe, TQT_SIGNAL( GoY(double) ), canvasView, TQT_SLOT( slotGoY(double) ) );
+	connect( exe, TQT_SIGNAL( Forward(double) ), canvasView, TQT_SLOT( slotForward(double) ) );
+	connect( exe, TQT_SIGNAL( Backward(double) ), canvasView, TQT_SLOT( slotBackward(double) ) );
+	connect( exe, TQT_SIGNAL( Direction(double) ), canvasView, TQT_SLOT( slotDirection(double) ) );
+	connect( exe, TQT_SIGNAL( TurnLeft(double) ), canvasView, TQT_SLOT( slotTurnLeft(double) ) );
+	connect( exe, TQT_SIGNAL( TurnRight(double) ), canvasView, TQT_SLOT( slotTurnRight(double) ) );
+	connect( exe, TQT_SIGNAL( Center() ), canvasView, TQT_SLOT( slotCenter() ) );
+	connect( exe, TQT_SIGNAL( SetPenWidth(int) ), canvasView, TQT_SLOT( slotSetPenWidth(int) ) );
+	connect( exe, TQT_SIGNAL( PenUp() ), canvasView, TQT_SLOT( slotPenUp() ) );
+	connect( exe, TQT_SIGNAL( PenDown() ), canvasView, TQT_SLOT( slotPenDown() ) );
+	connect( exe, TQT_SIGNAL( SetFgColor(int, int, int) ), canvasView, TQT_SLOT( slotSetFgColor(int, int, int) ) );
+	connect( exe, TQT_SIGNAL( SetBgColor(int, int, int) ), canvasView, TQT_SLOT( slotSetBgColor(int, int, int) ) );
+	connect( exe, TQT_SIGNAL( ResizeCanvas(int, int) ), canvasView, TQT_SLOT( slotResizeCanvas(int, int) ) );
+	connect( exe, TQT_SIGNAL( SpriteShow() ), canvasView, TQT_SLOT( slotSpriteShow() ) );
+	connect( exe, TQT_SIGNAL( SpriteHide() ), canvasView, TQT_SLOT( slotSpriteHide() ) );
+	connect( exe, TQT_SIGNAL( SpritePress() ), canvasView, TQT_SLOT( slotSpritePress() ) );
+	connect( exe, TQT_SIGNAL( SpriteChange(int) ), canvasView, TQT_SLOT( slotSpriteChange(int) ) );
+	connect( exe, TQT_SIGNAL( Print(TQString) ), canvasView, TQT_SLOT( slotPrint(TQString) ) );
+	connect( exe, TQT_SIGNAL( FontType(TQString, TQString) ), canvasView, TQT_SLOT( slotFontType(TQString, TQString) ) );
+	connect( exe, TQT_SIGNAL( FontSize(int) ), canvasView, TQT_SLOT( slotFontSize(int) ) );
+	connect( exe, TQT_SIGNAL( WrapOn() ), canvasView, TQT_SLOT( slotWrapOn() ) );
+	connect( exe, TQT_SIGNAL( WrapOff() ), canvasView, TQT_SLOT( slotWrapOff() ) );
+	connect( exe, TQT_SIGNAL( Reset() ), canvasView, TQT_SLOT( slotReset() ) );
 
 	// START EXECUTION on the selected speed, and use the feedbacked boolean value
 	slotChangeSpeed();
@@ -625,7 +625,7 @@ void MainWindow::finishExecution()
 	if (speed->currentItem() == 0) slotClearSelection();
 
 	// if coming from fullscreen-mode show the editor, menu- and statusbar
-	if (b_fullscreen) QTimer::singleShot( 1000, this, SLOT( slotFinishedFullScreenExecution() ) );
+	if (b_fullscreen) TQTimer::singleShot( 1000, this, TQT_SLOT( slotFinishedFullScreenExecution() ) );
 }
 
 void MainWindow::slotChangeSpeed()
@@ -636,12 +636,12 @@ void MainWindow::slotChangeSpeed()
 
 // slots for logo functions that need to use the MainWindow class:
 
-void MainWindow::slotInputDialog(QString& value)
+void MainWindow::slotInputDialog(TQString& value)
 {
 	value = KInputDialog::getText(i18n("Input"), value);
 }
 
-void MainWindow::slotMessageDialog(QString text)
+void MainWindow::slotMessageDialog(TQString text)
 {
 	KMessageBox::information( this, text, i18n("Message") );
 }
@@ -658,7 +658,7 @@ void MainWindow::slotEditor()
 	a->activate();
 }
 
-void MainWindow::slotSetHighlightstyle(QString langCode)
+void MainWindow::slotSetHighlightstyle(TQString langCode)
 {
 	KTextEditor::HighlightingInterface *hli = dynamic_cast<KTextEditor::HighlightingInterface*>(doc);
 	for (uint i = 0; i < hli->hlModeCount(); i++)
@@ -781,7 +781,7 @@ void MainWindow::slotToggleLineNumbers()
 	a->activate();
 }
 
-void MainWindow::slotInsertText(QString str)
+void MainWindow::slotInsertText(TQString str)
 {
 	uint StartLine, StartCol, EndLine, EndCol;
 	dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->cursorPositionReal(&StartLine, &StartCol);
@@ -813,10 +813,10 @@ void MainWindow::slotToggleFullscreen()
 	else if ( isFullScreen() ) showNormal();
 }
 
-bool MainWindow::event(QEvent* e)
+bool MainWindow::event(TQEvent* e)
 {
 	// executes updateFullScreen() after a ShowFullScreen or ShowNormal event got triggered
-	if (e->type() == QEvent::ShowFullScreen || e->type() == QEvent::ShowNormal) updateFullScreen();
+	if (e->type() == TQEvent::ShowFullScreen || e->type() == TQEvent::ShowNormal) updateFullScreen();
 	return KMainWindow::event(e);
 }
 
@@ -833,9 +833,9 @@ void MainWindow::slotFinishedFullScreenExecution()
 	if ( errMsg->containsErrors() ) slotBackToFullScreen(); // straight back to edit if there where errors 
 	else
 	{
-		connect( restartOrBackDialog, SIGNAL( user1Clicked() ), this, SLOT( slotRestartFullScreen() ) );
-		connect( restartOrBackDialog, SIGNAL( user2Clicked() ), this, SLOT( slotBackToFullScreen() ) );
-		connect( restartOrBackDialog, SIGNAL( finished() ), this, SLOT( slotBackToFullScreen() ) );
+		connect( restartOrBackDialog, TQT_SIGNAL( user1Clicked() ), this, TQT_SLOT( slotRestartFullScreen() ) );
+		connect( restartOrBackDialog, TQT_SIGNAL( user2Clicked() ), this, TQT_SLOT( slotBackToFullScreen() ) );
+		connect( restartOrBackDialog, TQT_SIGNAL( finished() ), this, TQT_SLOT( slotBackToFullScreen() ) );
 		restartOrBackDialog->show();
 		restartOrBackDialog->move(50, 50);
 	}
@@ -870,21 +870,21 @@ void MainWindow::slotSettings()
 	// Create a new dialog with the same name as the above checking code.
 	KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self() );
 	// connect the help
-	connect( dialog, SIGNAL( helpClicked() ), this, SLOT( slotSettingsHelp() ) );
+	connect( dialog, TQT_SIGNAL( helpClicked() ), this, TQT_SLOT( slotSettingsHelp() ) );
 	
 	// making the filling for the 'General' settings dept.
-	general = new QWidget();
-	QGridLayout *generalLayout = new QGridLayout( general, 1, 1, 11, 6, "generalLayout");
-	WidthHeightBox = new QGroupBox( i18n("Initial Canvas Size"), general );
+	general = new TQWidget();
+	TQGridLayout *generalLayout = new TQGridLayout( general, 1, 1, 11, 6, "generalLayout");
+	WidthHeightBox = new TQGroupBox( i18n("Initial Canvas Size"), general );
 	WidthHeightBox->setColumnLayout(0, Qt::Vertical );
 	WidthHeightBox->layout()->setSpacing( 6 );
 	WidthHeightBox->layout()->setMargin( 11 );
-	QVBoxLayout *WidthHeightBoxLayout = new QVBoxLayout( WidthHeightBox->layout() );
+	TQVBoxLayout *WidthHeightBoxLayout = new TQVBoxLayout( WidthHeightBox->layout() );
 	WidthHeightBoxLayout->setAlignment( Qt::AlignTop );
-	QHBoxLayout *layout3 = new QHBoxLayout( 0, 0, 6, "layout3");
-	QVBoxLayout *layout2 = new QVBoxLayout( 0, 0, 6, "layout2");
+	TQHBoxLayout *layout3 = new TQHBoxLayout( 0, 0, 6, "layout3");
+	TQVBoxLayout *layout2 = new TQVBoxLayout( 0, 0, 6, "layout2");
 	
-	QVBoxLayout *layout1 = new QVBoxLayout( 0, 0, 6, "layout1");
+	TQVBoxLayout *layout1 = new TQVBoxLayout( 0, 0, 6, "layout1");
 
 	kcfg_CanvasWidth = new KIntNumInput( WidthHeightBox, "kcfg_CanvasWidth" );
 	kcfg_CanvasWidth->setValue( 400 );
@@ -898,65 +898,65 @@ void MainWindow::slotSettings()
 	kcfg_CanvasHeight->setReferencePoint( 1 );
 	layout1->addWidget( kcfg_CanvasHeight );
 
-	WidthLabel = new QLabel( kcfg_CanvasWidth, i18n("Canvas &width:"), WidthHeightBox );
+	WidthLabel = new TQLabel( kcfg_CanvasWidth, i18n("Canvas &width:"), WidthHeightBox );
 	layout2->addWidget( WidthLabel );
-	HeightLabel = new QLabel( kcfg_CanvasHeight, i18n("Ca&nvas height:"), WidthHeightBox );
+	HeightLabel = new TQLabel( kcfg_CanvasHeight, i18n("Ca&nvas height:"), WidthHeightBox );
 	layout2->addWidget( HeightLabel );
 	layout3->addLayout( layout2 );
 
 	layout3->addLayout( layout1 );
 	WidthHeightBoxLayout->addLayout( layout3 );
-	QLabel* WidthHeightLabel = new QLabel(i18n("You need to restart before these settings have effect"), WidthHeightBox);
+	TQLabel* WidthHeightLabel = new TQLabel(i18n("You need to restart before these settings have effect"), WidthHeightBox);
 	WidthHeightBoxLayout->addWidget( WidthHeightLabel );
 	generalLayout->addWidget( WidthHeightBox, 0, 0 );
-	general->resize( QSize(234, 109).expandedTo(minimumSizeHint()) );
+	general->resize( TQSize(234, 109).expandedTo(minimumSizeHint()) );
 
 	dialog->addPage( general, i18n("General"), "package_settings", i18n("General Settings") );
 
 	// making the filling for the 'Language' settings dept.
-	QWidget *language = new QWidget();
-	QGridLayout *languageLayout = new QGridLayout( language, 1, 1, 11, 6, "Form1Layout");
-	QGroupBox *groupBox1 = new QGroupBox( language, "groupBox1" );
+	TQWidget *language = new TQWidget();
+	TQGridLayout *languageLayout = new TQGridLayout( language, 1, 1, 11, 6, "Form1Layout");
+	TQGroupBox *groupBox1 = new TQGroupBox( language, "groupBox1" );
 	groupBox1->setColumnLayout(0, Qt::Vertical );
 	groupBox1->layout()->setSpacing( 6 );
 	groupBox1->layout()->setMargin( 11 );
-	QGridLayout *groupBox1Layout = new QGridLayout( groupBox1->layout() );
+	TQGridLayout *groupBox1Layout = new TQGridLayout( groupBox1->layout() );
 	groupBox1Layout->setAlignment( Qt::AlignTop );
 
-	QVBoxLayout *layout4 = new QVBoxLayout( 0, 0, 6, "layout4");
+	TQVBoxLayout *layout4 = new TQVBoxLayout( 0, 0, 6, "layout4");
 
 	kcfg_LanguageComboBox = new KComboBox(groupBox1, "kcfg_LanguageComboBox");
 	kcfg_LanguageComboBox->setEditable(false);
-	QStringList LogoLanguageList = Settings::logoLanguageList();
+	TQStringList LogoLanguageList = Settings::logoLanguageList();
 	// Add the full language names to the items
-	for ( QStringList::Iterator it = LogoLanguageList.begin(); it != LogoLanguageList.end(); ++it ) {
+	for ( TQStringList::Iterator it = LogoLanguageList.begin(); it != LogoLanguageList.end(); ++it ) {
 		*it = KGlobal::locale()->twoAlphaToLanguageName( (*it).left(2) ) + " (" + *it + ")";
 	}
 	kcfg_LanguageComboBox->insertStringList(LogoLanguageList);
 	
-	LanguageLabel = new QLabel(kcfg_LanguageComboBox, i18n("&Select the language for the Logo commands:"), groupBox1);
+	LanguageLabel = new TQLabel(kcfg_LanguageComboBox, i18n("&Select the language for the Logo commands:"), groupBox1);
 	layout4->addWidget( LanguageLabel );
 	layout4->addWidget( kcfg_LanguageComboBox );
 	LanguageLabel->setBuddy( kcfg_LanguageComboBox );
 
 	groupBox1Layout->addLayout( layout4, 0, 0 );
 	languageLayout->addWidget( groupBox1, 0, 0 );
-	language->resize( QSize(373, 80).expandedTo(minimumSizeHint()) );
+	language->resize( TQSize(373, 80).expandedTo(minimumSizeHint()) );
 
 	dialog->addPage( language, i18n("Language"), "locale", i18n("Language Settings") );
 
 	// When the user clicks OK or Apply we want to update our settings.
-	connect( dialog, SIGNAL( settingsChanged() ), this, SLOT( slotUpdateSettings() ) );
+	connect( dialog, TQT_SIGNAL( settingsChanged() ), this, TQT_SLOT( slotUpdateSettings() ) );
 
 	// Display the dialog is there where errors.
-	dialog->setInitialSize( QSize(550, 300) );
+	dialog->setInitialSize( TQSize(550, 300) );
 	dialog->show();
 }
 
 void MainWindow::slotUpdateSettings()
 {
 	// get the selected language as a language code
-	QString selectedLogoLanguage = kcfg_LanguageComboBox->currentText().section( "(", -1, -1 ).remove(")");
+	TQString selectedLogoLanguage = kcfg_LanguageComboBox->currentText().section( "(", -1, -1 ).remove(")");
 	// update the settings
 	Settings::setLogoLanguage( selectedLogoLanguage );
 	Settings::setLanguageComboBox( kcfg_LanguageComboBox->currentItem() );
@@ -1012,7 +1012,7 @@ void MainWindow::slotContextHelp()
 
 	kdDebug(0)<<"help requested on this text: "<<helpKeyword<<endl;
 	
-	QString helpWord;
+	TQString helpWord;
 	if ( helpKeyword == i18n("<no keyword>") )
 	{
 		KMessageBox::information( this, i18n("There is currently no text under the cursor to get help on."), i18n("Nothing Under Cursor") );
@@ -1042,7 +1042,7 @@ void MainWindow::slotContextHelp()
 	
 	kapp->invokeHelp(helpWord, "", "");
 	
-	QString help2statusBar;
+	TQString help2statusBar;
 	if ( helpKeyword.startsWith("<") ) help2statusBar = helpKeyword;
 	else                               help2statusBar = i18n("\"%1\"").arg(helpKeyword);
 	slotStatusBar(i18n("Displaying help on %1").arg(help2statusBar), IDS_STATUS);
@@ -1052,7 +1052,7 @@ void MainWindow::slotContextHelpUpdate()
 {
 	uint row, col;
 	dynamic_cast<KTextEditor::ViewCursorInterface*>(editor)->cursorPositionReal(&row, &col);
-	QString line = dynamic_cast<KTextEditor::EditInterface*>(doc)->textLine(row);
+	TQString line = dynamic_cast<KTextEditor::EditInterface*>(doc)->textLine(row);
 	
 	// two shortcuts so we dont do all the CPU intensive regexp stuff when it not needed
 	if ( line.stripWhiteSpace().startsWith("#") )
@@ -1073,7 +1073,7 @@ void MainWindow::slotContextHelpUpdate()
 	pos = 0;
 	if ( line.contains('"') )
 	{
-		QRegExp delimitedStrings("(\"[^\"\\\\\\r\\n]*(\\\\.[^\"\\\\\\r\\n]*)*\")");
+		TQRegExp delimitedStrings("(\"[^\"\\\\\\r\\n]*(\\\\.[^\"\\\\\\r\\n]*)*\")");
 		while ( delimitedStrings.search(line, pos) != -1 )
 		{
 			// kdDebug(0)<<"stringsearch: >>"<<pos<<"<<"<<endl;
@@ -1091,7 +1091,7 @@ void MainWindow::slotContextHelpUpdate()
 	
 	
 	// except for "strings" this regexp effectively separates logo code in 'words' (in a very broad meaning)
-	QRegExp splitter("(([^ ,+\\-*/()=<>[!]|(?!==|<=|>=|!=))*)|(([ ,+\\-*/()=<>[!]|==|<=|>=|!=))");
+	TQRegExp splitter("(([^ ,+\\-*/()=<>[!]|(?!==|<=|>=|!=))*)|(([ ,+\\-*/()=<>[!]|==|<=|>=|!=))");
 	
 	pos = 0;
 	while (splitter.search(line, pos) != -1)
@@ -1101,7 +1101,7 @@ void MainWindow::slotContextHelpUpdate()
 		if ( col <  (uint)start ) break;
 		if ( col >= (uint)start && col < (uint)(start+length) )
 		{
-			QString cursorWord = line.mid( (uint)start, (uint)length );
+			TQString cursorWord = line.mid( (uint)start, (uint)length );
 			kdDebug(0)<<"cursorWord: '"<<cursorWord<<"'"<<endl;
 			
 			kdDebug(0)<<"(translate->name2key(  cursorWord.lower() )): '"<<translate->name2key(  cursorWord.lower() )<<"'"<<endl;
@@ -1112,13 +1112,13 @@ void MainWindow::slotContextHelpUpdate()
 			else if ( !translate->name2key(  cursorWord.lower() ).isEmpty() ) helpKeyword = cursorWord;
 			else if ( !translate->alias2key( cursorWord.lower() ).isEmpty() ) helpKeyword = cursorWord;
 
-			else if ( cursorWord.find( QRegExp("[\\d.]+") ) == 0 ) helpKeyword = i18n("<number>");
+			else if ( cursorWord.find( TQRegExp("[\\d.]+") ) == 0 ) helpKeyword = i18n("<number>");
 
-			else if ( cursorWord.find( QRegExp("[+\\-*/\\(\\)]") ) == 0 ) helpKeyword = i18n("<math>");
+			else if ( cursorWord.find( TQRegExp("[+\\-*/\\(\\)]") ) == 0 ) helpKeyword = i18n("<math>");
 
-			else if ( cursorWord == QString("=") ) helpKeyword = i18n("<assignment>");
+			else if ( cursorWord == TQString("=") ) helpKeyword = i18n("<assignment>");
 
-			else if ( cursorWord.find( QRegExp("==|<|>|<=|>=|!=") ) == 0 ) helpKeyword = i18n("<question>");
+			else if ( cursorWord.find( TQRegExp("==|<|>|<=|>=|!=") ) == 0 ) helpKeyword = i18n("<question>");
 
 			// if we come here we either have an ID of some sort or an error
 			// all we can do is try to catch some errors (TODO) and then...
@@ -1150,8 +1150,8 @@ void MainWindow::slotColorPicker()
 	{
 		picker = new ColorPicker(this);
 		if(picker == 0) return; // safety
-		connect( picker, SIGNAL( visible(bool) ), colorpicker, SLOT( setChecked(bool) ) );
-		connect( picker, SIGNAL( ColorCode(QString) ), this, SLOT( slotInsertText(QString) ) );
+		connect( picker, TQT_SIGNAL( visible(bool) ), colorpicker, TQT_SLOT( setChecked(bool) ) );
+		connect( picker, TQT_SIGNAL( ColorCode(TQString) ), this, TQT_SLOT( slotInsertText(TQString) ) );
 	}
 	// if picker is not 0, there is a colorpickerdialog which only needs to be shown OR hidden
 	if ( picker->isHidden() )

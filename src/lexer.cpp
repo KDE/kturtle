@@ -16,8 +16,8 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include <qdom.h>
-#include <qfile.h>
+#include <tqdom.h>
+#include <tqfile.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -27,7 +27,7 @@
 #include "lexer.h"
 
 
-Lexer::Lexer(QTextIStream& iStream)
+Lexer::Lexer(TQTextIStream& iStream)
 {
 	inputStream = &iStream;
 	row = 1;
@@ -48,7 +48,7 @@ Token Lexer::lex()
 	currentToken.start.row = row;
 	currentToken.start.col = col;
 
-	QChar currentChar = getChar();
+	TQChar currentChar = getChar();
 
 	if ( inputStream->atEnd() )
 	{
@@ -65,7 +65,7 @@ Token Lexer::lex()
 			currentChar = getChar();
 	}
 	
-	// if (currentChar.category() == QChar::Separator_Line) somehow doesnt work
+	// if (currentChar.category() == TQChar::Separator_Line) somehow doesnt work
 	if (currentChar == '\x0a' || currentChar == '\n')
 	{
 		currentToken.type = tokEOL;
@@ -198,14 +198,14 @@ Token Lexer::lex()
 
 // PRIVATEs
 
-QChar Lexer::getChar()
+TQChar Lexer::getChar()
 {
-	QChar c;
+	TQChar c;
 	if ( !putBackChar.isNull() )
 	{
 		c = putBackChar; // use the char that is stored to be put back
 		// kdDebug(0)<<"Lexer::getChar(), restored: '"<<c<<"' @ ("<<row<<", "<<col<<")"<<endl;
-		putBackChar = QChar(); // and set putBackChar back to NULL
+		putBackChar = TQChar(); // and set putBackChar back to NULL
 		if (c == '\x0a' || c == '\n')
 		{
 			row++;
@@ -219,7 +219,7 @@ QChar Lexer::getChar()
 	}
 	else
 	{
-		*inputStream >> c; // take a QChar of the inputStream
+		*inputStream >> c; // take a TQChar of the inputStream
 		// kdDebug(0)<<"Lexer::getChar(): '"<<c<<"' @ ("<<row<<", "<<col<<")"<<endl;
 		if (c == '\x0a' || c == '\n')
 		{
@@ -235,7 +235,7 @@ QChar Lexer::getChar()
 	return c;
 }
 
-void Lexer::ungetChar(QChar c)
+void Lexer::ungetChar(TQChar c)
 {
 	if (c == '\x0a' || c == '\n')
 	{
@@ -250,10 +250,10 @@ void Lexer::ungetChar(QChar c)
 	// kdDebug(0)<<"Lexer::ungetChar(), saved char: '"<<c<<"' and steped back to ("<<row<<", "<<col<<")"<<endl;
 }
 
-int Lexer::getWord(QString& word)
+int Lexer::getWord(TQString& word)
 {
 	// kdDebug(0)<<"Lexer::getWord()"<<endl;
-	QChar currentChar = getChar();
+	TQChar currentChar = getChar();
 	if ( currentChar.isLetter() || currentChar == '[' || currentChar == ']' ) {
 		while ( ( currentChar.isLetterOrNumber() || currentChar == '_' || currentChar == '[' || currentChar == ']' ) && !inputStream->atEnd() )
 		{
@@ -272,7 +272,7 @@ void Lexer::setTokenType(Token& currentToken)
 	if (currentToken.type == tokUnknown)
 	{
 		// make lowercase copy of the word as it was found in the inputStream
-		QString k = currentToken.look.lower();
+		TQString k = currentToken.look.lower();
 		// if the key is an alias translate that alias to a key
 		if ( !translate->alias2key(k).isEmpty() ) k = translate->alias2key(k);
 		
@@ -343,8 +343,8 @@ void Lexer::setTokenType(Token& currentToken)
 void Lexer::skipSpaces()
 {
 	// kdDebug(0)<<"Lexer::skipSpaces(), skipping SPACES."<<endl;
-	QChar currentChar = getChar();
-	// when the Separator_* groups can be identified in the QChar thing would be easier
+	TQChar currentChar = getChar();
+	// when the Separator_* groups can be identified in the TQChar thing would be easier
 	while ( !inputStream->atEnd() && ( currentChar.isSpace() && !(currentChar == '\x0a' || currentChar == '\n') ) )
 	{
 		currentChar = getChar();
@@ -353,12 +353,12 @@ void Lexer::skipSpaces()
 }
 
 
-int Lexer::getNumber(Value& num, QString& look)
+int Lexer::getNumber(Value& num, TQString& look)
 {
 	// by reference the value (Value) and look part are set
 	// kdDebug(0)<<"Lexer::getNumber()"<<endl;
 	bool hasPoint = false;
-	QChar currentChar = getChar();
+	TQChar currentChar = getChar();
 	if ( currentChar.isNumber() )
 	{
 		while ( ( currentChar.isNumber() || (currentChar == '.' && !hasPoint) ) && !inputStream->atEnd() )
@@ -380,8 +380,8 @@ int Lexer::getNumber(Value& num, QString& look)
 
 void Lexer::getString(Token& currentToken)
 {
-	QString str = "\""; // start with a " cauz it just got lost
-	QChar currentChar = QChar(); // start empty
+	TQString str = "\""; // start with a " cauz it just got lost
+	TQChar currentChar = TQChar(); // start empty
 	while ( currentChar != '"' && !(currentChar == '\x0a' || currentChar == '\n') && !inputStream->atEnd() )
 	{
 		currentChar = getChar();

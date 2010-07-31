@@ -20,7 +20,7 @@
 #ifndef _PARSER_H_
 #define _PARSER_H_
 
-#include <qobject.h>
+#include <tqobject.h>
 
 #include "lexer.h"
 #include "treenode.h"
@@ -31,7 +31,7 @@ class Parser : public QObject
 	Q_OBJECT
 	
 	public:
-		Parser(QTextIStream& in);
+		Parser(TQTextIStream& in);
 		virtual ~Parser();
 	
 		void parse();
@@ -39,7 +39,7 @@ class Parser : public QObject
 
 
 	signals:
-		void ErrorMsg(Token&, const QString&, uint code);
+		void ErrorMsg(Token&, const TQString&, uint code);
 
 
 	private:
@@ -49,7 +49,7 @@ class Parser : public QObject
 		void getToken();
 		void matchToken(int tokenType);
 		void appendParameters(TreeNode* node);
-		void Error(Token&, const QString& s, uint code);
+		void Error(Token&, const TQString& s, uint code);
 	
 		TreeNode* Program();
 		TreeNode* ParamList();
@@ -120,7 +120,7 @@ class Parser : public QObject
 		Token        preservedToken; // to preserve the currentToken so it wont get lost
 		uint         row;
 		uint         col;
-		QStringList  learnedFunctionList;
+		TQStringList  learnedFunctionList;
 };
 
 #endif // _PARSER_H_

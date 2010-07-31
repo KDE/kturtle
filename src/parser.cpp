@@ -20,7 +20,7 @@
 // allmost every aspect of it is heavily changed by Cies Breijs.
 
 
-#include <qstringlist.h>
+#include <tqstringlist.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -28,7 +28,7 @@
 #include "parser.h"
 
 
-Parser::Parser(QTextIStream& in)
+Parser::Parser(TQTextIStream& in)
 {
 	lexer = new Lexer(in);
 	tree = new TreeNode();
@@ -198,8 +198,8 @@ TreeNode* Parser::Factor()
 
 		case tokString:
 			node = new TreeNode(currentToken, constantNode);
-			{ // extra scope to localize the QString 'str'
-				QString str = currentToken.look;
+			{ // extra scope to localize the TQString 'str'
+				TQString str = currentToken.look;
 				if ( currentToken.look.endsWith("\"") )
 				{
 					// cut off the quotes and store the value
@@ -238,7 +238,7 @@ TreeNode* Parser::Factor()
 			break;
 
 		default:
-			QString s = currentToken.look;
+			TQString s = currentToken.look;
 			if ( s.isEmpty() || currentToken.type == tokEOF )
 			{
 				Error(currentToken, i18n("INTERNAL ERROR NR %1: please sent this Logo script to KTurtle developers").arg(1), 1020);
@@ -1075,7 +1075,7 @@ TreeNode* Parser::Other()
 }
 
 
-void Parser::Error(Token& t, const QString& s, uint code)
+void Parser::Error(Token& t, const TQString& s, uint code)
 {
 	emit ErrorMsg(t, s, code);
 }

@@ -104,7 +104,7 @@ void Value::setNumber(double d)
 	m_string.setNum(d);
 }
 
-bool Value::setNumber(const QString &s)
+bool Value::setNumber(const TQString &s)
 {
 	type = numberValue;
 	bool ok = true;
@@ -119,16 +119,16 @@ bool Value::setNumber(const QString &s)
 }
 
 
-QString Value::String() const
+TQString Value::String() const
 {
 	if (type == boolValue)
 	{
-		if (m_bool) return QString( i18n("true") );
-		else return QString( i18n("false") );
+		if (m_bool) return TQString( i18n("true") );
+		else return TQString( i18n("false") );
 	}
 	else if (type == numberValue)
 	{
-		QString s;
+		TQString s;
 		s.setNum(m_double);
 		return s;
 	}
@@ -142,7 +142,7 @@ void Value::setString(double d)
 	m_string.setNum(d);
 }
 
-void Value::setString(const QString &s)
+void Value::setString(const TQString &s)
 {
 	type = stringValue;
 	m_string = s;
@@ -182,7 +182,7 @@ Value& Value::operator=(const Value& n)
 }
 
 
-Value& Value::operator=(const QString& s)
+Value& Value::operator=(const TQString& s)
 {
 	setString(s);
 	return *this;
