@@ -124,7 +124,7 @@ $or_0_0 = false or false  # -> false
 $not_1 = not true   # -> false
 $not_0 = not false  # -> true
 </screen>
-Using the <link linkend="the-inspector">inspector</link> you can see the values, yet we also supply these results as little comments at the end of the lines. <userinput>and</userinput> evaluates <userinput>true</userinput> only if both sides are <userinput>true</userinput>. <userinput>or</userinput> evaluates <userinput>true</userinput> if either side of <userinput>true</userinput>. And <userinput>not</userinput> turns a <userinput>true</userinput> into <userinput>false</userinput> and a <userinput>false</userinput> into <userinput>true</userinput>.</para>
+Using the <link linkend="the-inspector">inspector</link> you can see the values, yet we also supply these results as little comments at the end of the lines. <userinput>and</userinput> evaluates <userinput>true</userinput> only if both sides are <userinput>true</userinput>. <userinput>or</userinput> evaluates <userinput>true</userinput> if either side is <userinput>true</userinput>. And <userinput>not</userinput> turns a <userinput>true</userinput> into <userinput>false</userinput> and a <userinput>false</userinput> into <userinput>true</userinput>.</para>
 <para>Boolean operators are <glossterm>highlighted</glossterm> with pink.</para>
 
 <sect3 id="boolean-operators-advanced-examples">
@@ -175,39 +175,39 @@ Here are all possible comparing operators:
 <tgroup cols="3">
 <tbody>
 <row>
-<entry><userinput>A == B</userinput></entry>
+<entry><userinput>$A == $B</userinput></entry>
 <entry>equals</entry>
-<entry>answer is <quote>true</quote> if <userinput>A</userinput> equals <userinput>B</userinput></entry>
+<entry>answer is <quote>true</quote> if <userinput>$A</userinput> equals <userinput>$B</userinput></entry>
 </row>
 <row>
-<entry><userinput>A != B</userinput></entry>
+<entry><userinput>$A != $B</userinput></entry>
 <entry>not-equals</entry>
-<entry>answer is <quote>true</quote> if <userinput>A</userinput> does not equal <userinput>B</userinput></entry>
+<entry>answer is <quote>true</quote> if <userinput>$A</userinput> does not equal <userinput>$B</userinput></entry>
 </row>
 <row>
-<entry><userinput>A &gt; B</userinput></entry>
+<entry><userinput>$A &gt; $B</userinput></entry>
 <entry>greater than</entry>
-<entry>answer is <quote>true</quote> if <userinput>A</userinput> is greater than <userinput>B</userinput></entry>
+<entry>answer is <quote>true</quote> if <userinput>$A</userinput> is greater than <userinput>$B</userinput></entry>
 </row>
 <row>
-<entry><userinput>A &lt; B</userinput></entry>
+<entry><userinput>$A &lt; $B</userinput></entry>
 <entry>smaller than</entry>
-<entry>answer is <quote>true</quote> if <userinput>A</userinput> is smaller than <userinput>B</userinput></entry>
+<entry>answer is <quote>true</quote> if <userinput>$A</userinput> is smaller than <userinput>$B</userinput></entry>
 </row>
 <row>
-<entry><userinput>A &gt;= B</userinput></entry>
+<entry><userinput>$A &gt;= $B</userinput></entry>
 <entry>greater than or equals</entry>
-<entry>answer is <quote>true</quote> if <userinput>A</userinput> is greater than or equals <userinput>B</userinput></entry>
+<entry>answer is <quote>true</quote> if <userinput>$A</userinput> is greater than or equals <userinput>$B</userinput></entry>
 </row>
 <row>
-<entry><userinput>A &lt;= B</userinput></entry>
+<entry><userinput>$A &lt;= $B</userinput></entry>
 <entry>smaller than or equals</entry>
-<entry>answer is <quote>true</quote> if <userinput>A</userinput> is smaller than or equals <userinput>B</userinput></entry>
+<entry>answer is <quote>true</quote> if <userinput>$A</userinput> is smaller than or equals <userinput>$B</userinput></entry>
 </row>
 </tbody>
 </tgroup>
 </table>
-Please note that A and B have to be <link linkend="number">numbers</link> and <link linkend="assignment-of-variables">variables</link> that contain numbers.</para>
+Please note that $A and $B have to be <link linkend="number">numbers</link> or <link linkend="assignment-of-variables">variables</link> that contain numbers.</para>
 </sect2>
 
 
@@ -611,7 +611,9 @@ backward 30
 # the next command prints "2004 plus 25 equals 2029"
 print $a + " plus " + $b + " equals " + ($a + $b)
 </screen>
-In the first two lines the variables <userinput>a</userinput> and <userinput>b</userinput> are set to 2004 and 25. Then in two <userinput>print</userinput> commands with a <userinput>backward 30</userinput> in between. The comments before the <userinput>print</userinput> commands explain what they are doing. As you see variables can be used just as if their where what they contain, you can use them with any kind of <link linkend="operators">operators</link> or give them as input when invoking <link linkend="commands">commands</link>.</para>
+In the first two lines the variables <userinput>$a</userinput> and <userinput>$b</userinput> are set to 2004 and 25. Then in two <userinput>print</userinput> commands with a <userinput>backward 30</userinput> in between are executed. The comments before the <userinput>print</userinput> commands explain what they are doing. The command <userinput>backward 30</userinput> is there to make 
+sure every output is on a new line.
+As you see variables can be used just as if their where what they contain, you can use them with any kind of <link linkend="operators">operators</link> or give them as input when invoking <link linkend="commands">commands</link>.</para>
 
 <para>One more example:
 <screen>
@@ -734,7 +736,7 @@ for $x = 1 to 10 {
   forward 15
 }
 </screen>
-     Every time the code between the brackets is executed the <userinput>$x</userinput> is increased by 1, until <userinput>x</userinput> reaches the value of 10. The code between the brackets prints the <userinput>$x</userinput> multiplied by 7. After this program finishes its execution you will see the times table of 7 on the canvas.
+     Every time the code between the brackets is executed the <userinput>$x</userinput> is increased by 1, until <userinput>$x</userinput> reaches the value of 10. The code between the brackets prints the <userinput>$x</userinput> multiplied by 7. After this program finishes its execution you will see the times table of 7 on the canvas.
      </para>
      <para>
      The default step size of a loop is 1, you can use an other value with
