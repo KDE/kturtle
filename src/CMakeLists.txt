@@ -51,7 +51,7 @@ target_link_libraries (
 )
 
 install (TARGETS  kturtle          ${INSTALL_TARGETS_DEFAULT_ARGS})
-install (FILES    kturtle.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR})
+install (PROGRAMS    kturtle.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR})
 install (FILES    kturtleui.rc     DESTINATION ${DATA_INSTALL_DIR}/kturtle)
 install (FILES    kturtle.knsrc    DESTINATION ${CONFIG_INSTALL_DIR}) 
 
