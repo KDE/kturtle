@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=KTurtle
 Name[af]=KSkilpad
+Name[ast]=KTurtle
 Name[be]=KTurtle
 Name[bg]=KTurtle
 Name[bn]=কে-টার্টল
@@ -60,6 +61,7 @@ Name[x-test]=xxKTurtlexx
 Name[zh_CN]=KTurtle
 Name[zh_TW]=KTurtle
 GenericName=Educational Programming Environment
+GenericName[ast]=Entornu de programación educativu
 GenericName[bg]=Програмиране на Лого
 GenericName[ca]=Entorn de programació educatiu
 GenericName[ca@valencia]=Entorn de programació educatiu
