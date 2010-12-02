@@ -142,7 +142,7 @@ bool Parser::skipToken(int expectedTokenType, Token& byToken)
 
 void Parser::addError(const QString& s, const Token& t, int code)
 {
-	if (m_testing)
+//	if (m_testing)
 // 		kDebug(0) << "ERR> " << qPrintable(s) << " (parse error)";
 	errorList->addError(s, t, code);
 }
