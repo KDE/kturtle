@@ -253,7 +253,8 @@ TreeNode* Parser::parseFactor()
 			rememberedToken = currentToken;
 			nextToken();
 			node = parseExpression();
-			skipToken(Token::ParenthesisClose, *rememberedToken);
+			if(currentToken->type()!=Token::ParenthesisClose)
+				skipToken(Token::ParenthesisClose, *rememberedToken);
 			break;
 
 		case Token::FunctionCall:
