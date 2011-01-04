@@ -18,7 +18,7 @@
 
  
 // Note on this file:
-// It contains 200 lines of code just to make sure very long line are drawn correctly
+// It tqcontains 200 lines of code just to make sure very long line are drawn correctly
 // till a certain extent... Beyond that extent the code just cuts the crap, since use user
 // it then probably not doing anything usefull anymore; so he she will not notice the code
 // is cheating a bit in order to prevent CPU hogging.
@@ -297,11 +297,11 @@ void Canvas::slotPrint(TQString text)
 void Canvas::slotFontType(TQString family, TQString extra)
 {
 	font.setFamily(family);
-	font.setBold( extra.contains("bold") > 0 );
-	font.setItalic( extra.contains("italic") > 0 );
-	font.setUnderline( extra.contains("underline") > 0 );
-	font.setOverline( extra.contains("overline") > 0 );
-	font.setStrikeOut( extra.contains("strikeout") > 0 );
+	font.setBold( extra.tqcontains("bold") > 0 );
+	font.setItalic( extra.tqcontains("italic") > 0 );
+	font.setUnderline( extra.tqcontains("underline") > 0 );
+	font.setOverline( extra.tqcontains("overline") > 0 );
+	font.setStrikeOut( extra.tqcontains("strikeout") > 0 );
 }
 
 void Canvas::slotFontSize(int px)

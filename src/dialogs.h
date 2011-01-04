@@ -58,7 +58,7 @@ class ErrorMessage : public KDialogBase
 		ErrorMessage(TQWidget *parent);
 		~ErrorMessage() {}
 	
-		bool containsErrors();
+		bool tqcontainsErrors();
 
 		void display();
 
@@ -117,9 +117,9 @@ class ColorPicker : public KDialogBase
 		TQWidget            *BaseWidget;
 		KHSSelector        *hsSelector;
 		KValueSelector     *valuePal;
-		TQVBoxLayout        *vlayout;
-		TQHBoxLayout        *h1layout;
-		TQHBoxLayout        *h2layout;
+		TQVBoxLayout        *vtqlayout;
+		TQHBoxLayout        *h1tqlayout;
+		TQHBoxLayout        *h2tqlayout;
 		KColorPatch        *patch;
 		TQLabel             *copyable;
 		TQLineEdit          *colorcode;

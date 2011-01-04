@@ -188,7 +188,7 @@ TreeNode* Parser::Factor()
 
 		case tokUnknown:
 			node = getId();
-			if (learnedFunctionList.contains(rememberedToken.look) > 0) // is function call
+			if (learnedFunctionList.tqcontains(rememberedToken.look) > 0) // is function call
 			{
 				delete node;
 				node = FunctionCall(rememberedToken);
@@ -1057,7 +1057,7 @@ TreeNode* Parser::Other()
 	matchToken(tokUnknown);
 
 	if (currentToken.type == tokAssign) return Assignment(rememberedToken);
-	else if (learnedFunctionList.contains(rememberedToken.look) > 0)
+	else if (learnedFunctionList.tqcontains(rememberedToken.look) > 0)
 	{
 		TreeNode* node;
 		node = FunctionCall(rememberedToken);
