@@ -153,9 +153,9 @@ void MainWindow::setupActions()
 	KStdAction::deselect(this, TQT_SLOT(slotClearSelection()), ac);
 	new KToggleAction(i18n("Toggle Insert"), Key_Insert, this, TQT_SLOT(slotToggleInsert()), ac, "set_insert");
 	KStdAction::find(this, TQT_SLOT(slotFind()), ac);
-	KStdAction::tqfindNext(this, TQT_SLOT(slotFindNext()), ac);
-	KStdAction::tqfindPrev(this, TQT_SLOT(slotFindPrevious()), ac);
-	KStdAction::tqreplace(this, TQT_SLOT(slotReplace()), ac);
+	KStdAction::findNext(this, TQT_SLOT(slotFindNext()), ac);
+	KStdAction::findPrev(this, TQT_SLOT(slotFindPrevious()), ac);
+	KStdAction::replace(this, TQT_SLOT(slotReplace()), ac);
 	
 	// View actions
 	new KToggleAction(i18n("Show &Line Numbers"), 0, Key_F11, this, TQT_SLOT(slotToggleLineNumbers()), ac, "line_numbers");
@@ -247,7 +247,7 @@ void MainWindow::setupCanvas()
 
 void MainWindow::slotStatusBar(TQString text, int id)
 {
-	text = " " + text + " "; // help the tqlayout
+	text = " " + text + " "; // help the layout
 	statusBar()->changeItem(text, id);
 }
 
@@ -586,7 +586,7 @@ void MainWindow::slotExecute()
 	
 	delete exe; // clean-up
 
-	if ( errMsg->tqcontainsErrors() ) errMsg->display(); // if errors show them
+	if ( errMsg->containsErrors() ) errMsg->display(); // if errors show them
 }
 
 void MainWindow::slotPauseExecution()
@@ -650,7 +650,7 @@ void MainWindow::slotMessageDialog(TQString text)
 
 
 
-// BEGIN editor connections (undo, redo, cut, copy, paste, cursor, selections, find, tqreplace, linenumbers etc.)
+// BEGIN editor connections (undo, redo, cut, copy, paste, cursor, selections, find, replace, linenumbers etc.)
 
 void MainWindow::slotEditor()
 {
@@ -734,7 +734,7 @@ void MainWindow::slotFindPrevious()
 
 void MainWindow::slotReplace()
 {
-	KAction* a = editor->actionCollection()->action("edit_tqreplace");
+	KAction* a = editor->actionCollection()->action("edit_replace");
 	a->activate();
 }
 
@@ -830,7 +830,7 @@ void MainWindow::updateFullScreen()
 void MainWindow::slotFinishedFullScreenExecution()
 {
 	restartOrBackDialog = new RestartOrBack(this); // we have to make some to delete some
-	if ( errMsg->tqcontainsErrors() ) slotBackToFullScreen(); // straight back to edit if there where errors 
+	if ( errMsg->containsErrors() ) slotBackToFullScreen(); // straight back to edit if there where errors 
 	else
 	{
 		connect( restartOrBackDialog, TQT_SIGNAL( user1Clicked() ), this, TQT_SLOT( slotRestartFullScreen() ) );
@@ -877,39 +877,39 @@ void MainWindow::slotSettings()
 	TQGridLayout *generalLayout = new TQGridLayout( general, 1, 1, 11, 6, "generalLayout");
 	WidthHeightBox = new TQGroupBox( i18n("Initial Canvas Size"), general );
 	WidthHeightBox->setColumnLayout(0, Qt::Vertical );
-	WidthHeightBox->tqlayout()->setSpacing( 6 );
-	WidthHeightBox->tqlayout()->setMargin( 11 );
-	TQVBoxLayout *WidthHeightBoxLayout = new TQVBoxLayout( WidthHeightBox->tqlayout() );
-	WidthHeightBoxLayout->tqsetAlignment( Qt::AlignTop );
-	TQHBoxLayout *tqlayout3 = new TQHBoxLayout( 0, 0, 6, "tqlayout3");
-	TQVBoxLayout *tqlayout2 = new TQVBoxLayout( 0, 0, 6, "tqlayout2");
+	WidthHeightBox->layout()->setSpacing( 6 );
+	WidthHeightBox->layout()->setMargin( 11 );
+	TQVBoxLayout *WidthHeightBoxLayout = new TQVBoxLayout( WidthHeightBox->layout() );
+	WidthHeightBoxLayout->setAlignment( Qt::AlignTop );
+	TQHBoxLayout *layout3 = new TQHBoxLayout( 0, 0, 6, "layout3");
+	TQVBoxLayout *layout2 = new TQVBoxLayout( 0, 0, 6, "layout2");
 	
-	TQVBoxLayout *tqlayout1 = new TQVBoxLayout( 0, 0, 6, "tqlayout1");
+	TQVBoxLayout *layout1 = new TQVBoxLayout( 0, 0, 6, "layout1");
 
 	kcfg_CanvasWidth = new KIntNumInput( WidthHeightBox, "kcfg_CanvasWidth" );
 	kcfg_CanvasWidth->setValue( 400 );
 	kcfg_CanvasWidth->setMinValue( 1 );
 	kcfg_CanvasWidth->setReferencePoint( 1 );
-	tqlayout1->addWidget( kcfg_CanvasWidth );
+	layout1->addWidget( kcfg_CanvasWidth );
 
 	kcfg_CanvasHeight = new KIntNumInput( WidthHeightBox, "kcfg_CanvasHeight" );
 	kcfg_CanvasHeight->setValue( 300 );
 	kcfg_CanvasHeight->setMinValue( 1 );
 	kcfg_CanvasHeight->setReferencePoint( 1 );
-	tqlayout1->addWidget( kcfg_CanvasHeight );
+	layout1->addWidget( kcfg_CanvasHeight );
 
 	WidthLabel = new TQLabel( kcfg_CanvasWidth, i18n("Canvas &width:"), WidthHeightBox );
-	tqlayout2->addWidget( WidthLabel );
+	layout2->addWidget( WidthLabel );
 	HeightLabel = new TQLabel( kcfg_CanvasHeight, i18n("Ca&nvas height:"), WidthHeightBox );
-	tqlayout2->addWidget( HeightLabel );
-	tqlayout3->addLayout( tqlayout2 );
+	layout2->addWidget( HeightLabel );
+	layout3->addLayout( layout2 );
 
-	tqlayout3->addLayout( tqlayout1 );
-	WidthHeightBoxLayout->addLayout( tqlayout3 );
+	layout3->addLayout( layout1 );
+	WidthHeightBoxLayout->addLayout( layout3 );
 	TQLabel* WidthHeightLabel = new TQLabel(i18n("You need to restart before these settings have effect"), WidthHeightBox);
 	WidthHeightBoxLayout->addWidget( WidthHeightLabel );
 	generalLayout->addWidget( WidthHeightBox, 0, 0 );
-	general->resize( TQSize(234, 109).expandedTo(tqminimumSizeHint()) );
+	general->resize( TQSize(234, 109).expandedTo(minimumSizeHint()) );
 
 	dialog->addPage( general, i18n("General"), "package_settings", i18n("General Settings") );
 
@@ -918,12 +918,12 @@ void MainWindow::slotSettings()
 	TQGridLayout *languageLayout = new TQGridLayout( language, 1, 1, 11, 6, "Form1Layout");
 	TQGroupBox *groupBox1 = new TQGroupBox( language, "groupBox1" );
 	groupBox1->setColumnLayout(0, Qt::Vertical );
-	groupBox1->tqlayout()->setSpacing( 6 );
-	groupBox1->tqlayout()->setMargin( 11 );
-	TQGridLayout *groupBox1Layout = new TQGridLayout( groupBox1->tqlayout() );
-	groupBox1Layout->tqsetAlignment( Qt::AlignTop );
+	groupBox1->layout()->setSpacing( 6 );
+	groupBox1->layout()->setMargin( 11 );
+	TQGridLayout *groupBox1Layout = new TQGridLayout( groupBox1->layout() );
+	groupBox1Layout->setAlignment( Qt::AlignTop );
 
-	TQVBoxLayout *tqlayout4 = new TQVBoxLayout( 0, 0, 6, "tqlayout4");
+	TQVBoxLayout *layout4 = new TQVBoxLayout( 0, 0, 6, "layout4");
 
 	kcfg_LanguageComboBox = new KComboBox(groupBox1, "kcfg_LanguageComboBox");
 	kcfg_LanguageComboBox->setEditable(false);
@@ -935,13 +935,13 @@ void MainWindow::slotSettings()
 	kcfg_LanguageComboBox->insertStringList(LogoLanguageList);
 	
 	LanguageLabel = new TQLabel(kcfg_LanguageComboBox, i18n("&Select the language for the Logo commands:"), groupBox1);
-	tqlayout4->addWidget( LanguageLabel );
-	tqlayout4->addWidget( kcfg_LanguageComboBox );
+	layout4->addWidget( LanguageLabel );
+	layout4->addWidget( kcfg_LanguageComboBox );
 	LanguageLabel->setBuddy( kcfg_LanguageComboBox );
 
-	groupBox1Layout->addLayout( tqlayout4, 0, 0 );
+	groupBox1Layout->addLayout( layout4, 0, 0 );
 	languageLayout->addWidget( groupBox1, 0, 0 );
-	language->resize( TQSize(373, 80).expandedTo(tqminimumSizeHint()) );
+	language->resize( TQSize(373, 80).expandedTo(minimumSizeHint()) );
 
 	dialog->addPage( language, i18n("Language"), "locale", i18n("Language Settings") );
 
@@ -1071,7 +1071,7 @@ void MainWindow::slotContextHelpUpdate()
 	int start, length, pos;
 	
 	pos = 0;
-	if ( line.tqcontains('"') )
+	if ( line.contains('"') )
 	{
 		TQRegExp delimitedStrings("(\"[^\"\\\\\\r\\n]*(\\\\.[^\"\\\\\\r\\n]*)*\")");
 		while ( delimitedStrings.search(line, pos) != -1 )

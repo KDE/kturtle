@@ -95,7 +95,7 @@ void ErrorMessage::slotAddError(Token& t, const TQString& s, uint c)
 }
 
 
-bool ErrorMessage::tqcontainsErrors()
+bool ErrorMessage::containsErrors()
 {
 	if (errTable->numRows() != 0) return true;
 	return false;
@@ -149,7 +149,7 @@ ColorPicker::ColorPicker(TQWidget *parent)
 	// for toggling convenience
 	connect( this, TQT_SIGNAL( finished() ), TQT_SLOT( slotEmitVisibility() ) );
     
-	// Create the top level page and its tqlayout
+	// Create the top level page and its layout
 	BaseWidget = new TQWidget(this);
 	setMainWidget(BaseWidget);
     
@@ -157,57 +157,57 @@ ColorPicker::ColorPicker(TQWidget *parent)
 	setButtonText( KDialogBase::User1, i18n("Insert Color Code at Cursor") );
 	connect( this, TQT_SIGNAL( user1Clicked() ), TQT_SLOT( slotEmitColorCode() ) );
  
-	TQVBoxLayout *vtqlayout = new TQVBoxLayout(BaseWidget);
+	TQVBoxLayout *vlayout = new TQVBoxLayout(BaseWidget);
     
-	vtqlayout->addSpacing(5); // spacing on top
+	vlayout->addSpacing(5); // spacing on top
 
 	// the palette and value selector go into a H-box
-	TQHBoxLayout *h1tqlayout = new TQHBoxLayout(BaseWidget);
-	vtqlayout->addLayout(h1tqlayout);
+	TQHBoxLayout *h1layout = new TQHBoxLayout(BaseWidget);
+	vlayout->addLayout(h1layout);
     
-	h1tqlayout->addSpacing(10); // space on the left border
+	h1layout->addSpacing(10); // space on the left border
      
 	hsSelector = new KHSSelector(BaseWidget); // the color (SH) selector
 	hsSelector->setMinimumSize(300, 150);
-	h1tqlayout->addWidget(hsSelector);
+	h1layout->addWidget(hsSelector);
 	connect( hsSelector, TQT_SIGNAL( valueChanged(int, int) ), TQT_SLOT( slotSelectorChanged(int, int) ) );
 
-	h1tqlayout->addSpacing(5); // space in between
+	h1layout->addSpacing(5); // space in between
    
 	valuePal = new KValueSelector(BaseWidget); // the darkness (V) pal
 	valuePal->setFixedWidth(30);
-	h1tqlayout->addWidget(valuePal);
+	h1layout->addWidget(valuePal);
 	connect( valuePal, TQT_SIGNAL( valueChanged(int) ), TQT_SLOT( slotPalChanged(int) ) );   
     
-	vtqlayout->addSpacing(15); // space in between the top and the bottom widgets
+	vlayout->addSpacing(15); // space in between the top and the bottom widgets
 
 	// the patch and the codegenerator also go into a H-box
-	TQHBoxLayout *h2tqlayout = new TQHBoxLayout(BaseWidget);
-	vtqlayout->addLayout(h2tqlayout);
+	TQHBoxLayout *h2layout = new TQHBoxLayout(BaseWidget);
+	vlayout->addLayout(h2layout);
     
-	h2tqlayout->addSpacing(10); // space on the left border
+	h2layout->addSpacing(10); // space on the left border
    
 	patch = new KColorPatch(BaseWidget); // the patch (color previewer)
 	patch->setFixedSize(50, 50);
-	h2tqlayout->addWidget(patch);
+	h2layout->addWidget(patch);
    
-	h2tqlayout->addSpacing(10); // space in between
+	h2layout->addSpacing(10); // space in between
 
 	// the label and the codegenerator go in a V-box
-	TQVBoxLayout *v2tqlayout = new TQVBoxLayout(BaseWidget);
-	h2tqlayout->addLayout(v2tqlayout); 
+	TQVBoxLayout *v2layout = new TQVBoxLayout(BaseWidget);
+	h2layout->addLayout(v2layout); 
     
 	copyable = new TQLabel(i18n("Color code:"), BaseWidget); // tha label
-	v2tqlayout->addWidget(copyable);
+	v2layout->addWidget(copyable);
         
 	colorcode = new TQLineEdit(BaseWidget); // the code generator
 	colorcode->setReadOnly(true);
-	v2tqlayout->addWidget(colorcode);
+	v2layout->addWidget(colorcode);
 	connect( colorcode, TQT_SIGNAL( selectionChanged() ), TQT_SLOT( slotReselect() ) );
     
-	h2tqlayout->addSpacing(5); // spacing on the right border
+	h2layout->addSpacing(5); // spacing on the right border
     
-	vtqlayout->addSpacing(10); // spacing on the bottom
+	vlayout->addSpacing(10); // spacing on the bottom
 
 	h = g = b = 0; // start with red
 	s = v = r = 255;
@@ -228,7 +228,7 @@ void ColorPicker::updatePal()
 	valuePal->setSaturation(s);
 	valuePal->setValue(v);
 	valuePal->updateContents();
-	valuePal->tqrepaint(false);
+	valuePal->repaint(false);
 }
 
 void ColorPicker::updatePatch()

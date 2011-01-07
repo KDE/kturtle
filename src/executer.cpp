@@ -329,7 +329,7 @@ void Executer::execForEach(TreeNode* node)
 	
 	bBreak = false;
 	
-	int i = expStr2.tqcontains(expStr1, false);
+	int i = expStr2.contains(expStr1, false);
 	for ( ; i > 0; i-- )
 	{
 		if (bAbort) return;
