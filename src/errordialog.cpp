@@ -40,7 +40,7 @@ ErrorDialog::ErrorDialog(QWidget* parent)
 // 	setButtonGuiItem(User1, i18n("Help on &Error"));  // TODO context help in the error dialog
 	setDefaultButton(User1);
 	showButtonSeparator(false);
-
+	setHelp("reference", "kturtle");
 
 	QWidget *baseWidget = new QWidget(this);
 	setMainWidget(baseWidget);
