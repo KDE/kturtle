@@ -176,7 +176,6 @@ class Parser
 		TreeNode* parseArcCos();
 		TreeNode* parseSqrt();
 		TreeNode* parseRound();
-		TreeNode* parseGetDirection();
 
 //END GENERATED parser_h CODE
 

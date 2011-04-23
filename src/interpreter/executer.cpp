@@ -237,7 +237,6 @@ void Executer::execute(TreeNode* node)
 		case Token::ArcCos              : executeArcCos(node);              break;
 		case Token::Sqrt                : executeSqrt(node);                break;
 		case Token::Round               : executeRound(node);               break;
-		case Token::GetDirection        : executeGetDirection(node);        break;
 
 //END GENERATED executer_switch_cpp CODE
 
@@ -1055,13 +1054,6 @@ void Executer::executeRound(TreeNode* node) {
    
     double val = node->child(0)->value()->number();
     node->value()->setNumber((double)ROUND2INT(val));
-}
-void Executer::executeGetDirection(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
-	if (!checkParameterQuantity(node, 0, 20000+Token::GetDirection*100+90)) return;
-	double value = 0;
-	emit getDirection(value);
-	node->value()->setNumber(value);
 }
 
 //END GENERATED executer_cpp CODE

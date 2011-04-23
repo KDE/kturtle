@@ -1488,17 +1488,3 @@ new_item()
 EOS
 parse_item()
 
-new_item()
-@type      = "GetDirection"
-@cat       = "Command"
-@look      = "getdirection"
-@funct     = "statement, node"
-@args      = [:none]
-@e_def      =
-<<EOS
-	if (!checkParameterQuantity(node, 0, 20000+Token::GetDirection*100+90)) return;
-	double value = 0;
-	emit getDirection(value);
-	node->value()->setNumber(value);
-EOS
-parse_item()

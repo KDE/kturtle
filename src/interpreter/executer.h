@@ -248,7 +248,6 @@ class Executer : public QObject
 		void executeArcCos(TreeNode* node);
 		void executeSqrt(TreeNode* node);
 		void executeRound(TreeNode* node);
-		void executeGetDirection(TreeNode* node);
 
 //END GENERATED executer_h CODE
 
@@ -266,7 +265,6 @@ class Executer : public QObject
 		void getY(double&);
 		void ask(QString& value);
 		void message(const QString& text);
-		void getDirection(double&);
 
 // next you find generated signals that can be emitted:
 

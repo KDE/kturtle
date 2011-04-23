@@ -244,11 +244,6 @@ void Canvas::getY(double& value)
 	value = turtle->pos().y();
 }
 
-void Canvas::getDirection(double &value)
-{
-	value = fmod(turtle->angle(), 360);
-}
-
 QImage Canvas::getPicture()
 {
 	QImage png(sceneRect().size().toSize(), QImage::Format_RGB32);

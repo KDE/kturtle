@@ -654,13 +654,6 @@ void Translator::setDictionary()
 	default2localizedMap["round"] = localizedCommandLook;
 	look2typeMap[localizedCommandLook] = Token::Round;
 
-	localizedCommandLook = ki18nc(
-		"You are about to translate the 'GetDirection' COMMAND, there are some rules on how to translate it."
-		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
-		"getdirection").toString(localizer);
-	default2localizedMap["getdirection"] = localizedCommandLook;
-	look2typeMap[localizedCommandLook] = Token::GetDirection;
-
 
 //END GENERATED translator_cpp CODE
 

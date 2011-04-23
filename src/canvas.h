@@ -63,7 +63,6 @@ class Canvas : public QGraphicsView
 		void slotFontType(const QString& family, const QString& extra);
 		void slotFontSize(double px) { textFont->setPixelSize((int)px); }
 		void slotReset();
-		void getDirection(double& value);
 		void getX(double& value);
 		void getY(double& value);
 

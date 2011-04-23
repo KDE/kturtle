@@ -75,8 +75,6 @@
 		canvas, SLOT(getX(double&)));
 	connect(executer, SIGNAL(getY(double&)),
 		canvas, SLOT(getY(double&)));
-	connect(executer, SIGNAL(getDirection(double&)),
-		canvas, SLOT(getDirection(double&)));
 	connect(executer, SIGNAL(message(const QString&)),
 		this, SLOT(slotMessageDialog(const QString&)));
 	connect(executer, SIGNAL(ask(QString&)),
