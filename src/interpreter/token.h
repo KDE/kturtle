@@ -146,7 +146,8 @@ class Token
 			ArcSin,
 			ArcCos,
 			Sqrt,
-			Round
+			Round,
+			GetDirection
 
 //END GENERATED token_type_h CODE
 

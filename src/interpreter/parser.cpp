@@ -228,6 +228,7 @@ TreeNode* Parser::parseStatement()
 		case Token::ArcCos              : return parseArcCos();
 		case Token::Sqrt                : return parseSqrt();
 		case Token::Round               : return parseRound();
+		case Token::GetDirection        : return parseGetDirection();
 
 //END GENERATED parser_statements_cpp CODE
 		case Token::Error		: return new TreeNode(currentToken);
@@ -961,6 +962,13 @@ TreeNode* Parser::parseRound() {
 	TreeNode* node = new TreeNode(currentToken);
 	nextToken();
 	appendArguments(node);
+	skipToken(Token::EndOfLine, *node->token());
+	return node;
+}
+TreeNode* Parser::parseGetDirection() {
+//	kDebug(0) << "called";  // method name is appended by kDebug
+	TreeNode* node = new TreeNode(currentToken);
+	nextToken();
 	skipToken(Token::EndOfLine, *node->token());
 	return node;
 }
