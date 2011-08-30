@@ -449,7 +449,7 @@ void Executer::executeExit(TreeNode* node) {
 }
 void Executer::executeIf(TreeNode* node) {
 //	kDebug() << "called";  // method name is appended by kDebug
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
+	QString id = QString("__%1_%2").arg(node->token()->look()).arg((quintptr)node);
 	if (currentVariableTable()->contains(id)) {
 		currentVariableTable()->remove(id);
 		return;
@@ -472,7 +472,7 @@ void Executer::executeElse(TreeNode* node) {
 }
 void Executer::executeRepeat(TreeNode* node) {
 //	kDebug() << "called";  // method name is appended by kDebug
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
+	QString id = QString("__%1_%2").arg(node->token()->look()).arg((quintptr)node);
 
 	if(breaking) {
 		breaking = false;
@@ -504,7 +504,7 @@ void Executer::executeWhile(TreeNode* node) {
 	// so we do the following on every call to executeWhile:
 	//     exec scope, exec expression, exec scope, exec expression, ...
 
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
+	QString id = QString("__%1_%2").arg(node->token()->look()).arg((quintptr)node);
 
 	if (breaking) {
 		// We hit a break command while executing the scope
@@ -553,7 +553,7 @@ void Executer::executeForTo(TreeNode* node) {
 		firstIteration = true;
 	}
 
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
+	QString id = QString("__%1_%2").arg(node->token()->look()).arg((quintptr)node);
 
 	if(breaking) {
 		breaking = false;
