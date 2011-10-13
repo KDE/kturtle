@@ -292,7 +292,7 @@ Please note that $A and $B have to be <link linkend="number">numbers</link> or <
     <varlistentry> 
       <term>goy<indexterm><primary>goy</primary></indexterm></term>
       <listitem><para><screen>goy Y</screen>
-      <userinput>gox</userinput> using this command the turtle will move to Y <glossterm linkend="pixels">pixels</glossterm> from the top of the canvas whilst staying at the same distance from the left border of the canvas.</para></listitem>
+      <userinput>goy</userinput> using this command the turtle will move to Y <glossterm linkend="pixels">pixels</glossterm> from the top of the canvas whilst staying at the same distance from the left border of the canvas.</para></listitem>
     </varlistentry>
   </variablelist>
   <note><para>Using the commands <userinput>go</userinput>, <userinput>gox</userinput>, <userinput>goy</userinput> and <userinput>center</userinput> the turtle will not draw a line, no matter if the pen is up or down.</para>
