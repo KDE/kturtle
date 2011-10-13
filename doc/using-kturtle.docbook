@@ -484,7 +484,7 @@
         <shortcut>
           <keycombo><keysym>F11</keysym></keycombo>
         </shortcut>
-        <guimenu>View</guimenu>
+        <guimenu>Settings</guimenu>
         <guimenuitem>Show Line Numbers</guimenuitem>
       </menuchoice></term>
       <listitem><para>With this action you can show the line numbers in <link linkend="the-editor">the editor</link>. This can be handy for finding errors.</para></listitem>
