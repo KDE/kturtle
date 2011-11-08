@@ -1048,6 +1048,11 @@ void Executer::executeSqrt(TreeNode* node) {
 	if (!checkParameterQuantity(node, 1, 20000+Token::Sqrt*100+90)) return;
 	
 	double val = node->child(0)->value()->number();
+	if(val<0) {
+		addError(i18n("Can't do a sqrt of a negative number"), *node->child(0)->token(), 0);
+		node->value()->setNumber(0);
+		return;
+	}
 	node->value()->setNumber(sqrt(val));
 }
 void Executer::executeRound(TreeNode* node) {
