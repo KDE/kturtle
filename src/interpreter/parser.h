@@ -177,6 +177,7 @@ class Parser
 		TreeNode* parseSqrt();
 		TreeNode* parseRound();
 		TreeNode* parseGetDirection();
+		TreeNode* parseMod();
 
 //END GENERATED parser_h CODE
 

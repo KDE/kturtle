@@ -238,6 +238,7 @@ void Executer::execute(TreeNode* node)
 		case Token::Sqrt                : executeSqrt(node);                break;
 		case Token::Round               : executeRound(node);               break;
 		case Token::GetDirection        : executeGetDirection(node);        break;
+		case Token::Mod                 : executeMod(node);                 break;
 
 //END GENERATED executer_switch_cpp CODE
 
@@ -1062,6 +1063,18 @@ void Executer::executeGetDirection(TreeNode* node) {
 	double value = 0;
 	emit getDirection(value);
 	node->value()->setNumber(value);
+}
+void Executer::executeMod(TreeNode* node) {
+//	kDebug() << "called";  // method name is appended by kDebug
+	if (!checkParameterQuantity(node, 2, 20000+Token::Mod*100+90)) return;
+	TreeNode* nodeX = node->child(0);  // getting
+	TreeNode* nodeY = node->child(1);
+
+	if (!checkParameterType(node, Value::Number, 20000+Token::Mod*100+91)) return;
+	double x = nodeX->value()->number();
+	double y = nodeY->value()->number();
+	double m = (double)(ROUND2INT(x) % ROUND2INT(y));
+	node->value()->setNumber(m);
 }
 
 //END GENERATED executer_cpp CODE

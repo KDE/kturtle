@@ -1502,3 +1502,23 @@ new_item()
 	node->value()->setNumber(value);
 EOS
 parse_item()
+
+new_item()
+@type  = "Mod"
+@cat   = "Command"
+@look  = "mod"
+@funct = "statement, node"
+@args  = [:number, :number]
+@e_def =
+<<EOS
+	if (!checkParameterQuantity(node, 2, 20000+Token::Mod*100+90)) return;
+	TreeNode* nodeX = node->child(0);  // getting
+	TreeNode* nodeY = node->child(1);
+
+	if (!checkParameterType(node, Value::Number, 20000+Token::Mod*100+91)) return;
+	double x = nodeX->value()->number();
+	double y = nodeY->value()->number();
+	double m = (double)(ROUND2INT(x) % ROUND2INT(y));
+	node->value()->setNumber(m);
+EOS
+parse_item()

@@ -661,6 +661,13 @@ void Translator::setDictionary()
 	default2localizedMap["getdirection"] = localizedCommandLook;
 	look2typeMap[localizedCommandLook] = Token::GetDirection;
 
+	localizedCommandLook = ki18nc(
+		"You are about to translate the 'Mod' COMMAND, there are some rules on how to translate it."
+		"Please see http://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+		"mod").toString(localizer);
+	default2localizedMap["mod"] = localizedCommandLook;
+	look2typeMap[localizedCommandLook] = Token::Mod;
+
 
 //END GENERATED translator_cpp CODE
 

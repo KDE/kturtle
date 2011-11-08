@@ -249,6 +249,7 @@ class Executer : public QObject
 		void executeSqrt(TreeNode* node);
 		void executeRound(TreeNode* node);
 		void executeGetDirection(TreeNode* node);
+		void executeMod(TreeNode* node);
 
 //END GENERATED executer_h CODE
 

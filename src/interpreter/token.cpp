@@ -80,6 +80,7 @@ int Token::typeToCategory(int type)
  * Thanks for looking at the code!
  */
 
+		case Mod:
 		case Sin:
 		case GoX:
 		case GoY:
