@@ -368,7 +368,7 @@ new_item()
 EOS
 @e_def =
 <<EOS
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
+	QString id = QString("__%1_%2").arg(node->token()->look()).arg((quintptr)node);
 	if (currentVariableTable()->contains(id)) {
 		currentVariableTable()->remove(id);
 		return;
@@ -428,7 +428,7 @@ new_item()
 @p_def = p_def_repeat_while
 @e_def =
 <<EOS
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
+	QString id = QString("__%1_%2").arg(node->token()->look()).arg((quintptr)node);
 
 	if(breaking) {
 		breaking = false;
@@ -468,7 +468,7 @@ new_item()
 	// so we do the following on every call to executeWhile:
 	//     exec scope, exec expression, exec scope, exec expression, ...
 
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
+	QString id = QString("__%1_%2").arg(node->token()->look()).arg((quintptr)node);
 
 	if (breaking) {
 		// We hit a break command while executing the scope
@@ -567,7 +567,7 @@ new_item()
 		firstIteration = true;
 	}
 
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg((long)node);
+	QString id = QString("__%1_%2").arg(node->token()->look()).arg((quintptr)node);
 
 	if(breaking) {
 		breaking = false;
