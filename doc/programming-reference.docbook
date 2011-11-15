@@ -34,6 +34,7 @@ The first line describes the program. The second line is executed by &kturtle; a
 forward 100
 </screen>
 The first line is a <link linkend="comment">comment</link>. The second line contains the <userinput>forward</userinput> command and the <link linkend="number">number</link> <userinput>100</userinput>. The number is not part of command, it is considered 'input' for the command.</para>
+<para>Some commands like &eg; <userinput>go</userinput> need more than one input value. Multiple values have to be separated using the <userinput>,</userinput> character (comma).</para>
 <para> For a detailed overview of all commands that &kturtle; supports go <link linkend="commands">here</link>. Built-in commands are <glossterm>highlighted</glossterm> in dark blue</para>
 </sect2>
 
@@ -41,6 +42,7 @@ The first line is a <link linkend="comment">comment</link>. The second line cont
 <title>Numbers</title>
 <para>Most likely you already know quite a bit about numbers. The way numbers are used in &kturtle; is not much different from spoken language, or math. </para>
 <para>We have the so called natural numbers: <userinput>0</userinput>, <userinput>1</userinput>, <userinput>2</userinput>, <userinput>3</userinput>, <userinput>4</userinput>, <userinput>5</userinput>, etc. The negative numbers: <userinput>-1</userinput>, <userinput>-2</userinput>, <userinput>-3</userinput>, etc. And the numbers with decimals, or dot-numbers, for example: <userinput>0.1</userinput>, <userinput>3.14</userinput>, <userinput>33.3333</userinput>, <userinput>-5.05</userinput>, <userinput>-1.0</userinput>.
+The <userinput>.</userinput> character (dot) is used as decimal separator.
 </para>
 <para>Numbers can be used in <link linkend="mathematical-operators">mathematical operators</link> and <link linkend="comparing-operators">comparison operators</link>. They can also be stored in <link linkend="assignment-of-variables">variables</link>. Numbers are <glossterm>highlighted</glossterm> in dark red.</para>
 </sect2>
@@ -264,6 +266,14 @@ Please note that $A and $B have to be <link linkend="number">numbers</link> or <
     </varlistentry>
   </variablelist>
   <variablelist>
+    <anchor id="getdirection" />
+    <varlistentry> 
+      <term>getdirection<indexterm><primary>getdirection</primary></indexterm></term>
+      <listitem><para><screen>getdirection</screen>
+      <userinput>getdirection</userinput> returns the turtle's direction as an amount of degrees counting from zero, where zero is the direction when the turtle is pointing upwards.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
     <anchor id="center" />
     <varlistentry> 
       <term>center<indexterm><primary>center</primary></indexterm></term>
@@ -276,7 +286,7 @@ Please note that $A and $B have to be <link linkend="number">numbers</link> or <
     <varlistentry> 
       <term>go<indexterm><primary>go</primary></indexterm></term>
       <listitem><para><screen>go X,Y</screen>
-      <userinput>go</userinput> commands the turtle to go to a certain place on the canvas. This place is X <glossterm linkend="pixels">pixels</glossterm> from the left of the canvas, and Y <glossterm linkend="pixels">pixels</glossterm> form the top of the canvas. </para></listitem>
+      <userinput>go</userinput> commands the turtle to go to a certain place on the canvas. This place is X <glossterm linkend="pixels">pixels</glossterm> from the left of the canvas, and Y <glossterm linkend="pixels">pixels</glossterm> from the top of the canvas.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -481,6 +491,14 @@ repeat 500 {
 }
 </screen>
       Using the <userinput>random</userinput> command you can add a bit of chaos to your program.</para></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="mod" />
+    <varlistentry> 
+      <term>mod<indexterm><primary>mod</primary></indexterm></term>
+      <listitem><para><screen>mod X,Y</screen>
+      The <userinput>mod</userinput> returns remainder of the division of first number by the second number.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
