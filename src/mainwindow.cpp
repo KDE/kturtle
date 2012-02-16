@@ -214,7 +214,7 @@ void MainWindow::setupActions()
 	a = actionCollection()->addAction(KStandardAction::Save,  "file_save", editor, SLOT(saveFile()));
 	a->setStatusTip(i18n("Save the current file to disk"));
 	a->setWhatsThis(i18n("Save File: Save the current file to disk"));
-	connect(editor, SIGNAL(modificationChanged(bool)), a, SLOT(setEnabled(bool)));
+	connect(editor->document(), SIGNAL(modificationChanged(bool)), a, SLOT(setEnabled(bool)));
 
 	a = actionCollection()->addAction(KStandardAction::SaveAs,  "file_save_as", editor, SLOT(saveFileAs()));
 	a->setStatusTip(i18n("Save the current file under a different name"));
