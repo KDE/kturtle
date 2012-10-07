@@ -83,7 +83,16 @@ void Executer::execute()
 
 	if(returning) {
 		//We are returning from a function call
-		
+
+		// Handle returning in the top-level (not inside a function) as
+		// gracefully as possible.
+		// See: https://bugs.kde.org/show_bug.cgi?id=300949
+		if (functionStack.isEmpty()) {
+			addError(i18n("Cannot return outside a function. "), *(currentNode->token()), 0);
+			finished = true;
+			return;
+		}
+
 		// Take the last called function from the function stack
 		CalledFunction calledFunction = functionStack.pop();
 		
