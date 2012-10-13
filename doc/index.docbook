@@ -14,7 +14,7 @@
   <!ENTITY glossary SYSTEM "glossary.docbook">
 ]>
 
-<book lang="&language;">
+<book id="kturtle" lang="&language;">
 
 <bookinfo>
 <title>The &kturtle; Handbook</title>
