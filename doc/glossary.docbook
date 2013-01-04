@@ -124,7 +124,7 @@ penup
 <glossterm>pixels</glossterm>
 <glossdef><para>A pixel is a dot on the screen. If you look very close you will see that the screen of your monitor uses pixels. All images on the screen are built with these pixels. A pixel is the smallest thing that can be drawn on the screen.</para>
 <para>A lot of commands need a number of pixels as input. These commands are: <userinput>forward</userinput>, <userinput>backward</userinput>, <userinput>go</userinput>, <userinput>gox</userinput>, <userinput>goy</userinput>, <userinput>canvassize</userinput> and <userinput>penwidth</userinput>.</para>
-<para>In early versions of &kturtle; the canvas was essentially a raster image, yet for recent versions the canvas is a vector drawing. This means that the canvas can be zoomed in and out, therefore a pixel does not necessarily has to translate to one dot on the screen.</para>
+<para>In early versions of &kturtle; the canvas was essentially a raster image, yet for recent versions the canvas is a vector drawing. This means that the canvas can be zoomed in and out, therefore a pixel does not necessarily have to translate to one dot on the screen.</para>
 </glossdef>
 </glossentry>
 
