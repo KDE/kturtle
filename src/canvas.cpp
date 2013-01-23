@@ -267,9 +267,9 @@ void Canvas::saveAsSvg(const QString& title, const QString& fileName)
 	// but otherwise some QBuffer, QByteArray, etc. thing had to be set up.
 	QSvgGenerator generator;
 	generator.setFileName(fileName);
-// 	generator.setSize(_scene->sceneRect().size().toSize());   // Qt 4.5
-// 	generator.setViewBox(_scene->sceneRect().size());
-// 	generator.setTitle(title);
+	generator.setSize(_scene->sceneRect().size().toSize());
+	generator.setViewBox(_scene->sceneRect());
+	generator.setTitle(title);
 //	generator.setDescription(i18n("Created with KTurtle %1 -- %2").arg(version).arg(website));
 	// create a painter to draw on the image
 	QPainter p(&generator);
