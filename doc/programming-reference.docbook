@@ -292,17 +292,17 @@ Please note that $A and $B have to be <link linkend="number">numbers</link> or <
   <variablelist>
     <anchor id="gox" />
     <varlistentry> 
-      <term>gox<indexterm><primary>gox</primary></indexterm></term>
+      <term>gox<indexterm><primary>gox (gx)</primary></indexterm></term>
       <listitem><para><screen>gox X</screen>
-      <userinput>gox</userinput> using this command the turtle will move to X <glossterm linkend="pixels">pixels</glossterm> from the left of the canvas whilst staying at the same height.</para></listitem>
+      <userinput>gox</userinput> using this command the turtle will move to X <glossterm linkend="pixels">pixels</glossterm> from the left of the canvas whilst staying at the same height. <userinput>gox</userinput> can be abbreviated to <userinput>gx</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
     <anchor id="goy" />
     <varlistentry> 
-      <term>goy<indexterm><primary>goy</primary></indexterm></term>
+      <term>goy<indexterm><primary>goy (gy)</primary></indexterm></term>
       <listitem><para><screen>goy Y</screen>
-      <userinput>goy</userinput> using this command the turtle will move to Y <glossterm linkend="pixels">pixels</glossterm> from the top of the canvas whilst staying at the same distance from the left border of the canvas.</para></listitem>
+      <userinput>goy</userinput> using this command the turtle will move to Y <glossterm linkend="pixels">pixels</glossterm> from the top of the canvas whilst staying at the same distance from the left border of the canvas. <userinput>goy</userinput> can be abbreviated to <userinput>gy</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <note><para>Using the commands <userinput>go</userinput>, <userinput>gox</userinput>, <userinput>goy</userinput> and <userinput>center</userinput> the turtle will not draw a line, no matter if the pen is up or down.</para>
@@ -560,7 +560,7 @@ arctan X
 </sect2>
 
 <sect2 id="dialogs">
-<title>Input and feedback though dialogs</title>
+<title>Input and feedback through dialogs</title>
 <para>A dialog is a small pop-up window that provides some feedback or asks for some input. &kturtle; has two commands for dialogs, namely: <userinput>message</userinput> and <userinput>ask</userinput></para>
   <variablelist>
     <anchor id="message" />
@@ -781,6 +781,22 @@ for $x = 1 to 10 {
       <term>exit<indexterm><primary>exit</primary></indexterm></term>
       <listitem><para><screen>exit</screen>
       Finishes the execution of your program.</para></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="assert">
+<title>Checking assertions at runtime</title>
+  <variablelist>
+    <varlistentry>
+      <term>assert<indexterm><primary>assert</primary></indexterm></term>
+      <listitem><para><screen>assert <link linkend="boolean-value">boolean</link></screen>
+      Can be used to reason about program or input correctness.
+      <screen>
+$in = ask "What is your year of birth?"
+# the year must be positive
+assert $in > 0
+</screen></para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
