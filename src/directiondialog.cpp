@@ -31,6 +31,7 @@ using std::atan;
 #include <kglobalsettings.h>
 #include <klocale.h>
 #include <KNumInput>
+#include <kstandardguiitem.h>
 
 #include <QClipboard>
 #include <QHBoxLayout>
@@ -213,7 +214,7 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	setModal(false);
 	setButtons(User1);
 	setDefaultButton(User1);
-	setButtonGuiItem(User1, KGuiItem(i18n("&Quit"), "dialog-close"));
+	setButtonGuiItem(User1, KStandardGuiItem::close());
 	connect(this, SIGNAL(user1Clicked()), this, SLOT(delayedDestruct()));
 	showButtonSeparator(false);
 
