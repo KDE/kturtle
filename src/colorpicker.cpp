@@ -29,6 +29,7 @@
 #include <kapplication.h>
 #include <klocale.h>
 #include <kpushbutton.h>
+#include <kstandardguiitem.h>
 
 
 ColorPicker::ColorPicker(QWidget* parent)
@@ -38,7 +39,7 @@ ColorPicker::ColorPicker(QWidget* parent)
 	setModal(false);
 	setButtons(User1);
 	setDefaultButton(User1);
-	setButtonGuiItem(User1, KGuiItem(i18n("&Quit"), "dialog-close"));
+	setButtonGuiItem(User1, KStandardGuiItem::close());
 	connect(this, SIGNAL(user1Clicked()), this, SLOT(hide()));
 	showButtonSeparator(false);
 
