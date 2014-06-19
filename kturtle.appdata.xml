@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<component type="desktop">
+  <id>kturtle.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <name>KTurtle</name>
+  <summary>Educational Programming Environment</summary>
+  <description>
+    <p>KTurtle is an educational programming environment for learning how to program. It provides all programming tools from its user interface. The programming language used is TurtleScript, which is loosely based on Logo. All commands and messages are translated into the user's language. KTurtle features an intuitive syntax highlighting, simple error messages, integrated canvas to make drawings, an integrated help, slow-motion and step execution.</p>
+  </description>
+  <url type="homepage">http://edu.kde.org/kturtle/</url>
+  <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kturtle</url>
+  <url type="help">http://docs.kde.org/stable/en/kdeedu/kturtle/index.html</url>
+  <screenshots>
+    <screenshot type="default">
+      <image>http://edu.kde.org/images/screenshots/kturtle.png</image>
+    </screenshot>
+  </screenshots>
+  <project_group>KDE</project_group>
+  <provides>
+    <binary>kturtle</binary>
+  </provides>
+</component>

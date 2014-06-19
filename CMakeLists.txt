@@ -10,3 +10,5 @@ add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 add_subdirectory (doc)
 add_subdirectory (src)
 add_subdirectory (icons)
+
+install(FILES kturtle.appdata.xml DESTINATION ${SHARE_INSTALL_PREFIX}/appdata/)
