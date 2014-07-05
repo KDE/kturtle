@@ -5,6 +5,8 @@
   <project_license>GPL-2.0+</project_license>
   <name>KTurtle</name>
   <name xml:lang="cs">KTurtle</name>
+  <name xml:lang="es">KTurtle</name>
+  <name xml:lang="lt">KTurtle</name>
   <name xml:lang="nds">KTurtle</name>
   <name xml:lang="nl">KTurtle</name>
   <name xml:lang="pl">KTurtle</name>
@@ -16,6 +18,8 @@
   <name xml:lang="x-test">xxKTurtlexx</name>
   <summary>Educational Programming Environment</summary>
   <summary xml:lang="cs">Vzdělávací programovací prostředí</summary>
+  <summary xml:lang="es">Entorno de programación educativo</summary>
+  <summary xml:lang="lt">Mokomoji programavimo aplinka</summary>
   <summary xml:lang="nds">Lehr-Programmsmeed</summary>
   <summary xml:lang="nl">Educatieve programmeeromgeving</summary>
   <summary xml:lang="pl">Edukacyjne środowisko do programowania</summary>
