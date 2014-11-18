@@ -22,7 +22,7 @@
 #include <QDomDocument>
 #include <QFile>
 
-#include <KDebug>
+#include <QDebug>
 #include <KGlobal>
 
 #include "token.h"

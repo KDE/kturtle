@@ -25,7 +25,7 @@
 #include <QtGui/QPrintDialog>
 #include <QWidgetAction>
 
-#include <kdebug.h>
+#include <QDebug>
 
 #include <QAction>
 #include <kactioncollection.h>
@@ -755,7 +755,7 @@ void MainWindow::toggleOverwriteMode(bool b)
 
 void MainWindow::updateContextHelpAction(const QString& s, const QString& anchor)
 {
-	kDebug(0) << QString("%1 (help anchor: %2)").arg(s).arg(anchor);
+	//qDebug() << QString("%1 (help anchor: %2)").arg(s).arg(anchor);
 	contextHelpAnchor = anchor;
 	contextHelpString = s.isEmpty() ? i18n("<nothing under cursor>") : s;
 	contextHelpAct->setText(i18n("Help on: %1", contextHelpString));
@@ -821,7 +821,7 @@ void MainWindow::setLanguage(QAction *action)
 bool MainWindow::setCurrentLanguage(const QString &lang_code)  // 2 or 5 digit code (en, en_US, nl, pt_BR)
 {
 	bool result = false;
-	kDebug(0) << "MainWindow::setCurrentLanguage: " << lang_code;
+	//qDebug() << "MainWindow::setCurrentLanguage: " << lang_code;
 	if (Translator::instance()->setLanguage(lang_code)) {
 		currentLanguageCode = lang_code;
 		statusBarLanguageLabel->setText(' ' + codeToFullName(lang_code) + ' ');
@@ -905,7 +905,7 @@ QString MainWindow::execute(const QString &operation)
 
 	if (interpreter->encounteredErrors()) {
 		ErrorList* errorList = interpreter->getErrorList();
-		kDebug() << errorList->first().text();
+		//qDebug() << errorList->first().text();
 		errorMessage = errorList->first().text();
 	}
 

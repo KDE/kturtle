@@ -21,7 +21,7 @@
 
 #include "interpreter/tokenizer.h"
 
-#include <kdebug.h>
+#include <QDebug>
 #include <kurl.h>
 
 

@@ -19,7 +19,7 @@
 
 #include "treenode.h"
 
-#include <kdebug.h>
+#include <QDebug>
 
 
 TreeNode::~TreeNode()
@@ -60,7 +60,7 @@ void TreeNode::appendChild(TreeNode* newChild)
 // // // 			.arg(newChild->token()->look())
 // // // 			.arg(newChild->token()->type())
 // // // 			.arg(_token->look());
-// 	kDebug(0) << "TreeNode::appendChild():" << newChild->token()->look() << " on line" << newChild->token()->startRow() << "to parent" << _token->look();
+// 	//qDebug() << "TreeNode::appendChild():" << newChild->token()->look() << " on line" << newChild->token()->startRow() << "to parent" << _token->look();
 }
 
 

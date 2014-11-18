@@ -32,7 +32,7 @@
 #include <klocale.h>
 #include <krandom.h>
 
-#include <kdebug.h>
+#include <QDebug>
 
 // this function is used in executer and canvas:
 #define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )
@@ -154,7 +154,7 @@ void Executer::execute(TreeNode* node)
 
 	// emit a signal for GUI
 	Token* t = node->token();
-// 	kDebug(0) << "emitting token: '" << t->look() << "' - (" << t->startRow() << "," << t->startCol() << " - " << t->endRow() << "," << t->endCol() << ")";
+// 	//qDebug() << "emitting token: '" << t->look() << "' - (" << t->startRow() << "," << t->startCol() << " - " << t->endRow() << "," << t->endCol() << ")";
 
 	// don't report scopes (their are not really executed)
 	if (t->type() != Token::Scope)
@@ -162,7 +162,7 @@ void Executer::execute(TreeNode* node)
 
 	// this method executes one node at the time
 
-	// if (currentNode->token()->type() != Token::Scope) kDebug(0) << "1234567890!!!!!";
+	// if (currentNode->token()->type() != Token::Scope) //qDebug() << "1234567890!!!!!";
 
 	switch (node->token()->type()) {
 
@@ -252,7 +252,7 @@ void Executer::execute(TreeNode* node)
 //END GENERATED executer_switch_cpp CODE
 
 		default:
-			kDebug(0) << "Unrecognizd Token type (" << node->token()->type() << ", " << node->token()->look() << ") -- THIS SHOULDN'T HAPPEN!";
+			//qDebug() << "Unrecognizd Token type (" << node->token()->type() << ", " << node->token()->look() << ") -- THIS SHOULDN'T HAPPEN!";
 			break;
 
 	}
@@ -273,7 +273,7 @@ VariableTable* Executer::currentVariableTable()
 
 bool Executer::checkParameterQuantity(TreeNode* node, uint quantity, int errorCode)
 {
-// 	kDebug(0) << "called";
+// 	//qDebug() << "called";
 	uint nodeSize = node->childCount();
 
 	if (quantity == 0) {
@@ -300,7 +300,7 @@ bool Executer::checkParameterQuantity(TreeNode* node, uint quantity, int errorCo
 
 bool Executer::checkParameterType(TreeNode* node, int valueType, int errorCode)
 {
-// 	kDebug(0) << "called";
+// 	//qDebug() << "called";
 	uint quantity = node->childCount();
 	TreeNode* currentChild = node->firstChild();
 	while (currentChild != 0) {
@@ -339,7 +339,7 @@ bool Executer::checkParameterType(TreeNode* node, int valueType, int errorCode)
 
 void Executer::addError(const QString& s, const Token& t, int code)
 {
-// 	kDebug(0) << qPrintable(s) << " (runtime error)";
+// 	//qDebug() << qPrintable(s) << " (runtime error)";
 	errorList->addError(s, t, code);
 }
 
@@ -355,11 +355,11 @@ void Executer::addError(const QString& s, const Token& t, int code)
  */
 
 void Executer::executeRoot(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	node = node; // stop the warnings // this is a stud
 }
 void Executer::executeScope(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	// catch loops, they need to be managed...
 	int parentTokenType = node->parent()->token()->type();
 	if (parentTokenType == Token::If     ||
@@ -380,7 +380,7 @@ void Executer::executeScope(TreeNode* node) {
 	newScope = node;
 }
 void Executer::executeVariable(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	bool aValueIsNeeded = true;
 	// no need to look up when assigning (in a for loop statement)
 	if ((node->parent()->token()->type() == Token::ForTo) && (node->parent()->child(0)==node))
@@ -395,10 +395,10 @@ void Executer::executeVariable(TreeNode* node) {
 	}
 	if (!functionStack.isEmpty() && 
 	    functionStack.top().variableTable->contains(node->token()->look())) {
-		// kDebug(0) << "exists locally";
+		// //qDebug() << "exists locally";
 		node->setValue( (*functionStack.top().variableTable)[node->token()->look()] );
 	} else if (globalVariableTable.contains(node->token()->look())) {
-		// kDebug(0) << "exists globally";
+		// //qDebug() << "exists globally";
 		node->setValue(globalVariableTable[node->token()->look()]);
 	} else if (aValueIsNeeded)
 	{
@@ -406,7 +406,7 @@ void Executer::executeVariable(TreeNode* node) {
 	}
 }
 void Executer::executeFunctionCall(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (node->parent()->token()->type() == Token::Learn) {  // in case we're defining a function
 		currentNode = node->parent();
 		executeCurrent = true;
@@ -416,7 +416,7 @@ void Executer::executeFunctionCall(TreeNode* node) {
 	if (returning) {  // if the function is already executed and returns now
 		returnValue = 0;
 		returning = false;
-		// kDebug(0) << "==> functionReturned!";
+		// //qDebug() << "==> functionReturned!";
 		return;
 	}
 
@@ -429,7 +429,7 @@ void Executer::executeFunctionCall(TreeNode* node) {
 	c.function      = node;
 	c.variableTable = new VariableTable();
 	functionStack.push(c);
-	// kDebug(0) << "==> functionCalled!";
+	// //qDebug() << "==> functionCalled!";
 	
 	TreeNode* learnNode = functionTable[node->token()->look()];
 
@@ -447,17 +447,17 @@ void Executer::executeFunctionCall(TreeNode* node) {
 		
 	for (uint i = 0; i < node->childCount(); i++) {
 		functionStack.top().variableTable->insert(learnNode->child(1)->child(i)->token()->look(), node->child(i)->value());
-		// kDebug(0) << "inserted variable " << learnNode->child(1)->child(i)->token()->look() << " on function stack";
+		// //qDebug() << "inserted variable " << learnNode->child(1)->child(i)->token()->look() << " on function stack";
 	}
 	newScope = learnNode->child(2);
 }
 void Executer::executeExit(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	node = node; // stop the warnings
 	finished = true;
 }
 void Executer::executeIf(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	QString id = QString("__%1_%2").arg(node->token()->look()).arg((quintptr)node);
 	if (currentVariableTable()->contains(id)) {
 		currentVariableTable()->remove(id);
@@ -476,11 +476,11 @@ void Executer::executeIf(TreeNode* node) {
 	}
 }
 void Executer::executeElse(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	execute(node->child(0));  // execute the scope, that's all...
 }
 void Executer::executeRepeat(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	QString id = QString("__%1_%2").arg(node->token()->look()).arg((quintptr)node);
 
 	if(breaking) {
@@ -507,7 +507,7 @@ void Executer::executeRepeat(TreeNode* node) {
 	newScope = node->child(1);
 }
 void Executer::executeWhile(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	// first time this gets called the expression is already executed
 	// after one iteration the expression is not automatically re-executed.
 	// so we do the following on every call to executeWhile:
@@ -535,12 +535,12 @@ void Executer::executeWhile(TreeNode* node) {
 		currentVariableTable()->remove(id); // clean-up, keep currenNode on currentNode so the next sibling we be run next
 }
 void Executer::executeFor(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	qCritical("Executer::executeFor(): should have been translated to Token::ForTo by the parser");
 	node = node; // stop the warnings
 }
 void Executer::executeForTo(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	// first time this gets called the expressions are already executed
 	// after one iteration the expression is not re-executed.
 	// so we do: exec scope, exec expressions, exec scope, exec expressions, ...
@@ -602,7 +602,7 @@ void Executer::executeForTo(TreeNode* node) {
 	}
 }
 void Executer::executeBreak(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 0, 20000+Token::Break*100+90)) return;
 
 	breaking = true;
@@ -625,7 +625,7 @@ void Executer::executeBreak(TreeNode* node) {
 	// find a matching parent
 }
 void Executer::executeReturn(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if(node->childCount()>0)
 		returnValue = node->child(0)->value();
 	else
@@ -633,20 +633,20 @@ void Executer::executeReturn(TreeNode* node) {
 	returning   = true;
 }
 void Executer::executeWait(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::Wait*100+90)) return;
 	if (!checkParameterType(node, Value::Number, 20000+Token::Wait*100+91) ) return;
 	waiting = true;
 	QTimer::singleShot((int)(1000*node->child(0)->value()->number()), this, SLOT(stopWaiting()));
 }
 void Executer::executeAssert(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::Wait*100+90)) return;
 	if (!checkParameterType(node, Value::Bool, 20000+Token::Wait*100+91) ) return;
 	if (!node->child(0)->value()->boolean()) addError(i18n("ASSERT failed"), *node->token(), 0);
 }
 void Executer::executeAnd(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	//Niels: See 'Not'
 	if(node->childCount()!=2) {
 		addError(i18n("'And' needs two variables"), *node->token(), 0);
@@ -655,7 +655,7 @@ void Executer::executeAnd(TreeNode* node) {
 	node->value()->setBool(node->child(0)->value()->boolean() && node->child(1)->value()->boolean());
 }
 void Executer::executeOr(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	//Niels: See 'Not'
 	if(node->childCount()!=2) {
 		addError(i18n("'Or' needs two variables"), *node->token(), 0);
@@ -664,7 +664,7 @@ void Executer::executeOr(TreeNode* node) {
 	node->value()->setBool(node->child(0)->value()->boolean() || node->child(1)->value()->boolean());
 }
 void Executer::executeNot(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	// OLD-TODO: maybe add some error handling here...
 	//Niels: Ok, now we check if the node has children. Should we also check whether the child value is a boolean?
 	if(node->childCount()!=1) {
@@ -674,7 +674,7 @@ void Executer::executeNot(TreeNode* node) {
 	node->value()->setBool(!node->child(0)->value()->boolean());
 }
 void Executer::executeEquals(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if(node->childCount()!=2) { 
 		addError(i18n("I cannot do a '==' without 2 variables"), *node->token(), 0);
 		return;
@@ -682,7 +682,7 @@ void Executer::executeEquals(TreeNode* node) {
 	node->value()->setBool(*node->child(0)->value() == node->child(1)->value());
 }
 void Executer::executeNotEquals(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if(node->childCount()!=2) { 
 		addError(i18n("I cannot do a '!=' without 2 variables"), *node->token(), 0);
 		return;
@@ -690,7 +690,7 @@ void Executer::executeNotEquals(TreeNode* node) {
 	node->value()->setBool(*node->child(0)->value() != node->child(1)->value());
 }
 void Executer::executeGreaterThan(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if(node->childCount()!=2) { 
 		addError(i18n("I cannot do a '>' without 2 variables"), *node->token(), 0);
 		return;
@@ -698,7 +698,7 @@ void Executer::executeGreaterThan(TreeNode* node) {
 	node->value()->setBool(*node->child(0)->value() > node->child(1)->value());
 }
 void Executer::executeLessThan(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if(node->childCount()!=2) { 
 		addError(i18n("I cannot do a '<' without 2 variables"), *node->token(), 0);
 		return;
@@ -706,7 +706,7 @@ void Executer::executeLessThan(TreeNode* node) {
 	node->value()->setBool(*node->child(0)->value() < node->child(1)->value());
 }
 void Executer::executeGreaterOrEquals(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if(node->childCount()!=2) { 
 		addError(i18n("I cannot do a '>=' without 2 variables"), *node->token(), 0);
 		return;
@@ -714,7 +714,7 @@ void Executer::executeGreaterOrEquals(TreeNode* node) {
 	node->value()->setBool(*node->child(0)->value() >= node->child(1)->value());
 }
 void Executer::executeLessOrEquals(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if(node->childCount()!=2) { 
 		addError(i18n("I cannot do a '<=' without 2 variables"), *node->token(), 0);
 		return;
@@ -722,7 +722,7 @@ void Executer::executeLessOrEquals(TreeNode* node) {
 	node->value()->setBool(*node->child(0)->value() <= node->child(1)->value());
 }
 void Executer::executeAddition(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if(node->childCount()!=2) {
 		addError(i18n("You need two numbers or string to do an addition"), *node->token(), 0);
 		return;
@@ -734,7 +734,7 @@ void Executer::executeAddition(TreeNode* node) {
 	}
 }
 void Executer::executeSubstracton(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if(node->childCount()!=2) {
 		addError(i18n("You need two numbers to subtract"), *node->token(), 0);
 		return;
@@ -749,7 +749,7 @@ void Executer::executeSubstracton(TreeNode* node) {
 	}
 }
 void Executer::executeMultiplication(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if(node->childCount()!=2) {
 		addError(i18n("You need two numbers to multiplicate"), *node->token(), 0);
 		return;
@@ -764,7 +764,7 @@ void Executer::executeMultiplication(TreeNode* node) {
 	}
 }
 void Executer::executeDivision(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if(node->childCount()!=2) {
 		addError(i18n("You need two numbers to divide"), *node->token(), 0);
 		return;
@@ -783,7 +783,7 @@ void Executer::executeDivision(TreeNode* node) {
 	}
 }
 void Executer::executePower(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if(node->childCount()!=2) {
 		addError(i18n("You need two numbers to raise a power"), *node->token(), 0);
 		return;
@@ -808,161 +808,161 @@ void Executer::executePower(TreeNode* node) {
 	}
 }
 void Executer::executeAssign(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if(node->childCount()!=2) {
 	addError(i18n("You need one variable and a value or variable to do a '='"), *node->token(), 0);
 		return;
 	}
 	if (!functionStack.isEmpty() && !globalVariableTable.contains(node->child(0)->token()->look())) // &&functionStack.top().variableTable->contains(node->token()->look())) 
 	{
-		// kDebug(0) << "function scope";
+		// //qDebug() << "function scope";
 		functionStack.top().variableTable->insert(node->child(0)->token()->look(), node->child(1)->value());
 	} else {
 		// inserts unless already exists then replaces
 		globalVariableTable.insert(node->child(0)->token()->look(), node->child(1)->value());
 	}
-	// kDebug(0) << "variableTable updated!";
+	// //qDebug() << "variableTable updated!";
 	emit variableTableUpdated(node->child(0)->token()->look(), node->child(1)->value());
 }
 void Executer::executeLearn(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if(functionTable.contains(node->child(0)->token()->look())) {
 		addError(i18n("The function '%1' is already defined.", node->child(0)->token()->look()), *node->token(), 0);
 		return;
 	}
 	functionTable.insert(node->child(0)->token()->look(), node);
-	// kDebug(0) << "functionTable updated!";
+	// //qDebug() << "functionTable updated!";
 	QStringList parameters;
 	for (uint i = 0; i < node->child(1)->childCount(); i++)
 		parameters << node->child(1)->child(i)->token()->look();
 	emit functionTableUpdated(node->child(0)->token()->look(), parameters);
 }
 void Executer::executeArgumentList(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	node = node; // stop the warnings // this is a stud
 }
 void Executer::executeReset(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 0, 20000+Token::Reset*100+90)) return;
 	emit reset();
 }
 void Executer::executeClear(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 0, 20000+Token::Clear*100+90)) return;
 	emit clear();
 }
 void Executer::executeCenter(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 0, 20000+Token::Center*100+90)) return;
 	emit center();
 }
 void Executer::executeGo(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 2, 20000+Token::Go*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::Go*100+91)) return;
 	emit go(node->child(0)->value()->number(), node->child(1)->value()->number());
 }
 void Executer::executeGoX(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::GoX*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::GoX*100+91)) return;
 	emit goX(node->child(0)->value()->number());
 }
 void Executer::executeGoY(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::GoY*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::GoY*100+91)) return;
 	emit goY(node->child(0)->value()->number());
 }
 void Executer::executeForward(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::Forward*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::Forward*100+91)) return;
 	emit forward(node->child(0)->value()->number());
 }
 void Executer::executeBackward(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::Backward*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::Backward*100+91)) return;
 	emit backward(node->child(0)->value()->number());
 }
 void Executer::executeDirection(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::Direction*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::Direction*100+91)) return;
 	emit direction(node->child(0)->value()->number());
 }
 void Executer::executeTurnLeft(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::TurnLeft*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::TurnLeft*100+91)) return;
 	emit turnLeft(node->child(0)->value()->number());
 }
 void Executer::executeTurnRight(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::TurnRight*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::TurnRight*100+91)) return;
 	emit turnRight(node->child(0)->value()->number());
 }
 void Executer::executePenWidth(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::PenWidth*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::PenWidth*100+91)) return;
 	emit penWidth(node->child(0)->value()->number());
 }
 void Executer::executePenUp(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 0, 20000+Token::PenUp*100+90)) return;
 	emit penUp();
 }
 void Executer::executePenDown(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 0, 20000+Token::PenDown*100+90)) return;
 	emit penDown();
 }
 void Executer::executePenColor(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 3, 20000+Token::PenColor*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::PenColor*100+91)) return;
 	emit penColor(node->child(0)->value()->number(), node->child(1)->value()->number(), node->child(2)->value()->number());
 }
 void Executer::executeCanvasColor(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 3, 20000+Token::CanvasColor*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::CanvasColor*100+91)) return;
 	emit canvasColor(node->child(0)->value()->number(), node->child(1)->value()->number(), node->child(2)->value()->number());
 }
 void Executer::executeCanvasSize(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 2, 20000+Token::CanvasSize*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::CanvasSize*100+91)) return;
 	emit canvasSize(node->child(0)->value()->number(), node->child(1)->value()->number());
 }
 void Executer::executeSpriteShow(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 0, 20000+Token::SpriteShow*100+90)) return;
 	emit spriteShow();
 }
 void Executer::executeSpriteHide(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 0, 20000+Token::SpriteHide*100+90)) return;
 	emit spriteHide();
 }
 void Executer::executePrint(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::Print*100+90))
 		return;
-	// kDebug(0) << "Printing: '" << node->child(0)->value()->string() << "'";
+	// //qDebug() << "Printing: '" << node->child(0)->value()->string() << "'";
 	emit print(node->child(0)->value()->string());
 }
 void Executer::executeFontSize(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::FontSize*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::FontSize*100+91)) return;
 	emit fontSize(node->child(0)->value()->number());
 }
 void Executer::executeRandom(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 2, 20000+Token::Random*100+90)) return;
 	TreeNode* nodeX = node->child(0);  // getting
 	TreeNode* nodeY = node->child(1);
@@ -974,26 +974,26 @@ void Executer::executeRandom(TreeNode* node) {
 	node->value()->setNumber(r * (y - x) + x);
 }
 void Executer::executeGetX(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 0, 20000+Token::GetX*100+90)) return;
 	double value = 0;
 	emit getX(value);
 	node->value()->setNumber(value);
 }
 void Executer::executeGetY(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 0, 20000+Token::GetY*100+90)) return;
 	double value = 0;
 	emit getY(value);
 	node->value()->setNumber(value);
 }
 void Executer::executeMessage(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::Message*100+90)) return;
 	emit message(node->child(0)->value()->string());
 }
 void Executer::executeAsk(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::Ask*100+90)) return;
 	QString value = node->child(0)->value()->string();
 	emit ask(value);
@@ -1006,53 +1006,53 @@ void Executer::executeAsk(TreeNode* node) {
 		node->value()->setString(value);
 }
 void Executer::executePi(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	node->value()->setNumber(M_PI);
 }
 void Executer::executeTan(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::Tan*100+90)) return;
 	
 	double deg = node->child(0)->value()->number();
 	node->value()->setNumber(tan(DEG2RAD(deg)));
 }
 void Executer::executeSin(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::Sin*100+90)) return;
 	
 	double deg = node->child(0)->value()->number();
 	node->value()->setNumber(sin(DEG2RAD(deg)));
 }
 void Executer::executeCos(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::Cos*100+90)) return;
 	
 	double deg = node->child(0)->value()->number();
 	node->value()->setNumber(cos(DEG2RAD(deg)));
 }
 void Executer::executeArcTan(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::ArcTan*100+90)) return;
 	
 	double deg = node->child(0)->value()->number();
 	node->value()->setNumber(RAD2DEG(atan(deg)));
 }
 void Executer::executeArcSin(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::ArcSin*100+90)) return;
 	
 	double deg = node->child(0)->value()->number();
 	node->value()->setNumber(RAD2DEG(asin(deg)));
 }
 void Executer::executeArcCos(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::ArcCos*100+90)) return;
 	
 	double deg = node->child(0)->value()->number();
 	node->value()->setNumber(RAD2DEG(acos(deg)));
 }
 void Executer::executeSqrt(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 1, 20000+Token::Sqrt*100+90)) return;
 	
 	double val = node->child(0)->value()->number();
@@ -1064,21 +1064,21 @@ void Executer::executeSqrt(TreeNode* node) {
 	node->value()->setNumber(sqrt(val));
 }
 void Executer::executeRound(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
     if (!checkParameterQuantity(node, 1, 20000+Token::Round*100+90)) return;
    
     double val = node->child(0)->value()->number();
     node->value()->setNumber((double)ROUND2INT(val));
 }
 void Executer::executeGetDirection(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 0, 20000+Token::GetDirection*100+90)) return;
 	double value = 0;
 	emit getDirection(value);
 	node->value()->setNumber(value);
 }
 void Executer::executeMod(TreeNode* node) {
-//	kDebug() << "called";  // method name is appended by kDebug
+//	//qDebug() << "called";  // method name is appended by kDebug
 	if (!checkParameterQuantity(node, 2, 20000+Token::Mod*100+90)) return;
 	TreeNode* nodeX = node->child(0);  // getting
 	TreeNode* nodeY = node->child(1);
@@ -1104,5 +1104,5 @@ TreeNode* Executer::getParentOfTokenTypes(TreeNode* child, QList<int>* types) {
 
 void Executer::printExe() {
 // 	if (currentNode->token()->type() != Token::Scope)
-// 		kDebug(0) << "EXE> " << qPrintable(currentNode->token()->look());
+// 		//qDebug() << "EXE> " << qPrintable(currentNode->token()->look());
 }

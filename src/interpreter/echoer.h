@@ -24,7 +24,7 @@
 
 #include "executer.h"
 
-#include <kdebug.h>
+#include <QDebug>
 
 
 /**
@@ -124,27 +124,27 @@ class Echoer : public QObject
  * Thanks for looking at the code!
  */
 
-		void reset() { kDebug(0) << "SIG> " << "reset" << "(" << ")"; }
-		void clear() { kDebug(0) << "SIG> " << "clear" << "(" << ")"; }
-		void center() { kDebug(0) << "SIG> " << "center" << "(" << ")"; }
-		void go(double arg0, double arg1) { kDebug(0) << "SIG> " << "go" << "(" << arg0 << "," << arg1 << ")"; }
-		void goX(double arg0) { kDebug(0) << "SIG> " << "goX" << "(" << arg0 << ")"; }
-		void goY(double arg0) { kDebug(0) << "SIG> " << "goY" << "(" << arg0 << ")"; }
-		void forward(double arg0) { kDebug(0) << "SIG> " << "forward" << "(" << arg0 << ")"; }
-		void backward(double arg0) { kDebug(0) << "SIG> " << "backward" << "(" << arg0 << ")"; }
-		void direction(double arg0) { kDebug(0) << "SIG> " << "direction" << "(" << arg0 << ")"; }
-		void turnLeft(double arg0) { kDebug(0) << "SIG> " << "turnLeft" << "(" << arg0 << ")"; }
-		void turnRight(double arg0) { kDebug(0) << "SIG> " << "turnRight" << "(" << arg0 << ")"; }
-		void penWidth(double arg0) { kDebug(0) << "SIG> " << "penWidth" << "(" << arg0 << ")"; }
-		void penUp() { kDebug(0) << "SIG> " << "penUp" << "(" << ")"; }
-		void penDown() { kDebug(0) << "SIG> " << "penDown" << "(" << ")"; }
-		void penColor(double arg0, double arg1, double arg2) { kDebug(0) << "SIG> " << "penColor" << "(" << arg0 << "," << arg1 << "," << arg2 << ")"; }
-		void canvasColor(double arg0, double arg1, double arg2) { kDebug(0) << "SIG> " << "canvasColor" << "(" << arg0 << "," << arg1 << "," << arg2 << ")"; }
-		void canvasSize(double arg0, double arg1) { kDebug(0) << "SIG> " << "canvasSize" << "(" << arg0 << "," << arg1 << ")"; }
-		void spriteShow() { kDebug(0) << "SIG> " << "spriteShow" << "(" << ")"; }
-		void spriteHide() { kDebug(0) << "SIG> " << "spriteHide" << "(" << ")"; }
-		void print(const QString& arg0) { kDebug(0) << "SIG> " << "print" << "(" << qPrintable(arg0) << ")"; }
-		void fontSize(double arg0) { kDebug(0) << "SIG> " << "fontSize" << "(" << arg0 << ")"; }
+		void reset() { //qDebug() << "SIG> " << "reset" << "(" << ")"; }
+		void clear() { //qDebug() << "SIG> " << "clear" << "(" << ")"; }
+		void center() { //qDebug() << "SIG> " << "center" << "(" << ")"; }
+		void go(double arg0, double arg1) { //qDebug() << "SIG> " << "go" << "(" << arg0 << "," << arg1 << ")"; }
+		void goX(double arg0) { //qDebug() << "SIG> " << "goX" << "(" << arg0 << ")"; }
+		void goY(double arg0) { //qDebug() << "SIG> " << "goY" << "(" << arg0 << ")"; }
+		void forward(double arg0) { //qDebug() << "SIG> " << "forward" << "(" << arg0 << ")"; }
+		void backward(double arg0) { //qDebug() << "SIG> " << "backward" << "(" << arg0 << ")"; }
+		void direction(double arg0) { //qDebug() << "SIG> " << "direction" << "(" << arg0 << ")"; }
+		void turnLeft(double arg0) { //qDebug() << "SIG> " << "turnLeft" << "(" << arg0 << ")"; }
+		void turnRight(double arg0) { //qDebug() << "SIG> " << "turnRight" << "(" << arg0 << ")"; }
+		void penWidth(double arg0) { //qDebug() << "SIG> " << "penWidth" << "(" << arg0 << ")"; }
+		void penUp() { //qDebug() << "SIG> " << "penUp" << "(" << ")"; }
+		void penDown() { //qDebug() << "SIG> " << "penDown" << "(" << ")"; }
+		void penColor(double arg0, double arg1, double arg2) { //qDebug() << "SIG> " << "penColor" << "(" << arg0 << "," << arg1 << "," << arg2 << ")"; }
+		void canvasColor(double arg0, double arg1, double arg2) { //qDebug() << "SIG> " << "canvasColor" << "(" << arg0 << "," << arg1 << "," << arg2 << ")"; }
+		void canvasSize(double arg0, double arg1) { //qDebug() << "SIG> " << "canvasSize" << "(" << arg0 << "," << arg1 << ")"; }
+		void spriteShow() { //qDebug() << "SIG> " << "spriteShow" << "(" << ")"; }
+		void spriteHide() { //qDebug() << "SIG> " << "spriteHide" << "(" << ")"; }
+		void print(const QString& arg0) { //qDebug() << "SIG> " << "print" << "(" << qPrintable(arg0) << ")"; }
+		void fontSize(double arg0) { //qDebug() << "SIG> " << "fontSize" << "(" << arg0 << ")"; }
 
 //END GENERATED echoer_slots_h CODE
 

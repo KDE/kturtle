@@ -21,7 +21,7 @@
 
 #include <QHeaderView>
 
-#include <kdebug.h>
+#include <QDebug>
 
 #include <kdialog.h>
 #include <kglobalsettings.h>
@@ -137,5 +137,5 @@ void ErrorDialog::selectedErrorChangedProxy()
 	Q_ASSERT (errorList != 0);
 	const Token* t = &errorList->at(errorTable->selectedItems().first()->row()).token();
 	emit currentlySelectedError(t->startRow(), t->startCol(), t->endRow(), t->endCol());
-	// kDebug() << "EMITTED: " << t->startRow() << ", " << t->startCol() << ", " << t->endRow() << ", " << t->endCol();
+	// //qDebug() << "EMITTED: " << t->startRow() << ", " << t->startCol() << ", " << t->endRow() << ", " << t->endCol();
 }

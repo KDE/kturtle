@@ -24,7 +24,7 @@
 
 #include <QResizeEvent>
 
-#include <kdebug.h>
+#include <QDebug>
 #include <klocale.h>
 
 

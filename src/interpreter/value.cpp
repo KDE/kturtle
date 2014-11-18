@@ -19,7 +19,7 @@
 
 #include "value.h"
 
-#include <kdebug.h>
+#include <QDebug>
 #include <klocale.h>
 
 #include "translator.h"  // for the boolean (true and false) to string translation
@@ -214,7 +214,7 @@ Value& Value::operator-(Value* n)
 	if (m_type == Value::Number && n->type() == Value::Number) {
 		m_double -= n->number();
 	} else {
-		kDebug(0) << "cannot subtract strings" << endl;
+		//qDebug() << "cannot subtract strings" << endl;
 	}
 	return *this;
 }
@@ -225,7 +225,7 @@ Value& Value::operator*(Value* n)
 	if (m_type == Value::Number && n->type() == Value::Number) {
 		m_double *= n->number();
 	} else {
-		kDebug(0) << "cannot multiply strings" << endl; 
+		//qDebug() << "cannot multiply strings" << endl; 
 	}
 	return *this;
 }
@@ -236,7 +236,7 @@ Value& Value::operator/(Value* n)
 	if (m_type == Value::Number && n->type() == Value::Number) {
 		m_double /= n->number();
 	} else {
-		kDebug(0) << "cannot divide strings" << endl;
+		//qDebug() << "cannot divide strings" << endl;
 	}
 	return *this;
 }

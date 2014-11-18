@@ -31,7 +31,7 @@
 
 #include <QTextStream>
 
-#include <kdebug.h>
+#include <QDebug>
 
 #include <kfiledialog.h>
 #include <kfind.h>

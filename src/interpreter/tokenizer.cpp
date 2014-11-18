@@ -18,7 +18,7 @@
 */
 
 
-#include <kdebug.h>
+#include <QDebug>
 
 #include "tokenizer.h"
 
@@ -154,7 +154,7 @@ QChar Tokenizer::getChar()
 {
 	if (at >= inputString.size()) {
 		atEnd = true;
-// 		kDebug() << "Tokenizer::getChar() returns: a ZERO CHAR " << " @ " << at - 1;
+// 		//qDebug() << "Tokenizer::getChar() returns: a ZERO CHAR " << " @ " << at - 1;
 		return QChar();
 	}
 	QChar c(inputString.at(at));
@@ -166,7 +166,7 @@ QChar Tokenizer::getChar()
 	} else {
 		col++;
 	}
-// 	kDebug() << "Tokenizer::getChar() returns: " << c << " (" << c.category() << ") " << " @ " << at - 1;
+// 	//qDebug() << "Tokenizer::getChar() returns: " << c << " (" << c.category() << ") " << " @ " << at - 1;
 	return c;
 }
 

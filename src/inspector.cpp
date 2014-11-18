@@ -24,7 +24,7 @@
 #include <QHeaderView>
 #include <QTextCharFormat>
 
-#include <kdebug.h>
+#include <QDebug>
 #include <klocale.h>
 #include <KTabWidget>
 
@@ -284,17 +284,17 @@ int Inspector::findVariable(const QString& name)
 
 void Inspector::markVariable(const QString& name)
 {
-	kDebug() << variableMap[name]->row();
+	//qDebug() << variableMap[name]->row();
 }
 
 void Inspector::markFunction(const QString& name)
 {
-	kDebug() << functionMap[name]->row();
+	//qDebug() << functionMap[name]->row();
 }
 
 void Inspector::markTreeNode(TreeNode* node)
 {
-// 	kDebug() << treeMap[node]->text(0);
+// 	//qDebug() << treeMap[node]->text(0);
 	clearTreeMark();
 	currentlyMarkedTreeItem = treeMap[node];
 	previousTreeBackground = currentlyMarkedTreeItem->background(0);
