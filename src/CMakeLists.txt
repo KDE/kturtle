@@ -51,6 +51,7 @@ target_link_libraries(kturtle
     Qt5::Core
     Qt5::Gui
     Qt5::Xml
+    Qt5::Svg
     #${QT_QTCORE_LIBRARY}
     #${QT_QTGUI_LIBRARY}
     #${QT_QTXML_LIBRARY}
