@@ -65,5 +65,3 @@ void Sprite::setAngle(double degrees)
 	//TODO: Check if the update can be done more efficiently
 	update();
 }
-
-#include "sprite.moc"

@@ -126,7 +126,3 @@ void Interpreter::interpret()
 			return;
 	}
 }
-
-
-#include "interpreter.moc"
-

@@ -139,7 +139,3 @@ void ErrorDialog::selectedErrorChangedProxy()
 	emit currentlySelectedError(t->startRow(), t->startCol(), t->endRow(), t->endCol());
 	// kDebug() << "EMITTED: " << t->startRow() << ", " << t->startCol() << ", " << t->endRow() << ", " << t->endCol();
 }
-
-
-#include "errordialog.moc"
-

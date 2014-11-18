@@ -284,6 +284,3 @@ void Canvas::saveAsSvg(const QString& title, const QString& fileName)
 		slotSpriteShow();
 	p.end();
 }
-
-
-#include "canvas.moc"

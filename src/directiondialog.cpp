@@ -413,6 +413,3 @@ void DirectionDialog::pasteProxy()
 {
 	emit pasteText(commandBox->text());
 }
-
-
-#include "directiondialog.moc"

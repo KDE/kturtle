@@ -21,7 +21,3 @@
 // the purpose of this file is to make the auto-moc system of cmake work
 
 #include "echoer.h"
-
-#include "echoer.moc"
-
-

@@ -122,6 +122,3 @@ QTextCharFormat* Highlighter::tokenToFormat(Token* token)
 	}
 	return 0;
 }
-
-
-#include "highlighter.moc"

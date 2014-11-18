@@ -157,6 +157,3 @@ void ColorPicker::pasteProxy()
 {
 	emit pasteText(resultBox->text());
 }
-
-
-#include "colorpicker.moc"

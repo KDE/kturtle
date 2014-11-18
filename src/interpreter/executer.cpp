@@ -1106,5 +1106,3 @@ void Executer::printExe() {
 // 	if (currentNode->token()->type() != Token::Scope)
 // 		kDebug(0) << "EXE> " << qPrintable(currentNode->token()->look());
 }
-
-#include "executer.moc"

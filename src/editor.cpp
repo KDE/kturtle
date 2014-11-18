@@ -472,6 +472,3 @@ QString Editor::toHtml(const QString& title, const QString& lang)
 // 
 // 	return false;
 // }
-
-
-#include "editor.moc"

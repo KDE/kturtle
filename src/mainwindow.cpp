@@ -1112,5 +1112,3 @@ void MainWindow::getNewExampleDialog()
 	dialog.exec();
 	updateExamplesMenu();
 }
-
-#include "mainwindow.moc"
