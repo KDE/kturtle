@@ -1,8 +1,7 @@
-include_directories (${CMAKE_SOURCE_DIR}/kturtle/interpreter)
-include_directories (${KDE4_INCLUDES})
+include_directories(${CMAKE_SOURCE_DIR}/kturtle/interpreter)
+#include_directories(${KDE4_INCLUDES})
 
-set (
-  kturtle_SRCS
+set(kturtle_SRCS
     canvas.cpp
     colorpicker.cpp
     console.cpp
@@ -26,28 +25,37 @@ set (
     interpreter/value.cpp
 )
 
-QT4_ADD_DBUS_ADAPTOR(kturtle_SRCS interpreter/org.kde.kturtle.Interpreter.xml interpreter/interpreter.h Interpreter)
+#FIXME: Reenable.  Why does this not work?
+#qt5_add_dbus_adaptor(kturtle_SRCS interpreter/org.kde.kturtle.Interpreter.xml
+#                     interpreter/interpreter.h Interpreter)
+#QT4_ADD_DBUS_ADAPTOR(kturtle_SRCS interpreter/org.kde.kturtle.Interpreter.xml interpreter/interpreter.h Interpreter)
 
 set (kturtle_RCCS resources.qrc)
-qt4_add_resources (kturtle_RCC_SRCS ${kturtle_RCCS})
+# FIXME: Reenable
+#qt5_add_resources (kturtle_RCC_SRCS ${kturtle_RCCS})
+#qt4_add_resources (kturtle_RCC_SRCS ${kturtle_RCCS})
 
 # uncomment this if oxygen icons for kturtle are available
 #kde4_add_app_icon (kturtle_SRCS "${KDE4_ICON_DIR}/oxygen/*/apps/kturtle.png")
-kde4_add_app_icon (kturtle_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../icons/hi*-app-kturtle.png")
+# FIXME: Reeneable
+#kde5_add_app_icon (kturtle_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../icons/hi*-app-kturtle.png")
+#kde4_add_app_icon (kturtle_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../icons/hi*-app-kturtle.png")
 
-kde4_add_executable (
-  kturtle
-    ${kturtle_SRCS}
-    ${kturtle_RCC_SRCS}
+add_executable(kturtle ${kturtle_SRCS}
+                       ${kturtle_RCC_SRCS}
 )
 
-target_link_libraries (
-  kturtle
-    ${QT_QTCORE_LIBRARY}
-    ${QT_QTGUI_LIBRARY}
-    ${QT_QTXML_LIBRARY}
-    ${KDE4_KIO_LIBS}
-    ${KDE4_KNEWSTUFF3_LIBS}
+target_link_libraries(kturtle
+    KF5::KIO
+    KF5::NewStuff
+    Qt5::Core
+    Qt5::Gui
+    Qt5::Xml
+    #${QT_QTCORE_LIBRARY}
+    #${QT_QTGUI_LIBRARY}
+    #${QT_QTXML_LIBRARY}
+    #${KDE4_KIO_LIBS}
+    #${KDE4_KNEWSTUFF3_LIBS}
 )
 
 install (TARGETS  kturtle          ${INSTALL_TARGETS_DEFAULT_ARGS})
