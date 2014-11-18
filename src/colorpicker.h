@@ -28,7 +28,7 @@
 #include <QSpinBox>
 #include <QDialog>
 
-#include <klineedit.h>
+#include <QLineEdit>
 
 
 class ColorPatch : public QFrame
@@ -75,7 +75,7 @@ class ColorPicker : public QDialog
 
 	private:
 		ColorPatch *colorPatch;
-		KLineEdit  *resultBox;
+		QLineEdit  *resultBox;
 
 		QSlider *redSlider;
 		QSlider *greenSlider;

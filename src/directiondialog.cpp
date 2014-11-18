@@ -297,7 +297,7 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	QHBoxLayout *pasteRowLayout = new QHBoxLayout;
 	baseLayout->addLayout(pasteRowLayout);
 	pasteRowLayout->addStretch();
-	commandBox = new KLineEdit(rightWidget);
+	commandBox = new QLineEdit(rightWidget);
 	commandBox->setReadOnly(true);
 	commandBox->setFont(KGlobalSettings::fixedFont());
 	commandBox->setMinimumWidth(commandBox->fontMetrics().width("000000000_360"));

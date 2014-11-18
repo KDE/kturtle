@@ -103,7 +103,7 @@ ColorPicker::ColorPicker(QWidget* parent)
 	resultLayout->addStretch();
 
 	baseLayout->addLayout(resultLayout);
-	resultBox = new KLineEdit(this);
+	resultBox = new QLineEdit(this);
 	resultBox->setReadOnly(true);
 	resultBox->setFont(KGlobalSettings::fixedFont());
 	int width = QFontMetrics(KGlobalSettings::fixedFont()).width("255, 255, 255_000");

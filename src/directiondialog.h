@@ -26,7 +26,7 @@
 #include <QWidget>
 
 #include <kdialog.h>
-#include <klineedit.h>
+#include <QLineEdit>
 #include <kpushbutton.h>
 
 
@@ -94,7 +94,7 @@ class DirectionDialog : public KDialog
 		KPushButton *copyButton;
 		KPushButton *pasteButton;
 
-		KLineEdit* commandBox;
+		QLineEdit* commandBox;
 
 		int currentCommand;  // enum DirectionChooser::Command
 
