@@ -48,6 +48,7 @@ add_executable(kturtle ${kturtle_SRCS}
 target_link_libraries(kturtle
     KF5::KIOCore
     KF5::NewStuff
+    KF5::I18n
     Qt5::Core
     Qt5::Gui
     Qt5::Xml

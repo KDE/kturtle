@@ -28,11 +28,11 @@
 #include <unistd.h>  // for usleep();
 
 #include <QTimer>  // for wait
-
-#include <klocale.h>
-#include <krandom.h>
-
 #include <QDebug>
+
+#include <krandom.h>
+#include <KLocalizedString>
+
 
 // this function is used in executer and canvas:
 #define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )

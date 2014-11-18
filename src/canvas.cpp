@@ -23,9 +23,9 @@
 #include <cmath>
 
 #include <QResizeEvent>
-
 #include <QDebug>
-#include <klocale.h>
+
+#include <KLocalizedString>
 
 
 // this function is used in executer and canvas:

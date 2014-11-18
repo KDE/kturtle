@@ -20,7 +20,7 @@
 #include "value.h"
 
 #include <QDebug>
-#include <klocale.h>
+//#include <QLocale>
 
 #include "translator.h"  // for the boolean (true and false) to string translation
 

@@ -21,7 +21,7 @@
 
 #include <QDebug>
 
-#include <klocale.h>
+#include <KLocalizedString>
 
 
 void Parser::initialize(Tokenizer* _tokenizer, ErrorList* _errorList)
@@ -150,8 +150,9 @@ void Parser::addError(const QString& s, const Token& t, int code)
 void Parser::printTree() const
 {
 	const char* prefix = m_testing ? "NTR> " : "";
-	foreach (const QString &line, rootNode->toString().split('\n', QString::SkipEmptyParts))
+	foreach (const QString &line, rootNode->toString().split('\n', QString::SkipEmptyParts)) {
 		//qDebug() << prefix << qPrintable(line.trimmed());
+	}
 }
 
 

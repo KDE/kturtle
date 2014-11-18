@@ -23,9 +23,9 @@
 
 #include <QChar>
 #include <QHash>
+//#include <QLocale>
 
-
-#include <klocale.h>
+class QLocale;
 
 
 static const char* DEFAULT_LANGUAGE_CODE = "en_US";
@@ -122,7 +122,7 @@ class Translator
 		QHash<QString, int> look2typeMap;
 		QHash<QString, QString> default2localizedMap;
 
-		KLocale* localizer;
+		QLocale *localizer;
 };
 
 

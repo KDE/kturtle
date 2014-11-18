@@ -25,14 +25,14 @@
 #include <QFontMetrics>
 #include <QLabel>
 #include <QVBoxLayout>
-
-#include <kapplication.h>
-#include <klocale.h>
-#include <kpushbutton.h>
-#include <kstandardguiitem.h>
-#include <KConfigGroup>
+#include <QApplication>
+#include <QLocale>
 #include <QDialogButtonBox>
 #include <QPushButton>
+
+#include <KLocalizedString>
+#include <kstandardguiitem.h>
+#include <KConfigGroup>
 #include <KGuiItem>
 
 
@@ -41,6 +41,9 @@ ColorPicker::ColorPicker(QWidget* parent)
 {
 	setWindowTitle(i18n("Color Picker"));
 	setModal(false);
+
+	QVBoxLayout *mainLayout = new QVBoxLayout;
+	setLayout(mainLayout);
 
 	QWidget* baseWidget = new QWidget(this);
 	mainLayout->addWidget(baseWidget);
@@ -111,20 +114,18 @@ ColorPicker::ColorPicker(QWidget* parent)
 	resultBox->setMaximumWidth(width);
 	resultLayout->addWidget(resultBox);
 
-	KPushButton* copyButton = new KPushButton(KIcon("edit-copy"), i18n("&Copy to clipboard"), baseWidget);
+	QPushButton* copyButton = new QPushButton(QIcon("edit-copy"), i18n("&Copy to clipboard"), baseWidget);
 	mainLayout->addWidget(copyButton);
 	resultLayout->addWidget(copyButton);
 	connect(copyButton, SIGNAL(clicked()), this, SLOT(copyProxy()));
 
-	KPushButton* pasteButton = new KPushButton(KIcon("edit-paste"), i18n("&Paste to editor"), baseWidget);
+	QPushButton* pasteButton = new QPushButton(QIcon("edit-paste"), i18n("&Paste to editor"), baseWidget);
 	mainLayout->addWidget(pasteButton);
 	resultLayout->addWidget(pasteButton);
 	connect(pasteButton, SIGNAL(clicked()), this, SLOT(pasteProxy()));
 
 	QDialogButtonBox *buttonBox = new QDialogButtonBox();
 	QWidget *mainWidget = new QWidget(this);
-	QVBoxLayout *mainLayout = new QVBoxLayout;
-	setLayout(mainLayout);
 	mainLayout->addWidget(mainWidget);
 
 	QPushButton *user1Button = new QPushButton;

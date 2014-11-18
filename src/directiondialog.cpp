@@ -35,13 +35,14 @@ using std::atan;
 
 #include <QClipboard>
 #include <QHBoxLayout>
+#include <QVBoxLayout>
 #include <QGroupBox>
 #include <QLabel>
 #include <QMouseEvent>
 #include <QPainter>
 #include <QPaintEvent>
 #include <QRadioButton>
-#include <QVBoxLayout>
+#include <QPushButton>
 
 #include <KComboBox>
 #include <KConfigGroup>

@@ -21,8 +21,9 @@
 
 #include <QDomDocument>
 #include <QFile>
-
+#include <QLocale>
 #include <QDebug>
+
 #include <KGlobal>
 
 #include "token.h"
@@ -37,7 +38,7 @@ Translator* Translator::instance()
 }
 
 Translator::Translator()
-	: localizer(KGlobal::locale())
+	: localizer(QLocale())
 {
 }
 

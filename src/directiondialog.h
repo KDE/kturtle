@@ -24,16 +24,16 @@
 
 #include <QSvgRenderer>
 #include <QWidget>
-
-#include <kdialog.h>
+#include <QDialog>
 #include <QLineEdit>
-#include <kpushbutton.h>
 
 
 class QHBoxLayout;
 class QMouseEvent;
 class QPaintEvent;
 class QRadioButton;
+class QPushButton;
+
 class KIntSpinBox;
 class KComboBox;
 
@@ -91,8 +91,8 @@ class DirectionDialog : public KDialog
 		KIntSpinBox* previousDirectionSpin;
 		KIntSpinBox* directionSpin;
 
-		KPushButton *copyButton;
-		KPushButton *pasteButton;
+		QPushButton *copyButton;
+		QPushButton *pasteButton;
 
 		QLineEdit* commandBox;
 
