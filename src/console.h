@@ -21,7 +21,7 @@
 #define _CONSOLE_H_
 
 #include <QAction>
-#include <KComboBox>
+#include <QComboBox>
 
 
 class Console : public QAction
@@ -45,7 +45,7 @@ class Console : public QAction
 		QString execute(const QString&);
 
 	private:
-		KComboBox *comboBox;
+		QComboBox *comboBox;
 		QWidget   *baseWidget;
 };
 
