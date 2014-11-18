@@ -32,7 +32,7 @@
 
 
 Console::Console(QWidget* parent)
-	: KAction(parent)
+	: QAction(parent)
 {
 	baseWidget = new QWidget(parent);
 	QHBoxLayout* baseLayout = new QHBoxLayout();

@@ -27,7 +27,7 @@
 #include <QDockWidget>
 #include <QLabel>
 
-#include <kaction.h>
+#include <QAction>
 #include <kxmlguiwindow.h>
 #include <kmenubar.h>
 #include <krecentfilesaction.h>
@@ -43,7 +43,7 @@
 #include "inspector.h"
 
 
-class KAction;
+class QAction;
 class KComboBox;
 class KTabWidget;
 class QMenu;
@@ -166,26 +166,26 @@ class MainWindow : public KXmlGuiWindow
 
 		KRecentFilesAction *recentFilesAction;
 
-		KAction *newAct;
-		KAction *openAct;
-		KAction *saveAct;
-		KAction *saveAsAct;
-		KAction *exportToPngAct;
-		KAction *exportToSvgAct;
-		KAction *exportToHtmlAct;
-		KAction *printCanvasAct;
-		KAction *runAct;
-		KAction *pauseAct;
-		KAction *abortAct;
-		KAction *executeConsoleAct;
-		KAction *quitAct;
-		KAction *contextHelpAct;
-		KAction *dedicatedSpeedAct;
-		KAction *fullSpeedAct;
-		KAction *slowSpeedAct;
-		KAction *slowerSpeedAct;
-		KAction *slowestSpeedAct;
-		KAction *stepSpeedAct;
+		QAction *newAct;
+		QAction *openAct;
+		QAction *saveAct;
+		QAction *saveAsAct;
+		QAction *exportToPngAct;
+		QAction *exportToSvgAct;
+		QAction *exportToHtmlAct;
+		QAction *printCanvasAct;
+		QAction *runAct;
+		QAction *pauseAct;
+		QAction *abortAct;
+		QAction *executeConsoleAct;
+		QAction *quitAct;
+		QAction *contextHelpAct;
+		QAction *dedicatedSpeedAct;
+		QAction *fullSpeedAct;
+		QAction *slowSpeedAct;
+		QAction *slowerSpeedAct;
+		QAction *slowestSpeedAct;
+		QAction *stepSpeedAct;
 
 		QActionGroup *runSpeedGroup;
 		KComboBox *runOptionBox;

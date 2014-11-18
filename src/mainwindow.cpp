@@ -27,7 +27,7 @@
 
 #include <kdebug.h>
 
-#include <kaction.h>
+#include <QAction>
 #include <kactioncollection.h>
 #include <kconfig.h>
 #include <kcombobox.h>
@@ -183,7 +183,7 @@ void MainWindow::setRunSpeed(int speed)
 
 void MainWindow::setupActions()
 {
-	KAction* a;
+	QAction * a;
 	KActionCollection* ac = actionCollection();
 
 	// WHAT IS THIS?
@@ -206,7 +206,7 @@ void MainWindow::setupActions()
 	recentFilesAction->setStatusTip(i18n("Open a recently used file"));
 	recentFilesAction->setWhatsThis(i18n("Open Recent File: Open a recently used file"));
 	
-	a = new KAction(KIcon("get-hot-new-stuff"), i18n("Get more examples..."), this);
+	a = new QAction(KIcon("get-hot-new-stuff"), i18n("Get more examples..."), this);
 	actionCollection()->addAction("get_new_examples", a);
 	a->setText(i18n("Get more examples..."));
 	connect(a, SIGNAL(triggered()), this, SLOT(getNewExampleDialog()));
@@ -268,7 +268,7 @@ void MainWindow::setupActions()
 	a->setWhatsThis(i18n("Select All: Select all the code in the editor"));
 	a->setEnabled(true);
 
-	a  = new KAction(i18n("Overwrite Mode"), this);
+	a  = new QAction(i18n("Overwrite Mode"), this);
 	actionCollection()->addAction("overwrite", a );
 	a->setStatusTip(i18n("Toggle between the 'insert' and 'overwrite' mode"));
 	a->setWhatsThis(i18n("Overwrite Mode: Toggle between the 'insert' and 'overwrite' mode"));
@@ -307,21 +307,21 @@ void MainWindow::setupActions()
 	exportToSvgAct->setWhatsThis(i18n("Export to SVG: Export the current canvas to Scalable Vector Graphics"));
 	connect(exportToSvgAct, SIGNAL(triggered()), this, SLOT(exportToSvg()));
 
-	printCanvasAct = new KAction(KIcon("document-print"), i18n("&Print Canvas..."), this);
+	printCanvasAct = new QAction(KIcon("document-print"), i18n("&Print Canvas..."), this);
 	actionCollection()->addAction("canvas_print", printCanvasAct);
 	printCanvasAct->setStatusTip(i18n("Print the canvas"));
 	printCanvasAct->setWhatsThis(i18n("Print: Print the canvas"));
 	connect(printCanvasAct, SIGNAL(triggered()), this, SLOT(canvasPrintDialog()));
 
 	// Run menu actions
-	runAct = new KAction(KIcon("media-playback-start"), i18n("&Run"), this);
+	runAct = new QAction(KIcon("media-playback-start"), i18n("&Run"), this);
 	actionCollection()->addAction("run", runAct);
 	runAct->setShortcut(QKeySequence(Qt::Key_F5));
 	runAct->setStatusTip(i18n("Execute the program"));
 	runAct->setWhatsThis(i18n("Run: Execute the program"));
 	connect(runAct, SIGNAL(triggered()), this, SLOT(run()));
 
-	pauseAct = new KAction(KIcon("media-playback-pause"), i18n("&Pause"), this);
+	pauseAct = new QAction(KIcon("media-playback-pause"), i18n("&Pause"), this);
 	actionCollection()->addAction("pause", pauseAct);
 	pauseAct->setCheckable(true);
 	pauseAct->setShortcut(QKeySequence(Qt::Key_F6));
@@ -329,34 +329,34 @@ void MainWindow::setupActions()
 	pauseAct->setWhatsThis(i18n("Pause: Pause execution"));
 	connect(pauseAct, SIGNAL(triggered()), this, SLOT(pause()));
 
-	abortAct = new KAction(KIcon("process-stop"), i18n("&Abort"), this);
+	abortAct = new QAction(KIcon("process-stop"), i18n("&Abort"), this);
 	actionCollection()->addAction("abort", abortAct);
 	abortAct->setShortcut(QKeySequence(Qt::Key_F7));
 	abortAct->setStatusTip(i18n("Stop executing program"));
 	abortAct->setWhatsThis(i18n("Abort: Stop executing program"));
 	connect(abortAct, SIGNAL(triggered()), this, SLOT(abort()));
 
-// 	new KAction(i18n("&Indent"), "format-indent-more", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
-// 	new KAction(i18n("&Unindent"), "format-indent-less", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
-// 	new KAction(i18n("Cl&ean Indentation"), 0, 0, this, SLOT(slotCleanIndent()), ac, "edit_cleanIndent");
-// 	new KAction(i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
-// 	new KAction(i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
+// 	new QAction(i18n("&Indent"), "format-indent-more", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
+// 	new QAction(i18n("&Unindent"), "format-indent-less", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
+// 	new QAction(i18n("Cl&ean Indentation"), 0, 0, this, SLOT(slotCleanIndent()), ac, "edit_cleanIndent");
+// 	new QAction(i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
+// 	new QAction(i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
 
 	// Tools menu actions
-	a = new KAction(i18n("&Direction Chooser..."), this);
+	a = new QAction(i18n("&Direction Chooser..."), this);
 	actionCollection()->addAction("direction_chooser", a);
 	a->setStatusTip(i18n("Shows the direction chooser dialog"));
 	a->setWhatsThis(i18n("Direction Chooser: Show the direction chooser dialog"));
 	connect(a, SIGNAL(triggered()), this, SLOT(showDirectionDialog()));
 
-	a = new KAction(i18n("&Color Picker..."), this);
+	a = new QAction(i18n("&Color Picker..."), this);
 	actionCollection()->addAction("color_picker", a);
 	a->setStatusTip(i18n("Shows the color picker dialog"));
 	a->setWhatsThis(i18n("Color Picker: Show the color picker dialog"));
 	connect(a, SIGNAL(triggered()), this, SLOT(showColorPicker()));
 
 	// Settings menu action
-	a = new KAction(i18n("Show &Editor"), this);
+	a = new QAction(i18n("Show &Editor"), this);
 	actionCollection()->addAction("show_editor", a);
 	a->setStatusTip(i18n("Show or hide the Code Editor"));
 	a->setWhatsThis(i18n("Show Code Editor: Show or hide the Code Editor"));
@@ -366,7 +366,7 @@ void MainWindow::setupActions()
 	connect(a, SIGNAL(toggled(bool)), editorDock, SLOT(setVisible(bool)));
 	connect(editorDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
 
-	a = new KAction(i18n("Show &Inspector"), this);
+	a = new QAction(i18n("Show &Inspector"), this);
 	actionCollection()->addAction("show_inspector", a);
 	a->setStatusTip(i18n("Show or hide the Inspector"));
 	a->setWhatsThis(i18n("Show Inspector: Show or hide the Inspector"));
@@ -376,7 +376,7 @@ void MainWindow::setupActions()
 	connect(a, SIGNAL(toggled(bool)), inspectorDock, SLOT(setVisible(bool)));
 	connect(inspectorDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
 
-	a = new KAction(i18n("Show E&rrors"), this);
+	a = new QAction(i18n("Show E&rrors"), this);
 	actionCollection()->addAction("show_errors", a);
 	a->setStatusTip(i18n("Show or hide the Errors tab"));
 	a->setWhatsThis(i18n("Show Errors: Show or hide the Errors tab"));
@@ -384,7 +384,7 @@ void MainWindow::setupActions()
 	a->setChecked(false);
 	connect(a, SIGNAL(toggled(bool)), this, SLOT(showErrorDialog(bool)));
         
-// 	a = new KAction(i18n("Show &Console"), this);
+// 	a = new QAction(i18n("Show &Console"), this);
 // 	actionCollection()->addAction("show_console", a);
 // 	a->setStatusTip(i18n("Show or hide the interative Console tab"));
 // 	a->setWhatsThis(i18n("Show Console: Show or hide the interactive Console tab"));
@@ -393,7 +393,7 @@ void MainWindow::setupActions()
 // 	connect(a, SIGNAL(toggled(bool)), consoleDock, SLOT(setVisible(bool)));
 // 	connect(consoleDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
 
-	a = new KAction(i18n("Show &Line Numbers"), this);
+	a = new QAction(i18n("Show &Line Numbers"), this);
 	actionCollection()->addAction("line_numbers", a);
 	a->setStatusTip(i18n("Turn the line numbers on/off in the editor"));
 	a->setWhatsThis(i18n("Show Line Numbers: Turn the line numbers on/off in the editor"));
@@ -441,7 +441,7 @@ void MainWindow::setupActions()
 	runSpeedActionMenu->setWhatsThis(i18n("Run: Execute the program, or use the drop down menu to select the run speed"));
 	connect(runSpeedActionMenu, SIGNAL(triggered (QAction*)), this, SLOT(run()));
 
-	dedicatedSpeedAct = new KAction(i18nc("@option:radio", "Full Speed (&no highlighting and inspector)"), this);
+	dedicatedSpeedAct = new QAction(i18nc("@option:radio", "Full Speed (&no highlighting and inspector)"), this);
 	actionCollection()->addAction("dedicated_speed", dedicatedSpeedAct);
 	dedicatedSpeedAct->setCheckable(true);
 	dedicatedSpeedAct->setStatusTip(i18n("Run the program at full speed, with highlighting and inspector disabled"));
@@ -450,7 +450,7 @@ void MainWindow::setupActions()
 	runSpeedGroup->addAction(dedicatedSpeedAct);
 	runSpeedActionMenu->addAction(dedicatedSpeedAct);
 
-	fullSpeedAct = new KAction(i18nc("@option:radio", "&Full Speed"), this);
+	fullSpeedAct = new QAction(i18nc("@option:radio", "&Full Speed"), this);
 	actionCollection()->addAction("full_speed", fullSpeedAct);
 	fullSpeedAct->setCheckable(true);
 	fullSpeedAct->setChecked(true);
@@ -460,7 +460,7 @@ void MainWindow::setupActions()
 	runSpeedGroup->addAction(fullSpeedAct);
 	runSpeedActionMenu->addAction(fullSpeedAct);
 
-	slowSpeedAct = new KAction(i18nc("@option:radio choose the slow speed", "&Slow"), this);
+	slowSpeedAct = new QAction(i18nc("@option:radio choose the slow speed", "&Slow"), this);
 	actionCollection()->addAction("slow_speed", slowSpeedAct);
 	slowSpeedAct->setCheckable(true);
 	slowSpeedAct->setStatusTip(i18n("Run the program at a slow speed"));
@@ -469,7 +469,7 @@ void MainWindow::setupActions()
 	runSpeedGroup->addAction(slowSpeedAct);
 	runSpeedActionMenu->addAction(slowSpeedAct);
 
-	slowerSpeedAct = new KAction(i18nc("@option:radio", "S&lower"), this);
+	slowerSpeedAct = new QAction(i18nc("@option:radio", "S&lower"), this);
 	actionCollection()->addAction("slower_speed", slowerSpeedAct);
 	slowerSpeedAct->setCheckable(true);
 	slowerSpeedAct->setStatusTip(i18n("Run the program at a slower speed"));
@@ -478,7 +478,7 @@ void MainWindow::setupActions()
 	runSpeedGroup->addAction(slowerSpeedAct);
 	runSpeedActionMenu->addAction(slowerSpeedAct);
 
-	slowestSpeedAct = new KAction(i18nc("@option:radio", "Sl&owest"), this);
+	slowestSpeedAct = new QAction(i18nc("@option:radio", "Sl&owest"), this);
 	actionCollection()->addAction("slowest_speed", slowestSpeedAct);
 	slowestSpeedAct->setCheckable(true);
 	slowestSpeedAct->setStatusTip(i18n("Run the program at the slowest speed"));
@@ -487,7 +487,7 @@ void MainWindow::setupActions()
 	runSpeedGroup->addAction(slowestSpeedAct);
 	runSpeedActionMenu->addAction(slowestSpeedAct);
 
-	stepSpeedAct = new KAction(i18nc("@option:radio", "S&tep-by-Step"), this);
+	stepSpeedAct = new QAction(i18nc("@option:radio", "S&tep-by-Step"), this);
 	actionCollection()->addAction("step_speed", stepSpeedAct);
 	stepSpeedAct->setCheckable(true);
 	stepSpeedAct->setStatusTip(i18n("Run the program one step at a time"));
@@ -689,13 +689,13 @@ void MainWindow::updateLanguagesMenu()
 
 void MainWindow::updateExamplesMenu()
 {
-	KAction* newExample;
+	QAction * newExample;
 	QString actionName;
 	QList<QAction*> exampleList;
 	QActionGroup* exampleGroup = new QActionGroup (this);
 
 	foreach (const QString &exampleName, Translator::instance()->exampleNames()) {
-		newExample = new KAction (exampleName, this);
+		newExample = new QAction (exampleName, this);
 		newExample->setData(exampleName);
 		exampleGroup->addAction (newExample);
 
@@ -706,7 +706,7 @@ void MainWindow::updateExamplesMenu()
 	QStringList allExamples = KGlobal::dirs()->findAllResources("data", GHNS_TARGET, KStandardDirs::NoDuplicates);
 
 	if(allExamples.size()>0) {
-		newExample = new KAction(this);
+		newExample = new QAction(this);
 		newExample->setSeparator(true);
 		exampleGroup->addAction(newExample);
 		exampleList.append(newExample);
@@ -714,7 +714,7 @@ void MainWindow::updateExamplesMenu()
 
 	foreach(const QString& exampleFilename, allExamples) {
 		QFileInfo fileInfo(exampleFilename);
-		newExample = new KAction (fileInfo.baseName(), this);
+		newExample = new QAction (fileInfo.baseName(), this);
 		newExample->setData(exampleFilename);
 		exampleGroup->addAction (newExample);
 		exampleList.append (newExample);

@@ -20,11 +20,11 @@
 #ifndef _CONSOLE_H_
 #define _CONSOLE_H_
 
-#include <KAction>
+#include <QAction>
 #include <KComboBox>
 
 
-class Console : public KAction
+class Console : public QAction
 {
 	Q_OBJECT
 
