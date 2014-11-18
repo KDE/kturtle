@@ -51,6 +51,7 @@
 #include <KTabWidget>
 #include <knewstuff3/downloaddialog.h>
 #include <kstandarddirs.h>
+#include <KConfigGroup>
 
 #include "interpreter/errormsg.h"
 #include "interpreter/translator.h"
@@ -520,7 +521,7 @@ void MainWindow::setupCanvas()
 	QWidget* errorTab = new QWidget();
 	QHBoxLayout* errorLayout = new QHBoxLayout(errorTab);
 	errorDialog = new ErrorDialog(this);
-	connect(errorDialog, SIGNAL(user1Clicked()), this, SLOT(showErrorDialog()));
+	connect(errorDialog, SIGNAL(clicked()), this, SLOT(showErrorDialog()));
 	errorLayout->addWidget(errorDialog);
 	canvasTabWidget->insertTab(1, errorTab, i18n("E&rrors"));
 
@@ -991,7 +992,7 @@ void MainWindow::updateContentName(const QString& str)
 {
 	QString caption = str.isEmpty() ? i18n("untitled") : str;
 	bool modified = editor->isModified();
-	KXmlGuiWindow::setCaption(caption, modified);
+	KXmlGuiWindow::setWindowTitle(caption, modified);
 	statusBarFileNameLabel->setText(QString(" %1%2 ").arg(caption).arg(modified ? "*" : ""));
 }
 

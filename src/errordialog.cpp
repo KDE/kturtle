@@ -23,30 +23,37 @@
 
 #include <QDebug>
 
-#include <kdialog.h>
 #include <kglobalsettings.h>
 #include <klocale.h>
+#include <KConfigGroup>
+#include <QDialogButtonBox>
+#include <QPushButton>
+#include <KGuiItem>
+#include <QVBoxLayout>
 
 
 ErrorDialog::ErrorDialog(QWidget* parent)
-	: KDialog(parent)
+	: QDialog(parent)
 {
 	errorList = 0;
 
-	setCaption(i18n("Errors"));
+	setWindowTitle(i18n("Errors"));
 	setModal(false);
-	setButtons(User1 | Help);
-	setButtonGuiItem(User1, KGuiItem(i18n("Hide Errors"), "dialog-close", i18n("This button hides the Errors tab")));
-// 	setButtonGuiItem(User1, i18n("Help on &Error"));  // TODO context help in the error dialog
-	setDefaultButton(User1);
-	showButtonSeparator(false);
+	QVBoxLayout *mainLayout = new QVBoxLayout;
+	setLayout(mainLayout);
+
+	QWidget *mainWidget = new QWidget(this);
+	mainLayout->addWidget(mainWidget);
+
 	setHelp("reference", "kturtle");
 
 	QWidget *baseWidget = new QWidget(this);
-	setMainWidget(baseWidget);
+	mainLayout->addWidget(baseWidget);
 	baseLayout = new QVBoxLayout(baseWidget); 
+	mainLayout->addWidget(baseLayout);
 	
 	label = new QLabel(baseWidget);
+	mainLayout->addWidget(label);
 	label->setText(i18n("In this list you find the error(s) that resulted from running your code.\nGood luck!"));
 	// \nYou can select an error and click the 'Help on Error' button for help.
 	label->setScaledContents(true);
@@ -56,6 +63,7 @@ ErrorDialog::ErrorDialog(QWidget* parent)
 	baseLayout->addItem(spacer);
 	
 	errorTable = new QTableWidget(baseWidget);
+	mainLayout->addWidget(errorTable);
 	errorTable->setSelectionMode(QAbstractItemView::SingleSelection);
 	errorTable->setSelectionBehavior(QAbstractItemView::SelectRows);
 	errorTable->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
@@ -68,6 +76,16 @@ ErrorDialog::ErrorDialog(QWidget* parent)
 	errorTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
 	baseLayout->addWidget(errorTable);
+
+	QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Help);
+	QPushButton *user1Button = new QPushButton;
+	buttonBox->addButton(user1Button, QDialogButtonBox::ActionRole);
+	connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
+	connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+	mainLayout->addWidget(buttonBox);
+	KGuiItem::assign(user1Button, KGuiItem(i18n("Hide Errors"));
+// 	setButtonGuiItem(User1, i18n("Help on &Error"));  // TODO context help in the error dialog
+	user1Button->setDefault(true);
 
 	clear();
 }
@@ -98,7 +116,7 @@ void ErrorDialog::enable()
 {
 	Q_ASSERT (errorList != 0);
 	errorTable->setEnabled(true);
-	enableButton(Help, true);
+	buttonBox->button(QDialogButtonBox::Help)->setEnabled(true);
 	connect (errorTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectedErrorChangedProxy()));
 	errorTable->selectRow(0);
 }
@@ -107,7 +125,7 @@ void ErrorDialog::disable()
 {
 	disconnect (errorTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectedErrorChangedProxy()));
 	errorTable->setEnabled(false);
-	enableButton(Help, false);
+	buttonBox->button(QDialogButtonBox::Help)->setEnabled(false);
 	errorTable->clearSelection();
 }
 

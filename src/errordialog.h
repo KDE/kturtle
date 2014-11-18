@@ -25,12 +25,12 @@
 #include <QSpacerItem>
 #include <QLabel>
 
-#include <KDialog>
+#include <QDialog>
 
 #include "interpreter/errormsg.h"
 
 
-class ErrorDialog : public KDialog
+class ErrorDialog : public QDialog
 {
 	Q_OBJECT
 

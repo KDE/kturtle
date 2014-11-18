@@ -30,21 +30,20 @@
 #include <klocale.h>
 #include <kpushbutton.h>
 #include <kstandardguiitem.h>
+#include <KConfigGroup>
+#include <QDialogButtonBox>
+#include <QPushButton>
+#include <KGuiItem>
 
 
 ColorPicker::ColorPicker(QWidget* parent)
-	: KDialog(parent)
+	: QDialog(parent)
 {
-	setCaption(i18n("Color Picker"));
+	setWindowTitle(i18n("Color Picker"));
 	setModal(false);
-	setButtons(User1);
-	setDefaultButton(User1);
-	setButtonGuiItem(User1, KStandardGuiItem::close());
-	connect(this, SIGNAL(user1Clicked()), this, SLOT(hide()));
-	showButtonSeparator(false);
 
 	QWidget* baseWidget = new QWidget(this);
-	setMainWidget(baseWidget);
+	mainLayout->addWidget(baseWidget);
 
 	QVBoxLayout* baseLayout = new QVBoxLayout;
         baseWidget->setLayout( baseLayout );
@@ -113,12 +112,30 @@ ColorPicker::ColorPicker(QWidget* parent)
 	resultLayout->addWidget(resultBox);
 
 	KPushButton* copyButton = new KPushButton(KIcon("edit-copy"), i18n("&Copy to clipboard"), baseWidget);
+	mainLayout->addWidget(copyButton);
 	resultLayout->addWidget(copyButton);
 	connect(copyButton, SIGNAL(clicked()), this, SLOT(copyProxy()));
 
 	KPushButton* pasteButton = new KPushButton(KIcon("edit-paste"), i18n("&Paste to editor"), baseWidget);
+	mainLayout->addWidget(pasteButton);
 	resultLayout->addWidget(pasteButton);
 	connect(pasteButton, SIGNAL(clicked()), this, SLOT(pasteProxy()));
+
+	QDialogButtonBox *buttonBox = new QDialogButtonBox();
+	QWidget *mainWidget = new QWidget(this);
+	QVBoxLayout *mainLayout = new QVBoxLayout;
+	setLayout(mainLayout);
+	mainLayout->addWidget(mainWidget);
+
+	QPushButton *user1Button = new QPushButton;
+	buttonBox->addButton(user1Button, QDialogButtonBox::ActionRole);
+	connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
+	connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+
+	mainLayout->addWidget(buttonBox);
+	user1Button->setDefault(true);
+	KGuiItem::assign(user1Button, KStandardGuiItem::close());
+	connect(user1Button, SIGNAL(clicked()), this, SLOT(hide()));
 
 	resultLayout->addStretch();
 

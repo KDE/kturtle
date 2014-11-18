@@ -44,6 +44,10 @@ using std::atan;
 #include <QVBoxLayout>
 
 #include <KComboBox>
+#include <KConfigGroup>
+#include <QDialogButtonBox>
+#include <QPushButton>
+#include <KGuiItem>
 
 
 #define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )
@@ -197,7 +201,7 @@ double DirectionCanvas::translateMouseCoords(double trans_x, double trans_y)
 
 
 DirectionDialog::DirectionDialog(double deg, QWidget* parent)
-	: KDialog(parent)
+	: QDialog(parent)
 {
 	skipValueChangedEvent = false;
 
@@ -210,16 +214,16 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 
 	translator = Translator::instance();
 
-	setCaption(i18n("Direction Chooser"));
+	setWindowTitle(i18n("Direction Chooser"));
 	setModal(false);
-	setButtons(User1);
-	setDefaultButton(User1);
-	setButtonGuiItem(User1, KStandardGuiItem::close());
-	connect(this, SIGNAL(user1Clicked()), this, SLOT(delayedDestruct()));
-	showButtonSeparator(false);
+	QVBoxLayout *mainLayout = new QVBoxLayout;
+	setLayout(mainLayout);
+
+	QWidget *mainWidget = new QWidget(this);
+	mainLayout->addWidget(mainWidget);
 
 	QWidget* baseWidget = new QWidget(this);
-	setMainWidget(baseWidget);
+	mainLayout->addWidget(baseWidget);
 
 	QVBoxLayout* baseLayout = new QVBoxLayout;
         baseWidget->setLayout( baseLayout );
@@ -227,12 +231,14 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	baseLayout->addLayout(degreeChooserLayout);
 
 	canvas = new DirectionCanvas(baseWidget);
+	mainLayout->addWidget(canvas);
 	connect(canvas, SIGNAL(degreeChanged(double)), this, SLOT(updateDegrees(double)));
 	connect(canvas, SIGNAL(previousDegreeChanged(double)), this, SLOT(updatePreviousDegrees(double)));
 
 	degreeChooserLayout->addWidget(canvas);
 
 	QWidget* rightWidget = new QWidget(baseWidget);
+	mainLayout->addWidget(rightWidget);
 	degreeChooserLayout->addWidget(rightWidget);
 
 	QVBoxLayout* rightLayout = new QVBoxLayout(rightWidget);
@@ -297,14 +303,26 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	commandBox->setMinimumWidth(commandBox->fontMetrics().width("000000000_360"));
 	pasteRowLayout->addWidget(commandBox);
 	KPushButton* copyButton = new KPushButton(KIcon("edit-copy"), i18n("&Copy to clipboard"), baseWidget);
+	mainLayout->addWidget(copyButton);
 	pasteRowLayout->addWidget(copyButton);
 	connect(copyButton, SIGNAL(clicked()), this, SLOT(copyProxy()));
 	KPushButton* pasteButton = new KPushButton(KIcon("edit-paste"), i18n("&Paste to editor"), baseWidget);
+	mainLayout->addWidget(pasteButton);
 	pasteRowLayout->addWidget(pasteButton);
 	connect(pasteButton, SIGNAL(clicked()), this, SLOT(pasteProxy()));
 	pasteRowLayout->addStretch();
 
 	baseLayout->addSpacing(10);
+
+	QDialogButtonBox *buttonBox = new QDialogButtonBox();
+	QPushButton *user1Button = new QPushButton;
+	buttonBox->addButton(user1Button, QDialogButtonBox::ActionRole);
+	connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
+	connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+	mainLayout->addWidget(buttonBox);
+	user1Button->setDefault(true);
+	KGuiItem::assign(user1Button, KStandardGuiItem::close());
+	connect(user1Button, SIGNAL(clicked()), this, SLOT(delayedDestruct()));
 
 	changeCommand(0);
 	show();

@@ -26,8 +26,8 @@
 #include <QPaintEvent>
 #include <QSlider>
 #include <QSpinBox>
+#include <QDialog>
 
-#include <kdialog.h>
 #include <klineedit.h>
 
 
@@ -55,7 +55,7 @@ class ColorPatch : public QFrame
 
 
 
-class ColorPicker : public KDialog
+class ColorPicker : public QDialog
 {
 	Q_OBJECT
 
