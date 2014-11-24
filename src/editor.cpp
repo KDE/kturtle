@@ -42,6 +42,7 @@
 #include <ktemporaryfile.h>
 
 #include <kio/netaccess.h>
+#include <QFontDatabase>
 
 
 static const int CURSOR_WIDTH = 2;  // in pixels
@@ -59,7 +60,7 @@ Editor::Editor(QWidget *parent)
 
 	// setup the main view
 	editor = new TextEdit(this);
-	editor->document()->setDefaultFont(KGlobalSettings::fixedFont());
+	editor->document()->setDefaultFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 	editor->setFrameStyle(QFrame::NoFrame);
 	editor->installEventFilter(this);
 	editor->setLineWrapMode(QTextEdit::WidgetWidth);
@@ -430,7 +431,7 @@ QString Editor::toHtml(const QString& title, const QString& lang)
 		switch (token->type()) {
 			case Token::EndOfLine:  escaped = "<br />"; break;
 			case Token::WhiteSpace: escaped = ""; for (int n = 0; n < token->look().length(); n++) { escaped += "&nbsp;"; } break;
-			default:                escaped = Qt::escape(token->look()); break;
+			default:                escaped = token->look().toHtmlEscaped(); break;
 		}
 		format = highlighter->tokenToFormat(token);
 		if (format != 0) {

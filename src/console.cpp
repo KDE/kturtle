@@ -29,6 +29,7 @@
 #include <QWidget>
 
 #include <klocale.h>
+#include <QFontDatabase>
 
 
 Console::Console(QWidget* parent)
@@ -42,7 +43,7 @@ Console::Console(QWidget* parent)
 	comboBox = new KComboBox(true, baseWidget);
 	comboBox->setMinimumWidth(200);
 	comboBox->setDuplicatesEnabled(true);
-	comboBox->setFont(KGlobalSettings::fixedFont());
+	comboBox->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 	comboBox->setToolTip(i18n("Write a command here and press enter..."));
 	comboBox->setWhatsThis(i18n("Console: quickly run single commands -- write a command here and press enter."));
 
@@ -72,7 +73,7 @@ void Console::clearMarkings()
 {
 	comboBox->setToolTip(i18n("Write a command here and press enter..."));
 	comboBox->setStyleSheet("");
-	comboBox->setFont(KGlobalSettings::fixedFont());
+	comboBox->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 }
 
 void Console::run()
@@ -88,7 +89,7 @@ void Console::run()
 void Console::showError(const QString& msg)
 {
 	comboBox->setStyleSheet("QComboBox:editable{background:" + ERROR_HIGHLIGHT_COLOR.name() + ";}");
-	comboBox->setFont(KGlobalSettings::fixedFont());
+	comboBox->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 	QString toolTipText(i18n("<p style='white-space:pre'><b>ERROR:</b> %1</p>", msg));
 	comboBox->setToolTip(toolTipText);
 }

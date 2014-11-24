@@ -128,3 +128,4 @@ Icon=kturtle
 X-DocPath=kturtle/index.html
 Type=Application
 Categories=Qt;KDE;Education;ComputerScience;X-KDE-Edu-Misc;
+X-DBUS-ServiceName=org.kde.kturtle

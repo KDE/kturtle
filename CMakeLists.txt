@@ -14,8 +14,6 @@ include(KDEInstallDirs)
 include(KDECompilerSettings)
 include(KDECMakeSettings)
 include(FeatureSummary)
-#find_package(KDE4 REQUIRED)
-#include(KDE4Defaults)
 
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Core
@@ -45,8 +43,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}
 #Allows QString concatenation to use a single memory allocation per source line.
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 
-#FIXME: Enable when src works
-#add_subdirectory (doc)
+add_subdirectory (doc)
 add_subdirectory (src)
 add_subdirectory (icons)
 

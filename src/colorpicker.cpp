@@ -34,6 +34,7 @@
 #include <kstandardguiitem.h>
 #include <KConfigGroup>
 #include <KGuiItem>
+#include <QFontDatabase>
 
 
 ColorPicker::ColorPicker(QWidget* parent)
@@ -108,8 +109,8 @@ ColorPicker::ColorPicker(QWidget* parent)
 	baseLayout->addLayout(resultLayout);
 	resultBox = new QLineEdit(this);
 	resultBox->setReadOnly(true);
-	resultBox->setFont(KGlobalSettings::fixedFont());
-	int width = QFontMetrics(KGlobalSettings::fixedFont()).width("255, 255, 255_000");
+	resultBox->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
+	int width = QFontMetrics(QFontDatabase::systemFont(QFontDatabase::FixedFont)).width("255, 255, 255_000");
 	resultBox->setMinimumWidth(width);
 	resultBox->setMaximumWidth(width);
 	resultLayout->addWidget(resultBox);
@@ -168,7 +169,7 @@ void ColorPicker::updateResult(int r, int g, int b)
 
 void ColorPicker::copyProxy()
 {
-	KApplication::clipboard()->setText(resultBox->text());
+	QApplication::clipboard()->setText(resultBox->text());
 }
 
 void ColorPicker::pasteProxy()

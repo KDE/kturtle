@@ -27,6 +27,7 @@
 #include <QDebug>
 #include <klocale.h>
 #include <KTabWidget>
+#include <QFontDatabase>
 
 
 Inspector::Inspector(QWidget *parent)
@@ -251,7 +252,7 @@ QTreeWidgetItem* Inspector::walkTree(TreeNode* node)
 	QTextCharFormat* format = highlighter->tokenToFormat(node->token());
 	if (format != 0) {
 		result->setForeground(0, format->foreground());
-		QFont font(KGlobalSettings::fixedFont());
+		QFont font(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 		font.setBold(format->font().bold());
 		result->setFont(0, font);
 	}

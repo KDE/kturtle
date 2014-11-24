@@ -52,6 +52,7 @@
 #include <knewstuff3/downloaddialog.h>
 #include <kstandarddirs.h>
 #include <KConfigGroup>
+#include <KHelpClient>
 
 #include "interpreter/errormsg.h"
 #include "interpreter/translator.h"
@@ -97,7 +98,7 @@ MainWindow::MainWindow()
 MainWindow::~MainWindow()
 {
 	delete editor;
-	KGlobal::config()->sync();
+	KSharedConfig::openConfig()->sync();
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -154,7 +155,7 @@ void MainWindow::showColorPicker()
 
 void MainWindow::contextHelp()
 {
-  KToolInvocation::invokeHelp(contextHelpAnchor);
+  KHelpClient::invokeHelp(contextHelpAnchor);
 }
 
 /*void MainWindow::whatsThis()
@@ -669,7 +670,7 @@ void MainWindow::updateLanguagesMenu()
 	QAction* a;
 	// sort the dictionaries using an algorithm found in the qt docs:
 	QMap<QString, QString> map;
-	foreach (const QString &lang_code, KGlobal::locale()->languageList())
+	foreach (const QString &lang_code, KLocale::global()->languageList())
 		map.insert(codeToFullName(lang_code), lang_code);
 	// populate the menu:
 	foreach (const QString &lang_code, map) {
@@ -840,7 +841,7 @@ QString MainWindow::codeToFullName(const QString& lang_code)
 	// TODO test this function with more than one language loaded into KDE
 	return QString(lang_code == "en_US" ?
 			i18n("English [built in]") :
-			i18n("%1 (%2)", KGlobal::locale()->languageCodeToName(lang_code.left(2)), lang_code)
+			i18n("%1 (%2)", KLocale::global()->languageCodeToName(lang_code.left(2)), lang_code)
 		);
 }
 
@@ -1004,10 +1005,10 @@ void MainWindow::addToRecentFiles(const KUrl &url)
 
 void MainWindow::readConfig()
 {
-	KConfigGroup config(KGlobal::config(), "General Options");
+	KConfigGroup config(KSharedConfig::openConfig(), "General Options");
 // 	m_paShowStatusBar->setChecked(config->readEntry("ShowStatusBar", QVariant(false)).toBool());
 // 	m_paShowPath->setChecked(config->readEntry("ShowPath", QVariant(false)).toBool());
-	recentFilesAction->loadEntries(KGlobal::config()->group("Recent Files"));
+	recentFilesAction->loadEntries(KSharedConfig::openConfig()->group("Recent Files"));
 	QString lang_code(config.readEntry("currentLanguageCode", QVariant(QString())).toString());
 	if (lang_code.isEmpty()) lang_code = "en_US";  // null-string are saved as empty-strings
 	setCurrentLanguage(lang_code);
@@ -1019,10 +1020,10 @@ void MainWindow::readConfig()
 
 void MainWindow::writeConfig()
 {
-	KConfigGroup config(KGlobal::config(), "General Options");
+	KConfigGroup config(KSharedConfig::openConfig(), "General Options");
 // 	config.writeEntry("ShowStatusBar",m_paShowStatusBar->isChecked());
 // 	config.writeEntry("ShowPath",m_paShowPath->isChecked());
-	recentFilesAction->saveEntries(KGlobal::config()->group( "Recent Files"));
+	recentFilesAction->saveEntries(KSharedConfig::openConfig()->group( "Recent Files"));
 	config.writeEntry("currentLanguageCode", currentLanguageCode);
 	config.sync();
 }

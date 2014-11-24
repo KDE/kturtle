@@ -49,6 +49,7 @@ using std::atan;
 #include <QDialogButtonBox>
 #include <QPushButton>
 #include <KGuiItem>
+#include <QFontDatabase>
 
 
 #define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )
@@ -300,7 +301,7 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	pasteRowLayout->addStretch();
 	commandBox = new QLineEdit(rightWidget);
 	commandBox->setReadOnly(true);
-	commandBox->setFont(KGlobalSettings::fixedFont());
+	commandBox->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 	commandBox->setMinimumWidth(commandBox->fontMetrics().width("000000000_360"));
 	pasteRowLayout->addWidget(commandBox);
 	KPushButton* copyButton = new KPushButton(KIcon("edit-copy"), i18n("&Copy to clipboard"), baseWidget);
@@ -425,7 +426,7 @@ void DirectionDialog::updateCommandBox()
 
 void DirectionDialog::copyProxy()
 {
-	KApplication::clipboard()->setText(commandBox->text());
+	QApplication::clipboard()->setText(commandBox->text());
 }
 
 void DirectionDialog::pasteProxy()

@@ -30,6 +30,7 @@
 #include <QPushButton>
 #include <KGuiItem>
 #include <QVBoxLayout>
+#include <QFontDatabase>
 
 
 ErrorDialog::ErrorDialog(QWidget* parent)
@@ -101,7 +102,7 @@ void ErrorDialog::clear()
 	// put a friendly 'nothing to see here' notice in the empty table
 	errorTable->setRowCount(1);
 	QTableWidgetItem* emptyItem = new QTableWidgetItem(i18n("No errors occurred yet."));
-	QFont emptyFont(KGlobalSettings::generalFont());
+	QFont emptyFont(QFontDatabase::systemFont(QFontDatabase::GeneralFont));
 	emptyFont.setItalic(true);
 	emptyItem->setFont(emptyFont);
 	errorTable->setItem(0, 1, emptyItem);

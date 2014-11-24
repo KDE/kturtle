@@ -1,5 +1,4 @@
 include_directories(${CMAKE_SOURCE_DIR}/kturtle/interpreter)
-#include_directories(${KDE4_INCLUDES})
 
 set(kturtle_SRCS
     canvas.cpp
@@ -53,6 +52,7 @@ target_link_libraries(kturtle
     Qt5::Gui
     Qt5::Xml
     Qt5::Svg
+    KF5::KDELibs4Support
     #${QT_QTCORE_LIBRARY}
     #${QT_QTGUI_LIBRARY}
     #${QT_QTXML_LIBRARY}
@@ -61,7 +61,7 @@ target_link_libraries(kturtle
 )
 
 install (TARGETS  kturtle          ${INSTALL_TARGETS_DEFAULT_ARGS})
-install (PROGRAMS    kturtle.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR})
-install (FILES    kturtleui.rc     DESTINATION ${DATA_INSTALL_DIR}/kturtle)
+install (PROGRAMS    org.kde.kturtle.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR})
+install (FILES    kturtleui.rc     DESTINATION ${KXMLGUI_INSTALL_DIR}/kturtle)
 install (FILES    kturtle.knsrc    DESTINATION ${CONFIG_INSTALL_DIR}) 
 
