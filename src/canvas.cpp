@@ -22,8 +22,10 @@
 
 #include <cmath>
 
+#include <QString>
 #include <QResizeEvent>
 #include <QDebug>
+#include <QGraphicsLineItem>
 
 #include <KLocalizedString>
 

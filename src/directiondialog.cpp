@@ -47,9 +47,10 @@ using std::atan;
 #include <KComboBox>
 #include <KConfigGroup>
 #include <QDialogButtonBox>
-#include <QPushButton>
+#include <KPushButton>
 #include <KGuiItem>
 #include <QFontDatabase>
+#include <KIcon>
 
 
 #define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )

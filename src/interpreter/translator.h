@@ -23,6 +23,8 @@
 
 #include <QChar>
 #include <QHash>
+#include <QString>
+#include <QStringList>
 //#include <QLocale>
 
 class QLocale;

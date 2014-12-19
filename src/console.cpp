@@ -29,6 +29,7 @@
 #include <QWidget>
 
 #include <klocale.h>
+#include <kcombobox.h>
 #include <QFontDatabase>
 
 

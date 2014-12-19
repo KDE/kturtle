@@ -20,17 +20,16 @@
 #include "errordialog.h"
 
 #include <QHeaderView>
-
+#include <QDialogButtonBox>
+#include <QPushButton>
+#include <QVBoxLayout>
+#include <QFontDatabase>
 #include <QDebug>
 
 #include <kglobalsettings.h>
 #include <klocale.h>
 #include <KConfigGroup>
-#include <QDialogButtonBox>
-#include <QPushButton>
 #include <KGuiItem>
-#include <QVBoxLayout>
-#include <QFontDatabase>
 
 
 ErrorDialog::ErrorDialog(QWidget* parent)
@@ -46,12 +45,13 @@ ErrorDialog::ErrorDialog(QWidget* parent)
 	QWidget *mainWidget = new QWidget(this);
 	mainLayout->addWidget(mainWidget);
 
-	setHelp("reference", "kturtle");
+	// FIXME: From KDialog?  What's the equivalent when using QDialog?
+	//setHelp("reference", "kturtle");
 
 	QWidget *baseWidget = new QWidget(this);
 	mainLayout->addWidget(baseWidget);
 	baseLayout = new QVBoxLayout(baseWidget); 
-	mainLayout->addWidget(baseLayout);
+	mainLayout->addWidget(baseWidget);
 	
 	label = new QLabel(baseWidget);
 	mainLayout->addWidget(label);
@@ -78,13 +78,13 @@ ErrorDialog::ErrorDialog(QWidget* parent)
 
 	baseLayout->addWidget(errorTable);
 
-	QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Help);
+	m_buttonBox = new QDialogButtonBox(QDialogButtonBox::Help);
 	QPushButton *user1Button = new QPushButton;
-	buttonBox->addButton(user1Button, QDialogButtonBox::ActionRole);
-	connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
-	connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
-	mainLayout->addWidget(buttonBox);
-	KGuiItem::assign(user1Button, KGuiItem(i18n("Hide Errors"));
+	m_buttonBox->addButton(user1Button, QDialogButtonBox::ActionRole);
+	connect(m_buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
+	connect(m_buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+	mainLayout->addWidget(m_buttonBox);
+	KGuiItem::assign(user1Button, KGuiItem(i18n("Hide Errors")));
 // 	setButtonGuiItem(User1, i18n("Help on &Error"));  // TODO context help in the error dialog
 	user1Button->setDefault(true);
 
@@ -117,7 +117,7 @@ void ErrorDialog::enable()
 {
 	Q_ASSERT (errorList != 0);
 	errorTable->setEnabled(true);
-	buttonBox->button(QDialogButtonBox::Help)->setEnabled(true);
+	m_buttonBox->button(QDialogButtonBox::Help)->setEnabled(true);
 	connect (errorTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectedErrorChangedProxy()));
 	errorTable->selectRow(0);
 }
@@ -126,7 +126,7 @@ void ErrorDialog::disable()
 {
 	disconnect (errorTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectedErrorChangedProxy()));
 	errorTable->setEnabled(false);
-	buttonBox->button(QDialogButtonBox::Help)->setEnabled(false);
+	m_buttonBox->button(QDialogButtonBox::Help)->setEnabled(false);
 	errorTable->clearSelection();
 }
 

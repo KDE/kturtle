@@ -27,6 +27,8 @@
 #include <QDialog>
 #include <QLineEdit>
 
+#include <QDialog>
+
 
 class QHBoxLayout;
 class QMouseEvent;
@@ -68,7 +70,7 @@ class DirectionCanvas : public QWidget
 };
 
 
-class DirectionDialog : public KDialog
+class DirectionDialog : public QDialog
 {
 	Q_OBJECT
 

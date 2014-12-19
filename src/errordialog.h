@@ -24,10 +24,11 @@
 #include <QVBoxLayout>
 #include <QSpacerItem>
 #include <QLabel>
-
 #include <QDialog>
 
 #include "interpreter/errormsg.h"
+
+class QDialogButtonBox;
 
 
 class ErrorDialog : public QDialog
@@ -56,6 +57,7 @@ class ErrorDialog : public QDialog
 		QVBoxLayout    *baseLayout;
 		QLabel         *label;
 		QSpacerItem    *spacer;
+		QDialogButtonBox *m_buttonBox;
 };
 
 #endif  // _ERRORDIALOG_H_
