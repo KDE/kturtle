@@ -993,7 +993,8 @@ void MainWindow::updateContentName(const QString& str)
 {
 	QString caption = str.isEmpty() ? i18n("untitled") : str;
 	bool modified = editor->isModified();
-	KXmlGuiWindow::setWindowTitle(caption, modified);
+	setWindowTitle(caption + QLatin1String("[*]"));
+	setWindowModified(modified);
 	statusBarFileNameLabel->setText(QString(" %1%2 ").arg(caption).arg(modified ? "*" : ""));
 }
 

@@ -25,7 +25,7 @@
 
 #include <QDebug>
 #include <kapplication.h>
-#include <kaboutdata.h>
+#include <k4aboutdata.h>
 #include <kcmdlineargs.h>
 #include <klocale.h>
 
@@ -46,7 +46,7 @@ static const char website[]   = "http://edu.kde.org/kturtle";
 
 int main(int argc, char* argv[])
 {
-	KAboutData aboutData("kturtle", 0, ki18n("KTurtle"), version, ki18n(description), KAboutData::License_GPL, ki18n(copyright), KLocalizedString(), website);
+	K4AboutData aboutData("kturtle", 0, ki18n("KTurtle"), version, ki18n(description), K4AboutData::License_GPL, ki18n(copyright), KLocalizedString(), website);
 	aboutData.addAuthor(ki18n("Cies Breijs"), ki18n("Initiator and core developer"), "cies@kde.nl");
 	aboutData.addAuthor(ki18n("Niels Slot"), ki18n("Core developer"), "nielsslot@gmail.com");
 	aboutData.addAuthor(ki18n("Mauricio Piacentini"), ki18n("Core developer"), "piacentini@kde.org");

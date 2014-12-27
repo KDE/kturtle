@@ -34,7 +34,7 @@
 
 
 Console::Console(QWidget* parent)
-	: QAction(parent)
+	: QWidgetAction(parent)
 {
 	baseWidget = new QWidget(parent);
 	QHBoxLayout* baseLayout = new QHBoxLayout();

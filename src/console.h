@@ -20,11 +20,11 @@
 #ifndef _CONSOLE_H_
 #define _CONSOLE_H_
 
-#include <QAction>
+#include <QWidgetAction>
 #include <QComboBox>
 
 
-class Console : public QAction
+class Console : public QWidgetAction
 {
 	Q_OBJECT
 
