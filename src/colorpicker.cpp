@@ -115,12 +115,12 @@ ColorPicker::ColorPicker(QWidget* parent)
 	resultBox->setMaximumWidth(width);
 	resultLayout->addWidget(resultBox);
 
-	QPushButton* copyButton = new QPushButton(QIcon("edit-copy"), i18n("&Copy to clipboard"), baseWidget);
+	QPushButton* copyButton = new QPushButton(QIcon::fromTheme("edit-copy"), i18n("&Copy to clipboard"), baseWidget);
 	mainLayout->addWidget(copyButton);
 	resultLayout->addWidget(copyButton);
 	connect(copyButton, SIGNAL(clicked()), this, SLOT(copyProxy()));
 
-	QPushButton* pasteButton = new QPushButton(QIcon("edit-paste"), i18n("&Paste to editor"), baseWidget);
+	QPushButton* pasteButton = new QPushButton(QIcon::fromTheme("edit-paste"), i18n("&Paste to editor"), baseWidget);
 	mainLayout->addWidget(pasteButton);
 	resultLayout->addWidget(pasteButton);
 	connect(pasteButton, SIGNAL(clicked()), this, SLOT(pasteProxy()));
