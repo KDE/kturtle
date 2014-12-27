@@ -33,7 +33,6 @@
 #include <kcombobox.h>
 #include <kglobal.h>
 #include <klocale.h>
-#include <kicon.h>
 #include <kinputdialog.h>
 #include <kmessagebox.h>
 #include <krecentfilesaction.h>
@@ -208,7 +207,7 @@ void MainWindow::setupActions()
 	recentFilesAction->setStatusTip(i18n("Open a recently used file"));
 	recentFilesAction->setWhatsThis(i18n("Open Recent File: Open a recently used file"));
 	
-	a = new QAction(KIcon("get-hot-new-stuff"), i18n("Get more examples..."), this);
+	a = new QAction(QIcon::fromTheme("get-hot-new-stuff"), i18n("Get more examples..."), this);
 	actionCollection()->addAction("get_new_examples", a);
 	a->setText(i18n("Get more examples..."));
 	connect(a, SIGNAL(triggered()), this, SLOT(getNewExampleDialog()));
@@ -309,21 +308,21 @@ void MainWindow::setupActions()
 	exportToSvgAct->setWhatsThis(i18n("Export to SVG: Export the current canvas to Scalable Vector Graphics"));
 	connect(exportToSvgAct, SIGNAL(triggered()), this, SLOT(exportToSvg()));
 
-	printCanvasAct = new QAction(KIcon("document-print"), i18n("&Print Canvas..."), this);
+	printCanvasAct = new QAction(QIcon::fromTheme("document-print"), i18n("&Print Canvas..."), this);
 	actionCollection()->addAction("canvas_print", printCanvasAct);
 	printCanvasAct->setStatusTip(i18n("Print the canvas"));
 	printCanvasAct->setWhatsThis(i18n("Print: Print the canvas"));
 	connect(printCanvasAct, SIGNAL(triggered()), this, SLOT(canvasPrintDialog()));
 
 	// Run menu actions
-	runAct = new QAction(KIcon("media-playback-start"), i18n("&Run"), this);
+	runAct = new QAction(QIcon::fromTheme("media-playback-start"), i18n("&Run"), this);
 	actionCollection()->addAction("run", runAct);
 	runAct->setShortcut(QKeySequence(Qt::Key_F5));
 	runAct->setStatusTip(i18n("Execute the program"));
 	runAct->setWhatsThis(i18n("Run: Execute the program"));
 	connect(runAct, SIGNAL(triggered()), this, SLOT(run()));
 
-	pauseAct = new QAction(KIcon("media-playback-pause"), i18n("&Pause"), this);
+	pauseAct = new QAction(QIcon::fromTheme("media-playback-pause"), i18n("&Pause"), this);
 	actionCollection()->addAction("pause", pauseAct);
 	pauseAct->setCheckable(true);
 	pauseAct->setShortcut(QKeySequence(Qt::Key_F6));
@@ -331,7 +330,7 @@ void MainWindow::setupActions()
 	pauseAct->setWhatsThis(i18n("Pause: Pause execution"));
 	connect(pauseAct, SIGNAL(triggered()), this, SLOT(pause()));
 
-	abortAct = new QAction(KIcon("process-stop"), i18n("&Abort"), this);
+	abortAct = new QAction(QIcon::fromTheme("process-stop"), i18n("&Abort"), this);
 	actionCollection()->addAction("abort", abortAct);
 	abortAct->setShortcut(QKeySequence(Qt::Key_F7));
 	abortAct->setStatusTip(i18n("Stop executing program"));
@@ -407,7 +406,7 @@ void MainWindow::setupActions()
 	// Help menu actions
 	contextHelpAct = ac->addAction("context_help");
 	contextHelpAct->setText("");
-	contextHelpAct->setIcon(KIcon("help-about"));
+	contextHelpAct->setIcon(QIcon::fromTheme("help-about"));
 	contextHelpAct->setShortcut(QKeySequence(Qt::Key_F2));
 	contextHelpAct->setStatusTip(i18n("Get help on the command under the cursor"));
 	contextHelpAct->setWhatsThis(i18n("Context Help: Get help on the command under the cursor"));
@@ -426,7 +425,7 @@ void MainWindow::setupActions()
 	connect(console, SIGNAL(execute(const QString&)), this, SLOT(execute(const QString&)));
 
 	executeConsoleAct = actionCollection()->addAction("execute_console");
-	executeConsoleAct->setIcon(KIcon("go-jump-locationbar"));
+	executeConsoleAct->setIcon(QIcon::fromTheme("go-jump-locationbar"));
 	executeConsoleAct->setText(i18n("Execute"));
 	connect(executeConsoleAct, SIGNAL(triggered()), console, SLOT(executeActionTriggered()));
 	executeConsoleAct->setWhatsThis(i18n("Execute: Executes the current line in the console"));
@@ -435,7 +434,7 @@ void MainWindow::setupActions()
 	QActionGroup* runSpeedGroup = new QActionGroup(this);
 
 	// The run action collection, this is used in the toolbar to create a dropdown menu on the run button
-	KToolBarPopupAction* runSpeedAction = new KToolBarPopupAction(KIcon("media-playback-start"), i18n("&Run"), this);
+	KToolBarPopupAction* runSpeedAction = new KToolBarPopupAction(QIcon::fromTheme("media-playback-start"), i18n("&Run"), this);
 	connect(runSpeedAction, SIGNAL(triggered()), this, SLOT(run()));
 	QMenu* runSpeedActionMenu = runSpeedAction->menu();
 	actionCollection()->addAction("run_speed", runSpeedAction);
