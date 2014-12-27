@@ -47,10 +47,8 @@ using std::atan;
 #include <KComboBox>
 #include <KConfigGroup>
 #include <QDialogButtonBox>
-#include <KPushButton>
 #include <KGuiItem>
 #include <QFontDatabase>
-#include <KIcon>
 
 
 #define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )
@@ -305,11 +303,11 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	commandBox->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 	commandBox->setMinimumWidth(commandBox->fontMetrics().width("000000000_360"));
 	pasteRowLayout->addWidget(commandBox);
-	KPushButton* copyButton = new KPushButton(KIcon("edit-copy"), i18n("&Copy to clipboard"), baseWidget);
+	QPushButton* copyButton = new QPushButton(QIcon::fromTheme("edit-copy"), i18n("&Copy to clipboard"), baseWidget);
 	mainLayout->addWidget(copyButton);
 	pasteRowLayout->addWidget(copyButton);
 	connect(copyButton, SIGNAL(clicked()), this, SLOT(copyProxy()));
-	KPushButton* pasteButton = new KPushButton(KIcon("edit-paste"), i18n("&Paste to editor"), baseWidget);
+	QPushButton* pasteButton = new QPushButton(QIcon::fromTheme("edit-paste"), i18n("&Paste to editor"), baseWidget);
 	mainLayout->addWidget(pasteButton);
 	pasteRowLayout->addWidget(pasteButton);
 	connect(pasteButton, SIGNAL(clicked()), this, SLOT(pasteProxy()));
