@@ -27,8 +27,6 @@
 #include <QTreeWidgetItem>
 #include <QWidget>
 
-#include <kglobalsettings.h>
-
 #include "editor.h"
 #include "highlighter.h"
 #include "interpreter/value.h"

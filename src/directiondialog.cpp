@@ -27,12 +27,11 @@ using std::atan;
 #endif
 
 
-#include <kapplication.h>
-#include <kglobalsettings.h>
-#include <klocale.h>
+#include <KLocalizedString>
 #include <KNumInput>
-#include <kstandardguiitem.h>
+#include <KStandardGuiItem>
 
+#include <QApplication>
 #include <QClipboard>
 #include <QHBoxLayout>
 #include <QVBoxLayout>

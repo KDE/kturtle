@@ -26,10 +26,9 @@
 #include <QFontDatabase>
 #include <QDebug>
 
-#include <kglobalsettings.h>
-#include <klocale.h>
 #include <KConfigGroup>
 #include <KGuiItem>
+#include <KLocalizedString>
 
 
 ErrorDialog::ErrorDialog(QWidget* parent)

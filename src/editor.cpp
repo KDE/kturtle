@@ -35,8 +35,6 @@
 
 #include <kfiledialog.h>
 #include <kfind.h>
-#include <kglobalsettings.h>
-#include <klocale.h>
 #include <kmessagebox.h>
 #include <ksavefile.h>
 #include <ktemporaryfile.h>
