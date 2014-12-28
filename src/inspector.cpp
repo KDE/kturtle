@@ -23,11 +23,11 @@
 
 #include <QHeaderView>
 #include <QTextCharFormat>
-
 #include <QDebug>
-#include <klocale.h>
-#include <KTabWidget>
+#include <QTabWidget>
 #include <QFontDatabase>
+
+#include <klocale.h>
 
 
 Inspector::Inspector(QWidget *parent)
@@ -36,7 +36,7 @@ Inspector::Inspector(QWidget *parent)
 	mainLayout = new QHBoxLayout(this);
 	mainLayout->setSpacing(0);
 	mainLayout->setMargin(0);
-	tabWidget  = new KTabWidget(this);
+	tabWidget  = new QTabWidget(this);
 
 	variableTab    = new QWidget();
 	variableLayout = new QHBoxLayout(variableTab);

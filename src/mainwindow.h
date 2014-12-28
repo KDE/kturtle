@@ -26,8 +26,8 @@
 #include <QToolBar>
 #include <QDockWidget>
 #include <QLabel>
-
 #include <QAction>
+
 #include <kxmlguiwindow.h>
 #include <kmenubar.h>
 #include <krecentfilesaction.h>
@@ -44,9 +44,9 @@
 
 
 class QAction;
-class KComboBox;
-class KTabWidget;
+class QTabWidget;
 class QMenu;
+class KComboBox;
 
 
 // extends the QDockWidget with an extra signal
@@ -148,7 +148,7 @@ class MainWindow : public KXmlGuiWindow
 		ErrorDialog     *errorDialog;
 		DirectionDialog *directionDialog;
 		ColorPicker     *colorPicker;
-		KTabWidget      *canvasTabWidget;
+		QTabWidget      *canvasTabWidget;
 		QWidget         *canvasTab;
 		QStackedWidget  *stackedWidget;
 		LocalDockWidget *editorDock;

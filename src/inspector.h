@@ -32,7 +32,7 @@
 #include "interpreter/value.h"
 #include "interpreter/treenode.h"
 
-class KTabWidget;
+class QTabWidget;
 
 class Inspector : public QFrame
 {
@@ -74,7 +74,7 @@ class Inspector : public QFrame
 		QHash<TreeNode*, QTreeWidgetItem*> treeMap;
 
 		QHBoxLayout  *mainLayout;
-		KTabWidget   *tabWidget;
+		QTabWidget   *tabWidget;
 
 		QWidget      *variableTab;
 		QHBoxLayout  *variableLayout;

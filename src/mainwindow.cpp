@@ -24,6 +24,7 @@
 #include <QPrinter>
 #include <QPrintDialog>
 #include <QWidgetAction>
+#include <QTabWidget>
 #include <QDebug>
 #include <QAction>
 
@@ -46,7 +47,6 @@
 #include <kfiledialog.h>
 #include <ksavefile.h>
 #include <kio/netaccess.h>
-#include <KTabWidget>
 #include <knewstuff3/downloaddialog.h>
 #include <kstandarddirs.h>
 #include <KConfigGroup>
@@ -505,7 +505,7 @@ void MainWindow::setupCanvas()
 	QHBoxLayout* centralLayout = new QHBoxLayout(centralWidget);
 	centralLayout->setMargin(0);  // MARGIN_SIZE);
 
-	canvasTabWidget = new KTabWidget(this);
+	canvasTabWidget = new QTabWidget(this);
 
 	canvasTab = new QWidget();
 	QHBoxLayout* canvasLayout = new QHBoxLayout(canvasTab);
