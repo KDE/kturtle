@@ -21,13 +21,12 @@
 
 #include <QWhatsThis>
 #include <QTimer>
-#include <QtGui/QPrinter>
-#include <QtGui/QPrintDialog>
+#include <QPrinter>
+#include <QPrintDialog>
 #include <QWidgetAction>
-
 #include <QDebug>
-
 #include <QAction>
+
 #include <kactioncollection.h>
 #include <kconfig.h>
 #include <kcombobox.h>
