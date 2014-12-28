@@ -285,12 +285,14 @@ int Inspector::findVariable(const QString& name)
 
 void Inspector::markVariable(const QString& name)
 {
-	//qDebug() << variableMap[name]->row();
+    Q_UNUSED(name);
+    //qDebug() << variableMap[name]->row();
 }
 
 void Inspector::markFunction(const QString& name)
 {
-	//qDebug() << functionMap[name]->row();
+    Q_UNUSED(name);
+    //qDebug() << functionMap[name]->row();
 }
 
 void Inspector::markTreeNode(TreeNode* node)

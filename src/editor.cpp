@@ -221,7 +221,7 @@ bool Editor::saveFile(const QUrl &targetUrl)
 		QString filename = url.isLocalFile() ? url.toLocalFile() : tmp.fileName();
 	
 		QSaveFile *savefile = new QSaveFile(filename);
-		if (savefile->open()) {
+		if (savefile->open(QIODevice::WriteOnly)) {
 			QTextStream outputStream(savefile);
 			// store commands in their generic @(...) notation format, to be translatable when reopened
 			// this allows sharing of scripts written in different languages
@@ -249,7 +249,7 @@ bool Editor::saveFile(const QUrl &targetUrl)
 			outputStream << KTURTLE_MAGIC_1_0 << '\n';
 			outputStream << unstranslated;
 			outputStream.flush();
-			savefile->finalize();  // check for error here?
+			savefile->commit();  // check for error here?
 		}
 		delete savefile;
 		if (!url.isLocalFile())
