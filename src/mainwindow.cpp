@@ -203,7 +203,7 @@ void MainWindow::setupActions()
 	a->setWhatsThis(i18n("Open File: Open an existing file"));
 
 	//TODO: Is this correct? -- It doesn't seem to be working
-	recentFilesAction = (KRecentFilesAction*)actionCollection()->addAction(KStandardAction::OpenRecent,  "file_recent", editor, SLOT(openFile(const KUrl&)));
+	recentFilesAction = (KRecentFilesAction*)actionCollection()->addAction(KStandardAction::OpenRecent,  "file_recent", editor, SLOT(openFile(const QUrl&)));
 	recentFilesAction->setStatusTip(i18n("Open a recently used file"));
 	recentFilesAction->setWhatsThis(i18n("Open Recent File: Open a recently used file"));
 	
@@ -588,8 +588,8 @@ void MainWindow::setupEditor()
 // 	editor->setTranslator(Translator::instance());
 	connect(editor, SIGNAL(modificationChanged()), this, SLOT(updateModificationState()));
 	connect(editor, SIGNAL(contentNameChanged(const QString&)), this, SLOT(updateContentName(const QString&)));
-	connect(editor, SIGNAL(fileOpened(const KUrl&)), this, SLOT(addToRecentFilesList(const KUrl&)));
-	connect(editor, SIGNAL(fileSaved(const KUrl&)), this, SLOT(addToRecentFilesList(const KUrl&)));
+	connect(editor, SIGNAL(fileOpened(const QUrl&)), this, SLOT(addToRecentFilesList(const QUrl&)));
+	connect(editor, SIGNAL(fileSaved(const QUrl&)), this, SLOT(addToRecentFilesList(const QUrl&)));
 	connect(editor, SIGNAL(cursorPositionChanged()), this, SLOT(updateOnCursorPositionChange()));
 }
 
@@ -727,7 +727,7 @@ void MainWindow::updateExamplesMenu()
 	plugActionList   ("examples_actionlist", exampleList);
 }
 
-void MainWindow::addToRecentFilesList(const KUrl& url)
+void MainWindow::addToRecentFilesList(const QUrl &url)
 {
 	recentFilesAction->addUrl(url);
 }
@@ -743,7 +743,7 @@ void MainWindow::openDownloadedExample()
 {
 	QAction* action = qobject_cast<QAction*>(sender());
 	QString exampleFilename = action->data().toString();
-	editor->openFile(KUrl(exampleFilename));
+	editor->openFile(QUrl::fromLocalFile(exampleFilename));
 	QFileInfo fileInfo(exampleFilename);
 	editor->setCurrentUrl(fileInfo.baseName());
 }
@@ -997,7 +997,7 @@ void MainWindow::updateContentName(const QString& str)
 	statusBarFileNameLabel->setText(QString(" %1%2 ").arg(caption).arg(modified ? "*" : ""));
 }
 
-void MainWindow::addToRecentFiles(const KUrl &url)
+void MainWindow::addToRecentFiles(const QUrl &url)
 {
 	recentFilesAction->addUrl(url);
 }
@@ -1031,7 +1031,7 @@ void MainWindow::writeConfig()
 void MainWindow::exportToPng()
 {
 	// copied from edit code for file selection
-	KUrl url = KFileDialog::getSaveUrl(QString(), QString("*.png|%1\n*|%2").arg(i18n("PNG Images")).arg(i18n("All files")), this, i18n("Save as Picture"));
+	QUrl url = KFileDialog::getSaveUrl(QString(), QString("*.png|%1\n*|%2").arg(i18n("PNG Images")).arg(i18n("All files")), this, i18n("Save as Picture"));
     if (url.isEmpty())
         return;
 	if (KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this) &&
@@ -1053,7 +1053,7 @@ void MainWindow::exportToPng()
 void MainWindow::exportToSvg()
 {
     // copied from edit code for file selection
-    // canvas->saveAsSvg() does not handle KUrl, so only local files are accepted
+    // canvas->saveAsSvg() does not handle QUrl, so only local files are accepted
 	QString path = KFileDialog::getSaveFileName(QString(), QString("*.svg|%1\n*|%2").arg(i18n("Scalable Vector Graphics")).arg(i18n("All files")), this, i18n("Save as SVG"));
 	if (path.isEmpty())
 		return;
@@ -1069,7 +1069,7 @@ void MainWindow::exportToSvg()
 void MainWindow::exportToHtml()
 {
     // copied from edit code for file selection
-    // we do not handle KUrl, so only local files are accepted
+    // we do not handle QUrl, so only local files are accepted
 	QString path = KFileDialog::getSaveFileName(QString(), QString("*.html|%1\n*|%2").arg(i18n("HTML documents")).arg(i18n("All files")), this, i18n("Save code as HTML"));
 	if (path.isEmpty())
 		return;

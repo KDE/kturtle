@@ -69,12 +69,12 @@ class MainWindow : public KXmlGuiWindow
 	public:
 		MainWindow();
 		~MainWindow();
-		void open(const QString& pathOrUrl) { editor->openFile(KUrl(pathOrUrl)); }  // for main.cpp
+		void open(const QString& pathOrUrl) { editor->openFile(QUrl(pathOrUrl)); }  // for main.cpp
 
 // 	public slots:
 
 	private slots:
-		void addToRecentFilesList(const KUrl&);
+		void addToRecentFilesList(const QUrl&);
 		void showErrorDialog(bool show = false);
 		void openExample();
 		void getNewExampleDialog();
@@ -112,7 +112,7 @@ class MainWindow : public KXmlGuiWindow
 		void setLanguage(QAction*);
 		void updateContentName(const QString& str = QString());
 		void updateModificationState() { setCaption(editor->currentUrl().fileName()); }
-		void addToRecentFiles(const KUrl&);
+		void addToRecentFiles(const QUrl&);
 		void toggleOverwriteMode(bool b);
 		void updateOnCursorPositionChange();
 

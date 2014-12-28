@@ -160,12 +160,12 @@ bool Editor::newFile()
 	return false;
 }
 
-bool Editor::openFile(const KUrl &_url)
+bool Editor::openFile(const QUrl &_url)
 {
-	KUrl url = _url;
+	QUrl url = _url;
 	if (maybeSave()) {
 		if (url.isEmpty()) {
-			url = KFileDialog::getOpenUrl(KUrl(), 
+			url = KFileDialog::getOpenUrl(QUrl(), 
 				QString("*.turtle|%1\n*|%2").arg(i18n("Turtle code files")).arg(i18n("All files")),
 				this, i18n("Open"));
 		}
@@ -207,9 +207,9 @@ bool Editor::openFile(const KUrl &_url)
 	return false;
 }
 
-bool Editor::saveFile(const KUrl &targetUrl)
+bool Editor::saveFile(const QUrl &targetUrl)
 {
-	KUrl url(targetUrl);
+	QUrl url(targetUrl);
 	bool result = false;
 	if (url.isEmpty() && currentUrl().isEmpty()) {
 		result = saveFileAs();
@@ -265,7 +265,7 @@ bool Editor::saveFile(const KUrl &targetUrl)
 
 bool Editor::saveFileAs()
 {
-	KUrl url = KFileDialog::getSaveUrl(QString(), QString("*.turtle|%1\n*|%2").arg(i18n("Turtle code files")).arg(i18n("All files")), this, i18n("Save As"));
+	QUrl url = KFileDialog::getSaveUrl(QString(), QString("*.turtle|%1\n*|%2").arg(i18n("Turtle code files")).arg(i18n("All files")), this, i18n("Save As"));
 	if (url.isEmpty()) return false;
 	if (KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this) &&
 		KMessageBox::warningContinueCancel(this,
@@ -341,9 +341,9 @@ void Editor::findPrev()
 	}
 }
 
-void Editor::setCurrentUrl(const KUrl& url)
+void Editor::setCurrentUrl(const QUrl &url)
 {
-	m_currentUrl = KUrl(url);
+	m_currentUrl = QUrl(url);
 	emit contentNameChanged(m_currentUrl.fileName());
 }
 
