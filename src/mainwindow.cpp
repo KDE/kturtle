@@ -45,7 +45,7 @@
 #include <ktoolinvocation.h>
 #include <kdeprintdialog.h>
 #include <kfiledialog.h>
-#include <ksavefile.h>
+#include <QSaveFile>
 #include <kio/netaccess.h>
 #include <knewstuff3/downloaddialog.h>
 #include <kstandarddirs.h>
@@ -1078,13 +1078,13 @@ void MainWindow::exportToHtml()
 			i18n("Overwrite Existing File"),KGuiItem(i18n("&Overwrite")),
 			KStandardGuiItem::cancel(), i18n("&Overwrite")) != KMessageBox::Continue)
 		return;
-	KSaveFile file(path);
-	if (!file.open())
+	QSaveFile file(path);
+	if (!file.open(QIODevice::WriteOnly))
 		return;
 	QTextStream out(&file);
 	out << editor->toHtml(windowTitle(), currentLanguageCode);
 	out.flush();
-	file.finalize();
+	file.commit();
 }
 
 

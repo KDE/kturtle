@@ -36,7 +36,7 @@
 #include <kfiledialog.h>
 #include <kfind.h>
 #include <kmessagebox.h>
-#include <ksavefile.h>
+#include <QSaveFile>
 #include <ktemporaryfile.h>
 
 #include <kio/netaccess.h>
@@ -220,7 +220,7 @@ bool Editor::saveFile(const QUrl &targetUrl)
 		tmp.open();
 		QString filename = url.isLocalFile() ? url.toLocalFile() : tmp.fileName();
 	
-		KSaveFile *savefile = new KSaveFile(filename);
+		QSaveFile *savefile = new QSaveFile(filename);
 		if (savefile->open()) {
 			QTextStream outputStream(savefile);
 			// store commands in their generic @(...) notation format, to be translatable when reopened
