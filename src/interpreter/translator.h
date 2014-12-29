@@ -25,9 +25,6 @@
 #include <QHash>
 #include <QString>
 #include <QStringList>
-//#include <QLocale>
-
-class QLocale;
 
 
 static const char* DEFAULT_LANGUAGE_CODE = "en_US";
@@ -124,7 +121,7 @@ class Translator
 		QHash<QString, int> look2typeMap;
 		QHash<QString, QString> default2localizedMap;
 
-		QLocale *localizer;
+		QStringList localizer;
 };
 
 
