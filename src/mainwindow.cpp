@@ -19,38 +19,34 @@
 
 #include "mainwindow.h"
 
-#include <QWhatsThis>
-#include <QTimer>
-#include <QPrinter>
-#include <QPrintDialog>
-#include <QWidgetAction>
-#include <QTabWidget>
+#include <QBoxLayout>
 #include <QDebug>
-#include <QAction>
-
-#include <kactioncollection.h>
-#include <kconfig.h>
-#include <kcombobox.h>
-#include <kglobal.h>
-#include <klocale.h>
-#include <kinputdialog.h>
-#include <kmessagebox.h>
-#include <krecentfilesaction.h>
-#include <kstatusbar.h>
-#include <KStandardShortcut>
-#include <kstandardaction.h>
-#include <ktoolbar.h>
-#include <ktoolbarlabelaction.h>
-#include <ktoolbarpopupaction.h>
-#include <ktoolinvocation.h>
-#include <kdeprintdialog.h>
-#include <kfiledialog.h>
+#include <QFileInfo>
+#include <QInputDialog>
+#include <QLabel>
+#include <QMenu>
+#include <QPrintDialog>
+#include <QPrinter>
 #include <QSaveFile>
+#include <QStackedWidget>
+#include <QStatusBar>
+#include <QTimer>
+
+#include <KActionCollection>
+#include <KConfigGroup>
+#include <KFileDialog>
+#include <KGlobal>
+#include <KHelpClient>
+#include <KLocale>
+#include <KLocalizedString>
+#include <KMessageBox>
+#include <KRecentFilesAction>
+#include <KSharedConfig>
+#include <KStandardDirs>
+#include <KToolBarPopupAction>
+
 #include <kio/netaccess.h>
 #include <knewstuff3/downloaddialog.h>
-#include <kstandarddirs.h>
-#include <KConfigGroup>
-#include <KHelpClient>
 
 #include "interpreter/errormsg.h"
 #include "interpreter/translator.h"
@@ -113,7 +109,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 void MainWindow::filePrintDialog()
 {
 	QPrinter printer;
-	QPrintDialog *printDialog = KdePrint::createPrintDialog(&printer, this);
+	QPrintDialog *printDialog = new QPrintDialog(&printer, this);
 	if (printDialog->exec()) {
 		QPainter painter;
 		painter.begin(&printer);
@@ -126,7 +122,7 @@ void MainWindow::filePrintDialog()
 void MainWindow::canvasPrintDialog()
 {
 	QPrinter printer;
-	QPrintDialog *printDialog = KdePrint::createPrintDialog(&printer, this);
+	QPrintDialog *printDialog = new QPrintDialog(&printer, this);
 	if (printDialog->exec()) {
 		QPainter painter;
 		painter.begin(&printer);
@@ -1092,7 +1088,7 @@ void MainWindow::exportToHtml()
 void MainWindow::slotInputDialog(QString& value)
 {
 	iterationTimer->stop();
-	value = KInputDialog::getText(i18n("Input"), value);
+	value = QInputDialog::getText(this, i18n("Input"), i18n("Input"), QLineEdit::Normal, value);
 	
 	if(!currentlyRunningConsole)
 		run();

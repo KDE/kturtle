@@ -22,22 +22,15 @@
 
 #include "interpreter/translator.h"
 
+#include <QDialog>
 #include <QSvgRenderer>
 #include <QWidget>
-#include <QDialog>
-#include <QLineEdit>
 
-#include <QDialog>
-
-
-class QHBoxLayout;
-class QMouseEvent;
-class QPaintEvent;
-class QRadioButton;
+class QComboBox;
+class QLineEdit;
 class QPushButton;
-
 class QSpinBox;
-class KComboBox;
+
 
 class DirectionCanvas : public QWidget
 {
@@ -89,7 +82,7 @@ class DirectionDialog : public QDialog
 	private:
 		DirectionCanvas* canvas;
 
-		KComboBox* commandPicker;
+		QComboBox* commandPicker;
 		QSpinBox* previousDirectionSpin;
 		QSpinBox* directionSpin;
 

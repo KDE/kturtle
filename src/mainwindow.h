@@ -20,18 +20,9 @@
 #ifndef _MAINWINDOW_H_
 #define _MAINWINDOW_H_
 
-#include <QActionGroup>
-#include <QStackedWidget>
-#include <QTextStream>
-#include <QToolBar>
 #include <QDockWidget>
-#include <QLabel>
-#include <QAction>
 
-#include <kxmlguiwindow.h>
-#include <kmenubar.h>
-#include <krecentfilesaction.h>
-#include <kstatusbar.h>
+#include <KXmlGuiWindow>
 
 #include "interpreter/interpreter.h"
 #include "canvas.h"
@@ -42,11 +33,9 @@
 #include "errordialog.h"
 #include "inspector.h"
 
+class QStackedWidget;
 
-class QAction;
-class QTabWidget;
-class QMenu;
-class KComboBox;
+class KRecentFilesAction;
 
 
 // extends the QDockWidget with an extra signal
@@ -188,7 +177,7 @@ class MainWindow : public KXmlGuiWindow
 		QAction *stepSpeedAct;
 
 		QActionGroup *runSpeedGroup;
-		KComboBox *runOptionBox;
+		QComboBox *runOptionBox;
 
 		QLabel *statusBarMessageLabel;
 		QLabel *statusBarLanguageLabel;

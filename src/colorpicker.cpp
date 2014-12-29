@@ -20,21 +20,21 @@
 #include "colorpicker.h"
 #include "interpreter/translator.h"  // for getting the translated ArgumentSeparator
 
-#include <QHBoxLayout>
-#include <QClipboard>
-#include <QFontMetrics>
-#include <QLabel>
-#include <QVBoxLayout>
 #include <QApplication>
-#include <QLocale>
+#include <QBoxLayout>
+#include <QClipboard>
 #include <QDialogButtonBox>
+#include <QFontDatabase>
+#include <QGridLayout>
+#include <QLabel>
+#include <QLineEdit>
 #include <QPushButton>
+#include <QSlider>
+#include <QSpinBox>
 
 #include <KLocalizedString>
-#include <kstandardguiitem.h>
-#include <KConfigGroup>
+#include <KStandardGuiItem>
 #include <KGuiItem>
-#include <QFontDatabase>
 
 
 ColorPicker::ColorPicker(QWidget* parent)

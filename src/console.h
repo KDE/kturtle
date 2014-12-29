@@ -21,7 +21,8 @@
 #define _CONSOLE_H_
 
 #include <QWidgetAction>
-#include <QComboBox>
+
+class QComboBox;
 
 
 class Console : public QWidgetAction

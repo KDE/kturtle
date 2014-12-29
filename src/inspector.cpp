@@ -21,13 +21,15 @@
 
 #include "interpreter/translator.h"  // for getting the translated ArgumentSeparator
 
-#include <QHeaderView>
-#include <QTextCharFormat>
+#include <QBoxLayout>
 #include <QDebug>
-#include <QTabWidget>
 #include <QFontDatabase>
+#include <QHeaderView>
+#include <QTabWidget>
+#include <QTableWidget>
+#include <QTreeWidget>
 
-#include <klocale.h>
+#include <KLocalizedString>
 
 
 Inspector::Inspector(QWidget *parent)

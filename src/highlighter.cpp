@@ -21,9 +21,6 @@
 
 #include "interpreter/tokenizer.h"
 
-#include <QDebug>
-#include <kurl.h>
-
 
 Highlighter::Highlighter(QTextDocument *parent)
 	: QSyntaxHighlighter(parent)

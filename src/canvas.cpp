@@ -17,15 +17,12 @@
 	Boston, MA 02110-1301, USA.
 */
 
-
 #include "canvas.h"
 
 #include <cmath>
 
-#include <QString>
 #include <QResizeEvent>
-#include <QDebug>
-#include <QGraphicsLineItem>
+#include <QWheelEvent>
 
 #include <KLocalizedString>
 

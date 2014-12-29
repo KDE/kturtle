@@ -26,29 +26,23 @@ using std::atan;
 #define M_PI 3.14159265358979323846264338327950288419717
 #endif
 
-
-#include <KLocalizedString>
-#include <KNumInput>
-#include <KStandardGuiItem>
-
 #include <QApplication>
+#include <QBoxLayout>
 #include <QClipboard>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-#include <QGroupBox>
+#include <QComboBox>
+#include <QDialogButtonBox>
+#include <QFontDatabase>
 #include <QLabel>
+#include <QLineEdit>
 #include <QMouseEvent>
 #include <QPainter>
 #include <QPaintEvent>
-#include <QRadioButton>
 #include <QPushButton>
+#include <QSpinBox>
 
-#include <KComboBox>
-#include <KConfigGroup>
-#include <QDialogButtonBox>
 #include <KGuiItem>
-#include <QFontDatabase>
-
+#include <KLocalizedString>
+#include <KStandardGuiItem>
 
 #define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )
 
@@ -248,7 +242,7 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	commandPickerLabel->setText(i18n("Command &type:"));
 	commandPickerLabel->setScaledContents(true);
 	rightLayout->addWidget(commandPickerLabel);
-	commandPicker = new KComboBox(rightWidget);
+	commandPicker = new QComboBox(rightWidget);
 	commandPicker->insertItem(Turnleft, translator->default2localized("turnleft"));
 	commandPicker->insertItem(Turnright, translator->default2localized("turnright"));
 	commandPicker->insertItem(Direction, translator->default2localized("direction"));

@@ -19,14 +19,14 @@
 
 #include "errordialog.h"
 
-#include <QHeaderView>
+#include <QBoxLayout>
 #include <QDialogButtonBox>
-#include <QPushButton>
-#include <QVBoxLayout>
 #include <QFontDatabase>
-#include <QDebug>
+#include <QHeaderView>
+#include <QLabel>
+#include <QPushButton>
+#include <QTableWidget>
 
-#include <KConfigGroup>
 #include <KGuiItem>
 #include <KLocalizedString>
 

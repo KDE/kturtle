@@ -17,20 +17,17 @@
 	Boston, MA 02110-1301, USA.
 */
 
-
 #include "console.h"
 #include "editor.h"  // only for the error highlight color value
 
 #include <QApplication>
-#include <QHBoxLayout>
+#include <QBoxLayout>
+#include <QComboBox>
+#include <QFontDatabase>
 #include <QLabel>
 #include <QLineEdit>
-#include <QToolTip>
-#include <QWidget>
 
-#include <klocale.h>
-#include <kcombobox.h>
-#include <QFontDatabase>
+#include <KLocalizedString>
 
 
 Console::Console(QWidget* parent)
@@ -41,7 +38,7 @@ Console::Console(QWidget* parent)
         baseLayout->setMargin(0);
 	baseWidget->setLayout(baseLayout);
 
-	comboBox = new KComboBox(true, baseWidget);
+	comboBox = new QComboBox(baseWidget);
 	comboBox->setMinimumWidth(200);
 	comboBox->setDuplicatesEnabled(true);
 	comboBox->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));

@@ -21,14 +21,10 @@
 #define _HIGHLIGHTER_H_
 
 #include <QSyntaxHighlighter>
-
-#include <QHash>
 #include <QTextCharFormat>
 
 #include "interpreter/tokenizer.h"
 
-
-class QTextDocument;
 
 class Highlighter : public QSyntaxHighlighter
 {

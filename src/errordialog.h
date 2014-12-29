@@ -20,15 +20,15 @@
 #ifndef _ERRORDIALOG_H_
 #define _ERRORDIALOG_H_
 
-#include <QTableWidget>
-#include <QVBoxLayout>
-#include <QSpacerItem>
-#include <QLabel>
 #include <QDialog>
 
 #include "interpreter/errormsg.h"
 
 class QDialogButtonBox;
+class QLabel;
+class QSpacerItem;
+class QTableWidget;
+class QVBoxLayout;
 
 
 class ErrorDialog : public QDialog

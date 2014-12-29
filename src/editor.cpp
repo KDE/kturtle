@@ -22,25 +22,18 @@
 #include "interpreter/token.h"
 #include "interpreter/tokenizer.h"
 
-#include <QTextDocument>
-#include <QTextBlock>
-#include <QHBoxLayout>
-#include <QScrollBar>
-#include <QPainter>
-#include <QAbstractTextDocumentLayout>
-
+#include <QBoxLayout>
+#include <QFontDatabase>
+#include <QSaveFile>
+#include <QTemporaryFile>
 #include <QTextStream>
 
-#include <QDebug>
-
-#include <kfiledialog.h>
-#include <kfind.h>
-#include <kmessagebox.h>
-#include <QSaveFile>
-#include <ktemporaryfile.h>
+#include <KFileDialog>
+#include <KFind>
+#include <KLocalizedString>
+#include <KMessageBox>
 
 #include <kio/netaccess.h>
-#include <QFontDatabase>
 
 
 static const int CURSOR_WIDTH = 2;  // in pixels
@@ -215,7 +208,7 @@ bool Editor::saveFile(const QUrl &targetUrl)
 		result = saveFileAs();
 	} else {
 		if (url.isEmpty()) url = currentUrl();
-		KTemporaryFile tmp;  // only used for network export
+		QTemporaryFile tmp;  // only used for network export
 		tmp.setAutoRemove(false);
 		tmp.open();
 		QString filename = url.isLocalFile() ? url.toLocalFile() : tmp.fileName();

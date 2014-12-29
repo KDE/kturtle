@@ -20,19 +20,21 @@
 #ifndef _INSPECTOR_H_
 #define _INSPECTOR_H_
 
+#include <QFrame>
 #include <QHash>
-#include <QHBoxLayout>
-#include <QTableWidget>
-#include <QTreeWidget>
-#include <QTreeWidgetItem>
-#include <QWidget>
 
 #include "editor.h"
 #include "highlighter.h"
 #include "interpreter/value.h"
 #include "interpreter/treenode.h"
 
+class QHBoxLayout;
+class QTableWidget;
+class QTableWidgetItem;
 class QTabWidget;
+class QTreeWidget;
+class QTreeWidgetItem;
+
 
 class Inspector : public QFrame
 {

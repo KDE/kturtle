@@ -19,12 +19,7 @@
 
 #include "translator.h"
 
-#include <QDomDocument>
-#include <QFile>
-#include <QLocale>
-#include <QDebug>
-
-#include <KGlobal>
+#include <KLocalizedString>
 
 #include "token.h"
 

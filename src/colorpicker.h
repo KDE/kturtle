@@ -20,15 +20,14 @@
 #ifndef _COLORPICKER_H_
 #define _COLORPICKER_H_
 
-
 #include <QFrame>
 #include <QPainter>
 #include <QPaintEvent>
-#include <QSlider>
-#include <QSpinBox>
 #include <QDialog>
 
-#include <QLineEdit>
+class QLineEdit;
+class QSlider;
+class QSpinBox;
 
 
 class ColorPatch : public QFrame

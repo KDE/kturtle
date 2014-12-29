@@ -22,26 +22,21 @@
 
 #include <cmath>
 
-#include <QFrame>
-#include <QPixmap>
-#include <QTextCursor>
-#include <QTextEdit>
-#include <QVector>
-#include <QScrollBar>
-#include <QPainter>
 #include <QAbstractTextDocumentLayout>
+#include <QFrame>
+#include <QPainter>
+#include <QScrollBar>
+#include <QTextEdit>
 
-#include <kfinddialog.h>
-#include <QUrl>
+#include <KFindDialog>
 
 #include "highlighter.h"
 #include "interpreter/token.h"
 #include "interpreter/tokenizer.h"
 #include "interpreter/treenode.h"
 
-
 class QHBoxLayout;
-class QPaintEvent;
+
 
 static const QColor LINE_HIGHLIGHT_COLOR(239, 247, 255);
 static const QColor WORD_HIGHLIGHT_COLOR(255, 255, 156);
