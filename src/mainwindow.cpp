@@ -272,7 +272,7 @@ void MainWindow::setupActions()
 	actionCollection()->addAction("overwrite", a );
 	a->setStatusTip(i18n("Toggle between the 'insert' and 'overwrite' mode"));
 	a->setWhatsThis(i18n("Overwrite Mode: Toggle between the 'insert' and 'overwrite' mode"));
-	a->setShortcut(QKeySequence(Qt::Key_Insert));
+	actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::Key_Insert));
 	a->setCheckable(true);
 	a->setChecked(false);
 	connect(a, SIGNAL(toggled(bool)), this, SLOT(toggleOverwriteMode(bool)));
@@ -316,7 +316,7 @@ void MainWindow::setupActions()
 	// Run menu actions
 	runAct = new QAction(QIcon::fromTheme("media-playback-start"), i18n("&Run"), this);
 	actionCollection()->addAction("run", runAct);
-	runAct->setShortcut(QKeySequence(Qt::Key_F5));
+	actionCollection()->setDefaultShortcut(runAct, QKeySequence(Qt::Key_F5));
 	runAct->setStatusTip(i18n("Execute the program"));
 	runAct->setWhatsThis(i18n("Run: Execute the program"));
 	connect(runAct, SIGNAL(triggered()), this, SLOT(run()));
@@ -324,14 +324,14 @@ void MainWindow::setupActions()
 	pauseAct = new QAction(QIcon::fromTheme("media-playback-pause"), i18n("&Pause"), this);
 	actionCollection()->addAction("pause", pauseAct);
 	pauseAct->setCheckable(true);
-	pauseAct->setShortcut(QKeySequence(Qt::Key_F6));
+	actionCollection()->setDefaultShortcut(pauseAct, QKeySequence(Qt::Key_F6));
 	pauseAct->setStatusTip(i18n("Pause execution"));
 	pauseAct->setWhatsThis(i18n("Pause: Pause execution"));
 	connect(pauseAct, SIGNAL(triggered()), this, SLOT(pause()));
 
 	abortAct = new QAction(QIcon::fromTheme("process-stop"), i18n("&Abort"), this);
 	actionCollection()->addAction("abort", abortAct);
-	abortAct->setShortcut(QKeySequence(Qt::Key_F7));
+	actionCollection()->setDefaultShortcut(abortAct, QKeySequence(Qt::Key_F7));
 	abortAct->setStatusTip(i18n("Stop executing program"));
 	abortAct->setWhatsThis(i18n("Abort: Stop executing program"));
 	connect(abortAct, SIGNAL(triggered()), this, SLOT(abort()));
@@ -360,7 +360,7 @@ void MainWindow::setupActions()
 	actionCollection()->addAction("show_editor", a);
 	a->setStatusTip(i18n("Show or hide the Code Editor"));
 	a->setWhatsThis(i18n("Show Code Editor: Show or hide the Code Editor"));
-	a->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_E));
+	actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_E));
 	a->setCheckable(true);
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), editorDock, SLOT(setVisible(bool)));
@@ -370,7 +370,7 @@ void MainWindow::setupActions()
 	actionCollection()->addAction("show_inspector", a);
 	a->setStatusTip(i18n("Show or hide the Inspector"));
 	a->setWhatsThis(i18n("Show Inspector: Show or hide the Inspector"));
-	a->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_I));
+	actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_I));
 	a->setCheckable(true);
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), inspectorDock, SLOT(setVisible(bool)));
@@ -397,7 +397,7 @@ void MainWindow::setupActions()
 	actionCollection()->addAction("line_numbers", a);
 	a->setStatusTip(i18n("Turn the line numbers on/off in the editor"));
 	a->setWhatsThis(i18n("Show Line Numbers: Turn the line numbers on/off in the editor"));
-	a->setShortcut(QKeySequence(Qt::Key_F11));
+	actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::Key_F11));
 	a->setCheckable(true);
 	a->setChecked(true);
 	connect(a, SIGNAL(toggled(bool)), editor, SLOT(toggleLineNumbers(bool)));
@@ -406,7 +406,7 @@ void MainWindow::setupActions()
 	contextHelpAct = ac->addAction("context_help");
 	contextHelpAct->setText("");
 	contextHelpAct->setIcon(QIcon::fromTheme("help-about"));
-	contextHelpAct->setShortcut(QKeySequence(Qt::Key_F2));
+	actionCollection()->setDefaultShortcut(contextHelpAct, QKeySequence(Qt::Key_F2));
 	contextHelpAct->setStatusTip(i18n("Get help on the command under the cursor"));
 	contextHelpAct->setWhatsThis(i18n("Context Help: Get help on the command under the cursor"));
 	connect(contextHelpAct, SIGNAL(triggered()), this, SLOT(contextHelp()));
@@ -419,7 +419,7 @@ void MainWindow::setupActions()
 	// Menuless actions
 	console = new Console(this);
 	console->setText(i18n("Console"));
-	console->setShortcut(QKeySequence(Qt::Key_F4));
+	actionCollection()->setDefaultShortcut(console, QKeySequence(Qt::Key_F4));
 	actionCollection()->addAction("console", console);
 	connect(console, SIGNAL(execute(const QString&)), this, SLOT(execute(const QString&)));
 
