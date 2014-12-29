@@ -27,7 +27,6 @@
 #include <kapplication.h>
 #include <k4aboutdata.h>
 #include <kcmdlineargs.h>
-#include <klocale.h>
 
 #include "mainwindow.h"  // for gui mode
 
@@ -87,7 +86,6 @@ int main(int argc, char* argv[])
 
 		///////////////// run in DBUS mode /////////////////
 		KApplication app;
-		KComponentData componentData(&aboutData);  // need a KComponentData since we're using KLocale in the Translator class
 		Translator::instance()->setLanguage();
 		new Interpreter(0, true);
 		args->clear();
@@ -103,7 +101,6 @@ int main(int argc, char* argv[])
 			return 1;
 		}
 		
-		KComponentData componentData(&aboutData);  // need a KComponentData since we're using KLocale in the Translator class
 		Translator::instance()->setLanguage();
 
 		Tokenizer tokenizer;
@@ -149,7 +146,6 @@ int main(int argc, char* argv[])
 			return 1;
 		}
 
-		KComponentData componentData(&aboutData);  // need a KComponentData since we're using KLocale in the Translator class
 		if (args->isSet("lang")) {
 			if (Translator::instance()->setLanguage(args->getOption("lang"))) {
 				std::cout << "Set localization to: " << args->getOption("lang").data() << std::endl;
