@@ -49,11 +49,6 @@ target_link_libraries(kturtle
     Qt5::Xml
     Qt5::Svg
     KF5::KDELibs4Support
-    #${QT_QTCORE_LIBRARY}
-    #${QT_QTGUI_LIBRARY}
-    #${QT_QTXML_LIBRARY}
-    #${KDE4_KIO_LIBS}
-    #${KDE4_KNEWSTUFF3_LIBS}
 )
 
 install (TARGETS  kturtle          ${INSTALL_TARGETS_DEFAULT_ARGS})
