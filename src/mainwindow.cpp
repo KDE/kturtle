@@ -209,7 +209,7 @@ void MainWindow::setupActions()
 	a = actionCollection()->addAction(KStandardAction::Save,  "file_save", editor, SLOT(saveFile()));
 	a->setStatusTip(i18n("Save the current file to disk"));
 	a->setWhatsThis(i18n("Save File: Save the current file to disk"));
-	connect(editor->document(), SIGNAL(modificationChanged(bool)), a, SLOT(setEnabled(bool)));
+	connect(editor->document(), &QTextDocument::modificationChanged, a, &QAction::setEnabled);
 
 	a = actionCollection()->addAction(KStandardAction::SaveAs,  "file_save_as", editor, SLOT(saveFileAs()));
 	a->setStatusTip(i18n("Save the current file under a different name"));
@@ -234,25 +234,25 @@ void MainWindow::setupActions()
 	a->setStatusTip(i18n("Undo a change in the editor"));
 	a->setWhatsThis(i18n("Undo: Undo a change in the editor"));
 	a->setEnabled(false);
-	connect(editor->view(), SIGNAL(undoAvailable(bool)), a, SLOT(setEnabled(bool)));
+	connect(editor->view(), &QTextEdit::undoAvailable, a, &QAction::setEnabled);
 
 	a = KStandardAction::redo(editor->view(), SLOT(redo()), ac);
 	a->setStatusTip(i18n("Redo a previously undone change in the editor"));
 	a->setWhatsThis(i18n("Redo: Redo a previously undone change in the editor"));
 	a->setEnabled(false);
-	connect(editor->view(), SIGNAL(redoAvailable(bool)), a, SLOT(setEnabled(bool)));
+	connect(editor->view(), &QTextEdit::redoAvailable, a, &QAction::setEnabled);
 
 	a = KStandardAction::cut(editor->view(), SLOT(cut()), ac);
 	a->setStatusTip(i18n("Cut the selected text to the clipboard"));
 	a->setWhatsThis(i18n("Cut: Cut the selected text to the clipboard"));
 	a->setEnabled(false);
-	connect(editor->view(), SIGNAL(copyAvailable(bool)), a, SLOT(setEnabled(bool)));
+	connect(editor->view(), &QTextEdit::copyAvailable, a, &QAction::setEnabled);
 
 	a = KStandardAction::copy(editor->view(), SLOT(copy()), ac);
 	a->setStatusTip(i18n("Copy the selected text to the clipboard"));
 	a->setWhatsThis(i18n("Copy: Copy the selected text to the clipboard"));
 	a->setEnabled(false);
-	connect(editor->view(), SIGNAL(copyAvailable(bool)), a, SLOT(setEnabled(bool)));
+	connect(editor->view(), &QTextEdit::copyAvailable, a, &QAction::setEnabled);
 
 	a = KStandardAction::paste(editor->view(), SLOT(paste()), ac);
 	a->setStatusTip(i18n("Paste the clipboard's content into the current selection"));
@@ -377,7 +377,7 @@ void MainWindow::setupActions()
 	a->setWhatsThis(i18n("Show Errors: Show or hide the Errors tab"));
 	a->setCheckable(true);
 	a->setChecked(false);
-	connect(a, SIGNAL(toggled(bool)), this, SLOT(showErrorDialog(bool)));
+	connect(a, &QAction::toggled, this, &MainWindow::showErrorDialog);
         
 // 	a = new QAction(i18n("Show &Console"), this);
 // 	actionCollection()->addAction("show_console", a);
@@ -580,7 +580,7 @@ void MainWindow::setupEditor()
 {
 // 	editor->setTranslator(Translator::instance());
 	connect(editor, &Editor::modificationChanged, this, &MainWindow::updateModificationState);
-	connect(editor, SIGNAL(contentNameChanged(const QString&)), this, SLOT(updateContentName(const QString&)));
+	connect(editor, &Editor::contentNameChanged, this, &MainWindow::updateContentName);
 	connect(editor, &Editor::fileOpened, this, &MainWindow::addToRecentFilesList);
 	connect(editor, &Editor::fileSaved, this, &MainWindow::addToRecentFilesList);
 	connect(editor, &Editor::cursorPositionChanged, this, &MainWindow::updateOnCursorPositionChange);

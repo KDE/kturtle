@@ -54,7 +54,7 @@ Console::Console(QWidget* parent)
 	baseLayout->addWidget(comboBox);
 	setDefaultWidget(baseWidget);
 
-	connect(comboBox->lineEdit(), SIGNAL(returnPressed()), this, SLOT(run()));
+	connect(comboBox->lineEdit(), &QLineEdit::returnPressed, this, &Console::run);
 	connect(comboBox, &QComboBox::editTextChanged, this, &Console::clearMarkings);
 }
 

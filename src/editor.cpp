@@ -58,8 +58,8 @@ Editor::Editor(QWidget *parent)
 	editor->setTabStopWidth(editor->fontMetrics().width("0") * TAB_WIDTH);
 	editor->setAcceptRichText(false);
 	setFocusProxy(editor);
-	connect(editor->document(), SIGNAL(contentsChange(int,int,int)), this, SLOT(textChanged(int,int,int)));
-	connect(editor->document(), SIGNAL(modificationChanged(bool)), this, SLOT(setModified(bool)));
+	connect(editor->document(), &QTextDocument::contentsChange, this, &Editor::textChanged);
+	connect(editor->document(), &QTextDocument::modificationChanged, this, &Editor::setModified);
 	connect(editor, &TextEdit::cursorPositionChanged, this, &Editor::updateOnCursorPositionChange);
 
 	// setup the line number pane
