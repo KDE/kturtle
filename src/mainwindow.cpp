@@ -520,7 +520,6 @@ void MainWindow::setupCanvas()
 	QWidget* errorTab = new QWidget();
 	QHBoxLayout* errorLayout = new QHBoxLayout(errorTab);
 	errorDialog = new ErrorDialog(this);
-	connect(errorDialog, SIGNAL(clicked()), this, SLOT(showErrorDialog()));
 	errorLayout->addWidget(errorDialog);
 	canvasTabWidget->insertTab(1, errorTab, i18n("E&rrors"));
 
