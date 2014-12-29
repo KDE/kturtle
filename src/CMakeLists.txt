@@ -24,15 +24,11 @@ set(kturtle_SRCS
     interpreter/value.cpp
 )
 
-#FIXME: Reenable.  Why does this not work?
-#qt5_add_dbus_adaptor(kturtle_SRCS interpreter/org.kde.kturtle.Interpreter.xml
-#                     interpreter/interpreter.h Interpreter)
-#QT4_ADD_DBUS_ADAPTOR(kturtle_SRCS interpreter/org.kde.kturtle.Interpreter.xml interpreter/interpreter.h Interpreter)
+qt5_add_dbus_adaptor(kturtle_SRCS interpreter/org.kde.kturtle.Interpreter.xml
+                     interpreter/interpreter.h Interpreter)
 
 set (kturtle_RCCS resources.qrc)
-# FIXME: Reenable
-#qt5_add_resources (kturtle_RCC_SRCS ${kturtle_RCCS})
-#qt4_add_resources (kturtle_RCC_SRCS ${kturtle_RCCS})
+qt5_add_resources (kturtle_RCC_SRCS ${kturtle_RCCS})
 
 # uncomment this if oxygen icons for kturtle are available
 #kde4_add_app_icon (kturtle_SRCS "${KDE4_ICON_DIR}/oxygen/*/apps/kturtle.png")
