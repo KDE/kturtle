@@ -50,6 +50,7 @@ class ErrorDialog : public QDialog
 
 	private slots:
 		void selectedErrorChangedProxy();
+		void helpRequested();
 
 	private:
 		ErrorList      *errorList;

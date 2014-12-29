@@ -28,6 +28,7 @@
 #include <QTableWidget>
 
 #include <KGuiItem>
+#include <KHelpClient>
 #include <KLocalizedString>
 
 
@@ -43,9 +44,6 @@ ErrorDialog::ErrorDialog(QWidget* parent)
 
 	QWidget *mainWidget = new QWidget(this);
 	mainLayout->addWidget(mainWidget);
-
-	// FIXME: From KDialog?  What's the equivalent when using QDialog?
-	//setHelp("reference", "kturtle");
 
 	QWidget *baseWidget = new QWidget(this);
 	mainLayout->addWidget(baseWidget);
@@ -82,6 +80,7 @@ ErrorDialog::ErrorDialog(QWidget* parent)
 	m_buttonBox->addButton(user1Button, QDialogButtonBox::ActionRole);
 	connect(m_buttonBox, &QDialogButtonBox::accepted, this, &ErrorDialog::accept);
 	connect(m_buttonBox, &QDialogButtonBox::rejected, this, &ErrorDialog::reject);
+	connect(m_buttonBox, &QDialogButtonBox::helpRequested, this, &ErrorDialog::helpRequested);
 	mainLayout->addWidget(m_buttonBox);
 	KGuiItem::assign(user1Button, KGuiItem(i18n("Hide Errors")));
 // 	setButtonGuiItem(User1, i18n("Help on &Error"));  // TODO context help in the error dialog
@@ -156,4 +155,9 @@ void ErrorDialog::selectedErrorChangedProxy()
 	const Token* t = &errorList->at(errorTable->selectedItems().first()->row()).token();
 	emit currentlySelectedError(t->startRow(), t->startCol(), t->endRow(), t->endCol());
 	// //qDebug() << "EMITTED: " << t->startRow() << ", " << t->startCol() << ", " << t->endRow() << ", " << t->endCol();
+}
+
+void ErrorDialog::helpRequested()
+{
+	KHelpClient::invokeHelp("reference", "kturtle");
 }
