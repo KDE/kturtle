@@ -21,6 +21,7 @@
 
 #include <QBoxLayout>
 #include <QDebug>
+#include <QDir>
 #include <QFileInfo>
 #include <QInputDialog>
 #include <QLabel>
@@ -29,20 +30,19 @@
 #include <QPrinter>
 #include <QSaveFile>
 #include <QStackedWidget>
+#include <QStandardPaths>
 #include <QStatusBar>
 #include <QTimer>
 
 #include <KActionCollection>
 #include <KConfigGroup>
 #include <KFileDialog>
-#include <KGlobal>
 #include <KHelpClient>
 #include <KLocale>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KRecentFilesAction>
 #include <KSharedConfig>
-#include <KStandardDirs>
 #include <KToolBarPopupAction>
 
 #include <kio/netaccess.h>
@@ -53,7 +53,7 @@
 
 
 static const int MARGIN_SIZE = 3;  // defaultly styled margins look shitty
-static const char* GHNS_TARGET = "kturtle/examples/*.turtle";
+static const char* const GHNS_TARGET = "kturtle/examples";
 
 MainWindow::MainWindow()
 {
@@ -694,7 +694,14 @@ void MainWindow::updateExamplesMenu()
 		exampleList.append (newExample);
 	}
 
-	QStringList allExamples = KGlobal::dirs()->findAllResources("data", GHNS_TARGET, KStandardDirs::NoDuplicates);
+	QStringList allExamples;
+	const QStringList exampleDirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, GHNS_TARGET, QStandardPaths::LocateDirectory);
+	foreach (const QString &dir, exampleDirs) {
+		const QStringList fileNames = QDir(dir).entryList(QStringList() << "*.turtle", QDir::Files);
+		foreach (const QString &fileName, fileNames) {
+			allExamples.append(dir + '/' + fileName);
+		}
+	}
 
 	if(allExamples.size()>0) {
 		newExample = new QAction(this);
