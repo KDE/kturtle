@@ -63,9 +63,9 @@ ColorPicker::ColorPicker(QWidget* parent)
 	gridLayout->addWidget(redLabel, 0, 0);
 	gridLayout->addWidget(redSlider, 0, 1);
 	gridLayout->addWidget(redSpin, 0, 2);
-	connect(redSlider, SIGNAL(valueChanged(int)), redSpin, SLOT(setValue(int)));
-	connect(redSpin, SIGNAL(valueChanged(int)), redSlider, SLOT(setValue(int)));
-	connect(redSpin, SIGNAL(valueChanged(int)), this, SLOT(redChanged(int)));
+	connect(redSlider, &QSlider::valueChanged, redSpin, &QSpinBox::setValue);
+	connect(redSpin, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), redSlider, &QSlider::setValue);
+	connect(redSpin, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &ColorPicker::redChanged);
 
 
 	greenSlider = new QSlider(Qt::Horizontal, this);
@@ -77,9 +77,9 @@ ColorPicker::ColorPicker(QWidget* parent)
 	gridLayout->addWidget(greenLabel, 1, 0);
 	gridLayout->addWidget(greenSlider, 1, 1);
 	gridLayout->addWidget(greenSpin, 1, 2);
-	connect(greenSlider, SIGNAL(valueChanged(int)), greenSpin, SLOT(setValue(int)));
-	connect(greenSpin, SIGNAL(valueChanged(int)), greenSlider, SLOT(setValue(int)));
-	connect(greenSpin, SIGNAL(valueChanged(int)), this, SLOT(greenChanged(int)));
+	connect(greenSlider, &QSlider::valueChanged, greenSpin, &QSpinBox::setValue);
+	connect(greenSpin, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), greenSlider, &QSlider::setValue);
+	connect(greenSpin, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &ColorPicker::greenChanged);
 
 	blueSlider = new QSlider(Qt::Horizontal, this);
 	blueSlider->setMaximum(255);
@@ -90,9 +90,9 @@ ColorPicker::ColorPicker(QWidget* parent)
 	gridLayout->addWidget(blueLabel, 2, 0);
 	gridLayout->addWidget(blueSlider, 2, 1);
 	gridLayout->addWidget(blueSpin, 2, 2);
-	connect(blueSlider, SIGNAL(valueChanged(int)), blueSpin, SLOT(setValue(int)));
-	connect(blueSpin, SIGNAL(valueChanged(int)), blueSlider, SLOT(setValue(int)));
-	connect(blueSpin, SIGNAL(valueChanged(int)), this, SLOT(blueChanged(int)));
+	connect(blueSlider, &QSlider::valueChanged, blueSpin, &QSpinBox::setValue);
+	connect(blueSpin, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), blueSlider, &QSlider::setValue);
+	connect(blueSpin, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &ColorPicker::blueChanged);
 
 	baseLayout->addSpacing(20);
 
@@ -118,12 +118,12 @@ ColorPicker::ColorPicker(QWidget* parent)
 	QPushButton* copyButton = new QPushButton(QIcon::fromTheme("edit-copy"), i18n("&Copy to clipboard"), baseWidget);
 	mainLayout->addWidget(copyButton);
 	resultLayout->addWidget(copyButton);
-	connect(copyButton, SIGNAL(clicked()), this, SLOT(copyProxy()));
+	connect(copyButton, &QPushButton::clicked, this, &ColorPicker::copyProxy);
 
 	QPushButton* pasteButton = new QPushButton(QIcon::fromTheme("edit-paste"), i18n("&Paste to editor"), baseWidget);
 	mainLayout->addWidget(pasteButton);
 	resultLayout->addWidget(pasteButton);
-	connect(pasteButton, SIGNAL(clicked()), this, SLOT(pasteProxy()));
+	connect(pasteButton, &QPushButton::clicked, this, &ColorPicker::pasteProxy);
 
 	QDialogButtonBox *buttonBox = new QDialogButtonBox();
 	QWidget *mainWidget = new QWidget(this);
@@ -131,13 +131,13 @@ ColorPicker::ColorPicker(QWidget* parent)
 
 	QPushButton *user1Button = new QPushButton;
 	buttonBox->addButton(user1Button, QDialogButtonBox::ActionRole);
-	connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
-	connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+	connect(buttonBox, &QDialogButtonBox::accepted, this, &ColorPicker::accept);
+	connect(buttonBox, &QDialogButtonBox::rejected, this, &ColorPicker::reject);
 
 	mainLayout->addWidget(buttonBox);
 	user1Button->setDefault(true);
 	KGuiItem::assign(user1Button, KStandardGuiItem::close());
-	connect(user1Button, SIGNAL(clicked()), this, SLOT(hide()));
+	connect(user1Button, &QPushButton::clicked, this, &ColorPicker::hide);
 
 	resultLayout->addStretch();
 

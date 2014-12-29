@@ -80,8 +80,8 @@ ErrorDialog::ErrorDialog(QWidget* parent)
 	m_buttonBox = new QDialogButtonBox(QDialogButtonBox::Help);
 	QPushButton *user1Button = new QPushButton;
 	m_buttonBox->addButton(user1Button, QDialogButtonBox::ActionRole);
-	connect(m_buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
-	connect(m_buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+	connect(m_buttonBox, &QDialogButtonBox::accepted, this, &ErrorDialog::accept);
+	connect(m_buttonBox, &QDialogButtonBox::rejected, this, &ErrorDialog::reject);
 	mainLayout->addWidget(m_buttonBox);
 	KGuiItem::assign(user1Button, KGuiItem(i18n("Hide Errors")));
 // 	setButtonGuiItem(User1, i18n("Help on &Error"));  // TODO context help in the error dialog
@@ -117,13 +117,13 @@ void ErrorDialog::enable()
 	Q_ASSERT (errorList != 0);
 	errorTable->setEnabled(true);
 	m_buttonBox->button(QDialogButtonBox::Help)->setEnabled(true);
-	connect (errorTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectedErrorChangedProxy()));
+	connect(errorTable, &QTableWidget::itemSelectionChanged, this, &ErrorDialog::selectedErrorChangedProxy);
 	errorTable->selectRow(0);
 }
 
 void ErrorDialog::disable()
 {
-	disconnect (errorTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectedErrorChangedProxy()));
+	disconnect(errorTable, &QTableWidget::itemSelectionChanged, this, &ErrorDialog::selectedErrorChangedProxy);
 	errorTable->setEnabled(false);
 	m_buttonBox->button(QDialogButtonBox::Help)->setEnabled(false);
 	errorTable->clearSelection();

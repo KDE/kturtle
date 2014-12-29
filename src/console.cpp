@@ -55,7 +55,7 @@ Console::Console(QWidget* parent)
 	setDefaultWidget(baseWidget);
 
 	connect(comboBox->lineEdit(), SIGNAL(returnPressed()), this, SLOT(run()));
-	connect(comboBox, SIGNAL(editTextChanged(const QString&)), this, SLOT(clearMarkings()));
+	connect(comboBox, &QComboBox::editTextChanged, this, &Console::clearMarkings);
 }
 
 void Console::disable()

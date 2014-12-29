@@ -65,13 +65,12 @@ MainWindow::MainWindow()
 	setupStatusBar();
 
 	iterationTimer = new QTimer(this);
-	connect(iterationTimer, SIGNAL(timeout()), this, SLOT(iterate()));
+	connect(iterationTimer, &QTimer::timeout, this, &MainWindow::iterate);
 
-	connect(editor, SIGNAL(contentChanged()), inspector, SLOT(disable()));
-	connect(editor, SIGNAL(contentChanged()), errorDialog, SLOT(disable()));
+	connect(editor, &Editor::contentChanged, inspector, &Inspector::disable);
+	connect(editor, &Editor::contentChanged, errorDialog, &ErrorDialog::disable);
 
-	connect(errorDialog, SIGNAL(currentlySelectedError(int, int, int, int)),
-		editor, SLOT(markCurrentError(int, int, int, int)));
+	connect(errorDialog, &ErrorDialog::currentlySelectedError, editor, &Editor::markCurrentError);
 
 	colorPicker = 0;
 
@@ -135,13 +134,13 @@ void MainWindow::canvasPrintDialog()
 void MainWindow::showDirectionDialog()
 {
 	directionDialog = new DirectionDialog(canvas->turtleAngle(), this);
-	connect(directionDialog, SIGNAL(pasteText(const QString&)), editor, SLOT(insertPlainText(const QString&)));
+	connect(directionDialog, &DirectionDialog::pasteText, editor, &Editor::insertPlainText);
 }
 void MainWindow::showColorPicker()
 {
 	if (colorPicker == 0) {
 		colorPicker = new ColorPicker(this);
-		connect(colorPicker, SIGNAL(pasteText(const QString&)), editor, SLOT(insertPlainText(const QString&)));
+		connect(colorPicker, &ColorPicker::pasteText, editor, &Editor::insertPlainText);
 	}
 	colorPicker->show();
 }
@@ -205,7 +204,7 @@ void MainWindow::setupActions()
 	a = new QAction(QIcon::fromTheme("get-hot-new-stuff"), i18n("Get more examples..."), this);
 	actionCollection()->addAction("get_new_examples", a);
 	a->setText(i18n("Get more examples..."));
-	connect(a, SIGNAL(triggered()), this, SLOT(getNewExampleDialog()));
+	connect(a, &QAction::triggered, this, &MainWindow::getNewExampleDialog);
 
 	a = actionCollection()->addAction(KStandardAction::Save,  "file_save", editor, SLOT(saveFile()));
 	a->setStatusTip(i18n("Save the current file to disk"));
@@ -220,7 +219,7 @@ void MainWindow::setupActions()
 	exportToHtmlAct->setText(i18n("Export to &HTML..."));
 	exportToHtmlAct->setStatusTip(i18n("Export the contents of the editor as HTML"));
 	exportToHtmlAct->setWhatsThis(i18n("Export to HTML: Export the contents of the editor as HTML"));
-	connect(exportToHtmlAct, SIGNAL(triggered()), this, SLOT(exportToHtml()));
+	connect(exportToHtmlAct, &QAction::triggered, this, &MainWindow::exportToHtml);
 
 	a = actionCollection()->addAction(KStandardAction::Print, "file_print", this, SLOT(filePrintDialog()));
 	a->setStatusTip(i18n("Print the code"));
@@ -271,7 +270,7 @@ void MainWindow::setupActions()
 	actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::Key_Insert));
 	a->setCheckable(true);
 	a->setChecked(false);
-	connect(a, SIGNAL(toggled(bool)), this, SLOT(toggleOverwriteMode(bool)));
+	connect(a, &QAction::toggled, this, &MainWindow::toggleOverwriteMode);
 
 	a = KStandardAction::find(editor, SLOT(find()), ac);
 	a->setStatusTip(i18n("Search through the code in the editor"));
@@ -295,19 +294,19 @@ void MainWindow::setupActions()
 	exportToPngAct->setText(i18n("Export to &Image (PNG)..."));
 	exportToPngAct->setStatusTip(i18n("Export the current canvas to a PNG raster image"));
 	exportToPngAct->setWhatsThis(i18n("Export to PNG: Export the current canvas to a PNG raster image"));
-	connect(exportToPngAct, SIGNAL(triggered()), this, SLOT(exportToPng()));
+	connect(exportToPngAct, &QAction::triggered, this, &MainWindow::exportToPng);
 
 	exportToSvgAct = actionCollection()->addAction("canvas_export_to_svg");
 	exportToSvgAct->setText(i18n("Export to &Drawing (SVG)..."));
 	exportToSvgAct->setStatusTip(i18n("Export the current canvas to Scalable Vector Graphics"));
 	exportToSvgAct->setWhatsThis(i18n("Export to SVG: Export the current canvas to Scalable Vector Graphics"));
-	connect(exportToSvgAct, SIGNAL(triggered()), this, SLOT(exportToSvg()));
+	connect(exportToSvgAct, &QAction::triggered, this, &MainWindow::exportToSvg);
 
 	printCanvasAct = new QAction(QIcon::fromTheme("document-print"), i18n("&Print Canvas..."), this);
 	actionCollection()->addAction("canvas_print", printCanvasAct);
 	printCanvasAct->setStatusTip(i18n("Print the canvas"));
 	printCanvasAct->setWhatsThis(i18n("Print: Print the canvas"));
-	connect(printCanvasAct, SIGNAL(triggered()), this, SLOT(canvasPrintDialog()));
+	connect(printCanvasAct, &QAction::triggered, this, &MainWindow::canvasPrintDialog);
 
 	// Run menu actions
 	runAct = new QAction(QIcon::fromTheme("media-playback-start"), i18n("&Run"), this);
@@ -315,7 +314,7 @@ void MainWindow::setupActions()
 	actionCollection()->setDefaultShortcut(runAct, QKeySequence(Qt::Key_F5));
 	runAct->setStatusTip(i18n("Execute the program"));
 	runAct->setWhatsThis(i18n("Run: Execute the program"));
-	connect(runAct, SIGNAL(triggered()), this, SLOT(run()));
+	connect(runAct, &QAction::triggered, this, &MainWindow::run);
 
 	pauseAct = new QAction(QIcon::fromTheme("media-playback-pause"), i18n("&Pause"), this);
 	actionCollection()->addAction("pause", pauseAct);
@@ -323,14 +322,14 @@ void MainWindow::setupActions()
 	actionCollection()->setDefaultShortcut(pauseAct, QKeySequence(Qt::Key_F6));
 	pauseAct->setStatusTip(i18n("Pause execution"));
 	pauseAct->setWhatsThis(i18n("Pause: Pause execution"));
-	connect(pauseAct, SIGNAL(triggered()), this, SLOT(pause()));
+	connect(pauseAct, &QAction::triggered, this, &MainWindow::pause);
 
 	abortAct = new QAction(QIcon::fromTheme("process-stop"), i18n("&Abort"), this);
 	actionCollection()->addAction("abort", abortAct);
 	actionCollection()->setDefaultShortcut(abortAct, QKeySequence(Qt::Key_F7));
 	abortAct->setStatusTip(i18n("Stop executing program"));
 	abortAct->setWhatsThis(i18n("Abort: Stop executing program"));
-	connect(abortAct, SIGNAL(triggered()), this, SLOT(abort()));
+	connect(abortAct, &QAction::triggered, this, &MainWindow::abort);
 
 // 	new QAction(i18n("&Indent"), "format-indent-more", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
 // 	new QAction(i18n("&Unindent"), "format-indent-less", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
@@ -343,13 +342,13 @@ void MainWindow::setupActions()
 	actionCollection()->addAction("direction_chooser", a);
 	a->setStatusTip(i18n("Shows the direction chooser dialog"));
 	a->setWhatsThis(i18n("Direction Chooser: Show the direction chooser dialog"));
-	connect(a, SIGNAL(triggered()), this, SLOT(showDirectionDialog()));
+	connect(a, &QAction::triggered, this, &MainWindow::showDirectionDialog);
 
 	a = new QAction(i18n("&Color Picker..."), this);
 	actionCollection()->addAction("color_picker", a);
 	a->setStatusTip(i18n("Shows the color picker dialog"));
 	a->setWhatsThis(i18n("Color Picker: Show the color picker dialog"));
-	connect(a, SIGNAL(triggered()), this, SLOT(showColorPicker()));
+	connect(a, &QAction::triggered, this, &MainWindow::showColorPicker);
 
 	// Settings menu action
 	a = new QAction(i18n("Show &Editor"), this);
@@ -359,8 +358,8 @@ void MainWindow::setupActions()
 	actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_E));
 	a->setCheckable(true);
 	a->setChecked(true);
-	connect(a, SIGNAL(toggled(bool)), editorDock, SLOT(setVisible(bool)));
-	connect(editorDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
+	connect(a, &QAction::toggled, editorDock, &LocalDockWidget::setVisible);
+	connect(editorDock, &LocalDockWidget::visibilityChanged, a, &QAction::setChecked);
 
 	a = new QAction(i18n("Show &Inspector"), this);
 	actionCollection()->addAction("show_inspector", a);
@@ -369,8 +368,8 @@ void MainWindow::setupActions()
 	actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_I));
 	a->setCheckable(true);
 	a->setChecked(true);
-	connect(a, SIGNAL(toggled(bool)), inspectorDock, SLOT(setVisible(bool)));
-	connect(inspectorDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
+	connect(a, &QAction::toggled, inspectorDock, &LocalDockWidget::setVisible);
+	connect(inspectorDock, &LocalDockWidget::visibilityChanged, a, &QAction::setChecked);
 
 	a = new QAction(i18n("Show E&rrors"), this);
 	actionCollection()->addAction("show_errors", a);
@@ -396,7 +395,7 @@ void MainWindow::setupActions()
 	actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::Key_F11));
 	a->setCheckable(true);
 	a->setChecked(true);
-	connect(a, SIGNAL(toggled(bool)), editor, SLOT(toggleLineNumbers(bool)));
+	connect(a, &QAction::toggled, editor, &Editor::toggleLineNumbers);
 
 	// Help menu actions
 	contextHelpAct = ac->addAction("context_help");
@@ -405,7 +404,7 @@ void MainWindow::setupActions()
 	actionCollection()->setDefaultShortcut(contextHelpAct, QKeySequence(Qt::Key_F2));
 	contextHelpAct->setStatusTip(i18n("Get help on the command under the cursor"));
 	contextHelpAct->setWhatsThis(i18n("Context Help: Get help on the command under the cursor"));
-	connect(contextHelpAct, SIGNAL(triggered()), this, SLOT(contextHelp()));
+	connect(contextHelpAct, &QAction::triggered, this, &MainWindow::contextHelp);
 	updateContextHelpAction();
 
 	a = actionCollection()->addAction(KStandardAction::HelpContents, "help_contents", this, SLOT(appHelpActivated()));
@@ -417,12 +416,12 @@ void MainWindow::setupActions()
 	console->setText(i18n("Console"));
 	actionCollection()->setDefaultShortcut(console, QKeySequence(Qt::Key_F4));
 	actionCollection()->addAction("console", console);
-	connect(console, SIGNAL(execute(const QString&)), this, SLOT(execute(const QString&)));
+	connect(console, &Console::execute, this, &MainWindow::execute);
 
 	executeConsoleAct = actionCollection()->addAction("execute_console");
 	executeConsoleAct->setIcon(QIcon::fromTheme("go-jump-locationbar"));
 	executeConsoleAct->setText(i18n("Execute"));
-	connect(executeConsoleAct, SIGNAL(triggered()), console, SLOT(executeActionTriggered()));
+	connect(executeConsoleAct, &QAction::triggered, console, &Console::executeActionTriggered);
 	executeConsoleAct->setWhatsThis(i18n("Execute: Executes the current line in the console"));
 
 	// The run speed action group
@@ -430,19 +429,19 @@ void MainWindow::setupActions()
 
 	// The run action collection, this is used in the toolbar to create a dropdown menu on the run button
 	KToolBarPopupAction* runSpeedAction = new KToolBarPopupAction(QIcon::fromTheme("media-playback-start"), i18n("&Run"), this);
-	connect(runSpeedAction, SIGNAL(triggered()), this, SLOT(run()));
+	connect(runSpeedAction, &KToolBarPopupAction::triggered, this, &MainWindow::run);
 	QMenu* runSpeedActionMenu = runSpeedAction->menu();
 	actionCollection()->addAction("run_speed", runSpeedAction);
 	runSpeedActionMenu->setStatusTip(i18n("Execute the program, or use the drop down menu to select the run speed"));
 	runSpeedActionMenu->setWhatsThis(i18n("Run: Execute the program, or use the drop down menu to select the run speed"));
-	connect(runSpeedActionMenu, SIGNAL(triggered (QAction*)), this, SLOT(run()));
+	connect(runSpeedActionMenu, &QMenu::triggered, this, &MainWindow::run);
 
 	dedicatedSpeedAct = new QAction(i18nc("@option:radio", "Full Speed (&no highlighting and inspector)"), this);
 	actionCollection()->addAction("dedicated_speed", dedicatedSpeedAct);
 	dedicatedSpeedAct->setCheckable(true);
 	dedicatedSpeedAct->setStatusTip(i18n("Run the program at full speed, with highlighting and inspector disabled"));
 	dedicatedSpeedAct->setWhatsThis(i18n("Full Speed: Run the program at full speed, with highlighting and inspector disabled"));
-	connect(dedicatedSpeedAct, SIGNAL(triggered()), this, SLOT(setDedicatedSpeed()));
+	connect(dedicatedSpeedAct, &QAction::triggered, this, &MainWindow::setDedicatedSpeed);
 	runSpeedGroup->addAction(dedicatedSpeedAct);
 	runSpeedActionMenu->addAction(dedicatedSpeedAct);
 
@@ -452,7 +451,7 @@ void MainWindow::setupActions()
 	fullSpeedAct->setChecked(true);
 	fullSpeedAct->setStatusTip(i18n("Run the program at full speed"));
 	fullSpeedAct->setWhatsThis(i18n("Full Speed: Run the program at full speed"));
-	connect(fullSpeedAct, SIGNAL(triggered()), this, SLOT(setFullSpeed()));
+	connect(fullSpeedAct, &QAction::triggered, this, &MainWindow::setFullSpeed);
 	runSpeedGroup->addAction(fullSpeedAct);
 	runSpeedActionMenu->addAction(fullSpeedAct);
 
@@ -461,7 +460,7 @@ void MainWindow::setupActions()
 	slowSpeedAct->setCheckable(true);
 	slowSpeedAct->setStatusTip(i18n("Run the program at a slow speed"));
 	slowSpeedAct->setWhatsThis(i18n("Slow Speed: Run the program at a slow speed"));
-	connect(slowSpeedAct, SIGNAL(triggered()), this, SLOT(setSlowSpeed()));
+	connect(slowSpeedAct, &QAction::triggered, this, &MainWindow::setSlowSpeed);
 	runSpeedGroup->addAction(slowSpeedAct);
 	runSpeedActionMenu->addAction(slowSpeedAct);
 
@@ -470,7 +469,7 @@ void MainWindow::setupActions()
 	slowerSpeedAct->setCheckable(true);
 	slowerSpeedAct->setStatusTip(i18n("Run the program at a slower speed"));
 	slowerSpeedAct->setWhatsThis(i18n("Slower Speed: Run the program at a slower speed"));
-	connect(slowerSpeedAct, SIGNAL(triggered()), this, SLOT(setSlowerSpeed()));
+	connect(slowerSpeedAct, &QAction::triggered, this, &MainWindow::setSlowerSpeed);
 	runSpeedGroup->addAction(slowerSpeedAct);
 	runSpeedActionMenu->addAction(slowerSpeedAct);
 
@@ -479,7 +478,7 @@ void MainWindow::setupActions()
 	slowestSpeedAct->setCheckable(true);
 	slowestSpeedAct->setStatusTip(i18n("Run the program at the slowest speed"));
 	slowestSpeedAct->setWhatsThis(i18n("Slowest Speed: Run the program at the slowest speed"));
-	connect(slowestSpeedAct, SIGNAL(triggered()), this, SLOT(setSlowestSpeed()));
+	connect(slowestSpeedAct, &QAction::triggered, this, &MainWindow::setSlowestSpeed);
 	runSpeedGroup->addAction(slowestSpeedAct);
 	runSpeedActionMenu->addAction(slowestSpeedAct);
 
@@ -488,7 +487,7 @@ void MainWindow::setupActions()
 	stepSpeedAct->setCheckable(true);
 	stepSpeedAct->setStatusTip(i18n("Run the program one step at a time"));
 	stepSpeedAct->setWhatsThis(i18n("Step Speed: Run the program one step at a time"));
-	connect(stepSpeedAct, SIGNAL(triggered()), this, SLOT(setStepSpeed()));
+	connect(stepSpeedAct, &QAction::triggered, this, &MainWindow::setStepSpeed);
 	runSpeedGroup->addAction(stepSpeedAct);
 	runSpeedActionMenu->addAction(stepSpeedAct);
 }
@@ -580,23 +579,22 @@ void MainWindow::setupDockWindows()
 void MainWindow::setupEditor()
 {
 // 	editor->setTranslator(Translator::instance());
-	connect(editor, SIGNAL(modificationChanged()), this, SLOT(updateModificationState()));
+	connect(editor, &Editor::modificationChanged, this, &MainWindow::updateModificationState);
 	connect(editor, SIGNAL(contentNameChanged(const QString&)), this, SLOT(updateContentName(const QString&)));
-	connect(editor, SIGNAL(fileOpened(const QUrl&)), this, SLOT(addToRecentFilesList(const QUrl&)));
-	connect(editor, SIGNAL(fileSaved(const QUrl&)), this, SLOT(addToRecentFilesList(const QUrl&)));
-	connect(editor, SIGNAL(cursorPositionChanged()), this, SLOT(updateOnCursorPositionChange()));
+	connect(editor, &Editor::fileOpened, this, &MainWindow::addToRecentFilesList);
+	connect(editor, &Editor::fileSaved, this, &MainWindow::addToRecentFilesList);
+	connect(editor, &Editor::cursorPositionChanged, this, &MainWindow::updateOnCursorPositionChange);
 }
 
 void MainWindow::setupInterpreter()
 {
 	interpreter = new Interpreter(this, false);
-	connect(interpreter, SIGNAL(finished()), this, SLOT(abort()));
+	connect(interpreter, &Interpreter::finished, this, &MainWindow::abort);
 	Executer* executer = interpreter->getExecuter();
 
 	// the code to connect the executer with the canvas is auto generated:
 #include "interpreter/gui_connect.inc"
-	connect(interpreter, SIGNAL(treeUpdated(TreeNode*)),
-		inspector, SLOT(updateTree(TreeNode*)));
+	connect(interpreter, &Interpreter::treeUpdated, inspector, &Inspector::updateTree);
 
 	toggleGuiFeedback(true);
 }
@@ -605,16 +603,14 @@ void MainWindow::toggleGuiFeedback(bool b)
 {
 	Executer* executer = interpreter->getExecuter();
 	if (b) {
-		connect(executer, SIGNAL(currentlyExecuting(TreeNode*)), editor, SLOT(markCurrentWord(TreeNode*)));
-		connect(executer, SIGNAL(currentlyExecuting(TreeNode*)), inspector, SLOT(markTreeNode(TreeNode*)));
+		connect(executer, &Executer::currentlyExecuting, editor, &Editor::markCurrentWord);
+		connect(executer, &Executer::currentlyExecuting, inspector, &Inspector::markTreeNode);
 			
-		connect(executer, SIGNAL(variableTableUpdated(const QString&, const Value&)),
-			inspector, SLOT(updateVariable(const QString&, const Value&)));
-		connect(executer, SIGNAL(functionTableUpdated(const QString&, const QStringList&)),
-			inspector, SLOT(updateFunction(const QString&, const QStringList&)));
+		connect(executer, &Executer::variableTableUpdated, inspector, &Inspector::updateVariable);
+		connect(executer, &Executer::functionTableUpdated, inspector, &Inspector::updateFunction);
 	} else {
-		disconnect(executer, SIGNAL(currentlyExecuting(TreeNode*)), editor, SLOT(markCurrentWord(TreeNode*)));
-		disconnect(executer, SIGNAL(currentlyExecuting(TreeNode*)), inspector, SLOT(markTreeNode(TreeNode*)));
+		disconnect(executer, &Executer::currentlyExecuting, editor, &Editor::markCurrentWord);
+		disconnect(executer, &Executer::currentlyExecuting, inspector, &Inspector::markTreeNode);
 		
 		disconnect(executer, SIGNAL(variableTableUpdated(const QString&, const Value&)),
 			inspector, SLOT(updateVariable(const QString&, const Value&)));
@@ -659,7 +655,7 @@ void MainWindow::updateLanguagesMenu()
 {
 	QList<QAction *> languageList;
 	QActionGroup* languageGroup = new QActionGroup(this);
-	connect(languageGroup, SIGNAL(triggered(QAction *)), this, SLOT(setLanguage(QAction *)));
+	connect(languageGroup, &QActionGroup::triggered, this, &MainWindow::setLanguage);
 	QAction* a;
 	// sort the dictionaries using an algorithm found in the qt docs:
 	QMap<QString, QString> map;
@@ -694,7 +690,7 @@ void MainWindow::updateExamplesMenu()
 		newExample->setData(exampleName);
 		exampleGroup->addAction (newExample);
 
-		connect (newExample, SIGNAL(triggered()), this, SLOT(openExample()));
+		connect(newExample, &QAction::triggered, this, &MainWindow::openExample);
 		exampleList.append (newExample);
 	}
 
@@ -714,7 +710,7 @@ void MainWindow::updateExamplesMenu()
 		exampleGroup->addAction (newExample);
 		exampleList.append (newExample);
 			
-		connect(newExample, SIGNAL(triggered()), this, SLOT(openDownloadedExample()));
+		connect(newExample, &QAction::triggered, this, &MainWindow::openDownloadedExample);
 	}
 
 	unplugActionList ("examples_actionlist");
@@ -863,11 +859,11 @@ void MainWindow::run()
 
 QString MainWindow::execute(const QString &operation)
 {
-	disconnect(interpreter, SIGNAL(finished()), this, SLOT(abort()));
-	disconnect(interpreter, SIGNAL(treeUpdated(TreeNode*)), inspector, SLOT(updateTree(TreeNode*)));
+	disconnect(interpreter, &Interpreter::finished, this, &MainWindow::abort);
+	disconnect(interpreter, &Interpreter::treeUpdated, inspector, &Inspector::updateTree);
 	Executer* executer = interpreter->getExecuter();
-	disconnect(executer, SIGNAL(currentlyExecuting(TreeNode*)), editor, SLOT(markCurrentWord(TreeNode*)));
-	disconnect(executer, SIGNAL(currentlyExecuting(TreeNode*)), inspector, SLOT(markTreeNode(TreeNode*)));
+	disconnect(executer, &Executer::currentlyExecuting, editor, &Editor::markCurrentWord);
+	disconnect(executer, &Executer::currentlyExecuting, inspector, &Inspector::markTreeNode);
 	disconnect(executer, SIGNAL(variableTableUpdated(const QString&, const Value&)),
 		inspector, SLOT(updateVariable(const QString&, const Value&)));
 	disconnect(executer, SIGNAL(functionTableUpdated(const QString&, const QStringList&)),
@@ -904,14 +900,12 @@ QString MainWindow::execute(const QString &operation)
 		errorMessage = errorList->first().text();
 	}
 
-	connect(interpreter, SIGNAL(finished()), this, SLOT(abort()));
-	connect(interpreter, SIGNAL(treeUpdated(TreeNode*)), inspector, SLOT(updateTree(TreeNode*)));
-	connect(executer, SIGNAL(currentlyExecuting(TreeNode*)), editor, SLOT(markCurrentWord(TreeNode*)));
-	connect(executer, SIGNAL(currentlyExecuting(TreeNode*)), inspector, SLOT(markTreeNode(TreeNode*)));
-	connect(executer, SIGNAL(variableTableUpdated(const QString&, const Value&)),
-		inspector, SLOT(updateVariable(const QString&, const Value&)));
-	connect(executer, SIGNAL(functionTableUpdated(const QString&, const QStringList&)),
-		inspector, SLOT(updateFunction(const QString&, const QStringList&)));
+	connect(interpreter, &Interpreter::finished, this, &MainWindow::abort);
+	connect(interpreter, &Interpreter::treeUpdated, inspector, &Inspector::updateTree);
+	connect(executer, &Executer::currentlyExecuting, editor, &Editor::markCurrentWord);
+	connect(executer, &Executer::currentlyExecuting, inspector, &Inspector::markTreeNode);
+	connect(executer, &Executer::variableTableUpdated, inspector, &Inspector::updateVariable);
+	connect(executer, &Executer::functionTableUpdated, inspector, &Inspector::updateFunction);
 
 	return errorMessage;
 }

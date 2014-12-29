@@ -60,7 +60,7 @@ Editor::Editor(QWidget *parent)
 	setFocusProxy(editor);
 	connect(editor->document(), SIGNAL(contentsChange(int,int,int)), this, SLOT(textChanged(int,int,int)));
 	connect(editor->document(), SIGNAL(modificationChanged(bool)), this, SLOT(setModified(bool)));
-	connect(editor, SIGNAL(cursorPositionChanged()), this, SLOT(updateOnCursorPositionChange()));
+	connect(editor, &TextEdit::cursorPositionChanged, this, &Editor::updateOnCursorPositionChange);
 
 	// setup the line number pane
 	numbers = new LineNumbers(this, editor);
