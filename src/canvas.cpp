@@ -202,7 +202,7 @@ void Canvas::slotPrint(const QString& text)
 	_scene->addItem(ti);
 // 	ti->setDefaultTextColor(textColor);
 	ti->setFont(*textFont);
-	ti->rotate(turtle->angle());
+	ti->setTransform(QTransform().rotate(turtle->angle()), true);
 	ti->setPos(turtle->pos().x(), turtle->pos().y());
 	ti->setDefaultTextColor(textColor);
 }
