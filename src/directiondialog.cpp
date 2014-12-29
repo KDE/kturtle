@@ -322,7 +322,7 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	mainLayout->addWidget(buttonBox);
 	user1Button->setDefault(true);
 	KGuiItem::assign(user1Button, KStandardGuiItem::close());
-	connect(user1Button, SIGNAL(clicked()), this, SLOT(delayedDestruct()));
+	connect(user1Button, SIGNAL(clicked()), this, SLOT(close()));
 
 	changeCommand(0);
 	show();
