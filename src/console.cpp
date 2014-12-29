@@ -39,6 +39,7 @@ Console::Console(QWidget* parent)
 	baseWidget->setLayout(baseLayout);
 
 	comboBox = new QComboBox(baseWidget);
+	comboBox->setEditable(true);
 	comboBox->setMinimumWidth(200);
 	comboBox->setDuplicatesEnabled(true);
 	comboBox->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
@@ -53,7 +54,7 @@ Console::Console(QWidget* parent)
 	baseLayout->addWidget(comboBox);
 	setDefaultWidget(baseWidget);
 
-	connect(comboBox, SIGNAL(returnPressed()), this, SLOT(run()));
+	connect(comboBox->lineEdit(), SIGNAL(returnPressed()), this, SLOT(run()));
 	connect(comboBox, SIGNAL(editTextChanged(const QString&)), this, SLOT(clearMarkings()));
 }
 
