@@ -99,7 +99,6 @@ void MainWindow::closeEvent(QCloseEvent *event)
 	if (editor->maybeSave()) {
 		event->accept();
 		writeConfig();
-		exit(0);
 	} else {
 		event->ignore();
 	}
