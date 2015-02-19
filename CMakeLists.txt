@@ -48,3 +48,4 @@ add_subdirectory (src)
 add_subdirectory (icons)
 
 install(FILES kturtle.appdata.xml DESTINATION ${SHARE_INSTALL_PREFIX}/appdata/)
+feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
