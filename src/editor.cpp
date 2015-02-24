@@ -22,24 +22,16 @@
 #include "interpreter/token.h"
 #include "interpreter/tokenizer.h"
 
-#include <QTextDocument>
-#include <QTextBlock>
-#include <QHBoxLayout>
-#include <QScrollBar>
-#include <QPainter>
-#include <QAbstractTextDocumentLayout>
-
+#include <QBoxLayout>
+#include <QFontDatabase>
+#include <QSaveFile>
+#include <QTemporaryFile>
 #include <QTextStream>
 
-#include <kdebug.h>
-
-#include <kfiledialog.h>
-#include <kfind.h>
-#include <kglobalsettings.h>
-#include <klocale.h>
-#include <kmessagebox.h>
-#include <ksavefile.h>
-#include <ktemporaryfile.h>
+#include <KFileDialog>
+#include <KFind>
+#include <KLocalizedString>
+#include <KMessageBox>
 
 #include <kio/netaccess.h>
 
@@ -59,16 +51,16 @@ Editor::Editor(QWidget *parent)
 
 	// setup the main view
 	editor = new TextEdit(this);
-	editor->document()->setDefaultFont(KGlobalSettings::fixedFont());
+	editor->document()->setDefaultFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 	editor->setFrameStyle(QFrame::NoFrame);
 	editor->installEventFilter(this);
 	editor->setLineWrapMode(QTextEdit::WidgetWidth);
 	editor->setTabStopWidth(editor->fontMetrics().width("0") * TAB_WIDTH);
 	editor->setAcceptRichText(false);
 	setFocusProxy(editor);
-	connect(editor->document(), SIGNAL(contentsChange(int,int,int)), this, SLOT(textChanged(int,int,int)));
-	connect(editor->document(), SIGNAL(modificationChanged(bool)), this, SLOT(setModified(bool)));
-	connect(editor, SIGNAL(cursorPositionChanged()), this, SLOT(updateOnCursorPositionChange()));
+	connect(editor->document(), &QTextDocument::contentsChange, this, &Editor::textChanged);
+	connect(editor->document(), &QTextDocument::modificationChanged, this, &Editor::setModified);
+	connect(editor, &TextEdit::cursorPositionChanged, this, &Editor::updateOnCursorPositionChange);
 
 	// setup the line number pane
 	numbers = new LineNumbers(this, editor);
@@ -161,12 +153,12 @@ bool Editor::newFile()
 	return false;
 }
 
-bool Editor::openFile(const KUrl &_url)
+bool Editor::openFile(const QUrl &_url)
 {
-	KUrl url = _url;
+	QUrl url = _url;
 	if (maybeSave()) {
 		if (url.isEmpty()) {
-			url = KFileDialog::getOpenUrl(KUrl(), 
+			url = KFileDialog::getOpenUrl(QUrl(), 
 				QString("*.turtle|%1\n*|%2").arg(i18n("Turtle code files")).arg(i18n("All files")),
 				this, i18n("Open"));
 		}
@@ -208,21 +200,21 @@ bool Editor::openFile(const KUrl &_url)
 	return false;
 }
 
-bool Editor::saveFile(const KUrl &targetUrl)
+bool Editor::saveFile(const QUrl &targetUrl)
 {
-	KUrl url(targetUrl);
+	QUrl url(targetUrl);
 	bool result = false;
 	if (url.isEmpty() && currentUrl().isEmpty()) {
 		result = saveFileAs();
 	} else {
 		if (url.isEmpty()) url = currentUrl();
-		KTemporaryFile tmp;  // only used for network export
+		QTemporaryFile tmp;  // only used for network export
 		tmp.setAutoRemove(false);
 		tmp.open();
 		QString filename = url.isLocalFile() ? url.toLocalFile() : tmp.fileName();
 	
-		KSaveFile *savefile = new KSaveFile(filename);
-		if (savefile->open()) {
+		QSaveFile *savefile = new QSaveFile(filename);
+		if (savefile->open(QIODevice::WriteOnly)) {
 			QTextStream outputStream(savefile);
 			// store commands in their generic @(...) notation format, to be translatable when reopened
 			// this allows sharing of scripts written in different languages
@@ -250,7 +242,7 @@ bool Editor::saveFile(const KUrl &targetUrl)
 			outputStream << KTURTLE_MAGIC_1_0 << '\n';
 			outputStream << unstranslated;
 			outputStream.flush();
-			savefile->finalize();  // check for error here?
+			savefile->commit();  // check for error here?
 		}
 		delete savefile;
 		if (!url.isLocalFile())
@@ -266,7 +258,7 @@ bool Editor::saveFile(const KUrl &targetUrl)
 
 bool Editor::saveFileAs()
 {
-	KUrl url = KFileDialog::getSaveUrl(QString(), QString("*.turtle|%1\n*|%2").arg(i18n("Turtle code files")).arg(i18n("All files")), this, i18n("Save As"));
+	QUrl url = KFileDialog::getSaveUrl(QString(), QString("*.turtle|%1\n*|%2").arg(i18n("Turtle code files")).arg(i18n("All files")), this, i18n("Save As"));
 	if (url.isEmpty()) return false;
 	if (KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this) &&
 		KMessageBox::warningContinueCancel(this,
@@ -342,9 +334,9 @@ void Editor::findPrev()
 	}
 }
 
-void Editor::setCurrentUrl(const KUrl& url)
+void Editor::setCurrentUrl(const QUrl &url)
 {
-	m_currentUrl = KUrl(url);
+	m_currentUrl = QUrl(url);
 	emit contentNameChanged(m_currentUrl.fileName());
 }
 
@@ -430,7 +422,7 @@ QString Editor::toHtml(const QString& title, const QString& lang)
 		switch (token->type()) {
 			case Token::EndOfLine:  escaped = "<br />"; break;
 			case Token::WhiteSpace: escaped = ""; for (int n = 0; n < token->look().length(); n++) { escaped += "&nbsp;"; } break;
-			default:                escaped = Qt::escape(token->look()); break;
+			default:                escaped = token->look().toHtmlEscaped(); break;
 		}
 		format = highlighter->tokenToFormat(token);
 		if (format != 0) {
@@ -472,6 +464,3 @@ QString Editor::toHtml(const QString& title, const QString& lang)
 // 
 // 	return false;
 // }
-
-
-#include "editor.moc"

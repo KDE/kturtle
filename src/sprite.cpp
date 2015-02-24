@@ -44,26 +44,25 @@ void Sprite::setSpriteSize(int size)
 	
 	qreal s = ((qreal)size) / ((w > h) ? w : h);
 	
-	scale(s, s);
+	setTransform(QTransform::fromScale(s, s), true);
 }
 
 void Sprite::setAngle(double degrees)
 {
-	resetMatrix();
+	resetTransform();
 	setSpriteSize(SPRITE_SIZE);
 	
 	// Default rotation is done with the top-left corner of the SVG as the rotation point,
 	// but we want to the rotation to be around the SVG's center...
 	// This is why this "translation" is needed before the actual rotation.
-	translate(
+	QTransform transform = QTransform::fromTranslate(
 		renderer()->defaultSize().width()  * cos((degrees-135) * M_PI/180) * sqrt((double)2.0)/2,
 		renderer()->defaultSize().height() * sin((degrees-135) * M_PI/180) * sqrt((double)2.0)/2
 	);
-	rotate(degrees);
+	transform.rotate(degrees);
+	setTransform(transform, true);
 	m_angle = degrees;
 
 	//TODO: Check if the update can be done more efficiently
 	update();
 }
-
-#include "sprite.moc"

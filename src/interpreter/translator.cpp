@@ -19,11 +19,7 @@
 
 #include "translator.h"
 
-#include <QDomDocument>
-#include <QFile>
-
-#include <KDebug>
-#include <KGlobal>
+#include <KLocalizedString>
 
 #include "token.h"
 
@@ -37,7 +33,7 @@ Translator* Translator::instance()
 }
 
 Translator::Translator()
-	: localizer(KGlobal::locale())
+	: localizer(QStringList() << DEFAULT_LANGUAGE_CODE)
 {
 }
 
@@ -78,19 +74,12 @@ QHash<int, QList<QString> > Translator::token2stringsMap()
 
 bool Translator::setLanguage(const QString &lang_code)
 {
-	// save UI language
-	QString mainLanguage = localizer->language();
-	
-	// set language for construction of translation dictionaries and examples
-	localizer->setLanguage(lang_code, KGlobal::config().data());
-	if (localizer->language() != lang_code)
-		return false;  // up to the GUI to give feedback if it didn't work
+	// FIXME default to GUI language? return false when language not available?
+	localizer = QStringList() << lang_code << DEFAULT_LANGUAGE_CODE;
 
 	setDictionary();
 	setExamples();
 
-	// restore UI language
-	localizer->setLanguage(mainLanguage , KGlobal::config().data());
 	return true;
 }
 

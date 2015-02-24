@@ -20,11 +20,12 @@
 #ifndef _CONSOLE_H_
 #define _CONSOLE_H_
 
-#include <KAction>
-#include <KComboBox>
+#include <QWidgetAction>
+
+class QComboBox;
 
 
-class Console : public KAction
+class Console : public QWidgetAction
 {
 	Q_OBJECT
 
@@ -45,7 +46,7 @@ class Console : public KAction
 		QString execute(const QString&);
 
 	private:
-		KComboBox *comboBox;
+		QComboBox *comboBox;
 		QWidget   *baseWidget;
 };
 

@@ -20,18 +20,9 @@
 #ifndef _MAINWINDOW_H_
 #define _MAINWINDOW_H_
 
-#include <QActionGroup>
-#include <QStackedWidget>
-#include <QTextStream>
-#include <QToolBar>
 #include <QDockWidget>
-#include <QLabel>
 
-#include <kaction.h>
-#include <kxmlguiwindow.h>
-#include <kmenubar.h>
-#include <krecentfilesaction.h>
-#include <kstatusbar.h>
+#include <KXmlGuiWindow>
 
 #include "interpreter/interpreter.h"
 #include "canvas.h"
@@ -42,11 +33,9 @@
 #include "errordialog.h"
 #include "inspector.h"
 
+class QStackedWidget;
 
-class KAction;
-class KComboBox;
-class KTabWidget;
-class QMenu;
+class KRecentFilesAction;
 
 
 // extends the QDockWidget with an extra signal
@@ -69,12 +58,12 @@ class MainWindow : public KXmlGuiWindow
 	public:
 		MainWindow();
 		~MainWindow();
-		void open(const QString& pathOrUrl) { editor->openFile(KUrl(pathOrUrl)); }  // for main.cpp
+		void open(const QString& pathOrUrl) { editor->openFile(QUrl(pathOrUrl)); }  // for main.cpp
 
 // 	public slots:
 
 	private slots:
-		void addToRecentFilesList(const KUrl&);
+		void addToRecentFilesList(const QUrl&);
 		void showErrorDialog(bool show = false);
 		void openExample();
 		void getNewExampleDialog();
@@ -112,7 +101,7 @@ class MainWindow : public KXmlGuiWindow
 		void setLanguage(QAction*);
 		void updateContentName(const QString& str = QString());
 		void updateModificationState() { setCaption(editor->currentUrl().fileName()); }
-		void addToRecentFiles(const KUrl&);
+		void addToRecentFiles(const QUrl&);
 		void toggleOverwriteMode(bool b);
 		void updateOnCursorPositionChange();
 
@@ -148,7 +137,7 @@ class MainWindow : public KXmlGuiWindow
 		ErrorDialog     *errorDialog;
 		DirectionDialog *directionDialog;
 		ColorPicker     *colorPicker;
-		KTabWidget      *canvasTabWidget;
+		QTabWidget      *canvasTabWidget;
 		QWidget         *canvasTab;
 		QStackedWidget  *stackedWidget;
 		LocalDockWidget *editorDock;
@@ -166,29 +155,29 @@ class MainWindow : public KXmlGuiWindow
 
 		KRecentFilesAction *recentFilesAction;
 
-		KAction *newAct;
-		KAction *openAct;
-		KAction *saveAct;
-		KAction *saveAsAct;
-		KAction *exportToPngAct;
-		KAction *exportToSvgAct;
-		KAction *exportToHtmlAct;
-		KAction *printCanvasAct;
-		KAction *runAct;
-		KAction *pauseAct;
-		KAction *abortAct;
-		KAction *executeConsoleAct;
-		KAction *quitAct;
-		KAction *contextHelpAct;
-		KAction *dedicatedSpeedAct;
-		KAction *fullSpeedAct;
-		KAction *slowSpeedAct;
-		KAction *slowerSpeedAct;
-		KAction *slowestSpeedAct;
-		KAction *stepSpeedAct;
+		QAction *newAct;
+		QAction *openAct;
+		QAction *saveAct;
+		QAction *saveAsAct;
+		QAction *exportToPngAct;
+		QAction *exportToSvgAct;
+		QAction *exportToHtmlAct;
+		QAction *printCanvasAct;
+		QAction *runAct;
+		QAction *pauseAct;
+		QAction *abortAct;
+		QAction *executeConsoleAct;
+		QAction *quitAct;
+		QAction *contextHelpAct;
+		QAction *dedicatedSpeedAct;
+		QAction *fullSpeedAct;
+		QAction *slowSpeedAct;
+		QAction *slowerSpeedAct;
+		QAction *slowestSpeedAct;
+		QAction *stepSpeedAct;
 
 		QActionGroup *runSpeedGroup;
-		KComboBox *runOptionBox;
+		QComboBox *runOptionBox;
 
 		QLabel *statusBarMessageLabel;
 		QLabel *statusBarLanguageLabel;

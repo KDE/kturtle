@@ -20,17 +20,18 @@
 #ifndef _ERRORDIALOG_H_
 #define _ERRORDIALOG_H_
 
-#include <QTableWidget>
-#include <QVBoxLayout>
-#include <QSpacerItem>
-#include <QLabel>
-
-#include <KDialog>
+#include <QDialog>
 
 #include "interpreter/errormsg.h"
 
+class QDialogButtonBox;
+class QLabel;
+class QSpacerItem;
+class QTableWidget;
+class QVBoxLayout;
 
-class ErrorDialog : public KDialog
+
+class ErrorDialog : public QDialog
 {
 	Q_OBJECT
 
@@ -49,6 +50,7 @@ class ErrorDialog : public KDialog
 
 	private slots:
 		void selectedErrorChangedProxy();
+		void helpRequested();
 
 	private:
 		ErrorList      *errorList;
@@ -56,6 +58,7 @@ class ErrorDialog : public KDialog
 		QVBoxLayout    *baseLayout;
 		QLabel         *label;
 		QSpacerItem    *spacer;
+		QDialogButtonBox *m_buttonBox;
 };
 
 #endif  // _ERRORDIALOG_H_

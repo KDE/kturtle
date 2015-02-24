@@ -1,3 +1,4 @@
+
 [Desktop Entry]
 Name=KTurtle
 Name[af]=KSkilpad
@@ -122,8 +123,9 @@ GenericName[uk]=Навчальне середовище програмуванн
 GenericName[x-test]=xxEducational Programming Environmentxx
 GenericName[zh_CN]=教育编程环境
 GenericName[zh_TW]=教育程式環境
-Exec=kturtle %i -caption %c
+Exec=kturtle -qwindowtitle %c
 Icon=kturtle
 X-DocPath=kturtle/index.html
 Type=Application
 Categories=Qt;KDE;Education;ComputerScience;X-KDE-Edu-Misc;
+X-DBUS-ServiceName=org.kde.kturtle

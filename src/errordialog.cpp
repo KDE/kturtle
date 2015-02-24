@@ -19,34 +19,39 @@
 
 #include "errordialog.h"
 
+#include <QBoxLayout>
+#include <QDialogButtonBox>
+#include <QFontDatabase>
 #include <QHeaderView>
+#include <QLabel>
+#include <QPushButton>
+#include <QTableWidget>
 
-#include <kdebug.h>
-
-#include <kdialog.h>
-#include <kglobalsettings.h>
-#include <klocale.h>
+#include <KGuiItem>
+#include <KHelpClient>
+#include <KLocalizedString>
 
 
 ErrorDialog::ErrorDialog(QWidget* parent)
-	: KDialog(parent)
+	: QDialog(parent)
 {
 	errorList = 0;
 
-	setCaption(i18n("Errors"));
+	setWindowTitle(i18n("Errors"));
 	setModal(false);
-	setButtons(User1 | Help);
-	setButtonGuiItem(User1, KGuiItem(i18n("Hide Errors"), "dialog-close", i18n("This button hides the Errors tab")));
-// 	setButtonGuiItem(User1, i18n("Help on &Error"));  // TODO context help in the error dialog
-	setDefaultButton(User1);
-	showButtonSeparator(false);
-	setHelp("reference", "kturtle");
+	QVBoxLayout *mainLayout = new QVBoxLayout;
+	setLayout(mainLayout);
+
+	QWidget *mainWidget = new QWidget(this);
+	mainLayout->addWidget(mainWidget);
 
 	QWidget *baseWidget = new QWidget(this);
-	setMainWidget(baseWidget);
+	mainLayout->addWidget(baseWidget);
 	baseLayout = new QVBoxLayout(baseWidget); 
+	mainLayout->addWidget(baseWidget);
 	
 	label = new QLabel(baseWidget);
+	mainLayout->addWidget(label);
 	label->setText(i18n("In this list you find the error(s) that resulted from running your code.\nGood luck!"));
 	// \nYou can select an error and click the 'Help on Error' button for help.
 	label->setScaledContents(true);
@@ -56,6 +61,7 @@ ErrorDialog::ErrorDialog(QWidget* parent)
 	baseLayout->addItem(spacer);
 	
 	errorTable = new QTableWidget(baseWidget);
+	mainLayout->addWidget(errorTable);
 	errorTable->setSelectionMode(QAbstractItemView::SingleSelection);
 	errorTable->setSelectionBehavior(QAbstractItemView::SelectRows);
 	errorTable->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
@@ -68,6 +74,17 @@ ErrorDialog::ErrorDialog(QWidget* parent)
 	errorTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
 	baseLayout->addWidget(errorTable);
+
+	m_buttonBox = new QDialogButtonBox(QDialogButtonBox::Help);
+	QPushButton *user1Button = new QPushButton;
+	m_buttonBox->addButton(user1Button, QDialogButtonBox::ActionRole);
+	connect(m_buttonBox, &QDialogButtonBox::accepted, this, &ErrorDialog::accept);
+	connect(m_buttonBox, &QDialogButtonBox::rejected, this, &ErrorDialog::reject);
+	connect(m_buttonBox, &QDialogButtonBox::helpRequested, this, &ErrorDialog::helpRequested);
+	mainLayout->addWidget(m_buttonBox);
+	KGuiItem::assign(user1Button, KGuiItem(i18n("Hide Errors")));
+// 	setButtonGuiItem(User1, i18n("Help on &Error"));  // TODO context help in the error dialog
+	user1Button->setDefault(true);
 
 	clear();
 }
@@ -83,7 +100,7 @@ void ErrorDialog::clear()
 	// put a friendly 'nothing to see here' notice in the empty table
 	errorTable->setRowCount(1);
 	QTableWidgetItem* emptyItem = new QTableWidgetItem(i18n("No errors occurred yet."));
-	QFont emptyFont(KGlobalSettings::generalFont());
+	QFont emptyFont(QFontDatabase::systemFont(QFontDatabase::GeneralFont));
 	emptyFont.setItalic(true);
 	emptyItem->setFont(emptyFont);
 	errorTable->setItem(0, 1, emptyItem);
@@ -98,16 +115,16 @@ void ErrorDialog::enable()
 {
 	Q_ASSERT (errorList != 0);
 	errorTable->setEnabled(true);
-	enableButton(Help, true);
-	connect (errorTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectedErrorChangedProxy()));
+	m_buttonBox->button(QDialogButtonBox::Help)->setEnabled(true);
+	connect(errorTable, &QTableWidget::itemSelectionChanged, this, &ErrorDialog::selectedErrorChangedProxy);
 	errorTable->selectRow(0);
 }
 
 void ErrorDialog::disable()
 {
-	disconnect (errorTable, SIGNAL(itemSelectionChanged()), this, SLOT(selectedErrorChangedProxy()));
+	disconnect(errorTable, &QTableWidget::itemSelectionChanged, this, &ErrorDialog::selectedErrorChangedProxy);
 	errorTable->setEnabled(false);
-	enableButton(Help, false);
+	m_buttonBox->button(QDialogButtonBox::Help)->setEnabled(false);
 	errorTable->clearSelection();
 }
 
@@ -137,9 +154,10 @@ void ErrorDialog::selectedErrorChangedProxy()
 	Q_ASSERT (errorList != 0);
 	const Token* t = &errorList->at(errorTable->selectedItems().first()->row()).token();
 	emit currentlySelectedError(t->startRow(), t->startCol(), t->endRow(), t->endCol());
-	// kDebug() << "EMITTED: " << t->startRow() << ", " << t->startCol() << ", " << t->endRow() << ", " << t->endCol();
+	// //qDebug() << "EMITTED: " << t->startRow() << ", " << t->startCol() << ", " << t->endRow() << ", " << t->endCol();
 }
 
-
-#include "errordialog.moc"
-
+void ErrorDialog::helpRequested()
+{
+	KHelpClient::invokeHelp("reference", "kturtle");
+}

@@ -201,7 +201,7 @@ EOS
 		@p_def =
 <<EOS
 TreeNode* Parser::parse#{@type}() {
-//	kDebug(0) << "called";  // method name is appended by kDebug
+//	kDebug() << "called";  // method name is appended by kDebug
 #{@p_def}}
 EOS
 		@parser_cpp += @p_def
@@ -256,7 +256,7 @@ EOS
 			@e_def += "\temit #{method_name_str}(#{e_def_emit_call_args});\n"
 			@executer_emits_h += "\t\tvoid #{method_name_str}(#{arguments_str});\n"
 			@echoer_connect_h += "\t\t\tconnect(executer, SIGNAL(#{method_name_str}(#{arguments_str})),\n\t\t\t\tSLOT(#{method_name_str}(#{arguments_str})));\n"
-			@echoer_slots_h   += "\t\tvoid #{method_name_str}(#{named_arguments_str}) { kDebug(0) << \"SIG> \" << \"#{method_name_str}\" << \"(\" << #{output_arguments_code}\")\"; }\n"
+			@echoer_slots_h   += "\t\tvoid #{method_name_str}(#{named_arguments_str}) { kDebug() << \"SIG> \" << \"#{method_name_str}\" << \"(\" << #{output_arguments_code}\")\"; }\n"
 			@gui_connect_inc  += "\tconnect(executer, SIGNAL(#{method_name_str}(#{arguments_str})), \n\t\tcanvas, SLOT(slot#{method_name_str[0..0].upcase+method_name_str[1..-1]}(#{arguments_str})));\n"
 		end
 

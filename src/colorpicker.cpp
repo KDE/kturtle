@@ -20,31 +20,34 @@
 #include "colorpicker.h"
 #include "interpreter/translator.h"  // for getting the translated ArgumentSeparator
 
-#include <QHBoxLayout>
+#include <QApplication>
+#include <QBoxLayout>
 #include <QClipboard>
-#include <QFontMetrics>
+#include <QDialogButtonBox>
+#include <QFontDatabase>
+#include <QGridLayout>
 #include <QLabel>
-#include <QVBoxLayout>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QSlider>
+#include <QSpinBox>
 
-#include <kapplication.h>
-#include <klocale.h>
-#include <kpushbutton.h>
-#include <kstandardguiitem.h>
+#include <KLocalizedString>
+#include <KStandardGuiItem>
+#include <KGuiItem>
 
 
 ColorPicker::ColorPicker(QWidget* parent)
-	: KDialog(parent)
+	: QDialog(parent)
 {
-	setCaption(i18n("Color Picker"));
+	setWindowTitle(i18n("Color Picker"));
 	setModal(false);
-	setButtons(User1);
-	setDefaultButton(User1);
-	setButtonGuiItem(User1, KStandardGuiItem::close());
-	connect(this, SIGNAL(user1Clicked()), this, SLOT(hide()));
-	showButtonSeparator(false);
+
+	QVBoxLayout *mainLayout = new QVBoxLayout;
+	setLayout(mainLayout);
 
 	QWidget* baseWidget = new QWidget(this);
-	setMainWidget(baseWidget);
+	mainLayout->addWidget(baseWidget);
 
 	QVBoxLayout* baseLayout = new QVBoxLayout;
         baseWidget->setLayout( baseLayout );
@@ -60,9 +63,9 @@ ColorPicker::ColorPicker(QWidget* parent)
 	gridLayout->addWidget(redLabel, 0, 0);
 	gridLayout->addWidget(redSlider, 0, 1);
 	gridLayout->addWidget(redSpin, 0, 2);
-	connect(redSlider, SIGNAL(valueChanged(int)), redSpin, SLOT(setValue(int)));
-	connect(redSpin, SIGNAL(valueChanged(int)), redSlider, SLOT(setValue(int)));
-	connect(redSpin, SIGNAL(valueChanged(int)), this, SLOT(redChanged(int)));
+	connect(redSlider, &QSlider::valueChanged, redSpin, &QSpinBox::setValue);
+	connect(redSpin, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), redSlider, &QSlider::setValue);
+	connect(redSpin, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &ColorPicker::redChanged);
 
 
 	greenSlider = new QSlider(Qt::Horizontal, this);
@@ -74,9 +77,9 @@ ColorPicker::ColorPicker(QWidget* parent)
 	gridLayout->addWidget(greenLabel, 1, 0);
 	gridLayout->addWidget(greenSlider, 1, 1);
 	gridLayout->addWidget(greenSpin, 1, 2);
-	connect(greenSlider, SIGNAL(valueChanged(int)), greenSpin, SLOT(setValue(int)));
-	connect(greenSpin, SIGNAL(valueChanged(int)), greenSlider, SLOT(setValue(int)));
-	connect(greenSpin, SIGNAL(valueChanged(int)), this, SLOT(greenChanged(int)));
+	connect(greenSlider, &QSlider::valueChanged, greenSpin, &QSpinBox::setValue);
+	connect(greenSpin, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), greenSlider, &QSlider::setValue);
+	connect(greenSpin, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &ColorPicker::greenChanged);
 
 	blueSlider = new QSlider(Qt::Horizontal, this);
 	blueSlider->setMaximum(255);
@@ -87,9 +90,9 @@ ColorPicker::ColorPicker(QWidget* parent)
 	gridLayout->addWidget(blueLabel, 2, 0);
 	gridLayout->addWidget(blueSlider, 2, 1);
 	gridLayout->addWidget(blueSpin, 2, 2);
-	connect(blueSlider, SIGNAL(valueChanged(int)), blueSpin, SLOT(setValue(int)));
-	connect(blueSpin, SIGNAL(valueChanged(int)), blueSlider, SLOT(setValue(int)));
-	connect(blueSpin, SIGNAL(valueChanged(int)), this, SLOT(blueChanged(int)));
+	connect(blueSlider, &QSlider::valueChanged, blueSpin, &QSpinBox::setValue);
+	connect(blueSpin, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), blueSlider, &QSlider::setValue);
+	connect(blueSpin, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &ColorPicker::blueChanged);
 
 	baseLayout->addSpacing(20);
 
@@ -104,21 +107,37 @@ ColorPicker::ColorPicker(QWidget* parent)
 	resultLayout->addStretch();
 
 	baseLayout->addLayout(resultLayout);
-	resultBox = new KLineEdit(this);
+	resultBox = new QLineEdit(this);
 	resultBox->setReadOnly(true);
-	resultBox->setFont(KGlobalSettings::fixedFont());
-	int width = QFontMetrics(KGlobalSettings::fixedFont()).width("255, 255, 255_000");
+	resultBox->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
+	int width = QFontMetrics(QFontDatabase::systemFont(QFontDatabase::FixedFont)).width("255, 255, 255_000");
 	resultBox->setMinimumWidth(width);
 	resultBox->setMaximumWidth(width);
 	resultLayout->addWidget(resultBox);
 
-	KPushButton* copyButton = new KPushButton(KIcon("edit-copy"), i18n("&Copy to clipboard"), baseWidget);
+	QPushButton* copyButton = new QPushButton(QIcon::fromTheme("edit-copy"), i18n("&Copy to clipboard"), baseWidget);
+	mainLayout->addWidget(copyButton);
 	resultLayout->addWidget(copyButton);
-	connect(copyButton, SIGNAL(clicked()), this, SLOT(copyProxy()));
+	connect(copyButton, &QPushButton::clicked, this, &ColorPicker::copyProxy);
 
-	KPushButton* pasteButton = new KPushButton(KIcon("edit-paste"), i18n("&Paste to editor"), baseWidget);
+	QPushButton* pasteButton = new QPushButton(QIcon::fromTheme("edit-paste"), i18n("&Paste to editor"), baseWidget);
+	mainLayout->addWidget(pasteButton);
 	resultLayout->addWidget(pasteButton);
-	connect(pasteButton, SIGNAL(clicked()), this, SLOT(pasteProxy()));
+	connect(pasteButton, &QPushButton::clicked, this, &ColorPicker::pasteProxy);
+
+	QDialogButtonBox *buttonBox = new QDialogButtonBox();
+	QWidget *mainWidget = new QWidget(this);
+	mainLayout->addWidget(mainWidget);
+
+	QPushButton *user1Button = new QPushButton;
+	buttonBox->addButton(user1Button, QDialogButtonBox::ActionRole);
+	connect(buttonBox, &QDialogButtonBox::accepted, this, &ColorPicker::accept);
+	connect(buttonBox, &QDialogButtonBox::rejected, this, &ColorPicker::reject);
+
+	mainLayout->addWidget(buttonBox);
+	user1Button->setDefault(true);
+	KGuiItem::assign(user1Button, KStandardGuiItem::close());
+	connect(user1Button, &QPushButton::clicked, this, &ColorPicker::hide);
 
 	resultLayout->addStretch();
 
@@ -150,13 +169,10 @@ void ColorPicker::updateResult(int r, int g, int b)
 
 void ColorPicker::copyProxy()
 {
-	KApplication::clipboard()->setText(resultBox->text());
+	QApplication::clipboard()->setText(resultBox->text());
 }
 
 void ColorPicker::pasteProxy()
 {
 	emit pasteText(resultBox->text());
 }
-
-
-#include "colorpicker.moc"

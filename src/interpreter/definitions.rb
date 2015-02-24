@@ -130,10 +130,10 @@ EOS
 	}
 	if (!functionStack.isEmpty() && 
 	    functionStack.top().variableTable->contains(node->token()->look())) {
-		// kDebug(0) << "exists locally";
+		// //qDebug() << "exists locally";
 		node->setValue( (*functionStack.top().variableTable)[node->token()->look()] );
 	} else if (globalVariableTable.contains(node->token()->look())) {
-		// kDebug(0) << "exists globally";
+		// //qDebug() << "exists globally";
 		node->setValue(globalVariableTable[node->token()->look()]);
 	} else if (aValueIsNeeded)
 	{
@@ -165,7 +165,7 @@ EOS
 	if (returning) {  // if the function is already executed and returns now
 		returnValue = 0;
 		returning = false;
-		// kDebug(0) << "==> functionReturned!";
+		// //qDebug() << "==> functionReturned!";
 		return;
 	}
 
@@ -178,7 +178,7 @@ EOS
 	c.function      = node;
 	c.variableTable = new VariableTable();
 	functionStack.push(c);
-	// kDebug(0) << "==> functionCalled!";
+	// //qDebug() << "==> functionCalled!";
 	
 	TreeNode* learnNode = functionTable[node->token()->look()];
 
@@ -196,7 +196,7 @@ EOS
 		
 	for (uint i = 0; i < node->childCount(); i++) {
 		functionStack.top().variableTable->insert(learnNode->child(1)->child(i)->token()->look(), node->child(i)->value());
-		// kDebug(0) << "inserted variable " << learnNode->child(1)->child(i)->token()->look() << " on function stack";
+		// //qDebug() << "inserted variable " << learnNode->child(1)->child(i)->token()->look() << " on function stack";
 	}
 	newScope = learnNode->child(2);
 EOS
@@ -970,13 +970,13 @@ new_item()
 	}
 	if (!functionStack.isEmpty() && !globalVariableTable.contains(node->child(0)->token()->look())) // &&functionStack.top().variableTable->contains(node->token()->look())) 
 	{
-		// kDebug(0) << "function scope";
+		// //qDebug() << "function scope";
 		functionStack.top().variableTable->insert(node->child(0)->token()->look(), node->child(1)->value());
 	} else {
 		// inserts unless already exists then replaces
 		globalVariableTable.insert(node->child(0)->token()->look(), node->child(1)->value());
 	}
-	// kDebug(0) << "variableTable updated!";
+	// //qDebug() << "variableTable updated!";
 	emit variableTableUpdated(node->child(0)->token()->look(), node->child(1)->value());
 EOS
 parse_item()
@@ -1025,7 +1025,7 @@ EOS
 		return;
 	}
 	functionTable.insert(node->child(0)->token()->look(), node);
-	// kDebug(0) << "functionTable updated!";
+	// //qDebug() << "functionTable updated!";
 	QStringList parameters;
 	for (uint i = 0; i < node->child(1)->childCount(); i++)
 		parameters << node->child(1)->child(i)->token()->look();
@@ -1218,7 +1218,7 @@ new_item()
 <<EOS
 	if (!checkParameterQuantity(node, 1, 20000+Token::Print*100+90))
 		return;
-	// kDebug(0) << "Printing: '" << node->child(0)->value()->string() << "'";
+	// //qDebug() << "Printing: '" << node->child(0)->value()->string() << "'";
 EOS
 parse_item()
 

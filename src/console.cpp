@@ -17,32 +17,32 @@
 	Boston, MA 02110-1301, USA.
 */
 
-
 #include "console.h"
 #include "editor.h"  // only for the error highlight color value
 
 #include <QApplication>
-#include <QHBoxLayout>
+#include <QBoxLayout>
+#include <QComboBox>
+#include <QFontDatabase>
 #include <QLabel>
 #include <QLineEdit>
-#include <QToolTip>
-#include <QWidget>
 
-#include <klocale.h>
+#include <KLocalizedString>
 
 
 Console::Console(QWidget* parent)
-	: KAction(parent)
+	: QWidgetAction(parent)
 {
 	baseWidget = new QWidget(parent);
 	QHBoxLayout* baseLayout = new QHBoxLayout();
         baseLayout->setMargin(0);
 	baseWidget->setLayout(baseLayout);
 
-	comboBox = new KComboBox(true, baseWidget);
+	comboBox = new QComboBox(baseWidget);
+	comboBox->setEditable(true);
 	comboBox->setMinimumWidth(200);
 	comboBox->setDuplicatesEnabled(true);
-	comboBox->setFont(KGlobalSettings::fixedFont());
+	comboBox->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 	comboBox->setToolTip(i18n("Write a command here and press enter..."));
 	comboBox->setWhatsThis(i18n("Console: quickly run single commands -- write a command here and press enter."));
 
@@ -54,8 +54,8 @@ Console::Console(QWidget* parent)
 	baseLayout->addWidget(comboBox);
 	setDefaultWidget(baseWidget);
 
-	connect(comboBox, SIGNAL(returnPressed()), this, SLOT(run()));
-	connect(comboBox, SIGNAL(editTextChanged(const QString&)), this, SLOT(clearMarkings()));
+	connect(comboBox->lineEdit(), &QLineEdit::returnPressed, this, &Console::run);
+	connect(comboBox, &QComboBox::editTextChanged, this, &Console::clearMarkings);
 }
 
 void Console::disable()
@@ -72,7 +72,7 @@ void Console::clearMarkings()
 {
 	comboBox->setToolTip(i18n("Write a command here and press enter..."));
 	comboBox->setStyleSheet("");
-	comboBox->setFont(KGlobalSettings::fixedFont());
+	comboBox->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 }
 
 void Console::run()
@@ -88,7 +88,7 @@ void Console::run()
 void Console::showError(const QString& msg)
 {
 	comboBox->setStyleSheet("QComboBox:editable{background:" + ERROR_HIGHLIGHT_COLOR.name() + ";}");
-	comboBox->setFont(KGlobalSettings::fixedFont());
+	comboBox->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 	QString toolTipText(i18n("<p style='white-space:pre'><b>ERROR:</b> %1</p>", msg));
 	comboBox->setToolTip(toolTipText);
 }
@@ -101,5 +101,3 @@ void Console::executeActionTriggered()
 	QKeyEvent event(QEvent::KeyPress, Qt::Key_Return, Qt::NoModifier, QChar('\n'));
 	QApplication::sendEvent(lineEdit, &event);
 }
-
-#include "console.moc"

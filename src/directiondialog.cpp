@@ -26,25 +26,23 @@ using std::atan;
 #define M_PI 3.14159265358979323846264338327950288419717
 #endif
 
-
-#include <kapplication.h>
-#include <kglobalsettings.h>
-#include <klocale.h>
-#include <KNumInput>
-#include <kstandardguiitem.h>
-
+#include <QApplication>
+#include <QBoxLayout>
 #include <QClipboard>
-#include <QHBoxLayout>
-#include <QGroupBox>
+#include <QComboBox>
+#include <QDialogButtonBox>
+#include <QFontDatabase>
 #include <QLabel>
+#include <QLineEdit>
 #include <QMouseEvent>
 #include <QPainter>
 #include <QPaintEvent>
-#include <QRadioButton>
-#include <QVBoxLayout>
+#include <QPushButton>
+#include <QSpinBox>
 
-#include <KComboBox>
-
+#include <KGuiItem>
+#include <KLocalizedString>
+#include <KStandardGuiItem>
 
 #define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )
 
@@ -197,7 +195,7 @@ double DirectionCanvas::translateMouseCoords(double trans_x, double trans_y)
 
 
 DirectionDialog::DirectionDialog(double deg, QWidget* parent)
-	: KDialog(parent)
+	: QDialog(parent)
 {
 	skipValueChangedEvent = false;
 
@@ -210,16 +208,16 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 
 	translator = Translator::instance();
 
-	setCaption(i18n("Direction Chooser"));
+	setWindowTitle(i18n("Direction Chooser"));
 	setModal(false);
-	setButtons(User1);
-	setDefaultButton(User1);
-	setButtonGuiItem(User1, KStandardGuiItem::close());
-	connect(this, SIGNAL(user1Clicked()), this, SLOT(delayedDestruct()));
-	showButtonSeparator(false);
+	QVBoxLayout *mainLayout = new QVBoxLayout;
+	setLayout(mainLayout);
+
+	QWidget *mainWidget = new QWidget(this);
+	mainLayout->addWidget(mainWidget);
 
 	QWidget* baseWidget = new QWidget(this);
-	setMainWidget(baseWidget);
+	mainLayout->addWidget(baseWidget);
 
 	QVBoxLayout* baseLayout = new QVBoxLayout;
         baseWidget->setLayout( baseLayout );
@@ -227,12 +225,14 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	baseLayout->addLayout(degreeChooserLayout);
 
 	canvas = new DirectionCanvas(baseWidget);
-	connect(canvas, SIGNAL(degreeChanged(double)), this, SLOT(updateDegrees(double)));
-	connect(canvas, SIGNAL(previousDegreeChanged(double)), this, SLOT(updatePreviousDegrees(double)));
+	mainLayout->addWidget(canvas);
+	connect(canvas, &DirectionCanvas::degreeChanged, this, &DirectionDialog::updateDegrees);
+	connect(canvas, &DirectionCanvas::previousDegreeChanged, this, &DirectionDialog::updatePreviousDegrees);
 
 	degreeChooserLayout->addWidget(canvas);
 
 	QWidget* rightWidget = new QWidget(baseWidget);
+	mainLayout->addWidget(rightWidget);
 	degreeChooserLayout->addWidget(rightWidget);
 
 	QVBoxLayout* rightLayout = new QVBoxLayout(rightWidget);
@@ -242,13 +242,13 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	commandPickerLabel->setText(i18n("Command &type:"));
 	commandPickerLabel->setScaledContents(true);
 	rightLayout->addWidget(commandPickerLabel);
-	commandPicker = new KComboBox(rightWidget);
+	commandPicker = new QComboBox(rightWidget);
 	commandPicker->insertItem(Turnleft, translator->default2localized("turnleft"));
 	commandPicker->insertItem(Turnright, translator->default2localized("turnright"));
 	commandPicker->insertItem(Direction, translator->default2localized("direction"));
 	rightLayout->addWidget(commandPicker);
 	commandPickerLabel->setBuddy(commandPicker);
-	connect(commandPicker, SIGNAL(currentIndexChanged(int)), this, SLOT(changeCommand(int)));
+	connect(commandPicker, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &DirectionDialog::changeCommand);
 
 	rightLayout->addStretch();
 
@@ -257,7 +257,7 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	previousDirectionLabel->setText(i18n("&Previous direction:"));
 	previousDirectionLabel->setScaledContents(true);
 	rightLayout->addWidget(previousDirectionLabel);
-	previousDirectionSpin = new KIntSpinBox(rightWidget);
+	previousDirectionSpin = new QSpinBox(rightWidget);
 	// Use -360 to 720 instead of 0 to 360
 	// If 0 to 360 is used, then wrap-around goes from 360 to 0 (which isn't really a step at all)
 	// Instead use larger range and then convert it into the 0 to 359 range whenever it is changed.
@@ -267,13 +267,13 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	previousDirectionSpin->setValue((int)deg);
 	rightLayout->addWidget(previousDirectionSpin);
 	previousDirectionLabel->setBuddy(previousDirectionSpin);
-	connect(previousDirectionSpin, SIGNAL(valueChanged(int)), this, SLOT(directionChanged(int)));
+	connect(previousDirectionSpin, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &DirectionDialog::directionChanged);
 
 	// previous direction
 	QLabel* directionLabel = new QLabel(rightWidget);
 	directionLabel->setText(i18n("&New direction:"));
 	rightLayout->addWidget(directionLabel);
-	directionSpin = new KIntSpinBox(rightWidget);
+	directionSpin = new QSpinBox(rightWidget);
 	// Use -360 to 720 instead of 0 to 360
 	// If 0 to 360 is used, then wrap-around goes from 360 to 0 (which isn't really a step at all)
 	// Instead use larger range and then convert it into the 0 to 359 range whenever it is changed.
@@ -283,7 +283,7 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	directionSpin->setValue((int)deg);
 	rightLayout->addWidget(directionSpin);
 	directionLabel->setBuddy(directionSpin);
-	connect(directionSpin, SIGNAL(valueChanged(int)), this, SLOT(directionChanged(int)));
+	connect(directionSpin, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &DirectionDialog::directionChanged);
 
 	baseLayout->addSpacing(20);
 
@@ -291,20 +291,32 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	QHBoxLayout *pasteRowLayout = new QHBoxLayout;
 	baseLayout->addLayout(pasteRowLayout);
 	pasteRowLayout->addStretch();
-	commandBox = new KLineEdit(rightWidget);
+	commandBox = new QLineEdit(rightWidget);
 	commandBox->setReadOnly(true);
-	commandBox->setFont(KGlobalSettings::fixedFont());
+	commandBox->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 	commandBox->setMinimumWidth(commandBox->fontMetrics().width("000000000_360"));
 	pasteRowLayout->addWidget(commandBox);
-	KPushButton* copyButton = new KPushButton(KIcon("edit-copy"), i18n("&Copy to clipboard"), baseWidget);
+	QPushButton* copyButton = new QPushButton(QIcon::fromTheme("edit-copy"), i18n("&Copy to clipboard"), baseWidget);
+	mainLayout->addWidget(copyButton);
 	pasteRowLayout->addWidget(copyButton);
-	connect(copyButton, SIGNAL(clicked()), this, SLOT(copyProxy()));
-	KPushButton* pasteButton = new KPushButton(KIcon("edit-paste"), i18n("&Paste to editor"), baseWidget);
+	connect(copyButton, &QPushButton::clicked, this, &DirectionDialog::copyProxy);
+	QPushButton* pasteButton = new QPushButton(QIcon::fromTheme("edit-paste"), i18n("&Paste to editor"), baseWidget);
+	mainLayout->addWidget(pasteButton);
 	pasteRowLayout->addWidget(pasteButton);
-	connect(pasteButton, SIGNAL(clicked()), this, SLOT(pasteProxy()));
+	connect(pasteButton, &QPushButton::clicked, this, &DirectionDialog::pasteProxy);
 	pasteRowLayout->addStretch();
 
 	baseLayout->addSpacing(10);
+
+	QDialogButtonBox *buttonBox = new QDialogButtonBox();
+	QPushButton *user1Button = new QPushButton;
+	buttonBox->addButton(user1Button, QDialogButtonBox::ActionRole);
+	connect(buttonBox, &QDialogButtonBox::accepted, this, &DirectionDialog::accept);
+	connect(buttonBox, &QDialogButtonBox::rejected, this, &DirectionDialog::reject);
+	mainLayout->addWidget(buttonBox);
+	user1Button->setDefault(true);
+	KGuiItem::assign(user1Button, KStandardGuiItem::close());
+	connect(user1Button, &QPushButton::clicked, this, &DirectionDialog::close);
 
 	changeCommand(0);
 	show();
@@ -406,13 +418,10 @@ void DirectionDialog::updateCommandBox()
 
 void DirectionDialog::copyProxy()
 {
-	KApplication::clipboard()->setText(commandBox->text());
+	QApplication::clipboard()->setText(commandBox->text());
 }
 
 void DirectionDialog::pasteProxy()
 {
 	emit pasteText(commandBox->text());
 }
-
-
-#include "directiondialog.moc"

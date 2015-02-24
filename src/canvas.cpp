@@ -17,15 +17,14 @@
 	Boston, MA 02110-1301, USA.
 */
 
-
 #include "canvas.h"
 
 #include <cmath>
 
 #include <QResizeEvent>
+#include <QWheelEvent>
 
-#include <kdebug.h>
-#include <klocale.h>
+#include <KLocalizedString>
 
 
 // this function is used in executer and canvas:
@@ -125,7 +124,8 @@ QColor Canvas::rgbDoublesToColor(double r, double g, double b)
 void Canvas::drawLine(double x1, double y1, double x2, double y2)
 {
 	if (penWidthIsZero) return;
-	QGraphicsLineItem* line = new QGraphicsLineItem(QLineF(x1, y1, x2, y2), 0, _scene);
+	QGraphicsLineItem* line = new QGraphicsLineItem(QLineF(x1, y1, x2, y2), 0);
+	_scene->addItem(line);
 	line->setPen(*pen);
 	lines.append(line);
 }
@@ -198,10 +198,11 @@ void Canvas::slotCanvasSize(double r, double g)
 
 void Canvas::slotPrint(const QString& text)
 {
-	QGraphicsTextItem *ti = new QGraphicsTextItem(text, 0, _scene);
+	QGraphicsTextItem *ti = new QGraphicsTextItem(text, 0);
+	_scene->addItem(ti);
 // 	ti->setDefaultTextColor(textColor);
 	ti->setFont(*textFont);
-	ti->rotate(turtle->angle());
+	ti->setTransform(QTransform().rotate(turtle->angle()), true);
 	ti->setPos(turtle->pos().x(), turtle->pos().y());
 	ti->setDefaultTextColor(textColor);
 }
@@ -284,6 +285,3 @@ void Canvas::saveAsSvg(const QString& title, const QString& fileName)
 		slotSpriteShow();
 	p.end();
 }
-
-
-#include "canvas.moc"

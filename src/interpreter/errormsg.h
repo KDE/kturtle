@@ -22,7 +22,7 @@
 
 #include "token.h"
 
-#include <kdebug.h>
+#include <QDebug>
 
 #include <QList>
 #include <QStringList>
@@ -95,7 +95,7 @@ class ErrorList : public QList<ErrorMessage>
 		void addError(ErrorMessage error)
 		{
 			if (!this->contains(error)) this->append(error);
-// 			kDebug(0) <<
+// 			//qDebug() <<
 // 				QString("ErrorList::addError(): %1 [by %2 on line %3], code %4")
 // 					.arg(error.text())
 // 					.arg(error.token().look())

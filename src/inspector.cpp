@@ -21,12 +21,15 @@
 
 #include "interpreter/translator.h"  // for getting the translated ArgumentSeparator
 
+#include <QBoxLayout>
+#include <QDebug>
+#include <QFontDatabase>
 #include <QHeaderView>
-#include <QTextCharFormat>
+#include <QTabWidget>
+#include <QTableWidget>
+#include <QTreeWidget>
 
-#include <kdebug.h>
-#include <klocale.h>
-#include <KTabWidget>
+#include <KLocalizedString>
 
 
 Inspector::Inspector(QWidget *parent)
@@ -35,7 +38,7 @@ Inspector::Inspector(QWidget *parent)
 	mainLayout = new QHBoxLayout(this);
 	mainLayout->setSpacing(0);
 	mainLayout->setMargin(0);
-	tabWidget  = new KTabWidget(this);
+	tabWidget  = new QTabWidget(this);
 
 	variableTab    = new QWidget();
 	variableLayout = new QHBoxLayout(variableTab);
@@ -251,7 +254,7 @@ QTreeWidgetItem* Inspector::walkTree(TreeNode* node)
 	QTextCharFormat* format = highlighter->tokenToFormat(node->token());
 	if (format != 0) {
 		result->setForeground(0, format->foreground());
-		QFont font(KGlobalSettings::fixedFont());
+		QFont font(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 		font.setBold(format->font().bold());
 		result->setFont(0, font);
 	}
@@ -284,17 +287,19 @@ int Inspector::findVariable(const QString& name)
 
 void Inspector::markVariable(const QString& name)
 {
-	kDebug() << variableMap[name]->row();
+    Q_UNUSED(name);
+    //qDebug() << variableMap[name]->row();
 }
 
 void Inspector::markFunction(const QString& name)
 {
-	kDebug() << functionMap[name]->row();
+    Q_UNUSED(name);
+    //qDebug() << functionMap[name]->row();
 }
 
 void Inspector::markTreeNode(TreeNode* node)
 {
-// 	kDebug() << treeMap[node]->text(0);
+// 	//qDebug() << treeMap[node]->text(0);
 	clearTreeMark();
 	currentlyMarkedTreeItem = treeMap[node];
 	previousTreeBackground = currentlyMarkedTreeItem->background(0);
@@ -312,5 +317,3 @@ void Inspector::clearAllMarks()
 {
 	clearTreeMark();
 }
-
-#include "inspector.moc"

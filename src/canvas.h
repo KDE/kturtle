@@ -17,7 +17,6 @@
 	Boston, MA 02110-1301, USA.
 */
 
-
 #ifndef _CANVAS_H_
 #define _CANVAS_H_
 

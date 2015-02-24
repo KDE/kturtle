@@ -20,15 +20,14 @@
 #ifndef _COLORPICKER_H_
 #define _COLORPICKER_H_
 
-
 #include <QFrame>
 #include <QPainter>
 #include <QPaintEvent>
-#include <QSlider>
-#include <QSpinBox>
+#include <QDialog>
 
-#include <kdialog.h>
-#include <klineedit.h>
+class QLineEdit;
+class QSlider;
+class QSpinBox;
 
 
 class ColorPatch : public QFrame
@@ -55,7 +54,7 @@ class ColorPatch : public QFrame
 
 
 
-class ColorPicker : public KDialog
+class ColorPicker : public QDialog
 {
 	Q_OBJECT
 
@@ -75,7 +74,7 @@ class ColorPicker : public KDialog
 
 	private:
 		ColorPatch *colorPatch;
-		KLineEdit  *resultBox;
+		QLineEdit  *resultBox;
 
 		QSlider *redSlider;
 		QSlider *greenSlider;

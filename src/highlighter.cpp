@@ -21,9 +21,6 @@
 
 #include "interpreter/tokenizer.h"
 
-#include <kdebug.h>
-#include <kurl.h>
-
 
 Highlighter::Highlighter(QTextDocument *parent)
 	: QSyntaxHighlighter(parent)
@@ -122,6 +119,3 @@ QTextCharFormat* Highlighter::tokenToFormat(Token* token)
 	}
 	return 0;
 }
-
-
-#include "highlighter.moc"

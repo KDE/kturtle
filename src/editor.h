@@ -22,26 +22,21 @@
 
 #include <cmath>
 
-#include <QFrame>
-#include <QPixmap>
-#include <QTextCursor>
-#include <QTextEdit>
-#include <QVector>
-#include <QScrollBar>
-#include <QPainter>
 #include <QAbstractTextDocumentLayout>
+#include <QFrame>
+#include <QPainter>
+#include <QScrollBar>
+#include <QTextEdit>
 
-#include <kfinddialog.h>
-#include <kurl.h>
+#include <KFindDialog>
 
 #include "highlighter.h"
 #include "interpreter/token.h"
 #include "interpreter/tokenizer.h"
 #include "interpreter/treenode.h"
 
-
 class QHBoxLayout;
-class QPaintEvent;
+
 
 static const QColor LINE_HIGHLIGHT_COLOR(239, 247, 255);
 static const QColor WORD_HIGHLIGHT_COLOR(255, 255, 156);
@@ -214,8 +209,8 @@ class Editor : public QFrame
 		void enable();
 		void disable();
 
-		const KUrl& currentUrl() { return m_currentUrl; }
-		void setCurrentUrl(const KUrl& url = KUrl());
+		const QUrl &currentUrl() { return m_currentUrl; }
+		void setCurrentUrl(const QUrl &url = QUrl());
 
 		bool maybeSave();
 
@@ -235,9 +230,9 @@ class Editor : public QFrame
 
 	public slots:
 		bool newFile();
-		bool openFile(const KUrl &url = KUrl());
+		bool openFile(const QUrl &url = QUrl());
 		void openExample(const QString& example, const QString& exampleName);
-		bool saveFile(const KUrl &url = KUrl());
+		bool saveFile(const QUrl &url = QUrl());
 		bool saveFileAs();
 		void toggleLineNumbers(bool b) { numbers->setVisible(b); }
 		void setModified(bool);
@@ -262,8 +257,8 @@ class Editor : public QFrame
 
 	signals:
 		void contentNameChanged(const QString&);
-		void fileOpened(const KUrl&);
-		void fileSaved(const KUrl&);
+		void fileOpened(const QUrl&);
+		void fileSaved(const QUrl&);
 		void modificationChanged();
 		void contentChanged();
 		void cursorPositionChanged();
@@ -290,7 +285,7 @@ class Editor : public QFrame
 		LineNumbers *numbers;
 		QHBoxLayout *box;  // TODO is this relly needed?
 		KFindDialog *fdialog;
-		KUrl         m_currentUrl;  // contains url to the currently load file or the exampleName
+		QUrl         m_currentUrl;  // contains url to the currently load file or the exampleName
 		QColor       highlightedLineBackgroundColor;  // the bg color of the current line's line number space
 		QString      currentLine;
 		int          currentRow;

@@ -22,20 +22,15 @@
 
 #include "interpreter/translator.h"
 
+#include <QDialog>
 #include <QSvgRenderer>
 #include <QWidget>
 
-#include <kdialog.h>
-#include <klineedit.h>
-#include <kpushbutton.h>
+class QComboBox;
+class QLineEdit;
+class QPushButton;
+class QSpinBox;
 
-
-class QHBoxLayout;
-class QMouseEvent;
-class QPaintEvent;
-class QRadioButton;
-class KIntSpinBox;
-class KComboBox;
 
 class DirectionCanvas : public QWidget
 {
@@ -68,7 +63,7 @@ class DirectionCanvas : public QWidget
 };
 
 
-class DirectionDialog : public KDialog
+class DirectionDialog : public QDialog
 {
 	Q_OBJECT
 
@@ -87,14 +82,14 @@ class DirectionDialog : public KDialog
 	private:
 		DirectionCanvas* canvas;
 
-		KComboBox* commandPicker;
-		KIntSpinBox* previousDirectionSpin;
-		KIntSpinBox* directionSpin;
+		QComboBox* commandPicker;
+		QSpinBox* previousDirectionSpin;
+		QSpinBox* directionSpin;
 
-		KPushButton *copyButton;
-		KPushButton *pasteButton;
+		QPushButton *copyButton;
+		QPushButton *pasteButton;
 
-		KLineEdit* commandBox;
+		QLineEdit* commandBox;
 
 		int currentCommand;  // enum DirectionChooser::Command
 

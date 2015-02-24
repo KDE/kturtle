@@ -23,11 +23,10 @@
 
 #include <QFile>
 
-#include <kdebug.h>
+#include <QDebug>
 #include <kapplication.h>
-#include <kaboutdata.h>
+#include <k4aboutdata.h>
 #include <kcmdlineargs.h>
-#include <klocale.h>
 
 #include "mainwindow.h"  // for gui mode
 
@@ -46,7 +45,7 @@ static const char website[]   = "http://edu.kde.org/kturtle";
 
 int main(int argc, char* argv[])
 {
-	KAboutData aboutData("kturtle", 0, ki18n("KTurtle"), version, ki18n(description), KAboutData::License_GPL, ki18n(copyright), KLocalizedString(), website);
+	K4AboutData aboutData("kturtle", 0, ki18n("KTurtle"), version, ki18n(description), K4AboutData::License_GPL, ki18n(copyright), KLocalizedString(), website);
 	aboutData.addAuthor(ki18n("Cies Breijs"), ki18n("Initiator and core developer"), "cies@kde.nl");
 	aboutData.addAuthor(ki18n("Niels Slot"), ki18n("Core developer"), "nielsslot@gmail.com");
 	aboutData.addAuthor(ki18n("Mauricio Piacentini"), ki18n("Core developer"), "piacentini@kde.org");
@@ -87,7 +86,6 @@ int main(int argc, char* argv[])
 
 		///////////////// run in DBUS mode /////////////////
 		KApplication app;
-		KComponentData componentData(&aboutData);  // need a KComponentData since we're using KLocale in the Translator class
 		Translator::instance()->setLanguage();
 		new Interpreter(0, true);
 		args->clear();
@@ -103,7 +101,6 @@ int main(int argc, char* argv[])
 			return 1;
 		}
 		
-		KComponentData componentData(&aboutData);  // need a KComponentData since we're using KLocale in the Translator class
 		Translator::instance()->setLanguage();
 
 		Tokenizer tokenizer;
@@ -149,7 +146,6 @@ int main(int argc, char* argv[])
 			return 1;
 		}
 
-		KComponentData componentData(&aboutData);  // need a KComponentData since we're using KLocale in the Translator class
 		if (args->isSet("lang")) {
 			if (Translator::instance()->setLanguage(args->getOption("lang"))) {
 				std::cout << "Set localization to: " << args->getOption("lang").data() << std::endl;
@@ -169,7 +165,7 @@ int main(int argc, char* argv[])
 // /*		if (args->isSet("tokenize")) {
 // 			std::cout << "Tokenizing...\n" << std::endl;
 // 			QString code = inputFile.readAll();
-// // 			for (int i = 0; i < code.length(); i++) kDebug() << code.at(i);
+// // 			for (int i = 0; i < code.length(); i++) //qDebug() << code.at(i);
 // 			Tokenizer tokenizer;
 // 			tokenizer.initialize(code);
 // 			Token* t;
