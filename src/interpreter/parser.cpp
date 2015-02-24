@@ -151,7 +151,7 @@ void Parser::printTree() const
 {
 	const char* prefix = m_testing ? "NTR> " : "";
 	foreach (const QString &line, rootNode->toString().split('\n', QString::SkipEmptyParts)) {
-		//qDebug() << prefix << qPrintable(line.trimmed());
+		qDebug() << prefix << qPrintable(line.trimmed());
 	}
 }
 
