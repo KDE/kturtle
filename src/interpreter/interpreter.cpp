@@ -78,8 +78,8 @@ void Interpreter::interpret()
 			if (encounteredErrors()) {
 				m_state = Aborted;
 // 				//qDebug() << "Error encountered while parsing:";
-				const QStringList lines = errorList->asStringList();
-				foreach (const QString &line, lines)
+//				const QStringList lines = errorList->asStringList();
+//				foreach (const QString &line, lines)
 					//qDebug() << line;
 // 				//qDebug() << "Parsing was unsuccessful.";
 				return;
