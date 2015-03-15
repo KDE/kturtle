@@ -81,7 +81,7 @@ class Parser
 		bool         isFinished() const { return finished; }
 
 		/**
-		 * @short Method to get the root node of the node tree (pointer based data stucture).
+		 * @short Method to get the root node of the node tree (pointer based data structure).
 		 * The Parser does not delete the node tree so this pointer can be passed
 		 * to the Executer.
 		 * @returns The pointer to the root node.

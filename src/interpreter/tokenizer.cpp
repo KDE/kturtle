@@ -190,7 +190,7 @@ void Tokenizer::ungetChar()
 
 bool Tokenizer::isWordChar(const QChar& c)
 {
-	// this method exists because some languages have non-letter category charaters
+	// this method exists because some languages have non-letter category characters
 	// mixed with their letter character to make words (like hindi)
 	// NOTE: this has to be extended then languages give problems,
 	//       just add a category in the following test

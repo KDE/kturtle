@@ -47,7 +47,7 @@ typedef QStack<CalledFunction>    FunctionStack;
  * @short Step-wise execution of a node tree, collecting errors in the ErrorList.
  *
  * The Executer 'executes' the node tree, as yielded by the Parser, step by step.
- * When errors occur they are put in the ErrorList as supplied to the constuctor.
+ * When errors occur they are put in the ErrorList as supplied to the constructor.
  *
  * The Executer has a globalVariableTable where is stores the content of variables,
  * and a functionTable that contains pointer to the 'learned' functions.
@@ -134,7 +134,7 @@ class Executer : public QObject
 		/// Stores both pointers to functionNodes and accompanying local variable table using the predefined struct.
 		FunctionStack       functionStack;
 
-		/// Pointer to the error list as supplied to the constuctor
+		/// Pointer to the error list as supplied to the constructor
 		ErrorList          *errorList;
 
 

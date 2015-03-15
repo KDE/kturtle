@@ -199,7 +199,7 @@ class Token
 		/**
 		 * @short Constructor.
 		 * Initialses a empty Token with Token::Type: Token::NotSet.
-		 * This default constuctor is needed for ErrorList (QValueList).
+		 * This default constructor is needed for ErrorList (QValueList).
 		 */
 		Token();
 
