@@ -3,7 +3,7 @@ set(QT_MIN_VERSION "5.0.0")
 
 project (kturtle)
 
-find_package(ECM 1.0.0 REQUIRED NO_MODULE)
+find_package(ECM 1.7.0 REQUIRED NO_MODULE)
 
 set(CMAKE_MODULE_PATH
     ${CMAKE_MODULE_PATH}
@@ -14,7 +14,7 @@ include(KDEInstallDirs)
 include(KDECompilerSettings)
 include(KDECMakeSettings)
 include(FeatureSummary)
-
+include(ECMAddAppIcon)
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Core
     Gui
@@ -47,5 +47,5 @@ add_subdirectory (doc)
 add_subdirectory (src)
 add_subdirectory (icons)
 
-install(FILES kturtle.appdata.xml DESTINATION ${SHARE_INSTALL_PREFIX}/appdata/)
+install(FILES kturtle.appdata.xml DESTINATION ${KDE_INSTALL_DATAROOTDIR}/appdata/)
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

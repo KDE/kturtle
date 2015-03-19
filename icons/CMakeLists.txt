@@ -1,2 +1,2 @@
 include(ECMInstallIcons)
-ecm_install_icons (ICONS hi128-apps-kturtle.png  hi16-apps-kturtle.png  hi22-apps-kturtle.png  hi32-apps-kturtle.png  hi48-apps-kturtle.png  hi64-apps-kturtle.png DESTINATION ${ICON_INSTALL_DIR})
+ecm_install_icons (ICONS 128-apps-kturtle.png  16-apps-kturtle.png  22-apps-kturtle.png  32-apps-kturtle.png  48-apps-kturtle.png  64-apps-kturtle.png DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor)
