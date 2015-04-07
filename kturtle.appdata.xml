@@ -4,7 +4,6 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <name>KTurtle</name>
-  <name xml:lang="ast">KTurtle</name>
   <name xml:lang="bg">KTurtle</name>
   <name xml:lang="bs">KTurtle</name>
   <name xml:lang="ca">KTurtle</name>
@@ -31,7 +30,6 @@
   <name xml:lang="zh-CN">KTurtle</name>
   <name xml:lang="zh-TW">程式設計_KTurtle</name>
   <summary>Educational Programming Environment</summary>
-  <summary xml:lang="ast">Entornu de programación educacional</summary>
   <summary xml:lang="bg">Образователна среда за програмиране</summary>
   <summary xml:lang="bs">Obrazovno programersko okruženje</summary>
   <summary xml:lang="ca">Entorn de programació educatiu</summary>
