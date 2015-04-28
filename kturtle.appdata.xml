@@ -30,6 +30,7 @@
   <name xml:lang="sv">Kturtle</name>
   <name xml:lang="uk">KTurtle</name>
   <name xml:lang="x-test">xxKTurtlexx</name>
+  <name xml:lang="zh-CN">KTurtle</name>
   <name xml:lang="zh-TW">程式設計_KTurtle</name>
   <summary>Educational Programming Environment</summary>
   <summary xml:lang="ast">Entornu de programación educacional</summary>
@@ -57,6 +58,7 @@
   <summary xml:lang="sv">Programmeringsmiljö för utbildning</summary>
   <summary xml:lang="uk">Середовище навчання програмуванню</summary>
   <summary xml:lang="x-test">xxEducational Programming Environmentxx</summary>
+  <summary xml:lang="zh-CN">教育编程环境</summary>
   <summary xml:lang="zh-TW">教育程式環境</summary>
   <description>
     <p>KTurtle is an educational programming environment for learning how to program. It provides all programming tools from its user interface. The programming language used is TurtleScript, which is loosely based on Logo. All commands and messages are translated into the user's language. KTurtle features an intuitive syntax highlighting, simple error messages, integrated canvas to make drawings, an integrated help, slow-motion and step execution.</p>
