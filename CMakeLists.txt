@@ -20,17 +20,19 @@ find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Gui
     Svg
     Widgets
-    #PrintSupport
+    PrintSupport
 )
 
 find_package(KF5 REQUIRED
     KIO
     NewStuff
+    DocTools
+    TextWidgets
     #Gui
     #GuiAddons
     I18n
-    KDELibs4Support
     #WidgetsAddons
+    KDELibs4Support
 )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}

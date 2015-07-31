@@ -45,6 +45,8 @@ target_link_libraries(kturtle
     Qt5::Gui
     Qt5::Xml
     Qt5::Svg
+    Qt5::PrintSupport
+    KF5::TextWidgets
     KF5::KDELibs4Support
 )
 
