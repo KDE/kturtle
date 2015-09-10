@@ -34,6 +34,7 @@
 #include <KMessageBox>
 
 #include <kio/netaccess.h>
+#include <QFileDialog>
 
 
 static const int CURSOR_WIDTH = 2;  // in pixels
@@ -158,9 +159,8 @@ bool Editor::openFile(const QUrl &_url)
 	QUrl url = _url;
 	if (maybeSave()) {
 		if (url.isEmpty()) {
-			url = KFileDialog::getOpenUrl(QUrl(), 
-				QString("*.turtle|%1\n*|%2").arg(i18n("Turtle code files")).arg(i18n("All files")),
-				this, i18n("Open"));
+            url = QFileDialog::getOpenFileUrl(this, i18n("Open"), QUrl()),
+                QString("*.turtle|%1\n*|%2").arg(i18n("Turtle code files")).arg(i18n("All files"));
 		}
 		if (!url.isEmpty()) {
 // 			if (!KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this)) {

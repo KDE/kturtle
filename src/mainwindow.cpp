@@ -47,6 +47,7 @@
 
 #include <kio/netaccess.h>
 #include <knewstuff3/downloaddialog.h>
+#include <QFileDialog>
 
 #include "interpreter/errormsg.h"
 #include "interpreter/translator.h"
@@ -1048,7 +1049,7 @@ void MainWindow::exportToSvg()
 {
     // copied from edit code for file selection
     // canvas->saveAsSvg() does not handle QUrl, so only local files are accepted
-	QString path = KFileDialog::getSaveFileName(QString(), QString("*.svg|%1\n*|%2").arg(i18n("Scalable Vector Graphics")).arg(i18n("All files")), this, i18n("Save as SVG"));
+	QString path = QFileDialog::getSaveFileName(this, i18n("Save as SVG"), QString(), QString("*.svg|%1\n*|%2").arg(i18n("Scalable Vector Graphics")).arg(i18n("All files")));
 	if (path.isEmpty())
 		return;
 	if (KIO::NetAccess::exists(path, KIO::NetAccess::SourceSide, this) &&
@@ -1064,7 +1065,7 @@ void MainWindow::exportToHtml()
 {
     // copied from edit code for file selection
     // we do not handle QUrl, so only local files are accepted
-	QString path = KFileDialog::getSaveFileName(QString(), QString("*.html|%1\n*|%2").arg(i18n("HTML documents")).arg(i18n("All files")), this, i18n("Save code as HTML"));
+	QString path = QFileDialog::getSaveFileName(this, i18n("Save code as HTML"), QString(), QString("*.html|%1\n*|%2").arg(i18n("HTML documents")).arg(i18n("All files")));
 	if (path.isEmpty())
 		return;
 	if (KIO::NetAccess::exists(path, KIO::NetAccess::SourceSide, this) &&
