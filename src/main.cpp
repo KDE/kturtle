@@ -1,10 +1,10 @@
 /*
 	Copyright (C) 2003-2006 Cies Breijs <cies AT kde DOT nl>
 
-    This program is free software; you can redistribute it and/or
-    modify it under the terms of the GNU General Public
-    License as published by the Free Software Foundation; either
-    version 2 of the License, or (at your option) any later version.
+	This program is free software; you can redistribute it and/or
+	modify it under the terms of the GNU General Public
+	License as published by the Free Software Foundation; either
+	version 2 of the License, or (at your option) any later version.
 
 	This program is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -50,28 +50,28 @@ static const char website[]   = "http://edu.kde.org/kturtle";
 
 int main(int argc, char* argv[])
 {
-    KLocalizedString::setApplicationDomain("kturtle");
+	KLocalizedString::setApplicationDomain("kturtle");
 
-    KAboutData aboutData("kturtle", ki18n("KTurtle").toString(), ki18n(version).toString());
-    aboutData.setLicense(KAboutLicense::GPL);
-    aboutData.setHomepage(ki18n(website).toString());
-    aboutData.setShortDescription(ki18n(description).toString());
-    aboutData.setCopyrightStatement(ki18n(copyright).toString());
+	KAboutData aboutData("kturtle", ki18n("KTurtle").toString(), ki18n(version).toString());
+	aboutData.setLicense(KAboutLicense::GPL);
+	aboutData.setHomepage(ki18n(website).toString());
+	aboutData.setShortDescription(ki18n(description).toString());
+	aboutData.setCopyrightStatement(ki18n(copyright).toString());
 
-    aboutData.addAuthor(ki18n("Cies Breijs").toString(), ki18n("Initiator and core developer").toString(), "cies@kde.nl");
-    aboutData.addAuthor(ki18n("Niels Slot").toString(), ki18n("Core developer").toString(), "nielsslot@gmail.com");
-    aboutData.addAuthor(ki18n("Mauricio Piacentini").toString(), ki18n("Core developer").toString(), "piacentini@kde.org");
+	aboutData.addAuthor(ki18n("Cies Breijs").toString(), ki18n("Initiator and core developer").toString(), "cies@kde.nl");
+	aboutData.addAuthor(ki18n("Niels Slot").toString(), ki18n("Core developer").toString(), "nielsslot@gmail.com");
+	aboutData.addAuthor(ki18n("Mauricio Piacentini").toString(), ki18n("Core developer").toString(), "piacentini@kde.org");
 
-    QApplication app(argc, argv); // PORTING SCRIPT: move this to before the K4AboutData initialization
-    QCommandLineParser parser;
+	QApplication app(argc, argv); // PORTING SCRIPT: move this to before the K4AboutData initialization
+	QCommandLineParser parser;
 
-    KAboutData::setApplicationData(aboutData);
-    parser.addVersionOption();
-    parser.addHelpOption();
-    //PORTING SCRIPT: adapt aboutdata variable if necessary
-    aboutData.setupCommandLine(&parser);
+	KAboutData::setApplicationData(aboutData);
+	parser.addVersionOption();
+	parser.addHelpOption();
+	//PORTING SCRIPT: adapt aboutdata variable if necessary
+	aboutData.setupCommandLine(&parser);
 
-    aboutData.processCommandLine(&parser);
+	aboutData.processCommandLine(&parser);
 
 	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("i") << QLatin1String("input"), i18n("File or URL to open (in the GUI mode)"), QLatin1String("URL or file")));
 	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("d") << QLatin1String("dbus"), i18n("Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test scripts")));
@@ -80,7 +80,7 @@ int main(int argc, char* argv[])
 // 	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("k") << QLatin1String("tokenize"), i18n("Only tokenizes the turtle code (only works in testing mode)")));
 	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("p") << QLatin1String("parse"), i18n("Translates turtle code to embeddable C++ example strings (for developers only)"), QLatin1String("file")));
 
-    parser.process(app); // PORTING SCRIPT: move this to after any parser.addOption
+	parser.process(app); // PORTING SCRIPT: move this to after any parser.addOption
 
 	if (!parser.isSet("test") && !parser.isSet("parse") && !parser.isSet("dbus")) {
 
