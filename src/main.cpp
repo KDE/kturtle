@@ -24,9 +24,14 @@
 #include <QFile>
 
 #include <QDebug>
-#include <kapplication.h>
-#include <k4aboutdata.h>
-#include <kcmdlineargs.h>
+
+
+
+#include <QApplication>
+#include <KAboutData>
+#include <KLocalizedString>
+#include <QCommandLineParser>
+#include <QCommandLineOption>
 
 #include "mainwindow.h"  // for gui mode
 
@@ -45,60 +50,65 @@ static const char website[]   = "http://edu.kde.org/kturtle";
 
 int main(int argc, char* argv[])
 {
-        KLocalizedString::setApplicationDomain("kturtle");
+    KLocalizedString::setApplicationDomain("kturtle");
 
-	K4AboutData aboutData("kturtle", 0, ki18n("KTurtle"), version, ki18n(description), K4AboutData::License_GPL, ki18n(copyright), KLocalizedString(), website);
-	aboutData.addAuthor(ki18n("Cies Breijs"), ki18n("Initiator and core developer"), "cies@kde.nl");
-	aboutData.addAuthor(ki18n("Niels Slot"), ki18n("Core developer"), "nielsslot@gmail.com");
-	aboutData.addAuthor(ki18n("Mauricio Piacentini"), ki18n("Core developer"), "piacentini@kde.org");
+    KAboutData aboutData("kturtle", ki18n("KTurtle").toString(), ki18n(version).toString());
+    aboutData.setLicense(KAboutLicense::GPL);
+    aboutData.setHomepage(ki18n(website).toString());
+    aboutData.setShortDescription(ki18n(description).toString());
+    aboutData.setCopyrightStatement(ki18n(copyright).toString());
 
-	KCmdLineArgs::init(argc, argv, &aboutData);
+    aboutData.addAuthor(ki18n("Cies Breijs").toString(), ki18n("Initiator and core developer").toString(), "cies@kde.nl");
+    aboutData.addAuthor(ki18n("Niels Slot").toString(), ki18n("Core developer").toString(), "nielsslot@gmail.com");
+    aboutData.addAuthor(ki18n("Mauricio Piacentini").toString(), ki18n("Core developer").toString(), "piacentini@kde.org");
 
-	KCmdLineOptions options;
-	options.add("i");
-	options.add("input <URL or file>", ki18n("File or URL to open (in the GUI mode)"));
-	options.add("d");
-	options.add("dbus", ki18n("Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test scripts"));
-	options.add("t");
-	options.add("test <file>", ki18n("Starts KTurtle in testing mode (without a GUI), directly runs the specified local file"));
-	options.add("l");
-	options.add("lang <code>", ki18n("Specifies the localization language by a language code, defaults to \"en_US\" (only works in testing mode)"));
-// 	options.add("k");
-// 	options.add("tokenize", ki18n("Only tokenizes the turtle code (only works in testing mode)"));
-	options.add("p");
-	options.add("parse <file>", ki18n("Translates turtle code to embeddable C++ example strings (for developers only)"));
-	KCmdLineArgs::addCmdLineOptions(options);
-	KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
+    QApplication app(argc, argv); // PORTING SCRIPT: move this to before the K4AboutData initialization
+    QCommandLineParser parser;
 
-	if (!args->isSet("test") && !args->isSet("parse") && !args->isSet("dbus")) {
+    KAboutData::setApplicationData(aboutData);
+    parser.addVersionOption();
+    parser.addHelpOption();
+    //PORTING SCRIPT: adapt aboutdata variable if necessary
+    aboutData.setupCommandLine(&parser);
+
+    aboutData.processCommandLine(&parser);
+
+	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("i") << QLatin1String("input"), i18n("File or URL to open (in the GUI mode)"), QLatin1String("URL or file")));
+	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("d") << QLatin1String("dbus"), i18n("Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test scripts")));
+	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("t") << QLatin1String("test"), i18n("Starts KTurtle in testing mode (without a GUI), directly runs the specified local file"), QLatin1String("file")));
+	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("l") << QLatin1String("lang"), i18n("Specifies the localization language by a language code, defaults to \"en_US\" (only works in testing mode)"), QLatin1String("code")));
+// 	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("k") << QLatin1String("tokenize"), i18n("Only tokenizes the turtle code (only works in testing mode)")));
+	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("p") << QLatin1String("parse"), i18n("Translates turtle code to embeddable C++ example strings (for developers only)"), QLatin1String("file")));
+
+    parser.process(app); // PORTING SCRIPT: move this to after any parser.addOption
+
+	if (!parser.isSet("test") && !parser.isSet("parse") && !parser.isSet("dbus")) {
 
 		///////////////// run in GUI mode /////////////////
-		KApplication app;
 		if (app.isSessionRestored()) {
 			RESTORE(MainWindow);
 		} else {
 			MainWindow* mainWindow = new MainWindow();
 			mainWindow->show();
-			if (args->isSet("input")) mainWindow->open(args->getOption("input"));
+			if (parser.isSet("input")) mainWindow->open(parser.value("input"));
 		}
-		args->clear();  // free some memory
+		  // free some memory
 		return app.exec();  // the mainwindow has WDestructiveClose flag; it will destroy itself.
 
-	} else if (args->isSet("dbus")) {
+	} else if (parser.isSet("dbus")) {
 
 		///////////////// run in DBUS mode /////////////////
-		KApplication app;
 		Translator::instance()->setLanguage();
 		new Interpreter(0, true);
-		args->clear();
+		
 		return app.exec();
 
-	} else if (args->isSet("parse")) {
+	} else if (parser.isSet("parse")) {
 
 		///////////////// run in example PARSING mode /////////////////
-		QFile inputFile(args->getOption("parse"));
+		QFile inputFile(parser.value("parse"));
 		if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-			std::cout << "Could not open file: " << qPrintable(args->getOption("parse")) << std::endl;
+			std::cout << "Could not open file: " << qPrintable(parser.value("parse")) << std::endl;
 			std::cout << "Exitting..." << std::endl;
 			return 1;
 		}
@@ -129,11 +139,11 @@ int main(int argc, char* argv[])
 		std::cout << "KTurtle's interpreter in command line mode (version " << version << ")" << std::endl;
 		std::cout << copyright << std::endl << std::endl;
 
-		QString fileString = args->getOption("test");
+		QString fileString = parser.value("test");
 		QFile inputFile(fileString);
 
 		if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-			std::cout << "Could not open input file: " << qPrintable(args->getOption("test")) << std::endl;
+			std::cout << "Could not open input file: " << qPrintable(parser.value("test")) << std::endl;
 			std::cout << "Exitting..." << std::endl;
 			return 1;
 		}
@@ -148,11 +158,11 @@ int main(int argc, char* argv[])
 			return 1;
 		}
 
-		if (args->isSet("lang")) {
-			if (Translator::instance()->setLanguage(args->getOption("lang"))) {
-				std::cout << "Set localization to: " << args->getOption("lang").data() << std::endl;
+		if (parser.isSet("lang")) {
+			if (Translator::instance()->setLanguage(parser.value("lang"))) {
+				std::cout << "Set localization to: " << parser.value("lang").data() << std::endl;
 			} else {
-				std::cout << "Could not set localization to:" << args->getOption("lang").data() << std::endl;
+				std::cout << "Could not set localization to:" << parser.value("lang").data() << std::endl;
 				std::cout << "Exitting...\n";
 				return 1;
 			}
@@ -164,7 +174,7 @@ int main(int argc, char* argv[])
 		QString localizedScript;
 		localizedScript = Translator::instance()->localizeScript(in.readAll());
 
-// /*		if (args->isSet("tokenize")) {
+// /*		if (parser.isSet("tokenize")) {
 // 			std::cout << "Tokenizing...\n" << std::endl;
 // 			QString code = inputFile.readAll();
 // // 			for (int i = 0; i < code.length(); i++) //qDebug() << code.at(i);
@@ -182,7 +192,7 @@ int main(int argc, char* argv[])
 // 			return 0;
 // 		}*/
 
-		args->clear();  // free some memory
+		  // free some memory
 
 		// init the interpreter
 		Interpreter* interpreter = new Interpreter(0, true);  // set testing to true
