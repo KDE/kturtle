@@ -159,8 +159,11 @@ bool Editor::openFile(const QUrl &_url)
 	QUrl url = _url;
 	if (maybeSave()) {
 		if (url.isEmpty()) {
-            url = QFileDialog::getOpenFileUrl(this, i18n("Open"), QUrl()),
-                QString("*.turtle|%1\n*|%2").arg(i18n("Turtle code files")).arg(i18n("All files"));
+            url = QFileDialog::getOpenFileUrl(this, 
+                                              i18n("Open"), 
+                                              QUrl(), 
+                                              QString("%1 (.*turtle);;%2 (*)").arg(i18n("Turtle code files")).arg(i18n("All files"))
+                    );
 		}
 		if (!url.isEmpty()) {
 // 			if (!KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this)) {
@@ -171,7 +174,7 @@ bool Editor::openFile(const QUrl &_url)
 			if (KIO::NetAccess::download(url, fileString, this)) {
 				QFile file(fileString);
 				if (!file.open(QFile::ReadOnly | QFile::Text)) {
-					KMessageBox::error(this, i18n("Cannot read %1", fileString));
+                    KMessageBox::error(this, i18n("Cannot read %1", fileString));
 					return false;
 				}
 				QTextStream in(&file);
@@ -258,8 +261,12 @@ bool Editor::saveFile(const QUrl &targetUrl)
 
 bool Editor::saveFileAs()
 {
-	QUrl url = KFileDialog::getSaveUrl(QString(), QString("*.turtle|%1\n*|%2").arg(i18n("Turtle code files")).arg(i18n("All files")), this, i18n("Save As"));
-	if (url.isEmpty()) return false;
+    QUrl url = QFileDialog::getSaveFileUrl(this,
+                                           i18n("Save As"),
+                                           QUrl(),
+                                           QString("%1 (.*turtle);;%2 (*)").arg(i18n("Turtle code files")).arg(i18n("All files"))
+                                           );
+    if (url.isEmpty()) return false;
 	if (KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this) &&
 		KMessageBox::warningContinueCancel(this,
 			i18n("Are you sure you want to overwrite %1?", url.fileName()), i18n("Overwrite Existing File"),

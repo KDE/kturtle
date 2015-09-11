@@ -1049,7 +1049,7 @@ void MainWindow::exportToSvg()
 {
     // copied from edit code for file selection
     // canvas->saveAsSvg() does not handle QUrl, so only local files are accepted
-	QString path = QFileDialog::getSaveFileName(this, i18n("Save as SVG"), QString(), QString("*.svg|%1\n*|%2").arg(i18n("Scalable Vector Graphics")).arg(i18n("All files")));
+    QString path = QFileDialog::getSaveFileName(this, i18n("Save as SVG"), QString(), QString("%1 (.*svg);;%2 (*)").arg(i18n("Scalable Vector Graphics")).arg(i18n("All files")));
 	if (path.isEmpty())
 		return;
 	if (KIO::NetAccess::exists(path, KIO::NetAccess::SourceSide, this) &&
