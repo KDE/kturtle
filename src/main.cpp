@@ -32,6 +32,7 @@
 #include <KLocalizedString>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
+#include <Kdelibs4ConfigMigrator>
 
 #include "mainwindow.h"  // for gui mode
 
@@ -51,6 +52,14 @@ static const char website[]   = "http://edu.kde.org/kturtle";
 int main(int argc, char* argv[])
 {
 	KLocalizedString::setApplicationDomain("kturtle");
+
+    /* for migration*/
+    QStringList configFiles;
+    configFiles << QLatin1String("kturtlerc");
+    Kdelibs4ConfigMigrator migrator(QLatin1String("kturtle"));
+    migrator.setConfigFiles(configFiles);
+    migrator.setUiFiles(QStringList() << QStringLiteral("kturtleui.rc"));
+    migrator.migrate();
 
 	KAboutData aboutData("kturtle", ki18n("KTurtle").toString(), ki18n(version).toString());
 	aboutData.setLicense(KAboutLicense::GPL);

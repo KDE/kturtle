@@ -33,6 +33,7 @@ find_package(KF5 REQUIRED
     I18n
     #WidgetsAddons
     KDELibs4Support
+    CoreAddons
 )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}
