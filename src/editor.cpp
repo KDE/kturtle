@@ -28,7 +28,6 @@
 #include <QTemporaryFile>
 #include <QTextStream>
 
-#include <KFileDialog>
 #include <KFind>
 #include <KLocalizedString>
 #include <KMessageBox>

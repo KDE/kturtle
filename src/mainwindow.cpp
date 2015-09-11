@@ -38,7 +38,6 @@
 #include <KConfigGroup>
 #include <KFileDialog>
 #include <KHelpClient>
-#include <KLocale>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KRecentFilesAction>
@@ -659,7 +658,8 @@ void MainWindow::updateLanguagesMenu()
 	QAction* a;
 	// sort the dictionaries using an algorithm found in the qt docs:
 	QMap<QString, QString> map;
-	foreach (const QString &lang_code, KLocale::global()->languageList())
+	QSet<QString> dictionaries = KLocalizedString::availableApplicationTranslations();
+	foreach (const QString &lang_code, dictionaries)
 		map.insert(codeToFullName(lang_code), lang_code);
 	// populate the menu:
 	foreach (const QString &lang_code, map) {
@@ -837,7 +837,7 @@ QString MainWindow::codeToFullName(const QString& lang_code)
 	// TODO test this function with more than one language loaded into KDE
 	return QString(lang_code == "en_US" ?
 			i18n("English [built in]") :
-			i18n("%1 (%2)", KLocale::global()->languageCodeToName(lang_code.left(2)), lang_code)
+			i18n("%1 (%2)", QLocale(lang_code.left(2)).nativeLanguageName(), lang_code)
 		);
 }
 
