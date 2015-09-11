@@ -53,13 +53,13 @@ int main(int argc, char* argv[])
 {
 	KLocalizedString::setApplicationDomain("kturtle");
 
-    /* for migration*/
-    QStringList configFiles;
-    configFiles << QLatin1String("kturtlerc");
-    Kdelibs4ConfigMigrator migrator(QLatin1String("kturtle"));
-    migrator.setConfigFiles(configFiles);
-    migrator.setUiFiles(QStringList() << QStringLiteral("kturtleui.rc"));
-    migrator.migrate();
+	/* for migration*/
+	QStringList configFiles;
+	configFiles << QLatin1String("kturtlerc");
+	Kdelibs4ConfigMigrator migrator(QLatin1String("kturtle"));
+	migrator.setConfigFiles(configFiles);
+	migrator.setUiFiles(QStringList() << QStringLiteral("kturtleui.rc"));
+	migrator.migrate();
 
 	KAboutData aboutData("kturtle", ki18n("KTurtle").toString(), ki18n(version).toString());
 	aboutData.setLicense(KAboutLicense::GPL);
@@ -71,13 +71,12 @@ int main(int argc, char* argv[])
 	aboutData.addAuthor(ki18n("Niels Slot").toString(), ki18n("Core developer").toString(), "nielsslot@gmail.com");
 	aboutData.addAuthor(ki18n("Mauricio Piacentini").toString(), ki18n("Core developer").toString(), "piacentini@kde.org");
 
-	QApplication app(argc, argv); // PORTING SCRIPT: move this to before the K4AboutData initialization
+	QApplication app(argc, argv);
 	QCommandLineParser parser;
 
 	KAboutData::setApplicationData(aboutData);
 	parser.addVersionOption();
 	parser.addHelpOption();
-	//PORTING SCRIPT: adapt aboutdata variable if necessary
 	aboutData.setupCommandLine(&parser);
 
 	aboutData.processCommandLine(&parser);
@@ -89,7 +88,7 @@ int main(int argc, char* argv[])
 // 	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("k") << QLatin1String("tokenize"), i18n("Only tokenizes the turtle code (only works in testing mode)")));
 	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("p") << QLatin1String("parse"), i18n("Translates turtle code to embeddable C++ example strings (for developers only)"), QLatin1String("file")));
 
-	parser.process(app); // PORTING SCRIPT: move this to after any parser.addOption
+	parser.process(app);
 
 	if (!parser.isSet("test") && !parser.isSet("parse") && !parser.isSet("dbus")) {
 
