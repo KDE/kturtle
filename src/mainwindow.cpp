@@ -834,7 +834,6 @@ bool MainWindow::setCurrentLanguage(const QString &lang_code)  // 2 or 5 digit c
 
 QString MainWindow::codeToFullName(const QString& lang_code)
 {
-	// TODO test this function with more than one language loaded into KDE
 	return QString(lang_code == "en_US" ?
 			i18n("English [built in]") :
 			i18n("%1 (%2)", QLocale(lang_code.left(2)).nativeLanguageName(), lang_code)
