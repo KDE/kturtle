@@ -170,8 +170,9 @@ bool Editor::openFile(const QUrl &_url)
 // 				return false;
 // 			}
 			QString fileString;  // could be a tmp file or local file
-			if (KIO::NetAccess::download(url, fileString, this)) {
-				QFile file(fileString);
+			KIO::StoredTransferJob *job =  KIO::storedGet(url);
+			if (job->exec()) {
+				QFile file(job->url().toLocalFile());
 				if (!file.open(QFile::ReadOnly | QFile::Text)) {
                     KMessageBox::error(this, i18n("Cannot read %1", fileString));
 					return false;
@@ -187,13 +188,13 @@ bool Editor::openFile(const QUrl &_url)
 				QString localizedScript;
 				localizedScript = Translator::instance()->localizeScript(in.readAll());
 				setContent(localizedScript);
-				KIO::NetAccess::removeTempFile(fileString);
+				QFile::remove(fileString);
 				setCurrentUrl(url);
 				editor->document()->setModified(false);
 				emit fileOpened(url);
 				return true;
 			} else {
-				KMessageBox::error(this, KIO::NetAccess::lastErrorString());
+				KMessageBox::error(this, job->errorString());
 				return false;
 			}
 		}
@@ -247,14 +248,18 @@ bool Editor::saveFile(const QUrl &targetUrl)
 			savefile->commit();  // check for error here?
 		}
 		delete savefile;
-		if (!url.isLocalFile())
-			KIO::NetAccess::upload(filename, url, this);
-		setCurrentUrl(url);
-		editor->document()->setModified(false);
-		// MainWindow will add us to the recent file list
-		emit fileSaved(url);
-		result = true; // fix GUI for saveAs and saveExamples. TODO: check 5 lines above
-	}
+        if (!url.isLocalFile())
+           {
+            KIO::StoredTransferJob *job = KIO::storedPut(savefile, url, -1, 0);
+                 if(job->exec()){
+                    setCurrentUrl(url);
+                    editor->document()->setModified(false);
+                    // MainWindow will add us to the recent file list
+                    emit fileSaved(url);
+                    result = true; // fix GUI for saveAs and saveExamples. TODO: check 5 lines above
+                }
+           }
+    }
 	return result;
 }
 
@@ -266,7 +271,8 @@ bool Editor::saveFileAs()
                                            QString("%1 (.*turtle);;%2 (*)").arg(i18n("Turtle code files")).arg(i18n("All files"))
                                            );
     if (url.isEmpty()) return false;
-	if (KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this) &&
+    KIO::StatJob *job = KIO::stat(url, KIO::StatJob::SourceSide, 0);
+    if (job->exec() &&
 		KMessageBox::warningContinueCancel(this,
 			i18n("Are you sure you want to overwrite %1?", url.fileName()), i18n("Overwrite Existing File"),
 			KGuiItem(i18n("&Overwrite")), KStandardGuiItem::cancel(), i18n("&Overwrite")
