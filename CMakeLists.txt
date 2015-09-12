@@ -32,7 +32,6 @@ find_package(KF5 REQUIRED
     #GuiAddons
     I18n
     #WidgetsAddons
-    KDELibs4Support
     CoreAddons
 )
 

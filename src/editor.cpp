@@ -23,6 +23,7 @@
 #include "interpreter/tokenizer.h"
 
 #include <QBoxLayout>
+#include <QFileDialog>
 #include <QFontDatabase>
 #include <QSaveFile>
 #include <QTemporaryFile>
@@ -31,10 +32,8 @@
 #include <KFind>
 #include <KLocalizedString>
 #include <KMessageBox>
-
-#include <kio/netaccess.h>
-#include <QFileDialog>
-
+#include <KIO/StatJob>
+#include <KIO/StoredTransferJob>
 
 static const int CURSOR_WIDTH = 2;  // in pixels
 static const int TAB_WIDTH    = 2;  // in character widths

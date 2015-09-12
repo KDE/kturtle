@@ -38,14 +38,14 @@
 #include <KActionCollection>
 #include <KConfigGroup>
 #include <KHelpClient>
+#include <KIO/StatJob>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KRecentFilesAction>
 #include <KSharedConfig>
 #include <KToolBarPopupAction>
 
-#include <kio/netaccess.h>
-#include <knewstuff3/downloaddialog.h>
+#include <kns3/downloaddialog.h>
 #include <QFileDialog>
 
 #include "interpreter/errormsg.h"
