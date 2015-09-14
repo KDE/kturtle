@@ -79,8 +79,6 @@ int main(int argc, char* argv[])
 	parser.addHelpOption();
 	aboutData.setupCommandLine(&parser);
 
-	aboutData.processCommandLine(&parser);
-
 	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("i") << QLatin1String("input"), i18n("File or URL to open (in the GUI mode)"), QLatin1String("URL or file")));
 	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("d") << QLatin1String("dbus"), i18n("Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test scripts")));
 	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("t") << QLatin1String("test"), i18n("Starts KTurtle in testing mode (without a GUI), directly runs the specified local file"), QLatin1String("file")));
@@ -89,6 +87,7 @@ int main(int argc, char* argv[])
 	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("p") << QLatin1String("parse"), i18n("Translates turtle code to embeddable C++ example strings (for developers only)"), QLatin1String("file")));
 
 	parser.process(app);
+	aboutData.processCommandLine(&parser);
 
 	if (!parser.isSet("test") && !parser.isSet("parse") && !parser.isSet("dbus")) {
 
