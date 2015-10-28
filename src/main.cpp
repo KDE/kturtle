@@ -53,6 +53,8 @@ int main(int argc, char* argv[])
 {
 	KLocalizedString::setApplicationDomain("kturtle");
 
+	QApplication app(argc, argv);
+
 	/* for migration*/
 	QStringList configFiles;
 	configFiles << QLatin1String("kturtlerc");
@@ -71,7 +73,6 @@ int main(int argc, char* argv[])
 	aboutData.addAuthor(ki18n("Niels Slot").toString(), ki18n("Core developer").toString(), "nielsslot@gmail.com");
 	aboutData.addAuthor(ki18n("Mauricio Piacentini").toString(), ki18n("Core developer").toString(), "piacentini@kde.org");
 
-	QApplication app(argc, argv);
 	QCommandLineParser parser;
 
 	KAboutData::setApplicationData(aboutData);
