@@ -29,6 +29,7 @@
 
 #include <QApplication>
 #include <KAboutData>
+#include <KCrash>
 #include <KLocalizedString>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
@@ -52,6 +53,9 @@ static const char website[]   = "http://edu.kde.org/kturtle";
 int main(int argc, char* argv[])
 {
 	KLocalizedString::setApplicationDomain("kturtle");
+
+	// TODO: for >=KF5.15 use KCrash::initialize();
+	KCrash::setCrashHandler(KCrash::defaultCrashHandler);
 
 	QApplication app(argc, argv);
 
