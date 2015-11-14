@@ -20,13 +20,8 @@
 
 #include <iostream>
 
-
 #include <QFile>
-
 #include <QDebug>
-
-
-
 #include <QApplication>
 #include <KAboutData>
 #include <KCrash>
@@ -54,10 +49,8 @@ int main(int argc, char* argv[])
 {
 	KLocalizedString::setApplicationDomain("kturtle");
 
-	// TODO: for >=KF5.15 use KCrash::initialize();
-	KCrash::setCrashHandler(KCrash::defaultCrashHandler);
-
 	QApplication app(argc, argv);
+	KCrash::initialize();
 
 	/* for migration*/
 	QStringList configFiles;

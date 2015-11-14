@@ -3,7 +3,7 @@ set(QT_MIN_VERSION "5.0.0")
 
 project (kturtle)
 
-find_package(ECM 1.7.0 REQUIRED NO_MODULE)
+find_package(ECM 5.15.0 REQUIRED NO_MODULE)
 
 set(CMAKE_MODULE_PATH
     ${CMAKE_MODULE_PATH}
@@ -23,7 +23,7 @@ find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     PrintSupport
 )
 
-find_package(KF5 REQUIRED
+find_package(KF5 5.15 REQUIRED
     Crash
     KIO
     NewStuff
