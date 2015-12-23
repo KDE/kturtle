@@ -50,6 +50,8 @@ int main(int argc, char* argv[])
 	KLocalizedString::setApplicationDomain("kturtle");
 
 	QApplication app(argc, argv);
+	app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+
 	KCrash::initialize();
 
 	/* for migration*/
