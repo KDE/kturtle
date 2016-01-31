@@ -11,7 +11,7 @@ set(CMAKE_MODULE_PATH
     ${ECM_KDE_MODULE_DIR}
 )
 include(KDEInstallDirs)
-include(KDECompilerSettings)
+include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(FeatureSummary)
 include(ECMAddAppIcon)
