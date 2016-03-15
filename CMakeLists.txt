@@ -29,18 +29,12 @@ find_package(KF5 5.15 REQUIRED
     NewStuff
     DocTools
     TextWidgets
-    #Gui
-    #GuiAddons
     I18n
-    #WidgetsAddons
     CoreAddons
 )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}
                     ${CMAKE_CURRENT_SOURCE_DIR}/interpreter
-                    #${CMAKE_BINARY_DIR}
-                    #${KDE4_INCLUDES}
-                    #${QT4_INCLUDES}
 )
 
 #Allows QString concatenation to use a single memory allocation per source line.
