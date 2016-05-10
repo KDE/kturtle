@@ -61,7 +61,7 @@ In this example <userinput>print</userinput> is a command where <userinput>"Hell
 
 <sect2 id="boolean-value">
 <title>Boolean (true/false) values</title>
-<para>There are only two boolean values: <userinput>true</userinput> and <userinput>false</userinput>. Sometimes they are also called: on and off, yes and no, one and zero. But in &turtlescript; we call them, always, <userinput>true</userinput> and <userinput>false</userinput>. Have a look at this piece of &turtlescript;:
+<para>There are only two boolean values: <userinput>true</userinput><indexterm><primary>true</primary></indexterm> and <userinput>false</userinput><indexterm><primary>false</primary></indexterm>. Sometimes they are also called: on and off, yes and no, one and zero. But in &turtlescript; we call them, always, <userinput>true</userinput> and <userinput>false</userinput>. Have a look at this piece of &turtlescript;:
 <screen>
 $a = true
 </screen>
@@ -111,7 +111,7 @@ The expressions inside parentheses will be calculated first. In this example, 20
 
 <sect2 id="boolean-operators">
 <title>Boolean (true/false) operators</title>
-<para>Where <link linkend="mathematical-operators">mathematical operators</link> are mainly for <link linkend="number">numbers</link>, boolean operators are for <link linkend="boolean-value">boolean values</link> (<userinput>true</userinput> and <userinput>false</userinput>). There are only three boolean operators, namely: <userinput>and</userinput>, <userinput>or</userinput>, and <userinput>not</userinput>. The following piece of &turtlescript; shows how to use them:
+<para>Where <link linkend="mathematical-operators">mathematical operators</link> are mainly for <link linkend="number">numbers</link>, boolean operators are for <link linkend="boolean-value">boolean values</link> (<userinput>true</userinput> and <userinput>false</userinput>). There are only three boolean operators, namely: <userinput>and</userinput><indexterm><primary>and</primary></indexterm>, <userinput>or</userinput><indexterm><primary>or</primary></indexterm>, and <userinput>not</userinput><indexterm><primary>not</primary></indexterm>. The following piece of &turtlescript; shows how to use them:
 <screen>
 $and_1_1 = true and true    # -> true
 $and_1_0 = true and false   # -> false
@@ -745,7 +745,7 @@ while $x &lt; 5 {
 <title>The "for" loop, a counting loop</title>
   <variablelist>
     <varlistentry>
-      <term>for<indexterm><primary>for</primary></indexterm><indexterm><primary>step</primary></indexterm></term>
+      <term>for<indexterm><primary>for</primary></indexterm><indexterm><primary>to</primary></indexterm><indexterm><primary>step</primary></indexterm></term>
       <listitem><para><screen>for <link linkend="assignment-of-variables">variable</link> = <link linkend="number">number</link> to <link linkend="number">number</link> { ... }</screen>
       The <userinput>for</userinput> loop is a <quote>counting loop</quote>, &ie; it keeps count for you. The first number sets the variable to the value in the first loop. Every loop the number is increased until the second number is reached.
       <screen>
@@ -805,45 +805,8 @@ assert $in > 0
 
 <sect1 id="learn">
 
-
-<!--<sect2 id="name">
-<title>Names</title>
-<para>When using the &turtlescript; programming language you create new things. If you write a program you will often need <link linkend="containers">containers</link> and in some cases you need <link linkend="learn">learn</link> to create new commands. When making a new command with <link linkend="learn">learn</link> you will have to specify a name.</para>
-<para>You can choose any name, as long as it does not already have a meaning. For instance you cannot name a function <link linkend="forward">forward</link>, since that name is already used for an internal command.
-<screen>
-# here forward is used as a new command, 
-# but it already has a meaning so 
-# this will produce an error:
-learn forward {
-  print "this is invalid"
-}
-
-# this works:
-learn myforward {
-  print "this is ok"
-}
-</screen>
-Names can contain only letters, numbers and underscores (_). Yet they have to start with a letter. Container names have to start with the container prefix ($).
-<screen>
-# here forward is used as a container, 
-# starting with the $ prefix, so it does
-# not conflict with the forward command
-$forward = 20
-print $forward
-</screen>
-</para>
-<para>Containers are <glossterm>highlighted</glossterm> with bolded purple in the <link linkend="the-editor">code editor</link>.</para>
-<para>
-Please read the documentation on <link linkend="containers">containers</link> and the <link linkend="learn">learn</link> command for a better explanation and more examples.
-</para>
-</sect2>-->
-
-
-
-
-
 <title>Create your own commands with <quote>learn</quote></title>
-<para><userinput>learn</userinput> is special as it is used to create your own commands. The commands you create can take <glossterm linkend="input-output">input</glossterm> and return <glossterm linkend="input-output">output</glossterm>. Let us take a look at how a new command is created:
+<para><userinput>learn</userinput><indexterm><primary>learn</primary></indexterm> is special as it is used to create your own commands. The commands you create can take <glossterm linkend="input-output">input</glossterm> and return <glossterm linkend="input-output">output</glossterm>. Let us take a look at how a new command is created:
 <screen>
 learn circle $x {
   repeat 36 {
@@ -868,7 +831,7 @@ go 300,200
 circle 40  
 </screen>
 </para>
-<para>In the next example, a command with a return value is created.
+<para>In the next example, a command with a return<indexterm><primary>return</primary></indexterm> value is created.
 <screen>
 learn faculty $x {
   $r = 1

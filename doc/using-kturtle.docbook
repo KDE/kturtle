@@ -50,7 +50,7 @@
 <para>In the menubar you find all the actions of &kturtle;. They are in the following groups: <guimenu>File</guimenu>, <guimenu>Edit</guimenu>, <guimenu>Canvas</guimenu>, <guimenu>Run</guimenu>, <guimenu>Tools</guimenu>, <guimenu>Settings</guimenu>, and <guimenu>Help</guimenu>. This section describes them all.</para>
 
 <sect2 id="the-file-menu">
-<title>The <guimenu>File</guimenu> Menu</title>
+<title>The File Menu</title>
 
   <variablelist>
     <anchor id="file-new" />
@@ -127,6 +127,9 @@
     <anchor id="file-save-as" />
     <varlistentry>
       <term><menuchoice>
+        <shortcut>
+          <keycombo>&Ctrl;&Shift;<keycap>S</keycap></keycombo>
+        </shortcut>
         <guimenu>File</guimenu>
         <guimenuitem>Save As...</guimenuitem>
       </menuchoice></term>
@@ -172,7 +175,7 @@
 </sect2>
 
 <sect2 id="the-edit-menu">
-  <title>The <guimenu>Edit</guimenu> Menu</title>
+  <title>The Edit Menu</title>
   <variablelist>
     <anchor id="edit-undo" />
     <varlistentry>
@@ -320,7 +323,7 @@
 
 
 <sect2 id="the-canvas-menu">
-  <title>The <guimenu>Canvas</guimenu> Menu</title>
+  <title>The Canvas Menu</title>
   <variablelist>
     <anchor id="canvas-export-to-image" />
     <varlistentry>
@@ -354,7 +357,7 @@
 </sect2>
 
 <sect2 id="the-run-menu">
-  <title>The <guimenu>Run</guimenu> Menu</title>
+  <title>The Run Menu</title>
   <variablelist>
     <anchor id="run-execute" />
     <varlistentry>
@@ -409,7 +412,7 @@
 
 
 <sect2 id="the-tools-menu">
-  <title>The <guimenu>Tools</guimenu> Menu</title>
+  <title>The Tools Menu</title>
   <variablelist>
     <anchor id="tools-direction-chooser" />
     <varlistentry>
@@ -433,7 +436,7 @@
 </sect2>
 
 <sect2 id="the-setting-menu">
-  <title>The <guimenu>Settings</guimenu> Menu</title>
+  <title>The Settings Menu</title>
   <variablelist>
     <anchor id="settings-set-script-language" />
     <varlistentry>
@@ -527,8 +530,10 @@
 </sect2>
 
 <sect2 id="the-help-menu">
-  <title>The <guimenu>Help</guimenu> Menu</title>
-  &help.menu.documentation;
+  <title>The Help Menu</title>
+<para>&kturtle; has a default &kde; <guimenu>Help</guimenu> menu as described in the 
+<ulink url="help:/fundamentals/ui.html#menus-help">&kde; Fundamentals</ulink> 
+with one additional entry:</para>
   <variablelist>
     <anchor id="help-context-help" />
     <varlistentry>

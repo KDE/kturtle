@@ -2,7 +2,6 @@
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
 "dtd/kdedbx45.dtd" [
   <!ENTITY kappname "&kturtle;">
-  <!ENTITY package "kdeedu">
   <!ENTITY turtlescript "TurtleScript">
   <!ENTITY logo "Logo">
   <!ENTITY % addindex "INCLUDE">
@@ -62,8 +61,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2013-02-08</date>
-<releaseinfo>0.8.1 beta (&kde; 4.10)</releaseinfo>
+<date>2016-05-07</date>
+<releaseinfo>0.8.1 beta (Applications 16.04)</releaseinfo>
 
 <abstract>
 <para>&kturtle; is an educational programming environment that aims to make learning how to program as easy as possible. To achieve this &kturtle; makes all programming tools available from the user interface. The programming language used is &turtlescript; which allows its commands to be translated.</para>
@@ -164,27 +163,6 @@ Andrew Coles <email>andrew_coles AT yahoo DOT co DOT uk</email></para>
 &underGPL;
 
 </chapter>
-
-
-
-<appendix id="installation">
-<title>Installation</title>
-
-<sect1 id="getting-kturtle">
-<title>How to obtain &kturtle;</title>
-
-&install.intro.documentation;
-
-</sect1>
-
-<sect1 id="compilation">
-<title>Compilation and Installation</title>
-
-&install.compile.documentation;
-
-</sect1>
-
-</appendix>
 
 <!--&documentation.index; -->
 <index id='command-index'>
