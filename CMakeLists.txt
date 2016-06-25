@@ -33,10 +33,6 @@ find_package(KF5 5.15 REQUIRED
     CoreAddons
 )
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}
-                    ${CMAKE_CURRENT_SOURCE_DIR}/interpreter
-)
-
 #Allows QString concatenation to use a single memory allocation per source line.
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 

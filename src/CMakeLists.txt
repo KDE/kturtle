@@ -1,5 +1,3 @@
-include_directories(${CMAKE_SOURCE_DIR}/kturtle/interpreter)
-
 set(kturtle_SRCS
     canvas.cpp
     colorpicker.cpp
