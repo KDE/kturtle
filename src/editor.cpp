@@ -28,6 +28,7 @@
 #include <QSaveFile>
 #include <QTemporaryFile>
 #include <QTextStream>
+#include <QBuffer>
 
 #include <KFind>
 #include <KLocalizedString>
@@ -125,7 +126,7 @@ void Editor::openExample(const QString& example, const QString& exampleName)
 	if (newFile()) {
 		setContent(example);
 		editor->document()->setModified(false);
-		setCurrentUrl(exampleName);
+		setCurrentUrl(QUrl::fromLocalFile(exampleName));
 	}
 }
 
@@ -160,34 +161,27 @@ bool Editor::openFile(const QUrl &_url)
             url = QFileDialog::getOpenFileUrl(this, 
                                               i18n("Open"), 
                                               QUrl(), 
-                                              QString("%1 (.*turtle);;%2 (*)").arg(i18n("Turtle code files")).arg(i18n("All files"))
+                                              QString("%1 (*.turtle);;%2 (*)").arg(i18n("Turtle code files")).arg(i18n("All files"))
                     );
 		}
 		if (!url.isEmpty()) {
-// 			if (!KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this)) {
-// 				KMessageBox::error(this, i18n("The given file could not be read, check if it exists and if it is readable for the current user."));
-// 				return false;
-// 			}
-			QString fileString;  // could be a tmp file or local file
-			KIO::StoredTransferJob *job =  KIO::storedGet(url);
+			KIO::StoredTransferJob *job = KIO::storedGet(url);
 			if (job->exec()) {
-				QFile file(job->url().toLocalFile());
-				if (!file.open(QFile::ReadOnly | QFile::Text)) {
-                    KMessageBox::error(this, i18n("Cannot read %1", fileString));
-					return false;
+				QByteArray data = job->data();
+				QBuffer buffer(&data);
+				if (!buffer.open(QIODevice::ReadOnly | QIODevice::Text)) {
+					return false; // can't happen
 				}
-				QTextStream in(&file);
+				QTextStream in(&buffer);
 				// check for our magic identifier
 				QString s;
 				s = in.readLine();
 				if (s != KTURTLE_MAGIC_1_0) {
-					KMessageBox::error(this, i18n("The file you try to open is not a valid KTurtle script, or is incompatible with this version of KTurtle.\nCannot open %1", fileString));
+					KMessageBox::error(this, i18n("The file you try to open is not a valid KTurtle script, or is incompatible with this version of KTurtle.\nCannot open %1", url.toDisplayString(QUrl::PreferLocalFile)));
 					return false;
 				}
-				QString localizedScript;
-				localizedScript = Translator::instance()->localizeScript(in.readAll());
+				QString localizedScript = Translator::instance()->localizeScript(in.readAll());
 				setContent(localizedScript);
-				QFile::remove(fileString);
 				setCurrentUrl(url);
 				editor->document()->setModified(false);
 				emit fileOpened(url);
@@ -267,7 +261,7 @@ bool Editor::saveFileAs()
     QUrl url = QFileDialog::getSaveFileUrl(this,
                                            i18n("Save As"),
                                            QUrl(),
-                                           QString("%1 (.*turtle);;%2 (*)").arg(i18n("Turtle code files")).arg(i18n("All files"))
+                                           QString("%1 (*.turtle);;%2 (*)").arg(i18n("Turtle code files")).arg(i18n("All files"))
                                            );
     if (url.isEmpty()) return false;
     KIO::StatJob *job = KIO::stat(url, KIO::StatJob::SourceSide, 0);
@@ -347,7 +341,7 @@ void Editor::findPrev()
 
 void Editor::setCurrentUrl(const QUrl &url)
 {
-	m_currentUrl = QUrl(url);
+	m_currentUrl = url;
 	emit contentNameChanged(m_currentUrl.fileName());
 }
 

@@ -35,6 +35,7 @@ find_package(KF5 5.15 REQUIRED
 
 #Allows QString concatenation to use a single memory allocation per source line.
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
+add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
 
 add_subdirectory (doc)
 add_subdirectory (src)

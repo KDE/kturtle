@@ -741,8 +741,6 @@ void MainWindow::openDownloadedExample()
 	QAction* action = qobject_cast<QAction*>(sender());
 	QString exampleFilename = action->data().toString();
 	editor->openFile(QUrl::fromLocalFile(exampleFilename));
-	QFileInfo fileInfo(exampleFilename);
-	editor->setCurrentUrl(fileInfo.baseName());
 }
 
 void MainWindow::toggleOverwriteMode(bool b)
