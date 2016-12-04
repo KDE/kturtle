@@ -264,12 +264,6 @@ bool Editor::saveFileAs()
                                            QString("%1 (*.turtle);;%2 (*)").arg(i18n("Turtle code files")).arg(i18n("All files"))
                                            );
     if (url.isEmpty()) return false;
-    KIO::StatJob *job = KIO::stat(url, KIO::StatJob::SourceSide, 0);
-    if (job->exec() &&
-		KMessageBox::warningContinueCancel(this,
-			i18n("Are you sure you want to overwrite %1?", url.fileName()), i18n("Overwrite Existing File"),
-			KGuiItem(i18n("&Overwrite")), KStandardGuiItem::cancel(), i18n("&Overwrite")
-			) != KMessageBox::Continue) return false;
 	bool result = saveFile(url);
 	return result;
 }
