@@ -42,7 +42,7 @@ class KRecentFilesAction;
 class LocalDockWidget : public QDockWidget { Q_OBJECT
 	public:
 		LocalDockWidget(const QString& title, QWidget* parent) : QDockWidget(parent) { setWindowTitle(title); }
-		void setVisible(bool b) { QDockWidget::setVisible(b); emit visibilityChanged(b); }
+		void setVisible(bool b) Q_DECL_OVERRIDE { QDockWidget::setVisible(b); emit visibilityChanged(b); }
 		void show() { QDockWidget::show(); emit visibilityChanged(true); }
 		void hide() { QDockWidget::hide(); emit visibilityChanged(false); }
 	signals:
@@ -106,10 +106,10 @@ class MainWindow : public KXmlGuiWindow
 		void updateOnCursorPositionChange();
 
 	protected slots:
-		void saveNewToolbarConfig();
+		void saveNewToolbarConfig() Q_DECL_OVERRIDE;
 
 	protected:
-		void closeEvent(QCloseEvent *event);
+		void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
 
 	private:
 		void setupActions();

@@ -44,7 +44,7 @@ class Highlighter : public QSyntaxHighlighter
 		QTextCharFormat* tokenToFormat(Token* token);
 
 	protected:
-		void highlightBlock(const QString &text) { checkOrApplyHighlighting(text); }
+		void highlightBlock(const QString &text) Q_DECL_OVERRIDE { checkOrApplyHighlighting(text); }
 
 	private:
 		Token* checkOrApplyHighlighting(const QString &text, int cursorIndex = -1);

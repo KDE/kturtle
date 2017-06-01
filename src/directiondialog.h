@@ -48,9 +48,9 @@ class DirectionCanvas : public QWidget
 		void previousDegreeChanged(double deg);
 
 	protected:
-		void paintEvent(QPaintEvent *event);
-		void mouseMoveEvent(QMouseEvent *event);
-		void mousePressEvent(QMouseEvent *event);
+		void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
+		void mouseMoveEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
+		void mousePressEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
 
 	private:
 		double translateMouseCoords(double x, double y);
