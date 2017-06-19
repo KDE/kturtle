@@ -25,7 +25,6 @@
 
 #include <errno.h>
 #include <math.h>
-#include <unistd.h>  // for usleep();
 
 #include <QTimer>  // for wait
 #include <QDebug>
