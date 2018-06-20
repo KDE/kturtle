@@ -37,7 +37,7 @@ class DirectionCanvas : public QWidget
 	Q_OBJECT
 	
 	public:
-		DirectionCanvas(QWidget* parent = 0);
+        explicit DirectionCanvas(QWidget* parent = nullptr);
 		void enableGreyTurtle(bool);
 
 	public slots:

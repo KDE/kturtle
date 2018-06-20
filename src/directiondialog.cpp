@@ -210,8 +210,7 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 
 	setWindowTitle(i18n("Direction Chooser"));
 	setModal(false);
-	QVBoxLayout *mainLayout = new QVBoxLayout;
-	setLayout(mainLayout);
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
 
 	QWidget *mainWidget = new QWidget(this);
 	mainLayout->addWidget(mainWidget);
@@ -220,7 +219,8 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	mainLayout->addWidget(baseWidget);
 
 	QVBoxLayout* baseLayout = new QVBoxLayout;
-        baseWidget->setLayout( baseLayout );
+    baseLayout->setMargin(0);
+    baseWidget->setLayout( baseLayout );
 	QHBoxLayout* degreeChooserLayout = new QHBoxLayout;
 	baseLayout->addLayout(degreeChooserLayout);
 
