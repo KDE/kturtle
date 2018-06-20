@@ -31,7 +31,7 @@ class Canvas : public QGraphicsView
 	Q_OBJECT
 
 	public:
-		Canvas(QWidget *parent = 0);
+		Canvas(QWidget *parent = nullptr);
 		~Canvas();
 
 		double turtleAngle() { return turtle->angle(); }

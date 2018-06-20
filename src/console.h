@@ -30,7 +30,7 @@ class Console : public QWidgetAction
 	Q_OBJECT
 
 	public:
-		Console(QWidget *parent);
+        explicit Console(QWidget *parent = nullptr);
 
 		void disable();
 		void enable();

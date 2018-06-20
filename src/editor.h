@@ -105,7 +105,7 @@ class TextEdit : public QTextEdit
 	Q_OBJECT
 
 	public:
-		explicit TextEdit(QWidget* parent = 0)
+		explicit TextEdit(QWidget* parent = nullptr)
 			: QTextEdit(parent) {}
 
 		void markCurrentWord(int startRow, int startCol, int endRow, int endCol) {
@@ -200,7 +200,7 @@ class Editor : public QFrame
 	Q_OBJECT
 
 	public:
-		Editor(QWidget *parent = 0);
+		Editor(QWidget *parent = nullptr);
 		~Editor();
 
 		QTextEdit* view() const { return editor; }

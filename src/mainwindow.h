@@ -57,7 +57,7 @@ class MainWindow : public KXmlGuiWindow
 
 	public:
 		MainWindow();
-		~MainWindow();
+        ~MainWindow() override;
 		void open(const QString& pathOrUrl) { editor->openFile(QUrl(pathOrUrl)); }  // for main.cpp
 
 // 	public slots:

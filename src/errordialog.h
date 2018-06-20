@@ -36,7 +36,7 @@ class ErrorDialog : public QDialog
 	Q_OBJECT
 
 	public:
-		ErrorDialog(QWidget* parent);
+        explicit ErrorDialog(QWidget* parent = nullptr);
 
 		void setErrorList(ErrorList*);
 		void clear();
