@@ -50,7 +50,8 @@ ColorPicker::ColorPicker(QWidget* parent)
 	mainLayout->addWidget(baseWidget);
 
 	QVBoxLayout* baseLayout = new QVBoxLayout;
-        baseWidget->setLayout( baseLayout );
+    baseLayout->setMargin(0);
+    baseWidget->setLayout( baseLayout );
 	QGridLayout* gridLayout = new QGridLayout;
 	baseLayout->addLayout(gridLayout);
 

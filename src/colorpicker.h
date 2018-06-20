@@ -38,7 +38,7 @@ class ColorPatch : public QFrame
 		ColorPatch(QWidget *parent) : QFrame(parent) {
 			setFrameStyle(QFrame::Panel|QFrame::Sunken);
 		}
-		void setColor(QColor c) { col = c; }
+        void setColor(const QColor &c) { col = c; }
 
 	protected:
 		void paintEvent(QPaintEvent *e) Q_DECL_OVERRIDE {
@@ -59,7 +59,7 @@ class ColorPicker : public QDialog
 	Q_OBJECT
 
 	public:
-		ColorPicker(QWidget* parent = 0);
+        explicit ColorPicker(QWidget* parent = 0);
 
 	signals:
 		void pasteText(const QString&);
