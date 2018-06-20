@@ -30,7 +30,7 @@ class Sprite : public QGraphicsSvgItem
 	public:
 		Sprite();
 
-		double angle() { return m_angle; }
+        double angle() const { return m_angle; }
 
 		void setAngle(double degrees);
 		void setSpriteSize(int pixels);

@@ -58,7 +58,7 @@ class LineNumbers : public QWidget
 
 	public:
 		LineNumbers(QWidget *parent, QTextEdit *te) : QWidget(parent), editor(te), maxWidth(0) {}
-		~LineNumbers() {}
+        ~LineNumbers() Q_DECL_OVERRIDE {}
 	
 		void setFont(const QFont& f) { QWidget::setFont(f); }
 

@@ -31,7 +31,7 @@ class Highlighter : public QSyntaxHighlighter
 	Q_OBJECT
 
 	public:
-		Highlighter(QTextDocument *parent = 0);
+        explicit Highlighter(QTextDocument *parent = nullptr);
 		~Highlighter();
 
 		/// used by the Editor for highlighting

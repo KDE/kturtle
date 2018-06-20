@@ -39,7 +39,8 @@ class KRecentFilesAction;
 
 
 // extends the QDockWidget with an extra signal
-class LocalDockWidget : public QDockWidget { Q_OBJECT
+class LocalDockWidget : public QDockWidget {
+    Q_OBJECT
 	public:
 		LocalDockWidget(const QString& title, QWidget* parent) : QDockWidget(parent) { setWindowTitle(title); }
 		void setVisible(bool b) Q_DECL_OVERRIDE { QDockWidget::setVisible(b); emit visibilityChanged(b); }

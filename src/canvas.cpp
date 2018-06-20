@@ -198,7 +198,7 @@ void Canvas::slotCanvasSize(double r, double g)
 
 void Canvas::slotPrint(const QString& text)
 {
-	QGraphicsTextItem *ti = new QGraphicsTextItem(text, 0);
+    QGraphicsTextItem *ti = new QGraphicsTextItem(text, nullptr);
 	_scene->addItem(ti);
 // 	ti->setDefaultTextColor(textColor);
 	ti->setFont(*textFont);

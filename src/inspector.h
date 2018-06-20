@@ -41,7 +41,7 @@ class Inspector : public QFrame
 	Q_OBJECT
 
 	public:
-        Inspector(QWidget *parent = nullptr);
+        explicit Inspector(QWidget *parent = nullptr);
 		~Inspector();
 
 		void clear();
