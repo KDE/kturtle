@@ -46,7 +46,6 @@
 #include <KToolBarPopupAction>
 
 #include <kns3/downloaddialog.h>
-#include <QFileDialog>
 
 #include "interpreter/errormsg.h"
 #include "interpreter/translator.h"
@@ -196,7 +195,7 @@ void MainWindow::setupActions()
 	a->setWhatsThis(i18n("Open File: Open an existing file"));
 
 	//TODO: Is this correct? -- It doesn't seem to be working
-	recentFilesAction = (KRecentFilesAction*)actionCollection()->addAction(KStandardAction::OpenRecent,  "file_recent", editor, SLOT(openFile(const QUrl&)));
+	recentFilesAction = (KRecentFilesAction*)actionCollection()->addAction(KStandardAction::OpenRecent,  "file_recent", editor, SLOT(openFile(QUrl)));
 	recentFilesAction->setStatusTip(i18n("Open a recently used file"));
 	recentFilesAction->setWhatsThis(i18n("Open Recent File: Open a recently used file"));
 	
@@ -380,7 +379,7 @@ void MainWindow::setupActions()
         
 // 	a = new QAction(i18n("Show &Console"), this);
 // 	actionCollection()->addAction("show_console", a);
-// 	a->setStatusTip(i18n("Show or hide the interative Console tab"));
+// 	a->setStatusTip(i18n("Show or hide the interactive Console tab"));
 // 	a->setWhatsThis(i18n("Show Console: Show or hide the interactive Console tab"));
 // 	a->setCheckable(true);
 // 	a->setChecked(false);
@@ -494,7 +493,7 @@ void MainWindow::setupActions()
 
 void MainWindow::setupCanvas()
 {
-	// put the canvas in a layout as the cetral widget of the mainwindow
+	// put the canvas in a layout as the central widget of the mainwindow
 	QWidget* centralWidget = new QWidget(this);
 	QHBoxLayout* centralLayout = new QHBoxLayout(centralWidget);
 	centralLayout->setMargin(0);  // MARGIN_SIZE);
@@ -611,10 +610,10 @@ void MainWindow::toggleGuiFeedback(bool b)
 		disconnect(executer, &Executer::currentlyExecuting, editor, &Editor::markCurrentWord);
 		disconnect(executer, &Executer::currentlyExecuting, inspector, &Inspector::markTreeNode);
 		
-		disconnect(executer, SIGNAL(variableTableUpdated(const QString&, const Value&)),
-			inspector, SLOT(updateVariable(const QString&, const Value&)));
-		disconnect(executer, SIGNAL(functionTableUpdated(const QString&, const QStringList&)),
-			inspector, SLOT(updateFunction(const QString&, const QStringList&)));
+		disconnect(executer, SIGNAL(variableTableUpdated(QString,Value)),
+			inspector, SLOT(updateVariable(QString,Value)));
+		disconnect(executer, SIGNAL(functionTableUpdated(QString,QStringList)),
+			inspector, SLOT(updateFunction(QString,QStringList)));
 		editor->removeMarkings();
 	}
 }
@@ -868,10 +867,10 @@ QString MainWindow::execute(const QString &operation)
 	Executer* executer = interpreter->getExecuter();
 	disconnect(executer, &Executer::currentlyExecuting, editor, &Editor::markCurrentWord);
 	disconnect(executer, &Executer::currentlyExecuting, inspector, &Inspector::markTreeNode);
-	disconnect(executer, SIGNAL(variableTableUpdated(const QString&, const Value&)),
-		inspector, SLOT(updateVariable(const QString&, const Value&)));
-	disconnect(executer, SIGNAL(functionTableUpdated(const QString&, const QStringList&)),
-		inspector, SLOT(updateFunction(const QString&, const QStringList&)));
+	disconnect(executer, SIGNAL(variableTableUpdated(QString,Value)),
+		inspector, SLOT(updateVariable(QString,Value)));
+	disconnect(executer, SIGNAL(functionTableUpdated(QString,QStringList)),
+		inspector, SLOT(updateFunction(QString,QStringList)));
 
 	if (interpreter->state() == Interpreter::Uninitialized ||
 	    interpreter->state() == Interpreter::Finished ||

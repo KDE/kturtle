@@ -73,7 +73,7 @@ class Executer : public QObject
 		 */
 		Executer(bool testing = false) : m_testing(testing) {}
 		/**
-		 * @short Destuctor. Does nothing at special.
+		 * @short Destructor. Does nothing at special.
 		 */
 		virtual ~Executer() {}
 
@@ -163,7 +163,7 @@ class Executer : public QObject
 		/// TRUE when returning from a function
 		bool           returning;
 
-		/// TRUE when the next call of execute() should staight execute the current node (not walk the tree first)
+		/// TRUE when the next call of execute() should straight execute the current node (not walk the tree first)
 		bool           executeCurrent;
 
 		bool           m_testing;

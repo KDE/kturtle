@@ -33,12 +33,12 @@
 /**
  * @short An object for an error message.
  *
- * Basiaclly it is a agregation of a QString (the message text), a Token (the Token
- * that is related to the error) and a code (a simple interger).
+ * Basically it is a aggregation of a QString (the message text), a Token (the Token
+ * that is related to the error) and a code (a simple integer).
  *
  * ErrorMessages are created by the Parser and the Executer.
  *
- * @TODO investigate if it will be beter to replace this class by a struct for speed.
+ * @TODO investigate if it will be better to replace this class by a struct for speed.
  *
  * @author Cies Breijs
  */

@@ -89,7 +89,7 @@ void Inspector::disable()
 	variableTable->setEnabled(false);
 	functionTable->setEnabled(false);
 	treeView->setEnabled(false);
-	// enabling happend when the inspector gets filled with data
+	// enabling happened when the inspector gets filled with data
 }
 
 void Inspector::clear()
@@ -165,7 +165,7 @@ void Inspector::updateVariable(const QString& name, const Value& value)
 	QTableWidgetItem* valueItem;
 	valueItem = new QTableWidgetItem(value.string());
 	valueItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
-// TODO varialble coloring when tokens are available in the inspector!
+// TODO variable coloring when tokens are available in the inspector!
 // 	format = highlighter->formatForStatement(value.string());
 // 	valueItem->setFont(format->font());
 // 	valueItem->setForeground(format->foreground());

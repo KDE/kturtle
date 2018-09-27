@@ -61,7 +61,7 @@ class Tokenizer
 		 * Reads a bunch of characters of the input stream and tries to
 		 * recognize them as a certain token type, and returns a Token of that type.
 		 * If nothing is recognized a Token of the type Unknown is returned.
-		 * The singleton Translator object is used to determain the type.
+		 * The singleton Translator object is used to determine the type.
 		 * @returns a pointer to a newly created token as read from the input stream
 		 */
 		Token* getToken();

@@ -17,11 +17,9 @@
 	Boston, MA 02110-1301, USA.
 */
 
-
-#include <QDebug>
-
 #include "tokenizer.h"
 
+#include <QDebug>
 
 void Tokenizer::initialize(const QString& inString)
 {

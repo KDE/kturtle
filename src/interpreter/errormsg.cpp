@@ -34,7 +34,7 @@ ErrorMessage::ErrorMessage(const QString& text, const Token& t, int code)
 
 bool ErrorMessage::operator==(const ErrorMessage& n) const
 {
-	// the 'operator==' mthod has to be implemented for the ErrorList wants to do searches
+	// the 'operator==' method has to be implemented for the ErrorList wants to do searches
 	if (n.text()  == _errorText  ||
 	    n.token() == _errorToken ||
 	    n.code()  == _errorCode) return true;

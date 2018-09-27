@@ -104,7 +104,7 @@ void DirectionCanvas::paintEvent(QPaintEvent *event)
 
 	painter.save();
 
-	// the greay turtle
+	// the gray turtle
 	if (greyTurtleEnabled) {
 		painter.rotate(previousDeg);
 		painter.setPen(Qt::blue);

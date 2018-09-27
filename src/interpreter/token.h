@@ -31,12 +31,12 @@
  * about each token is kept so descriptive error messages can be printed,
  * and proper highlighting and context help made possible.
  *
- * Tokens are made by the Tokenizer accoring to the TurtleScript, then they are stored
+ * Tokens are made by the Tokenizer according to the TurtleScript, then they are stored
  * in the node tree by the Parser or used by the Highlighter of for context help.
  *
  * A large potion of the code of this class (the Type enum) is generated code.
  *
- * @TODO investigate if it will be beter to replace this class by a struct for speed.
+ * @TODO investigate if it will be better to replace this class by a struct for speed.
  *
  * @author Cies Breijs
  */
@@ -51,7 +51,7 @@ class Token
 		{
 			Error   = -2,  // when the Tokenizer finds something it cannot deal with (like a single dot)
 			Unknown = -1,  // when the Translator found no translation (like when calling a learned function)
-			NotSet  =  0,  // when Tokens are contructed without being initialized (needed for ErrorList)
+			NotSet  =  0,  // when Tokens are constructed without being initialized (needed for ErrorList)
 
 //BEGIN GENERATED token_type_h CODE
 
@@ -158,7 +158,7 @@ class Token
 		/**
 		 * This is an enum for the different categories a Token can belong to.
 		 * It is used by the highlighter to know how to highlight the code,
-		 * and the mainwindow to determain the 'context help keyword'.
+		 * and the mainwindow to determine the 'context help keyword'.
 		 * The code for this enum is mostly generated.
 		 */
 		enum Category

@@ -66,7 +66,7 @@ Editor::Editor(QWidget *parent)
 	numbers = new LineNumbers(this, editor);
 	numbers->setFont(editor->document()->defaultFont());
 	numbers->setWidth(1);
-	connect(editor->document()->documentLayout(), SIGNAL(update(const QRectF &)), numbers, SLOT(update()));
+	connect(editor->document()->documentLayout(), SIGNAL(update(QRectF)), numbers, SLOT(update()));
 	connect(editor->verticalScrollBar(), SIGNAL(valueChanged(int)), numbers, SLOT(update()));
 
 	// let the line numbers and the editor coexist

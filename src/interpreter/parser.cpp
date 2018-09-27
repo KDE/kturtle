@@ -159,7 +159,7 @@ void Parser::printTree() const
 
 TreeNode* Parser::parseStatement()
 {
-	// in addition to whitespace and comments (skiped by nextToken()), also skip newlines before statements
+	// in addition to whitespace and comments (skipped by nextToken()), also skip newlines before statements
 	while (currentToken->type() == Token::EndOfLine) {
 		delete currentToken;
 		nextToken();

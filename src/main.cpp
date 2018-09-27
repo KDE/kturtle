@@ -116,7 +116,7 @@ int main(int argc, char* argv[])
 		QFile inputFile(parser.value("parse"));
 		if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
 			std::cout << "Could not open file: " << qPrintable(parser.value("parse")) << std::endl;
-			std::cout << "Exitting..." << std::endl;
+			std::cout << "Exiting..." << std::endl;
 			return 1;
 		}
 		
