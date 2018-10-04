@@ -200,7 +200,7 @@ class Editor : public QFrame
 	Q_OBJECT
 
 	public:
-		Editor(QWidget *parent = nullptr);
+		explicit Editor(QWidget *parent = nullptr);
 		~Editor();
 
 		QTextEdit* view() const { return editor; }

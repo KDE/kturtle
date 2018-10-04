@@ -45,7 +45,7 @@ class Parser
 		 * @short Constructor. Initialses the Parser.
 		 * does nothing special. @see initialize().
 		 */
-		Parser(bool testing = false) : m_testing(testing) {}
+		explicit Parser(bool testing = false) : m_testing(testing) {}
 
 		/**
 		 * @short Destructor. Does nothing special.

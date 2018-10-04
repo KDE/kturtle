@@ -35,7 +35,7 @@ class ColorPatch : public QFrame
 	Q_OBJECT
 
 	public:
-		ColorPatch(QWidget *parent) : QFrame(parent) {
+		explicit ColorPatch(QWidget *parent) : QFrame(parent) {
 			setFrameStyle(QFrame::Panel|QFrame::Sunken);
 		}
         void setColor(const QColor &c) { col = c; }

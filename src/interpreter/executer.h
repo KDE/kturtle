@@ -71,7 +71,7 @@ class Executer : public QObject
 		 * @short Constructor. Initialses the Executer.
 		 * does nothing special. @see initialize().
 		 */
-		Executer(bool testing = false) : m_testing(testing) {}
+		explicit Executer(bool testing = false) : m_testing(testing) {}
 		/**
 		 * @short Destructor. Does nothing at special.
 		 */

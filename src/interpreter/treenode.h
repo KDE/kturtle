@@ -49,7 +49,7 @@ class TreeNode
 		 * Initialses the TreeNode.
 		 * @param token pointer to Token that the TreeNode is associated with.
 		 */
-		TreeNode(Token* token)                  { init(0, token); }
+		explicit TreeNode(Token* token)                  { init(0, token); }
 
 		/**
 		 * @short Destructor.
