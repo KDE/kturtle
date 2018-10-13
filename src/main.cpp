@@ -106,7 +106,7 @@ int main(int argc, char* argv[])
 
 		///////////////// run in DBUS mode /////////////////
 		Translator::instance()->setLanguage();
-		new Interpreter(0, true);
+		new Interpreter(nullptr, true);
 		
 		return app.exec();
 
@@ -202,7 +202,7 @@ int main(int argc, char* argv[])
 		  // free some memory
 
 		// init the interpreter
-		Interpreter* interpreter = new Interpreter(0, true);  // set testing to true
+		Interpreter* interpreter = new Interpreter(nullptr, true);  // set testing to true
 		interpreter->initialize(localizedScript);
 
 		// install the echoer

@@ -243,7 +243,7 @@ bool Editor::saveFile(const QUrl &targetUrl)
 		delete savefile;
         if (!url.isLocalFile())
            {
-            KIO::StoredTransferJob *job = KIO::storedPut(savefile, url, -1, 0);
+            KIO::StoredTransferJob *job = KIO::storedPut(savefile, url, -1, nullptr);
                  if(job->exec()){
                     setCurrentUrl(url);
                     editor->document()->setModified(false);
@@ -300,7 +300,7 @@ void Editor::find()
 	}
 	if (fdialog->exec() == QDialog::Accepted && !fdialog->pattern().isEmpty()) {
 		long kOpts = fdialog->options();
-		QTextDocument::FindFlags qOpts = 0;
+		QTextDocument::FindFlags qOpts = nullptr;
 		if (kOpts & KFind::CaseSensitive)  { qOpts |= QTextDocument::FindCaseSensitively; }
 		if (kOpts & KFind::FindBackwards)  { qOpts |= QTextDocument::FindBackward; }
 		if (kOpts & KFind::WholeWordsOnly) { qOpts |= QTextDocument::FindWholeWords; }
@@ -312,7 +312,7 @@ void Editor::findNext()
 {
 	if (!fdialog->pattern().isEmpty()) {
 		long kOpts = fdialog->options();
-		QTextDocument::FindFlags qOpts = 0;
+		QTextDocument::FindFlags qOpts = nullptr;
 		if (kOpts & KFind::CaseSensitive)  { qOpts |= QTextDocument::FindCaseSensitively; }
 		if (kOpts & KFind::FindBackwards)  { qOpts |= QTextDocument::FindBackward; }
 		if (kOpts & KFind::WholeWordsOnly) { qOpts |= QTextDocument::FindWholeWords; }
@@ -324,7 +324,7 @@ void Editor::findPrev()
 {
 	if(!fdialog->pattern().isEmpty()) {
 		long kOpts = fdialog->options();
-		QTextDocument::FindFlags qOpts = 0;
+		QTextDocument::FindFlags qOpts = nullptr;
 		if (kOpts & KFind::CaseSensitive)    { qOpts |= QTextDocument::FindCaseSensitively; }
 		// search in the opposite direction as findNext()
 		if (!(kOpts & KFind::FindBackwards)) { qOpts |= QTextDocument::FindBackward; }
@@ -386,7 +386,7 @@ Token* Editor::currentToken()
 		token = tokenizer->getToken();
 	}
 	delete token;
-	return 0;
+	return nullptr;
 }
 
 
@@ -424,7 +424,7 @@ QString Editor::toHtml(const QString& title, const QString& lang)
 			default:                escaped = token->look().toHtmlEscaped(); break;
 		}
 		format = highlighter->tokenToFormat(token);
-		if (format != 0) {
+		if (format) {
 			bool bold = format->fontWeight() > 50;
 			html += QString("<span style=\"color: %1;%2\">%3</span>")
 				.arg(format->foreground().color().name())

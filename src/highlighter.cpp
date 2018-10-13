@@ -82,7 +82,7 @@ Token* Highlighter::checkOrApplyHighlighting(const QString& text, int cursorInde
 	QTextCharFormat* format;
 	while (token->type() != Token::EndOfInput) {
 		format = tokenToFormat(token);
-		if (format != 0) {
+		if (format) {
 			if (cursorIndex == -1)  // does not return, but keeps running
 				setFormat(token->startCol() - 1, token->endCol() - token->startCol(), *format);
 			else if (cursorIndex >= token->startCol() && cursorIndex <= token->endCol())
@@ -92,7 +92,7 @@ Token* Highlighter::checkOrApplyHighlighting(const QString& text, int cursorInde
 		token = tokenizer->getToken();
 	}
 	delete token;
-	return 0;
+	return nullptr;
 }
 
 QTextCharFormat* Highlighter::tokenToFormat(Token* token)
@@ -113,9 +113,9 @@ QTextCharFormat* Highlighter::tokenToFormat(Token* token)
 		case Token::AssignmentCategory:        return &assignmentFormat;
 
 		// do nothing with these...
-		case Token::ParenthesisCategory:       return 0;
-		case Token::FunctionCallCategory:      return 0;
-		case Token::ArgumentSeparatorCategory: return 0;
+		case Token::ParenthesisCategory:       return nullptr;
+		case Token::FunctionCallCategory:      return nullptr;
+		case Token::ArgumentSeparatorCategory: return nullptr;
 	}
-	return 0;
+	return nullptr;
 }

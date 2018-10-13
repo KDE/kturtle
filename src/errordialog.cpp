@@ -35,7 +35,7 @@
 ErrorDialog::ErrorDialog(QWidget* parent)
 	: QDialog(parent)
 {
-	errorList = 0;
+	errorList = nullptr;
 
 	setWindowTitle(i18n("Errors"));
 	setModal(false);
@@ -94,7 +94,7 @@ ErrorDialog::ErrorDialog(QWidget* parent)
 void ErrorDialog::clear()
 {
 	disable();
-	errorList = 0;
+	errorList = nullptr;
 	errorTable->clearContents();
 
 	// put a friendly 'nothing to see here' notice in the empty table
@@ -113,7 +113,7 @@ void ErrorDialog::clear()
 
 void ErrorDialog::enable()
 {
-	Q_ASSERT (errorList != 0);
+	Q_ASSERT (errorList);
 	errorTable->setEnabled(true);
 	m_buttonBox->button(QDialogButtonBox::Help)->setEnabled(true);
 	connect(errorTable, &QTableWidget::itemSelectionChanged, this, &ErrorDialog::selectedErrorChangedProxy);
@@ -151,7 +151,7 @@ void ErrorDialog::setErrorList(ErrorList *list)
 
 void ErrorDialog::selectedErrorChangedProxy()
 {
-	Q_ASSERT (errorList != 0);
+	Q_ASSERT (errorList);
 	const Token* t = &errorList->at(errorTable->selectedItems().first()->row()).token();
 	emit currentlySelectedError(t->startRow(), t->startCol(), t->endRow(), t->endCol());
 	// //qDebug() << "EMITTED: " << t->startRow() << ", " << t->startCol() << ", " << t->endRow() << ", " << t->endCol();

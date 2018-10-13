@@ -71,7 +71,7 @@ MainWindow::MainWindow()
 
 	connect(errorDialog, &ErrorDialog::currentlySelectedError, editor, &Editor::markCurrentError);
 
-	colorPicker = 0;
+	colorPicker = nullptr;
 
 	statusBar()->showMessage(i18nc("@info:status the application is ready for commands", "Ready"));
 	updateContentName();  // also sets the window caption to 'untitled'
@@ -136,7 +136,7 @@ void MainWindow::showDirectionDialog()
 }
 void MainWindow::showColorPicker()
 {
-	if (colorPicker == 0) {
+	if (!colorPicker) {
 		colorPicker = new ColorPicker(this);
 		connect(colorPicker, &ColorPicker::pasteText, editor, &Editor::insertPlainText);
 	}
@@ -762,11 +762,11 @@ void MainWindow::updateOnCursorPositionChange()
 
 	Token* cursorToken = editor->currentToken();
 	QString desc;
-	if (cursorToken != 0) {
+	if (cursorToken) {
 		QString look = cursorToken->look();
 		int cat = cursorToken->category();
 		delete cursorToken;
-		cursorToken = 0;
+		cursorToken = nullptr;
 		KLocalizedString layout = ki18n("\"%1\" <%2>");
 		switch (cat) {
 			// not showing the look (only the name):

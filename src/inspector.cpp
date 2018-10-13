@@ -71,7 +71,7 @@ Inspector::Inspector(QWidget *parent)
 // 	functionMap = new QHash<QString, QTableWidgetItem*>();
 // 	treeMap = new QHash<TreeNode*, QTableWidgetItem*>();
 
-	currentlyMarkedTreeItem = 0;
+	currentlyMarkedTreeItem = nullptr;
 
 	disable();
 
@@ -252,7 +252,7 @@ QTreeWidgetItem* Inspector::walkTree(TreeNode* node)
 	QTreeWidgetItem* result = new QTreeWidgetItem();
 	result->setText(0, node->token()->look());
 	QTextCharFormat* format = highlighter->tokenToFormat(node->token());
-	if (format != 0) {
+	if (format) {
 		result->setForeground(0, format->foreground());
 		QFont font(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 		font.setBold(format->font().bold());
@@ -270,7 +270,7 @@ QTreeWidgetItem* Inspector::walkTree(TreeNode* node)
 int Inspector::findVariable(const QString& name)
 {
 	QTableWidgetItem* item = variableMap[name];
-	if (item == 0) return -1;
+	if (!item) return -1;
 	return item->row();
 
 // old implementation before we had a variableMap
@@ -308,9 +308,9 @@ void Inspector::markTreeNode(TreeNode* node)
 
 void Inspector::clearTreeMark()
 {
-	if (currentlyMarkedTreeItem == 0) return;
+	if (!currentlyMarkedTreeItem) return;
 	currentlyMarkedTreeItem->setBackground(0, previousTreeBackground);
-	currentlyMarkedTreeItem = 0;
+	currentlyMarkedTreeItem = nullptr;
 }
 
 void Inspector::clearAllMarks()
