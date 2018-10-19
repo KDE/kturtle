@@ -1051,7 +1051,7 @@ void MainWindow::exportToHtml()
 {
 	// copied from edit code for file selection
 	// we do not handle QUrl, so only local files are accepted
-	QString path = QFileDialog::getSaveFileName(this, i18n("Save code as HTML"), QString(), QString("*.html|%1\n*|%2").arg(i18n("HTML documents")).arg(i18n("All files")));
+	QString path = QFileDialog::getSaveFileName(this, i18n("Save code as HTML"), QString(), QString("%1 (*.html);;%2 (*)").arg(i18n("HTML documents")).arg(i18n("All files")));
 	if (path.isEmpty())
 		return;
 	QSaveFile file(path);
