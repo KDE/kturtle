@@ -27,6 +27,7 @@
 #include <QInputDialog>
 #include <QLabel>
 #include <QMenu>
+#include <QPointer>
 #include <QPrintDialog>
 #include <QPrinter>
 #include <QSaveFile>
@@ -106,7 +107,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 void MainWindow::filePrintDialog()
 {
 	QPrinter printer;
-	QPrintDialog *printDialog = new QPrintDialog(&printer, this);
+	QPointer<QPrintDialog> printDialog = new QPrintDialog(&printer, this);
 	if (printDialog->exec()) {
 		QPainter painter;
 		painter.begin(&printer);
@@ -119,7 +120,7 @@ void MainWindow::filePrintDialog()
 void MainWindow::canvasPrintDialog()
 {
 	QPrinter printer;
-	QPrintDialog *printDialog = new QPrintDialog(&printer, this);
+	QPointer<QPrintDialog> printDialog = new QPrintDialog(&printer, this);
 	if (printDialog->exec()) {
 		QPainter painter;
 		painter.begin(&printer);
@@ -1085,7 +1086,8 @@ void MainWindow::slotMessageDialog(const QString& text)
 
 void MainWindow::getNewExampleDialog()
 {
-	KNS3::DownloadDialog dialog(this);
-	dialog.exec();
+	QPointer<KNS3::DownloadDialog> dialog = new KNS3::DownloadDialog(this);
+	dialog->exec();
 	updateExamplesMenu();
+	delete dialog;
 }
