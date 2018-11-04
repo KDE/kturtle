@@ -98,6 +98,7 @@
   <url type="help">http://docs.kde.org/stable/en/kdeedu/kturtle/index.html</url>
   <screenshots>
     <screenshot type="default">
+      <caption>Programming in KTurtle</caption>
       <image>http://edu.kde.org/images/screenshots/kturtle.png</image>
     </screenshot>
   </screenshots>
