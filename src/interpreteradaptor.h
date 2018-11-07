@@ -12,8 +12,8 @@
 #ifndef INTERPRETERADAPTOR_H_1243976287
 #define INTERPRETERADAPTOR_H_1243976287
 
-#include <QtCore/QObject>
-#include <QtDBus/QtDBus>
+#include <QObject>
+#include <QtDBus>
 #include "interpreter/interpreter.h"
 template<class T> class QList;
 template<class Key, class Value> class QMap;
