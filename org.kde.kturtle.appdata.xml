@@ -96,6 +96,7 @@
   <url type="homepage">http://edu.kde.org/kturtle/</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kturtle</url>
   <url type="help">http://docs.kde.org/stable/en/kdeedu/kturtle/index.html</url>
+  <url type="donation">https://www.kde.org/community/donations/?app=kturtle&amp;source=appdata</url>
   <screenshots>
     <screenshot type="default">
       <caption>Programming in KTurtle</caption>
