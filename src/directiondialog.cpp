@@ -22,10 +22,6 @@
 #include <cmath>
 using std::atan;
 
-#ifndef M_PI
-#define M_PI 3.14159265358979323846264338327950288419717
-#endif
-
 #include <QApplication>
 #include <QBoxLayout>
 #include <QClipboard>
@@ -39,12 +35,12 @@ using std::atan;
 #include <QPaintEvent>
 #include <QPushButton>
 #include <QSpinBox>
+#include <QtMath>
 
 #include <KGuiItem>
 #include <KLocalizedString>
 #include <KStandardGuiItem>
 
-#define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )
 
 
 //BEGIN DirectionCanvas widget
@@ -376,7 +372,7 @@ void DirectionDialog::updateDegrees(double deg)
 {
 	// The canvas has changed, update the spinbox and command-LineEdit
 	skipValueChangedEvent = true;
-	directionSpin->setValue(ROUND2INT(deg));
+	directionSpin->setValue(static_cast<int>(round(deg)));
 	updateCommandBox();
 }
 
@@ -384,7 +380,7 @@ void DirectionDialog::updatePreviousDegrees(double deg)
 {
 	// The canvas has changed, update the spinbox and commandBox
 	skipValueChangedEvent = true;
-	previousDirectionSpin->setValue(ROUND2INT(deg));
+	previousDirectionSpin->setValue(static_cast<int>(round(deg)));
 	updateCommandBox();
 }
 

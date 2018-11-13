@@ -23,18 +23,12 @@
 
 #include <QResizeEvent>
 #include <QWheelEvent>
+#include <QtMath>
 
 #include <KLocalizedString>
 
 
-// this function is used in executer and canvas:
-#define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )
 
-#ifndef M_PI 
-#define M_PI 3.14159265358979323846264338327950288419717
-#endif
-
-const double DegToRad = M_PI / 180.0;
 int kTurtleZValue = 1;
 int kCanvasFrameZValue = -10000;
 int kCanvasMargin = 20;
@@ -143,16 +137,16 @@ void Canvas::slotClear()
 
 void Canvas::slotForward(double x)
 {
-	double x2 = turtle->pos().x() + (x * std::sin(turtle->angle() * DegToRad));
-	double y2 = turtle->pos().y() - (x * std::cos(turtle->angle() * DegToRad));
+	double x2 = turtle->pos().x() + (x * std::sin(qDegreesToRadians(turtle->angle())));
+	double y2 = turtle->pos().y() - (x * std::cos(qDegreesToRadians(turtle->angle())));
 	drawLine(turtle->pos().x(), turtle->pos().y(), x2, y2);
 	slotGo(x2, y2);
 }
 
 void Canvas::slotBackward(double x)
 {
-	double x2 = turtle->pos().x() - ( x * std::sin(turtle->angle() * DegToRad) );
-	double y2 = turtle->pos().y() + ( x * std::cos(turtle->angle() * DegToRad) );
+	double x2 = turtle->pos().x() - ( x * std::sin(qDegreesToRadians(turtle->angle())));
+	double y2 = turtle->pos().y() + ( x * std::cos(qDegreesToRadians(turtle->angle())));
 	drawLine(turtle->pos().x(), turtle->pos().y(), x2, y2);
 	slotGo(x2, y2);
 }
@@ -164,7 +158,7 @@ void Canvas::slotCenter()
 
 void Canvas::slotPenWidth(double width)
 {
-	int w = qMax(ROUND2INT(width), 0);
+	int w = qMax(static_cast<int>(round(width)), 0);
 	if (w == 0) {
 		penWidthIsZero = true;
 		return;

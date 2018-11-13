@@ -31,13 +31,8 @@
 
 #include <krandom.h>
 #include <KLocalizedString>
+#include <QtMath>
 
-
-// this function is used in executer and canvas:
-#define ROUND2INT(x) ( (x) >= 0 ? (int)( (x) + .5 ) : (int)( (x) - .5 ) )
-
-#define DEG2RAD(deg) ( deg * (M_PI / 180) )
-#define RAD2DEG(rad) ( rad * (180 / M_PI) )
 
 void Executer::initialize(TreeNode* tree, ErrorList* _errorList)
 {
@@ -490,7 +485,7 @@ void Executer::executeRepeat(TreeNode* node) {
 
 	// the iteration state is stored on the variable table
 	if (currentVariableTable()->contains(id)) {
-		int currentCount = ROUND2INT((*currentVariableTable())[id].number());
+		int currentCount = static_cast<int>(round((*currentVariableTable())[id].number()));
 		if (currentCount > 0) {
 			(*currentVariableTable())[id].setNumber(currentCount - 1);
 		} else {
@@ -498,10 +493,10 @@ void Executer::executeRepeat(TreeNode* node) {
 			return;
 		}
 	} else {
-		if(ROUND2INT(node->child(0)->value()->number())<=0) // handle 'repeat 0'
+		if(static_cast<int>(round(node->child(0)->value()->number()))<=0) // handle 'repeat 0'
 			return;
 		
-		currentVariableTable()->insert(id, Value((double)(ROUND2INT(node->child(0)->value()->number()) - 1)));
+		currentVariableTable()->insert(id, Value(round(node->child(0)->value()->number()) - 1.0));
 	}
 	newScope = node->child(1);
 }
@@ -1013,42 +1008,42 @@ void Executer::executeTan(TreeNode* node) {
 	if (!checkParameterQuantity(node, 1, 20000+Token::Tan*100+90)) return;
 	
 	double deg = node->child(0)->value()->number();
-	node->value()->setNumber(tan(DEG2RAD(deg)));
+	node->value()->setNumber(tan(qDegreesToRadians(deg)));
 }
 void Executer::executeSin(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 1, 20000+Token::Sin*100+90)) return;
 	
 	double deg = node->child(0)->value()->number();
-	node->value()->setNumber(sin(DEG2RAD(deg)));
+	node->value()->setNumber(sin(qDegreesToRadians(deg)));
 }
 void Executer::executeCos(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 1, 20000+Token::Cos*100+90)) return;
 	
 	double deg = node->child(0)->value()->number();
-	node->value()->setNumber(cos(DEG2RAD(deg)));
+	node->value()->setNumber(cos(qDegreesToRadians(deg)));
 }
 void Executer::executeArcTan(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 1, 20000+Token::ArcTan*100+90)) return;
 	
 	double deg = node->child(0)->value()->number();
-	node->value()->setNumber(RAD2DEG(atan(deg)));
+	node->value()->setNumber(qRadiansToDegrees(atan(deg)));
 }
 void Executer::executeArcSin(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 1, 20000+Token::ArcSin*100+90)) return;
 	
 	double deg = node->child(0)->value()->number();
-	node->value()->setNumber(RAD2DEG(asin(deg)));
+	node->value()->setNumber(qRadiansToDegrees(asin(deg)));
 }
 void Executer::executeArcCos(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 1, 20000+Token::ArcCos*100+90)) return;
 	
 	double deg = node->child(0)->value()->number();
-	node->value()->setNumber(RAD2DEG(acos(deg)));
+	node->value()->setNumber(qRadiansToDegrees(acos(deg)));
 }
 void Executer::executeSqrt(TreeNode* node) {
 //	//qDebug() << "called";
@@ -1067,7 +1062,7 @@ void Executer::executeRound(TreeNode* node) {
     if (!checkParameterQuantity(node, 1, 20000+Token::Round*100+90)) return;
    
     double val = node->child(0)->value()->number();
-    node->value()->setNumber((double)ROUND2INT(val));
+    node->value()->setNumber(round(val));
 }
 void Executer::executeGetDirection(TreeNode* node) {
 //	//qDebug() << "called";
@@ -1085,7 +1080,7 @@ void Executer::executeMod(TreeNode* node) {
 	if (!checkParameterType(node, Value::Number, 20000+Token::Mod*100+91)) return;
 	double x = nodeX->value()->number();
 	double y = nodeY->value()->number();
-	double m = (double)(ROUND2INT(x) % ROUND2INT(y));
+	double m = (double)(static_cast<int>(round(x)) % static_cast<int>(round(y)));
 	node->value()->setNumber(m);
 }
 
