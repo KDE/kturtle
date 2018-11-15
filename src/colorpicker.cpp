@@ -86,7 +86,7 @@ ColorPicker::ColorPicker(QWidget* parent)
 	blueSlider->setMaximum(255);
 	blueSpin = new QSpinBox(this);
 	blueSpin->setMaximum(255);
-	QLabel* blueLabel = new QLabel(i18n("Amount blue:"));
+    QLabel* blueLabel = new QLabel(i18n("Amount blue:"));
 	blueLabel->setBuddy(blueSpin);
 	gridLayout->addWidget(blueLabel, 2, 0);
 	gridLayout->addWidget(blueSlider, 2, 1);

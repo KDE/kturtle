@@ -110,9 +110,9 @@ void Canvas::resizeEvent(QResizeEvent* event)
 
 QColor Canvas::rgbDoublesToColor(double r, double g, double b)
 {
-	return QColor(qMin(qMax((int)r, 0), 255),
-	              qMin(qMax((int)g, 0), 255),
-	              qMin(qMax((int)b, 0), 255));
+	return QColor(qMin(qMax(static_cast<int>(r), 0), 255),
+			qMin(qMax(static_cast<int>(g), 0), 255),
+			qMin(qMax(static_cast<int>(b), 0), 255));
 }
 
 void Canvas::drawLine(double x1, double y1, double x2, double y2)
@@ -174,7 +174,7 @@ void Canvas::slotPenWidth(double width)
 void Canvas::slotPenColor(double r, double g, double b)
 {
 	pen->setColor(rgbDoublesToColor(r, g, b));
-	textColor.setRgb((int)r, (int)g, (int)b);
+	textColor.setRgb(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b));
 }
 
 void Canvas::slotCanvasColor(double r, double g, double b)
@@ -219,7 +219,7 @@ void Canvas::slotReset()
 
 void Canvas::wheelEvent(QWheelEvent *event)
 {
-	scaleView(std::pow((double)2.0, -event->delta() / 240.0));
+	scaleView(std::pow(static_cast<double>(2.0), -event->delta() / 240.0));
 }
 
 void Canvas::scaleView(double scaleFactor)

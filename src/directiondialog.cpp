@@ -260,7 +260,7 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	previousDirectionSpin->setRange(-360, 720);
 	previousDirectionSpin->setWrapping(true);
 	previousDirectionSpin->setSingleStep(10);
-	previousDirectionSpin->setValue((int)deg);
+	previousDirectionSpin->setValue(static_cast<int>(deg));
 	rightLayout->addWidget(previousDirectionSpin);
 	previousDirectionLabel->setBuddy(previousDirectionSpin);
 	connect(previousDirectionSpin, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &DirectionDialog::directionChanged);
@@ -276,7 +276,7 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	directionSpin->setRange(-360, 720);
 	directionSpin->setWrapping(true);
 	directionSpin->setSingleStep(10);
-	directionSpin->setValue((int)deg);
+	directionSpin->setValue(static_cast<int>(deg));
 	rightLayout->addWidget(directionSpin);
 	directionLabel->setBuddy(directionSpin);
 	connect(directionSpin, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &DirectionDialog::directionChanged);

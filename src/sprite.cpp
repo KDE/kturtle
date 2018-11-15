@@ -42,7 +42,7 @@ void Sprite::setSpriteSize(int size)
 	
 	if (size <= 0 || w <= 0 || h <= 0) return;
 	
-	qreal s = ((qreal)size) / ((w > h) ? w : h);
+	qreal s = (static_cast<qreal>(size)) / ((w > h) ? w : h);
 	
 	setTransform(QTransform::fromScale(s, s), true);
 }
@@ -56,8 +56,8 @@ void Sprite::setAngle(double degrees)
 	// but we want to the rotation to be around the SVG's center...
 	// This is why this "translation" is needed before the actual rotation.
 	QTransform transform = QTransform::fromTranslate(
-		renderer()->defaultSize().width()  * cos((degrees-135) * M_PI/180) * sqrt((double)2.0)/2,
-		renderer()->defaultSize().height() * sin((degrees-135) * M_PI/180) * sqrt((double)2.0)/2
+		renderer()->defaultSize().width()  * cos((degrees-135) * M_PI/180) * sqrt(static_cast<double>(2.0))/2,
+		renderer()->defaultSize().height() * sin((degrees-135) * M_PI/180) * sqrt(static_cast<double>(2.0))/2
 	);
 	transform.rotate(degrees);
 	setTransform(transform, true);

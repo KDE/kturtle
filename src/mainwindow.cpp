@@ -196,7 +196,7 @@ void MainWindow::setupActions()
 	a->setWhatsThis(i18n("Open File: Open an existing file"));
 
 	//TODO: Is this correct? -- It doesn't seem to be working
-	recentFilesAction = (KRecentFilesAction*)actionCollection()->addAction(KStandardAction::OpenRecent,  "file_recent", editor, SLOT(openFile(QUrl)));
+	recentFilesAction = dynamic_cast<KRecentFilesAction*>(actionCollection()->addAction(KStandardAction::OpenRecent,  "file_recent", editor, SLOT(openFile(QUrl))));
 	recentFilesAction->setStatusTip(i18n("Open a recently used file"));
 	recentFilesAction->setWhatsThis(i18n("Open Recent File: Open a recently used file"));
 	
