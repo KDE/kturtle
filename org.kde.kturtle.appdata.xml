@@ -103,6 +103,7 @@
       <caption xml:lang="ca">Programant amb el KTurtle</caption>
       <caption xml:lang="ca-valencia">Programant amb el KTurtle</caption>
       <caption xml:lang="de">Programmieren in KTurtle</caption>
+      <caption xml:lang="en-GB">Programming in KTurtle</caption>
       <caption xml:lang="es">Programando en KTurtle</caption>
       <caption xml:lang="gl">Programación con KTurtle</caption>
       <caption xml:lang="nl">Programmeren in KTurtle</caption>
@@ -111,6 +112,7 @@
       <caption xml:lang="sv">Programmera i Kturtle</caption>
       <caption xml:lang="uk">Програмування у KTurtle</caption>
       <caption xml:lang="x-test">xxProgramming in KTurtlexx</caption>
+      <caption xml:lang="zh-TW">在 KTurtle 寫程式</caption>
       <image>http://edu.kde.org/images/screenshots/kturtle.png</image>
     </screenshot>
   </screenshots>
