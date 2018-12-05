@@ -50,7 +50,7 @@ class Parser
 		/**
 		 * @short Destructor. Does nothing special.
 		 */
-		~Parser() {}
+        ~Parser();
 
 
 		/**

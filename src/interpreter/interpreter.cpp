@@ -46,7 +46,16 @@ Interpreter::Interpreter(QObject* parent, bool testing)
 	parser     = new Parser(testing);
 	executer   = new Executer(testing);
 
-	m_state = Uninitialized;
+    m_state = Uninitialized;
+}
+
+Interpreter::~Interpreter()
+{
+    errorList->clear();
+    delete errorList;
+    delete tokenizer;
+    delete parser;
+    delete executer;
 }
 
 void Interpreter::initialize(const QString& inString)

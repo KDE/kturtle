@@ -24,6 +24,10 @@
 #include <KLocalizedString>
 
 
+Parser::~Parser()
+{
+}
+
 void Parser::initialize(Tokenizer* _tokenizer, ErrorList* _errorList)
 {
 	tokenizer    = _tokenizer;
@@ -31,7 +35,7 @@ void Parser::initialize(Tokenizer* _tokenizer, ErrorList* _errorList)
 
 	rootNode     = new TreeNode(new Token(Token::Root, "root", 0, 0, 0, 0));
 	currentScope = rootNode;
-	newScope     = 0;
+    newScope     = nullptr;
 	finished     = false;
 
 	nextToken();
