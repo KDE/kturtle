@@ -52,8 +52,8 @@ DirectionCanvas::DirectionCanvas(QWidget* parent)
 	setMinimumSize(230, 200);
 	setBackgroundRole(QPalette::Base);
 	setAutoFillBackground(true);
-	turtle.load(QString(":turtle.svg"));
-	greyTurtle.load(QString(":turtle_grey.svg"));
+	turtle.load(QStringLiteral(":turtle.svg"));
+	greyTurtle.load(QStringLiteral(":turtle_grey.svg"));
 
 	deg = 0;
 	previousDeg = 0;
@@ -93,10 +93,10 @@ void DirectionCanvas::paintEvent(QPaintEvent *event)
 	}
 	painter.restore();
 
-	painter.drawText(-100, -98, 200, 200, Qt::AlignHCenter|Qt::AlignTop, "0");
-	painter.drawText(-100, -100, 200, 200, Qt::AlignHCenter|Qt::AlignBottom, "180");
-	painter.drawText(-100, -100, 203, 200, Qt::AlignRight|Qt::AlignVCenter, "90");
-	painter.drawText(-109, -100, 200, 200, Qt::AlignLeft|Qt::AlignVCenter, "270");
+	painter.drawText(-100, -98, 200, 200, Qt::AlignHCenter|Qt::AlignTop, QStringLiteral("0"));
+	painter.drawText(-100, -100, 200, 200, Qt::AlignHCenter|Qt::AlignBottom, QStringLiteral("180"));
+	painter.drawText(-100, -100, 203, 200, Qt::AlignRight|Qt::AlignVCenter, QStringLiteral("90"));
+	painter.drawText(-109, -100, 200, 200, Qt::AlignLeft|Qt::AlignVCenter, QStringLiteral("270"));
 
 	painter.save();
 
@@ -239,9 +239,9 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	commandPickerLabel->setScaledContents(true);
 	rightLayout->addWidget(commandPickerLabel);
 	commandPicker = new QComboBox(rightWidget);
-	commandPicker->insertItem(Turnleft, translator->default2localized("turnleft"));
-	commandPicker->insertItem(Turnright, translator->default2localized("turnright"));
-	commandPicker->insertItem(Direction, translator->default2localized("direction"));
+	commandPicker->insertItem(Turnleft, translator->default2localized(QStringLiteral("turnleft")));
+	commandPicker->insertItem(Turnright, translator->default2localized(QStringLiteral("turnright")));
+	commandPicker->insertItem(Direction, translator->default2localized(QStringLiteral("direction")));
 	rightLayout->addWidget(commandPicker);
 	commandPickerLabel->setBuddy(commandPicker);
 	connect(commandPicker, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &DirectionDialog::changeCommand);
@@ -290,13 +290,13 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	commandBox = new QLineEdit(rightWidget);
 	commandBox->setReadOnly(true);
 	commandBox->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
-	commandBox->setMinimumWidth(commandBox->fontMetrics().boundingRect("000000000_360").width());
+	commandBox->setMinimumWidth(commandBox->fontMetrics().boundingRect(QStringLiteral("000000000_360")).width());
 	pasteRowLayout->addWidget(commandBox);
-	QPushButton* copyButton = new QPushButton(QIcon::fromTheme("edit-copy"), i18n("&Copy to clipboard"), baseWidget);
+	QPushButton* copyButton = new QPushButton(QIcon::fromTheme(QStringLiteral("edit-copy")), i18n("&Copy to clipboard"), baseWidget);
 	mainLayout->addWidget(copyButton);
 	pasteRowLayout->addWidget(copyButton);
 	connect(copyButton, &QPushButton::clicked, this, &DirectionDialog::copyProxy);
-	QPushButton* pasteButton = new QPushButton(QIcon::fromTheme("edit-paste"), i18n("&Paste to editor"), baseWidget);
+	QPushButton* pasteButton = new QPushButton(QIcon::fromTheme(QStringLiteral("edit-paste")), i18n("&Paste to editor"), baseWidget);
 	mainLayout->addWidget(pasteButton);
 	pasteRowLayout->addWidget(pasteButton);
 	connect(pasteButton, &QPushButton::clicked, this, &DirectionDialog::pasteProxy);
@@ -391,15 +391,15 @@ void DirectionDialog::updateCommandBox()
 	int degree = 0;
 	switch (currentCommand) {
 		case Turnleft:
-			output.append(translator->default2localized("turnleft"));
+			output.append(translator->default2localized(QStringLiteral("turnleft")));
 			degree = 360 - (directionSpin->value() - previousDirectionSpin->value());
 			break;
 		case Turnright:
-			output.append(translator->default2localized("turnright"));
+			output.append(translator->default2localized(QStringLiteral("turnright")));
 			degree = directionSpin->value() - previousDirectionSpin->value();
 			break;
 		case Direction:
-			output.append(translator->default2localized("direction"));
+			output.append(translator->default2localized(QStringLiteral("direction")));
 			degree = directionSpin->value();
 			break;
 	}
@@ -408,7 +408,7 @@ void DirectionDialog::updateCommandBox()
 	} else if (degree >= 360) {
 		degree -= 360;
 	}
-	output.append(QString(" %1\n").arg(degree));
+	output.append(QStringLiteral(" %1\n").arg(degree));
 	commandBox->setText(output);
 }
 

@@ -130,9 +130,9 @@ QString Value::string() const
 {
 	if (m_type == Value::Bool) {
 		if (m_bool)
-			return QString(Translator::instance()->default2localized("true"));
+			return QString(Translator::instance()->default2localized(QStringLiteral("true")));
 		else
-			return QString(Translator::instance()->default2localized("false"));
+			return QString(Translator::instance()->default2localized(QStringLiteral("false")));
 	} else if (m_type == Value::Number) {
 		QString s;
 		s.setNum(m_double);
@@ -311,7 +311,7 @@ void Value::init()
 	m_type = Value::Empty;  // init'ed values are empty by default
 	m_bool = false;
 	m_double = 0;
-	m_string = "";
+	m_string = QLatin1String("");
 }
 
 

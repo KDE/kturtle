@@ -111,17 +111,17 @@ ColorPicker::ColorPicker(QWidget* parent)
 	resultBox = new QLineEdit(this);
 	resultBox->setReadOnly(true);
 	resultBox->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
-	int width = QFontMetrics(QFontDatabase::systemFont(QFontDatabase::FixedFont)).boundingRect("255, 255, 255_000").width();
+	int width = QFontMetrics(QFontDatabase::systemFont(QFontDatabase::FixedFont)).boundingRect(QStringLiteral("255, 255, 255_000")).width();
 	resultBox->setMinimumWidth(width);
 	resultBox->setMaximumWidth(width);
 	resultLayout->addWidget(resultBox);
 
-	QPushButton* copyButton = new QPushButton(QIcon::fromTheme("edit-copy"), i18n("&Copy to clipboard"), baseWidget);
+	QPushButton* copyButton = new QPushButton(QIcon::fromTheme(QStringLiteral("edit-copy")), i18n("&Copy to clipboard"), baseWidget);
 	mainLayout->addWidget(copyButton);
 	resultLayout->addWidget(copyButton);
 	connect(copyButton, &QPushButton::clicked, this, &ColorPicker::copyProxy);
 
-	QPushButton* pasteButton = new QPushButton(QIcon::fromTheme("edit-paste"), i18n("&Paste to editor"), baseWidget);
+	QPushButton* pasteButton = new QPushButton(QIcon::fromTheme(QStringLiteral("edit-paste")), i18n("&Paste to editor"), baseWidget);
 	mainLayout->addWidget(pasteButton);
 	resultLayout->addWidget(pasteButton);
 	connect(pasteButton, &QPushButton::clicked, this, &ColorPicker::pasteProxy);
@@ -162,8 +162,8 @@ void ColorPicker::blueChanged(int value)
 
 void ColorPicker::updateResult(int r, int g, int b)
 {
-	QString separator(Translator::instance()->default2localized(QString(",")));
-	resultBox->setText(QString("%2%1 %3%1 %4 \n").arg(separator).arg(r).arg(g).arg(b));
+	QString separator(Translator::instance()->default2localized(QStringLiteral(",")));
+	resultBox->setText(QStringLiteral("%2%1 %3%1 %4 \n").arg(separator).arg(r).arg(g).arg(b));
 	colorPatch->setColor(QColor(r, g, b));
 	colorPatch->repaint();
 }

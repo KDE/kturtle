@@ -75,7 +75,7 @@ class ErrorList : public QList<ErrorMessage>
 			ErrorList::iterator error;
 			int i = 1;
 			for (error = this->begin(); error != this->end(); ++error) {
-				result.append(QString("%1: %2 [by %3 on line %4], code %5")
+				result.append(QStringLiteral("%1: %2 [by %3 on line %4], code %5")
 					.arg(i)
 					.arg((*error).text())
 					.arg((*error).token().look())

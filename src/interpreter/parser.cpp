@@ -33,7 +33,7 @@ void Parser::initialize(Tokenizer* _tokenizer, ErrorList* _errorList)
 	tokenizer    = _tokenizer;
 	errorList    = _errorList;
 
-	rootNode     = new TreeNode(new Token(Token::Root, "root", 0, 0, 0, 0));
+	rootNode     = new TreeNode(new Token(Token::Root, QStringLiteral("root"), 0, 0, 0, 0));
 	currentScope = rootNode;
     newScope     = nullptr;
 	finished     = false;
@@ -276,7 +276,7 @@ TreeNode* Parser::parseFactor()
 			{ // extra scope to localize the QString 'str'
 				QString str = currentToken->look();
 				if (!currentToken->look().endsWith('\"')) {
-					str += "\"";
+					str += QLatin1String("\"");
 					addError(i18n("Text string was not properly closed, expected a double quote, ' \" ', to close the string."), *currentToken, 0);
 				}
 				node->value()->setString(str.mid(1, str.length() - 2));
@@ -517,7 +517,7 @@ TreeNode* Parser::parseFunctionCall() {
 }
 TreeNode* Parser::parseScopeOpen() {
 
-	TreeNode* scopeNode = new TreeNode(new Token(Token::Scope, "{...}", currentToken->startRow(), currentToken->startCol(), 0, 0));
+	TreeNode* scopeNode = new TreeNode(new Token(Token::Scope, QStringLiteral("{...}"), currentToken->startRow(), currentToken->startCol(), 0, 0));
 	delete currentToken;
 	nextToken();
 	// cannot change the currentScope to this scope cauz we still have to work in the currentScope
@@ -618,7 +618,7 @@ TreeNode* Parser::parseFor() {
 			nextToken();
 			node->appendChild(parseExpression());
 		} else {
-			TreeNode* step = new TreeNode(new Token(Token::Number, "1", 0,0,0,0));
+			TreeNode* step = new TreeNode(new Token(Token::Number, QStringLiteral("1"), 0,0,0,0));
 			step->setValue(Value(1.0));
 			node->appendChild(step);
 		}
@@ -676,7 +676,7 @@ TreeNode* Parser::parseLearn() {
 	node->appendChild(new TreeNode(new Token(*currentToken)));
 	skipToken(Token::FunctionCall, *node->token());
 	
-	TreeNode* argumentList = new TreeNode(new Token(Token::ArgumentList, "arguments", 0, 0, 0, 0));
+	TreeNode* argumentList = new TreeNode(new Token(Token::ArgumentList, QStringLiteral("arguments"), 0, 0, 0, 0));
 	while (currentToken->type() == Token::Variable) {
 		// cannot just call appendArguments here because we're only appending Token::Variable tokens
 		argumentList->appendChild(new TreeNode(currentToken));

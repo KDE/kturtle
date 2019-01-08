@@ -65,48 +65,48 @@ class Echoer : public QObject
  * Thanks for looking at the code!
  */
 
-			connect(executer, SIGNAL(reset()),
-				SLOT(reset()));
-			connect(executer, SIGNAL(clear()),
-				SLOT(clear()));
-			connect(executer, SIGNAL(center()),
-				SLOT(center()));
-			connect(executer, SIGNAL(go(double, double)),
-				SLOT(go(double, double)));
-			connect(executer, SIGNAL(goX(double)),
-				SLOT(goX(double)));
-			connect(executer, SIGNAL(goY(double)),
-				SLOT(goY(double)));
-			connect(executer, SIGNAL(forward(double)),
-				SLOT(forward(double)));
-			connect(executer, SIGNAL(backward(double)),
-				SLOT(backward(double)));
-			connect(executer, SIGNAL(direction(double)),
-				SLOT(direction(double)));
-			connect(executer, SIGNAL(turnLeft(double)),
-				SLOT(turnLeft(double)));
-			connect(executer, SIGNAL(turnRight(double)),
-				SLOT(turnRight(double)));
-			connect(executer, SIGNAL(penWidth(double)),
-				SLOT(penWidth(double)));
-			connect(executer, SIGNAL(penUp()),
-				SLOT(penUp()));
-			connect(executer, SIGNAL(penDown()),
-				SLOT(penDown()));
-			connect(executer, SIGNAL(penColor(double, double, double)),
-				SLOT(penColor(double, double, double)));
-			connect(executer, SIGNAL(canvasColor(double, double, double)),
-				SLOT(canvasColor(double, double, double)));
-			connect(executer, SIGNAL(canvasSize(double, double)),
-				SLOT(canvasSize(double, double)));
-			connect(executer, SIGNAL(spriteShow()),
-				SLOT(spriteShow()));
-			connect(executer, SIGNAL(spriteHide()),
-				SLOT(spriteHide()));
-			connect(executer, SIGNAL(print(const QString&)),
-				SLOT(print(const QString&)));
-			connect(executer, SIGNAL(fontSize(double)),
-				SLOT(fontSize(double)));
+			connect(executer, &Executer::reset,
+				this, &Echoer::reset);
+			connect(executer, &Executer::clear,
+				this, &Echoer::clear);
+			connect(executer, &Executer::center,
+				this, &Echoer::center);
+			connect(executer, &Executer::go,
+				this, &Echoer::go);
+			connect(executer, &Executer::goX,
+				this, &Echoer::goX);
+			connect(executer, &Executer::goY,
+				this, &Echoer::goY);
+			connect(executer, &Executer::forward,
+				this, &Echoer::forward);
+			connect(executer, &Executer::backward,
+				this, &Echoer::backward);
+			connect(executer, &Executer::direction,
+				this, &Echoer::direction);
+			connect(executer, &Executer::turnLeft,
+				this, &Echoer::turnLeft);
+			connect(executer, &Executer::turnRight,
+				this, &Echoer::turnRight);
+			connect(executer, &Executer::penWidth,
+				this, &Echoer::penWidth);
+			connect(executer, &Executer::penUp,
+				this, &Echoer::penUp);
+			connect(executer, &Executer::penDown,
+				this, &Echoer::penDown);
+			connect(executer, &Executer::penColor,
+				this, &Echoer::penColor);
+			connect(executer, &Executer::canvasColor,
+				this, &Echoer::canvasColor);
+			connect(executer, &Executer::canvasSize,
+				this, &Echoer::canvasSize);
+			connect(executer, &Executer::spriteShow,
+				this, &Echoer::spriteShow);
+			connect(executer, &Executer::spriteHide,
+				this, &Echoer::spriteHide);
+			connect(executer, &Executer::print,
+				this, &Echoer::print);
+			connect(executer, &Executer::fontSize,
+				this, &Echoer::fontSize);
 
 //END GENERATED echoer_connect_h CODE
 		}

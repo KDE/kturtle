@@ -56,21 +56,21 @@ int main(int argc, char* argv[])
 
 	/* for migration*/
 	QStringList configFiles;
-	configFiles << QLatin1String("kturtlerc");
-	Kdelibs4ConfigMigrator migrator(QLatin1String("kturtle"));
+	configFiles << QStringLiteral("kturtlerc");
+	Kdelibs4ConfigMigrator migrator(QStringLiteral("kturtle"));
 	migrator.setConfigFiles(configFiles);
 	migrator.setUiFiles(QStringList() << QStringLiteral("kturtleui.rc"));
 	migrator.migrate();
 
-	KAboutData aboutData("kturtle", ki18n("KTurtle").toString(), KTURTLE_VERSION_STRING);
+	KAboutData aboutData(QStringLiteral("kturtle"), ki18n("KTurtle").toString(), KTURTLE_VERSION_STRING);
 	aboutData.setLicense(KAboutLicense::GPL);
 	aboutData.setHomepage(ki18n(website).toString());
 	aboutData.setShortDescription(ki18n(description).toString());
 	aboutData.setCopyrightStatement(ki18n(copyright).toString());
 
-	aboutData.addAuthor(ki18n("Cies Breijs").toString(), ki18n("Initiator and core developer").toString(), "cies@kde.nl");
-	aboutData.addAuthor(ki18n("Niels Slot").toString(), ki18n("Core developer").toString(), "nielsslot@gmail.com");
-	aboutData.addAuthor(ki18n("Mauricio Piacentini").toString(), ki18n("Core developer").toString(), "piacentini@kde.org");
+	aboutData.addAuthor(ki18n("Cies Breijs").toString(), ki18n("Initiator and core developer").toString(), QStringLiteral("cies@kde.nl"));
+	aboutData.addAuthor(ki18n("Niels Slot").toString(), ki18n("Core developer").toString(), QStringLiteral("nielsslot@gmail.com"));
+	aboutData.addAuthor(ki18n("Mauricio Piacentini").toString(), ki18n("Core developer").toString(), QStringLiteral("piacentini@kde.org"));
 
 	QCommandLineParser parser;
 
@@ -79,17 +79,17 @@ int main(int argc, char* argv[])
 	parser.addHelpOption();
 	aboutData.setupCommandLine(&parser);
 
-	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("i") << QLatin1String("input"), i18n("File or URL to open (in the GUI mode)"), QLatin1String("URL or file")));
-	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("d") << QLatin1String("dbus"), i18n("Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test scripts")));
-	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("t") << QLatin1String("test"), i18n("Starts KTurtle in testing mode (without a GUI), directly runs the specified local file"), QLatin1String("file")));
-	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("l") << QLatin1String("lang"), i18n("Specifies the localization language by a language code, defaults to \"en_US\" (only works in testing mode)"), QLatin1String("code")));
+	parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("i") << QStringLiteral("input"), i18n("File or URL to open (in the GUI mode)"), QStringLiteral("URL or file")));
+	parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("d") << QStringLiteral("dbus"), i18n("Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test scripts")));
+	parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("t") << QStringLiteral("test"), i18n("Starts KTurtle in testing mode (without a GUI), directly runs the specified local file"), QStringLiteral("file")));
+	parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("l") << QStringLiteral("lang"), i18n("Specifies the localization language by a language code, defaults to \"en_US\" (only works in testing mode)"), QStringLiteral("code")));
 // 	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("k") << QLatin1String("tokenize"), i18n("Only tokenizes the turtle code (only works in testing mode)")));
-	parser.addOption(QCommandLineOption(QStringList() << QLatin1String("p") << QLatin1String("parse"), i18n("Translates turtle code to embeddable C++ example strings (for developers only)"), QLatin1String("file")));
+	parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("p") << QStringLiteral("parse"), i18n("Translates turtle code to embeddable C++ example strings (for developers only)"), QStringLiteral("file")));
 
 	parser.process(app);
 	aboutData.processCommandLine(&parser);
 
-	if (!parser.isSet("test") && !parser.isSet("parse") && !parser.isSet("dbus")) {
+	if (!parser.isSet(QStringLiteral("test")) && !parser.isSet(QStringLiteral("parse")) && !parser.isSet(QStringLiteral("dbus"))) {
 
 		///////////////// run in GUI mode /////////////////
 		if (app.isSessionRestored()) {
@@ -97,12 +97,12 @@ int main(int argc, char* argv[])
 		} else {
 			MainWindow* mainWindow = new MainWindow();
 			mainWindow->show();
-			if (parser.isSet("input")) mainWindow->open(parser.value("input"));
+			if (parser.isSet(QStringLiteral("input"))) mainWindow->open(parser.value(QStringLiteral("input")));
 		}
 		  // free some memory
 		return app.exec();  // the mainwindow has WDestructiveClose flag; it will destroy itself.
 
-	} else if (parser.isSet("dbus")) {
+	} else if (parser.isSet(QStringLiteral("dbus"))) {
 
 		///////////////// run in DBUS mode /////////////////
 		Translator::instance()->setLanguage();
@@ -110,10 +110,10 @@ int main(int argc, char* argv[])
 		
 		return app.exec();
 
-	} else if (parser.isSet("parse")) {
+	} else if (parser.isSet(QStringLiteral("parse"))) {
 
 		///////////////// run in example PARSING mode /////////////////
-		QFile inputFile(parser.value("parse"));
+		QFile inputFile(parser.value(QStringLiteral("parse")));
 		if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
 			std::cout << "Could not open file: " << qPrintable(parser.value("parse")) << std::endl;
 			std::cout << "Exiting..." << std::endl;
@@ -131,7 +131,7 @@ int main(int argc, char* argv[])
 		Token* t;
 		while ((t = tokenizer.getToken())->type() != Token::EndOfInput) {
 			if (defaultLooks.contains(t->look()))
-				result.append(QString("@(%1)").arg(t->look()));
+				result.append(QStringLiteral("@(%1)").arg(t->look()));
 			else
 				result.append(t->look());
 			if (t->type() == Token::EndOfLine) result.append('\n');
@@ -146,7 +146,7 @@ int main(int argc, char* argv[])
 		std::cout << "KTurtle's interpreter in command line mode (version " << KTURTLE_VERSION_STRING << ")" << std::endl;
 		std::cout << copyright << std::endl << std::endl;
 
-		QString fileString = parser.value("test");
+		QString fileString = parser.value(QStringLiteral("test"));
 		QFile inputFile(fileString);
 
 		if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -165,11 +165,11 @@ int main(int argc, char* argv[])
 			return 1;
 		}
 
-		if (parser.isSet("lang")) {
-			if (Translator::instance()->setLanguage(parser.value("lang"))) {
-				std::cout << "Set localization to: " << parser.value("lang").data() << std::endl;
+		if (parser.isSet(QStringLiteral("lang"))) {
+			if (Translator::instance()->setLanguage(parser.value(QStringLiteral("lang")))) {
+				std::cout << "Set localization to: " << parser.value(QStringLiteral("lang")).data() << std::endl;
 			} else {
-				std::cout << "Could not set localization to:" << parser.value("lang").data() << std::endl;
+				std::cout << "Could not set localization to:" << parser.value(QStringLiteral("lang")).data() << std::endl;
 				std::cout << "Exitting...\n";
 				return 1;
 			}

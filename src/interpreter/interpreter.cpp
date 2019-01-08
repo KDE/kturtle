@@ -38,7 +38,7 @@ Interpreter::Interpreter(QObject* parent, bool testing)
 	if (testing) {
 		new InterpreterAdaptor(this);
 		QDBusConnection dbus = QDBusConnection::sessionBus();
-		dbus.registerObject("/Interpreter", this);
+		dbus.registerObject(QStringLiteral("/Interpreter"), this);
 	}
 
 	errorList  = new ErrorList();

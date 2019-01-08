@@ -103,7 +103,7 @@ TreeNode* TreeNode::nextSibling()
 
 QString TreeNode::toString()
 {
-	QString str = "";
+	QString str = QLatin1String("");
 	showTree(str);
 	return str;
 }
@@ -123,9 +123,9 @@ void TreeNode::showTree(QString& str, int indent)
 
 void TreeNode::show(QString& str, int indent) const
 {
-	QString indentString = "";
-	for (int i = 0; i < indent; i++) indentString += "> ";
-	str += indentString + _token->look() + QString(" @ (%1, %2)-(%3, %4)\n")
+	QString indentString = QLatin1String("");
+	for (int i = 0; i < indent; i++) indentString += QLatin1String("> ");
+	str += indentString + _token->look() + QStringLiteral(" @ (%1, %2)-(%3, %4)\n")
 		.arg(_token->startRow())
 		.arg(_token->startCol())
 		.arg(_token->endRow())

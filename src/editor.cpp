@@ -55,7 +55,7 @@ Editor::Editor(QWidget *parent)
 	editor->setFrameStyle(QFrame::NoFrame);
 	editor->installEventFilter(this);
 	editor->setLineWrapMode(QTextEdit::WidgetWidth);
-	editor->setTabStopWidth(editor->fontMetrics().boundingRect("0").width() * TAB_WIDTH);
+	editor->setTabStopWidth(editor->fontMetrics().boundingRect(QStringLiteral("0")).width() * TAB_WIDTH);
 	editor->setAcceptRichText(false);
 	setFocusProxy(editor);
 	connect(editor->document(), &QTextDocument::contentsChange, this, &Editor::textChanged);
@@ -161,7 +161,7 @@ bool Editor::openFile(const QUrl &_url)
             url = QFileDialog::getOpenFileUrl(this, 
                                               i18n("Open"), 
                                               QUrl(), 
-                                              QString("%1 (*.turtle);;%2 (*)").arg(i18n("Turtle code files")).arg(i18n("All files"))
+                                              QStringLiteral("%1 (*.turtle);;%2 (*)").arg(i18n("Turtle code files")).arg(i18n("All files"))
                     );
 		}
 		if (!url.isEmpty()) {
@@ -227,7 +227,7 @@ bool Editor::saveFile(const QUrl &targetUrl)
 				}
 				if (localizedLooks.contains(t->look())) {
 					QString defaultLook(Translator::instance()->defaultLook(t->look()));
-					unstranslated.append(QString("@(%1)").arg(defaultLook));
+					unstranslated.append(QStringLiteral("@(%1)").arg(defaultLook));
 				} else {
 					if (t->type() == Token::EndOfLine) 
 						pendingEOL = true;
@@ -269,7 +269,7 @@ bool Editor::saveFileAs()
     QUrl url = QFileDialog::getSaveFileUrl(this,
                                            i18n("Save As"),
                                            QUrl(),
-                                           QString("%1 (*.turtle);;%2 (*)").arg(i18n("Turtle code files")).arg(i18n("All files"))
+                                           QStringLiteral("%1 (*.turtle);;%2 (*)").arg(i18n("Turtle code files")).arg(i18n("All files"))
                                            );
     if (url.isEmpty()) return false;
 	bool result = saveFile(url);
@@ -350,7 +350,7 @@ void Editor::setCurrentUrl(const QUrl &url)
 void Editor::setOverwriteMode(bool b)
 {
 	editor->setOverwriteMode(b);
-	editor->setCursorWidth(b ? editor->fontMetrics().boundingRect("0").width() : 2);
+	editor->setCursorWidth(b ? editor->fontMetrics().boundingRect(QStringLiteral("0")).width() : 2);
 }
 
 
@@ -427,14 +427,14 @@ QString Editor::toHtml(const QString& title, const QString& lang)
 	while (token->type() != Token::EndOfInput) {
 		QString escaped;
 		switch (token->type()) {
-			case Token::EndOfLine:  escaped = "<br />"; break;
-			case Token::WhiteSpace: escaped = ""; for (int n = 0; n < token->look().length(); n++) { escaped += "&nbsp;"; } break;
+			case Token::EndOfLine:  escaped = QStringLiteral("<br />"); break;
+			case Token::WhiteSpace: escaped = QLatin1String(""); for (int n = 0; n < token->look().length(); n++) { escaped += QLatin1String("&nbsp;"); } break;
 			default:                escaped = token->look().toHtmlEscaped(); break;
 		}
 		format = highlighter->tokenToFormat(token);
 		if (format) {
 			bool bold = format->fontWeight() > 50;
-			html += QString("<span style=\"color: %1;%2\">%3</span>")
+			html += QStringLiteral("<span style=\"color: %1;%2\">%3</span>")
 				.arg(format->foreground().color().name())
 				.arg(bold ? " font-weight: bold;" : "")
 				.arg(escaped);

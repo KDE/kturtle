@@ -47,7 +47,7 @@ static const int EDITOR_MARGIN = 2;       // some margin that can't be set to ze
 static const int CURSOR_RECT_MARGIN = 5;  // another margin that cannot be traced
 static const int LINENUMBER_SPACING = 2;  // sets the margin for the line numbers
 
-const QString KTURTLE_MAGIC_1_0 = "kturtle-script-v1.0";
+const QString KTURTLE_MAGIC_1_0 = QStringLiteral("kturtle-script-v1.0");
 
 
 //BEGIN LineNumbers class
@@ -65,8 +65,8 @@ class LineNumbers : public QWidget
 		void setWidth(int w) {
 			if (w == maxWidth) return;  // save some cpu cycles
 			maxWidth = w;
-			QString s("");
-			for (; w > 0; w--) s += "0";
+			QString s;
+			for (; w > 0; w--) s += QStringLiteral("0");
 			setFixedWidth(fontMetrics().boundingRect(s).width() + 2*LINENUMBER_SPACING);
 		}
 
@@ -176,7 +176,7 @@ class TextEdit : public QTextEdit
 			QVector<QRect> rects;
 			while (cursor < endCursor) {
 				cursor.movePosition(QTextCursor::PreviousCharacter);
-				rects << (rect | cursorRect(cursor).adjusted(0, 0, fontMetrics().boundingRect("0").width() - CURSOR_RECT_MARGIN, 0));
+				rects << (rect | cursorRect(cursor).adjusted(0, 0, fontMetrics().boundingRect(QStringLiteral("0")).width() - CURSOR_RECT_MARGIN, 0));
 				cursor.movePosition(QTextCursor::Down);
 				cursor.movePosition(QTextCursor::StartOfLine);
 				rect = cursorRect(cursor).adjusted(CURSOR_RECT_MARGIN, 0, 0, 0);

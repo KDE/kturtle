@@ -452,7 +452,7 @@ void Executer::executeExit(TreeNode* node) {
 }
 void Executer::executeIf(TreeNode* node) {
 //	//qDebug() << "called";
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg(reinterpret_cast<quintptr>(node));
+	QString id = QStringLiteral("__%1_%2").arg(node->token()->look()).arg(reinterpret_cast<quintptr>(node));
 	if (currentVariableTable()->contains(id)) {
 		currentVariableTable()->remove(id);
 		return;
@@ -475,7 +475,7 @@ void Executer::executeElse(TreeNode* node) {
 }
 void Executer::executeRepeat(TreeNode* node) {
 //	//qDebug() << "called";
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg(reinterpret_cast<quintptr>(node));
+	QString id = QStringLiteral("__%1_%2").arg(node->token()->look()).arg(reinterpret_cast<quintptr>(node));
 
 	if(breaking) {
 		breaking = false;
@@ -507,7 +507,7 @@ void Executer::executeWhile(TreeNode* node) {
 	// so we do the following on every call to executeWhile:
 	//     exec scope, exec expression, exec scope, exec expression, ...
 
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg(reinterpret_cast<quintptr>(node));
+	QString id = QStringLiteral("__%1_%2").arg(node->token()->look()).arg(reinterpret_cast<quintptr>(node));
 
 	if (breaking) {
 		// We hit a break command while executing the scope
@@ -556,7 +556,7 @@ void Executer::executeForTo(TreeNode* node) {
 		firstIteration = true;
 	}
 
-	QString id = QString("__%1_%2").arg(node->token()->look()).arg(reinterpret_cast<quintptr>(node));
+	QString id = QStringLiteral("__%1_%2").arg(node->token()->look()).arg(reinterpret_cast<quintptr>(node));
 
 	if(breaking) {
 		breaking = false;
@@ -631,7 +631,7 @@ void Executer::executeWait(TreeNode* node) {
 	if (!checkParameterQuantity(node, 1, 20000+Token::Wait*100+90)) return;
 	if (!checkParameterType(node, Value::Number, 20000+Token::Wait*100+91) ) return;
 	waiting = true;
-	QTimer::singleShot(static_cast<int>(1000*node->child(0)->value()->number()), this, SLOT(stopWaiting()));
+	QTimer::singleShot(static_cast<int>(1000*node->child(0)->value()->number()), this, &Executer::stopWaiting);
 }
 void Executer::executeAssert(TreeNode* node) {
 //	//qDebug() << "called";

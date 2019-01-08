@@ -23,7 +23,7 @@
 
 Token::Token()
 	: _type(Token::NotSet),
-	  _look(""),
+	  _look(QLatin1String("")),
 	  _startRow(0),
 	  _startCol(0),
 	  _endRow(0),

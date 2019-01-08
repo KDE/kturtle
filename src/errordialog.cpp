@@ -159,5 +159,5 @@ void ErrorDialog::selectedErrorChangedProxy()
 
 void ErrorDialog::helpRequested()
 {
-	KHelpClient::invokeHelp("reference", "kturtle");
+	KHelpClient::invokeHelp(QStringLiteral("reference"), QStringLiteral("kturtle"));
 }

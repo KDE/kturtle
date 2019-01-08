@@ -190,7 +190,7 @@ void Inspector::updateVariable(const QString& name, const Value& value)
 			break;
 		default:
 			// should never happen
-			typeItem  = new QTableWidgetItem("ERROR! please report to KTurtle developers");
+			typeItem  = new QTableWidgetItem(QStringLiteral("ERROR! please report to KTurtle developers"));
 			break;
 	}
 	typeItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
@@ -223,7 +223,7 @@ void Inspector::updateFunction(const QString& name, const QStringList& parameter
 		font.setItalic(true);
 		paramItem->setFont(font);
 	} else {
-		QString paramList = parameters.join(Translator::instance()->default2localized(QString(",")));
+		QString paramList = parameters.join(Translator::instance()->default2localized(QStringLiteral(",")));
 		paramItem = new QTableWidgetItem(paramList);
 	}
 	

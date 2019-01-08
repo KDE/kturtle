@@ -187,44 +187,44 @@ void MainWindow::setupActions()
 	// (he thinks whatis is to give the translators even more work)
 
 	// File menu actions
-	a = actionCollection()->addAction(KStandardAction::New,  "file_new", editor, SLOT(newFile()));
+	a = actionCollection()->addAction(KStandardAction::New,  QStringLiteral("file_new"), editor, SLOT(newFile()));
 	a->setStatusTip(i18n("Create a new file"));
 	a->setWhatsThis(i18n("New File: Create a new file"));
 
-	a = actionCollection()->addAction(KStandardAction::Open,  "file_open", editor, SLOT(openFile()));
+	a = actionCollection()->addAction(KStandardAction::Open,  QStringLiteral("file_open"), editor, SLOT(openFile()));
 	a->setStatusTip(i18n("Open an existing file"));
 	a->setWhatsThis(i18n("Open File: Open an existing file"));
 
 	//TODO: Is this correct? -- It doesn't seem to be working
-	recentFilesAction = dynamic_cast<KRecentFilesAction*>(actionCollection()->addAction(KStandardAction::OpenRecent,  "file_recent", editor, SLOT(openFile(QUrl))));
+	recentFilesAction = dynamic_cast<KRecentFilesAction*>(actionCollection()->addAction(KStandardAction::OpenRecent,  QStringLiteral("file_recent"), editor, SLOT(openFile(QUrl))));
 	recentFilesAction->setStatusTip(i18n("Open a recently used file"));
 	recentFilesAction->setWhatsThis(i18n("Open Recent File: Open a recently used file"));
 	
-	a = new QAction(QIcon::fromTheme("get-hot-new-stuff"), i18n("Get more examples..."), this);
-	actionCollection()->addAction("get_new_examples", a);
+	a = new QAction(QIcon::fromTheme(QStringLiteral("get-hot-new-stuff")), i18n("Get more examples..."), this);
+	actionCollection()->addAction(QStringLiteral("get_new_examples"), a);
 	a->setText(i18n("Get more examples..."));
 	connect(a, &QAction::triggered, this, &MainWindow::getNewExampleDialog);
 
-	a = actionCollection()->addAction(KStandardAction::Save,  "file_save", editor, SLOT(saveFile()));
+	a = actionCollection()->addAction(KStandardAction::Save,  QStringLiteral("file_save"), editor, SLOT(saveFile()));
 	a->setStatusTip(i18n("Save the current file to disk"));
 	a->setWhatsThis(i18n("Save File: Save the current file to disk"));
 	connect(editor->document(), &QTextDocument::modificationChanged, a, &QAction::setEnabled);
 
-	a = actionCollection()->addAction(KStandardAction::SaveAs,  "file_save_as", editor, SLOT(saveFileAs()));
+	a = actionCollection()->addAction(KStandardAction::SaveAs,  QStringLiteral("file_save_as"), editor, SLOT(saveFileAs()));
 	a->setStatusTip(i18n("Save the current file under a different name"));
 	a->setWhatsThis(i18n("Save File As: Save the current file under a different name"));
 
-	exportToHtmlAct = actionCollection()->addAction("file_export_to_html");
+	exportToHtmlAct = actionCollection()->addAction(QStringLiteral("file_export_to_html"));
 	exportToHtmlAct->setText(i18n("Export to &HTML..."));
 	exportToHtmlAct->setStatusTip(i18n("Export the contents of the editor as HTML"));
 	exportToHtmlAct->setWhatsThis(i18n("Export to HTML: Export the contents of the editor as HTML"));
 	connect(exportToHtmlAct, &QAction::triggered, this, &MainWindow::exportToHtml);
 
-	a = actionCollection()->addAction(KStandardAction::Print, "file_print", this, SLOT(filePrintDialog()));
+	a = actionCollection()->addAction(KStandardAction::Print, QStringLiteral("file_print"), this, SLOT(filePrintDialog()));
 	a->setStatusTip(i18n("Print the code"));
 	a->setWhatsThis(i18n("Print: Print the code"));
 
-	a = actionCollection()->addAction(KStandardAction::Quit, "file_quit", this, SLOT(close()));
+	a = actionCollection()->addAction(KStandardAction::Quit, QStringLiteral("file_quit"), this, SLOT(close()));
 	a->setStatusTip(i18n("Quit KTurtle"));
 	a->setWhatsThis(i18n("Quit: Quit KTurtle"));
 
@@ -263,7 +263,7 @@ void MainWindow::setupActions()
 	a->setEnabled(true);
 
 	a  = new QAction(i18n("Overwrite Mode"), this);
-	actionCollection()->addAction("overwrite", a );
+	actionCollection()->addAction(QStringLiteral("overwrite"), a );
 	a->setStatusTip(i18n("Toggle between the 'insert' and 'overwrite' mode"));
 	a->setWhatsThis(i18n("Overwrite Mode: Toggle between the 'insert' and 'overwrite' mode"));
 	actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::Key_Insert));
@@ -289,42 +289,42 @@ void MainWindow::setupActions()
 	//a->setWhatsThis(i18n("Replace: Replace text in the editor"));
 
 	// Canvas menu action
-	exportToPngAct = actionCollection()->addAction("canvas_export_to_png");
+	exportToPngAct = actionCollection()->addAction(QStringLiteral("canvas_export_to_png"));
 	exportToPngAct->setText(i18n("Export to &Image (PNG)..."));
 	exportToPngAct->setStatusTip(i18n("Export the current canvas to a PNG raster image"));
 	exportToPngAct->setWhatsThis(i18n("Export to PNG: Export the current canvas to a PNG raster image"));
 	connect(exportToPngAct, &QAction::triggered, this, &MainWindow::exportToPng);
 
-	exportToSvgAct = actionCollection()->addAction("canvas_export_to_svg");
+	exportToSvgAct = actionCollection()->addAction(QStringLiteral("canvas_export_to_svg"));
 	exportToSvgAct->setText(i18n("Export to &Drawing (SVG)..."));
 	exportToSvgAct->setStatusTip(i18n("Export the current canvas to Scalable Vector Graphics"));
 	exportToSvgAct->setWhatsThis(i18n("Export to SVG: Export the current canvas to Scalable Vector Graphics"));
 	connect(exportToSvgAct, &QAction::triggered, this, &MainWindow::exportToSvg);
 
-	printCanvasAct = new QAction(QIcon::fromTheme("document-print"), i18n("&Print Canvas..."), this);
-	actionCollection()->addAction("canvas_print", printCanvasAct);
+	printCanvasAct = new QAction(QIcon::fromTheme(QStringLiteral("document-print")), i18n("&Print Canvas..."), this);
+	actionCollection()->addAction(QStringLiteral("canvas_print"), printCanvasAct);
 	printCanvasAct->setStatusTip(i18n("Print the canvas"));
 	printCanvasAct->setWhatsThis(i18n("Print: Print the canvas"));
 	connect(printCanvasAct, &QAction::triggered, this, &MainWindow::canvasPrintDialog);
 
 	// Run menu actions
-	runAct = new QAction(QIcon::fromTheme("media-playback-start"), i18n("&Run"), this);
-	actionCollection()->addAction("run", runAct);
+	runAct = new QAction(QIcon::fromTheme(QStringLiteral("media-playback-start")), i18n("&Run"), this);
+	actionCollection()->addAction(QStringLiteral("run"), runAct);
 	actionCollection()->setDefaultShortcut(runAct, QKeySequence(Qt::Key_F5));
 	runAct->setStatusTip(i18n("Execute the program"));
 	runAct->setWhatsThis(i18n("Run: Execute the program"));
 	connect(runAct, &QAction::triggered, this, &MainWindow::run);
 
-	pauseAct = new QAction(QIcon::fromTheme("media-playback-pause"), i18n("&Pause"), this);
-	actionCollection()->addAction("pause", pauseAct);
+	pauseAct = new QAction(QIcon::fromTheme(QStringLiteral("media-playback-pause")), i18n("&Pause"), this);
+	actionCollection()->addAction(QStringLiteral("pause"), pauseAct);
 	pauseAct->setCheckable(true);
 	actionCollection()->setDefaultShortcut(pauseAct, QKeySequence(Qt::Key_F6));
 	pauseAct->setStatusTip(i18n("Pause execution"));
 	pauseAct->setWhatsThis(i18n("Pause: Pause execution"));
 	connect(pauseAct, &QAction::triggered, this, &MainWindow::pause);
 
-	abortAct = new QAction(QIcon::fromTheme("process-stop"), i18n("&Abort"), this);
-	actionCollection()->addAction("abort", abortAct);
+	abortAct = new QAction(QIcon::fromTheme(QStringLiteral("process-stop")), i18n("&Abort"), this);
+	actionCollection()->addAction(QStringLiteral("abort"), abortAct);
 	actionCollection()->setDefaultShortcut(abortAct, QKeySequence(Qt::Key_F7));
 	abortAct->setStatusTip(i18n("Stop executing program"));
 	abortAct->setWhatsThis(i18n("Abort: Stop executing program"));
@@ -338,20 +338,20 @@ void MainWindow::setupActions()
 
 	// Tools menu actions
 	a = new QAction(i18n("&Direction Chooser..."), this);
-	actionCollection()->addAction("direction_chooser", a);
+	actionCollection()->addAction(QStringLiteral("direction_chooser"), a);
 	a->setStatusTip(i18n("Shows the direction chooser dialog"));
 	a->setWhatsThis(i18n("Direction Chooser: Show the direction chooser dialog"));
 	connect(a, &QAction::triggered, this, &MainWindow::showDirectionDialog);
 
 	a = new QAction(i18n("&Color Picker..."), this);
-	actionCollection()->addAction("color_picker", a);
+	actionCollection()->addAction(QStringLiteral("color_picker"), a);
 	a->setStatusTip(i18n("Shows the color picker dialog"));
 	a->setWhatsThis(i18n("Color Picker: Show the color picker dialog"));
 	connect(a, &QAction::triggered, this, &MainWindow::showColorPicker);
 
 	// Settings menu action
 	a = new QAction(i18n("Show &Editor"), this);
-	actionCollection()->addAction("show_editor", a);
+	actionCollection()->addAction(QStringLiteral("show_editor"), a);
 	a->setStatusTip(i18n("Show or hide the Code Editor"));
 	a->setWhatsThis(i18n("Show Code Editor: Show or hide the Code Editor"));
 	actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_E));
@@ -361,7 +361,7 @@ void MainWindow::setupActions()
 	connect(editorDock, &LocalDockWidget::visibilityChanged, a, &QAction::setChecked);
 
 	a = new QAction(i18n("Show &Inspector"), this);
-	actionCollection()->addAction("show_inspector", a);
+	actionCollection()->addAction(QStringLiteral("show_inspector"), a);
 	a->setStatusTip(i18n("Show or hide the Inspector"));
 	a->setWhatsThis(i18n("Show Inspector: Show or hide the Inspector"));
 	actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_I));
@@ -371,7 +371,7 @@ void MainWindow::setupActions()
 	connect(inspectorDock, &LocalDockWidget::visibilityChanged, a, &QAction::setChecked);
 
 	a = new QAction(i18n("Show E&rrors"), this);
-	actionCollection()->addAction("show_errors", a);
+	actionCollection()->addAction(QStringLiteral("show_errors"), a);
 	a->setStatusTip(i18n("Show or hide the Errors tab"));
 	a->setWhatsThis(i18n("Show Errors: Show or hide the Errors tab"));
 	a->setCheckable(true);
@@ -388,7 +388,7 @@ void MainWindow::setupActions()
 // 	connect(consoleDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
 
 	a = new QAction(i18n("Show &Line Numbers"), this);
-	actionCollection()->addAction("line_numbers", a);
+	actionCollection()->addAction(QStringLiteral("line_numbers"), a);
 	a->setStatusTip(i18n("Turn the line numbers on/off in the editor"));
 	a->setWhatsThis(i18n("Show Line Numbers: Turn the line numbers on/off in the editor"));
 	actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::Key_F11));
@@ -397,16 +397,16 @@ void MainWindow::setupActions()
 	connect(a, &QAction::toggled, editor, &Editor::toggleLineNumbers);
 
 	// Help menu actions
-	contextHelpAct = ac->addAction("context_help");
-	contextHelpAct->setText("");
-	contextHelpAct->setIcon(QIcon::fromTheme("help-about"));
+	contextHelpAct = ac->addAction(QStringLiteral("context_help"));
+	contextHelpAct->setText(QLatin1String(""));
+	contextHelpAct->setIcon(QIcon::fromTheme(QStringLiteral("help-about")));
 	actionCollection()->setDefaultShortcut(contextHelpAct, QKeySequence(Qt::Key_F2));
 	contextHelpAct->setStatusTip(i18n("Get help on the command under the cursor"));
 	contextHelpAct->setWhatsThis(i18n("Context Help: Get help on the command under the cursor"));
 	connect(contextHelpAct, &QAction::triggered, this, &MainWindow::contextHelp);
 	updateContextHelpAction();
 
-	a = actionCollection()->addAction(KStandardAction::HelpContents, "help_contents", this, SLOT(appHelpActivated()));
+	a = actionCollection()->addAction(KStandardAction::HelpContents, QStringLiteral("help_contents"), this, SLOT(appHelpActivated()));
 	a->setStatusTip(i18n("Help"));
 	a->setWhatsThis(i18n("Help: Open manual for KTurtle"));
 
@@ -414,11 +414,11 @@ void MainWindow::setupActions()
 	console = new Console(this);
 	console->setText(i18n("Console"));
 	actionCollection()->setDefaultShortcut(console, QKeySequence(Qt::Key_F4));
-	actionCollection()->addAction("console", console);
+	actionCollection()->addAction(QStringLiteral("console"), console);
 	connect(console, &Console::execute, this, &MainWindow::execute);
 
-	executeConsoleAct = actionCollection()->addAction("execute_console");
-	executeConsoleAct->setIcon(QIcon::fromTheme("go-jump-locationbar"));
+	executeConsoleAct = actionCollection()->addAction(QStringLiteral("execute_console"));
+	executeConsoleAct->setIcon(QIcon::fromTheme(QStringLiteral("go-jump-locationbar")));
 	executeConsoleAct->setText(i18n("Execute"));
 	connect(executeConsoleAct, &QAction::triggered, console, &Console::executeActionTriggered);
 	executeConsoleAct->setWhatsThis(i18n("Execute: Executes the current line in the console"));
@@ -427,16 +427,16 @@ void MainWindow::setupActions()
 	QActionGroup* runSpeedGroup = new QActionGroup(this);
 
 	// The run action collection, this is used in the toolbar to create a dropdown menu on the run button
-	KToolBarPopupAction* runSpeedAction = new KToolBarPopupAction(QIcon::fromTheme("media-playback-start"), i18n("&Run"), this);
+	KToolBarPopupAction* runSpeedAction = new KToolBarPopupAction(QIcon::fromTheme(QStringLiteral("media-playback-start")), i18n("&Run"), this);
 	connect(runSpeedAction, &KToolBarPopupAction::triggered, this, &MainWindow::run);
 	QMenu* runSpeedActionMenu = runSpeedAction->menu();
-	actionCollection()->addAction("run_speed", runSpeedAction);
+	actionCollection()->addAction(QStringLiteral("run_speed"), runSpeedAction);
 	runSpeedActionMenu->setStatusTip(i18n("Execute the program, or use the drop down menu to select the run speed"));
 	runSpeedActionMenu->setWhatsThis(i18n("Run: Execute the program, or use the drop down menu to select the run speed"));
 	connect(runSpeedActionMenu, &QMenu::triggered, this, &MainWindow::run);
 
 	dedicatedSpeedAct = new QAction(i18nc("@option:radio", "Full Speed (&no highlighting and inspector)"), this);
-	actionCollection()->addAction("dedicated_speed", dedicatedSpeedAct);
+	actionCollection()->addAction(QStringLiteral("dedicated_speed"), dedicatedSpeedAct);
 	dedicatedSpeedAct->setCheckable(true);
 	dedicatedSpeedAct->setStatusTip(i18n("Run the program at full speed, with highlighting and inspector disabled"));
 	dedicatedSpeedAct->setWhatsThis(i18n("Full Speed: Run the program at full speed, with highlighting and inspector disabled"));
@@ -445,7 +445,7 @@ void MainWindow::setupActions()
 	runSpeedActionMenu->addAction(dedicatedSpeedAct);
 
 	fullSpeedAct = new QAction(i18nc("@option:radio", "&Full Speed"), this);
-	actionCollection()->addAction("full_speed", fullSpeedAct);
+	actionCollection()->addAction(QStringLiteral("full_speed"), fullSpeedAct);
 	fullSpeedAct->setCheckable(true);
 	fullSpeedAct->setChecked(true);
 	fullSpeedAct->setStatusTip(i18n("Run the program at full speed"));
@@ -455,7 +455,7 @@ void MainWindow::setupActions()
 	runSpeedActionMenu->addAction(fullSpeedAct);
 
 	slowSpeedAct = new QAction(i18nc("@option:radio choose the slow speed", "&Slow"), this);
-	actionCollection()->addAction("slow_speed", slowSpeedAct);
+	actionCollection()->addAction(QStringLiteral("slow_speed"), slowSpeedAct);
 	slowSpeedAct->setCheckable(true);
 	slowSpeedAct->setStatusTip(i18n("Run the program at a slow speed"));
 	slowSpeedAct->setWhatsThis(i18n("Slow Speed: Run the program at a slow speed"));
@@ -464,7 +464,7 @@ void MainWindow::setupActions()
 	runSpeedActionMenu->addAction(slowSpeedAct);
 
 	slowerSpeedAct = new QAction(i18nc("@option:radio", "S&lower"), this);
-	actionCollection()->addAction("slower_speed", slowerSpeedAct);
+	actionCollection()->addAction(QStringLiteral("slower_speed"), slowerSpeedAct);
 	slowerSpeedAct->setCheckable(true);
 	slowerSpeedAct->setStatusTip(i18n("Run the program at a slower speed"));
 	slowerSpeedAct->setWhatsThis(i18n("Slower Speed: Run the program at a slower speed"));
@@ -473,7 +473,7 @@ void MainWindow::setupActions()
 	runSpeedActionMenu->addAction(slowerSpeedAct);
 
 	slowestSpeedAct = new QAction(i18nc("@option:radio", "Sl&owest"), this);
-	actionCollection()->addAction("slowest_speed", slowestSpeedAct);
+	actionCollection()->addAction(QStringLiteral("slowest_speed"), slowestSpeedAct);
 	slowestSpeedAct->setCheckable(true);
 	slowestSpeedAct->setStatusTip(i18n("Run the program at the slowest speed"));
 	slowestSpeedAct->setWhatsThis(i18n("Slowest Speed: Run the program at the slowest speed"));
@@ -482,7 +482,7 @@ void MainWindow::setupActions()
 	runSpeedActionMenu->addAction(slowestSpeedAct);
 
 	stepSpeedAct = new QAction(i18nc("@option:radio", "S&tep-by-Step"), this);
-	actionCollection()->addAction("step_speed", stepSpeedAct);
+	actionCollection()->addAction(QStringLiteral("step_speed"), stepSpeedAct);
 	stepSpeedAct->setCheckable(true);
 	stepSpeedAct->setStatusTip(i18n("Run the program one step at a time"));
 	stepSpeedAct->setWhatsThis(i18n("Step Speed: Run the program one step at a time"));
@@ -533,12 +533,12 @@ void MainWindow::showErrorDialog(bool show)
 		stackedWidget->setCurrentIndex(1);
 		canvasTabWidget->insertTab(0, canvasTab, i18n("&Canvas"));
 		canvasTabWidget->setCurrentIndex(1);
-		actionCollection()->action("show_errors")->setChecked(true);
+		actionCollection()->action(QStringLiteral("show_errors"))->setChecked(true);
 	} else {
 		// show the canvas only
 		stackedWidget->insertWidget(0, canvasTab);
 		stackedWidget->setCurrentIndex(0);
-		actionCollection()->action("show_errors")->setChecked(false);
+		actionCollection()->action(QStringLiteral("show_errors"))->setChecked(false);
 	}
 }
 
@@ -546,7 +546,7 @@ void MainWindow::showErrorDialog(bool show)
 void MainWindow::setupDockWindows()
 {
 	editorDock = new LocalDockWidget(i18n("&Editor"), this);
-	editorDock->setObjectName("editor");
+	editorDock->setObjectName(QStringLiteral("editor"));
 	QWidget* editorWrapWidget = new QWidget(editorDock);
 	QHBoxLayout* editorDockLayout = new QHBoxLayout(editorWrapWidget);
  	editorDockLayout->setMargin(MARGIN_SIZE);
@@ -563,7 +563,7 @@ void MainWindow::setupDockWindows()
 
 	// Creating the debug window
 	inspectorDock = new LocalDockWidget(i18n("&Inspector"), this);
-	inspectorDock->setObjectName("inspector");
+	inspectorDock->setObjectName(QStringLiteral("inspector"));
 	QWidget* inspectorWrapWidget = new QWidget(inspectorDock);
 	QHBoxLayout* inspectorDockLayout = new QHBoxLayout(inspectorWrapWidget);
 	inspectorDockLayout->setMargin(MARGIN_SIZE);
@@ -611,10 +611,10 @@ void MainWindow::toggleGuiFeedback(bool b)
 		disconnect(executer, &Executer::currentlyExecuting, editor, &Editor::markCurrentWord);
 		disconnect(executer, &Executer::currentlyExecuting, inspector, &Inspector::markTreeNode);
 		
-		disconnect(executer, SIGNAL(variableTableUpdated(QString,Value)),
-			inspector, SLOT(updateVariable(QString,Value)));
-		disconnect(executer, SIGNAL(functionTableUpdated(QString,QStringList)),
-			inspector, SLOT(updateFunction(QString,QStringList)));
+		disconnect(executer, &Executer::variableTableUpdated,
+			inspector, &Inspector::updateVariable);
+		disconnect(executer, &Executer::functionTableUpdated,
+			inspector, &Inspector::updateFunction);
 		editor->removeMarkings();
 	}
 }
@@ -674,8 +674,8 @@ void MainWindow::updateLanguagesMenu()
 		languageGroup->addAction(a);
 		languageList.append(a);
 	}
-	unplugActionList ("languages_actionlist");
-	plugActionList   ("languages_actionlist", languageList);
+	unplugActionList (QStringLiteral("languages_actionlist"));
+	plugActionList   (QStringLiteral("languages_actionlist"), languageList);
 }
 
 void MainWindow::updateExamplesMenu()
@@ -697,7 +697,7 @@ void MainWindow::updateExamplesMenu()
 	QStringList allExamples;
 	const QStringList exampleDirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, GHNS_TARGET, QStandardPaths::LocateDirectory);
 	foreach (const QString &dir, exampleDirs) {
-		const QStringList fileNames = QDir(dir).entryList(QStringList() << "*.turtle", QDir::Files);
+		const QStringList fileNames = QDir(dir).entryList(QStringList() << QStringLiteral("*.turtle"), QDir::Files);
 		foreach (const QString &fileName, fileNames) {
 			allExamples.append(dir + '/' + fileName);
 		}
@@ -720,8 +720,8 @@ void MainWindow::updateExamplesMenu()
 		connect(newExample, &QAction::triggered, this, &MainWindow::openDownloadedExample);
 	}
 
-	unplugActionList ("examples_actionlist");
-	plugActionList   ("examples_actionlist", exampleList);
+	unplugActionList (QStringLiteral("examples_actionlist"));
+	plugActionList   (QStringLiteral("examples_actionlist"), exampleList);
 }
 
 void MainWindow::addToRecentFilesList(const QUrl &url)
@@ -771,30 +771,30 @@ void MainWindow::updateOnCursorPositionChange()
 		KLocalizedString layout = ki18n("\"%1\" <%2>");
 		switch (cat) {
 			// not showing the look (only the name):
-			case Token::VariableCategory:     updateContextHelpAction(i18n("<variable>"), "variable"); return;
-			case Token::NumberCategory:       updateContextHelpAction(i18n("<number>"), "number");     return;
-			case Token::CommentCategory:      updateContextHelpAction(i18n("<comment>"), "comment");   return;
-			case Token::StringCategory:       updateContextHelpAction(i18n("<string>"), "string");     return;
+			case Token::VariableCategory:     updateContextHelpAction(i18n("<variable>"), QStringLiteral("variable")); return;
+			case Token::NumberCategory:       updateContextHelpAction(i18n("<number>"), QStringLiteral("number"));     return;
+			case Token::CommentCategory:      updateContextHelpAction(i18n("<comment>"), QStringLiteral("comment"));   return;
+			case Token::StringCategory:       updateContextHelpAction(i18n("<string>"), QStringLiteral("string"));     return;
 			// only showing the look:
-			case Token::LearnCommandCategory: updateContextHelpAction(look, "learn");                  return;
-			case Token::TrueFalseCategory:    updateContextHelpAction(look, "boolean");                return;
+			case Token::LearnCommandCategory: updateContextHelpAction(look, QStringLiteral("learn"));                  return;
+			case Token::TrueFalseCategory:    updateContextHelpAction(look, QStringLiteral("boolean"));                return;
 			// showing the look and the name:
 			case Token::ScopeCategory:
-				updateContextHelpAction(layout.subs(look).subs(i18n("scope")).toString(), "scope"); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("scope")).toString(), QStringLiteral("scope")); return;
 			case Token::AssignmentCategory:
-				updateContextHelpAction(layout.subs(look).subs(i18n("assignment")).toString(), "assignment"); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("assignment")).toString(), QStringLiteral("assignment")); return;
 			case Token::ParenthesisCategory:
-				updateContextHelpAction(layout.subs(look).subs(i18n("parenthesis")).toString(), "parenthesis"); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("parenthesis")).toString(), QStringLiteral("parenthesis")); return;
 			case Token::MathOperatorCategory:
-				updateContextHelpAction(layout.subs(look).subs(i18n("mathematical operator")).toString(), "math-operator"); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("mathematical operator")).toString(), QStringLiteral("math-operator")); return;
 			case Token::ExpressionCategory:
-				updateContextHelpAction(layout.subs(look).subs(i18n("expression")).toString(), "expression"); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("expression")).toString(), QStringLiteral("expression")); return;
 			case Token::BooleanOperatorCategory:
-				updateContextHelpAction(layout.subs(look).subs(i18n("boolean operator")).toString(), "boolean-operator"); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("boolean operator")).toString(), QStringLiteral("boolean-operator")); return;
 			case Token::FunctionCallCategory:
-				updateContextHelpAction(layout.subs(look).subs(i18n("learned command")).toString(), "learned-command"); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("learned command")).toString(), QStringLiteral("learned-command")); return;
 			case Token::ArgumentSeparatorCategory:
-				updateContextHelpAction(layout.subs(look).subs(i18n("argument separator")).toString(), "argument-separator"); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("argument separator")).toString(), QStringLiteral("argument-separator")); return;
 			// showing the look and the name, and linking to the help through their default look (en_US):
 			case Token::CommandCategory:
 				updateContextHelpAction(layout.subs(look).subs(i18n("command")).toString(), Translator::instance()->defaultLook(look));
@@ -832,7 +832,7 @@ bool MainWindow::setCurrentLanguage(const QString &lang_code)  // 2 or 5 digit c
 
 QString MainWindow::codeToFullName(const QString& lang_code)
 {
-	return QString(lang_code == "en_US" ?
+	return QString(lang_code == QLatin1String("en_US") ?
 			i18n("English [built in]") :
 			i18n("%1 (%2)", QLocale(lang_code.left(2)).nativeLanguageName(), lang_code)
 		);
@@ -868,10 +868,10 @@ QString MainWindow::execute(const QString &operation)
 	Executer* executer = interpreter->getExecuter();
 	disconnect(executer, &Executer::currentlyExecuting, editor, &Editor::markCurrentWord);
 	disconnect(executer, &Executer::currentlyExecuting, inspector, &Inspector::markTreeNode);
-	disconnect(executer, SIGNAL(variableTableUpdated(QString,Value)),
-		inspector, SLOT(updateVariable(QString,Value)));
-	disconnect(executer, SIGNAL(functionTableUpdated(QString,QStringList)),
-		inspector, SLOT(updateFunction(QString,QStringList)));
+	disconnect(executer, &Executer::variableTableUpdated,
+		inspector, &Inspector::updateVariable);
+	disconnect(executer, &Executer::functionTableUpdated,
+		inspector, &Inspector::updateFunction);
 
 	if (interpreter->state() == Interpreter::Uninitialized ||
 	    interpreter->state() == Interpreter::Finished ||
@@ -986,7 +986,7 @@ void MainWindow::updateContentName(const QString& str)
 	bool modified = editor->isModified();
 	setWindowTitle(caption + QLatin1String("[*]"));
 	setWindowModified(modified);
-	statusBarFileNameLabel->setText(QString(" %1%2 ").arg(caption).arg(modified ? "*" : ""));
+	statusBarFileNameLabel->setText(QStringLiteral(" %1%2 ").arg(caption).arg(modified ? "*" : ""));
 }
 
 void MainWindow::addToRecentFiles(const QUrl &url)
@@ -1002,7 +1002,7 @@ void MainWindow::readConfig()
 // 	m_paShowPath->setChecked(config->readEntry("ShowPath", QVariant(false)).toBool());
 	recentFilesAction->loadEntries(KSharedConfig::openConfig()->group("Recent Files"));
 	QString lang_code(config.readEntry("currentLanguageCode", QVariant(QString())).toString());
-	if (lang_code.isEmpty()) lang_code = "en_US";  // null-string are saved as empty-strings
+	if (lang_code.isEmpty()) lang_code = QStringLiteral("en_US");  // null-string are saved as empty-strings
 	setCurrentLanguage(lang_code);
 // 	if(m_paShowStatusBar->isChecked())
 // 		statusBar()->show();
@@ -1026,7 +1026,7 @@ void MainWindow::exportToPng()
 	QUrl url = QFileDialog::getSaveFileUrl(this,
 					       i18n("Save as Picture"),
 					       QUrl(),
-					       QString("%1 (*.png);;%2 (*)").arg(i18n("PNG Images")).arg(i18n("All files")));
+					       QStringLiteral("%1 (*.png);;%2 (*)").arg(i18n("PNG Images")).arg(i18n("All files")));
 	if (url.isEmpty())
 		return;
 	// get our image from the canvas and save to png
@@ -1042,7 +1042,7 @@ void MainWindow::exportToSvg()
 {
 	// copied from edit code for file selection
 	// canvas->saveAsSvg() does not handle QUrl, so only local files are accepted
-	QString path = QFileDialog::getSaveFileName(this, i18n("Save as SVG"), QString(), QString("%1 (.*svg);;%2 (*)").arg(i18n("Scalable Vector Graphics")).arg(i18n("All files")));
+	QString path = QFileDialog::getSaveFileName(this, i18n("Save as SVG"), QString(), QStringLiteral("%1 (.*svg);;%2 (*)").arg(i18n("Scalable Vector Graphics")).arg(i18n("All files")));
 	if (path.isEmpty())
 		return;
 	canvas->saveAsSvg(windowTitle(), path);
@@ -1052,7 +1052,7 @@ void MainWindow::exportToHtml()
 {
 	// copied from edit code for file selection
 	// we do not handle QUrl, so only local files are accepted
-	QString path = QFileDialog::getSaveFileName(this, i18n("Save code as HTML"), QString(), QString("%1 (*.html);;%2 (*)").arg(i18n("HTML documents")).arg(i18n("All files")));
+	QString path = QFileDialog::getSaveFileName(this, i18n("Save code as HTML"), QString(), QStringLiteral("%1 (*.html);;%2 (*)").arg(i18n("HTML documents")).arg(i18n("All files")));
 	if (path.isEmpty())
 		return;
 	QSaveFile file(path);

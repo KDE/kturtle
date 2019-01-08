@@ -42,7 +42,7 @@ Token* Tokenizer::getToken()
 
 	// catch the end of the input string
 	if (atEnd)
-		return new Token(Token::EndOfInput, "END", row, col, row, col);
+		return new Token(Token::EndOfInput, QStringLiteral("END"), row, col, row, col);
 
 	int cType = translator->look2type(c);  // since we need to know it often we store it
 
@@ -59,7 +59,7 @@ Token* Tokenizer::getToken()
 
 	// catch EndOfLine's
 	if (isBreak(c)) {
-		return new Token(Token::EndOfLine, "\\n", startRow, startCol, startRow+1, 1);
+		return new Token(Token::EndOfLine, QStringLiteral("\\n"), startRow, startCol, startRow+1, 1);
 	}
 
 	// catch comments
@@ -79,7 +79,7 @@ Token* Tokenizer::getToken()
 		do {
 			c = getChar();
 			look += c;
-		} while (!(translator->look2type(c) == Token::StringDelimiter && look.right(2) != "\\\"") &&
+		} while (!(translator->look2type(c) == Token::StringDelimiter && look.right(2) != QLatin1String("\\\"")) &&
 		         !isBreak(c) && !atEnd);
 		return new Token(Token::String, look, startRow, startCol, row, col);
 	}

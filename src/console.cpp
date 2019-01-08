@@ -71,7 +71,7 @@ void Console::enable()
 void Console::clearMarkings()
 {
 	comboBox->setToolTip(i18n("Write a command here and press enter..."));
-	comboBox->setStyleSheet("");
+	comboBox->setStyleSheet(QLatin1String(""));
 	comboBox->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 }
 

@@ -26,58 +26,58 @@
  * Thanks for looking at the code!
  */
 
-	connect(executer, SIGNAL(reset()), 
-		canvas, SLOT(slotReset()));
-	connect(executer, SIGNAL(clear()), 
-		canvas, SLOT(slotClear()));
-	connect(executer, SIGNAL(center()), 
-		canvas, SLOT(slotCenter()));
-	connect(executer, SIGNAL(go(double, double)), 
-		canvas, SLOT(slotGo(double, double)));
-	connect(executer, SIGNAL(goX(double)), 
-		canvas, SLOT(slotGoX(double)));
-	connect(executer, SIGNAL(goY(double)), 
-		canvas, SLOT(slotGoY(double)));
-	connect(executer, SIGNAL(forward(double)), 
-		canvas, SLOT(slotForward(double)));
-	connect(executer, SIGNAL(backward(double)), 
-		canvas, SLOT(slotBackward(double)));
-	connect(executer, SIGNAL(direction(double)), 
-		canvas, SLOT(slotDirection(double)));
-	connect(executer, SIGNAL(turnLeft(double)), 
-		canvas, SLOT(slotTurnLeft(double)));
-	connect(executer, SIGNAL(turnRight(double)), 
-		canvas, SLOT(slotTurnRight(double)));
-	connect(executer, SIGNAL(penWidth(double)), 
-		canvas, SLOT(slotPenWidth(double)));
-	connect(executer, SIGNAL(penUp()), 
-		canvas, SLOT(slotPenUp()));
-	connect(executer, SIGNAL(penDown()), 
-		canvas, SLOT(slotPenDown()));
-	connect(executer, SIGNAL(penColor(double, double, double)), 
-		canvas, SLOT(slotPenColor(double, double, double)));
-	connect(executer, SIGNAL(canvasColor(double, double, double)), 
-		canvas, SLOT(slotCanvasColor(double, double, double)));
-	connect(executer, SIGNAL(canvasSize(double, double)), 
-		canvas, SLOT(slotCanvasSize(double, double)));
-	connect(executer, SIGNAL(spriteShow()), 
-		canvas, SLOT(slotSpriteShow()));
-	connect(executer, SIGNAL(spriteHide()), 
-		canvas, SLOT(slotSpriteHide()));
-	connect(executer, SIGNAL(print(const QString&)), 
-		canvas, SLOT(slotPrint(const QString&)));
-	connect(executer, SIGNAL(fontSize(double)), 
-		canvas, SLOT(slotFontSize(double)));
+	connect(executer, &Executer::reset, 
+		canvas, &Canvas::slotReset);
+	connect(executer, &Executer::clear, 
+		canvas, &Canvas::slotClear);
+	connect(executer, &Executer::center, 
+		canvas, &Canvas::slotCenter);
+	connect(executer, &Executer::go, 
+		canvas, &Canvas::slotGo);
+	connect(executer, &Executer::goX, 
+		canvas, &Canvas::slotGoX);
+	connect(executer, &Executer::goY, 
+		canvas, &Canvas::slotGoY);
+	connect(executer, &Executer::forward, 
+		canvas, &Canvas::slotForward);
+	connect(executer, &Executer::backward, 
+		canvas, &Canvas::slotBackward);
+	connect(executer, &Executer::direction, 
+		canvas, &Canvas::slotDirection);
+	connect(executer, &Executer::turnLeft, 
+		canvas, &Canvas::slotTurnLeft);
+	connect(executer, &Executer::turnRight, 
+		canvas, &Canvas::slotTurnRight);
+	connect(executer, &Executer::penWidth, 
+		canvas, &Canvas::slotPenWidth);
+	connect(executer, &Executer::penUp, 
+		canvas, &Canvas::slotPenUp);
+	connect(executer, &Executer::penDown, 
+		canvas, &Canvas::slotPenDown);
+	connect(executer, &Executer::penColor, 
+		canvas, &Canvas::slotPenColor);
+	connect(executer, &Executer::canvasColor, 
+		canvas, &Canvas::slotCanvasColor);
+	connect(executer, &Executer::canvasSize, 
+		canvas, &Canvas::slotCanvasSize);
+	connect(executer, &Executer::spriteShow, 
+		canvas, &Canvas::slotSpriteShow);
+	connect(executer, &Executer::spriteHide, 
+		canvas, &Canvas::slotSpriteHide);
+	connect(executer, &Executer::print, 
+		canvas, &Canvas::slotPrint);
+	connect(executer, &Executer::fontSize, 
+		canvas, &Canvas::slotFontSize);
 
 //END GENERATED gui_connect_inc CODE
 
-	connect(executer, SIGNAL(getX(double&)),
-		canvas, SLOT(getX(double&)));
-	connect(executer, SIGNAL(getY(double&)),
-		canvas, SLOT(getY(double&)));
-	connect(executer, SIGNAL(getDirection(double&)),
-		canvas, SLOT(getDirection(double&)));
-	connect(executer, SIGNAL(message(const QString&)),
-		this, SLOT(slotMessageDialog(const QString&)));
-	connect(executer, SIGNAL(ask(QString&)),
-		this, SLOT(slotInputDialog(QString&)));
+	connect(executer, &Executer::getX,
+		canvas, &Canvas::getX);
+	connect(executer, &Executer::getY,
+		canvas, &Canvas::getY);
+	connect(executer, &Executer::getDirection,
+		canvas, &Canvas::getDirection);
+	connect(executer, &Executer::message,
+		this, &MainWindow::slotMessageDialog);
+	connect(executer, &Executer::ask,
+		this, &MainWindow::slotInputDialog);
