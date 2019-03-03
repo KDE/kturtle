@@ -24,7 +24,7 @@
 
 TreeNode::~TreeNode()
 {
-	if (childList != 0) {
+	if (childList != nullptr) {
 		// this should work here:
 		qDeleteAll(*childList);
 		childList->clear();
@@ -41,15 +41,15 @@ void TreeNode::init(TreeNode* parent, Token* token)
 {
 	setParent(parent);
 	setToken(token);
-	childList = 0;
+	childList = nullptr;
 	currentChildIndex = -1;
-	_value = 0;
+	_value = nullptr;
 }
 
 
 void TreeNode::appendChild(TreeNode* newChild)
 {
-	if (childList == 0) childList = new ChildList();
+	if (childList == nullptr) childList = new ChildList();
 	newChild->setParent(this);
 	childList->append(newChild);
 // // // 		QString out = QString("TreeNode::appendChild(): \"%5\" [%6] @ (%1,%2)-(%3,%4) to parent '%7'")
@@ -67,22 +67,22 @@ void TreeNode::appendChild(TreeNode* newChild)
 
 TreeNode* TreeNode::child(int i)
 {
-	if (childList == 0) return 0;
+	if (childList == nullptr) return nullptr;
 	if (0 <= i && i < childList->size()) return childList->at(i);
-	return 0;
+	return nullptr;
 }
 
 
 TreeNode* TreeNode::firstChild()
 {
-	if (childList == 0 || childList->isEmpty()) return 0;
+	if (childList == nullptr || childList->isEmpty()) return nullptr;
 	currentChildIndex = 0;
 	return childList->first();
 }
 
 TreeNode* TreeNode::nextChild()
 {
-	if (childList == 0) return 0;
+	if (childList == nullptr) return nullptr;
 	currentChildIndex++;
 	return child(currentChildIndex);
 }
@@ -96,7 +96,7 @@ int TreeNode::findChildIndex(TreeNode* child)
 
 TreeNode* TreeNode::nextSibling()
 {
-	if (_parent == 0) return 0;
+	if (_parent == nullptr) return nullptr;
 	return _parent->child(_parent->findChildIndex(this)+1);
 }
 
@@ -111,7 +111,7 @@ QString TreeNode::toString()
 // recursively walk through tree and show node names with indentation
 void TreeNode::showTree(QString& str, int indent)
 {
-	if (childList == 0) return;
+	if (childList == nullptr) return;
 	indent++;
 	TreeNode* node;
 	for (int i = 0; i < childList->size(); i++) {

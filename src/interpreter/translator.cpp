@@ -24,11 +24,11 @@
 #include "token.h"
 
 
-Translator* Translator::m_instance = 0;  // initialize pointer
+Translator* Translator::m_instance = nullptr;  // initialize pointer
 
 Translator* Translator::instance()
 {
-	if (m_instance == 0) m_instance = new Translator;  // create sole instance if its the first call
+	if (m_instance == nullptr) m_instance = new Translator;  // create sole instance if its the first call
 	return m_instance;  // address of sole instance
 }
 
@@ -40,7 +40,7 @@ Translator::Translator()
 Translator::~Translator()
 {
 	delete m_instance;
-	m_instance = 0;
+	m_instance = nullptr;
 }
 
 

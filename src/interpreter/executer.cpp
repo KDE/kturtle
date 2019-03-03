@@ -45,7 +45,7 @@ void Executer::initialize(TreeNode* tree, ErrorList* _errorList)
 	breaking       = false;
 	returning      = false;
 	waiting        = false;
-	returnValue    = 0;
+	returnValue    = nullptr;
 	
 	executeCurrent = false;
 
@@ -94,7 +94,7 @@ void Executer::execute()
 		delete calledFunction.variableTable;
 		currentNode = calledFunction.function;
 
-		if (returnValue == 0)
+		if (returnValue == nullptr)
 			currentNode->setNullValue(); // Handle an empty return value
 		else
 			currentNode->setValue(returnValue);
@@ -103,11 +103,11 @@ void Executer::execute()
 		return;
 	}
 
-	if (newScope == 0) {
+	if (newScope == nullptr) {
 		TreeNode* currentParent = currentNode->parent();
 		currentNode = currentNode->nextSibling();
 		
-		if(currentNode == 0) { //running off sibling list
+		if(currentNode == nullptr) { //running off sibling list
 			currentNode = currentParent;
 			
 			if(currentNode == rootNode) {
@@ -129,7 +129,7 @@ void Executer::execute()
 		else
 			currentNode = newScope;
 
-		newScope = 0;
+		newScope = nullptr;
 	}
 
 
@@ -297,7 +297,7 @@ bool Executer::checkParameterType(TreeNode* node, int valueType, int errorCode)
 // 	//qDebug() << "called";
 	uint quantity = node->childCount();
 	TreeNode* currentChild = node->firstChild();
-	while (currentChild != 0) {
+	while (currentChild != nullptr) {
 		if (currentChild->value()->type() != valueType) {
 			switch (valueType) {
 				case Value::String:
@@ -368,7 +368,7 @@ void Executer::executeScope(TreeNode* node) {
 	if(parentTokenType == Token::Learn) {
 		//We have the end of a Learn, so we should return
 		returning = true;
-		returnValue = 0;
+		returnValue = nullptr;
 		return;
 	}
 	newScope = node;
@@ -408,7 +408,7 @@ void Executer::executeFunctionCall(TreeNode* node) {
 	}
 
 	if (returning) {  // if the function is already executed and returns now
-		returnValue = 0;
+		returnValue = nullptr;
 		returning = false;
 		// //qDebug() << "==> functionReturned!";
 		return;
@@ -610,7 +610,7 @@ void Executer::executeBreak(TreeNode* node) {
 
 	TreeNode* ns = getParentOfTokenTypes(node, &tokenTypes);
 
-	if(ns!=0)
+	if(ns!=nullptr)
 		newScope = ns;
 	//else
 		// We could add an error right HERE
@@ -623,7 +623,7 @@ void Executer::executeReturn(TreeNode* node) {
 	if(node->childCount()>0)
 		returnValue = node->child(0)->value();
 	else
-		returnValue = 0;
+		returnValue = nullptr;
 	returning   = true;
 }
 void Executer::executeWait(TreeNode* node) {
@@ -1091,7 +1091,7 @@ TreeNode* Executer::getParentOfTokenTypes(TreeNode* child, QList<int>* types) {
 		if(child->parent()->token()->type()==type)
 			return child->parent();
 		else if(child->parent()->token()->type()==Token::Root)
-			return 0;
+			return nullptr;
 	}
 	return getParentOfTokenTypes(child->parent(), types);
 }
