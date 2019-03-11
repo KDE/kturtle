@@ -47,7 +47,7 @@ void Parser::parse()
 
 // 	//qDebug() << "Parser::parse() -- main parse loop called";
 	TreeNode* resultNode = parseStatement();  // parse the next statement
-	if (resultNode == 0) {  // no statement was found
+	if (resultNode == nullptr) {  // no statement was found
 		addError(i18n("Expected a command, instead got '%1'", currentToken->look()), *currentToken, 0);
 		return;
 	}
@@ -59,9 +59,9 @@ void Parser::parse()
 		currentScope->appendChild(resultNode);
 	}
 
-	if (newScope != 0) {
+	if (newScope != nullptr) {
 		currentScope = newScope;
-		newScope = 0;
+		newScope = nullptr;
 	}
 }
 
@@ -405,8 +405,8 @@ TreeNode* Parser::parseTerm()
 // 	//qDebug() << "Parser::parseTerm()";
 	TreeNode* termNode = parseSignedFactor();
 	TreeNode* pos = termNode;
-	TreeNode* left = 0;
-	TreeNode* right = 0;
+	TreeNode* left = nullptr;
+	TreeNode* right = nullptr;
 
 	while ( (currentToken->type() == Token::Multiplication) ||
 	        (currentToken->type() == Token::Division) ||
@@ -417,7 +417,7 @@ TreeNode* Parser::parseTerm()
 		pos->appendChild(left);
 		nextToken();
 		right = parseSignedFactor();
-		if (right != 0)
+		if (right != nullptr)
 			pos->appendChild(right);
 		termNode = pos;
 	}
@@ -430,10 +430,10 @@ TreeNode* Parser::parseExpression()
 // 	//qDebug() << "Parser::parseExpression()";
 	TreeNode* expressionNode = parseTerm();
 	TreeNode* pos = expressionNode;
-	TreeNode* left = 0;
-	TreeNode* right = 0;
+	TreeNode* left = nullptr;
+	TreeNode* right = nullptr;
 
-	Token* prevToken = 0;
+	Token* prevToken = nullptr;
 
 	while ((currentToken->type() == Token::Addition) ||
 	       (currentToken->type() == Token::Substracton) ||
@@ -456,7 +456,7 @@ TreeNode* Parser::parseExpression()
 			right = parseExpression();
 		else
 			right = parseTerm();
-		if (right != 0) pos->appendChild(right);
+		if (right != nullptr) pos->appendChild(right);
 		expressionNode = pos;
 	}
 	return expressionNode;
