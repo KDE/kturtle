@@ -238,21 +238,29 @@ bool Editor::saveFile(const QUrl &targetUrl)
 			outputStream << KTURTLE_MAGIC_1_0 << '\n';
 			outputStream << unstranslated;
 			outputStream.flush();
-			savefile->commit();  // check for error here?
+			if (savefile->commit()) {
+				result = true;
+				if (!url.isLocalFile()) {
+					KIO::StoredTransferJob *job = KIO::storedPut(savefile, url, -1, nullptr);
+					if (!job->exec()) {
+						result = false;
+						KMessageBox::error(this, i18n("Could not save file."));
+					}
+				}
+			} else {
+				// Error.
+				result = false;
+				KMessageBox::error(this, i18n("Could not save file."));
+			}
+			if (result) {
+				setCurrentUrl(url);
+				editor->document()->setModified(false);
+				// MainWindow will add us to the recent file list
+				emit fileSaved(url);
+			}
 		}
 		delete savefile;
-        if (!url.isLocalFile())
-           {
-            KIO::StoredTransferJob *job = KIO::storedPut(savefile, url, -1, nullptr);
-                 if(job->exec()){
-                    setCurrentUrl(url);
-                    editor->document()->setModified(false);
-                    // MainWindow will add us to the recent file list
-                    emit fileSaved(url);
-                    result = true; // fix GUI for saveAs and saveExamples. TODO: check 5 lines above
-                }
-           }
-    }
+	}
 	return result;
 }
 
