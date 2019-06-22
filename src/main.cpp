@@ -36,11 +36,11 @@
 #include "interpreter/echoer.h"
 #include "interpreter/tokenizer.h"
 
+#include "kturtle_version.h"
 
 static const char description[] =
 	I18N_NOOP("KTurtle is an educational programming environment that aims to make learning how to program as easy as possible. To achieve this KTurtle makes all programming tools available from the user interface. The programming language used is TurtleScript which allows its commands to be translated.");
 
-static const char version[]   = "0.8.1 beta";
 static const char copyright[] = "(c) 2003-2009 Cies Breijs";
 static const char website[]   = "http://edu.kde.org/kturtle";
 
@@ -62,7 +62,7 @@ int main(int argc, char* argv[])
 	migrator.setUiFiles(QStringList() << QStringLiteral("kturtleui.rc"));
 	migrator.migrate();
 
-	KAboutData aboutData("kturtle", ki18n("KTurtle").toString(), ki18n(version).toString());
+	KAboutData aboutData("kturtle", ki18n("KTurtle").toString(), KTURTLE_VERSION_STRING);
 	aboutData.setLicense(KAboutLicense::GPL);
 	aboutData.setHomepage(ki18n(website).toString());
 	aboutData.setShortDescription(ki18n(description).toString());
@@ -143,7 +143,7 @@ int main(int argc, char* argv[])
 	} else {
 
 		///////////////// run without a gui /////////////////
-		std::cout << "KTurtle's interpreter in command line mode (version " << version << ")" << std::endl;
+		std::cout << "KTurtle's interpreter in command line mode (version " << KTURTLE_VERSION_STRING << ")" << std::endl;
 		std::cout << copyright << std::endl << std::endl;
 
 		QString fileString = parser.value("test");

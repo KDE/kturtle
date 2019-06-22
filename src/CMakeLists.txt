@@ -1,3 +1,5 @@
+ecm_setup_version(${KDE_APPLICATIONS_VERSION} VARIABLE_PREFIX KTURTLE VERSION_HEADER kturtle_version.h)
+
 set(kturtle_SRCS
     canvas.cpp
     colorpicker.cpp

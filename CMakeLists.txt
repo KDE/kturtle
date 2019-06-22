@@ -1,7 +1,15 @@
+cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
+
+# KDE Application Version, managed by release script
+set(KDE_APPLICATIONS_VERSION_MAJOR "19")
+set(KDE_APPLICATIONS_VERSION_MINOR "07")
+set(KDE_APPLICATIONS_VERSION_MICRO "70")
+set(KDE_APPLICATIONS_VERSION "${KDE_APPLICATIONS_VERSION_MAJOR}.${KDE_APPLICATIONS_VERSION_MINOR}.${KDE_APPLICATIONS_VERSION_MICRO}")
+
+project(kturtle VERSION ${KDE_APPLICATIONS_VERSION})
+
 cmake_minimum_required(VERSION 2.8.12)
 set(QT_MIN_VERSION "5.0.0")
-
-project (kturtle)
 
 find_package(ECM 5.15.0 REQUIRED NO_MODULE)
 
@@ -15,6 +23,8 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(FeatureSummary)
 include(ECMAddAppIcon)
+include(ECMSetupVersion)
+
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Core
     Gui
