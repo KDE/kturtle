@@ -55,7 +55,7 @@ Editor::Editor(QWidget *parent)
 	editor->setFrameStyle(QFrame::NoFrame);
 	editor->installEventFilter(this);
 	editor->setLineWrapMode(QTextEdit::WidgetWidth);
-	editor->setTabStopWidth(editor->fontMetrics().width("0") * TAB_WIDTH);
+	editor->setTabStopWidth(editor->fontMetrics().horizontalAdvance("0") * TAB_WIDTH);
 	editor->setAcceptRichText(false);
 	setFocusProxy(editor);
 	connect(editor->document(), &QTextDocument::contentsChange, this, &Editor::textChanged);
@@ -350,7 +350,7 @@ void Editor::setCurrentUrl(const QUrl &url)
 void Editor::setOverwriteMode(bool b)
 {
 	editor->setOverwriteMode(b);
-	editor->setCursorWidth(b ? editor->fontMetrics().width("0") : 2);
+	editor->setCursorWidth(b ? editor->fontMetrics().horizontalAdvance("0") : 2);
 }
 
 
