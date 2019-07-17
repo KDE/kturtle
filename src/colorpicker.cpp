@@ -111,7 +111,7 @@ ColorPicker::ColorPicker(QWidget* parent)
 	resultBox = new QLineEdit(this);
 	resultBox->setReadOnly(true);
 	resultBox->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
-	int width = QFontMetrics(QFontDatabase::systemFont(QFontDatabase::FixedFont)).width("255, 255, 255_000");
+	int width = QFontMetrics(QFontDatabase::systemFont(QFontDatabase::FixedFont)).horizontalAdvance("255, 255, 255_000");
 	resultBox->setMinimumWidth(width);
 	resultBox->setMaximumWidth(width);
 	resultLayout->addWidget(resultBox);

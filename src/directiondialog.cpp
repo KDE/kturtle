@@ -290,7 +290,7 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 	commandBox = new QLineEdit(rightWidget);
 	commandBox->setReadOnly(true);
 	commandBox->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
-	commandBox->setMinimumWidth(commandBox->fontMetrics().width("000000000_360"));
+	commandBox->setMinimumWidth(commandBox->fontMetrics().horizontalAdvance("000000000_360"));
 	pasteRowLayout->addWidget(commandBox);
 	QPushButton* copyButton = new QPushButton(QIcon::fromTheme("edit-copy"), i18n("&Copy to clipboard"), baseWidget);
 	mainLayout->addWidget(copyButton);

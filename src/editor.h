@@ -67,7 +67,7 @@ class LineNumbers : public QWidget
 			maxWidth = w;
 			QString s("");
 			for (; w > 0; w--) s += "0";
-			setFixedWidth(fontMetrics().width(s) + 2*LINENUMBER_SPACING);
+			setFixedWidth(fontMetrics().horizontalAdvance(s) + 2*LINENUMBER_SPACING);
 		}
 
 		void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {
@@ -84,7 +84,7 @@ class LineNumbers : public QWidget
 				if (position.y() + boundingRect.height() < contentsY) continue;
 				if (position.y() > pageBottom) break;
 				const QString txt = QString::number(lineCount);
-				painter.drawText(width() - fm.width(txt) - LINENUMBER_SPACING, qRound(position.y()) - contentsY + ascent, txt);
+				painter.drawText(width() - fm.horizontalAdvance(txt) - LINENUMBER_SPACING, qRound(position.y()) - contentsY + ascent, txt);
 			}
 			painter.end();
 		}
@@ -176,7 +176,7 @@ class TextEdit : public QTextEdit
 			QVector<QRect> rects;
 			while (cursor < endCursor) {
 				cursor.movePosition(QTextCursor::PreviousCharacter);
-				rects << (rect | cursorRect(cursor).adjusted(0, 0, fontMetrics().width("0") - CURSOR_RECT_MARGIN, 0));
+				rects << (rect | cursorRect(cursor).adjusted(0, 0, fontMetrics().horizontalAdvance("0") - CURSOR_RECT_MARGIN, 0));
 				cursor.movePosition(QTextCursor::Down);
 				cursor.movePosition(QTextCursor::StartOfLine);
 				rect = cursorRect(cursor).adjusted(CURSOR_RECT_MARGIN, 0, 0, 0);
