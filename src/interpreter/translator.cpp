@@ -768,7 +768,7 @@ QString Translator::localizeScript(const QString& untranslatedScript)
 	while ((pos = rx.indexIn(result, pos)) != -1) {
 		QString original = result.mid(pos, rx.matchedLength());
 		original = original.mid(2, original.length() - 3);
-		result = result.replace(pos, rx.matchedLength(), translator->default2localized(original));
+		result.replace(pos, rx.matchedLength(), translator->default2localized(original));
 	}
 
 	return result;
