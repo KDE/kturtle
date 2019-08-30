@@ -14,6 +14,7 @@
   <name xml:lang="en-GB">KTurtle</name>
   <name xml:lang="es">KTurtle</name>
   <name xml:lang="et">KTurtle</name>
+  <name xml:lang="eu">KTurtle</name>
   <name xml:lang="fi">KTurtle</name>
   <name xml:lang="fr">KTurtle</name>
   <name xml:lang="gl">KTurtle</name>
@@ -47,6 +48,7 @@
   <summary xml:lang="en-GB">Educational Programming Environment</summary>
   <summary xml:lang="es">Entorno de programación educativo</summary>
   <summary xml:lang="et">Hariv programmeerimise keskkond</summary>
+  <summary xml:lang="eu">Programatzeko ingurune hezigarria</summary>
   <summary xml:lang="fi">Ohjelmointiympäristö opetuskäyttöön</summary>
   <summary xml:lang="fr">Environnement de programmation éducatif</summary>
   <summary xml:lang="gl">Ambiente de programación educativo</summary>
@@ -80,6 +82,7 @@
     <p xml:lang="en-GB">KTurtle is an educational programming environment for learning how to program. It provides all programming tools from its user interface. The programming language used is TurtleScript, which is loosely based on Logo. All commands and messages are translated into the user's language. KTurtle features an intuitive syntax highlighting, simple error messages, integrated canvas to make drawings, an integrated help, slow-motion and step execution.</p>
     <p xml:lang="es">KTurtle es un entorno educativo para aprender a programar. Proporciona todas las herramientas de programación en su interfaz. El lenguaje de programación que se utiliza es TurtleScript, que se basa ligeramente en Logo. Todas las órdenes y mensajes se traducen al idioma del usuario. KTurtle incorpora un intuitivo resaltado de sintaxis, sencillos mensajes de error, un lienzo integrado para hacer dibujos, un sistema de ayuda integrado, cámara lenta y ejecución paso por paso.</p>
     <p xml:lang="et">KTurtle on hariv programmeerimiskeskkond, mis õpetab programmeerima. See pakub kõiki programmeerimise tööriistu otse graafilise kasutajaliidese vahendusel. Programmeerimiskeelena on kasutusel TurtleScript, mille kaugemaks eellaseks on tuntud Logo keel. Kõik käsud ja teated on tõlgitud õppuri emakeelde. KTurtle tunnusteks on intuitiivne süntaksi esiletõstmine, lihtsad veateated, lõuend joonistuste tegemiseks, lõimitud abimaterjalid, võimalus rakendada aeglast liikumist ja samm-sammulist programmide täitmist.</p>
+    <p xml:lang="eu">KTurtle programatzen ikasteko programatzeko ingurune hezigarri bat da. Programatzeko tresna guztiak bere erabiltzaile interfazean eskaintzen ditu. Erabiltzen duen lengoaia TurtleScript da, hurrutitik Logo-n oinarritua nolabait. Komando eta mezu guztiak erabiltzailearen hizkuntzara itzulita daude. KTurtle-k berarekin dakartza sintaxi nabarmentze intuitibo bat, errore mezu sinpleak, irudiak marrazteko oihal integratua, eta laguntza integratua, kamera geldoa eta urratsez-urrats exekuzioa.</p>
     <p xml:lang="fi">KTurtle on ohjelmointiympäristö ohjelmointitaidon oppimiseen. Se tarjoaa kaikki ohjelmointityökalut käyttöliittymästään. Ohjelmointikielenä on TurtleScript, joka perustuu väljästi Logoon. Kaikki komennot ja viestit on käännetty käyttäjän kielelle. KTurtlessa on helposti ymmärrettävä syntaksikorostus, yksinkertaiset virheilmoitukset, oma piirtoalue piirtelyyn, yhdistetty avustustoiminto sekä hidastettu tai askelittainen ohjelman suoritus.</p>
     <p xml:lang="fr">KTurtle est un environnement de programmation éducatif destiné à l'apprentissage de la programmation. Il fournis tous les outils de programmation depuis son interface utilisateur. Le langage utilisé est TurtleScript, librement inspiré de Logo. Toute les commandes et les messages sont traduits dans la langue de l'utilisateur. KTurtle intègre une mise en évidence de la syntaxe intuitive, des messages d'erreur simple, un tableau intégré pour dessiner, une aide intégrée et des systèmes d'exécution ralentis ou pas-à-pas.</p>
     <p xml:lang="gl">KTurtle é un ambiente de programación educativo para aprender a programar. Fornece todas as ferramentas de programación desde a súa interface de usuario. Úsase a linguaxe de programación TurtleScript, que está inspirada en Logo. Todas as ordes e mensaxes están traducidas ao idioma do usuario. KTurtle goza dun realzado de sintaxe intuitivo, mensaxes de erro simples, un lenzo integrado para debuxar, axuda integrada, e execución a cámara lenta ou paso por paso.</p>
@@ -110,6 +113,7 @@
       <caption xml:lang="de">Programmieren in KTurtle</caption>
       <caption xml:lang="en-GB">Programming in KTurtle</caption>
       <caption xml:lang="es">Programando en KTurtle</caption>
+      <caption xml:lang="eu">KTurtle-(r)ekin programatzea</caption>
       <caption xml:lang="fr">Programmation sur KTurtle</caption>
       <caption xml:lang="gl">Programación con KTurtle</caption>
       <caption xml:lang="id">Pemrograman di KTurtle</caption>
