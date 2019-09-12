@@ -66,7 +66,7 @@ class LineNumbers : public QWidget
 			if (w == maxWidth) return;  // save some cpu cycles
 			maxWidth = w;
 			QString s;
-			for (; w > 0; w--) s += QStringLiteral("0");
+			for (; w > 0; w--) s += QLatin1Char('0');
 			setFixedWidth(fontMetrics().boundingRect(s).width() + 2*LINENUMBER_SPACING);
 		}
 
