@@ -497,8 +497,7 @@ void MainWindow::setupCanvas()
 	// put the canvas in a layout as the central widget of the mainwindow
 	QWidget* centralWidget = new QWidget(this);
 	QHBoxLayout* centralLayout = new QHBoxLayout(centralWidget);
-	centralLayout->setMargin(0);  // MARGIN_SIZE);
-
+	centralLayout->setContentsMargins(0, 0, 0, 0); 
 	canvasTabWidget = new QTabWidget(this);
 
 	canvasTab = new QWidget();
@@ -508,7 +507,7 @@ void MainWindow::setupCanvas()
 	canvas->setRenderHint(QPainter::Antialiasing);
 	canvas->setWhatsThis(i18n("Canvas: This is where the turtle moves and draws when the program is running"));
 	canvasLayout->addWidget(canvas);
-        canvasLayout->setMargin(0);
+        canvasLayout->setContentsMargins(0, 0, 0, 0);
 	canvasTabWidget->insertTab(0, canvasTab, i18n("&Canvas"));
 
 	QWidget* errorTab = new QWidget();
@@ -549,7 +548,7 @@ void MainWindow::setupDockWindows()
 	editorDock->setObjectName(QStringLiteral("editor"));
 	QWidget* editorWrapWidget = new QWidget(editorDock);
 	QHBoxLayout* editorDockLayout = new QHBoxLayout(editorWrapWidget);
- 	editorDockLayout->setMargin(MARGIN_SIZE);
+ 	editorDockLayout->setContentsMargins(MARGIN_SIZE, MARGIN_SIZE, MARGIN_SIZE, MARGIN_SIZE);
  	editorWrapWidget->setLayout(editorDockLayout);
 // 	dock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
 	editor = new Editor(editorWrapWidget);  // create this here to prevent crashes
@@ -566,7 +565,7 @@ void MainWindow::setupDockWindows()
 	inspectorDock->setObjectName(QStringLiteral("inspector"));
 	QWidget* inspectorWrapWidget = new QWidget(inspectorDock);
 	QHBoxLayout* inspectorDockLayout = new QHBoxLayout(inspectorWrapWidget);
-	inspectorDockLayout->setMargin(MARGIN_SIZE);
+	inspectorDockLayout->setContentsMargins(MARGIN_SIZE, MARGIN_SIZE, MARGIN_SIZE, MARGIN_SIZE);
 	inspectorWrapWidget->setLayout(inspectorDockLayout);
 	inspector = new Inspector(inspectorWrapWidget);
 	inspectorDockLayout->addWidget(inspector);

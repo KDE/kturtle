@@ -219,7 +219,7 @@ void Canvas::slotReset()
 
 void Canvas::wheelEvent(QWheelEvent *event)
 {
-	scaleView(std::pow(static_cast<double>(2.0), -event->delta() / 240.0));
+	scaleView(std::pow(static_cast<double>(2.0), -event->angleDelta().y() / 240.0));
 }
 
 void Canvas::scaleView(double scaleFactor)

@@ -37,7 +37,7 @@ Inspector::Inspector(QWidget *parent)
 {
 	mainLayout = new QHBoxLayout(this);
 	mainLayout->setSpacing(0);
-	mainLayout->setMargin(0);
+	mainLayout->setContentsMargins(0, 0, 0, 0);
 	tabWidget  = new QTabWidget(this);
 
 	variableTab    = new QWidget();

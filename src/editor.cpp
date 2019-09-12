@@ -55,7 +55,7 @@ Editor::Editor(QWidget *parent)
 	editor->setFrameStyle(QFrame::NoFrame);
 	editor->installEventFilter(this);
 	editor->setLineWrapMode(QTextEdit::WidgetWidth);
-	editor->setTabStopWidth(editor->fontMetrics().boundingRect(QStringLiteral("0")).width() * TAB_WIDTH);
+	editor->setTabStopDistance(editor->fontMetrics().boundingRect(QStringLiteral("0")).width() * TAB_WIDTH);
 	editor->setAcceptRichText(false);
 	setFocusProxy(editor);
 	connect(editor->document(), &QTextDocument::contentsChange, this, &Editor::textChanged);
@@ -72,7 +72,7 @@ Editor::Editor(QWidget *parent)
 	// let the line numbers and the editor coexist
 	box = new QHBoxLayout(this);
 	box->setSpacing(0);
-	box->setMargin(0);
+	box->setContentsMargins(0, 0, 0, 0);
 	box->addWidget(numbers);
 	box->addWidget(editor);
 
