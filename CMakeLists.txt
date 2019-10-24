@@ -8,7 +8,6 @@ set(KDE_APPLICATIONS_VERSION "${KDE_APPLICATIONS_VERSION_MAJOR}.${KDE_APPLICATIO
 
 project(kturtle VERSION ${KDE_APPLICATIONS_VERSION})
 
-cmake_minimum_required(VERSION 2.8.12)
 set(QT_MIN_VERSION "5.11.0")
 set(KF5_MIN_VERSION "5.46.0")
 
@@ -46,6 +45,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED
 )
 if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
    add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
+   add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x060000)
 endif()
 
 #Allows QString concatenation to use a single memory allocation per source line.

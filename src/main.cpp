@@ -93,7 +93,7 @@ int main(int argc, char* argv[])
 
 		///////////////// run in GUI mode /////////////////
 		if (app.isSessionRestored()) {
-			RESTORE(MainWindow);
+                        kRestoreMainWindows<MainWindow>();
 		} else {
 			MainWindow* mainWindow = new MainWindow();
 			mainWindow->show();
