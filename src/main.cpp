@@ -42,7 +42,7 @@ static const char description[] =
 	I18N_NOOP("KTurtle is an educational programming environment that aims to make learning how to program as easy as possible. To achieve this KTurtle makes all programming tools available from the user interface. The programming language used is TurtleScript which allows its commands to be translated.");
 
 static const char copyright[] = "(c) 2003-2009 Cies Breijs";
-static const char website[]   = "http://edu.kde.org/kturtle";
+static const char website[]   = "https://edu.kde.org/kturtle";
 
 
 int main(int argc, char* argv[])
