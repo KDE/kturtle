@@ -532,7 +532,7 @@
 <sect2 id="the-help-menu">
   <title>The Help Menu</title>
 <para>&kturtle; has a default &kde; <guimenu>Help</guimenu> menu as described in the 
-<ulink url="help:/fundamentals/ui.html#menus-help">&kde; Fundamentals</ulink> 
+<ulink url="help:/fundamentals/menus.html#menus-help">&kde; Fundamentals</ulink> 
 with one additional entry:</para>
   <variablelist>
     <anchor id="help-context-help" />
