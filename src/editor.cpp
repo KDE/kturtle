@@ -241,7 +241,7 @@ bool Editor::saveFile(const QUrl &targetUrl)
 			if (savefile->commit()) {
 				result = true;
 				if (!url.isLocalFile()) {
-					KIO::StoredTransferJob *job = KIO::storedPut(savefile, url, -1, nullptr);
+					KIO::StoredTransferJob *job = KIO::storedPut(savefile, url, -1, KIO::DefaultFlags);
 					if (!job->exec()) {
 						result = false;
 						KMessageBox::error(this, i18n("Could not save file."));
@@ -308,7 +308,7 @@ void Editor::find()
 	}
 	if (fdialog->exec() == QDialog::Accepted && !fdialog->pattern().isEmpty()) {
 		long kOpts = fdialog->options();
-		QTextDocument::FindFlags qOpts = nullptr;
+		QTextDocument::FindFlags qOpts = {};
 		if (kOpts & KFind::CaseSensitive)  { qOpts |= QTextDocument::FindCaseSensitively; }
 		if (kOpts & KFind::FindBackwards)  { qOpts |= QTextDocument::FindBackward; }
 		if (kOpts & KFind::WholeWordsOnly) { qOpts |= QTextDocument::FindWholeWords; }
@@ -320,7 +320,7 @@ void Editor::findNext()
 {
 	if (!fdialog->pattern().isEmpty()) {
 		long kOpts = fdialog->options();
-		QTextDocument::FindFlags qOpts = nullptr;
+		QTextDocument::FindFlags qOpts = {};
 		if (kOpts & KFind::CaseSensitive)  { qOpts |= QTextDocument::FindCaseSensitively; }
 		if (kOpts & KFind::FindBackwards)  { qOpts |= QTextDocument::FindBackward; }
 		if (kOpts & KFind::WholeWordsOnly) { qOpts |= QTextDocument::FindWholeWords; }
@@ -332,7 +332,7 @@ void Editor::findPrev()
 {
 	if(!fdialog->pattern().isEmpty()) {
 		long kOpts = fdialog->options();
-		QTextDocument::FindFlags qOpts = nullptr;
+		QTextDocument::FindFlags qOpts = {};
 		if (kOpts & KFind::CaseSensitive)    { qOpts |= QTextDocument::FindCaseSensitively; }
 		// search in the opposite direction as findNext()
 		if (!(kOpts & KFind::FindBackwards)) { qOpts |= QTextDocument::FindBackward; }
