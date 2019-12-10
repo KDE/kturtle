@@ -1,4 +1,4 @@
-ecm_setup_version(${KDE_APPLICATIONS_VERSION} VARIABLE_PREFIX KTURTLE VERSION_HEADER kturtle_version.h)
+ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KTURTLE VERSION_HEADER kturtle_version.h)
 
 set(kturtle_SRCS
     canvas.cpp
