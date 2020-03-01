@@ -101,9 +101,9 @@
     <p xml:lang="x-test">xxKTurtle is an educational programming environment for learning how to program. It provides all programming tools from its user interface. The programming language used is TurtleScript, which is loosely based on Logo. All commands and messages are translated into the user's language. KTurtle features an intuitive syntax highlighting, simple error messages, integrated canvas to make drawings, an integrated help, slow-motion and step execution.xx</p>
     <p xml:lang="zh-TW">KTurtle 是學習如何寫程式的教育環境。它透過使用者介面提供所有的程式工具。它使用的程式語言是基於 Logo 語言發展出來的 TurtleScript。所有的指令與訊息都翻譯成使用者看得懂的語言。KTurtle 有直覺式的語法突顯，簡單的錯誤訊息，整合式的繪圖畫布，整合式的說明，慢動作與單步執行等功能。</p>
   </description>
-  <url type="homepage">http://edu.kde.org/kturtle/</url>
+  <url type="homepage">https://edu.kde.org/kturtle/</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kturtle</url>
-  <url type="help">http://docs.kde.org/stable/en/kdeedu/kturtle/index.html</url>
+  <url type="help">https://docs.kde.org/?application=kturtle</url>
   <url type="donation">https://www.kde.org/community/donations/?app=kturtle&amp;source=appdata</url>
   <screenshots>
     <screenshot type="default">
@@ -138,4 +138,9 @@
   <provides>
     <binary>kturtle</binary>
   </provides>
+  <releases>
+    <release version="19.12.2" date="2020-02-06"/>
+    <release version="19.12.1" date="2020-01-09"/>
+    <release version="19.12.0" date="2019-12-12"/>
+  </releases>
 </component>
