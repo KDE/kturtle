@@ -154,7 +154,11 @@ void Parser::addError(const QString& s, const Token& t, int code)
 void Parser::printTree() const
 {
 	const char* prefix = m_testing ? "NTR> " : "";
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
 	foreach (const QString &line, rootNode->toString().split('\n', QString::SkipEmptyParts)) {
+#else
+	foreach (const QString &line, rootNode->toString().split('\n', Qt::SkipEmptyParts)) {
+#endif
 		qDebug() << prefix << qPrintable(line.trimmed());
 	}
 }
