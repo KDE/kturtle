@@ -15,8 +15,8 @@
 #  Boston, MA 02110-1301, USA.
 
 
-# In this file commands/instuctions/keywords/symbols/etc can easily be added to kturtle.
-# Changes can also be made here, but be carefull cauz the existing code may rely on stuff in here.
+# In this file commands/instructions/keywords/symbols/etc can easily be added to kturtle.
+# Changes can also be made here, but be careful cause the existing code may rely on stuff in here.
 # Thanks for looking at the code...
 
 
@@ -38,8 +38,8 @@
 # @help,    .docbook formatted text for in a help file
 
 
-# In the @funct variable, one or more catagories of the item can be put.
-# These are the catagories and their descriptions:
+# In the @funct variable, one or more categories of the item can be put.
+# These are the categories and their descriptions:
 #
 # statement           the item is a statement and thus will be parsed as such
 # constant            the item is a constant so does not need any execution
@@ -474,7 +474,7 @@ new_item()
 		// We hit a break command while executing the scope
 		breaking = false; // Not breaking anymore
 		currentVariableTable()->remove(id); // remove the value (cleanup)
-		return; // Move to the next sibbling
+		return; // Move to the next sibling
 	}
 
 	if (currentVariableTable()->contains(id)) {
@@ -551,7 +551,7 @@ new_item()
 	// so we do: exec scope, exec expressions, exec scope, exec expressions, ...
 
 	//TODO: We have the cleanup part twice (after breaking and after the last iteration
-	// perhaps clean it up by putting in in one place?
+	// perhaps clean it up by putting it in one place?
 
 	bool firstIteration = false;
 	if (functionStack.isEmpty() || functionStack.top().function != node) {
@@ -849,7 +849,7 @@ EOS
 parse_item()
 
 new_item()
-@type  = "Substracton"
+@type  = "Subtraction"
 @cat   = "MathOperator"
 @look  = "-"
 @localize = false

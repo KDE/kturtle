@@ -67,7 +67,7 @@ class TreeNode
 		/** @returns the pointer to associated Token. @see setToken() */
 		Token*    token()                       { return _token; }
 
-		/** @returns the pointer to assiciated Value. @see setValue() @see setNullValue() */
+		/** @returns the pointer to associated Value. @see setValue() @see setNullValue() */
 		Value*    value()                       { if (_value == 0) _value = new Value(); return _value; }
 
 

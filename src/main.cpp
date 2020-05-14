@@ -149,7 +149,7 @@ int main(int argc, char* argv[])
 
 		if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
 			std::cout << "Could not open input file: " << qPrintable(parser.value("test")) << std::endl;
-			std::cout << "Exitting..." << std::endl;
+			std::cout << "Exiting..." << std::endl;
 			return 1;
 		}
 
@@ -168,7 +168,7 @@ int main(int argc, char* argv[])
 				std::cout << "Set localization to: " << parser.value(QStringLiteral("lang")).data() << std::endl;
 			} else {
 				std::cout << "Could not set localization to:" << parser.value(QStringLiteral("lang")).data() << std::endl;
-				std::cout << "Exitting...\n";
+				std::cout << "Exiting...\n";
 				return 1;
 			}
 		} else {

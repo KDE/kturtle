@@ -54,7 +54,7 @@ describe "mathmatical operators" do
     EOS
   end
 
-  it "should produce error when deviding by zero" do
+  it "should produce error when dividing by zero" do
     $i.run('$x = 1 / 0').errors?.should be_true
   end
 
@@ -113,7 +113,7 @@ describe "mathmatical operators" do
     EOS
   end
 
-  it "should work as expected with trigoniometical functions" do
+  it "should work as expected with trigonometrical functions" do
     $i.should_run_clean <<-EOS
       assert (sin -90) == -1
       assert (sin   0) == 0

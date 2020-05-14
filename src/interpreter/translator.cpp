@@ -262,7 +262,7 @@ void Translator::setDictionary()
 
 	look2typeMap[QStringLiteral("+")] = Token::Addition;
 
-	look2typeMap[QStringLiteral("-")] = Token::Substracton;
+	look2typeMap[QStringLiteral("-")] = Token::Subtraction;
 
 	look2typeMap[QStringLiteral("*")] = Token::Multiplication;
 

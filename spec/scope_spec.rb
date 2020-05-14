@@ -21,7 +21,7 @@ $i = Interpreter.instance
 describe "scopes" do
   it "should allow empty scopes" do
     true.should_not be_true
-    # empty scopes currenty hang the interpreter
+    # empty scopes currently hang the interpreter
     # so do scopes without a flow/learn statement
     # TODO fix this. (without the fix the other tests are useless)
   end

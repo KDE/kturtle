@@ -198,7 +198,7 @@ void Executer::execute(TreeNode* node)
 		case Token::GreaterOrEquals     : executeGreaterOrEquals(node);     break;
 		case Token::LessOrEquals        : executeLessOrEquals(node);        break;
 		case Token::Addition            : executeAddition(node);            break;
-		case Token::Substracton         : executeSubstracton(node);         break;
+		case Token::Subtraction         : executeSubtraction(node);         break;
 		case Token::Multiplication      : executeMultiplication(node);      break;
 		case Token::Division            : executeDivision(node);            break;
 		case Token::Power               : executePower(node);               break;
@@ -246,7 +246,7 @@ void Executer::execute(TreeNode* node)
 //END GENERATED executer_switch_cpp CODE
 
 		default:
-			//qDebug() << "Unrecognizd Token type (" << node->token()->type() << ", " << node->token()->look() << ") -- THIS SHOULDN'T HAPPEN!";
+			//qDebug() << "Unrecognized Token type (" << node->token()->type() << ", " << node->token()->look() << ") -- THIS SHOULDN'T HAPPEN!";
 			break;
 
 	}
@@ -513,7 +513,7 @@ void Executer::executeWhile(TreeNode* node) {
 		// We hit a break command while executing the scope
 		breaking = false; // Not breaking anymore
 		currentVariableTable()->remove(id); // remove the value (cleanup)
-		return; // Move to the next sibbling
+		return; // Move to the next sibling
 	}
 
 	if (currentVariableTable()->contains(id)) {
@@ -540,7 +540,7 @@ void Executer::executeForTo(TreeNode* node) {
 	// so we do: exec scope, exec expressions, exec scope, exec expressions, ...
 
 	//TODO: We have the cleanup part twice (after breaking and after the last iteration
-	// perhaps clean it up by putting in in one place?
+	// perhaps clean it up by putting it in one place?
 
 	bool firstIteration = false;
 	if (functionStack.isEmpty() || functionStack.top().function != node) {
@@ -727,7 +727,7 @@ void Executer::executeAddition(TreeNode* node) {
 		node->value()->setString(node->child(0)->value()->string().append(node->child(1)->value()->string()));
 	}
 }
-void Executer::executeSubstracton(TreeNode* node) {
+void Executer::executeSubtraction(TreeNode* node) {
 //	//qDebug() << "called";
 	if(node->childCount()!=2) {
 		addError(i18n("You need two numbers to subtract"), *node->token(), 0);

@@ -206,7 +206,7 @@ class Executer : public QObject
 		void executeGreaterOrEquals(TreeNode* node);
 		void executeLessOrEquals(TreeNode* node);
 		void executeAddition(TreeNode* node);
-		void executeSubstracton(TreeNode* node);
+		void executeSubtraction(TreeNode* node);
 		void executeMultiplication(TreeNode* node);
 		void executeDivision(TreeNode* node);
 		void executePower(TreeNode* node);

@@ -9,7 +9,7 @@ The goal of KTurtle is to make programming as easy and accessible as possible. T
 
 Some of the main features of KTurtle include:
 * the ability to translate the programming commands into the native language of the student using the KDE translation framework.
-* all you need integrated in in one application.
+* all you need integrated in one application.
 * simplified programming terminology.
 * intuitive syntax highlighting and error markers.
 

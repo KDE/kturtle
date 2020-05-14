@@ -217,26 +217,26 @@ bool Editor::saveFile(const QUrl &targetUrl)
 			Tokenizer tokenizer;
 			tokenizer.initialize(editor->document()->toPlainText());
 			const QStringList localizedLooks(Translator::instance()->allLocalizedLooks());
-			QString unstranslated;
+			QString untranslated;
 			Token* t;
 			bool pendingEOL = false;  // to avoid writing a final EOL token
 			while ((t = tokenizer.getToken())->type() != Token::EndOfInput) {
 				if (pendingEOL) {
-					unstranslated.append('\n');
+					untranslated.append('\n');
 					pendingEOL = false;
 				}
 				if (localizedLooks.contains(t->look())) {
 					QString defaultLook(Translator::instance()->defaultLook(t->look()));
-					unstranslated.append(QStringLiteral("@(%1)").arg(defaultLook));
+					untranslated.append(QStringLiteral("@(%1)").arg(defaultLook));
 				} else {
 					if (t->type() == Token::EndOfLine) 
 						pendingEOL = true;
 					else
-						unstranslated.append(t->look());
+						untranslated.append(t->look());
 				}
 			}
 			outputStream << KTURTLE_MAGIC_1_0 << '\n';
-			outputStream << unstranslated;
+			outputStream << untranslated;
 			outputStream.flush();
 			if (savefile->commit()) {
 				result = true;

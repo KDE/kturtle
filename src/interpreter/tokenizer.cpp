@@ -130,7 +130,7 @@ Token* Tokenizer::getToken()
 		return new Token(Token::Number, look, startRow, startCol, row, col);
 	}
 
-	// catch previously uncatched 'double charactered tokens' (tokens that ar not in letters, like: == != >= <=)
+	// catch previously uncaught 'double character tokens' (tokens that ar not in letters, like: == != >= <=)
 	{
 		QString look = QString(c).append(getChar());
 		int type = translator->look2type(look);

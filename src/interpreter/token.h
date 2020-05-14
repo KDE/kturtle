@@ -105,7 +105,7 @@ class Token
 			GreaterOrEquals,
 			LessOrEquals,
 			Addition,
-			Substracton,
+			Subtraction,
 			Multiplication,
 			Division,
 			Power,

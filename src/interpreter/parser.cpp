@@ -368,7 +368,7 @@ TreeNode* Parser::parseSignedFactor()
 			return parseFactor();
 			break;
 
-		case Token::Substracton:
+		case Token::Subtraction:
 			rememberedToken = currentToken;
 			nextToken();
 			node = parseFactor();
@@ -440,7 +440,7 @@ TreeNode* Parser::parseExpression()
 	Token* prevToken = nullptr;
 
 	while ((currentToken->type() == Token::Addition) ||
-	       (currentToken->type() == Token::Substracton) ||
+	       (currentToken->type() == Token::Subtraction) ||
 	       (currentToken->type() == Token::GreaterThan) ||
 	       (currentToken->type() == Token::GreaterOrEquals) ||
 	       (currentToken->type() == Token::LessThan) ||

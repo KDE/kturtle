@@ -160,7 +160,7 @@ int Token::typeToCategory(int type)
 			return ArgumentSeparatorCategory;
 
 		case Power:
-		case Substracton:
+		case Subtraction:
 		case Multiplication:
 		case Division:
 		case Addition:

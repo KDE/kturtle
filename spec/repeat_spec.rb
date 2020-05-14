@@ -83,7 +83,7 @@ describe "repeat loop" do
   end
 
   it "should not execute the scope when argument is empty" do
-    # TODO decide: do we really want this? or do we like the current behaivior in which unassigned 
+    # TODO decide: do we really want this? or do we like the current behavior in which unassigned 
     $i.should_run_clean <<-EOS
       repeat $x {
         assert false
