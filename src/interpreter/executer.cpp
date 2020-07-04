@@ -26,10 +26,10 @@
 #include <errno.h>
 #include <math.h>
 
+#include <QRandomGenerator>
 #include <QTimer>  // for wait
 #include <QDebug>
 
-#include <krandom.h>
 #include <KLocalizedString>
 #include <QtMath>
 
@@ -964,7 +964,7 @@ void Executer::executeRandom(TreeNode* node) {
 	if (!checkParameterType(node, Value::Number, 20000+Token::Random*100+91)) return;
 	double x = nodeX->value()->number();
 	double y = nodeY->value()->number();
-	double r = static_cast<double>(KRandom::random()) / RAND_MAX;
+	double r = QRandomGenerator::global()->bounded(1.0);
 	node->value()->setNumber(r * (y - x) + x);
 }
 void Executer::executeGetX(TreeNode* node) {
