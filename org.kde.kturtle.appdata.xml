@@ -30,6 +30,7 @@
   <name xml:lang="pl">KTurtle</name>
   <name xml:lang="pt">KTurtle</name>
   <name xml:lang="pt-BR">KTurtle</name>
+  <name xml:lang="ro">KTurtle</name>
   <name xml:lang="ru">KTurtle</name>
   <name xml:lang="sk">KTurtle</name>
   <name xml:lang="sl">KTurtle</name>
@@ -65,6 +66,7 @@
   <summary xml:lang="pl">Edukacyjne środowisko do programowania</summary>
   <summary xml:lang="pt">Ambiente de Programação Educacional</summary>
   <summary xml:lang="pt-BR">Ambiente de programação educacional</summary>
+  <summary xml:lang="ro">Mediu de programare educațional</summary>
   <summary xml:lang="ru">Среда обучения программированию</summary>
   <summary xml:lang="sk">Výukové programovacie prostredie</summary>
   <summary xml:lang="sl">Okolje za učenje programiranja</summary>
@@ -128,6 +130,7 @@
       <caption xml:lang="pl">Programowanie w KTurtle</caption>
       <caption xml:lang="pt">Programação no KTurtle</caption>
       <caption xml:lang="pt-BR">Programando no KTurtle</caption>
+      <caption xml:lang="ro">Programare în KTurtle</caption>
       <caption xml:lang="ru">Программирование в KTurtle</caption>
       <caption xml:lang="sk">Programovanie v KTurtle</caption>
       <caption xml:lang="sl">Programiranje s KTurtle</caption>
