@@ -1,7 +1,7 @@
 kturtle-script-v1.0
 # The KDE Logo
-# Copyright (C) 2008 Andy Teijelo <ateijelo@gmail.com>
-# GPL2 or later
+# SPDX-FileCopyrightText: 2008 Andy Teijelo <ateijelo@gmail.com>
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 
 # turnright and forward in one
