@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2007 Niels Slot <nielsslot AT gmail DOT com>
+    SPDX-FileCopyrightText: 2007 Niels Slot <nielsslot AT gmail DOT com>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */

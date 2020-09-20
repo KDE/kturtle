@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2003-2006 Cies Breijs <cies AT kde DOT nl>
+    SPDX-FileCopyrightText: 2003-2006 Cies Breijs <cies AT kde DOT nl>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
