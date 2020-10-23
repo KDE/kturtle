@@ -6,8 +6,6 @@
 
 #include "editor.h"
 
-#include "interpreter/token.h"
-#include "interpreter/tokenizer.h"
 
 #include <QBoxLayout>
 #include <QFileDialog>

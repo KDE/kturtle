@@ -6,7 +6,6 @@
 
 #include "highlighter.h"
 
-#include "interpreter/tokenizer.h"
 
 
 Highlighter::Highlighter(QTextDocument *parent)

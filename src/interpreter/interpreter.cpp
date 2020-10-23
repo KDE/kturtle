@@ -12,11 +12,6 @@
 #include <QFile>
 #include <QDebug>
 
-#include "errormsg.h"
-#include "executer.h"
-#include "parser.h"
-#include "tokenizer.h"
-#include "translator.h"
 
 
 Interpreter::Interpreter(QObject* parent, bool testing)
