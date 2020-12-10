@@ -341,7 +341,7 @@ void MainWindow::setupActions()
 	actionCollection()->addAction(QStringLiteral("show_editor"), a);
 	a->setStatusTip(i18n("Show or hide the Code Editor"));
 	a->setWhatsThis(i18n("Show Code Editor: Show or hide the Code Editor"));
-	actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_E));
+	actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_E));
 	a->setCheckable(true);
 	a->setChecked(true);
 	connect(a, &QAction::toggled, editorDock, &LocalDockWidget::setVisible);
@@ -351,7 +351,7 @@ void MainWindow::setupActions()
 	actionCollection()->addAction(QStringLiteral("show_inspector"), a);
 	a->setStatusTip(i18n("Show or hide the Inspector"));
 	a->setWhatsThis(i18n("Show Inspector: Show or hide the Inspector"));
-	actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_I));
+	actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::CTRL | Qt::Key_I));
 	a->setCheckable(true);
 	a->setChecked(true);
 	connect(a, &QAction::toggled, inspectorDock, &LocalDockWidget::setVisible);
