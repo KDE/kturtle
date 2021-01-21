@@ -24,7 +24,7 @@ ErrorDialog::ErrorDialog(QWidget* parent)
 {
 	errorList = nullptr;
 
-	setWindowTitle(i18n("Errors"));
+	setWindowTitle(i18nc("@title:window", "Errors"));
 	setModal(false);
 	QVBoxLayout *mainLayout = new QVBoxLayout;
 	setLayout(mainLayout);

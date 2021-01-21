@@ -191,7 +191,7 @@ DirectionDialog::DirectionDialog(double deg, QWidget* parent)
 
 	translator = Translator::instance();
 
-	setWindowTitle(i18n("Direction Chooser"));
+	setWindowTitle(i18nc("@title:window", "Direction Chooser"));
 	setModal(false);
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
 

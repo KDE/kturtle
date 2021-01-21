@@ -1028,7 +1028,7 @@ void MainWindow::exportToSvg()
 {
 	// copied from edit code for file selection
 	// canvas->saveAsSvg() does not handle QUrl, so only local files are accepted
-	QString path = QFileDialog::getSaveFileName(this, i18n("Save as SVG"), QString(), QStringLiteral("%1 (.*svg);;%2 (*)").arg(i18n("Scalable Vector Graphics")).arg(i18n("All files")));
+	QString path = QFileDialog::getSaveFileName(this, i18nc("@title:window", "Save as SVG"), QString(), QStringLiteral("%1 (.*svg);;%2 (*)").arg(i18n("Scalable Vector Graphics")).arg(i18n("All files")));
 	if (path.isEmpty())
 		return;
 	canvas->saveAsSvg(windowTitle(), path);
@@ -1038,7 +1038,7 @@ void MainWindow::exportToHtml()
 {
 	// copied from edit code for file selection
 	// we do not handle QUrl, so only local files are accepted
-	QString path = QFileDialog::getSaveFileName(this, i18n("Save code as HTML"), QString(), QStringLiteral("%1 (*.html);;%2 (*)").arg(i18n("HTML documents")).arg(i18n("All files")));
+	QString path = QFileDialog::getSaveFileName(this, i18nc("@title:window", "Save code as HTML"), QString(), QStringLiteral("%1 (*.html);;%2 (*)").arg(i18n("HTML documents")).arg(i18n("All files")));
 	if (path.isEmpty())
 		return;
 	QSaveFile file(path);

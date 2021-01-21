@@ -27,7 +27,7 @@
 ColorPicker::ColorPicker(QWidget* parent)
 	: QDialog(parent)
 {
-	setWindowTitle(i18n("Color Picker"));
+	setWindowTitle(i18nc("@title:window", "Color Picker"));
 	setModal(false);
 
 	QVBoxLayout *mainLayout = new QVBoxLayout;
