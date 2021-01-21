@@ -35,7 +35,7 @@ forward 100
 </screen>
 The first line is a <link linkend="comment">comment</link>. The second line contains the <userinput>forward</userinput> command and the <link linkend="number">number</link> <userinput>100</userinput>. The number is not part of command, it is considered 'input' for the command.</para>
 <para>Some commands like &eg; <userinput>go</userinput> need more than one input value. Multiple values have to be separated using the <userinput>,</userinput> character (comma).</para>
-<para> For a detailed overview of all commands that &kturtle; supports go <link linkend="commands">here</link>. Built-in commands are <glossterm>highlighted</glossterm> in dark blue</para>
+<para> For a detailed overview of all commands that &kturtle; supports go <link linkend="commands">here</link>. Built-in commands are <glossterm>highlighted</glossterm> in dark blue.</para>
 </sect2>
 
 <sect2 id="number">
@@ -230,7 +230,7 @@ Please note that <userinput>$A</userinput> and <userinput>$B</userinput> have to
     <varlistentry> 
       <term>forward (fw)<indexterm><primary>forward (fw)</primary></indexterm></term>
       <listitem><para><screen>forward X</screen>
-      <userinput>forward</userinput> moves the turtle forward by the amount of X pixels. When the pen is down the turtle will leave a trail. <userinput>forward</userinput> can be abbreviated to <userinput>fw</userinput></para></listitem>
+      <userinput>forward</userinput> moves the turtle forward by the amount of X pixels. When the pen is down the turtle will leave a trail. <userinput>forward</userinput> can be abbreviated to <userinput>fw</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>

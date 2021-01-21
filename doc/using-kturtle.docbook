@@ -13,7 +13,7 @@
   </mediaobject>
 </screenshot>
 
-<para>The main window of &kturtle; has three main parts: <link linkend="the-editor">the editor</link> (1) on the left where you type the &turtlescript; commands, the <link linkend="the-canvas">the canvas</link> (2) on the right where the turtle make your drawing, and the <link linkend="the-inspector">inspector</link> (3) which gives you information when your program executes. Besides these you find <link linkend="the-menubar">the menu bar</link> (5) from where all the actions can be reached, <link linkend="the-toolbar">the toolbar</link> (4) that allows you to quickly select the most used actions, the <guilabel>Console</guilabel>, that you can use to enter a one line command to test it, and <link linkend="the-statusbar">the statusbar</link> (along the bottom of the window) where you will find feedback on the state of &kturtle;.</para>
+<para>The main window of &kturtle; has three main parts: <link linkend="the-editor">the editor</link> (1) on the left where you type the &turtlescript; commands, the <link linkend="the-canvas">the canvas</link> (2) on the right where the turtle make your drawing, and the <link linkend="the-inspector">inspector</link> (3) which gives you information when your program executes. Besides these you find <link linkend="the-menubar">the menu bar</link> (5) from where all the actions can be reached, <link linkend="the-toolbar">the toolbar</link> (4) that allows you to quickly select the most used actions, the <guilabel>Console:</guilabel> input box, that you can use to enter a one line command to test it, and <link linkend="the-statusbar">the statusbar</link> (along the bottom of the window) where you will find feedback on the state of &kturtle;.</para>
 
 <sect1 id="the-editor">
 <title>The Editor</title>
@@ -497,14 +497,14 @@
     <anchor id="settings-toggle-toolbar" />
     <varlistentry>
       <term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show Toolbar</guimenuitem></menuchoice></term>
-      <listitem><para><action>Toggle</action> the Main Toolbar</para></listitem>
+      <listitem><para><action>Toggle</action> the Main Toolbar.</para></listitem>
     </varlistentry>
   </variablelist>  
   <variablelist>
     <anchor id="settings-toggle-statusbar" />
     <varlistentry>
       <term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show Statusbar</guimenuitem></menuchoice></term>
-      <listitem><para><action>Toggle</action> the Statusbar</para></listitem>
+      <listitem><para><action>Toggle</action> the Statusbar.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
