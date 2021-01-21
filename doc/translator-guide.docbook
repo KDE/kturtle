@@ -1,7 +1,7 @@
 <chapter id="translators">
 <title>Translator's Guide to &kturtle;</title>
 <para>As you probably already know &kturtle;'s programming language, &turtlescript;, allows to be translated. This takes away a barrier for some, especially younger students, on their effort to understand the basics of programming.</para>
-<para>When translating &kturtle; to a new language you will find, in addition to the GUI strings, the programming commands, the examples and the error messages are included in the standard .pot files as used for translation in &kde;. Everything is translated using the regular translation method found in &kde;, yet you are strongly advised to learn a little on how to translate these (as you will also read in the translator comments).</para>
+<para>When translating &kturtle; to a new language you will find, in addition to the &GUI; strings, the programming commands, the examples and the error messages are included in the standard <filename class="extension">.pot</filename> files as used for translation in &kde;. Everything is translated using the regular translation method found in &kde;, yet you are strongly advised to learn a little on how to translate these (as you will also read in the translator comments).</para>
 <para>Please look at <ulink
-url="http://edu.kde.org/kturtle/translator.php">http://edu.kde.org/kturtle/translator.php</ulink> for more information about the translation process. Thanks a lot for your work! KTurtle depends heavily on its translations.</para>
+url="https://edu.kde.org/kturtle/translation.php">https://edu.kde.org/kturtle/translation.php</ulink> for more information about the translation process. Thanks a lot for your work! &kturtle; depends heavily on its translations.</para>
 </chapter>

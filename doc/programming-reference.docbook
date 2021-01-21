@@ -1,6 +1,6 @@
 <chapter id="reference">
 <title>&turtlescript; Programming Reference</title>
-<para>This is the reference for &kturtle;'s &turtlescript;. In the first section of this chapter have a look at some aspects of the <link linkend="grammar">grammar</link> of &turtlescript; programs. The second section deals exclusively with <link linkend="mathematical-operators">mathematical operators</link>, <link linkend="boolean-operators">boolean (true/false) operators</link> and <link linkend="comparing-operators">comparison operators</link>. The third section is basically a giant list of all <link linkend="commands">commands</link> explaining them one-by-one. Section four explains how to <link linkend="assignment-of-variables">assign</link> values to <link linkend="assignment-of-variables">variables</link>. Finally we explain how to arrange the execution of commands with <link linkend="controlling-execution">execution controlling statements</link> in section five and how to create you own commands with <link linkend="learn">learn</link> in section six.</para>
+<para>This is the reference for &kturtle;'s &turtlescript;. In the first section of this chapter have a look at some aspects of the <link linkend="grammar">grammar</link> of &turtlescript; programs. The second section deals exclusively with <link linkend="mathematical-operators">mathematical operators</link>, <link linkend="boolean-operators">boolean (true/false) operators</link> and <link linkend="comparing-operators">comparison operators</link>. The third section is basically a giant list of all <link linkend="commands">commands</link> explaining them one-by-one. Section four explains how to <link linkend="assignment-of-variables">assign</link> values to <link linkend="assignment-of-variables">variables</link>. Finally we explain how to arrange the execution of commands with <link linkend="controlling-execution">execution controlling statements</link> in section five and how to create you own commands with <link linkend="learn"><userinput>learn</userinput></link> in section six.</para>
 
 <sect1 id="grammar">
 <title>The Grammar of &turtlescript;</title>
@@ -40,8 +40,8 @@ The first line is a <link linkend="comment">comment</link>. The second line cont
 
 <sect2 id="number">
 <title>Numbers</title>
-<para>Most likely you already know quite a bit about numbers. The way numbers are used in &kturtle; is not much different from spoken language, or math. </para>
-<para>We have the so called natural numbers: <userinput>0</userinput>, <userinput>1</userinput>, <userinput>2</userinput>, <userinput>3</userinput>, <userinput>4</userinput>, <userinput>5</userinput>, etc. The negative numbers: <userinput>-1</userinput>, <userinput>-2</userinput>, <userinput>-3</userinput>, etc. And the numbers with decimals, or dot-numbers, for example: <userinput>0.1</userinput>, <userinput>3.14</userinput>, <userinput>33.3333</userinput>, <userinput>-5.05</userinput>, <userinput>-1.0</userinput>.
+<para>Most likely you already know quite a bit about numbers. The way numbers are used in &kturtle; is not much different from spoken language, or math.</para>
+<para>We have the so called natural numbers: <userinput>0</userinput>, <userinput>1</userinput>, <userinput>2</userinput>, <userinput>3</userinput>, <userinput>4</userinput>, <userinput>5</userinput>, &etc; The negative numbers: <userinput>-1</userinput>, <userinput>-2</userinput>, <userinput>-3</userinput>, &etc; And the numbers with decimals, or dot-numbers, for example: <userinput>0.1</userinput>, <userinput>3.14</userinput>, <userinput>33.3333</userinput>, <userinput>-5.05</userinput>, <userinput>-1.0</userinput>.
 The <userinput>.</userinput> character (dot) is used as decimal separator.
 </para>
 <para>Numbers can be used in <link linkend="mathematical-operators">mathematical operators</link> and <link linkend="comparing-operators">comparison operators</link>. They can also be stored in <link linkend="assignment-of-variables">variables</link>. Numbers are <glossterm>highlighted</glossterm> in dark red.</para>
@@ -61,7 +61,7 @@ In this example <userinput>print</userinput> is a command where <userinput>"Hell
 
 <sect2 id="boolean-value">
 <title>Boolean (true/false) values</title>
-<para>There are only two boolean values: <userinput>true</userinput><indexterm><primary>true</primary></indexterm> and <userinput>false</userinput><indexterm><primary>false</primary></indexterm>. Sometimes they are also called: on and off, yes and no, one and zero. But in &turtlescript; we call them, always, <userinput>true</userinput> and <userinput>false</userinput>. Have a look at this piece of &turtlescript;:
+<para>There are only two boolean values: <userinput>true</userinput><indexterm><primary>true</primary></indexterm> and <userinput>false</userinput><indexterm><primary>false</primary></indexterm>. Sometimes they are also called: <quote><userinput>on</userinput></quote> and <quote><userinput>off</userinput></quote>, <quote><userinput>yes</userinput></quote> and <quote><userinput>no</userinput></quote>, <quote><userinput>one</userinput></quote> and <quote><userinput>zero</userinput></quote>. But in &turtlescript; we call them, always, <userinput>true</userinput> and <userinput>false</userinput>. Have a look at this piece of &turtlescript;:
 <screen>
 $a = true
 </screen>
@@ -139,7 +139,7 @@ if (($a &lt; 10) and ($b == 5)) and ($a &lt; $b) {
   print "hello"
 }
 </screen>
-In this piece of &turtlescript; the result of three <link linkend="comparing-operators">comparing operators</link> are merged using <userinput>and</userinput> operators. This means that all three have to evaluate "true" in order for the "hello" to be printed.</para>
+In this piece of &turtlescript; the result of three <link linkend="comparing-operators">comparing operators</link> are merged using <userinput>and</userinput> operators. This means that all three have to evaluate <quote>true</quote> in order for the <quote>hello</quote> to be printed.</para>
 
 <para>An example with <userinput>or</userinput>:
 <screen>
@@ -148,9 +148,9 @@ if ($n &lt; 10) or ($n == 2) {
   print "hello"
 }
 </screen>
-In this piece of &turtlescript; the left side of the <userinput>or</userinput> is evaluating to 'true', the right side to 'false'. Since one of the two sides of the <userinput>or</userinput> operator is 'true', the <userinput>or</userinput> operator evaluates 'true'. That means "hello" gets printed.</para>
+In this piece of &turtlescript; the left side of the <userinput>or</userinput> is evaluating to <quote>true</quote>, the right side to <quote>false</quote>. Since one of the two sides of the <userinput>or</userinput> operator is <quote>true</quote>, the <userinput>or</userinput> operator evaluates <quote>true</quote>. That means <quote>hello</quote> gets printed.</para>
 
-<para>And finally an example with <userinput>not</userinput> which changes 'true' into 'false' and 'false' into 'true'. Have a look:
+<para>And finally an example with <userinput>not</userinput> which changes <quote>true</quote> into <quote>false</quote> and <quote>false</quote> into <quote>true</quote>. Have a look:
 <screen>
 $n = 1
 if not ($n == 3) {
@@ -168,7 +168,7 @@ if not ($n == 3) {
 <screen>
 $answer = 10 &gt; 3
 </screen>
-Here <userinput>10</userinput> is compared to <userinput>3</userinput> with the 'greater than' operator. The result of this comparison, the <link linkend="boolean-value">boolean value</link> <userinput>true</userinput> is stored in the <link linkend="assignment-of-variables">variable</link> <userinput>$answer</userinput>.</para>
+Here <userinput>10</userinput> is compared to <userinput>3</userinput> with the <quote>greater than</quote> operator. The result of this comparison, the <link linkend="boolean-value">boolean value</link> <userinput>true</userinput> is stored in the <link linkend="assignment-of-variables">variable</link> <userinput>$answer</userinput>.</para>
 <para>All <link linkend="number">numbers</link> and <link linkend="assignment-of-variables">variables</link> (that contain numbers) can be compared to each other with comparing operators.</para>
 <para>
 Here are all possible comparing operators:
@@ -209,7 +209,7 @@ Here are all possible comparing operators:
 </tbody>
 </tgroup>
 </table>
-Please note that $A and $B have to be <link linkend="number">numbers</link> or <link linkend="assignment-of-variables">variables</link> that contain numbers.</para>
+Please note that <userinput>$A</userinput> and <userinput>$B</userinput> have to be <link linkend="number">numbers</link> or <link linkend="assignment-of-variables">variables</link> that contain numbers.</para>
 </sect2>
 
 
@@ -219,7 +219,7 @@ Please note that $A and $B have to be <link linkend="number">numbers</link> or <
 
 <sect1 id="commands">
 <title>Commands</title>
-<para>Using commands you tell the turtle or &kturtle; to do something. Some commands need input, some give output. In this section we explain all the built-in commands of &kturtle;. Alternatively, using <link linkend="learn">learn</link>, you can create your own commands. Built-in commands we discuss here are <glossterm>highlighted</glossterm> with dark blue.</para>
+<para>Using commands you tell the turtle or &kturtle; to do something. Some commands need input, some give output. In this section we explain all the built-in commands of &kturtle;. Alternatively, using <link linkend="learn"><userinput>learn</userinput></link>, you can create your own commands. Built-in commands we discuss here are <glossterm>highlighted</glossterm> with dark blue.</para>
 
 <sect2 id="moving-the-turtle">
 <title>Moving the turtle</title>
@@ -412,9 +412,9 @@ Please note that $A and $B have to be <link linkend="number">numbers</link> or <
 
 <sect2 id="sprites">
 <title>The turtle is a sprite</title>
-<para>First a brief explanation of what sprites are: sprites are small pictures that can be moved around the screen, like we often see in computer games. Our turtle is also a sprite. For more info see the glossary on <glossterm linkend="sprites">sprites</glossterm>. </para>
+<para>First a brief explanation of what sprites are: sprites are small pictures that can be moved around the screen, like we often see in computer games. Our turtle is also a sprite. For more info see the glossary on <glossterm linkend="sprites">sprites</glossterm>.</para>
 <para>Next you will find a full overview on all commands to work with sprites.</para>
-<para>[The current version of &kturtle; does not yet support the use of sprites other than the turtle. With future versions you will be able to change the turtle into something of your own design]</para>
+<note><para>The current version of &kturtle; does not yet support the use of sprites other than the turtle. With future versions you will be able to change the turtle into something of your own design.</para></note>
   <variablelist>
     <anchor id="spriteshow" />
     <varlistentry> 
@@ -672,7 +672,7 @@ repeat 36 {
 </sect2>
 
 <sect2 id="if">
-<title>Execute "if"</title>
+<title>Execute <quote>if</quote></title>
   <variablelist>
     <varlistentry>
       <term>if<indexterm><primary>if</primary></indexterm></term>
@@ -690,7 +690,7 @@ if $x &gt; 5 {
 </sect2>
 
 <sect2 id="else">
-<title>If not, in other words: "else"</title>
+<title>If not, in other words: <quote>else</quote></title>
   <variablelist>
     <varlistentry>
       <term>else<indexterm><primary>else</primary></indexterm></term>
@@ -711,7 +711,7 @@ if $x &gt; 5 {
 </sect2>
 
 <sect2 id="while">
-<title>The "while" loop</title>
+<title>The <quote>while</quote> loop</title>
   <variablelist>
     <varlistentry>
       <term>while<indexterm><primary>while</primary></indexterm></term>
@@ -731,7 +731,7 @@ while $x &lt; 5 {
 </sect2>
 
 <sect2 id="repeat">
-<title>The "repeat" loop</title>
+<title>The <quote>repeat</quote> loop</title>
   <variablelist>
     <varlistentry>
       <term>repeat<indexterm><primary>repeat</primary></indexterm></term>
@@ -742,7 +742,7 @@ while $x &lt; 5 {
 </sect2>
 
 <sect2 id="for">
-<title>The "for" loop, a counting loop</title>
+<title>The <quote>for</quote> loop, a counting loop</title>
   <variablelist>
     <varlistentry>
       <term>for<indexterm><primary>for</primary></indexterm><indexterm><primary>to</primary></indexterm><indexterm><primary>step</primary></indexterm></term>

@@ -1,6 +1,6 @@
 <chapter id="getting-started">
 <title>Getting Started</title>
-<para>When you start &kturtle; you will see something like this:
+<para>When you start &kturtle; you will see something like this:</para>
 <screenshot>
   <screeninfo>Here is a screenshot of &kturtle; when you start it for the first time</screeninfo>
   <mediaobject>
@@ -12,7 +12,7 @@
     </textobject>
   </mediaobject>
 </screenshot>
-In this Getting Started guide we assume that the language of the &turtlescript; commands is English. You can change this language with <menuchoice><guimenu>Settings</guimenu><guisubmenu>Script Language</guisubmenu></menuchoice>. Be aware that the language you set here for &kturtle; is the one you use to type the &turtlescript; commands, not the language used by &kde; on your computer and used to display the &kturtle; interface and menus.</para>
+<para>In this Getting Started guide we assume that the language of the &turtlescript; commands is English. You can change this language with the <menuchoice><guimenu>Settings</guimenu><guisubmenu>Script Language</guisubmenu></menuchoice> submenu. Be aware that the language you set here for &kturtle; is the one you use to type the &turtlescript; commands, not the language used by &kde; on your computer and used to display the &kturtle; interface and menus.</para>
 
 <sect1 id="first-steps">
 <title>First steps with &turtlescript;: meet the Turtle!</title>
@@ -39,7 +39,7 @@ Type or copy-paste the code to the editor and execute it (using <link linkend="r
 <para>That the turtle draws a thin black line.</para>
 </listitem>
 <listitem>
-<para>Maybe you got an error message. This could simply mean two things: you could have made a mistake while copying the commands, or you should still set the correct language for the &turtlescript; commands (you can do that by choosing <menuchoice><guimenu>Settings</guimenu><guisubmenu>Script Language</guisubmenu></menuchoice>).</para>
+<para>Maybe you got an error message. This could simply mean two things: you could have made a mistake while copying the commands, or you should still set the correct language for the &turtlescript; commands (you can do that by choosing the <menuchoice><guimenu>Settings</guimenu><guisubmenu>Script Language</guisubmenu></menuchoice> submenu).</para>
 </listitem>
 </orderedlist>
 
@@ -76,7 +76,7 @@ turnleft 45
 
 go 40,100
 </screen>
-Again you can type or copy-paste the code to the editor or open the <filename>arrow</filename> example in the <guimenu>Examples</guimenu> menu and execute it (using <link linkend="run-execute"><menuchoice><guimenu>Run</guimenu><guimenuitem>Run</guimenuitem></menuchoice></link>) to see the result. In the next examples you are expected to know the drill.</para>
+Again you can type or copy-paste the code to the editor or open the <filename>arrow</filename> example in the <guimenu>Examples</guimenu> submenu and execute it (using <link linkend="run-execute"><menuchoice><guimenu>Run</guimenu><guimenuitem>Run</guimenuitem></menuchoice></link>) to see the result. In the next examples you are expected to know the drill.</para>
 
 <para>You might have noticed that this second example uses a lot more code. You have also seen a couple of new commands. Here a short explanation of all the new commands:</para>
 

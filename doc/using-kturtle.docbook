@@ -18,8 +18,8 @@
 <sect1 id="the-editor">
 <title>The Editor</title>
 <para>In the editor you type the &turtlescript; commands. Most of functions of the editor can be found in the <link linkend="the-file-menu">File</link> and <link linkend="the-edit-menu">Edit</link> menus. The editor can be docked on each border of the main window or it can be detached and placed anywhere on your desktop.</para>
-<para>You have several ways to get some code in the editor. The easiest way is to use an example: choose <menuchoice><guimenu>File</guimenu><guisubmenu>Examples</guisubmenu></menuchoice> in the <link linkend="the-file-menu">File menu</link> and select an example. The file example you choose will be opened in the <link linkend="the-editor">the editor</link>, you can then use <menuchoice><guimenu>Run</guimenu><guimenuitem>Run</guimenuitem></menuchoice> from the menubar or the <guibutton>Run</guibutton> from the toolbar to run the code if you like.</para>
-<para>You can open &turtlescript; files by choosing <menuchoice><guimenu>File</guimenu><guimenuitem>Open...</guimenuitem></menuchoice>.</para>
+<para>You have several ways to get some code in the editor. The easiest way is to use an example: choose the <menuchoice><guimenu>File</guimenu><guisubmenu>Examples</guisubmenu></menuchoice> submenu and select an example. The file example you choose will be opened in the <link linkend="the-editor">the editor</link>, you can then use the <menuchoice><guimenu>Run</guimenu><guimenuitem>Run</guimenuitem></menuchoice> menu item (shortcut: <keycombo action="simul">&Alt;<keycap>F2</keycap></keycombo>) or the <inlinemediaobject> <imageobject> <imagedata fileref="media-playback-pause.png" format="PNG"/> </imageobject> </inlinemediaobject> <guibutton>Run</guibutton> button from the toolbar to run the code if you like.</para>
+<para>You can open &turtlescript; files by choosing the <menuchoice><guimenu>File</guimenu><guimenuitem>Open...</guimenuitem></menuchoice> menu item.</para>
 <para>The third way is to directly type your own code in the editor or to copy/paste some code.</para>
 </sect1>
 
@@ -40,7 +40,7 @@
 
 <sect1 id="the-toolbar">
 <title>The Toolbar</title>
-<para>Here you can quickly reach the most used actions. The Toolbar also contains the <guilabel>Console</guilabel> where you can quickly invoke commands, this might be useful in case you want to test a command without modifying the content of the <link linkend="the-editor">Editor</link>.</para>
+<para>Here you can quickly reach the most used actions. The Toolbar also contains the <guilabel>Console:</guilabel> input box, where you can quickly invoke commands, this might be useful in case you want to test a command without modifying the content of the <link linkend="the-editor">Editor</link>.</para>
 <para>You can configure the toolbar using <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Toolbars...</guimenuitem></menuchoice> to better fit your preferences.</para>
 </sect1>
 
@@ -95,7 +95,7 @@
         <guimenu>File</guimenu>
         <guisubmenu>Examples</guisubmenu>
       </menuchoice></term>
-      <listitem><para>Open example &turtlescript; programs. The examples are in your favorite language that you can choose in <menuchoice><guimenu>Settings</guimenu><guisubmenu>Script Language</guisubmenu></menuchoice>.</para></listitem>
+      <listitem><para>Open example &turtlescript; programs. The examples are in your favorite language that you can choose in the <menuchoice><guimenu>Settings</guimenu><guisubmenu>Script Language</guisubmenu></menuchoice> submenu.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -105,7 +105,7 @@
         <guimenu>File</guimenu>
         <guimenuitem>Get more examples...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Open the get <guilabel>Hot New Stuff</guilabel> dialog to download 
+      <listitem><para>Open the <guilabel>Get Hot New Stuff</guilabel> dialog to download
       additional &turtlescript; files from the Internet.</para></listitem>
     </varlistentry>
   </variablelist>
@@ -143,7 +143,7 @@
         <guimenu>File</guimenu>
         <guimenuitem>Export to HTML...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Exports the current content of the Editor as an HTML file that includes highlighting colors.</para></listitem>
+      <listitem><para>Exports the current content of the Editor as an &HTML; file that includes highlighting colors.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -311,7 +311,7 @@
     <varlistentry>
       <term><menuchoice>
         <shortcut>
-          <keycombo><keycap>Ins</keycap></keycombo>
+          <keycombo>&Ins;</keycombo>
         </shortcut>
         <guimenu>Edit</guimenu>
         <guimenuitem>Overwrite Mode</guimenuitem>
@@ -341,7 +341,7 @@
         <guimenu>Canvas</guimenu>
         <guimenuitem>Export to Drawing (SVG)...</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Exports the current content of the <link linkend="the-canvas">Canvas</link> as a vector drawing of the SVG (Scalable Vector Graphics) type.</para></listitem>
+      <listitem><para>Exports the current content of the <link linkend="the-canvas">Canvas</link> as a vector drawing of the &SVG; (Scalable Vector Graphics) type.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>
@@ -477,7 +477,7 @@
         <guimenu>Settings</guimenu>
         <guimenuitem>Show Errors</guimenuitem>
       </menuchoice></term>
-      <listitem><para>Show or hide the <guilabel>Error</guilabel> tab with a list of errors resulting from running the code. If this option is enabled, click on <guilabel>Canvas</guilabel> to see the turtle again.</para></listitem>
+      <listitem><para>Show or hide the <guilabel>Errors</guilabel> tab with a list of errors resulting from running the code. If this option is enabled, click on <guilabel>Canvas</guilabel> to see the turtle again.</para></listitem>
     </varlistentry>
   </variablelist>
   <variablelist>

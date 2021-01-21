@@ -154,8 +154,8 @@ penup
 
 <glossentry id="sprite">
 <glossterm>sprite</glossterm>
-<glossdef><para>A sprite is a small picture that can be moved around the screen. Our beloved turtle, for instance, is a sprite.</para>
-<para>Note: with this version of &kturtle; the sprite cannot be changed from a turtle into something else. Future versions of &kturtle; will be able to do this.</para></glossdef>
+<glossdef><para>A sprite is a small picture that can be moved around the screen. Our beloved turtle, for instance, is a sprite.
+<note><para>With this version of &kturtle; the sprite cannot be changed from a turtle into something else. Future versions of &kturtle; will be able to do this.</para></note></para></glossdef>
 </glossentry>
 
 </glosslist>
