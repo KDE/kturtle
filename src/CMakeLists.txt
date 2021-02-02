@@ -22,19 +22,16 @@ set(kturtle_SRCS
     interpreter/translator.cpp
     interpreter/treenode.cpp
     interpreter/value.cpp
+    resources.qrc
 )
 
 qt5_add_dbus_adaptor(kturtle_SRCS interpreter/org.kde.kturtle.Interpreter.xml
                      interpreter/interpreter.h Interpreter)
 
-set (kturtle_RCCS resources.qrc)
-qt5_add_resources (kturtle_RCC_SRCS ${kturtle_RCCS})
-
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../icons/*-apps-kturtle.png")
 ecm_add_app_icon(kturtle_SRCS ICONS ${ICONS_SRCS})
 
 add_executable(kturtle ${kturtle_SRCS}
-                       ${kturtle_RCC_SRCS}
 )
 
 target_link_libraries(kturtle
