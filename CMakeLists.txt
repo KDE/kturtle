@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
+cmake_minimum_required (VERSION 3.16 FATAL_ERROR)
 
 # KDE Application Version, managed by release script
 set(RELEASE_SERVICE_VERSION_MAJOR "21")
@@ -8,8 +8,8 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 
 project(kturtle VERSION ${RELEASE_SERVICE_VERSION})
 
-set(QT_MIN_VERSION "5.11.0")
-set(KF5_MIN_VERSION "5.46.0")
+set(QT_MIN_VERSION "5.15.0")
+set(KF5_MIN_VERSION "5.83.0")
 
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)

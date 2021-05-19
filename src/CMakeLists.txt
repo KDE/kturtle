@@ -25,7 +25,7 @@ set(kturtle_SRCS
     resources.qrc
 )
 
-qt5_add_dbus_adaptor(kturtle_SRCS interpreter/org.kde.kturtle.Interpreter.xml
+qt_add_dbus_adaptor(kturtle_SRCS interpreter/org.kde.kturtle.Interpreter.xml
                      interpreter/interpreter.h Interpreter)
 
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../icons/*-apps-kturtle.png")
@@ -38,11 +38,11 @@ target_link_libraries(kturtle
     KF5::KIOCore
     KF5::NewStuff
     KF5::I18n
-    Qt5::Core
-    Qt5::Gui
-    Qt5::Xml
-    Qt5::Svg
-    Qt5::PrintSupport
+    Qt::Core
+    Qt::Gui
+    Qt::Xml
+    Qt::Svg
+    Qt::PrintSupport
     KF5::TextWidgets
     KF5::Crash
 )
