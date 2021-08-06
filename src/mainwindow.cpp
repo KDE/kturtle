@@ -33,7 +33,7 @@
 #include <KSharedConfig>
 #include <KToolBarPopupAction>
 
-#include <kns3/downloaddialog.h>
+#include <KNS3/QtQuickDialogWrapper>
 
 #include "interpreter/errormsg.h"
 #include "interpreter/translator.h"
@@ -1072,8 +1072,9 @@ void MainWindow::slotMessageDialog(const QString& text)
 
 void MainWindow::getNewExampleDialog()
 {
-	QPointer<KNS3::DownloadDialog> dialog = new KNS3::DownloadDialog(this);
-	dialog->exec();
-	updateExamplesMenu();
-	delete dialog;
+    KNS3::QtQuickDialogWrapper dialog(QStringLiteral("kturtle.knsrc"));
+    const QList<KNSCore::EntryInternal> entries = dialog.exec();
+    if ( entries.size() > 0 ){
+        updateExamplesMenu();
+    }
 }
