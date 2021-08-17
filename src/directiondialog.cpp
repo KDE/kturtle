@@ -128,10 +128,10 @@ void DirectionCanvas::mousePressEvent(QMouseEvent *event)
 	if (event->buttons() & Qt::LeftButton) {
 		deg = translateMouseCoords(event->x() - (width() / 2), event->y() - (height() / 2));
 		update();
-		emit degreeChanged(deg);
+		Q_EMIT degreeChanged(deg);
 	} else if (event->buttons() & Qt::RightButton) {
 		previousDeg = translateMouseCoords(event->x() - (width() / 2), event->y() - (height() / 2));
-		emit previousDegreeChanged(previousDeg);
+		Q_EMIT previousDegreeChanged(previousDeg);
 		update();
 	}
 }
@@ -406,5 +406,5 @@ void DirectionDialog::copyProxy()
 
 void DirectionDialog::pasteProxy()
 {
-	emit pasteText(commandBox->text());
+	Q_EMIT pasteText(commandBox->text());
 }

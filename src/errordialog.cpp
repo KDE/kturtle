@@ -121,11 +121,11 @@ void ErrorDialog::setErrorList(ErrorList *list)
 	errorList = list;
 	errorTable->setRowCount(errorList->size());
 	int row = 0;
-	foreach (const ErrorMessage &error, *errorList) {
+    for (const ErrorMessage &error : *errorList) {
 		int col = 0;
 		QStringList itemTexts;
-		itemTexts << QString::number(error.token().startRow()) << error.text() << QString::number(error.code());
-		foreach (const QString &itemText, itemTexts) {
+        itemTexts << QString::number(error.token().startRow()) << error.text() << QString::number(error.code());
+        for (const QString &itemText : std::as_const(itemTexts)) {
 			errorTable->setItem(row, col, new QTableWidgetItem(itemText));
 			col++;
 		}
@@ -140,7 +140,7 @@ void ErrorDialog::selectedErrorChangedProxy()
 {
 	Q_ASSERT (errorList);
 	const Token* t = &errorList->at(errorTable->selectedItems().first()->row()).token();
-	emit currentlySelectedError(t->startRow(), t->startCol(), t->endRow(), t->endCol());
+	Q_EMIT currentlySelectedError(t->startRow(), t->startCol(), t->endRow(), t->endCol());
 	// //qDebug() << "EMITTED: " << t->startRow() << ", " << t->startCol() << ", " << t->endRow() << ", " << t->endCol();
 }
 

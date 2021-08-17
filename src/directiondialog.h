@@ -27,10 +27,10 @@ class DirectionCanvas : public QWidget
         explicit DirectionCanvas(QWidget* parent = nullptr);
 		void enableGreyTurtle(bool);
 
-	public slots:
+	public Q_SLOTS:
 		void updateDirections(double previousDeg, double deg);
 	
-	signals:
+    Q_SIGNALS:
 		void degreeChanged(double deg);
 		void previousDegreeChanged(double deg);
 
@@ -63,7 +63,7 @@ class DirectionDialog : public QDialog
 			Direction = 2
 		};
 
-	signals:
+    Q_SIGNALS:
 		void pasteText(const QString&);
 
 	private:
@@ -87,7 +87,7 @@ class DirectionDialog : public QDialog
 		void updateCanvas();
 		void updateCommandBox();
 
-	private slots:
+	private Q_SLOTS:
 		void directionChanged(int value);
 		void changeCommand(int command);
 		void updateDegrees(double deg);

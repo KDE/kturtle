@@ -99,7 +99,7 @@ class Echoer : public QObject
 		}
 
 
-	public slots:
+	public Q_SLOTS:
 		// the generated code is a set of slots that are covering all the Executers signals...
 
 //BEGIN GENERATED echoer_slots_h CODE

@@ -124,7 +124,7 @@ void Editor::textChanged(int pos, int removed, int added)
 	for (QTextBlock block = editor->document()->begin(); block.isValid(); block = block.next()) lineCount++;
 	numbers->setWidth(qMax(1, 1 + static_cast<int>(std::floor(std::log10(static_cast<double>(lineCount) - 1)))));
 
-	emit contentChanged();
+	Q_EMIT contentChanged();
 }
 
 
@@ -169,7 +169,7 @@ bool Editor::openFile(const QUrl &_url)
 				setContent(localizedScript);
 				setCurrentUrl(url);
 				editor->document()->setModified(false);
-				emit fileOpened(url);
+				Q_EMIT fileOpened(url);
 				return true;
 			} else {
 				KMessageBox::error(this, job->errorString());
@@ -207,7 +207,7 @@ bool Editor::saveFile(const QUrl &targetUrl)
 			bool pendingEOL = false;  // to avoid writing a final EOL token
 			while ((t = tokenizer.getToken())->type() != Token::EndOfInput) {
 				if (pendingEOL) {
-					untranslated.append('\n');
+                    untranslated.append(QLatin1Char('\n'));
 					pendingEOL = false;
 				}
 				if (localizedLooks.contains(t->look())) {
@@ -241,7 +241,7 @@ bool Editor::saveFile(const QUrl &targetUrl)
 				setCurrentUrl(url);
 				editor->document()->setModified(false);
 				// MainWindow will add us to the recent file list
-				emit fileSaved(url);
+				Q_EMIT fileSaved(url);
 			}
 		}
 		delete savefile;
@@ -276,7 +276,7 @@ bool Editor::maybeSave()
 void Editor::setModified(bool b)
 {
 	editor->document()->setModified(b);
-	emit modificationChanged();
+	Q_EMIT modificationChanged();
 }
 
 // TODO: improve find to be able to search within a selection
@@ -329,7 +329,7 @@ void Editor::findPrev()
 void Editor::setCurrentUrl(const QUrl &url)
 {
 	m_currentUrl = url;
-	emit contentNameChanged(m_currentUrl.fileName());
+	Q_EMIT contentNameChanged(m_currentUrl.fileName());
 }
 
 void Editor::setOverwriteMode(bool b)
@@ -347,11 +347,11 @@ void Editor::updateOnCursorPositionChange()
 	int row = 1;
 	int last_break = -1;
 	int next_break = 0;
-	for (int i = 0; i < s.length(); i++) {
-		if (s.at(i) == '\n' && i < pos) {
+    for (int i = 0; i < s.length(); i++) {
+        if (s.at(i) == QLatin1Char('\n') && i < pos) {
 			last_break = i;
 			row++;
-		} else if (s.at(i) == '\n' && i >= pos) {
+        } else if (s.at(i) == QLatin1Char('\n') && i >= pos) {
 			next_break = i;
 			break;
 		}
@@ -365,7 +365,7 @@ void Editor::updateOnCursorPositionChange()
 	}
 	currentCol = pos - last_break;
 	currentLine = s.mid(last_break+1, next_break-last_break-1);
-	emit cursorPositionChanged();
+	Q_EMIT cursorPositionChanged();
 }
 
 Token* Editor::currentToken()
@@ -420,8 +420,8 @@ QString Editor::toHtml(const QString& title, const QString& lang)
 		if (format) {
 			bool bold = format->fontWeight() > 50;
 			html += QStringLiteral("<span style=\"color: %1;%2\">%3</span>")
-				.arg(format->foreground().color().name())
-				.arg(bold ? " font-weight: bold;" : "")
+                .arg(format->foreground().color().name())
+                        .arg(bold ? QStringLiteral(" font-weight: bold;") : QString())
 				.arg(escaped);
 		} else {
 			html += escaped;
@@ -429,7 +429,7 @@ QString Editor::toHtml(const QString& title, const QString& lang)
 		token = tokenizer->getToken();
 	}
 	delete tokenizer;
-	return QString("<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"%1\" lang=\"%1\">"
+    return QStringLiteral("<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"%1\" lang=\"%1\">"
 	               "<head><meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\" />"
 	               "<title>%2</title></head>"
 	               "<body style=\"font-family: monospace;\">%3</body></html>").arg(lang).arg(title).arg(html);
@@ -448,8 +448,8 @@ QString Editor::toHtml(const QString& title, const QString& lang)
 // 		cursor.movePosition(QTextCursor::EndOfWord, QTextCursor::KeepAnchor);
 // 
 // 		QString word = cursor.selectedText();
-// 		emit mouseHover(word);
-// 		emit mouseHover(helpEvent->pos(), word);
+// 		Q_EMIT mouseHover(word);
+// 		Q_EMIT mouseHover(helpEvent->pos(), word);
 // 
 // 		// QToolTip::showText(helpEvent->globalPos(), word); // For testing
 // 	}

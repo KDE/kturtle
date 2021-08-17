@@ -20,7 +20,7 @@ Translator* Translator::instance()
 }
 
 Translator::Translator()
-	: localizer(QStringList() << DEFAULT_LANGUAGE_CODE)
+    : localizer(QStringList() << QLatin1String(DEFAULT_LANGUAGE_CODE))
 {
 }
 
@@ -53,16 +53,16 @@ QList<QString> Translator::type2look(int type)
 QHash<int, QList<QString> > Translator::token2stringsMap()
 {
 	QHash<int, QList<QString> > resultMap;
-	QList<int> tokenList = look2typeMap.values();
-	foreach (int token, tokenList) resultMap.insert(token, look2typeMap.keys(token));
+    const QList<int> tokenList = look2typeMap.values();
+    for (int token : tokenList) resultMap.insert(token, look2typeMap.keys(token));
 	return resultMap;
 }
 
 
 bool Translator::setLanguage(const QString &lang_code)
 {
-	// FIXME default to GUI language? return false when language not available?
-	localizer = QStringList() << lang_code << DEFAULT_LANGUAGE_CODE;
+    // FIXME default to GUI language? return false when language not available?
+    localizer = QStringList() << lang_code << QLatin1String(DEFAULT_LANGUAGE_CODE);
 
 	setDictionary();
 	setExamples();
@@ -660,7 +660,7 @@ void Translator::setExamples()
 		"This is an EXAMPLE NAME in KTurtle."
 		"Please see https://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 		"triangle").toString(localizer);
-	examples[exampleName] = localizeScript(QString(
+    examples[exampleName] = localizeScript(QStringLiteral(
 				"@(reset)\n"
 				"@(repeat) 3 {\n"
 				"  @(forward) 100\n"
@@ -672,7 +672,7 @@ void Translator::setExamples()
 		"This is an EXAMPLE NAME in KTurtle."
 		"Please see https://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 		"curly").toString(localizer);
-	examples[exampleName] = localizeScript(QString(
+    examples[exampleName] = localizeScript(QStringLiteral(
 				"@(reset)\n"
 				"@(penup)\n"
 				"@(forward) 50\n"
@@ -690,7 +690,7 @@ void Translator::setExamples()
 		"This is an EXAMPLE NAME in KTurtle."
 		"Please see https://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 		"arrow").toString(localizer);
-	examples[exampleName] = localizeScript(QString(
+    examples[exampleName] = localizeScript(QStringLiteral(
 				"@(reset)\n"
 				"\n"
 				"@(canvassize) 200@(,) 200\n"
@@ -717,7 +717,7 @@ void Translator::setExamples()
 		"This is an EXAMPLE NAME in KTurtle."
 		"Please see https://edu.kde.org/kturtle/translator.php to learn know how to properly translate it.",
 		  "flower").toString(localizer);
-	examples[exampleName] = localizeScript(QString(
+    examples[exampleName] = localizeScript(QStringLiteral(
 				"@(reset)\n"
 				"@(canvascolor) 255@(,) 55@(,) 140\n"
 				"@(pencolor) 160@(,) 0@(,) 255\n"
@@ -747,8 +747,8 @@ void Translator::setExamples()
 QString Translator::localizeScript(const QString& untranslatedScript)
 {
 	QString result = untranslatedScript;
-	Translator* translator = Translator::instance();
-	QRegExp rx("@\\(.*\\)");
+    Translator* translator = Translator::instance();
+    QRegExp rx(QStringLiteral("@\\(.*\\)"));
 	rx.setMinimal(true);  // make it not greedy
 
 	int pos = 0;

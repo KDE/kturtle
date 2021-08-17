@@ -89,7 +89,7 @@ class Executer : public QObject
 		bool           isFinished() const { return finished; }
 
 
-	private slots:
+	private Q_SLOTS:
 		/// Used by the singleshot wait timer.
 		void stopWaiting() { waiting = false; }
 
@@ -245,7 +245,7 @@ class Executer : public QObject
 
 
 
-	signals:
+	Q_SIGNALS:
 		void currentlyExecuting(TreeNode* node);
 		void variableTableUpdated(const QString& name, const Value& value);
 		void functionTableUpdated(const QString& name, const QStringList& parameters);

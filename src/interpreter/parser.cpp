@@ -140,12 +140,9 @@ void Parser::addError(const QString& s, const Token& t, int code)
 
 void Parser::printTree() const
 {
-	const char* prefix = m_testing ? "NTR> " : "";
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
-	foreach (const QString &line, rootNode->toString().split('\n', QString::SkipEmptyParts)) {
-#else
-	foreach (const QString &line, rootNode->toString().split('\n', Qt::SkipEmptyParts)) {
-#endif
+    const char* prefix = m_testing ? "NTR> " : "";
+    const auto str{rootNode->toString().split(QLatin1Char('\n'), Qt::SkipEmptyParts)};
+    for (const QString &line : str) {
 		qDebug() << prefix << qPrintable(line.trimmed());
 	}
 }
@@ -265,8 +262,8 @@ TreeNode* Parser::parseFactor()
 		case Token::String:
 			node = new TreeNode(currentToken);
 			{ // extra scope to localize the QString 'str'
-				QString str = currentToken->look();
-				if (!currentToken->look().endsWith('\"')) {
+                QString str = currentToken->look();
+                if (!currentToken->look().endsWith(QLatin1Char('\"'))) {
 					str += QLatin1String("\"");
 					addError(i18n("Text string was not properly closed, expected a double quote, ' \" ', to close the string."), *currentToken, 0);
 				}

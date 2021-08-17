@@ -24,12 +24,12 @@ class Console : public QWidgetAction
 
 		void showError(const QString&);
 
-	public slots:
+	public Q_SLOTS:
 		void run();
 		void clearMarkings();
 		void executeActionTriggered();
 
-	signals:
+	Q_SIGNALS:
 		QString execute(const QString&);
 
 	private:

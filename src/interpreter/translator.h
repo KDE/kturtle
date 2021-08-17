@@ -43,7 +43,7 @@ class Translator
 		    TODO: is this redundant no KDE has a 'switch application langugae' in the Help(???) menu?
 		    @param   lang_code the ISO language code of the dictionary (eg: "en_US", "fr", "pt_BR", "nl")
 		    @returns TRUE is the loading was successful, otherwise FALSE */
-		bool setLanguage(const QString &lang_code = QString(DEFAULT_LANGUAGE_CODE));
+        bool setLanguage(const QString &lang_code = QLatin1String(DEFAULT_LANGUAGE_CODE));
 
 		/** @short Converts a unicode string to a token type.
 		    Uses the dictionary to do so.

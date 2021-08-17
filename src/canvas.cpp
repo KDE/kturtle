@@ -114,8 +114,8 @@ void Canvas::drawLine(double x1, double y1, double x2, double y2)
 
 void Canvas::slotClear()
 {
-	QList<QGraphicsItem*> list = _scene->items();
-	foreach (QGraphicsItem* item, list) {
+    const QList<QGraphicsItem*> list = _scene->items();
+    for (QGraphicsItem* item : list) {
 		// delete all but the turtle (who lives on a separate layer with z-value 1)
 		if ((item->zValue() != kTurtleZValue) && (item->zValue() != kCanvasFrameZValue))
 			delete item;

@@ -26,7 +26,7 @@ class Canvas : public QGraphicsView
 		void saveAsSvg(const QString&, const QString&);
 // 		void scene() { return _scene; }
 
-	public slots:
+	public Q_SLOTS:
 		void slotClear();
 		void slotGo(double x, double y) { turtle->setPos(x, y); };
 		void slotGoX(double x) { turtle->setPos(x, turtle->pos().y()); }

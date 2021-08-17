@@ -644,11 +644,11 @@ void MainWindow::updateLanguagesMenu()
 	QAction* a;
 	// sort the dictionaries using an algorithm found in the qt docs:
 	QMap<QString, QString> map;
-	QSet<QString> dictionaries = KLocalizedString::availableApplicationTranslations();
-	foreach (const QString &lang_code, dictionaries)
+    const QSet<QString> dictionaries = KLocalizedString::availableApplicationTranslations();
+    for (const QString &lang_code : dictionaries)
 		map.insert(codeToFullName(lang_code), lang_code);
-	// populate the menu:
-	foreach (const QString &lang_code, map) {
+    // populate the menu:
+    for (const QString &lang_code : std::as_const(map)) {
 		a = new QAction(codeToFullName(lang_code), actionCollection());
 		a->setData(lang_code);
 		a->setStatusTip(i18n("Switch to the %1 dictionary", codeToFullName(lang_code)));
@@ -671,7 +671,8 @@ void MainWindow::updateExamplesMenu()
 	QList<QAction*> exampleList;
 	QActionGroup* exampleGroup = new QActionGroup (this);
 
-	foreach (const QString &exampleName, Translator::instance()->exampleNames()) {
+    const auto exampleNames{Translator::instance()->exampleNames()};
+    for (const QString &exampleName : exampleNames) {
 		newExample = new QAction (exampleName, this);
 		newExample->setData(exampleName);
 		exampleGroup->addAction (newExample);
@@ -680,23 +681,23 @@ void MainWindow::updateExamplesMenu()
 		exampleList.append (newExample);
 	}
 
-	QStringList allExamples;
-	const QStringList exampleDirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, GHNS_TARGET, QStandardPaths::LocateDirectory);
-	foreach (const QString &dir, exampleDirs) {
+    QStringList allExamples;
+    const QStringList exampleDirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QLatin1String(GHNS_TARGET), QStandardPaths::LocateDirectory);
+    for (const QString &dir : exampleDirs) {
 		const QStringList fileNames = QDir(dir).entryList(QStringList() << QStringLiteral("*.turtle"), QDir::Files);
-		foreach (const QString &fileName, fileNames) {
-			allExamples.append(dir + '/' + fileName);
+        for (const QString &fileName : fileNames) {
+            allExamples.append(dir + QLatin1Char('/') + fileName);
 		}
 	}
 
-	if(allExamples.size()>0) {
+    if(!allExamples.isEmpty()) {
 		newExample = new QAction(this);
 		newExample->setSeparator(true);
 		exampleGroup->addAction(newExample);
 		exampleList.append(newExample);
 	}
 
-	foreach(const QString& exampleFilename, allExamples) {
+    for (const QString& exampleFilename : std::as_const(allExamples)) {
 		QFileInfo fileInfo(exampleFilename);
 		newExample = new QAction (fileInfo.baseName(), this);
 		newExample->setData(exampleFilename);
@@ -805,8 +806,8 @@ bool MainWindow::setCurrentLanguage(const QString &lang_code)  // 2 or 5 digit c
 	bool result = false;
 	//qDebug() << "MainWindow::setCurrentLanguage: " << lang_code;
 	if (Translator::instance()->setLanguage(lang_code)) {
-		currentLanguageCode = lang_code;
-		statusBarLanguageLabel->setText(' ' + codeToFullName(lang_code) + ' ');
+        currentLanguageCode = lang_code;
+        statusBarLanguageLabel->setText(QLatin1Char(' ') + codeToFullName(lang_code) + QLatin1Char(' '));
 		updateExamplesMenu();
 		editor->rehighlight();
 		result = true;
@@ -971,8 +972,8 @@ void MainWindow::updateContentName(const QString& str)
 	QString caption = str.isEmpty() ? i18n("untitled") : str;
 	bool modified = editor->isModified();
 	setWindowTitle(caption + QLatin1String("[*]"));
-	setWindowModified(modified);
-	statusBarFileNameLabel->setText(QStringLiteral(" %1%2 ").arg(caption).arg(modified ? "*" : ""));
+    setWindowModified(modified);
+    statusBarFileNameLabel->setText(QStringLiteral(" %1%2 ").arg(caption).arg(modified ? QStringLiteral("*") : QString()));
 }
 
 void MainWindow::addToRecentFiles(const QUrl &url)

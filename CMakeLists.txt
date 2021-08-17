@@ -9,7 +9,7 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 project(kturtle VERSION ${RELEASE_SERVICE_VERSION})
 
 set(QT_MIN_VERSION "5.15.0")
-set(KF5_MIN_VERSION "5.83.0")
+set(KF5_MIN_VERSION "5.85.0")
 
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
@@ -47,7 +47,12 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED
 #Allows QString concatenation to use a single memory allocation per source line.
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
-
+add_definitions(
+    -DQT_DISABLE_DEPRECATED_BEFORE=0x050e00
+    -DQT_DEPRECATED_WARNINGS_SINCE=0x060000
+    -DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055600
+    -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
+)
 add_subdirectory (doc)
 add_subdirectory (src)
 add_subdirectory (icons)

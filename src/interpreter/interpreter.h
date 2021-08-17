@@ -58,14 +58,14 @@ class Interpreter : public QObject
 		Executer*   getExecuter() { return executer; }
 		ErrorList*  getErrorList() { return errorList; }
 
-	public slots:
+	public Q_SLOTS:
 		void        interpret();
 		int         state() { return m_state; }
 		void        initialize(const QString& inputString);  // resets
 		bool        encounteredErrors() { return errorList->count() > 0; }
 		QStringList getErrorStrings() { return errorList->asStringList(); }
 
-	signals:
+	Q_SIGNALS:
 		void parsing();
 		void executing();
 		void finished();

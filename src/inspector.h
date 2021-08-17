@@ -34,7 +34,7 @@ class Inspector : public QFrame
 		void clear();
 
 
-	public slots:
+	public Q_SLOTS:
 		void updateVariable(const QString& name, const Value& value);
 		void updateFunction(const QString& name, const QStringList& parameters);
 		void updateTree(TreeNode* rootNode);

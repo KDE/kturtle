@@ -133,13 +133,13 @@ void Executer::execute(TreeNode* node)
 {
 	if (finished) return;
 
-	// emit a signal for GUI
+	// Q_EMIT a signal for GUI
 	Token* t = node->token();
 // 	//qDebug() << "emitting token: '" << t->look() << "' - (" << t->startRow() << "," << t->startCol() << " - " << t->endRow() << "," << t->endCol() << ")";
 
 	// don't report scopes (their are not really executed)
 	if (t->type() != Token::Scope)
-		emit currentlyExecuting(node);
+		Q_EMIT currentlyExecuting(node);
 
 	// this method executes one node at the time
 
@@ -803,7 +803,7 @@ void Executer::executeAssign(TreeNode* node) {
 		globalVariableTable.insert(node->child(0)->token()->look(), node->child(1)->value());
 	}
 	// //qDebug() << "variableTable updated!";
-	emit variableTableUpdated(node->child(0)->token()->look(), node->child(1)->value());
+	Q_EMIT variableTableUpdated(node->child(0)->token()->look(), node->child(1)->value());
 }
 void Executer::executeLearn(TreeNode* node) {
 //	//qDebug() << "called";
@@ -816,7 +816,7 @@ void Executer::executeLearn(TreeNode* node) {
 	QStringList parameters;
 	for (uint i = 0; i < node->child(1)->childCount(); i++)
 		parameters << node->child(1)->child(i)->token()->look();
-	emit functionTableUpdated(node->child(0)->token()->look(), parameters);
+	Q_EMIT functionTableUpdated(node->child(0)->token()->look(), parameters);
 }
 void Executer::executeArgumentList(TreeNode* node) {
 //	//qDebug() << "called";
@@ -825,122 +825,122 @@ void Executer::executeArgumentList(TreeNode* node) {
 void Executer::executeReset(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 0, 20000+Token::Reset*100+90)) return;
-	emit reset();
+	Q_EMIT reset();
 }
 void Executer::executeClear(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 0, 20000+Token::Clear*100+90)) return;
-	emit clear();
+	Q_EMIT clear();
 }
 void Executer::executeCenter(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 0, 20000+Token::Center*100+90)) return;
-	emit center();
+	Q_EMIT center();
 }
 void Executer::executeGo(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 2, 20000+Token::Go*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::Go*100+91)) return;
-	emit go(node->child(0)->value()->number(), node->child(1)->value()->number());
+	Q_EMIT go(node->child(0)->value()->number(), node->child(1)->value()->number());
 }
 void Executer::executeGoX(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 1, 20000+Token::GoX*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::GoX*100+91)) return;
-	emit goX(node->child(0)->value()->number());
+	Q_EMIT goX(node->child(0)->value()->number());
 }
 void Executer::executeGoY(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 1, 20000+Token::GoY*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::GoY*100+91)) return;
-	emit goY(node->child(0)->value()->number());
+	Q_EMIT goY(node->child(0)->value()->number());
 }
 void Executer::executeForward(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 1, 20000+Token::Forward*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::Forward*100+91)) return;
-	emit forward(node->child(0)->value()->number());
+	Q_EMIT forward(node->child(0)->value()->number());
 }
 void Executer::executeBackward(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 1, 20000+Token::Backward*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::Backward*100+91)) return;
-	emit backward(node->child(0)->value()->number());
+	Q_EMIT backward(node->child(0)->value()->number());
 }
 void Executer::executeDirection(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 1, 20000+Token::Direction*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::Direction*100+91)) return;
-	emit direction(node->child(0)->value()->number());
+	Q_EMIT direction(node->child(0)->value()->number());
 }
 void Executer::executeTurnLeft(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 1, 20000+Token::TurnLeft*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::TurnLeft*100+91)) return;
-	emit turnLeft(node->child(0)->value()->number());
+	Q_EMIT turnLeft(node->child(0)->value()->number());
 }
 void Executer::executeTurnRight(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 1, 20000+Token::TurnRight*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::TurnRight*100+91)) return;
-	emit turnRight(node->child(0)->value()->number());
+	Q_EMIT turnRight(node->child(0)->value()->number());
 }
 void Executer::executePenWidth(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 1, 20000+Token::PenWidth*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::PenWidth*100+91)) return;
-	emit penWidth(node->child(0)->value()->number());
+	Q_EMIT penWidth(node->child(0)->value()->number());
 }
 void Executer::executePenUp(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 0, 20000+Token::PenUp*100+90)) return;
-	emit penUp();
+	Q_EMIT penUp();
 }
 void Executer::executePenDown(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 0, 20000+Token::PenDown*100+90)) return;
-	emit penDown();
+	Q_EMIT penDown();
 }
 void Executer::executePenColor(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 3, 20000+Token::PenColor*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::PenColor*100+91)) return;
-	emit penColor(node->child(0)->value()->number(), node->child(1)->value()->number(), node->child(2)->value()->number());
+	Q_EMIT penColor(node->child(0)->value()->number(), node->child(1)->value()->number(), node->child(2)->value()->number());
 }
 void Executer::executeCanvasColor(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 3, 20000+Token::CanvasColor*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::CanvasColor*100+91)) return;
-	emit canvasColor(node->child(0)->value()->number(), node->child(1)->value()->number(), node->child(2)->value()->number());
+	Q_EMIT canvasColor(node->child(0)->value()->number(), node->child(1)->value()->number(), node->child(2)->value()->number());
 }
 void Executer::executeCanvasSize(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 2, 20000+Token::CanvasSize*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::CanvasSize*100+91)) return;
-	emit canvasSize(node->child(0)->value()->number(), node->child(1)->value()->number());
+	Q_EMIT canvasSize(node->child(0)->value()->number(), node->child(1)->value()->number());
 }
 void Executer::executeSpriteShow(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 0, 20000+Token::SpriteShow*100+90)) return;
-	emit spriteShow();
+	Q_EMIT spriteShow();
 }
 void Executer::executeSpriteHide(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 0, 20000+Token::SpriteHide*100+90)) return;
-	emit spriteHide();
+	Q_EMIT spriteHide();
 }
 void Executer::executePrint(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 1, 20000+Token::Print*100+90))
 		return;
 	// //qDebug() << "Printing: '" << node->child(0)->value()->string() << "'";
-	emit print(node->child(0)->value()->string());
+	Q_EMIT print(node->child(0)->value()->string());
 }
 void Executer::executeFontSize(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 1, 20000+Token::FontSize*100+90) ||
 		!checkParameterType(node, Value::Number, 20000+Token::FontSize*100+91)) return;
-	emit fontSize(node->child(0)->value()->number());
+	Q_EMIT fontSize(node->child(0)->value()->number());
 }
 void Executer::executeRandom(TreeNode* node) {
 //	//qDebug() << "called";
@@ -958,26 +958,26 @@ void Executer::executeGetX(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 0, 20000+Token::GetX*100+90)) return;
 	double value = 0;
-	emit getX(value);
+	Q_EMIT getX(value);
 	node->value()->setNumber(value);
 }
 void Executer::executeGetY(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 0, 20000+Token::GetY*100+90)) return;
 	double value = 0;
-	emit getY(value);
+	Q_EMIT getY(value);
 	node->value()->setNumber(value);
 }
 void Executer::executeMessage(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 1, 20000+Token::Message*100+90)) return;
-	emit message(node->child(0)->value()->string());
+	Q_EMIT message(node->child(0)->value()->string());
 }
 void Executer::executeAsk(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 1, 20000+Token::Ask*100+90)) return;
 	QString value = node->child(0)->value()->string();
-	emit ask(value);
+	Q_EMIT ask(value);
 	
 	bool convertOk;
 	double d = value.toDouble(&convertOk);
@@ -1055,7 +1055,7 @@ void Executer::executeGetDirection(TreeNode* node) {
 //	//qDebug() << "called";
 	if (!checkParameterQuantity(node, 0, 20000+Token::GetDirection*100+90)) return;
 	double value = 0;
-	emit getDirection(value);
+	Q_EMIT getDirection(value);
 	node->value()->setNumber(value);
 }
 void Executer::executeMod(TreeNode* node) {
@@ -1074,7 +1074,7 @@ void Executer::executeMod(TreeNode* node) {
 //END GENERATED executer_cpp CODE
 
 TreeNode* Executer::getParentOfTokenTypes(TreeNode* child, QList<int>* types) {
-	foreach(int type, *types) {
+    for (int type : *types) {
 		if(child->parent()->token()->type()==type)
 			return child->parent();
 		else if(child->parent()->token()->type()==Token::Root)

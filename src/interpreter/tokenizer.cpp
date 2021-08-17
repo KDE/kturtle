@@ -10,8 +10,8 @@
 
 void Tokenizer::initialize(const QString& inString)
 {
-	translator  = Translator::instance();
-	inputString = inString + '\n';  // the certainty of a hard break at the end makes parsing much easier
+    translator  = Translator::instance();
+    inputString = inString + QLatin1Char('\n');  // the certainty of a hard break at the end makes parsing much easier
 	at  = 0;
 	row = 1;
 	col = 1;
@@ -36,8 +36,8 @@ Token* Tokenizer::getToken()
 	// catch spaces
 	if (isSpace(c)) {
 		QString look;
-		do {
-			look += (isTab(c) ? "  " : " ");
+        do {
+            look += (isTab(c) ? QStringLiteral("  ") : QStringLiteral(" "));
 			c = getChar();
 		} while (isSpace(c) && !atEnd);
 		ungetChar();
@@ -76,8 +76,8 @@ Token* Tokenizer::getToken()
 		QString look;
 		do {
 			look += c;
-			c = getChar();
-		} while (isWordChar(c) || c.category() == QChar::Number_DecimalDigit || c == '_');
+            c = getChar();
+        } while (isWordChar(c) || c.category() == QChar::Number_DecimalDigit || c == QLatin1Char('_'));
 		ungetChar();
 		return new Token(Token::Variable, look, startRow, startCol, row, col);
 	}
@@ -87,8 +87,8 @@ Token* Tokenizer::getToken()
 		QString look;
 		do {
 			look += c;
-			c = getChar();
-		} while (isWordChar(c) || c.isDigit() || c == '_');  // next chars
+            c = getChar();
+        } while (isWordChar(c) || c.isDigit() || c == QLatin1Char('_'));  // next chars
 		ungetChar();
 		int type = translator->look2type(look);
 		if (type == Token::Unknown)
@@ -184,7 +184,7 @@ bool Tokenizer::isWordChar(const QChar& c)
 
 bool Tokenizer::isBreak(const QChar& c)
 {
-	return (c == '\x0a' || c == '\n');
+    return (c == QLatin1Char('\x0a') || c == QLatin1Char('\n'));
 // 	  c.category() == QChar::Other_Control  // one of these also contains the tab (\t)
 // 	  c.category() == QChar::Separator_Line
 // 	  c.category() == QChar::Separator_Paragraph
@@ -193,10 +193,10 @@ bool Tokenizer::isBreak(const QChar& c)
 
 bool Tokenizer::isSpace(const QChar& c)
 {
-	return (c.category() == QChar::Separator_Space || c == ' ' || isTab(c));
+    return (c.category() == QChar::Separator_Space || c == QLatin1Char(' ') || isTab(c));
 }
 
 bool Tokenizer::isTab(const QChar& c)
 {
-	return (c == '\x09' || c == '\t');
+    return (c == QLatin1Char('\x09') || c == QLatin1Char('\t'));
 }

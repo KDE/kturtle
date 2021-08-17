@@ -30,10 +30,10 @@ class LocalDockWidget : public QDockWidget {
     Q_OBJECT
 	public:
 		LocalDockWidget(const QString& title, QWidget* parent) : QDockWidget(parent) { setWindowTitle(title); }
-		void setVisible(bool b) Q_DECL_OVERRIDE { QDockWidget::setVisible(b); emit visibilityChanged(b); }
-		void show() { QDockWidget::show(); emit visibilityChanged(true); }
-		void hide() { QDockWidget::hide(); emit visibilityChanged(false); }
-	signals:
+		void setVisible(bool b) Q_DECL_OVERRIDE { QDockWidget::setVisible(b); Q_EMIT visibilityChanged(b); }
+		void show() { QDockWidget::show(); Q_EMIT visibilityChanged(true); }
+		void hide() { QDockWidget::hide(); Q_EMIT visibilityChanged(false); }
+	Q_SIGNALS:
 		void visibilityChanged(bool);
 };
 
@@ -48,9 +48,9 @@ class MainWindow : public KXmlGuiWindow
         ~MainWindow() override;
 		void open(const QString& pathOrUrl) { editor->openFile(QUrl(pathOrUrl)); }  // for main.cpp
 
-// 	public slots:
+// 	public Q_SLOTS:
 
-	private slots:
+	private Q_SLOTS:
 		void addToRecentFilesList(const QUrl&);
 		void showErrorDialog(bool show = false);
 		void openExample();
@@ -93,7 +93,7 @@ class MainWindow : public KXmlGuiWindow
 		void toggleOverwriteMode(bool b);
 		void updateOnCursorPositionChange();
 
-	protected slots:
+	protected Q_SLOTS:
 		void saveNewToolbarConfig() Q_DECL_OVERRIDE;
 
 	protected:

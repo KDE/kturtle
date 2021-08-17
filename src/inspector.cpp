@@ -226,7 +226,8 @@ void Inspector::updateTree(TreeNode* rootNode)
 	treeMap.clear();
 	treeView->clear();
 	QTreeWidgetItem* rootItem = walkTree(rootNode);
-	foreach (QTreeWidgetItem* item, rootItem->takeChildren()) {
+    const auto rootItemChildren = rootItem->takeChildren();
+    for (QTreeWidgetItem* item : rootItemChildren) {
 		treeView->addTopLevelItem(item);
 	}
 	delete rootItem;

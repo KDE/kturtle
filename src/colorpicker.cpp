@@ -162,5 +162,5 @@ void ColorPicker::copyProxy()
 
 void ColorPicker::pasteProxy()
 {
-	emit pasteText(resultBox->text());
+	Q_EMIT pasteText(resultBox->text());
 }

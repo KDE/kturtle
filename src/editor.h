@@ -132,13 +132,17 @@ class TextEdit : public QTextEdit
 	protected:
 		void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE {
 			QPainter painter(viewport());
-			painter.fillRect(currentLineRect(), QBrush(LINE_HIGHLIGHT_COLOR));
-			if (!currentWord.isNull())
-				foreach (const QRect &rect, coordsToRects(currentWord))
-					painter.fillRect(rect, QBrush(WORD_HIGHLIGHT_COLOR));
-			if (!currentError.isNull())
-				foreach (const QRect &rect, coordsToRects(currentError))
-					painter.fillRect(rect, QBrush(ERROR_HIGHLIGHT_COLOR));
+            painter.fillRect(currentLineRect(), QBrush(LINE_HIGHLIGHT_COLOR));
+            if (!currentWord.isNull()) {
+                const auto coordsToRectsList{coordsToRects(currentWord)};
+                for (const QRect &rect : coordsToRectsList)
+                    painter.fillRect(rect, QBrush(WORD_HIGHLIGHT_COLOR));
+            }
+            if (!currentError.isNull()) {
+                const auto coordsToRectsLst{coordsToRects(currentError)};
+                for (const QRect &rect : coordsToRectsLst)
+                    painter.fillRect(rect, QBrush(ERROR_HIGHLIGHT_COLOR));
+            }
 			painter.end();
 			QTextEdit::paintEvent(event);
 		}
@@ -215,7 +219,7 @@ class Editor : public QFrame
 		}
 
 
-	public slots:
+	public Q_SLOTS:
 		bool newFile();
 		bool openFile(const QUrl &url = QUrl());
 		void openExample(const QString& example, const QString& exampleName);
@@ -242,7 +246,7 @@ class Editor : public QFrame
 		void rehighlight() { highlighter->rehighlight(); }
 
 
-	signals:
+	Q_SIGNALS:
 		void contentNameChanged(const QString&);
 		void fileOpened(const QUrl&);
 		void fileSaved(const QUrl&);
@@ -251,7 +255,7 @@ class Editor : public QFrame
 		void cursorPositionChanged();
 
 
-	protected slots:
+	protected Q_SLOTS:
 		void textChanged(int pos, int added, int removed);
 // 		void cursorPositionChanged();
 
@@ -259,7 +263,7 @@ class Editor : public QFrame
 		void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
 
 
-	private slots:
+	private Q_SLOTS:
 		void updateOnCursorPositionChange();
 		void highlightCurrentLine() { this->update(); }
 

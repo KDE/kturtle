@@ -28,14 +28,14 @@ class ErrorDialog : public QDialog
 		void setErrorList(ErrorList*);
 		void clear();
 
-	signals:
+	Q_SIGNALS:
 		void currentlySelectedError(int, int, int, int);
 
-	public slots:
+	public Q_SLOTS:
 		void enable();
 		void disable();
 
-	private slots:
+	private Q_SLOTS:
 		void selectedErrorChangedProxy();
 		void helpRequested();
 

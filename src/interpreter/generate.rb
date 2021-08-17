@@ -105,7 +105,7 @@ def new_item()
 	@ali   = ''
 	@p_def = ''
 	@e_def = ''
-	@emit  = ''
+	@Q_EMIT  = ''
 	@funct = ''
 	@cat   = nil
 	@args  = []
@@ -211,8 +211,8 @@ EOS
 				end
 		end
 
-		if @funct =~ /auto-emit/ and @args.length() > 0 and @emit.empty?
-			# this build the emit statement for executer.cpp and the signal declaration for the executer.h
+		if @funct =~ /auto-Q_EMIT/ and @args.length() > 0 and @Q_EMIT.empty?
+			# this build the Q_EMIT statement for executer.cpp and the signal declaration for the executer.h
 
 			# find the method name:
 			method_name_str = @type[0].chr.downcase + @type[1..-1]

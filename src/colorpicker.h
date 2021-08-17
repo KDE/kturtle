@@ -48,10 +48,10 @@ class ColorPicker : public QDialog
 	public:
         explicit ColorPicker(QWidget* parent = nullptr);
 
-	signals:
+	Q_SIGNALS:
 		void pasteText(const QString&);
 
-	private slots:
+	private Q_SLOTS:
 		void updateResult(int r, int g, int b);
 		void redChanged(int);
 		void greenChanged(int);

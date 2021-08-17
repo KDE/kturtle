@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
 	migrator.setUiFiles(QStringList() << QStringLiteral("kturtleui.rc"));
 	migrator.migrate();
 
-	KAboutData aboutData(QStringLiteral("kturtle"), ki18n("KTurtle").toString(), KTURTLE_VERSION_STRING);
+    KAboutData aboutData(QStringLiteral("kturtle"), ki18n("KTurtle").toString(), QLatin1String(KTURTLE_VERSION_STRING));
 	aboutData.setLicense(KAboutLicense::GPL);
 	aboutData.setHomepage(ki18n(website).toString());
 	aboutData.setShortDescription(ki18n(description).toString());
@@ -99,16 +99,16 @@ int main(int argc, char* argv[])
 
 		///////////////// run in example PARSING mode /////////////////
 		QFile inputFile(parser.value(QStringLiteral("parse")));
-		if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-			std::cout << "Could not open file: " << qPrintable(parser.value("parse")) << std::endl;
+        if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            std::cout << "Could not open file: " << qPrintable(parser.value(QStringLiteral("parse"))) << std::endl;
 			std::cout << "Exiting..." << std::endl;
 			return 1;
 		}
 		
 		Translator::instance()->setLanguage();
 
-		Tokenizer tokenizer;
-		tokenizer.initialize(inputFile.readAll());
+        Tokenizer tokenizer;
+        tokenizer.initialize(QString::fromUtf8(inputFile.readAll()));
 		inputFile.close();
 
 		const QStringList defaultLooks(Translator::instance()->allDefaultLooks());
@@ -118,11 +118,12 @@ int main(int argc, char* argv[])
 			if (defaultLooks.contains(t->look()))
 				result.append(QStringLiteral("@(%1)").arg(t->look()));
 			else
-				result.append(t->look());
-			if (t->type() == Token::EndOfLine) result.append('\n');
+                result.append(t->look());
+            if (t->type() == Token::EndOfLine) result.append(QLatin1Char('\n'));
 		}
 
-		foreach (const QString &line, result.split('\n')) std::cout << qPrintable(QString("\"%1\"").arg(line)) << std::endl;
+        const auto splitLst{result.split(QLatin1Char('\n'))};
+        for (const QString &line : splitLst) std::cout << qPrintable(QStringLiteral("\"%1\"").arg(line)) << std::endl;
 		std::cout << std::endl;
 
 	} else {
@@ -134,8 +135,8 @@ int main(int argc, char* argv[])
 		QString fileString = parser.value(QStringLiteral("test"));
 		QFile inputFile(fileString);
 
-		if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-			std::cout << "Could not open input file: " << qPrintable(parser.value("test")) << std::endl;
+        if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            std::cout << "Could not open input file: " << qPrintable(parser.value(QStringLiteral("test"))) << std::endl;
 			std::cout << "Exiting..." << std::endl;
 			return 1;
 		}

@@ -59,7 +59,7 @@ void Interpreter::interpret()
 			parser->initialize(tokenizer, errorList);
 			m_state = Parsing;
 // 			//qDebug() << "Initialized the parser, parsing the code...";
-			emit parsing();
+			Q_EMIT parsing();
 			break;
 
 
@@ -79,7 +79,7 @@ void Interpreter::interpret()
 			if (parser->isFinished()) {
 // 				//qDebug() << "Finished parsing.\n";
 				TreeNode* tree = parser->getRootNode();
-				emit treeUpdated(tree);
+				Q_EMIT treeUpdated(tree);
 // 				//qDebug() << "Node tree as returned by parser:";
 // 				parser->printTree();
 // 				//qDebug() << "";
@@ -87,7 +87,7 @@ void Interpreter::interpret()
 				executer->initialize(tree, errorList);
 				m_state = Executing;
 // 				//qDebug() << "Initialized the executer, executing the node tree...";
-				emit executing();
+				Q_EMIT executing();
 				return;
 			}
 			break;
@@ -107,7 +107,7 @@ void Interpreter::interpret()
 // 					//qDebug() << "No errors encountered.";
 				}
 				m_state = Finished;
-				emit finished();
+				Q_EMIT finished();
 				return;
 			}
 			break;

@@ -64,7 +64,7 @@ void Console::clearMarkings()
 
 void Console::run()
 {
-	QString errorMessage = emit execute(comboBox->currentText());
+	QString errorMessage = Q_EMIT execute(comboBox->currentText());
 	if (errorMessage.isNull()) {
 		comboBox->clearEditText();
 		return;
@@ -74,7 +74,7 @@ void Console::run()
 
 void Console::showError(const QString& msg)
 {
-	comboBox->setStyleSheet("QComboBox:editable{background:" + ERROR_HIGHLIGHT_COLOR.name() + ";}");
+    comboBox->setStyleSheet(QStringLiteral("QComboBox:editable{background:") + ERROR_HIGHLIGHT_COLOR.name() + QStringLiteral(";}"));
 	comboBox->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 	QString toolTipText(i18n("<p style='white-space:pre'><b>ERROR:</b> %1</p>", msg));
 	comboBox->setToolTip(toolTipText);
@@ -85,6 +85,6 @@ void Console::executeActionTriggered()
 	QLineEdit* lineEdit = comboBox->lineEdit();
 	if (!lineEdit)
 		return;
-	QKeyEvent event(QEvent::KeyPress, Qt::Key_Return, Qt::NoModifier, QChar('\n'));
+    QKeyEvent event(QEvent::KeyPress, Qt::Key_Return, Qt::NoModifier, QStringLiteral("\n"));
 	QApplication::sendEvent(lineEdit, &event);
 }
