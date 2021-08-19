@@ -159,4 +159,7 @@
     <release version="21.04.2" date="2021-06-10"/>
   </releases>
   <content_rating type="oars-1.1"/>
+  <custom>
+    <value key="GnomeSoftware::key-colors">[(62, 151, 62), (92, 165, 91)]</value>
+  </custom>
 </component>
