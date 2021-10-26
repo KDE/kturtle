@@ -36,7 +36,7 @@ class TreeNode
 		 * Initialses the TreeNode.
 		 * @param token pointer to Token that the TreeNode is associated with.
 		 */
-		explicit TreeNode(Token* token)                  { init(0, token); }
+		explicit TreeNode(Token* token)                  { init(nullptr, token); }
 
 		/**
 		 * @short Destructor.
@@ -55,7 +55,7 @@ class TreeNode
 		Token*    token()                       { return _token; }
 
 		/** @returns the pointer to associated Value. @see setValue() @see setNullValue() */
-		Value*    value()                       { if (_value == 0) _value = new Value(); return _value; }
+		Value*    value()                       { if (_value == nullptr) _value = new Value(); return _value; }
 
 
 
@@ -69,18 +69,18 @@ class TreeNode
 		void      setValue(Value value)         { delete _value; _value = new Value(value); }
 
 		/** Sets the pointer to the associated value to zero. @see setValue() @see value() */
-		void      setNullValue()                {  delete _value; _value = 0;  } // appears Empty (see value())
+		void      setNullValue()                {  delete _value; _value = nullptr;  } // appears Empty (see value())
 
 
 
 		/** @returns TRUE is the TreeNode has an associated Value. @see value @see setValue */
-		bool      hasValue() const              { return _value != 0; }
+		bool      hasValue() const              { return _value != nullptr; }
 
 		/** @returns TRUE is the TreeNode has children. @see childCount @see appendChild */
-		bool      hasChildren() const           { if (childList == 0) return false; else return !childList->isEmpty(); }
+		bool      hasChildren() const           { if (childList == nullptr) return false; else return !childList->isEmpty(); }
 
 		/** @returns the amount of children. @see appendChild @see hasChildren */
-		uint      childCount() const            { if (childList == 0) return 0; else return childList->size(); }
+		uint      childCount() const            { if (childList == nullptr) return 0; else return childList->size(); }
 
 		/**
 		 * Appends the pointer to the TreeNode @p newChild to the childList and

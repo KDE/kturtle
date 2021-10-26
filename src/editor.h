@@ -192,7 +192,7 @@ class Editor : public QFrame
 
 	public:
 		explicit Editor(QWidget *parent = nullptr);
-		~Editor();
+		~Editor() override;
 
 		QTextEdit* view() const { return editor; }
 		QTextDocument* document() const { return editor->document(); }

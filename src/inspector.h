@@ -29,7 +29,7 @@ class Inspector : public QFrame
 
 	public:
         explicit Inspector(QWidget *parent = nullptr);
-		~Inspector();
+		~Inspector() override;
 
 		void clear();
 

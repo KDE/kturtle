@@ -19,7 +19,7 @@ class Canvas : public QGraphicsView
 
 	public:
 		explicit Canvas(QWidget *parent = nullptr);
-		~Canvas();
+		~Canvas() override;
 
 		double turtleAngle() { return turtle->angle(); }
 		QImage getPicture();

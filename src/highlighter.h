@@ -19,7 +19,7 @@ class Highlighter : public QSyntaxHighlighter
 
 	public:
         explicit Highlighter(QTextDocument *parent = nullptr);
-		~Highlighter();
+		~Highlighter() override;
 
 		/// used by the Editor for highlighting
 		Token* formatType(const QString &text, int cursorIndex) { return checkOrApplyHighlighting(text, cursorIndex); }

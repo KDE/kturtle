@@ -30,12 +30,12 @@ class Echoer : public QObject
 		/**
 		 * Default Constructor
 		 */
-		explicit Echoer(QObject* parent = 0) { setParent(parent); }
+		explicit Echoer(QObject* parent = nullptr) { setParent(parent); }
 
 		/**
 		 * Default Destructor
 		 */
-		virtual ~Echoer() {}
+		~Echoer() override {}
 
 		/**
 		 * Connects all its slots to the signals of the Executer

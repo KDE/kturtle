@@ -42,7 +42,7 @@ class Interpreter : public QObject
 		/**
 		 * Default Destructor
 		 */
-        virtual ~Interpreter();
+        ~Interpreter() override;
 
 		enum State {
 			Uninitialized, // unusable

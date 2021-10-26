@@ -62,7 +62,7 @@ class Executer : public QObject
 		/**
 		 * @short Destructor. Does nothing at special.
 		 */
-		virtual ~Executer() {}
+		~Executer() override {}
 
 
 		/**
