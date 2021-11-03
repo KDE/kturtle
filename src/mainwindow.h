@@ -30,7 +30,7 @@ class LocalDockWidget : public QDockWidget {
     Q_OBJECT
 	public:
 		LocalDockWidget(const QString& title, QWidget* parent) : QDockWidget(parent) { setWindowTitle(title); }
-		void setVisible(bool b) Q_DECL_OVERRIDE { QDockWidget::setVisible(b); Q_EMIT visibilityChanged(b); }
+		void setVisible(bool b) override { QDockWidget::setVisible(b); Q_EMIT visibilityChanged(b); }
 		void show() { QDockWidget::show(); Q_EMIT visibilityChanged(true); }
 		void hide() { QDockWidget::hide(); Q_EMIT visibilityChanged(false); }
 	Q_SIGNALS:
@@ -94,10 +94,10 @@ class MainWindow : public KXmlGuiWindow
 		void updateOnCursorPositionChange();
 
 	protected Q_SLOTS:
-		void saveNewToolbarConfig() Q_DECL_OVERRIDE;
+		void saveNewToolbarConfig() override;
 
 	protected:
-		void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
+		void closeEvent(QCloseEvent *event) override;
 
 	private:
 		void setupActions();

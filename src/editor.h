@@ -45,7 +45,7 @@ class LineNumbers : public QWidget
 
 	public:
 		LineNumbers(QWidget *parent, QTextEdit *te) : QWidget(parent), editor(te), maxWidth(0) {}
-        ~LineNumbers() Q_DECL_OVERRIDE {}
+        ~LineNumbers() override {}
 	
 		void setFont(const QFont& f) { QWidget::setFont(f); }
 
@@ -57,7 +57,7 @@ class LineNumbers : public QWidget
 			setFixedWidth(fontMetrics().boundingRect(s).width() + 2*LINENUMBER_SPACING);
 		}
 
-		void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {
+		void paintEvent(QPaintEvent*) override {
 			QAbstractTextDocumentLayout* layout = editor->document()->documentLayout();
 			int contentsY = editor->verticalScrollBar()->value();
 			qreal pageBottom = contentsY + editor->viewport()->height();
@@ -130,7 +130,7 @@ class TextEdit : public QTextEdit
 		}
 
 	protected:
-		void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE {
+		void paintEvent(QPaintEvent *event) override {
 			QPainter painter(viewport());
             painter.fillRect(currentLineRect(), QBrush(LINE_HIGHLIGHT_COLOR));
             if (!currentWord.isNull()) {
@@ -260,7 +260,7 @@ class Editor : public QFrame
 // 		void cursorPositionChanged();
 
 	protected:
-		void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
+		void paintEvent(QPaintEvent *event) override;
 
 
 	private Q_SLOTS:

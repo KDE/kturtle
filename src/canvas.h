@@ -54,13 +54,13 @@ class Canvas : public QGraphicsView
 		void getY(double& value);
 
 	protected:
-		void resizeEvent(QResizeEvent* event) Q_DECL_OVERRIDE;
+		void resizeEvent(QResizeEvent* event) override;
 
 	private:
 		void initValues();
 		QColor rgbDoublesToColor(double r, double g, double b);
 		void drawLine(double x1, double y1, double x2, double y2);
-		void wheelEvent(QWheelEvent *event) Q_DECL_OVERRIDE;
+		void wheelEvent(QWheelEvent *event) override;
 		void scaleView(double scaleFactor);
 
 		QGraphicsScene            *_scene;

@@ -28,7 +28,7 @@ class ColorPatch : public QFrame
         void setColor(const QColor &c) { col = c; }
 
 	protected:
-		void paintEvent(QPaintEvent *e) Q_DECL_OVERRIDE {
+		void paintEvent(QPaintEvent *e) override {
 			QPainter p(this);
 			drawFrame(&p);
 			p.fillRect(contentsRect()&e->rect(), col);
