@@ -2,26 +2,48 @@ ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KTURTLE VERSION_HEA
 
 set(kturtle_SRCS
     canvas.cpp
+    canvas.h
     colorpicker.cpp
+    colorpicker.h
     console.cpp
+    console.h
     directiondialog.cpp
-    highlighter.cpp
-    inspector.cpp
+    directiondialog.h
     editor.cpp
+    editor.h
     errordialog.cpp
+    errordialog.h
+    highlighter.cpp
+    highlighter.h
+    inspector.cpp
+    inspector.h
+    interpreteradaptor.cpp
+    interpreteradaptor.h
+    interpreter/echoer.cpp
+    interpreter/echoer.h
+    interpreter/errormsg.cpp
+    interpreter/errormsg.h
+    interpreter/executer.cpp
+    interpreter/executer.h
+    interpreter/interpreter.cpp
+    interpreter/interpreter.h
+    interpreter/parser.cpp
+    interpreter/parser.h
+    interpreter/token.cpp
+    interpreter/token.h
+    interpreter/tokenizer.cpp
+    interpreter/tokenizer.h
+    interpreter/translator.cpp
+    interpreter/translator.h
+    interpreter/treenode.cpp
+    interpreter/treenode.h
+    interpreter/value.cpp
+    interpreter/value.h
     main.cpp
     mainwindow.cpp
+    mainwindow.h
     sprite.cpp
-    interpreter/echoer.cpp
-    interpreter/errormsg.cpp
-    interpreter/executer.cpp
-    interpreter/interpreter.cpp
-    interpreter/parser.cpp
-    interpreter/token.cpp
-    interpreter/tokenizer.cpp
-    interpreter/translator.cpp
-    interpreter/treenode.cpp
-    interpreter/value.cpp
+    sprite.h
     resources.qrc
 )
 
