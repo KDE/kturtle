@@ -25,13 +25,6 @@
 
 #include "kturtle_version.h"
 
-static const char description[] =
-	I18N_NOOP("KTurtle is an educational programming environment that aims to make learning how to program as easy as possible. To achieve this KTurtle makes all programming tools available from the user interface. The programming language used is TurtleScript which allows its commands to be translated.");
-
-static const char copyright[] = "(c) 2003-2009 Cies Breijs";
-static const char website[]   = "https://edu.kde.org/kturtle";
-
-
 int main(int argc, char* argv[])
 {
 	KLocalizedString::setApplicationDomain("kturtle");
@@ -49,15 +42,15 @@ int main(int argc, char* argv[])
 	migrator.setUiFiles(QStringList() << QStringLiteral("kturtleui.rc"));
 	migrator.migrate();
 
-    KAboutData aboutData(QStringLiteral("kturtle"), ki18n("KTurtle").toString(), QLatin1String(KTURTLE_VERSION_STRING));
+    KAboutData aboutData(QStringLiteral("kturtle"), i18n("KTurtle"), QLatin1String(KTURTLE_VERSION_STRING));
 	aboutData.setLicense(KAboutLicense::GPL);
-	aboutData.setHomepage(ki18n(website).toString());
-	aboutData.setShortDescription(ki18n(description).toString());
-	aboutData.setCopyrightStatement(ki18n(copyright).toString());
+    aboutData.setHomepage(i18n("https://edu.kde.org/kturtle"));
+    aboutData.setShortDescription(i18n("KTurtle is an educational programming environment that aims to make learning how to program as easy as possible. To achieve this KTurtle makes all programming tools available from the user interface. The programming language used is TurtleScript which allows its commands to be translated."));
+    aboutData.setCopyrightStatement(i18n("(c) 2003-2009 Cies Breijs"));
 
-	aboutData.addAuthor(ki18n("Cies Breijs").toString(), ki18n("Initiator and core developer").toString(), QStringLiteral("cies@kde.nl"));
-	aboutData.addAuthor(ki18n("Niels Slot").toString(), ki18n("Core developer").toString(), QStringLiteral("nielsslot@gmail.com"));
-	aboutData.addAuthor(ki18n("Mauricio Piacentini").toString(), ki18n("Core developer").toString(), QStringLiteral("piacentini@kde.org"));
+    aboutData.addAuthor(i18n("Cies Breijs"), i18n("Initiator and core developer"), QStringLiteral("cies@kde.nl"));
+    aboutData.addAuthor(i18n("Niels Slot"), i18n("Core developer"), QStringLiteral("nielsslot@gmail.com"));
+    aboutData.addAuthor(i18n("Mauricio Piacentini"), i18n("Core developer"), QStringLiteral("piacentini@kde.org"));
 
 	QCommandLineParser parser;
 
@@ -130,7 +123,7 @@ int main(int argc, char* argv[])
 
 		///////////////// run without a gui /////////////////
 		std::cout << "KTurtle's interpreter in command line mode (version " << KTURTLE_VERSION_STRING << ")" << std::endl;
-		std::cout << copyright << std::endl << std::endl;
+        std::cout << "(c) 2003-2009 Cies Breijs" << std::endl << std::endl;
 
 		QString fileString = parser.value(QStringLiteral("test"));
 		QFile inputFile(fileString);
