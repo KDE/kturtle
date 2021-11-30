@@ -1,6 +1,16 @@
 ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KTURTLE VERSION_HEADER kturtle_version.h)
 
-set(kturtle_SRCS
+
+qt_add_dbus_adaptor(kturtle_SRCS interpreter/org.kde.kturtle.Interpreter.xml
+                     interpreter/interpreter.h Interpreter)
+
+file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../icons/*-apps-kturtle.png")
+ecm_add_app_icon(kturtle_SRCS ICONS ${ICONS_SRCS})
+
+add_executable(kturtle
+)
+target_sources(kturtle PRIVATE
+     ${kturtle_SRCS}
     canvas.cpp
     canvas.h
     colorpicker.cpp
@@ -45,15 +55,6 @@ set(kturtle_SRCS
     sprite.cpp
     sprite.h
     resources.qrc
-)
-
-qt_add_dbus_adaptor(kturtle_SRCS interpreter/org.kde.kturtle.Interpreter.xml
-                     interpreter/interpreter.h Interpreter)
-
-file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../icons/*-apps-kturtle.png")
-ecm_add_app_icon(kturtle_SRCS ICONS ${ICONS_SRCS})
-
-add_executable(kturtle ${kturtle_SRCS}
 )
 
 target_link_libraries(kturtle
