@@ -26,18 +26,22 @@ include(FeatureSummary)
 include(ECMAddAppIcon)
 include(ECMSetupVersion)
 
-find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
+find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Core
     Gui
     Svg
     Widgets
     PrintSupport
 )
+if (QT_MAJOR_VERSION STREQUAL "6")
+    find_package(Qt6Core5Compat)
+    find_package(Qt6SvgWidgets)
+endif()
 
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED
     Crash
     KIO
-    NewStuff
+    #NewStuff
     TextWidgets
     I18n
     CoreAddons
@@ -47,6 +51,15 @@ set_package_properties(KF5DocTools PROPERTIES DESCRIPTION
     "Tools to generate documentation"
     TYPE OPTIONAL
 )
+find_package(KF5NewStuff ${KF5_MIN_VERSION})
+set_package_properties(KF5NewStuff PROPERTIES DESCRIPTION
+    "NewStuff support"
+    TYPE OPTIONAL
+)
+if (TARGET KF5::NewStuff)
+    add_definition(-DHAVE_NEWSTUFF_SUPPORT)
+endif()
+
 
 #Allows QString concatenation to use a single memory allocation per source line.
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)

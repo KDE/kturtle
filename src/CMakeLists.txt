@@ -59,19 +59,26 @@ target_sources(kturtle PRIVATE
 
 target_link_libraries(kturtle
     KF5::KIOCore
-    KF5::NewStuff
+    #KF5::NewStuff
     KF5::I18n
-    Qt::Core
-    Qt::Gui
-    Qt::Xml
-    Qt::Svg
-    Qt::PrintSupport
+    Qt${QT_MAJOR_VERSION}::Core
+    Qt${QT_MAJOR_VERSION}::Gui
+    Qt${QT_MAJOR_VERSION}::Xml
+    Qt${QT_MAJOR_VERSION}::Svg
+    Qt${QT_MAJOR_VERSION}::SvgWidgets
+    Qt${QT_MAJOR_VERSION}::PrintSupport
     KF5::TextWidgets
     KF5::Crash
+    KF5::XmlGui
 )
+
+if (QT_MAJOR_VERSION STREQUAL "6")
+    target_link_libraries(kturtle Qt6::Core5Compat)
+endif()
+
 
 install (TARGETS  kturtle          ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 install (PROGRAMS    org.kde.kturtle.desktop  DESTINATION ${KDE_INSTALL_APPDIR})
-install (FILES    kturtleui.rc     DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/kturtle)
+install (FILES    kturtleui.rc     DESTINATION ${KDE_INSTALL_KXMLGUIDIR}/kturtle)
 install (FILES    kturtle.knsrc    DESTINATION ${KDE_INSTALL_CONFDIR}) 
 

@@ -7,7 +7,7 @@
 #include "translator.h"
 
 #include <KLocalizedString>
-
+#include <QRegExp>
 #include "token.h"
 
 

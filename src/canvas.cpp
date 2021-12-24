@@ -211,9 +211,9 @@ void Canvas::wheelEvent(QWheelEvent *event)
 
 void Canvas::scaleView(double scaleFactor)
 {
-	qreal factor = matrix().scale(scaleFactor, scaleFactor).mapRect(QRectF(0, 0, 1, 1)).width();
-	if (factor < 0.07 || factor > 100) return;
-	scale(scaleFactor, scaleFactor);
+//	qreal factor = matrix().scale(scaleFactor, scaleFactor).mapRect(QRectF(0, 0, 1, 1)).width();
+//	if (factor < 0.07 || factor > 100) return;
+//	scale(scaleFactor, scaleFactor);
 }
 
 void Canvas::getX(double& value)
