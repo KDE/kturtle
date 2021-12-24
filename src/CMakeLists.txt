@@ -65,15 +65,19 @@ target_link_libraries(kturtle
     Qt${QT_MAJOR_VERSION}::Gui
     Qt${QT_MAJOR_VERSION}::Xml
     Qt${QT_MAJOR_VERSION}::Svg
-    Qt${QT_MAJOR_VERSION}::SvgWidgets
     Qt${QT_MAJOR_VERSION}::PrintSupport
     KF5::TextWidgets
     KF5::Crash
     KF5::XmlGui
 )
 
+if (TARGET KF5::NewStuff)
+    target_link_libraries(kturtle KF5::NewStuff)
+endif()
+
+
 if (QT_MAJOR_VERSION STREQUAL "6")
-    target_link_libraries(kturtle Qt6::Core5Compat)
+    target_link_libraries(kturtle Qt6::Core5Compat Qt6::SvgWidgets)
 endif()
 
 
