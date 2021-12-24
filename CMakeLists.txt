@@ -38,10 +38,14 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED
     Crash
     KIO
     NewStuff
-    DocTools
     TextWidgets
     I18n
     CoreAddons
+)
+find_package(KF5DocTools ${KF5_MIN_VERSION})
+set_package_properties(KF5DocTools PROPERTIES DESCRIPTION
+    "Tools to generate documentation"
+    TYPE OPTIONAL
 )
 
 #Allows QString concatenation to use a single memory allocation per source line.
@@ -53,12 +57,14 @@ add_definitions(
     -DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055800
     -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
 )
-add_subdirectory (doc)
 add_subdirectory (src)
 add_subdirectory (icons)
 
 ki18n_install(po)
-kdoctools_install(po)
+if (KF5DocTools_FOUND)
+    kdoctools_install(po)
+    add_subdirectory(doc)
+endif()
 
 install(FILES org.kde.kturtle.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
