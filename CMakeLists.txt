@@ -57,7 +57,7 @@ set_package_properties(KF5NewStuff PROPERTIES DESCRIPTION
     TYPE OPTIONAL
 )
 if (TARGET KF5::NewStuff)
-    add_definition(-DHAVE_NEWSTUFF_SUPPORT)
+    add_definitions(-DHAVE_NEWSTUFF_SUPPORT)
 endif()
 
 
