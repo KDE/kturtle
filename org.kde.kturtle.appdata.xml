@@ -41,6 +41,7 @@
   <name xml:lang="zh-CN">KTurtle</name>
   <name xml:lang="zh-TW">程式設計_KTurtle</name>
   <summary>Educational Programming Environment</summary>
+  <summary xml:lang="ar">بيئة برمجية تعليمية</summary>
   <summary xml:lang="bg">Образователна среда за програмиране</summary>
   <summary xml:lang="bs">Obrazovno programersko okruženje</summary>
   <summary xml:lang="ca">Entorn educatiu de programació</summary>
