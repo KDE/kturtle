@@ -226,7 +226,8 @@ class Token
 		bool operator==(const Token&) const;
 
 		/// Assigns a Token, it needs to compare ErrorMessages which contain Tokens.
-		Token& operator=(const Token&);
+		Token& operator=(const Token&) = default;
+		Token(const Token&) = default;
 
 		/// returns the category a type belongs to (generated)
 		static int typeToCategory(int);

@@ -41,7 +41,8 @@ class ErrorMessage
 		int             code()  const { return _errorCode; }
 
 		bool operator==(const ErrorMessage&) const;
-		ErrorMessage& operator=(const ErrorMessage& n);
+		ErrorMessage& operator=(const ErrorMessage& n) = default;
+		ErrorMessage(const ErrorMessage& n) = default;
 
 	private:
 		QString  _errorText;

@@ -42,18 +42,6 @@ bool Token::operator==(const Token& n) const
 }
 
 
-Token& Token::operator=(const Token& n)
-{
-	_type     = n.type();
-	_look     = n.look();
-	_startRow = n.startRow();
-	_startCol = n.startCol();
-	_endRow   = n.endRow();
-	_endCol   = n.endCol();
-	return *this;
-}
-
-
 int Token::typeToCategory(int type)
 {
 	switch (type) {

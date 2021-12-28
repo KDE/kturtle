@@ -13,10 +13,6 @@ ErrorMessage::ErrorMessage(const QString& text, const Token& t, int code)
    _errorToken(t),
    _errorCode(code)
 {
-// 	_errorText  = text;
-// 	// make a copy since the pointed token may be deleted:
-// 	_errorToken = new Token(t.type(), t.look(), t.startRow(), t.startCol(), t.endRow(), t.endCol());
-// 	_errorCode  = code;
 }
 
 bool ErrorMessage::operator==(const ErrorMessage& n) const
@@ -26,12 +22,4 @@ bool ErrorMessage::operator==(const ErrorMessage& n) const
 	    n.token() == _errorToken ||
 	    n.code()  == _errorCode) return true;
 	return false;
-}
-
-ErrorMessage& ErrorMessage::operator=(const ErrorMessage& n)
-{
-	_errorText  = n.text();
-	_errorToken = n.token();
-	_errorCode  = n.code();
-	return *this;
 }
