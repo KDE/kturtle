@@ -33,7 +33,7 @@
 #include <KRecentFilesAction>
 #include <KSharedConfig>
 #include <KToolBarPopupAction>
-#include <KNS3/QtQuickDialogWrapper>
+#include <KNSWidgets/Action>
 #include "interpreter/errormsg.h"
 #include "interpreter/translator.h"
 
@@ -185,10 +185,15 @@ void MainWindow::setupActions()
 	recentFilesAction = dynamic_cast<KRecentFilesAction*>(actionCollection()->addAction(KStandardAction::OpenRecent,  QStringLiteral("file_recent"), editor, SLOT(openFile(QUrl))));
 	recentFilesAction->setStatusTip(i18n("Open a recently used file"));
 	recentFilesAction->setWhatsThis(i18n("Open Recent File: Open a recently used file"));
-	a = new QAction(QIcon::fromTheme(QStringLiteral("get-hot-new-stuff")), i18n("Get more examples..."), this);
-	actionCollection()->addAction(QStringLiteral("get_new_examples"), a);
-	a->setText(i18n("Get more examples..."));
-	connect(a, &QAction::triggered, this, &MainWindow::getNewExampleDialog);
+
+	auto knsa = new KNSWidgets::Action(i18n("Get more examples..."), QStringLiteral("kturtle.knsrc"), this);
+	actionCollection()->addAction(QStringLiteral("get_new_examples"), knsa);
+	connect(knsa, &KNSWidgets::Action::dialogFinished, this, [this] (const QList<KNS3::Entry> &changedEntries) {
+		if (!changedEntries.isEmpty()) {
+			updateExamplesMenu();
+		}
+	});
+
 	a = actionCollection()->addAction(KStandardAction::Save,  QStringLiteral("file_save"), editor, SLOT(saveFile()));
 	a->setStatusTip(i18n("Save the current file to disk"));
 	a->setWhatsThis(i18n("Save File: Save the current file to disk"));
@@ -1063,13 +1068,4 @@ void MainWindow::slotMessageDialog(const QString& text)
 	KMessageBox::information(this, text, i18n("Message"));
 	if(!currentlyRunningConsole)
 		run();
-}
-
-void MainWindow::getNewExampleDialog()
-{
-    KNS3::QtQuickDialogWrapper dialog(QStringLiteral("kturtle.knsrc"));
-    const QList<KNSCore::EntryInternal> entries = dialog.exec();
-    if ( entries.size() > 0 ){
-        updateExamplesMenu();
-    }
 }

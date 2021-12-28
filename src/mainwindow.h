@@ -54,7 +54,6 @@ class MainWindow : public KXmlGuiWindow
 		void addToRecentFilesList(const QUrl&);
 		void showErrorDialog(bool show = false);
 		void openExample();
-		void getNewExampleDialog();
 		void openDownloadedExample();
 		void filePrintDialog();
 		void canvasPrintDialog();
