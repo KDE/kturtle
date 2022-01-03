@@ -51,7 +51,6 @@ set_package_properties(KF5DocTools PROPERTIES DESCRIPTION
     "Tools to generate documentation"
     TYPE OPTIONAL
 )
-    add_definitions(-DHAVE_NEWSTUFF_SUPPORT)
 
 
 #Allows QString concatenation to use a single memory allocation per source line.
