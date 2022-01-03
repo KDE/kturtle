@@ -41,7 +41,7 @@ endif()
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED
     Crash
     KIO
-    #NewStuff
+    NewStuff
     TextWidgets
     I18n
     CoreAddons
@@ -51,14 +51,7 @@ set_package_properties(KF5DocTools PROPERTIES DESCRIPTION
     "Tools to generate documentation"
     TYPE OPTIONAL
 )
-find_package(KF5NewStuff ${KF5_MIN_VERSION})
-set_package_properties(KF5NewStuff PROPERTIES DESCRIPTION
-    "NewStuff support"
-    TYPE OPTIONAL
-)
-if (TARGET KF5::NewStuff)
     add_definitions(-DHAVE_NEWSTUFF_SUPPORT)
-endif()
 
 
 #Allows QString concatenation to use a single memory allocation per source line.

@@ -59,7 +59,6 @@ target_sources(kturtle PRIVATE
 
 target_link_libraries(kturtle
     KF5::KIOCore
-    #KF5::NewStuff
     KF5::I18n
     Qt${QT_MAJOR_VERSION}::Core
     Qt${QT_MAJOR_VERSION}::Gui
@@ -69,11 +68,8 @@ target_link_libraries(kturtle
     KF5::TextWidgets
     KF5::Crash
     KF5::XmlGui
+    KF5::NewStuff
 )
-
-if (TARGET KF5::NewStuff)
-    target_link_libraries(kturtle KF5::NewStuff)
-endif()
 
 
 if (QT_MAJOR_VERSION STREQUAL "6")
