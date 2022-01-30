@@ -2,6 +2,7 @@
 [Desktop Entry]
 Name=KTurtle
 Name[af]=KSkilpad
+Name[ar]=سلحفاة ك
 Name[be]=KTurtle
 Name[bg]=KTurtle
 Name[bn]=কেটারটেল
@@ -65,6 +66,7 @@ Name[x-test]=xxKTurtlexx
 Name[zh_CN]=KTurtle
 Name[zh_TW]=程式設計_KTurtle
 GenericName=Educational Programming Environment
+GenericName[ar]=بيئة برمجية تعليمية
 GenericName[bg]=Програмиране на Лого
 GenericName[bn]=শিক্ষামূলক প্রোগ্রামিং পরিবেশ
 GenericName[bs]=Obrazovno programersko okruženje
@@ -122,6 +124,7 @@ GenericName[x-test]=xxEducational Programming Environmentxx
 GenericName[zh_CN]=教育编程环境
 GenericName[zh_TW]=教育程式環境
 Comment=Educational Programming Environment
+Comment[ar]=بيئة برمجية تعليمية
 Comment[ca]=Entorn educatiu de programació
 Comment[ca@valencia]=Entorn educatiu de programació
 Comment[cs]=Vzdělávací programovací prostředí
