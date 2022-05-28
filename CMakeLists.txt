@@ -25,6 +25,7 @@ include(KDECMakeSettings)
 include(FeatureSummary)
 include(ECMAddAppIcon)
 include(ECMSetupVersion)
+include(ECMDeprecationSettings)
 
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Core
@@ -52,16 +53,14 @@ set_package_properties(KF5DocTools PROPERTIES DESCRIPTION
     TYPE OPTIONAL
 )
 
+ecm_set_disabled_deprecation_versions(
+    QT ${QT_MIN_VERSION}
+    KF 5.90.0
+)
 
 #Allows QString concatenation to use a single memory allocation per source line.
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
-add_definitions(
-    -DQT_DISABLE_DEPRECATED_BEFORE=0x050e00
-    -DQT_DEPRECATED_WARNINGS_SINCE=0x060000
-    -DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055800
-    -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
-)
 add_subdirectory (src)
 add_subdirectory (icons)
 
