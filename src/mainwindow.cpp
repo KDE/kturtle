@@ -188,7 +188,7 @@ void MainWindow::setupActions()
 
 	auto knsa = new KNSWidgets::Action(i18n("Get more examples..."), QStringLiteral("kturtle.knsrc"), this);
 	actionCollection()->addAction(QStringLiteral("get_new_examples"), knsa);
-	connect(knsa, &KNSWidgets::Action::dialogFinished, this, [this] (const QList<KNS3::Entry> &changedEntries) {
+	connect(knsa, &KNSWidgets::Action::dialogFinished, this, [this] (const QList<KNSCore::Entry> &changedEntries) {
 		if (!changedEntries.isEmpty()) {
 			updateExamplesMenu();
 		}
