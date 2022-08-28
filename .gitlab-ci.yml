@@ -1,3 +1,11 @@
 include:
   - https://invent.kde.org/sysadmin/ci-utilities/raw/master/gitlab-templates/linux.yml
   - https://invent.kde.org/sysadmin/ci-utilities/raw/master/gitlab-templates/freebsd.yml
+
+suse_tumbleweed_qt62:
+  stage: build
+  image: kdeorg/ci-suse-qt62:latest
+  tags:
+    - Linux
+  script:
+    - /usr/bin/true
