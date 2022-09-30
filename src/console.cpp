@@ -8,11 +8,11 @@
 #include "editor.h"  // only for the error highlight color value
 
 #include <QApplication>
-#include <QBoxLayout>
 #include <QComboBox>
 #include <QFontDatabase>
 #include <QLabel>
 #include <QLineEdit>
+#include <QHBoxLayout>
 
 #include <KLocalizedString>
 

@@ -11,6 +11,7 @@
 #include <QResizeEvent>
 #include <QWheelEvent>
 #include <QtMath>
+#include <QSvgGenerator>
 
 #include <KLocalizedString>
 

@@ -8,7 +8,6 @@
 #define _CANVAS_H_
 
 #include <QGraphicsView>
-#include <QSvgGenerator>
 
 #include "sprite.h"
 

@@ -9,7 +9,6 @@
 #define _INTERPRETER_H_
 
 #include <QStringList>
-#include <QTextStream>
 
 #include "errormsg.h"
 #include "executer.h"

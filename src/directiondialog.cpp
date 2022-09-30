@@ -10,7 +10,6 @@
 using std::atan;
 
 #include <QApplication>
-#include <QBoxLayout>
 #include <QClipboard>
 #include <QComboBox>
 #include <QDialogButtonBox>
@@ -22,7 +21,8 @@ using std::atan;
 #include <QPaintEvent>
 #include <QPushButton>
 #include <QSpinBox>
-#include <QtMath>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 
 #include <KGuiItem>
 #include <KLocalizedString>

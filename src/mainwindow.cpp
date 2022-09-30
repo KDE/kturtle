@@ -6,7 +6,6 @@
 
 #include "mainwindow.h"
 
-#include <QBoxLayout>
 #include <QDebug>
 #include <QDir>
 #include <QFileInfo>
@@ -23,11 +22,11 @@
 #include <QStatusBar>
 #include <QTimer>
 #include <QActionGroup>
+#include <QHBoxLayout>
 
 #include <KActionCollection>
 #include <KConfigGroup>
 #include <KHelpClient>
-#include <KIO/StatJob>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KRecentFilesAction>

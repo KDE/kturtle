@@ -7,18 +7,17 @@
 #include "editor.h"
 
 
-#include <QBoxLayout>
 #include <QFileDialog>
 #include <QFontDatabase>
 #include <QSaveFile>
 #include <QTemporaryFile>
 #include <QTextStream>
 #include <QBuffer>
+#include <QHBoxLayout>
 
 #include <KFind>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KIO/StatJob>
 #include <KIO/StoredTransferJob>
 
 static const int CURSOR_WIDTH = 2;  // in pixels

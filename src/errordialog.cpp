@@ -6,13 +6,13 @@
 
 #include "errordialog.h"
 
-#include <QBoxLayout>
 #include <QDialogButtonBox>
 #include <QFontDatabase>
 #include <QHeaderView>
 #include <QLabel>
 #include <QPushButton>
 #include <QTableWidget>
+#include <QVBoxLayout>
 
 #include <KGuiItem>
 #include <KHelpClient>

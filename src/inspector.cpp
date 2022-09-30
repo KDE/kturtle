@@ -8,13 +8,13 @@
 
 #include "interpreter/translator.h"  // for getting the translated ArgumentSeparator
 
-#include <QBoxLayout>
 #include <QDebug>
 #include <QFontDatabase>
 #include <QHeaderView>
 #include <QTabWidget>
 #include <QTableWidget>
 #include <QTreeWidget>
+#include <QHBoxLayout>
 
 #include <KLocalizedString>
 

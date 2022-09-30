@@ -13,7 +13,6 @@
 #define INTERPRETERADAPTOR_H_1243976287
 
 #include <QObject>
-#include <QtDBus>
 #include "interpreter/interpreter.h"
 template<class T> class QList;
 template<class Key, class Value> class QMap;
