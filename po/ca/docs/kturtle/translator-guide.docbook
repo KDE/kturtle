@@ -1,0 +1,14 @@
+<chapter id="translators">
+<title
+>Guia de traducció del &kturtle;</title>
+<para
+>Com probablement ja sabeu, el &turtlescript; és el llenguatge de programació del &kturtle;, es permet traduir-lo. Això elimina una barrera per a algunes persones, especialment per als estudiants més joves, en el seu esforç per entendre els conceptes bàsics de la programació.</para>
+<para
+>Quan es tradueix el &kturtle; a un nou idioma trobareu, a més de les cadenes de la interfície gràfica d'usuari, les ordres de programació, els exemples i els missatges d'error inclosos en els fitxers <filename class="extension"
+>.pot</filename
+> estàndard utilitzats per a la traducció en el &kde;. Tot és traduït utilitzant el mètode de traducció normal en el &kde;, però, es recomana aprendre una mica sobre la forma de traducció (així com llegir els comentaris del traductor).</para>
+<para
+>Si us plau, vegeu <ulink url="https://edu.kde.org/kturtle/translation.php"
+>https://edu.kde.org/kturtle/translation.php</ulink
+> per a obtenir més informació sobre el procés de traducció. Moltes gràcies per la vostra feina! El &kturtle; depèn en gran manera de les vostres traduccions.</para>
+</chapter>

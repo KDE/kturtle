@@ -1,0 +1,304 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kturtle;">
+  <!ENTITY turtlescript "TurtleScript">
+  <!ENTITY logo "Logo">
+  <!ENTITY % addindex "INCLUDE">
+  <!ENTITY % Catalan  "INCLUDE"
+><!-- change language only here -->
+  <!ENTITY using-kturtle SYSTEM "using-kturtle.docbook">
+  <!ENTITY getting-started SYSTEM "getting-started.docbook">
+  <!ENTITY programming-reference SYSTEM "programming-reference.docbook">
+  <!ENTITY translator-guide SYSTEM "translator-guide.docbook">
+  <!ENTITY glossary SYSTEM "glossary.docbook">
+]>
+
+<book id="kturtle" lang="&language;">
+
+<bookinfo>
+<title
+>El manual del &kturtle;</title>
+
+<authorgroup>
+<author
+><firstname
+>Cies</firstname
+> <surname
+>Breijs</surname
+> <affiliation
+> <address
+><email
+>cies AT kde DOT nl</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Anne-Marie</firstname
+> <surname
+>Mahfouf</surname
+> <affiliation
+> <address
+><email
+>annma AT kde DOT org</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+><email
+>piacentini AT kde DOT org</email
+></address>
+</affiliation>
+</author>
+<othercredit role="translator"
+> <firstname
+>Daniel</firstname
+> <surname
+>Fortuny Anguera</surname
+> <affiliation
+><address
+><email
+>dfortuny@xtec.net</email
+></address
+></affiliation
+> <contrib
+>Traductor</contrib
+> </othercredit
+> &traductor.Antoni.Bella; 
+</authorgroup>
+
+
+<copyright>
+<year
+>2004</year
+><year
+>2009</year>
+<holder
+>Cies Breijs</holder>
+</copyright>
+
+<copyright>
+<year
+>2004</year
+><year
+>2007</year>
+<holder
+>&Anne-Marie.Mahfouf;</holder>
+</copyright>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Mauricio Piacentini</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>20 de gener de 2020</date>
+<releaseinfo
+>Aplicacions 20.12</releaseinfo>
+
+<abstract>
+<para
+>El &kturtle; és un entorn educatiu de programació que pretén ensenyar a programar de la manera més senzilla possible. Per a aconseguir-ho, el &kturtle; permet accedir a totes les eines de programació des de la interfície d'usuari. El llenguatge de programació és el &turtlescript;, el qual permet traduir-ne les ordres.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KTurtle</keyword>
+<keyword
+>educació</keyword>
+<keyword
+>idioma</keyword>
+<keyword
+>natiu</keyword>
+<keyword
+>programar</keyword>
+<keyword
+>TurtleScript</keyword>
+<keyword
+>Logo</keyword>
+<keyword
+>tortuga</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introducció</title>
+
+<para
+>El &kturtle; és un entorn de programació educatiu que fa servir <link linkend="what-is-turtlelang"
+>&turtlescript;</link
+>, un llenguatge de programació basat i inspirant en el &logo;. La meta del &kturtle; és fer de la programació una activitat fàcil i accessible. Això fa que el &kturtle; esdevingui una eina adequada per a ensenyar els fonaments de les matemàtiques, geometria i... programació. La característica de &turtlescript; és que les ordres es poden traduir a l'idioma del programador.</para>
+
+<para
+>El &kturtle; s'ha anomenat així perquè <quote
+>la tortuga</quote
+> és la protagonista de l'entorn de programació. L'estudiant instruirà la tortuga, utilitzant les ordres de &turtlescript;, perquè dibuixi en <link linkend="the-canvas"
+>el llenç</link
+>.</para>
+
+<sect1 id="what-is-turtlelang">
+<title
+>Què és el &turtlescript;?</title>
+<para
+>El &kturtle; és un entorn de programació educatiu que fa servir <link linkend="what-is-turtlelang"
+>&turtlescript;</link
+>, un llenguatge de programació basat i inspirant en el &logo;. La primera versió del llenguatge de programació &logo; va ser creada en un laboratori d'intel·ligència artificial del MIT per en Seymour Papert l'any 1967, a partir del llenguatge de programació LISP. Des d'aleshores han aparegut moltes versions de &logo;. Cap a l'any 1980 van tenir protagonisme les versions per a MSX, Commodore, Atari, Apple II i els PC d'IBM. Aquestes versions estaven vinculades a projectes educatius. El MIT encara manté <ulink url="https://el.media.mit.edu/logo-foundation/"
+>un lloc web sobre &logo;</ulink
+> que conté una llista de diverses implementacions del llenguatge.</para>
+<para
+>El &turtlescript; comparteix una característica que es troba en moltes altres implementacions de &logo;: La capacitat de traduir les ordres per a adaptar-se a l'idioma matern de l'estudiant. Aquesta característica fa que sigui més fàcil començar per als estudiants que tenen poc o cap coneixement d'anglès. A més d'aquesta característica, el &kturtle; té <link linkend="features-of-kturtle"
+>moltes altres característiques</link
+> destinades a facilitar als estudiants l'experiència inicial amb la programació.</para>
+</sect1>
+
+
+<sect1 id="features-of-kturtle">
+<title
+>Característiques del &kturtle;</title>
+<para
+>El &kturtle; té algunes característiques interessants que fan que començar a programar sigui molt fàcil. Observeu alguns dels aspectes més destacats del conjunt de característiques del &kturtle;: <itemizedlist>
+<listitem
+><para
+>Un entorn integrat i amb un intèrpret, un <link linkend="the-editor"
+>editor</link
+>, un <link linkend="the-canvas"
+>llenç</link
+> i altres eines de &turtlescript; en una sola aplicació (sense dependències addicionals).</para
+></listitem>
+<listitem
+><para
+>La capacitat de traduir les ordres de &turtlescript; utilitzant l'estructura de traducció de &kde;.</para
+></listitem>
+<listitem
+><para
+>El &turtlescript; admet les funcions definides per l'usuari, la recursivitat i el canvi de tipus dinàmic.</para
+></listitem>
+<listitem
+><para
+>L'execució es pot alentir, posar en pausa o aturar en qualsevol moment.</para
+></listitem>
+<listitem
+><para
+>Un potent <link linkend="the-editor"
+>editor</link
+> que permet fer un ressaltat intuïtiu de la sintaxi, numeració de les línies, marcadors d'error, execució visual i altres coses.</para
+></listitem>
+<listitem
+><para
+>El <link linkend="the-canvas"
+>llenç</link
+>, on la tortuga dibuixa, es pot imprimir o desar com a una imatge (PNG) o un dibuix (&SVG;).</para
+></listitem>
+<listitem
+><para
+>Ajuda contextual: Ajuda quan ho necessiteu. Només haureu de prémer <keysym
+>F2</keysym
+> (o veure <menuchoice
+><guimenu
+>Ajuda</guimenu
+><guimenuitem
+>Ajuda sobre: ...</guimenuitem
+></menuchoice
+>) per a obtenir ajuda en la part de codi actualment sota el cursor.</para
+></listitem>
+<listitem
+><para
+>Un diàleg d'error que vincula els missatges d'error per als errors en el programa i els marca en vermell.</para
+></listitem>
+<listitem
+><para
+>Terminologia de programació simplificada.</para
+></listitem>
+<listitem
+><para
+>Programes d'exemple integrats per a fer més fàcil començar. Aquests exemples es tradueixen utilitzant l'estructura de traducció del &kde;.</para
+></listitem>
+</itemizedlist>
+</para>
+</sect1>
+</chapter>
+
+&using-kturtle;
+
+&getting-started;
+
+&programming-reference;
+
+&glossary;
+
+&translator-guide;
+
+<chapter id="credits">
+
+<title
+>Crèdits i Llicència</title>
+
+<para
+>&kturtle; </para>
+<para
+>Copyright del programa 2003-2007 Cies Breijs <email
+>cies AT kde DOT nl</email
+></para>
+
+<para
+>Copyright de la documentació 2004, 2007 i 2009 <itemizedlist>
+<listitem
+><para
+>Cies Breijs <email
+>cies AT kde DOT nl</email
+> </para
+></listitem>
+<listitem
+><para
+>&Anne-Marie.Mahfouf; &Anne-Marie.Mahfouf.mail; </para
+></listitem>
+<listitem
+><para
+>Canvis després de la correcció: &Philip.Rodrigues; &Philip.Rodrigues.mail;</para>
+</listitem>
+<listitem
+><para
+>Alguns canvis des de la darrera traducció: Andrew Coles <email
+>andrew_coles AT yahoo DOT co DOT uk</email
+></para>
+</listitem>
+</itemizedlist>
+</para>
+
+<para
+>Traductor de la documentació: Daniel Fortuny Anguera <email
+>dfortuny@pie.xtec.es</email
+> i &credits.Antoni.Bella;</para
+> &underFDL; &underGPL; </chapter>
+
+<!--&documentation.index; -->
+<index id='command-index'>
+<title
+>Índex d'ordres</title>
+</index>
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->

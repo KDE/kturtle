@@ -1,0 +1,400 @@
+<chapter id="Glossary">
+<title
+>Sõnastik</title>
+
+<para
+>Selles peatükis selgitame kõige <quote
+>ebatavalisemaid</quote
+> mõisteid, mida käsiraamat sisaldab.</para>
+
+<glosslist>
+<glossentry id="degrees">
+<glossterm
+>kraadid</glossterm>
+<glossdef
+><para
+>Kraadid mõõdavad nurka ehk pöörde ulatust. Täispööre on 360 kraadi, järelikult poolpööre 180 ja veerandpööre 90 kraadi. Käskude <userinput
+>turnleft</userinput
+>, <userinput
+>turnright</userinput
+> ja <userinput
+>direction</userinput
+> sisend peab olema antud kraadides.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="input-output">
+<glossterm
+>käskude sisend ja väljund</glossterm>
+<glossdef
+><para
+>Mõned käsud vajavad sisendit, mõned annavad väljundit, mõned vajavad sisendit ja annavad väljundit ning mõned ei vaja sisendit ega anna ka mingit väljundit.</para>
+<para
+>Mõned näited ainult sisendiga käskudest: <screen>
+forward 50
+pencolor 255,0,0
+print "tere!"
+</screen
+> Käsk <userinput
+>forward</userinput
+> võtab sisendiks <userinput
+>50</userinput
+>. <userinput
+>forward</userinput
+> vajab seda sisendit määramaks, mitu <glossterm linkend="pixels"
+>pikslit</glossterm
+> edasi liikuda. <userinput
+>pencolor</userinput
+> võtab sisendiks värvikoodi ja <userinput
+>print</userinput
+> stringi. Pane tähele, et sisend võib olla ka konteiner, nagu näha järgnevas näites: <screen
+>$x = 50
+print $x
+forward 50
+$str = "tere!"
+print $str
+</screen
+></para>
+
+<para
+>Nüüd mõned näited väljundit andvate käskude kohta: <screen>
+$x = ask "Palun kirjuta midagi ja vajuta OK... aitäh!"
+$r = random 1,100
+</screen
+> Käsk <userinput
+>ask</userinput
+> võtab stringi sisendiks ja annab väljundiks sisestatud arvu või stringi. Nagu näha, on <userinput
+>ask</userinput
+> väljund salvestatud konteineris <userinput
+>x</userinput
+>. Ka käsk <userinput
+>random</userinput
+> annab väljundi. Antud juhul on väljundiks number vahemikus 1 kuni 100. Ka see väljund on salvestatud konteinerisse, milleks siin on <userinput
+>r</userinput
+>. Pane tähele, et konteinereid <userinput
+>x</userinput
+> ja <userinput
+>r</userinput
+> ei ole kasutatud eespool toodud näidiskoodis.</para>
+
+<para
+>Mõned käsud ei vaja sisendit ega anna ka väljundit, näiteks: <screen
+>clear
+penup
+</screen>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="intuitive-highlighting">
+<glossterm
+>intuitiivne esiletõstmine</glossterm>
+<glossdef
+><para
+>See &kturtle;'i omadus muudab koodi kirjutamise veelgi kergemaks. Esiletõstmine annab kirjutatud koodi osadele erinevad värvid, mis märgivad seda, millist tüüpi koodiga kuskil tegemist on. Järgnevas tabelis on ära toodud erinevad kooditüübid ja värv, millega selliseid osi näitab <link linkend="the-editor"
+>redaktor</link
+>. <table>
+<title
+>Erinevad kooditüübid ja nende esiletõstmise värv</title>
+<tgroup cols="3">
+<tbody>
+<row>
+<entry
+>tavalised käsud</entry>
+<entry
+>tumesinine</entry>
+<entry
+>Tavalisi käske kirjeldatakse <link linkend="commands"
+>siin</link
+>.</entry>
+</row>
+<row>
+<entry
+>täitmist kontrollivad käsud</entry>
+<entry
+>must (rasvane)</entry>
+<entry
+>Nende spetsiaalsete käskude täitmist kontrollivate käskude kohta saab põhjalikumalt lugeda <link linkend="controlling-execution"
+>siit</link
+>.</entry>
+</row>
+<row>
+<entry
+>kommentaarid</entry>
+<entry
+>hall</entry>
+<entry
+>Kommenteeritud ridade alguses seisab vastav sümbol (#). Neid ridu koodi täitmisel ignoreeritakse. Kommentaarid lubavad programmeerijal oma koodi selgitada või siis ajutiselt teatud koodiosa täitmata jätta.</entry>
+</row>
+<row>
+<entry
+>looksulud {, }</entry>
+<entry
+>tumeroheline (rasvane)</entry>
+<entry
+>Nurksulge kasutatakse koodiosade grupeerimiseks. Tihtipeale pruugitakse neid koos <link linkend="controlling-execution"
+>täitmise kontrolleritega</link
+>.</entry>
+</row>
+<row>
+<entry
+>käsk <link linkend="learn"
+>learn</link
+></entry>
+<entry
+>heleroheline (rasvane)</entry>
+<entry
+>Käsuga <link linkend="learn"
+>learn</link
+> saab luua uusi käske.</entry>
+</row>
+<row>
+<entry
+>stringid</entry>
+<entry
+>punane</entry>
+<entry
+>Ega ka (teksti)stringide kohta pole palju muud öelda, kui et nende alguses ja lõpus on alati topeltjutumärgid (").</entry>
+</row>
+<row>
+<entry
+>numbrid</entry>
+<entry
+>tumepunane</entry>
+<entry
+>Numbrid on numbrid, mis nende kohta ikka rohkem öelda...</entry>
+</row>
+<row>
+<entry
+>tõeväärtused</entry>
+<entry
+>tumepunane</entry>
+<entry
+>Tõeväärtusi on kõigest kaks: tõene (true) ja väär (false).</entry>
+</row>
+<row>
+<entry
+>muutujad</entry>
+<entry
+>purpurne</entry>
+<entry
+>Algavad märgiga '$' ja võivad sisaldada arve, stringe või tõeväärtusi.</entry>
+</row>
+<row>
+<entry
+>matemaatilised tehted</entry>
+<entry
+>hall</entry>
+<entry
+>Matemaatilised tehted on järgmised: <userinput
+>+</userinput
+>, <userinput
+>-</userinput
+>, <userinput
+>*</userinput
+>, <userinput
+>/</userinput
+> ja <userinput
+>^</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>võrdlustehted</entry>
+<entry
+>helesinine (rasvane)</entry>
+<entry
+>Võrdlustehted on järgmised: <userinput
+>==</userinput
+>, <userinput
+>!=</userinput
+>, <userinput
+>&lt;</userinput
+>, <userinput
+>&gt;</userinput
+>, <userinput
+>&lt;=</userinput
+> ja <userinput
+>&gt;=</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>tõeväärtustehted</entry>
+<entry
+>roosa (rasvane)</entry>
+<entry
+>Tõeväärtustehted on järgmised: <userinput
+>and</userinput
+>, <userinput
+>or</userinput
+> ja <userinput
+>not</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>tavaline tekst</entry>
+<entry
+>must</entry>
+<entry
+></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="pixels">
+<glossterm
+>pikslid</glossterm>
+<glossdef
+><para
+>Piksel on punkt ekraanil. Kui vaatad väga teraselt, näed, et kogu sinu monitori ekraan on piksleid täis. Kõik ekraanil olevad kujutised õigupoolest pikslitest koosnevadki. Piksel ongi kõige väiksem asi, mida saab ekraanile joonistada.</para>
+<para
+>Paljud käsud vajavad sisendina pikslite arvu: <userinput
+>forward</userinput
+>, <userinput
+>backward</userinput
+>, <userinput
+>go</userinput
+>, <userinput
+>gox</userinput
+>, <userinput
+>goy</userinput
+>, <userinput
+>canvassize</userinput
+> ja <userinput
+>penwidth</userinput
+>.</para>
+<para
+>&kturtle;'i varasemates versioonides oli lõuend põhimõtteliselt rasterpilt, nüüd aga on see vektorjoonistus. See tähendab, et lõuendit saab suurendada ja vähendada, sest piksel ei pea tingimata vastama ühele punktile ekraanil.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="rgb">
+<glossterm
+>RGB värvikoodid</glossterm>
+<glossdef
+><para
+>RGB värvikoodid tähistavad värve. <quote
+>R<quote
+> tähendab punast (inglise keeles <quote
+>red</quote
+>), <quote
+>G</quote
+> rohelist (<quote
+>green</quote
+>) ja <quote
+>B</quote
+> sinist (</quote
+>blue</quote
+>). RGB värvikood on näiteks <userinput
+>255,0,0</userinput
+>, kus esimene ehk punane väärtus on 255 ja teised 0, mis kokku annab erepunase. Iga RGB värvikoodi väärtus peab olema vahemikus 0 kuni 255. Toome siin ära mõned sagedamini kasutust leidvad värvid: <table frame="none">
+<title
+>Sagedasemad RGB värvikoodid</title>
+<tgroup cols="2" colsep="5" rowsep="1">
+<colspec colname="c1"/>
+<tbody>
+<row
+><entry
+><userinput
+>0,0,0</userinput
+></entry
+><entry
+>must</entry
+></row>
+<row
+><entry
+><userinput
+>255,255,255</userinput
+></entry
+><entry
+>valge</entry
+></row>
+<row
+><entry
+><userinput
+>255,0,0</userinput
+></entry
+><entry
+>punane</entry
+></row>
+<row
+><entry
+><userinput
+>150,0,0</userinput
+></entry
+><entry
+>tumepunane</entry
+></row>
+<row
+><entry
+><userinput
+>0,255,0</userinput
+></entry
+><entry
+>roheline</entry
+></row>
+<row
+><entry
+><userinput
+>0,0,255</userinput
+></entry
+><entry
+>sinine</entry
+></row>
+<row
+><entry
+><userinput
+>0,255,255</userinput
+></entry
+><entry
+>helesinine</entry
+></row>
+<row
+><entry
+><userinput
+>255,0,255</userinput
+></entry
+><entry
+>roosa</entry
+></row>
+<row
+><entry
+><userinput
+>255,255,0</userinput
+></entry
+><entry
+>kollane</entry
+></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para
+>Kaks käsku vajavad sisendina RGB värvikoodi: <userinput
+>canvascolor</userinput
+> ja <userinput
+>pencolor</userinput
+>.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="sprite">
+<glossterm
+>sprait</glossterm>
+<glossdef
+><para
+>Sprait on väike pilt, mida saab ekraanil liigutada. Nii on näiteks ka meie armas pisike kilpkonnake sprait.</para>
+<para
+>Märkus: &kturtle;'i praeguses versioonis saab sprait olla ainult kilpkonn, aga tulevastes versioonides on loodetavasti võimalik kilpkonn asendada just sulle meelepärase spraidiga.</para
+></glossdef>
+</glossentry>
+
+</glosslist>
+
+</chapter>

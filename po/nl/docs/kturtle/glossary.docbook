@@ -1,0 +1,406 @@
+<chapter id="Glossary">
+<title
+>Woordenboek</title>
+
+<para
+>In dit hoofdstuk vind je een uitleg van de betekenis van de meeste <quote
+>vreemde</quote
+> woorden die in het handboek worden gebruikt.</para>
+
+<glosslist>
+<glossentry id="degrees">
+<glossterm
+>graden</glossterm>
+<glossdef
+><para
+>Graden zijn eenheden die worden gebruikt om de grootte van hoeken of draaibewegingen te meten. Een keer helemaal rond is 360 graden, een halve keer rond is 180 graden (de schildpad gaat daarna in de tegengestelde richting), en een kwart keer rond is 90 graden. De commando's <userinput
+>draailinks</userinput
+>, <userinput
+>draairechts</userinput
+> en <userinput
+>richting</userinput
+> hebben een invoer in graden nodig.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="input-output">
+<glossterm
+>invoer en uitvoer van commando's</glossterm>
+<glossdef
+><para
+>Sommige commando's hebben invoer nodig, andere commando's geven uitvoer terug, sommige commando's hebben invoer nodig <emphasis
+>en</emphasis
+> geven uitvoer terug, en sommige commando's hebben geen invoer nodig en geven ook geen uitvoer terug. Invoer is informatie die het commando nodig heeft en uitvoer is het resultaat dat het commando geeft.</para>
+<para
+>Enkele voorbeelden van commando's die alleen invoer nodig hebben zijn: <screen>
+vooruit 50
+penkleur 255,0,0
+druk "Hallo!"
+</screen
+> Het commando <userinput
+>vooruit</userinput
+> heeft <userinput
+>50</userinput
+> als invoer. <userinput
+>vooruit</userinput
+> heeft deze invoer nodig om te weten hoeveel <glossterm linkend="pixels"
+>pixels</glossterm
+> de schildpad vooruit moet lopen. <userinput
+>penkleur</userinput
+> heeft een kleur als invoer en <userinput
+>druk</userinput
+> heeft een tekenreeks (tekst) als invoer. Onthoudt dat de invoer ook een variabele mag zijn. In het volgende voorbeeld wordt zo'n variabele gebruikt: <screen
+>$x = 50
+druk $x
+vooruit 50
+$txt = "hallo!"
+druk $txt
+</screen
+></para>
+
+<para
+>Nu wat voorbeelden met uitvoer : <screen>
+$x = vraag "Typ iets in en druk daarna op OK... dank je wel!"
+$r = gok 1,100
+</screen
+> Het commando <userinput
+>vraag</userinput
+> heeft als invoer een tekenrij of getal nodig, en voert dat wat is ingevoerd weer uit. De uitvoer van  <userinput
+>vraag</userinput
+> wordt opgeslagen in de variabele <userinput
+>$x</userinput
+>. Het commando<userinput
+>gok</userinput
+> geeft ook uitvoer. In dit geval is dat een getal tussen 1 en 100. De uitvoer van gok wordt ook bewaard in een  variabele, met de naam <userinput
+>$r</userinput
+>. Merk op dat  de variabelen <userinput
+>$x</userinput
+> en <userinput
+>$r</userinput
+> niet worden gebruikt in het bovenstaande voorbeeld.</para>
+
+<para
+>Er zijn ook commando's die geen invoer nodig hebben en geen uitvoer geven. Hier zijn enkele voorbeelden: <screen
+>schoon
+penop
+</screen>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="intuitive-highlighting">
+<glossterm
+>Intuïtieve accentuering</glossterm>
+<glossdef
+><para
+>Dit is een eigenschap van &kturtle; die het programmeren nog eenvoudiger maakt. Met intuïtieve accentuering krijgt de tekst die je intypt een kleur die het type van de  programmeercode aangeeft. In de volgende lijst vind je de verschillende types code en de kleur die die krijgt in <link linkend="the-editor"
+>de codebewerker</link
+>. <table>
+<title
+>Verschillende types van programmacode en de kleur waarmee die worden geaccentueerd.</title>
+<tgroup cols="3">
+<tbody>
+<row>
+<entry
+>algemene commando's</entry>
+<entry
+>donkerblauw</entry>
+<entry
+>De algemene commando's worden <link linkend="commands"
+>hier</link
+> beschreven.</entry>
+</row>
+<row>
+<entry
+>commando's waarmee de loop van het programma wordt gestuurd</entry>
+<entry
+>zwart (vet)</entry>
+<entry
+>Lees <link linkend="controlling-execution"
+>hier</link
+> meer over deze speciale programmastuurcommando's</entry>
+</row>
+<row>
+<entry
+>commentaren</entry>
+<entry
+>grijs</entry>
+<entry
+>Commentaarregels beginnen met een commentaarteken (#). Deze regels worden genegeerd als de programmacode wordt uitgevoerd. Commentaren kun je gebruiken om een uitleg van je programmacode toe te voegen, of een stukje code tijdelijk niet uit te voeren.</entry>
+</row>
+<row>
+<entry
+>accolades {, }</entry>
+<entry
+>donkergroen (vet)</entry>
+<entry
+>Accolades worden gebruikt om regels met programmacode te groeperen. Accolades  worden vaak gebruikt in combinatie met <link linkend="controlling-execution"
+>uitvoercontroles</link
+>.</entry>
+</row>
+<row>
+<entry
+>het commando <link linkend="learn"
+>leer</link
+></entry>
+<entry
+>lichtgroen (vet)</entry>
+<entry
+>Het commando <link linkend="learn"
+>leer</link
+> wordt gebruikt voor het maken van nieuwe commando's.</entry>
+</row>
+<row>
+<entry
+>tekenreeksen</entry>
+<entry
+>rood</entry>
+<entry
+>Tekenreeks is een ander woord voor een stukje tekst. Tekenreeksen staan altijd tussen dubbele aanhalingstekens (").</entry>
+</row>
+<row>
+<entry
+>getallen</entry>
+<entry
+>donkerrood</entry>
+<entry
+>Getallen, je kent ze wel.</entry>
+</row>
+<row>
+<entry
+>booleaanse waarden</entry>
+<entry
+>donkerrood</entry>
+<entry
+>Er zijn precies twee booleaanse waarden, namelijk: waar en onwaar.</entry>
+</row>
+<row>
+<entry
+>variabelen</entry>
+<entry
+>paars</entry>
+<entry
+>Beginnen met een '$' en kan getallen bevatten, tekenreeksen en booleaanse waarden.</entry>
+</row>
+<row>
+<entry
+>rekenkundige bewerkingen</entry>
+<entry
+>grijs</entry>
+<entry
+>Dit zijn de rekenkundige bewerkingen: <userinput
+>+</userinput
+>, <userinput
+>-</userinput
+>, <userinput
+>*</userinput
+>, <userinput
+>/</userinput
+> en  <userinput
+>^</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>Vergelijkingsbewerkingen</entry>
+<entry
+>lichtblauw (vet)</entry>
+<entry
+>Dit zijn de vergelijkingsbewerkingen: <userinput
+>==</userinput
+>, <userinput
+>!=</userinput
+>, <userinput
+>&lt;</userinput
+>, <userinput
+>&gt;</userinput
+>, <userinput
+>&lt;=</userinput
+> and <userinput
+>&gt;=</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>booleaanse bewerkingen</entry>
+<entry
+>roze (vet)</entry>
+<entry
+>Dit zijn de booleaanse bewerkingen: <userinput
+>en</userinput
+>, <userinput
+>of</userinput
+>, <userinput
+>niet</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>gewone tekst</entry>
+<entry
+>zwart</entry>
+<entry
+></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="pixels">
+<glossterm
+>pixels</glossterm>
+<glossdef
+><para
+>Een pixel is een stip op het beeldscherm. Als je het beeldscherm van heel dichtbij bekijkt zul je zien dat het beeld is opgebouwd uit allemaal kleine stippen. Deze stippen worden pixels genoemd. Alle afbeeldingen op het beeldscherm zijn uit deze pixels opgebouwd. Een pixel is het kleinste dat je op een beeldscherm kunt tekenen.</para>
+<para
+>Veel commando's vragen om een aantal pixels als invoer. Deze commando's zijn: <userinput
+>vooruit</userinput
+>, <userinput
+>achteruit</userinput
+>, <userinput
+>ganaar</userinput
+>, <userinput
+>ganaarx</userinput
+>, <userinput
+>ganaary</userinput
+>, <userinput
+>canvasmaat</userinput
+> en <userinput
+>pendikte</userinput
+>.</para>
+<para
+>In de vroegere versies van &kturtle; was het canvas eigenlijk een rasterbeeld, maar in de meer recente versies is het canvas een vector-afbeelding. Hierdoor kan in het canvas worden in- en uitgezoomd, en komt een pixel niet altijd overeen met één pixel op het scherm.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="rgb">
+<glossterm
+>RGB-combinaties (kleurcodes)</glossterm>
+<glossdef
+><para
+>RGB-combinaties worden gebruikt om de kleur te beschrijven. De <quote
+>R</quote
+> staat voor <quote
+>rood</quote
+>, de <quote
+>G</quote
+> staat voor <quote
+>groen</quote
+> en de <quote
+>B</quote
+> staat voor <quote
+>blauw</quote
+>. Een voorbeeld van een RGB-combinatie is <userinput
+>255,0,0</userinput
+>: de eerste waarde (<quote
+>rood</quote
+>) is 255, en de andere waarden zijn 0. Dus geeft deze combinatie helder rood. Elke waarde van een RGB-combinatie moet tussen de 0 en 255 liggen. Hier is een kleine lijst van veelgebruikte kleuren: <table frame="none">
+<title
+>Veelgebruikte RGB-combinaties</title>
+<tgroup cols="2" colsep="5" rowsep="1">
+<colspec colname="c1"/>
+<tbody>
+<row
+><entry
+><userinput
+>0,0,0</userinput
+></entry
+><entry
+>zwart</entry
+></row>
+<row
+><entry
+><userinput
+>255,255,255</userinput
+></entry
+><entry
+>wit</entry
+></row>
+<row
+><entry
+><userinput
+>255,0,0</userinput
+></entry
+><entry
+>rood</entry
+></row>
+<row
+><entry
+><userinput
+>150,0,0</userinput
+></entry
+><entry
+>donkerrood</entry
+></row>
+<row
+><entry
+><userinput
+>0,255,0</userinput
+></entry
+><entry
+>groen</entry
+></row>
+<row
+><entry
+><userinput
+>0,0,255</userinput
+></entry
+><entry
+>blauw</entry
+></row>
+<row
+><entry
+><userinput
+>0,255,255</userinput
+></entry
+><entry
+>lichtblauw</entry
+></row>
+<row
+><entry
+><userinput
+>255,0,255</userinput
+></entry
+><entry
+>roze</entry
+></row>
+<row
+><entry
+><userinput
+>255,255,0</userinput
+></entry
+><entry
+>geel</entry
+></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para
+>Er zijn twee commando's die om een RGB-combinatie als invoer vragen. Deze commando's zijn <userinput
+>canvaskleur</userinput
+> en <userinput
+>penkleur</userinput
+>.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="sprite">
+<glossterm
+>sprite</glossterm>
+<glossdef
+><para
+>Een sprite (zeg maar "sprait") is een klein plaatje dat over het scherm kan worden verplaatst. De schildpad in dit programma is zo'n sprite. <note
+><para
+>Let op: In deze versie van &kturtle; kun je de sprite niet in iets anders veranderen. In toekomstige versies zal dit wel mogelijk zijn.</para
+></note
+></para
+></glossdef>
+</glossentry>
+
+</glosslist>
+
+</chapter>

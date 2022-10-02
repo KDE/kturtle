@@ -1,0 +1,2170 @@
+<chapter id="reference">
+<title
+>Programmeren met &turtlescript;</title>
+<para
+>Dit is het overzicht van &turtlescript; van &kturtle;. In het eerste deel van dit hoofdstuk kijken we naar enkele aspecten van de <link linkend="grammar"
+>grammatica</link
+> van &turtlescript;-programma's. Het tweede deel behandelt uitsluitend <link linkend="mathematical-operators"
+>rekenkundige bewerkingen</link
+>, <link linkend="boolean-operators"
+>booleaanse (waar/onwaar) bewerkingen</link
+> en <link linkend="comparing-operators"
+>vergelijkingsbewerkingen</link
+>. Het derde deel is eigenlijk een lange lijst van alle <link linkend="commands"
+>opdrachten</link
+>, die een voor een worden uitgelegd. In deel vier wordt uitgelegd hoe waarden kunnen worden <link linkend="assignment-of-variables"
+>toegekend</link
+> (gegeven) aan <link linkend="assignment-of-variables"
+>variabelen</link
+>. Tenslotte leggen we uit hoe de uitvoering van de opdrachten kan worden gestuurd met <link linkend="controlling-execution"
+>programmastuuropdrachten</link
+> in deel vijf en hoe zelf opdrachten te maken met <link linkend="learn"
+>leer</link
+> in deel zes.</para>
+
+<sect1 id="grammar">
+<title
+>De grammatica van &turtlescript;</title>
+<para
+>Zoals elke taal heeft ook &turtlescript; verschillende soorten woorden en tekens. In het Nederlands kennen we werkwoorden (zoals 'lopen' of 'zingen') en zelfstandige naamwoorden (zoals 'zuster' of 'huis'), zij worden verschillend gebruikt. &turtlescript; is een programmeertaal, en wordt gebruikt om &kturtle; te vertellen wat er moet gebeuren.</para>
+<para
+>In dit deel worden de verschillende soorten woorden en tekens in &turtlescript; kort uitgelegd. We leggen uit wat <link linkend="comment"
+>commentaar</link
+> is, <link linkend="command"
+>opdrachten</link
+> en de drie verschillende soorten van waarden: <link linkend="number"
+>getallen</link
+>, <link linkend="string"
+>tekenreeksen</link
+> en <link linkend="boolean-value"
+>booleaanse (waar/onwaar) waarden</link
+>.</para>
+
+
+<sect2 id="comment">
+<title
+>Commentaar</title>
+<para
+>Een programma bestaat uit instructies die worden uitgevoerd als het programma loopt, én zogenoemd commentaar. Commentaar wordt niet uitgevoerd, maar wordt door &kturtle; domweg genegeerd bij het uitvoeren van het programma. Commentaar dient om andere programmeurs (en je zelf, op een later tijdstip) je programma beter te laten begrijpen. Alles dat op een regel volgt na een hekje (<userinput
+>#</userinput
+>), wordt in &turtlescript; opgevat als commentaar. <screen>
+# Dit kleine programma bevat alleen commentaar en doet dus helemaal niets!
+</screen
+>. Het is wat nutteloos, maar geeft een en ander goed weer.</para>
+<para
+>Commentaar is erg nuttig wanneer een programma wat ingewikkelder gaat worden. Hierin kan aan andere programmeurs iets worden verteld. In het volgende programma zie je hoe commentaar wordt gebruikt bij het commando <link linkend="print"
+>druk</link
+>. <screen>
+# dit programma werd gemaakt door Cies Breijs.
+druk "deze tekst wordt op het canvas afgedrukt"
+# de vorige regel was geen commentaar,maar de volgende wel:
+# druk "deze tekst wordt niet afgedrukt!"
+</screen
+>. De eerste regel geeft wat toelichting bij het programma. De tweede wordt door &kturtle; uitgevoerd, en drukt <userinput
+>deze tekst wordt op het canvas afgedrukt</userinput
+> af op het canvas. De derde regel bevat commentaar. En de vierde regel bevat commentaar meteen stukje &turtlescript;. Als het teken <userinput
+>#</userinput
+> dat ervoor staat wordt weggehaald, zal &kturtle; ook deze regel uitvoeren, maar met het hekje ervoor niet. Door een hekje ervoor wordt een programmaregel dus uitgeschakeld. </para>
+<para
+>Commentaarregels worden <glossterm
+>geaccentueerd</glossterm
+> met lichtgrijs in de <link linkend="the-editor"
+>codebewerker</link
+>.</para>
+</sect2>
+
+<sect2 id="command">
+<title
+>Opdrachten</title>
+<para
+>Met opdrachten kun je de schildpad of &kturtle; opdragen iets te doen.  Bij sommige opdrachten is invoer nodig, en andere geven uitvoer. <screen>
+# vooruit is een commando dat invoer nodig heeft, in dit geval het getal 100:
+vooruit 100
+</screen
+> De eerste regel is <link linkend="comment"
+>commentaar</link
+>. De tweede bevat het commando <userinput
+>vooruit</userinput
+>, en de invoer is het <link linkend="number"
+>getal</link
+> <userinput
+>100</userinput
+>. Het getal wordt niet beschouwd als een deel van het commando, maar als invoer.</para>
+<para
+>Voor sommige opdrachten &eg; <userinput
+>ganaar</userinput
+> zijn meerdere invoerwaarden nodig. Deze moeten door een <userinput
+>,</userinput
+> (komma) worden gescheiden.</para>
+<para
+>Meer informatie over alle opdrachten die &kturtle; van huis uit kent vind je <link linkend="commands"
+>hier</link
+>. Deze ingebouwde opdrachten worden met donkerblauw <glossterm
+>geaccentueerd</glossterm
+></para>
+</sect2>
+
+<sect2 id="number">
+<title
+>Getallen</title>
+<para
+>Getallen ken je vast wel. De manier waarop getallen worden gebruikt in &kturtle; is niet veel anders dan in een spreektaal, of bij het rekenen. Maar er is wel een verschil: ze worden niet met komma's, maar met punten geschreven. Dit is omdat met een komma twee getallen van elkaar worden gescheiden, zodat 2,5 twee getallen, 2 en 5, zijn. Je moet dus 2.5 schrijven, als je maar één getal bedoelt.</para>
+<para
+>Er zijn ook de natuurlijke getallen: <userinput
+>0</userinput
+>, <userinput
+>1</userinput
+>, <userinput
+>2</userinput
+>, <userinput
+>3</userinput
+>, <userinput
+>4</userinput
+>, <userinput
+>5</userinput
+>, &etc; De negatieve getallen: <userinput
+>-1</userinput
+>, <userinput
+>-2</userinput
+>, <userinput
+>-3</userinput
+>, &etc;.  En de kommagetallen zoals: <userinput
+>0,1</userinput
+>, <userinput
+>3,14</userinput
+>, <userinput
+>33,3333</userinput
+>, <userinput
+>-5,05</userinput
+>, <userinput
+>-1,0</userinput
+>. De <userinput
+>.</userinput
+> punt is het scheidingsteken   voor decimalen: de cijfers achter de komma. </para>
+<para
+>Getallen kunnen worden gebruikt in <link linkend="mathematical-operators"
+>rekenkundige bewerkingen</link
+> en <link linkend="comparing-operators"
+>vergelijkingsbewerkingen</link
+>. Ze kunnen ook worden bewaard in <link linkend="assignment-of-variables"
+>variabelen</link
+>. Getallen worden <glossterm
+>geaccentueerd</glossterm
+> in donkerrood.</para>
+</sect2>
+
+<!-- constants like pi? -->
+
+<sect2 id="string">
+<title
+>Tekenreeksen</title>
+<para
+>Eerst een voorbeeld:<screen>
+druk "Hallo, ik ben een tekenreeks."
+</screen
+> In dit voorbeeld is <userinput
+>druk</userinput
+> een commando en <userinput
+>"Hallo, ik ben een tekenreeks"</userinput
+> een tekenreeks. Een tekenreeks begint en eindigt met het teken <userinput
+>"</userinput
+>. Hierdoor weet &kturtle; dat dit een tekenreeks is.</para>
+<para
+>Tekenreeksen kunnen in <link linkend="assignment-of-variables"
+>variabelen</link
+> worden bewaard, net zoals <link linkend="number"
+>getallen</link
+>. Maar, anders dan getallen, kunnen tekenreeksen niet in <link linkend="mathematical-operators"
+>berekeningen</link
+> of <link linkend="comparing-operators"
+>vergelijkingsbewerkingen</link
+> worden gebruikt. Tekenreeksen worden met rood <glossterm
+>geaccentueerd</glossterm
+>.</para>
+</sect2>
+
+<sect2 id="boolean-value">
+<title
+>Booleaanse waarden (waar/onwaar)</title>
+<para
+>Er zijn maar twee booleaanse waarden: <userinput
+>waar</userinput
+><indexterm
+><primary
+>waar</primary
+></indexterm
+> en <userinput
+>onwaar</userinput
+><indexterm
+><primary
+>onwaar</primary
+></indexterm
+>. Ze worden ook wel genoemd: <quote
+><userinput
+>aan</userinput
+></quote
+> en <quote
+><userinput
+>uit</userinput
+></quote
+>, <quote
+><userinput
+>ja</userinput
+></quote
+> en <quote
+><userinput
+>nee</userinput
+></quote
+>, <quote
+><userinput
+>een</userinput
+></quote
+> en <quote
+><userinput
+>nul</userinput
+></quote
+>. Maar in &turtlescript; worden zij altijd , <userinput
+>waar</userinput
+> en <userinput
+>onwaar</userinput
+> genoemd. Bekijk dit stukje &turtlescript;: <screen>
+$a = waar
+</screen
+> In de <link linkend="the-inspector"
+>Inspector</link
+> kun je zien dat de <link linkend="assignment-of-variables"
+>variabele</link
+> <userinput
+>$a</userinput
+> de waarde <userinput
+>waar</userinput
+> heeft, en booleaans is.</para>
+<para
+>Vaak zijn booleaanse waarden het resultaat van <link linkend="comparing-operators"
+>vergelijkingsbewerkingen</link
+>, zoals in het volgende stukje  &turtlescript;: <screen>
+$antwoord = 10 &gt; 3
+</screen
+> De <link linkend="assignment-of-variables"
+>variabele</link
+> <userinput
+>$antwoord</userinput
+> krijgt de waarde <userinput
+>waar</userinput
+> omdat <userinput
+>10</userinput
+> inderdaad groter is dan <userinput
+>3</userinput
+>.</para>
+<para
+>Booleaanse waarden, <userinput
+>waar</userinput
+> en <userinput
+>onwaar</userinput
+>, worden met donkerrood <glossterm
+>geaccentueerd</glossterm
+>.</para>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="operators">
+<title
+>Rekenkundige, booleaanse en vergelijkingsbewerkingen</title>
+<para
+>De naam van dit deel klinkt misschien moeilijk, maar het valt allemaal best mee.</para>
+
+<sect2 id="mathematical-operators">
+<title
+>Rekenkundige bewerkingen</title>
+<para
+>Dit zijn de basisbewerkingen van het rekenen: optellen (<userinput
+>+</userinput
+>), aftrekken (<userinput
+>-</userinput
+>), vermenigvuldigen (<userinput
+>*</userinput
+>), delen (<userinput
+>/</userinput
+>) en machtsverheffen (<userinput
+>^</userinput
+>).</para>
+
+<para
+>Hier is een klein voorbeeld van het gebruik van rekenkundige bewerkingen in &turtlescript;: <screen>
+$optellen                = 1 + 1
+$aftrekken              = 20 - 5
+$vermenigvuldigen = 15 * 2
+$delen                    = 30 / 30
+$machtsverheffen   = 2 ^ 2
+</screen
+> De waarden die deze bewerkingen opleveren worden <link linkend="assignment-of-variables"
+>toegekend</link
+> aan de verschillende <link linkend="assignment-of-variables"
+>variabelen</link
+> (die je willekeurige $namen kunt geven). In de <link linkend="the-inspector"
+>inspectie</link
+> kun je deze waarden zien.</para>
+<para
+>Als je alleen maar een eenvoudige berekening wilt laten doen, dan kan dat bijvoorbeeld zo: <screen
+>druk 2010-12
+</screen
+></para>
+<para
+>Nu een voorbeeld met haakjes: <screen>
+druk ( ( 20 - 5 ) * 2 / 30 ) + 1
+</screen
+> Het gedeelte tussen de binnenste haakjes wordt het eerst  uitgerekend. In dit voorbeeld wordt 20 - 5 berekend, dan wordt de uitkomst vermenigvuldigd met 2, en daarna wordt er gedeeld door 30. Tot slot wordt er 1 bij opgeteld (het antwoord is 2). Haakjes kunnen ook in andere gevallen worden gebruikt.</para>
+<para
+>&kturtle; heeft ook nog wat wiskundige eigenschappen in de vorm van opdrachten. Kijk maar eens naar de volgende opdrachten, die, let op, wel wat gevorderd zijn: <link linkend="round"
+>afronden</link
+>, <link linkend="random"
+>gok</link
+>, <link linkend="sqrt"
+>wortel</link
+> , <link linkend="pi"
+>pi</link
+>, <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+>, <link linkend="tan"
+>tan</link
+>, <link linkend="arcsin"
+>arcsin</link
+>, <link linkend="arccos"
+>arccos</link
+>, <link linkend="arctan"
+>arctan</link
+>.</para>
+</sect2>
+
+<sect2 id="boolean-operators">
+<title
+>Booleaanse bewerkingen (waar/onwaar)</title>
+<para
+>Waar <link linkend="mathematical-operators"
+>wiskundige bewerkingen</link
+> vooral werken met<link linkend="number"
+>getallen</link
+>, werken booleaanse bewerkingen met de <link linkend="boolean-value"
+>booleaanse waarden</link
+> (<userinput
+>waar</userinput
+> en <userinput
+>onwaar</userinput
+>). Er zijn slechts drie booleaanse bewerkingen, namelijk: <userinput
+>en</userinput
+><indexterm
+><primary
+>en</primary
+></indexterm
+>, <userinput
+>of</userinput
+><indexterm
+><primary
+>of</primary
+></indexterm
+>, en <userinput
+>niet</userinput
+><indexterm
+><primary
+>niet</primary
+></indexterm
+>. In het volgende stuk &turtlescript; kan je zien hoe dit te gebruiken: <screen>
+$and_1_1 = waar en waar          # -> waar
+$and_1_0 = waar en onwaar      # -> onwaar
+$and_0_1 = onwaar en waar      # -> onwaar
+$and_0_0 = onwaar en onwaar  # -> onwaar
+
+$or_1_1 = waar of waar              # -> waar
+$or_1_0 = waar of onwaar          # -> waar
+$or_0_1 = onwaar of waar          # -> waar
+$or_0_0 = onwaar of onwaar      # -> onwaar
+
+$not_1 = niet waar      # -> onwaar
+$not_0 = niet onwaar  # -> waar
+</screen
+> Met behulp van de <link linkend="the-inspector"
+>inspector</link
+> kan je de waarden zien, maar we geven toch de resultaten aan als commentaar aan het einde van de regels. <userinput
+>en</userinput
+> wordt alleen <userinput
+>waar</userinput
+> als beide booleaanse waarden<userinput
+>waar</userinput
+> zijn. <userinput
+>of</userinput
+> wordt alleen <userinput
+>onwaar</userinput
+>als beide booleaanse waarden <userinput
+>onwaar</userinput
+> zijn. En <userinput
+>niet</userinput
+> verandert een <userinput
+>waar</userinput
+> in <userinput
+>onwaar</userinput
+> en een <userinput
+>onwaar</userinput
+> in <userinput
+>waar</userinput
+>.</para>
+<para
+>Booleaanse bewerkingen worden <glossterm
+>geaccentueerd</glossterm
+> met roze.</para>
+
+<sect3 id="boolean-operators-advanced-examples">
+<title
+>Enkele meer gevorderde voorbeelden</title>
+<para
+>Kijk naar het volgende voorbeeld met <userinput
+>en</userinput
+>: <screen>
+$a = 1
+$b = 5
+als (($a &lt; 10) en ($b == 5)) en ($a &lt; $b) {
+  druk "hallo"
+}
+</screen
+> In dit stukje &turtlescript; worden de antwoorden van drie <link linkend="comparing-operators"
+>vergelijkingsbewerkingen</link
+> samengevoegd door bewerkingen met <userinput
+>en</userinput
+>. Dit betekent dat ze alle drie "waar" moeten zijn, voordat de tekst "hallo" wordt afgedrukt (op het scherm).</para>
+
+<para
+>Een voorbeeld met <userinput
+>of</userinput
+>: <screen>
+$n = 1
+if ($n &lt; 10) or ($n == 2) {
+  print "hallo"
+}
+</screen
+> In dit stukje &turtlescript; is links van <userinput
+>of</userinput
+> de vergelijking 'waar', en rechts  'onwaar'. Omdat één van de twee zijden van <userinput
+>of</userinput
+>  'waar' is, is hier het resultaat van <userinput
+>of</userinput
+> de waarde 'waar'.  En dus wordt "hallo" afgedrukt (op het scherm).</para>
+
+<para
+>En tenslotte een voorbeeld met <userinput
+>niet</userinput
+>, die de waarde <quote
+>waar</quote
+>verandert naar  <quote
+>onwaar</quote
+> en <quote
+>onwaar</quote
+> naar <quote
+>waar</quote
+>. Kijk maar: <screen
+>$n = 1
+als niet ($n == 3) {
+  druk "hallo"
+} anders {
+  druk "niet hallo ;-)"
+}
+</screen
+></para>
+</sect3>
+</sect2>
+
+<sect2 id="comparing-operators">
+<title
+>Vergelijkingsbewerkingen</title>
+<para
+>Kijk naar deze eenvoudige vergelijking: <screen>
+$antwoord = 10 &gt; 3
+</screen
+> Hier wordt <userinput
+>10</userinput
+> vergeleken met <userinput
+>3</userinput
+> met de bewerking 'groter dan'. Het resultaat van deze vergelijking, de <link linkend="boolean-value"
+>booleaanse waarde</link
+> <userinput
+>waar</userinput
+> wordt bewaard in de <link linkend="assignment-of-variables"
+>variabele</link
+> <userinput
+>$antwoord</userinput
+>.</para>
+<para
+>Alle <link linkend="number"
+>getallen</link
+> en <link linkend="assignment-of-variables"
+>variabelen</link
+> (die getallen bevatten) kunnen met deze vergelijkingsbewerkingen met elkaar worden vergeleken.</para>
+<para
+>Hier vind je alle vergelijkingsbewerkingen: <table
+> <title
+> Vragen:</title
+> <tgroup cols="3"
+> <tbody
+> <row
+> <entry
+><userinput
+>$A == $B</userinput
+></entry
+> <entry
+>gelijk aan</entry
+> <entry
+>antwoord is is <quote
+>waar</quote
+> als <userinput
+>$A</userinput
+> gelijk is aan <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A != $B</userinput
+></entry
+> <entry
+>niet gelijk is </entry
+> <entry
+>antwoord is <quote
+>waar</quote
+> als<userinput
+>$A</userinput
+> niet gelijk is aan <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt; $B</userinput
+></entry
+> <entry
+>groter dan</entry
+> <entry
+>antwoord is <quote
+>waar</quote
+> als <userinput
+>$A</userinput
+> groter is dan <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt; $B</userinput
+></entry
+> <entry
+>kleiner dan</entry
+> <entry
+>antwoord is <quote
+>waar</quote
+> als <userinput
+>$A</userinput
+> kleiner is dan <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt;= $B</userinput
+></entry
+> <entry
+>groter dan of gelijk aan</entry
+> <entry
+>antwoord is <quote
+>waar</quote
+> als <userinput
+>$A</userinput
+> groter is dan of gelijk aan <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt;= $B</userinput
+></entry
+> <entry
+>smaller than or equals</entry
+> <entry
+>answer is <quote
+>waar</quote
+> als <userinput
+>$A</userinput
+> kleiner is dan of gelijk aan <userinput
+>$B</userinput
+></entry
+> </row
+> </tbody
+> </tgroup
+> </table
+> Let erop dat <userinput
+>$A</userinput
+> en <userinput
+>$B</userinput
+> getallen <link linkend="number"
+> moeten zijn</link
+> of <link linkend="assignment-of-variables"
+>variabelen </link
+> met een getalswaarde.</para>
+</sect2>
+
+
+</sect1>
+
+
+
+<sect1 id="commands">
+<title
+>Opdrachten</title>
+<para
+>Met behulp van opdrachten vertel je de schildpad of &kturtle; iets te doen. Sommige opdrachten hebben een invoer nodig, anderen geven een uitvoer. In dit deel zullen we alle ingebouwde opdrachten die in &kturtle; kunnen worden gebruikt, uitleggen. Met het commando <link linkend="learn"
+>leer</link
+> kunnen overigens zelf opdrachten worden gemaakt. De hier besproken ingebouwde (dus oorspronkelijke) opdrachten worden met donkerblauw <glossterm
+>geaccentueerd</glossterm
+></para>
+
+<sect2 id="moving-the-turtle">
+<title
+>De schildpad bewegen</title>
+<para
+>Er zijn verschillende opdrachten waarmee je de schildpad over het scherm kunt bewegen.</para>
+
+  <variablelist>
+    <anchor id="forward"/>
+    <varlistentry
+> 
+      <term
+>vooruit (vt)<indexterm
+><primary
+>vooruit (vt)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>vooruit X</screen
+><userinput
+>vooruit X</userinput
+> verplaatst de schildpad X pixels vooruit. Als de pen neer is laat de schildpad een spoor achter. <userinput
+>vooruit</userinput
+> kan worden afgekort met <userinput
+>vt</userinput
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="backward"/>
+    <varlistentry
+>  
+      <term
+>achteruit (at)<indexterm
+><primary
+>achteruit (at)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>achteruit X</screen
+><userinput
+>achteruit X</userinput
+> verplaatst de schildpad X pixels achteruit. Als de pen neer is laat de schildpad een spoor achter. <userinput
+>achteruit</userinput
+> kan worden afgekort met <userinput
+>at</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnleft"/>
+    <varlistentry
+> 
+      <term
+>draailinks (dl)<indexterm
+><primary
+>draailinks (dl)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>draailinks X</screen
+><userinput
+>draailinks X</userinput
+> laat de schildpad X graden naar links draaien. <userinput
+>draailinks</userinput
+> kan worden afgekort met <userinput
+>dl</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnright"/>
+    <varlistentry
+> 
+      <term
+>draairechts (dr)<indexterm
+><primary
+>draairechts (dr)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>draairechts X</screen
+><userinput
+>draairechts X</userinput
+> laat de schildpad X graden naar rechts draaien. <userinput
+>draairechts</userinput
+> kan worden afgekort met <userinput
+>dr</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="direction"/>
+    <varlistentry
+> 
+      <term
+>richting (rt)<indexterm
+><primary
+>richting (rt)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>richting X</screen
+><userinput
+>richting X</userinput
+> zet de richting van de schildpad op X graden, geteld vanaf 0 (recht naar boven). Dus niet ten opzichte van de vorige positie van de schildpad. <userinput
+>richting</userinput
+> kan worden afgekort met <userinput
+>rt</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="getdirection"/>
+    <varlistentry
+> 
+      <term
+>haalrichting<indexterm
+><primary
+>haalrichting</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>haalrichting</screen
+><userinput
+>haalrichting X</userinput
+> geeft de ricting terug van de schildpad, in de vorm van een aantal graden, geteld vanaf nul. Nul is de richting recht naar boven, dus als de schildpad recht naar boven loopt.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="center"/>
+    <varlistentry
+> 
+      <term
+>thuis<indexterm
+><primary
+>thuis</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>thuis</screen
+><userinput
+>thuis</userinput
+> plaatst de schildpad in het midden van het canvas.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="go"/>
+    <varlistentry
+> 
+      <term
+>ganaar<indexterm
+><primary
+>ganaar</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ganaar X,Y</screen
+><userinput
+>ganaar</userinput
+> plaatst de schildpad op een bepaalde plaats op het canvas. De plaats is op X <glossterm linkend="pixels"
+>pixels</glossterm
+> vanaf de linkerkant en Y <glossterm linkend="pixels"
+>pixels</glossterm
+> vanaf de bovenkant van het canvas.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gox"/>
+    <varlistentry
+> 
+      <term
+>ganaarx<indexterm
+><primary
+>ganaarx (gx)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ganaarx X</screen
+><userinput
+>ganaarx X</userinput
+> laat de schildpad naar een positie gaan op X <glossterm linkend="pixels"
+>pixels</glossterm
+> vanaf de linkerkant van het canvas. De hoogte blijft hetzelfde. <userinput
+>gox</userinput
+> kan wordenafgekort tot <userinput
+>gx</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="goy"/>
+    <varlistentry
+> 
+      <term
+>ganaary<indexterm
+><primary
+>ganaary (gy)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ganaary Y</screen
+><userinput
+>ganaary</userinput
+> laat de schildpad naar een positie gaan die Y <glossterm linkend="pixels"
+>pixels</glossterm
+> vanaf de bovenkant van het canvas ligt. De afstand vanaf de linkerkant van het canvas blijft hetzelfde. <userinput
+>ganaary</userinput
+> kan wordenafgekort tot <userinput
+>gy</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <note
+><para
+>Met de opdrachten <userinput
+>ganaar</userinput
+>, <userinput
+>ganaarx</userinput
+>, <userinput
+>ganaary</userinput
+> en <userinput
+>thuis</userinput
+> tekent de schildpad geen lijn, onafhankelijk van of de pen op is of neer.</para>
+  </note>
+</sect2>
+
+<sect2 id="locate-the-turtle">
+<title
+>Waar is de schildpad?</title>
+<para
+>Er zijn twee opdrachten die de positie van de schildpad op het scherm doorgeven (teruggeven).</para>
+
+  <variablelist>
+    <anchor id="getx"/>
+    <varlistentry
+> 
+      <term
+>haalx<indexterm
+><primary
+>haalx</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>haalx</userinput
+> geeft het aantal pixels door dat de huidige positie van de schildpad is vanaf de linkerkant van het scherm.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gety"/>
+    <varlistentry
+> 
+      <term
+>haaly<indexterm
+><primary
+>haaly</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>haaly</userinput
+> geeft het aantal pixels door dat de huidige positie van de schildpad is vanaf de bovenkant van het scherm.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="pen">
+<title
+>De schildpad heeft een pen</title>
+<para
+>De schildpad heeft een pen die een lijn tekent als de schildpad beweegt. Er zijn een aantal opdrachten voor het besturen van de pen. In dit deel leggen we deze opdrachten uit.</para>
+  <variablelist>
+    <anchor id="penup"/>
+    <varlistentry
+> 
+      <term
+>penop (po)<indexterm
+><primary
+>penop (po)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>penop</screen
+><userinput
+>penop</userinput
+> tilt de pen op van het canvas. Als de pen <quote
+>op</quote
+> is, wordt er geen lijn getekend als de schildpad beweegt. Kijk ook bij <userinput
+>penneer</userinput
+>. <userinput
+>penop</userinput
+> kan worden afgekort met <userinput
+>po</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="pendown"/>
+    <varlistentry
+> 
+      <term
+>penneer (pn)<indexterm
+><primary
+>penneer (pn)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>penneer</screen
+><userinput
+>penneer</userinput
+> zet de pen neer op het canvas. Als de pen <quote
+>neer</quote
+> is op het canvas, wordt er een lijn getekend als de schildpad beweegt. Zie ook <userinput
+>penop</userinput
+>. <userinput
+>penneer</userinput
+> kan worden afgekort met <userinput
+>pn</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setpenwidth"/>
+    <varlistentry
+> 
+      <term
+>pendikte (pd)<indexterm
+><primary
+>pendikte (pd)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pendikte X</screen
+><userinput
+>pendikte X</userinput
+> stelt de dikte van de pen (de breedte van de lijn) op X <glossterm linkend="pixels"
+>pixels</glossterm
+>. <userinput
+>pendikte</userinput
+> kan worden afgekort met <userinput
+>pd</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setfgcolor"/>
+    <varlistentry
+> 
+      <term
+>penkleur (pk)<indexterm
+><primary
+>penkleur (pk)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>penkleur R,G,B</screen
+><userinput
+>penkleur</userinput
+> stelt de kleur in van de pen. <userinput
+>penkleur</userinput
+> heeft een <glossterm linkend="rgb"
+>RGB-combinatie (drie getallen tussen 0 en 255) </glossterm
+> nodig als invoer. <userinput
+>penkleur</userinput
+> kan worden afgekort met <userinput
+>pk</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="canvas">
+<title
+>Opdrachten voor het canvas</title>
+<para
+>Er zijn verschillende opdrachten voor de besturing van het canvas</para>
+  <variablelist>
+    <anchor id="resizecanvas"/>
+    <varlistentry>
+      <term
+>canvasmaat (cm)<indexterm
+><primary
+>canvasmaat (cm)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>canvasmaat X,Y</screen
+>Met het commando <userinput
+>canvasmaat</userinput
+> kan de grootte van het canvas worden ingesteld. Invoer is X en Y, waarbij X is de nieuwe canvasbreedte is in <glossterm linkend="pixels"
+>pixels</glossterm
+>, en Y de nieuwe hoogte van het  canvas, ook in <glossterm linkend="pixels"
+>pixels</glossterm
+>. <userinput
+>canvasmaat</userinput
+> kan worden afgekort tot <userinput
+>cs</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setbgcolor"/>
+    <varlistentry
+> 
+      <term
+>canvaskleur (ck)<indexterm
+><primary
+>canvaskleur (ck)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>canvaskleur R,G,B</screen
+><userinput
+>canvaskleur</userinput
+> stelt de kleur in van het canvas. <userinput
+>canvaskleur</userinput
+> heeft een <glossterm linkend="rgb"
+>RGB-combinatie (drie getallen tussen 0 en 255) </glossterm
+> nodig als invoer. <userinput
+>canvaskleur</userinput
+> kan worden afgekort met <userinput
+>ck</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="clean">
+<title
+>Opdrachten om schoon te maken</title>
+<para
+>Er zijn twee opdrachten waarmee je het canvas kunt schoonmaken nadat je er een bende van hebt gemaakt.</para>
+  <variablelist>
+    <anchor id="clear"/>
+    <varlistentry
+> 
+      <term
+>schoon (cs)<indexterm
+><primary
+>schoon (cs)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>schoon</screen
+>Met <userinput
+>schoon</userinput
+> kunnen alle tekeningen op het canvas worden gewist. De rest blijft staan, de positie en de hoek van de schildpad, de kleur van het canvas, de zichtbaarheid van de schildpad en de grootte van het canvas blijven zoals ze waren.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="reset"/>
+    <varlistentry
+> 
+      <term
+>alsnieuw<indexterm
+><primary
+>alsnieuw</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>alsnieuw</screen
+><userinput
+>alsnieuw</userinput
+> maakt nog meer schoon dan het commando <userinput
+>schoon</userinput
+>. Na het commando <userinput
+>alsnieuw</userinput
+> is alles weer zoals het was direct na het starten van &kturtle;. De schildpad wordt in het midden van het scherm gezet (met de neus naar boven), de canvaskleur is wit,  de schildpad tekent een zwarte lijn op het canvas, en de grootte van het canvas is weer 400 x 400 pixels.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="sprites">
+<title
+>De schildpad is een sprite  (zeg maar: sprait)</title>
+<para
+>Eerst volgt hier een korte uitleg van wat sprites zijn: sprites zijn kleine plaatjes die je kunt verplaatsen op het scherm, zoals je vaak in computerspelletjes ziet. Onze schildpad is zo'n sprite. Voor meer info, zie de woordenlijst bij <glossterm
+>linkend="sprites"
+>sprites</glossterm
+>. Noot vertaler: eigenlijk zijn sprites zoiets als geesten, feeën of kabouters.</para>
+<para
+>Hierna volgt een volledig overzicht van alle opdrachten die je kunt gebruiken bij sprites.</para>
+<note
+><para
+>[De huidige versie van &kturtle; heeft alleen een schildpad als sprite. Andere sprites zijn er dus niet. In toekomstige versies van het programma zul je de schildpad kunnen veranderen naar je eigen ontwerp]</para
+></note>
+  <variablelist>
+    <anchor id="spriteshow"/>
+    <varlistentry
+> 
+      <term
+>toon (ts)<indexterm
+><primary
+>toon (ts)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>toon</screen
+><userinput
+>toon</userinput
+> maakt de schilpad weer zichtbaar nadat die is verborgen. <userinput
+>toon</userinput
+> kan worden afgekort met <userinput
+>ts</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="spritehide"/>
+    <varlistentry
+> 
+      <term
+>verberg<indexterm
+><primary
+>verberg (vs)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>verberg</screen
+><userinput
+>verberg</userinput
+> verbergt de schildpad. Dit is handig als de  de schildpad niet in de tekening past. <userinput
+>verberg</userinput
+> kan worden afgekort met <userinput
+>vs</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="writing">
+<title
+>Kan de schildpad schrijven?</title>
+<para
+>Het antwoord is: <quote
+>ja</quote
+>. De schildpad kan schrijven. Hij schrijft zo'n beetje alles wat je hem opdraagt.</para>
+  <variablelist>
+    <anchor id="print"/>
+    <varlistentry
+> 
+      <term
+>druk<indexterm
+><primary
+>druk</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>druk X</screen
+>Het commando <userinput
+>druk</userinput
+> kan worden gebruikt om de schildpad iets op het canvas te laten schrijven. <userinput
+>druk</userinput
+> heeft  getallen en tekenreeksen nodig als invoer. Je kunt verschillende getallen en stukken tekst <userinput
+>laten schrijven</userinput
+> met behulp van het <quote
+>+</quote
+>-symbool. Hier is een klein voorbeeld: <screen
+>$jaar = 2003
+$auteur = "Cies"
+druk $auteur + " begon het KTurtle-project in " + $jaar + " en vindt het nog steeds leuk om er aan te werken!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="fontsize"/>
+    <varlistentry
+> 
+      <term
+>lettermaat<indexterm
+><primary
+>lettermaat</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>lettermaat X</screen
+><userinput
+>lettermaat</userinput
+> bepaalt de grootte van de letters voor het commando <userinput
+>druk</userinput
+>. <userinput
+>lettermaat</userinput
+> heeft een getal nodig als invoer. De grootte geef je op in <glossterm linkend="pixels"
+>pixels</glossterm
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="math-commands">
+<title
+>Wiskundige opdrachten</title>
+<para
+>Hier volgen de wiskundige opdrachten die &kturtle; kent.</para>
+  <variablelist>
+    <anchor id="round"/>
+    <varlistentry>
+      <term
+>afronden<indexterm
+><primary
+>afronden</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>afronden X</screen
+><userinput
+>afronden</userinput
+> van het gegeven getal naar het dichtstbijzijnde gehele getal. <screen>
+druk afronden 10.8		#denk erom: een punt
+   vooruit 20
+druk afronden 10.3
+</screen
+>Hiermee drukt de schildpad de getallen 11 en 10 af.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="random"/>
+    <varlistentry
+> 
+      <term
+>gok (gk)<indexterm
+><primary
+>gok (gk)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>gok X,Y</screen
+><userinput
+>gok</userinput
+> is een commando met invoer en uitvoer. Als invoerheeft het commando twee getallen nodig, het eerste getal (X) is de minimum grootte van de uitvoer, en het tweede (Y) de maximum grootte. De uitvoer is een willekeurig getal dat gelijk is aan of groter dan het minimum en gelijk aan of kleiner dan het maximum. Hier is een klein voorbeeld:<screen>
+herhaal 500 [
+ $x = gok 10,200
+ vooruit $x
+ draailinks 10 - $x
+]
+</screen
+> Met het commando <userinput
+>gok</userinput
+> kun je wat chaos aan je programma toevoegen.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="mod"/>
+    <varlistentry
+> 
+      <term
+>mod<indexterm
+><primary
+>mod</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mod X,Y</screen
+>Met het commando <userinput
+>mod</userinput
+> wordt de rest berekend vande deling van het eerste getal door het tweede getal.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sqrt"/>
+    <varlistentry
+> 
+      <term
+>wortel<indexterm
+><primary
+>wortel</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>wortel X</screen
+>Met het commando <userinput
+>wortel X</userinput
+> wordt de wortel van het getal X berekend.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+<!--
+  <variablelist>
+    <anchor id="exp"/>
+    <varlistentry
+> 
+      <term
+>exp<indexterm
+><primary
+>exp</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+-->
+  <variablelist>
+    <anchor id="pi"/>
+    <varlistentry
+> 
+      <term
+>pi<indexterm
+><primary
+>pi</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pi</screen
+>Dit commando geeft de constante pi, <userinput
+>3.14159</userinput
+>, door. </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sin"/>
+    <anchor id="cos"/>
+    <anchor id="tan"/>
+    <varlistentry>
+      <term
+>sin<indexterm
+><primary
+>sin</primary
+></indexterm
+>, cos<indexterm
+><primary
+>cos</primary
+></indexterm
+>, tan<indexterm
+><primary
+>tan</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>sin X
+cos X
+tan X
+</screen
+>Met deze drie opdrachten worden de welbekende goniometrische functies <userinput
+>sinus</userinput
+>, <userinput
+>cosinus</userinput
+> en <userinput
+>tangens</userinput
+> berekend. De invoer van deze opdrachten, X, is een<link linkend="number"
+>getal</link
+> (in graden).</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="arcsin"/>
+    <anchor id="arccos"/>
+    <anchor id="arctan"/>
+    <varlistentry>
+      <term
+>arcsin<indexterm
+><primary
+>arcsin</primary
+></indexterm
+>, arccos<indexterm
+><primary
+>arccos</primary
+></indexterm
+>, arctan<indexterm
+><primary
+>arctan</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>arcsin X
+arccos X
+arctan X
+</screen
+>Deze opdrachten zijn de inverse (dat is hier: terug-) functies van <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+> en <link linkend="tan"
+>tan</link
+>. De invoer van deze functies, X, is een <link linkend="number"
+>getal</link
+>. Die kan overigens niet elke waarde hebben, alléén die waarden die sin X, cos X en tan X kunnen hebben.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="dialogs">
+<title
+>Invoer en terugkoppeling met behulp van dialogen</title>
+<para
+>Een dialoog is een venstertje met daarin een boodschap, of waarin om invoer wordt gevraagd. &kturtle; kent twee opdrachten voor een dialoog, namelijk <userinput
+>bericht</userinput
+> en <userinput
+>vraag</userinput
+></para>
+  <variablelist>
+    <anchor id="message"/>
+    <varlistentry
+> 
+      <term
+>bericht<indexterm
+><primary
+>bericht</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>bericht X</screen
+>De opdracht <userinput
+>bericht</userinput
+> heeft als invoer een <link linkend="string"
+>tekenreeks</link
+>. Er wordt een venstertje getoond waarin een dialoog met de tekst van deze <link linkend="string"
+>tekenreeks</link
+>. <screen
+>bericht "Cies begon het KTurtle-project in 2003 en vindt het nog steeds leuk om er aan te werken!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="ask"/>
+    <varlistentry
+> 
+      <term
+>vraag<indexterm
+><primary
+>vraag</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>vraag X</screen
+><userinput
+>vraag</userinput
+> heeft als invoer een <link linkend="string"
+>tekenreeks</link
+>. Er wordt een venstertje getoond met de tekst van deze tekenreeks, net als bij het commando <link linkend="message"
+>bericht</link
+>. Maar in deze dialoog is ook een invoerveld. In dit invoerveld kan een gebruiker een <link linkend="number"
+>getal</link
+> of een <link linkend="string"
+>tekenreeks</link
+> invoeren die in een <link linkend="assignment-of-variables"
+>variabele</link
+> kan worden opgeslagen, of aan een <link linkend="commands"
+>commando</link
+> kan worden doorgegeven. Bijvoorbeeld <screen>
+$in = vraag "Hoe oud ben je?"
+$uit = 5 + $in
+druk "Over 5 jaar ben je " + $uit + " jaar."
+</screen
+>. Als de gebruiker de invoerdialoog annuleert of niets invult wordt de <link linkend="assignment-of-variables"
+>variabele</link
+> leeg gemaakt.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="assignment-of-variables">
+<title
+>Toewijzingen aan variabelen</title>
+<para
+>Eerst bekijken we variabelen, daarna hoe we daar waarden aan kunnen toewijzen. </para>
+
+<para
+>Variabelen zijn woorden die met een <quote
+>$</quote
+> beginnen, in de <link linkend="the-editor"
+>codebewerker </link
+> worden ze met paars <glossterm
+>geaccentueerd</glossterm
+>.</para>
+
+<para
+>In een variabele kan elk <link linkend="number"
+>getal</link
+>, <link linkend="string"
+>tekenreeks</link
+> of <link linkend="boolean-value"
+>booleaanse waarde (waar/onwaar)</link
+> worden bewaard. Met behulp van de toewijzing, <userinput
+>=</userinput
+>, kan de variabele zijn inhoud krijgen. Die inhoud blijft hierin aanwezig, totdat het programma eindigt, of als de variabele een andere waarde krijgt.</para>
+
+<para
+>Variabelen, mits met inhoud, kunnen in de plaats van hun inhoud worden gebruikt. Zie bijvoorbeeld het volgende stukje &turtlescript;: <screen>
+$x = 10
+$x = $x / 3
+print $x
+</screen
+> Eerst krijgt de variabele <userinput
+>$x</userinput
+> de waarde<userinput
+>10</userinput
+>. Daarna krijgt <userinput
+>$x</userinput
+> een nieuwe waarde, van zichzelf, gedeeld door <userinput
+>3</userinput
+> &mdash; dit betekent dus dat  <userinput
+>$x</userinput
+> daarna de waarde <userinput
+>10 / 3</userinput
+> heeft. Tenslotte wordt <userinput
+>$x</userinput
+> afgedrukt (op het scherm). In regels 2 en 3 zie je dat <userinput
+>$x</userinput
+> in de plaats van zijn inhoud wordt gebruikt.</para>
+
+<para
+>Variabelen meten een waarde hebben gekregen voordat ze kunnen worden gebruikt. Bijvoorbeeld:  <screen>
+druk $n
+</screen
+> zal een foutmelding geven.</para>
+
+<para
+>Beschouw het volgende stukje &turtlescript;: <screen>
+$a = 2004
+$b = 25
+
+# Het volgende commando drukt "2029" af
+druk $a + $b
+achteruit 30
+# Het volgende commando drukt "2004 plus 25 is gelijk aan 2029" af
+print $a + " plus " + $b + " is gelijk aan " + ($a + $b)
+</screen
+> In de eerste twee regels krijgen de variabelen <userinput
+>$a</userinput
+> en  <userinput
+>$b</userinput
+> de waarden 2004 en 25. Daarna volgen twee  <userinput
+>druk</userinput
+>-opdrachten met daartussen in een <userinput
+>achteruit 30</userinput
+>. In het commentaar voor de <userinput
+>druk</userinput
+>- opdrachten wordt uitgelegd wat er gebeurt. Zoals je ziet worden variabelen precies zo gebruikt als hun inhoud, je kunt ze met elke soort <link linkend="operators"
+>bewerkingen</link
+> gebruiken, of als invoer voor  <link linkend="commands"
+>opdrachten</link
+>.</para>
+
+<para
+>Nog een voorbeeld: <screen>
+$naam = vraag "Hoe heet je?"
+print "Ha die " + $naam + "! Veel plezier met het leren programmeren..."
+</screen
+> Tamelijk recht zo die gaat. Ook hier kun je zien dat de variabele  <userinput
+>$naam</userinput
+> precies als zijn inhoud, een tekenreeks, wordt gebruikt.</para>
+
+<para
+>Bij het gebruik van variabelen is de <link linkend="the-inspector"
+>inspectie</link
+> erg nuttig. Hierin kun je de inhoud zien van alle huidige variabelen.</para>
+</sect1>
+
+
+
+<sect1 id="controlling-execution">
+<title
+>Sturen van het programma</title>
+<para
+>De programmastuuropdrachten maken het mogelijk, &mdash;zoals de naam al zegt&mdash; het verloop van een programma te sturen.</para>
+<para
+>Opdrachten die het programmaverloop sturen worden <glossterm
+>geaccentueerd </glossterm
+> met donkergroen in een vet lettertype. De accolades worden meestal samen met de programmastuuropdrachten gebruikt en worden <glossterm
+>geaccentueerd</glossterm
+> met zwart.</para>
+
+<sect2 id="wait">
+<title
+>De schildpad laten wachten</title>
+<para
+>Als je al wat hebt geprogrammeerd in &kturtle;, dan heb je vast gemerkt dat de schildpad erg snel tekent. Dit commando laat de schildpad steeds een opgegeven tijdsduur te wachten.</para>
+  <variablelist>
+    <varlistentry>
+      <term
+>wacht<indexterm
+><primary
+>wacht</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>wacht X</screen
+><userinput
+>wacht X</userinput
+> laat de schildpad X seconden wachten. <screen>
+herhaal 36{
+ vooruit 5
+ draairechts 10
+ wacht 0.5           # Denk erom: een punt
+}
+</screen
+> Deze programmacode tekent een cirkel, maar de schildpad zal na elke stap een halve seconde wachten. Hier door lijkt het net of de schildpad kruipt.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="if">
+<title
+>Uitvoeren <quote
+>indien</quote
+></title>
+  <variablelist>
+    <varlistentry>
+      <term
+>als<indexterm
+><primary
+>als</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>als <link linkend="boolean-value"
+>boolean</link
+> { ... }</screen
+>De programmacode tussen de accolades wordt alleen uitgevoerd <userinput
+>als</userinput
+> de <link linkend="boolean-value"
+>booleaanse waarde</link
+> de waarde <quote
+>waar</quote
+> krijgt. <screen>
+$x = 6
+als $x &gt; 5 {
+  druk "$x is groter dan 5!"
+}
+</screen
+> Op de eerste regel krijgt <userinput
+>$x</userinput
+> de waarde 6. Op de tweede regel wordt een <link linkend="comparing-operators"
+>vergelijkingsbewerking</link
+> gebruikt om de waarde van <userinput
+>$x &gt; 5</userinput
+> te bepalen. Omdat die <quote
+>waar</quote
+> is, 6 is groter dan 5, zal het programmastuurcommando <userinput
+>als</userinput
+> de programmacode tussen de accolades laten uitvoeren.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="else">
+<title
+>Als niet, of in andere woorden: <quote
+>anders</quote
+></title>
+  <variablelist>
+    <varlistentry>
+      <term
+>anders<indexterm
+><primary
+>anders</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>als <link linkend="boolean-value"
+>booleaanse waarde</link
+> { ... } anders { ... }</screen
+><userinput
+>anders</userinput
+> kan worden gebruikt bij het programmastuurcommando <link linkend="if"
+><userinput
+>als</userinput
+></link
+>. De programmacode tussen de accolades na <userinput
+>anders</userinput
+> wordt alleen uitgevoerd als de <link linkend="boolean-value"
+>booleaanse waarde</link
+> de waarde <quote
+>onwaar</quote
+> heeft. <screen>
+alsnieuw
+ $x = 4
+als $x &gt; 5 {
+  druk "x is groter dan vijf!"
+}
+anders
+{
+  druk "x is kleiner dan zes!"
+}
+</screen
+> De <link linkend="comparing-operators"
+>vergelijkingsbewerking</link
+> bepaalt de waarde van <userinput
+>$x &gt; 5</userinput
+>. Omdat 4 niet groter is dan 5 is die waarde <quote
+>onwaar</quote
+>. Dit betekent dat de programmacode tussen de accolades na <userinput
+>anders</userinput
+> wordt uitgevoerd.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="while">
+<title
+>De <quote
+>terwijl</quote
+>-lus </title>
+  <variablelist>
+    <varlistentry>
+      <term
+>terwijl<indexterm
+><primary
+>terwijl</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>terwijl <link linkend="boolean-value"
+>booleaanse bewerking</link
+> { ... }</screen
+>Het programmastuurcommando <userinput
+>terwijl</userinput
+> lijkt veel op <link linkend="if"
+>als<userinput
+></userinput
+></link
+>. Het verschil is dat <userinput
+>terwijl</userinput
+> de programmacode tussen de accolades blijft herhalen totdat de <link linkend="boolean-value"
+>booleaanse waarde</link
+> <quote
+>onwaar</quote
+> is geworden. <screen>
+$x = 1
+terwijl $x &lt; 8 {
+  vooruit 10
+  wacht 1
+  $x = $x + 1
+}
+</screen
+> Op de eerste regel krijgt <userinput
+>$x</userinput
+> de waarde 1. Op de tweede regel wordt de waarde bepaald van<userinput
+>$x &lt; 8</userinput
+>. Omdat die waarde <quote
+>waar</quote
+> is, start het programmastuurcommando<userinput
+>terwijl</userinput
+> het uitvoeren van de code tussen de accolades totdat de waarde van <userinput
+>$x &lt; 8</userinput
+> <quote
+>onwaar</quote
+> is geworden. In dit voorbeeld wordt de code tussen de accolades 7 keer uitgevoerd, omdat telkens als de vijfde regel wordt uitgevoerd de waarde <userinput
+>$x</userinput
+> met 1 wordt vermeerderd.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="repeat">
+<title
+>De <quote
+>herhaal</quote
+>-loop</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>herhaal<indexterm
+><primary
+>herhaal</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>Herhaal <link linkend="number"
+>getal</link
+> { ... }</screen
+>Het programmastuurcommando <userinput
+>herhaal</userinput
+> lijkt veel op <link linkend="while"
+><userinput
+>terwijl</userinput
+></link
+>. Het verschil is dat <userinput
+>herhaal</userinput
+> de programmacode tussen de accolades het in het getal opgegeven aantal keren blijft herhalen</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="for">
+<title
+>De <quote
+>voor</quote
+>-lus, een tellende lus</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>voor<indexterm
+><primary
+>voor</primary
+></indexterm
+><indexterm
+><primary
+>naar</primary
+></indexterm
+><indexterm
+><primary
+>stap</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>voor <link linkend="assignment-of-variables"
+>variabele</link
+> = <link linkend="number"
+>getal</link
+> tot <link linkend="number"
+>getal</link
+> { ... }</screen
+>De lus <userinput
+>voor</userinput
+> is een <quote
+>tellende lus</quote
+>, en telt dus voor jou. <screen>
+voor $x = 1 tot 10 {
+ druk $x * 7
+ vooruit 15
+}
+</screen
+> Telkens als de programmacode tussen de accolades wordt uitgevoerd wordt de waarde <userinput
+>$x</userinput
+> met 1 vermeerderd (dit gaat dus van zelf), totdat <userinput
+>$x</userinput
+> de waarde 10 heeft bereikt. De programmacode tussen de accolades schrijft de waarde van <userinput
+>$x</userinput
+> (op het scherm), vermenigvuldigd met 7. Nadat deze opdrachten zijn uitgevoerd zie je de tafel van 7 op het canvas staan. </para>
+     <para
+>De standaard stapgrootte in een lus is 1, maar een andere waarde kan worden ingesteld met  <screen
+>voor <link linkend="assignment-of-variables"
+>variabele</link
+> = <link linkend="number"
+>getal</link
+> tot <link linkend="number"
+>getal </link
+> stap <link linkend="number"
+>getal</link
+> { ... }</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="break">
+<title
+>Een lus verlaten</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>kap<indexterm
+><primary
+>kap</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>kap</screen
+>Stopt onmiddellijk met het uitvoeren van de huidige lus en ga verder met het uitvoeren van de programmaregel direct na de lus.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="exit">
+<title
+>Het uitvoeren van je programma stoppen</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>afsluiten<indexterm
+><primary
+>afsluiten</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>afsluiten</screen
+>Beëindigt het uitvoeren van je programma.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="assert">
+<title
+>Invoer testen</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>test<indexterm
+><primary
+>test</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>test <link linkend="boolean-value"
+>boolean</link
+> { ... }</screen
+>Kan worden gebruikt voor het beredeneren van de juistheid van het programma of van de invoer. <screen
+>$in = ask "In welk jaar ben je geboren?"
+# het jaartal moet positief zijn
+test $in 
+> 0
+</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+</sect1>
+
+
+<sect1 id="learn">
+
+<title
+>Eigen opdrachten maken met <quote
+>leer</quote
+></title>
+<para
+><userinput
+>leer</userinput
+><indexterm
+><primary
+>leer</primary
+></indexterm
+>  is een erg leuk commando, omdat die kan worden gebruikt om je eigen opdrachten te maken. Opdrachten die je maakt kunnen <glossterm linkend="input-output"
+>invoer</glossterm
+> nodig hebben en <glossterm linkend="input-output"
+>uitvoer</glossterm
+> teruggeven. Laten we eens kijken hoe je een nieuw commando kunt maken: <screen>
+leer cirkel $x {
+   herhaal 36 {
+     vooruit $x
+     draailinks 10
+  }
+}
+</screen
+> Het nieuwe commando heet hier dus <userinput
+>cirkel</userinput
+>. <userinput
+>cirkel</userinput
+> heeft een <glossterm linkend="input-output"
+>invoer</glossterm
+> nodig, een getal, dat de grootte van de cirkel bepaalt. <userinput
+>cirkel</userinput
+> geeft geen <glossterm linkend="input-output"
+>uitvoer</glossterm
+> terug. Het commando <userinput
+>cirkel</userinput
+> kan nu worden gebruikt als een normaal commando in de rest van de programmacode. Hier een voorbeeld: <screen
+>leer cirkel $x {
+  herhaal 36 { 
+    vooruit $x 
+    draailinks 10 
+  } 
+} 
+
+ganaar 200,200 
+cirkel 20
+
+ganaar 300,200 
+cirkel 40  
+</screen>
+</para>
+<para
+>In het volgende voorbeeld maken we een commando met een <indexterm
+><primary
+>uitvoerwaarde</primary
+></indexterm
+>. <screen>
+leer faculteit $x {
+    $r = 1
+    voor $i = 1 tot $x {
+        $r = $r * $i
+    }
+  geefdoor $r
+}
+
+druk faculteit 5
+</screen
+> In dit voorbeeld maken we een nieuw commando met de naam  <userinput
+>faculteit</userinput
+>. Als de invoer van dit commando <userinput
+>5</userinput
+> is, dan is de uitvoer <userinput
+>5*4*3*2*1</userinput
+>, en dat is 120. Door  <userinput
+>geefdoor</userinput
+> wordt de waarde van de <glossterm linkend="input-output"
+>uitvoer</glossterm
+> doorgegeven (of ook wel: teruggegeven), zodat die bijvoorbeeld kan worden afgedrukt op het scherm, zoals in de laatste regel.</para>
+<para
+>Opdrachten kunnen meer dan een <glossterm linkend="input-output"
+>invoer</glossterm
+> nodig hebben. In het volgende voorbeeld maken we een commando dat een rechthoek tekent: <screen>
+leer rechthoek $x, $y {
+  vooruit $y
+  draairechts 90
+  vooruit $x
+  draairechts 90
+  vooruit $y
+  draairechts 90
+  vooruit $x
+  draairechts 90
+}
+</screen
+> Nu kun je  <userinput
+>rechthoek 50, 100</userinput
+> doen, waarna de schildpad een rechthoek tekent op het canvas. </para>
+  
+</sect1>
+
+</chapter>

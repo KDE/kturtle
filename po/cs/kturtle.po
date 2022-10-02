@@ -1,0 +1,2210 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Vít Pelčák <vit@pelcak.org>, 2010, 2011, 2013, 2014, 2017, 2019.
+# Tomáš Chvátal <tomas.chvatal@gmail.com>, 2012, 2013.
+# Vit Pelcak <vpelcak@suse.cz>, 2021, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kturtle\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-10-01 00:41+0000\n"
+"PO-Revision-Date: 2022-09-08 10:04+0200\n"
+"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
+"Language-Team: Czech <kde-i18n-doc@kde.org>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Lokalize 22.08.0\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Vít Pelčák"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "vit@pelcak.org"
+
+#: canvas.cpp:195
+#, kde-format
+msgid "bold"
+msgstr "tučné"
+
+#: canvas.cpp:196
+#, kde-format
+msgid "italic"
+msgstr "kurzíva"
+
+#: canvas.cpp:197
+#, kde-format
+msgid "underline"
+msgstr "podtržené"
+
+#: canvas.cpp:198
+#, kde-format
+msgid "overline"
+msgstr "linka nad písmem"
+
+#: canvas.cpp:199
+#, kde-format
+msgid "strikeout"
+msgstr "přeškrtnuté"
+
+#: colorpicker.cpp:29
+#, kde-format
+msgctxt "@title:window"
+msgid "Color Picker"
+msgstr "Kapátko"
+
+#: colorpicker.cpp:48
+#, kde-format
+msgid "Amount red:"
+msgstr "Množství červené:"
+
+#: colorpicker.cpp:62
+#, kde-format
+msgid "Amount green:"
+msgstr "Množství zelené:"
+
+#: colorpicker.cpp:75
+#, kde-format
+msgid "Amount blue:"
+msgstr "Množství modré:"
+
+#: colorpicker.cpp:105 directiondialog.cpp:282
+#, kde-format
+msgid "&Copy to clipboard"
+msgstr "&Kopírovat do schránky"
+
+#: colorpicker.cpp:110 directiondialog.cpp:286
+#, kde-format
+msgid "&Paste to editor"
+msgstr "V&ložit do editoru"
+
+#: console.cpp:33 console.cpp:60
+#, kde-format
+msgid "Write a command here and press enter..."
+msgstr "Zde napište příkaz a potvrďte..."
+
+#: console.cpp:34
+#, kde-format
+msgid ""
+"Console: quickly run single commands -- write a command here and press enter."
+msgstr ""
+"Konzole: pro rychlé spuštění jednoduchých příkazů -- zde napište příkaz a "
+"potvrďte."
+
+#: console.cpp:36
+#, kde-format
+msgid "Console:"
+msgstr "Konzole:"
+
+#: console.cpp:79
+#, kde-format
+msgid "<p style='white-space:pre'><b>ERROR:</b> %1</p>"
+msgstr "<p style='white-space:pre'><b>CHYBA:</b> %1</p>"
+
+#: directiondialog.cpp:194
+#, kde-format
+msgctxt "@title:window"
+msgid "Direction Chooser"
+msgstr "Výběr směru"
+
+#: directiondialog.cpp:225
+#, kde-format
+msgid "Command &type:"
+msgstr "&Typ příkazu:"
+
+#: directiondialog.cpp:240
+#, kde-format
+msgid "&Previous direction:"
+msgstr "&Předchozí směr:"
+
+#: directiondialog.cpp:257
+#, kde-format
+msgid "&New direction:"
+msgstr "&Nový směr:"
+
+#: editor.cpp:146
+#, kde-format
+msgid "Open"
+msgstr "Otevřít"
+
+#: editor.cpp:148 editor.cpp:256
+#, kde-format
+msgid "Turtle code files"
+msgstr "Želví programy"
+
+#: editor.cpp:148 editor.cpp:256 mainwindow.cpp:1014 mainwindow.cpp:1030
+#: mainwindow.cpp:1040
+#, kde-format
+msgid "All files"
+msgstr "Všechny soubory"
+
+#: editor.cpp:164
+#, kde-format
+msgid ""
+"The file you try to open is not a valid KTurtle script, or is incompatible "
+"with this version of KTurtle.\n"
+"Cannot open %1"
+msgstr ""
+"Soubor, který se pokoušíte otevřít, není platný skript KTurtle, nebo je "
+"nekompatibilní s touto verzí KTurtle.\n"
+"Nelze otevřít %1"
+
+#: editor.cpp:231 editor.cpp:237
+#, kde-format
+msgid "Could not save file."
+msgstr "Není možné uložit soubor."
+
+#: editor.cpp:254
+#, kde-format
+msgid "Save As"
+msgstr "Uložit jako"
+
+#: editor.cpp:267
+#, kde-format
+msgid ""
+"The program you are currently working on is not saved. By continuing you may "
+"lose the changes you have made."
+msgstr ""
+"Program, na kterém pracujete, není uložen. Pokud budete pokračovat, můžete "
+"ztratit změny, které jste v něm udělal."
+
+#: editor.cpp:269
+#, kde-format
+msgid "Unsaved File"
+msgstr "Neuložený soubor"
+
+#: editor.cpp:269
+#, kde-format
+msgid "&Discard Changes"
+msgstr "&Neuložit změny"
+
+#: errordialog.cpp:27
+#, kde-format
+msgctxt "@title:window"
+msgid "Errors"
+msgstr "Chyby"
+
+#: errordialog.cpp:42
+#, kde-format
+msgid ""
+"In this list you find the error(s) that resulted from running your code.\n"
+"Good luck!"
+msgstr ""
+"V tomto listu najdete chybu (chyby) vzniklé za běhu vašeho programu.\n"
+"Hodně štěstí!"
+
+#: errordialog.cpp:59
+#, kde-format
+msgid "line"
+msgstr "řádek"
+
+#: errordialog.cpp:59
+#, kde-format
+msgid "description"
+msgstr "popis"
+
+#: errordialog.cpp:59
+#, kde-format
+msgid "code"
+msgstr "kód"
+
+#: errordialog.cpp:72
+#, kde-format
+msgid "Hide Errors"
+msgstr "Skrýt chyby"
+
+#: errordialog.cpp:89
+#, kde-format
+msgid "No errors occurred yet."
+msgstr "Zatím nenastaly žádné chyby."
+
+#: inspector.cpp:35
+#, kde-format
+msgid "Variables"
+msgstr "Proměnné"
+
+#: inspector.cpp:42
+#, kde-format
+msgid "Functions"
+msgstr "Funkce"
+
+#: inspector.cpp:49
+#, kde-format
+msgid "Tree"
+msgstr "Strom"
+
+#: inspector.cpp:93 inspector.cpp:111
+#, kde-format
+msgid "name"
+msgstr "název"
+
+#: inspector.cpp:93
+#, kde-format
+msgid "value"
+msgstr "hodnota"
+
+#: inspector.cpp:93
+#, kde-format
+msgid "type"
+msgstr "typ"
+
+#: inspector.cpp:103
+#, kde-format
+msgid "No variables"
+msgstr "Žádné proměnné"
+
+#: inspector.cpp:111
+#, kde-format
+msgid "parameters"
+msgstr "Pomocné proměnné"
+
+#: inspector.cpp:120
+#, kde-format
+msgid "No learned functions"
+msgstr "Žádné naučené funkce"
+
+#: inspector.cpp:163
+#, kde-format
+msgctxt "undefined type of a variable"
+msgid "empty"
+msgstr "prázdné"
+
+#: inspector.cpp:170
+#, kde-format
+msgid "boolean"
+msgstr "pravdivost (binární)"
+
+#: inspector.cpp:173
+#, kde-format
+msgid "number"
+msgstr "číslo"
+
+#: inspector.cpp:176
+#, kde-format
+msgid "string"
+msgstr "text"
+
+# žádné parametry funkce v inspektoru funkcí
+#: inspector.cpp:208
+#, kde-format
+msgid "None"
+msgstr "Žádné"
+
+#: interpreter/executer.cpp:72
+#, kde-format
+msgid "Cannot return outside a function. "
+msgstr "Nelze se vrátit z vně funkce. "
+
+#: interpreter/executer.cpp:262
+#, kde-format
+msgid "The %1 command accepts no parameters."
+msgstr "Příkaz %1 nepřijímá žádné pomocné proměnné."
+
+#: interpreter/executer.cpp:272
+#, kde-format
+msgid "The %2 command was called with %3 but needs 1 parameter."
+msgid_plural "The %2 command was called with %3 but needs %1 parameters."
+msgstr[0] ""
+"Příkaz %2 byl volán s %3 pomocnými proměnnými, ale potřebuje 1 pomocnou "
+"proměnnou."
+msgstr[1] ""
+"Příkaz %2 byl volán s %3 pomocnými proměnnými, ale potřebuje %1 pomocné "
+"proměnné."
+msgstr[2] ""
+"Příkaz %2 byl volán s %3 pomocnými proměnnými, ale potřebuje %1 pomocných "
+"proměnných."
+
+# this is not quite translator comment, but programmer one - the declared "accepts 1 parameter" is incorect, IMHO, in the executer.cpp is the required count of parameters known but does not go into the message
+#: interpreter/executer.cpp:274
+#, kde-format
+msgid "The %2 command was called with %3 but only accepts 1 parameter."
+msgid_plural ""
+"The %2 command was called with %3 but only accepts %1 parameters."
+msgstr[0] ""
+"Příkaz %2 byl volán s %3 pomocnými proměnnými, ale přijímá jen 1 pomocnou "
+"proměnnou."
+msgstr[1] ""
+"Příkaz %2 byl volán s %3 pomocnými proměnnými, ale přijímá jen %1 pomocné "
+"proměnné."
+msgstr[2] ""
+"Příkaz %2 byl volán s %3 pomocnými proměnnými, ale přijímá jen %1 pomocných "
+"proměnných."
+
+#: interpreter/executer.cpp:292
+#, kde-format
+msgid "The %1 command only accepts a string as its parameter."
+msgstr "Příkaz %1 přijímá řetězec jen jako svou pomocnou proměnnou."
+
+#: interpreter/executer.cpp:294
+#, kde-format
+msgid "The %1 command only accepts strings as its parameters."
+msgstr "Příkaz %1 přijímá  řetězce jen jako své pomocné proměnné."
+
+#: interpreter/executer.cpp:299
+#, kde-format
+msgid "The %1 command only accepts a number as its parameter."
+msgstr "Příkaz %1 přijímá jen číselnou pomocnou proměnnou."
+
+#: interpreter/executer.cpp:301
+#, kde-format
+msgid "The %1 command only accepts numbers as its parameters."
+msgstr "Příkaz %1 přijímá jen číselné pomocné proměnné."
+
+#: interpreter/executer.cpp:306
+#, kde-format
+msgid "The %1 command only accepts an answer as its parameter."
+msgstr "Příkaz %1 přijímá jako svoji pomocnou proměnnou pouze odpověď."
+
+#: interpreter/executer.cpp:308
+#, kde-format
+msgid "The %1 command only accepts answers as its parameters."
+msgstr "Příkaz %1 přijímá jako svoje pomocné proměnné jen odpovědi."
+
+#: interpreter/executer.cpp:386
+#, kde-format
+msgid "The variable '%1' was used without first being assigned to a value"
+msgstr ""
+"Proměnná '%1' byla použita předtím, než jí byla přiřazena hodnota "
+"(neinicializovaná proměnná)"
+
+#: interpreter/executer.cpp:405
+#, kde-format
+msgid "An unknown function named '%1' was called"
+msgstr "Byla volána neznámá funkce nazvaná '%1'"
+
+#: interpreter/executer.cpp:420
+#, kde-format
+msgid "The function '%1' was called with %2, while it should be called with %3"
+msgstr "Funkce '%1' byla volána s %2, ale měla být volána s %3"
+
+#: interpreter/executer.cpp:422 interpreter/executer.cpp:423
+#, kde-format
+msgctxt ""
+"The function '%1' was called with %2, while it should be called with %3"
+msgid "1 parameter"
+msgid_plural "%1 parameters"
+msgstr[0] "1 pomocnou proměnnou"
+msgstr[1] "%1 pomocnými proměnnými"
+msgstr[2] "%1 pomocnými proměnnými"
+
+#: interpreter/executer.cpp:627
+#, kde-format
+msgid "ASSERT failed"
+msgstr "ZKONTROLUJ našlo nesrovnalost"
+
+#: interpreter/executer.cpp:633
+#, kde-format
+msgid "'And' needs two variables"
+msgstr "'a' potřebuje dvě proměnné"
+
+#: interpreter/executer.cpp:642
+#, kde-format
+msgid "'Or' needs two variables"
+msgstr "'nebo' potřebuje dvě proměnné"
+
+#: interpreter/executer.cpp:652
+#, kde-format
+msgid "I need something to do a not on"
+msgstr "Potřebuji něco (výraz), nač by se dal aplikovat operátor 'ne'"
+
+#: interpreter/executer.cpp:660
+#, kde-format
+msgid "I cannot do a '==' without 2 variables"
+msgstr "Nemůžu dělat porovnání '==', když u něho nejsou dvě proměnné"
+
+#: interpreter/executer.cpp:668
+#, kde-format
+msgid "I cannot do a '!=' without 2 variables"
+msgstr "Ke zjištění nerovnosti '!=' jsou potřeba dvě proměnné"
+
+#: interpreter/executer.cpp:676
+#, kde-format
+msgid "I cannot do a '>' without 2 variables"
+msgstr "Nemůžu udělat '>' bez dvou proměnných"
+
+#: interpreter/executer.cpp:684
+#, kde-format
+msgid "I cannot do a '<' without 2 variables"
+msgstr "K porovnání '<' jsou potřeba dvě proměnné"
+
+#: interpreter/executer.cpp:692
+#, kde-format
+msgid "I cannot do a '>=' without 2 variables"
+msgstr "K porovnání '>=' jsou potřeba dvě proměnné"
+
+#: interpreter/executer.cpp:700
+#, kde-format
+msgid "I cannot do a '<=' without 2 variables"
+msgstr "K porovnání '<=' jsou potřeba dvě proměnné"
+
+#: interpreter/executer.cpp:708
+#, kde-format
+msgid "You need two numbers or string to do an addition"
+msgstr ""
+"Ke sčítání jsou potřebná právě dvě čísla (číselné sčítání) nebo právě dva "
+"texty (zřetězení textů)"
+
+#: interpreter/executer.cpp:720
+#, kde-format
+msgid "You need two numbers to subtract"
+msgstr "K odčítání jsou potřebné dvě čísla"
+
+#: interpreter/executer.cpp:727
+#, kde-format
+msgid "You tried to subtract from a non-number, '%1'"
+msgstr "Zkoušíte odčítat od nečíselné hodnoty, '%1'"
+
+#: interpreter/executer.cpp:729
+#, kde-format
+msgid "You tried to subtract a non-number, '%1'"
+msgstr "Zkoušíte odečítat nečíselnou hodnotu, totiž '%1'"
+
+#: interpreter/executer.cpp:735
+#, kde-format
+msgid "You need two numbers to multiplicate"
+msgstr "K násobení jsou potřebná dvě čísla"
+
+#: interpreter/executer.cpp:742
+#, kde-format
+msgid "You tried to multiplicate a non-number, '%1'"
+msgstr "Zkusil jste násobit nečíselnou hodnotu - totiž '%1'"
+
+#: interpreter/executer.cpp:744
+#, kde-format
+msgid "You tried to multiplicate by a non-number, '%1'"
+msgstr "Zkusil jste násobit nečíselnou hodnotou - totiž '%1'"
+
+#: interpreter/executer.cpp:750
+#, kde-format
+msgid "You need two numbers to divide"
+msgstr "K dělení jsou zapotřebí dvě čísla"
+
+#: interpreter/executer.cpp:755
+#, kde-format
+msgid "You tried to divide by zero"
+msgstr "Pokus o dělení nulou"
+
+# it is message for non-number on divider or divider place
+#: interpreter/executer.cpp:761
+#, kde-format
+msgid "You tried to divide a non-number, '%1'"
+msgstr "V dělení se vyskytla nečíselná hodnota - totiž '%1'"
+
+#: interpreter/executer.cpp:763
+#, kde-format
+msgid "You tried to divide by a non-number, '%1'"
+msgstr "Zkusil jste dělit nečíselnou hodnotou - totiž '%1'"
+
+#: interpreter/executer.cpp:769
+#, kde-format
+msgid "You need two numbers to raise a power"
+msgstr "K umocnění jsou zapotřebí dvě čísla"
+
+#: interpreter/executer.cpp:780
+#, kde-format
+msgid "The result of an exponentiation was too large"
+msgstr "Výsledek umocňování je příliš veliký"
+
+#: interpreter/executer.cpp:786
+#, kde-format
+msgid "You tried to raise a non-number to a power, '%1'"
+msgstr "Zkusil jste umocnit na nečíselnou mocninu - totiž na '%1'"
+
+#: interpreter/executer.cpp:788
+#, kde-format
+msgid "You tried to raise the power of a non-number, '%1'"
+msgstr "Zkusil jste umocnit něco jiného než číslo - totiž '%1'"
+
+#: interpreter/executer.cpp:794
+#, kde-format
+msgid "You need one variable and a value or variable to do a '='"
+msgstr "Potřebujete proměnnou a hodnotu, abyste mohl udělat přiřazení '='"
+
+#: interpreter/executer.cpp:811
+#, kde-format
+msgid "The function '%1' is already defined."
+msgstr "Funkce '%1' je už definována."
+
+#: interpreter/executer.cpp:1041
+#, kde-format
+msgid "Can't do a sqrt of a negative number"
+msgstr "Nelze provést odmocninu záporného čísla"
+
+#: interpreter/parser.cpp:38
+#, kde-format
+msgid "Expected a command, instead got '%1'"
+msgstr "Očekáván příkaz. Namísto něj je '%1'"
+
+#: interpreter/parser.cpp:71
+#, kde-format
+msgid "Could not understand '%1'"
+msgstr "Nelze porozumět '%1'"
+
+#: interpreter/parser.cpp:106
+#, kde-format
+msgid "A comma was expected here..."
+msgstr "Zde byla očekávána čárka..."
+
+#: interpreter/parser.cpp:109
+#, kde-format
+msgid "Did not expect '%1', instead expected the line to end after %2"
+msgstr "'%1' nebyl očekáván. Namísto toho byl očekáván konec řádky po %2"
+
+#: interpreter/parser.cpp:115
+#, kde-format
+msgid "Expected an assignment, '=', after the variable '%1'"
+msgstr "Očekáváno přiřazení, '=', po proměnné '%1'"
+
+#: interpreter/parser.cpp:119
+#, kde-format
+msgid "Did not expect '%1', instead expected a closing parenthesis, ')'"
+msgstr "Neočekáván '%1', namísto toho očekáváno uzavření závorek, ')'"
+
+#: interpreter/parser.cpp:123
+#, kde-format
+msgid "Expected 'to' after 'for'"
+msgstr "Po 'pro' má být uvedeno 'do'"
+
+#: interpreter/parser.cpp:126
+#, kde-format
+msgid "Expected a name for a command after 'learn' command"
+msgstr "Po příkazu 'nauč se' má být uveden název příkazu"
+
+#: interpreter/parser.cpp:232
+#, kde-format
+msgid "You cannot put '%1' here."
+msgstr "Nemůžete sem napsat '%1'."
+
+#: interpreter/parser.cpp:268
+#, kde-format
+msgid ""
+"Text string was not properly closed, expected a double quote, ' \" ', to "
+"close the string."
+msgstr ""
+"Textový řetězec nebyl správně uzavřen. Pro jeho uzavření byly očekávány "
+"uvozovky ' \" '."
+
+#: interpreter/parser.cpp:616
+#, kde-format
+msgid "'for' was called wrongly"
+msgstr "Cyklus 'pro' byl volán nekorektně"
+
+#: interpreter/parser.cpp:686
+#, kde-format
+msgid "Expected a scope after the 'learn' command"
+msgstr "Po příkazu 'naucit' má být uveden rozsah"
+
+#: interpreter/translator.cpp:96
+#, kde-format
+msgctxt ""
+"You are about to translate the 'True' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "true"
+msgstr "pravda"
+
+#: interpreter/translator.cpp:103
+#, kde-format
+msgctxt ""
+"You are about to translate the 'False' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "false"
+msgstr "nepravda"
+
+#: interpreter/translator.cpp:122
+#, kde-format
+msgctxt ""
+"You are about to translate the 'ArgumentSeparator' COMMAND, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid ","
+msgstr ","
+
+#: interpreter/translator.cpp:129
+#, kde-format
+msgctxt ""
+"You are about to translate the 'DecimalSeparator' COMMAND, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "."
+msgstr "."
+
+#: interpreter/translator.cpp:136
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Exit' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "exit"
+msgstr "ukonči"
+
+#: interpreter/translator.cpp:143
+#, kde-format
+msgctxt ""
+"You are about to translate the 'If' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "if"
+msgstr "když"
+
+#: interpreter/translator.cpp:150
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Else' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "else"
+msgstr "jinak"
+
+#: interpreter/translator.cpp:157
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Repeat' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "repeat"
+msgstr "opakuj"
+
+#: interpreter/translator.cpp:164
+#, kde-format
+msgctxt ""
+"You are about to translate the 'While' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "while"
+msgstr "zatímco"
+
+#: interpreter/translator.cpp:171
+#, kde-format
+msgctxt ""
+"You are about to translate the 'For' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "for"
+msgstr "pro"
+
+#: interpreter/translator.cpp:178
+#, kde-format
+msgctxt ""
+"You are about to translate the 'To' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "to"
+msgstr "do"
+
+#: interpreter/translator.cpp:185
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Step' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "step"
+msgstr "krok"
+
+#: interpreter/translator.cpp:192
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Break' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "break"
+msgstr "přeruš"
+
+#: interpreter/translator.cpp:199
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Return' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "return"
+msgstr "návrat"
+
+#: interpreter/translator.cpp:206
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Wait' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "wait"
+msgstr "čekej"
+
+#: interpreter/translator.cpp:213
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Assert' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "assert"
+msgstr "zkontroluj"
+
+#: interpreter/translator.cpp:220
+#, kde-format
+msgctxt ""
+"You are about to translate the 'And' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "and"
+msgstr "a"
+
+#: interpreter/translator.cpp:227
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Or' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "or"
+msgstr "nebo"
+
+#: interpreter/translator.cpp:234
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Not' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "not"
+msgstr "ne"
+
+#: interpreter/translator.cpp:265
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Learn' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "learn"
+msgstr "naucit"
+
+#: interpreter/translator.cpp:272
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Reset' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "reset"
+msgstr "obnovit"
+
+#: interpreter/translator.cpp:279
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Clear' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "clear"
+msgstr "vyčisti"
+
+# vycisti
+#: interpreter/translator.cpp:286
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Clear' COMMAND ALIAS, there are some rules "
+"on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
+"to learn how to properly translate it."
+msgid "ccl"
+msgstr "ccl"
+
+#: interpreter/translator.cpp:293
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Center' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "center"
+msgstr "do_středu"
+
+#: interpreter/translator.cpp:300
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Go' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "go"
+msgstr "jdi"
+
+#: interpreter/translator.cpp:307
+#, kde-format
+msgctxt ""
+"You are about to translate the 'GoX' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "gox"
+msgstr "jdi_na_x"
+
+#: interpreter/translator.cpp:314
+#, kde-format
+msgctxt ""
+"You are about to translate the 'GoX' COMMAND ALIAS, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "gx"
+msgstr "jx"
+
+#: interpreter/translator.cpp:321
+#, kde-format
+msgctxt ""
+"You are about to translate the 'GoY' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "goy"
+msgstr "jdi_na_y"
+
+#: interpreter/translator.cpp:328
+#, kde-format
+msgctxt ""
+"You are about to translate the 'GoY' COMMAND ALIAS, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "gy"
+msgstr "jy"
+
+#: interpreter/translator.cpp:335
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Forward' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "forward"
+msgstr "vpřed"
+
+#: interpreter/translator.cpp:342
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Forward' COMMAND ALIAS, there are some rules "
+"on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
+"to learn how to properly translate it."
+msgid "fw"
+msgstr "vp"
+
+#: interpreter/translator.cpp:349
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Backward' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "backward"
+msgstr "vzad"
+
+#: interpreter/translator.cpp:356
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Backward' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "bw"
+msgstr "vz"
+
+#: interpreter/translator.cpp:363
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Direction' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "direction"
+msgstr "směr"
+
+#: interpreter/translator.cpp:370
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Direction' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "dir"
+msgstr "sm"
+
+#: interpreter/translator.cpp:377
+#, kde-format
+msgctxt ""
+"You are about to translate the 'TurnLeft' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "turnleft"
+msgstr "doleva"
+
+#: interpreter/translator.cpp:384
+#, kde-format
+msgctxt ""
+"You are about to translate the 'TurnLeft' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "tl"
+msgstr "dl"
+
+#: interpreter/translator.cpp:391
+#, kde-format
+msgctxt ""
+"You are about to translate the 'TurnRight' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "turnright"
+msgstr "doprava"
+
+#: interpreter/translator.cpp:398
+#, kde-format
+msgctxt ""
+"You are about to translate the 'TurnRight' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "tr"
+msgstr "dp"
+
+#: interpreter/translator.cpp:405
+#, kde-format
+msgctxt ""
+"You are about to translate the 'PenWidth' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "penwidth"
+msgstr "šířka_pera"
+
+#: interpreter/translator.cpp:412
+#, kde-format
+msgctxt ""
+"You are about to translate the 'PenWidth' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "pw"
+msgstr "sirpera"
+
+#: interpreter/translator.cpp:419
+#, kde-format
+msgctxt ""
+"You are about to translate the 'PenUp' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "penup"
+msgstr "zvednipero"
+
+#: interpreter/translator.cpp:426
+#, kde-format
+msgctxt ""
+"You are about to translate the 'PenUp' COMMAND ALIAS, there are some rules "
+"on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
+"to learn how to properly translate it."
+msgid "pu"
+msgstr "zp"
+
+#: interpreter/translator.cpp:433
+#, kde-format
+msgctxt ""
+"You are about to translate the 'PenDown' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "pendown"
+msgstr "spusť_pero"
+
+#: interpreter/translator.cpp:440
+#, kde-format
+msgctxt ""
+"You are about to translate the 'PenDown' COMMAND ALIAS, there are some rules "
+"on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
+"to learn how to properly translate it."
+msgid "pd"
+msgstr "sp"
+
+#: interpreter/translator.cpp:447
+#, kde-format
+msgctxt ""
+"You are about to translate the 'PenColor' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "pencolor"
+msgstr "barva_pera"
+
+#: interpreter/translator.cpp:454
+#, kde-format
+msgctxt ""
+"You are about to translate the 'PenColor' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "pc"
+msgstr "bp"
+
+#: interpreter/translator.cpp:461
+#, kde-format
+msgctxt ""
+"You are about to translate the 'CanvasColor' COMMAND, there are some rules "
+"on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
+"to learn how to properly translate it."
+msgid "canvascolor"
+msgstr "barva_pozadí"
+
+#: interpreter/translator.cpp:468
+#, kde-format
+msgctxt ""
+"You are about to translate the 'CanvasColor' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "cc"
+msgstr "bpozadi"
+
+#: interpreter/translator.cpp:475
+#, kde-format
+msgctxt ""
+"You are about to translate the 'CanvasSize' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "canvassize"
+msgstr "rozměr_plátna"
+
+#: interpreter/translator.cpp:482
+#, kde-format
+msgctxt ""
+"You are about to translate the 'CanvasSize' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "cs"
+msgstr "rp"
+
+#: interpreter/translator.cpp:489
+#, kde-format
+msgctxt ""
+"You are about to translate the 'SpriteShow' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "spriteshow"
+msgstr "ukaž_želvu"
+
+#: interpreter/translator.cpp:496
+#, kde-format
+msgctxt ""
+"You are about to translate the 'SpriteShow' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "ss"
+msgstr "už"
+
+#: interpreter/translator.cpp:503
+#, kde-format
+msgctxt ""
+"You are about to translate the 'SpriteHide' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "spritehide"
+msgstr "schovej_želvu"
+
+#: interpreter/translator.cpp:510
+#, kde-format
+msgctxt ""
+"You are about to translate the 'SpriteHide' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "sh"
+msgstr "sž"
+
+#: interpreter/translator.cpp:517
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Print' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "print"
+msgstr "tiskni"
+
+#: interpreter/translator.cpp:524
+#, kde-format
+msgctxt ""
+"You are about to translate the 'FontSize' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "fontsize"
+msgstr "velikost_písma"
+
+#: interpreter/translator.cpp:531
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Random' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "random"
+msgstr "náhodné_číslo"
+
+#: interpreter/translator.cpp:538
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Random' COMMAND ALIAS, there are some rules "
+"on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
+"to learn how to properly translate it."
+msgid "rnd"
+msgstr "nhd"
+
+#: interpreter/translator.cpp:545
+#, kde-format
+msgctxt ""
+"You are about to translate the 'GetX' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "getx"
+msgstr "zjistix"
+
+#: interpreter/translator.cpp:552
+#, kde-format
+msgctxt ""
+"You are about to translate the 'GetY' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "gety"
+msgstr "zjistiy"
+
+#: interpreter/translator.cpp:559
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Message' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "message"
+msgstr "zpráva"
+
+#: interpreter/translator.cpp:566
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Ask' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "ask"
+msgstr "zeptat"
+
+#: interpreter/translator.cpp:573
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Pi' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "pi"
+msgstr "pi"
+
+#: interpreter/translator.cpp:580
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Tan' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "tan"
+msgstr "tan"
+
+#: interpreter/translator.cpp:587
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Sin' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "sin"
+msgstr "sin"
+
+#: interpreter/translator.cpp:594
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Cos' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "cos"
+msgstr "cos"
+
+#: interpreter/translator.cpp:601
+#, kde-format
+msgctxt ""
+"You are about to translate the 'ArcTan' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "arctan"
+msgstr "arctan"
+
+#: interpreter/translator.cpp:608
+#, kde-format
+msgctxt ""
+"You are about to translate the 'ArcSin' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "arcsin"
+msgstr "arcsin"
+
+#: interpreter/translator.cpp:615
+#, kde-format
+msgctxt ""
+"You are about to translate the 'ArcCos' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "arccos"
+msgstr "arccos"
+
+#: interpreter/translator.cpp:622
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Sqrt' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "sqrt"
+msgstr "odmocnina"
+
+#: interpreter/translator.cpp:629
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Round' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "round"
+msgstr "zaokrouhli"
+
+#: interpreter/translator.cpp:636
+#, kde-format
+msgctxt ""
+"You are about to translate the 'GetDirection' COMMAND, there are some rules "
+"on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
+"to learn how to properly translate it."
+msgid "getdirection"
+msgstr "zjisti_směr"
+
+#: interpreter/translator.cpp:643
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Mod' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "mod"
+msgstr "Mod"
+
+#: interpreter/translator.cpp:662
+#, kde-format
+msgctxt ""
+"This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn know how to properly translate it."
+msgid "triangle"
+msgstr "trojúhelník"
+
+#: interpreter/translator.cpp:674
+#, kde-format
+msgctxt ""
+"This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn know how to properly translate it."
+msgid "curly"
+msgstr "kudrlinka"
+
+#: interpreter/translator.cpp:692
+#, kde-format
+msgctxt ""
+"This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn know how to properly translate it."
+msgid "arrow"
+msgstr "šipka"
+
+#: interpreter/translator.cpp:719
+#, kde-format
+msgctxt ""
+"This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn know how to properly translate it."
+msgid "flower"
+msgstr "květ"
+
+#. i18n: ectx: Menu (file)
+#: kturtleui.rc:6
+#, kde-format
+msgid "&File"
+msgstr "&Soubor"
+
+#. i18n: ectx: Menu (examples)
+#: kturtleui.rc:11
+#, kde-format
+msgid "&Examples"
+msgstr "&Příklady"
+
+#. i18n: ectx: Menu (edit)
+#: kturtleui.rc:24
+#, kde-format
+msgid "&Edit"
+msgstr "Ú&pravy"
+
+#. i18n: ectx: Menu (canvas)
+#: kturtleui.rc:41 mainwindow.cpp:499 mainwindow.cpp:521
+#, kde-format
+msgid "&Canvas"
+msgstr "&Plátno"
+
+#. i18n: ectx: Menu (run)
+#: kturtleui.rc:47 mainwindow.cpp:299 mainwindow.cpp:418
+#, kde-format
+msgid "&Run"
+msgstr "&Spusť"
+
+#. i18n: ectx: Menu (speed)
+#: kturtleui.rc:51
+#, kde-format
+msgid "&Run Speed"
+msgstr "&Rychlost běhu"
+
+#. i18n: ectx: Menu (tools)
+#: kturtleui.rc:60
+#, kde-format
+msgid "&Tools"
+msgstr "Nás&troje"
+
+#. i18n: ectx: Menu (settings)
+#: kturtleui.rc:64
+#, kde-format
+msgid "&Settings"
+msgstr "Nas&tavení"
+
+#. i18n: ectx: Menu (language)
+#: kturtleui.rc:65
+#, kde-format
+msgid "&Script Language"
+msgstr "&Skriptovací jazyk"
+
+#. i18n: ectx: Menu (help)
+#: kturtleui.rc:75
+#, kde-format
+msgid "&Help"
+msgstr "&Nápověda"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kturtleui.rc:80
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Hlavní panel nástrojů"
+
+#: main.cpp:47
+#, kde-format
+msgid "KTurtle"
+msgstr "KTurtle"
+
+#: main.cpp:49
+#, kde-format
+msgid "https://edu.kde.org/kturtle"
+msgstr "https://edu.kde.org/kturtle"
+
+#: main.cpp:50
+#, kde-format
+msgid ""
+"KTurtle is an educational programming environment that aims to make learning "
+"how to program as easy as possible. To achieve this KTurtle makes all "
+"programming tools available from the user interface. The programming "
+"language used is TurtleScript which allows its commands to be translated."
+msgstr ""
+"KTurtle je výukové programovací prostředí navržené k co nejsnadnějšímu "
+"ovládání menšími dětmi. KTurtle chce naučit děti základům matematiky, "
+"geometrie a programování. K dosažení tohoto cíle jsou všechny programátorské "
+"nástroje dostupné z aplikace. Programovacím jazykem je TurtleScript, jehož "
+"příkazy mohou být přeloženy."
+
+#: main.cpp:51
+#, kde-format
+msgid "(c) 2003-2009 Cies Breijs"
+msgstr "(c) 2003-2009 Cies Breijs"
+
+#: main.cpp:53
+#, kde-format
+msgid "Cies Breijs"
+msgstr "Cies Breijs"
+
+#: main.cpp:53
+#, kde-format
+msgid "Initiator and core developer"
+msgstr "Iniciátor a kmenový vývojář"
+
+#: main.cpp:54
+#, kde-format
+msgid "Niels Slot"
+msgstr "Niels Slot"
+
+#: main.cpp:54 main.cpp:55
+#, kde-format
+msgid "Core developer"
+msgstr "Kmenový vývojář"
+
+#: main.cpp:55
+#, kde-format
+msgid "Mauricio Piacentini"
+msgstr "Mauricio Piacentini"
+
+#: main.cpp:62
+#, kde-format
+msgid "File or URL to open (in the GUI mode)"
+msgstr "Soubor nebo URL k otevření (v grafickém režimu)"
+
+#: main.cpp:63
+#, kde-format
+msgid ""
+"Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test "
+"scripts"
+msgstr ""
+"KTurtle je spuštěn v režimu D-Bus (bez grafického rozhraní), což je vhodné "
+"pro automatizované testovací skripty"
+
+#: main.cpp:64
+#, kde-format
+msgid ""
+"Starts KTurtle in testing mode (without a GUI), directly runs the specified "
+"local file"
+msgstr ""
+"KTurtle je spuštěn v testovacím režimu (bez grafického uživatelského "
+"rozhraní) a provede instrukce z určeného souboru"
+
+#: main.cpp:65
+#, kde-format
+msgid ""
+"Specifies the localization language by a language code, defaults to \"en_US"
+"\" (only works in testing mode)"
+msgstr ""
+"Určí použitý překlad aplikace kódem jazyka v testovacím režimu (standardně "
+"\"en_US\")"
+
+#. i18n("Only tokenizes the turtle code (only works in testing mode)")));
+#: main.cpp:67
+#, kde-format
+msgid ""
+"Translates turtle code to embeddable C++ example strings (for developers "
+"only)"
+msgstr "Přeloží program pro želvu do příkazů jazyka C++ (jen pro programátory)"
+
+#: mainwindow.cpp:62
+#, kde-format
+msgctxt "@info:status the application is ready for commands"
+msgid "Ready"
+msgstr "Připraven"
+
+#: mainwindow.cpp:176
+#, kde-format
+msgid "Create a new file"
+msgstr "Vytvoří nový soubor"
+
+#: mainwindow.cpp:177
+#, kde-format
+msgid "New File: Create a new file"
+msgstr "Nový soubor: vytvoří nový soubor"
+
+#: mainwindow.cpp:180
+#, kde-format
+msgid "Open an existing file"
+msgstr "Otevře existující soubor"
+
+#: mainwindow.cpp:181
+#, kde-format
+msgid "Open File: Open an existing file"
+msgstr "Otevři soubor: otevře existující soubor"
+
+#: mainwindow.cpp:185
+#, kde-format
+msgid "Open a recently used file"
+msgstr "Otevře nedávno použitý soubor"
+
+#: mainwindow.cpp:186
+#, kde-format
+msgid "Open Recent File: Open a recently used file"
+msgstr "Historie: otevře nedávno použitý soubor"
+
+#: mainwindow.cpp:188
+#, kde-format
+msgid "Get more examples..."
+msgstr "Získat více příkladů..."
+
+#: mainwindow.cpp:197
+#, kde-format
+msgid "Save the current file to disk"
+msgstr "Uloží aktuální soubor na disk"
+
+#: mainwindow.cpp:198
+#, kde-format
+msgid "Save File: Save the current file to disk"
+msgstr "Ulož soubor: uloží aktuální soubor na disk"
+
+#: mainwindow.cpp:202
+#, kde-format
+msgid "Save the current file under a different name"
+msgstr "Uloží aktuální soubor pod jiným jménem"
+
+#: mainwindow.cpp:203
+#, kde-format
+msgid "Save File As: Save the current file under a different name"
+msgstr "Ulož jako: uloží aktuální soubor pod jiným jménem"
+
+#: mainwindow.cpp:206
+#, kde-format
+msgid "Export to &HTML..."
+msgstr "Exportovat do &HTML..."
+
+#: mainwindow.cpp:207
+#, kde-format
+msgid "Export the contents of the editor as HTML"
+msgstr "Exportuje obsah editoru do HTML"
+
+#: mainwindow.cpp:208
+#, kde-format
+msgid "Export to HTML: Export the contents of the editor as HTML"
+msgstr ""
+"Exportovat do HTML: Exportovat obsah editoru do HTML (formát webové stránky)"
+
+#: mainwindow.cpp:212
+#, kde-format
+msgid "Print the code"
+msgstr "Vytiskne text programu"
+
+#: mainwindow.cpp:213
+#, kde-format
+msgid "Print: Print the code"
+msgstr "Tisk: vytiskne text programu"
+
+#: mainwindow.cpp:216
+#, kde-format
+msgid "Quit KTurtle"
+msgstr "Ukončí KTurtle"
+
+#: mainwindow.cpp:217
+#, kde-format
+msgid "Quit: Quit KTurtle"
+msgstr "Konec: ukončí KTurtle"
+
+#: mainwindow.cpp:221
+#, kde-format
+msgid "Undo a change in the editor"
+msgstr "Odstraní změnu v editoru"
+
+#: mainwindow.cpp:222
+#, kde-format
+msgid "Undo: Undo a change in the editor"
+msgstr "Zpět: odstraní změnu v editoru"
+
+#: mainwindow.cpp:227
+#, kde-format
+msgid "Redo a previously undone change in the editor"
+msgstr "Znovu udělá v změnu odstraněnou příkazem 'Zpět'"
+
+#: mainwindow.cpp:228
+#, kde-format
+msgid "Redo: Redo a previously undone change in the editor"
+msgstr "Znovu: znovu udělá v změnu odstraněnou příkazem 'Zpět'"
+
+#: mainwindow.cpp:233
+#, kde-format
+msgid "Cut the selected text to the clipboard"
+msgstr "Vystřihne označený text do schránky"
+
+#: mainwindow.cpp:234
+#, kde-format
+msgid "Cut: Cut the selected text to the clipboard"
+msgstr "Vyjmout: vystřihne označený text do schránky"
+
+#: mainwindow.cpp:239
+#, kde-format
+msgid "Copy the selected text to the clipboard"
+msgstr "Zkopíruje označený text do schránky"
+
+#: mainwindow.cpp:240
+#, kde-format
+msgid "Copy: Copy the selected text to the clipboard"
+msgstr "Kopírovat: zkopíruje označený text do schránky"
+
+#: mainwindow.cpp:245
+#, kde-format
+msgid "Paste the clipboard's content into the current selection"
+msgstr "Vloží obsah schránky do aktuálního výběru"
+
+#: mainwindow.cpp:246
+#, kde-format
+msgid "Paste: Paste the clipboard's content into the current selection"
+msgstr "Vložit: vloží obsah schránky do aktuálního výběru"
+
+#: mainwindow.cpp:249
+#, kde-format
+msgid "Select all the code in the editor"
+msgstr "Vybere celý text programu v editoru"
+
+#: mainwindow.cpp:250
+#, kde-format
+msgid "Select All: Select all the code in the editor"
+msgstr "Vyber vše: Vybere celý text programu v editoru"
+
+#: mainwindow.cpp:253
+#, kde-format
+msgid "Overwrite Mode"
+msgstr "Režim přepisování"
+
+#: mainwindow.cpp:255
+#, kde-format
+msgid "Toggle between the 'insert' and 'overwrite' mode"
+msgstr "Přepne mezi režimem 'vkládání' a 'přepis'"
+
+#: mainwindow.cpp:256
+#, kde-format
+msgid "Overwrite Mode: Toggle between the 'insert' and 'overwrite' mode"
+msgstr "Režim přepisování: Přepne mezi režimem 'vkládání' a 'přepis'"
+
+#: mainwindow.cpp:263
+#, kde-format
+msgid "Search through the code in the editor"
+msgstr "Prohledává text v editoru"
+
+#: mainwindow.cpp:264
+#, kde-format
+msgid "Find: Search through the code in the editor"
+msgstr "Hledat: prohledává text v editoru"
+
+#: mainwindow.cpp:267
+#, kde-format
+msgid "Continue searching through the code in the editor"
+msgstr "Pokračuje v prohledávání textu v editoru"
+
+#: mainwindow.cpp:268
+#, kde-format
+msgid "Find Next: Continue searching through the code in the editor"
+msgstr "Hledat následující: Pokračuje v prohledávání textu v editoru"
+
+#: mainwindow.cpp:271
+#, kde-format
+msgid "Continue searching backwards through the code in the editor"
+msgstr "Pokračuje ve zpětném prohledávání textu v editoru"
+
+#: mainwindow.cpp:272
+#, kde-format
+msgid ""
+"Find Previous: Continue searching backwards through the code in the editor"
+msgstr "Hledej předchozí: pokračuje ve zpětném prohledávávní textu v editoru"
+
+#: mainwindow.cpp:281
+#, kde-format
+msgid "Export to &Image (PNG)..."
+msgstr "Exportovat jako obrázek (PNG)..."
+
+#: mainwindow.cpp:282
+#, kde-format
+msgid "Export the current canvas to a PNG raster image"
+msgstr "Uloží aktuální plátno jako rastrový obrázek PNG"
+
+#: mainwindow.cpp:283
+#, kde-format
+msgid "Export to PNG: Export the current canvas to a PNG raster image"
+msgstr ""
+"Exportovat do obrázku (PNG): Uloží aktuální plátno jako rastrový obrázek PNG"
+
+#: mainwindow.cpp:287
+#, kde-format
+msgid "Export to &Drawing (SVG)..."
+msgstr "Exportovat kres&bu (SVG)..."
+
+#: mainwindow.cpp:288
+#, kde-format
+msgid "Export the current canvas to Scalable Vector Graphics"
+msgstr "Exportovat aktuální obsah plátna do formátu SVG (vektorová grafika)"
+
+#: mainwindow.cpp:289
+#, kde-format
+msgid "Export to SVG: Export the current canvas to Scalable Vector Graphics"
+msgstr ""
+"Exportovat do SVG: Exportovat aktuální obsah plátna do formátu SVG "
+"(vektorová grafika)"
+
+#: mainwindow.cpp:292
+#, kde-format
+msgid "&Print Canvas..."
+msgstr "Vytisknout &plátno..."
+
+#: mainwindow.cpp:294
+#, kde-format
+msgid "Print the canvas"
+msgstr "Vytiskne plátno"
+
+#: mainwindow.cpp:295
+#, kde-format
+msgid "Print: Print the canvas"
+msgstr "Tisk: vytiskne plátno"
+
+#: mainwindow.cpp:302
+#, kde-format
+msgid "Execute the program"
+msgstr "Provede program"
+
+#: mainwindow.cpp:303
+#, kde-format
+msgid "Run: Execute the program"
+msgstr "Spusť: provede program"
+
+#: mainwindow.cpp:306
+#, kde-format
+msgid "&Pause"
+msgstr "&Zastav"
+
+#: mainwindow.cpp:310
+#, kde-format
+msgid "Pause execution"
+msgstr "Pozastaví běh programu"
+
+#: mainwindow.cpp:311
+#, kde-format
+msgid "Pause: Pause execution"
+msgstr "Zastav: pozastaví běh programu"
+
+#: mainwindow.cpp:314
+#, kde-format
+msgid "&Abort"
+msgstr "&Ukonči"
+
+#: mainwindow.cpp:317
+#, kde-format
+msgid "Stop executing program"
+msgstr "Ukončí běh programu"
+
+#: mainwindow.cpp:318
+#, kde-format
+msgid "Abort: Stop executing program"
+msgstr "Ukonči: ukončí běh programu"
+
+#. i18n("&Indent"), "format-indent-more", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
+#. i18n("&Unindent"), "format-indent-less", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
+#. i18n("Cl&ean Indentation"), 0, 0, this, SLOT(slotCleanIndent()), ac, "edit_cleanIndent");
+#. i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
+#. i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
+#. Tools menu actions
+#: mainwindow.cpp:328
+#, kde-format
+msgid "&Direction Chooser..."
+msgstr "&Výběr směru..."
+
+#: mainwindow.cpp:330
+#, kde-format
+msgid "Shows the direction chooser dialog"
+msgstr "Ukáže dialog výběru směru"
+
+#: mainwindow.cpp:331
+#, kde-format
+msgid "Direction Chooser: Show the direction chooser dialog"
+msgstr "Výběr směru: ukáže dialogové okno výběru směru"
+
+#: mainwindow.cpp:334
+#, kde-format
+msgid "&Color Picker..."
+msgstr "&Kapátko..."
+
+#: mainwindow.cpp:336
+#, kde-format
+msgid "Shows the color picker dialog"
+msgstr "Ukáže dialog výběru barvy"
+
+#: mainwindow.cpp:337
+#, kde-format
+msgid "Color Picker: Show the color picker dialog"
+msgstr "Výběr barvy: ukáže dialogové okno výběru barvy"
+
+#: mainwindow.cpp:341
+#, kde-format
+msgid "Show &Editor"
+msgstr "Zobrazit &editor"
+
+#: mainwindow.cpp:343
+#, kde-format
+msgid "Show or hide the Code Editor"
+msgstr "Ukáže nebo skryje okno editoru programového kódu"
+
+#: mainwindow.cpp:344
+#, kde-format
+msgid "Show Code Editor: Show or hide the Code Editor"
+msgstr "Ukaž editor kódu: ukáže nebo skryje okno editoru programového kódu"
+
+#: mainwindow.cpp:351
+#, kde-format
+msgid "Show &Inspector"
+msgstr "Ukaž &inspektora programu"
+
+#: mainwindow.cpp:353
+#, kde-format
+msgid "Show or hide the Inspector"
+msgstr "Ukáže nebo skryje okno inspektora programu"
+
+#: mainwindow.cpp:354
+#, kde-format
+msgid "Show Inspector: Show or hide the Inspector"
+msgstr "Ukaž inspektora programu: ukáže nebo skryje okno inspektora programu"
+
+#: mainwindow.cpp:361
+#, kde-format
+msgid "Show E&rrors"
+msgstr "Zobrazit c&hyby"
+
+#: mainwindow.cpp:363
+#, kde-format
+msgid "Show or hide the Errors tab"
+msgstr "Ukáže nebo skryje kartu s chybami"
+
+#: mainwindow.cpp:364
+#, kde-format
+msgid "Show Errors: Show or hide the Errors tab"
+msgstr "Ukaž chyby: ukáže nebo skryje kartu s chybami"
+
+#. i18n("Show &Console"), this);
+#. actionCollection()->addAction("show_console", a);
+#. a->setStatusTip(i18n("Show or hide the interactive Console tab"));
+#. a->setWhatsThis(i18n("Show Console: Show or hide the interactive Console tab"));
+#. a->setCheckable(true);
+#. a->setChecked(false);
+#. connect(a, SIGNAL(toggled(bool)), consoleDock, SLOT(setVisible(bool)));
+#. connect(consoleDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
+#: mainwindow.cpp:378
+#, kde-format
+msgid "Show &Line Numbers"
+msgstr "Zobraz čí&sla řádků"
+
+#: mainwindow.cpp:380
+#, kde-format
+msgid "Turn the line numbers on/off in the editor"
+msgstr "Zapne/vypne zobrazení čísel řádků v editoru"
+
+#: mainwindow.cpp:381
+#, kde-format
+msgid "Show Line Numbers: Turn the line numbers on/off in the editor"
+msgstr "Zobraz čísla řádků: zapne/vypne zobrazení čísel řádků v editoru"
+
+#: mainwindow.cpp:392
+#, kde-format
+msgid "Get help on the command under the cursor"
+msgstr "Nápověda k příkazu pod kurzorem"
+
+#: mainwindow.cpp:393
+#, kde-format
+msgid "Context Help: Get help on the command under the cursor"
+msgstr "Kontextová nápověda: nápověda pro příkaz pod kurzorem"
+
+#: mainwindow.cpp:398
+#, kde-format
+msgid "Help"
+msgstr "Nápověda"
+
+#: mainwindow.cpp:399
+#, kde-format
+msgid "Help: Open manual for KTurtle"
+msgstr "Nápověda: otevře manuál pro KTurtle"
+
+#: mainwindow.cpp:403
+#, kde-format
+msgid "Console"
+msgstr "Konzole"
+
+#: mainwindow.cpp:410
+#, kde-format
+msgid "Execute"
+msgstr "Spustit"
+
+#: mainwindow.cpp:412
+#, kde-format
+msgid "Execute: Executes the current line in the console"
+msgstr "Spustit: Spustí v konzoli aktuální řádek"
+
+#: mainwindow.cpp:422
+#, kde-format
+msgid "Execute the program, or use the drop down menu to select the run speed"
+msgstr ""
+"Spusťte program, nebo použijte rozbalovací nabídku pro výběr rychlosti "
+"provádění"
+
+#: mainwindow.cpp:423
+#, kde-format
+msgid ""
+"Run: Execute the program, or use the drop down menu to select the run speed"
+msgstr ""
+"Spusť: Spusťte program, nebo použijte rozbalovací nabídku pro výběr "
+"rychlosti provádění"
+
+#: mainwindow.cpp:426
+#, kde-format
+msgctxt "@option:radio"
+msgid "Full Speed (&no highlighting and inspector)"
+msgstr "Plnou rychlostí (bez zvýraz&nění a inspektoru)"
+
+#: mainwindow.cpp:429
+#, kde-format
+msgid "Run the program at full speed, with highlighting and inspector disabled"
+msgstr "Spustí program plnou rychlostí s vypnutým zvýrazňováním a inspektorem"
+
+#: mainwindow.cpp:430
+#, kde-format
+msgid ""
+"Full Speed: Run the program at full speed, with highlighting and inspector "
+"disabled"
+msgstr ""
+"Rychle: spustí program plnou rychlostí s vypnutým zvýrazňováním a inspektorem"
+
+#: mainwindow.cpp:435
+#, kde-format
+msgctxt "@option:radio"
+msgid "&Full Speed"
+msgstr "&Rychle"
+
+#: mainwindow.cpp:439
+#, kde-format
+msgid "Run the program at full speed"
+msgstr "Spustí program plnou rychlostí"
+
+#: mainwindow.cpp:440
+#, kde-format
+msgid "Full Speed: Run the program at full speed"
+msgstr "Rychle: spustí program plnou rychlostí"
+
+#: mainwindow.cpp:445
+#, kde-format
+msgctxt "@option:radio choose the slow speed"
+msgid "&Slow"
+msgstr "&Středně rychle"
+
+#: mainwindow.cpp:448
+#, kde-format
+msgid "Run the program at a slow speed"
+msgstr "Spustí program pomalu"
+
+#: mainwindow.cpp:449
+#, kde-format
+msgid "Slow Speed: Run the program at a slow speed"
+msgstr "Pomalu: Spustí program pomalou rychlostí"
+
+#: mainwindow.cpp:454
+#, kde-format
+msgctxt "@option:radio"
+msgid "S&lower"
+msgstr "P&omaleji"
+
+#: mainwindow.cpp:457
+#, kde-format
+msgid "Run the program at a slower speed"
+msgstr "Spustí program menší rychlostí"
+
+#: mainwindow.cpp:458
+#, kde-format
+msgid "Slower Speed: Run the program at a slower speed"
+msgstr "Pomaleji: spustí program menší rychlostí"
+
+#: mainwindow.cpp:463
+#, kde-format
+msgctxt "@option:radio"
+msgid "Sl&owest"
+msgstr "&Plíživě"
+
+#: mainwindow.cpp:466
+#, kde-format
+msgid "Run the program at the slowest speed"
+msgstr "Spustí program co nejpomaleji"
+
+#: mainwindow.cpp:467
+#, kde-format
+msgid "Slowest Speed: Run the program at the slowest speed"
+msgstr "Nejpomaleji: Spustí program co nejpomaleji"
+
+#: mainwindow.cpp:472
+#, kde-format
+msgctxt "@option:radio"
+msgid "S&tep-by-Step"
+msgstr "&Krok po kroku"
+
+#: mainwindow.cpp:475
+#, kde-format
+msgid "Run the program one step at a time"
+msgstr "Program zastaví po provedení každého kroku"
+
+#: mainwindow.cpp:476
+#, kde-format
+msgid "Step Speed: Run the program one step at a time"
+msgstr "Krokování: program běží krok po kroku"
+
+#: mainwindow.cpp:496
+#, kde-format
+msgid ""
+"Canvas: This is where the turtle moves and draws when the program is running"
+msgstr ""
+"Plátno: prostor, kde se při provádění programu pohybuje želva a nechává za "
+"sebou stopu "
+
+#: mainwindow.cpp:505
+#, kde-format
+msgid "E&rrors"
+msgstr "C&hyby"
+
+#: mainwindow.cpp:535
+#, kde-format
+msgid "&Editor"
+msgstr "&Editor"
+
+#: mainwindow.cpp:549
+#, kde-format
+msgid "Editor: Write your KTurtle commands here"
+msgstr "Editor: zde pište své KTurtle příkazy"
+
+#: mainwindow.cpp:552
+#, kde-format
+msgid "&Inspector"
+msgstr "&Inspektor"
+
+#: mainwindow.cpp:562
+#, kde-format
+msgid ""
+"Inspector: See information about variables and functions when the program "
+"runs"
+msgstr ""
+"Inspektor: zobrazí hodnoty proměnných a parametry funkcí za běhu programu"
+
+#: mainwindow.cpp:655
+#, kde-format
+msgid "Switch to the %1 dictionary"
+msgstr "Přepne rozhraní do jazyku %1"
+
+#: mainwindow.cpp:734
+#, kde-format
+msgid " OVR "
+msgstr "Přepiš"
+
+#: mainwindow.cpp:734
+#, kde-format
+msgid " INS "
+msgstr "Vlož"
+
+#: mainwindow.cpp:742
+#, kde-format
+msgid "<nothing under cursor>"
+msgstr "<nothing under cursor>"
+
+#: mainwindow.cpp:743
+#, kde-format
+msgid "Help on: %1"
+msgstr "Pomoc k: %1"
+
+#: mainwindow.cpp:748
+#, kde-format
+msgid " Line: %1 Column: %2 "
+msgstr "Řádek: %1 Sloupec: %2"
+
+#: mainwindow.cpp:756
+#, kde-format
+msgid "\"%1\" <%2>"
+msgstr "\"%1\" <%2>"
+
+#: mainwindow.cpp:759
+#, kde-format
+msgid "<variable>"
+msgstr "<variable>"
+
+#: mainwindow.cpp:760
+#, kde-format
+msgid "<number>"
+msgstr "<number>"
+
+#: mainwindow.cpp:761
+#, kde-format
+msgid "<comment>"
+msgstr "<comment>"
+
+#: mainwindow.cpp:762
+#, kde-format
+msgid "<string>"
+msgstr "<string>"
+
+#: mainwindow.cpp:768
+#, kde-format
+msgid "scope"
+msgstr "rozsah"
+
+#: mainwindow.cpp:770
+#, kde-format
+msgid "assignment"
+msgstr "přiřazení"
+
+#: mainwindow.cpp:772
+#, kde-format
+msgid "parenthesis"
+msgstr "závorky"
+
+#: mainwindow.cpp:774
+#, kde-format
+msgid "mathematical operator"
+msgstr "matematický operátor"
+
+#: mainwindow.cpp:776
+#, kde-format
+msgid "expression"
+msgstr "výraz"
+
+#: mainwindow.cpp:778
+#, kde-format
+msgid "boolean operator"
+msgstr "pravdivostní operátor"
+
+#: mainwindow.cpp:780
+#, kde-format
+msgid "learned command"
+msgstr "naučený příkaz"
+
+#: mainwindow.cpp:782
+#, kde-format
+msgid "argument separator"
+msgstr "oddělovač argumentů"
+
+#: mainwindow.cpp:785
+#, kde-format
+msgid "command"
+msgstr "příkaz"
+
+#: mainwindow.cpp:788
+#, kde-format
+msgid "controller command"
+msgstr "příkaz řadiče"
+
+#: mainwindow.cpp:813
+#, kde-format
+msgid "Could not change the language to %1."
+msgstr "Nelze změnit jazyk na %1."
+
+# rozuměj vestavěný překlad UI
+#: mainwindow.cpp:821
+#, kde-format
+msgid "English [built in]"
+msgstr "Anglický [vestavěný]"
+
+#: mainwindow.cpp:822
+#, kde-format
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+# app title on not-loaded file
+#: mainwindow.cpp:970
+#, kde-format
+msgid "untitled"
+msgstr "Bez názvu"
+
+#: mainwindow.cpp:1012
+#, kde-format
+msgid "Save as Picture"
+msgstr "Uložit jako obrázek"
+
+#: mainwindow.cpp:1014
+#, kde-format
+msgid "PNG Images"
+msgstr "Obrázky PNG"
+
+#: mainwindow.cpp:1030
+#, kde-format
+msgctxt "@title:window"
+msgid "Save as SVG"
+msgstr "Uložit jako SVG"
+
+#: mainwindow.cpp:1030
+#, kde-format
+msgid "Scalable Vector Graphics"
+msgstr "Škálovatelná vektorová grafika"
+
+#: mainwindow.cpp:1040
+#, kde-format
+msgctxt "@title:window"
+msgid "Save code as HTML"
+msgstr "Uložit kód jako HTML"
+
+#: mainwindow.cpp:1040
+#, kde-format
+msgid "HTML documents"
+msgstr "HTML dokumenty"
+
+#: mainwindow.cpp:1058
+#, kde-format
+msgid "Input"
+msgstr "Uživatelský vstup"
+
+#: mainwindow.cpp:1067
+#, kde-format
+msgid "Message"
+msgstr "Zpráva"

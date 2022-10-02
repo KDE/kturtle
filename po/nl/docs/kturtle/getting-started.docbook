@@ -1,0 +1,304 @@
+<chapter id="getting-started">
+<title
+>Aan de slag</title>
+<para
+>Als je &kturtle; start, dan zie je iets dat hier op lijkt:</para>
+<screenshot>
+  <screeninfo
+>Hier is een schermbeeld van &kturtle; bij de eerste keer.</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>&kturtle; de eerste keer</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+<para
+>In deze beginnersgids wordt aangenomen dat de &turtlescript;-opdrachten in het Engels zijn. Je kunt dit veranderen in het menu  <menuchoice
+><guimenu
+>Instellingen</guimenu
+><guisubmenu
+>Scripttaal</guisubmenu
+></menuchoice
+>. Let erop dat de taal die je hier instelt voor &kturtle; de taal is waarin je de  &turtlescript;-opdrachten typt, en niet de taal is die door &kde; op je computer wordt gebruikt, in de  interface en menu's van &kturtle;.</para>
+
+<sect1 id="first-steps">
+<title
+>De eerste stappen met &turtlescript;: ontmoet de schildpad!</title>
+<para
+>Je hebt vast het kleine schildpadje gezien in het midden van het canvas. Je staat op het punt te leren hoe je die kunt bedienen met behulp van commando's in de codebewerker.</para>
+
+<sect2 id="the-turtle-moves">
+<title
+>De schildpad beweegt</title>
+<para
+>Laten we beginnen bij het laten bewegen van de schildpad. Onze schildpad kan op 3 manieren bewegen: (1) vooruit en achteruit, (2) naar links en naar rechts en (3) hij kan direct naar een (andere) positie op het scherm gaan. Probeer bijvoorbeeld dit eens:</para>
+<para>
+<screen
+>vooruit 100
+draailinks 90 
+</screen
+>Type of kopieer en plak de code in de bewerker en voer deze uit (gebruik <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Uitvoeren</guimenu
+><guimenuitem
+>Uitvoeren</guimenuitem
+></menuchoice
+></link
+>) en bekijk het resultaat.</para>
+
+<para
+>Als je de commando's zoals hierboven in de codebewerker hebt ingetypt en uitgevoerd, dan heb je een of meer van de volgende acties gezien:</para>
+<orderedlist>
+<listitem
+><para
+>Dat &mdash; na het uitvoeren van de commando's &mdash; de schildpad omhoog gaat, een lijn tekent en een kwartslag (90 graden) naar links draait. Dit doet hij omdat je de commando's <link linkend="forward"
+><userinput
+>vooruit</userinput
+></link
+> en <link linkend="turnleft"
+><userinput
+>draailinks</userinput
+></link
+> hebt gegeven.</para>
+</listitem>
+<listitem>
+<para
+>Dat de kleur van de code veranderde terwijl je die intypte: deze functie heet <emphasis
+>intuïtieve accentuering</emphasis
+> &mdash; verschillende soorten commando's worden in verschillende kleuren geaccentueerd. Dit maakt het lezen van grote stukken programmacode heel wat eenvoudiger.</para>
+</listitem>
+<listitem>
+<para
+>Dat de schildpad een dunne zwarte lijn heeft getekend.</para>
+</listitem>
+<listitem>
+<para
+>Mogelijk kreeg je een foutmelding. Dit kan twee dingen betekenen: je hebt een fout gemaakt bij het kopiëren van de commando's, of je hebt de juiste taal voor de &turtlescript;-commando's nog niet goed ingesteld. Je kunt de taal instellen via het menu <menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>Scripttaal</guimenuitem
+></menuchoice
+>.</para>
+</listitem>
+</orderedlist>
+
+<para
+>Je begrijpt wel dat het commando <userinput
+>vooruit 100</userinput
+> de schildpad vooruit laat gaan en een lijn tekenen, en dat <userinput
+>draailinks 90</userinput
+> de schildpad 90 <glossterm linkend="degrees"
+>graden</glossterm
+> naar links laat draaien.</para>
+
+<para
+>Bekijk de volgende verwijzingen naar de programmahandleiding voor een complete uitleg van deze commando's: <link linkend="forward"
+><userinput
+>vooruit</userinput
+></link
+>, <link linkend="backward"
+><userinput
+>achteruit</userinput
+></link
+>, <link linkend="turnleft"
+><userinput
+>draailinks</userinput
+></link
+>, and <link linkend="turnright"
+><userinput
+>draairechts</userinput
+></link
+>.</para>
+</sect2>
+
+<sect2 id="more-examples">
+<title
+>Meer voorbeelden</title>
+<para
+>Het eerste voorbeeld was vrij eenvoudig, dus laten we verder gaan!</para>
+
+<para>
+
+<screen
+>canvasmaat 200,200
+canvaskleur 0,0,0
+penkleur 255,0,0
+pendikte 5
+
+ganaar 20,20
+richting 135
+
+vooruit 200
+draailinks 135
+vooruit 100
+draailinks 135
+vooruit 141
+draailinks 135
+vooruit 100
+draailinks 45
+
+ganaar 40, 100
+</screen
+>Ook hier kun je de programmacode intypen of kopiëren en plakken in de codebewerker, of door het voorbeeld <filename
+>pijl</filename
+> in het menu <guimenu
+>Voorbeelden</guimenu
+> te openen en dat uit te voeren (gebruik <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Uitvoeren</guimenu
+><guimenuitem
+>Uitvoeren</guimenuitem
+></menuchoice
+></link
+>) en het resultaat te bekijken. In de volgende voorbeelden wordt verwacht dat je weet hoe dit moet.</para>
+
+<para
+>Je hebt vast gemerkt dat er in het tweede voorbeeld veel meer programmacode is. Ook heb je enkele nieuwe commando's gezien. Hier is een korte uitleg van alle nieuwe commando's:</para>
+
+<para
+>Na het commando <userinput
+>alsnieuw</userinput
+> wordt alles weer als toen &kturtle; net was gestart (ja, inderdaad, als nieuw).</para>
+
+<para
+><userinput
+>canvasmaat 200,200</userinput
+> zet de breedte en hoogte van het canvas (het speelterrein voor de schildpad) op 200 <glossterm linkend="pixels"
+>pixels</glossterm
+>. De breedte en hoogte zijn gelijk aan elkaar, dus krijgen we een vierkant canvas.</para>
+
+<para
+><userinput
+>canvaskleur 0,0,0</userinput
+> maakt het canvas zwart. <userinput
+>0,0,0</userinput
+> is een zogenaamde <glossterm linkend="rgb"
+>RoodGroenBlauw-kleurcombinatie (RGB)</glossterm
+>. Door alle waarden op <userinput
+>0</userinput
+> te zetten krijg je een zwart resultaat.</para>
+
+<para
+><userinput
+>penkleur 255,0,0</userinput
+> maakt de kleur van de pen rood. <userinput
+>255,0,0</userinput
+> is een <glossterm linkend="rgb"
+>RGB-kleurcombinatie</glossterm
+> waarbij alleen de rode waarde op <userinput
+>255</userinput
+> (volledig aan) is ingesteld. De andere waarden (groen en blauw) krijgen de waarde <userinput
+>0</userinput
+> (volledig uit). Dit geeft een heldere kleur rood.</para>
+
+<para
+>Als je de kleurwaarden niet begrijpt, lees dan even in de woordenlijst wat <glossterm linkend="rgb"
+>RGB-combinaties</glossterm
+> zijn</para>
+
+<para
+><userinput
+>pendikte 5</userinput
+> zet de dikte van de pen op <userinput
+>5</userinput
+> <glossterm linkend="pixels"
+>pixels</glossterm
+>. Van nu af zal elke lijn die de schildpad tekent de dikte <userinput
+>5</userinput
+> hebben, totdat we de <userinput
+>pendikte</userinput
+> weer veranderen.</para>
+
+<para
+><userinput
+>ganaar 20,20</userinput
+> vertelt de schildpad dat hij naar een bepaalde plek op het canvas moet gaan. Gerekend vanuit de linker bovenhoek ligt deze plek 20 <glossterm linkend="pixels"
+>pixels</glossterm
+> naar rechts, en <glossterm linkend="pixels"
+>20</glossterm
+> pixels naar beneden. Je ziet dat met het commando <userinput
+>ganaar</userinput
+> de schildpad geen lijn tekent.</para>
+
+<para
+><userinput
+>richting 135</userinput
+> bepaalt de richting van de schildpad. De commando's <userinput
+>draailinks</userinput
+> en <userinput
+>draairechts</userinput
+> draaien de schildpad naar een andere richting. Het commando <userinput
+>richting</userinput
+> verandert de hoek van de schildpad vanuit positie nul, en is dus niet afhankelijk van de vorige richting van de schildpad.</para>
+
+<para
+>Na het commando <userinput
+>richting</userinput
+> volgen een aantal <userinput
+>vooruit</userinput
+>- en <userinput
+>draailinks</userinput
+>-commando's. Met deze commando's wordt de tekening gemaakt.</para>
+
+<para
+>Tot slot wordt het commando <userinput
+>ganaar</userinput
+> gebruikt om de schildpad naar ergens anders te verplaatsen.</para>
+
+<para
+>Volg alle verwijzingen naar de programmeerhandleiding. Hier vind je een grondige uitleg van elk commando.</para>
+
+
+</sect2>
+</sect1>
+
+
+
+<!--        EXTRA SECTIONS CAN BE ADDED TO THE "GETTING STARTED"
+
+<sect1 id="calculations">
+<title
+>Simple Calculations</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_variables">
+<title
+>Using Variables: creating 'number containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_strings">
+<title
+>Using strings: creating 'text containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="logic">
+<title
+>Logic: asking the computer simple questions</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="recursion">
+<title
+>Recursion: the Turtle is using itself</title>
+<para>
+Draw a maze for example
+</para>
+</sect1>
+-->
+
+
+</chapter>

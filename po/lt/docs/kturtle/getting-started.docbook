@@ -1,0 +1,303 @@
+<chapter id="getting-started">
+<title
+>Pirmieji žingsniai</title>
+<para
+>Paleidę &kturtle; Jūs matote kažką panašaus į šitai: <screenshot
+> <screeninfo
+>Tai momentinė ekrano kopiją, kurioje matosi pirmą kartą paleista &kturtle; programa</screeninfo
+> <mediaobject
+> <imageobject
+> <imagedata fileref="mainwindow.png" format="PNG"/> </imageobject
+> <textobject
+> <phrase
+>Pirmą kartą paleista &kturtle;</phrase
+> </textobject
+> </mediaobject
+> </screenshot
+> Šiame įvade daroma prielaida, kad  &turtlescript; komandos yra lietuvių kalba. Šią kalbą galima pakeisti menių punkte <menuchoice
+><guimenu
+>Nuostatos</guimenu
+><guisubmenu
+>Scenarijaus kalba</guisubmenu
+></menuchoice
+>. Žinokite, kad šia kalba, kurią parinkote &kturtle; programoje, Jūs rašysite &turtlescript; komandas, tačiau ši parinktis nekeis kalbos, kuri naudojama Jūsų kompiuteryje veikiančiame &kde; ir kuria pateikiama &kturtle; sąsaja bei meniu.</para>
+
+<sect1 id="first-steps">
+<title
+>Pirmieji žingsniai su &turtlescript;: susipažinkite su Vėžliuku!</title>
+<para
+>Jūs turbūt pastebėjote vėžliuką drobės viduryje: Jūs netrukus sužinosite kaip jį galima valdyti kodo rengyklėje rašomomis komandomis.</para>
+
+<sect2 id="the-turtle-moves">
+<title
+>Vėžliukas juda</title>
+<para
+>Pradžiai pabandykite vėžliuką pajudinti. Šis vėžliukas gali judėti trim būdais: (1) jis gali slinkti pirmyn arba atgal, (2) pasisukti kairėn arba dešinėn, arba tiesiog peršokti į nurodytą vietą drobėje. Kaip pavyzdį pabadykite šitai:</para>
+<para>
+<screen
+>priekin 100
+kairėn 90 
+</screen>
+Šį kodą surinkite kodo rašyklėje, arba, tiesiog, kopijuokite ir įdėkite į kodo rašyklę. Jį paleidę (parinkę menių punktą <link linkend="file-execute"
+><menuchoice
+><guimenu
+>Paleisti</guimenu
+><guimenuitem
+>Paleisti</guimenuitem
+></menuchoice
+></link
+>) pamatysite šio kodo vykdymo rezultatą.</para>
+
+<para
+>Kai kodo rašyklėje rašysite komandas, panašias į ką tik minėtas, ir jas paleisite, tai pastebėsite vieną ar keletą dalykų, tokių kaip šie:</para>
+<orderedlist>
+<listitem
+><para
+>&mdash; Vykdant Jūsų parašytas komandas &mdash;, vėžliukas pajudės viršun, piešdamas atkarpą, po to, pasisuks 90 laipsnių kairėn. Jis taip pasielgs todėl, kad Jūsų parašytoje programoje naudojote komandas <link linkend="forward"
+><userinput
+>priekin</userinput
+></link
+> ir <link linkend="turnleft"
+><userinput
+>kairėn</userinput
+></link
+>.</para>
+</listitem>
+<listitem>
+<para
+>Jums berašant kodą, jo spalva pasikeitė: ši ypatybė vadinama <emphasis
+>intuityviu paryškinimu</emphasis
+> &mdash; skirtingos komandos paryškinamos skirtingai. Tai žymiai palengvina didelių kodo blokų skaitymą.</para>
+</listitem>
+<listitem>
+<para
+>Vėžliukas, kaip pėdsaką, brėžia juodą ploną liniją.</para>
+</listitem>
+<listitem>
+<para
+>Galbūt Jums pranešė apie aptiktą klaidą. Tai galėjo įvykti dėl dviejų dalykų: Jūs arba padarėte klaidą kopijuodami komandas, arba vis dar privalote nustatyti tinkamą &turtlescript; komandų kalbą (tai galite padaryti parinkdami menių punktą <menuchoice
+><guimenu
+>Nuostatos</guimenu
+><guisubmenu
+>Scenarijaus kalba</guisubmenu
+></menuchoice
+>).</para>
+</listitem>
+</orderedlist>
+
+<para
+>Ko gero Jūs jau supratote, kad komanda <userinput
+>priekin 100</userinput
+> vėžliukui liepia judėti pirmyn, brėžiant liniją kaip pėdsaką, o komanda <userinput
+>kairėn 90</userinput
+> jam liepia pasisukti 90 <glossterm linkend="degrees"
+>laipsnių</glossterm
+> kairėn.</para>
+
+<para
+>Jei norite daugiau sužinoti apie šias naująsias komandas, žvilgtelėkite šiomis nuorodomis į žinyną: <link linkend="forward"
+><userinput
+>priekin</userinput
+></link
+>, <link linkend="backward"
+><userinput
+>atgal</userinput
+></link
+>, <link linkend="turnleft"
+><userinput
+>kairėn</userinput
+></link
+>, ir <link linkend="turnright"
+><userinput
+>dešinėn</userinput
+></link
+>.</para>
+</sect2>
+
+<sect2 id="more-examples">
+<title
+>Daugiau pavyzdžių</title>
+<para
+>Pirmasis pavyzdys labai paprastas, tad tęskime!</para>
+
+<para>
+
+<screen
+>pradžių_pradžia
+
+nustatyk_lauko_dydį 200,200
+keisk_foną 0,0,0
+pieštuko_spalva 255,0,0
+pieštuko_storis 5
+
+eik_x_y 20,20
+žvelk 135
+
+priekin 200
+kairėn 135
+priekin 100
+kairėn 135
+priekin 141
+kairėn 135
+priekin 100
+kairėn 45
+
+eik_x_y 40, 100
+</screen>
+Vėl gi, šį kodą Jūs galite surinkti kodo rašyklėje, arba jį kopijuoti ir įdėti rašyklėn, be to, šį kodą galite atverti menių punkte <guimenu
+>Pavyzdžiai</guimenu
+> parinkę pavyzdį <filename
+>rodyklė</filename
+>. Jį paleidę (parinkę <link linkend="file-execute"
+><menuchoice
+><guimenu
+>Paleisti</guimenu
+><guimenuitem
+>Paleisti</guimenuitem
+></menuchoice
+></link
+>) pamatysite šio kodo vykdymo rezultatą. Tikimės, kad kituose pavyzdžiuose Jūs jau žinosite ką reikia daryti.</para>
+
+<para
+>Jūs tikriausiai atkreipėt dėmesį į tai, kad antrame pavyzdyje yra daug daugiau kodo. Be to, pastebėjot daugelį naujų komandų. Čia patekti trumpi naujųjų komandų paaiškinimai:</para>
+
+<para
+>Įvykdžius komandą <userinput
+>pradžių_pradžia</userinput
+> viskas nustatoma taip, lyg Jūs ką tik būtumėte paleidę  &kturtle;.</para>
+
+<para
+>Komanda <userinput
+>nustatyk_lauko_dydį 200,200</userinput
+> nustato 200 <glossterm linkend="pixels"
+>pikselių</glossterm
+> pločio ir aukščio drobę. Kadangi plotis ir aukštis yra vienodi, tai drobė gaunasi kvadratinė.</para>
+
+<para
+>Komanda <userinput
+>keisk_foną 0,0,0</userinput
+> drobę nuspalvina juodai. Skaičių kombinacija <userinput
+>0,0,0</userinput
+> tai <glossterm linkend="rgb"
+>RŽM spalvų modelis</glossterm
+>, kuriame visos vertės nustatytos į 0, taip gaunama juoda spalva.</para>
+
+<para
+><userinput
+>pieštuko_spalva 255,0,0</userinput
+> nustato raudoną pieštuko spalvą. Skaičių kombinacija <userinput
+>255,0,0</userinput
+> tai <glossterm linkend="rgb"
+>RŽM modelis</glossterm
+>, kur tik raudona spalva yra nustatyta į <userinput
+>255</userinput
+> (maksimali vertė), tuo tarpu kitos (žalia ir mėlyna) nustatytos į <userinput
+>0</userinput
+> (minimali vertė). Taip gaunama raudona spalva.</para>
+
+<para
+>Jeigu nesuprantate spalvų verčių prasmės, apie tai galite pasiskaityti žinyno temoje apie <glossterm linkend="rgb"
+>RŽM modelį</glossterm
+>.</para>
+
+<para
+>Komanda <userinput
+>pieštuko_storis 5</userinput
+> nustatomas <userinput
+>5</userinput
+> <glossterm linkend="pixels"
+>pikselių</glossterm
+> pieštuko storis. Po šios komandos, kiekviena vėžliuko naujai brėžiama linija bus <userinput
+>5</userinput
+> <glossterm linkend="pixels"
+>pikselių</glossterm
+> storio. Jei vėliau prireiktų kitokio storio, jį galima keisti minėta komanda <userinput
+>pieštuko_storis</userinput
+>.</para>
+
+<para
+>Komanda <userinput
+>eik_x_y 20,20</userinput
+> vėžliukui liepiama peršokti į nurodytą drobės vietą. Kadangi čia koordinačių pradžia yra drobės kairiame viršutiniame kampe, tad nurodytoji vieta yra 20 <glossterm linkend="pixels"
+>pikselių</glossterm
+> dešinėn nuo kairiojo drobės krašto, ir 20 <glossterm linkend="pixels"
+>pikselių</glossterm
+> žemyn nuo viršutiniojo krašto. Atkreipkit dėmesį, kad vėžliukas nebrėžia linijos kai vykdo komandą <userinput
+>eik_x_y</userinput
+>.</para>
+
+<para
+>Komanda <userinput
+>žvelk 135</userinput
+> nustatoma vėžliuko kryptis. Naudojant komandas <userinput
+>kairėn</userinput
+> ir <userinput
+>dešinėn</userinput
+> vėžliuko kryptis nustatoma atsižvelgiant į jo dabartinę kryptį. Vėžliuko kryptį nustatant komanda <userinput
+>žvelk</userinput
+> nėra atsižvelgiama į esamą vėžliuko kryptį &mdash; krypties kampas atidedamas nuo nulio.</para>
+
+<para
+>Po komandos <userinput
+>žvelk</userinput
+> eina nemažai komandų <userinput
+>priekin</userinput
+> bei <userinput
+>kairėn</userinput
+>.  Jas vykdydamas vėžliukas piešia.</para>
+
+<para
+>Paskutinioji komanda <userinput
+>eik_x_y</userinput
+> liepia vėžliukui pasitraukti į šoną.</para>
+
+<para
+>Neužmirškite žvilgtelėti į žinyną. Žinyne Jūs rasite išsamesnius komandų paaiškinimus.</para>
+
+
+</sect2>
+</sect1>
+
+
+
+<!--        EXTRA SECTIONS CAN BE ADDED TO THE "GETTING STARTED"
+
+<sect1 id="calculations">
+<title
+>Simple Calculations</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_variables">
+<title
+>Using Variables: creating 'number containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_strings">
+<title
+>Using strings: creating 'text containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="logic">
+<title
+>Logic: asking the computer simple questions</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="recursion">
+<title
+>Recursion: the Turtle is using itself</title>
+<para>
+Draw a maze for example
+</para>
+</sect1>
+-->
+
+
+</chapter>

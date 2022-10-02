@@ -1,0 +1,306 @@
+<chapter id="getting-started">
+<title
+>Erste Schritte</title>
+<para
+>Beim ersten Start von &kturtle; sehen Sie folgendes Bild:</para>
+<screenshot>
+  <screeninfo
+>Hier sehen Sie ein Bildschirmfoto von &kturtle;, wenn Sie es zum ersten Mal starten</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>&kturtle; beim ersten Start</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+<para
+>In diesem Handbuch zur Einführung wird angenommen, dass die Sprache der &turtlescript;-Befehle auf deutsch eingestellt ist. Die Spracheinstellung können Sie unter <menuchoice
+><guimenu
+>Einstellungen</guimenu
+><guisubmenu
+>Skript-Sprache</guisubmenu
+></menuchoice
+>  finden. Die hier für &kturtle; eingestellte Sprache wird für die &turtlescript;-Befehle verwendet, das ist nicht die Sprache für &kde; und für die grafische Oberfläche und die Menüs von &kturtle;.</para>
+
+<sect1 id="first-steps">
+<title
+>Erste Schritte mit &turtlescript;: Spielen Sie mit der Schildkröte!</title>
+<para
+>Wie Sie sicher bemerkt haben, steht die Schildkröte mitten auf der Zeichenfläche: Sie lernen hier, die Schildkröte mit Befehlen im Editor zu kontrollieren.</para>
+
+<sect2 id="the-turtle-moves">
+<title
+>Die Schildkröte bewegt sich</title>
+<para
+>Beginnen Sie damit, die Schildkröte in Bewegung zu setzen. Unsere Schildkröte kennt drei Arten von Bewegungen. (1) sie kann vorwärts oder rückwärts gehen, (2) sie kann nach links oder rechts drehen und (3) sie kann direkt zu einer Position auf der Zeichenfläche springen. Versuchen Sie zum Beispiel diese Befehle:</para>
+<para>
+<screen
+>vorwärts 100
+linksdrehen 90 
+</screen
+>Im Editor können Sie Text direkt eingeben oder kopieren und einfügen. Mit <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Ausführen</guimenu
+><guimenuitem
+>Ausführen</guimenuitem
+></menuchoice
+></link
+> sehen Sie das Ergebnis.</para>
+
+<para
+>Nach der Eingabe und Ausführung der oben gezeigten Befehle im Editor ist Ihnen vielleicht folgendes aufgefallen:</para>
+<orderedlist>
+<listitem
+><para
+>Die Schildkröte bewegt sich &mdash; nach der Ausführung der Befehle &mdash; nach oben, zeichnet eine Linie und macht dann eine Vierteldrehung nach links. Dies haben Sie mit den Befehlen <link linkend="forward"
+><userinput
+>vorwärts</userinput
+></link
+> und <link linkend="turnleft"
+><userinput
+>linksdrehen</userinput
+></link
+> erreicht.</para>
+</listitem>
+<listitem>
+<para
+>Die Farbe des Codes hat sich bei der Eingabe verändert, diese Eigenschaft nennt sich <emphasis
+>intuitive Hervorhebung</emphasis
+> &mdash;, verschiedene Arten von Befehlen werden unterschiedlich dargestellt. Dies erleichtert das Lesen von Quelltexten.</para>
+</listitem>
+<listitem>
+<para
+>Die Schildkröte zeichnet eine dünne schwarze Linie.</para>
+</listitem>
+<listitem>
+<para
+>Vielleicht haben Sie auch eine Fehlermeldung bekommen. Das kann zwei Gründe haben, entweder haben Sie die Befehle falsch geschrieben oder Sie müssen noch die richtige Sprache für die &turtlescript;-Befehle einstellen (mit <menuchoice
+><guimenu
+>Einstellungen</guimenu
+><guisubmenu
+>Skript-Sprache</guisubmenu
+></menuchoice
+>).</para>
+</listitem>
+</orderedlist>
+
+<para
+>Sie sehen wahrscheinlich, das <userinput
+>vorwärts 100</userinput
+> die Schildkröte vorwärts bewegt und dabei eine Linie zeichnet, und das <userinput
+>linksdrehen 90</userinput
+> die Schildkröte um 90 <glossterm linkend="degrees"
+>Grad</glossterm
+> nach links dreht.</para>
+
+<para
+>In den folgenden Verweisen zum Referenzhandbuch finden Sie ausführliche Erklärungen der neuen Befehle: <link linkend="forward"
+><userinput
+>vorwärts</userinput
+></link
+>, <link linkend="backward"
+><userinput
+>rückwärts</userinput
+></link
+>, <link linkend="turnleft"
+><userinput
+>linksdrehen</userinput
+></link
+> und <link linkend="turnright"
+><userinput
+>rechtsdrehen</userinput
+></link
+>.</para>
+</sect2>
+
+<sect2 id="more-examples">
+<title
+>Weitere Beispiele</title>
+<para
+>Das erste Beispiel war sehr einfach, deshalb machen wir weiter!</para>
+
+<para>
+
+<screen
+>zurücksetzen
+
+papiergröße 200,200
+papierfarbe 0,0,0
+stiftfarbe 255,0,0
+stiftbreite 5
+
+gehe 20,20
+richtung 135
+
+vorwärts 200
+linksdrehen 135
+vorwärts 100
+linksdrehen 135
+vorwärts 141
+linksdrehen 135
+vorwärts 100
+linksdrehen 45
+
+gehe 40, 100
+</screen
+>Auch hier können Sie den Quelltext eingeben oder kopieren und in den Editor einfügen. Oder Sie öffnen die Datei <filename
+>pfeil</filename
+> im Menü <guimenu
+>Beispiele</guimenu
+> und führen sie aus (mit <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Ausführen</guimenu
+><guimenuitem
+>Ausführen</guimenuitem
+></menuchoice
+></link
+>), um das Ergebnis zu sehen. In den folgenden  Beispielen werden diese Möglichkeiten zur Eingabe von Quelltext nicht mehr ausdrücklich genannt.</para>
+
+<para
+>Wie Sie vielleicht festgestellt haben, benutzt das zweite Beispiel viel mehr Quelltext. Außerdem enthält es viele neue Befehle, die im folgenden kurz erklärt werden.</para>
+
+<para
+>Mit dem Befehl <userinput
+>zurücksetzen</userinput
+> wird alles wieder wie direkt nach dem Start von &kturtle; eingestellt.</para>
+
+<para
+><userinput
+>papiergröße 200,200</userinput
+> setzt die Breite und Höhe der Zeichenfläche auf 200 <glossterm linkend="pixels"
+>Pixel</glossterm
+>. Breite und Höhe sind gleich, also ist die Zeichenfläche ein Quadrat.</para>
+
+<para
+><userinput
+>papierfarbe 0,0,0</userinput
+> färbt die Zeichenfläche schwarz. <userinput
+>papierfarbe 0,0,0</userinput
+> ist eine <glossterm linkend="rgb"
+>RGB-Kombination</glossterm
+>, in der alle Werte auf <userinput
+>0</userinput
+> gesetzt sind, das Ergebnis ist schwarz.</para>
+
+<para
+><userinput
+>stiftfarbe 255,0,0</userinput
+> setzt die Farbe des Zeichenstiftes auf Rot. <userinput
+>255,0,0</userinput
+> ist eine <glossterm linkend="rgb"
+>RGB-Kombination</glossterm
+>, in der nur der Wert für Rot auf <userinput
+>255</userinput
+> gesetzt ist, während die anderen (Grün und Blau) den Wert <userinput
+>0</userinput
+> (aus) haben. Das Ergebnis ist ein leuchtendes Rot.</para>
+
+<para
+>Wenn Sie die Farbwerte nicht verstehen, finden Sie dazu weitere Erläuterungen unter dem Begriff <glossterm linkend="rgb"
+>RGB-Kombinationen</glossterm
+></para>
+
+<para
+><userinput
+>stiftbreite 5</userinput
+> setzt die Breite des Zeichenstiftes auf <userinput
+>5</userinput
+> <glossterm linkend="pixels"
+>Pixel</glossterm
+>. Nach diesem Befehl zeichnet die Schildkröte jede Linie mit einer Breite von <userinput
+>5</userinput
+>, bis Sie die <userinput
+>stiftbreite</userinput
+> auf einen anderen Wert einstellen.</para>
+
+<para
+><userinput
+>gehe 20,20</userinput
+> bewegt die Schildkröte auf eine bestimmte Stelle auf der Zeichenfläche, die 20 <glossterm linkend="pixels"
+>Pixel</glossterm
+> vom linken Rand und 20 <glossterm linkend="pixels"
+>Pixel</glossterm
+> vom oberen Rand der Zeichenfläche entfernt ist. Mit dem Befehl <userinput
+>gehe</userinput
+> zeichnet die Schildkröte keine Linie. </para>
+
+<para
+><userinput
+>richtung 135</userinput
+> setzt die Bewegungsrichtung der Schildkröte. Die Befehle <userinput
+>linksdrehen</userinput
+> und <userinput
+>rechtsdrehen</userinput
+> ändern die Bewegungsrichtung der Schildkröte relativ zur vorhandenen Richtung. Der Befehl <userinput
+>richtung</userinput
+> setzt die Bewegungsrichtung unabhängig von der vorhandenen Richtung neu.</para>
+
+<para
+>Nach dem Befehl <userinput
+>richtung</userinput
+> folgen viele <userinput
+>vorwärts</userinput
+> und <userinput
+>linksdrehen</userinput
+> Befehle. Diese Befehle erzeugen die aktuelle Zeichnung.</para>
+
+<para
+>Zum Schluss bewegt der Befehl <userinput
+>gehe</userinput
+> die Schildkröte zu Seite.</para>
+
+<para
+>Lesen Sie die Verknüpfungen zur Befehlsreferenz, in der die einzelnen Befehle ausführlicher erklärt werden.</para>
+
+
+</sect2>
+</sect1>
+
+
+
+<!--        EXTRA SECTIONS CAN BE ADDED TO THE "GETTING STARTED"
+
+<sect1 id="calculations">
+<title
+>Simple Calculations</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_variables">
+<title
+>Using Variables: creating 'number containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_strings">
+<title
+>Using strings: creating 'text containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="logic">
+<title
+>Logic: asking the computer simple questions</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="recursion">
+<title
+>Recursion: the Turtle is using itself</title>
+<para>
+Draw a maze for example
+</para>
+</sect1>
+-->
+
+
+</chapter>

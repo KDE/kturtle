@@ -1,0 +1,390 @@
+<chapter id="Glossary">
+<title
+>Глосарій</title>
+
+<para
+>У цьому розділі ви знайдете пояснення більшості «незрозумілих» слів, які використовуються у цьому довіднику.</para>
+
+<glosslist>
+<glossentry id="degrees">
+<glossterm
+>градуси</glossterm>
+<glossdef
+><para
+>Градуси — це одиниці виміру кутів або степеня обертання. Повне обертання містить 360 градусів, половина обертання — 180 градусів, а чвертина обертання — 90 градусів. Для команд <userinput
+>ліворуч</userinput
+>, <userinput
+>праворуч</userinput
+> і <userinput
+>напрямок</userinput
+> потрібно ввести кут у градусах.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="input-output">
+<glossterm
+>вхідні і вихідні дані команд</glossterm>
+<glossdef
+><para
+>Деякі з команд отримують вхідні дані, деякі — виводять вихідні дані, деякі команди отримують вхідні дані <emphasis
+>і</emphasis
+> виводять вихідні, а деякі команди не отримують ніяких даних і нічого не виводять.</para>
+<para
+>Ось приклади команд, які лише отримують дані: <screen>
+вперед 50
+колір_пера 255,0,0
+напиши "Привіт!"
+</screen
+> Команда <userinput
+>вперед</userinput
+> отримує вхідні дані <userinput
+>50</userinput
+>. Команді <userinput
+>вперед</userinput
+> ці дані потрібні для визначення кількості <glossterm linkend="pixels"
+>пікселів</glossterm
+>, які черепашці слід пройти вперед. <userinput
+>pencolor</userinput
+> отримує вхідні дані про колір, а <userinput
+>напиши</userinput
+> отримує рядок (шматочок тексту). Будь ласка, зауважте, що вхідні дані можуть також бути контейнером. Цю можливість показано у наступному прикладі: <screen
+>$x = 50
+напиши $x
+вперед 50
+$рядок = "привіт!"
+напиши $рядок
+</screen
+></para>
+
+<para
+>Тепер декілька прикладів команд, які виводять дані: <screen>
+$x = спитай "Будь ласка, наберіть щось і натисніть кнопку Гаразд... Дякуємо!"
+$r = випадкове 1,100
+</screen
+> Команда <userinput
+>спитай</userinput
+> отримує рядок як вхідні дані і виводить число або рядок, який було введено. Очевидно, у цьому випадку вихідні дані команди <userinput
+>спитай</userinput
+> збережено у контейнері <userinput
+>x</userinput
+>. Команда <userinput
+>випадкове</userinput
+> також виводить дані. У нашому випадку вона виводить випадкове число від 1 до 100. Виведені дані, знову ж таки, збережено у контейнері з назвою <userinput
+>r</userinput
+>. Зауважте, що контейнери <userinput
+>x</userinput
+> та <userinput
+>r</userinput
+> не використано у коді попереднього прикладу.</para>
+
+<para
+>Існують і команди, які нічого не отримують і нічого не виводять. Ось декілька прикладів: <screen
+>зітри
+підніми_перо
+</screen>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="intuitive-highlighting">
+<glossterm
+>інтуїтивне підсвічування</glossterm>
+<glossdef
+><para
+>Це можливість у &kturtle;, як ще більше спрощує процес програмування. Інтуїтивне підсвічування надає кодові, який ви пишете, кольорів, що відповідають типу цього коду. У наведеному нижче списку ви знайдете типи коду і кольори, які відповідають цим типам у вікні <link linkend="the-editor"
+>редактора</link
+>. <table>
+<title
+>Типи кодових рядків і кольори їх підсвічування</title>
+<tgroup cols="3">
+<tbody>
+<row>
+<entry
+>звичайні команди</entry>
+<entry
+>темно-синій</entry>
+<entry
+>Звичайні команди описано <link linkend="commands"
+>тут</link
+>.</entry>
+</row>
+<row>
+<entry
+>команди-регулятори виконання</entry>
+<entry
+>чорний (жирний шрифт)</entry>
+<entry
+>Особливі команди, які регулюють виконання, докладніше дізнатися про ці команди можна <link linkend="controlling-execution"
+>тут</link
+>.</entry>
+</row>
+<row>
+<entry
+>коментарі</entry>
+<entry
+>сірий</entry>
+<entry
+>Рядки з коментарями починаються з символу коментування (#). Під час виконання коду ці рядки ігноруються. Коментарі використовуються програмістами для пояснення суті коду або для тимчасової заборони на виконання певного коду.</entry>
+</row>
+<row>
+<entry
+>дужки {, }</entry>
+<entry
+>темно-зелений (жирний шрифт)</entry>
+<entry
+>Дужки використовують для групування частин коду. Дужки часто використовують разом з <link linkend="controlling-execution"
+>регуляторами виконання</link
+>.</entry>
+</row>
+<row>
+<entry
+>команда <link linkend="learn"
+>вивчи</link
+></entry>
+<entry
+>світло-зелений (жирний шрифт)</entry>
+<entry
+>Команда <link linkend="learn"
+>вивчи</link
+> використовується для створення нових команд.</entry>
+</row>
+<row>
+<entry
+>рядки</entry>
+<entry
+>червоний</entry>
+<entry
+>Про рядки (текст) можна сказати небагато, за винятком того, що їх завжди слід починати і завершувати подвійними лапками (").</entry>
+</row>
+<row>
+<entry
+>числа</entry>
+<entry
+>темно-червоний</entry>
+<entry
+>Числа, ну що тут ще сказати.</entry>
+</row>
+<row>
+<entry
+>булеві значення</entry>
+<entry
+>темно-червоний</entry>
+<entry
+>Існує точно два булевих значення, а саме: так і ні.</entry>
+</row>
+<row>
+<entry
+>змінні</entry>
+<entry
+>пурпуровий</entry>
+<entry
+>Починаються з «$» і можуть містити числа, рядки або булеві значення.</entry>
+</row>
+<row>
+<entry
+>математичні оператори</entry>
+<entry
+>сірий</entry>
+<entry
+>Приклади математичних операторів: <userinput
+>+</userinput
+>, <userinput
+>-</userinput
+>, <userinput
+>*</userinput
+>, <userinput
+>/</userinput
+> і <userinput
+>^</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>оператори порівняння</entry>
+<entry
+>світло-синій (жирний шрифт)</entry>
+<entry
+>Приклади операторів порівняння: <userinput
+>==</userinput
+>, <userinput
+>!=</userinput
+>, <userinput
+>&lt;</userinput
+>, <userinput
+>&gt;</userinput
+>, <userinput
+>&lt;=</userinput
+> і <userinput
+>&gt;=</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>булеві оператори</entry>
+<entry
+>рожевий (жирний шрифт)</entry>
+<entry
+>Приклади булевих операторів: <userinput
+>та</userinput
+>, <userinput
+>або</userinput
+> і <userinput
+>не</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>звичайний текст</entry>
+<entry
+>чорний</entry>
+<entry
+></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="pixels">
+<glossterm
+>пікселі</glossterm>
+<glossdef
+><para
+>Піксель — це точка на екрані. Якщо ви зблизька подивитеся на зображення на екрані вашого монітора, ви побачите, що зображення складається з точок-пікселів. З цих пікселів складаються і всі зображення на екрані. Загалом кажучи, піксель — це найменша частинка, яку можна зобразити на екрані.</para>
+<para
+>Велика кількість команд потребують вхідних даних у вигляді кількості пікселів. Цими командами є: <userinput
+>вперед</userinput
+>, <userinput
+>назад</userinput
+>, <userinput
+>перейди</userinput
+>, <userinput
+>перейди_x</userinput
+>, <userinput
+>перейди_y</userinput
+>, <userinput
+>розмір_полотна</userinput
+> і <userinput
+>розмір_пера</userinput
+>.</para>
+<para
+>У ранніх версіях &kturtle; полотно було растровим зображенням, у сучасних версіях програми полотно — це векторний малюнок. Це означає, що полотно можна збільшувати або зменшувати, оскільки один піксель не обов’язково відповідає точно одній точці на екрані.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="rgb">
+<glossterm
+>RGB-комбінації (коди кольорів)</glossterm>
+<glossdef
+><para
+>Для опису кольорів використовують RGB-комбінації. Літера «R» позначає «червоний (red)», літера «G» — «зелений (green)», а «B» — «синій (blue)». Прикладом RGB-комбінації може слугувати <userinput
+>255,0,0</userinput
+>: перше значення («червоного») рівне 255, а інші рівні 0, отже, ця комбінація відповідає яскравому червоному кольору. Кожна величина RGB-комбінації повинна бути цілим числом у межах між 0 і 255. Ось невеликий перелік деяких розповсюджених кольорів: <table frame="none">
+<title
+>Розповсюджені RGB-комбінації</title>
+<tgroup cols="2" colsep="5" rowsep="1">
+<colspec colname="c1"/>
+<tbody>
+<row
+><entry
+><userinput
+>0,0,0</userinput
+></entry
+><entry
+>чорний</entry
+></row>
+<row
+><entry
+><userinput
+>255,255,255</userinput
+></entry
+><entry
+>білий</entry
+></row>
+<row
+><entry
+><userinput
+>255,0,0</userinput
+></entry
+><entry
+>червоний</entry
+></row>
+<row
+><entry
+><userinput
+>150,0,0</userinput
+></entry
+><entry
+>темно-червоний</entry
+></row>
+<row
+><entry
+><userinput
+>0,255,0</userinput
+></entry
+><entry
+>зелений</entry
+></row>
+<row
+><entry
+><userinput
+>0,0,255</userinput
+></entry
+><entry
+>синій</entry
+></row>
+<row
+><entry
+><userinput
+>0,255,255</userinput
+></entry
+><entry
+>блакитний</entry
+></row>
+<row
+><entry
+><userinput
+>255,0,255</userinput
+></entry
+><entry
+>рожевий</entry
+></row>
+<row
+><entry
+><userinput
+>255,255,0</userinput
+></entry
+><entry
+>жовтий</entry
+></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para
+>Вхідні дані у форматі RGB-комбінації використовують дві команди: <userinput
+>canvascolor</userinput
+> і <userinput
+>pencolor</userinput
+>.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="sprite">
+<glossterm
+>спрайт</glossterm>
+<glossdef
+><para
+>Спрайт — це маленьке зображення, яке можна пересувати екраном. Наприклад, наша улюблениця-черепашка — спрайт. <note
+><para
+>У цій версії &kturtle; неможливо змінити спрайт черепашки на щось інше. У майбутніх версіях &kturtle; ви матимете цю можливість.</para
+></note
+></para
+></glossdef>
+</glossentry>
+
+</glosslist>
+
+</chapter>

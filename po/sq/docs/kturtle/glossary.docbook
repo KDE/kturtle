@@ -1,0 +1,402 @@
+<chapter id="Glossary">
+<title
+>Fjalor</title>
+
+<para
+>Në këtë kapitull do të gjeni një shpjegim për shumicën e fjalëve <quote
+>të pazakonta</quote
+> që janë përdorur në udhëzues.</para>
+
+<glosslist>
+<glossentry id="degrees">
+<glossterm
+>gradët</glossterm>
+<glossdef
+><para
+>Gradët janë njësi për matjen e këndeve ose rrotullimeve. Një rrotullim i plotë është 360 gradë, një gjysmë rrotullim 180 gradë dhe një çerek rrotullim 90 gradë. Komandat <userinput
+>kthehu_majtas</userinput
+> , <userinput
+>kthehu_djathtas</userinput
+> dhe <userinput
+>drejtimi</userinput
+> kanë nevojë për një të dhënë hyrëse në gradë.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="input-output">
+<glossterm
+>të dhënat hyrëse dhe dalëse të komandave</glossterm>
+<glossdef
+><para
+>Disa komanda marrin të dhëna, disa komanda nxjerrin të dhëna, disa komanda edhe marrin edhe nxjerrin të dhëna, dhe disa komanda as nuk marrin dhe as nuk nxjerrin të dhëna.</para>
+<para
+>Disa shembuj të komandave që vetëm marrin të dhëna janë: <screen>
+ec_përpara 50
+ngjyrë_lapsi 255,0,0
+shkruaj "Ç'kemi!"
+</screen
+> Komanda <userinput
+>ec_përpara</userinput
+> merr <userinput
+>50</userinput
+> si të dhënë hyrëse. <userinput
+>ec_përpara</userinput
+> ka nevojë për këtë të dhënë plotësuese që  të dijë se sa <glossterm linkend="pixels"
+>pika (pixel)</glossterm
+> duhet të shkojë përpara. <userinput
+>ngjyrë_lapsi</userinput
+> merr një ngjyrë si të dhënë hyrëse dhe <userinput
+>shkruaj</userinput
+> merr një varg (një pjesë teksti) si të dhënë hyrëse. E dhëna hyrëse mund të jetë edhe një enë. Shembull tjetër e ilustron këtë: <screen
+>$x = 50
+shkruaj $x
+ec_përpara 50
+$str = "ç'kemi!"
+shkruaj $str
+</screen
+></para>
+
+<para
+>Tani disa shembuj komandash që japin të dhëna: <screen>
+$x = pyet "Të lutem shkruaj diçka dhe shtyp OK... faleminderit!"
+$r = rastësisht 1,100
+</screen
+> Komanda <userinput
+>pyet</userinput
+> merr një varg si të dhënë hyrësedhe nxjerr numrin apo vargun që është shkruar si përgjigje. Siç mund ta shikoni, rezultati që jep komanda <userinput
+>pyet</userinput
+> është ruajtur në enën <userinput
+>x</userinput
+>. Komanda <userinput
+>rastësisht</userinput
+> gjithashtu jep një të dhënë. Në këtë rast ajo nxjerr një numër nga 1 deri në 100. Rezultati i komandës rastësisht është ruajtur përsëri në një enë, të quajtur <userinput
+>r</userinput
+> . Vini re se enët (mbajtëset e të dhënave) <userinput
+>x</userinput
+> dhe <userinput
+>r</userinput
+> nuk janë përdorur në shembullin e mësipërm.</para>
+
+<para
+>Ka edhe komandave që as nuk marrin dhe as nuk japin të dhëna. Ja disa shembuj: <screen
+>pastro
+ngri_lapsin
+</screen>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="intuitive-highlighting">
+<glossterm
+>theksimi ndihmues</glossterm>
+<glossdef
+><para
+>Ky është një tipar i &kturtle; që e bën edhe më të lehtë programimin. Me theksimin ndihmues kodi që ju shkruani merr një ngjyrë që tregon se çfarë lloj kodi është. Në listën e mëposhtme do të gjeni llojet e ndryshme të kodit dhe ngjyrat që marrin në <link linkend="the-editor"
+>shkrimore</link
+>. <table>
+<title
+>Llojet e ndryshme të kodit dhe ngjyrat e theksimit të tyre</title>
+<tgroup cols="3">
+<tbody>
+<row>
+<entry
+>komandat e rregullta</entry>
+<entry
+>blu e errët</entry>
+<entry
+>Komandat e rregullta janë përshkruar <link linkend="commands"
+>këtu</link
+>.</entry>
+</row>
+<row>
+<entry
+>komandat e kontrollit të zbatimit</entry>
+<entry
+>e zezë (e trashë)</entry>
+<entry
+>Këto komanda të veçanta kontrollojnë radhën e zbatimit të komandave të tjera, lexoni më shumë mbi to <link linkend="controlling-execution"
+>këtu</link
+>.</entry>
+</row>
+<row>
+<entry
+>komentet</entry>
+<entry
+>gri</entry>
+<entry
+>Rreshtat që janë komentuar fillojë me një shenjë komenti (#). Këto rreshta nuk përfillen gjatë zbatimit të programit. Komentet i japin mundësi programuesit që të shpjegojë pak në lidhje me kodin e tij. Por mund të përdoren edhe për të ç'aktivizuar përkohësisht një pjesë të caktuar të kodit (që të mos zbatohet).</entry>
+</row>
+<row>
+<entry
+>kllapat {,}</entry>
+<entry
+>e gjelbër e errët (me të trashë)</entry>
+<entry
+>Kllapat përdoren për të grupuar pjesë të programit. Kllapat përdoren shpesh bashkë me <link linkend="controlling-execution"
+>kontrolluesit e zbatimit</link
+>.</entry>
+</row>
+<row>
+<entry
+>komanda <link linkend="learn"
+>mëso</link
+></entry>
+<entry
+>e gjelbër e çelur (me të trashë)</entry>
+<entry
+>Komanda <link linkend="learn"
+>mëso</link
+> përdoret për të krijuar komanda të reja.</entry>
+</row>
+<row>
+<entry
+>vargjet</entry>
+<entry
+>e kuqe</entry>
+<entry
+>Nuk ka shumë për të thënë edhe për vargjet (shkronjore), përveç se ata gjithmonë fillojnë dhe mbarojnë me thonjëzat dyshe (").</entry>
+</row>
+<row>
+<entry
+>numrat</entry>
+<entry
+>e kuqe e errët</entry>
+<entry
+>Nuk kemi ç'të themi ndonjë gjë për numrat.</entry>
+</row>
+<row>
+<entry
+>vlerat e vërtetësisë</entry>
+<entry
+>e kuqe e errët</entry>
+<entry
+>Ka vetëm dy vlera vërtetësie, që janë: e_vërtetë dhe e_rreme.</entry>
+</row>
+<row>
+<entry
+>ndryshoret</entry>
+<entry
+>vjollcë</entry>
+<entry
+>Ndryshoret fillojnë me shenjën e dollarit '$'. Ato janë si enë që mund të përmbajnë vlera numerike (numra), vargje apo vlera vërtetësie.</entry>
+</row>
+<row>
+<entry
+>veprimet matematikore</entry>
+<entry
+>gri</entry>
+<entry
+>Veprimet matematikore janë këto: <userinput
+>+</userinput
+>, <userinput
+>-</userinput
+>, <userinput
+>*</userinput
+>, <userinput
+>/</userinput
+> dhe <userinput
+>^</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>veprimet krahasuese</entry>
+<entry
+>bojë-qielli (me të trashë)</entry>
+<entry
+>Veprimet krahasuese janë këto: <userinput
+>==</userinput
+>, <userinput
+>!=</userinput
+>, <userinput
+>&lt;</userinput
+>, <userinput
+>&gt;</userinput
+>, <userinput
+>&lt;=</userinput
+> dhe <userinput
+>&gt;=</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>veprimet e vërtetësisë</entry>
+<entry
+>rozë (me të trashë)</entry>
+<entry
+>Veprimet e vërtetësisë janë këto: <userinput
+>edhe</userinput
+>, <userinput
+>ose</userinput
+> dhe <userinput
+>jo</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>teksti i zakonshëm</entry>
+<entry
+>i zi</entry>
+<entry
+></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="pixels">
+<glossterm
+>pika (pixels)</glossterm>
+<glossdef
+><para
+>Një pixel është një pikë në ekran. Nëse do ta shikoni nga shumë afër, do të vini re se ekrani i monitorit tuaj përdor pika. Të gjitha figurat në ekran janë ndërtuar me anë të këtyre pikave. Një pixel është gjëja më e vogël që mund të vizatohet në ekran.</para>
+<para
+>Ka shumë komanda që u duhet një numër pikash si e dhënë hyrëse. Këto komanda janë: <userinput
+>ec_përpara</userinput
+>, <userinput
+>ec_mbrapsht</userinput
+>, <userinput
+>shko</userinput
+>, <userinput
+>shko_x</userinput
+>, <userinput
+>shko_y</userinput
+>, <userinput
+>madhësi_tabele</userinput
+> dhe <userinput
+>majë_lapsi</userinput
+>.</para>
+<para
+>Në versionet e hershme të &kturtle; tabela e vizatimit ishte në thelb një imazh përfundimtar, por në versionet e fundit tabela është një vizatim vektorial. Kjo do të thotë që hapësira e vizatimit mund të zmadhohet dhe të zvogëlohet, prandaj një pixel nuk është e thënë që të jetë patjetër një pikë në ekran.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="rgb">
+<glossterm
+>kombinimet RGB (kodet e ngjyrave)</glossterm>
+<glossdef
+><para
+>kombinimet RGB përdoren për të përshkruar ngjyrat. <quote
+>R</quote
+> përfaqëson <quote
+>të kuqen (Red)</quote
+>, <quote
+>G</quote
+> përfaqëson <quote
+> të gjelbrën (Green)</quote
+> dhe <quote
+>B</quote
+> përfaqëson <quote
+>blunë (Blue)</quote
+>. Për shembull ja një kombinim RGB: <userinput
+>255,0,0</userinput
+>.Vlera e parë (<quote
+>e kuqe</quote
+>) është 255 dhe të tjerat janë 0, kështu që kjo paraqet një nuancë të kuqe të fortë. Çdo vlerë në një kombinim RGB duhet të jetë nga 0 deri në 255. Ja një listë e vogël e disa ngjyrave që përdoren shpesh: <table frame="none">
+<title
+>Kombinime RGB që përdoren shpesh</title>
+<tgroup cols="2" colsep="5" rowsep="1">
+<colspec colname="c1"/>
+<tbody>
+<row
+><entry
+><userinput
+>0,0,0</userinput
+></entry
+><entry
+>i zi</entry
+></row>
+<row
+><entry
+><userinput
+>255,255,255</userinput
+></entry
+><entry
+>e bardhë</entry
+></row>
+<row
+><entry
+><userinput
+>255,0,0</userinput
+></entry
+><entry
+>e kuqe</entry
+></row>
+<row
+><entry
+><userinput
+>150,0,0</userinput
+></entry
+><entry
+>e kuqe e errët</entry
+></row>
+<row
+><entry
+><userinput
+>0,255,0</userinput
+></entry
+><entry
+>e gjelbër</entry
+></row>
+<row
+><entry
+><userinput
+>0,0,255</userinput
+></entry
+><entry
+>blu</entry
+></row>
+<row
+><entry
+><userinput
+>0,255,255</userinput
+></entry
+><entry
+>blu e çelur</entry
+></row>
+<row
+><entry
+><userinput
+>255,0,255</userinput
+></entry
+><entry
+>rozë</entry
+></row>
+<row
+><entry
+><userinput
+>255,255,0</userinput
+></entry
+><entry
+>e verdhë</entry
+></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para
+>Dy komanda kërkojnë një kombinim RGB si të dhënë hyrëse; këto komanda janë <userinput
+>ngjyrë_tabele</userinput
+> dhe <userinput
+>ngjyrë_lapsi</userinput
+>.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="sprite">
+<glossterm
+>figurina</glossterm>
+<glossdef
+><para
+>Një figurinë është një foto e vogël që mund të lëvizet nëpër ekran. Breshka jonë e dashur, për shembull, është një figurinë.</para>
+<para
+>Shënim: në këtë version të &kturtle; figurina nuk mund të ndryshohet nga një breshkë në diçka tjetër. Në versionet e ardhshme të &kturtle; do të jetë e mundur të bëhet kjo.</para
+></glossdef>
+</glossentry>
+
+</glosslist>
+
+</chapter>

@@ -1,0 +1,404 @@
+<chapter id="Glossary">
+<title
+>Glosario</title>
+
+<para
+>Neste capítulo atopará unha explicación da maioría das palabras <quote
+>especializadas</quote
+> que se empregan no manual.</para>
+
+<glosslist>
+<glossentry id="degrees">
+<glossterm
+>graus</glossterm>
+<glossdef
+><para
+>Os graos son unidades para medir ángulos ou xiros. Unha circunferencia completa ten 360 graus, media circunferencia 180 graus e un cuarto de circunferencia 90 graus. As ordes <userinput
+>xiraEsquerda</userinput
+>, <userinput
+>xiraDereita</userinput
+> e <userinput
+>direccion</userinput
+> precisan que dun parámetro expresado en graus.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="input-output">
+<glossterm
+>entrada e saída das ordes</glossterm>
+<glossdef
+><para
+>Algunhas ordes requiren de entradas (parámetros), outros xeran saídas (resultados), outros toman entradas <emphasis
+>e</emphasis
+> dan saídas e outros nin requiren de parámetros nin xeran resultados.</para>
+<para
+>Exemplos de ordes que só toman parámetros: <screen>
+avanza 50
+corLapis 255,0,0
+escribe "Olá"
+</screen
+> A orde <userinput
+>avanza</userinput
+> toma o parámetro <userinput
+>50</userinput
+>. <userinput
+>avanza</userinput
+> precisa deste parámetro para saber cantos <glossterm linkend="pixels"
+>píxeles</glossterm
+> deve avanzar. <userinput
+>corLapis</userinput
+> toma unha cor como parámetro e <userinput
+>escribe</userinput
+> un texto. Lembre que os parámetros tamén poden ser variábeis. O seguinte exemplo ilustra isto: <screen
+>$x = 50
+escribe $x
+avanza 50
+$str = "hello!"
+escribe $str
+</screen
+></para>
+
+<para
+>Exemplos de ordes que xeran saídas: <screen>
+$x = pregunta "Escriba algo e prema Aceptar… grazas!"
+$r = aleatorio 1,100
+</screen
+> A orde <userinput
+>pregunta</userinput
+> toma unha cadea como entrada, e devolve o número ou cadea que se insire. Como pode ver, o resultado de <userinput
+>pregunta</userinput
+> é gardado na variábel <userinput
+>x</userinput
+>. A orde <userinput
+>aleatorio</userinput
+> tamén xera saídas. Neste caso devolve un número entre 1 e 100. A saída de aleatorio é gardada tamén neste caso nunha variábel chamada <userinput
+>r</userinput
+>. Lembre que as variábeis <userinput
+>x</userinput
+> e <userinput
+>r</userinput
+> non son empregados no exemplo de riba.</para>
+
+<para
+>Tamén hai ordes que nin precisan de parámetros nin devolven resultados. Estes son algúns exemplos: <screen
+>borra
+subeLapis
+</screen>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="intuitive-highlighting">
+<glossterm
+>realzado intuitivo</glossterm>
+<glossdef
+><para
+>Esta é unha funcionalidade de &kturtle; que simplifica aínda máis o escribir os programas. Co realzado intuitivo o código que escribe é colorido cunha cor que indica o tipo de código que é. Na seguinte lista atopará os distintos tipos de código xunto coa cor que teñen no <link linkend="the-editor"
+>editor</link
+>. <table>
+<title
+>Os distintos tipos de código e a cor coa que se realzan</title>
+<tgroup cols="3">
+<tbody>
+<row>
+<entry
+>ordes normais</entry>
+<entry
+>azul escuro</entry>
+<entry
+>As ordes normais descríbense <link linkend="commands"
+>aquí</link
+>.</entry>
+</row>
+<row>
+<entry
+>ordes que controlan a execución</entry>
+<entry
+>negro (grosa)</entry>
+<entry
+>As ordes de control do fluxo da execución, lea máis sobre eles <link linkend="controlling-execution"
+>aquí</link
+>.</entry>
+</row>
+<row>
+<entry
+>comentarios</entry>
+<entry
+>gris</entry>
+<entry
+>As liñas comentadas comezan polo paracter #. Estas liñas son ignoradas cando se executa o código. Os comentarios permítenlle ao programados dar explicacións acerda do código e tamén serven para evitar temporalmente que se execute un cacho de código.</entry>
+</row>
+<row>
+<entry
+>chaves {, }</entry>
+<entry
+>verde escuro (grosa)</entry>
+<entry
+>As chaves son empregadas para agrupar porcións de código. As chaves son empregadas a miudo xunto cos <link linkend="controlling-execution"
+>controladores de execución</link
+>.</entry>
+</row>
+<row>
+<entry
+>a orde <link linkend="learn"
+>define</link
+></entry>
+<entry
+>verde claro (grosa)</entry>
+<entry
+>A orde <link linkend="learn"
+>define</link
+> utilízase para crear ordes novas.</entry>
+</row>
+<row>
+<entry
+>textos</entry>
+<entry
+>vermello</entry>
+<entry
+>Tampouco hai moito que dicir sobre as cadeas (de texto), só que sempre deben ir entre comiñas (").</entry>
+</row>
+<row>
+<entry
+>números</entry>
+<entry
+>roxo</entry>
+<entry
+>Non hai moito que explicar sobre os números.</entry>
+</row>
+<row>
+<entry
+>valores lóxicos</entry>
+<entry
+>roxo</entry>
+<entry
+>Hai exactamente dous valores lóxicos, que son: certo e falso.</entry>
+</row>
+<row>
+<entry
+>variábeis</entry>
+<entry
+>morado</entry>
+<entry
+>Comezan cun «$» e poden conter números, textos ou valores lóxicos.</entry>
+</row>
+<row>
+<entry
+>operacións matemáticas</entry>
+<entry
+>gris</entry>
+<entry
+>Estas son as operacións matemáticas: <userinput
+>+</userinput
+>, <userinput
+>─</userinput
+>, <userinput
+>*</userinput
+>, <userinput
+>/</userinput
+> e <userinput
+>^</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>operacións de comparación</entry>
+<entry
+>azul claro (grosa)</entry>
+<entry
+>Estas son as operacións de comparación: <userinput
+>==</userinput
+>, <userinput
+>!=</userinput
+>, <userinput
+>&lt;</userinput
+>, <userinput
+>&gt;</userinput
+>, <userinput
+>&lt;=</userinput
+> e <userinput
+>&gt;=</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>operacións loxicas</entry>
+<entry
+>rosa (grosa)</entry>
+<entry
+>Estas son os operadores booleanos: <userinput
+>e</userinput
+>, <userinput
+>ou</userinput
+> e <userinput
+>non</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>texto normal</entry>
+<entry
+>negro</entry>
+<entry
+></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="pixels">
+<glossterm
+>píxeles</glossterm>
+<glossdef
+><para
+>Un píxel é un punto na pantalla. Se mira moi de preto á pantalla do monitor verá que emprega píxeles. Todas as imaxes na pantalla están feitas con píxeles. Un píxel é a cousa máis pequena que pode debuxarse na pantalla.</para>
+<para
+>Moitas ordes precisan que se lles pase como parámetro un número de píxeles. Estas ordes son: <userinput
+>avanza</userinput
+>, <userinput
+>retrocede</userinput
+>, <userinput
+>vai</userinput
+>, <userinput
+>vaix</userinput
+>, <userinput
+>vaiy</userinput
+>, <userinput
+>tamañolenzo</userinput
+> e <userinput
+>ancholapis</userinput
+>.</para>
+<para
+>Nas primeiras versións de &kturtle; o lenzo era esencialmente unha imaxe raster, pero nas máis recentes é un debuxo vectorial. Isto significa que pode achegalo e afastalo, polo que un pixel non se corresponde necesariamente cun punto da pantalla.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="rgb">
+<glossterm
+>Combinacións RGB (códigos de cor)</glossterm>
+<glossdef
+><para
+>As combinacións RGB empréganse para describir cores. O <quote
+>R</quote
+> provén de <quote
+>vermello</quote
+>, o <quote
+>G</quote
+> de <quote
+>verde</quote
+> e o <quote
+>B</quote
+> de <quote
+>azul</quote
+>. Un exemplo de combinación RGB é <userinput
+>255,0,0</userinput
+>: o primeiro valor (<quote
+>vermello</quote
+>) é de 255 e os outros son 0, polo que isto represente un vermello. Os valores das combinacións RGB deben estar no intervalo de 0 a 255. A continuación móstrase unha lista con algunhas cores empregadas a miudo: <table frame="none">
+<title
+>Combinacións RGB empregadas a miudo</title>
+<tgroup cols="2" colsep="5" rowsep="1">
+<colspec colname="c1"/>
+<tbody>
+<row
+><entry
+><userinput
+>0,0,0</userinput
+></entry
+><entry
+>negro</entry
+></row>
+<row
+><entry
+><userinput
+>255,255,255</userinput
+></entry
+><entry
+>branco</entry
+></row>
+<row
+><entry
+><userinput
+>255,0,0</userinput
+></entry
+><entry
+>vermello</entry
+></row>
+<row
+><entry
+><userinput
+>150,0,0</userinput
+></entry
+><entry
+>roxo</entry
+></row>
+<row
+><entry
+><userinput
+>0,255,0</userinput
+></entry
+><entry
+>verde</entry
+></row>
+<row
+><entry
+><userinput
+>0,0,255</userinput
+></entry
+><entry
+>azul</entry
+></row>
+<row
+><entry
+><userinput
+>0,255,255</userinput
+></entry
+><entry
+>azul claro</entry
+></row>
+<row
+><entry
+><userinput
+>255,0,255</userinput
+></entry
+><entry
+>rosa</entry
+></row>
+<row
+><entry
+><userinput
+>255,255,0</userinput
+></entry
+><entry
+>amarelo</entry
+></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para
+>Hai dúas ordes que precisan dunha combinación RGB: son <userinput
+>corlenzo</userinput
+> e <userinput
+>corlapis</userinput
+>.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="sprite">
+<glossterm
+>sprite</glossterm>
+<glossdef
+><para
+>Un sprite é unha imaxe pequena que pode desprazarse pola pantalla. O noso sapoconcho, sen ir máis lonxe, é un sprite.</para>
+<para
+>Nota: nesta versión de &kturtle; non se pode cambiar o sapoconcho por outra cousa. En versións futuras de &kturtle; poderase facer.</para
+></glossdef>
+</glossentry>
+
+</glosslist>
+
+</chapter>

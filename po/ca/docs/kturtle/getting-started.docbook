@@ -1,0 +1,306 @@
+<chapter id="getting-started">
+<title
+>Com començar</title>
+<para
+>Quan inicieu el &kturtle; veureu quelcom com això:</para>
+<screenshot>
+  <screeninfo
+>Aquesta és una captura de pantalla del &kturtle; quan l'inicieu per primera vegada</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>El &kturtle; en un inici net</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+<para
+>En aquesta guia sobre com començar assumirem que l'idioma de les ordres està en anglès. Podeu canviar aquest idioma a l'element de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Idioma de script</guimenuitem
+></menuchoice
+>. Cal tenir en compte que l'idioma que heu establert aquí per al &kturtle;, és el que utilitzareu per a escriure les ordres de &turtlescript;, no l'idioma utilitzat pel &kde; al vostre ordinador i ni l'utilitzat per a mostrar la interfície i els menús del &kturtle;.</para>
+
+<sect1 id="first-steps">
+<title
+>Els primers passos amb &turtlescript;: Trobar la Tortuga!</title>
+<para
+>Podeu haver observat la tortuga al centre del llenç: Esteu a punt d'aprendre a controlar-la mitjançant les ordres a l'editor.</para>
+
+<sect2 id="the-turtle-moves">
+<title
+>Els moviments de la tortuga</title>
+<para
+>Començarem per aconseguir que la tortuga es mogui. La nostra tortuga pot fer tres tipus de moviments, (1) pot desplaçar-se cap endavant i cap enrere, (2) pot girar a l'esquerra i a la dreta i (3) pot anar (salt) directament a una posició a la pantalla. Proveu això, per exemple:</para>
+<para>
+<screen
+>forward 100
+turnleft 90 
+</screen
+>Escriviu-ho o copieu i enganxeu el codi a l'editor, i executeu-lo (emprant <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Executa</guimenu
+><guimenuitem
+>Executa</guimenuitem
+></menuchoice
+></link
+>) per a veure el resultat.</para>
+
+<para
+>Quan escriviu i executeu les ordres com abans a l'editor observareu una o més de les següents coses:</para>
+<orderedlist>
+<listitem
+><para
+>Que -després d'executar les ordres- la tortuga es mou cap amunt, dibuixa una línia, i llavors gira un quart de volta cap a l'esquerra. Això és deu a què heu utilitzat les ordres <link linkend="forward"
+><userinput
+>forward</userinput
+></link
+> i <link linkend="turnleft"
+><userinput
+>turnleft</userinput
+></link
+>.</para>
+</listitem>
+<listitem>
+<para
+>Que el color del codi canvia a mesura que l'escriviu: Aquesta característica s'anomena <emphasis
+>ressaltat intuïtiu</emphasis
+> -diferents tipus d'ordres són ressaltades de manera diferent-. Això fa que la lectura de grans blocs de codi sigui més fàcil.</para>
+</listitem>
+<listitem>
+<para
+>La tortuga dibuixa una fina línia negra.</para>
+</listitem>
+<listitem>
+<para
+>Potser heu rebut un missatge d'error. Això simplement pot significar dues coses: Que podríeu haver comès un error en copiar les ordres, o que encara s'ha de definir l'idioma correcte per a les ordres de &turtlescript; (podeu fer-ho amb el submenú <menuchoice
+><guimenu
+>Arranjament</guimenu
+><guisubmenu
+>Idioma de script</guisubmenu
+></menuchoice
+>).</para>
+</listitem>
+</orderedlist>
+
+<para
+>Vós interpreteu que en la instrucció <userinput
+>forward 100</userinput
+> la tortuga s'ha de moure a partir d'una línia, i que la instrucció <userinput
+>turnleft 90</userinput
+> serveix perquè la tortuga giri 90 <glossterm linkend="degrees"
+>graus</glossterm
+> a l'esquerra.</para>
+
+<para
+>Fixeu-vos en els següents enllaços al manual de referència per a una explicació més completa de les ordres: <link linkend="forward"
+><userinput
+>forward</userinput
+></link
+>, <link linkend="backward"
+><userinput
+>backward</userinput
+></link
+>, <link linkend="turnleft"
+><userinput
+>turnleft</userinput
+></link
+> i <link linkend="turnright"
+><userinput
+>turnright</userinput
+></link
+>.</para>
+</sect2>
+
+<sect2 id="more-examples">
+<title
+>Més exemples</title>
+<para
+>El primer exemple és molt senzill, el podeu fer sense cap dificultat!</para>
+
+<para>
+
+<screen
+>reset
+
+canvassize 200,200
+canvascolor 0,0,0
+pencolor 255,0,0
+penwidth 5
+
+go 20,20
+direction 135
+
+forward 200
+turnleft 135
+forward 100
+turnleft 135
+forward 141
+turnleft 135
+forward 100
+turnleft 45
+
+go 40,100
+</screen
+>Altra vegada ho podeu escriure o fer copia i enganxa a l'editor o obrir l'exemple <filename
+>arrow</filename
+> que trobareu en el submenú <guimenu
+>Exemples</guimenu
+> i executeu-lo (emprant <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Executa</guimenu
+><guimenuitem
+>Executa</guimenuitem
+></menuchoice
+></link
+>) per a veure el resultat. En els exemples següents s'espera que coneixereu l'exercici.</para>
+
+<para
+>Podeu haver notat que aquest segon exemple utilitza molt més codi. També s'han fet servir un parell d'ordres noves. Aquí teniu una breu explicació de totes les ordres noves:</para>
+
+<para
+>Després d'una ordre <userinput
+>reset</userinput
+> tot queda com estava quan vau iniciar el &kturtle;.</para>
+
+<para
+><userinput
+>canvassize 200,200</userinput
+> estableix amplada i alçada del llenç a 200 x 200 <glossterm linkend="pixels"
+>píxels</glossterm
+>. L'amplada és igual que l'alçada, per tant el llenç serà quadrat.</para>
+
+<para
+><userinput
+>canvascolor 0,0,0</userinput
+> fa que el llenç sigui negre. <userinput
+>0,0,0</userinput
+> és una <glossterm linkend="rgb"
+>combinació RGB</glossterm
+> on tots els valors estan establerts a <userinput
+>0</userinput
+>, el qual resultarà en el color negre.</para>
+
+<para
+><userinput
+>pencolor 255,0,0</userinput
+> estableix el color del dibuix a vermell. <userinput
+>255,0,0</userinput
+> és una <glossterm linkend="rgb"
+>combinació RGB</glossterm
+> on només el valor vermell està establert a <userinput
+>255</userinput
+> (completament) on tots els altres valors (verd i blau) estan establerts a <userinput
+>0</userinput
+> (no gens). Això resultarà en un to més brillant de color vermell.</para>
+
+<para
+>Si no enteneu els valors de color, assegureu-vos de llegir el glossari sobre la <glossterm linkend="rgb"
+>combinació RGB </glossterm
+>.</para>
+
+<para
+><userinput
+>penwidth 5</userinput
+> canvia l'amplada (la mida) del traç a <userinput
+>5</userinput
+> <glossterm linkend="pixels"
+>píxels</glossterm
+>. A partir d'aquest moment, cada línia que dibuixi la tortuga ho farà amb <userinput
+>5</userinput
+> píxels d'amplada, fins que canvieu el valor de l'amplada de <userinput
+>penwidth</userinput
+> a una altra cosa.</para>
+
+<para
+><userinput
+>go 20,20</userinput
+> permet a la tortuga anar a un cert lloc sobre el llenç. Comptat a partir de la cantonada superior esquerra, aquest lloc és de 20 <glossterm linkend="pixels"
+>píxels</glossterm
+> cap a l'esquerra, i 20 <glossterm linkend="pixels"
+>píxels</glossterm
+> cap avall des de la part superior del llenç. Nota: Quan empreu l'ordre <userinput
+>go</userinput
+> no us dibuixarà una línia.</para>
+
+<para
+><userinput
+>direction 135</userinput
+> estableix la direcció de la tortuga. Les ordres <userinput
+>turnleft</userinput
+> i <userinput
+>turnright</userinput
+> canvien d'angle la tortuga a partir de la seva direcció actual. L'ordre <userinput
+>direction</userinput
+> canvia d'angle la tortuga des de zero, i per tant no és relativa a l'anterior direcció de la tortuga.</para>
+
+<para
+>Després de l'ordre <userinput
+>direction</userinput
+> segueixen una gran quantitat d'ordres <userinput
+>forward</userinput
+> i <userinput
+>turnleft</userinput
+>. Aquestes ordres fan el dibuix.</para>
+
+<para
+>Al final una altra ordre <userinput
+>go</userinput
+> s'utilitza per a moure la tortuga a un costat.</para>
+
+<para
+>Assegureu-vos d'emprar els enllaços a la referència. La referència explica cadascuna de les ordres amb més detall.</para>
+
+
+</sect2>
+</sect1>
+
+
+
+<!--        EXTRA SECTIONS CAN BE ADDED TO THE "GETTING STARTED"
+
+<sect1 id="calculations">
+<title
+>Simple Calculations</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_variables">
+<title
+>Using Variables: creating 'number containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_strings">
+<title
+>Using strings: creating 'text containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="logic">
+<title
+>Logic: asking the computer simple questions</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="recursion">
+<title
+>Recursion: the Turtle is using itself</title>
+<para>
+Draw a maze for example
+</para>
+</sect1>
+-->
+
+
+</chapter>

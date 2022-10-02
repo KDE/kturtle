@@ -1,0 +1,304 @@
+<chapter id="getting-started">
+<title
+>Komma igång</title>
+<para
+>När du startar &kturtle; ser du något som liknar detta:</para>
+<screenshot>
+  <screeninfo
+>Här är en skärmbild av &kturtle; när du startar det första gången</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>&kturtle; efter nystart</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+<para
+>I den här guiden för att komma igång, antar vi att kommandona i &kturtle;s språk är på svenska. Du kan ändra språket med undermenyn <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guisubmenu
+>Skriptspråk</guisubmenu
+></menuchoice
+>. Var medveten om att språket du ställer in i &kturtle; är det som du använder när du skriver in kommandon på &kturtle;s språk, inte språket som &kde; använder på datorn och som används för att visa gränssnittet och menyerna i &kturtle;.</para>
+
+<sect1 id="first-steps">
+<title
+>De första stegen med &kturtle;s språk: Möt sköldpaddan!</title>
+<para
+>Du måste ha lagt märke till sköldpaddan mitt på duken. Du ska precis få lära dig hur man styr den med kommandon i editorn.</para>
+
+<sect2 id="the-turtle-moves">
+<title
+>Sköldpaddan rör sig</title>
+<para
+>Låt oss börja med att få sköldpaddan att röra sig. Vår sköldpadda kan utföra tre sorters rörelser: (1) den kan gå framåt och bakåt, (2) den kan vända sig åt vänster och höger och (3) den kan gå (hoppa) direkt till en plats på skärmen. Försök till exempel med detta:</para>
+<para>
+<screen
+>framåt 100
+svängvänster 90 
+</screen
+>Skriv in eller kopiera och klistra in koden i editorn och kör den (med <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Kör</guimenu
+> <guimenuitem
+>Kör</guimenuitem
+></menuchoice
+></link
+>) för att se resultatet.</para>
+
+<para
+>När du skrev in och körde kommandona ovan i editorn, kanske du märkte ett eller flera av följande saker:</para>
+<orderedlist>
+<listitem
+><para
+>Att sköldpaddan, efter kommandona utförts, går uppåt, ritar en linje och därefter svänger ett kvarts varv åt vänster. Det beror på att du har använd kommandona <link linkend="forward"
+><userinput
+>framåt</userinput
+></link
+> och <link linkend="turnleft"
+><userinput
+>svängvänster</userinput
+></link
+>.</para>
+</listitem>
+<listitem>
+<para
+>Att färgen på koden ändrades medan du skrev in den. Den här funktionen kallas <emphasis
+>intuitiv färgläggning</emphasis
+>. Olika typer av kommandon färgläggs på olika sätt. Det gör det enklare att läsa stora kodblock.</para>
+</listitem>
+<listitem>
+<para
+>Att sköldpaddan ritar en tunn svart linje.</para>
+</listitem>
+<listitem>
+<para
+>Kanske fick du ett felmeddelande. Det kan helt enkelt betyda två saker: du kan ha gjort ett misstag när du kopierade kommandona, eller så måste du fortfarande ställa in rätt språk för kommandon (det kan du göra med undermenyn <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guisubmenu
+>Skriptspråk</guisubmenu
+></menuchoice
+>).</para>
+</listitem>
+</orderedlist>
+
+<para
+>Du förstår troligen att <userinput
+>framåt 100</userinput
+> talade om för sköldpaddan att gå framåt och rita en linje, medan <userinput
+>svängvänster 90</userinput
+> talade om för sköldpaddan att den skulle svänga 90 <glossterm linkend="degrees"
+>grader</glossterm
+> åt vänster.</para>
+
+<para
+>Se följande länkar till referensmanualen för en fullständig förklaring av kommandona som nämnts: <link linkend="forward"
+><userinput
+>framåt</userinput
+></link
+>, <link linkend="backward"
+><userinput
+>bakåt</userinput
+></link
+>, <link linkend="turnleft"
+><userinput
+>svängvänster</userinput
+></link
+> och <link linkend="turnright"
+><userinput
+>svänghöger</userinput
+></link
+>.</para>
+</sect2>
+
+<sect2 id="more-examples">
+<title
+>Fler exempel</title>
+<para
+>Det första exemplet var mycket enkelt, så låt oss gå vidare!</para>
+
+<para>
+
+<screen
+>återställ
+
+dukstorlek 200,200
+dukfärg 0,0,0
+pennfärg 255,0,0
+pennbredd 5
+
+gå 20,20
+riktning 135
+
+framåt 200
+svängvänster 135
+framåt 100
+svängvänster 135
+framåt 141
+svängvänster 135
+framåt 100
+svängvänster 45
+
+gå 40, 100
+</screen
+>Återigen kan du skriva in eller kopiera och klistra in koden i editorn eller öppna filen <filename
+>pil</filename
+> i undermenyn <guimenu
+>Exempel</guimenu
+> och köra den (med <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Kör</guimenu
+> <guimenuitem
+>Kör</guimenuitem
+></menuchoice
+></link
+>) för att se resultatet. I följande exempel förväntas du känna till detta.</para>
+
+<para
+>Du bör märka att det andra exemplet använder mycket mer kod. Du har också sett ett antal nya kommandon. Här är en kort förklaring av de nya kommandona:</para>
+
+<para
+>Efter kommandot <userinput
+>återställ</userinput
+> är allting som det var när du just hade startat &kturtle;.</para>
+
+<para
+><userinput
+>dukstorlek 200,200</userinput
+> anger dukens bredd och höjd till 200 <glossterm linkend="pixels"
+>bildpunkter</glossterm
+>. Bredden och höjden har samma storlek, vilket betyder att duken nu bör vara en fyrkant.</para>
+
+<para
+><userinput
+>dukfärg 0,0,0</userinput
+> gör duken svart. <userinput
+>0,0,0</userinput
+> är en <glossterm linkend="rgb"
+>RGB-kombination</glossterm
+> där alla värden är satta till <userinput
+>0</userinput
+>, vilket ger ett svart resultat.</para>
+
+<para
+><userinput
+>pennfärg 255,0,0</userinput
+> anger att pennans färg ska vara röd. <userinput
+>255,0,0</userinput
+> är en <glossterm linkend="rgb"
+>RGB-kombination</glossterm
+> där bara det 'röda' värdet är satt till <userinput
+>255</userinput
+> (starkaste färg) medan de övriga (grönt och blått) är satta till <userinput
+>0</userinput
+> (ingen färg). Det ger en stark röd färgton.</para>
+
+<para
+>Om du inte förstår färgvärdena, försäkra dig om att du har läst ordförklaringen av <glossterm linkend="rgb"
+>RGB-kombination</glossterm
+>.</para>
+
+<para
+><userinput
+>pennbredd 5</userinput
+> anger att bredden (storleken) på pennan ska vara <userinput
+>5</userinput
+> <glossterm linkend="pixels"
+>bildpunkter</glossterm
+>. Efter detta har varje rad som sköldpaddan ritar tjockleken <userinput
+>5</userinput
+>, ända till vi anger en annan <userinput
+>pennbredd</userinput
+>.</para>
+
+<para
+><userinput
+>gå 20,20</userinput
+> talar om för sköldpaddan att den ska gå till en viss plats på duken. Räknat från övre vänstra hörnet, är platsen 20 <glossterm linkend="pixels"
+>bildpunkter</glossterm
+> från vänster och 20 <glossterm linkend="pixels"
+>bildpunkter</glossterm
+> ner från dukens överkant. Observera att sköldpaddan inte ritar någon linje med kommandot <userinput
+>gå</userinput
+>.</para>
+
+<para
+><userinput
+>riktning 135</userinput
+> anger sköldpaddans riktning. Kommandona <userinput
+>svängvänster</userinput
+> och <userinput
+>svänghöger</userinput
+> ändrar sköldpaddans vinkel från dess nuvarande riktning. Kommandot <userinput
+>riktning</userinput
+> ändrar sköldpaddans vinkel från noll, och är alltså inte relativ i förhållande till sköldpaddans tidigare riktning.</para>
+
+<para
+>Efter riktningskommandot följer många <userinput
+>framåt</userinput
+> och <userinput
+>svängvänster</userinput
+>. Dessa kommandon utför själva ritandet.</para>
+
+<para
+>Till sist används ytterligare ett <userinput
+>gå</userinput
+> för att flytta undan sköldpaddan.</para>
+
+<para
+>Försäkra dig om att du följer länkarna till referensen. Referensen förklarar varje kommando i mer detalj.</para>
+
+
+</sect2>
+</sect1>
+
+
+
+<!--        EXTRA SECTIONS CAN BE ADDED TO THE "GETTING STARTED"
+
+<sect1 id="calculations">
+<title
+>Simple Calculations</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_variables">
+<title
+>Using Variables: creating 'number containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_strings">
+<title
+>Using strings: creating 'text containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="logic">
+<title
+>Logic: asking the computer simple questions</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="recursion">
+<title
+>Recursion: the Turtle is using itself</title>
+<para>
+Draw a maze for example
+</para>
+</sect1>
+-->
+
+
+</chapter>

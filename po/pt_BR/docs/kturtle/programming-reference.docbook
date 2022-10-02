@@ -1,0 +1,2127 @@
+<chapter id="reference">
+<title
+>Referência de programação do &turtlescript;</title>
+<para
+>Esta é a referência para o &turtlescript; do &kturtle;. Na primeira seção deste capítulo dê uma olhada em alguns aspectos da <link linkend="grammar"
+>gramática</link
+> dos programas em &turtlescript;. A segunda seção lida exclusivamente com os <link linkend="mathematical-operators"
+>operadores matemáticos</link
+>, os <link linkend="boolean-operators"
+>operadores booleanos (verdadeiro/falso)</link
+> e os <link linkend="comparing-operators"
+>operadores de comparação</link
+>. A terceira seção é uma lista enorme com todos os <link linkend="commands"
+>comandos</link
+>, explicando-os um-a-um. A quarta seção explica como <link linkend="assignment-of-variables"
+>atribuir</link
+> valores às <link linkend="assignment-of-variables"
+>variáveis</link
+>. Finalmente, é explicado como organizar a execução dos comandos com as <link linkend="controlling-execution"
+>instruções de controle da execução</link
+> na quinta seção e como criar os seus próprios comandos com o <link linkend="learn"
+>aprender</link
+>, na última seção.</para>
+
+<sect1 id="grammar">
+<title
+>A Gramática do &turtlescript;</title>
+<para
+>Como em qualquer linguagem, o &turtlescript; possui diferentes tipos de palavras e símbolos. No Português, é feita a distinção entre os verbos (como 'andar' ou 'cantar') e os substantivos (como 'irmã' ou 'casa'), sendo usados para diferentes fins. O &turtlescript; é uma linguagem de programação, sendo usada para indicar ao &kturtle; o que fazer.</para>
+<para
+>Nesta seção, alguns dos diferentes tipos de palavras e símbolos do &turtlescript; são explicados de forma breve. Serão explicados os <link linkend="comment"
+>comentários</link
+>, os <link linkend="command"
+>comandos</link
+> e os três diferentes tipos de literais: <link linkend="number"
+>números</link
+>, <link linkend="string"
+>cadeias de caracteres</link
+> e os <link linkend="boolean-value"
+>valores booleanos (verdadeiro/falso)</link
+>.</para>
+
+
+<sect2 id="comment">
+<title
+>Comentários</title>
+<para
+>Um programa contém instruções que são executadas quando o programa é executado e outros itens, chamados de comentários. Os comentários não são executados; o &kturtle; simplesmente ignora-os ao executar o seu programa. Os comentários estão lá para que os outros programadores possam compreender melhor o seu programa. Tudo o que estiver após um símbolo <userinput
+>#</userinput
+> é considerado um comentário no &turtlescript;. Por exemplo, este pequeno programa não faz nada: <screen>
+# este pequeno programa não faz nada, é apenas um comentário!
+</screen
+> É um pouco inútil, mas explica bem o conceito.</para>
+<para
+>Os comentários tornam-se bastante úteis quando o programa se torna um pouco mais complexo. Ele poderá ajudar a fornecer alguns conselhos aos outros programadores. No programa a seguir, irá ver os comentários a serem usados juntamente com o comando <link linkend="print"
+>imprimir</link
+>. <screen>
+# este programa foi feito pelo Cies Breijs.
+mostre "este texto será impresso na área de desenho"
+# a linha anterior não é um comentário, mas a seguinte é:
+# mostre "este texto não será impresso!"
+</screen
+> A primeira linha descreve o programa. A segunda é executada pelo &kturtle; e imprime a mensagem <userinput
+>este texto será impresso na área de desenho</userinput
+> na área de desenho propriamente dita. A terceira linha é um comentário. A quarta linha é um comentário que contém um pedaço de &turtlescript;, se for retirado o símbolo <userinput
+>#</userinput
+> da quarta linha, a instrução 'imprimir' será executada pelo &kturtle;. Os programadores dizem: a instrução da quarta linha está 'comentada'.</para>
+<para
+>As linhas comentadas ficam <glossterm
+>realçadas</glossterm
+> em cinza claro no <link linkend="the-editor"
+>editor</link
+>.</para>
+</sect2>
+
+<sect2 id="command">
+<title
+>Comandos</title>
+<para
+>Ao usar os comandos, você diz à tartaruga ou ao &kturtle; para fazerem algo. Alguns comandos precisam de dados de entrada, enquanto outros geram resultados.<screen>
+# o 'parafrente' é um comando que necessita de dados de entrada, neste caso do número 100:
+parafrente 100
+</screen
+> A primeira linha é um <link linkend="comment"
+>comentário</link
+>. A segunda linha contém o comando <userinput
+>avancar</userinput
+> e o <link linkend="number"
+>número</link
+> <userinput
+>100</userinput
+>. O número não faz parte do comando, mas é considerada uma 'entrada' para o comando.</para>
+<para
+>Alguns comandos como &eg; <userinput
+>vápara</userinput
+> precisam de mais de um valor de entrada. Valores múltiplos devem ser separados usando o caracter <userinput
+>,</userinput
+> (vírgula).</para>
+<para
+>Para uma ideia geral de todos os comandos que o &kturtle; suporta, veja <link linkend="commands"
+>aqui</link
+>. Os comandos incorporados são <glossterm
+>realçados</glossterm
+> em azul-escuro</para>
+</sect2>
+
+<sect2 id="number">
+<title
+>Números</title>
+<para
+>Muito provavelmente você já conhece alguma coisa sobre os números. A forma como eles são usados no &kturtle; não é muito diferente do idioma falado ou da matemática. </para>
+<para
+>Temos então os números conhecidos por naturais: <userinput
+>0</userinput
+>, <userinput
+>1</userinput
+>, <userinput
+>2</userinput
+>, <userinput
+>3</userinput
+>, <userinput
+>4</userinput
+>, <userinput
+>5</userinput
+>, etc. Os números negativos: <userinput
+>-1</userinput
+>, <userinput
+>-2</userinput
+>, <userinput
+>-3</userinput
+>, etc. Finalmente, os números decimais ou fracionários, como por exemplo: <userinput
+>0.1</userinput
+>, <userinput
+>3.14</userinput
+>, <userinput
+>33.3333</userinput
+>, <userinput
+>-5.05</userinput
+>, <userinput
+>-1.0</userinput
+>. O caractere <userinput
+>.</userinput
+> (ponto) é usado como separador decimal. </para>
+<para
+>Os números poderão ser usados nos <link linkend="mathematical-operators"
+>operadores matemáticos</link
+> e nos <link linkend="comparing-operators"
+>operadores de comparação</link
+>. Também poderão ser guardados em <link linkend="assignment-of-variables"
+>variáveis</link
+>. Os números são <glossterm
+>realçados</glossterm
+> em vermelho escuro.</para>
+</sect2>
+
+<!-- constants like pi? -->
+
+<sect2 id="string">
+<title
+>Cadeias de caracteres</title>
+<para
+>Primeiro um exemplo: <screen>
+mostre "Olá, sou uma cadeia de caracteres."
+</screen
+> Neste exemplo, o <userinput
+>mostre</userinput
+> é um comando, enquanto o <userinput
+>"Olá, sou uma cadeia de caracteres."</userinput
+> é, de fato, uma cadeia de caracteres. Elas começam e terminam com o símbolo <userinput
+>"</userinput
+>; através destes símbolos, o &kturtle; sabe que é uma cadeia de caracteres.</para>
+<para
+>As cadeias de caracteres poderão ser colocadas em <link linkend="assignment-of-variables"
+>variáveis</link
+>, como acontece com os <link linkend="number"
+>números</link
+>. Contudo, ao contrário dos números, as cadeias de caracteres não podem ser usadas nos <link linkend="mathematical-operators"
+>operadores matemáticos</link
+> ou nos <link linkend="comparing-operators"
+>operadores de comparação</link
+>. As cadeias de caracteres são <glossterm
+>realçadas</glossterm
+> em vermelho.</para>
+</sect2>
+
+<sect2 id="boolean-value">
+<title
+>Valores booleanos (verdadeiro/falso)</title>
+<para
+>Existem apenas dois valores booleanos: <userinput
+>verdadeiro</userinput
+><indexterm
+><primary
+>verdadeiro</primary
+></indexterm
+> e <userinput
+>falso</userinput
+><indexterm
+><primary
+>falso</primary
+></indexterm
+>. Algumas vezes também são chamados de: ligado e desligado, um e zero. Contudo, no &turtlescript; são sempre chamados de <userinput
+>verdadeiro</userinput
+> e <userinput
+>falso</userinput
+>. Dê uma olhada neste trecho de &turtlescript;: <screen>
+$a = verdadeiro
+</screen
+> Se olhar para o <link linkend="the-inspector"
+>inspetor</link
+>, poderá ver que a <link linkend="assignment-of-variables"
+>variável</link
+> <userinput
+>$a</userinput
+> está igual a <userinput
+>verdadeiro</userinput
+>, tendo um tipo booleano.</para>
+<para
+>Normalmente, os valores booleanos são o resultado de um <link linkend="comparing-operators"
+>operador de comparação</link
+>, como acontece no seguinte trecho de &turtlescript;: <screen>
+$resposta = 10 &gt; 3
+</screen
+> A <link linkend="assignment-of-variables"
+>variável</link
+> <userinput
+>$resposta</userinput
+> é configurada como <userinput
+>verdadeiro</userinput
+>, uma vez que <userinput
+>10</userinput
+> é maior que <userinput
+>3</userinput
+>.</para>
+<para
+>Os valores booleanos, <userinput
+>true</userinput
+> (verdadeiro) e <userinput
+>false</userinput
+> (falso), estão <glossterm
+>realçados</glossterm
+> a vermelho escuro.</para>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="operators">
+<title
+>Operadores matemáticos, booleanos e de comparação</title>
+<para
+>O título deste seção poderá soar muito complicado, mas não é tão difícil de compreender como parece.</para>
+
+<sect2 id="mathematical-operators">
+<title
+>Operadores matemáticos</title>
+<para
+>Estes são os símbolos matemáticos básicos conhecidos: a adição (<userinput
+>+</userinput
+>), a subtração (<userinput
+>-</userinput
+>), a multiplicação (<userinput
+>*</userinput
+>), a divisão (<userinput
+>/</userinput
+>) e a potenciação (<userinput
+>^</userinput
+>).</para>
+
+<para
+>Aqui está um pequeno exemplo dos operadores matemáticos que poderá usar no &turtlescript;: <screen>
+$somar      = 1 + 1
+$subtrair = 20 - 5
+$multiplicar = 15 * 2
+$dividir   = 30 / 30
+$elevar    = 2 ^ 2
+</screen
+> Os valores que resultam das operações matemáticas serão <link linkend="assignment-of-variables"
+>atribuídos</link
+> às diversas <link linkend="assignment-of-variables"
+>variáveis</link
+>. Se utilizar o <link linkend="the-inspector"
+>inspetor</link
+>, poderá ver os valores.</para>
+<para
+>Se você somente queria fazer um cálculo simples, você poderá fazer algo semelhante a isto: <screen
+>mostre 2010-12
+</screen
+></para>
+<para
+>Agora, um exemplo com parênteses: <screen>
+mostre ( ( 20 - 5 ) * 2 / 30 ) + 1
+</screen
+> O que estiver entre parênteses será calculado em primeiro lugar. Neste exemplo, o 20-5 será calculado, depois será multiplicado por 2, dividido por 30 e depois é adicionado 1 (o que dá 2). Parênteses podem ser usados em outros casos.</para>
+<para
+>O &kturtle; também possui mais funcionalidades sob a forma de comandos. Dê uma olhada nos seguintes comandos, mas tenha em mente o que diz respeito a operações avançadas: <link linkend="round"
+>arredonda</link
+>, <link linkend="random"
+>aleatório</link
+>, <link linkend="sqrt"
+>raizquadrada</link
+>, <link linkend="pi"
+>pi</link
+>, <link linkend="sin"
+>seno</link
+>, <link linkend="cos"
+>cosseno</link
+>, <link linkend="tan"
+>tangente</link
+>, <link linkend="arcsin"
+>arcoseno</link
+>, <link linkend="arccos"
+>arcocosseno</link
+>, <link linkend="arctan"
+>arcotangente</link
+>.</para>
+</sect2>
+
+<sect2 id="boolean-operators">
+<title
+>Operadores booleanos (verdadeiro/falso)</title>
+<para
+>Enquanto os <link linkend="mathematical-operators"
+>operadores matemáticos</link
+> são usados principalmente para os <link linkend="number"
+>números</link
+>, os operadores booleanos são para os <link linkend="boolean-value"
+>valores booleanos</link
+> (<userinput
+>verdadeiro</userinput
+> e <userinput
+>falso</userinput
+>). Existem apenas três operadores booleanos e são chamados de: <userinput
+>e</userinput
+><indexterm
+><primary
+>e</primary
+></indexterm
+>, <userinput
+>ou</userinput
+><indexterm
+><primary
+>ou</primary
+></indexterm
+>, e <userinput
+>não</userinput
+><indexterm
+><primary
+>não</primary
+></indexterm
+>. O seguinte exemplo de &turtlescript; mostra como usá-los: <screen>
+$e_1_1 = verdadeiro e verdadeiro    # -> verdadeiro
+$e_1_0 = verdadeiro e falso   # -> falso
+$e_0_1 = falso e verdadeiro   # -> falso
+$e_0_0 = falso e falso  # -> falso
+
+$ou_1_1 = verdadeiro ou verdadeiro    # -> verdadeiro
+$ou_1_0 = verdadeiro ou falso   # -> verdadeiro
+$ou_0_1 = falso ou verdadeiro   # -> verdadeiro
+$ou_0_0 = falso ou falso  # -> falso
+
+$not_1 = nao verdadeiro   # -> falso
+$not_0 = nao falso  # -> verdadeiro
+</screen
+> Se usar o <link linkend="the-inspector"
+>inspetor</link
+>, poderá ver os valores; contudo, fornecemos estes resultados como pequenos comentários no fim das linhas. O <userinput
+>e</userinput
+> é avaliado como <userinput
+>verdadeiro</userinput
+> apenas se ambos os lados forem <userinput
+>verdadeiro</userinput
+>. O <userinput
+>ou</userinput
+> é avaliado como <userinput
+>verdadeiro</userinput
+> se qualquer um dos lados for <userinput
+>verdadeiro</userinput
+>. Finalmente, o <userinput
+>nao</userinput
+> transforma um <userinput
+>verdadeiro</userinput
+> num <userinput
+>falso</userinput
+> e um <userinput
+>falso</userinput
+> num <userinput
+>verdadeiro</userinput
+>.</para>
+<para
+>Os operadores booleanos são <glossterm
+>realçados</glossterm
+> em rosa.</para>
+
+<sect3 id="boolean-operators-advanced-examples">
+<title
+>Alguns exemplos mais avançados</title>
+<para
+>Veja o exemplo a seguir com o <userinput
+>e</userinput
+>: <screen>
+$a = 1
+$b = 5
+se (($a &lt; 10) e ($b == 5)) e ($a &lt; $b) {
+  mostre "olá"
+}
+</screen
+> Neste trecho de &turtlescript;, o resultado dos três <link linkend="comparing-operators"
+>operadores de comparação</link
+> é reunido com os operadores <userinput
+>e</userinput
+>. Isto significa que todos os três têm de ser avaliados como "verdadeiro" para imprimir o "olá".</para>
+
+<para
+>Um exemplo com o <userinput
+>ou</userinput
+>: <screen>
+$n = 1
+se ($n &lt; 10) ou ($n == 2) {
+  mostre "olá"
+}
+</screen
+> Neste trecho de &turtlescript;, o lado esquerdo do <userinput
+>ou</userinput
+> é avaliado como 'verdadeiro', enquanto o direito é avaliado como 'falso'. Uma vez que um dos dois lados do operador <userinput
+>ou</userinput
+> é 'verdadeiro', o operador <userinput
+>ou</userinput
+> é avaliado como 'verdadeiro'. Isto significa que o 'olá' é impresso.</para>
+
+<para
+>Finalmente, um exemplo com o <userinput
+>não</userinput
+>, que muda o 'verdadeiro' para 'falso' e o 'falso' para 'verdadeiro'. Dê uma olhada: <screen
+>$n = 1
+se nao ($n == 3) {
+  mostre "olá"
+} senao {
+  mostre "não olá ;-)"
+}
+</screen
+></para>
+</sect3>
+</sect2>
+
+<sect2 id="comparing-operators">
+<title
+>Operadores de comparação</title>
+<para
+>Considere esta simples comparação: <screen>
+$resposta = 10 &gt; 3
+</screen
+> Aqui o <userinput
+>10</userinput
+> é comparado com o <userinput
+>3</userinput
+>, através do operador 'maior que'. O resultado desta comparação, o <link linkend="boolean-value"
+>valor booleano</link
+> <userinput
+>verdadeiro</userinput
+> é guardado na <link linkend="assignment-of-variables"
+>variável</link
+> <userinput
+>$resposta</userinput
+>.</para>
+<para
+>Todos os <link linkend="number"
+>números</link
+> e <link linkend="assignment-of-variables"
+>variáveis</link
+> (que contenham números) poderão ser comparados entre si, com os operadores de comparação.</para>
+<para
+>Aqui estão todos os possíveis operadores de comparação: <table
+> <title
+>Tipos de perguntas</title
+> <tgroup cols="3"
+> <tbody
+> <row
+> <entry
+><userinput
+>$A == $B</userinput
+></entry
+> <entry
+>é igual</entry
+> <entry
+>a resposta é <quote
+>verdadeira</quote
+> se o <userinput
+>$A</userinput
+> for igual a <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A != $B</userinput
+></entry
+> <entry
+>é diferente</entry
+> <entry
+>a resposta é <quote
+>verdadeira</quote
+> se o <userinput
+>$A</userinput
+> não for igual ao <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt; $B</userinput
+></entry
+> <entry
+>maior que</entry
+> <entry
+>a resposta é <quote
+>verdadeira</quote
+> se o <userinput
+>$A</userinput
+> for maior que o <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt; $B</userinput
+></entry
+> <entry
+>menor que</entry
+> <entry
+>a resposta é <quote
+>verdadeira</quote
+> se <userinput
+>$A</userinput
+> for menor que <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt;= $B</userinput
+></entry
+> <entry
+>maior ou igual a</entry
+> <entry
+>a resposta é <quote
+>verdadeira</quote
+> se <userinput
+>$A</userinput
+> for maior ou igual ao <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt;= $B</userinput
+></entry
+> <entry
+>menor ou igual a</entry
+> <entry
+>a resposta é <quote
+>verdadeira</quote
+> se <userinput
+>$A</userinput
+> for menor ou igual a <userinput
+>$B</userinput
+></entry
+> </row
+> </tbody
+> </tgroup
+> </table
+> Lembre-se que o $A e o $B têm de ser <link linkend="number"
+>números</link
+> ou <link linkend="assignment-of-variables"
+>variáveis</link
+> que contenham números.</para>
+</sect2>
+
+
+</sect1>
+
+
+
+<sect1 id="commands">
+<title
+>Comandos</title>
+<para
+>Ao usar os comandos, você diz à tartaruga ou ao &kturtle; para fazer algo. Alguns comandos precisam de dados introduzidos, enquanto outros trazem resultados. Nesta seção iremos explicar todos os comandos incorporados que podem ser usados no &kturtle;. Em alternativa, usando o <link linkend="learn"
+>aprenda</link
+>, poderá criar os seus próprios comandos. Os comandos incorporados ficam <glossterm
+>realçados</glossterm
+> em azul escuro.</para>
+
+<sect2 id="moving-the-turtle">
+<title
+>Movendo a tartaruga</title>
+<para
+>Existem vários comandos para mover a tartaruga pela tela.</para>
+
+  <variablelist>
+    <anchor id="forward"/>
+    <varlistentry
+> 
+      <term
+>parafrente (pf)<indexterm
+><primary
+>parafrente (pf)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>parafrente X</screen
+>O <userinput
+>parafrente</userinput
+> move a tartaruga para a frente X pontos. Quando o traço está em baixo, a tartaruga irá deixar um rastro. O <userinput
+>parafrente</userinput
+> pode ser abreviado para <userinput
+>pf</userinput
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="backward"/>
+    <varlistentry
+>  
+      <term
+>paratrás (pt)<indexterm
+><primary
+>paratrás (pt)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>paratrás X</screen
+>O <userinput
+>paratrás</userinput
+> move a tartaruga para trás X pontos. Quando o traço está em baixo, a tartaruga irá deixar um rastro. O <userinput
+>paratrás</userinput
+> pode ser abreviado para <userinput
+>pt</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnleft"/>
+    <varlistentry
+> 
+      <term
+>paraesquerda (pe)<indexterm
+><primary
+>paraesquerda (pe)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>paraesquerda X</screen
+>O <userinput
+>paraesquerda</userinput
+> diz à tartaruga para se virar X graus para a esquerda. O <userinput
+>paraesquerda</userinput
+> pode ser abreviado para <userinput
+>pe</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnright"/>
+    <varlistentry
+> 
+      <term
+>paradireita (pd)<indexterm
+><primary
+>paradireita (pd)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>paradireita X</screen
+>O <userinput
+>paradireita</userinput
+> diz à tartaruga para se virar X graus para a direita. O <userinput
+>paradireita</userinput
+> pode ser abreviado para <userinput
+>pd</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="direction"/>
+    <varlistentry
+> 
+      <term
+>direção (dir)<indexterm
+><primary
+>direção (dir)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>direção X</screen
+>A <userinput
+>direção</userinput
+> configura a direção da tartaruga para um ângulo de X graus a contar do zero, e isto não é relativo à direção anterior da tartaruga. A <userinput
+>direção</userinput
+> pode ser abreviado para <userinput
+>dir</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="getdirection"/>
+    <varlistentry
+> 
+      <term
+>lerdireção<indexterm
+><primary
+>lerdireção</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>lerdireção</screen
+>O <userinput
+>lerdireção</userinput
+> retorna a direção da tartaruga para um ângulo de X graus a contar do zero, onde zero é a direção quando a tartaruga está apontando para frente.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="center"/>
+    <varlistentry
+> 
+      <term
+>centralize<indexterm
+><primary
+>centralize</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>centralize</screen
+>O <userinput
+>centralize</userinput
+> move a tartaruga para o centro da área de desenho.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="go"/>
+    <varlistentry
+> 
+      <term
+>vápara<indexterm
+><primary
+>vápara</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>vápara X,Y</screen
+>O <userinput
+>vápara</userinput
+> manda a tartaruga ir para um determinado local da área de desenho. Este local está a X <glossterm linkend="pixels"
+>pontos</glossterm
+> do lado esquerdo da área de desenho e a Y <glossterm linkend="pixels"
+>pontos</glossterm
+> do topo da área de desenho.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gox"/>
+    <varlistentry
+> 
+      <term
+>váparax<indexterm
+><primary
+>váparax (vx)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>váparax X</screen
+>Ao usar o comando <userinput
+>váparax</userinput
+>, a tartaruga irá mover-se X <glossterm linkend="pixels"
+>pontos</glossterm
+> a partir da esquerda da área de desenho, mantendo-se na mesma altura. O <userinput
+>váparax</userinput
+> pode ser abreviado como <userinput
+>vx</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="goy"/>
+    <varlistentry
+> 
+      <term
+>váparay<indexterm
+><primary
+>váparay (vy)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>váparay Y</screen
+>Ao usar o comando <userinput
+>váparay</userinput
+>, a tartaruga irá mover-se Y <glossterm linkend="pixels"
+>pontos</glossterm
+> a partir do topo da área de desenho, mantendo-se na mesma distância do lado esquerdo da área de desenho. O <userinput
+>váparay</userinput
+> pode ser abreviado como <userinput
+>vy</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <note
+><para
+>Ao usar os comandos <userinput
+>vápara</userinput
+>, <userinput
+>váparax</userinput
+>, <userinput
+>váparay</userinput
+> e <userinput
+>centralize</userinput
+> a tartaruga não irá desenhar uma linha, não importa se usado com <userinput
+>usenada</userinput
+> ou <userinput
+>uselápis</userinput
+>.</para>
+  </note>
+</sect2>
+
+<sect2 id="locate-the-turtle">
+<title
+>Onde está a tartaruga?</title>
+<para
+>Existem dois comandos que devolvem a posição da tartaruga na tela.</para>
+
+  <variablelist>
+    <anchor id="getx"/>
+    <varlistentry
+> 
+      <term
+>pegax<indexterm
+><primary
+>pegax</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>pegax</userinput
+> devolve o número em pontos a partir da esquerda da área de desenho até a posição atual da tartaruga.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gety"/>
+    <varlistentry
+> 
+      <term
+>pegay<indexterm
+><primary
+>pegay</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>pegay</userinput
+> devolve o número em pontos a partir do topo da área de desenho até a posição atual da tartaruga.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="pen">
+<title
+>A tartaruga tem um traço</title>
+<para
+>A tartaruga tem um traço e vai desenhando uma linha à medida que a tartaruga se move. Existem alguns comandos para controlar o traço. Nesta seção iremos explicar estes comandos.</para>
+  <variablelist>
+    <anchor id="penup"/>
+    <varlistentry
+> 
+      <term
+>usenada (un)<indexterm
+><primary
+>usenada (un)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>usenada</screen
+>O <userinput
+>usenada</userinput
+> levanta o traço da área de desenho. Quando o traço está <quote
+>em cima</quote
+>, não é desenhada nenhuma linha à medida que a tartaruga se move. Veja também o <userinput
+>uselápis</userinput
+>. O <userinput
+>usenada</userinput
+> pode ser abreviado para <userinput
+>un</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="pendown"/>
+    <varlistentry
+> 
+      <term
+>uselápis (ul)<indexterm
+><primary
+>uselápis (ul)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>uselápis</screen
+>O <userinput
+>uselápis</userinput
+> pressiona o traço para baixo na área de desenho. Quando o traço está <quote
+>em baixo</quote
+>, é desenhada uma linha à medida que a tartaruga se move. Veja também o <userinput
+>usenada</userinput
+>. O <userinput
+>uselápis</userinput
+> pode ser abreviado para <userinput
+>ul</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setpenwidth"/>
+    <varlistentry
+> 
+      <term
+>larguradolápis (ll)<indexterm
+><primary
+>larguradolápis (ll)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>larguradolápis X</screen
+>A <userinput
+>larguradolápis</userinput
+> configura a espessura do traço para X <glossterm linkend="pixels"
+>pontos</glossterm
+>. A <userinput
+>larguradolápis</userinput
+> pode ser abreviado para <userinput
+>ll</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setfgcolor"/>
+    <varlistentry
+> 
+      <term
+>cordolápis (cl)<indexterm
+><primary
+>cordolápis (cl)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>cordolápis R,G,B</screen
+>A <userinput
+>cordolápis</userinput
+> configura a cor do traço. A <userinput
+>cordolápis</userinput
+> recebe uma <glossterm linkend="rgb"
+>combinação de RGB</glossterm
+> como parâmetro. A <userinput
+>cordolápis</userinput
+> pode ser abreviado para <userinput
+>cl</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="canvas">
+<title
+>Comandos para controlar a área de desenho</title>
+<para
+>Existem vários comandos para controlar a área de desenho.</para>
+  <variablelist>
+    <anchor id="resizecanvas"/>
+    <varlistentry>
+      <term
+>tamanhodatela (tt)<indexterm
+><primary
+>tamanhodatela (tt)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>tamanhodatela X,Y</screen
+>Com o comando <userinput
+>tamanhodatela</userinput
+> você poderá alterar o tamanho da área de desenho. Ele recebe dois parâmetros (X e Y) de entrada, em que o X é a nova largura da área de desenho em <glossterm linkend="pixels"
+>pontos</glossterm
+>, e o Y é a nova altura da mesma área em <glossterm linkend="pixels"
+>pontos</glossterm
+>. O <userinput
+>tamanhodatela</userinput
+> pode ser abreviado para <userinput
+>tt</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setbgcolor"/>
+    <varlistentry
+> 
+      <term
+>cordofundor (cf)<indexterm
+><primary
+>cordofundor (cf)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>cordofundo R,G,B</screen
+>A <userinput
+>cordofundo</userinput
+> define a cor da área de desenho. A <userinput
+>cordofundor</userinput
+> recebe uma <glossterm linkend="rgb"
+>combinação RGB</glossterm
+> como parâmetro. A <userinput
+>cordofundo</userinput
+> pode ser abreviado para <userinput
+>cf</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="clean">
+<title
+>Comandos para limpar</title>
+<para
+>Existem dois comandos para limpar a área de desenho, depois de você ter deixado tudo bagunçado.</para>
+  <variablelist>
+    <anchor id="clear"/>
+    <varlistentry
+> 
+      <term
+>limpetela (lt)<indexterm
+><primary
+>limpetela (lt)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>limpetela</screen
+>Com o <userinput
+>limpetela</userinput
+>, você poderá limpar todos os desenhos da área de desenho. Todo o resto permanece igual: a posição e o ângulo da tartaruga, a cor da área de trabalho, a visibilidade da tartaruga e o tamanho da área de desenho.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="reset"/>
+    <varlistentry
+> 
+      <term
+>apague<indexterm
+><primary
+>apague</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>apague</screen
+>O <userinput
+>apague</userinput
+> limpa tudo de forma mais abrangente que o comando <userinput
+>limpetela</userinput
+>. Depois de um comando <userinput
+>apague</userinput
+>, tudo fica como estava quando você iniciou o &kturtle;. A tartaruga é posicionada no meio do tela, a cor da área de desenho é branca e a tartaruga irá desenhar uma linha preta na área de desenho e o tamanho da tela é definido para 400 x 400 pontos.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="sprites">
+<title
+>A tartaruga é uma imagem móvel</title>
+<para
+>Muitas pessoas não sabem o que são as imagens móveis ('sprites' em inglês), daí uma breve explicação: as imagens móveis são pequenas imagens que podem percorrer a tela (para mais informações, veja o glossário sobre as <glossterm linkend="sprites"
+>imagens móveis</glossterm
+>). </para>
+<para
+>A seguir você irá encontrar uma apresentação completa de todos os comandos que lidam com imagens móveis.</para>
+<para
+>[A versão atual do &kturtle; não suporta ainda o uso de imagens móveis além da tartaruga. Nas versões futuras, você poderá mudar a tartaruga para outra coisa que desejar]</para>
+  <variablelist>
+    <anchor id="spriteshow"/>
+    <varlistentry
+> 
+      <term
+>apareça (ap)<indexterm
+><primary
+>apareça (ap)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>apareça</screen
+>O <userinput
+>apareça</userinput
+> torna a tartaruga visível de novo depois de ter ficado escondida. O <userinput
+>apareça</userinput
+> pode ser abreviado para <userinput
+>ap</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="spritehide"/>
+    <varlistentry
+> 
+      <term
+>desapareça (da)<indexterm
+><primary
+>desapareça (da)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>desapareça</screen
+>O <userinput
+>desapareça</userinput
+> esconde a tartaruga. Isto pode ser usado se a tartaruga não couber no seu desenho. O <userinput
+>desapareça</userinput
+> pode ser abreviado para <userinput
+>da</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="writing">
+<title
+>A tartaruga sabe escrever?</title>
+<para
+>A resposta é: <quote
+>sim</quote
+>. A tartaruga sabe escrever e pode escrever tudo o que lhe disser para escrever.</para>
+  <variablelist>
+    <anchor id="print"/>
+    <varlistentry
+> 
+      <term
+>mostre<indexterm
+><primary
+>mostre</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mostre X</screen
+>O comando <userinput
+>mostre</userinput
+> é usado para dizer à tartaruga para escrever algo na área de desenho. O <userinput
+>mostre</userinput
+> recebe números e texto como parâmetros. Você poderá executar o <userinput
+>mostre</userinput
+> para vários parâmetros com o sinal <quote
+>+</quote
+>. Veja aqui um pequeno exemplo: <screen
+>$ano = 2003
+$autor = "Cies Breijs"
+mostre $autor + " iniciou o projeto do KTurtle em " + $ano + " e ainda continua gostando de trabalhar nele!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="fontsize"/>
+    <varlistentry
+> 
+      <term
+>tamanhodafonte<indexterm
+><primary
+>tamanhodafonte</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>tamanhodafonte X</screen
+>O <userinput
+>tamanhodafonte</userinput
+> configura o tamanho da letra que é usado pelo <userinput
+>mostre</userinput
+>. O <userinput
+>tamanhodafonte</userinput
+> recebe um parâmetro que deverá ser um número. O tamanho é definido em <glossterm linkend="pixels"
+>pontos</glossterm
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="math-commands">
+<title
+>Comandos matemáticos</title>
+<para
+>Os seguintes comandos são as instruções matemáticas mais avançadas do &kturtle;.</para>
+  <variablelist>
+    <anchor id="round"/>
+    <varlistentry>
+      <term
+>arredonda<indexterm
+><primary
+>arredonda</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>arredonda(x)</screen
+>O <userinput
+>arredonda</userinput
+> arredonda o número indicado ao inteiro mais próximo. <screen>
+mostre arredonda 10.8
+parafrente 20
+mostre arredonda 10.3
+parafrente 20
+</screen
+> Com este código, a tartaruga iria apresentar os números 11 e 10.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="random"/>
+    <varlistentry
+> 
+      <term
+>aleatório (al)<indexterm
+><primary
+>aleatório (al)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>aleatório X,Y</screen
+>O <userinput
+>aleatório</userinput
+> é um comando que recebe parâmetros e devolve resultados. Como parâmetros são necessários dois números, onde o primeiro define o resultado mínimo (X) e o segundo o máximo (Y). O resultado é um número escolhido aleatoriamente que é maior ou igual ao mínimo e menor ou igual ao máximo. Aqui está um pequeno exemplo: <screen>
+repita 500 {
+  $x = aleatório 1,20
+  parafrente $x
+  paraesquerda 10 - $x
+}
+</screen
+> Com o comando <userinput
+>aleatório</userinput
+>, você poderá adicionar um pouco de confusão ao seu programa.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="mod"/>
+    <varlistentry
+> 
+      <term
+>resto<indexterm
+><primary
+>resto</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>resto X,Y</screen
+>O comando <userinput
+>resto</userinput
+> retorna o resto da divisão do primeiro número pelo segundo.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sqrt"/>
+    <varlistentry
+> 
+      <term
+>raizquadrada<indexterm
+><primary
+>raizquadrada</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>raizquadrada X</screen
+>O comando <userinput
+>raizquadrada</userinput
+> é usado para descobrir a raiz quadrada de um número X.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+<!--
+  <variablelist>
+    <anchor id="exp"/>
+    <varlistentry
+> 
+      <term
+>exp<indexterm
+><primary
+>exp</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+-->
+  <variablelist>
+    <anchor id="pi"/>
+    <varlistentry
+> 
+      <term
+>pi<indexterm
+><primary
+>pi</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pi</screen
+>Este comando devolve a constante Pi, <userinput
+>3,14159...</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sin"/>
+    <anchor id="cos"/>
+    <anchor id="tan"/>
+    <varlistentry>
+      <term
+>seno<indexterm
+><primary
+>seno</primary
+></indexterm
+>, cosseno<indexterm
+><primary
+>cosseno</primary
+></indexterm
+>, tangente<indexterm
+><primary
+>tangente</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>seno X
+cosseno X
+tangente X
+</screen
+>Estes três comandos representam as conhecidas funções trigonométricas <userinput
+>seno</userinput
+>, <userinput
+>cosseno</userinput
+> e <userinput
+>tangente</userinput
+>. O argumento de entrada destes comandos, X, deve ser a medida de um ângulo em graus.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="arcsin"/>
+    <anchor id="arccos"/>
+    <anchor id="arctan"/>
+    <varlistentry>
+      <term
+>arcsin<indexterm
+><primary
+>arcsin</primary
+></indexterm
+>, arccos<indexterm
+><primary
+>arccos</primary
+></indexterm
+>, arctan<indexterm
+><primary
+>arcotangente</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>arcoseno X
+arcocosseno X
+arcotangente X
+</screen
+>Estes comandos são as funções inversas do <link linkend="sin"
+>seno</link
+>, <link linkend="cos"
+>cosseno</link
+> e <link linkend="tan"
+>tangente</link
+>. O argumento de entrada destes comandos, X, é um <link linkend="number"
+>número</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="dialogs">
+<title
+>Entrada de dados e reação através de janelas</title>
+<para
+>Um diálogo é uma pequena janela que fornece algum retorno ou pergunta por alguma entrada. O &kturtle; tem dois comandos para diálogos, chamados<userinput
+>mensagem</userinput
+> e o <userinput
+>perguntar</userinput
+></para>
+  <variablelist>
+    <anchor id="message"/>
+    <varlistentry
+> 
+      <term
+>mensagem<indexterm
+><primary
+>mensagem</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mensagem X</screen
+>O comando <userinput
+>mensagem</userinput
+> recebe uma <link linkend="string"
+>cadeia de caracteres</link
+> como entrada. Exibe então uma janela que contém o texto da <link linkend="string"
+>cadeia de caracteres</link
+>. <screen
+>mensagem "Cies iniciou o projeto do KTurtle em 2003 e ainda continua gostando de trabalhar nele!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="ask"/>
+    <varlistentry
+> 
+      <term
+>perguntar<indexterm
+><primary
+>perguntar</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>perguntar X</screen
+>O <userinput
+>perguntar</userinput
+> recebe uma <link linkend="string"
+>cadeia de caracteres</link
+> como entrada. Ele mostra o texto da cadeia de caracteres em uma janela (de maneira similar ao <link linkend="message"
+>mensagem</link
+>), mostrando também um campo de entrada de texto. Após o usuário inserir um <link linkend="number"
+>número</link
+> ou uma <link linkend="string"
+>cadeia de caracteres</link
+> nesta caixa, o resultado poderá ser guardado numa <link linkend="assignment-of-variables"
+>variável</link
+> ou passado como argumento a um <link linkend="commands"
+>comando</link
+>. Por exemplo <screen>
+$entrada = perguntar "Qual o ano do seu nascimento?"
+$saida = 2003 - $entrada
+mostre "Em 2003, você tinha " + $saida + " anos em determinado momento."
+</screen
+> Quando um usuário cancelar a janela ou não inserir nada, a <link linkend="assignment-of-variables"
+>variável</link
+> fica vazia.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="assignment-of-variables">
+<title
+>Atribuição de variáveis</title>
+<para
+>Vejamos primeiro as variáveis, e depois iremos ver como atribuir valores a essas variáveis. </para>
+
+<para
+>As variáveis são palavras que começam por um <quote
+>$</quote
+>; no <link linkend="the-editor"
+>editor</link
+>, são <glossterm
+>realçadas</glossterm
+> em púrpura.</para>
+
+<para
+>As variáveis poderão conter qualquer <link linkend="number"
+>número</link
+>, <link linkend="string"
+>texto</link
+> ou <link linkend="boolean-value"
+>valor booleano (verdadeiro/falso)</link
+>. Ao usar a atribuição <userinput
+>=</userinput
+>, uma variável ficará com conteúdo associado. Irá manter esse conteúdo até que o programa termine a execução ou até a variável ser atribuída de novo a outra coisa qualquer.</para>
+
+<para
+>Você poderá usar as variáveis, uma vez atribuídas, como se fossem o seu próprio conteúdo. Por exemplo, no seguinte trecho de &turtlescript;: <screen>
+$x = 10
+$x = $x / 3
+mostre $x
+</screen
+> Primeiro, é atribuído à variável <userinput
+>$x</userinput
+> o valor <userinput
+>10</userinput
+>. Depois, o <userinput
+>$x</userinput
+> terá como novo valor o seu próprio valor dividido por <userinput
+>3</userinput
+> &mdash; isto significa na prática que o <userinput
+>$x</userinput
+> terá atribuído o valor do produto <userinput
+>10 / 3</userinput
+>. Finalmente, é impresso o valor do <userinput
+>$x</userinput
+>. Nas linhas 2 e 3, irá ver que o <userinput
+>$x</userinput
+> é usado como se fosse o seu próprio conteúdo.</para>
+
+<para
+>As variáveis têm que estar atribuídas para poderem ser usadas. Por exemplo, um: <screen>
+mostre $n
+</screen
+> Irá resultar numa mensagem de erro.</para>
+
+<para
+>Considere o pequeno trecho de código em &turtlescript;: <screen>
+$a = 2004
+$b = 25
+
+# o próximo comando imprime "2029"
+mostre $a + $b
+paratrás 30
+# o próximo comando imprime "2004 mais 25 é igual a 2029"
+mostre $a + " mais " + $b + " é igual a " + ($a + $b)
+paratrás 30
+</screen
+> Nas duas primeiras linhas, as variáveis <userinput
+>$a</userinput
+> e <userinput
+>$b</userinput
+> são configuradas como sendo iguais a 2004 e 25. Depois nos dois comandos <userinput
+>mostre</userinput
+> existe um comando <userinput
+>paratrás 30</userinput
+> no meio são executados. Os comentários antes dos comando <userinput
+>mostre</userinput
+> explicam o que ele está fazendo. O comando <userinput
+>paratrás 30</userinput
+> está ai para garantir que cada saída está numa nova linha. Como poderá ver, as variáveis poderão ser usadas como se fossem o valor que contêm, podendo usá-las com qualquer tipo de <link linkend="operators"
+>operadores</link
+> ou fornecendo-os como entradas na invocação dos <link linkend="commands"
+>comandos</link
+>.</para>
+
+<para
+>Mais um exemplo: <screen>
+$nome = perguntar "Como se chama?"
+mostre "Olá " + $nome + "! Boa sorte ao aprender a arte da programação..."
+</screen
+> É bastante simples. Mais uma vez, poderá ver que a variável <userinput
+>$nome</userinput
+>, é tratada apenas como texto.</para>
+
+<para
+>Ao usar as variáveis, o <link linkend="the-inspector"
+>inspetor</link
+> torna-se bastante útil. Ele mostra o conteúdo de todas as variáveis que estão sendo usadas atualmente.</para>
+</sect1>
+
+
+
+<sect1 id="controlling-execution">
+<title
+>Controlando a execução</title>
+<para
+>Os controladores de execução permitem-lhe &mdash; como o nome deles indica &mdash; controlar a execução.</para>
+<para
+>Os comandos de controle de execução são <glossterm
+>realçados</glossterm
+> em verde escuro e negrito. As chaves são frequentemente usadas juntamente com os controladores de execução e eles são <glossterm
+>realçados</glossterm
+> em preto.</para>
+
+<sect2 id="wait">
+<title
+>Fazendo a tartaruga esperar</title>
+<para
+>Se você já tentou programar um pouco no &kturtle;, você já poderá ter reparado que a tartaruga pode ser bastante rápida desenhando. Este comando faz a tartaruga andar um pouco mais devagar.</para>
+  <variablelist>
+    <varlistentry>
+      <term
+>aguarde<indexterm
+><primary
+>aguarde</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>aguarde X</screen
+>O <userinput
+>aguarde</userinput
+> faz a tartaruga esperar X segundos. <screen>
+repita 36 {
+  parafrente 5
+  paradireita 10
+  aguarde 0.5
+}
+</screen
+> Este código irá desenhar uma circunferência, mas a tartaruga irá esperar meio segundo a cada passo. Isto dá a noção de uma tartaruga vagarosa.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="if">
+<title
+>Executar o "se"</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>se<indexterm
+><primary
+>se</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>se <link linkend="boolean-value"
+>booleano</link
+> { ... }</screen
+>O código que é colocado entre os parênteses só será executado <userinput
+>se</userinput
+> o <link linkend="boolean-value"
+>valor booleano</link
+> for <quote
+>verdadeiro</quote
+>. <screen>
+$x = 6
+se $x &gt; 5 {
+  mostre "O x é maior que cinco!"
+}
+</screen
+> Na primeira linha, o <userinput
+>$x</userinput
+> é inicializado a 6. Na segunda linha, a <link linkend="comparing-operators"
+>operador de comparação</link
+> é usado para avaliar <userinput
+>x &gt; 5</userinput
+>. Uma vez que a resposta a esta pergunta é <quote
+>verdadeira</quote
+>, o controlador de execução <userinput
+>se</userinput
+> irá permitir que o código entre chaves seja executado.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="else">
+<title
+>Se não, em outras palavras: "senão"</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>senão<indexterm
+><primary
+>senão</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>se <link linkend="boolean-value"
+>booleano</link
+> { ... } senao { ... }</screen
+>O <userinput
+>senao</userinput
+> pode ser usado além do controlador de execução <link linkend="if"
+><userinput
+>se</userinput
+></link
+>. O código entre chaves a seguir ao <userinput
+>senao</userinput
+> só é executado se o <link linkend="boolean-value"
+>valor booleano</link
+> for <quote
+>falso</quote
+>. <screen>
+apague
+$x = 4
+se $x &gt; 5 {
+  mostre "O x é maior que cinco!"
+} senao {
+  mostre "O x é menor que seis!"
+}
+</screen
+> O <link linkend="comparing-operators"
+>operador de comparação</link
+> testa a expressão <userinput
+>x &gt; 5</userinput
+>. Uma vez que o <userinput
+>x</userinput
+> fica igual a 4 na primeira linha, a resposta à pergunta é <quote
+>falso</quote
+>. Isto significa que o código entre chaves a seguir ao <userinput
+>senao</userinput
+> é executado.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="while">
+<title
+>O ciclo "enquanto"</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>enquanto<indexterm
+><primary
+>enquanto</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>enquanto <link linkend="boolean-value"
+>booleano</link
+> { ... }</screen
+>O controlador de execução <userinput
+>enquanto</userinput
+> é um pouco como o <link linkend="if"
+><userinput
+>se</userinput
+></link
+>. A diferença é que o <userinput
+>enquanto</userinput
+> continua a repetir o código entre parênteses até que a resposta à <link linkend="boolean-value"
+>valor booleano</link
+> seja <quote
+>falso</quote
+>. <screen>
+$x = 1
+enquanto $x &lt; 5 {
+  parafrente 10
+  aguarde 1
+  $x = $x + 1
+}
+</screen
+> Na primeira linha, o <userinput
+>$x</userinput
+> fica igual a 1. Na segunda, a expressão <userinput
+>x &lt; 5</userinput
+> é avaliada. Uma vez que a resposta a esta pergunta é <quote
+>verdadeiro</quote
+>, o controlador de execução <userinput
+>enquanto</userinput
+> começa a execução do código entre chaves até que a condição <userinput
+>$x &lt; 5</userinput
+> seja <quote
+>falso</quote
+>. Neste caso, o código entre parênteses será executado 4 vezes, uma vez que, cada vez que a quinta linha é executada, o <userinput
+>$x</userinput
+> fica um número acima.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="repeat">
+<title
+>O ciclo "repita"</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>repita<indexterm
+><primary
+>repita</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>repita <link linkend="number"
+>número</link
+> { ... }</screen
+>O controlador de execução <userinput
+>repita</userinput
+> funciona um pouco como o <link linkend="while"
+><userinput
+>enquanto</userinput
+></link
+>. A diferença é que o <userinput
+>repita</userinput
+> repete o código entre parênteses um número fixo de vezes, igual ao número dado.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="for">
+<title
+>O ciclo "para", um ciclo de contagem</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>para<indexterm
+><primary
+>para</primary
+></indexterm
+><indexterm
+><primary
+>até</primary
+></indexterm
+><indexterm
+><primary
+>passo</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>para <link linkend="assignment-of-variables"
+>variável</link
+> = <link linkend="number"
+>número</link
+> até <link linkend="number"
+>número</link
+> { ... }</screen
+>O ciclo <userinput
+>para</userinput
+> é um <quote
+>ciclo de contagem</quote
+>, &ie;, faz uma contagem para você. O primeiro membro configura a variável com o valor do primeiro ciclo. Em cada iteração, o número é aumentado até atingir o segundo número. <screen>
+para $x = 1 ate 10 {
+  mostre $x * 7
+  avancar 15
+}
+</screen
+> Cada vez que o código entre chaves é executado, o <userinput
+>$x</userinput
+> é incrementado de uma unidade, até que o valor do <userinput
+>$x</userinput
+> chegue a 10. O código entre chaves imprime o valor de <userinput
+>$x</userinput
+> multiplicado por 7. Depois deste programa terminar a sua execução, você irá ver a tabuada dos 7 na área de desenho. </para>
+     <para
+>O passo padrão para um ciclo é 1, você pode usar um outro valor com <screen
+>para <link linkend="assignment-of-variables"
+>variável</link
+> = <link linkend="number"
+>número</link
+> até <link linkend="number"
+>number</link
+> passo <link linkend="number"
+>número</link
+> { ... }</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="break">
+<title
+>Deixar um ciclo</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>quebre<indexterm
+><primary
+>quebre</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>quebre</screen
+>Termina imediatamente o ciclo atual e transfere o controle para a instrução imediatamente após esse ciclo.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="exit">
+<title
+>Interrompe a execução do seu programa</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>sair<indexterm
+><primary
+>sair</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sair</screen
+>Termina a execução do seu programa.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="assert">
+<title
+>Verificar os testes durante a execução</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>declara<indexterm
+><primary
+>declara</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>declara <link linkend="boolean-value"
+>booleano</link
+></screen
+>Pode ser usado para confirmar a correção do programa ou seus parâmetros. <screen
+>$entrada = perguntar "Qual é a sua data de nascimento?"
+# o ano deve ser positivo
+declara $entrada 
+> 0
+</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+</sect1>
+
+
+<sect1 id="learn">
+
+<title
+>Crie os seus próprios comandos com o <quote
+>aprenda</quote
+></title>
+<para
+>O <userinput
+>aprenda</userinput
+><indexterm
+><primary
+>aprenda</primary
+></indexterm
+> é um comando muito especial, porque é usado para criar os seus próprios comandos. O comando que criar poderá receber <glossterm linkend="input-output"
+>parâmetros</glossterm
+> e devolver <glossterm linkend="input-output"
+>resultados</glossterm
+>. Vamos ver como é criado um novo comando. <screen>
+aprenda circunferência $x {
+  repita 36 {
+    parafrente $x
+    paraesquerda 10
+  }
+}
+</screen
+> O novo comando chama-se <userinput
+>circunferencia</userinput
+>. O <userinput
+>circunferencia</userinput
+> recebe um <glossterm linkend="input-output"
+>parâmetro</glossterm
+>, um número, para definir o tamanho da circunferência. O <userinput
+>circunferencia</userinput
+> não devolve nenhum <glossterm linkend="input-output"
+>resultado</glossterm
+>. O comando <userinput
+>circunferencia</userinput
+> pode agora ser usado como um comando normal. Veja este exemplo: <screen
+>aprenda círculo $X {
+  repita 36 {
+    parafrente $X
+    paraesquerda 10
+  }
+}
+
+vápara 200,200
+círculo 20
+
+vápara 300,200
+círculo 40  
+</screen>
+</para>
+<para
+>No próximo exemplo, vai ser criado um comando com um valor de resultado<indexterm
+><primary
+>resultado</primary
+></indexterm
+> devolvido. <screen>
+aprender faculdade $x {
+  $r = 1
+  para $i = 1 ate $x {
+    $r = $n * $i
+  }
+  devolver $r
+}
+
+imprimir faculdade 5
+</screen
+> Neste exemplo, existe agora um comando novo chamado <userinput
+>faculdade</userinput
+>. Se o parâmetro deste comando for <userinput
+>5</userinput
+>, então o resultado é igual a <userinput
+>5*4*3*2*1</userinput
+>. Ao usar o <userinput
+>devolver</userinput
+>, o valor do <glossterm linkend="input-output"
+>resultado</glossterm
+> é indicado e a execução é devolvida.</para>
+<para
+>Os comandos poderão ter mais de uma <glossterm linkend="input-output"
+>entrada</glossterm
+>. No seguinte exemplo, é criado um comando que desenha um retângulo. <screen>
+aprenda caixa $X, $Y {
+  parafrente $Y
+  paradireita 90
+  parafrente $X
+  paradireita 90
+  parafrente $Y
+  paradireita 90
+  parafrente $X
+  paradireita 90
+}
+</screen
+> Agora, você poderá usar o <userinput
+>caixa 50, 100</userinput
+> para que a tartaruga desenhe um retângulo na área de desenho. </para>
+  
+</sect1>
+
+</chapter>

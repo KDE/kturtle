@@ -1,0 +1,12 @@
+<chapter id="translators">
+<title
+>Vertaalgids voor &kturtle;</title>
+<para
+>Zoals u waarschijnlijk al bekend is, kan de programmeertaal &turtlescript; van &kturtle; worden vertaald. Hierdoor wordt een barrière weggenomen, vooral voor jonge kinderen, bij hun pogingen de eerste beginselen te begrijpen van het programmeren.</para>
+<para
+>Bij het vertalen van &kturtle; naar een andere taal, vindt u, naast de &GUI;-strings, de programmeercommando's, de voorbeelden en de foutmeldingen, in de standaard .pot-bestanden die bij het vertalen voor &kde; worden gebruikt. Alles wordt op de voor &kde; gebruikelijke wijze vertaald, niettemin wordt u sterk aangeraden u op de hoogte te stellen van hoe deze moeten worden vertaald (zoals u ook kunt lezen in het commentaar voor de vertaler). </para>
+<para
+>Zie ook  <ulink url="https://edu.kde.org/kturtle/translation.php"
+>https://edu.kde.org/kturtle/translation.php</ulink
+> voor meer informatie  over het vertalen. Hartelijk dank voor uw werk! KTurtle hangt sterk af van de vertalingen.</para>
+</chapter>

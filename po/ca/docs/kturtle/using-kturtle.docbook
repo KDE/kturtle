@@ -1,0 +1,1099 @@
+<chapter id="using-kturtle">
+<title
+>Usar el &kturtle;</title>
+
+<screenshot>
+  <screeninfo
+>Aquesta és una captura de pantalla del &kturtle; en acció</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow_flower_nrs.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Finestra principal del &kturtle;</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>La finestra principal del &kturtle; té tres parts principals: <link linkend="the-editor"
+>L'editor</link
+> (1) a l'esquerra és on escriviu les ordres de &turtlescript;, <link linkend="the-canvas"
+>el llenç</link
+> (2) a la dreta on la tortuga farà el seu dibuix, i <link linkend="the-inspector"
+>l'inspector</link
+> (3) el qual us donarà informació quan executeu el programa. A més d'aquests es troba <link linkend="the-menubar"
+>la barra de menús</link
+> (5) des d'on es poden abastar totes les accions, <link linkend="the-toolbar"
+>la barra d'eines</link
+> (4) la qual permet seleccionar amb rapidesa les accions més utilitzades, El quadre d'entrada <guilabel
+>Consola:</guilabel
+>, el qual podeu utilitzar per a introduir una ordre per a provar-la, i <link linkend="the-statusbar"
+>la barra d'estat</link
+> (a la part inferior de la finestra) on trobareu la informació sobre l'estat del &kturtle;.</para>
+
+<sect1 id="the-editor">
+<title
+>L'editor</title>
+<para
+>En l'editor escriureu les ordres de &turtlescript;. La majoria de les funcions de l'editor es poden trobar en els menús <link linkend="the-file-menu"
+>Fitxer</link
+> i <link linkend="the-edit-menu"
+>Edita</link
+>. L'editor es pot acoblar sobre cada vora de la finestra principal o es pot desacoblar i posar a qualsevol lloc de l'escriptori.</para>
+<para
+>Teniu diverses maneres d'obtenir algun codi en l'editor. La manera més senzilla és utilitzar un exemple: Seleccioneu el submenú <menuchoice
+><guimenu
+>Fitxer</guimenu
+><guisubmenu
+>Exemples</guisubmenu
+></menuchoice
+> i seleccioneu un exemple. El fitxer d'exemple que trieu s'obrirà a <link linkend="the-editor"
+>l'editor</link
+>, a continuació, podeu utilitzar l'element de menú <menuchoice
+><guimenu
+>Executa</guimenu
+><guimenuitem
+>Executa</guimenuitem
+></menuchoice
+> (drecera: <keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+>) o el botó <inlinemediaobject
+> <imageobject
+> <imagedata fileref="media-playback-pause.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Executa</guibutton
+> des de la barra d'eines per a executar el codi si així ho desitgeu.</para>
+<para
+>Podeu obrir fitxers de &turtlescript; escollint l'element de menú <menuchoice
+><guimenu
+>Fitxer</guimenu
+><guimenuitem
+>Obre...</guimenuitem
+></menuchoice
+>.</para>
+<para
+>La tercera manera és escriure directament el vostre propi codi en l'editor o fer copia/enganxa sobre algun codi.</para>
+</sect1>
+
+
+<sect1 id="the-canvas">
+<title
+>El llenç</title>
+<para
+>El llenç és el domini de la tortuga, la tortuga hi dibuixa d'acord amb les ordres que rep. Després d'aconseguir una mica de codi en <link linkend="the-editor"
+>l'editor</link
+> i executar-lo, poden passar dues coses: O bé el codi s'executa bé, i el més probable serà veure com canvia alguna cosa en el llenç; o heu comès un error en el codi, en aquest cas, apareixerà la pestanya d'error explicant l'error que s'ha comès.</para>
+<para
+>Podeu apropar i allunyar el llenç amb la roda del ratolí.</para>
+</sect1>
+
+
+<sect1 id="the-inspector">
+<title
+>L'inspector</title>
+<para
+>L'inspector informa sobre les variables, les funcions apreses i mostra l'arbre de codi mentre s'executa el programa.</para>
+<para
+>L'inspector es pot acoblar sobre cada vora de la finestra principal, o es pot desacoblar i posar a qualsevol lloc de l'escriptori.</para>
+</sect1>
+
+
+<sect1 id="the-toolbar">
+<title
+>La barra d'eines</title>
+<para
+>Des d'aquí arribareu amb rapidesa a les accions més utilitzades. La barra d'eines també conté el quadre d'entrada <guilabel
+>Consola:</guilabel
+>, on podreu invocar les ordres amb rapidesa, això podria ser útil en cas que vulgueu provar una ordre sense modificar el contingut de <link linkend="the-editor"
+>l'editor</link
+>.</para>
+<para
+>Podeu configurar la barra d'eines utilitzant <menuchoice
+><guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Configura les barres d'eines...</guimenuitem
+></menuchoice
+> per a ajustar-la millor a les vostres preferències.</para>
+</sect1>
+
+
+<sect1 id="the-menubar">
+<title
+>La barra de menús</title>
+<para
+>A la barra de menús trobareu totes les accions del &kturtle;. Es troben en els següents grups: <guimenu
+>Fitxer</guimenu
+>, <guimenu
+>Edita</guimenu
+>, <guimenu
+>Llenç</guimenu
+>, <guimenu
+>Executa</guimenu
+>, <guimenu
+>Eines</guimenu
+>, <guimenu
+>Arranjament</guimenu
+> i <guimenu
+>Ajuda</guimenu
+>. En aquesta secció es descriuen tots.</para>
+
+<sect2 id="the-file-menu">
+<title
+>El menú Fitxer</title>
+
+  <variablelist>
+    <anchor id="file-new"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Fitxer</guimenu
+> <guimenuitem
+>Nou</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Crea un fitxer nou i buit de &turtlescript;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Fitxer</guimenu
+> <guimenuitem
+>Obre...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Obre un fitxer de &turtlescript;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-recent"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Fitxer</guimenu
+> <guisubmenu
+>Obre'n un de recent</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Obre un fitxer de &turtlescript; obert recentment.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Fitxer</guimenu
+> <guisubmenu
+>Exemples</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Obre programes en &turtlescript; d'exemple. Els exemples estan en el vostre idioma preferit que podeu triar el submenú <menuchoice
+><guimenu
+>Arranjament</guimenu
+><guisubmenu
+>Idioma de script</guisubmenu
+></menuchoice
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-get-more-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Fitxer</guimenu
+> <guimenuitem
+>Aconsegueix més exemples...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Obre el diàleg <guilabel
+>Obtén les novetats candents</guilabel
+> per a descarregar fitxers en &turtlescript; addicionals des d'Internet.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="file-save"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Fitxer</guimenu
+> <guimenuitem
+>Desa</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Desa el fitxer en &turtlescript; actualment obert.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-save-as"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;&Maj;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Fitxer</guimenu
+> <guimenuitem
+>Desa com a...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Desa el fitxer en &turtlescript; actualment obert en un lloc especificat.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-export-to-html"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Fitxer</guimenu
+> <guimenuitem
+>Exporta com a HTML...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Exporta el contingut actual de l'editor com un fitxer &HTML; que inclou els colors de ressaltat.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Fitxer</guimenu
+> <guimenuitem
+>Imprimeix...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Imprimeix el codi actual en l'editor.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-quit"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Fitxer</guimenu
+> <guimenuitem
+>Surt</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Surt del &kturtle;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-edit-menu">
+  <title
+>El menú Edita</title>
+  <variablelist>
+    <anchor id="edit-undo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edita</guimenu
+> <guimenuitem
+>Desfés</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Desfà l'últim canvi al codi. El &kturtle; desfà de manera il·limitada.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-redo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl; &Maj; <keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edita</guimenu
+> <guimenuitem
+>Refés</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Refà un canvi desfet en el codi.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-cut"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>X</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edita</guimenu
+> <guimenuitem
+>Retalla</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Retalla al porta-retalls el text seleccionat a <link linkend="the-editor"
+>l'editor</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-copy"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edita</guimenu
+> <guimenuitem
+>Copia</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Copia al porta-retalls el text seleccionat a <link linkend="the-editor"
+>l'editor</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-paste"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>V</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edita</guimenu
+> <guimenuitem
+>Enganxa</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Enganxa el text del porta-retalls a <link linkend="the-editor"
+>l'editor</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-select-all"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>A</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edita</guimenu
+> <guimenuitem
+>Selecciona-ho tot</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Selecciona tot el text a <link linkend="the-editor"
+>l'editor</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edita</guimenu
+> <guimenuitem
+>Cerca...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Amb aquesta acció trobareu les frases en el codi.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find-next"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+><keycap
+>F3</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edita</guimenu
+> <guimenuitem
+>Cerca la següent</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Utilitzeu aquesta opció per a cercar la següent ocurrència de la frase cercada.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="edit-find-previous"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Maj;<keycap
+>F3</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edita</guimenu
+> <guimenuitem
+>Cerca l'anterior</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Feu-la servir per a trobar l'anterior ocurrència de la frase cercada.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <!--<variablelist>
+    <anchor id="edit-replace"/>
+    <varlistentry>
+      <term
+><menuchoice>
+        <shortcut>
+          <keycombo
+>&Ctrl;<keycap
+>R</keycap
+></keycombo>
+        </shortcut>
+        <guimenu
+>Edit</guimenu>
+        <guimenuitem
+>Replace...</guimenuitem>
+      </menuchoice
+></term>
+      <listitem
+><para
+>With this action you can replace text in the code.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>-->
+<variablelist>
+    <anchor id="toggle-insert"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ins;</keycombo
+> </shortcut
+> <guimenu
+>Edita</guimenu
+> <guimenuitem
+>Mode sobreescriptura</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Commuta entre els modes «inserir» i «sobreescriure».</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+<sect2 id="the-canvas-menu">
+  <title
+>El menú Llenç</title>
+  <variablelist>
+    <anchor id="canvas-export-to-image"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Llenç</guimenu
+> <guimenuitem
+>Exporta a imatge (PNG)...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Exporta el contingut actual del <link linkend="the-canvas"
+>llenç</link
+> com una imatge del tipus PNG (Portable Network Graphics).</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-export-to-drawing"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Llenç</guimenu
+> <guimenuitem
+>Exporta a dibuix (SVG)...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Exporta el contingut actual del <link linkend="the-canvas"
+>llenç</link
+> com un dibuix vectorial del tipus &SVG; (Scalable Vector Graphics).</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Llenç</guimenu
+> <guimenuitem
+>Imprimeix el llenç...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Imprimeix el contingut actual del <link linkend="the-canvas"
+>llenç</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-run-menu">
+  <title
+>El menú Executa</title>
+  <variablelist>
+    <anchor id="run-execute"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+><keysym
+>F5</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Executa</guimenu
+> <guimenuitem
+>Executa</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Comença l'execució de les ordres que es troben a l'editor.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-pause"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+><keysym
+>F6</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Executa</guimenu
+> <guimenuitem
+>Pausa</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Atura momentàniament l'execució. Aquesta acció només s'habilita quan les ordres s'estan executant.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-stop"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+><keysym
+>F7</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Executa</guimenu
+> <guimenuitem
+>Interromp</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Atura l'execució. Aquesta acció només s'habilita quan s'estan executant les ordres.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-speed"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Executa</guimenu
+> <guisubmenu
+>Velocitat d'execució</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Presenta una llista de les possibles velocitats d'execució, consisteix en: <guimenuitem
+>Velocitat màxima (sense ressaltat ni inspector)</guimenuitem
+>, <guimenuitem
+>Velocitat màxima</guimenuitem
+>, <guimenuitem
+>Lenta</guimenuitem
+>, <guimenuitem
+>Més lenta</guimenuitem
+>, <guimenuitem
+>La més lenta</guimenuitem
+> i <guimenuitem
+>Instrucció a instrucció</guimenuitem
+>. Quan la velocitat d'execució s'estableix a <guimenuitem
+>Velocitat màxima</guimenuitem
+> (predeterminat) amb prou feines podreu mantenir-vos al dia amb què està succeint. De vegades, aquest comportament es vol, però de vegades volem fer un seguiment de l'execució. En aquest últim cas voldreu establir la velocitat d'execució a <guimenuitem
+>Lenta</guimenuitem
+>, <guimenuitem
+>Més lenta</guimenuitem
+> o <guimenuitem
+>La més lenta</guimenuitem
+>. Quan se selecciona un dels modes lents la posició actual de l'executor es mostrarà a l'editor. <guimenuitem
+>Instrucció a instrucció</guimenuitem
+> executarà una ordre a la vegada.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+
+<sect2 id="the-tools-menu">
+  <title
+>El menú Eines</title>
+  <variablelist>
+    <anchor id="tools-direction-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Eines</guimenu
+> <guimenuitem
+>Selector de direcció...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Aquesta acció obre el diàleg selector de direcció.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-color-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Eines</guimenu
+> <guimenuitem
+>Selector de color...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Aquesta acció obre el diàleg selector de color.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-setting-menu">
+  <title
+>El menú Arranjament</title>
+  <variablelist>
+    <anchor id="settings-set-script-language"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+><guisubmenu
+>Idioma de script</guisubmenu
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Tria</action
+> el llenguatge per al codi.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-editor"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Mostra l'editor</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Mostra o oculta l'<link linkend="the-editor"
+>editor</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-inspector"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Mostra l'inspector</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Mostra o oculta l'<link linkend="the-inspector"
+>inspector</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-errors"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Mostra els errors</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Mostra o oculta la pestanya <guilabel
+>Errors</guilabel
+> amb una llista dels errors resultants de l'execució del codi. Si aquesta opció està habilitada, feu clic al <guilabel
+>Llenç</guilabel
+> per a veure la tortuga una altra vegada.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-linenumbers"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+><keycap
+>F11</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Mostra els números de les línies</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Amb aquesta acció podeu mostrar els números de línia en <link linkend="the-editor"
+>l'editor</link
+>. Això pot ser útil per a trobar els errors.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-toolbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Mostra la barra d'eines</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Mostra o oculta</action
+> la barra d'eines principal.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="settings-toggle-statusbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Mostra la barra d'estat</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Mostra o oculta</action
+> la barra d'estat.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-shortcuts"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Configura les dreceres de teclat...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>El diàleg estàndard del &kde; per a configurar les dreceres.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-toolbars"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Configura les barres d'eines...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>El diàleg estàndard del &kde; per a configurar les barres d'eines.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-help-menu">
+  <title
+>El menú Ajuda</title>
+<para
+>El &kturtle; disposa del menú <guimenu
+>Ajuda</guimenu
+> predeterminat del &kde; com es descriu en els <ulink url="help:/fundamentals/menus.html#menus-help"
+>Fonaments del &kde;</ulink
+> amb una entrada addicional:</para>
+  <variablelist>
+    <anchor id="help-context-help"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+><keysym
+>F2</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Ajuda</guimenu
+> <guimenuitem
+>Ajuda sobre: ...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Aquesta és una funció molt útil: Ofereix ajuda sobre el codi a la posició del cursor a l'editor. Així, &pex;, heu utilitzat l'ordre <userinput
+>print</userinput
+> (<userinput
+>imprimeix</userinput
+>) en el vostre codi, i voleu llegir i saber el que diu el manual sobre aquesta ordre. Només cal moure el cursor sobre l'ordre i prémer la tecla <keysym
+>F2</keysym
+>. El manual mostrarà tota la informació sobre l'ordre <userinput
+>print</userinput
+> (<userinput
+>imprimeix</userinput
+>).</para>
+      <para
+>Aquesta funció pot ser útil mentre s'aprèn &turtlescript;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+<sect1 id="the-statusbar">
+<title
+>La barra d'estat</title>
+<para
+>A la barra d'estat obtindreu informació sobre l'estat del &kturtle;. Al costat esquerre es mostra informació sobre l'última acció. Al costat dret trobareu la ubicació actual del cursor (números de línia i columna). Enmig de la barra d'estat s'indica el llenguatge actualment utilitzat per a les ordres.</para>
+</sect1>
+
+</chapter>

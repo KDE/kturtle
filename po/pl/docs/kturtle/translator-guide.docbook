@@ -1,0 +1,12 @@
+<chapter id="translators">
+<title
+>Podręcznik tłumacza &kturtle;</title>
+<para
+>Jak już zapewne wiesz, &turtlescript; język programowanie w &kturtle;,  można tłumaczyć. Ułatwia to niektórym osobom, szczególnie młodszym uczniom, zrozumienie podstaw programowania.</para>
+<para
+>Kiedy tłumaczysz &kturtle; na inny język, znajdziesz, po za  tekstami GUI, polecenia programowania, przykłady i komunikaty błędów zawarte w plikach .pot, które są używane jako pliki tłumaczeń w &kde;. Wszystko jest tłumaczone według stałych zasad tłumaczeń używanych  w &kde;, pomimo to zaleca się, aby dowiedzieć się trochę jak tłumaczyć (czytaj także komentarze dla tłumaczy).</para>
+<para
+>Proszę zajrzeć na <ulink url="http://edu.kde.org/kturtle/translator.php"
+>http://edu.kde.org/kturtle/translator.php</ulink
+>, gdzie można uzyskać więcej informacji na temat procesu tłumaczenia. Dziękujemy bardzo za Waszą pracę! KTurtle w dużym stopniu zależy od tłumaczeń.</para>
+</chapter>

@@ -1,0 +1,404 @@
+<chapter id="Glossary">
+<title
+>Aiškinamasis žodynas</title>
+
+<para
+>Šiame skyriuje  Jūs rasite žinyne <quote
+>retai sutinkamų</quote
+> žodžių paaiškinimus.</para>
+
+<glosslist>
+<glossentry id="degrees">
+<glossterm
+>laipsniai</glossterm>
+<glossdef
+><para
+>Laipsniais matuojami kampai. 360 laipsnių tai pilnas apsisukimas, 180 laipsnių &mdash; pusė, o 90 laipsnių &mdash; ketvirtis apsisukimo. Komandose <userinput
+>kairėn</userinput
+>, <userinput
+>dešinėn</userinput
+> ir <userinput
+>žvelk</userinput
+> kampas nurodomas laipsniais.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="input-output">
+<glossterm
+>komandų argumentai ir rezultatai</glossterm>
+<glossdef
+><para
+>Vienos komandos reikalauja argumentų, kitos grąžina rezultatą, trečios reikalauja argumentų <emphasis
+>ir</emphasis
+> grąžina rezultatą, ir yra tokių, kurios nei reikalauja kokių nors argumentų, nei grąžina rezultatą.</para>
+<para
+>Keletas komandų pavyzdžių, kurios reikalauja tik argumentų:<screen>
+priekin 50
+peštuko_spalva 255,0,0
+rašyk "Labas!"
+</screen
+> Komanda <userinput
+>priekin</userinput
+> kaip argumentą pasiima <userinput
+>50</userinput
+>. Komandai <userinput
+>priekin</userinput
+> reikia argumento, nes ji turi žinoti kiek <glossterm linkend="pixels"
+>pikselių</glossterm
+> į priekį turi pajudėti vėžliukas. Komanda <userinput
+>peštuko_spalva</userinput
+> kaip argumentą pasiima spalvos kodą, o komanda <userinput
+>rašyk</userinput
+> kaip argumentą pasiima eilutę (teksto dalį). Atkreipkite dėmesį, kad argumentas gali būti ir kintamasis. Šis pavyzdys tai paaiškins: <screen
+>$x = 50
+rašyk $x
+priekin 50
+$str = "Labas!"
+rašyk $str
+</screen
+></para>
+
+<para
+>Dabar keletas komandų pavyzdžių, kurios grąžina rezultatą: <screen>
+$x = klausk "Prašau parašykite ką nors ir paspauskite mygtuką „Gerai“… ačiū!"
+$r = bet_koks 1,100
+</screen
+> Komanda <userinput
+>klausk</userinput
+> kaip argumentą pasiima tekstą, o kaip rezultatą grąžina naudotojo įvestą skaičių arba tekstą. Kaip matote, komandos <userinput
+>klausk</userinput
+> grąžintas rezultatas laikomas kintamajame <userinput
+>x</userinput
+>. Komanda <userinput
+>bet_koks</userinput
+> taip pat grąžina rezultatą. Šiuo atveju jį grąžina atsitiktinį skaičių iš intervalo nuo 1 iki 100. Grąžintasis skaičius patalpinamas kintamajame, pavadinimu<userinput
+>r</userinput
+>. Atkreipkit dėmesį, kad ką tik matytame pavyzdyje kintamieji <userinput
+>x</userinput
+> ir <userinput
+>r</userinput
+> nėra vėliau naudojami.</para>
+
+<para
+>Taip pat yra komandų, kurioms nereikia argumentų ir jos negrąžina rezultato. Štai keletas pavyzdžių: <screen
+>valyk
+eisim
+</screen>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="intuitive-highlighting">
+<glossterm
+>intuityvus paryškinimas</glossterm>
+<glossdef
+><para
+>Tai  &kturtle; ypatybė, kuri palengvina programavimą. Jums berašant kodą, kodas nuspalvinamas, taip išryškinant skirtingus kodo tipus. Žemiau esančiame sąraše pateikiami skirtingi kodo tipai ir spalvos, kuriomis jie paryškinami <link linkend="the-code-editor"
+>kodo rašyklėje</link
+>. <table>
+<title
+>Skirtingi kodo tipai ir jų paryškinimo spalvos</title>
+<tgroup cols="3">
+<tbody>
+<row>
+<entry
+>įprastos komandos</entry>
+<entry
+>tamsiai mėlyna</entry>
+<entry
+>Apie įprastas komandas sužinosite žvilgtelėję <link linkend="commands"
+>čionai</link
+>.</entry>
+</row>
+<row>
+<entry
+>vykdymo valdymo komandos</entry>
+<entry
+>juoda (pusjuodis šriftas)</entry>
+<entry
+>Specialios komandos, valdančios programos vykdymo tėkmę. Daugiau apie jas sužinosite žvilgtelėję <link linkend="controlling-execution"
+>čia</link
+>.</entry>
+</row>
+<row>
+<entry
+>komentarai</entry>
+<entry
+>pilka</entry>
+<entry
+>Komentaro eilučių pradžiose rašomas komentaro ženklas (#). Vykdant kodą, šios eilutės yra ignoruojamos. Rašydamas komentarus, programuotojas gali paaiškinti jo rašytą kodą, be to, komentaro simboliais galima laikinai izoliuoti programos dalis, neleidžiant jų vykdyti.</entry>
+</row>
+<row>
+<entry
+>skliaustai {, }</entry>
+<entry
+>tamsiai žalia (pusjuodis šriftas)</entry>
+<entry
+>Skliausteliais grupuojamos kodo dalys. Šie skliausteliai dažniausiai naudojami <link linkend="controlling-execution"
+>valdymo procedūrose</link
+>.</entry>
+</row>
+<row>
+<entry
+>komanda <link linkend="learn"
+>išmok</link
+></entry>
+<entry
+>tamsiai žalia (pusjuodis šriftas)</entry>
+<entry
+>Komanda <link linkend="learn"
+>išmok</link
+> kuriamos naujos komandos.</entry>
+</row>
+<row>
+<entry
+>tekstinė eilutė</entry>
+<entry
+>raudona</entry>
+<entry
+>Šiaip nėra ką daug pasakyti apie tekstines eilutes, išskyrus tai, kad jos prasideda ir baigiasi paprastosiomis kabutėmis (").</entry>
+</row>
+<row>
+<entry
+>skaičiai</entry>
+<entry
+>tamsiai raudona</entry>
+<entry
+>Skaičiai ir tiek.</entry>
+</row>
+<row>
+<entry
+>būlio kintamieji</entry>
+<entry
+>tamsiai raudona</entry>
+<entry
+>Yra lygiai dvi būlio tipo kintamųjų reikšmės: taip ir ne.</entry>
+</row>
+<row>
+<entry
+>kintamieji</entry>
+<entry
+>violetinė</entry>
+<entry
+>Prasideda simboliu „$“ ir gali būti sudaryta iš skaičių, eilučių ar loginių (būlio) reikšmių.</entry>
+</row>
+<row>
+<entry
+>matematiniai operatoriai</entry>
+<entry
+>pilka</entry>
+<entry
+>Čio yra matematiniai veiksmai: <userinput
+>+</userinput
+>, <userinput
+>-</userinput
+>, <userinput
+>*</userinput
+>, <userinput
+>/</userinput
+> ir <userinput
+>^</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>palyginimo operatoriai</entry>
+<entry
+>šviesiai mėlyna (pusjuodis šriftas)</entry>
+<entry
+>Čia yra palyginimo operatoriai: <userinput
+>==</userinput
+>, <userinput
+>!=</userinput
+>, <userinput
+>&lt;</userinput
+>, <userinput
+>&gt;</userinput
+>, <userinput
+>&lt;=</userinput
+> ir <userinput
+>&gt;=</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>loginiai (būlio) operatoriai</entry>
+<entry
+>rožinė (pusjuodis šriftas)</entry>
+<entry
+>Čia yra loginiai (būlio) operatoriai: <userinput
+>ir</userinput
+>, <userinput
+>arba</userinput
+> ir <userinput
+>ne</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>įprastas tekstas</entry>
+<entry
+>juoda</entry>
+<entry
+></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="pixels">
+<glossterm
+>pikselis</glossterm>
+<glossdef
+><para
+>Pikselis tai vaizduoklio ekrano taškas. Jei į ekraną žvilgtelėsite iš labai arti, tai pamatysite kad visas jo paviršius sudarytas iš tokių taškų. Kiekvieną tokį tašką nuspalvinant atitinkama spalva, ekrane kuriamas paveikslas. Pikselis yra mažiausias elementas, kurį galima pavaizduoti ekrane.</para>
+<para
+>Daugelyje komandų kaip argumentus reikia pateikti pikselių skaičius. Tos komandos tai: <userinput
+>priekin</userinput
+>, <userinput
+>atgal</userinput
+>, <userinput
+>eik_x_y</userinput
+>, <userinput
+>eik_x</userinput
+>, <userinput
+>eik_y</userinput
+>, <userinput
+>nustatyk_lauko_dydį</userinput
+> ir <userinput
+>pieštuko_storis</userinput
+>.</para>
+<para
+>Ankstesnėse &kturtle; versijose drobė buvo tiesiog taškinis piešinys, o dabar ji – vektorinis piešinys. Tai reiškia, kad galima keisti drobės mastelį, taigi taškas nebutinai turi atitikti vieną tašką ekrane.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="rgb">
+<glossterm
+>RŽM modelis (spalvų kodai)</glossterm>
+<glossdef
+><para
+>RŽM modeliu nusakoma spalva. Raidė <quote
+>R</quote
+> tai <quote
+>raudona</quote
+> spalva, <quote
+>Ž</quote
+> &mdash; <quote
+>žalia</quote
+> spalva, o <quote
+>M</quote
+> &mdash; <quote
+>mėlyna</quote
+> spalva. Kaip pavyzdį, paimkime RŽM verčių kombinaciją <userinput
+>255,0,0</userinput
+>: pirmoji vertė (<quote
+>raudona spalva</quote
+>) yra 255, likusių &mdash; 0, tad, tai yra sodrios raudonos spalvos kodas. Kiekviena RŽM modelio vertė gali būti intervale nuo 0 iki 255. Štai keletos dažnai naudojamų spalvų sąrašas: <table frame="none">
+<title
+>Dažnai naudojamos RŽM kombinacijos</title>
+<tgroup cols="2" colsep="5" rowsep="1">
+<colspec colname="c1"/>
+<tbody>
+<row
+><entry
+><userinput
+>0,0,0</userinput
+></entry
+><entry
+>juoda</entry
+></row>
+<row
+><entry
+><userinput
+>255,255,255</userinput
+></entry
+><entry
+>balta</entry
+></row>
+<row
+><entry
+><userinput
+>255,0,0</userinput
+></entry
+><entry
+>raudona</entry
+></row>
+<row
+><entry
+><userinput
+>150,0,0</userinput
+></entry
+><entry
+>tamsiai raudona</entry
+></row>
+<row
+><entry
+><userinput
+>0,255,0</userinput
+></entry
+><entry
+>žalia</entry
+></row>
+<row
+><entry
+><userinput
+>0,0,255</userinput
+></entry
+><entry
+>mėlyna</entry
+></row>
+<row
+><entry
+><userinput
+>0,255,255</userinput
+></entry
+><entry
+>šviesiai mėlyna</entry
+></row>
+<row
+><entry
+><userinput
+>255,0,255</userinput
+></entry
+><entry
+>rausva</entry
+></row>
+<row
+><entry
+><userinput
+>255,255,0</userinput
+></entry
+><entry
+>geltona</entry
+></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para
+>Yra dvi komandos, kurioms kaip argumentą reikia nurodyti RŽM kombinaciją, tai <userinput
+>keisk_foną</userinput
+> ir <userinput
+>pieštuko_spalva</userinput
+>.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="sprite">
+<glossterm
+>spruklys</glossterm>
+<glossdef
+><para
+>Spruklys tai nedidelis paveikslėlis, kuris gali judėti ekrane. Pavyzdžiui, ekrane matomas vėžliukas yra spruklys.</para>
+<para
+>Pastaba: šios laidos &kturtle; programoje vėžliuko spruklį neis pakeisti į kokį nors kitą spruklį. Tai bus įmanoma daryti ateinančių laidų &kturtle;.</para
+></glossdef>
+</glossentry>
+
+</glosslist>
+
+</chapter>

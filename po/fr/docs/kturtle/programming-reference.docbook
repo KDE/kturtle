@@ -1,0 +1,2152 @@
+<chapter id="reference">
+<title
+>Référence de programmation &turtlescript;</title>
+<para
+>Ceci est le chapitre de référence &turtlescript; de &kturtle;. La première section de ce chapitre donne quelques aspects de la <link linkend="grammar"
+>grammaire</link
+> des programmes en &turtlescript;. La deuxième section traite exclusivement des <link linkend="mathematical-operators"
+>opérateurs mathématiques</link
+>, des <link linkend="boolean-operators"
+>opérateurs booléens (vrai / faux)</link
+> et des <link linkend="comparing-operators"
+>opérateurs de comparaison</link
+>. La troisième partie est une énorme liste de toutes les <link linkend="commands"
+>commandes</link
+>, expliquées une par une. La section quatre explique comment <link linkend="assignment-of-variables"
+>assigner</link
+> des valeurs aux <link linkend="assignment-of-variables"
+>variables</link
+>. Enfin, nous expliquons comment arranger l'exécution des commandes avec les <link linkend="controlling-execution"
+>instructions de contrôle d'exécution</link
+> dans la section cinq, et comment créer vos propres commandes avec <link linkend="learn"
+>apprends</link
+> dans la section six.</para>
+
+<sect1 id="grammar">
+<title
+>La grammaire de &turtlescript;</title>
+<para
+>Comme tout langage, &turtlescript; dispose de différents types de mots et de symboles. En français, nous distinguons les verbes (comme « marcher » ou « chanter »), et les noms (comme « sœur » ou « maison »), ils sont utilisés pour différents objectifs. &turtlescript; est un langage de programmation, il est utilisé pour indiquer à &kturtle; ce qu'il faut faire.</para>
+<para
+>Dans cette section, certains types de mots et symboles de &turtlescript; sont expliqués brièvement. Nous expliquons les <link linkend="comment"
+>commentaires</link
+>, les <link linkend="command"
+>commandes</link
+> et les trois différents types de littéraux : les <link linkend="number"
+>nombres</link
+>, les <link linkend="string"
+>chaînes</link
+> et les <link linkend="boolean-value"
+>booléens (vrai / faux)</link
+>.</para>
+
+
+<sect2 id="comment">
+<title
+>Commentaires</title>
+<para
+>Un programme est constitué d'instructions qui sont exécutées lorsque le programme est lancé, et de commentaires. Les commentaires ne sont pas exécutés. &kturtle; les ignore simplement lors que votre programme est exécuté. Ils sont là pour aider les autres programmeurs à mieux comprendre votre programme. Tout ce qui suit le symbole <userinput
+>#</userinput
+> est considéré comme un commentaire en &turtlescript;. Par exemple, ce petit programme ne fait rien : <screen>
+# ce petit programme ne fait rien, c'est juste un commentaire !
+</screen
+> C'est un peu inutile, mais ça explique bien les choses.</para>
+<para
+>Les commentaires sont très utiles lorsque le programme devient un peu plus complexe. Il peut aider à donner des conseils aux autres programmeurs. Dans le programme suivant, vous pouvez voir l'utilisation des commentaires avec la commande <link linkend="print"
+>print</link
+>. <screen>
+# Ce programme a été écrit par Cies Breijs.
+écris "ce texte sera affiché sur le canevas"
+# la ligne précédente n'est pas un commentaire, mais la ligne suivante en est un :
+# écris "ce texte ne sera pas affiché : "
+</screen
+> La première ligne décrit le programme. La deuxième est exécutée par &kturtle; et écrit <userinput
+>Ce texte sera affiché sur le canevas</userinput
+> sur le canevas. La troisième ligne est un commentaire. Et la quatrième ligne est un commentaire qui contient un morceau de &turtlescript;. Si le symbole <userinput
+>#</userinput
+> était enlevé dans la quatrième ligne, l'instruction écris serait exécutée par &kturtle;. Les programmeurs disent que l'instruction écris dans la quatrième ligne est « commentée ».</para>
+<para
+>Les lignes commentées sont <glossterm
+>surlignées</glossterm
+> en gris clair dans <link linkend="the-editor"
+>l'éditeur de code</link
+>.</para>
+</sect2>
+
+<sect2 id="command">
+<title
+>Commandes</title>
+<para
+>À l'aide des commandes, vous dites à la tortue ou à &kturtle; de faire quelque chose. Certaines commandent nécessitent un paramètre, d'autres donnent une sortie. <screen>
+# avance est une commande qui nécessite un paramètre, dans ce cas le nombre 100 :
+avance 100
+</screen
+> La première ligne est un <link linkend="comment"
+>commentaire</link
+>. La seconde ligne contient la commande <userinput
+>avance</userinput
+> et le <link linkend="number"
+>nombre</link
+> <userinput
+>100</userinput
+>. Le nombre ne fait pas partie de la commande, mais est considéré comme un « paramètre  » de la commande.</para>
+<para
+>Certaines commandes comme par exemple <userinput
+>va</userinput
+> nécessitent plus d'un paramètre en entrée. Plusieurs valeurs doivent être séparées un utilisant le caractère <userinput
+>,</userinput
+> (virgule).</para>
+<para
+>Pour une étude détaillée de toutes les commandes gérées par &kturtle;, allez <link linkend="commands"
+>ici</link
+>. Les commandes internes sont <glossterm
+>surlignées</glossterm
+> en bleu foncé.</para>
+</sect2>
+
+<sect2 id="number">
+<title
+>Nombres</title>
+<para
+>Vous savez probablement certaines choses sur les nombres. La façon dont ils sont utilisés dans &kturtle; n'est pas très différente de la façon dont on les utilise dans le langage parlé, ou avec les mathématiques. </para>
+<para
+>Nous avons les nombres appelés nombre naturels : <userinput
+>0</userinput
+>, <userinput
+>1</userinput
+>, <userinput
+>2</userinput
+>, <userinput
+>3</userinput
+>, <userinput
+>4</userinput
+>, <userinput
+>5</userinput
+>, etc. Les nombres négatifs : <userinput
+>-1</userinput
+>, <userinput
+>-2</userinput
+>, <userinput
+>-3</userinput
+>, etc. Enfin les nombres décimaux, où nombres à virgule, par exemple : <userinput
+>0.1</userinput
+>, <userinput
+>3.14</userinput
+>, <userinput
+>33.3333</userinput
+>, <userinput
+>-5.05</userinput
+>, <userinput
+>-1.0</userinput
+>. Le caractère <userinput
+>.</userinput
+> (point) est utilisé comme séparateur décimal. </para>
+<para
+>Les nombres peuvent être utilisés dans des <link linkend="mathematical-operators"
+>opérateurs mathématiques</link
+> et dans des <link linkend="comparing-operators"
+>opérateurs de comparaison</link
+>. Ils peuvent également être placés dans des <link linkend="assignment-of-variables"
+>variables</link
+>. Les nombres sont <glossterm
+>surlignés</glossterm
+> en rouge foncé.</para>
+</sect2>
+
+<!-- constants like pi? -->
+
+<sect2 id="string">
+<title
+>Chaînes</title>
+<para
+>Tout d'abord un exemple : <screen>
+écris "Bonjour, je suis une chaîne."
+</screen
+> Dans cet exemple, <userinput
+>écris</userinput
+> est une commande et <userinput
+>Bonjour, je suis une chaîne.</userinput
+> est une chaîne. Les chaînes commencent et se terminent par un symbole <userinput
+>"</userinput
+>. Grâce à ces symboles, &kturtle; sait qu'il s'agit d'une chaîne.</para>
+<para
+>Les chaînes peuvent être placées dans des <link linkend="assignment-of-variables"
+>variables</link
+>, tout comme les <link linkend="number"
+>nombres</link
+>. Cependant, contrairement aux nombres, les chaînes ne peuvent pas être utilisées avec les <link linkend="mathematical-operators"
+>opérateurs mathématiques</link
+> ou avec les <link linkend="comparing-operators"
+>opérateurs de comparaison</link
+>. Les chaînes sont <glossterm
+>surlignées</glossterm
+> en rouge.</para>
+</sect2>
+
+<sect2 id="boolean-value">
+<title
+>Les valeurs booléennes (vrai / faux)</title>
+<para
+>Il y a deux types de valeurs booléennes : <userinput
+>vrai</userinput
+> et <userinput
+>faux</userinput
+>. Parfois on les appelle également on et off, oui et non, un et zéro. Mais en &turtlescript;, on les appelle toujours <userinput
+>vrai</userinput
+> et <userinput
+>faux</userinput
+>. Regardez cet extrait de &turtlescript; : <screen>
+$a = vrai
+</screen
+> Si vous regardez dans l'inspecteur, vous verrez que la <link linkend="the-inspector"
+>variable</link
+> <link linkend="assignment-of-variables"
+>$a</link
+> est réglée sur <userinput
+>vrai</userinput
+>, et a le type booléen.</para>
+<para
+>Souvent, les valeurs booléennes sont le résultat d'un <link linkend="comparing-operators"
+>opérateur de comparaison</link
+>, comme dans le morceau de &turtlescript; suivant : <screen>
+$reponse = 10 &gt; 3
+</screen
+> La <link linkend="assignment-of-variables"
+>variable</link
+> <userinput
+>$reponse</userinput
+> est placée à <userinput
+>vrai</userinput
+> car <userinput
+>10</userinput
+> est plus grand que <userinput
+>3</userinput
+>.</para>
+<para
+>Les valeurs booléenne <userinput
+>vrai</userinput
+>et <userinput
+>faux</userinput
+> sont <glossterm
+>surlignées</glossterm
+> en rouge foncé.</para>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="operators">
+<title
+>Les opérateurs mathématiques, booléens et de comparaison</title>
+<para
+>Le titre de cette section peut sembler compliqué, mais ça ne l'est pas autant que ça en a l'air.</para>
+
+<sect2 id="mathematical-operators">
+<title
+>Les opérateurs mathématiques</title>
+<para
+>Il y a les symboles mathématiques de base connus comme : l'addition (<userinput
+>+</userinput
+>), la soustraction (<userinput
+>-</userinput
+>), la multiplication (<userinput
+>*</userinput
+>), division (<userinput
+>/</userinput
+>) et la puissance (<userinput
+>^</userinput
+>).</para>
+
+<para
+>Voici un petit exemple sur les opérateurs mathématiques que vous pouvez utiliser dans &turtlescript; : <screen>
+$somme = 1 + 1
+$difference = 20 - 5
+$produit = 15 * 2
+$rapport = 30 / 30
+$puissance = 2 ^ 2
+</screen
+> Les valeurs résultant de ces opérateurs mathématiques sont <link linkend="assignment-of-variables"
+>assignées</link
+> aux différentes <link linkend="assignment-of-variables"
+>variables</link
+>. En utilisant l'<link linkend="the-inspector"
+>inspecteur</link
+>, vous pouvez voir ces valeurs.</para>
+<para
+>Si vous voulez faire simplement un calcul, vous pouvez le faire de la façon suivante : <screen
+>écris 2010-12
+</screen
+></para>
+<para
+>Voici maintenant un exemple avec des parenthèses : <screen>
+écris ( ( 20 - 5 ) * 2 / 30 ) + 1
+</screen
+> Les expressions dans les parenthèses vont être calculées les premières. Dans cet exemple, 20-5 sera calculé, puis multiplié par 2, divisé par 30, puis 1 est ajouté (ce qui donne 2). Les parenthèses peuvent également être utilisées dans d'autres cas.</para>
+<para
+>&kturtle; dispose également de caractéristiques mathématiques plus avancées sous la forme de commandes. Jetez un œil aux commandes suivantes, mais gardez à l'esprit qu'il s'agit d'opérations avancées : <link linkend="round"
+>arrondi</link
+>, <link linkend="random"
+>hasard</link
+>, <link linkend="sqrt"
+>racine</link
+>, <link linkend="pi"
+>pi</link
+>, <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+>, <link linkend="tan"
+>tan</link
+>, <link linkend="arcsin"
+>arcsin</link
+>, <link linkend="arccos"
+>arccos</link
+>, <link linkend="arctan"
+>arctan</link
+>.</para>
+</sect2>
+
+<sect2 id="boolean-operators">
+<title
+>Opérateurs booléens (vrai / faux)</title>
+<para
+>Tandis que les <link linkend="mathematical-operators"
+>opérateurs mathématiques</link
+> travaillent avec des <link linkend="number"
+>nombres</link
+>, les opérateurs booléens travaillent avec des <link linkend="boolean-value"
+>valeurs booléennes</link
+> (<userinput
+>vrai</userinput
+> et <userinput
+>faux</userinput
+>). Il y a seulement trois opérateurs booléens : <userinput
+>et</userinput
+>, <userinput
+>ou</userinput
+> et <userinput
+>non</userinput
+>. Le morceau de &turtlescript; suivant montre comment les utiliser :  <screen>
+$et_1_1 = vrai et vrai    # -> vrai
+$et_1_0 = vrai et faux   # -> faux
+$et_0_1 = faux et vrai   # -> faux
+$et_0_0 = faux et faux  # -> faux
+
+$ou_1_1 = vrai ou vrai    # -> vrai
+$ou_1_0 = vrai ou faux   # -> vrai
+$ou_0_1 = faux ou vrai   # -> vrai
+$ou_0_0 = faux ou faux  # -> faux
+
+$non_1 = non vrai   # -> faux
+$non_0 = non vrai   # -> vrai
+</screen
+> En utilisant l'<link linkend="the-inspector"
+>inspecteur</link
+>, vous pouvez voir les valeurs, bien que nous fournissons ces résultats en petits commentaires à la fin de chaque ligne. <userinput
+>et</userinput
+> ne vaut <userinput
+>vrai</userinput
+> seulement si les deux côtés sont <userinput
+>vrais</userinput
+>. <userinput
+>ou</userinput
+> vaut <userinput
+>vrai</userinput
+> si l'un des deux côtés est <userinput
+>vrai</userinput
+>. Et <userinput
+>non</userinput
+> passe <userinput
+>vrai</userinput
+>en <userinput
+>faux</userinput
+>, et <userinput
+>faux</userinput
+> en <userinput
+>vrai</userinput
+>.</para>
+<para
+>Les opérateurs booléens sont <glossterm
+>surlignés</glossterm
+> en rose.</para>
+
+<sect3 id="boolean-operators-advanced-examples">
+<title
+>Quelques exemples plus complexes</title>
+<para
+>Considérons l'exemple suivant avec <userinput
+>et</userinput
+> : <screen>
+$a = 1
+$b = 5
+si (($a &lt; 10) et ($b == 5)) et ($a &lt; $b) {
+  écris "bonjour"
+}
+</screen
+> Dans ce morceau de &turtlescript;, le résultat de trois <link linkend="comparing-operators"
+>opérateurs de comparaison</link
+> sont fusionnés en utilisant des opérateurs <userinput
+>et</userinput
+>. Ceci signifie que les trois opérateurs doivent donner vrai pour que le texte « bonjour » soit affiché.</para>
+
+<para
+>Un exemple avec <userinput
+>ou</userinput
+> : <screen>
+$n = 1
+si ($n &lt; 10) ou ($n == 2) {
+  écris "bonjour"
+}
+</screen
+> Dans ce morceau de &turtlescript;, la partie gauche du <userinput
+>ou</userinput
+> donne « vrai », la partie droite donne « faux ». Comme un des deux côtés de l'opérateur <userinput
+>ou</userinput
+> est « vrai », l'opérateur <userinput
+>ou</userinput
+> vaut « vrai ». Ceci signifie que « bonjour » sera affiché.</para>
+
+<para
+>Et pour terminer un exemple avec <userinput
+>non</userinput
+>, qui change « vrai » en « faux » et « faux » en « vrai ». Regardez : <screen
+>$n = 1
+si non ($n == 3) {
+  écris "bonjour"
+} sinon {
+  écris "pas bonjour ;-)"
+}
+</screen
+></para>
+</sect3>
+</sect2>
+
+<sect2 id="comparing-operators">
+<title
+>Opérateurs de comparaison</title>
+<para
+>Considérons cette comparaison simple : <screen>
+$reponse = 10 &gt; 
+</screen
+> Ici, <userinput
+>10</userinput
+> est comparé à <userinput
+>trois</userinput
+> avec l'opérateur « plus grand que ». le résultat de cette comparaison, la <link linkend="boolean-value"
+>valeur booléenne</link
+> <userinput
+>vrai</userinput
+> est stockée dans la <link linkend="assignment-of-variables"
+>variable</link
+> <userinput
+>$reponse</userinput
+>.</para>
+<para
+>Tous les <link linkend="number"
+>nombres</link
+> et <link linkend="assignment-of-variables"
+>variables</link
+> (qui contiennent des nombres) peuvent être comparés entre eux avec les opérateurs de comparaison.</para>
+<para
+>Voici tous les opérateurs de comparaison possibles : <table
+> <title
+>Type de question</title
+> <tgroup cols="3"
+> <tbody
+> <row
+> <entry
+><userinput
+>$A == $B</userinput
+></entry
+> <entry
+>égal</entry
+> <entry
+>la réponse est <quote
+>vrai</quote
+> si <userinput
+>$A</userinput
+> est égal à <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A != $B</userinput
+></entry
+> <entry
+>non égal</entry
+> <entry
+>la réponse est <quote
+>vrai</quote
+> si <userinput
+>$A</userinput
+> n'est pas égal à <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt; $B</userinput
+></entry
+> <entry
+>plus grand que</entry
+> <entry
+>la réponse est <quote
+>vrai</quote
+> si <userinput
+>$A</userinput
+> est plus grand que <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt; $B</userinput
+></entry
+> <entry
+>plus petit que</entry
+> <entry
+>la réponse est <quote
+>vrai</quote
+> si <userinput
+>$A</userinput
+> est plus petit que <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt;=$ B</userinput
+></entry
+> <entry
+>supérieur ou égal</entry
+> <entry
+>la réponse est <quote
+>vrai</quote
+> si <userinput
+>$A</userinput
+> est plus grand ou égal à <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt;= $B</userinput
+></entry
+> <entry
+>inférieur ou égal</entry
+> <entry
+>la réponse est <quote
+>vrai</quote
+> si <userinput
+>$A</userinput
+> est plus petit ou égal à <userinput
+>$B</userinput
+></entry
+> </row
+> </tbody
+> </tgroup
+> </table
+> Notes que $A et $B doivent être des <link linkend="number"
+>nombres</link
+> ou des <link linkend="assignment-of-variables"
+>variables</link
+> qui contiennent ces nombres.</para>
+</sect2>
+
+
+</sect1>
+
+
+
+<sect1 id="commands">
+<title
+>Commandes</title>
+<para
+>En utilisant les commandes, vous dites à la tortue ou à &kturtle; de faire quelque chose. Certaines commandes ont besoin d'une entrée, d'autres donnent une sortie. Dans cette section, nous expliquons toutes les commandes internes de &kturtle;. Vous pouvez également créer vos propres commandes avec <link linkend="learn"
+>apprends</link
+>. Les commandes internes discutées ici sont <glossterm
+>surlignées</glossterm
+> en bleu foncé.</para>
+
+<sect2 id="moving-the-turtle">
+<title
+>Déplacer la tortue</title>
+<para
+>Il y a plusieurs commandes qui déplacent la tortue sur l'écran.</para>
+
+  <variablelist>
+    <anchor id="forward"/>
+    <varlistentry
+> 
+      <term
+>avance (av)<indexterm
+><primary
+>avance (av)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>avance X</screen>
+<userinput
+>avance</userinput
+> fait avancer la tortue sur l'écran de X pixels. Lorsque le crayon est baissé, la tortue laisse une trace (dessine une ligne). <userinput
+>avance</userinput
+> peut se contracter en <userinput
+>av</userinput
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="backward"/>
+    <varlistentry
+>  
+      <term
+>recule (re)<indexterm
+><primary
+>recule (re)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>recule X</screen>
+<userinput
+>recule</userinput
+> fait reculer la tortue sur l'écran de X pixels. Lorsque le crayon est baissé, la tortue laisse une trace (dessine une ligne). <userinput
+>recule</userinput
+> peut se contracter en <userinput
+>re</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnleft"/>
+    <varlistentry
+> 
+      <term
+>tournegauche (tg)<indexterm
+><primary
+>tournegauche (tg)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>tournegauche X</screen>
+<userinput
+>tournegauche</userinput
+> dit à la tortue de se tourner vers la gauche de X degrés. <userinput
+>tournegauche</userinput
+> peut se contracter en <userinput
+>tg</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnright"/>
+    <varlistentry
+> 
+      <term
+>tournedroite (td)<indexterm
+><primary
+>tournedroite (td)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>tournedroite X</screen>
+<userinput
+>tournedroite</userinput
+> dit à la tortue de se tourner vers la droite de X degrés. <userinput
+>tournedroite</userinput
+> peut se contracter en <userinput
+>td</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="direction"/>
+    <varlistentry
+> 
+      <term
+>direction (dir)<indexterm
+><primary
+>direction (dir)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>direction X</screen>
+<userinput
+>direction</userinput
+> fixe la direction de la tortue de X degrés en comptant de zéro, et donc ne dépend pas de la position et de la direction précédentes de la tortue. <userinput
+>direction</userinput
+> peut se contracter en <userinput
+>dir</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="getdirection"/>
+    <varlistentry
+> 
+      <term
+>obtenirdirection<indexterm
+><primary
+>obtenirdirection</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>obtenirdirection</screen>
+<userinput
+>obtenirdirection</userinput
+> renvoie la direction de la tortue en degrés en partant de zéro, où zéro correspond à la tortue pointant vers le haut.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="center"/>
+    <varlistentry
+> 
+      <term
+>centre<indexterm
+><primary
+>centre</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>centre</screen>
+<userinput
+>centre</userinput
+> déplace la tortue au centre du canevas.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="go"/>
+    <varlistentry
+> 
+      <term
+>va<indexterm
+><primary
+>va</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>va X,Y</screen>
+<userinput
+>va</userinput
+> commande à la tortue d'aller à un certain endroit sur le canevas. Cet endroit est à X <glossterm linkend="pixels"
+>pixels</glossterm
+> depuis la gauche du canevas et à Y <glossterm linkend="pixels"
+>pixels</glossterm
+> depuis le haut du canevas.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gox"/>
+    <varlistentry
+> 
+      <term
+>vax<indexterm
+><primary
+>vax (vx)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>vax X</screen>
+<userinput
+>vax</userinput
+> : en utilisant cette commande, la tortue va se déplacer de X <glossterm linkend="pixels"
+>pixels</glossterm
+> depuis la gauche du canevas tandis qu'elle restera à la même hauteur. <userinput
+>vax</userinput
+> peut être abrégé en <userinput
+>vx</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="goy"/>
+    <varlistentry
+> 
+      <term
+>vay<indexterm
+><primary
+>vay (vy)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>vay Y</screen>
+<userinput
+>vay</userinput
+> : en utilisant cette commande, la tortue va se déplacer de Y <glossterm linkend="pixels"
+>pixels</glossterm
+> depuis le haut du canevas tandis qu'elle restera à la même distance de la bordure gauche du canevas. <userinput
+>vay</userinput
+> peut être abrégé en <userinput
+>vy</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <note
+><para
+>En utilisant les commandes <userinput
+>vas</userinput
+>, <userinput
+>vax</userinput
+>, <userinput
+>vay</userinput
+> et <userinput
+>centre</userinput
+> la tortue ne dessinera pas une ligne, peut importe si le crayon est levé ou baissé.</para>
+  </note>
+</sect2>
+
+<sect2 id="locate-the-turtle">
+<title
+>Où est la tortue ?</title>
+<para
+>Il y a deux commandes qui donnent la position de la tortue sur l'écran.</para>
+
+  <variablelist>
+    <anchor id="getx"/>
+    <varlistentry
+> 
+      <term
+>positionx<indexterm
+><primary
+>positionx</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>positionx</userinput
+> retourne le nombre de pixels séparant la gauche du canevas de la position courante de la tortue.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gety"/>
+    <varlistentry
+> 
+      <term
+>positiony<indexterm
+><primary
+>positiony</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>positiony</userinput
+> retourne le nombre de pixels séparant le haut du canevas de la position courante de la tortue.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="pen">
+<title
+>La tortue a un crayon</title>
+<para
+>La tortue a un crayon qui trace une ligne lorsqu'elle se déplace. Il y a peu de commandes pour contrôler le crayon. Nous expliquons ces commandes dans ce paragraphe.</para>
+  <variablelist>
+    <anchor id="penup"/>
+    <varlistentry
+> 
+      <term
+>lèvecrayon (lc)<indexterm
+><primary
+>lèvecrayon (lc)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>lèvecrayon</screen>
+<userinput
+>lèvecrayon</userinput
+> relève le crayon du canevas. Lorsque le crayon est <quote
+>levé</quote
+>, aucune ligne n'est tracée lorsque la tortue se déplace. Voir aussi <userinput
+>baissecrayon</userinput
+>. <userinput
+>lèvecrayon</userinput
+> peut se contracter en <userinput
+>lc</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="pendown"/>
+    <varlistentry
+> 
+      <term
+>baissecrayon (bc)<indexterm
+><primary
+>baissecrayon (bc)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>baissecrayon</screen>
+<userinput
+>baissecrayon</userinput
+> abaisse le crayon sur le canevas. Lorsque le crayon est <quote
+>baissé</quote
+> sur le canevas, une ligne est tracée lorsque la tortue se déplace. Voir aussi <userinput
+>lèvecrayon</userinput
+>. <userinput
+>baissecrayon</userinput
+> peut se contracter en <userinput
+>bc</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setpenwidth"/>
+    <varlistentry
+> 
+      <term
+>largeurcrayon (lac)<indexterm
+><primary
+>largeurcrayon (lac)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>largeurcrayon X</screen>
+<userinput
+>largeurcrayon</userinput
+> fixe l'épaisseur (la largeur du trait) du crayon à X <glossterm linkend="pixels"
+>pixels</glossterm
+>. <userinput
+>largeurcrayon</userinput
+> peut se contracter en <userinput
+>lac</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setfgcolor"/>
+    <varlistentry
+> 
+      <term
+>couleurcrayon (cc)<indexterm
+><primary
+>couleurcrayon (cc)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>couleurcrayon R, G, B</screen>
+<userinput
+>couleurcrayon</userinput
+> fixe la couleur du crayon. <userinput
+>couleurcrayon</userinput
+> demande une <glossterm linkend="rgb"
+>combinaison RVB</glossterm
+> comme entrée. <userinput
+>couleurcrayon</userinput
+> peut se contracter en <userinput
+>cc</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="canvas">
+<title
+>Commandes pour contrôler le canevas</title>
+<para
+>Voici les différentes commandes pour contrôler le canevas.</para>
+  <variablelist>
+    <anchor id="resizecanvas"/>
+    <varlistentry>
+      <term
+>taillecanevas (tc)<indexterm
+><primary
+>taillecanevas (tc)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>taillecanevas X, Y</screen>
+Avec la commande <userinput
+>taillecanevas</userinput
+>, vous pouvez fixer la taille du canevas. Elle reçoit X et Y comme entrée, où X est la nouvelle largeur du canevas en <glossterm linkend="pixels"
+>pixels</glossterm
+>, et Y est la nouvelle hauteur du canevas en <glossterm linkend="pixels"
+>pixels</glossterm
+>. <userinput
+>taillecanevas</userinput
+> peut se contracter en <userinput
+>tc</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setbgcolor"/>
+    <varlistentry
+> 
+      <term
+>couleurcanevas (cca)<indexterm
+><primary
+>couleurcanevas (cca)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>couleurcanevas R, G, B</screen>
+<userinput
+>couleurcanevas</userinput
+> fixe la couleur du canevas. <userinput
+>couleurcanevas</userinput
+> reçoit une <glossterm linkend="rgb"
+>combinaison RVB</glossterm
+> comme entrée. <userinput
+>couleurcanevas</userinput
+> peut se contracter en <userinput
+>cca</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="clean">
+<title
+>Commandes pour nettoyer</title>
+<para
+>Il existe deux commandes pour nettoyer le canevas après avoir mis le désordre.</para>
+  <variablelist>
+    <anchor id="clear"/>
+    <varlistentry
+> 
+      <term
+>nettoietout (ntt)<indexterm
+><primary
+>nettoietout (ntt)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>nettoietout</screen>
+Avec <userinput
+>nettoietout</userinput
+>, vous pouvez nettoyer tous les dessins sur le canevas. Toutes les autres choses restent : la position et l'angle de la tortue, la couleur du canevas, la visibilité de la tortue et la taille du canevas.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="reset"/>
+    <varlistentry
+> 
+      <term
+>initialise<indexterm
+><primary
+>initialise</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>initialise</screen>
+<userinput
+>initialise</userinput
+> nettoie beaucoup plus profondément que la commande <userinput
+>nettoietout</userinput
+>. Après la commande <userinput
+>initialise</userinput
+>, tout redevient comme lorsque vous avez lancé &kturtle;. La tortue se place au milieu de l'écran, la couleur du canevas est blanche, la tortue trace une ligne noire sur le canevas et taillecanevas est défini à 400 x 400 pixels.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="sprites">
+<title
+>La tortue est un lutin (<foreignphrase
+>sprite</foreignphrase
+>)</title>
+<para
+>La plupart des personnes ne savent pas ce qu'un lutin (<foreignphrase
+>sprite</foreignphrase
+>) est, voici donc une courte explication : les lutins sont de petites images qui peuvent se déplacer sur l'écran. (pour plus d'information, voir le glossaire sur <glossterm linkend="sprites"
+>lutins</glossterm
+>). Donc la tortue est un lutin ! </para>
+<para
+>Ce qui suit est un aperçu des commandes relatives aux lutins.</para>
+<para
+>[La version actuelle de &kturtle; ne gère pas encore l'utilisation des lutins autres que la tortue. Dans des versions futures vous pourrez remplacer la tortue par quelque chose de votre propre conception ! ]</para>
+  <variablelist>
+    <anchor id="spriteshow"/>
+    <varlistentry
+> 
+      <term
+>montre (mo)<indexterm
+><primary
+>montre (mo)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>montre</screen>
+<userinput
+>montre</userinput
+> rend de nouveau la tortue visible après avoir été cachée.<userinput
+>montre</userinput
+> peut être abrégé par <userinput
+>mo</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="spritehide"/>
+    <varlistentry
+> 
+      <term
+>cache (ca)<indexterm
+><primary
+>cache (ca)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>cache</screen>
+<userinput
+>cache</userinput
+> cache la tortue. Ceci peut être utilisé si la tortue ne s'adapte pas à votre dessin. <userinput
+>cache</userinput
+> peut se contracter en <userinput
+>ca</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="writing">
+<title
+>La tortue peut-elle écrire du texte ?</title>
+<para
+>La réponse est : <quote
+>oui</quote
+>. La tortue peut écrire, elle écrit tout ce que vous lui commander d'écrire.</para>
+  <variablelist>
+    <anchor id="print"/>
+    <varlistentry
+> 
+      <term
+>écris<indexterm
+><primary
+>écris</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>écris X</screen>
+La commande <userinput
+>écris</userinput
+> est utilisée pour commander à la tortue d'écrire quelque chose sur le canevas. <userinput
+>écris</userinput
+> reçoit des nombres et des chaînes de caractères comme entrée. Vous pouvez utiliser <userinput
+>écris</userinput
+> pour écrire plusieurs nombres et chaînes en utilisant le symbole <quote
+>+</quote
+>. Voici un petit exemple : <screen
+>$année = 2003
+$auteur = "Cies"
+écris $auteur + " a commencé de projet KTurtle en" + $année + "et prend
+ toujours du plaisir à travailler dessus ! "
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="fontsize"/>
+    <varlistentry
+> 
+      <term
+>taillepolice<indexterm
+><primary
+>taillepolice</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>taillepolice X</screen>
+<userinput
+>taillepolice</userinput
+> fixe la taille de la police qui est utilisée par la commande <userinput
+>écris</userinput
+>. <userinput
+>taillepolice</userinput
+> reçoit une entrée qui doit être un nombre. La taille est fixée en <glossterm linkend="pixels"
+>pixels</glossterm
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="math-commands">
+<title
+>Commandes mathématiques</title>
+<para
+>Les commandes suivantes sont des commandes mathématiques de &kturtle; plus avancées.</para>
+  <variablelist>
+    <anchor id="round"/>
+    <varlistentry>
+      <term
+>arrondi<indexterm
+><primary
+>arrondi</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>arrondi(x)</screen>
+<userinput
+>arrondi</userinput
+> le nombre donné à l'entier le plus proche. <screen>
+écris arrondi(10.8)
+avance 20
+écris arrondi(10.3)
+</screen
+> Avec ce code, la tortue écrira les nombre 11 et 10.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="random"/>
+    <varlistentry
+> 
+      <term
+>hasard (hsd)<indexterm
+><primary
+>hasard (hsd)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>hasard X, Y</screen>
+<userinput
+>hasard</userinput
+> est une commande qui demande une entrée et qui vous donne une sortie. Comme entrée sont requis deux nombres, le premier (X) donne la sortie minimale, et le second (Y) fixe le maximum. La sortie est un nombre choisi au hasard qui est égal ou plus grand que le minimum et égal ou plus petit que le maximum. Voici un petit exemple : <screen>
+ répète 500 [
+  $x = hasard 1, 20
+  avance $x
+  tournedroite 10 - $x
+]
+</screen
+> En utilisant la commande <userinput
+>hasard</userinput
+>, vous pouvez ajouter un peu de chaos dans votre programme.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="mod"/>
+    <varlistentry
+> 
+      <term
+>mod<indexterm
+><primary
+>mod</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mod X,Y</screen>
+La commande <userinput
+>mod</userinput
+> renvoie le reste de la division entière du premier nombre par le second.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sqrt"/>
+    <varlistentry
+> 
+      <term
+>racine<indexterm
+><primary
+>racine</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>racine X</screen>
+La commande <userinput
+>racine</userinput
+> est utilisée pour trouver la racine carrée d'un nombre X.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+<!--
+  <variablelist>
+    <anchor id="exp"/>
+    <varlistentry
+> 
+      <term
+>exp<indexterm
+><primary
+>exp</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+-->
+  <variablelist>
+    <anchor id="pi"/>
+    <varlistentry
+> 
+      <term
+>pi<indexterm
+><primary
+>pi</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pi</screen>
+Cette commande renvoie la constante PI, <userinput
+>3,14159</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sin"/>
+    <anchor id="cos"/>
+    <anchor id="tan"/>
+    <varlistentry>
+      <term
+>sin<indexterm
+><primary
+>sin</primary
+></indexterm
+>, cos<indexterm
+><primary
+>cos</primary
+></indexterm
+>, tan<indexterm
+><primary
+>tan</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>sin X
+cos X
+tan X
+</screen>
+Ces trois commandes représentent les fameuses fonctions trigonométriques <userinput
+>sin</userinput
+>, <userinput
+>cos</userinput
+> et <userinput
+>tan</userinput
+>. L'argument en entrée pour ces trois commandes, X, est un <link linkend="number"
+>nombre</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="arcsin"/>
+    <anchor id="arccos"/>
+    <anchor id="arctan"/>
+    <varlistentry>
+      <term
+>arcsin<indexterm
+><primary
+>arcsin</primary
+></indexterm
+>, arccos<indexterm
+><primary
+>arccos</primary
+></indexterm
+>, arctan<indexterm
+><primary
+>arctan</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>arcsin X
+arccos X
+arctan X
+</screen>
+Ces commandes sont les fonctions inverse des fonctions <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+> et <link linkend="tan"
+>tan</link
+>. L'argument en entrée pour ces trois commandes, X, est un <link linkend="number"
+>nombre</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="dialogs">
+<title
+>Entrée et retour avec les boîtes de dialogue</title>
+<para
+>Une boîte de dialogue est une petite fenêtre contextuelle qui fournit du retour ou demande des choses en entrée. &kturtle; possède deux commandes pour les boîtes de dialogue : <userinput
+>message</userinput
+> et <userinput
+>demande</userinput
+></para>
+  <variablelist>
+    <anchor id="message"/>
+    <varlistentry
+> 
+      <term
+>message<indexterm
+><primary
+>message</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>message X</screen>
+La commande <userinput
+>message</userinput
+> prend une <link linkend="string"
+>chaîne</link
+> en entrée. Elle affiche une boîte de dialogue contenant le texte de la <link linkend="string"
+>chaîne</link
+>. <screen
+>message "Cies a commencé à travailler sur KTurtle en 2003 et s'amuse toujours à travailler dessus ! "
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="ask"/>
+    <varlistentry
+> 
+      <term
+>demande<indexterm
+><primary
+>demande</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>demande X</screen>
+<userinput
+>demande</userinput
+> prend une <link linkend="string"
+>chaîne</link
+> en entrée. Elle affiche cette chaîne une boîte de dialogue (similaire à <link linkend="message"
+>message</link
+>), ainsi qu'un champ d'entrée. Après que l'utilisateur a saisi un <link linkend="number"
+>nombre</link
+> ou une <link linkend="string"
+>chaîne</link
+>, le résultat peut être stocké dans une <link linkend="assignment-of-variables"
+>variable</link
+> ou passé comme argument à une <link linkend="commands"
+>commande</link
+>. Par exemple : <screen
+> $entree = demande "quelle est votre année de naissance ? "
+$sortie = 2010 - $in
+écris "En 2010, vous avez eu " + $sortie + " ans à un moment donné."
+</screen
+>Si l'utilisateur annule la boîte de dialogue, ou ne met rien du tous, la <link linkend="assignment-of-variables"
+>variable</link
+> est vide.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="assignment-of-variables">
+<title
+>Affectations des variables</title>
+<para
+>Nous devons d'abord regarder les variables, ensuite, nous verrons comment affecter des valeurs à ces variables. </para>
+
+<para
+>Les variables sont des mots qui commencent par un <quote
+>$</quote
+>, dans l'<link linkend="the-editor"
+>éditeur</link
+>, elles sont <glossterm
+>surlignées</glossterm
+> en violet.</para>
+
+<para
+>Les variables contiennent soit des <link linkend="number"
+>nombres</link
+>, des <link linkend="string"
+>chaînes</link
+> ou des <link linkend="boolean-value"
+>valeurs booléennes (vrai / faux)</link
+>. En utilisant une affectation, <userinput
+>=</userinput
+>, une variable reçoit son contenu. Elle le conservera jusqu'à ce que le programme se termine ou qu'on assigne quelque chose d'autre à la variable.</para>
+
+<para
+>Vous pouvez utiliser les variables, une fois affectées, tout comme s'il s'agissait de leur contenu. Par exemple, dans le morceau de &turtlescript; : <screen
+> $x = 10
+$x = $x / 3
+écris $x
+</screen
+> Tout d'abord la variable <userinput
+>$x</userinput
+> se voit affecter la valeur <userinput
+>10</userinput
+>. Ensuite, <userinput
+>$x</userinput
+> se voit de nouveau affecter sa propre valeur divisée par <userinput
+>3</userinput
+> &mdash; ceci signifie en fait que <userinput
+>$x</userinput
+> est affectée du résultat de <userinput
+>10 + 3</userinput
+>. Enfin, <userinput
+>$x</userinput
+> est affichée. Dans les lignes deux et trois, vous voyez que <userinput
+>$x</userinput
+> est utilisé comme s'il s'agissait de son contenu.</para>
+
+<para
+>Les variables doivent être affectées avant de pouvoir être utilisées. Par exemple : <screen>
+écris $n
+</screen
+> donnera un message d'erreur.</para>
+
+<para
+>Regardez le morceau de &turtlescript; suivant : <screen>
+$a = 2004
+$b = 25
+
+# la commande suivante affiche « 2029 »
+écris $a + $b
+recule 30
+# la commande suivante écrit "2004 plus 25 égal 2009"
+écris $a + " plus " + $b + " égal " + ($a + $b)
+</screen
+> Dans les deux premières lignes, les variables <userinput
+>$a</userinput
+> et <userinput
+>$b</userinput
+> sont initialisées à 2004 et 25. Ensuite viennent les deux commandes <userinput
+>écris</userinput
+> et un <userinput
+>recule 30</userinput
+> entre. Les commentaires avant les commandes <userinput
+>écris</userinput
+> expliquent ce que ces commandes font. La commande <userinput
+>recule 30</userinput
+> est ici pour s'assurer que chaque sortie se trouve sur une nouvelle ligne. Comme vous le voyez, les variables peuvent être utilisée comme s'il s'agissait de leur contenu, vous pouvez les utiliser avec n'importe quel type d'<link linkend="operators"
+>opérateurs</link
+> ou les passer en entrée lorsque vous appelez des <link linkend="commands"
+>commandes</link
+>.</para>
+
+<para
+>Un autre exemple : <screen>
+$nom = demande "Quel est votre nom ? "
+écris "Salut " + $nom + " ! Bonne chance dans l'apprentissage de la programmation..."
+</screen
+> Plutôt direct. Encore une fois, vous voyez que la variable <userinput
+>$nom</userinput
+> est traitée comme une chaîne.</para>
+
+<para
+>Lorsque vous utilisez des variables, l'<link linkend="the-inspector"
+>inspecteur</link
+> est très utile. Il vous montre le contenu de toutes les variables actuellement en cours d'utilisation.</para>
+</sect1>
+
+
+
+<sect1 id="controlling-execution">
+<title
+>Contrôler l'exécution</title>
+<para
+>Les contrôleurs d'exécution vous permettent, &mdash; comme leur nom l'indique &mdash; de contrôler l'exécution.</para>
+<para
+>Les commandes de contrôle d'exécution sont <glossterm
+>surlignées</glossterm
+> en vert foncé en utilisant une police en gras. Les accolades sont principalement utilisées avec les contrôleurs d'exécution et sont <glossterm
+>surlignées</glossterm
+> en noir.</para>
+
+<sect2 id="wait">
+<title
+>Faite attendre la tortue</title>
+<para
+>Si vous avez exécuté quelques programmes dans &kturtle; vous pouvez avoir remarqué que la tortue se déplace très rapidement pour dessiner. La commande suivante ralentit la tortue.</para>
+  <variablelist>
+    <varlistentry>
+      <term
+>attends<indexterm
+><primary
+>attends</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>attends X</screen>
+<userinput
+>attends</userinput
+> fait attendre la tortue pendant X secondes. <screen>
+répète 36 {
+  avance 5
+  tournedroite 10
+  attends 0.5
+}
+</screen
+> Ce code dessine un cercle, mais la tortue va attendre une demi-seconde après chaque étape. Cela donne l'impression d'une tortue qui va moins vite.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="if">
+<title
+>Exécute « si »</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>si<indexterm
+><primary
+>si</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>si <link linkend="boolean-value"
+>booléen</link
+> { ... }</screen>
+Le code qui est placé entre les accolades sera exécuté seulement <userinput
+>si</userinput
+> la <link linkend="boolean-value"
+>valeur booléenne</link
+> vaut <quote
+>vrai</quote
+>. <screen>
+$x = 6
+si $x &gt; 5 {
+  écris "x est plus grand que cinq ! "
+}
+</screen
+> À la première ligne, <userinput
+>$x</userinput
+> est fixé à 6. À la seconde ligne, un <link linkend="comparing-operators"
+>opérateur de comparaison</link
+> est utilisé pour évaluer <userinput
+>$x &gt; 5</userinput
+>. Comme le résultat est <quote
+>vrai</quote
+>, 6 est plus grand que 5, le contrôleur d'exécution <userinput
+>si</userinput
+> va permettre au code entre accolades d'être exécuté.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="else">
+<title
+>Si non, en d'autres termes : « sinon »</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>sinon<indexterm
+><primary
+>sinon</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>si <link linkend="boolean-value"
+>booléen</link
+> { ... } sinon { ... }</screen>
+<userinput
+>sinon</userinput
+> peut être utilisé en plus du contrôleur d'exécution <link linkend="if"
+><userinput
+>si</userinput
+></link
+>. Le code entre accolades après <userinput
+>sinon</userinput
+> n'est exécuté que si le <link linkend="boolean-value"
+>booléen</link
+> vaut <quote
+>faux</quote
+>. <screen>
+initialise
+$x = 4
+si $x &gt; 5 {
+  écris "x est plus grand que cinq ! "
+} sinon {
+  écris "x est plus petit que six ! "
+}
+</screen
+> L'<link linkend="comparing-operators"
+>opérateur de comparaison</link
+> évalue l'expression <userinput
+>$x &gt; 5</userinput
+>. Comme 4 n'est pas plus grand que 5, l'expression vaut <quote
+>faux</quote
+>. Cela signifie que le code entre accolades après <userinput
+>sinon</userinput
+> est exécuté.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="while">
+<title
+>La boucle « tantque »</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>tantque<indexterm
+><primary
+>tantque</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>tantque <link linkend="boolean-value"
+>booléen</link
+> { ... }</screen>
+Le contrôleur d'exécution <userinput
+>tantque</userinput
+> ressemble beaucoup à <link linkend="if"
+><userinput
+>si</userinput
+></link
+>. La différence est que <userinput
+>tantque</userinput
+> répète le code entre accolades jusqu'à ce que le <link linkend="boolean-value"
+>booléen</link
+> vaut <quote
+>faux</quote
+> <screen>
+$x = 1
+tantque $x &lt; 5 {
+  avance 10
+  attends 1
+  $x = $x + 1
+}
+</screen
+> À la première ligne, <userinput
+>$x</userinput
+> est fixé à 1. À la seconde ligne,  <userinput
+>$x &lt; 5</userinput
+> est évalué. Comme la réponse à cette question est <quote
+>vrai</quote
+>, le contrôleur d'exécution <userinput
+>tantque</userinput
+> commence à exécuter le code entre accolades jusqu'à ce que  <userinput
+>$x &lt; 5</userinput
+> soit <quote
+>faux</quote
+>. Dans ce cas, le code entre accolades sera exécuté quatre fois, à chaque fois que la cinquième ligne est exécutée, <userinput
+>$x</userinput
+> augmente de 1.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="repeat">
+<title
+>La boucle « répète »</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>répète<indexterm
+><primary
+>répète</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>répète <link linkend="number"
+>nombre</link
+> { ... }</screen>
+Le contrôleur d'exécution <userinput
+>répète</userinput
+> est similaire à <link linkend="while"
+><userinput
+>tantque</userinput
+></link
+>. La différence est que <userinput
+>répète</userinput
+> laisse en boucle le code entre accolades autant de fois que le nombre donné.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="for">
+<title
+>La boucle « pour », une boucle de comptage</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>pour<indexterm
+><primary
+>pour</primary
+></indexterm
+><indexterm
+><primary
+>pas</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pour <link linkend="assignment-of-variables"
+>variable</link
+> = <link linkend="number"
+>nombre</link
+> à <link linkend="number"
+>nombre</link
+> { ... }</screen>
+La boucle <userinput
+>pour</userinput
+> est une <quote
+>boucle de comptage</quote
+>, &cad; qu'elle compte à votre place. Le premier nombre règle la variable pour la première boucle. À chaque boucle, le nombre est incrémenté jusqu'à ce que la seconde valeur soit atteinte. <screen>
+pour $x = 1 à 10 {
+  écris $x * 7
+  avance 15
+}
+</screen
+> Chaque fois que le code entre accolades est exécuté, la valeur de <userinput
+>$x</userinput
+> augmente de 1, jusqu'à ce que <userinput
+>$x</userinput
+> atteigne la valeur 10. Le code entre les accolades écrit <userinput
+>$x</userinput
+> multiplié par 7. Après que ce programme a fini son exécution, vous allez voir la table de multiplication de 7 imprimée sur le canevas. </para>
+     <para
+>La taille du pas par défaut de la boucle est 1, vous pouvez utiliser une autre valeur avec : <screen
+>pour <link linkend="assignment-of-variables"
+>variable</link
+> = <link linkend="number"
+>nombre</link
+> à <link linkend="number"
+>nombre</link
+> pas <link linkend="number"
+>nombre</link
+> { ... }</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="break">
+<title
+>Quitter la boucle</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>coupure<indexterm
+><primary
+>coupure</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>coupure</screen>
+Termine immédiatement la boucle courante et transfert le contrôle à la déclaration qui suit la boucle.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="exit">
+<title
+>Arrête l'exécution du programme</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>sortie<indexterm
+><primary
+>sortie</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sortie</screen>
+Termine l'exécution de votre programme.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="assert">
+<title
+>Vérifier une assertion lors de l'exécution</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>assertion<indexterm
+><primary
+>assertion</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>assertion <link linkend="boolean-value"
+>booléen</link
+></screen>
+Peut être utilisé pour déterminer la conformité d'un programme ou d'une entrée. <screen
+>$in = demande "quel est votre année de naissance ? "
+# l'année doit être positive
+assertion $in 
+> 0
+</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+</sect1>
+
+
+<sect1 id="learn">
+
+
+<!--<sect2 id="name">
+<title
+>Names</title>
+<para
+>When using the &turtlescript; programming language you create new things. If you write a program you will often need <link linkend="containers"
+>containers</link
+> and in some cases you need <link linkend="learn"
+>learn</link
+> to create new commands. When making a new command with <link linkend="learn"
+>learn</link
+> you will have to specify a name.</para>
+<para
+>You can choose any name, as long as it does not already have a meaning. For instance you cannot name a function <link linkend="forward"
+>forward</link
+>, since that name is already used for an internal command.
+<screen
+>
+# here forward is used as a new command, 
+# but it already has a meaning so 
+# this will produce an error:
+learn forward {
+  print "this is invalid"
+}
+
+# this works:
+learn myforward {
+  print "this is ok"
+}
+</screen>
+Names can contain only letters, numbers and underscores (_). Yet they have to start with a letter. Container names have to start with the container prefix ($).
+<screen
+>
+# here forward is used as a container, 
+# starting with the $ prefix, so it does
+# not conflict with the forward command
+$forward = 20
+print $forward
+</screen>
+</para>
+<para
+>Containers are <glossterm
+>highlighted</glossterm
+> with bolded purple in the <link linkend="the-editor"
+>code editor</link
+>.</para>
+<para>
+Please read the documentation on <link linkend="containers"
+>containers</link
+> and the <link linkend="learn"
+>learn</link
+> command for a better explanation and more examples.
+</para>
+</sect2
+>-->
+
+
+
+
+
+<title
+>Créez vos propres commandes avec <quote
+>apprends</quote
+></title>
+<para
+><userinput
+>apprends</userinput
+> est une commande très spéciale, car elle est utilisée pour créer vos propres commandes. La commande que vous créez peut recevoir des <glossterm linkend="input-output"
+>entrées</glossterm
+> et retourner des <glossterm linkend="input-output"
+>sorties</glossterm
+>. Regardons maintenant comment une nouvelle commande est créée : <screen>
+apprends cercle $x {
+  répète 36 {
+    avance $x
+    tournegauche 10
+  }
+}
+</screen
+> La nouvelle commande est appelée <userinput
+>cercle</userinput
+>. <userinput
+>cercle</userinput
+> reçoit un argument en <glossterm linkend="input-output"
+>entrée</glossterm
+>, qui fixe la taille du cercle. <userinput
+>cercle</userinput
+> ne retourne aucune <glossterm linkend="input-output"
+>sortie</glossterm
+>. La commande <userinput
+>cercle</userinput
+> peut maintenant être utilisée comme une commande normale dans la suite du programme. Voyez cet exemple : <screen
+>apprends cercle $X {
+  répète 36 {
+    avance $X
+    tournegauche 10
+  }
+}
+
+va 30,30
+cercle 20
+
+va 40,40
+cercle 50  
+</screen>
+</para>
+<para
+>Dans l'exemple suivant, une commande avec une valeur de retour est créée. <screen>
+apprends factorielle $x {
+  $r = 1
+  pour $i = 1 à $x {
+    $r = $r * $i
+  }
+  retourne $r
+}
+
+écris factorielle 5
+</screen
+> Dans cet exemple, une nouvelle commande appelée <userinput
+>factorielle</userinput
+> est créée. Si l'entrée de la commande est <userinput
+>5</userinput
+>, alors la sortie sera <userinput
+>5*4*3*2*1</userinput
+>. En utilisant <userinput
+>retourne</userinput
+>, la valeur de <glossterm linkend="input-output"
+>sortie</glossterm
+> est spécifiée et le résultat est renvoyé.</para>
+<para
+>Les commandes peuvent avoir plus d'une <glossterm linkend="input-output"
+>entrée</glossterm
+>. Dans l'exemple suivant, une commande qui dessine un rectangle est créé.<screen>
+apprends boîte $x, $y {
+  avance $y
+  tournedroite 90
+  avance $x
+  tournedroite 90
+  avance $y
+  tournedroite 90
+  avance $x
+  tournedroite 90
+}
+</screen
+> Maintenant vous pouvez lancer <userinput
+>boîte 50, 100</userinput
+> et la tortue dessinera un rectangle sur le canevas. </para>
+  
+</sect1>
+
+</chapter>

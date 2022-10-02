@@ -1,0 +1,316 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kturtle;">
+  <!ENTITY turtlescript "TurtleScript">
+  <!ENTITY logo "Logo">
+  <!ENTITY % addindex "INCLUDE">
+  <!ENTITY % Spanish "INCLUDE"
+><!-- change language only here -->
+  <!ENTITY using-kturtle SYSTEM "using-kturtle.docbook">
+  <!ENTITY getting-started SYSTEM "getting-started.docbook">
+  <!ENTITY programming-reference SYSTEM "programming-reference.docbook">
+  <!ENTITY translator-guide SYSTEM "translator-guide.docbook">
+  <!ENTITY glossary SYSTEM "glossary.docbook">
+]>
+
+<book id="kturtle" lang="&language;">
+
+<bookinfo>
+<title
+>El manual de &kturtle;</title>
+
+<authorgroup>
+<author
+><firstname
+>Cies</firstname
+> <surname
+>Breijs</surname
+> <affiliation
+> <address
+><email
+>cies AT kde DOT nl</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Anne-Marie</firstname
+> <surname
+>Mahfouf</surname
+> <affiliation
+> <address
+><email
+>annma AT kde DOT org</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+><email
+>piacentini AT kde DOT org</email
+></address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Rafael</firstname
+><surname
+>Beccar</surname
+><affiliation
+><address
+><email
+>rafael.beccar@kdemail.net</email
+></address
+></affiliation
+><contrib
+>Traductor</contrib
+></othercredit
+> <othercredit role="translator"
+><firstname
+>Leticia</firstname
+><surname
+>Martín Hernández</surname
+><affiliation
+><address
+><email
+>leticia.martin@gmail.com</email
+></address
+></affiliation
+><contrib
+>Traductor</contrib
+></othercredit
+> 
+</authorgroup>
+
+
+<copyright>
+<year
+>2004</year
+><year
+>2009</year>
+<holder
+>Cies Breijs</holder>
+</copyright>
+
+<copyright>
+<year
+>2004</year
+><year
+>2007</year>
+<holder
+>&Anne-Marie.Mahfouf;</holder>
+</copyright>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Mauricio Piacentini</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-01-20</date>
+<releaseinfo
+>Aplicaciones 20.12</releaseinfo>
+
+<abstract>
+<para
+>&kturtle; es un entorno educativo de programación cuyo objetivo es facilitar el aprendizaje de cómo se programa. Para conseguirlo, &kturtle; permite acceder a todas las herramientas de programación desde la interfaz de usuario. El lenguaje de programación que se utiliza es &turtlescript;, que admite la traducción de sus órdenes.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KTurtle</keyword>
+<keyword
+>educación</keyword>
+<keyword
+>lenguaje</keyword>
+<keyword
+>nativo</keyword>
+<keyword
+>programación</keyword>
+<keyword
+>TurtleScript</keyword>
+<keyword
+>Logo</keyword>
+<keyword
+>tortuga</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introducción</title>
+
+<para
+>&kturtle; es un entorno educativo de programación que usa <link linkend="what-is-turtlelang"
+>&turtlescript;</link
+>, un lenguaje de programación vagamente basado e inspirado en &logo;. El objetivo de &kturtle; es hacer que la programación sea fácil y accesible. Esto convierte a &kturtle; en una herramienta apropiada para enseñar a los niños los fundamentos de las matemáticas, la geometría y, por supuesto, la programación. Una de las características principales de &turtlescript; es que permite traducir las órdenes al idioma del programador.</para>
+
+<para
+>&kturtle; lleva este nombre en honor a la tortuga («turtle», en inglés) que juega un papel central en este entorno de programación. El estudiante, en general, dará instrucciones a la tortuga, usando comandos de &turtlescript;, para que esta realice un dibujo en el <link linkend="the-canvas"
+>lienzo</link
+>.</para>
+
+<sect1 id="what-is-turtlelang">
+<title
+>¿Qué es &turtlescript;?</title>
+<para
+>&turtlescript;, el lenguaje de programación usado en  &kturtle;, está inspirado en la familia de lenguajes de programación &logo;. La primera versión del lenguaje &logo; fue creada en 1967 por Seymour Papert, del Laboratorio de Inteligencia Artificial de MIT (Massachusetts Institute of Technology), como una evolución del lenguaje de programación LISP. A partir de este momento aparecieron muchas versiones de &logo;. En torno a 1980, &logo; fue ganando impulso, con versiones para los sistemas MSX, Commodore, Atari, Apple II e IBM PC. Estas versiones fueron desarrolladas principalmente con fines educativos. MIT sigue manteniendo un <ulink url="https://el.media.mit.edu/logo-foundation/"
+>sitio web sobre &logo;</ulink
+> que contiene una lista con varias implementaciones populares del lenguaje.</para>
+<para
+>&turtlescript; comparte una característica con muchas otras implementaciones de &logo;: la posibilidad de traducir las órdenes al idioma nativo del estudiante. Esta característica facilita las cosas a los estudiantes que no entienden inglés (o que lo entienden poco). &kturtle; tiene <link linkend="features-of-kturtle"
+>otras muchas características</link
+> que tienen como objetivo que la primera experiencia de los estudiantes con la programación sea lo más sencilla posible.</para>
+</sect1>
+
+
+<sect1 id="features-of-kturtle">
+<title
+>Características de &kturtle;</title>
+<para
+>&kturtle; tiene algunas características que hacen que comenzar a programar sea coser y cantar. Estas son algunas de las características más destacadas de &kturtle;: <itemizedlist>
+<listitem
+><para
+>Un entorno integrado con el intérprete de &turtlescript;, el <link linkend="the-editor"
+>editor</link
+>, el <link linkend="the-canvas"
+>lienzo</link
+> y otras herramientas, todo en una única aplicación (sin dependencias adicionales).</para
+></listitem>
+<listitem
+><para
+>La posibilidad de traducir las órdenes de &turtlescript; usando el marco de traducción de &kde;.</para
+></listitem>
+<listitem
+><para
+>&turtlescript; admite funciones definidas por el usuario, algoritmos recursivos y el cambio de tipos dinámicos. </para
+></listitem>
+<listitem
+><para
+>En cualquier momento, la ejecución puede ralentizarse, detenerse brevemente o interrumpirse.</para
+></listitem>
+<listitem
+><para
+>Un poderoso <link linkend="the-editor"
+>editor</link
+> que incluye resaltado intuitivo de sintaxis, numeración de líneas, marcadores de errores, ejecución visual y mucho más.</para
+></listitem>
+<listitem
+><para
+>El <link linkend="the-canvas"
+>lienzo</link
+>, donde la tortuga dibuja, puede ser imprimido o guardado como imagen (PNG) o como dibujo (&SVG;).</para
+></listitem>
+<listitem
+><para
+>Ayuda contextual: la ayuda cuando la necesita. Pulse <keysym
+>F2</keysym
+> (o vaya a <menuchoice
+><guimenu
+>Ayuda</guimenu
+><guimenuitem
+>Ayuda sobre: ...</guimenuitem
+></menuchoice
+>) para obtener ayuda sobre la porción de código que se encuentre bajo su cursor.</para
+></listitem>
+<listitem
+><para
+>Un diálogo de error que relaciona los mensajes de error con los errores en el programa, resaltándolos en rojo.</para
+></listitem>
+<listitem
+><para
+>Terminología simplificada de programación.</para
+></listitem>
+<listitem
+><para
+>Ejemplos integrados que le ayudan a empezar. Estos ejemplos han sido traducidos usando el marco de traducción de &kde;.</para
+></listitem>
+</itemizedlist>
+</para>
+</sect1>
+</chapter>
+
+&using-kturtle;
+
+&getting-started;
+
+&programming-reference;
+
+&glossary;
+
+&translator-guide;
+
+<chapter id="credits">
+
+<title
+>Créditos y licencia</title>
+
+<para
+>&kturtle; </para>
+<para
+>Copyright del programa 2003-2005 Cies Breijs <email
+>cies AT kde DOT nl</email
+></para>
+
+<para
+>Copyright de la documentación 2004, 2007, 2009 <itemizedlist>
+<listitem
+><para
+>Cies Briej <email
+>cies AT kde DOT nl</email
+> </para
+></listitem>
+<listitem
+><para
+>&Anne-Marie.Mahfouf; &Anne-Marie.Mahfouf.mail; </para
+></listitem>
+<listitem
+><para
+>Correcciones hechas por &Philip.Rodrigues; &Philip.Rodrigues.mail;</para>
+</listitem>
+<listitem
+><para
+>Actualización de la guía de traducción y correcciones: Andrew Coles <email
+>andrew_coles AT yahoo DOT co DOT uk</email
+></para>
+</listitem>
+</itemizedlist>
+</para>
+
+<para
+>Traducido por Rafael Beccar<email
+>rafael.beccar@kdemail.net</email
+> y Leticia Martín Hernández <email
+>leticia.martin@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+<!--&documentation.index; -->
+<index id='command-index'>
+<title
+>Índice de órdenes</title>
+</index>
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->

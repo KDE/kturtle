@@ -1,0 +1,444 @@
+<chapter id="Glossary">
+<title
+>Glossari</title>
+
+<para
+>En aquest capítol trobareu una explicació de la majoria dels mots <quote
+>poc freqüents</quote
+> que s'empren en aquest manual.</para>
+
+<glosslist>
+<glossentry id="degrees">
+<glossterm
+>graus</glossterm>
+<glossdef
+><para
+>Els graus són unitats per a mesurar angles o girs. Un gir complet és de 360 graus, una mitja volta és de 180 graus i una quarta part de volta és de 90 graus. Us cal escriure les mesures en graus en les ordres <userinput
+>turnleft</userinput
+> (<userinput
+>giraesquerra</userinput
+>), <userinput
+>turnright</userinput
+> (<userinput
+>giradreta</userinput
+>) i <userinput
+>direction</userinput
+> (<userinput
+>direcció</userinput
+>).</para
+></glossdef>
+</glossentry>
+
+<glossentry id="input-output">
+<glossterm
+>Entrada i sortida de les ordres</glossterm>
+<glossdef
+><para
+>Algunes ordres agafen l'entrada, d'altres donen una sortida, d'altres agafen l'entrada <emphasis
+>i</emphasis
+> donen una sortida i d'altres ni agafen una entrada ni donen una sortida.</para>
+<para
+>Alguns exemples d'ordres que només agafen l'entrada són: <screen>
+forward 50
+pencolor 255,0,0
+print "Hola!"
+</screen
+> L'ordre <userinput
+>forward</userinput
+> (<userinput
+>avança</userinput
+>) pren <userinput
+>50</userinput
+> com a valor d'entrada. Us cal saber quants <glossterm linkend="pixels"
+>píxels</glossterm
+> necessiteu per a anar endavant. <userinput
+>pencolor</userinput
+> (<userinput
+>colorllapis</userinput
+>) agafa un color com entrada i <userinput
+>print</userinput
+> (<userinput
+>imprimeix</userinput
+>) agafa una cadena (un tros de text) com a entrada. Observeu que l'entrada també port ser un contenidor. El següent exemple ho il·lustra: <screen
+>$x = 50
+print $x
+forward 50
+$str = "hola!"
+print $str
+</screen
+></para>
+
+<para
+>Ara alguns exemples d'ordres que donen la sortida: <screen>
+$x = ask "Si us plau, escriviu quelcom i premeu Bé... gràcies!"
+$r = random 1,100
+</screen
+> L'ordre <userinput
+>ask</userinput
+> (<userinput
+>pregunta</userinput
+>) agafa una cadena com a entrada i mostra com a eixida el nombre o cadena que s'introdueix. Com podeu veure, la sortida de <userinput
+>ask</userinput
+> es desa en el contenidor <userinput
+>x</userinput
+>. L'ordre <userinput
+>random</userinput
+> (<userinput
+>aleatori</userinput
+>) també dona la sortida. En aquest cas fa sortir un número entre 1 i 100. La sortida es desa en un contenidor anomenat <userinput
+>r</userinput
+>. Fixeu-vos que <userinput
+>x</userinput
+> i <userinput
+>r</userinput
+> no s'utilitzen en l'exemple de sobre.</para>
+
+<para
+>Hi ha ordres que necessiten una entrada, però no donen cap sortida. Mireu aquests exemples: <screen
+>clear
+penup
+</screen>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="intuitive-highlighting">
+<glossterm
+>ressaltat intuïtiu</glossterm>
+<glossdef
+><para
+>Aquesta és una característica del &kturtle; que facilita la creació de codi. El codi que escriviu obté un color indicant de quin tipus es tracta. En la llista següent trobareu els diversos tipus de codi i el color que s'obté en <link linkend="the-editor"
+>l'editor</link
+>. <table>
+<title
+>Diferents tipus de codi i el seu color de ressaltat</title>
+<tgroup cols="3">
+<tbody>
+<row>
+<entry
+>ordres normals</entry>
+<entry
+>blau fosc</entry>
+<entry
+>Les ordres normals es descriuen <link linkend="commands"
+>aquí</link
+>.</entry>
+</row>
+<row>
+<entry
+>ordres que controlen l'execució</entry>
+<entry
+>negre (en negreta)</entry>
+<entry
+>Aquestes ordres especials que controlen l'execució, llegiu més sobre aquest tema <link linkend="controlling-execution"
+>aquí</link
+>.</entry>
+</row>
+<row>
+<entry
+>comentaris</entry>
+<entry
+>gris</entry>
+<entry
+>Els comentaris de les línies s'inicien amb el caràcter (#). Aquestes línies no es tenen en compte en l'execució del codi. Aquests comentaris permeten al programador explicar el codi o bé impedir que una seqüència de codi s'executi.</entry>
+</row>
+<row>
+<entry
+>claus {, }</entry>
+<entry
+>verd fosc (en negreta)</entry>
+<entry
+>Les claus s'utilitzen per a agrupar porcions de codi. Sovint s'utilitzen juntament amb <link linkend="controlling-execution"
+>controladors d'execució</link
+>.</entry>
+</row>
+<row>
+<entry
+>l'ordre <link linkend="learn"
+>learn</link
+> (aprèn)</entry>
+<entry
+>verd clar (en negreta)</entry>
+<entry
+>L'ordre <link linkend="learn"
+>learn</link
+> (aprèn) s'utilitza per a crear ordres noves.</entry>
+</row>
+<row>
+<entry
+>cadenes</entry>
+<entry
+>vermell</entry>
+<entry
+>No cal dir gaires coses sobre les cadenes (de text), tenint en compte que han de començar i finalitzar amb cometes dobles «"».</entry>
+</row>
+<row>
+<entry
+>nombres</entry>
+<entry
+>vermell fosc</entry>
+<entry
+>Els nombres, no hi ha gaire a dir sobre seu.</entry>
+</row>
+<row>
+<entry
+>valors booleans</entry>
+<entry
+>vermell fosc</entry>
+<entry
+>Hi ha exactament dos valors booleans, és a dir: «true (cert)» i «false (fals)».</entry>
+</row>
+<row>
+<entry
+>variables</entry>
+<entry
+>púrpura</entry>
+<entry
+>Comencen amb un «$» i poden contenir nombres, cadenes o valors booleans.</entry>
+</row>
+<row>
+<entry
+>operadors matemàtics</entry>
+<entry
+>gris</entry>
+<entry
+>Aquests són els operadors matemàtics: <userinput
+>+</userinput
+>, <userinput
+>-</userinput
+>, <userinput
+>*</userinput
+>, <userinput
+>/</userinput
+> i <userinput
+>^</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>operadors de comparació</entry>
+<entry
+>blau clar (en negreta)</entry>
+<entry
+>Aquests són els operadors de comparació: <userinput
+>==</userinput
+>, <userinput
+>!=</userinput
+>, <userinput
+>&lt;</userinput
+>, <userinput
+>&gt;</userinput
+>, <userinput
+>&lt;=</userinput
+> i <userinput
+>&gt;=</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>operadors booleans</entry>
+<entry
+>rosa (en negreta)</entry>
+<entry
+>Aquests són els operadors booleans: <userinput
+>and</userinput
+> (<userinput
+>i</userinput
+>), <userinput
+>or</userinput
+> (<userinput
+>o</userinput
+>) i <userinput
+>not</userinput
+> (<userinput
+>no</userinput
+>).</entry>
+</row>
+<row>
+<entry
+>text normal</entry>
+<entry
+>negre</entry>
+<entry
+></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="pixels">
+<glossterm
+>píxels</glossterm>
+<glossdef
+><para
+>Un píxel és un punt en la pantalla. Si mireu de prop el monitor, veureu que la pantalla té uns quants punts que formen les imatges. Totes les imatges de la pantalla es construeixen per la combinació d'aquests píxels. Un píxel és l'element més petit dibuixat a la pantalla.</para>
+<para
+>Moltes de les ordres necessiten un nombre de píxels com a entrada. Aquestes ordres són: <userinput
+>forward</userinput
+> (<userinput
+>avança</userinput
+>), <userinput
+>backward</userinput
+> (<userinput
+>recula</userinput
+>), <userinput
+>go</userinput
+> (<userinput
+>vesa</userinput
+>), <userinput
+>gox</userinput
+> (<userinput
+>vesax</userinput
+>), <userinput
+>goy</userinput
+> (<userinput
+>vesay</userinput
+>), <userinput
+>canvassize</userinput
+> (<userinput
+>midapaper</userinput
+>) i <userinput
+>penwidth</userinput
+> (<userinput
+>gruixllapis</userinput
+>).</para>
+<para
+>En les primeres versions del &kturtle;, el llenç era essencialment una imatge, però, per a les últimes versions del llenç és un dibuix vectorial. Això significa que al llenç es pot fer zoom apropant i allunyant, per tant un píxel no necessàriament ha de traduir-se en un punt a la pantalla.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="rgb">
+<glossterm
+>Combinacions RGB (codis de color)</glossterm>
+<glossdef
+><para
+>Les combinacions RGB són utilitzades per a descriure els colors. La <quote
+>R</quote
+> vol dir <quote
+>vermell</quote
+>, la <quote
+>G</quote
+> vol dir <quote
+>verd</quote
+> i la <quote
+>B</quote
+> que vol dir <quote
+>blau</quote
+>. Un exemple de la combinació RGB és <userinput
+>255,0,0</userinput
+>: El primer valor (<quote
+>vermell</quote
+>) és 255 i la resta 0, això vol dir que es tracta del vermell pur. Cada valor d'una combinació RGB ha d'estar en un interval entre el 0 i el 255. Aquí teniu una petita llista dels colors més utilitzats: <table frame="none">
+<title
+>Combinacions RGB més utilitzades</title>
+<tgroup cols="2" colsep="5" rowsep="1">
+<colspec colname="c1"/>
+<tbody>
+<row
+><entry
+><userinput
+>0,0,0</userinput
+></entry
+><entry
+>negre</entry
+></row>
+<row
+><entry
+><userinput
+>255,255,255</userinput
+></entry
+><entry
+>blanc</entry
+></row>
+<row
+><entry
+><userinput
+>255,0,0</userinput
+></entry
+><entry
+>vermell</entry
+></row>
+<row
+><entry
+><userinput
+>150,0,0</userinput
+></entry
+><entry
+>vermell fosc</entry
+></row>
+<row
+><entry
+><userinput
+>0,255,0</userinput
+></entry
+><entry
+>verd</entry
+></row>
+<row
+><entry
+><userinput
+>0,0,255</userinput
+></entry
+><entry
+>blau</entry
+></row>
+<row
+><entry
+><userinput
+>0,255,255</userinput
+></entry
+><entry
+>blau clar</entry
+></row>
+<row
+><entry
+><userinput
+>255,0,255</userinput
+></entry
+><entry
+>rosa</entry
+></row>
+<row
+><entry
+><userinput
+>255,255,0</userinput
+></entry
+><entry
+>groc</entry
+></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para
+>Hi ha dues ordres que necessiten una combinació RGB com a entrada: Aquestes són <userinput
+>canvascolor</userinput
+> (<userinput
+>colorpaper</userinput
+>) i <userinput
+>pencolor</userinput
+> (<userinput
+>colorllapis</userinput
+>).</para
+></glossdef>
+</glossentry>
+
+<glossentry id="sprite">
+<glossterm
+>sprite</glossterm>
+<glossdef
+><para
+>Un «sprite» és una petita imatge que es pot moure per tota la pantalla. La nostra tortuga, per exemple, és un sprite. <note
+><para
+>Amb aquesta versió del &kturtle; l'«sprite» no es pot canviar. En futures versions del &kturtle; es podrà fer.</para
+></note
+></para
+></glossdef>
+</glossentry>
+
+</glosslist>
+
+</chapter>

@@ -1,0 +1,328 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kturtle;">
+  <!ENTITY package "kdeedu">
+  <!ENTITY turtlescript "TurtleScript">
+  <!ENTITY logo "Logo">
+  <!ENTITY % addindex "INCLUDE">
+  <!ENTITY % Estonian  "INCLUDE"
+><!-- change language only here -->
+  <!ENTITY using-kturtle SYSTEM "using-kturtle.docbook">
+  <!ENTITY getting-started SYSTEM "getting-started.docbook">
+  <!ENTITY programming-reference SYSTEM "programming-reference.docbook">
+  <!ENTITY translator-guide SYSTEM "translator-guide.docbook">
+  <!ENTITY glossary SYSTEM "glossary.docbook">
+]>
+
+<book id="kturtle" lang="&language;">
+
+<bookinfo>
+<title
+>&kturtle;'i käsiraamat</title>
+
+<authorgroup>
+<author
+><firstname
+>Cies</firstname
+> <surname
+>Breijs</surname
+> <affiliation
+> <address
+><email
+>cies AT kde DOT nl</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Anne-Marie</firstname
+> <surname
+>Mahfouf</surname
+> <affiliation
+> <address
+><email
+>annma AT kde DOT org</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+><email
+>piacentini AT kde DOT org</email
+></address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Marek</firstname
+> <surname
+>Laane</surname
+> <affiliation
+><address
+><email
+>bald@starman.ee</email
+></address
+></affiliation
+><contrib
+>Tõlge eesti keelde</contrib
+></othercredit
+> 
+</authorgroup>
+
+
+<copyright>
+<year
+>2004</year
+><year
+>2009</year>
+<holder
+>Cies Breijs</holder>
+</copyright>
+
+<copyright>
+<year
+>2004</year
+><year
+>2007</year>
+<holder
+>&Anne-Marie.Mahfouf;</holder>
+</copyright>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Mauricio Piacentini</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2013-02-08</date>
+<releaseinfo
+>0.8.1 beta (&kde; 4.10)</releaseinfo>
+
+<abstract>
+<para
+>&kturtle; on programmeerimise õpikeskkond, mille eesmärk on muuta programmeerimine võimalikult lihtsaks kõigile huvilistele. Sel eesmärgil on &kturtle; muutnud programmeerimistööriistad kättesaadavaks otse kasutajaliideses. Rakenduses kasutatakse programmeerimiskeelt &turtlescript;, mis lubab käske ka tõlkida.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>&package;</keyword>
+<keyword
+>KTurtle</keyword>
+<keyword
+>haridus</keyword>
+<keyword
+>keel</keyword>
+<keyword
+>loomulik</keyword>
+<keyword
+>programmeerimine</keyword>
+<keyword
+>&turtlescript;</keyword>
+<keyword
+>&logo;</keyword>
+<keyword
+>kilpkonn</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Sissejuhatus</title>
+
+<para
+>&kturtle; on haridusalane programmeerimiskeskkond, mis kasutab programmeerimiskeelt <link linkend="what-is-turtlelang"
+>&turtlescript;</link
+>, mille puhul on eeskuju võetud programmeerimiskeelest &logo;. &kturtle;'i mõte on muuta programmeerimine nii lihtsaks ja arusaadavaks, kui vähegi võimalik. Nii sobib &kturtle; ka lastele matemaatika, geomeetria ja ... programmeerimise õpetamiseks. &turtlescript;i põhiomaduseks on see, et käske saab tõlkida ka programmeerija emakeelde.</para>
+
+<para
+>&kturtle; on saanud nime ingliskeelse sõna <quote
+>turtle</quote
+> ehk <quote
+>kilpkonn</quote
+> järgi, sest just kilpkonnal on meie programmeerimiskeskkonnas keskne osa: kasutaja programmeerib kilpkonna &turtlescript;i käskudega joonistama <link linkend="the-canvas"
+>lõuendile</link
+> vajalikku pilti.</para>
+
+<sect1 id="what-is-turtlelang">
+<title
+>Mis on &turtlescript;?</title>
+<para
+>&kturtle;'is kasutatav programmeerimiskeel &turtlescript; on tugevasti inspireeritud programmeerimiskeele &logo; mitmest põhimõttelisest kontseptsioonist. &logo; esimese versiooni lõi Seymour Papert 1967. aastal MIT tehisintelligentsi laboris, võttes aluseks programmeerimiskeele LISP. Sealtpeale on ilmavalgust näinud arvukalt &logo; versioone. Aastaks 1980 olid olemas &logo; MSX, Commodore'i, Atari, Apple II ja IBM PC versioonid. Peamiselt olid need mõeldudki õppevahendiks. MIT haldab seniajani <ulink url="http://el.media.mit.edu/logo-foundation/"
+>&logo; veebilehekülge</ulink
+>, mis sisaldab mitmeid selle keele populaarseid versioone.</para>
+<para
+>&turtlescript; on ühes mõttes sarnane teiste &logo; keele variantidega: ka see võimaldab tõlkida käske, et õppurid saaksid neid kasutada oma emakeeles. Sellest on palju abi eriti nooremate laste puhul, kelle inglise keel ei pruugi olla kuigi hea, aga käepärast on see ka vanematele inimestele. Lisaks sellele on &kturtle;'il <link linkend="features-of-kturtle"
+>veel rohkelt omadusi</link
+>, mis muudavad rakenduse kasutamise hõlpsaks neile, kelle teadmised programmeerimisest on alles tillukesed.</para>
+</sect1>
+
+
+<sect1 id="features-of-kturtle">
+<title
+>&kturtle;'i omadused</title>
+<para
+>&kturtle; pakub mitmeid vahvaid ja võimsaid omadusi, mis lubavad igaühel kerge vaevaga programmeerimisega tegelda. Mõned neist: <itemizedlist>
+<listitem
+><para
+>Lõimitud keskkond, kus ühes rakenduses on koos &turtlescript;i interpretaator, <link linkend="the-editor"
+>redaktor</link
+>, <link linkend="the-canvas"
+>lõuend</link
+> ja kõik muud tööriistad ilma mingite lisasõltuvustega.</para
+></listitem>
+<listitem
+><para
+>Võimalus tõlkida &turtlescript;i käske &kde; tõlkimisraamistikus.</para
+></listitem>
+<listitem
+><para
+>&turtlescript; toetab kasutaja määratud funktsioone, rekursioone ning dünaamilist tüüpide lülitamist.</para
+></listitem>
+<listitem
+><para
+>Käskude täitmist saab aeglustada, peatada või katkestada igal ajahetkel.</para
+></listitem>
+<listitem
+><para
+>Võimas <link linkend="the-editor"
+>redaktor</link
+>, mis lubab süntaksit esile tõsta, nummerdab ridu, märgib vigu ja teeb veel palju muud toredat.</para
+></listitem>
+<listitem
+><para
+><link linkend="the-canvas"
+>Lõuendi</link
+>, millel kilpkonn joonistab, võib salvestada pildina (PNG) või joonistusena (SVG).</para
+></listitem>
+<listitem
+><para
+>Kontekstiabi alati, kui seda vajad. Vajuta lihtsalt <keysym
+>F2</keysym
+> (või vaata <menuchoice
+><guimenu
+>Abi</guimenu
+><guimenuitem
+>Abi x kohta...</guimenuitem
+></menuchoice
+>), kui soovid saada midagi teada parajasti kursori all asuva koodi kohta.</para
+></listitem>
+<listitem
+><para
+>Veadialoog, mis seob veateated programmis esinevate vigadega ja märgib nad punase värviga.</para
+></listitem>
+<listitem
+><para
+>lihtsustatud programmeerimisterminoloogia.</para
+></listitem>
+<listitem
+><para
+>Lõimitud näidisprogrammid, mis hõlbustavad alustamist. Näidised on tõlgitud &kde; tõlkimisraamistiku abil.</para
+></listitem>
+</itemizedlist>
+</para>
+</sect1>
+</chapter>
+
+&using-kturtle;
+
+&getting-started;
+
+&programming-reference;
+
+&glossary;
+
+&translator-guide;
+
+<chapter id="credits">
+
+<title
+>Autorid ja litsents</title>
+
+<para
+>&kturtle; </para>
+<para
+>Tarkvara autoriõigus 2003-2007: Cies Breijs <email
+>cies AT kde DOT nl</email
+></para>
+
+<para
+>Dokumentatsiooni autoriõigus 2004, 2007, 2009: <itemizedlist>
+<listitem
+><para
+>Cies Briej <email
+>cies AT kde DOT nl</email
+> </para
+></listitem>
+<listitem
+><para
+>&Anne-Marie.Mahfouf; <email
+>annma AT kde DOT org</email
+> </para
+></listitem>
+<listitem
+><para
+>Mõningane korrektuur: &Philip.Rodrigues; &Philip.Rodrigues.mail;</para>
+</listitem>
+<listitem
+><para
+>Tõlkimise HOWTO uuendamine ja osaline korrektuur: Andrew Coles <email
+>andrew_coles AT yahoo DOT co DOT uk</email
+></para>
+</listitem>
+</itemizedlist>
+</para>
+
+<para
+>Tõlge eesti keelde: Marek Laane <email
+>bald@starman.ee</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+
+
+<appendix id="installation">
+<title
+>Paigaldamine</title>
+
+<sect1 id="getting-kturtle">
+<title
+>&kturtle;'i hankimine</title>
+&install.intro.documentation; </sect1>
+
+<sect1 id="compilation">
+<title
+>Kompileerimine ja paigaldamine</title>
+&install.compile.documentation; </sect1>
+
+</appendix>
+
+<!--&documentation.index; -->
+<index id='command-index'>
+<title
+>Käskude register</title>
+</index>
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->

@@ -1,0 +1,302 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kturtle;">
+  <!ENTITY turtlescript "TurtleScript">
+  <!ENTITY logo "Logo">
+  <!ENTITY % addindex "INCLUDE">
+  <!ENTITY % Swedish "INCLUDE"
+><!-- change language only here -->
+  <!ENTITY using-kturtle SYSTEM "using-kturtle.docbook">
+  <!ENTITY getting-started SYSTEM "getting-started.docbook">
+  <!ENTITY programming-reference SYSTEM "programming-reference.docbook">
+  <!ENTITY translator-guide SYSTEM "translator-guide.docbook">
+  <!ENTITY glossary SYSTEM "glossary.docbook">
+]>
+
+<book id="kturtle" lang="&language;">
+
+<bookinfo>
+<title
+>Handbok &kturtle;</title>
+
+<authorgroup>
+<author
+><firstname
+>Cies</firstname
+> <surname
+>Breijs</surname
+> <affiliation
+> <address
+><email
+>cies SNABELA kde PUNKT nl</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Anne-Marie</firstname
+> <surname
+>Mahfouf</surname
+> <affiliation
+> <address
+><email
+>annma SNABELA kde PUNKT org</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+><email
+>piacentini SNABELA kde PUNKT org</email
+></address>
+</affiliation>
+</author>
+<othercredit role="translator"
+> <firstname
+>Stefan</firstname
+> <surname
+>Asserhäll</surname
+> <affiliation
+><address
+><email
+>stefan.asserhall@bredband.net</email
+></address
+></affiliation
+> <contrib
+>Översättare</contrib
+></othercredit
+> 
+</authorgroup>
+
+
+<copyright>
+<year
+>2004</year
+><year
+>2009</year>
+<holder
+>Cies Breijs</holder>
+</copyright>
+
+<copyright>
+<year
+>2004</year
+><year
+>2007</year>
+<holder
+>&Anne-Marie.Mahfouf;</holder>
+</copyright>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Mauricio Piacentini</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-01-20</date>
+<releaseinfo
+>Program 20.12</releaseinfo>
+
+<abstract>
+<para
+>&kturtle; är en programmeringsmiljö för undervisning som har målet att göra det så lätt som möjligt att lära sig programmera. För att åstadkomma det, gör &kturtle; alla programmeringsverktyg tillgängliga i användargränssnittet. Programspråket som används är &kturtle;s eget,som tillåter att kommandon översätts.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>Kturtle</keyword>
+<keyword
+>utbildning</keyword>
+<keyword
+>språk</keyword>
+<keyword
+>modersmål</keyword>
+<keyword
+>programmering</keyword>
+<keyword
+>TurtleScript</keyword>
+<keyword
+>Logo</keyword>
+<keyword
+>sköldpadda</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Inledning</title>
+
+<para
+>&kturtle; är en programmeringsmiljö för undervisning som använder ett <link linkend="what-is-turtlelang"
+>programspråk</link
+> fritt baserat på och inspirerat av &logo;. Målet med &kturtle; är att göra programmering så enkel och lättillgänglig som möjligt. Det gör &kturtle; lämpligt för att lära barn grunderna i matematik, geometri och ... programmering. En av de viktigaste egenskaperna hos programspråket är möjligheten att översätta kommandon till programmerarens eget modersmål.</para>
+
+<para
+>&kturtle; är uppkallat efter <quote
+>sköldpaddan</quote
+> (turtle på engelska) som har en central roll i programmeringsmiljön. Användaren programmerar sköldpaddan att rita en bild på <link linkend="the-canvas"
+>duken</link
+> med programspråkets kommandon.</para>
+
+<sect1 id="what-is-turtlelang">
+<title
+>Vad är &kturtle;s programspråk?</title>
+<para
+>Programspråket som används i &kturtle; är inspirerat av programspråksfamiljen &logo;. Den första versionen av &logo; skapades av Seymour Papert från MIT:s laboratorium för artificiell intelligens under 1967 utgående från programspråket LISP. Därefter har många versioner av &logo; givits ut. På 1980-talet hade &logo; fått fart, med versioner för MSX, Commodore, Atari och IBM PC-system. Dessa versioner var i huvudsak avsedda för utbildning. MIT underhåller fortfarande <ulink url="https://el.media.mit.edu/logo-foundation/"
+>en webbsida för &logo;</ulink
+>, som innehåller en lista med flera populära implementeringar av språket.</para>
+<para
+>&kturtle;s programspråk delar en funktion som finns i många andra implementeringar av &logo;: möjligheten att översätta kommandon för att passa elevens modersmål. Funktionen gör det enklare för elever som har ingen eller liten förståelse för engelska att komma igång. Förutom denna funktion har &kturtle; <link linkend="features-of-kturtle"
+>många andra funktioner</link
+> med målet att förenkla elevens inledande upplevelse av programmering.</para>
+</sect1>
+
+
+<sect1 id="features-of-kturtle">
+<title
+>Funktioner i &kturtle;</title>
+<para
+>&kturtle; har en hel del bra funktioner som gör att det går snabbt och enkelt att börja programmera. Här är några av höjdpunkterna i &kturtle;s uppsättning med funktioner: <itemizedlist>
+<listitem
+><para
+>En integrerad miljö med tolk för &kturtle;s programspråk, <link linkend="the-editor"
+>editor</link
+>, <link linkend="the-canvas"
+>duk</link
+> och andra verktyg, allt i ett program.</para
+></listitem>
+<listitem
+><para
+>Möjligheten att översätta kommandon på &kturtle;s programspråk, med användning av &kde;:s översättningsramverk.</para
+></listitem>
+<listitem
+><para
+>&kturtle;s programspråk stöder användardefinierade funktioner, rekursion och dynamiskt byte av typ.</para
+></listitem>
+<listitem
+><para
+>Körningen kan fås att gå långsammare, göra paus eller stoppa när som helst.</para
+></listitem>
+<listitem
+><para
+>En kraftfull <link linkend="the-editor"
+>editor</link
+> med intuitiv syntaxfärgläggning, radnumrering, felmarkering, visuell körning med mera.</para
+></listitem>
+<listitem
+><para
+><link linkend="the-canvas"
+>Duken</link
+>, där sköldpaddan ritar, kan skrivas ut, eller antingen sparas som en bild (PNG) eller en teckning (&SVG;).</para
+></listitem>
+<listitem
+><para
+>Sammanhangsberoende hjälp: Hjälp där du behöver. Tryck bara på <keysym
+>F2</keysym
+> (eller använd <menuchoice
+><guimenu
+>Hjälp</guimenu
+> <guimenuitem
+>Hjälp om: ...</guimenuitem
+></menuchoice
+>) för att få hjälp om kodavsnittet där markören för närvarande befinner sig.</para
+></listitem>
+<listitem
+><para
+>En feldialogruta som länkar felmeddelanden till misstagen i programmet och markerar dem med rött.</para
+></listitem>
+<listitem
+><para
+>Förenklad programmeringsterminologi.</para
+></listitem>
+<listitem
+><para
+>Integrerade exempelprogram för att göra det enkelt att komma igång. Exemplen är översatta med användning av &kde;:s översättningsramverk.</para
+></listitem>
+</itemizedlist>
+</para>
+</sect1>
+</chapter>
+
+&using-kturtle;
+
+&getting-started;
+
+&programming-reference;
+
+&glossary;
+
+&translator-guide;
+
+<chapter id="credits">
+
+<title
+>Tack till och licens</title>
+
+<para
+>&kturtle; </para>
+<para
+>Program copyright 2003-2007 Cies Breijs <email
+>cies SNABELA kde PUNKT nl</email
+></para>
+
+<para
+>Dokumentation copyright 2004, 2007, 2009 <itemizedlist>
+<listitem
+><para
+>Cies Briej <email
+>cies SNABELA kde PUNKT nl</email
+> </para
+></listitem>
+<listitem
+><para
+>&Anne-Marie.Mahfouf; &Anne-Marie.Mahfouf.mail; </para
+></listitem>
+<listitem
+><para
+>Vissa ändringar efter korrekturläsning av &Philip.Rodrigues; &Philip.Rodrigues.mail;</para>
+</listitem>
+<listitem
+><para
+>Uppdaterad översättningsguide och vissa ändringar efter korrekturläsning av Andrew Coles <email
+>andrew_coles SNABELA yahoo PUNKT co PUNKT uk</email
+></para>
+</listitem>
+</itemizedlist>
+</para>
+
+<para
+>Översättning Stefan Asserhäll <email
+>stefan.asserhall@bredband.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+<!--&documentation.index; -->
+<index id='command-index'>
+<title
+>Kommandoindex</title>
+</index>
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->

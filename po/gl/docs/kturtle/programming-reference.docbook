@@ -1,0 +1,2121 @@
+<chapter id="reference">
+<title
+>Referencia do programador de &turtlescript;</title>
+<para
+>Este é o manual do &turtlescript; de &kturtle;. Na primeira sección vense algúns aspectos da <link linkend="grammar"
+>gramática</link
+> dos programas de &turtlescript;. A segunda sección trata das <link linkend="mathematical-operators"
+>operacións matemáticas</link
+>, <link linkend="boolean-operators"
+>operacións lóxicas (certo/falso)</link
+> e <link linkend="comparing-operators"
+>operacións de comparación</link
+>. A terceira sección é unha lista de todas as <link linkend="commands"
+>ordes</link
+> explicándoas unha por unha. A cuarta sección explica como <link linkend="assignment-of-variables"
+>asignar</link
+> valores a <link linkend="assignment-of-variables"
+>variábeis</link
+>. Na quinta sección explícase como ordear a execución das ordes con <link linkend="controlling-execution"
+>sentenzas de control da execución</link
+> e finalmente na sexta como crear as tuas proprias ordes con <link linkend="learn"
+>define</link
+>.</para>
+
+<sect1 id="grammar">
+<title
+>A gramática de &turtlescript;</title>
+<para
+>Como calquera linguaxe, &turtlescript; ten diferentes tipos de palabras e símbolos. En galego distinguimos verbos (como «camiñar» ou «falar») e nomes (como «tartaruga» ou  «bicicleta»), e úsanse para cousas diferentes. &turtlescript; é unha linguaxe de programación que se usa para dicirlle á &kturtle; o que ten que facer.</para>
+<para
+>Nesta sección explícase brevemente que son algúns tipos de palabras de &turtlescript;. Explicaremos os <link linkend="comment"
+>comentarios</link
+>, <link linkend="command"
+>ordes</link
+> e os tres tipos diferentes de literais: <link linkend="number"
+>números</link
+>, <link linkend="string"
+>textos</link
+> e <link linkend="boolean-value"
+>valores lóxicos (certo/falso)</link
+>.</para>
+
+
+<sect2 id="comment">
+<title
+>Comentarios</title>
+<para
+>Un programa consiste en instrucións que se executan cando se executa o programa e en comentarios. Os comentarios non se executan, &kturtle; ignóraos; somente están aí para que outros programadores entendan mellor o que fai o programa. En &turtlescript; considérase comentario todo o que segue a un símbolo <userinput
+>#</userinput
+>. Por exemplo este programa que non fai ren: <screen>
+#este programa non fai ren, só é un comentario!
+</screen
+> É pouco útil pero explica moi ben o asunto.</para>
+<para
+>Os comentarios son moi útiles cando o programa empeza a ser algo complexo. Poden axudar a outros programadores. No seguinte programa podes ver comentarios usados xunto coa orde <link linkend="print"
+>escribe</link
+>.<screen>
+# este programa fíxoo Cies Breijs.
+escribe "este texto hase escribir no lenzo"
+# a liña anterior non é un comentario, a seguinte si:
+# escribe "este texto non se ha escribir!"
+</screen
+> A primeira liña describe o programa. &kturtle; executa a segunda e imprime <userinput
+>este texto hase escribir no lenzo</userinput
+> no lenzo. A terceira liña é un comentario, e a cuarta liña é un comentario que contén unha peza de &turtlescript;, se eliminásemos o símbolo <userinput
+>#</userinput
+> desta liña &kturtle; había executar a orde. Os programadores din: a orde escribe na cuarta liña está «comentada».</para>
+<para
+>As liñas comentadas son <glossterm
+>realzadas</glossterm
+> en gris claro no <link linkend="the-editor"
+>editor do código</link
+>.</para>
+</sect2>
+
+<sect2 id="command">
+<title
+>Ordes</title>
+<para
+>Mediante as ordes díslle á tartaruga de &kturtle; que faga algo. Algunhas ordes precisan datos, outras producen algunha saída. <screen>
+# avanza é unha orde que precisa de datos, neste caso o número 100:
+avanza 100
+</screen
+> A primeira liña é un <link linkend="comment"
+>comentario</link
+>. A segunda liña contén a orde <userinput
+>avanza</userinput
+> e o <link linkend="number"
+>número</link
+> <userinput
+>100</userinput
+>. O número non é parte da orde, senón que se considera «entrada» del.</para>
+<para
+>Algunhas ordes como &eg; <userinput
+>vai</userinput
+> precisan de máis dun dato de entrada. Cando son varios valores hai que separalos mediente <userinput
+>,</userinput
+> (comas).</para>
+<para
+>Para coñecer máis detalles sobre todas as ordes permitidas por &kturtle; vaia <link linkend="commands"
+>aquí</link
+>. As ordes de serie <glossterm
+>reálzanse</glossterm
+> en azul escuro</para>
+</sect2>
+
+<sect2 id="number">
+<title
+>Números</title>
+<para
+>Posibelmente xa saiba bastante sobre os números. A maneira de utilizar os números en &kturtle; non é moi distinta da oral, nin da matemática. </para>
+<para
+>Temos os números naturais: <userinput
+>0</userinput
+>, <userinput
+>1</userinput
+>, <userinput
+>2</userinput
+>, <userinput
+>3</userinput
+>, <userinput
+>4</userinput
+>, <userinput
+>5</userinput
+> etc, os números negativos: <userinput
+>-1</userinput
+>, <userinput
+>-2</userinput
+>, <userinput
+>-3</userinput
+> etc. E tamén temos números con parte decimal, por exemplo: <userinput
+>0.1</userinput
+>, <userinput
+>3.14</userinput
+>, <userinput
+>33.3333</userinput
+>, <userinput
+>-5.05</userinput
+>, <userinput
+>-1.0</userinput
+>. Úsase o <userinput
+>.</userinput
+> (punto) como separador decimal. </para>
+<para
+>Os números poden ser utilizados en <link linkend="mathematical-operators"
+>operacións matemáticas</link
+> e <link linkend="comparing-operators"
+>comparacións</link
+>. Tamén poden gardarse en <link linkend="assignment-of-variables"
+>variábeis</link
+>. Os números <glossterm
+>reálzanse</glossterm
+> en roxo.</para>
+</sect2>
+
+<!-- constants like pi? -->
+
+<sect2 id="string">
+<title
+>Textos</title>
+<para
+>Primeiro un exemplo: <screen>
+escribe "Olá, son un texto."</screen>
+Neste exemplo <userinput
+>escribe</userinput
+> é unha orde na que <userinput
+>"Olá, son un texto."</userinput
+> é un texto. Os textos comezan e rematan con aspas, <userinput
+>"</userinput
+>, mediante as cais &kturtle; sabe que é un texto.</para>
+<para
+>Os textos poden porse en <link linkend="assignment-of-variables"
+>variábeis</link
+>, igual que os <link linkend="number"
+>números</link
+>, pero a diferenza destes non poden usarse en <link linkend="mathematical-operators"
+>operacións matemáticas</link
+> nin en <link linkend="comparing-operators"
+>comparacións</link
+>. Os textos <glossterm
+>reálzanse</glossterm
+> en vermello.</para>
+</sect2>
+
+<sect2 id="boolean-value">
+<title
+>Valores lóxicos (certo/falso)</title>
+<para
+>Só hai dous valores lóxicos: <userinput
+>certo</userinput
+><indexterm
+><primary
+>certo</primary
+></indexterm
+> e <userinput
+>falso</userinput
+><indexterm
+><primary
+>falso</primary
+></indexterm
+>. Algunhas veces tamén se lles chama: verdadeiro e falso, si e non, un e cero. Pero en &turtlescript; sempre se lles chama <userinput
+>certo</userinput
+> e <userinput
+>falso</userinput
+>. Bótalle unha olla da e este retallo de &turtlescript;: <screen>
+$a = certo
+</screen
+>. Se miran no <link linkend="the-inspector"
+>inspector</link
+> verás que a <link linkend="assignment-of-variables"
+>variábel</link
+> <userinput
+>$a</userinput
+> ten o valor <userinput
+>certo</userinput
+> e é de tipo lóxico.</para>
+<para
+>A miúdo os valores lóxicos son o resultado dunha <link linkend="comparing-operators"
+>operación de comparación</link
+>, como no seguinte retallo de &turtlescript;: <screen>
+$resposta = 10 &gt; 3
+</screen
+> A <link linkend="assignment-of-variables"
+>variábel</link
+> <userinput
+>$resposta</userinput
+> ten o valor <userinput
+>certo</userinput
+> porque <userinput
+>10</userinput
+> é maior que <userinput
+>3</userinput
+>.</para>
+<para
+>Os valores lóxicos, <userinput
+>certo</userinput
+> e <userinput
+>falso</userinput
+>,  son <glossterm
+>realzados</glossterm
+> en roxo escuro.</para>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="operators">
+<title
+>Operacións matemáticas, lóxicas e de comparación</title>
+<para
+>O título desta sección pode parecer difícil, pero non o é tanto como parece.</para>
+
+<sect2 id="mathematical-operators">
+<title
+>Operacións matemáticas</title>
+<para
+>Estes son os símbolos matemáticos básicos: suma (<userinput
+>+</userinput
+>), resta (<userinput
+>-</userinput
+>), multiplicación (<userinput
+>*</userinput
+>), división (<userinput
+>/</userinput
+>) e potencia(<userinput
+> ^ </userinput
+>).</para>
+
+<para
+>Este é un exemplo das operacións matemáticas que podes usar no &turtlescript;: <screen>
+$suma      = 1 + 1
+$resta      = 20 - 5
+$multiplica= 15*2
+$divide    = 30 / 30
+$repite    = 2 ^ 2
+</screen
+> Os resultados das operacións matemáticas <link linkend="assignment-of-variables"
+>asígnanse</link
+> a <link linkend="assignment-of-variables"
+>variábeis</link
+>. Mediante o <link linkend="the-inspector"
+>inspector</link
+> pode consultalas.</para>
+<para
+>Se só ques facer un cálculo simples podes facer algo como isto: <screen
+>escribe 2010-12
+</screen
+></para>
+<para
+>Agora un exemplo con parénteses: <screen>
+escribe ( (20 - 5) * 2 / 30 ) + 1
+</screen
+> As expresións entre parénteses serán calculadas primeiro. Neste exemplo, calcularase 20-5, logo multiplicarase por 2, dividirase entre 30, e finalmente engádeselle 1, co que dá o resultado 2. Os parénteses tamén se poden usar noutros casos.</para>
+<para
+>&kturtle; tamén ten funcionalidades matemáticas máis avanzadas entre as súas ordes. Bótalle un ollo ás seguintes ordes, pero ten en conta que son operacións avnzadas: <link linkend="round"
+>redondea</link
+>, <link linkend="random"
+>aleatorio</link
+>, <link linkend="sqrt"
+>raiz</link
+>, <link linkend="pi"
+>pi</link
+>, <link linkend="sin"
+>seno</link
+>, <link linkend="cos"
+>coseno</link
+>, <link linkend="tan"
+>tanxente</link
+>, <link linkend="arcsin"
+>arcoseno</link
+>, <link linkend="arccos"
+>arcocoseno</link
+>, <link linkend="arctan"
+>arcotanxente</link
+>.</para>
+</sect2>
+
+<sect2 id="boolean-operators">
+<title
+>Operacións lóxicas (certo/falso)</title>
+<para
+>Mentres que as <link linkend="mathematical-operators"
+>operacións matemáticas</link
+> son principalmente para <link linkend="number"
+>números</link
+>, as lóxicas sono para <link linkend="boolean-value"
+>valores lóxicos</link
+> (<userinput
+>certo</userinput
+> e <userinput
+>falso</userinput
+>). Só hai tres operacións lóxicas: <userinput
+>e</userinput
+><indexterm
+><primary
+>e</primary
+></indexterm
+>, <userinput
+>ou</userinput
+><indexterm
+><primary
+>ou</primary
+></indexterm
+>, e <userinput
+>non</userinput
+><indexterm
+><primary
+>non</primary
+></indexterm
+>. Este retallo de &turtlescript; mostra como usalos: <screen
+> $e_1_1 = certo e certo    # -> certo
+$e_1_0 = certo e falso              # -> falso
+$e_0_1 = falso e falso                        # -> falso
+$e_0_0 = falso e falso                        # -> falso
+
+$ou_1_1 = certo ou certo # -> certo
+$ou_1_0 = certo ou falso           # -> certo
+$ou_0_1 = falso ou certo           # -> certo
+$ou_0_0 = falso ou falso                     # -> falso
+n$non_1 = non certo   # -> falso
+$non_0 = non falso             # -> certo
+</screen
+> Usando o <link linkend="the-inspector"
+>inspector</link
+> pode consultar os valores,  aínda que poñemos os resultados nos comentarios ao final das liñas. <userinput
+>e</userinput
+>  dá <userinput
+>certo</userinput
+> só se ambos os dous lados son <userinput
+>certo</userinput
+>. <userinput
+>ou</userinput
+> dá <userinput
+>certo</userinput
+> se algún dos lados é <userinput
+>certo</userinput
+>. E <userinput
+>non</userinput
+> converte un <userinput
+>certo</userinput
+> nun <userinput
+>falso</userinput
+> e un <userinput
+>falso</userinput
+> nun <userinput
+>certo</userinput
+>.</para>
+<para
+>A operacións lóxicas <glossterm
+>reálzanse</glossterm
+> en rosa.</para>
+
+<sect3 id="boolean-operators-advanced-examples">
+<title
+>Algúns exemplos máis avanzados</title>
+<para
+>Considera o seguinte exemplo con <userinput
+>e</userinput
+>: <screen>
+$a = 1
+$b = 5
+se ( ($a &lt; 10) e ($b == 5) ) e ($a &lt; $b) {
+  escribe "Olá"
+}
+</screen
+> Neste retallo de &turtlescript; o resultado de tres <link linkend="comparing-operators"
+>operacións de comparación</link
+> xúntase mediante operacións <userinput
+>e</userinput
+>. Isto significa que os tres deben dar «certo» para que se escriba «Olá».</para>
+
+<para
+>Un exemplo con <userinput
+>ou</userinput
+>:<screen>
+%n = 1
+se ($n &lt; 10) ou ($n == 2) {
+  escribe "Olá"
+}
+</screen
+> Neste retallo de &turtlescript; o lado da esquerda do <userinput
+>ou</userinput
+> avalíase como «certo» e o da dereira a «falso». Xa que un dos lados do operador <userinput
+>ou</userinput
+> é «certo», o operador <userinput
+>ou</userinput
+> avalíase como «certo», en consecuencia escríbese «Olá».</para>
+
+<para
+>E finalmente un exemplo con <userinput
+>non</userinput
+>, que troca  para «certo» por «falso» e «falso» por «certo». Mira: <screen
+>$n = 1
+se non ($n == 3) {
+  escribe "Olá"
+} senon {
+  escribe "non olá ;-)"
+}
+</screen
+></para>
+</sect3>
+</sect2>
+
+<sect2 id="comparing-operators">
+<title
+>Operacións de comparación</title>
+<para
+>Considera esa sinxela comparación: <screen>
+$resposta = 10 &gt; 3
+</screen
+> Aquí compárase<userinput
+>10</userinput
+> con <userinput
+>3</userinput
+> mediante o operador «maior que».
+O resultado desta comparación, o <link linkend="boolean-value"
+>valor lóxico</link
+> <userinput
+>certo</userinput
+> gárdase na <link linkend="assignment-of-variables"
+>variábel</link
+> <userinput
+>$resposta</userinput
+>.</para>
+<para
+>Os <link linkend="number"
+>números</link
+> e as <link linkend="assignment-of-variables"
+>variábeis</link
+> (que conteñen  números) poden compararse entre si mediante operacións de comparación.</para>
+<para
+>Este son todas as operacións de comparación: <table
+> <title
+>Tipos de preguntas</title
+> <tgroup cols="3"
+> <tbody
+> <row
+> <entry
+><userinput
+>$A == $B</userinput
+></entry
+> <entry
+>é igual a</entry
+> <entry
+>a resposta é <quote
+>certo</quote
+> se <userinput
+>$A</userinput
+> conté o mesmo valor que <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A != $B</userinput
+></entry
+> <entry
+>é diferente de </entry
+> <entry
+>a resposta é <quote
+>certo</quote
+> se <userinput
+>$A</userinput
+> non é igual que <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt; $B</userinput
+></entry
+> <entry
+>maior que</entry
+> <entry
+>a resposta é <quote
+>certo</quote
+> se <userinput
+>$A</userinput
+> é maior que <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt; $B</userinput
+></entry
+> <entry
+>menor que</entry
+> <entry
+>a resposta é  <quote
+>certo</quote
+> se <userinput
+>$A</userinput
+> é menor que <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt;= $B</userinput
+></entry
+> <entry
+>maior ou igual que</entry
+> <entry
+>a resposta é <quote
+>certo</quote
+> se <userinput
+>$A</userinput
+> é maior que ou igual a <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt;= $B</userinput
+></entry
+> <entry
+>menor ou igual que</entry
+> <entry
+>a resposta é <quote
+>certo</quote
+> se <userinput
+>$A</userinput
+> é menor que ou igual a  <userinput
+>$B</userinput
+></entry
+> </row
+> </tbody
+> </tgroup
+> </table
+> Lembra que $A e $B teñen que ser <link linkend="number"
+>números</link
+> ou <link linkend="assignment-of-variables"
+>variábeis</link
+> que conteñan númeors.</para>
+</sect2>
+
+
+</sect1>
+
+
+
+<sect1 id="commands">
+<title
+>Ordes</title>
+<para
+>Mediante as ordes pode dicirlle ao sapoconcho de &kturtle; que faga algo. Algunhas ordes precisan de parámetros, outras xeran un resultado. Nesta sección explicamos todas as ordes que veñen de serie no &kturtle;. Ademáis, mediante a orde <link linkend="learn"
+>define</link
+> pode crear as súas propias ordes. As ordes de serie que se explican aquí <glossterm
+>reálzanse</glossterm
+> en azul escuro.</para>
+
+<sect2 id="moving-the-turtle">
+<title
+>Mover o sapoconcho</title>
+<para
+>Hai varias ordes que moven o sapoconcho pola pantalla.</para>
+
+  <variablelist>
+    <anchor id="forward"/>
+    <varlistentry
+> 
+      <term
+>avanza (av)<indexterm
+><primary
+>avanza (av)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>avanza X</screen
+><userinput
+>avanza</userinput
+> move o sapoconcho cara diante X píxeles. Cando o lapis está pousado deixará un rastro. <userinput
+>avanza</userinput
+> pode abreviarse como <userinput
+>av</userinput
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="backward"/>
+    <varlistentry
+>  
+      <term
+>retrocede (re)<indexterm
+><primary
+>retrocede (re)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>retrocede X</screen
+><userinput
+>retrocede</userinput
+> move o sapoconcho cara atrás X píxeles. Se o lapis está pousado deixará un rastro. <userinput
+>retrocede</userinput
+> pode abreviarse como <userinput
+>re</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnleft"/>
+    <varlistentry
+> 
+      <term
+>xiraesquerda (xe)<indexterm
+><primary
+>xiraesquerda (xe)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>xiraesquerda X</screen
+><userinput
+>xiraesquerda</userinput
+> ordénalle ao sapoconcho que xire X graus á esquerda. <userinput
+>xiraesquerda</userinput
+> pode abreviarse como <userinput
+>xe</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnright"/>
+    <varlistentry
+> 
+      <term
+>xiradereita (xd)<indexterm
+><primary
+>xiradereita (xd)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>xiradereita X</screen
+><userinput
+>xiradereita</userinput
+> ordénalle ao sapoconcho que xire X graus á dereita. <userinput
+>xiradereita</userinput
+> pode abreviarse como <userinput
+>xd</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="direction"/>
+    <varlistentry
+> 
+      <term
+>direccion (dir)<indexterm
+><primary
+>direccion (dir)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>direccion X</screen
+><userinput
+>direccion</userinput
+> fai que o sapoconcho tome unha ruta a X graus do cero, polo que non é relativa á anterior ruta que seguise o sapoconcho. <userinput
+>direccion</userinput
+> pode abreviarse como <userinput
+>dir</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="getdirection"/>
+    <varlistentry
+> 
+      <term
+>obtendireccion<indexterm
+><primary
+>obtendireccion</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>obtendireccion</screen
+><userinput
+>obtendireccion</userinput
+> devolve a dirección na que mira a tartaruga como unha cantidade de graus contados desde arriba.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="center"/>
+    <varlistentry
+> 
+      <term
+>vaiamedio<indexterm
+><primary
+>vaimedio</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>vaimedio</screen
+><userinput
+>vaiamedio</userinput
+> leva o sapoconcho ao centro do lenzo.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="go"/>
+    <varlistentry
+> 
+      <term
+>vai<indexterm
+><primary
+>vai</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>vai X,Y</screen
+><userinput
+>vai</userinput
+> fai que o sapoconcho vaia a un lugar concreto do lenzo. Este lugar está a X <glossterm linkend="pixels"
+>píxeles</glossterm
+> da beira esquerda do lenzo e a Y <glossterm linkend="pixels"
+>píxeles</glossterm
+> da parte de riba do lenzo.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gox"/>
+    <varlistentry
+> 
+      <term
+>vaix<indexterm
+><primary
+>vaix (vx)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>vaix X</screen
+><userinput
+>vaix</userinput
+> fai que o sapoconcho vaia a unha posición situada a X <glossterm linkend="pixels"
+>píxeles</glossterm
+> do borde esquerdo do lenzo sen desprazarse en altura. <userinput
+>vaix</userinput
+> pode abreviarse com <userinput
+>vx</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="goy"/>
+    <varlistentry
+> 
+      <term
+>vaiy<indexterm
+><primary
+>vaiy (vy)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>vaiy Y</screen
+><userinput
+>vaiy</userinput
+> fai que o sapoconcho vaia a unha posición situada a Y <glossterm linkend="pixels"
+>píxeles</glossterm
+> do cume do lenzo sen desprazarse en horizontal. <userinput
+>vaiy</userinput
+> pode abreviarse como <userinput
+>vy</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <note
+><para
+>Cando se utilizan as ordes <userinput
+>vai</userinput
+>, <userinput
+>vaix</userinput
+>, <userinput
+>vaiy</userinput
+> e <userinput
+>vaimedio</userinput
+> o sapoconcho non debuxa a liña, con independencia de que o lapis estea erguido ou pousado.</para>
+  </note>
+</sect2>
+
+<sect2 id="locate-the-turtle">
+<title
+>Onde está o sapoconcho?</title>
+<para
+>Hai dúas ordes que din a posición do sapoconcho na pantalla.</para>
+
+  <variablelist>
+    <anchor id="getx"/>
+    <varlistentry
+> 
+      <term
+>coordenadaX<indexterm
+><primary
+>coordenadax</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>coordenadax</userinput
+> devolve a cantidade de píxeles que hai desde a esquerda do lenzo ata a posición do sapoconcho.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gety"/>
+    <varlistentry
+> 
+      <term
+>coordenaday<indexterm
+><primary
+>coordenaday</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>coordenaday</userinput
+> devolve a cantidade de píxeles que hai do cume do lenzo ata a posición do sapoconcho.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="pen">
+<title
+>O sapoconcho ten un lapis</title>
+<para
+>O sapoconcho ten un lapis que debuxa unha liña a medida que se move o animal. Hai unhas poucas ordes que controlan este lapis. Nesta sección explicarémolas.</para>
+  <variablelist>
+    <anchor id="penup"/>
+    <varlistentry
+> 
+      <term
+>subelapis (sl)<indexterm
+><primary
+>subelapis (sl)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>subelapis</screen
+><userinput
+>subelapis</userinput
+> separa o lapis do lenzo. Cando o lapis está <quote
+>subido</quote
+> non se debuxan liñas ao moverse o sapoconcho. Consulta tamén <userinput
+>baixalapis</userinput
+>. <userinput
+>subelapis</userinput
+> pode abreviarse como <userinput
+>sl</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="pendown"/>
+    <varlistentry
+> 
+      <term
+>baixalapis (bl)<indexterm
+><primary
+>baixalapis (bl)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>baixalapis</screen
+><userinput
+>baixalapis</userinput
+> pousa o lapis no lenzo. Cando o lapis está <quote
+>baixado</quote
+> debúxanse liñas cando se move o sapoconcho. Consulta tamén <userinput
+>subelapis</userinput
+>. <userinput
+>baixalapis</userinput
+> pode abreviarse como <userinput
+>bl</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setpenwidth"/>
+    <varlistentry
+> 
+      <term
+>ancholapis (al)<indexterm
+><primary
+>ancholapis (al)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ancholapis X</screen
+><userinput
+>ancholapis</userinput
+> estabelece o grosor do trazo co valor de X <glossterm linkend="pixels"
+>píxeles</glossterm
+>. <userinput
+>ancholapis</userinput
+> pode abreviarse como <userinput
+>al</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setfgcolor"/>
+    <varlistentry
+> 
+      <term
+>corlapis (cl)<indexterm
+><primary
+>corlapis (cl)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>corlapis R,G,B</screen
+><userinput
+>corlapis</userinput
+> estabelece a cor do trazo. <userinput
+>corlapis</userinput
+> toma como parámetro unha <glossterm linkend="rgb"
+>combinación RGB</glossterm
+>. <userinput
+>corlapis</userinput
+> code abreviarse como <userinput
+>cl</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="canvas">
+<title
+>Ordes para controlar o lenzo</title>
+<para
+>Hai varias ordes que controlan o lenzo.</para>
+  <variablelist>
+    <anchor id="resizecanvas"/>
+    <varlistentry>
+      <term
+>tamañolenzo (tlz)<indexterm
+><primary
+>tamañolenzo (tlz)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>tamañolenzo X,Y</screen
+>Mediante a orde <userinput
+>tamañolenzo</userinput
+> pode axustar o tamaño da área. Toma X e Y como entradas, onde X é a nova anchura do lenzo en <glossterm linkend="pixels"
+>píxeles</glossterm
+> e Y é a nova altura en <glossterm linkend="pixels"
+>píxeles</glossterm
+>. <userinput
+>tamañolenzo</userinput
+> pode abreviarse como <userinput
+>tlz</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setbgcolor"/>
+    <varlistentry
+> 
+      <term
+>corlenzo (clz)<indexterm
+><primary
+>corlenzo (clz)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>corlenzo R,G,B</screen
+><userinput
+>corlenzo</userinput
+> estabelece a cor do lenzo. <userinput
+>corlenzo</userinput
+> toma unha <glossterm linkend="rgb"
+>combinación RGB</glossterm
+> como entrada. <userinput
+>corlenzo</userinput
+> pode abreviarse como <userinput
+>clz</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="clean">
+<title
+>Ordes para limpar</title>
+<para
+>Hai dúas ordes para limpar o lenzo cando o emborrona.</para>
+  <variablelist>
+    <anchor id="clear"/>
+    <varlistentry
+> 
+      <term
+>borra (br)<indexterm
+><primary
+>borra (br)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>borra</screen
+>Con <userinput
+>borra</userinput
+> pode limpar todos os debuxos do lenzo. As demais cousas quedan: a posición, dirección e visibilidade do sapoconcho, e a cor e o tamaño do lenzo.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="reset"/>
+    <varlistentry
+> 
+      <term
+>reinicia<indexterm
+><primary
+>reinicia</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>reinicia</screen
+><userinput
+>reinicia</userinput
+> limpa máis a fondo do que o fai a orde <userinput
+>borra</userinput
+>. Despois de executar unha orde <userinput
+>reinicia</userinput
+> todo volve ser como cando iniciou &kturtle;. O sapoconcho estará posto no centro da pantalla, a cor do lenzo será branco, debuxarase cun trazo negro e o tamaño do lenzo será de 400 x 400 píxeles.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="sprites">
+<title
+>O sapoconcho é un sprite</title>
+<para
+>Os sprites son pequenas imaxes que se poden mover pola pantalla, como se ve nos xogos de computador. O noso animaliño tamén é un sprite. Para saber máis sobre isto, consulte a entrada <glossterm linkend="sprites"
+>sprites</glossterm
+> no glosario. </para>
+<para
+>A continuación atopará un resumo completo de todas as ordes que traballan sobre sprites.</para>
+<para
+>[A versión actual de &kturtle; aínda non permite utilizar outros sprites que non sexan o sapoconcho. En versións futuras poderá cambialo por un deseño seu]</para>
+  <variablelist>
+    <anchor id="spriteshow"/>
+    <varlistentry
+> 
+      <term
+>mostrasprite (ms)<indexterm
+><primary
+>agochasprite (as)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mostrasprite</screen
+><userinput
+>mostrasprite</userinput
+> fai visíbel o sapoconcho se antes se agochou. <userinput
+>mostrasprite</userinput
+> pode abreviarse como <userinput
+>ms</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="spritehide"/>
+    <varlistentry
+> 
+      <term
+>agochasprite (as)<indexterm
+><primary
+>agochasprite (as)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>agochasprite</screen
+><userinput
+>agochasprite</userinput
+> agocha o sapoconcho. Isto pode empregarse se o animal non couber no debuxo. <userinput
+>agochasprite</userinput
+> pode abreviarse como <userinput
+>as</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="writing">
+<title
+>Pode escribir o sapoconcho?</title>
+<para
+>A resposta é: <quote
+>pode</quote
+>. A tartaruga pode escribir, e escribirá case calquera cousa que lle ordene.</para>
+  <variablelist>
+    <anchor id="print"/>
+    <varlistentry
+> 
+      <term
+>escribe<indexterm
+><primary
+>escribe</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>escribe X</screen
+>A orde <userinput
+>escribe</userinput
+> ordéalle ao sapoconcho que escriba algo no lenzo. <userinput
+>escribe</userinput
+> pode tomar textos e números como parámetros. Pode <userinput
+>escribe</userinput
+>r varios números e cadeas mediante o símbolo <quote
+>+</quote
+>. Aquí vai un exemplo: <screen
+>$ano = 2021
+$autor = "Aroa"
+escribe $autor + " debuxou unha nora en KTurtle no ano" + $ano + " e gustoulle moito!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="fontsize"/>
+    <varlistentry
+> 
+      <term
+>tamañoletra<indexterm
+><primary
+>tamañoletra</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>tamañoletra X</screen
+><userinput
+>tamañoletra</userinput
+> modifica o tamaño de letra utilizado ao <userinput
+>escribe</userinput
+>r. <userinput
+>tamañoletra</userinput
+> toma un argumento numérico. O tamaño indícase en <glossterm linkend="pixels"
+>píxeles</glossterm
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="math-commands">
+<title
+>Ordes matemáticas</title>
+<para
+>As seguintes ordes son as máis avanzadas de &kturtle; para matemáticas.</para>
+  <variablelist>
+    <anchor id="round"/>
+    <varlistentry>
+      <term
+>redondea<indexterm
+><primary
+>redondea</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>redondea X</screen
+><userinput
+>redondea</userinput
+> o número indicado ao enteiro máis próximo. <screen>
+escribe redondea 10.8
+avanza 20
+escribe redondea 10.3
+avanza 20
+</screen
+> Con este código o sapoconcho escribirá os números 11 e 10. </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="random"/>
+    <varlistentry
+> 
+      <term
+>aleatorio (alea)<indexterm
+><primary
+>aleatorio (alea)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>aleatorio X,Y</screen
+><userinput
+>aleatorio</userinput
+> é unha orde que toma unha entrada e saca un resultado. Como entrada precisa de dous números, o primeiro (X) é o resultado mínimo, o segundo (Y) o máximo. A saída é un número escollido ao chou que é como mínimo o menor e como máximo o maior. Aquí vai un exemplo:<screen>
+repite 500 {
+  $x = aleatorio 1,20
+  avanza $x
+  xiraesquerda 10 - $x
+}
+</screen
+> Mediante a orde <userinput
+>aleatorio</userinput
+> pode introducir algo de caos no programa.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="mod"/>
+    <varlistentry
+> 
+      <term
+>mod<indexterm
+><primary
+>mod</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mod X,Y</screen
+><userinput
+>mod</userinput
+> devolve o resto da división do primeiro número entre o segundo.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sqrt"/>
+    <varlistentry
+> 
+      <term
+>raiz<indexterm
+><primary
+>raiz</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>raiz X</screen
+>A orde <userinput
+>raiz</userinput
+> devolve a raíz cuadrada do argumento.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+<!--
+  <variablelist>
+    <anchor id="exp"/>
+    <varlistentry
+> 
+      <term
+>exp<indexterm
+><primary
+>exp</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+-->
+  <variablelist>
+    <anchor id="pi"/>
+    <varlistentry
+> 
+      <term
+>pi<indexterm
+><primary
+>pi</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pi</screen
+>Esta orde devolve a constante Pi, <userinput
+>3.14159</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sin"/>
+    <anchor id="cos"/>
+    <anchor id="tan"/>
+    <varlistentry>
+      <term
+>seno<indexterm
+><primary
+>seno</primary
+></indexterm
+>, coseno<indexterm
+><primary
+>coseno</primary
+></indexterm
+>, tanxente<indexterm
+><primary
+>tanxente</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>seno X
+coseno X
+tanxente X
+</screen
+>Estas tres ordes representan as famosas funcións trigonométricas <userinput
+>seno</userinput
+>, <userinput
+>coseno</userinput
+> e <userinput
+>tanxente</userinput
+>. O argumento destas tres ordes, X, é un <link linkend="number"
+>número</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="arcsin"/>
+    <anchor id="arccos"/>
+    <anchor id="arctan"/>
+    <varlistentry>
+      <term
+>arcoseno<indexterm
+><primary
+>arcoseno</primary
+></indexterm
+>, arcocoseno<indexterm
+><primary
+>arccoseno</primary
+></indexterm
+>, arcotanxente<indexterm
+><primary
+>arcotanxente</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>aroceion X
+arcocoseno X
+arcotanxente X
+</screen
+>Estas ordes son as funcións inversar de<link linkend="sin"
+>seno</link
+>, <link linkend="cos"
+>coseno</link
+> e <link linkend="tan"
+>tanxente</link
+>. O argumento, X, é un <link linkend="number"
+>número</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="dialogs">
+<title
+>Introdución de datos e obtención de resultados mediante diálogos</title>
+<para
+>Un diálogo é unha pequena xanela emerxente que lle fornece algo de información ou que lle pide algún dato. &kturtle; ten dúas ordes para diálogos, que son: <userinput
+>mostra</userinput
+> e <userinput
+>pregunta</userinput
+></para>
+  <variablelist>
+    <anchor id="message"/>
+    <varlistentry
+> 
+      <term
+>mostra<indexterm
+><primary
+>mostra</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mostra X</screen
+>A orde <userinput
+>mostra</userinput
+> toma un <link linkend="string"
+>texto</link
+> como entrada, e mostra un diálogo que contén o <link linkend="string"
+>texto</link
+>. <screen
+>mostra "Brandán debuxou unha nora en KTurtle no ano 2021 e gustoulle moito!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="ask"/>
+    <varlistentry
+> 
+      <term
+>pregunta<indexterm
+><primary
+>pregunta</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pregunta X</screen
+><userinput
+>pregunta</userinput
+> toma un <link linkend="string"
+>texto</link
+> como entrada. Mostra un diálogo que contén o texto, como fai <link linkend="message"
+>mostra</link
+>, pero ademais tamén pon un campo de texto no diálogo. Mediante este campo o usuario pode introducir un <link linkend="number"
+>número</link
+> ou un <link linkend="string"
+>texto</link
+>, que pode gardar nunha <link linkend="assignment-of-variables"
+>variábel</link
+> ou pasar como argumento a unha <link linkend="commands"
+>orde</link
+>. Por exemplo <screen>
+$idade = pregunta "Cantos anos tes?"
+$resultado = 2003 - $idade
+escribe "En 2003 tiñas " + $resultado + " anos."</screen>
+Cando un usuario cancela o diálogo de pergunta, ou non insere nada, a <link linkend="assignment-of-variables"
+>variábel</link
+> estará baleira.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="assignment-of-variables">
+<title
+>Asignación de variábeis</title>
+<para
+>Primeiro vexamos o que son as variábeis, logo como asignarlles valores. </para>
+
+<para
+>As variábeis son palabras que comezan cun <quote
+>$</quote
+>. No <link linkend="the-editor"
+>editor</link
+> <glossterm
+>reálzanse</glossterm
+> en morado.</para>
+
+<para
+>As variábeis poden contar calquera <link linkend="number"
+>número</link
+>, <link linkend="string"
+>texto</link
+> ou <link linkend="boolean-value"
+>valor lóxico (certo/falso</link
+>. Dáselles contido mediante a asignación, <userinput
+>=</userinput
+>. Terá ese valor até que o programa remate a execución ou até que se lle asigne outro valor.</para>
+
+<para
+>Unha vez asignadas, pode usar as variábeis no canto do seu valor. Por exemplo no seguinte retallo de &turtlescript; <screen>
+$x = 10
+$x = $x / 3
+escribe $x
+</screen
+> Primeiro a variábel <userinput
+>$x</userinput
+> convértese no <userinput
+>10</userinput
+>. Logo <userinput
+>$x</userinput
+> convértese no valore resultante de dividirse entre <userinput
+>3</userinput
+> &mdash; o que significa que se reasigna a <userinput
+>$x</userinput
+>  o resultado de <userinput
+>10/3</userinput
+>. Finalmente, escríbese <userinput
+>$x</userinput
+>. Nas liñas segunda e terceira podes ver que <userinput
+>$x</userinput
+> é usada como se ela fose o que contén.</para>
+
+<para
+>Para poder usar unha variábel ten que asignarse. Exemplo: <screen>
+escribe $n
+</screen
+> Non escribirá nada e pola contra mostrará unha mensaxe de erro.</para>
+
+<para
+>Vexamos o seguinte retallo de &turtlescript;: <screen>
+$a = 2004
+$b = 25
+
+# a seguinte orde escribe "2029"
+escribe $a + $b
+retrocede 30
+# a seguinte orde escribe "2004 máis 25 é igual a 2029"
+escribe $a + " máis " + $b " é igual a " ($a + $b)
+</screen
+> Nas primeiras dúas liñas dáselles os valores 2004 e 25 ás variábeis <userinput
+>$a</userinput
+> e <userinput
+>$b</userinput
+>. Despois execútanse dúas ordes <userinput
+>escribe</userinput
+> cunha <userinput
+>retrocede 30</userinput
+> no medio. Os comentarios antes de cada orde <userinput
+>escribe</userinput
+> explícan o que fan. A orde <userinput
+>retrocede</userinput
+> foi posta aí para garantir que cada cousa se escriba nunha liña nova. Neste exemplo tamén vemos como as variábeis poden empregarse como se fosen o que conteñen, pode usalas con calquera <link linkend="operators"
+>operación</link
+> ou usalas como parámetros das <link linkend="commands"
+>ordes</link
+>.</para>
+
+<para
+>Outro exemplo máis: <screen>
+$nome = pregunta "Como te chamas?"
+escribe "Olá " + $nome + "! Verás que sinxelo é aprender a programar..."
+</screen
+> Abondo claro. e novo vese o uso da variábel <userinput
+>$nome</userinput
+> tratada como un texto.</para>
+
+<para
+>O <link linkend="the-inspector"
+>inspector</link
+> é de moita axuda cando se usan variábeis. Móstra o contido de todas as variábeis que se están a usar.</para>
+</sect1>
+
+
+
+<sect1 id="controlling-execution">
+<title
+>Control da execución</title>
+<para
+>Os controladores da execución permítenlle, como indica o nome, controlar o fluxo de execución.</para>
+<para
+>As ordes de control da execución son <glossterm
+>realzadas</glossterm
+> en letra verde grosa. As chaves utilízanse caseque sempre xunto cos controladores de execución e son <glossterm
+>realzadas</glossterm
+> en letra negra grosa.</para>
+
+<sect2 id="wait">
+<title
+>Facer que o sapoconcho agarde</title>
+<para
+>Se programou algo en &kturtle; xa se decataría de que o sapoconcho pode ser moi moi moi rápido cando debuxa. Esta orde fai que agarde durante un tempo.</para>
+  <variablelist>
+    <varlistentry>
+      <term
+>agarda<indexterm
+><primary
+>agarda</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>agarda X</screen
+><userinput
+>agarda</userinput
+> fai que o sapoconcho estea quedo durante X segundos. <screen>
+repite 36 {
+  avanza 5
+  xiradereita 10
+  agarda 0.5
+}
+</screen
+> Este código debuxa un círculo, pero o animal agardará medio segundo tras cada paso. Isto dá a impresión dun sapoconcho lento.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="if">
+<title
+>Executar «se»</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>se<indexterm
+><primary
+>se</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>se <link linkend="boolean-value"
+>valor lóxico</link
+> { … }</screen
+>O código que vai entre as chaves só será executado <userinput
+>se</userinput
+> o <link linkend="boolean-value"
+>predicado</link
+> é <quote
+>certo</quote
+>. <screen>
+$x = 6
+se $x &gt; 5 {
+  escribe "x é maior que cinco!"
+}
+</screen
+> Na primeira liña <userinput
+>$x</userinput
+> vale 6. Na segunda liña úsase unha <link linkend="comparing-operators"
+>operación de comparación</link
+> para avaliar <userinput
+>x &gt; 5</userinput
+>. Xa que a resposta é <quote
+>certo</quote
+> o controlador de execución <userinput
+>se</userinput
+> permitirá que se execute o código entre as chaves.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="else">
+<title
+>Se non, ou en caso contrario: "senon"</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>senon<indexterm
+><primary
+>senon</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>se <link linkend="boolean-value"
+>boolean</link
+> { ... } senon { ... }</screen
+><userinput
+>senon</userinput
+> pode empregarse xunto ccontrolador de execución <link linkend="if"
+><userinput
+>se</userinput
+></link
+>. O código entre as chaves que seguen a <userinput
+>senon</userinput
+> só se executará se o <link linkend="boolean-value"
+>predicado</link
+> é <quote
+>falso</quote
+>. <screen>
+reinicia
+$x = 4
+se $x &gt; 5 {
+ escribe "x é maior que cinco!"
+}
+senon
+{
+  escribe "x é menor que seis!"
+}
+</screen
+> A <link linkend="comparing-operators"
+>comparación</link
+> avalia a expresión <userinput
+>$x &gt; 5</userinput
+>. Xa que 4 no o é a resposta é <quote
+>falso</quote
+>. Isto implica que se executará o código entre as chaves que seguen a <userinput
+>senon</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="while">
+<title
+>O ciclo «mentres»</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>mentres<indexterm
+><primary
+>mentres</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mentres <link linkend="boolean-value"
+>valor lóxico</link
+> { … }</screen
+>O controlador de execución <userinput
+>mentres</userinput
+> seméllase moito a <link linkend="if"
+><userinput
+>se</userinput
+></link
+>. A diferenza é que <userinput
+>mentres</userinput
+> repite o código entre as chaves ate que o <link linkend="boolean-value"
+>valor lóxico</link
+> sexa <quote
+>falso</quote
+>. <screen>
+$x = 1
+mentres $x &lt; 5 {
+  avanza 10
+  agarda 1
+  $x = $x + 1
+}
+</screen
+> Na primeira liña <userinput
+>$x</userinput
+> toma o valor 1. Na segunda liña avalíase <userinput
+>$x &lt; 5</userinput
+>. Dado que a resposta é <quote
+>certo</quote
+> o controlador de execución <userinput
+>mentres</userinput
+> comeza a executar o código entre as chaves ata que <userinput
+>$x &lt; 5</userinput
+> sexa <quote
+>falso</quote
+>. Neste caso executarase 4 veces, porque cada vez que se executa a quinta liña <userinput
+>$x</userinput
+> increméntase.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="repeat">
+<title
+>O ciclo «repite»</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>repite<indexterm
+><primary
+>repite</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>repite <link linkend="number"
+>número</link
+> { … }</screen
+>O controlador de execucion <userinput
+>repite</userinput
+> seméllase moito a <link linkend="while"
+><userinput
+>mentres</userinput
+></link
+>. A diferenza é que <userinput
+>repite</userinput
+> executa o código entre as chaves o número dado de veces.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="for">
+<title
+>O ciclo «desde», un ciclo cun contador</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>desde<indexterm
+><primary
+>desde</primary
+></indexterm
+><indexterm
+><primary
+>ate</primary
+></indexterm
+><indexterm
+><primary
+>pasando</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>desde <link linkend="assignment-of-variables"
+>variábel</link
+> = <link linkend="number"
+>número</link
+> ate <link linkend="number"
+>número</link
+> { ... }</screen
+>O bucle <userinput
+>desde</userinput
+> é un <quote
+>bucle con contador</quote
+>, &ie;, mantén por si o reconto. O primeiro número é o valor da variábel na primeira volta. En cada ciclo a variábel increméntase até que se acade o segundo número.<screen>
+desde $x = 1 ate 10 {
+  escribe $x * 7
+  avanza 15
+}
+</screen
+> Cada vez que se executa o código entre as chaves o <userinput
+>$x</userinput
+> aumenta en 1, ate que <userinput
+>$x</userinput
+> acada o valor de 10. O código nas chaves escribe o valor do <userinput
+>$x</userinput
+> multiplicado por 7. Cando este programa remate a execución verá a táboa de multiplicar do 7 no lenzo. </para>
+     <para
+>O paso predeterminado no bucle é 1, pero pode utilizar outro valor mediante <screen
+>desde <link linkend="assignment-of-variables"
+>variábel</link
+> = <link linkend="number"
+>número</link
+> ate <link linkend="number"
+>número</link
+> pasando <link linkend="number"
+>número</link
+> { ... }</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="break">
+<title
+>Saír dun bucle</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>sair<indexterm
+><primary
+>sair</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sair</screen
+>Termina de inmediato esta volta ao bucle e transfere o control á instrucción que vai despois del.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="exit">
+<title
+>Detén a execución do programa</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>fin<indexterm
+><primary
+>fin</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>fin</screen
+>Remata a execución do programa.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="assert">
+<title
+>Comprobar asercións durante a execución</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>aserto<indexterm
+><primary
+>aserto</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>aserto <link linkend="boolean-value"
+>predicado</link
+></screen
+>Pode usarse para razonar acerca do programa ou comprobar que as entradas sexan correctas. <screen
+>$en = pregunta "En que ano naciches?"
+# o ano debe ser positivo
+aserto $en 
+> 0 
+</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+</sect1>
+
+
+<sect1 id="learn">
+
+<title
+>Cree as súas propios ordes con <quote
+>define</quote
+></title>
+<para
+><userinput
+>define</userinput
+><indexterm
+><primary
+>define</primary
+> </indexterm
+> é unha orde moi especial, porque se utiliza para crear novas ordes. A orde que cree pode tomar <glossterm linkend="input-output"
+>entradas</glossterm
+> e devolver <glossterm linkend="input-output"
+>resultados</glossterm
+>. Vexamos como se crea unha orde nova: <screen>
+define faiCirculo $x {
+  repite 36 {
+    avanza $x
+    xiraesquerda 10
+  }
+}
+</screen
+> O nova orde chámase <userinput
+>faiCirculo</userinput
+>. <userinput
+>faiCirculo</userinput
+> toma unha <glossterm linkend="input-output"
+>entrada</glossterm
+>, un número que indica o tamaño do círculo. <userinput
+>faiCirculo</userinput
+> non devolve nengún <glossterm linkend="input-output"
+>resultado</glossterm
+>. A orde <userinput
+>faiCirculo</userinput
+> pode ser utilizado como unha orde normal no resto do código. Vexa este exemplo: <screen
+>define faiCirculo $X {
+  repite 36 {
+    avanza $X
+    xiraesquerda 10
+  }
+}
+vai 200,200
+faiCirculo 20
+
+vai 300,300
+faiCirculo 40  
+</screen>
+</para>
+<para
+>No seguinte exemplo, créase unha orde que <indexterm
+><primary
+>devolve</primary
+></indexterm
+> un valor. <screen>
+define factorial $x {
+  $r = 1
+  deste $i = 1 ate $x  {
+    $r = $r * $i
+  }
+  devolve $r
+}
+
+escribe factorial 5
+</screen
+> Neste exemplo críase unha orde nova chamada <userinput
+>factorial</userinput
+>. Se entrada desta orde é<userinput
+>5</userinput
+> a saída será <userinput
+>5*4*3*2*1</userinput
+>. Ao usar <userinput
+>devolve</userinput
+>  especifícase o valor <glossterm linkend="input-output"
+>devolto</glossterm
+> e a execución continúase.</para>
+<para
+>As ordes poden ter máis dun <glossterm linkend="input-output"
+>parámetro</glossterm
+>. No seguinte exemplo, créase unha orde que debuxa un rectángulo. <screen>
+define debuxaRectangulo $X, $Y {
+  avanza $Y
+  xiradereita 90
+  avanza $X
+  xiradereita 90
+  avanza $Y
+  xiradereita 90
+  avanza $X
+  xiradereita 90
+}
+</screen
+> Agora pode ordenar  <userinput
+>debuxaRectangulo 50,100</userinput
+> e o sapoconcho debuxará no lenzo un rectángulo. </para>
+  
+</sect1>
+
+</chapter>

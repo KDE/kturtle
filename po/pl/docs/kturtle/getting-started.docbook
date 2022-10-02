@@ -1,0 +1,303 @@
+<chapter id="getting-started">
+<title
+>Rozpoczęcie pracy</title>
+<para
+>Gdy uruchomisz program &kturtle; zobaczysz następujące okno: <screenshot
+> <screeninfo
+>Oto zrzut ekranu programu &kturtle;, gdy jest on uruchamiany po raz pierwszy</screeninfo
+> <mediaobject
+> <imageobject
+> <imagedata fileref="mainwindow.png" format="PNG"/> </imageobject
+> <textobject
+> <phrase
+>Główne okno &kturtle;</phrase
+> </textobject
+> </mediaobject
+> </screenshot
+> W tym podręczniku przyjmujemy, że językiem poleceń &turtlescript; jest polski. Język możesz zmienić w menu <menuchoice
+><guimenu
+>Ustawienia</guimenu
+><guisubmenu
+>Język</guisubmenu
+></menuchoice
+>. Pamiętaj, że język, który ustawisz tutaj będzie musiał być wykorzystywany do wpisywania poleceń &turtlescript; i jest on niezależny od tego, który jest używany w systemie i przy wyświetlaniu interfejsu programu &kturtle;.</para>
+
+<sect1 id="first-steps">
+<title
+>Pierwsze kroki z &turtlescript;: poznaj Żółwia!</title>
+<para
+>Musiałeś już zauważyć żółwia w samym środku okna: dowiesz się teraz jak nim sterować za pomocą poleceń wpisywanych do edytora.</para>
+
+<sect2 id="the-turtle-moves">
+<title
+>Poruszanie żółwiem</title>
+<para
+>Rozpocznijmy od wprawienia żółwia w ruch. Nasz żółw może się poruszać na trzy sposoby:, (1) może się poruszać w przód i w tył, (2) może skręcać w lewo i w prawo oraz (3) może iść bezpośrednio do miejsca wskazanego na ekranie. Spróbuj na przykład:</para>
+<para>
+<screen
+>naprzód 100
+lewo 90 
+</screen>
+Wpisz lub kopiuj-wklej kod do edytora i wykonaj go (używając <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Wykonaj</guimenu
+><guimenuitem
+>Wykonaj</guimenuitem
+></menuchoice
+></link
+>), żeby zobaczyć rezultat.</para>
+
+<para
+>Po wpisaniu i wykonaniu podanych wyżej poleceń można zaobserwować jedno z następujących zdarzeń:</para>
+<orderedlist>
+<listitem
+><para
+>Po wykonaniu polecenia, żółw przesuną się do góry, narysował linię, a następnie zrobił jedną czwartą obrotu w lewo. Stało się tak, ponieważ wprowadziłeś polecenia <link linkend="forward"
+><userinput
+>naprzód</userinput
+></link
+> oraz <link linkend="turnleft"
+><userinput
+>lewo</userinput
+></link
+>.</para>
+</listitem>
+<listitem>
+<para
+>Kolor kodu zmieniał się w miarę jak go pisałeś: opcja ta nazywana jest <emphasis
+>intuicyjnym podświetlaniem</emphasis
+> &mdash; różne rodzaju poleceń są podświetlane w różny sposób. Ułatwia to czytanie dużych bloków tekstu.</para>
+</listitem>
+<listitem>
+<para
+>Żółw narysował cienką czarną linię.</para>
+</listitem>
+<listitem>
+<para
+>Być może pojawił się komunikat błędu. Może to zwyczajnie oznaczać dwie rzeczy: mogłeś popełnić błąd podczas kopiowania poleceń, albo napisałeś polecenia w innym języku niż ten, który został zdefiniowany dla poleceń &turtlescript; (język możesz zmienić wybierając <menuchoice
+><guimenu
+>Ustawienia</guimenu
+><guisubmenu
+>Język</guisubmenu
+></menuchoice
+>).</para>
+</listitem>
+</orderedlist>
+
+<para
+>Prawdopodobnie zauważyłeś, że polecenie <userinput
+>naprzód 100</userinput
+> spowodowało przesunięcie żółwia do przodu i pozostawienie linii, a polecenie <userinput
+>lewo 90</userinput
+> obrót o 90 <glossterm linkend="degrees"
+>stopni</glossterm
+> w lewo.</para>
+
+<para
+>Sprawdź następujące odnośniki do podręcznika użytkownika, aby uzyskać informacje na temat nowych poleceń: <link linkend="forward"
+><userinput
+>naprzód</userinput
+></link
+>, <link linkend="backward"
+><userinput
+>wstecz</userinput
+></link
+>, <link linkend="turnleft"
+><userinput
+>lewo</userinput
+></link
+> i <link linkend="turnright"
+><userinput
+>prawo</userinput
+></link
+>.</para>
+</sect2>
+
+<sect2 id="more-examples">
+<title
+>Dodatkowe przykłady</title>
+<para
+>Pierwszy przykład był bardzo prosty, więc ruszajmy dalej!</para>
+
+<para>
+
+<screen
+>czyść
+
+ustalRozmiar 200,200
+ustalKolTła 0,0,0
+ustalKolPis 255,0,0
+ustalGrubość 5
+
+idź 20,20
+ustalKierunek 135
+
+naprzód 200
+lewo 135
+naprzód 100
+lewo 135
+naprzód 141
+lewo 135
+naprzód 100
+lewo 45
+
+idź 40, 100
+</screen>
+Podobnie i tutaj możesz wpisać lub skopiować i wkleić kod do edytora kodów lub otworzyć plik<filename
+>arrow</filename
+> za pomocą <guimenu
+>Przykłady</guimenu
+>, a następnie wykonać go (korzystając z menu <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Wykonaj</guimenu
+><guimenuitem
+>Wykonaj</guimenuitem
+></menuchoice
+></link
+>), aby zobaczyć rezultat. Po następnych przykładach będziesz już wiedział dokładnie o co chodzi.</para>
+
+<para
+>Jak widać, drugi przykład zawiera zdecydowanie więcej kodu. Zauważyłeś na pewno kilka nowych poleceń. Oto ich krótkie wyjaśnienie:</para>
+
+<para
+><userinput
+>czyść</userinput
+> powoduje przywraca wszystko do stanu, w jakim znajdowało się po uruchomieniu &kturtle;.</para>
+
+<para
+><userinput
+>ustalRozmiar 200,200</userinput
+> ustawia wysokość i szerokość obszaru na 200 <glossterm linkend="pixels"
+>pikseli</glossterm
+>. Wysokość i szerokość są sobie równe, tak więc obszar będzie kwadratem.</para>
+
+<para
+><userinput
+>ustalKolTła 0,0,0</userinput
+> koloruje tło na czarno. <userinput
+>0,0,0</userinput
+> jest <glossterm linkend="rgb"
+>kombinacją RGB</glossterm
+>, w której wszystkie wartości są ustawione na <userinput
+>0</userinput
+>, co daje kolor czarny.</para>
+
+<para
+><userinput
+>ustalKolPis 255,0,0</userinput
+> ustawia kolor pióra na czerwony. <userinput
+>255,0,0</userinput
+> jest <glossterm linkend="rgb"
+>kombinacją RGB</glossterm
+>, w której tylko wartość czerwona została ustawiona na <userinput
+>255</userinput
+> (w pełni włączona) podczas gdy inne (zielona i niebieska) zostały ustawione na <userinput
+>0</userinput
+> (w pełni wyłączone). Rezultatem jest ostry kolor czerwony.</para>
+
+<para
+>Jeżeli nie rozumiesz wartości kolorów, to przeczytaj w słowniczku objaśnienie <glossterm linkend="rgb"
+>kombinacji RGB</glossterm
+>.</para>
+
+<para
+><userinput
+>ustalGrubość 5</userinput
+> ustawia szerokość (rozmiar) pióra na <userinput
+>5</userinput
+> <glossterm linkend="pixels"
+>pikseli</glossterm
+>. Od teraz, każda linia rysowana przez żółwia będzie miała szerokość <userinput
+>5</userinput
+>-ciu pikseli, aż do momentu zmiany wartości parametru <userinput
+>ustalGrubość</userinput
+> na inną.</para>
+
+<para
+><userinput
+>idź 20,20</userinput
+> powoduje, że żółw przemieszcza się w określone miejsce obszaru. Pozycja jest obliczana od lewego górnego rogu, więc miejsce docelowe znajduje się 20 <glossterm linkend="pixels"
+>pikseli</glossterm
+> na lewo i 20 <glossterm linkend="pixels"
+>pikseli</glossterm
+> w dół. Pamiętaj, że po poleceniu <userinput
+>idź</userinput
+> żółw nie będzie rysował linii.</para>
+
+<para
+><userinput
+>ustalKierunek 135</userinput
+> ustawia kierunek żółwia. Polecenia <userinput
+>lewo</userinput
+> oraz <userinput
+>prawo</userinput
+> zmieniają kąt położenia rozpoczynając od bieżącego kierunku. Polecenie <userinput
+>ustalKierunek</userinput
+> zmienia kąt żółwia z pozycji zero, czyli nie ma znaczenia w jakiej pozycji znajdował się żółw przed zmianą kąta położenia.</para>
+
+<para
+>Po poleceniu <userinput
+>ustalKierunek</userinput
+> następuje wiele poleceń <userinput
+>naprzód</userinput
+> i <userinput
+>lewo</userinput
+>. Te polecenia powodują rysowanie.</para>
+
+<para
+>Wreszcie kolejne polecenie <userinput
+>idź</userinput
+> powoduje przesunięcie żółwia na bok.</para>
+
+<para
+>Pamiętaj, że odnośniki do poleceń kierują do wyjaśnień każdego z poleceń.</para>
+
+
+</sect2>
+</sect1>
+
+
+
+<!--        EXTRA SECTIONS CAN BE ADDED TO THE "GETTING STARTED"
+
+<sect1 id="calculations">
+<title
+>Simple Calculations</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_variables">
+<title
+>Using Variables: creating 'number containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_strings">
+<title
+>Using strings: creating 'text containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="logic">
+<title
+>Logic: asking the computer simple questions</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="recursion">
+<title
+>Recursion: the Turtle is using itself</title>
+<para>
+Draw a maze for example
+</para>
+</sect1>
+-->
+
+
+</chapter>

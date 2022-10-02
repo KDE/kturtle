@@ -1,0 +1,2104 @@
+<chapter id="reference">
+<title
+>&turtlescript; žinynas programuotojui</title>
+<para
+>Čia yra &kturtle; scenarijaus kalbos &turtlescript; žinynas. Pirmoje šio skyriaus dalyje skaitykite apie &turtlescript; programų <link linkend="grammar"
+>gramatiką</link
+>. Antroje dalyje kalba išskirtinai apie <link linkend="mathematical-operators"
+>matematinius veiksmus</link
+>, <link linkend="boolean-operators"
+>loginius (tiesa/melas) veiksmus</link
+> ir <link linkend="comparing-operators"
+>sulyginimo veiksmus</link
+>. Trečia dalis – tiesiog didžiulis <link linkend="commands"
+>komandų</link
+> ir jų paaiškinimų sąrašas. Ketvirtoje dalyje aiškinama, kaip <link linkend="assignment-of-variables"
+>priskirti</link
+> reikšmes <link linkend="assignment-of-variables"
+>kintamiesiems</link
+>. Pabaigoje – penktoje dalyje –  mes paaiškiname, kaip valdyti komandų vykdymą naudojant <link linkend="controlling-execution"
+>vykdymo valdymo sakinius</link
+>, o šeštoje dalyje – kaip sukurti savo komandas <link linkend="learn"
+>mokantis</link
+>.</para>
+
+<sect1 id="grammar">
+<title
+>&turtlescript; gramatika</title>
+<para
+>Kaip ir kitos kalbos, &turtlescript; turi skirtingų tipų žodžių ir simbolių. Lietuvių kalboje mes skiriame veiksmažodžius (tokius kaip „eiti“ ar „dainuoti“) ir daiktavardžius (tokius kaip „sesuo“ ar „namas“). Jie naudojami skirtingiems tikslams. &turtlescript; yra programavimo kalba, kurios pagalba duodamos komandos vėžliukui.</para>
+<para
+>Šioje dalyje aprašomi keli skirtingi &turtlescript; žodžių tipai ir simboliai. Mes paaiškiname <link linkend="comment"
+>komentarus</link
+>, <link linkend="command"
+>komandas</link
+> ir tris skirtingas simbolių rūšis: <link linkend="number"
+>skaičius</link
+>, <link linkend="string"
+>eilutes</link
+> ir <link linkend="boolean-value"
+>logines (tiesa/melas) reikšmes</link
+>.</para>
+
+
+<sect2 id="comment">
+<title
+>Komentarai</title>
+<para
+>Programa susideda iš komandų, kurios vykdomos paleidus programą, ir iš taip vadinamų komentarų. Komentarai nėra vykdomi, &kturtle; juos tiesiog ignoruoja. Komentarai rašomi tam, kad kiti programuotojai galėtų geriau suprasti jūsų programą. Viskas, kas rašoma po simbolio <userinput
+>#</userinput
+> yra laikoma &turtlescript; komentaru. Pavyzdžiui ši maža programa, kuri nieko nedaro: <screen>
+# ši programėlė nieko nedaro, tai tik komentaras!
+</screen
+> Ji yra beprasmiška, bet padeda paaiškinti esmę.</para>
+<para
+>Komentarai labai praverčia, kai programa tampa šiek tiek sudėtingesnė. Jie gali padėti kitiems programuotojams. Toliau pateikiamoje programoje matomos komandos, kurios naudojamos kartu su komanda <link linkend="print"
+>rašyk</link
+>. <screen>
+# šią programą sukūrė Saulė Binkytė.
+rašyk "šis tekstas bus parašytas ant drobės"
+# aukščiau esanti eilutė nėra komentaras, bet žemiau esanti – yra:
+# rašyk "šis tekstas nebus parašytas!"
+</screen
+> Pirma eilutė aprašo programą. Antrą eilutę &kturtle; įvykdo ir parašo <userinput
+>šis tekstas bus parašytas ant drobės</userinput
+> ant drobės. Trečia eilutė yra komentaras. Ketvirta eilutė irgi yra komentaras, kuriame yra gabaliukas &turtlescript; kodo, jei bus pašalintas simbolis <userinput
+>#</userinput
+>, &kturtle; įvykdys rašymo komandą. Programuotojai sako: rašymo sakinys ketvirtoje eilutėje yra „užkomentuotas“.</para>
+<para
+><link linkend="the-editor"
+>Kodo rašyklėje</link
+> komentarai <glossterm
+>paryškinami</glossterm
+> šviesiai pilka spalva.</para>
+</sect2>
+
+<sect2 id="command">
+<title
+>Komandos</title>
+<para
+>Komandų pagalba jūs nurodote vėžliukui, ką reikia daryti. Kai kurioms komandoms reikia pateikti papildomą informaciją, kitos informaciją parodo. <screen>
+# „priekin“ yra komanda, kuriai reikia papildomos informacijos, šiuo atveju skaičiaus 100:
+priekin 100
+</screen
+> Pirma eilutė yra <link linkend="comment"
+>komentaras</link
+>. Antroje eilutėje yra komanda <userinput
+>priekin</userinput
+> ir <link linkend="number"
+>skaičius</link
+> <userinput
+>100</userinput
+>. Skaičius nėra komandos dalis, tai komandos „įvestis“.</para>
+<para
+>Kai kurioms komandoms, tokioms kaip <userinput
+>eiti</userinput
+> reikia daugiau nei vienos reikšmės. Kelios pateikiamos reikšmės turi būti atskirtos simboliu <userinput
+>,</userinput
+> (kableliu).</para>
+<para
+>Visų &kturtle; komandų detalesnį aprašymą rasite <link linkend="commands"
+>čia</link
+>. Įsiūtos komandos <glossterm
+>paryškintos</glossterm
+> tamsiai mėlyna spalva.</para>
+</sect2>
+
+<sect2 id="number">
+<title
+>Skaičiai</title>
+<para
+>Ko gero apie skaičius Jūs žinote nemažai. &kturtle; programoje skaičiai beveik nesiskiria nuo naudojamų Jūsų šnekamojoje kalboje arba matematikoje. </para>
+<para
+>Čia taip pat naudojami natūralieji skaičiai: <userinput
+>0</userinput
+>, <userinput
+>1</userinput
+>, <userinput
+>2</userinput
+>, <userinput
+>3</userinput
+>, <userinput
+>4</userinput
+>, <userinput
+>5</userinput
+>, ir t.t. Neigiami skaičiai: <userinput
+>-1</userinput
+>, <userinput
+>-2</userinput
+>, <userinput
+>-3</userinput
+>, ir t.t. Ir dešimtainiai skaičiai, pavyzdžiui: <userinput
+>0.1</userinput
+>, <userinput
+>3.14</userinput
+>, <userinput
+>33.3333</userinput
+>, <userinput
+>-5.05</userinput
+>, <userinput
+>-1.0</userinput
+>. Trumpeninės skaičiaus dalies atskirimui naudojamas ne kablelis, o taško simbolis (<userinput
+>.</userinput
+>). </para>
+<para
+>Skaičiai naudojami <link linkend="mathematical-operators"
+>matematiniuose skaičiavimuose</link
+> ir <link linkend="comparing-operators"
+>palyginimo sąlygose</link
+>. Be to, juos galima patalpinti į <link linkend="assignment-of-variables"
+>kintamuosius</link
+>. Skaičiai <glossterm
+>paryškinami</glossterm
+> tamsiai raudona spalva.</para>
+</sect2>
+
+<!-- constants like pi? -->
+
+<sect2 id="string">
+<title
+>Tekstinės eilutės</title>
+<para
+>Pirma pavyzdys: <screen>
+rašyk "Labas, aš esu tekstinė eilutė."
+</screen
+> Šiame pavyzdyje <userinput
+>rašyk</userinput
+> yra komanda, o <userinput
+>"Labas, aš esu tekstinė eilutė."</userinput
+> tai tekstinė eilutė. Tekstinės eilutės prasideda ir baigiasi ženklu <userinput
+>"</userinput
+>, tik pagal šiuos ženklus &kturtle; supranta, kad tai tekstinė eilutė.</para>
+<para
+>Eilutes galima priskirti <link linkend="assignment-of-variables"
+>kintamiesiems</link
+>, kaip ir <link linkend="number"
+>skaičius</link
+>. Bet, priešingai nei skaičiai, eilučių negalima naudoti <link linkend="mathematical-operators"
+>matematiniuose veiksmuose</link
+> ar <link linkend="comparing-operators"
+>palyginimo veiksmuose</link
+>. Eilutės <glossterm
+>paryškinamos</glossterm
+> raudonai.</para>
+</sect2>
+
+<sect2 id="boolean-value">
+<title
+>Loginės (tiesa/melas) reikšmės</title>
+<para
+>Yra tik dvi loginio tipo reikšmės: <userinput
+>taip</userinput
+> ir <userinput
+>ne</userinput
+>. Kartais jos vadinamos: įjungta ir išjungta, tiesa ir melas, vienas ir nulis. Bet &turtlescript; kalboje jos visada vadinamos <userinput
+>taip</userinput
+> ir <userinput
+>ne</userinput
+>. Štai &turtlescript; kodo pavyzdys: <screen>
+$a = taip
+</screen
+> Jei pažiūrėsite, kas matosi <link linkend="the-inspector"
+>inspektoriuje</link
+>, pamatysite, kad <link linkend="assignment-of-variables"
+>kintamojo</link
+> <userinput
+>$a</userinput
+> reikšmė yra <userinput
+>taip</userinput
+>, o jo tipas yra loginis.</para>
+<para
+>Dažnai loginės reikšmės yra <link linkend="comparing-operators"
+>palyginimo veiksmų</link
+> rezultatai, kaip pavyzdžiui tokiame &turtlescript; kode: <screen>
+$atsakymas = 10 &gt; 3
+</screen
+> <link linkend="assignment-of-variables"
+>Kintamojo</link
+> <userinput
+>$atsakymas</userinput
+> reikšmė yra <userinput
+>taip</userinput
+>, nes <userinput
+>10</userinput
+> yra daugiau už <userinput
+>3</userinput
+>.</para>
+<para
+>Loginės reikšmės, <userinput
+>taip</userinput
+> ir <userinput
+>ne</userinput
+> <glossterm
+>paryškinamos</glossterm
+> tamsiai raudona spalva.</para>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="operators">
+<title
+>Matematiniai, loginiai ir palyginimo operatoriai</title>
+<para
+>Nors šio skyriaus pavadinimas gali skambėti sudėtingai, iš tiesų jis nėra toks sudėtingas, kaip atrodo.</para>
+
+<sect2 id="mathematical-operators">
+<title
+>Matematiniai operatoriai</title>
+<para
+>Pagrindiniai matematiniai simboliai yra: sudėtis (<userinput
+>+</userinput
+>), atimtis (<userinput
+>-</userinput
+>), daugyba (<userinput
+>*</userinput
+>), dalyba (<userinput
+>/</userinput
+>) bei kėlimas laipsniu (<userinput
+>^</userinput
+>).</para>
+
+<para
+>Štai keletas matematinių operatorių, kuriuos galima naudoti &turtlescript;, pavyzdžių: <screen>
+$sudėtis  = 1 + 1
+$atimtis  = 20 - 5
+$daugyba  = 15 * 2
+$dalyba   = 30 / 30
+$laipsnis = 2 ^ 2
+</screen
+> Matematinių operacijų rezultatai <link linkend="assignment-of-variables"
+>priskiriami</link
+> įvairiems <link linkend="assignment-of-variables"
+>kintamiesiems</link
+>. Jūs galite peržiūrėti reikšmes pasinaudoję <link linkend="the-inspector"
+>inspektoriumi</link
+>.</para>
+<para
+>Jei Jums prireiktų paprastų skaičiavimų, tai Jūs galite daryti tiesiog taip: <screen
+>rašyk 2010-12
+</screen
+></para>
+<para
+>Dabar skliaustelių naudojimo pavyzdys: <screen>
+rašyk ( ( 20 - 5 ) * 2 / 30 ) + 1
+</screen
+> Pirma bus apskaičiuojamas skliaustelių viduje esantis reiškinys. Šiuo atveju, pirma bus sumuojama 20-5, po to padauginta iš 2, padalyta iš 30, ir tik tada pridėtas 1 (rezultatas bus 2). Skliaustelius galima naudoti ir kitais atvejais.</para>
+<para
+>&kturtle; turi ir sudėtingesnių matematinių savybių, tokių kaip komandos. Atkreipkite dėmesį į šias komandas, tik turėkite omenyje, kad tai sudėtingesnės operacijos: <link linkend="round"
+>apvalink</link
+>, <link linkend="random"
+>bet_koks</link
+>, <link linkend="sqrt"
+>šaknis</link
+>, <link linkend="pi"
+>pi</link
+>, <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+>, <link linkend="tan"
+>tg</link
+>, <link linkend="arcsin"
+>arcsin</link
+>, <link linkend="arccos"
+>arccos</link
+>, <link linkend="arctan"
+>arctg</link
+>.</para>
+</sect2>
+
+<sect2 id="boolean-operators">
+<title
+>Loginiai (taip/ne) operatoriai</title>
+<para
+>Kaip <link linkend="mathematical-operators"
+>Matematiniai operatoriai</link
+> pagrinde skirti <link linkend="number"
+>skaičiams</link
+>, taip loginiai operatoriai skirti <link linkend="boolean-value"
+>loginėms reikšmėms</link
+> (<userinput
+>taip</userinput
+> ir <userinput
+>ne</userinput
+>). Yra tik trys loginiai operatoriai: <userinput
+>ir</userinput
+>, <userinput
+>arba</userinput
+> ir <userinput
+>ne</userinput
+>. Toliau pateikiamas &turtlescript; pavyzdys, rodantis, kaip galima naudoti šiuos operatorius: <screen>
+$ir_1_1 = taip ir taip # -> taip
+$ir_1_0 = taip ir ne   # -> ne
+$ir_0_1 = ne ir taip   # -> ne
+$ir_0_0 = ne ir ne     # -> ne
+
+$arba_1_1 = taip arba taip # -> taip
+$arba_1_0 = taip arba ne   # -> taip
+$arba_0_1 = ne arba taip   # -> taip
+$arba_0_0 = ne arba ne     # -> ne
+
+$ne_1 = ne taip  # -> ne
+$ne_0 = ne ne    # -> taip
+</screen
+> Reikšmes galite pažiūrėti naudodami <link linkend="the-inspector"
+>inspektorių</link
+>, nors mes pateikėme rezultatus kaip nedidelius komentarus eilučių pabaigose. <userinput
+>ir</userinput
+> rezultatas yra <userinput
+>taip</userinput
+> tik tada, jei abi pusės yra <userinput
+>taip</userinput
+>. <userinput
+>arba</userinput
+> rezultatas yra <userinput
+>taip</userinput
+>, jei nors viena iš pusių yra <userinput
+>taip</userinput
+>. <userinput
+>ne</userinput
+> keičia <userinput
+>taip</userinput
+> į <userinput
+>ne</userinput
+>, o <userinput
+>ne</userinput
+> į <userinput
+>taip</userinput
+>.</para>
+<para
+>Loginiai operatoriai <glossterm
+>paryškinami</glossterm
+> rožine spalva.</para>
+
+<sect3 id="boolean-operators-advanced-examples">
+<title
+>Keletas sudėtingesnių pavyzdžių</title>
+<para
+>Panagrinėkite šį pavyzdį su <userinput
+>ir</userinput
+>: <screen>
+$a = 1
+$b = 5
+jei (($a &lt; 10) ir ($b == 5)) ir ($a &lt; $b) {
+  rašyk "labas"
+}
+</screen
+> Šiame &turtlescript; gabaliuke trijų <link linkend="comparing-operators"
+>palyginimo operatorių</link
+> rezultatas sujungiamas naudojant <userinput
+>ir</userinput
+> operatorius. Tai reiškia, kad visi trys turi būti „taip“, tam, kad būtų parašytas tekstas „labas“.</para>
+
+<para
+>Pavyzdys su <userinput
+>arba</userinput
+>: <screen>
+$n = 1
+jei ($n &lt; 10) arba ($n == 2) {
+  rašyk "labas"
+}
+</screen
+> Šiame &turtlescript; kodo gabaliuke, kairės operatoriaus <userinput
+>arba</userinput
+> pusės reikšmė bus „taip“, dešinės – „ne“. Kadangi vienoje iš <userinput
+>arba</userinput
+> operatoriaus pusių yra „taip“, <userinput
+>arba</userinput
+> operatorius grąžina „taip“. Tai reiškia, kad bus parašyta „labas“.</para>
+
+<para
+>Ir pabaigai pavyzdys su <userinput
+>ne</userinput
+>, kuris keičia „taip“ į „ne“ ir „ne“ į „taip“. Pažiūrėkite: <screen
+>$n = 1
+jei ne ($n == 3) {
+  rašyk "labas"
+} antraip {
+  rašyk "ne labas ;-)"
+}
+</screen
+></para>
+</sect3>
+</sect2>
+
+<sect2 id="comparing-operators">
+<title
+>Palyginimo operatoriai</title>
+<para
+>Panagrinėkime paprastą palyginimą: <screen>
+$atsakymas = 10 &gt; 3
+</screen
+> Čia <userinput
+>10</userinput
+> lyginamas su <userinput
+>3</userinput
+> naudojant operatorių „didesnis už“. Šio palyginimo rezultatas – <link linkend="boolean-value"
+>loginė reikšmė</link
+> <userinput
+>taip</userinput
+> – įrašoma į <link linkend="assignment-of-variables"
+>kintamąjį</link
+> <userinput
+>$atsakymas</userinput
+>.</para>
+<para
+>Visi <link linkend="number"
+>skaičiai</link
+> ir <link linkend="assignment-of-variables"
+>kintamieji</link
+> (į kuriuos įrašyti skaičiai) gali būti lyginami tarpusavyje naudojant palyginimo operatorius.</para>
+<para
+>Čia pateikiami visi įmanomi palyginimo operatoriai: <table
+> <title
+>Klausimų tipai</title
+> <tgroup cols="3"
+> <tbody
+> <row
+> <entry
+><userinput
+>$A == $B</userinput
+></entry
+> <entry
+>lygu</entry
+> <entry
+>atsakymas yra <quote
+>taip</quote
+>, jei <userinput
+>$A</userinput
+> lygu <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A != $B</userinput
+></entry
+> <entry
+>nelygu</entry
+> <entry
+>atsakymas yra <quote
+>taip</quote
+>, jei <userinput
+>$A</userinput
+> nėra lygu <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt; $B</userinput
+></entry
+> <entry
+>daugiau už</entry
+> <entry
+>atsakymas yra <quote
+>taip</quote
+>, jei <userinput
+>$A</userinput
+> yra didesnis už <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt; $B</userinput
+></entry
+> <entry
+>mažiau už</entry
+> <entry
+>atsakymas yra <quote
+>taip</quote
+>, jei <userinput
+>$A</userinput
+> yra mažiau už <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt;= $B</userinput
+></entry
+> <entry
+>daugiau už arba lygu</entry
+> <entry
+>atsakymas yra <quote
+>taip</quote
+>, jei <userinput
+>$A</userinput
+> yra daugiau už arba lygu <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt;= $B</userinput
+></entry
+> <entry
+>mažiau už arba lygu</entry
+> <entry
+>atsakymas yra <quote
+>taip</quote
+>, jei <userinput
+>$A</userinput
+> yra mažiau už arba lygu <userinput
+>$B</userinput
+></entry
+> </row
+> </tbody
+> </tgroup
+> </table
+> Atkreipkite dėmesį, kad $A ir $B turi būti <link linkend="number"
+>skaičiai</link
+> arba <link linkend="assignment-of-variables"
+>kintamieji</link
+>, į kuriuos įrašyti skaičiai.</para>
+</sect2>
+
+
+</sect1>
+
+
+
+<sect1 id="commands">
+<title
+>Komandos</title>
+<para
+>Komandomis vėžliukas arba &kturtle; liepiamas atlikti kokius nors veiksmus. Kai kurioms komandoms reikia pateikti argumentus, kai kurios grąžina rezultatą. Šioje skiltyje aprašomos visos &kturtle; naudojamos komandos. Naudodami <link linkend="learn"
+>mokymą</link
+> galite sukurti savo komandas. Visos čia aprašomos vidinės komandos <glossterm
+>paryškinamos</glossterm
+> tamsiai mėlyna spalva.</para>
+
+<sect2 id="moving-the-turtle">
+<title
+>Vėžliuko stumdymas</title>
+<para
+>Vėžliuką stumdyti drobėje galima keliomis komandomis.</para>
+
+  <variablelist>
+    <anchor id="forward"/>
+    <varlistentry
+> 
+      <term
+>priekin (pr)<indexterm
+><primary
+>priekin (pr)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>priekin X</screen>
+Komanda <userinput
+>priekin</userinput
+> vėžliukas pastumiamas X pikselių į priekį. Jei pieštukas nuleistas, tai vėžliukas paliks pėdsaką. Vietoje komandos <userinput
+>priekin</userinput
+> galima naudoti jos santrumpą <userinput
+>pr</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="backward"/>
+    <varlistentry
+>  
+      <term
+>atgal (at)<indexterm
+><primary
+>atgal (at)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>atgal X</screen>
+Komanda <userinput
+>atgal</userinput
+> vėžliukas pastumiamas X pikselių atgalios. Jei pieštukas nuleistas, tai vėžliukas paliks pėdsaką. Vietoje komandos <userinput
+>atgal</userinput
+> galima naudoti jos santrumpą <userinput
+>at</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnleft"/>
+    <varlistentry
+> 
+      <term
+>kairėn (kr)<indexterm
+><primary
+>kairėn (kr)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>kairėn X</screen>
+Komanda <userinput
+>kairėn</userinput
+> vėžliukas pasukamas X laipsnių į kairę pusę. Vietoje komandos <userinput
+>kairėn</userinput
+> galima naudoti jos santrumpą <userinput
+>kr</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnright"/>
+    <varlistentry
+> 
+      <term
+>dešinėn (dš)<indexterm
+><primary
+>dešinėn (dš)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>dešinėn X</screen>
+Komanda <userinput
+>dešinėn</userinput
+> vėžliukas pasukamas X laipsnių į dešinę pusę. Vietoje komandos <userinput
+>dešinėn</userinput
+> galima naudoti jos santrumpą <userinput
+>dš</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="direction"/>
+    <varlistentry
+> 
+      <term
+>žvelk (žv)<indexterm
+><primary
+>žvelk (žv)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>žvelk X</screen>
+Komanda <userinput
+>žvelk</userinput
+> vėžliukas pasukamas X laipsnių kryptimi. Šiuo atveju nėra paisoma prieš tai buvusios vėžliuko krypties, nes  kampas atidedamas nuo nulio laipsnių.  Vietoje komandos <userinput
+>žvelk</userinput
+> galima naudoti jos santrumpą <userinput
+>žv</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="getdirection"/>
+    <varlistentry
+> 
+      <term
+>gauk_kryptį<indexterm
+><primary
+>gauk_kryptį</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>gauk_kryptį</screen>
+Komanda <userinput
+>gauk_kryptį</userinput
+> grąžina vėžliuko kryptį, kaip laipsnių skaičių pradedant nuo nulio. Nulis – tai kryptis, kai vėžliukas žiūri aukštyn.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="center"/>
+    <varlistentry
+> 
+      <term
+>namo<indexterm
+><primary
+>namo</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>namo</screen>
+Komanda <userinput
+>namo</userinput
+> vėžliukas perkeliamas į drobės centrą.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="go"/>
+    <varlistentry
+> 
+      <term
+>eik_x_y<indexterm
+><primary
+>eik_x_y</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>eik_x_y X,Y</screen>
+Komanda <userinput
+>eik_x_y</userinput
+> vėžliukas perkeliamas į nurodytą drobės vietą. Vietos koordinatės nurodomos <glossterm linkend="pixels"
+>pikseliais</glossterm
+>: skaičius X tai atstumas iki kairiojo drobės krašto, skaičius Y &mdash; iki viršutiniojo drobės krašto.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gox"/>
+    <varlistentry
+> 
+      <term
+>eik_x<indexterm
+><primary
+>eik_x</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>eik_x X</screen>
+Komanda <userinput
+>eik_x</userinput
+> vėžliukas horizontaliai perkeliamas į tašką, kuris nuo drobės kairiojo krašto yra nutolęs X <glossterm linkend="pixels"
+>pikselių</glossterm
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="goy"/>
+    <varlistentry
+> 
+      <term
+>eik_y<indexterm
+><primary
+>eik_y</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>eik_y Y</screen>
+Komanda <userinput
+>eik_y</userinput
+> vėžliukas vertikaliai perkeliamas į tašką, kuris nuo drobės viršutiniojo krašto yra nutolęs Y <glossterm linkend="pixels"
+>pikselių</glossterm
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <note
+><para
+>Jei vėžliukas judinamas komandomis <userinput
+>eik_x_y</userinput
+>, <userinput
+>eik_x</userinput
+>, <userinput
+>eik_y</userinput
+> arba <userinput
+>namo</userinput
+>, tai jis judėdamas pėdsako nepalieka, nežiūrint į tai ar pieštukas yra nuleistas ar atitrauktas.</para>
+  </note>
+</sect2>
+
+<sect2 id="locate-the-turtle">
+<title
+>Kur vėžliukas?</title>
+<para
+>Yra dvi komandos, kurios grąžina drobėje esančio vėžliuko koordinates.</para>
+
+  <variablelist>
+    <anchor id="getx"/>
+    <varlistentry
+> 
+      <term
+>koks_x<indexterm
+><primary
+>koks_x</primary
+></indexterm
+></term>
+      <listitem
+><para
+>Komanda <userinput
+>koks_x</userinput
+> grąžina dabartinę vėžliuko X koordinatę pikseliais, t.y. jo atstumą iki drobės kairiojo krašto.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gety"/>
+    <varlistentry
+> 
+      <term
+>koks_y<indexterm
+><primary
+>koks_y</primary
+></indexterm
+></term>
+      <listitem
+><para
+>Komanda <userinput
+>koks_y</userinput
+> grąžina dabartinę vėžliuko Y koordinatę pikseliais, t.y. jo atstumą iki drobės viršutiniojo krašto.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="pen">
+<title
+>Vėžliukas turi pieštuką</title>
+<para
+>Vėžliukas turi pieštuką, juo judėdamas vėžliukas piešia. Pieštuką valdyti galima keliomis komandomis. Apie jas sužinosite šiame skyriuje.</para>
+  <variablelist>
+    <anchor id="penup"/>
+    <varlistentry
+> 
+      <term
+>eisim (es)<indexterm
+><primary
+>eisim (es)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>eisim</screen>
+Komanda <userinput
+>eisim</userinput
+> nuo drobės atitraukiamas pieštukas (t.p. žvilgtelėkite į komandą <userinput
+>piešim</userinput
+>). Kai pieštukas būna <quote
+>atitrauktas</quote
+>, tada judėdamas vėžliukas linijos nebrėžia.  Vietoje komandos <userinput
+>eisim</userinput
+> galima naudoti jos santrumpą <userinput
+>es</userinput
+>. </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="pendown"/>
+    <varlistentry
+> 
+      <term
+>piešim (pš)<indexterm
+><primary
+>piešim (pš)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>piešim</screen>
+Komanda <userinput
+>piešim</userinput
+> ant drobės nuleidžiamas pieštukas (t.p. žvilgtelėkite į komandą <userinput
+>eisim</userinput
+>). Kai pieštukas būna <quote
+>nuleistas</quote
+>, tada judėdamas vėžliukas brėžia linijos.  Vietoje komandos <userinput
+>piešim</userinput
+> galima naudoti jos santrumpą <userinput
+>pš</userinput
+>. </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setpenwidth"/>
+    <varlistentry
+> 
+      <term
+>pieštuko_storis (ps)<indexterm
+><primary
+>pieštuko_storis (ps)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pieštuko_storis X</screen>
+Komanda <userinput
+>pieštuko_storis</userinput
+> nustatomas X <glossterm linkend="pixels"
+>pikselių</glossterm
+> storio pieštukas, t.y. brėžiamų linijų storis. Vietoje komandos <userinput
+>pieštuko_storis</userinput
+> galima naudoti jos santrumpą <userinput
+>ps</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setfgcolor"/>
+    <varlistentry
+> 
+      <term
+>pieštuko_spalva (psp)<indexterm
+><primary
+>pieštuko_spalva (psp)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pieštuko_spalva R,Ž,M</screen>
+Komanda <userinput
+>pieštuko_spalva</userinput
+> nustatoma pieštuko spalvas. Šios komandos parametras tai <glossterm linkend="rgb"
+>RŽM kombinacija</glossterm
+> nusakanti pieštuko spalvą. Vietoje komandos <userinput
+>pieštuko_spalva</userinput
+> galima naudoti jos santrumpą <userinput
+>psp</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="canvas">
+<title
+>Drobės valdymo komandos</title>
+<para
+>Drobę galima valdyti keliomis komandomis.</para>
+  <variablelist>
+    <anchor id="resizecanvas"/>
+    <varlistentry>
+      <term
+>nustatyk_lauko_dydį (nld)<indexterm
+><primary
+>nustatyk_lauko_dydį (nld)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>nustatyk_lauko_dydį X,Y</screen>
+Komanda <userinput
+>nustatyk_lauko_dydį</userinput
+> keičiamas drobės dydis. Šiai komandai reikia nurodyti du parametrus: drobės plotį X <glossterm linkend="pixels"
+>pikseliais</glossterm
+>, ir drobės aukštį Y <glossterm linkend="pixels"
+>pikseliais</glossterm
+>. Vietoje komandos <userinput
+>nustatyk_lauko_dydį</userinput
+> galima naudoti jos santrumpą <userinput
+>nld</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setbgcolor"/>
+    <varlistentry
+> 
+      <term
+>keisk_foną (kf)<indexterm
+><primary
+>keisk_foną (kf)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>keisk_foną R,Ž,M</screen>
+Komanda <userinput
+>keisk_foną</userinput
+> keičiama drobės spalva. Šiai komandai, kai parametrą, reikia nurodyti <glossterm linkend="rgb"
+>RŽM kombinaciją</glossterm
+>. Vietoje komandos <userinput
+>keisk_foną</userinput
+> galima naudoti jos santrumpą <userinput
+>kf</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="clean">
+<title
+>Valymo komandos</title>
+<para
+>Drobėje nubraižytą piešinį ištrinti gali dvi komandos.</para>
+  <variablelist>
+    <anchor id="clear"/>
+    <varlistentry
+> 
+      <term
+>valyk (vvl)<indexterm
+><primary
+>valyk (vvl)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>valyk</screen>
+Komanda <userinput
+>valyk</userinput
+> ištrinami drobėje nupiešti piešiniai. Įvykdžius šią komandą, vėžliuko vieta ir kryptis, jo matomumas, drobės spalva ir dydis lieka nepakitę.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="reset"/>
+    <varlistentry
+> 
+      <term
+>pradžių_pradžia<indexterm
+><primary
+>pradžių_pradžia</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pradžių_pradžia</screen>
+Komanda <userinput
+>pradžių_pradžia</userinput
+> „valo“ daug daugiau nei komanda <userinput
+>valyk</userinput
+>. Įvykdžius komandą <userinput
+>pradžių_pradžia</userinput
+> viskas nustatoma tokią būseną, lyg &kturtle; būtų ką tik startavęs: vėžliukas perkeliamas į drobės vidurį, drobės spalva pakeičiama į baltą, nustatoma juoda pieštuko spalva, nustatoma 400×400 pikselių dydžio drobė.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="sprites">
+<title
+>Vėžliukas tai spruklys</title>
+<para
+>Pirma, kas tas spruklys: spruklys tai mažas, ekrane slankiojantis paveikslėlis, toks, kokius galima dažnai aptikti dvimačiuose žaidimuose. Vėžliukas taip pat yra spruklys. Jei norite sužinoti daugiau, tai skaitykite termino <glossterm linkend="sprites"
+>spruklys</glossterm
+> išsamesnį paaiškinimą. </para>
+<para
+>Toliau aprašomos visos komandos, kurios valdo spruklius.</para>
+<para
+>[Šioje &kturtle; laidoje kol kas dar neįmanoma vėžliuko spruklį pakeisti kitu. Tai bus galima daryti tik ateinančių laidų &kturtle; programose]</para>
+  <variablelist>
+    <anchor id="spriteshow"/>
+    <varlistentry
+> 
+      <term
+>rodykis (rd)<indexterm
+><primary
+>rodykis (rd)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>rodykis</screen>
+Paslėptas vėžliukas vėl parodomas komanda <userinput
+>rodykis</userinput
+>. Vietoje komandos <userinput
+>rodykis</userinput
+> galima naudoti jos santrumpą <userinput
+>rd</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="spritehide"/>
+    <varlistentry
+> 
+      <term
+>slėpkis (sl)<indexterm
+><primary
+>slėpkis (sl)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>slėpkis</screen>
+Vėžliukas paslepiamas įvykdžius komandą <userinput
+>slėpkis</userinput
+>. Tai paranku, kai, tarkim, vėžliuko <glossterm linkend="sprites"
+>spruklys</glossterm
+> nebetelpa drobėje. Vietoje komandos <userinput
+>slėpkis</userinput
+> galima naudoti jos santrumpą <userinput
+>sl</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="writing">
+<title
+>Ar vėžliukas moka rašyti?</title>
+<para
+>Atsakymas: <quote
+>taip</quote
+>. Vėžliukas moka rašyti &mdash; jis parašys viską ką jam liepsite.</para>
+  <variablelist>
+    <anchor id="print"/>
+    <varlistentry
+> 
+      <term
+>rašyk<indexterm
+><primary
+>rašyk</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>rašyk X</screen>
+Komanda <userinput
+>rašyk</userinput
+> vėžliukui liepiama drobėje parašyti nurodytą tekstą. Komandai <userinput
+>rašyk</userinput
+> kaip parametrą galima nurodyti skaičių arba tekstinę eilutę. Jei prireiktų vienu metu parašyti skaičius ir tekstą, juos galima apjungti ženklu <quote
+>+</quote
+>. Žvilgtelėkite į pavyzdį: <screen
+>$metai = 2003
+$autorius = "Cies"
+rašyk $metai + " metais " + $autorius + " pradėjo kurti KTurtle, ir vis dar mielu noru jį tobulina!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="fontsize"/>
+    <varlistentry
+> 
+      <term
+>teksto_dydis<indexterm
+><primary
+>teksto_dydis</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>teksto_dydis X</screen>
+Komanda <userinput
+>teksto_dydis</userinput
+> nustatomas teksto, kuris rašomas drobėje naudojant komandą <userinput
+>rašyk</userinput
+>, šrifto dydis. Komandos <userinput
+>teksto_dydis</userinput
+> parametras tai būsimo teksto aukštis <glossterm linkend="pixels"
+>pikseliais</glossterm
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="math-commands">
+<title
+>Matematinės komandos</title>
+<para
+>Šios komandos yra kiek sudėtingesnės &kturtle; matematinės komandos.</para>
+  <variablelist>
+    <anchor id="round"/>
+    <varlistentry>
+      <term
+>apvalink<indexterm
+><primary
+>apvalink</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>apvalink(x)</screen>
+Komanda <userinput
+>apvalink</userinput
+> skaičių apvalina iki jo sveikosios dalies. <screen>
+rašyk apvalink(10.8)
+pirmyn 20
+rašyk apvalink(10.3)
+</screen
+> Paleidus šį kodą, drobėje bus parašyti skaičiai 11 ir 10.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="random"/>
+    <varlistentry
+> 
+      <term
+>bet_koks (bk)<indexterm
+><primary
+>bet_koks (bk)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>bet_koks X,Y</screen>
+Komanda <userinput
+>random</userinput
+> reikalauja parametrų ir grąžina rezultatą. Kaip parametrus reikia nurodyti du skaičius: pirmasis (X) nurodo rezultato minimumą, o antrasis (Y) &mdash; maksimumą. Komanda grąžins atsitiktinį skaičių, kuris gali būti ne mažesnis nei minimumas ir ne didesnis nei maksimumas. Štai pavyzdys: <screen>
+kartok 500 {
+  $x = bet_koks 1,20
+  priekin $x
+  kairėn 10 - $x
+}
+</screen
+> Programa, kurioje naudosite komandą <userinput
+>bet_koks</userinput
+>, Jūs galite sukelti šiokį tokį chaosą.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="mod"/>
+    <varlistentry
+> 
+      <term
+>mod<indexterm
+><primary
+>mod</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mod X,Y</screen>
+Komanda <userinput
+>mod</userinput
+> grąžina pirmo skaičiaus dalinimo iš antrojo liekaną.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sqrt"/>
+    <varlistentry
+> 
+      <term
+>šaknis<indexterm
+><primary
+>šaknis</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>šaknis X</screen>
+Komanda <userinput
+>šaknis</userinput
+> naudojama skaičiaus X kvadratinei šakniai suskaičiuoti.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+<!--
+  <variablelist>
+    <anchor id="exp"/>
+    <varlistentry
+> 
+      <term
+>exp<indexterm
+><primary
+>exp</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+-->
+  <variablelist>
+    <anchor id="pi"/>
+    <varlistentry
+> 
+      <term
+>pi<indexterm
+><primary
+>pi</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pi</screen>
+Ši komanda grąžina Pi konstantą – <userinput
+>3.14159</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sin"/>
+    <anchor id="cos"/>
+    <anchor id="tan"/>
+    <varlistentry>
+      <term
+>sin<indexterm
+><primary
+>sin</primary
+></indexterm
+>, cos<indexterm
+><primary
+>cos</primary
+></indexterm
+>, tg<indexterm
+><primary
+>tg</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>sin X
+cos X
+tg X
+</screen>
+Šios komandos – tai visame pasaulyje įžymiosios trigonometrinės funkcijos <userinput
+>sin</userinput
+>, <userinput
+>cos</userinput
+> ir <userinput
+>tg</userinput
+>. Šių komandų argumentas X yra <link linkend="number"
+>skaičius</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="arcsin"/>
+    <anchor id="arccos"/>
+    <anchor id="arctan"/>
+    <varlistentry>
+      <term
+>arcsin<indexterm
+><primary
+>arcsin</primary
+></indexterm
+>, arccos<indexterm
+><primary
+>arccos</primary
+></indexterm
+>, arctg<indexterm
+><primary
+>arctg</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>arcsin X
+arccos X
+arctg X
+</screen>
+Šios komandos yra atvirkštinės anksčiau aprašytoms <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+> ir <link linkend="tan"
+>tg</link
+>. Komandos argumentas X yra <link linkend="number"
+>skaičius</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="dialogs">
+<title
+>Užklausa ir atsakas naudojant dialogus</title>
+<para
+>Dialogas tai mažas iššokantis langelis, duodantis kokį nors atsaką programos naudotojui arba prašantis naudotojo įvesti duomenis. &kturtle; programoje yra dvi dialogų komandos: <userinput
+>pranešimas</userinput
+> ir <userinput
+>klausk</userinput
+>.</para>
+  <variablelist>
+    <anchor id="message"/>
+    <varlistentry
+> 
+      <term
+>pranešimas<indexterm
+><primary
+>pranešimas</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pranešimas X</screen>
+Komandai <userinput
+>pranešimas</userinput
+> reikia nurodyti parametrą &mdash; <link linkend="string"
+>tekstinę eilutę</link
+>. Šis tekstas bus rodomas komandos atvertame lange. <screen
+>pranešimas "2003 metais Cies pradėjo kurti KTurtle, ir vis dar mielu noru jį tobulina!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="ask"/>
+    <varlistentry
+> 
+      <term
+>klausk<indexterm
+><primary
+>klausk</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>klausk X</screen>
+Komandai <userinput
+>klausk</userinput
+> reikia nurodyti parametrą &mdash; <link linkend="string"
+>tekstinę eilutę</link
+>. Ši komanda, panašiai kaip ir komanda <link linkend="message"
+>pranešimas</link
+>, atvers langą su nurodytu tekstu. Be to, atvertame lange bus dar ir įvesties laukelis, į kurį naudotojas galės įvesti <link linkend="number"
+>skaičių</link
+> arba <link linkend="string"
+>tekstinę eilutę</link
+>. Naudotojui uždarius langą, įvestieji duomenys bus patalpinti <link linkend="assignment-of-variables"
+>kintamajame</link
+> arba perduoti kaip argumentas <link linkend="commands"
+>komandai</link
+>. Pavyzdžiui <screen>
+$gauta = klausk "Kada tu gimei?"
+$metai = 2011 - $gauta
+rašyk "2011-taisiais tau buvo " + $metai + " metų."
+</screen
+> Jei naudotojas atšauks dialogą, arba jį užvers nieko neįvedęs, tai <link linkend="assignment-of-variables"
+>kintamasis</link
+> bus ištuštintas.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="assignment-of-variables">
+<title
+>Kintamųjų reikšmių priskyrimas</title>
+<para
+>Pirma pakalbėkime apie kintamuosius, o tada – apie reikšmių jiems priskyrimą. </para>
+
+<para
+>Kintamieji – tai žodžiai, prasidedantys simboliu <quote
+>$</quote
+>, <link linkend="the-editor"
+>rašyklėje</link
+> jie <glossterm
+>paryškinami</glossterm
+> purpurine spalva.</para>
+
+<para
+>Į kintamąjį gali būti įrašytas bet koks <link linkend="number"
+>skaičius</link
+>, <link linkend="string"
+>tekstinė eilutė</link
+> arba <link linkend="boolean-value"
+>loginė (taip/ne) reikšmė</link
+>. Naudojant priskyrimą <userinput
+>=</userinput
+>, kintamąjam suteikiama reikšmė. Ši reikšmė bus saugoma tol, kol programa baigia darbą arba kol kintamajam nepriskiriama kita reikšmė.</para>
+
+<para
+>Po to, kai kintamajam priskirta reikšmė, galite jį naudoti lygiai taip pat, kaip ir pačią reikšmę. Pavyzdžiui šioje &turtlescript; kodo ištraukoje: <screen>
+$x = 10
+$x = $x / 3
+rašyk $x
+</screen
+> Visų pirma kintamajam <userinput
+>$x</userinput
+> priskiriama reikšmė <userinput
+>10</userinput
+>. Tada kintamojo <userinput
+>$x</userinput
+> reikšmė keičiama į jo paties reikšmę, padalintą iš <userinput
+>3</userinput
+> &mdash; tai realiai reiškia, kad kintamajam <userinput
+>$x</userinput
+> priskiriama reikšmė <userinput
+>10 / 3</userinput
+>. Galų gale <userinput
+>$x</userinput
+> reikšmė yra parašoma. Antroje ir trečioje eilutėje kintamasis <userinput
+>$x</userinput
+> naudojamas tarsi jis būtų jo reikšmė.</para>
+
+<para
+>Norint naudoti kintamuosius, jiems reikia priskirti reikšmę. Pavyzdys: <screen>
+rašyk $N
+</screen
+> Tai nieko neparašys ir Jūs gausite pranešimą apie klaidą.</para>
+
+<para
+>Panagrinėkite šį &turtlescript; kodą: <screen>
+$a = 2004
+$b = 25
+
+# tolesnė komanda parašys „2029“
+rašyk $a + $b
+atgal 30
+# tolesnė komanda parašys „2004 plius 25 lygu 2029“
+rašyk $a + " plius " + $b + " lygu " + ($a + $b)
+</screen
+> Pirmose dviejose eilutėse kintamiesiems <userinput
+>$a</userinput
+> ir <userinput
+>$b</userinput
+> buvo priskirtos vertės 2004 ir 25. Tada vykdomos dvi komandos <userinput
+>rašyk</userinput
+> su tarp jų įrašyta <userinput
+>atgal 30</userinput
+>. Komentarai prieš komandas <userinput
+>rašyk</userinput
+> paaiškina, ką jos daro. Komanda <userinput
+>atgal 30</userinput
+> buvo naudota tam, kad tolesnis tekstas būtų rašomas naujoje eilutėje. Šiame pavyzdyje Jūs matėte, kad kintamuosius galima naudoti tarsi jie būtų jų reikšmės, juos galite naudoti su bet kokiais <link linkend="operators"
+>operatoriais</link
+> arba panaudoti juos kaip argumentus kviečiant <link linkend="commands"
+>komandas</link
+>.</para>
+
+<para
+>Dar vienas pavyzdys: <screen>
+$vardas = klausk "Koks tavo vardas?"
+rašyk "Labas " + $vardas + "! Sėkmės mokantis programavimo meno..."
+</screen
+> Gan paprasta. Vėlgi galite pastebėti, kad kintamasis <userinput
+>$vardas</userinput
+> naudojamas tarsi tai būtų tekstinė eilutė.</para>
+
+<para
+>Naudojant kintamuosius, labai naudingas įrankis yra <link linkend="the-inspector"
+>inspektorius</link
+>. Jis parodo visų šiuo metu naudojamų kintamųjų turinį.</para>
+</sect1>
+
+
+
+<sect1 id="controlling-execution">
+<title
+>Vykdymo valdymas</title>
+<para
+>Valdymo procedūromis galima valdyti programos vykdymo eigą.</para>
+<para
+>Valdymo procedūros <glossterm
+>paryškinamos</glossterm
+> tamsiai žalios spalvos pusjuodžiu šriftu. Kartu su vykdymo valdymo komandomis dažniausiai naudojami ir skliausteliai, kurie <glossterm
+>paryškinami</glossterm
+> juoda spalva.</para>
+
+<sect2 id="wait">
+<title
+>Priverskite vėžliuką luktelėti</title>
+<para
+>Programuodami &kturtle; programa, Jūs tikriausiai pastebėjot tai, kad vėžliukas labai greitai piešia. Šia komanda Jūs priversite vėžliuką luktelėti nurodytą laikotarpį.</para>
+  <variablelist>
+    <varlistentry>
+      <term
+>lauk<indexterm
+><primary
+>lauk</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>lauk X</screen>
+Komanda <userinput
+>lauk</userinput
+> vėžliuką priverčia luktelėti X sekundžių. <screen>
+kartok 36 {
+  priekin 5
+  dešinėn 10
+  lauk 0.5
+}
+</screen
+> Šiuo kodu brėžiamas apskritimas, tačiau ties kiekvienu žingsniu vėžliukas pusei sekundės stabtelėja. Tai sudaro lėtai judančio vėžliuko įspūdį.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="if">
+<title
+>Vykdyk „jei“</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>jei<indexterm
+><primary
+>jei</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>jei <link linkend="boolean-value"
+>loginė reikšmė</link
+> { ... }</screen>
+Kodas, esantis tarp skliaustelių, bus vykdomas tik <userinput
+>jei</userinput
+> <link linkend="boolean-value"
+>loginė reikšmė</link
+> bus <quote
+>taip</quote
+>. <screen>
+$x = 6
+jei $x &gt; 5 {
+  rašyk "x yra didesnis nei penki!"
+}
+</screen
+> Pirmoje eilutėje kintamajam <userinput
+>$x</userinput
+> priskirtas 6. Antroje eilutėje panaudotas <link linkend="comparing-operators"
+>palyginimo operatorius</link
+>, tikrinant ar <userinput
+>$x &gt; 5</userinput
+>. Kadangi sąlygos atsakymas yra <quote
+>taip</quote
+> – 6 tikrai daugiau už 5 – tai vykdomas tarp valdymo procedūros <userinput
+>jei</userinput
+> skliaustelių esantis kodas.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="else">
+<title
+>Jei ne, kitaip tariant: „antraip“</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>antraip<indexterm
+><primary
+>antraip</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>jei <link linkend="boolean-value"
+>loginė reikšmė</link
+> { ... } else { ... }</screen>
+<userinput
+>antraip</userinput
+> naudojamas kartu su valdymo procedūra <link linkend="if"
+><userinput
+>jei</userinput
+></link
+>. Kodas, esantis tarp skliaustelių einančių po <userinput
+>antraip</userinput
+>, vykdomas tik tada, jei <link linkend="boolean-value"
+>loginė reikšmė</link
+> yra <quote
+>ne</quote
+>. <screen>
+pradžių_pradžia
+$x = 4
+jei $x &gt; 5 {
+  rašyk "$x yra didesnis nei penki!"
+} antraip {
+  rašyk "$x yra mažesnis nei šeši!"
+}
+</screen
+> <link linkend="comparing-operators"
+>Palyginimo operatorius</link
+> tikrina, ar <userinput
+>$x &gt; 5</userinput
+>. Kadangi 4 nėra didesnis už 5, tai sąlygos atsakymas yra <quote
+>ne</quote
+>. Tai reiškia kad bus vykdomas kodas, esantis po <userinput
+>antraip</userinput
+> einančiuose skliausteliuose.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="while">
+<title
+>Ciklas „kol“</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>kol<indexterm
+><primary
+>kol</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>kol <link linkend="boolean-value"
+>loginė reikšmė</link
+> { ... }</screen>
+Valdymo procedūra <userinput
+>kol</userinput
+> labai panaši į <link linkend="if"
+><userinput
+>jei</userinput
+></link
+>. Skirtumas tik tas, kad <userinput
+>kol</userinput
+> kartoja tarp skliaustelių esantį kodą tol, kol <link linkend="boolean-value"
+>loginė reikšmė</link
+> būna <quote
+>taip</quote
+>. <screen>
+$x = 1
+kol $x &lt; 5 {
+  priekin 10
+  lauk 1
+  $x = $x + 1
+}
+</screen
+> Pirmoje eilutėje kintamajam <userinput
+>$x</userinput
+> priskiriamas 1. Antroje tikrinama, ar <userinput
+>$x &lt; 5</userinput
+>. Kadangi atsakymas į šį klausimą yra <quote
+>taip</quote
+>, tai valdymo procedūra <userinput
+>kol</userinput
+> vykdo jos skliausteliuose esantį kodą tol, kol <userinput
+>$x &lt; 5</userinput
+> bus <quote
+>ne</quote
+>. Šiuo atveju kodas tarp skliaustelių bus įvykdytas 4 kartus, nes kiekvieną kartą įvykdžius penktą eilutę kintamojo <userinput
+>$x</userinput
+> reikšmė didinama vienetu.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="repeat">
+<title
+>Ciklas „kartok“</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>kartok<indexterm
+><primary
+>kartok</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>kartok <link linkend="number"
+>skaičius</link
+> { ... }</screen>
+Valdymo procedūra <userinput
+>kartok</userinput
+> yra labai panaši į <link linkend="while"
+><userinput
+>kol</userinput
+></link
+>. Skirtumas tik tas, kad procedūra <userinput
+>kartok</userinput
+> tarp skliaustelių esantį kodą kartoją nurodytą skaičių kartų.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="for">
+<title
+>Skaičiuojantysis ciklas „nuo“</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>nuo<indexterm
+><primary
+>nuo</primary
+></indexterm
+><indexterm
+><primary
+>kas</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>nuo <link linkend="assignment-of-variables"
+>kintamasis</link
+> = <link linkend="number"
+>skaičius</link
+> iki <link linkend="number"
+>skaičius</link
+> { ... }</screen>
+Ciklas <userinput
+>nuo</userinput
+> tai <quote
+>skaičiuojantysis ciklas</quote
+>, t.y. jis keičia Jūsų nurodyto kintamojo vertę. Pirmo ciklo metu kintamajam priskiriama pirmoji reikšmė. Kiekvieno kito ciklo metu kintamojo reikšmė didinama ir ciklai kartojami tol, kol pasiekiama antroji reikšmė. <screen>
+nuo $x = 1 iki 10 {
+  rašyk $x * 7
+  priekin 15
+}
+</screen
+> Kiekvieną kartą vykdant tarp skliaustelių esantį kodą, <userinput
+>$x</userinput
+> kaskart padidėja vienetu tol, kol <userinput
+>$x</userinput
+> vertė tampa 10. Skliausteliuose esantis kodas spausdina <userinput
+>$x</userinput
+> ir 7 sandaugą. Įvykdžius šia programą, drobėje bus parašyta septinių daugybos lentelė. </para>
+     <para
+>Numatytasis ciklo žingsnis yra 1, kitokį žingsnį galima nustatyti su <screen
+>nuo <link linkend="assignment-of-variables"
+>kintamasis</link
+> = <link linkend="number"
+>skaičius</link
+> iki <link linkend="number"
+>skaičius</link
+> kas <link linkend="number"
+>skaičius</link
+> { ... }</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="break">
+<title
+>Ciklo nutraukimas</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>baik<indexterm
+><primary
+>baik</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>baik</screen>
+Tuoj pat nutraukia dabartinį ciklą, ir vykdymą nukreipia po šio ciklo einančiai komandai.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="exit">
+<title
+>Nutraukti jūsų programos vykdymą</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>stabdyk<indexterm
+><primary
+>stabdyk</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>stabdyk</screen>
+Baigia jūsų programos vykdymą.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+</sect1>
+
+
+<sect1 id="learn">
+
+
+<!--<sect2 id="name">
+<title
+>Names</title>
+<para
+>When using the &turtlescript; programming language you create new things. If you write a program you will often need <link linkend="containers"
+>containers</link
+> and in some cases you need <link linkend="learn"
+>learn</link
+> to create new commands. When making a new command with <link linkend="learn"
+>learn</link
+> you will have to specify a name.</para>
+<para
+>You can choose any name, as long as it does not already have a meaning. For instance you cannot name a function <link linkend="forward"
+>forward</link
+>, since that name is already used for an internal command.
+<screen
+>
+# here forward is used as a new command, 
+# but it already has a meaning so 
+# this will produce an error:
+learn forward {
+  print "this is invalid"
+}
+
+# this works:
+learn myforward {
+  print "this is ok"
+}
+</screen>
+Names can contain only letters, numbers and underscores (_). Yet they have to start with a letter. Container names have to start with the container prefix ($).
+<screen
+>
+# here forward is used as a container, 
+# starting with the $ prefix, so it does
+# not conflict with the forward command
+$forward = 20
+print $forward
+</screen>
+</para>
+<para
+>Containers are <glossterm
+>highlighted</glossterm
+> with bolded purple in the <link linkend="the-editor"
+>code editor</link
+>.</para>
+<para>
+Please read the documentation on <link linkend="containers"
+>containers</link
+> and the <link linkend="learn"
+>learn</link
+> command for a better explanation and more examples.
+</para>
+</sect2
+>-->
+
+
+
+
+
+<title
+>Kurkite savas komandas komanda <quote
+>išmok</quote
+></title>
+<para
+><userinput
+>išmok</userinput
+> yra ypatinga komanda, nes ja galima kurti savas komandas. Sukurtosios komandos gali reikalauti <glossterm linkend="input-output"
+>parametrų</glossterm
+> ir grąžinti <glossterm linkend="input-output"
+>rezultatą</glossterm
+>. Štai kaip kuriama nauja komanda: <screen>
+išmok apskritimas $x {
+  kartok 36 {
+    priekin $x
+    kairėn 10
+  }
+}
+</screen
+> Naujosios komandos pavadinimas yra <userinput
+>apskritimas</userinput
+>. <userinput
+>apskritimas</userinput
+> reikalauja vieno <glossterm linkend="input-output"
+>parametro</glossterm
+> &mdash; skaičiaus, nurodančio apskritimo dydį. <userinput
+>apskritimas</userinput
+> negrąžina <glossterm linkend="input-output"
+>rezultato</glossterm
+>. Dabar, komandą <userinput
+>apskritimas</userinput
+> galima naudoti kaip ir bet kurią kitą komandą. Žvilgtelėkit į šį pavyzdį: <screen
+>išmok apskritimas $X {
+  kartok 36 {
+    priekin $X 
+    kairėn 10 
+  }
+}
+
+eik_x_y 200,200 
+apskritimas 20
+
+eik_x_y 300,200 
+apskritimas 40  
+</screen>
+</para>
+<para
+>Kitame pavyzdyje sukuriama komanda, kuri grąžina rezultatą. <screen>
+išmok faktorialas $x {
+  $r = 1
+  nuo $i = 1 iki $x {
+    $r = $r * $i
+  }
+  grąžink $r
+}
+
+rašyk faktorialas 5
+</screen
+> Šiame pavyzdyje kviečiama naujai sukurta komanda, pavadinta <userinput
+>faktorialas</userinput
+>. Jei šios komandos argumentas yra <userinput
+>5</userinput
+>, tai rezultatas yra <userinput
+>5*4*3*2*1</userinput
+>. Naudojant <userinput
+>grąžink</userinput
+>, nurodoma <glossterm linkend="input-output"
+>grąžinama</glossterm
+> reikšmė ir baigiamas naujos komandos vykdymas.</para>
+<para
+>Komanda gali turėti daugiau nei vieną <glossterm linkend="input-output"
+>argumentą</glossterm
+>. Kitame pavyzdyje sukuriama komanda, kuri braižo keturkampį: <screen>
+išmok keturkampis $x, $y {
+  priekin $y
+  dešinėn 90
+  priekin $x
+  dešinėn 90
+  priekin $y
+  dešinėn 90
+  priekin $x
+  dešinėn 90
+}
+</screen
+> Dabar, įvykdžius <userinput
+>keturkampis 50, 100</userinput
+>, vėžliukas drobėje nubrėš keturkampį. </para>
+  
+</sect1>
+
+</chapter>

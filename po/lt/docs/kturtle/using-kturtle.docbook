@@ -1,0 +1,1092 @@
+<chapter id="using-kturtle">
+<title
+>Darbas su &kturtle;</title>
+
+<screenshot>
+  <screeninfo
+>Čia matote veikiančio &kturtle; vaizdą</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow_flower_nrs.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Pagrindinis &kturtle; langas</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Pagrindiniame &kturtle; lange yra trys svarbiausios dalys: lango kairėje esančioje <link linkend="the-editor"
+>kodo rašyklėje</link
+> (1) rašomos &turtlescript; komandos, dešinėje esančioje <link linkend="the-canvas"
+>drobėje</link
+> (2) vežliukas juda ir paišo, o <link linkend="the-inspector"
+>inspektoriuje</link
+> (3) pateikiama informacija apie vykdomą programą. Likusios pagrindinio lango dalys: <link linkend="the-menubar"
+>meniu juostą</link
+> (5), kur rasite visas komandas, dažniausiai naudojamus veiksmus rasite <link linkend="the-toolbar"
+>įrankių juostoje</link
+> (4), <guilabel
+>pulte</guilabel
+> galima įvesti po vieną komandos eilutę ir ją įvykdyti, <link linkend="the-statusbar"
+>būsenos juostoje</link
+> (lango apačioje) Jūs matysite dabartinę &kturtle; būseną.</para>
+
+<sect1 id="the-editor">
+<title
+>Kodo rašyklė</title>
+<para
+>Kodo rašyklėje rašomos &turtlescript; komandos. Daugelį jos ypatybių rasite meniu punktuose <link linkend="the-edit-menu"
+>Taisa</link
+> ir <link linkend="the-tools-menu"
+>Įrankiai</link
+>. Kodo rašyklę galima perkelti į bet kurią pagrindinio lango vietą, arba ją galima tiesiog atkabinti nuo pagrindinio lango ir padėti kur nors šalia.</para>
+<para
+>Yra keletas būdų kaip į kodo rašyklę patalpinti kodą. Paprasčiausias būdas tai panaudoti jau esantį programos pavyzdį: <link linkend="the-file-menu"
+>meniu grupėje Failas</link
+> atverkite <menuchoice
+><guimenu
+>Failas</guimenu
+><guisubmenu
+>Pavyzdžiai</guisubmenu
+> </menuchoice
+> ir parinkite kokį nors pavyzdį. Parinktasis pavyzdys bus įkeltas į <link linkend="the-editor"
+>kodo rašyklę</link
+>, jei norite, įkeltąjį kodą galite paleisti parinkę <menuchoice
+><guimenu
+>Failas</guimenu
+><guimenuitem
+>Paleisti</guimenuitem
+> </menuchoice
+>.</para>
+<para
+>Jūs galite atverti jau egzistuojantį &turtlescript; failą, tam parinkite meniu punktą <menuchoice
+><guimenu
+>Failas</guimenu
+><guimenuitem
+>Atverti…</guimenuitem
+> </menuchoice
+>.</para>
+<para
+>Trečiasis būdas tai tiesiog rašyklėje surinkti kodą, arba kopijuoti vadove pateikiamą kodą ir jį įdėti į rašyklę.</para>
+</sect1>
+
+
+<sect1 id="the-canvas">
+<title
+>Drobė</title>
+<para
+>Drobė tai vėžliuko „žaidimų aikštelė“, kurioje vėžliukas paišo, vykdydamas gautas komandas. <link linkend="the-editor"
+>Kodo rašyklėje</link
+> surinkus kažkiek komandų ir jas paleidus, gali įvykti du dalykai: kodas gali būti paleistas be jokių kliūčių, ir greičiausiai Jūs pamatysite pokyčius drobėje; arba Jūsų kode būsite padarę klaidą ir tada klaidų kortelėje Jums bus paaiškinta, kokią klaidą padarėte.</para>
+<para
+>Sukant pelės ratuką, galima keisti drobės vaizdo mastelį.</para>
+</sect1>
+
+
+<sect1 id="the-inspector">
+<title
+>Inspektorius</title>
+<para
+>Jūsų parašytos programos vykdymo metu, inspektoriuje pateikiami kintamieji, išmoktos funkcijos ir kodo medis.</para>
+<para
+>Inspektorių galima perkelti į bet kurią pagrindinio lango vietą, arba jį galima tiesiog atkabinti nuo pagrindinio lango ir padėti kur nors šalia.</para>
+</sect1>
+
+
+<sect1 id="the-toolbar">
+<title
+>Įrankių juosta</title>
+<para
+>Čia galite greitai pasiekti dažniausiai naudojamus veiksmus. Įrankinėje taipogi yra <guilabel
+>panelė</guilabel
+>, kurioje galite greitai įvykdyti norimas komandas. Tai gali būti naudinga, jei norite pabandyti komandą nekeisdami <link linkend="the-editor"
+>rašyklės</link
+> turinio.</para>
+<para
+>Konfigūruoti įrankių juostą galima parinkus menių punktą <menuchoice
+><guimenu
+>Nustatymai</guimenu
+><guimenuitem
+>Konfigūruoti įrankines…</guimenuitem
+></menuchoice
+>.</para>
+</sect1>
+
+
+<sect1 id="the-menubar">
+<title
+>Meniu juosta</title>
+<para
+>Meniu juostoje rasite visus &kturtle; veiksmus. Jie suskirstyti į šias grupes: <guimenu
+>Failas</guimenu
+>, <guimenu
+>Keisti</guimenu
+>, <guimenu
+>Drobė</guimenu
+>, <guimenu
+>Paleisti</guimenu
+>, <guimenu
+>Įrankiai</guimenu
+>, <guimenu
+>Nustatymai</guimenu
+> ir <guimenu
+>Pagalba</guimenu
+>. Jos aprašomos šiame skyriuje.</para>
+
+<sect2 id="the-file-menu">
+<title
+>Meniu grupė <guimenu
+>Failas</guimenu
+></title>
+
+  <variablelist>
+    <anchor id="file-new"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Failas</guimenu
+> <guimenuitem
+>Naujas</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Sukuria naują, tuščia &turtlescript; failą.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Failas</guimenu
+> <guimenuitem
+>Atverti…</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Atveria &turtlescript; failą.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-recent"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Failas</guimenu
+> <guisubmenu
+>Atverti paskiausiai naudotą</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Atveria &turtlescript; failą, kuris buvo paskiausiai atvertas.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Failas</guimenu
+> <guisubmenu
+>Pavyzdžiai</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Atveria &turtlescript; pavyzdžio programą. Pavyzdžiai yra Jūsų gimtąja kalba, ją galima nustatyti parinkus menių punktą <menuchoice
+><guimenu
+>Nustatymai</guimenu
+><guisubmenu
+>Scenarijaus kalba</guisubmenu
+> </menuchoice
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-get-more-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Failas</guimenu
+> <guimenuitem
+>Gauti daugiau pavyzdžių…</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Atveria dialogą <guilabel
+>Gauti karštas naujienas</guilabel
+>, kuriame galite atsisiųsti papildomų &turtlescript; scenarijų iš interneto.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="file-save"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Failas</guimenu
+> <guimenuitem
+>Įrašyti</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Įrašo dabar atvertą &turtlescript; failą.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-save-as"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Failas</guimenu
+> <guimenuitem
+>Įrašyti kaip…</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Dabar atvertą &turtlescript; failą įrašo kitu pavadinimu.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-export-to-html"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Failas</guimenu
+> <guimenuitem
+>Eksportuoti į HTML…</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Eksportuoja dabartinį rašyklės turinį į HTML failą, kuriame yra išlaikomos paryškinimo spalvos.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Failas</guimenu
+> <guimenuitem
+>Spausdinti...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Atspausdina kodo rašyklėje esantį kodą.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-quit"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Failas</guimenu
+> <guimenuitem
+>Baigti darbą</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Baigia &kturtle; darbą.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-edit-menu">
+  <title
+>Menių grupė <guimenu
+>Taisa</guimenu
+></title>
+  <variablelist>
+    <anchor id="edit-undo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Taisa</guimenu
+> <guimenuitem
+>Atšaukti</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Atšaukia paskutinį kodo pakeitimą. &kturtle; programoje atšaukimų skaičius yra neribotas.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-redo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Taisa</guimenu
+><guimenuitem
+>Grąžinti</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Grąžiną paskutinį syk kodo rašyklėje atšauktą pakeitimą.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-cut"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>X</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Taisa</guimenu
+> <guimenuitem
+>Iškirpti</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Kodo <link linkend="the-editor"
+>rašyklėje</link
+> pažymėtą tekstą iškerpa į iškarpinę.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-copy"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Taisa</guimenu
+> <guimenuitem
+>Kopijuoti</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Kodo <link linkend="the-editor"
+>rašyklėje</link
+> pažymėtą tekstą kopijuoja į iškarpinę.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-paste"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>V</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Taisa</guimenu
+> <guimenuitem
+>Įdėti</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Kodo <link linkend="the-editor"
+>rašyklėje</link
+> į nurodytą vietą įdeda iškarpinėje esantį tekstą.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-select-all"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>A</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Taisa</guimenu
+> <guimenuitem
+>Pažymėti viską</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Pažymi visą kodo <link linkend="the-editor"
+>rašyklėje</link
+> esantį tekstą.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Taisa</guimenu
+> <guimenuitem
+>Ieškoti…</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Kodo rašyklėje esančiame tekste ieškoma nurodytoji frazė.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find-next"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F3</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Taisa</guimenu
+> <guimenuitem
+>Ieškoti kito…</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Ieškoma kur toliau tekste yra ieškomoji frazė.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="edit-find-previous"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Shift;<keysym
+>F3</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Taisa</guimenu
+> <guimenuitem
+>Ieškoti ankstesnio</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Tekste atgalios ieškoma ieškomosios frazės.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <!--<variablelist>
+    <anchor id="edit-replace"/>
+    <varlistentry>
+      <term
+><menuchoice>
+        <shortcut>
+          <keycombo
+>&Ctrl;<keycap
+>R</keycap
+></keycombo>
+        </shortcut>
+        <guimenu
+>Edit</guimenu>
+        <guimenuitem
+>Replace...</guimenuitem>
+      </menuchoice
+></term>
+      <listitem
+><para
+>With this action you can replace text in the code.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>-->
+<variablelist>
+    <anchor id="toggle-insert"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keycap
+>Ins</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Taisa</guimenu
+> <guimenuitem
+>Keitimo veiksena</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Įjungiama „įterpimo“ arba „keitimo“ veiksena.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+<sect2 id="the-canvas-menu">
+  <title
+>Menių grupė <guimenu
+>Drobė</guimenu
+></title>
+  <variablelist>
+    <anchor id="canvas-export-to-image"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Drobė</guimenu
+> <guimenuitem
+>Įrašyti kaip piešinį (PNG)…</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Eksportuoja dabartinį <link linkend="the-canvas"
+>drobės</link
+> turinį kaip taškinį piešinį (PNG).</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-export-to-drawing"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Drobė</guimenu
+> <guimenuitem
+>Eksportuoti į piešinį (SVG)…</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Eksportuoja dabartinį <link linkend="the-canvas"
+>drobės</link
+> turinį į keičiamo mastelio piešinį (SVG).</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Drobė</guimenu
+> <guimenuitem
+>Spausdinti drobę…</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Spausdina dabartinį <link linkend="the-canvas"
+>drobės</link
+> turinį.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-run-menu">
+  <title
+>Meniu grupė <guimenu
+>Paleisti</guimenu
+></title>
+  <variablelist>
+    <anchor id="run-execute"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F5</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Paleisti</guimenu
+> <guimenuitem
+>Paleisti</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Paleidžia kodo rašyklėje parašytą programą.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-pause"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F6</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Paleisti</guimenu
+> <guimenuitem
+>Pristabdyti</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Pristabdo Jūsų parašytos programos vykdymą. Šis veiksmas įgalintas tik tada, kai kodas yra paleistas.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-stop"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F7</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Paleisti</guimenu
+> <guimenuitem
+>Nutraukti</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Nutraukia kodo vykdymą. Šis veiksmas įgalintas tik tada, kai kodas yra paleistas.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-speed"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Paleisti</guimenu
+> <guisubmenu
+>Vykdymo greitis</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Pateikia galimų kodo vykdymo greičių sąrašą: <guimenuitem
+>Visu greičiu (be paryškinimo ir tikrinimo)</guimenuitem
+>, <guimenuitem
+>Visu greičiu</guimenuitem
+>, <guimenuitem
+>Lėtai</guimenuitem
+>, <guimenuitem
+>Lėčiau</guimenuitem
+>, <guimenuitem
+>Lėčiausiai</guimenuitem
+> ir <guimenuitem
+>Pažingsniui</guimenuitem
+>. Kai vykdymo greitis nustatytas <guimenuitem
+>Visu greičiu</guimenuitem
+> (numatyta), tada sunku sekti kas vyksta. Kai kada tai priimtina, tačiau kai kada prireikia sekti kodo vykdymo eigą. Tais atvejais vykdymo greitį reiktų nustatyti <guimenuitem
+>Lėtai</guimenuitem
+>, <guimenuitem
+>Lėčiau</guimenuitem
+> arba <guimenuitem
+>Lėčiausiai</guimenuitem
+>. Kai yra nustatytas kažkuris iš minėtų lėtų vykdymo greičių, tada kodo rašyklėje rodomas dabartinis kodo vykdymo taškas. Esant <guimenuitem
+>Pažingsniui</guimenuitem
+> vykdymo greičiui, kas kart vykdoma tik po vieną komandą.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+
+<sect2 id="the-tools-menu">
+  <title
+>Menių grupė <guimenu
+>Įrankiai</guimenu
+></title>
+  <variablelist>
+    <anchor id="tools-direction-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Įrankiai</guimenu
+> <guimenuitem
+>Krypties parinkiklis…</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Tai atvers krypties parinkiklio dialogą.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-color-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Įrankiai</guimenu
+> <guimenuitem
+>Spalvos parinkiklis…</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Tai atvers spalvos parinkiklio dialogą.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-setting-menu">
+  <title
+>Meniu grupė <guimenu
+>Nuostatos</guimenu
+></title>
+  <variablelist>
+    <anchor id="settings-set-script-language"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Nustatymai</guimenu
+> <guisubmenu
+>Scenarijaus kalba</guisubmenu
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Parinkite</action
+> kodo kalbą.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-editor"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Nustatymai</guimenu
+> <guimenuitem
+>Rodyti rašyklę</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Rodyti arba paslėpti <link linkend="the-editor"
+>rašyklę</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-inspector"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Nustatymai</guimenu
+> <guimenuitem
+>Rodyti inspektorių</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Rodyti arba slėpti <link linkend="the-inspector"
+>inspektorių</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-errors"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Nustatymai</guimenu
+> <guimenuitem
+>Rodyti klaidas</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Rodo arba slepia kortelę <guilabel
+>Klaidos</guilabel
+>, kurioje pateikiamas kodo vykdymo metu aptiktų klaidų sąrašas. Jei ši parinktis įgalinta, tai ją vėl paspaudę pamatysite kortelę <guilabel
+>Drobė</guilabel
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-linenumbers"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F11</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Nustatymai</guimenu
+> <guimenuitem
+>Rodyti eilučių numerius</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Šia parinktimi galite nustatyti ar <link linkend="the-editor"
+>kodo rašyklėje</link
+> rodyti eilučių numerius. Tai paranku kai ieškote klaidų.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-toolbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Nustatymai</guimenu
+> <guimenuitem
+>Rodyti įrankių juostą</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Rodo arba slepia</action
+> pagrindinę įrankių juostą</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="settings-toggle-statusbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Nustatymai</guimenu
+> <guimenuitem
+>Rodyti būsenos juostą</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Rodo arba slepia</action
+> būsenos juostą</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-shortcuts"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Nuostatos</guimenu
+> <guimenuitem
+>Konfigūruoti sparčiuosius klavišus…</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Atvers įprastą &kde; sparčiųjų klavišų konfigūravimo dialogą.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-toolbars"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Nuostatos</guimenu
+> <guimenuitem
+>Konfigūruoti įrankines…</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Atvers įprastą &kde; įrankinių konfigūravimo dialogą.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-help-menu">
+  <title
+>Meniu grupė <guimenu
+>Žinynas</guimenu
+></title>
+&help.menu.documentation; <variablelist
+> <anchor id="help-context-help"/> <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F2</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Pagalba</guimenu
+> <guimenuitem
+>Žinynas apie: ...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Tai labai naudinga funkcija: ji suteikia informaciją apie kodo dalį, kurioje šiuo metu yra žymeklis. Taigi jei savo kode panaudojote komandą <userinput
+>rašyk</userinput
+> ir norite paskaityti, kas apie ją rašoma vadove. Tiesiog nuveskite žymeklį kur nors and komandos <userinput
+>rašyk</userinput
+> ir spauskite <keysym
+>F2</keysym
+>. Vadovas tada parodys visą informaciją apie komandą <userinput
+>rašyk</userinput
+>.</para>
+      <para
+>Ši funkcija gali labai praversti mokantis &turtlescript;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+<sect1 id="the-statusbar">
+<title
+>Būsenos juosta</title>
+<para
+>Būsenos juostoje pateikiama &kturtle; būsena. Kairiojoje jos dalyje pateikiama reakcija į paskutinį syk parinktą veiksmą. Dešiniojoje jos dalyje pateikiamos dabartinės teksto žymeklio koordinatės (eilutėmis ir stulpeliais). Juostos viduryje rodoma komandų kalba.</para>
+</sect1>
+
+</chapter>

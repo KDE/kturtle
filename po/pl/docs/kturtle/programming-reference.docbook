@@ -1,0 +1,2064 @@
+<chapter id="reference">
+<title
+>Dokumentacja programistyczna języka &turtlescript;</title>
+<para
+>To jest dokumentacja &turtlescript;. W pierwszej części tego rozdziału poznasz reguły  <link linkend="grammar"
+>składni</link
+> programów pisanych w &turtlescript;. Druga część opisuje wyłącznie <link linkend="mathematical-operators"
+>operatory matematyczne</link
+>, <link linkend="boolean-operators"
+>operatory logiczne (prawda/fałsz)</link
+> i <link linkend="comparing-operators"
+>operatory porównania</link
+>. Trzecia część to po prostu wielki wykaz wszystkich <link linkend="commands"
+>poleceń</link
+> omówionych po kolei. Część czwarta wyjaśnia jak <link linkend="assignment-of-variables"
+>przypisać</link
+> wartości do <link linkend="assignment-of-variables"
+>zmiennych</link
+>. Na koniec, w części piątej wyjaśnimy, jak zorganizować wykonanie poleceń używając <link linkend="controlling-execution"
+>elementów sterujących</link
+> oraz w części szóstej jak tworzyć własne polecenia z użyciem  <link linkend="learn"
+>poznaj</link
+>.</para>
+
+<sect1 id="grammar">
+<title
+>Składnia &turtlescript;</title>
+<para
+>Podobnie jak inne języki, &turtlescript; posiada różne typy słów i symboli. W języku polskim rozróżniamy czasowniki (przykładowo 'chodzić', czy 'śpiewać') i rzeczowniki (jak 'siostra' lub 'dom'), których używamy do różnych celów. &turtlescript; jest językiem programowania, który jest wykorzystywany do nauczenia &kturtle;, co ma robić.</para>
+<para
+>W tej części niektóre typy słów i symboli języka &turtlescript; zostaną krótko omówione. Wyjaśnimy <link linkend="comment"
+>komentarze</link
+>, <link linkend="command"
+>polecenia</link
+> i trzy rodzaje danych: <link linkend="number"
+>liczby</link
+>, <link linkend="string"
+>teksty</link
+> i <link linkend="boolean-value"
+>wartości logiczne (prawda/fałsz)</link
+>.</para>
+
+
+<sect2 id="comment">
+<title
+>Komentarze</title>
+<para
+>Program zawiera instrukcje, które są wykonywane podczas działania programu i tzw. komentarze. Komentarze nie są wykonywane, &kturtle; po prostu ignoruje je, kiedy program jest wykonywany. Komentarze są po to, aby ułatwić innym programistom zrozumienie Twojego programu. W języku &turtlescript; wszystko za znakiem <userinput
+>#</userinput
+> jest uznane za komentarz. Dla przykładu program, który nic nie robi: <screen>
+# ten mały program nic nie robi, to tylko komentarz!
+</screen
+>Jest on trochę bezużyteczny, ale świetnie wyjaśnia zasadę.</para>
+<para
+>Komentarze są bardzo użyteczne, kiedy program staje się trochę bardziej skomplikowany. To może pomóc innym programistom. W poniższym programie widać komentarze użyte razem z poleceniem <link linkend="print"
+>pisz</link
+>.<screen>
+# ten program został napisany przez Cies Breijs.
+pisz "ten tekst zostanie wypisany na płótnie"
+# poprzedni wiersz nie jest komentarzem, ale następny jest:
+# pisz "ten tekst nie zostanie wypisany!"
+</screen
+> Pierwszy wiersz opisuje program. Drugi jest wykonany przez &kturtle;, który wypisuje <userinput
+>ten tekst zostanie wypisany na płótnie</userinput
+> na płótnie. Trzeci wiersz to komentarz. Czwarty też jest komentarzem, który zawiera w sobie polecenie języka &turtlescript;. Jeśli symbol <userinput
+>#</userinput
+> zostanie usunięty z ostatniego wiersza, to polecenie pisz zostanie wykonane przez  &kturtle;. Programiści mówią: polecenie pisz z czwartego wiersza zostało 'odkomentarzowane'.</para>
+<para
+>W <link linkend="the-editor"
+>edytorze kodów</link
+> komentarze są <glossterm
+>podświetlone</glossterm
+> na kolor jasnoszary.</para>
+</sect2>
+
+<sect2 id="command">
+<title
+>Polecenia</title>
+<para
+>Używając poleceń mówisz żółwiowi lub programowi &kturtle;, co ma robić. Niektóre polecenia wymagają wejścia, niektóre zwracają wyjście. <screen>
+# naprzód jest poleceniem wymagającym wejścia, tutaj test to liczba 100:
+naprzód 100
+</screen
+> Pierwszy wiersz to <link linkend="comment"
+>komentarz</link
+>. Drugi zawiera polecenie <userinput
+>naprzód</userinput
+> i  <link linkend="number"
+>liczbę</link
+> <userinput
+>100</userinput
+>.  Liczba nie jest częścią polecenia, jest to wejście polecenia.</para>
+<para
+>Szczegółowy opis wszystkich poleceń &kturtle; znajduje się <link linkend="commands"
+>tutaj</link
+>. Wbudowane polecenia są  <glossterm
+>podświetlane</glossterm
+> kolorem ciemnoniebieskim.</para>
+</sect2>
+
+<sect2 id="number">
+<title
+>Liczby</title>
+<para
+>Każdy użytkownik z pewnością wie trochę o liczbach. Sposób w jaki liczby używane są przez &kturtle; niezbyt różni się od języka mówionego czy matematyki. </para>
+<para
+>Mamy liczby naturalne: <userinput
+>0</userinput
+>, <userinput
+>1</userinput
+>, <userinput
+>2</userinput
+>, <userinput
+>3</userinput
+>, <userinput
+>4</userinput
+>, <userinput
+>5</userinput
+>, itd. Liczby ujemne: <userinput
+>-1</userinput
+>, <userinput
+>-2</userinput
+>, <userinput
+>-3</userinput
+>, itd. Oraz liczby dziesiętne np: <userinput
+>0.1</userinput
+>, <userinput
+>3.14</userinput
+>, <userinput
+>33.3333</userinput
+>, <userinput
+>-5.05</userinput
+>, <userinput
+>-1.0</userinput
+>. </para>
+<para
+>Liczby mogą być używane z <link linkend="mathematical-operators"
+>operatorami matematycznymi</link
+> i <link linkend="comparing-operators"
+>operatorami porównania</link
+>. Możesz je również przechowywać w <link linkend="assignment-of-variables"
+>zmiennych</link
+>. Liczby są <glossterm
+>podświetlane</glossterm
+> kolorem ciemnoczerwonym.</para>
+</sect2>
+
+<!-- constants like pi? -->
+
+<sect2 id="string">
+<title
+>Teksty</title>
+<para
+>Najpierw przykład: <screen>
+pisz "Cześć, Jestem tekstem."
+</screen
+> W tym przykładzie <userinput
+>pisz</userinput
+> jest poleceniem, a <userinput
+>"Cześć, Jestem tekstem."</userinput
+> tekstem. Tekst zaczyna i kończy się znakiem <userinput
+>"</userinput
+>, dzięki niemu &kturtle; rozpoznaje tekst.</para>
+<para
+>Teksty mogą być umieszczane w <link linkend="assignment-of-variables"
+>zmiennych</link
+>, tak jak <link linkend="number"
+>liczby</link
+>, ale w przeciwieństwie do nich, teksty nie mogą być używane z <link linkend="mathematical-operators"
+>operatorami matematycznymi</link
+> i <link linkend="comparing-operators"
+>operatorami porównania</link
+>. Teksty są <glossterm
+>podświetlone</glossterm
+> kolorem czerwonym.</para>
+</sect2>
+
+<sect2 id="boolean-value">
+<title
+>Wartości logiczne (prawda/fałsz)</title>
+<para
+>Są tylko dwie wartości logiczne: <userinput
+>prawda</userinput
+> i <userinput
+>fałsz</userinput
+>. Czasami są nazywane: włączone i wyłączone, tak i nie, jeden i zero, ale w języku &turtlescript; nazywamy je zawsze <userinput
+>prawda</userinput
+> i <userinput
+>fałsz</userinput
+>. Spójrz na ten fragment kodu &turtlescript;: <screen>
+$a = prawda
+</screen
+> Patrząc na <link linkend="the-inspector"
+>podgląd</link
+> zobaczysz, że <link linkend="assignment-of-variables"
+>zmienna</link
+> <userinput
+>$a</userinput
+> ma wartość <userinput
+>prawda</userinput
+> i typ "wartość logiczna".</para>
+<para
+>Często wartości logiczne są wyjściem <link linkend="comparing-operators"
+>operatorów porównania</link
+>, tak jak w poniższym fragmencie kodu &turtlescript;: <screen>
+$odpowiedź = 10 &gt; 3
+</screen
+> <link linkend="assignment-of-variables"
+>Zmienna</link
+> <userinput
+>$odpowiedź</userinput
+> na wartość <userinput
+>prawda</userinput
+>, ponieważ <userinput
+>10</userinput
+> jest większe od <userinput
+>3</userinput
+>.</para>
+<para
+>Wartości logiczne, <userinput
+>prawda</userinput
+> i <userinput
+>fałsz</userinput
+>, są <glossterm
+>podświetlone</glossterm
+> kolorem ciemnoczerwonym.</para>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="operators">
+<title
+>Operatory matematyczne, logiczne i porównania</title>
+<para
+>Tytuł tej części może brzmieć tajemniczo, ale to tylko pozory.</para>
+
+<sect2 id="mathematical-operators">
+<title
+>Operatory matematyczne</title>
+<para
+>Rozpoznawane są proste operatory matematyczne takie jak: dodawanie (<userinput
+>+</userinput
+>), odejmowanie (<userinput
+>-</userinput
+>), mnożenie (<userinput
+>*</userinput
+>), dzielenie (<userinput
+>/</userinput
+>) i potęgowanie (<userinput
+>^</userinput
+>).</para>
+
+<para
+>Oto prosty przykład użycia operatorów matematycznych w języku &turtlescript;: <screen>
+$dodawanie     = 1 + 1
+$odejmowanie   = 20 - 5
+$mnożenie      = 15 * 2
+$dzielenie     = 30 / 30
+$potęgowanie   = 2 ^ 2
+</screen
+> Rezultaty działań zostały <link linkend="assignment-of-variables"
+>przypisane</link
+> do <link linkend="assignment-of-variables"
+>zmiennych</link
+>. Używając <link linkend="the-inspector"
+>podglądu</link
+> możesz zobaczyć ich wartości.</para>
+<para
+>Chcąc dokonać prostego obliczenia wpisujemy po prostu: <screen
+>pisz 2010-12
+</screen
+></para>
+<para
+>Teraz przykład z nawiasami: <screen>
+pisz ( ( 20 - 5 ) * 2 / 30 ) + 1
+</screen
+> Wyrażenia wewnątrz nawiasów obliczane są najpierw. W tym przykładzie, najpierw zostanie obliczone 20-5, później pomnożone 2, podzielone przez 30, i zostanie dodane 1 (co daje 2). Nawiasy mogą być użyte także w innych sytuacjach.</para>
+<para
+>&kturtle; posiada także bardziej zaawansowane działania w formie poleceń. Spójrz na poniższe polecenia, pamiętaj, że dotyczą zaawansowanych operacji: <link linkend="round"
+>zaokrąglij</link
+>, <link linkend="random"
+>los</link
+>, <link linkend="sqrt"
+>sqrt</link
+> , <link linkend="pi"
+>pi</link
+>, <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+>, <link linkend="tan"
+>tan</link
+>, <link linkend="arcsin"
+>arcsin</link
+>, <link linkend="arccos"
+>arccos</link
+>, <link linkend="arctan"
+>arctan</link
+>.</para>
+</sect2>
+
+<sect2 id="boolean-operators">
+<title
+>Operatory logiczne (prawda/fałsz)</title>
+<para
+><link linkend="mathematical-operators"
+>Operatory matematyczne</link
+> są stosowane głównie do <link linkend="number"
+>liczb</link
+>, a operatory logiczne do <link linkend="boolean-value"
+>wartości logicznych</link
+> (<userinput
+>prawda</userinput
+> i <userinput
+>fałsz</userinput
+>). Są tylko trzy operatory logiczne, mianowicie: <userinput
+>i</userinput
+>, <userinput
+>lub</userinput
+> oraz <userinput
+>nie</userinput
+>. Poniższy fragment kodu &turtlescript; pokazuje, jak je stosować: <screen>
+$i_1_1 = prawda i prawda  # -> prawda
+$i_1_0 = prawda i fałsz   # -> fałsz
+$i_0_1 = fałsz i prawda   # -> fałsz
+$i_0_0 = fałsz i fałsz    # -> fałsz
+
+$lub_1_1 = prawda lub prawda  # ->prawda
+$lub_1_0 = prawda lub fałsz   # -> prawda
+$lub_0_1 = fałsz lub prawda   # -> prawda
+$lub_0_0 = fałsz lub fałsz    # -> fałsz
+
+$nie_1 = nie prawda  # -> fałsz
+$nie_0 = nie fałsz   # -> prawda
+</screen
+> Używając <link linkend="the-inspector"
+>podglądu</link
+> zobaczysz wartości, ponadto dopisaliśmy je w małych komentarzach na  końcach wierszy. <userinput
+>i</userinput
+> zwraca <userinput
+>prawda</userinput
+> tylko, kiedy po oby stronach jest <userinput
+>prawda</userinput
+>. <userinput
+>lub</userinput
+> zwraca <userinput
+>prawda</userinput
+> jeśli przynajmniej jedna strona to <userinput
+>prawda</userinput
+>. Operator <userinput
+>nie</userinput
+> zamienia <userinput
+>prawda</userinput
+> na <userinput
+>fałsz</userinput
+> oraz <userinput
+>fałsz</userinput
+> na <userinput
+>prawda</userinput
+>.</para>
+<para
+>Operatory logiczne są <glossterm
+>podświetlone</glossterm
+> kolorem różowym.</para>
+
+<sect3 id="boolean-operators-advanced-examples">
+<title
+>Więcej, bardziej zaawansowanych przykładów</title>
+<para
+>Przemyśl poniższy przykład, który korzysta z <userinput
+>i</userinput
+>: <screen>
+$a = 1
+$b = 5
+jeśli (($a &lt; 10) i ($b == 5)) i ($a &lt; $b) {
+  pisz "cześć"
+}
+</screen
+> W tym fragmencie programu &turtlescript; trzy wyniki <link linkend="comparing-operators"
+>operatorów porównania</link
+> są połączone operatorem <userinput
+>i</userinput
+>. To znaczy, że wszystkie trzy muszą mieć wartość "prawda", aby wypisać napis "cześć".</para>
+
+<para
+>Przykład z użyciem <userinput
+>lub</userinput
+>: <screen>
+$n = 1
+jeśli ($n &lt; 10) lub ($n == 2) {
+  pisz "cześć"
+}
+</screen
+> W tym programie &turtlescript; lewa strona <userinput
+>lub</userinput
+> ma wartość 'prawda', a prawa 'fałsz'. Ponieważ chociaż jedna strona operatora <userinput
+>lub</userinput
+> ma wartość 'prawda', <userinput
+>lub</userinput
+> zwraca prawda. To znaczy, że napis "cześć" jest wypisany.</para>
+
+<para
+>Ostatni przykład, tym razem z użyciem operatora <userinput
+>nie</userinput
+>, który zmienia "prawda" na "fałsz" i "fałsz" na "prawda". Spójrz: <screen
+>$n = 1
+jeśli nie ($n == 3) {
+  pisz "cześć"
+} jeśliNie {
+  pisz "nie cześć ;-)"
+}
+</screen
+></para>
+</sect3>
+</sect2>
+
+<sect2 id="comparing-operators">
+<title
+>Operatory porównania</title>
+<para
+>Rozważ te proste porównanie: <screen>
+$odpowiedź = 10 &gt; 3
+</screen
+> Tutaj <userinput
+>10</userinput
+> jest porównane z <userinput
+>3</userinput
+> poprzez operator "większy od". Wynik tego porównania to  <link linkend="boolean-value"
+>wartość logiczna</link
+> <userinput
+>prawda</userinput
+>, która jest przypisana do <link linkend="assignment-of-variables"
+>zmiennej</link
+> <userinput
+>$odpowiedź</userinput
+>.</para>
+<para
+>Wszystkie <link linkend="number"
+>liczby</link
+> i <link linkend="assignment-of-variables"
+>zmienne</link
+> (zawierające liczby) mogą być porównywane dzięki operatorom porównania.</para>
+<para
+>Oto wszystkie możliwe operatory porównania: <table
+> <title
+>Typy pytań</title
+> <tgroup cols="3"
+> <tbody
+> <row
+> <entry
+><userinput
+>$A == $B</userinput
+></entry
+> <entry
+>równy</entry
+> <entry
+>wynikiem jest <quote
+>prawda</quote
+>, kiedy <userinput
+>$A</userinput
+> jest równe <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A != $B</userinput
+></entry
+> <entry
+>nierówny</entry
+> <entry
+>wynikiem jest <quote
+>prawda</quote
+>, kiedy <userinput
+>$A</userinput
+> jest różne od <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt; $B</userinput
+></entry
+> <entry
+>większe od</entry
+> <entry
+> wynikiem jest <quote
+>prawda</quote
+>, kiedy <userinput
+>$A</userinput
+> jest większe od <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt; $B</userinput
+></entry
+> <entry
+>mniejsze od</entry
+> <entry
+>wynikiem jest <quote
+>prawda</quote
+>, kiedy <userinput
+>$A</userinput
+> jest mniejsze od <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt;= $B</userinput
+></entry
+> <entry
+>większe od lub równe</entry
+> <entry
+>wynikiem jest <quote
+>prawda</quote
+>, kiedy <userinput
+>$A</userinput
+> jest większe lub równe <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt;= $B</userinput
+></entry
+> <entry
+>mniejsze od lub równe</entry
+> <entry
+>wynikiem jest <quote
+>prawda</quote
+>, kiedy <userinput
+>$A</userinput
+> jest mniejsze lub  równe <userinput
+>$B</userinput
+></entry
+> </row
+> </tbody
+> </tgroup
+> </table
+> Pamiętaj, że $A i $B muszą być <link linkend="number"
+>liczbami</link
+> lub <link linkend="assignment-of-variables"
+>zmiennymi</link
+>, które zawierają liczby.</para>
+</sect2>
+
+
+</sect1>
+
+
+
+<sect1 id="commands">
+<title
+>Polecenia</title>
+<para
+>Używając poleceń mówimy żółwiowi lub &kturtle; by wykonywał konkretne rozkazy. Niektóre polecenia wymagają argumentów wyjściowych, a niektóre dają coś na wyjściu. W tej sekcji wyjaśniamy działanie wszystkich wbudowanych poleceń używanych przez &kturtle;. Możesz również użyć <link linkend="learn"
+>poznaj</link
+> do tworzenia własnych poleceń. Wbudowane polecenia są <glossterm
+>podświetlone</glossterm
+> kolorem ciemnoniebieskim.</para>
+
+<sect2 id="moving-the-turtle">
+<title
+>Poruszanie żółwia</title>
+<para
+>Do poruszania żółwia po ekranie służy kilka poleceń.</para>
+
+  <variablelist>
+    <anchor id="forward"/>
+    <varlistentry
+> 
+      <term
+>naprzód (np)<indexterm
+><primary
+>naprzód (np)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>naprzód X</screen>
+<userinput
+>naprzód</userinput
+> przesuwa żółwia do przodu o X pikseli. Gdy ołówek jest skierowany w dół żółw zostawia ślad. <userinput
+>naprzód</userinput
+> może być użyty za pomocą skrótu <userinput
+>np</userinput
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="backward"/>
+    <varlistentry
+>  
+      <term
+>wstecz (ws)<indexterm
+><primary
+>wstecz (ws)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>wstecz X</screen>
+<userinput
+>wstecz</userinput
+> przesuwa żółwia do tyłu o X pikseli. Gdy ołówek jest skierowany w dół żółw zostawia ślad. <userinput
+>wstecz</userinput
+> może być użyty za pomocą skrótu <userinput
+>ws</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnleft"/>
+    <varlistentry
+> 
+      <term
+>lewo (lw)<indexterm
+><primary
+>lewo (lw)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>lewo X</screen>
+<userinput
+>lewo</userinput
+> powoduje, że żółw skręca w lewo o X stopni. <userinput
+>lewo</userinput
+> może być użyty za pomocą skrótu <userinput
+>lw</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnright"/>
+    <varlistentry
+> 
+      <term
+>prawo (pw)<indexterm
+><primary
+>prawo (pw)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>prawo X</screen>
+<userinput
+>prawo</userinput
+> powoduje, że żółw skręca w prawo o X stopni. <userinput
+>prawo</userinput
+> może być użyty za pomocą skrótu <userinput
+>pw</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="direction"/>
+    <varlistentry
+> 
+      <term
+>ustalKierunek (uk)<indexterm
+><primary
+>ustalKierunek (uk)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ustalKierunek X</screen>
+<userinput
+>ustalKierunek</userinput
+> ustawia kierunek ruchu żółwia na X stopni licząc od zera, nie wiąże się to z poprzednim kierunkiem ruchu żółwia. <userinput
+>ustalKierunek</userinput
+> może być użyty za pomocą skrótu <userinput
+>uk</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="center"/>
+    <varlistentry
+> 
+      <term
+>środek<indexterm
+><primary
+>środek</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>środek</screen>
+<userinput
+>środek</userinput
+> przesuwa żółwia na środek płótna.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="go"/>
+    <varlistentry
+> 
+      <term
+>idź<indexterm
+><primary
+>idź</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>idź X,Y</screen>
+Polecenie <userinput
+>idź</userinput
+> przesuwa żółwia na wskazaną lokalizację na płótnie. Ta lokalizacja to X <glossterm linkend="pixels"
+>pikseli</glossterm
+> od lewej strony płótna oraz Y <glossterm linkend="pixels"
+>pikseli</glossterm
+> od góry płótna. </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gox"/>
+    <varlistentry
+> 
+      <term
+>idźx<indexterm
+><primary
+>idźx</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>idźx X</screen>
+<userinput
+>idźx</userinput
+> powoduje przesunięcie żółwia do pozycji X <glossterm linkend="pixels"
+>pikseli</glossterm
+> od lewej strony płótna, podczas gdy wysokość pozostaje bez zmiany.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="goy"/>
+    <varlistentry
+> 
+      <term
+>idźy<indexterm
+><primary
+>idźy</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>idźy Y</screen>
+<userinput
+>idźy</userinput
+> powoduje przesunięcie żółwia do pozycji Y <glossterm linkend="pixels"
+>pikseli</glossterm
+> od góry płótna, podczas gdy odległość od lewego brzegu pozostaje bez zmian.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <note
+><para
+>Polecenia <userinput
+>idź</userinput
+>, <userinput
+>idźx</userinput
+>, <userinput
+>idźy</userinput
+> i <userinput
+>środek</userinput
+> nie rysują linii, niezależnie od tego, czy pisak jest włączony, czy nie.</para>
+  </note>
+</sect2>
+
+<sect2 id="locate-the-turtle">
+<title
+>Gdzie jest żółw?</title>
+<para
+>Istnieją dwa polecenia, zwracające pozycję żółwia na ekranie.</para>
+
+  <variablelist>
+    <anchor id="getx"/>
+    <varlistentry
+> 
+      <term
+>pozx<indexterm
+><primary
+>pozx</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>pozx</userinput
+> zwraca liczbę pikseli od lewej na płótnie do bieżącej pozycji żółwia.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gety"/>
+    <varlistentry
+> 
+      <term
+>pozy<indexterm
+><primary
+>pozy</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>pozy</userinput
+> zwraca liczbę pikseli od góry płótna do bieżącej pozycji żółwia.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="pen">
+<title
+>Żółw posiada ołówek</title>
+<para
+>Żółw posiada ołówek, który rysuje linię gdy żółw się przesuwa. Istnieje kilka poleceń zarządzających ołówkiem. W tej sekcji wyjaśniamy te polecenia.</para>
+  <variablelist>
+    <anchor id="penup"/>
+    <varlistentry
+> 
+      <term
+>podnieś (pod)<indexterm
+><primary
+>podnieś (pod)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>podnieś</screen>
+<userinput
+>podnieś</userinput
+> podnosi ołówek z płótna. Gdy ołówek jest <quote
+>podniesiony</quote
+>, nie będzie rysowana linia w czasie poruszania się żółwia. Zobacz także <userinput
+>opuść</userinput
+>. <userinput
+>podnieś</userinput
+> może być użyte za pomocą skrótu <userinput
+>pod</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="pendown"/>
+    <varlistentry
+> 
+      <term
+>opuść (opu)<indexterm
+><primary
+>opuść (opu)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>opuść</screen>
+<userinput
+>opuść</userinput
+> kładzie ołówek na płótnie. Gdy ołówek jest <quote
+>położony</quote
+>, będzie rysowana linia w czasie poruszania się żółwia. Zobacz także <userinput
+>podnieś</userinput
+>. <userinput
+>opuść</userinput
+> może być użyte za pomocą skrótu <userinput
+>opu</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setpenwidth"/>
+    <varlistentry
+> 
+      <term
+>ustalGrubość (ugp)<indexterm
+><primary
+>ustalGrubość (ugp)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ustalGrubość X</screen>
+<userinput
+>ustalGrubość</userinput
+> ustawia grubość ołówka (grubość rysowanej linii) na X <glossterm linkend="pixels"
+>pikseli</glossterm
+>. <userinput
+>ustalGrubość</userinput
+> może być użyte za pomocą skrótu <userinput
+>ugp</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setfgcolor"/>
+    <varlistentry
+> 
+      <term
+>ustalKolPis (ukp)<indexterm
+><primary
+>ustalKolPis (ukp)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ustalKolPis R,G,B</screen>
+<userinput
+>ustalKolPis</userinput
+> ustawia kolor ołówka. <userinput
+>ustalKolPis</userinput
+> przyjmuje <glossterm linkend="rgb"
+>kombinację RGB</glossterm
+> jako argument wejściowy. <userinput
+>ustalKolPis</userinput
+> może być użyty za pomocą skrótu <userinput
+>ukp</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="canvas">
+<title
+>Polecenia do zarządzania płótnem</title>
+<para
+>Istnieje kilka poleceń sterujących płótnem.</para>
+  <variablelist>
+    <anchor id="resizecanvas"/>
+    <varlistentry>
+      <term
+>ustalRozmiar (urt)<indexterm
+><primary
+>ustalRozmiar (urt)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ustalRozmiar X,Y</screen>
+Za pomocą polecenia <userinput
+>ustalRozmiar</userinput
+> można ustawić rozmiar płótna. Polecenie przyjmuje jako argumenty wejściowe liczby X i Y, gdzie X jest nową szerokością płótna w <glossterm linkend="pixels"
+>pikselach</glossterm
+>, a Y jest nową wysokością płótna w <glossterm linkend="pixels"
+>pikselach</glossterm
+>. <userinput
+>ustalRozmiar</userinput
+> może być użyte za pomocą skrótu <userinput
+>urt</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setbgcolor"/>
+    <varlistentry
+> 
+      <term
+>ustalKolTła (ukt)<indexterm
+><primary
+>ustalKolTła (ukt)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ustalKolTła R,G,B</screen>
+Polecenie <userinput
+>ustalKolTła</userinput
+> ustawia kolor płótna. <userinput
+>ustalKolTła</userinput
+> przyjmuje <glossterm linkend="rgb"
+>kombinację RGB</glossterm
+> jako argument wejściowy. <userinput
+>ustalKolTła</userinput
+> może być użyty za pomocą skrótu <userinput
+>ukt</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="clean">
+<title
+>polecenia czyszczenia</title>
+<para
+>Istnieją dwa polecenia czyszczące płótno.</para>
+  <variablelist>
+    <anchor id="clear"/>
+    <varlistentry
+> 
+      <term
+>zmaż (cbg)<indexterm
+><primary
+>zmaż (cbg)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>zmaż</screen>
+Polecenie <userinput
+>zmaż</userinput
+> usuwa wszystkie rysunki z płótna. Pozostałe rzeczy zostają: pozycja i kąt ruchu żółwia, kolor płótna, widoczność żółwia i rozmiar płótna.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="reset"/>
+    <varlistentry
+> 
+      <term
+>czyść<indexterm
+><primary
+>czyść</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>czyść</screen>
+Polecenie <userinput
+>czyść</userinput
+> czyści bardziej dokładnie niż polecenie <userinput
+>zmaż</userinput
+>. Po wykonaniu polecenia <userinput
+>czyść</userinput
+> płótno wygląda jak po rozpoczęciu pracy &kturtle;. Żółw umieszczony jest na środku ekranu, kolor płótna jest biały, żółw rysuje czarną linię na płótnie, a rozmiar płótna jest ustawiony na 400 x 400 pikseli.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="sprites">
+<title
+>Żółw jest sprajtem</title>
+<para
+>Najpierw krótkie wytłumaczenie, czym jest sprajt: sprajty to małe obrazki, które mogą być przesuwane po ekranie, jak często to widzimy w grach komputerowych. Nasz żółwik jest także sprajtem. Dokładniejsze wyjaśnienie znajduje się w słowniku pod hasłem <glossterm linkend="sprites"
+>sprajty</glossterm
+>. </para>
+<para
+>Poniżej znajduje się pełen przegląd poleceń do pracy ze sprajtami.</para>
+<para
+>[Obecna wersja &kturtle; nie obsługuje jeszcze użycia sprajtów innych niż żółw. Kolejne wersje będą umożliwiać zmianę żółwia na coś zaprojektowanego przez siebie]</para>
+  <variablelist>
+    <anchor id="spriteshow"/>
+    <varlistentry
+> 
+      <term
+>pokaż (pż)<indexterm
+><primary
+>pokaż (pż)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pokaż</screen>
+Polecenie <userinput
+>pokaż</userinput
+> sprawia, że żółw staje się widoczny (gdy był ukryty). <userinput
+>pokaż</userinput
+> może być użyty za pomocą skrótu <userinput
+>pż</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="spritehide"/>
+    <varlistentry
+> 
+      <term
+>ukryj (sż)<indexterm
+><primary
+>ukryj (sż)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ukryj</screen>
+Polecenie <userinput
+>ukryj</userinput
+> sprawia, że żółw jest ukrywany. Opcja używana gdy żółw nie pasuje do rysunku. <userinput
+>ukryj</userinput
+> może być użyty za pomocą skrótu <userinput
+>sż</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="writing">
+<title
+>Czy żółw może pisać?</title>
+<para
+>Odpowiedź brzmi: <quote
+>tak</quote
+>. Żółw potrafi pisać: wszystko co każe mu się pisać.</para>
+  <variablelist>
+    <anchor id="print"/>
+    <varlistentry
+> 
+      <term
+>pisz<indexterm
+><primary
+>pisz</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pisz X</screen>
+<userinput
+>pisz</userinput
+> każe żółwiowi pisać podany tekst na płótnie. <userinput
+>pisz</userinput
+> przyjmuje jako argumenty wejściowe liczby i/lub teksty. Używając symbolu <quote
+>+</quote
+> można <userinput
+>napisać</userinput
+> kilka liczb i tekstów. Oto mały przykład: <screen
+>$rok = 2003
+$autor = "Cies"
+pisz $autor + " rozpoczął projekt KTurtle w roku " + $rok + " i dalej z radością nad nim pracuje!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="fontsize"/>
+    <varlistentry
+> 
+      <term
+>rozmiarTekstu<indexterm
+><primary
+>rozmiarTekstu</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>rozmiarTekstu X</screen>
+<userinput
+>rozmiarTekstu</userinput
+> ustawia rozmiar czcionki używany przy poleceniu <userinput
+>pisz</userinput
+>. <userinput
+>rozmiarTekstu</userinput
+> przyjmuje liczbę jako argument wejściowy. Rozmiar czcionki podawany jest w <glossterm linkend="pixels"
+>pikselach</glossterm
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="math-commands">
+<title
+>Polecenia matematyczne</title>
+<para
+>Poniższe polecenia programu &kturtle; służą do bardziej zaawansowanych operacji matematycznych.</para>
+  <variablelist>
+    <anchor id="round"/>
+    <varlistentry>
+      <term
+>zaokrąglij<indexterm
+><primary
+>zaokrąglij</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>zaokrąglij(x)</screen>
+<userinput
+>zaokrąglij</userinput
+> daną liczbę do najbliższej liczby całkowitej. <screen>
+pisz zaokrąglij(10.8)
+naprzód 20
+pisz zaokrąglij(10.3)
+</screen
+>Ten kod spowoduje wypisanie przez żółwia liczb 11 i 10.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="random"/>
+    <varlistentry
+> 
+      <term
+>losowa (los)<indexterm
+><primary
+>losowa (los)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>losowa X,Y</screen>
+<userinput
+>losowa</userinput
+> przyjmuje argumenty wejściowe i daje argumenty wyjściowe. Jako argumenty wejściowe wymagane są dwie liczby, pierwsza (X) określa minimum argumentu wyjściowego, natomiast druga (Y) określa maksimum. Argument wyjściowy jest losowo wybraną liczbą z przedziału ograniczonego przez podane minimum i maksimum. Oto przykład: <screen>
+powtórz 500 {
+  $x = losowa 1,20
+  naprzód $x
+  lewo 10 - $x
+}
+</screen
+> Używając polecenia <userinput
+>losowa</userinput
+> można dodać odrobiny chaosu do programu.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sqrt"/>
+    <varlistentry
+> 
+      <term
+>sqrt<indexterm
+><primary
+>sqrt</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen>
+Polecenie <userinput
+>sqrt</userinput
+> służy do znalezienia pierwiastka kwadratowego liczby X.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+<!--
+  <variablelist>
+    <anchor id="exp"/>
+    <varlistentry
+> 
+      <term
+>exp<indexterm
+><primary
+>exp</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+-->
+  <variablelist>
+    <anchor id="pi"/>
+    <varlistentry
+> 
+      <term
+>pi<indexterm
+><primary
+>pi</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pi</screen>
+To polecenie zwraca stałą Pi, czyli <userinput
+>3.14159</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sin"/>
+    <anchor id="cos"/>
+    <anchor id="tan"/>
+    <varlistentry>
+      <term
+>sin<indexterm
+><primary
+>sin</primary
+></indexterm
+>, cos<indexterm
+><primary
+>cos</primary
+></indexterm
+>, tan<indexterm
+><primary
+>tan</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>sin X
+cos X
+tan X
+</screen>
+Te trzy polecenia reprezentują znane na całym świecie funkcje trygonometryczne <userinput
+>sin</userinput
+>, <userinput
+>cos</userinput
+> i <userinput
+>tan</userinput
+>. Wejściem tych poleceń jest <link linkend="number"
+>liczba</link
+> X.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="arcsin"/>
+    <anchor id="arccos"/>
+    <anchor id="arctan"/>
+    <varlistentry>
+      <term
+>arcsin<indexterm
+><primary
+>arcsin</primary
+></indexterm
+>, arccos<indexterm
+><primary
+>arccos</primary
+></indexterm
+>, arctan<indexterm
+><primary
+>arctan</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>arcsin X
+arccos X
+arctan X
+</screen>
+Te trzy polecenia są odwrotnościami funkcji <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+> i <link linkend="tan"
+>tan</link
+>. Wejściem tych poleceń jest <link linkend="number "
+>liczba</link
+> X.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="dialogs">
+<title
+>Argumenty wejściowe i pomoc przez okna dialogowe</title>
+<para
+>Okno dialogowe jest małym, wyskakującym okienkiem, które zawiera pomoc dotyczącą argumentów wejściowych. &kturtle; posiada dwa polecenia do okien dialogowych, mianowicie: <userinput
+>wiadomość</userinput
+> i <userinput
+>spytaj</userinput
+></para>
+  <variablelist>
+    <anchor id="message"/>
+    <varlistentry
+> 
+      <term
+>wiadomość<indexterm
+><primary
+>wiadomość</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>wiadomość X</screen>
+Polecenie <userinput
+>wiadomość</userinput
+> przyjmuje jako argument wejściowy <link linkend="string"
+>tekst</link
+>. Pokazuje się okno dialogowe zawierające właśnie ten <link linkend="string"
+>tekst</link
+>. <screen
+>wiadomość "Cies rozpoczął projekt KTurtle w roku 2003 i dalej z radością nad nim pracuje!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="ask"/>
+    <varlistentry
+> 
+      <term
+>spytaj<indexterm
+><primary
+>spytaj</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>spytaj X</screen>
+<userinput
+>spytaj</userinput
+> przyjmuje jako wejście <link linkend="string"
+>tekst</link
+>. Pokazuje go w oknie dialogowym (podobnie jak <link linkend="message"
+>wiadomość</link
+>), ale zawiera dodatkowo pole wejściowe. Po wpisaniu tam przez użytkownika <link linkend="number"
+>liczby</link
+> lub <link linkend="string"
+>tekstu</link
+>, zostanie on zapisany do <link linkend="assignment-of-variables"
+>zmiennej</link
+> lub zwrócony jako wejście dla innego <link linkend="commands"
+>polecenia</link
+>. Na przykład: <screen>
+$wejście = spytaj "W którym roku się urodziłeś?"
+$wyjście = 2003 - $wejście
+pisz "W 2003 roku miałeś " + $wyjście + " lat."
+</screen
+> Jeśli użytkownik anuluje okno lub nie wprowadzi  nic, <link linkend="assignment-of-variables"
+>zmienna</link
+> będzie pusta.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="assignment-of-variables">
+<title
+>Przypisanie do zmiennych</title>
+<para
+>Najpierw zobaczmy jak wyglądają zmienne, a później jak przypisywać do nich wartości. </para>
+
+<para
+>Zmienne są słowami, które zaczynają się znakiem <quote
+>$</quote
+>, w <link linkend="the-editor"
+>edytorze</link
+> są <glossterm
+>podświetlone</glossterm
+> kolorem purpurowym.</para>
+
+<para
+>Zmienne mogą przechowywać <link linkend="number"
+>liczby</link
+>, <link linkend="string"
+>teksty</link
+> lub <link linkend="boolean-value"
+>wartości logiczne (prawda/fałsz)</link
+>. Dzięki przypisaniu, <userinput
+>=</userinput
+>,  zmienne zyskują wartość. Przechowują ją, dopóki program działa lub do czasu, kiedy zostanie przypisana inna wartość.</para>
+
+<para
+>Możesz używać raz przypisanych zmiennych, jakby były wartościami.  Przykładowo jak w poniższym fragmencie kodu &turtlescript;: <screen>
+$x = 10
+$x = $x / 3
+pisz $x
+</screen
+> Na początku do zmiennej <userinput
+>$x</userinput
+> jest przypisana liczba <userinput
+>10</userinput
+>. Później <userinput
+>$x</userinput
+> jest nadpisana jej wartością podzieloną przez <userinput
+>3</userinput
+> &mdash;  <userinput
+>$x</userinput
+>, czyli wynikiem działania <userinput
+>10 / 3</userinput
+>. Na koniec <userinput
+>$x</userinput
+> jest wypisywana. W wierszu drugim i  trzecim możesz zobaczyć jak <userinput
+>$x</userinput
+> jest użyte jako wartość.</para>
+
+<para
+>Zmienne muszą mieć przypisane wartości, przed użyciem. Na przykład: <screen>
+wypisz $n
+</screen
+> Wystąpi błąd przy wykonaniu.</para>
+
+<para
+>Zwróć uwagę na następujący fragment kodu &turtlescript;: <screen>
+$a = 2004
+$b = 25
+
+# następne polecenie wypisze "2029"
+pisz $a + $b
+wstecz 30
+# następne polecenie wypisze "2004 plus 25 równa się 2029"
+pisz $a + " plus " + $b + " równa się " + ($a + $b)
+</screen
+> W pierwszych dwóch wierszach do <userinput
+>$a</userinput
+> i <userinput
+>$b</userinput
+> są przypisane na 2004 i 25. Następnie są dwa polecenia <userinput
+>pisz</userinput
+> oraz <userinput
+>wstecz 30</userinput
+> pomiędzy nimi. Komentarze przed <userinput
+>pisz</userinput
+> wyjaśniają, co mają robić.  Polecenie <userinput
+>wstecz 30</userinput
+> sprawia, że każde wypisanie jest w osobnym wierszu. Jak widzisz zmienne mogą być użyte, jak to co zawierają, mogą być łączone z każdego rodzaju <link linkend="operators"
+>operatorami</link
+> lub być wejściem przy wywołaniu <link linkend="commands"
+>poleceń</link
+>.</para>
+
+<para
+>Jeszcze jeden przykład: <screen>
+$imię = spytaj "Jakie jest Twoje imię?"
+pisz "Cześć " + $imię + "! Powodzenia w w czasie nauki  programowania..."
+</screen
+> Całkiem prosty. Ponownie możesz zobaczyć jak zmienna <userinput
+>$imię</userinput
+> jest traktowana jak tekst.</para>
+
+<para
+>Kiedy używasz zmiennych, <link linkend="the-inspector"
+>podgląd</link
+> jest bardzo pomocny. Pokazuje wartości zmiennych, które są aktualnie używane.</para>
+</sect1>
+
+
+
+<sect1 id="controlling-execution">
+<title
+>Kontrola wykonywania</title>
+<para
+>Kontrolery wykonania umożliwiają użytkownikowi sterowanie wykonywaniem programu przez &mdash;.</para>
+<para
+>Polecenia kontrolujące wykonanie programu  <glossterm
+>podświetlone</glossterm
+> są na ciemnozielony kolor oraz mają pogrubioną czcionkę. Nawiasy używane są głównie z poleceniami kontrolującymi wykonanie i są <glossterm
+>podświetlone</glossterm
+> na czarno.</para>
+
+<sect2 id="wait">
+<title
+>Zatrzymanie żółwia</title>
+<para
+>Napisawszy jakiś program w &kturtle; można zauważyć, że żółw bardzo szybko wykonuje rysunki. Poniższe polecenie zatrzymuje żółwia na określoną ilość czasu.</para>
+  <variablelist>
+    <varlistentry>
+      <term
+>czekaj<indexterm
+><primary
+>czekaj</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>czekaj X</screen>
+<userinput
+>czekaj</userinput
+> zatrzymuje żółwia na X sekund. <screen>
+powtórz 36 {
+  naprzód 5
+  prawo 10
+  czekaj 0.5
+}
+</screen
+> Kod powoduje rysowanie okręgu, ale po każdym kroku żółw zatrzymuje się na pół sekundy. Daje to wrażenie poruszania się żółwia w zwolnionym tempie.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="if">
+<title
+>Instrukcja "jeśli"</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>jeśli<indexterm
+><primary
+>jeśli</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>if <link linkend="boolean-value"
+>wartość logiczna</link
+> { ... }</screen>
+Kod umieszczony w nawiasach jest wykonywany jedynie wtedy,  <userinput
+>jeśli</userinput
+> <link linkend="boolean-value"
+>wartość logiczna</link
+> to <quote
+>prawda</quote
+>. <screen>
+$x = 6
+jeśli $x &gt; 5 {
+  pisz "$x jest większe od 5!"
+}
+</screen
+> W pierwszym wierszu <userinput
+>$x</userinput
+> jest ustawione jako 6. W drugim wierszu <link linkend="comparing-operators"
+>operator porównania</link
+> jest wykorzystany do sprawdzenia <userinput
+>$x &gt; 5</userinput
+>. Jako, że wartością jest <quote
+>prawda</quote
+>, bo 6 jest większe od 5, kontroler wykonania <userinput
+>jeśli</userinput
+> pozwoli na wykonanie kodu pomiędzy nawiasami. </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="else">
+<title
+>Jeżeli nie, innymi słowy: "przeciwnie"</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>jeśliNie<indexterm
+><primary
+>jeśliNie</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>jeśli <link linkend="boolean-value"
+>wartość logiczna</link
+> { ... } jeśliNie { ... }</screen>
+<userinput
+>jeśliNie</userinput
+> może być użyte w dodatku do wyrażenia sterującego <link linkend="if"
+><userinput
+>jeśli</userinput
+></link
+>. Kod pomiędzy nawiasami po <userinput
+>jeśliNie</userinput
+> jest wykonany tylko wtedy, gdy <link linkend="boolean-value"
+>wartość logiczna</link
+> to <quote
+>fałsz</quote
+>. <screen>
+czyść
+$x = 4
+jeśli $x &gt; 5 {
+  pisz "$x jest większe od 5!"
+} jeśliNie {
+  pisz "$x jest mniejsze od 5!"
+}
+</screen
+> <link linkend="comparing-operators"
+>Operator porównania</link
+> sprawdza wartość <userinput
+>$x &gt; 5</userinput
+>. Jako że 4 nie jest większe od 5 przyjmuje wartość <quote
+>fałsz</quote
+>. To znaczy, że kod pomiędzy nawiasami po <userinput
+>jeśliNie</userinput
+> zostaje wykonana.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="while">
+<title
+>Pętla "dopóki"</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>dopóki<indexterm
+><primary
+>dopóki</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>dopóki <link linkend="boolean-value"
+>wartość logiczna</link
+> { ... }</screen>
+Wyrażenie sterujące <userinput
+>dopóki</userinput
+> jest podobne do <link linkend="if"
+><userinput
+>jeśli</userinput
+></link
+>. Różnica polega na tym, że <userinput
+>dopóki</userinput
+> powtarza wykonywanie kodu między nawiasami dopóki <link linkend="boolean-value"
+>wartość logiczna</link
+> nie będzie <quote
+>fałszem</quote
+>. <screen>
+$x = 1
+dopóki $x &lt; 5 {
+  naprzód 10
+  czekaj 1
+  $x = $x + 1
+}
+</screen
+> W pierwszym wierszu <userinput
+>$x</userinput
+> zyskuje wartość 1. W następnym wierszu <userinput
+>$x &lt; 5</userinput
+> jest sprawdzane. Jako, że to wyrażenie  jest <quote
+>prawdą</quote
+> wyrażenie sterujące <userinput
+>dopóki</userinput
+> rozpoczyna wykonywanie kodu między nawiasami dopóki wartość <userinput
+>$x &lt; 5</userinput
+> nie będzie <quote
+>fałszem</quote
+>. W tym przypadku kod w nawiasie zostanie wykonany 4 razy, gdyż po każdym wykonaniu piątym wierszu <userinput
+>$x</userinput
+> wzrasta o 1.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="repeat">
+<title
+>Pętla "powtórz"</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>powtórz<indexterm
+><primary
+>powtórz</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>powtórz <link linkend="number"
+>liczba</link
+> { ... }</screen>
+Kontroler wykonawczy <userinput
+>powtórz</userinput
+> przypomina w dużej mierze <link linkend="while"
+><userinput
+>dopóki</userinput
+></link
+>. Różnica polega na tym, że <userinput
+>powtórz</userinput
+> powtarza (w pętli) kod między nawiasami tyle razy, jaką ma wartość przekazana liczba.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="for">
+<title
+>Pętla "dla", pętla zliczająca</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>dla<indexterm
+><primary
+>dla</primary
+></indexterm
+><indexterm
+><primary
+>co</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>dla <link linkend="assignment-of-variables"
+>zmienna</link
+> = <link linkend="number"
+>liczba</link
+> do <link linkend="number"
+>liczba</link
+> { ... }</screen>
+Pętla <userinput
+>dla</userinput
+> jest <quote
+>pętlą zliczającą</quote
+>, czyli zlicza za użytkownika. Pierwsza liczba przypisywana jest do zmiennej przy pierwszym obiegu pętli. W każdym obiegu liczba jest powiększana aż do osiągnięcia wartości drugiej liczby.<screen>
+dla $x = 1 do 10 {
+  pisz $x * 7
+  naprzód 15
+}
+</screen
+> Za każdym razem gdy kod w nawiasach jest wykonywany wartość zmiennej <userinput
+>$x</userinput
+> zwiększa się o 1, dopóki zmienna <userinput
+>$x</userinput
+> nie osiągnie wartości 10. Kod w nawiasach wypisuje wartość zmiennej <userinput
+>$x</userinput
+> pomnożonej przez 7. Po wykonaniu programu na płótnie będzie można zobaczyć tabele wielokrotności liczby 7. </para>
+     <para
+>Domyślny rozmiar polecenia co pętli to 1 możesz użyć innej wartości z <screen
+>dla <link linkend="assignment-of-variables"
+>zmienna</link
+> = <link linkend="number"
+>liczba</link
+> do <link linkend="number"
+>liczba</link
+> co <link linkend="number"
+>liczba</link
+> { ... }</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="break">
+<title
+>Zostaw pętlę</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>przerwij<indexterm
+><primary
+>przerwij</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>przerwij</screen>
+Kończy niezwłocznie bieżącą pętlę i przenosi kontrolę do wyrażenia obecnego przy tej pętli.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="exit">
+<title
+>Zatrzymanie wykonania Twojego programu</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>wyjdź<indexterm
+><primary
+>wyjdź</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>wyjdź</screen>
+Kończy wykonywanie Twojego programu.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+</sect1>
+
+
+<sect1 id="learn">
+
+
+<!--<sect2 id="name">
+<title
+>Names</title>
+<para
+>When using the &turtlescript; programming language you create new things. If you write a program you will often need <link linkend="containers"
+>containers</link
+> and in some cases you need <link linkend="learn"
+>learn</link
+> to create new commands. When making a new command with <link linkend="learn"
+>learn</link
+> you will have to specify a name.</para>
+<para
+>You can choose any name, as long as it does not already have a meaning. For instance you cannot name a function <link linkend="forward"
+>forward</link
+>, since that name is already used for an internal command.
+<screen
+>
+# here forward is used as a new command, 
+# but it already has a meaning so 
+# this will produce an error:
+learn forward {
+  print "this is invalid"
+}
+
+# this works:
+learn myforward {
+  print "this is ok"
+}
+</screen>
+Names can contain only letters, numbers and underscores (_). Yet they have to start with a letter. Container names have to start with the container prefix ($).
+<screen
+>
+# here forward is used as a container, 
+# starting with the $ prefix, so it does
+# not conflict with the forward command
+$forward = 20
+print $forward
+</screen>
+</para>
+<para
+>Containers are <glossterm
+>highlighted</glossterm
+> with bolded purple in the <link linkend="the-editor"
+>code editor</link
+>.</para>
+<para>
+Please read the documentation on <link linkend="containers"
+>containers</link
+> and the <link linkend="learn"
+>learn</link
+> command for a better explanation and more examples.
+</para>
+</sect2
+>-->
+
+
+
+
+
+<title
+>Tworzenie własnych poleceń za pomocą <quote
+>nauczyciela</quote
+></title>
+<para
+><userinput
+>poznaj</userinput
+> jest specjalnym poleceniem, służącą do tworzenia własnych poleceń. Utworzone polecenia mogą przyjmować argumenty <glossterm linkend="input-output"
+>wejściowe</glossterm
+> i zwracać <glossterm linkend="input-output"
+>argumenty wyjściowe</glossterm
+>. Zobaczmy jak tworzone są nowe polecenia: <screen>
+poznaj okrąg $x {
+  powtórz 36 {
+    naprzód $x
+    lewo 10
+  }
+}
+</screen
+> Nowe polecenie zostanie nazwane <userinput
+>okrąg</userinput
+>. <userinput
+>okrąg</userinput
+> oczekuje jednego <glossterm linkend="input-output"
+>argumentu wejściowego</glossterm
+>, liczby określającej rozmiar okręgu. <userinput
+>okrąg</userinput
+> nie zwraca żadnego <glossterm linkend="input-output"
+>argumentu wyjściowego</glossterm
+>. Polecenie <userinput
+>okrąg</userinput
+> może być teraz używane jak normalne polecenie w reszcie kodu. Oto przykład: <screen
+>poznaj okrąg $X {
+  powtórz 36 { 
+    naprzód $X 
+    lewo 10 
+  } 
+} 
+
+idź 200,200 
+okrąg 20
+
+idź 300,200 
+okrąg 40  
+</screen>
+</para>
+<para
+>W następnym przykładzie tworzone jest polecenie zwracające wartość. <screen>
+poznaj silnia $x {
+  $s = 1
+  dla $i = 1 do $x {
+    $s = $s * $i
+  }
+  wynik $s
+}
+
+pisz silnia 5
+</screen
+> W tym przykładzie zostało stworzone nowe polecenie o nazwie <userinput
+>silnia</userinput
+>. Jeśli wejściem tego polecenia jest <userinput
+>5</userinput
+>, to wyjściem jest <userinput
+>5*4*3*2*1</userinput
+>. Dzięki użyciu <userinput
+>wynik</userinput
+> <glossterm linkend="input-output"
+>wyjście</glossterm
+> jest określone i zwracane przy wykonaniu.</para>
+<para
+>Polecenia mogą mieć więcej niż jedno <glossterm linkend="input-output"
+> wejście</glossterm
+>. W następnym przykładzie utworzona zostanie polecenie rysujące prostokąt. <screen>
+poznaj prostokąt $x, $y {
+  naprzód $y
+  prawo 90
+  naprzód $x
+  prawo 90
+  naprzód $y
+  prawo 90
+  naprzód $x
+  prawo 90
+}
+</screen
+> Możesz teraz uruchomić <userinput
+>prostokąt 50, 100</userinput
+>, a żółw narysuje prostokąt na płótnie. </para>
+  
+</sect1>
+
+</chapter>

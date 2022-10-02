@@ -1,0 +1,303 @@
+<chapter id="getting-started">
+<title
+>Alustamine</title>
+<para
+>&kturtle;'i käivitamisel ilmub nähtavale midagi sellist: <screenshot
+> <screeninfo
+>&kturtle; esmakäivitamisel</screeninfo
+> <mediaobject
+> <imageobject
+> <imagedata fileref="mainwindow.png" format="PNG"/> </imageobject
+> <textobject
+> <phrase
+>&kturtle; esmakäivitamisel</phrase
+> </textobject
+> </mediaobject
+> </screenshot
+> Me eeldame siinses tutvustuses, et &turtlescript;i käskude keel on inglise keel. Kasutatavat keelt saab muuta menüükäsuga <menuchoice
+><guimenu
+>Seadistused</guimenu
+><guisubmenu
+>Skriptikeel</guisubmenu
+></menuchoice
+>. Arvesta aga, et keel, mille sa &kturtle;'ile valid, peab olema sama keel, milles sa &turtlescript;i käsud kirjutad, mitte aga keel, mida kasutab sinu arvutis &kde; ja milles näidatakse &kturtle;'i liidest ja menüüsid.</para>
+
+<sect1 id="first-steps">
+<title
+>Esimesed sammud &turtlescript;is: tutvume Kilpkonnaga!</title>
+<para
+>Ilmselt märkasid, et keset lõuendit tudub kilpkonn. Nüüd aga vaatame, kuidas teda redaktoris kirjutatud käskudega liikuma panna.</para>
+
+<sect2 id="the-turtle-moves">
+<title
+>Kilpkonna liikumine</title>
+<para
+>Paneme nüüd kilpkonna liikuma. Ta võib liikuda kolme moodi: (1) edasi ja tagasi, (2) pöörata paremale ja vasakule ning (3) minna (hüpata) otse mingisse ekraanipunkti. Proovime näiteks nii:</para>
+<para>
+<screen
+>forward 100
+turnleft 90 
+</screen>
+Kirjuta see redaktorisse või kopeeri ja aseta ning seejärel käivita käsud (<link linkend="run-execute"
+><menuchoice
+><guimenu
+>Käivitamine</guimenu
+><guimenuitem
+>Käivita</guimenuitem
+></menuchoice
+></link
+>).</para>
+
+<para
+>Kui kirjutasid toodud käsud redaktorisse ja käivitasid need, nägid ilmselt vähemalt üht järgmistest asjadest:</para>
+<orderedlist>
+<listitem
+><para
+>Pärast käskude käivitamist liikus kilpkonn üles, joonistas sirge ja pööras siis oma liikumissuunaga risti vasakule. Seda põhjustasidki käsud <link linkend="forward"
+><userinput
+>forward</userinput
+></link
+> ja <link linkend="turnleft"
+><userinput
+>turnleft</userinput
+></link
+>.</para>
+</listitem>
+<listitem>
+<para
+>Koodi värv muutus kirjutamisel. Seda nimetatakse <emphasis
+>intuitiivseks esiletõstmiseks</emphasis
+> &mdash; erinevat laadi käskudele antakse erinev värv. Nii on eriti suuremaid koodiblokke märksa lihtsam lugeda. Samuti leiab hõlpsamini üles vead, sest sellistele sõnadele värvi ei anta.</para>
+</listitem>
+<listitem>
+<para
+>Kilpkonn joonistas peenikese musta joone.</para>
+</listitem>
+<listitem>
+<para
+>Võis juhtuda ka, et said veateate. See tähendab üht kahest: tegid käskude kopeerimisel mingi vea või siis ei ole sul veel määratud &turtlescript;i käskude korrektne keel. Viimast saab teha menüükäsuga <menuchoice
+><guimenu
+>Seadistused</guimenu
+><guisubmenu
+>Skriptikeel</guisubmenu
+></menuchoice
+>.</para>
+</listitem>
+</orderedlist>
+
+<para
+>Igaks juhuks kordame üle: <userinput
+>forward 100</userinput
+> andis kilpkonnale korralduse liikuda joont maha jättes edasi ning <userinput
+>turnleft 90</userinput
+> käsu pöörata 90 <glossterm linkend="degrees"
+>kraadi</glossterm
+> vasakule.</para>
+
+<para
+>Palun uuri ka käskude kirjeldusi, mida tutvustame lähemalt käesolevas raamatus edaspidi: <link linkend="forward"
+><userinput
+>forward</userinput
+></link
+>, <link linkend="backward"
+><userinput
+>backward</userinput
+></link
+>, <link linkend="turnleft"
+><userinput
+>turnleft</userinput
+></link
+> ja <link linkend="turnright"
+><userinput
+>turnright</userinput
+></link
+>.</para>
+</sect2>
+
+<sect2 id="more-examples">
+<title
+>Veel näiteid</title>
+<para
+>Esimene näide oli imelihtne, nii et vaatame nüüd edasi!</para>
+
+<para>
+
+<screen
+>reset
+
+canvassize 200,200
+canvascolor 0,0,0
+pencolor 255,0,0
+penwidth 5
+
+go 20,20
+direction 135
+
+forward 200
+turnleft 135
+forward 100
+turnleft 135
+forward 141
+turnleft 135
+forward 100
+turnleft 45
+
+go 40,100
+</screen>
+Kirjuta taas toodud kood redaktorisse või kopeeri see siit või ava näidis <filename
+>arrow</filename
+> menüüs <guimenu
+>Näidised</guimenu
+> ning käivita käsud (<link linkend="run-execute"
+><menuchoice
+><guimenu
+>Käivitamine</guimenu
+><guimenuitem
+>Käivita</guimenuitem
+></menuchoice
+></link
+>). Edasistes näidetes me enam seda ei ütle, eeldades, et sa oled selle juba meelde jätnud...</para>
+
+<para
+>Nagu näed, on teises näites koodi märksa enam. Samuti on siin mitu uut käsku. Seletame need nüüd lühidalt lahti:</para>
+
+<para
+>Pärast käsku <userinput
+>reset</userinput
+> on kõik selline, nagu &kturtle;i käivitamisel.</para>
+
+<para
+><userinput
+>canvassize 200,200</userinput
+> määrab lõuendi laiuseks ja kõrguseks 200 <glossterm linkend="pixels"
+>pikslit</glossterm
+>. Laius ja kõrgus on võrdsed, see tähendab, et lõuend on ruudukujuline.</para>
+
+<para
+><userinput
+>canvascolor 0,0,0</userinput
+> muudab lõuendi mustaks. <userinput
+>0,0,0</userinput
+> on <glossterm linkend="rgb"
+>RGB värvikood</glossterm
+>, milles kõik väärtused on <userinput
+>0</userinput
+>, mis tähendabki kokkuvõttes musta.</para>
+
+<para
+><userinput
+>pencolor 255,0,0</userinput
+> määrab pliiatsi värviks punase. <userinput
+>255,0,0</userinput
+> on <glossterm linkend="rgb"
+>RGB värvikood</glossterm
+>, kus ainult punase väärtus on maksimaalne <userinput
+>255</userinput
+>, teistel (rohelisel ja sinisel) aga <userinput
+>0</userinput
+>, mis annab kokku erepunase.</para>
+
+<para
+>Kui sa ei ole kursis, mis on värviväärtused, loe kindlasti sõnastikust artiklit <glossterm linkend="rgb"
+>RGB värvikood</glossterm
+>ide kohta.</para>
+
+<para
+><userinput
+>penwidth 5</userinput
+> määrab pliiatsi laiuseks <userinput
+>5</userinput
+> <glossterm linkend="pixels"
+>pikslit</glossterm
+>. See tähendab, et siitpeale on kõik kilpkonna tõmmatavad jooned paksusega <userinput
+>5</userinput
+>, kuni me anname <userinput
+>penwidth</userinput
+> väärtuseks midagi muud.</para>
+
+<para
+><userinput
+>go 20,20</userinput
+> annab kilpkonnale korralduse minna lõuendi kindlasse punkti. Ülemisest vasakust nurgast arvestades asub see koht lõuendi vasakust servast 20 <glossterm linkend="pixels"
+>piksli</glossterm
+> ning ka lõuendi ülaservast 20 <glossterm linkend="pixels"
+>piksli</glossterm
+> kaugusel. Pane tähele, et käsu <userinput
+>go</userinput
+> kasutamisel kilpkonn joont ei tõmba.</para>
+
+<para
+><userinput
+>direction 135</userinput
+> määrab kilpkonna suuna. Käsud <userinput
+>turnleft</userinput
+> ja <userinput
+>turnright</userinput
+> muudavad kilpkonna nurka selle praeguse suuna suhtes. Käsk <userinput
+>direction</userinput
+> muudab kilpkonna suunda alates nullist, see ei ole seotud kilpkonna varasema suunaga.</para>
+
+<para
+>Pärast käsku <userinput
+>direction</userinput
+> tuleb mitu käsku <userinput
+>forward</userinput
+> ja <userinput
+>turnleft</userinput
+>. Nendega käibki tegelik joonistamine.</para>
+
+<para
+>Uus <userinput
+>go</userinput
+> annab lõpuks kilpkonnale käsu eemale minna.</para>
+
+<para
+>Uuri kindlasti ka käskude seletusi, kus on kõik põhjalikult lahti seletatud.</para>
+
+
+</sect2>
+</sect1>
+
+
+
+<!--        EXTRA SECTIONS CAN BE ADDED TO THE "GETTING STARTED"
+
+<sect1 id="calculations">
+<title
+>Simple Calculations</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_variables">
+<title
+>Using Variables: creating 'number containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_strings">
+<title
+>Using strings: creating 'text containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="logic">
+<title
+>Logic: asking the computer simple questions</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="recursion">
+<title
+>Recursion: the Turtle is using itself</title>
+<para>
+Draw a maze for example
+</para>
+</sect1>
+-->
+
+
+</chapter>

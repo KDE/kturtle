@@ -1,0 +1,1094 @@
+<chapter id="using-kturtle">
+<title
+>Përdorimi i &kturtle;</title>
+
+<screenshot>
+  <screeninfo
+>Kjo është një pamje e &kturtle; në punë</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow_flower_nrs.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Dritarja Kryesore e &kturtle;</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Dritarja kryesore e &kturtle; ka tre pjesë kryesore: <link linkend="the-editor"
+>shkrimoren</link
+> (1) në të majtë ku ju shkruani programin &turtlescript;, <link linkend="the-canvas"
+>tabelën e vizatimit</link
+> (2) në të djathtë ku breshka bën vizatimin, dhe <link linkend="the-inspector"
+>shqyrtuesin</link
+> (3) i cili u jep informata kur programi është në punë. Përveç këtyre është edhe <link linkend="the-menubar"
+>shiriti i menyve</link
+> (5) ku mund të gjenden të gjitha veprimet, <link linkend="the-toolbar"
+>shiriti i mjeteve</link
+> (4) që ju lejon të zgjidhni shpejt veprimet më të përdorshme, <guilabel
+>vendi i komandave</guilabel
+>, që ju mund ta përdorni për të provuar një komandë, dhe <link linkend="the-statusbar"
+>shiriti i gjendjes</link
+> (përgjatë pjesës së poshtme të dritares), ku mund të gjeni informata mbi gjendjen e &kturtle;.</para>
+
+<sect1 id="the-editor">
+<title
+>Shkrimorja</title>
+<para
+>Në shkrimore ju shkruani programin &turtlescript;. Shumica e funksioneve të shkrimores mund të gjenden në menutë <link linkend="the-file-menu"
+>Skedarët</link
+> dhe <link linkend="the-edit-menu"
+>Redaktim</link
+>. Shkrimorja mund të ngjitet në secilën anë të dritares kryesore ose mund të shkëputetdhe të vendoset kudo në ekran.</para>
+<para
+>Ka mënyra të ndryshme për të vendosur ca komanda në shkrimore. Mënyra më e lehtë është të merrni një shembull: zgjidhni <menuchoice
+><guimenu
+>Skedar</guimenu
+><guisubmenu
+>Shembuj</guisubmenu
+></menuchoice
+> në <link linkend="the-file-menu"
+>menunë Skedar</link
+> dhe përzgjidhni një shembull. Skedari shembull që zgjidhni do të hapet në <link linkend="the-editor"
+>shkrimore</link
+>, dhe atëherë po të doni ju mund të përdorni <menuchoice
+><guimenu
+>Nis</guimenu
+><guimenuitem
+>Nis</guimenuitem
+></menuchoice
+> te menutë ose <guibutton
+>Nis</guibutton
+> te mjetet për të filluar zbatimin e programit.</para>
+<para
+>Ju mund të hapni skedarë &turtlescript; duke përdorur <menuchoice
+><guimenu
+>Skedar</guimenu
+><guimenuitem
+>Hap...</guimenuitem
+></menuchoice
+>.</para>
+<para
+>Mënyra e tretë është që ta shkruani direkt programin tuaj në shkrimore ose të kopjoni disa rreshta prej diku tjetër.</para>
+</sect1>
+
+
+<sect1 id="the-canvas">
+<title
+>Hapësira e Vizatimit</title>
+<para
+>Hapësira (ose tabela) e vizatimit është vendi ku rri breshka. Aty breshka vizaton sipas komandave që merr. Pasi të vendosni komanda në <link linkend="the-editor"
+>Shkrimore</link
+> dhe të nisni zbatimin e tyre, dy gjëra mund të ndodhin: ose komandat zbatohen për bukuri, dhe ka shumë të ngjarë të shihni ndryshime në tabelë, ose ka ndonjë gabim në rreshtat e programit, dhe në këtë rast do të shfaqet kartela e gabimeve që shpjegon se çfarë gabimi ka ndodhur.</para>
+<para
+>Ju mund ta  ta zvogëloni ose ta zmadhoni tabelën e vizatimit duke përdorur rrotëzën e miushit.</para>
+</sect1>
+
+
+<sect1 id="the-inspector">
+<title
+>Shqyrtuesi</title>
+<para
+>Shqyrtuesi ju informon për ndryshoret, komandat e mësuara dhe tregon degëzimin e komandave gjatë kohës që programi është në punë.</para>
+<para
+>Shqyrtuesi mund të vendoset në secilën anë të dritares kryesore ose mund të shkëputet dhe të vendoset kudo në ekran.</para>
+</sect1>
+
+
+<sect1 id="the-toolbar">
+<title
+>Rreshti i Mjeteve</title>
+<para
+>Këtu ju mund të arrini shpejt veprimet më të përdorshme. Te mjetet gjendet gjithashtu edhe <guilabel
+>Komanda</guilabel
+> ku ju mund të jepni shpejt një komandë; kjo mund të jetë e dobishëm në rast se doni të provoni një komandë pa e ndryshuar përmbajtjen e <link linkend="the-editor"
+>Shkrimores</link
+>.</para>
+<para
+>Ju mund ta ndryshoni rreshtin e mjeteve duke përdorur <menuchoice
+><guimenu
+>Rregullimet</guimenu
+><guimenuitem
+>Ndrysho Rreshtin e Mjeteve... </guimenuitem
+></menuchoice
+> për ta përshtatur më mirë me shijet tuaja.</para>
+</sect1>
+
+
+<sect1 id="the-menubar">
+<title
+>Rreshti i Menuve</title>
+<para
+>Në rreshtin e menuve ju mund të gjeni të gjitha veprimet e mundshme në &kturtle;. Ato janë në grupet e mëposhtme: <guimenu
+>Skedar</guimenu
+>, <guimenu
+>Redaktim</guimenu
+>, <guimenu
+>Tabela</guimenu
+>, <guimenu
+>Nis</guimenu
+>, <guimenu
+>Mjetet</guimenu
+>, <guimenu
+>Rregullimet</guimenu
+>, dhe <guimenu
+>Ndihmë</guimenu
+>. Kjo pjesë i përshkruan ato të gjitha.</para>
+
+<sect2 id="the-file-menu">
+<title
+>Menuja <guimenu
+>Skedar</guimenu
+></title>
+
+  <variablelist>
+    <anchor id="file-new"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>R</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Skedar</guimenu
+> <guimenuitem
+>i Ri</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Krijon një skedar të ri &turtlescript; që është bosh.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Skedar</guimenu
+> <guimenuitem
+>Hap...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Hap një skedar &turtlescript;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-recent"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Skedar</guimenu
+><guisubmenu
+>Hap të Mëparshëm</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Hap një skedar &turtlescript; që është hapur kohët e fundit.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Skedar</guimenu
+><guisubmenu
+>Shembuj</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Hap shembuj programesh &turtlescript;. Shembujt janë në gjuhën tuaj të preferuar që ju mund të zgjidhni te <menuchoice
+><guimenu
+>Rregullimet</guimenu
+><guisubmenu
+>Gjuha e Programimit</guisubmenu
+></menuchoice
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-get-more-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Skedar</guimenu
+><guimenuitem
+>Merrni shembuj të tjerë...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Hap dritaren e bashkëbisedimit <guilabel
+>Merr Gjëra të Reja Interesante</guilabel
+> për të shkarkuar skedarë të tjerë &turtlescript;, nga Interneti.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="file-save"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Skedar</guimenu
+> <guimenuitem
+>Ruaj</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Ruan skedarin &turtlescript; të hapur momentalisht.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-save-as"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Skedar</guimenu
+><guimenuitem
+>Ruaj Si...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Ruan skedarin &turtlescript; të hapur momentalisht në një vend të caktuar.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-export-to-html"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Skedar</guimenu
+><guimenuitem
+>Ktheje në HTML...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Ruan përmbajtjen e Shkrimores në një skedar HTML që përfshin theksimin e ngjyrave.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Skedar</guimenu
+> <guimenuitem
+>Shtyp...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Shtyp në letër programin që ndodhet në shkrimore.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-quit"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Skedar</guimenu
+> <guimenuitem
+>Mbyll</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Mbyll &kturtle;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-edit-menu">
+  <title
+>Menuja <guimenu
+>Shkrim</guimenu
+></title>
+  <variablelist>
+    <anchor id="edit-undo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>K</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Shkrim</guimenu
+> <guimenuitem
+>Kthe</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Kthen mbrapsht ndryshimin e fundit në program. Numri i kthimeve në &kturtle; është i pakufizuar.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-redo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;&Shift;<keycap
+>K</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Shkrim</guimenu
+> <guimenuitem
+>Ribëj</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Bën përsëri një ndryshim të kthyer mbrapsht në program.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-cut"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>X</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Shkrim</guimenu
+> <guimenuitem
+>Merr</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Merr tekstin e përzgjedhur nga <link linkend="the-editor"
+>shkrimorja</link
+> dhe e ruan në Kujtesë.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-copy"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Shkrim</guimenu
+> <guimenuitem
+>Kopjo</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Kopjon tekstin e përzgjedhur nga <link linkend="the-editor"
+>shkrimorja</link
+> dhe e ruan në Kujtesë.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-paste"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>V</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Shkrim</guimenu
+> <guimenuitem
+>Vendos</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Vendos tekstin e Kujtesës në <link linkend="the-editor"
+>shkrimore</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-select-all"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+><keycombo
+>&Ctrl;<keycap
+>A</keycap
+></keycombo
+></shortcut
+><guimenu
+>Shkrim</guimenu
+><guimenuitem
+>Përzgjidhe të gjithë</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Përzgjedh të gjithë tekstin nga <link linkend="the-editor"
+>shkrimorja</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Shkrim</guimenu
+> <guimenuitem
+>Gjej...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Me këtë veprim mund të gjeni shprehje në program.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find-next"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F3</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Shkrim</guimenu
+> <guimenuitem
+>Gjej Tjetrën</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Kjo përdoret për të gjetur vendin tjetër ku gjendet shprehja që keni kërkuar.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="edit-find-previous"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Shift;<keysym
+>F3</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Shkrim</guimenu
+> <guimenuitem
+>Gjej Paraardhësen</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Përdoret për të gjetur vendin e mësipërm ku ndodhet shprehja e kërkuar.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <!--<variablelist>
+    <anchor id="edit-replace"/>
+    <varlistentry>
+      <term
+><menuchoice>
+        <shortcut>
+          <keycombo
+>&Ctrl;<keycap
+>R</keycap
+></keycombo>
+        </shortcut>
+        <guimenu
+>Edit</guimenu>
+        <guimenuitem
+>Replace...</guimenuitem>
+      </menuchoice
+></term>
+      <listitem
+><para
+>With this action you can replace text in the code.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>-->
+<variablelist>
+    <anchor id="toggle-insert"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keycap
+>Ins</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Shkrim</guimenu
+> <guimenuitem
+>Mënyra e Mbishkrimit</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Kalo nga mënyra e 'ndërfutjes' në të 'mbishkrimit' dhe anasjelltas.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+<sect2 id="the-canvas-menu">
+  <title
+>Menuja <guimenu
+>Tabela</guimenu
+></title>
+  <variablelist>
+    <anchor id="canvas-export-to-image"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Tabela</guimenu
+> <guimenuitem
+>Ruaje si Imazh (PNG)...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Ruan përmbajtjen aktuale të <link linkend="the-canvas"
+>tabelës</link
+> si një imazh i tipit PNG (Portable Network Graphics).</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-export-to-drawing"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Tabela</guimenu
+><guimenuitem
+>Ruaj si Vizatim (SVG)...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Ruan përmbajtjen aktuale të <link linkend="the-canvas"
+>tabelës</link
+> si një imazh i tipit SVG (Scalable Vector Graphics).</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Tabela</guimenu
+><guimenuitem
+>Shtyp Tabelën...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Shtyp në letër përmbajtjen aktuale të <link linkend="the-canvas"
+>Tabelës</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-run-menu">
+  <title
+>Menuja <guimenu
+>Nis</guimenu
+></title>
+  <variablelist>
+    <anchor id="run-execute"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F5</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Nis</guimenu
+> <guimenuitem
+>Nis</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Fillon zbatimin e komandave në editor.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-pause"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F6</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Ris</guimenu
+> <guimenuitem
+>Pusho</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Ndalon zbatimin për njëfarë kohe. Ky veprim është aktiv vetëm kur komandat janë duke u zbatuar.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-stop"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F7</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Nis</guimenu
+> <guimenuitem
+>Ndërprit</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Ndalon zbatimin e programit. Ky veprim është aktiv vetëm kur programi është duke u zbatuar.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-speed"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Nis</guimenu
+> <guisubmenu
+>Shpejtësia e Lëvizjes</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Paraqet një listë me shpejtësitë e mundshme të lëvizjes, e përbërë nga: <guimenuitem
+>Shpejtësi Maksimale (pa ndriçuesin dhe shqyrtuesin)</guimenuitem
+>, <guimenuitem
+>Shpejtësi e Madhe</guimenuitem
+>, <guimenuitem
+>Ngadalë</guimenuitem
+>, <guimenuitem
+>Pak më Ngadalë</guimenuitem
+>, <guimenuitem
+>Shumë Ngadalë</guimenuitem
+> dhe <guimenuitem
+>Hap-pas-Hapi</guimenuitem
+>. Kur shpejtësia e lëvizjes është <guimenuitem
+>Shpejtësi e Madhe</guimenuitem
+> (e parazgjedhur) zor se mund ta ndjekim se çfarë po ndodh. Ndonjëherë kështu e duam, por ndonjëherë duam të ndjekim rrjedhën e zbatimit të programit. Në këtë rast duhet ta vendosim shpejtësinë e lëvizjes <guimenuitem
+>Ngadalë</guimenuitem
+>, <guimenuitem
+>Pak më Ngadalë</guimenuitem
+> ose <guimenuitem
+>Shumë Ngadalë</guimenuitem
+>. Në rast se një nga mënyrat e ngadalshme është zgjedhur, pozicioni aktual i zbatimit do të tregohet në shkrimore. <guimenuitem
+>Hap-pas-Hapi</guimenuitem
+> do ti zbatojë komandat një e nga një.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+
+<sect2 id="the-tools-menu">
+  <title
+>Menuja <guimenu
+>Mjetet</guimenu
+></title>
+  <variablelist>
+    <anchor id="tools-direction-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Mjetet</guimenu
+><guimenuitem
+>Zgjedhës Drejtimi...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Hap dritaren bashkëbiseduese për të zgjedhur drejtimin.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-color-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Mjetet</guimenu
+> <guimenuitem
+>Zgjedhës Ngjyre...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Hap dritaren bashkëbiseduese të zgjedhjes së ngjyrës.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-setting-menu">
+  <title
+>Menuja <guimenu
+>Rregullimet</guimenu
+></title>
+  <variablelist>
+    <anchor id="settings-set-script-language"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Rregullimet</guimenu
+><guisubmenu
+>Gjuha e Programimit</guisubmenu
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Zgjedh</action
+> gjuhën e programit.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-editor"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Rregullimet</guimenu
+> <guimenuitem
+>Nxirr Shkrimoren</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Nxjerr ose heq <link linkend="the-editor"
+>Shkrimoren</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-inspector"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Rregullimet</guimenu
+> <guimenuitem
+>Nxirr Shqyrtuesin</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Nxjerr ose heq <link linkend="the-inspector"
+>Shqyrtuesin</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-errors"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Rregullimet</guimenu
+> <guimenuitem
+>Nxirr Gabimet</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Nxjerr ose heq kartelën <guilabel
+>Gabimet</guilabel
+> e cila ka një listë të gabimeve që dalin gjatë zbatimit të programit. Nëse kjo është e aktivizuar, klikoni te<guilabel
+>Tabela</guilabel
+> për të parë breshkën përsëri.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-linenumbers"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F11</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Rregullimet</guimenu
+> <guimenuitem
+>Shfaq Numrat e Rreshtave</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Tregon numrat e rreshtave në <link linkend="the-editor"
+>shkrimore</link
+>. Kjo mund të jetë e dobishme për gjetjen e gabimeve.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-toolbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Rregullimet</guimenu
+><guimenuitem
+>Shfaq Rreshtin e Mjeteve</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Nxirr/Hiq</action
+> rreshtin kryesor të mjeteve</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="settings-toggle-statusbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Rregullimet</guimenu
+><guimenuitem
+>Shfaq Shiritin e Gjendjes</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Nxirr/Hiq</action
+> Shiritin e Gjendjes</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-shortcuts"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Rregullimet</guimenu
+> <guimenuitem
+>Konfiguro Shkurtoret...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Dritare bashkëbisedimi standarde e &kde;-së  për të konfiguruar shkurtoret.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-toolbars"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Rregullimet</guimenu
+> <guimenuitem
+>Konfiguro Shiritat...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Dritare bashkëbisedimi standarde e &kde;-së  për të konfiguruar shiritat.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-help-menu">
+  <title
+>Menuja <guimenu
+>Ndihmë</guimenu
+></title>
+&help.menu.documentation; <variablelist
+> <anchor id="help-context-help"/> <varlistentry>
+      <term
+><menuchoice
+><shortcut
+><keycombo
+><keysym
+>F2</keysym
+></keycombo
+></shortcut
+><guimenu
+>Ndihmë</guimenu
+><guimenuitem
+>Ndihmë për:...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Ky është një funksion shumë i dobishëm: ai siguron ndihmë për komandën në të cilën ndodhet kursori në shkrimore. P.sh. ju keni përdorur komandën <userinput
+>shkruaj</userinput
+> në program, dhe dëshironi të lexoni dhe të dini se çfarë thotë udhëzuesi për këtë komandë. Për këtë ju e lëvizni kursorin dhe e çoni te komanda <userinput
+>shkruaj</userinput
+>, pastaj shtypni <keysym
+>F2</keysym
+>. Udhëzuesi do të hapet tek pjesa ku janë shpjegimet mbi komandën <userinput
+>shkruaj</userinput
+>.</para>
+      <para
+>Kjo gjë mund të dalë e dobishme gjatë mësimit të &turtlescript;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+<sect1 id="the-statusbar">
+<title
+>Shiriti i Gjendjes</title>
+<para
+>Në shiritin e gjendjes ju mund të shihni informacione mbi gjendjen e &kturtle;. Në anën e majtë ai tregon komentet mbi veprimin e fundit. Në anën e djathtë mund të gjeni pozicionin aktual të kursorit (numrat e rreshtit dhe të shtyllës). Në mes të shiritit tregohet gjuha që po përdoret për komandat.</para>
+</sect1>
+
+</chapter>

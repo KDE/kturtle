@@ -1,0 +1,1095 @@
+<chapter id="using-kturtle">
+<title
+>Usando o &kturtle;</title>
+
+<screenshot>
+  <screeninfo
+>Aqui está uma imagem do &kturtle; em ação</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow_flower_nrs.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Janela principal do &kturtle;</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>A janela principal do &kturtle; possui três componentes principais: o <link linkend="the-editor"
+>editor</link
+> (1) à esquerda, onde você digita os comandos de &turtlescript;; a <link linkend="the-canvas"
+>área de desenho</link
+> (2) à direita, onde a tartaruga faz o seu desenho; e o <link linkend="the-inspector"
+>inspetor</link
+> (3) que lhe dá informações sobre as variáveis durante a execução do programa. Além dos componentes você pode encontrar a <link linkend="the-menubar"
+>barra de menus</link
+> (5) onde todas as ações podem ser acessadas; a <link linkend="the-toolbar"
+>barra de ferramentas</link
+> (4) que permite-lhe selecionar rapidamente as ações mais utilizadas; o <guilabel
+>Console</guilabel
+>, que você poderá usar para inserir um comando numa única linha para teste; e a <link linkend="the-statusbar"
+>barra de status</link
+> (na parte inferior da janela) onde você encontrará alguma informação sobre o estado do &kturtle;.</para>
+
+<sect1 id="the-editor">
+<title
+>O editor</title>
+<para
+>No editor, você poderá digitar os comandos de &turtlescript;. A maioria das suas funcionalidades são encontradas no menu <link linkend="the-edit-menu"
+>Editar</link
+> e <link linkend="the-file-menu"
+>Arquivo</link
+>. O editor pode ser acoplado a qualquer um dos lados da janela principal ou poderá ser destacado e colocado em qualquer local da sua tela.</para>
+<para
+>Você tem várias formas de obter algum código no editor. A forma mais fácil é usar um exemplo já feito. Você escolhe o <menuchoice
+><guimenu
+>Arquivo</guimenu
+><guisubmenu
+>Exemplos</guisubmenu
+></menuchoice
+> no <link linkend="the-file-menu"
+>menu Arquivo</link
+>, onde poderá clicar em um arquivo. O arquivo que escolher será aberto no <link linkend="the-editor"
+>editor</link
+>, e você poderá ir então usar o <menuchoice
+><guimenu
+>Executar</guimenu
+><guimenuitem
+>Executar</guimenuitem
+></menuchoice
+> no menu, ou <guibutton
+>Executar</guibutton
+> na barra de ferramentas, para rodar o código se desejar.</para>
+<para
+>Você poderá abrir os arquivos de &turtlescript; selecionando<menuchoice
+><guimenu
+>Arquivo</guimenu
+><guimenuitem
+>Abrir...</guimenuitem
+></menuchoice
+>.</para>
+<para
+>A terceira forma é digitar diretamente o seu código no editor ou copiar/colar algum código.</para>
+</sect1>
+
+
+<sect1 id="the-canvas">
+<title
+>A área de desenho</title>
+<para
+>A área de desenho é a área onde os comandos são visualizados, ou seja, onde eles <quote
+>desenham</quote
+> uma imagem. Em outras palavras, é o espaço de recreio da tartaruga. Depois de inserir algum código no <link linkend="the-editor"
+>editor</link
+> e de executá-lo, duas coisas poderão acontecer: ou o código é executado perfeitamente e você poderá ver algo mudando na área de desenho, ou você tem um erro no seu código e existirá uma mensagem que lhe dirá qual o erro que você cometeu.</para>
+<para
+>Você poderá ampliar ou diminuir a área de desenho com a roda do seu mouse.</para>
+</sect1>
+
+
+<sect1 id="the-inspector">
+<title
+>O inspetor</title>
+<para
+>O inspetor informa-o das variáveis, as funções aprendidas e a árvore de código enquanto o programa está em execução.</para>
+<para
+>O inspetor pode ser embutido em qualquer canto da janela principal ou pode ser desanexado e colocado em qualquer lugar de sua área de trabalho.</para>
+</sect1>
+
+
+<sect1 id="the-toolbar">
+<title
+>A barra de ferramentas</title>
+<para
+>Aqui você poderá acessar rapidamente às ações mais utilizadas. A barra de ferramentas também contém o <guilabel
+>Console</guilabel
+>, onde poderá invocar rapidamente os comandos; isto poderá ser útil no caso de querer testar um comando sem modificar o conteúdo do <link linkend="the-editor"
+>Editor</link
+>.</para>
+<para
+>Você poderá configurar a barra de ferramentas se usar o menu <menuchoice
+><guimenu
+>Configurações</guimenu
+><guimenuitem
+>Configurar as Barras de Ferramentas...</guimenuitem
+></menuchoice
+>, para se ajustar às suas preferências.</para>
+</sect1>
+
+
+<sect1 id="the-menubar">
+<title
+>A barra de menus</title>
+<para
+>No menu, você irá encontrar todas as ações do &kturtle;. Elas estão nos seguintes grupos: <guimenu
+>Arquivo</guimenu
+>, <guimenu
+>Editar</guimenu
+>, <guimenu
+>Área de Desenho</guimenu
+>, <guimenu
+>Executar</guimenu
+>, <guimenu
+>Ferramentas</guimenu
+>, <guimenu
+>Configurações</guimenu
+> e <guimenu
+>Ajuda</guimenu
+>. Esta seção descreve todas elas.</para>
+
+<sect2 id="the-file-menu">
+<title
+>Menu Arquivo</title>
+
+  <variablelist>
+    <anchor id="file-new"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Arquivo</guimenu
+> <guimenuitem
+>Novo</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Cria um arquivo de &turtlescript; novo e vazio.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Arquivo</guimenu
+> <guimenuitem
+>Abrir...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Abre um arquivo do &turtlescript;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-recent"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Arquivo</guimenu
+> <guisubmenu
+>Abrir recente</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Abre um arquivo de &turtlescript; que foi aberto recentemente.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Arquivo</guimenu
+> <guisubmenu
+>Exemplos</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Um exemplo dos programas do &turtlescript;. Os exemplos estão em seu idioma favorito, que poderá ser escolhido em <menuchoice
+><guimenu
+>Configurações</guimenu
+><guisubmenu
+>Linguagem dos scripts</guisubmenu
+></menuchoice
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-get-more-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Arquivo</guimenu
+> <guimenuitem
+>Obter mais exemplos...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Abra o diálogo <guilabel
+>Obter novidades</guilabel
+> para baixar arquivos do &turtlescript; adicionais da Internet.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="file-save"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Arquivo</guimenu
+> <guimenuitem
+>Salvar</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Salva o arquivo de &turtlescript; atualmente aberto.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-save-as"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;&Shift;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Arquivo</guimenu
+> <guimenuitem
+>Salvar como...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Salva o arquivo do &turtlescript; aberto atualmente num local especificado.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-export-to-html"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Arquivo</guimenu
+> <guimenuitem
+>Exportar para HTML...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Exporta o conteúdo atual do Editor como um arquivo em HTML que inclui as cores do realce.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Arquivo</guimenu
+> <guimenuitem
+>Imprimir...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Imprime o código atual no editor.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-quit"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Arquivo</guimenu
+> <guimenuitem
+>Sair</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Sai do &kturtle;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-edit-menu">
+  <title
+>Menu Editar</title>
+  <variablelist>
+    <anchor id="edit-undo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Editar</guimenu
+> <guimenuitem
+>Desfazer</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Desfaz a última alteração no código. O &kturtle; pode fazer desfazer de forma ilimitada.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-redo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Editar</guimenu
+> <guimenuitem
+>Refazer</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Refaz uma alteração desfeita no código.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-cut"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>X</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Editar</guimenu
+> <guimenuitem
+>Recortar</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Corta o texto selecionado do <link linkend="the-editor"
+>editor</link
+> para a área de transferência.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-copy"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Editar</guimenu
+> <guimenuitem
+>Copiar</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Copia o texto selecionado do <link linkend="the-editor"
+>editor</link
+> para a área de transferência.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-paste"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>V</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Editar</guimenu
+> <guimenuitem
+>Colar</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Cola o texto na área de transferência no <link linkend="the-editor"
+>editor</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-select-all"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>A</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Editar</guimenu
+> <guimenuitem
+>Selecionar tudo</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Seleciona todo o texto do <link linkend="the-editor"
+>editor</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Editar</guimenu
+> <guimenuitem
+>Procurar...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Com esta ação, você poderá procurar frases no código.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find-next"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F3</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Editar</guimenu
+> <guimenuitem
+>Procurar próximo</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Use isto para procurar a próxima ocorrência da frase que estava pesquisando.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="edit-find-previous"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Shift;<keysym
+>F3</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Editar</guimenu
+> <guimenuitem
+>Localizar anterior</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Use isto para procurar a ocorrência anterior da frase que estava pesquisando.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <!--<variablelist>
+    <anchor id="edit-replace"/>
+    <varlistentry>
+      <term
+><menuchoice>
+        <shortcut>
+          <keycombo
+>&Ctrl;<keycap
+>R</keycap
+></keycombo>
+        </shortcut>
+        <guimenu
+>Edit</guimenu>
+        <guimenuitem
+>Replace...</guimenuitem>
+      </menuchoice
+></term>
+      <listitem
+><para
+>With this action you can replace text in the code.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>-->
+<variablelist>
+    <anchor id="toggle-insert"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keycap
+>Ins</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Editar</guimenu
+> <guimenuitem
+>Modo de edição</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Alterne entre o modo de 'inserir' e 'sobrescrever'.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+<sect2 id="the-canvas-menu">
+  <title
+>Menu Tela</title>
+  <variablelist>
+    <anchor id="canvas-export-to-image"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Área de Desenho</guimenu
+> <guimenuitem
+>Exportar para Imagem (PNG)...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Exporta o conteúdo atual da <link linkend="the-canvas"
+>Área de Desenho</link
+> como uma imagem rasterizada no formato PNG (Portable Network Graphics).</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-export-to-drawing"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Área de Desenho</guimenu
+> <guimenuitem
+>Exportar para Desenho (SVG)...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Exporta o conteúdo atual da <link linkend="the-canvas"
+>Área de Desenho</link
+> como um desenho vetorial no formato SVG (Scalable Vector Graphics).</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Área de Desenho</guimenu
+> <guimenuitem
+>Imprimir a Área de Desenho...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Imprime o conteúdo atual da <link linkend="the-canvas"
+>Área de Desenho</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-run-menu">
+  <title
+>Menu Executar</title>
+  <variablelist>
+    <anchor id="run-execute"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F5</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Arquivo</guimenu
+> <guimenuitem
+>Executar</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Inicia a execução dos comandos no editor.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-pause"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F6</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Executar</guimenu
+> <guimenuitem
+>Pausa</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Coloca a execução em pausa. Esta ação só fica ativa quando os comandos estiverem de fato sendo executados.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-stop"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F7</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Executar</guimenu
+> <guimenuitem
+>Interromper</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Interrompe a execução; esta ação só fica ativa quando os comandos estiverem de fato sendo executados.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-speed"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Executar</guimenu
+> <guisubmenu
+>Velocidade da Execução</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Apresenta uma lista com as velocidades de execução possíveis, consistindo em: <guimenuitem
+>velocidade máxima (sem realce e inspetor)</guimenuitem
+>, <guimenuitem
+>velocidade máxima</guimenuitem
+>, <guimenuitem
+>velocidade baixa</guimenuitem
+>, <guimenuitem
+>velocidade mais baixa</guimenuitem
+>, <guimenuitem
+>velocidade mínima</guimenuitem
+> e <guimenuitem
+>passo-a-passo</guimenuitem
+>. Quando a velocidade de execução é igual <guimenuitem
+>velocidade máxima</guimenuitem
+> (padrão), você poderá não conseguir ver o que está acontecendo. Em alguns dos casos este comportamento poderá ser o desejado, mas em outros casos você poderá querer ter uma ideia da execução. No último caso, você poderá desejar configurar a velocidade da execução como <guimenuitem
+>velocidade baixa</guimenuitem
+>, <guimenuitem
+>velocidade mais baixa</guimenuitem
+> ou <guimenuitem
+>velocidade mínima</guimenuitem
+>. Quando um dos modos lentos for selecionado, a posição atual de execução será exibida no editor. O <guimenuitem
+>passo-a-passo</guimenuitem
+> irá executar um comando por vez.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+
+<sect2 id="the-tools-menu">
+  <title
+>Menu Ferramentas</title>
+  <variablelist>
+    <anchor id="tools-direction-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Ferramentas</guimenu
+> <guimenuitem
+>Seletor de direção...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Esta ação abre o diálogo do seletor de direção.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-color-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Ferramentas</guimenu
+> <guimenuitem
+>Seletor de cores...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Esta ação abre o diálogo do seletor de cores.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-setting-menu">
+  <title
+>Menu Configurações</title>
+  <variablelist>
+    <anchor id="settings-set-script-language"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Configurações</guimenu
+> <guisubmenu
+>Linguagem de Programação</guisubmenu
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Escolhe</action
+> a linguagem para o código.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-editor"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Mostrar o Editor</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Mostra ou oculta o <link linkend="the-editor"
+>Editor</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-inspector"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Mostrar o Inspetor</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Mostra ou oculta o <link linkend="the-inspector"
+>Inspetor</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-errors"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Mostrar os Erros</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Exiba ou esconda a aba <guilabel
+>Erro</guilabel
+> com a lista de erros resultantes do código em execução. Se esta opção estiver habilitada, clique na <guilabel
+>área de desenho</guilabel
+> para ver a tartaruga novamente.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-linenumbers"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F11</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Mostrar números de linha</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Com esta ação, você poderá mostrar os números de linha no <link linkend="the-editor"
+>editor</link
+>. Isto poderá ser útil para procurar um erro.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-toolbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Configurações</guimenu
+><guimenuitem
+>Mostrar a Barra de Ferramentas</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Ativa ou desativa</action
+> a barra de ferramentas principal</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="settings-toggle-statusbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Configurações</guimenu
+><guimenuitem
+>Mostrar a Barra de Estado</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Alterna</action
+> a barra de status</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-shortcuts"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Configurar atalhos...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>O diálogo padrão do &kde; para configurar os atalhos.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-toolbars"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Configurar barras de ferramentas...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>A janela padrão do &kde; para configurar as barras de ferramentas.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-help-menu">
+  <title
+>Menu Ajuda</title>
+<para
+>O &kturtle; tem o menu <guimenu
+>Ajuda</guimenu
+> padrão do &kde;, tal como se encontra descrito nos <ulink url="help:/fundamentals/ui.html#menus-settings"
+>Fundamentos do &kde;</ulink
+>, com um item adicional:</para>
+  <variablelist>
+    <anchor id="help-context-help"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F2</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Ajuda</guimenu
+> <guimenuitem
+>Ajuda sobre: ...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Esta é uma função muito útil: ela oferece ajuda sobre o código sob o cursor na janela do editor. Por isso, &eg;, você poderá ter usado o comando <userinput
+>mostre</userinput
+> no seu código e deseja ler e aprender o que o manual diz sobre este comando. Basta mover o seu cursor para cima do <userinput
+>mostre</userinput
+> e pressionar então <keysym
+>F2</keysym
+>. O manual irá então mostrar toda a informação sobre o comando <userinput
+>mostre</userinput
+>.</para>
+      <para
+>Esta função poderá ser útil enquanto aprende o &turtlescript;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+<sect1 id="the-statusbar">
+<title
+>A barra de status</title>
+<para
+>Na barra de status você poderá saber o estado do &kturtle;. Do lado esquerdo, ela fornece o resultado da última ação. Do lado direito, você encontra a localização atual do cursor (os números da linha e da coluna). No meio da barra de status é indicado o idioma atual usado para os comandos.</para>
+</sect1>
+
+</chapter>

@@ -1,0 +1,306 @@
+<chapter id="getting-started">
+<title
+>Початок роботи</title>
+<para
+>Після запуску &kturtle; ви побачите щось таке:</para>
+<screenshot>
+  <screeninfo
+>Це знімок вікна &kturtle; під час його першого запуску</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>&kturtle; після першого запуску</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+<para
+>У цій інструкції щодо перших кроків у роботі з програмою припускатиметься, що мовою команд &turtlescript; є англійська. Ви можете змінити цю мову за допомогою підменю <menuchoice
+><guimenu
+>Параметри</guimenu
+><guisubmenu
+>Мова скриптів</guisubmenu
+></menuchoice
+>. Майте на увазі, що мову, яку ви там встановите для &kturtle; є мовою, якою ви віддаватимете команди на &turtlescript;, а не мовою, яку використовує &kde; на вашому комп’ютері і якою перекладено інтерфейс і меню &kturtle;.</para>
+
+<sect1 id="first-steps">
+<title
+>Перші кроки у &turtlescript;: привіт, Черепашко!</title>
+<para
+>Ви, певне, вже побачили черепашку посередині полотна: зараз ми навчимося, як керувати нею за допомогою команд з редактора.</para>
+
+<sect2 id="the-turtle-moves">
+<title
+>Рухи черепашки</title>
+<para
+>Почнемо з того, як змусити черепашку рухатися. Наша черепашка може виконувати три типи рухів 3: (1) вона може пересуватися вперед або назад, (2) вона може повертати ліворуч і праворуч і, нарешті, (3) вона може йти напряму (перестрибувати) до точки на екрані. Спробуйте ввести такий приклад:</para>
+<para>
+<screen
+>вперед 100
+ліворуч 90 
+</screen>
+Щоб побачити результат, наберіть або скопіюйте цей код у редактор коду і виконайте його (для цього скористайтесь пунктом меню <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Запуск</guimenu
+><guimenuitem
+>Виконати</guimenuitem
+></menuchoice
+></link
+>).</para>
+
+<para
+>Коли ви набираєте і виконуєте команди на зразок наведених вище у редакторі, ви можете помітити такі речі:</para>
+<orderedlist>
+<listitem
+><para
+>Після запуску команд на виконання черепашка починає рухатися вгору, малюючи лінію, а потім повертається на чверть оберту ліворуч. Причиною цього є використання команд <link linkend="forward"
+><userinput
+>вперед</userinput
+></link
+> і <link linkend="turnleft"
+><userinput
+>ліворуч</userinput
+></link
+>.</para>
+</listitem>
+<listitem>
+<para
+>Колір коду змінюється під час набирання: це називається <emphasis
+>інтуїтивним підсвічуванням</emphasis
+> &mdash; команди різного типу підсвічуються різними кольорами. Таким чином спрощується читання великих блоків коду.</para>
+</listitem>
+<listitem>
+<para
+>Черепашка малює товсту чорну лінію.</para>
+</listitem>
+<listitem>
+<para
+>Можливо, ви побачите повідомлення про помилку. Причиною цього можуть стати дві речі: ви зробили помилку під час копіювання команд або ви ще не встановили відповідної мови команд &turtlescript; (ви можете це зробити за допомогою підменю <menuchoice
+><guimenu
+>Параметри</guimenu
+><guisubmenu
+>Мова скриптів</guisubmenu
+></menuchoice
+>).</para>
+</listitem>
+</orderedlist>
+
+<para
+>Скоріше за все, ви зрозуміли, що команда <userinput
+>вперед 100</userinput
+> відповідає наказові черепашці рухатися вперед, малюючи лінію, а команда <userinput
+>ліворуч 90</userinput
+> — наказові повернутися на 90 <glossterm linkend="degrees"
+>градусів</glossterm
+> ліворуч.</para>
+
+<para
+>Будь ласка, прочитайте статті за наведеними нижче довідковими посиланнями для повного роз’яснення суті нових команд: <link linkend="forward"
+><userinput
+>вперед</userinput
+></link
+>, <link linkend="backward"
+><userinput
+>назад</userinput
+></link
+>, <link linkend="turnleft"
+><userinput
+>ліворуч</userinput
+></link
+> і <link linkend="turnright"
+><userinput
+>праворуч</userinput
+></link
+>.</para>
+</sect2>
+
+<sect2 id="more-examples">
+<title
+>Додаткові приклади</title>
+<para
+>Перший приклад був дуже простим, перейдемо до складніших!</para>
+
+<para>
+
+<screen
+>перезапусти
+
+розмір_полотна 200,200
+колір_полотна 0,0,0
+колір_пера 255,0,0
+розмір_пера 5
+
+перейди 20,20
+напрямок 135
+
+вперед 200
+ліворуч 135
+вперед 100
+ліворуч 135
+вперед 141
+ліворуч 135
+вперед 100
+ліворуч 45
+
+перейди 40,100
+</screen>
+Щоб побачити результати, ви знову ж таки можете набрати або скопіювати код до редактора або відкрити приклад <filename
+>arrow</filename
+> з меню <guimenu
+>Приклади</guimenu
+> і виконати його (для цього ви скористайтесь пунктом підменю <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Запуск</guimenu
+><guimenuitem
+>Виконати</guimenuitem
+></menuchoice
+></link
+>). У наступних прикладах ви зможете отримати глибші знання про програмування.</para>
+
+<para
+>Можливо, ви вже помітили, що у другому прикладі використано набагато більше коду. Також там є декілька нових команд. Ось коротеньке пояснення всіх нових команд:</para>
+
+<para
+>Після команди <userinput
+>перезапусти</userinput
+> зображення стає точно таким самим, яким воно було, коли ви тільки-но запустили програму &kturtle;.</para>
+
+<para
+><userinput
+>розмір_полотна 200,200</userinput
+> встановлює ширину і висоту полотна у значення 200 <glossterm linkend="pixels"
+>пікселів</glossterm
+>. Оскільки висота дорівнює ширині, полотно буде квадратним.</para>
+
+<para
+><userinput
+>колір_полотна 0,0,0</userinput
+> робить колір полотна чорним. <userinput
+>0,0,0</userinput
+> — це <glossterm linkend="rgb"
+>RGB-комбінація</glossterm
+>, у якій всі значення компонентів встановлено у <userinput
+>0</userinput
+>, що дає чорний колір.</para>
+
+<para
+><userinput
+>колір_пера 255,0,0</userinput
+> встановлює червоний колір пера. <userinput
+>255,0,0</userinput
+> — це <glossterm linkend="rgb"
+>RGB-комбінація</glossterm
+>, у якій лише значення червоного компонента встановлено у <userinput
+>255</userinput
+> (на повну силу), тоді як інші компоненти (зелена і синя) мають значення <userinput
+>0</userinput
+> (їх вимкнено). У результаті маємо яскравий червоний колір.</para>
+
+<para
+>Якщо ви не розумієтеся на значеннях компонент кольорів, уважніше прочитайте статтю глосарія про <glossterm linkend="rgb"
+>RGB-комбінації</glossterm
+>.</para>
+
+<para
+><userinput
+>розмір_пера 5</userinput
+> встановлює товщину (розмір) пера у значення <userinput
+>5</userinput
+> <glossterm linkend="pixels"
+>пікселів</glossterm
+>. З моменту встановлення цього значення всі лінії, які малюватиме черепашка, будуть мати товщину <userinput
+>5</userinput
+>, до того часу, доки ми не змінимо значення <userinput
+>розмір_пера</userinput
+>.</para>
+
+<para
+><userinput
+>перейди 20,20</userinput
+> наказує черепашці рухатися у певну точку на полотні. У цьому випадку відповідною точкою буде точка, розташована відносно верхнього лівого кута полотна у 20 <glossterm linkend="pixels"
+>пікселях</glossterm
+> від лівого краю полотна, і у 20 <glossterm linkend="pixels"
+>пікселях</glossterm
+> вниз від верхнього краю полотна. Зауважте, що під час виконання команди <userinput
+>перейди</userinput
+> черепашка не малює лінії.</para>
+
+<para
+><userinput
+>напрямок 135</userinput
+> вказує черепашці напрям руху. Команди <userinput
+>ліворуч</userinput
+> і <userinput
+>праворуч</userinput
+> змінюють кут руху черепашки відносно поточного напрямку. Команда ж <userinput
+>напрямок</userinput
+> змінює кут руху черепашки від нульового напрямку, а, отже, її результат не залежить від попереднього напрямку руху черепашки.</para>
+
+<para
+>За командою <userinput
+>напрямок</userinput
+> йде велика кількість команд <userinput
+>вперед</userinput
+> і <userinput
+>ліворуч</userinput
+>. Ці команди, власне, і призначені для малювання.</para>
+
+<para
+>Наприкінці йде іще одна команда <userinput
+>перейди</userinput
+>, яку використано з метою відвести черепашку вбік від малюнка.</para>
+
+<para
+>Спробуйте перейти за посиланнями на довідку з команд. У цій довідці кожну з команд докладно пояснено.</para>
+
+
+</sect2>
+</sect1>
+
+
+
+<!--        EXTRA SECTIONS CAN BE ADDED TO THE "GETTING STARTED"
+
+<sect1 id="calculations">
+<title
+>Simple Calculations</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_variables">
+<title
+>Using Variables: creating 'number containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_strings">
+<title
+>Using strings: creating 'text containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="logic">
+<title
+>Logic: asking the computer simple questions</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="recursion">
+<title
+>Recursion: the Turtle is using itself</title>
+<para>
+Draw a maze for example
+</para>
+</sect1>
+-->
+
+
+</chapter>

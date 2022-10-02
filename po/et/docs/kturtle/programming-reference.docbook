@@ -1,0 +1,2145 @@
+<chapter id="reference">
+<title
+>&turtlescript;'i käskude seletused</title>
+<para
+>Alljärgnev on &kturtle;'i &turtlescript;i seletus. Peatüki esimeses osas tutvustame &turtlescript;i programmide <link linkend="grammar"
+>grammatika</link
+> mõningaid külgi. Teises osas on juttu eranditult <link linkend="mathematical-operators"
+>matemaatilistest tehetest</link
+>, <link linkend="boolean-operators"
+>tõeväärtustehetest</link
+> ja <link linkend="comparing-operators"
+>võrdlustehetest</link
+>. Kolmas osa kujutab endast hiiglaslikku kõigi <link linkend="commands"
+>käskude</link
+> seletust. Neljandas osas selgitatakse, kuidas <link linkend="assignment-of-variables"
+>omistada</link
+> väärtusi <link linkend="assignment-of-variables"
+>muutujatele</link
+>. Lõpuks seletame viiendas osas, kuidas korraldada käskude täitmist <link linkend="controlling-execution"
+>täitmise kontrollimise lausetega</link
+>, ning kuuendas osas, kuidas luua omaenda käske käsuga <link linkend="learn"
+>learn</link
+>.</para>
+
+<sect1 id="grammar">
+<title
+>&turtlescript;i grammatika</title>
+<para
+>Nagu igas keeles, on ka &turtlescript;il omad sõnad ja sümbolid. Tavalises keeles eristatakse näiteks tegusõnu ("käima", "laulma") ja nimisõnu ("õde", "maja"), mida kasutatakse eri eesmärgil. &turtlescript; on programmeerimiskeel, mida kasutatakse &kturtle;'i juhendamiseks, mida ette võtta.</para>
+<para
+>Käesolevas osas selgitatakse lühidalt &turtlescript;i sõnade ja sümbolite tüüpe. Me tutvustame <link linkend="comment"
+>kommentaare</link
+>, <link linkend="command"
+>käske</link
+> ja kolme eri laadi literaale: <link linkend="number"
+>arvud</link
+>, <link linkend="string"
+>stringid</link
+> ja <link linkend="boolean-value"
+>tõeväärtused (tõene/väär)</link
+>.</para>
+
+
+<sect2 id="comment">
+<title
+>Kommentaarid</title>
+<para
+>Programm koosneb instruktsioonidest, mis täidetakse programmi töötamisel, ja niinimetatud kommentaaridest. Kommentaare ei täideta, &kturtle; lihtsalt eirab neid töötamise ajal. Kommentaarid on mõeldud teistele programmeerijatele, et nad saaksid paremini programmist aru. Kõik, mis järgneb sümbolile <userinput
+>#</userinput
+>, on &turtlescript;i seisukohalt kommentaar. Näiteks see pisike programm ei tee midagi: <screen>
+# see väike programm ei tee midagi, see ongi ainult kommentaar!
+</screen
+> See on vahest mõttetu, aga selgitab kenasti asja olemust.</para>
+<para
+>Kommentaarid on väga kasulikud, kui programm on vähegi keerukam. Need on suureks abiks teistele programmeerijatele. Järgmises programmis kasutatakse kommentaare koos käsuga <link linkend="print"
+>print</link
+>. <screen>
+# selle programmi tegi Cies Breijs.
+print "seda teksti näidatakse lõuendil"
+# eelmine rida ei olnud kommenaar, aga järgmine rida on:
+# print "seda teksti ei näidata!"
+</screen
+>  Programm esimene rida kirjeldab programmi. Teise rea &kturtle; täidab ning näitab lõuendil teksti <userinput
+>seda teksti näidatakse lõuendil</userinput
+>. Kolmas rida on kommentaar. Neljas rida on samuti kommentaar, mis aga sisaldab &turtlescript;i, nii et kui sümbol <userinput
+>#</userinput
+> neljanda rea eest eemaldada, täidab &kturtle; ka selle näitamiskäsu. Programmeerijate kõnepruugis on neljanda rea näitamiskäsk "välja kommenteeritud".</para>
+<para
+>Kommenteeritud read on <link linkend="the-editor"
+>redaktoris</link
+> <glossterm
+>esile tõstetud</glossterm
+> helehalli värviga.</para>
+</sect2>
+
+<sect2 id="command">
+<title
+>Käsud</title>
+<para
+>Käskudega antakse kilpkonnale ehk &kturtle;'ile korraldus midagi teha. Mõned käsud vajavad sisendit, teised annavad väljundit. <screen>
+# forward on käsk, mis vajab sisendit, antud juhul arvu 100:
+forward 100
+</screen
+> Esimene rida on <link linkend="comment"
+>kommentaar</link
+>. Teine rida sisaldab käsku <userinput
+>forward</userinput
+> ja <link linkend="number"
+>arvu</link
+> <userinput
+>100</userinput
+>. Arv ei ole käsu osa, seda käsitletakse käsu "sisendina".</para>
+<para
+>Mõned käsud, nt. <userinput
+>go</userinput
+>, vajavad rohkem kui üht sisendväärtust. Mitut väärtust saab sisestada neid komaga (<userinput
+>,</userinput
+>) eraldades.</para>
+<para
+>Täpsemalt kirjeldatakse kõiki käske, mida &kturtle; toetab, <link linkend="commands"
+>siin</link
+>. Sisseehitatud käsud on <glossterm
+>esile tõstetud</glossterm
+> tumesinise värviga.</para>
+</sect2>
+
+<sect2 id="number">
+<title
+>Arvud</title>
+<para
+>Arvatavasti oled juba koolis õppinud, mis asjad on arvud või mingil muul moel osanud selle välja uurida. &kturtle; kasutab arve üsna sarnaselt sellele, kuidas kasutatakse neid matemaatikas või kas või tavalises kõnepruugis. </para>
+<para
+>Me kasutamine niinimetatud naturaalarve: <userinput
+>0</userinput
+>, <userinput
+>1</userinput
+>, <userinput
+>2</userinput
+>, <userinput
+>3</userinput
+>, <userinput
+>4</userinput
+>, <userinput
+>5</userinput
+> jne. Samuti negatiivseid arve: <userinput
+>-1</userinput
+>, <userinput
+>-2</userinput
+>, <userinput
+>-3</userinput
+> jne. Aga ka murdarve, näiteks: <userinput
+>0.1</userinput
+>, <userinput
+>3.14</userinput
+>, <userinput
+>33.3333</userinput
+>, <userinput
+>-5.05</userinput
+>, <userinput
+>-1.0</userinput
+>. Kümnendkoha eraldajana kasutatakse punkti (<userinput
+>.</userinput
+>). </para>
+<para
+>Arve saab pruukida <link linkend="mathematical-operators"
+>matemaatilistes tehetes</link
+> ja <link linkend="comparing-operators"
+>võrdlustehetes</link
+>. Neid saab lisada ka salvestada <link linkend="assignment-of-variables"
+>muutujatesse</link
+>. Arvud on <glossterm
+>esile tõstetud</glossterm
+> tumepunase värviga.</para>
+</sect2>
+
+<!-- constants like pi? -->
+
+<sect2 id="string">
+<title
+>Stringid</title>
+<para
+>Kõigepealt näide: <screen>
+print "Hei, mina olen string."
+</screen
+> Selles näites on <userinput
+>print</userinput
+> käsk, <userinput
+>"Hei, mina olen string."</userinput
+> aga string. Stringide alguses ja lõpus seisab <userinput
+>"</userinput
+>, mille järgi &kturtle; tunneb ära, et tegemist on stringiga.</para>
+<para
+>Stringid võivad esineda <link linkend="assignment-of-variables"
+>muutujates</link
+> nagu <link linkend="number"
+>arvudki</link
+>. Aga erinevalt arvudest ei saa stringe kasutada <link linkend="mathematical-operators"
+>matemaatilistes tehetes</link
+> ega <link linkend="comparing-operators"
+>võrdlustehetes</link
+>. Stringid on <glossterm
+>esiletõstetud</glossterm
+> punase värviga.</para>
+</sect2>
+
+<sect2 id="boolean-value">
+<title
+>Tõeväärtused (tõene/väär)</title>
+<para
+>Tõeväärtusi on ainult kaks: <userinput
+>tõene</userinput
+> ja <userinput
+>väär</userinput
+>. Mõnikord kasutatakse nende kohta ka muid nimetusi: sees ja väljas, jah ja ei, üks ja null. Kuid &turtlescript;is on nad alati <userinput
+>tõene</userinput
+> ja <userinput
+>väär</userinput
+>. Vaatame killukest &turtlescript;i: <screen>
+$a = true
+</screen
+> Kui vaadata <link linkend="the-inspector"
+>inspektorit</link
+>, näeb, et <link linkend="assignment-of-variables"
+>muutuja</link
+> <userinput
+>$a</userinput
+> väärtuseks on määratud <userinput
+>tõene</userinput
+> ja see on tõeväärtus.</para>
+<para
+>Tõeväärtused on sageli <link linkend="comparing-operators"
+>võrdlustehte</link
+> tulemus, nagu järgmises &turtlescript;i killukeses: <screen>
+$answer = 10 &gt; 3
+</screen
+> <link linkend="assignment-of-variables"
+>Muutuja</link
+> <userinput
+>$answer</userinput
+> väärtuseks on määratud <userinput
+>tõene</userinput
+>, sest <userinput
+>10</userinput
+> on suurem kui <userinput
+>3</userinput
+>.</para>
+<para
+>Tõeväärtused <userinput
+>tõene</userinput
+> ja <userinput
+>väär</userinput
+> on <glossterm
+>esile tõstetud</glossterm
+> tumepunase värviga.</para>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="operators">
+<title
+>Matemaatika-, tõeväärtus- ja võrdlustehted</title>
+<para
+>Selle osa pealkiri võib tunduda raskepärasena, aga tegelikult pole siin midagi väga keerulist.</para>
+
+<sect2 id="mathematical-operators">
+<title
+>Matemaatilised tehted</title>
+<para
+>Need on põhilised matemaatikasümbolid: liitmine (<userinput
+>+</userinput
+>), lahutamine (<userinput
+>-</userinput
+>), korrutamine (<userinput
+>*</userinput
+>), jagamine (<userinput
+>/</userinput
+>) ja astendamine (<userinput
+>^</userinput
+>).</para>
+
+<para
+>Väike näide matemaatikatehetest &turtlescript;is: <screen>
+$add      = 1 + 1
+$subtract = 20 - 5
+$multiply = 15 * 2
+$divide   = 30 / 30
+$power    = 2 ^ 2
+</screen
+> Matemaatikatehete tulemused <link linkend="assignment-of-variables"
+>omistatakse</link
+> eri <link linkend="assignment-of-variables"
+>muutujatele</link
+>. Väärtusi näeb <link linkend="the-inspector"
+>inspektori</link
+> abil.</para>
+<para
+>Kui soovid väga lihtsat tehet teha, siis see käib umbes nii: <screen
+>print 2010-12
+</screen
+></para>
+<para
+>Ja nüüd näide sulgudega: <screen>
+print ( ( 20 - 5 ) * 2 / 30 ) + 1
+</screen
+> Sulgudes olevad tehted sooritatakse esimestena. Antud näites arvutatakse 20-5, siis korrutatakse 2-ga, jagatakse 30-ga ning seejärel liidetakse 1 (tulemuseks on 2). Sulge võib kasutada ka muudel juhtudel.</para>
+<para
+>&kturtle; pakub käskudes teistegi matemaatiliste võimaluste kasutamist. Uuri näiteks järgmisi käske (kuid arvesta, et tegemist on keerukamate tehetega): <link linkend="round"
+>round</link
+>, <link linkend="random"
+>random</link
+>, <link linkend="sqrt"
+>sqrt</link
+> , <link linkend="pi"
+>pi</link
+>, <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+>, <link linkend="tan"
+>tan</link
+>, <link linkend="arcsin"
+>arcsin</link
+>, <link linkend="arccos"
+>arccos</link
+>, <link linkend="arctan"
+>arctan</link
+>.</para>
+</sect2>
+
+<sect2 id="boolean-operators">
+<title
+>Tõeväärtustehted</title>
+<para
+>Kui <link linkend="mathematical-operators"
+>matemaatilised tehted</link
+> on mõeldud eelkõige <link linkend="number"
+>arvudele</link
+>, siis tõeväärtustehteid tehakse <link linkend="boolean-value"
+>tõeväärtustega</link
+> (<userinput
+>tõene</userinput
+> ja <userinput
+>väär</userinput
+>) Tõeväärtustehteid on ainult kolm, nimelt <userinput
+>and</userinput
+>, <userinput
+>or</userinput
+> ja <userinput
+>not</userinput
+>. Järgnev &turtlescript;i killuke seletab nende kasutamist: <screen>
+$and_1_1 = true and true    # -> true
+$and_1_0 = true and false   # -> false
+$and_0_1 = false and true   # -> false
+$and_0_0 = false and false  # -> false
+
+$or_1_1 = true or true    # -> true
+$or_1_0 = true or false   # -> true
+$or_0_1 = false or true   # -> true
+$or_0_0 = false or false  # -> false
+
+$not_1 = not true   # -> false
+$not_0 = not false  # -> true
+</screen
+> <link linkend="the-inspector"
+>Inspektoris</link
+> näeb ka väärtusi, kuid me andsime tulemused ka lühikommentaarina ridade lõpus. <userinput
+>and</userinput
+> on <userinput
+>tõene</userinput
+> ainult siis,  kui mõlemad pooled on <userinput
+>tõesed</userinput
+>. <userinput
+>or</userinput
+> on <userinput
+>tõene</userinput
+> siis, kui üks pooltest on <userinput
+>tõene</userinput
+>. <userinput
+>not</userinput
+> aga muudab <userinput
+>tõese</userinput
+> <userinput
+>vääraks</userinput
+> ja <userinput
+>väära</userinput
+> <userinput
+>tõeseks</userinput
+>.</para>
+<para
+>Tõeväärtustehted on <glossterm
+>esile tõstetud</glossterm
+> roosa värviga.</para>
+
+<sect3 id="boolean-operators-advanced-examples">
+<title
+>Mõned keerukamad näited</title>
+<para
+>Üks näide tehte <userinput
+>and</userinput
+> kohta: <screen>
+$a = 1
+$b = 5
+if (($a &lt; 10) and ($b == 5)) and ($a &lt; $b) {
+  print "hello"
+}
+</screen
+> Selles &turtlescript;i killukeses ühendatakse kolm <link linkend="comparing-operators"
+>võrdlustehet</link
+> tehte <userinput
+>and</userinput
+> abil. See tähendab, et kõik kolm peavad olema "tõesed", et näidataks teksti "hello".</para>
+
+<para
+>Näide tehtega <userinput
+>or</userinput
+>: <screen>
+$n = 1
+if ($n &lt; 10) or ($n == 2) {
+  print "hello"
+}
+</screen
+> Selles &turtlescript;i killukeses on <userinput
+>or</userinput
+> vasak pool "tõene", parem pool aga "väär". Et <userinput
+>or</userinput
+> üks pool on siiski "tõene", on ka tehte <userinput
+>or</userinput
+> tulemus "tõene" ning järelikult näidatakse teksti "hello".</para>
+
+<para
+>Lõpuks ka näide tehtega <userinput
+>not</userinput
+>, mis muudab "tõese" "vääraks" ja "väära" "tõeseks": <screen
+>$n = 1
+if not ($n == 3) {
+  print "hello"
+} else {
+  print "not hello ;-)"
+}
+</screen
+></para>
+</sect3>
+</sect2>
+
+<sect2 id="comparing-operators">
+<title
+>Võrdlustehted</title>
+<para
+>Vaatleme lihtsat võrdlust: <screen>
+$answer = 10 &gt; 3
+</screen
+> Siin võrreldakse arvu <userinput
+>10</userinput
+> arvuga <userinput
+>3</userinput
+> "suurem kui" tehtega. Võrdluse tulemus, <link linkend="boolean-value"
+>tõeväärtus</link
+> <userinput
+>tõene</userinput
+> salvestatakse <link linkend="assignment-of-variables"
+>muutujasse</link
+> <userinput
+>$answer</userinput
+>.</para>
+<para
+>Võrdlustehetega saab omavahel võrrelda kõiki <link linkend="number"
+>arve</link
+> ja <link linkend="assignment-of-variables"
+>muutujaid</link
+> (mis sisaldavad arve).</para>
+<para
+>Toome ära kõik võimalikud võrdlustehted: <table
+> <title
+>Küsimuste tüübid</title
+> <tgroup cols="3"
+> <tbody
+> <row
+> <entry
+><userinput
+>$A == $B</userinput
+></entry
+> <entry
+>võrdub</entry
+> <entry
+>vastus on <quote
+>tõene</quote
+>, kui <userinput
+>$A</userinput
+> võrdub <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A != $B</userinput
+></entry
+> <entry
+>ei võrdu</entry
+> <entry
+>vastus on <quote
+>tõene</quote
+>, kui <userinput
+>$A</userinput
+> ei võrdu <userinput
+>$B</userinput
+>-ga</entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt; $B</userinput
+></entry
+> <entry
+>suurem kui</entry
+> <entry
+>vastus on <quote
+>tõene</quote
+>, kui <userinput
+>$A</userinput
+> on suurem kui <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt; $B</userinput
+></entry
+> <entry
+>väiksem kui</entry
+> <entry
+>vastus on <quote
+>tõene</quote
+>, kui <userinput
+>$A</userinput
+> on väiksem kui <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt;= $B</userinput
+></entry
+> <entry
+>suurem kui või võrdne</entry
+> <entry
+>vastus on <quote
+>tõene</quote
+>, kui <userinput
+>$A</userinput
+> on suurem kui või võrdub <userinput
+>$B</userinput
+>-ga</entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt;= $B</userinput
+></entry
+> <entry
+>väiksem kui või võrdne</entry
+> <entry
+>vastus on <quote
+>tõene</quote
+>, kui <userinput
+>$A</userinput
+> on väiksem kui või võrdub <userinput
+>$B</userinput
+>-ga</entry
+> </row
+> </tbody
+> </tgroup
+> </table
+> Palun arvesta, et $A ja $B peavad olema <link linkend="number"
+>arvud</link
+> või <link linkend="assignment-of-variables"
+>muutujad</link
+>, mis sisaldavad arve.</para>
+</sect2>
+
+
+</sect1>
+
+
+
+<sect1 id="commands">
+<title
+>Käsud</title>
+<para
+>Just käskudega saab panna kilpkonna või &kturtle;'i midagi tegema. Osa käske eeldab sisendit, osa annab väljundi. Selles osas kirjeldame kõiki &kturtle;'i sisseehitatud käske. Lisaks saab oma käske luua käsuga <link linkend="learn"
+>learn</link
+>. Käsitletavad sisseehitatud käsud on <glossterm
+>esile tõstetud</glossterm
+> tumesinise värviga.</para>
+
+<sect2 id="moving-the-turtle">
+<title
+>Kilpkonna liigutamine</title>
+<para
+>Kilpkonna saab lõuendil liigutada mitme käsuga.</para>
+
+  <variablelist>
+    <anchor id="forward"/>
+    <varlistentry
+> 
+      <term
+>forward (fw)<indexterm
+><primary
+>forward (fw)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>forward X</screen>
+<userinput
+>forward</userinput
+> paneb kilpkonna otse edasi liikuma X piksli võrra. Kui pliiats on sees, jätab kilpkonna ka jälje maha. <userinput
+>forward</userinput
+> asemel võib kasutada lühendit <userinput
+>fw</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="backward"/>
+    <varlistentry
+>  
+      <term
+>backward (bw)<indexterm
+><primary
+>backward (bw)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>backward X</screen>
+<userinput
+>backward</userinput
+> paneb kilpkonna otse tagasi liikuma X piksli võrra. Kui pliiats on sees, jätab kilpkonna ka jälje maha. <userinput
+>backward</userinput
+> asemel võib kasutada lühendit <userinput
+>bw</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnleft"/>
+    <varlistentry
+> 
+      <term
+>turnleft (tl)<indexterm
+><primary
+>turnleft (tl)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>turnleft X</screen>
+<userinput
+>turnleft</userinput
+> paneb kilpkonna X kraadi võrra vasakule pöörama. <userinput
+>turnleft</userinput
+> asemel võib kasutada lühendit <userinput
+>tl</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnright"/>
+    <varlistentry
+> 
+      <term
+>turnright (tr)<indexterm
+><primary
+>turnright (tr)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>turnright X</screen>
+<userinput
+>turnright</userinput
+> paneb kilpkonna X kraadi võrra paremale pöörama. <userinput
+>turnright</userinput
+> asemel võib kasutada lühendit <userinput
+>tr</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="direction"/>
+    <varlistentry
+> 
+      <term
+>direction (dir)<indexterm
+><primary
+>direction (dir)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>direction X</screen>
+<userinput
+>direction</userinput
+> määrab kilpkonna suunaks X kraadi arvestades nullist, see ei ole seotud kilpkonna varasema suunaga. <userinput
+>direction</userinput
+> asemel võib kasutada lühendit <userinput
+>dir</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="getdirection"/>
+    <varlistentry
+> 
+      <term
+>getdirection<indexterm
+><primary
+>getdirection</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>getdirection</screen>
+<userinput
+>getdirection</userinput
+> tagastab kilpkonna suuna kraadidena arvestades nullist, kus null on suund, millega kilpkonn suundub üles.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="center"/>
+    <varlistentry
+> 
+      <term
+>center<indexterm
+><primary
+>center</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>center</screen>
+<userinput
+>center</userinput
+> sunnib kilpkonna liikuma lõuendi keskpunkti.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="go"/>
+    <varlistentry
+> 
+      <term
+>go<indexterm
+><primary
+>go</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>go X,Y</screen>
+<userinput
+>go</userinput
+> paneb kilpkonna liikuma lõuendi konkreetsesse punkti. See asub X <glossterm linkend="pixels"
+>piksli</glossterm
+> kaugusel lõuendi vasakust servast ja Y <glossterm linkend="pixels"
+>piksli</glossterm
+> kaugusel lõuendi ülaservast.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gox"/>
+    <varlistentry
+> 
+      <term
+>gox<indexterm
+><primary
+>gox (gx)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>gox X</screen>
+<userinput
+>gox</userinput
+> paneb kilpkonna samal kõrgusel liikuma X <glossterm linkend="pixels"
+>piksli</glossterm
+> kaugusele lõuendi vasakust servast. <userinput
+>gox</userinput
+> asemel võib kasutada lühemat <userinput
+>gx</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="goy"/>
+    <varlistentry
+> 
+      <term
+>goy<indexterm
+><primary
+>goy (gy)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>goy Y</screen>
+<userinput
+>goy</userinput
+> paneb kilpkonna samal laiusel (kaugusel vasakust servast) liikuma Y <glossterm linkend="pixels"
+>piksli</glossterm
+> kaugusele lõuendi ülaservast. <userinput
+>goy</userinput
+> asemel võib kasutada lühemat <userinput
+>gy</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <note
+><para
+>Käskudega <userinput
+>go</userinput
+>, <userinput
+>gox</userinput
+>, <userinput
+>goy</userinput
+> ja <userinput
+>center</userinput
+> ei joonista kilpkonn joont, olgu pliiats üleval või all.</para>
+  </note>
+</sect2>
+
+<sect2 id="locate-the-turtle">
+<title
+>Kus on kilpkonn?</title>
+<para
+>Kilpkonna asukohta lõuendil saab teada kahe käsuga.</para>
+
+  <variablelist>
+    <anchor id="getx"/>
+    <varlistentry
+> 
+      <term
+>getx<indexterm
+><primary
+>getx</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>getx</userinput
+> tagastab pikslite arvu lõuendi vasakust servast kilpkonna asukohani.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gety"/>
+    <varlistentry
+> 
+      <term
+>gety<indexterm
+><primary
+>gety</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>gety</userinput
+> tagastab pikslite arvu lõuendi ülemisest servast kilpkonna asukohani.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="pen">
+<title
+>Kilpkonn pliiatsiga</title>
+<para
+>Kilpkonnal on pliiats, millega ta liikudes joont veab. Pliiatsit saab juhtida mitme käsuga, mida siin tutvustamegi.</para>
+  <variablelist>
+    <anchor id="penup"/>
+    <varlistentry
+> 
+      <term
+>penup (pu)<indexterm
+><primary
+>penup (pu)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>penup</screen>
+<userinput
+>penup</userinput
+> tõstab pliiatsi lõuendilt ja kuni see on <quote
+>üleval</quote
+>, ei tõmba kilpkonn liikudes ühtki joont. Vaata ka <userinput
+>pendown</userinput
+>. <userinput
+>penup</userinput
+> asemel võib kasutada lühendit <userinput
+>pu</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="pendown"/>
+    <varlistentry
+> 
+      <term
+>pendown (pd)<indexterm
+><primary
+>pendown (pd)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pendown</screen>
+<userinput
+>pendown</userinput
+> surub pliiatsi lõuendi vastu ja kuni see on <quote
+>all</quote
+>, tõmbab kilpkonn liikudes joone. Vaata ka <userinput
+>penup</userinput
+>. <userinput
+>pendown</userinput
+> asemel võib kasutada ka lühendit <userinput
+>pd</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setpenwidth"/>
+    <varlistentry
+> 
+      <term
+>penwidth (pw)<indexterm
+><primary
+>penwidth (pw)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>penwidth X</screen>
+<userinput
+>penwidth</userinput
+> määrab pliiatsi tõmmatava joone laiuseks X <glossterm linkend="pixels"
+>pikslit</glossterm
+>. <userinput
+>penwidth</userinput
+> asemel võib kasutada ka lühendit <userinput
+>pw</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setfgcolor"/>
+    <varlistentry
+> 
+      <term
+>pencolor (pc)<indexterm
+><primary
+>pencolor (pc)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pencolor R,G,B</screen>
+<userinput
+>pencolor</userinput
+> määrab pliitsi tõmmatava joone värvi. <userinput
+>pencolor</userinput
+> tahab saada sisendina <glossterm linkend="rgb"
+>RGB värvikoodi</glossterm
+>. <userinput
+>pencolor</userinput
+> asemel võib kasutada ka lühendit <userinput
+>pc</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="canvas">
+<title
+>Lõuendiga seotud käsud</title>
+<para
+>Lõuendi omadusi saab muuta mitme käsuga.</para>
+  <variablelist>
+    <anchor id="resizecanvas"/>
+    <varlistentry>
+      <term
+>canvassize (cs)<indexterm
+><primary
+>canvassize (cs)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>canvassize X,Y</screen>
+Käsk <userinput
+>canvassize</userinput
+> määrab lõuendi suuruse. Käsu sisendiks on X ja Y, kus X on uue lõuendi laius <glossterm linkend="pixels"
+>pikslites</glossterm
+> ja Y uue lõuendi kõrgus samuti <glossterm linkend="pixels"
+>pikslites</glossterm
+>. <userinput
+>canvassize</userinput
+> asemel võib kasutada lühendit <userinput
+>cs</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setbgcolor"/>
+    <varlistentry
+> 
+      <term
+>canvascolor (cc)<indexterm
+><primary
+>canvascolor (cc)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>canvascolor R,G,B</screen>
+Käsk <userinput
+>canvascolor</userinput
+> määrab lõuendi värvi. <userinput
+>canvascolor</userinput
+> tahab saada sisendina <glossterm linkend="rgb"
+>RGB värvikoodi</glossterm
+>. <userinput
+>canvascolor</userinput
+> asemel võib kasutada ka lühendit <userinput
+>cc</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="clean">
+<title
+>Puhastamiskäsud</title>
+<para
+>Kahe käsuga saab lõuendi puhastada sellest, mida sa sinna oled valmis meisterdanud.</para>
+  <variablelist>
+    <anchor id="clear"/>
+    <varlistentry
+> 
+      <term
+>clear (ccl)<indexterm
+><primary
+>clear (ccl)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>clear</screen>
+Käsk <userinput
+>clear</userinput
+> puhastab lõuendilt kogu joonistatu. Muud asjad jäävad püsima: kilpkonna asukoht ja nurk, lõuendivärv, kilpkonna nähaolek ja lõuendi suurus.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="reset"/>
+    <varlistentry
+> 
+      <term
+>reset<indexterm
+><primary
+>reset</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>reset</screen>
+Käsk <userinput
+>reset</userinput
+> puhastab palju rohkem asju kui <userinput
+>clear</userinput
+>. Pärast käsku <userinput
+>reset</userinput
+> on kõik taas selline, nagu &kturtle;'i käivitamisel: kilpkonn on lõuendi keskel, lõuendi värv on valge, kilpkonn hakkab liikudes vedama musta joont ja lõuendi suurus on 400 x 400 pikslit.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="sprites">
+<title
+>Kilpkonn on sprait</title>
+<para
+>Vaevalt et paljud teavad, mis õieti on sprait, nii et ütleme siis saladuse välja: sprait on väike pilt, mida saab ekraanil liigutada. Täpsemalt vaata sõnastikust mõiste <glossterm linkend="sprites"
+>sprait</glossterm
+> kirjeldust. See tähendab, et meie kilpkonn on sprait! </para>
+<para
+>Toome siin ära kõik käsud, mida saab spraidi puhul kasutada.</para>
+<para
+>[&kturtle;'i praegune versioon toetab spraidina ainult kilpkonna kasutamist. Aga tulevikus võib olla vägagi võimalik, et võid kilpkonna oma soovi kohaselt millegi muuga asendada.]</para>
+  <variablelist>
+    <anchor id="spriteshow"/>
+    <varlistentry
+> 
+      <term
+>spriteshow (ss)<indexterm
+><primary
+>spriteshow (ss)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>spriteshow</screen>
+Käsk <userinput
+>spriteshow</userinput
+> muudab kilpkonna uuesti nähtavaks pärast tema peitmist. <userinput
+>spriteshow</userinput
+> asemel võib kasutada ka lühendit <userinput
+>ss</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="spritehide"/>
+    <varlistentry
+> 
+      <term
+>spritehide (sh)<indexterm
+><primary
+>spritehide (sh)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>spritehide</screen>
+<userinput
+>spritehide</userinput
+> peidab kilpkonna. Seda on mõtet kasutada siis, kui kilpkonn kohe kuidagi ei taha sinu joonistusele sobida. <userinput
+>spritehide</userinput
+> asemel võib kasutada ka lühendit <userinput
+>sh</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="writing">
+<title
+>Kas kilpkonn oskab ka kirjutada?</title>
+<para
+>Õige vastus: <quote
+>jah, muidugi</quote
+>. Kilpkonn võib kirjutada küll, aga mõistagi pead sina talle ütlema, mida kirjutada.</para>
+  <variablelist>
+    <anchor id="print"/>
+    <varlistentry
+> 
+      <term
+>print<indexterm
+><primary
+>print</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>print X</screen>
+<userinput
+>print</userinput
+> annab kilpkonnale käsu midagi lõuendile kirjutada. <userinput
+>print</userinput
+> sisendiks võivad olla nii numbrid kui stringid. Sümbolit <quote
+>+</quote
+> kasutades saab käsuga <userinput
+>print</userinput
+> lasta kirjutada mitmesuguseid numbreid ja stringe. Toome siin väikese näite: <screen
+>$year = 2003
+$author = "Cies"
+print $author + " alustas KTurtle'i projekti aastal " + $year + "  ja ta töötab endiselt rõõmuga selle kallal!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="fontsize"/>
+    <varlistentry
+> 
+      <term
+>fontsize<indexterm
+><primary
+>fontsize</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>fontsize X</screen>
+<userinput
+>fontsize</userinput
+> määrab fondi suuruse, mida <userinput
+>print</userinput
+> kirjutamisel kasutab. <userinput
+>fontsize</userinput
+> sisend peab olema number. Suurus määratakse <glossterm linkend="pixels"
+>pikslites</glossterm
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="math-commands">
+<title
+>Matemaatilised käsud</title>
+<para
+>Järgmised käsud on &kturtle;'i keerukamad matemaatilised käsud.</para>
+  <variablelist>
+    <anchor id="round"/>
+    <varlistentry>
+      <term
+>round<indexterm
+><primary
+>round</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>round(x)</screen>
+<userinput
+>round</userinput
+> ümardab antud arvu lähima täisarvuni. <screen>
+print round(10.8)
+forward 20
+print round(10.3)
+</screen
+> Selle koodiga kirjutab kilpkonn arvud 11 ja 10.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="random"/>
+    <varlistentry
+> 
+      <term
+>random (rnd)<indexterm
+><primary
+>random (rnd)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>random X,Y</screen>
+<userinput
+>random</userinput
+> on käsk, mis tahab saada sisendit ja annab kohe ka väljundi. Sisendiks on kaks arvu, milles üks (X) määrab minimaalse ja teine (Y) maksimaalse väljundi. Väljund on juhuslik arv, mis on miinimumiga võrdne või suurem ning maksimumiga võrdne või väiksem. Üks väike näide: <screen>
+repeat 500 {
+  $x = random 1,20
+  forward $x
+  turnleft 10 - $x
+}
+</screen
+> Käsuga <userinput
+>random</userinput
+> saab oma programmi veidi kaootilisemaks muuta.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="mod"/>
+    <varlistentry
+> 
+      <term
+>mod<indexterm
+><primary
+>mod</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mod X,Y</screen>
+Käsk <userinput
+>mod</userinput
+> tagastab esimese arvu jagamisel teisega tekkiva jäägi.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sqrt"/>
+    <varlistentry
+> 
+      <term
+>sqrt<indexterm
+><primary
+>sqrt</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen>
+Käsk <userinput
+>sqrt</userinput
+> peab leidma arvu X ruutjuure.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+<!--
+  <variablelist>
+    <anchor id="exp"/>
+    <varlistentry
+> 
+      <term
+>exp<indexterm
+><primary
+>exp</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+-->
+  <variablelist>
+    <anchor id="pi"/>
+    <varlistentry
+> 
+      <term
+>pi<indexterm
+><primary
+>pi</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pi</screen>
+See käsk tagastab konstandi pii <userinput
+>3,14159</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sin"/>
+    <anchor id="cos"/>
+    <anchor id="tan"/>
+    <varlistentry>
+      <term
+>sin<indexterm
+><primary
+>sin</primary
+></indexterm
+>, cos<indexterm
+><primary
+>cos</primary
+></indexterm
+>, tan<indexterm
+><primary
+>tan</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>sin X
+cos X
+tan X
+</screen>
+Need kolm käsku esindavad maailmakuulsaid trigonomeetrilisi funktsioone <userinput
+>sin</userinput
+>, <userinput
+>cos</userinput
+> ja <userinput
+>tan</userinput
+>. Nende käskude sisendargument X on <link linkend="number"
+>arv</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="arcsin"/>
+    <anchor id="arccos"/>
+    <anchor id="arctan"/>
+    <varlistentry>
+      <term
+>arcsin<indexterm
+><primary
+>arcsin</primary
+></indexterm
+>, arccos<indexterm
+><primary
+>arccos</primary
+></indexterm
+>, arctan<indexterm
+><primary
+>arctan</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>arcsin X
+arccos X
+arctan X
+</screen>
+Need käsud on funktsioonide <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+> and <link linkend="tan"
+>tan</link
+> pöördväärtused. Nende käskude sisendargument X on <link linkend="number"
+>arv</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="dialogs">
+<title
+>Sisend ja tagasiside dialoogide kaudu</title>
+<para
+>Dialoog on väike hüpikaken, mis annab teatud tagasisidet või soovib saada mingit sisendit. &kturtle; kasutab dialoogidele kaht käsku: <userinput
+>message</userinput
+> ja <userinput
+>ask</userinput
+>.</para>
+  <variablelist>
+    <anchor id="message"/>
+    <varlistentry
+> 
+      <term
+>message<indexterm
+><primary
+>message</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>message X</screen>
+Käsk <userinput
+>message</userinput
+> vajab sisendina <link linkend="string"
+>stringi</link
+>. See näitab hüpikdialoogi, mis sisaldab <link linkend="string"
+>stringi</link
+> teksti. <screen
+>message  "Cies alustas KTurtle'iga aastal 2003  ja ta töötab endiselt rõõmuga selle kallal!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="ask"/>
+    <varlistentry
+> 
+      <term
+>ask<indexterm
+><primary
+>ask</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ask X</screen>
+Käsk <userinput
+>ask</userinput
+> vajab sisendina <link linkend="string"
+>stringi</link
+>. See näitab hüpikdialoogi, mis sisaldab stringi nagu ka <link linkend="message"
+>message</link
+>. Kuid lisaks sellele on dialoogis ka sisendiväli. Selle abil saab kasutaja sisestada <link linkend="number"
+>arvu</link
+> või <link linkend="string"
+>stringi</link
+>, mis on võimalik salvestada <link linkend="assignment-of-variables"
+>muutujasse</link
+> või edastada argumendina <link linkend="commands"
+>käsule</link
+>. Näide: <screen>
+$in = ask "Kui vana sa oled?"
+$out = 2003 - $in
+print "Aastal 2003 olid sa " + $out + " aastat vana."
+</screen
+> Kui kasutaja sulgeb sisenddialoogi või ei sisesta midagi, on <link linkend="assignment-of-variables"
+>muutuja</link
+> tühi.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="assignment-of-variables">
+<title
+>Muutujate omistamine</title>
+<para
+>Kõigepealt vaatleme muutujaid, seejärel neile väärtuse omistamist. </para>
+
+<para
+>Muutujad on sõnad, mille alguses seisab <quote
+>$</quote
+>. <link linkend="the-editor"
+>Redaktoris</link
+> on nad <glossterm
+>esile tõstetud</glossterm
+> purpurse värviga.</para>
+
+<para
+>Muutujad võivad sisaldada suvalist <link linkend="number"
+>arvu</link
+>, <link linkend="string"
+>stringi</link
+> või <link linkend="boolean-value"
+>tõeväärtust</link
+>. Omistamise <userinput
+>=</userinput
+> abil antakse muutujale sisu. See sisu püsib seni, kuni programm lõpetab käskude täitmise või kuni muutujale pole omistatud midagi muud.</para>
+
+<para
+>Omistatud muutujaid saab seejärel kasutada vastavalt nende sisule. Võtame näiteks järgmise &turtlescript;i killukese: <screen>
+$x = 10
+$x = $x / 3
+print $x
+</screen
+> Kõigepealt omistatakse muutujale <userinput
+>$x</userinput
+> väärtus <userinput
+>10</userinput
+>. Seejärel omistatakse muutujale <userinput
+>$x</userinput
+> iseenda väärtus jagatud <userinput
+>3</userinput
+>-ga &mdash; see tähendab, et muutuja <userinput
+>$x</userinput
+> väärtuseks saab tehte <userinput
+>10 / 3</userinput
+> tulemus. Lõpuks <userinput
+>$x</userinput
+> näidatakse. Teisel ja kolmandal real on näha, et muutujat <userinput
+>$x</userinput
+> kasutatakse nagu arvu.</para>
+
+<para
+>Et muutujaid kasutada, tuleb neile väärtus omistada. Näide: <screen>
+print $n
+</screen
+> See ei näita mitte midagi ja annab vaid veateate.</para>
+
+<para
+>See oli lihtne, aga võtame kohe &turtlescript;i raskema näite: <screen>
+$a = 2004
+$b = 25
+
+# the next command prints "2029"
+print $a + $b
+backward 30
+# the next command prints "2004 plus 25 equals 2029"
+print $a + " plus " + $b + " equals " + ($a + $b)
+</screen
+> Esimesel kahel real määratakse muutujate <userinput
+>$a</userinput
+> ja <userinput
+>$b</userinput
+> väärtuseks 2004 ja 25. Ülejäänud osa näitest koosneb kahest käsust <userinput
+>print</userinput
+>, mida eraldab käsk <userinput
+>backward 30</userinput
+>. Kommentaarid selgitavad, mida käsud teevad. Käsk <userinput
+>backward 30</userinput
+> on selleks, et iga väljund oleks ikka uuel real. Toodud näites on ka näha, et muutujaid saab kasutada nende sisuga mis tahes <link linkend="operators"
+>tehete</link
+> sooritamiseks või sisendina, kui kutsuda välja mõni <link linkend="commands"
+>käsk</link
+>.</para>
+
+<para
+>Veel üks näide: <screen>
+$name = ask "What is your name?"
+print "Hi " + $name + "! Good luck while learning the art of programming..."
+</screen
+> Siin on kõik päris selge ning ka siin võib näha, et muutujat <userinput
+>$name</userinput
+> kasutatakse nagu stringi.</para>
+
+<para
+>Muutujate kasutamisel on suureks abiks <link linkend="the-inspector"
+>inspektor</link
+>. See näitab kõigi kasutusel olevate muutujate sisu.</para>
+</sect1>
+
+
+
+<sect1 id="controlling-execution">
+<title
+>Täitmise kontrollimine</title>
+<para
+>Täitmise kontrollerid lubavad &mdash; nagu nimetuski ütleb &mdash; kontrollida käsu täitmist.</para>
+<para
+>Täitmise kontrollimise käsud on <glossterm
+>esile tõstetud</glossterm
+> tumerohelise rasvase kirjaga. Looksulud, mida väga sageli koos täitmise kontrolleritega pruugitakse, on <glossterm
+>esile tõstetud</glossterm
+> musta värviga.</para>
+
+<sect2 id="wait">
+<title
+>Kilpkonna ootelejätmine</title>
+<para
+>Kui oled juba natuke &kturtle;'iga harjutanud, paned tähele, et kilpkonn võib päris kiiresti joonistada. See käsk muudab tema tegevuse aga veidi aeglasemaks.</para>
+  <variablelist>
+    <varlistentry>
+      <term
+>wait<indexterm
+><primary
+>wait</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>wait X</screen>
+<userinput
+>wait</userinput
+> paneb kilpkonna X sekundiks ootama. <screen>
+repeat 36 {
+  forward 5
+  turnright 10
+  wait 0.5
+}
+</screen
+> Selle koodiga joonistatakse ringjoon, aga kilpkonn ootab igal sammul pool sekundit. See jätab mulje nii enam-vähem normaalse kiirusega liikuvast kilpkonnast - vähemalt kilpkonna kohta...</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="if">
+<title
+>Tingimuse "kui" (if) täitmine</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>if<indexterm
+><primary
+>if</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>if <link linkend="boolean-value"
+>tõeväärtus</link
+> { ... }</screen>
+Kood, mis seisab sulgudes, täidetakse ainult siis, kui (<userinput
+>if</userinput
+>) <link linkend="boolean-value"
+>tõeväärtuse</link
+> väärtus on <quote
+>tõene</quote
+>. <screen>
+$x = 6
+if $x &gt; 5 {
+  print "$x is greater than five!"
+}
+</screen
+> Esimesel real määratakse <userinput
+>$x</userinput
+> väärtuseks 6. Teisel real kasutatakse <link linkend="comparing-operators"
+>võrdlustehet</link
+> <userinput
+>$x &gt; 5</userinput
+> hindamiseks. Et hinnang on <quote
+>tõene</quote
+> ehk 6 on suurem kui 5, lubab täitmise kontroller <userinput
+>if</userinput
+> looksulgudes oleva koodi täita.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="else">
+<title
+>Vastasel juhul ehk "else"</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>else<indexterm
+><primary
+>else</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>if <link linkend="boolean-value"
+>tõeväärtus</link
+> { ... } else { ... }</screen>
+Kontrollerit <userinput
+>else</userinput
+> saab kasutada koos kontrolleriga <link linkend="if"
+><userinput
+>if</userinput
+></link
+>. Kood, mis seisab looksulgudes <userinput
+>else</userinput
+> järel, täidetakse ainult siis, kui <link linkend="boolean-value"
+>tõeväärtuse</link
+> väärtus on <quote
+>väär</quote
+>. <screen>
+reset
+$x = 4
+if $x &gt; 5 {
+  print "$x is greater than five!"
+} else {
+  print "$x is smaller than six!"
+}
+</screen
+> <link linkend="comparing-operators"
+>Võrdlustehe</link
+> hindab avaldist <userinput
+>$x &gt; 5</userinput
+>. Et 4 ei ole suurem kui 5, on väärtuseks <quote
+>väär</quote
+>. See tähendab, et täidetakse kood, mis seisab looksulgudes <userinput
+>else</userinput
+> järel.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="while">
+<title
+>Silmus "while"</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>while<indexterm
+><primary
+>while</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>while <link linkend="boolean-value"
+>tõeväärtus</link
+> { ... }</screen>
+Täitmise kontroller <userinput
+>while</userinput
+> on üsna sarnane kontrolleriga <link linkend="if"
+><userinput
+>if</userinput
+></link
+>. Nende peamine erinevus seisab selles, et <userinput
+>while</userinput
+> kordab looksulgudes olevat koodi seni, kuni vastus <link linkend="boolean-value"
+>tõeväärtus</link
+> on lõpuks <quote
+>väär</quote
+>. <screen>
+$x = 1
+while $x &lt; 5 {
+  forward 10
+  wait 1
+  $x = $x + 1
+}
+</screen
+> Esimesel real määratakse <userinput
+>$x</userinput
+> väärtuseks 1. Teisel real hinnatakse avaldist <userinput
+>$x &lt; 5</userinput
+>. Et vastus sellele küsimusele on <quote
+>tõene</quote
+>, alustab täitmise kontroller <userinput
+>while</userinput
+> looksulgudes oleva koodi täitmist ja teeb seda seni, kuni <userinput
+>$x &lt; 5</userinput
+> on lõpuks <quote
+>väär</quote
+>. Antud juhul täidetakse looksulgudes olevat koodi neli korda, sest iga viienda rea täitmisega suureneb <userinput
+>$x</userinput
+> ühe võrra.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="repeat">
+<title
+>Silmus "repeat"</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>repeat<indexterm
+><primary
+>repeat</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>repeat <link linkend="number"
+>arv</link
+> { ... }</screen>
+Täitmise kontroller <userinput
+>repeat</userinput
+> on üpris sarnane kontrolleriga <link linkend="while"
+><userinput
+>while</userinput
+></link
+>. Erinevus seisab selles, et <userinput
+>repeat</userinput
+> kordab sulgudes olevat koodi määratud arv kordi.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="for">
+<title
+>Arvestussilmus "for"</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>for<indexterm
+><primary
+>for</primary
+></indexterm
+><indexterm
+><primary
+>step</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>for <link linkend="assignment-of-variables"
+>muutuja</link
+> = <link linkend="number"
+>arv</link
+> to <link linkend="number"
+>arv</link
+> { ... }</screen>
+<userinput
+>for</userinput
+> on <quote
+>arvestussilmus</quote
+>, mis teeb midagi teatud arv kordi. Esimene arv määrab muutujale esimese silmuse väärtuse. Iga silmusega arv suureneb, kuni jõuab teise arvuni. <screen>
+for $x = 1 to 10 {
+  print $x * 7
+  forward 15
+}
+</screen
+> Igal looksulgudes oleva koodi täitmisel antakse <userinput
+>$x</userinput
+> väärtus ühe võrra suuremana, kuni <userinput
+>$x</userinput
+> võrdub lõpuks 10. Looksulgudes olev kood antud juhul kirjutab tehte '<userinput
+>$x</userinput
+> korda 7' tulemuse. Kui programm on töö lõpetanud, on tulemuseks lõuendil ilutsev numbri 7 korrutustabelike. </para>
+     <para
+>Silmuse sammu vaikesuurus on 1, aga kasutada võib mis tahes väärtust. <screen
+>for <link linkend="assignment-of-variables"
+>muutuja</link
+> = <link linkend="number"
+>arv</link
+> to <link linkend="number"
+>arv</link
+> step <link linkend="number"
+>arv</link
+> { ... }</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="break">
+<title
+>Silmusest väljumine</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>break<indexterm
+><primary
+>break</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>break</screen>
+Katkestab otsekohe aktiivse silmuse ning annab järje üle vahetult silmuse järel seisvale lausele.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="exit">
+<title
+>Programmi täitmise peatamine</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>exit<indexterm
+><primary
+>exit</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>exit</screen>
+Lõpetab programmi täitmise.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="assert">
+<title
+>Eelduse kontrollimine käitusajal</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>assert<indexterm
+><primary
+>assert</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>assert <link linkend="boolean-value"
+>tõeväärtus</link
+></screen>
+Seda saab kasutada programmi või sisendi korrektsuse kontrollimiseks. <screen
+>$in = ask "Mis on sinu sünniaasta?"
+# aasta peab olema positiivne
+assert $in 
+> 0
+</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+</sect1>
+
+
+<sect1 id="learn">
+
+
+<!--<sect2 id="name">
+<title
+>Names</title>
+<para
+>When using the &turtlescript; programming language you create new things. If you write a program you will often need <link linkend="containers"
+>containers</link
+> and in some cases you need <link linkend="learn"
+>learn</link
+> to create new commands. When making a new command with <link linkend="learn"
+>learn</link
+> you will have to specify a name.</para>
+<para
+>You can choose any name, as long as it does not already have a meaning. For instance you cannot name a function <link linkend="forward"
+>forward</link
+>, since that name is already used for an internal command.
+<screen
+>
+# here forward is used as a new command, 
+# but it already has a meaning so 
+# this will produce an error:
+learn forward {
+  print "this is invalid"
+}
+
+# this works:
+learn myforward {
+  print "this is ok"
+}
+</screen>
+Names can contain only letters, numbers and underscores (_). Yet they have to start with a letter. Container names have to start with the container prefix ($).
+<screen
+>
+# here forward is used as a container, 
+# starting with the $ prefix, so it does
+# not conflict with the forward command
+$forward = 20
+print $forward
+</screen>
+</para>
+<para
+>Containers are <glossterm
+>highlighted</glossterm
+> with bolded purple in the <link linkend="the-editor"
+>code editor</link
+>.</para>
+<para>
+Please read the documentation on <link linkend="containers"
+>containers</link
+> and the <link linkend="learn"
+>learn</link
+> command for a better explanation and more examples.
+</para>
+</sect2
+>-->
+
+
+
+
+
+<title
+>Omaenda käskude loomine käsuga <quote
+>learn</quote
+></title>
+<para
+>Käsk <userinput
+>learn</userinput
+> on väga eriline, sest selle abil saab luua omaenda käske. Sinu loodud käsk võib kasutada nii <glossterm linkend="input-output"
+>sisendit</glossterm
+> kui anda <glossterm linkend="input-output"
+>väljundit</glossterm
+>. Vaatamegi nüüd, kuidas uus käsk luua. <screen>
+learn ringjoon $x {
+  repeat 36 {
+    forward $x
+    turnleft 10
+  }
+}
+</screen
+> Uus käsk kannab nime <userinput
+>ringjoon</userinput
+>. <userinput
+>ringjoon</userinput
+> kasutab <glossterm linkend="input-output"
+>sisendina</glossterm
+> argumenti, mis määrab ringjoone suuruse. <userinput
+>ringjoon</userinput
+> ei tagasta mingit <glossterm linkend="input-output"
+>väljundit</glossterm
+>. Nüüd võime käsku <userinput
+>ringjoon</userinput
+> kasutada täiesti tavalise käsuna, nagu selles näites: <screen
+>learn ringjoon $X {
+  repeat 36 {
+    forward $X 
+    turnleft 10 
+  }
+}
+
+go 200,200 
+ringjoon 20
+
+go 300,200 
+ringjoon 40  
+</screen>
+</para>
+<para
+>Järgmises näites aga loome väljundväärtusega käsu. <screen>
+learn faculty $x {
+  $r = 1
+  for $i = 1 to $x {
+    $r = $r * $i
+  }
+  return $r
+}
+
+print faculty 5
+</screen
+> Selles näites on uue käsu nimeks <userinput
+>faculty</userinput
+>. Kui käsu sisend on on <userinput
+>5</userinput
+>, siis väljund on <userinput
+>5*4*3*2*1</userinput
+>. Käsk <userinput
+>return</userinput
+> määrab kindlaks väärtuse ning täitmisega tagastataksegi väljundväärtus.</para>
+<para
+>Käskudel võib olla enam kui üks <glossterm linkend="input-output"
+>sisend</glossterm
+>. Järgmises näites luuakse käsk, mis toob kaasa ristküliku joonistamise. <screen>
+learn box $x, $y {
+  forward $y
+  turnright 90
+  forward $x
+  turnright 90
+  forward $y
+  turnright 90
+  forward $x
+  turnright 90
+}
+</screen
+> Nüüd võid käivitada <userinput
+>box 50, 100</userinput
+> ning kilpkonn joonistab lõuendile ristküliku. </para>
+  
+</sect1>
+
+</chapter>

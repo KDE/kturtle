@@ -1,0 +1,1094 @@
+<chapter id="using-kturtle">
+<title
+>&kturtle;'i kasutamine</title>
+
+<screenshot>
+  <screeninfo
+>&kturtle; tegevuses</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow_flower_nrs.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>&kturtle;'i peaaken</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>&kturtle;'i peaaken koosneb kolmest põhiosast: <link linkend="the-editor"
+>redaktor</link
+> (1) vasakul, kus saab kirja panna &turtlescript;i käsud, <link linkend="the-canvas"
+>lõuend</link
+> (2) paremal, kus kilpkonn sinu joonistust valmistab, ja <link linkend="the-inspector"
+>inspektor</link
+> (3), mis annab teavet programmi täitmise kohta. Peaaknal on veel neli osa: <link linkend="the-menubar"
+>menüüriba</link
+> (5), mis võimaldab kasutada kõiki saadaolevaid käske, <link linkend="the-toolbar"
+>tööriistariba</link
+> (4), kus saab kiiresti valida sagedamini vaja mineva toimingu, <guilabel
+>konsool</guilabel
+>, kus saab testimiseks sisestada üherealise käsu. ja <link linkend="the-statusbar"
+>olekuriba</link
+> (akna allservas), kus näeb &kturtle;'i tagasisidena rakenduse olekut.</para>
+
+<sect1 id="the-editor">
+<title
+>Redaktor</title>
+<para
+>Redaktor on koht, kus panna kirja &turtlescript;i käsud. See pakub kõiki võimalusi, mida üks tänapäevane redaktor ikka pakkuma peab. Enamik neist on kasutatavad menüüst <link linkend="the-file-menu"
+>Fail</link
+> või <link linkend="the-edit-menu"
+>Redigeerimine</link
+>. Redaktori võib dokkida ükspuha millisele peaakna küljele või ka hoopis lahti haakida ja töölaual sootuks mujale asetada.</para>
+<para
+>Koodi saab redaktorisse mitmel moel sisestada. Lihtsaim meetod on kasutada juba valmis tehtud näidiseid. Selleks vali <menuchoice
+><guimenu
+>Fail</guimenu
+><guisubmenu
+>Näidised</guisubmenu
+> </menuchoice
+> <link linkend="the-file-menu"
+>failimenüüs</link
+> ja klõpsa vajalikul failil. Valitud fail avatakse <link linkend="the-editor"
+>redaktoris</link
+>, pärast mida saab menüükäsuga <menuchoice
+><guimenu
+>Käivitamine</guimenu
+><guimenuitem
+>Käivita</guimenuitem
+> </menuchoice
+> või tööriistariba nupuga <guibutton
+>Käivita</guibutton
+> hakata seda ellu viima.</para>
+<para
+>&turtlescript;i faile saab avada menüükäsuga <menuchoice
+><guimenu
+>Fail</guimenu
+><guimenuitem
+>Ava...</guimenuitem
+> </menuchoice
+></para>
+<para
+>Kolmas võimalus on kirjutada kood ise redaktorisse või kopeerida ja asetada kood kuskilt mujalt.</para>
+</sect1>
+
+
+<sect1 id="the-canvas">
+<title
+>Lõuend</title>
+<para
+>Lõuend on ala, kus käsud visualiseeritakse, kus nendega <quote
+>joonistatakse</quote
+> pilt. Ehk siis - see on kilpkonna mängumaa. Kui oled sisestanud mingi koodi <link linkend="the-editor"
+>redaktorisse</link
+> ja selle käivitanud, võib juhtuda üks kahest: 1) kood täidetakse edukalt ja sa näed midagi lõuendil muutumas või 2) koodis on viga ja ilmub teade, mis ütleb, millise veaga on tegemist.</para>
+<para
+>Hiirerattaga saab lõuendit suurendada ja vähendada.</para>
+</sect1>
+
+
+<sect1 id="the-inspector">
+<title
+>Inspektor</title>
+<para
+>Inspektor annab programmi töötamise ajal teada muutujatest ja õpitud funktsioonidest ning näitab koodipuud.</para>
+<para
+>Inspektori võib dokkida ükspuha millisele peaakna küljele või ka hoopis lahti haakida ja töölaual sootuks mujale asetada.</para>
+</sect1>
+
+
+<sect1 id="the-toolbar">
+<title
+>Tööriistariba</title>
+<para
+>Selle abil saab kiiresti ette võtta sagedamini vaja minevaid toiminguid. Tööriistariba sisaldab ka <guilabel
+>konsooli</guilabel
+>, mis võimaldab kiiresti käske anda, millest võib olla kasu, kui soovid käsku katsetada ilma <link linkend="the-editor"
+>redaktori</link
+> sisu muutmata.</para>
+<para
+>Tööriistariba saab oma maitse järgi kohandada menüükäsuga <menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>Tööriistaribade seadistamine...</guimenuitem
+></menuchoice
+></para>
+</sect1>
+
+
+<sect1 id="the-menubar">
+<title
+>Menüüriba</title>
+<para
+>Menüüribal leiad kõik toimingud, mida &kturtle;'is on võimalik kasutada. Need on jagatud järgmistesse rühmadesse: <guimenu
+>Fail</guimenu
+>, <guimenu
+>Redigeerimine</guimenu
+>, <guimenu
+>Lõuend</guimenu
+>, <guimenu
+>Käivitamine</guimenu
+>, <guimenu
+>Tööriistad</guimenu
+>, <guimenu
+>Seadistused</guimenu
+> ja <guimenu
+>Abi</guimenu
+>. Kirjeldame siin neid kõiki.</para>
+
+<sect2 id="the-file-menu">
+<title
+><guimenu
+>Fail</guimenu
+>imenüü</title>
+
+  <variablelist>
+    <anchor id="file-new"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Fail</guimenu
+> <guimenuitem
+>Uus</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Loob uue tühja &turtlescript;i faili.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Fail</guimenu
+> <guimenuitem
+>Ava...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Avab &turtlescript;i faili.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-recent"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Fail</guimenu
+> <guisubmenu
+>Ava viimati kasutatud</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Avab viimati kasutatud &turtlescript;i faili.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Fail</guimenu
+> <guisubmenu
+>Näidised</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Avab &turtlescript;i näidisfailidega kataloogi. Need peaksid olema keeles, mis on määratud seadistustedialoogis (<menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>Skriptikeel</guimenuitem
+> </menuchoice
+>).</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-get-more-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Fail</guimenu
+> <guimenuitem
+>Hangi rohkem näidiseid...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Avab <guilabel
+>uue kuuma kraami</guilabel
+> hankimise dialoogis, mille abil saab internetist alla laadida uusi &turtlescript;i faile.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="file-save"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Fail</guimenu
+> <guimenuitem
+>Salvesta</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Salvestab parajasti avatud &turtlescript;i faili.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-save-as"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Fail</guimenu
+> <guimenuitem
+>Salvesta kui...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Salvestab parajasti avatud &turtlescript;i faili uude asukohta või uue nimega.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-export-to-html"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Fail</guimenu
+> <guimenuitem
+>Ekspordi HTML-ina...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Ekspordib redaktori aktiivse sisu HTML-failina, mis sisaldab ka esiletõstmise värve.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Fail</guimenu
+> <guimenuitem
+>Trüki...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Trükib koodiredaktoris kirja pandud käsud.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-quit"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Fail</guimenu
+> <guimenuitem
+>Välju</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Lõpetab &kturtle;'i töö.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-edit-menu">
+  <title
+>Menüü <guimenu
+>Redigeerimine</guimenu
+></title>
+  <variablelist>
+    <anchor id="edit-undo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigeerimine</guimenu
+> <guimenuitem
+>Võta tagasi</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Tühistab viimase koodi tehtud muudatuse. &kturtle; ei tunne tagasivõtmisel piire.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-redo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigeerimine</guimenu
+> <guimenuitem
+>Tee uuesti</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Taastab koodis tagasivõetud muudatuse.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-cut"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>X</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigeerimine</guimenu
+> <guimenuitem
+>Lõika</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Lõikab <link linkend="the-editor"
+>redaktoris</link
+> valitud teksti ja asetab selle lõikepuhvrisse.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-copy"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigeerimine</guimenu
+> <guimenuitem
+>Kopeeri</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Kopeerib <link linkend="the-editor"
+>redaktoris</link
+> valitud teksti lõikepuhvrisse.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-paste"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>V</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigeerimine</guimenu
+> <guimenuitem
+>Aseta</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Asetab teksti lõikepuhvrist <link linkend="the-editor"
+>redaktorisse</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-select-all"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>A</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigeerimine</guimenu
+> <guimenuitem
+>Vali kõik</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Valib kogu <link linkend="the-editor"
+>redaktori</link
+> teksti.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigeerimine</guimenu
+> <guimenuitem
+>Otsi...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Selle käsuga saab koodis teatud sõna või väljendit otsida.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find-next"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F3</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Redigeerimine</guimenu
+> <guimenuitem
+>Otsi järgmine</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Sellega saab leida otsitava fraasi järgmise esinemiskorra.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="edit-find-previous"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Shift;<keysym
+>F3</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Redigeerimine</guimenu
+> <guimenuitem
+>Otsi eelmine</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Sellega saab leida otsitava fraasi eelmise esinemiskorra.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <!--<variablelist>
+    <anchor id="edit-replace"/>
+    <varlistentry>
+      <term
+><menuchoice>
+        <shortcut>
+          <keycombo
+>&Ctrl;<keycap
+>R</keycap
+></keycombo>
+        </shortcut>
+        <guimenu
+>Edit</guimenu>
+        <guimenuitem
+>Replace...</guimenuitem>
+      </menuchoice
+></term>
+      <listitem
+><para
+>With this action you can replace text in the code.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>-->
+<variablelist>
+    <anchor id="toggle-insert"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keycap
+>Ins</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigeerimine</guimenu
+> <guimenuitem
+>Ülekirjutamisrežiim</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Lülitab lisamis- ja ülekirjutamisrežiimi vahel.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+<sect2 id="the-canvas-menu">
+  <title
+>Menüü <guimenu
+>Lõuend</guimenu
+></title>
+  <variablelist>
+    <anchor id="canvas-export-to-image"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Lõuend</guimenu
+> <guimenuitem
+>Ekspordi pildina (PNG)...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Ekspordib aktiivse <link linkend="the-canvas"
+>lõuendi</link
+> sisu PNG rasterpildina.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-export-to-drawing"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Lõuend</guimenu
+> <guimenuitem
+>Ekspordi joonistusena (SVG)...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Ekspordib aktiivse <link linkend="the-canvas"
+>lõuendi</link
+> sisu SVG vektorjoonistusena.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Lõuend</guimenu
+> <guimenuitem
+>Trüki lõuend...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Ekspordib aktiivse </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-run-menu">
+  <title
+>Menüü <guimenu
+>Käivitamine</guimenu
+></title>
+  <variablelist>
+    <anchor id="run-execute"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F5</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Käivitamine</guimenu
+> <guimenuitem
+>Käivita</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Käivitab redaktoris kirja pandud käsud.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-pause"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F6</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Käivitamine</guimenu
+> <guimenuitem
+>Paus</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Peatab käskude täitmise. Seda saab kasutada ainult siis, kui käske parajasti täidetakse.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-stop"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F7</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Käivitamine</guimenu
+> <guimenuitem
+>Katkesta</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Katkestab käskude täitmise. Seda saab kasutada ainult siis, kui käske parajasti täidetakse.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-speed"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Käivitamine</guimenu
+> <guimenuitem
+>Töökiirus</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Näitab võimalikke täitmise kiirusi: <guimenuitem
+>täiskiirus (esiletõstmiseta ja inspektorita)</guimenuitem
+>, <guimenuitem
+>täiskiirus</guimenuitem
+>, <guimenuitem
+>aeglane</guimenuitem
+>, <guimenuitem
+>aeglasem</guimenuitem
+>, <guimenuitem
+>kõige aeglasem</guimenuitem
+> ja <guimenuitem
+>sammhaaval</guimenuitem
+>. Kui kiiruseks valida <guimenuitem
+>täiskiirus</guimenuitem
+> (vaikeväärtus), on vaevu võimalik jälgida, mis toimub. Sageli on see kasulik, kuid vahel võib tekkida soov käskude täitmist üksikasjalikult jälgida. Sel juhul tuleks valida kiiruseks <guimenuitem
+>aeglane</guimenuitem
+>, <guimenuitem
+>aeglasem</guimenuitem
+>, <guimenuitem
+>kõige aeglasem</guimenuitem
+>. Mõne aeglase kiiruse valimisel näidatakse redaktoris täitmise hetkeasukohta. <guimenuitem
+>Sammhaaval</guimenuitem
+> täidab korraga ühe käsu.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+
+<sect2 id="the-tools-menu">
+  <title
+><guimenu
+>Tööriistad</guimenu
+>e menüü</title>
+  <variablelist>
+    <anchor id="tools-direction-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Tööriistad</guimenu
+> <guimenuitem
+>Suunavalija...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Avab suunavalija dialoogi.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-color-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Tööriistad</guimenu
+> <guimenuitem
+>värvivalija...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Avab värvivalija dialoogi.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-setting-menu">
+  <title
+>Menüü <guimenu
+>Seadistused</guimenu
+></title>
+  <variablelist>
+    <anchor id="settings-set-script-language"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guisubmenu
+>Skriptikeel</guisubmenu
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Valib</action
+> koodi keele.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-editor"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Redaktori näitamine</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Näitab või peidab <link linkend="the-editor"
+>redaktori</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-inspector"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Inspektori näitamine</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Näitab või peidab <link linkend="the-inspector"
+>inspektori</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-errors"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Vigade näitamine</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Näitab koodi täitmisel tekkinud vigade nimekirja <guilabel
+>vigade</guilabel
+> või peidab selle. Kui see valik on sisse lülitatud, klõpsa kilpkonna taasnägemiseks <guilabel
+>lõuendil</guilabel
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-linenumbers"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F11</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Näita reanumbreid</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Sellega saab lasta <link linkend="the-editor"
+>redaktoris</link
+> reanumbreid näidata. See on kasulik näiteks vigade leidmiseks.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-toolbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Tööriistariba näitamine</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Lülitab</action
+> peamise tööriistariba näitamise sisse-välja.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="settings-toggle-statusbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>Olekuriba näitamine</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Lülitab</action
+> olekuriba näitamise sisse-välja.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-shortcuts"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Kiirklahvide seadistamine...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>&kde; tavapärane kiirklahvide seadistamise dialoog.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-toolbars"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Tööriistaribade seadistamine...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Tavapärane &kde; tööriistaribade seadistamise dialoog.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-help-menu">
+  <title
+><guimenu
+>Abi</guimenu
+>menüü</title>
+&help.menu.documentation; <variablelist
+> <anchor id="help-context-help"/> <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F2</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Abi</guimenu
+> <guimenuitem
+>Abi x kohta...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>See on väga kasulik võimalus, näidates abi koodi selle koha kohta, kus parajasti asub kursor. Kui &eg; kasutasid koodis käsku <userinput
+>print</userinput
+>, saad selle abil teada, mida käsiraamat vastava käsu kohta ütleb. Vii kursor käsu <userinput
+>print</userinput
+> peale ja vajuta <keysym
+>F2</keysym
+>. Seejärel näed käsiraamatus käsust <userinput
+>print</userinput
+> rääkivat kohta.</para>
+      <para
+>See on päris kasulik ja oluline &turtlescript;i õppimisel.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+<sect1 id="the-statusbar">
+<title
+>Olekuriba</title>
+<para
+>Olekuribal annab &kturtle; sulle tagasisidet oma oleku kohta. Vasakul on näha viimane toiming. Paremal näeb kursori hetkeasukohta (rea ja veeru number). Keskel näeb, millist keelt käskude puhul parajasti kasutatakse.</para>
+</sect1>
+
+</chapter>

@@ -1,0 +1,12 @@
+<chapter id="translators">
+<title
+>&kturtle; sinu emakeeles</title>
+<para
+>Nagu juba arvatavasti oled aru saanud, saab &kturtle; programmeerimiskeelt &turtlescript; ka tõlkida. See lihtsustab eriti noorematel õpilastel tunduvalt programmeerimise aluste omandamist.</para>
+<para
+>&kturtle; tõlkimisel uude keelde leiab standardsetes .pot-failides, mida &kde; kasutab tõlgete pakkumiseks, lisaks kasutajaliidese kirjetele ka programmeerimiskäske, näiteid ja veateateid. Kõiki neid tuleb tõlkida nii, nagu &kde;-s ikka, kuid siiski on äärmiselt soovitatav eelnevalt tundma õppida, kuidas neid viimaseid korrektselt tõlkida.</para>
+<para
+>Tõlkimisest kõneldakse põhjalikumalt aadressil <ulink url="http://edu.kde.org/kturtle/translator.php"
+>http://edu.kde.org/kturtle/translator.php</ulink
+>. Täname sind su panuse eest juba ette!</para>
+</chapter>

@@ -1,0 +1,306 @@
+<chapter id="getting-started">
+<title
+>Cómo empezar</title>
+<para
+>La primera vez que inicie &kturtle; podrá ver algo parecido a esto:</para>
+<screenshot>
+  <screeninfo
+>Esta es una captura de pantalla de &kturtle; cuando se inicia por primera vez.</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>&kturtle; tras el inicio</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+<para
+>En esta guía para principiantes, supondremos que el idioma de las órdenes es el español. Puede cambiar el idioma en el submenú <menuchoice
+><guimenu
+>Preferencias</guimenu
+><guisubmenu
+>Idioma del código</guisubmenu
+></menuchoice
+>. Tenga en cuenta que el idioma que elija para &kturtle; es el que usará para escribir las órdenes de &turtlescript;, y no tiene por qué coincidir con el idioma que usa &kde; en su equipo y con el que se muestran la interfaz y los menús de &kturtle;.</para>
+
+<sect1 id="first-steps">
+<title
+>Primeros pasos con &turtlescript;: ¡conozca la tortuga!</title>
+<para
+>Debe haber visto que hay una tortuga en el centro del lienzo: va a aprender a controlarla mediante órdenes que introducirá en el editor.</para>
+
+<sect2 id="the-turtle-moves">
+<title
+>La tortuga se mueve</title>
+<para
+>Empecemos a mover la tortuga. Nuestra tortuga puede realizar tres tipos de movimiento: 1) puede ir hacia atrás o hacia adelante; 2) puede girar a la derecha o a la izquierda; y 3) puede desplazarse directamente (saltar) a una posición de la pantalla. A modo de ejemplo, intente lo siguiente:</para>
+<para>
+<screen
+>avanzar 100
+izquierda 90 
+</screen
+>Escriba o copie y pegue este código en el editor y ejecútelo (usando <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Ejecutar</guimenu
+><guimenuitem
+>Ejecutar</guimenuitem
+></menuchoice
+></link
+>) para ver el resultado.</para>
+
+<para
+>Al introducir y ejecutar órdenes como las anteriores en el editor, es posible que haya notado alguna de las siguientes cosas:</para>
+<orderedlist>
+<listitem
+><para
+>Después de ejecutar las órdenes, la tortuga se desplazó hacia arriba y giró noventa grados hacia la izquierda. Este es el resultado de usar las órdenes <link linkend="forward"
+><userinput
+>avanzar</userinput
+></link
+> e <link linkend="turnleft"
+><userinput
+>izquierda</userinput
+></link
+>.</para>
+</listitem>
+<listitem>
+<para
+>El color del código cambia a medida que vamos escribiendo. Esta característica se denomina <emphasis
+>resaltado intuitivo de sintaxis</emphasis
+>: los distintos tipos de órdenes se colorean de forma diferente. Esto permite leer con facilidad grandes bloques de código.</para>
+</listitem>
+<listitem>
+<para
+>La tortuga dibujó una delgada linea negra.</para>
+</listitem>
+<listitem>
+<para
+>Quizás obtuvo un mensaje de error. Esto puede significar dos cosas: puede haber cometido una equivocación al copiar las órdenes o todavía tiene que elegir el idioma correcto de las órdenes de &turtlescript; (lo que puede hacer seleccionando el submenú <menuchoice
+><guimenu
+>Preferencias</guimenu
+><guisubmenu
+>Idioma del código</guisubmenu
+></menuchoice
+>).</para>
+</listitem>
+</orderedlist>
+
+<para
+>Probablemente entienda que <userinput
+>avanzar 100</userinput
+> le ordena a la tortuga que se desplace hacia adelante dejando una línea, y que <userinput
+>izquierda 90</userinput
+> le ordena que rote noventa <glossterm linkend="degrees"
+>grados</glossterm
+> hacia la izquierda.</para>
+
+<para
+>Si desea una explicación completa de estas órdenes, vea los siguientes enlaces al manual de referencia: <link linkend="forward"
+><userinput
+>avanzar</userinput
+></link
+>, <link linkend="backward"
+><userinput
+>retroceder</userinput
+></link
+>, <link linkend="turnleft"
+><userinput
+>izquierda</userinput
+></link
+> y <link linkend="turnright"
+><userinput
+>derecha</userinput
+></link
+>.</para>
+</sect2>
+
+<sect2 id="more-examples">
+<title
+>Otros ejemplos</title>
+<para
+>El primer ejemplo es muy sencillo, así que comencemos.</para>
+
+<para>
+
+<screen
+>reiniciar
+
+tamañolienzo 200;200
+colorlienzo 0;0;0
+colorpincel 255;0;0
+grosorpincel 5
+
+ir 20;20
+dirección 135
+
+avanzar 200
+izquierda 135
+avanzar 100
+izquierda 135
+avanzar 141
+izquierda 135
+avanzar 100
+izquierda 45
+
+ir 40;100
+</screen
+>De nuevo, puede escribir o copiar y pegar el código en el editor, o abrir el ejemplo <filename
+>flecha</filename
+> que se encuentra en el submenú <guimenu
+>Ejemplos</guimenu
+> y ejecutarlo (usando <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Ejecutar</guimenu
+><guimenuitem
+>Ejecutar</guimenuitem
+></menuchoice
+></link
+>) para ver el resultado. En los siguientes ejemplos se supondrá que ya sabe cómo funciona este mecanismo.</para>
+
+<para
+>Habrá notado que este segundo ejemplo es mucho más complejo. También habrá visto que hay varias órdenes nuevas. Aquí tiene una breve explicación de todas las órdenes nuevas:</para>
+
+<para
+>Después de una orden <userinput
+>reiniciar</userinput
+>, todo es como cuando inició &kturtle;.</para>
+
+<para
+><userinput
+>tamañolienzo 200;200</userinput
+> define un lienzo con un ancho y un alto de 200 <glossterm linkend="pixels"
+>píxeles</glossterm
+>. El ancho y el alto son iguales, por lo que el lienzo será un cuadrado.</para>
+
+<para
+><userinput
+>colorlienzo 0;0;0</userinput
+> convierte el lienzo en negro. <userinput
+>0;0;0</userinput
+> es una <glossterm linkend="rgb"
+>combinación RGB</glossterm
+> con todos los valores igual a <userinput
+>0</userinput
+>, lo que da lugar al color negro.</para>
+
+<para
+><userinput
+>colorpincel 255;0;0</userinput
+> indica que el color del pincel debe ser rojo. <userinput
+>255;0;0</userinput
+> es una <glossterm linkend="rgb"
+>combinación RGB</glossterm
+> con el valor del rojo igual a <userinput
+>255</userinput
+> (el máximo valor posible) y el valor de los otros colores (el verde y el azul) igual a <userinput
+>0</userinput
+> (el mínimo valor posible). Esto da lugar a una tonalidad brillante de rojo.</para>
+
+<para
+>Si no entiende los valores de los colores, lea la entrada del glosario correspondiente a <glossterm linkend="rgb"
+>combinación RGB</glossterm
+>.</para>
+
+<para
+><userinput
+>grosorpincel 5</userinput
+> establece un grosor para el trazo del pincel igual a <userinput
+>5</userinput
+> <glossterm linkend="pixels"
+>píxeles</glossterm
+>. A partir de ahora, cada línea que la tortuga dibuje tendrá un grosor de <userinput
+>5</userinput
+> píxeles, así hasta que cambiemos de nuevo el valor de <userinput
+>grosorpincel</userinput
+>.</para>
+
+<para
+><userinput
+>ir 20;20</userinput
+> le indica a la tortuga que vaya a una posición determinada del lienzo. Contando desde la esquina superior izquierda, esta posición es 20 <glossterm linkend="pixels"
+>píxeles</glossterm
+> hacia la derecha y 20 <glossterm linkend="pixels"
+>píxeles</glossterm
+> hacia abajo. Fíjese que con la orden <userinput
+>ir</userinput
+>, la tortuga no dibuja una línea.</para>
+
+<para
+><userinput
+>dirección 135</userinput
+> define el ángulo de dirección de la tortuga. Las órdenes <userinput
+>izquierda</userinput
+> y <userinput
+>derecha</userinput
+> cambian el ángulo de la tortuga con respecto a su dirección actual. En cambio, la orden <userinput
+>dirección</userinput
+> cambia el ángulo de la tortuga a partir de cero y no en relación con su dirección anterior.</para>
+
+<para
+>Después de la orden <userinput
+>dirección</userinput
+>, hay unas cuantas órdenes del tipo <userinput
+>avanzar</userinput
+> e <userinput
+>izquierda</userinput
+>. Estas órdenes son las que verdaderamente realizan el dibujo.</para>
+
+<para
+>Finalmente, una nueva orden <userinput
+>ir</userinput
+> hace que la tortuga se posicione a un lado.</para>
+
+<para
+>Asegúrese de seguir los enlaces al manual de referencia, donde se explica con más detalle cada orden.</para>
+
+
+</sect2>
+</sect1>
+
+
+
+<!--        EXTRA SECTIONS CAN BE ADDED TO THE "GETTING STARTED"
+
+<sect1 id="calculations">
+<title
+>Simple Calculations</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_variables">
+<title
+>Using Variables: creating 'number containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_strings">
+<title
+>Using strings: creating 'text containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="logic">
+<title
+>Logic: asking the computer simple questions</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="recursion">
+<title
+>Recursion: the Turtle is using itself</title>
+<para>
+Draw a maze for example
+</para>
+</sect1>
+-->
+
+
+</chapter>

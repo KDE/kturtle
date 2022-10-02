@@ -1,0 +1,2169 @@
+<chapter id="reference">
+<title
+>Referència de programació de &turtlescript;</title>
+<para
+>Aquesta és la referència per a &turtlescript; del &kturtle;. En la primera secció d'aquest capítol es fa un repàs a alguns aspectes de la <link linkend="grammar"
+>gramàtica</link
+> dels programes en &turtlescript;. La segona secció es refereix exclusivament als <link linkend="mathematical-operators"
+>operadors matemàtics</link
+>, els <link linkend="boolean-operators"
+>operadors booleans (true/false -cert/fals-)</link
+> i els <link linkend="comparing-operators"
+>operadors de comparació</link
+>. La tercera secció bàsicament és una llista gegant explicant totes les <link linkend="commands"
+>ordres</link
+> instrucció a instrucció. La quarta secció explica com <link linkend="assignment-of-variables"
+>assignar</link
+> valors a les <link linkend="assignment-of-variables"
+>variables</link
+>. Per a finalitzar, en la cinquena secció s'explica la forma d'organitzar l'execució d'ordres amb les <link linkend="controlling-execution"
+>sentències de control de l'execució</link
+> i en la sisena secció com crear les vostres pròpies ordres amb <link linkend="learn"
+><userinput
+>learn -aprèn-</userinput
+></link
+>.</para>
+
+<sect1 id="grammar">
+<title
+>La gramàtica de &turtlescript;</title>
+<para
+>Igual que en qualsevol llenguatge, el &turtlescript; té diferents tipus de paraules i símbols. En anglès es distingeixen els verbs (com «to walk» -caminar- o «to sing» -cantar-) i noms (com «sister» -germana- o «house» -casa-), que s'utilitzen per a diferents finalitats. El &turtlescript; és un llenguatge de programació, el qual s'utilitza per a indicar el que ha de fer el &kturtle;.</para>
+<para
+>En aquesta secció s'expliquen amb brevetat alguns dels diferents tipus de paraules i símbols de &turtlescript;. Expliquem els <link linkend="comment"
+>comentaris</link
+>, les <link linkend="command"
+>ordres</link
+> i els tres tipus diferents de literals: <link linkend="number"
+>nombres</link
+>, <link linkend="string"
+>cadenes</link
+> i <link linkend="boolean-value"
+>valors booleans («true/false» -cert/fals-)</link
+>.</para>
+
+
+<sect2 id="comment">
+<title
+>Comentaris</title>
+<para
+>Un programa consisteix en les instruccions que s'executen en executar-lo i els anomenats comentaris. Els comentaris no s'executen, el &kturtle; simplement els ignora en executar el vostre programa. Els comentaris hi són perquè altres programadors entenguin millor el vostre programa. Tot el que segueix a un símbol <userinput
+>#</userinput
+> és considerat un comentari de &turtlescript;. Per exemple, aquest petit programa que no fa res: <screen>
+# Aquest petit programa no fa res. Només és un comentari!
+</screen
+> És un xic inútil, però plasma molt bé l'assumpte.</para>
+<para
+>Els comentaris són molt útils quan el programa es fa més complex. Poden ajudar a donar un consell als altres programadors. En el següent programa veureu que els comentaris s'utilitzen juntament amb l'ordre <link linkend="print"
+>print</link
+>. <screen>
+# Aquest programa ha estat realitzat per en Cies Breijs.
+print "Aquest text serà imprès en el llenç"
+# La línia anterior no és un comentari, però sí la línia següent:
+# print "Aquest text no s'imprimirà!"
+</screen
+> La primera línia descriu el programa. La segona línia és executada pel &kturtle; i imprimeix <userinput
+>Aquest text serà imprès en el llenç</userinput
+>. La tercera línia és un comentari. I la quarta línia és un comentari que conté un fragment de &turtlescript;, si s'elimina el símbol <userinput
+>#</userinput
+> en la quarta línia, la declaració d'impressió serà executada pel &kturtle;. Els programadors diuen: La sentència d'impressió en la quarta línia és un comentari (commented out).</para>
+<para
+>Les línies comentades es <glossterm
+>ressalten</glossterm
+> en color gris clar en l'<link linkend="the-editor"
+>editor de codi</link
+>.</para>
+</sect2>
+
+<sect2 id="command">
+<title
+>Ordres</title>
+<para
+>L'ús d'ordres, li indiquen a la tortuga o al &kturtle; que faci quelcom. Algunes ordres necessiten alguna entrada, alguna sortida. <screen>
+# «forward» és una ordre que necessita una entrada, en aquest cas el número 100:
+forward 100
+</screen
+> La primera línia és un <link linkend="comment"
+>comentari</link
+>. La segona línia conté l'ordre «<userinput
+>forward</userinput
+>» i el número 100. El nombre no forma part de l'ordre, es considera l'«entrada» d'aquesta.</para>
+<para
+>Algunes ordres, com ara <userinput
+>go</userinput
+> (<userinput
+>vesa</userinput
+>) necessiten alguna cosa més que un valor d'entrada. Múltiples valors s'han de separar utilitzant el caràcter <userinput
+>,</userinput
+> (coma).</para>
+<para
+>Per a una descripció detallada de totes les ordres que admet el &kturtle; aneu <link linkend="commands"
+>aquí</link
+>. Les ordres integrades es <glossterm
+>ressalten</glossterm
+> en color blau fosc.</para>
+</sect2>
+
+<sect2 id="number">
+<title
+>Nombres</title>
+<para
+>El més probable és que ja sabeu quelcom sobre els nombres. La manera com s'utilitzen en el &kturtle; no és gaire diferent del llenguatge parlat, o les matemàtiques.</para>
+<para
+>Tenim els anomenats nombres naturals: <userinput
+>0</userinput
+>, <userinput
+>1</userinput
+>, <userinput
+>2</userinput
+>, <userinput
+>3</userinput
+>, <userinput
+>4</userinput
+>, <userinput
+>5</userinput
+>, &etc; Els nombres negatius: <userinput
+>-1</userinput
+>, <userinput
+>-2</userinput
+>, <userinput
+>-3</userinput
+>, &etc; I els nombres amb decimals, per exemple: <userinput
+>0.1</userinput
+>, <userinput
+>3.4</userinput
+>, <userinput
+>33.3333</userinput
+>, <userinput
+>-5.05</userinput
+>, <userinput
+>-1.0</userinput
+>. El caràcter <userinput
+>.</userinput
+> (punt) s'utilitza com a separador de decimals. </para>
+<para
+>Els nombres es poden utilitzar en <link linkend="mathematical-operators"
+>operacions matemàtiques</link
+> i <link linkend="comparing-operators"
+>operadors de comparació</link
+>. També es poden desar en les <link linkend="assignment-of-variables"
+>variables</link
+>. Els nombres són <glossterm
+>ressaltats</glossterm
+> en color vermell fosc.</para>
+</sect2>
+
+<!-- constants like pi? -->
+
+<sect2 id="string">
+<title
+>Cadenes</title>
+<para
+>Primer un exemple: <screen>
+print "Hola, soc una cadena."
+</screen
+> En aquest exemple <userinput
+>print</userinput
+> és una ordre i on <userinput
+>"Hola, soc una cadena."</userinput
+> és una cadena. Les cadenes comencen i acaben amb la marca <userinput
+>"</userinput
+>, amb aquestes marques el &kturtle; sabrà que és una cadena.</para>
+<para
+>Les cadenes es poden posar en les <link linkend="assignment-of-variables"
+>variables</link
+>, igual que els <link linkend="number"
+>nombres</link
+>. No obstant això, a diferència dels nombres, les cadenes no es poden utilitzar en els <link linkend="mathematical-operators"
+>operadors matemàtics</link
+> o els <link linkend="comparing-operators"
+>operadors de comparació</link
+>. Les cadenes es <glossterm
+>ressalten</glossterm
+> en color vermell.</para>
+</sect2>
+
+<sect2 id="boolean-value">
+<title
+>Els valors booleans («true/false» -cert/fals-)</title>
+<para
+>Només hi ha dos valors booleans: <userinput
+>true</userinput
+><indexterm
+><primary
+>true</primary
+></indexterm
+> (<userinput
+>cert</userinput
+>) i <userinput
+>false</userinput
+><indexterm
+><primary
+>false</primary
+></indexterm
+> (<userinput
+>fals</userinput
+>). De vegades també se'ls crida: <quote
+><userinput
+>on</userinput
+></quote
+> i <quote
+><userinput
+>off</userinput
+></quote
+>, <quote
+><userinput
+>yes</userinput
+></quote
+> i <quote
+><userinput
+>no</userinput
+></quote
+>, <quote
+><userinput
+>one</userinput
+></quote
+> i <quote
+><userinput
+>zero</userinput
+></quote
+>. Però en el &turtlescript; sempre se'ls crida, <userinput
+>true</userinput
+> i <userinput
+>false</userinput
+>. Doneu una ullada a aquest fragment de &turtlescript;: <screen>
+$a = true
+</screen
+> Si ens fixem en l'<link linkend="the-inspector"
+>inspector</link
+>, veurem que la <link linkend="assignment-of-variables"
+>variable</link
+> <userinput
+>$a</userinput
+> s'estableix a <userinput
+>true</userinput
+> i té el tipus booleà.</para>
+<para
+>Els valors booleans sovint són el resultat d'un <link linkend="comparing-operators"
+>operador de comparació</link
+>, com en el següent fragment de &turtlescript;: <screen>
+$answer = 10 &gt; 3
+</screen
+> La <link linkend="assignment-of-variables"
+>variable</link
+> <userinput
+>$answer</userinput
+> està establerta a <userinput
+>true</userinput
+>, perquè <userinput
+>10</userinput
+> és més gran que <userinput
+>3</userinput
+>.</para>
+<para
+>Els valors booleans, <userinput
+>true</userinput
+> i <userinput
+>false</userinput
+>, es <glossterm
+>ressalten</glossterm
+> en color vermell fosc.</para>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="operators">
+<title
+>Els operadors matemàtics, booleans i de comparació</title>
+<para
+>El títol d'aquesta secció pot reservar una certa dificultat, però, no és tan difícil com sona.</para>
+
+<sect2 id="mathematical-operators">
+<title
+>Els operadors matemàtics</title>
+<para
+>Aquests són els símbols matemàtics bàsics coneguts com: add «suma» (<userinput
+>+</userinput
+>), subtract «resta» (<userinput
+>-</userinput
+>), multiply «multiplicació» (<userinput
+>*</userinput
+>), divide «divisió» (<userinput
+>/</userinput
+>) i power «potència» (<userinput
+>^</userinput
+>).</para>
+
+<para
+>Aquí teniu un petit exemple dels operadors matemàtics que podeu utilitzar en &turtlescript;: <screen>
+$add      = 1 + 1
+$subtract = 20 - 5
+$multiply = 15 * 2
+$divide   = 30 / 30
+$power    = 2 ^ 2
+</screen
+> Els valors resultants de les operacions matemàtiques són <link linkend="assignment-of-variables"
+>assignats</link
+> a diverses <link linkend="assignment-of-variables"
+>variables</link
+>. Utilitzant l'<link linkend="the-inspector"
+>inspector</link
+> podeu veure els valors.</para>
+<para
+>Si el que voleu és fer un càlcul senzill, podeu fer quelcom com això: <screen
+>print 2010-12
+</screen
+></para>
+<para
+>Ara veurem un exemple amb parèntesis: <screen>
+print ( ( 20 - 5 ) * 2 / 30 ) + 1
+</screen
+> Les expressions entre parèntesis es calculen primer. En aquest exemple, es calcula 20 menys 5, després es multiplica per dos, es divideix per 30 i després se suma 1 (el qual ens dona 2). Els parèntesis també es poden utilitzar en altres casos.</para>
+<para
+>El &kturtle; també té funcions matemàtiques més avançades en forma d'ordres. Doneu una ullada a les següents ordres, però cal tenir present que es tracten d'operacions avançades: <link linkend="round"
+>round</link
+>, <link linkend="random"
+>random</link
+>, <link linkend="sqrt"
+>sqrt</link
+>, <link linkend="pi"
+>pi</link
+>, <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+>, <link linkend="tan"
+>tan</link
+>, <link linkend="arcsin"
+>arcsin</link
+>, <link linkend="arccos"
+>arccos</link
+>, <link linkend="arctan"
+>arctan</link
+>.</para>
+</sect2>
+
+<sect2 id="boolean-operators">
+<title
+>Els operadors booleans («true/false» -cert/fals-)</title>
+<para
+>On els <link linkend="mathematical-operators"
+>operadors matemàtics</link
+> són principalment per als <link linkend="number"
+>nombres</link
+>, els operadors booleans són per als <link linkend="boolean-value"
+>valors booleans</link
+> (<userinput
+>true</userinput
+> i <userinput
+>false</userinput
+>). Només hi ha tres operadors booleans, anomenats: <userinput
+>and</userinput
+><indexterm
+><primary
+>and</primary
+></indexterm
+>, <userinput
+>or</userinput
+><indexterm
+><primary
+>or</primary
+></indexterm
+> i <userinput
+>not</userinput
+><indexterm
+><primary
+>not</primary
+></indexterm
+>. El següent fragment de &turtlescript; ens mostra com emprar-los: <screen>
+$and_1_1 = true and true    # -> true
+$and_1_0 = true and false   # -> false
+$and_0_1 = false and true   # -> false
+$and_0_0 = false and false  # -> false
+
+$or_1_1 = true or true    # -> true
+$or_1_0 = true or false   # -> true
+$or_0_1 = false or true   # -> true
+$or_0_0 = false or false  # -> false
+
+$not_1 = not true   # -> false
+$not_0 = not false  # -> true
+</screen
+> Utilitzant l'<link linkend="the-inspector"
+>inspector</link
+> podreu veure els valors, però també oferim aquests resultats com a petits comentaris al final de les línies. <userinput
+>and</userinput
+> avalua <userinput
+>true</userinput
+> només si ambdues parts són <userinput
+>true</userinput
+>. <userinput
+>or</userinput
+> avalua <userinput
+>true</userinput
+> si una part i l'altra són <userinput
+>true</userinput
+>. I <userinput
+>not</userinput
+> retorna un <userinput
+>true</userinput
+> a dintre de <userinput
+>false</userinput
+> i <userinput
+>false</userinput
+> a dintre de <userinput
+>true</userinput
+>.</para>
+<para
+>Els operadors booleans es <glossterm
+>ressalten</glossterm
+> en color rosa.</para>
+
+<sect3 id="boolean-operators-advanced-examples">
+<title
+>Alguns exemples més avançats</title>
+<para
+>Considerem el següent exemple amb <userinput
+>and</userinput
+>: <screen>
+ $a = 1
+$b = 5
+if (($a &lt; 10) and ($b == 5)) and ($a &lt; $b) {
+  print "hola"
+}
+</screen
+> En aquest fragment de &turtlescript; el resultat de tres <link linkend="comparing-operators"
+>operadors de comparació</link
+> es fusionen utilitzant els operadors <userinput
+>and</userinput
+>. Això significa que els tres han d'avaluar <quote
+>true</quote
+> perquè s'imprimeixi <quote
+>hola</quote
+>.</para>
+
+<para
+>Un exemple amb <userinput
+>or</userinput
+>: <screen>
+$n = 1
+if ($n &lt; 10) or ($n == 2) {
+  print "hola"
+}
+</screen
+> En aquest fragment de &turtlescript; la part esquerra de <userinput
+>or</userinput
+> està avaluant a <quote
+>true</quote
+>, el costat dret a <quote
+>false</quote
+>. Atès que un dels dos costats de l'operador <userinput
+>or</userinput
+> és <quote
+>true</quote
+>, l'operador <userinput
+>or</userinput
+> avaluarà com a <quote
+>true</quote
+>. El qual vol dir que s'imprimirà <quote
+>hola</quote
+>.</para>
+
+<para
+>I, finalment, un exemple amb <userinput
+>not</userinput
+> que canvia de <quote
+>true</quote
+> a <quote
+>false</quote
+> i de <quote
+>false</quote
+> a <quote
+>true</quote
+>. Doneu un cop d'ull: <screen
+>$n = 1
+if not ($n == 3) {
+  print "hola"
+} else {
+  print "sense hola ;-)"
+}
+</screen
+></para>
+</sect3>
+</sect2>
+
+<sect2 id="comparing-operators">
+<title
+>Els operadors de comparació</title>
+<para
+>Considereu en la possibilitat d'aquesta simple comparació: <screen>
+$answer = 10 &gt; 3
+</screen
+> Aquí <userinput
+>10</userinput
+> és comparat amb <userinput
+>3</userinput
+> amb l'operador <quote
+>més gran que</quote
+>. El resultat d'aquesta comparació, el <link linkend="boolean-value"
+>​valor booleà</link
+> <userinput
+>true</userinput
+> es desa a la <link linkend="assignment-of-variables"
+>variable</link
+> <userinput
+>$answer</userinput
+>.</para>
+<para
+>Tots els <link linkend="number"
+>nombres</link
+> i les <link linkend="assignment-of-variables"
+>variables</link
+> (que contenen nombres) es poden comparar entre si amb els operadors de comparació.</para>
+<para
+>Aquí hi ha tots els possibles operadors de comparació: <table
+> <title
+>Tipus de preguntes</title
+> <tgroup cols="3"
+> <tbody
+> <row
+> <entry
+><userinput
+>$A == $B</userinput
+></entry
+> <entry
+>igual que</entry
+> <entry
+>respon <quote
+>true</quote
+> si <userinput
+>$A</userinput
+> és igual que <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A != $B</userinput
+></entry
+> <entry
+>no igual que</entry
+> <entry
+>respon <quote
+>true</quote
+> si <userinput
+>$A</userinput
+> no és igual que <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt; $B</userinput
+></entry
+> <entry
+>més gran que</entry
+> <entry
+>respon <quote
+>true</quote
+> si <userinput
+>$A</userinput
+> és més gran que <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt; $B</userinput
+></entry
+> <entry
+>més petit que</entry
+> <entry
+>respon <quote
+>true</quote
+> si <userinput
+>$A</userinput
+> és més petit que <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt;= $B</userinput
+></entry
+> <entry
+>més gran o igual que</entry
+> <entry
+>respon <quote
+>true</quote
+> si <userinput
+>$A</userinput
+> és més gran o igual que <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt;= $B</userinput
+></entry
+> <entry
+>més petit o igual que</entry
+> <entry
+>respon <quote
+>true</quote
+> si <userinput
+>$A</userinput
+> és més petit o igual que <userinput
+>$B</userinput
+></entry
+> </row
+> </tbody
+> </tgroup
+> </table
+> Cal tenir en compte que <userinput
+>$A</userinput
+> i <userinput
+>$B</userinput
+> han de ser <link linkend="number"
+>nombres</link
+> o <link linkend="assignment-of-variables"
+>variables</link
+> que contenen nombres.</para>
+</sect2>
+
+
+</sect1>
+
+
+
+<sect1 id="commands">
+<title
+>Ordres</title>
+<para
+>Utilitzant ordres li indicareu a la tortuga o al &kturtle; que faci quelcom. Algunes ordres necessiten alguna entrada o sortida. En aquesta secció explicarem totes les ordres integrades del &kturtle;. D'altra banda, utilitzant <link linkend="learn"
+><userinput
+>learn (aprèn)</userinput
+></link
+>, podreu crear les vostres pròpies ordres. Les ordres integrades que es debaten aquí es <glossterm
+>ressalten</glossterm
+> amb color blau fosc.</para>
+
+<sect2 id="moving-the-turtle">
+<title
+>Moure la tortuga</title>
+<para
+>Hi ha diverses ordres per a moure la tortuga sobre la pantalla.</para>
+
+  <variablelist>
+    <anchor id="forward"/>
+    <varlistentry
+> 
+      <term
+>forward -fw- (avança -av-)<indexterm
+><primary
+>forward -fw- (avança -av-)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>forward X</screen
+><userinput
+>forward</userinput
+> mou la tortuga cap endavant la quantitat de X píxels. Quan el llapis està sota la tortuga aquesta deixa un rastre. <userinput
+>forward</userinput
+> pot abreujar-se com <userinput
+>fw</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="backward"/>
+    <varlistentry
+>  
+      <term
+>backward -bw- (recula -re-)<indexterm
+><primary
+>backward -bw- (recula -re-)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>backward X</screen
+><userinput
+>backward</userinput
+> mou la tortuga cap enrere la quantitat de X píxels. Quan el llapis està avall la tortuga deixa un rastre. <userinput
+>backward</userinput
+> pot abreujar-se com <userinput
+>bw</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnleft"/>
+    <varlistentry
+> 
+      <term
+>turnleft -tl- (giraesquerra -ge-)<indexterm
+><primary
+>turnleft -tl- (giraesquerra -ge-)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>turnleft X</screen
+><userinput
+>turnleft</userinput
+> ordena a la tortuga tornar una quantitat de X graus cap a l'esquerra. <userinput
+>turnleft</userinput
+> pot abreujar-se com <userinput
+>tl</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnright"/>
+    <varlistentry
+> 
+      <term
+>turnright -tr- (giradreta -gd-)<indexterm
+><primary
+>turnright -tr- (giradreta -gd-)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>turnright X</screen
+><userinput
+>turnright</userinput
+> ordena a la tortuga tornar una quantitat de X graus cap a la dreta. <userinput
+>turnright</userinput
+> pot abreujar-se com <userinput
+>tr</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="direction"/>
+    <varlistentry
+> 
+      <term
+>direction -dir- (direcció -dir-)<indexterm
+><primary
+>direction -dir- (direcció -dir-)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>direction X</screen
+><userinput
+>direction</userinput
+> estableix la direcció de la tortuga a una quantitat de X graus X comptant des de zero, i per tant no és relativa a la direcció anterior de la tortuga. <userinput
+>direction</userinput
+> pot abreujar-se com <userinput
+>dir</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="getdirection"/>
+    <varlistentry
+> 
+      <term
+>getdirection (obtinguesdireccio)<indexterm
+><primary
+>getdirection (obtinguesdireccio)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>getdirection (obtinguesdireccio)</screen
+><userinput
+>getdirection</userinput
+> retorna la direcció de la tortuga a una quantitat de graus comptant des de zero, on zero és la direcció quan la tortuga està apuntant cap amunt.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="center"/>
+    <varlistentry
+> 
+      <term
+>center (centra)<indexterm
+><primary
+>center (centra)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>center</screen
+><userinput
+>center</userinput
+> mourà la tortuga cap al centre sobre el llenç.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="go"/>
+    <varlistentry
+> 
+      <term
+>go (vesa)<indexterm
+><primary
+>go (vesa)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>go X,Y</screen
+><userinput
+>go</userinput
+> ordena a la tortuga anar cap a un lloc determinat en el llenç. Aquest lloc és X <glossterm linkend="pixels"
+>píxels</glossterm
+> des de l'esquerra del llenç, i Y <glossterm linkend="pixels"
+>píxels</glossterm
+> des de la part superior del llenç.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gox"/>
+    <varlistentry
+> 
+      <term
+>gox (vesax)<indexterm
+><primary
+>gox (gx)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>gox X</screen
+><userinput
+>gox</userinput
+> ordena a la tortuga que es desplaci X <glossterm linkend="pixels"
+>píxels</glossterm
+> des de l'esquerra del llenç mantenint la seva estada a la mateixa alçada. <userinput
+>gox</userinput
+> pot abreujar-se com <userinput
+>gx</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="goy"/>
+    <varlistentry
+> 
+      <term
+>goy (vesay)<indexterm
+><primary
+>goy (gy)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>goy Y</screen
+><userinput
+>goy</userinput
+> ordena a la tortuga que es desplaci Y <glossterm linkend="pixels"
+>píxels</glossterm
+> des de la part superior del llenç mantenint la seva estada a la mateixa distància de la vora esquerra del llenç. <userinput
+>goy</userinput
+> pot abreujar-se com <userinput
+>gy</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <note
+><para
+>Utilitzant les ordres <userinput
+>go</userinput
+>, <userinput
+>gox</userinput
+>, <userinput
+>goy</userinput
+> i <userinput
+>center</userinput
+> la tortuga no dibuixarà una línia, tant se val si el llapis és cap amunt o cap avall.</para>
+  </note>
+</sect2>
+
+<sect2 id="locate-the-turtle">
+<title
+>On està la tortuga?</title>
+<para
+>Hi ha dues ordres que retornen la posició de la tortuga sobre la pantalla.</para>
+
+  <variablelist>
+    <anchor id="getx"/>
+    <varlistentry
+> 
+      <term
+>getx (obtinguesx)<indexterm
+><primary
+>getx (obtinguesx)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>getx</userinput
+> retorna el nombre de píxels des de l'esquerra del llenç cap a la posició actual de la tortuga.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gety"/>
+    <varlistentry
+> 
+      <term
+>gety (obtinguesy)<indexterm
+><primary
+>gety (obtinguesy)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>gety</userinput
+> retorna el nombre de píxels des de la part superior del llenç cap a la posició actual de la tortuga.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="pen">
+<title
+>La tortuga té un llapis</title>
+<para
+>La tortuga té un llapis que traça una línia quan aquesta es mou. Hi ha unes quantes ordres per a controlar el llapis. S'expliquen en aquesta secció.</para>
+  <variablelist>
+    <anchor id="penup"/>
+    <varlistentry
+> 
+      <term
+>penup -pu- (aixecallapis -al-)<indexterm
+><primary
+>penup -pu- (aixecallapis -al-)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>penup</screen
+><userinput
+>penup</userinput
+> aixeca el llapis del llenç. Quan el llapis està <quote
+>amunt</quote
+> no es dibuixarà cap línia quan es mogui la tortuga. Vegeu també <userinput
+>pendown</userinput
+>. <userinput
+>penup</userinput
+> pot abreujar-se com <userinput
+>pu</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="pendown"/>
+    <varlistentry
+> 
+      <term
+>pendown -pd- (baixallapis -bl-)<indexterm
+><primary
+>pendown -pd- (baixallapis -bl-)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pendown</screen
+><userinput
+>penup</userinput
+> pressiona el llapis sobre el llenç. Quan el llapis està <quote
+>abaixat</quote
+> es dibuixarà una línia quan es mogui la tortuga. Vegeu també <userinput
+>penup</userinput
+>. <userinput
+>pendown</userinput
+> pot abreujar-se com <userinput
+>pd</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setpenwidth"/>
+    <varlistentry
+> 
+      <term
+>penwidth -pw- (gruixllapis -gl-)<indexterm
+><primary
+>penwidth -pw- (gruixllapis -gl-)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>penwidth X</screen
+><userinput
+>penwidth</userinput
+> estableix l'amplada del traç del llapis (l'amplada de la línia) per una quantitat de X <glossterm linkend="pixels"
+>píxels</glossterm
+>. <userinput
+>penwidth</userinput
+> pot abreujar-se com <userinput
+>pw</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setfgcolor"/>
+    <varlistentry
+> 
+      <term
+>pencolor -pc- (colorllapis -cl-)<indexterm
+><primary
+>pencolor -pc- (colorllapis -cl-)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pencolor R,G,B</screen
+><userinput
+>pencolor</userinput
+> estableix el color del llapis. <userinput
+>pencolor</userinput
+> pren una <glossterm linkend="rgb"
+>combinació RGB</glossterm
+> com a entrada. <userinput
+>pencolor</userinput
+> pot abreujar-se com <userinput
+>pc</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="canvas">
+<title
+>Ordres per a controlar el llenç</title>
+<para
+>Hi ha diverses ordres per a controlar el llenç.</para>
+  <variablelist>
+    <anchor id="resizecanvas"/>
+    <varlistentry>
+      <term
+>canvassize -cs- (midapaper -mp-)<indexterm
+><primary
+>canvassize -cs- (midapaper -mp-)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>canvassize X,Y</screen
+>Amb l'ordre <userinput
+>canvassize</userinput
+> podreu establir la mida del llenç. Agafa X i Y com a entrada, on X és l'amplada del llenç nou en <glossterm linkend="pixels"
+>píxels</glossterm
+>, i Y és l'alçada del llenç nou en <glossterm linkend="pixels"
+>píxels</glossterm
+>. <userinput
+>canvassize</userinput
+> pot abreujar-se com <userinput
+>cs</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setbgcolor"/>
+    <varlistentry
+> 
+      <term
+>canvascolor -cc- (colorpaper -cp-)<indexterm
+><primary
+>canvascolor -cc- (colorpaper -cp-)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>canvascolor R,G,B</screen
+><userinput
+>canvascolor</userinput
+> estableix el color del llenç. <userinput
+>canvascolor</userinput
+> pren una <glossterm linkend="rgb"
+>combinació RGB</glossterm
+> com a entrada. <userinput
+>canvascolor</userinput
+> pot abreujar-se com <userinput
+>cc</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="clean">
+<title
+>Ordres per a netejar</title>
+<para
+>Hi ha dues ordres per a netejar el llenç després d'haver fet un embolic.</para>
+  <variablelist>
+    <anchor id="clear"/>
+    <varlistentry
+> 
+      <term
+>clear -ccl- (neteja -net-)<indexterm
+><primary
+>clear -ccl- (neteja -net-)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>clear</screen
+>Amb <userinput
+>clear</userinput
+> podreu netejar tots els dibuixos del llenç. Totes les altres coses hi romandran: La posició i l'angle de la tortuga, el color del llenç, la visibilitat de la tortuga i la mida del llenç.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="reset"/>
+    <varlistentry
+> 
+      <term
+>reset (inicialitza)<indexterm
+><primary
+>reset (inicialitza)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>reset</screen
+><userinput
+>reset</userinput
+> neteja molt més a fons que l'ordre <userinput
+>clear</userinput
+>. Després d'una ordre <userinput
+>reset</userinput
+> tot quedarà com en iniciar el &kturtle;. La tortuga es col·loca al centre de la pantalla, el color del llenç és blanc, la tortuga dibuixa un traç negre sobre el llenç i la mida del llenç s'estableix a 400 x 400 píxels.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="sprites">
+<title
+>La tortuga és un sprite</title>
+<para
+>En primer lloc una breu explicació del que són els sprites: Els sprites són imatges petites que es poden moure per la pantalla, com veiem sovint en els jocs d'ordinador. La nostra tortuga és un sprite. Per a més informació, vegeu el glossari quant a <glossterm linkend="sprites"
+>sprites</glossterm
+>.</para>
+<para
+>A continuació trobareu una descripció completa de totes les ordres per a treballar amb sprites.</para>
+<note
+><para
+>La versió actual del &kturtle; encara no admet l'ús de sprites que no sigui la tortuga. Amb les futures versions es podrà canviar la tortuga per alguna cosa del vostre propi disseny.</para
+></note>
+  <variablelist>
+    <anchor id="spriteshow"/>
+    <varlistentry
+> 
+      <term
+>spriteshow -ss- (mostra -mo-)<indexterm
+><primary
+>spriteshow -ss- (mostra -mo-)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>spriteshow</screen
+><userinput
+>spriteshow</userinput
+> fa la tortuga visible de nou després d'haver-la ocultat. <userinput
+>spriteshow</userinput
+> pot abreujar-se com <userinput
+>ss</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="spritehide"/>
+    <varlistentry
+> 
+      <term
+>spritehide -sh- (oculta -oc-)<indexterm
+><primary
+>spritehide -sh- (oculta -oc-)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>spritehide</screen
+><userinput
+>spritehide</userinput
+> oculta la tortuga. Es pot utilitzar si la tortuga no s'ajusta al vostre dibuix. <userinput
+>spritehide</userinput
+> pot abreujar-se com <userinput
+>sh</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="writing">
+<title
+>Pot escriure la tortuga?</title>
+<para
+>La resposta és: <quote
+>Sí</quote
+>. La tortuga pot escriure: Escriu gairebé tot el que se li ordena.</para>
+  <variablelist>
+    <anchor id="print"/>
+    <varlistentry
+> 
+      <term
+>print (imprimeix)<indexterm
+><primary
+>print (imprimeix)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>print X</screen
+>L'ordre <userinput
+>print</userinput
+> s'utilitza per a ordenar a la tortuga que escrigui quelcom en el llenç. <userinput
+>print</userinput
+> pren els números i cadenes com a entrada. Podeu imprimir diversos nombres i cadenes mitjançant el símbol <quote
+>+</quote
+>. Vegeu aquest petit exemple: <screen
+>$year = 2003
+$author = "Joan"
+print "En " + $author + " va començar el projecte KTurtle al " + $year + " i encara gaudeix treballant-hi!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="fontsize"/>
+    <varlistentry
+> 
+      <term
+>fontsize (midalletra)<indexterm
+><primary
+>fontsize (midalletra)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>fontsize X</screen
+><userinput
+>fontsize</userinput
+> estableix la mida del tipus de lletra utilitzat per <userinput
+>print</userinput
+>. <userinput
+>fontsize</userinput
+> pren una entrada que ha de ser un nombre. La mida s'estableix en <glossterm linkend="pixels"
+>píxels</glossterm
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="math-commands">
+<title
+>Ordres matemàtiques</title>
+<para
+>Les següents ordres són les ordres matemàtiques més avançades del &kturtle;.</para>
+  <variablelist>
+    <anchor id="round"/>
+    <varlistentry>
+      <term
+>round (arrod)<indexterm
+><primary
+>round (arrod)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>round(x)</screen
+><userinput
+>round</userinput
+> arrodoneix el nombre indicat a l'enter més proper. <screen>
+print round(10,8)
+forward 20
+print round(10,3)
+</screen
+> Amb aquest codi la tortuga imprimirà els nombres 11 i 10.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="random"/>
+    <varlistentry
+> 
+      <term
+>random -rnd- (aleatori -ale-)<indexterm
+><primary
+>random -rnd- (aleatori -ale-)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>random X,Y</screen
+><userinput
+>random</userinput
+> és una ordre que pren l'entrada i dona una sortida. Com entrada requereix dos nombres, el primer (X) estableix el mínim de la sortida, el segon (Y) estableix el màxim. La sortida és un nombre escollit a l'atzar que és igual o superior al mínim i igual o inferior que el màxim. Aquí hi ha un petit exemple: <screen>
+repeat 500 {
+  $x = random 1,20
+  forward $x
+  turnleft 10 - $x
+}
+</screen
+> Utilitzant l'ordre <userinput
+>random</userinput
+> podeu afegir una mica de caos al vostre programa.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="mod"/>
+    <varlistentry
+> 
+      <term
+>mod<indexterm
+><primary
+>mod</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mod X,Y</screen
+>L'ordre <userinput
+>mod</userinput
+> retorna la resta de la divisió del primer número pel segon número.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sqrt"/>
+    <varlistentry
+> 
+      <term
+>sqrt (arrel)<indexterm
+><primary
+>sqrt (arrel)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen
+>L'ordre <userinput
+>sqrt</userinput
+> és un requisit per a trobar l'arrel quadrada d'un número, X.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+<!--
+  <variablelist>
+    <anchor id="exp"/>
+    <varlistentry
+> 
+      <term
+>exp<indexterm
+><primary
+>exp</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+-->
+  <variablelist>
+    <anchor id="pi"/>
+    <varlistentry
+> 
+      <term
+>pi<indexterm
+><primary
+>pi</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pi</screen
+>Aquesta ordre retorna la constant Pi, <userinput
+>3,14159</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sin"/>
+    <anchor id="cos"/>
+    <anchor id="tan"/>
+    <varlistentry>
+      <term
+>sin<indexterm
+><primary
+>sin</primary
+></indexterm
+>, cos<indexterm
+><primary
+>cos</primary
+></indexterm
+>, tan<indexterm
+><primary
+>tan</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>sin X
+cos X
+tan X
+</screen
+>Aquestes tres ordres representen les famoses funcions trigonomètriques <userinput
+>sin</userinput
+>, <userinput
+>cos</userinput
+> i <userinput
+>tan</userinput
+>. L'argument d'entrada d'aquestes ordres, X, és un <link linkend="number"
+>nombre</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="arcsin"/>
+    <anchor id="arccos"/>
+    <anchor id="arctan"/>
+    <varlistentry>
+      <term
+>arcsin<indexterm
+><primary
+>arcsin</primary
+></indexterm
+>, arccos<indexterm
+><primary
+>arccos</primary
+></indexterm
+>, arctan<indexterm
+><primary
+>arctan</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>arcsin X
+arccos X
+arctan X
+</screen
+>Aquestes ordres són les funcions inverses de <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+> i <link linkend="tan"
+>tan</link
+>. L'argument d'entrada d'aquestes ordres, X, és un <link linkend="number"
+>nombre</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="dialogs">
+<title
+>Aportacions i comentaris a través dels diàlegs</title>
+<para
+>Un diàleg és una petita finestra emergent que proporciona alguna informació o us demana alguna entrada. El &kturtle; té dos ordres per als diàlegs, anomenades: <userinput
+>message</userinput
+> i <userinput
+>ask</userinput
+></para>
+  <variablelist>
+    <anchor id="message"/>
+    <varlistentry
+> 
+      <term
+>message (missatge)<indexterm
+><primary
+>message (missatge)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>message X</screen
+>L'ordre <userinput
+>message</userinput
+> pren una <link linkend="string"
+>cadena</link
+> com a entrada. Mostra un diàleg emergent que conté el text de la <link linkend="string"
+>cadena</link
+>. <screen
+>message "En Joan va començar el projecte KTurtle el 2003 i encara gaudeix treballant-hi!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="ask"/>
+    <varlistentry
+> 
+      <term
+>ask (pregunta)<indexterm
+><primary
+>ask (pregunta)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ask X</screen
+><userinput
+>ask</userinput
+> pren una cadena com a entrada. La mostra en un diàleg emergent (similar a <link linkend="string"
+>message</link
+>), juntament amb un camp d'entrada. Després que l'usuari ha introduït un nombre o una cadena, el resultat es pot desar en una variable o passar-lo com a argument a una ordre. Per exemple: <screen>
+$in = ask "Quina és la vostra data de naixement?"
+$out = 2003 - $in
+print "L'any 2003 vàreu tenir " + $out + " anys d'edat en algun moment."
+</screen
+> Si l'usuari cancel·la el diàleg d'entrada, o no introdueix res, la variable quedarà buida.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="assignment-of-variables">
+<title
+>Assignar les variables</title>
+<para
+>En primer lloc donarem una ullada a les variables, llavors ens centrarem en l'assignació de valors a aquestes variables. </para>
+
+<para
+>Les variables són paraules que comencen amb un <quote
+>$</quote
+>, en l'<link linkend="the-editor"
+>editor</link
+> es <glossterm
+>ressalten</glossterm
+> amb color porpra.</para>
+
+<para
+>Les variables poden contenir qualsevol <link linkend="number"
+>nombre</link
+>, <link linkend="string"
+>cadena</link
+> o <link linkend="boolean-value"
+>valor booleà (true/false -cert/fals-)</link
+>. Utilitzant l'assignació, <userinput
+>=</userinput
+>, una variable pren el seu contingut. La qual mantindrà el contingut fins que el programa s'acabi d'executar o fins que la variable es torni a assignar a quelcom altre.</para>
+
+<para
+>Podeu utilitzar variables, un cop assignades, simplement mantenen el seu contingut. Per exemple, en el següent fragment de &turtlescript;: <screen>
+$x = 10
+$x = $x / 3
+print $x
+</screen
+> Primer a la variable <userinput
+>$x</userinput
+> se li assigna <userinput
+>10</userinput
+>. Llavors a <userinput
+>$x</userinput
+> es torna a assignar a la seva divisió per <userinput
+>3</userinput
+> -això significa que <userinput
+>$x</userinput
+> es torna a assignar al producte de <userinput
+>10 / 3</userinput
+>. Finalment s'imprimeix <userinput
+>$x</userinput
+>. En la línia dos i tres veureu que <userinput
+>$x</userinput
+> s'utilitza com si fos el seu contingut.</para>
+
+<para
+>Les variables s'han d'assignar per tal de ser utilitzades. Per exemple: <screen>
+print $n
+</screen
+> Donarà com a resultat un missatge d'error.</para>
+
+<para
+>Observem el següent fragment de &turtlescript;: <screen>
+$a = 2004
+$b = 25
+
+# Les següents ordres imprimeixen «2029»
+print $a + $b
+backward 30
+# La següent ordre imprimeix «2004 més 25 és igual que 2029»
+print $a + " més " + $b + " és igual que " + ($a + $b)
+</screen
+> En les dues primeres línies les variables <userinput
+>$a</userinput
+> i <userinput
+>$b</userinput
+> s'estableixen a 2004 i 25. Després s'executen dues ordres <userinput
+>print</userinput
+> amb una <userinput
+>backward 30</userinput
+> al mig. Els comentaris abans de l'ordre <userinput
+>print</userinput
+> expliquen el que faran. L'ordre <userinput
+>backward 30</userinput
+> hi és per a assegurar que cada sortida és una nova línia. Com podeu veure les variables es poden utilitzar com si fossin el que contenen, es poden utilitzar amb qualsevol mena d'<link linkend="operators"
+>operador</link
+> o com a entrada en utilitzar altres <link linkend="commands"
+>ordres</link
+>.</para>
+
+<para
+>Un exemple més: <screen>
+$name = ask "Quin és el teu nom?"
+print "Hola " + $name + "! Bona sort mentre apreneu l'art de la programació..."
+</screen
+> Força simple. Una vegada més podeu veure com la variable <userinput
+>$name</userinput
+>, és tractada com una cadena.</para>
+
+<para
+>En utilitzar variables l'<link linkend="the-inspector"
+>inspector</link
+> resulta molt útil. Mostra el contingut de totes les variables que estan actualment en ús.</para>
+</sect1>
+
+
+
+<sect1 id="controlling-execution">
+<title
+>Controlar l'execució</title>
+<para
+>Els controladors de l'execució us permeten -tal com el seu nom indica- controlar l'execució.</para>
+<para
+>Els controladors de l'execució es <glossterm
+>ressalten</glossterm
+> amb color verd fosc en un tipus de lletra en negreta. Els parèntesis s'utilitzen juntament amb els controladors de l'execució i es ressalten amb color negre.</para>
+
+<sect2 id="wait">
+<title
+>Fer que la tortuga esperi</title>
+<para
+>Si heu fet quelcom de programació en el &kturtle;, us haureu adonat que la tortuga pot ser molt ràpida dibuixant. Aquesta ordre farà que la tortuga esperi un període de temps determinat.</para>
+  <variablelist>
+    <varlistentry>
+      <term
+>wait (espera)<indexterm
+><primary
+>wait (espera)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>wait X</screen
+><userinput
+>wait</userinput
+> fa que la tortuga esperi durant X segons. <screen>
+repeat 36 {
+  forward 5
+  turnright 10
+  wait 0.5
+}
+</screen
+> Aquest codi dibuixa un cercle, però la tortuga esperarà mig segon després de cada pas. Això fa l'efecte d'una tortuga lenta.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="if">
+<title
+>Executa <quote
+>if -si-</quote
+></title>
+  <variablelist>
+    <varlistentry>
+      <term
+>if (si)<indexterm
+><primary
+>if (si)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>if <link linkend="boolean-value"
+>booleà</link
+> { ... }</screen
+>El codi que es col·loca entre els claudàtors només s'executarà si el <link linkend="boolean-value"
+>valor booleà</link
+> avalua <quote
+>true</quote
+>. <screen>
+$x = 6
+if $x &gt; 5 {
+  print "$x és més gran que cinc!"
+}
+</screen
+> A la primera línia <userinput
+>$x</userinput
+> està establert a 6. En la segona línia s'utilitza un <link linkend="boolean-value"
+>operador de comparació</link
+> per a avaluar $x &gt; 5. Atès que aquest avalua <quote
+>true</quote
+>, 6 és més gran que 5, el controlador de l'execució <userinput
+>if</userinput
+> permet executar el codi entre els claudàtors.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="else">
+<title
+>Si no, en altres paraules: <quote
+>else -altrament-</quote
+></title>
+  <variablelist>
+    <varlistentry>
+      <term
+>else (altrament)<indexterm
+><primary
+>else (altrament)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>if <link linkend="boolean-value"
+>booleà</link
+> { ... } else { ... }</screen
+><userinput
+>else</userinput
+> es pot utilitzar a més del controlador de l'execució <link linkend="if"
+><userinput
+>if</userinput
+></link
+>. El codi entre claudàtors després de <userinput
+>else</userinput
+> només s'executa si el <link linkend="boolean-value"
+>booleà</link
+> avalua <quote
+>false</quote
+>. <screen>
+reset
+$x = 4
+if $x &gt; 5 {
+  print "$x és més gran que cinc!"
+} else {
+  print "$x és més petit que sis!"
+}
+</screen
+> L'<link linkend="comparing-operators"
+>operador de comparació</link
+> avalua l'expressió <userinput
+>$x &gt; 5</userinput
+>. Donat que 4 no és més gran que 5, l'expressió s'avalua com <quote
+>fals</quote
+>. Això significa que el codi entre claudàtors després de <userinput
+>else</userinput
+> serà executat.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="while">
+<title
+>El bucle <quote
+>while -mentre-</quote
+></title>
+  <variablelist>
+    <varlistentry>
+      <term
+>while (mentre)<indexterm
+><primary
+>while (mentre)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>while <link linkend="boolean-value"
+>booleà</link
+> { ... }</screen
+>El controlador de l'execució <userinput
+>while</userinput
+> s'assembla molt a <link linkend="if"
+><userinput
+>if</userinput
+></link
+>. La diferència és que <userinput
+>while</userinput
+> no deixa de repetir (en bucle) el codi entre claudàtors fins que el <link linkend="boolean-value"
+>booleà</link
+> avalua <quote
+>false</quote
+>. <screen>
+$x = 1
+while $x &lt; 5 {
+  forward 10
+  wait 1
+  $x = $x + 1
+}
+</screen
+> En la primera línia <userinput
+>$x</userinput
+> s'estableix a 1. En la segona línia s'avalua <userinput
+>$x &lt; 5</userinput
+>. Atès que la resposta a aquesta pregunta és <quote
+>true</quote
+> el controlador de l'execució while començarà a executar el codi entre claudàtors fins que <userinput
+>$x &lt; 5</userinput
+> avaluï <quote
+>false</quote
+>. En aquest cas el codi entre els claudàtors s'executarà quatre vegades, perquè cada vegada que s'executa la cinquena línia <userinput
+>$x</userinput
+> s'incrementa en 1.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="repeat">
+<title
+>El bucle <quote
+>repeat -repeteix-</quote
+></title>
+  <variablelist>
+    <varlistentry>
+      <term
+>repeat (repeteix)<indexterm
+><primary
+>repeat (repeteix)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>repeat <link linkend="number"
+>nombre</link
+> { ... }</screen
+>El controlador de l'execució <userinput
+>repeat</userinput
+> és molt similar <link linkend="while"
+><userinput
+>while</userinput
+></link
+>. La diferència és que <userinput
+>repeat</userinput
+> no deixa de repetir (en bucle) el codi entre els claudàtors tantes vegades com indica el nombre.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="for">
+<title
+>El bucle <quote
+>for -per-</quote
+>, un bucle de comptatge</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>for (per)<indexterm
+><primary
+>for (per)</primary
+></indexterm
+><indexterm
+><primary
+>to (finsa)</primary
+></indexterm
+><indexterm
+><primary
+>step (pas)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>for <link linkend="assignment-of-variables"
+>variable</link
+> = <link linkend="number"
+>nombre</link
+> to <link linkend="number"
+>nombre</link
+> { ... }</screen
+>El bucle <userinput
+>for</userinput
+> és un <quote
+>bucle de comptatge</quote
+>, &ead;, que porta el compte per a vós. El primer nombre estableix la variable amb el valor en el primer bucle. Cada bucle incrementa aquest nombre fins que s'assoleix el segon nombre. <screen>
+for $x = 1 to 10 {
+  print $x * 7
+  forward 15
+}
+</screen
+> Cada vegada que s'executa el codi entre claudàtors <userinput
+>$x</userinput
+> s'incrementa en 1, fins que <userinput
+>$x</userinput
+> assoleix al valor de 10. El codi entre claudàtors imprimeix <userinput
+>$x</userinput
+> multiplicat per 7. Després que aquest programa acaba la seva execució veureu la taula de temps de 7 en el llenç. </para>
+     <para
+>L'increment predeterminat d'un bucle és 1, podeu utilitzar un altre valor amb <screen
+>for <link linkend="assignment-of-variables"
+>variable</link
+> = <link linkend="number"
+>nombre</link
+> to <link linkend="number"
+>nombre</link
+> step <link linkend="number"
+>nombre</link
+> { ... }</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="break">
+<title
+>Deixar un bucle</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>break (trenca)<indexterm
+><primary
+>break (trenca)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>break</screen
+>Finalitza el bucle actual immediatament i transfereix el control a la sentència immediatament següent a aquest bucle.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="exit">
+<title
+>Aturar l'execució del vostre programa</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>exit (surt)<indexterm
+><primary
+>exit (surt)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>exit</screen
+>Finalitza l'execució del vostre programa.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="assert">
+<title
+>Comprovar les declaracions en temps d'execució</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>assert (declara)<indexterm
+><primary
+>assert (declara)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>assert <link linkend="boolean-value"
+>booleà</link
+></screen
+>Es pot utilitzar per a raonar sobre la correcció del programa o de l'entrada. <screen
+>$in = ask "Quina és la vostra data de naixement?"
+# l'any ha de ser un nombre positiu
+assert $in 
+> 0
+</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+</sect1>
+
+
+<sect1 id="learn">
+
+<title
+>Crear les vostres pròpies ordres amb <quote
+>learn -aprèn-</quote
+></title>
+<para
+><userinput
+>learn</userinput
+><indexterm
+><primary
+>learn</primary
+></indexterm
+> és especial, ja que s'utilitza per a crear les vostres pròpies ordres. Les ordres que creeu poden agafar una <glossterm linkend="input-output"
+>entrada</glossterm
+> i retornar una <glossterm linkend="input-output"
+>sortida</glossterm
+>. Donem una ullada a com es crea una ordre nova: <screen>
+learn circle $x {
+  repeat 36 {
+    forward $x
+    turnleft 10
+  }
+}
+</screen
+> La nova ordre s'anomena <userinput
+>circle</userinput
+>. <userinput
+>circle</userinput
+> té una <glossterm linkend="input-output"
+>entrada</glossterm
+> com argument, per a establir la mida del cercle. <userinput
+>circle</userinput
+> no torna cap <glossterm linkend="input-output"
+>sortida</glossterm
+>. Ara podeu utilitzar l'ordre <userinput
+>circle</userinput
+> com una ordre normal a la resta del codi. Vegeu aquest exemple: <screen
+>learn circle $X {
+  repeat 36 {
+    forward $X 
+    turnleft 10 
+  }
+}
+
+go 200,200 
+circle 20
+
+go 300,200 
+circle 40  
+</screen>
+</para>
+<para
+>En el següent exemple, es crea una ordre amb un valor de retorn<indexterm
+><primary
+>return</primary
+></indexterm
+>. <screen>
+learn faculty $x {
+  $r = 1
+  for $i = 1 to $x {
+    $r = $r * $i
+  }
+  return $r
+}
+
+print faculty 5
+</screen
+>En aquest exemple es crea una ordre nova anomenada <userinput
+>faculty</userinput
+>. Si l'entrada d'aquesta ordre és <userinput
+>5</userinput
+>, la sortida serà <userinput
+>5*4*3*2*1</userinput
+>. Mitjançant l'ús de <userinput
+>return</userinput
+> s'especificarà el valor de la <glossterm linkend="input-output"
+>sortida</glossterm
+> i es retornarà la fi de l'execució.</para>
+<para
+>Les ordres poden tenir més d'una <glossterm linkend="input-output"
+>entrada</glossterm
+>. En el següent exemple, es crea una ordre que dibuixa un rectangle: <screen>
+learn box $x, $y {
+  forward $y
+  turnright 90
+  forward $x
+  turnright 90
+  forward $y
+  turnright 90
+  forward $x
+  turnright 90
+}
+</screen
+> Ara podeu executar <userinput
+>box 50, 100</userinput
+> i la tortuga dibuixarà un rectangle en el llenç. </para>
+  
+</sect1>
+
+</chapter>

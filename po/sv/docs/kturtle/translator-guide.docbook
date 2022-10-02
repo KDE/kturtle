@@ -1,0 +1,14 @@
+<chapter id="translators">
+<title
+>Översättningsguide för &kturtle;</title>
+<para
+>Som du förmodligen redan vet, är &kturtle;s programspråk möjligt att översätta. Det tar bort en barriär för vissa, när de anstränger sig för att förstå programmeringens grunder.</para>
+<para
+>När &kturtle; översätts till ett nytt språk märker du att programkommandon, exempel och felmeddelanden ingår i de vanliga <filename class="extension"
+>.pot</filename
+>-filerna som används för översättning i &kde;, förutom de vanliga strängarna i det grafiska gränssnittet. Allt översätts med den vanliga översättningsmetoden som används i &kde;, men ändå rekommenderas du starkt att lära dig lite mer om hur de ska översättas (som du också kan läsa i översättningskommentarerna).</para>
+<para
+>Ta gärna en titt på <ulink url="https://edu.kde.org/kturtle/translation.php"
+>https://edu.kde.org/kturtle/translation.php</ulink
+> för mer information om översättningsprocessen. Tack så mycket för ditt arbete! &kturtle; beror i stor utsträckning på översättarna.</para>
+</chapter>

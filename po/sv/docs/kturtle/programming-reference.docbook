@@ -1,0 +1,2182 @@
+<chapter id="reference">
+<title
+>Programmeringsreferens för &kturtle;s språk</title>
+<para
+>Det här är referensen för &kturtle;s språk. I kapitlets första avsnitt, kan du ta en titt på vissa aspekter hos <link linkend="grammar"
+>grammatiken</link
+> i &kturtle;s språk. Det andra avsnittet handlar enbart om <link linkend="mathematical-operators"
+>matematiska operatorer</link
+>, <link linkend="boolean-operators"
+>Booleska operatorer (sann eller falsk)</link
+> och <link linkend="comparing-operators"
+>jämförelseoperatorer</link
+>. Det tredje avsnittet är egentlingen en enorm lista med alla <link linkend="commands"
+>kommandon</link
+> som förklaras ett i taget. Avsnitt fyra förklarar hur värden <link linkend="assignment-of-variables"
+>tilldelas</link
+> till <link linkend="assignment-of-variables"
+>variabler</link
+>. Till sist förklarar vi hur körning av kommandon arrangeras med <link linkend="controlling-execution"
+>kommandon för styrning av körningen</link
+> i avsnitt fem, och hur egna kommandon kan skapas med <link linkend="learn"
+><userinput
+>lär</userinput
+></link
+> i avsnitt sex.</para>
+
+<sect1 id="grammar">
+<title
+>Grammatiken för &kturtle;s språk</title>
+<para
+>Som med alla språk, har &kturtle;s språk olika typer av ord och symboler. På svenska skiljer vi på verb (som 'att gå' eller 'att sjunga') och substantiv (som 'syster' eller 'hus'), eftersom de används för olika syften. &kturtle;s språk är ett programspråk, och används för att tala om för &kturtle; vad som ska göras.</para>
+<para
+>I det här avsnittet förklaras vissa av de olika typerna av ord och symboler &kturtle;s språk kortfattat. Vi förklarar <link linkend="comment"
+>kommentarer</link
+>, <link linkend="command"
+>kommandon</link
+> och de tre olika typerna av litteraler: <link linkend="number"
+>tal</link
+>, <link linkend="string"
+>strängar</link
+> och <link linkend="boolean-value"
+>Booleska värden (sann eller falsk)</link
+>.</para>
+
+
+<sect2 id="comment">
+<title
+>Kommentarer</title>
+<para
+>Ett program består av instruktioner som utförs när programmet körs, och så kallade kommentarer. Kommentarer utförs inte. &kturtle; ignorerar helt enkelt dem när programmet körs. Kommentarer finns till för andra programmerare, för att få dem att förstå programmet bättre. Allt som följer symbolen <userinput
+>#</userinput
+> anses vara en kommentar i &kturtle;s språk. Exempelvis gör det här lilla programmet ingenting: <screen>
+# det här lilla programmet gör ingenting, det är bara en kommentar!
+</screen
+> Det är inte särskilt användbart, men förklarar saken bra.</para>
+<para
+>Kommentarer är mycket användbara när programmen blir lite mer komplicerade. De kan hjälpa till med att ge råd till andra programmerare. I följande program ser du kommentarer som används tillsammans med kommandot <link linkend="print"
+>skriv</link
+>. <screen>
+# Programmet är skapat av Cies Breijs.
+skriv "Den här texten skrivs ut på duken"
+# Den föregående raden är inte en kommentar, men nästa rad är det:
+# skriv "Den här texten kommer inte att skrivas ut."
+</screen
+> Den första raden beskriver programmet. Den andra raden utförs av &kturtle; och skriver ut <userinput
+>Den här texten skrivs ut på duken</userinput
+> på duken. Den tredje raden är en kommentar, och den fjärde raden är en kommentar som innehåller kod på &kturtle;s språk. Om symbolen <userinput
+>#</userinput
+> skulle tas bort från den fjärde raden, skulle utskriften utföras av &kturtle;. Programmerare säger: utskriften på fjärde raden är 'bortkommenterad'.</para>
+<para
+>Kommentarrader är <glossterm
+>färglagda</glossterm
+> med ljusgrått i <link linkend="the-editor"
+>editorn</link
+>.</para>
+</sect2>
+
+<sect2 id="command">
+<title
+>Kommandon</title>
+<para
+>Genom att använda kommentarer kan du tala om för sköldpaddan eller &kturtle; att göra någonting. Vissa kommandon behöver indata, vissa ger utdata. <screen>
+# framåt är ett kommando som behöver indata, i detta fall talet 100:
+framåt 100
+</screen
+> Den första raden är en <link linkend="comment"
+>kommentar</link
+>. Den andra raden innehåller kommandot <userinput
+>framåt</userinput
+> och <link linkend="number"
+>talet</link
+> <userinput
+>100</userinput
+>. Talet är inte en del av kommandot, utan anses vara 'indata' till kommandot.</para>
+<para
+>Vissa kommandon, som t.ex. <userinput
+>gå</userinput
+> behöver mer än ett indatavärde. Flera värden måste skiljas åt med ett kommatecken: <userinput
+>,</userinput
+>.</para>
+<para
+>För en detaljerad översikt av alla kommandon som &kturtle; stöder, titta <link linkend="commands"
+>här</link
+>. Inbyggda kommandon är <glossterm
+>färglagda</glossterm
+> med mörkblått.</para>
+</sect2>
+
+<sect2 id="number">
+<title
+>Tal</title>
+<para
+>Troligen kan du redan en hel del om tal. Sättet som tal används i &kturtle; är inte särskilt annorlunda än ett talat språk eller matematik.</para>
+<para
+>Vi har de så kallade naturliga talen: <userinput
+>0</userinput
+>, <userinput
+>1</userinput
+>, <userinput
+>2</userinput
+>, <userinput
+>3</userinput
+>, <userinput
+>4</userinput
+>, <userinput
+>5</userinput
+>, etc. De negativa talen: <userinput
+>-1</userinput
+>, <userinput
+>-2</userinput
+>, <userinput
+>-3</userinput
+>, etc. Och talen med decimaler eller decimaltalen, till exempel: <userinput
+>0.1</userinput
+>, <userinput
+>3.14</userinput
+>, <userinput
+>33.3333</userinput
+>, <userinput
+>-5.05</userinput
+>, <userinput
+>-1.0</userinput
+>. Tecknet <userinput
+>.</userinput
+> (punkt) används som decimaltecken. </para>
+<para
+>Tal kan användas i <link linkend="mathematical-operators"
+>matematiska beräkningar</link
+> och <link linkend="comparing-operators"
+>jämförelser</link
+>. De kan också placeras i <link linkend="assignment-of-variables"
+>variabler</link
+>. Tal <glossterm
+>färgläggs</glossterm
+> i mörkrött.</para>
+</sect2>
+
+<!-- constants like pi? -->
+
+<sect2 id="string">
+<title
+>Strängar</title>
+<para
+>Först ett exempel: <screen>
+skriv "Hej, jag är en sträng."
+</screen
+> I det här exemplet är <userinput
+>skriv</userinput
+> ett kommando, medan <userinput
+>"Hej, jag är en sträng."</userinput
+> är en sträng. Strängar börjar och slutar med tecknet <userinput
+>"</userinput
+>. Det är dessa tecken som gör att &kturtle; vet att det är en sträng.</para>
+<para
+>Strängar kan tilldelas till <link linkend="assignment-of-variables"
+>variabler</link
+> precis som <link linkend="number"
+>tal</link
+>. Ändå, i motsats till tal, kan inte strängar användas med <link linkend="mathematical-operators"
+>matematiska operatorer</link
+> eller <link linkend="comparing-operators"
+>jämförelseoperatorer</link
+>. Strängar <glossterm
+>färgläggs</glossterm
+> med rött.</para>
+</sect2>
+
+<sect2 id="boolean-value">
+<title
+>Booleska värden (sann eller falsk)</title>
+<para
+>Det finns bara två Booleska värden: <userinput
+>sann</userinput
+><indexterm
+><primary
+>sann</primary
+></indexterm
+> och <userinput
+>falsk</userinput
+><indexterm
+><primary
+>falsk</primary
+></indexterm
+>. Ibland kallas de också <quote
+><userinput
+>på</userinput
+></quote
+> och <quote
+><userinput
+>av</userinput
+></quote
+>, <quote
+><userinput
+>ja</userinput
+></quote
+> och <quote
+><userinput
+>nej</userinput
+></quote
+>, <quote
+><userinput
+>ett</userinput
+></quote
+> och <quote
+><userinput
+>noll</userinput
+></quote
+>. Men i &kturtle;s språk kallar vi dem alltid <userinput
+>sann</userinput
+> och <userinput
+>falsk</userinput
+>. Ta en titt på följande kod i &kturtle;s språk: <screen>
+a = sann
+</screen
+> Om du tittar i <link linkend="the-inspector"
+>inspektören</link
+> kan du se att <link linkend="assignment-of-variables"
+>variabeln</link
+> <userinput
+>$a</userinput
+> har värdet <userinput
+>sann</userinput
+>, och typen Boolean.</para>
+<para
+>Ofta är Booleska värden resultat av en <link linkend="comparing-operators"
+>jämförelseoperator</link
+>, som i följande kod på &kturtle;s språk: <screen>
+$svar = 10 &gt; 3
+</screen
+> <link linkend="assignment-of-variables"
+>Variabeln</link
+> <userinput
+>$svar</userinput
+> tilldelas <userinput
+>sann</userinput
+> eftersom <userinput
+>10</userinput
+> är större än <userinput
+>3</userinput
+>.</para>
+<para
+>Booleska värden, <userinput
+>sann</userinput
+> och <userinput
+>falsk</userinput
+>, <glossterm
+>färgläggs</glossterm
+> med mörkrött.</para>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="operators">
+<title
+>Matematiska, Booleska och jämförelseoperatorer</title>
+<para
+>Det här avsnittets titel kan låta mycket svår, men det är inte så svårt som det låter.</para>
+
+<sect2 id="mathematical-operators">
+<title
+>Matematiska operatorer</title>
+<para
+>Det här är de grundläggande matematiska symbolerna: addera (<userinput
+>+</userinput
+>), subtrahera (<userinput
+>-</userinput
+>), multiplicera (<userinput
+>*</userinput
+>), dividera (<userinput
+>/</userinput
+>) och upphöjt till (<userinput
+>^</userinput
+>).</para>
+
+<para
+>Här är ett litet exempel på de matematiska operatorerna du kan använda med &kturtle;s språk: <screen>
+$addera       = 1 + 1
+$subtrahera   = 20 - 5
+$multiplicera = 15 * 2
+$dividera     = 30 / 30
+$upphöja      = 2 ^ 2
+</screen
+> Värden som är resultatet av matematiska operationer <link linkend="assignment-of-variables"
+>tilldelas</link
+> till diverse <link linkend="assignment-of-variables"
+>variabler</link
+>. Genom att använda <link linkend="the-inspector"
+>inspektören</link
+> kan du se värdena.</para>
+<para
+>Om du bara vill göra en enkel beräkning kan du skriva något som liknar detta: <screen
+>skriv 2010-12
+</screen
+></para>
+<para
+>Nu ett exempel med parenteser: <screen>
+skriv ( ( 20 - 5 ) * 2 / 30 ) + 1
+</screen
+> Uttrycken inne i parenteserna räknas ut först. I det här exemplet beräknas 20-5, och därefter multipliceras det med 2, divideras med 30 och därefter läggs 1 till (vilket ger 2). Parenteser kan också användas i andra fall.</para>
+<para
+>&kturtle; har också mer avancerade matematiska funktioner i form av kommandon. Ta en titt på följande kommandon, men var medveten om att det gäller avancerade operationer: <link linkend="round"
+>avrunda</link
+>, <link linkend="random"
+>slump</link
+>, <link linkend="sqrt"
+>kvadratrot</link
+>, <link linkend="pi"
+>pi</link
+>, <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+>, <link linkend="tan"
+>tan</link
+>, <link linkend="arcsin"
+>arcsin</link
+>, <link linkend="arccos"
+>arccos</link
+>, <link linkend="arctan"
+>arctan</link
+>.</para>
+</sect2>
+
+<sect2 id="boolean-operators">
+<title
+>Booleska operatorer (sann eller falsk)</title>
+<para
+>Medan <link linkend="mathematical-operators"
+>matematiska operatorer</link
+> i huvudsak är till för <link linkend="number"
+>tal</link
+>, är Booleska operatorer till för <link linkend="boolean-value"
+>Booleska värden</link
+> (<userinput
+>sann</userinput
+> och <userinput
+>falsk</userinput
+>). Det finns bara tre booleska operatorer, nämligen: <userinput
+>och</userinput
+><indexterm
+><primary
+>och</primary
+></indexterm
+>, <userinput
+>eller</userinput
+><indexterm
+><primary
+>eller</primary
+></indexterm
+> och <userinput
+>inte</userinput
+><indexterm
+><primary
+>inte</primary
+></indexterm
+>. Följande kod på &kturtle;s språk visar hur de används: <screen>
+$och_1_1 = sann  och sann   # -> sann
+$och_1_0 = sann  och falsk  # -> falsk
+$och_0_1 = falsk och sann   # -> falsk
+$och_0_0 = falsk och falsk  # -> falsk
+
+$eller_1_1 = sann  eller sann    # -> sann
+$eller_1_0 = sann  eller falsk   # -> sann
+$eller_0_1 = falsk eller sann    # -> sann
+$eller_0_0 = falsk eller falsk   # -> falsk
+
+$inte_1 = inte sann   # -> falsk
+$inte_0 = inte falsk  # -> sann
+</screen
+> Genom att använda <link linkend="the-inspector"
+>inspektören</link
+> kan du se värdena, men vi tillhandahåller också resultaten som små kommentarer i slutet av raderna. <userinput
+>och</userinput
+> utvärderas bara som <userinput
+>sann</userinput
+> om båda sidorna är <userinput
+>sann</userinput
+>. <userinput
+>eller</userinput
+> utvärderas som <userinput
+>sann</userinput
+> om någon av sidorna är <userinput
+>sann</userinput
+>. Och <userinput
+>inte</userinput
+> omvandlar <userinput
+>sann</userinput
+> till <userinput
+>falsk</userinput
+>, och <userinput
+>falsk</userinput
+> till <userinput
+>sann</userinput
+>.</para>
+<para
+>Booleska operatorer <glossterm
+>färgläggs</glossterm
+> med rosa.</para>
+
+<sect3 id="boolean-operators-advanced-examples">
+<title
+>Några mer avancerade exempel</title>
+<para
+>Betrakta följande exempel med <userinput
+>och</userinput
+>: <screen
+>$a = 1
+$b = 5
+om (($a &lt; 10) och ($b == 5)) och ($a &lt; $b) {
+  skriv "hej"
+}
+</screen
+> I denna kod på &kturtle;s språk, sammanfogas resultatet av tre <link linkend="comparing-operators"
+>jämförelseoperatorer</link
+> med operatorn <userinput
+>och</userinput
+>. Det betyder att alla tre måste utvärderas till <quote
+>sann</quote
+>, för att <quote
+>hej</quote
+> ska skrivas ut.</para>
+
+<para
+>Ett exempel med <userinput
+>eller</userinput
+>: <screen>
+$n = 1
+om ($n &lt; 10) eller ($n == 2) {
+  skriv "hej"
+}
+</screen
+> I denna kod på &kturtle;s språk, utvärderas vänster sida av <userinput
+>eller</userinput
+> till <quote
+>sann</quote
+>, och höger sida till <quote
+>falsk</quote
+>. Eftersom en av de två sidorna av operatorn <userinput
+>eller</userinput
+> är sann, utvärderas operatorn <userinput
+>eller</userinput
+> till <quote
+>sann</quote
+>. Det betyder att <quote
+>hej</quote
+> skrivs ut.</para>
+
+<para
+>Och till sist ett exempel med <userinput
+>inte</userinput
+> som ändrar <quote
+>sann</quote
+> till <quote
+>falsk</quote
+> och <quote
+>falsk</quote
+> till <quote
+>sann</quote
+>. Ta en titt: <screen
+>$n = 1
+om inte ($n == 3) {
+  skriv "hej"
+} annars {
+  skriv "inte hej ;-)"
+}
+</screen
+></para>
+</sect3>
+</sect2>
+
+<sect2 id="comparing-operators">
+<title
+>Jämförelseoperatorer</title>
+<para
+>Betrakta följande enkla jämförelse: <screen>
+$svar = 10 &gt; 3
+</screen
+> Här jämförs <userinput
+>10</userinput
+> med <userinput
+>3</userinput
+> med operatorn <quote
+>större än</quote
+>. Resultatet av jämförelsen, det <link linkend="boolean-value"
+>Booleska värdet</link
+> <userinput
+>sann</userinput
+> lagras i <link linkend="assignment-of-variables"
+>variabeln</link
+> <userinput
+>$svar</userinput
+>.</para>
+<para
+>Alla <link linkend="number"
+>tal</link
+> och <link linkend="assignment-of-variables"
+>variabler</link
+> (som innehåller tal) kan jämföras med varandra med jämförelseoperatorer.</para>
+<para
+>Här är alla tillgängliga jämförelseopratorer: <table
+> <title
+>Frågetyper</title
+> <tgroup cols="3"
+> <tbody
+> <row
+> <entry
+><userinput
+>$A == $B</userinput
+></entry
+> <entry
+>lika med</entry
+> <entry
+>svaret är <quote
+>sann</quote
+> om <userinput
+>$A</userinput
+> är lika med <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A != $B</userinput
+></entry
+> <entry
+>inte lika med</entry
+> <entry
+>svaret är <quote
+>sann</quote
+> om <userinput
+>$A</userinput
+> inte är lika med <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt; $B</userinput
+></entry
+> <entry
+>större än</entry
+> <entry
+>svaret är <quote
+>sann</quote
+> om <userinput
+>$A</userinput
+> är större än <userinput
+>B</userinput
+></entry
+> </row
+> <row
+><entry
+><userinput
+>$A &lt; $B</userinput
+></entry
+> <entry
+>mindre än</entry
+> <entry
+>svaret är <quote
+>sann</quote
+> om <userinput
+>$A</userinput
+> är mindre än ' <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>A &gt;= B</userinput
+></entry
+> <entry
+>större än eller lika med</entry
+> <entry
+>svaret är <quote
+>sann</quote
+> om <userinput
+>$A</userinput
+> är större än eller lika med <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt;= $B</userinput
+></entry
+> <entry
+>mindre än eller lika med</entry
+> <entry
+>svaret är <quote
+>sann</quote
+> om <userinput
+>$A</userinput
+> är mindre än eller lika med <userinput
+>$B</userinput
+></entry
+> </row
+> </tbody
+> </tgroup
+> </table
+> Observera att <userinput
+>$A</userinput
+> och <userinput
+>$B</userinput
+> måste vara <link linkend="number"
+>tal</link
+> och <link linkend="assignment-of-variables"
+>variabler</link
+> som innehåller tal.</para>
+</sect2>
+
+
+</sect1>
+
+
+
+<sect1 id="commands">
+<title
+>Kommandon</title>
+<para
+>Du talar om för sköldpaddan eller &kturtle; att göra något med kommandon. Vissa kommandon behöver indata, andra ger utdata. I det här avsnittet förklarar vi alla inbyggda kommandon i &kturtle;. Som alternativ, kan du skapa dina egna kommandon genom att använda <link linkend="learn"
+><userinput
+>lär</userinput
+></link
+>. Inbyggda kommandon som vi beskriver här är <glossterm
+>färglagda</glossterm
+> med mörkblått.</para>
+
+<sect2 id="moving-the-turtle">
+<title
+>Flytta sköldpaddan</title>
+<para
+>Det finns flera kommandon för att flytta sköldpaddan över skärmen.</para>
+
+  <variablelist>
+    <anchor id="forward"/>
+    <varlistentry
+> 
+      <term
+>framåt (fr)<indexterm
+><primary
+>framåt (fr)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>framåt X</screen
+><userinput
+>framåt</userinput
+> flyttar sköldpaddan framåt X bildpunkter. När pennan är sänkt lämnar sköldpaddan ett spår. <userinput
+>framåt</userinput
+> kan förkortas <userinput
+>fr</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="backward"/>
+    <varlistentry
+>  
+      <term
+>bakåt (ba)<indexterm
+><primary
+>bakåt (ba)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>bakåt X</screen
+><userinput
+>bakåt</userinput
+> flyttar sköldpaddan bakåt X bildpunkter. När pennan är sänkt lämnar sköldpaddan ett spår. <userinput
+>bakåt</userinput
+> kan förkortas <userinput
+>ba</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnleft"/>
+    <varlistentry
+> 
+      <term
+>svängvänster (sv)<indexterm
+><primary
+>svängvänster (sv)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>svängvänster X</screen
+><userinput
+>svängvänster</userinput
+> talar om för sköldpaddan att svänga X grader åt vänster. <userinput
+>svängvänster</userinput
+> kan förkortas till <userinput
+>sv</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnright"/>
+    <varlistentry
+> 
+      <term
+>svänghöger (sh)<indexterm
+><primary
+>svänghöger (sh)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>svänghöger X</screen
+><userinput
+>svänghöger</userinput
+> talar om för sköldpaddan att svänga X grader åt höger. <userinput
+>svänghöger</userinput
+> kan förkortas till <userinput
+>sh</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="direction"/>
+    <varlistentry
+> 
+      <term
+>riktning (ri)<indexterm
+><primary
+>riktning (ri)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>riktning X</screen
+><userinput
+>riktning</userinput
+> ställer in sköldpaddans riktning till X grader från noll, och är på så sätt inte relativ till sköldpaddans tidigare riktning. <userinput
+>riktning</userinput
+> kan förkortas till <userinput
+>ri</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="getdirection"/>
+    <varlistentry
+> 
+      <term
+>hämtariktning<indexterm
+><primary
+>hämtariktning</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>hämtariktning</screen
+><userinput
+>hämtariktning</userinput
+> returnerar sköldpaddans riktning som ett gradantal räknat från noll, där noll är riktningen då sköldpaddan pekar uppåt.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="center"/>
+    <varlistentry
+> 
+      <term
+>mitten<indexterm
+><primary
+>mitten</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mitten</screen
+><userinput
+>mitten</userinput
+> flyttar sköldpaddan till dukens mitt.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="go"/>
+    <varlistentry
+> 
+      <term
+>gå<indexterm
+><primary
+>gå</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>gå X,Y</screen
+><userinput
+>gå</userinput
+> talar om för sköldpaddan att gå till en viss plats på duken. Den platsen är X <glossterm linkend="pixels"
+>bildpunkter</glossterm
+> från dukens vänsterkant och Y <glossterm linkend="pixels"
+>bildpunkter</glossterm
+> från dukens överkant.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gox"/>
+    <varlistentry
+> 
+      <term
+>gåx<indexterm
+><primary
+>gåx (gx)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>gåx X</screen
+><userinput
+>gåx</userinput
+> gör att sköldpaddan flyttas till X <glossterm linkend="pixels"
+>bildpunkter</glossterm
+> från dukens vänsterkant, medan den bibehåller samma höjd. <userinput
+>gåx</userinput
+> kan förkortas till <userinput
+>gx</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="goy"/>
+    <varlistentry
+> 
+      <term
+>gåy<indexterm
+><primary
+>gåy (gy)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>gåy Y</screen
+><userinput
+>gåy</userinput
+> gör att sköldpaddan flyttas till Y <glossterm linkend="pixels"
+>bildpunkter</glossterm
+> från dukens överkant, medan den behåller samma avstånd från dukens vänsterkant. <userinput
+>gåy</userinput
+> kan förkortas till <userinput
+>gy</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <note
+><para
+>När kommandona <userinput
+>gå</userinput
+>, <userinput
+>gåx</userinput
+>, <userinput
+>gåy</userinput
+> och <userinput
+>mitten</userinput
+> används ritar sköldpaddan inte någon linje oberoende av om pennan är uppe eller nere.</para>
+  </note>
+</sect2>
+
+<sect2 id="locate-the-turtle">
+<title
+>Var är sköldpaddan?</title>
+<para
+>Det finns två kommandon som returnerar sköldpaddans position på skärmen.</para>
+
+  <variablelist>
+    <anchor id="getx"/>
+    <varlistentry
+> 
+      <term
+>hämtax<indexterm
+><primary
+>hämtax</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>hämtax</userinput
+> returnerar antal bildpunkter från dukens vänsterkant till sköldpaddans nuvarande position.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gety"/>
+    <varlistentry
+> 
+      <term
+>hämtay<indexterm
+><primary
+>hämtay</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>hämtay</userinput
+> returnerar antal bildpunkter från dukens överkant till sköldpaddans nuvarande position.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="pen">
+<title
+>Sköldpaddan har en penna</title>
+<para
+>Sköldpaddan har en penna som ritar en linje medan sköldpaddan rör sig. Det finns några få kommandon att styra pennan. I det här avsnittet förklarar vi dessa kommandon.</para>
+  <variablelist>
+    <anchor id="penup"/>
+    <varlistentry
+> 
+      <term
+>höjpenna (hp)<indexterm
+><primary
+>höjpenna (hp)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>höjpenna</screen
+><userinput
+>höjpenna</userinput
+> lyfter pennan från duken. När pennan är <quote
+>höjd</quote
+>, ritas ingen linje när sköldpaddan rör sig. Se också <userinput
+>sänkpenna</userinput
+>. <userinput
+>höjpenna</userinput
+> kan förkortas till <userinput
+>hp</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="pendown"/>
+    <varlistentry
+> 
+      <term
+>sänkpenna (sp)<indexterm
+><primary
+>sänkpenna (sp)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sänkpenna</screen
+><userinput
+>sänkpenna</userinput
+> sänker ner pennan på duken. När pennan är <quote
+>sänkt</quote
+>, ritas en linje när sköldpaddan rör sig. Se också <userinput
+>höjpenna</userinput
+>. <userinput
+>sänkpenna</userinput
+> kan förkortas till <userinput
+>sp</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setpenwidth"/>
+    <varlistentry
+> 
+      <term
+>pennbredd (pb)<indexterm
+><primary
+>pennbredd (pb)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pennbredd X</screen
+><userinput
+>pennbredd</userinput
+> ställer in pennans bredd (linjebredden) till X <glossterm linkend="pixels"
+>bildpunkter</glossterm
+>. <userinput
+>pennbredd</userinput
+> kan förkortas till <userinput
+>pb</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setfgcolor"/>
+    <varlistentry
+> 
+      <term
+>pennfärg (pf)<indexterm
+><primary
+>pennfärg (pf)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pennfärg R,G,B</screen
+><userinput
+>pennfärg</userinput
+> ställer in pennans färg. <userinput
+>pennfärg</userinput
+> behöver en <glossterm linkend="rgb"
+>RGB-kombination</glossterm
+> som indata. <userinput
+>pennfärg</userinput
+> kan förkortas till <userinput
+>pf</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="canvas">
+<title
+>Kommandon för att kontrollera duken</title>
+<para
+>Det finns flera kommandon för att kontrollera duken.</para>
+  <variablelist>
+    <anchor id="resizecanvas"/>
+    <varlistentry>
+      <term
+>dukstorlek (ds)<indexterm
+><primary
+>dukstorlek (ds)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>dukstorlek X,Y</screen
+>Med kommandot <userinput
+>dukstorlek</userinput
+> kan du ställa in dukens storlek. Den har X och Y som indata, där X är den nya dukbredden i <glossterm linkend="pixels"
+>bildpunkter</glossterm
+>, och Y är den nya höjden av duken i <glossterm linkend="pixels"
+>bildpunkter</glossterm
+>. <userinput
+>dukstorlek</userinput
+> kan förkortas till <userinput
+>ds</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setbgcolor"/>
+    <varlistentry
+> 
+      <term
+>dukfärg (df)<indexterm
+><primary
+>dukfärg (df)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>dukfärg R,G,B</screen
+><userinput
+>dukfärg</userinput
+> ställer in dukens färg. <userinput
+>dukfärg</userinput
+> behöver en <glossterm linkend="rgb"
+>RGB-kombination</glossterm
+> som indata. <userinput
+>dukfärg</userinput
+> kan förkortas till <userinput
+>df</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="clean">
+<title
+>Kommandon för att städa</title>
+<para
+>Det finns två kommandon för att städa duken efter du har ställt till den.</para>
+  <variablelist>
+    <anchor id="clear"/>
+    <varlistentry
+> 
+      <term
+>rensa (ren)<indexterm
+><primary
+>rensa (ren)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>rensa</screen
+>Med <userinput
+>rensa</userinput
+> suddar du allt som ritats på duken. Allt annat blir kvar: sköldpaddans position och vinkel, dukfärgen, sköldpaddans synlighet och dukstorleken.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="reset"/>
+    <varlistentry
+> 
+      <term
+>återställ<indexterm
+><primary
+>återställ</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>återställ</screen
+><userinput
+>återställ</userinput
+> städar mycket noggrannare än kommandot <userinput
+>rensa</userinput
+>. Efter kommandot <userinput
+>återställ</userinput
+> är allt som det var precis när du startat &kturtle;. Sköldpaddan är placerad i mitten av skärmen, dukfärgen är vit, sköldpaddan ritar en svart linje på duken och dukstorleken är inställd till 400 x 400 bildpunkter.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="sprites">
+<title
+>Sköldpaddan är en sprite</title>
+<para
+>Först en kort förklaring av vad en sprite är: En sprite är en liten bild som kan flyttas omkring på skärmen, som vi ofta ser i datorspel. Vår sköldpadda är alltså en sprite. För ytterligare information se ordförklaringen av <glossterm linkend="sprites"
+>sprite</glossterm
+>.</para>
+<para
+>Härnäst hittar du en fullständig översikt av alla kommandon som arbetar med en sprite.</para>
+<note
+><para
+>Nuvarande version av &kturtle; stöder ännu inte användning av någon annan sprite än sköldpaddan. I framtida versioner kommer du att kunna ändra sköldpaddan till något som du själv skapat.</para
+></note>
+  <variablelist>
+    <anchor id="spriteshow"/>
+    <varlistentry
+> 
+      <term
+>visa (vi)<indexterm
+><primary
+>visa (vi)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>visa</screen
+><userinput
+>visa</userinput
+> gör sköldpaddan synlig igen efter den har gömts. <userinput
+>visa</userinput
+> kan förkortas till <userinput
+>vi</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="spritehide"/>
+    <varlistentry
+> 
+      <term
+>göm<indexterm
+><primary
+>göm</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>göm</screen
+><userinput
+>göm</userinput
+> gömmer sköldpaddan. Det kan användas om sköldpaddan inte passar in i bilden. <userinput
+>göm</userinput
+> kan förkortas <userinput
+>gö</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="writing">
+<title
+>Kan sköldpaddan skriva?</title>
+<para
+>Svaret är <quote
+>ja</quote
+>. Sköldpaddan kan skriva. Den skriver nästan vad som helst som du talar om för den att skriva.</para>
+  <variablelist>
+    <anchor id="print"/>
+    <varlistentry
+> 
+      <term
+>skriv<indexterm
+><primary
+>skriv</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>skriv X</screen
+>Kommandot <userinput
+>skriv</userinput
+> används för att tala om för sköldpaddan att skriva någonting på duken. <userinput
+>skriv</userinput
+> behöver tal och strängar som indata. Du kan använda <userinput
+>skriv</userinput
+> för att skriva ut olika tal och strängar med symbolen '+'. Här är ett litet exempel: <screen
+>$år = 2003
+$upphovsman = "Cies"
+skriv $upphovsman + " startade projektet Kturtle " + $år + " och gillar ännu att jobba med det!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="fontsize"/>
+    <varlistentry
+> 
+      <term
+>teckenstorlek<indexterm
+><primary
+>teckenstorlek</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>teckenstorlek X</screen
+><userinput
+>teckenstorlek</userinput
+> anger storlek på teckensnittet som används av <userinput
+>skriv</userinput
+>. <userinput
+>teckenstorlek</userinput
+> behöver indata som ska vara ett tal. Storleken ställs in i <glossterm linkend="pixels"
+>bildpunkter</glossterm
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="math-commands">
+<title
+>Matematiska kommandon</title>
+<para
+>Följande kommandon är &kturtle;s mer avancerade matematiska kommandon.</para>
+  <variablelist>
+    <anchor id="round"/>
+    <varlistentry>
+      <term
+>avrunda<indexterm
+><primary
+>avrunda</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>avrunda(x)</screen
+><userinput
+>avrunda</userinput
+> det givna talet till närmaste heltal. <screen>
+skriv avrunda(10,8)
+framåt 20
+skriv avrunda(10,3)
+</screen
+> Sköldpaddan skriver ut talen 11 och 10 med den här koden.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="random"/>
+    <varlistentry
+> 
+      <term
+>slump (slu)<indexterm
+><primary
+>slump (slu)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>slump X,Y</screen
+><userinput
+>slump</userinput
+> är ett kommando som kräver indata och ger utdata. Två tal krävs som indata, det första (X) anger minimal utdata och det andra (Y) anger maximal. Utdata är ett slumpmässigt valt tal som är större än eller lika med minimum och mindre än eller lika med maximum. Här är ett litet exempel: <screen>
+upprepa 500 {
+  $x = slump 1,20
+  framåt $x
+  svängvänster 10 - $x
+}
+</screen
+> Med kommandot <userinput
+>slump</userinput
+> kan du lägga till en viss mängd kaos i programmet.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="mod"/>
+    <varlistentry
+> 
+      <term
+>mod<indexterm
+><primary
+>mod</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mod X,Y</screen
+>Kommandot <userinput
+>mod</userinput
+> returnerar resten vid division av det första talet med det andra.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sqrt"/>
+    <varlistentry
+> 
+      <term
+>kvadratrot<indexterm
+><primary
+>kvadratrot</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>kvadratrot X</screen
+>Kommandot <userinput
+>kvadratrot</userinput
+> används för att beräkna kvadratroten av ett tal, X.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+<!--
+  <variablelist>
+    <anchor id="exp"/>
+    <varlistentry
+> 
+      <term
+>exp<indexterm
+><primary
+>exp</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+-->
+  <variablelist>
+    <anchor id="pi"/>
+    <varlistentry
+> 
+      <term
+>pi<indexterm
+><primary
+>pi</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pi</screen
+>Kommandot returnerar konstanten π (pi), <userinput
+>3.14159</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sin"/>
+    <anchor id="cos"/>
+    <anchor id="tan"/>
+    <varlistentry>
+      <term
+>sin<indexterm
+><primary
+>sin</primary
+></indexterm
+>, cos<indexterm
+><primary
+>cos</primary
+></indexterm
+>, tan<indexterm
+><primary
+>tan</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>sin X
+cos X
+tan X
+</screen
+>De här tre kommandona representerar de världsberömda trigonometriska funktionerna <userinput
+>sin</userinput
+>, <userinput
+>cos</userinput
+> och <userinput
+>tan</userinput
+>. Indata till kommandona, X, är ett <link linkend="number"
+>tal</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="arcsin"/>
+    <anchor id="arccos"/>
+    <anchor id="arctan"/>
+    <varlistentry>
+      <term
+>arcsin<indexterm
+><primary
+>arcsin</primary
+></indexterm
+>, arccos<indexterm
+><primary
+>arccos</primary
+></indexterm
+>, arctan<indexterm
+><primary
+>arctan</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>arcsin X
+arccos X
+arctan X
+</screen
+>De här kommandona är de inversa funktionerna för <userinput
+>sin</userinput
+>, <userinput
+>cos</userinput
+> och <userinput
+>tan</userinput
+>. Indata till kommandona, X, är ett <link linkend="number"
+>tal</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="dialogs">
+<title
+>Inmatning och återmatning via dialogrutor</title>
+<para
+>En dialogruta är ett litet fönster som dyker upp och tillhandahåller återmatning eller frågar efter inmatning. &kturtle; har två kommandon för dialogrutor, närmare bestämt <userinput
+>meddelande</userinput
+> och <userinput
+>fråga</userinput
+>.</para>
+  <variablelist>
+    <anchor id="message"/>
+    <varlistentry
+> 
+      <term
+>meddelande<indexterm
+><primary
+>meddelande</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>meddelande X</screen
+>Kommandot <userinput
+>meddelande</userinput
+> har en <link linkend="string"
+>sträng</link
+> som indata. Det visar en dialogruta som innehåller texten från <link linkend="string"
+>strängen</link
+>. <screen
+>skriv "Cies startade Kturtle 2003 och gillar fortfarande att jobba med det!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="ask"/>
+    <varlistentry
+> 
+      <term
+>fråga<indexterm
+><primary
+>fråga</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>fråga X</screen
+>Kommandot <userinput
+>fråga</userinput
+> har en <link linkend="string"
+>sträng</link
+> som indata. Det visar strängen i en dialogruta (på likande sätt som <link linkend="message"
+>meddelande</link
+>), tillsammans med ett inmatningsfält. Efter användaren har skrivit in ett  <link linkend="number"
+>tal</link
+> eller en <link linkend="string"
+>sträng</link
+>, kan resultatet lagras i en <link linkend="assignment-of-variables"
+>variabel</link
+> eller skickas som ett argument till ett <link linkend="commands"
+>kommando</link
+>. Till exempel <screen>
+$in = fråga "Hur gammal är du?"
+$ut = 2003 - $in
+skriv "År 2003 var du " + $ut + " år gammal vid något tillfälle."
+</screen
+> Om användaren avbryter inmatningsdialogrutan, eller inte skriver in någonting alls, blir <link linkend="assignment-of-variables"
+>variabeln</link
+> tom.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="assignment-of-variables">
+<title
+>Tilldelning av variabler</title>
+<para
+>Först tar vi en titt på variabler, därefter tittar vi på tilldelning av värden till variablerna. </para>
+
+<para
+>Variabler är ord som börjar med <quote
+>$</quote
+>, i <link linkend="the-editor"
+>editorn</link
+> <glossterm
+>färgläggs</glossterm
+> de med violett.</para>
+
+<para
+>Variabler kan använda vilket <link linkend="number"
+>tal</link
+>, vilken <link linkend="string"
+>sträng</link
+> eller vilket <link linkend="boolean-value"
+>Booleskt värde (sann eller falsk)</link
+> som helst. Genom att använda en tilldelning, <userinput
+>=</userinput
+>, får en variabel sitt innehåll. Den behåller det innehållet till programmet har kört klart, eller till variabeln tilldelas någonting annat.</para>
+
+<para
+>När variabler väl har tilldelats någonting, kan de användas precis som om de vore innehållet. Titta exempelvis på följande kod i &kturtle;s språk: <screen>
+$x = 10
+$x = $x / 3
+skriv $x
+</screen
+> Först tilldelas variabeln <userinput
+>$x</userinput
+> värdet <userinput
+>10</userinput
+>. Därefter tilldelas <userinput
+>$x</userinput
+> värdet av sig själv dividerat med <userinput
+>3</userinput
+>. Det betyder alltså att <userinput
+>$x</userinput
+> tilldelas resultatet av <userinput
+>10 / 3</userinput
+>. Till sist skrivs <userinput
+>$x</userinput
+> ut. På den andra och tredje raden ser du att <userinput
+>$x</userinput
+> används som sitt innehåll.</para>
+
+<para
+>Variabler måste tilldelas för att kunna användas. Ett exempel: <screen>
+skriv $n
+</screen
+> Ger ett felmeddelande.</para>
+
+<para
+>Betrakta följande kod på &kturtle;s språk: <screen>
+$a = 2004
+$b = 25
+
+# nästa kommando skriver "2029"
+skriv $a + $b
+bakåt 30
+# nästa kommando skriver "2004 plus 25 är lika med 2029"
+skriv $a + " plus " + $b + " är lika med " + ($a + $b)
+</screen
+> På de första två raderna sätts variablerna <userinput
+>$a</userinput
+> och <userinput
+>$b</userinput
+> till 2004 och 25. Därefter följer två <userinput
+>skrivkommandon</userinput
+> med <userinput
+>bakåt 30</userinput
+> mellan. Kommentarerna innan <userinput
+>skrivkommandona</userinput
+> förklarar vad de gör. Som du ser kan variabler användas precis som det de innehåller, och man kan kan använda dem med alla sorters <link linkend="operators"
+>operatorer</link
+> eller använda dem som indata när <link linkend="commands"
+>kommandon</link
+> utförs.</para>
+
+<para
+>Ett exempel till: <screen>
+$namn = fråga "Vad heter du?"
+skriv "Hej " + $namn + "! Lycka till med att lära dig programmeringens konst ..."
+</screen
+> Ganska enkelt. Återigen kan du se att variabeln <userinput
+>$namn</userinput
+> behandlas precis som en sträng.</para>
+
+<para
+>När variabler används är <link linkend="the-inspector"
+>inspektören</link
+> till stor hjälp. Den visar innehållet i alla variabler som för närvarande används.</para>
+</sect1>
+
+
+
+<sect1 id="controlling-execution">
+<title
+>Styra körning</title>
+<para
+>Styrning av körningen gör det möjligt för dig att styra körningen, precis som namnet anger.</para>
+<para
+>Kommandon för att styra körningen <glossterm
+>färgläggs</glossterm
+> med mörkgrönt och fetstil. Hakparenteserna som oftast används tillsammans med kommandon för att styra körningen <glossterm
+>färgläggs</glossterm
+> med svart.</para>
+
+<sect2 id="wait">
+<title
+>Låta sköldpaddan vänta</title>
+<para
+>Om du försökt programmera en del med &kturtle; kanske du märker att sköldpaddan kan vara mycket snabb när den ritar. Det här kommandot gör att sköldpaddan väntar en angiven tid.</para>
+  <variablelist>
+    <varlistentry>
+      <term
+>vänta<indexterm
+><primary
+>vänta</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>vänta X</screen
+><userinput
+>vänta</userinput
+> låter sköldpaddan vänta X sekunder. <screen>
+upprepa 36 {
+  framåt 5
+  svänghöger 10
+  vänta 0.5
+}
+</screen
+> Den här koden ritar en cirkel, men sköldpaddan väntar en halv sekund mellan varje steg. Det ger intrycket av en sköldpadda som rör sig långsamt.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="if">
+<title
+>Kör <quote
+>om</quote
+></title>
+  <variablelist>
+    <varlistentry>
+      <term
+>om<indexterm
+><primary
+>om</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>om <link linkend="boolean-value"
+>Boolean</link
+> { ... }</screen
+>Koden som placeras mellan krullparenteserna utförs bara <userinput
+>om</userinput
+> det <link linkend="boolean-value"
+>Booleska värdet</link
+> utvärderas till <quote
+>sann</quote
+>. <screen>
+$x = 6
+om $x &gt; 5 {
+  skriv "$x är större än fem!"
+}
+</screen
+> På första raden tilldelas <userinput
+>$x</userinput
+> värdet 6. På den andra raden används en <link linkend="comparing-operators"
+>jämförelseoperator</link
+> för att utvärdera <userinput
+>$x &gt; 5</userinput
+>. Eftersom det utvärderas till <quote
+>sann</quote
+>, 6 är större än 5, tillåter kommandot för styrning av körningen <userinput
+>om</userinput
+> att koden mellan krullparenteserna utförs.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="else">
+<title
+>Om inte, med andra ord <quote
+>annars</quote
+></title>
+  <variablelist>
+    <varlistentry>
+      <term
+>annars<indexterm
+><primary
+>annars</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>om <link linkend="boolean-value"
+>Boolean</link
+> { ... } annars { ... }</screen
+><userinput
+>annars</userinput
+> kan användas som tillägg till kommandot för styrning av körningen <link linkend="if"
+><userinput
+>om</userinput
+></link
+>. Koden mellan krullparenteserna efter <userinput
+>annars</userinput
+> utförs bara om det <link linkend="boolean-value"
+>Booleska värdet</link
+> utvärderas till <quote
+>falsk</quote
+>. <screen>
+$x = 4
+om $x &gt; 5 {
+  skriv "x är större än fem!"
+} annars {
+  skriv "x är mindre än sex!"
+}
+</screen
+> <link linkend="comparing-operators"
+>Jämförelseoperatorn</link
+> utvärderar uttrycket <userinput
+>$x &gt; 5</userinput
+>. Eftersom 4 inte är större än 5, utvärderas uttrycket till <quote
+>falsk</quote
+>. Det betyder att koden mellan krullparenteserna efter <userinput
+>annars</userinput
+> utförs.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="while">
+<title
+>En <quote
+>medan</quote
+> snurra</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>medan<indexterm
+><primary
+>medan</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>medan <link linkend="boolean-value"
+>Boolean</link
+> { ... }</screen
+>Kommandot för styrning av körningen <userinput
+>medan</userinput
+> liknar <link linkend="if"
+><userinput
+>om</userinput
+></link
+> en hel del. Skillnaden är att <userinput
+>medan</userinput
+> fortsätter upprepa (snurra i) koden mellan krullparenteserna, ända till det <link linkend="boolean-value"
+>Booleska värdet</link
+> utvärderas till <quote
+>falsk</quote
+>. <screen>
+$x = 1
+medan $x &lt; 5 {
+  framåt 10
+  vänta 1
+  $x = $x + 1
+}
+</screen
+> På den första raden sätts <userinput
+>x</userinput
+> till 1. På den andra raden utvärderas <userinput
+>x &lt; 5</userinput
+>. Eftersom svaret på frågan är <quote
+>sann</quote
+> utför kommandot <userinput
+>medan</userinput
+> för styrning av körningen koden mellan krullparenteserna, ända till <userinput
+>$x &lt; 5</userinput
+> utvärderas till <quote
+>falsk</quote
+>. I det här fallet utförs koden mellan hakparenteserna fyra gånger, eftersom varje gång den femte raden utförs ökas <userinput
+>x</userinput
+> med ett.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="repeat">
+<title
+>En <quote
+>upprepa</quote
+> snurra</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>upprepa<indexterm
+><primary
+>upprepa</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>upprepa <link linkend="number"
+>tal</link
+> { ... }</screen
+>Kommandot för att styra körningen <userinput
+>upprepa</userinput
+> är mycket likt <link linkend="while"
+><userinput
+>medan</userinput
+></link
+>. Skillnaden är att <userinput
+>upprepa</userinput
+> fortsätter upprepa (snurra i) koden mellan krullparenteserna lika många gånger som det angivna talet.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="for">
+<title
+>En <quote
+>för</quote
+> snurra, en räknande snurra</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>för<indexterm
+><primary
+>för</primary
+></indexterm
+><indexterm
+><primary
+>till</primary
+></indexterm
+><indexterm
+><primary
+>steg</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>för <link linkend="assignment-of-variables"
+>variabel</link
+> = <link linkend="number"
+>tal</link
+> till <link linkend="number"
+>tal</link
+> { ... }</screen
+>Snurran <userinput
+>för</userinput
+> är en <quote
+>räknande snurra</quote
+>, dvs. den håller räkning åt dig. <screen>
+för $x = 1 till 10 {
+  skriv $x * 7
+  framåt 15
+}
+</screen
+> Varje gång koden mellan krullparenteserna utförs ökas <userinput
+>$x</userinput
+> med ett, till <userinput
+>$x</userinput
+> når värdet 10. Koden mellan krullparenteserna skriver ut <userinput
+>$x</userinput
+> multiplicerat med 7. När programmet har kört färdigt, ser du sjuans multiplikationstabell på duken. </para>
+     <para
+>Den förvalda stegstorleken i en snurra är 1, du kan använda ett annat värde med: <screen
+>för <link linkend="assignment-of-variables"
+>variabel</link
+> = <link linkend="number"
+>tal</link
+> till <link linkend="number"
+>tal</link
+> steg <link linkend="number"
+>tal</link
+> { ... }</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="break">
+<title
+>Lämna en snurra</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>avbryt<indexterm
+><primary
+>avbryt</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>avbryt</screen
+>Avbryter omedelbart nuvarande snurra och överför kontroll till satsen som kommer direkt efter snurran.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="exit">
+<title
+>Stoppa körning av programmet</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>avsluta<indexterm
+><primary
+>avsluta</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>avsluta</screen
+>Avslutar körningen av programmet.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="assert">
+<title
+>Kontrollera påståenden under körning</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>påstå<indexterm
+><primary
+>påstå</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>påstå <link linkend="boolean-value"
+>Boolean</link
+></screen
+>Kan användas för att resonera om programmets eller indatas riktighet. <screen
+>$in = fråga "När fyller du år?"
+# året måste vara positivt
+påstå $in 
+> 0
+</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+</sect1>
+
+
+<sect1 id="learn">
+
+<title
+>Skapa dina egna kommandon med <quote
+>lär</quote
+></title>
+<para
+><userinput
+>lär</userinput
+><indexterm
+><primary
+>lär</primary
+></indexterm
+> är speciellt eftersom det används för att skapa dina egna kommandon. Kommandot som du skapar kan ha <glossterm linkend="input-output"
+>indata</glossterm
+> och returnera <glossterm linkend="input-output"
+>utdata</glossterm
+>. Låt oss ta en titt på hur ett nytt kommando skapas: <screen>
+lär cirkel $x {
+  upprepa 36 {
+    framåt $x
+    svängvänster 10
+  }
+}
+</screen
+> Det nya kommandot kallas <userinput
+>cirkel</userinput
+>. <userinput
+>cirkel</userinput
+> har <glossterm linkend="input-output"
+>indata</glossterm
+>, som anger cirkelns storlek. <userinput
+>cirkel</userinput
+> returnerar ingen <glossterm linkend="input-output"
+>utdata</glossterm
+>. Kommandot <userinput
+>cirkel</userinput
+> kan nu användas som ett vanligt kommando i resten av koden. Se följande exempel: <screen
+>lär cirkel $x {
+  upprepa 36 {
+    framåt $x 
+    svängvänster 10 
+  }
+}
+
+gå 200,200 
+cirkel 20
+
+gå 300,200 
+cirkel 40  
+</screen>
+</para>
+<para
+>I nästa exempel skapas ett kommando som returnerar ett värde med <indexterm
+><primary
+>returnera</primary
+></indexterm
+>. <screen>
+lär fakultet $x {
+  $r = 1
+  för$i = 1 till $x {
+    $r = $n * $i
+  }
+  returnera $r
+}
+
+skriv fakultet 5
+</screen
+> I det här exemplet skapas ett nytt kommando som heter <userinput
+>fakultet</userinput
+>. Om indata till kommandot är <userinput
+>5</userinput
+> är utdata <userinput
+>5*4*3*2*1</userinput
+>. Genom att använda <userinput
+>returnera</userinput
+> anges <glossterm linkend="input-output"
+>utdata</glossterm
+> och körningen returnerar.</para>
+<para
+>Kommandon kan ha mer än ett <glossterm linkend="input-output"
+>indatavärde</glossterm
+>. I nästa exempel, skapas ett kommando som ritar en fyrkant: <screen>
+lär fyrkant $x, $y {
+  framåt $y
+  svänghöger 90
+  framåt $x
+  svänghöger 90
+  framåt $y
+  svänghöger 90
+  framåt $x
+  svänghöger 90
+}
+</screen
+> Nu kan du köra <userinput
+>fyrkant 50, 100</userinput
+> så ritar sköldpaddan en rektangel på duken. </para>
+  
+</sect1>
+
+</chapter>

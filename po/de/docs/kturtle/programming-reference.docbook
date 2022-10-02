@@ -1,0 +1,2201 @@
+<chapter id="reference">
+<title
+>Programmreferenz für &turtlescript;</title>
+<para
+>Dies ist die Referenz der in &kturtle; verwendeten Sprache &turtlescript;. Im ersten Abschnitt dieses Kapitels werden einige Grundzüge der <link linkend="grammar"
+>grammatischen Regeln</link
+> des Sprache &turtlescript; vorgestellt. Der zweite Abschnitt behandelt ausschließlich <link linkend="mathematical-operators"
+>mathematische Operatoren</link
+>, <link linkend="boolean-operators"
+>boolesche Operatoren  (wahr/falsch) </link
+> und <link linkend="comparing-operators"
+>Vergleichs-Operators</link
+>.Im dritten Abschnitt finden Sie eine große Liste aller <link linkend="commands"
+>Befehle</link
+>, die einzeln erklärt werden. Abschnitt vier behandelt die <link linkend="assignment-of-variables"
+>Zuweisung</link
+> von Werten and <link linkend="assignment-of-variables"
+>Variablen</link
+>. Zum Schluss wird im Abschnitt fünf die Steuerung des Programms mit <link linkend="controlling-execution"
+>Kontrollanweisungen</link
+> und dann im Abschnitt sechs erläutert, wie eigene Befehle oder Funktionen mit <link linkend="learn"
+><userinput
+>lerne</userinput
+></link
+> erzeugt werden.</para>
+
+<sect1 id="grammar">
+<title
+>Die grammatischen Regeln der Sprache &turtlescript;</title>
+<para
+>Wie in jeder Sprache gibt es in &turtlescript; verschiedene Arten von Wörtern und Symbolen. Englisch zum Beispiel unterscheidet zwischen Verben wie <quote
+>gehen</quote
+> oder <quote
+>singen</quote
+> und Substantiven wie <quote
+>Schwester</quote
+> oder <quote
+>Haus</quote
+>. Diese verschiedene Arten von Wörtern und Symbolen werden für verschiedene Zwecke benutzt. &turtlescript; ist eine Programmiersprache, die dazu benutzt wird, &kturtle; Anweisungen zu geben.</para>
+<para
+>In diesem Abschnitt werden einige der verschiedenen Arten von Wörtern und Symbolen in &turtlescript; kurz erklärt. In &turtlescript; gibt es <link linkend="comment"
+>Kommentare</link
+>, <link linkend="command"
+>Befehle</link
+> und die drei verschiedenen Arten von echten Werten: <link linkend="number"
+>Zahlen</link
+>, <link linkend="string"
+>Zeichenfolgen</link
+> und <link linkend="boolean-value"
+>boolesche Werte (wahr/falsch)</link
+>.</para>
+
+
+<sect2 id="comment">
+<title
+>Kommentare</title>
+<para
+>Ein Programm besteht aus Befehlen, die beim Ablauf ausgeführt werden, und sogenannten Kommentaren. Kommentare werden nicht ausgeführt, &kturtle; ignoriert sie beim Starten des Programms. Kommentare werden benutzt, damit andere Programmierer den Quelltext besser verstehen. Jeder Text nach einem <userinput
+>#</userinput
+>-Zeichen wird in &turtlescript; als Kommentar betrachtet. Dieses kleine Programm zum Beispiel tut nichts: <screen>
+# dieses kleine Programm tut nichts, das ist nur ein Kommentar
+</screen
+> Das Programm ist natürlich nutzlos, erklärt aber gut die Wirkung von Kommentaren.</para>
+<para
+>Kommentare sind sehr hilfreich, wenn das Programm komplizierter und umfangreicher wird. Außerdem erleichtern sie anderen Programmierern, den Quelltext zu verstehen. Im folgenden Programm werden Kommentare zusammen mit dem Befehl <link linkend="print"
+>drucke</link
+> verwendet: <screen>
+# Cies Breijs hat dieses Programm geschrieben.
+drucke "dieser Text wird auf der Zeichenfläche ausgedruckt"
+# die vorige Zeile ist kein Kommentar, aber die Folgende:
+# drucke "dieser Text wird nicht ausgedruckt"
+</screen
+> Die erste Zeile beschreibt das Programm. Die zweite Zeile wird von &kturtle; ausgeführt, es wird <userinput
+>dieser Text wird auf der Zeichenfläche ausgedruckt</userinput
+> geschrieben. Die dritte Zeile ist ein Kommentar. In der vierten Zeile steht ein Kommentar, der einen  Quelltext in &turtlescript; enthält. Wird das Symbol <userinput
+>#</userinput
+> in der vierten Zeile entfernt, wird der Druckbefehl von &kturtle; ausgeführt. Programmierer bezeichnen das als <quote
+>auskommentieren</quote
+>.</para>
+<para
+>Kommentarzeilen werden im <link linkend="the-editor"
+>Quelltexteditor</link
+> hellgrau <glossterm
+>hervorgehoben</glossterm
+>.</para>
+</sect2>
+
+<sect2 id="command">
+<title
+>Befehle</title>
+<para
+>Mit Befehlen geben Sie der Schildkröte oder &kturtle; Anweisungen, was sie tun soll. Einige Befehle brauchen eine Eingabe, andere geben einen Wert zurück. <screen>
+# der Befehl vorwärts braucht eine Eingabe, in diesem Fall die Zahl 100:
+vorwärts 100
+</screen
+> Die erste Zeile ist ein <link linkend="comment"
+>Kommentar</link
+>. Die zweite Zeile enthält den Befehl <userinput
+>vorwärts</userinput
+> und die <link linkend="number"
+>Zahl</link
+> <userinput
+>100</userinput
+>. Die Zahl ist nicht Bestandteil des Befehls, sie ist die „Eingabe“ für den Befehl. Einige Befehle wie &eg; <userinput
+>gehe</userinput
+> brauchen mehr als einen Eingabewert. Mehrere Werte müssen durch Komma (<userinput
+>,</userinput
+>) getrennt werden.</para>
+<para
+>Einige Befehle wie &eg; <userinput
+>gehe</userinput
+> brauchen mehr als einen Eingabewert. Mehrere Werte müssen durch Komma (<userinput
+>,</userinput
+>) getrennt werden.</para>
+<para
+>Eine ausführliche Übersicht aller von &kturtle; unterstützten Befehle finden Sie <link linkend="commands"
+>hier</link
+>. Die eingebauten Befehle werden dunkelblau <glossterm
+>hervorgehoben</glossterm
+>.</para>
+</sect2>
+
+<sect2 id="number">
+<title
+>Zahlen</title>
+<para
+>Wahrscheinlich wissen Sie schon ziemlich viel über Zahlen. In &kturtle; werden Zahlen etwa so wie in der Sprache oder in der Mathematik verwendet.</para>
+<para
+>Es gibt die so genannten natürlichen Zahlen: <userinput
+>0</userinput
+>, <userinput
+>1</userinput
+>, <userinput
+>2</userinput
+>, <userinput
+>3</userinput
+>, <userinput
+>4</userinput
+>, <userinput
+>5</userinput
+> &etc; Die negativen Zahlen: <userinput
+>-1</userinput
+>, <userinput
+>-2</userinput
+>, <userinput
+>-3</userinput
+> &etc; Und die Zahlen mit Dezimalstellen oder reelle Zahlen, zum Beispiel: <userinput
+>0.1</userinput
+>, <userinput
+>3.14</userinput
+>, <userinput
+>33.3333</userinput
+>, <userinput
+>-5.05</userinput
+>, <userinput
+>-1.0</userinput
+>. Der Punkt (<userinput
+>.</userinput
+>) wird als Dezimaltrennzeichen benutzt. </para>
+<para
+>Zahlen können in <link linkend="mathematical-operators"
+>mathematischen Berechnungen</link
+> und <link linkend="comparing-operators"
+>Vergleichen</link
+> benutzt werden. Sie können auch in <link linkend="assignment-of-variables"
+>Variablen</link
+> gespeichert werden. Zahlen werden in dunklem Rot <glossterm
+>hervorgehoben</glossterm
+>.</para>
+</sect2>
+
+<!-- constants like pi? -->
+
+<sect2 id="string">
+<title
+>Zeichenfolgen</title>
+<para
+>Zuerst ein Beispiel:<screen>
+drucke "Hallo, ich bin eine Zeichenfolge."
+</screen
+> In diesem Beispiel ist <userinput
+>drucke</userinput
+> ein Befehl und <userinput
+>"Hallo, ich bin eine Zeichenfolge."
+</userinput
+> eine Zeichenfolge. Zeichenfolgen haben am Anfang und am Ende das Zeichen <userinput
+>"</userinput
+>, daran erkennt sie &kturtle;.</para>
+<para
+>Zeichenfolgen können in <link linkend="assignment-of-variables"
+>Variablen</link
+> abgelegt werden, genauso wie <link linkend="number"
+>Zahlen</link
+>. Im Gegensatz zu Zahlen können Zeichenfolgen nicht in <link linkend="mathematical-operators"
+>mathematischen Berechnungen</link
+> und <link linkend="comparing-operators"
+>Vergleichen</link
+> benutzt werden. Zeichenfolgen werden in Rot <glossterm
+>hervorgehoben</glossterm
+>.</para>
+</sect2>
+
+<sect2 id="boolean-value">
+<title
+>Boolesche Werte (wahr/falsch)</title>
+<para
+>Es gibt nur zwei Boolesche Werte: <userinput
+>wahr</userinput
+><indexterm
+><primary
+>wahr</primary
+></indexterm
+> und <userinput
+>falsch</userinput
+><indexterm
+><primary
+>falsch</primary
+></indexterm
+>. Diese Werte werden auch <quote
+><userinput
+>Ein</userinput
+></quote
+> und <quote
+><userinput
+>Aus</userinput
+></quote
+>, <quote
+><userinput
+>Ja</userinput
+></quote
+> und <quote
+><userinput
+>Nein</userinput
+></quote
+>, <quote
+><userinput
+>Eins</userinput
+></quote
+> und <quote
+><userinput
+>Null</userinput
+></quote
+>genannt. Aber in &turtlescript; heißen Sie immer <userinput
+>wahr</userinput
+> und <userinput
+>falsch</userinput
+>. Betrachten Sie diesen Quelltext in &turtlescript;: <screen>
+$a = wahr
+</screen
+> Im <link linkend="the-inspector"
+>Kontrollfenster</link
+> können Sie sehen, dass die <link linkend="assignment-of-variables"
+>Variable</link
+> <userinput
+>$a</userinput
+> den Wert <userinput
+>wahr</userinput
+> hat und ein Boolescher Wert ist.</para>
+<para
+>Boolesche Werte sind häufig das Ergebnis eines <link linkend="comparing-operators"
+>Vergleichs</link
+>, wie der folgende Quelltext in &turtlescript; zeigt: <screen>
+$antwort = 10 &gt; 3
+</screen
+> Die <link linkend="assignment-of-variables"
+>Variable</link
+> <userinput
+>$antwort</userinput
+> erhält den Wert <userinput
+>wahr</userinput
+>, weil <userinput
+>10</userinput
+> größer als <userinput
+>3</userinput
+> ist.</para>
+<para
+>Boolesche Werte, <userinput
+>wahr</userinput
+> und <userinput
+>falsch</userinput
+>, werden dunkelrot <glossterm
+>hervorgehoben</glossterm
+>.</para>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="operators">
+<title
+>Mathematische, Boolesche und Vergleichs-Operatoren</title>
+<para
+>Der Titel dieses Abschnitts mag sehr kompliziert klingen, aber das täuscht.</para>
+
+<sect2 id="mathematical-operators">
+<title
+>Mathematische Operatoren</title>
+<para
+>Dies sind alle grundlegenden mathematischen Symbole: addieren (<userinput
+>+</userinput
+>), subtrahieren (<userinput
+>-</userinput
+>), multiplizieren (<userinput
+>*</userinput
+>), dividieren (<userinput
+>/</userinput
+>) und die Potenz (<userinput
+>^</userinput
+>).</para>
+
+<para
+>Ein kleines Beispiel der mathematischen Operatoren, die Sie in &turtlescript; verwenden können: <screen>
+$plus     = 1 + 1
+$minus    = 20 - 5
+$multipiziert = 15 * 2
+$geteilt   = 30 / 30
+$potenz    = 2 ^ 2
+</screen
+> Die Werte, die sich aus diesen mathematischen Operationen ergeben, werden den verschiedenen <link linkend="assignment-of-variables"
+>Variablen</link
+> <link linkend="assignment-of-variables"
+>zugewiesen</link
+>. Im <link linkend="the-inspector"
+>Kontrollfenster</link
+> werden die Variablen und ihre Werte angezeigt.</para>
+<para
+>Für eine einfache Berechnung geben Sie zum Beispiel folgendes ein: <screen
+>drucke 2010-12
+</screen
+></para>
+<para
+>Nun ein Beispiel mit Klammern: <screen>
+drucke ( ( 20 - 5 ) * 2 / 30 ) + 1
+</screen
+> Der Ausdruck in Klammern wird zuerst berechnet. In diesen Beispiel wird also 20-5 berechnet, dann mit 2 multipliziert, durch 30 dividiert und dann 1 addiert (das ergibt 2). Klammern können auch in anderen Fällen benutzt werden.</para>
+<para
+>&kturtle; hat noch erweiterte mathematische Funtionen in der Form von Befehlen. Schauen Sie sich die folgenden Befehle an, dabei handelt es sich um fortgeschrittene mathematische Operationen: <link linkend="round"
+>rund</link
+>, <link linkend="random"
+>zufall</link
+>, <link linkend="sqrt"
+>wurzel</link
+> , <link linkend="pi"
+>pi</link
+>, <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+>, <link linkend="tan"
+>tan</link
+>, <link linkend="arcsin"
+>arcsin</link
+>, <link linkend="arccos"
+>arccos</link
+>, <link linkend="arctan"
+>arctan</link
+>.</para>
+</sect2>
+
+<sect2 id="boolean-operators">
+<title
+>Boolesche Operatoren (wahr/falsch)</title>
+<para
+>Während <link linkend="mathematical-operators"
+>mathematische Operatoren</link
+> <link linkend="number"
+>Zahlen</link
+> verarbeiten,  behandeln boolesche Operatoren die <link linkend="boolean-value"
+>boolesche Werte</link
+> <userinput
+>wahr</userinput
+> und <userinput
+>falsch</userinput
+>. Es gibt nur drei boolesche Operatoren, nämlich: <userinput
+>und</userinput
+><indexterm
+><primary
+>und</primary
+></indexterm
+>, <userinput
+>oder</userinput
+><indexterm
+><primary
+>oder</primary
+></indexterm
+> und <userinput
+>nicht</userinput
+><indexterm
+><primary
+>nicht</primary
+></indexterm
+>. Im folgenden Quelltext von &turtlescript; wird gezeigt, wie sie verwendet werden:<screen>
+$und_1_1 = wahr und falsch    # -> wahr
+$und_1_0 = wahr und falsch   # -> false
+$und_0_1 = falsch und wahr   # -> false
+$und_0_0 = falsch und falsch  # -> false
+
+$oder_1_1 = wahr oder wahr    # -> wahr
+$oder_1_0 = wahr oder falsch   # -> wahr
+$oder_0_1 = falsch oder wahr   # -> wahr
+$oder_0_0 = falsch oder falsch  # -> falsch
+
+$nicht_1 = nicht wahr   # -> falsch
+$nicht_0 = nicht falsch  # -> wahr
+</screen
+> Im <link linkend="the-inspector"
+>Kontrollfenster</link
+> werden die Ergebnisse dargestellt, sie sind aber auch als Kommentar am Ende der Zeilen angefügt. <userinput
+>und</userinput
+> ergibt nur <userinput
+>wahr</userinput
+>, wenn beide Seiten <userinput
+>wahr</userinput
+> sind. <userinput
+>oder</userinput
+> ergibt <userinput
+>wahr</userinput
+>, wenn mindestens eine der beiden Seiten <userinput
+>true</userinput
+> ist. Und <userinput
+>nicht</userinput
+> ändert ein <userinput
+>wahr</userinput
+> in <userinput
+>falsch</userinput
+> und ein <userinput
+>falsch</userinput
+> in <userinput
+>wahr</userinput
+>.</para>
+<para
+>Boolesche Operatoren werden pinkfarben <glossterm
+>hervorgehoben</glossterm
+>.</para>
+
+<sect3 id="boolean-operators-advanced-examples">
+<title
+>Einige etwas schwierigere Beispiele</title>
+<para
+>Betrachten sie das folgende Beispiel mit <userinput
+>und</userinput
+>: <screen>
+$a = 1
+$b = 5
+wenn (($a &lt; 10) und ($b == 5)) und ($a &lt; $b) {
+  drucke "Hallo"
+}
+</screen
+> In diesem Quelltext von &turtlescript; wird das Ergebnis von drei <link linkend="comparing-operators"
+>Vergleichsoperatoren</link
+> mit dem Operator  <userinput
+>und</userinput
+> miteinander verbunden. Daher müssen alle drei Vergleiche <quote
+>wahr</quote
+> ergeben, damit das Wort <quote
+>Hallo</quote
+> gedruckt wird..</para>
+
+<para
+>Ein Beispiel mit <userinput
+>oder</userinput
+>: <screen>
+$n = 1
+wenn ($n &lt; 10) oder ($n == 2) {
+  drucke "Hallo"
+}
+</screen
+> In diesem Quelltext von &turtlescript; ergibt die linke Seite des <userinput
+>oder</userinput
+> <quote
+>wahr</quote
+>, die rechte Seite <quote
+>falsch</quote
+>. Da eine der beiden Seiten des Operators <userinput
+>oder</userinput
+> <quote
+>wahr</quote
+> ergibt, ist das Ergebnis des Operartors <userinput
+>oder</userinput
+> auch <quote
+>wahr</quote
+>. Damit wird das Wort <quote
+>Hallo</quote
+> gedruckt.</para>
+
+<para
+>Und schließlich ein Beispiel mit <userinput
+>nicht</userinput
+>, das <quote
+>wahr</quote
+> in <quote
+>falsch</quote
+> und <quote
+>falsch</quote
+> in <quote
+>wahr</quote
+> ändert: <screen
+>$n = 1
+wenn nicht ($n == 3) {
+  drucke "Hallo"
+} sonst {
+  drucke "nicht Hallo ;-)"
+}
+</screen
+></para>
+</sect3>
+</sect2>
+
+<sect2 id="comparing-operators">
+<title
+>Vergleichs-Operatoren</title>
+<para
+>Betrachten Sie diesen einfachen Vergleich: <screen>
+$ergebnis = 10 &gt; 3
+</screen
+> Hier wird <userinput
+>10</userinput
+> mit <userinput
+>3</userinput
+> mit Hilfe des Operators <quote
+>größer als</quote
+> verglichen. Das Ergebnis dieses Vergleichs, der <link linkend="boolean-value"
+>Boolesche Wert</link
+> <userinput
+>wahr</userinput
+>, wird in der <link linkend="assignment-of-variables"
+>Variablen</link
+> <userinput
+>ergebnis</userinput
+> gespeichert. </para>
+<para
+>Alle <link linkend="number"
+>Zahlen</link
+> und <link linkend="assignment-of-variables"
+>Variablen</link
+>, die Zahlen enthalten, können durch die Vergleichs-Operatoren miteinander verglichen werden.</para>
+<para
+>Hier sind alle möglichen Vergleichs-Operatoren aufgeführt: <table
+> <title
+>Art der Frage</title
+> <tgroup cols="3"
+> <tbody
+> <row
+> <entry
+><userinput
+>$A == B</userinput
+></entry
+> <entry
+>gleich</entry
+> <entry
+>Ergebnis ist <quote
+>wahr</quote
+> wenn <userinput
+>$A</userinput
+> gleich <userinput
+>$B</userinput
+> ist</entry
+> </row
+> <row
+> <entry
+><userinput
+>$A != $B</userinput
+></entry
+> <entry
+>nicht gleich</entry
+> <entry
+>Ergebnis ist <quote
+>wahr</quote
+> wenn <userinput
+>$A</userinput
+> ungleich <userinput
+>$B</userinput
+> ist</entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt; $B</userinput
+></entry
+> <entry
+>größer als</entry
+> <entry
+>Ergebnis ist <quote
+>wahr</quote
+> wenn <userinput
+>$A</userinput
+> größer ist als <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt; $B</userinput
+></entry
+> <entry
+>kleiner als</entry
+> <entry
+>Ergebnis ist <quote
+>wahr</quote
+> wenn <userinput
+>$A</userinput
+> kleiner ist als <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt;= $B</userinput
+></entry
+> <entry
+>größer oder gleich</entry
+> <entry
+>Ergebnis ist <quote
+>wahr</quote
+> wenn <userinput
+>$A</userinput
+> größer oder gleich <userinput
+>$B</userinput
+> ist</entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt;= $B</userinput
+></entry
+> <entry
+>kleiner oder gleich</entry
+> <entry
+>Ergebnis ist <quote
+>wahr</quote
+> wenn <userinput
+>$A</userinput
+> kleiner oder gleich <userinput
+>$B</userinput
+> ist</entry
+> </row
+> </tbody
+> </tgroup
+> </table
+> $A und $B müssen <link linkend="number"
+>Zahlen</link
+> oder <link linkend="assignment-of-variables"
+>Variablen</link
+> sein, die Zahlen enthalten.</para>
+</sect2>
+
+
+</sect1>
+
+
+
+<sect1 id="commands">
+<title
+>Befehle</title>
+<para
+>Mit Befehlen sagen Sie der Schildkröte oder &kturtle;, was sie tun soll. Einige Befehle brauchen Eingabewerte, andere geben Werte zurück. In diesem Abschnitt werden alle eingebauten Befehle für &kturtle; erklärt. Zusätzlich können mit <link linkend="learn"
+><userinput
+>lerne</userinput
+></link
+> benutzerdefinierte Befehle erstellt werden. Eingebaute Befehle, die hier vorgestellt werden, sind dunkelblau <glossterm
+>hervorgehoben</glossterm
+>.</para>
+
+<sect2 id="moving-the-turtle">
+<title
+>Die Schildkröte in Bewegung setzen</title>
+<para
+>Es gibt verschiedene Befehle, um die Schildkröte auf dem Bildschirm zu bewegen.</para>
+
+  <variablelist>
+    <anchor id="forward"/>
+    <varlistentry
+> 
+      <term
+>vorwärts (vw)<indexterm
+><primary
+>vorwärts (vw)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>vorwärts X</screen
+><userinput
+>vorwärts</userinput
+> bewegt die Schildkröte um einen Betrag von X Pixeln vorwärts. Wenn der Stift unten ist, zeichnet die Schildkröte eine Linie. <userinput
+>vorwärts</userinput
+> kann als <userinput
+>vw</userinput
+> abgekürzt werden.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="backward"/>
+    <varlistentry
+>  
+      <term
+>rückwärts (rw)<indexterm
+><primary
+>rückwärts (rw)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>rückwärts X</screen
+><userinput
+>rückwärts</userinput
+> bewegt die Schildkröte um einen Betrag von X Pixeln zurück. Wenn der Stift unten ist, zeichnet die Schildkröte eine Linie. <userinput
+>rückwärts</userinput
+> kann als <userinput
+>rw</userinput
+> abgekürzt werden.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnleft"/>
+    <varlistentry
+> 
+      <term
+>linksdrehen (ld)<indexterm
+><primary
+>linksdrehen (ld)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>linksdrehen X</screen
+><userinput
+>linksdrehen</userinput
+> dreht die Schildkröte um einen Betrag von X Grad nach links. <userinput
+>linksdrehen</userinput
+> kann als <userinput
+>ld</userinput
+> abgekürzt werden.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnright"/>
+    <varlistentry
+> 
+      <term
+>rechtsdrehen (rd)<indexterm
+><primary
+>rechtsdrehen (rd)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>rechtsdrehen X</screen
+><userinput
+>rechtsdrehen</userinput
+> dreht die Schildkröte um einen Betrag von X Grad nach rechts. <userinput
+>rechtsdrehen</userinput
+> kann als <userinput
+>rd</userinput
+> abgekürzt werden.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="direction"/>
+    <varlistentry
+> 
+      <term
+>richtung (rtg)<indexterm
+><primary
+>richtung (rtg)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>richtung X</screen
+><userinput
+>richtung</userinput
+> setzt die Bewegungsrichtung der Schildkröte auf X Grad gerechnet von Null, unabhängig von der vorherigen Bewegungsrichtung der Schildkröte. <userinput
+>richtung</userinput
+> kann als <userinput
+>rtg</userinput
+> abgekürzt werden.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="getdirection"/>
+    <varlistentry
+> 
+      <term
+>holerichtung<indexterm
+><primary
+>holerichtung</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>holerichtung</screen
+><userinput
+>holerichtung</userinput
+> gibt die Bewegungsrichtung der Schildkröte in Grad bezogen auf die Richtung senkrecht nach oben, die als Null definiert ist. </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="center"/>
+    <varlistentry
+> 
+      <term
+>mitte<indexterm
+><primary
+>mitte</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mitte</screen
+><userinput
+>mitte</userinput
+> bewegt die Schildkröte in die Mitte der Zeichenfläche.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="go"/>
+    <varlistentry
+> 
+      <term
+>gehe<indexterm
+><primary
+>gehe</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>gehe X,Y</screen
+><userinput
+>gehe</userinput
+> bewegt die Schildkröte an eine bestimmten Stelle auf der Zeichenfläche. Dieser Ort ist X <glossterm linkend="pixels"
+>Pixel</glossterm
+> vom linken Rand und Y <glossterm linkend="pixels"
+>Pixel</glossterm
+> vom oberen Rand der Zeichenfläche entfernt.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gox"/>
+    <varlistentry
+> 
+      <term
+>gehex<indexterm
+><primary
+>gehex (gx)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>gehex X</screen
+>Mit dem Befehl <userinput
+>gehex</userinput
+> bewegt sich die Schildkröte auf X <glossterm linkend="pixels"
+>Pixel</glossterm
+> vom linken Rand der Zeichenfläche, bleibt dabei aber auf gleicher Höhe. <userinput
+>gehex</userinput
+> kann als <userinput
+>gx</userinput
+> abgekürzt werden.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="goy"/>
+    <varlistentry
+> 
+      <term
+>gehey<indexterm
+><primary
+>gehey (gy)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>gehey Y</screen
+>Mit dem Befehl <userinput
+>gehey</userinput
+> bewegt sich die Schildkröte auf Y <glossterm linkend="pixels"
+>Pixel</glossterm
+> vom oberen Rand der Zeichenfläche, bleibt dabei aber auf gleicher Entfernung vom linken Rand der Zeichenfläche. <userinput
+>gehey</userinput
+> kann als <userinput
+>gy</userinput
+> abgekürzt werden.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <note
+><para
+>Mit den Befehlen <userinput
+>gehe</userinput
+>, <userinput
+>gehex</userinput
+>, <userinput
+>gehey</userinput
+> und <userinput
+>mitte</userinput
+> zeichne die Schildkröte keine Linie, egal ob der Stift oben oder unten ist.</para>
+  </note>
+</sect2>
+
+<sect2 id="locate-the-turtle">
+<title
+>Wo ist die Schildkröte?</title>
+<para
+>Es gibt zwei Befehle, die die Position der Schildkröte auf dem Bildschirm zurückgeben.</para>
+
+  <variablelist>
+    <anchor id="getx"/>
+    <varlistentry
+> 
+      <term
+>holex<indexterm
+><primary
+>holex</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>holex</userinput
+> gibt die Anzahl der Pixel vom linken Rand der Zeichenfläche bis zur aktuellen Position der Schildkröte zurück.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gety"/>
+    <varlistentry
+> 
+      <term
+>holey<indexterm
+><primary
+>holey</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>holey</userinput
+> gibt die Anzahl der Pixel vom oberen Rand der Zeichenfläche bis zur aktuellen Position der Schildkröte zurück.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="pen">
+<title
+>Die Schildkröte kann zeichnen</title>
+<para
+>Die Schildkröte kann mit einem Stift Linien zeichnen, wenn sie sich bewegt. Um diesen Stift zu kontrollieren, gibt es einige Befehle, die diesem Abschnitt beschrieben werden.</para>
+  <variablelist>
+    <anchor id="penup"/>
+    <varlistentry
+> 
+      <term
+>stifthoch (sh)<indexterm
+><primary
+>stifthoch (sh)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>stifthoch</screen
+><userinput
+>stifthoch</userinput
+> hebt den Stift von der Zeichenfläche. Wenn der Zeichenstift <quote
+>hoch</quote
+> ist, zeichnet die Schildkröte bei ihrer Bewegung keine Linie. Siehe auch <userinput
+>stiftrunter</userinput
+>. <userinput
+>stifthoch</userinput
+> kann als <userinput
+>sh</userinput
+> abgekürzt werden.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="pendown"/>
+    <varlistentry
+> 
+      <term
+>stiftrunter (sr)<indexterm
+><primary
+>stiftrunter (sr)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>stiftrunter</screen
+><userinput
+>stiftrunter</userinput
+> drückt den Stift auf die Zeichenfläche. Wenn der Zeichenstift <quote
+>runter</quote
+> ist, zeichnet die Schildkröte eine Linie bei ihrer Bewegung. Siehe auch <userinput
+>stifthoch</userinput
+>. <userinput
+>stiftrunter</userinput
+> kann als <userinput
+>sr</userinput
+> abgekürzt werden.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setpenwidth"/>
+    <varlistentry
+> 
+      <term
+>stiftbreite (sb)<indexterm
+><primary
+>stiftbreite (sb)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>stiftbreite X</screen
+><userinput
+>stiftbreite</userinput
+> setzt die Stiftbreite (die Linienbreite) auf X <glossterm linkend="pixels"
+>Pixel</glossterm
+>. <userinput
+>stiftbreite</userinput
+> kann als <userinput
+>sb</userinput
+> abgekürzt werden.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setfgcolor"/>
+    <varlistentry
+> 
+      <term
+>stiftfarbe (sf)<indexterm
+><primary
+>stiftfarbe (sf)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>stiftfarbe R,G,B</screen
+><userinput
+>stiftfarbe</userinput
+> setzt die Farbe für den Zeichenstift. <userinput
+>stiftfarbe</userinput
+> braucht eine <glossterm linkend="rgb"
+>RGB-Kombination</glossterm
+> als Eingabewert. <userinput
+>stiftfarbe</userinput
+> kann als <userinput
+>sf</userinput
+> abgekürzt werden.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="canvas">
+<title
+>Befehle für die Zeichenfläche</title>
+<para
+>Es gibt mehrere Befehle für die Zeichenfläche.</para>
+  <variablelist>
+    <anchor id="resizecanvas"/>
+    <varlistentry>
+      <term
+>papiergröße (pg)<indexterm
+><primary
+>papiergröße (pg)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>papiergröße X,Y</screen
+>Mit dem Befehl <userinput
+>papiergröße</userinput
+> stellen Sie die Größe der Zeichenfläche ein. Als Eingabewert sind X und Y erforderlich, dabei ist X die neue Breite in <glossterm linkend="pixels"
+>Pixeln</glossterm
+> und Y die neue Höhe der Zeichenfläche in <glossterm linkend="pixels"
+>Pixeln</glossterm
+>. <userinput
+>papiergröße</userinput
+> kann als <userinput
+>pg</userinput
+> abgekürzt werden.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setbgcolor"/>
+    <varlistentry
+> 
+      <term
+>papierfarbe (pf)<indexterm
+><primary
+>papierfarbe (pf)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>papierfarbe R,G,B</screen
+><userinput
+>papierfarbe</userinput
+> setzt die Farbe der Zeichenfläche. <userinput
+>papierfarbe</userinput
+> braucht eine <glossterm linkend="rgb"
+> RGB-Kombination</glossterm
+> als Eingabewert. <userinput
+>papierfarbe</userinput
+> kann als <userinput
+>pf</userinput
+> abgekürzt werden.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="clean">
+<title
+>Befehle um aufzuräumen</title>
+<para
+>Es gibt zwei Befehle, um die Zeichenfläche nach einem Fehler wieder aufzuräumen.</para>
+  <variablelist>
+    <anchor id="clear"/>
+    <varlistentry
+> 
+      <term
+>lösche (lös)<indexterm
+><primary
+>lösche (lös)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>lösche</screen
+>Mit <userinput
+>lösche</userinput
+> entfernen Sie alle Zeichnungen von der Zeichenfläche. Alle anderen Einstellungen bleiben erhalten: Die Position und die Bewegungsrichtung der Schildkröte, ob die Schildkröte sichtbar ist und Farbe und Größe der Zeichenfläche.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="reset"/>
+    <varlistentry
+> 
+      <term
+>zurücksetzen<indexterm
+><primary
+>zurücksetzen</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>zurücksetzen</screen
+><userinput
+>zurücksetzen</userinput
+> räumt gründlicher auf als der Befehl <userinput
+>lösche</userinput
+>. Nach der Ausführung des Befehls <userinput
+>zurücksetzen</userinput
+> sind alle Einstellungen wie beim Start von &kturtle;. Die Schildkröte steht mitten auf einer weißen Zeichenfläche, zeichnet die Linien mit schwarzer Farbe und die Papiergröße beträgt 400 x 400 Pixel.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="sprites">
+<title
+>Die Schildkröte ist ein Grafiksymbol</title>
+<para
+>Viele Leute wissen nicht was Grafiksymbole sind, hier eine kurze Erklärung: Grafiksymbole sind kleine Bilder, die auf dem Bildschirm bewegt werden können. (Weitere Informationen finden Sie im Glossar unter <glossterm linkend="sprites"
+>Grafiksymbol</glossterm
+>). Die Schildkröte ist so ein Grafiksymbol.</para>
+<para
+>Als nächstes finden Sie eine vollständige Übersicht aller Befehle für das Grafiksymbol.</para>
+<note
+><para
+>Diese Version von &kturtle; erlaubt noch nicht die Verwendung anderer Grafiksymbole als die Schildkröte. In späteren Versionen können Sie die Schildkröte durch selbst entworfene Symbole ersetzen.</para
+></note>
+  <variablelist>
+    <anchor id="spriteshow"/>
+    <varlistentry
+> 
+      <term
+>zeigebild (zb)<indexterm
+><primary
+>zeigebild (zb)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>zeigebild</screen
+><userinput
+>zeigebild</userinput
+> zeigt das Symbol der Schildkröte wieder an, wenn es ausgeblendet war. <userinput
+>zeigebild</userinput
+> kann als <userinput
+>zb</userinput
+> abgekürzt werden.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="spritehide"/>
+    <varlistentry
+> 
+      <term
+>versteckebild (vb)<indexterm
+><primary
+>versteckebild (vb)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>versteckebild</screen
+><userinput
+>versteckebild</userinput
+> schaltet das Symbol der Schildkröte aus, wenn sie nicht in Ihre Zeichnung passt. <userinput
+>versteckebild</userinput
+> kann als <userinput
+>vb</userinput
+> abgekürzt werden.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="writing">
+<title
+>Kann die Schildkröte schreiben?</title>
+<para
+>Die Antwort lautet <quote
+>ja</quote
+>. Die Schildkröte kann jeden gewünschten Text schreiben.</para>
+  <variablelist>
+    <anchor id="print"/>
+    <varlistentry
+> 
+      <term
+>drucke<indexterm
+><primary
+>drucke</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>drucke X</screen
+>Mit dem Befehl <userinput
+>drucke</userinput
+> schreibt die Schildkröte Text auf die Zeichenfläche. <userinput
+>drucke</userinput
+> braucht Zahlen und Zeichenfolgen als Eingabewert. Sie können auch mehrere Zahlen und Zeichenfolgen mit dem Symbol <userinput
+>+</userinput
+> verbinden, wie das folgende kleine Beispiel zeigt: <screen
+>$jahr = 2003
+$autor = "Cies"
+drucke $autor + " startete das KTurtle Projekt " + $jahr + " und arbeitet immer noch gerne daran!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="fontsize"/>
+    <varlistentry
+> 
+      <term
+>schriftgröße<indexterm
+><primary
+>schriftgröße</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>schriftgröße X</screen
+><userinput
+>schriftgröße</userinput
+> setzt die Größe der Schrift, die mit dem Befehl <userinput
+>drucke</userinput
+> benutzt wird. <userinput
+>schriftgröße</userinput
+> braucht nur eine Zahl als Eingabewert. Die Größe der Schrift wird in <glossterm linkend="pixels"
+>Pixeln</glossterm
+> angegeben.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="math-commands">
+<title
+>Mathematische Befehle</title>
+<para
+>Im Folgenden werden die erweiterten mathematischen Befehle in &kturtle; beschrieben.</para>
+  <variablelist>
+    <anchor id="round"/>
+    <varlistentry>
+      <term
+>rund<indexterm
+><primary
+>rund</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>rund(x)</screen
+><userinput
+>rund</userinput
+> die angegebene Zahl zur nächsten ganzen Zahl. <screen>
+drucke rund(10.8)
+vorwärts 20
+drucke rund(10.3)
+</screen
+> mit diesen Anweisungen druckt die Schildkröte die Zahlen 11 and 10.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="random"/>
+    <varlistentry
+> 
+      <term
+>zufall (zuf)<indexterm
+><primary
+>zufall (zuf)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>zufall X,Y</screen
+><userinput
+>zufall</userinput
+> ist ein Befehl, der Eingabewerte braucht und einen Wert zurückgibt. Als Eingabe sind zwei Zahlen nötig, die erste (X) bestimmt die Untergrenze, die zweite (Y) die Obergrenze der Ausgabe. Der Rückgabewert ist eine zufällige Zahl größer oder gleich der unteren Grenze und kleiner oder gleich der oberen Grenze. Hier ein kurzes Beispiel: <screen>
+wiederhole 500 {
+  $x = zufall 1,20
+  vorwärts $x
+  linksdrehen 10 - $x
+}
+</screen
+> Mit dem Befehl <userinput
+>zufall</userinput
+> können Sie ein wenig Chaos in Ihr Programm einfügen. </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="mod"/>
+    <varlistentry
+> 
+      <term
+>mod<indexterm
+><primary
+>mod</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mod X,Y</screen
+>Der Befehl <userinput
+>mod</userinput
+> gibt den Rest einer Division der ersten durch die zweite Zahl zurück.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sqrt"/>
+    <varlistentry
+> 
+      <term
+>wurzel<indexterm
+><primary
+>wurzel</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>wurzel X</screen
+>Der Befehl <userinput
+>wurzel</userinput
+> wird benutzt, um die Quadratwurzel einer Zahl X zu berechnen.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+<!--
+  <variablelist>
+    <anchor id="exp"/>
+    <varlistentry
+> 
+      <term
+>exp<indexterm
+><primary
+>exp</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+-->
+  <variablelist>
+    <anchor id="pi"/>
+    <varlistentry
+> 
+      <term
+>pi<indexterm
+><primary
+>pi</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pi</screen
+>Dieser Befehl gibt die Konstante Pi, <userinput
+>3.14159</userinput
+> zurück.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sin"/>
+    <anchor id="cos"/>
+    <anchor id="tan"/>
+    <varlistentry>
+      <term
+>sin<indexterm
+><primary
+>sin</primary
+></indexterm
+>, cos<indexterm
+><primary
+>cos</primary
+></indexterm
+>, tan<indexterm
+><primary
+>tan</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>sin X
+cos X
+tan X
+</screen
+>Diese drei Befehle sind die bekannten trigonometrischen Funktionen <userinput
+>sin</userinput
+>, <userinput
+>cos</userinput
+> und <userinput
+>tan</userinput
+>.Das Eingabeargument X dieser Befehle ist eine <link linkend="number"
+>Zahl</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="arcsin"/>
+    <anchor id="arccos"/>
+    <anchor id="arctan"/>
+    <varlistentry>
+      <term
+>arcsin<indexterm
+><primary
+>arcsin</primary
+></indexterm
+>, arccos<indexterm
+><primary
+>arccos</primary
+></indexterm
+>, arctan<indexterm
+><primary
+>arctan</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>arcsin X
+arccos X
+arctan X
+</screen
+>Diese Befehle sind die inversen Funktionen von <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+> und <link linkend="tan"
+>tan</link
+>. Das Eingabeargument X dieser Befehle ist eine <link linkend="number"
+>Zahl</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="dialogs">
+<title
+>Eingaben und Nachrichten mit Dialogen</title>
+<para
+>Ein Dialog ist ein kleines Fenster, das Meldungen anzeigt oder Eingaben ermöglicht. &kturtle; hat zwei Befehle für Dialoge: <userinput
+>nachricht</userinput
+> und <userinput
+>frage</userinput
+></para>
+  <variablelist>
+    <anchor id="message"/>
+    <varlistentry
+> 
+      <term
+>nachricht<indexterm
+><primary
+>nachricht</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>nachricht X</screen
+>Der Befehl <userinput
+>nachricht</userinput
+> braucht eine <link linkend="string" 
+>Zeichenfolge</link
+> als Eingabewert. Es öffnet sich ein Dialog und der Text der <link linkend="string" 
+>Zeichenfolge</link
+> wird angezeigt. <screen
+>nachricht "Cies startete KTurtle 2003 und arbeitet immer noch gerne daran!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="ask"/>
+    <varlistentry
+> 
+      <term
+>frage<indexterm
+><primary
+>frage</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>frage X</screen
+><userinput
+>frage</userinput
+> braucht eine <link linkend="string"
+>Zeichenfolge</link
+> als Eingabewert. Der Text der Zeichenfolge wird in einem Dialog angezeigt, genau wie bei <link linkend="message"
+>nachricht</link
+>, aber zusätzlich erscheint noch ein Eingabefeld. Nachdem eine <link linkend="number"
+>Zahl</link
+> oder eine <link linkend="string"
+>Zeichenfolge</link
+> in diese Textfeld eingegeben wurde, kann das Ergebnis in einer <link linkend="assignment-of-variables"
+>Variablen</link
+> gespeichert oder als Argument an einen <link linkend="commands"
+>Befehl</link
+> übergeben werden. Zum Beispiel <screen>
+$ein = frage "In welchem Jahr sind Sie geboren?"
+$aus = 2003-$ein
+drucke "Im Jahr 2003 waren Sie irgendwann " + $aus + " Jahre alt."
+</screen
+> Wenn Sie den Eingabedialog abbrechen oder keine Zeichen eingeben, hat die <link linkend="assignment-of-variables"
+>Variable</link
+> keinen Inhalt.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="assignment-of-variables">
+<title
+>Zuweisung von Variablen</title>
+<para
+>Zuerst werden die Variablen vorgestellt, dann wird die Zuweisung von Werten erklärt. </para>
+
+<para
+>Variablen sind Wörter oder Zeichenfolgen, die mit einem <quote
+>$</quote
+> beginnen, im <link linkend="the-editor"
+>Editor</link
+> werden sie purpurfarben <glossterm
+>hervorgehoben</glossterm
+>.</para>
+
+<para
+>Variablen können eine beliebige <link linkend="number"
+>Zahl</link
+>, <link linkend="string"
+>Zeichenfolge</link
+> oder <link linkend="boolean-value"
+>Booleschen Wert (wahr/falsch)</link
+> enthalten. Mit der Zuweisung <userinput
+>=</userinput
+> erhält eine Variable ihren Inhalt. Sie behält diesen Wert, bis das Programm beendet oder der Variablen ein anderer Wert zugewiesen wird.</para>
+
+<para
+>Ist Variablen erst einmal ein Wert zugewiesen worden, können Sie wie ihr Inhalt benutzt werden. Als Beispiel dazu der folgende Quelltext in &turtlescript;: <screen>
+$x = 10
+$x = $x / 3
+drucke $x
+</screen
+> Zuerst wird der Variablen <userinput
+>$x</userinput
+> der Wert <userinput
+>10</userinput
+> zugewiesen. Dann erhält <userinput
+>$x</userinput
+> den vorhandenen Wert geteilt durch <userinput
+>3</userinput
+> &mdash; in diesem Fall erhält   <userinput
+>$x</userinput
+> den Wert <userinput
+>10 / 3</userinput
+>. Dann wird <userinput
+>$x</userinput
+> ausgegeben. In Zeile zwei und drei wird die Variable <userinput
+>$x</userinput
+> wie iht Inhalt benutzt.</para>
+
+<para
+>Variablen muss ein Wert zugewiesen werden, ehe sie benutzt werden können. Ein Beispiel: <screen>
+drucke $n
+</screen
+> Mit diesem Befehl erhalten Sie eine Fehlermeldung.</para>
+
+<para
+>Betrachten Sie den folgen Quelltext in &turtlescript;:<screen>
+$a = 2004
+$b = 25
+
+# der nächste Befehl druckt "2029"
+drucke $a + $b
+rückwärts 30
+# der nächste Befehl druckt "2004 plus 25 gleich 2029"
+drucke $a + " plus " + $b + " gleich " + ($a + $b)
+rückwärts 30
+</screen
+> In den ersten zwei Zeilen wird der Wert der Variablen <userinput
+>$a</userinput
+> auf 2004 und <userinput
+>$b</userinput
+> auf 25 gesetzt. Der Rest des Beispiels besteht aus zwei <userinput
+>drucke</userinput
+> Befehlen mit dem Befehl <userinput
+>rückwärts 30</userinput
+> dazwischen. Der Kommentar vor jedem <userinput
+>drucke</userinput
+> erklärt was ausgegeben wird.  Der Befehl <userinput
+>rückwärts 30</userinput
+> ist erforderlich, um jede Ausgabe auf einer neuen Zeile zu schreiben. Dieses Beispiele zeigt, dass Variablen mit allen <link linkend="operators"
+>Operatoren</link
+> in der gleichen Weise wie ihr Wert benutzt werden können. Außerdem können sie als Eingabe für <link linkend="commands"
+>Befehle</link
+> dienen.</para>
+
+<para
+>Ein weiteres Beispiel: <screen>
+$name = frage "Wie heißt Du?"
+drucke "Hallo " + $name + ", Viel Spaß beim Programmieren..."
+</screen
+> Sie sehen, die Variable <userinput
+>$name</userinput
+> wird genauso wie eine Zeichenfolge behandelt.</para>
+
+<para
+>Wenn Sie mit Variablen arbeiten, ist das <link linkend="the-inspector"
+>Kontrollfenster</link
+> sehr hilfreich. In diesem Fenster werden alle zur Zeit benutzten Variablen und ihr Wert angezeigt.</para>
+</sect1>
+
+
+
+<sect1 id="controlling-execution">
+<title
+>Kontrolle der Programmausführung</title>
+<para
+>Mit den Befehlen zur Kontrollanweisung können Sie &mdash; wie der Name schon sagt &mdash; den Ablauf der Ausführung kontrollieren.</para>
+<para
+>Befehle zur Kontrollanweisung werden durch eine dunkelgrüne, fettgedruckte Schrift <glossterm
+>hervorgehoben</glossterm
+>. Die meistens zusammen mit der Kontrollanweisung verwendeten Klammern werden durch schwarze Schrift <glossterm
+>hervorgehoben</glossterm
+>.</para>
+
+<sect2 id="wait">
+<title
+>Lass die Schildkröte warten</title>
+<para
+>Wenn Sie schon in &kturtle; programmiert haben, ist Ihnen bestimmt aufgefallen,  dass sich die Schildkröte beim Zeichnen sehr schnell bewegt. Dieser Befehl lässt die Schildkröte eine bestimmte Zeit warten.</para>
+  <variablelist>
+    <varlistentry>
+      <term
+>warte<indexterm
+><primary
+>warte</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>warte X</screen
+>Mit <userinput
+>warte</userinput
+> wartet die Schildkröte X Sekunden. <screen>
+wiederhole 36 {
+  vorwärts 5
+  rechtsdrehen 10
+  warte 0.5
+}
+</screen
+> Dieser Quelltext zeichnet einen Kreis, aber die Schildkröte wartet eine halbe Sekunde nach jedem Schritt. Dies vermittelt den Eindruck einer Schildkröte, die sich langsam bewegt.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="if">
+<title
+>Kontrollanweisung <quote
+>wenn</quote
+></title>
+  <variablelist>
+    <varlistentry>
+      <term
+>wenn<indexterm
+><primary
+>wenn</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>wenn <link linkend="boolean-value"
+>boolescher wert</link
+> { ... }</screen
+>Der Quelltext zwischen den Klammern wird nur dann ausgeführt, <userinput
+>wenn</userinput
+> der <link linkend="boolean-value"
+>boolesche Wert</link
+> <quote
+>wahr</quote
+> ist. <screen>
+$x = 6
+wenn $x &gt; 5 {
+  drucke "$x ist größer als fünf!"
+}
+</screen
+> In der ersten Zeilen weisen Sie <userinput
+>$x</userinput
+> den Wert 6 zu. In der zweiten Zeile wird ein <link linkend="comparing-operators"
+>Vergleichsoperator</link
+> benutzt, um den Wert von <userinput
+>$x &gt; 5</userinput
+> zu ermitteln. Da das Ergebnis <quote
+>wahr</quote
+> ist 6 ist größer als 5, lässt Kontrollanweisung <userinput
+>wenn</userinput
+> den Quelltext zwischen den Klammern ausführen.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="else">
+<title
+>Kontrollanweisung <quote
+>sonst</quote
+></title>
+  <variablelist>
+    <varlistentry>
+      <term
+>sonst<indexterm
+><primary
+>sonst</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>wenn <link linkend="boolean-value"
+>boolescher wert</link
+> { ... } sonst { ... }</screen
+><userinput
+>sonst</userinput
+> kann zusammen mit der Kontrollanweisung <link linkend="if"
+><userinput
+>wenn</userinput
+></link
+> benutzt werden. Der Quelltext zwischen den Klammern nach <userinput
+>sonst</userinput
+> wird nur dann ausgeführt, wenn der <link linkend="boolean-value"
+>boolesche Wert</link
+>  <quote
+>falsch</quote
+> ergibt: <screen>
+zurücksetzen
+$x = 4
+wenn $x &gt; 5 {
+  drucke "$x ist größer als fünf!"
+}
+sonst
+{
+  drucke "$x ist kleiner als sechs!"
+}
+</screen
+> Der <link linkend="comparing-operators"
+>Vergleichsoperator</link
+> wertet  Ausdruck <userinput
+>$x &gt; 5</userinput
+> aus. Da 4 kleiner als 5 ist, ist das Ergebnis <quote
+>falsch</quote
+>. Das führt dazu, dass der Quelltext zwischen den Klammern nach <userinput
+>sonst</userinput
+> ausgeführt wird.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="while">
+<title
+>Die <quote
+>solange</quote
+>-Schleife</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>solange<indexterm
+><primary
+>solange</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>solange <link linkend="boolean-value"
+>boolescher wert</link
+> { ... }</screen
+>Die Kontrollanweisung <userinput
+>solange</userinput
+> ist der Anweisung <link linkend="if"
+><userinput
+>wenn</userinput
+></link
+> sehr ähnlich. Der Unterschied liegt darin, dass <userinput
+>solange</userinput
+> die Ausführung des Quelltext zwischen den Klammern (in einer Schleife) solange wiederholt, bis der <link linkend="boolean-value"
+>booleschen Wert</link
+> <quote
+>falsch</quote
+> ergibt: <screen>
+$x = 1
+solange $x &lt; 5 {
+  vorwärts 10
+  warte 1
+  $x = $x + 1
+}
+</screen
+> In der ersten Zeile wird <userinput
+>$x</userinput
+> der Wert 1 zugewiesen. In der zweiten Zeile wird <userinput
+>$x &lt; 5</userinput
+> ausgewertet. Da das Ergebnis <quote
+>wahr</quote
+> ist, lässt die Kontrollanweisung <userinput
+>solange</userinput
+> den Quelltext zwischen den Klammern ausführen, bis <userinput
+>$x &lt; 5</userinput
+> <quote
+>falsch</quote
+> ist. In diesem Beispiel wird der Quelltext zwischen den Klammern viermal ausgeführt, da bei jeder Ausführung der fünften Zeile <userinput
+>$x</userinput
+> um 1 vergrößert wird.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="repeat">
+<title
+>Die <quote
+>wiederhole</quote
+>-Schleife</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>wiederhole<indexterm
+><primary
+>wiederhole</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>wiederhole <link linkend="number"
+>zahl</link
+> { ... }</screen
+>Die Kontrollanweisung <userinput
+>wiederhole</userinput
+> funktioniert ähnlich wie <link linkend="while"
+><userinput
+>solange</userinput
+></link
+>, nur dass mit <userinput
+>wiederhole</userinput
+> der Quelltext innerhalb der Klammern mit der angegebenen Anzahl von Wiederholungen ausgeführt wird.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="for">
+<title
+>Die <quote
+>von</quote
+>-Schleife, eine zählende Schleife</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>von<indexterm
+><primary
+>von</primary
+></indexterm
+><indexterm
+><primary
+>bis</primary
+></indexterm
+><indexterm
+><primary
+>schritt</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>von <link linkend="assignment-of-variables"
+>Variable</link
+> = <link linkend="number"
+>Zahl</link
+> bis <link linkend="number"
+>Zahl</link
+> { ... }</screen
+>Die <userinput
+>von</userinput
+>-Schleife ist eine <quote
+>zählende Schleife</quote
+>, &ie; zählt sie für Sie. Die erste Zahl bestimmt die Variable für den Wert in der ersten Schleife. Nach jedem Durchlauf der Schleife wird die Zahl vergrößert, bis die zweite Zahl erreicht ist. <screen>
+von $x = 1 bis 10 {
+  drucke $x * 7
+  vorwärts 15
+}
+</screen
+> Jedes Mal, wenn der Quelltext zwischen den Klammern ausgeführt wird, vergrößert sich der Wert von <userinput
+>$x</userinput
+> um eins, bis <userinput
+>$x</userinput
+> den Wert 10 erreicht. Der Quelltext zwischen den Klammern druckt den Wert von <userinput
+>$x</userinput
+> multipliziert mit 7. Nach dem Ende dieses Programms sehen Sie das 1x7 auf der Zeichenfläche. </para>
+     <para
+>Als Standard ist die Schrittweite einer Schleife auf 1 eingestellt, für einen anderen Wert benutzen Sie: <screen
+>von <link linkend="assignment-of-variables"
+>variable</link
+> = <link linkend="number"
+>zahl</link
+> bis <link linkend="number"
+>zahl</link
+> schritt <link linkend="number"
+>zahl</link
+> { ... }</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="break">
+<title
+>Verlassen einer Schleife</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>abbrechen<indexterm
+><primary
+>abbrechen</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>abbrechen</screen
+>Beendet die laufende Schleife sofort. Die Ausführung des Programms wird mit der ersten Anweisung nach der Schleife fortgesetzt.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="exit">
+<title
+>Programmausführung abbrechen</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>ende<indexterm
+><primary
+>ende</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ende</screen
+>Beendet die Ausführung des Ihres Programms.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="assert">
+<title
+>Zusicherungen zur Laufzeit überprüfen</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>zusichern<indexterm
+><primary
+>zusichern</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>zusichern <link linkend="boolean-value"
+>boolescher wert</link
+> { ... }</screen
+>Zusicherungen können als Begründung der Fehlerfreiheit des Programms oder einer Eingabe verwendet werden. <screen
+>$in = frage "In welchem Jahr sind Sie geboren?"
+# das Jahr muss positiv sein
+zusichern $in 
+> 0
+</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+</sect1>
+
+
+<sect1 id="learn">
+
+<title
+>Schreiben Sie Ihre eigenen Befehle mit <quote
+>lerne</quote
+></title>
+<para
+><userinput
+>lerne</userinput
+><indexterm
+><primary
+>lerne</primary
+></indexterm
+> ist ein besonderer Befehl, weil Sie damit Ihre eigenen Befehle erzeugen können. Ihre eigenen Befehle können einen <glossterm linkend="input-output"
+>Eingabewert</glossterm
+> erfordern und einen <glossterm linkend="input-output"
+>Ausgabewert</glossterm
+> zurückgeben. Dieses Beispiel zeigt, wie Sie einen neuen Befehl schreiben: <screen>
+lerne kreis $x {
+  wiederhole 36 {
+    vorwärts $x
+    linksdrehen 10
+  }
+}
+</screen
+> Der neue Befehl hat den Namen <userinput
+>kreis</userinput
+>. <userinput
+>kreis</userinput
+> braucht einen <glossterm linkend="input-output"
+>Eingabewert</glossterm
+>, eine Zahl als Argument, um die Größe des Kreises festzulegen. <userinput
+>kreis</userinput
+> gibt keinen <glossterm linkend="input-output"
+>Ausgabewert</glossterm
+> zurück. <userinput
+>kreis</userinput
+> kann jetzt wie ein normaler Befehl benutzt werden, wie das folgende Beispiel zeigt: <screen
+>lerne kreis $X {
+  wiederhole 36 {
+    vorwärts $X
+    linksdrehen 10
+  }
+}
+
+gehe 200,200
+kreis 20
+
+gehe 300,200
+kreis 40  
+</screen>
+</para>
+<para
+>Im nächsten Beispiel wird ein Befehl mit Rückgabewert<indexterm
+><primary
+>zurück</primary
+></indexterm
+> gezeigt. <screen>
+lerne fakultät $x {
+  $r = 1
+  von $i = 1 bis $x {
+    $r = $r * $i
+  }
+  zurück $r
+}
+
+drucke fakultät 5
+</screen
+> In diesem Beispiel wird ein neuer Befehl mit dem Namen <userinput
+>fakultät</userinput
+> erstellt. Wenn der Eingabewert des Befehls <userinput
+>5</userinput
+> ist, wird <userinput
+>5*4*3*2*1</userinput
+> zurückgegeben. Mit dem Befehl <userinput
+>zurück</userinput
+> wird der <glossterm linkend="input-output"
+>Rückgabe</glossterm
+>wert bestimmt und die Ausführung kehrt wieder zum Aufruf dieses Befehls zurück.</para>
+<para
+>Befehle können auch mehr als zwei <glossterm linkend="input-output"
+>Eingaben</glossterm
+> haben. Im nächsten Beispiel sehen Sie einen Befehl zum Zeichnen eines Rechtecks. <screen>
+lerne rechteck $x, $y {
+  vorwärts $y
+  rechtsdrehen 90
+  vorwärts $x
+  rechtsdrehen 90
+  vorwärts $y
+  rechtsdrehen 90
+  vorwärts $x
+  rechtsdrehen 90
+}
+</screen
+> Dann können Sie <userinput
+>rechteck 50, 100</userinput
+> benutzen und die Schildkröte zeichnet ein Rechteck auf die Zeichenfläche. </para>
+  
+</sect1>
+
+</chapter>

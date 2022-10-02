@@ -1,0 +1,324 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kturtle;">
+  <!ENTITY turtlescript "TurtleScript">
+  <!ENTITY logo "Logo">
+  <!ENTITY % addindex "INCLUDE">
+  <!ENTITY % Galician  "INCLUDE"
+><!-- change language only here -->
+  <!ENTITY using-kturtle SYSTEM "using-kturtle.docbook">
+  <!ENTITY getting-started SYSTEM "getting-started.docbook">
+  <!ENTITY programming-reference SYSTEM "programming-reference.docbook">
+  <!ENTITY translator-guide SYSTEM "translator-guide.docbook">
+  <!ENTITY glossary SYSTEM "glossary.docbook">
+]>
+
+<book id="kturtle" lang="&language;">
+
+<bookinfo>
+<title
+>Manual de &kturtle;</title>
+
+<authorgroup>
+<author
+><firstname
+>Cies</firstname
+> <surname
+>Breijs</surname
+> <affiliation
+> <address
+><email
+>cies EN kde PUNTO nl</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Anne-Marie</firstname
+> <surname
+>Mahfouf</surname
+> <affiliation
+> <address
+><email
+>annma EN kde PUNTO org</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+><email
+>piacentini EN kde PUNTO org</email
+></address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Marce</firstname
+><surname
+>Villarino</surname
+><affiliation
+><address
+><email
+>mvillarino@users.sourceforge.net</email
+></address
+></affiliation
+><contrib
+>Tradutor do proxecto Trasno</contrib
+></othercredit
+> <othercredit role="translator"
+><firstname
+>Xosé</firstname
+><surname
+>Calvo</surname
+> <affiliation
+><address
+><email
+></email
+></address
+></affiliation
+><contrib
+>Tradutor do proxecto Trasno</contrib
+></othercredit
+> 
+</authorgroup>
+
+
+<copyright>
+<year
+>2004</year
+><year
+>2009</year>
+<holder
+>Cies Breijs</holder>
+</copyright>
+
+<copyright>
+<year
+>2004</year
+><year
+>2007</year>
+<holder
+>&Anne-Marie.Mahfouf;</holder>
+</copyright>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Mauricio Piacentini</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2016-05-07</date>
+<releaseinfo
+>0.8.1 beta (Aplicacións 16.04)</releaseinfo>
+
+<abstract>
+<para
+>&kturtle; é un ambiente educativo de programación que pretende facer que aprender a programar sexa tan sinxelo como se poida. Para conseguilo &kturtle; fai que todas as ferramentas de programación estean dispoñíbeis na interface do usuario. A linguaxe de programación que se emprega é &turtlescript;, que permite traducir as ordes ao seu idioma.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>&package;</keyword>
+<keyword
+>KTurtle</keyword>
+<keyword
+>educación</keyword>
+<keyword
+>idioma</keyword>
+<keyword
+>materno</keyword>
+<keyword
+>programación</keyword>
+<keyword
+>&turtlescript;</keyword>
+<keyword
+>&logo;</keyword>
+<keyword
+>sapoconcho</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introdución</title>
+
+<para
+>&kturtle; é un ambiente de programación para a educación que utiliza <link linkend="what-is-turtlelang"
+>&turtlescript;</link
+>, unha linguaxe de programación inspirada en &logo; e baseada nesta. O propósito de &kturtle; é simplificar a programación e facela tan accesíbel como for posíbel. Isto fai que &kturtle; sexa axeitado para ensinarlles aos cativos os fundamentos das matemáticas, a xeometría e a programación. Unha das principais características de &turtlescript; é que as ordes da linguaxe poden traducirse ao idioma do programador.</para>
+
+<para
+>O nome de &kturtle; procede <quote
+>do sapoconcho</quote
+> que ten un papel central no ambiente de programación. O estudante normalmente ordenaralle ao sapoconcho, mediante as ordes de &turtlescript;, que debuxe unha imaxe no <link linkend="the-canvas"
+>lenzo</link
+>.</para>
+
+<sect1 id="what-is-turtlelang">
+<title
+>Que é &turtlescript;?</title>
+<para
+>&turtlescript;, a linguaxe de programación empregada en &kturtle;, está inspirada na familia de linguaxes de programación &logo;. A primeira versión de &logo; creouna Seymour Papert do Laboratorio de Intelixencia Artificial do MIT en 1967 como fillo da linguaxe LISP. Desde entón publicáronse varias versións de &logo;. En 1980 &logo; gañou popularidade: había versións para MSX, Commodore, Atari, Apple II e IBM PC. Estas versións foron principalmente destinadas a usos educativos. O MIT aínda mantén <ulink url="http://el.media.mit.edu/logo-foundation/"
+>ten un sitio web sobre &logo;</ulink
+> que contén unha lista de varias realizacións populares desta linguaxe.</para>
+<para
+>&turtlescript; comparte unha funcionalidade que se atopa en moitas outras realizacións de &logo;: a posibilidade de traducir as ordes ao idioma nativo do estudante. Isto fai máis sinxelo comezar para os estudantes que non coñecen ou que coñecen moi pouco inglés. Ademais desta característica &kturtle; ten <link linkend="features-of-kturtle"
+>moitas outras</link
+> que intentan simplificar as primeiras experiencias dos estudantes coa programación.</para>
+</sect1>
+
+
+<sect1 id="features-of-kturtle">
+<title
+>Funcionalidades de &kturtle;</title>
+<para
+>&kturtle; ten algunhas características que facilitan moito o comezar a programar. Estas son algunhas das funcionalidades máis realzábeis de &kturtle;: <itemizedlist>
+<listitem
+><para
+>Un ambiente integrado cun intérprete de &turtlescript;, <link linkend="the-editor"
+>editor</link
+>, <link linkend="the-canvas"
+>lenzo</link
+> e outras utilidades todas xuntas nun aplicativo (sen dependencias adicionais).</para
+></listitem>
+<listitem
+><para
+>A posibilidade de traducir as ordes de &turtlescript; empregando a infraestrutura de tradución de &kde;.</para
+></listitem>
+<listitem
+><para
+>&turtlescript; permítelle o usuario definir funcións, recursión e cambio dinámico de tipos.</para
+></listitem>
+<listitem
+><para
+>A execución pode ralentizarse, pausarse ou deterse en calquera momento.</para
+></listitem>
+<listitem
+><para
+>Un potente <link linkend="the-editor"
+>editor</link
+> con realzado intuitivo da sintaxe, numeración de liñas, marcas de erros, execución visual e máis cousas.</para
+></listitem>
+<listitem
+><para
+>O <link linkend="the-canvas"
+>lenzo</link
+>, onde debuxa o sapoconcho, pode imprimirse ou gardarse como unha imaxe (PNG) ou debuxo (SVG).</para
+></listitem>
+<listitem
+><para
+>Axuda contextual: onde a precise. Prema <keysym
+>F2</keysym
+> (ou consulte <menuchoice
+><guimenu
+>Axuda</guimenu
+><guimenuitem
+>Sobre: …</guimenuitem
+> </menuchoice
+>) para obter axuda sobre a peza de código que teña baixo o cursor.</para
+></listitem>
+<listitem
+><para
+>Un diálogo de erro que liga as mensaxes de erro cos erros no programa e que as sinala en vermello.</para
+></listitem>
+<listitem
+><para
+>Terminoloxía de programación moi simplificada.</para
+></listitem>
+<listitem
+><para
+>Programas de exemplo para facilitar aínda máis os inicios. Estes exemplo tradúcense empregando a infraestrutura de tradución de &kde;.</para
+></listitem>
+</itemizedlist>
+</para>
+</sect1>
+</chapter>
+
+&using-kturtle;
+
+&getting-started;
+
+&programming-reference;
+
+&glossary;
+
+&translator-guide;
+
+<chapter id="credits">
+
+<title
+>Recoñecementos e licenza</title>
+
+<para
+>&kturtle; </para>
+<para
+>Copyright do software 2003-2007 Cies Breijs <email
+>cies EN kde PUNTO nl</email
+></para>
+
+<para
+>Copyright da documentación 2004, 2007, 2009 <itemizedlist>
+<listitem
+><para
+>Cies Breijs <email
+>cies EN kde PUNTO nl</email
+> </para
+></listitem>
+<listitem
+><para
+>&Anne-Marie.Mahfouf; <email
+>annma EN kde PUNTO org</email
+> </para
+></listitem>
+<listitem
+><para
+>&Philip.Rodrigues; &Philip.Rodrigues.mail; fixo algúns cambios tras unha revisión</para>
+</listitem>
+<listitem
+><para
+>Actualizar o como de tradución e algúns cambios tras unha revisión son obra de Andrew Coles <email
+>andrew_coles EN yahoo PUNTO co PUNTO uk</email
+></para>
+</listitem>
+</itemizedlist>
+</para>
+
+<para
+>mvillarino<email
+>mvillarino@users.sourceforge.net</email
+></para
+> <para
+>Xosé<email
+>xosecalvo@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+<!--&documentation.index; -->
+<index id='command-index'>
+<title
+>Índice das ordes</title>
+</index>
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->

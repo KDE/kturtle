@@ -1,0 +1,408 @@
+<chapter id="Glossary">
+<title
+>Glossario</title>
+
+<para
+>In questo capitolo troverai una spiegazione della maggior parte delle parole <quote
+>non comuni</quote
+> usate nel manuale.</para>
+
+<glosslist>
+<glossentry id="degrees">
+<glossterm
+>gradi</glossterm>
+<glossdef
+><para
+>Il grado è un'unità che serve a misurare gli angoli o le rotazioni. Un angolo completo è di 360 gradi, mezzo giro di 180 gradi e un quarto di giro di 90 gradi. I comandi <userinput
+>sinistra</userinput
+>, <userinput
+>destra</userinput
+> e <userinput
+>direzione</userinput
+> richiedono come argomento un angolo.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="input-output">
+<glossterm
+>argomenti e valori restituiti dai comandi</glossterm>
+<glossdef
+><para
+>Alcuni comandi richiedono degli argomenti, altri restituiscono dei valori, altri ancora richiedono degli argomenti <emphasis
+>e</emphasis
+> restituiscono valori, mentre alcuni comandi non richiedono argomenti e non restituiscono dei valori.</para>
+<para
+>Alcuni esempi di comandi che richiedono solo argomenti sono: <screen>
+avanti 50
+colorepenna 255,0,0
+scrivi "Ciao!"
+</screen
+> Il comando <userinput
+>avanti</userinput
+> viene chiamato con <userinput
+>50</userinput
+> come argomento. <userinput
+>avanti</userinput
+> richiede questo argomento per sapere di quanti <glossterm linkend="pixels"
+>pixel</glossterm
+> avanzare. <userinput
+>colorepenna</userinput
+> ha un colore come argomento e <userinput
+>scrivi</userinput
+> una stringa (di testo) come argomento. Nota che un argomento può essere anche un contenitore. L'esempio seguente illustra ciò: <screen
+>$x = 50
+scrivi $x
+avanti 50
+$str = "ciao!"
+scrivi $str
+</screen
+></para>
+
+<para
+>Adesso alcuni esempi di comandi che restituiscono dei dati: <screen>
+$x = chiedi "Inserisci qualcosa e premi OK... grazie!"
+$r = casuale 1,100
+</screen
+> Il comando <userinput
+>chiedi</userinput
+> richiede una stringa come argomento, e restituisce la stringa o il numero inserito. Come puoi vedere, il dato restituito da <userinput
+>chiedi</userinput
+> è memorizzato nel contenitore, chiamato <userinput
+>x</userinput
+>. Anche il comando <userinput
+>casuale</userinput
+> restituisce un valore. In questo caso, un numero da 1 a 100. Anche il dato restituito da <userinput
+>casuale</userinput
+> viene memorizzato in un contenitore, chiamato <userinput
+>r</userinput
+>. Nota che i contenitori <userinput
+>x</userinput
+> e <userinput
+>r</userinput
+> non sono usati nel codice di esempio qui sopra.</para>
+
+<para
+>Ci sono anche dei comandi che non richiedono degli argomenti e non restituiscono dei valori. Ecco alcuni esempi: <screen
+>pulisci
+pennasu
+</screen>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="intuitive-highlighting">
+<glossterm
+>evidenziazione intuitiva</glossterm>
+<glossdef
+><para
+>Questa è una funzionalità di &kturtle; che facilita la programmazione. Con la sintassi intuitiva, il codice che scrivi viene colorato con un colore che indica il tipo di codice. Nella lista seguente troverai i vari tipi di codice, e il colore con cui vengono colorati <link linkend="the-editor"
+>nell'editor</link
+>. <table>
+<title
+>I vari tipi di codice e il colore della loro evidenziazione</title>
+<tgroup cols="3">
+<tbody>
+<row>
+<entry
+>comandi regolari</entry>
+<entry
+>blu scuro</entry>
+<entry
+>I comandi regolari sono descritti <link linkend="commands"
+>qui</link
+>.</entry>
+</row>
+<row>
+<entry
+>comandi di controllo dell'esecuzione</entry>
+<entry
+>nero (grassetto)</entry>
+<entry
+>Questi comandi speciali controllano l'esecuzione; puoi leggerne di più <link linkend="controlling-execution"
+>qui</link
+>.</entry>
+</row>
+<row>
+<entry
+>commenti</entry>
+<entry
+>grigio</entry>
+<entry
+>Le righe che sono commentate iniziano con un carattere di commento (#). Queste righe sono ignorate durante l'esecuzione del codice. I commenti permettono ai programmatori di spiegare un po' meglio il proprio codice, o possono essere usati per evitare temporaneamente che un certo pezzo di codice venga eseguito.</entry>
+</row>
+<row>
+<entry
+>Parentesi {, }</entry>
+<entry
+>verde scuro (grassetto)</entry>
+<entry
+>Le parentesi quadre sono usate per raggruppare delle porzioni di codice. Sono usate spesso insieme con i <link linkend="controlling-execution"
+>comandi di controllo dell'esecuzione</link
+>.</entry>
+</row>
+<row>
+<entry
+>il comando <link linkend="learn"
+>impara</link
+></entry>
+<entry
+>verde chiaro (grassetto)</entry>
+<entry
+>Il comando <link linkend="learn"
+>impara</link
+> è usato per creare dei nuovi comandi.</entry>
+</row>
+<row>
+<entry
+>stringhe</entry>
+<entry
+>rosso</entry>
+<entry
+>Non c'è molto da dire sulle stringhe (di testo), tranne che iniziano e finiscono sempre con le virgolette doppie (").</entry>
+</row>
+<row>
+<entry
+>numeri</entry>
+<entry
+>rosso scuro</entry>
+<entry
+>Numeri, beh, non c'è molto da dire su di loro.</entry>
+</row>
+<row>
+<entry
+>valori booleani</entry>
+<entry
+>rosso scuro</entry>
+<entry
+>Ci sono esattamente due valori booleani: «vero» e «falso».</entry>
+</row>
+<row>
+<entry
+>variabili</entry>
+<entry
+>viola</entry>
+<entry
+>Iniziano con «$» e possono contenere numeri, stringhe o valori booleani.</entry>
+</row>
+<row>
+<entry
+>operatori matematici</entry>
+<entry
+>grigio</entry>
+<entry
+>Gli operatori matematici sono: <userinput
+>+</userinput
+>, <userinput
+>-</userinput
+>, <userinput
+>*</userinput
+>, <userinput
+>/</userinput
+> e <userinput
+>^</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>operatori di confronto</entry>
+<entry
+>blu chiaro (grassetto)</entry>
+<entry
+>Gli operatori di confronto sono: <userinput
+>==</userinput
+>, <userinput
+>!=</userinput
+>, <userinput
+>&lt;</userinput
+>, <userinput
+>&gt;</userinput
+>, <userinput
+>&lt;=</userinput
+> e <userinput
+>&gt;=</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>operatori booleani</entry>
+<entry
+>rosa (grassetto)</entry>
+<entry
+>Gli operatori booleani sono: <userinput
+>e</userinput
+>, <userinput
+>o</userinput
+> e <userinput
+>non</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>testo regolare</entry>
+<entry
+>nero</entry>
+<entry
+></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="pixels">
+<glossterm
+>pixel</glossterm>
+<glossdef
+><para
+>Un pixel è un puntino sullo schermo. Se guardi attentamente, vedrai che lo schermo del tuo monitor usa i pixel. Tutte le immagini sullo schermo sono costituite con questi pixel. Un pixel è la più piccola cosa che può essere disegnata su schermo.</para>
+<para
+>Molti comandi richiedono un numero di pixel come argomento. Questi comandi sono: <userinput
+>avanti</userinput
+>, <userinput
+>indietro</userinput
+>, <userinput
+>vai</userinput
+>, <userinput
+>vaix</userinput
+>, <userinput
+>vaiy</userinput
+>, <userinput
+>dimensionesfondo</userinput
+> e <userinput
+>spessorepenna</userinput
+>.</para>
+<para
+>Nelle versioni precedenti di &kturtle;, l'area di disegno era essenzialmente un'immagine bitmap, mentre in quelle più recenti è un'immagine vettoriale. Ciò significa che può essere ridotta e ingrandita, dato che un pixel non rappresenta necessariamente un punto sullo schermo.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="rgb">
+<glossterm
+>combinazioni RGB (codici di colore)</glossterm>
+<glossdef
+><para
+>Le combinazioni RGB sono usate per descrivere i colori. La <quote
+>R</quote
+> sta per <quote
+>rosso</quote
+>, la <quote
+>G</quote
+> per <quote
+>verde</quote
+> (green in inglese), e la <quote
+>B</quote
+> per <quote
+>blu</quote
+>. Un esempio di combinazione RGB è <userinput
+>255,0,0</userinput
+>: il primo valore (<quote
+>rosso</quote
+>) è 255, mentre gli altri sono 0: ciò rappresenta un rosso brillante. Ogni valore di una combinazione RGB deve essere compreso nell'intervallo da 0 a 255. Qui trovi una breve lista di colori usati spesso: <table frame="none">
+<title
+>Combinazioni RGB usate spesso</title>
+<tgroup cols="2" colsep="5" rowsep="1">
+<colspec colname="c1"/>
+<tbody>
+<row
+><entry
+><userinput
+>0,0,0</userinput
+></entry
+><entry
+>nero</entry
+></row>
+<row
+><entry
+><userinput
+>255,255,255</userinput
+></entry
+><entry
+>bianco</entry
+></row>
+<row
+><entry
+><userinput
+>255,0,0</userinput
+></entry
+><entry
+>rosso</entry
+></row>
+<row
+><entry
+><userinput
+>150,0,0</userinput
+></entry
+><entry
+>rosso scuro</entry
+></row>
+<row
+><entry
+><userinput
+>0,255,0</userinput
+></entry
+><entry
+>verde</entry
+></row>
+<row
+><entry
+><userinput
+>0,0,255</userinput
+></entry
+><entry
+>blu</entry
+></row>
+<row
+><entry
+><userinput
+>0,255,255</userinput
+></entry
+><entry
+>blu chiaro</entry
+></row>
+<row
+><entry
+><userinput
+>255,0,255</userinput
+></entry
+><entry
+>rosa</entry
+></row>
+<row
+><entry
+><userinput
+>255,255,0</userinput
+></entry
+><entry
+>giallo</entry
+></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para
+>Due comandi richiedono una combinazione RGB come argomento: questi sono <userinput
+>coloresfondo</userinput
+> e <userinput
+>colorepenna</userinput
+>.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="sprite">
+<glossterm
+>folletto</glossterm>
+<glossdef
+><para
+>Un folletto è un piccolo disegno che può essere mosso in giro per lo schermo. La nostra amata tartaruga, per esempio, è un folletto. <note
+><para
+>Con questa versione di &kturtle; il folletto non può essere cambiato da tartaruga in qualcos'altro. Le future versioni di &kturtle; permetteranno di farlo.</para
+></note
+></para
+></glossdef>
+</glossentry>
+
+</glosslist>
+
+</chapter>

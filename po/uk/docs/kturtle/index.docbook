@@ -1,0 +1,305 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kturtle;">
+  <!ENTITY turtlescript "TurtleScript">
+  <!ENTITY logo "Logo">
+  <!ENTITY % addindex "INCLUDE">
+  <!ENTITY % Ukrainian "INCLUDE"
+><!-- change language only here -->
+  <!ENTITY using-kturtle SYSTEM "using-kturtle.docbook">
+  <!ENTITY getting-started SYSTEM "getting-started.docbook">
+  <!ENTITY programming-reference SYSTEM "programming-reference.docbook">
+  <!ENTITY translator-guide SYSTEM "translator-guide.docbook">
+  <!ENTITY glossary SYSTEM "glossary.docbook">
+]>
+
+<book id="kturtle" lang="&language;">
+
+<bookinfo>
+<title
+>Підручник з &kturtle;</title>
+
+<authorgroup>
+<author
+><firstname
+>Cies</firstname
+> <surname
+>Breijs</surname
+> <affiliation
+> <address
+><email
+>cies AT kde DOT nl</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Anne-Marie</firstname
+> <surname
+>Mahfouf</surname
+> <affiliation
+> <address
+><email
+>annma AT kde DOT org</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+><email
+>piacentini AT kde DOT org</email
+></address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Юрій</firstname
+><surname
+>Чорноіван</surname
+><affiliation
+><address
+><email
+>yurchor@ukr.net</email
+></address
+></affiliation
+><contrib
+>Переклад українською</contrib
+></othercredit
+> 
+</authorgroup>
+
+
+<copyright>
+<year
+>2004</year
+><year
+>2009</year>
+<holder
+>Cies Breijs</holder>
+</copyright>
+
+<copyright>
+<year
+>2004</year
+><year
+>2007</year>
+<holder
+>&Anne-Marie.Mahfouf;</holder>
+</copyright>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Mauricio Piacentini</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>20 січня 2021 року</date>
+<releaseinfo
+>Програми 20.12</releaseinfo>
+
+<abstract>
+<para
+>&kturtle; є навчальним середовищем програмування, що спрямоване на якомога простіший процес навчання програмуванню. Для цього у &kturtle; передбачено доступ до всіх інструментів програмування за допомогою графічного інтерфейсу. Мовою програмування середовища є &turtlescript;, у цій мові команди може бути перекладено мовою користувача.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KTurtle</keyword>
+<keyword
+>освіта</keyword>
+<keyword
+>мова</keyword>
+<keyword
+>рідна</keyword>
+<keyword
+>програмування</keyword>
+<keyword
+>TurtleScript</keyword>
+<keyword
+>Лого</keyword>
+<keyword
+>черепашка</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Вступ</title>
+
+<para
+>&kturtle; навчальне середовище для програмування, яке використовує мову програмування <link linkend="what-is-turtlelang"
+>&turtlescript;</link
+>, дуже близьку і засновану на &logo;. Метою &kturtle; є зробити програмування якомога легшим і доступнішим. Це робить &kturtle; придатним для навчання дітей математиці, геометрії і... так, програмуванню. Одною з основних особливостей &turtlescript; є можливість перекладу команд мовою, якою розмовляє програміст.</para>
+
+<para
+>&kturtle; названо на честь <quote
+>черепашки (turtle)</quote
+>, яка відіграє головну роль у середовищі для програмування. Користувач, зазвичай, створює перелік наказів черепашці, за допомогою команд мови &turtlescript;, з метою намалювати на <link linkend="the-canvas"
+>полотні</link
+> картинку.</para>
+
+<sect1 id="what-is-turtlelang">
+<title
+>Звідки взявся &turtlescript;?</title>
+<para
+>&turtlescript;, мова програмування, яка використовується у &kturtle;, засновано на деяких з фундаментальних концепцій сімейства мов програмування &logo;. Першу версію &logo; було створено Сеймуром Папертом з лабораторії штучного інтелекту Массачусетського Технологічного Університету у 1967 році, як відгалуження мови програмування LISP. З того часу було випущено багато версій &logo;. До 1980 року популярність &logo; досягла максимуму, існували версії для систем MSX, Commodore, Atari, Apple II і IBM PC. Ці версії мали в основному навчальну мету. LCSI випустила програму <application
+>&Mac;&logo;</application
+> у 1985 році як інструмент для професійних програмістів, але він так і залишився непопулярним. Массачусетський Технологічний Університет все ще підтримує <ulink url="https://el.media.mit.edu/logo-foundation/"
+>сайт про &logo;</ulink
+>. На цьому сайті ви знайдете список декількох популярних реалізацій цієї мови.</para>
+<para
+>У &turtlescript; передбачено можливість, характерну для інших реалізацій мови &logo;: можливість перекласти команди рідною мовою учня. Це полегшує вивчення програмування учнями без знання англійської або з незначними знаннями цієї мови. Окрім цієї особливості, у &kturtle; передбачено <link linkend="features-of-kturtle"
+>багато інших можливостей</link
+>, спрямованих на полегшення для учнів початкових кроків у програмуванні.</para>
+</sect1>
+
+
+<sect1 id="features-of-kturtle">
+<title
+>Можливості &kturtle;</title>
+<para
+>&kturtle; має декілька приємних особливостей, які роблять перші кроки у програмуванні фантастично простими. Ось декілька основних можливостей &kturtle;: <itemizedlist>
+<listitem
+><para
+>Комплексне середовище з інтерпретатором &turtlescript;, <link linkend="the-editor"
+>редактором</link
+>, <link linkend="the-canvas"
+>полотном</link
+> та іншими інструментами у одній програмі (без зовнішніх залежностей).</para
+></listitem>
+<listitem
+><para
+>Можливість перекладу команд &turtlescript; за допомогою інструментів перекладу &kde;.</para
+></listitem>
+<listitem
+><para
+>&turtlescript; підтримує визначені користувачем функції, рекурсію та динамічне перемикання типів.</para
+></listitem>
+<listitem
+><para
+>Виконання програми можна сповільнити, призупинити або припинити у будь-який зручний час.</para
+></listitem>
+<listitem
+><para
+>Потужний <link linkend="the-editor"
+>редактор</link
+> з інтуїтивно зрозумілим підсвічуванням синтаксису, нумеруванням рядків, позначенням помилок, візуальним виконанням та додатковими можливостями.</para
+></listitem>
+<listitem
+><para
+><link linkend="the-canvas"
+>Полотно</link
+>, на якому малює черепашка, можна надрукувати або зберегти як зображення (PNG) або креслення (SVG).</para
+></listitem>
+<listitem
+><para
+>Контекстна довідка: довідка саме там, де вона потрібна. Просто натисніть клавішу <keysym
+>F2</keysym
+> (або скористайтеся пунктом меню <menuchoice
+><guimenu
+>Довідка</guimenu
+><guimenuitem
+>Довідка щодо: ...</guimenuitem
+></menuchoice
+>), щоб отримати довідку з фрагмента коду, який перебуває під курсором.</para
+></listitem>
+<listitem
+><para
+>Діалогове вікно помилок, у якому повідомлення про помилку пов’язуються з рядками, де ці помилки трапилися у програмі, і позначаються червоним кольором.</para
+></listitem>
+<listitem
+><para
+>Спрощена термінологія програмування.</para
+></listitem>
+<listitem
+><para
+>Вбудовані приклади програм зроблять перші кроки надзвичайно простими. Ці приклади можна перекласти за допомогою інструментів перекладу &kde;.</para
+></listitem>
+</itemizedlist>
+</para>
+</sect1>
+</chapter>
+
+&using-kturtle;
+
+&getting-started;
+
+&programming-reference;
+
+&glossary;
+
+&translator-guide;
+
+<chapter id="credits">
+
+<title
+>Подяки і ліцензія</title>
+
+<para
+>&kturtle; </para>
+<para
+>Авторські права на програмне забезпечення належать Cies Breijs <email
+>cies AT kde DOT nl</email
+>, 2003–2007</para>
+
+<para
+>Авторські права на документацію (2004, 2007, 2009) <itemizedlist>
+<listitem
+><para
+>Cies Breijs <email
+>cies AT kde DOT nl</email
+> </para
+></listitem>
+<listitem
+><para
+>&Anne-Marie.Mahfouf; &Anne-Marie.Mahfouf.mail; </para
+></listitem>
+<listitem
+><para
+>Деякі зміни коректурного характеру — &Philip.Rodrigues; &Philip.Rodrigues.mail;</para>
+</listitem>
+<listitem
+><para
+>Оновлення довідника з перекладу і деякі коректурні виправлення — Andrew Coles <email
+>andrew_coles AT yahoo DOT co DOT uk</email
+></para>
+</listitem>
+</itemizedlist>
+</para>
+
+<para
+>Переклад українською: Юрій Чорноіван <email
+>yurchor@ukr.net</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+<!--&documentation.index; -->
+<index id='command-index'>
+<title
+>Покажчик команд</title>
+</index>
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->

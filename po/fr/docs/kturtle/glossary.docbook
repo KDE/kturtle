@@ -1,0 +1,403 @@
+<chapter id="Glossary">
+<title
+>Glossaire</title>
+
+<para
+>Dans ce chapitre, vous trouverez une explication de la plupart des mots <quote
+>difficiles</quote
+> qui sont utilisés dans ce guide de l'utilisateur.</para>
+
+<glosslist>
+<glossentry id="degrees">
+<glossterm
+>degrés</glossterm>
+<glossdef
+><para
+>Les degrés sont les unités de mesure des angles ou des tournants. Un tour complet est 360 degrés, un demi tour est 180 degrés et un quart de tour est 90 degrés. Les commandes <userinput
+>tournegauche</userinput
+>, <userinput
+>tournedroite</userinput
+> et <userinput
+>direction</userinput
+> demandent une entrée en degrés.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="input-output">
+<glossterm
+>entrée et sortie des commandes</glossterm>
+<glossdef
+><para
+>Certaines commandes reçoivent une entrée, d'autres commandes donnent une sortie, certaines commandes reçoivent une entrée <emphasis
+>et</emphasis
+> donnent une sortie et d'autres commandes ne reçoivent pas d'entrée ni ne donnent de sortie.</para>
+<para
+>Voici des exemples de commandes qui ne reçoivent que des entrées : <screen>
+avance 50
+couleurcrayon 255,0,0
+écris "Bonjour ! "
+</screen
+> La commande <userinput
+>avance</userinput
+> reçoit <userinput
+>50</userinput
+> comme entrée. <userinput
+>avance</userinput
+> a besoin de cette entrée pour savoir de combien de <glossterm linkend="pixels"
+>pixels</glossterm
+> la tortue doit avancer. <userinput
+>couleurcrayon</userinput
+> prend une couleur comme entrée et <userinput
+>écris</userinput
+> prend une chaîne de caractères (un morceau de texte) comme entrée. Remarquez que l'entrée peut aussi être un conteneur. L'exemple suivant illustre cela : <screen
+>$x = 50
+écris $x
+$str = "Bonjour ! "
+écris $str
+</screen
+></para>
+
+<para
+>Maintenant quelques exemples de commandes qui donnent une sortie : <screen>
+$x = demande "Veuillez saisir quelque chose et faire Entrée... Merci ! "
+$r = hasard 1, 100
+</screen
+> La commande <userinput
+>demande</userinput
+> reçoit une chaîne de caractères comme entrée et en sortie le nombre ou la chaîne qui est entrée. Comme vous pouvez le voir, la sortie de <userinput
+>demande</userinput
+> est stockée dans le conteneur <userinput
+>x</userinput
+>. La commande <userinput
+>hasard</userinput
+> donne aussi une sortie. Dans ce cas, la sortie est un nombre entre 1 et 100. La sortie de hasard est ensuite stockée dans un conteneur appelé <userinput
+>r</userinput
+>. Veuillez noter que les conteneurs <userinput
+>x</userinput
+> et <userinput
+>r</userinput
+> ne sont pas utilisés dans l'exemple de code ci-dessus.</para>
+
+<para
+>Il existe aussi des commandes qui ne reçoivent pas d'entrée et qui ne donnent pas de sortie. Voici quelques exemples : <screen
+>nettoietout
+lèvecrayon
+</screen>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="intuitive-highlighting">
+<glossterm
+>coloration syntaxique</glossterm>
+<glossdef
+><para
+>Ceci est une caractéristique de &kturtle; qui rend la programmation vraiment plus facile. Avec la coloration syntaxique, le code que vous écrivez prend une couleur qui indique de quel type de code il s'agit. Dans la liste suivante, vous trouverez les différents types de code ainsi que la couleur qu'ils auront dans <link linkend="the-editor"
+>l'éditeur</link
+>. <table>
+<title
+>Les différents types de code et leur coloration syntaxique</title>
+<tgroup cols="3">
+<tbody>
+<row>
+<entry
+>commandes habituelles</entry>
+<entry
+>bleu foncé</entry>
+<entry
+>Les commandes habituelles sont décrites <link linkend="commands"
+>ici</link
+>.</entry>
+</row>
+<row>
+<entry
+>Commandes contrôlant l'exécution</entry>
+<entry
+>noir (gras)</entry>
+<entry
+>Ces commandes spéciales contrôlent l'exécution. Pour en savoir plus, veuillez voir <link linkend="controlling-execution"
+>ici</link
+>.</entry>
+</row>
+<row>
+<entry
+>commentaires</entry>
+<entry
+>gris</entry>
+<entry
+>Les lignes qui sont commentées débutent par le caractère de commentaire (#). Ces lignes sont ignorées lorsque le code est exécuté. Les commentaires permettent au programmeur d'expliquer son code ou ils peuvent aussi être utilisés pour empêcher temporairement une partie du code d'être exécutée.</entry>
+</row>
+<row>
+<entry
+>accolades {, }</entry>
+<entry
+>vert foncé (gras)</entry>
+<entry
+>Les accolades sont utilisées pour grouper des portions de code. Les crochets sont souvent utilisés en conjonction avec <link linkend="controlling-execution"
+>les contrôleurs d'exécution</link
+>.</entry>
+</row>
+<row>
+<entry
+>la commande <link linkend="learn"
+>apprends</link
+></entry>
+<entry
+>vert clair (gras)</entry>
+<entry
+>La commande <link linkend="learn"
+>apprends</link
+> est utilisée pour créer de nouvelles commandes.</entry>
+</row>
+<row>
+<entry
+>chaînes</entry>
+<entry
+>rouge</entry>
+<entry
+>Il n'y a pas non plus grand-chose à dire sur les chaînes de caractère (texte) sauf qu'elles commencent et finissent toujours avec des guillemets doubles (").</entry>
+</row>
+<row>
+<entry
+>nombres</entry>
+<entry
+>rouge foncé</entry>
+<entry
+>Les nombres, il n'y a rien à dire sur eux.</entry>
+</row>
+<row>
+<entry
+>valeurs booléennes</entry>
+<entry
+>rouge foncé</entry>
+<entry
+>Il y a exactement deux valeurs booléennes : vrai et faux.</entry>
+</row>
+<row>
+<entry
+>variables</entry>
+<entry
+>violet</entry>
+<entry
+>démarre par un « $ » et peut contenir des nombres, des chaînes ou des valeurs booléennes.</entry>
+</row>
+<row>
+<entry
+>opérateurs mathématiques</entry>
+<entry
+>gris</entry>
+<entry
+>Voici les opérateurs mathématiques : <userinput
+>+</userinput
+>, <userinput
+>-</userinput
+>, <userinput
+>*</userinput
+>, <userinput
+>/</userinput
+> et <userinput
+>^</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>opérateurs de comparaison</entry>
+<entry
+>bleu clair (gras)</entry>
+<entry
+>Voici les opérateurs de comparaison : <userinput
+>==</userinput
+>, <userinput
+>!=</userinput
+>, <userinput
+>&lt;</userinput
+>, <userinput
+>&gt;</userinput
+>, <userinput
+>&lt;=</userinput
+> et <userinput
+>&gt;=</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>opérateurs booléens</entry>
+<entry
+>rose (gras)</entry>
+<entry
+>Voici les opérateurs booléens : <userinput
+>et</userinput
+>, <userinput
+>ou</userinput
+> et <userinput
+>non</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>texte normal</entry>
+<entry
+>noir</entry>
+<entry
+></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="pixels">
+<glossterm
+>pixels</glossterm>
+<glossdef
+><para
+>Vous verrez que l'écran de votre moniteur utilise des pixels. Toutes les images sur l'écran sont construites avec ces pixels. Un pixel est la plus petite chose qui puisse être dessinée sur l'écran.</para>
+<para
+>Beaucoup de commandes demandent un nombre de pixels comme entrée. Ces commandes sont : <userinput
+>avance</userinput
+>, <userinput
+>recule</userinput
+>, <userinput
+>va</userinput
+>, <userinput
+>vax</userinput
+>, <userinput
+>vay</userinput
+>, <userinput
+>taillecanevas</userinput
+> et <userinput
+>largeurcrayon</userinput
+>.</para>
+<para
+>Dans les versions précédentes de &kturtle;, le canevas était essentiellement une image matricielle. Dans les dernières versions, le canevas est un dessin vectoriel. Ceci signifie que l'on peut zoomer le canevas, et ainsi un pixel ne se traduit pas nécessairement par un point sur l'écran.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="rgb">
+<glossterm
+>Les combinaisons RVB (codes de couleur)</glossterm>
+<glossdef
+><para
+>Les combinaisons RVB sont utilisées pour décrire les couleurs. Le <quote
+>R</quote
+> veut dire <quote
+>rouge</quote
+>, le <quote
+>V</quote
+> veut dire <quote
+>vert</quote
+> et le <quote
+>B</quote
+> signifie <quote
+>bleu</quote
+>. Un exemple d'une combinaison RVB est <userinput
+>255, 0, 0</userinput
+> : la première valeur (<quote
+>rouge</quote
+>) est 255 et les autres sont fixées à zéro, cela représente donc un rouge vif. Chaque valeur dans une combinaison RVB doit être comprise entre 0 et 255. Voici une courte liste des combinaisons RVB les plus souvent utilisées : <table frame="none">
+<title
+>Les combinaisons RVB les plus souvent utilisées</title>
+<tgroup cols="2" colsep="5" rowsep="1">
+<colspec colname="c1"/>
+<tbody>
+<row
+><entry
+><userinput
+>0, 0, 0</userinput
+></entry
+><entry
+>noir</entry
+></row>
+<row
+><entry
+><userinput
+>255, 255, 255</userinput
+></entry
+><entry
+>blanc</entry
+></row>
+<row
+><entry
+><userinput
+>255, 0, 0</userinput
+></entry
+><entry
+>rouge</entry
+></row>
+<row
+><entry
+><userinput
+>150, 0, 0</userinput
+></entry
+><entry
+>rouge foncé</entry
+></row>
+<row
+><entry
+><userinput
+>0, 255, 0</userinput
+></entry
+><entry
+>vert</entry
+></row>
+<row
+><entry
+><userinput
+>0, 0, 255</userinput
+></entry
+><entry
+>bleu</entry
+></row>
+<row
+><entry
+><userinput
+>0, 255, 255</userinput
+></entry
+><entry
+>bleu clair</entry
+></row>
+<row
+><entry
+><userinput
+>255, 0, 255</userinput
+></entry
+><entry
+>rose</entry
+></row>
+<row
+><entry
+><userinput
+>255, 255, 0</userinput
+></entry
+><entry
+>jaune</entry
+></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para
+>Deux commandes ont besoin d'une combinaison RVB comme entrée : ces commandes sont <userinput
+>couleurcanevas</userinput
+> et <userinput
+>couleurcrayon</userinput
+>.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="sprite">
+<glossterm
+>sprite</glossterm>
+<glossdef
+><para
+>Un lutin est une petite image qui peut bouger sur l'écran. Notre chère tortue, par exemple, est un lutin.</para>
+<para
+>Remarque : dans cette version de &kturtle; le lutin ne peut changer de tortue en quelque chose d'autre. Dans les versions futures de &kturtle;, ce sera possible.</para
+></glossdef>
+</glossentry>
+
+</glosslist>
+
+</chapter>

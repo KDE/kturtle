@@ -1,0 +1,12 @@
+<chapter id="translators">
+<title
+>Vertėjo vadovas verčiant &kturtle;</title>
+<para
+>Kaip jūs jau tikriausiai žinote, &kturtle; programavimo kalbą &turtlescript; galima išversti. Taip jauniems studentams pašalinamas barjeras jų bandymuose suprasti programavimo pagrindus.</para>
+<para
+>Verčiant &kturtle; į naują kalbą pastebėsite, kad be vartotojo sąsajos eilučių .pot failuose, naudojamuose &kde; vertimuose, įtrauktos ir programos komandos, pavyzdžiai bei klaidų pranešimai. Viskas verčiama naudojant standartinius &kde; vertimo metodus, bet visgi jums patariama šiek tiek pasidomėti, kaip versti (apie tai rasite užrašų ir vertėjų komentaruose).</para>
+<para
+>Apie vertimo procesą daugiau sužinosite apsilankę tinklapyje <ulink url="http://edu.kde.org/kturtle/translator.php"
+>http://edu.kde.org/kturtle/translator.php</ulink
+>. Labai ačiū už Jūsų darbą! KTurtle labai reikalinga vertėjų pagalba.</para>
+</chapter>

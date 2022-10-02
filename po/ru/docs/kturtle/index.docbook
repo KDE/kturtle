@@ -1,0 +1,361 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kturtle;">
+  <!ENTITY turtlescript "TurtleScript">
+  <!ENTITY logo "Logo">
+  <!ENTITY % addindex "INCLUDE">
+  <!ENTITY % Russian "INCLUDE"
+><!-- change language only here -->
+  <!ENTITY using-kturtle SYSTEM "using-kturtle.docbook">
+  <!ENTITY getting-started SYSTEM "getting-started.docbook">
+  <!ENTITY programming-reference SYSTEM "programming-reference.docbook">
+  <!ENTITY translator-guide SYSTEM "translator-guide.docbook">
+  <!ENTITY glossary SYSTEM "glossary.docbook">
+]>
+
+<book id="kturtle" lang="&language;">
+
+<bookinfo>
+<title
+>Руководство пользователя &kturtle;</title>
+
+<authorgroup>
+<author
+><firstname
+>Cies</firstname
+> <surname
+>Breijs</surname
+> <affiliation
+> <address
+><email
+>cies AT kde DOT nl</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Anne-Marie</firstname
+> <surname
+>Mahfouf</surname
+> <affiliation
+> <address
+><email
+>annma AT kde DOT org</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+><email
+>piacentini AT kde DOT org</email
+></address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Владимир</firstname
+><surname
+>Давыдов</surname
+><affiliation
+><address
+><email
+>trotski@inbox.ru</email
+></address
+></affiliation
+><contrib
+>Перевод на русский</contrib
+></othercredit
+><othercredit role="translator"
+><firstname
+>Николай</firstname
+><surname
+>Шафоростов</surname
+><affiliation
+><address
+><email
+>shafff@ukr.net</email
+></address
+></affiliation
+><contrib
+>Редакция перевода</contrib
+></othercredit
+><othercredit role="translator"
+><firstname
+>Александр</firstname
+><surname
+>Поташев</surname
+><affiliation
+><address
+><email
+>aspotashev@gmail.com</email
+></address
+></affiliation
+><contrib
+>Редакция перевода</contrib
+></othercredit
+><othercredit role="translator"
+><firstname
+>Артём</firstname
+><surname
+>Золочевский</surname
+><affiliation
+><address
+><email
+>artem.zolochevskiy@gmail.com</email
+></address
+></affiliation
+><contrib
+>Редакция перевода</contrib
+></othercredit
+> 
+</authorgroup>
+
+
+<copyright>
+<year
+>2004</year
+><year
+>2009</year>
+<holder
+>Cies Breijs</holder>
+</copyright>
+
+<copyright>
+<year
+>2004</year
+><year
+>2007</year>
+<holder
+>&Anne-Marie.Mahfouf;</holder>
+</copyright>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Mauricio Piacentini</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>7 мая 2016 г.</date>
+<releaseinfo
+>0.8.1 beta (Приложения KDE 16.04)</releaseinfo>
+
+<abstract>
+<para
+>&kturtle; — это образовательная программная оболочка, которая стремится сделать процесс обучения программированию настолько простым, насколько это возможно. Для этого в &kturtle; доступ ко всем инструментам программирования осуществляется из пользовательского интерфейса. В качестве языка программирования используется &turtlescript;, все команды которого могут быть переведены на любой язык.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>&package;</keyword>
+<keyword
+>KTurtle</keyword>
+<keyword
+>образование</keyword>
+<keyword
+>язык</keyword>
+<keyword
+>родной</keyword>
+<keyword
+>программирование</keyword>
+<keyword
+>&turtlescript;</keyword>
+<keyword
+>&logo;</keyword>
+<keyword
+>Черепашка</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Введение</title>
+
+<para
+>&kturtle; — это образовательная программная оболочка, использующая язык программирования <link linkend="what-is-turtlelang"
+>&turtlescript;</link
+>, основанный на языке &logo;. Целью &kturtle; является сделать программирование настолько лёгким и доступным, насколько это возможно. Это делает &kturtle; подходящим инструментом для обучения детей основам математики, геометрии и... программирования. Одной из отличительных черт &turtlescript; является возможность перевода его команд на родной разговорный язык программиста.</para>
+
+<para
+>&kturtle; назван в честь <quote
+>Черепашки</quote
+>, которая является центральным персонажем программной оболочки. Чтобы создать рисунок на <link linkend="the-canvas"
+>холсте</link
+> ученик управляет передвижениями Черепашки, используя команды языка &turtlescript;.</para>
+
+<sect1 id="what-is-turtlelang">
+<title
+>Что такое &turtlescript;?</title>
+<para
+>&turtlescript; —  язык программирования, использующийся в &kturtle;, основывается на семействе языков &logo;. Первая версия языка программирования &logo; была создана Сеймуром Пейпертом  (Seymour Papert) в Лаборатории Искусственного Интеллекта Массачусетского Технологического Института в 1967 году как ответвление языка программирования LISP. Впоследствии в свет вышло множество версий &logo;. К 1980 году &logo; становится очень популярным, активно используются его версии для MSX, Commodore, Atari, Apple II и IBM PC компьютеров — главным образом, в образовательных целях. Массачусетский Технологический Институт до сих пор поддерживает <ulink url="http://el.media.mit.edu/logo-foundation/"
+>сайт, посвящённый &logo;</ulink
+>, где содержится список популярных реализаций этого языка.</para>
+<para
+>&turtlescript; обладает особенностью, которую можно найти и во многих других реализациях &logo;: возможностью перевода команд на родной язык ученика. Эта особенность облегчает начало работы ученикам, не знающим, либо недостаточно знающим английский язык. Кроме этой особенности &kturtle; обладает <link linkend="features-of-kturtle"
+>множеством других возможностей</link
+>, облегчающих  ученикам их первые шаги в программировании.</para>
+</sect1>
+
+
+<sect1 id="features-of-kturtle">
+<title
+>Возможности &kturtle;</title>
+<para
+>&kturtle; обладает замечательными особенностями, которые позволят начать программировать легко и непринуждённо. Вот небольшой список возможностей &kturtle;: <itemizedlist>
+<listitem
+><para
+>Интегрированная среда с интерпретатором &turtlescript;, <link linkend="the-editor"
+>редактором</link
+>, <link linkend="the-canvas"
+>холстом</link
+> и другими инструментами внутри одной программы (без дополнительных зависимостей);</para
+></listitem>
+<listitem
+><para
+>Возможность перевода команд &turtlescript;, используя инструменты перевода &kde;;</para
+></listitem>
+<listitem
+><para
+>&turtlescript; поддерживает пользовательские функции, рекурсию и динамическую типизацию;</para
+></listitem>
+<listitem
+><para
+>Выполнение можно замедлить, приостановить и прервать в любое время;</para
+></listitem>
+<listitem
+><para
+>Мощный <link linkend="the-editor"
+>редактор</link
+> с интуитивной подсветкой синтаксиса, нумерацией строк, маркером ошибок, визуальным контролем выполнения и многим другим;</para
+></listitem>
+<listitem
+><para
+><link linkend="the-canvas"
+>Холст</link
+>, на котором рисует Черепашка, может быть распечатан или сохранён как изображение в растровом (PNG) или векторном (SVG) формате;</para
+></listitem>
+<listitem
+><para
+>Контекстная справка: помощь там, где вы в ней нуждаетесь. Просто нажмите <keysym
+>F2</keysym
+> (или выберите <menuchoice
+><guimenu
+>Справка</guimenu
+><guimenuitem
+>Справка по ...</guimenuitem
+></menuchoice
+>) для получения справки по находящемуся под курсором фрагменту кода;</para
+></listitem>
+<listitem
+><para
+>Диалоговое окно с сообщениями об ошибках, указывающее на ошибки в программе и подсвечивающее их красным цветом;</para
+></listitem>
+<listitem
+><para
+>Технология упрощённого программирования;</para
+></listitem>
+<listitem
+><para
+>Встроенные примеры программ, облегчающие начало работы. Эти примеры переведены с использованием инструментов перевода &kde;.</para
+></listitem>
+</itemizedlist>
+</para>
+</sect1>
+</chapter>
+
+&using-kturtle;
+
+&getting-started;
+
+&programming-reference;
+
+&glossary;
+
+&translator-guide;
+
+<chapter id="credits">
+
+<title
+>Авторские права и лицензия</title>
+
+<para
+>&kturtle; </para>
+<para
+>&copy; 2003-2007 Cies Breijs <email
+>cies AT kde DOT nl</email
+></para>
+
+<para
+>Документация &copy; 2004, 2007, 2009 <itemizedlist>
+<listitem
+><para
+>Cies Breijs <email
+>cies AT kde DOT nl</email
+> </para
+></listitem>
+<listitem
+><para
+>&Anne-Marie.Mahfouf; <email
+>annma AT kde DOT org</email
+> </para
+></listitem>
+<listitem
+><para
+>Вычитка: &Philip.Rodrigues; &Philip.Rodrigues.mail;</para>
+</listitem>
+<listitem
+><para
+>Обновление руководства переводчика и вычитка: Andrew Coles <email
+>andrew_coles AT yahoo DOT co DOT uk</email
+></para>
+</listitem>
+</itemizedlist>
+</para>
+
+<para
+>Перевод на русский: Владимир Давыдов <email
+>trotski@inbox.ru</email
+></para
+><para
+>Редакция перевода: Николай Шафоростов <email
+>shafff@ukr.net</email
+></para
+><para
+>Редакция перевода: Александр Поташев<email
+>aspotashev@gmail.com</email
+></para
+><para
+>Редакция перевода: Артём Золочевский <email
+>artem.zolochevskiy@gmail.com</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+<!--&documentation.index; -->
+<index id='command-index'>
+<title
+>Список команд</title>
+</index>
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->

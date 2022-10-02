@@ -1,0 +1,12 @@
+<chapter id="translators">
+<title
+>Udhëzuesi i Përkthyesit të &kturtle;</title>
+<para
+>Siç mund ta dini tashmë, gjuha e programimit të &kturtle;  &turtlescript;, lejon të jenë e përkthyer. Kjo largon një pengesë veçanërisht për nxënësit e vegjël, në përpjekjet e tyre për të kuptuar bazat e programimit.</para>
+<para
+>Gjatë përkthimit të &kturtle; në një gjuhë tjetër, përveç vargjeve të ndërfaqes GUI, ju do të gjeni edhe komandat e programimit, shembujt dhe mesazhet e gabimit, të cilët janë përfshirë  në skedarin standard .pot që përdoret për përkthim në &kde;. Çdo gjë përkthehet duke përdorur metodën e zakonshme të përkthimit në &kde;, e megjithatë është shumë e këshillueshme që të mësohet pak se si duhen përkthyer këto (siç do të lexoni gjithashtu edhe në komentet për përkthyesin).</para>
+<para
+>Ju lutem shikoni në <ulink url="http://edu.kde.org/kturtle/translator.php"
+>http://edu.kde.org/kturtle/translator.php</ulink
+> për më shumë informacion në lidhje me procesin e përkthimit. Shumë faleminderit për punën tuaj! KTurtle varet shumë nga përkthimet e tij.</para>
+</chapter>

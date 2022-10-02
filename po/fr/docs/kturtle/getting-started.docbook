@@ -1,0 +1,306 @@
+<chapter id="getting-started">
+<title
+>Démarrage rapide</title>
+<para
+>Lorsque vous démarrez &kturtle; vous allez voir quelque chose comme cela : <screenshot
+> <screeninfo
+>Voici une capture d'écran de &kturtle; lorsque vous le lancez pour la première fois</screeninfo
+> <mediaobject
+> <imageobject
+> <imagedata fileref="mainwindow.png" format="PNG"/> </imageobject
+> <textobject
+> <phrase
+>&kturtle; tout juste démarré</phrase
+> </textobject
+> </mediaobject
+> </screenshot
+> Dans ce démarrage rapide, nous supposons que la langue des commandes &turtlescript; est le français. Vous pouvez modifier cette langue dans <menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Langue du code</guimenuitem
+></menuchoice
+> dans la section <guilabel
+>Langue</guilabel
+>. Soyez conscient que la langue que vous fixez ici pour &kturtle; est celle que vous utiliserez pour saisir les commandes &turtlescript;, non la langue utilisé par &kde; sur l'ordinateur et utilisée pour afficher l'interface et les menus de &kturtle;.</para>
+
+<sect1 id="first-steps">
+<title
+>Premières étapes avec le &turtlescript; : faites connaissance avec la tortue !</title>
+<para
+>Vous avez remarqué que la tortue est au milieu du canevas : vous allez apprendre à la contrôler en utilisant des commandes dans l'éditeur de code.</para>
+
+<sect2 id="the-turtle-moves">
+<title
+>La tortue bouge</title>
+<para
+>Commençons par faire bouger la tortue. Notre tortue peut faire trois sortes de mouvements, (1) elle peut avancer et reculer, (2) elle peut tourner à gauche et à droite et (3) elle peut aller directement (sauter) à une position donnée sur l'écran. Vous pouvez essayer ceci par exemple :</para>
+<para>
+<screen
+>avance 90
+tournegauche 90 
+</screen
+>Saisissez ou copier / coller ce code dans l'éditeur puis exécutez-le (en utilisant <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Exécuter</guimenu
+><guimenuitem
+>Exécuter</guimenuitem
+></menuchoice
+></link
+>) pour voir le résultat.</para>
+
+<para
+>Pendant que vous saisissez et exécutez les commandes comme celles ci-dessus dans l'éditeur, vous pouvez remarquer les choses suivantes :</para>
+<orderedlist>
+<listitem
+><para
+>après avoir exécuté les commandes, la tortue a avancé, a dessiné une ligne puis s'est tournée d'un quart de tour vers la gauche. Ceci est le résultat des commandes <link linkend="forward"
+><userinput
+>avance</userinput
+></link
+> et <link linkend="turnleft"
+><userinput
+>tournegauche</userinput
+></link
+> ;</para>
+</listitem>
+<listitem>
+<para
+>la couleur du code change pendant que vous le saisissez : cette caractéristique est appelée <emphasis
+>coloration syntaxique intuitive</emphasis
+>. Différentes sortes de commandes sont colorées différemment. Ceci rend la lecture de grandes parties de code plus facile. Vous pouvez aussi détecter facilement des erreurs typographiques dans le cas où un mot n'est pas coloré ;</para>
+</listitem>
+<listitem>
+<para
+>la tortue dessine une fine ligne noire ;</para>
+</listitem>
+<listitem>
+<para
+>peut-être avez-vous eu un message d'erreur. Cela peut vouloir dire deux choses : vous pouvez avoir fait une erreur en copiant les commandes ou vous n'avez pas fixé la langue qui correspond aux commandes de &turtlescript; (vous pouvez faire cela en choisissant <menuchoice
+><guimenu
+>Configuration</guimenu
+><guisubmenu
+>Langue du code</guisubmenu
+></menuchoice
+>).</para>
+</listitem>
+</orderedlist>
+
+<para
+>Vous avez certainement compris que <userinput
+>avance 100</userinput
+> dit à la tortue d'avancer en dessinant une ligne et que <userinput
+>tournegauche 90</userinput
+> demande à la tortue de tourner vers la gauche de 90 <glossterm linkend="degrees"
+>degrés</glossterm
+>.</para>
+
+<para
+>Veuillez suivre les liens suivants vers le manuel de référence pour une explication complète des nouvelles commandes : <link linkend="forward"
+><userinput
+>avance</userinput
+></link
+>, <link linkend="backward"
+><userinput
+>recule</userinput
+></link
+>, <link linkend="turnleft"
+><userinput
+>tournegauche</userinput
+></link
+>, et <link linkend="turnright"
+><userinput
+>tournedroite</userinput
+></link
+>.</para>
+</sect2>
+
+<sect2 id="more-examples">
+<title
+>Plus d'exemples</title>
+<para
+>Le premier exemple était très simple, nous allons avancer un peu plus loin !</para>
+
+<para>
+
+<screen
+>initialise
+
+taillecanevas 200, 200
+couleurcanevas 0, 0, 0
+couleurcrayon 255, 0, 0
+largeurcrayon 5
+nettoietout
+
+va 20, 20
+direction 135
+
+avance 200
+tournegauche 135
+avance 100
+tournegauche 135
+avance 141
+tournegauche 135
+avance 100
+tournegauche 45
+
+va 40,100
+</screen
+>Encore une fois, vous pouvez saisir ou copier / coller le code dans l'éditeur ou aussi ouvrir le fichier exemple <filename
+>flèche</filename
+> dans le menu <guimenu
+>Exemples</guimenu
+> et l'exécuter (en utilisant <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Exécuter</guimenu
+><guimenuitem
+>Exécuter</guimenuitem
+></menuchoice
+></link
+>) pour voir le résultat. Pour l'exemple suivant, je supposerai que vous connaissez la procédure.</para>
+
+<para
+>Vous pouvez avoir remarqué que cet exemple utilise beaucoup plus de code. Vous y trouvez aussi de nouvelles commandes. Voici une courte explication des nouvelles commandes :</para>
+
+<para
+>Après avoir lancé la commande <userinput
+>initialise</userinput
+>, tout s'affiche comme si &kturtle; venait juste de démarrer.</para>
+
+<para
+><userinput
+>taillecanevas 200, 200</userinput
+> fixe la largeur et la hauteur du canevas à 200 <glossterm linkend="pixels"
+>pixels</glossterm
+> chacune. La largeur et la hauteur sont ici égales en taille ce qui signifie que le canevas est un maintenant un carré.</para>
+
+<para
+><userinput
+>couleurcanevas 0, 0, 0</userinput
+> fixe la couleur du canevas à noire. <userinput
+>0, 0, 0</userinput
+> est une <glossterm linkend="rgb"
+>combinaison RVB</glossterm
+> où toutes les valeurs sont mises à <userinput
+>0</userinput
+> ici ce qui donne un résultat de noir.</para>
+
+<para
+><userinput
+>couleurcrayon 255, 0, 0</userinput
+> fixe la couleur du crayon à rouge. <userinput
+>255, 0, 0</userinput
+> est une <glossterm linkend="rgb"
+>combinaison RVB</glossterm
+> où ici seule la valeur pour rouge est fixée au maximum à <userinput
+>255</userinput
+> pendant que les autres valeurs (vert et bleu) sont mises à <userinput
+>0</userinput
+>, ce qui résulte en un rouge brillant.</para>
+
+<para
+>Si vous ne comprenez pas les valeurs des couleurs, lisez le glossaire sur les <glossterm linkend="rgb"
+>combinaisons RVB</glossterm
+></para>
+
+<para
+><userinput
+>largeurcrayon 5</userinput
+> fixe la largeur (la taille) du crayon à <userinput
+>5</userinput
+> <glossterm linkend="pixels"
+>pixels</glossterm
+>. À partir de maintenant, chaque ligne que va dessiner la tortue aura une épaisseur de <userinput
+>5</userinput
+>, jusqu'à ce que nous changions à nouveau la valeur de <userinput
+>largeurcrayon</userinput
+> pour une autre valeur.</para>
+
+<para
+><userinput
+>va 20, 20</userinput
+> commande à la tortue d'aller à un certain endroit sur le canevas. Ceci est compté depuis le coin en haut à gauche, cet endroit est donc à 20 <glossterm linkend="pixels"
+>pixels</glossterm
+> depuis la gauche et 20 <glossterm linkend="pixels"
+>pixels</glossterm
+> depuis le haut du canevas. Veuillez noter que l'utilisation de la commande <userinput
+>va</userinput
+> ne dessinera pas de ligne.</para>
+
+<para
+><userinput
+>direction 135</userinput
+> fixe la direction de la tortue. Les commandes <userinput
+>tournegauche</userinput
+> et <userinput
+>tournedroite</userinput
+> changent l'angle de direction de la tortue en partant de sa direction actuelle. La commande <userinput
+>direction</userinput
+> change l'angle de direction de la tortue en partant toujours de zéro et donc ne dépend pas de la direction précédente de la tortue.</para>
+
+<para
+>Après la commande <userinput
+>direction</userinput
+> suivent beaucoup de commandes <userinput
+>avance</userinput
+> et <userinput
+>tournegauche</userinput
+>. Ces commandes font le dessin que vous voyez.</para>
+
+<para
+>Enfin, une autre commande <userinput
+>va</userinput
+> est utilisée pour bouger la tortue sur le côté.</para>
+
+<para
+>Veuillez suivre les liens vers le manuel de référence. Celui-ci explique chaque commande plus en détails.</para>
+
+
+</sect2>
+</sect1>
+
+
+
+<!--        EXTRA SECTIONS CAN BE ADDED TO THE "GETTING STARTED"
+
+<sect1 id="calculations">
+<title
+>Simple Calculations</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_variables">
+<title
+>Using Variables: creating 'number containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_strings">
+<title
+>Using strings: creating 'text containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="logic">
+<title
+>Logic: asking the computer simple questions</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="recursion">
+<title
+>Recursion: the Turtle is using itself</title>
+<para>
+Draw a maze for example
+</para>
+</sect1>
+-->
+
+
+</chapter>

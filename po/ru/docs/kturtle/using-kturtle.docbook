@@ -1,0 +1,1094 @@
+<chapter id="using-kturtle">
+<title
+>Использование &kturtle;</title>
+
+<screenshot>
+  <screeninfo
+>Снимок экрана &kturtle;</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow_flower_nrs.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Главное окно &kturtle;</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Главное окно &kturtle; имеет три основные области: <link linkend="the-editor"
+>редактор</link
+> (1), расположенный слева, который предназначен для ввода команд &turtlescript;, <link linkend="the-canvas"
+>холст</link
+> (2) , расположенный справа, на котором Черепашка рисует, и  <link linkend="the-inspector"
+>инспектор</link
+> (3), который предоставляет вам информацию во время выполнения программы. Кроме этого имеется <link linkend="the-menubar"
+>меню</link
+> (5), предоставляющее доступ ко всем функциям программы, <link linkend="the-toolbar"
+>панель инструментов</link
+> (4), которая предоставляет быстрый доступ к часто используемым командам, поле <guilabel
+>команда</guilabel
+>, которое можно использовать для тестирования команд, и <link linkend="the-statusbar"
+>строка состояния</link
+> (вдоль нижнего края окна), на которой отображается различная информация о состоянии &kturtle;.</para>
+
+<sect1 id="the-editor">
+<title
+>Редактор</title>
+<para
+>Редактор предназначен для ввода команд &turtlescript;. Большинство команд вызывается из меню <link linkend="the-file-menu"
+>Файл</link
+> и <link linkend="the-edit-menu"
+>Правка</link
+>. Редактор кода может быть пристыкован к любой границе главного окна или же может быть расположен в любом месте рабочего стола как отдельное окно.</para>
+<para
+>Существуют разные пути получения кода в редакторе. Простейший — использовать готовый пример. Для этого необходимо вызвать пункт <menuchoice
+><guimenu
+>Файл</guimenu
+><guisubmenu
+>Примеры</guisubmenu
+></menuchoice
+> в <link linkend="the-file-menu"
+>меню Файл</link
+> и выбрать необходимый пример. Выбранный файл примера будет открыт в <link linkend="the-editor"
+>редакторе</link
+> и его можно будет запустить на выполнение, вызвав пункт <menuchoice
+><guimenu
+>Выполнить</guimenu
+><guimenuitem
+>Выполнить</guimenuitem
+></menuchoice
+> из меню или нажав кнопку <guibutton
+>Выполнить</guibutton
+> на панели инструментов.</para>
+<para
+>Вы можете открыть файлы &turtlescript;, вызвав меню <menuchoice
+><guimenu
+>Файл</guimenu
+><guimenuitem
+>Открыть...</guimenuitem
+></menuchoice
+>.</para>
+<para
+>Третий путь — ввод кода в редакторе вручную или методом копирования/вставки.</para>
+</sect1>
+
+
+<sect1 id="the-canvas">
+<title
+>Холст</title>
+<para
+>Холст — это пространство Черепашки. Здесь она рисует в соответствии с командами, которые получает. После ввода каких-либо команд в <link linkend="the-editor"
+>редакторе</link
+> и их выполнения могут произойти две вещи: или программа выполнится успешно, и вы увидите некоторые изменения на холсте, или же, если были допущены ошибки, вы получите сообщение во вкладке ошибок, которое уведомит вас о характере допущенной ошибки.</para>
+<para
+>Вы можете увеличить или уменьшить отображение холста используя колесо мыши.</para>
+</sect1>
+
+
+<sect1 id="the-inspector">
+<title
+>Инспектор</title>
+<para
+>Инспектор информирует вас о переменных, выученных функциях и отображает иерархическую структуру программы во время её выполнения.</para>
+<para
+>Инспектор может быть пристыкован к любой границе главного окна или же может быть расположен в любом месте рабочего стола как отдельное окно.</para>
+</sect1>
+
+
+<sect1 id="the-toolbar">
+<title
+>Панель инструментов</title>
+<para
+>Здесь вы можете быстро получить доступ к наиболее часто используемым действиям. Панель также содержит поле для ввода <guilabel
+>Команда</guilabel
+>, где вы можете выполнять команды, что полезно, когда вы хотите протестировать команду, не изменяя содержимого <link linkend="the-editor"
+>редактора</link
+>.</para>
+<para
+>Вы можете настроить панель инструментов в соответствии с своими предпочтениями, воспользовавшись меню <menuchoice
+><guimenu
+>Настройка</guimenu
+><guimenuitem
+>Панели инструментов...</guimenuitem
+></menuchoice
+>.</para>
+</sect1>
+
+
+<sect1 id="the-menubar">
+<title
+>Меню</title>
+<para
+>В главном меню вы найдёте все команды &kturtle;. Они находятся в следующих группах: <guimenu
+>Файл</guimenu
+>, <guimenu
+>Правка</guimenu
+>, <guimenu
+>Холст</guimenu
+>, <guimenu
+>Выполнить</guimenu
+>, <guimenu
+>Сервис</guimenu
+>, <guimenu
+>Настройка</guimenu
+> и <guimenu
+>Справка</guimenu
+>. Данный раздел посвящён их описанию.</para>
+
+<sect2 id="the-file-menu">
+<title
+>Меню <guimenu
+>Файл</guimenu
+></title>
+
+  <variablelist>
+    <anchor id="file-new"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+><keycombo
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+><guimenu
+>Файл</guimenu
+> <guimenuitem
+>Создать</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Создаёт новый, пустой файл &turtlescript;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+><keycombo
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+><guimenu
+>Файл</guimenu
+> <guimenuitem
+>Открыть...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Открывает файл &turtlescript;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-recent"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Файл</guimenu
+> <guisubmenu
+>Последние файлы</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Открывает файлы &turtlescript;, которые открывались недавно.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Файл</guimenu
+> <guisubmenu
+>Примеры</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Показывает примеры программ на &turtlescript;. Примеры открываются на языке, выбранном в <menuchoice
+><guimenu
+>Настройка</guimenu
+><guisubmenu
+>Язык команд</guisubmenu
+></menuchoice
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-get-more-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Файл</guimenu
+> <guimenuitem
+>Загрузить новые примеры...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Открывает диалоговое окно <guilabel
+>Загрузить новые примеры</guilabel
+> для загрузки дополнительных файлов &turtlescript; из интернета.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="file-save"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+><guimenu
+>Файл</guimenu
+> <guimenuitem
+>Сохранить</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Сохраняет текущий открытый файл &turtlescript;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-save-as"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Файл</guimenu
+> <guimenuitem
+>Сохранить как...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Сохраняет текущий открытый файл &turtlescript; в выбранном месте.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-export-to-html"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Файл</guimenu
+> <guimenuitem
+>Экспорт кода в  HTML...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Экспортирует текущее содержимое редактора в файл HTML с подсветкой цветами.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+> </shortcut
+><guimenu
+>Файл</guimenu
+> <guimenuitem
+>Печать...         </guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Печатает текущий код, введённый в редакторе.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-quit"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+><guimenu
+>Файл</guimenu
+> <guimenuitem
+>Закрыть</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Выход из KTurtle.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-edit-menu">
+  <title
+>Меню <guimenu
+>Правка</guimenu
+></title>
+  <variablelist>
+    <anchor id="edit-undo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Правка</guimenu
+> <guimenuitem
+>Отменить действие</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Отменяет последние изменения в коде. KTurtle имеет неограниченное число отмен!</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-redo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+><guimenu
+>Правка</guimenu
+> <guimenuitem
+>Повторить</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Возвращает отменённые изменения в коде.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-cut"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>X</keycap
+></keycombo
+> </shortcut
+><guimenu
+>Правка</guimenu
+> <guimenuitem
+>Вырезать</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Вырезает выделенный текст из <link linkend="the-editor"
+>редактора</link
+> в буфер обмена.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-copy"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+><guimenu
+>Правка</guimenu
+> <guimenuitem
+>Копировать</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Копирует выделенный текст из <link linkend="the-editor"
+>редактора</link
+> в буфер обмена.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-paste"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>V</keycap
+></keycombo
+> </shortcut
+><guimenu
+>Правка</guimenu
+> <guimenuitem
+>Вставить</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Вставляет текст из буфера обмена в <link linkend="the-editor"
+>редактор</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-select-all"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>A</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Правка</guimenu
+> <guimenuitem
+>Выделить всё</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Копирует весь текст из  <link linkend="the-editor"
+>редактора</link
+> в буфер обмена.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Правка</guimenu
+> <guimenuitem
+>Найти...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Ищет выражения в тексте.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find-next"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F3</keysym
+></keycombo
+> </shortcut
+><guimenu
+>Правка</guimenu
+> <guimenuitem
+>Продолжить поиск</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Ищет следующее вхождение фразы в тексте.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="edit-find-previous"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Shift;<keysym
+>F3</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Правка</guimenu
+> <guimenuitem
+>Найти предыдущее</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Ищет предыдущее вхождение фразы в тексте.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <!--<variablelist>
+    <anchor id="edit-replace"/>
+    <varlistentry>
+      <term
+><menuchoice>
+        <shortcut>
+          <keycombo
+>&Ctrl;<keycap
+>R</keycap
+></keycombo>
+        </shortcut>
+        <guimenu
+>Edit</guimenu>
+        <guimenuitem
+>Replace...</guimenuitem>
+      </menuchoice
+></term>
+      <listitem
+><para
+>With this action you can replace text in the code.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>-->
+<variablelist>
+    <anchor id="toggle-insert"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keycap
+>Ins</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Правка</guimenu
+> <guimenuitem
+>Режим замены</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Переключает между режимами «вставки» и «замены».</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+<sect2 id="the-canvas-menu">
+  <title
+>Меню <guimenu
+>Холст</guimenu
+></title>
+  <variablelist>
+    <anchor id="canvas-export-to-image"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Холст</guimenu
+> <guimenuitem
+>Экспорт в изображение (PNG)...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Экспортирует текущее состояние <link linkend="the-canvas"
+>холста</link
+> в растровое изображение  PNG (Portable Network Graphics).</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-export-to-drawing"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Холст</guimenu
+> <guimenuitem
+>Экспорт в рисунок (SVG)...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Экспортирует текущее состояние <link linkend="the-canvas"
+>холста</link
+> в векторный рисунок SVG (Scalable Vector Graphics).</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Холст</guimenu
+> <guimenuitem
+>Печать холста...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Печатает текущее содержимое <link linkend="the-canvas"
+>холста</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-run-menu">
+  <title
+>Меню <guimenu
+>Выполнить</guimenu
+></title>
+  <variablelist>
+    <anchor id="run-execute"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F5</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Выполнить</guimenu
+> <guimenuitem
+>Выполнить</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Запускает на выполнение команды, введённые в редакторе.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-pause"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F6</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Выполнить</guimenu
+> <guimenuitem
+>Приостановить</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Приостанавливает выполнение.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-stop"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F7</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Выполнить</guimenu
+> <guimenuitem
+>Прервать</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Прекращает выполнение команд. Этот пункт доступен только тогда, когда выполняются команды.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-speed"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Выполнить</guimenu
+> <guisubmenu
+>Скорость выполнения</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Выводит список возможных скоростей выполнения, состоящий из: <guimenuitem
+>С максимальной скоростью (без подсветки и инспектора)</guimenuitem
+>, <guimenuitem
+>С обычной скоростью</guimenuitem
+>, <guimenuitem
+>Замедленно</guimenuitem
+>, <guimenuitem
+>Медленно</guimenuitem
+>, <guimenuitem
+>Очень медленно</guimenuitem
+> и <guimenuitem
+>Шаг за шагом</guimenuitem
+>. Если скорость установлена как <guimenuitem
+>С обычной скоростью</guimenuitem
+> (по умолчанию), то бывает трудно уследить за тем, что происходит. Иногда это то, что нужно, но порой хочется отследить выполнение программы. В этом случае вы можете установить скорость в <guimenuitem
+>Замедленно</guimenuitem
+>,  <guimenuitem
+>Медленно</guimenuitem
+> или <guimenuitem
+>Очень медленно</guimenuitem
+>. Когда выбрана одна из медленных скоростей выполнения в редакторе показывается текущее положение выполнения. <guimenuitem
+>Шаг за шагом</guimenuitem
+> выполняет по одной команде за раз.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+
+<sect2 id="the-tools-menu">
+  <title
+>Меню <guimenu
+>Сервис</guimenu
+></title>
+  <variablelist>
+    <anchor id="tools-direction-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Сервис</guimenu
+> <guimenuitem
+>Выбор направления...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Открывает диалоговое окно выбора направления.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-color-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Сервис</guimenu
+> <guimenuitem
+>Выбор цвета...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Открывает диалоговое окно выбора цвета.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-setting-menu">
+  <title
+>Меню <guimenu
+>Настройка</guimenu
+></title>
+  <variablelist>
+    <anchor id="settings-set-script-language"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+><guisubmenu
+>Язык команд</guisubmenu
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Выбирает</action
+> язык команд для кода.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-editor"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Редактор кода</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Показывает или скрывает <link linkend="the-editor"
+>редактор</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-inspector"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Инспектор</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Показывает или скрывает <link linkend="the-inspector"
+>инспектор</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-errors"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Сообщения об ошибках</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Показывает или скрывает вкладку <guilabel
+>Ошибки</guilabel
+> со списком всех ошибок, возникших при выполнении кода. Если этот параметр включён, щёлкните <guilabel
+>холст</guilabel
+>, чтобы снова увидеть Черепашку.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-linenumbers"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F11</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Номера строк</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Включает показ нумерации строк в <link linkend="the-editor"
+>редакторе</link
+>. Это может быть полезно при поиске ошибок.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-toolbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Показать панель инструментов</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Управляет</action
+> отображением  панели инструментов.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="settings-toggle-statusbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Показать строку состояния</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Управляет</action
+> отображением  статусной строки.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-shortcuts"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Комбинации клавиш...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Стандартное диалоговое окно &kde; для настройки клавиатурных комбинаций.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-toolbars"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Панели инструментов...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Стандартное диалоговое окно &kde; для настройки панелей инструментов.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-help-menu">
+  <title
+>Меню <guimenu
+>Справка</guimenu
+></title>
+&help.menu.documentation; <variablelist
+> <anchor id="help-context-help"/> <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F2</keysym
+></keycombo
+> </shortcut
+><guimenu
+>Справка</guimenu
+> <guimenuitem
+>Справка по ...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Очень полезная функция — вызывает помощь по тому элементу кода, рядом с которым находится курсор в редакторе. Например, вы используете команду <userinput
+>напиши</userinput
+> в своей программе и хотите узнать побольше о ней из руководства. Вам достаточно переместить курсор, чтобы он оказался на команде <userinput
+>напиши</userinput
+> и нажать <keysym
+>F2</keysym
+>. Руководство откроется на странице с описанием команды <userinput
+>напиши</userinput
+>.</para>
+      <para
+>Эта функция может оказаться полезной при изучении &turtlescript;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+<sect1 id="the-statusbar">
+<title
+>Строка состояния</title>
+<para
+>В строке состояния выводится информации от &kturtle;. Слева показывается последнее действие. Справа показывается текущая позиция курсора (номера строк и столбцов). Посередине показывается текущий язык, используемый для команд.</para>
+</sect1>
+
+</chapter>

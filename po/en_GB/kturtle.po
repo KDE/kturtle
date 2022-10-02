@@ -1,0 +1,2703 @@
+# translation of kturtle.po to British English
+# Andrew Coles <andrew_coles@yahoo.co.uk>, 2004, 2005, 2009, 2010.
+# Malcolm Hunter <malcolm.hunter@gmx.co.uk>, 2004, 2005.
+# Steve Allewell <steve.allewell@gmail.com>, 2019, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: kturtle\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-10-01 00:41+0000\n"
+"PO-Revision-Date: 2022-01-01 15:20+0000\n"
+"Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
+"Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 21.12.0\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Andrew Coles, Steve Allewell"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "andrew_coles@yahoo.co.uk, steve.allewell@gmail.com"
+
+#: canvas.cpp:195
+#, kde-format
+msgid "bold"
+msgstr "bold"
+
+#: canvas.cpp:196
+#, kde-format
+msgid "italic"
+msgstr "italic"
+
+#: canvas.cpp:197
+#, kde-format
+msgid "underline"
+msgstr "underline"
+
+#: canvas.cpp:198
+#, kde-format
+msgid "overline"
+msgstr "overline"
+
+#: canvas.cpp:199
+#, kde-format
+msgid "strikeout"
+msgstr "strikeout"
+
+#: colorpicker.cpp:29
+#, kde-format
+msgctxt "@title:window"
+msgid "Color Picker"
+msgstr "Colour Picker"
+
+#: colorpicker.cpp:48
+#, kde-format
+msgid "Amount red:"
+msgstr "Amount red:"
+
+#: colorpicker.cpp:62
+#, kde-format
+msgid "Amount green:"
+msgstr "Amount green:"
+
+#: colorpicker.cpp:75
+#, kde-format
+msgid "Amount blue:"
+msgstr "Amount blue:"
+
+#: colorpicker.cpp:105 directiondialog.cpp:282
+#, kde-format
+msgid "&Copy to clipboard"
+msgstr "&Copy to clipboard"
+
+#: colorpicker.cpp:110 directiondialog.cpp:286
+#, kde-format
+msgid "&Paste to editor"
+msgstr "&Paste to editor"
+
+#: console.cpp:33 console.cpp:60
+#, kde-format
+msgid "Write a command here and press enter..."
+msgstr "Write a command here and press enter..."
+
+#: console.cpp:34
+#, kde-format
+msgid ""
+"Console: quickly run single commands -- write a command here and press enter."
+msgstr ""
+"Console: quickly run single commands -- write a command here and press enter."
+
+#: console.cpp:36
+#, kde-format
+msgid "Console:"
+msgstr "Console:"
+
+#: console.cpp:79
+#, kde-format
+msgid "<p style='white-space:pre'><b>ERROR:</b> %1</p>"
+msgstr "<p style='white-space:pre'><b>ERROR:</b> %1</p>"
+
+#: directiondialog.cpp:194
+#, kde-format
+msgctxt "@title:window"
+msgid "Direction Chooser"
+msgstr "Direction Chooser"
+
+#: directiondialog.cpp:225
+#, kde-format
+msgid "Command &type:"
+msgstr "Command &type:"
+
+#: directiondialog.cpp:240
+#, kde-format
+msgid "&Previous direction:"
+msgstr "&Previous direction:"
+
+#: directiondialog.cpp:257
+#, kde-format
+msgid "&New direction:"
+msgstr "&New direction:"
+
+#: editor.cpp:146
+#, kde-format
+msgid "Open"
+msgstr "Open"
+
+#: editor.cpp:148 editor.cpp:256
+#, kde-format
+msgid "Turtle code files"
+msgstr "Turtle code files"
+
+#: editor.cpp:148 editor.cpp:256 mainwindow.cpp:1014 mainwindow.cpp:1030
+#: mainwindow.cpp:1040
+#, kde-format
+msgid "All files"
+msgstr "All files"
+
+#: editor.cpp:164
+#, kde-format
+msgid ""
+"The file you try to open is not a valid KTurtle script, or is incompatible "
+"with this version of KTurtle.\n"
+"Cannot open %1"
+msgstr ""
+"The file you try to open is not a valid KTurtle script, or is incompatible "
+"with this version of KTurtle.\n"
+"Cannot open %1"
+
+#: editor.cpp:231 editor.cpp:237
+#, kde-format
+msgid "Could not save file."
+msgstr "Could not save file."
+
+#: editor.cpp:254
+#, kde-format
+msgid "Save As"
+msgstr "Save As"
+
+#: editor.cpp:267
+#, kde-format
+msgid ""
+"The program you are currently working on is not saved. By continuing you may "
+"lose the changes you have made."
+msgstr ""
+"The program you are currently working on is not saved. By continuing you may "
+"lose the changes you have made."
+
+#: editor.cpp:269
+#, kde-format
+msgid "Unsaved File"
+msgstr "Unsaved File"
+
+#: editor.cpp:269
+#, kde-format
+msgid "&Discard Changes"
+msgstr "&Discard Changes"
+
+#: errordialog.cpp:27
+#, kde-format
+msgctxt "@title:window"
+msgid "Errors"
+msgstr "Errors"
+
+#: errordialog.cpp:42
+#, kde-format
+msgid ""
+"In this list you find the error(s) that resulted from running your code.\n"
+"Good luck!"
+msgstr ""
+"In this list you find the error(s) that resulted from running your code.\n"
+"Good luck!"
+
+#: errordialog.cpp:59
+#, kde-format
+msgid "line"
+msgstr "line"
+
+#: errordialog.cpp:59
+#, kde-format
+msgid "description"
+msgstr "description"
+
+#: errordialog.cpp:59
+#, kde-format
+msgid "code"
+msgstr "code"
+
+#: errordialog.cpp:72
+#, kde-format
+msgid "Hide Errors"
+msgstr "Hide Errors"
+
+#: errordialog.cpp:89
+#, kde-format
+msgid "No errors occurred yet."
+msgstr "No errors occurred yet."
+
+#: inspector.cpp:35
+#, kde-format
+msgid "Variables"
+msgstr "Variables"
+
+#: inspector.cpp:42
+#, kde-format
+msgid "Functions"
+msgstr "Functions"
+
+#: inspector.cpp:49
+#, kde-format
+msgid "Tree"
+msgstr "Tree"
+
+#: inspector.cpp:93 inspector.cpp:111
+#, kde-format
+msgid "name"
+msgstr "name"
+
+#: inspector.cpp:93
+#, kde-format
+msgid "value"
+msgstr "value"
+
+#: inspector.cpp:93
+#, kde-format
+msgid "type"
+msgstr "type"
+
+#: inspector.cpp:103
+#, kde-format
+msgid "No variables"
+msgstr "No variables"
+
+#: inspector.cpp:111
+#, kde-format
+msgid "parameters"
+msgstr "parameters"
+
+#: inspector.cpp:120
+#, kde-format
+msgid "No learned functions"
+msgstr "No learnt functions"
+
+#: inspector.cpp:163
+#, kde-format
+msgctxt "undefined type of a variable"
+msgid "empty"
+msgstr "empty"
+
+#: inspector.cpp:170
+#, kde-format
+msgid "boolean"
+msgstr "boolean"
+
+#: inspector.cpp:173
+#, kde-format
+msgid "number"
+msgstr "number"
+
+#: inspector.cpp:176
+#, kde-format
+msgid "string"
+msgstr "string"
+
+#: inspector.cpp:208
+#, kde-format
+msgid "None"
+msgstr "None"
+
+#: interpreter/executer.cpp:72
+#, kde-format
+msgid "Cannot return outside a function. "
+msgstr "Cannot return outside a function. "
+
+#: interpreter/executer.cpp:262
+#, kde-format
+msgid "The %1 command accepts no parameters."
+msgstr "The %1 command accepts no parameters."
+
+#: interpreter/executer.cpp:272
+#, kde-format
+msgid "The %2 command was called with %3 but needs 1 parameter."
+msgid_plural "The %2 command was called with %3 but needs %1 parameters."
+msgstr[0] "The %2 command was called with %3 but needs 1 parameter."
+msgstr[1] "The %2 command was called with %3 but needs %1 parameters."
+
+#: interpreter/executer.cpp:274
+#, kde-format
+msgid "The %2 command was called with %3 but only accepts 1 parameter."
+msgid_plural ""
+"The %2 command was called with %3 but only accepts %1 parameters."
+msgstr[0] "The %2 command was called with %3 but only accepts 1 parameter."
+msgstr[1] "The %2 command was called with %3 but only accepts %1 parameters."
+
+#: interpreter/executer.cpp:292
+#, kde-format
+msgid "The %1 command only accepts a string as its parameter."
+msgstr "The %1 command only accepts a string as its parameter."
+
+#: interpreter/executer.cpp:294
+#, kde-format
+msgid "The %1 command only accepts strings as its parameters."
+msgstr "The %1 command only accepts strings as its parameters."
+
+#: interpreter/executer.cpp:299
+#, kde-format
+msgid "The %1 command only accepts a number as its parameter."
+msgstr "The %1 command only accepts a number as its parameter."
+
+#: interpreter/executer.cpp:301
+#, kde-format
+msgid "The %1 command only accepts numbers as its parameters."
+msgstr "The %1 command only accepts numbers as its parameters."
+
+#: interpreter/executer.cpp:306
+#, kde-format
+msgid "The %1 command only accepts an answer as its parameter."
+msgstr "The %1 command only accepts an answer as its parameter."
+
+#: interpreter/executer.cpp:308
+#, kde-format
+msgid "The %1 command only accepts answers as its parameters."
+msgstr "The %1 command only accepts answers as its parameters."
+
+#: interpreter/executer.cpp:386
+#, kde-format
+msgid "The variable '%1' was used without first being assigned to a value"
+msgstr "The variable '%1' was used without first being assigned to a value"
+
+#: interpreter/executer.cpp:405
+#, kde-format
+msgid "An unknown function named '%1' was called"
+msgstr "An unknown function named '%1' was called"
+
+#: interpreter/executer.cpp:420
+#, kde-format
+msgid "The function '%1' was called with %2, while it should be called with %3"
+msgstr ""
+"The function '%1' was called with %2, while it should be called with %3"
+
+#: interpreter/executer.cpp:422 interpreter/executer.cpp:423
+#, kde-format
+msgctxt ""
+"The function '%1' was called with %2, while it should be called with %3"
+msgid "1 parameter"
+msgid_plural "%1 parameters"
+msgstr[0] "1 parameter"
+msgstr[1] "%1 parameters"
+
+#: interpreter/executer.cpp:627
+#, kde-format
+msgid "ASSERT failed"
+msgstr "ASSERT failed"
+
+#: interpreter/executer.cpp:633
+#, kde-format
+msgid "'And' needs two variables"
+msgstr "'And' needs two variables"
+
+#: interpreter/executer.cpp:642
+#, kde-format
+msgid "'Or' needs two variables"
+msgstr "'Or' needs two variables"
+
+#: interpreter/executer.cpp:652
+#, kde-format
+msgid "I need something to do a not on"
+msgstr "I need something to do a not on"
+
+#: interpreter/executer.cpp:660
+#, kde-format
+msgid "I cannot do a '==' without 2 variables"
+msgstr "I cannot do a '==' without 2 variables"
+
+#: interpreter/executer.cpp:668
+#, kde-format
+msgid "I cannot do a '!=' without 2 variables"
+msgstr "I cannot do a '!=' without 2 variables"
+
+#: interpreter/executer.cpp:676
+#, kde-format
+msgid "I cannot do a '>' without 2 variables"
+msgstr "I cannot do a '>' without 2 variables"
+
+#: interpreter/executer.cpp:684
+#, kde-format
+msgid "I cannot do a '<' without 2 variables"
+msgstr "I cannot do a '<' without 2 variables"
+
+#: interpreter/executer.cpp:692
+#, kde-format
+msgid "I cannot do a '>=' without 2 variables"
+msgstr "I cannot do a '>=' without 2 variables"
+
+#: interpreter/executer.cpp:700
+#, kde-format
+msgid "I cannot do a '<=' without 2 variables"
+msgstr "I cannot do a '<=' without 2 variables"
+
+#: interpreter/executer.cpp:708
+#, kde-format
+msgid "You need two numbers or string to do an addition"
+msgstr "You need two numbers or string to do an addition"
+
+#: interpreter/executer.cpp:720
+#, kde-format
+msgid "You need two numbers to subtract"
+msgstr "You need two numbers to subtract"
+
+#: interpreter/executer.cpp:727
+#, kde-format
+msgid "You tried to subtract from a non-number, '%1'"
+msgstr "You tried to subtract from a non-number, '%1'"
+
+#: interpreter/executer.cpp:729
+#, kde-format
+msgid "You tried to subtract a non-number, '%1'"
+msgstr "You tried to subtract a non-number, '%1'"
+
+#: interpreter/executer.cpp:735
+#, kde-format
+msgid "You need two numbers to multiplicate"
+msgstr "You need two numbers to multiplicate"
+
+#: interpreter/executer.cpp:742
+#, kde-format
+msgid "You tried to multiplicate a non-number, '%1'"
+msgstr "You tried to multiplicate a non-number, '%1'"
+
+#: interpreter/executer.cpp:744
+#, kde-format
+msgid "You tried to multiplicate by a non-number, '%1'"
+msgstr "You tried to multiplicate by a non-number, '%1'"
+
+#: interpreter/executer.cpp:750
+#, kde-format
+msgid "You need two numbers to divide"
+msgstr "You need two numbers to divide"
+
+#: interpreter/executer.cpp:755
+#, kde-format
+msgid "You tried to divide by zero"
+msgstr "You tried to divide by zero"
+
+#: interpreter/executer.cpp:761
+#, kde-format
+msgid "You tried to divide a non-number, '%1'"
+msgstr "You tried to divide a non-number, '%1'"
+
+#: interpreter/executer.cpp:763
+#, kde-format
+msgid "You tried to divide by a non-number, '%1'"
+msgstr "You tried to divide by a non-number, '%1'"
+
+#: interpreter/executer.cpp:769
+#, kde-format
+msgid "You need two numbers to raise a power"
+msgstr "You need two numbers to raise a power"
+
+#: interpreter/executer.cpp:780
+#, kde-format
+msgid "The result of an exponentiation was too large"
+msgstr "The result of an exponentiation was too large"
+
+#: interpreter/executer.cpp:786
+#, kde-format
+msgid "You tried to raise a non-number to a power, '%1'"
+msgstr "You tried to raise a non-number to a power, '%1'"
+
+#: interpreter/executer.cpp:788
+#, kde-format
+msgid "You tried to raise the power of a non-number, '%1'"
+msgstr "You tried to raise the power of a non-number, '%1'"
+
+#: interpreter/executer.cpp:794
+#, kde-format
+msgid "You need one variable and a value or variable to do a '='"
+msgstr "You need one variable and a value or variable to do a '='"
+
+#: interpreter/executer.cpp:811
+#, kde-format
+msgid "The function '%1' is already defined."
+msgstr "The function '%1' is already defined."
+
+#: interpreter/executer.cpp:1041
+#, kde-format
+msgid "Can't do a sqrt of a negative number"
+msgstr "Can't do a sqrt of a negative number"
+
+#: interpreter/parser.cpp:38
+#, kde-format
+msgid "Expected a command, instead got '%1'"
+msgstr "Expected a command, instead got '%1'"
+
+#: interpreter/parser.cpp:71
+#, kde-format
+msgid "Could not understand '%1'"
+msgstr "Could not understand '%1'"
+
+#: interpreter/parser.cpp:106
+#, kde-format
+msgid "A comma was expected here..."
+msgstr "A comma was expected here..."
+
+#: interpreter/parser.cpp:109
+#, kde-format
+msgid "Did not expect '%1', instead expected the line to end after %2"
+msgstr "Did not expect '%1', instead expected the line to end after %2"
+
+#: interpreter/parser.cpp:115
+#, kde-format
+msgid "Expected an assignment, '=', after the variable '%1'"
+msgstr "Expected an assignment, '=', after the variable '%1'"
+
+#: interpreter/parser.cpp:119
+#, kde-format
+msgid "Did not expect '%1', instead expected a closing parenthesis, ')'"
+msgstr "Did not expect '%1', instead expected a closing bracket, ')'"
+
+#: interpreter/parser.cpp:123
+#, kde-format
+msgid "Expected 'to' after 'for'"
+msgstr "Expected 'to' after 'for'"
+
+#: interpreter/parser.cpp:126
+#, kde-format
+msgid "Expected a name for a command after 'learn' command"
+msgstr "Expected a name for a command after 'learn' command"
+
+#: interpreter/parser.cpp:232
+#, kde-format
+msgid "You cannot put '%1' here."
+msgstr "You cannot put '%1' here."
+
+#: interpreter/parser.cpp:268
+#, kde-format
+msgid ""
+"Text string was not properly closed, expected a double quote, ' \" ', to "
+"close the string."
+msgstr ""
+"Text string was not properly closed, expected a double quote, ' \" ', to "
+"close the string."
+
+#: interpreter/parser.cpp:616
+#, kde-format
+msgid "'for' was called wrongly"
+msgstr "'for' was called wrongly"
+
+#: interpreter/parser.cpp:686
+#, kde-format
+msgid "Expected a scope after the 'learn' command"
+msgstr "Expected a scope after the 'learn' command"
+
+#: interpreter/translator.cpp:96
+#, kde-format
+msgctxt ""
+"You are about to translate the 'True' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "true"
+msgstr "true"
+
+#: interpreter/translator.cpp:103
+#, kde-format
+msgctxt ""
+"You are about to translate the 'False' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "false"
+msgstr "false"
+
+#: interpreter/translator.cpp:122
+#, kde-format
+msgctxt ""
+"You are about to translate the 'ArgumentSeparator' COMMAND, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid ","
+msgstr ","
+
+#: interpreter/translator.cpp:129
+#, kde-format
+msgctxt ""
+"You are about to translate the 'DecimalSeparator' COMMAND, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "."
+msgstr "."
+
+#: interpreter/translator.cpp:136
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Exit' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "exit"
+msgstr "exit"
+
+#: interpreter/translator.cpp:143
+#, kde-format
+msgctxt ""
+"You are about to translate the 'If' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "if"
+msgstr "if"
+
+#: interpreter/translator.cpp:150
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Else' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "else"
+msgstr "else"
+
+#: interpreter/translator.cpp:157
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Repeat' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "repeat"
+msgstr "repeat"
+
+#: interpreter/translator.cpp:164
+#, kde-format
+msgctxt ""
+"You are about to translate the 'While' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "while"
+msgstr "while"
+
+#: interpreter/translator.cpp:171
+#, kde-format
+msgctxt ""
+"You are about to translate the 'For' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "for"
+msgstr "for"
+
+#: interpreter/translator.cpp:178
+#, kde-format
+msgctxt ""
+"You are about to translate the 'To' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "to"
+msgstr "to"
+
+#: interpreter/translator.cpp:185
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Step' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "step"
+msgstr "step"
+
+#: interpreter/translator.cpp:192
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Break' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "break"
+msgstr "break"
+
+#: interpreter/translator.cpp:199
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Return' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "return"
+msgstr "return"
+
+#: interpreter/translator.cpp:206
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Wait' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "wait"
+msgstr "wait"
+
+#: interpreter/translator.cpp:213
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Assert' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "assert"
+msgstr "assert"
+
+#: interpreter/translator.cpp:220
+#, kde-format
+msgctxt ""
+"You are about to translate the 'And' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "and"
+msgstr "and"
+
+#: interpreter/translator.cpp:227
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Or' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "or"
+msgstr "or"
+
+#: interpreter/translator.cpp:234
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Not' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "not"
+msgstr "not"
+
+#: interpreter/translator.cpp:265
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Learn' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "learn"
+msgstr "learn"
+
+#: interpreter/translator.cpp:272
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Reset' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "reset"
+msgstr "reset"
+
+#: interpreter/translator.cpp:279
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Clear' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "clear"
+msgstr "clear"
+
+#: interpreter/translator.cpp:286
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Clear' COMMAND ALIAS, there are some rules "
+"on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
+"to learn how to properly translate it."
+msgid "ccl"
+msgstr "ccl"
+
+#: interpreter/translator.cpp:293
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Center' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "center"
+msgstr "centre"
+
+#: interpreter/translator.cpp:300
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Go' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "go"
+msgstr "go"
+
+#: interpreter/translator.cpp:307
+#, kde-format
+msgctxt ""
+"You are about to translate the 'GoX' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "gox"
+msgstr "gox"
+
+#: interpreter/translator.cpp:314
+#, kde-format
+msgctxt ""
+"You are about to translate the 'GoX' COMMAND ALIAS, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "gx"
+msgstr "gx"
+
+#: interpreter/translator.cpp:321
+#, kde-format
+msgctxt ""
+"You are about to translate the 'GoY' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "goy"
+msgstr "goy"
+
+#: interpreter/translator.cpp:328
+#, kde-format
+msgctxt ""
+"You are about to translate the 'GoY' COMMAND ALIAS, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "gy"
+msgstr "gy"
+
+#: interpreter/translator.cpp:335
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Forward' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "forward"
+msgstr "forward"
+
+#: interpreter/translator.cpp:342
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Forward' COMMAND ALIAS, there are some rules "
+"on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
+"to learn how to properly translate it."
+msgid "fw"
+msgstr "fw"
+
+#: interpreter/translator.cpp:349
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Backward' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "backward"
+msgstr "backward"
+
+#: interpreter/translator.cpp:356
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Backward' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "bw"
+msgstr "bw"
+
+#: interpreter/translator.cpp:363
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Direction' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "direction"
+msgstr "direction"
+
+#: interpreter/translator.cpp:370
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Direction' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "dir"
+msgstr "dir"
+
+#: interpreter/translator.cpp:377
+#, kde-format
+msgctxt ""
+"You are about to translate the 'TurnLeft' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "turnleft"
+msgstr "turnleft"
+
+#: interpreter/translator.cpp:384
+#, kde-format
+msgctxt ""
+"You are about to translate the 'TurnLeft' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "tl"
+msgstr "tl"
+
+#: interpreter/translator.cpp:391
+#, kde-format
+msgctxt ""
+"You are about to translate the 'TurnRight' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "turnright"
+msgstr "turnright"
+
+#: interpreter/translator.cpp:398
+#, kde-format
+msgctxt ""
+"You are about to translate the 'TurnRight' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "tr"
+msgstr "tr"
+
+#: interpreter/translator.cpp:405
+#, kde-format
+msgctxt ""
+"You are about to translate the 'PenWidth' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "penwidth"
+msgstr "penwidth"
+
+#: interpreter/translator.cpp:412
+#, kde-format
+msgctxt ""
+"You are about to translate the 'PenWidth' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "pw"
+msgstr "pw"
+
+#: interpreter/translator.cpp:419
+#, kde-format
+msgctxt ""
+"You are about to translate the 'PenUp' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "penup"
+msgstr "penup"
+
+#: interpreter/translator.cpp:426
+#, kde-format
+msgctxt ""
+"You are about to translate the 'PenUp' COMMAND ALIAS, there are some rules "
+"on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
+"to learn how to properly translate it."
+msgid "pu"
+msgstr "pu"
+
+#: interpreter/translator.cpp:433
+#, kde-format
+msgctxt ""
+"You are about to translate the 'PenDown' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "pendown"
+msgstr "pendown"
+
+#: interpreter/translator.cpp:440
+#, kde-format
+msgctxt ""
+"You are about to translate the 'PenDown' COMMAND ALIAS, there are some rules "
+"on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
+"to learn how to properly translate it."
+msgid "pd"
+msgstr "pd"
+
+#: interpreter/translator.cpp:447
+#, kde-format
+msgctxt ""
+"You are about to translate the 'PenColor' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "pencolor"
+msgstr "pencolour"
+
+#: interpreter/translator.cpp:454
+#, kde-format
+msgctxt ""
+"You are about to translate the 'PenColor' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "pc"
+msgstr "pc"
+
+#: interpreter/translator.cpp:461
+#, kde-format
+msgctxt ""
+"You are about to translate the 'CanvasColor' COMMAND, there are some rules "
+"on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
+"to learn how to properly translate it."
+msgid "canvascolor"
+msgstr "canvascolour"
+
+#: interpreter/translator.cpp:468
+#, kde-format
+msgctxt ""
+"You are about to translate the 'CanvasColor' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "cc"
+msgstr "cc"
+
+#: interpreter/translator.cpp:475
+#, kde-format
+msgctxt ""
+"You are about to translate the 'CanvasSize' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "canvassize"
+msgstr "canvassize"
+
+#: interpreter/translator.cpp:482
+#, kde-format
+msgctxt ""
+"You are about to translate the 'CanvasSize' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "cs"
+msgstr "cs"
+
+#: interpreter/translator.cpp:489
+#, kde-format
+msgctxt ""
+"You are about to translate the 'SpriteShow' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "spriteshow"
+msgstr "spriteshow"
+
+#: interpreter/translator.cpp:496
+#, kde-format
+msgctxt ""
+"You are about to translate the 'SpriteShow' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "ss"
+msgstr "ss"
+
+#: interpreter/translator.cpp:503
+#, kde-format
+msgctxt ""
+"You are about to translate the 'SpriteHide' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "spritehide"
+msgstr "spritehide"
+
+#: interpreter/translator.cpp:510
+#, kde-format
+msgctxt ""
+"You are about to translate the 'SpriteHide' COMMAND ALIAS, there are some "
+"rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn how to properly translate it."
+msgid "sh"
+msgstr "sh"
+
+#: interpreter/translator.cpp:517
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Print' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "print"
+msgstr "print"
+
+#: interpreter/translator.cpp:524
+#, kde-format
+msgctxt ""
+"You are about to translate the 'FontSize' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "fontsize"
+msgstr "fontsize"
+
+#: interpreter/translator.cpp:531
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Random' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "random"
+msgstr "random"
+
+#: interpreter/translator.cpp:538
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Random' COMMAND ALIAS, there are some rules "
+"on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
+"to learn how to properly translate it."
+msgid "rnd"
+msgstr "rnd"
+
+#: interpreter/translator.cpp:545
+#, kde-format
+msgctxt ""
+"You are about to translate the 'GetX' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "getx"
+msgstr "getx"
+
+#: interpreter/translator.cpp:552
+#, kde-format
+msgctxt ""
+"You are about to translate the 'GetY' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "gety"
+msgstr "gety"
+
+#: interpreter/translator.cpp:559
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Message' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "message"
+msgstr "message"
+
+#: interpreter/translator.cpp:566
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Ask' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "ask"
+msgstr "ask"
+
+#: interpreter/translator.cpp:573
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Pi' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "pi"
+msgstr "pi"
+
+#: interpreter/translator.cpp:580
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Tan' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "tan"
+msgstr "tan"
+
+#: interpreter/translator.cpp:587
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Sin' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "sin"
+msgstr "sin"
+
+#: interpreter/translator.cpp:594
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Cos' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "cos"
+msgstr "cos"
+
+#: interpreter/translator.cpp:601
+#, kde-format
+msgctxt ""
+"You are about to translate the 'ArcTan' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "arctan"
+msgstr "arctan"
+
+#: interpreter/translator.cpp:608
+#, kde-format
+msgctxt ""
+"You are about to translate the 'ArcSin' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "arcsin"
+msgstr "arcsin"
+
+#: interpreter/translator.cpp:615
+#, kde-format
+msgctxt ""
+"You are about to translate the 'ArcCos' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "arccos"
+msgstr "arccos"
+
+#: interpreter/translator.cpp:622
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Sqrt' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "sqrt"
+msgstr "sqrt"
+
+#: interpreter/translator.cpp:629
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Round' COMMAND, there are some rules on how "
+"to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "round"
+msgstr "round"
+
+#: interpreter/translator.cpp:636
+#, kde-format
+msgctxt ""
+"You are about to translate the 'GetDirection' COMMAND, there are some rules "
+"on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
+"to learn how to properly translate it."
+msgid "getdirection"
+msgstr "getdirection"
+
+#: interpreter/translator.cpp:643
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Mod' COMMAND, there are some rules on how to "
+"translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
+"how to properly translate it."
+msgid "mod"
+msgstr "mod"
+
+#: interpreter/translator.cpp:662
+#, kde-format
+msgctxt ""
+"This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn know how to properly translate it."
+msgid "triangle"
+msgstr "triangle"
+
+#: interpreter/translator.cpp:674
+#, kde-format
+msgctxt ""
+"This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn know how to properly translate it."
+msgid "curly"
+msgstr "curly"
+
+#: interpreter/translator.cpp:692
+#, kde-format
+msgctxt ""
+"This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn know how to properly translate it."
+msgid "arrow"
+msgstr "arrow"
+
+#: interpreter/translator.cpp:719
+#, kde-format
+msgctxt ""
+"This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
+"translator.php to learn know how to properly translate it."
+msgid "flower"
+msgstr "flower"
+
+#. i18n: ectx: Menu (file)
+#: kturtleui.rc:6
+#, kde-format
+msgid "&File"
+msgstr "&File"
+
+#. i18n: ectx: Menu (examples)
+#: kturtleui.rc:11
+#, kde-format
+msgid "&Examples"
+msgstr "&Examples"
+
+#. i18n: ectx: Menu (edit)
+#: kturtleui.rc:24
+#, kde-format
+msgid "&Edit"
+msgstr "&Edit"
+
+#. i18n: ectx: Menu (canvas)
+#: kturtleui.rc:41 mainwindow.cpp:499 mainwindow.cpp:521
+#, kde-format
+msgid "&Canvas"
+msgstr "&Canvas"
+
+#. i18n: ectx: Menu (run)
+#: kturtleui.rc:47 mainwindow.cpp:299 mainwindow.cpp:418
+#, kde-format
+msgid "&Run"
+msgstr "&Run"
+
+#. i18n: ectx: Menu (speed)
+#: kturtleui.rc:51
+#, kde-format
+msgid "&Run Speed"
+msgstr "&Run Speed"
+
+#. i18n: ectx: Menu (tools)
+#: kturtleui.rc:60
+#, kde-format
+msgid "&Tools"
+msgstr "&Tools"
+
+#. i18n: ectx: Menu (settings)
+#: kturtleui.rc:64
+#, kde-format
+msgid "&Settings"
+msgstr "&Settings"
+
+#. i18n: ectx: Menu (language)
+#: kturtleui.rc:65
+#, kde-format
+msgid "&Script Language"
+msgstr "&Script Language"
+
+#. i18n: ectx: Menu (help)
+#: kturtleui.rc:75
+#, kde-format
+msgid "&Help"
+msgstr "&Help"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kturtleui.rc:80
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Main Toolbar"
+
+#: main.cpp:47
+#, kde-format
+msgid "KTurtle"
+msgstr "KTurtle"
+
+#: main.cpp:49
+#, kde-format
+msgid "https://edu.kde.org/kturtle"
+msgstr "https://edu.kde.org/kturtle"
+
+#: main.cpp:50
+#, kde-format
+msgid ""
+"KTurtle is an educational programming environment that aims to make learning "
+"how to program as easy as possible. To achieve this KTurtle makes all "
+"programming tools available from the user interface. The programming "
+"language used is TurtleScript which allows its commands to be translated."
+msgstr ""
+"KTurtle is an educational programming environment that aims to make learning "
+"how to program as easy as possible. To achieve this KTurtle makes all "
+"programming tools available from the user interface. The programming "
+"language used is TurtleScript which allows its commands to be translated."
+
+#: main.cpp:51
+#, kde-format
+msgid "(c) 2003-2009 Cies Breijs"
+msgstr "(c) 2003-2009 Cies Breijs"
+
+#: main.cpp:53
+#, kde-format
+msgid "Cies Breijs"
+msgstr "Cies Breijs"
+
+#: main.cpp:53
+#, kde-format
+msgid "Initiator and core developer"
+msgstr "Initiator and core developer"
+
+#: main.cpp:54
+#, kde-format
+msgid "Niels Slot"
+msgstr "Niels Slot"
+
+#: main.cpp:54 main.cpp:55
+#, kde-format
+msgid "Core developer"
+msgstr "Core developer"
+
+#: main.cpp:55
+#, kde-format
+msgid "Mauricio Piacentini"
+msgstr "Mauricio Piacentini"
+
+#: main.cpp:62
+#, kde-format
+msgid "File or URL to open (in the GUI mode)"
+msgstr "File or URL to open (in the GUI mode)"
+
+#: main.cpp:63
+#, kde-format
+msgid ""
+"Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test "
+"scripts"
+msgstr ""
+"Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test "
+"scripts"
+
+#: main.cpp:64
+#, kde-format
+msgid ""
+"Starts KTurtle in testing mode (without a GUI), directly runs the specified "
+"local file"
+msgstr ""
+"Starts KTurtle in testing mode (without a GUI), directly runs the specified "
+"local file"
+
+#: main.cpp:65
+#, kde-format
+msgid ""
+"Specifies the localization language by a language code, defaults to \"en_US"
+"\" (only works in testing mode)"
+msgstr ""
+"Specifies the localisation language by a language code, defaults to \"en_US"
+"\" (only works in testing mode)"
+
+#. i18n("Only tokenizes the turtle code (only works in testing mode)")));
+#: main.cpp:67
+#, kde-format
+msgid ""
+"Translates turtle code to embeddable C++ example strings (for developers "
+"only)"
+msgstr ""
+"Translates turtle code to embeddable C++ example strings (for developers "
+"only)"
+
+#: mainwindow.cpp:62
+#, kde-format
+msgctxt "@info:status the application is ready for commands"
+msgid "Ready"
+msgstr "Ready"
+
+#: mainwindow.cpp:176
+#, kde-format
+msgid "Create a new file"
+msgstr "Create a new file"
+
+#: mainwindow.cpp:177
+#, kde-format
+msgid "New File: Create a new file"
+msgstr "New File: Create a new file"
+
+#: mainwindow.cpp:180
+#, kde-format
+msgid "Open an existing file"
+msgstr "Open an existing file"
+
+#: mainwindow.cpp:181
+#, kde-format
+msgid "Open File: Open an existing file"
+msgstr "Open File: Open an existing file"
+
+#: mainwindow.cpp:185
+#, kde-format
+msgid "Open a recently used file"
+msgstr "Open a recently used file"
+
+#: mainwindow.cpp:186
+#, kde-format
+msgid "Open Recent File: Open a recently used file"
+msgstr "Open Recent File: Open a recently used file"
+
+#: mainwindow.cpp:188
+#, kde-format
+msgid "Get more examples..."
+msgstr "Get more examples..."
+
+#: mainwindow.cpp:197
+#, kde-format
+msgid "Save the current file to disk"
+msgstr "Save the current file to disk"
+
+#: mainwindow.cpp:198
+#, kde-format
+msgid "Save File: Save the current file to disk"
+msgstr "Save File: Save the current file to disk"
+
+#: mainwindow.cpp:202
+#, kde-format
+msgid "Save the current file under a different name"
+msgstr "Save the current file under a different name"
+
+#: mainwindow.cpp:203
+#, kde-format
+msgid "Save File As: Save the current file under a different name"
+msgstr "Save File As: Save the current file under a different name"
+
+#: mainwindow.cpp:206
+#, kde-format
+msgid "Export to &HTML..."
+msgstr "Export to &HTML..."
+
+#: mainwindow.cpp:207
+#, kde-format
+msgid "Export the contents of the editor as HTML"
+msgstr "Export the contents of the editor as HTML"
+
+#: mainwindow.cpp:208
+#, kde-format
+msgid "Export to HTML: Export the contents of the editor as HTML"
+msgstr "Export to HTML: Export the contents of the editor as HTML"
+
+#: mainwindow.cpp:212
+#, kde-format
+msgid "Print the code"
+msgstr "Print the code"
+
+#: mainwindow.cpp:213
+#, kde-format
+msgid "Print: Print the code"
+msgstr "Print: Print the code"
+
+#: mainwindow.cpp:216
+#, kde-format
+msgid "Quit KTurtle"
+msgstr "Quit KTurtle"
+
+#: mainwindow.cpp:217
+#, kde-format
+msgid "Quit: Quit KTurtle"
+msgstr "Quit: Quit KTurtle"
+
+#: mainwindow.cpp:221
+#, kde-format
+msgid "Undo a change in the editor"
+msgstr "Undo a change in the editor"
+
+#: mainwindow.cpp:222
+#, kde-format
+msgid "Undo: Undo a change in the editor"
+msgstr "Undo: Undo a change in the editor"
+
+#: mainwindow.cpp:227
+#, kde-format
+msgid "Redo a previously undone change in the editor"
+msgstr "Redo a previously undone change in the editor"
+
+#: mainwindow.cpp:228
+#, kde-format
+msgid "Redo: Redo a previously undone change in the editor"
+msgstr "Redo: Redo a previously undone change in the editor"
+
+#: mainwindow.cpp:233
+#, kde-format
+msgid "Cut the selected text to the clipboard"
+msgstr "Cut the selected text to the clipboard"
+
+#: mainwindow.cpp:234
+#, kde-format
+msgid "Cut: Cut the selected text to the clipboard"
+msgstr "Cut: Cut the selected text to the clipboard"
+
+#: mainwindow.cpp:239
+#, kde-format
+msgid "Copy the selected text to the clipboard"
+msgstr "Copy the selected text to the clipboard"
+
+#: mainwindow.cpp:240
+#, kde-format
+msgid "Copy: Copy the selected text to the clipboard"
+msgstr "Copy: Copy the selected text to the clipboard"
+
+#: mainwindow.cpp:245
+#, kde-format
+msgid "Paste the clipboard's content into the current selection"
+msgstr "Paste the clipboard's content into the current selection"
+
+#: mainwindow.cpp:246
+#, kde-format
+msgid "Paste: Paste the clipboard's content into the current selection"
+msgstr "Paste: Paste the clipboard's content into the current selection"
+
+#: mainwindow.cpp:249
+#, kde-format
+msgid "Select all the code in the editor"
+msgstr "Select all the code in the editor"
+
+#: mainwindow.cpp:250
+#, kde-format
+msgid "Select All: Select all the code in the editor"
+msgstr "Select All: Select all the code in the editor"
+
+#: mainwindow.cpp:253
+#, kde-format
+msgid "Overwrite Mode"
+msgstr "Overwrite Mode"
+
+#: mainwindow.cpp:255
+#, kde-format
+msgid "Toggle between the 'insert' and 'overwrite' mode"
+msgstr "Toggle between the 'insert' and 'overwrite' mode"
+
+#: mainwindow.cpp:256
+#, kde-format
+msgid "Overwrite Mode: Toggle between the 'insert' and 'overwrite' mode"
+msgstr "Overwrite Mode: Toggle between the 'insert' and 'overwrite' mode"
+
+#: mainwindow.cpp:263
+#, kde-format
+msgid "Search through the code in the editor"
+msgstr "Search through the code in the editor"
+
+#: mainwindow.cpp:264
+#, kde-format
+msgid "Find: Search through the code in the editor"
+msgstr "Find: Search through the code in the editor"
+
+#: mainwindow.cpp:267
+#, kde-format
+msgid "Continue searching through the code in the editor"
+msgstr "Continue searching through the code in the editor"
+
+#: mainwindow.cpp:268
+#, kde-format
+msgid "Find Next: Continue searching through the code in the editor"
+msgstr "Find Next: Continue searching through the code in the editor"
+
+#: mainwindow.cpp:271
+#, kde-format
+msgid "Continue searching backwards through the code in the editor"
+msgstr "Continue searching backwards through the code in the editor"
+
+#: mainwindow.cpp:272
+#, kde-format
+msgid ""
+"Find Previous: Continue searching backwards through the code in the editor"
+msgstr ""
+"Find Previous: Continue searching backwards through the code in the editor"
+
+#: mainwindow.cpp:281
+#, kde-format
+msgid "Export to &Image (PNG)..."
+msgstr "Export to &Image (PNG)..."
+
+#: mainwindow.cpp:282
+#, kde-format
+msgid "Export the current canvas to a PNG raster image"
+msgstr "Export the current canvas to a PNG raster image"
+
+#: mainwindow.cpp:283
+#, kde-format
+msgid "Export to PNG: Export the current canvas to a PNG raster image"
+msgstr "Export to PNG: Export the current canvas to a PNG raster image"
+
+#: mainwindow.cpp:287
+#, kde-format
+msgid "Export to &Drawing (SVG)..."
+msgstr "Export to &Drawing (SVG)..."
+
+#: mainwindow.cpp:288
+#, kde-format
+msgid "Export the current canvas to Scalable Vector Graphics"
+msgstr "Export the current canvas to Scalable Vector Graphics"
+
+#: mainwindow.cpp:289
+#, kde-format
+msgid "Export to SVG: Export the current canvas to Scalable Vector Graphics"
+msgstr "Export to SVG: Export the current canvas to Scalable Vector Graphics"
+
+#: mainwindow.cpp:292
+#, kde-format
+msgid "&Print Canvas..."
+msgstr "&Print Canvas..."
+
+#: mainwindow.cpp:294
+#, kde-format
+msgid "Print the canvas"
+msgstr "Print the canvas"
+
+#: mainwindow.cpp:295
+#, kde-format
+msgid "Print: Print the canvas"
+msgstr "Print: Print the canvas"
+
+#: mainwindow.cpp:302
+#, kde-format
+msgid "Execute the program"
+msgstr "Execute the program"
+
+#: mainwindow.cpp:303
+#, kde-format
+msgid "Run: Execute the program"
+msgstr "Run: Execute the program"
+
+#: mainwindow.cpp:306
+#, kde-format
+msgid "&Pause"
+msgstr "&Pause"
+
+#: mainwindow.cpp:310
+#, kde-format
+msgid "Pause execution"
+msgstr "Pause execution"
+
+#: mainwindow.cpp:311
+#, kde-format
+msgid "Pause: Pause execution"
+msgstr "Pause: Pause execution"
+
+#: mainwindow.cpp:314
+#, kde-format
+msgid "&Abort"
+msgstr "&Abort"
+
+#: mainwindow.cpp:317
+#, kde-format
+msgid "Stop executing program"
+msgstr "Stop executing program"
+
+#: mainwindow.cpp:318
+#, kde-format
+msgid "Abort: Stop executing program"
+msgstr "Abort: Stop executing program"
+
+#. i18n("&Indent"), "format-indent-more", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
+#. i18n("&Unindent"), "format-indent-less", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
+#. i18n("Cl&ean Indentation"), 0, 0, this, SLOT(slotCleanIndent()), ac, "edit_cleanIndent");
+#. i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
+#. i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
+#. Tools menu actions
+#: mainwindow.cpp:328
+#, kde-format
+msgid "&Direction Chooser..."
+msgstr "&Direction Chooser..."
+
+#: mainwindow.cpp:330
+#, kde-format
+msgid "Shows the direction chooser dialog"
+msgstr "Shows the direction chooser dialogue"
+
+#: mainwindow.cpp:331
+#, kde-format
+msgid "Direction Chooser: Show the direction chooser dialog"
+msgstr "Direction Chooser: Show the direction chooser dialogue"
+
+#: mainwindow.cpp:334
+#, kde-format
+msgid "&Color Picker..."
+msgstr "&Colour Picker..."
+
+#: mainwindow.cpp:336
+#, kde-format
+msgid "Shows the color picker dialog"
+msgstr "Shows the colour picker dialogue"
+
+#: mainwindow.cpp:337
+#, kde-format
+msgid "Color Picker: Show the color picker dialog"
+msgstr "Colour Picker: Show the colour picker dialogue"
+
+#: mainwindow.cpp:341
+#, kde-format
+msgid "Show &Editor"
+msgstr "Show &Editor"
+
+#: mainwindow.cpp:343
+#, kde-format
+msgid "Show or hide the Code Editor"
+msgstr "Show or hide the Code Editor"
+
+#: mainwindow.cpp:344
+#, kde-format
+msgid "Show Code Editor: Show or hide the Code Editor"
+msgstr "Show Code Editor: Show or hide the Code Editor"
+
+#: mainwindow.cpp:351
+#, kde-format
+msgid "Show &Inspector"
+msgstr "Show &Inspector"
+
+#: mainwindow.cpp:353
+#, kde-format
+msgid "Show or hide the Inspector"
+msgstr "Show or hide the Inspector"
+
+#: mainwindow.cpp:354
+#, kde-format
+msgid "Show Inspector: Show or hide the Inspector"
+msgstr "Show Inspector: Show or hide the Inspector"
+
+#: mainwindow.cpp:361
+#, kde-format
+msgid "Show E&rrors"
+msgstr "Show E&rrors"
+
+#: mainwindow.cpp:363
+#, kde-format
+msgid "Show or hide the Errors tab"
+msgstr "Show or hide the Errors tab"
+
+#: mainwindow.cpp:364
+#, kde-format
+msgid "Show Errors: Show or hide the Errors tab"
+msgstr "Show Errors: Show or hide the Errors tab"
+
+#. i18n("Show &Console"), this);
+#. actionCollection()->addAction("show_console", a);
+#. a->setStatusTip(i18n("Show or hide the interactive Console tab"));
+#. a->setWhatsThis(i18n("Show Console: Show or hide the interactive Console tab"));
+#. a->setCheckable(true);
+#. a->setChecked(false);
+#. connect(a, SIGNAL(toggled(bool)), consoleDock, SLOT(setVisible(bool)));
+#. connect(consoleDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
+#: mainwindow.cpp:378
+#, kde-format
+msgid "Show &Line Numbers"
+msgstr "Show &Line Numbers"
+
+#: mainwindow.cpp:380
+#, kde-format
+msgid "Turn the line numbers on/off in the editor"
+msgstr "Turn the line numbers on/off in the editor"
+
+#: mainwindow.cpp:381
+#, kde-format
+msgid "Show Line Numbers: Turn the line numbers on/off in the editor"
+msgstr "Show Line Numbers: Turn the line numbers on/off in the editor"
+
+#: mainwindow.cpp:392
+#, kde-format
+msgid "Get help on the command under the cursor"
+msgstr "Get help on the command under the cursor"
+
+#: mainwindow.cpp:393
+#, kde-format
+msgid "Context Help: Get help on the command under the cursor"
+msgstr "Context Help: Get help on the command under the cursor"
+
+#: mainwindow.cpp:398
+#, kde-format
+msgid "Help"
+msgstr "Help"
+
+#: mainwindow.cpp:399
+#, kde-format
+msgid "Help: Open manual for KTurtle"
+msgstr "Help: Open manual for KTurtle"
+
+#: mainwindow.cpp:403
+#, kde-format
+msgid "Console"
+msgstr "Console"
+
+#: mainwindow.cpp:410
+#, kde-format
+msgid "Execute"
+msgstr "Execute"
+
+#: mainwindow.cpp:412
+#, kde-format
+msgid "Execute: Executes the current line in the console"
+msgstr "Execute: Executes the current line in the console"
+
+#: mainwindow.cpp:422
+#, kde-format
+msgid "Execute the program, or use the drop down menu to select the run speed"
+msgstr "Execute the program, or use the drop down menu to select the run speed"
+
+#: mainwindow.cpp:423
+#, kde-format
+msgid ""
+"Run: Execute the program, or use the drop down menu to select the run speed"
+msgstr ""
+"Run: Execute the program, or use the drop down menu to select the run speed"
+
+#: mainwindow.cpp:426
+#, kde-format
+msgctxt "@option:radio"
+msgid "Full Speed (&no highlighting and inspector)"
+msgstr "Full Speed (&no highlighting and inspector)"
+
+#: mainwindow.cpp:429
+#, kde-format
+msgid "Run the program at full speed, with highlighting and inspector disabled"
+msgstr ""
+"Run the program at full speed, with highlighting and inspector disabled"
+
+#: mainwindow.cpp:430
+#, kde-format
+msgid ""
+"Full Speed: Run the program at full speed, with highlighting and inspector "
+"disabled"
+msgstr ""
+"Full Speed: Run the program at full speed, with highlighting and inspector "
+"disabled"
+
+#: mainwindow.cpp:435
+#, kde-format
+msgctxt "@option:radio"
+msgid "&Full Speed"
+msgstr "&Full Speed"
+
+#: mainwindow.cpp:439
+#, kde-format
+msgid "Run the program at full speed"
+msgstr "Run the program at full speed"
+
+#: mainwindow.cpp:440
+#, kde-format
+msgid "Full Speed: Run the program at full speed"
+msgstr "Full Speed: Run the program at full speed"
+
+#: mainwindow.cpp:445
+#, kde-format
+msgctxt "@option:radio choose the slow speed"
+msgid "&Slow"
+msgstr "&Slow"
+
+#: mainwindow.cpp:448
+#, kde-format
+msgid "Run the program at a slow speed"
+msgstr "Run the program at a slow speed"
+
+#: mainwindow.cpp:449
+#, kde-format
+msgid "Slow Speed: Run the program at a slow speed"
+msgstr "Slow Speed: Run the program at a slow speed"
+
+#: mainwindow.cpp:454
+#, kde-format
+msgctxt "@option:radio"
+msgid "S&lower"
+msgstr "S&lower"
+
+#: mainwindow.cpp:457
+#, kde-format
+msgid "Run the program at a slower speed"
+msgstr "Run the program at a slower speed"
+
+#: mainwindow.cpp:458
+#, kde-format
+msgid "Slower Speed: Run the program at a slower speed"
+msgstr "Slower Speed: Run the program at a slower speed"
+
+#: mainwindow.cpp:463
+#, kde-format
+msgctxt "@option:radio"
+msgid "Sl&owest"
+msgstr "Sl&owest"
+
+#: mainwindow.cpp:466
+#, kde-format
+msgid "Run the program at the slowest speed"
+msgstr "Run the program at the slowest speed"
+
+#: mainwindow.cpp:467
+#, kde-format
+msgid "Slowest Speed: Run the program at the slowest speed"
+msgstr "Slowest Speed: Run the program at the slowest speed"
+
+#: mainwindow.cpp:472
+#, kde-format
+msgctxt "@option:radio"
+msgid "S&tep-by-Step"
+msgstr "S&tep-by-Step"
+
+#: mainwindow.cpp:475
+#, kde-format
+msgid "Run the program one step at a time"
+msgstr "Run the program one step at a time"
+
+#: mainwindow.cpp:476
+#, kde-format
+msgid "Step Speed: Run the program one step at a time"
+msgstr "Step Speed: Run the program one step at a time"
+
+#: mainwindow.cpp:496
+#, kde-format
+msgid ""
+"Canvas: This is where the turtle moves and draws when the program is running"
+msgstr ""
+"Canvas: This is where the turtle moves and draws when the program is running"
+
+#: mainwindow.cpp:505
+#, kde-format
+msgid "E&rrors"
+msgstr "E&rrors"
+
+#: mainwindow.cpp:535
+#, kde-format
+msgid "&Editor"
+msgstr "&Editor"
+
+#: mainwindow.cpp:549
+#, kde-format
+msgid "Editor: Write your KTurtle commands here"
+msgstr "Editor: Write your KTurtle commands here"
+
+#: mainwindow.cpp:552
+#, kde-format
+msgid "&Inspector"
+msgstr "&Inspector"
+
+#: mainwindow.cpp:562
+#, kde-format
+msgid ""
+"Inspector: See information about variables and functions when the program "
+"runs"
+msgstr ""
+"Inspector: See information about variables and functions when the program "
+"runs"
+
+#: mainwindow.cpp:655
+#, kde-format
+msgid "Switch to the %1 dictionary"
+msgstr "Switch to the %1 dictionary"
+
+#: mainwindow.cpp:734
+#, kde-format
+msgid " OVR "
+msgstr " OVR "
+
+#: mainwindow.cpp:734
+#, kde-format
+msgid " INS "
+msgstr " INS "
+
+#: mainwindow.cpp:742
+#, kde-format
+msgid "<nothing under cursor>"
+msgstr "<nothing under cursor>"
+
+#: mainwindow.cpp:743
+#, kde-format
+msgid "Help on: %1"
+msgstr "Help on: %1"
+
+#: mainwindow.cpp:748
+#, kde-format
+msgid " Line: %1 Column: %2 "
+msgstr " Line: %1 Column: %2 "
+
+#: mainwindow.cpp:756
+#, kde-format
+msgid "\"%1\" <%2>"
+msgstr "\"%1\" <%2>"
+
+#: mainwindow.cpp:759
+#, kde-format
+msgid "<variable>"
+msgstr "<variable>"
+
+#: mainwindow.cpp:760
+#, kde-format
+msgid "<number>"
+msgstr "<number>"
+
+#: mainwindow.cpp:761
+#, kde-format
+msgid "<comment>"
+msgstr "<comment>"
+
+#: mainwindow.cpp:762
+#, kde-format
+msgid "<string>"
+msgstr "<string>"
+
+#: mainwindow.cpp:768
+#, kde-format
+msgid "scope"
+msgstr "scope"
+
+#: mainwindow.cpp:770
+#, kde-format
+msgid "assignment"
+msgstr "assignment"
+
+#: mainwindow.cpp:772
+#, kde-format
+msgid "parenthesis"
+msgstr "bracket"
+
+#: mainwindow.cpp:774
+#, kde-format
+msgid "mathematical operator"
+msgstr "mathematical operator"
+
+#: mainwindow.cpp:776
+#, kde-format
+msgid "expression"
+msgstr "expression"
+
+#: mainwindow.cpp:778
+#, kde-format
+msgid "boolean operator"
+msgstr "boolean operator"
+
+#: mainwindow.cpp:780
+#, kde-format
+msgid "learned command"
+msgstr "learned command"
+
+#: mainwindow.cpp:782
+#, kde-format
+msgid "argument separator"
+msgstr "argument separator"
+
+#: mainwindow.cpp:785
+#, kde-format
+msgid "command"
+msgstr "command"
+
+#: mainwindow.cpp:788
+#, kde-format
+msgid "controller command"
+msgstr "controller command"
+
+#: mainwindow.cpp:813
+#, kde-format
+msgid "Could not change the language to %1."
+msgstr "Could not change the language to %1."
+
+#: mainwindow.cpp:821
+#, kde-format
+msgid "English [built in]"
+msgstr "English [built in]"
+
+#: mainwindow.cpp:822
+#, kde-format
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: mainwindow.cpp:970
+#, kde-format
+msgid "untitled"
+msgstr "untitled"
+
+#: mainwindow.cpp:1012
+#, kde-format
+msgid "Save as Picture"
+msgstr "Save as Picture"
+
+#: mainwindow.cpp:1014
+#, kde-format
+msgid "PNG Images"
+msgstr "PNG Images"
+
+#: mainwindow.cpp:1030
+#, kde-format
+msgctxt "@title:window"
+msgid "Save as SVG"
+msgstr "Save as SVG"
+
+#: mainwindow.cpp:1030
+#, kde-format
+msgid "Scalable Vector Graphics"
+msgstr "Scalable Vector Graphics"
+
+#: mainwindow.cpp:1040
+#, kde-format
+msgctxt "@title:window"
+msgid "Save code as HTML"
+msgstr "Save code as HTML"
+
+#: mainwindow.cpp:1040
+#, kde-format
+msgid "HTML documents"
+msgstr "HTML documents"
+
+#: mainwindow.cpp:1058
+#, kde-format
+msgid "Input"
+msgstr "Input"
+
+#: mainwindow.cpp:1067
+#, kde-format
+msgid "Message"
+msgstr "Message"
+
+#~ msgid "Are you sure you want to overwrite %1?"
+#~ msgstr "Are you sure you want to overwrite %1?"
+
+#~ msgid "Overwrite Existing File"
+#~ msgstr "Overwrite Existing File"
+
+#~ msgid "&Overwrite"
+#~ msgstr "&Overwrite"
+
+#~ msgid "Cannot read %1"
+#~ msgstr "Cannot read %1"
+
+#~ msgid "This button hides the Errors tab"
+#~ msgstr "This button hides the Errors tab"
+
+#~ msgid "&Quit"
+#~ msgstr "&Quit"
+
+#~ msgid "Internationalized string with an %1"
+#~ msgstr "Internationalised string with an %1"
+
+#~ msgctxt ""
+#~ "You are about to translate the 'Exp' COMMAND, there are some rules on how "
+#~ "to translate it.Please see http://edu.kde.org/kturtle/translator.php to "
+#~ "learn how to properly translate it."
+#~ msgid "exp"
+#~ msgstr "exp"
+
+#~ msgid "Nothing to show here"
+#~ msgstr "Nothing to show here"
+
+#~ msgid "Only tokenizes the turtle code (only works in testing mode)"
+#~ msgstr "Only tokenises the turtle code (only works in testing mode)"
+
+#~ msgid "Save &as Picture..."
+#~ msgstr "Save &as Picture..."
+
+#~ msgid "Save as Picture: Save the current canvas as a picture"
+#~ msgstr "Save as Picture: Save the current canvas as a picture"
+
+#~ msgid "<placeholder>no keyword</placeholder>"
+#~ msgstr "<placeholder>no keyword</placeholder>"
+
+#~ msgid "<placeholder>variable</placeholder>"
+#~ msgstr "<placeholder>variable</placeholder>"
+
+#~ msgid "<placeholder>number</placeholder>"
+#~ msgstr "<placeholder>number</placeholder>"
+
+#~ msgid "<placeholder>comment</placeholder>"
+#~ msgstr "<placeholder>comment</placeholder>"
+
+#~ msgid "<placeholder>string</placeholder>"
+#~ msgstr "<placeholder>string</placeholder>"
+
+#~ msgid "<placeholder>scope</placeholder>"
+#~ msgstr "<placeholder>scope</placeholder>"
+
+#~ msgid "<placeholder>assignment</placeholder>"
+#~ msgstr "<placeholder>assignment</placeholder>"
+
+#~ msgid "<placeholder>parenthesis</placeholder>"
+#~ msgstr "<placeholder>bracket</placeholder>"
+
+#~ msgid "&View"
+#~ msgstr "&View"
+
+#, fuzzy
+#~| msgid "Logo Files"
+#~ msgid "png files"
+#~ msgstr "Logo Files"
+
+#, fuzzy
+#~ msgid "no errors"
+#~ msgstr "Open Error"
+
+#, fuzzy
+#~ msgid "Direction"
+#~ msgstr "description"
+
+#, fuzzy
+#~ msgid "Turnleft"
+#~ msgstr "KTurtle"
+
+#, fuzzy
+#~ msgid "Toggle &Insert"
+#~ msgstr "Toggle Insert"
+
+#, fuzzy
+#~ msgid "&Speed"
+#~ msgstr "Full Speed"
+
+#, fuzzy
+#~ msgid "About KTurtle"
+#~ msgstr "KTurtle"
+
+#, fuzzy
+#~ msgid "Abort execution"
+#~ msgstr "Stop E&xecution"
+
+#, fuzzy
+#~| msgid "Full Speed"
+#~ msgctxt "@option:radio"
+#~ msgid "Full Speed"
+#~ msgstr "Full Speed"
+
+#, fuzzy
+#~| msgid "Slow"
+#~ msgctxt "@option:radio choose slow speed"
+#~ msgid "Slow"
+#~ msgstr "Slow"
+
+#, fuzzy
+#~| msgid "Slower"
+#~ msgctxt "@option:radio"
+#~ msgid "Slower"
+#~ msgstr "Slower"
+
+#, fuzzy
+#~| msgid "Slowest"
+#~ msgctxt "@option:radio"
+#~ msgid "Slowest"
+#~ msgstr "Slowest"
+
+#~ msgid "<no keyword>"
+#~ msgstr "<no keyword>"
+
+#~ msgid ""
+#~ "The turtle picture could not be found. Please check your installation."
+#~ msgstr ""
+#~ "The turtle picture could not be found. Please check your installation."
+
+#~ msgid "Help on &Error"
+#~ msgstr "Help on &Error"
+
+#~ msgid "Error Dialog"
+#~ msgstr "Error Dialogue"
+
+#~ msgid "Closes this error dialog"
+#~ msgstr "Closes this error dialogue"
+
+#~ msgid "Click here to read more on this error dialog in KTurtle's Handbook."
+#~ msgstr ""
+#~ "Click here to read more on this error dialogue in KTurtle's Handbook."
+
+#~ msgid "Click here for help using this error dialog"
+#~ msgstr "Click here for help using this error dialogue"
+
+#~ msgid ""
+#~ "Click here for help regarding the error you selected in the list. This "
+#~ "button will not work when no error is selected."
+#~ msgstr ""
+#~ "Click here for help regarding the error you selected in the list. This "
+#~ "button will not work when no error is selected."
+
+#~ msgid "Click here for help regarding the error you selected."
+#~ msgstr "Click here for help regarding the error you selected."
+
+#~ msgid "Insert Color Code at Cursor"
+#~ msgstr "Insert Colour Code at Cursor"
+
+#~ msgid "Color code:"
+#~ msgstr "Colour code:"
+
+#~ msgid "&Restart"
+#~ msgstr "&Restart"
+
+#~ msgid "&Back"
+#~ msgstr "&Back"
+
+#~ msgid "Finished Execution"
+#~ msgstr "Finished Execution"
+
+#~ msgid "Click here to restart the current logo program."
+#~ msgstr "Click here to restart the current logo program."
+
+#~ msgid "Click here to switch back to the edit mode."
+#~ msgstr "Click here to switch back to the edit mode."
+
+#~ msgid ""
+#~ "Execution was finished without errors.\n"
+#~ "What do you want to do next?"
+#~ msgstr ""
+#~ "Execution was finished without errors.\n"
+#~ "What do you want to do next?"
+
+#~ msgid "Call to undefined function: %1."
+#~ msgstr "Call to undefined function: %1."
+
+#~ msgid "Call to function '%1' with wrong number of parameters."
+#~ msgstr "Call to function '%1' with wrong number of parameters."
+
+#~ msgid "Function %1 did not return a value."
+#~ msgstr "Function %1 did not return a value."
+
+#~ msgid "Can only multiply numbers."
+#~ msgstr "Can only multiply numbers."
+
+#~ msgid "Cannot divide by zero."
+#~ msgstr "Cannot divide by zero."
+
+#~ msgid "Can only divide numbers."
+#~ msgstr "Can only divide numbers."
+
+#~ msgid "Can only subtract numbers."
+#~ msgstr "Can only subtract numbers."
+
+#~ msgid ""
+#~ "The penwidth cannot be set to something smaller than 1, or bigger than "
+#~ "10000."
+#~ msgstr ""
+#~ "The penwidth cannot be set to something smaller than 1, or bigger than "
+#~ "10000."
+
+#~ msgid "The parameters of function %1 must be within range: 0 to 350."
+#~ msgstr "The parameters of function %1 must be within range: 0 to 350."
+
+#~ msgid ""
+#~ "The parameters of the %1 command must be numbers in the range: 1 to 10000."
+#~ msgstr ""
+#~ "The parameters of the %1 command must be numbers in the range: 1 to 10000."
+
+#~ msgid ""
+#~ "The parameters of the %1 command must be numbers in the range: 0 to 255."
+#~ msgstr ""
+#~ "The parameters of the %1 command must be numbers in the range: 0 to 255."
+
+#~ msgid "The print command needs input"
+#~ msgstr "The print command needs input"
+
+#~ msgid ""
+#~ "A KDE text-editor component could not be found;\n"
+#~ "please check your KDE installation."
+#~ msgstr ""
+#~ "A KDE text-editor component could not be found;\n"
+#~ "please check your KDE installation."
+
+#~ msgid "&Execute Commands"
+#~ msgstr "&Execute Commands"
+
+#~ msgid "&Indent"
+#~ msgstr "&Indent"
+
+#~ msgid "&Unindent"
+#~ msgstr "&Unindent"
+
+#~ msgid "Cl&ean Indentation"
+#~ msgstr "Cl&ean Indentation"
+
+#~ msgid "Unc&omment"
+#~ msgstr "Unc&omment"
+
+#~ msgid ""
+#~ "This is the code editor, here you type the Logo commands to instruct the "
+#~ "turtle. You can also open an existing Logo program with File->Open "
+#~ "Examples... or File->Open."
+#~ msgstr ""
+#~ "This is the code editor, here you type the Logo commands to instruct the "
+#~ "turtle. You can also open an existing Logo program with File->Open "
+#~ "Examples... or File->Open."
+
+#~ msgid "Welcome to KTurtle..."
+#~ msgstr "Welcome to KTurtle..."
+
+#~ msgid "Line: %1 Column: %2"
+#~ msgstr "Line: %1 Column: %2"
+
+#~ msgid "INS"
+#~ msgstr "INS"
+
+#~ msgid "This is the canvas, here the turtle draws a picture."
+#~ msgstr "This is the canvas, here the turtle draws a picture."
+
+#~ msgid "New file... Happy coding!"
+#~ msgstr "New file... Happy coding!"
+
+#~ msgid "Open Logo File"
+#~ msgstr "Open Logo File"
+
+#~ msgid "Logo Examples Files"
+#~ msgstr "Logo Examples Files"
+
+#~ msgid "Open Logo Example File"
+#~ msgstr "Open Logo Example File"
+
+#~ msgid "Opening aborted, nothing opened."
+#~ msgstr "Opening aborted, nothing opened."
+
+#~ msgid "Opened file: %1"
+#~ msgstr "Opened file: %1"
+
+#~ msgid ""
+#~ "KTurtle was unable to open: \n"
+#~ "%1."
+#~ msgstr ""
+#~ "KTurtle was unable to open: \n"
+#~ "%1."
+
+#~ msgid "Opening aborted because of error."
+#~ msgstr "Opening aborted because of error."
+
+#~ msgid "Opening aborted."
+#~ msgstr "Opening aborted."
+
+#~ msgid "Saving aborted."
+#~ msgstr "Saving aborted."
+
+#~ msgid ""
+#~ "A program named \"%1\" already exists in this folder. Do you want to "
+#~ "overwrite it?"
+#~ msgstr ""
+#~ "A program named \"%1\" already exists in this folder. Do you want to "
+#~ "overwrite it?"
+
+#~ msgid "Overwrite?"
+#~ msgstr "Overwrite?"
+
+#~ msgid "Saved to: %1"
+#~ msgstr "Saved to: %1"
+
+#~ msgid "Pictures"
+#~ msgstr "Pictures"
+
+#~ msgid ""
+#~ "A picture named \"%1\" already in this folder. Do you want to overwrite "
+#~ "it?"
+#~ msgstr ""
+#~ "A picture named \"%1\" already in this folder. Do you want to overwrite "
+#~ "it?"
+
+#~ msgid ""
+#~ "KTurtle was unable to save the image to: \n"
+#~ "%1."
+#~ msgstr ""
+#~ "KTurtle was unable to save the image to: \n"
+#~ "%1."
+
+#~ msgid "Unable to Save Image"
+#~ msgstr "Unable to Save Image"
+
+#~ msgid "Saved canvas to: %1"
+#~ msgstr "Saved canvas to: %1"
+
+#~ msgid "Do you want to print the Logo code or the canvas?"
+#~ msgstr "Do you want to print the Logo code or the canvas?"
+
+#~ msgid "What to Print?"
+#~ msgstr "What to Print?"
+
+#~ msgid "Printing aborted."
+#~ msgstr "Printing aborted."
+
+#~ msgid ""
+#~ "The program you are currently working on is not saved. By quitting "
+#~ "KTurtle you may lose the changes you have made."
+#~ msgstr ""
+#~ "The program you are currently working on is not saved. By quitting "
+#~ "KTurtle you may lose the changes you have made."
+
+#~ msgid "Discard Changes && &Quit"
+#~ msgstr "Discard Changes && &Quit"
+
+#~ msgid "Quitting aborted."
+#~ msgstr "Quitting aborted."
+
+#~ msgid "Executing commands..."
+#~ msgstr "Executing commands..."
+
+#~ msgid "Execution aborted."
+#~ msgstr "Execution aborted."
+
+#~ msgid "Execution paused."
+#~ msgstr "Execution paused."
+
+#~ msgid "Initial Canvas Size"
+#~ msgstr "Initial Canvas Size"
+
+#~ msgid "Canvas &width:"
+#~ msgstr "Canvas &width:"
+
+#~ msgid "Ca&nvas height:"
+#~ msgstr "Ca&nvas height:"
+
+#~ msgid "You need to restart before these settings have effect"
+#~ msgstr "You need to restart before these settings have effect"
+
+#~ msgid "General Settings"
+#~ msgstr "General Settings"
+
+#~ msgid "&Select the language for the Logo commands:"
+#~ msgstr "&Select the language for the Logo commands:"
+
+#~ msgid "Language Settings"
+#~ msgstr "Language Settings"
+
+#~ msgid "Command language: %1"
+#~ msgstr "Command language: %1"
+
+#~ msgid "There is currently no text under the cursor to get help on."
+#~ msgstr "There is currently no text under the cursor to get help on."
+
+#~ msgid "<question>"
+#~ msgstr "<question>"
+
+#~ msgid "\"%1\""
+#~ msgstr "\"%1\""
+
+#~ msgid "Displaying help on %1"
+#~ msgstr "Displaying help on %1"
+
+#~ msgid "<math>"
+#~ msgstr "<math>"
+
+#~ msgid ""
+#~ "Educational Programming Environment using the Logo programming language"
+#~ msgstr ""
+#~ "Educational Programming Environment using the Logo programming language"
+
+#~ msgid "(C) 2003 The KTurtle Authors"
+#~ msgstr "(C) 2003 The KTurtle Authors"
+
+#~ msgid "Main developer and initiator"
+#~ msgstr "Main developer and initiator"
+
+#~ msgid "Big contributor, supporter and fan"
+#~ msgstr "Big contributor, supporter and fan"
+
+#~ msgid ""
+#~ "Author of \"wsbasic\" (wsbasic.sf.net) the base for the interpreter of "
+#~ "KTurtle"
+#~ msgstr ""
+#~ "Author of \"wsbasic\" (wsbasic.sf.net) the base for the interpreter of "
+#~ "KTurtle"
+
+#~ msgid "German Data Files"
+#~ msgstr "German Data Files"
+
+#~ msgid "Swedish Data Files"
+#~ msgstr "Swedish Data Files"
+
+#~ msgid "Slovenian Data Files"
+#~ msgstr "Slovenian Data Files"
+
+#~ msgid "Serbian (Latin and Cyrillic) Data Files"
+#~ msgstr "Serbian (Latin and Cyrillic) Data Files"
+
+#~ msgid "Italian Data Files"
+#~ msgstr "Italian Data Files"
+
+#~ msgid "British English Data Files"
+#~ msgstr "British English Data Files"
+
+#~ msgid "Spanish Data Files"
+#~ msgstr "Spanish Data Files"
+
+#~ msgid "Brazilian Portuguese Data Files"
+#~ msgstr "Brazilian Portuguese Data Files"
+
+#~ msgid "Norwegian Nynorsk and Bokmål Data files"
+#~ msgstr "Norwegian Nynorsk and Bokmål Data files"
+
+#~ msgid "Parser Cyrillic support"
+#~ msgstr "Parser Cyrillic support"
+
+#, fuzzy
+#~ msgid ""
+#~ "Unexpected intruction after the '%1' command, please use only one "
+#~ "instuction per line"
+#~ msgstr ""
+#~ "Unexpected intruction after the '%1' command, please use only one "
+#~ "instuction per line"
+
+#~ msgid "Expected '['"
+#~ msgstr "Expected '['"
+
+#~ msgid "Expected 'to' after the '%1' command"
+#~ msgstr "Expected 'to' after the '%1' command"
+
+#~ msgid "Expected ']' after the '%1' command"
+#~ msgstr "Expected ']' after the '%1' command"
+
+#, fuzzy
+#~ msgid ""
+#~ "UNDEFINED ERROR NR %1: please sent this Logo script to the KTurtle "
+#~ "developers"
+#~ msgstr ""
+#~ "UNDEFINED ERROR NR %1: please sent this Logo script to the KTurtle "
+#~ "developers"
+
+#~ msgid "String text not properly delimited with a ' \" ' (double quote)"
+#~ msgstr "String text not properly delimited with a ' \" ' (double quote)"
+
+#~ msgid ""
+#~ "INTERNAL ERROR NR %1: please sent this Logo script to KTurtle developers"
+#~ msgstr ""
+#~ "INTERNAL ERROR NR %1: please sent this Logo script to KTurtle developers"
+
+#~ msgid ""
+#~ "Cannot understand '%1', expected an expression after the '%2' command"
+#~ msgstr ""
+#~ "Cannot understand '%1', expected an expression after the '%2' command"
+
+#~ msgid "Cannot understand '['"
+#~ msgstr "Cannot understand '['"
+
+#~ msgid "'%1' is neither a Logo command nor a learned command."
+#~ msgstr "'%1' is neither a Logo command nor a learned command."
+
+#~ msgid "The width of the canvas in pixels"
+#~ msgstr "The width of the canvas in pixels"
+
+#~ msgid "The height of the canvas in pixels"
+#~ msgstr "The height of the canvas in pixels"
+
+#~ msgid "The list of the available languages for the Logo commands"
+#~ msgstr "The list of the available languages for the Logo commands"
+
+#~ msgid "The language of the Logo commands"
+#~ msgstr "The language of the Logo commands"
+
+#~ msgid "The value of the ComboBox"
+#~ msgstr "The value of the ComboBox"

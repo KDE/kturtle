@@ -1,0 +1,2131 @@
+<chapter id="reference">
+<title
+>Довідка з програмування на &turtlescript;</title>
+<para
+>Тут наведено довідник з мови &kturtle;, &turtlescript;. У першому розділі цієї глави ми поглянемо на деякі з аспектів <link linkend="grammar"
+>граматики</link
+> програм &turtlescript;. Другий розділ присвячено <link linkend="mathematical-operators"
+>математичним операторам</link
+>, <link linkend="boolean-operators"
+>булевим (логічним) операторам</link
+> і <link linkend="comparing-operators"
+>операторам порівняння</link
+>. Третій розділ є величезним списком всіх <link linkend="commands"
+>команд</link
+> з почерговим їх обговоренням. У четвертому розділі наведено пояснення щодо <link linkend="assignment-of-variables"
+>надання</link
+> значень <link linkend="assignment-of-variables"
+>змінним</link
+>. Нарешті, ми пояснимо як впорядкувати виконання команд за допомогою <link linkend="controlling-execution"
+>інструкцій регулювання виконання</link
+> у п’ятому розділі і як створювати власні команди за допомогою команди <link linkend="learn"
+><userinput
+>вивчи</userinput
+></link
+> у розділі під номером шість.</para>
+
+<sect1 id="grammar">
+<title
+>Граматика &turtlescript;</title>
+<para
+>Як і у будь-якій мові, у &turtlescript; існують різні типи слів і символів. В українській ми відрізняємо дієслова (наприклад «йти» або «співати») та іменники (наприклад «сестра» або «будинок»). Ці слова використовують з різною метою. &turtlescript; — це мова програмування, за її посередництвом ви можете повідомити &kturtle; про потрібні вам дії.</para>
+<para
+>У цьому розділі ми коротко зупинимося на деяких з різних типів слів та символів &turtlescript;. Ми надамо пояснення щодо <link linkend="comment"
+>коментарів</link
+>, <link linkend="command"
+>команд</link
+> та трьох інших типів буквених виразів: <link linkend="number"
+>чисел</link
+>, <link linkend="string"
+>рядків</link
+> і <link linkend="boolean-value"
+>булевих (так/ні) значень</link
+>.</para>
+
+
+<sect2 id="comment">
+<title
+>Коментарі</title>
+<para
+>Програма складається з інструкцій, які виконуються після запуску команди, і так званих коментарів. Коментарі не виконуються, &kturtle; просто ігнорує їх під час виконання програми. Коментарі призначено для програмістів: вони допомагають їм краще розуміти програму. Все, що буде вказано після символу <userinput
+>#</userinput
+> у &turtlescript; вважається коментарем. Ось приклад невеличкої програми, яка не виконує жодних дій: <screen>
+# ця невеличка програма нічого не робить, вона складається лише з коментаря!
+</screen
+> Програма, хоч і зовсім непотрібна, але добре пояснює суть коментарів.</para>
+<para
+>Коментарі є дуже корисними, якщо програма стає трохи складнішою. Коментарі є «порадником» для інших програмістів. У наведеній нижче програмі коментарі використано разом з командою <link linkend="print"
+>напиши</link
+>. <screen>
+# Цю програму було створено Cies Breijs.
+напиши "цей текст буде написано на полотні"
+# попередній рядок не є коментарем, а наступний — коментар:
+# напиши "цей текст не буде написано!"
+</screen
+> У першому рядку наведено опис програми. Другий рядок буде виконано &kturtle;: черепашка намалює напис <userinput
+>цей текст буде написано на полотні</userinput
+> на полотні. Третій рядок є коментарем. У четвертому рядку наведено коментар з фрагментом коду &turtlescript;, якщо вилучити символ <userinput
+>#</userinput
+> з четвертого рядка, &kturtle; виконає інструкцію з друку. Програмісти кажуть: інструкцію «напиши» у четвертому рядку було «закоментовано».</para>
+<para
+>Закоментовані рядки <glossterm
+>підсвічуються</glossterm
+> світло-сірим кольором у <link linkend="the-editor"
+>редакторі коду</link
+>.</para>
+</sect2>
+
+<sect2 id="command">
+<title
+>Команди</title>
+<para
+>За допомогою команди ви можете повідомити черепашці або &kturtle; про те, що слід виконати певну дію. Для деяких команд потрібні вхідні дані, деякі команди самі виводять дані. <screen>
+# для команди вперед потрібні вхідні дані, у нашому випадку ними є число 100:
+вперед 100
+</screen
+> Перший рядок програми є <link linkend="comment"
+>коментарем</link
+>. У другому рядку міститься команда <userinput
+>вперед</userinput
+> і <link linkend="number"
+>число</link
+> <userinput
+>100</userinput
+>. Число не є частиною команди, воно є «вхідними даними» команди.</para>
+<para
+>Для роботи деяких команд, наприклад <userinput
+>перейди</userinput
+>, потрібно декілька вхідних значень. Ці декілька значень слід відокремлювати між собою символом <userinput
+>,</userinput
+> (комою).</para>
+<para
+>Щоб прочитати детальний огляд всіх команд, які підтримує &kturtle;, перейдіть за цим <link linkend="commands"
+>посиланням</link
+>. Вбудовані команди буде <glossterm
+>підсвічено</glossterm
+> темно-синім.</para>
+</sect2>
+
+<sect2 id="number">
+<title
+>Числа</title>
+<para
+>Скоріше за все, ви вже знаєте дещо про числа. Спосіб, у який числа використовуються у &kturtle;, не дуже відрізняється від розмовної мови або математики.</para>
+<para
+>Існують так звані натуральні числа: <userinput
+>0</userinput
+>, <userinput
+>1</userinput
+>, <userinput
+>2</userinput
+>, <userinput
+>3</userinput
+>, <userinput
+>4</userinput
+>, <userinput
+>5</userinput
+> тощо. Від’ємні числа: <userinput
+>-1</userinput
+>, <userinput
+>-2</userinput
+>, <userinput
+>-3</userinput
+> тощо. Крім того, існують десяткові дроби або числа з крапкою: <userinput
+>0.1</userinput
+>, <userinput
+>3.14</userinput
+>, <userinput
+>33.3333</userinput
+>, <userinput
+>-5.05</userinput
+>, <userinput
+>-1.0</userinput
+>. Символ <userinput
+>.</userinput
+> (крапка) є символом, що використовується для відокремлення дробової частини. </para>
+<para
+>Числа можна використовувати у <link linkend="mathematical-operators"
+>математичних операторах</link
+> і <link linkend="comparing-operators"
+>операторах порівняння</link
+>. Їх також можна зберігати у <link linkend="assignment-of-variables"
+>змінних</link
+>. Числа буде <glossterm
+>підсвічено</glossterm
+> темно-червоним кольором.</para>
+</sect2>
+
+<!-- constants like pi? -->
+
+<sect2 id="string">
+<title
+>Рядки</title>
+<para
+>Спочатку наведемо приклад: <screen>
+напиши "Привіт, я — рядок."
+</screen
+> У цьому прикладі <userinput
+>напиши</userinput
+> — команда, а <userinput
+>"Привіт, я — рядок."</userinput
+> — рядок. Рядки починаються і закінчуються позначкою лапок, <userinput
+>"</userinput
+>, за цими позначками і розпізнає рядки програма &kturtle;.</para>
+<para
+>Рядки можна зберігати у <link linkend="assignment-of-variables"
+>змінних</link
+>, подібно до <link linkend="number"
+>чисел</link
+>. Але, на відміну від чисел, рядки не можна використовувати у <link linkend="mathematical-operators"
+>математичних діях</link
+> або <link linkend="comparing-operators"
+>діях з порівняння</link
+>. Рядки буде <glossterm
+>підсвічено</glossterm
+> червоним кольором.</para>
+</sect2>
+
+<sect2 id="boolean-value">
+<title
+>Булеві (так/ні) значення</title>
+<para
+>Існує лише два булевих значення: <userinput
+>так</userinput
+><indexterm
+><primary
+>так</primary
+></indexterm
+> і <userinput
+>ні</userinput
+><indexterm
+><primary
+>ні</primary
+></indexterm
+>. У цих значень є і інші назви: увімкнути і вимкнути, одиниця і нуль. Але у &turtlescript; ми завжди називатимемо їх <userinput
+>так</userinput
+> і <userinput
+>ні</userinput
+>. Погляньте на цей фрагмент коду &turtlescript;: <screen>
+$a = так
+</screen
+> Якщо ви зазирнете до вікна <link linkend="the-inspector"
+>інспектора</link
+> ви побачите, що значенням <link linkend="assignment-of-variables"
+>змінної</link
+> <userinput
+>$a</userinput
+> є <userinput
+>так</userinput
+>, і що ця змінна належить до булевого типу.</para>
+<para
+>Часто булеві значення є результатом обчислення <link linkend="comparing-operators"
+>оператора порівняння</link
+>, наприклад, у такому фрагменті коду &turtlescript;: <screen>
+$відповідь = 10 &gt; 3
+</screen
+> Значенням <link linkend="assignment-of-variables"
+>змінної</link
+> <userinput
+>$відповідь</userinput
+> буде <userinput
+>так</userinput
+>, оскільки <userinput
+>10</userinput
+> більше за <userinput
+>3</userinput
+>.</para>
+<para
+>Булеві значення, <userinput
+>так</userinput
+> і <userinput
+>ні</userinput
+>, буде <glossterm
+>підсвічено</glossterm
+> темно-червоним.</para>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="operators">
+<title
+>Математичні, булеві оператори та оператори порівняння</title>
+<para
+>Заголовок цього розділу наче натякає на щось складне, але все не так складно, як здається.</para>
+
+<sect2 id="mathematical-operators">
+<title
+>Математичні оператори</title>
+<para
+>Ось основні математичні символи: додавання (<userinput
+>+</userinput
+>), віднімання (<userinput
+>-</userinput
+>), множення (<userinput
+>*</userinput
+>), ділення (<userinput
+>/</userinput
+>) і піднесення до степеня (<userinput
+>^</userinput
+>).</para>
+
+<para
+>Ось невеличкий приклад математичних операторів, якими ви можете скористатися у &turtlescript;: <screen>
+$add      = 1 + 1
+$subtract = 20 - 5
+$multiply = 15 * 2
+$divide   = 30 / 30
+$power    = 2 ^ 2
+</screen
+> Результат виконання математичних операцій слід <link linkend="assignment-of-variables"
+>призначати</link
+> різноманітним <link linkend="assignment-of-variables"
+>змінним</link
+>. За допомогою <link linkend="the-inspector"
+>інспектора</link
+> ви зможете переглянути ці змінні.</para>
+<para
+>Якщо вам потрібно виконати прості обчислення, ви можете зробити щось на зразок цього: <screen
+>напиши 2010-12
+</screen
+></para>
+<para
+>А тепер приклад з дужками: <screen>
+напиши ( ( 20 - 5 ) * 2 / 30 ) + 1
+</screen
+> Спочатку буде обчислено вираз у дужках. У нашому випадку, буде обчислено 20-5, потім це значення буде помножено на 2, поділено на 30, і додано до нього 1 (у результаті отримаємо 2). Дужками можна скористатися і у інших випадках.</para>
+<para
+>У &kturtle; передбачено і додаткові математичні можливості у формі команд. Нижче наведено список команд, але без означення способу, у який вони працюють: <link linkend="round"
+>округли</link
+>, <link linkend="random"
+>випадкове</link
+>, <link linkend="sqrt"
+>корінь</link
+>, <link linkend="pi"
+>пі</link
+>, <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+>, <link linkend="tan"
+>tg</link
+>, <link linkend="arcsin"
+>arcsin</link
+>, <link linkend="arccos"
+>arccos</link
+>, <link linkend="arctan"
+>arctg</link
+>.</para>
+</sect2>
+
+<sect2 id="boolean-operators">
+<title
+>Булеві (так/ні) оператори</title>
+<para
+>Тоді як <link linkend="mathematical-operators"
+>математичні оператори</link
+> в основному призначено для <link linkend="number"
+>чисел</link
+>, булеві оператори призначено для <link linkend="boolean-value"
+>булевих значень</link
+> (<userinput
+>так</userinput
+> і <userinput
+>ні</userinput
+>). Передбачено лише три булеві оператори, а саме: <userinput
+>та</userinput
+><indexterm
+><primary
+>та</primary
+></indexterm
+>, <userinput
+>або</userinput
+><indexterm
+><primary
+>або</primary
+></indexterm
+> і <userinput
+>ні</userinput
+><indexterm
+><primary
+>ні</primary
+></indexterm
+>. У наведеному нижче фрагменті &turtlescript; показано використання всіх цих операторів: <screen>
+$та_1_1 = так та так    # -> так
+$та_1_0 = так та ні   # -> ні
+$та_0_1 = ні та так   # -> ні
+$та_0_0 = ні та ні  # -> ні
+
+$або_1_1 = так або так    # -> так
+$або_1_0 = так або ні   # -> так
+$або_0_1 = ні або так   # -> так
+$або_0_0 = ні або ні  # -> ні
+
+$не_1 = не так   # -> ні
+$не_0 = не ні  # -> так
+</screen
+> За допомогою <link linkend="the-inspector"
+>інспектора</link
+> ви зможете переглянути значення, крім того, ми навели результати виконання дій у коментарях. Результат застосування <userinput
+>та</userinput
+> дорівнює <userinput
+>так</userinput
+>, лише якщо з обох боків від нього стоять значення <userinput
+>так</userinput
+>. Результатом застосування <userinput
+>або</userinput
+> буде <userinput
+>так</userinput
+>, якщо з одного з боків від оператора стоїть <userinput
+>так</userinput
+>. Оператор <userinput
+>не</userinput
+> перетворює <userinput
+>так</userinput
+> на <userinput
+>ні</userinput
+>, а <userinput
+>ні</userinput
+> на <userinput
+>так</userinput
+>.</para>
+<para
+>Булеві оператори буде <glossterm
+>підсвічено</glossterm
+> рожевим.</para>
+
+<sect3 id="boolean-operators-advanced-examples">
+<title
+>Декілька додаткових прикладів</title>
+<para
+>Розглянемо наведений нижче приклад з <userinput
+>та</userinput
+>: <screen>
+$a = 1
+$b = 5
+якщо (($a &lt; 10) та ($b == 5)) та ($a &lt; $b) {
+  напиши "привіт"
+}
+</screen
+> У цьому фрагменті &turtlescript; результат застосування трьох <link linkend="comparing-operators"
+>операторів порівняння</link
+> буде об’єднано за допомогою операторів <userinput
+>та</userinput
+>. Це означає, що для того, щоб черепашка написала «привіт», потрібно, щоб всі дії з порівняння давали результат «так».</para>
+
+<para
+>Приклад з <userinput
+>або</userinput
+>: <screen>
+$n = 1
+якщо ($n &lt; 10) або ($n == 2) {
+  напиши "привіт"
+}
+</screen
+> У цьому фрагменті коду &turtlescript; частина, розташована ліворуч від <userinput
+>або</userinput
+>, дає «так», а частина, розташована праворуч, — «ні». Оскільки одна з двох частин виразу у операторі <userinput
+>або</userinput
+> дорівнює «так», результатом обчислення <userinput
+>або</userinput
+> буде «так». Це означає, що черепашка напише «привіт».</para>
+
+<para
+>І нарешті, приклад з <userinput
+>не</userinput
+>, у якому ми змінними «так» на «ні», а «ні» — на «так». Дивіться: <screen
+>$n = 1
+якщо не ($n == 3) {
+  напиши "привіт"
+} інакше {
+  напиши "не привіт ;-)"
+}
+</screen
+></para>
+</sect3>
+</sect2>
+
+<sect2 id="comparing-operators">
+<title
+>Оператори порівняння</title>
+<para
+>Розглянемо таке елементарне порівняння: <screen>
+$answer = 10 &gt; 3
+</screen
+> Тут ми порівнюємо <userinput
+>10</userinput
+> з <userinput
+>3</userinput
+> за допомогою оператора «більше, ніж». Результатом цього порівняння буде <link linkend="boolean-value"
+>булеве значення</link
+> <userinput
+>так</userinput
+>, яке буде збережено у <link linkend="assignment-of-variables"
+>змінній</link
+> <userinput
+>$answer</userinput
+>.</para>
+<para
+>Всі <link linkend="number"
+>числа</link
+> і <link linkend="assignment-of-variables"
+>змінні</link
+> (які містять числа) можна порівнювати за допомогою операторів порівняння.</para>
+<para
+>Ось список можливих операторів порівняння: <table
+> <title
+>Типи питань</title
+> <tgroup cols="3"
+> <tbody
+> <row
+> <entry
+><userinput
+>$A == $B</userinput
+></entry
+> <entry
+>дорівнює</entry
+> <entry
+>відповіддю буде <quote
+>так</quote
+>, якщо <userinput
+>$A</userinput
+> рівне <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A != $B</userinput
+></entry
+> <entry
+>не дорівнює</entry
+> <entry
+>відповіддю буде <quote
+>так</quote
+>, якщо <userinput
+>$A</userinput
+> не дорівнює <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt; $B</userinput
+></entry
+> <entry
+>більше, ніж</entry
+> <entry
+>відповіддю буде <quote
+>так</quote
+>, якщо <userinput
+>$A</userinput
+> більше, ніж <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt; $B</userinput
+></entry
+> <entry
+>менше, ніж</entry
+> <entry
+>відповіддю буде <quote
+>так</quote
+>, якщо <userinput
+>$A</userinput
+> менше, ніж <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt;= $B</userinput
+></entry
+> <entry
+>більше або дорівнює</entry
+> <entry
+>відповіддю буде <quote
+>так</quote
+>, якщо <userinput
+>$A</userinput
+> більше або дорівнює <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt;= $B</userinput
+></entry
+> <entry
+>менше або дорівнює</entry
+> <entry
+>відповіддю буде <quote
+>так</quote
+>, якщо <userinput
+>$A</userinput
+> менше або дорівнює <userinput
+>$B</userinput
+></entry
+> </row
+> </tbody
+> </tgroup
+> </table
+> Будь ласка, зауважте, що <userinput
+>$A</userinput
+> і <userinput
+>$B</userinput
+> мають бути <link linkend="number"
+>числами</link
+> або <link linkend="assignment-of-variables"
+>змінними</link
+>, які містять числа.</para>
+</sect2>
+
+
+</sect1>
+
+
+
+<sect1 id="commands">
+<title
+>Команди</title>
+<para
+>За допомогою команд ви наказуєте черепашці або програмі &kturtle; виконати якусь дію. Деяким з команд потрібні вхідні дані, деякі — самі виводять дані. У цьому розділі буде пояснено всі вбудовані команди, які можна використовувати у &kturtle;. Крім того, ви можете скористатися командою <link linkend="learn"
+><userinput
+>вивчи</userinput
+></link
+>, щоб створити власні команди. Вбудовані команди, які ми тут обговорюємо, <glossterm
+>підсвічуються</glossterm
+> темно-синім кольором.</para>
+
+<sect2 id="moving-the-turtle">
+<title
+>Пересування черепашки</title>
+<para
+>Існує декілька команд для пересування черепашки екраном.</para>
+
+  <variablelist>
+    <anchor id="forward"/>
+    <varlistentry
+> 
+      <term
+>вперед (вп)<indexterm
+><primary
+>вперед (вп)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>вперед X</screen>
+<userinput
+>вперед</userinput
+> наказує черепашці просунутися вперед на X пікселів. Якщо перо опущено, черепашка залишатиме по собі слід у вигляді лінії. Команду <userinput
+>вперед</userinput
+> можна скоротити до <userinput
+>вп</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="backward"/>
+    <varlistentry
+>  
+      <term
+>назад (нд)<indexterm
+><primary
+>назад (нд)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>назад X</screen>
+Команда <userinput
+>назад</userinput
+> наказує черепашці просунутися назад на X пікселів. Якщо перо опущено, черепашка залишатиме по собі слід у вигляді лінії. Команду <userinput
+>назад</userinput
+> можна скоротити до <userinput
+>нд</userinput
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnleft"/>
+    <varlistentry
+> 
+      <term
+>ліворуч (лв)<indexterm
+><primary
+>ліворуч (tl)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ліворуч X</screen>
+Команда <userinput
+>ліворуч</userinput
+> наказує черепашці повернутися на X градусів ліворуч. Команду <userinput
+>ліворуч</userinput
+> можна скоротити до <userinput
+>лв</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnright"/>
+    <varlistentry
+> 
+      <term
+>праворуч (пр)<indexterm
+><primary
+>праворуч (пв)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>праворуч X</screen>
+Команда <userinput
+>праворуч</userinput
+> наказує черепашці повернутися на X градусів праворуч. Команду <userinput
+>праворуч</userinput
+> можна скоротити до <userinput
+>пв</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="direction"/>
+    <varlistentry
+> 
+      <term
+>напрямок (нпр)<indexterm
+><primary
+>напрямок (нпр)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>напрямок X</screen>
+Команда <userinput
+>напрямок</userinput
+> спрямовує черепашку у напрямку X градусів, відрахованих від нульового напрямку, безвідносно від попереднього напрямку, куди її було спрямовано. Команду <userinput
+>напрямок</userinput
+> можна скоротити до <userinput
+>нпр</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="getdirection"/>
+    <varlistentry
+> 
+      <term
+>візьми_напрям<indexterm
+><primary
+>візьми_напрям</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>візьми_напрям</screen>
+Команда <userinput
+>візьми_напрям</userinput
+> повертає напрямок черепашки у форматі градусів, відрахованих від нульового напрямку, де нулеві відповідає напрямок вгору.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="center"/>
+    <varlistentry
+> 
+      <term
+>центр<indexterm
+><primary
+>центр</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>центр</screen>
+Команда <userinput
+>центр</userinput
+> пересуває черепашку у центр полотна.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="go"/>
+    <varlistentry
+> 
+      <term
+>перейди<indexterm
+><primary
+>перейди</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>перейди X,Y</screen>
+Команда <userinput
+>перейди</userinput
+> наказує черепашці перейти до вказаного місця на полотні. Це місце знаходиться у X <glossterm linkend="pixels"
+>пікселях</glossterm
+> від лівого краю полотна, і у Y <glossterm linkend="pixels"
+>пікселях</glossterm
+> від верхнього краю полотна.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gox"/>
+    <varlistentry
+> 
+      <term
+>перейди_x<indexterm
+><primary
+>перейди_x (пx)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>перейди_x X</screen>
+Команда <userinput
+>перейди_x</userinput
+> наказує черепашці перейти до точки, розміщеної за X <glossterm linkend="pixels"
+>пікселів</glossterm
+> від лівого краю полотна, залишаючись на тій самій висоті. Команду <userinput
+>перейди_x</userinput
+> можна скоротити до <userinput
+>пx</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="goy"/>
+    <varlistentry
+> 
+      <term
+>перейди_y<indexterm
+><primary
+>перейди_y (пy)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>перейди_y Y</screen>
+Команда <userinput
+>перейди_y</userinput
+> наказує черепашці перейти до точки, розміщеної за Y <glossterm linkend="pixels"
+>пікселів</glossterm
+> від верхнього краю полотна, залишаючись на тій же відстані від його лівого краю. Команду <userinput
+>перейди_y</userinput
+> можна скоротити до <userinput
+>пy</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <note
+><para
+>Під час виконання команд <userinput
+>перейди</userinput
+>, <userinput
+>перейди_x</userinput
+>, <userinput
+>перейди_y</userinput
+> і <userinput
+>центр</userinput
+> черепашка не малюватиме лінії, незалежно від того, піднято чи опущено перо.</para>
+  </note>
+</sect2>
+
+<sect2 id="locate-the-turtle">
+<title
+>Де знаходиться черепашка?</title>
+<para
+>Існує дві команди, які повертають позицію черепашки на екрані.</para>
+
+  <variablelist>
+    <anchor id="getx"/>
+    <varlistentry
+> 
+      <term
+>візьми_x<indexterm
+><primary
+>візьми_x</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>візьми_x</userinput
+> повертає кількість пікселів від лівого краю полотна до поточної позиції черепашки.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gety"/>
+    <varlistentry
+> 
+      <term
+>візьми_y<indexterm
+><primary
+>візьми_y</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>візьми_y</userinput
+> повертає кількість пікселів від верхнього краю полотна до поточної позиції черепашки.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="pen">
+<title
+>У черепашки є перо</title>
+<para
+>У черепашки є перо, яке малює лінію під час руху черепашки. Існує декілька команд, які керують цим пером. У цьому розділі пояснено зміст цих команд.</para>
+  <variablelist>
+    <anchor id="penup"/>
+    <varlistentry
+> 
+      <term
+>підніми_перо (пп)<indexterm
+><primary
+>підніми_перо (пп)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>підніми_перо</screen>
+Команда <userinput
+>підніми_перо</userinput
+> піднімає перо над полотном. Якщо перо <quote
+>піднято</quote
+> під час руху черепашки лінії не малюватиметься. Прочитайте також інформацію щодо команди <userinput
+>опусти_перо</userinput
+>. Команду <userinput
+>підніми_перо</userinput
+> можна скоротити до <userinput
+>pu</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="pendown"/>
+    <varlistentry
+> 
+      <term
+>опусти_перо (оп)<indexterm
+><primary
+>опусти_перо (оп)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>опусти_перо</screen>
+Команда <userinput
+>опусти_перо</userinput
+> опускає перо на полотно. Якщо перо <quote
+>опущено</quote
+> на полотно, під час рухів, черепашка лишатиме по собі слід. Прочитайте також інформацію щодо команди <userinput
+>підніми_перо</userinput
+>. Команду <userinput
+>опусти_перо</userinput
+> можна скоротити до <userinput
+>оп</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setpenwidth"/>
+    <varlistentry
+> 
+      <term
+>розмір_пера (рп)<indexterm
+><primary
+>розмір_пера (рп)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>розмір_пера X</screen>
+Команда <userinput
+>розмір_пера</userinput
+> встановлює товщину лінії, яку лишає перо, у значення X <glossterm linkend="pixels"
+>пікселів</glossterm
+>. Команду <userinput
+>розмір_пера</userinput
+> можна скоротити до <userinput
+>рп</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setfgcolor"/>
+    <varlistentry
+> 
+      <term
+>колір_пера (кп)<indexterm
+><primary
+>колір_пера (кп)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>колір_пера R,G,B</screen>
+Команда <userinput
+>колір_пера</userinput
+> встановлює колір лінії, яку лишає по собі перо. Команда <userinput
+>колір_пера</userinput
+> отримує дані для кольору у вигляді <glossterm linkend="rgb"
+>RGB-комбінації</glossterm
+>. Команду <userinput
+>колір_пера</userinput
+> можна скоротити до <userinput
+>кп</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="canvas">
+<title
+>Команди керування полотном</title>
+<para
+>Існує декілька команд, які надають можливість керувати полотном.</para>
+  <variablelist>
+    <anchor id="resizecanvas"/>
+    <varlistentry>
+      <term
+>розмір_полотна (рпл)<indexterm
+><primary
+>розмір_полотна (рпл)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>розмір_полотна X,Y</screen>
+За допомогою команди <userinput
+>розмір_полотна</userinput
+> ви можете встановити розмір полотна. Ця команда отримує вхідні значення X і Y, де X — нова ширина полотна у <glossterm linkend="pixels"
+>пікселях</glossterm
+>, а Y — нова висота полотна у <glossterm linkend="pixels"
+>пікселях</glossterm
+>. Команду <userinput
+>розмір_полотна</userinput
+> можна скоротити до <userinput
+>рпл</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setbgcolor"/>
+    <varlistentry
+> 
+      <term
+>колір_полотна (кпл)<indexterm
+><primary
+>колір_полотна (кпл)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>колір_полотна R,G,B</screen>
+Команда <userinput
+>колір_полотна</userinput
+> встановлює колір тла полотна. Команда <userinput
+>колір_полотна</userinput
+> отримує вхідні дані у вигляді <glossterm linkend="rgb"
+>RGB-комбінації</glossterm
+>. Команду <userinput
+>колір_полотна</userinput
+> можна скоротити до <userinput
+>кпл</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="clean">
+<title
+>Команди для очищення</title>
+<para
+>Існує дві команди для очищення полотна, у разі якщо ви зробили помилку.</para>
+  <variablelist>
+    <anchor id="clear"/>
+    <varlistentry
+> 
+      <term
+>зітри (зтр)<indexterm
+><primary
+>зітри (зтр)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>зітри</screen>
+За допомогою команди <userinput
+>зітри</userinput
+> ви можете витерти всі малюнки з полотна. При цьому всі інші параметри, позиція і напрямок черепашки, колір тла полотна, видимість черепашки і розмір полотна, залишаться незмінними:</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="reset"/>
+    <varlistentry
+> 
+      <term
+>перезапусти<indexterm
+><primary
+>перезапусти</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>перезапусти</screen>
+Команда <userinput
+>перезапусти</userinput
+> очищує все набагато ґрунтовніше за команду <userinput
+>зітри</userinput
+>. Після виконання команди <userinput
+>перезапусти</userinput
+> все виглядатиме так, неначе ви тільки-но запустили &kturtle;. Черепашку буде розташовано по центру екрана, колір тла стане білим, черепашка малюватиме чорну лінію на полотні, а саме полотно матиме розмір 400 на 400 пікселів.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="sprites">
+<title
+>Черепашка — це спрайт</title>
+<para
+>Спочатку, коротеньке пояснення того, що таке спрайти: спрайти — це маленькі зображення, які можна пересувати екраном, які ми часто бачимо у комп’ютерних іграх. Наша черепашка — також спрайт. Докладнішу інформацію ви зможете отримати з розділу глосарія, присвяченого <glossterm linkend="sprites"
+>спрайтам</glossterm
+>.</para>
+<para
+>Далі, ви зможете ознайомитися з повним списком всіх команд для роботи зі спрайтами.</para>
+<note
+><para
+>Поточна версія &kturtle; ще не підтримує використання інших спрайтів, окрім черепашки. У майбутніх версіях ви зможете змінити черепашку на щось інше, що вам сподобається.</para
+></note>
+  <variablelist>
+    <anchor id="spriteshow"/>
+    <varlistentry
+> 
+      <term
+>покажи_черепашку (пч)<indexterm
+><primary
+>покажи_черепашку (пч)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>покажи_черепашку</screen>
+Команда <userinput
+>покажи_черепашку</userinput
+> робить черепашку знову видимою після того, як її було сховано. Команду <userinput
+>покажи_черепашку</userinput
+> можна скоротити до <userinput
+>пч</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="spritehide"/>
+    <varlistentry
+> 
+      <term
+>сховай_черепашку (сч)<indexterm
+><primary
+>сховай_черепашку (сч)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>сховай_черепашку</screen>
+Команда <userinput
+>сховай_черепашку</userinput
+> ховає черепашку. Цією командою можна скористатися, якщо черепашка не вписується у ваш малюнок. Команду <userinput
+>сховай_черепашку</userinput
+> можна скоротити до <userinput
+>сч</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="writing">
+<title
+>Чи може черепашка писати?</title>
+<para
+>Відповідь: <quote
+>так</quote
+>. Черепашка може писати: вона напише для вас все, що ви їй накажете написати.</para>
+  <variablelist>
+    <anchor id="print"/>
+    <varlistentry
+> 
+      <term
+>напиши<indexterm
+><primary
+>напиши</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>напиши X</screen>
+Команда <userinput
+>напиши</userinput
+> використовується для того, щоб наказати черепашці написати щось на полотні. Команда <userinput
+>напиши</userinput
+> отримує числа і рядки як вхідні дані. Ви можете <userinput
+>писати</userinput
+> комбінації з чисел і рядків за допомогою символу <quote
+>+</quote
+>. Ось подивіться на цей приклад: <screen
+>$рік = 2003
+$автор = "Сіес"
+напиши $автор + " почав роботу над проєктом KTurtle у " + $year + "році, і все ще отримує задоволення від роботи над ним!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="fontsize"/>
+    <varlistentry
+> 
+      <term
+>розмір_літер<indexterm
+><primary
+>розмір_літер</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>розмір_літер X</screen>
+Команда <userinput
+>розмір_літер</userinput
+> встановлює розмір шрифту, який використовуватиме команда <userinput
+>напиши</userinput
+>. Команда <userinput
+>розмір_літер</userinput
+> отримує одне вхідне значення, ним має бути число. Розмір встановлюється у <glossterm linkend="pixels"
+>пікселях</glossterm
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="math-commands">
+<title
+>Математичні команди</title>
+<para
+>Наведені нижче команди є додатковими математичними командами &kturtle;.</para>
+  <variablelist>
+    <anchor id="round"/>
+    <varlistentry>
+      <term
+>округли<indexterm
+><primary
+>округли</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>округли(x)</screen>
+округлює задане число до найближчого цілого. <screen>
+напиши округли(10.8)
+вперед 20
+напиши округли(10.3)
+</screen
+> Виконуючи цей код, черепашка напише числа 11 і 10.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="random"/>
+    <varlistentry
+> 
+      <term
+>випадкове (вип)<indexterm
+><primary
+>випадкове (вип)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>випадкове X,Y</screen>
+Команда <userinput
+>випадкове</userinput
+> отримує вхідні дані і виводить вихідні. Як вхідні дані їй потрібні два числа, перше (X) вказує на мінімальне значення числа, яке можна вивести, а друге (Y) — встановлює максимальне значення цього числа. У результаті дії команди буде виведено випадково вибране число, яке буде більше або рівне за мінімальне значення і менше або рівне за максимальне значення. Ось невеликий приклад: <screen>
+повтори 500 {
+  $x = випадкове 1,20
+  вперед $x
+  ліворуч 10 - $x
+}
+</screen
+> За допомогою команди <userinput
+>випадкове</userinput
+> ви можете ввести елемент випадковості у вашу програму.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="mod"/>
+    <varlistentry
+> 
+      <term
+>mod<indexterm
+><primary
+>mod</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mod X,Y</screen>
+Команда <userinput
+>mod</userinput
+> повертає залишок від ділення першого числа на друге.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sqrt"/>
+    <varlistentry
+> 
+      <term
+>корінь<indexterm
+><primary
+>корінь</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>корінь X</screen>
+Команду <userinput
+>корінь</userinput
+> призначено для обчислення квадратного кореня з числа, X.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+<!--
+  <variablelist>
+    <anchor id="exp"/>
+    <varlistentry
+> 
+      <term
+>exp<indexterm
+><primary
+>exp</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+-->
+  <variablelist>
+    <anchor id="pi"/>
+    <varlistentry
+> 
+      <term
+>пі<indexterm
+><primary
+>пі</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>пі</screen>
+Ця команда повертає сталу &pi;, <userinput
+>3.14159</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sin"/>
+    <anchor id="cos"/>
+    <anchor id="tan"/>
+    <varlistentry>
+      <term
+>sin<indexterm
+><primary
+>sin</primary
+></indexterm
+>, cos<indexterm
+><primary
+>cos</primary
+></indexterm
+>, tg<indexterm
+><primary
+>tg</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>sin X
+cos X
+tg X
+</screen>
+За допомогою цих команд задаються три відомі тригонометричні функції <userinput
+>sin</userinput
+>, <userinput
+>cos</userinput
+> і <userinput
+>tg</userinput
+>. Вхідним параметром для всіх цих команд, X, є <link linkend="number"
+>число</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="arcsin"/>
+    <anchor id="arccos"/>
+    <anchor id="arctan"/>
+    <varlistentry>
+      <term
+>arcsin<indexterm
+><primary
+>arcsin</primary
+></indexterm
+>, arccos<indexterm
+><primary
+>arccos</primary
+></indexterm
+>, arctg<indexterm
+><primary
+>arctg</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>arcsin X
+arccos X
+arctg X
+</screen>
+Ці команди є оберненими функціями <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+> і <link linkend="tan"
+>tg</link
+>. Вхідним параметром для всіх цих команд, X, є <link linkend="number"
+>число</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="dialogs">
+<title
+>Введення і отримання інформації за допомогою діалогових вікон</title>
+<para
+>Діалогове вікно — це невеличке контекстне вікно, у якому розміщено деяку інформацію від програми, або у яке слід ввести деяку інформацію, потрібну програмі. У &kturtle; є дві команди для виклику діалогових вікон, а саме: <userinput
+>повідом</userinput
+> і <userinput
+>спитай</userinput
+></para>
+  <variablelist>
+    <anchor id="message"/>
+    <varlistentry
+> 
+      <term
+>повідом<indexterm
+><primary
+>повідом</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>повідом X</screen>
+Команда <userinput
+>повідом</userinput
+> отримує як вхідні дані <link linkend="string"
+>рядок</link
+>. У результаті виконання команди буде показано контекстне вікно з текстом, який визначає вхідний <link linkend="string"
+>рядок</link
+>. <screen
+>повідом "Сієс почав роботу над проєктом KTurtle у 2003 році, і все ще отримує задоволення від роботи над ним!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="ask"/>
+    <varlistentry
+> 
+      <term
+>спитай<indexterm
+><primary
+>спитай</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>спитай X</screen>
+Команда <userinput
+>спитай</userinput
+> отримує вхідні дані у вигляді <link linkend="string"
+>рядка</link
+>. У результаті виконання команди буде показано діалогове вікно, у якому міститиметься текст з рядка, точно так само як і у команді <link linkend="message"
+>повідом</link
+>. Але, окрім цього, у вікні буде і поле для введенні інформації. У це поле введення користувач може ввести <link linkend="number"
+>число</link
+> або <link linkend="string"
+>рядок</link
+>, який можна зберегти у <link linkend="assignment-of-variables"
+>змінній</link
+> або передано, як параметр, <link linkend="commands"
+>команді</link
+>. Приклад: <screen>
+$питання = спитай "Скільки вам років?"
+$роки = 2003 - $in
+напиши "У 2003 році вам було " + $роки + " років."
+</screen
+> Якщо користувач закриває діалогове вікно введення або нічого не вводить у поле для введення, <link linkend="assignment-of-variables"
+>змінній</link
+> надається порожнє значення.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="assignment-of-variables">
+<title
+>Присвоювання змінним значень</title>
+<para
+>Спочатку ми розглянемо змінні, а потім поговоримо про те, як надати цим змінним значень. </para>
+
+<para
+>Змінними є слова, що починаються на <quote
+>$</quote
+>, у <link linkend="the-editor"
+>редакторі</link
+> ці слова <glossterm
+>підсвічуються</glossterm
+> пурпуровим кольором.</para>
+
+<para
+>Змінні можуть містити будь-які <link linkend="number"
+>числа</link
+>, <link linkend="string"
+>рядки</link
+> або <link linkend="boolean-value"
+>булеві значення</link
+>. За допомогою оператора присвоювання, <userinput
+>=</userinput
+>, ви можете надати змінній її значення. Змінна зберігатиме свій вміст до завершення виконання програми або до зміни значення змінної на якесь інше.</para>
+
+<para
+>Після надання значень ви можете використовувати змінні так, неначебто вони збігаються з власним вмістом. Ось приклад з фрагментом коду &turtlescript;: <screen>
+$x = 10
+$x = $x / 3
+напиши $x
+</screen
+> Спочатку змінній <userinput
+>$x</userinput
+> надано значення <userinput
+>10</userinput
+>. Потім <userinput
+>$x</userinput
+> надано значення цієї ж змінної, поділеної на <userinput
+>3</userinput
+> — тобто <userinput
+>$x</userinput
+> надано значення частки <userinput
+>10 / 3</userinput
+>. Нарешті, <userinput
+>$x</userinput
+> буде намальовано черепашкою. Ви можете бачити, що у рядках два і три <userinput
+>$x</userinput
+> використано замість вмісту змінної.</para>
+
+<para
+>Для того, щоб змінними можна було користуватися, цим змінним слід надати значення. Приклад: <screen>
+напиши $n
+</screen
+> Результатом виконання буде повідомлення про помилку.</para>
+
+<para
+>Будь ласка, погляньте на цей приклад &turtlescript;: <screen>
+$a = 2004
+$b = 25
+
+# наступна команда намалює рядок "2029"
+напиши $a + $b
+назад 30
+# а ця команда надрукує "2004 плюс 25 дорівнює 2029":
+напиши $a + " плюс " + $b + " дорівнює " + ($a + $b)
+</screen
+> У перших двох рядках встановлено значення змінних <userinput
+>$a</userinput
+> і <userinput
+>$b</userinput
+> 2004 і 25. Далі йдуть дві команди <userinput
+>напиши</userinput
+> з командою <userinput
+>назад 30</userinput
+> між ними. Коментарі перед командами <userinput
+>напиши</userinput
+> пояснюють призначення цих команд. Команду <userinput
+>назад 30</userinput
+> додано для того, щоб забезпечити вивід кожної з порцій даних у окремому рядку. Як бачите змінними можна користуватися як замінниками їх вмісту, ви можете використовувати змінні з будь-якими <link linkend="operators"
+>операторами</link
+> або передавати їх як вхідні дані під час виклику<link linkend="commands"
+>команд</link
+>.</para>
+
+<para
+>Ще один приклад: <screen>
+$ім’я = спитай "Як вас звати?"
+напиши "Привіт, " + $ім’я + "! Успіхів у вивченні мистецтва програмування..."
+</screen
+> Досить зрозуміло. Знову ж таки, змінну <userinput
+>$ім’я</userinput
+> використано як рядок.</para>
+
+<para
+><link linkend="the-inspector"
+>Інспектор</link
+> буде дуже корисним під час роботи зі змінними. Цей інструмент покаже вам значення всіх використаних у програмі змінних.</para>
+</sect1>
+
+
+
+<sect1 id="controlling-execution">
+<title
+>Контроль над виконанням</title>
+<para
+>Регулятори виконання надають вам змогу &mdash; як це і випливає з їх назви &mdash; керувати виконанням програми.</para>
+<para
+>Команди керування виконанням <glossterm
+>підсвічуються</glossterm
+> темно-зеленим кольором і виокремлюються жирним шрифтом. З регуляторами виконання використовують і фігурні дужки, які <glossterm
+>підсвічуються</glossterm
+> чорним кольором і виокремлюються чорним шрифтом.</para>
+
+<sect2 id="wait">
+<title
+>Черепашко, зачекай!</title>
+<para
+>Якщо ви вже повправлялися у програмуванні у &kturtle;, ви, мабуть зауважили, що черепашка малює дуже швидко. Ця команда примушує черепашку почекати деякий проміжок часу.</para>
+  <variablelist>
+    <varlistentry>
+      <term
+>чекай<indexterm
+><primary
+>чекай</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>чекай X</screen>
+Команда <userinput
+>чекай</userinput
+> наказує черепашці чекати X секунд. <screen>
+повтори 36 {
+  вперед 5
+  праворуч 10
+  чекай 0.5
+}
+</screen
+> За допомогою цього коду малюється коло, але черепашка чекатиме по пів секунди перш ніж перейти до наступного кроку. Це створює враження черепашки, що рухається повільно.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="if">
+<title
+>Виконання <quote
+>якщо</quote
+></title>
+  <variablelist>
+    <varlistentry>
+      <term
+>якщо<indexterm
+><primary
+>якщо</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>якщо <link linkend="boolean-value"
+>булеве значення</link
+> { ... }</screen>
+Код між двома фігурними дужками буде виконано, лише <userinput
+>якщо</userinput
+> (якщо) результат обчислення <link linkend="boolean-value"
+>булевого значення</link
+> дорівнюватиме <quote
+>так</quote
+>. <screen>
+$x = 6
+якщо $x &gt; 5 {
+  напиши "$x більше за п’ять!"
+}
+</screen
+> У першому рядку змінній <userinput
+>$x</userinput
+> надається значення 6. У другому рядку використано <link linkend="comparing-operators"
+>оператор порівняння</link
+> для знаходження значення <userinput
+>$x &gt; 5</userinput
+>. Оскільки відповіддю на це питання є <quote
+>так</quote
+> регулятор виконання <userinput
+>якщо</userinput
+> дозволить виконання коду між фігурними дужками.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="else">
+<title
+>Якщо «ні», значить «інакше»</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>інакше<indexterm
+><primary
+>інакше</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>якщо <link linkend="boolean-value"
+>булеве значення</link
+> { ... } інакше { ... }</screen>
+Команду <userinput
+>інакше</userinput
+> можна використовувати як додаток до регулятора виконання <link linkend="if"
+><userinput
+>якщо</userinput
+></link
+>. код між фігурними дужками після <userinput
+>інакше</userinput
+> виконуватиметься, лише якщо <link linkend="boolean-value"
+>булеве значення</link
+> дорівнюватиме <quote
+>ні</quote
+>. <screen>
+перезапусти
+$x = 4
+якщо $x &gt; 5 {
+  напиши "$x більше за п’ять!"
+} інакше {
+  напиши "$x менше за шість!"
+}
+</screen
+> <link linkend="comparing-operators"
+>Оператор порівняння</link
+> обчислює значення <userinput
+>$x &gt; 5</userinput
+>. Оскільки 4 не перевищує 5 значенням буде <quote
+>ні</quote
+>. Це означає, що буде виконано код між фігурними дужками після команди <userinput
+>інакше</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="while">
+<title
+>Цикл «поки»</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>поки<indexterm
+><primary
+>поки</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>поки <link linkend="boolean-value"
+>булеве значення</link
+> { ... }</screen>
+Регулятор виконання <userinput
+>поки</userinput
+> багато у чому схожий на <link linkend="if"
+><userinput
+>якщо</userinput
+></link
+>. Різниця між ними полягає у тому, що <userinput
+>поки</userinput
+> продовжує виконання коду між фігурними дужками (цикл), аж доки <link linkend="boolean-value"
+>булевий вираз</link
+> не дорівнюватиме <quote
+>ні</quote
+>. <screen>
+$x = 1
+поки $x &lt; 5 {
+  вперед 10
+  чекай 1
+  $x = $x + 1
+}
+</screen
+> У першому рядку змінній <userinput
+>$x</userinput
+> надано значення 1. У другому рядку виконано порівняння <userinput
+>$x &lt; 5</userinput
+>. Оскільки відповіддю на це питання буде <quote
+>так</quote
+> регулятор виконання <userinput
+>поки</userinput
+> починатиме виконання коду між фігурними дужками з початку, до того часу, коли значенням <userinput
+>$x &lt; 5</userinput
+> не стане <quote
+>ні</quote
+>. У нашому випадку, код між фігурними дужками буде виконано чотири рази, оскільки кожного разу, коли виконується п’ятий рядок <userinput
+>$x</userinput
+> збільшується на 1.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="repeat">
+<title
+>Цикл «повтори»</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>повтори<indexterm
+><primary
+>повтори</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>повтори <link linkend="number"
+>число</link
+> { ... }</screen>
+Регулятор виконання <userinput
+>повтори</userinput
+> дуже схожий на <link linkend="while"
+><userinput
+>поки</userinput
+></link
+>. Різниця полягає у тому, що <userinput
+>повтори</userinput
+> повторює виконання команд (цикл) задану кількість разів.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="for">
+<title
+>Цикл з лічильником, «для»</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>для<indexterm
+><primary
+>для</primary
+></indexterm
+><indexterm
+><primary
+>до</primary
+></indexterm
+><indexterm
+><primary
+>крок</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>для <link linkend="assignment-of-variables"
+>змінна</link
+> = <link linkend="number"
+>число</link
+> до <link linkend="number"
+>число</link
+> { ... }</screen>
+Цикл <userinput
+>для</userinput
+> — це <quote
+>цикл з лічильником</quote
+>, тобто він лічить повтори за вас. Перше число вказує значення змінної під час першого виконання циклу. Під час кожного виконання це число збільшується, аж доки не досягне другого числа.<screen>
+для $x = 1 до 10 {
+  напиши $x * 7
+  вперед 15
+}
+</screen
+> Кожне виконання коду між фігурними дужками збільшує значення <userinput
+>$x</userinput
+> на 1, до того часу, коли <userinput
+>$x</userinput
+> досягне значення 10. Код між фігурними дужками пише на полотні значення <userinput
+>$x</userinput
+> помноженого на 7. Після виконання програми ви побачите на полотні таблицю множення на 7. </para>
+     <para
+>Типовим розміром кроку циклу є 1, але ви можете використовувати інше значення за допомогою команди на зразок <screen
+>для <link linkend="assignment-of-variables"
+>змінна</link
+> = <link linkend="number"
+>число</link
+> до <link linkend="number"
+>число</link
+> крок <link linkend="number"
+>число</link
+> { ... }</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="break">
+<title
+>Полишити цикл</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>перерви<indexterm
+><primary
+>перерви</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>перерви</screen>
+Негайно припиняє виконання програми у рамках циклу і передає керування команді, яку розташовано одразу за поточним циклом.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="exit">
+<title
+>Перервати виконання вашої програми</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>зупини<indexterm
+><primary
+>зупини</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>зупини</screen>
+Завершує виконання вашої програми.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="assert">
+<title
+>Перевірка умови під час виконання програми</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>перевір<indexterm
+><primary
+>перевір</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>перевір <link linkend="boolean-value"
+>булеве значення</link
+></screen>
+Може бути використано для перевірки правильності роботи програми або введених даних. <screen
+>$введення = ask "У якому році ви народилися?"
+# рік має бути вказано як додатне значення
+перевір $введення 
+> 0
+</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+</sect1>
+
+
+<sect1 id="learn">
+
+<title
+>Створення власних команд за допомогою <quote
+>вивчи</quote
+></title>
+<para
+><userinput
+>вивчи</userinput
+><indexterm
+><primary
+>вивчи</primary
+></indexterm
+> є дуже особливою командою, оскільки цю команду використовують для створення нових команд. Команда, яку ви створюєте за її допомогою може отримувати <glossterm linkend="input-output"
+>вхідні дані</glossterm
+> і повертати <glossterm linkend="input-output"
+>вихідні дані</glossterm
+>. Давайте поглянемо як створюється нова команда: <screen>
+вивчи circle $x {
+  повтори 36 {
+    вперед $x
+    ліворуч 10
+  }
+}
+</screen
+> Нова команда називається <userinput
+>circle</userinput
+>. Команда <userinput
+>circle</userinput
+> отримує одне <glossterm linkend="input-output"
+>вхідне значення</glossterm
+>, параметр, який задає розмір кола. <userinput
+>circle</userinput
+> не повертає ніяких <glossterm linkend="input-output"
+>вихідних даних</glossterm
+>. Тепер у решті коду можна використовувати команду <userinput
+>circle</userinput
+> як звичайну команду. Ось приклад: <screen
+>вивчи коло $X {
+  повтори 36 {
+    вперед $X 
+    ліворуч 10 
+  }
+}
+
+перейди 200,200 
+коло 20
+
+перейди 300,200 
+коло 40  
+</screen>
+</para>
+<para
+>У наступному прикладі буде створено команду, яка повертає<indexterm
+><primary
+>поверни</primary
+></indexterm
+> значення. <screen>
+вивчи факторіал $x {
+  $r = 1
+  для $i = 1 до $x {
+    $r = $r * $i
+  }
+  поверни $r
+}
+
+напиши факторіал 5
+</screen
+> У цьому прикладі створено нову команду з назвою <userinput
+>faculty</userinput
+>. Якщо вхідними даними цієї команди буде число <userinput
+>5</userinput
+>, буде повернуто <userinput
+>5*4*3*2*1</userinput
+>. З допомогою команди <userinput
+>поверни</userinput
+> можна вказати <glossterm linkend="input-output"
+>вихідне значення</glossterm
+> і повернути його програмі.</para>
+<para
+>Команди можуть приймати і по декілька <glossterm linkend="input-output"
+>вхідних значень</glossterm
+>. У наступному прикладі буде створено команду, яка малює прямокутник. <screen>
+вивчи прямокутник $x, $y {
+  вперед $y
+  праворуч 90
+  вперед $x
+  праворуч 90
+  вперед $y
+  праворуч 90
+  вперед $x
+  праворуч 90
+}
+</screen
+> Тепер ви можете виконати команду <userinput
+>прямокутник 50, 100</userinput
+>, і черепашка намалює на полотні прямокутник. </para>
+  
+</sect1>
+
+</chapter>

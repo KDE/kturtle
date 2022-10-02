@@ -1,0 +1,1107 @@
+<chapter id="using-kturtle">
+<title
+>Använda &kturtle;</title>
+
+<screenshot>
+  <screeninfo
+>Här är en skärmbild av &kturtle; under användning</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow_flower_nrs.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>&kturtle;s huvudfönster</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>&kturtle;s huvudfönster har tre huvuddelar, <link linkend="the-editor"
+>editorn</link
+> (3) till vänster där man skriver in kommandon på &kturtle;s språk, <link linkend="the-inspector"
+>inspektören</link
+> (4) som ger information om variabler när programmet kör, och <link linkend="the-canvas"
+>duken</link
+> (5) till höger där instruktionerna åskådliggörs. <link linkend="the-canvas"
+>Duken</link
+> är sköldpaddans lekplats, det är på duken som sköldpaddan verkligen rör sig och ritar. De fyra andra platserna i huvudfönstret är: <link linkend="the-menubar"
+>menyraden</link
+> (1) där alla åtgärder kan nås, <link linkend="the-toolbar"
+>verktygsraden</link
+> (2) som snabbt låter dig välja de oftast använda åtgärderna, inmatningsrutan <guilabel
+>Terminal</guilabel
+>, som du kan använda för att mata in ett enraders kommando för att prova det, och <link linkend="the-statusbar"
+>statusraden</link
+> (6) där du hittar information om &kturtle;s status.</para>
+
+<sect1 id="the-editor">
+<title
+>Editorn</title>
+<para
+>Du skriver in kommandon i &kturtle;s språk i editorn. Den har alla funktioner du kan förvänta dig i en modern editor. De flesta funktionerna finns i menyn <link linkend="the-edit-menu"
+>Redigera</link
+>. Kodeditorn kan dockas vid varje kant i huvudfönstret, eller kopplas loss och placeras var som helst på skrivbordet.</para>
+<para
+>Det finns flera sätt att lägga till kod i editorn. Det enklaste sättet är att använda ett färdigt exempel: Använd undermenyn <menuchoice
+><guimenu
+>Arkiv</guimenu
+> <guisubmenu
+>Exempel</guisubmenu
+></menuchoice
+> och välj ett exempel. Exemplet som du väljer öppnas i <link linkend="the-editor"
+>editorn</link
+>, och därefter kan du använda menyalternativet <menuchoice
+><guimenu
+>Kör</guimenu
+> <guimenuitem
+>Kör</guimenuitem
+></menuchoice
+> (genväg: <keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+>) eller <inlinemediaobject
+> <imageobject
+> <imagedata fileref="media-playback-pause.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Kör</guibutton
+> i verktygsraden för att köra koden om du vill.</para>
+<para
+>Du kan öppna filer på &kturtle;s språk genom att välja menyalternativet <menuchoice
+><guimenu
+>Arkiv</guimenu
+> <guimenuitem
+>Öppna...</guimenuitem
+></menuchoice
+>.</para>
+<para
+>Det tredje sättet är att direkt skriva in din egen kod i editorn eller kopiera och klistra in någon kod.</para>
+</sect1>
+
+
+<sect1 id="the-canvas">
+<title
+>Duken</title>
+<para
+>Duken är stället där sköldpaddan hör hemma, och där sköldpaddan ritar enligt kommandona den för. Efter att ha lagt till kod i <link linkend="the-editor"
+>editorn</link
+> och kört den med <menuchoice
+><guimenu
+>Arkiv</guimenu
+> <guimenuitem
+>Kör</guimenuitem
+></menuchoice
+>, kan två saker ske: koden kör som den ska och du ser troligen någonting som ändras på duken, eller om du har gjort ett fel i koden, visas ett meddelande som talar om vilket fel du gjort.</para>
+<para
+>Du kan zooma duken in och ut med mushjulet.</para>
+</sect1>
+
+
+<sect1 id="the-inspector">
+<title
+>Inspektören</title>
+<para
+>Inspektören informerar dig om variabler, inlärda funktioner och kodträdet medan programmet kör.</para>
+<para
+>Inspektören kan dockas vid varje kant i huvudfönstret, eller kopplas loss och placeras var som helst på skrivbordet.</para>
+</sect1>
+
+
+<sect1 id="the-toolbar">
+<title
+>Verktygsraden</title>
+<para
+>Här kan du snabbt nå de mest använda åtgärderna. Verktygsraden innehåller också inmatningsrutan <guilabel
+>Terminal</guilabel
+> där du snabbt kan utföra kommandon, vilket kan vara användbart om du vill prova ett kommando utan att ändra innehåll i <link linkend="the-editor"
+>editorn</link
+>.</para>
+<para
+>Du kan ställa in verktygsraden med <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa verktygsrader...</guimenuitem
+></menuchoice
+> så att den stämmer bättre med dina önskemål.</para>
+</sect1>
+
+
+<sect1 id="the-menubar">
+<title
+>Menyraden</title>
+<para
+>Alla åtgärder i &kturtle; finns i menyraden. De är grupperade på följande sätt: <guimenu
+>Arkiv</guimenu
+>, <guimenu
+>Redigera</guimenu
+>, <guimenu
+>Duk</guimenu
+>, <guimenu
+>Kör</guimenu
+>, <guimenu
+>Verktyg</guimenu
+>, <guimenu
+>Inställningar</guimenu
+> och <guimenu
+>Hjälp</guimenu
+>. I detta avsnitt beskrivs samtliga menyer.</para>
+
+<sect2 id="the-file-menu">
+<title
+>Menyn Arkiv</title>
+
+  <variablelist>
+    <anchor id="file-new"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Arkiv</guimenu
+> <guimenuitem
+>Ny</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Skapar en ny, tom fil på &kturtle;s språk.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Arkiv</guimenu
+> <guimenuitem
+>Öppna...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Öppnar en fil på &kturtle;s språk.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-recent"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Arkiv</guimenu
+> <guisubmenu
+>Öppna senaste</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Öppnar en fil på &kturtle;s språk som nyligen har öppnats.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Arkiv</guimenu
+> <guisubmenu
+>Exempel</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Visar exempelprogram på &kturtle;s språk. Exemplen är på ditt favoritspråk, som du kan välja med undermenyn <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Skriptspråk</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-get-more-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Arkiv</guimenu
+> <guimenuitem
+>Hämta fler exempel...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Visa dialogrutan <guilabel
+>Heta nyheter</guilabel
+> för ladda ner ytterligare filer på &kturtle;s språk från Internet.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="file-save"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Arkiv</guimenu
+> <guimenuitem
+>Spara</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Sparar filen på &kturtle;s språk som för närvarande är öppen.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-save-as"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;&Shift;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Arkiv</guimenu
+> <guimenuitem
+>Spara som...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Sparar filen på &kturtle;s språk som för närvarande är öppen på en angiven plats.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-export-to-html"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Arkiv</guimenu
+> <guimenuitem
+>Exportera till HTML...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Exporterar editorns nuvarande innehåll som en &HTML;-fil, med färgläggning.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Arkiv</guimenu
+> <guimenuitem
+>Skriv ut...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Skriver ut aktuell kod i kodeditorn.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-quit"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Arkiv</guimenu
+> <guimenuitem
+>Avsluta</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Avslutar &kturtle;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-edit-menu">
+  <title
+>Menyn Redigera</title>
+  <variablelist>
+    <anchor id="edit-undo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigera</guimenu
+> <guimenuitem
+>Ångra</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Ångrar senaste ändringen i koden. &kturtle; kan ångra hur mycket som helst.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-redo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Skift</keycap
+><keycap
+>Z</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Redigera</guimenu
+> <guimenuitem
+>Gör om</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Gör om en ändring i koden som ångrats.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-cut"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>X</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigera</guimenu
+> <guimenuitem
+>Klipp ut</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Klipper ut markerad text från <link linkend="the-editor"
+>editorn</link
+> till klippbordet.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-copy"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigera</guimenu
+> <guimenuitem
+>Kopiera</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Kopierar markerad text från <link linkend="the-editor"
+>editorn</link
+> till klippbordet.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-paste"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>V</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigera</guimenu
+> <guimenuitem
+>Klistra in</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Klistrar in texten från klippbordet i <link linkend="the-editor"
+>editorn</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-select-all"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>A</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigera</guimenu
+> <guimenuitem
+>Markera alla</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Markerar all text i <link linkend="the-editor"
+>editorn</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigera</guimenu
+> <guimenuitem
+>Sök...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Du kan hitta meningar i koden med det här alternativet.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find-next"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keycap
+>F3</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigera</guimenu
+> <guimenuitem
+>Sök igen</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Använd det här för att hitta nästa förekomst av meningen du söker efter.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="edit-find-previous"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Shift;<keysym
+>F3</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Redigera</guimenu
+> <guimenuitem
+>Sök föregående</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Använd det här för att hitta föregående förekomst av meningen du söker efter.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <!--<variablelist>
+    <anchor id="edit-replace"/>
+    <varlistentry>
+      <term
+><menuchoice>
+        <shortcut>
+          <keycombo
+>&Ctrl;<keycap
+>R</keycap
+></keycombo>
+        </shortcut>
+        <guimenu
+>Edit</guimenu>
+        <guimenuitem
+>Replace...</guimenuitem>
+      </menuchoice
+></term>
+      <listitem
+><para
+>With this action you can replace text in the code.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>-->
+<variablelist>
+    <anchor id="toggle-insert"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keycap
+>Insert</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Redigera</guimenu
+> <guimenuitem
+>Överskrivningsläge</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Välj mellan lägena 'infoga' och 'ersätt'.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+<sect2 id="the-canvas-menu">
+  <title
+>Menyn Duk</title>
+  <variablelist>
+    <anchor id="canvas-export-to-image"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Duk</guimenu
+> <guimenuitem
+>Exportera till bild (PNG)...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Exporterar <link linkend="the-canvas"
+>dukens</link
+> nuvarande innehåll, som en rastrerad bild av typen PNG (portabel näverksgrafik).</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-export-to-drawing"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Duk</guimenu
+> <guimenuitem
+>Exportera till teckning (SVG)...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Exporterar <link linkend="the-canvas"
+>dukens</link
+> nuvarande innehåll, som vektorgrafik av typen &SVG; (skalbar vektorgrafik).</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Duk</guimenu
+> <guimenuitem
+>Skriv ut duk...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Skriver ut <link linkend="the-canvas"
+>dukens</link
+> nuvarande innehåll.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-run-menu">
+  <title
+>Menyn Kör</title>
+  <variablelist>
+    <anchor id="run-execute"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F5</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Kör</guimenu
+> <guimenuitem
+>Kör</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Starta körningen av kommandon i editorn.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-pause"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F6</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Kör</guimenu
+> <guimenuitem
+>Paus</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Gör paus i körningen. Den här åtgärden är bara aktiverad när kommandon verkligen kör.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-stop"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F7</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Kör</guimenu
+> <guimenuitem
+>Avbryt</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Stoppa körningen. Den här åtgärden är bara aktiverad när kommandon verkligen kör.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-speed"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Kör</guimenu
+> <guisubmenu
+>Körhastighet</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Visar en lista med möjliga körhastigheter, som består av <guimenuitem
+>Full hastighet (ingen färgläggning och inspektör)</guimenuitem
+>, <guimenuitem
+>Full hastighet</guimenuitem
+>, <guimenuitem
+>Långsamt</guimenuitem
+>, <guimenuitem
+>Långsammare</guimenuitem
+>, <guimenuitem
+>Långsammast</guimenuitem
+> och <guimenuitem
+>Steg-för-steg</guimenuitem
+>. När körhastigheten är inställd till <guimenuitem
+>Full hastighet</guimenuitem
+> (normalvärdet) kan man knappt hänga med i vad som händer. Ibland är det önskat beteende, men ibland vill man följa körningen. I det senare fallet kan man ställa in körhastigheten till <guimenuitem
+>Långsam</guimenuitem
+>, <guimenuitem
+>Långsammare</guimenuitem
+> eller <guimenuitem
+>Långsammast</guimenuitem
+>. När ett av de långsamma lägena är valda, visas körningens nuvarande position i editorn. <guimenuitem
+>Steg-för-steg</guimenuitem
+> kör ett kommando åt gången.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+
+<sect2 id="the-tools-menu">
+  <title
+>Menyn Verktyg</title>
+  <variablelist>
+    <anchor id="tools-direction-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Verktyg</guimenu
+> <guimenuitem
+>Riktningsväljare...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Den här åtgärden visar dialogrutan Riktningsväljare.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-color-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Verktyg</guimenu
+> <guimenuitem
+>Färgväljare...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Den här åtgärden visar dialogrutan Färgväljare.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-setting-menu">
+  <title
+>Menyn Inställningar</title>
+  <variablelist>
+    <anchor id="settings-set-script-language"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guisubmenu
+>Skriptspråk</guisubmenu
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Välj</action
+> kodens språk.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-editor"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Visa editor</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Visa eller dölj <link linkend="the-editor"
+>editorn</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-inspector"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Visa inspektör</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Visa eller dölj <link linkend="the-inspector"
+>inspektören</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-errors"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Visa fel</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Visa eller dölj fliken <guilabel
+>Fel</guilabel
+> med en lista av fel som orsakats av att köra koden. Om alternativet är aktiverat, klicka på <guilabel
+>duken</guilabel
+> för att se sköldpaddan igen.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-linenumbers"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F11</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Visa radnummer</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Du kan visa radnummer i <link linkend="the-editor"
+>editorn</link
+> med det här alternativet. Det kan vara praktiskt för att hitta ett fel.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-toolbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Visa verktygsrad</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Visa eller dölj</action
+> huvudverktygsraden.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="settings-toggle-statusbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Visa statusrad</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Visa eller dölj</action
+> statusraden.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-shortcuts"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa genvägar...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>&kde;:s vanliga dialogruta för att anpassa genvägar.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-toolbars"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa verktygsrader...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>&kde;:s vanliga dialogruta för att anpassa verktygsrader.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-help-menu">
+  <title
+>Menyn Hjälp</title>
+<para
+>&kturtle; har &kde;:s vanliga meny <guimenu
+>Hjälp</guimenu
+> som beskrivs i <ulink url="help:/fundamentals/menus.html#menus-help"
+>&kde;:s grunder</ulink
+>, med ytterligare ett alternativ:</para>
+  <variablelist>
+    <anchor id="help-context-help"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F2</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Hjälp</guimenu
+> <guimenuitem
+>Hjälp om: ...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Det här är en mycket användbar funktion: den tillhandahåller hjälp om koden där markören i editorn finns. Om du t.ex. har använd kommandot <userinput
+>skriv</userinput
+> i koden, och vill läsa och ta reda på vad handboken skriver om kommandot, flyttar du bara markören så att den står på kommandot <userinput
+>skriv</userinput
+> och trycker på <keysym
+>F2</keysym
+>. Handboken visar då all information om kommandot <userinput
+>skriv</userinput
+>.</para>
+      <para
+>Funktionen kan visa sig vara användbar vid inlärning av &kturtle;s språk.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+<sect1 id="the-statusbar">
+<title
+>Statusraden</title>
+<para
+>Du får information om &kturtle;s tillstånd på statusraden. Till vänster visas information om den senaste åtgärden. Till höger hittar du markörens nuvarande plats (rad- och kolumnnummer). I mitten på statusraden anges nuvarande språk som används för kommandon.</para>
+</sect1>
+
+</chapter>

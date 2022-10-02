@@ -1,0 +1,305 @@
+<chapter id="getting-started">
+<title
+>Начало работы</title>
+<para
+>После запуска &kturtle; вы увидите нечто подобное: <screenshot
+> <screeninfo
+>Снимок главного окна &kturtle; после первого запуска</screeninfo
+> <mediaobject
+> <imageobject
+> <imagedata fileref="mainwindow.png" format="PNG"/> </imageobject
+> <textobject
+> <phrase
+>&kturtle; после запуска</phrase
+> </textobject
+> </mediaobject
+> </screenshot
+> В данном руководстве мы будем использовать команды &turtlescript; на русском языке. Вы можете поменять язык в <menuchoice
+><guimenu
+>Настройка</guimenu
+><guisubmenu
+>Язык команд</guisubmenu
+></menuchoice
+>. Обратите внимание, что выбранный здесь для &kturtle; язык является языком команд &turtlescript;, а не языком, используемым в &kde; на вашем компьютере для отображения интерфейса и меню &kturtle;.</para>
+
+<sect1 id="first-steps">
+<title
+>Первые шаги в &turtlescript;: познакомьтесь с Черепашкой!</title>
+<para
+>Вы, наверное, уже заметили Черепашку в центре холста, сейчас мы научимся ей управлять, используя команды в редактора кода.</para>
+
+<sect2 id="the-turtle-moves">
+<title
+>Движения Черепашки</title>
+<para
+>Давайте начнём с изучения движений Черепашки. Наша Черепашка может перемещаться тремя способами: (1) вперёд и назад, (2) налево или направо  или (3) перескочить сразу к определённой точке экрана. Попробуйте, например, это:</para>
+<para>
+<screen
+>вперёд 100
+налево 90 
+</screen>
+Введите или скопируйте эти строчки в редактор кода (обратите внимание на использование буквы <quote
+>ё</quote
+>) и запустите код на выполнение, используя <link linkend="run-execute" 
+><menuchoice
+><guimenu
+>Выполнить</guimenu
+><guimenuitem
+>Выполнить</guimenuitem
+></menuchoice
+></link
+>), чтобы увидеть результат.</para>
+
+<para
+>После ввода и запуска команд, подобных приведённым выше, вы можете наблюдать одну или несколько подобных вещей:</para>
+<orderedlist>
+<listitem
+><para
+>После запуска команд на выполнение Черепашка продвинулась вверх, рисуя линию, и затем повернулась на 90 градусов влево. Это произошло потому, что мы использовали команды <link linkend="forward"
+><userinput
+>вперёд</userinput
+></link
+> и <link linkend="turnleft"
+><userinput
+>налево</userinput
+></link
+>.</para>
+</listitem>
+<listitem>
+<para
+>Как вы могли заметить, при вводе кода его цвет меняется. Это называется <emphasis
+>подсветка кода</emphasis
+> (разные типы команд подсвечиваются по-разному). Подсветка делает чтение блоков кода удобнее.</para>
+</listitem>
+<listitem>
+<para
+>Черепашка рисовала тонкой чёрной линией.</para>
+</listitem>
+<listitem>
+<para
+>Может быть вы получили сообщение об ошибке. Это может произойти по одной из двух причин: вы совершили промашку при копировании команд или же не выставили правильный язык ввода команд &turtlescript; (вы можете сделать это в меню <menuchoice
+><guimenu
+>Настройка</guimenu
+><guisubmenu
+>Язык команд</guisubmenu
+></menuchoice
+>).</para>
+</listitem>
+</orderedlist>
+
+<para
+>Как вы могли понять, команда <userinput
+>вперёд 100</userinput
+> указала Черепашке на то, что ей необходимо двигаться вперёд, оставляя за собой линию, а команда <userinput
+>налево 90</userinput
+> — повернуть на 90 <glossterm linkend="degrees"
+>градусов</glossterm
+> влево.</para>
+
+<para
+>Обратитесь, пожалуйста, к следующим ссылкам справочного руководства для полного описания новых команд: <link linkend="forward"
+><userinput
+>вперёд</userinput
+></link
+>, <link linkend="backward"
+><userinput
+>назад</userinput
+></link
+>, <link linkend="turnleft"
+><userinput
+>налево</userinput
+></link
+> и <link linkend="turnright"
+><userinput
+>направо</userinput
+></link
+>.</para>
+</sect2>
+
+<sect2 id="more-examples">
+<title
+>Примеры</title>
+<para
+>Первый пример был совсем простенький, продолжаем!</para>
+
+<para>
+
+<screen
+>сброс
+
+размер_холста 200,200
+цвет_холста 0,0,0
+цвет_пера 255,0,0
+толщина_пера 5
+
+иди 20,20
+направление 135
+
+вперёд 200
+налево 135
+вперёд 100
+налево 135
+вперёд 141
+налево 135
+вперёд 100
+налево 45
+
+иди 40,100
+</screen>
+Чтобы увидеть результат, вы снова можете набрать код вручную, либо скопировать его в редактор или же открыть пример <filename
+>стрелка</filename
+> в меню <guimenu
+>Примеры</guimenu
+> и запустить его, используя <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Выполнить</guimenu
+><guimenuitem
+>Выполнить</guimenuitem
+></menuchoice
+></link
+>. В следующих примерах ожидается, что вы уже ознакомлены с описанными способами ввода кода.</para>
+
+<para
+>Как вы могли заметить, второй пример содержит гораздо больше кода. Также вы увидели пару новых команд. Ниже дано краткое описание новых команд:</para>
+
+<para
+>После команды <userinput
+>сброс</userinput
+> всё возвращается в состояние, которое было сразу после старта &kturtle;.</para>
+
+<para
+><userinput
+>размер_холста 200,200</userinput
+> устанавливает ширину и высоту холста в 200 <glossterm linkend="pixels"
+>пикселов</glossterm
+>. Ширина и высота одинаковы, холст будет квадратным.</para>
+
+<para
+><userinput
+>цвет_холста 0,0,0</userinput
+> задаёт чёрный цвет холста. <userinput
+>0,0,0</userinput
+> — это <glossterm linkend="rgb"
+>RGB комбинация</glossterm
+>: комбинация красной, зелёной и синей составляющих цвета (по-английски: red, green, blue, или сокращённо — RGB). Если  все значения установлены в <userinput
+>0</userinput
+>, получится чёрный цвет.</para>
+
+<para
+><userinput
+>цвет_пера 255,0,0</userinput
+> устанавливает красный цвет для пера. <userinput
+>255,0,0</userinput
+> — это <glossterm linkend="rgb"
+>RGB комбинация</glossterm
+>, где красная составляющая равна <userinput
+>255</userinput
+>, а все остальные — <userinput
+>0</userinput
+>. Результатом будет красный цвет.</para>
+
+<para
+>Если вы не разбираетесь в значениях цвета, обратитесь к статье глоссария <glossterm linkend="rgb"
+>RGB комбинации</glossterm
+>.</para>
+
+<para
+><userinput
+>толщина_пер 5</userinput
+> устанавливает толщину (размер) пера в <userinput
+>5</userinput
+> <glossterm linkend="pixels"
+>пикселов</glossterm
+>. С этого момента Черепашка будет рисовать линию толщиной <userinput
+>5</userinput
+> до тех пор, пока мы не зададим другую толщину пера при помощи команды <userinput
+>толщина_пер</userinput
+>.</para>
+
+<para
+><userinput
+>иди 20,20</userinput
+> указывает Черепашке перескочить в определённое место холста. Отсчитывается от верхнего левого угла. В данном случае Черепашка должна перескочить на 20 <glossterm linkend="pixels"
+>пикселов</glossterm
+> вправо от левой границы холста и на 20 <glossterm linkend="pixels"
+>пикселов</glossterm
+> вниз от верхней границы холста. Примечание: при использовании команды <userinput
+>иди</userinput
+> Черепашка не рисует линию.</para>
+
+<para
+><userinput
+>направление 135</userinput
+> задаёт направление Черепашки. Команды <userinput
+>налево</userinput
+> и <userinput
+>направо</userinput
+> изменяют направление Черепашки на заданный угол относительно текущей позиции. Команда <userinput
+>направление</userinput
+> изменяет направление Черепашки на заданный угол относительно 0 и не обращает внимание на предыдущее направление.</para>
+
+<para
+>После команды <userinput
+>направление</userinput
+> следует множество команд <userinput
+>вперёд</userinput
+> и <userinput
+>налево</userinput
+>. Эти команды выполняют рисование.</para>
+
+<para
+>В конце используется ещё одна команда <userinput
+>иди</userinput
+> для отвода Черепашки в сторону.</para>
+
+<para
+>Ознакомьтесь с описанием всех этих команд, перейдя по ссылкам в справочник. Там они объяснены более подробно.</para>
+
+
+</sect2>
+</sect1>
+
+
+
+<!--        EXTRA SECTIONS CAN BE ADDED TO THE "GETTING STARTED"
+
+<sect1 id="calculations">
+<title
+>Simple Calculations</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_variables">
+<title
+>Using Variables: creating 'number containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_strings">
+<title
+>Using strings: creating 'text containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="logic">
+<title
+>Logic: asking the computer simple questions</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="recursion">
+<title
+>Recursion: the Turtle is using itself</title>
+<para>
+Draw a maze for example
+</para>
+</sect1>
+-->
+
+
+</chapter>

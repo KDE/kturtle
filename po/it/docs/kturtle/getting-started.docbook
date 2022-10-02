@@ -1,0 +1,308 @@
+<chapter id="getting-started">
+<title
+>Per iniziare</title>
+<para
+>Quando avvii &kturtle; vedrai qualcosa di simile a questo:</para>
+<screenshot>
+  <screeninfo
+>Ecco una schermata di &kturtle; al primo avvio</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>&kturtle; dopo il primo avvio</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+<para
+>In questa guida assumiamo che la lingua dei comandi &turtlescript; sia l'italiano. Puoi cambiare questa impostazione dal sotto-menu <menuchoice
+><guimenu
+>Impostazioni</guimenu
+><guisubmenu
+>Lingua degli script</guisubmenu
+></menuchoice
+>. Considera che la lingua impostata qui per &kturtle; è quella che usi per i comandi &turtlescript;, non quella che usa &kde; e quella per visualizzare l'interfaccia e i menu di &kturtle;.</para>
+
+<sect1 id="first-steps">
+<title
+>Primi passi con &turtlescript;: incontriamo la tartaruga!</title>
+<para
+>Devi aver notato che la tartaruga è nel mezzo dell'area di disegno: stai per imparare come controllarla usando i comandi nell'editor.</para>
+
+<sect2 id="the-turtle-moves">
+<title
+>La tartaruga si muove</title>
+<para
+>Iniziamo facendo muovere la tartaruga. La nostra tartaruga può eseguire 3 tipi di movimento: (1) può andare avanti e indietro, (2) può girare a sinistra e a destra e (3) può andare direttamente ad una posizione dello schermo. Prova questo per esempio:</para>
+<para>
+<screen
+>avanti 100
+sinistra 90 
+</screen
+>Inserisci, oppure copia e incolla, il codice nell'editor, ed eseguilo (usando <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Esegui</guimenu
+><guimenuitem
+>Esegui comandi</guimenuitem
+></menuchoice
+></link
+>) per vedere il risultato.</para>
+
+<para
+>Quando hai inserito ed eseguito i comandi come sopra nell'editor, potresti aver notato una o più delle seguenti cose:</para>
+<orderedlist>
+<listitem
+><para
+>Che &mdash; dopo aver eseguito i comandi &mdash;, la tartaruga si muove verso l'alto, disegna una linea e poi si gira di un quarto a sinistra. Ciò accade poiché hai usato i comandi <link linkend="forward"
+><userinput
+>avanti</userinput
+></link
+> e <link linkend="turnleft"
+><userinput
+>sinistra</userinput
+></link
+>.</para>
+</listitem>
+<listitem>
+<para
+>Che il colore del codice è cambiato mentre lo inserivi: questa caratteristica è chiamata <emphasis
+>evidenziazione intuitiva</emphasis
+> &mdash; i diversi tipi di comandi sono evidenziati differentemente. Ciò semplifica molto la lettura di ampi porzioni di codice.</para>
+</listitem>
+<listitem>
+<para
+>Che la tartaruga disegna una sottile linea nera.</para>
+</listitem>
+<listitem>
+<para
+>Forse ti è apparso un messaggio d'errore. Ciò potrebbe significare semplicemente due cose: potresti aver fatto un errore copiando i comandi, oppure potresti ancora dover impostare la lingua corretta dei comandi &turtlescript; (puoi farlo scegliendo <menuchoice
+><guimenu
+>Impostazioni</guimenu
+><guisubmenu
+>Lingua degli script</guisubmenu
+></menuchoice
+>).</para>
+</listitem>
+</orderedlist>
+
+<para
+>Avrai probabilmente capito che <userinput
+>avanti 100</userinput
+> ha detto alla tartaruga di andare avanti disegnando una linea, mentre con <userinput
+>sinistra 90</userinput
+> la tartaruga si è girata di 90 <glossterm linkend="degrees"
+>gradi</glossterm
+> a sinistra.</para>
+
+<para
+>Segui i collegamenti seguenti nel manuale di riferimento per una spiegazione completa dei nuovi comandi: <link linkend="forward"
+><userinput
+>avanti</userinput
+></link
+>, <link linkend="backward"
+><userinput
+>indietro</userinput
+></link
+>, <link linkend="turnleft"
+><userinput
+>sinistra</userinput
+></link
+> e <link linkend="turnright"
+><userinput
+>destra</userinput
+></link
+>.</para>
+</sect2>
+
+<sect2 id="more-examples">
+<title
+>Altri esempi</title>
+<para
+>Il primo esempio era molto semplice, quindi andiamo avanti!</para>
+
+<para>
+
+<screen
+>ricomincia
+
+dimensionesfondo 200,200
+coloresfondo 0,0,0
+colorepenna 255,0,0
+spessorepenna 5
+
+vai 20,20
+direzione 135
+
+avanti 200
+sinistra 135
+avanti 100
+sinistra 135
+avanti 141
+sinistra 135
+avanti 100
+sinistra 45
+
+vai 40, 100
+</screen
+>Puoi nuovamente inserire, oppure copiare e incollare, il codice nell'editor, o anche aprire l'esempio <filename
+>freccia</filename
+> nel sotto-menu <guimenu
+>Esempi</guimenu
+> ed eseguirlo (usando <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Esegui</guimenu
+><guimenuitem
+>Esegui comandi</guimenuitem
+></menuchoice
+></link
+>) per vedere il risultato. Negli esempi seguenti si dà per scontato che tu lo sappia fare.</para>
+
+<para
+>Potresti aver notato che il secondo esempio usa molto più codice. Hai anche visto molti muovi comandi. Qui c'è una breve spiegazione di tutti i nuovi comandi:</para>
+
+<para
+>Dopo un comando <userinput
+>ricomincia</userinput
+>, tutto ritorna allo stato in cui era quando hai avviato &kturtle;.</para>
+
+<para
+><userinput
+>dimensionesfondo 200,200</userinput
+> imposta la larghezza e l'altezza dell'area di disegno a 200 <glossterm linkend="pixels"
+>pixel</glossterm
+>. La larghezza e l'altezza sono uguali, così l'area di disegno sarà un quadrato.</para>
+
+<para
+><userinput
+>coloresfondo 0,0,0</userinput
+> colora di nero l'area di disegno. <userinput
+>0,0,0</userinput
+> è una <glossterm linkend="rgb"
+>combinazione RGB</glossterm
+> dove tutti i valori sono impostati a <userinput
+>0</userinput
+>, il che si traduce nel colore nero.</para>
+
+<para
+><userinput
+>colorepenna 255,0,0</userinput
+> imposta il colore della penna a rosso. <userinput
+>255,0,0</userinput
+> è una <glossterm linkend="rgb"
+>combinazione RGB</glossterm
+> dove solo il valore del rosso è impostato a <userinput
+>255</userinput
+> (totalmente pieno), mentre gli altri (verde e blu) sono impostati a <userinput
+>0</userinput
+> (totalmente non usati). Ciò produrrà come risultato un rosso brillante.</para>
+
+<para
+>Se non comprendi i valori dei colori, assicurati di aver letto il glossario alla voce <glossterm linkend="rgb"
+>combinazioni RGB</glossterm
+>.</para>
+
+<para
+><userinput
+>spessorepenna 5</userinput
+> imposta lo spessore (la dimensione) della penna a <userinput
+>5</userinput
+> <glossterm linkend="pixels"
+>pixel</glossterm
+>. Da ora in avanti, ogni linea che la tartaruga disegna avrà uno spessore di <userinput
+>5</userinput
+>, fino a quando cambieremo lo <userinput
+>spessorepenna</userinput
+> in qualcos'altro.</para>
+
+<para
+><userinput
+>vai 20,20</userinput
+> comanda alla tartaruga di andare in un punto preciso dell'area di disegno. Contando dall'angolo in alto a sinistra, questo punto dista 20 <glossterm linkend="pixels"
+>pixel</glossterm
+> dalla sinistra, e 20 <glossterm linkend="pixels"
+>pixel</glossterm
+> dall'alto dell'area di disegno. Nota che usando il comando <userinput
+>vai</userinput
+>, la tartaruga non disegnerà una linea.</para>
+
+<para
+><userinput
+>direzione 135</userinput
+> imposta la direzione della tartaruga. I comandi <userinput
+>sinistra</userinput
+> e <userinput
+>destra</userinput
+> cambiano l'angolo della tartaruga a partire dalla sua direzione corrente. Il comando <userinput
+>direzione</userinput
+> cambia l'angolo della tartaruga a partire dallo zero, e quindi non relativamente alla direzione precedente della tartaruga.</para>
+
+<para
+>Dopo il comando <userinput
+>direzione</userinput
+>, seguono molti comandi <userinput
+>avanti</userinput
+> e <userinput
+>sinistra</userinput
+>. Questi effettuano il <quote
+>vero e proprio</quote
+> lavoro di disegno.</para>
+
+<para
+>Infine, un altro comando <userinput
+>vai</userinput
+> serve per mettere in disparte la tartaruga.</para>
+
+<para
+>Assicurati di seguire i collegamenti al riferimento. La guida spiega ogni comando in modo più completo.</para>
+
+
+</sect2>
+</sect1>
+
+
+
+<!--        EXTRA SECTIONS CAN BE ADDED TO THE "GETTING STARTED"
+
+<sect1 id="calculations">
+<title
+>Simple Calculations</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_variables">
+<title
+>Using Variables: creating 'number containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_strings">
+<title
+>Using strings: creating 'text containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="logic">
+<title
+>Logic: asking the computer simple questions</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="recursion">
+<title
+>Recursion: the Turtle is using itself</title>
+<para>
+Draw a maze for example
+</para>
+</sect1>
+-->
+
+
+</chapter>

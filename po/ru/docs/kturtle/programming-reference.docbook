@@ -1,0 +1,2086 @@
+<chapter id="reference">
+<title
+>Руководство программиста &turtlescript;</title>
+<para
+>Это руководство по языку программирования &turtlescript;, используемому в &kturtle;. В первой части рассматриваются некоторые аспекты <link linkend="grammar"
+>грамматики</link
+> программ на &turtlescript;. Вторая часть описывает исключительно <link linkend="mathematical-operators"
+>математические операторы</link
+>, <link linkend="boolean-operators"
+>логические (истина/ложь) операторы</link
+> и <link linkend="comparing-operators"
+>операторы сравнения</link
+>. В третьей главе перечислены все <link linkend="commands"
+>команды</link
+> с их описаниями. Четвёртая глава рассматривает вопросы <link linkend="assignment-of-variables"
+>присвоения</link
+> значений <link linkend="assignment-of-variables"
+>переменным</link
+>. В заключение, в пятой главе рассказывается, как управлять выполнением программы при помощи <link linkend="controlling-execution"
+>управляющих операторов</link
+>, и в шестой — о создании собственных команд при помощи команды <link linkend="learn"
+>выучи</link
+>.</para>
+
+<sect1 id="grammar">
+<title
+>Грамматика &turtlescript;</title>
+<para
+>Как и в любом языке, в &turtlescript; есть различные типы слов и символов. В русском языке мы различаем глаголы (например, «ходить» или «петь») и существительные (например, «сестра» или «дом»). Эти слова используются для различных целей. &turtlescript; — это язык программирования, используя который вы можете сообщить &kturtle;, что необходимо сделать.</para>
+<para
+>В этом разделе кратко рассказано о некоторых типах слов и символов в &turtlescript;. Мы объясняем <link linkend="comment"
+>комментарии</link
+>, <link linkend="command"
+>команды</link
+> и три различных типа литералов: <link linkend="number"
+>числа</link
+>, <link linkend="string"
+>строки</link
+> и <link linkend="boolean-value"
+>логические (истина/ложь) значения</link
+>.</para>
+
+
+<sect2 id="comment">
+<title
+>Комментарии</title>
+<para
+>Программа состоит из инструкций, которые выполняются при запуске программы и, так называемых, комментариев. &kturtle; не выполняет комментарии, а просто игнорирует их при выполнении программы. Комментарии нужны для других программистов, чтобы они лучше могли понять вашу программу. Всё, что следует после символа <userinput
+>#</userinput
+> считается в &turtlescript; комментарием. Вот пример маленькой программы, которая ничего не делает: <screen>
+# Это маленькая программа ничего не делает. Это всего лишь комментарий!
+</screen
+> Это в некоторой степени бесполезный пример, но он хорошо объясняет суть комментариев.</para>
+<para
+>Комментарии очень полезны в более сложных программах. Они могут дать какие-то советы другим программистам. В следующей программе вы можете видеть совместное использование комментариев и команды <link linkend="print"
+>напиши</link
+>. <screen>
+# эта программа создана Cies Breijs.
+напиши "этот текст будет написан на холсте"
+# предыдущая строка — не комментарий, а следующая — комментарий:
+# напиши "этот текст не будет написан"
+</screen
+> Первая строка описывает программу. Вторая строка выполняется &kturtle; и печатает на холсте <userinput
+>этот текст будет написан на холсте</userinput
+>. Третья строка является комментарием. Четвёртая строка — это тоже комментарий, содержащий строку &turtlescript;. Если удалить символ <userinput
+>#</userinput
+> из четвёртой строки, команда печати будет выполнена &kturtle;. Программисты говорят: оператор печати в четвертой строке «закомментирован».</para>
+<para
+>В <link linkend="the-editor"
+>редакторе кода</link
+> комментарии <glossterm
+>выделяются</glossterm
+> светло-серым.</para>
+</sect2>
+
+<sect2 id="command">
+<title
+>Команды</title>
+<para
+>С помощью команд вы говорите Черепашке или &kturtle;, что необходимо выполнить  какие-то действия. Некоторым командам нужны входные данные, некоторые дают что-то на выходе. <screen>
+# команде вперёд нужны входные данные, в этом примере — число 100:
+вперёд 100
+</screen
+> Первая строка это <link linkend="comment"
+>комментарий</link
+>. Вторая строка содержит команду <userinput
+>вперёд</userinput
+> и <link linkend="number"
+>число</link
+> <userinput
+>100</userinput
+>. Число не является частью команды, он считается «входом» для команды.</para>
+<para
+>Некоторым командам, например, команде <userinput
+>иди</userinput
+> требуется более чем одно входное значение. Несколько значений отделяются друг от друга символом <userinput
+>,</userinput
+> (запятая).</para>
+<para
+>Подробное описание всех команд, поддерживаемых &kturtle;, находится <link linkend="commands"
+>здесь</link
+>. Встроенные команды <glossterm
+>выделяются</glossterm
+> тёмно-синим</para>
+</sect2>
+
+<sect2 id="number">
+<title
+>Числа</title>
+<para
+>Скорее всего, вы уже знаете немного о числах. То, как используются числа в &kturtle; не сильно отличается от разговорного языка или математики. </para>
+<para
+>Существуют так называемые натуральные числа: <userinput
+>0</userinput
+>, <userinput
+>1</userinput
+>, <userinput
+>2</userinput
+>, <userinput
+>3</userinput
+>, <userinput
+>4</userinput
+>, <userinput
+>5</userinput
+> и т.д., отрицательные числа: <userinput
+>-1</userinput
+>, <userinput
+>-2</userinput
+>, <userinput
+>-3</userinput
+> и т.д. и рациональные (дробные) числа, например: <userinput
+>0.1</userinput
+>, <userinput
+>3.14</userinput
+>, <userinput
+>33.3333</userinput
+>, <userinput
+>-5.05</userinput
+>, <userinput
+>-1.0</userinput
+>. Символ <userinput
+>.</userinput
+> (точка) используется для отделения дробной части. </para>
+<para
+>Числа могут использоваться с <link linkend="mathematical-operators"
+>математическими операторами</link
+> и с <link linkend="comparing-operators"
+>операторами сравнения</link
+>. Также они могут быть сохранены в <link linkend="assignment-of-variables"
+>переменных</link
+>. Числа <glossterm
+>выделяются</glossterm
+> тёмно-красным.</para>
+</sect2>
+
+<!-- constants like pi? -->
+
+<sect2 id="string">
+<title
+>Строки</title>
+<para
+>Пример: <screen>
+напиши "Привет, я строка."
+</screen
+> В этом примере <userinput
+>напиши</userinput
+> — команда, которой передаётся строка <userinput
+>"Привет, я строка."</userinput
+>. Строки должны начинаться и заканчиваться символом <userinput
+>"</userinput
+>, чтобы &kturtle; смог определить, что это строка.</para>
+<para
+>Строки можно помещать в <link linkend="assignment-of-variables"
+>переменные</link
+>, так же как и <link linkend="number"
+>числа</link
+>. Тем не менее, в отличие от числа, строки не могут быть использованы в <link linkend="mathematical-operators"
+>математических операторах</link
+> или <link linkend="comparing-operators"
+>операторах сравнения</link
+>. Строки <glossterm
+>выделяются</glossterm
+> красным.</para>
+</sect2>
+
+<sect2 id="boolean-value">
+<title
+>Логические (истина/ложь) значения</title>
+<para
+>Существует только два логических значения: <userinput
+>истина</userinput
+> и <userinput
+>ложь</userinput
+>. Иногда они также называются: включено и выключено, да и нет, один и ноль. Но в &turtlescript; мы всегда называем их <userinput
+>истина</userinput
+> и <userinput
+>ложь</userinput
+>. Посмотрите на этот фрагмент кода &turtlescript;: <screen>
+$a = истина
+</screen
+> Если вы посмотрите в <link linkend="the-inspector"
+>инспектор</link
+>, то увидите, что <link linkend="assignment-of-variables"
+>переменная</link
+> <userinput
+>$a</userinput
+> имеет значение <userinput
+>истина</userinput
+> и логический тип.</para>
+<para
+>Часто логические значения появляются в результате <link linkend="comparing-operators"
+>операций сравнения</link
+>, например, как в следующем фрагменте кода &turtlescript;: <screen>
+$ответ = 10 &gt; 3
+</screen
+> <link linkend="assignment-of-variables"
+>Переменная</link
+> <userinput
+>$ответ</userinput
+> установлена в значение <userinput
+>истина</userinput
+> потому, что <userinput
+>10</userinput
+> больше чем <userinput
+>3</userinput
+>.</para>
+<para
+>Логические значения <userinput
+>истина</userinput
+> и <userinput
+>ложь</userinput
+> <glossterm
+>выделяются</glossterm
+> тёмно-красным.</para>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="operators">
+<title
+>Математические, логические операторы и операторы сравнения</title>
+<para
+>Название этого раздела может показаться очень трудным, но это не так сложно, как кажется.</para>
+
+<sect2 id="mathematical-operators">
+<title
+>Математические операторы</title>
+<para
+>Вот основные математические символы: сложение (<userinput
+>+</userinput
+>), вычитание (<userinput
+>-</userinput
+>), умножение (<userinput
+>*</userinput
+>), деление (<userinput
+>/</userinput
+>) и возведение в степень (<userinput
+>^</userinput
+>).</para>
+
+<para
+>Небольшой пример использования математических операторов в &turtlescript;: <screen>
+$сумма        = 1 + 1
+$разница      = 20 - 5
+$произведение = 15 * 2
+$частное      = 30 / 30
+$степень      = 2 ^ 2
+</screen
+> Результаты выполнения математических операций <link linkend="assignment-of-variables"
+>сохранены</link
+> в различных <link linkend="assignment-of-variables"
+>переменных</link
+>. Вы можете увидеть их значения в <link linkend="the-inspector"
+>инспекторе</link
+>.</para>
+<para
+>Если в программе вам нужно вычислить простое выражение, вы можете поступить следующим образом: <screen
+>напиши 2010-12
+</screen
+></para>
+<para
+>Вот пример с круглыми скобками: <screen>
+напиши ( ( 20 - 5 ) * 2 / 30 ) + 1
+</screen
+> Выражение в скобках будет вычислено первым. В данном примере сначала будет получена разность 20 – 5, затем полученное значение будет умножено на 2, поделено на 30 и, напоследок, будет добавлена единица (результат равен 2). Скобки также могут быть использованы и в других случаях.</para>
+<para
+>В &kturtle; также есть дополнительные математические функции в виде команд. Обратите внимание на следующие команды, но знайте, что речь идёт о сложных операциях: <link linkend="round"
+>округли</link
+>, <link linkend="random"
+>случайное</link
+>, <link linkend="sqrt"
+>sqrt</link
+> , <link linkend="pi"
+>pi</link
+>, <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+>, <link linkend="tan"
+>tg</link
+>, <link linkend="arcsin"
+>arcsin</link
+>, <link linkend="arccos"
+>arccos</link
+>, <link linkend="arctan"
+>arctg</link
+>.</para>
+</sect2>
+
+<sect2 id="boolean-operators">
+<title
+>Логические (истина/ложь) операторы</title>
+<para
+>В то время как <link linkend="mathematical-operators"
+>математические операторы</link
+> используют <link linkend="number"
+>числа</link
+>, логические операторы используют <link linkend="boolean-value"
+>логические значения</link
+> (<userinput
+>истина</userinput
+> и <userinput
+>ложь</userinput
+>). Существует только три логических оператора, а именно: <userinput
+>и</userinput
+>, <userinput
+>или</userinput
+> и <userinput
+>не</userinput
+>. Следующий фрагмент кода &turtlescript; демонстрирует их использование: <screen>
+$и_1_1 = истина и истина  # -> истина
+$и_1_0 = истина и ложь    # -> ложь
+$и_0_1 = ложь и истина    # -> ложь
+$и_0_0 = ложь и ложь      # -> ложь
+
+$или_1_1 = истина или истина  # -> истина
+$или_1_0 = истина или ложь    # -> истина
+$или_0_1 = ложь или истина    # -> истина
+$или_0_0 = ложь или ложь      # -> ложь
+
+$не_1 = не истина  # -> ложь
+$не_0 = не ложь    # -> истина
+</screen
+> С помощью <link linkend="the-inspector"
+>инспектора</link
+> можно увидеть значения, но мы также указали их в комментариях в конце каждой строки. <userinput
+>и</userinput
+> вернёт <userinput
+>истина</userinput
+>, только если обе стороны содержат <userinput
+>истина</userinput
+>. <userinput
+>или</userinput
+> вернёт <userinput
+>истина</userinput
+>, если хотя бы одна из сторон содержит <userinput
+>истина</userinput
+>, и <userinput
+>не</userinput
+> превращает <userinput
+>истина</userinput
+> в <userinput
+>ложь</userinput
+>, а <userinput
+>ложь</userinput
+> в <userinput
+>истина</userinput
+>.</para>
+<para
+>Логические операторы <glossterm
+>выделяются</glossterm
+> розовым.</para>
+
+<sect3 id="boolean-operators-advanced-examples">
+<title
+>Несколько более сложных примеров</title>
+<para
+>Рассмотрим следующий пример с <userinput
+>и</userinput
+>: <screen>
+$a = 1
+$b = 5
+если (($a &lt; 10) и ($b == 5)) и ($a &lt; $b) {
+  напиши "привет"
+}
+</screen
+> В этом фрагменте кода &turtlescript; результаты трёх <link linkend="comparing-operators"
+>операторов сравнения</link
+> объединены операторами <userinput
+>и</userinput
+>. Это означает, что для печати «привет» все три сравнения должны вернуть «истина».</para>
+
+<para
+>Пример с <userinput
+>или</userinput
+>: <screen>
+$n = 1
+если ($n &lt; 10) или ($n == 2) {
+  напиши "привет"
+}
+</screen
+> В этом фрагменте кода &turtlescript; левая часть от <userinput
+>или</userinput
+> возвращает «истина», а правая часть — «ложь». Так как одна из сторон оператора <userinput
+>или</userinput
+> — «истина», этот оператор вернёт «истина» и будет напечатано «привет».</para>
+
+<para
+>И, наконец, пример с <userinput
+>не</userinput
+>, меняющим «истина» на «ложь» и «ложь» на «истина»: <screen
+>$n = 1
+если не ($n == 3) {
+  напиши "привет"
+} иначе {
+  напиши "не привет ;-)"
+}
+</screen
+></para>
+</sect3>
+</sect2>
+
+<sect2 id="comparing-operators">
+<title
+>Операторы сравнения</title>
+<para
+>Рассмотрим простое сравнение: <screen>
+$ответ = 10 &gt; 3
+</screen
+> Здесь <userinput
+>10</userinput
+> сравнивается с <userinput
+>3</userinput
+> оператором «больше чем». Результатом сравнения является <link linkend="boolean-value"
+>логическое значение</link
+> <userinput
+>истина</userinput
+>, которое сохраняется в <link linkend="assignment-of-variables"
+>переменной</link
+> <userinput
+>$ответ</userinput
+>.</para>
+<para
+>Все <link linkend="number"
+>числа</link
+> и <link linkend="assignment-of-variables"
+>переменные</link
+> (содержащие числа) можно сравнивать друг с другом при помощи операторов сравнения.</para>
+<para
+>Здесь приведены все операторы сравнения: <table
+> <title
+>Типы вопросов</title
+> <tgroup cols="3"
+> <tbody
+> <row
+> <entry
+><userinput
+>$A == $B</userinput
+></entry
+> <entry
+>равно</entry
+> <entry
+>ответ <quote
+>истина</quote
+> если <userinput
+>$A</userinput
+> равно <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A != $B</userinput
+></entry
+> <entry
+>не равно</entry
+> <entry
+>ответ <quote
+>истина</quote
+> если <userinput
+>$A</userinput
+> не равно <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt; $B</userinput
+></entry
+> <entry
+>больше чем</entry
+> <entry
+>ответ <quote
+>истина</quote
+> если <userinput
+>$A</userinput
+> больше чем <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt; $B</userinput
+></entry
+> <entry
+>меньше чем</entry
+> <entry
+>ответ <quote
+>истина</quote
+> если <userinput
+>$A</userinput
+> меньше чем <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt;= $B</userinput
+></entry
+> <entry
+>больше или равно</entry
+> <entry
+>ответ <quote
+>истина</quote
+> если <userinput
+>$A</userinput
+> больше или равно <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt;= $B</userinput
+></entry
+> <entry
+>меньше или равно</entry
+> <entry
+>ответ <quote
+>истина</quote
+> если <userinput
+>$A</userinput
+> меньше или равно <userinput
+>$B</userinput
+></entry
+> </row
+> </tbody
+> </tgroup
+> </table
+> Обратите внимание, что $A и $B должны быть <link linkend="number"
+>числами</link
+> или <link linkend="assignment-of-variables"
+>переменными</link
+> с числами.</para>
+</sect2>
+
+
+</sect1>
+
+
+
+<sect1 id="commands">
+<title
+>Команды</title>
+<para
+>Используя команды, вы указываете Черепашке или &kturtle; выполнить какое-то действие. Некоторым командам необходимы входные данные, некоторые выводят данные. В этом разделе мы опишем все встроенные команды &kturtle;. Используя команду <link linkend="learn"
+>выучи</link
+>, вы можете создавать собственные команды. Описываемые здесь встроенные команды <glossterm
+>выделяются</glossterm
+> тёмно-синим.</para>
+
+<sect2 id="moving-the-turtle">
+<title
+>Двигаем Черепашку.</title>
+<para
+>Существует несколько команд для перемещения Черепашки по экрану.</para>
+
+  <variablelist>
+    <anchor id="forward"/>
+    <varlistentry
+> 
+      <term
+>вперёд (вп)<indexterm
+><primary
+>вперёд (вп)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>вперёд X</screen>
+<userinput
+>вперёд</userinput
+> перемещает Черепашку на X пикселов вперёд. Когда перо опущено Черепашка будет оставлять за собой след. <userinput
+>вперёд</userinput
+> также может записываться как <userinput
+>вп</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="backward"/>
+    <varlistentry
+>  
+      <term
+>назад (нд)<indexterm
+><primary
+>назад (нд)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>назад X</screen>
+<userinput
+>назад</userinput
+> перемещает Черепашку назад на X пикселов. Когда перо опущено Черепашка будет оставлять за собой след. <userinput
+>назад</userinput
+> также может записываться как <userinput
+>нд</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnleft"/>
+    <varlistentry
+> 
+      <term
+>налево (лв)<indexterm
+><primary
+>налево (лв)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>налево X</screen>
+<userinput
+>налево</userinput
+> предписывает Черепашке повернуть на X градусов налево. <userinput
+>налево</userinput
+> также может записываться как <userinput
+>лв</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnright"/>
+    <varlistentry
+> 
+      <term
+>направо (пр)<indexterm
+><primary
+>направо (пр)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>направо X</screen>
+<userinput
+>направо</userinput
+> предписывает Черепашке повернуть на X градусов направо. <userinput
+>направо</userinput
+> также может записываться как <userinput
+>пр</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="direction"/>
+    <varlistentry
+> 
+      <term
+>направление (нпр)<indexterm
+><primary
+>направление (нпр)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>направление X</screen>
+<userinput
+>направление</userinput
+> устанавливает направление Черепашки на X градусов относительно 0, а не относительно предыдущего направления. <userinput
+>направление</userinput
+> также может записываться как <userinput
+>нпр</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="getdirection"/>
+    <varlistentry
+> 
+      <term
+>получить_направление<indexterm
+><primary
+>получить_направление</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>получить_направление</screen>
+<userinput
+>получить_направление</userinput
+> возвращает направление Черепашки в градусах относительно нуля, где нулём считает положение Черепашки смотрящей вверх.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="center"/>
+    <varlistentry
+> 
+      <term
+>центр<indexterm
+><primary
+>центр</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>центр</screen>
+<userinput
+>центр</userinput
+> перемещает Черепашку в центр холста.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="go"/>
+    <varlistentry
+> 
+      <term
+>иди<indexterm
+><primary
+>иди</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>иди X,Y</screen>
+<userinput
+>иди</userinput
+> предписывает Черепашке занять определённое место на холсте. Это место отстоит на X <glossterm linkend="pixels"
+>пикселей</glossterm
+> от левой границы и на Y <glossterm linkend="pixels"
+>пикселей</glossterm
+> от верхней границы холста.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gox"/>
+    <varlistentry
+> 
+      <term
+>иди_гор<indexterm
+><primary
+>иди_гор</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>иди_гор X</screen>
+<userinput
+>иди_гор</userinput
+> используется для перемещения Черепашки на X <glossterm linkend="pixels"
+>пикселов</glossterm
+> от левой границы холста, высота остаётся неизменной.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="goy"/>
+    <varlistentry
+> 
+      <term
+>иди_верт<indexterm
+><primary
+>иди_верт</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>иди_верт Y</screen>
+<userinput
+>иди_верт</userinput
+> предписывает Черепашке переместиться на Y <glossterm linkend="pixels"
+>пикселей</glossterm
+> от верхней границы холста. Положение относительно левой границы остаётся неизменным.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <note
+><para
+>При использовании команд <userinput
+>иди</userinput
+>, <userinput
+>иди_гор</userinput
+>, <userinput
+>иди_верт</userinput
+> и <userinput
+>центр</userinput
+> Черепашка не будет рисовать линию вне зависимости от того, поднято перо или опущено.</para>
+  </note>
+</sect2>
+
+<sect2 id="locate-the-turtle">
+<title
+>Где Черепашка?</title>
+<para
+>Существует две команды, возвращающие положение Черепашки на экране.</para>
+
+  <variablelist>
+    <anchor id="getx"/>
+    <varlistentry
+> 
+      <term
+>получить_гор<indexterm
+><primary
+>получить_гор</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>получить_гор</userinput
+> возвращает количество пикселей от левого края холста до текущей позиции Черепашки.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gety"/>
+    <varlistentry
+> 
+      <term
+>получить_верт<indexterm
+><primary
+>получить_верт</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>получить_верт</userinput
+> возвращает количество пикселей от верхнего края холста до текущей позиции Черепашки.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="pen">
+<title
+>У Черепашки есть перо</title>
+<para
+>У Черепашки есть перо, которым она рисует линию во время перемещения. Есть несколько команд для управления пером. В данном разделе они будут описаны подробно.</para>
+  <variablelist>
+    <anchor id="penup"/>
+    <varlistentry
+> 
+      <term
+>перо_подними (пп)<indexterm
+><primary
+>перо_подними (пп)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>перо_подними</screen>
+<userinput
+>перо_подними</userinput
+> отрывает перо от холста. Пока перо оторвано, Черепашка не будет рисовать линию во время перемещений. См. также <userinput
+>перо_опусти</userinput
+>. <userinput
+>перо_подними</userinput
+> также может записываться как <userinput
+>пп</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="pendown"/>
+    <varlistentry
+> 
+      <term
+>перо_опусти (по)<indexterm
+><primary
+>перо_опусти (по)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>перо_опусти</screen>
+<userinput
+>перо_опусти</userinput
+> опускает перо на холст. Когда перо опущено, Черепашка при перемещениях рисует линию. См. также <userinput
+>перо_подними</userinput
+>. <userinput
+>перо_опусти</userinput
+> также может записываться как <userinput
+>по</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setpenwidth"/>
+    <varlistentry
+> 
+      <term
+>толщина_пера (тп)<indexterm
+><primary
+>толщина_пера (тп)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>толщина_пера X</screen>
+<userinput
+>толщина_пера</userinput
+> устанавливает толщину пера (толщину линии) в X <glossterm linkend="pixels"
+>пикселов</glossterm
+>. <userinput
+>толщина_пера</userinput
+> также может записываться как <userinput
+>тп</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setfgcolor"/>
+    <varlistentry
+> 
+      <term
+>цвет_пера (цп)<indexterm
+><primary
+>цвет_пера (цп)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>цвет_пера R,G,B</screen>
+<userinput
+>цвет_пера</userinput
+> устанавливает цвет пера. В качестве параметров указывается <glossterm linkend="rgb"
+>RGB комбинация</glossterm
+>. <userinput
+>цвет_пера</userinput
+> также может записываться как <userinput
+>цп</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="canvas">
+<title
+>Команды для работы с холстом.</title>
+<para
+>Существует несколько команд для работы с холстом.</para>
+  <variablelist>
+    <anchor id="resizecanvas"/>
+    <varlistentry>
+      <term
+>размер_холста (рх)<indexterm
+><primary
+>размер_холста (рх)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>размер_холста X,Y</screen>
+<userinput
+>размер_холста</userinput
+> устанавливает размер холста. В качестве входных параметров задаются ширина X и высота Y в <glossterm linkend="pixels"
+>пикселах</glossterm
+>. <userinput
+>размер_холста</userinput
+> также может записываться как <userinput
+>рх</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setbgcolor"/>
+    <varlistentry
+> 
+      <term
+>цвет_холста (цх)<indexterm
+><primary
+>цвет_холста (цх)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>цвет_холста R,G,B</screen>
+<userinput
+>цвет_холста</userinput
+> устанавливает цвет холста. Входным параметром является <glossterm linkend="rgb"
+>RGB комбинация</glossterm
+>. <userinput
+>цвет_холста</userinput
+> также может записываться как <userinput
+>цх</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="clean">
+<title
+>Команды очистки</title>
+<para
+>Существуют две команды очистки холста.</para>
+  <variablelist>
+    <anchor id="clear"/>
+    <varlistentry
+> 
+      <term
+>очисти (очс)<indexterm
+><primary
+>очисти (очс)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>очисти</screen>
+<userinput
+>очисти</userinput
+> удаляет с холста все рисунки. Всё остальное останется по-прежнему: позиция и угол направления Черепашки, цвет холста, видимость Черепашки и размер холста.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="reset"/>
+    <varlistentry
+> 
+      <term
+>сброс<indexterm
+><primary
+>сброс</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>сброс</screen>
+<userinput
+>сброс</userinput
+> очищает больше, чем команда <userinput
+>очисти</userinput
+>. После выполнения команды <userinput
+>сброс</userinput
+> всё будет выглядеть так, как будто вы только что запустили &kturtle;. Черепашка будет расположена в центре экрана, цвет холста будет белым, и Черепашка будет рисовать чёрные линии на холсте размером 400 x 400 пикселей.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="sprites">
+<title
+>Черепашка — это спрайт.</title>
+<para
+>Большинство людей и понятия не имеют, что такое спрайты, так вот, спрайты — это маленькие картинки, которые можно перемещать по экрану. Так что Черепашка  — это <glossterm linkend="sprites"
+>спрайт</glossterm
+>. </para>
+<para
+>Ниже будет дано подробное описание всех команд работы со спрайтами.</para>
+<para
+>[Текущая версия KTurtle пока не поддерживает использование спрайтов, отличных от Черепашки. В ближайшем будущем вы сможете заменить Черепашку на любой другой  персонаж по собственному вкусу]</para>
+  <variablelist>
+    <anchor id="spriteshow"/>
+    <varlistentry
+> 
+      <term
+>покажи (пж)<indexterm
+><primary
+>покажи (пж)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>покажи</screen>
+<userinput
+>покажи</userinput
+> делает Черепашку видимой после того, как она была скрыта. <userinput
+>покажи</userinput
+> также может записываться как <userinput
+>пж</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="spritehide"/>
+    <varlistentry
+> 
+      <term
+>спрячь (сч)<indexterm
+><primary
+>спрячь (сч)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>спрячь</screen>
+<userinput
+>спрячь</userinput
+> скрывает Черепашку. Это полезно, когда Черепашка не уместна в ваших рисунках. <userinput
+>спрячь</userinput
+> также может записываться как <userinput
+>сч</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="writing">
+<title
+>Черепашка может писать?</title>
+<para
+>Черепашка может написать всё, что вы ей прикажете.</para>
+  <variablelist>
+    <anchor id="print"/>
+    <varlistentry
+> 
+      <term
+>напиши<indexterm
+><primary
+>напиши</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>напиши X</screen>
+<userinput
+>напиши</userinput
+> используется для указания Черепашке написать что-либо на холсте. В качестве входных параметров можно передавать строки или числа. Вы можете печатать различные числа и строки, комбинируя их вместе оператором <quote
+>+</quote
+>. Вот маленький пример: <screen
+>$год = 2003
+$автор = "Cies"
+напиши $автор + " начал проект KTurtle в " + $год + " и до сих пор получает удовольствие от работы над ним!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="fontsize"/>
+    <varlistentry
+> 
+      <term
+>размер_шрифта<indexterm
+><primary
+>размер_шрифта</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>размер_шрифта X</screen>
+<userinput
+>размер_шрифта</userinput
+> устанавливает размер шрифта, используемый для печати. Входной параметр один. Он должен быть числом. Размер задаётся в <glossterm linkend="pixels"
+>пикселах</glossterm
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="math-commands">
+<title
+>Математические команды</title>
+<para
+>Далее перечислены дополнительные математические команды &kturtle;.</para>
+  <variablelist>
+    <anchor id="round"/>
+    <varlistentry>
+      <term
+>округли<indexterm
+><primary
+>округли</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>округли(x)</screen>
+<userinput
+>округли</userinput
+> заданное число до ближайшего целого. <screen>
+напиши округли(10.8)
+вперёд 20
+напиши округли(10.3)
+</screen
+> Выполняя этот код, Черепашка напечатает числа 11 и 10.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="random"/>
+    <varlistentry
+> 
+      <term
+>случайное (слч)<indexterm
+><primary
+>случайное (слч)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>случайное X,Y</screen>
+<userinput
+>случайное</userinput
+> — команда, которая имеет входные и выходные параметры. На входе требуются два числа. Первое (X) задаёт нижний порог получаемых чисел, второе (Y) задаёт верхний порог. На выходе получается псевдослучайное число, которое не меньше минимума и не больше максимума. Вот маленький пример:<screen>
+повтори 500 {
+  $x = случайное 1,20
+  вперёд $x
+  налево 10 - $x
+}
+</screen
+> Используя команду <userinput
+>случайное</userinput
+>, вы можете привнести немного хаоса в вашу программу.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="mod"/>
+    <varlistentry
+> 
+      <term
+>остаток<indexterm
+><primary
+>остаток</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>остаток X,Y</screen>
+<userinput
+>остаток</userinput
+> возвращает остаток после деления первого числа на второе.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sqrt"/>
+    <varlistentry
+> 
+      <term
+>sqrt<indexterm
+><primary
+>sqrt</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen>
+<userinput
+>sqrt</userinput
+> используется для поиска квадратного корня от числа X.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+<!--
+  <variablelist>
+    <anchor id="exp"/>
+    <varlistentry
+> 
+      <term
+>exp<indexterm
+><primary
+>exp</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+-->
+  <variablelist>
+    <anchor id="pi"/>
+    <varlistentry
+> 
+      <term
+>pi<indexterm
+><primary
+>pi</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pi</screen>
+Эта команда возвращает константу Пи, <userinput
+>3.14159</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sin"/>
+    <anchor id="cos"/>
+    <anchor id="tan"/>
+    <varlistentry>
+      <term
+>sin<indexterm
+><primary
+>sin</primary
+></indexterm
+>, cos<indexterm
+><primary
+>cos</primary
+></indexterm
+>, tg<indexterm
+><primary
+>tg</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>sin X
+cos X
+tg X
+</screen>
+Эти три команды представляют всемирно известные тригонометрические функции <userinput
+>sin</userinput
+>, <userinput
+>cos</userinput
+> и <userinput
+>tg</userinput
+>. Входной аргумент этих команд, X, является <link linkend="number"
+>числом</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="arcsin"/>
+    <anchor id="arccos"/>
+    <anchor id="arctan"/>
+    <varlistentry>
+      <term
+>arcsin<indexterm
+><primary
+>arcsin</primary
+></indexterm
+>, arccos<indexterm
+><primary
+>arccos</primary
+></indexterm
+>, arctg<indexterm
+><primary
+>arctg</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>arcsin X
+arccos X
+arctg X
+</screen>
+Вот список обратных тригонометрические функций для <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+> и <link linkend="tan"
+>tg</link
+>. Входной аргумент этих функций, X, является <link linkend="number"
+>числом</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="dialogs">
+<title
+>Взаимодействие через диалоги</title>
+<para
+>Диалог — маленькое окно, которое обеспечивает обратную связь или запрашивает ввести что-либо. В &kturtle; есть две команды для диалога: <userinput
+>сообщение</userinput
+> и <userinput
+>спроси</userinput
+></para>
+  <variablelist>
+    <anchor id="message"/>
+    <varlistentry
+> 
+      <term
+>сообщение<indexterm
+><primary
+>сообщение</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>сообщение X</screen>
+Команде <userinput
+>сообщение</userinput
+> требуется передать <link linkend="string"
+>строку</link
+>, она будет показана в появившемся окне. <screen
+>сообщение "Cies начал KTurtle в 2003 сих пор получает удовольствие от работы над ним!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="ask"/>
+    <varlistentry
+> 
+      <term
+>спроси<indexterm
+><primary
+>спроси</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>спроси X</screen>
+<userinput
+>спроси</userinput
+> принимает на вход <link linkend="string"
+>строку</link
+>. Она показывает эту строку во всплывающем диалоге (как и команда <link linkend="message"
+>сообщение</link
+>), а также она показывает поле ввода. После того, как пользователь ввёл <link linkend="number"
+>число</link
+> или <link linkend="string"
+>строку</link
+>, это значение может быть сохранено в <link linkend="assignment-of-variables"
+>переменной</link
+> или передано как аргумент <link linkend="commands"
+>команде</link
+>. Например: <screen>
+$вход = спроси "В каком гору ты родился?"
+$выход = 2003 - $вход
+напиши "В 2003 тебе было " + $выход + " лет."
+</screen
+> Если пользователь ничего не введёт или просто закроет диалог, то <link linkend="assignment-of-variables"
+>переменная</link
+> будет пустой.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="assignment-of-variables">
+<title
+>Назначение переменных</title>
+<para
+>Вначале рассмотрим переменные, а затем присвоение значений переменным. </para>
+
+<para
+>Переменные — это слова, начинающиеся с символа <quote
+>$</quote
+>. В <link linkend="the-editor"
+>редакторе кода</link
+> они <glossterm
+>выделяются</glossterm
+> фиолетовым.</para>
+
+<para
+>Переменные могут содержать <link linkend="number"
+>числовые</link
+>, <link linkend="string"
+>строковые</link
+> или <link linkend="boolean-value"
+>логические (истина/ложь) значения</link
+>. Значение присваивается переменной с использованием символа <userinput
+>=</userinput
+>. Переменные хранят значения до завершения программы или до того момента, как в переменную будет записано новое значение.</para>
+
+<para
+>После присвоения значения переменной, вы сможете использовать это значение. Например, в следующем фрагменте кода &turtlescript;: <screen>
+$x = 10
+$x = $x / 3
+напиши $x
+</screen
+> Сперва переменной <userinput
+>$x</userinput
+> присваивается значение <userinput
+>10</userinput
+>. Далее переменной <userinput
+>$x</userinput
+> присваивается новое значение её самой, разделённой на <userinput
+>3</userinput
+>. Фактически это означает, что переменной <userinput
+>$x</userinput
+> будет присвоен результат <userinput
+>10 / 3</userinput
+>. В конце значение переменной <userinput
+>$x</userinput
+> распечатывается. В строках используется содержимое переменной <userinput
+>$x</userinput
+>.</para>
+
+<para
+>Для того чтобы использовать переменную, её надо предварительно назначить. Например: <screen>
+напиши $n
+</screen
+> Даст сообщение об ошибке.</para>
+
+<para
+>Рассмотрим следующий фрагмент кода &turtlescript;: <screen>
+$a = 2004
+$b = 25
+
+# следующая команда напечатает "2029"
+напиши $a + $b
+назад 30
+# следующая команда напечатает "2004 плюс 25 равно 2029"
+напиши $a + " плюс " + $b + " равно " + ($a + $b)
+</screen
+> В первых двух строках переменные <userinput
+>$a</userinput
+> и <userinput
+>$b</userinput
+> устанавливаются равными 2004 и 25. Далее выполняются две команды <userinput
+>напиши</userinput
+> и, между ними, команда <userinput
+>назад 30</userinput
+>. Комментарии перед <userinput
+>напиши</userinput
+> объясняют, что будет напечатано. Команда <userinput
+>назад 30</userinput
+> используется здесь для уверенности в том, что каждая новая печать на холст будет на новой строке. Как видите, переменные используются точно также, как и их содержимое — совместно с любыми <link linkend="operators"
+>операторами</link
+> или как входные данные при вызове <link linkend="commands"
+>команд</link
+>.</para>
+
+<para
+>Ещё пример: <screen>
+$имя = спроси "Как тебя зовут?"
+напиши "Привет " + $имя + "! Удачи в изучении искусства программирования..."
+</screen
+> Простой и понятный пример. Переменная <userinput
+>$имя</userinput
+> рассматривается как строка.</para>
+
+<para
+><link linkend="the-inspector"
+>Инспектор</link
+> очень сильно помогает при использовании переменных. Он отображает содержимое всех используемых в данный момент переменных.</para>
+</sect1>
+
+
+
+<sect1 id="controlling-execution">
+<title
+>Контроль над выполнением</title>
+<para
+>Управляющие операторы позволяют вам контролировать процесс выполнения (о чём говорит само их название).</para>
+<para
+>Управляющие операторы <glossterm
+>выделяются</glossterm
+> тёмно-зелёным цветом и жирным начертанием шрифта. Скобки, используемые вместе с ними, <glossterm
+>выделяются</glossterm
+> чёрным.</para>
+
+<sect2 id="wait">
+<title
+>Может ли Черепашка ждать?</title>
+<para
+>Если вы уже немного попрактиковались в программировании в &kturtle;, вы могли заметить, что Черепашка может рисовать чересчур быстро.  Следующая команда позволяет избежать этого.</para>
+  <variablelist>
+    <varlistentry>
+      <term
+>жди<indexterm
+><primary
+>жди</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>жди X</screen>
+Команда <userinput
+>жди</userinput
+> указывает Черепашке подождать X секунд.<screen>
+повтори 36 {
+  вперёд 5
+  направо 10
+  жди 0.5
+}
+</screen
+> Данный код рисует круг, при этом после каждого шага Черепашка будет ждать пол секунды. Это создаёт впечатление неторопливого движения.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="if">
+<title
+>Условное выполнение: «если»</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>если<indexterm
+><primary
+>если</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>если <link linkend="boolean-value"
+>логическое значение</link
+> { ... }</screen>
+Код, расположенный между скобками, будет выполнен только <userinput
+>если</userinput
+> в результате вычисления <link linkend="boolean-value"
+>логического значения</link
+> получится <quote
+>истина</quote
+>. <screen>
+$x = 6
+если $x &gt; 5 {
+  напиши "$x больше пяти!"
+}
+</screen
+> В первой строке контейнеру <userinput
+>$x</userinput
+> присваивается значение 6. Во второй строке <link linkend="comparing-operators"
+>оператор сравнения</link
+> используется для вычисления <userinput
+>$x &gt; 5</userinput
+>. Если ответом на него будет <quote
+>истина</quote
+>, 6 больше чем 5, управляющий оператор <userinput
+>если</userinput
+> позволит выполнить код, расположенный между скобками.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="else">
+<title
+>Если нет, другими словами: «иначе»</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>иначе<indexterm
+><primary
+>иначе</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>если <link linkend="boolean-value"
+>логическое значение</link
+> { ... } иначе { ... }</screen>
+<userinput
+>иначе</userinput
+> может быть дополнением к оператору условного выполнения <link linkend="if"
+><userinput
+>если</userinput
+></link
+>. Код между скобками, расположенными после <userinput
+>иначе</userinput
+> будет выполнен тогда, когда <link linkend="boolean-value"
+>логическое выражение</link
+> будет <quote
+>ложь</quote
+>. <screen>
+сброс
+$x = 4
+если $x &gt; 5 {
+  напиши "$x больше пяти!"
+}
+иначе
+{
+  напиши "$x меньше пяти!"
+}
+</screen
+> <link linkend="comparing-operators"
+>Оператор сравнения</link
+> вычисляет выражение <userinput
+>$x &gt; 5</userinput
+>. Так как 4 не больше, чем 5, результатом будет <quote
+>ложь</quote
+>. Это означает, что будет выполнен код между скобками после <userinput
+>иначе</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="while">
+<title
+>Цикл «пока»</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>пока<indexterm
+><primary
+>пока</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>пока <link linkend="boolean-value"
+>логическое значение</link
+> { ... }</screen>
+Управляющий оператор <userinput
+>пока</userinput
+> очень похож на <link linkend="if"
+><userinput
+>если</userinput
+></link
+>. Разница в том, что <userinput
+>пока</userinput
+> будет повторять код, расположенный между скобками, до тех пор, пока <link linkend="boolean-value"
+>логическое выражение</link
+> не выдаст значение <quote
+>ложь</quote
+>. <screen>
+$x = 1
+пока $x &lt; 5 {
+  вперёд 10
+  жди 1
+  $x = $x + 1
+}
+</screen
+> В первой строке <userinput
+>$x</userinput
+> присваивается 1. На второй строке  выполняется сравнение <userinput
+>$x &lt; 5</userinput
+>. Так как получаемое значение — <quote
+>истина</quote
+>, оператор <userinput
+>пока</userinput
+> начнёт выполнять код между скобками, пока не будет получена <quote
+>ложь</quote
+>. В данном случае код между скобками будет выполнен 4 раза, потому что на каждом прогоне в пятой строке <userinput
+>$x</userinput
+> будет увеличиваться на 1.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="repeat">
+<title
+>Цикл «повтори»</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>повтори<indexterm
+><primary
+>повтори</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>повтори <link linkend="number"
+>число</link
+> { ... }</screen>
+Управляющий оператор <userinput
+>повтори</userinput
+> похож на <link linkend="while"
+><userinput
+>пока</userinput
+></link
+>. Разница в том, что <userinput
+>повтори</userinput
+> повторяет код в скобках заданное число раз.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="for">
+<title
+>Считающий цикл «для»</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>для<indexterm
+><primary
+>для</primary
+></indexterm
+><indexterm
+><primary
+>шаг</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>для <link linkend="assignment-of-variables"
+>переменная</link
+> = <link linkend="number"
+>число</link
+> до <link linkend="number"
+>число</link
+> { ... }</screen>
+Цикл <userinput
+>для</userinput
+> — это цикл <quote
+>со счётчиком</quote
+>, то есть он сохраняет счётчик для вас. Первое число задаёт значение для первого прохода. С каждым проходом это значение увеличивается до того момента, пока не достигнет второго числа.<screen>
+для $x = 1 до 10 {
+  напиши $x * 7
+  вперёд 15
+}
+</screen
+> Каждый раз, когда выполняется код в скобках, значение <userinput
+>$x</userinput
+> увеличивается на 1, и так до тех пор, пока <userinput
+>$x</userinput
+> не станет равным 10. Код в скобках выводит на печать произведение <userinput
+>$x</userinput
+> и 7. После завершения выполнения программы вы увидите на холсте таблицу умножения на 7. </para>
+     <para
+>По умолчанию, шаг цикла равен 1. Вы можете задать другой шаг цикла с помощью <screen
+>для <link linkend="assignment-of-variables"
+>переменная</link
+> = <link linkend="number"
+>число</link
+> до <link linkend="number"
+>число</link
+> шаг <link linkend="number"
+>шаг</link
+> { ... }</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="break">
+<title
+>Выход из цикла</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>прекрати<indexterm
+><primary
+>прекрати</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>прекрати</screen>
+Немедленно завершает выполнение текущего цикла и передаёт управление оператору, следующему сразу после этого цикла.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="exit">
+<title
+>Остановка выполнения программы</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>закончить<indexterm
+><primary
+>закончить</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>закончить</screen>
+Заканчивает выполнение программы.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+</sect1>
+
+
+<sect1 id="learn">
+
+
+<!--<sect2 id="name">
+<title
+>Names</title>
+<para
+>When using the &turtlescript; programming language you create new things. If you write a program you will often need <link linkend="containers"
+>containers</link
+> and in some cases you need <link linkend="learn"
+>learn</link
+> to create new commands. When making a new command with <link linkend="learn"
+>learn</link
+> you will have to specify a name.</para>
+<para
+>You can choose any name, as long as it does not already have a meaning. For instance you cannot name a function <link linkend="forward"
+>forward</link
+>, since that name is already used for an internal command.
+<screen
+>
+# here forward is used as a new command, 
+# but it already has a meaning so 
+# this will produce an error:
+learn forward {
+  print "this is invalid"
+}
+
+# this works:
+learn myforward {
+  print "this is ok"
+}
+</screen>
+Names can contain only letters, numbers and underscores (_). Yet they have to start with a letter. Container names have to start with the container prefix ($).
+<screen
+>
+# here forward is used as a container, 
+# starting with the $ prefix, so it does
+# not conflict with the forward command
+$forward = 20
+print $forward
+</screen>
+</para>
+<para
+>Containers are <glossterm
+>highlighted</glossterm
+> with bolded purple in the <link linkend="the-editor"
+>code editor</link
+>.</para>
+<para>
+Please read the documentation on <link linkend="containers"
+>containers</link
+> and the <link linkend="learn"
+>learn</link
+> command for a better explanation and more examples.
+</para>
+</sect2
+>-->
+
+
+
+
+
+<title
+>Создавайте свои собственные команды!</title>
+<para
+>Команда <userinput
+>выучи</userinput
+> — это особенная команда, потому что она предназначена для создания ваших собственных команд. Создаваемые вами команды могут принимать <glossterm linkend="input-output"
+>входные</glossterm
+> параметры и <glossterm linkend="input-output"
+>возвращать</glossterm
+> различные значения. Давайте посмотрим, как создаются собственные команды: <screen>
+выучи круг $x {
+  повтори 36 { 
+    вперёд $x 
+    налево 10 
+  }
+}
+</screen
+> Новая команда называется <userinput
+>круг</userinput
+>. Команда <userinput
+>круг</userinput
+> принимает один <glossterm linkend="input-output"
+>входной</glossterm
+> аргумент для задания размера круга. Команда <userinput
+>круг</userinput
+> ничего не <glossterm linkend="input-output"
+>возвращает</glossterm
+>. Теперь команду <userinput
+>круг</userinput
+> можно использовать как же, как и обычные команды: <screen
+>выучи круг $X {
+  повтори 36 { 
+    вперёд $X 
+    налево 10 
+  } 
+} 
+
+иди 200,200 
+круг 20
+
+иди 300,300 
+круг 40  
+</screen>
+</para>
+<para
+>В следующем примере будет создана команда, возвращающая значение.<screen>
+выучи факториал $x {
+  $r = 1
+  для $i = 1 до $x {
+    $r = $r * $i
+  }
+  верни $r
+}
+
+напиши факториал 5
+</screen
+> В данном примере создана новая команда с именем <userinput
+>факториал</userinput
+>. Если на вход этой команде подать <userinput
+>5</userinput
+>, то на выходе будет произведение <userinput
+>5*4*3*2*1</userinput
+>. При использовании <userinput
+>верни</userinput
+> будет задано <glossterm linkend="input-output"
+>выходное</glossterm
+> значение и оно будет возвращено при выполнении.</para>
+<para
+>У команды может быть более одного <glossterm linkend="input-output"
+>входа</glossterm
+>. В следующем примере создаётся команда, рисующая прямоугольник: <screen>
+выучи прямоугольник $x, $y {
+  вперёд $y
+  направо 90
+  вперёд $x
+  направо 90
+  вперёд $y
+  направо 90
+  вперёд $x
+  направо 90
+}
+</screen
+> Теперь вы можете дать команду <userinput
+>прямоугольник 50, 100</userinput
+> и Черепашка нарисует на холсте прямоугольник. </para>
+  
+</sect1>
+
+</chapter>

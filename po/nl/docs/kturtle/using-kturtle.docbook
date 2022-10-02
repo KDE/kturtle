@@ -1,0 +1,1099 @@
+<chapter id="using-kturtle">
+<title
+>Hoe &kturtle; te gebruiken</title>
+
+<screenshot>
+  <screeninfo
+>Hier is een schermafbeelding van &kturtle; in actie</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow_flower_nrs.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Hoofdvenster van &kturtle;</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Het hoofdvenster van &kturtle; bestaat uit drie onderdelen: links <link linkend="the-editor"
+>de codebewerker</link
+> (1) waarin de commando's voor &turtlescript; worden getypt, rechts het <link linkend="the-canvas"
+>canvas</link
+> (2), waar de schildpad tekent, en de <link linkend="the-inspector"
+>inspectie</link
+> (3) waarin informatie staat tijdens uitvoeren van je programmacode. Bovendien vind je er <link linkend="the-menubar"
+>de  menubalk</link
+> (5), waarin je alle acties kunt doen, <link linkend="the-toolbar"
+>de werkbalk</link
+> (4) waarin je de meest gebruikte acties kunt doen, de  <guilabel
+>Console</guilabel
+>, waarin je een regel met een commando kunt toetsenom die uit te proberen, en <link linkend="the-statusbar"
+>de  statusbalk</link
+> (aan de onderkant van het venster), met daarin wat informatie over de toestand van &kturtle;.</para>
+
+<sect1 id="the-editor">
+<title
+>De codebewerker</title>
+<para
+>In de codebewerker type je de commando's van &turtlescript;. De meeste  functies van de code bewerker vind je in de menu's <link linkend="the-file-menu"
+>Bestand</link
+> en  <link linkend="the-edit-menu"
+>Bewerken</link
+>. De codebewerker kan op elke rand van het scherm worden ge"plakt", of op elke plaats op het bureaublad worden geplaatst.</para>
+<para
+>Er zijn verschillende manieren om code in de bewerker te krijgen. Het eenvoudigste is met een voorbeeld: kies <menuchoice
+><guimenu
+>Bestand</guimenu
+><guisubmenu
+>Voorbeelden</guisubmenu
+></menuchoice
+>, en selecteer een voorbeeld. Het eerst gekozen voorbeeld wordt in <link linkend="the-editor"
+>de bewerker geopend</link
+>, waarna u de opdracht<menuchoice
+><guimenu
+>Laten werken</guimenu
+><guimenuitem
+>Laten werken</guimenuitem
+></menuchoice
+> kunt geven (sneltoets: <keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+>) of de knop <inlinemediaobject
+> <imageobject
+> <imagedata fileref="media-playback-pause.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Laten werken</guibutton
+> in de taakbalk als u hetprogramma wilt zien wat het programma doet.</para>
+<para
+>Je kunt &turtlescript;-bestanden openen met behulp van de menuoptie <menuchoice
+><guimenu
+>Bestand</guimenu
+><guimenuitem
+>Openen...</guimenuitem
+></menuchoice
+>.</para>
+<para
+>De derde manier is zelf je eigen code in de codebewerker in te typen, of door programmacode te kopiëren en te plakken.</para>
+</sect1>
+
+
+<sect1 id="the-canvas">
+<title
+>Het canvas</title>
+<para
+>Het canvas is het speelterrein van de schildpad, waarin de schildpad tekent  door de commando's die hij krijgt. Nadat er wat programmacode staat in de  <link linkend="the-editor"
+>codebewerker</link
+>, die wordt uitgevoerd, kunnen er twee dingen gebeuren: of de code wordt goed uitgevoerd, je zal dan   hoogst waarschijnlijk iets zien gebeuren op het canvas; of je hebt een fout gemaakt, er  komt dan een foutmelding waarin wordt uitgelegd welke fout er is gemaakt.</para>
+<para
+>Met je muiswiel kun je op het canvas in- en uitzoomen.</para>
+</sect1>
+
+
+<sect1 id="the-inspector">
+<title
+>De inspectie</title>
+<para
+>In de inspectie krijg je informatie over de variabelen tijdens het lopen van je programmacode.</para>
+<para
+>De inspectie kan worden vast"geplakt" op elke zijde van het hoofdscherm, of hij  kan worden losgemaakt en op elke plaats op het bureaublad worden geplaatst.</para>
+</sect1>
+
+
+<sect1 id="the-toolbar">
+<title
+>De werkbalk</title>
+<para
+>Hierin kan je de meestgebruikte acties vinden. In de taakbalk vind je de <guilabel
+>Console</guilabel
+>, waarin je snel even commando's kunt uitproberen. Dit is nuttig als je een commando wilt proberen zonder de programmacode in de <link linkend="the-editor"
+>codebewerker</link
+> te veranderen.</para>
+<para
+>Je kunt de werkbalk zelf instellen met <menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>Werkbalken instellen...</guimenuitem
+></menuchoice
+></para>
+</sect1>
+
+
+<sect1 id="the-menubar">
+<title
+>De menubalk</title>
+<para
+>In de menubalk vind je alle acties in &kturtle;. Zij zijn ingedeeld in de volgende groepen: <guimenu
+>Bestand</guimenu
+>, <guimenu
+>Bewerking</guimenu
+>, <guimenu
+>Canvas</guimenu
+>, <guimenu
+>Uitvoeren</guimenu
+>, <guimenu
+>Hulpmiddelen</guimenu
+>, <guimenu
+>Instellingen</guimenu
+>, en <guimenu
+>Help</guimenu
+>. In dit deel worden ze allemaal beschreven.</para>
+
+<sect2 id="the-file-menu">
+<title
+>Het menu Bestand</title>
+
+  <variablelist>
+    <anchor id="file-new"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Nieuw</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Maakt een nieuw, leeg &turtlescript;-bestand aan.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Openen...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Opent een bestaand &turtlescript;-bestand.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-recent"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Recent geopend</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Opent een &turtlescript;-bestand dat je eerder hebt geopend.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Voorbeelden</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Opent voorbeeldprogramma's voor &turtlescript;. De voorbeelden zijn  in je eigen taal, die je kunt kiezen in in menu <menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>Scripttaal...</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-get-more-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Meer voorbeelden ophalen...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Open de dialoog <guilabel
+>Vers van de pers</guilabel
+> om extra &turtlescript;-bestanden van het internet te downloaden.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="file-save"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Opslaan</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Bewaart het momenteel geopende &turtlescript;-bestand.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-save-as"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;&Shift;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Opslaan als...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Bewaart het momenteel geopende &turtlescript;-bestand op een opgegeven plaats.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-export-to-html"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Exporteren naar HTML...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Exporteert de huidige inhoud van de codebewerker naar een HTML-bestand, inclusief de accentueringskleuren.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Afdrukken...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Drukt de huidige programmacode in de codebewerker af.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-quit"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bestand</guimenu
+> <guimenuitem
+>Afsluiten</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Beëindigt &kturtle;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-edit-menu">
+  <title
+>Het menu Bewerken</title>
+  <variablelist>
+    <anchor id="edit-undo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bewerken</guimenu
+> <guimenuitem
+>Ongedaan maken</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Maakt de laatste wijzigingen in de programmacode ongedaan. In &kturtle; kun je onbeperkt veel wijzigingen weer ongedaan maken.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-redo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bewerken</guimenu
+> <guimenuitem
+>Opnieuw</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Voert een wijziging in de programmacode die ongedaan is gemaakt, opnieuw door.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-cut"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>X</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bewerken</guimenu
+> <guimenuitem
+>Knippen</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Knipt de in de <link linkend="the-editor"
+>codebewerker</link
+> geselecteerde tekst, en kopieert die naar het klembord.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-copy"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bewerken</guimenu
+> <guimenuitem
+>Kopiëren</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Kopieert de geselecteerde tekst in de <link linkend="the-editor"
+>codebewerker</link
+>  naar het klembord.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-paste"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>V</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bewerken</guimenu
+> <guimenuitem
+>Plakken</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Plakt de tekst op het klembord in de <link linkend="the-editor"
+>codebewerker</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-select-all"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>A</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bewerken</guimenu
+> <guimenuitem
+>Alles selecteren</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Selecteert alle tekst in de<link linkend="the-editor"
+>codebewerker</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bewerken</guimenu
+> <guimenuitem
+>Zoeken...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Hiermee kun je zoeken naar tekst in de programmacode.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find-next"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F3</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Bewerken</guimenu
+> <guimenuitem
+>Volgende zoeken</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Hiermee kun je verder zoeken naar je zoekterm.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="edit-find-previous"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F3</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Bewerken</guimenu
+> <guimenuitem
+>Vorige zoeken</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Hiermee kun je de vorige plaats vinden waar je zoekterm in de tekst voorkomt.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <!--<variablelist>
+    <anchor id="edit-replace"/>
+    <varlistentry>
+      <term
+><menuchoice>
+        <shortcut>
+          <keycombo
+>&Ctrl;<keycap
+>R</keycap
+></keycombo>
+        </shortcut>
+        <guimenu
+>Edit</guimenu>
+        <guimenuitem
+>Replace...</guimenuitem>
+      </menuchoice
+></term>
+      <listitem
+><para
+>With this action you can replace text in the code.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>-->
+<variablelist>
+    <anchor id="toggle-insert"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keycap
+>&Ins;</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Bewerken</guimenu
+> <guimenuitem
+>Invoegen</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Schakelen tussen 'Invoegen' en 'Overschrijven'.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+<sect2 id="the-canvas-menu">
+  <title
+>Het menu Canvas</title>
+  <variablelist>
+    <anchor id="canvas-export-to-image"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Canvas</guimenu
+> <guimenuitem
+>Exporteren naar afbeelding (PNG)...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Exporteert de inhoud van het <link linkend="the-canvas"
+>Canvas</link
+> als een raster-afbeelding van het type PNG.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-export-to-drawing"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Canvas</guimenu
+> <guimenuitem
+>Exporteren naar tekening (SVG)...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Exporteert de inhoud van het <link linkend="the-canvas"
+>Canvas</link
+> als een &SVG;-tekening  (Scalable Vector Graphics).</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Canvas</guimenu
+> <guimenuitem
+>Druk canvas af...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Drukt de inhoud van het huidige <link linkend="the-canvas"
+>Canvas</link
+> af.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-run-menu">
+  <title
+>Het menu Uitvoeren</title>
+  <variablelist>
+    <anchor id="run-execute"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F5</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Uitvoeren</guimenu
+> <guimenuitem
+>Uitvoeren</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Start het uitvoeren van de commando's in de codebewerker.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-pause"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F6</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Uitvoeren</guimenu
+> <guimenuitem
+>Pauze</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Onderbreekt het uitvoeren van de programmacode. Deze actie is alleen actief tijdens het uitvoeren van programmacode.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-stop"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F7</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Uitvoeren</guimenu
+> <guimenuitem
+>Afbreken</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Stopt het uitvoeren van de programmacode. Deze actie is alleen actief tijdens het uitvoeren van programmacode.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-speed"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Uitvoeren</guimenu
+> <guimenuitem
+>Snelheid...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Presenteert een lijst van mogelijke uitvoersnelheden, waarin: <guimenuitem
+>Volle snelheid (geen markering in de code en geen inspector)</guimenuitem
+>, <guimenuitem
+>Volle snelheid</guimenuitem
+>, <guimenuitem
+>Langzaam</guimenuitem
+>, <guimenuitem
+>Langzamer</guimenuitem
+>, <guimenuitem
+>Erg langzaam</guimenuitem
+> en  <guimenuitem
+>Stap-voor-stap</guimenuitem
+>. Als de uitvoersnelheid <guimenuitem
+>Volle snelheid</guimenuitem
+> is (standaard) zien we nauwelijks wat er gebeurt. Soms is dit gewenst, maar soms willen het uitvoeren kunnen volgen. In dat geval kan de snelheid worden ingesteld op <guimenuitem
+>Langzaam</guimenuitem
+>, <guimenuitem
+>Langzamer</guimenuitem
+> of <guimenuitem
+>Erg langzaam</guimenuitem
+>. Wanneer een van de langzame snelheden is geselecteerd wordt het verloop van het programma in de codebewerker getoond. Bij <guimenuitem
+>Stap-voor-stap</guimenuitem
+> wordt er steeds één commando uitgevoerd.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+
+<sect2 id="the-tools-menu">
+  <title
+>Het menu Hulpmiddelen</title>
+  <variablelist>
+    <anchor id="tools-direction-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Hulpmiddelen</guimenu
+> <guimenuitem
+>Richting kiezen...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Hiermee wordt de dialoog geopend voor het kiezen van een richting.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-color-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Hulpmiddelen</guimenu
+> <guimenuitem
+>Kleur kiezen...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Hiermee wordt de dialoog geopend voor het kiezen van een kleur.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-setting-menu">
+  <title
+>Het menu Instellingen</title>
+  <variablelist>
+    <anchor id="settings-set-script-language"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Scripttaal</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Kies</action
+> de taal voor de  programmacode.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-editor"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Codebewerker tonen</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Tonen/verbergen van de <link linkend="the-editor"
+>Codebewerker</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-inspector"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Inspectie tonen</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Tonen/verbergen van de <link linkend="the-inspector"
+>the inspectie</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-errors"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Fouten tonen</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Tonen/verbergen van het tabblad <guilabel
+>Fouten</guilabel
+> met een lijst van fouten die  optreden bij het uitvoeren van de programmacode. Als deze optie aan staat, moet je op <guilabel
+>Canvas</guilabel
+> klikken om de schildpad terug te krijgen.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-linenumbers"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F11</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Regelnummers tonen</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Hiermee zie je regelnummers in de <link linkend="the-editor"
+>codebewerker</link
+>. Dit kan helpen bij het vinden van fouten.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-toolbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Werkbalk tonen</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Tonen/verbergen</action
+> vande Hoofdwerkbalk</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="settings-toggle-statusbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Statusbalk tonen</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Tonen/verbergen</action
+> van de Statusbalk</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-shortcuts"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Sneltoetsen instellen...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Standaard dialoog van &kde; voor het instellen van de sneltoetsen.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-toolbars"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Werkbalken instellen...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Standaard dialoog van &kde; voor het instellen van de werkbalken.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-help-menu">
+  <title
+>Het menu Help</title>
+<para
+>&kturtle; heeft een standaard &kde; <guimenu
+>Help</guimenu
+>-menu zoals beschreven in de <ulink url="help:/fundamentals/ui.html#menus-help"
+>&kde; Basisdocumentatie</ulink
+>, met nog een extra ingang:</para>
+  <variablelist>
+    <anchor id="help-context-help"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F2</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Help</guimenu
+> <guimenuitem
+>Hulp bij: ...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Dit is een handige functie, en geeft informatie over de programmacode op de plaats van de cursor in de codebewerker. Stel, je hebt de opdracht <userinput
+>druk</userinput
+> in je code staan, en je wilt weten wat in het handboek over deze opdracht staat. Zet dan je muisaanwijzer op de opdracht <userinput
+>druk</userinput
+>, en druk op de toets <keysym
+>F2</keysym
+>. Het handboek toont dan alle informatie over de opdracht <userinput
+>druk</userinput
+>.</para>
+      <para
+>Deze functie is erg belangrijk bij het leren programmeren in &turtlescript;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+<sect1 id="the-statusbar">
+<title
+>De statusbalk</title>
+<para
+>In de statusbalk vind je informatie over de status (toestand) van &kturtle;. Links zie je de informatie over de laatste actie. Rechts vind je de huidige locatie van de cursor (regel- en kolomnummers). In het midden van de statusbalk staat wat de huidige taal is die gebruikt wordt voor de opdrachten.</para>
+</sect1>
+
+</chapter>

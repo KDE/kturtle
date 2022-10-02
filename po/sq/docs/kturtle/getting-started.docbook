@@ -1,0 +1,303 @@
+<chapter id="getting-started">
+<title
+>Hapat e Para</title>
+<para
+>Kur hapni &kturtle; do të shihni diçka të tillë: <screenshot
+><screeninfo
+> Këtu është një pamje e &kturtle; kur hapet për herë të parë </screeninfo
+><mediaobject
+><imageobject
+><imagedata fileref="mainwindow.png" format="PNG"/></imageobject
+><textobject
+><phrase
+>&kturtle; për herë të parë</phrase
+></textobject
+></mediaobject
+></screenshot
+> Në këtë udhëzues fillestar ne supozojmë se gjuha e komandave të &turtlescript; është shqip. Ju mund ta ndryshoni këtë gjuhë te <menuchoice
+><guimenu
+>Rregullimet</guimenu
+><guisubmenu
+>Gjuha e Programit</guisubmenu
+></menuchoice
+> . Kini parasysh se gjuha që vendoset këtu për &kturtle; është ajo që përdoret për të shkruar komandat e &turtlescript;, jo gjuha e përdorur nga &kde; në kompjuterin tuaj dhe që përdoret për të shfaqur ndërfaqen dhe menutë e &kturtle;.</para>
+
+<sect1 id="first-steps">
+<title
+>Hapat e para me &turtlescript;: takoni Breshkën!</title>
+<para
+>Ju duhet ta keni vënë re breshkën në mes të tabelës katrore. Këtu do të mësoni si ta lëvizni atë duke përdorur komandat në shkrimore.</para>
+
+<sect2 id="the-turtle-moves">
+<title
+>Lëvizjet e Breshkës</title>
+<para
+>Le të fillojmë duke e vënë breshkën në lëvizje. Breshka jonë mund të bëjë 3 lloje lëvizjesh, (1) mund të lëvizë përpara dhe mbrapa, (2) mund të kthehet majtas dhe djathtas dhe (3) mund të shkojë (hidhet) direkt në një pozicion në ekran. Për shembull provoni këtë:</para>
+<para>
+<screen
+>ec_përpara 100
+kthehu_majtas 90 
+</screen>
+Shkruaji ose kopjoi këto komanda në shkrimore dhe zbatoi (duke përdorur <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Nise</guimenu
+><guimenuitem
+>Nise</guimenuitem
+></menuchoice
+></link
+>) për të parë rezultatin.</para>
+
+<para
+>Pasi shkruat në shkrimore komandat më sipër dhe i zbatuat ato, ju mund të keni vënë re disa nga gjërat e mëposhtme: </para>
+<orderedlist>
+<listitem
+><para
+>Se pas zbatimit të komandave, breshka shkon lart, vizaton një vijë, dhe pastaj kthehet në të majtë. Kjo për shkak se ju keni përdorur komandat <link linkend="forward"
+><userinput
+>ec_përpara</userinput
+></link
+> dhe <link linkend="turnleft"
+><userinput
+>kthehu_majtas</userinput
+></link
+>.</para>
+</listitem>
+<listitem>
+<para
+>Se ngjyra e komandave në shkrimore ndryshoi, ndërsa ju i shtypnit ato; kjo veçori quhet <emphasis
+>theksim intuitiv</emphasis
+> &mdash; lloje të ndryshme komandash theksohen ndryshe. Kjo e bën leximin e blloqeve të mëdha të programit më të lehtë.</para>
+</listitem>
+<listitem>
+<para
+>Se breshka vizaton një vijë të hollë të zezë.</para>
+</listitem>
+<listitem>
+<para
+>Ndoshta ju doli ndonjë mesazh gabimi. Kjo thjesht mund të ketë dy kuptime: ose që mund të keni bërë ndonjë gabim gjatë kopjimit të komandave, ose që nuk e keni vendosur ende gjuhën e saktë për komandat e &turtlescript; (këtë mund ta bëni duke zgjedhur <menuchoice
+><guimenu
+>Rregullimet</guimenu
+><guisubmenu
+>Gjuha e Programit</guisubmenu
+></menuchoice
+> ).</para>
+</listitem>
+</orderedlist>
+
+<para
+>Ndoshta e keni kuptuar se <userinput
+>ec_përpara 100</userinput
+> e ka udhëzuar breshkën për të ecur përpara me 100 hapa (të vogla prej breshke), duke lënë edhe një vijë aty ku ka kaluar, dhe se <userinput
+>kthehu_majtas 90</userinput
+> e ka udhëzuar breshkën të kthehet me 90 <glossterm linkend="degrees"
+>gradë</glossterm
+> në të majtë.</para>
+
+<para
+>Ju lutem shikoni adresat e mëposhtme në manualin e referimit për një shpjegim të plotë të komandave të reja: <link linkend="forward"
+><userinput
+>ec_përpara</userinput
+></link
+>, <link linkend="backward"
+><userinput
+>ec_mbrapsht</userinput
+></link
+>, <link linkend="turnleft"
+><userinput
+>kthehu_majtas</userinput
+></link
+>, dhe <link linkend="turnright"
+><userinput
+>kthehu_djathtas</userinput
+></link
+>.</para>
+</sect2>
+
+<sect2 id="more-examples">
+<title
+>Shembuj të tjerë</title>
+<para
+>Shembulli i parë ishte shumë i thjeshtë, kështu që le të shkojmë më tej!</para>
+
+<para>
+
+<screen
+>rifillo
+
+madhësi_tabele 200,200
+ngjyrë_tabele 0,0,0
+ngjyrë_lapsi 255,0,0
+majë_lapsi 5
+
+shko 20,20
+drejtimi 135
+
+ec_përpara 200
+kthehu_majtas 135
+ec_përpara 100
+kthehu_majtas 135
+ec_përpara 141
+kthehu_majtas 135
+ec_përpara 100
+kthehu_majtas 45
+
+shko 40,100
+</screen>
+Përsëri ju mund ti shkruani apo ti kopjoni komandat në shkrimore, ose të hapni shembullin <filename
+>shigjetë</filename
+> në menunë <guimenu
+>Shembuj</guimenu
+>, dhe ti zbatoni ato (duke përdorur <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Nise</guimenu
+><guimenuitem
+>Nise</guimenuitem
+></menuchoice
+></link
+>) për të parë rezultatin. Në shembujt e ardhshëm pritet që ti dini këto gjëra.</para>
+
+<para
+>Mund të keni vënë re se ky shembulli i dytë përdor shumë më tepër rreshta. Keni parë gjithashtu edhe disa komanda të reja. Ja një shpjegim të shkurtër për të gjitha komandat e reja:</para>
+
+<para
+>Pas komandës <userinput
+>rifillo</userinput
+> çdo gjë bëhet siç ishte kur sapo kishte filluar &kturtle;.</para>
+
+<para
+><userinput
+>madhësi_tabele 200.200</userinput
+> vendos gjerësinë dhe lartësinë për tabelën e vizatimit në 200 <glossterm linkend="pixels"
+>pixel</glossterm
+>. Gjerësia dhe lartësia janë të barabarta, kështu që hapësira e vizatimit do të jetë një katror.</para>
+
+<para
+><userinput
+>ngjyrë_tabele 0,0,0</userinput
+> e bën hapësirën të zezë. <userinput
+>0,0,0</userinput
+>është një<glossterm linkend="rgb"
+>kombinim-RGB</glossterm
+> ku të gjitha vlerat janë vendosur në <userinput
+>0</userinput
+>, gjë që rezulton si ngjyrë e zezë.</para>
+
+<para
+><userinput
+>ngjyrë_lapsi 255,0,0 </userinput
+> përcakton ngjyrën e lapsit si të kuqe. <userinput
+>255,0,0</userinput
+> është një <glossterm linkend="rgb"
+>kombinim-RGB</glossterm
+> ku vetëm vlera e kuqe është e vendosur në <userinput
+>255</userinput
+> (plotësisht e ndezur), ndërsa të tjerat (e gjelbër dhe blu), janë të vendosur në <userinput
+>0</userinput
+> (plotësisht e fikur). Ky kombinim rezulton në një ngjyrë të kuqe të ndritshme.</para>
+
+<para
+>Nëse nuk i kuptoni vlerat e ngjyrave, mos harroni të lexoni fjalorin për <glossterm linkend="rgb"
+>kombinimin-RGB</glossterm
+>.</para>
+
+<para
+><userinput
+>majë_lapsi 5</userinput
+> cakton gjerësinë (trashësinë) e majës së lapsit në <userinput
+>5</userinput
+><glossterm linkend="pixels"
+>pixel</glossterm
+>. Tani e tutje çdo vijë që do të bëjë breshka do ta ketë trashësinë <userinput
+>5</userinput
+>, deri sa <userinput
+>majë_lapsi</userinput
+> të ndryshohet në diçka tjetër.</para>
+
+<para
+><userinput
+>shko 20,20</userinput
+> urdhëron breshkën për të shkuar në një vend të caktuar në tabelë. E llogaritur që nga këndi i sipërm në të majtë, ky vend është 20 <glossterm linkend="pixels"
+>pixel</glossterm
+> përmes nga e majta, dhe 20 <glossterm linkend="pixels"
+>pixel</glossterm
+> poshtë kreut të tabelës. Vini re se kur përdoret komanda <userinput
+>shko</userinput
+> breshka nuk bën vijë.</para>
+
+<para
+><userinput
+>drejtimi 135</userinput
+> vendos drejtimin e breshkës. Komandat <userinput
+>kthehu_majtas</userinput
+> dhe <userinput
+>kthehu_djathtas</userinput
+> ndryshojnë këndin e breshkës, duke u nisur nga drejtimi i saj aktual. Komanda <userinput
+>drejtimi</userinput
+> e ndryshon këndin e breshkës duke filluar nga drejtimi zero, kështu që nuk ka lidhje me drejtimin e mëparshëm të breshkës.</para>
+
+<para
+>Komanda <userinput
+>drejtimi</userinput
+> pasohet nga shumë komanda <userinput
+>ec_përpara</userinput
+> dhe <userinput
+>kthehu_majtas</userinput
+>  të cilat bëjnë edhe vizatimin.</para>
+
+<para
+>Më në fund një tjetër komandë <userinput
+>shko</userinput
+> është përdorur për ta çuar breshkën mënjanë.</para>
+
+<para
+>Sigurohuni që ti ndiqni lidhjet për te referenca. Referenca shpjegon çdo komandë më në tërësi.</para>
+
+
+</sect2>
+</sect1>
+
+
+
+<!--        EXTRA SECTIONS CAN BE ADDED TO THE "GETTING STARTED"
+
+<sect1 id="calculations">
+<title
+>Simple Calculations</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_variables">
+<title
+>Using Variables: creating 'number containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_strings">
+<title
+>Using strings: creating 'text containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="logic">
+<title
+>Logic: asking the computer simple questions</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="recursion">
+<title
+>Recursion: the Turtle is using itself</title>
+<para>
+Draw a maze for example
+</para>
+</sect1>
+-->
+
+
+</chapter>

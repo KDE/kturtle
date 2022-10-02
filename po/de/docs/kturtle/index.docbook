@@ -1,0 +1,302 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kturtle;">
+  <!ENTITY turtlescript "TurtleScript">
+  <!ENTITY logo "Logo">
+  <!ENTITY % addindex "INCLUDE">
+  <!ENTITY % German "INCLUDE"
+><!-- change language only here -->
+  <!ENTITY using-kturtle SYSTEM "using-kturtle.docbook">
+  <!ENTITY getting-started SYSTEM "getting-started.docbook">
+  <!ENTITY programming-reference SYSTEM "programming-reference.docbook">
+  <!ENTITY translator-guide SYSTEM "translator-guide.docbook">
+  <!ENTITY glossary SYSTEM "glossary.docbook">
+]>
+
+<book id="kturtle" lang="&language;">
+
+<bookinfo>
+<title
+>Das Handbuch zu &kturtle;</title>
+
+<authorgroup>
+<author
+><firstname
+>Cies</firstname
+> <surname
+>Breijs</surname
+> <affiliation
+> <address
+><email
+>cies AT kde DOT nl</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Anne-Marie</firstname
+> <surname
+>Mahfouf</surname
+> <affiliation
+> <address
+><email
+>annma AT kde DOT org</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+><email
+>piacentini AT kde DOT org</email
+></address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Burkhard</firstname
+><surname
+>Lück</surname
+><affiliation
+><address
+><email
+>lueck@hube-lueck.de</email
+></address
+></affiliation
+><contrib
+>Übersetzung</contrib
+></othercredit
+> 
+</authorgroup>
+
+
+<copyright>
+<year
+>2004</year
+><year
+>2009</year>
+<holder
+>Cies Breijs</holder>
+</copyright>
+
+<copyright>
+<year
+>2004</year
+><year
+>2007</year>
+<holder
+>&Anne-Marie.Mahfouf;</holder>
+</copyright>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Mauricio Piacentini</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-01-20</date>
+<releaseinfo
+>Anwendungen 20.12</releaseinfo>
+
+<abstract>
+<para
+>&kturtle; ist eine Programmierumgebung mit dem Ziel, das Programmieren möglichst einfach zu lernen. Um das zu erreichen, sind in &kturtle; alle Programmwerkzeuge in der graphischen Benutzeroberfläche zu erreichen. Als Programmiersprache wird &turtlescript; verwendet, in dieser Sprache können die Befehle übersetzt werden.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KTurtle</keyword>
+<keyword
+>Bildung</keyword>
+<keyword
+>Sprache</keyword>
+<keyword
+>muttersprachlich</keyword>
+<keyword
+>Programmierung</keyword>
+<keyword
+>TurtleScript</keyword>
+<keyword
+>Logo</keyword>
+<keyword
+>Schildkröte</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Einleitung</title>
+
+<para
+>&kturtle; ist eine Programmierumgebung für den Unterricht mit <link linkend="what-is-turtlelang"
+>&turtlescript;</link
+>, einer Programmiersprache auf der Grundlage von &logo;. Das Ziel ist von &kturtle; ist es, die Programmierung möglichst einfach und leicht zugänglich zu machen. Daher ist &kturtle; besonders geeignet, um Kindern die Grundlagen vom Mathematik, Geometrie und Programmierung zu lehren. Die wichtigste Eigenschaft von &turtlescript; ist die Möglichkeit, die Befehle in die Muttersprache des Programmierers zu übersetzen. </para>
+
+<para
+>&kturtle; ist nach der <quote
+>Schildkröte</quote
+> benannt, die in der Programmierumgebung die Hauptrolle spielt. Der Benutzer programmiert die Schildkröte mit den &turtlescript;-Befehlen, um eine Zeichnung auf der <link linkend="the-canvas"
+>Zeichenfläche</link
+> zu erstellen.</para>
+
+<sect1 id="what-is-turtlelang">
+<title
+>Was ist &turtlescript;?</title>
+<para
+>&turtlescript;, die in &kturtle; benutzte Programmiersprache, ist Konzepten der Programmiersprache &logo; beeinflusst. Die erste Version von &logo; wurde 1967 von Seymour Papert am MIT Artificial Intelligence Laboratory aus der  Programmiersprache Lisp entwickelt. Seit dieser Zeit sind viele Versionen von &logo; veröffentlicht worden. Im Jahr 1980 wurde &logo; bekannt durch Versionen für MSX, Commodore, Atari, Apple II und den IBM PC Computer. Diese Versionen waren für den Unterricht gedacht. Am MIT finden Sie immer noch eine Webseite für &logo; unter <ulink url="https://el.media.mit.edu/logo-foundation/"
+>https://el.media.mit.edu/logo-foundation/</ulink
+> mit einer Liste von mehreren populären Implementationen dieser Sprache.</para>
+<para
+>&turtlescript; hat wie viele Implementierungen der Sprache &logo; eine besondere Eigenschaft: Die Möglichkeit, die Befehle in die Muttersprache der Benutzer zu übersetzen. Diese Eigenschaft erleichtert Benutzern mit geringen oder keinen Englischkenntnissen den Einstieg. Außerdem hat &kturtle; <link linkend="features-of-kturtle"
+>viele weitere Eigenschaften</link
+>, die das Lernen des Programmierens für die Benutzer erleichtern.</para>
+</sect1>
+
+
+<sect1 id="features-of-kturtle">
+<title
+>Eigenschaften von &kturtle;</title>
+<para
+>&kturtle; hat einige besondere Eigenschaften, die den Einstieg in die Programmierung sehr einfach machen, hervorzuheben sind: <itemizedlist>
+<listitem
+><para
+>Eine integrierte Entwicklungsumgebung mit dem &turtlescript;-Interpreter, einem <link linkend="the-editor"
+>Editor</link
+>, der <link linkend="the-canvas"
+>Zeichenfläche</link
+> und weiteren Werkzeugen in einem Programm vereint, ohne zusätzliche Abhängigkeiten.</para
+></listitem>
+<listitem
+><para
+>Die Möglichkeit, die Befehle der Sprache &turtlescript; mit den üblichen Verfahren in &kde; zu übersetzen.</para
+></listitem>
+<listitem
+><para
+>&turtlescript; unterstützt benutzerdefinierte Funktionen, Rekursion und dynamische Typzuweisung.</para
+></listitem>
+<listitem
+><para
+>Die Befehle können Sie jederzeit langsamer ausführen lassen, anhalten oder abbrechen.</para
+></listitem>
+<listitem
+><para
+>Ein leistungsfähiger <link linkend="the-editor"
+>Editor</link
+> mit intuitiver Syntaxhervorhebung, Zeilennummerierung, Fehlermarkierung, visueller Kontrolle der Ausführung und mehr.</para
+></listitem>
+<listitem
+><para
+>Die <link linkend="the-canvas"
+>Zeichenfläche</link
+>, auf der die Schildkröte zeichnet, kann entweder als Rasterbild (PNG) oder als Vektorzeichnung (&SVG;) gedruckt und gespeichert werden.</para
+></listitem>
+<listitem
+><para
+>Kontexthilfe: Drücken Sie <keysym
+>F2</keysym
+> oder benutzen Sie <menuchoice
+><guimenu
+>Hilfe</guimenu
+><guimenuitem
+>Hilfe zu: ...</guimenuitem
+></menuchoice
+>, um zu dem aktuellen Quelltext unter dem Cursor eine passende Erläuterung zu erhalten.</para
+></listitem>
+<listitem
+><para
+>Ein Fehlerdialog, der auf die Fehler im Programm verweist und sie rot markiert.</para
+></listitem>
+<listitem
+><para
+>Einfache Programmiersprache.</para
+></listitem>
+<listitem
+><para
+>Integrierte Beispielprogramme, die den Einstieg erleichtern. Diese Beispiele werden mit dem üblichen Verfahren in &kde; übersetzt.</para
+></listitem>
+</itemizedlist>
+</para>
+</sect1>
+</chapter>
+
+&using-kturtle;
+
+&getting-started;
+
+&programming-reference;
+
+&glossary;
+
+&translator-guide;
+
+<chapter id="credits">
+
+<title
+>Danksagungen und Lizenz</title>
+
+<para
+>&kturtle; </para>
+<para
+>Programm Copyright 2003-2007 Cies Breijs <email
+>cies AT kde DOT nl</email
+></para>
+
+<para
+>Copyright der Dokumentation 2004, 2007, 2009 <itemizedlist>
+<listitem
+><para
+>Cies Breijs <email
+>cies AT kde DOT nl</email
+> </para
+></listitem>
+<listitem
+><para
+>&Anne-Marie.Mahfouf; &Anne-Marie.Mahfouf.mail; </para
+></listitem>
+<listitem
+><para
+>Korrektur gelesen von &Philip.Rodrigues; &Philip.Rodrigues.mail;</para>
+</listitem>
+<listitem
+><para
+>Überarbeitung der Übersetzerdokumentation und Korrekturen von Andrew Coles <email
+>andrew_coles AT yahoo DOT co DOT uk</email
+></para>
+</listitem>
+</itemizedlist>
+</para>
+
+<para
+>Deutsche Übersetzung Burkhard Lück <email
+>lueck@hube-lueck.de</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+<!--&documentation.index; -->
+<index id='command-index'>
+<title
+>Index der &turtlescript;-Befehle</title>
+</index>
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->

@@ -1,0 +1,1094 @@
+<chapter id="using-kturtle">
+<title
+>Użycie &kturtle;</title>
+
+<screenshot>
+  <screeninfo
+>Zrzut ekranowy &kturtle; podczas jego pracy</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow_flower_nrs.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Okno główne &kturtle;</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Okno główne &kturtle; składa się z trzech głównych części: <link linkend="the-editor"
+>edytora</link
+> (1) po lewej, gdzie wpisujesz polecenia &turtlescript;, <link linkend="the-canvas"
+>płótna</link
+> (2) po prawej, gdzie rysuje żółw i <link linkend="the-inspector"
+>podglądu</link
+> (3), wyświetlającego informację w czasie działania programu. Oprócz nich znajdziesz: <link linkend="the-menubar"
+> pasek menu</link
+> (5), skąd mogą być wybrane wszystkie akcje, <link linkend="the-toolbar"
+>pasek narzędzi</link
+> (4), który pozwala na szybki wybór najczęściej używanych akcji, <guilabel
+>konsola</guilabel
+>, której możesz używać do testowania jednego, wpisanego wiersza, oraz <link linkend="the-statusbar"
+> pasek stanu</link
+> (wzdłuż dolnej krawędzi okna), gdzie znajdziesz aktualny stan działania &kturtle;.</para>
+
+<sect1 id="the-editor">
+<title
+>Edytor</title>
+<para
+>W edytorze wprowadza się polecenia &turtlescript;. Większość funkcji edytora można znaleźć w menu <link linkend="the-file-menu"
+>Plik</link
+> i <link linkend="the-edit-menu"
+>Edycja</link
+>. Edytor może być dowolnie przesuwany, przyczepiany do dowolnego miejsca na oknie głównym, a także może być umieszczony w dowolnym miejscu na pulpicie.</para>
+<para
+>Istnieje kilka sposobów uzyskania kodu w edytorze. Najprostszy to użycie  przykładu wybranego z menu <menuchoice
+><guimenu
+>Plik</guimenu
+><guisubmenu
+>Przykłady</guisubmenu
+></menuchoice
+> w menu <link linkend="the-file-menu"
+>Plik</link
+> a następnie wybrać plik. Przykład, który wybrałeś zostanie otwarty w <link linkend="the-editor"
+>edytorze</link
+>, możesz użyć <menuchoice
+><guimenu
+>Wykonaj</guimenu
+><guimenuitem
+>Wykonaj</guimenuitem
+></menuchoice
+> z paska menu lub <guibutton
+>Wykonaj</guibutton
+> z paska narzędzi, aby uruchomić kod.</para>
+<para
+>Pliki &turtlescript; można otworzyć wybierając <menuchoice
+><guimenu
+>Plik</guimenu
+><guimenuitem
+>Otwórz...</guimenuitem
+> </menuchoice
+>.</para>
+<para
+>Trzecim sposobem jest wprowadzenie własnego kodu w edytorze bądź skopiowanie gotowego kodu.</para>
+</sect1>
+
+
+<sect1 id="the-canvas">
+<title
+>Płótno</title>
+<para
+>Płótno jest przestrzenią żółwia, gdzie rysuje zgodnie z  otrzymywanymi poleceniami. Po wprowadzeniu kodu do <link linkend="the-editor"
+>Edytora</link
+> i wykonaniu go, mogą stać się dwie rzeczy: albo  kod zostanie wykonany pomyślnie i zobaczysz prawdopodobnie zmianę na płótnie; albo okażę się, że zrobiłeś błąd w kodzie, który jest przyczyną błędu. Pojawi się wtedy komunikat wyjaśniający, gdzie się pomyliłeś.</para>
+<para
+>Możesz dowolnie powiększać i zmniejszać płótno za pomocą koła myszy.</para>
+</sect1>
+
+
+<sect1 id="the-inspector">
+<title
+>Podgląd</title>
+<para
+>Podgląd informuje o zmiennych, przyswajanych funkcjach i pokazuje drzewo kodu podczas pracy programu.</para>
+<para
+>Podgląd można umieścić przy dowolnym brzegu okna głównego lub odłączyć i umieścić w dowolnym miejscu na pulpicie.</para>
+</sect1>
+
+
+<sect1 id="the-toolbar">
+<title
+>Pasek narzędzi</title>
+<para
+>Tutaj możesz szybko dotrzeć do najbardziej użytecznych czynności. Pasek narzędzi zawiera również <guilabel
+>Konsolę</guilabel
+>, gdzie możesz szybko wywołać polecenie, co może być użyteczne, kiedy zechcesz testować polecenie bez modyfikowania zawartości <link linkend="the-editor"
+>Edytora</link
+>.</para>
+<para
+>Pasek narzędzi można skonfigurować przy użyciu menu <menuchoice
+><guimenu
+>Ustawienia</guimenu
+><guimenuitem
+>Konfiguracja pasków narzędzi...</guimenuitem
+></menuchoice
+> Służy to lepszemu dopasowaniu programu do Twoich preferencji.</para>
+</sect1>
+
+
+<sect1 id="the-menubar">
+<title
+>Pasek menu</title>
+<para
+>W pasku menu można znaleźć wszystkie akcje &kturtle;. Pogrupowane są one następująco: <guimenu
+>Plik</guimenu
+>, <guimenu
+>Edycja</guimenu
+>, <guimenu
+>Płótno</guimenu
+>, <guimenu
+>Wykonaj</guimenu
+>, <guimenu
+>Narzędzia</guimenu
+>, <guimenu
+>Ustawienia</guimenu
+> i <guimenu
+>Pomoc</guimenu
+>. Pomoc opisuje wszystkie poprzednie.</para>
+
+<sect2 id="the-file-menu">
+<title
+>Menu <guimenu
+>Plik</guimenu
+></title>
+
+  <variablelist>
+    <anchor id="file-new"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Plik</guimenu
+> <guimenuitem
+>Nowy</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Tworzy nowy, pusty plik &turtlescript;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Plik</guimenu
+> <guimenuitem
+>Otwórz...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Otwiera plik &turtlescript;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-recent"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Plik</guimenu
+> <guisubmenu
+>Otwórz poprzedni</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Otwiera ostatnio używany plik &turtlescript;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Plik</guimenu
+> <guisubmenu
+>Przykłady</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Pokazuje katalog z przykładami programów w &turtlescript;. Przykłady będą w ulubionym języku użytkownika wybranym w menu <menuchoice
+><guimenu
+>Ustawienia</guimenu
+><guisubmenu
+>Język</guisubmenu
+> </menuchoice
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-get-more-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Plik</guimenu
+> <guimenuitem
+>Pobierz więcej przykładów...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Otwiera okno <guilabel
+>Gorące Nowości</guilabel
+>, aby pobrać dodatkowe pliki &turtlescript; z internetu.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="file-save"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Plik</guimenu
+> <guimenuitem
+>Zapisz</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Zapisuje aktualnie otworzony plik &turtlescript;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-save-as"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Plik</guimenu
+> <guimenuitem
+>Zapisz jako...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Zapisuje aktualnie otwarty plik &turtlescript; w wybranej lokalizacji.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-export-to-html"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Plik</guimenu
+> <guimenuitem
+>Zapisz jako plik HTML...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Eksportuje obecną zawartość edytora do pliku HTML z zachowaniem kolorowania.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Plik</guimenu
+> <guimenuitem
+>Drukuj...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Rozpoczyna pisanie bieżącego kodu w edytorze.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-quit"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Plik</guimenu
+> <guimenuitem
+>Wyjście</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Wychodzi z &kturtle;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-edit-menu">
+  <title
+>Menu <guimenu
+>Edycja</guimenu
+></title>
+  <variablelist>
+    <anchor id="edit-undo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edycja</guimenu
+> <guimenuitem
+>Cofnij</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Anuluje ostatnią zmianę w kodzie. &kturtle; posiada nieskończona liczbę kroków cofania.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-redo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edycja</guimenu
+> <guimenuitem
+>Powtórz</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Powtarza ostatnio wprowadzoną zmianę w kodzie.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-cut"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>X</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edycja</guimenu
+> <guimenuitem
+>Wytnij</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Wycina zaznaczony tekst z <link linkend="the-editor"
+>edytora</link
+> do schowka.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-copy"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edycja</guimenu
+> <guimenuitem
+>Kopiuj</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Kopiuje zaznaczony tekst z <link linkend="the-editor"
+>edytora</link
+> do schowka.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-paste"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>V</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edycja</guimenu
+> <guimenuitem
+>Wklej</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Wkleja tekst ze schowka do <link linkend="the-editor"
+> edytora</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-select-all"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>A</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edycja</guimenu
+> <guimenuitem
+>Zaznacz wszystko</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Zaznacza cały tekst w <link linkend="the-editor"
+>edytorze</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edycja</guimenu
+> <guimenuitem
+>Znajdź...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Znajduje w kodzie wskazaną frazę.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find-next"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F3</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Edycja</guimenu
+> <guimenuitem
+>Znajdź następne</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Znajduje kolejne pojawienie się wyszukiwanej fazy.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="edit-find-previous"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Shift;<keysym
+>F3</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Edycja</guimenu
+> <guimenuitem
+>Znajdź poprzednie</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Znajduje poprzednie pojawienie się wyszukiwanej fazy.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <!--<variablelist>
+    <anchor id="edit-replace"/>
+    <varlistentry>
+      <term
+><menuchoice>
+        <shortcut>
+          <keycombo
+>&Ctrl;<keycap
+>R</keycap
+></keycombo>
+        </shortcut>
+        <guimenu
+>Edit</guimenu>
+        <guimenuitem
+>Replace...</guimenuitem>
+      </menuchoice
+></term>
+      <listitem
+><para
+>With this action you can replace text in the code.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>-->
+<variablelist>
+    <anchor id="toggle-insert"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keycap
+>Ins</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Edycja</guimenu
+> <guimenuitem
+>Tryb zastępowania</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Przełączanie pomiędzy trybem "wstawiania" i "zastępowania".</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+<sect2 id="the-canvas-menu">
+  <title
+>Menu <guimenu
+>Płótno</guimenu
+></title>
+  <variablelist>
+    <anchor id="canvas-export-to-image"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Płótno</guimenu
+> <guimenuitem
+>Zapisz jako obrazek PNG...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Zapisuje obecną zawartość <link linkend="the-canvas"
+>Płótna</link
+> jako rastrowy obraz typu PNG (ang. Portable Network Graphics).</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-export-to-drawing"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Płotno</guimenu
+> <guimenuitem
+>Zapisz jako obrazek wektorowy (SVG)...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Zapisuje obecną zawartość <link linkend="the-canvas"
+>Płótna</link
+> jako wektorowy obraz typu SVG (ang. Scalable Vector Graphics).</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Płótno</guimenu
+> <guimenuitem
+>Drukuj Płótno...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Drukuje obecną zawartość <link linkend="the-canvas"
+>Płótna</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-run-menu">
+  <title
+>Menu <guimenu
+>Wykonaj</guimenu
+></title>
+  <variablelist>
+    <anchor id="run-execute"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F5</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Wykonaj</guimenu
+> <guimenuitem
+>Wykonaj</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Rozpoczyna wykonanie poleceń w edytorze.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-pause"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F6</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Wykonaj</guimenu
+> <guimenuitem
+>Wstrzymaj</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Zatrzymuje wykonanie programu. Akcja dostępna jedynie podczas wykonywania poleceń.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-stop"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F7</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Wykonaj</guimenu
+> <guimenuitem
+>Przerwij</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Przerywa wykonywanie. Akcja dostępna jedynie podczas wykonywania poleceń.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-speed"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Run</guimenu
+> <guisubmenu
+>Szybko</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>Lista możliwych prędkości wykonania składa się z następujących prędkości: <guimenuitem
+>Pełna prędkość (bez podświetlania)</guimenuitem
+>, <guimenuitem
+>Szybko</guimenuitem
+>, <guimenuitem
+>Wolno</guimenuitem
+>, <guimenuitem
+>Wolniej</guimenuitem
+>, <guimenuitem
+>Najwolniej</guimenuitem
+> i <guimenuitem
+>Krok po kroku</guimenuitem
+>. Gdy prędkość wykonania ustawiona jest na <guimenuitem
+>Szybko</guimenuitem
+> (domyślnie), z trudnością można zauważyć, co dzieje się na ekranie. Czasami jest to pożądane, a czasami chcemy zatrzymać ślad wykonania. W tym wypadku należy ustawić prędkość wykonania na <guimenuitem
+>Wolno</guimenuitem
+>, <guimenuitem
+>Wolniej</guimenuitem
+> bądź <guimenuitem
+>Najwolniej</guimenuitem
+>. Gdy wybrana jest któraś z tych prędkości aktualnie wykonywana pozycja będzie wskazywana w edytorze. <guimenuitem
+>Krok po kroku</guimenuitem
+> wykona tylko jedno polecenie jednocześnie.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+
+<sect2 id="the-tools-menu">
+  <title
+>Menu <guimenu
+>Narzędzia</guimenu
+></title>
+  <variablelist>
+    <anchor id="tools-direction-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Narzędzia</guimenu
+> <guimenuitem
+>Wybór kierunku</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>To działanie otwiera okno wyboru kierunku.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-color-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Narzędzia</guimenu
+> <guimenuitem
+>Wybór koloru...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>To działanie otwiera okno wyboru koloru.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-setting-menu">
+  <title
+>Menu <guimenu
+>Ustawienia</guimenu
+></title>
+  <variablelist>
+    <anchor id="settings-set-script-language"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+><guisubmenu
+>Język</guisubmenu
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Wybierz</action
+> język kodu.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-editor"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Pokaż edytor</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Pokazuje lub ukrywa <link linkend="the-editor"
+>Edytor</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-inspector"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Pokaż podgląd</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Pokazuje lub ukrywa <link linkend="the-inspector"
+>Podgląd</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-errors"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Pokaż błędy</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Pokaż/ukryj kartę <guilabel
+>Błędy</guilabel
+>, zawierającą listę błędów, które mogłyby wystąpić po uruchomieniu kodu. Jeśli ta opcja jest włączona, kliknij na <guilabel
+>Płótno</guilabel
+>, aby znów zobaczyć żółwia.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-linenumbers"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F11</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Widok</guimenu
+> <guimenuitem
+>Pokaż numery wierszy</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Opcja ta pokazuje numer wiersza w <link linkend="the-editor"
+>edytorze</link
+>. Może być użyteczne przy znajdowaniu błędów.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-toolbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+><guimenuitem
+>Pokaż pasek narzędzi</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Włączenie</action
+> głównego paska narzędzi.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="settings-toggle-statusbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+><guimenuitem
+>Pokaż pasek stanu</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>Włączenie/wyłączenie</action
+> paska statusu.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-shortcuts"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja skrótów...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Standardowe okno konfiguracji skrótów &kde;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-toolbars"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja pasków narzędzi...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>Standardowe okno konfiguracji pasków narzędzi &kde;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-help-menu">
+  <title
+>Menu <guimenu
+>Pomoc</guimenu
+></title>
+&help.menu.documentation; <variablelist
+> <anchor id="help-context-help"/> <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F2</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>Pomoc</guimenu
+> <guimenuitem
+>Pomoc na temat: ...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>to bardzo użyteczna opcja: przewiduje pomoc dla kodu, gdzie znajduje kursor w edytorze. Przykładowo, &eg;, użyłeś polecenia <userinput
+>pisz</userinput
+> w Twoim programie i chciałbyś przeczytać i dowiedzieć się, copodręcznik mówi o tym poleceniu. Wystarczy, że umieścisz kursor w poleceniu <userinput
+>pisz</userinput
+> i naciśniesz <keysym
+>F2</keysym
+>.  Podręcznik pokaże wszystkie informację o poleceniu <userinput
+>pisz</userinput
+>.</para>
+      <para
+>Ta funkcja może okazać się bardzo przydatna w czasie nauki &turtlescript;.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+<sect1 id="the-statusbar">
+<title
+>Pasek statusu</title>
+<para
+>W pasku stanu można znaleźć pomoc dotyczącą działania &kturtle;. Po lewej stronie pokazany jest opis ostatniej czynności. Po prawej stronie można znaleźć obecną lokalizację kursora (numer wiersza i kolumny). W środku paska statusu pokazany jest obecny język poleceń.</para>
+</sect1>
+
+</chapter>

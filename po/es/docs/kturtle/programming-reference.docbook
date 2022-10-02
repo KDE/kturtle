@@ -1,0 +1,2096 @@
+<chapter id="reference">
+<title
+>Guía del lenguaje de programación &turtlescript; </title>
+<para
+>Esta es la guía del lenguaje de programación &turtlescript; de &kturtle;. La primera sección de este capítulo está dedicada a aspectos relacionados con la <link linkend="grammar"
+>gramática</link
+> de los programas de &turtlescript;. La segunda sección trata exclusivamente los <link linkend="mathematical-operators"
+>operadores aritméticos</link
+>, los <link linkend="boolean-operators"
+>operadores lógicos (verdadero/falso)</link
+> y los <link linkend="comparing-operators"
+>operadores de comparación</link
+>. La tercera sección es, básicamente, una gran lista con todos las <link linkend="commands"
+>órdenes</link
+> explicadas una a una. La cuarta sección explica cómo  <link linkend="assignment-of-variables"
+>asignar valores a las variables</link
+>. Finalmente, en la quinta sección se explica cómo organizar la ejecución de órdenes usando <link linkend="controlling-execution"
+>declaraciones de control de la ejecución</link
+> y, en la sexta, cómo puedes crear tus propias órdenes con <link linkend="learn"
+><userinput
+>aprender</userinput
+></link
+>.</para>
+
+<sect1 id="grammar">
+<title
+>La gramática de &turtlescript;</title>
+<para
+>Como ocurre con todos los idiomas, &turtlescript; consta de diferentes tipos de palabras y símbolos. En español distinguimos entre verbos (como «caminar» y «cantar») y sustantivos (como «hermana» o «casa») que se usan para distintos propósitos. &turtlescript; es un lenguaje de programación que se usa para dar instrucciones a la tortuga sobre lo que tiene que hacer.</para>
+<para
+>En esta sección, se explican brevemente los distintos tipos de palabras que usa &turtlescript;. Se introduce lo que son <link linkend="comment"
+>comentarios</link
+>, <link linkend="command"
+>órdenes</link
+> y los tres diferentes tipos de literales: <link linkend="number"
+>números</link
+>, <link linkend="string"
+>cadenas</link
+> y <link linkend="boolean-value"
+>valores lógicos (verdadero/falso)</link
+>.</para>
+
+
+<sect2 id="comment">
+<title
+>Comentarios</title>
+<para
+>Un programa consta de instrucciones (que es lo que se ejecuta) y de los denominados comentarios. Los comentarios no se ejecutan. Es decir, &kturtle; los ignora por completo cuando se ejecuta un programa. Los comentarios están ahí para que otros programadores puedan comprender mejor el programa. Todo lo que aparece después de un símbolo <userinput
+>#</userinput
+> se considera como un comentario en  &turtlescript;. Un ejemplo es este programa que no hace nada:  <screen>
+# este programa no hace nada, es solo un comentario
+</screen
+> Es un programa inútil, pero permite explicar bien el asunto.</para>
+<para
+>Los comentarios son especialmente útiles en el caso de programas más complejos, ya que permiten dar consejos a otros programadores. En el siguiente programa verás comentarios que se usan junto con la orden <link linkend="print"
+>escribir</link
+>. <screen>
+# este programa ha sido creado por Cies Breijs
+escribir "este texto aparecerá escrito en el lienzo"
+# la línea anterior no es un comentario, pero la siguiente sí que lo es:
+# escribir "¡este texto no aparecerá escrito!"
+</screen
+> La primera línea describe el programa. La segunda línea es ejecutada por &kturtle;, que escribe en el lienzo <userinput
+>este texto aparecerá escrito en el lienzo</userinput
+>. La tercera línea es un comentario. Y la cuarta es un comentario que contiene una orden de &turtlescript;. Si de esta cuarta línea se eliminara el símbolo <userinput
+>#</userinput
+>, &kturtle; ejecutaría la orden de escribir.  Lo que los programadores suelen decir es que la orden de escribir se ha «comentado».</para>
+<para
+>Las líneas comentadas aparecen <glossterm
+>resaltadas</glossterm
+> en gris claro en el <link linkend="the-editor"
+>editor de código</link
+>.</para>
+</sect2>
+
+<sect2 id="command">
+<title
+>Órdenes</title>
+<para
+>Con las órdenes puedes decirle a la tortuga o a &kturtle; lo que tiene que hacer. Algunas órdenes necesitan un parámetro de entrada, mientras que otras devuelven un parámetro de salida. <screen>
+# avanzar es una orden que requiere de un parámetro de entrada, en este caso el número 100:
+avanzar 100
+</screen
+> La primera línea es un  <link linkend="comment"
+>comentario</link
+>. La segunda línea contiene la orden <userinput
+>avanzar</userinput
+> y el <link linkend="number"
+>número</link
+> <userinput
+>100</userinput
+>. El número no es parte de la orden, es solo su parámetro de entrada.</para>
+<para
+>Algunas órdenes, como &eg; <userinput
+>ir</userinput
+>, necesitan más de un valor de entrada. Si hay varios valores, hay que separarlos con el carácter <userinput
+>,</userinput
+> (coma).</para>
+<para
+>Para una descripción detallada de todas las órdenes que reconoce &kturtle;, vaya <link linkend="commands"
+>aquí</link
+>. Las órdenes integradas en &kturtle; aparecen <glossterm
+>resaltadas</glossterm
+> en azul oscuro.</para>
+</sect2>
+
+<sect2 id="number">
+<title
+>Números</title>
+<para
+>Lo más probable es que ya sepa bastante de números. La forma en que &kturtle; usa los números no es muy diferente a cómo se hace en el idioma hablado o en las matemáticas.</para>
+<para
+>Tenemos los llamados números naturales («<userinput
+>0</userinput
+>», «<userinput
+>1</userinput
+>», «<userinput
+>2</userinput
+>», «<userinput
+>3</userinput
+>», «<userinput
+>4</userinput
+>», «<userinput
+>5</userinput
+>», etc.), los enteros negativos («<userinput
+>-1</userinput
+>», «<userinput
+>-2</userinput
+>», «<userinput
+>-3</userinput
+>», etc.) y los números con decimales («<userinput
+>0,1</userinput
+>», «<userinput
+>3,14</userinput
+>», «<userinput
+>33,3333</userinput
+>», «<userinput
+>-5,05</userinput
+>», «<userinput
+>-1,0</userinput
+>», etc.). El carácter <userinput
+>,</userinput
+> (coma) se utiliza como separador. </para>
+<para
+>Los números pueden utilizarse en conjunción con <link linkend="mathematical-operators"
+>operadores aritméticos</link
+> y <link linkend="comparing-operators"
+>operadores de comparación</link
+>. También pueden guardarse en <link linkend="assignment-of-variables"
+>variables</link
+>. Los números aparecen <glossterm
+>resaltados</glossterm
+> en rojo oscuro.</para>
+</sect2>
+
+<!-- constants like pi? -->
+
+<sect2 id="string">
+<title
+>Cadenas</title>
+<para
+>Primero un ejemplo: <screen>
+escribir "Hola, soy una cadena."
+</screen
+> En este ejemplo, <userinput
+>escribir</userinput
+> es una orden y <userinput
+>"Hola, soy una cadena."</userinput
+> es una cadena. Las cadenas comienzan y terminan con dobles comillas (<userinput
+>"</userinput
+>); es esto lo que hace que &kturtle; las identifique como tal.</para>
+<para
+>Al igual que ocurre con los <link linkend="number"
+>números</link
+>, las cadenas también se pueden guardar en <link linkend="assignment-of-variables"
+>variables</link
+>. Sin embargo, al contrario que los números, las cadenas no pueden usarse con <link linkend="mathematical-operators"
+>operadores aritméticos </link
+> o con <link linkend="comparing-operators"
+>operadores de comparación</link
+>. Las cadenas aparecen <glossterm
+>resaltadas</glossterm
+> en rojo. </para>
+</sect2>
+
+<sect2 id="boolean-value">
+<title
+>Valores lógicos (verdadero/falso)</title>
+<para
+>Solo hay dos valores lógicos: <userinput
+>verdadero</userinput
+><indexterm
+><primary
+>verdadero</primary
+></indexterm
+> y <userinput
+>falso</userinput
+><indexterm
+><primary
+>falso</primary
+></indexterm
+>, aunque en ocasiones se los denomina «<userinput
+>encendido</userinput
+>» y «<userinput
+>apagado</userinput
+>», «<userinput
+>sí</userinput
+>» y «<userinput
+>no</userinput
+>» o «<userinput
+>uno</userinput
+>» y «<userinput
+>cero</userinput
+>». Pero en &turtlescript; siempre los llamaremos  <userinput
+>verdadero</userinput
+> y <userinput
+>falso</userinput
+>. Observa este código de &turtlescript;: <screen>
+$a = verdadero
+</screen
+> Si miras en el <link linkend="the-inspector"
+>inspector</link
+> verás que a la <link linkend="assignment-of-variables"
+>variable</link
+> <userinput
+>$a</userinput
+> le corresponde el valor <userinput
+>verdadero</userinput
+>, que es de tipo lógico.</para>
+<para
+>Con frecuencia, los valores lógicos son el resultado de un <link linkend="comparing-operators"
+>operador de comparación</link
+>, como ocurre en el siguiente ejemplo: <screen>
+$respuesta = 10 &gt; 3
+</screen
+> A la <link linkend="assignment-of-variables"
+>variable</link
+> <userinput
+>$respuesta</userinput
+> le corresponde el valor <userinput
+>verdadero</userinput
+> porque <userinput
+>10</userinput
+> es mayor que <userinput
+>3</userinput
+>. </para>
+<para
+>Los valores lógicos <userinput
+>verdadero</userinput
+> y <userinput
+>falso</userinput
+> aparecen <glossterm
+>resaltados</glossterm
+> en rojo oscuro.</para>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="operators">
+<title
+>Operadores aritméticos, lógicos y de comparación</title>
+<para
+>Aunque el título de esta sección parezca complejo, verás como el contenido no es tan difícil como parece.</para>
+
+<sect2 id="mathematical-operators">
+<title
+>Operadores aritméticos</title>
+<para
+>Estos son los símbolos aritméticos básicos: suma (<userinput
+>+</userinput
+>), resta (<userinput
+>-</userinput
+>), multiplicación (<userinput
+>*</userinput
+>), división (<userinput
+>/</userinput
+>) y potenciación (<userinput
+>^</userinput
+>).</para>
+
+<para
+>Este es un ejemplo de cómo usar los operadores aritméticos en &turtlescript;: <screen>
+$sumar = 1 + 1
+$restar = 20 - 5
+$multiplicar = 15 * 2
+$dividir = 30 / 30
+$potencia = 2 ^ 2
+</screen
+> Los valores resultantes de estas operaciones aritméticos son <link linkend="assignment-of-variables"
+>asignados a variables</link
+>. Puedes ver los valores resultantes en el <link linkend="the-inspector"
+>inspector</link
+>.</para>
+<para
+>Si lo que quieres es realizar un cálculo simple, puedes hacer algo como esto: <screen
+>escribir 2010-12
+</screen
+></para>
+<para
+>Ahora veamos un ejemplo con paréntesis: <screen>
+escribir ( ( 20 - 5 ) * 2 / 30 ) + 1
+</screen
+> Primero se calculan las operaciones que están dentro de los paréntesis. En este ejemplo, primero se calcula 20 - 5; el resultado se multiplica por 2, luego se divide por 30 y, por último, se le suma 1. El resultado final es 2. Los paréntesis pueden también usarse en otros casos.</para>
+<para
+>&kturtle; también tiene otras funciones aritméticas en forma de órdenes. Echa un vistazo a las siguientes órdenes, eso sí, teniendo en cuenta que se trata de operaciones avanzadas: <link linkend="round"
+>redondear</link
+>, <link linkend="random"
+>aleatorio</link
+>, <link linkend="sqrt"
+>raíz</link
+>, <link linkend="pi"
+>pi</link
+>, <link linkend="sin"
+>sen</link
+>, <link linkend="cos"
+>cos</link
+>, <link linkend="tan"
+>tan</link
+>, <link linkend="arcsin"
+>arcsen</link
+>, <link linkend="arccos"
+>arccos</link
+>, <link linkend="arctan"
+>arctan</link
+>.</para>
+</sect2>
+
+<sect2 id="boolean-operators">
+<title
+>Operadores lógicos (verdadero/falso)</title>
+<para
+>Mientras que los <link linkend="mathematical-operators"
+>operadores aritméticos</link
+> se usan principalmente con <link linkend="number"
+>números</link
+>, los operadores lógicos están pensados para usarse con <link linkend="boolean-value"
+>valores lógicos</link
+> (<userinput
+>verdadero</userinput
+> y <userinput
+>falso</userinput
+>). Hay solo tres operadores lógicos: <userinput
+>y</userinput
+><indexterm
+><primary
+>y</primary
+></indexterm
+>, <userinput
+>o</userinput
+><indexterm
+><primary
+>o</primary
+></indexterm
+> y <userinput
+>no</userinput
+><indexterm
+><primary
+>no</primary
+></indexterm
+>. El siguiente código de &turtlescript; muestra cómo usarlos: <screen>
+$y_1_1 = verdadero y verdadero  # -> verdadero
+$y_1_0 = verdadero y falso  # -> falso
+$y_0_1 = falso y verdadero  # -> falso
+$y_0_0 = falso y falso  # -> falso
+
+$o_1_1 = verdadero o verdadero # -> verdadero
+$o_1_0 = verdadero o falso  # -> verdadero
+$o_0_1 = falso o verdadero  # -> verdadero
+$o_0_0 = falso o falso  # -> falso
+
+$no_1 = no verdadero  # -> falso
+$no_0 = no falso  # -> verdadero
+</screen
+> Puedes ver los valores resultantes en el <link linkend="the-inspector"
+>inspector</link
+>, aunque también se proporcionan pequeños comentarios al final de las líneas. <userinput
+>Y</userinput
+> resulta en <userinput
+>verdadero</userinput
+> solo si ambas partes son <userinput
+>verdaderos</userinput
+>. <userinput
+>O</userinput
+> resulta en <userinput
+>verdadero</userinput
+> si alguna de las dos partes es <userinput
+>verdadero</userinput
+>. Y <userinput
+>no</userinput
+> transforma <userinput
+>verdadero</userinput
+> en <userinput
+>falso</userinput
+> y<userinput
+>falso</userinput
+> en <userinput
+>verdadero</userinput
+>. </para>
+<para
+>Los operadores lógicos aparecen <glossterm
+>resaltados</glossterm
+> en rosa.</para>
+
+<sect3 id="boolean-operators-advanced-examples">
+<title
+>Unos ejemplos más complejos:</title>
+<para
+>Considera el siguiente ejemplo con <userinput
+>and</userinput
+>: <screen>
+$a = 1
+$b = 5
+si (($a &lt; 10) y ($b == 5)) y ($a &lt; $b) {
+  escribir "hola"
+}
+</screen
+> En este código de &turtlescript;, el resultado de los tres <link linkend="comparing-operators"
+>operadores de comparación</link
+> están agrupados mediante los operadores <userinput
+>y</userinput
+>. Esto significa que los tres resultados tienen que ser iguales a «verdadero» para que se escriba la palabra «hola».</para>
+
+<para
+>Un ejemplo con <userinput
+>o</userinput
+>: <screen>
+$n = 1
+si ($n &lt; 10) o ($n == 2) {
+  escribir "hola"
+}
+</screen
+> En este código de &turtlescript;, la parte izquierda del operador <userinput
+>o</userinput
+> es «verdadera», mientras que la derecha es «falsa». Ya que una de las dos partes del operador <userinput
+>o</userinput
+> es «verdadera», el resultado del operador <userinput
+>o</userinput
+> también lo es. Esto quiere decir que se escribe la palabra «hola».</para>
+
+<para
+>Finalmente, un ejemplo con <userinput
+>no</userinput
+>, que transforma «verdadero» en «falso» y «falso» en verdadero». Fíjate:  <screen
+>$n = 1
+si no ($n == 3) {
+  escribir "hola"
+} sino {
+  escribir "no hola ;-)"
+}
+</screen
+></para>
+</sect3>
+</sect2>
+
+<sect2 id="comparing-operators">
+<title
+>Operadores de comparación</title>
+<para
+>Considera esta comparación sencilla: <screen>
+$respuesta = 10 &gt; 3
+</screen
+> Aquí, <userinput
+>10</userinput
+> se compara con <userinput
+>3</userinput
+> usando el operador «más grande que». El resultado de esta operación, es decir, el <link linkend="boolean-value"
+>valor lógico</link
+> <userinput
+>verdadero</userinput
+>, se guarda en la <link linkend="assignment-of-variables"
+>variable</link
+> <userinput
+>$respuesta</userinput
+>.</para>
+<para
+>Todos los <link linkend="number"
+>números</link
+> y <link linkend="assignment-of-variables"
+>variables</link
+> (que contengan números) pueden compararse entre sí usando operadores de comparación.</para>
+<para
+>Estos son todos los posibles operadores de comparación: <table
+> <title
+>Tipos de preguntas</title
+> <tgroup cols="3"
+> <tbody
+> <row
+> <entry
+><userinput
+>$A == $B</userinput
+></entry
+> <entry
+>igual a</entry
+> <entry
+>la respuesta es «verdadera» si <userinput
+>$A</userinput
+> es igual a <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A != $B</userinput
+></entry
+> <entry
+>no igual a</entry
+> <entry
+>la respuesta es «verdadera» si <userinput
+>$A</userinput
+> no es igual a <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt; $B</userinput
+></entry
+> <entry
+>mayor que</entry
+> <entry
+>la respuesta es «verdadera» si <userinput
+>$A</userinput
+> es mayor que <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt; $B</userinput
+></entry
+> <entry
+>menor que</entry
+> <entry
+>la respuesta es «verdadera» si <userinput
+>$A</userinput
+> es menor que <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt;= $B</userinput
+></entry
+> <entry
+>mayor o igual que</entry
+> <entry
+>la respuesta es «verdadera» si <userinput
+>$A</userinput
+> es mayor o igual que <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt;= $B</userinput
+></entry
+> <entry
+>menor o igual que</entry
+> <entry
+>la respuesta es «verdadera» si <userinput
+>$A</userinput
+> es menor o igual que <userinput
+>B</userinput
+></entry
+> </row
+> </tbody
+> </tgroup
+> </table
+> Ten en cuenta que <userinput
+>$A</userinput
+> y <userinput
+>$B</userinput
+> tienen que ser <link linkend="number"
+>números</link
+> o <link linkend="assignment-of-variables"
+>variables</link
+> que contengan números.</para>
+</sect2>
+
+
+</sect1>
+
+
+
+<sect1 id="commands">
+<title
+>Órdenes</title>
+<para
+>Con las órdenes podemos decirle a la tortuga o a &kturtle; lo que tiene que hacer. Algunas órdenes requieren de parámetros de entrada, mientras que otras devuelven parámetros de salida. En esta sección se explican todas las órdenes integradas en &kturtle;. Alternativamente, puedes usar <link linkend="learn"
+><userinput
+>aprender</userinput
+></link
+> para crear tus propias órdenes. Las órdenes que van a detallarse aquí aparecen <glossterm
+>resaltadas</glossterm
+> en azul oscuro.</para>
+
+<sect2 id="moving-the-turtle">
+<title
+>Cómo mover la tortuga</title>
+<para
+>Hay varias órdenes que permiten mover la tortuga por la pantalla.</para>
+
+  <variablelist>
+    <anchor id="forward"/>
+    <varlistentry
+> 
+      <term
+>avanzar (avz)<indexterm
+><primary
+>avanzar (avz)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>avanzar X</screen
+><userinput
+>avanzar</userinput
+> desplaza la tortuga hacia delante X píxeles. Cuando el pincel está bajado, la tortuga deja a su paso un trazo. <userinput
+>avanzar</userinput
+> puede abreviarse como <userinput
+>avz</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="backward"/>
+    <varlistentry
+>  
+      <term
+>retroceder (ret)<indexterm
+><primary
+>retroceder (ret)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>retroceder X</screen
+><userinput
+>retroceder</userinput
+> hace retroceder la tortuga X píxeles. Cuando el pincel está bajado, la tortuga deja a su paso un trazo. <userinput
+>retroceder</userinput
+> puede abreviarse como <userinput
+>ret</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnleft"/>
+    <varlistentry
+> 
+      <term
+>izquierda (izq)<indexterm
+><primary
+>izquierda (izq)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>izquierda X</screen
+><userinput
+>izquierda</userinput
+> le ordena a la tortuga que rote X grados hacia la izquierda. <userinput
+>izquierda</userinput
+> puede abreviarse como <userinput
+>izq</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnright"/>
+    <varlistentry
+> 
+      <term
+>derecha (der)<indexterm
+><primary
+>derecha (der)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>derecha X</screen
+><userinput
+>derecha</userinput
+> le ordena a la tortuga que rote X grados hacia la derecha. <userinput
+>derecha</userinput
+> puede abreviarse como <userinput
+>der</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="direction"/>
+    <varlistentry
+> 
+      <term
+>dirección (dir)<indexterm
+><primary
+>dirección (dir)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>dirección X</screen
+><userinput
+>dirección</userinput
+> determina el ángulo de dirección de la tortuga, que será X grados contando a partir de cero. No se tiene en cuenta la dirección anterior de la tortuga. <userinput
+>dirección</userinput
+> puede abreviarse como <userinput
+>dir</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="getdirection"/>
+    <varlistentry
+> 
+      <term
+>obtenerdirección<indexterm
+><primary
+>obtenerdirección</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>obtenerdirección</screen
+><userinput
+>obtenerdirección</userinput
+> determina el ángulo de dirección de la tortuga, que será X grados contando a partir de cero.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="center"/>
+    <varlistentry
+> 
+      <term
+>centrar<indexterm
+><primary
+>centrar</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>centrar</screen
+><userinput
+>centrar</userinput
+> mueve la tortuga al centro del lienzo.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="go"/>
+    <varlistentry
+> 
+      <term
+>ir<indexterm
+><primary
+>ir</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ir X; Y</screen
+><userinput
+>ir</userinput
+> le ordena a la tortuga que se desplace a una posición concreta del lienzo. Esta posición está a X <glossterm linkend="pixels"
+>píxeles</glossterm
+> del margen izquierdo del lienzo y a Y <glossterm linkend="pixels"
+>píxeles</glossterm
+> del margen superior del lienzo.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gox"/>
+    <varlistentry
+> 
+      <term
+>irx<indexterm
+><primary
+>irx (ix)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>irx X</screen
+><userinput
+>irx</userinput
+> le ordena a la tortuga que vaya a una posición que está a X <glossterm linkend="pixels"
+>píxeles</glossterm
+> del margen izquierdo del lienzo, sin modificar su altura. <userinput
+>irx</userinput
+> se puede abreviar con <userinput
+>ix</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="goy"/>
+    <varlistentry
+> 
+      <term
+>iry<indexterm
+><primary
+>iry (iy)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>iry Y</screen
+><userinput
+>iry</userinput
+> le ordena a la tortuga que vaya a una posición que está a Y <glossterm linkend="pixels"
+>píxeles</glossterm
+> del margen superior del lienzo, sin modificar la distancia a la que se encuentre del margen izquierdo. <userinput
+>iry</userinput
+> se puede abreviar con <userinput
+>iy</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <note
+><para
+>Con las órdenes <userinput
+>ir</userinput
+>, <userinput
+>irx</userinput
+>, <userinput
+>iry</userinput
+> y <userinput
+>centrar</userinput
+>, la tortuga no dibuja ningún trazo, independientemente de que el pincel esté bajado o no.</para>
+  </note>
+</sect2>
+
+<sect2 id="locate-the-turtle">
+<title
+>¿Dónde está la tortuga?</title>
+<para
+>Hay dos órdenes que devuelven la posición de la tortuga en la pantalla.</para>
+
+  <variablelist>
+    <anchor id="getx"/>
+    <varlistentry
+> 
+      <term
+>obtenerx<indexterm
+><primary
+>obtenerx</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>obtenerx</userinput
+> devuelve el número de píxeles desde el margen izquierdo del lienzo de la posición actual de la tortuga.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gety"/>
+    <varlistentry
+> 
+      <term
+>obtenery<indexterm
+><primary
+>obtenery</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>obtenery</userinput
+> devuelve el número de píxeles desde el margen superior del lienzo de la posición actual del la tortuga.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="pen">
+<title
+>La tortuga tiene un pincel</title>
+<para
+>La tortuga tiene un pincel que dibuja una línea cuando esta se desplaza. Hay varia órdenes que controlan el pincel. En esta sección se explican estas órdenes.</para>
+  <variablelist>
+    <anchor id="penup"/>
+    <varlistentry
+> 
+      <term
+>levantarpincel (lpl)<indexterm
+><primary
+>levantarpincel (lpl)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>levantarpincel</screen
+><userinput
+>levantarpincel</userinput
+> alza el pincel del lienzo. Cuando el pincel está «levantado», la tortuga no deja ningún trazo cuando se desplaza. Consulta también <userinput
+>bajarpincel</userinput
+>. <userinput
+>levantarpincel</userinput
+> puede abreviarse como <userinput
+>lpl</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="pendown"/>
+    <varlistentry
+> 
+      <term
+>bajarpincel (bpl)<indexterm
+><primary
+>bajarpincel (bpl)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>bajarpincel</screen
+><userinput
+>bajarpincel</userinput
+> presiona el pincel sobre el lienzo. Cuando el pincel está «bajado», la tortuga deja un trazo a su paso. Vea también <userinput
+>levantarpincel</userinput
+>. <userinput
+>bajarpincel</userinput
+> puede abreviarse como <userinput
+>bpl</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setpenwidth"/>
+    <varlistentry
+> 
+      <term
+>grosorpincel (gpl)<indexterm
+><primary
+>grosorpincel (gpl)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>grosorpincel X</screen
+><userinput
+>grosorpincel</userinput
+> fija el grosor de la línea trazada por la tortuga en X <glossterm linkend="pixels"
+>píxeles</glossterm
+>. <userinput
+>grosorpincel</userinput
+> puede abreviarse como <userinput
+>gpl</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setfgcolor"/>
+    <varlistentry
+> 
+      <term
+>colorpincel (cpl)<indexterm
+><primary
+>colorpincel (cpl)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>colorpincel R;G;B </screen
+><userinput
+>colorpincel</userinput
+> fija el color del pincel. El parámetro de entrada de <userinput
+>colorpincel</userinput
+> es una <glossterm linkend="rgb"
+>combinación RGB</glossterm
+>. <userinput
+>colorpincel</userinput
+> puede abreviarse como <userinput
+>cpl</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="canvas">
+<title
+>Órdenes que controlan el lienzo</title>
+<para
+>Existen varias órdenes que controlan el lienzo.</para>
+  <variablelist>
+    <anchor id="resizecanvas"/>
+    <varlistentry>
+      <term
+>tamañolienzo (tl)<indexterm
+><primary
+>tamañolienzo (tl)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>tamañolienzo X;Y</screen
+>Con la orden <userinput
+>tamañolienzo</userinput
+> puede modificar las dimensiones del lienzo. Requiere de X e Y como parámetros de entrada, donde X es el ancho en <glossterm linkend="pixels"
+>píxeles</glossterm
+> del nuevo lienzo, e Y es la altura del nuevo lienzo también en <glossterm linkend="pixels"
+>píxeles</glossterm
+>. <userinput
+>tamañolienzo</userinput
+> puede abreviarse como <userinput
+>tl</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setbgcolor"/>
+    <varlistentry
+> 
+      <term
+>colorlienzo (cl)<indexterm
+><primary
+>colorlienzo (cl)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>colorlienzo R;G;B</screen
+><userinput
+>colorlienzo</userinput
+> define el color del lienzo. El parámetro de entrada de <userinput
+>colorlienzo</userinput
+> es una <glossterm linkend="rgb"
+>combinación RGB</glossterm
+>. <userinput
+>colorlienzo</userinput
+> puede abreviarse como <userinput
+>cl</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="clean">
+<title
+>Comandos para limpiar</title>
+<para
+>Existen dos comandos que permiten limpiar el lienzo después de un embrollo.</para>
+  <variablelist>
+    <anchor id="clear"/>
+    <varlistentry
+> 
+      <term
+>limpiar (lmp)<indexterm
+><primary
+>limpiar (lmp)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>limpiar</screen
+>Con <userinput
+>limpiar</userinput
+> puede borrar todos los dibujos del lienzo. Todo lo demás permanece: la posición y ángulo de la tortuga, el color del lienzo, la visibilidad de la tortuga y el tamaño del lienzo. </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="reset"/>
+    <varlistentry
+> 
+      <term
+>reiniciar<indexterm
+><primary
+>reiniciar</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>reiniciar</screen
+><userinput
+>reiniciar</userinput
+> borra todo de una forma más concienzuda que la orden <userinput
+>limpiar</userinput
+>. Después de una orden <userinput
+>reiniciar</userinput
+>, todo vuelve a como estaba cuando inició &kturtle;. La tortuga regresará a su posición en el centro del lienzo, el color del lienzo volverá a ser blanco, la tortuga dibujará de nuevo una línea negra en el lienzo y el tamaño del lienzo será 400x400 píxeles.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="sprites">
+<title
+>La tortuga es un duendecillo</title>
+<para
+>Antes de nada conviene explicar qué son los sprites: los duendecillos son pequeñas figuras que pueden desplazarse por la pantalla, como vemos con frecuencia en los videojuegos. Nuestra tortuga también es un duendecillo. Para obtener más información, consulta la entrada en el glosario correspondiente a los <glossterm linkend="sprites"
+>duendecillos</glossterm
+>.</para>
+<para
+>A continuación, encontrarás una descripción detallada de todas las órdenes relacionadas con duendecillos.</para>
+<note
+><para
+>La versión actual de &kturtle; no admite otro duendecillo aparte de la tortuga. En las versiones futuras sí que podrá cambiar la tortuga por algo diseñado por usted mismo.</para
+></note>
+  <variablelist>
+    <anchor id="spriteshow"/>
+    <varlistentry
+> 
+      <term
+>mostrartortuga (mt)<indexterm
+><primary
+>mostrartortuga (mt)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mostrartortuga</screen
+><userinput
+>mostrartortuga</userinput
+> vuelve visible de nuevo a la tortuga después de haberla ocultado. <userinput
+>mostrartortuga</userinput
+> puede abreviarse como <userinput
+>mt</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="spritehide"/>
+    <varlistentry
+> 
+      <term
+>ocultartortuga (ot)<indexterm
+><primary
+>ocultartortuga (ot)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ocultartortuga</screen
+><userinput
+>ocultartortuga</userinput
+> oculta la tortuga. Puede usarse cuando la tortuga no quede bien en su dibujo. <userinput
+>ocultartortuga</userinput
+> puede abreviarse como <userinput
+>ot</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="writing">
+<title
+>¿La tortuga puede escribir?</title>
+<para
+>La respuesta es «sí». La tortuga puede escribir: escribirá todo lo que le ordenes.</para>
+  <variablelist>
+    <anchor id="print"/>
+    <varlistentry
+> 
+      <term
+>escribir<indexterm
+><primary
+>escribir</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>escribir X</screen
+>La orden <userinput
+>escribir</userinput
+> le indica a la tortuga que escriba algo en el lienzo. El parámetro de entrada de <userinput
+>escribir</userinput
+> puede ser un número o una cadena. Puedes concatenar varios números y cadenas usando el símbolo «+». Aquí tienes un ejemplo sencillo: <screen
+>$año = 2003
+$autor = "Cies"
+escribir $autor + " comenzó a trabajar en el proyecto KTurtle en " + $año + " y todavía disfruta haciéndolo"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="fontsize"/>
+    <varlistentry
+> 
+      <term
+>tamañoletra<indexterm
+><primary
+>tamañoletra</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>tamañoletra X</screen
+><userinput
+>tamañoletra</userinput
+> fija el tamaño del tipo de letra que usa la orden <userinput
+>escribir</userinput
+>. El parámetro de entrada de <userinput
+>tamañoletra</userinput
+> tiene que ser un número. El tamaño viene determinado en <glossterm linkend="pixels"
+>píxeles</glossterm
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="math-commands">
+<title
+>Órdenes aritméticas</title>
+<para
+>Las siguientes son algunas de las órdenes aritméticas más avanzadas de &kturtle;.</para>
+  <variablelist>
+    <anchor id="round"/>
+    <varlistentry>
+      <term
+>redondear<indexterm
+><primary
+>redondear</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>redondear(X)</screen
+>Permite <userinput
+>redondear</userinput
+> el número dado a su entero más cercano. <screen>
+escribir redondear(10,8)
+avanzar 20
+escribir redondear(10,3)
+</screen
+> Este código hace que la tortuga escriba los números 11 y 10.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="random"/>
+    <varlistentry
+> 
+      <term
+>aleatorio (alt)<indexterm
+><primary
+>aleatorio (alt)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>aleatorio X;Y</screen
+><userinput
+>aleatorio</userinput
+> es una orden que requiere de parámetros de entrada y que devuelve un parámetro de salida. Como parámetros de entrada, necesita dos números, el primero (X) fija el valor mínimo del parámetro de salida, y el segundo (Y) fija su valor máximo. El parámetro de salida es un número elegido al azar que es igual o más grande que el valor mínimo, e igual o más pequeño que el valor máximo. Aquí tiene un ejemplo sencillo: <screen>
+repetir 500 {
+  $x = aleatorio 1;20
+  avanzar $x
+  izquierda 10 - $x
+}
+</screen
+> Con la orden <userinput
+>aleatorio</userinput
+> puedes incorporar algo de caos a tu programa.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="mod"/>
+    <varlistentry
+> 
+      <term
+>mod<indexterm
+><primary
+>mod</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mod X,Y</screen
+>La orden <userinput
+>mod</userinput
+> devuelve el resto de la división del primer número entre el segundo número.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sqrt"/>
+    <varlistentry
+> 
+      <term
+>raíz<indexterm
+><primary
+>raíz</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>raíz X</screen
+>La orden <userinput
+>raíz</userinput
+> sirve para calcular la raíz cuadrada de un número X.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+<!--
+  <variablelist>
+    <anchor id="exp"/>
+    <varlistentry
+> 
+      <term
+>exp<indexterm
+><primary
+>exp</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+-->
+  <variablelist>
+    <anchor id="pi"/>
+    <varlistentry
+> 
+      <term
+>pi<indexterm
+><primary
+>pi</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pi</screen
+>Esta orden devuelve el valor del número Pi, <userinput
+>3,14159</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sin"/>
+    <anchor id="cos"/>
+    <anchor id="tan"/>
+    <varlistentry>
+      <term
+>sen<indexterm
+><primary
+>sen</primary
+></indexterm
+>, cos<indexterm
+><primary
+>cos</primary
+></indexterm
+>, tan<indexterm
+><primary
+>tan</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>sen X
+cos X
+tan X
+</screen
+>Estas tres órdenes representan las famosas funciones trigonométricas <userinput
+>sen</userinput
+>, <userinput
+>cos</userinput
+> y <userinput
+>tan</userinput
+>. El parámetro de entrada de estas tres órdenes, X, es un <link linkend="number"
+>número</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="arcsin"/>
+    <anchor id="arccos"/>
+    <anchor id="arctan"/>
+    <varlistentry>
+      <term
+>arcsen<indexterm
+><primary
+>arcsen</primary
+></indexterm
+>, arccos<indexterm
+><primary
+>arccos</primary
+></indexterm
+>, arctan<indexterm
+><primary
+>arctan</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>arcsen X
+arccos X
+arctan X
+</screen
+>Estas tres órdenes son las funciones inversas de <link linkend="sin"
+>sen</link
+>, <link linkend="cos"
+>cos</link
+> y <link linkend="tan"
+>tan</link
+>. El parámetro de entrada de estas órdenes, X, es un  <link linkend="number"
+>número</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="dialogs">
+<title
+>Entrada e información mediante diálogos</title>
+<para
+>Un diálogo es una pequeña ventana emergente que proporciona información o que solicita un parámetro de entrada. &kturtle; tiene dos órdenes relacionadas con diálogos: <userinput
+>mensaje</userinput
+> y <userinput
+>preguntar</userinput
+>.</para>
+  <variablelist>
+    <anchor id="message"/>
+    <varlistentry
+> 
+      <term
+>mensaje<indexterm
+><primary
+>mensaje</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mensaje X</screen
+>La orden <userinput
+>mensaje</userinput
+> necesita una <link linkend="string"
+>cadena</link
+> como parámetro de entrada. Muestra una ventana emergente con el texto de la <link linkend="string"
+>cadena</link
+>. <screen
+>mensaje "Cies comenzó a trabajar en el proyecto KTurtle en 2003 y todavía disfruta haciéndolo"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="ask"/>
+    <varlistentry
+> 
+      <term
+>preguntar<indexterm
+><primary
+>preguntar</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>preguntar X</screen
+><userinput
+>preguntar</userinput
+> necesita una <link linkend="string"
+>cadena</link
+> como parámetro de entrada. Muestra el texto de la cadena en una ventana emergente (igual que hace <link linkend="message"
+>mensaje</link
+>) junto a un campo de entrada. Una vez que el usuario ha introducido un <link linkend="number"
+>número</link
+> o una <link linkend="string"
+>cadena</link
+>, el resultado puede guardarse en una  <link linkend="assignment-of-variables"
+>variable</link
+> o pasarse como un argumento a otra <link linkend="commands"
+>orden</link
+>. Por ejemplo: <screen>
+$entrada = preguntar "¿En qué año naciste?"
+$salida = 2003 - $entrada
+escribir "En 2003 tenías " + salida + " años."
+</screen
+> Si el usuario cancela el diálogo de entrada o no introduce ningún valor, la <link linkend="assignment-of-variables"
+>variable</link
+> queda vacía.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="assignment-of-variables">
+<title
+>Asignar valores a las variables</title>
+<para
+>Antes de nada, echemos un vistazo a las variables, después veremos cómo asignarles valores. </para>
+
+<para
+>Las variables son palabras que comienzan con un <quote
+>$</quote
+>; en el <link linkend="the-editor"
+>editor</link
+>, aparecen <glossterm
+>resaltadas</glossterm
+> en color morado.</para>
+
+<para
+>Las variables pueden contener un <link linkend="number"
+>número</link
+>, una <link linkend="string"
+>cadena</link
+> o un <link linkend="boolean-value"
+>valor lógico (verdadero/falso)</link
+>. Con el signo de asignación (<userinput
+>=</userinput
+>) se da un valor a la variable, que mantendrá hasta que el programa termine de ejecutarse o hasta que se le asigne un nuevo valor.</para>
+
+<para
+>Puedes usar las variables, una vez asignadas, de la misma forma que usarías su contenido. Por ejemplo, vea el siguiente código de &turtlescript;: <screen>
+$x = 10
+$x = $x / 3
+escribir $x
+</screen
+> Primero, a la variable  <userinput
+>$x</userinput
+> se le asigna el valor <userinput
+>10</userinput
+>. A continuación, a esta misma variable  <userinput
+>$x</userinput
+> se le asigna su propio valor dividido por <userinput
+>3</userinput
+>, es decir, a la variable <userinput
+>$x</userinput
+> se da el valor <userinput
+>10 / 3</userinput
+>. Finalmente, se escribe <userinput
+>$x</userinput
+>. En las líneas dos y tres, comprobará que se usa la variable  <userinput
+>$x</userinput
+> como si fuera un número.</para>
+
+<para
+>A las variables hay que asignarles un valor para que puedan ser usadas. Por ejemplo:<screen>
+escribir $n
+</screen
+> Este código da lugar a un mensaje de error.</para>
+
+<para
+>Considera el siguiente código de &turtlescript;: <screen>
+$a = 2004
+$b = 25
+
+# la siguiente orden escribe "2029"
+escribir $a + $b
+retroceder 30
+# la siguiente orden escribe  "2004 más 25 igual a 2029"
+escribir $a + " más " + $b + " es igual a " + ($a + $b)
+</screen
+> En las primeras dos líneas, a las variables <userinput
+>$a</userinput
+> y <userinput
+>$b</userinput
+> se les asigna los valores 2004 y 25. A continuación hay dos órdenes <userinput
+>escribir</userinput
+> con una orden <userinput
+>retroceder 30</userinput
+> en medio. Los comentarios que hay antes de las órdenes <userinput
+>escribir</userinput
+> explican lo que hacen. Como ves, puedes usar las variables de la misma forma que usarías sus contenidos. Es decir, puedes usarlas con cualquier <link linkend="operators"
+>operador</link
+> o convertirlas en el parámetro de entrada de una <link linkend="commands"
+>orden</link
+>.</para>
+
+<para
+>Un nuevo ejemplo: <screen>
+$nombre = preguntar "¿Cuál es tu nombre?"
+escribir "¡Hola " + $nombre + "! Buena suerte con el aprendizaje del arte del programar..."
+</screen
+> Este ejemplo es muy claro. De nuevo, aquí tiene como la variable <userinput
+>$name</userinput
+> se trata como si fuera una cadena.</para>
+
+<para
+>Cuando estés usando variables, el <link linkend="the-inspector"
+>inspector</link
+> te puede ser de gran ayuda. Muestra el contenido de todas las variables que están en uso en un momento dado.</para>
+</sect1>
+
+
+
+<sect1 id="controlling-execution">
+<title
+>Cómo controlar la ejecución</title>
+<para
+>Los controladores de la ejecución permiten, tal como su nombre indica, controlar la ejecución.</para>
+<para
+>Las órdenes de control de la ejecución aparecen <glossterm
+>resaltadas</glossterm
+> en negro y con un tipo de letra negrita. Las llaves, que se usan generalmente junto con los controladores de ejecución, aparecen <glossterm
+>resaltadas</glossterm
+> en negro.</para>
+
+<sect2 id="wait">
+<title
+>Cómo hacer que la tortuga espere</title>
+<para
+>Si ya has programado algo en &kturtle;, te habrás dado cuenta de que la tortuga es muy rápida dibujando. Con esta orden puede hacer que la tortuga se detenga durante un tiempo determinado.</para>
+  <variablelist>
+    <varlistentry>
+      <term
+>esperar<indexterm
+><primary
+>esperar</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>esperar X</screen
+><userinput
+>esperar</userinput
+> hace que la tortuga se detenga durante X segundos. <screen>
+repetir 36 {
+  avanzar 5
+  derecha 10
+  esperar 0,5
+}
+</screen
+> Este código dibuja un circulo, pero la tortuga espera durante medio segundo antes de realizar el siguiente paso. Esto da la impresión de que la  tortuga se está moviendo a cámara lenta.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="if">
+<title
+>Ejecutar <quote
+>si</quote
+></title>
+  <variablelist>
+    <varlistentry>
+      <term
+>si<indexterm
+><primary
+>si</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>si <link linkend="boolean-value"
+>valor lógico</link
+> { ... }</screen
+>El código que está entre llaves solo se ejecutará <userinput
+>si</userinput
+> el <link linkend="boolean-value"
+>valor lógico</link
+> es «verdadero». <screen>
+$x = 6
+si $x &gt; 5 {
+  escribir $x + " es mayor que cinco"
+}
+</screen
+> En la primer línea, a <userinput
+>$x</userinput
+> se le asigna el valor 6. En la segunda, se usa un <link linkend="comparing-operators"
+>operador de comparación</link
+> para evaluar la condición <userinput
+>$x &gt; 5</userinput
+>. Al cumplirse esta condición, es decir, al ser 6 mayor que 5, el controlador <userinput
+>si</userinput
+> permite que el código entre llaves se ejecute.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="else">
+<title
+>Si no es así: «sino»</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>sino<indexterm
+><primary
+>sino</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>si <link linkend="boolean-value"
+>valor lógico</link
+> { ... } sino { ... }</screen
+><userinput
+>sino</userinput
+> puede usarse en conjunción con el controlador <link linkend="if"
+><userinput
+>si</userinput
+></link
+>. El código que aparece entre llaves después de <userinput
+>sino</userinput
+> solo se ejecute si el <link linkend="boolean-value"
+>valor lógico</link
+> es «falso». <screen>
+reiniciar
+$x = 4
+si $x &gt; 5 {
+  escribir $x + " es mayor que cinco"
+}
+sino {
+  escribir $x + " es menor que seis"
+}
+</screen
+> El <link linkend="comparing-operators"
+>operador de comparación</link
+> evalúa la expresión <userinput
+>$x &gt; 5</userinput
+>. Ya que en este caso 4 no es mayor que 5, el resultado es «falso». Esto quiere decir que se ejecuta el código que aparece entre llaves después de <userinput
+>sino</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="while">
+<title
+>El bucle «mientras»</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>mientras<indexterm
+><primary
+>mientras</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mientras <link linkend="boolean-value"
+>valor lógico</link
+> { ... }</screen
+>El controlador <userinput
+>mientras</userinput
+> actúa de forma similar a <link linkend="if"
+><userinput
+>si</userinput
+></link
+>. La diferencia es que <userinput
+>mientras</userinput
+> continúa ejecutando (en un bucle) el código que se encuentra entre llaves hasta que el <link linkend="boolean-value"
+>valor lógico</link
+> sea «falso». <screen>
+$x = 1
+mientras $x &lt; 5 {
+  avanzar 10
+  esperar 1
+  $x = $x + 1
+}
+</screen
+>En la primer línea, a <userinput
+>$x</userinput
+> se le asigna el valor 1. En la segunda, se evalúa la condición <userinput
+>$x &lt; 5</userinput
+>. Mientras el resultado de esta condición sea «verdadero», el controlador <userinput
+>while</userinput
+> continúa ejecutando el código que se encuentra entre llaves, así hasta que la condición <userinput
+>$x &lt; 5</userinput
+> sea «falsa». En este ejemplo, el código entre llaves se ejecuta 4 veces, porque cada vez que la quinta línea se ejecuta, al valor de <userinput
+>$x</userinput
+> se le suma 1.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="repeat">
+<title
+>El bucle «repetir»</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>repetir<indexterm
+><primary
+>repetir</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>repetir <link linkend="number"
+>número</link
+> { ... }</screen
+>El controlador <userinput
+>repetir</userinput
+> actúa de forma similar a  <link linkend="while"
+><userinput
+>mientras</userinput
+></link
+>. La diferencia es que <userinput
+>repetir</userinput
+> continúa ejecutando (en un bucle) el código que se encuentra entre llaves tantas veces como le indica el número dado.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="for">
+<title
+>El bucle «para», un bucle que cuenta</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>para<indexterm
+><primary
+>para</primary
+></indexterm
+><indexterm
+><primary
+>hasta</primary
+></indexterm
+><indexterm
+><primary
+>paso</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>para <link linkend="assignment-of-variables"
+>variable</link
+> = <link linkend="number"
+>número</link
+> hasta <link linkend="number"
+>número</link
+> { ... }</screen
+>El bucle <userinput
+>para</userinput
+> es un «bucle que cuenta», &ie;, que lleva la cuenta por ti. El primer número asigna a la variable el valor del primer bucle. Con cada bucle, este número se incrementa hasta alcanzar el segundo número. <screen>
+para $x = 1 hasta 10 {
+  escribir $x * 7
+  avanzar 15
+}
+</screen
+> Cada vez que se ejecute el código entre llaves, la variable <userinput
+>$x</userinput
+> se incrementa en 1, así hasta que sea igual a 10. El código entre llaves escribe el valor de <userinput
+>$x</userinput
+> multiplicado por 7. Cuando el código termine de ejecutarse, verás en el lienzo la tabla de multiplicar del 7. </para>
+     <para
+>El incremento predeterminado del bucle es 1, pero puedes usar otro valor con: <screen
+>para <link linkend="assignment-of-variables"
+>variable</link
+> = <link linkend="number"
+>número</link
+> hasta <link linkend="number"
+>número</link
+> paso <link linkend="number"
+>número</link
+> { ... }</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="break">
+<title
+>Interrumpir un bucle</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>parar<indexterm
+><primary
+>parar</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>parar</screen
+>Interrumpe inmediatamente el bucle que se está ejecutando y transfiere el control a la primera línea de código después del bucle. </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="exit">
+<title
+>Interrumpir la ejecución de tu programa</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>salir<indexterm
+><primary
+>salir</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>salir</screen
+>Detiene la ejecución de tu programa.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="assert">
+<title
+>Comprobación de afirmaciones en tiempo de ejecución</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>afirmar<indexterm
+><primary
+>afirmar</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>afirmar<link linkend="boolean-value"
+>valor lógico</link
+> { ... }</screen
+>Se puede utilizar para razonar sobre la corrección del programa o de los datos de entrada <screen
+>$in = ask "What is your year of birth?"
+# el año debe ser positivo
+assert $in 
+> 0
+</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+</sect1>
+
+
+<sect1 id="learn">
+
+<title
+>Crea tus propias órdenes con «aprender»</title>
+<para
+><userinput
+>aprender</userinput
+><indexterm
+><primary
+>aprender</primary
+></indexterm
+> es especial ya que lo puedes usar para crear tus propias órdenes. La orden que crees puede admitir <glossterm linkend="input-output"
+>parámetros de entrada</glossterm
+> y devolver <glossterm linkend="input-output"
+>parámetros de salida</glossterm
+>. Veamos cómo se crea una nueva orden:<screen>
+aprender círculo $x {
+  repetir 36 {
+    avanzar $x
+    izquierda 10
+  }
+}
+</screen
+> La nueva orden se denomina <userinput
+>círculo</userinput
+>. <userinput
+>círculo</userinput
+> necesita un <glossterm linkend="input-output"
+>parámetro de entrada</glossterm
+> para fijar el tamaño del círculo y no devuelve ningún <glossterm linkend="input-output"
+>parámetro de salida</glossterm
+>. A partir de ahora la orden <userinput
+>círculo</userinput
+> puede usarse como una orden normal en cualquier lugar del código. Mira este ejemplo: <screen
+>aprender círculo $x {
+  repetir 36 { 
+    avanzar $x 
+    izquierda 10 
+  }
+}
+
+ir 200;200
+círculo 20
+
+ir 300;200 
+círculo 40  
+</screen>
+</para>
+<para
+>En el próximo ejemplo, se crea una orden que devuelve un parámetro de salida<indexterm
+><primary
+>parámetro de salida</primary
+></indexterm
+>: <screen>
+aprender facultad $x {
+  $r = 1
+  para $i = 1 hasta $x {
+    $r = $r * $i
+  }
+  devolver $r
+}
+
+escribir facultad 5
+</screen
+>En este ejemplo, se crea una nueva orden llamada <userinput
+>facultad</userinput
+>. Si el parámetro de entrada es <userinput
+>5</userinput
+>, entonces el parámetro de salida es <userinput
+>5*4*3*2*1</userinput
+>. Con <userinput
+>devolver</userinput
+> se define un <glossterm linkend="input-output"
+>parámetro de salida</glossterm
+> que se devuelve durante la ejecución.</para>
+<para
+>Las órdenes pueden tener más de un <glossterm linkend="input-output"
+>parámetro de entrada</glossterm
+>. En el siguiente ejemplo se crea una orden que dibuja un rectángulo: <screen>
+aprender caja $x;$y {
+  avanzar $y
+  derecha 90
+  avanzar $x
+  derecha 90
+  avanzar $y
+  derecha 90
+  avanzar $x
+  derecha 90
+}
+</screen
+> Ahora, si ejecuta <userinput
+>caja 50;100</userinput
+>, la tortuga dibujará una rectángulo en el lienzo. </para>
+  
+</sect1>
+
+</chapter>

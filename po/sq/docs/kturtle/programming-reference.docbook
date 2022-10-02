@@ -1,0 +1,2064 @@
+<chapter id="reference">
+<title
+>Referenca e  Programimit për &turtlescript;</title>
+<para
+>Kjo është referenca për gjuhën &turtlescript; të &kturtle;. Në pjesën e parë të këtij kapitulli do të hedhim një vështrim në disa aspekte të <link linkend="grammar"
+>gramatikës</link
+> së gjuhës &turtlescript;. Pjesa e dytë merret veçanërisht me <link linkend="mathematical-operators"
+>veprimet matematikore</link
+>, <link linkend="boolean-operators"
+>veprimet logjike (e vërtetë / e rreme)</link
+> dhe <link linkend="comparing-operators"
+>veprimet krahasuese</link
+>. Pjesa e tretë është në thelb një listë gjigante e të gjitha <link linkend="commands"
+>komandave</link
+>, me shpjegimet përkatëse për secilën prej tyre. Pjesa e katërt shpjegon se si u <link linkend="assignment-of-variables"
+>jepen vlera</link
+> <link linkend="assignment-of-variables"
+>ndryshoreve</link
+> . Së fundi, në pjesën e pestë shpjegojmë se si organizohet zbatimi i komandave me <link linkend="controlling-execution"
+>deklarimet për kontrollin e zbatimit</link
+>, dhe në pjesën e gjashtë si mund të krijoni ju vetë komandat tuaja me anë të deklarimit <link linkend="learn"
+>mëso</link
+>.</para>
+
+<sect1 id="grammar">
+<title
+>Gramatika e &turtlescript;</title>
+<para
+>Si çdo gjuhë, &turtlescript; ka lloje të ndryshme fjalësh dhe simbolesh. Në shqip ne bëjmë dallim midis foljeve (si 'të ecësh' apo 'të këndosh') dhe emrave (si 'motër' apo 'shtëpi'); ato përdoren për qëllime të ndryshme. &turtlescript; është një gjuhë programimi; ajo përdoret për të udhëzuar &kturtle; çfarë të bëjë.</para>
+<para
+>Në këtë seksion shpjegohen shkurtimisht disa prej llojeve të ndryshme të fjalëve dhe simboleve të &turtlescript;-it. Do shpjegojmë <link linkend="comment"
+>komentet</link
+>, <link linkend="command"
+>komandat</link
+> dhe tre lloje të ndryshme vlerash: <link linkend="number"
+>numrat</link
+>, <link linkend="string"
+>vargjet</link
+> dhe <link linkend="boolean-value"
+>vlerat logjike (e vërtetë / e rreme)</link
+> .</para>
+
+
+<sect2 id="comment">
+<title
+>Komentet</title>
+<para
+>Një program përbëhet nga udhëzimet (apo komandat) që zbatohen kur programi niset, dhe të ashtuquajturat 'komente'. Komentet nuk zbatohen, &kturtle; thjesht i injoron ato gjatë zbatimit të programit tuaj. Komentet janë për programuesit e tjerë, për t'i bërë ata të kuptojnë më mirë programin tuaj. Çdo gjë që pason një simbol <userinput
+>#</userinput
+> konsiderohet si koment në &turtlescript;. Për shembull, ky program i vogël që nuk bën asgjë: <screen>
+# Ky program i vogël është vetëm një koment dhe nuk bën asgjë!
+</screen
+> Ai është i padobishëm por e shpjegon çështjen mirë.</para>
+<para
+>Komentet bëhen shumë të dobishëm kur programi bëhet pak më i komplikuar. Ato mund të ndihmojnë për të dhënë disa këshilla për programuesit e tjerë. Në programin e mëposhtëm ju shihni komente që përdoren bashkë me komandën <link linkend="print"
+>shtyp</link
+>. <screen>
+# Ky program është bërë nga Cies Breijs.
+shkruaj "ky tekst do të shkruhet në tabelë"
+# rreshti më sipër nuk është një koment, por rreshti pasues është:
+ # shkruaj "ky tekst nuk do të shkruhet!"
+</screen
+> Rreshti i parë përshkruan programin. Rreshti i dytë zbatohet nga &kturtle; dhe shkruan në tabelën e vizatimit: <userinput
+>ky tekst do të shkruhet në tabelë</userinput
+>. Rreshti i tretë është një koment. Dhe rreshti i katërt është një koment i cili përmban një copë &turtlescript;. Në qoftë se simboli <userinput
+>#</userinput
+> do të hiqet në rreshtin e katërt, komanda e shkrimit do të zbatohet nga &kturtle;. Programuesit thonë: komanda e shkrimit në vijën e katërt është 'komentuar'.</para>
+<para
+>Rreshtat e komentuar <glossterm
+>theksohen</glossterm
+> me ngjyrë gri të hapur në <link linkend="the-editor"
+>shkrimore</link
+> .</para>
+</sect2>
+
+<sect2 id="command">
+<title
+>Komandat</title>
+<para
+>Duke përdorur komandat ju i tregoni breshkës ose &kturtle; të bëj diçka. Disa komanda nevojë të marrin parametra, disa nxjerrin rezultate. <screen>
+# ec_përpara është  një komandë që merr një parametër, në këtë rast numrin 100:
+ec_përpara 100
+</screen
+> Rreshti i parë është një <link linkend="comment"
+>koment</link
+>. Rreshti i dytë përmban komandën <userinput
+>ec_përpara</userinput
+> dhe <link linkend="number"
+>numrin</link
+> <userinput
+>100</userinput
+>. Numri nuk është pjesë e komandës, por konsiderohet si një 'input' ose 'marrje' për komandën.</para>
+<para
+>Për një pasqyrë të detajuar të të gjitha komandave që pranon &kturtle; shkoni te <link linkend="commands"
+>lista e komandave</link
+> . Komandat e veta (ose të brendshme) janë <glossterm
+>të theksuara</glossterm
+> në ngjyrë blu të errët.</para>
+</sect2>
+
+<sect2 id="number">
+<title
+>Numrat</title>
+<para
+>Ka shumë mundësi që ju e dini mjaft mirë se ç'janë numrat. Mënyra si përdoren numrat në &kturtle; nuk ndryshon shumë nga gjuha e folur, apo nga matematika. </para>
+<para
+>Kemi numrat e ashtuquajtur natyrorë: <userinput
+>0</userinput
+>, <userinput
+>1</userinput
+>, <userinput
+>2</userinput
+>, <userinput
+>3</userinput
+>, <userinput
+>4</userinput
+>, <userinput
+>5</userinput
+>, etj. Numrat negativë: <userinput
+>-1</userinput
+>, <userinput
+>-2</userinput
+>, <userinput
+>-3</userinput
+>, etj. Dhe numrat me pikë dhjetore, për shembull: <userinput
+>0.1</userinput
+>, <userinput
+>3.14</userinput
+>, <userinput
+>33.3333</userinput
+>, <userinput
+>-5.05</userinput
+>, <userinput
+>-1.0</userinput
+>. </para>
+<para
+>Numrat mund të përdoren në <link linkend="mathematical-operators"
+>veprimet matematikore</link
+> dhe <link linkend="comparing-operators"
+>veprimet krahasuese</link
+>. Po ashtu ata mund të ruhen në <link linkend="assignment-of-variables"
+>ndryshore</link
+>. Numrat <glossterm
+>theksohen</glossterm
+> me të kuqe të errët.</para>
+</sect2>
+
+<!-- constants like pi? -->
+
+<sect2 id="string">
+<title
+>Vargjet</title>
+<para
+>Së pari një shembull: <screen>
+shkruaj "Përshëndetje, unë jam një varg."
+</screen
+> Në këtë shembull <userinput
+>shkruaj</userinput
+> është një urdhër (komandë), ku <userinput
+>"Përshëndetje, unë jam një varg."</userinput
+> është një varg. Vargjet fillojnë dhe mbarojnë me shenjën <userinput
+>"</userinput
+>, nga këto shenja &kturtle; e di se është një varg.</para>
+<para
+>Vargjet mund të vihet në <link linkend="assignment-of-variables"
+>ndryshore</link
+>, ashtu si <link linkend="number"
+>numrat</link
+>. Megjithatë, ndryshe nga numrat, vargjet nuk mund të përdoren në <link linkend="mathematical-operators"
+>veprimet matematikore</link
+> ose në <link linkend="comparing-operators"
+>veprimet krahasuese</link
+> . Vargjet <glossterm
+>theksohen</glossterm
+> me të kuqe.</para>
+</sect2>
+
+<sect2 id="boolean-value">
+<title
+>Vlerat e vërtetësisë (e vërtetë / e rreme)</title>
+<para
+>Ka vetëm dy vlera vërtetësie: <userinput
+>e vërtetë</userinput
+> dhe <userinput
+>e rreme</userinput
+>. Nganjëherë ato quhen edhe: ndezur dhe fikur, po dhe jo, një dhe zero. Por në &turtlescript; ne i quajmë ato gjithmonë, <userinput
+>e_vërtetë</userinput
+> dhe <userinput
+>e_rreme</userinput
+>. Hidhini një sy në kësaj pjese &turtlescript;: <screen>
+$a = e_vërtetë
+</screen
+> Nëse shikoni në <link linkend="the-inspector"
+>shqyrtues</link
+> ju mund të vini re se <link linkend="assignment-of-variables"
+> ndryshores </link
+><userinput
+>$a</userinput
+> i është dhënë vlera<userinput
+>e_vërtetë</userinput
+>, dhe është e tipit vërtetësi.</para>
+<para
+>Shpesh vlerat e vërtetësisë janë rezultat i një <link linkend="comparing-operators"
+>veprimi krahasues</link
+>, si në pjesën &turtlescript; më poshtë: <screen>
+$përgjigje = 10 &gt; 3
+</screen
+> <link linkend="assignment-of-variables"
+>Ndryshorja</link
+><userinput
+>$përgjigje</userinput
+> merr vlerën <userinput
+>e_vërtetë</userinput
+> sepse numri <userinput
+>10</userinput
+> është më i madh se numri <userinput
+>3</userinput
+>.</para>
+<para
+>Vlerat e vërtetësisë, <userinput
+>e_vërtetë</userinput
+> dhe <userinput
+>e_rreme</userinput
+> <glossterm
+>theksohen</glossterm
+> me të kuqe të errët.</para>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="operators">
+<title
+>Veprimet matematikore dhe krahasuese</title>
+<para
+>Titulli i kësaj pjese mund të tingëllojë pak si i vështirë, por në fakt nuk është aq e vështirë sa duket.</para>
+
+<sect2 id="mathematical-operators">
+<title
+>Veprimet matematike</title>
+<para
+>Këto janë simbolet themelore matematike të njohur si: mbledhje (<userinput
+>+</userinput
+>), zbritje (<userinput
+>-</userinput
+>), shumëzim ( <userinput
+>*</userinput
+>), pjesëtim (<userinput
+>/</userinput
+> ) dhe ngritje në fuqi (<userinput
+>^</userinput
+>).</para>
+
+<para
+>Ja një shembull i vogël i veprimeve matematikore që ju mund të përdorni në &turtlescript;: <screen>
+$mbledhje = 1 + 1
+$zbritje = 20 - 5
+$shumëzim = 15 * 2
+$pjesëtim = 30 / 30
+$fuqi = 2 ^ 2
+</screen
+> Vlerat që përftohen nga këto veprime matematikore <link linkend="assignment-of-variables"
+>u janëcaktuar disa ndryshoreve</link
+>. Duke përdorur <link linkend="the-inspector"
+>shqyrtuesin</link
+> ju mund të shihni vlerat e këtyre ndryshoreve.</para>
+<para
+>Nëse doni të bëni vetëm një llogaritje të thjeshtë, mund të bëni diçka të tillë: <screen
+>shkruaj 2010-12
+</screen
+></para>
+<para
+>Tani një shembull me kllapa: <screen>
+shkruaj ( (20 - 5) * 2 / 30) + 1
+</screen
+> Shprehjet brenda kllapave do të llogariten të parat. Në këtë shembull, do të llogaritet fillimisht 20-5, pastaj do të shumëzohet me 2, do të pjesëtohet me 30, dhe pastaj do t'i shtohet 1 (duke dhënë 2). Kllapat mund të përdoren edhe në raste të tjera.</para>
+<para
+>&kturtle; ka edhe veçori më të përparuara matematikore, në formën e komandave. Hidhuni një sy komandave të mëposhtme, por të jenë të vetëdijshëm se kanë lidhje me veprime të përparuara: <link linkend="round"
+>rrumbullakos</link
+>, <link linkend="random"
+>rastësisht</link
+>, <link linkend="sqrt"
+>sqrt</link
+>, <link linkend="pi"
+>pi</link
+>, <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+>, <link linkend="tan"
+>tan</link
+>, <link linkend="arcsin"
+>arcsin</link
+>, <link linkend="arccos"
+>arccos</link
+>, <link linkend="arctan"
+>arctan</link
+>.</para>
+</sect2>
+
+<sect2 id="boolean-operators">
+<title
+>Veprimet logjike të vërtetësisë (e vërtetë / e rreme)</title>
+<para
+>Ndërsa <link linkend="mathematical-operators"
+>veprimet matematikore</link
+> janë kryesisht për <link linkend="number"
+>numrat</link
+>, veprimet logjike janë për <link linkend="boolean-value"
+>vlerat e vërtetësisë</link
+> (<userinput
+>e_vërtetë</userinput
+> dhe <userinput
+>e_rreme</userinput
+>). Ka vetëm tre veprime logjike, të cilat janë: <userinput
+>edhe</userinput
+>, <userinput
+>ose</userinput
+>, dhe <userinput
+>jo</userinput
+>. Fragmenti &turtlescript; i mëposhtëm tregon se si përdoren ato: <screen>
+$edhe_1_1 = e_vërtetë edhe e_vërtetë # -> e_vërtetë
+$edhe_1_0 = e_vërtetë edhe e_rreme   # -> e_rreme
+$edhe_0_1 = e_rreme edhe e_vërtetë   # -> e_rreme
+$edhe_0_0 = e_rreme edhe e_rreme     # -> e_rreme
+
+$ose_1_1 = e_vërtetë ose e_vërtetë # -> e_vërtetë
+$ose_1_0 = e_vërtetë ose e_rreme   # -> e_vërtetë
+$ose_0_1 = e_rreme ose e_vërtetë   # -> e_vërtetë
+$ose_0_0 = e_rreme ose e_rreme     # -> e_rreme
+
+$jo_1 = jo e_vërtetë   # -> e_rreme
+$jo_0 = jo e_rreme     # -> e_vërtetë
+</screen
+> Duke përdorur <link linkend="the-inspector"
+>shqyrtuesin</link
+> ju mund të shihni vlerat e ndryshoreve, por rezultatet e veprimeve janë dhënë gjithashtu si komente të vogla në fund të rreshtave. Veprimi <userinput
+>edhe</userinput
+> jep vlerën <userinput
+>e_vërtetë</userinput
+> vetëm nëse të dyja anët kanë vlerën <userinput
+>e_vërtetë</userinput
+>. Veprimi <userinput
+>ose</userinput
+> jep vlerën <userinput
+>e_vërtetë</userinput
+> kur të paktën njëra anë është <userinput
+>e_vërtetë</userinput
+>. Kurse veprimi <userinput
+>jo</userinput
+> kthen vlerën <userinput
+>e_vërtetë</userinput
+> në <userinput
+>e_rreme</userinput
+> dhe vlerën <userinput
+>e_rreme</userinput
+> në <userinput
+>e_vërtetë</userinput
+>.</para>
+<para
+>Veprimet logjike <glossterm
+>theksohen</glossterm
+> me rozë.</para>
+
+<sect3 id="boolean-operators-advanced-examples">
+<title
+>Disa shembuj më të përparuar</title>
+<para
+>Shqyrtoni shembullin e mëposhtme me <userinput
+>edhe</userinput
+>: <screen>
+$a = 1
+$b = 5
+nëse (($a &lt; 10) edhe ($b == 5)) edhe ($a &lt; $b) {
+  shkruaj "tungjatjeta"
+}
+</screen
+> Në këto rreshta &turtlescript;, përfundimet e tre <link linkend="comparing-operators"
+>veprimeve krahasuese</link
+> janë bashkuar me anë të veprimit <userinput
+>edhe</userinput
+>. Kjo do të thotë që të treja duhet të japin vlerën "e_vërtetë", me qëllim që të shkruhet "tungjatjeta".</para>
+
+<para
+>Një shembull me <userinput
+>ose</userinput
+>: <screen>
+$n = 1
+nëse ($n &lt; 10) ose ($n == 2) {
+  shkruaj "tungjatjeta"
+}
+</screen
+> Në këto rreshta &turtlescript;, ana e majtë e veprimit <userinput
+>ose</userinput
+> merr vlerën 'e_vërtetë', ana e djathtë vlerën 'e_rreme'. Meqë njëra nga të dy anët e veprimit <userinput
+>ose</userinput
+> është 'e_vërtetë', vlera që jep veprimi <userinput
+>ose</userinput
+> është 'e_vërtetë'. Kjo do të thotë që "tungjatjeta" do të shkruhet.</para>
+
+<para
+>Dhe në fund një shembull me veprimin <userinput
+>jo</userinput
+>, i cili vlerën 'e_vërtetë' e bën 'e_rreme', dhe vlerën 'e_rreme' e bën 'e_vërtetë'. Hidhini një sy: <screen
+>$n = 1
+nëse jo ($n == 3) {
+  shkruaj "Shëndet!"
+} përndryshe {
+  shkruaj "Plaç! ;-)"
+}
+</screen
+></para>
+</sect3>
+</sect2>
+
+<sect2 id="comparing-operators">
+<title
+>Veprimet krahasuese</title>
+<para
+>Shikoni këtë krahasim të thjeshtë: <screen>
+$përgjigje = 10 &gt; 3
+</screen
+> Këtu numri <userinput
+>10</userinput
+> krahasohet me numrin <userinput
+>3 </userinput
+> me anë të veprimit krahasues 'më i madh se'. Rezultati i këtij krahasimi, <link linkend="boolean-value"
+>vlera logjike</link
+> <userinput
+>e_vërtetë</userinput
+>, ruhet në <link linkend="assignment-of-variables"
+>ndryshoren</link
+> <userinput
+>$përgjigje</userinput
+>.</para>
+<para
+>Të gjithë <link linkend="number"
+>numrat</link
+> dhe <link linkend="assignment-of-variables"
+>ndryshoret</link
+> (që përmbajnë numra) mund të krahasohen me njëri-tjetrin me anë të veprimeve krahasuese.</para>
+<para
+>Këtu janë të gjitha veprimet krahasuese të mundshme: <table
+> <title
+>Llojet e pyetjeve</title
+> <tgroup cols="3"
+> <tbody
+> <row
+> <entry
+><userinput
+>$A == $B</userinput
+></entry
+> <entry
+>e barabartë</entry
+> <entry
+>përgjigja është <quote
+>e_vërtetë</quote
+> nëse <userinput
+>$A</userinput
+> është e barabartë me <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A != $B</userinput
+></entry
+> <entry
+>e ndryshme </entry
+> <entry
+>përgjigja është <quote
+>e_vërtetë</quote
+> nëse <userinput
+>$A</userinput
+> është e ndryshme nga <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt; $B</userinput
+></entry
+> <entry
+>më e madhe</entry
+> <entry
+>përgjigja është <quote
+>e_vërtetë</quote
+> nëse <userinput
+>$A</userinput
+> është më e madhe se <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt; $B</userinput
+></entry
+> <entry
+>më e vogël</entry
+> <entry
+>përgjigja është <quote
+>e_vërtetë</quote
+> nëse <userinput
+>$A</userinput
+> është më e vogël se <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &gt;= $B</userinput
+></entry
+> <entry
+>më e madhe baraz</entry
+> <entry
+>përgjigja është <quote
+>e_vertetë</quote
+> nëse <userinput
+>$A</userinput
+> është më e madhe ose e barabartë me <userinput
+>$B</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$A &lt;= $B</userinput
+></entry
+> <entry
+>më e vogël baraz</entry
+> <entry
+>përgjigja është <quote
+>e_vërtetë</quote
+> nëse <userinput
+>$A</userinput
+> është më e vogël ose e barabartë më <userinput
+>$B</userinput
+></entry
+> </row
+> </tbody
+> </tgroup
+> </table
+> Mos harroni se $A dhe $B duhet të jenë <link linkend="number"
+>numra</link
+> ose <link linkend="assignment-of-variables"
+>ndryshore</link
+> që përmbajnë numra.</para>
+</sect2>
+
+
+</sect1>
+
+
+
+<sect1 id="commands">
+<title
+>Komandat</title>
+<para
+>Duke përdorur komandat ju i tregoni breshkës ose &kturtle; të bëjë diçka. Disa komanda kanë nevojë për të marrë të dhëna, disa nxjerrin rezultate. Në këtë ndarje do të shpjegojmë të gjitha komandat e veta (të brendshme) të &kturtle;. Nga ana tjetër, duke përdorur <link linkend="learn"
+>mëso</link
+>, ju mund të krijoni komandat tuaj. Komandat e veta për të cilat do të flasim këtu <glossterm
+>theksohen</glossterm
+> me ngjyrë blu të errët.</para>
+
+<sect2 id="moving-the-turtle">
+<title
+>Lëvizja e breshkës</title>
+<para
+>Ka komanda të ndryshme për ta lëvizur breshkën mbi ekran.</para>
+
+  <variablelist>
+    <anchor id="forward"/>
+    <varlistentry
+> 
+      <term
+>ec_përpara (pp)<indexterm
+><primary
+>ec_përpara (pp)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ec_përpara X</screen>
+<userinput
+>ec_përpara X</userinput
+> e lëviz breshkën përpara me një sasi prej X pikësh. Kur lapsi është i ulur, breshka lë një gjurmë (bën një vijë) gjatë lëvizjes. <userinput
+> ec_përpara</userinput
+> mund të shkurtohet si <userinput
+>pp</userinput
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="backward"/>
+    <varlistentry
+>  
+      <term
+>ec_mbrapsht (mb)<indexterm
+><primary
+>ec_mbrapsht (mb)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ec_mbrapsht X</screen>
+<userinput
+>ec_mbrapsht X</userinput
+> e lëviz breshkën mbrapa me një sasi prej X pikësh. Kur lapsi është i ulur, breshka lë një gjurmë (bën një vijë) gjatë lëvizjes. <userinput
+>ec_mbrapsht</userinput
+> mund të shkurtohet si <userinput
+>mb</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnleft"/>
+    <varlistentry
+> 
+      <term
+>kthehu_majtas (mj)<indexterm
+><primary
+>kthehu_majtas (mj)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>kthehu_majtas X</screen>
+<userinput
+>kthehu_majtas</userinput
+> i thotë breshkës që të kthehet me një madhësi prej X gradësh në të majtë. <userinput
+>kthehu_majtas</userinput
+> mund të shkurtohet si <userinput
+>mj</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnright"/>
+    <varlistentry
+> 
+      <term
+>kthehu_djathtas (dj)<indexterm
+><primary
+>kthehu_djathtas (dj)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>kthehu_djathtas X</screen>
+<userinput
+>kthehu_djathtas</userinput
+> i thotë breshkës që të kthehet me një madhësi prej X gradësh në të djathtë. <userinput
+>kthehu_djathtas</userinput
+> mund të shkurtohet si <userinput
+>dj</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="direction"/>
+    <varlistentry
+> 
+      <term
+>drejtimi (drj)<indexterm
+><primary
+>drejtimi (drj)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>drejtimi X</screen>
+<userinput
+>drejtimi</userinput
+> cakton drejtimin e breshkës me një madhësi prej X gradësh duke filluar nga drejtimi zero, dhe kështu që nuk ka lidhje me drejtimin e mëparshëm të breshkës. Drejtimi zero është drejtimi nga poshtë lartë. <userinput
+>drejtimi</userinput
+> mund të shkurtohet si <userinput
+>drj</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="center"/>
+    <varlistentry
+> 
+      <term
+>shko_në_qendër<indexterm
+><primary
+>shko_në_qendër</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>shko_në_qendër</screen>
+<userinput
+>shko_në_qendër</userinput
+> e çon breshkën në qendër të tabelës së vizatimit.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="go"/>
+    <varlistentry
+> 
+      <term
+>shko<indexterm
+><primary
+>shko</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>shko X,Y</screen>
+<userinput
+>shko</userinput
+> i thotë breshkës të shkojë në një vend të caktuar në tabelë. Ky vend është X <glossterm linkend="pixels"
+>pika</glossterm
+> larg nga ana e majtë e tabelës, dhe Y <glossterm linkend="pixels"
+>pika</glossterm
+> larg nga ana e sipërme e tabelës. </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gox"/>
+    <varlistentry
+> 
+      <term
+>shko_x<indexterm
+><primary
+>shko_x</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>shko_x X</screen>
+Duke përdorur komandën <userinput
+>shko_x</userinput
+> breshka do të vendoset X <glossterm linkend="pixels"
+>pika</glossterm
+> larg anës së majtë të tabelës, duke qëndruar në të njëjtën lartësi.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="goy"/>
+    <varlistentry
+> 
+      <term
+>shko_y<indexterm
+><primary
+>shko_y</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>shko_y Y</screen>
+Duke përdorur komandën <userinput
+>shko_y</userinput
+> breshka do të vendoset X <glossterm linkend="pixels"
+>pika</glossterm
+> poshtë anës së sipërme të tabelës, duke qëndruar në të njëjtën largësi nga ana e majtë.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <note
+><para
+>Duke përdorur komandat <userinput
+>shko</userinput
+>, <userinput
+>shko_x</userinput
+>, <userinput
+>shko_y</userinput
+> dhe <userinput
+>shko_në_qendër</userinput
+> breshka nuk do të bëjë vijë, pa marrë parasysh nëse lapsi është i ngritur apo i ulur.</para>
+  </note>
+</sect2>
+
+<sect2 id="locate-the-turtle">
+<title
+>Ku është breshka?</title>
+<para
+>Ka dy komanda që na japin pozicionin e breshkës në ekran.</para>
+
+  <variablelist>
+    <anchor id="getx"/>
+    <varlistentry
+> 
+      <term
+>merr_x<indexterm
+><primary
+>merr_x</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>merr_x</userinput
+> kthen numrin e pikave nga ana e majtë e tabelës deri në vendin e tanishëm të breshkës.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gety"/>
+    <varlistentry
+> 
+      <term
+>merr_y<indexterm
+><primary
+>merr_y</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>merr_y</userinput
+> kthen numrin e pikave nga ana e sipërme e tabelës deri në vendin e tanishëm të breshkës.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="pen">
+<title
+>Breshka ka një laps</title>
+<para
+>Breshka ka një laps që bën një vijë kur breshka lëviz. Ka disa komanda për të kontrolluar lapsin. Në këtë pjesë do të shpjegojmë këto komanda.</para>
+  <variablelist>
+    <anchor id="penup"/>
+    <varlistentry
+> 
+      <term
+>ngri_lapsin (ngri)<indexterm
+><primary
+>ngri_lapsin (ngri)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ngri_lapsin</screen>
+<userinput
+>ngri_lapsin</userinput
+> e ngre lapsin nga tabela. Kur lapsi është <quote
+>i ngritur</quote
+> nuk do të bëhet vijë kur breshka lëviz. Shiko dhe <userinput
+>ul_lapsin</userinput
+>. <userinput
+>ngri_lapsin</userinput
+> mund shkurtohet si <userinput
+>ngri</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="pendown"/>
+    <varlistentry
+> 
+      <term
+>ul_lapsin (ul)<indexterm
+><primary
+>ul_lapsin (ul)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ul_lapsin</screen>
+<userinput
+>ul_lapsin</userinput
+> ngjesh lapsin poshtë në tabelë. Me lapës të ulur poshtë në tabelë, kur breshka lëviz lë pas një vijë. Shiko edhe <userinput
+>ngri_lapsin</userinput
+>. <userinput
+>ul_lapsin</userinput
+> mund të shkurtohet në <userinput
+>ul</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setpenwidth"/>
+    <varlistentry
+> 
+      <term
+>majë_lapsi (mjl)<indexterm
+><primary
+>majë_lapsi (mjl)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>majë_lapsi X</screen>
+<userinput
+>majë_lapsi</userinput
+> cakton trashësinë e majës së lapsit (gjerësinë e vijës) në një madhësi prej X <glossterm linkend="pixels"
+>pikash</glossterm
+>. <userinput
+>majë_lapsi</userinput
+> mund të shkurtohet si <userinput
+>mjl</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setfgcolor"/>
+    <varlistentry
+> 
+      <term
+>ngjyrë_lapsi (ngjl)<indexterm
+><primary
+>ngjyrë_lapsi (ngjl)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ngjyrë_lapsi R,G,B</screen>
+<userinput
+>ngjyrë_lapsi</userinput
+> cakton ngjyrën e lapsit. <userinput
+>ngjyrë_lapsi </userinput
+> merr si parametra një <glossterm linkend="rgb"
+>kombinim RGB</glossterm
+>. <userinput
+>ngjyrë_lapsi</userinput
+> mund të shkurtohet në <userinput
+>ngjl</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="canvas">
+<title
+>Komandat për të kontrolluar tabelën e vizatimit</title>
+<para
+>Ka disa komanda për të kontrolluar tabelën e vizatimit.</para>
+  <variablelist>
+    <anchor id="resizecanvas"/>
+    <varlistentry>
+      <term
+>madhësi_tabele (mt)<indexterm
+><primary
+>madhësi_tabele (mt)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>madhësi_tabele X,Y</screen>
+Me komandën <userinput
+>madhësi_tabele</userinput
+> ju mund të caktoni madhësinë e tabelës së vizatimit. Ajo merr X dhe Y si parametra, ku X është gjerësia e re e tabelës në <glossterm linkend="pixels"
+>pika (pixel)</glossterm
+>, dhe Y është lartësia e re e tabelës në <glossterm linkend="pixels"
+>pika (pixel)</glossterm
+>. <userinput
+>madhësi_tabele</userinput
+> mund të shkurtohet si <userinput
+>mt</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setbgcolor"/>
+    <varlistentry
+> 
+      <term
+>ngjyrë_tabele (ngjt)<indexterm
+><primary
+>ngjyrë_tabele (ngjt)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ngjyrë_tabele R,G,B</screen>
+<userinput
+>ngjyrë_tabele</userinput
+> cakton ngjyrën e tabelës së vizatimit. <userinput
+>ngjyrë_tabele</userinput
+> merr një <glossterm linkend="rgb"
+>kombinim RGB</glossterm
+> si input. <userinput
+>ngjyrë_tabele</userinput
+> mund të shkurtohet si <userinput
+>ngjt</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="clean">
+<title
+>Komandat për të pastruar</title>
+<para
+>Ka dy komanda për të fshirë tabelën pasi të keni bërë ndonjë rrëmujë.</para>
+  <variablelist>
+    <anchor id="clear"/>
+    <varlistentry
+> 
+      <term
+>pastro (fshi)<indexterm
+><primary
+>pastro (fshi)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pastro</screen>
+Me <userinput
+>pastro</userinput
+> ju mund të fshini të gjitha vizatimet në tabelë. Të gjitha gjërat e tjera mbesin: vendi dhe drejtimi i breshkës, ngjyra e tabelës, dukshmëria e breshkës, dhe madhësia e tabelës.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="reset"/>
+    <varlistentry
+> 
+      <term
+>rifillo<indexterm
+><primary
+>rifillo</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>rifillo</screen>
+<userinput
+>rifillo</userinput
+> pastron shumë më tepër se sa komanda <userinput
+>pastro</userinput
+>. Pas një komande <userinput
+>rifillo</userinput
+> çdo gjë bëhet siç ishte kur sapo u jap &kturtle;. Breshka është e vendosur në mes të ekranit, ngjyra e tabelës është e bardhë, breshka bën një vijë të zezë në tabelë dhe madhësia e tabelës është 400 x 400 pika.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="sprites">
+<title
+>Breshka është një figurinë</title>
+<para
+>Së pari një shpjegim të shkurtër se çfarë janë figurinat. Figurinat janë fotografi të vogla që mund të lëvizen nëpër ekran, si i shohim shpesh në lojërat me kompjuter. Edhe breshka jonë është gjithashtu një figurinë. Për më tepër informacion shiko fjalorin te <glossterm linkend="sprites"
+>figurinat</glossterm
+>. </para>
+<para
+>Në vazhdim do të gjeni një pasqyrë të plotë mbi të gjitha komandat për të punuar me figurinat.</para>
+<para
+>[Versioni i tanishëm i &kturtle; nuk mbështet akoma përdorimin e figurinave të tjera përveç breshkës. Në versionet e ardhshme ju do të mund ta ndërroni breshkën me diçka tjetër që ju pëlqen.]</para>
+  <variablelist>
+    <anchor id="spriteshow"/>
+    <varlistentry
+> 
+      <term
+>shfaq_figurinën (shf)<indexterm
+><primary
+>shfaq_figurinën (shf)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>shfaq_figurinën</screen>
+<userinput
+>shfaq_figurinën</userinput
+> e bën të breshkën përsëri të dukshme, pasi të ketë qenë e fshehur. <userinput
+>shfaq_figurinën</userinput
+> mund të shkurtohet si <userinput
+>shf</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="spritehide"/>
+    <varlistentry
+> 
+      <term
+>fshih_figurinën (fsh)<indexterm
+><primary
+>fshih_figurinën (fsh)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>fshih_figurinën</screen>
+<userinput
+>fshih_figurinën</userinput
+> fsheh breshkën. Kjo mund të përdoret nëse breshka nuk përshtatet me vizatim tuaj. <userinput
+>fshih_figurinën</userinput
+> mund të shkurtohet si <userinput
+>fsh</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="writing">
+<title
+>A mund të shkruaj breshka?</title>
+<para
+>Përgjigja është: <quote
+>po</quote
+>. Breshka mund të shkruaj: ajo shkruan çdo gjë që ju ti thoni.</para>
+  <variablelist>
+    <anchor id="print"/>
+    <varlistentry
+> 
+      <term
+>shkruaj<indexterm
+><primary
+>shkruaj</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>shkruaj X</screen>
+Komanda <userinput
+>shkruaj</userinput
+> përdoret për ti thënë breshkës të shkruajë diçka në tabelë. <userinput
+>shkruaj</userinput
+> merr numra dhe vargje si input. Ju mund të <userinput
+>shkruani</userinput
+> numra dhe vargje të ndryshme duke përdorur shenjën <quote
+>+</quote
+>. Shikoni një shembull të vogël: <screen
+>$viti = 2003
+$autori = "Cies"
+shkruaj $autori + " e filloi projektin KTurtle në vitin " + $viti + " dhe akoma punon me qejf në të!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="fontsize"/>
+    <varlistentry
+> 
+      <term
+>madhësi_shkrimi<indexterm
+><primary
+>madhësi_shkrimi</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>madhësi_shkrimi X</screen>
+<userinput
+>madhësi_shkrimi</userinput
+> cakton madhësinë e shkronjave që përdoren nga <userinput
+>shkruaj</userinput
+>. <userinput
+>madhësi_shkrimi</userinput
+> merr një të dhënë që duhet të jetë një numër. Madhësia caktohet në <glossterm linkend="pixels"
+>pika (pixel)</glossterm
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="math-commands">
+<title
+>Komandat matematikore</title>
+<para
+>Në vijim janë komandat matematikore më të përparuara të &kturtle;.</para>
+  <variablelist>
+    <anchor id="round"/>
+    <varlistentry>
+      <term
+>rrumbullakos<indexterm
+><primary
+>rrumbullakos</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>rrumbullakos(x)</screen>
+<userinput
+>rrumbullakos</userinput
+> numrin e dhënë te numri më i afërt i plotë. <screen>
+shkruaj rrumbullakos(10.8)
+ec_përpara 20
+shkruaj rrumbullakos(10.3)
+</screen
+>Me këtë program breshka do të shkruajë numrat 11 dhe 10.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="random"/>
+    <varlistentry
+> 
+      <term
+>rastësisht (kot)<indexterm
+><primary
+>rastësisht (kot)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>rastësisht X,Y</screen>
+<userinput
+>rastësisht</userinput
+> është një komandë që merr të dhëna dhe kthen një rezultat. Si të dhëna janë dy numra, i pari (X) cakton vlerën më të vogël (minimumin) e rezultatit, i dyti (Y) cakton vlerën më të madhe (maksimumin). Rezultati është një numër i zgjedhur rastësisht, i cili është më i madh ose i barabartë me minimumin dhe më i vogël ose i barabartë me maksimumin. Ja një shembull i vogël: <screen>
+rifillo
+përsërit 500 {
+  $x = rastësisht 1,100
+  ec_përpara $x
+  kthehu_majtas 100 - $x
+}
+</screen
+> Duke përdorur komandën <userinput
+>rastësisht</userinput
+> ju mund ti shtoni pak rrëmujë (kaos) programit tuaj.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sqrt"/>
+    <varlistentry
+> 
+      <term
+>sqrt<indexterm
+><primary
+>sqrt</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen>
+Komanda <userinput
+>sqrt</userinput
+> përdoret për të gjetur rrënjën katrore të një numri X.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+<!--
+  <variablelist>
+    <anchor id="exp"/>
+    <varlistentry
+> 
+      <term
+>exp<indexterm
+><primary
+>exp</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+-->
+  <variablelist>
+    <anchor id="pi"/>
+    <varlistentry
+> 
+      <term
+>pi<indexterm
+><primary
+>pi</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pi</screen>
+Kjo komandë kthen vlerën e konstantes Pi, <userinput
+>3.14159</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sin"/>
+    <anchor id="cos"/>
+    <anchor id="tan"/>
+    <varlistentry>
+      <term
+>sin<indexterm
+><primary
+>sin</primary
+></indexterm
+>, cos<indexterm
+><primary
+>cos</primary
+></indexterm
+>, tan<indexterm
+><primary
+>tan</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>sin X
+cos X
+tan X
+</screen>
+Këto tre komanda përfaqësojnë funksionet e famshme trigonometrike <userinput
+>sin</userinput
+>, <userinput
+>cos</userinput
+> dhe <userinput
+>tan</userinput
+>. Argumenti X që u jepet këtyre komandave është një <link linkend="number"
+>numër</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="arcsin"/>
+    <anchor id="arccos"/>
+    <anchor id="arctan"/>
+    <varlistentry>
+      <term
+>arcsin<indexterm
+><primary
+>arcsin</primary
+></indexterm
+>, arccos<indexterm
+><primary
+>arccos</primary
+></indexterm
+>, arctan<indexterm
+><primary
+>arctan</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>arcsin X
+arccos X
+arctan X
+</screen>
+Këto komanda janë funksionet e kundërta të <link linkend="sin"
+>sin</link
+>, <link linkend="cos"
+>cos</link
+> dhe <link linkend="tan"
+>tan</link
+>. Argumenti X që u jepet këtyre komandave është një <link linkend="number"
+>numër</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="dialogs">
+<title
+>Bashkëbisedimi me programin</title>
+<para
+>Bashkëbisedimi me programin kryhet përmes disa dritarezave të vogla që i nxjerr programi, të cilat ose japin një informacion, ose pyesin për diçka. &kturtle; ka dy komanda për bashkëbisedimin, të cilat janë <userinput
+>mesazh</userinput
+> dhe <userinput
+>pyet</userinput
+></para>
+  <variablelist>
+    <anchor id="message"/>
+    <varlistentry
+> 
+      <term
+>mesazh<indexterm
+><primary
+>mesazh</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>mesazh X</screen>
+Komanda <userinput
+>mesazh</userinput
+> merr një <link linkend="string"
+>varg</link
+> si plotësues. Ajo shfaq një dritare bashkëbisedimi që përmban <link linkend="string"
+>vargun</link
+> e dhënë. <screen
+>mesazh "Cies e filloi programin KTurtle në vitin 2003 dhe akoma merret me qejf në të!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="ask"/>
+    <varlistentry
+> 
+      <term
+>pyet<indexterm
+><primary
+>pyet</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>pyet X</screen>
+Komanda <userinput
+>pyet</userinput
+> merr një <link linkend="string"
+>varg</link
+> si plotësues. Ajo e nxjerr këtë varg në një dritare bashkëbisedimi (si komanda <link linkend="message"
+>mesazh</link
+>), bashkë me një vend për përgjigjen. Pasi përdoruesi të ketë futur një <link linkend="number"
+>numër</link
+> ose një <link linkend="string"
+>varg</link
+> në të, rezultati mund të ruhet në një <link linkend="assignment-of-variables"
+>ndryshore</link
+> ose ti kalohet si plotësuese një <link linkend="commands"
+>komande</link
+> tjetër. Për shembull: <screen>
+$merr = pyet "Në cilin vit keni lindur?"
+$nxirr = 2003 - $merr
+mesazh "Në vitin 2003 keni qenë " + $nxirr + " vjeç."
+</screen
+> Nëse përdoruesi e ndërpret dritaren e bashkëbisedimit, ose nuk shkruan në të asgjë fare, <link linkend="assignment-of-variables"
+>ndryshorja</link
+> është bosh.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="assignment-of-variables">
+<title
+>Vlerëdhënia e ndryshoreve</title>
+<para
+>Fillimisht do tu hedhim një sy ndryshoreve, dhe më pas do të shohim si u jepen vlera këtyre ndryshoreve. </para>
+
+<para
+>Emrat e ndryshoreve fillojnë gjithmonë me një <quote
+>$</quote
+>. Në <link linkend="the-editor"
+>shkrimore</link
+> ato <glossterm
+>theksohen</glossterm
+> me ngjyrë vjollcë.</para>
+
+<para
+>Ndryshoret mund të përmbajnë ndonjë <link linkend="number"
+>numër</link
+>, <link linkend="string"
+>varg shkronjash</link
+> ose <link linkend="boolean-value"
+> vlerë vërtetësie (e_vërtetë / e_rreme)</link
+>. Përmbajtja e një ndryshoreje caktohet me anë të veprimit të vlerëdhënies, <userinput
+>=</userinput
+>. Ndryshorja do të vazhdojë ta ketë këtë vlerë deri në përfundim të programit, ose deri sa ti jepet një vlerë tjetër.</para>
+
+<para
+>Pasi u është dhënë një vlerë, ndryshoret mund të përdoren njësoj si vetë vlera që ato përmbajnë. Shikoni për shembull rreshtat e mëposhtëm &turtlescript;: <screen>
+$x = 10
+$x = $x / 3
+shkruaj $x
+</screen
+> Fillimisht ndryshores <userinput
+>$x</userinput
+> i jepet vlera <userinput
+>10</userinput
+>. Pastaj <userinput
+>$x</userinput
+> i ri-jepet vlera  e vetvetes e pjesëtuar për <userinput
+>3</userinput
+> &mdash; që do të thotë se vlera e re e <userinput
+>$x</userinput
+> është <userinput
+>10 / 3</userinput
+>. Më në fund, ndryshorja <userinput
+>$x</userinput
+> shkruhet. Vini re që në rreshtin e dytë dhe të tretë <userinput
+>$x</userinput
+> është përdorur si të ishte vetë vlera që ajo përmban.</para>
+
+<para
+>Që të përdoren ndryshoret duhet që fillimisht tu jepet një vlerë. Për shembull: <screen>
+shkruaj $n
+</screen
+> do të japë një njoftim gabimi, sepse ndryshorja <userinput
+>$n</userinput
+> nuk ka asnjë vlerë.</para>
+
+<para
+>Ju lutem shikoni me vëmendje rreshtat e mëposhtëm &turtlescript;: <screen>
+$a = 2004
+$b = 25
+
+# komanda pasuese shkruan "2029"
+shkruaj $a + $b
+ec_mbrapsht 30
+# komanda pasuese shkruan "2004 plus 25 baraz 2029"
+shkruaj $a + " plus " + $b + " baraz " + ($a + $b)
+</screen
+> Në dy rreshtat e parë ndryshoret <userinput
+>$a</userinput
+> dhe <userinput
+>$b</userinput
+> kanë marrë vlerat 2004 dhe 25. Pastaj zbatohen dy komandat <userinput
+>shkruaj</userinput
+> me një komandë <userinput
+>ec_mbrapsht 30</userinput
+> në mes. Komentet përpara komandave <userinput
+>shkruaj</userinput
+> shpjegojnë çfarë bëjnë këto komanda. Komanda <userinput
+>ec_mbrapsht 30</userinput
+> është përdorur për tu siguruar që gjërat e shkruara janë në rreshta më vete. Siç e shihni, ndryshoret mund të përdoren si vetë përmbajtja që ato kanë, mund të përdoren me çdo lloj <link linkend="operators"
+>veprimi</link
+> ose të jepen si plotësuese të <link linkend="commands"
+>komandave</link
+> që thirren.</para>
+
+<para
+>Edhe një shembull tjetër: <screen>
+$emër = pyet "Si e ke emrin?"
+print "Përshëndetje " + $emër + "! Suksese gjatë mësimit të artit të programimit..."
+</screen
+> Mjaft i thjeshtë. Përsëri mund të shihni që ndryshorja <userinput
+>$emër</userinput
+>, është përdorur si të ishte një varg shkronjash.</para>
+
+<para
+>Kur përdoren ndryshoret, <link linkend="the-inspector"
+>shqyrtuesi</link
+> është shumë i dobishëm. Ai tregon përmbajtjen e të gjitha ndryshoreve që janë aktualisht në përdorim.</para>
+</sect1>
+
+
+
+<sect1 id="controlling-execution">
+<title
+>Kontrollimi i zbatimit</title>
+<para
+>Kontrolluesit e zbatimit mundësojnë &mdash; siç e nënkupton edhe emri i tyre &mdash; që të kontrollohet rrjedha e zbatimit të komandave.</para>
+<para
+>Komandat e kontrollit të zbatimit <glossterm
+>theksohen</glossterm
+> me të gjelbër të errët dhe me të trasha. Kllapat përdoren kryesisht së bashku me kontrolluesit e zbatimit dhe ato <glossterm
+>theksohen</glossterm
+> me të zezë.</para>
+
+<sect2 id="wait">
+<title
+>Bëjeni breshkën të presë</title>
+<para
+>Nëse keni programuar ndopak në &kturtle; ju mund të keni vënë re se breshka mund të jetë shumë e shpejtë në vizatim. Kjo komandë e bën breshkën të presë për një sasi të caktuar kohe.</para>
+  <variablelist>
+    <varlistentry>
+      <term
+>prit<indexterm
+><primary
+>prit</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>prit X</screen>
+<userinput
+>prit</userinput
+> e bën breshkën të presë për X sekonda. <screen
+> 
+përsërit 36 {
+  ec_përpara 5
+  kthehu_djathtas 10
+  prit 0.5
+}
+</screen
+> Ky program vizaton një rreth, por breshka do të presë gjysmë sekonde pas çdo hap. Kjo të jep përshtypjen e një breshke që lëviz ngadalë.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="if">
+<title
+>Zbato "nëse"</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>nëse<indexterm
+><primary
+>nëse</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>nëse <link linkend="boolean-value"
+>vërtetësi</link
+> { ... }</screen>
+Komandat që janë vendosur midis kllapave do të zbatohen vetëm <userinput
+>nëse</userinput
+> <link linkend="boolean-value"
+>vlera e vërtetësisë</link
+> është <quote
+>e_vërtetë</quote
+>. <screen>
+$x = 6
+nëse $x &gt; 5 {
+  shkruaj "numri $x është më i madh se pesa!"
+}
+</screen
+> Në rreshtin e parë <userinput
+>$x</userinput
+> merr vlerën 6. Në rreshtin e dytë një <link linkend="comparing-operators"
+>veprim krahasimi</link
+> është përdorur për të vlerësuar <userinput
+>$x &gt; 5</userinput
+>. Meqë ky jep vlerën <quote
+>e_vërtetë</quote
+>, 6 është më e madhe se 5, kontrolluesi i zbatimit <userinput
+>nëse</userinput
+> do të lejojë komandat midis kllapave që të zbatohen.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="else">
+<title
+>Nëse jo, ose me fjalë të tjera: "përndryshe"</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>përndryshe<indexterm
+><primary
+>përndryshe</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>nëse <link linkend="boolean-value"
+>vërtetësi</link
+> { ... } përndryshe { ... }</screen>
+<userinput
+>përndryshe</userinput
+> mund të përdoret si plotësues i kontrolluesit të zbatimit <link linkend="if"
+><userinput
+>nëse</userinput
+></link
+>. Komandat rrethuar nga kllapat, pas <userinput
+>përndryshe</userinput
+>, zbatohen vetëm nëse <link linkend="boolean-value"
+>vërtetësia</link
+> del <quote
+>e_rreme</quote
+>. <screen>
+rifillo
+$x = 4
+nëse $x &gt; 5 {
+  shkruaj "numri $x është më i madh se pesë!"
+} përndryshe {
+  shkruaj "numri $x është më i vogël se gjashtë!"
+}
+</screen
+> <link linkend="comparing-operators"
+>Veprimi i krahasimit</link
+> vlerëson shprehjen <userinput
+>$x &gt; 5</userinput
+>. Me që 4 nuk është më i madh se 5, shprehja merr vlerën <quote
+>e_rreme</quote
+>. Kjo do të thotë se do të zbatohen komandat mes kllapave pas <userinput
+>përndryshe</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="while">
+<title
+>Cikli "përderisa"</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>përderisa<indexterm
+><primary
+>përderisa</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>përderisa <link linkend="boolean-value"
+>vërtetësi</link
+> { ... }</screen>
+Kontrolluesi i zbatimit <userinput
+>përderisa</userinput
+> është mjaft i ngjashëm me <link linkend="if"
+><userinput
+>nëse</userinput
+></link
+>. Ndryshimi është se <userinput
+>përderisa</userinput
+> vazhdon të përsërit (në mënyrë ciklike) komandat midis kllapave, deri sa <link linkend="boolean-value"
+>vërtetësia</link
+> të bëhet <quote
+>e_rreme</quote
+>. <screen>
+$x = 1
+përderisa $x &lt; 5 {
+  ec_përpara 10
+  prit 1
+  $x = $x + 1
+}
+</screen
+> Në rreshtin e parë <userinput
+>$x</userinput
+> merr vlerën 1. Në rreshtin e dytë vlerësohet <userinput
+>$x &lt; 5</userinput
+>. Meqenëse përgjigja e kësaj pyetje është <quote
+>e_vërtetë</quote
+>, kontrolluesi i zbatimit <userinput
+>përderisa</userinput
+> fillon zbatimin e komandave midis kllapave. Kjo punë përsëritet disa herë, derisa <userinput
+>$x &lt; 5</userinput
+> bëhet <quote
+>e_rreme</quote
+>. Në këtë shembull, komandat midis kllapave do të zbatohen 4 herë, sepse çdo herë që zbatohet rreshti i pestë, <userinput
+>$x</userinput
+> rritet me 1.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="repeat">
+<title
+>Cikli "përsërit"</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>përsërit<indexterm
+><primary
+>përsërit</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>përsërit <link linkend="number"
+>numër</link
+> { ... }</screen>
+Kontrolluesi i zbatimit <userinput
+>përsërit</userinput
+> është shumë i ngjashëm me <link linkend="while"
+><userinput
+>përderisa</userinput
+></link
+>. Ndryshimi është se <userinput
+>përsërit</userinput
+> vazhdon të përsërisë (në mënyrë ciklike) komandat midis kllapave për aq herë sa numri i dhënë.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="for">
+<title
+>Cikli "për_çdo", një cikël numërues</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>për_çdo<indexterm
+><primary
+>për_çdo</primary
+></indexterm
+><indexterm
+><primary
+>me_hap</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>për_çdo <link linkend="assignment-of-variables"
+>ndryshore</link
+> = <link linkend="number"
+>numër</link
+> deri_në <link linkend="number"
+>numër</link
+> { ... }</screen>
+Cikli <userinput
+>për_çdo</userinput
+> është një <quote
+>cikël numërues</quote
+>, që do të thotë se numëron për ju. Numri i parë i cakton ndryshores vlerën e parë në cikël. Në çdo rrotullim numri rritet deri sa të arrijë numrin e dytë.<screen>
+për_çdo $x = 1 deri_në 10 {
+  shkruaj $x * 7
+  ec_përpara 15
+}
+</screen
+> Sa herë që komandat midis kllapave zbatohen, ndryshorja <userinput
+>$x</userinput
+>rritet me 1, deri sa <userinput
+>$x</userinput
+> arrin vlerën 10. Komandat midis kllapave shkruajnë <userinput
+>$x</userinput
+> shumëzuar me 7. Pasi programi përfundon zbatimin, ju do të shihni në ekran tabelën e shumëzimit me 7. </para>
+     <para
+>Madhësia e hapit zakonisht është 1, por you mund të zgjidhni një vlerë tjetër. <screen
+>për_çdo <link linkend="assignment-of-variables"
+>ndryshore</link
+> = <link linkend="number"
+>numër</link
+> deri_në <link linkend="number"
+>numër</link
+> me_hap <link linkend="number"
+>numër</link
+> { ... }</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="break">
+<title
+>Braktisja e një cikli</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>braktis<indexterm
+><primary
+>braktis</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>braktis</screen>
+E përfundon menjëherë ciklin aktual dhe e kalon kontrollin te komanda që vjen menjëherë pas këtij cikli.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="exit">
+<title
+>Ndaloni zbatimin e programit</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>dil<indexterm
+><primary
+>dil</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>dil</screen>
+Përfundon zbatimin e programit tuaj.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+</sect1>
+
+
+<sect1 id="learn">
+
+
+<!--<sect2 id="name">
+<title
+>Names</title>
+<para
+>When using the &turtlescript; programming language you create new things. If you write a program you will often need <link linkend="containers"
+>containers</link
+> and in some cases you need <link linkend="learn"
+>learn</link
+> to create new commands. When making a new command with <link linkend="learn"
+>learn</link
+> you will have to specify a name.</para>
+<para
+>You can choose any name, as long as it does not already have a meaning. For instance you cannot name a function <link linkend="forward"
+>forward</link
+>, since that name is already used for an internal command.
+<screen
+>
+# here forward is used as a new command, 
+# but it already has a meaning so 
+# this will produce an error:
+learn forward {
+  print "this is invalid"
+}
+
+# this works:
+learn myforward {
+  print "this is ok"
+}
+</screen>
+Names can contain only letters, numbers and underscores (_). Yet they have to start with a letter. Container names have to start with the container prefix ($).
+<screen
+>
+# here forward is used as a container, 
+# starting with the $ prefix, so it does
+# not conflict with the forward command
+$forward = 20
+print $forward
+</screen>
+</para>
+<para
+>Containers are <glossterm
+>highlighted</glossterm
+> with bolded purple in the <link linkend="the-editor"
+>code editor</link
+>.</para>
+<para>
+Please read the documentation on <link linkend="containers"
+>containers</link
+> and the <link linkend="learn"
+>learn</link
+> command for a better explanation and more examples.
+</para>
+</sect2
+>-->
+
+
+
+
+
+<title
+>Krijoni komandat tuaja me <quote
+>mëso</quote
+></title>
+<para
+><userinput
+>mëso</userinput
+> është e veçantë sepse përdoret për të krijuar komandat tuaja. Komandat që krijoni mund të marrin <glossterm linkend="input-output"
+>të dhëna plotësuese</glossterm
+> dhe të kthejnë <glossterm linkend="input-output"
+>rezultate</glossterm
+>. Le të hedhim një sy se si krijohet një komandë e re: <screen>
+mëso rreth $x {
+  përsërit 36 {
+    ec_përpara $x
+    kthehu_majtas 10
+  }
+}
+</screen
+> Komanda e re është quajtur <userinput
+>rreth</userinput
+>. Komanda <userinput
+>rreth</userinput
+> merr një <glossterm linkend="input-output"
+> të dhëna plotësuese</glossterm
+>, për të vendosur madhësinë e rrethit. <userinput
+>rreth</userinput
+> nuk kthen <glossterm linkend="input-output"
+>rezultat</glossterm
+>. Komanda <userinput
+>rreth</userinput
+> tani mund të përdoret si një komandë e zakonshme në pjesën tjetër të programit. Shikoni këtë shembull: <screen
+>mëso rreth $x {
+  përsërit 36 {
+    ec_përpara $x
+    kthehu_majtas 10
+  }
+}
+
+shko 200,200 
+rreth 20
+
+shko 300,200 
+rreth 40  
+</screen>
+</para>
+<para
+>Në shembullin tjetër krijohet një komandë e cila kthen një vlerë. <screen>
+mëso faktorial $x {
+  $r = 1
+  për_çdo $i = 1 deri_në $x {
+    $r = $r * $i
+  }
+  kthim $r
+}
+
+shkruaj faktorial 5
+</screen
+> Në këtë shembull është krijuar një komandë e re e quajtur <userinput
+>faktorial</userinput
+>. Nëse kësaj komande i jepet <userinput
+>5</userinput
+>  në hyrje,  ajo na kthen në dalje <userinput
+>5*4*3*2*1</userinput
+>. Duke përdorur <userinput
+>kthim</userinput
+>, përcaktohet <glossterm linkend="input-output"
+>vlera e daljes</glossterm
+> dhe rrjedha e zbatimit kthehet aty ku u thirr komanda.</para>
+<para
+>Komandat mund të marrin më shumë se një <glossterm linkend="input-output"
+>vlerë hyrëse</glossterm
+>. Në këtë shembull krijohet një komandë që vizaton një drejtkëndësh: <screen>
+mëso kuti $x, $y {
+  ec_përpara $y
+  kthehu_djathtas 90
+  ec_përpara $x
+  kthehu_djathtas 90
+  ec_përpara $y
+  kthehu_djathtas 90
+  ec_përpara $x
+  kthehu_djathtas 90
+}
+</screen
+> Tani ju mund të zbatoni <userinput
+>kuti 50, 100</userinput
+> dhe breshka do të vizatojë një drejtkëndësh në tabelë. </para>
+  
+</sect1>
+
+</chapter>

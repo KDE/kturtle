@@ -1,0 +1,392 @@
+<chapter id="Glossary">
+<title
+>Glosario</title>
+
+<para
+>En este capitulo encontrará una explicación de muchas de las palabras «inusuales» que se utilizan a lo largo del manual.</para>
+
+<glosslist>
+<glossentry id="degrees">
+<glossterm
+>grados</glossterm>
+<glossdef
+><para
+>Grados son unidades para medir ángulos y giros. Una vuelta completa es 360 grados, media vuelta 180 grados y una cuarto de vuelto 90 grados. Las órdenes <userinput
+>izquierda</userinput
+>, <userinput
+>derecha</userinput
+> y <userinput
+>dirección</userinput
+> necesitan un parámetro de entrada en grados.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="input-output">
+<glossterm
+>parámetros de entrada y parámetros de salida de las órdenes</glossterm>
+<glossdef
+><para
+>Hay órdenes que necesitan un parámetro de entrada, órdenes que devuelven un parámetro de salida, órdenes que necesitan un parámetro entrada <emphasis
+>y</emphasis
+> devuelven un parámetro salida, y órdenes que ni necesitan un parámetro de entrada ni devuelven un parámetro de salida. </para>
+<para
+>Ejemplos de órdenes que solo necesitan parámetros de entrada son:<screen>
+avanzar 50
+colorpincel 255;0;0
+escribir "¡Hola!"
+</screen
+> La orden <userinput
+>avanzar</userinput
+> toma el valor <userinput
+>50</userinput
+> como parámetro de entrada. La orden <userinput
+>avanzar</userinput
+> necesita  este parámetro de entrada para saber cuántos <glossterm linkend="pixels"
+>píxeles</glossterm
+> deberá avanzar hacia delante. La orden <userinput
+>colorpincel</userinput
+> necesita un color como parámetro de entrada, y la orden <userinput
+>escribir</userinput
+>, una cadena de texto. Tenga en cuenta que el parámetro de entrada puede ser también una variable. El siguiente ejemplo es una muestra de esto: <screen
+>$x = 50
+escribir $x
+avanzar 50
+$str = "¡Hola!"
+escribir $str
+</screen
+></para>
+
+<para
+>Aquí hay ejemplos de órdenes que devuelven un parámetro de salida:<screen>
+$x = preguntar "Escriba cualquier cosa y pulse Aceptar. ¡Gracias!"
+$r = aleatorio 1;100
+</screen
+> La orden <userinput
+>preguntar</userinput
+> necesita una cadena como parámetro de entrada, y devuelve el número o cadena que se le proporciona. Como puede ver, el parámetro de salida de la orden <userinput
+>preguntar</userinput
+> se guarda en la variable <userinput
+>$x</userinput
+>. La orden <userinput
+>aleatorio</userinput
+> también devuelve un parámetro de salida. En este caso, se trata de un número entre 1 y 100. El parámetro de salida de la orden <userinput
+>aleatorio</userinput
+> también se guarda en una variable, denominada en este caso <userinput
+>$r</userinput
+>. Fíjese que las variables <userinput
+>$x</userinput
+> y <userinput
+>$r</userinput
+>  no tienen ningún uso en este ejemplo.</para>
+
+<para
+>También hay órdenes que no requieren de parámetros de entrada y que no devuelven ningún parámetro de salida. Estos son algunos ejemplos: <screen
+>limpiar
+levantarpincel
+</screen>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="intuitive-highlighting">
+<glossterm
+>resaltado intuitivo</glossterm>
+<glossdef
+><para
+>Esta es una característica de &kturtle; que hace que programar sea mucho más fácil. Con el resaltado intuitivo, el código que escribe se muestra en uno u otro color en función de qué tipo de código sea. En la siguiente lista encontrará los diferentes tipos de código y el color en que se muestran en <link linkend="the-editor"
+>el editor</link
+>. <table>
+<title
+>Los diferentes tipos de código y su color de resaltado</title>
+<tgroup cols="3">
+<tbody>
+<row>
+<entry
+>órdenes habituales</entry>
+<entry
+>azul oscuro</entry>
+<entry
+>Las órdenes habituales se describen <link linkend="commands"
+>aquí</link
+>.</entry>
+</row>
+<row>
+<entry
+>órdenes de control de la ejecución</entry>
+<entry
+>negro (negrita)</entry>
+<entry
+>Estas órdenes especiales controlan la ejecución; lea más sobre estas órdenes  <link linkend="controlling-execution"
+>aquí</link
+>.</entry>
+</row>
+<row>
+<entry
+>comentarios</entry>
+<entry
+>gris</entry>
+<entry
+>Cuando una línea de código comienza con el carácter #, se interpreta como un comentario. Estas líneas se ignoran durante la ejecución del código. Los comentarios permiten a los programadores explicar un poco su código. Pueden usarse también para evitar que una parte concreta del código se ejecute. </entry>
+</row>
+<row>
+<entry
+>llaves {, }</entry>
+<entry
+>verde oscuro (negrita)</entry>
+<entry
+>Las llaves se usan para agrupar porciones de código. Las llaves se utilizan con frecuencia en combinación con los <link linkend="controlling-execution"
+>controladores de ejecución</link
+>.</entry>
+</row>
+<row>
+<entry
+>la orden <link linkend="learn"
+>aprender</link
+></entry>
+<entry
+>verde claro (negrita)</entry>
+<entry
+>La orden <link linkend="learn"
+>aprender</link
+> se usa para crear nuevas instrucciones.</entry>
+</row>
+<row>
+<entry
+>cadenas</entry>
+<entry
+>rojo</entry>
+<entry
+>No hay mucho que decir acerca de estas cadenas (de texto), excepto que siempre comienzan y terminan con dobles comillas (").</entry>
+</row>
+<row>
+<entry
+>números</entry>
+<entry
+>rojo oscuro</entry>
+<entry
+>Son números, no es necesario añadir más.</entry>
+</row>
+<row>
+<entry
+>valores lógicos</entry>
+<entry
+>rojo oscuro</entry>
+<entry
+>Existen dos valores lógicos, verdadero y falso.</entry>
+</row>
+<row>
+<entry
+>variables</entry>
+<entry
+>púrpura</entry>
+<entry
+>Comienzan con el símbolo «$»  y pueden ser números, cadenas o valores lógicos.</entry>
+</row>
+<row>
+<entry
+>operadores aritméticos</entry>
+<entry
+>gris</entry>
+<entry
+>Estos son los operadores aritméticos: <userinput
+>+</userinput
+>, <userinput
+>-</userinput
+>, <userinput
+>*</userinput
+>, <userinput
+>/</userinput
+> y <userinput
+>^</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>operadores de comparación </entry>
+<entry
+>azul claro (negrita)</entry>
+<entry
+>Estos son los operadores de comparación: <userinput
+>==</userinput
+>, <userinput
+>!=</userinput
+>, <userinput
+>&lt;</userinput
+>, <userinput
+>&gt;</userinput
+>, <userinput
+>&lt;=</userinput
+> y <userinput
+>&gt;=</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>operadores lógicos</entry>
+<entry
+>rosado (negrita)</entry>
+<entry
+>Estos son los operadores lógicos: <userinput
+>y</userinput
+>, <userinput
+>o</userinput
+> y <userinput
+>no</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>texto normal</entry>
+<entry
+>negro</entry>
+<entry
+></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="pixels">
+<glossterm
+>píxeles</glossterm>
+<glossdef
+><para
+>Un píxel es un punto sobre la pantalla. Si observa con atención, verá que la pantalla de su monitor usa píxeles. Todas las imágenes que aparecen en la pantalla se construyen a base de píxeles. Un píxel es lo más pequeño que puede dibujarse en una pantalla. </para>
+<para
+>Muchas órdenes necesitan un número de píxeles como parámetro de entrada. Estas órdenes son: <userinput
+>avanzar</userinput
+>, <userinput
+>retroceder</userinput
+>, <userinput
+>ir</userinput
+>, <userinput
+>irx</userinput
+>, <userinput
+>iry</userinput
+>, <userinput
+>tamañolienzo</userinput
+> y <userinput
+>grosorpincel</userinput
+>.</para>
+<para
+>En versiones anteriores de &kturtle;, el lienzo era básicamente una imagen rasterizada; sin embargo, en las versiones más recientes, el lienzo es una imagen vectorial. Esto quiere decir que la escala del lienzo puede ampliarse o reducirse y que, por lo tanto, un píxel no se corresponde necesariamente con un punto sobre la pantalla.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="rgb">
+<glossterm
+>Combinaciones RGB (código de colores)</glossterm>
+<glossdef
+><para
+>Las combinaciones RGB se utilizan para describir colores. La «R» (que viene de la palabra inglesa «red») representa el «rojo», la «G» (de la palabra inglesa «green») representa el «verde», y la «B» (de la palabra inglesa «blue») representa el «azul». Un ejemplo de una combinación RGB es <userinput
+>255;0;0</userinput
+>. El primer valor (es decir, el rojo) es 255 y los otros dos son 0, lo que da lugar a una tonalidad brillante de rojo. Cada valor de una combinación RGB debe estar entre 0 y 255. Aquí hay una lista con algunos de los colores más utilizados: <table frame="none">
+<title
+>Combinaciones RGB frecuentes</title>
+<tgroup cols="2" colsep="5" rowsep="1">
+<colspec colname="c1"/>
+<tbody>
+<row
+><entry
+><userinput
+>0;0;0</userinput
+></entry
+><entry
+>negro</entry
+></row>
+<row
+><entry
+><userinput
+>255;255;255</userinput
+></entry
+><entry
+>blanco</entry
+></row>
+<row
+><entry
+><userinput
+>255;0;0</userinput
+></entry
+><entry
+>rojo</entry
+></row>
+<row
+><entry
+><userinput
+>150;0;0</userinput
+></entry
+><entry
+>rojo oscuro</entry
+></row>
+<row
+><entry
+><userinput
+>0;255;0</userinput
+></entry
+><entry
+>verde</entry
+></row>
+<row
+><entry
+><userinput
+>0;0;255</userinput
+></entry
+><entry
+>azul</entry
+></row>
+<row
+><entry
+><userinput
+>0;255;255</userinput
+></entry
+><entry
+>azul claro</entry
+></row>
+<row
+><entry
+><userinput
+>255;0;255</userinput
+></entry
+><entry
+>rosado</entry
+></row>
+<row
+><entry
+><userinput
+>255;255;0</userinput
+></entry
+><entry
+>amarillo</entry
+></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para
+>Existen dos órdenes que necesitan combinaciones RGB como parámetro de entrada: <userinput
+>colorlienzo</userinput
+> y <userinput
+>colorpincel</userinput
+>.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="sprite">
+<glossterm
+>sprite</glossterm>
+<glossdef
+><para
+>Un sprite (en inglés «duendecillo») es una pequeña imagen que puede moverse por la pantalla. Nuestra querida tortuga, por ejemplo, es un sprite.  <note
+><para
+>En esta versión de &kturtle;, el sprite no puede cambiarse de una tortuga a otra imagen. Sin embargo, en futuras versiones de &kturtle; sí que está previsto que se pueda hacer esto.</para
+></note
+></para
+></glossdef>
+</glossentry>
+
+</glosslist>
+
+</chapter>

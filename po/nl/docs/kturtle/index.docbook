@@ -1,0 +1,302 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kturtle;">
+  <!ENTITY turtlescript "TurtleScript">
+  <!ENTITY logo "Logo">
+  <!ENTITY % addindex "INCLUDE">
+  <!ENTITY % Dutch "INCLUDE"
+><!-- change language only here -->
+  <!ENTITY using-kturtle SYSTEM "using-kturtle.docbook">
+  <!ENTITY getting-started SYSTEM "getting-started.docbook">
+  <!ENTITY programming-reference SYSTEM "programming-reference.docbook">
+  <!ENTITY translator-guide SYSTEM "translator-guide.docbook">
+  <!ENTITY glossary SYSTEM "glossary.docbook">
+]>
+
+<book id="kturtle" lang="&language;">
+
+<bookinfo>
+<title
+>Het handboek van &kturtle;</title>
+
+<authorgroup>
+<author
+><firstname
+>Cies</firstname
+> <surname
+>Breijs</surname
+> <affiliation
+> <address
+><email
+>cies AT kde DOT nl</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Anne-Marie</firstname
+> <surname
+>Mahfouf</surname
+> <affiliation
+> <address
+><email
+>annma AT kde DOT org</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+><email
+>piacentini AT kde DOT org</email
+></address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Jaap</firstname
+><surname
+>Woldringh</surname
+><affiliation
+><address
+><email
+>jjh punt woldringh op planet punt nl</email
+></address
+></affiliation
+><contrib
+></contrib
+></othercredit
+> 
+</authorgroup>
+
+
+<copyright>
+<year
+>2004</year
+><year
+>2009</year>
+<holder
+>Cies Breijs</holder>
+</copyright>
+
+<copyright>
+<year
+>2004</year
+><year
+>2007</year>
+<holder
+>&Anne-Marie.Mahfouf;</holder>
+</copyright>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Mauricio Piacentini</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-01-20</date>
+<releaseinfo
+>Applications 20.12</releaseinfo>
+
+<abstract>
+<para
+>&kturtle; is een educatieve programmeeromgeving, met als doel het leren programmeren zo eenvoudig mogelijk te maken. Om dit doel te bereiken zijn in &kturtle; alle programmeerhulpmiddelen beschikbaar in de interface. De gebruikte programmeertaal is &turtlescript;, waarvan de commando's vertaald kunnen worden.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KTurtle</keyword>
+<keyword
+>educatie</keyword>
+<keyword
+>taal</keyword>
+<keyword
+>eigen</keyword>
+<keyword
+>programmeren</keyword>
+<keyword
+>TurtleScript</keyword>
+<keyword
+>Logo</keyword>
+<keyword
+>schildpad</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Inleiding</title>
+
+<para
+>&kturtle; is een educatieve programmeeromgeving waarin gebruik wordt gemaakt van de programmeertaal <link linkend="what-is-turtlelang"
+>&turtlescript;</link
+>, een programmeertaal die enigszins lijkt op en geïnspireerd is door &logo;. Het doel van &kturtle; is het programmeren zo eenvoudig en toegankelijk mogelijk te maken. Dit maakt &kturtle; geschikt om kinderen de basiskennis van wiskunde, meetkunde en... programmeren bij te brengen. Een belangrijke eigenschap van &turtlescript; is dat de commando's kunnen worden vertaald naar de spreektaal van de programmeur.</para>
+
+<para
+>&kturtle; is genoemd naar <quote
+>de schildpad</quote
+> (turtle) die een centrale rol speelt in de programmeeromgeving. De gebruiker programmeert de schildpad, met behulp van de &turtlescript;-commando's, om een tekening te maken op <link linkend="the-canvas"
+>het canvas</link
+>.</para>
+
+<sect1 id="what-is-turtlelang">
+<title
+>Wat is &turtlescript;?</title>
+<para
+>&turtlescript;, de programmeertaal die in &kturtle; wordt gebruikt, is geïnspireerd op de &logo;-familie van programmeertalen. De eerste versie van &logo; werd in 1967 gemaakt door Seymour Papert van MIT Artificial Intelligence Laboratory, als een afgeleide van de programmeertaal LISP. Vanaf dat moment zijn er veel versies van &logo; uitgebracht. Omstreeks 1980 werd &logo; steeds meer bekend met versies voor MSX, Commodore, Atari, Apple II en IBM-PC's. Deze versies werden vooral voor educatieve doeleinden uitgebracht. MIT onderhoudt nog steeds een website over &logo;. Deze vindt u op <ulink url="http://el.media.mit.edu/logo-foundation/"
+>http://el.media.mit.edu/logo-foundation/</ulink
+>. Hier vindt u een lijst van een aantal populaire implementaties van de taal.</para>
+<para
+>&turtlescript; heeft een eigenschap gemeen met vele andere implementaties van &logo; namelijk dat de commando's naar de moedertaal van de leerling kunnen worden vertaald. Dit maakt het gemakkelijker om er mee te werken door leerlingen die weinig of geen Engels kennen. Hiernaast heeft &kturtle; <link linkend="features-of-kturtle"
+>vele andere eigenschappen</link
+> met het doel de eerste programmeerervaring van de leerlingen gemakkelijker te maken.</para>
+</sect1>
+
+
+<sect1 id="features-of-kturtle">
+<title
+>Eigenschappen van &kturtle;</title>
+<para
+>&kturtle; heeft enkele leuke eigenschappen die het beginnen met programmeren eenvoudig maken. Hier volgen enkele van de belangrijkste eigenschappen van &kturtle;: <itemizedlist>
+<listitem
+><para
+>Een geïntegreerde omgeving, met de &turtlescript;-interpreter (programma dat de programmacode vertaalt naar machinecode), <link linkend="the-editor"
+>codebewerker</link
+>, <link linkend="the-canvas"
+>canvas</link
+> en andere hulpmiddelen, alle in een applicatie (zonder extra afhankelijkheden).</para
+></listitem>
+<listitem
+><para
+>De mogelijkheid de commando's van &turtlescript; te vertalen, waarbij de vertaalmogelijkheden van &kde; worden benut.</para
+></listitem>
+<listitem
+><para
+>&turtlescript; ondersteunt door de gebruiker gemaakte functies, recursie en het dynamisch wijzigen van het (gegevens)type.</para
+></listitem>
+<listitem
+><para
+>De uitvoering kan op elk moment worden vertraagd, tijdelijk onderbroken of gestopt.</para
+></listitem>
+<listitem
+><para
+>Een krachtige <link linkend="the-editor"
+>codebewerker</link
+>, met intuïtieve syntaxisaccentuering, regelnummering, merkpunten voor fouten, visuele uitvoering, en meer.</para
+></listitem>
+<listitem
+><para
+>Het <link linkend="the-canvas"
+>canvas</link
+> waarop de schildpad tekent, kan worden afgedrukt, of opgeslagen als een afbeelding (PNG) of tekening (SVG).</para
+></listitem>
+<listitem
+><para
+>Contextgevoelige hulp: hulp daar waar die nodig is. Druk op <keysym
+>F2</keysym
+> (of zie <menuchoice
+><guimenu
+>Help</guimenu
+><guimenuitem
+>Hulp bij: ...</guimenuitem
+></menuchoice
+>) om hulp te krijgen bij de programmacode onder de muisaanwijzer.</para
+></listitem>
+<listitem
+><para
+>Een foutdialoog die de foutmeldingen koppelt aan de fouten in het programma, en die met rood markeert.</para
+></listitem>
+<listitem
+><para
+>Vereenvoudigde programmeerterminologie.</para
+></listitem>
+<listitem
+><para
+>Geïntegreerde voorbeeldprogramma's die het makkelijker maken om te beginnen. Deze voorbeelden zijn vertaald, gebruikmakend van de vertaalmogelijkheden van &kde;.</para
+></listitem>
+</itemizedlist>
+</para>
+</sect1>
+</chapter>
+
+&using-kturtle;
+
+&getting-started;
+
+&programming-reference;
+
+&glossary;
+
+&translator-guide;
+
+<chapter id="credits">
+
+<title
+>Dankbetuigingen en licenties</title>
+
+<para
+>&kturtle; </para>
+<para
+>Software copyright 2003-2007 Cies Breijs <email
+>cies AT kde DOT nl</email
+></para>
+
+<para
+>Documentatie copyright 2004, 2007, 2009 <itemizedlist>
+<listitem
+><para
+>Cies Breijs <email
+>cies AT kde DOT nl</email
+> </para
+></listitem>
+<listitem
+><para
+>&Anne-Marie.Mahfouf; &Anne-Marie.Mahfouf.mail; </para
+></listitem>
+<listitem
+><para
+>Proefgelezen en verbeterd door &Philip.Rodrigues;&Philip.Rodrigues.mail;</para>
+</listitem>
+<listitem
+><para
+>Bijgewerkte vertalingshandleiding en enkele verbeteringen door Andrew Coles <email
+>andrew_coles AT yahoo DOT co DOT uk</email
+></para>
+</listitem>
+</itemizedlist>
+</para>
+
+<para
+>Jaap Woldringh<email
+>jjh punt woldringh op planet punt nl</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+<!--&documentation.index; -->
+<index id='command-index'>
+<title
+>Commando-index</title>
+</index>
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->

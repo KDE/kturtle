@@ -1,0 +1,303 @@
+<chapter id="getting-started">
+<title
+>Comezando</title>
+<para
+>Cando inicie &kturtle; verá algo como isto: <screenshot
+> <screeninfo
+>Esta é unha imaxe de &kturtle; ao inicialo por primeira vez</screeninfo
+><mediaobject
+><imageobject
+><imagedata fileref="mainwindow.png" format="PNG"/></imageobject
+><textobject
+><phrase
+>&kturtle; nun inicio coa configuración de fábrica</phrase
+></textobject
+></mediaobject
+></screenshot
+> Nesta guía de iniciación asumirase que o idioma das ordes de &turtlescript; é o galego. Pode cambiar o idioma en <menuchoice
+><guimenu
+>Configuración</guimenu
+><guisubmenu
+>Idioma do script</guisubmenu
+></menuchoice
+>. Lembre que o idioma que lle indique aquí a &kturtle; é o que utilizará para escribir as ordes de &turtlescript;, non o idioma empregado por &kde; no computador e utilizado na interface e menús de &kturtle;.</para>
+
+<sect1 id="first-steps">
+<title
+>Os primeiros pasos con &turtlescript;: coñeza o sapoconcho!</title>
+<para
+>Xa se debeu decatar de que hai un sapoconcho no centro do lenzo: agora aprenderá a controlalo mediante ordes no editor.</para>
+
+<sect2 id="the-turtle-moves">
+<title
+>Os movementos do sapoconcho</title>
+<para
+>Comecemos facendo que se mova o sapoconcho. O noso animal pode facer tres tipos de movemento, (1) pode moverse adiante e atrás, (2) pode xirar á esquerda e á dereita e (3) pode ir (saltar) directamente a unha posición na pantalla. Probe isto:</para>
+<para>
+<screen
+>avanza 100
+xiraesquerda 90 
+</screen
+>Escriba ou corte e pegue o código no editor e execúteo (empregando <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Executar</guimenu
+><guimenuitem
+>Executar</guimenuitem
+></menuchoice
+></link
+>) para ver o resultado.</para>
+
+<para
+>Cando escribiu e executou as ordes como as de arriba no editor pode que se decatase dunha ou máis das seguintes cousas:</para>
+<orderedlist>
+<listitem
+><para
+>Que &mdash; tras executar as ordes &mdash; o sapoconcho rube, debuxa unha liña, e logo xira un cuarto de volta á esquerda. Isto é debido a que empregou as ordes <link linkend="forward"
+><userinput
+>avanza</userinput
+></link
+> e <link linkend="turnleft"
+><userinput
+>xiraesquerda</userinput
+></link
+>.</para>
+</listitem>
+<listitem>
+<para
+>Que se cambiou a cor do código mentres a estaba a escribir: esta funcionalidade é chamara <emphasis
+>realzado intuitivo</emphasis
+> &mdash; distintos tipos de ordes son realzados de xeito distinto. Isto facilita a lectura de grandes bloques de código.</para>
+</listitem>
+<listitem>
+<para
+>Que o animal debuxa unha liña branca fina.</para>
+</listitem>
+<listitem>
+<para
+>Quizais obteña unha mensaxe de erro. Isto simplemente significará dúas cousas: ou que cometeu un erro ao copiar as ordes, ou que aínda non indicou a linguaxe correcta para as ordes de &turtlescript; (pode facelo mediante <menuchoice
+><guimenu
+>Configuración</guimenu
+><guisubmenu
+>Linguaxe do script</guisubmenu
+></menuchoice
+>).</para>
+</listitem>
+</orderedlist>
+
+<para
+>Posibelmente xa se decatase de que <userinput
+>avanza 100</userinput
+> ordenoulle ao sapoconcho que se mova cara diante deixando un rastro, e que <userinput
+>xiraesquerda 90</userinput
+> é para que o animal xire 90 <glossterm linkend="degrees"
+>graus</glossterm
+> á esquerda.</para>
+
+<para
+>Consulte as seguintes ligazón ao manual de referencia para ter unha explicación completa das seguintes ordes: <link linkend="forward"
+><userinput
+>avanza</userinput
+></link
+>, <link linkend="backward"
+><userinput
+>retrocede</userinput
+></link
+>, <link linkend="turnleft"
+><userinput
+>xiraesquerda</userinput
+></link
+> e <link linkend="turnright"
+><userinput
+>xiradereita</userinput
+></link
+>.</para>
+</sect2>
+
+<sect2 id="more-examples">
+<title
+>Máis exemplos</title>
+<para
+>O primeiro exemplo era moi simples, continuemos!</para>
+
+<para>
+
+<screen
+>reinicia
+
+tamañolenzo 200,200
+corlenzo 0,0,0
+corlapis 255,0,0
+ancholapis 5
+
+vai 20,20
+direccion 135
+
+avanza 200
+xiraesquerda 135
+avanza 100
+xiraesquerda 135
+avanza 141
+xiraesquerda 135
+avanza 100
+xiraesquerda 45
+
+vai 40,100
+</screen
+>Novamente, pode escribir ou copiar e pegar o código no editor ou abrir o exemplo <filename
+>frecha</filename
+> no menú <guimenu
+>Exemplos</guimenu
+> e executalo (mediante <link linkend="run-execute"
+><menuchoice
+><guimenu
+>Executar</guimenu
+><guimenuitem
+>Executar</guimenuitem
+></menuchoice
+></link
+>) para ver o resultado. Nos seguintes exemplos suponse que coñece o sistema.</para>
+
+<para
+>Posibelmente xa se decatou de que este segundo exemplo utiliza moito máis código. Tamén hai un par de ordes novas. Velaí vai unha explicación breve das novas ordes:</para>
+
+<para
+>Tras unha orde <userinput
+>reinicia</userinput
+> todo volve ser como se acabase de arrincar &kturtle;.</para>
+
+<para
+><userinput
+>tamañolenzo 200,200</userinput
+> fai que a anchura e altura do lenzo sexa de 200 <glossterm linkend="pixels"
+>píxeles</glossterm
+>. A anchura e a altura son iguais, polo que o lenzo será un cadrado.</para>
+
+<para
+><userinput
+>corlenzo 0,0,0</userinput
+> fai que o lenzo sexa negro. <userinput
+>0,0,0</userinput
+> é unha <glossterm linkend="rgb"
+>combinación RGB</glossterm
+> onde todos os valores son <userinput
+>0</userinput
+>, o que dá a cor negra.</para>
+
+<para
+><userinput
+>corlapis 255,0,0</userinput
+> fai que a cor do lapis sexa vermella. <userinput
+>255,0,0</userinput
+> é unha <glossterm linkend="rgb"
+>combinación RGB</glossterm
+> onde só a cor vermella é <userinput
+>255</userinput
+> (total) mentres que as outras (verde e azul) son <userinput
+>0</userinput
+> (nulas). Isto resulta na cor vermella.</para>
+
+<para
+>Se non comprende os valores das cores, lea a entrada no glosario sobre as <glossterm linkend="rgb"
+>combinacións RGB</glossterm
+>.</para>
+
+<para
+><userinput
+>ancholapis 5</userinput
+> fai que a anchura (o tamaño) do trazo sexa de <userinput
+>5</userinput
+> <glossterm linkend="pixels"
+>píxeles</glossterm
+>. De agora en diante cada liña que debuxe o sapoconcho terá un gordo de <userinput
+>5</userinput
+>, ata que cambie o <userinput
+>ancholapis</userinput
+>.</para>
+
+<para
+><userinput
+>vai 20,20</userinput
+> fai que o animal vaia a un certo lugar do lenzo. Contando desde a esquina superior esquerda, este lugar está a 20 <glossterm linkend="pixels"
+>píxeles</glossterm
+> da esquerda, e 20 <glossterm linkend="pixels"
+>píxeles</glossterm
+> para baixo do cume do lenzo. Lembre que cando se utiliza a orde <userinput
+>vai</userinput
+> o sapoconcho non debuxa liña ningunha.</para>
+
+<para
+><userinput
+>direccion 135</userinput
+> estabelece a dirección a onde mira o sapoconcho. As ordes <userinput
+>xiraesquerda</userinput
+> e <userinput
+>xiradereita</userinput
+> cambian o ángulo do animal desde a posición actual. A orde <userinput
+>direccion</userinput
+> cámbiao desde o cero, e polo tanto non é relativo á dirección anterior do sapoconcho.</para>
+
+<para
+>Despois da orde <userinput
+>direccion</userinput
+> van unha morea de ordes <userinput
+>avanza</userinput
+> e <userinput
+>xiraesquerda</userinput
+>. Estes son os que fan o debuxo en si.</para>
+
+<para
+>Finalmente outra orde <userinput
+>vai</userinput
+> move o sapoconcho para un lado.</para>
+
+<para
+>Siga as ligazóns á referencia. Aló explícase cada orde con máis detalle.</para>
+
+
+</sect2>
+</sect1>
+
+
+
+<!--        EXTRA SECTIONS CAN BE ADDED TO THE "GETTING STARTED"
+
+<sect1 id="calculations">
+<title
+>Simple Calculations</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_variables">
+<title
+>Using Variables: creating 'number containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_strings">
+<title
+>Using strings: creating 'text containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="logic">
+<title
+>Logic: asking the computer simple questions</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="recursion">
+<title
+>Recursion: the Turtle is using itself</title>
+<para>
+Draw a maze for example
+</para>
+</sect1>
+-->
+
+
+</chapter>

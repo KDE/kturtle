@@ -1,0 +1,404 @@
+<chapter id="Glossary">
+<title
+>Słowniczek</title>
+
+<para
+>W tym rozdziale znajdziesz objaśnienia większości <quote
+>problematycznych</quote
+> słów, które są używane w niniejszym podręczniku.</para>
+
+<glosslist>
+<glossentry id="degrees">
+<glossterm
+>stopnie</glossterm>
+<glossdef
+><para
+>Stopnie są jednostką miary kątów lub obrotów. Pełny obrót to 360 stopni, połowa obrotu to 180 stopni, a ćwierć obrotu to 90 stopni. Polecenia <userinput
+>lewo</userinput
+>, <userinput
+>prawo</userinput
+> oraz <userinput
+>ustalKierunek</userinput
+> wymagają podania wartości w stopniach.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="input-output">
+<glossterm
+>wejście i wyjście poleceń</glossterm>
+<glossdef
+><para
+>Niektóre polecenie wymagają wejścia, a niektóre dają wyjście (wynik), niektóre polecenia wymagają zarówno wejścia <emphasis
+>i</emphasis
+> dają wynik. Są także takie, które nie potrzebują ani wejścia, ani nie dają wyniku.</para>
+<para
+>Oto przykłady poleceń, które potrzebują jedynie wejścia: <screen>
+naprzód 50
+ustalKolPis 255,0,0
+pisz "Cześć!"
+</screen
+> Polecenie <userinput
+>naprzód</userinput
+> uznaje <userinput
+>50</userinput
+> jako wejście. <userinput
+>naprzód</userinput
+> potrzebuje tego wpisu, aby wiedzieć, ile <glossterm linkend="pixels"
+>pikseli</glossterm
+> w przód ma się przesunąć żółw. <userinput
+>ustalKolPis</userinput
+> uznaje kolor jako wejście, a <userinput
+>pisz</userinput
+> uznaje za wejście tekst.  Pamiętaj, że wejście może być także ze zmiennej. Poniższy przykład jest tego ilustracją: <screen
+>$x = 50
+pisz $x
+naprzód 50
+$str = "cześć!"
+pisz $str
+</screen
+></para>
+
+<para
+>Teraz kilka przykładów dających wynik: <screen>
+$x = spytaj "Wpisz coś i kliknij OK... dzięki!"
+$r = los 1,100
+</screen
+> Polecenie <userinput
+>spytaj</userinput
+> potrzebuje ciągu jako wejścia, natomiast daje wynik w postaci liczbowej lub tekstu, który został wprowadzony. Jak widać, wynik polecenia <userinput
+>spytaj</userinput
+> jest przechowywany w zmiennej <userinput
+>x</userinput
+>. Polecenie <userinput
+>los</userinput
+> także daje wynik. W tym przypadku wynikiem jest liczba pomiędzy 1 a 100. Wynik polecenia losowo jest również przechowywany w zmiennej o nazwie <userinput
+>r</userinput
+>. Zwróć uwagę, że zmienne <userinput
+>x</userinput
+> oraz <userinput
+>r</userinput
+> nie są wykorzystywane w powyższym przykładzie kodu.</para>
+
+<para
+>Są także polecenia, które nie potrzebują wejścia i nie dają także wyniku. Oto kilka przykładów: <screen
+>czyść
+podnieś
+</screen>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="intuitive-highlighting">
+<glossterm
+>podświetlanie intuicyjne</glossterm>
+<glossdef
+><para
+>Ta funkcja &kturtle; ułatwia pisanie, a przede wszystkim czytanie kodu. Dzięki intuicyjnemu podświetlaniu kod, który piszesz uzyskuje kolor oznaczający rodzaj wpisywanego kodu. Na poniższej liście znajdziesz różne rodzaje kodów i kolory, jakie one otrzymują w <link linkend="the-editor"
+>edytorze</link
+>. <table>
+<title
+>Różne rodzaje kodów i kolor ich wyświetlania</title>
+<tgroup cols="3">
+<tbody>
+<row>
+<entry
+>polecenia regularne</entry>
+<entry
+>ciemnoniebieski</entry>
+<entry
+>Polecenia regularne zostały opisane <link linkend="commands"
+>tutaj</link
+>.</entry>
+</row>
+<row>
+<entry
+>polecenia kontrolujące wykonanie</entry>
+<entry
+>czarny (pogrubiony)</entry>
+<entry
+>Na temat kontroli wykonywania poleceń specjalnych możesz przeczytać <link linkend="controlling-execution"
+>tutaj</link
+>.</entry>
+</row>
+<row>
+<entry
+>komentarze</entry>
+<entry
+>szary</entry>
+<entry
+>Wiersze komentarza rozpoczynają się od znaku komentarza (#). Wiersze te są ignorowane, gdy kod jest wykonywany. Komentarze pozwalają programiście objaśniać swój kod, a także mogą być stosowane do tymczasowego wyłączania części kodu.</entry>
+</row>
+<row>
+<entry
+>nawiasy {, }</entry>
+<entry
+>ciemnozielony (pogrubiony)</entry>
+<entry
+>Nawiasy kwadratowe są wykorzystywane do grupowania partii kodu. Są one często stosowane z <link linkend="controlling-execution"
+>kontrolerami rozkazów</link
+>.</entry>
+</row>
+<row>
+<entry
+>polecenie <link linkend="learn"
+>poznaj</link
+></entry>
+<entry
+>jasnozielony (pogrubiony)</entry>
+<entry
+>Polecenie <link linkend="learn"
+>poznaj</link
+> jest wykorzystywane do tworzenia nowych poleceń.</entry>
+</row>
+<row>
+<entry
+>teksty</entry>
+<entry
+>czerwony</entry>
+<entry
+>Niewiele można powiedzieć na temat tekstów, poza tym, że zawsze zaczynają się one i kończą podwójnym cudzysłowem (").</entry>
+</row>
+<row>
+<entry
+>liczby</entry>
+<entry
+>ciemnoczerwony</entry>
+<entry
+>Liczb chyba nie trzeba wyjaśniać.</entry>
+</row>
+<row>
+<entry
+>wartości logiczne</entry>
+<entry
+>ciemnoczerwony</entry>
+<entry
+>Są dokładnie dwie wartości logiczne: prawda i fałsz.</entry>
+</row>
+<row>
+<entry
+>zmienne</entry>
+<entry
+>purpurowy</entry>
+<entry
+>Zaczynają się od '$' i mogą przechowywać liczny, teksty lub wartości logiczne.</entry>
+</row>
+<row>
+<entry
+>operatory matematyczne</entry>
+<entry
+>szary</entry>
+<entry
+>Operatory matematyczne to: <userinput
+>+</userinput
+>, <userinput
+>-</userinput
+>, <userinput
+>*</userinput
+>, <userinput
+>/</userinput
+> i <userinput
+>^</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>operatory porównania</entry>
+<entry
+>jasnoniebieski (pogrubiony)</entry>
+<entry
+>Operatory porównania to: <userinput
+>==</userinput
+>, <userinput
+>!=</userinput
+>, <userinput
+>&lt;</userinput
+>, <userinput
+>&gt;</userinput
+>, <userinput
+>&lt;=</userinput
+> i <userinput
+>&gt;=</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>operatory logiczne</entry>
+<entry
+>różowy (pogrubiony)</entry>
+<entry
+>Operatory logiczne to: <userinput
+>i</userinput
+>, <userinput
+>lub</userinput
+> i <userinput
+>nie</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>zwykły tekst</entry>
+<entry
+>czarny</entry>
+<entry
+></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="pixels">
+<glossterm
+>piksele</glossterm>
+<glossdef
+><para
+>Piksel jest punktem na ekranie. Jeżeli dokładnie się przyjrzysz, to zobaczysz, że ekran Twojego monitora składa się z pikseli. Wszystkie obrazy na ekranie są zbudowane z takich pikseli. Piksel jest najmniejszą rzeczą, która może zostać narysowana na ekranie.</para>
+<para
+>Wiele poleceń wymaga podania liczby pikseli jako wejścia. Polecenia te to: <userinput
+>naprzód</userinput
+>, <userinput
+>wstecz</userinput
+>, <userinput
+>idź</userinput
+>, <userinput
+>idźx</userinput
+>, <userinput
+>idźy</userinput
+>, <userinput
+>ustalRozmiar</userinput
+> oraz <userinput
+>ustalGrubość</userinput
+>.</para>
+<para
+>We wczesnych wersjach &kturtle; płótno było zasadniczo obrazem rastrowym, teraz w najnowszych wersjach jest ono wektorowe. To znaczy, że możesz przybliżać i oddalać widok, a pomimo to, nie musisz koniecznie zobaczyć pikseli.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="rgb">
+<glossterm
+>Kombinacje RGB (kody kolorów)</glossterm>
+<glossdef
+><para
+>Kombinacje RGB są wykorzystywane do opisywania kolorów. <quote
+>R</quote
+> oznacza <quote
+>czerwony</quote
+>, <quote
+>G</quote
+> oznacza <quote
+>zielony</quote
+>, a <quote
+>B</quote
+> oznacza <quote
+>niebieski</quote
+>. Przykładem kombinacji RGB jest <userinput
+>255,0,0</userinput
+>: pierwsza wartość (<quote
+>czerwony</quote
+>) to 255, natomiast kolejnymi wartościami są 0, więc oznacza to jasny odcień czerwieni. Każda wartość kombinacji RGB musi znajdować się w zakresie od 0 do 255. Oto krótka lista niektórych, często stosowanych kolorów: <table frame="none">
+<title
+>Często używane kombinacje RGB</title>
+<tgroup cols="2" colsep="5" rowsep="1">
+<colspec colname="c1"/>
+<tbody>
+<row
+><entry
+><userinput
+>0,0,0</userinput
+></entry
+><entry
+>czarny</entry
+></row>
+<row
+><entry
+><userinput
+>255,255,255</userinput
+></entry
+><entry
+>biały</entry
+></row>
+<row
+><entry
+><userinput
+>255,0,0</userinput
+></entry
+><entry
+>czerwony</entry
+></row>
+<row
+><entry
+><userinput
+>150,0,0</userinput
+></entry
+><entry
+>ciemnoczerwony</entry
+></row>
+<row
+><entry
+><userinput
+>0,255,0</userinput
+></entry
+><entry
+>zielony</entry
+></row>
+<row
+><entry
+><userinput
+>0,0,255</userinput
+></entry
+><entry
+>niebieski</entry
+></row>
+<row
+><entry
+><userinput
+>0,255,255</userinput
+></entry
+><entry
+>jasnoniebieski</entry
+></row>
+<row
+><entry
+><userinput
+>255,0,255</userinput
+></entry
+><entry
+>różowy</entry
+></row>
+<row
+><entry
+><userinput
+>255,255,0</userinput
+></entry
+><entry
+>żółty</entry
+></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para
+>Dwa polecenia wymagają kombinacji RGB jako wejścia: tymi poleceniami są <userinput
+>ustalKolTła</userinput
+> oraz <userinput
+>ustalKolPis</userinput
+>.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="sprite">
+<glossterm
+>sprajt</glossterm>
+<glossdef
+><para
+>Sprajt to niewielki obrazek, który może być przemieszczany po ekranie. Na przykład, nasz kochany żółwik jest sprajtem.</para>
+<para
+>Pamiętaj: w tej wersji &kturtle;, sprajt nie może być zmieniony z żółwia na coś innego. Kolejne wersje &kturtle; będą miały taką możliwość.</para
+></glossdef>
+</glossentry>
+
+</glosslist>
+
+</chapter>
