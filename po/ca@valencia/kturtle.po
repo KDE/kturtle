@@ -86,7 +86,7 @@ msgstr "&Copia al porta-retalls"
 #: colorpicker.cpp:110 directiondialog.cpp:286
 #, kde-format
 msgid "&Paste to editor"
-msgstr "&Apega a l'editor"
+msgstr "A&pega a l'editor"
 
 #: console.cpp:33 console.cpp:60
 #, kde-format
@@ -1505,7 +1505,8 @@ msgstr "Guarda el fitxer actual amb un nom diferent"
 #: mainwindow.cpp:203
 #, kde-format
 msgid "Save File As: Save the current file under a different name"
-msgstr "Guarda el fitxer com a: guarda el fitxer actual amb un nom diferent"
+msgstr ""
+"Anomeneu i guardeu el fitxer: guarda el fitxer actual amb un nom diferent"
 
 #: mainwindow.cpp:206
 #, kde-format
