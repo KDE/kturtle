@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-01 00:41+0000\n"
-"PO-Revision-Date: 2022-08-27 04:36+0200\n"
+"PO-Revision-Date: 2022-10-04 05:47+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -41,17 +41,17 @@ msgstr "დახრილი"
 #: canvas.cpp:197
 #, kde-format
 msgid "underline"
-msgstr ""
+msgstr "ხაზგასმული"
 
 #: canvas.cpp:198
 #, kde-format
 msgid "overline"
-msgstr ""
+msgstr "ხაზზემოდანგადასმული"
 
 #: canvas.cpp:199
 #, kde-format
 msgid "strikeout"
-msgstr ""
+msgstr "გაზგადასმული"
 
 #: colorpicker.cpp:29
 #, kde-format
@@ -62,27 +62,27 @@ msgstr "ფერის ამრჩევი"
 #: colorpicker.cpp:48
 #, kde-format
 msgid "Amount red:"
-msgstr ""
+msgstr "წითლის რაოდენობა:"
 
 #: colorpicker.cpp:62
 #, kde-format
 msgid "Amount green:"
-msgstr ""
+msgstr "მწვანის რაოდენობა:"
 
 #: colorpicker.cpp:75
 #, kde-format
 msgid "Amount blue:"
-msgstr ""
+msgstr "ლურჯის რაოდენობა:"
 
 #: colorpicker.cpp:105 directiondialog.cpp:282
 #, kde-format
 msgid "&Copy to clipboard"
-msgstr ""
+msgstr "&ბუფერში კოპირება"
 
 #: colorpicker.cpp:110 directiondialog.cpp:286
 #, kde-format
 msgid "&Paste to editor"
-msgstr ""
+msgstr "რედაქტორში ჩასმა"
 
 #: console.cpp:33 console.cpp:60
 #, kde-format
@@ -98,7 +98,7 @@ msgstr ""
 #: console.cpp:36
 #, kde-format
 msgid "Console:"
-msgstr ""
+msgstr "კონსოლი:"
 
 #: console.cpp:79
 #, kde-format
@@ -109,22 +109,22 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Direction Chooser"
-msgstr ""
+msgstr "მიმართულების ამრჩევი"
 
 #: directiondialog.cpp:225
 #, kde-format
 msgid "Command &type:"
-msgstr ""
+msgstr "ბრძანების &ტიპი:"
 
 #: directiondialog.cpp:240
 #, kde-format
 msgid "&Previous direction:"
-msgstr ""
+msgstr "&წინა მიმართულება:"
 
 #: directiondialog.cpp:257
 #, kde-format
 msgid "&New direction:"
-msgstr ""
+msgstr "&ახალი მიმართულება:"
 
 #: editor.cpp:146
 #, kde-format
@@ -170,12 +170,12 @@ msgstr ""
 #: editor.cpp:269
 #, kde-format
 msgid "Unsaved File"
-msgstr ""
+msgstr "შეუნახავი ფაილი"
 
 #: editor.cpp:269
 #, kde-format
 msgid "&Discard Changes"
-msgstr ""
+msgstr "ცვლილებების &გაუქმება"
 
 #: errordialog.cpp:27
 #, kde-format
@@ -213,7 +213,7 @@ msgstr "შეცდომების დამალვა"
 #: errordialog.cpp:89
 #, kde-format
 msgid "No errors occurred yet."
-msgstr ""
+msgstr "შეცდომები ჯერ არ მომხდარა."
 
 #: inspector.cpp:35
 #, kde-format
@@ -301,6 +301,7 @@ msgstr ""
 msgid "The %2 command was called with %3 but needs 1 parameter."
 msgid_plural "The %2 command was called with %3 but needs %1 parameters."
 msgstr[0] ""
+msgstr[1] ""
 
 #: interpreter/executer.cpp:274
 #, kde-format
@@ -308,6 +309,7 @@ msgid "The %2 command was called with %3 but only accepts 1 parameter."
 msgid_plural ""
 "The %2 command was called with %3 but only accepts %1 parameters."
 msgstr[0] ""
+msgstr[1] ""
 
 #: interpreter/executer.cpp:292
 #, kde-format
@@ -360,7 +362,8 @@ msgctxt ""
 "The function '%1' was called with %2, while it should be called with %3"
 msgid "1 parameter"
 msgid_plural "%1 parameters"
-msgstr[0] ""
+msgstr[0] "1 პარამეტრი"
+msgstr[1] "%1 პარამეტრი"
 
 #: interpreter/executer.cpp:627
 #, kde-format
@@ -1490,22 +1493,22 @@ msgstr ""
 #: mainwindow.cpp:212
 #, kde-format
 msgid "Print the code"
-msgstr ""
+msgstr "კოდის დაბეჭდვა"
 
 #: mainwindow.cpp:213
 #, kde-format
 msgid "Print: Print the code"
-msgstr ""
+msgstr "დაბეჭდვა: კოდის დაბეჭდვა"
 
 #: mainwindow.cpp:216
 #, kde-format
 msgid "Quit KTurtle"
-msgstr ""
+msgstr "KTurtle-დან გასვლა"
 
 #: mainwindow.cpp:217
 #, kde-format
 msgid "Quit: Quit KTurtle"
-msgstr ""
+msgstr "გასვლა: KTurtle-დან გასვლა"
 
 #: mainwindow.cpp:221
 #, kde-format
@@ -1570,7 +1573,7 @@ msgstr ""
 #: mainwindow.cpp:253
 #, kde-format
 msgid "Overwrite Mode"
-msgstr ""
+msgstr "თავზე გადაწერის რეჟიმი"
 
 #: mainwindow.cpp:255
 #, kde-format
@@ -1651,22 +1654,22 @@ msgstr ""
 #: mainwindow.cpp:294
 #, kde-format
 msgid "Print the canvas"
-msgstr ""
+msgstr "ტილოს დაბეჭდვა"
 
 #: mainwindow.cpp:295
 #, kde-format
 msgid "Print: Print the canvas"
-msgstr ""
+msgstr "დაბეჭდვა: ტილოს დაბეჭდვა"
 
 #: mainwindow.cpp:302
 #, kde-format
 msgid "Execute the program"
-msgstr ""
+msgstr "პროგრამის შესრულება"
 
 #: mainwindow.cpp:303
 #, kde-format
 msgid "Run: Execute the program"
-msgstr ""
+msgstr "გაშვება: პროგრამის შესრულება"
 
 #: mainwindow.cpp:306
 #, kde-format
@@ -1676,12 +1679,12 @@ msgstr "&შეყოვნება"
 #: mainwindow.cpp:310
 #, kde-format
 msgid "Pause execution"
-msgstr ""
+msgstr "გაშვების შეჩერება"
 
 #: mainwindow.cpp:311
 #, kde-format
 msgid "Pause: Pause execution"
-msgstr ""
+msgstr "შეჩერება: გაშვების შეჩერება"
 
 #: mainwindow.cpp:314
 #, kde-format
@@ -1737,7 +1740,7 @@ msgstr ""
 #: mainwindow.cpp:341
 #, kde-format
 msgid "Show &Editor"
-msgstr ""
+msgstr "&რედაქტორის ჩვენება"
 
 #: mainwindow.cpp:343
 #, kde-format
@@ -1870,7 +1873,7 @@ msgstr ""
 #, kde-format
 msgctxt "@option:radio"
 msgid "&Full Speed"
-msgstr ""
+msgstr "&სრული სიჩქარე"
 
 #: mainwindow.cpp:439
 #, kde-format
@@ -1886,7 +1889,7 @@ msgstr ""
 #, kde-format
 msgctxt "@option:radio choose the slow speed"
 msgid "&Slow"
-msgstr ""
+msgstr "&ნელი"
 
 #: mainwindow.cpp:448
 #, kde-format
@@ -1902,7 +1905,7 @@ msgstr ""
 #, kde-format
 msgctxt "@option:radio"
 msgid "S&lower"
-msgstr ""
+msgstr "&უფრო ნელი"
 
 #: mainwindow.cpp:457
 #, kde-format
@@ -1918,7 +1921,7 @@ msgstr ""
 #, kde-format
 msgctxt "@option:radio"
 msgid "Sl&owest"
-msgstr ""
+msgstr "&ყველაზე ნელი"
 
 #: mainwindow.cpp:466
 #, kde-format
@@ -1955,12 +1958,12 @@ msgstr ""
 #: mainwindow.cpp:505
 #, kde-format
 msgid "E&rrors"
-msgstr ""
+msgstr "&შეცდომები"
 
 #: mainwindow.cpp:535
 #, kde-format
 msgid "&Editor"
-msgstr ""
+msgstr "&რედაქტორი"
 
 #: mainwindow.cpp:549
 #, kde-format
@@ -2118,7 +2121,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Save as SVG"
-msgstr ""
+msgstr "SVG-ის სახით შენახვა"
 
 #: mainwindow.cpp:1030
 #, kde-format
