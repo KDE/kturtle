@@ -1288,7 +1288,7 @@ msgstr "flor"
 #: kturtleui.rc:6
 #, kde-format
 msgid "&File"
-msgstr "&Fitxer"
+msgstr "Fi&txer"
 
 #. i18n: ectx: Menu (examples)
 #: kturtleui.rc:11
@@ -1330,7 +1330,7 @@ msgstr "&Eines"
 #: kturtleui.rc:64
 #, kde-format
 msgid "&Settings"
-msgstr "&Configuració"
+msgstr "Con&figuració"
 
 #. i18n: ectx: Menu (language)
 #: kturtleui.rc:65
@@ -1685,7 +1685,7 @@ msgstr "Exporta a SVG: Exporta el llenç actual a Gràfics Vectorials Escalables
 #: mainwindow.cpp:292
 #, kde-format
 msgid "&Print Canvas..."
-msgstr "&Imprimix el llenç..."
+msgstr "Im&primix el llenç..."
 
 #: mainwindow.cpp:294
 #, kde-format
