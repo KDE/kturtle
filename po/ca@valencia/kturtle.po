@@ -1407,7 +1407,7 @@ msgstr "Mauricio Piacentini"
 #: main.cpp:62
 #, kde-format
 msgid "File or URL to open (in the GUI mode)"
-msgstr "Fitxer o URL que cal obrir (en el mode IGU)"
+msgstr "Fitxer o URL que s'ha d'obrir (en el mode IGU)"
 
 #: main.cpp:63
 #, kde-format
