@@ -2196,24 +2196,3 @@ msgstr "Entrada"
 #, kde-format
 msgid "Message"
 msgstr "Missatge"
-
-#~ msgid "Are you sure you want to overwrite %1?"
-#~ msgstr "Segur que voleu sobreescriure %1?"
-
-#~ msgid "Overwrite Existing File"
-#~ msgstr "Sobreescriu el fitxer existent"
-
-#~ msgid "&Overwrite"
-#~ msgstr "&Sobreescriu-lo"
-
-#~ msgid "Cannot read %1"
-#~ msgstr "No s'ha pogut llegir %1"
-
-#~ msgid "This button hides the Errors tab"
-#~ msgstr "Aquest botó oculta la pestanya dels errors"
-
-#~ msgid "&Quit"
-#~ msgstr "&Surt"
-
-#~ msgid "Internationalized string with an %1"
-#~ msgstr "Cadena internacionalitzada amb un %1"
