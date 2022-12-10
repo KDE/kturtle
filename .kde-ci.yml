@@ -12,3 +12,6 @@ Dependencies:
     'frameworks/ktextwidgets': '@stable'
     'frameworks/ki18n': '@stable'
     'frameworks/kcoreaddons': '@stable'
+
+Options:
+  require-passing-tests-on: [ '@all' ]
