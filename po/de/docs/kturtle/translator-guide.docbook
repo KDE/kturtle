@@ -1,14 +1,7 @@
 <chapter id="translators">
-<title
->Übersetzerhandbuch für &kturtle;</title>
-<para
->Wie Sie vielleicht schon wissen, kann die in &kturtle; verwendete Programmiersprache &turtlescript; übersetzt werden. Damit ist es für Anfänger einfacher, die Grundlage des Programmierens zu verstehen.</para>
-<para
->Wenn Sie &kturtle; in eine neue Sprache übersetzen, werden Sie feststellen, dass zusätzlich zu den Nachrichten der Benutzeroberfläche die Befehle der Programmiersprache, die Beispiele und die Fehlermeldungen in den üblichen <filename class="extension"
->.pot</filename
->-Dateien enthalten sind, die in &kde; für die Übersetzung benutzt werden. Alles wird mit dem bekannten Verfahren in &kde; übersetzt, trotzdem sollten Sie lernen, wie diese Nachrichten übersetzt werden und wie die Kommentare zu den Nachrichten für Übersetzung zu verstehen sind..</para>
-<para
->Weitere Informationen zur Übersetzung finden sie unter <ulink url="https://edu.kde.org/kturtle/translator.php"
->https://edu.kde.org/kturtle/translator.php</ulink
->. Vielen Dank für Ihre Mitarbeit, die Übersetzung ist für &kturtle; sehr wichtig.</para>
+<title>Translator's Guide to &kturtle;</title>
+<para>As you probably already know &kturtle;'s programming language, &turtlescript;, allows to be translated. This takes away a barrier for some, especially younger students, on their effort to understand the basics of programming.</para>
+<para>When translating &kturtle; to a new language you will find, in addition to the &GUI; strings, the programming commands, the examples and the error messages are included in the standard <filename class="extension">.pot</filename> files as used for translation in &kde;. Everything is translated using the regular translation method found in &kde;, yet you are strongly advised to learn a little on how to translate these (as you will also read in the translator comments).</para>
+<para>Please look at <ulink
+url="https://edu.kde.org/kturtle/translation.php">https://edu.kde.org/kturtle/translation.php</ulink> for more information about the translation process. Thanks a lot for your work! &kturtle; depends heavily on its translations.</para>
 </chapter>

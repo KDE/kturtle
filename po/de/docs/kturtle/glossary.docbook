@@ -1,403 +1,161 @@
 <chapter id="Glossary">
-<title
->Erläuterung der Begriffe und Abkürzungen</title>
+<title>Glossary</title>
 
-<para
->In diesem Kapitel finden Sie die Erläuterung der oft <quote
->unbekannten</quote
-> Begriffe, die in diesem Handbuch verwendet werden. </para>
+<para>In this chapter you will find an explanation of most of the <quote>uncommon</quote> words that are used in the handbook.</para>
 
 <glosslist>
 <glossentry id="degrees">
-<glossterm
->Grad</glossterm>
-<glossdef
-><para
->Grad ist die Einheit, um Winkel oder Drehungen zu messen. Eine ganze Drehung sind 360 Grad, eine halbe Drehung 180 Grad und eine viertel Drehung 90 Grad. Die Befehle <userinput
->linksdrehen</userinput
->, <userinput
->rechtsdrehen</userinput
-> und <userinput
->richtung</userinput
-> brauchen eine Eingabe in Grad.</para
-></glossdef>
+<glossterm>degrees</glossterm>
+<glossdef><para>Degrees are units to measure angles or turns. A full turn is 360 degrees,  a half turn 180 degrees and a quarter turn 90 degrees. The commands <userinput>turnleft</userinput>, <userinput>turnright</userinput> and <userinput>direction</userinput> need an input in degrees.</para></glossdef>
 </glossentry>
 
 <glossentry id="input-output">
-<glossterm
->Eingabe- und Rückgabewerte der Befehle</glossterm>
-<glossdef
-><para
->Einige Befehle brauchen eine Eingabe, einige geben einen Wert zurück und andere brauchen eine Eingabe <emphasis
->und</emphasis
-> geben einen Wert zurück und einige Befehle brauchen weder Eingabewerte noch geben sie einen Wert zurück.</para>
-<para
->Einige Beispiele für Befehle, die nur Eingabewerte brauchen, sind: <screen>
-vorwärts 50
-stiftfarbe 255,0,0
-drucke "Hallo!"
-</screen
-> Der Befehl <userinput
->vorwärts</userinput
-> braucht <userinput
->50</userinput
-> als Eingabe. <userinput
->vorwärts</userinput
-> braucht diesen Wert, um zu wissen, um wie viele <glossterm  linkend="pixels"
->Pixel </glossterm
-> es vorwärts gehen soll.  <userinput
->stiftfarbe</userinput
-> braucht einen Farbcode als Eingabe und <userinput
->drucke</userinput
-> braucht eine Zeichenfolge (einen Text) als Eingabe. Beachten Sie, das die Eingabe auch eine Variable sein kann, wie das folgende Beispiel zeigt: <screen
->$x = 50
-drucke $x
-$str = "Hallo!"
-drucke $str
-</screen
-></para>
-
-<para
->Nun einige Beispiele von Befehlen mit Rückgabewerten:<screen>
-$x = frage "Bitte geben Sie irgendwas ein und drücken dann OK ... Danke!"
-$r = zufall 1,100
-</screen
-> Der Befehl <userinput
->frage</userinput
-> braucht eine Zeichenfolge als Eingabe und gibt die eingegebene Zahl oder Zeichenfolge wieder zurück. Wie Sie sehen, wird die Ausgabe von <userinput
->frage</userinput
-> in der Variablen <userinput
->x</userinput
-> gespeichert. Der Befehl <userinput
->zufall</userinput
-> gibt auch einen Wert zurück, in diesem Fall eine Zahl zwischen 1 und 100. Der Zufallswert wird wieder in einer Variablen namens <userinput
->r</userinput
-> gespeichert. Beachten Sie, das die Variablen <userinput
->x</userinput
-> und <userinput
->r</userinput
-> in diesem Beispiel nicht weiter verwendet werden.</para>
-
-<para
->Es gibt außerdem Befehle, die weder Eingabewerte benötigen noch einen Wert zurückgeben. Dazu einige Beispiele: <screen
->lösche
-stifthoch
+<glossterm>input and output of commands</glossterm>
+<glossdef><para>Some commands take input, some commands give output, some commands take input <emphasis>and</emphasis> give output and some commands neither take input nor give output.</para>
+<para>Some examples of commands that only take input are:
+<screen>
+forward 50
+pencolor 255,0,0
+print "Hello!"
 </screen>
-</para
-></glossdef>
+The <userinput>forward</userinput> command takes <userinput>50</userinput> as input. <userinput>forward</userinput> needs this input to know how many <glossterm linkend="pixels">pixels</glossterm> it should go forward. <userinput>pencolor</userinput> takes a color as input and <userinput>print</userinput> takes a string (a piece of text) as input. Please note that the input can also be a container. The next example illustrates this:
+<screen>
+$x = 50
+print $x
+forward 50
+$str = "hello!"
+print $str
+</screen></para>
+
+<para>Now some examples of commands that give output:
+<screen>
+$x = ask "Please type something and press OK... thanks!"
+$r = random 1,100
+</screen>
+The <userinput>ask</userinput> command takes a string as input, and outputs the number or string that is entered. As you can see, the output of <userinput>ask</userinput> is stored in the container <userinput>x</userinput>. The <userinput>random</userinput> command also gives output. In this case it outputs a number between 1 and 100. The output of the random is again stored in a container, named <userinput>r</userinput>. Note that the containers <userinput>x</userinput> and <userinput>r</userinput> are not used in the example code above.</para>
+
+<para>There are also commands that neither need input nor give output. Here are some examples:
+<screen>
+clear
+penup
+</screen>
+</para></glossdef>
 </glossentry>
 
 <glossentry id="intuitive-highlighting">
-<glossterm
->Intuitive Hervorhebung</glossterm>
-<glossdef
-><para
->Dies ist eine Eigenschaft von &kturtle;, die das Schreiben und Lesen von Quelltexten erleichtert. Mit intuitiver Hervorhebung wird der Text, den Sie schreiben, farbig dargestellt, sodass Sie den Typ des Textes erkennen. In der folgenden Liste finden Sie die verschiedenen Typen von Quelltext und die zugehörige Farbe im <link linkend="the-editor"
->Editor</link
->.  <table>
-<title
->Verschiedene Typen von Quelltexten und deren Farbe</title>
+<glossterm>intuitive highlighting</glossterm>
+<glossdef><para>This is a feature of &kturtle; that makes coding even easier. With intuitive highlighting the code that you write gets a color that indicates what type of code it is. In the next list you will find the different types of code and the color they get in <link linkend="the-editor">the editor</link>.
+<table>
+<title>Different types of code and their highlight color</title>
 <tgroup cols="3">
 <tbody>
 <row>
-<entry
->Normale Befehle</entry>
-<entry
->dunkelblau</entry>
-<entry
->Die normalen Befehle werden <link linkend="commands"
->hier</link
-> beschrieben.</entry>
+<entry>regular commands</entry>
+<entry>dark blue</entry>
+<entry>The regular commands are described <link linkend="commands">here</link>.</entry>
 </row>
 <row>
-<entry
->Befehle zur Programmsteuerung</entry>
-<entry
->schwarz (fett)</entry>
-<entry
->Diese besonderen Befehle kontrollieren die Ausführung des Quelltextes, mehr dazu finden Sie <link linkend="controlling-execution"
->hier</link
->.</entry>
+<entry>execution controlling commands</entry>
+<entry>black (bold)</entry>
+<entry>These special commands control execution, read more on them <link linkend="controlling-execution">here</link>.</entry>
 </row>
 <row>
-<entry
->Kommentare</entry>
-<entry
->grau</entry>
-<entry
->Kommentarzeilen beginnen mit dem Kommentarzeichen (#). Diese Zeilen werden bei der Ausführung des Quelltextes nicht beachtet. Mit Kommentaren kann der Programmierer seinen Quelltext erläutern oder damit zeitweise den Quelltext von der Ausführung ausschließen.</entry>
+<entry>comments</entry>
+<entry>gray</entry>
+<entry>Lines that are commented start with a comment characters (#). These lines are ignored when the code is executed. Comments allow the programmer to explain a bit about his code or can be used to temporarily prevent a certain piece of code from executing.</entry>
 </row>
 <row>
-<entry
->Klammern {, }</entry>
-<entry
->dunkelgrün (fett)</entry>
-<entry
->Klammern brauchen Sie, um Teile des Quelltextes in Gruppen zusammenzufassen. Klammern werden häufig zusammen mit <link linkend="controlling-execution"
->Kontrollanweisungen</link
-> benötigt.</entry>
+<entry>brackets {, }</entry>
+<entry>dark green (bold)</entry>
+<entry>Brackets are used to group portions of code. Brackets are often used together with <link linkend="controlling-execution">execution controllers</link>.</entry>
 </row>
 <row>
-<entry
->Der Befehl <link linkend="learn"
->lerne</link
-></entry>
-<entry
->hellgrün (fett)</entry>
-<entry
->Mit dem Befehl <link linkend="learn"
->lerne</link
-> schreiben Sie neue Befehle.</entry>
+<entry>the <link linkend="learn">learn</link> command</entry>
+<entry>light green (bold)</entry>
+<entry>The <link linkend="learn">learn</link> command is used to create new commands.</entry>
 </row>
 <row>
-<entry
->Zeichenfolgen</entry>
-<entry
->rot</entry>
-<entry
->Zeichenfolgen haben am Anfang und Ende doppelte Anführungszeichen (").</entry>
+<entry>strings</entry>
+<entry>red</entry>
+<entry>Not much to say about (text) strings either, except that they always start and end with the double quotes (").</entry>
 </row>
 <row>
-<entry
->Zahlen</entry>
-<entry
->dunkelrot</entry>
-<entry
->Einfach nur Zahlen.</entry>
+<entry>numbers</entry>
+<entry>dark red</entry>
+<entry>Numbers, well not much to say about them.</entry>
 </row>
 <row>
-<entry
->Boolesche Werte</entry>
-<entry
->dunkelrot</entry>
-<entry
->Es gibt nur zwei boolesche Werte, wahr und falsch.</entry>
+<entry>boolean values</entry>
+<entry>dark red</entry>
+<entry>There are exactly two boolean values, namely: true and false.</entry>
 </row>
 <row>
-<entry
->Variablen</entry>
-<entry
->lila</entry>
-<entry
->Beginnt mit den Zeichen „$“ und kann Zahlen, Zeichenfolgen und boolesche Werte enthalten.</entry>
+<entry>variables</entry>
+<entry>purple</entry>
+<entry>Start with a '$' and can contain numbers, strings or boolean values.</entry>
 </row>
 <row>
-<entry
->Mathematische Operatoren</entry>
-<entry
->grau</entry>
-<entry
->Es gibt folgende mathematischen Operatoren: <userinput
->+</userinput
->, <userinput
->-</userinput
->, <userinput
->*</userinput
->, <userinput
->/</userinput
-> und <userinput
->^</userinput
->.</entry>
+<entry>mathematical operators</entry>
+<entry>gray</entry>
+<entry>These are the mathematical operators: <userinput>+</userinput>, <userinput>-</userinput>, <userinput>*</userinput>, <userinput>/</userinput> and <userinput>^</userinput>.</entry>
 </row>
 <row>
-<entry
->Vergleichsoperatoren</entry>
-<entry
->hellblau (fett)</entry>
-<entry
->Es gibt folgende Vergleichsoperatoren: <userinput
->==</userinput
->, <userinput
->!=</userinput
->, <userinput
->&lt;</userinput
->, <userinput
->&gt;</userinput
->, <userinput
->&lt;=</userinput
-> und <userinput
->&gt;=</userinput
->.</entry>
+<entry>comparison operators</entry>
+<entry>light blue (bold)</entry>
+<entry>These are the comparison operators: <userinput>==</userinput>, <userinput>!=</userinput>, <userinput>&lt;</userinput>, <userinput>&gt;</userinput>, <userinput>&lt;=</userinput> and <userinput>&gt;=</userinput>.</entry>
 </row>
 <row>
-<entry
->Boolesche Operatoren</entry>
-<entry
->pink (fett)</entry>
-<entry
->Es gibt folgende Boolesche Operatoren: <userinput
->und</userinput
->, <userinput
->oder</userinput
-> und <userinput
->nicht</userinput
->.</entry>
+<entry>boolean operators</entry>
+<entry>pink (bold)</entry>
+<entry>These are the boolean operators: <userinput>and</userinput>, <userinput>or</userinput> and <userinput>not</userinput>.</entry>
 </row>
 <row>
-<entry
->normaler Text</entry>
-<entry
->schwarz</entry>
-<entry
-></entry>
+<entry>regular text</entry>
+<entry>black</entry>
+<entry></entry>
 </row>
 </tbody>
 </tgroup>
 </table>
-</para
-></glossdef>
+</para></glossdef>
 </glossentry>
 
 <glossentry id="pixels">
-<glossterm
->Pixel</glossterm>
-<glossdef
-><para
->Ein Pixel ist ein Punkt auf dem Bildschirm. Wenn Sie Ihren Monitor aus der Nähe anschauen, sehen Sie die Pixel. Alle Bilder auf dem Bildschirm sind aus diesen Pixeln zusammengesetzt. Ein Pixel ist die kleinste Einheit, die auf dem Bildschirm dargestellt werden kann.</para>
-<para
->Viele Befehle brauchen als Eingabe eine Anzahl von Pixeln. Diese Befehle sind: <userinput
->vorwärts</userinput
->, <userinput
->rückwärts</userinput
->, <userinput
->gehe</userinput
->, <userinput
->gehex</userinput
->, <userinput
->gehey</userinput
->, <userinput
->papiergröße</userinput
-> und <userinput
->stiftbreite</userinput
->.</para>
-<para
->In früheren Versionen von &kturtle; war die Zeichenfläche ein Rasterbild, in den aktuellen Versionen ist es eine Vektorzeichnung. Daher kann die Ansicht vergrößert und verkleinert werden, deshalb muss ein Pixel nicht notwendigerweise in einen Punkt auf dem Bildschirm umgerechnet werden.</para>
+<glossterm>pixels</glossterm>
+<glossdef><para>A pixel is a dot on the screen. If you look very close you will see that the screen of your monitor uses pixels. All images on the screen are built with these pixels. A pixel is the smallest thing that can be drawn on the screen.</para>
+<para>A lot of commands need a number of pixels as input. These commands are: <userinput>forward</userinput>, <userinput>backward</userinput>, <userinput>go</userinput>, <userinput>gox</userinput>, <userinput>goy</userinput>, <userinput>canvassize</userinput> and <userinput>penwidth</userinput>.</para>
+<para>In early versions of &kturtle; the canvas was essentially a raster image, yet for recent versions the canvas is a vector drawing. This means that the canvas can be zoomed in and out, therefore a pixel does not necessarily have to translate to one dot on the screen.</para>
 </glossdef>
 </glossentry>
 
 <glossentry id="rgb">
-<glossterm
->RGB Kombinationen (Farbcodes)</glossterm>
-<glossdef
-><para
->RGB Kombinationen braucht man zur Bestimmung von Farben. Das <quote
->R</quote
-> bedeutet <quote
->rot</quote
->, das <quote
->G</quote
-> <quote
->grün</quote
-> und das <quote
->B</quote
-> bedeutet <quote
->blau</quote
->. Ein Beispiel für eine RGB Kombination lautet <userinput
->255,0,0</userinput
->, der erste Wert (<quote
->rot</quote
->) ist 255 und die anderen sind 0, also steht dies für ein kräftiges Rot. Jeder Wert einer RGB Kombination muss zwischen 0 und 255 liegen. Hier eine Liste von oft gebrauchten Farben: <table frame="none">
-<title
->Oft gebrauchte RGB-Kombinationen</title>
+<glossterm>RGB combinations (color codes)</glossterm>
+<glossdef><para>RGB combinations are used to describe colors. The <quote>R</quote> stand for <quote>red</quote>, the <quote>G</quote> stands for <quote>green</quote> and the <quote>B</quote> stands for <quote>blue</quote>. An example of an RGB combination is <userinput>255,0,0</userinput>: the first value (<quote>red</quote>) is 255 and the others are 0, so this represents a bright shade of red. Each value of an RGB combination has to be in the range 0 to 255. Here a small list of some often used colors:
+<table frame="none">
+<title>Often used RGB combinations</title>
 <tgroup cols="2" colsep="5" rowsep="1">
 <colspec colname="c1"/>
 <tbody>
-<row
-><entry
-><userinput
->0,0,0</userinput
-></entry
-><entry
->schwarz</entry
-></row>
-<row
-><entry
-><userinput
->255,255,255</userinput
-></entry
-><entry
->weiß</entry
-></row>
-<row
-><entry
-><userinput
->255,0,0</userinput
-></entry
-><entry
->rot</entry
-></row>
-<row
-><entry
-><userinput
->150,0,0</userinput
-></entry
-><entry
->dunkelrot</entry
-></row>
-<row
-><entry
-><userinput
->0,255,0</userinput
-></entry
-><entry
->grün</entry
-></row>
-<row
-><entry
-><userinput
->0,0,255</userinput
-></entry
-><entry
->blau</entry
-></row>
-<row
-><entry
-><userinput
->0,255,255</userinput
-></entry
-><entry
->hellblau</entry
-></row>
-<row
-><entry
-><userinput
->255,0,255</userinput
-></entry
-><entry
->pink</entry
-></row>
-<row
-><entry
-><userinput
->255,255,0</userinput
-></entry
-><entry
->gelb</entry
-></row>
+<row><entry><userinput>0,0,0</userinput></entry><entry>black</entry></row>
+<row><entry><userinput>255,255,255</userinput></entry><entry>white</entry></row>
+<row><entry><userinput>255,0,0</userinput></entry><entry>red</entry></row>
+<row><entry><userinput>150,0,0</userinput></entry><entry>dark red</entry></row>
+<row><entry><userinput>0,255,0</userinput></entry><entry>green</entry></row>
+<row><entry><userinput>0,0,255</userinput></entry><entry>blue</entry></row>
+<row><entry><userinput>0,255,255</userinput></entry><entry>light blue</entry></row>
+<row><entry><userinput>255,0,255</userinput></entry><entry>pink</entry></row>
+<row><entry><userinput>255,255,0</userinput></entry><entry>yellow</entry></row>
 </tbody>
 </tgroup>
 </table>
 </para>
-<para
->Zwei Befehle brauchen eine RGB-Kombination als Eingabe: Das sind <userinput
->papierfarbe</userinput
-> und <userinput
->stiftfarbe</userinput
->.</para
-></glossdef>
+<para>Two commands need an RGB combination as input: these commands are <userinput>canvascolor</userinput> and <userinput>pencolor</userinput>.</para></glossdef>
 </glossentry>
 
 <glossentry id="sprite">
-<glossterm
->Grafiksymbol</glossterm>
-<glossdef
-><para
->Ein Grafiksymbol ist ein kleines Bild, dass auf dem Bildschirm bewegt werden kann. Die Schildkröte ist zum Beispiel so ein Symbol. <note
-><para
->In dieser Version von &kturtle; kann die Schildkröte nicht durch ein anderes Symbol ersetzt werden. In späteren Versionen von &kturtle; wird dies möglich sein.</para
-></note
-></para
-></glossdef>
+<glossterm>sprite</glossterm>
+<glossdef><para>A sprite is a small picture that can be moved around the screen. Our beloved turtle, for instance, is a sprite.
+<note><para>With this version of &kturtle; the sprite cannot be changed from a turtle into something else. Future versions of &kturtle; will be able to do this.</para></note></para></glossdef>
 </glossentry>
 
 </glosslist>
