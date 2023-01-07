@@ -5,7 +5,8 @@
   <!ENTITY turtlescript "TurtleScript">
   <!ENTITY logo "Logo">
   <!ENTITY % addindex "INCLUDE">
-  <!ENTITY % English "INCLUDE"><!-- change language only here -->
+  <!ENTITY % German "INCLUDE"
+><!-- change language only here -->
   <!ENTITY using-kturtle SYSTEM "using-kturtle.docbook">
   <!ENTITY getting-started SYSTEM "getting-started.docbook">
   <!ENTITY programming-reference SYSTEM "programming-reference.docbook">
@@ -16,104 +17,216 @@
 <book id="kturtle" lang="&language;">
 
 <bookinfo>
-<title>The &kturtle; Handbook</title>
+<title
+>Das Handbuch zu &kturtle;</title>
 
 <authorgroup>
-<author>
-<firstname>Cies</firstname>
-<surname>Breijs</surname>
-<affiliation>
-<address><email>cies AT kde DOT nl</email></address>
+<author
+><firstname
+>Cies</firstname
+> <surname
+>Breijs</surname
+> <affiliation
+> <address
+><email
+>cies AT kde DOT nl</email
+></address>
 </affiliation>
 </author>
-<author>
-<firstname>Anne-Marie</firstname>
-<surname>Mahfouf</surname>
-<affiliation>
-<address><email>annma AT kde DOT org</email></address>
+<author
+><firstname
+>Anne-Marie</firstname
+> <surname
+>Mahfouf</surname
+> <affiliation
+> <address
+><email
+>annma AT kde DOT org</email
+></address>
 </affiliation>
 </author>
-<author>
-<firstname>Mauricio</firstname>
-<surname>Piacentini</surname>
-<affiliation>
-<address><email>piacentini AT kde DOT org</email></address>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+><email
+>piacentini AT kde DOT org</email
+></address>
 </affiliation>
 </author>
-<!-- TRANS:ROLES_OF_TRANSLATORS -->
+<othercredit role="translator"
+><firstname
+>Burkhard</firstname
+><surname
+>Lück</surname
+><affiliation
+><address
+><email
+>lueck@hube-lueck.de</email
+></address
+></affiliation
+><contrib
+>Übersetzung</contrib
+></othercredit
+> 
 </authorgroup>
 
 
 <copyright>
-<year>2004</year><year>2009</year>
-<holder>Cies Breijs</holder>
+<year
+>2004</year
+><year
+>2009</year>
+<holder
+>Cies Breijs</holder>
 </copyright>
 
 <copyright>
-<year>2004</year><year>2007</year>
-<holder>&Anne-Marie.Mahfouf;</holder>
+<year
+>2004</year
+><year
+>2007</year>
+<holder
+>&Anne-Marie.Mahfouf;</holder>
 </copyright>
 
 <copyright>
-<year>2007</year>
-<holder>Mauricio Piacentini</holder>
+<year
+>2007</year>
+<holder
+>Mauricio Piacentini</holder>
 </copyright>
 
-<legalnotice>&FDLNotice;</legalnotice>
+<legalnotice
+>&FDLNotice;</legalnotice>
 
-<date>2021-01-20</date>
-<releaseinfo>Applications 20.12</releaseinfo>
+<date
+>2021-01-20</date>
+<releaseinfo
+>Anwendungen 20.12</releaseinfo>
 
 <abstract>
-<para>&kturtle; is an educational programming environment that aims to make learning how to program as easy as possible. To achieve this &kturtle; makes all programming tools available from the user interface. The programming language used is &turtlescript; which allows its commands to be translated.</para>
+<para
+>&kturtle; ist eine Programmierumgebung mit dem Ziel, das Programmieren möglichst einfach zu lernen. Um das zu erreichen, sind in &kturtle; alle Programmwerkzeuge in der graphischen Benutzeroberfläche zu erreichen. Als Programmiersprache wird &turtlescript; verwendet, in dieser Sprache können die Befehle übersetzt werden.</para>
 </abstract>
 
 <keywordset>
-<keyword>KDE</keyword>
-<keyword>KTurtle</keyword>
-<keyword>education</keyword>
-<keyword>language</keyword>
-<keyword>native</keyword>
-<keyword>programming</keyword>
-<keyword>TurtleScript</keyword>
-<keyword>Logo</keyword>
-<keyword>turtle</keyword>
+<keyword
+>KDE</keyword>
+<keyword
+>KTurtle</keyword>
+<keyword
+>Bildung</keyword>
+<keyword
+>Sprache</keyword>
+<keyword
+>muttersprachlich</keyword>
+<keyword
+>Programmierung</keyword>
+<keyword
+>TurtleScript</keyword>
+<keyword
+>Logo</keyword>
+<keyword
+>Schildkröte</keyword>
 </keywordset>
 
 </bookinfo>
 
 <chapter id="introduction">
-<title>Introduction</title>
+<title
+>Einleitung</title>
 
-<para>&kturtle; is an educational programming environment that uses <link linkend="what-is-turtlelang">&turtlescript;</link>, 
-a programming language loosely based on and inspired by &logo;. The goal of &kturtle; is to make programming as easy and accessible as possible. This makes &kturtle; suitable for teaching kids the basics of math, geometry and...
-programming. One of the main features of &turtlescript; is the ability to translate the commands into the speaking language of the programmer.</para>
+<para
+>&kturtle; ist eine Programmierumgebung für den Unterricht mit <link linkend="what-is-turtlelang"
+>&turtlescript;</link
+>, einer Programmiersprache auf der Grundlage von &logo;. Das Ziel ist von &kturtle; ist es, die Programmierung möglichst einfach und leicht zugänglich zu machen. Daher ist &kturtle; besonders geeignet, um Kindern die Grundlagen vom Mathematik, Geometrie und Programmierung zu lehren. Die wichtigste Eigenschaft von &turtlescript; ist die Möglichkeit, die Befehle in die Muttersprache des Programmierers zu übersetzen. </para>
 
-<para>&kturtle; is named after <quote>the turtle</quote> that plays a central role in the programming environment. The student will usually instruct the turtle, using the &turtlescript; commands, to make a drawing on <link linkend="the-canvas">the canvas</link>.</para>
+<para
+>&kturtle; ist nach der <quote
+>Schildkröte</quote
+> benannt, die in der Programmierumgebung die Hauptrolle spielt. Der Benutzer programmiert die Schildkröte mit den &turtlescript;-Befehlen, um eine Zeichnung auf der <link linkend="the-canvas"
+>Zeichenfläche</link
+> zu erstellen.</para>
 
 <sect1 id="what-is-turtlelang">
-<title>What is &turtlescript;?</title>
-<para>&turtlescript;, the programming language used in &kturtle;, is inspired by the &logo; family of programming languages. The first version of &logo; was created by Seymour Papert of MIT Artificial Intelligence Laboratory in 1967 as an offshoot of the LISP programming language. From then many versions of &logo; have been released. By 1980 &logo; was gaining momentum, with versions for MSX, Commodore, Atari, Apple II and IBM PC systems. These versions were mainly for educational
-purposes. The MIT is still maintains <ulink
-url="https://el.media.mit.edu/logo-foundation/">a website on &logo;</ulink> containing a list of several popular implementation of the language.</para>
-<para>&turtlescript; shares a feature found in many other implementations of &logo;: the ability to translate the commands to suit the native language of the student. This feature makes it easier for students that have no or little understanding of English to get started. Besides this feature &kturtle; has <link linkend="features-of-kturtle">many other features</link> aimed at easing the students initial experience with programming.</para>
+<title
+>Was ist &turtlescript;?</title>
+<para
+>&turtlescript;, die in &kturtle; benutzte Programmiersprache, ist Konzepten der Programmiersprache &logo; beeinflusst. Die erste Version von &logo; wurde 1967 von Seymour Papert am MIT Artificial Intelligence Laboratory aus der  Programmiersprache Lisp entwickelt. Seit dieser Zeit sind viele Versionen von &logo; veröffentlicht worden. Im Jahr 1980 wurde &logo; bekannt durch Versionen für MSX, Commodore, Atari, Apple II und den IBM PC Computer. Diese Versionen waren für den Unterricht gedacht. Am MIT finden Sie immer noch eine Webseite für &logo; unter <ulink url="https://el.media.mit.edu/logo-foundation/"
+>https://el.media.mit.edu/logo-foundation/</ulink
+> mit einer Liste von mehreren populären Implementationen dieser Sprache.</para>
+<para
+>&turtlescript; hat wie viele Implementierungen der Sprache &logo; eine besondere Eigenschaft: Die Möglichkeit, die Befehle in die Muttersprache der Benutzer zu übersetzen. Diese Eigenschaft erleichtert Benutzern mit geringen oder keinen Englischkenntnissen den Einstieg. Außerdem hat &kturtle; <link linkend="features-of-kturtle"
+>viele weitere Eigenschaften</link
+>, die das Lernen des Programmierens für die Benutzer erleichtern.</para>
 </sect1>
 
 
 <sect1 id="features-of-kturtle">
-<title>Features of &kturtle;</title>
-<para>&kturtle; has some nice features that make starting to program a breeze. See here some of the highlights of &kturtle; feature set:
-<itemizedlist>
-<listitem><para>An integrated environment with &turtlescript; interpreter, <link linkend="the-editor">editor</link>, <link linkend="the-canvas">canvas</link> and other tools all in one application (no extra dependencies).</para></listitem>
-<listitem><para>The ability to translate the &turtlescript; commands using the translation framework of &kde;.</para></listitem>
-<listitem><para>&turtlescript; supports user defined functions, recursion and dynamic type switching.</para></listitem>
-<listitem><para>The execution can be slowed down, paused or stopped at any time.</para></listitem>
-<listitem><para>A powerful <link linkend="the-editor">editor</link> featuring intuitive syntax highlighting, line numbering, error markers, visual execution and more.</para></listitem>
-<listitem><para>The <link linkend="the-canvas">canvas</link>, where the turtle draws, can be printed or saved either as an image (PNG) or a drawing (&SVG;).</para></listitem>
-<listitem><para>Context help: help where you need it. Just press <keysym>F2</keysym> (or see <menuchoice><guimenu>Help</guimenu><guimenuitem>Help on: ...</guimenuitem></menuchoice>) to get help on the piece of code currently under your cursor.</para></listitem>
-<listitem><para>An error dialog that links the error messages to the mistakes in the program and marks them red.</para></listitem>
-<listitem><para>Simplified programming terminology.</para></listitem>
-<listitem><para>Integrated example programs to make it easy to get started. These examples are translated using &kde; translation framework.</para></listitem>
+<title
+>Eigenschaften von &kturtle;</title>
+<para
+>&kturtle; hat einige besondere Eigenschaften, die den Einstieg in die Programmierung sehr einfach machen, hervorzuheben sind: <itemizedlist>
+<listitem
+><para
+>Eine integrierte Entwicklungsumgebung mit dem &turtlescript;-Interpreter, einem <link linkend="the-editor"
+>Editor</link
+>, der <link linkend="the-canvas"
+>Zeichenfläche</link
+> und weiteren Werkzeugen in einem Programm vereint, ohne zusätzliche Abhängigkeiten.</para
+></listitem>
+<listitem
+><para
+>Die Möglichkeit, die Befehle der Sprache &turtlescript; mit den üblichen Verfahren in &kde; zu übersetzen.</para
+></listitem>
+<listitem
+><para
+>&turtlescript; unterstützt benutzerdefinierte Funktionen, Rekursion und dynamische Typzuweisung.</para
+></listitem>
+<listitem
+><para
+>Die Befehle können Sie jederzeit langsamer ausführen lassen, anhalten oder abbrechen.</para
+></listitem>
+<listitem
+><para
+>Ein leistungsfähiger <link linkend="the-editor"
+>Editor</link
+> mit intuitiver Syntaxhervorhebung, Zeilennummerierung, Fehlermarkierung, visueller Kontrolle der Ausführung und mehr.</para
+></listitem>
+<listitem
+><para
+>Die <link linkend="the-canvas"
+>Zeichenfläche</link
+>, auf der die Schildkröte zeichnet, kann entweder als Rasterbild (PNG) oder als Vektorzeichnung (&SVG;) gedruckt und gespeichert werden.</para
+></listitem>
+<listitem
+><para
+>Kontexthilfe: Drücken Sie <keysym
+>F2</keysym
+> oder benutzen Sie <menuchoice
+><guimenu
+>Hilfe</guimenu
+><guimenuitem
+>Hilfe zu: ...</guimenuitem
+></menuchoice
+>, um zu dem aktuellen Quelltext unter dem Cursor eine passende Erläuterung zu erhalten.</para
+></listitem>
+<listitem
+><para
+>Ein Fehlerdialog, der auf die Fehler im Programm verweist und sie rot markiert.</para
+></listitem>
+<listitem
+><para
+>Einfache Programmiersprache.</para
+></listitem>
+<listitem
+><para
+>Integrierte Beispielprogramme, die den Einstieg erleichtern. Diese Beispiele werden mit dem üblichen Verfahren in &kde; übersetzt.</para
+></listitem>
 </itemizedlist>
 </para>
 </sect1>
@@ -131,41 +244,51 @@ url="https://el.media.mit.edu/logo-foundation/">a website on &logo;</ulink> cont
 
 <chapter id="credits">
 
-<title>Credits and License</title>
+<title
+>Danksagungen und Lizenz</title>
 
-<para>
-&kturtle;
-</para>
-<para>Software copyright 2003-2007 Cies Breijs <email>cies AT kde DOT nl</email></para>
+<para
+>&kturtle; </para>
+<para
+>Programm Copyright 2003-2007 Cies Breijs <email
+>cies AT kde DOT nl</email
+></para>
 
-<para>Documentation copyright 2004, 2007, 2009
-<itemizedlist>
-<listitem><para>
-Cies Breijs <email>cies AT kde DOT nl</email>
-</para></listitem>
-<listitem><para>
-&Anne-Marie.Mahfouf; &Anne-Marie.Mahfouf.mail;
-</para></listitem>
-<listitem><para>Some proofreading changes by &Philip.Rodrigues;
-&Philip.Rodrigues.mail;</para>
+<para
+>Copyright der Dokumentation 2004, 2007, 2009 <itemizedlist>
+<listitem
+><para
+>Cies Breijs <email
+>cies AT kde DOT nl</email
+> </para
+></listitem>
+<listitem
+><para
+>&Anne-Marie.Mahfouf; &Anne-Marie.Mahfouf.mail; </para
+></listitem>
+<listitem
+><para
+>Korrektur gelesen von &Philip.Rodrigues; &Philip.Rodrigues.mail;</para>
 </listitem>
-<listitem><para>Updated translation how-to and some proofreading changes by
-Andrew Coles <email>andrew_coles AT yahoo DOT co DOT uk</email></para>
+<listitem
+><para
+>Überarbeitung der Übersetzerdokumentation und Korrekturen von Andrew Coles <email
+>andrew_coles AT yahoo DOT co DOT uk</email
+></para>
 </listitem>
 </itemizedlist>
 </para>
 
-<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
-
-&underFDL;
-
-&underGPL;
-
-</chapter>
+<para
+>Deutsche Übersetzung Burkhard Lück <email
+>lueck@hube-lueck.de</email
+></para
+> &underFDL; &underGPL; </chapter>
 
 <!--&documentation.index; -->
 <index id='command-index'>
-<title>Command Index</title>
+<title
+>Index der &turtlescript;-Befehle</title>
 </index>
 </book>
 <!--
