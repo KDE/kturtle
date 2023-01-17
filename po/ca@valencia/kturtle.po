@@ -2182,7 +2182,7 @@ msgstr "Gràfics Vectorials Escalables"
 #, kde-format
 msgctxt "@title:window"
 msgid "Save code as HTML"
-msgstr "Guardada del codi com a HTML"
+msgstr "Guardeu el codi com a HTML"
 
 #: mainwindow.cpp:1040
 #, kde-format
