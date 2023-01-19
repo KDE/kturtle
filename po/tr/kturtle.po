@@ -7,13 +7,13 @@
 # Renan Cakirerk, 2010.
 # obsoleteman <tulliana@gmail.com>, 2008-2009.
 # Volkan Gezer <volkangezer@gmail.com>, 2013-2014, 2017.
-# Emir SARI <emir_sari@icloud.com>, 2022.
+# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeedu-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-01 00:41+0000\n"
-"PO-Revision-Date: 2022-11-24 17:05+0300\n"
+"PO-Revision-Date: 2023-01-18 22:31+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -325,39 +325,39 @@ msgid "The %2 command was called with %3 but only accepts 1 parameter."
 msgid_plural ""
 "The %2 command was called with %3 but only accepts %1 parameters."
 msgstr[0] ""
-"%2 komutu %3 ile çağrıldı ama bu komut sadece %1 parametre kabul eder."
+"%2 komutu %3 ile çağrıldı ama bu komut yalnızca %1 parametre kabul eder."
 msgstr[1] ""
-"%2 komutu %3 ile çağrıldı ama bu komut sadece %1 parametre kabul eder."
+"%2 komutu %3 ile çağrıldı ama bu komut yalnızca %1 parametre kabul eder."
 
 #: interpreter/executer.cpp:292
 #, kde-format
 msgid "The %1 command only accepts a string as its parameter."
-msgstr "%1 komutu parametre olarak sadece dizi kabul eder."
+msgstr "%1 komutu parametre olarak yalnızca dizi kabul eder."
 
 #: interpreter/executer.cpp:294
 #, kde-format
 msgid "The %1 command only accepts strings as its parameters."
-msgstr "%1 komutu parametre olarak sadece dizileri kabul eder."
+msgstr "%1 komutu parametre olarak yalnızca dizileri kabul eder."
 
 #: interpreter/executer.cpp:299
 #, kde-format
 msgid "The %1 command only accepts a number as its parameter."
-msgstr "%1 komutu parametre olarak sadece sayı kabul eder."
+msgstr "%1 komutu parametre olarak yalnızca sayı kabul eder."
 
 #: interpreter/executer.cpp:301
 #, kde-format
 msgid "The %1 command only accepts numbers as its parameters."
-msgstr "%1 komutuna parametre olarak sadece sayıları kabul eder."
+msgstr "%1 komutuna parametre olarak yalnızca sayıları kabul eder."
 
 #: interpreter/executer.cpp:306
 #, kde-format
 msgid "The %1 command only accepts an answer as its parameter."
-msgstr "%1 komutu parametre olarak sadece \"cevap\" kabul eder."
+msgstr "%1 komutu parametre olarak yalnızca \"cevap\" kabul eder."
 
 #: interpreter/executer.cpp:308
 #, kde-format
 msgid "The %1 command only accepts answers as its parameters."
-msgstr "%1 komutu parametre olarak sadece cevapları kabul eder."
+msgstr "%1 komutu parametre olarak yalnızca cevapları kabul eder."
 
 #: interpreter/executer.cpp:386
 #, kde-format
@@ -1438,7 +1438,7 @@ msgid ""
 "\" (only works in testing mode)"
 msgstr ""
 "Bir dil koduyla yerelleştirilmiş dili belirtir, varsayılan kod \"en_US\" "
-"olarak ayarlanmıştır (sadece deneme kipinde çalışır)"
+"olarak ayarlanmıştır (yalnızca deneme kipinde çalışır)"
 
 #. i18n("Only tokenizes the turtle code (only works in testing mode)")));
 #: main.cpp:67
@@ -1447,8 +1447,8 @@ msgid ""
 "Translates turtle code to embeddable C++ example strings (for developers "
 "only)"
 msgstr ""
-"KTurtle kodunu gömülü C++ örnek dizilerine dönüştürür (sadece geliştiriciler "
-"için)"
+"KTurtle kodunu gömülü C++ örnek dizilerine dönüştürür (yalnızca "
+"geliştiriciler için)"
 
 #: mainwindow.cpp:62
 #, kde-format
