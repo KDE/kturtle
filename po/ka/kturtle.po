@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-01 00:41+0000\n"
-"PO-Revision-Date: 2023-01-21 19:34+0100\n"
+"PO-Revision-Date: 2023-01-23 08:37+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1937,7 +1937,7 @@ msgstr ""
 #, kde-format
 msgctxt "@option:radio"
 msgid "S&tep-by-Step"
-msgstr ""
+msgstr "&ნაბიჯ-ნაბიჯ"
 
 #: mainwindow.cpp:475
 #, kde-format
