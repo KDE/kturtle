@@ -15,7 +15,9 @@
 #include <KLocalizedString>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <Kdelibs4ConfigMigrator>
+#endif
 
 #include "mainwindow.h"  // for gui mode
 

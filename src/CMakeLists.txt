@@ -58,17 +58,17 @@ target_sources(kturtle PRIVATE
 )
 
 target_link_libraries(kturtle
-    KF5::KIOCore
-    KF5::NewStuffWidgets
-    KF5::I18n
+    KF${KF_MAJOR_VERSION}::KIOCore
+    KF${KF_MAJOR_VERSION}::NewStuffWidgets
+    KF${KF_MAJOR_VERSION}::I18n
     Qt${QT_MAJOR_VERSION}::Core
     Qt${QT_MAJOR_VERSION}::Gui
     Qt${QT_MAJOR_VERSION}::Xml
     Qt${QT_MAJOR_VERSION}::Svg
     Qt${QT_MAJOR_VERSION}::PrintSupport
-    KF5::TextWidgets
-    KF5::Crash
-    KF5::XmlGui
+    KF${KF_MAJOR_VERSION}::TextWidgets
+    KF${KF_MAJOR_VERSION}::Crash
+    KF${KF_MAJOR_VERSION}::XmlGui
 )
 
 
