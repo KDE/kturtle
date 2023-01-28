@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-01 00:41+0000\n"
+"POT-Creation-Date: 2023-01-28 00:54+0000\n"
 "PO-Revision-Date: 2021-11-16 16:57+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -1342,17 +1342,17 @@ msgstr "&Hjälp"
 msgid "Main Toolbar"
 msgstr "Huvudverktygsrad"
 
-#: main.cpp:47
+#: main.cpp:49
 #, kde-format
 msgid "KTurtle"
 msgstr "Kturtle"
 
-#: main.cpp:49
+#: main.cpp:51
 #, kde-format
 msgid "https://edu.kde.org/kturtle"
 msgstr "https://edu.kde.org/kturtle"
 
-#: main.cpp:50
+#: main.cpp:52
 #, kde-format
 msgid ""
 "KTurtle is an educational programming environment that aims to make learning "
@@ -1366,42 +1366,42 @@ msgstr ""
 "Programspråket som används är Turtlescript, vilket låter sina kommandon bli "
 "översatta."
 
-#: main.cpp:51
+#: main.cpp:53
 #, kde-format
 msgid "(c) 2003-2009 Cies Breijs"
 msgstr "© 2003-2009 Cies Breijs"
 
-#: main.cpp:53
+#: main.cpp:55
 #, kde-format
 msgid "Cies Breijs"
 msgstr "Cies Breijs"
 
-#: main.cpp:53
+#: main.cpp:55
 #, kde-format
 msgid "Initiator and core developer"
 msgstr "Initiativtagare och huvudutvecklare"
 
-#: main.cpp:54
+#: main.cpp:56
 #, kde-format
 msgid "Niels Slot"
 msgstr "Niels Slot"
 
-#: main.cpp:54 main.cpp:55
+#: main.cpp:56 main.cpp:57
 #, kde-format
 msgid "Core developer"
 msgstr "Huvudutvecklare"
 
-#: main.cpp:55
+#: main.cpp:57
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "Mauricio Piacentini"
 
-#: main.cpp:62
+#: main.cpp:64
 #, kde-format
 msgid "File or URL to open (in the GUI mode)"
 msgstr "Fil eller webbadress att öppna (i grafiskt läge)"
 
-#: main.cpp:63
+#: main.cpp:65
 #, kde-format
 msgid ""
 "Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test "
@@ -1410,7 +1410,7 @@ msgstr ""
 "Startar Kturtle i D-Bus läge (utan grafisk miljö), bra för automatiska "
 "testskript av enheter"
 
-#: main.cpp:64
+#: main.cpp:66
 #, kde-format
 msgid ""
 "Starts KTurtle in testing mode (without a GUI), directly runs the specified "
@@ -1419,7 +1419,7 @@ msgstr ""
 "Startar Kturtle i testläge (utan grafisk miljö), och kör den angivna lokala "
 "filen direkt"
 
-#: main.cpp:65
+#: main.cpp:67
 #, kde-format
 msgid ""
 "Specifies the localization language by a language code, defaults to \"en_US"
@@ -1429,7 +1429,7 @@ msgstr ""
 "testläge)"
 
 #. i18n("Only tokenizes the turtle code (only works in testing mode)")));
-#: main.cpp:67
+#: main.cpp:69
 #, kde-format
 msgid ""
 "Translates turtle code to embeddable C++ example strings (for developers "
