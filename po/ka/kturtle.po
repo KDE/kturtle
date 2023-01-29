@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-28 00:54+0000\n"
-"PO-Revision-Date: 2023-01-20 07:11+0100\n"
+"PO-Revision-Date: 2023-01-28 07:21+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -134,7 +134,7 @@ msgstr "გახსნა"
 #: editor.cpp:148 editor.cpp:256
 #, kde-format
 msgid "Turtle code files"
-msgstr ""
+msgstr "Turtle-ის კოდის ფაილები"
 
 #: editor.cpp:148 editor.cpp:256 mainwindow.cpp:1014 mainwindow.cpp:1030
 #: mainwindow.cpp:1040
@@ -289,12 +289,12 @@ msgstr "არაფერი"
 #: interpreter/executer.cpp:72
 #, kde-format
 msgid "Cannot return outside a function. "
-msgstr ""
+msgstr "ფუნქციის გარედან ვერ დაბრუნდებით. "
 
 #: interpreter/executer.cpp:262
 #, kde-format
 msgid "The %1 command accepts no parameters."
-msgstr ""
+msgstr "ბრძანებას %1 პარამეტრები არ სჭირდება."
 
 #: interpreter/executer.cpp:272
 #, kde-format
@@ -538,7 +538,7 @@ msgstr ""
 #: interpreter/parser.cpp:123
 #, kde-format
 msgid "Expected 'to' after 'for'"
-msgstr ""
+msgstr "'for'-ის შემდეგ 'to'-ს მოველოდი"
 
 #: interpreter/parser.cpp:126
 #, kde-format
@@ -560,12 +560,12 @@ msgstr ""
 #: interpreter/parser.cpp:616
 #, kde-format
 msgid "'for' was called wrongly"
-msgstr ""
+msgstr "'for' არასწორადაა გამოძახებული"
 
 #: interpreter/parser.cpp:686
 #, kde-format
 msgid "Expected a scope after the 'learn' command"
-msgstr ""
+msgstr "'learn' ბრძანების შემდეგ ფრჩხილებს მოველოდი"
 
 #: interpreter/translator.cpp:96
 #, kde-format
@@ -1363,7 +1363,7 @@ msgstr "Cies Breijs"
 #: main.cpp:55
 #, kde-format
 msgid "Initiator and core developer"
-msgstr ""
+msgstr "საწყისი და ძირითადი პროგრამისტი"
 
 #: main.cpp:56
 #, kde-format
@@ -1473,7 +1473,7 @@ msgstr "მიმდინარე ფაილის სხვა სახე
 #: mainwindow.cpp:203
 #, kde-format
 msgid "Save File As: Save the current file under a different name"
-msgstr ""
+msgstr "შენახვა, როგორც: მიმდინარე ფაილის სხვა სახელით შენახვა"
 
 #: mainwindow.cpp:206
 #, kde-format
@@ -1483,7 +1483,7 @@ msgstr "HTML-ში &გატანა..."
 #: mainwindow.cpp:207
 #, kde-format
 msgid "Export the contents of the editor as HTML"
-msgstr ""
+msgstr "რედაქტორის შემცველობის HTML-ის სახით გატანა"
 
 #: mainwindow.cpp:208
 #, kde-format
@@ -1568,7 +1568,7 @@ msgstr "რედაქტორში კოდის სრულად მო
 #: mainwindow.cpp:250
 #, kde-format
 msgid "Select All: Select all the code in the editor"
-msgstr ""
+msgstr "ყველაფრის მონიშვნა: რედაქტორში კოდის სრულად მონიშვნა"
 
 #: mainwindow.cpp:253
 #, kde-format
@@ -1578,7 +1578,7 @@ msgstr "თავზე გადაწერის რეჟიმი"
 #: mainwindow.cpp:255
 #, kde-format
 msgid "Toggle between the 'insert' and 'overwrite' mode"
-msgstr ""
+msgstr "'ჩასმისა' და 'თავზე გაგადაწერის' რეჟიმებს შორის გადართვა"
 
 #: mainwindow.cpp:256
 #, kde-format
@@ -1588,22 +1588,22 @@ msgstr ""
 #: mainwindow.cpp:263
 #, kde-format
 msgid "Search through the code in the editor"
-msgstr ""
+msgstr "რედაქტორში კოდში ძებნა"
 
 #: mainwindow.cpp:264
 #, kde-format
 msgid "Find: Search through the code in the editor"
-msgstr ""
+msgstr "ძებნა: რედაქტორში კოდში ძებნა"
 
 #: mainwindow.cpp:267
 #, kde-format
 msgid "Continue searching through the code in the editor"
-msgstr ""
+msgstr "რედაქტორში კოდში ძებნის გაგრძელება"
 
 #: mainwindow.cpp:268
 #, kde-format
 msgid "Find Next: Continue searching through the code in the editor"
-msgstr ""
+msgstr "შემდეგის პოვნა: რედაქტორში კოდში ძებნის გაგრძელება"
 
 #: mainwindow.cpp:271
 #, kde-format
@@ -1730,7 +1730,7 @@ msgstr "&ფერის ამრჩევი..."
 #: mainwindow.cpp:336
 #, kde-format
 msgid "Shows the color picker dialog"
-msgstr ""
+msgstr "ფერის ამრჩევის ფანჯრის ჩვენება"
 
 #: mainwindow.cpp:337
 #, kde-format
@@ -1745,7 +1745,7 @@ msgstr "&რედაქტორის ჩვენება"
 #: mainwindow.cpp:343
 #, kde-format
 msgid "Show or hide the Code Editor"
-msgstr ""
+msgstr "კოდის რედაქტორის ჩვენება ან დამალვა"
 
 #: mainwindow.cpp:344
 #, kde-format
@@ -1775,12 +1775,12 @@ msgstr "&შეცდომების ჩვენება"
 #: mainwindow.cpp:363
 #, kde-format
 msgid "Show or hide the Errors tab"
-msgstr ""
+msgstr "შეცდომების ჩანართის ჩვენება ან დამალვა"
 
 #: mainwindow.cpp:364
 #, kde-format
 msgid "Show Errors: Show or hide the Errors tab"
-msgstr ""
+msgstr "შეცდომების ჩვენება: შეცდომების ჩანართის ჩვენება ან დამალვა"
 
 #. i18n("Show &Console"), this);
 #. actionCollection()->addAction("show_console", a);
@@ -1793,7 +1793,7 @@ msgstr ""
 #: mainwindow.cpp:378
 #, kde-format
 msgid "Show &Line Numbers"
-msgstr ""
+msgstr "&ხაზის ნომრების ჩვენება"
 
 #: mainwindow.cpp:380
 #, kde-format
@@ -1823,7 +1823,7 @@ msgstr "დახმარება"
 #: mainwindow.cpp:399
 #, kde-format
 msgid "Help: Open manual for KTurtle"
-msgstr ""
+msgstr "დახმარება: KTurtle-ის სახელმძღვანელოს გახსნა"
 
 #: mainwindow.cpp:403
 #, kde-format
@@ -1878,12 +1878,12 @@ msgstr "&სრული სიჩქარე"
 #: mainwindow.cpp:439
 #, kde-format
 msgid "Run the program at full speed"
-msgstr ""
+msgstr "პროგრამის სრული სიჩქარით გაშვება"
 
 #: mainwindow.cpp:440
 #, kde-format
 msgid "Full Speed: Run the program at full speed"
-msgstr ""
+msgstr "სრული სიჩქარე: პროგრამის სრული სიჩქარით გაშვება"
 
 #: mainwindow.cpp:445
 #, kde-format
@@ -1894,12 +1894,12 @@ msgstr "&ნელი"
 #: mainwindow.cpp:448
 #, kde-format
 msgid "Run the program at a slow speed"
-msgstr ""
+msgstr "პროგრამის დაბალი სიჩქარით გაშვება"
 
 #: mainwindow.cpp:449
 #, kde-format
 msgid "Slow Speed: Run the program at a slow speed"
-msgstr ""
+msgstr "დაბალი სიჩქარე: პროგრამის დაბალი სიჩქარით გაშვება"
 
 #: mainwindow.cpp:454
 #, kde-format
@@ -1910,12 +1910,12 @@ msgstr "&უფრო ნელი"
 #: mainwindow.cpp:457
 #, kde-format
 msgid "Run the program at a slower speed"
-msgstr ""
+msgstr "პროგრამის უფრო დაბალი სიჩქარით გაშვება"
 
 #: mainwindow.cpp:458
 #, kde-format
 msgid "Slower Speed: Run the program at a slower speed"
-msgstr ""
+msgstr "უფრო ნელა გაშვება პროგრამის უფრო დაბალი სიჩქარით გაშვება"
 
 #: mainwindow.cpp:463
 #, kde-format
@@ -1926,28 +1926,28 @@ msgstr "&ყველაზე ნელი"
 #: mainwindow.cpp:466
 #, kde-format
 msgid "Run the program at the slowest speed"
-msgstr ""
+msgstr "პროგრამის ყველაზე დაბალი სიჩქარით გაშვება"
 
 #: mainwindow.cpp:467
 #, kde-format
 msgid "Slowest Speed: Run the program at the slowest speed"
-msgstr ""
+msgstr "ყველაზე დაბალი სიჩქარე: პროგრამის ყველაზე დაბალი სიჩქარით გაშვება"
 
 #: mainwindow.cpp:472
 #, kde-format
 msgctxt "@option:radio"
 msgid "S&tep-by-Step"
-msgstr ""
+msgstr "&ნაბიჯ-ნაბიჯ"
 
 #: mainwindow.cpp:475
 #, kde-format
 msgid "Run the program one step at a time"
-msgstr ""
+msgstr "პროგრამის ნაბიჯ-ნაბიჯ გაშვება"
 
 #: mainwindow.cpp:476
 #, kde-format
 msgid "Step Speed: Run the program one step at a time"
-msgstr ""
+msgstr "ნაბიჯებით: პროგრამის ნაბიჯ-ნაბიჯ გაშვება"
 
 #: mainwindow.cpp:496
 #, kde-format
@@ -1985,7 +1985,7 @@ msgstr ""
 #: mainwindow.cpp:655
 #, kde-format
 msgid "Switch to the %1 dictionary"
-msgstr ""
+msgstr "%1 ლექსიკონზე გადართვა"
 
 #: mainwindow.cpp:734
 #, kde-format
@@ -2000,7 +2000,7 @@ msgstr " ჩასმ "
 #: mainwindow.cpp:742
 #, kde-format
 msgid "<nothing under cursor>"
-msgstr ""
+msgstr "<კურსორის ქვეშ არაფერია>"
 
 #: mainwindow.cpp:743
 #, kde-format
