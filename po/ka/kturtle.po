@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-28 00:54+0000\n"
-"PO-Revision-Date: 2023-01-28 07:21+0100\n"
+"PO-Revision-Date: 2023-01-30 10:41+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -300,46 +300,46 @@ msgstr "ბრძანებას %1 პარამეტრები არ 
 #, kde-format
 msgid "The %2 command was called with %3 but needs 1 parameter."
 msgid_plural "The %2 command was called with %3 but needs %1 parameters."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ბრძანება %2 გაშვებულია %3 პარამეტრით, მაგრამ სჭირდება 1."
+msgstr[1] "ბრძანება %2 გაშვებულია %3 პარამეტრით, მაგრამ სჭირდება %1."
 
 #: interpreter/executer.cpp:274
 #, kde-format
 msgid "The %2 command was called with %3 but only accepts 1 parameter."
 msgid_plural ""
 "The %2 command was called with %3 but only accepts %1 parameters."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ბრძანება %2 გაშვებულია %3 პარამეტრით, მაგრამ სჭირდება 1."
+msgstr[1] "ბრძანება %2 გაშვებულია %3 პარამეტრით, მაგრამ სჭირდება %1."
 
 #: interpreter/executer.cpp:292
 #, kde-format
 msgid "The %1 command only accepts a string as its parameter."
-msgstr ""
+msgstr "%1 ბრძანება პარამეტრად მხოლოდ სტრიქონს იღებს."
 
 #: interpreter/executer.cpp:294
 #, kde-format
 msgid "The %1 command only accepts strings as its parameters."
-msgstr ""
+msgstr "%1 ბრძანება პარამეტრად მხოლოდ სტრიქონებს იღებს."
 
 #: interpreter/executer.cpp:299
 #, kde-format
 msgid "The %1 command only accepts a number as its parameter."
-msgstr ""
+msgstr "%1 ბრძანება პარამეტრად მხოლოდ რიცხვს იღებს."
 
 #: interpreter/executer.cpp:301
 #, kde-format
 msgid "The %1 command only accepts numbers as its parameters."
-msgstr ""
+msgstr "%1 ბრძანება პარამეტრად მხოლოდ რიცხვებს იღებს."
 
 #: interpreter/executer.cpp:306
 #, kde-format
 msgid "The %1 command only accepts an answer as its parameter."
-msgstr ""
+msgstr "%1 ბრძანება პარამეტრად მხოლოდ პასუხს იღებს."
 
 #: interpreter/executer.cpp:308
 #, kde-format
 msgid "The %1 command only accepts answers as its parameters."
-msgstr ""
+msgstr "%1 ბრძანება პარამეტრად მხოლოდ პასუხებს იღებს."
 
 #: interpreter/executer.cpp:386
 #, kde-format
