@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-01 00:41+0000\n"
-"PO-Revision-Date: 2023-01-25 07:22+0100\n"
+"PO-Revision-Date: 2023-02-08 08:20+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -134,7 +134,7 @@ msgstr "გახსნა"
 #: editor.cpp:148 editor.cpp:256
 #, kde-format
 msgid "Turtle code files"
-msgstr ""
+msgstr "Turtle-ის კოდის ფაილები"
 
 #: editor.cpp:148 editor.cpp:256 mainwindow.cpp:1014 mainwindow.cpp:1030
 #: mainwindow.cpp:1040
@@ -289,57 +289,57 @@ msgstr "არაფერი"
 #: interpreter/executer.cpp:72
 #, kde-format
 msgid "Cannot return outside a function. "
-msgstr ""
+msgstr "ფუნქციის გარედან ვერ დაბრუნდებით. "
 
 #: interpreter/executer.cpp:262
 #, kde-format
 msgid "The %1 command accepts no parameters."
-msgstr ""
+msgstr "ბრძანებას %1 პარამეტრები არ სჭირდება."
 
 #: interpreter/executer.cpp:272
 #, kde-format
 msgid "The %2 command was called with %3 but needs 1 parameter."
 msgid_plural "The %2 command was called with %3 but needs %1 parameters."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ბრძანება %2 გაშვებულია %3 პარამეტრით, მაგრამ სჭირდება 1."
+msgstr[1] "ბრძანება %2 გაშვებულია %3 პარამეტრით, მაგრამ სჭირდება %1."
 
 #: interpreter/executer.cpp:274
 #, kde-format
 msgid "The %2 command was called with %3 but only accepts 1 parameter."
 msgid_plural ""
 "The %2 command was called with %3 but only accepts %1 parameters."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ბრძანება %2 გაშვებულია %3 პარამეტრით, მაგრამ სჭირდება 1."
+msgstr[1] "ბრძანება %2 გაშვებულია %3 პარამეტრით, მაგრამ სჭირდება %1."
 
 #: interpreter/executer.cpp:292
 #, kde-format
 msgid "The %1 command only accepts a string as its parameter."
-msgstr ""
+msgstr "%1 ბრძანება პარამეტრად მხოლოდ სტრიქონს იღებს."
 
 #: interpreter/executer.cpp:294
 #, kde-format
 msgid "The %1 command only accepts strings as its parameters."
-msgstr ""
+msgstr "%1 ბრძანება პარამეტრად მხოლოდ სტრიქონებს იღებს."
 
 #: interpreter/executer.cpp:299
 #, kde-format
 msgid "The %1 command only accepts a number as its parameter."
-msgstr ""
+msgstr "%1 ბრძანება პარამეტრად მხოლოდ რიცხვს იღებს."
 
 #: interpreter/executer.cpp:301
 #, kde-format
 msgid "The %1 command only accepts numbers as its parameters."
-msgstr ""
+msgstr "%1 ბრძანება პარამეტრად მხოლოდ რიცხვებს იღებს."
 
 #: interpreter/executer.cpp:306
 #, kde-format
 msgid "The %1 command only accepts an answer as its parameter."
-msgstr ""
+msgstr "%1 ბრძანება პარამეტრად მხოლოდ პასუხს იღებს."
 
 #: interpreter/executer.cpp:308
 #, kde-format
 msgid "The %1 command only accepts answers as its parameters."
-msgstr ""
+msgstr "%1 ბრძანება პარამეტრად მხოლოდ პასუხებს იღებს."
 
 #: interpreter/executer.cpp:386
 #, kde-format
@@ -418,7 +418,7 @@ msgstr "ოპერაცია '<=' ორ ცვლადს მოითხ�
 #: interpreter/executer.cpp:708
 #, kde-format
 msgid "You need two numbers or string to do an addition"
-msgstr ""
+msgstr "მისამატებლად ორი რიცხვი ან სტრიქონია საჭირო"
 
 #: interpreter/executer.cpp:720
 #, kde-format
@@ -478,12 +478,12 @@ msgstr "ხარისხში ასაყვანად ორი რიც
 #: interpreter/executer.cpp:780
 #, kde-format
 msgid "The result of an exponentiation was too large"
-msgstr ""
+msgstr "ექსპონენტის შედეგი ძალიან დიდია"
 
 #: interpreter/executer.cpp:786
 #, kde-format
 msgid "You tried to raise a non-number to a power, '%1'"
-msgstr ""
+msgstr "სცადეთ არა-რიცხვითი მნიშვნელობა ხარისხში აგეყვანათ. '%1'"
 
 #: interpreter/executer.cpp:788
 #, kde-format
@@ -528,7 +528,7 @@ msgstr ""
 #: interpreter/parser.cpp:115
 #, kde-format
 msgid "Expected an assignment, '=', after the variable '%1'"
-msgstr ""
+msgstr "ცვლადის ('%1') შემდეგ მინიჭებას '=' ველოდებოდი"
 
 #: interpreter/parser.cpp:119
 #, kde-format
@@ -538,7 +538,7 @@ msgstr ""
 #: interpreter/parser.cpp:123
 #, kde-format
 msgid "Expected 'to' after 'for'"
-msgstr ""
+msgstr "'for'-ის შემდეგ 'to'-ს მოველოდი"
 
 #: interpreter/parser.cpp:126
 #, kde-format
@@ -560,12 +560,12 @@ msgstr ""
 #: interpreter/parser.cpp:616
 #, kde-format
 msgid "'for' was called wrongly"
-msgstr ""
+msgstr "'for' არასწორადაა გამოძახებული"
 
 #: interpreter/parser.cpp:686
 #, kde-format
 msgid "Expected a scope after the 'learn' command"
-msgstr ""
+msgstr "'learn' ბრძანების შემდეგ ფრჩხილებს მოველოდი"
 
 #: interpreter/translator.cpp:96
 #, kde-format
@@ -1383,7 +1383,7 @@ msgstr "Mauricio Piacentini"
 #: main.cpp:62
 #, kde-format
 msgid "File or URL to open (in the GUI mode)"
-msgstr ""
+msgstr "გასახსნელი ფაილი ან URL (გრაფიკულ რეჟიმში)"
 
 #: main.cpp:63
 #, kde-format
@@ -1473,7 +1473,7 @@ msgstr "მიმდინარე ფაილის სხვა სახე
 #: mainwindow.cpp:203
 #, kde-format
 msgid "Save File As: Save the current file under a different name"
-msgstr ""
+msgstr "შენახვა, როგორც: მიმდინარე ფაილის სხვა სახელით შენახვა"
 
 #: mainwindow.cpp:206
 #, kde-format
@@ -1483,12 +1483,12 @@ msgstr "HTML-ში &გატანა..."
 #: mainwindow.cpp:207
 #, kde-format
 msgid "Export the contents of the editor as HTML"
-msgstr ""
+msgstr "რედაქტორის შემცველობის HTML-ის სახით გატანა"
 
 #: mainwindow.cpp:208
 #, kde-format
 msgid "Export to HTML: Export the contents of the editor as HTML"
-msgstr ""
+msgstr "HTML-ში გატანა რედაქტორის შემცველობის HTML-ის სახით გატანა"
 
 #: mainwindow.cpp:212
 #, kde-format
@@ -1553,12 +1553,12 @@ msgstr "კოპირება: მონიშნული ტექსტი
 #: mainwindow.cpp:245
 #, kde-format
 msgid "Paste the clipboard's content into the current selection"
-msgstr ""
+msgstr "ბუფერის შემცველობის მიმდინარე მონიშნულში ჩასმა"
 
 #: mainwindow.cpp:246
 #, kde-format
 msgid "Paste: Paste the clipboard's content into the current selection"
-msgstr ""
+msgstr "ჩასმა: გაცვლის ბაფერის მიმდინარე პოზიციაზე ჩასმა"
 
 #: mainwindow.cpp:249
 #, kde-format
@@ -1568,7 +1568,7 @@ msgstr "რედაქტორში კოდის სრულად მო
 #: mainwindow.cpp:250
 #, kde-format
 msgid "Select All: Select all the code in the editor"
-msgstr ""
+msgstr "ყველაფრის მონიშვნა: რედაქტორში კოდის სრულად მონიშვნა"
 
 #: mainwindow.cpp:253
 #, kde-format
@@ -1578,37 +1578,39 @@ msgstr "თავზე გადაწერის რეჟიმი"
 #: mainwindow.cpp:255
 #, kde-format
 msgid "Toggle between the 'insert' and 'overwrite' mode"
-msgstr ""
+msgstr "'ჩასმისა' და 'თავზე გაგადაწერის' რეჟიმებს შორის გადართვა"
 
 #: mainwindow.cpp:256
 #, kde-format
 msgid "Overwrite Mode: Toggle between the 'insert' and 'overwrite' mode"
 msgstr ""
+"თავზე გადაწერის რეჟიმი: 'ჩასმისა' და 'თავზე გადაწერის' რეჟიმებს შორის "
+"გადართვა"
 
 #: mainwindow.cpp:263
 #, kde-format
 msgid "Search through the code in the editor"
-msgstr ""
+msgstr "რედაქტორში კოდში ძებნა"
 
 #: mainwindow.cpp:264
 #, kde-format
 msgid "Find: Search through the code in the editor"
-msgstr ""
+msgstr "ძებნა: რედაქტორში კოდში ძებნა"
 
 #: mainwindow.cpp:267
 #, kde-format
 msgid "Continue searching through the code in the editor"
-msgstr ""
+msgstr "რედაქტორში კოდში ძებნის გაგრძელება"
 
 #: mainwindow.cpp:268
 #, kde-format
 msgid "Find Next: Continue searching through the code in the editor"
-msgstr ""
+msgstr "შემდეგის პოვნა: რედაქტორში კოდში ძებნის გაგრძელება"
 
 #: mainwindow.cpp:271
 #, kde-format
 msgid "Continue searching backwards through the code in the editor"
-msgstr ""
+msgstr "რედაქტორში კოდში უკან ძებნის გაგრძელება"
 
 #: mainwindow.cpp:272
 #, kde-format
@@ -1624,12 +1626,12 @@ msgstr "&გამოსახულების(PNG) სახით გატ�
 #: mainwindow.cpp:282
 #, kde-format
 msgid "Export the current canvas to a PNG raster image"
-msgstr ""
+msgstr "მიმდინარე ტილოს PNG რასტრულ გამოსახულებაში გატანა"
 
 #: mainwindow.cpp:283
 #, kde-format
 msgid "Export to PNG: Export the current canvas to a PNG raster image"
-msgstr ""
+msgstr "PNG_ში გატანა: მიმდინარე ტილოს PNG რასტრულ გამოსახულებაში გატანა"
 
 #: mainwindow.cpp:287
 #, kde-format
@@ -1639,7 +1641,7 @@ msgstr "&ნახაზის სახით (SVG) გატანა..."
 #: mainwindow.cpp:288
 #, kde-format
 msgid "Export the current canvas to Scalable Vector Graphics"
-msgstr ""
+msgstr "მიმდინარე ტილოს SVG ფაილში გატანა"
 
 #: mainwindow.cpp:289
 #, kde-format
@@ -1715,12 +1717,12 @@ msgstr "&მიმართულების ამრჩევი..."
 #: mainwindow.cpp:330
 #, kde-format
 msgid "Shows the direction chooser dialog"
-msgstr ""
+msgstr "მიმართულების არჩევის ფანჯრის ჩვენება"
 
 #: mainwindow.cpp:331
 #, kde-format
 msgid "Direction Chooser: Show the direction chooser dialog"
-msgstr ""
+msgstr "მიმართულების არჩევა: მიმართულების არჩევის ფანჯრის ჩვენება"
 
 #: mainwindow.cpp:334
 #, kde-format
@@ -1730,12 +1732,12 @@ msgstr "&ფერის ამრჩევი..."
 #: mainwindow.cpp:336
 #, kde-format
 msgid "Shows the color picker dialog"
-msgstr ""
+msgstr "ფერის ამრჩევის ფანჯრის ჩვენება"
 
 #: mainwindow.cpp:337
 #, kde-format
 msgid "Color Picker: Show the color picker dialog"
-msgstr ""
+msgstr "ფერის არჩევა: ფერის ამრჩევის ფანჯრის ჩვენება"
 
 #: mainwindow.cpp:341
 #, kde-format
@@ -1745,12 +1747,12 @@ msgstr "&რედაქტორის ჩვენება"
 #: mainwindow.cpp:343
 #, kde-format
 msgid "Show or hide the Code Editor"
-msgstr ""
+msgstr "კოდის რედაქტორის ჩვენება ან დამალვა"
 
 #: mainwindow.cpp:344
 #, kde-format
 msgid "Show Code Editor: Show or hide the Code Editor"
-msgstr ""
+msgstr "კოდის რედაქტორის ჩვენება: კოდის რედაქტორის ჩვენება ან დამალვა"
 
 #: mainwindow.cpp:351
 #, kde-format
@@ -1765,7 +1767,7 @@ msgstr "ინსპექტორის ჩვენება/დამალ�
 #: mainwindow.cpp:354
 #, kde-format
 msgid "Show Inspector: Show or hide the Inspector"
-msgstr ""
+msgstr "ინსპექტორის ჩვენება: ინსპექტორის ჩვენება ან დამალვა"
 
 #: mainwindow.cpp:361
 #, kde-format
@@ -1775,12 +1777,12 @@ msgstr "&შეცდომების ჩვენება"
 #: mainwindow.cpp:363
 #, kde-format
 msgid "Show or hide the Errors tab"
-msgstr ""
+msgstr "შეცდომების ჩანართის ჩვენება ან დამალვა"
 
 #: mainwindow.cpp:364
 #, kde-format
 msgid "Show Errors: Show or hide the Errors tab"
-msgstr ""
+msgstr "შეცდომების ჩვენება: შეცდომების ჩანართის ჩვენება ან დამალვა"
 
 #. i18n("Show &Console"), this);
 #. actionCollection()->addAction("show_console", a);
@@ -1793,27 +1795,28 @@ msgstr ""
 #: mainwindow.cpp:378
 #, kde-format
 msgid "Show &Line Numbers"
-msgstr ""
+msgstr "&ხაზის ნომრების ჩვენება"
 
 #: mainwindow.cpp:380
 #, kde-format
 msgid "Turn the line numbers on/off in the editor"
-msgstr ""
+msgstr "რედაქტორში ხაზის ნომრების ჩვენება/დამალვა"
 
 #: mainwindow.cpp:381
 #, kde-format
 msgid "Show Line Numbers: Turn the line numbers on/off in the editor"
-msgstr ""
+msgstr "ხაზის ნომრების ჩვენება: რედაქტორში ხაზის ნომრების ჩვენების ჩართ/გამორთ"
 
 #: mainwindow.cpp:392
 #, kde-format
 msgid "Get help on the command under the cursor"
-msgstr ""
+msgstr "კურსორის ქვეშ მყოფი ბრძანების დამხმარების მიღება"
 
 #: mainwindow.cpp:393
 #, kde-format
 msgid "Context Help: Get help on the command under the cursor"
 msgstr ""
+"კონტექსტური დახმარება: კურსორის ქვეშ მყოფი ბრძანების დამხმარების მიღება"
 
 #: mainwindow.cpp:398
 #, kde-format
@@ -1823,7 +1826,7 @@ msgstr "დახმარება"
 #: mainwindow.cpp:399
 #, kde-format
 msgid "Help: Open manual for KTurtle"
-msgstr ""
+msgstr "დახმარება: KTurtle-ის სახელმძღვანელოს გახსნა"
 
 #: mainwindow.cpp:403
 #, kde-format
@@ -1838,7 +1841,7 @@ msgstr "გაშვება"
 #: mainwindow.cpp:412
 #, kde-format
 msgid "Execute: Executes the current line in the console"
-msgstr ""
+msgstr "შესრულება: მიმდინარე ხაზის კონსოლში გაშვება"
 
 #: mainwindow.cpp:422
 #, kde-format
@@ -1855,7 +1858,7 @@ msgstr ""
 #, kde-format
 msgctxt "@option:radio"
 msgid "Full Speed (&no highlighting and inspector)"
-msgstr ""
+msgstr "სრული სიჩქარე (გამოკვეთისა და ინსპექტორის გარეშე)"
 
 #: mainwindow.cpp:429
 #, kde-format
@@ -1868,6 +1871,8 @@ msgid ""
 "Full Speed: Run the program at full speed, with highlighting and inspector "
 "disabled"
 msgstr ""
+"სრული სიჩქარე: პროგრამის სრული სიჩქარით გაშვება, გამოკვეთისა და ინსპექტორის "
+"გათიშვით"
 
 #: mainwindow.cpp:435
 #, kde-format
@@ -1878,12 +1883,12 @@ msgstr "&სრული სიჩქარე"
 #: mainwindow.cpp:439
 #, kde-format
 msgid "Run the program at full speed"
-msgstr ""
+msgstr "პროგრამის სრული სიჩქარით გაშვება"
 
 #: mainwindow.cpp:440
 #, kde-format
 msgid "Full Speed: Run the program at full speed"
-msgstr ""
+msgstr "სრული სიჩქარე: პროგრამის სრული სიჩქარით გაშვება"
 
 #: mainwindow.cpp:445
 #, kde-format
@@ -1894,12 +1899,12 @@ msgstr "&ნელი"
 #: mainwindow.cpp:448
 #, kde-format
 msgid "Run the program at a slow speed"
-msgstr ""
+msgstr "პროგრამის დაბალი სიჩქარით გაშვება"
 
 #: mainwindow.cpp:449
 #, kde-format
 msgid "Slow Speed: Run the program at a slow speed"
-msgstr ""
+msgstr "დაბალი სიჩქარე: პროგრამის დაბალი სიჩქარით გაშვება"
 
 #: mainwindow.cpp:454
 #, kde-format
@@ -1910,12 +1915,12 @@ msgstr "&უფრო ნელი"
 #: mainwindow.cpp:457
 #, kde-format
 msgid "Run the program at a slower speed"
-msgstr ""
+msgstr "პროგრამის უფრო დაბალი სიჩქარით გაშვება"
 
 #: mainwindow.cpp:458
 #, kde-format
 msgid "Slower Speed: Run the program at a slower speed"
-msgstr ""
+msgstr "უფრო ნელა გაშვება პროგრამის უფრო დაბალი სიჩქარით გაშვება"
 
 #: mainwindow.cpp:463
 #, kde-format
@@ -1926,12 +1931,12 @@ msgstr "&ყველაზე ნელი"
 #: mainwindow.cpp:466
 #, kde-format
 msgid "Run the program at the slowest speed"
-msgstr ""
+msgstr "პროგრამის ყველაზე დაბალი სიჩქარით გაშვება"
 
 #: mainwindow.cpp:467
 #, kde-format
 msgid "Slowest Speed: Run the program at the slowest speed"
-msgstr ""
+msgstr "ყველაზე დაბალი სიჩქარე: პროგრამის ყველაზე დაბალი სიჩქარით გაშვება"
 
 #: mainwindow.cpp:472
 #, kde-format
@@ -1942,18 +1947,19 @@ msgstr "&ნაბიჯ-ნაბიჯ"
 #: mainwindow.cpp:475
 #, kde-format
 msgid "Run the program one step at a time"
-msgstr ""
+msgstr "პროგრამის ნაბიჯ-ნაბიჯ გაშვება"
 
 #: mainwindow.cpp:476
 #, kde-format
 msgid "Step Speed: Run the program one step at a time"
-msgstr ""
+msgstr "ნაბიჯებით: პროგრამის ნაბიჯ-ნაბიჯ გაშვება"
 
 #: mainwindow.cpp:496
 #, kde-format
 msgid ""
 "Canvas: This is where the turtle moves and draws when the program is running"
 msgstr ""
+"ტილო: ეს ის ადგილია, სადაც კუ დადის და ხატავს, სანამ პროგრამა გაშვებულია"
 
 #: mainwindow.cpp:505
 #, kde-format
@@ -1968,7 +1974,7 @@ msgstr "&რედაქტორი"
 #: mainwindow.cpp:549
 #, kde-format
 msgid "Editor: Write your KTurtle commands here"
-msgstr ""
+msgstr "რედაქტორი: KTurtle-ის თქვენი ბრძანებები აქ ჩაწერეთ"
 
 #: mainwindow.cpp:552
 #, kde-format
@@ -1985,7 +1991,7 @@ msgstr ""
 #: mainwindow.cpp:655
 #, kde-format
 msgid "Switch to the %1 dictionary"
-msgstr ""
+msgstr "%1 ლექსიკონზე გადართვა"
 
 #: mainwindow.cpp:734
 #, kde-format
@@ -2000,7 +2006,7 @@ msgstr " ჩასმ "
 #: mainwindow.cpp:742
 #, kde-format
 msgid "<nothing under cursor>"
-msgstr ""
+msgstr "<კურსორის ქვეშ არაფერია>"
 
 #: mainwindow.cpp:743
 #, kde-format
