@@ -62,7 +62,7 @@ set_package_properties(KF${KF_MAJOR_VERSION}DocTools PROPERTIES DESCRIPTION
 
 ecm_set_disabled_deprecation_versions(
     QT 5.15.2
-    KF 5.101.0
+    KF 5.103.0
 )
 
 #Allows QString concatenation to use a single memory allocation per source line.
