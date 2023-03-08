@@ -1511,7 +1511,7 @@ msgstr ""
 #: mainwindow.cpp:206
 #, kde-format
 msgid "Export to &HTML..."
-msgstr "Exporta a &HTML..."
+msgstr "Exporta cap a &HTML..."
 
 #: mainwindow.cpp:207
 #, kde-format
@@ -1521,7 +1521,7 @@ msgstr "Exporta el contingut de l'editor com a HTML"
 #: mainwindow.cpp:208
 #, kde-format
 msgid "Export to HTML: Export the contents of the editor as HTML"
-msgstr "Exporta a HTML: Esporta el contingut de l'editor com a HTML"
+msgstr "Exporta cap a HTML: Esporta el contingut de l'editor com a HTML"
 
 #: mainwindow.cpp:212
 #, kde-format
@@ -1655,7 +1655,7 @@ msgstr ""
 #: mainwindow.cpp:281
 #, kde-format
 msgid "Export to &Image (PNG)..."
-msgstr "Exporta a &imatge (PNG)..."
+msgstr "Exporta cap a &imatge (PNG)..."
 
 #: mainwindow.cpp:282
 #, kde-format
@@ -1665,12 +1665,12 @@ msgstr "Exporta el llenç actual a una imatge PNG"
 #: mainwindow.cpp:283
 #, kde-format
 msgid "Export to PNG: Export the current canvas to a PNG raster image"
-msgstr "Exporta a PNG: Exporta el llenç actual a una imatge PNG"
+msgstr "Exporta cap a PNG: Exporta el llenç actual a una imatge PNG"
 
 #: mainwindow.cpp:287
 #, kde-format
 msgid "Export to &Drawing (SVG)..."
-msgstr "Exporta a &dibuix (SVG)..."
+msgstr "Exporta cap a &dibuix (SVG)..."
 
 #: mainwindow.cpp:288
 #, kde-format
@@ -1680,7 +1680,8 @@ msgstr "Exporta el llenç actual a Gràfics Vectorials Escalables"
 #: mainwindow.cpp:289
 #, kde-format
 msgid "Export to SVG: Export the current canvas to Scalable Vector Graphics"
-msgstr "Exporta a SVG: Exporta el llenç actual a Gràfics Vectorials Escalables"
+msgstr ""
+"Exporta cap a SVG: Exporta el llenç actual a Gràfics Vectorials Escalables"
 
 #: mainwindow.cpp:292
 #, kde-format
