@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kdeedu-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-28 00:54+0000\n"
-"PO-Revision-Date: 2023-03-07 20:38+0300\n"
+"PO-Revision-Date: 2023-03-09 13:34+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -316,8 +316,8 @@ msgstr "%1 komutu bir parametre kabul etmiyor."
 #, kde-format
 msgid "The %2 command was called with %3 but needs 1 parameter."
 msgid_plural "The %2 command was called with %3 but needs %1 parameters."
-msgstr[0] "%2 komutu %3 ile çağrıldı ama 1 parametreye ihtiyacı var."
-msgstr[1] "%2 komutu %3 ile çağrıldı ama %1 parametreye ihtiyacı var."
+msgstr[0] "%2 komutu %3 ile çağrıldı ama 1 parametreye gereksinimi var."
+msgstr[1] "%2 komutu %3 ile çağrıldı ama %1 parametreye gereksinimi var."
 
 #: interpreter/executer.cpp:274
 #, kde-format
@@ -442,7 +442,7 @@ msgstr "Toplama işlemi için iki sayıya veya diziye gereksiniminiz var"
 #: interpreter/executer.cpp:720
 #, kde-format
 msgid "You need two numbers to subtract"
-msgstr "Çıkarma işlemi için iki sayıya ihtiyacınız var"
+msgstr "Çıkarma işlemi için iki sayıya gereksiniminiz var"
 
 #: interpreter/executer.cpp:727
 #, kde-format
@@ -457,7 +457,7 @@ msgstr "Sayı olamayan bir ifadeyi çıkarmayı denediniz, '%1'"
 #: interpreter/executer.cpp:735
 #, kde-format
 msgid "You need two numbers to multiplicate"
-msgstr "Çarpma işlemi için iki sayıya ihtiyacınız var"
+msgstr "Çarpma işlemi için iki sayıya gereksiniminiz var"
 
 #: interpreter/executer.cpp:742
 #, kde-format
@@ -472,7 +472,7 @@ msgstr "Sayı olmayan bir ifade ile çarpmayı denediniz, '%1'"
 #: interpreter/executer.cpp:750
 #, kde-format
 msgid "You need two numbers to divide"
-msgstr "Bölme işlemi için iki sayıya ihtiyacınız var"
+msgstr "Bölme işlemi için iki sayıya gereksiniminiz var"
 
 #: interpreter/executer.cpp:755
 #, kde-format
@@ -492,7 +492,7 @@ msgstr "Sayı olmayan bir ifade ile bölmeyi denediniz, '%1'"
 #: interpreter/executer.cpp:769
 #, kde-format
 msgid "You need two numbers to raise a power"
-msgstr "Üst alma işlemi için iki sayıya ihtiyacınız var"
+msgstr "Üst alma işlemi için iki sayıya gereksiniminiz var"
 
 #: interpreter/executer.cpp:780
 #, kde-format
@@ -513,8 +513,8 @@ msgstr "Sayı olmayan bir ifadenin kuvvetini almayı denediniz, '%1'"
 #, kde-format
 msgid "You need one variable and a value or variable to do a '='"
 msgstr ""
-"Bir '=' işlemi için bir değişken ve bir değer veya bir değişkene ihtiyacınız "
-"var"
+"Bir '=' işlemi için bir değişken ve bir değer veya bir değişkene "
+"gereksiniminiz var"
 
 #: interpreter/executer.cpp:811
 #, kde-format
