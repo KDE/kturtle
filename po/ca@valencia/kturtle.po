@@ -1,17 +1,17 @@
 # Translation of kturtle.po to Catalan (Valencian)
-# Copyright (C) 2004-2021 This_file_is_part_of_KDE
+# Copyright (C) 2004-2023 This_file_is_part_of_KDE
 #
 # Albert Astals Cid <aacid@kde.org>, 2004, 2005.
 # David Gil <al016950@yahoo.es>, 2005.
 # Orestes Mas Casals <orestes@tsc.upc.edu>, 2005, 2007, 2008, 2009, 2010, 2011, 2012, 2014.
-# Josep M. Ferrer <txemaq@gmail.com>, 2009, 2010, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
+# Josep M. Ferrer <txemaq@gmail.com>, 2009, 2010, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2023.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2015, 2016, 2017, 2019, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-28 00:54+0000\n"
-"PO-Revision-Date: 2021-11-21 12:27+0100\n"
+"PO-Revision-Date: 2023-03-13 10:31+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -2146,7 +2146,7 @@ msgstr "No s'ha pogut canviar l'idioma a %1."
 #: mainwindow.cpp:821
 #, kde-format
 msgid "English [built in]"
-msgstr "Anglés [incorporat]"
+msgstr "Anglés [integrat]"
 
 #: mainwindow.cpp:822
 #, kde-format
