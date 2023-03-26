@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-28 00:54+0000\n"
-"PO-Revision-Date: 2009-11-14 06:06-0500\n"
-"Last-Translator: Axel Rousseau <axel@esperanto-jeunes.org>\n"
+"PO-Revision-Date: 2023-03-25 16:19+0100\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -51,8 +51,7 @@ msgid "strikeout"
 msgstr ""
 
 #: colorpicker.cpp:29
-#, fuzzy, kde-format
-#| msgid "Color Picker"
+#, kde-format
 msgctxt "@title:window"
 msgid "Color Picker"
 msgstr "Kolora elektilo"
@@ -104,10 +103,10 @@ msgid "<p style='white-space:pre'><b>ERROR:</b> %1</p>"
 msgstr ""
 
 #: directiondialog.cpp:194
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Direction Chooser"
-msgstr "priskribo"
+msgstr ""
 
 #: directiondialog.cpp:225
 #, kde-format
@@ -176,8 +175,7 @@ msgid "&Discard Changes"
 msgstr "&Forĵeti la ŝanĝojn"
 
 #: errordialog.cpp:27
-#, fuzzy, kde-format
-#| msgid "Errors"
+#, kde-format
 msgctxt "@title:window"
 msgid "Errors"
 msgstr "Eraroj"
@@ -235,14 +233,14 @@ msgid "name"
 msgstr "nomo"
 
 #: inspector.cpp:93
-#, fuzzy, kde-format
+#, kde-format
 msgid "value"
-msgstr "Valoro"
+msgstr ""
 
 #: inspector.cpp:93
-#, fuzzy, kde-format
+#, kde-format
 msgid "type"
-msgstr "Tipo"
+msgstr ""
 
 #: inspector.cpp:103
 #, kde-format
@@ -276,9 +274,9 @@ msgid "number"
 msgstr ""
 
 #: inspector.cpp:176
-#, fuzzy, kde-format
+#, kde-format
 msgid "string"
-msgstr "nenio"
+msgstr ""
 
 #: inspector.cpp:208
 #, kde-format
@@ -585,12 +583,7 @@ msgid "false"
 msgstr ""
 
 #: interpreter/translator.cpp:122
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'ArgumentSeparator' COMMAND, there are "
-#| "some rules on how to translate it.Please see http://edu.kde.org/kturtle/"
-#| "translator.php to learn how to properly translate it."
-#| msgid ","
+#, kde-format
 msgctxt ""
 "You are about to translate the 'ArgumentSeparator' COMMAND, there are some "
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
@@ -599,12 +592,7 @@ msgid ","
 msgstr ","
 
 #: interpreter/translator.cpp:129
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'DecimalSeparator' COMMAND, there are some "
-#| "rules on how to translate it.Please see http://edu.kde.org/kturtle/"
-#| "translator.php to learn how to properly translate it."
-#| msgid "."
+#, kde-format
 msgctxt ""
 "You are about to translate the 'DecimalSeparator' COMMAND, there are some "
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
@@ -721,18 +709,13 @@ msgid "assert"
 msgstr ""
 
 #: interpreter/translator.cpp:220
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Tan' COMMAND, there are some rules on how "
-#| "to translate it.Please see http://edu.kde.org/kturtle/translator.php to "
-#| "learn how to properly translate it."
-#| msgid "tan"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'And' COMMAND, there are some rules on how to "
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "and"
-msgstr "tan"
+msgstr ""
 
 #: interpreter/translator.cpp:227
 #, kde-format
@@ -879,23 +862,22 @@ msgid "bw"
 msgstr ""
 
 #: interpreter/translator.cpp:363
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Direction' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "direction"
-msgstr "priskribo"
+msgstr ""
 
 #: interpreter/translator.cpp:370
-#, fuzzy, kde-format
-#| msgid "&Editor"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Direction' COMMAND ALIAS, there are some "
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "dir"
-msgstr "&Editor"
+msgstr ""
 
 #: interpreter/translator.cpp:377
 #, kde-format
@@ -1033,18 +1015,13 @@ msgid "canvassize"
 msgstr ""
 
 #: interpreter/translator.cpp:482
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Cos' COMMAND, there are some rules on how "
-#| "to translate it.Please see http://edu.kde.org/kturtle/translator.php to "
-#| "learn how to properly translate it."
-#| msgid "cos"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'CanvasSize' COMMAND ALIAS, there are some "
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "cs"
-msgstr "cos"
+msgstr ""
 
 #: interpreter/translator.cpp:489
 #, kde-format
@@ -1137,14 +1114,13 @@ msgid "gety"
 msgstr ""
 
 #: interpreter/translator.cpp:559
-#, fuzzy, kde-format
-#| msgid "Message"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Message' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "message"
-msgstr "Mesaĝo"
+msgstr ""
 
 #: interpreter/translator.cpp:566
 #, kde-format
@@ -1156,12 +1132,7 @@ msgid "ask"
 msgstr ""
 
 #: interpreter/translator.cpp:573
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Pi' COMMAND, there are some rules on how "
-#| "to translate it.Please see http://edu.kde.org/kturtle/translator.php to "
-#| "learn how to properly translate it."
-#| msgid "pi"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Pi' COMMAND, there are some rules on how to "
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
@@ -1170,12 +1141,7 @@ msgid "pi"
 msgstr "pi"
 
 #: interpreter/translator.cpp:580
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Tan' COMMAND, there are some rules on how "
-#| "to translate it.Please see http://edu.kde.org/kturtle/translator.php to "
-#| "learn how to properly translate it."
-#| msgid "tan"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Tan' COMMAND, there are some rules on how to "
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
@@ -1184,21 +1150,16 @@ msgid "tan"
 msgstr "tan"
 
 #: interpreter/translator.cpp:587
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Sin' COMMAND, there are some rules on how to "
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "sin"
-msgstr "nenio"
+msgstr ""
 
 #: interpreter/translator.cpp:594
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Cos' COMMAND, there are some rules on how "
-#| "to translate it.Please see http://edu.kde.org/kturtle/translator.php to "
-#| "learn how to properly translate it."
-#| msgid "cos"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Cos' COMMAND, there are some rules on how to "
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
@@ -1207,12 +1168,7 @@ msgid "cos"
 msgstr "cos"
 
 #: interpreter/translator.cpp:601
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'ArcTan' COMMAND, there are some rules on "
-#| "how to translate it.Please see http://edu.kde.org/kturtle/translator.php "
-#| "to learn how to properly translate it."
-#| msgid "arctan"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'ArcTan' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
@@ -1221,12 +1177,7 @@ msgid "arctan"
 msgstr "arctan"
 
 #: interpreter/translator.cpp:608
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'ArcSin' COMMAND, there are some rules on "
-#| "how to translate it.Please see http://edu.kde.org/kturtle/translator.php "
-#| "to learn how to properly translate it."
-#| msgid "arcsin"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'ArcSin' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
@@ -1235,12 +1186,7 @@ msgid "arcsin"
 msgstr "arcsin"
 
 #: interpreter/translator.cpp:615
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'ArcCos' COMMAND, there are some rules on "
-#| "how to translate it.Please see http://edu.kde.org/kturtle/translator.php "
-#| "to learn how to properly translate it."
-#| msgid "arccos"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'ArcCos' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
@@ -1267,13 +1213,13 @@ msgid "round"
 msgstr ""
 
 #: interpreter/translator.cpp:636
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'GetDirection' COMMAND, there are some rules "
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "getdirection"
-msgstr "priskribo"
+msgstr ""
 
 #: interpreter/translator.cpp:643
 #, kde-format
@@ -1402,10 +1348,9 @@ msgid ""
 msgstr ""
 
 #: main.cpp:53
-#, fuzzy, kde-format
-#| msgid "Cies Breijs"
+#, kde-format
 msgid "(c) 2003-2009 Cies Breijs"
-msgstr "Cies Breijs"
+msgstr ""
 
 #: main.cpp:55
 #, kde-format
@@ -2170,11 +2115,10 @@ msgid "PNG Images"
 msgstr ""
 
 #: mainwindow.cpp:1030
-#, fuzzy, kde-format
-#| msgid "Save As"
+#, kde-format
 msgctxt "@title:window"
 msgid "Save as SVG"
-msgstr "Konservi kiel"
+msgstr ""
 
 #: mainwindow.cpp:1030
 #, kde-format
@@ -2201,6 +2145,3 @@ msgstr "Enigo"
 #, kde-format
 msgid "Message"
 msgstr "Mesaĝo"
-
-#~ msgid "&Overwrite"
-#~ msgstr "&Antstataŭigu"
