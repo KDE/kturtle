@@ -4,7 +4,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <name>KTurtle</name>
-  <name xml:lang="ar">سلحفاة ك</name>
+  <name xml:lang="ar">سلحفاتك</name>
   <name xml:lang="bg">KTurtle</name>
   <name xml:lang="bs">KTurtle</name>
   <name xml:lang="ca">KTurtle</name>
@@ -84,7 +84,7 @@
   <summary xml:lang="zh-TW">教育程式環境</summary>
   <description>
     <p>KTurtle is an educational programming environment for learning how to program. It provides all programming tools from its user interface. The programming language used is TurtleScript, which is loosely based on Logo. All commands and messages are translated into the user's language. KTurtle features an intuitive syntax highlighting, simple error messages, integrated canvas to make drawings, an integrated help, slow-motion and step execution.</p>
-    <p xml:lang="ar">سلحفاة ك هي بيئة برمجة تعليمية لتعلم كيفية البرمجة. توفر جميع أدوات البرمجة من واجهة المستخدم الخاصة به. لغة البرمجة المستخدمة هي سكربت السلحفاة التي تعتمد بشكل فضفاض على لوغو.تتم ترجمة جميع الأوامر والرسائل إلى لغة المستخدم. تتميز سلحفاة ك بإبراز بناء جملة بديهي، ورسائل خطأ بسيطة، ولوحة متكاملة لعمل الرسومات، ومساعدة متكاملة، وحركة بطيئة وتنفيذ خطوة.</p>
+    <p xml:lang="ar">سلحفاتك هي بيئة برمجة تعليمية لتعلم كيفية البرمجة. توفر جميع أدوات البرمجة من واجهة المستخدم الخاصة به. لغة البرمجة المستخدمة هي سكربت السلحفاة التي تعتمد بشكل فضفاض على لوغو.تتم ترجمة جميع الأوامر والرسائل إلى لغة المستخدم. تتميز سلحفاة ك بإبراز بناء جملة بديهي، ورسائل خطأ بسيطة، ولوحة متكاملة لعمل الرسومات، ومساعدة متكاملة، وحركة بطيئة وتنفيذ خطوة.</p>
     <p xml:lang="bg">Kturtle е образователна среда за програмиране, с нея се учиш да програмираш. Осигурява всички нужни инструменти за програмиране в своя графичен интерфейс. Използваният език за програмиране е TurtleScript, който е основан на езика Logo. Всички команди и съобщения са преведени на езика на потребителя. Kturtle има удобно осветяване на синтаксиса, опростени съобщения за грешки, вградено платно за рисунки, вграден помощник, забавено и постъпково изпълнение на програмите.</p>
     <p xml:lang="bs">KTurtle je obrazovno programsko okruženje za učenje kako programirati. On pruža sve programske alate iz korisničkog sučelja. ProgramskI jezik koji se koristi je TurtleScript, koji je labavo zasnovan na Logo. Sve naredbe i poruke su prevedene na jezik korisnika. KTurtle ima intuitivno isticanje sintakse, jednostavne poruke o greškama, integrirano platno za crteže, integrisanu pomoć, usporeno kretanje i izvršenje korak po korak.</p>
     <p xml:lang="ca">El KTurtle és un entorn educatiu de programació per a aprendre com programar. Proporciona totes les eines de programació des de la seva interfície d'usuari. El llenguatge de programació utilitzat és el TurtleScript, el qual està basat en certa manera en el Logo. Totes les ordres i missatges estan traduïdes a l'idioma de l'usuari. El KTurtle ofereix un ressaltat de sintaxi intuïtiu, missatges d'error senzills, un llenç integrat per a fer dibuixos, una ajuda integrada, i execució a càmera lenta i per passos.</p>
@@ -125,7 +125,7 @@
   <screenshots>
     <screenshot type="default">
       <caption>Programming in KTurtle</caption>
-      <caption xml:lang="ar">البرمجة في سلحفاة ك</caption>
+      <caption xml:lang="ar">البرمجة في سلحفاتك</caption>
       <caption xml:lang="bg">Програмиране с KTurtle</caption>
       <caption xml:lang="ca">Programant en el KTurtle</caption>
       <caption xml:lang="ca-valencia">Programant en KTurtle</caption>
