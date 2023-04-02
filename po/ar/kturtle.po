@@ -5,13 +5,13 @@
 # Khaled Hosny <khaledhosny@eglug.org>, 2007.
 # Youssef Chahibi <chahibi@gmail.com>, 2007.
 # One <nbr7@live.fr>, 2010.
-# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2021, 2022.
+# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-28 00:54+0000\n"
-"PO-Revision-Date: 2022-01-29 17:36+0400\n"
+"PO-Revision-Date: 2023-04-02 00:34+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -20,20 +20,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Lokalize 21.07.70\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "خالد حسني"
+msgstr "خالد حسني, Taha Zerrouki"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "khaledhosny@eglug.org"
+msgstr "khaledhosny@eglug.org, taha.zerrouki@gmail.com"
 
 #: canvas.cpp:195
-#, fuzzy, kde-format
+#, kde-format
 msgid "bold"
 msgstr "سميك"
 
@@ -43,26 +43,25 @@ msgid "italic"
 msgstr "مائل"
 
 #: canvas.cpp:197
-#, fuzzy, kde-format
+#, kde-format
 msgid "underline"
 msgstr "تسطير"
 
 #: canvas.cpp:198
-#, fuzzy, kde-format
+#, kde-format
 msgid "overline"
-msgstr "سطر"
+msgstr "سطر_علوي"
 
 #: canvas.cpp:199
 #, kde-format
 msgid "strikeout"
-msgstr "تشريط للخاج"
+msgstr "شطب"
 
 #: colorpicker.cpp:29
-#, fuzzy, kde-format
-#| msgid "&Color Picker..."
+#, kde-format
 msgctxt "@title:window"
 msgid "Color Picker"
-msgstr "منتق الألوان"
+msgstr "منتقي الألوان"
 
 #: colorpicker.cpp:48
 #, kde-format
@@ -98,39 +97,38 @@ msgstr "أكتب أمرا هنا و اضغط على مفتاح Enter..."
 #, kde-format
 msgid ""
 "Console: quickly run single commands -- write a command here and press enter."
-msgstr "كونسول: تشغيل سريع لأمر واحد -- أكتب أمر هنا و اضغط مفتاح Enter"
+msgstr "طرفية: تشغيل سريع لأمر واحد -- أكتب أمرًا هنا و اضغط مفتاح Enter."
 
 #: console.cpp:36
-#, fuzzy, kde-format
+#, kde-format
 msgid "Console:"
-msgstr "الطرفية"
+msgstr "طرفية:"
 
 #: console.cpp:79
-#, fuzzy, kde-format
+#, kde-format
 msgid "<p style='white-space:pre'><b>ERROR:</b> %1</p>"
-msgstr "خطأ"
+msgstr "<p style='white-space:pre'><b>خطأ:</b> %1</p>"
 
 #: directiondialog.cpp:194
-#, fuzzy, kde-format
-#| msgid "Direction Chooser"
+#, kde-format
 msgctxt "@title:window"
 msgid "Direction Chooser"
-msgstr "&محدد الاتجاه..."
+msgstr "منتقي الاتجاه"
 
 #: directiondialog.cpp:225
-#, fuzzy, kde-format
+#, kde-format
 msgid "Command &type:"
-msgstr "أمر"
+msgstr "&نوع الأمر:"
 
 #: directiondialog.cpp:240
 #, kde-format
 msgid "&Previous direction:"
-msgstr "&الإتجاه السابق:"
+msgstr "الا&تجاه السابق:"
 
 #: directiondialog.cpp:257
 #, kde-format
 msgid "&New direction:"
-msgstr "&الإتجاه الجديد:"
+msgstr "الاتجاه الج&ديد:"
 
 #: editor.cpp:146
 #, kde-format
@@ -140,7 +138,7 @@ msgstr "افتح"
 #: editor.cpp:148 editor.cpp:256
 #, kde-format
 msgid "Turtle code files"
-msgstr "رمز ملفات Turtle"
+msgstr "شفرة ملفات السلحفاة"
 
 #: editor.cpp:148 editor.cpp:256 mainwindow.cpp:1014 mainwindow.cpp:1030
 #: mainwindow.cpp:1040
@@ -162,21 +160,19 @@ msgstr ""
 #: editor.cpp:231 editor.cpp:237
 #, kde-format
 msgid "Could not save file."
-msgstr "لم يمكن حفظ الملف."
+msgstr "تعّذر حفظ الملف."
 
 #: editor.cpp:254
 #, kde-format
 msgid "Save As"
-msgstr "احفظ بإسم"
+msgstr "احفظ باسم"
 
 #: editor.cpp:267
 #, kde-format
 msgid ""
 "The program you are currently working on is not saved. By continuing you may "
 "lose the changes you have made."
-msgstr ""
-"البرنامج الذي تعمل عليه حاليا غير محفوظ. إذا اكملت قد تفقد التغييرات التي "
-"قمت بها."
+msgstr "البرنامج الذي تعمل عليه حاليا غير محفوظ. إذا تابعت قد تفقد تعديلاتك."
 
 #: editor.cpp:269
 #, kde-format
@@ -192,7 +188,7 @@ msgstr "ت&جاهل التغييرات"
 #, kde-format
 msgctxt "@title:window"
 msgid "Errors"
-msgstr "الأخطاء"
+msgstr "أخطاء"
 
 #: errordialog.cpp:42
 #, kde-format
@@ -200,7 +196,7 @@ msgid ""
 "In this list you find the error(s) that resulted from running your code.\n"
 "Good luck!"
 msgstr ""
-"في هذه القائمة تجد الأخطاء الناتجة لتشغيل الكود.\n"
+"في هذه القائمة تجد الأخطاء الناتجة عن تشغيل الشفرة.\n"
 "بالتوفيق!"
 
 #: errordialog.cpp:59
@@ -219,9 +215,9 @@ msgid "code"
 msgstr "رمز"
 
 #: errordialog.cpp:72
-#, fuzzy, kde-format
+#, kde-format
 msgid "Hide Errors"
-msgstr "ا&خف الأخطاء"
+msgstr "أخف الأخطاء"
 
 #: errordialog.cpp:89
 #, kde-format
@@ -246,17 +242,17 @@ msgstr "الشجرة"
 #: inspector.cpp:93 inspector.cpp:111
 #, kde-format
 msgid "name"
-msgstr "الإسم"
+msgstr "اسم"
 
 #: inspector.cpp:93
 #, kde-format
 msgid "value"
-msgstr "القيمة"
+msgstr "قيمة"
 
 #: inspector.cpp:93
 #, kde-format
 msgid "type"
-msgstr "النوع"
+msgstr "نوع"
 
 #: inspector.cpp:103
 #, kde-format
@@ -264,14 +260,14 @@ msgid "No variables"
 msgstr "لا متغيرات"
 
 #: inspector.cpp:111
-#, fuzzy, kde-format
+#, kde-format
 msgid "parameters"
 msgstr "معاملات"
 
 #: inspector.cpp:120
 #, kde-format
 msgid "No learned functions"
-msgstr ""
+msgstr "لا توجد دوال تم تعلمها"
 
 #: inspector.cpp:163
 #, kde-format
@@ -297,12 +293,12 @@ msgstr "سلسلة"
 #: inspector.cpp:208
 #, kde-format
 msgid "None"
-msgstr "لاشيء"
+msgstr "لا شيء"
 
 #: interpreter/executer.cpp:72
 #, kde-format
 msgid "Cannot return outside a function. "
-msgstr ""
+msgstr "لا يمكن الرجوع خارج دالة. "
 
 #: interpreter/executer.cpp:262
 #, kde-format
@@ -310,42 +306,42 @@ msgid "The %1 command accepts no parameters."
 msgstr "لا يقبل الأمر %1 أيّة معاملات."
 
 #: interpreter/executer.cpp:272
-#, fuzzy, kde-format
+#, kde-format
 msgid "The %2 command was called with %3 but needs 1 parameter."
 msgid_plural "The %2 command was called with %3 but needs %1 parameters."
-msgstr[0] "الـ أمر مع معلمة."
-msgstr[1] "الـ أمر مع معلمة."
-msgstr[2] "الـ أمر مع معلمة."
-msgstr[3] "الـ أمر مع معلمة."
-msgstr[4] "الـ أمر مع معلمة."
-msgstr[5] "الـ أمر مع معلمة."
+msgstr[0] "اُستدعِيَ الأمر %2 بـلا معاملات (%3) لكنه يحتاج إلى معامل واحد."
+msgstr[1] "اُستدعِيَ الأمر %2 بـمعامل واحد  (%3) لكنه يحتاج إلى معامل واحد."
+msgstr[2] "اُستدعِيَ الأمر %2 بـمعاملين  (%3)  لكنه يحتاج إلى %1 معامل/معاملات."
+msgstr[3] "اُستدعِيَ الأمر %2 بـ%3 معاملات لكنه يحتاج إلى %1 معامل/معاملات."
+msgstr[4] "اُستدعِيَ الأمر %2 بـ%3 معاملًا لكنه يحتاج إلى %1 معامل/معاملات.."
+msgstr[5] "اُستدعِيَ الأمر %2 بـ%3 معامل لكنه يحتاج إلى %1 معامل/معاملات.."
 
 #: interpreter/executer.cpp:274
-#, fuzzy, kde-format
+#, kde-format
 msgid "The %2 command was called with %3 but only accepts 1 parameter."
 msgid_plural ""
 "The %2 command was called with %3 but only accepts %1 parameters."
-msgstr[0] "الـ أمر مع معلمة."
-msgstr[1] "الـ أمر مع معلمة."
-msgstr[2] "الـ أمر مع معلمة."
-msgstr[3] "الـ أمر مع معلمة."
-msgstr[4] "الـ أمر مع معلمة."
-msgstr[5] "الـ أمر مع معلمة."
+msgstr[0] "اُستدعِيَ الأمر %2 بـلا معاملات %3 لكنه يقبل معاملًا واحدًا فقط."
+msgstr[1] "اُستدعِيَ الأمر %2 بـمعامل واحد(%3) لكنه يقبل معاملًا واحدًا فقط."
+msgstr[2] "اُستدعِيَ الأمر %2 بـمعاملين اثنين(%3) لكنه يقبل %1 معامل/معاملات فقط."
+msgstr[3] "اُستدعِيَ الأمر %2 بـ%3 معاملات لكنه يقبل %1 معامل/معاملات فقط."
+msgstr[4] "اُستدعِيَ الأمر %2 بـ%3 معاملًا لكنه يقبل %1 معامل/معاملات فقط."
+msgstr[5] "اُستدعِيَ الأمر %2 بـ%3 معامل لكنه يقبل %1 معامل/معاملات فقط."
 
 #: interpreter/executer.cpp:292
 #, kde-format
 msgid "The %1 command only accepts a string as its parameter."
-msgstr "يقبل الأمر %1 سلسلة نصّية فقط كمعاملاً له."
+msgstr "يقبل الأمر %1 سلسلة نصّية معاملاً له فقط."
 
 #: interpreter/executer.cpp:294
 #, kde-format
 msgid "The %1 command only accepts strings as its parameters."
-msgstr "يقبل الأمر %1 سلاسل نصّية فقط كمعاملات له."
+msgstr "يقبل الأمر %1 سلاسل نصّية معاملات له فقط."
 
 #: interpreter/executer.cpp:299
 #, kde-format
 msgid "The %1 command only accepts a number as its parameter."
-msgstr "يقبل الأمر %1 رقما فقط كمعاملاً له."
+msgstr "يقبل الأمر %1 رقما فقط معاملاً له."
 
 #: interpreter/executer.cpp:301
 #, kde-format
@@ -353,153 +349,153 @@ msgid "The %1 command only accepts numbers as its parameters."
 msgstr "يقبل الأمر %1 أرقاما فقط كمعاملات له."
 
 #: interpreter/executer.cpp:306
-#, fuzzy, kde-format
+#, kde-format
 msgid "The %1 command only accepts an answer as its parameter."
-msgstr "الـ أمر معلمة."
+msgstr "يقبل الأمر %1 يقبل جوابًا واحدا معاملًا له فقط."
 
 #: interpreter/executer.cpp:308
-#, fuzzy, kde-format
+#, kde-format
 msgid "The %1 command only accepts answers as its parameters."
-msgstr "الـ أمر البارامترات."
+msgstr "يقبل الأمر %1 يقبل أجوبةً معاملات له فقط."
 
 #: interpreter/executer.cpp:386
 #, kde-format
 msgid "The variable '%1' was used without first being assigned to a value"
-msgstr "المتغير %1 استخدم بدون العمليات الاولية للمتغير"
+msgstr "المتغير %1 استخدم بدون أن تسند له قيمة"
 
 #: interpreter/executer.cpp:405
-#, fuzzy, kde-format
+#, kde-format
 msgid "An unknown function named '%1' was called"
-msgstr "قيمة غير معروفة %1 باسم "
+msgstr "استدعيت دالة غير معروفة اسمها '%1'"
 
 #: interpreter/executer.cpp:420
-#, fuzzy, kde-format
+#, kde-format
 msgid "The function '%1' was called with %2, while it should be called with %3"
-msgstr "العملية %1 المسماة %2 يجب أن تسمى %3"
+msgstr "اُستُدعيت الدالة بـ '%1' %2, لكنه ينبغي أن تُستدعى بـ %3"
 
 #: interpreter/executer.cpp:422 interpreter/executer.cpp:423
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "The function '%1' was called with %2, while it should be called with %3"
 msgid "1 parameter"
 msgid_plural "%1 parameters"
-msgstr[0] "المعامل:"
-msgstr[1] "معاملات"
-msgstr[2] "معاملات"
-msgstr[3] "معاملات"
-msgstr[4] "معاملات"
-msgstr[5] "معاملات"
+msgstr[0] "لا يوجد معامل"
+msgstr[1] "معامل واحد"
+msgstr[2] "معاملان"
+msgstr[3] "%1 معاملات"
+msgstr[4] "%1 معاملًا"
+msgstr[5] "%1 معامل"
 
 #: interpreter/executer.cpp:627
 #, kde-format
 msgid "ASSERT failed"
-msgstr ""
+msgstr "فشل التأكيد"
 
 #: interpreter/executer.cpp:633
 #, kde-format
 msgid "'And' needs two variables"
-msgstr "بحاجة الى متغيرات"
+msgstr "\"و\" بحاجة إلى متغيرين"
 
 #: interpreter/executer.cpp:642
 #, kde-format
 msgid "'Or' needs two variables"
-msgstr "'أو' بحاجة الى متغيرات"
+msgstr "\"أو\" بحاجة إلى متغيرين"
 
 #: interpreter/executer.cpp:652
 #, kde-format
 msgid "I need something to do a not on"
-msgstr "احتاج إلى شيئ لاكتب ملاحظة عليه"
+msgstr "أحتاج إلى شيء ما لأنفيه بـ\"لا\""
 
 #: interpreter/executer.cpp:660
 #, kde-format
 msgid "I cannot do a '==' without 2 variables"
-msgstr "لا استطيع العمل '=='بدون 2 متغير"
+msgstr "لا أستطيع المقارنة بـ '==' دون متغيرين"
 
 #: interpreter/executer.cpp:668
 #, kde-format
 msgid "I cannot do a '!=' without 2 variables"
-msgstr "لا استطيع العمل '='بدون 2 متغير"
+msgstr "لا أستطيع المقارنة بـ '!=' دون متغيرين"
 
 #: interpreter/executer.cpp:676
 #, kde-format
 msgid "I cannot do a '>' without 2 variables"
-msgstr "لا استطيع العمل '&gt;'بدون 2 متغير"
+msgstr "لا أستطيع المقارنة بـ '&gt;' دون متغيرين"
 
 #: interpreter/executer.cpp:684
 #, kde-format
 msgid "I cannot do a '<' without 2 variables"
-msgstr "لا استطيع العمل '>'بدون 2 متغير"
+msgstr "لا أستطيع المقارنة بـ '&lt;' دون متغيرين"
 
 #: interpreter/executer.cpp:692
 #, kde-format
 msgid "I cannot do a '>=' without 2 variables"
-msgstr "لا استطيع العمل '=&gt;'بدون 2 متغير"
+msgstr "لا أستطيع المقارنة بـ ''=&gt;'' دون متغيرين"
 
 #: interpreter/executer.cpp:700
 #, kde-format
 msgid "I cannot do a '<=' without 2 variables"
-msgstr "لا استطيع العمل '=>'بدون 2 متغير"
+msgstr "لا أستطيع المقارنة بـ '&lt;=' دون متغيرين"
 
 #: interpreter/executer.cpp:708
-#, fuzzy, kde-format
+#, kde-format
 msgid "You need two numbers or string to do an addition"
-msgstr "تحتاج إلى رقمين أو سلسة ارقام لعمل اضافات"
+msgstr "تحتاج إلى عددين أو سلسة حروف لعملية الجمع"
 
 #: interpreter/executer.cpp:720
-#, fuzzy, kde-format
+#, kde-format
 msgid "You need two numbers to subtract"
-msgstr "تحتاج إلى رقمين أو سلسة ارقام للحذف"
+msgstr "تحتاج إلى عددين لعملية الطرح"
 
 #: interpreter/executer.cpp:727
-#, fuzzy, kde-format
+#, kde-format
 msgid "You tried to subtract from a non-number, '%1'"
-msgstr "لقد حاولت ان تطرحه من غير عدد %1"
+msgstr "لقد حاولت أن تطرح من قيمة غير عددية '%1'"
 
 #: interpreter/executer.cpp:729
-#, fuzzy, kde-format
+#, kde-format
 msgid "You tried to subtract a non-number, '%1'"
-msgstr "لقد حاولت ان تطرحه بدون رقم %1"
+msgstr "لقد حاولت أن تطرح قيمة غير عددية '%1'"
 
 #: interpreter/executer.cpp:735
-#, fuzzy, kde-format
+#, kde-format
 msgid "You need two numbers to multiplicate"
-msgstr "تحتاج إلى رقمين أو للمتعدد"
+msgstr "تحتاج إلى عددين لعملية الضرب"
 
 # "#"
 #: interpreter/executer.cpp:742
-#, fuzzy, kde-format
+#, kde-format
 msgid "You tried to multiplicate a non-number, '%1'"
-msgstr "لقد حاولت انشاء متعدد بدون ارقام %1"
+msgstr "لقد حاولت أن تضرب قيمة غير عددية '%1'"
 
 #: interpreter/executer.cpp:744
-#, fuzzy, kde-format
+#, kde-format
 msgid "You tried to multiplicate by a non-number, '%1'"
-msgstr "لقد حاولت انشاء متعدد بدون ارقام %1"
+msgstr "لقد حاولت أن تضرب في قيمة غير عددية '%1'"
 
 #: interpreter/executer.cpp:750
 #, kde-format
 msgid "You need two numbers to divide"
-msgstr "تحتاج إلى رقمين لعمل القسمة"
+msgstr "تحتاج إلى عددين لعملية القسمة"
 
 #: interpreter/executer.cpp:755
-#, fuzzy, kde-format
+#, kde-format
 msgid "You tried to divide by zero"
-msgstr "لقد حاولت القسمة بدون وجود اعداد %1"
+msgstr "لقد حاولت القسمة على صفر"
 
 #: interpreter/executer.cpp:761
 #, kde-format
 msgid "You tried to divide a non-number, '%1'"
-msgstr "لقد حاولت القسمة بدون اعداد %1"
+msgstr "لقد حاولت قسمة قيمة غير عددية، '%1'"
 
 #: interpreter/executer.cpp:763
 #, kde-format
 msgid "You tried to divide by a non-number, '%1'"
-msgstr "لقد حاولت القسمة بدون وجود اعداد %1"
+msgstr "لقد حاولت القسمة على قيمة غير عددية، '%1'"
 
 #: interpreter/executer.cpp:769
 #, kde-format
 msgid "You need two numbers to raise a power"
-msgstr "تحتاج إلى رقمين للرفع إلى قوى"
+msgstr "تحتاج إلى عددين للرفع إلى قوة (أس)"
 
 #: interpreter/executer.cpp:780
 #, kde-format
@@ -509,32 +505,32 @@ msgstr "نتيجة هذه العملية الأسية كبيرة جدا"
 #: interpreter/executer.cpp:786
 #, kde-format
 msgid "You tried to raise a non-number to a power, '%1'"
-msgstr "لقد حاولت الرفع إلى قوى بدون ارقام %1"
+msgstr "لقد حاولت رفع قيمة غير عددية إلى قوة، ,'%1'"
 
 #: interpreter/executer.cpp:788
-#, fuzzy, kde-format
+#, kde-format
 msgid "You tried to raise the power of a non-number, '%1'"
-msgstr "أنت إلى رفع من a رقم"
+msgstr "لقد حاولت الرفع إلى قوة غير عددية، '%1'"
 
 #: interpreter/executer.cpp:794
 #, kde-format
 msgid "You need one variable and a value or variable to do a '='"
-msgstr "انت بحاجة إلى متغير بقيمة أو إلى قيمة لعمل '='"
+msgstr "أنت بحاجة إلى متغير  أو متغير وقيمة لعمل '='"
 
 #: interpreter/executer.cpp:811
-#, fuzzy, kde-format
+#, kde-format
 msgid "The function '%1' is already defined."
-msgstr "تم تنفيذ %1 العملية"
+msgstr "الدالة '%1' مُعرّفة سابقا."
 
 #: interpreter/executer.cpp:1041
 #, kde-format
 msgid "Can't do a sqrt of a negative number"
-msgstr ""
+msgstr "لا يمكن حساب الجذر التربيعي لعدد سالب"
 
 #: interpreter/parser.cpp:38
 #, kde-format
 msgid "Expected a command, instead got '%1'"
-msgstr ""
+msgstr "نتوقّع أمرًا، بدلاً من  '%1'"
 
 #: interpreter/parser.cpp:71
 #, kde-format
@@ -544,37 +540,37 @@ msgstr "'%1' غير مفهوم"
 #: interpreter/parser.cpp:106
 #, kde-format
 msgid "A comma was expected here..."
-msgstr "كان يجب وضع فاصلة هنا..."
+msgstr "نتوقّع فاصلة هنا..."
 
 #: interpreter/parser.cpp:109
 #, kde-format
 msgid "Did not expect '%1', instead expected the line to end after %2"
-msgstr ""
+msgstr "لا نتوقّع %1، لكن يُتوقّع أن ينتهي السطر بعد %2"
 
 #: interpreter/parser.cpp:115
 #, kde-format
 msgid "Expected an assignment, '=', after the variable '%1'"
-msgstr "كان متوقعا إسناد، '='، بدل المتغير '%1'"
+msgstr "ُيُتوقّع إسناد، '='، بعد المتغير '%1'"
 
 #: interpreter/parser.cpp:119
 #, kde-format
 msgid "Did not expect '%1', instead expected a closing parenthesis, ')'"
-msgstr "لم نتوقع '%1'، كام متوقعا قوس إغلاق، ')'"
+msgstr "لم نتوقع '%1'، كان متوقعا قوس مغلق، ')'"
 
 #: interpreter/parser.cpp:123
 #, kde-format
 msgid "Expected 'to' after 'for'"
-msgstr "كان متوقعا 'to' بعد 'for'"
+msgstr "يُتوقع 'إلى' بعد 'لكل'"
 
 #: interpreter/parser.cpp:126
-#, fuzzy, kde-format
+#, kde-format
 msgid "Expected a name for a command after 'learn' command"
-msgstr "توقّعت نطاق بعد تعليم أمر '%1'"
+msgstr "اسم أمر متوقّع بعد الأمر \"تعلم\""
 
 #: interpreter/parser.cpp:232
-#, fuzzy, kde-format
+#, kde-format
 msgid "You cannot put '%1' here."
-msgstr "لا تستطيع أن تضع %1 هنا"
+msgstr "لا تستطيع أن تضع '%1' هنا."
 
 #: interpreter/parser.cpp:268
 #, kde-format
@@ -582,19 +578,18 @@ msgid ""
 "Text string was not properly closed, expected a double quote, ' \" ', to "
 "close the string."
 msgstr ""
-"السلسلة النصية لم يتم إغلاقها بالطريقة الصحيحة، كان متوقعا علامات تنصيص "
-"مزدوجة ' \" '، لإغلاف السلسلة النصية."
+"سلسلة نصية لم تُغلق إغلاقًا صحيحًا، كان متوقعا علامات تنصيص مزدوجة ' \" '، "
+"لإغلاق السلسلة النصية."
 
 #: interpreter/parser.cpp:616
 #, kde-format
 msgid "'for' was called wrongly"
-msgstr "'ل' يسمى خطئ"
+msgstr "اُستدعيت 'لكل' استدعاءً خاطئا"
 
 #: interpreter/parser.cpp:686
-#, fuzzy, kde-format
-#| msgid "Expected a scope after the 'learn' command"
+#, kde-format
 msgid "Expected a scope after the 'learn' command"
-msgstr "توقّعت نطاق بعد تعليم أمر '%1'"
+msgstr "مجال متوقّع بعد الأمر 'تعلم'"
 
 #: interpreter/translator.cpp:96
 #, kde-format
@@ -603,10 +598,10 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "true"
-msgstr "صحيح"
+msgstr "صح"
 
 #: interpreter/translator.cpp:103
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'False' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
@@ -615,7 +610,7 @@ msgid "false"
 msgstr "خاطئ"
 
 #: interpreter/translator.cpp:122
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'ArgumentSeparator' COMMAND, there are some "
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
@@ -624,7 +619,7 @@ msgid ","
 msgstr "،"
 
 #: interpreter/translator.cpp:129
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'DecimalSeparator' COMMAND, there are some "
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
@@ -633,69 +628,49 @@ msgid "."
 msgstr "."
 
 #: interpreter/translator.cpp:136
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Exit' COMMAND, there are some rules on "
-#| "how to translate it.Please see http://edu.kde.org/kturtle/translator.php "
-#| "to learn how to properly translate it."
-#| msgid "exit"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Exit' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "exit"
-msgstr "ا&خرج"
+msgstr "اخرج"
 
 #: interpreter/translator.cpp:143
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'If' COMMAND, there are some rules on how "
-#| "to translate it.Please see http://edu.kde.org/kturtle/translator.php to "
-#| "learn how to properly translate it."
-#| msgid "if"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'If' COMMAND, there are some rules on how to "
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "if"
-msgstr "إذا:"
+msgstr "إذا"
 
 #: interpreter/translator.cpp:150
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Else' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "else"
-msgstr "خاطئ"
+msgstr "وإلا"
 
 #: interpreter/translator.cpp:157
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Repeat' COMMAND, there are some rules on "
-#| "how to translate it.Please see http://edu.kde.org/kturtle/translator.php "
-#| "to learn how to properly translate it."
-#| msgid "repeat"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Repeat' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "repeat"
-msgstr "التكرار"
+msgstr "كرر"
 
 #: interpreter/translator.cpp:164
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'While' COMMAND, there are some rules on "
-#| "how to translate it.Please see http://edu.kde.org/kturtle/translator.php "
-#| "to learn how to properly translate it."
-#| msgid "while"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'While' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "while"
-msgstr "بينما"
+msgstr "مادام"
 
 #: interpreter/translator.cpp:171
 #, kde-format
@@ -704,7 +679,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "for"
-msgstr "لـ"
+msgstr "لكل"
 
 #: interpreter/translator.cpp:178
 #, kde-format
@@ -716,12 +691,7 @@ msgid "to"
 msgstr "إلى"
 
 #: interpreter/translator.cpp:185
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Step' COMMAND, there are some rules on "
-#| "how to translate it.Please see http://edu.kde.org/kturtle/translator.php "
-#| "to learn how to properly translate it."
-#| msgid "step"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Step' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
@@ -730,46 +700,31 @@ msgid "step"
 msgstr "خطوة"
 
 #: interpreter/translator.cpp:192
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Break' COMMAND, there are some rules on "
-#| "how to translate it.Please see http://edu.kde.org/kturtle/translator.php "
-#| "to learn how to properly translate it."
-#| msgid "break"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Break' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "break"
-msgstr "توقّف"
+msgstr "اكسر"
 
 #: interpreter/translator.cpp:199
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Return' COMMAND, there are some rules on "
-#| "how to translate it.Please see http://edu.kde.org/kturtle/translator.php "
-#| "to learn how to properly translate it."
-#| msgid "return"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Return' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "return"
-msgstr "Return"
+msgstr "إرجاع"
 
 #: interpreter/translator.cpp:206
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Wait' COMMAND, there are some rules on "
-#| "how to translate it.Please see http://edu.kde.org/kturtle/translator.php "
-#| "to learn how to properly translate it."
-#| msgid "wait"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Wait' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "wait"
-msgstr "أنتطر"
+msgstr "انتظر"
 
 #: interpreter/translator.cpp:213
 #, kde-format
@@ -778,7 +733,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "assert"
-msgstr ""
+msgstr "تأكيد"
 
 #: interpreter/translator.cpp:220
 #, kde-format
@@ -790,7 +745,7 @@ msgid "and"
 msgstr "و"
 
 #: interpreter/translator.cpp:227
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Or' COMMAND, there are some rules on how to "
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
@@ -808,12 +763,7 @@ msgid "not"
 msgstr "ليس"
 
 #: interpreter/translator.cpp:265
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Learn' COMMAND, there are some rules on "
-#| "how to translate it.Please see http://edu.kde.org/kturtle/translator.php "
-#| "to learn how to properly translate it."
-#| msgid "learn"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Learn' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
@@ -822,18 +772,13 @@ msgid "learn"
 msgstr "تعلم"
 
 #: interpreter/translator.cpp:272
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Reset' COMMAND, there are some rules on "
-#| "how to translate it.Please see http://edu.kde.org/kturtle/translator.php "
-#| "to learn how to properly translate it."
-#| msgid "reset"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Reset' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "reset"
-msgstr "صفّر"
+msgstr "تصفير"
 
 #: interpreter/translator.cpp:279
 #, kde-format
@@ -842,7 +787,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "clear"
-msgstr "صافي"
+msgstr "امسح"
 
 #: interpreter/translator.cpp:286
 #, kde-format
@@ -851,44 +796,34 @@ msgctxt ""
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "ccl"
-msgstr ""
+msgstr "مسح"
 
 #: interpreter/translator.cpp:293
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Center' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "center"
-msgstr "الوسط"
+msgstr "وسط"
 
 #: interpreter/translator.cpp:300
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Go' COMMAND, there are some rules on how "
-#| "to translate it.Please see http://edu.kde.org/kturtle/translator.php to "
-#| "learn how to properly translate it."
-#| msgid "go"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Go' COMMAND, there are some rules on how to "
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "go"
-msgstr "ا&ذهب"
+msgstr "اذهب"
 
 #: interpreter/translator.cpp:307
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Go' COMMAND, there are some rules on how "
-#| "to translate it.Please see http://edu.kde.org/kturtle/translator.php to "
-#| "learn how to properly translate it."
-#| msgid "go"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'GoX' COMMAND, there are some rules on how to "
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "gox"
-msgstr "اذهب"
+msgstr "اذهب_س"
 
 #: interpreter/translator.cpp:314
 #, kde-format
@@ -897,21 +832,16 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "gx"
-msgstr ""
+msgstr "سين"
 
 #: interpreter/translator.cpp:321
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Go' COMMAND, there are some rules on how "
-#| "to translate it.Please see http://edu.kde.org/kturtle/translator.php to "
-#| "learn how to properly translate it."
-#| msgid "go"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'GoY' COMMAND, there are some rules on how to "
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "goy"
-msgstr "اذهب"
+msgstr "اذهب_ص"
 
 #: interpreter/translator.cpp:328
 #, kde-format
@@ -920,7 +850,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "gy"
-msgstr ""
+msgstr "صاد"
 
 #: interpreter/translator.cpp:335
 #, kde-format
@@ -929,7 +859,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "forward"
-msgstr "التقدّم"
+msgstr "تقدم"
 
 #: interpreter/translator.cpp:342
 #, kde-format
@@ -938,21 +868,16 @@ msgctxt ""
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "fw"
-msgstr ""
+msgstr "أمام"
 
 #: interpreter/translator.cpp:349
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Backward' COMMAND, there are some rules "
-#| "on how to translate it.Please see http://edu.kde.org/kturtle/translator."
-#| "php to learn how to properly translate it."
-#| msgid "backward"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Backward' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "backward"
-msgstr "إلى ال&خلف"
+msgstr "وراء"
 
 #: interpreter/translator.cpp:356
 #, kde-format
@@ -961,67 +886,52 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "bw"
-msgstr ""
+msgstr "خلف"
 
 #: interpreter/translator.cpp:363
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Direction' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "direction"
-msgstr "الاتّجاه:"
+msgstr "اتجاه"
 
 #: interpreter/translator.cpp:370
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Direction' COMMAND ALIAS, there are some "
-#| "rules on how to translate it.Please see http://edu.kde.org/kturtle/"
-#| "translator.php to learn how to properly translate it."
-#| msgid "dir"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Direction' COMMAND ALIAS, there are some "
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "dir"
-msgstr "اتجاه:"
+msgstr "جهة"
 
 #: interpreter/translator.cpp:377
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'TurnLeft' COMMAND, there are some rules "
-#| "on how to translate it.Please see http://edu.kde.org/kturtle/translator."
-#| "php to learn how to properly translate it."
-#| msgid "turnleft"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'TurnLeft' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "turnleft"
-msgstr "اتجه لليمين"
+msgstr "در_يسار"
 
 #: interpreter/translator.cpp:384
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'TurnLeft' COMMAND ALIAS, there are some "
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "tl"
-msgstr "TL"
+msgstr "يسار"
 
 #: interpreter/translator.cpp:391
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'TurnRight' COMMAND, there are some rules "
-#| "on how to translate it.Please see http://edu.kde.org/kturtle/translator."
-#| "php to learn how to properly translate it."
-#| msgid "turnright"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'TurnRight' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "turnright"
-msgstr "اتجه لليمين"
+msgstr "در_يمين"
 
 #: interpreter/translator.cpp:398
 #, kde-format
@@ -1030,21 +940,16 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "tr"
-msgstr "ترك"
+msgstr "يمين"
 
 #: interpreter/translator.cpp:405
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'PenWidth' COMMAND, there are some rules "
-#| "on how to translate it.Please see http://edu.kde.org/kturtle/translator."
-#| "php to learn how to properly translate it."
-#| msgid "penwidth"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'PenWidth' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "penwidth"
-msgstr "عرض القلم"
+msgstr "عرض_القلم"
 
 #: interpreter/translator.cpp:412
 #, kde-format
@@ -1053,21 +958,16 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "pw"
-msgstr ""
+msgstr "عرض"
 
 #: interpreter/translator.cpp:419
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'PenUp' COMMAND, there are some rules on "
-#| "how to translate it.Please see http://edu.kde.org/kturtle/translator.php "
-#| "to learn how to properly translate it."
-#| msgid "penup"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'PenUp' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "penup"
-msgstr "القلم للأعلى"
+msgstr "رفع_القلم"
 
 #: interpreter/translator.cpp:426
 #, kde-format
@@ -1076,21 +976,16 @@ msgctxt ""
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "pu"
-msgstr ""
+msgstr "رفع"
 
 #: interpreter/translator.cpp:433
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'PenDown' COMMAND, there are some rules on "
-#| "how to translate it.Please see http://edu.kde.org/kturtle/translator.php "
-#| "to learn how to properly translate it."
-#| msgid "pendown"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'PenDown' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "pendown"
-msgstr "القلم للأسفل"
+msgstr "ضع_القلم"
 
 #: interpreter/translator.cpp:440
 #, kde-format
@@ -1099,67 +994,52 @@ msgctxt ""
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "pd"
-msgstr ""
+msgstr "ضع"
 
 #: interpreter/translator.cpp:447
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'PenColor' COMMAND, there are some rules "
-#| "on how to translate it.Please see http://edu.kde.org/kturtle/translator."
-#| "php to learn how to properly translate it."
-#| msgid "pencolor"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'PenColor' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "pencolor"
-msgstr "لون القلم"
+msgstr "لون_القلم"
 
 #: interpreter/translator.cpp:454
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'PenColor' COMMAND ALIAS, there are some "
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "pc"
-msgstr "بي سي - ‎٩٨"
+msgstr "لون"
 
 #: interpreter/translator.cpp:461
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'CanvasColor' COMMAND, there are some "
-#| "rules on how to translate it.Please see http://edu.kde.org/kturtle/"
-#| "translator.php to learn how to properly translate it."
-#| msgid "canvascolor"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'CanvasColor' COMMAND, there are some rules "
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "canvascolor"
-msgstr "جامع الألوان"
+msgstr "لون_الرقعة"
 
 #: interpreter/translator.cpp:468
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'CanvasColor' COMMAND ALIAS, there are some "
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "cc"
-msgstr "ن‌ك"
+msgstr "خلفية"
 
 #: interpreter/translator.cpp:475
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'CanvasSize' COMMAND, there are some rules "
-#| "on how to translate it.Please see http://edu.kde.org/kturtle/translator."
-#| "php to learn how to properly translate it."
-#| msgid "canvassize"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'CanvasSize' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "canvassize"
-msgstr "حجم الرقعة"
+msgstr "حجم_الرقعة"
 
 #: interpreter/translator.cpp:482
 #, kde-format
@@ -1168,21 +1048,16 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "cs"
-msgstr "تشي"
+msgstr "حجم"
 
 #: interpreter/translator.cpp:489
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'SpriteShow' COMMAND, there are some rules "
-#| "on how to translate it.Please see http://edu.kde.org/kturtle/translator."
-#| "php to learn how to properly translate it."
-#| msgid "spriteshow"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'SpriteShow' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "spriteshow"
-msgstr "عرض وهمي"
+msgstr "أظهر"
 
 #: interpreter/translator.cpp:496
 #, kde-format
@@ -1191,38 +1066,28 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "ss"
-msgstr ""
+msgstr "إظهار"
 
 #: interpreter/translator.cpp:503
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'SpriteHide' COMMAND, there are some rules "
-#| "on how to translate it.Please see http://edu.kde.org/kturtle/translator."
-#| "php to learn how to properly translate it."
-#| msgid "spritehide"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'SpriteHide' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "spritehide"
-msgstr "اخفاء"
+msgstr "أخف"
 
 #: interpreter/translator.cpp:510
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'SpriteHide' COMMAND ALIAS, there are some "
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "sh"
-msgstr "sh"
+msgstr "إخفاء"
 
 #: interpreter/translator.cpp:517
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Print' COMMAND, there are some rules on "
-#| "how to translate it.Please see http://edu.kde.org/kturtle/translator.php "
-#| "to learn how to properly translate it."
-#| msgid "print"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Print' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
@@ -1231,26 +1096,16 @@ msgid "print"
 msgstr "اطبع"
 
 #: interpreter/translator.cpp:524
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'FontSize' COMMAND, there are some rules "
-#| "on how to translate it.Please see http://edu.kde.org/kturtle/translator."
-#| "php to learn how to properly translate it."
-#| msgid "fontsize"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'FontSize' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "fontsize"
-msgstr "مقاس الخط"
+msgstr "حجم_الخط"
 
 #: interpreter/translator.cpp:531
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Random' COMMAND, there are some rules on "
-#| "how to translate it.Please see http://edu.kde.org/kturtle/translator.php "
-#| "to learn how to properly translate it."
-#| msgid "random"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Random' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
@@ -1259,13 +1114,13 @@ msgid "random"
 msgstr "عشوائي"
 
 #: interpreter/translator.cpp:538
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Random' COMMAND ALIAS, there are some rules "
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "rnd"
-msgstr "و"
+msgstr "عشو"
 
 #: interpreter/translator.cpp:545
 #, kde-format
@@ -1274,7 +1129,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "getx"
-msgstr ""
+msgstr "هات_س"
 
 #: interpreter/translator.cpp:552
 #, kde-format
@@ -1283,10 +1138,10 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "gety"
-msgstr ""
+msgstr "هات_ص"
 
 #: interpreter/translator.cpp:559
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Message' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
@@ -1295,13 +1150,13 @@ msgid "message"
 msgstr "رسالة"
 
 #: interpreter/translator.cpp:566
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Ask' COMMAND, there are some rules on how to "
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "ask"
-msgstr "اسألني"
+msgstr "اسأل"
 
 #: interpreter/translator.cpp:573
 #, kde-format
@@ -1310,7 +1165,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "pi"
-msgstr "بي"
+msgstr "طا"
 
 #: interpreter/translator.cpp:580
 #, kde-format
@@ -1340,46 +1195,31 @@ msgid "cos"
 msgstr "جتا"
 
 #: interpreter/translator.cpp:601
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'ArcTan' COMMAND, there are some rules on "
-#| "how to translate it.Please see http://edu.kde.org/kturtle/translator.php "
-#| "to learn how to properly translate it."
-#| msgid "arctan"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'ArcTan' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "arctan"
-msgstr "arctan"
+msgstr "قوس_ظل"
 
 #: interpreter/translator.cpp:608
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'ArcSin' COMMAND, there are some rules on "
-#| "how to translate it.Please see http://edu.kde.org/kturtle/translator.php "
-#| "to learn how to properly translate it."
-#| msgid "arcsin"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'ArcSin' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "arcsin"
-msgstr "arcsin"
+msgstr "قوس_جا"
 
 #: interpreter/translator.cpp:615
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'ArcCos' COMMAND, there are some rules on "
-#| "how to translate it.Please see http://edu.kde.org/kturtle/translator.php "
-#| "to learn how to properly translate it."
-#| msgid "arccos"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'ArcCos' COMMAND, there are some rules on how "
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "arccos"
-msgstr "arccos"
+msgstr "قوس_جتا"
 
 #: interpreter/translator.cpp:622
 #, kde-format
@@ -1388,7 +1228,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "sqrt"
-msgstr ""
+msgstr "جذر"
 
 #: interpreter/translator.cpp:629
 #, kde-format
@@ -1397,16 +1237,16 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "round"
-msgstr ""
+msgstr "تقريب"
 
 #: interpreter/translator.cpp:636
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'GetDirection' COMMAND, there are some rules "
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "getdirection"
-msgstr "وصف"
+msgstr "هات_اتجاه"
 
 #: interpreter/translator.cpp:643
 #, kde-format
@@ -1415,7 +1255,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "mod"
-msgstr "Mod"
+msgstr "باقي"
 
 #: interpreter/translator.cpp:662
 #, kde-format
@@ -1471,7 +1311,7 @@ msgstr "&حرّر"
 #: kturtleui.rc:41 mainwindow.cpp:499 mainwindow.cpp:521
 #, kde-format
 msgid "&Canvas"
-msgstr "&الرقع"
+msgstr "الر&قعة"
 
 #. i18n: ectx: Menu (run)
 #: kturtleui.rc:47 mainwindow.cpp:299 mainwindow.cpp:418
@@ -1489,19 +1329,19 @@ msgstr "سرعة الت&شغيل"
 #: kturtleui.rc:60
 #, kde-format
 msgid "&Tools"
-msgstr "ادوات"
+msgstr "أ&دوات"
 
 #. i18n: ectx: Menu (settings)
 #: kturtleui.rc:64
 #, kde-format
 msgid "&Settings"
-msgstr "إعدادات"
+msgstr "إ&عدادات"
 
 #. i18n: ectx: Menu (language)
 #: kturtleui.rc:65
 #, kde-format
 msgid "&Script Language"
-msgstr "الل&غة السكربت"
+msgstr "ل&غة البرمجة"
 
 #. i18n: ectx: Menu (help)
 #: kturtleui.rc:75
@@ -1518,30 +1358,29 @@ msgstr "شريط الأدوات الرئيسي"
 #: main.cpp:49
 #, kde-format
 msgid "KTurtle"
-msgstr "سلحفاة ك"
+msgstr "سلحفاتك"
 
 #: main.cpp:51
 #, kde-format
 msgid "https://edu.kde.org/kturtle"
-msgstr ""
+msgstr "https://edu.kde.org/kturtle"
 
 #: main.cpp:52
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "KTurtle is an educational programming environment that aims to make learning "
 "how to program as easy as possible. To achieve this KTurtle makes all "
 "programming tools available from the user interface. The programming "
 "language used is TurtleScript which allows its commands to be translated."
 msgstr ""
-"  Kturtle هو بيئة تعليم البرمجه يهدف الى جعل البرمجه اسهل ما يمكن، وخصوصا  "
-"للأطفال الصغار.  Kturtle  تعتزم مساعدة تعليم الاطفال اساسيات  الرياضيات ، "
-"والهندسه...  البرمجه."
+"سلحفاتك Kturtle  بيئة برمجة تعليمية تهدف إلى تسهيل تعلم البرمجة، وخصوصا  "
+"للأطفال الصغار. لتحقيق هذا تجعل سلحفاة ك جميع أدوات البرمجة متاحة من واجهة "
+"المستخدم. لغة البرمجة المستخدمة هي TurtleScript والتي تسمح بترجمة أوامرها."
 
 #: main.cpp:53
-#, fuzzy, kde-format
-#| msgid "Cies Breijs"
+#, kde-format
 msgid "(c) 2003-2009 Cies Breijs"
-msgstr "Cies Breijs"
+msgstr "(c) 2003-2009 Cies Breijs"
 
 #: main.cpp:55
 #, kde-format
@@ -1549,9 +1388,9 @@ msgid "Cies Breijs"
 msgstr "Cies Breijs"
 
 #: main.cpp:55
-#, fuzzy, kde-format
+#, kde-format
 msgid "Initiator and core developer"
-msgstr "غرس حب التطوير"
+msgstr "المبادر والمطور الأساسي"
 
 #: main.cpp:56
 #, kde-format
@@ -1571,14 +1410,14 @@ msgstr "Mauricio Piacentini"
 #: main.cpp:64
 #, kde-format
 msgid "File or URL to open (in the GUI mode)"
-msgstr "الملف أو المسار المراد فتحه (بنظام واجهة المستخدم)"
+msgstr "ملف أو مسار gفتحه (بنظام واجهة المستخدم)"
 
 #: main.cpp:65
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test "
 "scripts"
-msgstr "ابداء KTurtle في وضع الاختبار بدون ( GUI) تشغيل الملفالمحدد مباشرة "
+msgstr "ابدأ KTurtle في وضع الاختبار بدون واجهة، مفيد لاختبار البرامج"
 
 #: main.cpp:66
 #, kde-format
@@ -1586,14 +1425,15 @@ msgid ""
 "Starts KTurtle in testing mode (without a GUI), directly runs the specified "
 "local file"
 msgstr ""
-"ابداء KTurtle في وضع الاختبار (بدون واجهة رسومية)،تشغيل الملف المحدد مباشرة"
+"ابدأ سلحفاتك في وضع الاختبار (بدون واجهة رسومية)،تشغيل الملف المحدد مباشرة"
 
 #: main.cpp:67
 #, kde-format
 msgid ""
 "Specifies the localization language by a language code, defaults to \"en_US"
 "\" (only works in testing mode)"
-msgstr "تعيين اللغة عن طريق الرمز، إفتراضيا \"en_US\" (فقط في وضع المعاينة)"
+msgstr ""
+"تعيين اللغة المحلية بواسطة رمز لغة، افتراضيا \"en_US\" (فقط في وضع الاختبار)"
 
 #. i18n("Only tokenizes the turtle code (only works in testing mode)")));
 #: main.cpp:69
@@ -1601,10 +1441,10 @@ msgstr "تعيين اللغة عن طريق الرمز، إفتراضيا \"en_U
 msgid ""
 "Translates turtle code to embeddable C++ example strings (for developers "
 "only)"
-msgstr "ترجم رمز Turtle إلى نص C++ مضمّن تجريبي (فقط للمطورين)"
+msgstr "ترجم شفرة Turtle إلى نصوص أمثلة C++ محمولة (للمطورين فقط)"
 
 #: mainwindow.cpp:62
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:status the application is ready for commands"
 msgid "Ready"
 msgstr "جاهز"
@@ -1612,7 +1452,7 @@ msgstr "جاهز"
 #: mainwindow.cpp:176
 #, kde-format
 msgid "Create a new file"
-msgstr "انشئ ملفا جديدا"
+msgstr "أنشئ ملفا جديدا"
 
 #: mainwindow.cpp:177
 #, kde-format
@@ -1622,17 +1462,17 @@ msgstr "ملف جديد: أنشئ ملف جديد"
 #: mainwindow.cpp:180
 #, kde-format
 msgid "Open an existing file"
-msgstr "افتح الملف المحدد"
+msgstr "افتح الملف موجودا"
 
 #: mainwindow.cpp:181
 #, kde-format
 msgid "Open File: Open an existing file"
-msgstr "إفتح ملف: إفتح ملف موجود"
+msgstr "افتح ملف: افتح ملف موجود"
 
 #: mainwindow.cpp:185
 #, kde-format
 msgid "Open a recently used file"
-msgstr "فتح آخر ملف تم فتحه"
+msgstr "فتح الملفات الأخيرة"
 
 #: mainwindow.cpp:186
 #, kde-format
@@ -1642,7 +1482,7 @@ msgstr "فتح آخر ملف تم فتحه"
 #: mainwindow.cpp:188
 #, kde-format
 msgid "Get more examples..."
-msgstr "أحصل على المزيد من أمثلة..."
+msgstr "اجلب أمثلة أكثر..."
 
 #: mainwindow.cpp:197
 #, kde-format
@@ -1652,7 +1492,7 @@ msgstr "احفظ الملف الحالي في القرص"
 #: mainwindow.cpp:198
 #, kde-format
 msgid "Save File: Save the current file to disk"
-msgstr "إحفظ الملف: إحفظ الملف الحالي في القرص"
+msgstr "احفظ الملف: احفظ الملف الحالي في القرص"
 
 #: mainwindow.cpp:202
 #, kde-format
@@ -1662,7 +1502,7 @@ msgstr "احفظ الملف الحالي باسم مختلف"
 #: mainwindow.cpp:203
 #, kde-format
 msgid "Save File As: Save the current file under a different name"
-msgstr "احفظ الملف بإسم: احفظ الملف الحالي باسم مختلف"
+msgstr "احفظ الملف باسم: احفظ الملف الحالي باسم مختلف"
 
 #: mainwindow.cpp:206
 #, kde-format
@@ -1677,7 +1517,7 @@ msgstr "تصدير محتوى المحرر إلى صيغة HTML"
 #: mainwindow.cpp:208
 #, kde-format
 msgid "Export to HTML: Export the contents of the editor as HTML"
-msgstr "تصدير لصيعة HTML: تصدير محتوى المحرر بإسم"
+msgstr "تصدير لصيغة HTML: تصدير محتوى المحرر لصيغة صفحة وب HTML"
 
 #: mainwindow.cpp:212
 #, kde-format
@@ -1687,17 +1527,17 @@ msgstr "اطبع الرمز"
 #: mainwindow.cpp:213
 #, kde-format
 msgid "Print: Print the code"
-msgstr "اطبع: إطبع الرمز"
+msgstr "اطبع: اطبع الرمز"
 
 #: mainwindow.cpp:216
 #, kde-format
 msgid "Quit KTurtle"
-msgstr "خروج من KTurtle"
+msgstr "خروج"
 
 #: mainwindow.cpp:217
 #, kde-format
 msgid "Quit: Quit KTurtle"
-msgstr "خروج: خروج من KTurtle"
+msgstr "خروج: خروج من سلحفاتك"
 
 #: mainwindow.cpp:221
 #, kde-format
@@ -1710,14 +1550,14 @@ msgid "Undo: Undo a change in the editor"
 msgstr "تراجع: إلغاء آخر تعديل في المحرر"
 
 #: mainwindow.cpp:227
-#, fuzzy, kde-format
+#, kde-format
 msgid "Redo a previously undone change in the editor"
-msgstr "اعد ما سبق والغ تغييرات رموز التحرير"
+msgstr "استرجع ما تراجعت عنه سابقًا في المحرر"
 
 #: mainwindow.cpp:228
-#, fuzzy, kde-format
+#, kde-format
 msgid "Redo: Redo a previously undone change in the editor"
-msgstr "اعد ما سبق والغ تغييرات رموز التحرير"
+msgstr "أعد: استرجاع ما تراجعت عنه سابقًا في المحرر"
 
 #: mainwindow.cpp:233
 #, kde-format
@@ -1732,12 +1572,12 @@ msgstr "قص: قص النص المحدد إلى الحافظة"
 #: mainwindow.cpp:239
 #, kde-format
 msgid "Copy the selected text to the clipboard"
-msgstr "نسخ النص المحدد إلى الحافظة"
+msgstr "انسخ النص المحدد إلى الحافظة"
 
 #: mainwindow.cpp:240
 #, kde-format
 msgid "Copy: Copy the selected text to the clipboard"
-msgstr "نسخ: نسخ النص المحدد إلى الحافظة"
+msgstr "انسخ: نسخ النص المحدد إلى الحافظة"
 
 #: mainwindow.cpp:245
 #, kde-format
@@ -1752,58 +1592,58 @@ msgstr "لصق: لصق محتوى الحافظة في التحديد الحال�
 #: mainwindow.cpp:249
 #, kde-format
 msgid "Select all the code in the editor"
-msgstr "اختيار كل الرموز في المحرر"
+msgstr "اختيار كل الشفرة في المحرر"
 
 #: mainwindow.cpp:250
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select All: Select all the code in the editor"
-msgstr "اختيار كل الرموز في المحرر"
+msgstr "حدّد الكل: تحديد كل الشفرة في المحرر"
 
 #: mainwindow.cpp:253
-#, fuzzy, kde-format
+#, kde-format
 msgid "Overwrite Mode"
 msgstr "نمط الطمس"
 
 #: mainwindow.cpp:255
 #, kde-format
 msgid "Toggle between the 'insert' and 'overwrite' mode"
-msgstr "تبديل بين الكتابة فوق النص و ازاحة النص"
+msgstr "بدّل بين نمط \"الإدراج\" ونمط \"الطمس\""
 
 #: mainwindow.cpp:256
-#, fuzzy, kde-format
+#, kde-format
 msgid "Overwrite Mode: Toggle between the 'insert' and 'overwrite' mode"
-msgstr "تبديل بين الكتابة فوق النص و ازاحة النص"
+msgstr "نمط الطمس: بدّل بين نمط \"الإدراج\" ونمط \"الطمس\""
 
 #: mainwindow.cpp:263
 #, kde-format
 msgid "Search through the code in the editor"
-msgstr "بحث خلال الرموز في المحرر"
+msgstr "بحث في الشفرة في المحرر"
 
 #: mainwindow.cpp:264
-#, fuzzy, kde-format
+#, kde-format
 msgid "Find: Search through the code in the editor"
-msgstr "بحث خلال الرموز في المحرر"
+msgstr "ابحث: ابحث في الشفرة في المحرر"
 
 #: mainwindow.cpp:267
-#, fuzzy, kde-format
+#, kde-format
 msgid "Continue searching through the code in the editor"
-msgstr "بحث خلال الرموز في المحرر"
+msgstr "تابِع البحث في الشفرة في المحرر"
 
 #: mainwindow.cpp:268
-#, fuzzy, kde-format
+#, kde-format
 msgid "Find Next: Continue searching through the code in the editor"
-msgstr "بحث خلال الرموز في المحرر"
+msgstr "ابحث عن التالي: تابِع البحث في الشفرة في المحرر"
 
 #: mainwindow.cpp:271
-#, fuzzy, kde-format
+#, kde-format
 msgid "Continue searching backwards through the code in the editor"
-msgstr "بحث خلال الرموز في المحرر"
+msgstr "تابِع البحث للخلف في الشفرة في المحرر"
 
 #: mainwindow.cpp:272
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Find Previous: Continue searching backwards through the code in the editor"
-msgstr "بحث خلال الرموز في المحرر"
+msgstr "ابحث عن السابق: تابِع البحث للخلف في الشفرة في المحرر"
 
 #: mainwindow.cpp:281
 #, kde-format
@@ -1811,44 +1651,44 @@ msgid "Export to &Image (PNG)..."
 msgstr "تصدير لصورة (PNG)..."
 
 #: mainwindow.cpp:282
-#, fuzzy, kde-format
+#, kde-format
 msgid "Export the current canvas to a PNG raster image"
-msgstr "حفظ الملف إلى دسك"
+msgstr "تصدير الرقعة الحالية إلى صورة نقطية PNG"
 
 #: mainwindow.cpp:283
 #, kde-format
 msgid "Export to PNG: Export the current canvas to a PNG raster image"
-msgstr ""
+msgstr "تصدير إلى PNG: تصدير الرقعة الحالية إلى صورة نقطية PNG"
 
 #: mainwindow.cpp:287
 #, kde-format
 msgid "Export to &Drawing (SVG)..."
-msgstr ""
+msgstr "تصدير لصيغة &رسم (SVG)..."
 
 #: mainwindow.cpp:288
 #, kde-format
 msgid "Export the current canvas to Scalable Vector Graphics"
-msgstr ""
+msgstr "تصدير الرقعة الحالية إلى رسم متجهي (شعاعي) SVG"
 
 #: mainwindow.cpp:289
 #, kde-format
 msgid "Export to SVG: Export the current canvas to Scalable Vector Graphics"
-msgstr ""
+msgstr "تصدير إلى SVG: تصدير الرقعة الحالية إلى رسم متجهي (شعاعي)"
 
 #: mainwindow.cpp:292
 #, kde-format
 msgid "&Print Canvas..."
-msgstr ""
+msgstr "ا&طبع الرقعة..."
 
 #: mainwindow.cpp:294
-#, fuzzy, kde-format
+#, kde-format
 msgid "Print the canvas"
-msgstr "اطبع رمز"
+msgstr "اطبع الرقعة"
 
 #: mainwindow.cpp:295
-#, fuzzy, kde-format
+#, kde-format
 msgid "Print: Print the canvas"
-msgstr "اطبع رمز"
+msgstr "اطبع: اطبع الرقعة"
 
 #: mainwindow.cpp:302
 #, kde-format
@@ -1863,22 +1703,22 @@ msgstr "شغّل: نفّذ البرنامج"
 #: mainwindow.cpp:306
 #, kde-format
 msgid "&Pause"
-msgstr "إيقاف مؤقت"
+msgstr "ألب&ث"
 
 #: mainwindow.cpp:310
 #, kde-format
 msgid "Pause execution"
-msgstr "إيقاف التنفيذ مؤقتا"
+msgstr "ألبث التنفيذ مؤقتا"
 
 #: mainwindow.cpp:311
 #, kde-format
 msgid "Pause: Pause execution"
-msgstr "إيقاف مؤقت: إيقاف التنفيذ مؤقتا"
+msgstr "ألبث: إيقاف التنفيذ مؤقتا"
 
 #: mainwindow.cpp:314
 #, kde-format
 msgid "&Abort"
-msgstr "&إلغاء"
+msgstr "إل&غاء"
 
 #: mainwindow.cpp:317
 #, kde-format
@@ -1888,7 +1728,7 @@ msgstr "إيقاف التنفيذ"
 #: mainwindow.cpp:318
 #, kde-format
 msgid "Abort: Stop executing program"
-msgstr "إلغاء: إوقف التنفيذ"
+msgstr "إلغاء: أوقف التنفيذ"
 
 #. i18n("&Indent"), "format-indent-more", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
 #. i18n("&Unindent"), "format-indent-less", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
@@ -1899,32 +1739,32 @@ msgstr "إلغاء: إوقف التنفيذ"
 #: mainwindow.cpp:328
 #, kde-format
 msgid "&Direction Chooser..."
-msgstr "&محدد الاتجاه..."
+msgstr "منتقي الا&تجاه..."
 
 #: mainwindow.cpp:330
 #, kde-format
 msgid "Shows the direction chooser dialog"
-msgstr "إظهار نافذة محدد الاتجاه"
+msgstr "إظهار نافذة منتقي الاتجاه"
 
 #: mainwindow.cpp:331
 #, kde-format
 msgid "Direction Chooser: Show the direction chooser dialog"
-msgstr "محدد الإتجاه:إظهار نافذة محدد الاتجاه"
+msgstr "محدد الاتجاه:إظهار نافذة محدد الاتجاه"
 
 #: mainwindow.cpp:334
 #, kde-format
 msgid "&Color Picker..."
-msgstr "&محدد الألوان..."
+msgstr "&منتقي الألوان..."
 
 #: mainwindow.cpp:336
 #, kde-format
 msgid "Shows the color picker dialog"
-msgstr "إظهار نافذة محدد الألوان"
+msgstr "تظهر نافذة منتقي الألوان"
 
 #: mainwindow.cpp:337
 #, kde-format
 msgid "Color Picker: Show the color picker dialog"
-msgstr "محدد الألوان: إظهار نافذة محدد الألوان"
+msgstr "منتقي الألوان: إظهار نافذة منتقي الألوان"
 
 #: mainwindow.cpp:341
 #, kde-format
@@ -1934,7 +1774,7 @@ msgstr "اعرض المحرر"
 #: mainwindow.cpp:343
 #, kde-format
 msgid "Show or hide the Code Editor"
-msgstr "إظهار أو إخفاء مُحرّر الرموز"
+msgstr "إظهار أو إخفاء مُحرّر الشفرة"
 
 #: mainwindow.cpp:344
 #, kde-format
@@ -1959,7 +1799,7 @@ msgstr "عرض المفتش: إظهار أو إخفاء المفتش"
 #: mainwindow.cpp:361
 #, kde-format
 msgid "Show E&rrors"
-msgstr "عرض الأخطاء"
+msgstr "عرض الأ&خطاء"
 
 #: mainwindow.cpp:363
 #, kde-format
@@ -1987,35 +1827,35 @@ msgstr "أظهر أر&قام الأسطر"
 #: mainwindow.cpp:380
 #, kde-format
 msgid "Turn the line numbers on/off in the editor"
-msgstr "إخفاء أو إظهار ارقام الاسطر في المحرر"
+msgstr "إخفاء أو إظهار أرقام الأسطر في المحرر"
 
 #: mainwindow.cpp:381
 #, kde-format
 msgid "Show Line Numbers: Turn the line numbers on/off in the editor"
-msgstr "عرض أرقام الأسطر: إخفاء أو إظهار ارقام الاسطر في المحرر"
+msgstr "عرض أرقام الأسطر: إخفاء أو إظهار أرقام الأسطر في المحرر"
 
 #: mainwindow.cpp:392
 #, kde-format
 msgid "Get help on the command under the cursor"
-msgstr "المساعدة في الامر اسفل المؤشر"
+msgstr "المساعدة في الأمر أسفل المؤشر"
 
 #: mainwindow.cpp:393
-#, fuzzy, kde-format
+#, kde-format
 msgid "Context Help: Get help on the command under the cursor"
-msgstr "المساعدة في الامر اسفل المؤشر"
+msgstr "المساعدة السياقية: احصل على المساعدة بشأن الأمر أسفل المؤشر"
 
 #: mainwindow.cpp:398
-#, fuzzy, kde-format
+#, kde-format
 msgid "Help"
 msgstr "مساعدة"
 
 #: mainwindow.cpp:399
 #, kde-format
 msgid "Help: Open manual for KTurtle"
-msgstr "مساعدة: دليل إستعمال KTurtle"
+msgstr "مساعدة: دليل استعمال KTurtle"
 
 #: mainwindow.cpp:403
-#, fuzzy, kde-format
+#, kde-format
 msgid "Console"
 msgstr "الطرفية"
 
@@ -2025,31 +1865,31 @@ msgid "Execute"
 msgstr "تنفيذ"
 
 #: mainwindow.cpp:412
-#, fuzzy, kde-format
+#, kde-format
 msgid "Execute: Executes the current line in the console"
-msgstr "تنفيذ الارمز بمحرر الرموز"
+msgstr "تنفيذ: تنفيذ السطر الحالي في الطرفية"
 
 #: mainwindow.cpp:422
 #, kde-format
 msgid "Execute the program, or use the drop down menu to select the run speed"
-msgstr "تنفيذ البرنامج، أو إستعمل قائمة الرفع الإسقاط لتحديد السرعة"
+msgstr "تنفيذ البرنامج، أو استعمل القائمة المنسدلة لتحديد السرعة"
 
 #: mainwindow.cpp:423
 #, kde-format
 msgid ""
 "Run: Execute the program, or use the drop down menu to select the run speed"
-msgstr "تنفيذ: تنفيذ البرنامج، أو إستعمل قائمة الرفع الإسقاط لتحديد السرعة"
+msgstr "تنفيذ: تنفيذ البرنامج، أو استعمل  القائمة المنسدلة لتحديد السرعة"
 
 #: mainwindow.cpp:426
 #, kde-format
 msgctxt "@option:radio"
 msgid "Full Speed (&no highlighting and inspector)"
-msgstr "السرعة القصوى (لا تسطيع أو تفتيش)"
+msgstr "السرعة القصوى (لا تمييز أو تفتيش)"
 
 #: mainwindow.cpp:429
 #, kde-format
 msgid "Run the program at full speed, with highlighting and inspector disabled"
-msgstr "تشغيل البرنامج بالسرعة القصوى، مع التسطيع و إيقاف التفتيش"
+msgstr "تشغيل البرنامج بالسرعة القصوى، مع إيقاف التفتيش والتمييز"
 
 #: mainwindow.cpp:430
 #, kde-format
@@ -2057,13 +1897,13 @@ msgid ""
 "Full Speed: Run the program at full speed, with highlighting and inspector "
 "disabled"
 msgstr ""
-"السرعة القصوى: تشغيل البرنامج بالسرعة القصوى، مع التسطيع و إيقاف التفتيش"
+"السرعة القصوى: تشغيل البرنامج بالسرعة القصوى، مع  إيقاف التفتيش والإبراز"
 
 #: mainwindow.cpp:435
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:radio"
 msgid "&Full Speed"
-msgstr "كامل السرعة"
+msgstr "السرعة ال&قصوى"
 
 #: mainwindow.cpp:439
 #, kde-format
@@ -2076,58 +1916,58 @@ msgid "Full Speed: Run the program at full speed"
 msgstr "السرعة القصوى: شغل البرنامج بأقصى سرعة"
 
 #: mainwindow.cpp:445
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:radio choose the slow speed"
 msgid "&Slow"
-msgstr "بطيء"
+msgstr "&بطيء"
 
 #: mainwindow.cpp:448
 #, kde-format
 msgid "Run the program at a slow speed"
-msgstr "شغل البرنامج ببطئ"
+msgstr "شغل البرنامج ببطء"
 
 #: mainwindow.cpp:449
 #, kde-format
 msgid "Slow Speed: Run the program at a slow speed"
-msgstr "سرعة بطيئة: شغل البرنامج ببطئ"
+msgstr "سرعة بطيئة: شغل البرنامج ببطء"
 
 #: mainwindow.cpp:454
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:radio"
 msgid "S&lower"
-msgstr "أبطأ"
+msgstr "أب&طأ"
 
 #: mainwindow.cpp:457
 #, kde-format
 msgid "Run the program at a slower speed"
-msgstr "شغل البرنامج بسرعة أقل"
+msgstr "شغل البرنامج بسرعة أبطأ"
 
 #: mainwindow.cpp:458
 #, kde-format
 msgid "Slower Speed: Run the program at a slower speed"
-msgstr "سرعة أقل: شغل البرنامج بسرعة أقل"
+msgstr "سرعة أبطأ: شغل البرنامج بسرعة أقل"
 
 #: mainwindow.cpp:463
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:radio"
 msgid "Sl&owest"
-msgstr "الأبطأ"
+msgstr "ب&طيء جدًا"
 
 #: mainwindow.cpp:466
 #, kde-format
 msgid "Run the program at the slowest speed"
-msgstr "شغل البرنامج بأقل سرعة"
+msgstr "شغل البرنامج بسرعة بطيئة جدًا"
 
 #: mainwindow.cpp:467
 #, kde-format
 msgid "Slowest Speed: Run the program at the slowest speed"
-msgstr "أقل سرعة: شغل البرنامج بأقل سرعة"
+msgstr "بطيء جدًا: شغل البرنامج بأبطأ سرعة"
 
 #: mainwindow.cpp:472
 #, kde-format
 msgctxt "@option:radio"
 msgid "S&tep-by-Step"
-msgstr "خطوة خطوة"
+msgstr "&خطوة خطوة"
 
 #: mainwindow.cpp:475
 #, kde-format
@@ -2146,9 +1986,9 @@ msgid ""
 msgstr "الرقعة: هنا يتحرك السلحفاة و يرسم عندما يشتغل البرنامج"
 
 #: mainwindow.cpp:505
-#, fuzzy, kde-format
+#, kde-format
 msgid "E&rrors"
-msgstr "الأخطاء"
+msgstr "الأ&خطاء"
 
 #: mainwindow.cpp:535
 #, kde-format
@@ -2158,12 +1998,12 @@ msgstr "&المحرر"
 #: mainwindow.cpp:549
 #, kde-format
 msgid "Editor: Write your KTurtle commands here"
-msgstr "المحرر: أكتب أمر KTurtle هنا"
+msgstr "المحرر: أكتب أوامر السلحفاة هنا"
 
 #: mainwindow.cpp:552
 #, kde-format
 msgid "&Inspector"
-msgstr "المفتش"
+msgstr "الم&فتش"
 
 #: mainwindow.cpp:562
 #, kde-format
@@ -2175,27 +2015,27 @@ msgstr "المفتش: أنظر إلى المعلومات حول المتغيرا
 #: mainwindow.cpp:655
 #, kde-format
 msgid "Switch to the %1 dictionary"
-msgstr "حول إلى %1 القاموس"
+msgstr "حول إلى القاموس %1"
 
 #: mainwindow.cpp:734
 #, kde-format
 msgid " OVR "
-msgstr " فوق "
+msgstr " طمس "
 
 #: mainwindow.cpp:734
 #, kde-format
 msgid " INS "
-msgstr " ادرج "
+msgstr " إدراج "
 
 #: mainwindow.cpp:742
 #, kde-format
 msgid "<nothing under cursor>"
-msgstr ""
+msgstr "<لاشيء تحت المؤشر>"
 
 #: mainwindow.cpp:743
 #, kde-format
 msgid "Help on: %1"
-msgstr "مساعدة حول %1"
+msgstr "مساعدة عن: %1"
 
 #: mainwindow.cpp:748
 #, kde-format
@@ -2203,34 +2043,34 @@ msgid " Line: %1 Column: %2 "
 msgstr " سطر: %1 عمود: %2 "
 
 #: mainwindow.cpp:756
-#, fuzzy, kde-format
+#, kde-format
 msgid "\"%1\" <%2>"
-msgstr "%1 (%2)"
+msgstr "\"%1\" <%2>"
 
 #: mainwindow.cpp:759
-#, fuzzy, kde-format
+#, kde-format
 msgid "<variable>"
-msgstr "متغيرات"
+msgstr "<متغير>"
 
 #: mainwindow.cpp:760
-#, fuzzy, kde-format
+#, kde-format
 msgid "<number>"
-msgstr "رقم"
+msgstr "<عدد>"
 
 #: mainwindow.cpp:761
-#, fuzzy, kde-format
+#, kde-format
 msgid "<comment>"
-msgstr "أمر"
+msgstr "<تعليق>"
 
 #: mainwindow.cpp:762
-#, fuzzy, kde-format
+#, kde-format
 msgid "<string>"
-msgstr "سلسلة"
+msgstr "<سلسلة>"
 
 #: mainwindow.cpp:768
-#, fuzzy, kde-format
+#, kde-format
 msgid "scope"
-msgstr "<br><b>النّطاق:</b> %1"
+msgstr "مجال"
 
 #: mainwindow.cpp:770
 #, kde-format
@@ -2240,12 +2080,12 @@ msgstr "إسناد"
 #: mainwindow.cpp:772
 #, kde-format
 msgid "parenthesis"
-msgstr "المعاملات"
+msgstr "أقواس"
 
 #: mainwindow.cpp:774
 #, kde-format
 msgid "mathematical operator"
-msgstr "مُعاملات رياضية"
+msgstr "عوامل رياضية"
 
 #: mainwindow.cpp:776
 #, kde-format
@@ -2258,9 +2098,9 @@ msgid "boolean operator"
 msgstr "عامل منطقي"
 
 #: mainwindow.cpp:780
-#, fuzzy, kde-format
+#, kde-format
 msgid "learned command"
-msgstr "أمر"
+msgstr "تعلم الأمر"
 
 #: mainwindow.cpp:782
 #, kde-format
@@ -2275,20 +2115,20 @@ msgstr "أمر"
 #: mainwindow.cpp:788
 #, kde-format
 msgid "controller command"
-msgstr ""
+msgstr "أمر المتحكّم"
 
 #: mainwindow.cpp:813
 #, kde-format
 msgid "Could not change the language to %1."
-msgstr "لا يمكن تغيير اللغة إلى %1"
+msgstr "لا يمكن تغيير اللغة إلى %1."
 
 #: mainwindow.cpp:821
-#, fuzzy, kde-format
+#, kde-format
 msgid "English [built in]"
-msgstr "%1 [مضمن]"
+msgstr "الإنجليزية [افتراضي]"
 
 #: mainwindow.cpp:822
-#, fuzzy, kde-format
+#, kde-format
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
@@ -2308,10 +2148,10 @@ msgid "PNG Images"
 msgstr "صور PNG"
 
 #: mainwindow.cpp:1030
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Save as SVG"
-msgstr "احفظ كـ"
+msgstr "احفظ كـ SVG"
 
 #: mainwindow.cpp:1030
 #, kde-format
@@ -2319,16 +2159,15 @@ msgid "Scalable Vector Graphics"
 msgstr "رسم متجهي (شعاعي)"
 
 #: mainwindow.cpp:1040
-#, fuzzy, kde-format
-#| msgid "Save code as HTML"
+#, kde-format
 msgctxt "@title:window"
 msgid "Save code as HTML"
-msgstr "حفظ الرمز بصيغة HTML"
+msgstr "حفظ الشفرة بصيغة HTML"
 
 #: mainwindow.cpp:1040
 #, kde-format
 msgid "HTML documents"
-msgstr "وثيقة HTML"
+msgstr "مستند HTML"
 
 #: mainwindow.cpp:1058
 #, kde-format
