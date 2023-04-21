@@ -11,9 +11,9 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-28 00:54+0000\n"
-"PO-Revision-Date: 2023-04-02 00:34+0400\n"
+"PO-Revision-Date: 2023-04-20 23:01+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
-"Language-Team: ar\n"
+"Language-Team: \n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +25,7 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "خالد حسني, Taha Zerrouki"
+msgstr "خالد حسني, طه زروقي Taha Zerrouki"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -61,7 +61,7 @@ msgstr "شطب"
 #, kde-format
 msgctxt "@title:window"
 msgid "Color Picker"
-msgstr "منتقي الألوان"
+msgstr "محدد الألوان"
 
 #: colorpicker.cpp:48
 #, kde-format
@@ -113,7 +113,7 @@ msgstr "<p style='white-space:pre'><b>خطأ:</b> %1</p>"
 #, kde-format
 msgctxt "@title:window"
 msgid "Direction Chooser"
-msgstr "منتقي الاتجاه"
+msgstr "محدد الاتجاه"
 
 #: directiondialog.cpp:225
 #, kde-format
@@ -607,7 +607,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "false"
-msgstr "خاطئ"
+msgstr "غلط"
 
 #: interpreter/translator.cpp:122
 #, kde-format
@@ -733,7 +733,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "assert"
-msgstr "تأكيد"
+msgstr "تحقق"
 
 #: interpreter/translator.cpp:220
 #, kde-format
@@ -778,7 +778,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "reset"
-msgstr "تصفير"
+msgstr "جدد"
 
 #: interpreter/translator.cpp:279
 #, kde-format
@@ -1507,7 +1507,7 @@ msgstr "احفظ الملف باسم: احفظ الملف الحالي باسم 
 #: mainwindow.cpp:206
 #, kde-format
 msgid "Export to &HTML..."
-msgstr "تصدير لصيغة &HTML..."
+msgstr "صدّر لصيغة &HTML..."
 
 #: mainwindow.cpp:207
 #, kde-format
@@ -1648,7 +1648,7 @@ msgstr "ابحث عن السابق: تابِع البحث للخلف في الش
 #: mainwindow.cpp:281
 #, kde-format
 msgid "Export to &Image (PNG)..."
-msgstr "تصدير لصورة (PNG)..."
+msgstr "صدّر لصورة (PNG)..."
 
 #: mainwindow.cpp:282
 #, kde-format
@@ -1658,12 +1658,12 @@ msgstr "تصدير الرقعة الحالية إلى صورة نقطية PNG"
 #: mainwindow.cpp:283
 #, kde-format
 msgid "Export to PNG: Export the current canvas to a PNG raster image"
-msgstr "تصدير إلى PNG: تصدير الرقعة الحالية إلى صورة نقطية PNG"
+msgstr "صدّر إلى PNG: تصدير الرقعة الحالية إلى صورة نقطية PNG"
 
 #: mainwindow.cpp:287
 #, kde-format
 msgid "Export to &Drawing (SVG)..."
-msgstr "تصدير لصيغة &رسم (SVG)..."
+msgstr "صدّر لصيغة &رسم (SVG)..."
 
 #: mainwindow.cpp:288
 #, kde-format
@@ -1673,7 +1673,7 @@ msgstr "تصدير الرقعة الحالية إلى رسم متجهي (شعا�
 #: mainwindow.cpp:289
 #, kde-format
 msgid "Export to SVG: Export the current canvas to Scalable Vector Graphics"
-msgstr "تصدير إلى SVG: تصدير الرقعة الحالية إلى رسم متجهي (شعاعي)"
+msgstr "صدّر إلى SVG: تصدير الرقعة الحالية إلى رسم متجهي (شعاعي)"
 
 #: mainwindow.cpp:292
 #, kde-format
@@ -1703,22 +1703,22 @@ msgstr "شغّل: نفّذ البرنامج"
 #: mainwindow.cpp:306
 #, kde-format
 msgid "&Pause"
-msgstr "ألب&ث"
+msgstr "تو&قّف"
 
 #: mainwindow.cpp:310
 #, kde-format
 msgid "Pause execution"
-msgstr "ألبث التنفيذ مؤقتا"
+msgstr "إيقاف التنفيذ مؤقتا"
 
 #: mainwindow.cpp:311
 #, kde-format
 msgid "Pause: Pause execution"
-msgstr "ألبث: إيقاف التنفيذ مؤقتا"
+msgstr "إيقاف مؤقت: إيقاف التنفيذ مؤقتا"
 
 #: mainwindow.cpp:314
 #, kde-format
 msgid "&Abort"
-msgstr "إل&غاء"
+msgstr "أل&غِ"
 
 #: mainwindow.cpp:317
 #, kde-format
@@ -1728,7 +1728,7 @@ msgstr "إيقاف التنفيذ"
 #: mainwindow.cpp:318
 #, kde-format
 msgid "Abort: Stop executing program"
-msgstr "إلغاء: أوقف التنفيذ"
+msgstr "ألغ: أوقف التنفيذ نهائيا"
 
 #. i18n("&Indent"), "format-indent-more", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
 #. i18n("&Unindent"), "format-indent-less", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
@@ -1739,12 +1739,12 @@ msgstr "إلغاء: أوقف التنفيذ"
 #: mainwindow.cpp:328
 #, kde-format
 msgid "&Direction Chooser..."
-msgstr "منتقي الا&تجاه..."
+msgstr "&محدد الاتجاه..."
 
 #: mainwindow.cpp:330
 #, kde-format
 msgid "Shows the direction chooser dialog"
-msgstr "إظهار نافذة منتقي الاتجاه"
+msgstr "إظهار نافذة محدد الاتجاه"
 
 #: mainwindow.cpp:331
 #, kde-format
@@ -1754,22 +1754,22 @@ msgstr "محدد الاتجاه:إظهار نافذة محدد الاتجاه"
 #: mainwindow.cpp:334
 #, kde-format
 msgid "&Color Picker..."
-msgstr "&منتقي الألوان..."
+msgstr "&محدد الألوان..."
 
 #: mainwindow.cpp:336
 #, kde-format
 msgid "Shows the color picker dialog"
-msgstr "تظهر نافذة منتقي الألوان"
+msgstr "إظهار نافذة محدد الألوان"
 
 #: mainwindow.cpp:337
 #, kde-format
 msgid "Color Picker: Show the color picker dialog"
-msgstr "منتقي الألوان: إظهار نافذة منتقي الألوان"
+msgstr "محدد الألوان: إظهار نافذة محدد الألوان"
 
 #: mainwindow.cpp:341
 #, kde-format
 msgid "Show &Editor"
-msgstr "اعرض المحرر"
+msgstr "أظهر الم&حرر"
 
 #: mainwindow.cpp:343
 #, kde-format
@@ -1784,7 +1784,7 @@ msgstr "عرض محرر الرموز: إظهار أو إخفاء مُحرّر ا
 #: mainwindow.cpp:351
 #, kde-format
 msgid "Show &Inspector"
-msgstr "إظهار المفتش"
+msgstr "أظهر المفت&ش"
 
 #: mainwindow.cpp:353
 #, kde-format
@@ -1799,7 +1799,7 @@ msgstr "عرض المفتش: إظهار أو إخفاء المفتش"
 #: mainwindow.cpp:361
 #, kde-format
 msgid "Show E&rrors"
-msgstr "عرض الأ&خطاء"
+msgstr "أظهر الأ&خطاء"
 
 #: mainwindow.cpp:363
 #, kde-format
@@ -2115,7 +2115,7 @@ msgstr "أمر"
 #: mainwindow.cpp:788
 #, kde-format
 msgid "controller command"
-msgstr "أمر المتحكّم"
+msgstr "أمر التحكّم"
 
 #: mainwindow.cpp:813
 #, kde-format
