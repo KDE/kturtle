@@ -1,0 +1,2177 @@
+<chapter id="reference">
+<title
+>مرجع سكربت السلحفاة البرمجي</title>
+<para
+>هذا مرجع لغة برمجة سلحفاتك واسمها سكربت السلحفاة.في القسم الأول من هذا الفصل، سنتحدّث عن   <link linkend="grammar"
+>قواعد كتابة</link
+> برنامج سكربت السلحفاة. في القسم الثاني، سنتعامل مع  <link linkend="mathematical-operators"
+>العمليات الرياضية</link
+> و <link linkend="boolean-operators"
+>العمليات المنطقية </link
+> و <link linkend="comparing-operators"
+>عمليات المقارنة</link
+>. القسم الثالث به قائمة كل  <link linkend="commands"
+>الأوامر</link
+> مشروحة واحدة  واحدة. القسم الرابع يشرح كيف   <link linkend="assignment-of-variables"
+>تُنسد</link
+> قيمًا إلى <link linkend="assignment-of-variables"
+>المتغيرات</link
+>. وفي النهاية، سنفصّل كيفية نضبط التنفيذ بـ<link linkend="controlling-execution"
+>تعليمات التحكّم</link
+> في القسم الخامس وطريقة إنشاء أوامر مخصّصة بالأمر <link linkend="learn"
+><userinput
+>تعلّم</userinput
+></link
+> في الفصل السادس.</para>
+
+<sect1 id="grammar">
+<title
+>قواعد كتابة سكربت السلحفاة</title>
+<para
+>كما هو الحال في أي لغة، سكربت السلحفاة فيها أنواع مختلفة من الكلمات والرموز.في اللغة العربية، نميز الأفعال (مثل "مشى يمشي" أو "أكل يأكل") والأسماء (مثل "أخت" أو "منزل")، وتستخدم استخدامها لأغراض مختلفة.سكربت السلحفاة هي لغة برمجة ، تُستخدم لتعليم سلحفاتك ما يجب القيام به.</para>
+<para
+>في هذا القسم، سنشرح  شرحا مختصرًا أنواعًا مختلفة من كلمات ورموز سكربت السلحفاة.سنشرح  <link linkend="comment"
+>التعليقات</link
+>، و<link linkend="command"
+>الأوامر </link
+> وثلاثة أنواع أخرى هي : <link linkend="number"
+>الأعداد </link
+>، و <link linkend="string"
+>السلاسل</link
+> و <link linkend="boolean-value"
+>القيم المنطقية (صح، غلط)</link
+>.</para>
+
+
+<sect2 id="comment">
+<title
+>تعليقات</title>
+<para
+>في البرنامج تعليمات للتنفيذ عند تشغيل البرنامج، أمّا التعليقاتُ فلا تُنفّذ، بل تتجاهلها  سلحفاتك التعليقات مفيدة كي يفهم الآخرون برنامج فهمًا أفضل.كلّ ما يأتي بعد علامة <userinput
+>#</userinput
+> يُعدّ تعليقا في سكربت السلحفاة. مثلا، هذا البرنامج الصغير، لا يفعل شيئًا: <screen>
+# هذا البرنامج الصغير لا يفعل شيئا، هو تعليق فقط!
+</screen
+> يبدو بلا فائدة، لكنه يشرح الفكرة جيّدًا.</para>
+<para
+>تصبح التعليقات مفيدة للغاية عندما يصبح البرنامج أكثر تعقيدًا. قد تساعد في تقديم نصائح للمبرمجين الآخرين. في البرنامج التالي، نستخدم تعليقات  الاستخدام مع الأمر <link linkend="print"
+>اطبع</link
+> <screen>
+# هذا برنامج من  تصميم أحمد.
+اطبع "هذا النص سيطبع على الرقعة"
+# السطر السابق ليس تعليقا، لكن السطر الموالي تعليق:
+#اطبع "هذا النص سيطبع على الرقعة"</screen>
+السطر الأول يعرّف بالبرنامج. السطر الثاني تنفّذه  سلحفاتك لطباعة  <userinput
+>هذا النص سيطبع على الرقعة</userinput
+> على الرقعة. السطر الثالث تعليقٌ. أما السطر الرابع، فهو تعليق فيه تعليمات  سكربت السلحفاة، فإذا حذفنا العلامة <userinput
+>#</userinput
+> ستنفذ تعليمة الطباعة من سلحفاتك. يقول المبرمجو أن تعليمة الطباعة في السطر الرابعة "مُعلّقة".</para>
+<para
+>الأسطر المعلقة  <glossterm
+>ملوّنة</glossterm
+> بالرمادي الفاتح في <link linkend="the-editor"
+>المحرر</link
+>.</para>
+</sect2>
+
+<sect2 id="command">
+<title
+>أوامر</title>
+<para
+>استعمال الأوامر، يأمر السلحفاة أن تعمل شيئا ما.بعض الأوامر تحتاج إلى مدخلات.  <screen>
+# الأمر تقدّم  يحتاج إلى مدخل، في هذه الحالة العدد  100:
+تقدم 100
+</screen
+> السطر الأول  <link linkend="comment"
+>تعليق السطر الثاني فيه الأمر </link
+>.   <userinput
+>تقدم</userinput
+> و <link linkend="number"
+>العدد</link
+> <userinput
+>100</userinput
+>. العدد ليس جزءًا من الأمر، بل يُعدّ "مدخلا" للأمر.</para>
+<para
+>بعض الأوامر مثل  <userinput
+>اذهب</userinput
+> تحتاج إلى أكثر من مدخل واحد. تُفصل المداخل المتعددة بفاصلة  <userinput
+>،</userinput
+>.</para>
+<para
+>لتفاصيل أكثر عن كل أوامر <link linkend="commands"
+>طالع هنا </link
+>. الأوامر الجاهزة <glossterm
+>تُميّز</glossterm
+> بلون أزرق غامق.</para>
+</sect2>
+
+<sect2 id="number">
+<title
+>أعداد</title>
+<para
+>لابد أنّك تعرف الأعداد. طريقة استخدام الأعداد في سلحفاتك لا يختلف كثيرًا عن اللغة المنطوقة أو الرياضيات.</para>
+<para
+>لدينا الأعداد الطبيعية: <userinput
+>0</userinput
+>، <userinput
+>1</userinput
+>، <userinput
+>2</userinput
+>، <userinput
+>3</userinput
+>، <userinput
+>4</userinput
+>، <userinput
+>5</userinput
+>، إلى أخره والأعداد السالبة : <userinput
+>-1</userinput
+>، <userinput
+>-2</userinput
+>، <userinput
+>-3</userinput
+>، إلى أخره والأعداد العشرية مثل: <userinput
+>0.1</userinput
+>، <userinput
+>3.14</userinput
+>، <userinput
+>33.3333</userinput
+>، <userinput
+>-5.05</userinput
+>، <userinput
+>-1.0</userinput
+>. الفاصلة <userinput
+>.</userinput
+> تفصل بين الجزء الصحيح والجزء العشري. </para>
+<para
+>تستعمل الأعداد في  <link linkend="mathematical-operators"
+>العمليات الحسابية</link
+> و <link linkend="comparing-operators"
+>عمليات المقارنة</link
+>. وتُحفظ في  <link linkend="assignment-of-variables"
+>متغيرات</link
+>. الأعداد <glossterm
+>تُميّز</glossterm
+> بالأحمر الغامق.</para>
+</sect2>
+
+<!-- constants like pi? -->
+
+<sect2 id="string">
+<title
+>سلاسل</title>
+<para
+>سنبدأ بمثال:  <screen>
+اطبع "سلام، أنا سلسلة حروف."
+</screen
+>  في هذا المثال الأمر<userinput
+>اطبع</userinput
+> يطبع سلسلة حروف  <userinput
+>"سلام، أنا سلسلة حروف."</userinput
+>. تبدأ السلاسل وتنتهي بعلامة اقتباس<userinput
+>"</userinput
+>، تعتبر  سلحفاتك ما بين علامتي اقتباس سلسلة حروف.</para>
+<para
+>تُحفظ السلاسل في<link linkend="assignment-of-variables"
+>متغيرات</link
+>، مثل ، <link linkend="number"
+>الأعداد</link
+>. Yet، لكن على عكس الأعداد، السلاسل لا تستعمل في  <link linkend="mathematical-operators"
+>العمليات الحسابية</link
+> أو <link linkend="comparing-operators"
+>عمليات المقارنة</link
+> . السلاسل <glossterm
+>تُميّز</glossterm
+> بالأحمر.</para>
+</sect2>
+
+<sect2 id="boolean-value">
+<title
+>قيم منطقية (صح، غلط)</title>
+<para
+>لدينا قيمتان منطقيتان هما: <userinput
+>صح</userinput
+><indexterm
+><primary
+>صح</primary
+></indexterm
+> و <userinput
+>غلط</userinput
+><indexterm
+><primary
+>غلط</primary
+></indexterm
+>. قد تسمى هاتان القيمتان: <quote
+><userinput
+>صواب</userinput
+></quote
+> و <quote
+><userinput
+>خطأ</userinput
+></quote
+>، <quote
+><userinput
+>نعم</userinput
+></quote
+> و <quote
+><userinput
+>لا</userinput
+></quote
+>، <quote
+><userinput
+>واحد</userinput
+></quote
+> و <quote
+><userinput
+>صفر</userinput
+></quote
+>. لكن في سكربت السلحفاة سندعوها، <userinput
+>صح</userinput
+> و <userinput
+>غلط</userinput
+>. طالع هذا المثال سكربت السلحفاة: <screen>
+$س = صح
+</screen
+> إذا نظرت إلى <link linkend="the-inspector"
+>المفتش</link
+> سترى أن قيمة <link linkend="assignment-of-variables"
+>المتغير </link
+> <userinput
+>$س</userinput
+>  تساوي  <userinput
+>صح</userinput
+>، ونوعها منطقي.</para>
+<para
+>عادة القيم المنطقية ناتجة عن <link linkend="comparing-operators"
+>عمليات مقارنة</link
+>، كما في المثال الآتي سكربت السلحفاة: <screen>
+$جواب = 10 &gt; 3
+</screen
+> قيمة <link linkend="assignment-of-variables"
+>المتغير</link
+> <userinput
+>$جواب</userinput
+> هي <userinput
+>صح</userinput
+> لأنّ <userinput
+>10</userinput
+> أكبر من <userinput
+>3</userinput
+>.</para>
+<para
+>القيم المنطقية، <userinput
+>صح</userinput
+> و <userinput
+>غلط</userinput
+> <glossterm
+>تُميّز</glossterm
+> بالأحمر الغامق.</para>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="operators">
+<title
+>عوامل رياضية ومنطقية ومقارنة</title>
+<para
+>قد يبدو عنوان هذا القسم صعبًا للغاية، إلا أنه ليس بالصعوبة التي يبدو عليها.</para>
+
+<sect2 id="mathematical-operators">
+<title
+>عوامل رياضية</title>
+<para
+>علامات العمليات الحسابية هي:: الجمع (<userinput
+>+</userinput
+>)، الطرح (<userinput
+>-</userinput
+>)، multiply (<userinput
+>*</userinput
+>)، القسمة (<userinput
+>/</userinput
+>) والقوة (الأس) (<userinput
+>^</userinput
+>).</para>
+
+<para
+>هذه أمثلة عن العمليات الحسابية في سكربت  السلحفاة: <screen>
+$مجموع      = 1 + 1
+$فرق = 20 - 5
+$جداء = 15 * 2
+$حاصل   = 30 / 30
+$أس    = 2 ^ 2
+</screen
+> القيم الناتجة عن العمليات <link linkend="assignment-of-variables"
+>تُسند</link
+> إلى <link linkend="assignment-of-variables"
+>متغيرات</link
+>. باستعمال  <link linkend="the-inspector"
+>المفتّش</link
+> يمكنك رؤية قيم المتغيرات.</para>
+<para
+>إن رغبت في إجراء عملية حسابية بسيطة، اصنع مثل هذا: <screen
+>اطبع 2010-12
+</screen
+></para>
+<para
+>والآن إليك مثالًا عن الأقواس:<screen>
+اطبع ((20 - 5) * 2/30) + 1 
+ </screen
+>سيُحسب ما داخل الأقواس أولاً. في هذا المثال ، ستُحسب 20-5 ، ثم يضرب الناتج في 2 ، ثم يُقسم على 30 ، ثم يضاف 1 (والنتيجة 2). تُستخدم الأقواس في حالات أخرى.</para>
+<para
+>في سلحفاتك دوّال رياضية متقدمة. اطّلع على الأوامر الآتية، ولكن انتبه أنها وظائف متقدمّة:  <link linkend="round"
+>تقريب</link
+>، <link linkend="random"
+>عشوائي</link
+>، <link linkend="sqrt"
+>جذر</link
+> ، <link linkend="pi"
+>pi طا</link
+>، <link linkend="sin"
+>sin جا</link
+>، <link linkend="cos"
+>cos جتا</link
+>، <link linkend="tan"
+>tan ظا</link
+>، <link linkend="arcsin"
+>arcsin قوس_جا</link
+>، <link linkend="arccos"
+>arccos قوس_جتا</link
+>، <link linkend="arctan"
+>arctan قوس_ظا</link
+>.</para>
+</sect2>
+
+<sect2 id="boolean-operators">
+<title
+>عمليات منطقية (صح، غلط)</title>
+<para
+><link linkend="mathematical-operators"
+>العمليات الحسابية </link
+> <link linkend="number"
+>للأعداد</link
+>،  أمّا العمليات المنطقية  فتخصّ<link linkend="boolean-value"
+>القيم المنطقية</link
+> (<userinput
+>صح</userinput
+> و <userinput
+>غلط</userinput
+>). العمليات المنطقية ثلاثة هي: <userinput
+>و</userinput
+><indexterm
+><primary
+>و</primary
+></indexterm
+>، <userinput
+>أو</userinput
+><indexterm
+><primary
+>أو</primary
+></indexterm
+>، <userinput
+>ليس</userinput
+><indexterm
+><primary
+>ليس</primary
+></indexterm
+>. إليك بعض الأمثلة: <screen>
+$وصل_1_1 = صح و صح    # -> صح
+$وصل_1_0 = صح و غلط   # -> غلط
+$وصل_0_1 = غلط و صح   # -> غلط
+$وصل_0_0 = غلط و غلط  # -> غلط
+
+$فصل_1_1 = صح أو صح    # -> صح
+$أو_1_0 = صح أو غلط   # -> صح
+$أو_0_1 = غلط أو صح   # -> صح
+$أو_0_0 = غلط أو غلط  # -> غلط
+
+$نفي_1 = ليس صح   # -> غلط
+$نفي_0 = ليس غلط  # -> صح
+</screen
+> باستعمال <link linkend="the-inspector"
+>المفتش</link
+> ترى قيم كل المتغيرات، كما أننا وضعنا تعليقات صغيرة في نهاية كل سطر توضح النتيجة.. <userinput
+>و</userinput
+> تنتج <userinput
+>صح</userinput
+> فقط إن كان الطرفان <userinput
+>صح</userinput
+>. <userinput
+>أو</userinput
+> تنتج <userinput
+>صح</userinput
+> إن كان أحد الطرفين <userinput
+>صح</userinput
+>. و <userinput
+>ليس</userinput
+> تجعل <userinput
+>صح</userinput
+> <userinput
+>غلطا</userinput
+> و <userinput
+>غلط</userinput
+> <userinput
+>صح</userinput
+>.</para>
+<para
+>العمليات المنطقية  <glossterm
+>تميّز </glossterm
+> بالوردي.</para>
+
+<sect3 id="boolean-operators-advanced-examples">
+<title
+>أمثلة إضافية متقدمة</title>
+<para
+>إليك هذا المثال عن الوصل <userinput
+>و</userinput
+>: <screen>
+$ج = 1
+$ب = 5
+إذا (($ج &lt; 10) و ($ب == 5)) و ($ج &lt; $ب) {
+  اطبع "تمام"
+}
+</screen
+> في هذا البرنامج الصغير، نتيجة  <link linkend="comparing-operators"
+>عمليات المقارنة</link
+> تربط بعمليات وصل <userinput
+>و</userinput
+>. مما سيعطي  <quote
+>صح</quote
+> فيؤدي إلى طباعة <quote
+>تمام</quote
+>.</para>
+
+<para
+>هذا مثال للفصل بـ <userinput
+>أو</userinput
+>: <screen>
+$ع = 1
+إذا ($ع &lt; 10) أو ($ع == 2) {
+  اطبع "تمام"
+}
+</screen
+> في هذا المثال، الطرف الأيمن قبل <userinput
+>أو</userinput
+> يعطي <quote
+>صح</quote
+>، الطرف الأيسر يعطي <quote
+>غلط</quote
+>. وبما أنّ أحد طرفي العملية <userinput
+>أو</userinput
+>  <quote
+>صح</quote
+>، فالناتج  <quote
+>صح</quote
+>. مما يعني أن <quote
+>تمام</quote
+> ستُطبع.</para>
+
+<para
+>وأخيرًا هذا مثال عن النفي بـ<userinput
+>ليس</userinput
+>  التي تغيّر  <quote
+>صح</quote
+> إلى <quote
+>غلط</quote
+> و <quote
+>غلط</quote
+> إلى <quote
+>صح</quote
+>. انظر: <screen
+>$ع = 1
+إذا ليس ($ع == 3) {
+  اطبع "تمام"
+} وإلا {
+  اطبع "ليس تمام ;-)"
+}
+</screen
+></para>
+</sect3>
+</sect2>
+
+<sect2 id="comparing-operators">
+<title
+>عوامل المقارنة</title>
+<para
+>لتكن المقارنة الآتية: <screen>
+$جواب = 10 &gt; 3
+</screen
+> هنا <userinput
+>10</userinput
+>  تقارن مع <userinput
+>3</userinput
+> بالعامل <quote
+>أكبر من </quote
+>. نتيجة المقارنة هي  <link linkend="boolean-value"
+>قيمة منطقية</link
+> <userinput
+>صح</userinput
+> تُحفظ في <link linkend="assignment-of-variables"
+>المتغيّر</link
+> <userinput
+>$جواب</userinput
+>.</para>
+<para
+>كل <link linkend="number"
+>الأعداد</link
+> و <link linkend="assignment-of-variables"
+>المتغيرات</link
+> (التي تحوي أعدادًا) يُمكن مقارنتها بواسطة عمليات المقارنة.</para>
+<para
+>هذه بعض المقارنات: <table
+> <title
+>أنواع الأسئلة</title
+> <tgroup cols="3"
+> <tbody
+> <row
+> <entry
+><userinput
+>$ج == $ب</userinput
+></entry
+> <entry
+>تساوي</entry
+> <entry
+>الجواب هو  <quote
+>صح</quote
+> إذا <userinput
+>$ج</userinput
+> يساوي <userinput
+>$ب</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$ج != $ب</userinput
+></entry
+> <entry
+>لا تساوي</entry
+> <entry
+>الجواب  <quote
+>صح</quote
+> إذا <userinput
+>$ج</userinput
+> لا يساوي <userinput
+>$ب</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$ج &gt; $ب</userinput
+></entry
+> <entry
+>أكبر من</entry
+> <entry
+>الجواب <quote
+>صح</quote
+> إذا <userinput
+>$ج</userinput
+> أكبر من <userinput
+>$ب</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$ج &lt; $ب</userinput
+></entry
+> <entry
+>أصغر من </entry
+> <entry
+>الجواب  <quote
+>صح</quote
+> إذا <userinput
+>$ج</userinput
+> أصغر من  <userinput
+>$ب</userinput
+></entry
+> </row
+> <row
+> <entry
+><userinput
+>$ج &gt;= $ب</userinput
+></entry
+> <entry
+>أكبر من أو يساوي</entry
+> <entry
+>الجواب <quote
+>صح</quote
+> إذا <userinput
+>$ج</userinput
+> أكبر من <userinput
+>$B</userinput
+> أو يساويه</entry
+> </row
+> <row
+> <entry
+><userinput
+>$ج &lt;= $ب</userinput
+></entry
+> <entry
+>أصغر من أو يساوي </entry
+> <entry
+>الجواب <quote
+>صح</quote
+> إذا <userinput
+>$ج</userinput
+> أصغر من   <userinput
+>$ب</userinput
+> أو يساويه</entry
+> </row
+> </tbody
+> </tgroup
+> </table
+> رجاء، لاحظ أنّ  <userinput
+>$ج</userinput
+> و <userinput
+>$ب</userinput
+>  <link linkend="number"
+>عددان</link
+> أو <link linkend="assignment-of-variables"
+>متغيران</link
+> يحويان أعداد.</para>
+</sect2>
+
+
+</sect1>
+
+
+
+<sect1 id="commands">
+<title
+>أوامر</title>
+<para
+>باستخدام الأوامر تطلب من  السلحفاة أو سلحفاتك فعل شيء ما. بعض الأوامر تحتاج إلى مدخلات، وبعضها يعطي مخرجات. في هذا القسم نشرح كل أوامر  سلحفاتك. بدلاً من ذلك ، يمكن استخدام الأمر <link linkend = "learn"
+> <userinput
+> تعلم </userinput
+> </link
+> لإنشاء أوامرك الخاصة.الأوامر المضمنة التي نناقشها هنا <glossterm
+>مميّزة</glossterm
+> باللون الأزرق الداكن.</para>
+
+<sect2 id="moving-the-turtle">
+<title
+>تحريك السلحفاة</title>
+<para
+>توجد عدة أوامر لتحريك السلحفاة على الشاشة.</para>
+
+  <variablelist>
+    <anchor id="forward"/>
+    <varlistentry
+> 
+      <term
+>تقدم (أمام)<indexterm
+><primary
+>تقدم (أمام)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>تقدم س</screen
+><userinput
+>تقدم</userinput
+> تحرّك السلحفاة إلى الأمام بعدد من البكسلات أو النقاط. إذا كان القلم منخفضا، تترك السلحفاة خطًا. يمكن كتابة <userinput
+>تقدم</userinput
+> بـ <userinput
+>أمام</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="backward"/>
+    <varlistentry
+>  
+      <term
+>وراء (خلف)<indexterm
+><primary
+>وراء (خلف)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>وراء س</screen
+><userinput
+>وراء</userinput
+> حرّك السلحفاة إلى الوراء بعدد من البكسلات أو النقاط. إذا كان القلم منخفضا، تترك السلحفاة خطًا. يمكن كتابة <userinput
+>وراء</userinput
+> بـ <userinput
+>خلف</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnleft"/>
+    <varlistentry
+> 
+      <term
+>در_يسار (يسار)<indexterm
+><primary
+>در_يسار (يسار)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>در_يسار س</screen
+><userinput
+>در_يسار</userinput
+> تأمر السلحفاة بالدوران نحو اليسار بعدد من الدرجات. <userinput
+>در_يسار</userinput
+> تختصر إلى<userinput
+>يسار</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="turnright"/>
+    <varlistentry
+> 
+      <term
+>در_يمين (يمين)<indexterm
+><primary
+>در_يمين (يمين)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>در_يمين س</screen
+><userinput
+>در_يمين</userinput
+> تأمر السلحفاة بالدوران نحو اليمين بعدد من الدرجات. <userinput
+>در_يمين</userinput
+> تختصر إلى<userinput
+>يمين</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="direction"/>
+    <varlistentry
+> 
+      <term
+>اتجاه (جهة)<indexterm
+><primary
+>اتجاه (جهة)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>اتجاه س</screen
+><userinput
+> اتجاه </userinput
+> اضبط اتجاه السلحفاة على مقدار درجات انطلاقا من الصفر، أي لا تتعلق الزاوية باتجاه السلحفاة السابق. <userinput
+>اتجاه </userinput
+> تختصر إلى <userinput
+> جهة </userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="getdirection"/>
+    <varlistentry
+> 
+      <term
+>هات_اتجاه<indexterm
+><primary
+>هات_اتجاه</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>هات_اتجاه</screen
+>يعرض <userinput
+> هات-اتجاه </userinput
+> زاوية اتجاه السلحفاة بالدرجات انطلاقا من الصفر، حيث الزاوية صفر هي اتجاه السلحفاة حين تشير إلى الأعلى.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="center"/>
+    <varlistentry
+> 
+      <term
+>وسط<indexterm
+><primary
+>وسط</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>وسط</screen
+><userinput
+> وسط </userinput
+> يحرك السلحفاة إلى المركز على الرقعة.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="go"/>
+    <varlistentry
+> 
+      <term
+>اذهب<indexterm
+><primary
+>اذهب</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>اذهب س، ع</screen
+>يأمر <userinput
+>اذهب </userinput
+> السلحفاة بالذهاب إلى مكان معين على الرقعة. يقع هذا المكان على بعد عدد س  <glossterm linkend = "pixels"
+>بسكل </glossterm
+> من يسار اللوحة، و عدد ص <glossterm linkend = "pixels"
+> بكسل </glossterm
+> من أعلى اللوحة.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gox"/>
+    <varlistentry
+> 
+      <term
+>اذهب_س<indexterm
+><primary
+>اذهب_س (سين)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>اذهب_س س</screen
+><userinput
+> اذهب_س </userinput
+> باستخدام هذا الأمر ، ستنتقل السلحفاة إلى عدد س <glossterm linkend = "pixels"
+> بكسل </glossterm
+>  من يسار الرقعة، لكن تبقى على نفس الارتفاع. يختصر <userinput
+>اذهب_س </userinput
+> إلى <userinput
+> سين </userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="goy"/>
+    <varlistentry
+> 
+      <term
+>اذهب_ص<indexterm
+><primary
+>اذهب_ص (صاد)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>اذهب_ص</screen
+><userinput
+> اذهب_ص </userinput
+> باستخدام هذا الأمر ، ستنتقل السلحفاة إلى عدد ص <glossterm linkend = "pixels"
+> بكسل </glossterm
+>  من أعلى الرقعة، لكن تبقى على نفس البعد عن اليسار. يختصر <userinput
+>اذهب_ص </userinput
+> إلى <userinput
+> صاد </userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <note
+><para
+>عند استعمال الأوامر  <userinput
+>اذهب</userinput
+>، <userinput
+>اذهب_س</userinput
+>و <userinput
+>اذهب_ص</userinput
+> و <userinput
+>وسط</userinput
+>لن ترسم السلحفاة خطًا، سواءً كان القلم مرفوعا أو منخفضا.</para>
+  </note>
+</sect2>
+
+<sect2 id="locate-the-turtle">
+<title
+>أين السلحفاة؟</title>
+<para
+>هناك أمران يعطيان موضع السلحفاة على الشاشة.</para>
+
+  <variablelist>
+    <anchor id="getx"/>
+    <varlistentry
+> 
+      <term
+>هات_س<indexterm
+><primary
+>هات_س</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>هات_س</userinput
+> تُرجع عدد وحدات البكسل من يسار الرقعة إلى الموضع الحالي للسلحفاة.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="gety"/>
+    <varlistentry
+> 
+      <term
+>هات_ص<indexterm
+><primary
+>هات_ص</primary
+></indexterm
+></term>
+      <listitem
+><para
+><userinput
+>هات_ص</userinput
+> تُرجع عدد وحدات البكسل من أعلى الرقعة إلى الموضع الحالي للسلحفاة.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="pen">
+<title
+>للسلحفاة قلم</title>
+<para
+>للسلحفاة قلمٌ يرسم خطاً عندما تتحرك. في هذا القسم نشرح الأوامر التي تتحكّم في القلم.</para>
+  <variablelist>
+    <anchor id="penup"/>
+    <varlistentry
+> 
+      <term
+>رفع_القلم (رفع)<indexterm
+><primary
+>رفع_القلم (رفع)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>رفع_القلم</screen
+><userinput
+>رفع_قلم</userinput
+> ترفع القلم عن الرقعة. حين <quote
+>يُرفع</quote
+> القلم عن الرقعة، لا يرسم خطًا عندما تتحرك السلحفاة. طالع أيضًا <userinput
+>ضع_قلم</userinput
+>.  يختصر الأمر <userinput
+>رفع_قلم</userinput
+> إلى <userinput
+>رفع</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="pendown"/>
+    <varlistentry
+> 
+      <term
+>ضع_القلم (ضع)<indexterm
+><primary
+>ضع_القلم (ضع)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ضع_القلم</screen
+><userinput
+>ضع_قلم</userinput
+> يضع القلم على الرقعة. حين <quote
+>يُوضع</quote
+> القلم على الرقعة، يرسم خطًا عندما تتحرك السلحفاة. طالع أيضًا <userinput
+>رفع_قلم</userinput
+>. يختصر الأمر <userinput
+>ضع_قلم</userinput
+> إلى <userinput
+>ضع</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setpenwidth"/>
+    <varlistentry
+> 
+      <term
+>عرض_قلم (عرض)<indexterm
+><primary
+>عرض_قلم (عرض)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>عرض_قلم س</screen
+><userinput
+>عرض_قلم</userinput
+> يضبط عرض القلم أو الخط إلى عدد من <glossterm linkend="pixels"
+>النقاط أو البكسلات</glossterm
+>. يُختصر <userinput
+>عرض_قلم</userinput
+> إلى <userinput
+>عرض</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setfgcolor"/>
+    <varlistentry
+> 
+      <term
+>لون_القلم (لون)<indexterm
+><primary
+>لون_القلم (لون)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>لون_القلم ح،خ،ز</screen
+><userinput
+>لون_القلم</userinput
+> تضبط لون القلم وتأخذ قيمة لونية . <glossterm linkend="rgb"
+>RGB  ح.خ.ز</glossterm
+> في المدخل.  <userinput
+>لون_القلم</userinput
+> تختصر إلى <userinput
+>لون</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="canvas">
+<title
+>أوامر للتحكم في الرقعة</title>
+<para
+>توجد أوامر  عديدة للتحكم في الرقعة.</para>
+  <variablelist>
+    <anchor id="resizecanvas"/>
+    <varlistentry>
+      <term
+>حجم_الرقعة (حجم)<indexterm
+><primary
+>حجم_الرقعة (حجم)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>حجم_الرقعة س،ص</screen
+>بالأمر <userinput
+>حجم_الرقعة</userinput
+>  يمكنك ضبط حجم الرقعة، يأخذ الأمر مدخلات عددية س و ص. حيث س عرض الرقعة<glossterm linkend="pixels"
+>بالبكسل</glossterm
+>، وص ارتفاعها بـ <glossterm linkend="pixels"
+>البكسل</glossterm
+>. <userinput
+>حجم_الرقعة</userinput
+> يختصر إلى <userinput
+>حجم</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="setbgcolor"/>
+    <varlistentry
+> 
+      <term
+>لون_الرقعة (خلفية)<indexterm
+><primary
+>لون_الرقعة (خلفية)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>لون_الرقعة ح،خ،ز</screen
+><userinput
+>لون_الرقعة</userinput
+> تضبط لون الرقعة وتأخذ قيمة لونية . <glossterm linkend="rgb"
+>RGB  ح.خ.ز</glossterm
+> في المدخل.  <userinput
+>لون_الرقعة</userinput
+> تختصر إلى <userinput
+>خلفية</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="clean">
+<title
+>أوامر المسح</title>
+<para
+>هناك أمران لتنظيف الرقعة بعد إحداث فوضى.</para>
+  <variablelist>
+    <anchor id="clear"/>
+    <varlistentry
+> 
+      <term
+>امسح (مسح)<indexterm
+><primary
+>امسح (مسح)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>امسح</screen
+>باستخدام الأمر <userinput
+>مسح</userinput
+> يمكنك مسح ما رُسم على الرقعة. تبقى كل الأشياء الأخرى: موضع السلحفاة وزاويتها وإمكانية رؤيتها ولون الرقعة، وحجمها.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="reset"/>
+    <varlistentry
+> 
+      <term
+>جدد<indexterm
+><primary
+>جدد</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>جدد</screen
+>الأمر <userinput
+>جدد</userinput
+> يمسح أكثر من الأمر<userinput
+>مسح</userinput
+>. بعد الأمر  <userinput
+>جدد</userinput
+> كل شيء يبدو وكأنك شغّلت  سلحفاتك مجددًا.  تعود السلحفاة إلى وسط الشاشة، ويعود لون الرقعة أبيض. ويرجع لون القلم أسود،  وحجم الرقعة يعود إلى 400×400 بكسل.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="sprites">
+<title
+>السلحفاة جنيّة</title>
+<para
+>أولاً شرح موجز لماهية النقوش المتحركة: النقوش هي صور صغيرةيمكن تحريكها حول الشاشة، كما نراها غالبًا في ألعاب الكمبيوتر.سلحفاتنا هي أيضًا نقش. لمزيد من المعلومات راجع المسرد على <glossterm linkend = "sprites"
+>نقش </glossterm
+>.</para>
+<para
+>بعد ذلك ستجد نظرة عامة وافية عن أوامر العمل مع النقوش المتحركة.</para>
+<note
+><para
+>في هذا الإصدار من سلحفاتك  لا يمكن تغيير النقش من سلحفاة إلى شيء آخر. الإصدارات المستقبلية من سلحفاتك  سوف تسمح لك باستبدال السلحفاة بصورة من تصميمك.</para
+></note>
+  <variablelist>
+    <anchor id="spriteshow"/>
+    <varlistentry
+> 
+      <term
+>أظهر (إظهار)<indexterm
+><primary
+>أظهر (إظهار)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>أظهر</screen
+><userinput
+>أظهر</userinput
+> تجعل السلحفاة ظاهرة مرة أخرى إن كانت مخفية.  <userinput
+>أظهر</userinput
+> تكتب أيضا <userinput
+>إظهار</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="spritehide"/>
+    <varlistentry
+> 
+      <term
+>أخف (إخفاء)<indexterm
+><primary
+>أخف (إخفاء)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>أخف</screen
+><userinput
+>أخف</userinput
+> تجعل السلحفاة  مخفية مرة أخرى إن كانت ظاهرة.  <userinput
+>أخف</userinput
+> تكتب أيضا <userinput
+>إخفاء</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="writing">
+<title
+>هل تقدر السلحفاة أن تكتب؟</title>
+<para
+>الجواب: <quote
+> نعم </quote
+>. تستطيع السلحفاة أن تكتب: إنها تكتب كل ما تأمرها به.</para>
+  <variablelist>
+    <anchor id="print"/>
+    <varlistentry
+> 
+      <term
+>اطبع<indexterm
+><primary
+>اطبع</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>اطبع س</screen
+>يُستخدم <userinput
+>اطبع </userinput
+> لأمر السلحفاة بكتابة شيء ما على الرقعة. تأخذ <userinput
+> اطبع </userinput
+> الأرقام والسلاسل كمدخلات. <userinput
+> اطبع</userinput
+> أرقامًا وسلاسل مختلفة باستخدام الرمز <quote
+> + </quote
+>. إليك هذا المثال: <screen
+>$سنة = 2003
+$كاتب = "أحمد"
+اطبع $كاتب + " بدأ مشروعه في سنة " + $سنة + " وما زال يعمل عليه مستمتعًا!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="fontsize"/>
+    <varlistentry
+> 
+      <term
+>حجم_الخط<indexterm
+><primary
+>حجم_الخط</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>حجم_الخط س</screen
+><userinput
+>حجم_الخط</userinput
+> يضبط حجم الخط الذي سيطبع بالأمر  <userinput
+>اطبع</userinput
+>. <userinput
+>حجم_الخط</userinput
+> يأخذ مدخلا عدديا يعبر عن الحجم المرغوب. بـ <glossterm linkend="pixels"
+>البكسل</glossterm
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="math-commands">
+<title
+>عوامل رياضية</title>
+<para
+>الأوامر التالية هي أوامر رياضية أكثر تقدمًا.</para>
+  <variablelist>
+    <anchor id="round"/>
+    <varlistentry>
+      <term
+>تقريب<indexterm
+><primary
+>تقريب</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>تقريب(س)</screen
+><userinput
+>تقريب</userinput
+> يقرّب لأقرب عدد صحيح. <screen>
+اطبع تقريب(10.8)
+تقدم 20
+اطبع تقريب(10.3)
+</screen
+> هذا المثال يطبع الأعداد 11 و 10.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="random"/>
+    <varlistentry
+> 
+      <term
+>عشوائي (عشو)<indexterm
+><primary
+>عشوائي (عشو)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>عشوائي س،ع</screen
+>الأمر <userinput
+>عشوائي</userinput
+> يأخذ مدخلين ويعطي مخرجًا واحدًا. المدخلان يعرفان مجال الأعداد العشوائية التي نريدها، فالمدخل الأول للحد الأدنى والثاني للحد الأقصى.  والناتج  عدد عشوائي في مجال المدخلات. هنا مثال صغير: <screen>
+كرر 500 {
+  $س = عشوائي 1،20
+  تقدم $س
+  در_يسار 10 - $س
+}
+</screen
+> باستعمال  الأمر<userinput
+>عشوائي</userinput
+> تضيف لمسة فوضوية لبرنامجك.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="mod"/>
+    <varlistentry
+> 
+      <term
+>باقي<indexterm
+><primary
+>باقي</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>باقي س،ع</screen
+>يعرض <userinput
+>باقي </userinput
+> ما تبقى من قسمة العدد الأول على العدد الثاني.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sqrt"/>
+    <varlistentry
+> 
+      <term
+>جذر<indexterm
+><primary
+>جذر</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>جذر س</screen
+>يستخدم الأمر <userinput
+>جذر </userinput
+> للحصول على الجذر التربيعي للعدد المعطى.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+<!--
+  <variablelist>
+    <anchor id="exp"/>
+    <varlistentry
+> 
+      <term
+>exp<indexterm
+><primary
+>exp</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>sqrt X</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+-->
+  <variablelist>
+    <anchor id="pi"/>
+    <varlistentry
+> 
+      <term
+>طا<indexterm
+><primary
+>طا</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>طا</screen
+>يعطي هذا الأمر الثابت طا (Pi)، <userinput
+>3.14159</userinput
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="sin"/>
+    <anchor id="cos"/>
+    <anchor id="tan"/>
+    <varlistentry>
+      <term
+>جا<indexterm
+><primary
+>جا</primary
+></indexterm
+>، جتا<indexterm
+><primary
+>جتا</primary
+></indexterm
+>، ظا<indexterm
+><primary
+>ظا</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>جا س
+جتا س
+ظا س
+</screen
+>هذه الأوامر تعبّر عن الدوال المثلثية<userinput
+>sin جا</userinput
+>، <userinput
+>cos جتا</userinput
+> و <userinput
+>tan ظا</userinput
+>. مدخل هذه الأوامر <link linkend="number"
+>عدد</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="arcsin"/>
+    <anchor id="arccos"/>
+    <anchor id="arctan"/>
+    <varlistentry>
+      <term
+>arcsin قوس جيب الزاوية<indexterm
+><primary
+>arcsin قوس_جا</primary
+></indexterm
+>، arccos قوس جيب التمام<indexterm
+><primary
+>arccos قوس_جتا</primary
+></indexterm
+>، arctan قوس ظل الزاوية<indexterm
+><primary
+>قوس_ظل</primary
+></indexterm
+></term>
+      <listitem
+><para>
+<screen
+>قوس_جا س
+قوس_جتا س
+قوس_ظا س
+</screen
+>هذه الأوامر هي الدوال العكسية للدوال المثلثية <link linkend="sin"
+>sin جا</link
+>، <link linkend="cos"
+>cos جتا</link
+> و <link linkend="tan"
+>tan ظا</link
+>.  مدخل هذه الأوامر <link linkend="number"
+>عدد</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="dialogs">
+<title
+>المدخلات وردود الفعل من خلال الحواري</title>
+<para
+>الحواري أو مربع الحوار هو نافذة منبثقة صغيرة، تظهر بعض ردود الأفعال أو تطلب مدخلات ما.. سلحفاتك لها أمران للحواري: <userinput
+>رسالة</userinput
+> و <userinput
+>اسأل</userinput
+></para>
+  <variablelist>
+    <anchor id="message"/>
+    <varlistentry
+> 
+      <term
+>رسالة<indexterm
+><primary
+>رسالة</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>رسالة س</screen
+>الأمر <userinput
+>رسالة</userinput
+>  يحتاج إلى مدخل من نوع <link linkend="string"
+>سلسلة نصية</link
+> . فتعرض نافذة منبثقة فيها نص  <link linkend="string"
+>السلسلة</link
+>. <screen
+>رسالة "انطلق مشروع سلحفاتك في 2003 ومازال يعمل مستمتعًا!"
+</screen>
+      </para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="ask"/>
+    <varlistentry
+> 
+      <term
+>اسأل<indexterm
+><primary
+>اسأل</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>اسأل س</screen
+>الأمر <userinput
+>اسأل</userinput
+> يحتاج إلى مدخل من نوع <link linkend="string"
+>سلسلة</link
+> . يعرض نافذة منبثقة مثل الأمر <link linkend="message"
+>رسالة</link
+>)، مع حقل إدخال. عندما يدخل المستخدم   <link linkend="number"
+>عددًا</link
+> أو <link linkend="string"
+>سلسلة</link
+> فيه، فالنتيجة تحفظ في <link linkend="assignment-of-variables"
+>متغيّر</link
+> أو تمرّر كمعامل لـ<link linkend="commands"
+>أمر</link
+> ما. مثلا: <screen>
+$دخل = ask "ما عام مولدك؟"
+$خرج = 2003 - $دخل
+اطبع "في 2003 كان عمرك " + $خرج + " سنة  في وقت ما."
+</screen
+> إذا ألغى المستخدم حوار الإدخال، أو لم يدخل شيئا على الإطلاق، فإن  <link linkend="assignment-of-variables"
+>المتغيّر</link
+> يبقى فارغا.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+
+<sect1 id="assignment-of-variables">
+<title
+>إسناد المتغيرات</title>
+<para
+>أولاً ، سنلقي نظرة على المتغيرات، ثم إسناد القيم لتلك المتغيرات. </para>
+
+<para
+>المتغيرات هي الكلمات التي تبدأ بـ <quote
+> $ </quote
+>، في <link linkend="the-editor"
+>المحرر</link
+>  وهي <glossterm
+> مميّزة </glossterm
+> باللون الأرجواني.</para>
+
+<para
+>المتغيرات قد تحوي  <link linkend="number"
+>عددًا</link
+> أو <link linkend="string"
+>سلسلة</link
+> أو <link linkend="boolean-value"
+>قيمة منطقية</link
+>. باستعمال الإسناد <userinput
+>=</userinput
+>، يعطي المتغير مُحتواه. سيحتفظ المتغيّر بهذا المحتوى حتى ينتهي البرنامج من التنفيذ أو بعاد إسناد قيمة أخرى للمتغير.</para>
+
+<para
+>يمكنك استخدام المتغيرات، بمجرد تعيينها، كما لو كانت تساوي محتواها.مثلا في الكود الموالي:  <screen>
+$س = 10
+$س = $س / 3
+اطبع $س
+</screen
+> أولا المتغير <userinput
+>$س</userinput
+> أسندت إليه القيمة <userinput
+>10</userinput
+>. ثم أعيد تعيين <userinput
+>$س</userinput
+> إلى نفسه مقسومًا على <userinput
+>3</userinput
+> - هذا يعني أنّ <userinput
+>$س</userinput
+> قد أسند إليه <userinput
+>10 / 3</userinput
+>. أخيرا  يطبع<userinput
+>$س</userinput
+>. في السطرين الثاني والثالث نلاحظ أننا استعملنا  <userinput
+>$x</userinput
+> وكأنه يساوي محتواه.</para>
+
+<para
+>يجب تعيين المتغيرات لاستخدامها. على سبيل المثال: <screen>
+اطبع $ع 
+</screen
+> سينتج عنه رسالة خطأ.</para>
+
+<para
+>نفرض الكود الآتي: <screen>
+$ج = 2004
+$ب = 25
+
+# الأمر الموالي يطبع "2029"
+اطبع $ج + $ب
+وراء 30
+# الأمر الموالي يطبع "2004 زائد 25 يساوي 2029"
+اطبع $ج + " زائد " + $ب + " يساوي " + ($ج + $ب)
+</screen
+> في السطرين الأول والثاني، أسند المتغيران  <userinput
+>$ج</userinput
+> و <userinput
+>$ب</userinput
+> إلى 2004  و25. ثم ثم تجد أمرين للطباعة  <userinput
+>اطبع</userinput
+> وأمر للعودة إلى الوراء <userinput
+>وراء 30</userinput
+>. التعليقات قبل الطباعة لشرح ما سينتج. استعملنا الأمر   <userinput
+>وراء 30</userinput
+> لجعل الكتابة تظهر على سطر جديد. كما قد تلاحظ  فالمتغيرات تستخدم في مواضع مختلفة، وتعامل معاملة محتواها. يمكن التعامل معها بـ<link linkend="operators"
+>العمليات</link
+> أو كمداخل أو معاملات لـ<link linkend="commands"
+>أوامر ما</link
+>.</para>
+
+<para
+>مثال آخر: <screen>
+$اسم = اسأل "ما اسمك؟"
+اطبع "أهلا يا " + $اسم + "! بالتوفيق في تعلّم فنّ البرمجة..."
+</screen
+> يبدو جليّا أنّ المتغير<userinput
+>$اسم</userinput
+>، يُعامل على أنه سلسلة نصية.</para>
+
+<para
+>عند استخدام المتغيرات، يكون <link linkend = "the-inspector"
+> المفتش </link
+> مفيدًا جدًا. يعرض لك محتويات جميع المتغيرات قيد الاستخدام حاليًا.</para>
+</sect1>
+
+
+
+<sect1 id="controlling-execution">
+<title
+>التحكم في التنفيذ</title>
+<para
+>أوامر التحكم في التنفيذ تساعدك على التحكم في سيرورة البرنامج.</para>
+<para
+>أوامر التحكم في التنفيذ <glossterm
+>مميّزة </glossterm
+> بخط سميك أخضر داكن اللون. تُستخدم الأقواس الحاضنة في الغالب مع أدوات التحكم في التنفيذ و <glossterm
+>تميّز </glossterm
+> بالأسود.</para>
+
+<sect2 id="wait">
+<title
+>اجعل السلحفاة تنتظر</title>
+<para
+>إذا برمجت قليلا في سلحفاتك ربما قد لاحظت أن السلحفاة قد تكون سريعة في الرسم. هذا الأمر سيجعل السلحفاة تنتظر فترة زمنية معينة.</para>
+  <variablelist>
+    <varlistentry>
+      <term
+>انتظر<indexterm
+><primary
+>انتظر</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>انتظر س</screen
+>الأمر <userinput
+>انتظر</userinput
+> يجعل السلحفاة تنتظر لعدد معين من الثواني. <screen>
+كرر 36 {
+  تقدم 5
+  يمين 10
+  انتظر 0.5
+}
+</screen
+> يرسم هذا الكود دائرة، لكن السلحفاة ستنتظر نصف ثانية بعد كل خطوة. مما يعطي انطباعًا أنّ سلحفاة بطيئة.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="if">
+<title
+>تنفيذ <quote
+>إذا</quote
+></title>
+  <variablelist>
+    <varlistentry>
+      <term
+>إذا<indexterm
+><primary
+>إذا</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>إذا <link linkend="boolean-value"
+>شرط منطقي</link
+> { ... }</screen
+>ستنفذ التعليمات التي بين حاضنتين في حالة<userinput
+>إذا</userinput
+> تحقّق <link linkend="boolean-value"
+>الشرط المنطقي</link
+> أي <quote
+>صح</quote
+>. <screen>
+$س = 6
+إذا $س &gt; 5 {
+  اطبع "$س أكبر من خمسة!"
+}
+</screen
+> في السطر الأول <userinput
+>$س</userinput
+> يساوي 5. في السطر الثاني  نقارن <userinput
+>$س &gt; 5</userinput
+>. فإذا تحقق هذا الشرط، لدينا  6 أكبر من 5، فيسمح أمر التحكّم <userinput
+>إذا</userinput
+> بتنفيذ التعليمات التي ما بين حاضنتين.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="else">
+<title
+>إذا ليس، أو بعبارة أخرى: <quote
+>وإلّا</quote
+></title>
+  <variablelist>
+    <varlistentry>
+      <term
+>وإلا<indexterm
+><primary
+>وإلا</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>إذا <link linkend="boolean-value"
+>شرط منطقي</link
+> { ... } وإلا { ... }</screen
+>الأمر <userinput
+>وإلّا</userinput
+> قد يستعمل مع أمر التحكم <link linkend="if"
+><userinput
+>إذا</userinput
+></link
+>. التعليمات التي ما بين حاضنتين بعد <userinput
+>وإلا</userinput
+> ستنفّذ إذا كان  <link linkend="boolean-value"
+>الشرط المنطقي</link
+> غير محقق أي <quote
+>غلطا</quote
+>. <screen>
+جدد
+$س = 4
+إذا $س &gt; 5 {
+  اطبع "$س أكبر من خمسة!"
+} وإلا {
+  اطبع "$س أصغر من 6!"
+}
+</screen
+>  <link linkend="comparing-operators"
+>عملية المقارنة</link
+> تحسب العبارة <userinput
+>$س &gt; 5</userinput
+>. بما أنّ 4 ليست أكبر من 5، فالعبارة <quote
+>غلط</quote
+>. هذا يعني أن ما بين حاضنتي<userinput
+>وإلّا</userinput
+> ستنفّذ.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="while">
+<title
+>حلقة <quote
+>مادام</quote
+></title>
+  <variablelist>
+    <varlistentry>
+      <term
+>مادام<indexterm
+><primary
+>مادام</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>مادام <link linkend="boolean-value"
+>شرط منطقي</link
+> { ... }</screen
+>أمر التحكّم  <userinput
+>مادام</userinput
+> يشبه كثيرا الأمر <link linkend="if"
+><userinput
+>إذا</userinput
+></link
+>. الفرق بينهما أنّ <userinput
+>مادام</userinput
+> تكرر التعليمات التي بين حاضنتين حتى يصبح <link linkend="boolean-value"
+>الشرط المنطقي</link
+>  <quote
+>غلطا</quote
+>. <screen>
+$س = 1
+مادام $س &lt; 5 {
+  تقدم 10
+  انتظر 1
+  $س = $س + 1
+}
+</screen
+> في السطر الأول <userinput
+>$س</userinput
+> قيمته 1. في السطر الثاني تحسب العبارة<userinput
+>$س &lt; 5</userinput
+>. والنتيجة  <quote
+>صج</quote
+> يبدأ أمر التحكم <userinput
+>مادام</userinput
+> في تنفيذ التعليمات ما بين حاضنتين حتى تصبح قيمة العبارة <userinput
+>$س &lt; 5</userinput
+> <quote
+>غلط</quote
+>.  في هذه الحالة، ينفّذ ما بين حاضنتين 4 مرات لأنه كلما نفذنا السطر الخامس زاد 
+ <userinput
+>$س</userinput
+> بـ 1.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="repeat">
+<title
+>حلقة التكرار  <quote
+>كرّر</quote
+></title>
+  <variablelist>
+    <varlistentry>
+      <term
+>كرر<indexterm
+><primary
+>كرر</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>كرر <link linkend="number"
+>عدد</link
+> { ... }</screen
+>أمر التحكم <userinput
+>كرر</userinput
+> يشبه كثيرا الأمر <link linkend="while"
+><userinput
+>مادام</userinput
+></link
+>. الفرق أنّ  <userinput
+>كرر</userinput
+> تكرر التعليمات التي ما بين حاضنتين عدة مرات حسب العدد المحدد.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="for">
+<title
+>حلقة التكرار المعدود  <quote
+>لكل</quote
+></title>
+  <variablelist>
+    <varlistentry>
+      <term
+>لـكل<indexterm
+><primary
+>لـكل</primary
+></indexterm
+><indexterm
+><primary
+>إلى</primary
+></indexterm
+><indexterm
+><primary
+>خطوة</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>لكل <link linkend="assignment-of-variables"
+>متغير</link
+> = <link linkend="number"
+>عدد</link
+> إلى <link linkend="number"
+>عدد</link
+> { ... }</screen
+>حلقة <userinput
+>لكل</userinput
+> هي <quote
+>حلقة تكرار معدود</quote
+>، أي أنها كالعدّاد. العدد الأول يضبط  بداية متغيّر العدّاد. في كل دورة يزيد العداد حتى يصل إلى العدد الثاني الذي يمثل النهاية. <screen>
+لكل $س = 1 إلى 10 {
+  اطبع $س * 7
+  تقدم 15
+}
+</screen
+> في كل مرة تُنفّذ التعليمات ما بين حاضنتين، ويزيد<userinput
+>$س</userinput
+> بـ1، حتى يصل  <userinput
+>$س</userinput
+> إلى 10. ما بين حاضنتين، تطبع  <userinput
+>$س</userinput
+> مضروبا في 7. وفي نهاية تنفيذ البرنامج، نحصل على جدول ضرب 7 على الرقعة. </para>
+     <para
+>مقدار الخطوة الافتراضي للحلقة هو 1، يمكنك استخدام قيمة أخرى له <screen
+>لكل <link linkend="assignment-of-variables"
+>متغير</link
+> = <link linkend="number"
+>عدد</link
+> إلى <link linkend="number"
+>عدد</link
+> خطوة <link linkend="number"
+>عدد</link
+> { ... }</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="break">
+<title
+>مغادرة حلقة تكرار</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>اكسر<indexterm
+><primary
+>اكسر</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>اكسر</screen
+>يُنهي الحلقة الحالية على الفور وينتقل إلى تنفيذ  إلى التعليمة التي تلي هذه الحلقة مباشرة.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="exit">
+<title
+>إيقاف تنفيذ البرنامج</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>اخرج<indexterm
+><primary
+>اخرج</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>اخرج</screen
+>إنهاء تنفيذ البرنامج.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="assert">
+<title
+>التحقق من التأكيدات في أثناء التشغيل</title>
+  <variablelist>
+    <varlistentry>
+      <term
+>تأكيد<indexterm
+><primary
+>تأكيد</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>تحقق <link linkend="boolean-value"
+>شرط منطقي</link
+></screen
+>يمكن استخدامها للتحقق من البرنامج أو صحة الإدخال. <screen
+>$دخل = اسأل "ما سنة مولدك؟"
+# السنة يجب أن تكون موجبة
+تحقق $in 
+> 0
+</screen
+></para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+</sect1>
+
+
+<sect1 id="learn">
+
+<title
+>اصنع أوامرك الخاصة بالأمر <quote
+>تعلم</quote
+></title>
+<para
+>الأمر <userinput
+>تعلم</userinput
+><indexterm
+><primary
+>تعلم</primary
+></indexterm
+> أمر مميّز لأنه يستعمل لإنشاء أوامر جديدة. الأوامر الجديدة التي تنشئها تحتاج إلى   <glossterm linkend="input-output"
+>مداخل</glossterm
+> وترجع <glossterm linkend="input-output"
+>مخرجًا</glossterm
+>. انظر للأمر المُنشَأ: <screen>
+تعلم دائرة $س {
+  كرر 36 {
+    تقدم $س
+    در_يسار 10
+  }
+}
+</screen
+> الأمر الجديد <userinput
+>دائرة</userinput
+>. <userinput
+>دائرة</userinput
+> يحتاج إلى  <glossterm linkend="input-output"
+>مدخل</glossterm
+> لضبط قطر الدائرة. الأمر <userinput
+>دائرة</userinput
+> لا يرجع <glossterm linkend="input-output"
+>مخرجًا</glossterm
+>. الآن، يمكن استعمال الأمر <userinput
+>دائرة</userinput
+>  مثل أي أمر آخر، في ما تلاه من الكود. إليك هذا المثال: <screen
+>تعلم دائرة $س {
+  كرر 36 {
+    تقدم $س 
+    در_يسار 10 
+  }
+}
+
+اذهب 200،200 
+دائرة 20
+
+اذهب 300،200 
+دائرة 40  
+</screen>
+</para>
+<para
+>في المثال الموالي، سننشئ أمرًا  <indexterm
+><primary
+>يرجع</primary
+></indexterm
+>. قيمة <screen>
+تعلم مضروب $س {
+  $ض = 1
+  لكل $ي = 1 إلى $س {
+    $ض = $ض * $ي
+  }
+  أرجع $ض
+}
+
+اطبع مضروب 5
+</screen
+> في هذا المثال، أنشأنا أمرًا جديدا أسميناه  <userinput
+>مضروب</userinput
+>. إذا كان مدخله العدد <userinput
+>5</userinput
+> حصلنا على نتيجة <userinput
+>5*4*3*2*1</userinput
+>. باستعمال الأمر<userinput
+>أرجع</userinput
+> قيمة <glossterm linkend="input-output"
+>المخرج</glossterm
+> ترجع أثناء التنفيذ.</para>
+<para
+>بعض الأوامر قد تحتاج إلى أكثر من  <glossterm linkend="input-output"
+>مدخل</glossterm
+>. في المثال الآتي، نصنع أمرًا لرسم مستطيل: <screen>
+تعلم صندوق $س، $ع {
+  تقدم $ع
+  يمين 90
+  تقدم $س
+  يمين 90
+  تقدم $ع
+  يمين 90
+  تقدم $س
+  يمين 90
+}
+</screen
+> يمكنك الآن تنفيذ <userinput
+>صندوق 50، 100</userinput
+> وسترسم السلحفاة مستطيلا على الشاشة. </para>
+  
+</sect1>
+
+</chapter>

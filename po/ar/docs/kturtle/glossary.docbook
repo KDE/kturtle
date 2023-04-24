@@ -1,0 +1,406 @@
+<chapter id="Glossary">
+<title
+>مسرد</title>
+
+<para
+>ستجد في هذا الفصل شرحًا لكلمات <quote
+>غير مألوفة</quote
+> في الكتيب.</para>
+
+<glosslist>
+<glossentry id="degrees">
+<glossterm
+>درجات</glossterm>
+<glossdef
+><para
+>الدرجات هي قياس الزوايا أو الدوران. دورة كاملة فيها 360 درجة، نصف دورة 180 درجة، وربع دورة 90 درجة.<userinput
+>در_يسار</userinput
+>، <userinput
+>در_يسار</userinput
+> و<userinput
+>اتجاه</userinput
+> تحتاج إلى مدخل بالدرجات.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="input-output">
+<glossterm
+>مدخلات مخرجات الأوامر</glossterm>
+<glossdef
+><para
+>تأخذ بعض الأوامر مدخلات ، وبعض الأوامر تعطي مخرجات، وتأخذ بعض الأوامر مدخلات <emphasis
+> و </emphasis
+> تعطي مخرجات وبعض الأوامر لا تأخذ مدخلات ولا تعطي مخرجات.</para>
+<para
+>مثال عن الأوامر التي لها مدخلات فقط: <screen>
+تقدم 50
+لون_القلم 255،0،0
+اطبع "سلام!"
+</screen
+> الأمر <userinput
+>تقدم</userinput
+> يأخذ في المدخل<userinput
+>50</userinput
+>. يحتاج <userinput
+>تقدم</userinput
+> ليعرف  بكم<glossterm linkend="pixels"
+>بيكسل</glossterm
+> يمشي للأمام. <userinput
+>لون_القلم</userinput
+> يحتاج إلى مدخل اسم اللون. أما  <userinput
+>اطبع</userinput
+> فتأخذ سلسلة حروف (نص). يرجى ملاحظة أن الإدخال يمكن أن يكون أيضًا حاوية. المثال التالي يوضح هذا: <screen
+>$س = 50
+اطبع $x
+تقدم 50
+$سل = "سلام!"
+اطبع $سل
+</screen
+></para>
+
+<para
+>إليك أمثلة عن أوامر تعطي مخارج: <screen>
+$س = اسأل "رجاء أدخل شيئا ما ثم اضغط موافق... شكرًا!"
+$ع = عشوائي 1،100
+</screen
+> الأمر <userinput
+>اسأل</userinput
+> يأخذ مدخلا سلسلة حروف، ويخرج عددا أو سلسلة يكتبها المستخدم. كما ترى مخرج  <userinput
+>اسأل</userinput
+> يُحفظ في حاوية <userinput
+>س</userinput
+>. الأمر <userinput
+>عشوائي</userinput
+> يعطي مخرجا، في هذه الحالة، يعطي عددا ما بين 1 و 100. يحفظ ناتج الأمر في حاوية تسمى  <userinput
+>ع</userinput
+>.  لاحظ أنّ المتغيرين <userinput
+>س</userinput
+>و <userinput
+>ع</userinput
+> لم يستعملا في الشفرة السابقة.</para>
+
+<para
+>هناك أيضًا أوامر لا تحتاج إلى إدخال أو إخراج. وهنا بعض الأمثلة: <screen
+>مسح
+رفع_القلم
+</screen>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="intuitive-highlighting">
+<glossterm
+>تمييز بديهي</glossterm>
+<glossdef
+><para
+>هذه سمة من سمات سلحفاتك تجعل البرمجة أسهل. مع التمييز البديهي للشيفرة التي تكتبها ستحصل على لون يشير إلى نوع الشيفرة. في القائمة التالية ستجد أنواع الشيفرات لون كل منها في <link linkend="the-editor"
+>المحرر</link
+>. <table>
+<title
+>أنواع مختلفة من التعليمات البرمجية ولونها المميز</title>
+<tgroup cols="3">
+<tbody>
+<row>
+<entry
+>أوامر عادية</entry>
+<entry
+>أزرق غامق</entry>
+<entry
+>وصف الأوامر العادية <link linkend="commands"
+>هنا</link
+>.</entry>
+</row>
+<row>
+<entry
+>أوامر التحكم في التنفيذ</entry>
+<entry
+>أسود (سميك)</entry>
+<entry
+>أوامر التحكم، للمزيد عنها اقرأ <link linkend="controlling-execution"
+>هنا</link
+>.</entry>
+</row>
+<row>
+<entry
+>تعليقات</entry>
+<entry
+>رمادي</entry>
+<entry
+>تبدأ الأسطر التي تم التعليق عليها بأحرف تعليق (#). ويتجاهلها تنفيذ التعليمات البرمجية. تسمح التعليقات للمبرمج بشرح تعليماته البرمجية أويستخدمها لمنع تنفيذ جزء معين من التعليمات البرمجية مؤقتًا.</entry>
+</row>
+<row>
+<entry
+>أقواس منحنية حاضنات {، }</entry>
+<entry
+>أخضر داكن (سميك)</entry>
+<entry
+>تستخدم الأقواس الحاضنة لتجميع أجزاء من التعليمات البرمجية. غالبًا ما يتم استخدام الحاضنات معا مع <link linkend="controlling-execution"
+>متحكمات التنفيذ</link
+>.</entry>
+</row>
+<row>
+<entry
+>الأمر <link linkend="learn"
+>تعلم</link
+></entry>
+<entry
+>أخضر فاتح (سميك)</entry>
+<entry
+>يستعمل الأمر  <link linkend="learn"
+>تعلم</link
+> لإنشاء أوامر جديدة.</entry>
+</row>
+<row>
+<entry
+>سلسلة حروف</entry>
+<entry
+>أحمر</entry>
+<entry
+>لا يوجد الكثير ليقال عن السلاسل (النصية) أيضًا، باستثناء أنها تبدأ دائمًا وتنتهي بعلامات الاقتباس المزدوجة (").</entry>
+</row>
+<row>
+<entry
+>أعداد</entry>
+<entry
+>أحمر داكن</entry>
+<entry
+>الأعداد، حسناً لا يوجد الكثير ليقال عنها.</entry>
+</row>
+<row>
+<entry
+>قيم منطقية</entry>
+<entry
+>أحمر داكن</entry>
+<entry
+>في المنطق قيمتان هما : صح و غلط.</entry>
+</row>
+<row>
+<entry
+>متغيرات</entry>
+<entry
+>بنفسجي</entry>
+<entry
+>يبدأ بـعلامة دولار '$' ويحوي قيما عددية أو منطقية أو سلاسل.</entry>
+</row>
+<row>
+<entry
+>عوامل رياضية</entry>
+<entry
+>رمادي</entry>
+<entry
+>العوامل الرياضية هي <userinput
+>+</userinput
+>، <userinput
+>-</userinput
+>، <userinput
+>*</userinput
+>، <userinput
+>/</userinput
+>، <userinput
+>^</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>عوامل مقارنة</entry>
+<entry
+>أزرق فاتح (سميك)</entry>
+<entry
+>عوامل المقارنة هي: <userinput
+>==</userinput
+>، <userinput
+>!=</userinput
+>، <userinput
+>&lt;</userinput
+>، <userinput
+>&gt;</userinput
+>، <userinput
+>&lt;=</userinput
+>، <userinput
+>&gt;=</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>عوامل منطقية</entry>
+<entry
+>وردي (سميك)</entry>
+<entry
+>العوامل المنطقية هي: <userinput
+>و</userinput
+>، <userinput
+>أو</userinput
+>، <userinput
+>ليس</userinput
+>.</entry>
+</row>
+<row>
+<entry
+>نص عادي</entry>
+<entry
+>أسود</entry>
+<entry
+></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para
+></glossdef>
+</glossentry>
+
+<glossentry id="pixels">
+<glossterm
+>بيكسل: نقطة صورية</glossterm>
+<glossdef
+><para
+>البكسل هو نقطة على الشاشة. إذا نظرت عن قُرب، فسترى أن شاشتك فيها بكسلات. جميع الصور على الشاشة مرسومة بهذه البكسلات. البكسل هو أصغر شيء يمكن رسمه على الشاشة.</para>
+<para
+>تحتاج الكثير من الأوامر إلى عدد من البكسلات  في المدخلات. هذه الأوامر هي: <userinput
+>تقدم</userinput
+>، <userinput
+>وراء</userinput
+>، <userinput
+>اذهب</userinput
+>و <userinput
+>اذهب_س</userinput
+>و <userinput
+>اذهب_ص</userinput
+>و <userinput
+>حجم_الرقعة</userinput
+> و <userinput
+>عرض_قلم</userinput
+>.</para>
+<para
+>في الإصدارات القديمة من سلحفاتك  كان لوح الرسم (الرقعة) في الأساس صورة نقطية، ولكن في الإصدارات الحديثة، صارت الرقعة رسمًا متجهًا (أشعة). هذا يعني أنه يمكن تكبير وتصغير الرقعة، دون الحاجة لتحويل البكسل إلى نقطة واحدة على الشاشة.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="rgb">
+<glossterm
+>تركيبات ترميز الألوان (ح.خ.ز RGB)</glossterm>
+<glossdef
+><para
+>تستعمل تركيبات (ح.خ.ز) لوصف الألوان، فيرمز <quote
+>الحاء</quote
+>للـ <quote
+>أحمر</quote
+> و<quote
+>الخاء</quote
+> للـ <quote
+>أخضر</quote
+> و<quote
+>الزاي</quote
+> للـ <quote
+>أزرق</quote
+>.  مثال عن تركيب (ح.خ.ز)  <userinput
+>255،0،0</userinput
+>: فالقيمة الأولى تعني أنّ  (<quote
+>الأحمر</quote
+>)  255 واللونان الباقيان معدومات، يعطينا لونًا أحمر قانٍ. كل قيمة لتوليفة ح.خ. في ما بين 0 إلى 255. وهذه  قائمة صغيرة لألوان شائعة: <table frame="none">
+<title
+>تركيبات ح.خ.ز شائعة</title>
+<tgroup cols="2" colsep="5" rowsep="1">
+<colspec colname="c1"/>
+<tbody>
+<row
+><entry
+><userinput
+>0،0،0</userinput
+></entry
+><entry
+>أسود</entry
+></row>
+<row
+><entry
+><userinput
+>255،255،255</userinput
+></entry
+><entry
+>أبيض</entry
+></row>
+<row
+><entry
+><userinput
+>255،0،0</userinput
+></entry
+><entry
+>أحمر</entry
+></row>
+<row
+><entry
+><userinput
+>150،0،0</userinput
+></entry
+><entry
+>أحمر داكن</entry
+></row>
+<row
+><entry
+><userinput
+>0،255،0</userinput
+></entry
+><entry
+>أخضر</entry
+></row>
+<row
+><entry
+><userinput
+>0،0،255</userinput
+></entry
+><entry
+>أزرق</entry
+></row>
+<row
+><entry
+><userinput
+>0،255،255</userinput
+></entry
+><entry
+>أزرق فاتح</entry
+></row>
+<row
+><entry
+><userinput
+>255،0،255</userinput
+></entry
+><entry
+>وردي</entry
+></row>
+<row
+><entry
+><userinput
+>255،255،0</userinput
+></entry
+><entry
+>أصفر</entry
+></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para
+>يستخدم الأمران المواليان تركيبات ح.خ.ز : <userinput
+>لون_الرقعة</userinput
+> و  <userinput
+>لون_القلم</userinput
+>.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="sprite">
+<glossterm
+>نقش متحرك أو صورة صغيرة</glossterm>
+<glossdef
+><para
+>النقش المتحرك هي صورة صغيرة تتحرك على الشاشة. سلحفاتنا نقش. <note
+><para
+>في هذا الإصدار من سلحفاتك  لا يمكن تغيير النقش من سلحفاة إلى شيء آخر. الإصدارات المستقبلية من سلحفاتك  سوف تسمح بذلك.</para
+></note
+></para
+></glossdef>
+</glossentry>
+
+</glosslist>
+
+</chapter>

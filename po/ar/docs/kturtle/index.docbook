@@ -1,0 +1,302 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+"dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kturtle;">
+  <!ENTITY turtlescript "TurtleScript">
+  <!ENTITY logo "Logo">
+  <!ENTITY % addindex "INCLUDE">
+  <!ENTITY % English "INCLUDE"
+><!-- change language only here -->
+  <!ENTITY using-kturtle SYSTEM "using-kturtle.docbook">
+  <!ENTITY getting-started SYSTEM "getting-started.docbook">
+  <!ENTITY programming-reference SYSTEM "programming-reference.docbook">
+  <!ENTITY translator-guide SYSTEM "translator-guide.docbook">
+  <!ENTITY glossary SYSTEM "glossary.docbook">
+]>
+
+<book id="kturtle" lang="&language;">
+
+<bookinfo>
+<title
+>كتيب سلحفاتك</title>
+
+<authorgroup>
+<author
+><firstname
+>Cies</firstname
+> <surname
+>Breijs</surname
+> <affiliation
+> <address
+><email
+>cies AT kde DOT nl</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Anne-Marie</firstname
+> <surname
+>Mahfouf</surname
+> <affiliation
+> <address
+><email
+>annma AT kde DOT org</email
+></address>
+</affiliation>
+</author>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+><email
+>piacentini AT kde DOT org</email
+></address>
+</affiliation>
+</author>
+<othercredit role="translator"
+> <firstname
+>Taha</firstname
+> <surname
+>Zerrouki</surname
+> <affiliation
+> <address
+><email
+>taha.zerrouki@gmail.com</email
+></address
+> </affiliation
+> <contrib
+>Translation to Arabic</contrib
+> </othercredit
+> 
+</authorgroup>
+
+
+<copyright>
+<year
+>2004</year
+><year
+>2009</year>
+<holder
+>Cies Breijs</holder>
+</copyright>
+
+<copyright>
+<year
+>2004</year
+><year
+>2007</year>
+<holder
+>&Anne-Marie.Mahfouf;</holder>
+</copyright>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Mauricio Piacentini</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-01-20</date>
+<releaseinfo
+>تطبيقات 20.12</releaseinfo>
+
+<abstract>
+<para
+>سلحفاتك &kturtle;  بيئة برمجة تعليمية تهدف إلى تسهيل تعلم البرمجة، وخصوصا  للأطفال الصغار. لتحقيق هذا &kturtle; تجعل جميع أدوات البرمجة متاحة من واجهة المستخدم. لغة البرمجة المستخدمة هي &turtlescript; والتي تسمح بترجمة أوامرها.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>كيدي</keyword>
+<keyword
+>سلحفاتك</keyword>
+<keyword
+>تعليم</keyword>
+<keyword
+>لغة</keyword>
+<keyword
+>أصلية</keyword>
+<keyword
+>برمجة</keyword>
+<keyword
+>سكربت السلحفاة</keyword>
+<keyword
+>شعار</keyword>
+<keyword
+>سلحفاة</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>مقدمة</title>
+
+<para
+>&kturtle; هي بيئة برمجة تعليمية تستخدم <link linkend="what-is-turtlelang"
+>&turtlescript; </link
+> ، وهي لغة برمجة مقتبسة من &logo;.  تهدف &kturtle; هو تبسيط البرمجة قدر الإمكان. هذا ما يجعل &kturtle;. مناسبة لتعليم الأطفال أساسيات الرياضيات والهندسة و ... البرمجة.من أهمّ سمات &turtlescript; هي القدرة على ترجمة أوامرها إلى اللغة التي يتحدث بها المبرمج.</para>
+
+<para
+>&kturtle; سميت باسم <quote
+> السلحفاة </quote
+> التي لها دور مركزيٌ في بيئة البرمجة. إذ يستخدم الطالب أوامر &turtlescript; عادة ليعلّم السلحفاة الرسم على <link linkend="the-canvas"
+>الرقعة</link
+>.</para>
+
+<sect1 id="what-is-turtlelang">
+<title
+>ماهي &turtlescript;؟</title>
+<para
+>&turtlescript; لغة البرمجة  في &kturtle;، مستوحاة من  عائلة لغات البرمجة &logo;. أول لغة  &logo; صممها  Seymour Papert من مختبر الذكاء الاصطناعي في معهد ماساتشوستس للتكنولوجيا في عام 1967 كفرع من لغة البرمجة LISP. منذ ذلك الحين ظهرت إصدارات أخرى &logo;. بحلول عام 1980 اكتسبت اللغة زخما، مع إصدارات لأنظمة MSX و Commodore و Atari و Apple II و IBM PC. كانت هذه الإصدارات بشكل أساسي للأغراض التعليمية. لا يزال معهد ماساتشوستس للتكنولوجيا يحتفظ بـ <ulink url = "https://el.media.mit.edu/logo-foundation/"
+> موقع ويب للغة &logo;</ulink
+> فيه عدد من تصميمات شائعة للغة.</para>
+<para
+>&turtlescript; يتميز كغيره من إصدارات الأخرى لـ &logo;: بالقدرة على ترجمة الأوامر لتناسب اللغة الأم للطالب. تسهل هذه الميزة البدء على من لا يجيد اللغة الإنجليزية البدء. إلى جانب هذه الميزة &kturtle; لها   <link linkend = "features-of-kturtle"
+> ميزات أخرى </link
+> تهدف إلى تسهيل تجربة الطلاب الأولى مع البرمجة.</para>
+</sect1>
+
+
+<sect1 id="features-of-kturtle">
+<title
+>مزايا &kturtle;</title>
+<para
+>&kturtle;  فيها ميزات رائعة تجعل بدء البرمجة أمرًا سهلاً. سترى هنا بعض الميزات المميزة: <itemizedlist>
+<listitem
+><para
+>بيئة برمجة متكاملة فيها مفسّر  &turtlescript; و  <link linkend="the-editor"
+>محرر</link
+>و <link linkend="the-canvas"
+>رقعة</link
+> وأدوات، كلها في تطبيق واحد (بلا متطلبات خارجية ).</para
+></listitem>
+<listitem
+><para
+>إمكانية ترجمة أوامر &turtlescript;  باستعمال بيئة ترجمة &kde;.</para
+></listitem>
+<listitem
+><para
+>&turtlescript; تدعم تعريف المستخدمين لوظائفهم (دوال)، مبدأ العودية (التراجعية) والتغيير التفاعلي للأنواع.</para
+></listitem>
+<listitem
+><para
+>يمكن إبطاء التنفيذ أو إيقافه مؤقتًا أو إيقافه في أي وقت.</para
+></listitem>
+<listitem
+><para
+><link linkend = "the-editor"
+>محرر</link
+> قوي يتميز بإبراز بناء الجملة البديهي وترقيم الأسطر وعلامات الخطأ والتنفيذ المرئي والمزيد.</para
+></listitem>
+<listitem
+><para
+><link linkend="the-canvas"
+>الرقعة</link
+>، حيث ترسم السلحفاة، تُطبع أو تٌحفظ في صورة (PNG) أو في رسم متجهي (&SVG;).</para
+></listitem>
+<listitem
+><para
+>مساعدة سياقية: المساعدة حيث تحتاج إليها. اضغط فقط على   <keysym
+>F2</keysym
+> (أو اطلع على [<menuchoice
+><guimenu
+>مساعدة</guimenu
+><guimenuitem
+>مساعدة عن: ...</guimenuitem
+></menuchoice
+>]) احصل على المساعدة بشأن الأمر أسفل المؤشر.</para
+></listitem>
+<listitem
+><para
+>مربع حوار خطأ يربط رسائل الخطأ بالأخطاء في البرنامج ويميزها باللون الأحمر.</para
+></listitem>
+<listitem
+><para
+>مصطلحات برمجية مبسّطة.</para
+></listitem>
+<listitem
+><para
+>أمثلة برامج متكاملة لتسهيل البدء. تُترجم هذه الأمثلة باستخدام بيئة الترجمة &kde;.</para
+></listitem>
+</itemizedlist>
+</para>
+</sect1>
+</chapter>
+
+&using-kturtle;
+
+&getting-started;
+
+&programming-reference;
+
+&glossary;
+
+&translator-guide;
+
+<chapter id="credits">
+
+<title
+>ترخيص وإشادات</title>
+
+<para
+>سلحفاتك </para>
+<para
+>حقوق البرنامج محفوظة لـ 2003-2007 Cies Breijs <email
+>cies AT kde DOT nl</email
+></para>
+
+<para
+>حقوق التوثيق محفوظة 2004, 2007, 2009 <itemizedlist>
+<listitem
+><para
+>Cies Breijs <email
+>cies AT kde DOT nl</email
+> </para
+></listitem>
+<listitem
+><para
+>&Anne-Marie.Mahfouf; &Anne-Marie.Mahfouf.mail; </para
+></listitem>
+<listitem
+><para
+>بعض تصحيحات من &Philip.Rodrigues; &Philip.Rodrigues.mail;</para>
+</listitem>
+<listitem
+><para
+>تصحيحات وتحديثات Andrew Coles <email
+>andrew_coles AT yahoo DOT co DOT uk</email
+></para>
+</listitem>
+</itemizedlist>
+</para>
+
+<para
+>Zayed Al-Saidi <email
+>zayed.alsaidi@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+<!--&documentation.index; -->
+<index id='command-index'>
+<title
+>فهرس الأوامر</title>
+</index>
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->

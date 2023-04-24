@@ -1,0 +1,1097 @@
+<chapter id="using-kturtle">
+<title
+>استعمال سلحفاتك</title>
+
+<screenshot>
+  <screeninfo
+>هذه لقطة شاشة سلحفاتك أثناء العمل</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow_flower_nrs.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>النافذة سلحفاتك الرئيسية</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>النافذة الرئيسية لسلحفاتك  فيها ثلاثة أجزاء رئيسية:  <link linkend="the-editor"
+> المحرر </link
+>  (1) على اليسار تُكتب  أوامر سكربت السلحفاة و  <link linkend="the-canvas"
+>الرقعة </link
+>  (2) على اليمين حيث ترسم عليه السلحفاة رسمك ، و  <link linkend ="the-inspector"
+> المفتش</link
+>   (3) الذي يعطيك المعلومات عند تنفيذ البرنامج.      ينفذ البرنامج.تجد أيضًا <link linkend="the-menubar"
+>شريط القوائم </link
+> (5) حيث تصل إلى جميع الإجراءات، و  <link linkend="the-toolbar"
+> شريط الأدوات </link
+> (4) الذي يسمح لك بالوصول إلى الإجراءات الشائعة، و مربع إدخال   <guilabel
+>الطرفية:</guilabel
+>  لتستخدمه لإدخال أمر في سطر واحد لاختباره، و  <link linkend="the-statusbar"
+> شريط الحالة </link
+>   (على طول الجزء السفلي من النافذة) حيث ستجد معلومات عن  حالة سلحفاتك.</para>
+
+<sect1 id="the-editor">
+<title
+>المحرر</title>
+<para
+>في المحرر تكتب أوامر سكربت السلحفاة. يمكن العثور على معظم وظائف المحرر في قائمتَي <link linkend="the-file-menu"
+> ملف </link
+>  و <link linkend="the-edit-menu"
+> تحرير </link
+>.  يمكن إرساء المحرر على حدود النافذة الرئيسية أو يمكن فصله ووضعه في أي مكان على سطح المكتب.</para>
+<para
+>لديك عدة طرق للحصول على بعض الشفرات البرمجية في المحرر. أسهل طريقة هي أن تجلب الأمثلة:استخدم مثالاً: اختر من القائمة [<menuchoice
+> <guimenu
+>ملف </guimenu
+> <guisubmenu
+> أمثلة </guisubmenu
+> </menuchoice
+>]  ثم اختر مثالا. سيفتح ملف المثال الذي اخترته في   <link linkend="the-editor"
+> المحرر </link
+>  ، بعد ذلك استخدم  من القائمة   [<menuchoice
+> <guimenu
+> شغّل </guimenu
+> <guimenuitem
+> شغّل </guimenuitem
+> </menuchoice
+>]    (الاختصار:     <keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+>)      أو       <inlinemediaobject
+> <imageobject
+> <imagedata fileref="media-playback-pause.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>شغّل</guibutton
+>       من شريط الأدوات لتشغيل البرنامج إذا أردت.</para>
+<para
+>يمكنك فتح ملفات  سكربت السلحفاة من القائمة  [<menuchoice
+><guimenu
+>ملف</guimenu
+><guimenuitem
+>افتح...</guimenuitem
+></menuchoice
+>].</para>
+<para
+>الطريقة الثالثة هي كتابة التعليمات البرمجية مباشرةً في المحرر أو نسخ / لصق بعض التعليمات البرمجية.</para>
+</sect1>
+
+
+<sect1 id="the-canvas">
+<title
+>الرقعة</title>
+<para
+>الرقعة مجالُ السلحفاة، ترسم عليها حسب الأوامر المعطاة. عند إدخال بعض التعليمات في  <link linkend="the-editor"
+>المحرر</link
+> وتنفيذها، يحدث ما يلي:  إن كانت التعليمات صحيحة، تظهر نتائجها على الرقعة؛ أمّا إن وُجدت أخطاء، سيظهر تبويب الأخطاء فيه شرح لما ارتكبته من أخطاء.</para>
+<para
+>يمكن تكبير الرقعة أو تصغيرها بعجلة الفأرة.</para>
+</sect1>
+
+
+<sect1 id="the-inspector">
+<title
+>المفتش</title>
+<para
+>يُعلِمك المفتّش عن المتغيرات والدوّال، ويظهر شجرة الشيفرة  أثناء تنفيذ البرنامج.</para>
+<para
+>يرسو المفتش على أيّ من حدود النافذة الرئيسية أو ينفصل ويوضع في أي مكان على سطح مكتبك.</para>
+</sect1>
+
+
+<sect1 id="the-toolbar">
+<title
+>شريط الأدوات</title>
+<para
+>هنا يمكنك الوصول بسرعة إلى الإجراءات الأكثر استخدامًا.  في شريط الأدوات أيضًا مربع الإدخال <guilabel
+>طرفية: </guilabel
+> ، حيث يمكنك استدعاء الأوامر بسرعة، مما يفيدك إن رغبتَ في اختبار أمر دون تعديل محتوى <link linkend="the-editor "
+> المحرر </link
+>.</para>
+<para
+>يمكنك ضبط شريط الأدوات من [<menuchoice
+><guimenu
+>إعدادات</guimenu
+><guimenuitem
+>اضبط أشرطة الأدوات...</guimenuitem
+></menuchoice
+>] حسب ما تفضّل.</para>
+</sect1>
+
+
+<sect1 id="the-menubar">
+<title
+>شريط القوائم</title>
+<para
+>في شريط القوائم، ستجد كل أوامر سلحفاتك. الأوامر مُنظمة في مجموعات: <guimenu
+>ملف</guimenu
+>، و<guimenu
+>تحرير</guimenu
+>، <guimenu
+>رقعة</guimenu
+>، و<guimenu
+>شغّل</guimenu
+>، <guimenu
+>أدوات</guimenu
+>، و<guimenu
+>إعدادات</guimenu
+>، و <guimenu
+>مساعدة</guimenu
+>. هذا القسم يشرحها.</para>
+
+<sect2 id="the-file-menu">
+<title
+>قائمة الملف</title>
+
+  <variablelist>
+    <anchor id="file-new"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>ملف</guimenu
+> <guimenuitem
+>جديد</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>إنشاء ملف سكربت السلحفاة جديد فارغ.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>ملف</guimenu
+> <guimenuitem
+>افتح...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>فتح ملف سكربت السلحفاة.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-recent"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>ملف</guimenu
+> <guisubmenu
+>افتح حديثًا</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>افتح ملفات  سكربت السلحفاة التي فُتحت حديثًا.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-open-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+> ملف </guimenu
+> <guisubmenu
+> أمثلة </guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>افتح أمثلة برامج سكربت السلحفاة. الأمثلة مكتوبة بلغتك المفضّلة التي تختارها من قائمة  [<menuchoice
+><guimenu
+>إعدادات</guimenu
+><guisubmenu
+>لغة السكريبت</guisubmenu
+></menuchoice
+>].</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-get-more-examples"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>ملف</guimenu
+> <guimenuitem
+>اجلب أمثلة أكثر...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>افتح مربع حوار  <guilabel
+>اجلب بيانات جديدة رائعة</guilabel
+>  لتنزيل ملفات  سكربت السلحفاة  من النت.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="file-save"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>ملف</guimenu
+> <guimenuitem
+>احفظ</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>احفظ ملف سكربت السلحفاة المفتوح حاليًا.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-save-as"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;&Shift;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>ملف</guimenu
+> <guimenuitem
+>احفظ باسم...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>احفظ ملف سكربت السلحفاة المفتوح حاليًا في مكان محدد.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-export-to-html"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>ملف</guimenu
+> <guimenuitem
+>صدّر لصيغة HTML...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>صدّر محتوى المحرّر الحالي بصيغة ملف HTML بما في ذلك ألوان التمييز.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>ملف</guimenu
+> <guimenuitem
+>اطبع...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>طباعة الكود في المحرر.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="file-quit"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>ملف</guimenu
+> <guimenuitem
+>أنهِ</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>إنهاء سلحفاتك.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-edit-menu">
+  <title
+>قائمة المحرّر</title>
+  <variablelist>
+    <anchor id="edit-undo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>تحرير</guimenu
+> <guimenuitem
+>تراجع</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>تراجع عن آخر تعديل في الكود. تقدّم سلحفاتك تراجعات لا نهاية لها..</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-redo"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>تحرير</guimenu
+> <guimenuitem
+>أعد</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>استرجع ما تراجعت عنه سابقًا في المحرر.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-cut"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>X</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>تحرير</guimenu
+> <guimenuitem
+>قصّ</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>قُصّ النص المحدد من <link linkend="the-editor"
+>المحرر</link
+> واحفظه في الحافظة.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-copy"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>تحرير</guimenu
+> <guimenuitem
+>انسخ</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>انسخ النص المحدد من <link linkend="the-editor"
+>المحرر</link
+> واحفظه في الحافظة.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-paste"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>V</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>تحرير</guimenu
+> <guimenuitem
+>ألصق</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>ألصق النص من الحافظة إلى <link linkend="the-editor"
+>المحرر</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-select-all"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>A</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>تحرير</guimenu
+> <guimenuitem
+>حدّد الكل</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>حدّد كل النص من <link linkend="the-editor"
+>المحرّر</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>تحرير</guimenu
+> <guimenuitem
+>ابحث...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>بهذا الأمر تبحث عن كلمات أو جمل في الكود.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="edit-find-next"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+><keycombo
+><keysym
+>F3</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>تحرير</guimenu
+> <guimenuitem
+>ابحث عن التالي</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>استعمل هذا الأمر لإيجاد الحالة التالية لما تبحث عنه.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="edit-find-previous"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Shift;<keysym
+>F3</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>تحرير</guimenu
+> <guimenuitem
+>ابحث عن السابق</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>استعمل هذا الأمر لإيجاد الحالة السابقة لما تبحث عنه.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <!--<variablelist>
+    <anchor id="edit-replace"/>
+    <varlistentry>
+      <term
+><menuchoice>
+        <shortcut>
+          <keycombo
+>&Ctrl;<keycap
+>R</keycap
+></keycombo>
+        </shortcut>
+        <guimenu
+>Edit</guimenu>
+        <guimenuitem
+>Replace...</guimenuitem>
+      </menuchoice
+></term>
+      <listitem
+><para
+>With this action you can replace text in the code.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>-->
+<variablelist>
+    <anchor id="toggle-insert"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ins;</keycombo
+> </shortcut
+> <guimenu
+>حرر</guimenu
+> <guimenuitem
+>نمط الطمس</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>بدّل بين نمط "الإدراج" ونمط "الطمس".</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+<sect2 id="the-canvas-menu">
+  <title
+>قائمة الرقعة</title>
+  <variablelist>
+    <anchor id="canvas-export-to-image"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>رقعة</guimenu
+> <guimenuitem
+>Export to Image (PNG)...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>تصدير ما في <link linkend="the-canvas"
+>الرقعة</link
+> إلى صيغة صورة PNG (Portable Network Graphics).</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-export-to-drawing"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>رقعة</guimenu
+> <guimenuitem
+>صدّر لصيغة رسم (SVG)...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>تصدير ما في  <link linkend="the-canvas"
+>الرقعة</link
+> إلى صيغة رسم شعاعي SVG (Scalable Vector Graphics).</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="canvas-print"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>رقعة</guimenu
+> <guimenuitem
+>اطبع الرقعة...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>طباعة ما في  الـ<link linkend="the-canvas"
+>رقعة</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-run-menu">
+  <title
+>قائمة شغّل</title>
+  <variablelist>
+    <anchor id="run-execute"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F5</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>شغّل</guimenu
+> <guimenuitem
+>شغّل</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>يبدأ تشغيل الأوامر من المحرر.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-pause"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F6</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>شغّل</guimenu
+> <guimenuitem
+>توقّف</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>يوقف التنفيذ مؤقتًا. هذا الإجراء  متاحٌ فقط أثناء تنفيذ الأوامر.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-stop"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F7</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>شغّل</guimenu
+> <guimenuitem
+>ألغ</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>أوقف التنفيذ نهائيا. هذا الإجراء  متاحٌ فقط أثناء تنفيذ الأوامر.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="run-speed"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>شغّل</guimenu
+> <guisubmenu
+>سرعة التشغيل</guisubmenu
+> </menuchoice
+></term>
+      <listitem
+><para
+>تقدّم سرعات ممكنة للتشغيل، وهي:<guimenuitem
+>السرعة القصوى (لا تمييز أو تفتيش</guimenuitem
+>، <guimenuitem
+>السرعة القصوى</guimenuitem
+>، <guimenuitem
+>بطيء</guimenuitem
+>، و<guimenuitem
+>أبطأ</guimenuitem
+>، و<guimenuitem
+>بطيء جدًا</guimenuitem
+> و <guimenuitem
+>خطوة بخطوة</guimenuitem
+>. حين تضبط السرعة على  <guimenuitem
+>السرعة القصوى</guimenuitem
+> (تلقائيا) فلن تستطيع متابعة شيء. هذا مفيد أحيانًا، لكن قد نحتاج أحيانًا لمتابعة ما يحدث بسرعات أقل.في هذه الحالة، نضبط السرعة على  <guimenuitem
+>بطيء</guimenuitem
+>، أو  <guimenuitem
+>أبطأ</guimenuitem
+> أو <guimenuitem
+>بطيء جدًا</guimenuitem
+>.  عند اختيار وضعٍٍ بطيءٍ، سيظهر موضع المنفّذ الحالي في المحرر. خيار   <guimenuitem
+>خطوة بخطوة</guimenuitem
+> سينفّذ أمرًا واحدا في كل مرّة..</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+
+
+<sect2 id="the-tools-menu">
+  <title
+>قائمة أدوات</title>
+  <variablelist>
+    <anchor id="tools-direction-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>أدوات</guimenu
+> <guimenuitem
+>محدّد الاتجاه...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>هذا الأمر يفتح نافذة محدد الاتجاه.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-color-chooser"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>أدوات</guimenu
+> <guimenuitem
+>محدد الألوان...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>هذا الأمر يُظهر نافذة محدد الألوان.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-setting-menu">
+  <title
+>قائمة الإعدادات</title>
+  <variablelist>
+    <anchor id="settings-set-script-language"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+> الإعدادات </guimenu
+> <guisubmenu
+> لغة السكريبت </guisubmenu
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>اختيار</action
+> لغة الشيفرة.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-editor"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>E</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>أظهر المحرر</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>إظهار أو إخفاء <link linkend="the-editor"
+>المحرر</link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-inspector"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>أظهر المفتش</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>إظهار أو إخفاء<link linkend="the-inspector"
+> المفتش </link
+>.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-errors"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>أظهر الأخطاء</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>إظهار أو إخفاء تبويب <guilabel
+> الأخطاء </guilabel
+> بقائمة الأخطاءالناتجة عن تشغيل الكود. إذا كان هذا الخيار مُمكّنًا، انقر على <guilabel
+> الرقعة </guilabel
+> لرؤية السلحفاة مرة أخرى.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-linenumbers"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F11</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>أظهر أرقام الأسطر</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>هذا الأمر يعرض الأسطر مرقّمة في  <link linkend="the-editor"
+>المحرر</link
+>.  هذا مفيد في إيجاد الأخطاء.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-toggle-toolbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>إعدادات</guimenu
+><guimenuitem
+>أظهر شريط الأدوات</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>إظهار أو إخفاء</action
+> شريط الأدوات الرئيس.</para
+></listitem>
+    </varlistentry>
+  </variablelist
+>  
+  <variablelist>
+    <anchor id="settings-toggle-statusbar"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>إعدادات</guimenu
+><guimenuitem
+>أظهر شريط الحالة</guimenuitem
+></menuchoice
+></term>
+      <listitem
+><para
+><action
+>إظهار أو إخفاء</action
+> شريط الحالة.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-shortcuts"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>اضبط الاختصارات...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>حوار كيدي الرئيسي لضبط اختصارات لوحة المفاتيح.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="settings-configure-toolbars"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>اضبط أشرطة الأدوات...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>حوار كيدي الرئيسي لضبط أشرطة الأدوات.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+<sect2 id="the-help-menu">
+  <title
+>قائمة المساعدة</title>
+<para
+>لـسلحفاتك قائمة مساعدة <guimenu
+>مساعدة</guimenu
+> افتراضية من كيدي كما هو موضّح في  <ulink url="help:/fundamentals/menus.html#menus-help"
+>أساسيات كيدي</ulink
+> مع مدخل إضافي:</para>
+  <variablelist>
+    <anchor id="help-context-help"/>
+    <varlistentry>
+      <term
+><menuchoice
+><shortcut
+> <keycombo
+><keysym
+>F2</keysym
+></keycombo
+> </shortcut
+> <guimenu
+>مساعدة</guimenu
+> <guimenuitem
+>مساعدة عن: ...</guimenuitem
+> </menuchoice
+></term>
+      <listitem
+><para
+>هذه خدمة مفيدة للغاية: فهي توفر المساعدة في الكود حيثما يكون المؤشر في المحرر. فعلى سبيل المثال، إذا استخدمت الأمر  <userinput
+> اطبع </userinput
+>  في برنامجك، وتريد أن تتعلّم هذا الأمر أو تريد تفاصيل عنه،  ما عليك سوى تحريك المؤشر بحيث يكون في الأمر  <userinput
+> print </userinput
+>  واضغط على <keysym
+> F2 </keysym
+>. سيعرض كُتيّب المساعدة بعد ذلك جميع المعلومات الموجودة عن الأمر <userinput
+> print </userinput
+>.</para>
+      <para
+>هذه الوظيفة مفيدة أثناء تعلم سكربت السلحفاة.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+</sect2>
+
+</sect1>
+
+
+<sect1 id="the-statusbar">
+<title
+>شريط الحالة</title>
+<para
+>في شريط الحالة ، تحصل على ملاحظات عن حالة سلحفاتك. على الجانب الأيسر تظهر التعليقات على الإجراء الأخير. على الجانب الأيمن تجد الموقع الحالي للمؤشر (أرقام الأسطر والأعمدة). في منتصف شريط الحالة يشار إلى اللغة الحالية المستخدمة للأوامر.</para>
+</sect1>
+
+</chapter>

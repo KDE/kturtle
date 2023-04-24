@@ -1,0 +1,306 @@
+<chapter id="getting-started">
+<title
+>ابدأ</title>
+<para
+>حين تشغل سلحفاتك سيبدو لك مثل:</para>
+<screenshot>
+  <screeninfo
+>هذه لقطة شاشة لسلحفاتك عند التشغيل لأول مرة</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>بداية جديدة لبرنامج سلحفاتك</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+<para
+>في دليل الخطوات الأولى هذا افترض أن لغة أوامر برمجة سكربت السلحفاة هي اللغة العربية. يمكنك تغيير هذه اللغة من خلال القائمة الفرعية [<menuchoice
+><guimenu
+> الإعدادات </guimenu
+><guisubmenu
+> لغة البرمجة </guisubmenu
+></menuchoice
+>]. انتبه إلى أن اللغة التي عيّنتها هنا لسلحفاتك هي ما تستخدمه لكتابة أوامر سكربت السلحفاة، وليس لغة واجهة كيدي لنظامك والتي تستخدم لعرض واجهة برنامج سلحفاتك.</para>
+
+<sect1 id="first-steps">
+<title
+>خطواتك الأولى مع سكربت السلحفاة: قابل السلحفاة!</title>
+<para
+>لا بد أنك لاحظت وجود السلحفاة في منتصف الرقعة: أنت على وشك تعلم كيفية التحكم فيها باستخدام الأوامر الموجودة في المحرر.</para>
+
+<sect2 id="the-turtle-moves">
+<title
+>حركات السلحفاة</title>
+<para
+>دعونا نبدأ بتحريك السلحفاة. يمكن لسلاحفنا أن تفعل 3 أنواع من الحركات، (1) للأمام وللخلف ، (2) الدوران لليسار واليمين و (3) القفز مباشرة إلى موضع على الشاشة. جرب هذا على سبيل المثال:</para>
+<para>
+<screen
+>تقدم 100
+در_يسار 90 
+</screen
+>اكتب الشيفرة أو انسخها وألصقها في المحرر، ثم نفّذها (باستعمال [<link linkend="run-execute"
+><menuchoice
+><guimenu
+>شغّل</guimenu
+><guimenuitem
+>شغّل</guimenuitem
+></menuchoice
+></link
+>]) لرؤية النتيجة.</para>
+
+<para
+>إذا كتبت ونفذت الأوامر كما هو مذكور أعلاه في المحرر، ربما لاحظت ما لي:</para>
+<orderedlist>
+<listitem
+><para
+>أنّ - بعد تنفيذ الأوامر - تتحرك السلحفاة لأعلى وترسم خطاً ثم تدور ربع دورة إلى اليسار. هذا لأنك استخدمت الأمرين <link linkend = "forward"
+> <userinput
+> تقّدم </userinput
+> </link
+> و <link linkend = "turnleft"
+> <userinput
+> در_يسار </userinput
+> </link
+>.</para>
+</listitem>
+<listitem>
+<para
+>أنّ لون الشيفرة قد تغيّر أثناء كتابته: تسمى هذه الميزة <emphasis
+> تمييز بديهي </emphasis
+> - يُميّز كل نوع من الأوامر تمييزًا مختلفًا. مما يسهلّ قراءة الكتل الكبيرة من التعليمات البرمجية.</para>
+</listitem>
+<listitem>
+<para
+>أن السلحفاة ترسم خطاً أسود رفيعاً.</para>
+</listitem>
+<listitem>
+<para
+>ربما تلقيت رسالة خطأ. قد يعني أمرين: ربما ارتكبت خطأ أثناء نسخ الأوامر، أو نسيت تعيين اللغة الصحيحة لأوامر سكربت السلحفاة (يمكنك تعديلها باختيار القائمة الفرعية [<menuchoice
+> <guimenu
+>الإعدادات</guimenu
+> <guisubmenu
+> لغة البرمجة </guisubmenu
+> </menuchoice
+>]).</para>
+</listitem>
+</orderedlist>
+
+<para
+>افهم أن <userinput
+> تقدم 100</userinput
+>يأمر السلحفاة بالتحرك للأمام راسمةً خطاً ، وأن <userinput
+> در_يسار 90 </userinput
+> يأمر السلحفاة بالدوران 90 <glossterm linkend = "degrees"
+>درجة</glossterm
+> إلى اليسار.</para>
+
+<para
+>يرجى الاطلاع على الروابط الدليل المرجعي لشرح الأوامر الجديدة شرحًا وافيًا: <link linkend="forward"
+><userinput
+>تقدم</userinput
+></link
+>و <link linkend="backward"
+><userinput
+>وراء</userinput
+></link
+>و <link linkend="turnleft"
+><userinput
+>در_يسار</userinput
+></link
+>و <link linkend="turnright"
+><userinput
+>در_يمين</userinput
+></link
+>.</para>
+</sect2>
+
+<sect2 id="more-examples">
+<title
+>أمثلة أكثر</title>
+<para
+>كان المثال الأول بسيطًا جدًا ، فلنواصل!</para>
+
+<para>
+
+<screen
+>جدد
+
+حجم_الرقعة 200،200
+لون_الرقعة 0،0،0
+لون_القلم 255،0،0
+عرض_القلم 5
+
+اذهب 20،20
+اتجاه 135
+
+تقدم 200
+در_يسار 135
+تقدم 100
+در_يسار 135
+تقدم 141
+در_يسار 135
+تقدم 100
+در_يسار 45
+
+اذهب 40،100
+</screen
+>ثانية، اكتب المثال أو انسخ المحرر، أو افتح مثال <filename
+>arrow</filename
+> من قائمة <guimenu
+>الأمثلة</guimenu
+> وشغّله (باستعمال [<link linkend="run-execute"
+><menuchoice
+><guimenu
+>شغّل</guimenu
+><guimenuitem
+>شغّل</guimenuitem
+></menuchoice
+></link
+>]) لرؤية النتائج. في الأمثلة التالية ، من المتوقع أنك تعرف الخطوات.</para>
+
+<para
+>ربما لاحظت أن هذا المثال الثاني يستخدم أوامر أكثر. لقد رأيت أيضًا أوامر جديدة. سنشرحها بإيجاز:</para>
+
+<para
+>بعد أمر <userinput
+>جدد</userinput
+> سيبدو كأنك شغّلت سلحفاتك للتوّ حيث تكون الرقعة فارغة.</para>
+
+<para
+>يضبط الأمر <userinput
+>حجم_الرقعة 200،200</userinput
+> عرض الرقعة وارتفاعها إلى 200 <glossterm linkend="pixels"
+>بكسل</glossterm
+>. وبما أن العرض والارتفاع متساويان فالرقعة ستكون مربعة الشكل .</para>
+
+<para
+>يجعل الأمر <userinput
+>لون_الرقعة 0،0،0</userinput
+> الرقعة سوداء اللون.  <userinput
+>0،0،0</userinput
+>هي <glossterm linkend="rgb"
+> تركيبة ح.خ.ز</glossterm
+> كل قيمها <userinput
+>0</userinput
+>، فتنتج اللون الأسود.</para>
+
+<para
+>يضبط الأمر <userinput
+>لون_القلم 255،0،0</userinput
+> لون القلم إلى الأحمر. <userinput
+>255،0،0</userinput
+> هي <glossterm linkend="rgb"
+>تركيبة ح.خ.ز</glossterm
+> قيمة أحمرها  <userinput
+>255</userinput
+> (تامّ) ولوناها الآخران (الأخضر والأزرق) معدومان أي <userinput
+>0</userinput
+> (غائب). مما ينتج لونًا أحمر قانٍ.</para>
+
+<para
+>إن لم تفهم قيم اللون اقرأ في المسرد <glossterm linkend="rgb"
+>تركيبة خ.ح.ز</glossterm
+>.</para>
+
+<para
+>يحدد الأمر <userinput
+>عرض_القلم 5</userinput
+> عرض القلم (حجمه) إلى<userinput
+>5</userinput
+> <glossterm linkend="pixels"
+>بكسل</glossterm
+>. ابتداءً من الآن، سترسم السلحفاة خطًا سمكه <userinput
+>5</userinput
+>، حتى يتغيّر <userinput
+>عرض_قلم</userinput
+>  إلى قيمة جديدة.</para>
+
+<para
+>ينقل الأمر <userinput
+>اذهب 20،20</userinput
+> السلحفاة إلى مكان ما في الرقعة. بالحساب من الركن الأيسر العلوي، هذا المكان هو 20<glossterm linkend="pixels"
+>بكسل</glossterm
+> من اليسار، و  20 <glossterm linkend="pixels"
+>بكسل</glossterm
+> من أعلى الرقعة. لاحظ أنّ مع الأمر  <userinput
+>اذهب</userinput
+>  لا ترسم السلحفاة خطّا.</para>
+
+<para
+><userinput
+>اتجاه 135</userinput
+> يضبط اتجاه السلحفاة. الأمران <userinput
+>در_يسار</userinput
+> و <userinput
+>در_يمين</userinput
+> يغيران زاوية السلحفاة من اتجاهها الحالي.  أمّا أمر <userinput
+>اتجاه</userinput
+> فيضبط زاوية السلحفاة انطلاقا من الصفر، وليس بالنسبة إلى موضعها الحالي.</para>
+
+<para
+>بعد الأمر <userinput
+>اتجاه</userinput
+> تتابع أوامر كثيرة من  <userinput
+>تقدم</userinput
+> و<userinput
+>در_يسار</userinput
+>. هذه الأوامر تنجز الرسم الحالي.</para>
+
+<para
+>أخيرًا ، استخدم أمر <userinput
+> اذهب </userinput
+> لتحريك السلحفاة إلى الجانب.</para>
+
+<para
+>تأكد من اتباع الروابط إلى المرجع. يشرح المرجع كل أمر شرحًا شاملًا.</para>
+
+
+</sect2>
+</sect1>
+
+
+
+<!--        EXTRA SECTIONS CAN BE ADDED TO THE "GETTING STARTED"
+
+<sect1 id="calculations">
+<title
+>Simple Calculations</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_variables">
+<title
+>Using Variables: creating 'number containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="using_strings">
+<title
+>Using strings: creating 'text containers'</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="logic">
+<title
+>Logic: asking the computer simple questions</title>
+<para>
+Not yet written
+</para>
+</sect1>
+<sect1 id="recursion">
+<title
+>Recursion: the Turtle is using itself</title>
+<para>
+Draw a maze for example
+</para>
+</sect1>
+-->
+
+
+</chapter>
