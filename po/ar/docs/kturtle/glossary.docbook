@@ -190,13 +190,13 @@ $ع = عشوائي 1،100
 <entry
 >العوامل الرياضية هي <userinput
 >+</userinput
->، <userinput
+> ، <userinput
 >-</userinput
->، <userinput
+> ، <userinput
 >*</userinput
->، <userinput
+> ، <userinput
 >/</userinput
->، <userinput
+> ، <userinput
 >^</userinput
 >.</entry>
 </row>
@@ -208,15 +208,15 @@ $ع = عشوائي 1،100
 <entry
 >عوامل المقارنة هي: <userinput
 >==</userinput
->، <userinput
+> ، <userinput
 >!=</userinput
->، <userinput
+> ، <userinput
 >&lt;</userinput
->، <userinput
+> ، <userinput
 >&gt;</userinput
->، <userinput
+> ، <userinput
 >&lt;=</userinput
->، <userinput
+> ، <userinput
 >&gt;=</userinput
 >.</entry>
 </row>
@@ -228,9 +228,9 @@ $ع = عشوائي 1،100
 <entry
 >العوامل المنطقية هي: <userinput
 >و</userinput
->، <userinput
+> ، <userinput
 >أو</userinput
->، <userinput
+> ، <userinput
 >ليس</userinput
 >.</entry>
 </row>
@@ -258,15 +258,15 @@ $ع = عشوائي 1،100
 <para
 >تحتاج الكثير من الأوامر إلى عدد من البكسلات  في المدخلات. هذه الأوامر هي: <userinput
 >تقدم</userinput
->، <userinput
+> ، <userinput
 >وراء</userinput
->، <userinput
+> ، <userinput
 >اذهب</userinput
->و <userinput
+> و <userinput
 >اذهب_س</userinput
->و <userinput
+> و <userinput
 >اذهب_ص</userinput
->و <userinput
+> و <userinput
 >حجم_الرقعة</userinput
 > و <userinput
 >عرض_قلم</userinput
@@ -285,7 +285,7 @@ $ع = عشوائي 1،100
 >الحاء</quote
 >للـ <quote
 >أحمر</quote
-> و<quote
+> و <quote
 >الخاء</quote
 > للـ <quote
 >أخضر</quote
@@ -293,7 +293,7 @@ $ع = عشوائي 1،100
 >الزاي</quote
 > للـ <quote
 >أزرق</quote
->.  مثال عن تركيب (ح.خ.ز)  <userinput
+>.  مثال عن تركيب (ح.خ.ز) <userinput
 >255،0،0</userinput
 >: فالقيمة الأولى تعني أنّ  (<quote
 >الأحمر</quote

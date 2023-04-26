@@ -1,6 +1,6 @@
 <chapter id="getting-started">
 <title
->ابدأ</title>
+>ابدأ البرمجة</title>
 <para
 >حين تشغل سلحفاتك سيبدو لك مثل:</para>
 <screenshot>
@@ -58,18 +58,18 @@
 ><para
 >أنّ - بعد تنفيذ الأوامر - تتحرك السلحفاة لأعلى وترسم خطاً ثم تدور ربع دورة إلى اليسار. هذا لأنك استخدمت الأمرين <link linkend = "forward"
 > <userinput
-> تقّدم </userinput
+>تقّدم</userinput
 > </link
 > و <link linkend = "turnleft"
 > <userinput
-> در_يسار </userinput
+>در_يسار</userinput
 > </link
 >.</para>
 </listitem>
 <listitem>
 <para
 >أنّ لون الشيفرة قد تغيّر أثناء كتابته: تسمى هذه الميزة <emphasis
-> تمييز بديهي </emphasis
+>تمييز بديهي</emphasis
 > - يُميّز كل نوع من الأوامر تمييزًا مختلفًا. مما يسهلّ قراءة الكتل الكبيرة من التعليمات البرمجية.</para>
 </listitem>
 <listitem>
@@ -90,10 +90,10 @@
 
 <para
 >افهم أن <userinput
-> تقدم 100</userinput
->يأمر السلحفاة بالتحرك للأمام راسمةً خطاً ، وأن <userinput
-> در_يسار 90 </userinput
-> يأمر السلحفاة بالدوران 90 <glossterm linkend = "degrees"
+>تقدم 100</userinput
+>يأمر السلحفاة بالتحرك للأمام راسمةً خطاً، وأن <userinput
+>در_يسار 90</userinput
+> يأمر السلحفاة بالدوران 90 <glossterm linkend="degrees"
 >درجة</glossterm
 > إلى اليسار.</para>
 
@@ -102,15 +102,15 @@
 ><userinput
 >تقدم</userinput
 ></link
->و <link linkend="backward"
+> و <link linkend="backward"
 ><userinput
 >وراء</userinput
 ></link
->و <link linkend="turnleft"
+> و <link linkend="turnleft"
 ><userinput
 >در_يسار</userinput
 ></link
->و <link linkend="turnright"
+> و <link linkend="turnright"
 ><userinput
 >در_يمين</userinput
 ></link
@@ -179,9 +179,9 @@
 <para
 >يجعل الأمر <userinput
 >لون_الرقعة 0،0،0</userinput
-> الرقعة سوداء اللون.  <userinput
+> الرقعة سوداء اللون. <userinput
 >0،0،0</userinput
->هي <glossterm linkend="rgb"
+> هي <glossterm linkend="rgb"
 > تركيبة ح.خ.ز</glossterm
 > كل قيمها <userinput
 >0</userinput
@@ -194,7 +194,7 @@
 >255،0،0</userinput
 > هي <glossterm linkend="rgb"
 >تركيبة ح.خ.ز</glossterm
-> قيمة أحمرها  <userinput
+> قيمة أحمرها <userinput
 >255</userinput
 > (تامّ) ولوناها الآخران (الأخضر والأزرق) معدومان أي <userinput
 >0</userinput
@@ -208,10 +208,10 @@
 <para
 >يحدد الأمر <userinput
 >عرض_القلم 5</userinput
-> عرض القلم (حجمه) إلى<userinput
+> عرض القلم (حجمه) إلى <userinput
 >5</userinput
 > <glossterm linkend="pixels"
->بكسل</glossterm
+> بكسل</glossterm
 >. ابتداءً من الآن، سترسم السلحفاة خطًا سمكه <userinput
 >5</userinput
 >، حتى يتغيّر <userinput
@@ -245,13 +245,13 @@
 >اتجاه</userinput
 > تتابع أوامر كثيرة من  <userinput
 >تقدم</userinput
-> و<userinput
+> و <userinput
 >در_يسار</userinput
 >. هذه الأوامر تنجز الرسم الحالي.</para>
 
 <para
->أخيرًا ، استخدم أمر <userinput
-> اذهب </userinput
+>أخيرًا، استخدم أمر <userinput
+>اذهب</userinput
 > لتحريك السلحفاة إلى الجانب.</para>
 
 <para

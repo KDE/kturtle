@@ -61,7 +61,7 @@
 >&Alt;<keycap
 >F2</keycap
 ></keycombo
->)      أو       <inlinemediaobject
+>)      أو  <inlinemediaobject
 > <imageobject
 > <imagedata fileref="media-playback-pause.png" format="PNG"/> </imageobject
 > </inlinemediaobject
@@ -1068,14 +1068,14 @@
 ></term>
       <listitem
 ><para
->هذه خدمة مفيدة للغاية: فهي توفر المساعدة في الكود حيثما يكون المؤشر في المحرر. فعلى سبيل المثال، إذا استخدمت الأمر  <userinput
-> اطبع </userinput
+>هذه خدمة مفيدة للغاية: فهي توفر المساعدة في الشفرة حيثما يكون المؤشر في المحرر. فعلى سبيل المثال، إذا استخدمت الأمر  <userinput
+>اطبع</userinput
 >  في برنامجك، وتريد أن تتعلّم هذا الأمر أو تريد تفاصيل عنه،  ما عليك سوى تحريك المؤشر بحيث يكون في الأمر  <userinput
-> print </userinput
+>اطبع</userinput
 >  واضغط على <keysym
-> F2 </keysym
+>F2</keysym
 >. سيعرض كُتيّب المساعدة بعد ذلك جميع المعلومات الموجودة عن الأمر <userinput
-> print </userinput
+>اطبع</userinput
 >.</para>
       <para
 >هذه الوظيفة مفيدة أثناء تعلم سكربت السلحفاة.</para
