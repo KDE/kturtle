@@ -12,21 +12,21 @@
 # Xosé <xosecalvo@gmail.com>, 2010, 2012.
 # Marce Villarino <mvillarino@kde-espana.es>, 2012, 2013, 2014, 2020.
 # Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2017.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2020.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2020, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-28 00:54+0000\n"
-"PO-Revision-Date: 2020-06-20 22:15+0200\n"
-"Last-Translator: mvillarino <mvillarino@gmail.com>\n"
-"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2023-04-28 20:28+0200\n"
+"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.04.1\n"
+"X-Generator: Lokalize 23.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -65,11 +65,10 @@ msgid "strikeout"
 msgstr "riscado"
 
 #: colorpicker.cpp:29
-#, fuzzy, kde-format
-#| msgid "Color Picker"
+#, kde-format
 msgctxt "@title:window"
 msgid "Color Picker"
-msgstr "Selector de cor"
+msgstr "Selector de cores"
 
 #: colorpicker.cpp:48
 #, kde-format
@@ -120,8 +119,7 @@ msgid "<p style='white-space:pre'><b>ERROR:</b> %1</p>"
 msgstr "<p style='white-space:pre'><b>ERRO:</b> %1</p>"
 
 #: directiondialog.cpp:194
-#, fuzzy, kde-format
-#| msgid "Direction Chooser"
+#, kde-format
 msgctxt "@title:window"
 msgid "Direction Chooser"
 msgstr "Selector de dirección"
@@ -198,8 +196,7 @@ msgid "&Discard Changes"
 msgstr "&Descartar os cambios"
 
 #: errordialog.cpp:27
-#, fuzzy, kde-format
-#| msgid "Errors"
+#, kde-format
 msgctxt "@title:window"
 msgid "Errors"
 msgstr "Erros"
@@ -501,7 +498,7 @@ msgstr "Precisas de dous números para elevar a unha potencia"
 #: interpreter/executer.cpp:780
 #, kde-format
 msgid "The result of an exponentiation was too large"
-msgstr "O resultado dunha exponenciación era grande de máis"
+msgstr "O resultado dunha potenciación era grande de máis"
 
 #: interpreter/executer.cpp:786
 #, kde-format
@@ -1366,7 +1363,7 @@ msgstr "KTurtle"
 #: main.cpp:51
 #, kde-format
 msgid "https://edu.kde.org/kturtle"
-msgstr ""
+msgstr "https://edu.kde.org/kturtle"
 
 #: main.cpp:52
 #, kde-format
@@ -1383,10 +1380,9 @@ msgstr ""
 "TurtleScript, que permite traducir as ordes ao teu idioma."
 
 #: main.cpp:53
-#, fuzzy, kde-format
-#| msgid "Cies Breijs"
+#, kde-format
 msgid "(c) 2003-2009 Cies Breijs"
-msgstr "Cies Breijs"
+msgstr "© 2003-2009 Cies Breijs"
 
 #: main.cpp:55
 #, kde-format
@@ -1625,7 +1621,7 @@ msgstr "Troca entre os modos «inserir» e «substituír»"
 #: mainwindow.cpp:256
 #, kde-format
 msgid "Overwrite Mode: Toggle between the 'insert' and 'overwrite' mode"
-msgstr "Modo de sobrescritura: troca entre o modo «inserir» e «substituír»"
+msgstr "Modo de sobrescribir: troca entre o modo «inserir» e «substituír»"
 
 #: mainwindow.cpp:263
 #, kde-format
@@ -2040,6 +2036,7 @@ msgstr ""
 msgid "Switch to the %1 dictionary"
 msgstr "Cambiar para o dicionario %1"
 
+# well-spelled: SOB
 #: mainwindow.cpp:734
 #, kde-format
 msgid " OVR "
@@ -2171,8 +2168,7 @@ msgid "PNG Images"
 msgstr "Imaxes PNG"
 
 #: mainwindow.cpp:1030
-#, fuzzy, kde-format
-#| msgid "Save as SVG"
+#, kde-format
 msgctxt "@title:window"
 msgid "Save as SVG"
 msgstr "Gardar como SVG"
@@ -2183,8 +2179,7 @@ msgid "Scalable Vector Graphics"
 msgstr "SVG"
 
 #: mainwindow.cpp:1040
-#, fuzzy, kde-format
-#| msgid "Save code as HTML"
+#, kde-format
 msgctxt "@title:window"
 msgid "Save code as HTML"
 msgstr "Gardar o código como HTML"
