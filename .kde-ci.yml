@@ -11,6 +11,7 @@ Dependencies:
     'frameworks/kdoctools': '@latest-kf6'
     'frameworks/ktextwidgets': '@latest-kf6'
     'frameworks/ki18n': '@latest-kf6'
+    'frameworks/kxmlgui': '@latest-kf6'
     'frameworks/kcoreaddons': '@latest-kf6'
 
 - 'on': ['Linux/Qt5', 'FreeBSD/Qt5', 'Windows/Qt5', 'Android/Qt5']
@@ -22,6 +23,7 @@ Dependencies:
     'frameworks/kdoctools': '@stable'
     'frameworks/ktextwidgets': '@stable'
     'frameworks/ki18n': '@stable'
+    'frameworks/kxmlgui': '@stable'
     'frameworks/kcoreaddons': '@stable'
 
 Options:
