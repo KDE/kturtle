@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-28 00:54+0000\n"
-"PO-Revision-Date: 2023-04-28 20:28+0200\n"
+"PO-Revision-Date: 2023-05-12 17:33+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -645,6 +645,7 @@ msgctxt ""
 msgid "if"
 msgstr "se"
 
+# well-spelled: senon
 #: interpreter/translator.cpp:150
 #, kde-format
 msgctxt ""
@@ -699,6 +700,7 @@ msgctxt ""
 msgid "step"
 msgstr "pasando"
 
+# well-spelled: sair
 #: interpreter/translator.cpp:192
 #, kde-format
 msgctxt ""
@@ -789,6 +791,7 @@ msgctxt ""
 msgid "clear"
 msgstr "borra"
 
+# well-spelled: br
 #: interpreter/translator.cpp:286
 #, kde-format
 msgctxt ""
@@ -798,6 +801,7 @@ msgctxt ""
 msgid "ccl"
 msgstr "br"
 
+# well-spelled: vaimedio
 #: interpreter/translator.cpp:293
 #, kde-format
 msgctxt ""
@@ -816,6 +820,7 @@ msgctxt ""
 msgid "go"
 msgstr "vai"
 
+# well-spelled: vaix
 #: interpreter/translator.cpp:307
 #, kde-format
 msgctxt ""
@@ -825,6 +830,7 @@ msgctxt ""
 msgid "gox"
 msgstr "vaix"
 
+# well-spelled: vx
 #: interpreter/translator.cpp:314
 #, kde-format
 msgctxt ""
@@ -834,6 +840,7 @@ msgctxt ""
 msgid "gx"
 msgstr "vx"
 
+# well-spelled: vaiy
 #: interpreter/translator.cpp:321
 #, kde-format
 msgctxt ""
@@ -843,6 +850,7 @@ msgctxt ""
 msgid "goy"
 msgstr "vaiy"
 
+# well-spelled: vy
 #: interpreter/translator.cpp:328
 #, kde-format
 msgctxt ""
@@ -888,6 +896,7 @@ msgctxt ""
 msgid "bw"
 msgstr "re"
 
+# well-spelled: direccion
 #: interpreter/translator.cpp:363
 #, kde-format
 msgctxt ""
@@ -906,6 +915,7 @@ msgctxt ""
 msgid "dir"
 msgstr "dir"
 
+# well-spelled: xiraesquerda
 #: interpreter/translator.cpp:377
 #, kde-format
 msgctxt ""
@@ -924,6 +934,7 @@ msgctxt ""
 msgid "tl"
 msgstr "xe"
 
+# well-spelled: xiradereita
 #: interpreter/translator.cpp:391
 #, kde-format
 msgctxt ""
@@ -933,6 +944,7 @@ msgctxt ""
 msgid "turnright"
 msgstr "xiradereita"
 
+# well-spelled: xd
 #: interpreter/translator.cpp:398
 #, kde-format
 msgctxt ""
@@ -942,6 +954,7 @@ msgctxt ""
 msgid "tr"
 msgstr "xd"
 
+# well-spelled: ancholapis
 #: interpreter/translator.cpp:405
 #, kde-format
 msgctxt ""
@@ -960,6 +973,7 @@ msgctxt ""
 msgid "pw"
 msgstr "al"
 
+# well-spelled: subelapis
 #: interpreter/translator.cpp:419
 #, kde-format
 msgctxt ""
@@ -969,6 +983,7 @@ msgctxt ""
 msgid "penup"
 msgstr "subelapis"
 
+# well-spelled: sl
 #: interpreter/translator.cpp:426
 #, kde-format
 msgctxt ""
@@ -978,6 +993,7 @@ msgctxt ""
 msgid "pu"
 msgstr "sl"
 
+# well-spelled: baixalapis
 #: interpreter/translator.cpp:433
 #, kde-format
 msgctxt ""
@@ -996,6 +1012,7 @@ msgctxt ""
 msgid "pd"
 msgstr "bl"
 
+# well-spelled: corlapis
 #: interpreter/translator.cpp:447
 #, kde-format
 msgctxt ""
@@ -1014,6 +1031,7 @@ msgctxt ""
 msgid "pc"
 msgstr "cl"
 
+# well-spelled: corlenzo
 #: interpreter/translator.cpp:461
 #, kde-format
 msgctxt ""
@@ -1023,6 +1041,7 @@ msgctxt ""
 msgid "canvascolor"
 msgstr "corlenzo"
 
+# well-spelled: clz
 #: interpreter/translator.cpp:468
 #, kde-format
 msgctxt ""
@@ -1032,6 +1051,7 @@ msgctxt ""
 msgid "cc"
 msgstr "clz"
 
+# well-spelled: tamañolenzo
 #: interpreter/translator.cpp:475
 #, kde-format
 msgctxt ""
@@ -1041,6 +1061,7 @@ msgctxt ""
 msgid "canvassize"
 msgstr "tamañolenzo"
 
+# well-spelled: tlz
 #: interpreter/translator.cpp:482
 #, kde-format
 msgctxt ""
@@ -1050,6 +1071,7 @@ msgctxt ""
 msgid "cs"
 msgstr "tlz"
 
+# well-spelled: mostrasprite
 #: interpreter/translator.cpp:489
 #, kde-format
 msgctxt ""
@@ -1068,6 +1090,7 @@ msgctxt ""
 msgid "ss"
 msgstr "ms"
 
+# well-spelled: agochasprite
 #: interpreter/translator.cpp:503
 #, kde-format
 msgctxt ""
@@ -1095,6 +1118,7 @@ msgctxt ""
 msgid "print"
 msgstr "escribe"
 
+# well-spelled: tamañoletra
 #: interpreter/translator.cpp:524
 #, kde-format
 msgctxt ""
@@ -1113,6 +1137,7 @@ msgctxt ""
 msgid "random"
 msgstr "aleatorio"
 
+# well-spelled: alea
 #: interpreter/translator.cpp:538
 #, kde-format
 msgctxt ""
@@ -1122,6 +1147,7 @@ msgctxt ""
 msgid "rnd"
 msgstr "alea"
 
+# well-spelled: coordenadax
 #: interpreter/translator.cpp:545
 #, kde-format
 msgctxt ""
@@ -1131,6 +1157,7 @@ msgctxt ""
 msgid "getx"
 msgstr "coordenadax"
 
+# well-spelled: coordenaday
 #: interpreter/translator.cpp:552
 #, kde-format
 msgctxt ""
@@ -1156,7 +1183,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "ask"
-msgstr "pergunta"
+msgstr "preguntar"
 
 #: interpreter/translator.cpp:573
 #, kde-format
@@ -1194,6 +1221,7 @@ msgctxt ""
 msgid "cos"
 msgstr "coseno"
 
+# well-spelled: arcotanxente
 #: interpreter/translator.cpp:601
 #, kde-format
 msgctxt ""
@@ -1203,6 +1231,7 @@ msgctxt ""
 msgid "arctan"
 msgstr "arcotanxente"
 
+# well-spelled: arcoseno
 #: interpreter/translator.cpp:608
 #, kde-format
 msgctxt ""
@@ -1212,6 +1241,7 @@ msgctxt ""
 msgid "arcsin"
 msgstr "arcoseno"
 
+# well-spelled: arcocoseno
 #: interpreter/translator.cpp:615
 #, kde-format
 msgctxt ""
@@ -1221,6 +1251,7 @@ msgctxt ""
 msgid "arccos"
 msgstr "arcocoseno"
 
+# well-spelled: raiz
 #: interpreter/translator.cpp:622
 #, kde-format
 msgctxt ""
@@ -1239,6 +1270,7 @@ msgctxt ""
 msgid "round"
 msgstr "redondea"
 
+# well-spelled: obterdireccion
 #: interpreter/translator.cpp:636
 #, kde-format
 msgctxt ""
