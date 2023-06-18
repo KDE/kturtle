@@ -14,6 +14,7 @@
   <name xml:lang="de">KTurtle</name>
   <name xml:lang="el">KTurtle</name>
   <name xml:lang="en-GB">KTurtle</name>
+  <name xml:lang="eo">KTurtle</name>
   <name xml:lang="es">KTurtle</name>
   <name xml:lang="et">KTurtle</name>
   <name xml:lang="eu">KTurtle</name>
@@ -53,6 +54,7 @@
   <summary xml:lang="de">Programmierumgebung für den Unterricht</summary>
   <summary xml:lang="el">Εκπαιδευτικό περιβάλλον προγραμματισμού</summary>
   <summary xml:lang="en-GB">Educational Programming Environment</summary>
+  <summary xml:lang="eo">Medio por Eduka Programado</summary>
   <summary xml:lang="es">Entorno de programación educativo</summary>
   <summary xml:lang="et">Hariv programmeerimise keskkond</summary>
   <summary xml:lang="eu">Programatzeko ingurune hezigarria</summary>
@@ -133,6 +135,7 @@
       <caption xml:lang="de">Programmieren in KTurtle</caption>
       <caption xml:lang="el">Προγραμματισμός με το KTurtle</caption>
       <caption xml:lang="en-GB">Programming in KTurtle</caption>
+      <caption xml:lang="eo">Programante en KTurtle</caption>
       <caption xml:lang="es">Programando en KTurtle</caption>
       <caption xml:lang="et">Programmeerimine KTurtle'is</caption>
       <caption xml:lang="eu">KTurtle-(r)ekin programatzea</caption>
