@@ -1408,7 +1408,7 @@ msgstr ""
 "KTurtle é un ambiente educativo de programación que pretende facer que "
 "aprender a programar sexa o máis sinxelo posíbel. Para conseguilo, KTurtle "
 "fai que todas as ferramentas de programación estean dispoñíbeis na interface "
-"do usuario. A linguaxe de programación que se emprega é TurtleScript, que "
+"do usuario. A linguaxe de programación que se usa é TurtleScript, que "
 "permite traducir as ordes ao teu idioma."
 
 #: main.cpp:53
@@ -1785,7 +1785,7 @@ msgstr "Selector de &dirección…"
 #: mainwindow.cpp:330
 #, kde-format
 msgid "Shows the direction chooser dialog"
-msgstr "Mostrar o diálogo de escolla da dirección"
+msgstr "Amosar o diálogo de escolla da dirección"
 
 #: mainwindow.cpp:331
 #, kde-format
@@ -1800,7 +1800,7 @@ msgstr "&Extractor de cor…"
 #: mainwindow.cpp:336
 #, kde-format
 msgid "Shows the color picker dialog"
-msgstr "Mostrar o diálogo de escolla de cores"
+msgstr "Amosar o diálogo de escolla de cores"
 
 #: mainwindow.cpp:337
 #, kde-format
@@ -1810,47 +1810,47 @@ msgstr "Extractor de cor: mostra o diálogo de escolla de cores"
 #: mainwindow.cpp:341
 #, kde-format
 msgid "Show &Editor"
-msgstr "Mostrar o &Editor"
+msgstr "Amosar o &Editor"
 
 #: mainwindow.cpp:343
 #, kde-format
 msgid "Show or hide the Code Editor"
-msgstr "Mostrar ou agochar o Editor do código"
+msgstr "Amosar ou agochar o Editor do código"
 
 #: mainwindow.cpp:344
 #, kde-format
 msgid "Show Code Editor: Show or hide the Code Editor"
-msgstr "Mostrar o editor: mostra ou agocha o Editor do código"
+msgstr "Amosar o editor: mostra ou agocha o Editor do código"
 
 #: mainwindow.cpp:351
 #, kde-format
 msgid "Show &Inspector"
-msgstr "Mostrar o &Inspector"
+msgstr "Amosar o &Inspector"
 
 #: mainwindow.cpp:353
 #, kde-format
 msgid "Show or hide the Inspector"
-msgstr "Mostrar ou agochar o Inspector"
+msgstr "Amosar ou agochar o Inspector"
 
 #: mainwindow.cpp:354
 #, kde-format
 msgid "Show Inspector: Show or hide the Inspector"
-msgstr "Mostrar o inspector: mostra ou agocha o Inspector"
+msgstr "Amosar o inspector: mostra ou agocha o Inspector"
 
 #: mainwindow.cpp:361
 #, kde-format
 msgid "Show E&rrors"
-msgstr "Mostrar os e&rros"
+msgstr "Amosar os e&rros"
 
 #: mainwindow.cpp:363
 #, kde-format
 msgid "Show or hide the Errors tab"
-msgstr "Mostrar ou agochar o separador de erros"
+msgstr "Amosar ou agochar o separador de erros"
 
 #: mainwindow.cpp:364
 #, kde-format
 msgid "Show Errors: Show or hide the Errors tab"
-msgstr "Mostrar os erros: mostra ou agocha o separador dos erros"
+msgstr "Amosar os erros: mostra ou agocha o separador dos erros"
 
 #. i18n("Show &Console"), this);
 #. actionCollection()->addAction("show_console", a);
@@ -1863,7 +1863,7 @@ msgstr "Mostrar os erros: mostra ou agocha o separador dos erros"
 #: mainwindow.cpp:378
 #, kde-format
 msgid "Show &Line Numbers"
-msgstr "Mostrar os números de &liña"
+msgstr "Amosar os números de &liña"
 
 #: mainwindow.cpp:380
 #, kde-format
@@ -1873,12 +1873,12 @@ msgstr "Conmuta os números de liña no editor"
 #: mainwindow.cpp:381
 #, kde-format
 msgid "Show Line Numbers: Turn the line numbers on/off in the editor"
-msgstr "Mostrar os número de liña: conmuta os números de liña no editor"
+msgstr "Amosar os número de liña: conmuta os números de liña no editor"
 
 #: mainwindow.cpp:392
 #, kde-format
 msgid "Get help on the command under the cursor"
-msgstr "Mostrar axuda sobre a orde baixo o cursor"
+msgstr "Amosar axuda sobre a orde baixo o cursor"
 
 #: mainwindow.cpp:393
 #, kde-format
