@@ -162,7 +162,7 @@ msgid ""
 "with this version of KTurtle.\n"
 "Cannot open %1"
 msgstr ""
-"O ficheiro que intentas abrir non é un script correcto de KTurtle, ou é "
+"O ficheiro que intentas abrir non é un guión correcto de KTurtle, ou é "
 "incompatíbel con esta versión de KTurtle.\n"
 "Non se pode abrir %1"
 
@@ -1453,7 +1453,7 @@ msgid ""
 "Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test "
 "scripts"
 msgstr ""
-"Inicia KTurtle no modo D-Bus (sen GUI), bo para scripts de probas unitarias "
+"Inicia KTurtle no modo D-Bus (sen GUI), bo para guións de probas unitarias "
 "automatizadas"
 
 #: main.cpp:66
