@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -312,6 +312,7 @@ msgstr "فرمان %1 هیچ پارامتری را نمی‌پذیرد."
 msgid "The %2 command was called with %3 but needs 1 parameter."
 msgid_plural "The %2 command was called with %3 but needs %1 parameters."
 msgstr[0] "فرمان %1 به وسیله %2 فراخوانی شد، اما به ۱ پارامتر نیاز دارد."
+msgstr[1] ""
 
 #: interpreter/executer.cpp:274
 #, fuzzy, kde-format
@@ -320,6 +321,7 @@ msgid "The %2 command was called with %3 but only accepts 1 parameter."
 msgid_plural ""
 "The %2 command was called with %3 but only accepts %1 parameters."
 msgstr[0] "فرمان %1 به وسیله %2 فراخوانی شد، اما فقط ۱ پارامتر را می‌‌پذیرد."
+msgstr[1] ""
 
 #: interpreter/executer.cpp:292
 #, kde-format
@@ -375,6 +377,7 @@ msgctxt ""
 msgid "1 parameter"
 msgid_plural "%1 parameters"
 msgstr[0] "%1 پارامتر"
+msgstr[1] ""
 
 #: interpreter/executer.cpp:627
 #, kde-format
