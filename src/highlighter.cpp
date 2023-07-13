@@ -105,3 +105,5 @@ QTextCharFormat* Highlighter::tokenToFormat(Token* token)
 	}
 	return nullptr;
 }
+
+#include "moc_highlighter.cpp"

@@ -117,3 +117,5 @@ void Interpreter::interpret()
 			return;
 	}
 }
+
+#include "moc_interpreter.cpp"

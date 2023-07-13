@@ -305,3 +305,5 @@ void Inspector::clearAllMarks()
 {
 	clearTreeMark();
 }
+
+#include "moc_inspector.cpp"

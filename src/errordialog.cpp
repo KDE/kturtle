@@ -148,3 +148,5 @@ void ErrorDialog::helpRequested()
 {
 	KHelpClient::invokeHelp(QStringLiteral("reference"), QStringLiteral("kturtle"));
 }
+
+#include "moc_errordialog.cpp"

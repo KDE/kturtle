@@ -163,3 +163,5 @@ void ColorPicker::pasteProxy()
 {
 	Q_EMIT pasteText(resultBox->text());
 }
+
+#include "moc_colorpicker.cpp"

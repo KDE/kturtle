@@ -88,3 +88,5 @@ void Console::executeActionTriggered()
     QKeyEvent event(QEvent::KeyPress, Qt::Key_Return, Qt::NoModifier, QStringLiteral("\n"));
 	QApplication::sendEvent(lineEdit, &event);
 }
+
+#include "moc_console.cpp"

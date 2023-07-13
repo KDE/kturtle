@@ -1068,3 +1068,5 @@ void MainWindow::slotMessageDialog(const QString& text)
 	if(!currentlyRunningConsole)
 		run();
 }
+
+#include "moc_mainwindow.cpp"

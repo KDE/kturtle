@@ -60,3 +60,5 @@ int InterpreterAdaptor::state()
 
 
 #include "interpreteradaptor.moc"
+
+#include "moc_interpreteradaptor.cpp"

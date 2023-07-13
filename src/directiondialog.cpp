@@ -408,3 +408,5 @@ void DirectionDialog::pasteProxy()
 {
 	Q_EMIT pasteText(commandBox->text());
 }
+
+#include "moc_directiondialog.cpp"
