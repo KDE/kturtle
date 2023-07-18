@@ -1,6 +1,6 @@
 #  SPDX-FileCopyrightText: 2005-2009 Cies Breijs
 #
-#  SPDX-License-Identifier: GPL-2.0-only.
+#  SPDX-License-Identifier: GPL-2.0-only
 
 
 # In this file commands/instructions/keywords/symbols/etc can easily be added to kturtle.
