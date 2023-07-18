@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kdeedu-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-28 00:54+0000\n"
-"PO-Revision-Date: 2023-03-09 13:34+0300\n"
+"PO-Revision-Date: 2023-07-17 15:36+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -143,7 +143,7 @@ msgstr "Aç"
 #: editor.cpp:148 editor.cpp:256
 #, kde-format
 msgid "Turtle code files"
-msgstr "Turtle kod dosyaları"
+msgstr "TuntleScript kod dosyaları"
 
 #: editor.cpp:148 editor.cpp:256 mainwindow.cpp:1014 mainwindow.cpp:1030
 #: mainwindow.cpp:1040
@@ -158,8 +158,8 @@ msgid ""
 "with this version of KTurtle.\n"
 "Cannot open %1"
 msgstr ""
-"Açmaya çalıştığınız dosya geçerli bir KTurtle betiği değil veya KTurtle'ın "
-"bu sürümüyle uyumlu değil.\n"
+"Açmaya çalıştığınız dosya geçerli bir K Tosbağa betiği değil veya K "
+"Tosbağa'nın bu sürümüyle uyumlu değil.\n"
 "%1 açılamadı"
 
 #: editor.cpp:231 editor.cpp:237
@@ -1358,7 +1358,7 @@ msgstr "Ana Araç Çubuğu"
 #: main.cpp:49
 #, kde-format
 msgid "KTurtle"
-msgstr "KTurtle"
+msgstr "K Tosbağa"
 
 #: main.cpp:51
 #, kde-format
@@ -1373,8 +1373,8 @@ msgid ""
 "programming tools available from the user interface. The programming "
 "language used is TurtleScript which allows its commands to be translated."
 msgstr ""
-"KTurtle programlamayı mümkün olduğunca kolayca öğretmeyi hedefleyen bir "
-"eğitim yazılımıdır. Bunu gerçekleştirmek için KTurtle tüm programlama "
+"K Tosbağa programlamayı olabildiğince kolayca öğretmeyi hedefleyen bir "
+"eğitim yazılımıdır. Bunu gerçekleştirmek için K Tosbağa tüm programlama "
 "araçlarını kullanıcı arayüzünde bulundurur. Programlamada kullanılan dil "
 "komutları diğer dillere de çevrilebilen TurtleScript dilidir."
 
@@ -1419,8 +1419,8 @@ msgid ""
 "Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test "
 "scripts"
 msgstr ""
-"KTurtle'ı D-Bus kipinde başlatır (GUI olmadan), otomatik test betikleri için "
-"iyidir"
+"K Tosbağa'yı D-Bus kipinde başlatır (arayüz olmadan), otomatik sınama "
+"betikleri için iyidir"
 
 #: main.cpp:66
 #, kde-format
@@ -1428,8 +1428,8 @@ msgid ""
 "Starts KTurtle in testing mode (without a GUI), directly runs the specified "
 "local file"
 msgstr ""
-"KTurtle'ı deneme kipinde başlatır (GUI olmadan), belirtilen yerel dosyayı "
-"doğrudan çalıştırır"
+"K Tosbağa'yı deneme kipinde başlatır (arayüz olmadan), belirtilen yerel "
+"dosyayı doğrudan çalıştırır"
 
 #: main.cpp:67
 #, kde-format
@@ -1447,7 +1447,7 @@ msgid ""
 "Translates turtle code to embeddable C++ example strings (for developers "
 "only)"
 msgstr ""
-"KTurtle kodunu gömülü C++ örnek dizilerine dönüştürür (yalnızca "
+"K Tosbağa kodunu gömülü C++ örnek dizilerine dönüştürür (yalnızca "
 "geliştiriciler için)"
 
 #: mainwindow.cpp:62
@@ -1469,12 +1469,12 @@ msgstr "Yeni dosya: Yeni bir dosya oluştur"
 #: mainwindow.cpp:180
 #, kde-format
 msgid "Open an existing file"
-msgstr "Varolan bir dosyayı aç"
+msgstr "Var olan bir dosyayı aç"
 
 #: mainwindow.cpp:181
 #, kde-format
 msgid "Open File: Open an existing file"
-msgstr "Dosya Aç: Varolan bir dosyayı aç"
+msgstr "Dosya Aç: Var olan bir dosyayı aç"
 
 #: mainwindow.cpp:185
 #, kde-format
@@ -1540,12 +1540,12 @@ msgstr "Yazdır: Kodları yazdır"
 #: mainwindow.cpp:216
 #, kde-format
 msgid "Quit KTurtle"
-msgstr "KTurtle Uygulamasından Çık"
+msgstr "K Tosbağa Uygulamasından Çık"
 
 #: mainwindow.cpp:217
 #, kde-format
 msgid "Quit: Quit KTurtle"
-msgstr "Çık: KTurtle Uygulamasından Çık"
+msgstr "Çık: K Tosbağa Uygulamasından Çık"
 
 #: mainwindow.cpp:221
 #, kde-format
@@ -1864,7 +1864,7 @@ msgstr "Yardım"
 #: mainwindow.cpp:399
 #, kde-format
 msgid "Help: Open manual for KTurtle"
-msgstr "Yardım: KTurtle için Kılavuzu aç"
+msgstr "Yardım: K Tosbağa için Kılavuzu aç"
 
 #: mainwindow.cpp:403
 #, kde-format
@@ -2013,7 +2013,7 @@ msgstr "Dü&zenleyici"
 #: mainwindow.cpp:549
 #, kde-format
 msgid "Editor: Write your KTurtle commands here"
-msgstr "Düzenleyici: KTurtle komutlarınızı buraya yazın"
+msgstr "Düzenleyici: K Tosbağa komutlarınızı buraya yazın"
 
 #: mainwindow.cpp:552
 #, kde-format
