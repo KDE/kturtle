@@ -39,7 +39,7 @@
   <name xml:lang="sk">KTurtle</name>
   <name xml:lang="sl">KTurtle</name>
   <name xml:lang="sv">Kturtle</name>
-  <name xml:lang="tr">KTurtle</name>
+  <name xml:lang="tr">K Tosbağa</name>
   <name xml:lang="uk">KTurtle</name>
   <name xml:lang="x-test">xxKTurtlexx</name>
   <name xml:lang="zh-CN">KTurtle</name>
@@ -115,7 +115,7 @@
     <p xml:lang="sk">KTurtle je výukové programovacie prostredie na výuku základov programovania. Poskytuje programovacie nástroje zo svojho používateľského prostredia. Použitý programovací jazyk je TurtleScript, ktorý je voľne založený na jazyku Logo. Všetky príkazy a správy sú preložené do jazyka používateľa. KTurtle obsahuje intuitívne zvýrazňovanie syntaxe, jednoduché chybové správy, integrované plátno na kreslenie, integrovaného pomocníka, spomalený záznam a vykonávanie krokov.</p>
     <p xml:lang="sl">KTurtle je izobraževalno programsko okolje za učenje programiranja. Vsa programska orodja so na voljo iz njegovega uporabniškega vmesnika. Uporabljen programski jezik je TurtleScript, ki ohlapno temelji na jeziku Logo. Vsi ukazi in sporočila so prevedeni v jezik uporabnika. KTurtle ponuja intuitivno poudarjanje skladnje, preprosta sporočila o napakah, vgrajeno platno za risanje, pomoč, upočasnitev dogajanja in izvajanje po korakih.</p>
     <p xml:lang="sv">Kturtle är en utbildningsprogrammeringsmiljö för att lära sig hur man programmerar. Alla programmeringsverktyg är tillgängliga från användargränssnittet. Programspråket som används är Kturtles eget, vilket är löst baserat på Logo. Alla kommandon och meddelanden är översatta till användarens språk. Kturtle innehåller en intuitiv syntaxfärgläggning, enkla felmeddelanden, integrerad duk för att rita på, integrerad hjälp, och långsam eller stegvis körning.</p>
-    <p xml:lang="tr">KTurtle, programlamanın nasıl öğrenileceğini anlatmak için bir programlama eğitimi ortamıdır. Tüm programlama araçlarını, kendi kullanıcı arayüzünden sağlar. Kullanılan programlama dili, kabaca Logo temelli, TurtleScript'tir. Tüm komutlar ve iletiler kullanıcının diline çevrilmiştir. KTurtle, sezgisel sözdizim vurgulama, basit hata iletileri, çizimleri yapmak için tümleşik tuval, tümleşik bir yardım, yavaş hareket etme ve adım yürütme özelliklerine sahiptir.</p>
+    <p xml:lang="tr">K Tosbağa, programlamanın nasıl öğrenileceğini anlatmak için bir programlama eğitimi ortamıdır. Tüm programlama araçlarını, kendi kullanıcı arayüzünden sağlar. Kullanılan programlama dili, kabaca Logo temelli, TurtleScript'tir. Tüm komutlar ve iletiler kullanıcının diline çevrilmiştir. K Tosbağa, sezgisel sözdizim vurgulama, basit hata iletileri, çizimleri yapmak için tümleşik tuval, tümleşik bir yardım, yavaş hareket etme ve adım yürütme özelliklerine sahiptir.</p>
     <p xml:lang="uk">KTurtle — середовище навчання програмуванню. У інтерфейсі програми передбачено усі засоби для програмування. Мовою програмування є TurtleScript, мова, заснована на мові програмування Logo. Усі команди та повідомлення компілятора можна перекласти мовою користувача. У KTurtle передбачено інтуїтивно зрозуміле підсвічування синтаксичних конструкцій, прості для розуміння повідомлення про помилки, інтегроване полотно для малювання, уповільнене та покрокове виконання програм.</p>
     <p xml:lang="x-test">xxKTurtle is an educational programming environment for learning how to program. It provides all programming tools from its user interface. The programming language used is TurtleScript, which is loosely based on Logo. All commands and messages are translated into the user's language. KTurtle features an intuitive syntax highlighting, simple error messages, integrated canvas to make drawings, an integrated help, slow-motion and step execution.xx</p>
     <p xml:lang="zh-CN">KTurtle 是一个学习如何编程的教育编程环境。它提供来自其用户界面的所有编程工具。 使用的编程语言是 TurtleScript，它宽松基于标志。 所有命令和消息都被翻译成用户的语言。 KTurtle 有一个直观的语法高亮、简单的错误消息、绘制图的集成画布、综合帮助、慢动作和分步执行。</p>
@@ -158,7 +158,7 @@
       <caption xml:lang="sk">Programovanie v KTurtle</caption>
       <caption xml:lang="sl">Programiranje s KTurtle</caption>
       <caption xml:lang="sv">Programmera i Kturtle</caption>
-      <caption xml:lang="tr">KTurtle'da Programlama</caption>
+      <caption xml:lang="tr">K Tosbağa'da Programlama</caption>
       <caption xml:lang="uk">Програмування у KTurtle</caption>
       <caption xml:lang="x-test">xxProgramming in KTurtlexx</caption>
       <caption xml:lang="zh-CN">在 KTurtle 中编程</caption>
