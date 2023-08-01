@@ -31,7 +31,6 @@
 #include <KMessageBox>
 #include <KRecentFilesAction>
 #include <KSharedConfig>
-#include <KToolBarPopupAction>
 #include <KNSWidgets/Action>
 #include "interpreter/errormsg.h"
 #include "interpreter/translator.h"
@@ -415,9 +414,10 @@ void MainWindow::setupActions()
 	QActionGroup* runSpeedGroup = new QActionGroup(this);
 
 	// The run action collection, this is used in the toolbar to create a dropdown menu on the run button
-	KToolBarPopupAction* runSpeedAction = new KToolBarPopupAction(QIcon::fromTheme(QStringLiteral("media-playback-start")), i18n("&Run"), this);
-	connect(runSpeedAction, &KToolBarPopupAction::triggered, this, &MainWindow::run);
-	QMenu* runSpeedActionMenu = runSpeedAction->menu();
+	QAction* runSpeedAction = new QAction(QIcon::fromTheme(QStringLiteral("media-playback-start")), i18n("&Run"), this);
+	connect(runSpeedAction, &QAction::triggered, this, &MainWindow::run);
+	QMenu* runSpeedActionMenu = new QMenu(this);
+	runSpeedAction->setMenu(runSpeedActionMenu);
 	actionCollection()->addAction(QStringLiteral("run_speed"), runSpeedAction);
 	runSpeedActionMenu->setStatusTip(i18n("Execute the program, or use the drop down menu to select the run speed"));
 	runSpeedActionMenu->setWhatsThis(i18n("Run: Execute the program, or use the drop down menu to select the run speed"));
