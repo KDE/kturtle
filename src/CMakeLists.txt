@@ -11,6 +11,7 @@ add_executable(kturtle
 )
 target_sources(kturtle PRIVATE
      ${kturtle_SRCS}
+     kturtle.qrc
     canvas.cpp
     canvas.h
     colorpicker.cpp
@@ -79,6 +80,5 @@ endif()
 
 install (TARGETS  kturtle          ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 install (PROGRAMS    org.kde.kturtle.desktop  DESTINATION ${KDE_INSTALL_APPDIR})
-install (FILES    kturtleui.rc     DESTINATION ${KDE_INSTALL_KXMLGUIDIR}/kturtle)
 install (FILES    kturtle.knsrc    DESTINATION ${KDE_INSTALL_CONFDIR}) 
 
