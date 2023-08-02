@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kdeedu-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-28 00:54+0000\n"
-"PO-Revision-Date: 2023-07-17 15:35+0300\n"
+"PO-Revision-Date: 2023-08-02 01:03+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.07.70\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -64,7 +64,7 @@ msgstr "üzeri çizili"
 #, kde-format
 msgctxt "@title:window"
 msgid "Color Picker"
-msgstr "Renk Seçici"
+msgstr "Renk Seçicisi"
 
 #: colorpicker.cpp:48
 #, kde-format
@@ -118,7 +118,7 @@ msgstr "<p style='white-space:pre'><b>HATA:</b> %1</p>"
 #, kde-format
 msgctxt "@title:window"
 msgid "Direction Chooser"
-msgstr "Yön Seçici"
+msgstr "Yön Seçicisi"
 
 #: directiondialog.cpp:225
 #, kde-format
@@ -1751,7 +1751,7 @@ msgstr "İptal: Uygulamayı çalıştırmayı durdur"
 #: mainwindow.cpp:328
 #, kde-format
 msgid "&Direction Chooser..."
-msgstr "&Yön Seçici..."
+msgstr "&Yön Seçicisi..."
 
 #: mainwindow.cpp:330
 #, kde-format
@@ -1766,7 +1766,7 @@ msgstr "Yön Seçici: Yön seçim penceresini göster"
 #: mainwindow.cpp:334
 #, kde-format
 msgid "&Color Picker..."
-msgstr "&Renk Seçici..."
+msgstr "&Renk Seçicisi..."
 
 #: mainwindow.cpp:336
 #, kde-format
@@ -1786,12 +1786,12 @@ msgstr "Dü&zenleyiciyi Göster"
 #: mainwindow.cpp:343
 #, kde-format
 msgid "Show or hide the Code Editor"
-msgstr "Kod Düzenleyiciyi Göster veya Gizle"
+msgstr "Kod Düzenleyicisini Göster veya Gizle"
 
 #: mainwindow.cpp:344
 #, kde-format
 msgid "Show Code Editor: Show or hide the Code Editor"
-msgstr "Kod Düzenleyiciyi Göster: Kod Düzenleyiciyi göster veya gizle"
+msgstr "Kod Düzenleyicisini Göster: Kod Düzenleyicisini göster veya gizle"
 
 #: mainwindow.cpp:351
 #, kde-format
