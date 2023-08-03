@@ -737,7 +737,7 @@ void MainWindow::toggleOverwriteMode(bool b)
 
 void MainWindow::updateContextHelpAction(const QString& s, const QString& anchor)
 {
-	//qDebug() << QString("%1 (help anchor: %2)").arg(s).arg(anchor);
+	//qDebug() << QStringLiteral("'%1' help anchor '%2'.").arg(s, anchor);
 	contextHelpAnchor = anchor;
 	contextHelpString = s.isEmpty() ? i18n("<nothing under cursor>") : s;
 	contextHelpAct->setText(i18n("Help on: %1", contextHelpString));
@@ -756,36 +756,36 @@ void MainWindow::updateOnCursorPositionChange()
 		KLocalizedString layout = ki18n("\"%1\" <%2>");
 		switch (cat) {
 			// not showing the look (only the name):
-			case Token::VariableCategory:     updateContextHelpAction(i18n("<variable>"), QStringLiteral("variable")); return;
-			case Token::NumberCategory:       updateContextHelpAction(i18n("<number>"), QStringLiteral("number"));     return;
-			case Token::CommentCategory:      updateContextHelpAction(i18n("<comment>"), QStringLiteral("comment"));   return;
-			case Token::StringCategory:       updateContextHelpAction(i18n("<string>"), QStringLiteral("string"));     return;
+			case Token::VariableCategory:     updateContextHelpAction(i18n("<variable>"), QStringLiteral("assignment-of-variables")); return;
+			case Token::NumberCategory:       updateContextHelpAction(i18n("<number>"), QStringLiteral("reference.html#number")); return;
+			case Token::CommentCategory:      updateContextHelpAction(i18n("<comment>"), QStringLiteral("reference.html#comment")); return;
+			case Token::StringCategory:       updateContextHelpAction(i18n("<string>"), QStringLiteral("reference.html#string")); return;
 			// only showing the look:
-			case Token::LearnCommandCategory: updateContextHelpAction(look, QStringLiteral("learn"));                  return;
-			case Token::TrueFalseCategory:    updateContextHelpAction(look, QStringLiteral("boolean"));                return;
+			case Token::LearnCommandCategory: updateContextHelpAction(look, QStringLiteral("learn")); return;
+			case Token::TrueFalseCategory:    updateContextHelpAction(look, QStringLiteral("reference.html#boolean-value")); return;
 			// showing the look and the name:
 			case Token::ScopeCategory:
-				updateContextHelpAction(layout.subs(look).subs(i18n("scope")).toString(), QStringLiteral("scope")); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("scope")).toString(), QStringLiteral("reference")); return;
 			case Token::AssignmentCategory:
-				updateContextHelpAction(layout.subs(look).subs(i18n("assignment")).toString(), QStringLiteral("assignment")); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("assignment")).toString(), QStringLiteral("assignment-of-variables")); return;
 			case Token::ParenthesisCategory:
-				updateContextHelpAction(layout.subs(look).subs(i18n("parenthesis")).toString(), QStringLiteral("parenthesis")); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("parenthesis")).toString(), QStringLiteral("operators.html#mathematical-operators")); return;
 			case Token::MathOperatorCategory:
-				updateContextHelpAction(layout.subs(look).subs(i18n("mathematical operator")).toString(), QStringLiteral("math-operator")); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("mathematical operator")).toString(), QStringLiteral("operators.html#mathematical-operators")); return;
 			case Token::ExpressionCategory:
-				updateContextHelpAction(layout.subs(look).subs(i18n("expression")).toString(), QStringLiteral("expression")); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("expression")).toString(), QStringLiteral("operators")); return;
 			case Token::BooleanOperatorCategory:
-				updateContextHelpAction(layout.subs(look).subs(i18n("boolean operator")).toString(), QStringLiteral("boolean-operator")); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("boolean operator")).toString(), QStringLiteral("operators.html#boolean-operators")); return;
 			case Token::FunctionCallCategory:
-				updateContextHelpAction(layout.subs(look).subs(i18n("learned command")).toString(), QStringLiteral("learned-command")); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("learned command")).toString(), QStringLiteral("learn")); return;
 			case Token::ArgumentSeparatorCategory:
-				updateContextHelpAction(layout.subs(look).subs(i18n("argument separator")).toString(), QStringLiteral("argument-separator")); return;
+				updateContextHelpAction(layout.subs(look).subs(i18n("argument separator")).toString(), QStringLiteral("reference")); return;
 			// showing the look and the name, and linking to the help through their default look (en_US):
 			case Token::CommandCategory:
-				updateContextHelpAction(layout.subs(look).subs(i18n("command")).toString(), Translator::instance()->defaultLook(look));
+				updateContextHelpAction(layout.subs(look).subs(i18n("command")).toString(), QStringLiteral("commands"));
 				return;
 			case Token::ControllerCommandCategory:
-				updateContextHelpAction(layout.subs(look).subs(i18n("controller command")).toString(), Translator::instance()->defaultLook(look));
+				updateContextHelpAction(layout.subs(look).subs(i18n("controller command")).toString(), QStringLiteral("controlling-execution"));
 				return;
 		}
 	}
