@@ -59,6 +59,7 @@ int main(int argc, char* argv[])
 	QCommandLineParser parser;
 
 	KAboutData::setApplicationData(aboutData);
+	app.setWindowIcon(QIcon::fromTheme(QStringLiteral("kturtle"), app.windowIcon()));
 	aboutData.setupCommandLine(&parser);
 
 	parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("i") << QStringLiteral("input"), i18n("File or URL to open (in the GUI mode)"), QStringLiteral("URL or file")));
