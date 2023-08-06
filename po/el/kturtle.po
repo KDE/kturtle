@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-28 00:54+0000\n"
+"POT-Creation-Date: 2023-08-06 00:41+0000\n"
 "PO-Revision-Date: 2023-01-02 23:22+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -1310,7 +1310,7 @@ msgid "&Canvas"
 msgstr "&Καμβάς"
 
 #. i18n: ectx: Menu (run)
-#: kturtleui.rc:47 mainwindow.cpp:299 mainwindow.cpp:418
+#: kturtleui.rc:47 mainwindow.cpp:298 mainwindow.cpp:417
 #, kde-format
 msgid "&Run"
 msgstr "&Εκτέλεση"
@@ -1448,215 +1448,215 @@ msgstr ""
 "Μεταφράζει τον κώδικα turtle σε εμβόλιμες συμβολοσειρές C++ (μόνο για "
 "προγραμματιστές)"
 
-#: mainwindow.cpp:62
+#: mainwindow.cpp:61
 #, kde-format
 msgctxt "@info:status the application is ready for commands"
 msgid "Ready"
 msgstr "Έτοιμο"
 
-#: mainwindow.cpp:176
+#: mainwindow.cpp:175
 #, kde-format
 msgid "Create a new file"
 msgstr "Δημιουργία ενός νέου αρχείου"
 
-#: mainwindow.cpp:177
+#: mainwindow.cpp:176
 #, kde-format
 msgid "New File: Create a new file"
 msgstr "Νέο αρχείο: Δημιουργεί ένα νέο αρχείο"
 
-#: mainwindow.cpp:180
+#: mainwindow.cpp:179
 #, kde-format
 msgid "Open an existing file"
 msgstr "Άνοιγμα ενός υπάρχοντος αρχείου"
 
-#: mainwindow.cpp:181
+#: mainwindow.cpp:180
 #, kde-format
 msgid "Open File: Open an existing file"
 msgstr "Άνοιγμα αρχείου: Ανοίγει ένα υπάρχον αρχείο"
 
-#: mainwindow.cpp:185
+#: mainwindow.cpp:184
 #, kde-format
 msgid "Open a recently used file"
 msgstr "Άνοιγμα ενός πρόσφατου αρχείου"
 
-#: mainwindow.cpp:186
+#: mainwindow.cpp:185
 #, kde-format
 msgid "Open Recent File: Open a recently used file"
 msgstr ""
 "Άνοιγμα ενός πρόσφατου αρχείου: Ανοίγει ένα αρχείο που χρησιμοποιήθηκε "
 "πρόσφατα"
 
-#: mainwindow.cpp:188
+#: mainwindow.cpp:187
 #, kde-format
 msgid "Get more examples..."
 msgstr "Λήψη περισσότερων παραδειγμάτων..."
 
-#: mainwindow.cpp:197
+#: mainwindow.cpp:196
 #, kde-format
 msgid "Save the current file to disk"
 msgstr "Αποθήκευση του τρέχοντος αρχείου στο δίσκο"
 
-#: mainwindow.cpp:198
+#: mainwindow.cpp:197
 #, kde-format
 msgid "Save File: Save the current file to disk"
 msgstr "Αποθήκευση αρχείου: Αποθηκεύει το τρέχον αρχείο στο δίσκο"
 
-#: mainwindow.cpp:202
+#: mainwindow.cpp:201
 #, kde-format
 msgid "Save the current file under a different name"
 msgstr "Αποθήκευση του τρέχοντος αρχείου με διαφορετικό όνομα"
 
-#: mainwindow.cpp:203
+#: mainwindow.cpp:202
 #, kde-format
 msgid "Save File As: Save the current file under a different name"
 msgstr ""
 "Αποθήκευση αρχείου ως: Αποθηκεύει το τρέχον αρχείο με διαφορετικό όνομα"
 
-#: mainwindow.cpp:206
+#: mainwindow.cpp:205
 #, kde-format
 msgid "Export to &HTML..."
 msgstr "Εξαγωγή ως &HTML..."
 
-#: mainwindow.cpp:207
+#: mainwindow.cpp:206
 #, kde-format
 msgid "Export the contents of the editor as HTML"
 msgstr "Εξάγει τα περιεχόμενα του Επεξεργαστή Κώδικα ως HTML"
 
-#: mainwindow.cpp:208
+#: mainwindow.cpp:207
 #, kde-format
 msgid "Export to HTML: Export the contents of the editor as HTML"
 msgstr "Εξαγωγή ως &HTML: Εξάγει τα περιεχόμενα του Επεξεργαστή Κώδικα ως HTML"
 
-#: mainwindow.cpp:212
+#: mainwindow.cpp:211
 #, kde-format
 msgid "Print the code"
 msgstr "Εκτύπωση του κώδικα"
 
-#: mainwindow.cpp:213
+#: mainwindow.cpp:212
 #, kde-format
 msgid "Print: Print the code"
 msgstr "Εκτύπωση: Εκτυπώνει τον κώδικα"
 
-#: mainwindow.cpp:216
+#: mainwindow.cpp:215
 #, kde-format
 msgid "Quit KTurtle"
 msgstr "Έξοδος από το KTurtle"
 
-#: mainwindow.cpp:217
+#: mainwindow.cpp:216
 #, kde-format
 msgid "Quit: Quit KTurtle"
 msgstr "Έξοδος: Τερματίζει το KTurtle"
 
-#: mainwindow.cpp:221
+#: mainwindow.cpp:220
 #, kde-format
 msgid "Undo a change in the editor"
 msgstr "Αναίρεση μιας τροποποίησης στον Επεξεργαστή Κώδικα"
 
-#: mainwindow.cpp:222
+#: mainwindow.cpp:221
 #, kde-format
 msgid "Undo: Undo a change in the editor"
 msgstr "Αναίρεση: Επαναφέρει μια τροποποίηση που έγινε στον Επεξεργαστή Κώδικα"
 
-#: mainwindow.cpp:227
+#: mainwindow.cpp:226
 #, kde-format
 msgid "Redo a previously undone change in the editor"
 msgstr ""
 "Επαναφέρει μια ενέργειας που αναιρέθηκε προηγουμένως στον Επεξεργαστή Κώδικα"
 
-#: mainwindow.cpp:228
+#: mainwindow.cpp:227
 #, kde-format
 msgid "Redo: Redo a previously undone change in the editor"
 msgstr ""
 "Επαναφορά: Επαναφέρει μια ενέργειας που αναιρέθηκε προηγουμένως στον "
 "Επεξεργαστή Κώδικα"
 
-#: mainwindow.cpp:233
+#: mainwindow.cpp:232
 #, kde-format
 msgid "Cut the selected text to the clipboard"
 msgstr "Αποκοπή του επιλεγμένου κειμένου στο πρόχειρο"
 
-#: mainwindow.cpp:234
+#: mainwindow.cpp:233
 #, kde-format
 msgid "Cut: Cut the selected text to the clipboard"
 msgstr ""
 "Αποκοπή: Διαγράφει το επιλεγμένο κείμενο και το αποθηκεύει στο πρόχειρο"
 
-#: mainwindow.cpp:239
+#: mainwindow.cpp:238
 #, kde-format
 msgid "Copy the selected text to the clipboard"
 msgstr "Αντιγραφή του επιλεγμένου κειμένου στο πρόχειρο"
 
-#: mainwindow.cpp:240
+#: mainwindow.cpp:239
 #, kde-format
 msgid "Copy: Copy the selected text to the clipboard"
 msgstr "Αντιγραφή: Αντιγράφει το επιλεγμένο κείμενο στο πρόχειρο"
 
-#: mainwindow.cpp:245
+#: mainwindow.cpp:244
 #, kde-format
 msgid "Paste the clipboard's content into the current selection"
 msgstr "Επικόλληση των περιεχομένων του πρόχειρου στην τρέχουσα θέση"
 
-#: mainwindow.cpp:246
+#: mainwindow.cpp:245
 #, kde-format
 msgid "Paste: Paste the clipboard's content into the current selection"
 msgstr "Επικόλληση: Επικολλά το περιεχόμενο του πρόχειρου στην τρέχουσα θέση"
 
-#: mainwindow.cpp:249
+#: mainwindow.cpp:248
 #, kde-format
 msgid "Select all the code in the editor"
 msgstr "Επιλογή όλου του κώδικα στον Επεξεργαστή Κώδικα"
 
-#: mainwindow.cpp:250
+#: mainwindow.cpp:249
 #, kde-format
 msgid "Select All: Select all the code in the editor"
 msgstr "Επιλογή όλων: Επιλέγει όλον τον κώδικα στον Επεξεργαστή Κώδικα"
 
-#: mainwindow.cpp:253
+#: mainwindow.cpp:252
 #, kde-format
 msgid "Overwrite Mode"
 msgstr "Λειτουργία αντικατάστασης"
 
-#: mainwindow.cpp:255
+#: mainwindow.cpp:254
 #, kde-format
 msgid "Toggle between the 'insert' and 'overwrite' mode"
 msgstr "Εναλλαγή μεταξύ λειτουργίας 'εισαγωγής' και 'αντικατάστασης'"
 
-#: mainwindow.cpp:256
+#: mainwindow.cpp:255
 #, kde-format
 msgid "Overwrite Mode: Toggle between the 'insert' and 'overwrite' mode"
 msgstr ""
 "Λειτουργία αντικατάστασης: Εναλλαγή μεταξύ λειτουργίας 'εισαγωγής' και "
 "'αντικατάστασης'"
 
-#: mainwindow.cpp:263
+#: mainwindow.cpp:262
 #, kde-format
 msgid "Search through the code in the editor"
 msgstr "Αναζήτηση στον κώδικα μέσα στον Επεξεργαστή Κώδικα"
 
-#: mainwindow.cpp:264
+#: mainwindow.cpp:263
 #, kde-format
 msgid "Find: Search through the code in the editor"
 msgstr "Αναζήτηση: Αναζητά στον κώδικα μέσα στον Επεξεργαστή Κώδικα"
 
-#: mainwindow.cpp:267
+#: mainwindow.cpp:266
 #, kde-format
 msgid "Continue searching through the code in the editor"
 msgstr "Συνέχιση αναζήτησης στον κώδικα μέσα στον Επεξεργαστή Κώδικα"
 
-#: mainwindow.cpp:268
+#: mainwindow.cpp:267
 #, kde-format
 msgid "Find Next: Continue searching through the code in the editor"
 msgstr ""
 "Αναζήτηση επομένου: Συνεχίζει την αναζήτηση στον κώδικα μέσα στον "
 "Επεξεργαστή Κώδικα"
 
-#: mainwindow.cpp:271
+#: mainwindow.cpp:270
 #, kde-format
 msgid "Continue searching backwards through the code in the editor"
 msgstr ""
 "Συνέχιση αναζήτησης προς τα πίσω στον κώδικα μέσα στον Επεξεργαστή Κώδικα"
 
-#: mainwindow.cpp:272
+#: mainwindow.cpp:271
 #, kde-format
 msgid ""
 "Find Previous: Continue searching backwards through the code in the editor"
@@ -1664,91 +1664,91 @@ msgstr ""
 "Αναζήτηση προηγουμένου: Συνεχίζει την αναζήτηση προς τα πίσω στον κώδικα "
 "μέσα στον Επεξεργαστή Κώδικα"
 
-#: mainwindow.cpp:281
+#: mainwindow.cpp:280
 #, kde-format
 msgid "Export to &Image (PNG)..."
 msgstr "Εξαγωγή ως &Εικόνα (PNG)..."
 
-#: mainwindow.cpp:282
+#: mainwindow.cpp:281
 #, kde-format
 msgid "Export the current canvas to a PNG raster image"
 msgstr "Αποθήκευση του τρέχοντος καμβά ως εικόνα (PNG)"
 
-#: mainwindow.cpp:283
+#: mainwindow.cpp:282
 #, kde-format
 msgid "Export to PNG: Export the current canvas to a PNG raster image"
 msgstr ""
 "Εξαγωγή ως &Εικόνα (PNG): Αποθήκευση του τρέχοντος καμβά ως εικόνα (PNG)"
 
-#: mainwindow.cpp:287
+#: mainwindow.cpp:286
 #, kde-format
 msgid "Export to &Drawing (SVG)..."
 msgstr "Εξαγωγή ως &Διανυσματικά Γραφικά (SVG)..."
 
-#: mainwindow.cpp:288
+#: mainwindow.cpp:287
 #, kde-format
 msgid "Export the current canvas to Scalable Vector Graphics"
 msgstr ""
 "Αποθήκευση του τρέχοντος καμβά ως Προσαρμόσιμα Διανυσματικά Γραφικά (SVG)"
 
-#: mainwindow.cpp:289
+#: mainwindow.cpp:288
 #, kde-format
 msgid "Export to SVG: Export the current canvas to Scalable Vector Graphics"
 msgstr ""
 "Εξαγωγή ως &Διανυσματικά Γραφικά (SVG): Αποθήκευση του τρέχοντος καμβά ως "
 "Προσαρμόσιμα Διανυσματικά Γραφικά (SVG)"
 
-#: mainwindow.cpp:292
+#: mainwindow.cpp:291
 #, kde-format
 msgid "&Print Canvas..."
 msgstr "&Εκτύπωση κώδικα..."
 
-#: mainwindow.cpp:294
+#: mainwindow.cpp:293
 #, kde-format
 msgid "Print the canvas"
 msgstr "Εκτύπωση του κώδικα"
 
-#: mainwindow.cpp:295
+#: mainwindow.cpp:294
 #, kde-format
 msgid "Print: Print the canvas"
 msgstr "Εκτύπωση κώδικα: Εκτυπώνει τον κώδικα"
 
-#: mainwindow.cpp:302
+#: mainwindow.cpp:301
 #, kde-format
 msgid "Execute the program"
 msgstr "Εκτελεί το πρόγραμμα"
 
-#: mainwindow.cpp:303
+#: mainwindow.cpp:302
 #, kde-format
 msgid "Run: Execute the program"
 msgstr "Εκτέλεση: Εκτελεί το πρόγραμμα"
 
-#: mainwindow.cpp:306
+#: mainwindow.cpp:305
 #, kde-format
 msgid "&Pause"
 msgstr "&Παύση"
 
-#: mainwindow.cpp:310
+#: mainwindow.cpp:309
 #, kde-format
 msgid "Pause execution"
 msgstr "Παύση εκτέλεσης"
 
-#: mainwindow.cpp:311
+#: mainwindow.cpp:310
 #, kde-format
 msgid "Pause: Pause execution"
 msgstr "Παύση: Σταματάει προσωρινά την εκτέλεση του προγράμματος"
 
-#: mainwindow.cpp:314
+#: mainwindow.cpp:313
 #, kde-format
 msgid "&Abort"
 msgstr "&Εγκατάλειψη"
 
-#: mainwindow.cpp:317
+#: mainwindow.cpp:316
 #, kde-format
 msgid "Stop executing program"
 msgstr "Εγκατάλειψη της εκτέλεσης"
 
-#: mainwindow.cpp:318
+#: mainwindow.cpp:317
 #, kde-format
 msgid "Abort: Stop executing program"
 msgstr "Εγκατάλειψη: Σταματάει οριστικά την εκτέλεση του προγράμματος"
@@ -1759,77 +1759,77 @@ msgstr "Εγκατάλειψη: Σταματάει οριστικά την εκ�
 #. i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
 #. i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
 #. Tools menu actions
-#: mainwindow.cpp:328
+#: mainwindow.cpp:327
 #, kde-format
 msgid "&Direction Chooser..."
 msgstr "Επιλογέας &Κατεύθυνσης..."
 
-#: mainwindow.cpp:330
+#: mainwindow.cpp:329
 #, kde-format
 msgid "Shows the direction chooser dialog"
 msgstr "Εμφανίζει το διάλογο επιλογής κατεύθυνσης"
 
-#: mainwindow.cpp:331
+#: mainwindow.cpp:330
 #, kde-format
 msgid "Direction Chooser: Show the direction chooser dialog"
 msgstr "Επιλογέας Κατεύθυνσης: Εμφανίζει το διάλογο επιλογής κατεύθυνσης"
 
-#: mainwindow.cpp:334
+#: mainwindow.cpp:333
 #, kde-format
 msgid "&Color Picker..."
 msgstr "Επιλογέας &Χρωμάτων..."
 
-#: mainwindow.cpp:336
+#: mainwindow.cpp:335
 #, kde-format
 msgid "Shows the color picker dialog"
 msgstr "Εμφανίζει το διάλογο επιλογής χρωμάτων"
 
-#: mainwindow.cpp:337
+#: mainwindow.cpp:336
 #, kde-format
 msgid "Color Picker: Show the color picker dialog"
 msgstr "Επιλογέας Χρωμάτων: Εμφανίζει το διάλογο επιλογής χρωμάτων"
 
-#: mainwindow.cpp:341
+#: mainwindow.cpp:340
 #, kde-format
 msgid "Show &Editor"
 msgstr "Εμφάνιση Επεξεργαστή &Κώδικα"
 
-#: mainwindow.cpp:343
+#: mainwindow.cpp:342
 #, kde-format
 msgid "Show or hide the Code Editor"
 msgstr "Εμφανίζει ή κρύβει τον Επεξεργαστή Κώδικα"
 
-#: mainwindow.cpp:344
+#: mainwindow.cpp:343
 #, kde-format
 msgid "Show Code Editor: Show or hide the Code Editor"
 msgstr "Εμφάνιση Επεξεργαστή Κώδικα: Εμφανίζει ή κρύβει τον Επεξεργαστή Κώδικα"
 
-#: mainwindow.cpp:351
+#: mainwindow.cpp:350
 #, kde-format
 msgid "Show &Inspector"
 msgstr "Εμφάνιση &Επιθεωρητή"
 
-#: mainwindow.cpp:353
+#: mainwindow.cpp:352
 #, kde-format
 msgid "Show or hide the Inspector"
 msgstr "Εμφανίζει ή κρύβει τον Επιθεωρητή"
 
-#: mainwindow.cpp:354
+#: mainwindow.cpp:353
 #, kde-format
 msgid "Show Inspector: Show or hide the Inspector"
 msgstr "Εμφάνιση Επιθεωρητή: Εμφανίζει ή κρύβει τον Επιθεωρητή"
 
-#: mainwindow.cpp:361
+#: mainwindow.cpp:360
 #, kde-format
 msgid "Show E&rrors"
 msgstr "Εμφάνιση Σ&φαλμάτων"
 
-#: mainwindow.cpp:363
+#: mainwindow.cpp:362
 #, kde-format
 msgid "Show or hide the Errors tab"
 msgstr "Εμφανίζει ή κρύβει την Καρτέλα Σφαλμάτων"
 
-#: mainwindow.cpp:364
+#: mainwindow.cpp:363
 #, kde-format
 msgid "Show Errors: Show or hide the Errors tab"
 msgstr "Εμφάνιση Σφαλμάτων: Εμφανίζει ή κρύβει την Καρτέλα Σφαλμάτων"
@@ -1842,54 +1842,54 @@ msgstr "Εμφάνιση Σφαλμάτων: Εμφανίζει ή κρύβει 
 #. a->setChecked(false);
 #. connect(a, SIGNAL(toggled(bool)), consoleDock, SLOT(setVisible(bool)));
 #. connect(consoleDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
-#: mainwindow.cpp:378
+#: mainwindow.cpp:377
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "Εμφάνιση Αριθμού &Γραμμής"
 
-#: mainwindow.cpp:380
+#: mainwindow.cpp:379
 #, kde-format
 msgid "Turn the line numbers on/off in the editor"
 msgstr "Εναλλαγή εμφάνισης του αριθμού γραμμής στον Επεξεργαστή Κώδικα"
 
-#: mainwindow.cpp:381
+#: mainwindow.cpp:380
 #, kde-format
 msgid "Show Line Numbers: Turn the line numbers on/off in the editor"
 msgstr ""
 "Εμφάνιση Αριθμού Γραμμής: Εμφανίζει ή κρύβει τον αριθμό γραμμής στον "
 "Επεξεργαστή Κώδικα"
 
-#: mainwindow.cpp:392
+#: mainwindow.cpp:391
 #, kde-format
 msgid "Get help on the command under the cursor"
 msgstr "Λήψη βοήθειας για την εντολή κάτω από το δρομέα"
 
-#: mainwindow.cpp:393
+#: mainwindow.cpp:392
 #, kde-format
 msgid "Context Help: Get help on the command under the cursor"
 msgstr "Σχετική βοήθεια: Λήψη βοήθειας για την εντολή κάτω από το δρομέα"
 
-#: mainwindow.cpp:398
+#: mainwindow.cpp:397
 #, kde-format
 msgid "Help"
 msgstr "Βοήθεια"
 
-#: mainwindow.cpp:399
+#: mainwindow.cpp:398
 #, kde-format
 msgid "Help: Open manual for KTurtle"
 msgstr "Βοήθεια: Ανοίγει το εγχειρίδιο του KTurtle"
 
-#: mainwindow.cpp:403
+#: mainwindow.cpp:402
 #, kde-format
 msgid "Console"
 msgstr "Κονσόλα"
 
-#: mainwindow.cpp:410
+#: mainwindow.cpp:409
 #, kde-format
 msgid "Execute"
 msgstr "Εκτέλεση"
 
-#: mainwindow.cpp:412
+#: mainwindow.cpp:411
 #, kde-format
 msgid "Execute: Executes the current line in the console"
 msgstr "Εκτέλεση: Εκτέλεση της τρέχουσας γραμμής στην κονσόλα"
