@@ -60,7 +60,7 @@
   <summary xml:lang="eu">Programatzeko ingurune hezigarria</summary>
   <summary xml:lang="fi">Ohjelmointiympäristö opetuskäyttöön</summary>
   <summary xml:lang="fr">Environnement de programmation éducatif</summary>
-  <summary xml:lang="gl">Ambiente de programación educativo</summary>
+  <summary xml:lang="gl">Ambiente de programación educativo.</summary>
   <summary xml:lang="id">Pendidikan Lingkungan Pemrograman</summary>
   <summary xml:lang="is">Kennsluumhverfi fyrir forritun</summary>
   <summary xml:lang="it">Ambiente educativo di programmazione</summary>
@@ -142,7 +142,7 @@
       <caption xml:lang="eu">KTurtle-(r)ekin programatzea</caption>
       <caption xml:lang="fi">Ohjelmointi KTurtlessa</caption>
       <caption xml:lang="fr">Programmation sur KTurtle</caption>
-      <caption xml:lang="gl">Programación con KTurtle</caption>
+      <caption xml:lang="gl">Programación con KTurtle.</caption>
       <caption xml:lang="id">Pemrograman di KTurtle</caption>
       <caption xml:lang="is">Forritun í Kskjaldbaka</caption>
       <caption xml:lang="it">Programmare in KTurtle</caption>
