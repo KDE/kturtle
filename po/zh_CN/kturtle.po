@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-28 00:54+0000\n"
+"POT-Creation-Date: 2023-08-07 02:52+0000\n"
 "PO-Revision-Date: 2023-08-02 12:43\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1384,26 +1384,26 @@ msgstr "核心开发者"
 msgid "Mauricio Piacentini"
 msgstr "Mauricio Piacentini"
 
-#: main.cpp:64
+#: main.cpp:65
 #, kde-format
 msgid "File or URL to open (in the GUI mode)"
 msgstr "要打开的 URL(在图形界面模式下)"
 
-#: main.cpp:65
+#: main.cpp:66
 #, kde-format
 msgid ""
 "Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test "
 "scripts"
 msgstr "在 D-Bus 模式下打开无图形界面的 KTurtle，适用于执行自动化单元测试脚本"
 
-#: main.cpp:66
+#: main.cpp:67
 #, kde-format
 msgid ""
 "Starts KTurtle in testing mode (without a GUI), directly runs the specified "
 "local file"
 msgstr "在测试模式下打开无图形界面的 KTurtle，直接指定运行一个本地文件"
 
-#: main.cpp:67
+#: main.cpp:68
 #, kde-format
 msgid ""
 "Specifies the localization language by a language code, defaults to \"en_US"
@@ -1411,7 +1411,7 @@ msgid ""
 msgstr "指定语言代码所用的本地语言，默认为“en_US”(仅测试模式下有效)"
 
 #. i18n("Only tokenizes the turtle code (only works in testing mode)")));
-#: main.cpp:69
+#: main.cpp:70
 #, kde-format
 msgid ""
 "Translates turtle code to embeddable C++ example strings (for developers "

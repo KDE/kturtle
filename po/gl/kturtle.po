@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-28 00:54+0000\n"
-"PO-Revision-Date: 2023-06-17 08:39+0200\n"
+"POT-Creation-Date: 2023-08-07 02:52+0000\n"
+"PO-Revision-Date: 2023-08-06 05:53+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.2\n"
+"X-Generator: Lokalize 23.04.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1442,12 +1442,12 @@ msgstr "Desenvolvedor principal"
 msgid "Mauricio Piacentini"
 msgstr "Mauricio Piacentini"
 
-#: main.cpp:64
+#: main.cpp:65
 #, kde-format
 msgid "File or URL to open (in the GUI mode)"
 msgstr "Ficheiro ou URL para abrir (no modo GUI)"
 
-#: main.cpp:65
+#: main.cpp:66
 #, kde-format
 msgid ""
 "Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test "
@@ -1456,7 +1456,7 @@ msgstr ""
 "Inicia KTurtle no modo D-Bus (sen GUI), bo para guións de probas unitarias "
 "automatizadas"
 
-#: main.cpp:66
+#: main.cpp:67
 #, kde-format
 msgid ""
 "Starts KTurtle in testing mode (without a GUI), directly runs the specified "
@@ -1465,7 +1465,7 @@ msgstr ""
 "Inicia KTurtle no modo de probas (sen GUI). Executa directamente o ficheiro "
 "local que se especifique"
 
-#: main.cpp:67
+#: main.cpp:68
 #, kde-format
 msgid ""
 "Specifies the localization language by a language code, defaults to \"en_US"
@@ -1475,7 +1475,7 @@ msgstr ""
 "predeterminada (só funciona no modo de probas)"
 
 #. i18n("Only tokenizes the turtle code (only works in testing mode)")));
-#: main.cpp:69
+#: main.cpp:70
 #, kde-format
 msgid ""
 "Translates turtle code to embeddable C++ example strings (for developers "
@@ -1488,7 +1488,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info:status the application is ready for commands"
 msgid "Ready"
-msgstr "Listo"
+msgstr "Listo."
 
 #: mainwindow.cpp:176
 #, kde-format

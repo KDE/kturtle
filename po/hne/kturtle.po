@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-28 00:54+0000\n"
+"POT-Creation-Date: 2023-08-07 02:52+0000\n"
 "PO-Revision-Date: 2009-02-24 22:04+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
 "Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
@@ -1780,13 +1780,13 @@ msgstr "कोर डेवलपर"
 msgid "Mauricio Piacentini"
 msgstr "मारिसियो पियासेन्टिनी"
 
-#: main.cpp:64
+#: main.cpp:65
 #, fuzzy, kde-format
 #| msgid "File to open (in the GUI mode)"
 msgid "File or URL to open (in the GUI mode)"
 msgstr "फाइल जऊन ल खोलना हे (जीयूआई मोड में)"
 
-#: main.cpp:65
+#: main.cpp:66
 #, fuzzy, kde-format
 #| msgid ""
 #| "Starts KTurtle in testing mode (without a GUI), directly runs the "
@@ -1797,7 +1797,7 @@ msgid ""
 msgstr ""
 "केटर्टल ल जांच मोड मं चालू करथे  (बिना जीयूआई के), निरधारित लोकल फाइल ल सीधे ही चलाथे "
 
-#: main.cpp:66
+#: main.cpp:67
 #, kde-format
 msgid ""
 "Starts KTurtle in testing mode (without a GUI), directly runs the specified "
@@ -1805,7 +1805,7 @@ msgid ""
 msgstr ""
 "केटर्टल ल जांच मोड मं चालू करथे  (बिना जीयूआई के), निरधारित लोकल फाइल ल सीधे ही चलाथे "
 
-#: main.cpp:67
+#: main.cpp:68
 #, kde-format
 msgid ""
 "Specifies the localization language by a language code, defaults to \"en_US"
@@ -1813,7 +1813,7 @@ msgid ""
 msgstr ""
 
 #. i18n("Only tokenizes the turtle code (only works in testing mode)")));
-#: main.cpp:69
+#: main.cpp:70
 #, kde-format
 msgid ""
 "Translates turtle code to embeddable C++ example strings (for developers "

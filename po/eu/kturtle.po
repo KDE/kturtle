@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-28 00:54+0000\n"
+"POT-Creation-Date: 2023-08-07 02:52+0000\n"
 "PO-Revision-Date: 2022-07-26 16:58+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -1403,12 +1403,12 @@ msgstr "Garatzaile nagusia"
 msgid "Mauricio Piacentini"
 msgstr "Mauricio Piacentini"
 
-#: main.cpp:64
+#: main.cpp:65
 #, kde-format
 msgid "File or URL to open (in the GUI mode)"
 msgstr "Ireki beharreko fitxategi edo URL (GUI moduan)"
 
-#: main.cpp:65
+#: main.cpp:66
 #, kde-format
 msgid ""
 "Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test "
@@ -1417,7 +1417,7 @@ msgstr ""
 "KTurtle D-Bus moduan abiarazten du (interfaze grafikorik gabe), ona script-"
 "automatizatuen unitateak probatzeko"
 
-#: main.cpp:66
+#: main.cpp:67
 #, kde-format
 msgid ""
 "Starts KTurtle in testing mode (without a GUI), directly runs the specified "
@@ -1426,7 +1426,7 @@ msgstr ""
 "KTurtle probako moduan abiarazten du (interfaze grafikorik gabe), zuzenean "
 "zehaztutako lokaleko fitxategia exekutatuz"
 
-#: main.cpp:67
+#: main.cpp:68
 #, kde-format
 msgid ""
 "Specifies the localization language by a language code, defaults to \"en_US"
@@ -1436,7 +1436,7 @@ msgstr ""
 "\"en_US\" da (probako moduan soilik)"
 
 #. i18n("Only tokenizes the turtle code (only works in testing mode)")));
-#: main.cpp:69
+#: main.cpp:70
 #, kde-format
 msgid ""
 "Translates turtle code to embeddable C++ example strings (for developers "
