@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-07 02:52+0000\n"
-"PO-Revision-Date: 2023-02-05 07:08+0100\n"
+"PO-Revision-Date: 2023-08-08 06:44+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -94,6 +94,8 @@ msgstr "აკრიფეთ აქ ბრძანება და Enter-ს �
 msgid ""
 "Console: quickly run single commands -- write a command here and press enter."
 msgstr ""
+"კონსოლი: სწრაფად გაუშვით სათითაო ბრძანება -- აკრიფეთ ის აქ და Enter-ს "
+"დააჭირეთ."
 
 #: console.cpp:36
 #, kde-format
@@ -149,6 +151,9 @@ msgid ""
 "with this version of KTurtle.\n"
 "Cannot open %1"
 msgstr ""
+"ფაილი, რომლის გახსნასაც ცდილობთ, სწორი KTurtle-ის სკრიპტი არაა ან KTurtle-ის "
+"ამ ვერსიასთან თავსებადი არაა.\n"
+"%1-ის გახსნა შეუძლებელია"
 
 #: editor.cpp:231 editor.cpp:237
 #, kde-format
@@ -166,6 +171,8 @@ msgid ""
 "The program you are currently working on is not saved. By continuing you may "
 "lose the changes you have made."
 msgstr ""
+"პროგრამა, რომელზედაც ახლა მუშაობთ, შენახული არაა. თუ გააგრძელებთ, თქვენს "
+"ცვლილებებს დაკარგავთ."
 
 #: editor.cpp:269
 #, kde-format
@@ -189,6 +196,8 @@ msgid ""
 "In this list you find the error(s) that resulted from running your code.\n"
 "Good luck!"
 msgstr ""
+"ამ სიაში იპოვით შეცდომებს, რომლებიც თქვენი კოდის გაშვებამ გამოიწვია.\n"
+"წარმატებები!"
 
 #: errordialog.cpp:59
 #, kde-format
@@ -344,7 +353,7 @@ msgstr "%1 ბრძანება პარამეტრად მხოლ�
 #: interpreter/executer.cpp:386
 #, kde-format
 msgid "The variable '%1' was used without first being assigned to a value"
-msgstr ""
+msgstr "ცვლადი '%1' ჯერ მნიშვნელობის მინიჭების გარეშე გამოიყენება"
 
 #: interpreter/executer.cpp:405
 #, kde-format
@@ -354,7 +363,7 @@ msgstr "გამოძახებული ფუნქცია სახე�
 #: interpreter/executer.cpp:420
 #, kde-format
 msgid "The function '%1' was called with %2, while it should be called with %3"
-msgstr ""
+msgstr "ფუნქცია '%1' გამოძახებული იყო %2-ით, როცა მას %3 სჭირდება"
 
 #: interpreter/executer.cpp:422 interpreter/executer.cpp:423
 #, kde-format
@@ -488,12 +497,13 @@ msgstr "სცადეთ არა-რიცხვითი მნიშვნ
 #: interpreter/executer.cpp:788
 #, kde-format
 msgid "You tried to raise the power of a non-number, '%1'"
-msgstr ""
+msgstr "სცადეთ არა-რიცხვითი მნიშვნელობა ხარისხში აგეყვანათ. '%1'"
 
 #: interpreter/executer.cpp:794
 #, kde-format
 msgid "You need one variable and a value or variable to do a '='"
 msgstr ""
+"იმისთვის, რომ '=' გამოიყენოთ, ერთი ცვლადი და ერთი მნიშვნელობა გჭირდებათ"
 
 #: interpreter/executer.cpp:811
 #, kde-format
@@ -523,7 +533,7 @@ msgstr "აქ მძიმეს მოველოდი..."
 #: interpreter/parser.cpp:109
 #, kde-format
 msgid "Did not expect '%1', instead expected the line to end after %2"
-msgstr ""
+msgstr "'%1'-ს არ მოველოდი, მაგრამ %2-ის შემდეგ ხაზის ბოლოა საჭირო"
 
 #: interpreter/parser.cpp:115
 #, kde-format
@@ -533,7 +543,7 @@ msgstr "ცვლადის ('%1') შემდეგ მინიჭება
 #: interpreter/parser.cpp:119
 #, kde-format
 msgid "Did not expect '%1', instead expected a closing parenthesis, ')'"
-msgstr ""
+msgstr "'%1'-ს არ მოველოდი, მაგრამ ფრჩხილის ')' დახურვა აუცილებელია"
 
 #: interpreter/parser.cpp:123
 #, kde-format
@@ -543,7 +553,7 @@ msgstr "'for'-ის შემდეგ 'to'-ს მოველოდი"
 #: interpreter/parser.cpp:126
 #, kde-format
 msgid "Expected a name for a command after 'learn' command"
-msgstr ""
+msgstr "'learn' ბრძანების შემდეგ ბრძანების სახელს მოველოდი"
 
 #: interpreter/parser.cpp:232
 #, kde-format
@@ -1391,6 +1401,8 @@ msgid ""
 "Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test "
 "scripts"
 msgstr ""
+"KTurtle-ის D-Bus-ის რეჟიმში გაშვება (ინტერფეისის გარეშე). სასარგებლოა "
+"ერთეულის სატესტო სკრიპტებისთვის"
 
 #: main.cpp:67
 #, kde-format
@@ -1398,6 +1410,8 @@ msgid ""
 "Starts KTurtle in testing mode (without a GUI), directly runs the specified "
 "local file"
 msgstr ""
+"KTurtle-ის სატესტო რეჟიმში (ინტერფეისის გარეშე) გაშვება მითითებული ლოკალური "
+"ფაილის შესასრულებლად"
 
 #: main.cpp:68
 #, kde-format
@@ -1405,6 +1419,8 @@ msgid ""
 "Specifies the localization language by a language code, defaults to \"en_US"
 "\" (only works in testing mode)"
 msgstr ""
+"ლოკალიზაციის ენის მითითება თავისი კოდით. ნაგულიხმევი მნიშვნელობაა\" en_US"
+"\" (მუშაობს მხოლოდ სატესტო რეჟიმში)"
 
 #. i18n("Only tokenizes the turtle code (only works in testing mode)")));
 #: main.cpp:70
