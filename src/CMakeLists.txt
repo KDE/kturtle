@@ -59,23 +59,21 @@ target_sources(kturtle PRIVATE
 )
 
 target_link_libraries(kturtle
-    KF${KF_MAJOR_VERSION}::KIOCore
-    KF${KF_MAJOR_VERSION}::NewStuffWidgets
-    KF${KF_MAJOR_VERSION}::I18n
-    Qt${QT_MAJOR_VERSION}::Core
-    Qt${QT_MAJOR_VERSION}::Gui
-    Qt${QT_MAJOR_VERSION}::Xml
-    Qt${QT_MAJOR_VERSION}::Svg
-    Qt${QT_MAJOR_VERSION}::PrintSupport
-    KF${KF_MAJOR_VERSION}::TextWidgets
-    KF${KF_MAJOR_VERSION}::Crash
-    KF${KF_MAJOR_VERSION}::XmlGui
+    KF6::KIOCore
+    KF6::NewStuffWidgets
+    KF6::I18n
+    Qt6::Core
+    Qt6::Gui
+    Qt6::Xml
+    Qt6::Svg
+    Qt6::PrintSupport
+    KF6::TextWidgets
+    KF6::Crash
+    KF6::XmlGui
 )
 
 
-if (QT_MAJOR_VERSION STREQUAL "6")
-    target_link_libraries(kturtle Qt6::Core5Compat Qt6::SvgWidgets)
-endif()
+target_link_libraries(kturtle Qt6::Core5Compat Qt6::SvgWidgets)
 
 
 install (TARGETS  kturtle          ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

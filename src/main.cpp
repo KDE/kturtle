@@ -15,9 +15,6 @@
 #include <KLocalizedString>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <Kdelibs4ConfigMigrator>
-#endif
 
 #include "mainwindow.h"  // for gui mode
 
@@ -32,19 +29,7 @@ int main(int argc, char* argv[])
 	KLocalizedString::setApplicationDomain("kturtle");
 
 	QApplication app(argc, argv);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-	app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
-#endif
 	KCrash::initialize();
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-	/* for migration*/
-	QStringList configFiles;
-	configFiles << QStringLiteral("kturtlerc");
-	Kdelibs4ConfigMigrator migrator(QStringLiteral("kturtle"));
-	migrator.setConfigFiles(configFiles);
-	migrator.setUiFiles(QStringList() << QStringLiteral("kturtleui.rc"));
-	migrator.migrate();
-#endif
 
     KAboutData aboutData(QStringLiteral("kturtle"), i18n("KTurtle"), QLatin1String(KTURTLE_VERSION_STRING));
 	aboutData.setLicense(KAboutLicense::GPL);

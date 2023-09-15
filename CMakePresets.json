@@ -10,6 +10,26 @@
             "hidden": true
         },
         {
+            "name": "base-qt6",
+            "displayName": "base preset",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build-${presetName}",
+            "installDir": "$env{KF6}",
+            "hidden": true
+        },	
+	{
+            "name": "dev-mold",
+            "displayName": "Build as debug + using mold linker",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+		"CMAKE_SHARED_LINKER_FLAGS": "-fuse-ld=mold"
+            },
+            "inherits": [
+                "base"
+            ]
+        },
+        {
             "name": "dev",
             "displayName": "Build as debug",
             "cacheVariables": {
@@ -30,9 +50,21 @@
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
             },
             "inherits": [
-                "base"
+                "base-qt6"
             ]
         },
+        {
+            "name": "release-qt6",
+            "displayName": "Build as release mode.",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "BUILD_WITH_QT6": "ON",
+		"BUILD_TESTING": "OFF"
+            },
+            "inherits": [
+                "base-qt6"
+            ]
+        },	
         {
             "name": "asan",
             "displayName": "Build with Asan support.",
@@ -74,7 +106,8 @@
             "name": "release",
             "displayName": "Build as release mode.",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
+                "CMAKE_BUILD_TYPE": "Release",
+		"BUILD_TESTING": "OFF"
             },
             "inherits": [
                 "base"
@@ -134,9 +167,17 @@
             "name": "dev",
             "configurePreset": "dev"
         },
+	{
+            "name": "dev-mold",
+            "configurePreset": "dev-mold"
+        },
         {
             "name": "dev-qt6",
             "configurePreset": "dev-qt6"
+        },
+        {       
+            "name": "release-qt6",
+            "configurePreset": "release-qt6"
         },
         {
             "name": "dev-clang",

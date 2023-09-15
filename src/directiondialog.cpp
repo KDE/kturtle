@@ -125,12 +125,13 @@ void DirectionCanvas::mousePressEvent(QMouseEvent *event)
 	// then translate the X and Y coordinates so that
 	// (0, 0) is in the middle of the widget, sent the
 	// signals and update the widget.
+	auto position = event->position();
 	if (event->buttons() & Qt::LeftButton) {
-		deg = translateMouseCoords(event->x() - (width() / 2), event->y() - (height() / 2));
+		deg = translateMouseCoords(position.x() - (width() / 2), position.y() - (height() / 2));
 		update();
 		Q_EMIT degreeChanged(deg);
 	} else if (event->buttons() & Qt::RightButton) {
-		previousDeg = translateMouseCoords(event->x() - (width() / 2), event->y() - (height() / 2));
+		previousDeg = translateMouseCoords(position.x() - (width() / 2), position.y() - (height() / 2));
 		Q_EMIT previousDegreeChanged(previousDeg);
 		update();
 	}
