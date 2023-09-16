@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeedu\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-07 00:41+0000\n"
+"POT-Creation-Date: 2023-09-16 01:54+0000\n"
 "PO-Revision-Date: 2013-10-23 13:25+0000\n"
 "Last-Translator: Samir Ribić <Unknown>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -78,12 +78,12 @@ msgstr "Količina zelene:"
 msgid "Amount blue:"
 msgstr "Količina plave:"
 
-#: colorpicker.cpp:105 directiondialog.cpp:282
+#: colorpicker.cpp:105 directiondialog.cpp:283
 #, kde-format
 msgid "&Copy to clipboard"
 msgstr "&Kopiraj u klipbord"
 
-#: colorpicker.cpp:110 directiondialog.cpp:286
+#: colorpicker.cpp:110 directiondialog.cpp:287
 #, kde-format
 msgid "&Paste to editor"
 msgstr "&Umetni u editor"
@@ -110,24 +110,24 @@ msgstr "Konzola:"
 msgid "<p style='white-space:pre'><b>ERROR:</b> %1</p>"
 msgstr "<p style='white-space:pre'><b>GREŠKA:</b> %1</p>"
 
-#: directiondialog.cpp:194
+#: directiondialog.cpp:195
 #, fuzzy, kde-format
 #| msgid "Direction Chooser"
 msgctxt "@title:window"
 msgid "Direction Chooser"
 msgstr "Odabir smijera"
 
-#: directiondialog.cpp:225
+#: directiondialog.cpp:226
 #, kde-format
 msgid "Command &type:"
 msgstr "&Tip naredbe:"
 
-#: directiondialog.cpp:240
+#: directiondialog.cpp:241
 #, kde-format
 msgid "&Previous direction:"
 msgstr "pr&ethodni smijer:"
 
-#: directiondialog.cpp:257
+#: directiondialog.cpp:258
 #, kde-format
 msgid "&New direction:"
 msgstr "&Novi smijer:"
@@ -1741,17 +1741,17 @@ msgstr "P&omoć"
 msgid "Main Toolbar"
 msgstr "Glavna alatna traka"
 
-#: main.cpp:49
+#: main.cpp:34
 #, kde-format
 msgid "KTurtle"
 msgstr "KTurtle"
 
-#: main.cpp:51
+#: main.cpp:36
 #, kde-format
 msgid "https://edu.kde.org/kturtle"
 msgstr ""
 
-#: main.cpp:52
+#: main.cpp:37
 #, kde-format
 msgid ""
 "KTurtle is an educational programming environment that aims to make learning "
@@ -1765,43 +1765,43 @@ msgstr ""
 "Programski jezik koji je korišten je TurtleScript koji dozvoljava da se "
 "njegove naredbe prevedu."
 
-#: main.cpp:53
+#: main.cpp:38
 #, fuzzy, kde-format
 #| msgid "Cies Breijs"
 msgid "(c) 2003-2009 Cies Breijs"
 msgstr "Cies Breijs"
 
-#: main.cpp:55
+#: main.cpp:40
 #, kde-format
 msgid "Cies Breijs"
 msgstr "Cies Breijs"
 
-#: main.cpp:55
+#: main.cpp:40
 #, kde-format
 msgid "Initiator and core developer"
 msgstr "Inicijator i glavni programer"
 
-#: main.cpp:56
+#: main.cpp:41
 #, kde-format
 msgid "Niels Slot"
 msgstr "Niels Slot"
 
-#: main.cpp:56 main.cpp:57
+#: main.cpp:41 main.cpp:42
 #, kde-format
 msgid "Core developer"
 msgstr "Glavni programer"
 
-#: main.cpp:57
+#: main.cpp:42
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "Mauricio Piacentini"
 
-#: main.cpp:65
+#: main.cpp:50
 #, kde-format
 msgid "File or URL to open (in the GUI mode)"
 msgstr "Datoteka ili URL koji treba otvoriti (u GUI modu)"
 
-#: main.cpp:66
+#: main.cpp:51
 #, kde-format
 msgid ""
 "Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test "
@@ -1810,7 +1810,7 @@ msgstr ""
 "Pokreće KTurtle u D-Bus modu (bez GUI-a), dobro za automatizovane skripte za "
 "testiranje"
 
-#: main.cpp:67
+#: main.cpp:52
 #, kde-format
 msgid ""
 "Starts KTurtle in testing mode (without a GUI), directly runs the specified "
@@ -1819,7 +1819,7 @@ msgstr ""
 "Pokreće KTurtle u modu za testiranje (bez GUI-a), direktno pokreće "
 "specificiranu lokalnu datoteku"
 
-#: main.cpp:68
+#: main.cpp:53
 #, kde-format
 msgid ""
 "Specifies the localization language by a language code, defaults to \"en_US"
@@ -1829,7 +1829,7 @@ msgstr ""
 "vrijednost je \"en_US\" (radi samo u modu za testiranje)"
 
 #. i18n("Only tokenizes the turtle code (only works in testing mode)")));
-#: main.cpp:70
+#: main.cpp:55
 #, kde-format
 msgid ""
 "Translates turtle code to embeddable C++ example strings (for developers "
