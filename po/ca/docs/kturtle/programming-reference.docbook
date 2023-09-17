@@ -1300,7 +1300,7 @@ print "En " + $author + " va començar el projecte KTurtle al " + $year + " i en
 >fontsize X</screen
 ><userinput
 >fontsize</userinput
-> estableix la mida del tipus de lletra utilitzat per <userinput
+> estableix la mida de la lletra utilitzada per <userinput
 >print</userinput
 >. <userinput
 >fontsize</userinput
@@ -1707,7 +1707,7 @@ print "Hola " + $name + "! Bona sort mentre apreneu l'art de la programació..."
 <para
 >Els controladors de l'execució es <glossterm
 >ressalten</glossterm
-> amb color verd fosc en un tipus de lletra en negreta. Els parèntesis s'utilitzen juntament amb els controladors de l'execució i es ressalten amb color negre.</para>
+> amb color verd fosc en una lletra en negreta. Els parèntesis s'utilitzen juntament amb els controladors de l'execució i es ressalten amb color negre.</para>
 
 <sect2 id="wait">
 <title
