@@ -178,7 +178,7 @@ penup
 <entry
 >vermell fosc</entry>
 <entry
->Els nombres, no hi ha gaire a dir sobre seu.</entry>
+>No hi ha gaire a dir sobre els nombres.</entry>
 </row>
 <row>
 <entry
@@ -306,7 +306,7 @@ penup
 >gruixllapis</userinput
 >).</para>
 <para
->En les primeres versions del &kturtle;, el llenç era essencialment una imatge, però, per a les últimes versions del llenç és un dibuix vectorial. Això significa que al llenç es pot fer zoom apropant i allunyant, per tant un píxel no necessàriament ha de traduir-se en un punt a la pantalla.</para>
+>En les primeres versions del &kturtle;, el llenç era essencialment una imatge, però, per a les últimes versions del llenç és un dibuix vectorial. Això significa que al llenç es pot fer zoom apropant i allunyant, per tant, un píxel no necessàriament ha de traduir-se en un punt a la pantalla.</para>
 </glossdef>
 </glossentry>
 

@@ -2,12 +2,13 @@
 # This file is distributed under the same license as the kturtle package.
 #
 # SPDX-FileCopyrightText: 2023 giovanni <g.sora@tiscali.it>
+# giovanni <g.sora@tiscali.it>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-16 01:54+0000\n"
-"PO-Revision-Date: 2023-09-17 22:46+0200\n"
+"PO-Revision-Date: 2023-09-18 11:26+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -35,12 +36,12 @@ msgstr ""
 #: canvas.cpp:196
 #, kde-format
 msgid "italic"
-msgstr ""
+msgstr "Italic"
 
 #: canvas.cpp:197
 #, kde-format
 msgid "underline"
-msgstr ""
+msgstr "Sublinea"
 
 #: canvas.cpp:198
 #, kde-format
@@ -50,13 +51,13 @@ msgstr ""
 #: canvas.cpp:199
 #, kde-format
 msgid "strikeout"
-msgstr ""
+msgstr "Strikeout"
 
 #: colorpicker.cpp:29
 #, kde-format
 msgctxt "@title:window"
 msgid "Color Picker"
-msgstr ""
+msgstr "Selectionator de color"
 
 #: colorpicker.cpp:48
 #, kde-format
@@ -76,7 +77,7 @@ msgstr ""
 #: colorpicker.cpp:105 directiondialog.cpp:283
 #, kde-format
 msgid "&Copy to clipboard"
-msgstr ""
+msgstr "&Copia a area de transferentia"
 
 #: colorpicker.cpp:110 directiondialog.cpp:287
 #, kde-format
@@ -97,12 +98,12 @@ msgstr ""
 #: console.cpp:36
 #, kde-format
 msgid "Console:"
-msgstr ""
+msgstr "Console:"
 
 #: console.cpp:79
 #, kde-format
 msgid "<p style='white-space:pre'><b>ERROR:</b> %1</p>"
-msgstr ""
+msgstr "<p style='white-space:pre'><b>ERROR:</b> %1</p>"
 
 #: directiondialog.cpp:195
 #, kde-format
@@ -128,7 +129,7 @@ msgstr ""
 #: editor.cpp:146
 #, kde-format
 msgid "Open"
-msgstr ""
+msgstr "Aperi"
 
 #: editor.cpp:148 editor.cpp:256
 #, kde-format
@@ -139,7 +140,7 @@ msgstr ""
 #: mainwindow.cpp:1040
 #, kde-format
 msgid "All files"
-msgstr ""
+msgstr "Omne files"
 
 #: editor.cpp:164
 #, kde-format
@@ -152,12 +153,12 @@ msgstr ""
 #: editor.cpp:231 editor.cpp:237
 #, kde-format
 msgid "Could not save file."
-msgstr ""
+msgstr "Il non pote salveguardar file ."
 
 #: editor.cpp:254
 #, kde-format
 msgid "Save As"
-msgstr ""
+msgstr "Salveguarda como"
 
 #: editor.cpp:267
 #, kde-format
@@ -174,13 +175,13 @@ msgstr ""
 #: editor.cpp:269
 #, kde-format
 msgid "&Discard Changes"
-msgstr ""
+msgstr "Aban&dona modificationes"
 
 #: errordialog.cpp:27
 #, kde-format
 msgctxt "@title:window"
 msgid "Errors"
-msgstr ""
+msgstr "Errores"
 
 #: errordialog.cpp:42
 #, kde-format
@@ -192,22 +193,22 @@ msgstr ""
 #: errordialog.cpp:59
 #, kde-format
 msgid "line"
-msgstr ""
+msgstr "linea"
 
 #: errordialog.cpp:59
 #, kde-format
 msgid "description"
-msgstr ""
+msgstr "description"
 
 #: errordialog.cpp:59
 #, kde-format
 msgid "code"
-msgstr ""
+msgstr "codice"
 
 #: errordialog.cpp:72
 #, kde-format
 msgid "Hide Errors"
-msgstr ""
+msgstr "Cela errores"
 
 #: errordialog.cpp:89
 #, kde-format
@@ -217,42 +218,42 @@ msgstr ""
 #: inspector.cpp:35
 #, kde-format
 msgid "Variables"
-msgstr ""
+msgstr "Variabiles"
 
 #: inspector.cpp:42
 #, kde-format
 msgid "Functions"
-msgstr ""
+msgstr "Functiones"
 
 #: inspector.cpp:49
 #, kde-format
 msgid "Tree"
-msgstr ""
+msgstr "Arbore"
 
 #: inspector.cpp:93 inspector.cpp:111
 #, kde-format
 msgid "name"
-msgstr ""
+msgstr "nomine"
 
 #: inspector.cpp:93
 #, kde-format
 msgid "value"
-msgstr ""
+msgstr "Valor"
 
 #: inspector.cpp:93
 #, kde-format
 msgid "type"
-msgstr ""
+msgstr "typo"
 
 #: inspector.cpp:103
 #, kde-format
 msgid "No variables"
-msgstr ""
+msgstr "Nulle variabiles"
 
 #: inspector.cpp:111
 #, kde-format
 msgid "parameters"
-msgstr ""
+msgstr "Parametros"
 
 #: inspector.cpp:120
 #, kde-format
@@ -263,27 +264,27 @@ msgstr ""
 #, kde-format
 msgctxt "undefined type of a variable"
 msgid "empty"
-msgstr ""
+msgstr "vacue"
 
 #: inspector.cpp:170
 #, kde-format
 msgid "boolean"
-msgstr ""
+msgstr "boolean"
 
 #: inspector.cpp:173
 #, kde-format
 msgid "number"
-msgstr ""
+msgstr "numero"
 
 #: inspector.cpp:176
 #, kde-format
 msgid "string"
-msgstr ""
+msgstr "catena"
 
 #: inspector.cpp:208
 #, kde-format
 msgid "None"
-msgstr ""
+msgstr "Necun"
 
 #: interpreter/executer.cpp:72
 #, kde-format
@@ -361,8 +362,8 @@ msgctxt ""
 "The function '%1' was called with %2, while it should be called with %3"
 msgid "1 parameter"
 msgid_plural "%1 parameters"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Parametro"
+msgstr[1] "%1 Parametros"
 
 #: interpreter/executer.cpp:627
 #, kde-format
@@ -573,7 +574,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "true"
-msgstr ""
+msgstr "ver"
 
 #: interpreter/translator.cpp:103
 #, kde-format
@@ -582,7 +583,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "false"
-msgstr ""
+msgstr "false"
 
 #: interpreter/translator.cpp:122
 #, kde-format
@@ -591,7 +592,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid ","
-msgstr ""
+msgstr ","
 
 #: interpreter/translator.cpp:129
 #, kde-format
@@ -600,7 +601,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "."
-msgstr ""
+msgstr "."
 
 #: interpreter/translator.cpp:136
 #, kde-format
@@ -609,7 +610,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "exit"
-msgstr ""
+msgstr "exit"
 
 #: interpreter/translator.cpp:143
 #, kde-format
@@ -618,7 +619,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "if"
-msgstr ""
+msgstr "if"
 
 #: interpreter/translator.cpp:150
 #, kde-format
@@ -627,7 +628,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "else"
-msgstr ""
+msgstr "else"
 
 #: interpreter/translator.cpp:157
 #, kde-format
@@ -636,7 +637,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "repeat"
-msgstr ""
+msgstr "repete"
 
 #: interpreter/translator.cpp:164
 #, kde-format
@@ -645,7 +646,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "while"
-msgstr ""
+msgstr "while"
 
 #: interpreter/translator.cpp:171
 #, kde-format
@@ -654,7 +655,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "for"
-msgstr ""
+msgstr "for"
 
 #: interpreter/translator.cpp:178
 #, kde-format
@@ -663,7 +664,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "to"
-msgstr ""
+msgstr "to"
 
 #: interpreter/translator.cpp:185
 #, kde-format
@@ -672,7 +673,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "step"
-msgstr ""
+msgstr "passo"
 
 #: interpreter/translator.cpp:192
 #, kde-format
@@ -681,7 +682,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "break"
-msgstr ""
+msgstr "break"
 
 #: interpreter/translator.cpp:199
 #, kde-format
@@ -690,7 +691,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "return"
-msgstr ""
+msgstr "return"
 
 #: interpreter/translator.cpp:206
 #, kde-format
@@ -699,7 +700,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "wait"
-msgstr ""
+msgstr "wait"
 
 #: interpreter/translator.cpp:213
 #, kde-format
@@ -708,7 +709,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "assert"
-msgstr ""
+msgstr "assert"
 
 #: interpreter/translator.cpp:220
 #, kde-format
@@ -717,7 +718,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "and"
-msgstr ""
+msgstr "and"
 
 #: interpreter/translator.cpp:227
 #, kde-format
@@ -726,7 +727,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "or"
-msgstr ""
+msgstr "or"
 
 #: interpreter/translator.cpp:234
 #, kde-format
@@ -735,7 +736,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "not"
-msgstr ""
+msgstr "not"
 
 #: interpreter/translator.cpp:265
 #, kde-format
@@ -744,7 +745,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "learn"
-msgstr ""
+msgstr "learn"
 
 #: interpreter/translator.cpp:272
 #, kde-format
@@ -753,7 +754,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "reset"
-msgstr ""
+msgstr "reset"
 
 #: interpreter/translator.cpp:279
 #, kde-format
@@ -762,7 +763,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "clear"
-msgstr ""
+msgstr "clar"
 
 #: interpreter/translator.cpp:286
 #, kde-format
@@ -771,7 +772,7 @@ msgctxt ""
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "ccl"
-msgstr ""
+msgstr "ccl"
 
 #: interpreter/translator.cpp:293
 #, kde-format
@@ -780,7 +781,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "center"
-msgstr ""
+msgstr "center"
 
 #: interpreter/translator.cpp:300
 #, kde-format
@@ -789,7 +790,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "go"
-msgstr ""
+msgstr "go"
 
 #: interpreter/translator.cpp:307
 #, kde-format
@@ -798,7 +799,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "gox"
-msgstr ""
+msgstr "gox"
 
 #: interpreter/translator.cpp:314
 #, kde-format
@@ -807,7 +808,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "gx"
-msgstr ""
+msgstr "gx"
 
 #: interpreter/translator.cpp:321
 #, kde-format
@@ -816,7 +817,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "goy"
-msgstr ""
+msgstr "goy"
 
 #: interpreter/translator.cpp:328
 #, kde-format
@@ -825,7 +826,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "gy"
-msgstr ""
+msgstr "gy"
 
 #: interpreter/translator.cpp:335
 #, kde-format
@@ -834,7 +835,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "forward"
-msgstr ""
+msgstr "forward"
 
 #: interpreter/translator.cpp:342
 #, kde-format
@@ -843,7 +844,7 @@ msgctxt ""
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "fw"
-msgstr ""
+msgstr "fw"
 
 #: interpreter/translator.cpp:349
 #, kde-format
@@ -852,7 +853,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "backward"
-msgstr ""
+msgstr "backward"
 
 #: interpreter/translator.cpp:356
 #, kde-format
@@ -861,7 +862,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "bw"
-msgstr ""
+msgstr "bw"
 
 #: interpreter/translator.cpp:363
 #, kde-format
@@ -870,7 +871,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "direction"
-msgstr ""
+msgstr "direction"
 
 #: interpreter/translator.cpp:370
 #, kde-format
@@ -879,7 +880,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "dir"
-msgstr ""
+msgstr "dir"
 
 #: interpreter/translator.cpp:377
 #, kde-format
@@ -888,7 +889,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "turnleft"
-msgstr ""
+msgstr "turnleft"
 
 #: interpreter/translator.cpp:384
 #, kde-format
@@ -897,7 +898,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "tl"
-msgstr ""
+msgstr "tl"
 
 #: interpreter/translator.cpp:391
 #, kde-format
@@ -906,7 +907,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "turnright"
-msgstr ""
+msgstr "turnright"
 
 #: interpreter/translator.cpp:398
 #, kde-format
@@ -915,7 +916,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "tr"
-msgstr ""
+msgstr "tr"
 
 #: interpreter/translator.cpp:405
 #, kde-format
@@ -924,7 +925,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "penwidth"
-msgstr ""
+msgstr "penwidth"
 
 #: interpreter/translator.cpp:412
 #, kde-format
@@ -933,7 +934,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "pw"
-msgstr ""
+msgstr "pw"
 
 #: interpreter/translator.cpp:419
 #, kde-format
@@ -942,7 +943,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "penup"
-msgstr ""
+msgstr "penup"
 
 #: interpreter/translator.cpp:426
 #, kde-format
@@ -951,7 +952,7 @@ msgctxt ""
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "pu"
-msgstr ""
+msgstr "pu"
 
 #: interpreter/translator.cpp:433
 #, kde-format
@@ -960,7 +961,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "pendown"
-msgstr ""
+msgstr "pendown"
 
 #: interpreter/translator.cpp:440
 #, kde-format
@@ -969,7 +970,7 @@ msgctxt ""
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "pd"
-msgstr ""
+msgstr "pd"
 
 #: interpreter/translator.cpp:447
 #, kde-format
@@ -978,7 +979,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "pencolor"
-msgstr ""
+msgstr "pencolor"
 
 #: interpreter/translator.cpp:454
 #, kde-format
@@ -987,7 +988,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "pc"
-msgstr ""
+msgstr "pc"
 
 #: interpreter/translator.cpp:461
 #, kde-format
@@ -996,7 +997,7 @@ msgctxt ""
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "canvascolor"
-msgstr ""
+msgstr "canvascolor"
 
 #: interpreter/translator.cpp:468
 #, kde-format
@@ -1005,7 +1006,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "cc"
-msgstr ""
+msgstr "cc"
 
 #: interpreter/translator.cpp:475
 #, kde-format
@@ -1014,7 +1015,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "canvassize"
-msgstr ""
+msgstr "canvassize"
 
 #: interpreter/translator.cpp:482
 #, kde-format
@@ -1023,7 +1024,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "cs"
-msgstr ""
+msgstr "cs"
 
 #: interpreter/translator.cpp:489
 #, kde-format
@@ -1032,7 +1033,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "spriteshow"
-msgstr ""
+msgstr "spriteshow"
 
 #: interpreter/translator.cpp:496
 #, kde-format
@@ -1041,7 +1042,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "ss"
-msgstr ""
+msgstr "ss"
 
 #: interpreter/translator.cpp:503
 #, kde-format
@@ -1050,7 +1051,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "spritehide"
-msgstr ""
+msgstr "spritehide"
 
 #: interpreter/translator.cpp:510
 #, kde-format
@@ -1059,7 +1060,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "sh"
-msgstr ""
+msgstr "sh"
 
 #: interpreter/translator.cpp:517
 #, kde-format
@@ -1068,7 +1069,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "print"
-msgstr ""
+msgstr "print"
 
 #: interpreter/translator.cpp:524
 #, kde-format
@@ -1077,7 +1078,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "fontsize"
-msgstr ""
+msgstr "fontsize"
 
 #: interpreter/translator.cpp:531
 #, kde-format
@@ -1086,7 +1087,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "random"
-msgstr ""
+msgstr "random"
 
 #: interpreter/translator.cpp:538
 #, kde-format
@@ -1095,7 +1096,7 @@ msgctxt ""
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "rnd"
-msgstr ""
+msgstr "rnd"
 
 #: interpreter/translator.cpp:545
 #, kde-format
@@ -1104,7 +1105,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "getx"
-msgstr ""
+msgstr "getx"
 
 #: interpreter/translator.cpp:552
 #, kde-format
@@ -1113,7 +1114,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "gety"
-msgstr ""
+msgstr "gety"
 
 #: interpreter/translator.cpp:559
 #, kde-format
@@ -1122,7 +1123,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "message"
-msgstr ""
+msgstr "message"
 
 #: interpreter/translator.cpp:566
 #, kde-format
@@ -1131,7 +1132,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "ask"
-msgstr ""
+msgstr "ask"
 
 #: interpreter/translator.cpp:573
 #, kde-format
@@ -1140,7 +1141,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "pi"
-msgstr ""
+msgstr "pi"
 
 #: interpreter/translator.cpp:580
 #, kde-format
@@ -1149,7 +1150,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "tan"
-msgstr ""
+msgstr "tan"
 
 #: interpreter/translator.cpp:587
 #, kde-format
@@ -1158,7 +1159,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "sin"
-msgstr ""
+msgstr "sin"
 
 #: interpreter/translator.cpp:594
 #, kde-format
@@ -1167,7 +1168,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "cos"
-msgstr ""
+msgstr "cos"
 
 #: interpreter/translator.cpp:601
 #, kde-format
@@ -1176,7 +1177,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "arctan"
-msgstr ""
+msgstr "arctan"
 
 #: interpreter/translator.cpp:608
 #, kde-format
@@ -1185,7 +1186,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "arcsin"
-msgstr ""
+msgstr "arcsin"
 
 #: interpreter/translator.cpp:615
 #, kde-format
@@ -1194,7 +1195,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "arccos"
-msgstr ""
+msgstr "arccos"
 
 #: interpreter/translator.cpp:622
 #, kde-format
@@ -1203,7 +1204,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "sqrt"
-msgstr ""
+msgstr "sqrt"
 
 #: interpreter/translator.cpp:629
 #, kde-format
@@ -1212,7 +1213,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "round"
-msgstr ""
+msgstr "round"
 
 #: interpreter/translator.cpp:636
 #, kde-format
@@ -1221,7 +1222,7 @@ msgctxt ""
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "getdirection"
-msgstr ""
+msgstr "getdirection"
 
 #: interpreter/translator.cpp:643
 #, kde-format
@@ -1230,7 +1231,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "mod"
-msgstr ""
+msgstr "mod"
 
 #: interpreter/translator.cpp:662
 #, kde-format
@@ -1238,7 +1239,7 @@ msgctxt ""
 "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn know how to properly translate it."
 msgid "triangle"
-msgstr ""
+msgstr "triangulo"
 
 #: interpreter/translator.cpp:674
 #, kde-format
@@ -1254,7 +1255,7 @@ msgctxt ""
 "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn know how to properly translate it."
 msgid "arrow"
-msgstr ""
+msgstr "flecha"
 
 #: interpreter/translator.cpp:719
 #, kde-format
@@ -1262,37 +1263,37 @@ msgctxt ""
 "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn know how to properly translate it."
 msgid "flower"
-msgstr ""
+msgstr "flor"
 
 #. i18n: ectx: Menu (file)
 #: kturtleui.rc:6
 #, kde-format
 msgid "&File"
-msgstr ""
+msgstr "&File"
 
 #. i18n: ectx: Menu (examples)
 #: kturtleui.rc:11
 #, kde-format
 msgid "&Examples"
-msgstr ""
+msgstr "&Exemplos"
 
 #. i18n: ectx: Menu (edit)
 #: kturtleui.rc:24
 #, kde-format
 msgid "&Edit"
-msgstr ""
+msgstr "&Edita"
 
 #. i18n: ectx: Menu (canvas)
 #: kturtleui.rc:41 mainwindow.cpp:499 mainwindow.cpp:521
 #, kde-format
 msgid "&Canvas"
-msgstr ""
+msgstr "&Telas (canvas)"
 
 #. i18n: ectx: Menu (run)
 #: kturtleui.rc:47 mainwindow.cpp:298 mainwindow.cpp:417
 #, kde-format
 msgid "&Run"
-msgstr ""
+msgstr "E&xeque"
 
 #. i18n: ectx: Menu (speed)
 #: kturtleui.rc:51
@@ -1304,13 +1305,13 @@ msgstr ""
 #: kturtleui.rc:60
 #, kde-format
 msgid "&Tools"
-msgstr ""
+msgstr "Ins&trumentos"
 
 #. i18n: ectx: Menu (settings)
 #: kturtleui.rc:64
 #, kde-format
 msgid "&Settings"
-msgstr ""
+msgstr "Preferentia&s"
 
 #. i18n: ectx: Menu (language)
 #: kturtleui.rc:65
@@ -1322,13 +1323,13 @@ msgstr ""
 #: kturtleui.rc:75
 #, kde-format
 msgid "&Help"
-msgstr ""
+msgstr "Ad&juta"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kturtleui.rc:80
 #, kde-format
 msgid "Main Toolbar"
-msgstr ""
+msgstr "Barra de instrumento principal"
 
 #: main.cpp:34
 #, kde-format
@@ -1362,7 +1363,7 @@ msgstr ""
 #: main.cpp:40
 #, kde-format
 msgid "Initiator and core developer"
-msgstr ""
+msgstr "Initiator  e disveloppator de corde"
 
 #: main.cpp:41
 #, kde-format
@@ -1372,7 +1373,7 @@ msgstr ""
 #: main.cpp:41 main.cpp:42
 #, kde-format
 msgid "Core developer"
-msgstr ""
+msgstr "Corde disveloppator"
 
 #: main.cpp:42
 #, kde-format
@@ -1417,7 +1418,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info:status the application is ready for commands"
 msgid "Ready"
-msgstr ""
+msgstr "Preste"
 
 #: mainwindow.cpp:175
 #, kde-format
@@ -1432,7 +1433,7 @@ msgstr ""
 #: mainwindow.cpp:179
 #, kde-format
 msgid "Open an existing file"
-msgstr ""
+msgstr "Aperi un file existente"
 
 #: mainwindow.cpp:180
 #, kde-format
@@ -1442,7 +1443,7 @@ msgstr ""
 #: mainwindow.cpp:184
 #, kde-format
 msgid "Open a recently used file"
-msgstr ""
+msgstr "Aperi un file usate recentemente"
 
 #: mainwindow.cpp:185
 #, kde-format
@@ -1477,7 +1478,7 @@ msgstr ""
 #: mainwindow.cpp:205
 #, kde-format
 msgid "Export to &HTML..."
-msgstr ""
+msgstr "Exporta a &HTML..."
 
 #: mainwindow.cpp:206
 #, kde-format
@@ -1542,7 +1543,7 @@ msgstr ""
 #: mainwindow.cpp:238
 #, kde-format
 msgid "Copy the selected text to the clipboard"
-msgstr ""
+msgstr "Copia le texto seligite a le area de transferentia"
 
 #: mainwindow.cpp:239
 #, kde-format
@@ -1572,7 +1573,7 @@ msgstr ""
 #: mainwindow.cpp:252
 #, kde-format
 msgid "Overwrite Mode"
-msgstr ""
+msgstr "Modo de superscriber"
 
 #: mainwindow.cpp:254
 #, kde-format
@@ -1673,7 +1674,7 @@ msgstr ""
 #: mainwindow.cpp:305
 #, kde-format
 msgid "&Pause"
-msgstr ""
+msgstr "&Pausa"
 
 #: mainwindow.cpp:309
 #, kde-format
@@ -1688,7 +1689,7 @@ msgstr ""
 #: mainwindow.cpp:313
 #, kde-format
 msgid "&Abort"
-msgstr ""
+msgstr "&Aborta"
 
 #: mainwindow.cpp:316
 #, kde-format
@@ -1724,7 +1725,7 @@ msgstr ""
 #: mainwindow.cpp:333
 #, kde-format
 msgid "&Color Picker..."
-msgstr ""
+msgstr "Selectionator de &Color ..."
 
 #: mainwindow.cpp:335
 #, kde-format
@@ -1739,7 +1740,7 @@ msgstr ""
 #: mainwindow.cpp:340
 #, kde-format
 msgid "Show &Editor"
-msgstr ""
+msgstr "Monstra &Editor"
 
 #: mainwindow.cpp:342
 #, kde-format
@@ -1769,7 +1770,7 @@ msgstr ""
 #: mainwindow.cpp:360
 #, kde-format
 msgid "Show E&rrors"
-msgstr ""
+msgstr "Monstra E&rrores"
 
 #: mainwindow.cpp:362
 #, kde-format
@@ -1792,7 +1793,7 @@ msgstr ""
 #: mainwindow.cpp:377
 #, kde-format
 msgid "Show &Line Numbers"
-msgstr ""
+msgstr "Monstra numeros de &linea"
 
 #: mainwindow.cpp:379
 #, kde-format
@@ -1817,7 +1818,7 @@ msgstr ""
 #: mainwindow.cpp:397
 #, kde-format
 msgid "Help"
-msgstr ""
+msgstr "Adjuta"
 
 #: mainwindow.cpp:398
 #, kde-format
@@ -1827,12 +1828,12 @@ msgstr ""
 #: mainwindow.cpp:402
 #, kde-format
 msgid "Console"
-msgstr ""
+msgstr "Console"
 
 #: mainwindow.cpp:409
 #, kde-format
 msgid "Execute"
-msgstr ""
+msgstr "Executa"
 
 #: mainwindow.cpp:411
 #, kde-format
@@ -1888,7 +1889,7 @@ msgstr ""
 #, kde-format
 msgctxt "@option:radio choose the slow speed"
 msgid "&Slow"
-msgstr ""
+msgstr "&Lente"
 
 #: mainwindow.cpp:448
 #, kde-format
@@ -1904,7 +1905,7 @@ msgstr ""
 #, kde-format
 msgctxt "@option:radio"
 msgid "S&lower"
-msgstr ""
+msgstr "Lisie (plus &lente)"
 
 #: mainwindow.cpp:457
 #, kde-format
@@ -1957,12 +1958,12 @@ msgstr ""
 #: mainwindow.cpp:505
 #, kde-format
 msgid "E&rrors"
-msgstr ""
+msgstr "E&rrores"
 
 #: mainwindow.cpp:535
 #, kde-format
 msgid "&Editor"
-msgstr ""
+msgstr "&Editor"
 
 #: mainwindow.cpp:549
 #, kde-format
@@ -1989,12 +1990,12 @@ msgstr ""
 #: mainwindow.cpp:734
 #, kde-format
 msgid " OVR "
-msgstr ""
+msgstr " OVR "
 
 #: mainwindow.cpp:734
 #, kde-format
 msgid " INS "
-msgstr ""
+msgstr "INS"
 
 #: mainwindow.cpp:742
 #, kde-format
@@ -2009,7 +2010,7 @@ msgstr ""
 #: mainwindow.cpp:748
 #, kde-format
 msgid " Line: %1 Column: %2 "
-msgstr ""
+msgstr "Rango: %1 Columna: %2 "
 
 #: mainwindow.cpp:756
 #, kde-format
@@ -2039,7 +2040,7 @@ msgstr ""
 #: mainwindow.cpp:768
 #, kde-format
 msgid "scope"
-msgstr ""
+msgstr "extension"
 
 #: mainwindow.cpp:770
 #, kde-format
@@ -2059,7 +2060,7 @@ msgstr ""
 #: mainwindow.cpp:776
 #, kde-format
 msgid "expression"
-msgstr ""
+msgstr "expression"
 
 #: mainwindow.cpp:778
 #, kde-format
@@ -2079,7 +2080,7 @@ msgstr ""
 #: mainwindow.cpp:785
 #, kde-format
 msgid "command"
-msgstr ""
+msgstr "commando"
 
 #: mainwindow.cpp:788
 #, kde-format
@@ -2099,12 +2100,12 @@ msgstr ""
 #: mainwindow.cpp:822
 #, kde-format
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: mainwindow.cpp:970
 #, kde-format
 msgid "untitled"
-msgstr ""
+msgstr "sin titulo"
 
 #: mainwindow.cpp:1012
 #, kde-format
@@ -2120,7 +2121,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Save as SVG"
-msgstr ""
+msgstr "Salveguarda como SVG"
 
 #: mainwindow.cpp:1030
 #, kde-format
@@ -2136,14 +2137,14 @@ msgstr ""
 #: mainwindow.cpp:1040
 #, kde-format
 msgid "HTML documents"
-msgstr ""
+msgstr "Documentos de HTML"
 
 #: mainwindow.cpp:1058
 #, kde-format
 msgid "Input"
-msgstr ""
+msgstr "Ingresso"
 
 #: mainwindow.cpp:1067
 #, kde-format
 msgid "Message"
-msgstr ""
+msgstr "Message"

@@ -174,7 +174,7 @@ go 40,100
 >canvassize 200,200</userinput
 > estableix amplada i alçada del llenç a 200 x 200 <glossterm linkend="pixels"
 >píxels</glossterm
->. L'amplada és igual que l'alçada, per tant el llenç serà quadrat.</para>
+>. L'amplada és igual que l'alçada, per tant, el llenç serà quadrat.</para>
 
 <para
 ><userinput

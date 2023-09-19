@@ -1713,7 +1713,7 @@ print "Hola " + $name + "! Bona sort mentre apreneu l'art de la programació..."
 <title
 >Fer que la tortuga esperi</title>
 <para
->Si heu fet quelcom de programació en el &kturtle;, us haureu adonat que la tortuga pot ser molt ràpida dibuixant. Aquesta ordre farà que la tortuga esperi un període de temps determinat.</para>
+>Si heu fet alguna cosa de programació en el &kturtle;, us haureu adonat que la tortuga pot ser molt ràpida dibuixant. Aquesta ordre farà que la tortuga esperi un període de temps determinat.</para>
   <variablelist>
     <varlistentry>
       <term
