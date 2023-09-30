@@ -2,7 +2,7 @@
 <title
 >Guia de traducció del &kturtle;</title>
 <para
->Com probablement ja sabeu, el &turtlescript; és el llenguatge de programació del &kturtle;, es permet traduir-lo. Això elimina una barrera per a algunes persones, especialment per als estudiants més joves, en el seu esforç per entendre els conceptes bàsics de la programació.</para>
+>Com probablement ja sabeu, el &turtlescript; és el llenguatge de programació del &kturtle;, es permet traduir-lo. Això elimina una barrera per a algunes persones, especialment per als estudiants més joves, en el seu esforç per a entendre els conceptes bàsics de la programació.</para>
 <para
 >Quan es tradueix el &kturtle; a un nou idioma trobareu, a més de les cadenes de la interfície gràfica d'usuari, les ordres de programació, els exemples i els missatges d'error inclosos en els fitxers <filename class="extension"
 >.pot</filename

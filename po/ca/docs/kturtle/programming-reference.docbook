@@ -1189,7 +1189,7 @@ $answer = 10 &gt; 3
 <title
 >La tortuga és un sprite</title>
 <para
->En primer lloc una breu explicació del que són els sprites: Els sprites són imatges petites que es poden moure per la pantalla, com veiem sovint en els jocs d'ordinador. La nostra tortuga és un sprite. Per a més informació, vegeu el glossari quant a <glossterm linkend="sprites"
+>En primer lloc, una breu explicació del que són els sprites: Els sprites són imatges petites que es poden moure per la pantalla, com veiem sovint en els jocs d'ordinador. La nostra tortuga és un sprite. Per a més informació, vegeu el glossari quant a <glossterm linkend="sprites"
 >sprites</glossterm
 >.</para>
 <para
@@ -1601,7 +1601,7 @@ print "L'any 2003 vàreu tenir " + $out + " anys d'edat en algun moment."
 <title
 >Assignar les variables</title>
 <para
->En primer lloc donarem una ullada a les variables, llavors ens centrarem en l'assignació de valors a aquestes variables. </para>
+>En primer lloc, donarem una ullada a les variables, llavors ens centrarem en l'assignació de valors a aquestes variables. </para>
 
 <para
 >Les variables són paraules que comencen amb un <quote
