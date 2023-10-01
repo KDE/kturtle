@@ -169,7 +169,7 @@ msgstr ""
 #: editor.cpp:231 editor.cpp:237
 #, kde-format
 msgid "Could not save file."
-msgstr "Non se puido gardar o ficheiro."
+msgstr "Non foi posíbel gardar o ficheiro."
 
 #: editor.cpp:254
 #, kde-format
@@ -309,7 +309,7 @@ msgstr "Ningún"
 #: interpreter/executer.cpp:72
 #, kde-format
 msgid "Cannot return outside a function. "
-msgstr "Non se pode devolver fora dunha función."
+msgstr "Non é posíbel devolver fora dunha función."
 
 #: interpreter/executer.cpp:262
 #, kde-format
@@ -408,32 +408,32 @@ msgstr "Precísase algo para negalo"
 #: interpreter/executer.cpp:660
 #, kde-format
 msgid "I cannot do a '==' without 2 variables"
-msgstr "Non se pode facer un «==» sen dúas variábeis"
+msgstr "Non é posíbel facer un «==» sen dúas variábeis"
 
 #: interpreter/executer.cpp:668
 #, kde-format
 msgid "I cannot do a '!=' without 2 variables"
-msgstr "Non se pode facer un «!=» sen dúas variábeis"
+msgstr "Non é posíbel facer un «!=» sen dúas variábeis"
 
 #: interpreter/executer.cpp:676
 #, kde-format
 msgid "I cannot do a '>' without 2 variables"
-msgstr "Non se pode facer un «>» sen dúas variábeis"
+msgstr "Non é posíbel facer un «>» sen dúas variábeis"
 
 #: interpreter/executer.cpp:684
 #, kde-format
 msgid "I cannot do a '<' without 2 variables"
-msgstr "Non se pode facer un «<» sen dúas variábeis"
+msgstr "Non é posíbel facer un «<» sen dúas variábeis"
 
 #: interpreter/executer.cpp:692
 #, kde-format
 msgid "I cannot do a '>=' without 2 variables"
-msgstr "Non se pode facer un «>=» sen dúas variábeis"
+msgstr "Non é posíbel facer un «>=» sen dúas variábeis"
 
 #: interpreter/executer.cpp:700
 #, kde-format
 msgid "I cannot do a '<=' without 2 variables"
-msgstr "Non se pode facer un «<=» sen dúas variábeis"
+msgstr "Non é posíbel facer un «<=» sen dúas variábeis"
 
 #: interpreter/executer.cpp:708
 #, kde-format
@@ -524,7 +524,7 @@ msgstr "A función «%1» xa está definida."
 #: interpreter/executer.cpp:1041
 #, kde-format
 msgid "Can't do a sqrt of a negative number"
-msgstr "Non se pode facer unha raíz cadrada dun número negativo"
+msgstr "Non é posíbel facer unha raíz cadrada dun número negativo"
 
 #: interpreter/parser.cpp:38
 #, kde-format
@@ -534,7 +534,7 @@ msgstr "Agardábase unha orde, no canto obtívose «%1»"
 #: interpreter/parser.cpp:71
 #, kde-format
 msgid "Could not understand '%1'"
-msgstr "Non se puido entender «%1»"
+msgstr "Non foi posíbel entender «%1»"
 
 #: interpreter/parser.cpp:106
 #, kde-format
@@ -1513,7 +1513,7 @@ msgstr "Abrir ficheiro: abrir un ficheiro xa existente"
 #: mainwindow.cpp:184
 #, kde-format
 msgid "Open a recently used file"
-msgstr "Abrir un ficheiro utilizado recentemente"
+msgstr "Abrir un ficheiro usado recentemente"
 
 #: mainwindow.cpp:185
 #, kde-format
@@ -1914,15 +1914,15 @@ msgstr "Executar: executa a liña escollida na consola"
 #, kde-format
 msgid "Execute the program, or use the drop down menu to select the run speed"
 msgstr ""
-"Executa o programa ou utiliza o menú despregábel para escoller a velocidade "
-"de execución"
+"Executa o programa ou usa o menú despregábel para escoller a velocidade de "
+"execución"
 
 #: mainwindow.cpp:423
 #, kde-format
 msgid ""
 "Run: Execute the program, or use the drop down menu to select the run speed"
 msgstr ""
-"Executar: executa o programa ou utiliza o menú despregábel para escoller a "
+"Executar: executa o programa ou usa o menú despregábel para escoller a "
 "velocidade de execución"
 
 #: mainwindow.cpp:426
@@ -2172,7 +2172,7 @@ msgstr "orde do controlador"
 #: mainwindow.cpp:813
 #, kde-format
 msgid "Could not change the language to %1."
-msgstr "Non se puido cambiar ao idioma %1."
+msgstr "Non foi posíbel cambiar ao idioma %1."
 
 #: mainwindow.cpp:821
 #, kde-format
