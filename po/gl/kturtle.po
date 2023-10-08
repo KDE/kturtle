@@ -577,8 +577,8 @@ msgid ""
 "Text string was not properly closed, expected a double quote, ' \" ', to "
 "close the string."
 msgstr ""
-"A cadea de texto non estaba pechada con xeito, agardábanse unhas aspas, \", "
-"para pechala."
+"A cadea de texto non estaba pechada con xeito, agardábanse unhas comiñas, "
+"\", para pechala."
 
 #: interpreter/parser.cpp:616
 #, kde-format
