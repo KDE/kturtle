@@ -57,11 +57,11 @@
 ><guimenuitem
 >Ejecutar</guimenuitem
 ></menuchoice
-> (acceso rápido <keycombo action="simul"
+> (atajo de teclado <keycombo action="simul"
 >&Alt;<keycap
 >F2</keycap
 ></keycombo
->)o pulsar el botón <inlinemediaobject
+>) o pulsar el botón <inlinemediaobject
 > <imageobject
 > <imagedata fileref="media-playback-pause.png" format="PNG"/> </imageobject
 > </inlinemediaobject
@@ -1012,12 +1012,12 @@
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configurar los accesos rápidos...</guimenuitem
+>Configurar los atajos de teclado...</guimenuitem
 > </menuchoice
 ></term>
       <listitem
 ><para
->Diálogo estándar de &kde; para configurar los accesos rápidos.</para
+>Diálogo estándar de &kde; para configurar los atajos de teclado.</para
 ></listitem>
     </varlistentry>
   </variablelist>
