@@ -81,7 +81,7 @@ msgstr "Quantitat de blau:"
 #: colorpicker.cpp:105 directiondialog.cpp:283
 #, kde-format
 msgid "&Copy to clipboard"
-msgstr "&Copia al porta-retalls"
+msgstr "&Copia a dins del porta-retalls"
 
 #: colorpicker.cpp:110 directiondialog.cpp:287
 #, kde-format
