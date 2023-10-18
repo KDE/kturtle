@@ -35,7 +35,7 @@
 <title
 >Els moviments de la tortuga</title>
 <para
->Començarem per aconseguir que la tortuga es mogui. La nostra tortuga pot fer tres tipus de moviments, (1) pot desplaçar-se cap endavant i cap enrere, (2) pot girar a l'esquerra i a la dreta i (3) pot anar (salt) directament a una posició a la pantalla. Proveu això, per exemple:</para>
+>Començarem per a aconseguir que la tortuga es mogui. La nostra tortuga pot fer tres tipus de moviments, (1) pot desplaçar-se cap endavant i cap enrere, (2) pot girar a l'esquerra i a la dreta i (3) pot anar (salt) directament a una posició a la pantalla. Proveu això, per exemple:</para>
 <para>
 <screen
 >forward 100
