@@ -148,7 +148,7 @@ class TextEdit : public QTextEdit
 		}
 
 	private:
-		QVector<QRect> coordsToRects(QRect coords) {
+		QList<QRect> coordsToRects(QRect coords) {
 			// this methods calculate the viewport rectangles that cover a (multi-line) word or error
             // after switching the tokenizer to use the QTextDocument we might optimize this methods
 			int startRow, startCol, endRow, endCol;
@@ -164,7 +164,7 @@ class TextEdit : public QTextEdit
 
 			QRect rect = cursorRect(cursor).adjusted(CURSOR_RECT_MARGIN, 0, 0, 0);
 			cursor.movePosition(QTextCursor::EndOfLine);
-			QVector<QRect> rects;
+			QList<QRect> rects;
 			while (cursor < endCursor) {
 				cursor.movePosition(QTextCursor::PreviousCharacter);
 				rects << (rect | cursorRect(cursor).adjusted(0, 0, fontMetrics().boundingRect(QStringLiteral("0")).width() - CURSOR_RECT_MARGIN, 0));
