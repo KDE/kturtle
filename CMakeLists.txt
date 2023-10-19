@@ -53,7 +53,7 @@ set_package_properties(KF6DocTools PROPERTIES DESCRIPTION
 )
 
 ecm_set_disabled_deprecation_versions(
-    QT 6.5
+    QT 6.6
     KF 5.240.0
 )
 
