@@ -17,7 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Zanata 3.9.6\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
+"n % 10 == 0) ? 2 : 3));\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -307,6 +308,8 @@ msgid "The %2 command was called with %3 but needs 1 parameter."
 msgid_plural "The %2 command was called with %3 but needs %1 parameters."
 msgstr[0] "הפקודה %2 נקראה עם %3 פרמטרים אבל צריכה פרמטר אחד."
 msgstr[1] "הפקודה %2 נקראה עם %3 פרמטרים אבל צריכה פרמטר אחד."
+msgstr[2] ""
+msgstr[3] ""
 
 #: interpreter/executer.cpp:274
 #, fuzzy, kde-format
@@ -315,6 +318,8 @@ msgid_plural ""
 "The %2 command was called with %3 but only accepts %1 parameters."
 msgstr[0] "הפקודה %2 נקראה עם %3 פרמטרים אבל מקבלת רק פרמטר אחד."
 msgstr[1] "הפקודה %2 נקראה עם %3 פרמטרים אבל מקבלת רק פרמטר אחד."
+msgstr[2] ""
+msgstr[3] ""
 
 #: interpreter/executer.cpp:292
 #, kde-format
@@ -369,6 +374,8 @@ msgid "1 parameter"
 msgid_plural "%1 parameters"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: interpreter/executer.cpp:627
 #, kde-format
