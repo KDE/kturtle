@@ -392,9 +392,11 @@ lèvecrayon
 >sprite</glossterm>
 <glossdef
 ><para
->Un lutin est une petite image qui peut bouger sur l'écran. Notre chère tortue, par exemple, est un lutin.</para>
-<para
->Remarque : dans cette version de &kturtle; le lutin ne peut changer de tortue en quelque chose d'autre. Dans les versions futures de &kturtle;, ce sera possible.</para
+>Un lutin est une petite image qui peut bouger sur l'écran. Notre chère tortue, par exemple, est un lutin. <note
+><para
+>Dans cette version de &kturtle; le lutin ne peut changer d'une tortue en quelque chose d'autre. Dans les versions futures de &kturtle;, ce sera possible.</para
+></note
+></para
 ></glossdef>
 </glossentry>
 
