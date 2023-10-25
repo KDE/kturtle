@@ -26,7 +26,7 @@
 
 int main(int argc, char* argv[])
 {
-	KLocalizedString::setApplicationDomain("kturtle");
+	KLocalizedString::setApplicationDomain(QByteArrayLiteral("kturtle"));
 
 	QApplication app(argc, argv);
 	KCrash::initialize();
