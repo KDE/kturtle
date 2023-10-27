@@ -3,9 +3,7 @@
 >Glossari</title>
 
 <para
->En aquest capítol trobareu una explicació de la majoria dels mots <quote
->poc freqüents</quote
-> que s'empren en aquest manual.</para>
+>En aquest capítol trobareu una explicació de la majoria dels mots «poc freqüents» que s'empren en aquest manual.</para>
 
 <glosslist>
 <glossentry id="degrees">
@@ -315,23 +313,9 @@ penup
 >Combinacions RGB (codis de color)</glossterm>
 <glossdef
 ><para
->Les combinacions RGB són utilitzades per a descriure els colors. La <quote
->R</quote
-> vol dir <quote
->vermell</quote
->, la <quote
->G</quote
-> vol dir <quote
->verd</quote
-> i la <quote
->B</quote
-> que vol dir <quote
->blau</quote
->. Un exemple de la combinació RGB és <userinput
+>Les combinacions RGB són utilitzades per a descriure els colors. La «R» vol dir «vermell», la «G» vol dir «verd» i la «B» que vol dir «blau». Un exemple de la combinació RGB és <userinput
 >255,0,0</userinput
->: El primer valor (<quote
->vermell</quote
->) és 255 i la resta 0, això vol dir que es tracta del vermell pur. Cada valor d'una combinació RGB ha d'estar en un interval entre el 0 i el 255. Aquí teniu una petita llista dels colors més utilitzats: <table frame="none">
+>: El primer valor («vermell») és 255 i la resta 0, això vol dir que es tracta del vermell pur. Cada valor d'una combinació RGB ha d'estar en un interval entre el 0 i el 255. Aquí teniu una petita llista dels colors més utilitzats: <table frame="none">
 <title
 >Combinacions RGB més utilitzades</title>
 <tgroup cols="2" colsep="5" rowsep="1">

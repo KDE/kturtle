@@ -146,9 +146,7 @@
 >, un llenguatge de programació basat i inspirant en el &logo;. La meta del &kturtle; és fer de la programació una activitat fàcil i accessible. Això fa que el &kturtle; esdevingui una eina adequada per a ensenyar els fonaments de les matemàtiques, geometria i... programació. La característica de &turtlescript; és que les ordres es poden traduir a l'idioma del programador.</para>
 
 <para
->El &kturtle; s'ha anomenat així perquè <quote
->la tortuga</quote
-> és la protagonista de l'entorn de programació. L'estudiant instruirà la tortuga, utilitzant les ordres de &turtlescript;, perquè dibuixi en <link linkend="the-canvas"
+>El &kturtle; s'ha anomenat així perquè «la tortuga» és la protagonista de l'entorn de programació. L'estudiant instruirà la tortuga, utilitzant les ordres de &turtlescript;, perquè dibuixi en <link linkend="the-canvas"
 >el llenç</link
 >.</para>
 

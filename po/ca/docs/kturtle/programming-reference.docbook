@@ -203,31 +203,19 @@ print "Hola, soc una cadena."
 ></indexterm
 > (<userinput
 >fals</userinput
->). De vegades també se'ls crida: <quote
-><userinput
+>). De vegades també se'ls crida: «<userinput
 >on</userinput
-></quote
-> i <quote
-><userinput
+>» i «<userinput
 >off</userinput
-></quote
->, <quote
-><userinput
+>», «<userinput
 >yes</userinput
-></quote
-> i <quote
-><userinput
+>» i «<userinput
 >no</userinput
-></quote
->, <quote
-><userinput
+>», «<userinput
 >one</userinput
-></quote
-> i <quote
-><userinput
+>» i «<userinput
 >zero</userinput
-></quote
->. Però en el &turtlescript; sempre se'ls crida, <userinput
+>». Però en el &turtlescript; sempre se'ls crida, <userinput
 >true</userinput
 > i <userinput
 >false</userinput
@@ -438,11 +426,7 @@ if (($a &lt; 10) and ($b == 5)) and ($a &lt; $b) {
 >operadors de comparació</link
 > es fusionen utilitzant els operadors <userinput
 >and</userinput
->. Això significa que els tres han d'avaluar <quote
->true</quote
-> perquè s'imprimeixi <quote
->hola</quote
->.</para>
+>. Això significa que els tres han d'avaluar «true» perquè s'imprimeixi «hola».</para>
 
 <para
 >Un exemple amb <userinput
@@ -455,34 +439,16 @@ if ($n &lt; 10) or ($n == 2) {
 </screen
 > En aquest fragment de &turtlescript; la part esquerra de <userinput
 >or</userinput
-> està avaluant a <quote
->true</quote
->, el costat dret a <quote
->false</quote
->. Atès que un dels dos costats de l'operador <userinput
+> està avaluant a «true», el costat dret a «false». Atès que un dels dos costats de l'operador <userinput
 >or</userinput
-> és <quote
->true</quote
->, l'operador <userinput
+> és «true», l'operador <userinput
 >or</userinput
-> avaluarà com a <quote
->true</quote
->. El qual vol dir que s'imprimirà <quote
->hola</quote
->.</para>
+> avaluarà com a «true». El qual vol dir que s'imprimirà «hola».</para>
 
 <para
 >I, finalment, un exemple amb <userinput
 >not</userinput
-> que canvia de <quote
->true</quote
-> a <quote
->false</quote
-> i de <quote
->false</quote
-> a <quote
->true</quote
->. Doneu un cop d'ull: <screen
+> que canvia de «true» a «false» i de «false» a «true». Doneu un cop d'ull: <screen
 >$n = 1
 if not ($n == 3) {
   print "hola"
@@ -505,9 +471,7 @@ $answer = 10 &gt; 3
 >10</userinput
 > és comparat amb <userinput
 >3</userinput
-> amb l'operador <quote
->més gran que</quote
->. El resultat d'aquesta comparació, el <link linkend="boolean-value"
+> amb l'operador «més gran que». El resultat d'aquesta comparació, el <link linkend="boolean-value"
 >​valor booleà</link
 > <userinput
 >true</userinput
@@ -536,9 +500,7 @@ $answer = 10 &gt; 3
 > <entry
 >igual que</entry
 > <entry
->respon <quote
->true</quote
-> si <userinput
+>respon «true» si <userinput
 >$A</userinput
 > és igual que <userinput
 >$B</userinput
@@ -552,9 +514,7 @@ $answer = 10 &gt; 3
 > <entry
 >no igual que</entry
 > <entry
->respon <quote
->true</quote
-> si <userinput
+>respon «true» si <userinput
 >$A</userinput
 > no és igual que <userinput
 >$B</userinput
@@ -568,9 +528,7 @@ $answer = 10 &gt; 3
 > <entry
 >més gran que</entry
 > <entry
->respon <quote
->true</quote
-> si <userinput
+>respon «true» si <userinput
 >$A</userinput
 > és més gran que <userinput
 >$B</userinput
@@ -584,9 +542,7 @@ $answer = 10 &gt; 3
 > <entry
 >més petit que</entry
 > <entry
->respon <quote
->true</quote
-> si <userinput
+>respon «true» si <userinput
 >$A</userinput
 > és més petit que <userinput
 >$B</userinput
@@ -600,9 +556,7 @@ $answer = 10 &gt; 3
 > <entry
 >més gran o igual que</entry
 > <entry
->respon <quote
->true</quote
-> si <userinput
+>respon «true» si <userinput
 >$A</userinput
 > és més gran o igual que <userinput
 >$B</userinput
@@ -616,9 +570,7 @@ $answer = 10 &gt; 3
 > <entry
 >més petit o igual que</entry
 > <entry
->respon <quote
->true</quote
-> si <userinput
+>respon «true» si <userinput
 >$A</userinput
 > és més petit o igual que <userinput
 >$B</userinput
@@ -976,9 +928,7 @@ $answer = 10 &gt; 3
 >penup</screen
 ><userinput
 >penup</userinput
-> aixeca el llapis del llenç. Quan el llapis està <quote
->amunt</quote
-> no es dibuixarà cap línia quan es mogui la tortuga. Vegeu també <userinput
+> aixeca el llapis del llenç. Quan el llapis està «amunt» no es dibuixarà cap línia quan es mogui la tortuga. Vegeu també <userinput
 >pendown</userinput
 >. <userinput
 >penup</userinput
@@ -1004,9 +954,7 @@ $answer = 10 &gt; 3
 >pendown</screen
 ><userinput
 >penup</userinput
-> pressiona el llapis sobre el llenç. Quan el llapis està <quote
->abaixat</quote
-> es dibuixarà una línia quan es mogui la tortuga. Vegeu també <userinput
+> pressiona el llapis sobre el llenç. Quan el llapis està «abaixat» es dibuixarà una línia quan es mogui la tortuga. Vegeu també <userinput
 >penup</userinput
 >. <userinput
 >pendown</userinput
@@ -1252,9 +1200,7 @@ $answer = 10 &gt; 3
 <title
 >Pot escriure la tortuga?</title>
 <para
->La resposta és: <quote
->Sí</quote
->. La tortuga pot escriure: Escriu gairebé tot el que se li ordena.</para>
+>La resposta és: «Sí». La tortuga pot escriure: Escriu gairebé tot el que se li ordena.</para>
   <variablelist>
     <anchor id="print"/>
     <varlistentry
@@ -1273,9 +1219,7 @@ $answer = 10 &gt; 3
 >print</userinput
 > s'utilitza per a ordenar a la tortuga que escrigui quelcom en el llenç. <userinput
 >print</userinput
-> pren els números i cadenes com a entrada. Podeu imprimir diversos nombres i cadenes mitjançant el símbol <quote
->+</quote
->. Vegeu aquest petit exemple: <screen
+> pren els números i cadenes com a entrada. Podeu imprimir diversos nombres i cadenes mitjançant el símbol «+». Vegeu aquest petit exemple: <screen
 >$year = 2003
 $author = "Joan"
 print "En " + $author + " va començar el projecte KTurtle al " + $year + " i encara gaudeix treballant-hi!"
@@ -1604,9 +1548,7 @@ print "L'any 2003 vàreu tenir " + $out + " anys d'edat en algun moment."
 >En primer lloc, donarem una ullada a les variables, llavors ens centrarem en l'assignació de valors a aquestes variables. </para>
 
 <para
->Les variables són paraules que comencen amb un <quote
->$</quote
->, en l'<link linkend="the-editor"
+>Les variables són paraules que comencen amb un «$», en l'<link linkend="the-editor"
 >editor</link
 > es <glossterm
 >ressalten</glossterm
@@ -1743,9 +1685,7 @@ repeat 36 {
 
 <sect2 id="if">
 <title
->Executa <quote
->if -si-</quote
-></title>
+>Executa «if -si-»</title>
   <variablelist>
     <varlistentry>
       <term
@@ -1762,9 +1702,7 @@ repeat 36 {
 > { ... }</screen
 >El codi que es col·loca entre els claudàtors només s'executarà si el <link linkend="boolean-value"
 >valor booleà</link
-> avalua <quote
->true</quote
->. <screen>
+> avalua «true». <screen>
 $x = 6
 if $x &gt; 5 {
   print "$x és més gran que cinc!"
@@ -1774,9 +1712,7 @@ if $x &gt; 5 {
 >$x</userinput
 > està establert a 6. En la segona línia s'utilitza un <link linkend="boolean-value"
 >operador de comparació</link
-> per a avaluar $x &gt; 5. Atès que aquest avalua <quote
->true</quote
->, 6 és més gran que 5, el controlador de l'execució <userinput
+> per a avaluar $x &gt; 5. Atès que aquest avalua «true», 6 és més gran que 5, el controlador de l'execució <userinput
 >if</userinput
 > permet executar el codi entre els claudàtors.</para
 ></listitem>
@@ -1786,9 +1722,7 @@ if $x &gt; 5 {
 
 <sect2 id="else">
 <title
->Si no, en altres paraules: <quote
->else -altrament-</quote
-></title>
+>Si no, en altres paraules: «else -altrament-»</title>
   <variablelist>
     <varlistentry>
       <term
@@ -1813,9 +1747,7 @@ if $x &gt; 5 {
 >else</userinput
 > només s'executa si el <link linkend="boolean-value"
 >booleà</link
-> avalua <quote
->false</quote
->. <screen>
+> avalua «false». <screen>
 reset
 $x = 4
 if $x &gt; 5 {
@@ -1828,9 +1760,7 @@ if $x &gt; 5 {
 >operador de comparació</link
 > avalua l'expressió <userinput
 >$x &gt; 5</userinput
->. Donat que 4 no és més gran que 5, l'expressió s'avalua com <quote
->fals</quote
->. Això significa que el codi entre claudàtors després de <userinput
+>. Donat que 4 no és més gran que 5, l'expressió s'avalua com «fals». Això significa que el codi entre claudàtors després de <userinput
 >else</userinput
 > serà executat.</para
 ></listitem>
@@ -1840,9 +1770,7 @@ if $x &gt; 5 {
 
 <sect2 id="while">
 <title
->El bucle <quote
->while -mentre-</quote
-></title>
+>El bucle «while -mentre-»</title>
   <variablelist>
     <varlistentry>
       <term
@@ -1867,9 +1795,7 @@ if $x &gt; 5 {
 >while</userinput
 > no deixa de repetir (en bucle) el codi entre claudàtors fins que el <link linkend="boolean-value"
 >booleà</link
-> avalua <quote
->false</quote
->. <screen>
+> avalua «false». <screen>
 $x = 1
 while $x &lt; 5 {
   forward 10
@@ -1881,13 +1807,9 @@ while $x &lt; 5 {
 >$x</userinput
 > s'estableix a 1. En la segona línia s'avalua <userinput
 >$x &lt; 5</userinput
->. Atès que la resposta a aquesta pregunta és <quote
->true</quote
-> el controlador de l'execució while començarà a executar el codi entre claudàtors fins que <userinput
+>. Atès que la resposta a aquesta pregunta és «true» el controlador de l'execució while començarà a executar el codi entre claudàtors fins que <userinput
 >$x &lt; 5</userinput
-> avaluï <quote
->false</quote
->. En aquest cas el codi entre els claudàtors s'executarà quatre vegades, perquè cada vegada que s'executa la cinquena línia <userinput
+> avaluï «false». En aquest cas el codi entre els claudàtors s'executarà quatre vegades, perquè cada vegada que s'executa la cinquena línia <userinput
 >$x</userinput
 > s'incrementa en 1.</para
 ></listitem>
@@ -1897,9 +1819,7 @@ while $x &lt; 5 {
 
 <sect2 id="repeat">
 <title
->El bucle <quote
->repeat -repeteix-</quote
-></title>
+>El bucle «repeat -repeteix-»</title>
   <variablelist>
     <varlistentry>
       <term
@@ -1930,9 +1850,7 @@ while $x &lt; 5 {
 
 <sect2 id="for">
 <title
->El bucle <quote
->for -per-</quote
->, un bucle de comptatge</title>
+>El bucle «for -per-», un bucle de comptatge</title>
   <variablelist>
     <varlistentry>
       <term
@@ -1961,9 +1879,7 @@ while $x &lt; 5 {
 > { ... }</screen
 >El bucle <userinput
 >for</userinput
-> és un <quote
->bucle de comptatge</quote
->, &ead;, que porta el compte per a vós. El primer nombre estableix la variable amb el valor en el primer bucle. Cada bucle incrementa aquest nombre fins que s'assoleix el segon nombre. <screen>
+> és un «bucle de comptatge», &ead;, que porta el compte per a vós. El primer nombre estableix la variable amb el valor en el primer bucle. Cada bucle incrementa aquest nombre fins que s'assoleix el segon nombre. <screen>
 for $x = 1 to 10 {
   print $x * 7
   forward 15
@@ -2069,9 +1985,7 @@ assert $in
 <sect1 id="learn">
 
 <title
->Crear les vostres pròpies ordres amb <quote
->learn -aprèn-</quote
-></title>
+>Crear les vostres pròpies ordres amb «learn -aprèn-»</title>
 <para
 ><userinput
 >learn</userinput
