@@ -78,5 +78,5 @@ target_link_libraries(kturtle Qt6::Core5Compat Qt6::SvgWidgets)
 
 install (TARGETS  kturtle          ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 install (PROGRAMS    org.kde.kturtle.desktop  DESTINATION ${KDE_INSTALL_APPDIR})
-install (FILES    kturtle.knsrc    DESTINATION ${KDE_INSTALL_CONFDIR}) 
+install (FILES    kturtle.knsrc    DESTINATION ${KDE_INSTALL_KNSRCDIR}) 
 
