@@ -982,10 +982,10 @@ void MainWindow::addToRecentFiles(const QUrl &url)
 
 void MainWindow::readConfig()
 {
-	KConfigGroup config(KSharedConfig::openConfig(), "General Options");
+	KConfigGroup config(KSharedConfig::openConfig(), QLatin1String("General Options"));
 // 	m_paShowStatusBar->setChecked(config->readEntry("ShowStatusBar", QVariant(false)).toBool());
 // 	m_paShowPath->setChecked(config->readEntry("ShowPath", QVariant(false)).toBool());
-	recentFilesAction->loadEntries(KSharedConfig::openConfig()->group("Recent Files"));
+	recentFilesAction->loadEntries(KSharedConfig::openConfig()->group(QLatin1String("Recent Files")));
 	QString lang_code(config.readEntry("currentLanguageCode", QVariant(QString())).toString());
 	if (lang_code.isEmpty()) lang_code = QStringLiteral("en_US");  // null-string are saved as empty-strings
 	setCurrentLanguage(lang_code);
@@ -997,10 +997,10 @@ void MainWindow::readConfig()
 
 void MainWindow::writeConfig()
 {
-	KConfigGroup config(KSharedConfig::openConfig(), "General Options");
+	KConfigGroup config(KSharedConfig::openConfig(), QLatin1String("General Options"));
 // 	config.writeEntry("ShowStatusBar",m_paShowStatusBar->isChecked());
 // 	config.writeEntry("ShowPath",m_paShowPath->isChecked());
-	recentFilesAction->saveEntries(KSharedConfig::openConfig()->group( "Recent Files"));
+	recentFilesAction->saveEntries(KSharedConfig::openConfig()->group(QLatin1String("Recent Files")));
 	config.writeEntry("currentLanguageCode", currentLanguageCode);
 	config.sync();
 }
