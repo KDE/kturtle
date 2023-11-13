@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-16 01:54+0000\n"
-"PO-Revision-Date: 2023-09-16 11:44+0100\n"
+"PO-Revision-Date: 2023-11-12 16:39+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -31,7 +31,7 @@ msgstr "axel@esperanto-jeunes.org,okellogg@users.sourceforge.net"
 #: canvas.cpp:195
 #, kde-format
 msgid "bold"
-msgstr "aŭdaca"
+msgstr "grasa"
 
 #: canvas.cpp:196
 #, kde-format
@@ -1703,12 +1703,12 @@ msgstr "&Paŭzi"
 #: mainwindow.cpp:309
 #, kde-format
 msgid "Pause execution"
-msgstr "Paŭzi la ekzekuton"
+msgstr "Paŭzi la plenumon"
 
 #: mainwindow.cpp:310
 #, kde-format
 msgid "Pause: Pause execution"
-msgstr "Paŭzo: Paŭzi la ekzekuton"
+msgstr "Paŭzo: Paŭzi la plenumon"
 
 #: mainwindow.cpp:313
 #, kde-format
