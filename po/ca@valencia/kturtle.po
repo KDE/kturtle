@@ -1835,13 +1835,13 @@ msgstr "Mostra els números de les &línies"
 #: mainwindow.cpp:379
 #, kde-format
 msgid "Turn the line numbers on/off in the editor"
-msgstr "Activa/desactiva els números de línia en l'editor"
+msgstr "Activa o desactiva els números de línia en l'editor"
 
 #: mainwindow.cpp:380
 #, kde-format
 msgid "Show Line Numbers: Turn the line numbers on/off in the editor"
 msgstr ""
-"Mostra els números de línia: Activa/desactiva els números de línia en "
+"Mostra els números de línia: Activa o desactiva els números de línia en "
 "l'editor"
 
 #: mainwindow.cpp:391
