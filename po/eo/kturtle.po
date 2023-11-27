@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-16 01:54+0000\n"
-"PO-Revision-Date: 2023-11-12 16:39+0100\n"
+"PO-Revision-Date: 2023-11-26 19:44+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -1863,7 +1863,7 @@ msgstr "Lanĉi"
 #: mainwindow.cpp:411
 #, kde-format
 msgid "Execute: Executes the current line in the console"
-msgstr "Execute: Ekzekutas la nunan linion en la konzolo"
+msgstr "Execute: Efektivigas la aktualan linion en la konzolo"
 
 #: mainwindow.cpp:422
 #, kde-format
@@ -1875,7 +1875,8 @@ msgstr "Efektivigi la programon aŭ uzi la falmenuon por elekti la kurrapidecon"
 msgid ""
 "Run: Execute the program, or use the drop down menu to select the run speed"
 msgstr ""
-"Ruli: Efektivigu la programon, aŭ uzu la falmenuon por elekti la rulrapidecon"
+"Lanĉi: Efektivigi la programon, aŭ uzi la falmenuon por elekti la "
+"rulrapidecon"
 
 #: mainwindow.cpp:426
 #, kde-format
