@@ -7,7 +7,7 @@
 #ifndef _INSPECTOR_H_
 #define _INSPECTOR_H_
 
-#include <QFrame>
+#include <QWidget>
 #include <QHash>
 
 #include "editor.h"
@@ -23,7 +23,7 @@ class QTreeWidget;
 class QTreeWidgetItem;
 
 
-class Inspector : public QFrame
+class Inspector : public QWidget
 {
 	Q_OBJECT
 

@@ -17,15 +17,17 @@
 #include <QHBoxLayout>
 
 #include <KLocalizedString>
+#include <qwidget.h>
 
 
 Inspector::Inspector(QWidget *parent)
-	: QFrame(parent)
+	: QWidget(parent)
 {
 	mainLayout = new QHBoxLayout(this);
 	mainLayout->setSpacing(0);
 	mainLayout->setContentsMargins(0, 0, 0, 0);
 	tabWidget  = new QTabWidget(this);
+	tabWidget->setDocumentMode(true);
 
 	variableTab    = new QWidget();
 	variableLayout = new QHBoxLayout(variableTab);

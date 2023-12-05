@@ -553,7 +553,7 @@ void MainWindow::setupDockWindows()
 	inspectorDock->setObjectName(QStringLiteral("inspector"));
 	QWidget* inspectorWrapWidget = new QWidget(inspectorDock);
 	QHBoxLayout* inspectorDockLayout = new QHBoxLayout(inspectorWrapWidget);
-	inspectorDockLayout->setContentsMargins(MARGIN_SIZE, MARGIN_SIZE, MARGIN_SIZE, MARGIN_SIZE);
+	inspectorDockLayout->setContentsMargins({});
 	inspectorWrapWidget->setLayout(inspectorDockLayout);
 	inspector = new Inspector(inspectorWrapWidget);
 	inspectorDockLayout->addWidget(inspector);
