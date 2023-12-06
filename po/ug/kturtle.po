@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-16 01:54+0000\n"
+"POT-Creation-Date: 2023-12-06 01:35+0000\n"
 "PO-Revision-Date: 2013-09-08 07:05+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -221,73 +221,73 @@ msgstr "خاتالىقلارنى يوشۇر"
 msgid "No errors occurred yet."
 msgstr ""
 
-#: inspector.cpp:35
+#: inspector.cpp:37
 #, kde-format
 msgid "Variables"
 msgstr "ئۆزگەرگۈچىلەر"
 
-#: inspector.cpp:42
+#: inspector.cpp:44
 #, kde-format
 msgid "Functions"
 msgstr "فۇنكسىيىلەر"
 
-#: inspector.cpp:49
+#: inspector.cpp:51
 #, kde-format
 msgid "Tree"
 msgstr "دەرەخ"
 
-#: inspector.cpp:93 inspector.cpp:111
+#: inspector.cpp:95 inspector.cpp:113
 #, kde-format
 msgid "name"
 msgstr "ئاتى"
 
-#: inspector.cpp:93
+#: inspector.cpp:95
 #, kde-format
 msgid "value"
 msgstr "قىممىتى"
 
-#: inspector.cpp:93
+#: inspector.cpp:95
 #, kde-format
 msgid "type"
 msgstr "تىپى"
 
-#: inspector.cpp:103
+#: inspector.cpp:105
 #, kde-format
 msgid "No variables"
 msgstr ""
 
-#: inspector.cpp:111
+#: inspector.cpp:113
 #, kde-format
 msgid "parameters"
 msgstr ""
 
-#: inspector.cpp:120
+#: inspector.cpp:122
 #, kde-format
 msgid "No learned functions"
 msgstr ""
 
-#: inspector.cpp:163
+#: inspector.cpp:165
 #, kde-format
 msgctxt "undefined type of a variable"
 msgid "empty"
 msgstr "بوش"
 
-#: inspector.cpp:170
+#: inspector.cpp:172
 #, kde-format
 msgid "boolean"
 msgstr "لوگىكىلىق قىممەت"
 
-#: inspector.cpp:173
+#: inspector.cpp:175
 #, kde-format
 msgid "number"
 msgstr "نومۇر"
 
-#: inspector.cpp:176
+#: inspector.cpp:178
 #, kde-format
 msgid "string"
 msgstr "تېكىست"
 
-#: inspector.cpp:208
+#: inspector.cpp:210
 #, kde-format
 msgid "None"
 msgstr "يوق"

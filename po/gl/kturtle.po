@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-16 01:54+0000\n"
+"POT-Creation-Date: 2023-12-06 01:35+0000\n"
 "PO-Revision-Date: 2023-08-06 05:53+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -235,73 +235,73 @@ msgstr "Agochar os erros"
 msgid "No errors occurred yet."
 msgstr "Aínda non apareceu ningún erro."
 
-#: inspector.cpp:35
+#: inspector.cpp:37
 #, kde-format
 msgid "Variables"
 msgstr "Variábeis"
 
-#: inspector.cpp:42
+#: inspector.cpp:44
 #, kde-format
 msgid "Functions"
 msgstr "Funcións"
 
-#: inspector.cpp:49
+#: inspector.cpp:51
 #, kde-format
 msgid "Tree"
 msgstr "Árbore"
 
-#: inspector.cpp:93 inspector.cpp:111
+#: inspector.cpp:95 inspector.cpp:113
 #, kde-format
 msgid "name"
 msgstr "nome"
 
-#: inspector.cpp:93
+#: inspector.cpp:95
 #, kde-format
 msgid "value"
 msgstr "valor"
 
-#: inspector.cpp:93
+#: inspector.cpp:95
 #, kde-format
 msgid "type"
 msgstr "tipo"
 
-#: inspector.cpp:103
+#: inspector.cpp:105
 #, kde-format
 msgid "No variables"
 msgstr "Non hai ningunha variábel"
 
-#: inspector.cpp:111
+#: inspector.cpp:113
 #, kde-format
 msgid "parameters"
 msgstr "parámetros"
 
-#: inspector.cpp:120
+#: inspector.cpp:122
 #, kde-format
 msgid "No learned functions"
 msgstr "Non se aprendeu ningunha función"
 
-#: inspector.cpp:163
+#: inspector.cpp:165
 #, kde-format
 msgctxt "undefined type of a variable"
 msgid "empty"
 msgstr "baleiro"
 
-#: inspector.cpp:170
+#: inspector.cpp:172
 #, kde-format
 msgid "boolean"
 msgstr "lóxico"
 
-#: inspector.cpp:173
+#: inspector.cpp:175
 #, kde-format
 msgid "number"
 msgstr "número"
 
-#: inspector.cpp:176
+#: inspector.cpp:178
 #, kde-format
 msgid "string"
 msgstr "texto"
 
-#: inspector.cpp:208
+#: inspector.cpp:210
 #, kde-format
 msgid "None"
 msgstr "Ningún"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-16 01:54+0000\n"
+"POT-Creation-Date: 2023-12-06 01:35+0000\n"
 "PO-Revision-Date: 2011-08-08 20:28+0300\n"
 "Last-Translator: Remigijus Jarmalavičius <remigijus@jarmalavicius.lt>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -228,73 +228,73 @@ msgstr "Slėpti klaidas"
 msgid "No errors occurred yet."
 msgstr "Šiuo metu klaidų nėra."
 
-#: inspector.cpp:35
+#: inspector.cpp:37
 #, kde-format
 msgid "Variables"
 msgstr "Kintamieji"
 
-#: inspector.cpp:42
+#: inspector.cpp:44
 #, kde-format
 msgid "Functions"
 msgstr "Funkcijos"
 
-#: inspector.cpp:49
+#: inspector.cpp:51
 #, kde-format
 msgid "Tree"
 msgstr "Medis"
 
-#: inspector.cpp:93 inspector.cpp:111
+#: inspector.cpp:95 inspector.cpp:113
 #, kde-format
 msgid "name"
 msgstr "pavadinimas"
 
-#: inspector.cpp:93
+#: inspector.cpp:95
 #, kde-format
 msgid "value"
 msgstr "vertė"
 
-#: inspector.cpp:93
+#: inspector.cpp:95
 #, kde-format
 msgid "type"
 msgstr "tipas"
 
-#: inspector.cpp:103
+#: inspector.cpp:105
 #, kde-format
 msgid "No variables"
 msgstr "Nėra kintamųjų"
 
-#: inspector.cpp:111
+#: inspector.cpp:113
 #, kde-format
 msgid "parameters"
 msgstr "parametrai"
 
-#: inspector.cpp:120
+#: inspector.cpp:122
 #, kde-format
 msgid "No learned functions"
 msgstr "Nėra išmoktų funkcijų"
 
-#: inspector.cpp:163
+#: inspector.cpp:165
 #, kde-format
 msgctxt "undefined type of a variable"
 msgid "empty"
 msgstr "tuščia"
 
-#: inspector.cpp:170
+#: inspector.cpp:172
 #, kde-format
 msgid "boolean"
 msgstr "loginis"
 
-#: inspector.cpp:173
+#: inspector.cpp:175
 #, kde-format
 msgid "number"
 msgstr "skaičius"
 
-#: inspector.cpp:176
+#: inspector.cpp:178
 #, kde-format
 msgid "string"
 msgstr "tekstas"
 
-#: inspector.cpp:208
+#: inspector.cpp:210
 #, kde-format
 msgid "None"
 msgstr "Nieko"

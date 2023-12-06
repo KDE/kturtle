@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-16 01:54+0000\n"
+"POT-Creation-Date: 2023-12-06 01:35+0000\n"
 "PO-Revision-Date: 2009-02-24 22:04+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
 "Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
@@ -224,53 +224,53 @@ msgstr "गलती लुकाव"
 msgid "No errors occurred yet."
 msgstr "कोई गलती नइ होइस."
 
-#: inspector.cpp:35
+#: inspector.cpp:37
 #, kde-format
 msgid "Variables"
 msgstr "वेरिएबल"
 
-#: inspector.cpp:42
+#: inspector.cpp:44
 #, kde-format
 msgid "Functions"
 msgstr "फंक्सन्स"
 
-#: inspector.cpp:49
+#: inspector.cpp:51
 #, kde-format
 msgid "Tree"
 msgstr "ट्री"
 
-#: inspector.cpp:93 inspector.cpp:111
+#: inspector.cpp:95 inspector.cpp:113
 #, kde-format
 msgid "name"
 msgstr "नाम"
 
-#: inspector.cpp:93
+#: inspector.cpp:95
 #, kde-format
 msgid "value"
 msgstr "मान"
 
-#: inspector.cpp:93
+#: inspector.cpp:95
 #, kde-format
 msgid "type"
 msgstr "किसिम"
 
-#: inspector.cpp:103
+#: inspector.cpp:105
 #, fuzzy, kde-format
 #| msgid "Variables"
 msgid "No variables"
 msgstr "वेरिएबल"
 
-#: inspector.cpp:111
+#: inspector.cpp:113
 #, kde-format
 msgid "parameters"
 msgstr "पैरामीटर्स"
 
-#: inspector.cpp:120
+#: inspector.cpp:122
 #, kde-format
 msgid "No learned functions"
 msgstr ""
 
-#: inspector.cpp:163
+#: inspector.cpp:165
 #, fuzzy, kde-format
 #| msgctxt "@info:status there are no examples"
 #| msgid "(empty)"
@@ -278,22 +278,22 @@ msgctxt "undefined type of a variable"
 msgid "empty"
 msgstr "(खाली)"
 
-#: inspector.cpp:170
+#: inspector.cpp:172
 #, kde-format
 msgid "boolean"
 msgstr "बूलिये"
 
-#: inspector.cpp:173
+#: inspector.cpp:175
 #, kde-format
 msgid "number"
 msgstr "संख्या"
 
-#: inspector.cpp:176
+#: inspector.cpp:178
 #, kde-format
 msgid "string"
 msgstr "स्ट्रिंग"
 
-#: inspector.cpp:208
+#: inspector.cpp:210
 #, kde-format
 msgid "None"
 msgstr "कुछ नइ"

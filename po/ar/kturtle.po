@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-16 01:54+0000\n"
+"POT-Creation-Date: 2023-12-06 01:35+0000\n"
 "PO-Revision-Date: 2023-04-20 23:01+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: \n"
@@ -224,73 +224,73 @@ msgstr "أخف الأخطاء"
 msgid "No errors occurred yet."
 msgstr "لم تحدث أي أخطاء بعد."
 
-#: inspector.cpp:35
+#: inspector.cpp:37
 #, kde-format
 msgid "Variables"
 msgstr "المتغيرات"
 
-#: inspector.cpp:42
+#: inspector.cpp:44
 #, kde-format
 msgid "Functions"
 msgstr "الدوال"
 
-#: inspector.cpp:49
+#: inspector.cpp:51
 #, kde-format
 msgid "Tree"
 msgstr "الشجرة"
 
-#: inspector.cpp:93 inspector.cpp:111
+#: inspector.cpp:95 inspector.cpp:113
 #, kde-format
 msgid "name"
 msgstr "اسم"
 
-#: inspector.cpp:93
+#: inspector.cpp:95
 #, kde-format
 msgid "value"
 msgstr "قيمة"
 
-#: inspector.cpp:93
+#: inspector.cpp:95
 #, kde-format
 msgid "type"
 msgstr "نوع"
 
-#: inspector.cpp:103
+#: inspector.cpp:105
 #, kde-format
 msgid "No variables"
 msgstr "لا متغيرات"
 
-#: inspector.cpp:111
+#: inspector.cpp:113
 #, kde-format
 msgid "parameters"
 msgstr "معاملات"
 
-#: inspector.cpp:120
+#: inspector.cpp:122
 #, kde-format
 msgid "No learned functions"
 msgstr "لا توجد دوال تم تعلمها"
 
-#: inspector.cpp:163
+#: inspector.cpp:165
 #, kde-format
 msgctxt "undefined type of a variable"
 msgid "empty"
 msgstr "فارغ"
 
-#: inspector.cpp:170
+#: inspector.cpp:172
 #, kde-format
 msgid "boolean"
 msgstr "منطقي"
 
-#: inspector.cpp:173
+#: inspector.cpp:175
 #, kde-format
 msgid "number"
 msgstr "رقم"
 
-#: inspector.cpp:176
+#: inspector.cpp:178
 #, kde-format
 msgid "string"
 msgstr "سلسلة"
 
-#: inspector.cpp:208
+#: inspector.cpp:210
 #, kde-format
 msgid "None"
 msgstr "لا شيء"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-16 01:54+0000\n"
+"POT-Creation-Date: 2023-12-06 01:35+0000\n"
 "PO-Revision-Date: 2013-03-28 15:40+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -216,73 +216,73 @@ msgstr "त्रुटी लपवा (&H)"
 msgid "No errors occurred yet."
 msgstr ""
 
-#: inspector.cpp:35
+#: inspector.cpp:37
 #, kde-format
 msgid "Variables"
 msgstr "व्हेरिएबल्स"
 
-#: inspector.cpp:42
+#: inspector.cpp:44
 #, kde-format
 msgid "Functions"
 msgstr "कार्ये"
 
-#: inspector.cpp:49
+#: inspector.cpp:51
 #, kde-format
 msgid "Tree"
 msgstr "वृक्ष"
 
-#: inspector.cpp:93 inspector.cpp:111
+#: inspector.cpp:95 inspector.cpp:113
 #, kde-format
 msgid "name"
 msgstr "नाव"
 
-#: inspector.cpp:93
+#: inspector.cpp:95
 #, kde-format
 msgid "value"
 msgstr "मूल्य"
 
-#: inspector.cpp:93
+#: inspector.cpp:95
 #, kde-format
 msgid "type"
 msgstr "प्रकार"
 
-#: inspector.cpp:103
+#: inspector.cpp:105
 #, kde-format
 msgid "No variables"
 msgstr ""
 
-#: inspector.cpp:111
+#: inspector.cpp:113
 #, kde-format
 msgid "parameters"
 msgstr ""
 
-#: inspector.cpp:120
+#: inspector.cpp:122
 #, kde-format
 msgid "No learned functions"
 msgstr ""
 
-#: inspector.cpp:163
+#: inspector.cpp:165
 #, fuzzy, kde-format
 msgctxt "undefined type of a variable"
 msgid "empty"
 msgstr "रिकामी"
 
-#: inspector.cpp:170
+#: inspector.cpp:172
 #, fuzzy, kde-format
 msgid "boolean"
 msgstr "बूलियन"
 
-#: inspector.cpp:173
+#: inspector.cpp:175
 #, fuzzy, kde-format
 msgid "number"
 msgstr "संख्या"
 
-#: inspector.cpp:176
+#: inspector.cpp:178
 #, fuzzy, kde-format
 msgid "string"
 msgstr "स्ट्रिंग"
 
-#: inspector.cpp:208
+#: inspector.cpp:210
 #, fuzzy, kde-format
 msgid "None"
 msgstr "काही नाही"

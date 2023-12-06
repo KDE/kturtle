@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-16 01:54+0000\n"
+"POT-Creation-Date: 2023-12-06 01:35+0000\n"
 "PO-Revision-Date: 2007-08-18 15:50+0330\n"
 "Last-Translator: Nazanin Kazemi <kazemi@itland.ir>\n"
 "Language-Team: Persian <kde-i18n-fa@kde.org>\n"
@@ -220,55 +220,55 @@ msgstr "خطاها"
 msgid "No errors occurred yet."
 msgstr ""
 
-#: inspector.cpp:35
+#: inspector.cpp:37
 #, fuzzy, kde-format
 #| msgid "&Variables"
 msgid "Variables"
 msgstr "&متغیرها‌"
 
-#: inspector.cpp:42
+#: inspector.cpp:44
 #, fuzzy, kde-format
 msgid "Functions"
 msgstr "توابع &یادگرفته‌شده‌"
 
-#: inspector.cpp:49
+#: inspector.cpp:51
 #, fuzzy, kde-format
 msgid "Tree"
 msgstr "&درخت کد‌"
 
-#: inspector.cpp:93 inspector.cpp:111
+#: inspector.cpp:95 inspector.cpp:113
 #, kde-format
 msgid "name"
 msgstr "نام"
 
-#: inspector.cpp:93
+#: inspector.cpp:95
 #, kde-format
 msgid "value"
 msgstr "مقدار"
 
-#: inspector.cpp:93
+#: inspector.cpp:95
 #, kde-format
 msgid "type"
 msgstr "نوع"
 
-#: inspector.cpp:103
+#: inspector.cpp:105
 #, fuzzy, kde-format
 #| msgid "&Variables"
 msgid "No variables"
 msgstr "&متغیرها‌"
 
-#: inspector.cpp:111
+#: inspector.cpp:113
 #, kde-format
 msgid "parameters"
 msgstr "پارامترها"
 
-#: inspector.cpp:120
+#: inspector.cpp:122
 #, fuzzy, kde-format
 #| msgid "&Learned Functions"
 msgid "No learned functions"
 msgstr "توابع &یادگرفته‌شده‌"
 
-#: inspector.cpp:163
+#: inspector.cpp:165
 #, fuzzy, kde-format
 #| msgctxt "@info:status there are no examples"
 #| msgid "(empty)"
@@ -276,22 +276,22 @@ msgctxt "undefined type of a variable"
 msgid "empty"
 msgstr ")خالی("
 
-#: inspector.cpp:170
+#: inspector.cpp:172
 #, kde-format
 msgid "boolean"
 msgstr "بولی"
 
-#: inspector.cpp:173
+#: inspector.cpp:175
 #, kde-format
 msgid "number"
 msgstr "شماره"
 
-#: inspector.cpp:176
+#: inspector.cpp:178
 #, kde-format
 msgid "string"
 msgstr "رشته"
 
-#: inspector.cpp:208
+#: inspector.cpp:210
 #, kde-format
 msgid "None"
 msgstr "هیچ‌کدام"
