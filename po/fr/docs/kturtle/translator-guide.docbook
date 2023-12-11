@@ -6,9 +6,9 @@
 <para
 >Lorsque vous traduisez &kturtle; dans une nouvelle langue, vous trouverez, en plus des chaînes de l'interface graphique, des commandes de programmation, des exemples et des messages d'erreurs inclus dans les fichiers standards au format <filename class="extension"
 >.pot</filename
->, de la même façon que ceux utilisés pour la traduction de &kde;. Tout est traduit en utilisant la méthode habituelle de traduction de &kde;. Il vous est ainsi fortement recommandé de vous documenter un peu sur la façon de traduire (comme vous le liriez probablement  dans les commentaires de traducteurs).</para>
+>, de la même façon que ceux utilisés pour la traduction de &kde;. Tout est traduit en utilisant la méthode habituelle de traduction de &kde;. Il vous est ainsi fortement recommandé de vous documenter un peu sur la façon de traduire (comme vous le liriez probablement dans les commentaires de traducteurs).</para>
 <para
->Veuillez regarder la page  <ulink url="http://edu.kde.org/kturtle/translator.php"
+>Veuillez regarder la page <ulink url="http://edu.kde.org/kturtle/translator.php"
 >http://edu.kde.org/kturtle/translator.php</ulink
 > pour plus d'informations à propos du processus de traduction. Merci beaucoup pour votre travail ! KTurtle dépend beaucoup de ses traductions.</para>
 </chapter>
