@@ -14,7 +14,7 @@
 # Ludovic Grossard <grossard@kde.org>, 2009, 2011.
 # Geoffray Levasseur <jeff.brandin@gmail.com>, 2009.
 # Geoffray Levasseur <geoffray.levasseurbrandin@numericable.fr>, 2009, 2010, 2013.
-# xavier <xavier.besnard@neuf.fr>, 2012, 2021.
+# Xavier Besnard <xavier.besnard@kde.org>, 2012, 2021.
 # Sebastien Renard <renard@kde.org>, 2014.
 # Johnny Jazeix <jazeix@gmail.com>, 2020.
 # Noé Lopez <noelopez@free.fr>, 2022.
