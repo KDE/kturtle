@@ -1576,12 +1576,12 @@ msgstr "Talla: Talla el text seleccionat al porta-retalls"
 #: mainwindow.cpp:239
 #, kde-format
 msgid "Copy the selected text to the clipboard"
-msgstr "Copia el text seleccionat al porta-retalls"
+msgstr "Copia el text seleccionat a dins del porta-retalls"
 
 #: mainwindow.cpp:240
 #, kde-format
 msgid "Copy: Copy the selected text to the clipboard"
-msgstr "Copia: Copia el text seleccionat al porta-retalls"
+msgstr "Copia: Copia el text seleccionat a dins del porta-retalls"
 
 #: mainwindow.cpp:245
 #, kde-format
