@@ -1566,12 +1566,12 @@ msgstr "Refés: Refà un canvi prèviament desfet en l'editor"
 #: mainwindow.cpp:233
 #, kde-format
 msgid "Cut the selected text to the clipboard"
-msgstr "Talla el text seleccionat al porta-retalls"
+msgstr "Talla el text seleccionat a dins del porta-retalls"
 
 #: mainwindow.cpp:234
 #, kde-format
 msgid "Cut: Cut the selected text to the clipboard"
-msgstr "Talla: Talla el text seleccionat al porta-retalls"
+msgstr "Talla: Talla el text seleccionat a dins del porta-retalls"
 
 #: mainwindow.cpp:239
 #, kde-format
