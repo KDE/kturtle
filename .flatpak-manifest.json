@@ -7,7 +7,7 @@
     "command": "kturtle",
     "tags": ["nightly"],
     "desktop-file-name-suffix": " (Nightly)",
-    "finish-args": ["--share=network", "--share=ipc", "--socket=x11", "--socket=wayland" ],
+    "finish-args": ["--share=network", "--share=ipc", "--socket=fallback-x11", "--socket=wayland" ],
 
     "modules": [
         {
