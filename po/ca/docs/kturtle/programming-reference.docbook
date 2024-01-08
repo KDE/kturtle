@@ -1164,9 +1164,9 @@ $answer = 10 &gt; 3
     <varlistentry
 > 
       <term
->reset (inicialitza)<indexterm
+>reset (restableix)<indexterm
 ><primary
->reset (inicialitza)</primary
+>reset (restableix)</primary
 ></indexterm
 ></term>
       <listitem
