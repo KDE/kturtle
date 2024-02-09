@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-06 01:35+0000\n"
-"PO-Revision-Date: 2024-02-04 00:02+0200\n"
+"PO-Revision-Date: 2024-02-08 15:37+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -57,11 +57,10 @@ msgid "strikeout"
 msgstr "קו חוצה"
 
 #: colorpicker.cpp:29
-#, fuzzy, kde-format
-#| msgid "Color Picker"
+#, kde-format
 msgctxt "@title:window"
 msgid "Color Picker"
-msgstr "בוחר צבעים"
+msgstr "בורר צבעים"
 
 #: colorpicker.cpp:48
 #, kde-format
@@ -100,9 +99,9 @@ msgid ""
 msgstr ""
 
 #: console.cpp:36
-#, fuzzy, kde-format
+#, kde-format
 msgid "Console:"
-msgstr "שגיאה בפתיחה"
+msgstr "מסוף:"
 
 #: console.cpp:79
 #, kde-format
@@ -110,25 +109,25 @@ msgid "<p style='white-space:pre'><b>ERROR:</b> %1</p>"
 msgstr ""
 
 #: directiondialog.cpp:195
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Direction Chooser"
-msgstr "תיאור"
+msgstr "בורר כיוונים"
 
 #: directiondialog.cpp:226
-#, fuzzy, kde-format
+#, kde-format
 msgid "Command &type:"
-msgstr "&הערה"
+msgstr "סוג &פקודה:"
 
 #: directiondialog.cpp:241
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Previous direction:"
-msgstr "&עצור ביצוע"
+msgstr "הכיוון ה&קודם:"
 
 #: directiondialog.cpp:258
-#, fuzzy, kde-format
+#, kde-format
 msgid "&New direction:"
-msgstr "תיאור"
+msgstr "&כיוון חדש:"
 
 #: editor.cpp:146
 #, kde-format
@@ -183,10 +182,10 @@ msgid "&Discard Changes"
 msgstr "&התעלם משינויים"
 
 #: errordialog.cpp:27
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Errors"
-msgstr "שגיאה בפתיחה"
+msgstr "שגיאות:"
 
 #: errordialog.cpp:42
 #, fuzzy, kde-format
@@ -238,14 +237,14 @@ msgid "Tree"
 msgstr "עץ"
 
 #: inspector.cpp:95 inspector.cpp:113
-#, fuzzy, kde-format
+#, kde-format
 msgid "name"
-msgstr ">שם<"
+msgstr "שם"
 
 #: inspector.cpp:95
 #, fuzzy, kde-format
 msgid "value"
-msgstr "אמת"
+msgstr "ערך"
 
 #: inspector.cpp:95
 #, kde-format
@@ -284,14 +283,14 @@ msgid "number"
 msgstr "מספר"
 
 #: inspector.cpp:178
-#, fuzzy, kde-format
+#, kde-format
 msgid "string"
-msgstr ">מחרוזת<"
+msgstr "מחרוזת"
 
 #: inspector.cpp:210
-#, fuzzy, kde-format
+#, kde-format
 msgid "None"
-msgstr "סיים."
+msgstr "אין"
 
 #: interpreter/executer.cpp:72
 #, kde-format
@@ -524,9 +523,9 @@ msgid "Expected a command, instead got '%1'"
 msgstr ""
 
 #: interpreter/parser.cpp:71
-#, fuzzy, kde-format
+#, kde-format
 msgid "Could not understand '%1'"
-msgstr "לא מסוגל להבין ']'"
+msgstr "לא ניתן לפענח את ‚%1’"
 
 #: interpreter/parser.cpp:106
 #, kde-format
@@ -1844,9 +1843,9 @@ msgid "Console"
 msgstr "מסוף"
 
 #: mainwindow.cpp:409
-#, fuzzy, kde-format
+#, kde-format
 msgid "Execute"
-msgstr "מהירות ריצה"
+msgstr "הפעלה"
 
 #: mainwindow.cpp:411
 #, kde-format
@@ -1883,10 +1882,10 @@ msgid ""
 msgstr ""
 
 #: mainwindow.cpp:435
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:radio"
 msgid "&Full Speed"
-msgstr "מהירות מרבית"
+msgstr "מהירות מ&לאה"
 
 #: mainwindow.cpp:439
 #, kde-format
@@ -1899,10 +1898,10 @@ msgid "Full Speed: Run the program at full speed"
 msgstr ""
 
 #: mainwindow.cpp:445
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:radio choose the slow speed"
 msgid "&Slow"
-msgstr "לאט"
+msgstr "&לאט"
 
 #: mainwindow.cpp:448
 #, kde-format
@@ -1915,10 +1914,10 @@ msgid "Slow Speed: Run the program at a slow speed"
 msgstr ""
 
 #: mainwindow.cpp:454
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:radio"
 msgid "S&lower"
-msgstr "לאט יותר"
+msgstr "לאט יו&תר"
 
 #: mainwindow.cpp:457
 #, kde-format
@@ -1931,10 +1930,10 @@ msgid "Slower Speed: Run the program at a slower speed"
 msgstr ""
 
 #: mainwindow.cpp:463
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:radio"
 msgid "Sl&owest"
-msgstr "הכי לאט"
+msgstr "ה&כי לאט"
 
 #: mainwindow.cpp:466
 #, kde-format
@@ -2026,9 +2025,9 @@ msgid " Line: %1 Column: %2 "
 msgstr " שורה: %1 טור: %2"
 
 #: mainwindow.cpp:756
-#, fuzzy, kde-format
+#, kde-format
 msgid "\"%1\" <%2>"
-msgstr "\"%1\" (%2)"
+msgstr "„%1” <%2>"
 
 #: mainwindow.cpp:759
 #, kde-format
