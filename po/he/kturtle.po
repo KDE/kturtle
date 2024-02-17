@@ -10,16 +10,16 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-06 01:35+0000\n"
-"PO-Revision-Date: 2024-02-15 23:18+0200\n"
+"PO-Revision-Date: 2024-02-16 13:13+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.4\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -90,13 +90,15 @@ msgstr "ה&דבקה לעורך"
 #: console.cpp:33 console.cpp:60
 #, kde-format
 msgid "Write a command here and press enter..."
-msgstr ""
+msgstr "יש לכתוב כאן פקודה וללחוץ על אנטר - enter…"
 
 #: console.cpp:34
 #, kde-format
 msgid ""
 "Console: quickly run single commands -- write a command here and press enter."
 msgstr ""
+"מסוף: הרצת פקודות בודדות במהירות -- יש לכתוב כאן פקודה וללחוץ על אנטר - "
+"enter."
 
 #: console.cpp:36
 #, kde-format
@@ -106,7 +108,7 @@ msgstr "מסוף:"
 #: console.cpp:79
 #, kde-format
 msgid "<p style='white-space:pre'><b>ERROR:</b> %1</p>"
-msgstr ""
+msgstr "<p style='white-space:pre'><b>שגיאה:</b> %1</p>"
 
 #: directiondialog.cpp:195
 #, kde-format
@@ -152,6 +154,9 @@ msgid ""
 "with this version of KTurtle.\n"
 "Cannot open %1"
 msgstr ""
+"הקובץ שניסית לפתוח הוא לא קובץ סקריפט תקני של KTurtle או שאינו תואם לגרסה "
+"הזאת של KTurtle.\n"
+"אי אפשר לפתוח את %1"
 
 #: editor.cpp:231 editor.cpp:237
 #, kde-format
@@ -169,7 +174,8 @@ msgid ""
 "The program you are currently working on is not saved. By continuing you may "
 "lose the changes you have made."
 msgstr ""
-"התוכנה שאתה עובד עליה אינה שמורה. אם תמשיך אתה עלול לאבד את השינויים שביצעת."
+"התוכנית שכתבת עד כה אינה שמורה. המשך בתהליך עלול להוביל לאובדן השינויים "
+"שערכת."
 
 #: editor.cpp:269
 #, kde-format
@@ -179,7 +185,7 @@ msgstr "קובץ לא שמור"
 #: editor.cpp:269
 #, kde-format
 msgid "&Discard Changes"
-msgstr "&התעלם משינויים"
+msgstr "&התעלמות משינויים"
 
 #: errordialog.cpp:27
 #, kde-format
@@ -188,12 +194,12 @@ msgid "Errors"
 msgstr "שגיאות:"
 
 #: errordialog.cpp:42
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "In this list you find the error(s) that resulted from running your code.\n"
 "Good luck!"
 msgstr ""
-"ברשימה זו תמצא את השגיאה או שגיאות שנבעו מהרצת קוד ה־Logo שלך.\n"
+"ברשימה זו מופיעות השגיאות שקרו כתוצאה מהרצת הקוד שלך.\n"
 "בהצלחה!"
 
 #: errordialog.cpp:59
@@ -259,7 +265,7 @@ msgstr "אין משתנים"
 #: inspector.cpp:113
 #, kde-format
 msgid "parameters"
-msgstr "משתנים"
+msgstr "פרמטרים"
 
 #: inspector.cpp:122
 #, kde-format
@@ -303,68 +309,68 @@ msgid "The %1 command accepts no parameters."
 msgstr "הפקודה %1 לא מקבלת פרמטרים."
 
 #: interpreter/executer.cpp:272
-#, fuzzy, kde-format
+#, kde-format
 msgid "The %2 command was called with %3 but needs 1 parameter."
 msgid_plural "The %2 command was called with %3 but needs %1 parameters."
-msgstr[0] "הפקודה %2 נקראה עם %3 פרמטרים אבל צריכה פרמטר אחד."
-msgstr[1] "הפקודה %2 נקראה עם %3 פרמטרים אבל צריכה פרמטר אחד."
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "הפקודה %2 נקראה עם %3 אבל צריכה פרמטר אחד."
+msgstr[1] "הפקודה %2 נקראה עם %3 אבל צריכה שני פרמטרים."
+msgstr[2] "הפקודה %2 נקראה עם %3 אבל צריכה %1 פרמטרים."
+msgstr[3] "הפקודה %2 נקראה עם %3 אבל צריכה %1 פרמטרים."
 
 #: interpreter/executer.cpp:274
-#, fuzzy, kde-format
+#, kde-format
 msgid "The %2 command was called with %3 but only accepts 1 parameter."
 msgid_plural ""
 "The %2 command was called with %3 but only accepts %1 parameters."
-msgstr[0] "הפקודה %2 נקראה עם %3 פרמטרים אבל מקבלת רק פרמטר אחד."
-msgstr[1] "הפקודה %2 נקראה עם %3 פרמטרים אבל מקבלת רק פרמטר אחד."
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "הפקודה %2 נקראה עם %3 אבל מקבלת רק פרמטר אחד."
+msgstr[1] "הפקודה %2 נקראה עם %3 אבל מקבלת רק שני פרמטרים."
+msgstr[2] "הפקודה %2 נקראה עם %3 אבל מקבלת רק %1 פרמטרים."
+msgstr[3] "הפקודה %2 נקראה עם %3 אבל מקבלת רק %1 פרמטרים."
 
 #: interpreter/executer.cpp:292
 #, kde-format
 msgid "The %1 command only accepts a string as its parameter."
-msgstr "הפקודה %1 נקראה מקבלת רק מחרוזות בתור פרמטר."
+msgstr "הפקודה %1 מקבלת מחרוזת בלבד כפרמטר."
 
 #: interpreter/executer.cpp:294
 #, kde-format
 msgid "The %1 command only accepts strings as its parameters."
-msgstr "הפקודה %1 נקראה מקבלת רק מחרוזות בתור פרמטרים."
+msgstr "הפקודה %1 מקבלת מחרוזות בלבד כפרמטרים."
 
 #: interpreter/executer.cpp:299
 #, kde-format
 msgid "The %1 command only accepts a number as its parameter."
-msgstr "הפקודה %1 נקראה מקבלת רק מספרים בתור פרמטר."
+msgstr "הפקודה %1 מקבלת מספר בלבד כפרמטר."
 
 #: interpreter/executer.cpp:301
 #, kde-format
 msgid "The %1 command only accepts numbers as its parameters."
-msgstr "הפקודה %1 נקראה מקבלת רק מספרים בתור פרמטרים."
+msgstr "הפקודה %1 מקבלת מספרים בלבד כפרמטרים."
 
 #: interpreter/executer.cpp:306
-#, fuzzy, kde-format
+#, kde-format
 msgid "The %1 command only accepts an answer as its parameter."
-msgstr "הפקודה %1 נקראה מקבלת רק מספרים בתור פרמטר."
+msgstr "הפקודה %1 מקבלת תשובה בלבד כפרמטר."
 
 #: interpreter/executer.cpp:308
-#, fuzzy, kde-format
+#, kde-format
 msgid "The %1 command only accepts answers as its parameters."
-msgstr "הפקודה %1 נקראה מקבלת רק מספרים בתור פרמטרים."
+msgstr "הפקודה %1 מקבלת תשובות בלבד כפרמטרים."
 
 #: interpreter/executer.cpp:386
 #, kde-format
 msgid "The variable '%1' was used without first being assigned to a value"
-msgstr ""
+msgstr "נעשה שימוש במשתנה ‚%1’ מבלי שהוקצה לו ערך קודם לכן"
 
 #: interpreter/executer.cpp:405
 #, kde-format
 msgid "An unknown function named '%1' was called"
-msgstr ""
+msgstr "נקראה פונקציה לא מוכרת בשם ‚%1’"
 
 #: interpreter/executer.cpp:420
 #, kde-format
 msgid "The function '%1' was called with %2, while it should be called with %3"
-msgstr ""
+msgstr "הפונקציה ‚%1’ נקראה עם %2, בעוד שצריך היה לקרוא לה עם %3"
 
 #: interpreter/executer.cpp:422 interpreter/executer.cpp:423
 #, kde-format
@@ -372,10 +378,10 @@ msgctxt ""
 "The function '%1' was called with %2, while it should be called with %3"
 msgid "1 parameter"
 msgid_plural "%1 parameters"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "פרמטר"
+msgstr[1] "שני פרמטרים"
+msgstr[2] "%1 פרמטרים"
+msgstr[3] "%1 פרמטרים"
 
 #: interpreter/executer.cpp:627
 #, kde-format
@@ -538,9 +544,9 @@ msgid "Did not expect '%1', instead expected the line to end after %2"
 msgstr "לא אמור היה להיות ‚%1’, השורה אמורה הייתה להסתיים אחרי %2"
 
 #: interpreter/parser.cpp:115
-#, fuzzy, kde-format
+#, kde-format
 msgid "Expected an assignment, '=', after the variable '%1'"
-msgstr "צפוי \"=\" אחרי הפקודה %1"
+msgstr "אמורה להיות הצבה, ‚=’, אחרי המשתנה ‚%1’"
 
 #: interpreter/parser.cpp:119
 #, kde-format
@@ -549,14 +555,14 @@ msgstr ""
 "לא אמור היה להיות כאן ‚%1’, אמור היה להיות פה החלק הסוגר של הסוגריים, ‚)’"
 
 #: interpreter/parser.cpp:123
-#, fuzzy, kde-format
+#, kde-format
 msgid "Expected 'to' after 'for'"
-msgstr "צפוי \"*\" או \"/\""
+msgstr "אמור להיות ‚עד’ אחרי ‚לכל’"
 
 #: interpreter/parser.cpp:126
-#, fuzzy, kde-format
+#, kde-format
 msgid "Expected a name for a command after 'learn' command"
-msgstr "צפוי שם אחרי הפקודה %1"
+msgstr "אמור להיות שם לפקודה אחרי הפקודה ‚למידה’"
 
 #: interpreter/parser.cpp:232
 #, kde-format
@@ -578,9 +584,9 @@ msgid "'for' was called wrongly"
 msgstr "הקריאה להתניית ‚עבור’ שגויה"
 
 #: interpreter/parser.cpp:686
-#, fuzzy, kde-format
+#, kde-format
 msgid "Expected a scope after the 'learn' command"
-msgstr "צפוי שם אחרי הפקודה %1"
+msgstr "אמור להיות טווח אחרי הפקודה ‚למידה’"
 
 #: interpreter/translator.cpp:96
 #, kde-format
@@ -670,7 +676,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "for"
-msgstr "עבור"
+msgstr "לכל"
 
 #: interpreter/translator.cpp:178
 #, kde-format
@@ -805,7 +811,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "go"
-msgstr "מעבר"
+msgstr "לך"
 
 #: interpreter/translator.cpp:307
 #, kde-format
@@ -814,7 +820,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "gox"
-msgstr ""
+msgstr "לך-x"
 
 #: interpreter/translator.cpp:314
 #, kde-format
@@ -823,7 +829,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "gx"
-msgstr ""
+msgstr "לx"
 
 #: interpreter/translator.cpp:321
 #, kde-format
@@ -832,7 +838,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "goy"
-msgstr ""
+msgstr "לך-y"
 
 #: interpreter/translator.cpp:328
 #, kde-format
@@ -841,7 +847,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "gy"
-msgstr ""
+msgstr "לy"
 
 #: interpreter/translator.cpp:335
 #, kde-format
@@ -1012,7 +1018,7 @@ msgctxt ""
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "canvascolor"
-msgstr ""
+msgstr "צבע-משטח-ציור"
 
 #: interpreter/translator.cpp:468
 #, kde-format
@@ -1021,7 +1027,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "cc"
-msgstr ""
+msgstr "צמצ"
 
 #: interpreter/translator.cpp:475
 #, kde-format
@@ -1030,7 +1036,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "canvassize"
-msgstr ""
+msgstr "גודל-משטח-ציור"
 
 #: interpreter/translator.cpp:482
 #, kde-format
@@ -1039,7 +1045,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "cs"
-msgstr ""
+msgstr "גמצ"
 
 #: interpreter/translator.cpp:489
 #, kde-format
@@ -1048,7 +1054,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "spriteshow"
-msgstr ""
+msgstr "הצגת-דמות-מונפשת"
 
 #: interpreter/translator.cpp:496
 #, kde-format
@@ -1057,7 +1063,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "ss"
-msgstr ""
+msgstr "צדמ"
 
 #: interpreter/translator.cpp:503
 #, kde-format
@@ -1066,7 +1072,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "spritehide"
-msgstr ""
+msgstr "הסתרת-דמות-מונפשת"
 
 #: interpreter/translator.cpp:510
 #, kde-format
@@ -1075,7 +1081,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "sh"
-msgstr ""
+msgstr "סדם"
 
 #: interpreter/translator.cpp:517
 #, kde-format
@@ -1120,7 +1126,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "getx"
-msgstr ""
+msgstr "קבלת-x"
 
 #: interpreter/translator.cpp:552
 #, kde-format
@@ -1129,7 +1135,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "gety"
-msgstr ""
+msgstr "קבלת-y"
 
 #: interpreter/translator.cpp:559
 #, kde-format
@@ -1228,7 +1234,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "round"
-msgstr ""
+msgstr "עיגול"
 
 #: interpreter/translator.cpp:636
 #, kde-format
@@ -1262,7 +1268,7 @@ msgctxt ""
 "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn know how to properly translate it."
 msgid "curly"
-msgstr ""
+msgstr "מסולסל"
 
 #: interpreter/translator.cpp:692
 #, kde-format
@@ -1300,9 +1306,9 @@ msgstr "&עריכה"
 
 #. i18n: ectx: Menu (canvas)
 #: kturtleui.rc:41 mainwindow.cpp:499 mainwindow.cpp:521
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Canvas"
-msgstr "הדפס &בד ציור"
+msgstr "מ&שטח ציור"
 
 #. i18n: ectx: Menu (run)
 #: kturtleui.rc:47 mainwindow.cpp:298 mainwindow.cpp:417
@@ -1364,16 +1370,19 @@ msgid ""
 "programming tools available from the user interface. The programming "
 "language used is TurtleScript which allows its commands to be translated."
 msgstr ""
+"KTurtle היא סביבת פיתוח לימודים שמנסה להקל עד כמה שניתן על רכישת מיומנויות "
+"פיתוח תוכנה. כדי ליישם זאת, KTurtle מנגישה את כל כלי הפיתוח דרך מנשק המשתמש. "
+"שפת הפיתוח בשימוש היא TurtleScript שמאפשרת את תרגום הפקודות שלה."
 
 #: main.cpp:38
 #, kde-format
 msgid "(c) 2003-2009 Cies Breijs"
-msgstr ""
+msgstr "(c) 2003‏-2009 סיז ברייס"
 
 #: main.cpp:40
 #, kde-format
 msgid "Cies Breijs"
-msgstr ""
+msgstr "סיז ברייס"
 
 #: main.cpp:40
 #, kde-format
@@ -1406,6 +1415,8 @@ msgid ""
 "Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test "
 "scripts"
 msgstr ""
+"מפעיל את KTurtle במצב D-Bus (בלי ממשק גרפי), טוב לסקריפטים אוטומטיים של "
+"בדיקות יחידה"
 
 #: main.cpp:52
 #, kde-format
@@ -1413,6 +1424,8 @@ msgid ""
 "Starts KTurtle in testing mode (without a GUI), directly runs the specified "
 "local file"
 msgstr ""
+"מפעיל את KTurtle במצב בדיקה (בלי ממשק גרפי), מריץ את הקובץ המקומי שצוין "
+"ישירות"
 
 #: main.cpp:53
 #, kde-format
@@ -1420,6 +1433,7 @@ msgid ""
 "Specifies the localization language by a language code, defaults to \"en_US"
 "\" (only works in testing mode)"
 msgstr ""
+"מציין את שפת התרגום לפי קוד שפה, ברירת המחדל היא „en_US” (עובד רק במצב בדיקה"
 
 #. i18n("Only tokenizes the turtle code (only works in testing mode)")));
 #: main.cpp:55
@@ -1427,7 +1441,7 @@ msgstr ""
 msgid ""
 "Translates turtle code to embeddable C++ example strings (for developers "
 "only)"
-msgstr ""
+msgstr "מתרגם את קוד הצב למחרוזות לדוגמה ב־C++‎ שניתן להטמיע (למתכנתים בלבד)"
 
 #: mainwindow.cpp:61
 #, kde-format
@@ -1637,14 +1651,14 @@ msgid "Export to &Image (PNG)..."
 msgstr "ייצוא ל&תמונה (PNG)…"
 
 #: mainwindow.cpp:281
-#, fuzzy, kde-format
+#, kde-format
 msgid "Export the current canvas to a PNG raster image"
-msgstr "שמור בד ציור בתור תמונה"
+msgstr "ייצוא משטח הציור הנוכחי לתמונת PNG מעובדת"
 
 #: mainwindow.cpp:282
 #, kde-format
 msgid "Export to PNG: Export the current canvas to a PNG raster image"
-msgstr ""
+msgstr "ייצוא ל־PNG: ייצוא משטח הציור הנוכחי לתמונת PNG מעובדת"
 
 #: mainwindow.cpp:286
 #, kde-format
@@ -1654,27 +1668,27 @@ msgstr "ייצוא ל&ציור (SVG)…"
 #: mainwindow.cpp:287
 #, kde-format
 msgid "Export the current canvas to Scalable Vector Graphics"
-msgstr ""
+msgstr "ייצוא משטח הציור הנוכחי לגרפיקת וקטורים נמתחת (SVG)"
 
 #: mainwindow.cpp:288
 #, kde-format
 msgid "Export to SVG: Export the current canvas to Scalable Vector Graphics"
-msgstr ""
+msgstr "ייצוא ל־SVG: ייצוא משטח הציור הנוכחי לגרפיקת וקטורים נמתחת (SVG)"
 
 #: mainwindow.cpp:291
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Print Canvas..."
-msgstr "פקודות הניתוח התחבירי..."
+msgstr "ה&דפסת משטח ציור…"
 
 #: mainwindow.cpp:293
-#, fuzzy, kde-format
+#, kde-format
 msgid "Print the canvas"
-msgstr "הדפס &קוד Logo"
+msgstr "הדפסת משטח הציור"
 
 #: mainwindow.cpp:294
-#, fuzzy, kde-format
+#, kde-format
 msgid "Print: Print the canvas"
-msgstr "הדפס &קוד Logo"
+msgstr "הדפסה: הדפסת משטח הציור"
 
 #: mainwindow.cpp:301
 #, kde-format
@@ -1968,7 +1982,7 @@ msgstr "מהירות צעידה: הרצת התוכנית תוך התעכבות �
 #, kde-format
 msgid ""
 "Canvas: This is where the turtle moves and draws when the program is running"
-msgstr ""
+msgstr "משטח ציור: כאן הצב נע ומצייר כשהתוכנית פעילה"
 
 #: mainwindow.cpp:505
 #, kde-format
@@ -2141,7 +2155,7 @@ msgstr "שמירה כ־SVG"
 #: mainwindow.cpp:1030
 #, kde-format
 msgid "Scalable Vector Graphics"
-msgstr ""
+msgstr "גרפיקת וקטורית נמתחת (SVG)"
 
 #: mainwindow.cpp:1040
 #, kde-format
