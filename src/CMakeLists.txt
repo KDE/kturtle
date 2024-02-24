@@ -75,6 +75,16 @@ target_link_libraries(kturtle
 
 target_link_libraries(kturtle Qt6::Core5Compat Qt6::SvgWidgets)
 
+if(APPLE)
+    set_target_properties(kturtle PROPERTIES
+        MACOSX_BUNDLE_DISPLAY_NAME "KTurtle"
+        MACOSX_BUNDLE_BUNDLE_NAME "KTurtle"
+        MACOSX_BUNDLE_LONG_VERSION_STRING "KTurtle ${RELEASE_SERVICE_VERSION}"
+        MACOSX_BUNDLE_SHORT_VERSION_STRING "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_VERSION_MINOR}"
+        MACOSX_BUNDLE_BUNDLE_VERSION "${RELEASE_SERVICE_VERSION}"
+        MACOSX_BUNDLE_GUI_IDENTIFIER "org.kde.kturtle"
+        MACOSX_BUNDLE_COPYRIGHT "2003-2024 The KTurtle Developers")
+endif()
 
 install (TARGETS  kturtle          ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 install (PROGRAMS    org.kde.kturtle.desktop  DESTINATION ${KDE_INSTALL_APPDIR})
