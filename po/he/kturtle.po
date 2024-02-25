@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-06 01:35+0000\n"
-"PO-Revision-Date: 2024-02-16 13:13+0200\n"
+"PO-Revision-Date: 2024-02-23 14:35+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1822,7 +1822,7 @@ msgstr "הצגת שגיאות: הצגת או הסתרת לשונית השגיא�
 #: mainwindow.cpp:377
 #, kde-format
 msgid "Show &Line Numbers"
-msgstr "הראה &מספרי שורות"
+msgstr "הצגת מ&מספרי שורות"
 
 #: mainwindow.cpp:379
 #, kde-format
@@ -2039,7 +2039,7 @@ msgstr "עזרה אודות: %1"
 #: mainwindow.cpp:748
 #, kde-format
 msgid " Line: %1 Column: %2 "
-msgstr " שורה: %1 טור: %2"
+msgstr " שורה: %1 עמודה: %2"
 
 #: mainwindow.cpp:756
 #, kde-format
@@ -2054,17 +2054,17 @@ msgstr "<משתנה>"
 #: mainwindow.cpp:760
 #, kde-format
 msgid "<number>"
-msgstr ">מספר<"
+msgstr "<מספר>"
 
 #: mainwindow.cpp:761
 #, kde-format
 msgid "<comment>"
-msgstr ">הערה<"
+msgstr "<הערה>"
 
 #: mainwindow.cpp:762
 #, kde-format
 msgid "<string>"
-msgstr ">מחרוזת<"
+msgstr "<מחרוזת>"
 
 #: mainwindow.cpp:768
 #, kde-format
