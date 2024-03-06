@@ -66,15 +66,12 @@ target_link_libraries(kturtle
     Qt6::Gui
     Qt6::Xml
     Qt6::Svg
+    Qt6::SvgWidgets
     Qt6::PrintSupport
     KF6::TextWidgets
     KF6::Crash
     KF6::XmlGui
 )
-
-
-target_link_libraries(kturtle Qt6::Core5Compat Qt6::SvgWidgets)
-
 
 install (TARGETS  kturtle          ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 install (PROGRAMS    org.kde.kturtle.desktop  DESTINATION ${KDE_INSTALL_APPDIR})

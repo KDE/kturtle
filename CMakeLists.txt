@@ -34,7 +34,6 @@ find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Widgets
     PrintSupport
 )
-find_package(Qt6Core5Compat)
 find_package(Qt6SvgWidgets)
 
 find_package(KF6 ${KF5_MIN_VERSION} REQUIRED

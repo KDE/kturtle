@@ -7,7 +7,7 @@
 #include "translator.h"
 
 #include <KLocalizedString>
-#include <QRegExp>
+#include <QRegularExpression>
 #include "token.h"
 
 
@@ -748,14 +748,16 @@ QString Translator::localizeScript(const QString& untranslatedScript)
 {
 	QString result = untranslatedScript;
     Translator* translator = Translator::instance();
-    QRegExp rx(QStringLiteral("@\\(.*\\)"));
-	rx.setMinimal(true);  // make it not greedy
+    QRegularExpression rx(QStringLiteral("@\\((.*?)\\)"));
 
 	int pos = 0;
-	while ((pos = rx.indexIn(result, pos)) != -1) {
-		QString original = result.mid(pos, rx.matchedLength());
-		original = original.mid(2, original.length() - 3);
-		result.replace(pos, rx.matchedLength(), translator->default2localized(original));
+	while (true) {
+		const auto match = rx.match(result, pos);
+		if (!match.hasMatch()) {
+			break;
+		}
+		pos = match.capturedStart();
+		result.replace(pos, match.capturedLength(), translator->default2localized(match.captured(1)));
 	}
 
 	return result;
