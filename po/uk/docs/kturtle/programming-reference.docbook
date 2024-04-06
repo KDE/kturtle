@@ -624,8 +624,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->вперед X</screen>
-<userinput
+>вперед X</screen
+><userinput
 >вперед</userinput
 > наказує черепашці просунутися вперед на X пікселів. Якщо перо опущено, черепашка залишатиме по собі слід у вигляді лінії. Команду <userinput
 >вперед</userinput
@@ -648,8 +648,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->назад X</screen>
-Команда <userinput
+>назад X</screen
+>Команда <userinput
 >назад</userinput
 > наказує черепашці просунутися назад на X пікселів. Якщо перо опущено, черепашка залишатиме по собі слід у вигляді лінії. Команду <userinput
 >назад</userinput
@@ -672,8 +672,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->ліворуч X</screen>
-Команда <userinput
+>ліворуч X</screen
+>Команда <userinput
 >ліворуч</userinput
 > наказує черепашці повернутися на X градусів ліворуч. Команду <userinput
 >ліворуч</userinput
@@ -696,8 +696,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->праворуч X</screen>
-Команда <userinput
+>праворуч X</screen
+>Команда <userinput
 >праворуч</userinput
 > наказує черепашці повернутися на X градусів праворуч. Команду <userinput
 >праворуч</userinput
@@ -720,8 +720,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->напрямок X</screen>
-Команда <userinput
+>напрямок X</screen
+>Команда <userinput
 >напрямок</userinput
 > спрямовує черепашку у напрямку X градусів, відрахованих від нульового напрямку, безвідносно від попереднього напрямку, куди її було спрямовано. Команду <userinput
 >напрямок</userinput
@@ -744,8 +744,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->візьми_напрям</screen>
-Команда <userinput
+>візьми_напрям</screen
+>Команда <userinput
 >візьми_напрям</userinput
 > повертає напрямок черепашки у форматі градусів, відрахованих від нульового напрямку, де нулеві відповідає напрямок вгору.</para
 ></listitem>
@@ -764,8 +764,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->центр</screen>
-Команда <userinput
+>центр</screen
+>Команда <userinput
 >центр</userinput
 > пересуває черепашку у центр полотна.</para
 ></listitem>
@@ -784,8 +784,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->перейди X,Y</screen>
-Команда <userinput
+>перейди X,Y</screen
+>Команда <userinput
 >перейди</userinput
 > наказує черепашці перейти до вказаного місця на полотні. Це місце знаходиться у X <glossterm linkend="pixels"
 >пікселях</glossterm
@@ -808,8 +808,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->перейди_x X</screen>
-Команда <userinput
+>перейди_x X</screen
+>Команда <userinput
 >перейди_x</userinput
 > наказує черепашці перейти до точки, розміщеної за X <glossterm linkend="pixels"
 >пікселів</glossterm
@@ -834,8 +834,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->перейди_y Y</screen>
-Команда <userinput
+>перейди_y Y</screen
+>Команда <userinput
 >перейди_y</userinput
 > наказує черепашці перейти до точки, розміщеної за Y <glossterm linkend="pixels"
 >пікселів</glossterm
@@ -923,8 +923,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->підніми_перо</screen>
-Команда <userinput
+>підніми_перо</screen
+>Команда <userinput
 >підніми_перо</userinput
 > піднімає перо над полотном. Якщо перо <quote
 >піднято</quote
@@ -951,8 +951,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->опусти_перо</screen>
-Команда <userinput
+>опусти_перо</screen
+>Команда <userinput
 >опусти_перо</userinput
 > опускає перо на полотно. Якщо перо <quote
 >опущено</quote
@@ -979,8 +979,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->розмір_пера X</screen>
-Команда <userinput
+>розмір_пера X</screen
+>Команда <userinput
 >розмір_пера</userinput
 > встановлює товщину лінії, яку лишає перо, у значення X <glossterm linkend="pixels"
 >пікселів</glossterm
@@ -1005,8 +1005,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->колір_пера R,G,B</screen>
-Команда <userinput
+>колір_пера R,G,B</screen
+>Команда <userinput
 >колір_пера</userinput
 > встановлює колір лінії, яку лишає по собі перо. Команда <userinput
 >колір_пера</userinput
@@ -1039,8 +1039,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->розмір_полотна X,Y</screen>
-За допомогою команди <userinput
+>розмір_полотна X,Y</screen
+>За допомогою команди <userinput
 >розмір_полотна</userinput
 > ви можете встановити розмір полотна. Ця команда отримує вхідні значення X і Y, де X — нова ширина полотна у <glossterm linkend="pixels"
 >пікселях</glossterm
@@ -1067,8 +1067,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->колір_полотна R,G,B</screen>
-Команда <userinput
+>колір_полотна R,G,B</screen
+>Команда <userinput
 >колір_полотна</userinput
 > встановлює колір тла полотна. Команда <userinput
 >колір_полотна</userinput
@@ -1102,8 +1102,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->зітри</screen>
-За допомогою команди <userinput
+>зітри</screen
+>За допомогою команди <userinput
 >зітри</userinput
 > ви можете витерти всі малюнки з полотна. При цьому всі інші параметри, позиція і напрямок черепашки, колір тла полотна, видимість черепашки і розмір полотна, залишаться незмінними:</para
 ></listitem>
@@ -1122,8 +1122,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->перезапусти</screen>
-Команда <userinput
+>перезапусти</screen
+>Команда <userinput
 >перезапусти</userinput
 > очищує все набагато ґрунтовніше за команду <userinput
 >зітри</userinput
@@ -1161,8 +1161,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->покажи_черепашку</screen>
-Команда <userinput
+>покажи_черепашку</screen
+>Команда <userinput
 >покажи_черепашку</userinput
 > робить черепашку знову видимою після того, як її було сховано. Команду <userinput
 >покажи_черепашку</userinput
@@ -1185,8 +1185,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->сховай_черепашку</screen>
-Команда <userinput
+>сховай_черепашку</screen
+>Команда <userinput
 >сховай_черепашку</userinput
 > ховає черепашку. Цією командою можна скористатися, якщо черепашка не вписується у ваш малюнок. Команду <userinput
 >сховай_черепашку</userinput
@@ -1218,8 +1218,8 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->напиши X</screen>
-Команда <userinput
+>напиши X</screen
+>Команда <userinput
 >напиши</userinput
 > використовується для того, щоб наказати черепашці написати щось на полотні. Команда <userinput
 >напиши</userinput
@@ -1249,8 +1249,8 @@ $автор = "Сіес"
       <listitem
 ><para
 ><screen
->розмір_літер X</screen>
-Команда <userinput
+>розмір_літер X</screen
+>Команда <userinput
 >розмір_літер</userinput
 > встановлює розмір шрифту, який використовуватиме команда <userinput
 >напиши</userinput
@@ -1281,8 +1281,8 @@ $автор = "Сіес"
       <listitem
 ><para
 ><screen
->округли(x)</screen>
-округлює задане число до найближчого цілого. <screen>
+>округли(x)</screen
+>округлює задане число до найближчого цілого. <screen>
 напиши округли(10.8)
 вперед 20
 напиши округли(10.3)
@@ -1304,8 +1304,8 @@ $автор = "Сіес"
       <listitem
 ><para
 ><screen
->випадкове X,Y</screen>
-Команда <userinput
+>випадкове X,Y</screen
+>Команда <userinput
 >випадкове</userinput
 > отримує вхідні дані і виводить вихідні. Як вхідні дані їй потрібні два числа, перше (X) вказує на мінімальне значення числа, яке можна вивести, а друге (Y) — встановлює максимальне значення цього числа. У результаті дії команди буде виведено випадково вибране число, яке буде більше або рівне за мінімальне значення і менше або рівне за максимальне значення. Ось невеликий приклад: <screen>
 повтори 500 {
@@ -1333,8 +1333,8 @@ $автор = "Сіес"
       <listitem
 ><para
 ><screen
->mod X,Y</screen>
-Команда <userinput
+>mod X,Y</screen
+>Команда <userinput
 >mod</userinput
 > повертає залишок від ділення першого числа на друге.</para
 ></listitem>
@@ -1353,8 +1353,8 @@ $автор = "Сіес"
       <listitem
 ><para
 ><screen
->корінь X</screen>
-Команду <userinput
+>корінь X</screen
+>Команду <userinput
 >корінь</userinput
 > призначено для обчислення квадратного кореня з числа, X.</para
 ></listitem>
@@ -1393,8 +1393,8 @@ $автор = "Сіес"
       <listitem
 ><para
 ><screen
->пі</screen>
-Ця команда повертає сталу &pi;, <userinput
+>пі</screen
+>Ця команда повертає сталу &pi;, <userinput
 >3.14159</userinput
 >.</para
 ></listitem>
@@ -1425,8 +1425,8 @@ $автор = "Сіес"
 >sin X
 cos X
 tg X
-</screen>
-За допомогою цих команд задаються три відомі тригонометричні функції <userinput
+</screen
+>За допомогою цих команд задаються три відомі тригонометричні функції <userinput
 >sin</userinput
 >, <userinput
 >cos</userinput
@@ -1463,8 +1463,8 @@ tg X
 >arcsin X
 arccos X
 arctg X
-</screen>
-Ці команди є оберненими функціями <link linkend="sin"
+</screen
+>Ці команди є оберненими функціями <link linkend="sin"
 >sin</link
 >, <link linkend="cos"
 >cos</link
@@ -1500,8 +1500,8 @@ arctg X
       <listitem
 ><para
 ><screen
->повідом X</screen>
-Команда <userinput
+>повідом X</screen
+>Команда <userinput
 >повідом</userinput
 > отримує як вхідні дані <link linkend="string"
 >рядок</link
@@ -1527,8 +1527,8 @@ arctg X
       <listitem
 ><para
 ><screen
->спитай X</screen>
-Команда <userinput
+>спитай X</screen
+>Команда <userinput
 >спитай</userinput
 > отримує вхідні дані у вигляді <link linkend="string"
 >рядка</link
@@ -1689,8 +1689,8 @@ $ім’я = спитай "Як вас звати?"
       <listitem
 ><para
 ><screen
->чекай X</screen>
-Команда <userinput
+>чекай X</screen
+>Команда <userinput
 >чекай</userinput
 > наказує черепашці чекати X секунд. <screen>
 повтори 36 {
@@ -1723,8 +1723,8 @@ $ім’я = спитай "Як вас звати?"
 ><screen
 >якщо <link linkend="boolean-value"
 >булеве значення</link
-> { ... }</screen>
-Код між двома фігурними дужками буде виконано, лише <userinput
+> { ... }</screen
+>Код між двома фігурними дужками буде виконано, лише <userinput
 >якщо</userinput
 > (якщо) результат обчислення <link linkend="boolean-value"
 >булевого значення</link
@@ -1768,8 +1768,8 @@ $x = 6
 ><screen
 >якщо <link linkend="boolean-value"
 >булеве значення</link
-> { ... } інакше { ... }</screen>
-Команду <userinput
+> { ... } інакше { ... }</screen
+>Команду <userinput
 >інакше</userinput
 > можна використовувати як додаток до регулятора виконання <link linkend="if"
 ><userinput
@@ -1820,8 +1820,8 @@ $x = 4
 ><screen
 >поки <link linkend="boolean-value"
 >булеве значення</link
-> { ... }</screen>
-Регулятор виконання <userinput
+> { ... }</screen
+>Регулятор виконання <userinput
 >поки</userinput
 > багато у чому схожий на <link linkend="if"
 ><userinput
@@ -1877,8 +1877,8 @@ $x = 1
 ><screen
 >повтори <link linkend="number"
 >число</link
-> { ... }</screen>
-Регулятор виконання <userinput
+> { ... }</screen
+>Регулятор виконання <userinput
 >повтори</userinput
 > дуже схожий на <link linkend="while"
 ><userinput
@@ -1920,8 +1920,8 @@ $x = 1
 >число</link
 > до <link linkend="number"
 >число</link
-> { ... }</screen>
-Цикл <userinput
+> { ... }</screen
+>Цикл <userinput
 >для</userinput
 > — це <quote
 >цикл з лічильником</quote
@@ -1969,8 +1969,8 @@ $x = 1
       <listitem
 ><para
 ><screen
->перерви</screen>
-Негайно припиняє виконання програми у рамках циклу і передає керування команді, яку розташовано одразу за поточним циклом.</para
+>перерви</screen
+>Негайно припиняє виконання програми у рамках циклу і передає керування команді, яку розташовано одразу за поточним циклом.</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -1990,8 +1990,8 @@ $x = 1
       <listitem
 ><para
 ><screen
->зупини</screen>
-Завершує виконання вашої програми.</para
+>зупини</screen
+>Завершує виконання вашої програми.</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -2013,8 +2013,8 @@ $x = 1
 ><screen
 >перевір <link linkend="boolean-value"
 >булеве значення</link
-></screen>
-Може бути використано для перевірки правильності роботи програми або введених даних. <screen
+></screen
+>Може бути використано для перевірки правильності роботи програми або введених даних. <screen
 >$введення = ask "У якому році ви народилися?"
 # рік має бути вказано як додатне значення
 перевір $введення 

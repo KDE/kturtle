@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-06 01:35+0000\n"
-"PO-Revision-Date: 2024-03-19 08:42+0200\n"
+"PO-Revision-Date: 2024-04-04 08:15+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1371,7 +1371,7 @@ msgid ""
 "language used is TurtleScript which allows its commands to be translated."
 msgstr ""
 "KTurtle היא סביבת פיתוח לימודים שמנסה להקל עד כמה שניתן על רכישת מיומנויות "
-"פיתוח תוכנה. כדי ליישם זאת, KTurtle מנגישה את כל כלי הפיתוח דרך מנשק המשתמש. "
+"פיתוח תוכנה. כדי ליישם זאת, KTurtle מנגישה את כל כלי הפיתוח דרך ממשק המשתמש. "
 "שפת הפיתוח בשימוש היא TurtleScript שמאפשרת את תרגום הפקודות שלה."
 
 #: main.cpp:38
@@ -2034,7 +2034,7 @@ msgstr "<אין כלום תחת הסמן>"
 #: mainwindow.cpp:743
 #, kde-format
 msgid "Help on: %1"
-msgstr "עזרה אודות: %1"
+msgstr "עזרה עם: %1"
 
 #: mainwindow.cpp:748
 #, kde-format
