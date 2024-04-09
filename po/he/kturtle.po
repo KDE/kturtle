@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-06 01:35+0000\n"
-"PO-Revision-Date: 2024-04-04 08:15+0300\n"
+"PO-Revision-Date: 2024-04-08 18:45+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1708,12 +1708,12 @@ msgstr "ה&שהיה"
 #: mainwindow.cpp:309
 #, kde-format
 msgid "Pause execution"
-msgstr "השהיית ביצוע"
+msgstr "השהית ביצוע"
 
 #: mainwindow.cpp:310
 #, kde-format
 msgid "Pause: Pause execution"
-msgstr "השהייה: השהיית הביצוע"
+msgstr "השהיה: השהיית הביצוע"
 
 #: mainwindow.cpp:313
 #, kde-format
