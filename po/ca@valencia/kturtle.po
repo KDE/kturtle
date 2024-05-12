@@ -91,7 +91,7 @@ msgstr "A&pega a l'editor"
 #: console.cpp:33 console.cpp:60
 #, kde-format
 msgid "Write a command here and press enter..."
-msgstr "Escriviu ací una ordre i premeu «entrada»..."
+msgstr "Escriviu ací una ordre i premeu «entrada»…"
 
 #: console.cpp:34
 #, kde-format
@@ -534,7 +534,7 @@ msgstr "No s'ha pogut interpretar «%1»"
 #: interpreter/parser.cpp:106
 #, kde-format
 msgid "A comma was expected here..."
-msgstr "Ací s'esperava una coma..."
+msgstr "Ací s'esperava una coma…"
 
 #: interpreter/parser.cpp:109
 #, kde-format
@@ -1485,7 +1485,7 @@ msgstr "Obri un fitxer recent: Obri un fitxer utilitzat recentment"
 #: mainwindow.cpp:187
 #, kde-format
 msgid "Get more examples..."
-msgstr "Aconseguix més exemples..."
+msgstr "Aconseguix més exemples…"
 
 #: mainwindow.cpp:196
 #, kde-format
@@ -1511,7 +1511,7 @@ msgstr ""
 #: mainwindow.cpp:205
 #, kde-format
 msgid "Export to &HTML..."
-msgstr "Exporta cap a &HTML..."
+msgstr "Exporta cap a &HTML…"
 
 #: mainwindow.cpp:206
 #, kde-format
@@ -1655,7 +1655,7 @@ msgstr ""
 #: mainwindow.cpp:280
 #, kde-format
 msgid "Export to &Image (PNG)..."
-msgstr "Exporta cap a &imatge (PNG)..."
+msgstr "Exporta cap a &imatge (PNG)…"
 
 #: mainwindow.cpp:281
 #, kde-format
@@ -1670,7 +1670,7 @@ msgstr "Exporta cap a PNG: Exporta el llenç actual a una imatge PNG"
 #: mainwindow.cpp:286
 #, kde-format
 msgid "Export to &Drawing (SVG)..."
-msgstr "Exporta cap a &dibuix (SVG)..."
+msgstr "Exporta cap a &dibuix (SVG)…"
 
 #: mainwindow.cpp:287
 #, kde-format
@@ -1686,7 +1686,7 @@ msgstr ""
 #: mainwindow.cpp:291
 #, kde-format
 msgid "&Print Canvas..."
-msgstr "Im&primix el llenç..."
+msgstr "Im&primix el llenç…"
 
 #: mainwindow.cpp:293
 #, kde-format
@@ -1747,7 +1747,7 @@ msgstr "Interromp: Para el programa en execució"
 #: mainwindow.cpp:327
 #, kde-format
 msgid "&Direction Chooser..."
-msgstr "Selector de &direcció..."
+msgstr "Selector de &direcció…"
 
 #: mainwindow.cpp:329
 #, kde-format
@@ -1762,7 +1762,7 @@ msgstr "Selector de direcció: Mostra el diàleg de selecció de direcció"
 #: mainwindow.cpp:333
 #, kde-format
 msgid "&Color Picker..."
-msgstr "Selector de &color..."
+msgstr "Selector de &color…"
 
 #: mainwindow.cpp:335
 #, kde-format
@@ -2161,7 +2161,7 @@ msgstr "sense títol"
 #: mainwindow.cpp:1012
 #, kde-format
 msgid "Save as Picture"
-msgstr "Anomena i guarda imatge"
+msgstr "Anomena i guarda com a imatge"
 
 #: mainwindow.cpp:1014
 #, kde-format
