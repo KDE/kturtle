@@ -26,9 +26,9 @@
 
 int main(int argc, char* argv[])
 {
-	KLocalizedString::setApplicationDomain(QByteArrayLiteral("kturtle"));
-
 	QApplication app(argc, argv);
+
+	KLocalizedString::setApplicationDomain(QByteArrayLiteral("kturtle"));
 	KCrash::initialize();
 
     KAboutData aboutData(QStringLiteral("kturtle"), i18n("KTurtle"), QLatin1String(KTURTLE_VERSION_STRING));
