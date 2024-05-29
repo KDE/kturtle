@@ -63,6 +63,7 @@ target_link_libraries(kturtle
     KF6::NewStuffWidgets
     KF6::I18n
     Qt6::Core
+    Qt6::DBus
     Qt6::Gui
     Qt6::Xml
     Qt6::Svg
