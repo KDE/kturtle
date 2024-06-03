@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-06 01:35+0000\n"
-"PO-Revision-Date: 2023-11-26 19:44+0100\n"
+"PO-Revision-Date: 2024-05-30 07:49+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -77,7 +77,7 @@ msgstr "Blua kvanto:"
 #: colorpicker.cpp:105 directiondialog.cpp:283
 #, kde-format
 msgid "&Copy to clipboard"
-msgstr "Kopii al tondujo"
+msgstr "&Kopii al tondujo"
 
 #: colorpicker.cpp:110 directiondialog.cpp:287
 #, kde-format
@@ -1967,7 +1967,7 @@ msgstr "Plej Malrapida Rapido: Rulu la programon kun la plej malrapida rapido"
 #, kde-format
 msgctxt "@option:radio"
 msgid "S&tep-by-Step"
-msgstr "Paŝon post paŝo"
+msgstr "Paŝon pos&t paŝo"
 
 #: mainwindow.cpp:475
 #, kde-format
