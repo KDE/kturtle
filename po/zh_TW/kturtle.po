@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-06 01:35+0000\n"
-"PO-Revision-Date: 2024-03-08 03:09+0900\n"
+"PO-Revision-Date: 2024-06-20 02:11+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -1731,7 +1731,7 @@ msgstr "方向選擇器：顯示方向選擇對話框"
 #: mainwindow.cpp:333
 #, kde-format
 msgid "&Color Picker..."
-msgstr "顏色挑選器(&C)..."
+msgstr "取色工具(&C)..."
 
 #: mainwindow.cpp:335
 #, kde-format
@@ -1741,7 +1741,7 @@ msgstr "顯示挑選顏色對話框"
 #: mainwindow.cpp:336
 #, kde-format
 msgid "Color Picker: Show the color picker dialog"
-msgstr "顏色挑選器：顯示挑選顏色對話框"
+msgstr "取色工具：顯示挑選顏色對話框"
 
 #: mainwindow.cpp:340
 #, kde-format
