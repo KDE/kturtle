@@ -2,22 +2,22 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Vít Pelčák <vit@pelcak.org>, 2010, 2011, 2013, 2014, 2017, 2019.
 # Tomáš Chvátal <tomas.chvatal@gmail.com>, 2012, 2013.
-# Vit Pelcak <vit@pelcak.org>, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-06 01:35+0000\n"
-"PO-Revision-Date: 2023-06-22 15:51+0200\n"
-"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
+"PO-Revision-Date: 2024-06-19 15:55+0200\n"
+"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.04.2\n"
+"X-Generator: Lokalize 24.05.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -263,7 +263,7 @@ msgstr "Žádné proměnné"
 #: inspector.cpp:113
 #, kde-format
 msgid "parameters"
-msgstr "Pomocné proměnné"
+msgstr "parametry"
 
 #: inspector.cpp:122
 #, kde-format
@@ -305,21 +305,17 @@ msgstr "Nelze se vrátit z vně funkce. "
 #: interpreter/executer.cpp:262
 #, kde-format
 msgid "The %1 command accepts no parameters."
-msgstr "Příkaz %1 nepřijímá žádné pomocné proměnné."
+msgstr "Příkaz %1 nepřijímá žádné parametry."
 
 #: interpreter/executer.cpp:272
 #, kde-format
 msgid "The %2 command was called with %3 but needs 1 parameter."
 msgid_plural "The %2 command was called with %3 but needs %1 parameters."
 msgstr[0] ""
-"Příkaz %2 byl volán s %3 pomocnými proměnnými, ale potřebuje 1 pomocnou "
-"proměnnou."
-msgstr[1] ""
-"Příkaz %2 byl volán s %3 pomocnými proměnnými, ale potřebuje %1 pomocné "
-"proměnné."
+"Příkaz %2 byl volán s %3 pomocnými proměnnými, ale potřebuje 1 parametrem."
+msgstr[1] "Příkaz %2 byl volán s %3 parametry, ale potřebuje %1 parametry."
 msgstr[2] ""
-"Příkaz %2 byl volán s %3 pomocnými proměnnými, ale potřebuje %1 pomocných "
-"proměnných."
+"Příkaz %2 byl volán s %3 pomocnými proměnnými, ale potřebuje %1 parametrů."
 
 # this is not quite translator comment, but programmer one - the declared "accepts 1 parameter" is incorect, IMHO, in the executer.cpp is the required count of parameters known but does not go into the message
 #: interpreter/executer.cpp:274
@@ -327,15 +323,9 @@ msgstr[2] ""
 msgid "The %2 command was called with %3 but only accepts 1 parameter."
 msgid_plural ""
 "The %2 command was called with %3 but only accepts %1 parameters."
-msgstr[0] ""
-"Příkaz %2 byl volán s %3 pomocnými proměnnými, ale přijímá jen 1 pomocnou "
-"proměnnou."
-msgstr[1] ""
-"Příkaz %2 byl volán s %3 pomocnými proměnnými, ale přijímá jen %1 pomocné "
-"proměnné."
-msgstr[2] ""
-"Příkaz %2 byl volán s %3 pomocnými proměnnými, ale přijímá jen %1 pomocných "
-"proměnných."
+msgstr[0] "Příkaz %2 byl volán s %3 parametry, ale přijímá jen 1 parametr."
+msgstr[1] "Příkaz %2 byl volán s %3 parametry, ale přijímá jen %1 parametry."
+msgstr[2] "Příkaz %2 byl volán s %3 parametry, ale přijímá jen %1 parametryů."
 
 #: interpreter/executer.cpp:292
 #, kde-format
@@ -345,7 +335,7 @@ msgstr "Příkaz %1 přijímá řetězec jen jako svou pomocnou proměnnou."
 #: interpreter/executer.cpp:294
 #, kde-format
 msgid "The %1 command only accepts strings as its parameters."
-msgstr "Příkaz %1 přijímá  řetězce jen jako své pomocné proměnné."
+msgstr "Příkaz %1 přijímá  řetězce jen jako své parametry."
 
 #: interpreter/executer.cpp:299
 #, kde-format
@@ -355,7 +345,7 @@ msgstr "Příkaz %1 přijímá jen číselnou pomocnou proměnnou."
 #: interpreter/executer.cpp:301
 #, kde-format
 msgid "The %1 command only accepts numbers as its parameters."
-msgstr "Příkaz %1 přijímá jen číselné pomocné proměnné."
+msgstr "Příkaz %1 přijímá jen číselné parametry."
 
 #: interpreter/executer.cpp:306
 #, kde-format
@@ -365,7 +355,7 @@ msgstr "Příkaz %1 přijímá jako svoji pomocnou proměnnou pouze odpověď."
 #: interpreter/executer.cpp:308
 #, kde-format
 msgid "The %1 command only accepts answers as its parameters."
-msgstr "Příkaz %1 přijímá jako svoje pomocné proměnné jen odpovědi."
+msgstr "Příkaz %1 přijímá jako svoje parametry jen odpovědi."
 
 #: interpreter/executer.cpp:386
 #, kde-format
