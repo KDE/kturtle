@@ -29,7 +29,6 @@ int main(int argc, char* argv[])
 	QApplication app(argc, argv);
 
 	KLocalizedString::setApplicationDomain(QByteArrayLiteral("kturtle"));
-	KCrash::initialize();
 
     KAboutData aboutData(QStringLiteral("kturtle"), i18n("KTurtle"), QLatin1String(KTURTLE_VERSION_STRING));
 	aboutData.setLicense(KAboutLicense::GPL);
@@ -44,6 +43,7 @@ int main(int argc, char* argv[])
 	QCommandLineParser parser;
 
 	KAboutData::setApplicationData(aboutData);
+	KCrash::initialize();
 	app.setWindowIcon(QIcon::fromTheme(QStringLiteral("kturtle"), app.windowIcon()));
 	aboutData.setupCommandLine(&parser);
 
