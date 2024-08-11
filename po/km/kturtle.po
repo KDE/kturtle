@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-06 01:35+0000\n"
+"POT-Creation-Date: 2024-08-11 00:37+0000\n"
 "PO-Revision-Date: 2012-07-16 16:17+0700\n"
 "Last-Translator: Sok Sophea <sophea@khmeros.info>\n"
 "Language-Team: Khmer <>\n"
@@ -1727,17 +1727,17 @@ msgstr "ជំនួយ"
 msgid "Main Toolbar"
 msgstr "របារ​ឧបករណ៍​មេ"
 
-#: main.cpp:34
+#: main.cpp:33
 #, kde-format
 msgid "KTurtle"
 msgstr "KTurtle"
 
-#: main.cpp:36
+#: main.cpp:35
 #, kde-format
 msgid "https://edu.kde.org/kturtle"
 msgstr ""
 
-#: main.cpp:37
+#: main.cpp:36
 #, kde-format
 msgid ""
 "KTurtle is an educational programming environment that aims to make learning "
@@ -1750,33 +1750,33 @@ msgstr ""
 "អ្នកប្រើ ។ ភាសា​កម្មវិធី​ដែល​បាន​ប្រើ​គឺ TurtleScript ហើយ​អនុញ្ញាត​ឲ្យ​បកប្រែ​ពាក្យ​បញ្ជា​របស់​វា​ទៀត​ផង "
 "។"
 
-#: main.cpp:38
+#: main.cpp:37
 #, fuzzy, kde-format
 #| msgid "Cies Breijs"
 msgid "(c) 2003-2009 Cies Breijs"
 msgstr "Cies Breijs"
 
-#: main.cpp:40
+#: main.cpp:39
 #, kde-format
 msgid "Cies Breijs"
 msgstr "Cies Breijs"
 
-#: main.cpp:40
+#: main.cpp:39
 #, kde-format
 msgid "Initiator and core developer"
 msgstr "អ្នក​ផ្ដួចផ្ដើម និង​អ្នក​អភិវឌ្ឍ​ស្នូល"
 
-#: main.cpp:41
+#: main.cpp:40
 #, kde-format
 msgid "Niels Slot"
 msgstr "Niels Slot"
 
-#: main.cpp:41 main.cpp:42
+#: main.cpp:40 main.cpp:41
 #, kde-format
 msgid "Core developer"
 msgstr "អ្នក​អភិវឌ្ឍ​ស្នូល"
 
-#: main.cpp:42
+#: main.cpp:41
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "Mauricio Piacentini"

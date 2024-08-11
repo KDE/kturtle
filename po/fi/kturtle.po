@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-06 01:35+0000\n"
+"POT-Creation-Date: 2024-08-11 00:37+0000\n"
 "PO-Revision-Date: 2022-04-28 18:48+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1361,18 +1361,18 @@ msgstr "Päätyökalurivi"
 
 # pmap: =/gen=KTurtlen/
 # pmap: =/elat=KTurtlesta/
-#: main.cpp:34
+#: main.cpp:33
 #, kde-format
 msgid "KTurtle"
 msgstr "KTurtle"
 
-#: main.cpp:36
+#: main.cpp:35
 #, kde-format
 msgid "https://edu.kde.org/kturtle"
 msgstr "https://edu.kde.org/kturtle"
 
 # HUOMIO: Tämä viesti on sisällöltään identtisenä myös www/edu_www.po:ssa.
-#: main.cpp:37
+#: main.cpp:36
 #, kde-format
 msgid ""
 "KTurtle is an educational programming environment that aims to make learning "
@@ -1385,32 +1385,32 @@ msgstr ""
 "ohjelmointityökalut on käytettävissä käyttöliittymästä. Käytetty "
 "ohjelmointikieli on TurtleScript, jonka komennot on mahdollista kääntää."
 
-#: main.cpp:38
+#: main.cpp:37
 #, kde-format
 msgid "(c) 2003-2009 Cies Breijs"
 msgstr "© 2003–2009 Cies Breijs"
 
-#: main.cpp:40
+#: main.cpp:39
 #, kde-format
 msgid "Cies Breijs"
 msgstr "Cies Breijs"
 
-#: main.cpp:40
+#: main.cpp:39
 #, kde-format
 msgid "Initiator and core developer"
 msgstr "Alkuunpanija ja keskeinen kehittäjä"
 
-#: main.cpp:41
+#: main.cpp:40
 #, kde-format
 msgid "Niels Slot"
 msgstr "Niels Slot"
 
-#: main.cpp:41 main.cpp:42
+#: main.cpp:40 main.cpp:41
 #, kde-format
 msgid "Core developer"
 msgstr "Keskeinen kehittäjä"
 
-#: main.cpp:42
+#: main.cpp:41
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "Mauricio Piacentini"

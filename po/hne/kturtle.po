@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-06 01:35+0000\n"
+"POT-Creation-Date: 2024-08-11 00:37+0000\n"
 "PO-Revision-Date: 2009-02-24 22:04+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
 "Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
@@ -1722,17 +1722,17 @@ msgstr "मदद (&H)"
 msgid "Main Toolbar"
 msgstr "मुख्य औजार पट्टी"
 
-#: main.cpp:34
+#: main.cpp:33
 #, kde-format
 msgid "KTurtle"
 msgstr "के-टर्टल"
 
-#: main.cpp:36
+#: main.cpp:35
 #, kde-format
 msgid "https://edu.kde.org/kturtle"
 msgstr ""
 
-#: main.cpp:37
+#: main.cpp:36
 #, fuzzy, kde-format
 #| msgid ""
 #| "KTurtle is an educational programming environment that aims to make "
@@ -1749,33 +1749,33 @@ msgstr ""
 "कोसिस करथे  - खासतौर मं बच्चा मन बर. केटर्टल के उद्देस्य हे - बच्चा मन ल गनित, ज्यामिति "
 "अउ प्रोग्रामिंग के आधारभूत बात ल सीखे मं मदद देना."
 
-#: main.cpp:38
+#: main.cpp:37
 #, fuzzy, kde-format
 #| msgid "Cies Breijs"
 msgid "(c) 2003-2009 Cies Breijs"
 msgstr "साये ब्रेइजस"
 
-#: main.cpp:40
+#: main.cpp:39
 #, kde-format
 msgid "Cies Breijs"
 msgstr "साये ब्रेइजस"
 
-#: main.cpp:40
+#: main.cpp:39
 #, kde-format
 msgid "Initiator and core developer"
 msgstr "इनिसिएटर अउ कोर डेवलपर"
 
-#: main.cpp:41
+#: main.cpp:40
 #, kde-format
 msgid "Niels Slot"
 msgstr "नील्ज स्लाट"
 
-#: main.cpp:41 main.cpp:42
+#: main.cpp:40 main.cpp:41
 #, kde-format
 msgid "Core developer"
 msgstr "कोर डेवलपर"
 
-#: main.cpp:42
+#: main.cpp:41
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "मारिसियो पियासेन्टिनी"
