@@ -4,7 +4,6 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-
 // This file is originally written by Walter Scheppers, but almost
 // every aspect of it is slightly changed by Cies Breijs.
 
@@ -13,141 +12,462 @@
 #include <errno.h>
 #include <math.h>
 
-#include <QRandomGenerator>
-#include <QTimer>  // for wait
 #include <QDebug>
+#include <QRandomGenerator>
+#include <QTimer> // for wait
 
 #include <KLocalizedString>
 #include <QtMath>
 
-
-void Executer::initialize(TreeNode* tree, ErrorList* _errorList)
+void Executer::initialize(TreeNode *tree, ErrorList *_errorList)
 {
-	rootNode       = tree;
-	newScope       = rootNode;
-	currentNode    = rootNode;
-	finished       = !currentNode->hasChildren();  // set finished to false unless the tree is empty
-	errorList      = _errorList;
+    rootNode = tree;
+    newScope = rootNode;
+    currentNode = rootNode;
+    finished = !currentNode->hasChildren(); // set finished to false unless the tree is empty
+    errorList = _errorList;
 
-	breaking       = false;
-	returning      = false;
-	waiting        = false;
-	returnValue    = nullptr;
-	
-	executeCurrent = false;
+    breaking = false;
+    returning = false;
+    waiting = false;
+    returnValue = nullptr;
 
-	functionTable.clear();
-	globalVariableTable.clear();
+    executeCurrent = false;
 
-	while (!functionStack.isEmpty()) {
-	    // In the ForTo loop, we can assign the globalVariableTable to an entry in the functionStack
-	    // we shouldn't delete this variableTable, so check for it.
-	    VariableTable* variableTable = functionStack.pop().variableTable;
-	    if(variableTable!=&globalVariableTable)
-		delete variableTable;
-	}
+    functionTable.clear();
+    globalVariableTable.clear();
+
+    while (!functionStack.isEmpty()) {
+        // In the ForTo loop, we can assign the globalVariableTable to an entry in the functionStack
+        // we shouldn't delete this variableTable, so check for it.
+        VariableTable *variableTable = functionStack.pop().variableTable;
+        if (variableTable != &globalVariableTable)
+            delete variableTable;
+    }
 }
-
 
 void Executer::execute()
 {
-	//Do we have to do anything?
-	if (finished || waiting) return;
+    // Do we have to do anything?
+    if (finished || waiting)
+        return;
 
-	if(executeCurrent) {
-		// executeCurrent is used to make sure the currentNode will be executed
-		// this way the tree will not be walked before the execution...
-		executeCurrent = false;
-		execute(currentNode);
-		return;
-	}
+    if (executeCurrent) {
+        // executeCurrent is used to make sure the currentNode will be executed
+        // this way the tree will not be walked before the execution...
+        executeCurrent = false;
+        execute(currentNode);
+        return;
+    }
 
-	if(returning) {
-		//We are returning from a function call
+    if (returning) {
+        // We are returning from a function call
 
-		// Handle returning in the top-level (not inside a function) as
-		// gracefully as possible.
-		// See: https://bugs.kde.org/show_bug.cgi?id=300949
-		if (functionStack.isEmpty()) {
-			addError(i18n("Cannot return outside a function. "), *(currentNode->token()), 0);
-			finished = true;
-			return;
-		}
+        // Handle returning in the top-level (not inside a function) as
+        // gracefully as possible.
+        // See: https://bugs.kde.org/show_bug.cgi?id=300949
+        if (functionStack.isEmpty()) {
+            addError(i18n("Cannot return outside a function. "), *(currentNode->token()), 0);
+            finished = true;
+            return;
+        }
 
-		// Take the last called function from the function stack
-		CalledFunction calledFunction = functionStack.pop();
-		
-		// Delete the local variables of the called function
-		delete calledFunction.variableTable;
-		currentNode = calledFunction.function;
+        // Take the last called function from the function stack
+        CalledFunction calledFunction = functionStack.pop();
 
-		if (returnValue == nullptr)
-			currentNode->setNullValue(); // Handle an empty return value
-		else
-			currentNode->setValue(returnValue);
+        // Delete the local variables of the called function
+        delete calledFunction.variableTable;
+        currentNode = calledFunction.function;
 
-		execute(currentNode);
-		return;
-	}
+        if (returnValue == nullptr)
+            currentNode->setNullValue(); // Handle an empty return value
+        else
+            currentNode->setValue(returnValue);
 
-	if (newScope == nullptr) {
-		TreeNode* currentParent = currentNode->parent();
-		currentNode = currentNode->nextSibling();
-		
-		if(currentNode == nullptr) { //running off sibling list
-			currentNode = currentParent;
-			
-			if(currentNode == rootNode) {
-				finished = true;
-				return;
-			}
+        execute(currentNode);
+        return;
+    }
 
-// 			printExe();  // debugging thing
+    if (newScope == nullptr) {
+        TreeNode *currentParent = currentNode->parent();
+        currentNode = currentNode->nextSibling();
 
-			execute(currentNode);
-			return;
-		}
+        if (currentNode == nullptr) { // running off sibling list
+            currentNode = currentParent;
 
-	}else{
-		// We're entering a new scope
-		// skip ahead to frist child (if any) else we will not get into the scope
-		if(newScope->hasChildren())
-			currentNode = newScope->firstChild();
-		else
-			currentNode = newScope;
+            if (currentNode == rootNode) {
+                finished = true;
+                return;
+            }
 
-		newScope = nullptr;
-	}
+            // 			printExe();  // debugging thing
 
+            execute(currentNode);
+            return;
+        }
 
-	while (currentNode->hasChildren() && currentNode->token()->type() != Token::Scope)
-		currentNode = currentNode->firstChild();
-	
-// 	printExe();  // debugging thing
+    } else {
+        // We're entering a new scope
+        // skip ahead to frist child (if any) else we will not get into the scope
+        if (newScope->hasChildren())
+            currentNode = newScope->firstChild();
+        else
+            currentNode = newScope;
 
-	execute(currentNode);
+        newScope = nullptr;
+    }
+
+    while (currentNode->hasChildren() && currentNode->token()->type() != Token::Scope)
+        currentNode = currentNode->firstChild();
+
+    // 	printExe();  // debugging thing
+
+    execute(currentNode);
 }
 
-
-void Executer::execute(TreeNode* node)
+void Executer::execute(TreeNode *node)
 {
-	if (finished) return;
+    if (finished)
+        return;
 
-	// Q_EMIT a signal for GUI
-	Token* t = node->token();
-// 	//qDebug() << "emitting token: '" << t->look() << "' - (" << t->startRow() << "," << t->startCol() << " - " << t->endRow() << "," << t->endCol() << ")";
+    // Q_EMIT a signal for GUI
+    Token *t = node->token();
+    // 	//qDebug() << "emitting token: '" << t->look() << "' - (" << t->startRow() << "," << t->startCol() << " - " << t->endRow() << "," << t->endCol() << ")";
 
-	// don't report scopes (their are not really executed)
-	if (t->type() != Token::Scope)
-		Q_EMIT currentlyExecuting(node);
+    // don't report scopes (their are not really executed)
+    if (t->type() != Token::Scope)
+        Q_EMIT currentlyExecuting(node);
 
-	// this method executes one node at the time
+    // this method executes one node at the time
 
-	// if (currentNode->token()->type() != Token::Scope) //qDebug() << "1234567890!!!!!";
+    // if (currentNode->token()->type() != Token::Scope) //qDebug() << "1234567890!!!!!";
 
-	switch (node->token()->type()) {
+    switch (node->token()->type()) {
+        // BEGIN GENERATED executer_switch_cpp CODE
 
-//BEGIN GENERATED executer_switch_cpp CODE
+        /* The code between the line that start with "//BEGIN GENERATED" and "//END GENERATED"
+         * is generated by "generate.rb" according to the definitions specified in
+         * "definitions.rb". Please make all changes in the "definitions.rb" file, since all
+         * all change you make here will be overwritten the next time "generate.rb" is run.
+         * Thanks for looking at the code!
+         */
+
+    case Token::Root:
+        executeRoot(node);
+        break;
+    case Token::Scope:
+        executeScope(node);
+        break;
+    case Token::Variable:
+        executeVariable(node);
+        break;
+    case Token::FunctionCall:
+        executeFunctionCall(node);
+        break;
+    case Token::String: /* a constant; do nothing */
+        break;
+    case Token::Number: /* a constant; do nothing */
+        break;
+    case Token::True: /* a constant; do nothing */
+        break;
+    case Token::False: /* a constant; do nothing */
+        break;
+    case Token::Exit:
+        executeExit(node);
+        break;
+    case Token::If:
+        executeIf(node);
+        break;
+    case Token::Else:
+        executeElse(node);
+        break;
+    case Token::Repeat:
+        executeRepeat(node);
+        break;
+    case Token::While:
+        executeWhile(node);
+        break;
+    case Token::For:
+        executeFor(node);
+        break;
+    case Token::ForTo:
+        executeForTo(node);
+        break;
+    case Token::Break:
+        executeBreak(node);
+        break;
+    case Token::Return:
+        executeReturn(node);
+        break;
+    case Token::Wait:
+        executeWait(node);
+        break;
+    case Token::Assert:
+        executeAssert(node);
+        break;
+    case Token::And:
+        executeAnd(node);
+        break;
+    case Token::Or:
+        executeOr(node);
+        break;
+    case Token::Not:
+        executeNot(node);
+        break;
+    case Token::Equals:
+        executeEquals(node);
+        break;
+    case Token::NotEquals:
+        executeNotEquals(node);
+        break;
+    case Token::GreaterThan:
+        executeGreaterThan(node);
+        break;
+    case Token::LessThan:
+        executeLessThan(node);
+        break;
+    case Token::GreaterOrEquals:
+        executeGreaterOrEquals(node);
+        break;
+    case Token::LessOrEquals:
+        executeLessOrEquals(node);
+        break;
+    case Token::Addition:
+        executeAddition(node);
+        break;
+    case Token::Subtraction:
+        executeSubtraction(node);
+        break;
+    case Token::Multiplication:
+        executeMultiplication(node);
+        break;
+    case Token::Division:
+        executeDivision(node);
+        break;
+    case Token::Power:
+        executePower(node);
+        break;
+    case Token::Assign:
+        executeAssign(node);
+        break;
+    case Token::Learn:
+        executeLearn(node);
+        break;
+    case Token::ArgumentList:
+        executeArgumentList(node);
+        break;
+    case Token::Reset:
+        executeReset(node);
+        break;
+    case Token::Clear:
+        executeClear(node);
+        break;
+    case Token::Center:
+        executeCenter(node);
+        break;
+    case Token::Go:
+        executeGo(node);
+        break;
+    case Token::GoX:
+        executeGoX(node);
+        break;
+    case Token::GoY:
+        executeGoY(node);
+        break;
+    case Token::Forward:
+        executeForward(node);
+        break;
+    case Token::Backward:
+        executeBackward(node);
+        break;
+    case Token::Direction:
+        executeDirection(node);
+        break;
+    case Token::TurnLeft:
+        executeTurnLeft(node);
+        break;
+    case Token::TurnRight:
+        executeTurnRight(node);
+        break;
+    case Token::PenWidth:
+        executePenWidth(node);
+        break;
+    case Token::PenUp:
+        executePenUp(node);
+        break;
+    case Token::PenDown:
+        executePenDown(node);
+        break;
+    case Token::PenColor:
+        executePenColor(node);
+        break;
+    case Token::CanvasColor:
+        executeCanvasColor(node);
+        break;
+    case Token::CanvasSize:
+        executeCanvasSize(node);
+        break;
+    case Token::SpriteShow:
+        executeSpriteShow(node);
+        break;
+    case Token::SpriteHide:
+        executeSpriteHide(node);
+        break;
+    case Token::Print:
+        executePrint(node);
+        break;
+    case Token::FontSize:
+        executeFontSize(node);
+        break;
+    case Token::Random:
+        executeRandom(node);
+        break;
+    case Token::GetX:
+        executeGetX(node);
+        break;
+    case Token::GetY:
+        executeGetY(node);
+        break;
+    case Token::Message:
+        executeMessage(node);
+        break;
+    case Token::Ask:
+        executeAsk(node);
+        break;
+    case Token::Pi:
+        executePi(node);
+        break;
+    case Token::Tan:
+        executeTan(node);
+        break;
+    case Token::Sin:
+        executeSin(node);
+        break;
+    case Token::Cos:
+        executeCos(node);
+        break;
+    case Token::ArcTan:
+        executeArcTan(node);
+        break;
+    case Token::ArcSin:
+        executeArcSin(node);
+        break;
+    case Token::ArcCos:
+        executeArcCos(node);
+        break;
+    case Token::Sqrt:
+        executeSqrt(node);
+        break;
+    case Token::Round:
+        executeRound(node);
+        break;
+    case Token::GetDirection:
+        executeGetDirection(node);
+        break;
+    case Token::Mod:
+        executeMod(node);
+        break;
+
+        // END GENERATED executer_switch_cpp CODE
+
+    default:
+        // qDebug() << "Unrecognized Token type (" << node->token()->type() << ", " << node->token()->look() << ") -- THIS SHOULDN'T HAPPEN!";
+        break;
+    }
+}
+
+VariableTable *Executer::currentVariableTable()
+{
+    if (functionStack.isEmpty())
+        return &globalVariableTable;
+    else
+        return functionStack.top().variableTable;
+}
+
+bool Executer::checkParameterQuantity(TreeNode *node, uint quantity, int errorCode)
+{
+    // 	//qDebug() << "called";
+    uint nodeSize = node->childCount();
+
+    if (quantity == 0) {
+        if (nodeSize == 0)
+            return true; // thats easy!
+        addError(i18n("The %1 command accepts no parameters.", node->token()->look()), *node->token(), errorCode);
+        return false;
+    }
+
+    // 	// CHECK THIS OUT LATER
+    // 	if (nodeSize != 0) // when all parameters are forgotten the parser puts a Unknown/tokEOL param, catch this:
+    // 		if (node->firstChild()->getToken().type == tokEOL) nodeSize = 0;
+
+    if (nodeSize != quantity) {
+        if (nodeSize < quantity) {
+            addError(i18np("The %2 command was called with %3 but needs 1 parameter.",
+                           "The %2 command was called with %3 but needs %1 parameters.",
+                           quantity,
+                           node->token()->look(),
+                           nodeSize),
+                     *node->token(),
+                     errorCode);
+        } else {
+            addError(i18np("The %2 command was called with %3 but only accepts 1 parameter.",
+                           "The %2 command was called with %3 but only accepts %1 parameters.",
+                           quantity,
+                           node->token()->look(),
+                           nodeSize),
+                     *node->token(),
+                     errorCode);
+        }
+        return false;
+    }
+    return true; // if all tests passed
+}
+
+bool Executer::checkParameterType(TreeNode *node, int valueType, int errorCode)
+{
+    // 	//qDebug() << "called";
+    uint quantity = node->childCount();
+    TreeNode *currentChild = node->firstChild();
+    while (currentChild != nullptr) {
+        if (currentChild->value()->type() != valueType) {
+            switch (valueType) {
+            case Value::String:
+                if (quantity == 1)
+                    addError(i18n("The %1 command only accepts a string as its parameter.", node->token()->look()), *node->token(), errorCode);
+                else
+                    addError(i18n("The %1 command only accepts strings as its parameters.", node->token()->look()), *node->token(), errorCode);
+                break;
+
+            case Value::Number:
+                if (quantity == 1)
+                    addError(i18n("The %1 command only accepts a number as its parameter.", node->token()->look()), *node->token(), errorCode);
+                else
+                    addError(i18n("The %1 command only accepts numbers as its parameters.", node->token()->look()), *node->token(), errorCode);
+                break;
+
+            case Value::Bool:
+                if (quantity == 1)
+                    addError(i18n("The %1 command only accepts an answer as its parameter.", node->token()->look()), *node->token(), errorCode);
+                else
+                    addError(i18n("The %1 command only accepts answers as its parameters.", node->token()->look()), *node->token(), errorCode);
+                break;
+            }
+
+            return false;
+        }
+
+        currentChild = node->nextChild();
+    }
+    return true; // if all tests passed
+}
+
+void Executer::addError(const QString &s, const Token &t, int code)
+{
+    // 	//qDebug() << qPrintable(s) << " (runtime error)";
+    errorList->addError(s, t, code);
+}
+
+// BEGIN GENERATED executer_cpp CODE
 
 /* The code between the line that start with "//BEGIN GENERATED" and "//END GENERATED"
  * is generated by "generate.rb" according to the definitions specified in
@@ -156,936 +476,859 @@ void Executer::execute(TreeNode* node)
  * Thanks for looking at the code!
  */
 
-		case Token::Root                : executeRoot(node);                break;
-		case Token::Scope               : executeScope(node);               break;
-		case Token::Variable            : executeVariable(node);            break;
-		case Token::FunctionCall        : executeFunctionCall(node);        break;
-		case Token::String              : /* a constant; do nothing */      break;
-		case Token::Number              : /* a constant; do nothing */      break;
-		case Token::True                : /* a constant; do nothing */      break;
-		case Token::False               : /* a constant; do nothing */      break;
-		case Token::Exit                : executeExit(node);                break;
-		case Token::If                  : executeIf(node);                  break;
-		case Token::Else                : executeElse(node);                break;
-		case Token::Repeat              : executeRepeat(node);              break;
-		case Token::While               : executeWhile(node);               break;
-		case Token::For                 : executeFor(node);                 break;
-		case Token::ForTo               : executeForTo(node);               break;
-		case Token::Break               : executeBreak(node);               break;
-		case Token::Return              : executeReturn(node);              break;
-		case Token::Wait                : executeWait(node);                break;
-		case Token::Assert              : executeAssert(node);              break;
-		case Token::And                 : executeAnd(node);                 break;
-		case Token::Or                  : executeOr(node);                  break;
-		case Token::Not                 : executeNot(node);                 break;
-		case Token::Equals              : executeEquals(node);              break;
-		case Token::NotEquals           : executeNotEquals(node);           break;
-		case Token::GreaterThan         : executeGreaterThan(node);         break;
-		case Token::LessThan            : executeLessThan(node);            break;
-		case Token::GreaterOrEquals     : executeGreaterOrEquals(node);     break;
-		case Token::LessOrEquals        : executeLessOrEquals(node);        break;
-		case Token::Addition            : executeAddition(node);            break;
-		case Token::Subtraction         : executeSubtraction(node);         break;
-		case Token::Multiplication      : executeMultiplication(node);      break;
-		case Token::Division            : executeDivision(node);            break;
-		case Token::Power               : executePower(node);               break;
-		case Token::Assign              : executeAssign(node);              break;
-		case Token::Learn               : executeLearn(node);               break;
-		case Token::ArgumentList        : executeArgumentList(node);        break;
-		case Token::Reset               : executeReset(node);               break;
-		case Token::Clear               : executeClear(node);               break;
-		case Token::Center              : executeCenter(node);              break;
-		case Token::Go                  : executeGo(node);                  break;
-		case Token::GoX                 : executeGoX(node);                 break;
-		case Token::GoY                 : executeGoY(node);                 break;
-		case Token::Forward             : executeForward(node);             break;
-		case Token::Backward            : executeBackward(node);            break;
-		case Token::Direction           : executeDirection(node);           break;
-		case Token::TurnLeft            : executeTurnLeft(node);            break;
-		case Token::TurnRight           : executeTurnRight(node);           break;
-		case Token::PenWidth            : executePenWidth(node);            break;
-		case Token::PenUp               : executePenUp(node);               break;
-		case Token::PenDown             : executePenDown(node);             break;
-		case Token::PenColor            : executePenColor(node);            break;
-		case Token::CanvasColor         : executeCanvasColor(node);         break;
-		case Token::CanvasSize          : executeCanvasSize(node);          break;
-		case Token::SpriteShow          : executeSpriteShow(node);          break;
-		case Token::SpriteHide          : executeSpriteHide(node);          break;
-		case Token::Print               : executePrint(node);               break;
-		case Token::FontSize            : executeFontSize(node);            break;
-		case Token::Random              : executeRandom(node);              break;
-		case Token::GetX                : executeGetX(node);                break;
-		case Token::GetY                : executeGetY(node);                break;
-		case Token::Message             : executeMessage(node);             break;
-		case Token::Ask                 : executeAsk(node);                 break;
-		case Token::Pi                  : executePi(node);                  break;
-		case Token::Tan                 : executeTan(node);                 break;
-		case Token::Sin                 : executeSin(node);                 break;
-		case Token::Cos                 : executeCos(node);                 break;
-		case Token::ArcTan              : executeArcTan(node);              break;
-		case Token::ArcSin              : executeArcSin(node);              break;
-		case Token::ArcCos              : executeArcCos(node);              break;
-		case Token::Sqrt                : executeSqrt(node);                break;
-		case Token::Round               : executeRound(node);               break;
-		case Token::GetDirection        : executeGetDirection(node);        break;
-		case Token::Mod                 : executeMod(node);                 break;
-
-//END GENERATED executer_switch_cpp CODE
-
-		default:
-			//qDebug() << "Unrecognized Token type (" << node->token()->type() << ", " << node->token()->look() << ") -- THIS SHOULDN'T HAPPEN!";
-			break;
-
-	}
-
-}
-
-
-VariableTable* Executer::currentVariableTable()
+void Executer::executeRoot(TreeNode *node)
 {
-	if (functionStack.isEmpty())
-		return &globalVariableTable;
-	else
-		return functionStack.top().variableTable;
+    //	//qDebug() << "called";
+    node = node; // stop the warnings // this is a stud
 }
-
-
-
-
-bool Executer::checkParameterQuantity(TreeNode* node, uint quantity, int errorCode)
+void Executer::executeScope(TreeNode *node)
 {
-// 	//qDebug() << "called";
-	uint nodeSize = node->childCount();
-
-	if (quantity == 0) {
-		if (nodeSize == 0) return true;  // thats easy!
-		addError(i18n("The %1 command accepts no parameters.", node->token()->look()), *node->token(), errorCode);
-		return false;
-	}
-	
-// 	// CHECK THIS OUT LATER
-// 	if (nodeSize != 0) // when all parameters are forgotten the parser puts a Unknown/tokEOL param, catch this:
-// 		if (node->firstChild()->getToken().type == tokEOL) nodeSize = 0;
-	
-	if (nodeSize != quantity) {
-		if (nodeSize < quantity) {
-			addError(i18np("The %2 command was called with %3 but needs 1 parameter.", "The %2 command was called with %3 but needs %1 parameters.", quantity, node->token()->look(), nodeSize), *node->token(), errorCode);
-		} else {
-			addError(i18np("The %2 command was called with %3 but only accepts 1 parameter.", "The %2 command was called with %3 but only accepts %1 parameters.", quantity, node->token()->look(), nodeSize), *node->token(), errorCode);
-		}
-		return false;
-	}
-	return true; // if all tests passed
+    //	//qDebug() << "called";
+    // catch loops, they need to be managed...
+    int parentTokenType = node->parent()->token()->type();
+    if (parentTokenType == Token::If || parentTokenType == Token::Repeat || parentTokenType == Token::While ||
+        //	    parentTokenType == Token::ForIn  ||
+        parentTokenType == Token::ForTo) {
+        currentNode = node->parent();
+        executeCurrent = true;
+        return;
+    }
+    if (parentTokenType == Token::Learn) {
+        // We have the end of a Learn, so we should return
+        returning = true;
+        returnValue = nullptr;
+        return;
+    }
+    newScope = node;
 }
-
-
-bool Executer::checkParameterType(TreeNode* node, int valueType, int errorCode)
+void Executer::executeVariable(TreeNode *node)
 {
-// 	//qDebug() << "called";
-	uint quantity = node->childCount();
-	TreeNode* currentChild = node->firstChild();
-	while (currentChild != nullptr) {
-		if (currentChild->value()->type() != valueType) {
-			switch (valueType) {
-				case Value::String:
-					if (quantity == 1)
-						addError(i18n("The %1 command only accepts a string as its parameter.", node->token()->look()), *node->token(), errorCode);
-					else
-						addError(i18n("The %1 command only accepts strings as its parameters.", node->token()->look()), *node->token(), errorCode);
-					break;
-				
-				case Value::Number:
-					if (quantity == 1)
-						addError(i18n("The %1 command only accepts a number as its parameter.", node->token()->look()), *node->token(), errorCode);
-					else
-						addError(i18n("The %1 command only accepts numbers as its parameters.", node->token()->look()), *node->token(), errorCode);
-					break;
-				
-				case Value::Bool:
-					if (quantity == 1)
-						addError(i18n("The %1 command only accepts an answer as its parameter.", node->token()->look()), *node->token(), errorCode);
-					else
-						addError(i18n("The %1 command only accepts answers as its parameters.", node->token()->look()), *node->token(), errorCode);
-					break;
-			}
-			
-			return false;
-		}
-
-		currentChild = node->nextChild();
-	}
-	return true; // if all tests passed
+    //	//qDebug() << "called";
+    bool aValueIsNeeded = true;
+    // no need to look up when assigning (in a for loop statement)
+    if ((node->parent()->token()->type() == Token::ForTo) && (node->parent()->child(0) == node))
+        return;
+    // we need to executeVariables in assignments for things like $x=$y to work
+    if (node->parent()->token()->type() == Token::Assign) {
+        // Test if we are in the LHS of the assignment
+        if (node == node->parent()->child(0)) {
+            // In this case we do not need to be initialized, we will get a value in executeAssign
+            aValueIsNeeded = false;
+        }
+    }
+    if (!functionStack.isEmpty() && functionStack.top().variableTable->contains(node->token()->look())) {
+        // //qDebug() << "exists locally";
+        node->setValue((*functionStack.top().variableTable)[node->token()->look()]);
+    } else if (globalVariableTable.contains(node->token()->look())) {
+        // //qDebug() << "exists globally";
+        node->setValue(globalVariableTable[node->token()->look()]);
+    } else if (aValueIsNeeded) {
+        addError(i18n("The variable '%1' was used without first being assigned to a value", node->token()->look()), *node->token(), 0);
+    }
 }
-
-
-void Executer::addError(const QString& s, const Token& t, int code)
+void Executer::executeFunctionCall(TreeNode *node)
 {
-// 	//qDebug() << qPrintable(s) << " (runtime error)";
-	errorList->addError(s, t, code);
-}
+    //	//qDebug() << "called";
+    if (node->parent()->token()->type() == Token::Learn) { // in case we're defining a function
+        currentNode = node->parent();
+        executeCurrent = true;
+        return;
+    }
 
+    if (returning) { // if the function is already executed and returns now
+        returnValue = nullptr;
+        returning = false;
+        // //qDebug() << "==> functionReturned!";
+        return;
+    }
 
+    if (!functionTable.contains(node->token()->look())) {
+        addError(i18n("An unknown function named '%1' was called", node->token()->look()), *node->token(), 0);
+        return;
+    }
 
-//BEGIN GENERATED executer_cpp CODE
+    CalledFunction c;
+    c.function = node;
+    c.variableTable = new VariableTable();
+    functionStack.push(c);
+    // //qDebug() << "==> functionCalled!";
 
-/* The code between the line that start with "//BEGIN GENERATED" and "//END GENERATED"
- * is generated by "generate.rb" according to the definitions specified in
- * "definitions.rb". Please make all changes in the "definitions.rb" file, since all
- * all change you make here will be overwritten the next time "generate.rb" is run.
- * Thanks for looking at the code!
- */
+    TreeNode *learnNode = functionTable[node->token()->look()];
 
-void Executer::executeRoot(TreeNode* node) {
-//	//qDebug() << "called";
-	node = node; // stop the warnings // this is a stud
-}
-void Executer::executeScope(TreeNode* node) {
-//	//qDebug() << "called";
-	// catch loops, they need to be managed...
-	int parentTokenType = node->parent()->token()->type();
-	if (parentTokenType == Token::If     ||
-	    parentTokenType == Token::Repeat ||
-	    parentTokenType == Token::While  ||
-//	    parentTokenType == Token::ForIn  ||
-	    parentTokenType == Token::ForTo) {
-		currentNode = node->parent();
-		executeCurrent = true;
-		return;
-	}
-	if(parentTokenType == Token::Learn) {
-		//We have the end of a Learn, so we should return
-		returning = true;
-		returnValue = nullptr;
-		return;
-	}
-	newScope = node;
-}
-void Executer::executeVariable(TreeNode* node) {
-//	//qDebug() << "called";
-	bool aValueIsNeeded = true;
-	// no need to look up when assigning (in a for loop statement)
-	if ((node->parent()->token()->type() == Token::ForTo) && (node->parent()->child(0)==node))
-		return;
-	// we need to executeVariables in assignments for things like $x=$y to work
-	if (node->parent()->token()->type() == Token::Assign) {
-		// Test if we are in the LHS of the assignment
-		if  (node == node->parent()->child(0)) {
-			// In this case we do not need to be initialized, we will get a value in executeAssign
-			aValueIsNeeded = false;
-		}
-	}
-	if (!functionStack.isEmpty() && 
-	    functionStack.top().variableTable->contains(node->token()->look())) {
-		// //qDebug() << "exists locally";
-		node->setValue( (*functionStack.top().variableTable)[node->token()->look()] );
-	} else if (globalVariableTable.contains(node->token()->look())) {
-		// //qDebug() << "exists globally";
-		node->setValue(globalVariableTable[node->token()->look()]);
-	} else if (aValueIsNeeded)
-	{
-		addError(i18n("The variable '%1' was used without first being assigned to a value", node->token()->look()), *node->token(), 0);
-	}
-}
-void Executer::executeFunctionCall(TreeNode* node) {
-//	//qDebug() << "called";
-	if (node->parent()->token()->type() == Token::Learn) {  // in case we're defining a function
-		currentNode = node->parent();
-		executeCurrent = true;
-		return;
-	}
+    // if the parameter numbers are not equal...
+    if (node->childCount() != learnNode->child(1)->childCount()) {
+        addError(i18n("The function '%1' was called with %2, while it should be called with %3",
+                      node->token()->look(),
+                      i18ncp("The function '%1' was called with %2, while it should be called with %3", "1 parameter", "%1 parameters", node->childCount()),
+                      i18ncp("The function '%1' was called with %2, while it should be called with %3",
+                             "1 parameter",
+                             "%1 parameters",
+                             learnNode->child(1)->childCount())),
+                 *node->token(),
+                 0);
+        return;
+    }
 
-	if (returning) {  // if the function is already executed and returns now
-		returnValue = nullptr;
-		returning = false;
-		// //qDebug() << "==> functionReturned!";
-		return;
-	}
+    for (uint i = 0; i < node->childCount(); i++) {
+        functionStack.top().variableTable->insert(learnNode->child(1)->child(i)->token()->look(), node->child(i)->value());
+        // //qDebug() << "inserted variable " << learnNode->child(1)->child(i)->token()->look() << " on function stack";
+    }
+    newScope = learnNode->child(2);
+}
+void Executer::executeExit(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    node = node; // stop the warnings
+    finished = true;
+}
+void Executer::executeIf(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    QString id = QStringLiteral("__%1_%2").arg(node->token()->look()).arg(reinterpret_cast<quintptr>(node));
+    if (currentVariableTable()->contains(id)) {
+        currentVariableTable()->remove(id);
+        return;
+    }
 
-	if (!functionTable.contains(node->token()->look())) {
-		addError(i18n("An unknown function named '%1' was called", node->token()->look()), *node->token(), 0);
-		return;
-	}
-	
-	CalledFunction c;
-	c.function      = node;
-	c.variableTable = new VariableTable();
-	functionStack.push(c);
-	// //qDebug() << "==> functionCalled!";
-	
-	TreeNode* learnNode = functionTable[node->token()->look()];
+    if (node->child(0)->value()->boolean()) {
+        // store a empty Value just to know we executed once
+        currentVariableTable()->insert(id, Value());
+        newScope = node->child(1);
+    } else {
+        if (node->childCount() >= 3) {
+            currentVariableTable()->insert(id, Value());
+            newScope = node->child(2); // execute the else part
+        }
+    }
+}
+void Executer::executeElse(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    execute(node->child(0)); // execute the scope, that's all...
+}
+void Executer::executeRepeat(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    QString id = QStringLiteral("__%1_%2").arg(node->token()->look()).arg(reinterpret_cast<quintptr>(node));
 
-	// if the parameter numbers are not equal...
-	if (node->childCount() != learnNode->child(1)->childCount()) {
-		addError(
-			i18n("The function '%1' was called with %2, while it should be called with %3",
-				node->token()->look(),
-				i18ncp("The function '%1' was called with %2, while it should be called with %3", "1 parameter", "%1 parameters", node->childCount()),
-				i18ncp("The function '%1' was called with %2, while it should be called with %3", "1 parameter", "%1 parameters", learnNode->child(1)->childCount())
-			),
-			*node->token(), 0);
-		return;
-	}
-		
-	for (uint i = 0; i < node->childCount(); i++) {
-		functionStack.top().variableTable->insert(learnNode->child(1)->child(i)->token()->look(), node->child(i)->value());
-		// //qDebug() << "inserted variable " << learnNode->child(1)->child(i)->token()->look() << " on function stack";
-	}
-	newScope = learnNode->child(2);
-}
-void Executer::executeExit(TreeNode* node) {
-//	//qDebug() << "called";
-	node = node; // stop the warnings
-	finished = true;
-}
-void Executer::executeIf(TreeNode* node) {
-//	//qDebug() << "called";
-	QString id = QStringLiteral("__%1_%2").arg(node->token()->look()).arg(reinterpret_cast<quintptr>(node));
-	if (currentVariableTable()->contains(id)) {
-		currentVariableTable()->remove(id);
-		return;
-	}
-	
-	if (node->child(0)->value()->boolean()) {
-		// store a empty Value just to know we executed once
-		currentVariableTable()->insert(id, Value());
-		newScope = node->child(1);
-	} else {
-		if (node->childCount() >= 3) {
-			currentVariableTable()->insert(id, Value());
-			newScope = node->child(2); // execute the else part
-		}
-	}
-}
-void Executer::executeElse(TreeNode* node) {
-//	//qDebug() << "called";
-	execute(node->child(0));  // execute the scope, that's all...
-}
-void Executer::executeRepeat(TreeNode* node) {
-//	//qDebug() << "called";
-	QString id = QStringLiteral("__%1_%2").arg(node->token()->look()).arg(reinterpret_cast<quintptr>(node));
+    if (breaking) {
+        breaking = false;
+        currentVariableTable()->remove(id);
+        return;
+    }
 
-	if(breaking) {
-		breaking = false;
-		currentVariableTable()->remove(id);
-		return;
-	}
+    // the iteration state is stored on the variable table
+    if (currentVariableTable()->contains(id)) {
+        int currentCount = static_cast<int>(round((*currentVariableTable())[id].number()));
+        if (currentCount > 0) {
+            (*currentVariableTable())[id].setNumber(currentCount - 1);
+        } else {
+            currentVariableTable()->remove(id);
+            return;
+        }
+    } else {
+        if (static_cast<int>(round(node->child(0)->value()->number())) <= 0) // handle 'repeat 0'
+            return;
 
-	// the iteration state is stored on the variable table
-	if (currentVariableTable()->contains(id)) {
-		int currentCount = static_cast<int>(round((*currentVariableTable())[id].number()));
-		if (currentCount > 0) {
-			(*currentVariableTable())[id].setNumber(currentCount - 1);
-		} else {
-			currentVariableTable()->remove(id);
-			return;
-		}
-	} else {
-		if(static_cast<int>(round(node->child(0)->value()->number()))<=0) // handle 'repeat 0'
-			return;
-		
-		currentVariableTable()->insert(id, Value(round(node->child(0)->value()->number()) - 1.0));
-	}
-	newScope = node->child(1);
+        currentVariableTable()->insert(id, Value(round(node->child(0)->value()->number()) - 1.0));
+    }
+    newScope = node->child(1);
 }
-void Executer::executeWhile(TreeNode* node) {
-//	//qDebug() << "called";
-	// first time this gets called the expression is already executed
-	// after one iteration the expression is not automatically re-executed.
-	// so we do the following on every call to executeWhile:
-	//     exec scope, exec expression, exec scope, exec expression, ...
+void Executer::executeWhile(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    // first time this gets called the expression is already executed
+    // after one iteration the expression is not automatically re-executed.
+    // so we do the following on every call to executeWhile:
+    //     exec scope, exec expression, exec scope, exec expression, ...
 
-	QString id = QStringLiteral("__%1_%2").arg(node->token()->look()).arg(reinterpret_cast<quintptr>(node));
+    QString id = QStringLiteral("__%1_%2").arg(node->token()->look()).arg(reinterpret_cast<quintptr>(node));
 
-	if (breaking) {
-		// We hit a break command while executing the scope
-		breaking = false; // Not breaking anymore
-		currentVariableTable()->remove(id); // remove the value (cleanup)
-		return; // Move to the next sibling
-	}
+    if (breaking) {
+        // We hit a break command while executing the scope
+        breaking = false; // Not breaking anymore
+        currentVariableTable()->remove(id); // remove the value (cleanup)
+        return; // Move to the next sibling
+    }
 
-	if (currentVariableTable()->contains(id)) {
-		newScope = node; // re-execute the expression
-		currentVariableTable()->remove(id);
-		return;
-	}
-	currentVariableTable()->insert(id, Value()); // store a empty Value just to know we executed once
+    if (currentVariableTable()->contains(id)) {
+        newScope = node; // re-execute the expression
+        currentVariableTable()->remove(id);
+        return;
+    }
+    currentVariableTable()->insert(id, Value()); // store a empty Value just to know we executed once
 
-	if (node->child(0)->value()->boolean())
-		newScope = node->child(1); // (re-)execute the scope
-	else
-		currentVariableTable()->remove(id); // clean-up, keep currenNode on currentNode so the next sibling we be run next
+    if (node->child(0)->value()->boolean())
+        newScope = node->child(1); // (re-)execute the scope
+    else
+        currentVariableTable()->remove(id); // clean-up, keep currenNode on currentNode so the next sibling we be run next
 }
-void Executer::executeFor(TreeNode* node) {
-//	//qDebug() << "called";
-	qCritical("Executer::executeFor(): should have been translated to Token::ForTo by the parser");
-	node = node; // stop the warnings
+void Executer::executeFor(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    qCritical("Executer::executeFor(): should have been translated to Token::ForTo by the parser");
+    node = node; // stop the warnings
 }
-void Executer::executeForTo(TreeNode* node) {
-//	//qDebug() << "called";
-	// first time this gets called the expressions are already executed
-	// after one iteration the expression is not re-executed.
-	// so we do: exec scope, exec expressions, exec scope, exec expressions, ...
+void Executer::executeForTo(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    // first time this gets called the expressions are already executed
+    // after one iteration the expression is not re-executed.
+    // so we do: exec scope, exec expressions, exec scope, exec expressions, ...
 
-	//TODO: We have the cleanup part twice (after breaking and after the last iteration
-	// perhaps clean it up by putting it in one place?
+    // TODO: We have the cleanup part twice (after breaking and after the last iteration
+    //  perhaps clean it up by putting it in one place?
 
-	bool firstIteration = false;
-	if (functionStack.isEmpty() || functionStack.top().function != node) {
-		// if this for loop is called for the first time...
-		CalledFunction c;
-		c.function      = node;
-		// TODO: Find a better solution then this for nested for loops
-		//c.variableTable = new VariableTable();
-		c.variableTable = currentVariableTable();
-		functionStack.push(c);
+    bool firstIteration = false;
+    if (functionStack.isEmpty() || functionStack.top().function != node) {
+        // if this for loop is called for the first time...
+        CalledFunction c;
+        c.function = node;
+        // TODO: Find a better solution then this for nested for loops
+        // c.variableTable = new VariableTable();
+        c.variableTable = currentVariableTable();
+        functionStack.push(c);
 
-		currentVariableTable()->insert(node->child(0)->token()->look(), Value(node->child(1)->value()->number()));
-		firstIteration = true;
-	}
+        currentVariableTable()->insert(node->child(0)->token()->look(), Value(node->child(1)->value()->number()));
+        firstIteration = true;
+    }
 
-	QString id = QStringLiteral("__%1_%2").arg(node->token()->look()).arg(reinterpret_cast<quintptr>(node));
+    QString id = QStringLiteral("__%1_%2").arg(node->token()->look()).arg(reinterpret_cast<quintptr>(node));
 
-	if(breaking) {
-		breaking = false;
-		//delete functionStack.top().variableTable;
-		functionStack.pop();
-		// if we don't delete the functionStack's varibleTable any more
-		// do remove the for loops id..
-		currentVariableTable()->remove(id);
-		return;
-	}
+    if (breaking) {
+        breaking = false;
+        // delete functionStack.top().variableTable;
+        functionStack.pop();
+        // if we don't delete the functionStack's varibleTable any more
+        // do remove the for loops id..
+        currentVariableTable()->remove(id);
+        return;
+    }
 
-	if (currentVariableTable()->contains(id)) {
-		newScope = node; // re-execute the expressions
-		currentVariableTable()->remove(id);
-		return;
-	}
-	currentVariableTable()->insert(id, Value()); // store a empty Value just to know we executed once
+    if (currentVariableTable()->contains(id)) {
+        newScope = node; // re-execute the expressions
+        currentVariableTable()->remove(id);
+        return;
+    }
+    currentVariableTable()->insert(id, Value()); // store a empty Value just to know we executed once
 
-	double currentCount   = (*currentVariableTable())[node->child(0)->token()->look()].number();
-	double startCondition = node->child(1)->value()->number();
-	double endCondition   = node->child(2)->value()->number();
-	double step           = node->child(3)->value()->number();
+    double currentCount = (*currentVariableTable())[node->child(0)->token()->look()].number();
+    double startCondition = node->child(1)->value()->number();
+    double endCondition = node->child(2)->value()->number();
+    double step = node->child(3)->value()->number();
 
-	if ((startCondition < endCondition && currentCount + step <= endCondition) ||
-	    (startCondition > endCondition && currentCount + step >= endCondition && step<0) ||  //negative loop sanity check, is it implemented?
-	    (startCondition ==endCondition && firstIteration) ) { // for expressions like for $n=1 to 1
-		if (!firstIteration)
-			(*currentVariableTable())[node->child(0)->token()->look()].setNumber(currentCount + step);
-		newScope = node->child(4); // (re-)execute the scope
-	} else {
-		// cleaning up after last iteration...
-		//delete functionStack.top().variableTable;
-		functionStack.pop();
-		// if we don't delete the functionStack's varibleTable any more
-		// do remove the for loops id..
-		currentVariableTable()->remove(id);
-	}
+    if ((startCondition < endCondition && currentCount + step <= endCondition)
+        || (startCondition > endCondition && currentCount + step >= endCondition && step < 0) || // negative loop sanity check, is it implemented?
+        (startCondition == endCondition && firstIteration)) { // for expressions like for $n=1 to 1
+        if (!firstIteration)
+            (*currentVariableTable())[node->child(0)->token()->look()].setNumber(currentCount + step);
+        newScope = node->child(4); // (re-)execute the scope
+    } else {
+        // cleaning up after last iteration...
+        // delete functionStack.top().variableTable;
+        functionStack.pop();
+        // if we don't delete the functionStack's varibleTable any more
+        // do remove the for loops id..
+        currentVariableTable()->remove(id);
+    }
 }
-void Executer::executeBreak(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 0, 20000+Token::Break*100+90)) return;
+void Executer::executeBreak(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 0, 20000 + Token::Break * 100 + 90))
+        return;
 
-	breaking = true;
+    breaking = true;
 
-	// Check for the first parent which is a repeat, while of for loop.
-	// If found, switch the newScope to them so they can break.
-	QList<int> tokenTypes;
-	tokenTypes.append(Token::Repeat);
-	tokenTypes.append(Token::While);
-	tokenTypes.append(Token::ForTo);
+    // Check for the first parent which is a repeat, while of for loop.
+    // If found, switch the newScope to them so they can break.
+    QList<int> tokenTypes;
+    tokenTypes.append(Token::Repeat);
+    tokenTypes.append(Token::While);
+    tokenTypes.append(Token::ForTo);
 
-	TreeNode* ns = getParentOfTokenTypes(node, &tokenTypes);
+    TreeNode *ns = getParentOfTokenTypes(node, &tokenTypes);
 
-	if(ns!=nullptr)
-		newScope = ns;
-	//else
-		// We could add an error right HERE
-	
-	// At the moment we just ignore a break when we couldn't 
-	// find a matching parent
-}
-void Executer::executeReturn(TreeNode* node) {
-//	//qDebug() << "called";
-	if(node->childCount()>0)
-		returnValue = node->child(0)->value();
-	else
-		returnValue = nullptr;
-	returning   = true;
-}
-void Executer::executeWait(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::Wait*100+90)) return;
-	if (!checkParameterType(node, Value::Number, 20000+Token::Wait*100+91) ) return;
-	waiting = true;
-	QTimer::singleShot(static_cast<int>(1000*node->child(0)->value()->number()), this, &Executer::stopWaiting);
-}
-void Executer::executeAssert(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::Wait*100+90)) return;
-	if (!checkParameterType(node, Value::Bool, 20000+Token::Wait*100+91) ) return;
-	if (!node->child(0)->value()->boolean()) addError(i18n("ASSERT failed"), *node->token(), 0);
-}
-void Executer::executeAnd(TreeNode* node) {
-//	//qDebug() << "called";
-	//Niels: See 'Not'
-	if(node->childCount()!=2) {
-		addError(i18n("'And' needs two variables"), *node->token(), 0);
-		return;
-	}
-	node->value()->setBool(node->child(0)->value()->boolean() && node->child(1)->value()->boolean());
-}
-void Executer::executeOr(TreeNode* node) {
-//	//qDebug() << "called";
-	//Niels: See 'Not'
-	if(node->childCount()!=2) {
-		addError(i18n("'Or' needs two variables"), *node->token(), 0);
-		return;
-	}
-	node->value()->setBool(node->child(0)->value()->boolean() || node->child(1)->value()->boolean());
-}
-void Executer::executeNot(TreeNode* node) {
-//	//qDebug() << "called";
-	// OLD-TODO: maybe add some error handling here...
-	//Niels: Ok, now we check if the node has children. Should we also check whether the child value is a boolean?
-	if(node->childCount()!=1) {
-		addError(i18n("I need something to do a not on"), *node->token(), 0);
-		return;
-	}
-	node->value()->setBool(!node->child(0)->value()->boolean());
-}
-void Executer::executeEquals(TreeNode* node) {
-//	//qDebug() << "called";
-	if(node->childCount()!=2) { 
-		addError(i18n("I cannot do a '==' without 2 variables"), *node->token(), 0);
-		return;
-	}
-	node->value()->setBool(*node->child(0)->value() == node->child(1)->value());
-}
-void Executer::executeNotEquals(TreeNode* node) {
-//	//qDebug() << "called";
-	if(node->childCount()!=2) { 
-		addError(i18n("I cannot do a '!=' without 2 variables"), *node->token(), 0);
-		return;
-	}
-	node->value()->setBool(*node->child(0)->value() != node->child(1)->value());
-}
-void Executer::executeGreaterThan(TreeNode* node) {
-//	//qDebug() << "called";
-	if(node->childCount()!=2) { 
-		addError(i18n("I cannot do a '>' without 2 variables"), *node->token(), 0);
-		return;
-	}
-	node->value()->setBool(*node->child(0)->value() > node->child(1)->value());
-}
-void Executer::executeLessThan(TreeNode* node) {
-//	//qDebug() << "called";
-	if(node->childCount()!=2) { 
-		addError(i18n("I cannot do a '<' without 2 variables"), *node->token(), 0);
-		return;
-	}
-	node->value()->setBool(*node->child(0)->value() < node->child(1)->value());
-}
-void Executer::executeGreaterOrEquals(TreeNode* node) {
-//	//qDebug() << "called";
-	if(node->childCount()!=2) { 
-		addError(i18n("I cannot do a '>=' without 2 variables"), *node->token(), 0);
-		return;
-	}
-	node->value()->setBool(*node->child(0)->value() >= node->child(1)->value());
-}
-void Executer::executeLessOrEquals(TreeNode* node) {
-//	//qDebug() << "called";
-	if(node->childCount()!=2) { 
-		addError(i18n("I cannot do a '<=' without 2 variables"), *node->token(), 0);
-		return;
-	}
-	node->value()->setBool(*node->child(0)->value() <= node->child(1)->value());
-}
-void Executer::executeAddition(TreeNode* node) {
-//	//qDebug() << "called";
-	if(node->childCount()!=2) {
-		addError(i18n("You need two numbers or string to do an addition"), *node->token(), 0);
-		return;
-	}
-	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
-		node->value()->setNumber(node->child(0)->value()->number() + node->child(1)->value()->number());
-	} else {
-		node->value()->setString(node->child(0)->value()->string().append(node->child(1)->value()->string()));
-	}
-}
-void Executer::executeSubtraction(TreeNode* node) {
-//	//qDebug() << "called";
-	if(node->childCount()!=2) {
-		addError(i18n("You need two numbers to subtract"), *node->token(), 0);
-		return;
-	}
-	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
-		node->value()->setNumber(node->child(0)->value()->number() - node->child(1)->value()->number());
-	} else {
-		if (node->child(0)->value()->type() != Value::Number)
-			addError(i18n("You tried to subtract from a non-number, '%1'", node->child(0)->token()->look()), *node->token(), 0);
-		if (node->child(1)->value()->type() != Value::Number)
-			addError(i18n("You tried to subtract a non-number, '%1'", node->child(1)->token()->look()), *node->token(), 0);
-	}
-}
-void Executer::executeMultiplication(TreeNode* node) {
-//	//qDebug() << "called";
-	if(node->childCount()!=2) {
-		addError(i18n("You need two numbers to multiplicate"), *node->token(), 0);
-		return;
-	}
-	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
-		node->value()->setNumber(node->child(0)->value()->number() * node->child(1)->value()->number());
-	} else {
-		if (node->child(0)->value()->type() != Value::Number)
-			addError(i18n("You tried to multiplicate a non-number, '%1'", node->child(0)->token()->look()), *node->token(), 0);
-		if (node->child(1)->value()->type() != Value::Number)
-			addError(i18n("You tried to multiplicate by a non-number, '%1'", node->child(1)->token()->look()), *node->token(), 0);
-	}
-}
-void Executer::executeDivision(TreeNode* node) {
-//	//qDebug() << "called";
-	if(node->childCount()!=2) {
-		addError(i18n("You need two numbers to divide"), *node->token(), 0);
-		return;
-	}
-	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
-		if(node->child(1)->value()->number()==0) {
-			addError(i18n("You tried to divide by zero"), *node->token(), 0);
-			return;
-		}
-		node->value()->setNumber(node->child(0)->value()->number() / node->child(1)->value()->number());
-	} else {
-		if (node->child(0)->value()->type() != Value::Number)
-			addError(i18n("You tried to divide a non-number, '%1'", node->child(0)->token()->look()), *node->token(), 0);
-		if (node->child(1)->value()->type() != Value::Number)
-			addError(i18n("You tried to divide by a non-number, '%1'", node->child(1)->token()->look()), *node->token(), 0);
-	}
-}
-void Executer::executePower(TreeNode* node) {
-//	//qDebug() << "called";
-	if(node->childCount()!=2) {
-		addError(i18n("You need two numbers to raise a power"), *node->token(), 0);
-		return;
-	}
-	if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
-		node->value()->setNumber(pow(node->child(0)->value()->number(), node->child(1)->value()->number()));
-		
-		double result = pow(node->child(0)->value()->number(), node->child(1)->value()->number());
+    if (ns != nullptr)
+        newScope = ns;
+    // else
+    //  We could add an error right HERE
 
-		int error = errno;
-		if(error==ERANGE) {
-			node->value()->setNumber(0);
-			addError(i18n("The result of an exponentiation was too large"), *node->token(), 0);
-		}else{
-			node->value()->setNumber(result);
-		}
-	} else {
-		if (node->child(0)->value()->type() != Value::Number)
-			addError(i18n("You tried to raise a non-number to a power, '%1'", node->child(0)->token()->look()), *node->token(), 0);
-		if (node->child(1)->value()->type() != Value::Number)
-			addError(i18n("You tried to raise the power of a non-number, '%1'", node->child(1)->token()->look()), *node->token(), 0);
-	}
+    // At the moment we just ignore a break when we couldn't
+    // find a matching parent
 }
-void Executer::executeAssign(TreeNode* node) {
-//	//qDebug() << "called";
-	if(node->childCount()!=2) {
-	addError(i18n("You need one variable and a value or variable to do a '='"), *node->token(), 0);
-		return;
-	}
-	if (!functionStack.isEmpty() && !globalVariableTable.contains(node->child(0)->token()->look())) // &&functionStack.top().variableTable->contains(node->token()->look())) 
-	{
-		// //qDebug() << "function scope";
-		functionStack.top().variableTable->insert(node->child(0)->token()->look(), node->child(1)->value());
-	} else {
-		// inserts unless already exists then replaces
-		globalVariableTable.insert(node->child(0)->token()->look(), node->child(1)->value());
-	}
-	// //qDebug() << "variableTable updated!";
-	Q_EMIT variableTableUpdated(node->child(0)->token()->look(), node->child(1)->value());
+void Executer::executeReturn(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (node->childCount() > 0)
+        returnValue = node->child(0)->value();
+    else
+        returnValue = nullptr;
+    returning = true;
 }
-void Executer::executeLearn(TreeNode* node) {
-//	//qDebug() << "called";
-	if(functionTable.contains(node->child(0)->token()->look())) {
-		addError(i18n("The function '%1' is already defined.", node->child(0)->token()->look()), *node->token(), 0);
-		return;
-	}
-	functionTable.insert(node->child(0)->token()->look(), node);
-	// //qDebug() << "functionTable updated!";
-	QStringList parameters;
-	for (uint i = 0; i < node->child(1)->childCount(); i++)
-		parameters << node->child(1)->child(i)->token()->look();
-	Q_EMIT functionTableUpdated(node->child(0)->token()->look(), parameters);
+void Executer::executeWait(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::Wait * 100 + 90))
+        return;
+    if (!checkParameterType(node, Value::Number, 20000 + Token::Wait * 100 + 91))
+        return;
+    waiting = true;
+    QTimer::singleShot(static_cast<int>(1000 * node->child(0)->value()->number()), this, &Executer::stopWaiting);
 }
-void Executer::executeArgumentList(TreeNode* node) {
-//	//qDebug() << "called";
-	node = node; // stop the warnings // this is a stud
+void Executer::executeAssert(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::Wait * 100 + 90))
+        return;
+    if (!checkParameterType(node, Value::Bool, 20000 + Token::Wait * 100 + 91))
+        return;
+    if (!node->child(0)->value()->boolean())
+        addError(i18n("ASSERT failed"), *node->token(), 0);
 }
-void Executer::executeReset(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 0, 20000+Token::Reset*100+90)) return;
-	Q_EMIT reset();
+void Executer::executeAnd(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    // Niels: See 'Not'
+    if (node->childCount() != 2) {
+        addError(i18n("'And' needs two variables"), *node->token(), 0);
+        return;
+    }
+    node->value()->setBool(node->child(0)->value()->boolean() && node->child(1)->value()->boolean());
 }
-void Executer::executeClear(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 0, 20000+Token::Clear*100+90)) return;
-	Q_EMIT clear();
+void Executer::executeOr(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    // Niels: See 'Not'
+    if (node->childCount() != 2) {
+        addError(i18n("'Or' needs two variables"), *node->token(), 0);
+        return;
+    }
+    node->value()->setBool(node->child(0)->value()->boolean() || node->child(1)->value()->boolean());
 }
-void Executer::executeCenter(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 0, 20000+Token::Center*100+90)) return;
-	Q_EMIT center();
+void Executer::executeNot(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    // OLD-TODO: maybe add some error handling here...
+    // Niels: Ok, now we check if the node has children. Should we also check whether the child value is a boolean?
+    if (node->childCount() != 1) {
+        addError(i18n("I need something to do a not on"), *node->token(), 0);
+        return;
+    }
+    node->value()->setBool(!node->child(0)->value()->boolean());
 }
-void Executer::executeGo(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 2, 20000+Token::Go*100+90) ||
-		!checkParameterType(node, Value::Number, 20000+Token::Go*100+91)) return;
-	Q_EMIT go(node->child(0)->value()->number(), node->child(1)->value()->number());
+void Executer::executeEquals(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (node->childCount() != 2) {
+        addError(i18n("I cannot do a '==' without 2 variables"), *node->token(), 0);
+        return;
+    }
+    node->value()->setBool(*node->child(0)->value() == node->child(1)->value());
 }
-void Executer::executeGoX(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::GoX*100+90) ||
-		!checkParameterType(node, Value::Number, 20000+Token::GoX*100+91)) return;
-	Q_EMIT goX(node->child(0)->value()->number());
+void Executer::executeNotEquals(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (node->childCount() != 2) {
+        addError(i18n("I cannot do a '!=' without 2 variables"), *node->token(), 0);
+        return;
+    }
+    node->value()->setBool(*node->child(0)->value() != node->child(1)->value());
 }
-void Executer::executeGoY(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::GoY*100+90) ||
-		!checkParameterType(node, Value::Number, 20000+Token::GoY*100+91)) return;
-	Q_EMIT goY(node->child(0)->value()->number());
+void Executer::executeGreaterThan(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (node->childCount() != 2) {
+        addError(i18n("I cannot do a '>' without 2 variables"), *node->token(), 0);
+        return;
+    }
+    node->value()->setBool(*node->child(0)->value() > node->child(1)->value());
 }
-void Executer::executeForward(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::Forward*100+90) ||
-		!checkParameterType(node, Value::Number, 20000+Token::Forward*100+91)) return;
-	Q_EMIT forward(node->child(0)->value()->number());
+void Executer::executeLessThan(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (node->childCount() != 2) {
+        addError(i18n("I cannot do a '<' without 2 variables"), *node->token(), 0);
+        return;
+    }
+    node->value()->setBool(*node->child(0)->value() < node->child(1)->value());
 }
-void Executer::executeBackward(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::Backward*100+90) ||
-		!checkParameterType(node, Value::Number, 20000+Token::Backward*100+91)) return;
-	Q_EMIT backward(node->child(0)->value()->number());
+void Executer::executeGreaterOrEquals(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (node->childCount() != 2) {
+        addError(i18n("I cannot do a '>=' without 2 variables"), *node->token(), 0);
+        return;
+    }
+    node->value()->setBool(*node->child(0)->value() >= node->child(1)->value());
 }
-void Executer::executeDirection(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::Direction*100+90) ||
-		!checkParameterType(node, Value::Number, 20000+Token::Direction*100+91)) return;
-	Q_EMIT direction(node->child(0)->value()->number());
+void Executer::executeLessOrEquals(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (node->childCount() != 2) {
+        addError(i18n("I cannot do a '<=' without 2 variables"), *node->token(), 0);
+        return;
+    }
+    node->value()->setBool(*node->child(0)->value() <= node->child(1)->value());
 }
-void Executer::executeTurnLeft(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::TurnLeft*100+90) ||
-		!checkParameterType(node, Value::Number, 20000+Token::TurnLeft*100+91)) return;
-	Q_EMIT turnLeft(node->child(0)->value()->number());
+void Executer::executeAddition(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (node->childCount() != 2) {
+        addError(i18n("You need two numbers or string to do an addition"), *node->token(), 0);
+        return;
+    }
+    if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
+        node->value()->setNumber(node->child(0)->value()->number() + node->child(1)->value()->number());
+    } else {
+        node->value()->setString(node->child(0)->value()->string().append(node->child(1)->value()->string()));
+    }
 }
-void Executer::executeTurnRight(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::TurnRight*100+90) ||
-		!checkParameterType(node, Value::Number, 20000+Token::TurnRight*100+91)) return;
-	Q_EMIT turnRight(node->child(0)->value()->number());
+void Executer::executeSubtraction(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (node->childCount() != 2) {
+        addError(i18n("You need two numbers to subtract"), *node->token(), 0);
+        return;
+    }
+    if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
+        node->value()->setNumber(node->child(0)->value()->number() - node->child(1)->value()->number());
+    } else {
+        if (node->child(0)->value()->type() != Value::Number)
+            addError(i18n("You tried to subtract from a non-number, '%1'", node->child(0)->token()->look()), *node->token(), 0);
+        if (node->child(1)->value()->type() != Value::Number)
+            addError(i18n("You tried to subtract a non-number, '%1'", node->child(1)->token()->look()), *node->token(), 0);
+    }
 }
-void Executer::executePenWidth(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::PenWidth*100+90) ||
-		!checkParameterType(node, Value::Number, 20000+Token::PenWidth*100+91)) return;
-	Q_EMIT penWidth(node->child(0)->value()->number());
+void Executer::executeMultiplication(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (node->childCount() != 2) {
+        addError(i18n("You need two numbers to multiplicate"), *node->token(), 0);
+        return;
+    }
+    if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
+        node->value()->setNumber(node->child(0)->value()->number() * node->child(1)->value()->number());
+    } else {
+        if (node->child(0)->value()->type() != Value::Number)
+            addError(i18n("You tried to multiplicate a non-number, '%1'", node->child(0)->token()->look()), *node->token(), 0);
+        if (node->child(1)->value()->type() != Value::Number)
+            addError(i18n("You tried to multiplicate by a non-number, '%1'", node->child(1)->token()->look()), *node->token(), 0);
+    }
 }
-void Executer::executePenUp(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 0, 20000+Token::PenUp*100+90)) return;
-	Q_EMIT penUp();
+void Executer::executeDivision(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (node->childCount() != 2) {
+        addError(i18n("You need two numbers to divide"), *node->token(), 0);
+        return;
+    }
+    if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
+        if (node->child(1)->value()->number() == 0) {
+            addError(i18n("You tried to divide by zero"), *node->token(), 0);
+            return;
+        }
+        node->value()->setNumber(node->child(0)->value()->number() / node->child(1)->value()->number());
+    } else {
+        if (node->child(0)->value()->type() != Value::Number)
+            addError(i18n("You tried to divide a non-number, '%1'", node->child(0)->token()->look()), *node->token(), 0);
+        if (node->child(1)->value()->type() != Value::Number)
+            addError(i18n("You tried to divide by a non-number, '%1'", node->child(1)->token()->look()), *node->token(), 0);
+    }
 }
-void Executer::executePenDown(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 0, 20000+Token::PenDown*100+90)) return;
-	Q_EMIT penDown();
+void Executer::executePower(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (node->childCount() != 2) {
+        addError(i18n("You need two numbers to raise a power"), *node->token(), 0);
+        return;
+    }
+    if (node->child(0)->value()->type() == Value::Number && node->child(1)->value()->type() == Value::Number) {
+        node->value()->setNumber(pow(node->child(0)->value()->number(), node->child(1)->value()->number()));
+
+        double result = pow(node->child(0)->value()->number(), node->child(1)->value()->number());
+
+        int error = errno;
+        if (error == ERANGE) {
+            node->value()->setNumber(0);
+            addError(i18n("The result of an exponentiation was too large"), *node->token(), 0);
+        } else {
+            node->value()->setNumber(result);
+        }
+    } else {
+        if (node->child(0)->value()->type() != Value::Number)
+            addError(i18n("You tried to raise a non-number to a power, '%1'", node->child(0)->token()->look()), *node->token(), 0);
+        if (node->child(1)->value()->type() != Value::Number)
+            addError(i18n("You tried to raise the power of a non-number, '%1'", node->child(1)->token()->look()), *node->token(), 0);
+    }
 }
-void Executer::executePenColor(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 3, 20000+Token::PenColor*100+90) ||
-		!checkParameterType(node, Value::Number, 20000+Token::PenColor*100+91)) return;
-	Q_EMIT penColor(node->child(0)->value()->number(), node->child(1)->value()->number(), node->child(2)->value()->number());
+void Executer::executeAssign(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (node->childCount() != 2) {
+        addError(i18n("You need one variable and a value or variable to do a '='"), *node->token(), 0);
+        return;
+    }
+    if (!functionStack.isEmpty()
+        && !globalVariableTable.contains(node->child(0)->token()->look())) // &&functionStack.top().variableTable->contains(node->token()->look()))
+    {
+        // //qDebug() << "function scope";
+        functionStack.top().variableTable->insert(node->child(0)->token()->look(), node->child(1)->value());
+    } else {
+        // inserts unless already exists then replaces
+        globalVariableTable.insert(node->child(0)->token()->look(), node->child(1)->value());
+    }
+    // //qDebug() << "variableTable updated!";
+    Q_EMIT variableTableUpdated(node->child(0)->token()->look(), node->child(1)->value());
 }
-void Executer::executeCanvasColor(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 3, 20000+Token::CanvasColor*100+90) ||
-		!checkParameterType(node, Value::Number, 20000+Token::CanvasColor*100+91)) return;
-	Q_EMIT canvasColor(node->child(0)->value()->number(), node->child(1)->value()->number(), node->child(2)->value()->number());
+void Executer::executeLearn(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (functionTable.contains(node->child(0)->token()->look())) {
+        addError(i18n("The function '%1' is already defined.", node->child(0)->token()->look()), *node->token(), 0);
+        return;
+    }
+    functionTable.insert(node->child(0)->token()->look(), node);
+    // //qDebug() << "functionTable updated!";
+    QStringList parameters;
+    for (uint i = 0; i < node->child(1)->childCount(); i++)
+        parameters << node->child(1)->child(i)->token()->look();
+    Q_EMIT functionTableUpdated(node->child(0)->token()->look(), parameters);
 }
-void Executer::executeCanvasSize(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 2, 20000+Token::CanvasSize*100+90) ||
-		!checkParameterType(node, Value::Number, 20000+Token::CanvasSize*100+91)) return;
-	Q_EMIT canvasSize(node->child(0)->value()->number(), node->child(1)->value()->number());
+void Executer::executeArgumentList(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    node = node; // stop the warnings // this is a stud
 }
-void Executer::executeSpriteShow(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 0, 20000+Token::SpriteShow*100+90)) return;
-	Q_EMIT spriteShow();
+void Executer::executeReset(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 0, 20000 + Token::Reset * 100 + 90))
+        return;
+    Q_EMIT reset();
 }
-void Executer::executeSpriteHide(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 0, 20000+Token::SpriteHide*100+90)) return;
-	Q_EMIT spriteHide();
+void Executer::executeClear(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 0, 20000 + Token::Clear * 100 + 90))
+        return;
+    Q_EMIT clear();
 }
-void Executer::executePrint(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::Print*100+90))
-		return;
-	// //qDebug() << "Printing: '" << node->child(0)->value()->string() << "'";
-	Q_EMIT print(node->child(0)->value()->string());
+void Executer::executeCenter(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 0, 20000 + Token::Center * 100 + 90))
+        return;
+    Q_EMIT center();
 }
-void Executer::executeFontSize(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::FontSize*100+90) ||
-		!checkParameterType(node, Value::Number, 20000+Token::FontSize*100+91)) return;
-	Q_EMIT fontSize(node->child(0)->value()->number());
+void Executer::executeGo(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 2, 20000 + Token::Go * 100 + 90) || !checkParameterType(node, Value::Number, 20000 + Token::Go * 100 + 91))
+        return;
+    Q_EMIT go(node->child(0)->value()->number(), node->child(1)->value()->number());
 }
-void Executer::executeRandom(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 2, 20000+Token::Random*100+90)) return;
-	TreeNode* nodeX = node->child(0);  // getting
-	TreeNode* nodeY = node->child(1);
-	
-	if (!checkParameterType(node, Value::Number, 20000+Token::Random*100+91)) return;
-	double x = nodeX->value()->number();
-	double y = nodeY->value()->number();
-	double r = QRandomGenerator::global()->bounded(1.0);
-	node->value()->setNumber(r * (y - x) + x);
+void Executer::executeGoX(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::GoX * 100 + 90) || !checkParameterType(node, Value::Number, 20000 + Token::GoX * 100 + 91))
+        return;
+    Q_EMIT goX(node->child(0)->value()->number());
 }
-void Executer::executeGetX(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 0, 20000+Token::GetX*100+90)) return;
-	double value = 0;
-	Q_EMIT getX(value);
-	node->value()->setNumber(value);
+void Executer::executeGoY(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::GoY * 100 + 90) || !checkParameterType(node, Value::Number, 20000 + Token::GoY * 100 + 91))
+        return;
+    Q_EMIT goY(node->child(0)->value()->number());
 }
-void Executer::executeGetY(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 0, 20000+Token::GetY*100+90)) return;
-	double value = 0;
-	Q_EMIT getY(value);
-	node->value()->setNumber(value);
+void Executer::executeForward(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::Forward * 100 + 90) || !checkParameterType(node, Value::Number, 20000 + Token::Forward * 100 + 91))
+        return;
+    Q_EMIT forward(node->child(0)->value()->number());
 }
-void Executer::executeMessage(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::Message*100+90)) return;
-	Q_EMIT message(node->child(0)->value()->string());
+void Executer::executeBackward(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::Backward * 100 + 90) || !checkParameterType(node, Value::Number, 20000 + Token::Backward * 100 + 91))
+        return;
+    Q_EMIT backward(node->child(0)->value()->number());
 }
-void Executer::executeAsk(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::Ask*100+90)) return;
-	QString value = node->child(0)->value()->string();
-	Q_EMIT ask(value);
-	
-	bool convertOk;
-	double d = value.toDouble(&convertOk);
-	if(convertOk)
-		node->value()->setNumber(d);
-	else
-		node->value()->setString(value);
+void Executer::executeDirection(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::Direction * 100 + 90) || !checkParameterType(node, Value::Number, 20000 + Token::Direction * 100 + 91))
+        return;
+    Q_EMIT direction(node->child(0)->value()->number());
 }
-void Executer::executePi(TreeNode* node) {
-//	//qDebug() << "called";
-	node->value()->setNumber(M_PI);
+void Executer::executeTurnLeft(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::TurnLeft * 100 + 90) || !checkParameterType(node, Value::Number, 20000 + Token::TurnLeft * 100 + 91))
+        return;
+    Q_EMIT turnLeft(node->child(0)->value()->number());
 }
-void Executer::executeTan(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::Tan*100+90)) return;
-	
-	double deg = node->child(0)->value()->number();
-	node->value()->setNumber(tan(qDegreesToRadians(deg)));
+void Executer::executeTurnRight(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::TurnRight * 100 + 90) || !checkParameterType(node, Value::Number, 20000 + Token::TurnRight * 100 + 91))
+        return;
+    Q_EMIT turnRight(node->child(0)->value()->number());
 }
-void Executer::executeSin(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::Sin*100+90)) return;
-	
-	double deg = node->child(0)->value()->number();
-	node->value()->setNumber(sin(qDegreesToRadians(deg)));
+void Executer::executePenWidth(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::PenWidth * 100 + 90) || !checkParameterType(node, Value::Number, 20000 + Token::PenWidth * 100 + 91))
+        return;
+    Q_EMIT penWidth(node->child(0)->value()->number());
 }
-void Executer::executeCos(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::Cos*100+90)) return;
-	
-	double deg = node->child(0)->value()->number();
-	node->value()->setNumber(cos(qDegreesToRadians(deg)));
+void Executer::executePenUp(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 0, 20000 + Token::PenUp * 100 + 90))
+        return;
+    Q_EMIT penUp();
 }
-void Executer::executeArcTan(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::ArcTan*100+90)) return;
-	
-	double deg = node->child(0)->value()->number();
-	node->value()->setNumber(qRadiansToDegrees(atan(deg)));
+void Executer::executePenDown(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 0, 20000 + Token::PenDown * 100 + 90))
+        return;
+    Q_EMIT penDown();
 }
-void Executer::executeArcSin(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::ArcSin*100+90)) return;
-	
-	double deg = node->child(0)->value()->number();
-	node->value()->setNumber(qRadiansToDegrees(asin(deg)));
+void Executer::executePenColor(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 3, 20000 + Token::PenColor * 100 + 90) || !checkParameterType(node, Value::Number, 20000 + Token::PenColor * 100 + 91))
+        return;
+    Q_EMIT penColor(node->child(0)->value()->number(), node->child(1)->value()->number(), node->child(2)->value()->number());
 }
-void Executer::executeArcCos(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::ArcCos*100+90)) return;
-	
-	double deg = node->child(0)->value()->number();
-	node->value()->setNumber(qRadiansToDegrees(acos(deg)));
+void Executer::executeCanvasColor(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 3, 20000 + Token::CanvasColor * 100 + 90)
+        || !checkParameterType(node, Value::Number, 20000 + Token::CanvasColor * 100 + 91))
+        return;
+    Q_EMIT canvasColor(node->child(0)->value()->number(), node->child(1)->value()->number(), node->child(2)->value()->number());
 }
-void Executer::executeSqrt(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 1, 20000+Token::Sqrt*100+90)) return;
-	
-	double val = node->child(0)->value()->number();
-	if(val<0) {
-		addError(i18n("Can't do a sqrt of a negative number"), *node->child(0)->token(), 0);
-		node->value()->setNumber(0);
-		return;
-	}
-	node->value()->setNumber(sqrt(val));
+void Executer::executeCanvasSize(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 2, 20000 + Token::CanvasSize * 100 + 90)
+        || !checkParameterType(node, Value::Number, 20000 + Token::CanvasSize * 100 + 91))
+        return;
+    Q_EMIT canvasSize(node->child(0)->value()->number(), node->child(1)->value()->number());
 }
-void Executer::executeRound(TreeNode* node) {
-//	//qDebug() << "called";
-    if (!checkParameterQuantity(node, 1, 20000+Token::Round*100+90)) return;
-   
+void Executer::executeSpriteShow(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 0, 20000 + Token::SpriteShow * 100 + 90))
+        return;
+    Q_EMIT spriteShow();
+}
+void Executer::executeSpriteHide(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 0, 20000 + Token::SpriteHide * 100 + 90))
+        return;
+    Q_EMIT spriteHide();
+}
+void Executer::executePrint(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::Print * 100 + 90))
+        return;
+    // //qDebug() << "Printing: '" << node->child(0)->value()->string() << "'";
+    Q_EMIT print(node->child(0)->value()->string());
+}
+void Executer::executeFontSize(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::FontSize * 100 + 90) || !checkParameterType(node, Value::Number, 20000 + Token::FontSize * 100 + 91))
+        return;
+    Q_EMIT fontSize(node->child(0)->value()->number());
+}
+void Executer::executeRandom(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 2, 20000 + Token::Random * 100 + 90))
+        return;
+    TreeNode *nodeX = node->child(0); // getting
+    TreeNode *nodeY = node->child(1);
+
+    if (!checkParameterType(node, Value::Number, 20000 + Token::Random * 100 + 91))
+        return;
+    double x = nodeX->value()->number();
+    double y = nodeY->value()->number();
+    double r = QRandomGenerator::global()->bounded(1.0);
+    node->value()->setNumber(r * (y - x) + x);
+}
+void Executer::executeGetX(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 0, 20000 + Token::GetX * 100 + 90))
+        return;
+    double value = 0;
+    Q_EMIT getX(value);
+    node->value()->setNumber(value);
+}
+void Executer::executeGetY(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 0, 20000 + Token::GetY * 100 + 90))
+        return;
+    double value = 0;
+    Q_EMIT getY(value);
+    node->value()->setNumber(value);
+}
+void Executer::executeMessage(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::Message * 100 + 90))
+        return;
+    Q_EMIT message(node->child(0)->value()->string());
+}
+void Executer::executeAsk(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::Ask * 100 + 90))
+        return;
+    QString value = node->child(0)->value()->string();
+    Q_EMIT ask(value);
+
+    bool convertOk;
+    double d = value.toDouble(&convertOk);
+    if (convertOk)
+        node->value()->setNumber(d);
+    else
+        node->value()->setString(value);
+}
+void Executer::executePi(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    node->value()->setNumber(M_PI);
+}
+void Executer::executeTan(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::Tan * 100 + 90))
+        return;
+
+    double deg = node->child(0)->value()->number();
+    node->value()->setNumber(tan(qDegreesToRadians(deg)));
+}
+void Executer::executeSin(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::Sin * 100 + 90))
+        return;
+
+    double deg = node->child(0)->value()->number();
+    node->value()->setNumber(sin(qDegreesToRadians(deg)));
+}
+void Executer::executeCos(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::Cos * 100 + 90))
+        return;
+
+    double deg = node->child(0)->value()->number();
+    node->value()->setNumber(cos(qDegreesToRadians(deg)));
+}
+void Executer::executeArcTan(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::ArcTan * 100 + 90))
+        return;
+
+    double deg = node->child(0)->value()->number();
+    node->value()->setNumber(qRadiansToDegrees(atan(deg)));
+}
+void Executer::executeArcSin(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::ArcSin * 100 + 90))
+        return;
+
+    double deg = node->child(0)->value()->number();
+    node->value()->setNumber(qRadiansToDegrees(asin(deg)));
+}
+void Executer::executeArcCos(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::ArcCos * 100 + 90))
+        return;
+
+    double deg = node->child(0)->value()->number();
+    node->value()->setNumber(qRadiansToDegrees(acos(deg)));
+}
+void Executer::executeSqrt(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::Sqrt * 100 + 90))
+        return;
+
+    double val = node->child(0)->value()->number();
+    if (val < 0) {
+        addError(i18n("Can't do a sqrt of a negative number"), *node->child(0)->token(), 0);
+        node->value()->setNumber(0);
+        return;
+    }
+    node->value()->setNumber(sqrt(val));
+}
+void Executer::executeRound(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 1, 20000 + Token::Round * 100 + 90))
+        return;
+
     double val = node->child(0)->value()->number();
     node->value()->setNumber(round(val));
 }
-void Executer::executeGetDirection(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 0, 20000+Token::GetDirection*100+90)) return;
-	double value = 0;
-	Q_EMIT getDirection(value);
-	node->value()->setNumber(value);
+void Executer::executeGetDirection(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 0, 20000 + Token::GetDirection * 100 + 90))
+        return;
+    double value = 0;
+    Q_EMIT getDirection(value);
+    node->value()->setNumber(value);
 }
-void Executer::executeMod(TreeNode* node) {
-//	//qDebug() << "called";
-	if (!checkParameterQuantity(node, 2, 20000+Token::Mod*100+90)) return;
-	TreeNode* nodeX = node->child(0);  // getting
-	TreeNode* nodeY = node->child(1);
+void Executer::executeMod(TreeNode *node)
+{
+    //	//qDebug() << "called";
+    if (!checkParameterQuantity(node, 2, 20000 + Token::Mod * 100 + 90))
+        return;
+    TreeNode *nodeX = node->child(0); // getting
+    TreeNode *nodeY = node->child(1);
 
-	if (!checkParameterType(node, Value::Number, 20000+Token::Mod*100+91)) return;
-	double x = nodeX->value()->number();
-	double y = nodeY->value()->number();
-	double m = (static_cast<int>(round(x)) % static_cast<int>(round(y)));
-	node->value()->setNumber(m);
+    if (!checkParameterType(node, Value::Number, 20000 + Token::Mod * 100 + 91))
+        return;
+    double x = nodeX->value()->number();
+    double y = nodeY->value()->number();
+    double m = (static_cast<int>(round(x)) % static_cast<int>(round(y)));
+    node->value()->setNumber(m);
 }
 
-//END GENERATED executer_cpp CODE
+// END GENERATED executer_cpp CODE
 
-TreeNode* Executer::getParentOfTokenTypes(TreeNode* child, QList<int>* types) {
+TreeNode *Executer::getParentOfTokenTypes(TreeNode *child, QList<int> *types)
+{
     for (int type : *types) {
-		if(child->parent()->token()->type()==type)
-			return child->parent();
-		else if(child->parent()->token()->type()==Token::Root)
-			return nullptr;
-	}
-	return getParentOfTokenTypes(child->parent(), types);
+        if (child->parent()->token()->type() == type)
+            return child->parent();
+        else if (child->parent()->token()->type() == Token::Root)
+            return nullptr;
+    }
+    return getParentOfTokenTypes(child->parent(), types);
 }
 
-void Executer::printExe() {
-// 	if (currentNode->token()->type() != Token::Scope)
-// 		//qDebug() << "EXE> " << qPrintable(currentNode->token()->look());
+void Executer::printExe()
+{
+    // 	if (currentNode->token()->type() != Token::Scope)
+    // 		//qDebug() << "EXE> " << qPrintable(currentNode->token()->look());
 }
 
 #include "moc_executer.cpp"

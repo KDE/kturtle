@@ -11,24 +11,19 @@
 #include <QObject>
 #include <QStack>
 
-
 #include "errormsg.h"
 #include "token.h"
 #include "treenode.h"
 
-
-
 // some typedefs and a struct for the template classes used:
 
-typedef QHash<QString, Value>     VariableTable;
-typedef QHash<QString, TreeNode*> FunctionTable;
+typedef QHash<QString, Value> VariableTable;
+typedef QHash<QString, TreeNode *> FunctionTable;
 typedef struct {
-	TreeNode*      function;      // pointer to the node of the function caller
-	VariableTable* variableTable; // pointer to the variable table of the function
+    TreeNode *function; // pointer to the node of the function caller
+    VariableTable *variableTable; // pointer to the variable table of the function
 } CalledFunction;
-typedef QStack<CalledFunction>    FunctionStack;
-
-
+typedef QStack<CalledFunction> FunctionStack;
 
 /**
  * @short Step-wise execution of a node tree, collecting errors in the ErrorList.
@@ -51,246 +46,245 @@ typedef QStack<CalledFunction>    FunctionStack;
  */
 class Executer : public QObject
 {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
-		/**
-		 * @short Constructor. Initialses the Executer.
-		 * does nothing special. @see initialize().
-		 */
-		explicit Executer(bool testing = false) : m_testing(testing) {}
-		/**
-		 * @short Destructor. Does nothing at special.
-		 */
-		~Executer() override {}
+public:
+    /**
+     * @short Constructor. Initialses the Executer.
+     * does nothing special. @see initialize().
+     */
+    explicit Executer(bool testing = false)
+        : m_testing(testing)
+    {
+    }
+    /**
+     * @short Destructor. Does nothing at special.
+     */
+    ~Executer() override
+    {
+    }
 
+    /**
+     * @short Initialses (resets) the Executer.
+     * @param tree      pointer to the base node of the tree as provided
+     *                  by the Parser
+     * @param errorList pointer to a QList for ErrorMessage objects, when
+     *                  error occur they will be stored here
+     */
+    void initialize(TreeNode *tree, ErrorList *_errorList);
 
-		/**
-		 * @short Initialses (resets) the Executer.
-		 * @param tree      pointer to the base node of the tree as provided
-		 *                  by the Parser
-		 * @param errorList pointer to a QList for ErrorMessage objects, when
-		 *                  error occur they will be stored here
-		 */
-		void initialize(TreeNode* tree, ErrorList* _errorList);
+    /**
+     * @short Executes one 'step' (usually a TreeNode).
+     * This methods scans over the node tree to find the next TreeNode to
+     * execute, and executes it. It starts by the leafs, and works it way to
+     * the root. @see isFinished
+     */
+    void execute();
 
-		/**
-		 * @short Executes one 'step' (usually a TreeNode).
-		 * This methods scans over the node tree to find the next TreeNode to
-		 * execute, and executes it. It starts by the leafs, and works it way to
-		 * the root. @see isFinished
-		 */
-		void           execute();
+    /**
+     * @short Reflects if the Executer has finished executing the node tree.
+     * @return TRUE when execution has finished, otherwise FALSE.
+     */
+    bool isFinished() const
+    {
+        return finished;
+    }
 
-		/**
-		 * @short Reflects if the Executer has finished executing the node tree.
-		 * @return TRUE when execution has finished, otherwise FALSE.
-		 */
-		bool           isFinished() const { return finished; }
+private Q_SLOTS:
+    /// Used by the singleshot wait timer.
+    void stopWaiting()
+    {
+        waiting = false;
+    }
 
+private:
+    /// Executes a single TreeNode, mainly a switch to the individual executer* functions.
+    void execute(TreeNode *node);
 
-	private Q_SLOTS:
-		/// Used by the singleshot wait timer.
-		void stopWaiting() { waiting = false; }
+    /// Adds an error to the error list.
+    void addError(const QString &s, const Token &t, int code);
 
+    /// Checks the parameter quantity of @p n matches @p quantity, if not it adds an error with @p errorCode
+    bool checkParameterQuantity(TreeNode *n, uint quantity, int errorCode);
 
-	private:
-		/// Executes a single TreeNode, mainly a switch to the individual executer* functions.
-		void           execute(TreeNode* node);
+    /// Checks the types of @p n 's parameters match the type @p valueType, if not it adds an error with @p errorCode
+    bool checkParameterType(TreeNode *n, int valueType, int errorCode);
 
-		/// Adds an error to the error list.
-		void           addError(const QString& s, const Token& t, int code);
+    /// @returns the variable table of the current function, or the globalVariableTable if not running in a function
+    VariableTable *currentVariableTable();
 
-		/// Checks the parameter quantity of @p n matches @p quantity, if not it adds an error with @p errorCode
-		bool           checkParameterQuantity(TreeNode* n, uint quantity, int errorCode);
+    /// QHash containing pointers to the 'learned' functions
+    FunctionTable functionTable;
 
-		/// Checks the types of @p n 's parameters match the type @p valueType, if not it adds an error with @p errorCode
-		bool           checkParameterType(TreeNode* n, int valueType, int errorCode);
+    /// QHash containing the global variables
+    VariableTable globalVariableTable;
 
-		/// @returns the variable table of the current function, or the globalVariableTable if not running in a function
-		VariableTable* currentVariableTable();
+    /// Stores both pointers to functionNodes and accompanying local variable table using the predefined struct.
+    FunctionStack functionStack;
 
+    /// Pointer to the error list as supplied to the constructor
+    ErrorList *errorList;
 
+    /// Pointer to the root node of the tree
+    TreeNode *rootNode;
 
-		/// QHash containing pointers to the 'learned' functions
-		FunctionTable       functionTable;
+    /// This points to a scope node when we have to get into a new scope, otherwise it should be zero
+    TreeNode *newScope;
 
-		/// QHash containing the global variables
-		VariableTable       globalVariableTable;
+    /// This point to the current node in the tree
+    TreeNode *currentNode;
 
-		/// Stores both pointers to functionNodes and accompanying local variable table using the predefined struct.
-		FunctionStack       functionStack;
+    /// Zero except when returning from a function
+    Value *returnValue;
 
-		/// Pointer to the error list as supplied to the constructor
-		ErrorList          *errorList;
+    /// TRUE when execution has finished
+    bool finished;
 
+    /// TRUE when execution is waiting
+    bool waiting;
 
+    /// TRUE when breaking from a loop
+    bool breaking;
 
-		/// Pointer to the root node of the tree
-		TreeNode*      rootNode;
+    /// TRUE when returning from a function
+    bool returning;
 
-		/// This points to a scope node when we have to get into a new scope, otherwise it should be zero
-		TreeNode*      newScope;
+    /// TRUE when the next call of execute() should straight execute the current node (not walk the tree first)
+    bool executeCurrent;
 
-		/// This point to the current node in the tree
-		TreeNode*      currentNode;
+    bool m_testing;
 
-		/// Zero except when returning from a function
-		Value*         returnValue;
+    // Next you find individual execute functions as generated:
 
-		/// TRUE when execution has finished
-		bool           finished;
+    // BEGIN GENERATED executer_h CODE
 
-		/// TRUE when execution is waiting
-		bool           waiting;
+    /* The code between the line that start with "//BEGIN GENERATED" and "//END GENERATED"
+     * is generated by "generate.rb" according to the definitions specified in
+     * "definitions.rb". Please make all changes in the "definitions.rb" file, since all
+     * all change you make here will be overwritten the next time "generate.rb" is run.
+     * Thanks for looking at the code!
+     */
 
-		/// TRUE when breaking from a loop
-		bool           breaking;
+    void executeRoot(TreeNode *node);
+    void executeScope(TreeNode *node);
+    void executeVariable(TreeNode *node);
+    void executeFunctionCall(TreeNode *node);
+    void executeExit(TreeNode *node);
+    void executeIf(TreeNode *node);
+    void executeElse(TreeNode *node);
+    void executeRepeat(TreeNode *node);
+    void executeWhile(TreeNode *node);
+    void executeFor(TreeNode *node);
+    void executeForTo(TreeNode *node);
+    void executeBreak(TreeNode *node);
+    void executeReturn(TreeNode *node);
+    void executeWait(TreeNode *node);
+    void executeAssert(TreeNode *node);
+    void executeAnd(TreeNode *node);
+    void executeOr(TreeNode *node);
+    void executeNot(TreeNode *node);
+    void executeEquals(TreeNode *node);
+    void executeNotEquals(TreeNode *node);
+    void executeGreaterThan(TreeNode *node);
+    void executeLessThan(TreeNode *node);
+    void executeGreaterOrEquals(TreeNode *node);
+    void executeLessOrEquals(TreeNode *node);
+    void executeAddition(TreeNode *node);
+    void executeSubtraction(TreeNode *node);
+    void executeMultiplication(TreeNode *node);
+    void executeDivision(TreeNode *node);
+    void executePower(TreeNode *node);
+    void executeAssign(TreeNode *node);
+    void executeLearn(TreeNode *node);
+    void executeArgumentList(TreeNode *node);
+    void executeReset(TreeNode *node);
+    void executeClear(TreeNode *node);
+    void executeCenter(TreeNode *node);
+    void executeGo(TreeNode *node);
+    void executeGoX(TreeNode *node);
+    void executeGoY(TreeNode *node);
+    void executeForward(TreeNode *node);
+    void executeBackward(TreeNode *node);
+    void executeDirection(TreeNode *node);
+    void executeTurnLeft(TreeNode *node);
+    void executeTurnRight(TreeNode *node);
+    void executePenWidth(TreeNode *node);
+    void executePenUp(TreeNode *node);
+    void executePenDown(TreeNode *node);
+    void executePenColor(TreeNode *node);
+    void executeCanvasColor(TreeNode *node);
+    void executeCanvasSize(TreeNode *node);
+    void executeSpriteShow(TreeNode *node);
+    void executeSpriteHide(TreeNode *node);
+    void executePrint(TreeNode *node);
+    void executeFontSize(TreeNode *node);
+    void executeRandom(TreeNode *node);
+    void executeGetX(TreeNode *node);
+    void executeGetY(TreeNode *node);
+    void executeMessage(TreeNode *node);
+    void executeAsk(TreeNode *node);
+    void executePi(TreeNode *node);
+    void executeTan(TreeNode *node);
+    void executeSin(TreeNode *node);
+    void executeCos(TreeNode *node);
+    void executeArcTan(TreeNode *node);
+    void executeArcSin(TreeNode *node);
+    void executeArcCos(TreeNode *node);
+    void executeSqrt(TreeNode *node);
+    void executeRound(TreeNode *node);
+    void executeGetDirection(TreeNode *node);
+    void executeMod(TreeNode *node);
 
-		/// TRUE when returning from a function
-		bool           returning;
+    // END GENERATED executer_h CODE
 
-		/// TRUE when the next call of execute() should straight execute the current node (not walk the tree first)
-		bool           executeCurrent;
+    TreeNode *getParentOfTokenTypes(TreeNode *child, QList<int> *types);
+    inline void printExe();
 
-		bool           m_testing;
+Q_SIGNALS:
+    void currentlyExecuting(TreeNode *node);
+    void variableTableUpdated(const QString &name, const Value &value);
+    void functionTableUpdated(const QString &name, const QStringList &parameters);
 
+    void getX(double &);
+    void getY(double &);
+    void ask(QString &value);
+    void message(const QString &text);
+    void getDirection(double &);
 
+    // next you find generated signals that can be emitted:
 
-// Next you find individual execute functions as generated:
+    // BEGIN GENERATED executer_emits_h CODE
 
-//BEGIN GENERATED executer_h CODE
+    /* The code between the line that start with "//BEGIN GENERATED" and "//END GENERATED"
+     * is generated by "generate.rb" according to the definitions specified in
+     * "definitions.rb". Please make all changes in the "definitions.rb" file, since all
+     * all change you make here will be overwritten the next time "generate.rb" is run.
+     * Thanks for looking at the code!
+     */
 
-/* The code between the line that start with "//BEGIN GENERATED" and "//END GENERATED"
- * is generated by "generate.rb" according to the definitions specified in
- * "definitions.rb". Please make all changes in the "definitions.rb" file, since all
- * all change you make here will be overwritten the next time "generate.rb" is run.
- * Thanks for looking at the code!
- */
+    void reset();
+    void clear();
+    void center();
+    void go(double, double);
+    void goX(double);
+    void goY(double);
+    void forward(double);
+    void backward(double);
+    void direction(double);
+    void turnLeft(double);
+    void turnRight(double);
+    void penWidth(double);
+    void penUp();
+    void penDown();
+    void penColor(double, double, double);
+    void canvasColor(double, double, double);
+    void canvasSize(double, double);
+    void spriteShow();
+    void spriteHide();
+    void print(const QString &);
+    void fontSize(double);
 
-		void executeRoot(TreeNode* node);
-		void executeScope(TreeNode* node);
-		void executeVariable(TreeNode* node);
-		void executeFunctionCall(TreeNode* node);
-		void executeExit(TreeNode* node);
-		void executeIf(TreeNode* node);
-		void executeElse(TreeNode* node);
-		void executeRepeat(TreeNode* node);
-		void executeWhile(TreeNode* node);
-		void executeFor(TreeNode* node);
-		void executeForTo(TreeNode* node);
-		void executeBreak(TreeNode* node);
-		void executeReturn(TreeNode* node);
-		void executeWait(TreeNode* node);
-		void executeAssert(TreeNode* node);
-		void executeAnd(TreeNode* node);
-		void executeOr(TreeNode* node);
-		void executeNot(TreeNode* node);
-		void executeEquals(TreeNode* node);
-		void executeNotEquals(TreeNode* node);
-		void executeGreaterThan(TreeNode* node);
-		void executeLessThan(TreeNode* node);
-		void executeGreaterOrEquals(TreeNode* node);
-		void executeLessOrEquals(TreeNode* node);
-		void executeAddition(TreeNode* node);
-		void executeSubtraction(TreeNode* node);
-		void executeMultiplication(TreeNode* node);
-		void executeDivision(TreeNode* node);
-		void executePower(TreeNode* node);
-		void executeAssign(TreeNode* node);
-		void executeLearn(TreeNode* node);
-		void executeArgumentList(TreeNode* node);
-		void executeReset(TreeNode* node);
-		void executeClear(TreeNode* node);
-		void executeCenter(TreeNode* node);
-		void executeGo(TreeNode* node);
-		void executeGoX(TreeNode* node);
-		void executeGoY(TreeNode* node);
-		void executeForward(TreeNode* node);
-		void executeBackward(TreeNode* node);
-		void executeDirection(TreeNode* node);
-		void executeTurnLeft(TreeNode* node);
-		void executeTurnRight(TreeNode* node);
-		void executePenWidth(TreeNode* node);
-		void executePenUp(TreeNode* node);
-		void executePenDown(TreeNode* node);
-		void executePenColor(TreeNode* node);
-		void executeCanvasColor(TreeNode* node);
-		void executeCanvasSize(TreeNode* node);
-		void executeSpriteShow(TreeNode* node);
-		void executeSpriteHide(TreeNode* node);
-		void executePrint(TreeNode* node);
-		void executeFontSize(TreeNode* node);
-		void executeRandom(TreeNode* node);
-		void executeGetX(TreeNode* node);
-		void executeGetY(TreeNode* node);
-		void executeMessage(TreeNode* node);
-		void executeAsk(TreeNode* node);
-		void executePi(TreeNode* node);
-		void executeTan(TreeNode* node);
-		void executeSin(TreeNode* node);
-		void executeCos(TreeNode* node);
-		void executeArcTan(TreeNode* node);
-		void executeArcSin(TreeNode* node);
-		void executeArcCos(TreeNode* node);
-		void executeSqrt(TreeNode* node);
-		void executeRound(TreeNode* node);
-		void executeGetDirection(TreeNode* node);
-		void executeMod(TreeNode* node);
-
-//END GENERATED executer_h CODE
-
-		TreeNode* getParentOfTokenTypes(TreeNode* child, QList<int>* types);
-		inline void printExe();
-
-
-
-	Q_SIGNALS:
-		void currentlyExecuting(TreeNode* node);
-		void variableTableUpdated(const QString& name, const Value& value);
-		void functionTableUpdated(const QString& name, const QStringList& parameters);
-
-		void getX(double&);
-		void getY(double&);
-		void ask(QString& value);
-		void message(const QString& text);
-		void getDirection(double&);
-
-// next you find generated signals that can be emitted:
-
-//BEGIN GENERATED executer_emits_h CODE
-
-/* The code between the line that start with "//BEGIN GENERATED" and "//END GENERATED"
- * is generated by "generate.rb" according to the definitions specified in
- * "definitions.rb". Please make all changes in the "definitions.rb" file, since all
- * all change you make here will be overwritten the next time "generate.rb" is run.
- * Thanks for looking at the code!
- */
-
-		void reset();
-		void clear();
-		void center();
-		void go(double, double);
-		void goX(double);
-		void goY(double);
-		void forward(double);
-		void backward(double);
-		void direction(double);
-		void turnLeft(double);
-		void turnRight(double);
-		void penWidth(double);
-		void penUp();
-		void penDown();
-		void penColor(double, double, double);
-		void canvasColor(double, double, double);
-		void canvasSize(double, double);
-		void spriteShow();
-		void spriteHide();
-		void print(const QString&);
-		void fontSize(double);
-
-//END GENERATED executer_emits_h CODE
-
+    // END GENERATED executer_emits_h CODE
 };
 
-#endif  // _EXECUTER_H_
+#endif // _EXECUTER_H_

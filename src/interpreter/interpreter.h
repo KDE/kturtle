@@ -4,7 +4,6 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-
 #ifndef _INTERPRETER_H_
 #define _INTERPRETER_H_
 
@@ -17,71 +16,88 @@
 #include "translator.h"
 #include "treenode.h"
 
-
 /**
  * @short Step-wise interpreter for KTurtle code.
  *
  * This class handles the interpreting of KTurtle code.
  * It does so in a few steps:
- * 1. @TODO 
+ * 1. @TODO
  *
  * @author Cies Breijs
  */
 class Interpreter : public QObject
 {
-	Q_OBJECT
-	Q_CLASSINFO("D-Bus Interface", "org.kde.kturtle.Interpreter")
+    Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface", "org.kde.kturtle.Interpreter")
 
-	public:
-		/**
-		 * Default Constructor
-		 */
-		Interpreter(QObject* parent, bool testing);
+public:
+    /**
+     * Default Constructor
+     */
+    Interpreter(QObject *parent, bool testing);
 
-		/**
-		 * Default Destructor
-		 */
-        ~Interpreter() override;
+    /**
+     * Default Destructor
+     */
+    ~Interpreter() override;
 
-		enum State {
-			Uninitialized, // unusable
-			Initialized,   // ready to interpret something
-			Parsing,       // parsing the code string to a tree
-			Executing,     // executing the tree
-			Finished,      // successfully finished executing
-			Aborted        // unsuccessfully finished
-		};
+    enum State {
+        Uninitialized, // unusable
+        Initialized, // ready to interpret something
+        Parsing, // parsing the code string to a tree
+        Executing, // executing the tree
+        Finished, // successfully finished executing
+        Aborted // unsuccessfully finished
+    };
 
-		void        abort() { m_state = Aborted; }
+    void abort()
+    {
+        m_state = Aborted;
+    }
 
-		Executer*   getExecuter() { return executer; }
-		ErrorList*  getErrorList() { return errorList; }
+    Executer *getExecuter()
+    {
+        return executer;
+    }
+    ErrorList *getErrorList()
+    {
+        return errorList;
+    }
 
-	public Q_SLOTS:
-		void        interpret();
-		int         state() { return m_state; }
-		void        initialize(const QString& inputString);  // resets
-		bool        encounteredErrors() { return errorList->count() > 0; }
-		QStringList getErrorStrings() { return errorList->asStringList(); }
+public Q_SLOTS:
+    void interpret();
+    int state()
+    {
+        return m_state;
+    }
+    void initialize(const QString &inputString); // resets
+    bool encounteredErrors()
+    {
+        return errorList->count() > 0;
+    }
+    QStringList getErrorStrings()
+    {
+        return errorList->asStringList();
+    }
 
-	Q_SIGNALS:
-		void parsing();
-		void executing();
-		void finished();
-		
-		void treeUpdated(TreeNode* rootNode);
+Q_SIGNALS:
+    void parsing();
+    void executing();
+    void finished();
 
-	private:
-		int            m_state;
+    void treeUpdated(TreeNode *rootNode);
 
-		Translator    *translator;
-		Tokenizer     *tokenizer;
-		Parser        *parser;
-		Executer      *executer;
+private:
+    int m_state;
 
-		ErrorList     *errorList;
+    Translator *translator;
+    Tokenizer *tokenizer;
+    Parser *parser;
+    Executer *executer;
 
-		bool           m_testing;
+    ErrorList *errorList;
+
+    bool m_testing;
 };
 
-#endif  // _INTERPRETER_H_
+#endif // _INTERPRETER_H_

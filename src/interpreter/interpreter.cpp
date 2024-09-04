@@ -11,21 +11,20 @@
 
 #include <QDebug>
 
-
-
-Interpreter::Interpreter(QObject* parent, bool testing)
-	: QObject(parent), m_testing(testing)
+Interpreter::Interpreter(QObject *parent, bool testing)
+    : QObject(parent)
+    , m_testing(testing)
 {
-	if (testing) {
-		new InterpreterAdaptor(this);
-		QDBusConnection dbus = QDBusConnection::sessionBus();
-		dbus.registerObject(QStringLiteral("/Interpreter"), this);
-	}
+    if (testing) {
+        new InterpreterAdaptor(this);
+        QDBusConnection dbus = QDBusConnection::sessionBus();
+        dbus.registerObject(QStringLiteral("/Interpreter"), this);
+    }
 
-	errorList  = new ErrorList();
-	tokenizer  = new Tokenizer();
-	parser     = new Parser(testing);
-	executer   = new Executer(testing);
+    errorList = new ErrorList();
+    tokenizer = new Tokenizer();
+    parser = new Parser(testing);
+    executer = new Executer(testing);
 
     m_state = Uninitialized;
 }
@@ -39,83 +38,79 @@ Interpreter::~Interpreter()
     delete executer;
 }
 
-void Interpreter::initialize(const QString& inString)
+void Interpreter::initialize(const QString &inString)
 {
-	errorList->clear();
-	tokenizer->initialize(inString);
-	m_state = Initialized;
+    errorList->clear();
+    tokenizer->initialize(inString);
+    m_state = Initialized;
 }
 
 void Interpreter::interpret()
 {
-	switch (m_state) {
-		case Uninitialized:
-			qCritical("Interpreter::interpret(): called without being initialized");
-			return;
+    switch (m_state) {
+    case Uninitialized:
+        qCritical("Interpreter::interpret(): called without being initialized");
+        return;
 
+    case Initialized:
+        parser->initialize(tokenizer, errorList);
+        m_state = Parsing;
+        // 			//qDebug() << "Initialized the parser, parsing the code...";
+        Q_EMIT parsing();
+        break;
 
-		case Initialized:
-			parser->initialize(tokenizer, errorList);
-			m_state = Parsing;
-// 			//qDebug() << "Initialized the parser, parsing the code...";
-			Q_EMIT parsing();
-			break;
+    case Parsing:
+        parser->parse();
 
+        if (encounteredErrors()) {
+            m_state = Aborted;
+            // 				//qDebug() << "Error encountered while parsing:";
+            //				const QStringList lines = errorList->asStringList();
+            //				foreach (const QString &line, lines)
+            // qDebug() << line;
+            // 				//qDebug() << "Parsing was unsuccessful.";
+            return;
+        }
 
-		case Parsing:
-			parser->parse();
+        if (parser->isFinished()) {
+            // 				//qDebug() << "Finished parsing.\n";
+            TreeNode *tree = parser->getRootNode();
+            Q_EMIT treeUpdated(tree);
+            // 				//qDebug() << "Node tree as returned by parser:";
+            // 				parser->printTree();
+            // 				//qDebug() << "";
 
-			if (encounteredErrors()) {
-				m_state = Aborted;
-// 				//qDebug() << "Error encountered while parsing:";
-//				const QStringList lines = errorList->asStringList();
-//				foreach (const QString &line, lines)
-					//qDebug() << line;
-// 				//qDebug() << "Parsing was unsuccessful.";
-				return;
-			}
+            executer->initialize(tree, errorList);
+            m_state = Executing;
+            // 				//qDebug() << "Initialized the executer, executing the node tree...";
+            Q_EMIT executing();
+            return;
+        }
+        break;
 
-			if (parser->isFinished()) {
-// 				//qDebug() << "Finished parsing.\n";
-				TreeNode* tree = parser->getRootNode();
-				Q_EMIT treeUpdated(tree);
-// 				//qDebug() << "Node tree as returned by parser:";
-// 				parser->printTree();
-// 				//qDebug() << "";
+    case Executing:
+        executer->execute();
 
-				executer->initialize(tree, errorList);
-				m_state = Executing;
-// 				//qDebug() << "Initialized the executer, executing the node tree...";
-				Q_EMIT executing();
-				return;
-			}
-			break;
+        if (executer->isFinished()) {
+            // 				//qDebug() << "Finished executing.\n";
+            if (encounteredErrors()) {
+                // 					//qDebug() << "Execution returned " << errorList->count() << " error(s):";
+                // 					const QStringList lines = errorList->asStringList();
+                // 					foreach (const QString &line, lines)
+                // 						//qDebug() << line;
+            } else {
+                // 					//qDebug() << "No errors encountered.";
+            }
+            m_state = Finished;
+            Q_EMIT finished();
+            return;
+        }
+        break;
 
-
-		case Executing:
-			executer->execute();
-
-			if (executer->isFinished()) {
-// 				//qDebug() << "Finished executing.\n";
-				if (encounteredErrors()) {
-// 					//qDebug() << "Execution returned " << errorList->count() << " error(s):";
-// 					const QStringList lines = errorList->asStringList();
-// 					foreach (const QString &line, lines)
-// 						//qDebug() << line;
-				} else {
-// 					//qDebug() << "No errors encountered.";
-				}
-				m_state = Finished;
-				Q_EMIT finished();
-				return;
-			}
-			break;
-
-
-		case Finished:
-			qCritical("Interpreter::interpret(): called while already finished");
-			return;
-	}
+    case Finished:
+        qCritical("Interpreter::interpret(): called while already finished");
+        return;
+    }
 }
 
 #include "moc_interpreter.cpp"

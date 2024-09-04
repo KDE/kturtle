@@ -7,13 +7,13 @@
 #ifndef _INSPECTOR_H_
 #define _INSPECTOR_H_
 
-#include <QWidget>
 #include <QHash>
+#include <QWidget>
 
 #include "editor.h"
 #include "highlighter.h"
-#include "interpreter/value.h"
 #include "interpreter/treenode.h"
+#include "interpreter/value.h"
 
 class QHBoxLayout;
 class QTableWidget;
@@ -22,67 +22,63 @@ class QTabWidget;
 class QTreeWidget;
 class QTreeWidgetItem;
 
-
 class Inspector : public QWidget
 {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
-        explicit Inspector(QWidget *parent = nullptr);
-		~Inspector() override;
+public:
+    explicit Inspector(QWidget *parent = nullptr);
+    ~Inspector() override;
 
-		void clear();
+    void clear();
 
+public Q_SLOTS:
+    void updateVariable(const QString &name, const Value &value);
+    void updateFunction(const QString &name, const QStringList &parameters);
+    void updateTree(TreeNode *rootNode);
 
-	public Q_SLOTS:
-		void updateVariable(const QString& name, const Value& value);
-		void updateFunction(const QString& name, const QStringList& parameters);
-		void updateTree(TreeNode* rootNode);
+    void markVariable(const QString &);
+    void markFunction(const QString &);
+    void markTreeNode(TreeNode *);
 
-		void markVariable(const QString&);
-		void markFunction(const QString&);
-		void markTreeNode(TreeNode*);
+    void clearAllMarks();
 
-		void clearAllMarks();
+    void disable();
 
-		void disable();
+private:
+    int findVariable(const QString &name);
+    QTreeWidgetItem *walkTree(TreeNode *node);
 
+    void clearTreeMark();
 
-	private:
-		int findVariable(const QString& name);
-		QTreeWidgetItem* walkTree(TreeNode* node);
+    Highlighter *highlighter;
 
-		void clearTreeMark();
+    // map the names of the variables/functions to their respective items in the tabelwidget
+    QHash<QString, QTableWidgetItem *> variableMap;
+    QHash<QString, QTableWidgetItem *> functionMap;
+    // map the treenodes to their respective items in the treewidget
+    QHash<TreeNode *, QTreeWidgetItem *> treeMap;
 
-		Highlighter  *highlighter;
+    QHBoxLayout *mainLayout;
+    QTabWidget *tabWidget;
 
-		// map the names of the variables/functions to their respective items in the tabelwidget
-		QHash<QString, QTableWidgetItem*> variableMap;
-		QHash<QString, QTableWidgetItem*> functionMap;
-		// map the treenodes to their respective items in the treewidget
-		QHash<TreeNode*, QTreeWidgetItem*> treeMap;
+    QWidget *variableTab;
+    QHBoxLayout *variableLayout;
+    QTableWidget *variableTable;
 
-		QHBoxLayout  *mainLayout;
-		QTabWidget   *tabWidget;
+    QWidget *functionTab;
+    QHBoxLayout *functionLayout;
+    QTableWidget *functionTable;
 
-		QWidget      *variableTab;
-		QHBoxLayout  *variableLayout;
-		QTableWidget *variableTable;
+    QWidget *treeTab;
+    QHBoxLayout *treeLayout;
+    QTreeWidget *treeView;
 
-		QWidget      *functionTab;
-		QHBoxLayout  *functionLayout;
-		QTableWidget *functionTable;
+    QBrush previousTreeBackground;
+    QTreeWidgetItem *currentlyMarkedTreeItem;
 
-		QWidget      *treeTab;
-		QHBoxLayout  *treeLayout;
-		QTreeWidget  *treeView;
-
-		QBrush previousTreeBackground;
-		QTreeWidgetItem *currentlyMarkedTreeItem;
-
-		bool         variableTableEmpty;
-		bool         functionTableEmpty;
+    bool variableTableEmpty;
+    bool functionTableEmpty;
 };
 
-
-#endif  // _INSPECTOR_H_
+#endif // _INSPECTOR_H_

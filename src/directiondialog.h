@@ -18,82 +18,76 @@ class QLineEdit;
 class QPushButton;
 class QSpinBox;
 
-
 class DirectionCanvas : public QWidget
 {
-	Q_OBJECT
-	
-	public:
-        explicit DirectionCanvas(QWidget* parent = nullptr);
-		void enableGreyTurtle(bool);
+    Q_OBJECT
 
-	public Q_SLOTS:
-		void updateDirections(double previousDeg, double deg);
-	
-    Q_SIGNALS:
-		void degreeChanged(double deg);
-		void previousDegreeChanged(double deg);
+public:
+    explicit DirectionCanvas(QWidget *parent = nullptr);
+    void enableGreyTurtle(bool);
 
-	protected:
-		void paintEvent(QPaintEvent *event) override;
-		void mouseMoveEvent(QMouseEvent *event) override;
-		void mousePressEvent(QMouseEvent *event) override;
+public Q_SLOTS:
+    void updateDirections(double previousDeg, double deg);
 
-	private:
-		double translateMouseCoords(double x, double y);
+Q_SIGNALS:
+    void degreeChanged(double deg);
+    void previousDegreeChanged(double deg);
 
-		double deg;
-		double previousDeg;
-		QSvgRenderer turtle;
-		QSvgRenderer greyTurtle;
-		bool greyTurtleEnabled;
+protected:
+    void paintEvent(QPaintEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
+
+private:
+    double translateMouseCoords(double x, double y);
+
+    double deg;
+    double previousDeg;
+    QSvgRenderer turtle;
+    QSvgRenderer greyTurtle;
+    bool greyTurtleEnabled;
 };
-
 
 class DirectionDialog : public QDialog
 {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
-		DirectionDialog(double deg, QWidget* parent);
-		
-		enum Command {
-			Turnleft = 0,
-			Turnright = 1,
-			Direction = 2
-		};
+public:
+    DirectionDialog(double deg, QWidget *parent);
 
-    Q_SIGNALS:
-		void pasteText(const QString&);
+    enum Command { Turnleft = 0, Turnright = 1, Direction = 2 };
 
-	private:
-		DirectionCanvas* canvas;
+Q_SIGNALS:
+    void pasteText(const QString &);
 
-		QComboBox* commandPicker;
-		QSpinBox* previousDirectionSpin;
-		QSpinBox* directionSpin;
+private:
+    DirectionCanvas *canvas;
 
-		QPushButton *copyButton;
-		QPushButton *pasteButton;
+    QComboBox *commandPicker;
+    QSpinBox *previousDirectionSpin;
+    QSpinBox *directionSpin;
 
-		QLineEdit* commandBox;
+    QPushButton *copyButton;
+    QPushButton *pasteButton;
 
-		int currentCommand;  // enum DirectionChooser::Command
+    QLineEdit *commandBox;
 
-		Translator* translator;
+    int currentCommand; // enum DirectionChooser::Command
 
-		bool skipValueChangedEvent;
+    Translator *translator;
 
-		void updateCanvas();
-		void updateCommandBox();
+    bool skipValueChangedEvent;
 
-	private Q_SLOTS:
-		void directionChanged(int value);
-		void changeCommand(int command);
-		void updateDegrees(double deg);
-		void updatePreviousDegrees(double deg);
-		void copyProxy();
-		void pasteProxy();
+    void updateCanvas();
+    void updateCommandBox();
+
+private Q_SLOTS:
+    void directionChanged(int value);
+    void changeCommand(int command);
+    void updateDegrees(double deg);
+    void updatePreviousDegrees(double deg);
+    void copyProxy();
+    void pasteProxy();
 };
 
-#endif  // _DIRECTIONDIALOG_H_
+#endif // _DIRECTIONDIALOG_H_

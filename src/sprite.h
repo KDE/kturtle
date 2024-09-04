@@ -9,22 +9,24 @@
 
 #include <QGraphicsSvgItem>
 
-
 class Sprite : public QGraphicsSvgItem
 {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
-		Sprite();
+public:
+    Sprite();
 
-        double angle() const { return m_angle; }
+    double angle() const
+    {
+        return m_angle;
+    }
 
-		void setAngle(double degrees);
-		void setSpriteSize(int pixels);
+    void setAngle(double degrees);
+    void setSpriteSize(int pixels);
 
-	private:
-		double m_angle;
-		double m_speed;
+private:
+    double m_angle;
+    double m_speed;
 };
 
-#endif  // _SPRITE_H_
+#endif // _SPRITE_H_

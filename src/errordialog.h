@@ -17,36 +17,34 @@ class QSpacerItem;
 class QTableWidget;
 class QVBoxLayout;
 
-
 class ErrorDialog : public QDialog
 {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
-        explicit ErrorDialog(QWidget* parent = nullptr);
+public:
+    explicit ErrorDialog(QWidget *parent = nullptr);
 
-		void setErrorList(ErrorList*);
-		void clear();
+    void setErrorList(ErrorList *);
+    void clear();
 
-	Q_SIGNALS:
-		void currentlySelectedError(int, int, int, int);
+Q_SIGNALS:
+    void currentlySelectedError(int, int, int, int);
 
-	public Q_SLOTS:
-		void enable();
-		void disable();
+public Q_SLOTS:
+    void enable();
+    void disable();
 
-	private Q_SLOTS:
-		void selectedErrorChangedProxy();
-		void helpRequested();
+private Q_SLOTS:
+    void selectedErrorChangedProxy();
+    void helpRequested();
 
-	private:
-		ErrorList      *errorList;
-		QTableWidget   *errorTable;
-		QVBoxLayout    *baseLayout;
-		QLabel         *label;
-		QSpacerItem    *spacer;
-		QDialogButtonBox *m_buttonBox;
+private:
+    ErrorList *errorList;
+    QTableWidget *errorTable;
+    QVBoxLayout *baseLayout;
+    QLabel *label;
+    QSpacerItem *spacer;
+    QDialogButtonBox *m_buttonBox;
 };
 
-#endif  // _ERRORDIALOG_H_
-
+#endif // _ERRORDIALOG_H_

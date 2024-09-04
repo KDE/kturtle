@@ -12,46 +12,50 @@
 
 #include "interpreter/tokenizer.h"
 
-
 class Highlighter : public QSyntaxHighlighter
 {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
-        explicit Highlighter(QTextDocument *parent = nullptr);
-		~Highlighter() override;
+public:
+    explicit Highlighter(QTextDocument *parent = nullptr);
+    ~Highlighter() override;
 
-		/// used by the Editor for highlighting
-		Token* formatType(const QString &text, int cursorIndex) { return checkOrApplyHighlighting(text, cursorIndex); }
+    /// used by the Editor for highlighting
+    Token *formatType(const QString &text, int cursorIndex)
+    {
+        return checkOrApplyHighlighting(text, cursorIndex);
+    }
 
-		/// used by the Inspector to give the text format for a single statement (first in the text)
-		QTextCharFormat* formatForStatement(const QString &text);
+    /// used by the Inspector to give the text format for a single statement (first in the text)
+    QTextCharFormat *formatForStatement(const QString &text);
 
-		/// used by internally and by the Inspector
-		QTextCharFormat* tokenToFormat(Token* token);
+    /// used by internally and by the Inspector
+    QTextCharFormat *tokenToFormat(Token *token);
 
-	protected:
-		void highlightBlock(const QString &text) override { checkOrApplyHighlighting(text); }
+protected:
+    void highlightBlock(const QString &text) override
+    {
+        checkOrApplyHighlighting(text);
+    }
 
-	private:
-		Token* checkOrApplyHighlighting(const QString &text, int cursorIndex = -1);
+private:
+    Token *checkOrApplyHighlighting(const QString &text, int cursorIndex = -1);
 
-		Tokenizer* tokenizer;
+    Tokenizer *tokenizer;
 
-		QTextCharFormat variableFormat;
-		QTextCharFormat trueFalseFormat;
-		QTextCharFormat commentFormat;
-		QTextCharFormat stringFormat;
-		QTextCharFormat numberFormat;
-		QTextCharFormat scopeFormat;
-		QTextCharFormat controllerCommandFormat;
-		QTextCharFormat otherCommandFormat;
-		QTextCharFormat learnCommandFormat;
-		QTextCharFormat booleanOperatorFormat;
-		QTextCharFormat expressionFormat;
-		QTextCharFormat assignmentFormat;
-		QTextCharFormat mathOperatorFormat;
+    QTextCharFormat variableFormat;
+    QTextCharFormat trueFalseFormat;
+    QTextCharFormat commentFormat;
+    QTextCharFormat stringFormat;
+    QTextCharFormat numberFormat;
+    QTextCharFormat scopeFormat;
+    QTextCharFormat controllerCommandFormat;
+    QTextCharFormat otherCommandFormat;
+    QTextCharFormat learnCommandFormat;
+    QTextCharFormat booleanOperatorFormat;
+    QTextCharFormat expressionFormat;
+    QTextCharFormat assignmentFormat;
+    QTextCharFormat mathOperatorFormat;
 };
 
-
-#endif  // _HIGHLIGHTER_H_
+#endif // _HIGHLIGHTER_H_

@@ -7,69 +7,71 @@
 #ifndef _COLORPICKER_H_
 #define _COLORPICKER_H_
 
-#include <QFrame>
-#include <QPainter>
-#include <QPaintEvent>
 #include <QDialog>
+#include <QFrame>
+#include <QPaintEvent>
+#include <QPainter>
 
 class QLineEdit;
 class QSlider;
 class QSpinBox;
 
-
 class ColorPatch : public QFrame
 {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
-		explicit ColorPatch(QWidget *parent) : QFrame(parent) {
-			setFrameStyle(QFrame::Panel|QFrame::Sunken);
-		}
-        void setColor(const QColor &c) { col = c; }
+public:
+    explicit ColorPatch(QWidget *parent)
+        : QFrame(parent)
+    {
+        setFrameStyle(QFrame::Panel | QFrame::Sunken);
+    }
+    void setColor(const QColor &c)
+    {
+        col = c;
+    }
 
-	protected:
-		void paintEvent(QPaintEvent *e) override {
-			QPainter p(this);
-			drawFrame(&p);
-			p.fillRect(contentsRect()&e->rect(), col);
-		}
-	
-	private:
-		QColor col;
+protected:
+    void paintEvent(QPaintEvent *e) override
+    {
+        QPainter p(this);
+        drawFrame(&p);
+        p.fillRect(contentsRect() & e->rect(), col);
+    }
+
+private:
+    QColor col;
 };
-
-
-
 
 class ColorPicker : public QDialog
 {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
-        explicit ColorPicker(QWidget* parent = nullptr);
+public:
+    explicit ColorPicker(QWidget *parent = nullptr);
 
-	Q_SIGNALS:
-		void pasteText(const QString&);
+Q_SIGNALS:
+    void pasteText(const QString &);
 
-	private Q_SLOTS:
-		void updateResult(int r, int g, int b);
-		void redChanged(int);
-		void greenChanged(int);
-		void blueChanged(int);
-		void copyProxy();
-		void pasteProxy();
+private Q_SLOTS:
+    void updateResult(int r, int g, int b);
+    void redChanged(int);
+    void greenChanged(int);
+    void blueChanged(int);
+    void copyProxy();
+    void pasteProxy();
 
-	private:
-		ColorPatch *colorPatch;
-		QLineEdit  *resultBox;
+private:
+    ColorPatch *colorPatch;
+    QLineEdit *resultBox;
 
-		QSlider *redSlider;
-		QSlider *greenSlider;
-		QSlider *blueSlider;
+    QSlider *redSlider;
+    QSlider *greenSlider;
+    QSlider *blueSlider;
 
-		QSpinBox *redSpin;
-		QSpinBox *greenSpin;
-		QSpinBox *blueSpin;
+    QSpinBox *redSpin;
+    QSpinBox *greenSpin;
+    QSpinBox *blueSpin;
 };
 
-#endif  // _COLORPICKER_H_
+#endif // _COLORPICKER_H_

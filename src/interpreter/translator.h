@@ -4,7 +4,6 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-
 #ifndef _TRANSLATOR_H_
 #define _TRANSLATOR_H_
 
@@ -13,8 +12,7 @@
 #include <QString>
 #include <QStringList>
 
-
-static const char* DEFAULT_LANGUAGE_CODE = "en_US";
+static const char *DEFAULT_LANGUAGE_CODE = "en_US";
 
 /**
  * @short Uses an XML dictionary to translate unicode strings to Token types (if possible).
@@ -34,82 +32,97 @@ static const char* DEFAULT_LANGUAGE_CODE = "en_US";
  */
 class Translator
 {
-	public:
-		static Translator* instance();
+public:
+    static Translator *instance();
 
-		/** @short   Sets the dictionary language.
-		    By setting the dictionary KTurtle will use a different translation of TurtleScript.
-		    Examples are managed by the Translator aswell. Easy.
-		    TODO: is this redundant no KDE has a 'switch application langugae' in the Help(???) menu?
-		    @param   lang_code the ISO language code of the dictionary (eg: "en_US", "fr", "pt_BR", "nl")
-		    @returns TRUE is the loading was successful, otherwise FALSE */
-        bool setLanguage(const QString &lang_code = QLatin1String(DEFAULT_LANGUAGE_CODE));
+    /** @short   Sets the dictionary language.
+        By setting the dictionary KTurtle will use a different translation of TurtleScript.
+        Examples are managed by the Translator aswell. Easy.
+        TODO: is this redundant no KDE has a 'switch application langugae' in the Help(???) menu?
+        @param   lang_code the ISO language code of the dictionary (eg: "en_US", "fr", "pt_BR", "nl")
+        @returns TRUE is the loading was successful, otherwise FALSE */
+    bool setLanguage(const QString &lang_code = QLatin1String(DEFAULT_LANGUAGE_CODE));
 
-		/** @short Converts a unicode string to a token type.
-		    Uses the dictionary to do so.
-		    If the string could not translated to a Token type, Token::Unknown is returned.
-		    @param   look the unicode string a bit of KTurtle code
-		    @returns the token type, Token::Unknown if not recognised */
-		int look2type(QString& look);
+    /** @short Converts a unicode string to a token type.
+        Uses the dictionary to do so.
+        If the string could not translated to a Token type, Token::Unknown is returned.
+        @param   look the unicode string a bit of KTurtle code
+        @returns the token type, Token::Unknown if not recognised */
+    int look2type(QString &look);
 
-		/** @short Converts a unicode character to a token type.
-		    Overloaded for convenience, behaves like the method it overloads.
-		    @param   look one unicode character of KTurtle code
-		    @returns the token type, Token::Unknown if not recognised */
-		int look2type(QChar& look);
+    /** @short Converts a unicode character to a token type.
+        Overloaded for convenience, behaves like the method it overloads.
+        @param   look one unicode character of KTurtle code
+        @returns the token type, Token::Unknown if not recognised */
+    int look2type(QChar &look);
 
-		/** @short Converts a token type into a list of commands associated with it.
-		    This method is slow compared to the inverse, look2type(), methods
-		    because the internal representation of data is not optimized for this.
-		    This methods is used by the highlighter class.
-		    @param   type the token type as specified in the Token class
-		    @returns a QList of QString objects containing all the looks of the
-		             command in the current translation. */
-		QList<QString> type2look(int type);
+    /** @short Converts a token type into a list of commands associated with it.
+        This method is slow compared to the inverse, look2type(), methods
+        because the internal representation of data is not optimized for this.
+        This methods is used by the highlighter class.
+        @param   type the token type as specified in the Token class
+        @returns a QList of QString objects containing all the looks of the
+                 command in the current translation. */
+    QList<QString> type2look(int type);
 
-		QHash<int, QList<QString> > token2stringsMap();
+    QHash<int, QList<QString>> token2stringsMap();
 
-		QString default2localized(const QString& defaultLook) { return default2localizedMap[defaultLook]; }
+    QString default2localized(const QString &defaultLook)
+    {
+        return default2localizedMap[defaultLook];
+    }
 
-		/// returns all default looks that have a localized look (for translating examples in main.cpp)
-		QStringList allDefaultLooks() { return QStringList(default2localizedMap.keys()); }
-		
-		QStringList allLocalizedLooks() { return QStringList(default2localizedMap.values()); }
+    /// returns all default looks that have a localized look (for translating examples in main.cpp)
+    QStringList allDefaultLooks()
+    {
+        return QStringList(default2localizedMap.keys());
+    }
 
-		/// used by the MainWindow's context help logic, and main.cpp
-		QString defaultLook(const QString& localizedEntry) { return default2localizedMap.key(localizedEntry); }
+    QStringList allLocalizedLooks()
+    {
+        return QStringList(default2localizedMap.values());
+    }
 
-		QStringList exampleNames() const { return QStringList(examples.keys()); }
+    /// used by the MainWindow's context help logic, and main.cpp
+    QString defaultLook(const QString &localizedEntry)
+    {
+        return default2localizedMap.key(localizedEntry);
+    }
 
-		QString example(const QString& name) const { return examples[name]; }
+    QStringList exampleNames() const
+    {
+        return QStringList(examples.keys());
+    }
 
-		QString localizeScript(const QString& untranslatedScript);
+    QString example(const QString &name) const
+    {
+        return examples[name];
+    }
 
+    QString localizeScript(const QString &untranslatedScript);
 
-	protected:
-		/** @short Constructor. Does nothing special. */
-		Translator();
+protected:
+    /** @short Constructor. Does nothing special. */
+    Translator();
 
-		/** @short Destructor. Does nothing special. */
-		virtual ~Translator();
+    /** @short Destructor. Does nothing special. */
+    virtual ~Translator();
 
-		Translator(const Translator&);
-		Translator& operator= (const Translator&);
+    Translator(const Translator &);
+    Translator &operator=(const Translator &);
 
+private:
+    static Translator *m_instance;
 
-	private:
-		static Translator* m_instance;
+    void setDictionary();
+    void setExamples();
 
-		void setDictionary();
-		void setExamples();
+    QHash<QString, QString> examples;
 
-		QHash<QString, QString> examples;
+    QHash<QString, int> look2typeMap;
+    QHash<QString, QString> default2localizedMap;
 
-		QHash<QString, int> look2typeMap;
-		QHash<QString, QString> default2localizedMap;
-
-		QStringList localizer;
+    QStringList localizer;
 };
 
-
-#endif  // _TRANSLATOR_H_
+#endif // _TRANSLATOR_H_

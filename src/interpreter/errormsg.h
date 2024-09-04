@@ -14,9 +14,6 @@
 #include <QList>
 #include <QStringList>
 
-
-
-
 /**
  * @short An object for an error message.
  *
@@ -31,65 +28,78 @@
  */
 class ErrorMessage
 {
-	public:
-		ErrorMessage() {}
-		ErrorMessage(const QString&, const Token& t, int code);
-		~ErrorMessage() {}
+public:
+    ErrorMessage()
+    {
+    }
+    ErrorMessage(const QString &, const Token &t, int code);
+    ~ErrorMessage()
+    {
+    }
 
-		const QString&  text()  const { return _errorText; }
-		const Token&    token() const { return _errorToken; }
-		int             code()  const { return _errorCode; }
+    const QString &text() const
+    {
+        return _errorText;
+    }
+    const Token &token() const
+    {
+        return _errorToken;
+    }
+    int code() const
+    {
+        return _errorCode;
+    }
 
-		bool operator==(const ErrorMessage&) const;
-		ErrorMessage& operator=(const ErrorMessage& n) = default;
-		ErrorMessage(const ErrorMessage& n) = default;
+    bool operator==(const ErrorMessage &) const;
+    ErrorMessage &operator=(const ErrorMessage &n) = default;
+    ErrorMessage(const ErrorMessage &n) = default;
 
-	private:
-		QString  _errorText;
-		Token    _errorToken;
-		int      _errorCode;
+private:
+    QString _errorText;
+    Token _errorToken;
+    int _errorCode;
 };
-
 
 /**
  * @short The simple subclass of QList to represent list of ErrorMessages.
  */
 class ErrorList : public QList<ErrorMessage>
 {
-	public:
-		QStringList asStringList()
-		{
-			QStringList result;
-			ErrorList::iterator error;
-			int i = 1;
-			for (error = this->begin(); error != this->end(); ++error) {
-				result.append(QStringLiteral("%1: %2 [by %3 on line %4], code %5")
-					.arg(i)
-					.arg((*error).text())
-					.arg((*error).token().look())
-					.arg((*error).token().startRow())
-					.arg((*error).code()));
-				i++;
-			}
-			return result;
-		}
+public:
+    QStringList asStringList()
+    {
+        QStringList result;
+        ErrorList::iterator error;
+        int i = 1;
+        for (error = this->begin(); error != this->end(); ++error) {
+            result.append(QStringLiteral("%1: %2 [by %3 on line %4], code %5")
+                              .arg(i)
+                              .arg((*error).text())
+                              .arg((*error).token().look())
+                              .arg((*error).token().startRow())
+                              .arg((*error).code()));
+            i++;
+        }
+        return result;
+    }
 
-		void addError(const QString& s, const Token& t, int code)
-		{
-			ErrorMessage error = ErrorMessage(s, t, code);
-			addError(error);
-		}
+    void addError(const QString &s, const Token &t, int code)
+    {
+        ErrorMessage error = ErrorMessage(s, t, code);
+        addError(error);
+    }
 
-		void addError(ErrorMessage error)
-		{
-			if (!this->contains(error)) this->append(error);
-// 			//qDebug() <<
-// 				QString("ErrorList::addError(): %1 [by %2 on line %3], code %4")
-// 					.arg(error.text())
-// 					.arg(error.token().look())
-// 					.arg(error.token().startRow())
-// 					.arg(error.code());
-		}
+    void addError(ErrorMessage error)
+    {
+        if (!this->contains(error))
+            this->append(error);
+        // 			//qDebug() <<
+        // 				QString("ErrorList::addError(): %1 [by %2 on line %3], code %4")
+        // 					.arg(error.text())
+        // 					.arg(error.token().look())
+        // 					.arg(error.token().startRow())
+        // 					.arg(error.code());
+    }
 };
 
-#endif  // _ERRORMSG_H_
+#endif // _ERRORMSG_H_

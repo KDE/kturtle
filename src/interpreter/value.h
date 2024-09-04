@@ -4,13 +4,10 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-
 #ifndef _VALUE_H_
 #define _VALUE_H_
 
 #include <QString>
-
-
 
 // maybe this class has to be split-up/sub-classed into (several) Constant's and a Variable class
 // which is a lot of work for little gain :)
@@ -31,63 +28,73 @@
  */
 class Value
 {
-	public:
-		enum Type
-		{
-			Empty,
-			Bool,
-			Number,
-			String
-		};
+public:
+    enum Type { Empty, Bool, Number, String };
 
-		Value();
-		Value(Value*);
+    Value();
+    Value(Value *);
 
-		Value(bool b)           { setBool(b); }
-		Value(double d)         { setNumber(d); }
-		Value(const QString& s) { setString(s); }
-		~Value() {}
-	
-		int      type() const { return m_type; }
-		void     setType(int);
+    Value(bool b)
+    {
+        setBool(b);
+    }
+    Value(double d)
+    {
+        setNumber(d);
+    }
+    Value(const QString &s)
+    {
+        setString(s);
+    }
+    ~Value()
+    {
+    }
 
-		void     setNull()    { init(); }
+    int type() const
+    {
+        return m_type;
+    }
+    void setType(int);
 
-		bool     boolean() const;
-		void     setBool(bool);
-	
-		double   number() const;
-		void     setNumber(double);
-		bool     setNumber(const QString&);
-	
-		QString  string() const;
-		void     setString(double);
-		void     setString(const QString&);
-	
-		Value&   operator=(Value*);
-		Value&   operator=(const QString&);
-		Value&   operator=(double);
-	
-		Value&   operator+(Value*);
-		Value&   operator-(Value*);
-		Value&   operator*(Value*);
-		Value&   operator/(Value*);
-	
-		bool     operator==(Value*) const;
-		bool     operator!=(Value*) const;
-		bool     operator< (Value*) const;
-		bool     operator<=(Value*) const;
-		bool     operator> (Value*) const;
-		bool     operator>=(Value*) const;
-		
-		
-	private:
-		void     init();
-		
-		int      m_type;
-		bool     m_bool;
-		double   m_double;
-		QString  m_string;
+    void setNull()
+    {
+        init();
+    }
+
+    bool boolean() const;
+    void setBool(bool);
+
+    double number() const;
+    void setNumber(double);
+    bool setNumber(const QString &);
+
+    QString string() const;
+    void setString(double);
+    void setString(const QString &);
+
+    Value &operator=(Value *);
+    Value &operator=(const QString &);
+    Value &operator=(double);
+
+    Value &operator+(Value *);
+    Value &operator-(Value *);
+    Value &operator*(Value *);
+    Value &operator/(Value *);
+
+    bool operator==(Value *) const;
+    bool operator!=(Value *) const;
+    bool operator<(Value *) const;
+    bool operator<=(Value *) const;
+    bool operator>(Value *) const;
+    bool operator>=(Value *) const;
+
+private:
+    void init();
+
+    int m_type;
+    bool m_bool;
+    double m_double;
+    QString m_string;
 };
 
-#endif  // _VALUE_H_
+#endif // _VALUE_H_

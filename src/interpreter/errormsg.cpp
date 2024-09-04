@@ -4,22 +4,19 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-
 #include "errormsg.h"
 
-
-ErrorMessage::ErrorMessage(const QString& text, const Token& t, int code)
- : _errorText(text),
-   _errorToken(t),
-   _errorCode(code)
+ErrorMessage::ErrorMessage(const QString &text, const Token &t, int code)
+    : _errorText(text)
+    , _errorToken(t)
+    , _errorCode(code)
 {
 }
 
-bool ErrorMessage::operator==(const ErrorMessage& n) const
+bool ErrorMessage::operator==(const ErrorMessage &n) const
 {
-	// the 'operator==' method has to be implemented for the ErrorList wants to do searches
-	if (n.text()  == _errorText  ||
-	    n.token() == _errorToken ||
-	    n.code()  == _errorCode) return true;
-	return false;
+    // the 'operator==' method has to be implemented for the ErrorList wants to do searches
+    if (n.text() == _errorText || n.token() == _errorToken || n.code() == _errorCode)
+        return true;
+    return false;
 }

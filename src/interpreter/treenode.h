@@ -9,11 +9,8 @@
 
 #include <QList>
 
-
 #include "token.h"
 #include "value.h"
-
-
 
 /**
  * @short A node in the pointer based node tree structure.
@@ -30,116 +27,145 @@
  */
 class TreeNode
 {
-	public:
-		/**
-		 * @short Constructor.
-		 * Initialses the TreeNode.
-		 * @param token pointer to Token that the TreeNode is associated with.
-		 */
-		explicit TreeNode(Token* token)                  { init(nullptr, token); }
+public:
+    /**
+     * @short Constructor.
+     * Initialses the TreeNode.
+     * @param token pointer to Token that the TreeNode is associated with.
+     */
+    explicit TreeNode(Token *token)
+    {
+        init(nullptr, token);
+    }
 
-		/**
-		 * @short Destructor.
-		 * This deletes the Value and the Token associated with this TreeNode.
-		 * The childList auto-deletes all the children, which means that deleting
-		 * the root node deletes the whole tree.
-		 */
-		virtual ~TreeNode();
+    /**
+     * @short Destructor.
+     * This deletes the Value and the Token associated with this TreeNode.
+     * The childList auto-deletes all the children, which means that deleting
+     * the root node deletes the whole tree.
+     */
+    virtual ~TreeNode();
 
+    /** @returns the pointer to the parent TreeNode. @see setParent() */
+    TreeNode *parent()
+    {
+        return _parent;
+    }
 
+    /** @returns the pointer to associated Token. @see setToken() */
+    Token *token()
+    {
+        return _token;
+    }
 
-		/** @returns the pointer to the parent TreeNode. @see setParent() */
-		TreeNode* parent()                      { return _parent; }
+    /** @returns the pointer to associated Value. @see setValue() @see setNullValue() */
+    Value *value()
+    {
+        if (_value == nullptr)
+            _value = new Value();
+        return _value;
+    }
 
-		/** @returns the pointer to associated Token. @see setToken() */
-		Token*    token()                       { return _token; }
+    /** Sets the pointer to the parent to @p parent. @see parent() */
+    void setParent(TreeNode *parent)
+    {
+        _parent = parent;
+    }
 
-		/** @returns the pointer to associated Value. @see setValue() @see setNullValue() */
-		Value*    value()                       { if (_value == nullptr) _value = new Value(); return _value; }
+    /** Sets the pointer to the associated token to @p token. @see token() and @see TreeNode() */
+    void setToken(Token *token)
+    {
+        _token = token;
+    }
 
+    /** Sets the pointer to the associated value to @p value. @see setNullValue() @see value() */
+    void setValue(Value value)
+    {
+        delete _value;
+        _value = new Value(value);
+    }
 
+    /** Sets the pointer to the associated value to zero. @see setValue() @see value() */
+    void setNullValue()
+    {
+        delete _value;
+        _value = nullptr;
+    } // appears Empty (see value())
 
-		/** Sets the pointer to the parent to @p parent. @see parent() */
-		void      setParent(TreeNode* parent)   { _parent = parent; }
+    /** @returns TRUE is the TreeNode has an associated Value. @see value @see setValue */
+    bool hasValue() const
+    {
+        return _value != nullptr;
+    }
 
-		/** Sets the pointer to the associated token to @p token. @see token() and @see TreeNode() */
-		void      setToken(Token* token)        { _token = token; }
+    /** @returns TRUE is the TreeNode has children. @see childCount @see appendChild */
+    bool hasChildren() const
+    {
+        if (childList == nullptr)
+            return false;
+        else
+            return !childList->isEmpty();
+    }
 
-		/** Sets the pointer to the associated value to @p value. @see setNullValue() @see value() */
-		void      setValue(Value value)         { delete _value; _value = new Value(value); }
+    /** @returns the amount of children. @see appendChild @see hasChildren */
+    uint childCount() const
+    {
+        if (childList == nullptr)
+            return 0;
+        else
+            return childList->size();
+    }
 
-		/** Sets the pointer to the associated value to zero. @see setValue() @see value() */
-		void      setNullValue()                {  delete _value; _value = nullptr;  } // appears Empty (see value())
+    /**
+     * Appends the pointer to the TreeNode @p newChild to the childList and
+     * sets the child's parent to this. @see childCount @see hasChildren
+     */
+    void appendChild(TreeNode *newChild);
 
+    /** @returns the pointer to child number @p i (zero if the child does not exists). This does not change the current child. */
+    TreeNode *child(int i);
 
+    /** @returns the pointer to the first child (zero if the child does not exists), and set the current child to the first */
+    TreeNode *firstChild();
 
-		/** @returns TRUE is the TreeNode has an associated Value. @see value @see setValue */
-		bool      hasValue() const              { return _value != nullptr; }
+    /** @returns the pointer to the next child (zero if the child does not exists), and set the current child to the next */
+    TreeNode *nextChild();
 
-		/** @returns TRUE is the TreeNode has children. @see childCount @see appendChild */
-		bool      hasChildren() const           { if (childList == nullptr) return false; else return !childList->isEmpty(); }
+    /** @returns the pointer to the next sibling; the next child of the parent (zero if the next sibling does not exists) */
+    TreeNode *nextSibling();
 
-		/** @returns the amount of children. @see appendChild @see hasChildren */
-		uint      childCount() const            { if (childList == nullptr) return 0; else return childList->size(); }
+    /** @returns the node tree, starting from 'this' node, as a multi line string */
+    QString toString();
 
-		/**
-		 * Appends the pointer to the TreeNode @p newChild to the childList and
-		 * sets the child's parent to this. @see childCount @see hasChildren
-		 */
-		void      appendChild(TreeNode* newChild);
+private:
+    /// Initializes a the TreeNode. Called by the constructor.
+    void init(TreeNode *parent, Token *token);
 
+    /** Calls itself, @ref show(), and @ref showTree() for each of the children */
+    virtual void show(QString &str, int indent = 0) const;
 
+    /** Prints an indented string describing itself to de debug info */
+    void showTree(QString &str, int indent = 0);
 
-		/** @returns the pointer to child number @p i (zero if the child does not exists). This does not change the current child. */
-		TreeNode* child(int i);
+    int findChildIndex(TreeNode *child);
 
-		/** @returns the pointer to the first child (zero if the child does not exists), and set the current child to the first */
-		TreeNode* firstChild();
+    /// typedef for the ChildList.
+    typedef QList<TreeNode *> ChildList;
 
-		/** @returns the pointer to the next child (zero if the child does not exists), and set the current child to the next */
-		TreeNode* nextChild();
+    /// The childList, contains pointers to the children of this node.
+    ChildList *childList;
 
+    /// Keeps track of the index of the current child. Zero when no child list is available.
+    int currentChildIndex;
 
-		/** @returns the pointer to the next sibling; the next child of the parent (zero if the next sibling does not exists) */
-		TreeNode* nextSibling();
+    /// The pointer to the parent of this TreeNode.
+    TreeNode *_parent;
 
+    /// The pointer to the token associated with this TreeNode (cannot be zero).
+    Token *_token;
 
-		/** @returns the node tree, starting from 'this' node, as a multi line string */
-		QString toString();
-
-
-
-	private:
-		/// Initializes a the TreeNode. Called by the constructor.
-		void init(TreeNode* parent, Token* token);
-
-		/** Calls itself, @ref show(), and @ref showTree() for each of the children */
-		virtual void show(QString& str, int indent = 0) const;
-
-		/** Prints an indented string describing itself to de debug info */
-		void showTree(QString& str, int indent = 0);
-
-		int findChildIndex(TreeNode* child);
-	
-		/// typedef for the ChildList.
-		typedef QList<TreeNode*>         ChildList;
-
-		/// The childList, contains pointers to the children of this node.
-		ChildList                       *childList;
-
-		/// Keeps track of the index of the current child. Zero when no child list is available.
-		int                              currentChildIndex;
-
-
-
-		/// The pointer to the parent of this TreeNode.
-		TreeNode                        *_parent;
-
-		/// The pointer to the token associated with this TreeNode (cannot be zero).
-		Token                           *_token;
-
-		/// The pointer to the value associated with this TreeNode (can be zero).
-		Value                           *_value;
+    /// The pointer to the value associated with this TreeNode (can be zero).
+    Value *_value;
 };
 
-#endif  // _TREENODE_H_
+#endif // _TREENODE_H_

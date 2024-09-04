@@ -7,12 +7,9 @@
 #ifndef _PARSER_H_
 #define _PARSER_H_
 
-
-
 #include "errormsg.h"
 #include "tokenizer.h"
 #include "treenode.h"
-
 
 /**
  * @short Uses a Tokenizer to step-wise parse KTurtle code to a node tree.
@@ -27,148 +24,153 @@
  */
 class Parser
 {
-	public:
-		/**
-		 * @short Constructor. Initialses the Parser.
-		 * does nothing special. @see initialize().
-		 */
-		explicit Parser(bool testing = false) : m_testing(testing) {}
+public:
+    /**
+     * @short Constructor. Initialses the Parser.
+     * does nothing special. @see initialize().
+     */
+    explicit Parser(bool testing = false)
+        : m_testing(testing)
+    {
+    }
 
-		/**
-		 * @short Destructor. Does nothing special.
-		 */
-        ~Parser();
+    /**
+     * @short Destructor. Does nothing special.
+     */
+    ~Parser();
 
+    /**
+     * @short Initializes (resets) the Parser
+     * Use this method to reset the Parser.
+     *
+     * It creates the 'root' node, and gets the first token.
+     * @param tokenizer pointer to a Tokenizer
+     * @param errorList pointer to a QList for ErrorMessage objects, when
+     *                  error occur they will be stored here
+     */
+    void initialize(Tokenizer *_tokenizer, ErrorList *_errorList);
 
-		/**
-		 * @short Initializes (resets) the Parser
-		 * Use this method to reset the Parser.
-		 *
-		 * It creates the 'root' node, and gets the first token.
-		 * @param tokenizer pointer to a Tokenizer
-		 * @param errorList pointer to a QList for ErrorMessage objects, when
-		 *                  error occur they will be stored here
-		 */
-		void initialize(Tokenizer* _tokenizer, ErrorList* _errorList);
+    /**
+     * @short Parses one 'step' (usually one statement).
+     * It calls @ref parseStatement() to receive a little piece of tree (some nodes)
+     * and appends them to the current scope.
+     *
+     * When it detects an EndOfInput token it sets finished to TRUE and stops
+     * working. @see isFinished
+     */
+    void parse();
 
-		/**
-		 * @short Parses one 'step' (usually one statement).
-		 * It calls @ref parseStatement() to receive a little piece of tree (some nodes)
-		 * and appends them to the current scope.
-		 *
-		 * When it detects an EndOfInput token it sets finished to TRUE and stops
-		 * working. @see isFinished
-		 */
-		void         parse();
+    /**
+     * @short Reflects if the Parser has finished parsing (got an EndOfInput token).
+     * @return TRUE when parsing has finished otherwise FALSE.
+     */
+    bool isFinished() const
+    {
+        return finished;
+    }
 
-		/**
-		 * @short Reflects if the Parser has finished parsing (got an EndOfInput token).
-		 * @return TRUE when parsing has finished otherwise FALSE.
-		 */
-		bool         isFinished() const { return finished; }
+    /**
+     * @short Method to get the root node of the node tree (pointer based data structure).
+     * The Parser does not delete the node tree so this pointer can be passed
+     * to the Executer.
+     * @returns The pointer to the root node.
+     */
+    TreeNode *getRootNode() const
+    {
+        return rootNode;
+    }
 
-		/**
-		 * @short Method to get the root node of the node tree (pointer based data structure).
-		 * The Parser does not delete the node tree so this pointer can be passed
-		 * to the Executer.
-		 * @returns The pointer to the root node.
-		 */
-		TreeNode*    getRootNode() const    { return rootNode; }
+    void printTree() const;
 
-		void         printTree() const;
+private:
+    void nextToken();
+    bool skipToken(int expectedTokenType);
+    bool skipToken(int expectedTokenType, Token &byToken);
+    void addError(const QString &s, const Token &t, int code);
+    void appendArguments(TreeNode *node);
 
-	private:
-		void         nextToken();
-		bool         skipToken(int expectedTokenType);
-		bool         skipToken(int expectedTokenType, Token& byToken);
-		void         addError(const QString& s, const Token& t, int code);
-		void         appendArguments(TreeNode* node);
+    TreeNode *parseStatement();
+    TreeNode *parseFactor();
+    TreeNode *parseSignedFactor();
+    TreeNode *parseTerm();
+    TreeNode *parseExpression();
 
-		TreeNode*    parseStatement();
-		TreeNode*    parseFactor();
-		TreeNode*    parseSignedFactor();
-		TreeNode*    parseTerm();
-		TreeNode*    parseExpression();
+    Tokenizer *tokenizer;
+    ErrorList *errorList;
 
-		Tokenizer   *tokenizer;
-		ErrorList   *errorList;
+    TreeNode *rootNode;
+    TreeNode *currentScope;
+    TreeNode *newScope;
+    Token *currentToken;
+    bool finished;
 
-		TreeNode    *rootNode;
-		TreeNode    *currentScope;
-		TreeNode    *newScope;
-		Token       *currentToken;
-		bool         finished;
+    bool m_testing;
 
-		bool         m_testing;
+    // Next you find individual parse functions as generated:
 
+    // BEGIN GENERATED parser_h CODE
 
-// Next you find individual parse functions as generated:
+    /* The code between the line that start with "//BEGIN GENERATED" and "//END GENERATED"
+     * is generated by "generate.rb" according to the definitions specified in
+     * "definitions.rb". Please make all changes in the "definitions.rb" file, since all
+     * all change you make here will be overwritten the next time "generate.rb" is run.
+     * Thanks for looking at the code!
+     */
 
-//BEGIN GENERATED parser_h CODE
+    TreeNode *parseVariable();
+    TreeNode *parseFunctionCall();
+    TreeNode *parseScopeOpen();
+    TreeNode *parseScopeClose();
+    TreeNode *parseExit();
+    TreeNode *parseIf();
+    TreeNode *parseElse();
+    TreeNode *parseRepeat();
+    TreeNode *parseWhile();
+    TreeNode *parseFor();
+    TreeNode *parseBreak();
+    TreeNode *parseReturn();
+    TreeNode *parseWait();
+    TreeNode *parseAssert();
+    TreeNode *parseLearn();
+    TreeNode *parseReset();
+    TreeNode *parseClear();
+    TreeNode *parseCenter();
+    TreeNode *parseGo();
+    TreeNode *parseGoX();
+    TreeNode *parseGoY();
+    TreeNode *parseForward();
+    TreeNode *parseBackward();
+    TreeNode *parseDirection();
+    TreeNode *parseTurnLeft();
+    TreeNode *parseTurnRight();
+    TreeNode *parsePenWidth();
+    TreeNode *parsePenUp();
+    TreeNode *parsePenDown();
+    TreeNode *parsePenColor();
+    TreeNode *parseCanvasColor();
+    TreeNode *parseCanvasSize();
+    TreeNode *parseSpriteShow();
+    TreeNode *parseSpriteHide();
+    TreeNode *parsePrint();
+    TreeNode *parseFontSize();
+    TreeNode *parseRandom();
+    TreeNode *parseGetX();
+    TreeNode *parseGetY();
+    TreeNode *parseMessage();
+    TreeNode *parseAsk();
+    TreeNode *parsePi();
+    TreeNode *parseTan();
+    TreeNode *parseSin();
+    TreeNode *parseCos();
+    TreeNode *parseArcTan();
+    TreeNode *parseArcSin();
+    TreeNode *parseArcCos();
+    TreeNode *parseSqrt();
+    TreeNode *parseRound();
+    TreeNode *parseGetDirection();
+    TreeNode *parseMod();
 
-/* The code between the line that start with "//BEGIN GENERATED" and "//END GENERATED"
- * is generated by "generate.rb" according to the definitions specified in
- * "definitions.rb". Please make all changes in the "definitions.rb" file, since all
- * all change you make here will be overwritten the next time "generate.rb" is run.
- * Thanks for looking at the code!
- */
-
-		TreeNode* parseVariable();
-		TreeNode* parseFunctionCall();
-		TreeNode* parseScopeOpen();
-		TreeNode* parseScopeClose();
-		TreeNode* parseExit();
-		TreeNode* parseIf();
-		TreeNode* parseElse();
-		TreeNode* parseRepeat();
-		TreeNode* parseWhile();
-		TreeNode* parseFor();
-		TreeNode* parseBreak();
-		TreeNode* parseReturn();
-		TreeNode* parseWait();
-		TreeNode* parseAssert();
-		TreeNode* parseLearn();
-		TreeNode* parseReset();
-		TreeNode* parseClear();
-		TreeNode* parseCenter();
-		TreeNode* parseGo();
-		TreeNode* parseGoX();
-		TreeNode* parseGoY();
-		TreeNode* parseForward();
-		TreeNode* parseBackward();
-		TreeNode* parseDirection();
-		TreeNode* parseTurnLeft();
-		TreeNode* parseTurnRight();
-		TreeNode* parsePenWidth();
-		TreeNode* parsePenUp();
-		TreeNode* parsePenDown();
-		TreeNode* parsePenColor();
-		TreeNode* parseCanvasColor();
-		TreeNode* parseCanvasSize();
-		TreeNode* parseSpriteShow();
-		TreeNode* parseSpriteHide();
-		TreeNode* parsePrint();
-		TreeNode* parseFontSize();
-		TreeNode* parseRandom();
-		TreeNode* parseGetX();
-		TreeNode* parseGetY();
-		TreeNode* parseMessage();
-		TreeNode* parseAsk();
-		TreeNode* parsePi();
-		TreeNode* parseTan();
-		TreeNode* parseSin();
-		TreeNode* parseCos();
-		TreeNode* parseArcTan();
-		TreeNode* parseArcSin();
-		TreeNode* parseArcCos();
-		TreeNode* parseSqrt();
-		TreeNode* parseRound();
-		TreeNode* parseGetDirection();
-		TreeNode* parseMod();
-
-//END GENERATED parser_h CODE
-
+    // END GENERATED parser_h CODE
 };
-
 
 #endif // _TOKENIZER_H_

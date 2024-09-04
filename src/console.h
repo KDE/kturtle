@@ -11,30 +11,29 @@
 
 class QComboBox;
 
-
 class Console : public QWidgetAction
 {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
-        explicit Console(QWidget *parent = nullptr);
+public:
+    explicit Console(QWidget *parent = nullptr);
 
-		void disable();
-		void enable();
+    void disable();
+    void enable();
 
-		void showError(const QString&);
+    void showError(const QString &);
 
-	public Q_SLOTS:
-		void run();
-		void clearMarkings();
-		void executeActionTriggered();
+public Q_SLOTS:
+    void run();
+    void clearMarkings();
+    void executeActionTriggered();
 
-	Q_SIGNALS:
-		QString execute(const QString&);
+Q_SIGNALS:
+    QString execute(const QString &);
 
-	private:
-		QComboBox *comboBox;
-		QWidget   *baseWidget;
+private:
+    QComboBox *comboBox;
+    QWidget *baseWidget;
 };
 
-#endif  // _CONSOLE_H_
+#endif // _CONSOLE_H_
