@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-11 00:37+0000\n"
+"POT-Creation-Date: 2024-09-05 00:37+0000\n"
 "PO-Revision-Date: 2008-11-11 23:37+0900\n"
 "Last-Translator: Yukiko Bando <ybando@k6.dion.ne.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -31,70 +31,70 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sgtom@pluto.dti.ne.jp"
 
-#: canvas.cpp:195
+#: canvas.cpp:190
 #, kde-format
 msgid "bold"
 msgstr "ボールド"
 
-#: canvas.cpp:196
+#: canvas.cpp:191
 #, kde-format
 msgid "italic"
 msgstr "イタリック"
 
 # skip-rule: underline
-#: canvas.cpp:197
+#: canvas.cpp:192
 #, kde-format
 msgid "underline"
 msgstr "アンダーライン"
 
-#: canvas.cpp:198
+#: canvas.cpp:193
 #, kde-format
 msgid "overline"
 msgstr "オーバーライン"
 
-#: canvas.cpp:199
+#: canvas.cpp:194
 #, kde-format
 msgid "strikeout"
 msgstr "取り消し線"
 
-#: colorpicker.cpp:29
+#: colorpicker.cpp:28
 #, fuzzy, kde-format
 #| msgid "Color Picker"
 msgctxt "@title:window"
 msgid "Color Picker"
 msgstr "カラーピッカー"
 
-#: colorpicker.cpp:48
+#: colorpicker.cpp:47
 #, kde-format
 msgid "Amount red:"
 msgstr "赤の量:"
 
-#: colorpicker.cpp:62
+#: colorpicker.cpp:60
 #, kde-format
 msgid "Amount green:"
 msgstr "緑の量:"
 
-#: colorpicker.cpp:75
+#: colorpicker.cpp:73
 #, kde-format
 msgid "Amount blue:"
 msgstr "青の量:"
 
-#: colorpicker.cpp:105 directiondialog.cpp:283
+#: colorpicker.cpp:103 directiondialog.cpp:280
 #, kde-format
 msgid "&Copy to clipboard"
 msgstr "クリップボードにコピー(&C)"
 
-#: colorpicker.cpp:110 directiondialog.cpp:287
+#: colorpicker.cpp:108 directiondialog.cpp:284
 #, kde-format
 msgid "&Paste to editor"
 msgstr "エディタに貼り付け(&P)"
 
-#: console.cpp:33 console.cpp:60
+#: console.cpp:32 console.cpp:59
 #, kde-format
 msgid "Write a command here and press enter..."
 msgstr "ここにコマンドを入力して Enter を押します..."
 
-#: console.cpp:34
+#: console.cpp:33
 #, kde-format
 msgid ""
 "Console: quickly run single commands -- write a command here and press enter."
@@ -102,55 +102,55 @@ msgstr ""
 "コンソール: 単一のコマンドを実行します。ここにコマンドを入力して Enter を押し"
 "ます。"
 
-#: console.cpp:36
+#: console.cpp:35
 #, kde-format
 msgid "Console:"
 msgstr "コンソール:"
 
-#: console.cpp:79
+#: console.cpp:78
 #, kde-format
 msgid "<p style='white-space:pre'><b>ERROR:</b> %1</p>"
 msgstr ""
 
-#: directiondialog.cpp:195
+#: directiondialog.cpp:192
 #, fuzzy, kde-format
 #| msgid "Direction Chooser"
 msgctxt "@title:window"
 msgid "Direction Chooser"
 msgstr "向きをセット"
 
-#: directiondialog.cpp:226
+#: directiondialog.cpp:223
 #, kde-format
 msgid "Command &type:"
 msgstr "コマンドのタイプ(&T):"
 
-#: directiondialog.cpp:241
+#: directiondialog.cpp:238
 #, kde-format
 msgid "&Previous direction:"
 msgstr "現在の向き(&P):"
 
-#: directiondialog.cpp:258
+#: directiondialog.cpp:255
 #, kde-format
 msgid "&New direction:"
 msgstr "新しい向き(&N):"
 
-#: editor.cpp:146
+#: editor.cpp:142
 #, kde-format
 msgid "Open"
 msgstr "開く"
 
-#: editor.cpp:148 editor.cpp:256
+#: editor.cpp:144 editor.cpp:255
 #, kde-format
 msgid "Turtle code files"
 msgstr "Turtle コードファイル"
 
-#: editor.cpp:148 editor.cpp:256 mainwindow.cpp:1014 mainwindow.cpp:1030
-#: mainwindow.cpp:1040
+#: editor.cpp:144 editor.cpp:255 mainwindow.cpp:1037 mainwindow.cpp:1056
+#: mainwindow.cpp:1069
 #, kde-format
 msgid "All files"
 msgstr "すべてのファイル"
 
-#: editor.cpp:164
+#: editor.cpp:161
 #, kde-format
 msgid ""
 "The file you try to open is not a valid KTurtle script, or is incompatible "
@@ -161,12 +161,12 @@ msgstr ""
 "の KTurtle と非互換です。\n"
 "‘%1’ を開けません。"
 
-#: editor.cpp:231 editor.cpp:237
+#: editor.cpp:230 editor.cpp:236
 #, kde-format
 msgid "Could not save file."
 msgstr ""
 
-#: editor.cpp:254
+#: editor.cpp:253
 #, kde-format
 msgid "Save As"
 msgstr "名前を付けて保存"
@@ -185,19 +185,19 @@ msgstr ""
 msgid "Unsaved File"
 msgstr "未保存のファイル"
 
-#: editor.cpp:269
+#: editor.cpp:270 editor.cpp:272
 #, kde-format
 msgid "&Discard Changes"
 msgstr "変更を破棄(&D)"
 
-#: errordialog.cpp:27
+#: errordialog.cpp:26
 #, fuzzy, kde-format
 #| msgid "Errors"
 msgctxt "@title:window"
 msgid "Errors"
 msgstr "エラー"
 
-#: errordialog.cpp:42
+#: errordialog.cpp:41
 #, kde-format
 msgid ""
 "In this list you find the error(s) that resulted from running your code.\n"
@@ -206,78 +206,78 @@ msgstr ""
 "実行したコードのエラーを、このリストで見つけます。\n"
 "健闘を祈る!"
 
-#: errordialog.cpp:59
+#: errordialog.cpp:58
 #, kde-format
 msgid "line"
 msgstr "行"
 
-#: errordialog.cpp:59
+#: errordialog.cpp:58
 #, kde-format
 msgid "description"
 msgstr "説明"
 
-#: errordialog.cpp:59
+#: errordialog.cpp:58
 #, kde-format
 msgid "code"
 msgstr "コード"
 
-#: errordialog.cpp:72
+#: errordialog.cpp:71
 #, kde-format
 msgid "Hide Errors"
 msgstr "エラーを隠す"
 
-#: errordialog.cpp:89
+#: errordialog.cpp:86
 #, kde-format
 msgid "No errors occurred yet."
 msgstr "これまでのところエラーはありません。"
 
-#: inspector.cpp:37
+#: inspector.cpp:36
 #, kde-format
 msgid "Variables"
 msgstr "変数"
 
-#: inspector.cpp:44
+#: inspector.cpp:43
 #, kde-format
 msgid "Functions"
 msgstr "関数"
 
-#: inspector.cpp:51
+#: inspector.cpp:50
 #, kde-format
 msgid "Tree"
 msgstr "ツリー"
 
-#: inspector.cpp:95 inspector.cpp:113
+#: inspector.cpp:93 inspector.cpp:111
 #, kde-format
 msgid "name"
 msgstr "名前"
 
-#: inspector.cpp:95
+#: inspector.cpp:93
 #, kde-format
 msgid "value"
 msgstr "値"
 
-#: inspector.cpp:95
+#: inspector.cpp:93
 #, kde-format
 msgid "type"
 msgstr "種類"
 
-#: inspector.cpp:105
+#: inspector.cpp:103
 #, fuzzy, kde-format
 #| msgid "Variables"
 msgid "No variables"
 msgstr "変数"
 
-#: inspector.cpp:113
+#: inspector.cpp:111
 #, kde-format
 msgid "parameters"
 msgstr "パラメータ"
 
-#: inspector.cpp:122
+#: inspector.cpp:120
 #, kde-format
 msgid "No learned functions"
 msgstr ""
 
-#: inspector.cpp:165
+#: inspector.cpp:162
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'GetY' COMMAND, there are some rules on "
@@ -288,37 +288,37 @@ msgctxt "undefined type of a variable"
 msgid "empty"
 msgstr "gety"
 
-#: inspector.cpp:172
+#: inspector.cpp:168
 #, kde-format
 msgid "boolean"
 msgstr "ブール値"
 
-#: inspector.cpp:175
+#: inspector.cpp:171
 #, kde-format
 msgid "number"
 msgstr "数"
 
-#: inspector.cpp:178
+#: inspector.cpp:174
 #, kde-format
 msgid "string"
 msgstr "文字列"
 
-#: inspector.cpp:210
+#: inspector.cpp:206
 #, kde-format
 msgid "None"
 msgstr "なし"
 
-#: interpreter/executer.cpp:72
+#: interpreter/executer.cpp:70
 #, kde-format
 msgid "Cannot return outside a function. "
 msgstr ""
 
-#: interpreter/executer.cpp:262
+#: interpreter/executer.cpp:395
 #, kde-format
 msgid "The %1 command accepts no parameters."
 msgstr "%1 コマンドにはパラメータは指定できません。"
 
-#: interpreter/executer.cpp:272
+#: interpreter/executer.cpp:405
 #, kde-format
 msgid "The %2 command was called with %3 but needs 1 parameter."
 msgid_plural "The %2 command was called with %3 but needs %1 parameters."
@@ -326,7 +326,7 @@ msgstr[0] ""
 "%2 コマンドが %3 個のパラメータで呼び出されましたが、%1 個のパラメータを必要"
 "とします。"
 
-#: interpreter/executer.cpp:274
+#: interpreter/executer.cpp:413
 #, kde-format
 msgid "The %2 command was called with %3 but only accepts 1 parameter."
 msgid_plural ""
@@ -335,53 +335,53 @@ msgstr[0] ""
 "%2 コマンドが %3 個のパラメータで呼び出されましたが、%1 個のパラメータしか指"
 "定できません。"
 
-#: interpreter/executer.cpp:292
+#: interpreter/executer.cpp:436
 #, kde-format
 msgid "The %1 command only accepts a string as its parameter."
 msgstr "%1 コマンドのパラメータには 1 つの文字列しか指定できません。"
 
-#: interpreter/executer.cpp:294
+#: interpreter/executer.cpp:438
 #, kde-format
 msgid "The %1 command only accepts strings as its parameters."
 msgstr "%1 コマンドのパラメータには文字列しか指定できません。"
 
-#: interpreter/executer.cpp:299
+#: interpreter/executer.cpp:443
 #, kde-format
 msgid "The %1 command only accepts a number as its parameter."
 msgstr "%1 コマンドのパラメータには 1 つの数しか指定できません。"
 
-#: interpreter/executer.cpp:301
+#: interpreter/executer.cpp:445
 #, kde-format
 msgid "The %1 command only accepts numbers as its parameters."
 msgstr "%1 コマンドのパラメータには数しか指定できません。"
 
-#: interpreter/executer.cpp:306
+#: interpreter/executer.cpp:450
 #, kde-format
 msgid "The %1 command only accepts an answer as its parameter."
 msgstr "%1 コマンドのパラメータには 1 つの答えしか指定できません。"
 
-#: interpreter/executer.cpp:308
+#: interpreter/executer.cpp:452
 #, kde-format
 msgid "The %1 command only accepts answers as its parameters."
 msgstr "%1 コマンドのパラメータには答えしか指定できません。"
 
-#: interpreter/executer.cpp:386
+#: interpreter/executer.cpp:526
 #, kde-format
 msgid "The variable '%1' was used without first being assigned to a value"
 msgstr "値が割り当てられていない変数 %1 が使われました"
 
-#: interpreter/executer.cpp:405
+#: interpreter/executer.cpp:546
 #, kde-format
 msgid "An unknown function named '%1' was called"
 msgstr "%1 という名前の未知の関数が呼び出されました"
 
 # %2 と %3 は「%1 個のパラメータ」
-#: interpreter/executer.cpp:420
+#: interpreter/executer.cpp:560
 #, kde-format
 msgid "The function '%1' was called with %2, while it should be called with %3"
 msgstr "関数 %1 は %3で呼び出さなければなりませんが、%2で呼び出されました"
 
-#: interpreter/executer.cpp:422 interpreter/executer.cpp:423
+#: interpreter/executer.cpp:562 interpreter/executer.cpp:564
 #, fuzzy, kde-format
 #| msgid "1 parameter"
 #| msgid_plural "%1 parameters"
@@ -391,143 +391,143 @@ msgid "1 parameter"
 msgid_plural "%1 parameters"
 msgstr[0] "%1 個のパラメータ"
 
-#: interpreter/executer.cpp:627
+#: interpreter/executer.cpp:787
 #, kde-format
 msgid "ASSERT failed"
 msgstr ""
 
-#: interpreter/executer.cpp:633
+#: interpreter/executer.cpp:794
 #, kde-format
 msgid "'And' needs two variables"
 msgstr "and には 2 つの変数が必要です"
 
-#: interpreter/executer.cpp:642
+#: interpreter/executer.cpp:804
 #, kde-format
 msgid "'Or' needs two variables"
 msgstr "or には 2 つの変数が必要です"
 
-#: interpreter/executer.cpp:652
+#: interpreter/executer.cpp:815
 #, kde-format
 msgid "I need something to do a not on"
 msgstr "not にするものが必要です"
 
-#: interpreter/executer.cpp:660
+#: interpreter/executer.cpp:824
 #, kde-format
 msgid "I cannot do a '==' without 2 variables"
 msgstr "== には 2 つの変数が必要です"
 
-#: interpreter/executer.cpp:668
+#: interpreter/executer.cpp:833
 #, kde-format
 msgid "I cannot do a '!=' without 2 variables"
 msgstr "!= には 2 つの変数が必要です"
 
-#: interpreter/executer.cpp:676
+#: interpreter/executer.cpp:842
 #, kde-format
 msgid "I cannot do a '>' without 2 variables"
 msgstr "> には 2 つの変数が必要です"
 
-#: interpreter/executer.cpp:684
+#: interpreter/executer.cpp:851
 #, kde-format
 msgid "I cannot do a '<' without 2 variables"
 msgstr "< には 2 つの変数が必要です"
 
-#: interpreter/executer.cpp:692
+#: interpreter/executer.cpp:860
 #, kde-format
 msgid "I cannot do a '>=' without 2 variables"
 msgstr ">= には 2 つの変数が必要です"
 
-#: interpreter/executer.cpp:700
+#: interpreter/executer.cpp:869
 #, kde-format
 msgid "I cannot do a '<=' without 2 variables"
 msgstr "<= には 2 つの変数が必要です"
 
-#: interpreter/executer.cpp:708
+#: interpreter/executer.cpp:878
 #, kde-format
 msgid "You need two numbers or string to do an addition"
 msgstr "足し算には 2 つの数または文字列が必要です"
 
-#: interpreter/executer.cpp:720
+#: interpreter/executer.cpp:891
 #, kde-format
 msgid "You need two numbers to subtract"
 msgstr "引き算には 2 つの数が必要です"
 
-#: interpreter/executer.cpp:727
+#: interpreter/executer.cpp:898
 #, kde-format
 msgid "You tried to subtract from a non-number, '%1'"
 msgstr "数ではないもの (%1) から引こうとしました"
 
-#: interpreter/executer.cpp:729
+#: interpreter/executer.cpp:900
 #, kde-format
 msgid "You tried to subtract a non-number, '%1'"
 msgstr "数ではないもの (%1) を引こうとしました"
 
-#: interpreter/executer.cpp:735
+#: interpreter/executer.cpp:907
 #, kde-format
 msgid "You need two numbers to multiplicate"
 msgstr "掛け算には 2 つの数が必要です"
 
-#: interpreter/executer.cpp:742
+#: interpreter/executer.cpp:914
 #, kde-format
 msgid "You tried to multiplicate a non-number, '%1'"
 msgstr "数ではないもの (%1) に掛けようとしました"
 
-#: interpreter/executer.cpp:744
+#: interpreter/executer.cpp:916
 #, kde-format
 msgid "You tried to multiplicate by a non-number, '%1'"
 msgstr "数ではないもの (%1) を掛けようとしました"
 
-#: interpreter/executer.cpp:750
+#: interpreter/executer.cpp:923
 #, kde-format
 msgid "You need two numbers to divide"
 msgstr "割り算には 2 つの数が必要です"
 
-#: interpreter/executer.cpp:755
+#: interpreter/executer.cpp:928
 #, fuzzy, kde-format
 #| msgid "You tried to divide by a non-number, '%1'"
 msgid "You tried to divide by zero"
 msgstr "数ではないもの (%1) で割ろうとしました"
 
-#: interpreter/executer.cpp:761
+#: interpreter/executer.cpp:934
 #, kde-format
 msgid "You tried to divide a non-number, '%1'"
 msgstr "数ではないもの (%1) を割ろうとしました"
 
-#: interpreter/executer.cpp:763
+#: interpreter/executer.cpp:936
 #, kde-format
 msgid "You tried to divide by a non-number, '%1'"
 msgstr "数ではないもの (%1) で割ろうとしました"
 
-#: interpreter/executer.cpp:769
+#: interpreter/executer.cpp:943
 #, kde-format
 msgid "You need two numbers to raise a power"
 msgstr "累乗には 2 つの数が必要です"
 
-#: interpreter/executer.cpp:780
+#: interpreter/executer.cpp:954
 #, kde-format
 msgid "The result of an exponentiation was too large"
 msgstr ""
 
-#: interpreter/executer.cpp:786
+#: interpreter/executer.cpp:960
 #, fuzzy, kde-format
 msgid "You tried to raise a non-number to a power, '%1'"
 msgstr "数ではないもので累乗しようとしました '%1'"
 
-#: interpreter/executer.cpp:788
+#: interpreter/executer.cpp:962
 #, fuzzy, kde-format
 msgid "You tried to raise the power of a non-number, '%1'"
 msgstr "数ではないものを累乗しようとしました '%1'"
 
-#: interpreter/executer.cpp:794
+#: interpreter/executer.cpp:969
 #, kde-format
 msgid "You need one variable and a value or variable to do a '='"
 msgstr "= には 1 つの変数と、1 つの値または変数が必要です"
 
-#: interpreter/executer.cpp:811
+#: interpreter/executer.cpp:988
 #, kde-format
 msgid "The function '%1' is already defined."
 msgstr "関数 %1 は既に定義されています。"
 
-#: interpreter/executer.cpp:1041
+#: interpreter/executer.cpp:1275
 #, kde-format
 msgid "Can't do a sqrt of a negative number"
 msgstr ""
@@ -537,47 +537,47 @@ msgstr ""
 msgid "Expected a command, instead got '%1'"
 msgstr "コマンドが必要なところに %1 がありました"
 
-#: interpreter/parser.cpp:71
+#: interpreter/parser.cpp:69
 #, kde-format
 msgid "Could not understand '%1'"
 msgstr "%1 を理解できませんでした"
 
-#: interpreter/parser.cpp:106
+#: interpreter/parser.cpp:104
 #, kde-format
 msgid "A comma was expected here..."
 msgstr "ここにはコンマが必要です..."
 
-#: interpreter/parser.cpp:109
+#: interpreter/parser.cpp:107
 #, kde-format
 msgid "Did not expect '%1', instead expected the line to end after %2"
 msgstr ""
 
-#: interpreter/parser.cpp:115
+#: interpreter/parser.cpp:110
 #, kde-format
 msgid "Expected an assignment, '=', after the variable '%1'"
 msgstr "変数 %1 の後に = が必要です"
 
-#: interpreter/parser.cpp:119
+#: interpreter/parser.cpp:113
 #, kde-format
 msgid "Did not expect '%1', instead expected a closing parenthesis, ')'"
 msgstr "右括弧 “)” が必要なところに “%1” がありました"
 
-#: interpreter/parser.cpp:123
+#: interpreter/parser.cpp:116
 #, kde-format
 msgid "Expected 'to' after 'for'"
 msgstr "for の後には to が必要です"
 
-#: interpreter/parser.cpp:126
+#: interpreter/parser.cpp:119
 #, kde-format
 msgid "Expected a name for a command after 'learn' command"
 msgstr "learn コマンドの後にはコマンドの名前が必要です"
 
-#: interpreter/parser.cpp:232
+#: interpreter/parser.cpp:273
 #, kde-format
 msgid "You cannot put '%1' here."
 msgstr "ここに %1 を入れることはできません。"
 
-#: interpreter/parser.cpp:268
+#: interpreter/parser.cpp:308
 #, kde-format
 msgid ""
 "Text string was not properly closed, expected a double quote, ' \" ', to "
@@ -586,17 +586,17 @@ msgstr ""
 "文字列が正しく閉じられていません。文字列は二重引用符 (\") で囲まなければなり"
 "ません。"
 
-#: interpreter/parser.cpp:616
+#: interpreter/parser.cpp:635
 #, kde-format
 msgid "'for' was called wrongly"
 msgstr "for の使い方が間違っています"
 
-#: interpreter/parser.cpp:686
+#: interpreter/parser.cpp:706
 #, kde-format
 msgid "Expected a scope after the 'learn' command"
 msgstr "learn コマンドの後にはスコープが必要です"
 
-#: interpreter/translator.cpp:96
+#: interpreter/translator.cpp:93
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'True' COMMAND, there are some rules on "
@@ -610,7 +610,7 @@ msgctxt ""
 msgid "true"
 msgstr "true"
 
-#: interpreter/translator.cpp:103
+#: interpreter/translator.cpp:101
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'False' COMMAND, there are some rules on "
@@ -624,7 +624,7 @@ msgctxt ""
 msgid "false"
 msgstr "false"
 
-#: interpreter/translator.cpp:122
+#: interpreter/translator.cpp:121
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'ArgumentSeparator' COMMAND, there are "
@@ -652,7 +652,7 @@ msgctxt ""
 msgid "."
 msgstr "."
 
-#: interpreter/translator.cpp:136
+#: interpreter/translator.cpp:137
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Exit' COMMAND, there are some rules on "
@@ -666,7 +666,7 @@ msgctxt ""
 msgid "exit"
 msgstr "exit"
 
-#: interpreter/translator.cpp:143
+#: interpreter/translator.cpp:145
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'If' COMMAND, there are some rules on how "
@@ -680,7 +680,7 @@ msgctxt ""
 msgid "if"
 msgstr "if"
 
-#: interpreter/translator.cpp:150
+#: interpreter/translator.cpp:153
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Else' COMMAND, there are some rules on "
@@ -694,7 +694,7 @@ msgctxt ""
 msgid "else"
 msgstr "else"
 
-#: interpreter/translator.cpp:157
+#: interpreter/translator.cpp:161
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Repeat' COMMAND, there are some rules on "
@@ -708,7 +708,7 @@ msgctxt ""
 msgid "repeat"
 msgstr "repeat"
 
-#: interpreter/translator.cpp:164
+#: interpreter/translator.cpp:169
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'While' COMMAND, there are some rules on "
@@ -722,7 +722,7 @@ msgctxt ""
 msgid "while"
 msgstr "while"
 
-#: interpreter/translator.cpp:171
+#: interpreter/translator.cpp:177
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'For' COMMAND, there are some rules on how "
@@ -736,7 +736,7 @@ msgctxt ""
 msgid "for"
 msgstr "for"
 
-#: interpreter/translator.cpp:178
+#: interpreter/translator.cpp:185
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'To' COMMAND, there are some rules on how "
@@ -750,7 +750,7 @@ msgctxt ""
 msgid "to"
 msgstr "to"
 
-#: interpreter/translator.cpp:185
+#: interpreter/translator.cpp:193
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Step' COMMAND, there are some rules on "
@@ -764,7 +764,7 @@ msgctxt ""
 msgid "step"
 msgstr "step"
 
-#: interpreter/translator.cpp:192
+#: interpreter/translator.cpp:201
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Break' COMMAND, there are some rules on "
@@ -778,7 +778,7 @@ msgctxt ""
 msgid "break"
 msgstr "break"
 
-#: interpreter/translator.cpp:199
+#: interpreter/translator.cpp:209
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Return' COMMAND, there are some rules on "
@@ -792,7 +792,7 @@ msgctxt ""
 msgid "return"
 msgstr "return"
 
-#: interpreter/translator.cpp:206
+#: interpreter/translator.cpp:217
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Wait' COMMAND, there are some rules on "
@@ -806,7 +806,7 @@ msgctxt ""
 msgid "wait"
 msgstr "wait"
 
-#: interpreter/translator.cpp:213
+#: interpreter/translator.cpp:225
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Assert' COMMAND, there are some rules on how "
@@ -815,7 +815,7 @@ msgctxt ""
 msgid "assert"
 msgstr ""
 
-#: interpreter/translator.cpp:220
+#: interpreter/translator.cpp:233
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'And' COMMAND, there are some rules on how "
@@ -829,7 +829,7 @@ msgctxt ""
 msgid "and"
 msgstr "and"
 
-#: interpreter/translator.cpp:227
+#: interpreter/translator.cpp:241
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Or' COMMAND, there are some rules on how "
@@ -843,7 +843,7 @@ msgctxt ""
 msgid "or"
 msgstr "or"
 
-#: interpreter/translator.cpp:234
+#: interpreter/translator.cpp:249
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Not' COMMAND, there are some rules on how "
@@ -857,7 +857,7 @@ msgctxt ""
 msgid "not"
 msgstr "not"
 
-#: interpreter/translator.cpp:265
+#: interpreter/translator.cpp:281
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Learn' COMMAND, there are some rules on "
@@ -871,7 +871,7 @@ msgctxt ""
 msgid "learn"
 msgstr "learn"
 
-#: interpreter/translator.cpp:272
+#: interpreter/translator.cpp:289
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Reset' COMMAND, there are some rules on "
@@ -885,7 +885,7 @@ msgctxt ""
 msgid "reset"
 msgstr "reset"
 
-#: interpreter/translator.cpp:279
+#: interpreter/translator.cpp:297
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Clear' COMMAND, there are some rules on "
@@ -899,7 +899,7 @@ msgctxt ""
 msgid "clear"
 msgstr "clear"
 
-#: interpreter/translator.cpp:286
+#: interpreter/translator.cpp:305
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Clear' COMMAND ALIAS, there are some "
@@ -913,7 +913,7 @@ msgctxt ""
 msgid "ccl"
 msgstr "ccl"
 
-#: interpreter/translator.cpp:293
+#: interpreter/translator.cpp:313
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Center' COMMAND, there are some rules on "
@@ -927,7 +927,7 @@ msgctxt ""
 msgid "center"
 msgstr "center"
 
-#: interpreter/translator.cpp:300
+#: interpreter/translator.cpp:321
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Go' COMMAND, there are some rules on how "
@@ -941,7 +941,7 @@ msgctxt ""
 msgid "go"
 msgstr "go"
 
-#: interpreter/translator.cpp:307
+#: interpreter/translator.cpp:329
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'GoX' COMMAND, there are some rules on how "
@@ -955,7 +955,7 @@ msgctxt ""
 msgid "gox"
 msgstr "gox"
 
-#: interpreter/translator.cpp:314
+#: interpreter/translator.cpp:337
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'GoX' COMMAND ALIAS, there are some rules "
@@ -969,7 +969,7 @@ msgctxt ""
 msgid "gx"
 msgstr "gx"
 
-#: interpreter/translator.cpp:321
+#: interpreter/translator.cpp:345
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'GoY' COMMAND, there are some rules on how "
@@ -983,7 +983,7 @@ msgctxt ""
 msgid "goy"
 msgstr "goy"
 
-#: interpreter/translator.cpp:328
+#: interpreter/translator.cpp:353
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'GoY' COMMAND ALIAS, there are some rules "
@@ -997,7 +997,7 @@ msgctxt ""
 msgid "gy"
 msgstr "gy"
 
-#: interpreter/translator.cpp:335
+#: interpreter/translator.cpp:361
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Forward' COMMAND, there are some rules on "
@@ -1011,7 +1011,7 @@ msgctxt ""
 msgid "forward"
 msgstr "forward"
 
-#: interpreter/translator.cpp:342
+#: interpreter/translator.cpp:369
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Forward' COMMAND ALIAS, there are some "
@@ -1025,7 +1025,7 @@ msgctxt ""
 msgid "fw"
 msgstr "fw"
 
-#: interpreter/translator.cpp:349
+#: interpreter/translator.cpp:377
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Backward' COMMAND, there are some rules "
@@ -1039,7 +1039,7 @@ msgctxt ""
 msgid "backward"
 msgstr "backward"
 
-#: interpreter/translator.cpp:356
+#: interpreter/translator.cpp:385
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Backward' COMMAND ALIAS, there are some "
@@ -1053,7 +1053,7 @@ msgctxt ""
 msgid "bw"
 msgstr "bw"
 
-#: interpreter/translator.cpp:363
+#: interpreter/translator.cpp:393
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Direction' COMMAND, there are some rules "
@@ -1067,7 +1067,7 @@ msgctxt ""
 msgid "direction"
 msgstr "direction"
 
-#: interpreter/translator.cpp:370
+#: interpreter/translator.cpp:401
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Direction' COMMAND ALIAS, there are some "
@@ -1081,7 +1081,7 @@ msgctxt ""
 msgid "dir"
 msgstr "dir"
 
-#: interpreter/translator.cpp:377
+#: interpreter/translator.cpp:409
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'TurnLeft' COMMAND, there are some rules "
@@ -1095,7 +1095,7 @@ msgctxt ""
 msgid "turnleft"
 msgstr "turnleft"
 
-#: interpreter/translator.cpp:384
+#: interpreter/translator.cpp:417
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'TurnLeft' COMMAND ALIAS, there are some "
@@ -1109,7 +1109,7 @@ msgctxt ""
 msgid "tl"
 msgstr "tl"
 
-#: interpreter/translator.cpp:391
+#: interpreter/translator.cpp:425
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'TurnRight' COMMAND, there are some rules "
@@ -1123,7 +1123,7 @@ msgctxt ""
 msgid "turnright"
 msgstr "turnright"
 
-#: interpreter/translator.cpp:398
+#: interpreter/translator.cpp:433
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'TurnRight' COMMAND ALIAS, there are some "
@@ -1137,7 +1137,7 @@ msgctxt ""
 msgid "tr"
 msgstr "tr"
 
-#: interpreter/translator.cpp:405
+#: interpreter/translator.cpp:441
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'PenWidth' COMMAND, there are some rules "
@@ -1151,7 +1151,7 @@ msgctxt ""
 msgid "penwidth"
 msgstr "penwidth"
 
-#: interpreter/translator.cpp:412
+#: interpreter/translator.cpp:449
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'PenWidth' COMMAND ALIAS, there are some "
@@ -1165,7 +1165,7 @@ msgctxt ""
 msgid "pw"
 msgstr "pw"
 
-#: interpreter/translator.cpp:419
+#: interpreter/translator.cpp:457
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'PenUp' COMMAND, there are some rules on "
@@ -1179,7 +1179,7 @@ msgctxt ""
 msgid "penup"
 msgstr "penup"
 
-#: interpreter/translator.cpp:426
+#: interpreter/translator.cpp:465
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'PenUp' COMMAND ALIAS, there are some "
@@ -1193,7 +1193,7 @@ msgctxt ""
 msgid "pu"
 msgstr "pu"
 
-#: interpreter/translator.cpp:433
+#: interpreter/translator.cpp:473
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'PenDown' COMMAND, there are some rules on "
@@ -1207,7 +1207,7 @@ msgctxt ""
 msgid "pendown"
 msgstr "pendown"
 
-#: interpreter/translator.cpp:440
+#: interpreter/translator.cpp:481
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'PenDown' COMMAND ALIAS, there are some "
@@ -1221,7 +1221,7 @@ msgctxt ""
 msgid "pd"
 msgstr "pd"
 
-#: interpreter/translator.cpp:447
+#: interpreter/translator.cpp:489
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'PenColor' COMMAND, there are some rules "
@@ -1235,7 +1235,7 @@ msgctxt ""
 msgid "pencolor"
 msgstr "pencolor"
 
-#: interpreter/translator.cpp:454
+#: interpreter/translator.cpp:497
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'PenColor' COMMAND ALIAS, there are some "
@@ -1249,7 +1249,7 @@ msgctxt ""
 msgid "pc"
 msgstr "pc"
 
-#: interpreter/translator.cpp:461
+#: interpreter/translator.cpp:505
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'CanvasColor' COMMAND, there are some "
@@ -1263,7 +1263,7 @@ msgctxt ""
 msgid "canvascolor"
 msgstr "canvascolor"
 
-#: interpreter/translator.cpp:468
+#: interpreter/translator.cpp:513
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'CanvasColor' COMMAND ALIAS, there are "
@@ -1277,7 +1277,7 @@ msgctxt ""
 msgid "cc"
 msgstr "cc"
 
-#: interpreter/translator.cpp:475
+#: interpreter/translator.cpp:521
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'CanvasSize' COMMAND, there are some rules "
@@ -1291,7 +1291,7 @@ msgctxt ""
 msgid "canvassize"
 msgstr "canvassize"
 
-#: interpreter/translator.cpp:482
+#: interpreter/translator.cpp:529
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'CanvasSize' COMMAND ALIAS, there are some "
@@ -1305,7 +1305,7 @@ msgctxt ""
 msgid "cs"
 msgstr "cs"
 
-#: interpreter/translator.cpp:489
+#: interpreter/translator.cpp:537
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'SpriteShow' COMMAND, there are some rules "
@@ -1319,7 +1319,7 @@ msgctxt ""
 msgid "spriteshow"
 msgstr "spriteshow"
 
-#: interpreter/translator.cpp:496
+#: interpreter/translator.cpp:545
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'SpriteShow' COMMAND ALIAS, there are some "
@@ -1333,7 +1333,7 @@ msgctxt ""
 msgid "ss"
 msgstr "ss"
 
-#: interpreter/translator.cpp:503
+#: interpreter/translator.cpp:553
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'SpriteHide' COMMAND, there are some rules "
@@ -1347,7 +1347,7 @@ msgctxt ""
 msgid "spritehide"
 msgstr "spritehide"
 
-#: interpreter/translator.cpp:510
+#: interpreter/translator.cpp:561
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'SpriteHide' COMMAND ALIAS, there are some "
@@ -1361,7 +1361,7 @@ msgctxt ""
 msgid "sh"
 msgstr "sh"
 
-#: interpreter/translator.cpp:517
+#: interpreter/translator.cpp:569
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Print' COMMAND, there are some rules on "
@@ -1376,7 +1376,7 @@ msgid "print"
 msgstr "print"
 
 # skip-rule: font_size
-#: interpreter/translator.cpp:524
+#: interpreter/translator.cpp:577
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'FontSize' COMMAND, there are some rules "
@@ -1390,7 +1390,7 @@ msgctxt ""
 msgid "fontsize"
 msgstr "fontsize"
 
-#: interpreter/translator.cpp:531
+#: interpreter/translator.cpp:585
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Random' COMMAND, there are some rules on "
@@ -1404,7 +1404,7 @@ msgctxt ""
 msgid "random"
 msgstr "random"
 
-#: interpreter/translator.cpp:538
+#: interpreter/translator.cpp:593
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Random' COMMAND ALIAS, there are some "
@@ -1418,7 +1418,7 @@ msgctxt ""
 msgid "rnd"
 msgstr "rnd"
 
-#: interpreter/translator.cpp:545
+#: interpreter/translator.cpp:601
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'GetX' COMMAND, there are some rules on "
@@ -1432,7 +1432,7 @@ msgctxt ""
 msgid "getx"
 msgstr "getx"
 
-#: interpreter/translator.cpp:552
+#: interpreter/translator.cpp:609
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'GetY' COMMAND, there are some rules on "
@@ -1446,7 +1446,7 @@ msgctxt ""
 msgid "gety"
 msgstr "gety"
 
-#: interpreter/translator.cpp:559
+#: interpreter/translator.cpp:617
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Message' COMMAND, there are some rules on "
@@ -1460,7 +1460,7 @@ msgctxt ""
 msgid "message"
 msgstr "message"
 
-#: interpreter/translator.cpp:566
+#: interpreter/translator.cpp:625
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Ask' COMMAND, there are some rules on how "
@@ -1474,7 +1474,7 @@ msgctxt ""
 msgid "ask"
 msgstr "ask"
 
-#: interpreter/translator.cpp:573
+#: interpreter/translator.cpp:633
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Pi' COMMAND, there are some rules on how "
@@ -1488,7 +1488,7 @@ msgctxt ""
 msgid "pi"
 msgstr "pi"
 
-#: interpreter/translator.cpp:580
+#: interpreter/translator.cpp:641
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Tan' COMMAND, there are some rules on how "
@@ -1502,7 +1502,7 @@ msgctxt ""
 msgid "tan"
 msgstr "tan"
 
-#: interpreter/translator.cpp:587
+#: interpreter/translator.cpp:649
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Sin' COMMAND, there are some rules on how "
@@ -1516,7 +1516,7 @@ msgctxt ""
 msgid "sin"
 msgstr "sin"
 
-#: interpreter/translator.cpp:594
+#: interpreter/translator.cpp:657
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Cos' COMMAND, there are some rules on how "
@@ -1530,7 +1530,7 @@ msgctxt ""
 msgid "cos"
 msgstr "cos"
 
-#: interpreter/translator.cpp:601
+#: interpreter/translator.cpp:665
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'ArcTan' COMMAND, there are some rules on "
@@ -1544,7 +1544,7 @@ msgctxt ""
 msgid "arctan"
 msgstr "arctan"
 
-#: interpreter/translator.cpp:608
+#: interpreter/translator.cpp:673
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'ArcSin' COMMAND, there are some rules on "
@@ -1558,7 +1558,7 @@ msgctxt ""
 msgid "arcsin"
 msgstr "arcsin"
 
-#: interpreter/translator.cpp:615
+#: interpreter/translator.cpp:681
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'ArcCos' COMMAND, there are some rules on "
@@ -1572,7 +1572,7 @@ msgctxt ""
 msgid "arccos"
 msgstr "arccos"
 
-#: interpreter/translator.cpp:622
+#: interpreter/translator.cpp:689
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Sqrt' COMMAND, there are some rules on "
@@ -1586,7 +1586,7 @@ msgctxt ""
 msgid "sqrt"
 msgstr "sqrt"
 
-#: interpreter/translator.cpp:629
+#: interpreter/translator.cpp:697
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Round' COMMAND, there are some rules on "
@@ -1600,7 +1600,7 @@ msgctxt ""
 msgid "round"
 msgstr "round"
 
-#: interpreter/translator.cpp:636
+#: interpreter/translator.cpp:705
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Direction' COMMAND, there are some rules "
@@ -1614,7 +1614,7 @@ msgctxt ""
 msgid "getdirection"
 msgstr "direction"
 
-#: interpreter/translator.cpp:643
+#: interpreter/translator.cpp:713
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Mod' COMMAND, there are some rules on how to "
@@ -1623,7 +1623,7 @@ msgctxt ""
 msgid "mod"
 msgstr ""
 
-#: interpreter/translator.cpp:662
+#: interpreter/translator.cpp:729
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "This is an EXAMPLE NAME in KTurtle.Please see http://edu.kde.org/kturtle/"
@@ -1635,7 +1635,7 @@ msgctxt ""
 msgid "triangle"
 msgstr "三角"
 
-#: interpreter/translator.cpp:674
+#: interpreter/translator.cpp:741
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "This is an EXAMPLE NAME in KTurtle.Please see http://edu.kde.org/kturtle/"
@@ -1647,7 +1647,7 @@ msgctxt ""
 msgid "curly"
 msgstr "曲線"
 
-#: interpreter/translator.cpp:692
+#: interpreter/translator.cpp:759
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "This is an EXAMPLE NAME in KTurtle.Please see http://edu.kde.org/kturtle/"
@@ -1659,7 +1659,7 @@ msgctxt ""
 msgid "arrow"
 msgstr "矢印"
 
-#: interpreter/translator.cpp:719
+#: interpreter/translator.cpp:786
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "This is an EXAMPLE NAME in KTurtle.Please see http://edu.kde.org/kturtle/"
@@ -1690,13 +1690,13 @@ msgid "&Edit"
 msgstr "編集(&E)"
 
 #. i18n: ectx: Menu (canvas)
-#: kturtleui.rc:41 mainwindow.cpp:499 mainwindow.cpp:521
+#: kturtleui.rc:41 mainwindow.cpp:509 mainwindow.cpp:531
 #, kde-format
 msgid "&Canvas"
 msgstr "キャンバス(&C)"
 
 #. i18n: ectx: Menu (run)
-#: kturtleui.rc:47 mainwindow.cpp:298 mainwindow.cpp:417
+#: kturtleui.rc:47 mainwindow.cpp:309 mainwindow.cpp:428
 #, kde-format
 msgid "&Run"
 msgstr "実行(&R)"
@@ -1738,12 +1738,12 @@ msgstr "ヘルプ"
 msgid "Main Toolbar"
 msgstr "メインツールバー"
 
-#: main.cpp:33
+#: main.cpp:32
 #, kde-format
 msgid "KTurtle"
 msgstr "KTurtle"
 
-#: main.cpp:35
+#: main.cpp:34
 #, kde-format
 msgid "https://edu.kde.org/kturtle"
 msgstr ""
@@ -1765,44 +1765,44 @@ msgstr ""
 "とする、主に小さい子供のためのプログラミング環境です。KTurtle は、子供に数"
 "学、幾何学、そしてプログラミングの基礎を教える手助けをします。"
 
-#: main.cpp:37
+#: main.cpp:38
 #, fuzzy, kde-format
 #| msgid "Cies Breijs"
 msgid "(c) 2003-2009 Cies Breijs"
 msgstr "Cies Breijs"
 
-#: main.cpp:39
+#: main.cpp:40
 #, kde-format
 msgid "Cies Breijs"
 msgstr "Cies Breijs"
 
-#: main.cpp:39
+#: main.cpp:40
 #, kde-format
 msgid "Initiator and core developer"
 msgstr "創始者、コア開発者"
 
-#: main.cpp:40
+#: main.cpp:41
 #, kde-format
 msgid "Niels Slot"
 msgstr "Niels Slot"
 
-#: main.cpp:40 main.cpp:41
+#: main.cpp:41 main.cpp:42
 #, kde-format
 msgid "Core developer"
 msgstr "コア開発者"
 
-#: main.cpp:41
+#: main.cpp:42
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "Mauricio Piacentini"
 
-#: main.cpp:50
+#: main.cpp:52
 #, fuzzy, kde-format
 #| msgid "File to open (in the GUI mode)"
 msgid "File or URL to open (in the GUI mode)"
 msgstr "開くファイル (GUI モードで)"
 
-#: main.cpp:51
+#: main.cpp:55
 #, fuzzy, kde-format
 #| msgid ""
 #| "Starts KTurtle in testing mode (without a GUI), directly runs the "
@@ -1814,7 +1814,7 @@ msgstr ""
 "KTurtle をテストモード (GUI なし) で起動し、指定したローカルファイルを直接実"
 "行"
 
-#: main.cpp:52
+#: main.cpp:57
 #, kde-format
 msgid ""
 "Starts KTurtle in testing mode (without a GUI), directly runs the specified "
@@ -1823,7 +1823,7 @@ msgstr ""
 "KTurtle をテストモード (GUI なし) で起動し、指定したローカルファイルを直接実"
 "行"
 
-#: main.cpp:53
+#: main.cpp:60
 #, kde-format
 msgid ""
 "Specifies the localization language by a language code, defaults to \"en_US"
@@ -1831,301 +1831,300 @@ msgid ""
 msgstr ""
 "言語コードで翻訳言語を指定、デフォルトは “en_US” (テストモードでのみ有効)"
 
-#. i18n("Only tokenizes the turtle code (only works in testing mode)")));
-#: main.cpp:55
+#: main.cpp:65
 #, kde-format
 msgid ""
 "Translates turtle code to embeddable C++ example strings (for developers "
 "only)"
 msgstr ""
 
-#: mainwindow.cpp:61
+#: mainwindow.cpp:60
 #, kde-format
 msgctxt "@info:status the application is ready for commands"
 msgid "Ready"
 msgstr "準備完了"
 
-#: mainwindow.cpp:175
+#: mainwindow.cpp:185
 #, kde-format
 msgid "Create a new file"
 msgstr "新しいファイルを作成"
 
-#: mainwindow.cpp:176
+#: mainwindow.cpp:186
 #, kde-format
 msgid "New File: Create a new file"
 msgstr "新規: 新しいファイルを作成します"
 
-#: mainwindow.cpp:179
+#: mainwindow.cpp:189
 #, kde-format
 msgid "Open an existing file"
 msgstr "既存のファイルを開く"
 
-#: mainwindow.cpp:180
+#: mainwindow.cpp:190
 #, kde-format
 msgid "Open File: Open an existing file"
 msgstr "開く: 既存のファイルを開きます"
 
-#: mainwindow.cpp:184
+#: mainwindow.cpp:195
 #, kde-format
 msgid "Open a recently used file"
 msgstr "最近使ったファイルを開く"
 
-#: mainwindow.cpp:185
+#: mainwindow.cpp:196
 #, kde-format
 msgid "Open Recent File: Open a recently used file"
 msgstr "最近のファイルを開く: 最近使ったファイルを開きます"
 
-#: mainwindow.cpp:187
+#: mainwindow.cpp:198
 #, kde-format
 msgid "Get more examples..."
 msgstr ""
 
-#: mainwindow.cpp:196
+#: mainwindow.cpp:207
 #, kde-format
 msgid "Save the current file to disk"
 msgstr "現在のファイルをディスクに保存"
 
-#: mainwindow.cpp:197
+#: mainwindow.cpp:208
 #, kde-format
 msgid "Save File: Save the current file to disk"
 msgstr "保存: 現在のファイルをディスクに保存します"
 
-#: mainwindow.cpp:201
+#: mainwindow.cpp:212
 #, kde-format
 msgid "Save the current file under a different name"
 msgstr "現在のファイルを別の名前で保存"
 
-#: mainwindow.cpp:202
+#: mainwindow.cpp:213
 #, kde-format
 msgid "Save File As: Save the current file under a different name"
 msgstr "名前を付けて保存: 現在のファイルを別の名前で保存します"
 
-#: mainwindow.cpp:205
+#: mainwindow.cpp:216
 #, kde-format
 msgid "Export to &HTML..."
 msgstr ""
 
-#: mainwindow.cpp:206
+#: mainwindow.cpp:217
 #, kde-format
 msgid "Export the contents of the editor as HTML"
 msgstr ""
 
-#: mainwindow.cpp:207
+#: mainwindow.cpp:218
 #, kde-format
 msgid "Export to HTML: Export the contents of the editor as HTML"
 msgstr ""
 
-#: mainwindow.cpp:211
+#: mainwindow.cpp:222
 #, kde-format
 msgid "Print the code"
 msgstr "コードを印刷"
 
-#: mainwindow.cpp:212
+#: mainwindow.cpp:223
 #, kde-format
 msgid "Print: Print the code"
 msgstr "印刷: コードを印刷します"
 
-#: mainwindow.cpp:215
+#: mainwindow.cpp:226
 #, kde-format
 msgid "Quit KTurtle"
 msgstr "KTurtle を終了"
 
-#: mainwindow.cpp:216
+#: mainwindow.cpp:227
 #, kde-format
 msgid "Quit: Quit KTurtle"
 msgstr "終了: KTurtle を終了します"
 
-#: mainwindow.cpp:220
+#: mainwindow.cpp:231
 #, kde-format
 msgid "Undo a change in the editor"
 msgstr "コードエディタでの変更を取り消し"
 
-#: mainwindow.cpp:221
+#: mainwindow.cpp:232
 #, kde-format
 msgid "Undo: Undo a change in the editor"
 msgstr "元に戻す: コードエディタで行った変更を取り消します"
 
-#: mainwindow.cpp:226
+#: mainwindow.cpp:237
 #, kde-format
 msgid "Redo a previously undone change in the editor"
 msgstr "コードエディタで前に取り消した変更をやり直し"
 
-#: mainwindow.cpp:227
+#: mainwindow.cpp:238
 #, kde-format
 msgid "Redo: Redo a previously undone change in the editor"
 msgstr "やり直す: コードエディタで前に取り消した変更をやり直します"
 
-#: mainwindow.cpp:232
+#: mainwindow.cpp:243
 #, kde-format
 msgid "Cut the selected text to the clipboard"
 msgstr "選択したテキストをクリップボードに切り取り"
 
-#: mainwindow.cpp:233
+#: mainwindow.cpp:244
 #, kde-format
 msgid "Cut: Cut the selected text to the clipboard"
 msgstr "切り取り: 選択したテキストをクリップボードに切り取ります"
 
-#: mainwindow.cpp:238
+#: mainwindow.cpp:249
 #, kde-format
 msgid "Copy the selected text to the clipboard"
 msgstr "選択したテキストをクリップボードにコピー"
 
-#: mainwindow.cpp:239
+#: mainwindow.cpp:250
 #, kde-format
 msgid "Copy: Copy the selected text to the clipboard"
 msgstr "コピー: 選択したテキストをクリップボードにコピーします"
 
-#: mainwindow.cpp:244
+#: mainwindow.cpp:255
 #, kde-format
 msgid "Paste the clipboard's content into the current selection"
 msgstr "クリップボードの内容を現在の選択に貼り付け"
 
-#: mainwindow.cpp:245
+#: mainwindow.cpp:256
 #, kde-format
 msgid "Paste: Paste the clipboard's content into the current selection"
 msgstr "貼り付け: クリップボードの内容を現在の選択に貼り付けます"
 
-#: mainwindow.cpp:248
+#: mainwindow.cpp:259
 #, kde-format
 msgid "Select all the code in the editor"
 msgstr "エディタのすべてのコードを選択"
 
-#: mainwindow.cpp:249
+#: mainwindow.cpp:260
 #, kde-format
 msgid "Select All: Select all the code in the editor"
 msgstr "すべて選択: エディタのすべてのコードを選択します"
 
-#: mainwindow.cpp:252
+#: mainwindow.cpp:263
 #, kde-format
 msgid "Overwrite Mode"
 msgstr "上書きモード"
 
-#: mainwindow.cpp:254
+#: mainwindow.cpp:265
 #, kde-format
 msgid "Toggle between the 'insert' and 'overwrite' mode"
 msgstr "挿入モードと上書きモードを切り替え"
 
-#: mainwindow.cpp:255
+#: mainwindow.cpp:266
 #, kde-format
 msgid "Overwrite Mode: Toggle between the 'insert' and 'overwrite' mode"
 msgstr "上書きモード: 挿入モードと上書きモードを切り替えます"
 
-#: mainwindow.cpp:262
+#: mainwindow.cpp:273
 #, kde-format
 msgid "Search through the code in the editor"
 msgstr "エディタのコードの中を検索"
 
-#: mainwindow.cpp:263
+#: mainwindow.cpp:274
 #, kde-format
 msgid "Find: Search through the code in the editor"
 msgstr "検索: エディタのコードの中を検索します"
 
-#: mainwindow.cpp:266
+#: mainwindow.cpp:277
 #, kde-format
 msgid "Continue searching through the code in the editor"
 msgstr "エディタのコードの中で検索を続行"
 
-#: mainwindow.cpp:267
+#: mainwindow.cpp:278
 #, kde-format
 msgid "Find Next: Continue searching through the code in the editor"
 msgstr "次を検索: エディタのコードの中で検索を続けます"
 
-#: mainwindow.cpp:270
+#: mainwindow.cpp:281
 #, kde-format
 msgid "Continue searching backwards through the code in the editor"
 msgstr "エディタのコードの中で逆方向に検索を続行"
 
-#: mainwindow.cpp:271
+#: mainwindow.cpp:282
 #, kde-format
 msgid ""
 "Find Previous: Continue searching backwards through the code in the editor"
 msgstr "前を検索: エディタのコードの中で逆方向に検索を続けます"
 
-#: mainwindow.cpp:280
+#: mainwindow.cpp:291
 #, kde-format
 msgid "Export to &Image (PNG)..."
 msgstr ""
 
-#: mainwindow.cpp:281
+#: mainwindow.cpp:292
 #, fuzzy, kde-format
 #| msgid "Save the current canvas as a picture"
 msgid "Export the current canvas to a PNG raster image"
 msgstr "現在のキャンバスを画像として保存"
 
-#: mainwindow.cpp:282
+#: mainwindow.cpp:293
 #, kde-format
 msgid "Export to PNG: Export the current canvas to a PNG raster image"
 msgstr ""
 
-#: mainwindow.cpp:286
+#: mainwindow.cpp:297
 #, kde-format
 msgid "Export to &Drawing (SVG)..."
 msgstr ""
 
-#: mainwindow.cpp:287
+#: mainwindow.cpp:298
 #, kde-format
 msgid "Export the current canvas to Scalable Vector Graphics"
 msgstr ""
 
-#: mainwindow.cpp:288
+#: mainwindow.cpp:299
 #, kde-format
 msgid "Export to SVG: Export the current canvas to Scalable Vector Graphics"
 msgstr ""
 
-#: mainwindow.cpp:291
+#: mainwindow.cpp:302
 #, fuzzy, kde-format
 #| msgid "&Canvas"
 msgid "&Print Canvas..."
 msgstr "キャンバス(&C)"
 
-#: mainwindow.cpp:293
+#: mainwindow.cpp:304
 #, fuzzy, kde-format
 #| msgid "Print the code"
 msgid "Print the canvas"
 msgstr "コードを印刷"
 
-#: mainwindow.cpp:294
+#: mainwindow.cpp:305
 #, fuzzy, kde-format
 #| msgid "Print: Print the code"
 msgid "Print: Print the canvas"
 msgstr "印刷: コードを印刷します"
 
-#: mainwindow.cpp:301
+#: mainwindow.cpp:312
 #, kde-format
 msgid "Execute the program"
 msgstr "プログラムを実行"
 
-#: mainwindow.cpp:302
+#: mainwindow.cpp:313
 #, kde-format
 msgid "Run: Execute the program"
 msgstr "実行: プログラムを実行します"
 
-#: mainwindow.cpp:305
+#: mainwindow.cpp:316
 #, kde-format
 msgid "&Pause"
 msgstr "一時停止(&P)"
 
-#: mainwindow.cpp:309
+#: mainwindow.cpp:320
 #, kde-format
 msgid "Pause execution"
 msgstr "実行を一時停止"
 
-#: mainwindow.cpp:310
+#: mainwindow.cpp:321
 #, kde-format
 msgid "Pause: Pause execution"
 msgstr "一時停止: 実行を一時停止します"
 
-#: mainwindow.cpp:313
+#: mainwindow.cpp:324
 #, kde-format
 msgid "&Abort"
 msgstr "中止(&A)"
 
-#: mainwindow.cpp:316
+#: mainwindow.cpp:327
 #, kde-format
 msgid "Stop executing program"
 msgstr "プログラムの実行を中止"
 
-#: mainwindow.cpp:317
+#: mainwindow.cpp:328
 #, kde-format
 msgid "Abort: Stop executing program"
 msgstr "中止: プログラムの実行を中止します"
@@ -2136,77 +2135,77 @@ msgstr "中止: プログラムの実行を中止します"
 #. i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
 #. i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
 #. Tools menu actions
-#: mainwindow.cpp:327
+#: mainwindow.cpp:338
 #, kde-format
 msgid "&Direction Chooser..."
 msgstr "向きをセット(&D)..."
 
-#: mainwindow.cpp:329
+#: mainwindow.cpp:340
 #, kde-format
 msgid "Shows the direction chooser dialog"
 msgstr "向きをセットするダイアログを表示"
 
-#: mainwindow.cpp:330
+#: mainwindow.cpp:341
 #, kde-format
 msgid "Direction Chooser: Show the direction chooser dialog"
 msgstr "向きをセット: 向きをセットするダイアログを表示します"
 
-#: mainwindow.cpp:333
+#: mainwindow.cpp:344
 #, kde-format
 msgid "&Color Picker..."
 msgstr "カラーピッカー(&C)..."
 
-#: mainwindow.cpp:335
+#: mainwindow.cpp:346
 #, kde-format
 msgid "Shows the color picker dialog"
 msgstr "色を選択するダイアログを表示"
 
-#: mainwindow.cpp:336
+#: mainwindow.cpp:347
 #, kde-format
 msgid "Color Picker: Show the color picker dialog"
 msgstr "カラーピッカー: 色を選択するダイアログを表示します"
 
-#: mainwindow.cpp:340
+#: mainwindow.cpp:351
 #, kde-format
 msgid "Show &Editor"
 msgstr "エディタを表示(&E)"
 
-#: mainwindow.cpp:342
+#: mainwindow.cpp:353
 #, kde-format
 msgid "Show or hide the Code Editor"
 msgstr "コードエディタの表示/非表示を切り替え"
 
-#: mainwindow.cpp:343
+#: mainwindow.cpp:354
 #, kde-format
 msgid "Show Code Editor: Show or hide the Code Editor"
 msgstr "コードエディタを表示: コードエディタの表示/非表示を切り替えます"
 
-#: mainwindow.cpp:350
+#: mainwindow.cpp:361
 #, kde-format
 msgid "Show &Inspector"
 msgstr "インスペクタを表示(&I)"
 
-#: mainwindow.cpp:352
+#: mainwindow.cpp:363
 #, kde-format
 msgid "Show or hide the Inspector"
 msgstr "インスペクタの表示/非表示を切り替え"
 
-#: mainwindow.cpp:353
+#: mainwindow.cpp:364
 #, kde-format
 msgid "Show Inspector: Show or hide the Inspector"
 msgstr "インスペクタを表示: インスペクタの表示/非表示を切り替えます"
 
-#: mainwindow.cpp:360
+#: mainwindow.cpp:371
 #, kde-format
 msgid "Show E&rrors"
 msgstr "エラーを表示(&R)"
 
-#: mainwindow.cpp:362
+#: mainwindow.cpp:373
 #, kde-format
 msgid "Show or hide the Errors tab"
 msgstr "「エラー」タブの表示/非表示を切り替え"
 
-#: mainwindow.cpp:363
+#: mainwindow.cpp:374
 #, kde-format
 msgid "Show Errors: Show or hide the Errors tab"
 msgstr "エラーを表示: 「エラー」タブの表示/非表示を切り替えます"
@@ -2219,80 +2218,80 @@ msgstr "エラーを表示: 「エラー」タブの表示/非表示を切り替
 #. a->setChecked(false);
 #. connect(a, SIGNAL(toggled(bool)), consoleDock, SLOT(setVisible(bool)));
 #. connect(consoleDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
-#: mainwindow.cpp:377
+#: mainwindow.cpp:388
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "行番号を表示(&L)"
 
-#: mainwindow.cpp:379
+#: mainwindow.cpp:390
 #, kde-format
 msgid "Turn the line numbers on/off in the editor"
 msgstr "エディタの行番号の表示/非表示を切り替え"
 
-#: mainwindow.cpp:380
+#: mainwindow.cpp:391
 #, kde-format
 msgid "Show Line Numbers: Turn the line numbers on/off in the editor"
 msgstr "行番号を表示: エディタの行番号の表示/非表示を切り替えます"
 
-#: mainwindow.cpp:391
+#: mainwindow.cpp:402
 #, kde-format
 msgid "Get help on the command under the cursor"
 msgstr "カーソルの下のコマンドに関するヘルプを表示"
 
-#: mainwindow.cpp:392
+#: mainwindow.cpp:403
 #, kde-format
 msgid "Context Help: Get help on the command under the cursor"
 msgstr "コンテキストヘルプ: カーソルの下のコマンドに関するヘルプを表示します"
 
-#: mainwindow.cpp:397
+#: mainwindow.cpp:408
 #, kde-format
 msgid "Help"
 msgstr "ヘルプ"
 
-#: mainwindow.cpp:398
+#: mainwindow.cpp:409
 #, kde-format
 msgid "Help: Open manual for KTurtle"
 msgstr "ヘルプ: KTurtle ハンドブックを開きます"
 
-#: mainwindow.cpp:402
+#: mainwindow.cpp:413
 #, kde-format
 msgid "Console"
 msgstr "コンソール"
 
-#: mainwindow.cpp:409
+#: mainwindow.cpp:420
 #, kde-format
 msgid "Execute"
 msgstr "実行"
 
-#: mainwindow.cpp:411
+#: mainwindow.cpp:422
 #, kde-format
 msgid "Execute: Executes the current line in the console"
 msgstr "実行: コンソールの現在の行を実行します"
 
-#: mainwindow.cpp:422
+#: mainwindow.cpp:433
 #, kde-format
 msgid "Execute the program, or use the drop down menu to select the run speed"
 msgstr ""
 
-#: mainwindow.cpp:423
+#: mainwindow.cpp:434
 #, kde-format
 msgid ""
 "Run: Execute the program, or use the drop down menu to select the run speed"
 msgstr ""
 
-#: mainwindow.cpp:426
+#: mainwindow.cpp:437
 #, kde-format
 msgctxt "@option:radio"
 msgid "Full Speed (&no highlighting and inspector)"
 msgstr ""
 
-#: mainwindow.cpp:429
+#: mainwindow.cpp:440
 #, fuzzy, kde-format
 #| msgid "Run the program at full speed"
 msgid "Run the program at full speed, with highlighting and inspector disabled"
 msgstr "プログラムをフルスピードで実行"
 
-#: mainwindow.cpp:430
+#: mainwindow.cpp:441
 #, fuzzy, kde-format
 #| msgid "Full Speed: Run the program at full speed"
 msgid ""
@@ -2300,291 +2299,291 @@ msgid ""
 "disabled"
 msgstr "フルスピード: プログラムをフルスピードで実行します"
 
-#: mainwindow.cpp:435
+#: mainwindow.cpp:446
 #, kde-format
 msgctxt "@option:radio"
 msgid "&Full Speed"
 msgstr "フルスピード(&F)"
 
-#: mainwindow.cpp:439
+#: mainwindow.cpp:450
 #, kde-format
 msgid "Run the program at full speed"
 msgstr "プログラムをフルスピードで実行"
 
-#: mainwindow.cpp:440
+#: mainwindow.cpp:451
 #, kde-format
 msgid "Full Speed: Run the program at full speed"
 msgstr "フルスピード: プログラムをフルスピードで実行します"
 
-#: mainwindow.cpp:445
+#: mainwindow.cpp:456
 #, kde-format
 msgctxt "@option:radio choose the slow speed"
 msgid "&Slow"
 msgstr "遅く(&S)"
 
-#: mainwindow.cpp:448
+#: mainwindow.cpp:459
 #, kde-format
 msgid "Run the program at a slow speed"
 msgstr "プログラムを遅いスピードで実行"
 
-#: mainwindow.cpp:449
+#: mainwindow.cpp:460
 #, kde-format
 msgid "Slow Speed: Run the program at a slow speed"
 msgstr "遅く: プログラムを遅いスピードで実行します"
 
-#: mainwindow.cpp:454
+#: mainwindow.cpp:465
 #, kde-format
 msgctxt "@option:radio"
 msgid "S&lower"
 msgstr "もっと遅く(&L)"
 
-#: mainwindow.cpp:457
+#: mainwindow.cpp:468
 #, kde-format
 msgid "Run the program at a slower speed"
 msgstr "プログラムをもっと遅いスピードで実行"
 
-#: mainwindow.cpp:458
+#: mainwindow.cpp:469
 #, kde-format
 msgid "Slower Speed: Run the program at a slower speed"
 msgstr "もっと遅く: プログラムをもっと遅いスピードで実行します"
 
-#: mainwindow.cpp:463
+#: mainwindow.cpp:474
 #, kde-format
 msgctxt "@option:radio"
 msgid "Sl&owest"
 msgstr "最も遅く(&O)"
 
-#: mainwindow.cpp:466
+#: mainwindow.cpp:477
 #, kde-format
 msgid "Run the program at the slowest speed"
 msgstr "プログラムを最も遅いスピードで実行"
 
-#: mainwindow.cpp:467
+#: mainwindow.cpp:478
 #, kde-format
 msgid "Slowest Speed: Run the program at the slowest speed"
 msgstr "最も遅く: プログラムを最も遅いスピードで実行します"
 
-#: mainwindow.cpp:472
+#: mainwindow.cpp:483
 #, kde-format
 msgctxt "@option:radio"
 msgid "S&tep-by-Step"
 msgstr "ステップごと(&T)"
 
-#: mainwindow.cpp:475
+#: mainwindow.cpp:486
 #, kde-format
 msgid "Run the program one step at a time"
 msgstr "プログラムを 1 ステップずつ実行"
 
-#: mainwindow.cpp:476
+#: mainwindow.cpp:487
 #, kde-format
 msgid "Step Speed: Run the program one step at a time"
 msgstr "ステップごと: プログラムを 1 ステップずつ実行します"
 
-#: mainwindow.cpp:496
+#: mainwindow.cpp:506
 #, kde-format
 msgid ""
 "Canvas: This is where the turtle moves and draws when the program is running"
 msgstr "キャンバス: プログラムを実行するとカメがこの上を移動して絵を描きます"
 
-#: mainwindow.cpp:505
+#: mainwindow.cpp:515
 #, kde-format
 msgid "E&rrors"
 msgstr "エラー(&R)"
 
-#: mainwindow.cpp:535
+#: mainwindow.cpp:544
 #, kde-format
 msgid "&Editor"
 msgstr "エディタ(&E)"
 
-#: mainwindow.cpp:549
+#: mainwindow.cpp:558
 #, kde-format
 msgid "Editor: Write your KTurtle commands here"
 msgstr "エディタ: ここに KTurtle のコードを入力します"
 
-#: mainwindow.cpp:552
+#: mainwindow.cpp:561
 #, kde-format
 msgid "&Inspector"
 msgstr "インスペクタ(&I)"
 
-#: mainwindow.cpp:562
+#: mainwindow.cpp:571
 #, kde-format
 msgid ""
 "Inspector: See information about variables and functions when the program "
 "runs"
 msgstr "インスペクタ: 実行中のプログラムの変数と関数の情報を表示します"
 
-#: mainwindow.cpp:655
+#: mainwindow.cpp:662
 #, kde-format
 msgid "Switch to the %1 dictionary"
 msgstr "%1 辞書に切り替え"
 
-#: mainwindow.cpp:734
+#: mainwindow.cpp:741
 #, kde-format
 msgid " OVR "
 msgstr " 上書 "
 
-#: mainwindow.cpp:734
+#: mainwindow.cpp:741
 #, kde-format
 msgid " INS "
 msgstr " 挿入 "
 
-#: mainwindow.cpp:742
+#: mainwindow.cpp:749
 #, kde-format
 msgid "<nothing under cursor>"
 msgstr ""
 
-#: mainwindow.cpp:743
+#: mainwindow.cpp:750
 #, kde-format
 msgid "Help on: %1"
 msgstr "ヘルプ: %1"
 
-#: mainwindow.cpp:748
+#: mainwindow.cpp:755
 #, kde-format
 msgid " Line: %1 Column: %2 "
 msgstr " 行: %1 列: %2 "
 
-#: mainwindow.cpp:756
+#: mainwindow.cpp:763
 #, fuzzy, kde-format
 #| msgid "%1 (%2)"
 msgid "\"%1\" <%2>"
 msgstr "%1 (%2)"
 
-#: mainwindow.cpp:759
+#: mainwindow.cpp:767
 #, fuzzy, kde-format
 #| msgid "Variables"
 msgid "<variable>"
 msgstr "変数"
 
-#: mainwindow.cpp:760
+#: mainwindow.cpp:770
 #, fuzzy, kde-format
 #| msgid "number"
 msgid "<number>"
 msgstr "数"
 
-#: mainwindow.cpp:761
+#: mainwindow.cpp:773
 #, fuzzy, kde-format
 #| msgid "command"
 msgid "<comment>"
 msgstr "コマンド"
 
-#: mainwindow.cpp:762
+#: mainwindow.cpp:776
 #, fuzzy, kde-format
 #| msgid "string"
 msgid "<string>"
 msgstr "文字列"
 
-#: mainwindow.cpp:768
+#: mainwindow.cpp:787
 #, fuzzy, kde-format
 #| msgid "code"
 msgid "scope"
 msgstr "コード"
 
-#: mainwindow.cpp:770
+#: mainwindow.cpp:790
 #, kde-format
 msgid "assignment"
 msgstr ""
 
-#: mainwindow.cpp:772
+#: mainwindow.cpp:793
 #, fuzzy, kde-format
 #| msgid "parameters"
 msgid "parenthesis"
 msgstr "パラメータ"
 
-#: mainwindow.cpp:774
+#: mainwindow.cpp:796
 #, kde-format
 msgid "mathematical operator"
 msgstr "算数の演算子"
 
-#: mainwindow.cpp:776
+#: mainwindow.cpp:799
 #, kde-format
 msgid "expression"
 msgstr "式"
 
-#: mainwindow.cpp:778
+#: mainwindow.cpp:802
 #, kde-format
 msgid "boolean operator"
 msgstr "ブール演算子"
 
-#: mainwindow.cpp:780
+#: mainwindow.cpp:805
 #, fuzzy, kde-format
 #| msgid "command"
 msgid "learned command"
 msgstr "コマンド"
 
-#: mainwindow.cpp:782
+#: mainwindow.cpp:808
 #, kde-format
 msgid "argument separator"
 msgstr ""
 
-#: mainwindow.cpp:785
+#: mainwindow.cpp:812
 #, kde-format
 msgid "command"
 msgstr "コマンド"
 
-#: mainwindow.cpp:788
+#: mainwindow.cpp:815
 #, kde-format
 msgid "controller command"
 msgstr ""
 
-#: mainwindow.cpp:813
+#: mainwindow.cpp:839
 #, kde-format
 msgid "Could not change the language to %1."
 msgstr "言語を %1 に変更できませんでした。"
 
-#: mainwindow.cpp:821
+#: mainwindow.cpp:846
 #, kde-format
 msgid "English [built in]"
 msgstr "英語 [ビルトイン]"
 
-#: mainwindow.cpp:822
+#: mainwindow.cpp:847
 #, kde-format
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: mainwindow.cpp:970
+#: mainwindow.cpp:995
 #, kde-format
 msgid "untitled"
 msgstr "タイトルなし"
 
-#: mainwindow.cpp:1012
+#: mainwindow.cpp:1037
 #, kde-format
 msgid "Save as Picture"
 msgstr "画像として保存"
 
-#: mainwindow.cpp:1014
+#: mainwindow.cpp:1037
 #, kde-format
 msgid "PNG Images"
 msgstr "PNG 画像"
 
-#: mainwindow.cpp:1030
+#: mainwindow.cpp:1054
 #, fuzzy, kde-format
 #| msgid "Save As"
 msgctxt "@title:window"
 msgid "Save as SVG"
 msgstr "名前を付けて保存"
 
-#: mainwindow.cpp:1030
+#: mainwindow.cpp:1056
 #, kde-format
 msgid "Scalable Vector Graphics"
 msgstr ""
 
-#: mainwindow.cpp:1040
+#: mainwindow.cpp:1067
 #, kde-format
 msgctxt "@title:window"
 msgid "Save code as HTML"
 msgstr ""
 
-#: mainwindow.cpp:1040
+#: mainwindow.cpp:1069
 #, kde-format
 msgid "HTML documents"
 msgstr ""
 
-#: mainwindow.cpp:1058
+#: mainwindow.cpp:1086
 #, kde-format
 msgid "Input"
 msgstr "入力"
 
-#: mainwindow.cpp:1067
+#: mainwindow.cpp:1095
 #, kde-format
 msgid "Message"
 msgstr "メッセージ"
