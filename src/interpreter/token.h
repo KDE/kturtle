@@ -135,7 +135,6 @@ public:
         Mod
 
         // END GENERATED token_type_h CODE
-
     };
 
     /**
@@ -174,7 +173,6 @@ public:
         LearnCommandCategory
 
         // END GENERATED token_category_h CODE
-
     };
 
     /**
