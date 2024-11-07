@@ -4,20 +4,20 @@
 # Zlatko Popov <zlatkopopov@fsa-bg.org>, 2006, 2007.
 # Borislav Mitev <morbid_viper@tkzs.org>, 2015.
 # Yasen Pramatarov <yasen@lindeas.com>, 2015.
-# Mincho Kondarev <mkondarev@yahoo.de>, 2022.
+# SPDX-FileCopyrightText: 2022, 2024 Mincho Kondarev <mkondarev@yahoo.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-06 01:35+0000\n"
-"PO-Revision-Date: 2022-12-20 22:49+0100\n"
+"PO-Revision-Date: 2024-11-06 23:59+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 24.11.70\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -155,7 +155,7 @@ msgid ""
 msgstr ""
 "Файлът, който се опитвате да отворите не е валиден скрипт за KTurtle или е "
 "несъвместим с текущата версия.\n"
-"\"%1\" не може да бъде прочетен."
+"„%1“ не може да бъде прочетен."
 
 #: editor.cpp:231 editor.cpp:237
 #, kde-format
@@ -305,67 +305,67 @@ msgstr "Не може да се използва връщане извън фу�
 #: interpreter/executer.cpp:262
 #, kde-format
 msgid "The %1 command accepts no parameters."
-msgstr "Командата \"%1\" не изисква параметри."
+msgstr "Командата „%1“ не изисква параметри."
 
 #: interpreter/executer.cpp:272
 #, kde-format
 msgid "The %2 command was called with %3 but needs 1 parameter."
 msgid_plural "The %2 command was called with %3 but needs %1 parameters."
-msgstr[0] "Командата \"%2\" бе извикана с %3, но изисква 1 параметър."
-msgstr[1] "Командата \"%2\" бе извикана с %3, но изисква %1 параметъра."
+msgstr[0] "Командата „%2“ бе извикана с %3, но изисква 1 параметър."
+msgstr[1] "Командата „%2“ бе извикана с %3, но изисква %1 параметъра."
 
 #: interpreter/executer.cpp:274
 #, kde-format
 msgid "The %2 command was called with %3 but only accepts 1 parameter."
 msgid_plural ""
 "The %2 command was called with %3 but only accepts %1 parameters."
-msgstr[0] "Командата \"%2\" бе извикана с %3, но приема само 1 параметър."
-msgstr[1] "Командата \"%2\" бе извикана с %3, но приема само %1 параметъра."
+msgstr[0] "Командата „%2“ бе извикана с %3, но приема само 1 параметър."
+msgstr[1] "Командата „%2“ бе извикана с %3, но приема само %1 параметъра."
 
 #: interpreter/executer.cpp:292
 #, kde-format
 msgid "The %1 command only accepts a string as its parameter."
-msgstr "Командата \"%1\" приема само низ като параметър."
+msgstr "Командата „%1“ приема само низ като параметър."
 
 #: interpreter/executer.cpp:294
 #, kde-format
 msgid "The %1 command only accepts strings as its parameters."
-msgstr "Командата \"%1\" приема само низове като параметри."
+msgstr "Командата „%1“ приема само низове като параметри."
 
 #: interpreter/executer.cpp:299
 #, kde-format
 msgid "The %1 command only accepts a number as its parameter."
-msgstr "Командата \"%1\" приема само число като параметър."
+msgstr "Командата „%1“ приема само число като параметър."
 
 #: interpreter/executer.cpp:301
 #, kde-format
 msgid "The %1 command only accepts numbers as its parameters."
-msgstr "Командата \"%1\" приема само числа като параметри."
+msgstr "Командата „%1“ приема само числа като параметри."
 
 #: interpreter/executer.cpp:306
 #, kde-format
 msgid "The %1 command only accepts an answer as its parameter."
-msgstr "Командата \"%1\" приема само отговор като параметър."
+msgstr "Командата „%1“ приема само отговор като параметър."
 
 #: interpreter/executer.cpp:308
 #, kde-format
 msgid "The %1 command only accepts answers as its parameters."
-msgstr "Командата \"%1\" приема само отговори като параметри."
+msgstr "Командата „%1“ приема само отговори като параметри."
 
 #: interpreter/executer.cpp:386
 #, kde-format
 msgid "The variable '%1' was used without first being assigned to a value"
-msgstr "Променливата \"%1\" бе използвана, без първо да има присвоена стойност"
+msgstr "Променливата „%1“ бе използвана, без първо да има присвоена стойност"
 
 #: interpreter/executer.cpp:405
 #, kde-format
 msgid "An unknown function named '%1' was called"
-msgstr "Извиканата функция \"%1\" е неизвестна"
+msgstr "Извиканата функция „%1“ е неизвестна"
 
 #: interpreter/executer.cpp:420
 #, kde-format
 msgid "The function '%1' was called with %2, while it should be called with %3"
-msgstr "Функцията \"%1\" бе извикана с %2, а трябваше с %3"
+msgstr "Функцията „%1“ бе извикана с %2, а трябваше с %3"
 
 #: interpreter/executer.cpp:422 interpreter/executer.cpp:423
 #, kde-format
@@ -439,12 +439,12 @@ msgstr "Нужни са две числа, за да се извърши изв�
 #: interpreter/executer.cpp:727
 #, kde-format
 msgid "You tried to subtract from a non-number, '%1'"
-msgstr "Опитваш се да извадиш от не-число, \"%1\""
+msgstr "Опитваш се да извадиш от не-число, „%1“"
 
 #: interpreter/executer.cpp:729
 #, kde-format
 msgid "You tried to subtract a non-number, '%1'"
-msgstr "Опитваш се да извадиш не-число, \"%1\""
+msgstr "Опитваш се да извадиш не-число, „%1“"
 
 #: interpreter/executer.cpp:735
 #, kde-format
@@ -454,12 +454,12 @@ msgstr "Нужни са две числа, за да се извърши умн�
 #: interpreter/executer.cpp:742
 #, kde-format
 msgid "You tried to multiplicate a non-number, '%1'"
-msgstr "Опитваш се да умножиш не-число, \"%1\""
+msgstr "Опитваш се да умножиш не-число, „%1“"
 
 #: interpreter/executer.cpp:744
 #, kde-format
 msgid "You tried to multiplicate by a non-number, '%1'"
-msgstr "Опитваш се да умножиш с не-число, \"%1\""
+msgstr "Опитваш се да умножиш с не-число, „%1“"
 
 #: interpreter/executer.cpp:750
 #, kde-format
@@ -474,12 +474,12 @@ msgstr "Не може да се дели на 0"
 #: interpreter/executer.cpp:761
 #, kde-format
 msgid "You tried to divide a non-number, '%1'"
-msgstr "Опитваш се да делиш не-число, \"%1\""
+msgstr "Опитваш се да делиш не-число, „%1“"
 
 #: interpreter/executer.cpp:763
 #, kde-format
 msgid "You tried to divide by a non-number, '%1'"
-msgstr "Опитваш се да делиш с не-число, \"%1\""
+msgstr "Опитваш се да делиш с не-число, „%1“"
 
 #: interpreter/executer.cpp:769
 #, kde-format
@@ -494,12 +494,12 @@ msgstr "Резултатът от степенуването бе твърде �
 #: interpreter/executer.cpp:786
 #, kde-format
 msgid "You tried to raise a non-number to a power, '%1'"
-msgstr "Опитваш се да степенуваш не-число, \"%1\""
+msgstr "Опитваш се да степенуваш не-число, „%1“"
 
 #: interpreter/executer.cpp:788
 #, kde-format
 msgid "You tried to raise the power of a non-number, '%1'"
-msgstr "Опитваш се да степенуваш с не-число, \"%1\""
+msgstr "Опитваш се да степенуваш с не-число, „%1“"
 
 #: interpreter/executer.cpp:794
 #, kde-format
@@ -511,7 +511,7 @@ msgstr ""
 #: interpreter/executer.cpp:811
 #, kde-format
 msgid "The function '%1' is already defined."
-msgstr "Функцията \"%1\" вече е дефинирана."
+msgstr "Функцията „%1“ вече е дефинирана."
 
 #: interpreter/executer.cpp:1041
 #, kde-format
@@ -521,12 +521,12 @@ msgstr "Не може да се прави корен квадратен на о
 #: interpreter/parser.cpp:38
 #, kde-format
 msgid "Expected a command, instead got '%1'"
-msgstr "Очакваше се команда, а вместо това \"%1\""
+msgstr "Очакваше се команда, а вместо това „%1“"
 
 #: interpreter/parser.cpp:71
 #, kde-format
 msgid "Could not understand '%1'"
-msgstr "Не разбирам \"%1\""
+msgstr "Не разбирам „%1“"
 
 #: interpreter/parser.cpp:106
 #, kde-format
@@ -536,17 +536,17 @@ msgstr "Тук се очакваше запетая…"
 #: interpreter/parser.cpp:109
 #, kde-format
 msgid "Did not expect '%1', instead expected the line to end after %2"
-msgstr "Не очаквах \"%1\". Вместо това очаквах редът да свърши след %2"
+msgstr "Не очаквах „%1“. Вместо това очаквах редът да свърши след %2"
 
 #: interpreter/parser.cpp:115
 #, kde-format
 msgid "Expected an assignment, '=', after the variable '%1'"
-msgstr "Очаквах присвояване (\"=\") след променливата \"%1\""
+msgstr "Очаквах присвояване (\"=\") след променливата „%1“"
 
 #: interpreter/parser.cpp:119
 #, kde-format
 msgid "Did not expect '%1', instead expected a closing parenthesis, ')'"
-msgstr "Не очаквах \"%1\". Вместо това очаквах затваряща скоба \")\""
+msgstr "Не очаквах „%1“. Вместо това очаквах затваряща скоба \")\""
 
 #: interpreter/parser.cpp:123
 #, kde-format
@@ -561,7 +561,7 @@ msgstr "Очаквах име за нова команда след команд
 #: interpreter/parser.cpp:232
 #, kde-format
 msgid "You cannot put '%1' here."
-msgstr "Не може да се слага \"%1\" тук."
+msgstr "Не може да се слага „%1“ тук."
 
 #: interpreter/parser.cpp:268
 #, kde-format
@@ -2057,7 +2057,7 @@ msgstr " Ред: %1 Колона: %2 "
 #: mainwindow.cpp:756
 #, kde-format
 msgid "\"%1\" <%2>"
-msgstr "\"%1\" <%2>"
+msgstr "„%1“ <%2>"
 
 #: mainwindow.cpp:759
 #, kde-format
