@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-06 01:35+0000\n"
-"PO-Revision-Date: 2024-11-06 23:59+0100\n"
+"PO-Revision-Date: 2024-11-07 19:00+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -506,7 +506,7 @@ msgstr "Опитваш се да степенуваш с не-число, „%1�
 msgid "You need one variable and a value or variable to do a '='"
 msgstr ""
 "Необходими са променлива и стойност или друга променлива, за да се извърши "
-"присвояване (\"=\")"
+"присвояване \"=\""
 
 #: interpreter/executer.cpp:811
 #, kde-format
