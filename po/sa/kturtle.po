@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-05 00:37+0000\n"
-"PO-Revision-Date: 2024-12-13 20:22+0530\n"
+"PO-Revision-Date: 2024-12-20 22:01+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -63,17 +63,17 @@ msgstr "रङ्ग पिकर"
 #: colorpicker.cpp:47
 #, kde-format
 msgid "Amount red:"
-msgstr "राशिः रक्तः : १."
+msgstr "राशिः रक्तः :"
 
 #: colorpicker.cpp:60
 #, kde-format
 msgid "Amount green:"
-msgstr "राशि हरित : १."
+msgstr "राशि हरित :"
 
 #: colorpicker.cpp:73
 #, kde-format
 msgid "Amount blue:"
-msgstr "राशि नीला: १."
+msgstr "राशि नीला:"
 
 #: colorpicker.cpp:103 directiondialog.cpp:280
 #, kde-format
@@ -99,7 +99,7 @@ msgstr "Console: शीघ्रं एकल आदेशान् चालय
 #: console.cpp:35
 #, kde-format
 msgid "Console:"
-msgstr "कन्सोलः : १."
+msgstr "कन्सोलः :"
 
 #: console.cpp:78
 #, kde-format
@@ -115,17 +115,17 @@ msgstr "दिशा चयनकर्ता"
 #: directiondialog.cpp:223
 #, kde-format
 msgid "Command &type:"
-msgstr "आदेशः &प्रकारः : १."
+msgstr "आदेशः &प्रकारः :"
 
 #: directiondialog.cpp:238
 #, kde-format
 msgid "&Previous direction:"
-msgstr "&पूर्वनिर्देशः : १."
+msgstr "&पूर्वनिर्देशः :"
 
 #: directiondialog.cpp:255
 #, kde-format
 msgid "&New direction:"
-msgstr "&नवीन दिशा: १."
+msgstr "&नवीन दिशा:"
 
 #: editor.cpp:142
 #, kde-format
@@ -601,7 +601,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid ","
-msgstr ", ९."
+msgstr ","
 
 #: interpreter/translator.cpp:129
 #, kde-format
@@ -2119,7 +2119,7 @@ msgstr "आङ्ग्लभाषा [निर्मितम्] ।"
 #: mainwindow.cpp:847
 #, kde-format
 msgid "%1 (%2)"
-msgstr "%1 (%2) २."
+msgstr "%1 (%2)"
 
 #: mainwindow.cpp:995
 #, kde-format
