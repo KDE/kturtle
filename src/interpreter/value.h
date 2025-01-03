@@ -29,7 +29,12 @@
 class Value
 {
 public:
-    enum Type { Empty, Bool, Number, String };
+    enum Type {
+        Empty,
+        Bool,
+        Number,
+        String
+    };
 
     Value();
     Value(Value *);

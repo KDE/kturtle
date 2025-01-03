@@ -1,152 +1,147 @@
-# Translation of kturtle.po into finnish.
+# Sanskrit translations for kturtle package.
+# Copyright (C) 2024 This file is copyright:
+# This file is distributed under the same license as the kturtle package.
+# Kali <EMAIL@ADDRESS>, 2024.
 #
-# Marko Gronroos <magi@iki.fi>, 2004.
-# Ilpo Kantonen <ilpo@iki.fi>, 2005, 2006.
-# Tommi Nieminen <translator@legisign.org>, 2010, 2020, 2021, 2022.
-# Jiri Grönroos <jiri.gronroos@iki.fi>, 2013.
-# Lasse Liehu <lasse.liehu@gmail.com>, 2010, 2012, 2013, 2014, 2015.
+# SPDX-FileCopyrightText: 2024 kali <skkalwar999@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-05 00:37+0000\n"
-"PO-Revision-Date: 2022-04-28 18:48+0300\n"
-"Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
-"Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
-"Language: fi\n"
+"PO-Revision-Date: 2024-12-24 20:39+0530\n"
+"Last-Translator: kali <shreekantkalwar@gmail.com>\n"
+"Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
+"Language: sa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n>2);\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
-"Lasse Liehu, Jiri Grönroos, Tommi Nieminen, Ilpo Kantonen, Marko Grönroos"
+msgstr "श्रीकान्त् कलवार्"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-"lasse.liehu@gmail.com,jiri.gronroos@iki.fi,translator@legisign.org,ilpo@iki."
-"fi,magi@iki.fi"
+msgstr "skkalwar999@gmail.com"
 
 #: canvas.cpp:190
 #, kde-format
 msgid "bold"
-msgstr "lihavointi"
+msgstr "विक्रान्तः"
 
 #: canvas.cpp:191
 #, kde-format
 msgid "italic"
-msgstr "kursiivi"
+msgstr "इटैलिक"
 
 #: canvas.cpp:192
 #, kde-format
 msgid "underline"
-msgstr "alleviivaus"
+msgstr "रेखांकनम्"
 
 #: canvas.cpp:193
 #, kde-format
 msgid "overline"
-msgstr "ylleviivaus"
+msgstr "overline इति"
 
 #: canvas.cpp:194
 #, kde-format
 msgid "strikeout"
-msgstr "yliviivaus"
+msgstr "स्ट्राइकआउट्"
 
 #: colorpicker.cpp:28
 #, kde-format
 msgctxt "@title:window"
 msgid "Color Picker"
-msgstr "Värivalinta"
+msgstr "रङ्ग पिकर"
 
 #: colorpicker.cpp:47
 #, kde-format
 msgid "Amount red:"
-msgstr "Punaisen määrä:"
+msgstr "राशिः रक्तः :"
 
 #: colorpicker.cpp:60
 #, kde-format
 msgid "Amount green:"
-msgstr "Vihreän määrä:"
+msgstr "राशि हरित :"
 
 #: colorpicker.cpp:73
 #, kde-format
 msgid "Amount blue:"
-msgstr "Sinisen määrä:"
+msgstr "राशि नीला:"
 
 #: colorpicker.cpp:103 directiondialog.cpp:280
 #, kde-format
 msgid "&Copy to clipboard"
-msgstr "&Kopioi leikepöydälle"
+msgstr "&क्लिपबोर्ड् प्रति प्रतिलिपिं कुर्वन्तु"
 
 #: colorpicker.cpp:108 directiondialog.cpp:284
 #, kde-format
 msgid "&Paste to editor"
-msgstr "&Liitä muokkaimeen"
+msgstr "&सम्पादकं प्रति चिनोतु"
 
 #: console.cpp:32 console.cpp:59
 #, kde-format
 msgid "Write a command here and press enter..."
-msgstr "Kirjoita komento tähän ja paina Enter…"
+msgstr "अत्र आदेशं लिखित्वा enter नुदन्तु..."
 
 #: console.cpp:33
 #, kde-format
 msgid ""
 "Console: quickly run single commands -- write a command here and press enter."
-msgstr ""
-"Konsoli: Suorita nopeasti yksittäisiä komentoja – kirjoita komento tähän ja "
-"paina Enter."
+msgstr "Console: शीघ्रं एकल आदेशान् चालयन्तु -- अत्र आदेशं लिखित्वा enter नुदन्तु ।"
 
 #: console.cpp:35
 #, kde-format
 msgid "Console:"
-msgstr "Konsoli:"
+msgstr "कन्सोलः :"
 
 #: console.cpp:78
 #, kde-format
 msgid "<p style='white-space:pre'><b>ERROR:</b> %1</p>"
-msgstr "<p style='white-space:pre'><b>VIRHE:</b> %1</p>"
+msgstr "<p style='white-space:pre'><b>त्रुटिः</b> %1</p>"
 
 #: directiondialog.cpp:192
 #, kde-format
 msgctxt "@title:window"
 msgid "Direction Chooser"
-msgstr "Suunnan valinta"
+msgstr "दिशा चयनकर्ता"
 
 #: directiondialog.cpp:223
 #, kde-format
 msgid "Command &type:"
-msgstr "Komennon &tyyppi:"
+msgstr "आदेशः &प्रकारः :"
 
 #: directiondialog.cpp:238
 #, kde-format
 msgid "&Previous direction:"
-msgstr "&Edellinen suunta:"
+msgstr "&पूर्वनिर्देशः :"
 
 #: directiondialog.cpp:255
 #, kde-format
 msgid "&New direction:"
-msgstr "&Uusi suunta:"
+msgstr "&नवीन दिशा:"
 
 #: editor.cpp:142
 #, kde-format
 msgid "Open"
-msgstr "Avaa"
+msgstr "उद्घाटित"
 
 #: editor.cpp:144 editor.cpp:255
 #, kde-format
 msgid "Turtle code files"
-msgstr "KTurtle-kooditiedostot"
+msgstr "कच्छपसङ्केतसञ्चिकाः"
 
 #: editor.cpp:144 editor.cpp:255 mainwindow.cpp:1037 mainwindow.cpp:1056
 #: mainwindow.cpp:1069
 #, kde-format
 msgid "All files"
-msgstr "Kaikki tiedostot"
+msgstr "सर्वाणि सञ्चिकानि"
 
 #: editor.cpp:161
 #, kde-format
@@ -155,19 +150,19 @@ msgid ""
 "with this version of KTurtle.\n"
 "Cannot open %1"
 msgstr ""
-"Tiedosto, jota yrität avata, ei ole kelvollinen KTurtle-ohjelma tai se ei "
-"ole yhteensopiva tämän KTurtlen version kanssa.\n"
-"Tiedoston %1 lukeminen epäonnistui"
+"भवान् यत् सञ्चिका उद्घाटयितुं प्रयतते तत् वैधं KTurtle स्क्रिप्ट् नास्ति, अथवा KTurtle इत्यस्य "
+"अस्य संस्करणस्य सह असङ्गतम् अस्ति ।\n"
+"%1 उद्घाटयितुं न शक्यते"
 
 #: editor.cpp:230 editor.cpp:236
 #, kde-format
 msgid "Could not save file."
-msgstr "Tiedostoa ei voitu tallentaa."
+msgstr "सञ्चिकां रक्षितुं न शक्तवान्।"
 
 #: editor.cpp:253
 #, kde-format
 msgid "Save As"
-msgstr "Tallenna nimellä"
+msgstr "As Save As इति"
 
 #: editor.cpp:267
 #, kde-format
@@ -175,24 +170,24 @@ msgid ""
 "The program you are currently working on is not saved. By continuing you may "
 "lose the changes you have made."
 msgstr ""
-"Avoinna olevaan ohjelmaan tekemiäsi muutoksia ei ole tallennettu. Jos "
-"jatkat, tekemäsi muutokset menetetään."
+"भवन्तः सम्प्रति यस्मिन् कार्यक्रमे कार्यं कुर्वन्ति सः कार्यक्रमः न रक्षितः । निरन्तरं कृत्वा "
+"भवता कृतानि परिवर्तनानि नष्टानि भवितुम् अर्हन्ति ।"
 
 #: editor.cpp:269
 #, kde-format
 msgid "Unsaved File"
-msgstr "Tallentamaton tiedosto"
+msgstr "असरक्षित सञ्चिका"
 
 #: editor.cpp:270 editor.cpp:272
 #, kde-format
 msgid "&Discard Changes"
-msgstr "&Hylkää muutokset"
+msgstr "&परिवर्तनानि परित्यजन्तु"
 
 #: errordialog.cpp:26
 #, kde-format
 msgctxt "@title:window"
 msgid "Errors"
-msgstr "Virheet"
+msgstr "दोषाः"
 
 #: errordialog.cpp:41
 #, kde-format
@@ -200,180 +195,174 @@ msgid ""
 "In this list you find the error(s) that resulted from running your code.\n"
 "Good luck!"
 msgstr ""
-"Tästä luettelosta löydät koodisi suorittamisen aiheuttamat virheet.\n"
-"Onnea!"
+"अस्मिन् सूचौ भवान् स्वस्य कोडस्य चालनात् उत्पन्नं त्रुटिं (दोषं) प्राप्नोति ।\n"
+"शुभकामना!"
 
 #: errordialog.cpp:58
 #, kde-format
 msgid "line"
-msgstr "rivi"
+msgstr "पंक्ति"
 
 #: errordialog.cpp:58
 #, kde-format
 msgid "description"
-msgstr "kuvaus"
+msgstr "वर्णनम्‌"
 
 #: errordialog.cpp:58
 #, kde-format
 msgid "code"
-msgstr "koodi"
+msgstr "कोड"
 
 #: errordialog.cpp:71
 #, kde-format
 msgid "Hide Errors"
-msgstr "Piilota virheet"
+msgstr "त्रुटिः गोपयतु"
 
 #: errordialog.cpp:86
 #, kde-format
 msgid "No errors occurred yet."
-msgstr "Virheitä ei ole vielä sattunut."
+msgstr "अद्यापि कोऽपि दोषः न अभवत् ।"
 
 #: inspector.cpp:36
 #, kde-format
 msgid "Variables"
-msgstr "Muuttujat"
+msgstr "चराः"
 
 #: inspector.cpp:43
 #, kde-format
 msgid "Functions"
-msgstr "Funktiot"
+msgstr "कार्याणि"
 
 #: inspector.cpp:50
 #, kde-format
 msgid "Tree"
-msgstr "Puu"
+msgstr "वृक्षः"
 
 #: inspector.cpp:93 inspector.cpp:111
 #, kde-format
 msgid "name"
-msgstr "nimi"
+msgstr "नामः"
 
 #: inspector.cpp:93
 #, kde-format
 msgid "value"
-msgstr "arvo"
+msgstr "मूल्यम्‌"
 
 #: inspector.cpp:93
 #, kde-format
 msgid "type"
-msgstr "tyyppi"
+msgstr "प्रकारः"
 
 #: inspector.cpp:103
 #, kde-format
 msgid "No variables"
-msgstr "Ei muuttujia"
+msgstr "न चरः"
 
 #: inspector.cpp:111
 #, kde-format
 msgid "parameters"
-msgstr "parametrit"
+msgstr "पैरामीटर्स्"
 
 #: inspector.cpp:120
 #, kde-format
 msgid "No learned functions"
-msgstr "Ei opittuja funktioita"
+msgstr "न विद्वान् कार्यम्"
 
 #: inspector.cpp:162
 #, kde-format
 msgctxt "undefined type of a variable"
 msgid "empty"
-msgstr "tyhjä"
+msgstr "रिक्तम्‌"
 
 #: inspector.cpp:168
 #, kde-format
 msgid "boolean"
-msgstr "totuusarvo"
+msgstr "बूलियन इति"
 
 #: inspector.cpp:171
 #, kde-format
 msgid "number"
-msgstr "luku"
+msgstr "संख्या"
 
 #: inspector.cpp:174
 #, kde-format
 msgid "string"
-msgstr "merkkijono"
+msgstr "सूत्र"
 
 #: inspector.cpp:206
 #, kde-format
 msgid "None"
-msgstr "Ei parametreja"
+msgstr "न कश्चित्"
 
 #: interpreter/executer.cpp:70
 #, kde-format
 msgid "Cannot return outside a function. "
-msgstr "Funktion ulkopuolelta ei voi palata. "
+msgstr "फंक्शन् बहिः प्रत्यागन्तुं न शक्नोति । "
 
 #: interpreter/executer.cpp:395
 #, kde-format
 msgid "The %1 command accepts no parameters."
-msgstr "Komento %1 ei hyväksy parametreja."
+msgstr "%1 आदेशः कोऽपि पैरामीटर् न स्वीकुर्वति ।"
 
 #: interpreter/executer.cpp:405
 #, kde-format
 msgid "The %2 command was called with %3 but needs 1 parameter."
 msgid_plural "The %2 command was called with %3 but needs %1 parameters."
-msgstr[0] ""
-"Komentoa %2 kutsuttiin parametreilla %3, mutta se tarvitsee yhden parametrin."
-msgstr[1] ""
-"Komentoa %2 kutsuttiin parametreilla %3, mutta se tarvitsee %1 parametria."
+msgstr[0] "%2 आदेशः %3 इत्यनेन सह आहूतः परन्तु 1 पैरामीटर् आवश्यकम् ।"
+msgstr[1] "%2 आदेशः %3 इत्यनेन सह आहूतः परन्तु %1 पैरामीटर् आवश्यकम् ।"
 
 #: interpreter/executer.cpp:413
 #, kde-format
 msgid "The %2 command was called with %3 but only accepts 1 parameter."
 msgid_plural ""
 "The %2 command was called with %3 but only accepts %1 parameters."
-msgstr[0] ""
-"Komentoa %2 kutsuttiin parametreilla %3, mutta se hyväksyy vain yhden "
-"parametrin."
-msgstr[1] ""
-"Komentoa %2 kutsuttiin parametreilla %3, mutta se hyväksyy vain %1 "
-"parametria."
+msgstr[0] "%2 आदेशः %3 इत्यनेन सह आहूतः परन्तु केवलं 1 पैरामीटर् स्वीकुर्वति ।"
+msgstr[1] "%2 आदेशः %3 इत्यनेन सह आहूतः परन्तु केवलं %1 मापदण्डान् स्वीकुर्वति ।"
 
 #: interpreter/executer.cpp:436
 #, kde-format
 msgid "The %1 command only accepts a string as its parameter."
-msgstr "Komento %1 hyväksyy vain merkkijonoparametrin."
+msgstr "%1 आदेशः केवलं स्ट्रिंग् स्वस्य पैरामीटर् रूपेण स्वीकुर्वति ।"
 
 #: interpreter/executer.cpp:438
 #, kde-format
 msgid "The %1 command only accepts strings as its parameters."
-msgstr "Komento %1 hyväksyy vain merkkijonoparametreja."
+msgstr "%1 आदेशः केवलं स्ट्रिंग् इत्येतत् स्वस्य पैरामीटर् रूपेण स्वीकुर्वति ।"
 
 #: interpreter/executer.cpp:443
 #, kde-format
 msgid "The %1 command only accepts a number as its parameter."
-msgstr "Komento %1 hyväksyy vain lukuparametrin."
+msgstr "%1 आदेशः केवलं सङ्ख्यां स्वस्य पैरामीटर् रूपेण स्वीकुर्वति ।"
 
 #: interpreter/executer.cpp:445
 #, kde-format
 msgid "The %1 command only accepts numbers as its parameters."
-msgstr "Komento %1 hyväksyy vain lukuparametreja."
+msgstr "%1 आदेशः केवलं सङ्ख्याः स्वस्य मापदण्डरूपेण स्वीकुर्वति ।"
 
 #: interpreter/executer.cpp:450
 #, kde-format
 msgid "The %1 command only accepts an answer as its parameter."
-msgstr "Komento %1 hyväksyy vain vastausparametrin."
+msgstr "%1 आदेशः केवलं उत्तरं स्वस्य पैरामीटर् रूपेण स्वीकुर्वति ।"
 
 #: interpreter/executer.cpp:452
 #, kde-format
 msgid "The %1 command only accepts answers as its parameters."
-msgstr "Komento %1 hyväksyy vain vastausparametreja."
+msgstr "%1 आदेशः केवलं उत्तराणि स्वस्य मापदण्डरूपेण स्वीकुर्वति ।"
 
 #: interpreter/executer.cpp:526
 #, kde-format
 msgid "The variable '%1' was used without first being assigned to a value"
-msgstr "Muuttujaa ”%1” käytettiin ennen kuin siihen oli sijoitettu arvo"
+msgstr "प्रथमं मूल्यं न नियुक्तं कृत्वा '%1' इति चरं प्रयुक्तम्"
 
 #: interpreter/executer.cpp:546
 #, kde-format
 msgid "An unknown function named '%1' was called"
-msgstr "Kutsuttiin tuntematonta funktiota ”%1”"
+msgstr "'%1' इति नाम्ना अज्ञातं फंक्शन् आहूतम्"
 
 #: interpreter/executer.cpp:560
 #, kde-format
 msgid "The function '%1' was called with %2, while it should be called with %3"
-msgstr "Funktiota ”%1” kutsuttiin %2, mutta pitäisi kutsua %3"
+msgstr "'%1' इति फंक्शन् %2 इत्यनेन सह आहूतम्, यदा तु %3 इत्यनेन आह्वानं कर्तव्यम्"
 
 #: interpreter/executer.cpp:562 interpreter/executer.cpp:564
 #, kde-format
@@ -381,193 +370,193 @@ msgctxt ""
 "The function '%1' was called with %2, while it should be called with %3"
 msgid "1 parameter"
 msgid_plural "%1 parameters"
-msgstr[0] "1 parametrilla"
-msgstr[1] "%1 parametrilla"
+msgstr[0] "१ पैरामीटर्"
+msgstr[1] "%1 पैरामीटर्स्"
 
 #: interpreter/executer.cpp:787
 #, kde-format
 msgid "ASSERT failed"
-msgstr "VARMISTUS epäonnistui"
+msgstr "ASSERT असफलम् अभवत्"
 
 #: interpreter/executer.cpp:794
 #, kde-format
 msgid "'And' needs two variables"
-msgstr "”ja” tarvitsee kaksi muuttujaa"
+msgstr "'And' इत्यस्य द्वौ चरौ आवश्यकौ"
 
 #: interpreter/executer.cpp:804
 #, kde-format
 msgid "'Or' needs two variables"
-msgstr "”tai” tarvitsee kaksi muuttujaa"
+msgstr "'अथवा' इति द्वौ चरौ आवश्यकौ"
 
 #: interpreter/executer.cpp:815
 #, kde-format
 msgid "I need something to do a not on"
-msgstr "Tarvitsen jotain kiellettävää"
+msgstr "मम किमपि कर्तुं आवश्यकं a not on"
 
 #: interpreter/executer.cpp:824
 #, kde-format
 msgid "I cannot do a '==' without 2 variables"
-msgstr "En voi tehdä ”==”-vertailua ilman kahta muuttujaa"
+msgstr "अहं २ चरं विना '==' कर्तुं न शक्नोमि"
 
 #: interpreter/executer.cpp:833
 #, kde-format
 msgid "I cannot do a '!=' without 2 variables"
-msgstr "En voi tehdä ”!=”-vertailua ilman kahta muuttujaa"
+msgstr "अहं २ चरं विना '!=' कर्तुं न शक्नोमि"
 
 #: interpreter/executer.cpp:842
 #, kde-format
 msgid "I cannot do a '>' without 2 variables"
-msgstr "En voi tehdä ”>”-vertailua ilman kahta muuttujaa"
+msgstr "अहं २ चरं विना '>' कर्तुं न शक्नोमि"
 
 #: interpreter/executer.cpp:851
 #, kde-format
 msgid "I cannot do a '<' without 2 variables"
-msgstr "En voi tehdä ”<”-vertailua ilman kahta muuttujaa"
+msgstr "अहं २ चरं विना '<' कर्तुं न शक्नोमि"
 
 #: interpreter/executer.cpp:860
 #, kde-format
 msgid "I cannot do a '>=' without 2 variables"
-msgstr "En voi tehdä ”>=”-vertailua ilman kahta muuttujaa"
+msgstr "अहं २ चरं विना '>=' कर्तुं न शक्नोमि"
 
 #: interpreter/executer.cpp:869
 #, kde-format
 msgid "I cannot do a '<=' without 2 variables"
-msgstr "En voi tehdä ”<=”-vertailua ilman kahta muuttujaa"
+msgstr "अहं २ चरं विना '<=' कर्तुं न शक्नोमि"
 
 #: interpreter/executer.cpp:878
 #, kde-format
 msgid "You need two numbers or string to do an addition"
-msgstr "Summaamiseen tarvitaan kaksi lukua tai merkkijonoa"
+msgstr "एकं योजयितुं भवतः द्वौ सङ्ख्याः अथवा स्ट्रिंग् आवश्यकौ"
 
 #: interpreter/executer.cpp:891
 #, kde-format
 msgid "You need two numbers to subtract"
-msgstr "Vähentämiseen tarvitaan vähintään kaksi lukua"
+msgstr "घटयितुं भवतः द्वौ सङ्ख्या आवश्यकौ"
 
 #: interpreter/executer.cpp:898
 #, kde-format
 msgid "You tried to subtract from a non-number, '%1'"
-msgstr "Yritettiin vähentää muusta kuin luvusta: ”%1”"
+msgstr "त्वया असंख्यातः, '%1' इति घटयितुं प्रयत्नः कृतः ।"
 
 #: interpreter/executer.cpp:900
 #, kde-format
 msgid "You tried to subtract a non-number, '%1'"
-msgstr "Yritettiin vähentää muu kuin luku: ”%1”"
+msgstr "त्वया असंख्यां, '%1' इति घटयितुं प्रयत्नः कृतः ।"
 
 #: interpreter/executer.cpp:907
 #, kde-format
 msgid "You need two numbers to multiplicate"
-msgstr "Kertomiseen tarvitaan kaksi lukua"
+msgstr "गुणनार्थं भवतः द्वौ सङ्ख्या आवश्यकौ"
 
 #: interpreter/executer.cpp:914
 #, kde-format
 msgid "You tried to multiplicate a non-number, '%1'"
-msgstr "Yritettiin kertoa muu kuin luku: ”%1”"
+msgstr "भवान् असङ्ख्यां, '%1' इति गुणयितुं प्रयतितवान् ।"
 
 #: interpreter/executer.cpp:916
 #, kde-format
 msgid "You tried to multiplicate by a non-number, '%1'"
-msgstr "Yritettiin kertoa muulla kuin luvulla: ”%1”"
+msgstr "भवद्भिः असंख्याया, '%1' इत्यनेन गुणनं कर्तुं प्रयत्नः कृतः ।"
 
 #: interpreter/executer.cpp:923
 #, kde-format
 msgid "You need two numbers to divide"
-msgstr "Jakamiseen tarvitaan kaksi lukua"
+msgstr "भवतः विभाजनार्थं द्वौ सङ्ख्या आवश्यकौ"
 
 #: interpreter/executer.cpp:928
 #, kde-format
 msgid "You tried to divide by zero"
-msgstr "Yritettiin jakaa nollalla"
+msgstr "भवता शून्येन विभक्तुं प्रयत्नः कृतः"
 
 #: interpreter/executer.cpp:934
 #, kde-format
 msgid "You tried to divide a non-number, '%1'"
-msgstr "Yritettiin jakaa muu kuin luku: ”%1”"
+msgstr "असंख्यां, '%1' इति विभक्तुं प्रयत्नः कृतः ।"
 
 #: interpreter/executer.cpp:936
 #, kde-format
 msgid "You tried to divide by a non-number, '%1'"
-msgstr "Yritettiin jakaa muulla kuin luvulla: ”%1”"
+msgstr "त्वया असंख्याना '%1' इति विभाजनं कर्तुं प्रयत्नः कृतः ।"
 
 #: interpreter/executer.cpp:943
 #, kde-format
 msgid "You need two numbers to raise a power"
-msgstr "Potenssiin korottamiseen tarvitaan kaksi lukua"
+msgstr "एकं शक्तिं उत्थापयितुं भवतः द्वौ सङ्ख्या आवश्यकौ"
 
 #: interpreter/executer.cpp:954
 #, kde-format
 msgid "The result of an exponentiation was too large"
-msgstr "Potenssiin korottamisen tulos oli liian suuri"
+msgstr "एकस्य घातीकरणस्य परिणामः अतीव विशालः आसीत्"
 
 #: interpreter/executer.cpp:960
 #, kde-format
 msgid "You tried to raise a non-number to a power, '%1'"
-msgstr "Yritettiin korottaa muu kuin luku potenssiin: ”%1”"
+msgstr "भवता असंख्यां शक्तिं प्रति उत्थापयितुं प्रयत्नः कृतः, '%1' इति ।"
 
 #: interpreter/executer.cpp:962
 #, kde-format
 msgid "You tried to raise the power of a non-number, '%1'"
-msgstr "Yritettiin korottaa potenssiin muulla kuin luvulla: ”%1”"
+msgstr "त्वया '%1' इति असंख्यायाः शक्तिं उत्थापयितुं प्रयत्नः कृतः ।"
 
 #: interpreter/executer.cpp:969
 #, kde-format
 msgid "You need one variable and a value or variable to do a '='"
-msgstr "Sijoittamiseen (”=”) tarvitaan yksi muuttuja ja sille arvo"
+msgstr "'=' कर्तुं भवतः एकं चरं मूल्यं वा चरं वा आवश्यकम्।"
 
 #: interpreter/executer.cpp:988
 #, kde-format
 msgid "The function '%1' is already defined."
-msgstr "Funktio ”%1” on jo määritelty."
+msgstr "'%1' इति फंक्शन् पूर्वमेव परिभाषितम् अस्ति ।"
 
 #: interpreter/executer.cpp:1275
 #, kde-format
 msgid "Can't do a sqrt of a negative number"
-msgstr "Negatiivisesta luvusta ei voi ottaa neliöjuurta"
+msgstr "ऋणात्मकसङ्ख्यायाः sqrt कर्तुं न शक्नोति"
 
 #: interpreter/parser.cpp:38
 #, kde-format
 msgid "Expected a command, instead got '%1'"
-msgstr "Odotettiin komentoa, mutta saatiin ”%1”"
+msgstr "आदेशः अपेक्षितः, तस्य स्थाने '%1' प्राप्तः ।"
 
 #: interpreter/parser.cpp:69
 #, kde-format
 msgid "Could not understand '%1'"
-msgstr "En ymmärrtänyt, mitä ”%1” tarkoittaa"
+msgstr "'%1' अवगन्तुं न शक्तवान् ।"
 
 #: interpreter/parser.cpp:104
 #, kde-format
 msgid "A comma was expected here..."
-msgstr "Tähän odotettiin pilkkua…"
+msgstr "अत्र अल्पविरामः अपेक्षितः आसीत्..."
 
 #: interpreter/parser.cpp:107
 #, kde-format
 msgid "Did not expect '%1', instead expected the line to end after %2"
-msgstr "”%1” oli odottamaton: odotettiin rivin loppuvan kohdan %2 jälkeen"
+msgstr "'%1' इति न अपेक्षितवान्, तस्य स्थाने %2 इत्यस्य अनन्तरं रेखायाः समाप्तिः अपेक्षिता"
 
 #: interpreter/parser.cpp:110
 #, kde-format
 msgid "Expected an assignment, '=', after the variable '%1'"
-msgstr "Odotettiin sijoitusta ”=” muuttujan ”%1” jälkeen"
+msgstr "'%1' चरस्य अनन्तरं '=' इति असाइनमेण्ट् अपेक्षितम् ।"
 
 #: interpreter/parser.cpp:113
 #, kde-format
 msgid "Did not expect '%1', instead expected a closing parenthesis, ')'"
-msgstr "”%1” oli odottamaton: odotettiin päättävää suljetta ”)”"
+msgstr "'%1' न अपेक्षितवान्, तस्य स्थाने समापनकोष्ठकं अपेक्षितवान्, ')' ।"
 
 #: interpreter/parser.cpp:116
 #, kde-format
 msgid "Expected 'to' after 'for'"
-msgstr "Odotettiin arvoon-osaa arvoilla-komennon jälkeen"
+msgstr "'कृते' परे 'त' अपेक्षितम्।"
 
 #: interpreter/parser.cpp:119
 #, kde-format
 msgid "Expected a name for a command after 'learn' command"
-msgstr "opi-komennon jälkeen odotettiin komennon nimeä"
+msgstr "'learn' आदेशस्य अनन्तरं आदेशस्य नाम अपेक्षितम्"
 
 #: interpreter/parser.cpp:273
 #, kde-format
 msgid "You cannot put '%1' here."
-msgstr "Et voi kirjoittaa ”%1” tähän."
+msgstr "भवान् अत्र '%1' स्थापयितुं न शक्नोति ।"
 
 #: interpreter/parser.cpp:308
 #, kde-format
@@ -575,18 +564,17 @@ msgid ""
 "Text string was not properly closed, expected a double quote, ' \" ', to "
 "close the string."
 msgstr ""
-"Tekstijonoa ei päätetty oikein. Odotettiin lainausmerkkiä (\") päättämään "
-"merkkijono."
+"पाठतारं सम्यक् न निमीलितम् आसीत्, स्ट्रिंग् पिधातुं द्विगुणं उद्धरणं, ' \" ', अपेक्षितम् ।"
 
 #: interpreter/parser.cpp:635
 #, kde-format
 msgid "'for' was called wrongly"
-msgstr "arvoilla-komentoa kutsuttiin väärin"
+msgstr "'हितो हि' इति गलत् उच्यते स्म"
 
 #: interpreter/parser.cpp:706
 #, kde-format
 msgid "Expected a scope after the 'learn' command"
-msgstr "opi-komennon perään odotettiin näkyvyysaluetta"
+msgstr "'शिक्षन्तु' आदेशस्य अनन्तरं व्याप्तिः अपेक्षिता"
 
 #: interpreter/translator.cpp:93
 #, kde-format
@@ -595,7 +583,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "true"
-msgstr "tosi"
+msgstr "सत्यम्‌"
 
 #: interpreter/translator.cpp:101
 #, kde-format
@@ -604,7 +592,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "false"
-msgstr "epätosi"
+msgstr "असत्य"
 
 #: interpreter/translator.cpp:121
 #, kde-format
@@ -631,7 +619,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "exit"
-msgstr "lopeta"
+msgstr "निर्गम"
 
 #: interpreter/translator.cpp:145
 #, kde-format
@@ -640,7 +628,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "if"
-msgstr "jos"
+msgstr "यदि"
 
 #: interpreter/translator.cpp:153
 #, kde-format
@@ -649,7 +637,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "else"
-msgstr "muuten"
+msgstr "उत"
 
 #: interpreter/translator.cpp:161
 #, kde-format
@@ -658,7 +646,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "repeat"
-msgstr "toista"
+msgstr "परिहरन"
 
 #: interpreter/translator.cpp:169
 #, kde-format
@@ -667,7 +655,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "while"
-msgstr "kunnes"
+msgstr "यावद्‌"
 
 #: interpreter/translator.cpp:177
 #, kde-format
@@ -676,7 +664,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "for"
-msgstr "arvoilla"
+msgstr "कृते"
 
 #: interpreter/translator.cpp:185
 #, kde-format
@@ -685,7 +673,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "to"
-msgstr "arvoon"
+msgstr "इत्यस्मै"
 
 #: interpreter/translator.cpp:193
 #, kde-format
@@ -694,7 +682,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "step"
-msgstr "askel"
+msgstr "चरण"
 
 #: interpreter/translator.cpp:201
 #, kde-format
@@ -703,7 +691,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "break"
-msgstr "ulos"
+msgstr "भङ्गः"
 
 #: interpreter/translator.cpp:209
 #, kde-format
@@ -712,7 +700,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "return"
-msgstr "palaa"
+msgstr "निर्वतनम्"
 
 #: interpreter/translator.cpp:217
 #, kde-format
@@ -721,7 +709,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "wait"
-msgstr "odota"
+msgstr "प्रतीक्षतु"
 
 #: interpreter/translator.cpp:225
 #, kde-format
@@ -730,7 +718,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "assert"
-msgstr "varmista"
+msgstr "प्रतिपादयतु"
 
 #: interpreter/translator.cpp:233
 #, kde-format
@@ -739,7 +727,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "and"
-msgstr "ja"
+msgstr "तथा"
 
 #: interpreter/translator.cpp:241
 #, kde-format
@@ -748,7 +736,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "or"
-msgstr "tai"
+msgstr "वा"
 
 #: interpreter/translator.cpp:249
 #, kde-format
@@ -757,7 +745,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "not"
-msgstr "ei"
+msgstr "नहि"
 
 #: interpreter/translator.cpp:281
 #, kde-format
@@ -766,7 +754,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "learn"
-msgstr "opi"
+msgstr "जानातु"
 
 #: interpreter/translator.cpp:289
 #, kde-format
@@ -775,7 +763,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "reset"
-msgstr "alusta"
+msgstr "पुनः सेट् कुर्वन्तु"
 
 #: interpreter/translator.cpp:297
 #, kde-format
@@ -784,21 +772,16 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "clear"
-msgstr "tyhjennä"
+msgstr "स्पष्टः"
 
 #: interpreter/translator.cpp:305
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Clear' COMMAND ALIAS, there are some "
-#| "rules on how to translate it.Please see http://edu.kde.org/kturtle/"
-#| "translator.php to learn how to properly translate it."
-#| msgid "ccl"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Clear' COMMAND ALIAS, there are some rules "
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "ccl"
-msgstr "tyhj"
+msgstr "ccl"
 
 #: interpreter/translator.cpp:313
 #, kde-format
@@ -807,7 +790,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "center"
-msgstr "keskelle"
+msgstr "केंद्र"
 
 #: interpreter/translator.cpp:321
 #, kde-format
@@ -816,7 +799,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "go"
-msgstr "siirry"
+msgstr "गच्छ"
 
 #: interpreter/translator.cpp:329
 #, kde-format
@@ -825,7 +808,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "gox"
-msgstr "siirryx"
+msgstr "गोक्स"
 
 #: interpreter/translator.cpp:337
 #, kde-format
@@ -834,7 +817,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "gx"
-msgstr "sx"
+msgstr "gx"
 
 #: interpreter/translator.cpp:345
 #, kde-format
@@ -843,7 +826,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "goy"
-msgstr "siirryy"
+msgstr "गोय्"
 
 #: interpreter/translator.cpp:353
 #, kde-format
@@ -852,7 +835,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "gy"
-msgstr "sy"
+msgstr "gy"
 
 #: interpreter/translator.cpp:361
 #, kde-format
@@ -861,7 +844,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "forward"
-msgstr "eteenpäin"
+msgstr "अग्रतः"
 
 #: interpreter/translator.cpp:369
 #, kde-format
@@ -870,7 +853,7 @@ msgctxt ""
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "fw"
-msgstr "ep"
+msgstr "fw"
 
 #: interpreter/translator.cpp:377
 #, kde-format
@@ -879,7 +862,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "backward"
-msgstr "taaksepäin"
+msgstr "पश्चात्तापः"
 
 #: interpreter/translator.cpp:385
 #, kde-format
@@ -888,7 +871,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "bw"
-msgstr "tp"
+msgstr "ख"
 
 #: interpreter/translator.cpp:393
 #, kde-format
@@ -897,7 +880,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "direction"
-msgstr "suuntaan"
+msgstr "निर्देश"
 
 #: interpreter/translator.cpp:401
 #, kde-format
@@ -906,7 +889,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "dir"
-msgstr "snt"
+msgstr "त्वम्‌"
 
 #: interpreter/translator.cpp:409
 #, kde-format
@@ -915,7 +898,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "turnleft"
-msgstr "vasemmalle"
+msgstr "वामपक्षं गच्छतु"
 
 #: interpreter/translator.cpp:417
 #, kde-format
@@ -924,7 +907,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "tl"
-msgstr "vas"
+msgstr "tl"
 
 #: interpreter/translator.cpp:425
 #, kde-format
@@ -933,7 +916,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "turnright"
-msgstr "oikealle"
+msgstr "turnright"
 
 #: interpreter/translator.cpp:433
 #, kde-format
@@ -942,7 +925,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "tr"
-msgstr "oik"
+msgstr "त्र॰"
 
 #: interpreter/translator.cpp:441
 #, kde-format
@@ -951,7 +934,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "penwidth"
-msgstr "kynänpaksuus"
+msgstr "पेनविड्थः"
 
 #: interpreter/translator.cpp:449
 #, kde-format
@@ -960,7 +943,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "pw"
-msgstr "kp"
+msgstr "pw"
 
 #: interpreter/translator.cpp:457
 #, kde-format
@@ -969,7 +952,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "penup"
-msgstr "kynäylös"
+msgstr "पूरकः"
 
 #: interpreter/translator.cpp:465
 #, kde-format
@@ -978,7 +961,7 @@ msgctxt ""
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "pu"
-msgstr "ky"
+msgstr "शक्तवान्‌"
 
 #: interpreter/translator.cpp:473
 #, kde-format
@@ -987,7 +970,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "pendown"
-msgstr "kynäalas"
+msgstr "pendown"
 
 #: interpreter/translator.cpp:481
 #, kde-format
@@ -996,7 +979,7 @@ msgctxt ""
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "pd"
-msgstr "ka"
+msgstr "पृ"
 
 #: interpreter/translator.cpp:489
 #, kde-format
@@ -1005,7 +988,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "pencolor"
-msgstr "kynänväri"
+msgstr "वर्णक"
 
 #: interpreter/translator.cpp:497
 #, kde-format
@@ -1014,7 +997,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "pc"
-msgstr "kv"
+msgstr "pc"
 
 #: interpreter/translator.cpp:505
 #, kde-format
@@ -1023,7 +1006,7 @@ msgctxt ""
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "canvascolor"
-msgstr "taustaväri"
+msgstr "कैनवासरङ्गः"
 
 #: interpreter/translator.cpp:513
 #, kde-format
@@ -1032,7 +1015,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "cc"
-msgstr "tv"
+msgstr "cc"
 
 #: interpreter/translator.cpp:521
 #, kde-format
@@ -1041,7 +1024,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "canvassize"
-msgstr "taustankoko"
+msgstr "प्रचारं कुर्वन्तु"
 
 #: interpreter/translator.cpp:529
 #, kde-format
@@ -1050,7 +1033,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "cs"
-msgstr "tk"
+msgstr "cs"
 
 #: interpreter/translator.cpp:537
 #, kde-format
@@ -1059,7 +1042,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "spriteshow"
-msgstr "konnanäytä"
+msgstr "spriteshow इति"
 
 #: interpreter/translator.cpp:545
 #, kde-format
@@ -1068,7 +1051,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "ss"
-msgstr "kn"
+msgstr "ss"
 
 #: interpreter/translator.cpp:553
 #, kde-format
@@ -1077,7 +1060,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "spritehide"
-msgstr "konnakätke"
+msgstr "spritehide इति"
 
 #: interpreter/translator.cpp:561
 #, kde-format
@@ -1086,7 +1069,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "sh"
-msgstr "kn"
+msgstr "श"
 
 #: interpreter/translator.cpp:569
 #, kde-format
@@ -1095,7 +1078,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "print"
-msgstr "tulosta"
+msgstr "मुद्रणम्"
 
 #: interpreter/translator.cpp:577
 #, kde-format
@@ -1104,7 +1087,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "fontsize"
-msgstr "kirjasinkoko"
+msgstr "fontsize इति"
 
 #: interpreter/translator.cpp:585
 #, kde-format
@@ -1113,7 +1096,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "random"
-msgstr "satunnainen"
+msgstr "यदृच्छासङ्ख्या"
 
 #: interpreter/translator.cpp:593
 #, kde-format
@@ -1122,7 +1105,7 @@ msgctxt ""
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "rnd"
-msgstr "stnn"
+msgstr "र्न्दः"
 
 #: interpreter/translator.cpp:601
 #, kde-format
@@ -1131,7 +1114,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "getx"
-msgstr "haex"
+msgstr "getx"
 
 #: interpreter/translator.cpp:609
 #, kde-format
@@ -1140,7 +1123,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "gety"
-msgstr "haey"
+msgstr "ज्वार"
 
 #: interpreter/translator.cpp:617
 #, kde-format
@@ -1149,7 +1132,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "message"
-msgstr "viesti"
+msgstr "सन्देशः"
 
 #: interpreter/translator.cpp:625
 #, kde-format
@@ -1158,7 +1141,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "ask"
-msgstr "kysy"
+msgstr "पृच्छतु"
 
 #: interpreter/translator.cpp:633
 #, kde-format
@@ -1167,7 +1150,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "pi"
-msgstr "pii"
+msgstr "पि० पि०"
 
 #: interpreter/translator.cpp:641
 #, kde-format
@@ -1176,7 +1159,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "tan"
-msgstr "tan"
+msgstr "तन्"
 
 #: interpreter/translator.cpp:649
 #, kde-format
@@ -1185,7 +1168,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "sin"
-msgstr "sin"
+msgstr "पापम्"
 
 #: interpreter/translator.cpp:657
 #, kde-format
@@ -1194,7 +1177,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "cos"
-msgstr "kos"
+msgstr "कोस्"
 
 #: interpreter/translator.cpp:665
 #, kde-format
@@ -1203,7 +1186,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "arctan"
-msgstr "arktan"
+msgstr "आर्कटन"
 
 #: interpreter/translator.cpp:673
 #, kde-format
@@ -1212,7 +1195,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "arcsin"
-msgstr "arksin"
+msgstr "आर्कसिन्"
 
 #: interpreter/translator.cpp:681
 #, kde-format
@@ -1221,7 +1204,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "arccos"
-msgstr "arkkos"
+msgstr "आर्कोस्"
 
 #: interpreter/translator.cpp:689
 #, kde-format
@@ -1230,7 +1213,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "sqrt"
-msgstr "neliöjuuri"
+msgstr "sqrt"
 
 #: interpreter/translator.cpp:697
 #, kde-format
@@ -1239,7 +1222,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "round"
-msgstr "pyöristä"
+msgstr "वृत्त"
 
 #: interpreter/translator.cpp:705
 #, kde-format
@@ -1248,7 +1231,7 @@ msgctxt ""
 "on how to translate it.Please see https://edu.kde.org/kturtle/translator.php "
 "to learn how to properly translate it."
 msgid "getdirection"
-msgstr "haesuunta"
+msgstr "getdirection इति"
 
 #: interpreter/translator.cpp:713
 #, kde-format
@@ -1257,7 +1240,7 @@ msgctxt ""
 "translate it.Please see https://edu.kde.org/kturtle/translator.php to learn "
 "how to properly translate it."
 msgid "mod"
-msgstr "mod"
+msgstr "विरुद्धम्‌"
 
 #: interpreter/translator.cpp:729
 #, kde-format
@@ -1265,7 +1248,7 @@ msgctxt ""
 "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn know how to properly translate it."
 msgid "triangle"
-msgstr "kolmio"
+msgstr "त्रिकोणम्"
 
 #: interpreter/translator.cpp:741
 #, kde-format
@@ -1273,7 +1256,7 @@ msgctxt ""
 "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn know how to properly translate it."
 msgid "curly"
-msgstr "kiehkura"
+msgstr "वक्र"
 
 #: interpreter/translator.cpp:759
 #, kde-format
@@ -1281,7 +1264,7 @@ msgctxt ""
 "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn know how to properly translate it."
 msgid "arrow"
-msgstr "nuoli"
+msgstr "बाण"
 
 #: interpreter/translator.cpp:786
 #, kde-format
@@ -1289,87 +1272,84 @@ msgctxt ""
 "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn know how to properly translate it."
 msgid "flower"
-msgstr "kukka"
+msgstr "पुष्पं"
 
 #. i18n: ectx: Menu (file)
 #: kturtleui.rc:6
 #, kde-format
 msgid "&File"
-msgstr "&Tiedosto"
+msgstr "&संचिका"
 
 #. i18n: ectx: Menu (examples)
 #: kturtleui.rc:11
 #, kde-format
 msgid "&Examples"
-msgstr "&Esimerkit"
+msgstr "&उदाहरणानि"
 
 #. i18n: ectx: Menu (edit)
 #: kturtleui.rc:24
 #, kde-format
 msgid "&Edit"
-msgstr "&Muokkaa"
+msgstr "&सम्पादन"
 
 #. i18n: ectx: Menu (canvas)
 #: kturtleui.rc:41 mainwindow.cpp:509 mainwindow.cpp:531
 #, kde-format
 msgid "&Canvas"
-msgstr "&Piirtoalue"
+msgstr "&कैनवास"
 
 #. i18n: ectx: Menu (run)
 #: kturtleui.rc:47 mainwindow.cpp:309 mainwindow.cpp:428
 #, kde-format
 msgid "&Run"
-msgstr "&Suorita"
+msgstr "&धावनं करोतु"
 
 #. i18n: ectx: Menu (speed)
 #: kturtleui.rc:51
 #, kde-format
 msgid "&Run Speed"
-msgstr "Suoritus&nopeus"
+msgstr "&Run Speed"
 
 #. i18n: ectx: Menu (tools)
 #: kturtleui.rc:60
 #, kde-format
 msgid "&Tools"
-msgstr "&Työkalut"
+msgstr "&उपकरणाः"
 
 #. i18n: ectx: Menu (settings)
 #: kturtleui.rc:64
 #, kde-format
 msgid "&Settings"
-msgstr "&Asetukset"
+msgstr "&सेटिंग्स"
 
 #. i18n: ectx: Menu (language)
 #: kturtleui.rc:65
 #, kde-format
 msgid "&Script Language"
-msgstr "&Ohjelman kieli"
+msgstr "&स्क्रिप्ट भाषा"
 
 #. i18n: ectx: Menu (help)
 #: kturtleui.rc:75
 #, kde-format
 msgid "&Help"
-msgstr "&Ohje"
+msgstr "&साहाय्यम्‌"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kturtleui.rc:80
 #, kde-format
 msgid "Main Toolbar"
-msgstr "Päätyökalurivi"
+msgstr "मुख्य साधनपट्टी"
 
-# pmap: =/gen=KTurtlen/
-# pmap: =/elat=KTurtlesta/
 #: main.cpp:32
 #, kde-format
 msgid "KTurtle"
-msgstr "KTurtle"
+msgstr "केकच्छपः"
 
 #: main.cpp:34
 #, kde-format
 msgid "https://edu.kde.org/kturtle"
-msgstr "https://edu.kde.org/kturtle"
+msgstr "https://edu.kde.org/kturtle इति वृत्तान्तः"
 
-# HUOMIO: Tämä viesti on sisällöltään identtisenä myös www/edu_www.po:ssa.
 #: main.cpp:36
 #, kde-format
 msgid ""
@@ -1378,15 +1358,15 @@ msgid ""
 "programming tools available from the user interface. The programming "
 "language used is TurtleScript which allows its commands to be translated."
 msgstr ""
-"KTurtle on ohjelmointiympäristö, jonka tavoitteena on tehdä ohjelmoimaan "
-"oppimisesta mahdollisimman helppoa. Siksi KTurtlessa kaikki "
-"ohjelmointityökalut on käytettävissä käyttöliittymästä. Käytetty "
-"ohjelmointikieli on TurtleScript, jonka komennot on mahdollista kääntää."
+"KTurtle इति शैक्षिकं प्रोग्रामिंग् वातावरणं यस्य उद्देश्यं प्रोग्रामिंग् कथं करणीयम् इति शिक्षणं "
+"यथासम्भवं सुलभं कर्तुं भवति। एतत् प्राप्तुं KTurtle सर्वाणि प्रोग्रामिंग् साधनानि उपयोक्तृ-"
+"अन्तरफलकात् उपलब्धानि करोति । प्रयुक्ता प्रोग्रामिंग् भाषा TurtleScript अस्ति या तस्य "
+"आदेशानां अनुवादं कर्तुं शक्नोति ।"
 
 #: main.cpp:38
 #, kde-format
 msgid "(c) 2003-2009 Cies Breijs"
-msgstr "© 2003–2009 Cies Breijs"
+msgstr "(ग) 2003-2009 Cies Breijs"
 
 #: main.cpp:40
 #, kde-format
@@ -1396,27 +1376,27 @@ msgstr "Cies Breijs"
 #: main.cpp:40
 #, kde-format
 msgid "Initiator and core developer"
-msgstr "Alkuunpanija ja keskeinen kehittäjä"
+msgstr "प्रवर्तकः कोरविकासकः च"
 
 #: main.cpp:41
 #, kde-format
 msgid "Niels Slot"
-msgstr "Niels Slot"
+msgstr "नील्स स्लॉट"
 
 #: main.cpp:41 main.cpp:42
 #, kde-format
 msgid "Core developer"
-msgstr "Keskeinen kehittäjä"
+msgstr "कोर विकासकः"
 
 #: main.cpp:42
 #, kde-format
 msgid "Mauricio Piacentini"
-msgstr "Mauricio Piacentini"
+msgstr "मौरिसिओ पियासेन्टिनी"
 
 #: main.cpp:52
 #, kde-format
 msgid "File or URL to open (in the GUI mode)"
-msgstr "Avattava tiedosto tai osoite (GUI-tilassa)"
+msgstr "उद्घाटयितुं सञ्चिका अथवा URL (GUI मोड् मध्ये)"
 
 #: main.cpp:55
 #, kde-format
@@ -1424,8 +1404,7 @@ msgid ""
 "Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test "
 "scripts"
 msgstr ""
-"Käynnistää KTurtlen D-Bus-tilassa (ilman käyttöliittymää): sopii "
-"automatisoituihin yksikkötestausskripteihin"
+"KTurtle D-Bus मोड् मध्ये (GUI विना) आरभते, स्वचालित-एकक-परीक्षण-स्क्रिप्ट्-कृते उत्तमम्"
 
 #: main.cpp:57
 #, kde-format
@@ -1433,8 +1412,7 @@ msgid ""
 "Starts KTurtle in testing mode (without a GUI), directly runs the specified "
 "local file"
 msgstr ""
-"Käynnistää KTurtlen testaustilassa (ilman käyttöliittymää): suorittaa "
-"suoraan annetun paikallisen tiedoston"
+"KTurtle परीक्षणविधाने (GUI विना) आरभते, निर्दिष्टां स्थानीयसञ्चिकां प्रत्यक्षतया चालयति"
 
 #: main.cpp:60
 #, kde-format
@@ -1442,304 +1420,303 @@ msgid ""
 "Specifies the localization language by a language code, defaults to \"en_US"
 "\" (only works in testing mode)"
 msgstr ""
-"Asettaa kotoistuskielen kielikoodin mukaan. Oletuksena ”en_US” (toimii vain "
-"testaustilassa)"
+"भाषासङ्केतेन स्थानीयकरणभाषां निर्दिशति, पूर्वनिर्धारितरूपेण \"en_US\" (केवलपरीक्षणविधाने "
+"कार्यं करोति)"
 
 #: main.cpp:65
 #, kde-format
 msgid ""
 "Translates turtle code to embeddable C++ example strings (for developers "
 "only)"
-msgstr ""
-"Kääntää KTurtle-koodin upotettaviksi C++-esimerkkijonoiksi (vain "
-"kehittäjille)"
+msgstr "कच्छपसङ्केतं एम्बेडेबल C++ उदाहरणतारं प्रति अनुवादयति (केवलं विकासकानां कृते)"
 
 #: mainwindow.cpp:60
 #, kde-format
 msgctxt "@info:status the application is ready for commands"
 msgid "Ready"
-msgstr "Valmis"
+msgstr "आत्त"
 
 #: mainwindow.cpp:185
 #, kde-format
 msgid "Create a new file"
-msgstr "Luo uusi tiedosto"
+msgstr "नूतनं सञ्चिकां रचयन्तु"
 
 #: mainwindow.cpp:186
 #, kde-format
 msgid "New File: Create a new file"
-msgstr "Uusi tiedosto: Luo uusi tiedosto"
+msgstr "New File: नूतनं सञ्चिकां रचयन्तु"
 
 #: mainwindow.cpp:189
 #, kde-format
 msgid "Open an existing file"
-msgstr "Avaa olemassa oleva tiedosto"
+msgstr "विद्यमानं सञ्चिकां उद्घाटयन्तु"
 
 #: mainwindow.cpp:190
 #, kde-format
 msgid "Open File: Open an existing file"
-msgstr "Avaa tiedosto: Avaa olemassa oleva tiedosto"
+msgstr "Open File: विद्यमानं सञ्चिकां उद्घाटयन्तु"
 
 #: mainwindow.cpp:195
 #, kde-format
 msgid "Open a recently used file"
-msgstr "Avaa äskettäin käytetty tiedosto"
+msgstr "सद्यः प्रयुक्तां सञ्चिकां उद्घाटयन्तु"
 
 #: mainwindow.cpp:196
 #, kde-format
 msgid "Open Recent File: Open a recently used file"
-msgstr "Avaa viimeaikainen tiedosto: Avaa äskettäin käytetty tiedosto"
+msgstr "अद्यतनसञ्चिकां उद्घाटयन्तु : अद्यतनसञ्चिकां उद्घाटयन्तु"
 
 #: mainwindow.cpp:198
 #, kde-format
 msgid "Get more examples..."
-msgstr "Hae lisää esimerkkejä…"
+msgstr "अधिकानि उदाहरणानि प्राप्नुवन्तु..."
 
 #: mainwindow.cpp:207
 #, kde-format
 msgid "Save the current file to disk"
-msgstr "Tallenna nykyinen tiedosto levylle"
+msgstr "वर्तमानसञ्चिकां डिस्कमध्ये रक्षन्तु"
 
 #: mainwindow.cpp:208
 #, kde-format
 msgid "Save File: Save the current file to disk"
-msgstr "Tallenna tiedosto: Tallenna nykyinen tiedosto levylle"
+msgstr "Save File: वर्तमानसञ्चिकां डिस्क मध्ये रक्षन्तु"
 
 #: mainwindow.cpp:212
 #, kde-format
 msgid "Save the current file under a different name"
-msgstr "Tallenna nykyinen tiedosto eri nimelle"
+msgstr "वर्तमानसञ्चिकां भिन्ननाम्ना रक्षन्तु"
 
 #: mainwindow.cpp:213
 #, kde-format
 msgid "Save File As: Save the current file under a different name"
-msgstr "Tallenna tiedosto nimellä: Tallenna nykyinen tiedosto eri nimelle"
+msgstr "Save File As: वर्तमानसञ्चिकां भिन्ननाम्ना रक्षन्तु"
 
 #: mainwindow.cpp:216
 #, kde-format
 msgid "Export to &HTML..."
-msgstr "Vie &HTML:ksi…"
+msgstr "&HTML मध्ये निर्यातं कुर्वन्तु..."
 
 #: mainwindow.cpp:217
 #, kde-format
 msgid "Export the contents of the editor as HTML"
-msgstr "Vie muokkaimen sisältö HTML:ksi"
+msgstr "सम्पादकस्य सामग्रीं HTML इति निर्यातयन्तु"
 
 #: mainwindow.cpp:218
 #, kde-format
 msgid "Export to HTML: Export the contents of the editor as HTML"
-msgstr "Vie HTML:ksi: Vie muokkaimen sisältö HTML:ksi"
+msgstr "HTML मध्ये निर्यातः : सम्पादकस्य सामग्रीं HTML रूपेण निर्यातयतु"
 
 #: mainwindow.cpp:222
 #, kde-format
 msgid "Print the code"
-msgstr "Tulosta koodi"
+msgstr "कोडं मुद्रयन्तु"
 
 #: mainwindow.cpp:223
 #, kde-format
 msgid "Print: Print the code"
-msgstr "Tulosta: Tulosta koodi"
+msgstr "मुद्रणम् : कोडं मुद्रयन्तु"
 
 #: mainwindow.cpp:226
 #, kde-format
 msgid "Quit KTurtle"
-msgstr "Lopeta KTurtle"
+msgstr "केकच्छपं त्यजतु"
 
 #: mainwindow.cpp:227
 #, kde-format
 msgid "Quit: Quit KTurtle"
-msgstr "Lopeta: Lopeta KTurtle"
+msgstr "त्यजतु : केकच्छपं त्यजतु"
 
 #: mainwindow.cpp:231
 #, kde-format
 msgid "Undo a change in the editor"
-msgstr "Kumoa muokkaimessa tehty muutos"
+msgstr "सम्पादके परिवर्तनं पूर्ववत् कुर्वन्तु"
 
 #: mainwindow.cpp:232
 #, kde-format
 msgid "Undo: Undo a change in the editor"
-msgstr "Kumoa: Kumoa muokkaimessa tehty muutos"
+msgstr "पूर्ववतम् : सम्पादके परिवर्तनं पूर्ववत् कुर्वन्तु"
 
 #: mainwindow.cpp:237
 #, kde-format
 msgid "Redo a previously undone change in the editor"
-msgstr "Tee uudelleen aiemmin kumottu muutos muokkaimessa"
+msgstr "सम्पादके पूर्वं अकृतं परिवर्तनं पुनः कुर्वन्तु"
 
 #: mainwindow.cpp:238
 #, kde-format
 msgid "Redo: Redo a previously undone change in the editor"
-msgstr "Tee uudelleen: Tee uudelleen aiemmin kumottu muutos muokkaimessa"
+msgstr "पुनः कुर्वन्तु: सम्पादके पूर्वं अकृतं परिवर्तनं पुनः कुर्वन्तु"
 
 #: mainwindow.cpp:243
 #, kde-format
 msgid "Cut the selected text to the clipboard"
-msgstr "Leikkaa valittu teksti leikepöydälle"
+msgstr "चयनितं पाठं क्लिप्बोर्ड् मध्ये कटयन्तु"
 
 #: mainwindow.cpp:244
 #, kde-format
 msgid "Cut: Cut the selected text to the clipboard"
-msgstr "Leikkaa: Leikkaa valittu teksti leikepöydälle"
+msgstr "Cut: चयनितं पाठं क्लिप्बोर्ड् मध्ये कट् कुर्वन्तु"
 
 #: mainwindow.cpp:249
 #, kde-format
 msgid "Copy the selected text to the clipboard"
-msgstr "Kopioi valittu teksti leikepöydälle"
+msgstr "चयनितं पाठं क्लिप्बोर्ड् प्रति प्रतिलिख्यताम्"
 
 #: mainwindow.cpp:250
 #, kde-format
 msgid "Copy: Copy the selected text to the clipboard"
-msgstr "Kopioi: Kopioi valittu teksti leikepöydälle"
+msgstr "प्रतिलिपिः : चयनितं पाठं क्लिप्बोर्ड् प्रति प्रतिलिपिं कुर्वन्तु"
 
 #: mainwindow.cpp:255
 #, kde-format
 msgid "Paste the clipboard's content into the current selection"
-msgstr "Liitä leikepöydän sisältö nykyiseen valintaan"
+msgstr "क्लिप्बोर्डस्य सामग्रीं वर्तमानचयनस्य अन्तः चिनोतु"
 
 #: mainwindow.cpp:256
 #, kde-format
 msgid "Paste: Paste the clipboard's content into the current selection"
-msgstr "Liitä: Liitä leikepöydän sisältö nykyiseen valintaan"
+msgstr "पेस्ट् : क्लिप्बोर्डस्य सामग्रीं वर्तमानचयनस्य मध्ये पेस्ट् कुर्वन्तु"
 
 #: mainwindow.cpp:259
 #, kde-format
 msgid "Select all the code in the editor"
-msgstr "Valitse muokkaimen koko koodisisältö"
+msgstr "सम्पादके सर्वाणि कोड् चिनोतु"
 
 #: mainwindow.cpp:260
 #, kde-format
 msgid "Select All: Select all the code in the editor"
-msgstr "Valitse kaikki: Valitse muokkaimen koko koodisisältö"
+msgstr "सर्वं चिनोतु: सम्पादके सर्वाणि कोड् चिनोतु"
 
 #: mainwindow.cpp:263
 #, kde-format
 msgid "Overwrite Mode"
-msgstr "Korvaustila"
+msgstr "अधिलेखन मोड"
 
 #: mainwindow.cpp:265
 #, kde-format
 msgid "Toggle between the 'insert' and 'overwrite' mode"
-msgstr "Vaihda lisäys- ja korvaustilojen välillä"
+msgstr "'insert' तथा 'overwrite' मोड् मध्ये टॉग्ल् कुर्वन्तु"
 
 #: mainwindow.cpp:266
 #, kde-format
 msgid "Overwrite Mode: Toggle between the 'insert' and 'overwrite' mode"
-msgstr "Korvaustila: Vaihda lisäys- ja korvaustilojen välillä"
+msgstr "Overwrite Mode: 'insert' तथा 'overwrite' mode इत्येतयोः मध्ये toggle कुर्वन्तु"
 
 #: mainwindow.cpp:273
 #, kde-format
 msgid "Search through the code in the editor"
-msgstr "Etsi tekstiä muokkaimessa olevasta koodista"
+msgstr "सम्पादके कोडस्य माध्यमेन अन्वेषणं कुर्वन्तु"
 
 #: mainwindow.cpp:274
 #, kde-format
 msgid "Find: Search through the code in the editor"
-msgstr "Etsi: Etsi tekstiä muokkaimessa olevasta koodista"
+msgstr "अन्वेष्टुम् : सम्पादके कोडस्य माध्यमेन अन्वेषणं कुर्वन्तु"
 
 #: mainwindow.cpp:277
 #, kde-format
 msgid "Continue searching through the code in the editor"
-msgstr "Jatka hakua koodissa eteenpäin"
+msgstr "सम्पादके कोडस्य माध्यमेन अन्वेषणं निरन्तरं कुर्वन्तु"
 
 #: mainwindow.cpp:278
 #, kde-format
 msgid "Find Next: Continue searching through the code in the editor"
-msgstr "Etsi seuraava: Jatka hakua koodissa eteenpäin"
+msgstr "अग्रिमम् अन्वेष्टुम् : सम्पादके कोडस्य माध्यमेन अन्वेषणं निरन्तरं कुर्वन्तु"
 
 #: mainwindow.cpp:281
 #, kde-format
 msgid "Continue searching backwards through the code in the editor"
-msgstr "Jatka hakua koodissa taaksepäin"
+msgstr "सम्पादके कोडद्वारा पश्चात् अन्वेषणं निरन्तरं कुर्वन्तु"
 
 #: mainwindow.cpp:282
 #, kde-format
 msgid ""
 "Find Previous: Continue searching backwards through the code in the editor"
-msgstr "Etsi edellinen: Jatka hakua koodissa taaksepäin"
+msgstr "Find Previous: सम्पादके कोडस्य माध्यमेन पश्चात् अन्वेषणं निरन्तरं कुर्वन्तु"
 
 #: mainwindow.cpp:291
 #, kde-format
 msgid "Export to &Image (PNG)..."
-msgstr "Vie &kuvaksi (PNG)…"
+msgstr "&Image (PNG) मध्ये निर्यातं कुर्वन्तु..."
 
 #: mainwindow.cpp:292
 #, kde-format
 msgid "Export the current canvas to a PNG raster image"
-msgstr "Vie nykyinen piirtoalue PNG-rasterikuvaksi"
+msgstr "वर्तमानं कैनवासं PNG रास्टरप्रतिबिम्बे निर्यातयन्तु"
 
 #: mainwindow.cpp:293
 #, kde-format
 msgid "Export to PNG: Export the current canvas to a PNG raster image"
-msgstr "Vie PNG:ksi: Vie nykyinen piirros PNG-rasterikuvaksi"
+msgstr "PNG मध्ये निर्यातं कुर्वन्तु: वर्तमानं कैनवासं PNG रास्टरप्रतिबिम्बं प्रति निर्यातयन्तु"
 
 #: mainwindow.cpp:297
 #, kde-format
 msgid "Export to &Drawing (SVG)..."
-msgstr "Vie &piirrokseksi (SVG)…"
+msgstr "&Drawing (SVG) मध्ये निर्यातं कुर्वन्तु..."
 
 #: mainwindow.cpp:298
 #, kde-format
 msgid "Export the current canvas to Scalable Vector Graphics"
-msgstr "Vie nykyinen piirtoalue skaalautuvaksi vektorigrafiikaksi"
+msgstr "वर्तमानं कैनवासं Scalable Vector Graphics इत्यत्र निर्यातयन्तु"
 
 #: mainwindow.cpp:299
 #, kde-format
 msgid "Export to SVG: Export the current canvas to Scalable Vector Graphics"
-msgstr "Vie SVG:ksi: Vie nykyinen piirtoalue skaalautuvaksi vektorigrafiikaksi"
+msgstr ""
+"SVG मध्ये निर्यातं कुर्वन्तु: वर्तमानं कैनवासं Scalable Vector Graphics मध्ये निर्यातयन्तु"
 
 #: mainwindow.cpp:302
 #, kde-format
 msgid "&Print Canvas..."
-msgstr "&Tulosta piirtoalue…"
+msgstr "&मुद्रण कैनवास..."
 
 #: mainwindow.cpp:304
 #, kde-format
 msgid "Print the canvas"
-msgstr "Tulosta piirtoalue"
+msgstr "कैनवासं मुद्रयन्तु"
 
 #: mainwindow.cpp:305
 #, kde-format
 msgid "Print: Print the canvas"
-msgstr "Tulosta: Tulosta piirtoalue"
+msgstr "मुद्रणम् : कैनवासं मुद्रयन्तु"
 
 #: mainwindow.cpp:312
 #, kde-format
 msgid "Execute the program"
-msgstr "Suorita ohjelma"
+msgstr "कार्यक्रमं निष्पादयन्तु"
 
 #: mainwindow.cpp:313
 #, kde-format
 msgid "Run: Execute the program"
-msgstr "Suorita: Suorita ohjelma"
+msgstr "Run: कार्यक्रमं निष्पादयन्तु"
 
 #: mainwindow.cpp:316
 #, kde-format
 msgid "&Pause"
-msgstr "&Pysäytä"
+msgstr "&विराम"
 
 #: mainwindow.cpp:320
 #, kde-format
 msgid "Pause execution"
-msgstr "Pysäytä suoritus"
+msgstr "निष्पादनं विरामयतु"
 
 #: mainwindow.cpp:321
 #, kde-format
 msgid "Pause: Pause execution"
-msgstr "Pysäytä: Pysäytä suoritus"
+msgstr "विरामः - निष्पादनं विरामं कुरुत"
 
 #: mainwindow.cpp:324
 #, kde-format
 msgid "&Abort"
-msgstr "&Lopeta"
+msgstr "&गर्भपात"
 
 #: mainwindow.cpp:327
 #, kde-format
 msgid "Stop executing program"
-msgstr "Lopeta ohjelman suoritus"
+msgstr "कार्यक्रमस्य निष्पादनं स्थगयन्तु"
 
 #: mainwindow.cpp:328
 #, kde-format
 msgid "Abort: Stop executing program"
-msgstr "Lopeta: Lopeta ohjelman suoritus"
+msgstr "Abort: कार्यक्रमस्य निष्पादनं स्थगयन्तु"
 
 #. i18n("&Indent"), "format-indent-more", CTRL+Key_I, this, SLOT(slotIndent()), ac, "edit_indent");
 #. i18n("&Unindent"), "format-indent-less", CTRL+SHIFT+Key_I, this, SLOT(slotUnIndent()), ac, "edit_unindent");
@@ -1750,77 +1727,77 @@ msgstr "Lopeta: Lopeta ohjelman suoritus"
 #: mainwindow.cpp:338
 #, kde-format
 msgid "&Direction Chooser..."
-msgstr "&Suunnan valinta…"
+msgstr "&दिशा चयनकर्ता..."
 
 #: mainwindow.cpp:340
 #, kde-format
 msgid "Shows the direction chooser dialog"
-msgstr "Näyttää suunnan valintaikkunan"
+msgstr "दिशाचयनकसंवादं दर्शयति"
 
 #: mainwindow.cpp:341
 #, kde-format
 msgid "Direction Chooser: Show the direction chooser dialog"
-msgstr "Suunnan valinta: Näytä suunnan valintaikkuna"
+msgstr "दिशाचयनकर्ता : दिशाचयनकर्ता संवादं दर्शयतु"
 
 #: mainwindow.cpp:344
 #, kde-format
 msgid "&Color Picker..."
-msgstr "&Värinvalinta…"
+msgstr "&रंग चयनकर्ता..."
 
 #: mainwindow.cpp:346
 #, kde-format
 msgid "Shows the color picker dialog"
-msgstr "Näyttää värinvalintaikkunan"
+msgstr "वर्णचयनकर्ता संवादं दर्शयति"
 
 #: mainwindow.cpp:347
 #, kde-format
 msgid "Color Picker: Show the color picker dialog"
-msgstr "Värinvalinta: Näytä värinvalintaikkuna"
+msgstr "Color Picker: color picker संवादं दर्शयतु"
 
 #: mainwindow.cpp:351
 #, kde-format
 msgid "Show &Editor"
-msgstr "Näytä &muokkain"
+msgstr "&सम्पादकं दर्शयतु"
 
 #: mainwindow.cpp:353
 #, kde-format
 msgid "Show or hide the Code Editor"
-msgstr "Näytä tai piilota koodimuokkain"
+msgstr "Code Editor दर्शयतु वा गोपयन्तु वा"
 
 #: mainwindow.cpp:354
 #, kde-format
 msgid "Show Code Editor: Show or hide the Code Editor"
-msgstr "Näytä koodimuokkain: Näytä tai piilota koodimuokkain"
+msgstr "कोड सम्पादकं दर्शयतु : कोड सम्पादकं दर्शयतु वा गोपनं वा"
 
 #: mainwindow.cpp:361
 #, kde-format
 msgid "Show &Inspector"
-msgstr "Näytä &seuranta"
+msgstr "&निरीक्षकः दर्शयतु"
 
 #: mainwindow.cpp:363
 #, kde-format
 msgid "Show or hide the Inspector"
-msgstr "Näytä tai piilota seuranta"
+msgstr "निरीक्षकं दर्शयतु वा गोपयतु वा"
 
 #: mainwindow.cpp:364
 #, kde-format
 msgid "Show Inspector: Show or hide the Inspector"
-msgstr "Näytä seuranta: Näytä tai piilota ohjelman seuranta"
+msgstr "निरीक्षकं दर्शयतु : निरीक्षकं दर्शयतु वा गोपयतु वा"
 
 #: mainwindow.cpp:371
 #, kde-format
 msgid "Show E&rrors"
-msgstr "Näytä &virheet"
+msgstr "E&rrors दर्शयतु"
 
 #: mainwindow.cpp:373
 #, kde-format
 msgid "Show or hide the Errors tab"
-msgstr "Näytä tai piilota Virheet-välilehti"
+msgstr "Errors ट्याब् दर्शयतु वा गोपयन्तु वा"
 
 #: mainwindow.cpp:374
 #, kde-format
 msgid "Show Errors: Show or hide the Errors tab"
-msgstr "Näytä virheet: Näytä tai piilota Virheet-välilehti"
+msgstr "Show Errors: Errors ट्याब् दर्शयतु अथवा गोपयन्तु"
 
 #. i18n("Show &Console"), this);
 #. actionCollection()->addAction("show_console", a);
@@ -1833,315 +1810,311 @@ msgstr "Näytä virheet: Näytä tai piilota Virheet-välilehti"
 #: mainwindow.cpp:388
 #, kde-format
 msgid "Show &Line Numbers"
-msgstr "Näytä &rivinumerot"
+msgstr "&Line Numbers दर्शयतु"
 
 #: mainwindow.cpp:390
 #, kde-format
 msgid "Turn the line numbers on/off in the editor"
-msgstr "Näytä tai piilota rivinumerot muokkaimessa"
+msgstr "सम्पादके रेखासङ्ख्याः चालू/बन्दं कुर्वन्तु"
 
 #: mainwindow.cpp:391
 #, kde-format
 msgid "Show Line Numbers: Turn the line numbers on/off in the editor"
-msgstr "Näytä rivinumerot: Näytä tai piilota rivinumerot muokkaimessa"
+msgstr "रेखासङ्ख्याः दर्शयतु : सम्पादके रेखासङ्ख्याः चालू/बन्दं कुर्वन्तु"
 
 #: mainwindow.cpp:402
 #, kde-format
 msgid "Get help on the command under the cursor"
-msgstr "Näytä ohje kohdistimen alla olevasta komennosta"
+msgstr "कर्सरस्य अधः आदेशे सहायतां प्राप्नुवन्तु"
 
 #: mainwindow.cpp:403
 #, kde-format
 msgid "Context Help: Get help on the command under the cursor"
-msgstr "Kontekstiohje: Näytä ohje kohdistimen alla olevasta komennosta"
+msgstr "सन्दर्भसहायता : कर्सरस्य अधः आदेशे सहायतां प्राप्नुवन्तु"
 
 #: mainwindow.cpp:408
 #, kde-format
 msgid "Help"
-msgstr "Ohje"
+msgstr "साहाय्यम्‌"
 
 #: mainwindow.cpp:409
 #, kde-format
 msgid "Help: Open manual for KTurtle"
-msgstr "Ohje: Avaa KTurtlen käyttöohje"
+msgstr "सहायता: KTurtle कृते पुस्तिका उद्घाटयन्तु"
 
 #: mainwindow.cpp:413
 #, kde-format
 msgid "Console"
-msgstr "Konsoli"
+msgstr "कन्सोल"
 
 #: mainwindow.cpp:420
 #, kde-format
 msgid "Execute"
-msgstr "Suorita"
+msgstr "प्रभज्"
 
 #: mainwindow.cpp:422
 #, kde-format
 msgid "Execute: Executes the current line in the console"
-msgstr "Suorita: Suorita nykyinen rivi konsolissa"
+msgstr "Execute: कन्सोल् मध्ये वर्तमानरेखां निष्पादयति"
 
 #: mainwindow.cpp:433
 #, kde-format
 msgid "Execute the program, or use the drop down menu to select the run speed"
-msgstr "Suorita ohjelma – tai valitse suoritusnopeus pudotusvalikosta"
+msgstr "कार्यक्रमं निष्पादयन्तु, अथवा चालनवेगं चिन्वितुं ड्रॉप् डाउन मेन्यू उपयुज्यताम्"
 
 #: mainwindow.cpp:434
 #, kde-format
 msgid ""
 "Run: Execute the program, or use the drop down menu to select the run speed"
-msgstr "Suorita: Suorita ohjelma – tai valitse suoritusnopeus pudotusvalikosta"
+msgstr ""
+"Run: कार्यक्रमं निष्पादयन्तु, अथवा run speed इत्यस्य चयनार्थं ड्रॉप् डाउन मेन्यू इत्यस्य "
+"उपयोगं कुर्वन्तु"
 
 #: mainwindow.cpp:437
 #, kde-format
 msgctxt "@option:radio"
 msgid "Full Speed (&no highlighting and inspector)"
-msgstr "Täysi nopeus (&ei korostusta eikä seurantaa)"
+msgstr "पूर्णगतिः (&कोऽपि हाइलाइटिंग् निरीक्षकः च नास्ति)"
 
 #: mainwindow.cpp:440
 #, kde-format
 msgid "Run the program at full speed, with highlighting and inspector disabled"
-msgstr ""
-"Suorita ohjelma täydellä nopeudella, käyttämättä korostusta tai seurantaa"
+msgstr "कार्यक्रमं पूर्णवेगेन चालयन्तु, हाइलाइटिङ्ग्, निरीक्षकं च अक्षमम्"
 
 #: mainwindow.cpp:441
 #, kde-format
 msgid ""
 "Full Speed: Run the program at full speed, with highlighting and inspector "
 "disabled"
-msgstr ""
-"Täysi nopeus: Suorita ohjelma täydellä nopeudella, käyttämättä korostusta "
-"tai seurantaa"
+msgstr "पूर्णवेगः : कार्यक्रमं पूर्णवेगेन चालयन्तु, हाइलाइटिङ्ग्, निरीक्षकं च अक्षमम्"
 
 #: mainwindow.cpp:446
 #, kde-format
 msgctxt "@option:radio"
 msgid "&Full Speed"
-msgstr "&Täysi nopeus"
+msgstr "&पूर्णवेग"
 
 #: mainwindow.cpp:450
 #, kde-format
 msgid "Run the program at full speed"
-msgstr "Suorita ohjelmaa täydellä nopeudella"
+msgstr "कार्यक्रमं पूर्णवेगेन चालयन्तु"
 
 #: mainwindow.cpp:451
 #, kde-format
 msgid "Full Speed: Run the program at full speed"
-msgstr "Täysi nopeus: Suorita ohjelmaa täydellä nopeudella"
+msgstr "पूर्णवेगः : कार्यक्रमं पूर्णवेगेन चालयन्तु"
 
 #: mainwindow.cpp:456
 #, kde-format
 msgctxt "@option:radio choose the slow speed"
 msgid "&Slow"
-msgstr "Hi&das"
+msgstr "&मन्द"
 
 #: mainwindow.cpp:459
 #, kde-format
 msgid "Run the program at a slow speed"
-msgstr "Suorita ohjelmaa hitaalla nopeudella"
+msgstr "कार्यक्रमं मन्दवेगेन चालयन्तु"
 
 #: mainwindow.cpp:460
 #, kde-format
 msgid "Slow Speed: Run the program at a slow speed"
-msgstr "Hidas nopeus: Suorita ohjelmaa hitaalla nopeudella"
+msgstr "मन्दगतिः : कार्यक्रमं मन्दवेगेन चालयन्तु"
 
 #: mainwindow.cpp:465
 #, kde-format
 msgctxt "@option:radio"
 msgid "S&lower"
-msgstr "Hitaa&mpi"
+msgstr "S&lower"
 
 #: mainwindow.cpp:468
 #, kde-format
 msgid "Run the program at a slower speed"
-msgstr "Suorita ohjelmaa hitaammalla nopeudella"
+msgstr "कार्यक्रमं मन्दतरवेगेन चालयन्तु"
 
 #: mainwindow.cpp:469
 #, kde-format
 msgid "Slower Speed: Run the program at a slower speed"
-msgstr "Hitaampi nopeus: Suorita ohjelmaa hitaammalla nopeudella"
+msgstr "मन्दगतिः : कार्यक्रमं मन्दवेगेन चालयन्तु"
 
 #: mainwindow.cpp:474
 #, kde-format
 msgctxt "@option:radio"
 msgid "Sl&owest"
-msgstr "H&itain"
+msgstr "Sl&owest"
 
 #: mainwindow.cpp:477
 #, kde-format
 msgid "Run the program at the slowest speed"
-msgstr "Suorita ohjelmaa hitaimmalla nopeudella"
+msgstr "कार्यक्रमं मन्दतमवेगेन चालयन्तु"
 
 #: mainwindow.cpp:478
 #, kde-format
 msgid "Slowest Speed: Run the program at the slowest speed"
-msgstr "Hitain nopeus: Suorita ohjelmaa hitaimmalla nopeudella"
+msgstr "मन्दतमः गतिः : कार्यक्रमं मन्दतमवेगेन चालयन्तु"
 
 #: mainwindow.cpp:483
 #, kde-format
 msgctxt "@option:radio"
 msgid "S&tep-by-Step"
-msgstr "&Askellus"
+msgstr "S&tep-by-Step इति"
 
 #: mainwindow.cpp:486
 #, kde-format
 msgid "Run the program one step at a time"
-msgstr "Suorita ohjelmaa askelittain"
+msgstr "एकैकं पदं कार्यक्रमं चालयन्तु"
 
 #: mainwindow.cpp:487
 #, kde-format
 msgid "Step Speed: Run the program one step at a time"
-msgstr "Askellus: Suorita ohjelmaa askelittain"
+msgstr "Step Speed: एकैकं चरणं कार्यक्रमं चालयन्तु"
 
 #: mainwindow.cpp:506
 #, kde-format
 msgid ""
 "Canvas: This is where the turtle moves and draws when the program is running"
-msgstr ""
-"Piirtoalue: Kilpikonna liikkuu ja piirtää tässä, kun ohjelmaa suoritetaan"
+msgstr "कैनवासः - अत्रैव कच्छपः यदा कार्यक्रमः प्रचलति तदा गच्छति, आकर्षयति च"
 
 #: mainwindow.cpp:515
 #, kde-format
 msgid "E&rrors"
-msgstr "&Virheet"
+msgstr "E&rrors"
 
 #: mainwindow.cpp:544
 #, kde-format
 msgid "&Editor"
-msgstr "M&uokkain"
+msgstr "&सम्पादक"
 
 #: mainwindow.cpp:558
 #, kde-format
 msgid "Editor: Write your KTurtle commands here"
-msgstr "Muokkain: Kirjoita KTurtle-komentosi tähän"
+msgstr "सम्पादकः : अत्र स्वस्य KTurtle आदेशान् लिखन्तु"
 
 #: mainwindow.cpp:561
 #, kde-format
 msgid "&Inspector"
-msgstr "S&euranta"
+msgstr "&निरीक्षक"
 
 #: mainwindow.cpp:571
 #, kde-format
 msgid ""
 "Inspector: See information about variables and functions when the program "
 "runs"
-msgstr ""
-"Seuranta: Katso muuttujien ja funktioiden tietoja ohjelman ollessa "
-"suorituksessa"
+msgstr "निरीक्षकः : यदा कार्यक्रमः चाल्यते तदा चरानाम् कार्याणां च विषये सूचनां पश्यन्तु"
 
 #: mainwindow.cpp:662
 #, kde-format
 msgid "Switch to the %1 dictionary"
-msgstr "Vaihda sanastoon %1"
+msgstr "%1 शब्दकोशं प्रति गच्छन्तु"
 
 #: mainwindow.cpp:741
 #, kde-format
 msgid " OVR "
-msgstr " KOR "
+msgstr " ओवीआर "
 
 #: mainwindow.cpp:741
 #, kde-format
 msgid " INS "
-msgstr " LIS "
+msgstr " INS "
 
 #: mainwindow.cpp:749
 #, kde-format
 msgid "<nothing under cursor>"
-msgstr "<ei mitään kohdistimen alla>"
+msgstr "<कर्सरस्य अधः किमपि नास्ति>"
 
 #: mainwindow.cpp:750
 #, kde-format
 msgid "Help on: %1"
-msgstr "Ohjeita aiheesta: %1"
+msgstr "सहायतां कुर्वन्तु: %1"
 
 #: mainwindow.cpp:755
 #, kde-format
 msgid " Line: %1 Column: %2 "
-msgstr " Rivi: %1 Sarake: %2 "
+msgstr " रेखा: %1 स्तम्भ: %2 "
 
 #: mainwindow.cpp:763
 #, kde-format
 msgid "\"%1\" <%2>"
-msgstr "”%1” <%2>"
+msgstr "\"%1\" <%2>"
 
 #: mainwindow.cpp:767
 #, kde-format
 msgid "<variable>"
-msgstr "<muuttuja>"
+msgstr "<चर>"
 
 #: mainwindow.cpp:770
 #, kde-format
 msgid "<number>"
-msgstr "<luku>"
+msgstr "<संख्या>"
 
 #: mainwindow.cpp:773
 #, kde-format
 msgid "<comment>"
-msgstr "<kommentti>"
+msgstr "<टिप्पणी>"
 
 #: mainwindow.cpp:776
 #, kde-format
 msgid "<string>"
-msgstr "<merkkijono>"
+msgstr "<स्ट्रिंग>"
 
 #: mainwindow.cpp:787
 #, kde-format
 msgid "scope"
-msgstr "näkyvyysalue"
+msgstr "लब्द्धावसर"
 
 #: mainwindow.cpp:790
 #, kde-format
 msgid "assignment"
-msgstr "sijoitus"
+msgstr "नियोजनम्‌"
 
 #: mainwindow.cpp:793
 #, kde-format
 msgid "parenthesis"
-msgstr "sulje"
+msgstr "कोष्ठकम्"
 
 #: mainwindow.cpp:796
 #, kde-format
 msgid "mathematical operator"
-msgstr "matemaattinen operaattori"
+msgstr "गणितीय संचालक"
 
 #: mainwindow.cpp:799
 #, kde-format
 msgid "expression"
-msgstr "lauseke"
+msgstr "अभिव्यक्ति"
 
 #: mainwindow.cpp:802
 #, kde-format
 msgid "boolean operator"
-msgstr "Boolen operaattori"
+msgstr "बूलियन ऑपरेटर"
 
 #: mainwindow.cpp:805
 #, kde-format
 msgid "learned command"
-msgstr "opittu komento"
+msgstr "विद्वान् आज्ञा"
 
 #: mainwindow.cpp:808
 #, kde-format
 msgid "argument separator"
-msgstr "parametrin erotin"
+msgstr "तर्क विभाजकः"
 
 #: mainwindow.cpp:812
 #, kde-format
 msgid "command"
-msgstr "komento"
+msgstr "आदेश"
 
 #: mainwindow.cpp:815
 #, kde-format
 msgid "controller command"
-msgstr "kontrollikomento"
+msgstr "नियन्त्रक आदेशः"
 
 #: mainwindow.cpp:839
 #, kde-format
 msgid "Could not change the language to %1."
-msgstr "Kieleen %1 vaihtaminen epäonnistui."
+msgstr "भाषां %1 इति परिवर्तयितुं न शक्यते ।"
 
 #: mainwindow.cpp:846
 #, kde-format
 msgid "English [built in]"
-msgstr "englanti [sisäänrakennettu]"
+msgstr "आङ्ग्लभाषा [निर्मितम्] ।"
 
 #: mainwindow.cpp:847
 #, kde-format
@@ -2151,526 +2124,46 @@ msgstr "%1 (%2)"
 #: mainwindow.cpp:995
 #, kde-format
 msgid "untitled"
-msgstr "nimetön"
+msgstr "अनामिका"
 
 #: mainwindow.cpp:1037
 #, kde-format
 msgid "Save as Picture"
-msgstr "Tallenna kuvana"
+msgstr "चित्ररूपेण रक्षन्तु"
 
 #: mainwindow.cpp:1037
 #, kde-format
 msgid "PNG Images"
-msgstr "PNG-kuvat"
+msgstr "PNG इमेजेज"
 
 #: mainwindow.cpp:1054
 #, kde-format
 msgctxt "@title:window"
 msgid "Save as SVG"
-msgstr "Tallenna SVG:ksi"
+msgstr "SVG इति रूपेण रक्षन्तु"
 
-# Erisnimi; SVG
 #: mainwindow.cpp:1056
 #, kde-format
 msgid "Scalable Vector Graphics"
-msgstr "Scalable Vector Graphics"
+msgstr "स्केलेबल सदिश ग्राफिक्स"
 
 #: mainwindow.cpp:1067
 #, kde-format
 msgctxt "@title:window"
 msgid "Save code as HTML"
-msgstr "Tallenna koodi HTML:ksi"
+msgstr "कोडं HTML इति रूपेण रक्षन्तु"
 
 #: mainwindow.cpp:1069
 #, kde-format
 msgid "HTML documents"
-msgstr "HTML-tiedostot"
+msgstr "HTML दस्तावेजाः"
 
 #: mainwindow.cpp:1086
 #, kde-format
 msgid "Input"
-msgstr "Syöte"
+msgstr "निवेशः"
 
 #: mainwindow.cpp:1095
 #, kde-format
 msgid "Message"
-msgstr "Viesti"
-
-#~ msgid "Are you sure you want to overwrite %1?"
-#~ msgstr "Haluatko varmasti korvata tiedoston %1?"
-
-#~ msgid "Overwrite Existing File"
-#~ msgstr "Korvaa olemassa oleva tiedosto"
-
-#~ msgid "&Overwrite"
-#~ msgstr "&Korvaa"
-
-#~ msgid "Cannot read %1"
-#~ msgstr "Tiedoston %1 lukeminen epäonnistui"
-
-#~ msgid "This button hides the Errors tab"
-#~ msgstr "Tämä painike piilottaa Virheet-välilehden"
-
-#~ msgid "&Quit"
-#~ msgstr "&Lopeta"
-
-# Jos lähdekoodia katsomaan haluat mennä nyt niin takuulla yllätyt.
-#~ msgid "Internationalized string with an %1"
-#~ msgstr "Internationalisoitu merkkijono %1illa"
-
-#, fuzzy
-#~ msgid "Nothing to show here"
-#~ msgstr "Kursorin alla ei ole mitään"
-
-#, fuzzy
-#~| msgid "Save Canvas as Picture"
-#~ msgid "Save &as Picture..."
-#~ msgstr "Tallenna piirtoalue kuvana"
-
-#, fuzzy
-#~| msgid "Logo Files"
-#~ msgid "png files"
-#~ msgstr "Logo-tiedostot"
-
-#, fuzzy
-#~ msgid "no errors"
-#~ msgstr "Avausvirhe"
-
-#, fuzzy
-#~ msgid "Direction"
-#~ msgstr "kuvaus"
-
-#, fuzzy
-#~ msgid "Turnleft"
-#~ msgstr "Konna"
-
-#, fuzzy
-#~ msgid "Toggle &Insert"
-#~ msgstr "Vaihda lisäystila"
-
-#, fuzzy
-#~ msgid "&Speed"
-#~ msgstr "Täysillä"
-
-#, fuzzy
-#~ msgid "About KTurtle"
-#~ msgstr "Konna"
-
-#, fuzzy
-#~ msgid "Abort execution"
-#~ msgstr "&Lopeta suoritus"
-
-#, fuzzy
-#~| msgid "Full Speed"
-#~ msgctxt "@option:radio"
-#~ msgid "Full Speed"
-#~ msgstr "Täysillä"
-
-#, fuzzy
-#~| msgid "Slow"
-#~ msgctxt "@option:radio choose slow speed"
-#~ msgid "Slow"
-#~ msgstr "Hidas"
-
-#, fuzzy
-#~| msgid "Slower"
-#~ msgctxt "@option:radio"
-#~ msgid "Slower"
-#~ msgstr "Hitaampi"
-
-#, fuzzy
-#~| msgid "Slowest"
-#~ msgctxt "@option:radio"
-#~ msgid "Slowest"
-#~ msgstr "Hitain"
-
-#~ msgid "<no keyword>"
-#~ msgstr "<ei avainsanaa>"
-
-#~ msgid ""
-#~ "The turtle picture could not be found. Please check your installation."
-#~ msgstr "Kilpikonnakuvaa ei löydy. Tarkista, onko ohjelma asennettu oikein."
-
-#~ msgid "Help on &Error"
-#~ msgstr "Ohjeita virh&eestä"
-
-#~ msgid "Error Dialog"
-#~ msgstr "Virheikkuna"
-
-#~ msgid "Closes this error dialog"
-#~ msgstr "Sulkee tämän virheilmoitusikkunan"
-
-#~ msgid "Click here to read more on this error dialog in KTurtle's Handbook."
-#~ msgstr ""
-#~ "Napsauta tästä lukeaksesi lisää tästä virheestä KTurtlen käsikirjasta."
-
-#~ msgid "Click here for help using this error dialog"
-#~ msgstr "Napsauta tästä avuste käyttämällä tätä virheilmoitusikkunaa"
-
-#~ msgid ""
-#~ "Click here for help regarding the error you selected in the list. This "
-#~ "button will not work when no error is selected."
-#~ msgstr ""
-#~ "Napsauta tästä ohjeita luettelosta valitsemaasi virheeseen. Tämä nappi ei "
-#~ "toimi, jos virhettä ei ole valittu."
-
-#~ msgid "Click here for help regarding the error you selected."
-#~ msgstr "Napsauta tästä ohjeita valitsemaasi virheeseen."
-
-#~ msgid "Insert Color Code at Cursor"
-#~ msgstr "Lisää värikoodi kohdistimen paikkaan"
-
-#~ msgid "Color code:"
-#~ msgstr "Värikoodi:"
-
-#~ msgid "&Restart"
-#~ msgstr "&Aloita uudelleen"
-
-#~ msgid "&Back"
-#~ msgstr "&Takaisin"
-
-#~ msgid "Finished Execution"
-#~ msgstr "Suoritus päättyi"
-
-#~ msgid "Click here to restart the current logo program."
-#~ msgstr "Napsauta tästä aloittaaksesi nykyisen logo-ohjelman uudelleen."
-
-#~ msgid "Click here to switch back to the edit mode."
-#~ msgstr "Napsauta tästä vaihtaaksesi takaisin muokkaustilaan."
-
-#~ msgid ""
-#~ "Execution was finished without errors.\n"
-#~ "What do you want to do next?"
-#~ msgstr ""
-#~ "Suoritus päättyi virheettä.\n"
-#~ "Mitä haluat tehdä seuraavaksi?"
-
-#~ msgid "Call to undefined function: %1."
-#~ msgstr "Tuntemattoman funktion kutsu: %1."
-
-#~ msgid "Call to function '%1' with wrong number of parameters."
-#~ msgstr "Funktiota \"%1\" kutsutaan väärällä määrällä parametreja."
-
-#~ msgid "Function %1 did not return a value."
-#~ msgstr "Funktio %1 ei palauttanut arvoa."
-
-#~ msgid "Can only multiply numbers."
-#~ msgstr "Osaa kertoa vain numeroita."
-
-#~ msgid "Can only divide numbers."
-#~ msgstr "Voi jakaa vain numeroita."
-
-#~ msgid "Can only subtract numbers."
-#~ msgstr "Voi vähentää vain numeroita."
-
-#~ msgid ""
-#~ "The penwidth cannot be set to something smaller than 1, or bigger than "
-#~ "10000."
-#~ msgstr ""
-#~ "Kynänleveyttä ei voi pienentää pienemmäksi kuin 1, tai suurentaa "
-#~ "suuremmaksi kuin 10000."
-
-#~ msgid "The parameters of function %1 must be within range: 0 to 350."
-#~ msgstr "Funktion %1 parametrien täytyy olla alueella 0:sta 350:een."
-
-#~ msgid ""
-#~ "The parameters of the %1 command must be numbers in the range: 1 to 10000."
-#~ msgstr ""
-#~ "Komennon %1 parametrien täytyy olla lukuja alueella 1:sta 10000:een."
-
-#~ msgid ""
-#~ "The parameters of the %1 command must be numbers in the range: 0 to 255."
-#~ msgstr "Komennon %1 parametrien täytyy olla lukuja alueella 0:sta 255:een."
-
-#~ msgid "The print command needs input"
-#~ msgstr "Tulosta-komento tarvitsee syötteen"
-
-#~ msgid ""
-#~ "A KDE text-editor component could not be found;\n"
-#~ "please check your KDE installation."
-#~ msgstr ""
-#~ "KDE:n tekstinmuokkauskomponenttia ei löytynyt;\n"
-#~ "tarkista onko KDE:n asennettu oikein."
-
-#~ msgid "&Execute Commands"
-#~ msgstr "&Suorita lauseet"
-
-#~ msgid "&Indent"
-#~ msgstr "&Sisennä"
-
-#~ msgid "&Unindent"
-#~ msgstr "&Poista sisennystä"
-
-#~ msgid "Cl&ean Indentation"
-#~ msgstr "&Poista sisennys kokonaan"
-
-#~ msgid "Unc&omment"
-#~ msgstr "&Poista kommentti"
-
-#~ msgid ""
-#~ "This is the code editor, here you type the Logo commands to instruct the "
-#~ "turtle. You can also open an existing Logo program with File->Open "
-#~ "Examples... or File->Open."
-#~ msgstr ""
-#~ "Tämä on ohjelmakoodin muokkain. Tänne kirjoitat Logo-komentoja ohjeeksi "
-#~ "Konnalle. Voit myös avata olemassaolevan Logo-ohjelman Tiedosto->Avaa "
-#~ "Esimerkkejä tai Tiedosto->Avaa."
-
-#~ msgid "Welcome to KTurtle..."
-#~ msgstr "Tervetuloa Konnaan..."
-
-#~ msgid "Line: %1 Column: %2"
-#~ msgstr "Rivi: %1 Sarake: %2"
-
-#~ msgid "INS"
-#~ msgstr "LIS"
-
-#~ msgid "This is the canvas, here the turtle draws a picture."
-#~ msgstr "Tämä on piirrosalue, johon kilpikonna piirtää kuvan."
-
-#~ msgid "New file... Happy coding!"
-#~ msgstr "Uusi tiedosto... Iloista ohjelmointia!"
-
-#~ msgid "Open Logo File"
-#~ msgstr "Avaa logo-tiedosto"
-
-#~ msgid "Logo Examples Files"
-#~ msgstr "Logo-esimerkkitiedostot"
-
-#~ msgid "Open Logo Example File"
-#~ msgstr "Avaa Logo-esimerkkitiedosto"
-
-#~ msgid "Opening aborted, nothing opened."
-#~ msgstr "Avaus keskeytettiin, mitään ei avattu."
-
-#~ msgid "Opened file: %1"
-#~ msgstr "Avattiin tiedosto: %1"
-
-#~ msgid ""
-#~ "KTurtle was unable to open: \n"
-#~ "%1."
-#~ msgstr ""
-#~ "Konna ei kyennyt avaamaan\n"
-#~ "%1."
-
-#~ msgid "Opening aborted because of error."
-#~ msgstr "Avaus keskeytettiin virheen takia."
-
-#~ msgid "Opening aborted."
-#~ msgstr "Avaaminen keskeytetty."
-
-#~ msgid "Saving aborted."
-#~ msgstr "Talletus keskeytetty."
-
-#~ msgid ""
-#~ "A program named \"%1\" already exists in this folder. Do you want to "
-#~ "overwrite it?"
-#~ msgstr ""
-#~ "Ohjelmatiedosto nimeltä \"%1\" on jo olemassa tässä kansiossa. Haluatko "
-#~ "varmasti korvata sen?"
-
-#~ msgid "Overwrite?"
-#~ msgstr "Korvaa?"
-
-#~ msgid "Saved to: %1"
-#~ msgstr "Tallennettiin nimellä: %1"
-
-#~ msgid "Pictures"
-#~ msgstr "Kuvat"
-
-#~ msgid ""
-#~ "A picture named \"%1\" already in this folder. Do you want to overwrite "
-#~ "it?"
-#~ msgstr ""
-#~ "Kuvatiedosto nimeltä \"%1\" on jo olemassa tässä kansiossa. Haluatko "
-#~ "varmasti korvata sen?"
-
-#~ msgid ""
-#~ "KTurtle was unable to save the image to: \n"
-#~ "%1."
-#~ msgstr ""
-#~ "Konna ei kyennyt tallentamaan kuvaa tiedostoon:\n"
-#~ "%1."
-
-#~ msgid "Unable to Save Image"
-#~ msgstr "Kuvaa ei voitu tallentaa"
-
-#~ msgid "Saved canvas to: %1"
-#~ msgstr "Piirtoalue tallennettiin tiedostoon %1."
-
-#~ msgid "Do you want to print the Logo code or the canvas?"
-#~ msgstr "Haluatko tulostaa Logo-ohjelman vai piirtoalueen?"
-
-#~ msgid "What to Print?"
-#~ msgstr "Mitä tulostetaan?"
-
-#~ msgid "Printing aborted."
-#~ msgstr "Tulostus keskeytetty."
-
-#~ msgid ""
-#~ "The program you are currently working on is not saved. By quitting "
-#~ "KTurtle you may lose the changes you have made."
-#~ msgstr ""
-#~ "Tekemiäsi muutoksia ei ole tallennettu. Poistumalla Konnasta menetät "
-#~ "kaikki tekemäsi muutokset."
-
-#~ msgid "Discard Changes && &Quit"
-#~ msgstr "Hylkää muutokset && &lopeta"
-
-#~ msgid "Quitting aborted."
-#~ msgstr "Lopetus keskeytetty"
-
-#~ msgid "Executing commands..."
-#~ msgstr "Suoritetaan komentoja..."
-
-#~ msgid "Execution aborted."
-#~ msgstr "Suoritus keskeytetty."
-
-#~ msgid "Execution paused."
-#~ msgstr "Suoritus keskeytetty."
-
-#~ msgid "Initial Canvas Size"
-#~ msgstr "Piirtoalueen alkukoko"
-
-#~ msgid "Canvas &width:"
-#~ msgstr "Piirtoalueen leveys:"
-
-#~ msgid "Ca&nvas height:"
-#~ msgstr "Piirtoalueen korkeus:"
-
-#~ msgid "You need to restart before these settings have effect"
-#~ msgstr ""
-#~ "Ohjelma täytyy käynnistää uudelleen jotta nämä asetukset tulisivat voimaan"
-
-#~ msgid "General Settings"
-#~ msgstr "Yleiset asetukset"
-
-#~ msgid "&Select the language for the Logo commands:"
-#~ msgstr "&Valitse Logo-komentojen kieli:"
-
-#~ msgid "Language Settings"
-#~ msgstr "Kieliasetukset"
-
-#~ msgid "Command language: %1"
-#~ msgstr "Komentokieli: %1"
-
-#~ msgid "There is currently no text under the cursor to get help on."
-#~ msgstr "Kursorin osoittamaan paikkaan ei ole tällä hetkellä ohjeita."
-
-#~ msgid "<question>"
-#~ msgstr "<kysymys>"
-
-#~ msgid "\"%1\""
-#~ msgstr "\"%1\""
-
-#~ msgid "Displaying help on %1"
-#~ msgstr "Näyttää avusteen aiheesta %1"
-
-#~ msgid "<math>"
-#~ msgstr "<matemaattinen lauseke>"
-
-#~ msgid ""
-#~ "Educational Programming Environment using the Logo programming language"
-#~ msgstr "Logo-ohjelmointikieltä käyttävä ohjelmoinnin opetusympäristö"
-
-#~ msgid "(C) 2003 The KTurtle Authors"
-#~ msgstr "(C) 2003 Konnan tekijät"
-
-#~ msgid "Main developer and initiator"
-#~ msgstr "Pääkehittäjä ja projektin aloittaja"
-
-#~ msgid "Big contributor, supporter and fan"
-#~ msgstr "Merkittävä ohjelmakoodin toimittaja, tukija ja fani"
-
-#~ msgid ""
-#~ "Author of \"wsbasic\" (wsbasic.sf.net) the base for the interpreter of "
-#~ "KTurtle"
-#~ msgstr "\"Wsbasicin\" (wsbasic.sf.net), Konnan tulkin perustan, tekijä"
-
-#~ msgid "German Data Files"
-#~ msgstr "Saksan datatiedostot"
-
-#~ msgid "Swedish Data Files"
-#~ msgstr "Ruotsin datatiedostot"
-
-#~ msgid "Slovenian Data Files"
-#~ msgstr "Slovenian datatiedostot"
-
-#~ msgid "Serbian (Latin and Cyrillic) Data Files"
-#~ msgstr "Serbian (latina ja kyrilliset) datatiedostot"
-
-#~ msgid "Italian Data Files"
-#~ msgstr "Italian datatiedostot"
-
-#~ msgid "British English Data Files"
-#~ msgstr "Brittiläisen englannin datatiedostot"
-
-#~ msgid "Spanish Data Files"
-#~ msgstr "Espanjan datatiedostot"
-
-#~ msgid "Brazilian Portuguese Data Files"
-#~ msgstr "Brasilian portugalin datatiedostot"
-
-#~ msgid "Norwegian Nynorsk and Bokmål Data files"
-#~ msgstr "Norjalaisten Nynorskin ja Bokmålin datatiedostot"
-
-#~ msgid "Parser Cyrillic support"
-#~ msgstr "Kyrillisen jäsentäjän tuki"
-
-#, fuzzy
-#~ msgid ""
-#~ "Unexpected intruction after the '%1' command, please use only one "
-#~ "instuction per line"
-#~ msgstr ""
-#~ "Odottamaton käsky komennon %1 jälkeen. Tee vain yksi käsky per rivi."
-
-#~ msgid "Expected '['"
-#~ msgstr "Odotettiin merkkiä '['"
-
-#~ msgid "Expected 'to' after the '%1' command"
-#~ msgstr "Odotettiin 'to' komennon '%1' jälkeen"
-
-#~ msgid "Expected ']' after the '%1' command"
-#~ msgstr "Odotettiin ']' komennon '%1' jälkeen"
-
-#, fuzzy
-#~ msgid ""
-#~ "UNDEFINED ERROR NR %1: please sent this Logo script to the KTurtle "
-#~ "developers"
-#~ msgstr ""
-#~ "TUNTEMATON VIRHE nro %1: lähetä tämä Logo-ohjelma Konnan kehittäjille"
-
-#~ msgid "String text not properly delimited with a ' \" ' (double quote)"
-#~ msgstr ""
-#~ "Merkkijonotekstiä ei ole päätetty kunnolla ' \" ' (sitaattimerkillä)"
-
-#~ msgid ""
-#~ "INTERNAL ERROR NR %1: please sent this Logo script to KTurtle developers"
-#~ msgstr "SISÄINEN VIRHE nro %1: lähetä tämä Logo-ohjelma Konnan kehittäjille"
-
-#~ msgid ""
-#~ "Cannot understand '%1', expected an expression after the '%2' command"
-#~ msgstr ""
-#~ "Ilmauksessa olevaa merkintää \"%1\" ei ymmärretä. Odotettiin lauseketta "
-#~ "komennon %2 jälkeen"
-
-#~ msgid "Cannot understand '['"
-#~ msgstr "Ei ymmärretä merkkiä '['"
-
-#~ msgid "'%1' is neither a Logo command nor a learned command."
-#~ msgstr "'%1' ei ole Logo-komento eikä opittu komento."
-
-#~ msgid "The width of the canvas in pixels"
-#~ msgstr "Piirtoalueen leveys kuvapisteinä"
-
-#~ msgid "The height of the canvas in pixels"
-#~ msgstr "Piirtoalueen korkeus kuvapisteinä"
-
-#~ msgid "The list of the available languages for the Logo commands"
-#~ msgstr "Luettelo kielistä, joilla Logo-komentoja voi antaa"
-
-#~ msgid "The language of the Logo commands"
-#~ msgstr "Logo-komentojen kieli"
-
-#~ msgid "The value of the ComboBox"
-#~ msgstr "Yhdistelmäkentän arvo"
+msgstr "सन्देशः"

@@ -55,7 +55,11 @@ class DirectionDialog : public QDialog
 public:
     DirectionDialog(double deg, QWidget *parent);
 
-    enum Command { Turnleft = 0, Turnright = 1, Direction = 2 };
+    enum Command {
+        Turnleft = 0,
+        Turnright = 1,
+        Direction = 2
+    };
 
 Q_SIGNALS:
     void pasteText(const QString &);
