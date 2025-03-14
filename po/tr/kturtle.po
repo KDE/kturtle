@@ -7,13 +7,13 @@
 # Renan Cakirerk, 2010.
 # obsoleteman <tulliana@gmail.com>, 2008-2009.
 # Volkan Gezer <volkangezer@gmail.com>, 2013-2014, 2017.
-# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeedu-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-05 00:37+0000\n"
-"PO-Revision-Date: 2024-09-23 15:20+0300\n"
+"PO-Revision-Date: 2025-03-13 22:18+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 25.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -94,14 +94,14 @@ msgstr "Düzenleyiciye &yapıştır"
 #: console.cpp:32 console.cpp:59
 #, kde-format
 msgid "Write a command here and press enter..."
-msgstr "Buraya bir komut yaz ve enter tuşuna bas..."
+msgstr "Buraya bir komut yaz ve Giriş düğmesine bas…"
 
 #: console.cpp:33
 #, kde-format
 msgid ""
 "Console: quickly run single commands -- write a command here and press enter."
 msgstr ""
-"Konsol: Tekil komutları tez çalıştırın -- bir komut yazın ve Giriş düğmesine "
+"Konsol: Tekil komutları tez çalıştırın — bir komut yazın ve Giriş düğmesine "
 "basın."
 
 #: console.cpp:35
@@ -159,8 +159,8 @@ msgid ""
 "Cannot open %1"
 msgstr ""
 "Açmaya çalıştığınız dosya geçerli bir K Tosbağa betiği değil veya K "
-"Tosbağa'nın bu sürümüyle uyumlu değil.\n"
-"%1 açılamadı"
+"Tosbağa’nın bu sürümüyle uyumlu değil.\n"
+"%1 açılamıyor."
 
 #: editor.cpp:230 editor.cpp:236
 #, kde-format
@@ -352,7 +352,7 @@ msgstr "%1 komutuna parametre olarak yalnızca sayıları kabul eder."
 #: interpreter/executer.cpp:450
 #, kde-format
 msgid "The %1 command only accepts an answer as its parameter."
-msgstr "%1 komutu parametre olarak yalnızca \"cevap\" kabul eder."
+msgstr "%1 komutu parametre olarak yalnızca “yanıt” kabul eder."
 
 #: interpreter/executer.cpp:452
 #, kde-format
@@ -392,12 +392,12 @@ msgstr "ASSERT başarısız oldu"
 #: interpreter/executer.cpp:794
 #, kde-format
 msgid "'And' needs two variables"
-msgstr "'And' iki değişkene gereksinim duyar"
+msgstr "“And” iki değişkene gereksinim duyar"
 
 #: interpreter/executer.cpp:804
 #, kde-format
 msgid "'Or' needs two variables"
-msgstr "'Or' iki değişkenle çalışır"
+msgstr "“Or” iki değişkenle çalışır"
 
 #: interpreter/executer.cpp:815
 #, kde-format
@@ -407,32 +407,32 @@ msgstr "Yapılmayacak bir şeye gereksinimim var"
 #: interpreter/executer.cpp:824
 #, kde-format
 msgid "I cannot do a '==' without 2 variables"
-msgstr "'==' işlemi iki değişken olmadan yapılamaz"
+msgstr "“==” işlemi iki değişken olmadan yapılamaz"
 
 #: interpreter/executer.cpp:833
 #, kde-format
 msgid "I cannot do a '!=' without 2 variables"
-msgstr "'!=' işlemi iki değişken olmadan yapılamaz"
+msgstr "“!=” işlemi iki değişken olmadan yapılamaz"
 
 #: interpreter/executer.cpp:842
 #, kde-format
 msgid "I cannot do a '>' without 2 variables"
-msgstr "'>' işlemi iki değişken olmadan yapılamaz"
+msgstr "“>” işlemi iki değişken olmadan yapılamaz"
 
 #: interpreter/executer.cpp:851
 #, kde-format
 msgid "I cannot do a '<' without 2 variables"
-msgstr "'<' işlemi iki değişken olmadan yapılamaz"
+msgstr "“<” işlemi iki değişken olmadan yapılamaz"
 
 #: interpreter/executer.cpp:860
 #, kde-format
 msgid "I cannot do a '>=' without 2 variables"
-msgstr "'>=' işlemi iki değişken olmadan yapılamaz"
+msgstr "“>=” işlemi iki değişken olmadan yapılamaz"
 
 #: interpreter/executer.cpp:869
 #, kde-format
 msgid "I cannot do a '<=' without 2 variables"
-msgstr "'<=' işlemi iki değişken olmadan yapılamaz"
+msgstr "“<=” işlemi iki değişken olmadan yapılamaz"
 
 #: interpreter/executer.cpp:878
 #, kde-format
@@ -447,12 +447,12 @@ msgstr "Çıkarma işlemi için iki sayıya gereksiniminiz var"
 #: interpreter/executer.cpp:898
 #, kde-format
 msgid "You tried to subtract from a non-number, '%1'"
-msgstr "Sayı olamayan bir ifadeden çıkarma yapmayı denediniz, '%1'"
+msgstr "Sayı olamayan bir ifadeden çıkarma yapmayı denediniz, “%1”"
 
 #: interpreter/executer.cpp:900
 #, kde-format
 msgid "You tried to subtract a non-number, '%1'"
-msgstr "Sayı olamayan bir ifadeyi çıkarmayı denediniz, '%1'"
+msgstr "Sayı olamayan bir ifadeyi çıkarmayı denediniz, “%1”"
 
 #: interpreter/executer.cpp:907
 #, kde-format
@@ -462,12 +462,12 @@ msgstr "Çarpma işlemi için iki sayıya gereksiniminiz var"
 #: interpreter/executer.cpp:914
 #, kde-format
 msgid "You tried to multiplicate a non-number, '%1'"
-msgstr "Sayı olmayan bir ifadeyi çarpmayı denediniz, '%1'"
+msgstr "Sayı olmayan bir ifadeyi çarpmayı denediniz, “%1”"
 
 #: interpreter/executer.cpp:916
 #, kde-format
 msgid "You tried to multiplicate by a non-number, '%1'"
-msgstr "Sayı olmayan bir ifade ile çarpmayı denediniz, '%1'"
+msgstr "Sayı olmayan bir ifade ile çarpmayı denediniz, “%1”"
 
 #: interpreter/executer.cpp:923
 #, kde-format
@@ -482,12 +482,12 @@ msgstr "Sıfıra bölmeyi denediniz"
 #: interpreter/executer.cpp:934
 #, kde-format
 msgid "You tried to divide a non-number, '%1'"
-msgstr "Sayı olmayan bir ifadeyi bölmeyi denediniz, '%1'"
+msgstr "Sayı olmayan bir ifadeyi bölmeyi denediniz, “%1”"
 
 #: interpreter/executer.cpp:936
 #, kde-format
 msgid "You tried to divide by a non-number, '%1'"
-msgstr "Sayı olmayan bir ifade ile bölmeyi denediniz, '%1'"
+msgstr "Sayı olmayan bir ifade ile bölmeyi denediniz, “%1”"
 
 #: interpreter/executer.cpp:943
 #, kde-format
@@ -502,24 +502,24 @@ msgstr "Üst alma işleminin sonucu çok büyük"
 #: interpreter/executer.cpp:960
 #, kde-format
 msgid "You tried to raise a non-number to a power, '%1'"
-msgstr "Bir sayının sayı olmayan bir kuvvetini almayı denediniz, '%1'"
+msgstr "Bir sayının sayı olmayan bir kuvvetini almayı denediniz, “%1”"
 
 #: interpreter/executer.cpp:962
 #, kde-format
 msgid "You tried to raise the power of a non-number, '%1'"
-msgstr "Sayı olmayan bir ifadenin kuvvetini almayı denediniz, '%1'"
+msgstr "Sayı olmayan bir ifadenin kuvvetini almayı denediniz, “%1”"
 
 #: interpreter/executer.cpp:969
 #, kde-format
 msgid "You need one variable and a value or variable to do a '='"
 msgstr ""
-"Bir '=' işlemi için bir değişken ve bir değer veya bir değişkene "
+"Bir “=” işlemi için bir değişken ve bir değer veya bir değişkene "
 "gereksiniminiz var"
 
 #: interpreter/executer.cpp:988
 #, kde-format
 msgid "The function '%1' is already defined."
-msgstr "'%1' işlevi zaten tanmlanmış."
+msgstr "“%1” işlevi zaten tanmlanmış."
 
 #: interpreter/executer.cpp:1275
 #, kde-format
@@ -529,48 +529,48 @@ msgstr "Negatif bir sayının karekökü alınamaz"
 #: interpreter/parser.cpp:38
 #, kde-format
 msgid "Expected a command, instead got '%1'"
-msgstr "Bir komut bekleniyor, alınan '%1'"
+msgstr "Bir komut bekleniyor, alınan “%1”"
 
 #: interpreter/parser.cpp:69
 #, kde-format
 msgid "Could not understand '%1'"
-msgstr "'%1' anlaşılamadı"
+msgstr "“%1” anlaşılamadı"
 
 #: interpreter/parser.cpp:104
 #, kde-format
 msgid "A comma was expected here..."
-msgstr "Burada bir virgül bekleniyor..."
+msgstr "Burada bir virgül bekleniyor…"
 
 #: interpreter/parser.cpp:107
 #, kde-format
 msgid "Did not expect '%1', instead expected the line to end after %2"
 msgstr ""
-"'%1' beklenmiyordu; bunun yerine %2 sonrası satırın bitmesi bekleniyordu"
+"“%1” beklenmiyordu; bunun yerine %2 sonrası satırın bitmesi bekleniyordu"
 
 #: interpreter/parser.cpp:110
 #, kde-format
 msgid "Expected an assignment, '=', after the variable '%1'"
-msgstr "Bir atama bekleniyordu; '%1' değişkeninden sonra '='"
+msgstr "Bir atama bekleniyordu; “%1” değişkeninden sonra “=”"
 
 #: interpreter/parser.cpp:113
 #, kde-format
 msgid "Did not expect '%1', instead expected a closing parenthesis, ')'"
-msgstr "'%1' beklenmiyordu, bunun yerine bir kapatma ayracı bekleniyordu, ')'"
+msgstr "“%1” beklenmiyordu, bunun yerine bir kapatma ayracı bekleniyordu, “)”"
 
 #: interpreter/parser.cpp:116
 #, kde-format
 msgid "Expected 'to' after 'for'"
-msgstr "'for'dan sonra 'to' bekleniyor"
+msgstr "“for”dan sonra “to” bekleniyor"
 
 #: interpreter/parser.cpp:119
 #, kde-format
 msgid "Expected a name for a command after 'learn' command"
-msgstr "'learn' komutundan sonra bir ad beklenir"
+msgstr "“learn” komutundan sonra bir ad beklenir"
 
 #: interpreter/parser.cpp:273
 #, kde-format
 msgid "You cannot put '%1' here."
-msgstr "'%1' ögesini buraya koyamazsınız."
+msgstr "“%1” ögesini buraya koyamazsınız."
 
 #: interpreter/parser.cpp:308
 #, kde-format
@@ -579,17 +579,17 @@ msgid ""
 "close the string."
 msgstr ""
 "Deneme karakter dizisi doğru kapatılmadı, diziyi doğru kapatmak için bir "
-"çift tırnak ' \" ' bekleniyor."
+"çift tırnak (\") bekleniyor."
 
 #: interpreter/parser.cpp:635
 #, kde-format
 msgid "'for' was called wrongly"
-msgstr "'for' yanlış bir şekilde çağrıldı"
+msgstr "“for” yanlış bir şekilde çağrıldı"
 
 #: interpreter/parser.cpp:706
 #, kde-format
 msgid "Expected a scope after the 'learn' command"
-msgstr "'learn' komutundan sonra bir kapsam bekleniyordu"
+msgstr "“learn” komutundan sonra bir kapsam bekleniyordu"
 
 #: interpreter/translator.cpp:93
 #, kde-format
@@ -1419,7 +1419,7 @@ msgid ""
 "Starts KTurtle in D-Bus mode (without a GUI), good for automated unit test "
 "scripts"
 msgstr ""
-"K Tosbağa'yı D-Bus kipinde başlatır (arayüz olmadan), otomatik sınama "
+"K Tosbağa’yı D-Bus kipinde başlatır (arayüz olmadan), otomatik sınama "
 "betikleri için iyidir"
 
 #: main.cpp:57
@@ -1428,7 +1428,7 @@ msgid ""
 "Starts KTurtle in testing mode (without a GUI), directly runs the specified "
 "local file"
 msgstr ""
-"K Tosbağa'yı deneme kipinde başlatır (arayüz olmadan), belirtilen yerel "
+"K Tosbağa’yı deneme kipinde başlatır (arayüz olmadan), belirtilen yerel "
 "dosyayı doğrudan çalıştırır"
 
 #: main.cpp:60
@@ -1437,8 +1437,8 @@ msgid ""
 "Specifies the localization language by a language code, defaults to \"en_US"
 "\" (only works in testing mode)"
 msgstr ""
-"Bir dil koduyla yerelleştirilmiş dili belirtir, varsayılan kod \"en_US\" "
-"olarak ayarlanmıştır (yalnızca deneme kipinde çalışır)"
+"Bir dil koduyla yerelleştirilmiş dili belirtir, öntanımlı kod “en_US” olarak "
+"ayarlanmıştır (yalnızca deneme kipinde çalışır)"
 
 #: main.cpp:65
 #, kde-format
@@ -1473,7 +1473,7 @@ msgstr "Var olan bir dosyayı aç"
 #: mainwindow.cpp:190
 #, kde-format
 msgid "Open File: Open an existing file"
-msgstr "Dosya Aç: Var olan bir dosyayı aç"
+msgstr "Dosya aç: Var olan bir dosyayı aç"
 
 #: mainwindow.cpp:195
 #, kde-format
@@ -1483,12 +1483,12 @@ msgstr "Güncel kullanılan bir dosya aç"
 #: mainwindow.cpp:196
 #, kde-format
 msgid "Open Recent File: Open a recently used file"
-msgstr "Son Kullanılan Dosyayı Aç: Son kullanılan bir dosyayı aç"
+msgstr "Son kullanılan dosyayı aç: Son kullanılan bir dosyayı aç"
 
 #: mainwindow.cpp:198
 #, kde-format
 msgid "Get more examples..."
-msgstr "Daha çok örnek indir..."
+msgstr "Daha çok örnek indir…"
 
 #: mainwindow.cpp:207
 #, kde-format
@@ -1498,7 +1498,7 @@ msgstr "Geçerli dosyayı diske kaydet"
 #: mainwindow.cpp:208
 #, kde-format
 msgid "Save File: Save the current file to disk"
-msgstr "Dosyayı Kaydet: Kullanılan dosyayı diske kaydet"
+msgstr "Dosyayı kaydet: Kullanılan dosyayı diske kaydet"
 
 #: mainwindow.cpp:212
 #, kde-format
@@ -1508,12 +1508,12 @@ msgstr "Geçerli dosyayı farklı bir adla kaydet"
 #: mainwindow.cpp:213
 #, kde-format
 msgid "Save File As: Save the current file under a different name"
-msgstr "Dosyayı Farklı Kaydet: Kullanılan dosyayı farklı bir adla kaydet"
+msgstr "Dosyayı farklı kaydet: Kullanılan dosyayı farklı bir adla kaydet"
 
 #: mainwindow.cpp:216
 #, kde-format
 msgid "Export to &HTML..."
-msgstr "&HTML Olarak Dışa Aktar..."
+msgstr "&HTML Olarak Dışa Aktar…"
 
 #: mainwindow.cpp:217
 #, kde-format
@@ -1524,7 +1524,7 @@ msgstr "Düzenleyicinin içeriğini HTML olarak dışa aktar"
 #, kde-format
 msgid "Export to HTML: Export the contents of the editor as HTML"
 msgstr ""
-"HTML Olarak Dışa Aktar: Düzenleyicinin içeriğini HTML olarak dışa aktar"
+"HTML olarak dışa aktar: Düzenleyicinin içeriğini HTML olarak dışa aktar"
 
 #: mainwindow.cpp:222
 #, kde-format
@@ -1554,7 +1554,7 @@ msgstr "Düzenleyicideki bir değişikliği geri al"
 #: mainwindow.cpp:232
 #, kde-format
 msgid "Undo: Undo a change in the editor"
-msgstr "Geri Al: Düzenleyicideki bir değişikliği geri al"
+msgstr "Geri al: Düzenleyicideki bir değişikliği geri al"
 
 #: mainwindow.cpp:237
 #, kde-format
@@ -1564,7 +1564,7 @@ msgstr "Düzenleyicide geri alınan bir değişikliği yeniden yap"
 #: mainwindow.cpp:238
 #, kde-format
 msgid "Redo: Redo a previously undone change in the editor"
-msgstr "Yeniden Yap: Düzenleyicide geri alınan bir değişikliği yeniden yap"
+msgstr "Yeniden yap: Düzenleyicide geri alınan bir değişikliği yeniden yap"
 
 #: mainwindow.cpp:243
 #, kde-format
@@ -1604,7 +1604,7 @@ msgstr "Düzenleyici içindeki bütün kodu seç"
 #: mainwindow.cpp:260
 #, kde-format
 msgid "Select All: Select all the code in the editor"
-msgstr "Tümünü Seç: Düzenleyici içindeki bütün kodu seç"
+msgstr "Tümünü seç: Düzenleyici içindeki bütün kodu seç"
 
 #: mainwindow.cpp:263
 #, kde-format
@@ -1614,13 +1614,12 @@ msgstr "Üzerine Yazma Kipi"
 #: mainwindow.cpp:265
 #, kde-format
 msgid "Toggle between the 'insert' and 'overwrite' mode"
-msgstr "'Ekle' ve 'Üzerine yaz' biçimleri arasında değişim yap"
+msgstr "“Ekle” ve “Üzerine Yaz” kipleri arasında geçiş yap"
 
 #: mainwindow.cpp:266
 #, kde-format
 msgid "Overwrite Mode: Toggle between the 'insert' and 'overwrite' mode"
-msgstr ""
-"Üzerine Yazma Kipi: 'ekle' ve 'üzerine yaz' kipleri arasında değişim yap"
+msgstr "Üzerine yazma kipi: “Ekle” ve “Üzerine Yaz” kipleri arasında geçiş yap"
 
 #: mainwindow.cpp:273
 #, kde-format
@@ -1640,7 +1639,7 @@ msgstr "Düzenleyicideki kodda aramayı sürdür"
 #: mainwindow.cpp:278
 #, kde-format
 msgid "Find Next: Continue searching through the code in the editor"
-msgstr "Sonrakini Bul: Düzenleyicideki kodda aramayı sürdür"
+msgstr "Sonrakini bul: Düzenleyicideki kodda aramayı sürdür"
 
 #: mainwindow.cpp:281
 #, kde-format
@@ -1651,12 +1650,12 @@ msgstr "Düzenleyicideki kodda geriye doğru aramayı sürdür"
 #, kde-format
 msgid ""
 "Find Previous: Continue searching backwards through the code in the editor"
-msgstr "Öncekini Bul: Düzenleyicideki kodda geriye doğru aramayı sürdür"
+msgstr "Öncekini bul: Düzenleyicideki kodda geriye doğru aramayı sürdür"
 
 #: mainwindow.cpp:291
 #, kde-format
 msgid "Export to &Image (PNG)..."
-msgstr "Gö&rsel Olarak Dışa Aktar (PNG)..."
+msgstr "Gö&rsel Olarak Dışa Aktar (PNG)…"
 
 #: mainwindow.cpp:292
 #, kde-format
@@ -1667,12 +1666,12 @@ msgstr "Geçerli tuvali bir PNG görseli olarak kaydet"
 #, kde-format
 msgid "Export to PNG: Export the current canvas to a PNG raster image"
 msgstr ""
-"PNG Olarak Dışa Aktar: Geçerli tuvali bir PNG görseli olarak dışa aktar"
+"PNG olarak dışa aktar: Geçerli tuvali bir PNG görseli olarak dışa aktar"
 
 #: mainwindow.cpp:297
 #, kde-format
 msgid "Export to &Drawing (SVG)..."
-msgstr "Çizim &Olarak Dışa Aktar (SVG)..."
+msgstr "Çizim &Olarak Dışa Aktar (SVG)…"
 
 #: mainwindow.cpp:298
 #, kde-format
@@ -1683,13 +1682,13 @@ msgstr "Geçerli tuvali Ölçeklenebilir Vektör Grafiği olarak dışa aktar"
 #, kde-format
 msgid "Export to SVG: Export the current canvas to Scalable Vector Graphics"
 msgstr ""
-"SVG olarak Dışa Aktar: Geçerli tuvali Ölçeklenebilir Vektör Grafiği olarak "
+"SVG olarak dışa aktar: Geçerli tuvali Ölçeklenebilir Vektör Grafiği olarak "
 "dışa aktar"
 
 #: mainwindow.cpp:302
 #, kde-format
 msgid "&Print Canvas..."
-msgstr "&Tuvali Yazdır..."
+msgstr "&Tuvali Yazdır…"
 
 #: mainwindow.cpp:304
 #, kde-format
@@ -1750,7 +1749,7 @@ msgstr "İptal: Uygulamayı çalıştırmayı durdur"
 #: mainwindow.cpp:338
 #, kde-format
 msgid "&Direction Chooser..."
-msgstr "&Yön Seçicisi..."
+msgstr "&Yön Seçicisi…"
 
 #: mainwindow.cpp:340
 #, kde-format
@@ -1760,12 +1759,12 @@ msgstr "Yön seçim penceresini gösterir"
 #: mainwindow.cpp:341
 #, kde-format
 msgid "Direction Chooser: Show the direction chooser dialog"
-msgstr "Yön Seçici: Yön seçim penceresini göster"
+msgstr "Yön seçicisi: Yön seçim penceresini göster"
 
 #: mainwindow.cpp:344
 #, kde-format
 msgid "&Color Picker..."
-msgstr "&Renk Seçicisi..."
+msgstr "&Renk Seçicisi…"
 
 #: mainwindow.cpp:346
 #, kde-format
@@ -1775,7 +1774,7 @@ msgstr "Renk seçim penceresini gösterir"
 #: mainwindow.cpp:347
 #, kde-format
 msgid "Color Picker: Show the color picker dialog"
-msgstr "Renk Seçici: Renk seçim penceresini göster"
+msgstr "Renk seçicisi: Renk seçim penceresini göster"
 
 #: mainwindow.cpp:351
 #, kde-format
@@ -1790,7 +1789,7 @@ msgstr "Kod Düzenleyicisini Göster veya Gizle"
 #: mainwindow.cpp:354
 #, kde-format
 msgid "Show Code Editor: Show or hide the Code Editor"
-msgstr "Kod Düzenleyicisini Göster: Kod Düzenleyicisini göster veya gizle"
+msgstr "Kod düzenleyicisini göster: Kod Düzenleyicisini göster veya gizle"
 
 #: mainwindow.cpp:361
 #, kde-format
@@ -1805,7 +1804,7 @@ msgstr "Denetleyiciyi göster veya gizle"
 #: mainwindow.cpp:364
 #, kde-format
 msgid "Show Inspector: Show or hide the Inspector"
-msgstr "Denetleyiciyi Göster: Denetleyiciyi göster veya gizle"
+msgstr "Denetleyiciyi göster: Denetleyiciyi göster veya gizle"
 
 #: mainwindow.cpp:371
 #, kde-format
@@ -1820,7 +1819,7 @@ msgstr "Hata sekmesini göster veya gizle"
 #: mainwindow.cpp:374
 #, kde-format
 msgid "Show Errors: Show or hide the Errors tab"
-msgstr "Hataları Göster: Hata sekmesini göster veya gizle"
+msgstr "Hataları göster: Hata sekmesini göster veya gizle"
 
 #. i18n("Show &Console"), this);
 #. actionCollection()->addAction("show_console", a);
@@ -1843,7 +1842,7 @@ msgstr "Düzenleyicide satır numaralarını aç/kapat"
 #: mainwindow.cpp:391
 #, kde-format
 msgid "Show Line Numbers: Turn the line numbers on/off in the editor"
-msgstr "Satır Numaralarını Göster: Düzenleyicide satır numaralarını aç/kapat"
+msgstr "Satır numaralarını göster: Düzenleyicide satır numaralarını aç/kapat"
 
 #: mainwindow.cpp:402
 #, kde-format
@@ -1853,7 +1852,7 @@ msgstr "İmlecin altındaki komut hakkında yardım al"
 #: mainwindow.cpp:403
 #, kde-format
 msgid "Context Help: Get help on the command under the cursor"
-msgstr "İçerik Yardımı: İmlecin altındaki komut hakkında yardım al"
+msgstr "İçerik yardımı: İmlecin altındaki komut hakkında yardım al"
 
 #: mainwindow.cpp:408
 #, kde-format
@@ -1909,7 +1908,7 @@ msgstr "Vurgulama ve denetleme kapalıyken programı tam hızda çalıştır"
 msgid ""
 "Full Speed: Run the program at full speed, with highlighting and inspector "
 "disabled"
-msgstr "Tam Hız: Vurgulama ve denetleme kapalıyken programı tam hızda çalıştır"
+msgstr "Tam hız: Vurgulama ve denetleme kapalıyken programı tam hızda çalıştır"
 
 #: mainwindow.cpp:446
 #, kde-format
@@ -1925,7 +1924,7 @@ msgstr "Uygulamayı tam hızla çalıştır"
 #: mainwindow.cpp:451
 #, kde-format
 msgid "Full Speed: Run the program at full speed"
-msgstr "Tam Hız: Programı tam hızda çalıştır"
+msgstr "Tam hız: Programı tam hızda çalıştır"
 
 #: mainwindow.cpp:456
 #, kde-format
@@ -1941,7 +1940,7 @@ msgstr "Uygulamayı düşük hızla çalıştır"
 #: mainwindow.cpp:460
 #, kde-format
 msgid "Slow Speed: Run the program at a slow speed"
-msgstr "Yavaş Hız: Uygulamayı düşük hızla çalıştır"
+msgstr "Yavaş hız: Uygulamayı düşük hızla çalıştır"
 
 #: mainwindow.cpp:465
 #, kde-format
@@ -1957,7 +1956,7 @@ msgstr "Uygulamayı daha düşük hızla çalıştır"
 #: mainwindow.cpp:469
 #, kde-format
 msgid "Slower Speed: Run the program at a slower speed"
-msgstr "Daha Yavaş Hız: Uygulamayı daha düşük hızla çalıştır"
+msgstr "Daha yavaş hız: Uygulamayı daha düşük hızla çalıştır"
 
 #: mainwindow.cpp:474
 #, kde-format
@@ -1973,13 +1972,13 @@ msgstr "Uygulamayı en düşük hızla çalıştır"
 #: mainwindow.cpp:478
 #, kde-format
 msgid "Slowest Speed: Run the program at the slowest speed"
-msgstr "En Düşük Hız: Uygulamayı en düşük hızla çalıştır"
+msgstr "En düşük hız: Uygulamayı en düşük hızla çalıştır"
 
 #: mainwindow.cpp:483
 #, kde-format
 msgctxt "@option:radio"
 msgid "S&tep-by-Step"
-msgstr "A&dım-Adım"
+msgstr "A&dım Adım"
 
 #: mainwindow.cpp:486
 #, kde-format
@@ -1989,7 +1988,7 @@ msgstr "Programı her seferinde bir adım çalıştır"
 #: mainwindow.cpp:487
 #, kde-format
 msgid "Step Speed: Run the program one step at a time"
-msgstr "Adım Hızı: Programı her seferinde bir adım çalıştır"
+msgstr "Adım hızı: Programı her seferinde bir adım çalıştır"
 
 #: mainwindow.cpp:506
 #, kde-format
@@ -2061,7 +2060,7 @@ msgstr " Satır: %1 Sütun: %2 "
 #: mainwindow.cpp:763
 #, kde-format
 msgid "\"%1\" <%2>"
-msgstr "\"%1\" <%2>"
+msgstr "“%1” <%2>"
 
 #: mainwindow.cpp:767
 #, kde-format
