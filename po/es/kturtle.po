@@ -1,20 +1,22 @@
-# translation of kturtle.po to Spanish
-# Development-KDE, 2005.
-# Miguel Revilla Rodríguez <yo@miguelrevilla.com>, 2004.
-# Juan Manuel Garcia Molina <juanma@superiodico.net>, 2004.
-# Rafael Beccar <traduccioneskde@rafabeccar.com.ar>, 2004.
-# Rafael Beccar <kdemail@rafabeccar.com.ar>, 2004.
-# Rafael Beccar <rafael.beccar@kdemail.net>, 2004, 2005, 2006.
-# Jaime Robles <jaime@kde.org>, 2005.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2007, 2009, 2010, 2011, 2012, 2019, 2021.
-# Santiago Fernández Sancho <santi@kde-es.org>, 2007, 2008.
-# Enrique Matias Sanchez (Quique) <cronopios@gmail.com>, 2009.
+# Spanish translations for kturtle.po package.
+# Copyright (C) 2004-2025 This file is copyright:
+# This file is distributed under the same license as the kturtle package.
+#
+# SPDX-FileCopyrightText: 2004 Miguel Revilla Rodríguez <yo@miguelrevilla.com>
+# SPDX-FileCopyrightText: 2004 Juan Manuel Garcia Molina <juanma@superiodico.net>
+# SPDX-FileCopyrightText: 2004 Rafael Beccar <traduccioneskde@rafabeccar.com.ar>
+# SPDX-FileCopyrightText: 2004 Rafael Beccar <kdemail@rafabeccar.com.ar>
+# SPDX-FileCopyrightText: 2004, 2005, 2006 Rafael Beccar <rafael.beccar@kdemail.net>
+# SPDX-FileCopyrightText: 2005 Jaime Robles <jaime@kde.org>
+# SPDX-FileCopyrightText: 2007, 2009, 2010, 2011, 2012, 2019, 2021, 2025 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2007, 2008 Santiago Fernández Sancho <santi@kde-es.org>
+# SPDX-FileCopyrightText: 2009 Enrique Matias Sanchez (Quique) <cronopios@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-05 00:37+0000\n"
-"PO-Revision-Date: 2021-11-16 18:34+0100\n"
+"PO-Revision-Date: 2025-05-18 14:43+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -93,7 +95,7 @@ msgstr "&Pegar en el editor"
 #: console.cpp:32 console.cpp:59
 #, kde-format
 msgid "Write a command here and press enter..."
-msgstr "Escriba aquí una orden y pulse «Intro»..."
+msgstr "Escriba aquí una orden y pulse «Intro»…"
 
 #: console.cpp:33
 #, kde-format
@@ -534,7 +536,7 @@ msgstr "No se ha entendido «%1»"
 #: interpreter/parser.cpp:104
 #, kde-format
 msgid "A comma was expected here..."
-msgstr "Aquí se esperaba una coma..."
+msgstr "Aquí se esperaba una coma…"
 
 #: interpreter/parser.cpp:107
 #, kde-format
@@ -1485,7 +1487,7 @@ msgstr "Abrir un archivo reciente: abrir un archivo utilizado recientemente"
 #: mainwindow.cpp:198
 #, kde-format
 msgid "Get more examples..."
-msgstr "Obtener más ejemplos..."
+msgstr "Obtener más ejemplos…"
 
 #: mainwindow.cpp:207
 #, kde-format
@@ -1511,7 +1513,7 @@ msgstr ""
 #: mainwindow.cpp:216
 #, kde-format
 msgid "Export to &HTML..."
-msgstr "Exportar a &HTML..."
+msgstr "Exportar a &HTML…"
 
 #: mainwindow.cpp:217
 #, kde-format
@@ -1656,7 +1658,7 @@ msgstr ""
 #: mainwindow.cpp:291
 #, kde-format
 msgid "Export to &Image (PNG)..."
-msgstr "Exportar a &imagen (PNG)..."
+msgstr "Exportar a &imagen (PNG)…"
 
 #: mainwindow.cpp:292
 #, kde-format
@@ -1671,7 +1673,7 @@ msgstr "Exportar a PNG: exportar el lienzo actual a una imagen PNG"
 #: mainwindow.cpp:297
 #, kde-format
 msgid "Export to &Drawing (SVG)..."
-msgstr "Exportar a &dibujo (SVG)..."
+msgstr "Exportar a &dibujo (SVG)…"
 
 #: mainwindow.cpp:298
 #, kde-format
@@ -1687,7 +1689,7 @@ msgstr ""
 #: mainwindow.cpp:302
 #, kde-format
 msgid "&Print Canvas..."
-msgstr "&Imprimir lienzo..."
+msgstr "&Imprimir lienzo…"
 
 #: mainwindow.cpp:304
 #, kde-format
@@ -1748,7 +1750,7 @@ msgstr "Interrumpir: detener la ejecución del programa"
 #: mainwindow.cpp:338
 #, kde-format
 msgid "&Direction Chooser..."
-msgstr "Selector de &dirección..."
+msgstr "Selector de &dirección…"
 
 #: mainwindow.cpp:340
 #, kde-format
@@ -1763,7 +1765,7 @@ msgstr "Selector de dirección: mostrar el diálogo de elección de dirección"
 #: mainwindow.cpp:344
 #, kde-format
 msgid "&Color Picker..."
-msgstr "Selector de &color..."
+msgstr "Selector de &color…"
 
 #: mainwindow.cpp:346
 #, kde-format
@@ -2200,18 +2202,3 @@ msgstr "Entrada"
 #, kde-format
 msgid "Message"
 msgstr "Mensaje"
-
-#~ msgid "Are you sure you want to overwrite %1?"
-#~ msgstr "¿Está seguro de que desea sobrescribir %1?"
-
-#~ msgid "Overwrite Existing File"
-#~ msgstr "Sobrescribir archivo existente"
-
-#~ msgid "&Overwrite"
-#~ msgstr "S&obrescribir"
-
-#~ msgid "Cannot read %1"
-#~ msgstr "No es posible leer %1"
-
-#~ msgid "This button hides the Errors tab"
-#~ msgstr "Este botón oculta la pestaña de errores"
