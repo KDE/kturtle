@@ -370,7 +370,7 @@ msgstr "S'ha cridat una funció desconeguda anomenada «%1»"
 #, kde-format
 msgid "The function '%1' was called with %2, while it should be called with %3"
 msgstr ""
-"La funció «%1» s'ha cridat amb %2, quan hauria d'haver estat cridada amb %3"
+"La funció «%1» s'ha cridat amb %2, quan hauria d'haver sigut cridada amb %3"
 
 #: interpreter/executer.cpp:562 interpreter/executer.cpp:564
 #, kde-format
@@ -1903,7 +1903,7 @@ msgstr "Velocitat màxima (&sense ressaltat ni inspector)"
 #, kde-format
 msgid "Run the program at full speed, with highlighting and inspector disabled"
 msgstr ""
-"Executa el programa a la màxima velocitat, amb el ressaltat i l'inspector "
+"Executa el programa a la velocitat màxima, amb el ressaltat i l'inspector "
 "desactivats"
 
 #: mainwindow.cpp:441
@@ -1912,7 +1912,7 @@ msgid ""
 "Full Speed: Run the program at full speed, with highlighting and inspector "
 "disabled"
 msgstr ""
-"Velocitat màxima: Executa el programa a la màxima velocitat, amb el "
+"Velocitat màxima: Executa el programa a la velocitat màxima, amb el "
 "ressaltat i l'inspector desactivats"
 
 #: mainwindow.cpp:446
@@ -1924,12 +1924,12 @@ msgstr "&Velocitat màxima"
 #: mainwindow.cpp:450
 #, kde-format
 msgid "Run the program at full speed"
-msgstr "Executa el programa a la màxima velocitat"
+msgstr "Executa el programa a la velocitat màxima"
 
 #: mainwindow.cpp:451
 #, kde-format
 msgid "Full Speed: Run the program at full speed"
-msgstr "Velocitat màxima: executa el programa a la màxima velocitat"
+msgstr "Velocitat màxima: executa el programa a la velocitat màxima"
 
 #: mainwindow.cpp:456
 #, kde-format
