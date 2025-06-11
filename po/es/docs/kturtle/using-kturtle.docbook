@@ -73,7 +73,7 @@
 ><guimenu
 >Archivo</guimenu
 ><guimenuitem
->Abrir...</guimenuitem
+>Abrir…</guimenuitem
 ></menuchoice
 >.</para>
 <para
@@ -117,7 +117,7 @@
 ><guimenu
 >Preferencias</guimenu
 ><guimenuitem
->Configurar las barras de herramientas...</guimenuitem
+>Configurar las barras de herramientas…</guimenuitem
 ></menuchoice
 ></para>
 </sect1>
@@ -184,7 +184,7 @@
 > <guimenu
 >Archivo</guimenu
 > <guimenuitem
->Abrir...</guimenuitem
+>Abrir…</guimenuitem
 > </menuchoice
 ></term>
       <listitem
@@ -241,7 +241,7 @@
 ><guimenu
 >Archivo</guimenu
 > <guimenuitem
->Obtener más ejemplos...</guimenuitem
+>Obtener más ejemplos…</guimenuitem
 > </menuchoice
 ></term>
       <listitem
@@ -290,7 +290,7 @@
 > <guimenu
 >Archivo</guimenu
 > <guimenuitem
->Guardar como...</guimenuitem
+>Guardar como…</guimenuitem
 > </menuchoice
 ></term>
       <listitem
@@ -307,7 +307,7 @@
 ><guimenu
 >Archivo</guimenu
 > <guimenuitem
->Exportar a HTML...</guimenuitem
+>Exportar a HTML…</guimenuitem
 > </menuchoice
 ></term>
       <listitem
@@ -330,7 +330,7 @@
 > <guimenu
 >Archivo</guimenu
 > <guimenuitem
->Imprimir...</guimenuitem
+>Imprimir…</guimenuitem
 > </menuchoice
 ></term>
       <listitem
@@ -527,7 +527,7 @@
 > <guimenu
 >Editar</guimenu
 > <guimenuitem
->Buscar...</guimenuitem
+>Buscar…</guimenuitem
 > </menuchoice
 ></term>
       <listitem
@@ -642,7 +642,7 @@
 ><guimenu
 >Lienzo</guimenu
 > <guimenuitem
->Exportar a imagen (PNG)...</guimenuitem
+>Exportar a imagen (PNG)…</guimenuitem
 > </menuchoice
 ></term>
       <listitem
@@ -661,7 +661,7 @@
 ><guimenu
 >Lienzo</guimenu
 > <guimenuitem
->Exportar a dibujo (SVG)...</guimenuitem
+>Exportar a dibujo (SVG)…</guimenuitem
 > </menuchoice
 ></term>
       <listitem
@@ -680,7 +680,7 @@
 ><guimenu
 >Lienzo</guimenu
 > <guimenuitem
->Imprimir lienzo...</guimenuitem
+>Imprimir lienzo…</guimenuitem
 > </menuchoice
 ></term>
       <listitem
@@ -819,7 +819,7 @@
 ><guimenu
 >Herramientas</guimenu
 > <guimenuitem
->Selector de dirección...</guimenuitem
+>Selector de dirección…</guimenuitem
 > </menuchoice
 ></term>
       <listitem
@@ -836,7 +836,7 @@
 ><guimenu
 >Herramientas</guimenu
 > <guimenuitem
->Selector de color...</guimenuitem
+>Selector de color…</guimenuitem
 > </menuchoice
 ></term>
       <listitem
@@ -1012,7 +1012,7 @@
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configurar los atajos de teclado...</guimenuitem
+>Configurar los atajos de teclado…</guimenuitem
 > </menuchoice
 ></term>
       <listitem
@@ -1029,7 +1029,7 @@
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configurar las barras de herramientas...</guimenuitem
+>Configurar las barras de herramientas…</guimenuitem
 > </menuchoice
 ></term>
       <listitem
@@ -1063,7 +1063,7 @@
 > <guimenu
 >Ayuda</guimenu
 > <guimenuitem
->Ayuda sobre: ... </guimenuitem
+>Ayuda sobre: … </guimenuitem
 > </menuchoice
 ></term>
       <listitem

@@ -1633,7 +1633,7 @@ escribir $a + " más " + $b + " es igual a " + ($a + $b)
 <para
 >Un nuevo ejemplo: <screen>
 $nombre = preguntar "¿Cuál es tu nombre?"
-escribir "¡Hola " + $nombre + "! Buena suerte con el aprendizaje del arte del programar..."
+escribir "¡Hola " + $nombre + "! Buena suerte con el aprendizaje del arte del programar…"
 </screen
 > Este ejemplo es muy claro. De nuevo, aquí tiene como la variable <userinput
 >$name</userinput
@@ -1709,7 +1709,7 @@ repetir 36 {
 ><screen
 >si <link linkend="boolean-value"
 >valor lógico</link
-> { ... }</screen
+> { … }</screen
 >El código que está entre llaves solo se ejecutará <userinput
 >si</userinput
 > el <link linkend="boolean-value"
@@ -1750,7 +1750,7 @@ si $x &gt; 5 {
 ><screen
 >si <link linkend="boolean-value"
 >valor lógico</link
-> { ... } sino { ... }</screen
+> { … } sino { … }</screen
 ><userinput
 >sino</userinput
 > puede usarse en conjunción con el controlador <link linkend="if"
@@ -1799,7 +1799,7 @@ sino {
 ><screen
 >mientras <link linkend="boolean-value"
 >valor lógico</link
-> { ... }</screen
+> { … }</screen
 >El controlador <userinput
 >mientras</userinput
 > actúa de forma similar a <link linkend="if"
@@ -1850,7 +1850,7 @@ mientras $x &lt; 5 {
 ><screen
 >repetir <link linkend="number"
 >número</link
-> { ... }</screen
+> { … }</screen
 >El controlador <userinput
 >repetir</userinput
 > actúa de forma similar a  <link linkend="while"
@@ -1893,7 +1893,7 @@ mientras $x &lt; 5 {
 >número</link
 > hasta <link linkend="number"
 >número</link
-> { ... }</screen
+> { … }</screen
 >El bucle <userinput
 >para</userinput
 > es un «bucle que cuenta», &ie;, que lleva la cuenta por ti. El primer número asigna a la variable el valor del primer bucle. Con cada bucle, este número se incrementa hasta alcanzar el segundo número. <screen>
@@ -1917,7 +1917,7 @@ para $x = 1 hasta 10 {
 >número</link
 > paso <link linkend="number"
 >número</link
-> { ... }</screen
+> { … }</screen
 ></para
 ></listitem>
     </varlistentry>
@@ -1982,7 +1982,7 @@ para $x = 1 hasta 10 {
 ><screen
 >afirmar<link linkend="boolean-value"
 >valor lógico</link
-> { ... }</screen
+> { … }</screen
 >Se puede utilizar para razonar sobre la corrección del programa o de los datos de entrada <screen
 >$in = ask "What is your year of birth?"
 # el año debe ser positivo
