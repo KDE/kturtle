@@ -1,3 +1,4 @@
+# SPDX-FileCopyrightText: 2025 Alois Spitzbart <spitz234@hotmail.com>
 # Stephan Johach <hunsum@gmx.de>, 2005.
 # Burkhard Lück <lueck@hube-lueck.de>, 2005, 2008, 2009, 2010, 2011, 2013, 2019, 2020, 2021.
 # Thomas Reitelbach <tr@erdfunkstelle.de>, 2005, 2006, 2007.
@@ -11,15 +12,15 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-05 00:37+0000\n"
-"PO-Revision-Date: 2022-03-11 20:50+0100\n"
-"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
-"Language-Team: German <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2025-06-20 13:39+0200\n"
+"Last-Translator: Alois Spitzbart <spitz234@hotmail.com>\n"
+"Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 25.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -90,7 +91,7 @@ msgstr "In den Editor &einfügen"
 #: console.cpp:32 console.cpp:59
 #, kde-format
 msgid "Write a command here and press enter..."
-msgstr "Geben Sie hier einen Befehl ein und drücken Sie die Eingabetaste ..."
+msgstr "Geben Sie hier einen Befehl ein und drücken Sie die Eingabetaste …"
 
 #: console.cpp:33
 #, kde-format
@@ -544,7 +545,7 @@ msgstr "„%1“ wurde nicht verstanden"
 #: interpreter/parser.cpp:104
 #, kde-format
 msgid "A comma was expected here..."
-msgstr "Es wurde hier ein Komma erwartet ..."
+msgstr "Es wurde hier ein Komma erwartet …"
 
 #: interpreter/parser.cpp:107
 #, kde-format
@@ -623,7 +624,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid ","
-msgstr ";"
+msgstr ","
 
 #: interpreter/translator.cpp:129
 #, kde-format
@@ -632,7 +633,7 @@ msgctxt ""
 "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
 "translator.php to learn how to properly translate it."
 msgid "."
-msgstr ","
+msgstr "."
 
 #: interpreter/translator.cpp:137
 #, kde-format
@@ -1389,7 +1390,7 @@ msgstr ""
 #: main.cpp:38
 #, kde-format
 msgid "(c) 2003-2009 Cies Breijs"
-msgstr "Copyright 2003-2009 Cies Breijs"
+msgstr "© 2003–2009 Cies Breijs"
 
 #: main.cpp:40
 #, kde-format
@@ -1497,7 +1498,7 @@ msgstr "Zuletzt geöffnete Dateien: Eine zuletzt geöffnete Datei öffnen"
 #: mainwindow.cpp:198
 #, kde-format
 msgid "Get more examples..."
-msgstr "Weitere Beispiele herunterladen ..."
+msgstr "Weitere Beispiele herunterladen …"
 
 #: mainwindow.cpp:207
 #, kde-format
@@ -1523,7 +1524,7 @@ msgstr ""
 #: mainwindow.cpp:216
 #, kde-format
 msgid "Export to &HTML..."
-msgstr "Als &HTML exportieren ..."
+msgstr "Als &HTML exportieren …"
 
 #: mainwindow.cpp:217
 #, kde-format
@@ -1670,7 +1671,7 @@ msgstr ""
 #: mainwindow.cpp:291
 #, kde-format
 msgid "Export to &Image (PNG)..."
-msgstr "Als &Bild (PNG) exportieren ..."
+msgstr "Als &Bild (PNG) exportieren …"
 
 #: mainwindow.cpp:292
 #, kde-format
@@ -1687,7 +1688,7 @@ msgstr ""
 #: mainwindow.cpp:297
 #, kde-format
 msgid "Export to &Drawing (SVG)..."
-msgstr "Als &Zeichnung (SVG) exportieren ..."
+msgstr "Als &Zeichnung (SVG) exportieren …"
 
 #: mainwindow.cpp:298
 #, kde-format
@@ -1704,7 +1705,7 @@ msgstr ""
 #: mainwindow.cpp:302
 #, kde-format
 msgid "&Print Canvas..."
-msgstr "Zeichenfläche &drucken ..."
+msgstr "Zeichenfläche &drucken …"
 
 #: mainwindow.cpp:304
 #, kde-format
@@ -1765,7 +1766,7 @@ msgstr "Abbrechen: Die Ausführung des Programms abbrechen"
 #: mainwindow.cpp:338
 #, kde-format
 msgid "&Direction Chooser..."
-msgstr "&Richtungsauswahl ..."
+msgstr "&Richtungsauswahl …"
 
 #: mainwindow.cpp:340
 #, kde-format
@@ -1780,7 +1781,7 @@ msgstr "Richtungsauswahl: Den Richtungsauswahldialog anzeigen"
 #: mainwindow.cpp:344
 #, kde-format
 msgid "&Color Picker..."
-msgstr "&Farbauswahl ..."
+msgstr "&Farbauswahl …"
 
 #: mainwindow.cpp:346
 #, kde-format
