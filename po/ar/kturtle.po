@@ -1433,7 +1433,7 @@ msgid ""
 "Specifies the localization language by a language code, defaults to \"en_US"
 "\" (only works in testing mode)"
 msgstr ""
-"تعيين اللغة المحلية بواسطة رمز لغة، افتراضيا \"en_US\" (فقط في وضع الاختبار)"
+"تعيين اللغة المحلية بواسطة رمز لغة، مبدئيا \"en_US\" (فقط في وضع الاختبار)"
 
 #: main.cpp:65
 #, kde-format
@@ -2124,7 +2124,7 @@ msgstr "لا يمكن تغيير اللغة إلى %1."
 #: mainwindow.cpp:846
 #, kde-format
 msgid "English [built in]"
-msgstr "الإنجليزية [افتراضي]"
+msgstr "الإنجليزية [مبدئي]"
 
 #: mainwindow.cpp:847
 #, kde-format
