@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-05 00:37+0000\n"
-"PO-Revision-Date: 2025-08-03 12:28+0400\n"
+"PO-Revision-Date: 2025-08-06 15:08+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -267,7 +267,7 @@ msgstr "معاملات"
 #: inspector.cpp:120
 #, kde-format
 msgid "No learned functions"
-msgstr "لا توجد دوال تم تعلمها"
+msgstr "لا توجد دوال مُتعلمة"
 
 #: inspector.cpp:162
 #, kde-format
@@ -1476,7 +1476,7 @@ msgstr "فتح الملفات الأخيرة"
 #: mainwindow.cpp:196
 #, kde-format
 msgid "Open Recent File: Open a recently used file"
-msgstr "فتح آخر ملف تم فتحه"
+msgstr "فتح آخر ملف: افتح أخر ملف مستعمل"
 
 #: mainwindow.cpp:198
 #, kde-format
