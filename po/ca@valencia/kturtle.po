@@ -1595,12 +1595,12 @@ msgstr "Apega: Apega el contingut del porta-retalls a la selecció actual"
 #: mainwindow.cpp:259
 #, kde-format
 msgid "Select all the code in the editor"
-msgstr "Selecciona tot el codi en l'editor"
+msgstr "Tria tot el codi en l'editor"
 
 #: mainwindow.cpp:260
 #, kde-format
 msgid "Select All: Select all the code in the editor"
-msgstr "Selecciona-ho tot: Selecciona tot el codi en l'editor"
+msgstr "Tria-ho tot: Tria tot el codi en l'editor"
 
 #: mainwindow.cpp:263
 #, kde-format
