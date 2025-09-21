@@ -17,7 +17,6 @@
 #include <QTreeWidget>
 
 #include <KLocalizedString>
-#include <QWidget>
 
 Inspector::Inspector(QWidget *parent)
     : QWidget(parent)
