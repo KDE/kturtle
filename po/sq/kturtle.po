@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeedu\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-05 00:37+0000\n"
+"POT-Creation-Date: 2025-09-23 00:38+0000\n"
 "PO-Revision-Date: 2011-06-18 18:18+0200\n"
 "Last-Translator: Dashamir Hoxha <dashohoxha@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -224,73 +224,73 @@ msgstr "Mos i Trego Gabimet"
 msgid "No errors occurred yet."
 msgstr "S'ka ndodhur akoma ndonjë gabim."
 
-#: inspector.cpp:36
+#: inspector.cpp:35
 #, kde-format
 msgid "Variables"
 msgstr "Ndryshoret"
 
-#: inspector.cpp:43
+#: inspector.cpp:42
 #, kde-format
 msgid "Functions"
 msgstr "Funksionet"
 
-#: inspector.cpp:50
+#: inspector.cpp:49
 #, kde-format
 msgid "Tree"
 msgstr "Degëzimet"
 
-#: inspector.cpp:93 inspector.cpp:111
+#: inspector.cpp:92 inspector.cpp:110
 #, kde-format
 msgid "name"
 msgstr "emri"
 
-#: inspector.cpp:93
+#: inspector.cpp:92
 #, kde-format
 msgid "value"
 msgstr "vlera"
 
-#: inspector.cpp:93
+#: inspector.cpp:92
 #, kde-format
 msgid "type"
 msgstr "lloj"
 
-#: inspector.cpp:103
+#: inspector.cpp:102
 #, kde-format
 msgid "No variables"
 msgstr "S'ka ndryshore"
 
-#: inspector.cpp:111
+#: inspector.cpp:110
 #, kde-format
 msgid "parameters"
 msgstr "parametrat"
 
-#: inspector.cpp:120
+#: inspector.cpp:119
 #, kde-format
 msgid "No learned functions"
 msgstr "Nuk ka funksione të mësuara"
 
-#: inspector.cpp:162
+#: inspector.cpp:161
 #, kde-format
 msgctxt "undefined type of a variable"
 msgid "empty"
 msgstr "bosh"
 
-#: inspector.cpp:168
+#: inspector.cpp:167
 #, kde-format
 msgid "boolean"
 msgstr "vërtetësi"
 
-#: inspector.cpp:171
+#: inspector.cpp:170
 #, kde-format
 msgid "number"
 msgstr "numër"
 
-#: inspector.cpp:174
+#: inspector.cpp:173
 #, kde-format
 msgid "string"
 msgstr "varg"
 
-#: inspector.cpp:206
+#: inspector.cpp:205
 #, kde-format
 msgid "None"
 msgstr "Asnjë"

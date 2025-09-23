@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-05 00:37+0000\n"
+"POT-Creation-Date: 2025-09-23 00:38+0000\n"
 "PO-Revision-Date: 2023-08-17 06:33+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -224,73 +224,73 @@ msgstr "შეცდომების დამალვა"
 msgid "No errors occurred yet."
 msgstr "შეცდომები ჯერ არ მომხდარა."
 
-#: inspector.cpp:36
+#: inspector.cpp:35
 #, kde-format
 msgid "Variables"
 msgstr "ცვლადები"
 
-#: inspector.cpp:43
+#: inspector.cpp:42
 #, kde-format
 msgid "Functions"
 msgstr "ფუნქციები"
 
-#: inspector.cpp:50
+#: inspector.cpp:49
 #, kde-format
 msgid "Tree"
 msgstr "ხე"
 
-#: inspector.cpp:93 inspector.cpp:111
+#: inspector.cpp:92 inspector.cpp:110
 #, kde-format
 msgid "name"
 msgstr "სახელი"
 
-#: inspector.cpp:93
+#: inspector.cpp:92
 #, kde-format
 msgid "value"
 msgstr "მნიშვნელობა"
 
-#: inspector.cpp:93
+#: inspector.cpp:92
 #, kde-format
 msgid "type"
 msgstr "ტიპი"
 
-#: inspector.cpp:103
+#: inspector.cpp:102
 #, kde-format
 msgid "No variables"
 msgstr "ცვლადების გარეშე"
 
-#: inspector.cpp:111
+#: inspector.cpp:110
 #, kde-format
 msgid "parameters"
 msgstr "პარამეტრები"
 
-#: inspector.cpp:120
+#: inspector.cpp:119
 #, kde-format
 msgid "No learned functions"
 msgstr "ნასწავლი ფუნქციების გარეშე"
 
-#: inspector.cpp:162
+#: inspector.cpp:161
 #, kde-format
 msgctxt "undefined type of a variable"
 msgid "empty"
 msgstr "ცარიელია"
 
-#: inspector.cpp:168
+#: inspector.cpp:167
 #, kde-format
 msgid "boolean"
 msgstr "ლოგიკური"
 
-#: inspector.cpp:171
+#: inspector.cpp:170
 #, kde-format
 msgid "number"
 msgstr "ნომერი"
 
-#: inspector.cpp:174
+#: inspector.cpp:173
 #, kde-format
 msgid "string"
 msgstr "სტრიქონი"
 
-#: inspector.cpp:206
+#: inspector.cpp:205
 #, kde-format
 msgid "None"
 msgstr "არაფერი"

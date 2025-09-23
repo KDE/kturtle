@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-05 00:37+0000\n"
+"POT-Creation-Date: 2025-09-23 00:38+0000\n"
 "PO-Revision-Date: 2021-11-16 09:35+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -231,73 +231,73 @@ msgstr "Сховати помилки"
 msgid "No errors occurred yet."
 msgstr "Помилок поки що немає."
 
-#: inspector.cpp:36
+#: inspector.cpp:35
 #, kde-format
 msgid "Variables"
 msgstr "Змінні"
 
-#: inspector.cpp:43
+#: inspector.cpp:42
 #, kde-format
 msgid "Functions"
 msgstr "Функції"
 
-#: inspector.cpp:50
+#: inspector.cpp:49
 #, kde-format
 msgid "Tree"
 msgstr "Дерево коду"
 
-#: inspector.cpp:93 inspector.cpp:111
+#: inspector.cpp:92 inspector.cpp:110
 #, kde-format
 msgid "name"
 msgstr "назва"
 
-#: inspector.cpp:93
+#: inspector.cpp:92
 #, kde-format
 msgid "value"
 msgstr "значення"
 
-#: inspector.cpp:93
+#: inspector.cpp:92
 #, kde-format
 msgid "type"
 msgstr "тип"
 
-#: inspector.cpp:103
+#: inspector.cpp:102
 #, kde-format
 msgid "No variables"
 msgstr "Немає змінних"
 
-#: inspector.cpp:111
+#: inspector.cpp:110
 #, kde-format
 msgid "parameters"
 msgstr "параметри"
 
-#: inspector.cpp:120
+#: inspector.cpp:119
 #, kde-format
 msgid "No learned functions"
 msgstr "Вивчених функцій немає"
 
-#: inspector.cpp:162
+#: inspector.cpp:161
 #, kde-format
 msgctxt "undefined type of a variable"
 msgid "empty"
 msgstr "невідомий"
 
-#: inspector.cpp:168
+#: inspector.cpp:167
 #, kde-format
 msgid "boolean"
 msgstr "булеве"
 
-#: inspector.cpp:171
+#: inspector.cpp:170
 #, kde-format
 msgid "number"
 msgstr "число"
 
-#: inspector.cpp:174
+#: inspector.cpp:173
 #, kde-format
 msgid "string"
 msgstr "рядок"
 
-#: inspector.cpp:206
+#: inspector.cpp:205
 #, kde-format
 msgid "None"
 msgstr "Немає"

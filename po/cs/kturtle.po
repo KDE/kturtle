@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-05 00:37+0000\n"
+"POT-Creation-Date: 2025-09-23 00:38+0000\n"
 "PO-Revision-Date: 2024-06-19 15:55+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -225,74 +225,74 @@ msgstr "Skrýt chyby"
 msgid "No errors occurred yet."
 msgstr "Zatím nenastaly žádné chyby."
 
-#: inspector.cpp:36
+#: inspector.cpp:35
 #, kde-format
 msgid "Variables"
 msgstr "Proměnné"
 
-#: inspector.cpp:43
+#: inspector.cpp:42
 #, kde-format
 msgid "Functions"
 msgstr "Funkce"
 
-#: inspector.cpp:50
+#: inspector.cpp:49
 #, kde-format
 msgid "Tree"
 msgstr "Strom"
 
-#: inspector.cpp:93 inspector.cpp:111
+#: inspector.cpp:92 inspector.cpp:110
 #, kde-format
 msgid "name"
 msgstr "název"
 
-#: inspector.cpp:93
+#: inspector.cpp:92
 #, kde-format
 msgid "value"
 msgstr "hodnota"
 
-#: inspector.cpp:93
+#: inspector.cpp:92
 #, kde-format
 msgid "type"
 msgstr "typ"
 
-#: inspector.cpp:103
+#: inspector.cpp:102
 #, kde-format
 msgid "No variables"
 msgstr "Žádné proměnné"
 
-#: inspector.cpp:111
+#: inspector.cpp:110
 #, kde-format
 msgid "parameters"
 msgstr "parametry"
 
-#: inspector.cpp:120
+#: inspector.cpp:119
 #, kde-format
 msgid "No learned functions"
 msgstr "Žádné naučené funkce"
 
-#: inspector.cpp:162
+#: inspector.cpp:161
 #, kde-format
 msgctxt "undefined type of a variable"
 msgid "empty"
 msgstr "prázdné"
 
-#: inspector.cpp:168
+#: inspector.cpp:167
 #, kde-format
 msgid "boolean"
 msgstr "pravdivost (binární)"
 
-#: inspector.cpp:171
+#: inspector.cpp:170
 #, kde-format
 msgid "number"
 msgstr "číslo"
 
-#: inspector.cpp:174
+#: inspector.cpp:173
 #, kde-format
 msgid "string"
 msgstr "text"
 
 # žádné parametry funkce v inspektoru funkcí
-#: inspector.cpp:206
+#: inspector.cpp:205
 #, kde-format
 msgid "None"
 msgstr "Žádné"
