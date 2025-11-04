@@ -315,7 +315,7 @@ msgstr "nombre"
 #: inspector.cpp:173
 #, kde-format
 msgid "string"
-msgstr "chaîne"
+msgstr "chaine"
 
 #: inspector.cpp:205
 #, kde-format
@@ -357,13 +357,13 @@ msgstr[1] ""
 #: interpreter/executer.cpp:436
 #, kde-format
 msgid "The %1 command only accepts a string as its parameter."
-msgstr "La commande %1 n'accepte qu'une chaîne de caractères comme paramètre."
+msgstr "La commande %1 n'accepte qu'une chaine de caractères comme paramètre."
 
 #: interpreter/executer.cpp:438
 #, kde-format
 msgid "The %1 command only accepts strings as its parameters."
 msgstr ""
-"La commande %1 n'accepte que des chaînes de caractères comme paramètres."
+"La commande %1 n'accepte que des chaines de caractères comme paramètres."
 
 #: interpreter/executer.cpp:443
 #, kde-format
@@ -465,7 +465,7 @@ msgstr "je ne peux pas faire un « <= » sans avoir 2 variables"
 #: interpreter/executer.cpp:878
 #, kde-format
 msgid "You need two numbers or string to do an addition"
-msgstr "Vous avez besoin de deux nombres ou chaînes pour faire une addition"
+msgstr "Vous avez besoin de deux nombres ou chaines pour faire une addition"
 
 #: interpreter/executer.cpp:891
 #, kde-format
@@ -618,8 +618,8 @@ msgid ""
 "Text string was not properly closed, expected a double quote, ' \" ', to "
 "close the string."
 msgstr ""
-"La chaîne de caractère n'a pas été proprement fermée, un guillemet double, "
-"« \" », étant attendu pour fermer la chaîne."
+"La chaine de caractère n'a pas été proprement fermée, un guillemet double, "
+"« \" », étant attendu pour fermer la chaine."
 
 #: interpreter/parser.cpp:635
 #, kde-format
@@ -1487,7 +1487,7 @@ msgid ""
 "Translates turtle code to embeddable C++ example strings (for developers "
 "only)"
 msgstr ""
-"Traduit le code de la tortue en chaînes d'exemple C++ qui peuvent être "
+"Traduit le code de la tortue en chaines d'exemple C++ qui peuvent être "
 "intégrées (seulement pour les développeurs)."
 
 #: mainwindow.cpp:60
@@ -1814,13 +1814,13 @@ msgstr "Sélecteur de &couleur..."
 #: mainwindow.cpp:346
 #, kde-format
 msgid "Shows the color picker dialog"
-msgstr "Affiche la boîte de dialogue du sélecteur de couleur"
+msgstr "Affiche la boite de dialogue du sélecteur de couleur"
 
 #: mainwindow.cpp:347
 #, kde-format
 msgid "Color Picker: Show the color picker dialog"
 msgstr ""
-"Sélecteur de couleur : afficher la boîte de dialogue du sélecteur de couleur"
+"Sélecteur de couleur : afficher la boite de dialogue du sélecteur de couleur"
 
 #: mainwindow.cpp:351
 #, kde-format
@@ -2136,7 +2136,7 @@ msgstr "<comment>"
 #: mainwindow.cpp:776
 #, kde-format
 msgid "<string>"
-msgstr "<chaîne>"
+msgstr "<chaine>"
 
 #: mainwindow.cpp:787
 #, kde-format
