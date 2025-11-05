@@ -4,7 +4,7 @@
 <para
 >Comme vous le savez déjà probablement, le langage de programmation de &kturtle;, &turtlescript;, peut être traduit. Ceci permet de faire tomber une barrière, en particulier pour les étudiants les plus jeunes, dans leur effort pour comprendre les bases de la programmation.</para>
 <para
->Lorsque vous traduisez &kturtle; dans une nouvelle langue, vous trouverez, en plus des chaînes de l'interface graphique, des commandes de programmation, des exemples et des messages d'erreurs inclus dans les fichiers standards au format <filename class="extension"
+>Lorsque vous traduisez &kturtle; dans une nouvelle langue, vous trouverez, en plus des chaines de l'interface graphique, des commandes de programmation, des exemples et des messages d'erreurs inclus dans les fichiers standards au format <filename class="extension"
 >.pot</filename
 >, de la même façon que ceux utilisés pour la traduction de &kde;. Tout est traduit en utilisant la méthode habituelle de traduction de &kde;. Il vous est ainsi fortement recommandé de vous documenter un peu sur la façon de traduire (comme vous le liriez probablement dans les commentaires de traducteurs).</para>
 <para
