@@ -118,9 +118,9 @@
 >&FDLNotice;</legalnotice>
 
 <date
->07/05/2016</date>
+>20/01/2021</date>
 <releaseinfo
->0.8.1 beta (Applications 16.04)</releaseinfo>
+>Applications 20.12</releaseinfo>
 
 <abstract>
 <para
@@ -130,8 +130,6 @@
 <keywordset>
 <keyword
 >KDE</keyword>
-<keyword
->&package;</keyword>
 <keyword
 >KTurtle</keyword>
 <keyword
@@ -143,9 +141,9 @@
 <keyword
 >programação</keyword>
 <keyword
->&turtlescript;</keyword>
+>TurtleScript</keyword>
 <keyword
->&logo;</keyword>
+>Logotipo</keyword>
 <keyword
 >tartaruga</keyword>
 </keywordset>
@@ -172,7 +170,7 @@
 <title
 >O que é o &turtlescript;?</title>
 <para
->A &turtlescript;, a linguagem de programação usada no &kturtle;, é inspirada por alguns dos conceitos fundamentais da família de linguagens de programação &logo;. A primeira versão da linguagem de programação &logo; foi criada por Seymour Papert do Laboratório de Inteligência Artificial do MIT em 1967 como uma alternativa à linguagem de programação LISP. Desde então, foram lançadas várias versões do &logo;. Em 1980, o &logo; foi ganhando adeptos, com versões para o MSX, Commodore, Atari e sistemas IBM PC. Estas versões eram principalmente para fins educativos. O MIT ainda mantém um <ulink url="http://el.media.mit.edu/logo-foundation/"
+>A &turtlescript;, a linguagem de programação usada no &kturtle;, é inspirada por alguns dos conceitos fundamentais da família de linguagens de programação &logo;. A primeira versão da linguagem de programação &logo; foi criada por Seymour Papert do Laboratório de Inteligência Artificial do MIT em 1967 como uma alternativa à linguagem de programação LISP. Desde então, foram lançadas várias versões do &logo;. Em 1980, o &logo; foi ganhando adeptos, com versões para o MSX, Commodore, Atari e sistemas IBM PC. Estas versões eram principalmente para fins educativos. O MIT ainda mantém um <ulink url="https://el.media.mit.edu/logo-foundation/"
 >site sobre &logo;</ulink
 >; que poder ser acessado em página do &logo; contendo uma lista de diversas implementações populares da linguagem.</para>
 <para
@@ -217,7 +215,7 @@
 ><para
 >A <link linkend="the-canvas"
 >área de desenho</link
->, onde a tartaruga circula, pode ser impressa ou salva como uma imagem (PNG) ou desenho (SVG).</para
+>, onde a tartaruga circula, pode ser impressa ou salva como uma imagem (PNG) ou desenho (&SVG;).</para
 ></listitem>
 <listitem
 ><para
@@ -280,9 +278,7 @@
 ></listitem>
 <listitem
 ><para
->&Anne-Marie.Mahfouf; <email
->annma AT kde DOT org</email
-> </para
+>&Anne-Marie.Mahfouf; &Anne-Marie.Mahfouf.mail; </para
 ></listitem>
 <listitem
 ><para

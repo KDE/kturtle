@@ -1,20 +1,23 @@
 <chapter id="getting-started">
 <title
->Começando</title>
+>Primeiros passos</title>
 <para
->Quando você inicia o &kturtle; você irá ver algo semelhante a isto: <screenshot
-> <screeninfo
->Aqui está uma imagem do &kturtle; quando o inicia pela primeira vez</screeninfo
-> <mediaobject
-> <imageobject
-> <imagedata fileref="mainwindow.png" format="PNG"/> </imageobject
-> <textobject
-> <phrase
->O &kturtle; recém-iniciado</phrase
-> </textobject
-> </mediaobject
-> </screenshot
-> Neste guia introdutório, iremos assumir que o idioma dos comandos do &turtlescript; é o português do Brasil. Você poderá alterar o idioma em <menuchoice
+>Ao iniciar o &kturtle;, você verá algo como isto:</para>
+<screenshot>
+  <screeninfo
+>Aqui está uma captura de tela do &kturtle; quando você o inicia pela primeira vez.</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="mainwindow.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>O &kturtle; recém iniciado</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+<para
+>Neste guia introdutório, iremos assumir que o idioma dos comandos do &turtlescript; é o português do Brasil. Você poderá alterar o idioma em <menuchoice
 ><guimenu
 >Configurações</guimenu
 ><guisubmenu
@@ -75,7 +78,7 @@ paraesquerda 90
 </listitem>
 <listitem>
 <para
->Talvez você tenha obtido uma mensagem de erro. Isto poderá simplesmente significar duas coisas: você poderá ter cometido um erro ao copiar os comandos ou você precisa definir o idioma correto para os comandos de &turtlescript; (você pode fazer isto escolhendo <menuchoice
+>Talvez você tenha obtido uma mensagem de erro. Isto poderá simplesmente significar duas coisas: você poderá ter cometido um erro ao copiar os comandos ou você precisa definir o idioma correto para os comandos de &turtlescript; (você pode fazer isto usando o submenu <menuchoice
 ><guimenu
 >Configurações</guimenu
 ><guisubmenu
@@ -146,7 +149,7 @@ vápara 40,100
 </screen
 >Mais uma vez, você deverá digitar ou copiar e colar o código para o editor ou abrir o exemplo <filename
 >flecha</filename
-> no menu <guimenu
+> no submenu <guimenu
 >Exemplos </guimenu
 > e execute-o (usando a opção <link linkend="run-execute"
 ><menuchoice
