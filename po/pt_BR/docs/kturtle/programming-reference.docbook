@@ -19,7 +19,9 @@
 >. Finalmente, é explicado como organizar a execução dos comandos com as <link linkend="controlling-execution"
 >instruções de controle da execução</link
 > na quinta seção e como criar os seus próprios comandos com o <link linkend="learn"
->aprender</link
+><userinput
+>aprender</userinput
+> </link
 >, na última seção.</para>
 
 <sect1 id="grammar">
@@ -101,14 +103,14 @@ parafrente 100
 >aqui</link
 >. Os comandos incorporados são <glossterm
 >realçados</glossterm
-> em azul-escuro</para>
+> em azul-escuro.</para>
 </sect2>
 
 <sect2 id="number">
 <title
 >Números</title>
 <para
->Muito provavelmente você já conhece alguma coisa sobre os números. A forma como eles são usados no &kturtle; não é muito diferente do idioma falado ou da matemática. </para>
+>Muito provavelmente você já conhece alguma coisa sobre os números. A forma como eles são usados no &kturtle; não é muito diferente do idioma falado ou da matemática.</para>
 <para
 >Temos então os números conhecidos por naturais: <userinput
 >0</userinput
@@ -122,13 +124,13 @@ parafrente 100
 >4</userinput
 >, <userinput
 >5</userinput
->, etc. Os números negativos: <userinput
+>, &etc; Os números negativos: <userinput
 >-1</userinput
 >, <userinput
 >-2</userinput
 >, <userinput
 >-3</userinput
->, etc. Finalmente, os números decimais ou fracionários, como por exemplo: <userinput
+>, &etc; Finalmente, os números decimais ou fracionários, como por exemplo: <userinput
 >0.1</userinput
 >, <userinput
 >3.14</userinput
@@ -199,7 +201,31 @@ mostre "Olá, sou uma cadeia de caracteres."
 ><primary
 >falso</primary
 ></indexterm
->. Algumas vezes também são chamados de: ligado e desligado, um e zero. Contudo, no &turtlescript; são sempre chamados de <userinput
+>. Às vezes também são chamados de: <quote
+><userinput
+>ligado</userinput
+></quote
+> e <quote
+><userinput
+>desligado</userinput
+></quote
+>, <quote
+><userinput
+>sim</userinput
+></quote
+> e <quote
+><userinput
+>não</userinput
+></quote
+>, <quote
+><userinput
+>um</userinput
+></quote
+> e <quote
+><userinput
+>zero</userinput
+></quote
+>. Contudo, no &turtlescript; são sempre chamados de <userinput
 >verdadeiro</userinput
 > e <userinput
 >falso</userinput
@@ -410,7 +436,11 @@ se (($a &lt; 10) e ($b == 5)) e ($a &lt; $b) {
 >operadores de comparação</link
 > é reunido com os operadores <userinput
 >e</userinput
->. Isto significa que todos os três têm de ser avaliados como "verdadeiro" para imprimir o "olá".</para>
+>. Isto significa que todos os três têm de ser avaliados como <quote
+>verdadeiro</quote
+> para imprimir o <quote
+>olá</quote
+>.</para>
 
 <para
 >Um exemplo com o <userinput
@@ -423,16 +453,34 @@ se ($n &lt; 10) ou ($n == 2) {
 </screen
 > Neste trecho de &turtlescript;, o lado esquerdo do <userinput
 >ou</userinput
-> é avaliado como 'verdadeiro', enquanto o direito é avaliado como 'falso'. Uma vez que um dos dois lados do operador <userinput
+> é avaliado como <quote
+>verdadeiro</quote
+>, enquanto o direito é avaliado como <quote
+>falso</quote
+>. Uma vez que um dos dois lados do operador <userinput
 >ou</userinput
-> é 'verdadeiro', o operador <userinput
+> é <quote
+>verdadeiro</quote
+>, o operador <userinput
 >ou</userinput
-> é avaliado como 'verdadeiro'. Isto significa que o 'olá' é impresso.</para>
+> é avaliado como <quote
+>verdadeiro</quote
+>. Isto significa que o <quote
+>olá</quote
+> é impresso.</para>
 
 <para
 >Finalmente, um exemplo com o <userinput
 >não</userinput
->, que muda o 'verdadeiro' para 'falso' e o 'falso' para 'verdadeiro'. Dê uma olhada: <screen
+>, que muda o <quote
+>verdadeiro</quote
+> para <quote
+>falso</quote
+> e o <quote
+>falso</quote
+> para <quote
+>verdadeiro</quote
+>. Dê uma olhada: <screen
 >$n = 1
 se nao ($n == 3) {
   mostre "olá"
@@ -455,7 +503,9 @@ $resposta = 10 &gt; 3
 >10</userinput
 > é comparado com o <userinput
 >3</userinput
->, através do operador 'maior que'. O resultado desta comparação, o <link linkend="boolean-value"
+>, através do operador <quote
+>maior que</quote
+>. O resultado desta comparação, o <link linkend="boolean-value"
 >valor booleano</link
 > <userinput
 >verdadeiro</userinput
@@ -575,7 +625,11 @@ $resposta = 10 &gt; 3
 > </tbody
 > </tgroup
 > </table
-> Lembre-se que o $A e o $B têm de ser <link linkend="number"
+> Lembre-se que o <userinput
+>$A</userinput
+> e o <userinput
+>$B</userinput
+> têm de ser <link linkend="number"
 >números</link
 > ou <link linkend="assignment-of-variables"
 >variáveis</link
@@ -592,7 +646,9 @@ $resposta = 10 &gt; 3
 >Comandos</title>
 <para
 >Ao usar os comandos, você diz à tartaruga ou ao &kturtle; para fazer algo. Alguns comandos precisam de dados introduzidos, enquanto outros trazem resultados. Nesta seção iremos explicar todos os comandos incorporados que podem ser usados no &kturtle;. Em alternativa, usando o <link linkend="learn"
->aprenda</link
+><userinput
+>aprenda</userinput
+></link
 >, poderá criar os seus próprios comandos. Os comandos incorporados ficam <glossterm
 >realçados</glossterm
 > em azul escuro.</para>
@@ -623,7 +679,7 @@ $resposta = 10 &gt; 3
 >parafrente</userinput
 > pode ser abreviado para <userinput
 >pf</userinput
-></para
+>.</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -1137,11 +1193,13 @@ $resposta = 10 &gt; 3
 <para
 >Muitas pessoas não sabem o que são as imagens móveis ('sprites' em inglês), daí uma breve explicação: as imagens móveis são pequenas imagens que podem percorrer a tela (para mais informações, veja o glossário sobre as <glossterm linkend="sprites"
 >imagens móveis</glossterm
->). </para>
+>).</para>
 <para
 >A seguir você irá encontrar uma apresentação completa de todos os comandos que lidam com imagens móveis.</para>
-<para
->[A versão atual do &kturtle; não suporta ainda o uso de imagens móveis além da tartaruga. Nas versões futuras, você poderá mudar a tartaruga para outra coisa que desejar]</para>
+<note
+><para
+>A versão atual do &kturtle; não suporta ainda o uso de imagens móveis além da tartaruga. Nas versões futuras, você poderá mudar a tartaruga para outra coisa que desejar.</para
+></note>
   <variablelist>
     <anchor id="spriteshow"/>
     <varlistentry
@@ -1703,7 +1761,9 @@ repita 36 {
 
 <sect2 id="if">
 <title
->Executar o "se"</title>
+>Executar <quote
+>se</quote
+></title>
   <variablelist>
     <varlistentry>
       <term
@@ -1748,7 +1808,9 @@ se $x &gt; 5 {
 
 <sect2 id="else">
 <title
->Se não, em outras palavras: "senão"</title>
+>Se não, em outras palavras: <quote
+>senão</quote
+></title>
   <variablelist>
     <varlistentry>
       <term
@@ -1802,7 +1864,9 @@ se $x &gt; 5 {
 
 <sect2 id="while">
 <title
->O ciclo "enquanto"</title>
+>O ciclo <quote
+>enquanto</quote
+></title>
   <variablelist>
     <varlistentry>
       <term
@@ -1859,7 +1923,9 @@ enquanto $x &lt; 5 {
 
 <sect2 id="repeat">
 <title
->O ciclo "repita"</title>
+>O ciclo <quote
+>repita</quote
+></title>
   <variablelist>
     <varlistentry>
       <term
@@ -1890,7 +1956,9 @@ enquanto $x &lt; 5 {
 
 <sect2 id="for">
 <title
->O ciclo "para", um ciclo de contagem</title>
+>O ciclo <quote
+>para</quote
+>, um ciclo de contagem</title>
   <variablelist>
     <varlistentry>
       <term

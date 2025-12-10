@@ -393,9 +393,11 @@ usenada
 >imagem móvel</glossterm>
 <glossdef
 ><para
->Uma imagem móvel é uma pequena imagem que pode ser movida pela tela. A nossa tartaruga é uma imagem móvel, por exemplo.</para>
-<para
->Nota: com esta versão do &kturtle;, a imagem móvel não consegue ser alterada de uma tartaruga para outra coisa. As versões futuras do &kturtle; serão capazes de fazer isso.</para
+>Uma imagem móvel é uma pequena imagem que pode ser movida pela tela. A nossa tartaruga é uma imagem móvel, por exemplo. <note
+><para
+>Com esta versão do &kturtle;, a imagem móvel não consegue ser alterada de uma tartaruga para outra coisa. As versões futuras do &kturtle; serão capazes de fazer isso.</para
+></note
+></para
 ></glossdef>
 </glossentry>
 

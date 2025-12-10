@@ -28,7 +28,7 @@
 > (5) onde todas as ações podem ser acessadas; a <link linkend="the-toolbar"
 >barra de ferramentas</link
 > (4) que permite-lhe selecionar rapidamente as ações mais utilizadas; o <guilabel
->Console</guilabel
+>Console:</guilabel
 >, que você poderá usar para inserir um comando numa única linha para teste; e a <link linkend="the-statusbar"
 >barra de status</link
 > (na parte inferior da janela) onde você encontrará alguma informação sobre o estado do &kturtle;.</para>
@@ -43,27 +43,33 @@
 >Arquivo</link
 >. O editor pode ser acoplado a qualquer um dos lados da janela principal ou poderá ser destacado e colocado em qualquer local da sua tela.</para>
 <para
->Você tem várias formas de obter algum código no editor. A forma mais fácil é usar um exemplo já feito. Você escolhe o <menuchoice
+>Você tem várias formas de obter algum código no editor. A forma mais fácil é usar um exemplo já feito. Selecione um exemplo no submenu <menuchoice
 ><guimenu
 >Arquivo</guimenu
 ><guisubmenu
 >Exemplos</guisubmenu
 ></menuchoice
-> no <link linkend="the-file-menu"
->menu Arquivo</link
->, onde poderá clicar em um arquivo. O arquivo que escolher será aberto no <link linkend="the-editor"
+>. O arquivo de exemplo que escolher será aberto no <link linkend="the-editor"
 >editor</link
->, e você poderá ir então usar o <menuchoice
+>, e você poderá ir então usar o menu <menuchoice
 ><guimenu
 >Executar</guimenu
 ><guimenuitem
 >Executar</guimenuitem
 ></menuchoice
-> no menu, ou <guibutton
+> (atalho: <keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+>) ou o botão <inlinemediaobject
+> <imageobject
+> <imagedata fileref="media-playback-pause.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
 >Executar</guibutton
-> na barra de ferramentas, para rodar o código se desejar.</para>
+> da barra de ferramentas para executar o código se desejar.</para>
 <para
->Você poderá abrir os arquivos de &turtlescript; selecionando<menuchoice
+>Você poderá abrir os arquivos de &turtlescript; selecionando o menu <menuchoice
 ><guimenu
 >Arquivo</guimenu
 ><guimenuitem
@@ -103,8 +109,8 @@
 <title
 >A barra de ferramentas</title>
 <para
->Aqui você poderá acessar rapidamente às ações mais utilizadas. A barra de ferramentas também contém o <guilabel
->Console</guilabel
+>Aqui você poderá acessar rapidamente às ações mais utilizadas. A barra de ferramentas também contém a caixa de entrada <guilabel
+>Console:</guilabel
 >, onde poderá invocar rapidamente os comandos; isto poderá ser útil no caso de querer testar um comando sem modificar o conteúdo do <link linkend="the-editor"
 >Editor</link
 >.</para>
@@ -219,7 +225,7 @@
 ></term>
       <listitem
 ><para
->Um exemplo dos programas do &turtlescript;. Os exemplos estão em seu idioma favorito, que poderá ser escolhido em <menuchoice
+>Um exemplo dos programas do &turtlescript;. Os exemplos estão em seu idioma favorito, que poderá ser selecionado no submenu <menuchoice
 ><guimenu
 >Configurações</guimenu
 ><guisubmenu
@@ -308,7 +314,7 @@
 ></term>
       <listitem
 ><para
->Exporta o conteúdo atual do Editor como um arquivo em HTML que inclui as cores do realce.</para
+>Exporta o conteúdo atual do Editor como um arquivo em &HTML; que inclui as cores do realce.</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -610,9 +616,7 @@
 ><menuchoice
 ><shortcut
 > <keycombo
-><keycap
->Ins</keycap
-></keycombo
+>&Ins;</keycombo
 > </shortcut
 > <guimenu
 >Editar</guimenu
@@ -666,7 +670,7 @@
 ><para
 >Exporta o conteúdo atual da <link linkend="the-canvas"
 >Área de Desenho</link
-> como um desenho vetorial no formato SVG (Scalable Vector Graphics).</para
+> como um desenho vetorial no formato &SVG; (Scalable Vector Graphics).</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -931,7 +935,7 @@
       <listitem
 ><para
 >Exiba ou esconda a aba <guilabel
->Erro</guilabel
+>Erros</guilabel
 > com a lista de erros resultantes do código em execução. Se esta opção estiver habilitada, clique na <guilabel
 >área de desenho</guilabel
 > para ver a tartaruga novamente.</para
@@ -971,14 +975,14 @@
 ><guimenu
 >Configurações</guimenu
 ><guimenuitem
->Mostrar a Barra de Ferramentas</guimenuitem
+>Mostrar barra de ferramentas</guimenuitem
 ></menuchoice
 ></term>
       <listitem
 ><para
 ><action
 >Ativa ou desativa</action
-> a barra de ferramentas principal</para
+> a barra de ferramentas principal.</para
 ></listitem>
     </varlistentry>
   </variablelist
@@ -991,14 +995,14 @@
 ><guimenu
 >Configurações</guimenu
 ><guimenuitem
->Mostrar a Barra de Estado</guimenuitem
+>Mostrar barra de estado</guimenuitem
 ></menuchoice
 ></term>
       <listitem
 ><para
 ><action
 >Alterna</action
-> a barra de status</para
+> a barra de status.</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -1044,7 +1048,7 @@
 <para
 >O &kturtle; tem o menu <guimenu
 >Ajuda</guimenu
-> padrão do &kde;, tal como se encontra descrito nos <ulink url="help:/fundamentals/ui.html#menus-settings"
+> padrão do &kde;, tal como se encontra descrito nos <ulink url="help:/fundamentals/menus.html#menus-settings"
 >Fundamentos do &kde;</ulink
 >, com um item adicional:</para>
   <variablelist>
