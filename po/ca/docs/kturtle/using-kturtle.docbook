@@ -63,7 +63,7 @@
 ></keycombo
 >) o el botó <inlinemediaobject
 > <imageobject
-> <imagedata fileref="media-playback-pause.png" format="PNG"/> </imageobject
+> <imagedata fileref="media-playback-start.png" format="PNG"/> </imageobject
 > </inlinemediaobject
 > <guibutton
 >Executa</guibutton

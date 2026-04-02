@@ -63,11 +63,11 @@
 ></keycombo
 >) of de knop <inlinemediaobject
 > <imageobject
-> <imagedata fileref="media-playback-pause.png" format="PNG"/> </imageobject
+> <imagedata fileref="media-playback-start.png" format="PNG"/> </imageobject
 > </inlinemediaobject
 > <guibutton
 >Laten werken</guibutton
-> in de taakbalk als u hetprogramma wilt zien wat het programma doet.</para>
+> in de taakbalk als u wilt laten zien wat het programma doet.</para>
 <para
 >Je kunt &turtlescript;-bestanden openen met behulp van de menuoptie <menuchoice
 ><guimenu
