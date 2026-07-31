@@ -19,7 +19,7 @@
 >rechtsdrehen</userinput
 > und <userinput
 >richtung</userinput
-> brauchen eine Eingabe in Grad.</para
+> benötigen eine Eingabe in Grad.</para
 ></glossdef>
 </glossentry>
 
@@ -28,28 +28,28 @@
 >Eingabe- und Rückgabewerte der Befehle</glossterm>
 <glossdef
 ><para
->Einige Befehle brauchen eine Eingabe, einige geben einen Wert zurück und andere brauchen eine Eingabe <emphasis
+>Einige Befehle benötigen eine Eingabe, einige geben einen Wert zurück und andere benötigen eine Eingabe <emphasis
 >und</emphasis
-> geben einen Wert zurück und einige Befehle brauchen weder Eingabewerte noch geben sie einen Wert zurück.</para>
+> geben einen Wert zurück und einige Befehle benötigen weder Eingabewerte noch geben sie einen Wert zurück.</para>
 <para
->Einige Beispiele für Befehle, die nur Eingabewerte brauchen, sind: <screen>
+>Einige Beispiele für Befehle, die nur Eingabewerte benötigen, sind: <screen>
 vorwärts 50
 stiftfarbe 255,0,0
 drucke "Hallo!"
 </screen
 > Der Befehl <userinput
 >vorwärts</userinput
-> braucht <userinput
+> benötigt <userinput
 >50</userinput
 > als Eingabe. <userinput
 >vorwärts</userinput
-> braucht diesen Wert, um zu wissen, um wie viele <glossterm  linkend="pixels"
+> benötigt diesen Wert, um zu wissen, um wie viele <glossterm  linkend="pixels"
 >Pixel </glossterm
 > es vorwärts gehen soll.  <userinput
 >stiftfarbe</userinput
-> braucht einen Farbcode als Eingabe und <userinput
+> benötigt einen Farbcode als Eingabe und <userinput
 >drucke</userinput
-> braucht eine Zeichenfolge (einen Text) als Eingabe. Beachten Sie, das die Eingabe auch eine Variable sein kann, wie das folgende Beispiel zeigt: <screen
+> benötigt eine Zeichenfolge (einen Text) als Eingabe. Beachten Sie, das die Eingabe auch eine Variable sein kann, wie das folgende Beispiel zeigt: <screen
 >$x = 50
 drucke $x
 $str = "Hallo!"
@@ -59,12 +59,12 @@ drucke $str
 
 <para
 >Nun einige Beispiele von Befehlen mit Rückgabewerten:<screen>
-$x = frage "Bitte geben Sie irgendwas ein und drücken dann OK ... Danke!"
+$x = frage "Bitte geben Sie irgendwas ein und drücken dann OK … Danke!"
 $r = zufall 1,100
 </screen
 > Der Befehl <userinput
 >frage</userinput
-> braucht eine Zeichenfolge als Eingabe und gibt die eingegebene Zahl oder Zeichenfolge wieder zurück. Wie Sie sehen, wird die Ausgabe von <userinput
+> benötigt eine Zeichenfolge als Eingabe und gibt die eingegebene Zahl oder Zeichenfolge wieder zurück. Wie Sie sehen, wird die Ausgabe von <userinput
 >frage</userinput
 > in der Variablen <userinput
 >x</userinput
@@ -133,7 +133,7 @@ stifthoch
 <entry
 >dunkelgrün (fett)</entry>
 <entry
->Klammern brauchen Sie, um Teile des Quelltextes in Gruppen zusammenzufassen. Klammern werden häufig zusammen mit <link linkend="controlling-execution"
+>Klammern benötigen Sie, um Teile des Quelltextes in Gruppen zusammenzufassen. Klammern werden häufig zusammen mit <link linkend="controlling-execution"
 >Kontrollanweisungen</link
 > benötigt.</entry>
 </row>
@@ -255,7 +255,7 @@ stifthoch
 ><para
 >Ein Pixel ist ein Punkt auf dem Bildschirm. Wenn Sie Ihren Monitor aus der Nähe anschauen, sehen Sie die Pixel. Alle Bilder auf dem Bildschirm sind aus diesen Pixeln zusammengesetzt. Ein Pixel ist die kleinste Einheit, die auf dem Bildschirm dargestellt werden kann.</para>
 <para
->Viele Befehle brauchen als Eingabe eine Anzahl von Pixeln. Diese Befehle sind: <userinput
+>Viele Befehle benötigen als Eingabe eine Anzahl von Pixeln. Diese Befehle sind: <userinput
 >vorwärts</userinput
 >, <userinput
 >rückwärts</userinput
@@ -280,7 +280,7 @@ stifthoch
 >RGB Kombinationen (Farbcodes)</glossterm>
 <glossdef
 ><para
->RGB Kombinationen braucht man zur Bestimmung von Farben. Das <quote
+>RGB Kombinationen benötigt man zur Bestimmung von Farben. Das <quote
 >R</quote
 > bedeutet <quote
 >rot</quote
@@ -379,7 +379,7 @@ stifthoch
 </table>
 </para>
 <para
->Zwei Befehle brauchen eine RGB-Kombination als Eingabe: Das sind <userinput
+>Zwei Befehle benötigen eine RGB-Kombination als Eingabe: Das sind <userinput
 >papierfarbe</userinput
 > und <userinput
 >stiftfarbe</userinput

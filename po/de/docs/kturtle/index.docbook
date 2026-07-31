@@ -104,7 +104,7 @@
 >&FDLNotice;</legalnotice>
 
 <date
->2021-01-20</date>
+>2021–01–20</date>
 <releaseinfo
 >Anwendungen 20.12</releaseinfo>
 
@@ -156,7 +156,7 @@
 <title
 >Was ist &turtlescript;?</title>
 <para
->&turtlescript;, die in &kturtle; benutzte Programmiersprache, ist Konzepten der Programmiersprache &logo; beeinflusst. Die erste Version von &logo; wurde 1967 von Seymour Papert am MIT Artificial Intelligence Laboratory aus der  Programmiersprache Lisp entwickelt. Seit dieser Zeit sind viele Versionen von &logo; veröffentlicht worden. Im Jahr 1980 wurde &logo; bekannt durch Versionen für MSX, Commodore, Atari, Apple II und den IBM PC Computer. Diese Versionen waren für den Unterricht gedacht. Am MIT finden Sie immer noch eine Webseite für &logo; unter <ulink url="https://el.media.mit.edu/logo-foundation/"
+>&turtlescript;, die in &kturtle; verwendete Programmiersprache, ist Konzepten der Programmiersprache &logo; beeinflusst. Die erste Version von &logo; wurde 1967 von Seymour Papert am MIT Artificial Intelligence Laboratory aus der  Programmiersprache Lisp entwickelt. Seit dieser Zeit sind viele Versionen von &logo; veröffentlicht worden. Im Jahr 1980 wurde &logo; bekannt durch Versionen für MSX, Commodore, Atari, Apple II und den IBM PC Computer. Diese Versionen waren für den Unterricht gedacht. Am MIT finden Sie immer noch eine Webseite für &logo; unter <ulink url="https://el.media.mit.edu/logo-foundation/"
 >https://el.media.mit.edu/logo-foundation/</ulink
 > mit einer Liste von mehreren populären Implementationen dieser Sprache.</para>
 <para
@@ -207,11 +207,11 @@
 ><para
 >Kontexthilfe: Drücken Sie <keysym
 >F2</keysym
-> oder benutzen Sie <menuchoice
+> oder verwenden Sie <menuchoice
 ><guimenu
 >Hilfe</guimenu
 ><guimenuitem
->Hilfe zu: ...</guimenuitem
+>Hilfe zu: …</guimenuitem
 ></menuchoice
 >, um zu dem aktuellen Quelltext unter dem Cursor eine passende Erläuterung zu erhalten.</para
 ></listitem>
@@ -250,7 +250,7 @@
 <para
 >&kturtle; </para>
 <para
->Programm Copyright 2003-2007 Cies Breijs <email
+>Programm-Copyright 2003–2007 Cies Breijs <email
 >cies AT kde DOT nl</email
 ></para>
 
