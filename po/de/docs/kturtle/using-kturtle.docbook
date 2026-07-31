@@ -41,13 +41,13 @@
 >Bearbeiten</link
 >. Der Editor kann auf jeder Seite des Hauptfensters oder losgelöst vom Hauptfenster irgendwo auf Ihrer Arbeitsfläche angeordnet werden.</para>
 <para
->Es gibt mehrere Möglichkeiten, Quelltext im Editor zu erstellen. Am einfachsten ist es, ein Beispiel zu laden: Wählen Sie mit  <menuchoice
+>Es gibt mehrere Möglichkeiten, Quelltext im Editor zu erstellen. Am einfachsten ist es, ein Beispiel zu laden: Wählen Sie unter  <menuchoice
 ><guimenu
 >Datei</guimenu
 ><guisubmenu
 >Beispiele</guisubmenu
 ></menuchoice
-> im ein Beispiel aus. Die ausgewählte Datei wird im <link linkend="the-editor"
+> ein Beispiel aus. Die ausgewählte Datei wird im <link linkend="the-editor"
 >Editor</link
 > geöffnet, dann können Sie mit <menuchoice
 ><guimenu
@@ -61,7 +61,7 @@
 ></keycombo
 >) in der Menüleiste oder <inlinemediaobject
 > <imageobject
-> <imagedata fileref="media-playback-pause.png" format="PNG"/> </imageobject
+> <imagedata fileref="media-playback-start.png" format="PNG"/> </imageobject
 > </inlinemediaobject
 > <guibutton
 >Ausführen</guibutton
@@ -1068,7 +1068,7 @@
 ><para
 >Dies ist eine sehr hilfreiche Funktion, sie zeigt Hilfe zum Quelltext, in dem der Cursor gerade steht. Wenn Sie &eg; den Befehl <userinput
 >drucke</userinput
-> in Ihrem Quelltext benutzen und die Hilfe zu diesem Befehl lesen möchten, bewegen Sie den Cursor in diesen Befehl <userinput
+> in Ihrem Quelltext verwenden und die Hilfe zu diesem Befehl lesen möchten, bewegen Sie den Cursor in diesen Befehl <userinput
 >drucke</userinput
 > und drücken <keysym
 >F2</keysym

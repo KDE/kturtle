@@ -36,7 +36,7 @@
 >Schwester</quote
 > oder <quote
 >Haus</quote
->. Diese verschiedene Arten von Wörtern und Symbolen werden für verschiedene Zwecke benutzt. &turtlescript; ist eine Programmiersprache, die dazu benutzt wird, &kturtle; Anweisungen zu geben.</para>
+>. Diese verschiedene Arten von Wörtern und Symbolen werden für verschiedene Zwecke verwendet. &turtlescript; ist eine Programmiersprache, die dazu verwendet wird, &kturtle; Anweisungen zu geben.</para>
 <para
 >In diesem Abschnitt werden einige der verschiedenen Arten von Wörtern und Symbolen in &turtlescript; kurz erklärt. In &turtlescript; gibt es <link linkend="comment"
 >Kommentare</link
@@ -55,7 +55,7 @@
 <title
 >Kommentare</title>
 <para
->Ein Programm besteht aus Befehlen, die beim Ablauf ausgeführt werden, und sogenannten Kommentaren. Kommentare werden nicht ausgeführt, &kturtle; ignoriert sie beim Starten des Programms. Kommentare werden benutzt, damit andere Programmierer den Quelltext besser verstehen. Jeder Text nach einem <userinput
+>Ein Programm besteht aus Befehlen, die beim Ablauf ausgeführt werden, und sogenannten Kommentaren. Kommentare werden nicht ausgeführt, &kturtle; ignoriert sie beim Starten des Programms. Kommentare werden verwendet, damit andere Programmierer den Quelltext besser verstehen. Jeder Text nach einem <userinput
 >#</userinput
 >-Zeichen wird in &turtlescript; als Kommentar betrachtet. Dieses kleine Programm zum Beispiel tut nichts: <screen>
 # dieses kleine Programm tut nichts, das ist nur ein Kommentar
@@ -89,8 +89,8 @@ drucke "dieser Text wird auf der Zeichenfläche ausgedruckt"
 <title
 >Befehle</title>
 <para
->Mit Befehlen geben Sie der Schildkröte oder &kturtle; Anweisungen, was sie tun soll. Einige Befehle brauchen eine Eingabe, andere geben einen Wert zurück. <screen>
-# der Befehl vorwärts braucht eine Eingabe, in diesem Fall die Zahl 100:
+>Mit Befehlen geben Sie der Schildkröte oder &kturtle; Anweisungen, was sie tun soll. Einige Befehle benötigen eine Eingabe, andere geben einen Wert zurück. <screen>
+# der Befehl vorwärts benötigt eine Eingabe, in diesem Fall die Zahl 100:
 vorwärts 100
 </screen
 > Die erste Zeile ist ein <link linkend="comment"
@@ -103,13 +103,13 @@ vorwärts 100
 >100</userinput
 >. Die Zahl ist nicht Bestandteil des Befehls, sie ist die „Eingabe“ für den Befehl. Einige Befehle wie &eg; <userinput
 >gehe</userinput
-> brauchen mehr als einen Eingabewert. Mehrere Werte müssen durch Komma (<userinput
+> benötigen mehr als einen Eingabewert. Mehrere Werte müssen durch Komma (<userinput
 >,</userinput
 >) getrennt werden.</para>
 <para
 >Einige Befehle wie &eg; <userinput
 >gehe</userinput
-> brauchen mehr als einen Eingabewert. Mehrere Werte müssen durch Komma (<userinput
+> benötigen mehr als einen Eingabewert. Mehrere Werte müssen durch Komma (<userinput
 >,</userinput
 >) getrennt werden.</para>
 <para
@@ -156,13 +156,13 @@ vorwärts 100
 >-1.0</userinput
 >. Der Punkt (<userinput
 >.</userinput
->) wird als Dezimaltrennzeichen benutzt. </para>
+>) wird als Dezimaltrennzeichen verwendet. </para>
 <para
 >Zahlen können in <link linkend="mathematical-operators"
 >mathematischen Berechnungen</link
 > und <link linkend="comparing-operators"
 >Vergleichen</link
-> benutzt werden. Sie können auch in <link linkend="assignment-of-variables"
+> verwendet werden. Sie können auch in <link linkend="assignment-of-variables"
 >Variablen</link
 > gespeichert werden. Zahlen werden in dunklem Rot <glossterm
 >hervorgehoben</glossterm
@@ -195,7 +195,7 @@ drucke "Hallo, ich bin eine Zeichenfolge."
 >mathematischen Berechnungen</link
 > und <link linkend="comparing-operators"
 >Vergleichen</link
-> benutzt werden. Zeichenfolgen werden in Rot <glossterm
+> verwendet werden. Zeichenfolgen werden in Rot <glossterm
 >hervorgehoben</glossterm
 >.</para>
 </sect2>
@@ -333,7 +333,7 @@ $potenz    = 2 ^ 2
 >Nun ein Beispiel mit Klammern: <screen>
 drucke ( ( 20 - 5 ) * 2 / 30 ) + 1
 </screen
-> Der Ausdruck in Klammern wird zuerst berechnet. In diesen Beispiel wird also 20-5 berechnet, dann mit 2 multipliziert, durch 30 dividiert und dann 1 addiert (das ergibt 2). Klammern können auch in anderen Fällen benutzt werden.</para>
+> Der Ausdruck in Klammern wird zuerst berechnet. In diesen Beispiel wird also 20-5 berechnet, dann mit 2 multipliziert, durch 30 dividiert und dann 1 addiert (das ergibt 2). Klammern können auch in anderen Fällen verwendet werden.</para>
 <para
 >&kturtle; hat noch erweiterte mathematische Funtionen in der Form von Befehlen. Schauen Sie sich die folgenden Befehle an, dabei handelt es sich um fortgeschrittene mathematische Operationen: <link linkend="round"
 >rund</link
@@ -656,7 +656,7 @@ $ergebnis = 10 &gt; 3
 <title
 >Befehle</title>
 <para
->Mit Befehlen sagen Sie der Schildkröte oder &kturtle;, was sie tun soll. Einige Befehle brauchen Eingabewerte, andere geben Werte zurück. In diesem Abschnitt werden alle eingebauten Befehle für &kturtle; erklärt. Zusätzlich können mit <link linkend="learn"
+>Mit Befehlen sagen Sie der Schildkröte oder &kturtle;, was sie tun soll. Einige Befehle benötigen Eingabewerte, andere geben Werte zurück. In diesem Abschnitt werden alle eingebauten Befehle für &kturtle; erklärt. Zusätzlich können mit <link linkend="learn"
 ><userinput
 >lerne</userinput
 ></link
@@ -1069,7 +1069,7 @@ $ergebnis = 10 &gt; 3
 >stiftfarbe</userinput
 > setzt die Farbe für den Zeichenstift. <userinput
 >stiftfarbe</userinput
-> braucht eine <glossterm linkend="rgb"
+> benötigt eine <glossterm linkend="rgb"
 >RGB-Kombination</glossterm
 > als Eingabewert. <userinput
 >stiftfarbe</userinput
@@ -1131,7 +1131,7 @@ $ergebnis = 10 &gt; 3
 >papierfarbe</userinput
 > setzt die Farbe der Zeichenfläche. <userinput
 >papierfarbe</userinput
-> braucht eine <glossterm linkend="rgb"
+> benötigt eine <glossterm linkend="rgb"
 > RGB-Kombination</glossterm
 > als Eingabewert. <userinput
 >papierfarbe</userinput
@@ -1282,7 +1282,7 @@ $ergebnis = 10 &gt; 3
 >drucke</userinput
 > schreibt die Schildkröte Text auf die Zeichenfläche. <userinput
 >drucke</userinput
-> braucht Zahlen und Zeichenfolgen als Eingabewert. Sie können auch mehrere Zahlen und Zeichenfolgen mit dem Symbol <userinput
+> benötigt Zahlen und Zeichenfolgen als Eingabewert. Sie können auch mehrere Zahlen und Zeichenfolgen mit dem Symbol <userinput
 >+</userinput
 > verbinden, wie das folgende kleine Beispiel zeigt: <screen
 >$jahr = 2003
@@ -1311,9 +1311,9 @@ drucke $autor + " startete das KTurtle Projekt " + $jahr + " und arbeitet immer 
 >schriftgröße</userinput
 > setzt die Größe der Schrift, die mit dem Befehl <userinput
 >drucke</userinput
-> benutzt wird. <userinput
+> verwendet wird. <userinput
 >schriftgröße</userinput
-> braucht nur eine Zahl als Eingabewert. Die Größe der Schrift wird in <glossterm linkend="pixels"
+> benötigt nur eine Zahl als Eingabewert. Die Größe der Schrift wird in <glossterm linkend="pixels"
 >Pixeln</glossterm
 > angegeben.</para
 ></listitem>
@@ -1366,7 +1366,7 @@ drucke rund(10.3)
 >zufall X,Y</screen
 ><userinput
 >zufall</userinput
-> ist ein Befehl, der Eingabewerte braucht und einen Wert zurückgibt. Als Eingabe sind zwei Zahlen nötig, die erste (X) bestimmt die Untergrenze, die zweite (Y) die Obergrenze der Ausgabe. Der Rückgabewert ist eine zufällige Zahl größer oder gleich der unteren Grenze und kleiner oder gleich der oberen Grenze. Hier ein kurzes Beispiel: <screen>
+> ist ein Befehl, der Eingabewerte benötigt und einen Wert zurückgibt. Als Eingabe sind zwei Zahlen nötig, die erste (X) bestimmt die Untergrenze, die zweite (Y) die Obergrenze der Ausgabe. Der Rückgabewert ist eine zufällige Zahl größer oder gleich der unteren Grenze und kleiner oder gleich der oberen Grenze. Hier ein kurzes Beispiel: <screen>
 wiederhole 500 {
   $x = zufall 1,20
   vorwärts $x
@@ -1415,7 +1415,7 @@ wiederhole 500 {
 >wurzel X</screen
 >Der Befehl <userinput
 >wurzel</userinput
-> wird benutzt, um die Quadratwurzel einer Zahl X zu berechnen.</para
+> wird verwendet, um die Quadratwurzel einer Zahl X zu berechnen.</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -1562,7 +1562,7 @@ arctan X
 >nachricht X</screen
 >Der Befehl <userinput
 >nachricht</userinput
-> braucht eine <link linkend="string" 
+> benötigt eine <link linkend="string" 
 >Zeichenfolge</link
 > als Eingabewert. Es öffnet sich ein Dialog und der Text der <link linkend="string" 
 >Zeichenfolge</link
@@ -1589,7 +1589,7 @@ arctan X
 >frage X</screen
 ><userinput
 >frage</userinput
-> braucht eine <link linkend="string"
+> benötigt eine <link linkend="string"
 >Zeichenfolge</link
 > als Eingabewert. Der Text der Zeichenfolge wird in einem Dialog angezeigt, genau wie bei <link linkend="message"
 >nachricht</link
@@ -1645,7 +1645,7 @@ drucke "Im Jahr 2003 waren Sie irgendwann " + $aus + " Jahre alt."
 > erhält eine Variable ihren Inhalt. Sie behält diesen Wert, bis das Programm beendet oder der Variablen ein anderer Wert zugewiesen wird.</para>
 
 <para
->Ist Variablen erst einmal ein Wert zugewiesen worden, können Sie wie ihr Inhalt benutzt werden. Als Beispiel dazu der folgende Quelltext in &turtlescript;: <screen>
+>Ist Variablen erst einmal ein Wert zugewiesen worden, können Sie wie ihr Inhalt verwendet werden. Als Beispiel dazu der folgende Quelltext in &turtlescript;: <screen>
 $x = 10
 $x = $x / 3
 drucke $x
@@ -1666,10 +1666,10 @@ drucke $x
 >$x</userinput
 > ausgegeben. In Zeile zwei und drei wird die Variable <userinput
 >$x</userinput
-> wie iht Inhalt benutzt.</para>
+> wie iht Inhalt verwendet.</para>
 
 <para
->Variablen muss ein Wert zugewiesen werden, ehe sie benutzt werden können. Ein Beispiel: <screen>
+>Variablen muss ein Wert zugewiesen werden, ehe sie verwendet werden können. Ein Beispiel: <screen>
 drucke $n
 </screen
 > Mit diesem Befehl erhalten Sie eine Fehlermeldung.</para>
@@ -1700,7 +1700,7 @@ rückwärts 30
 >rückwärts 30</userinput
 > ist erforderlich, um jede Ausgabe auf einer neuen Zeile zu schreiben. Dieses Beispiele zeigt, dass Variablen mit allen <link linkend="operators"
 >Operatoren</link
-> in der gleichen Weise wie ihr Wert benutzt werden können. Außerdem können sie als Eingabe für <link linkend="commands"
+> in der gleichen Weise wie ihr Wert verwendet werden können. Außerdem können sie als Eingabe für <link linkend="commands"
 >Befehle</link
 > dienen.</para>
 
@@ -1800,7 +1800,7 @@ wenn $x &gt; 5 {
 >$x</userinput
 > den Wert 6 zu. In der zweiten Zeile wird ein <link linkend="comparing-operators"
 >Vergleichsoperator</link
-> benutzt, um den Wert von <userinput
+> verwendet, um den Wert von <userinput
 >$x &gt; 5</userinput
 > zu ermitteln. Da das Ergebnis <quote
 >wahr</quote
@@ -1837,7 +1837,7 @@ wenn $x &gt; 5 {
 ><userinput
 >wenn</userinput
 ></link
-> benutzt werden. Der Quelltext zwischen den Klammern nach <userinput
+> verwendet werden. Der Quelltext zwischen den Klammern nach <userinput
 >sonst</userinput
 > wird nur dann ausgeführt, wenn der <link linkend="boolean-value"
 >boolesche Wert</link
@@ -2009,7 +2009,7 @@ von $x = 1 bis 10 {
 >$x</userinput
 > multipliziert mit 7. Nach dem Ende dieses Programms sehen Sie das 1x7 auf der Zeichenfläche. </para>
      <para
->Als Standard ist die Schrittweite einer Schleife auf 1 eingestellt, für einen anderen Wert benutzen Sie: <screen
+>Als Standard ist die Schrittweite einer Schleife auf 1 eingestellt, für einen anderen Wert verwenden Sie: <screen
 >von <link linkend="assignment-of-variables"
 >variable</link
 > = <link linkend="number"
@@ -2127,7 +2127,7 @@ lerne kreis $x {
 >kreis</userinput
 >. <userinput
 >kreis</userinput
-> braucht einen <glossterm linkend="input-output"
+> benötigt einen <glossterm linkend="input-output"
 >Eingabewert</glossterm
 >, eine Zahl als Argument, um die Größe des Kreises festzulegen. <userinput
 >kreis</userinput
@@ -2135,7 +2135,7 @@ lerne kreis $x {
 >Ausgabewert</glossterm
 > zurück. <userinput
 >kreis</userinput
-> kann jetzt wie ein normaler Befehl benutzt werden, wie das folgende Beispiel zeigt: <screen
+> kann jetzt wie ein normaler Befehl verwendet werden, wie das folgende Beispiel zeigt: <screen
 >lerne kreis $X {
   wiederhole 36 {
     vorwärts $X
@@ -2194,7 +2194,7 @@ lerne rechteck $x, $y {
 </screen
 > Dann können Sie <userinput
 >rechteck 50, 100</userinput
-> benutzen und die Schildkröte zeichnet ein Rechteck auf die Zeichenfläche. </para>
+> verwenden und die Schildkröte zeichnet ein Rechteck auf die Zeichenfläche. </para>
   
 </sect1>
 
