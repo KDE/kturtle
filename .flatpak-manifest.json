@@ -5,15 +5,26 @@
     "runtime-version": "6.11",
     "sdk": "org.kde.Sdk",
     "command": "kturtle",
-    "tags": ["nightly"],
+    "tags": [
+        "nightly"
+    ],
     "desktop-file-name-suffix": " (Nightly)",
-    "finish-args": ["--share=network", "--share=ipc", "--socket=fallback-x11", "--socket=wayland" ],
-
+    "finish-args": [
+        "--share=network",
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--socket=wayland"
+    ],
     "modules": [
         {
             "name": "kturtle",
             "buildsystem": "cmake-ninja",
-            "sources": [ { "type": "dir", "path": "." } ]
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "."
+                }
+            ]
         }
     ]
 }
