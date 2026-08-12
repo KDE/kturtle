@@ -43,7 +43,7 @@
 >Modifica</link
 >. L'editor può essere agganciato a ciascun bordo della finestra principale, oppure anche staccato e posizionato in un punto qualsiasi del desktop.</para>
 <para
->Puoi inserire del codice nell'editor in vari modi. Il modo più semplice è usare un esempio: scegli il sotto-menu <menuchoice
+>Puoi inserire del codice nell'editor in vari modi Il modo più semplice è usare un esempio: scegli il sotto-menu <menuchoice
 ><guimenu
 >File</guimenu
 ><guisubmenu
@@ -63,7 +63,7 @@
 ></keycombo
 >), oppure il pulsante <inlinemediaobject
 > <imageobject
-> <imagedata fileref="media-playback-pause.png" format="PNG"/> </imageobject
+> <imagedata fileref="media-playback-start.png" format="PNG"/> </imageobject
 > </inlinemediaobject
 > <guibutton
 >Esegui</guibutton
