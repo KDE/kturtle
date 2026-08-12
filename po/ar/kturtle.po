@@ -331,7 +331,7 @@ msgstr[5] "اُستدعِيَ الأمر %2 بـ%3 معامل لكنه يقبل 
 #: interpreter/executer.cpp:436
 #, kde-format
 msgid "The %1 command only accepts a string as its parameter."
-msgstr "يقبل الأمر %1 سلسلة نصّية معاملاً له فقط."
+msgstr "يقبل الأمر %1 سلسلة نصّية معاملًا له فقط."
 
 #: interpreter/executer.cpp:438
 #, kde-format
@@ -341,7 +341,7 @@ msgstr "يقبل الأمر %1 سلاسل نصّية معاملات له فقط.
 #: interpreter/executer.cpp:443
 #, kde-format
 msgid "The %1 command only accepts a number as its parameter."
-msgstr "يقبل الأمر %1 رقما فقط معاملاً له."
+msgstr "يقبل الأمر %1 رقما فقط معاملًا له."
 
 #: interpreter/executer.cpp:445
 #, kde-format
@@ -530,7 +530,7 @@ msgstr "لا يمكن حساب الجذر التربيعي لعدد سالب"
 #: interpreter/parser.cpp:38
 #, kde-format
 msgid "Expected a command, instead got '%1'"
-msgstr "نتوقّع أمرًا، بدلاً من  '%1'"
+msgstr "نتوقّع أمرًا، بدلًا من  '%1'"
 
 #: interpreter/parser.cpp:69
 #, kde-format
