@@ -228,5 +228,6 @@
   <content_rating type="oars-1.1"/>
   <custom>
     <value key="GnomeSoftware::key-colors">[(62, 151, 62), (92, 165, 91)]</value>
+    <value key="KDE::mailinglist">kde-edu@kde.org</value>
   </custom>
 </component>
