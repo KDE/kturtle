@@ -165,3 +165,49 @@ operates.
 
 `configure` also accepts some other, not widely useful, options.
 
+
+## Installing on Arch Linux
+
+1. Clone the repository
+
+  ```
+    git clone https://invent.kde.org/education/kturtle.git
+  ```
+2. Install dependencies
+
+  ```
+    sudo pacman -Syu extra-cmake-modules \
+         kdoctools \
+         glibc \
+         kconfig \
+         kconfigwidgets \
+         kcoreaddons \
+         kcrash \
+         ki18n \
+         kio \
+         knewstuff \
+         ktextwidgets \
+         kwidgetsaddons \
+         kxmlgui \
+         libstdc++ \
+         qt6-base \
+         qt6-svg 
+
+  ```
+3. Create a build directory
+
+ ```
+    mkdir build && cd build
+ ```
+
+4. Create the build files
+
+ ```
+    cmake ../kturtle
+ ```
+
+5. Compile
+ 
+ ```
+    make
+ ```
