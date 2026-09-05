@@ -433,6 +433,19 @@
       <listitem><para>This action opens the color picker dialog.</para></listitem>
     </varlistentry>
   </variablelist>
+  <variablelist>
+    <anchor id="tools-change-icon" />
+    <varlistentry>
+      <term><menuchoice>
+        <guimenu>Tools</guimenu>
+        <guimenuitem>Change Icon…</guimenuitem>
+      </menuchoice></term>
+      <listitem>
+        <para>This action opens a list that contains some predefined icons, and a <guimenuitem>Choose Custom Icon…</guimenuitem> action that lets you pick your own <literal>.svg</literal> file to use as an icon.</para>
+        <para>For more Icons see <ulink url="https://freesvg.org">freesvg.org</ulink> or <ulink url="https://openclipart.org/">openclipart.org</ulink>.</para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
 </sect2>
 
 <sect2 id="the-setting-menu">

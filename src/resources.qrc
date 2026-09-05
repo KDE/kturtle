@@ -4,5 +4,9 @@
 	<qresource>
 		<file>turtle.svg</file>
 		<file>turtle_grey.svg</file>
+		<file>sprites/nearly_a_turtle.svg</file>
+		<file>sprites/crab.svg</file>
+		<file>sprites/ant.svg</file>
+		<file>sprites/pen.svg</file>
 	</qresource>
 </RCC>

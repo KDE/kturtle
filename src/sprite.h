@@ -14,7 +14,7 @@ class Sprite : public QGraphicsSvgItem
     Q_OBJECT
 
 public:
-    Sprite();
+    Sprite(const QString &spriteSVGFilePath = QStringLiteral(":turtle.svg"));
 
     double angle() const
     {

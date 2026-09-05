@@ -264,4 +264,16 @@ void Canvas::saveAsSvg(const QString &title, const QString &fileName)
     p.end();
 }
 
+void Canvas::setSprite(const QString &spriteSVGFilePath, const qreal &scale)
+{
+    _scene->removeItem(turtle);
+    delete turtle;
+    turtle = new Sprite(spriteSVGFilePath);
+    turtle->setScale(scale);
+    turtle->setZValue(kTurtleZValue);
+    _scene->addItem(turtle);
+    initValues();
+    update();
+}
+
 #include "moc_canvas.cpp"

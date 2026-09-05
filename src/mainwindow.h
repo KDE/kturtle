@@ -139,6 +139,8 @@ private:
     void updateExamplesMenu();
     void updateLanguagesMenu();
     void toggleGuiFeedback(bool b);
+    void changeSprite();
+    void setSprite(const QString &spriteSVGFilePath, const qreal &scale = 1.0);
 
     Canvas *canvas;
     Console *console;

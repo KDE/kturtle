@@ -52,6 +52,15 @@
   <Menu name="tools"><text>&amp;Tools</text>
     <Action name="direction_chooser" />
     <Action name="color_picker" />
+    <Menu name ="changeSprite"><text>&amp;Change Icon</text>
+      <Action name="kturtleSVG" />
+      <Action name="KturtleGraySVG" />
+      <Action name="turtleSVG" />
+      <Action name="crabSVG" />
+      <Action name="antSVG" />
+      <Action name="penSVG" />
+      <Action name="change_sprite" />
+    </Menu>
   </Menu>
   <Menu name="settings"><text>&amp;Settings</text>
     <Menu name="language"><text>&amp;Script Language</text>

@@ -86,6 +86,7 @@ public Q_SLOTS:
     void getDirection(double &value);
     void getX(double &value);
     void getY(double &value);
+    void setSprite(const QString &spriteSVGFilePath, const qreal &scale = 1.0);
 
 protected:
     void resizeEvent(QResizeEvent *event) override;

@@ -339,6 +339,56 @@ void MainWindow::setupActions()
     a->setWhatsThis(i18n("Color Picker: Show the color picker dialog"));
     connect(a, &QAction::triggered, this, &MainWindow::showColorPicker);
 
+    // Change Icon… list options
+    a = new QAction(i18n("kturtle"), this);
+    a->setIcon(QIcon(QStringLiteral(":turtle.svg")));
+    actionCollection()->addAction(QStringLiteral("kturtleSVG"), a);
+    connect(a, &QAction::triggered, [this]() {
+        MainWindow::setSprite(QStringLiteral(":turtle.svg"));
+    });
+
+    // sprite choices
+    a = new QAction(i18n("kturtle gray"), this);
+    a->setIcon(QIcon(QStringLiteral(":turtle_grey.svg")));
+    actionCollection()->addAction(QStringLiteral("KturtleGraySVG"), a);
+    connect(a, &QAction::triggered, [this]() {
+        MainWindow::setSprite(QStringLiteral(":turtle_grey.svg"));
+    });
+
+    a = new QAction(i18n("turtle"), this);
+    a->setIcon(QIcon(QStringLiteral(":sprites/nearly_a_turtle.svg")));
+    actionCollection()->addAction(QStringLiteral("turtleSVG"), a);
+    connect(a, &QAction::triggered, [this]() {
+        MainWindow::setSprite(QStringLiteral(":sprites/nearly_a_turtle.svg"));
+    });
+
+    a = new QAction(i18n("crab"), this);
+    a->setIcon(QIcon(QStringLiteral(":sprites/crab.svg")));
+    actionCollection()->addAction(QStringLiteral("crabSVG"), a);
+    connect(a, &QAction::triggered, [this]() {
+        MainWindow::setSprite(QStringLiteral(":sprites/crab.svg"));
+    });
+
+    a = new QAction(i18n("ant"), this);
+    a->setIcon(QIcon(QStringLiteral(":sprites/ant.svg")));
+    actionCollection()->addAction(QStringLiteral("antSVG"), a);
+    connect(a, &QAction::triggered, [this]() {
+        MainWindow::setSprite(QStringLiteral(":sprites/ant.svg"));
+    });
+
+    a = new QAction(i18n("pen"), this);
+    a->setIcon(QIcon(QStringLiteral(":sprites/pen.svg")));
+    actionCollection()->addAction(QStringLiteral("penSVG"), a);
+    connect(a, &QAction::triggered, [this]() {
+        MainWindow::setSprite(QStringLiteral(":sprites/pen.svg"), 2.0);
+    });
+
+    a = new QAction(i18n("Choose Custom Icon…"), this);
+    actionCollection()->addAction(QStringLiteral("change_sprite"), a);
+    a->setStatusTip(i18n("Choose an Icon for the turtle"));
+    a->setWhatsThis(i18n("Choose an Icon for the turtle"));
+    connect(a, &QAction::triggered, this, &MainWindow::changeSprite);
+
     // Settings menu action
     a = new QAction(i18n("Show &Editor"), this);
     actionCollection()->addAction(QStringLiteral("show_editor"), a);
@@ -1049,6 +1099,26 @@ void MainWindow::slotMessageDialog(const QString &text)
     KMessageBox::information(this, text, i18n("Message"));
     if (!currentlyRunningConsole)
         run();
+}
+
+void MainWindow::changeSprite()
+{
+    QString svgSpritepath = QFileDialog::getOpenFileUrl(this, i18n("Choose Custom Icon"), QUrl(), QStringLiteral("SVG Image(*.svg)")).path();
+    QSvgRenderer svgChecker = QSvgRenderer(svgSpritepath);
+    if (svgChecker.isValid()) {
+        canvas->setSprite(svgSpritepath);
+    } else if (!svgSpritepath.isEmpty()) {
+        QMessageBox *msgBox = new QMessageBox(this);
+        msgBox->setWindowTitle(QStringLiteral("Error"));
+        msgBox->setText(QStringLiteral("Only SVG Files supported"));
+        msgBox->setAttribute(Qt::WA_DeleteOnClose);
+        msgBox->open();
+    }
+};
+
+void MainWindow::setSprite(const QString &spriteSVGFilePath, const qreal &scale)
+{
+    canvas->setSprite(spriteSVGFilePath, scale);
 }
 
 #include "moc_mainwindow.cpp"

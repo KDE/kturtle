@@ -12,8 +12,8 @@
 
 const int SPRITE_SIZE = 30;
 
-Sprite::Sprite()
-    : QGraphicsSvgItem(QStringLiteral(":turtle.svg"))
+Sprite::Sprite(const QString &spriteSVGFilePath)
+    : QGraphicsSvgItem(spriteSVGFilePath)
 {
     m_angle = 0;
     m_speed = 0;
