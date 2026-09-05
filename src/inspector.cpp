@@ -239,6 +239,7 @@ QTreeWidgetItem *Inspector::walkTree(TreeNode *node)
     QTextCharFormat *format = highlighter->tokenToFormat(node->token());
     if (format) {
         result->setForeground(0, format->foreground());
+        result->setBackground(0, format->background());
         QFont font(QFontDatabase::systemFont(QFontDatabase::FixedFont));
         font.setBold(format->font().bold());
         result->setFont(0, font);

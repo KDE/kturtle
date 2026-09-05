@@ -8,10 +8,12 @@
 // every aspect of it is slightly changed by Cies Breijs.
 
 #include "executer.h"
+#include "../color.h"
 
 #include <errno.h>
 #include <math.h>
 
+#include <QColor>
 #include <QDebug>
 #include <QRandomGenerator>
 #include <QTimer> // for wait
@@ -529,7 +531,7 @@ void Executer::executeVariable(TreeNode *node)
 void Executer::executeFunctionCall(TreeNode *node)
 {
     //	//qDebug() << "called";
-    if (node->parent()->token()->type() == Token::Learn) { // in case we're defining a function
+    if (node->parent()->token()->type() == Token::Learn) {
         currentNode = node->parent();
         executeCurrent = true;
         return;
@@ -1098,21 +1100,66 @@ void Executer::executePenDown(TreeNode *node)
         return;
     Q_EMIT penDown();
 }
+
+/* Color Functions */
+
 void Executer::executePenColor(TreeNode *node)
 {
-    //	//qDebug() << "called";
-    if (!checkParameterQuantity(node, 3, 20000 + Token::PenColor * 100 + 90) || !checkParameterType(node, Value::Number, 20000 + Token::PenColor * 100 + 91))
+    uint nodeSize = node->childCount();
+    bool hasRgbValues = false;
+    bool hasColorString = false;
+
+    if (nodeSize == 3) {
+        hasRgbValues =
+            checkParameterQuantity(node, 3, 20000 + Token::PenColor * 100 + 90) && checkParameterType(node, Value::Number, 20000 + Token::PenColor * 100 + 90);
+    } else if (nodeSize == 1) {
+        hasColorString =
+            checkParameterQuantity(node, 1, 20000 + Token::PenColor * 100 + 90) && checkParameterType(node, Value::String, 20000 + Token::PenColor * 100 + 90);
+    }
+
+    if (!hasColorString && !hasRgbValues) {
+        addError(i18n("The command %1 takes either a string or %2 numbers", node->token()->look(), 3), *node->token(), 20000 + Token::PenColor * 100 + 90);
         return;
-    Q_EMIT penColor(node->child(0)->value()->number(), node->child(1)->value()->number(), node->child(2)->value()->number());
+    }
+
+    //	//qDebug() << "called";
+    if (hasRgbValues) {
+        Q_EMIT penColor(node->child(0)->value()->number(), node->child(1)->value()->number(), node->child(2)->value()->number());
+    } else if (hasColorString) {
+        QColor color = Color::token2RGB(node->child(0)->token(), errorList);
+        Q_EMIT penColor(color.red(), color.green(), color.blue());
+    }
 }
 void Executer::executeCanvasColor(TreeNode *node)
 {
+    uint nodeSize = node->childCount();
+    bool hasRgbValues = false;
+    bool hasColorString = false;
+
+    if (nodeSize == 3) {
+        hasRgbValues = checkParameterQuantity(node, 3, 20000 + Token::CanvasColor * 100 + 90)
+            && checkParameterType(node, Value::Number, 20000 + Token::CanvasColor * 100 + 90);
+    } else if (nodeSize == 1) {
+        hasColorString = checkParameterQuantity(node, 1, 20000 + Token::CanvasColor * 100 + 90)
+            && checkParameterType(node, Value::String, 20000 + Token::CanvasColor * 100 + 90);
+    }
+
     //	//qDebug() << "called";
-    if (!checkParameterQuantity(node, 3, 20000 + Token::CanvasColor * 100 + 90)
-        || !checkParameterType(node, Value::Number, 20000 + Token::CanvasColor * 100 + 91))
+    if (!hasColorString && !hasRgbValues) {
+        addError(i18n("The command %1 takes either a string or %2 numbers", node->token()->look(), 3), *node->token(), 20000 + Token::PenColor * 100 + 90);
         return;
-    Q_EMIT canvasColor(node->child(0)->value()->number(), node->child(1)->value()->number(), node->child(2)->value()->number());
+    }
+
+    if (hasRgbValues) {
+        Q_EMIT canvasColor(node->child(0)->value()->number(), node->child(1)->value()->number(), node->child(2)->value()->number());
+    } else if (hasColorString) {
+        QColor color = Color::token2RGB(node->child(0)->token(), errorList);
+        Q_EMIT canvasColor(color.red(), color.green(), color.blue());
+    }
 }
+
+/* End Color Functions */
+
 void Executer::executeCanvasSize(TreeNode *node)
 {
     //	//qDebug() << "called";

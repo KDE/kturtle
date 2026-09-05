@@ -7,6 +7,7 @@
 #ifndef _EXECUTER_H_
 #define _EXECUTER_H_
 
+#include <QColor>
 #include <QHash>
 #include <QObject>
 #include <QStack>
@@ -239,6 +240,7 @@ private:
 
     TreeNode *getParentOfTokenTypes(TreeNode *child, QList<int> *types);
     inline void printExe();
+    QColor colorString2RGB(QString colorString);
 
 Q_SIGNALS:
     void currentlyExecuting(TreeNode *node);

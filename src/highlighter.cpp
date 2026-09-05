@@ -5,6 +5,9 @@
 */
 
 #include "highlighter.h"
+#include "color.h"
+
+#include <KLocalizedString>
 
 Highlighter::Highlighter(QTextDocument *parent)
     : QSyntaxHighlighter(parent)
@@ -80,6 +83,10 @@ Token *Highlighter::checkOrApplyHighlighting(const QString &text, int cursorInde
 
 QTextCharFormat *Highlighter::tokenToFormat(Token *token)
 {
+    QString look = token->look();
+    look.removeFirst();
+    look.removeLast();
+
     switch (token->category()) {
     case Token::VariableCategory:
         return &variableFormat;
@@ -90,6 +97,13 @@ QTextCharFormat *Highlighter::tokenToFormat(Token *token)
     case Token::CommentCategory:
         return &commentFormat;
     case Token::StringCategory:
+        // qDebug() << look;
+        if (Color::isValidColorString(look)) {
+            QColor color = Color::colorString2RGB(look);
+            colorStringFormat.setBackground(color);
+            colorStringFormat.setForeground(color.lightness() >= 100 ? Qt::black : Qt::white);
+            return &colorStringFormat;
+        }
         return &stringFormat;
     case Token::ScopeCategory:
         return &scopeFormat;

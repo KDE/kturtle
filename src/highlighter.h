@@ -47,6 +47,7 @@ private:
     QTextCharFormat trueFalseFormat;
     QTextCharFormat commentFormat;
     QTextCharFormat stringFormat;
+    QTextCharFormat colorStringFormat;
     QTextCharFormat numberFormat;
     QTextCharFormat scopeFormat;
     QTextCharFormat controllerCommandFormat;

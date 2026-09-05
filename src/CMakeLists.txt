@@ -14,6 +14,8 @@ target_sources(kturtle PRIVATE
      kturtle.qrc
     canvas.cpp
     canvas.h
+    color.h
+    color.cpp
     colorpicker.cpp
     colorpicker.h
     console.cpp

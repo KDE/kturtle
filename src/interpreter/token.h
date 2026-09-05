@@ -132,7 +132,8 @@ public:
         Sqrt,
         Round,
         GetDirection,
-        Mod
+        Mod,
+        Color
 
         // END GENERATED token_type_h CODE
     };

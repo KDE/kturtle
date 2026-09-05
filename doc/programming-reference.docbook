@@ -363,7 +363,8 @@ Please note that <userinput>$A</userinput> and <userinput>$B</userinput> have to
     <varlistentry> 
       <term>pencolor (pc)<indexterm><primary>pencolor (pc)</primary></indexterm></term>
       <listitem><para><screen>pencolor R,G,B</screen>
-      <userinput>pencolor</userinput> sets the color of the pen. <userinput>pencolor</userinput> takes an <glossterm linkend="rgb">RGB combination</glossterm> as input. <userinput>pencolor</userinput> can be abbreviated to <userinput>pc</userinput>.</para></listitem>
+      <screen>pencolor "color"</screen>
+      <userinput>pencolor</userinput> sets the color of the pen. <userinput>pencolor</userinput> takes an <glossterm linkend="rgb">RGB combination</glossterm> or a <glossterm linkend="named-colors">named-color</glossterm> as input. <userinput>pencolor</userinput> can be abbreviated to <userinput>pc</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>
@@ -384,7 +385,8 @@ Please note that <userinput>$A</userinput> and <userinput>$B</userinput> have to
     <varlistentry> 
       <term>canvascolor (cc)<indexterm><primary>canvascolor (cc)</primary></indexterm></term>
       <listitem><para><screen>canvascolor R,G,B</screen>
-      <userinput>canvascolor</userinput> set the color of the canvas. <userinput>canvascolor</userinput> takes an <glossterm linkend="rgb">RGB combination</glossterm> as input. <userinput>canvascolor</userinput> can be abbreviated to <userinput>cc</userinput>.</para></listitem>
+      <screen>canvascolor "color"</screen>
+      <userinput>canvascolor</userinput> set the color of the canvas. <userinput>canvascolor</userinput> takes an <glossterm linkend="rgb">RGB combination</glossterm> or <glossterm linkend="named-colors">named-color</glossterm> as input. <userinput>canvascolor</userinput> can be abbreviated to <userinput>cc</userinput>.</para></listitem>
     </varlistentry>
   </variablelist>
 </sect2>

@@ -80,6 +80,11 @@ penup
 <entry>Not much to say about (text) strings either, except that they always start and end with the double quotes (").</entry>
 </row>
 <row>
+<entry>named-colors</entry>
+<entry>depends on color</entry>
+<entry><glossterm linkend="named-colors">Named-colors</glossterm> will have a background color identical to them.</entry>
+</row>
+<row>
 <entry>numbers</entry>
 <entry>dark red</entry>
 <entry>Numbers, well not much to say about them.</entry>
@@ -150,6 +155,33 @@ penup
 </table>
 </para>
 <para>Two commands need an RGB combination as input: these commands are <userinput>canvascolor</userinput> and <userinput>pencolor</userinput>.</para></glossdef>
+</glossentry>
+
+<glossentry id="named-colors">
+<glossterm>Named-colors (color strings)</glossterm>
+<glossdef><para>In addition to RGB combinations, you can use named-colors. Kturtle supports a group of named-colors, which are passed as strings to the command requiring a color.
+<table frame="none">
+<title>Named-colors currently supported</title>
+<tgroup cols="1" rowsep="1">
+<tbody>
+<row><entry><userinput>"white"</userinput></entry></row>
+<row><entry><userinput>"black"</userinput></entry></row>
+<row><entry><userinput>"gray"</userinput></entry></row>
+<row><entry><userinput>"grey"</userinput></entry></row>
+<row><entry><userinput>"red"</userinput></entry></row>
+<row><entry><userinput>"brown"</userinput></entry></row>
+<row><entry><userinput>"orange"</userinput></entry></row>
+<row><entry><userinput>"yellow"</userinput></entry></row>
+<row><entry><userinput>"gold"</userinput></entry></row>
+<row><entry><userinput>"green"</userinput></entry></row>
+<row><entry><userinput>"blue"</userinput></entry></row>
+<row><entry><userinput>"purple"</userinput></entry></row>
+<row><entry><userinput>"pink"</userinput></entry></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para>Two commands can use a named-color as input: these commands are <userinput>canvascolor</userinput> and <userinput>pencolor</userinput>.</para></glossdef>
 </glossentry>
 
 <glossentry id="sprite">
