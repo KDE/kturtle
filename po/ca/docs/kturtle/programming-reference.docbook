@@ -815,7 +815,7 @@ $answer = 10 &gt; 3
 >gox</userinput
 > ordena a la tortuga que es desplaci X <glossterm linkend="pixels"
 >píxels</glossterm
-> des de l'esquerra del llenç mantenint la seva estada a la mateixa alçada. <userinput
+> des de l'esquerra del llenç mantenint la seva estada a la mateixa altura. <userinput
 >gox</userinput
 > pot abreujar-se com <userinput
 >gx</userinput
@@ -1042,7 +1042,7 @@ $answer = 10 &gt; 3
 >canvassize</userinput
 > podreu establir la mida del llenç. Agafa X i Y com a entrada, on X és l'amplada del llenç nou en <glossterm linkend="pixels"
 >píxels</glossterm
->, i Y és l'alçada del llenç nou en <glossterm linkend="pixels"
+>, i Y és l'altura del llenç nou en <glossterm linkend="pixels"
 >píxels</glossterm
 >. <userinput
 >canvassize</userinput
