@@ -2,6 +2,83 @@
 <title>Translator's Guide to &kturtle;</title>
 <para>As you probably already know &kturtle;'s programming language, &turtlescript;, allows to be translated. This takes away a barrier for some, especially younger students, on their effort to understand the basics of programming.</para>
 <para>When translating &kturtle; to a new language you will find, in addition to the &GUI; strings, the programming commands, the examples and the error messages are included in the standard <filename class="extension">.pot</filename> files as used for translation in &kde;. Everything is translated using the regular translation method found in &kde;, yet you are strongly advised to learn a little on how to translate these (as you will also read in the translator comments).</para>
-<para>Please look at <ulink
-url="https://edu.kde.org/kturtle/translation.php">https://edu.kde.org/kturtle/translation.php</ulink> for more information about the translation process. Thanks a lot for your work! &kturtle; depends heavily on its translations.</para>
+
+
+<sect1 id="translating">
+<title>Translating &kurtle;</title>
+<para>&kturtle; is an educational programming environment for kids. The most appealing feature of &kturtle; is that the programming language used is translated to the native language of the programmer. So the programming commands, the programming examples, the error messages, the GUI, the manual... everything is translated. This way the programmer can program in his/her native language, and this enables one to learn how to program before understanding English!</para>
+
+<para>This means translations are very important to &kturtle;... so you are very important to &kturtle;!</para>
+
+<para>Before you start translating &kturtle; I invite you to take a short look at &kturtle;. It is part of kde-edu. Once you started &kturtle; you can open an example (File -> Examples) and Run (File -> Run) it. In the Settings menu you find a language chooser, there you can select the script language of the &kturtle; programming environment. An other nice feature is the context help you get if you hit F2; just place your cursor on a programming command and hit F2.</para>
+</sect1>
+
+<sect1 id="special cases">
+<title>Three important cases of strings that need a special treatment</title>
+
+<sect2 id="commands">
+<title>First case: the COMMANDS</title>
+
+<para>As mentioned earier in this document: the programming language used in &kturtle, is translated to the native language of the programmer... Translating the programming language itself is what you do by translating strings marked as a COMMAND.</para>
+
+<para>To translate the commands please keep the following things in mind:</para>
+<itemizedlist>
+<listitem><para>You are translating for possibly very young people: stick to very basic language.</para></listitem>
+<listitem><para>COMMANDS can only contain letters and underscores, so no spaces, no numbers, no special charaters like punctuation, etc.</para></listitem>
+<listitem><para>Try to keep it consistent! If some commands have a similar meaning, they should have similar look. So turnleft and turnright should not become turnleft and aimright.</para></listitem>
+<listitem><para>Consistency (again). If you, for instance, decide to use underscores in the translations of your commands then use them consistently for all commands.</para></listitem>
+<listitem><para>Commands must be unique, or the program will crash!</para></listitem>
+<listitem><para>Be careful with the ArgumentSeparator (a comma in en_US), and the DecimalSeparator (a dot in en_US). In your language the comma might be used as DecimalSeparator, in that case you can use a semicolon ';' as ArgumentSeparator -- but you don't have to! If you think it is acceptable to use the dot as DecimalSeparator please do so: in programming languages the dot is usually used as DecimalSeparator it might be good to learn this right from the start.</para></listitem>
+<listitem><para>Choose wise, choose to last: people will learn these commands to make little programs, so only change something if you have a good reason to do so. The KTurtle programming language (TurtleScript) is loosely based on the 'Logo' programming language. Logo is also often translated to the programmers native language; you can search the internet for Logo translations in your language -- in Google type: 'Logo programming language_name' -- this could help you a bit.</para></listitem>
+</itemizedlist>
+</sect2>
+
+<sect2 id="command-aliases">
+<title>Second case: the COMMAND ALIASES</title>
+
+<para>In &kturtle; some commands have an alias. This alias is just an abbreviation of the command. This is because some commands of the very small command set are used very often, so in order to have quicker results one could use the aliases for these often used commands. For instance the forward, backward and the turnleft, turnright commands. They are used very often, so in en_US they are aliased to respectively: fw, bw and tl, tr.</para>
+
+<para>Some things to keep in mind when you translate command aliases:</para>
+<itemizedlist>
+<listitem><para>Just like commands, aliases can only contain letters and underscores. But please avoid the use of underscores in aliases.</itemizedlist>
+<listitem><para>Try to keep it consistent! Try to choose the same letter for the same part of different COMMAND. For instance commands starting with turn (like: turnright) always have aliases that start with t (like: tr).</itemizedlist>
+<listitem><para>Aliases must be unique, and cannot be the same as a COMMAND, or the program will crash!</itemizedlist>
+</itemizedlist>
+</sect2>
+
+<sect2 id="example-names">
+<title>Third case: the EXAMPLE NAMES</title>
+
+<para>The example names are the names of the examples you find in File -> Examples. Please translate them into something simple, yet appealing for kids.</para>
+
+<para>You should probably start &kturtle; and open (File -> Examples) and Run (File -> Run) all examples once, to know what they look like, so you have a better idea of what you are translating the name of.</para>
+
+<para>The translation of the code in these examples is generated by &kturtle; at runtime from the translated commands.</para>
+</sect2>
+</sect1>
+
+<sect1 id="testing">
+<title>Testing</title>
+
+<para>After you finished translating &kturtle; please have a look if everything worked. A good way to do this is to execute all examples, by File -> Examples and then File -> Run. If an example gives strange results you can switch the language to English (en_US) in Settings -> Script Language and see if it produces different results, if so please file a bug report. If the examples run fine you are quite sure you have succeeded.</para>
+
+<para>Thanks for translating &kturtle;!</para>
+</sect1>
+
+<sect1 id="Documentation">
+<title>Documentation</title>
+
+<para>Translating the strings is a big deal for &kturtle;. But to make the program really shine is to translate the documentation as well. This is because &kturtle; has a built-in command help funtion: put your cursor on a 'word' (command, number, variable, string, etc) in the editor and press F2... You will be presented with help on this particular topic!</para>
+
+<para>NOTE: At the moment of writing this 'F2' feature is not yet fully implemented.</para>
+</sect1>
+
+<sect1 id="questions">
+<title>Questions?</title>
+
+<para>It is quite likely that not every thing is clear, or that there are mistakes, or that for your language you need more configurability, or that it just does not. Please let us know!</para>
+
+<para>You can always file a bug report at bugs.kde.org against the version of &kturtle; you are translating, we will definitely have a look at it. With your feedback we will be able to improve the translation system and &kturtle; in general.</para>
+</sect1>
+
 </chapter>
