@@ -21,8 +21,9 @@
 #include "interpreter/interpreter.h"
 
 class QStackedWidget;
-
 class KRecentFilesAction;
+class QWidgetAction;
+class QSlider;
 
 // extends the QDockWidget with an extra signal
 class LocalDockWidget : public QDockWidget
@@ -91,29 +92,14 @@ private Q_SLOTS:
     void abort();
     void iterate();
     QString execute(const QString &); // for single command execution as by the console
-    void setDedicatedSpeed()
+
+    void setSliderSpeed(int value)
     {
-        setRunSpeed(0);
-    }
-    void setFullSpeed()
-    {
-        setRunSpeed(1);
-    }
-    void setSlowSpeed()
-    {
-        setRunSpeed(2);
-    }
-    void setSlowerSpeed()
-    {
-        setRunSpeed(3);
-    }
-    void setSlowestSpeed()
-    {
-        setRunSpeed(4);
+        setRunSpeed(value);
     }
     void setStepSpeed()
     {
-        setRunSpeed(5);
+        setRunSpeed(0);
     }
 
     void slotInputDialog(QString &value);
@@ -169,6 +155,8 @@ private:
     LocalDockWidget *inspectorDock;
     QTimer *iterationTimer;
     int runSpeed;
+    float ratio;
+    int delayTime;
     bool currentlyRunningConsole;
 
     QString currentLanguageCode;
@@ -179,6 +167,9 @@ private:
     QMenu *examplesMenu;
 
     KRecentFilesAction *recentFilesAction;
+
+    QSlider *speedSlider;
+    QWidgetAction *speedSliderAct;
 
     QAction *newAct;
     QAction *openAct;
@@ -194,21 +185,14 @@ private:
     QAction *executeConsoleAct;
     QAction *quitAct;
     QAction *contextHelpAct;
-    QAction *dedicatedSpeedAct;
-    QAction *fullSpeedAct;
-    QAction *slowSpeedAct;
-    QAction *slowerSpeedAct;
-    QAction *slowestSpeedAct;
     QAction *stepSpeedAct;
-
-    QActionGroup *runSpeedGroup;
-    QComboBox *runOptionBox;
 
     QLabel *statusBarMessageLabel;
     QLabel *statusBarLanguageLabel;
     QLabel *statusBarPositionLabel;
     QLabel *statusBarOverwriteModeLabel;
     QLabel *statusBarFileNameLabel;
+    QLabel *speedSliderLabel;
 };
 
 #endif // _MAINWINDOW_H_

@@ -48,14 +48,6 @@
     <Action name="run" />
     <Action name="pause" />
     <Action name="abort" />
-    <Menu name="speed"><text>&amp;Run Speed</text>
-      <Action name="dedicated_speed" />
-      <Action name="full_speed" />
-      <Action name="slow_speed" />
-      <Action name="slower_speed" />
-      <Action name="slowest_speed" />
-      <Action name="step_speed" />
-    </Menu>
   </Menu>
   <Menu name="tools"><text>&amp;Tools</text>
     <Action name="direction_chooser" />

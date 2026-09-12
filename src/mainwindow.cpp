@@ -19,10 +19,13 @@
 #include <QPrintDialog>
 #include <QPrinter>
 #include <QSaveFile>
+#include <QSlider>
 #include <QStackedWidget>
 #include <QStandardPaths>
 #include <QStatusBar>
 #include <QTimer>
+#include <QWidgetAction>
+#include <cmath>
 
 #include "interpreter/errormsg.h"
 #include "interpreter/translator.h"
@@ -59,7 +62,7 @@ MainWindow::MainWindow()
 
     statusBar()->showMessage(i18nc("@info:status the application is ready for commands", "Ready"));
     updateContentName(); // also sets the window caption to 'untitled'
-    setRunSpeed(1); // full speed with highlighting
+    setRunSpeed(100);
     abort(); // sets the run-states for the actions right
 
     setupGUI();
@@ -147,25 +150,14 @@ void MainWindow::setRunSpeed(int speed)
 {
     switch (speed) {
     case 0:
-        dedicatedSpeedAct->setChecked(true);
-        break;
-    case 1:
-        fullSpeedAct->setChecked(true);
-        break;
-    case 2:
-        slowSpeedAct->setChecked(true);
-        break;
-    case 3:
-        slowerSpeedAct->setChecked(true);
-        break;
-    case 4:
-        slowestSpeedAct->setChecked(true);
-        break;
-    case 5:
         stepSpeedAct->setChecked(true);
         break;
+    default:
+        speedSlider->setEnabled(true);
+        stepSpeedAct->setChecked(false);
+        speedSliderLabel->setText(QStringLiteral("%1%").arg(speed));
+        break;
     }
-    // TODO runOptionBox->setCurrentIndex(speed);
     runSpeed = speed;
 }
 
@@ -421,9 +413,6 @@ void MainWindow::setupActions()
     connect(executeConsoleAct, &QAction::triggered, console, &Console::executeActionTriggered);
     executeConsoleAct->setWhatsThis(i18n("Execute: Executes the current line in the console"));
 
-    // The run speed action group
-    QActionGroup *runSpeedGroup = new QActionGroup(this);
-
     // The run action collection, this is used in the toolbar to create a dropdown menu on the run button
     QAction *runSpeedAction = new QAction(QIcon::fromTheme(QStringLiteral("media-playback-start")), i18n("&Run"), this);
     connect(runSpeedAction, &QAction::triggered, this, &MainWindow::run);
@@ -434,51 +423,27 @@ void MainWindow::setupActions()
     runSpeedActionMenu->setWhatsThis(i18n("Run: Execute the program, or use the drop down menu to select the run speed"));
     connect(runSpeedActionMenu, &QMenu::triggered, this, &MainWindow::run);
 
-    dedicatedSpeedAct = new QAction(i18nc("@option:radio", "Full Speed (&no highlighting and inspector)"), this);
-    actionCollection()->addAction(QStringLiteral("dedicated_speed"), dedicatedSpeedAct);
-    dedicatedSpeedAct->setCheckable(true);
-    dedicatedSpeedAct->setStatusTip(i18n("Run the program at full speed, with highlighting and inspector disabled"));
-    dedicatedSpeedAct->setWhatsThis(i18n("Full Speed: Run the program at full speed, with highlighting and inspector disabled"));
-    connect(dedicatedSpeedAct, &QAction::triggered, this, &MainWindow::setDedicatedSpeed);
-    runSpeedGroup->addAction(dedicatedSpeedAct);
-    runSpeedActionMenu->addAction(dedicatedSpeedAct);
+    QWidget *speedWidget = new QWidget();
 
-    fullSpeedAct = new QAction(i18nc("@option:radio", "&Full Speed"), this);
-    actionCollection()->addAction(QStringLiteral("full_speed"), fullSpeedAct);
-    fullSpeedAct->setCheckable(true);
-    fullSpeedAct->setChecked(true);
-    fullSpeedAct->setStatusTip(i18n("Run the program at full speed"));
-    fullSpeedAct->setWhatsThis(i18n("Full Speed: Run the program at full speed"));
-    connect(fullSpeedAct, &QAction::triggered, this, &MainWindow::setFullSpeed);
-    runSpeedGroup->addAction(fullSpeedAct);
-    runSpeedActionMenu->addAction(fullSpeedAct);
+    speedSlider = new QSlider(speedWidget);
+    speedSlider->setRange(1, 100);
+    speedSlider->setValue(100);
+    speedSlider->setOrientation(Qt::Horizontal);
 
-    slowSpeedAct = new QAction(i18nc("@option:radio choose the slow speed", "&Slow"), this);
-    actionCollection()->addAction(QStringLiteral("slow_speed"), slowSpeedAct);
-    slowSpeedAct->setCheckable(true);
-    slowSpeedAct->setStatusTip(i18n("Run the program at a slow speed"));
-    slowSpeedAct->setWhatsThis(i18n("Slow Speed: Run the program at a slow speed"));
-    connect(slowSpeedAct, &QAction::triggered, this, &MainWindow::setSlowSpeed);
-    runSpeedGroup->addAction(slowSpeedAct);
-    runSpeedActionMenu->addAction(slowSpeedAct);
+    speedSliderLabel = new QLabel(speedWidget);
+    speedSliderLabel->setText(QStringLiteral("100%"));
+    speedSliderLabel->setAlignment(Qt::AlignCenter);
+    speedSliderLabel->setMinimumWidth(30);
 
-    slowerSpeedAct = new QAction(i18nc("@option:radio", "S&lower"), this);
-    actionCollection()->addAction(QStringLiteral("slower_speed"), slowerSpeedAct);
-    slowerSpeedAct->setCheckable(true);
-    slowerSpeedAct->setStatusTip(i18n("Run the program at a slower speed"));
-    slowerSpeedAct->setWhatsThis(i18n("Slower Speed: Run the program at a slower speed"));
-    connect(slowerSpeedAct, &QAction::triggered, this, &MainWindow::setSlowerSpeed);
-    runSpeedGroup->addAction(slowerSpeedAct);
-    runSpeedActionMenu->addAction(slowerSpeedAct);
+    QHBoxLayout *speedLayout = new QHBoxLayout(speedWidget);
+    speedLayout->addWidget(speedSlider);
+    speedLayout->addWidget(speedSliderLabel);
 
-    slowestSpeedAct = new QAction(i18nc("@option:radio", "Sl&owest"), this);
-    actionCollection()->addAction(QStringLiteral("slowest_speed"), slowestSpeedAct);
-    slowestSpeedAct->setCheckable(true);
-    slowestSpeedAct->setStatusTip(i18n("Run the program at the slowest speed"));
-    slowestSpeedAct->setWhatsThis(i18n("Slowest Speed: Run the program at the slowest speed"));
-    connect(slowestSpeedAct, &QAction::triggered, this, &MainWindow::setSlowestSpeed);
-    runSpeedGroup->addAction(slowestSpeedAct);
-    runSpeedActionMenu->addAction(slowestSpeedAct);
+    speedSliderAct = new QWidgetAction(this);
+    speedSliderAct->setDefaultWidget(speedWidget);
+    runSpeedActionMenu->addAction(speedSliderAct);
+    speedSliderAct->setStatusTip(i18n("Set the execution speed"));
+    connect(speedSlider, static_cast<void (QSlider::*)(int)>(&QSlider::valueChanged), this, &MainWindow::setSliderSpeed);
 
     stepSpeedAct = new QAction(i18nc("@option:radio", "S&tep-by-Step"), this);
     actionCollection()->addAction(QStringLiteral("step_speed"), stepSpeedAct);
@@ -486,7 +451,6 @@ void MainWindow::setupActions()
     stepSpeedAct->setStatusTip(i18n("Run the program one step at a time"));
     stepSpeedAct->setWhatsThis(i18n("Step Speed: Run the program one step at a time"));
     connect(stepSpeedAct, &QAction::triggered, this, &MainWindow::setStepSpeed);
-    runSpeedGroup->addAction(stepSpeedAct);
     runSpeedActionMenu->addAction(stepSpeedAct);
 }
 
@@ -860,7 +824,7 @@ void MainWindow::run()
     editor->disable();
     console->disable();
     executeConsoleAct->setEnabled(false);
-    toggleGuiFeedback(runSpeed != 0);
+    toggleGuiFeedback(true);
 
     // start parsing (always in full speed)
     iterationTimer->setSingleShot(false);
@@ -932,26 +896,16 @@ void MainWindow::iterate()
         iterationTimer->setSingleShot(true);
         switch (runSpeed) {
         case 0:
-            iterationTimer->start(0);
-            break;
-        case 1:
-            iterationTimer->start(0);
-            break;
-        case 2:
-            iterationTimer->start(500);
-            break;
-        case 3:
-            iterationTimer->start(1000);
-            break;
-        case 4:
-            iterationTimer->start(3000);
-            break;
-        case 5:
             iterationTimer->stop();
             interpreter->interpret();
             pauseAct->setChecked(true);
             pause();
             return;
+        default:
+            ratio = std::pow((100.f - runSpeed) / 100.f, 2);
+            delayTime = std::round(500.f * ratio);
+            iterationTimer->start(delayTime);
+            break;
         }
     }
     interpreter->interpret();
