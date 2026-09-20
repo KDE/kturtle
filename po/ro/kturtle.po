@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:48+0000\n"
+"POT-Creation-Date: 2026-09-20 16:13+0000\n"
 "PO-Revision-Date: 2012-12-22 11:56+0200\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -52,6 +52,81 @@ msgstr "supraliniat"
 #, kde-format
 msgid "strikeout"
 msgstr "tăiat"
+
+#: color.cpp:36
+#, kde-format
+msgid "%1 is not a valid color."
+msgstr ""
+
+#: color.cpp:43
+#, kde-format
+msgid "white"
+msgstr ""
+
+#: color.cpp:45
+#, kde-format
+msgid "black"
+msgstr ""
+
+#: color.cpp:47
+#, kde-format
+msgid "grey"
+msgstr ""
+
+#: color.cpp:49
+#, kde-format
+msgid "gray"
+msgstr ""
+
+#: color.cpp:51
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "You are about to translate the 'Random' COMMAND ALIAS, there are some "
+#| "rules on how to translate it.Please see http://edu.kde.org/kturtle/"
+#| "translator.php to learn how to properly translate it."
+#| msgid "rnd"
+msgid "red"
+msgstr "md"
+
+#: color.cpp:53
+#, kde-format
+msgid "brown"
+msgstr ""
+
+#: color.cpp:55
+#, kde-format
+msgid "orange"
+msgstr ""
+
+#: color.cpp:57
+#, kde-format
+msgid "yellow"
+msgstr ""
+
+#: color.cpp:59
+#, kde-format
+msgid "gold"
+msgstr ""
+
+#: color.cpp:61
+#, kde-format
+msgid "green"
+msgstr ""
+
+#: color.cpp:63
+#, kde-format
+msgid "blue"
+msgstr ""
+
+#: color.cpp:65
+#, kde-format
+msgid "purple"
+msgstr ""
+
+#: color.cpp:67
+#, kde-format
+msgid "pink"
+msgstr ""
 
 #: colorpicker.cpp:28
 #, fuzzy, kde-format
@@ -299,17 +374,17 @@ msgstr "șir"
 msgid "None"
 msgstr "Nespecificat"
 
-#: interpreter/executer.cpp:70
+#: interpreter/executer.cpp:72
 #, kde-format
 msgid "Cannot return outside a function. "
 msgstr ""
 
-#: interpreter/executer.cpp:395
+#: interpreter/executer.cpp:397
 #, kde-format
 msgid "The %1 command accepts no parameters."
 msgstr "Comanda %1 nu acceptă parametri."
 
-#: interpreter/executer.cpp:405
+#: interpreter/executer.cpp:407
 #, kde-format
 msgid "The %2 command was called with %3 but needs 1 parameter."
 msgid_plural "The %2 command was called with %3 but needs %1 parameters."
@@ -317,7 +392,7 @@ msgstr[0] "Comanda %2 a fost apelată cu %3 dar necesită 1 parametru."
 msgstr[1] "Comanda %2 a fost apelată cu %3 dar necesită %1 parametri."
 msgstr[2] "Comanda %2 a fost apelată cu %3 dar necesită %1 de parametri."
 
-#: interpreter/executer.cpp:413
+#: interpreter/executer.cpp:415
 #, kde-format
 msgid "The %2 command was called with %3 but only accepts 1 parameter."
 msgid_plural ""
@@ -326,53 +401,53 @@ msgstr[0] "Comanda %2 a fost apelată cu %3 dar necesită numai 1 parametru."
 msgstr[1] "Comanda %2 a fost apelată cu %3 dar necesită numai %1 parametri."
 msgstr[2] "Comanda %2 a fost apelată cu %3 dar necesită numai %1 de parametri."
 
-#: interpreter/executer.cpp:436
+#: interpreter/executer.cpp:438
 #, kde-format
 msgid "The %1 command only accepts a string as its parameter."
 msgstr "Comanda %1 acceptă numai un șir ca parametru."
 
-#: interpreter/executer.cpp:438
+#: interpreter/executer.cpp:440
 #, kde-format
 msgid "The %1 command only accepts strings as its parameters."
 msgstr "Comanda %1 acceptă numai șiruri ca parametri."
 
-#: interpreter/executer.cpp:443
+#: interpreter/executer.cpp:445
 #, kde-format
 msgid "The %1 command only accepts a number as its parameter."
 msgstr "Comanda %1 acceptă numai un număr ca parametru."
 
-#: interpreter/executer.cpp:445
+#: interpreter/executer.cpp:447
 #, kde-format
 msgid "The %1 command only accepts numbers as its parameters."
 msgstr "Comanda %1 acceptă numai numere ca parametri."
 
-#: interpreter/executer.cpp:450
+#: interpreter/executer.cpp:452
 #, kde-format
 msgid "The %1 command only accepts an answer as its parameter."
 msgstr "Comanda %1 acceptă numai un răspuns ca parametru."
 
-#: interpreter/executer.cpp:452
+#: interpreter/executer.cpp:454
 #, kde-format
 msgid "The %1 command only accepts answers as its parameters."
 msgstr "Comanda %1 acceptă numai răspunsuri ca parametri."
 
-#: interpreter/executer.cpp:526
+#: interpreter/executer.cpp:528
 #, kde-format
 msgid "The variable '%1' was used without first being assigned to a value"
 msgstr ""
 "Variabila ”%1” a fost folosită fără să fie atribuită mai întâi la o valoare"
 
-#: interpreter/executer.cpp:546
+#: interpreter/executer.cpp:548
 #, kde-format
 msgid "An unknown function named '%1' was called"
 msgstr "A fost apelată o funcție necunoscută cu numele ”%1”"
 
-#: interpreter/executer.cpp:560
+#: interpreter/executer.cpp:562
 #, kde-format
 msgid "The function '%1' was called with %2, while it should be called with %3"
 msgstr "Funcția ”%1” a fost apelată cu %2, în timp ce trebuie apelată cu %3"
 
-#: interpreter/executer.cpp:562 interpreter/executer.cpp:564
+#: interpreter/executer.cpp:564 interpreter/executer.cpp:566
 #, kde-format
 msgctxt ""
 "The function '%1' was called with %2, while it should be called with %3"
@@ -382,144 +457,149 @@ msgstr[0] "1 parametru "
 msgstr[1] "%1 parametri"
 msgstr[2] "%1 de parametri"
 
-#: interpreter/executer.cpp:787
+#: interpreter/executer.cpp:789
 #, kde-format
 msgid "ASSERT failed"
 msgstr "DECLARARE a eșuat"
 
-#: interpreter/executer.cpp:794
+#: interpreter/executer.cpp:796
 #, kde-format
 msgid "'And' needs two variables"
 msgstr "”Și” necesită două variabile"
 
-#: interpreter/executer.cpp:804
+#: interpreter/executer.cpp:806
 #, kde-format
 msgid "'Or' needs two variables"
 msgstr "”Sau”  necesită două variabile"
 
-#: interpreter/executer.cpp:815
+#: interpreter/executer.cpp:817
 #, kde-format
 msgid "I need something to do a not on"
 msgstr "Este nevoie de ceva pe care se execută un not"
 
-#: interpreter/executer.cpp:824
+#: interpreter/executer.cpp:826
 #, kde-format
 msgid "I cannot do a '==' without 2 variables"
 msgstr "Nu se poate realiza ”==” fără 2 variabile"
 
-#: interpreter/executer.cpp:833
+#: interpreter/executer.cpp:835
 #, kde-format
 msgid "I cannot do a '!=' without 2 variables"
 msgstr "Nu se poate realiza ”!=” fără 2 variabile"
 
-#: interpreter/executer.cpp:842
+#: interpreter/executer.cpp:844
 #, kde-format
 msgid "I cannot do a '>' without 2 variables"
 msgstr "Nu se poate realiza ”>” fără 2 variabile"
 
-#: interpreter/executer.cpp:851
+#: interpreter/executer.cpp:853
 #, kde-format
 msgid "I cannot do a '<' without 2 variables"
 msgstr "Nu se poate realiza ”<” fără 2 variabile"
 
-#: interpreter/executer.cpp:860
+#: interpreter/executer.cpp:862
 #, kde-format
 msgid "I cannot do a '>=' without 2 variables"
 msgstr "Nu se poate realiza ”>=” fără 2 variabile"
 
-#: interpreter/executer.cpp:869
+#: interpreter/executer.cpp:871
 #, kde-format
 msgid "I cannot do a '<=' without 2 variables"
 msgstr "Nu se poate realiza ”<=” fără 2 variabile"
 
-#: interpreter/executer.cpp:878
+#: interpreter/executer.cpp:880
 #, kde-format
 msgid "You need two numbers or string to do an addition"
 msgstr "Aveți nevoie de două numere sau un șir pentru a aduna"
 
-#: interpreter/executer.cpp:891
+#: interpreter/executer.cpp:893
 #, kde-format
 msgid "You need two numbers to subtract"
 msgstr "Aveți nevoie de două numere pentru a scădea"
 
-#: interpreter/executer.cpp:898
+#: interpreter/executer.cpp:900
 #, kde-format
 msgid "You tried to subtract from a non-number, '%1'"
 msgstr "Ați încercat să scădeți dintr-un non-număr, ”%1”"
 
-#: interpreter/executer.cpp:900
+#: interpreter/executer.cpp:902
 #, kde-format
 msgid "You tried to subtract a non-number, '%1'"
 msgstr "Ați încercat să extrageți un non-număr, ”%1”"
 
-#: interpreter/executer.cpp:907
+#: interpreter/executer.cpp:909
 #, kde-format
 msgid "You need two numbers to multiplicate"
 msgstr "Aveți nevoie de două numere pentru a înmulți"
 
-#: interpreter/executer.cpp:914
+#: interpreter/executer.cpp:916
 #, kde-format
 msgid "You tried to multiplicate a non-number, '%1'"
 msgstr "Ați încercat să înmulțiți un non-număr, ”%1” "
 
-#: interpreter/executer.cpp:916
+#: interpreter/executer.cpp:918
 #, kde-format
 msgid "You tried to multiplicate by a non-number, '%1'"
 msgstr "Ați încercat să înmulțiți cu un non-număr, ”%1”"
 
-#: interpreter/executer.cpp:923
+#: interpreter/executer.cpp:925
 #, kde-format
 msgid "You need two numbers to divide"
 msgstr "Aveți nevoie de două numere pentru a împărți"
 
-#: interpreter/executer.cpp:928
+#: interpreter/executer.cpp:930
 #, kde-format
 msgid "You tried to divide by zero"
 msgstr "Ați încercat să împărțiți cu zero"
 
-#: interpreter/executer.cpp:934
+#: interpreter/executer.cpp:936
 #, kde-format
 msgid "You tried to divide a non-number, '%1'"
 msgstr "Ați încercat să împărțiți un non-număr, ”%1”"
 
-#: interpreter/executer.cpp:936
+#: interpreter/executer.cpp:938
 #, kde-format
 msgid "You tried to divide by a non-number, '%1'"
 msgstr "Ați încercat să împărțiți cu un non-număr, ”%1”"
 
-#: interpreter/executer.cpp:943
+#: interpreter/executer.cpp:945
 #, kde-format
 msgid "You need two numbers to raise a power"
 msgstr "Aveți nevoie de două numere pentru a ridica la putere"
 
-#: interpreter/executer.cpp:954
+#: interpreter/executer.cpp:956
 #, kde-format
 msgid "The result of an exponentiation was too large"
 msgstr "Rezultatul unui calcul exponențial a fost prea mare"
 
-#: interpreter/executer.cpp:960
+#: interpreter/executer.cpp:962
 #, kde-format
 msgid "You tried to raise a non-number to a power, '%1'"
 msgstr "Ați încercat să ridicați la putere un non-număr, ”%1”"
 
-#: interpreter/executer.cpp:962
+#: interpreter/executer.cpp:964
 #, kde-format
 msgid "You tried to raise the power of a non-number, '%1'"
 msgstr "Ați încercat să ridicați puterea unui non-număr, ”%1”"
 
-#: interpreter/executer.cpp:969
+#: interpreter/executer.cpp:971
 #, kde-format
 msgid "You need one variable and a value or variable to do a '='"
 msgstr ""
 "Aveți nevoie de o variabilă și o valoare sau de o variabilă pentru a efectua "
 "un ”=”"
 
-#: interpreter/executer.cpp:988
+#: interpreter/executer.cpp:990
 #, kde-format
 msgid "The function '%1' is already defined."
 msgstr "Funcția ”%1” este deja definită."
 
-#: interpreter/executer.cpp:1275
+#: interpreter/executer.cpp:1121 interpreter/executer.cpp:1149
+#, kde-format
+msgid "The command %1 takes either a string or %2 numbers"
+msgstr ""
+
+#: interpreter/executer.cpp:1322
 #, kde-format
 msgid "Can't do a sqrt of a negative number"
 msgstr ""

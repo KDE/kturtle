@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:48+0000\n"
+"POT-Creation-Date: 2026-09-20 16:13+0000\n"
 "PO-Revision-Date: 2014-04-24 00:50+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -52,6 +52,81 @@ msgstr "överstreken"
 #, kde-format
 msgid "strikeout"
 msgstr "dörstreken"
+
+#: color.cpp:36
+#, kde-format
+msgid "%1 is not a valid color."
+msgstr ""
+
+#: color.cpp:43
+#, kde-format
+msgid "white"
+msgstr ""
+
+#: color.cpp:45
+#, kde-format
+msgid "black"
+msgstr ""
+
+#: color.cpp:47
+#, kde-format
+msgid "grey"
+msgstr ""
+
+#: color.cpp:49
+#, kde-format
+msgid "gray"
+msgstr ""
+
+#: color.cpp:51
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "You are about to translate the 'Random' COMMAND ALIAS, there are some "
+#| "rules on how to translate it.Please see http://edu.kde.org/kturtle/"
+#| "translator.php to learn how to properly translate it."
+#| msgid "rnd"
+msgid "red"
+msgstr "tf"
+
+#: color.cpp:53
+#, kde-format
+msgid "brown"
+msgstr ""
+
+#: color.cpp:55
+#, kde-format
+msgid "orange"
+msgstr ""
+
+#: color.cpp:57
+#, kde-format
+msgid "yellow"
+msgstr ""
+
+#: color.cpp:59
+#, kde-format
+msgid "gold"
+msgstr ""
+
+#: color.cpp:61
+#, kde-format
+msgid "green"
+msgstr ""
+
+#: color.cpp:63
+#, kde-format
+msgid "blue"
+msgstr ""
+
+#: color.cpp:65
+#, kde-format
+msgid "purple"
+msgstr ""
+
+#: color.cpp:67
+#, kde-format
+msgid "pink"
+msgstr ""
 
 #: colorpicker.cpp:28
 #, fuzzy, kde-format
@@ -299,24 +374,24 @@ msgstr "Tekenkeed"
 msgid "None"
 msgstr "Keen"
 
-#: interpreter/executer.cpp:70
+#: interpreter/executer.cpp:72
 #, kde-format
 msgid "Cannot return outside a function. "
 msgstr "Buten en Funkschoon is Torüchgahn nich mööglich."
 
-#: interpreter/executer.cpp:395
+#: interpreter/executer.cpp:397
 #, kde-format
 msgid "The %1 command accepts no parameters."
 msgstr "De Befehl \"%1\" nimmt keen Parameters an."
 
-#: interpreter/executer.cpp:405
+#: interpreter/executer.cpp:407
 #, kde-format
 msgid "The %2 command was called with %3 but needs 1 parameter."
 msgid_plural "The %2 command was called with %3 but needs %1 parameters."
 msgstr[0] "De Befehl \"%2\" wöör mit %3 opropen, man bruukt een Parameter."
 msgstr[1] "De Befehl \"%2\" wöör mit %3 opropen, man bruukt %1 Parameters."
 
-#: interpreter/executer.cpp:413
+#: interpreter/executer.cpp:415
 #, kde-format
 msgid "The %2 command was called with %3 but only accepts 1 parameter."
 msgid_plural ""
@@ -326,55 +401,55 @@ msgstr[0] ""
 msgstr[1] ""
 "De Befehl \"%2\" wöör mit \"%3\" opropen, man nimmt bloots %1 Parameters an."
 
-#: interpreter/executer.cpp:436
+#: interpreter/executer.cpp:438
 #, kde-format
 msgid "The %1 command only accepts a string as its parameter."
 msgstr "De Befehl \"%1\" nimmt bloots en Tekenkeed as Parameter an."
 
-#: interpreter/executer.cpp:438
+#: interpreter/executer.cpp:440
 #, kde-format
 msgid "The %1 command only accepts strings as its parameters."
 msgstr "De Befehl \"%1\" nimmt bloots Tekenkeden as Parameters an."
 
-#: interpreter/executer.cpp:443
+#: interpreter/executer.cpp:445
 #, kde-format
 msgid "The %1 command only accepts a number as its parameter."
 msgstr "De Befehl \"%1\" nimmt bloots en Tall as Parameter an."
 
-#: interpreter/executer.cpp:445
+#: interpreter/executer.cpp:447
 #, kde-format
 msgid "The %1 command only accepts numbers as its parameters."
 msgstr "De Befehl \"%1\" nimmt bloots Tallen as Parameters an."
 
-#: interpreter/executer.cpp:450
+#: interpreter/executer.cpp:452
 #, kde-format
 msgid "The %1 command only accepts an answer as its parameter."
 msgstr "De Befehl \"%1\" nimmt bloots en Antwoort as Parameter an."
 
-#: interpreter/executer.cpp:452
+#: interpreter/executer.cpp:454
 #, kde-format
 msgid "The %1 command only accepts answers as its parameters."
 msgstr "De Befehl \"%1\" nimmt bloots Antwoorden as Parameters an."
 
-#: interpreter/executer.cpp:526
+#: interpreter/executer.cpp:528
 #, kde-format
 msgid "The variable '%1' was used without first being assigned to a value"
 msgstr ""
 "Du hest de Variabel \"%1\" bruukt, man ehr nich toeerst en Weert towiest"
 
-#: interpreter/executer.cpp:546
+#: interpreter/executer.cpp:548
 #, kde-format
 msgid "An unknown function named '%1' was called"
 msgstr "Du hest en nich begäng Funkschoon mit den Naam \"%1\" opropen"
 
-#: interpreter/executer.cpp:560
+#: interpreter/executer.cpp:562
 #, kde-format
 msgid "The function '%1' was called with %2, while it should be called with %3"
 msgstr ""
 "Du hest de Funkschoon \"%1\" mit %2 opropen, man se schull mit %3 opropen "
 "warrn"
 
-#: interpreter/executer.cpp:562 interpreter/executer.cpp:564
+#: interpreter/executer.cpp:564 interpreter/executer.cpp:566
 #, kde-format
 msgctxt ""
 "The function '%1' was called with %2, while it should be called with %3"
@@ -383,142 +458,147 @@ msgid_plural "%1 parameters"
 msgstr[0] "1 Parameter"
 msgstr[1] "%1 Parameters"
 
-#: interpreter/executer.cpp:787
+#: interpreter/executer.cpp:789
 #, kde-format
 msgid "ASSERT failed"
 msgstr "\"BESEKER\" is fehlslaan"
 
-#: interpreter/executer.cpp:794
+#: interpreter/executer.cpp:796
 #, kde-format
 msgid "'And' needs two variables"
 msgstr "\"Un\" bruukt twee Variabeln"
 
-#: interpreter/executer.cpp:804
+#: interpreter/executer.cpp:806
 #, kde-format
 msgid "'Or' needs two variables"
 msgstr "\"Oder\" bruukt twee Variabeln"
 
-#: interpreter/executer.cpp:815
+#: interpreter/executer.cpp:817
 #, kde-format
 msgid "I need something to do a not on"
 msgstr "Du muttst \"Nich\" op jichtenswat anwennen"
 
-#: interpreter/executer.cpp:824
+#: interpreter/executer.cpp:826
 #, kde-format
 msgid "I cannot do a '==' without 2 variables"
 msgstr "\"==\" bruukt twee Variabeln"
 
-#: interpreter/executer.cpp:833
+#: interpreter/executer.cpp:835
 #, kde-format
 msgid "I cannot do a '!=' without 2 variables"
 msgstr "\"!=\" bruukt twee Variabeln"
 
-#: interpreter/executer.cpp:842
+#: interpreter/executer.cpp:844
 #, kde-format
 msgid "I cannot do a '>' without 2 variables"
 msgstr "\">\" bruukt twee Variabeln"
 
-#: interpreter/executer.cpp:851
+#: interpreter/executer.cpp:853
 #, kde-format
 msgid "I cannot do a '<' without 2 variables"
 msgstr "\"<\" bruukt twee Variabeln"
 
-#: interpreter/executer.cpp:860
+#: interpreter/executer.cpp:862
 #, kde-format
 msgid "I cannot do a '>=' without 2 variables"
 msgstr "\">=\" bruukt twee Variabeln"
 
-#: interpreter/executer.cpp:869
+#: interpreter/executer.cpp:871
 #, kde-format
 msgid "I cannot do a '<=' without 2 variables"
 msgstr "\"<=\" bruukt twee Variabeln"
 
-#: interpreter/executer.cpp:878
+#: interpreter/executer.cpp:880
 #, kde-format
 msgid "You need two numbers or string to do an addition"
 msgstr "För en Tosamentellen bruukst Du 2 Tekenkeden oder Tallen"
 
-#: interpreter/executer.cpp:891
+#: interpreter/executer.cpp:893
 #, kde-format
 msgid "You need two numbers to subtract"
 msgstr "För't Aftrecken bruukst Du 2 Tallen"
 
-#: interpreter/executer.cpp:898
+#: interpreter/executer.cpp:900
 #, kde-format
 msgid "You tried to subtract from a non-number, '%1'"
 msgstr "Du wullst wat vun en Nich-Tall (\"%1\") aftrecken"
 
-#: interpreter/executer.cpp:900
+#: interpreter/executer.cpp:902
 #, kde-format
 msgid "You tried to subtract a non-number, '%1'"
 msgstr "Du wullst en Nich-Tall (\"%1\")aftrecken"
 
-#: interpreter/executer.cpp:907
+#: interpreter/executer.cpp:909
 #, kde-format
 msgid "You need two numbers to multiplicate"
 msgstr "För't Maalnehmen bruukst Du twee Tallen"
 
-#: interpreter/executer.cpp:914
+#: interpreter/executer.cpp:916
 #, kde-format
 msgid "You tried to multiplicate a non-number, '%1'"
 msgstr "Du wullst en Nich-Tall (\"%1\") maalnehmen"
 
-#: interpreter/executer.cpp:916
+#: interpreter/executer.cpp:918
 #, kde-format
 msgid "You tried to multiplicate by a non-number, '%1'"
 msgstr "Du wullst mit en Nich-Tall (\"%1\") maalnehmen"
 
-#: interpreter/executer.cpp:923
+#: interpreter/executer.cpp:925
 #, kde-format
 msgid "You need two numbers to divide"
 msgstr "För't Delen bruukst Du twee Tallen"
 
-#: interpreter/executer.cpp:928
+#: interpreter/executer.cpp:930
 #, kde-format
 msgid "You tried to divide by zero"
 msgstr "Du wullst dör Null delen"
 
-#: interpreter/executer.cpp:934
+#: interpreter/executer.cpp:936
 #, kde-format
 msgid "You tried to divide a non-number, '%1'"
 msgstr "Du wullst en Nich-Tall (\"%1\") delen"
 
-#: interpreter/executer.cpp:936
+#: interpreter/executer.cpp:938
 #, kde-format
 msgid "You tried to divide by a non-number, '%1'"
 msgstr "Du wullst dör en Nich-Tall (\"%1\") delen"
 
-#: interpreter/executer.cpp:943
+#: interpreter/executer.cpp:945
 #, kde-format
 msgid "You need two numbers to raise a power"
 msgstr "För en Hoochmaal bruukst Du twee Tallen"
 
-#: interpreter/executer.cpp:954
+#: interpreter/executer.cpp:956
 #, kde-format
 msgid "The result of an exponentiation was too large"
 msgstr "Dat Resultaat vun en Potenzreken weer to groot."
 
-#: interpreter/executer.cpp:960
+#: interpreter/executer.cpp:962
 #, kde-format
 msgid "You tried to raise a non-number to a power, '%1'"
 msgstr "Du wullst en Nich-Tall (\"%1\") hoochmaalnehmen"
 
-#: interpreter/executer.cpp:962
+#: interpreter/executer.cpp:964
 #, kde-format
 msgid "You tried to raise the power of a non-number, '%1'"
 msgstr "Du wullst mit en Nich-Tall (\"%1\") hoochmaalnehmen"
 
-#: interpreter/executer.cpp:969
+#: interpreter/executer.cpp:971
 #, kde-format
 msgid "You need one variable and a value or variable to do a '='"
 msgstr "\"=\" bruukt een Variabel un een Variabel oder Weert"
 
-#: interpreter/executer.cpp:988
+#: interpreter/executer.cpp:990
 #, kde-format
 msgid "The function '%1' is already defined."
 msgstr "Dat gifft de Funkschoon \"%1\" al!"
 
-#: interpreter/executer.cpp:1275
+#: interpreter/executer.cpp:1121 interpreter/executer.cpp:1149
+#, kde-format
+msgid "The command %1 takes either a string or %2 numbers"
+msgstr ""
+
+#: interpreter/executer.cpp:1322
 #, kde-format
 msgid "Can't do a sqrt of a negative number"
 msgstr "Wörtel vun en negatiev Tall lett sik nich utreken"

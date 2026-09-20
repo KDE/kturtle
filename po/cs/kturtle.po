@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:48+0000\n"
+"POT-Creation-Date: 2026-09-20 16:13+0000\n"
 "PO-Revision-Date: 2024-06-19 15:55+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -53,6 +53,81 @@ msgstr "linka nad písmem"
 #, kde-format
 msgid "strikeout"
 msgstr "přeškrtnuté"
+
+#: color.cpp:36
+#, kde-format
+msgid "%1 is not a valid color."
+msgstr ""
+
+#: color.cpp:43
+#, kde-format
+msgid "white"
+msgstr ""
+
+#: color.cpp:45
+#, kde-format
+msgid "black"
+msgstr ""
+
+#: color.cpp:47
+#, kde-format
+msgid "grey"
+msgstr ""
+
+#: color.cpp:49
+#, kde-format
+msgid "gray"
+msgstr ""
+
+#: color.cpp:51
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "You are about to translate the 'Random' COMMAND ALIAS, there are some "
+#| "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
+#| "translator.php to learn how to properly translate it."
+#| msgid "rnd"
+msgid "red"
+msgstr "nhd"
+
+#: color.cpp:53
+#, kde-format
+msgid "brown"
+msgstr ""
+
+#: color.cpp:55
+#, kde-format
+msgid "orange"
+msgstr ""
+
+#: color.cpp:57
+#, kde-format
+msgid "yellow"
+msgstr ""
+
+#: color.cpp:59
+#, kde-format
+msgid "gold"
+msgstr ""
+
+#: color.cpp:61
+#, kde-format
+msgid "green"
+msgstr ""
+
+#: color.cpp:63
+#, kde-format
+msgid "blue"
+msgstr ""
+
+#: color.cpp:65
+#, kde-format
+msgid "purple"
+msgstr ""
+
+#: color.cpp:67
+#, kde-format
+msgid "pink"
+msgstr ""
 
 #: colorpicker.cpp:28
 #, kde-format
@@ -297,17 +372,17 @@ msgstr "text"
 msgid "None"
 msgstr "Žádné"
 
-#: interpreter/executer.cpp:70
+#: interpreter/executer.cpp:72
 #, kde-format
 msgid "Cannot return outside a function. "
 msgstr "Nelze se vrátit z vně funkce. "
 
-#: interpreter/executer.cpp:395
+#: interpreter/executer.cpp:397
 #, kde-format
 msgid "The %1 command accepts no parameters."
 msgstr "Příkaz %1 nepřijímá žádné parametry."
 
-#: interpreter/executer.cpp:405
+#: interpreter/executer.cpp:407
 #, kde-format
 msgid "The %2 command was called with %3 but needs 1 parameter."
 msgid_plural "The %2 command was called with %3 but needs %1 parameters."
@@ -318,7 +393,7 @@ msgstr[2] ""
 "Příkaz %2 byl volán s %3 pomocnými proměnnými, ale potřebuje %1 parametrů."
 
 # this is not quite translator comment, but programmer one - the declared "accepts 1 parameter" is incorect, IMHO, in the executer.cpp is the required count of parameters known but does not go into the message
-#: interpreter/executer.cpp:413
+#: interpreter/executer.cpp:415
 #, kde-format
 msgid "The %2 command was called with %3 but only accepts 1 parameter."
 msgid_plural ""
@@ -327,54 +402,54 @@ msgstr[0] "Příkaz %2 byl volán s %3 parametry, ale přijímá jen 1 parametr.
 msgstr[1] "Příkaz %2 byl volán s %3 parametry, ale přijímá jen %1 parametry."
 msgstr[2] "Příkaz %2 byl volán s %3 parametry, ale přijímá jen %1 parametryů."
 
-#: interpreter/executer.cpp:436
+#: interpreter/executer.cpp:438
 #, kde-format
 msgid "The %1 command only accepts a string as its parameter."
 msgstr "Příkaz %1 přijímá řetězec jen jako svou pomocnou proměnnou."
 
-#: interpreter/executer.cpp:438
+#: interpreter/executer.cpp:440
 #, kde-format
 msgid "The %1 command only accepts strings as its parameters."
 msgstr "Příkaz %1 přijímá  řetězce jen jako své parametry."
 
-#: interpreter/executer.cpp:443
+#: interpreter/executer.cpp:445
 #, kde-format
 msgid "The %1 command only accepts a number as its parameter."
 msgstr "Příkaz %1 přijímá jen číselnou pomocnou proměnnou."
 
-#: interpreter/executer.cpp:445
+#: interpreter/executer.cpp:447
 #, kde-format
 msgid "The %1 command only accepts numbers as its parameters."
 msgstr "Příkaz %1 přijímá jen číselné parametry."
 
-#: interpreter/executer.cpp:450
+#: interpreter/executer.cpp:452
 #, kde-format
 msgid "The %1 command only accepts an answer as its parameter."
 msgstr "Příkaz %1 přijímá jako svoji pomocnou proměnnou pouze odpověď."
 
-#: interpreter/executer.cpp:452
+#: interpreter/executer.cpp:454
 #, kde-format
 msgid "The %1 command only accepts answers as its parameters."
 msgstr "Příkaz %1 přijímá jako svoje parametry jen odpovědi."
 
-#: interpreter/executer.cpp:526
+#: interpreter/executer.cpp:528
 #, kde-format
 msgid "The variable '%1' was used without first being assigned to a value"
 msgstr ""
 "Proměnná '%1' byla použita předtím, než jí byla přiřazena hodnota "
 "(neinicializovaná proměnná)"
 
-#: interpreter/executer.cpp:546
+#: interpreter/executer.cpp:548
 #, kde-format
 msgid "An unknown function named '%1' was called"
 msgstr "Byla volána neznámá funkce nazvaná '%1'"
 
-#: interpreter/executer.cpp:560
+#: interpreter/executer.cpp:562
 #, kde-format
 msgid "The function '%1' was called with %2, while it should be called with %3"
 msgstr "Funkce '%1' byla volána s %2, ale měla být volána s %3"
 
-#: interpreter/executer.cpp:562 interpreter/executer.cpp:564
+#: interpreter/executer.cpp:564 interpreter/executer.cpp:566
 #, kde-format
 msgctxt ""
 "The function '%1' was called with %2, while it should be called with %3"
@@ -384,145 +459,150 @@ msgstr[0] "1 pomocnou proměnnou"
 msgstr[1] "%1 pomocnými proměnnými"
 msgstr[2] "%1 pomocnými proměnnými"
 
-#: interpreter/executer.cpp:787
+#: interpreter/executer.cpp:789
 #, kde-format
 msgid "ASSERT failed"
 msgstr "ZKONTROLUJ našlo nesrovnalost"
 
-#: interpreter/executer.cpp:794
+#: interpreter/executer.cpp:796
 #, kde-format
 msgid "'And' needs two variables"
 msgstr "'a' potřebuje dvě proměnné"
 
-#: interpreter/executer.cpp:804
+#: interpreter/executer.cpp:806
 #, kde-format
 msgid "'Or' needs two variables"
 msgstr "'nebo' potřebuje dvě proměnné"
 
-#: interpreter/executer.cpp:815
+#: interpreter/executer.cpp:817
 #, kde-format
 msgid "I need something to do a not on"
 msgstr "Potřebuji něco (výraz), nač by se dal aplikovat operátor 'ne'"
 
-#: interpreter/executer.cpp:824
+#: interpreter/executer.cpp:826
 #, kde-format
 msgid "I cannot do a '==' without 2 variables"
 msgstr "Nemůžu dělat porovnání '==', když u něho nejsou dvě proměnné"
 
-#: interpreter/executer.cpp:833
+#: interpreter/executer.cpp:835
 #, kde-format
 msgid "I cannot do a '!=' without 2 variables"
 msgstr "Ke zjištění nerovnosti '!=' jsou potřeba dvě proměnné"
 
-#: interpreter/executer.cpp:842
+#: interpreter/executer.cpp:844
 #, kde-format
 msgid "I cannot do a '>' without 2 variables"
 msgstr "Nemůžu udělat '>' bez dvou proměnných"
 
-#: interpreter/executer.cpp:851
+#: interpreter/executer.cpp:853
 #, kde-format
 msgid "I cannot do a '<' without 2 variables"
 msgstr "K porovnání '<' jsou potřeba dvě proměnné"
 
-#: interpreter/executer.cpp:860
+#: interpreter/executer.cpp:862
 #, kde-format
 msgid "I cannot do a '>=' without 2 variables"
 msgstr "K porovnání '>=' jsou potřeba dvě proměnné"
 
-#: interpreter/executer.cpp:869
+#: interpreter/executer.cpp:871
 #, kde-format
 msgid "I cannot do a '<=' without 2 variables"
 msgstr "K porovnání '<=' jsou potřeba dvě proměnné"
 
-#: interpreter/executer.cpp:878
+#: interpreter/executer.cpp:880
 #, kde-format
 msgid "You need two numbers or string to do an addition"
 msgstr ""
 "Ke sčítání jsou potřebná právě dvě čísla (číselné sčítání) nebo právě dva "
 "texty (zřetězení textů)"
 
-#: interpreter/executer.cpp:891
+#: interpreter/executer.cpp:893
 #, kde-format
 msgid "You need two numbers to subtract"
 msgstr "K odčítání jsou potřebné dvě čísla"
 
-#: interpreter/executer.cpp:898
+#: interpreter/executer.cpp:900
 #, kde-format
 msgid "You tried to subtract from a non-number, '%1'"
 msgstr "Zkoušíte odčítat od nečíselné hodnoty, '%1'"
 
-#: interpreter/executer.cpp:900
+#: interpreter/executer.cpp:902
 #, kde-format
 msgid "You tried to subtract a non-number, '%1'"
 msgstr "Zkoušíte odečítat nečíselnou hodnotu, totiž '%1'"
 
-#: interpreter/executer.cpp:907
+#: interpreter/executer.cpp:909
 #, kde-format
 msgid "You need two numbers to multiplicate"
 msgstr "K násobení jsou potřebná dvě čísla"
 
-#: interpreter/executer.cpp:914
+#: interpreter/executer.cpp:916
 #, kde-format
 msgid "You tried to multiplicate a non-number, '%1'"
 msgstr "Zkusil jste násobit nečíselnou hodnotu - totiž '%1'"
 
-#: interpreter/executer.cpp:916
+#: interpreter/executer.cpp:918
 #, kde-format
 msgid "You tried to multiplicate by a non-number, '%1'"
 msgstr "Zkusil jste násobit nečíselnou hodnotou - totiž '%1'"
 
-#: interpreter/executer.cpp:923
+#: interpreter/executer.cpp:925
 #, kde-format
 msgid "You need two numbers to divide"
 msgstr "K dělení jsou zapotřebí dvě čísla"
 
-#: interpreter/executer.cpp:928
+#: interpreter/executer.cpp:930
 #, kde-format
 msgid "You tried to divide by zero"
 msgstr "Pokus o dělení nulou"
 
 # it is message for non-number on divider or divider place
-#: interpreter/executer.cpp:934
+#: interpreter/executer.cpp:936
 #, kde-format
 msgid "You tried to divide a non-number, '%1'"
 msgstr "V dělení se vyskytla nečíselná hodnota - totiž '%1'"
 
-#: interpreter/executer.cpp:936
+#: interpreter/executer.cpp:938
 #, kde-format
 msgid "You tried to divide by a non-number, '%1'"
 msgstr "Zkusil jste dělit nečíselnou hodnotou - totiž '%1'"
 
-#: interpreter/executer.cpp:943
+#: interpreter/executer.cpp:945
 #, kde-format
 msgid "You need two numbers to raise a power"
 msgstr "K umocnění jsou zapotřebí dvě čísla"
 
-#: interpreter/executer.cpp:954
+#: interpreter/executer.cpp:956
 #, kde-format
 msgid "The result of an exponentiation was too large"
 msgstr "Výsledek umocňování je příliš veliký"
 
-#: interpreter/executer.cpp:960
+#: interpreter/executer.cpp:962
 #, kde-format
 msgid "You tried to raise a non-number to a power, '%1'"
 msgstr "Zkusil jste umocnit na nečíselnou mocninu - totiž na '%1'"
 
-#: interpreter/executer.cpp:962
+#: interpreter/executer.cpp:964
 #, kde-format
 msgid "You tried to raise the power of a non-number, '%1'"
 msgstr "Zkusil jste umocnit něco jiného než číslo - totiž '%1'"
 
-#: interpreter/executer.cpp:969
+#: interpreter/executer.cpp:971
 #, kde-format
 msgid "You need one variable and a value or variable to do a '='"
 msgstr "Potřebujete proměnnou a hodnotu, abyste mohl udělat přiřazení '='"
 
-#: interpreter/executer.cpp:988
+#: interpreter/executer.cpp:990
 #, kde-format
 msgid "The function '%1' is already defined."
 msgstr "Funkce '%1' je už definována."
 
-#: interpreter/executer.cpp:1275
+#: interpreter/executer.cpp:1121 interpreter/executer.cpp:1149
+#, kde-format
+msgid "The command %1 takes either a string or %2 numbers"
+msgstr ""
+
+#: interpreter/executer.cpp:1322
 #, kde-format
 msgid "Can't do a sqrt of a negative number"
 msgstr "Nelze provést odmocninu záporného čísla"
