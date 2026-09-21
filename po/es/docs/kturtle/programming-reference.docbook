@@ -997,13 +997,17 @@ $respuesta = 10 &gt; 3
       <listitem
 ><para
 ><screen
->colorpincel R;G;B </screen
+>colorpincel R;G;B </screen>
+      <screen
+>colorpincel "color"</screen
 ><userinput
 >colorpincel</userinput
 > fija el color del pincel. El parámetro de entrada de <userinput
 >colorpincel</userinput
 > es una <glossterm linkend="rgb"
 >combinación RGB</glossterm
+> o un <glossterm linkend="named-colors"
+>color con nombre</glossterm
 >. <userinput
 >colorpincel</userinput
 > puede abreviarse como <userinput
@@ -1059,13 +1063,17 @@ $respuesta = 10 &gt; 3
       <listitem
 ><para
 ><screen
->colorlienzo R;G;B</screen
+>colorlienzo R;G;B</screen>
+      <screen
+>colorlienzo "color"</screen
 ><userinput
 >colorlienzo</userinput
 > define el color del lienzo. El parámetro de entrada de <userinput
 >colorlienzo</userinput
 > es una <glossterm linkend="rgb"
 >combinación RGB</glossterm
+> o un <glossterm linkend="named-colors"
+>color con nombre</glossterm
 >. <userinput
 >colorlienzo</userinput
 > puede abreviarse como <userinput

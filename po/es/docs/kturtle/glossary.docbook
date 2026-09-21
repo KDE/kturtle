@@ -160,6 +160,16 @@ levantarpincel
 </row>
 <row>
 <entry
+>colores con nombre</entry>
+<entry
+>depende del color</entry>
+<entry
+>Los <glossterm linkend="named-colors"
+>colores con nombre</glossterm
+> tendrán un color de fondo idéntico a ellos.</entry>
+</row>
+<row>
+<entry
 >números</entry>
 <entry
 >rojo oscuro</entry>
@@ -367,6 +377,107 @@ levantarpincel
 </para>
 <para
 >Existen dos órdenes que necesitan combinaciones RGB como parámetro de entrada: <userinput
+>colorlienzo</userinput
+> y <userinput
+>colorpincel</userinput
+>.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="named-colors">
+<glossterm
+>Colores con nombre (cadenas de colores)</glossterm>
+<glossdef
+><para
+>Además de las combinaciones RGB, se pueden usar colores con nombre. Kturtle acepta un grupo de colores con nombre, que se pasa como cadena a la orden que necesita un color. <table frame="none">
+<title
+>Colores con nombre admitidos en la actualidad</title>
+<tgroup cols="1" rowsep="1">
+<tbody>
+<row
+><entry
+><userinput
+>"blanco"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"negro"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"gris"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"gris"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"rojo"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"marrón"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"naranja"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"amarillo"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"dorado"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"verde"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"azul"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"púrpura"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"rosa"</userinput
+></entry
+></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para
+>Existen dos órdenes que pueden usar colores con nombre como parámetro de entrada: <userinput
 >colorlienzo</userinput
 > y <userinput
 >colorpincel</userinput

@@ -7,13 +7,13 @@
 # Renan Cakirerk, 2010.
 # obsoleteman <tulliana@gmail.com>, 2008-2009.
 # Volkan Gezer <volkangezer@gmail.com>, 2013-2014, 2017.
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022-2026 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeedu-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-20 16:13+0000\n"
-"PO-Revision-Date: 2026-05-02 19:55+0300\n"
+"PO-Revision-Date: 2026-09-20 20:26+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -63,77 +63,72 @@ msgstr "üzeri çizili"
 #: color.cpp:36
 #, kde-format
 msgid "%1 is not a valid color."
-msgstr ""
+msgstr "%1, geçerli bir renk değildir."
 
 #: color.cpp:43
 #, kde-format
 msgid "white"
-msgstr ""
+msgstr "beyaz"
 
 #: color.cpp:45
 #, kde-format
 msgid "black"
-msgstr ""
+msgstr "siyah"
 
 #: color.cpp:47
 #, kde-format
 msgid "grey"
-msgstr ""
+msgstr "gri"
 
 #: color.cpp:49
 #, kde-format
 msgid "gray"
-msgstr ""
+msgstr "gri"
 
 #: color.cpp:51
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Random' COMMAND ALIAS, there are some "
-#| "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn how to properly translate it."
-#| msgid "rnd"
+#, kde-format
 msgid "red"
-msgstr "yuv"
+msgstr "kırmızı"
 
 #: color.cpp:53
 #, kde-format
 msgid "brown"
-msgstr ""
+msgstr "kahverengi"
 
 #: color.cpp:55
 #, kde-format
 msgid "orange"
-msgstr ""
+msgstr "turuncu"
 
 #: color.cpp:57
 #, kde-format
 msgid "yellow"
-msgstr ""
+msgstr "sarı"
 
 #: color.cpp:59
 #, kde-format
 msgid "gold"
-msgstr ""
+msgstr "altın"
 
 #: color.cpp:61
 #, kde-format
 msgid "green"
-msgstr ""
+msgstr "yeşil"
 
 #: color.cpp:63
 #, kde-format
 msgid "blue"
-msgstr ""
+msgstr "mavi"
 
 #: color.cpp:65
 #, kde-format
 msgid "purple"
-msgstr ""
+msgstr "mor"
 
 #: color.cpp:67
 #, kde-format
 msgid "pink"
-msgstr ""
+msgstr "pembe"
 
 #: colorpicker.cpp:28
 #, kde-format
@@ -599,7 +594,7 @@ msgstr "“%1” işlevi zaten tanmlanmış."
 #: interpreter/executer.cpp:1121 interpreter/executer.cpp:1149
 #, kde-format
 msgid "The command %1 takes either a string or %2 numbers"
-msgstr ""
+msgstr "%1 komutu ya bir dizi veya %2 sayısı alır"
 
 #: interpreter/executer.cpp:1322
 #, kde-format
