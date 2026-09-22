@@ -1033,14 +1033,18 @@ $antwoord = 10 &gt; 3
       <listitem
 ><para
 ><screen
->penkleur R,G,B</screen
+>penkleur R,G,B</screen>
+      <screen
+>penkleur "kleur"</screen
 ><userinput
 >penkleur</userinput
 > stelt de kleur in van de pen. <userinput
 >penkleur</userinput
-> heeft een <glossterm linkend="rgb"
->RGB-combinatie (drie getallen tussen 0 en 255) </glossterm
-> nodig als invoer. <userinput
+> neemt een <glossterm linkend="rgb"
+>RGB-combinatie (drie getallen tussen 0 en 255)</glossterm
+> or a <glossterm linkend="named-colors"
+>kleur-naam</glossterm
+> als invoer. <userinput
 >penkleur</userinput
 > kan worden afgekort met <userinput
 >pk</userinput
@@ -1095,14 +1099,18 @@ $antwoord = 10 &gt; 3
       <listitem
 ><para
 ><screen
->canvaskleur R,G,B</screen
+>canvaskleur R,G,B</screen>
+      <screen
+>canvaskleur "kleur"</screen
 ><userinput
 >canvaskleur</userinput
 > stelt de kleur in van het canvas. <userinput
 >canvaskleur</userinput
-> heeft een <glossterm linkend="rgb"
->RGB-combinatie (drie getallen tussen 0 en 255) </glossterm
-> nodig als invoer. <userinput
+> neemt een <glossterm linkend="rgb"
+>RGB-combinatie (drie getallen tussen 0 en 255)</glossterm
+> of <glossterm linkend="named-colors"
+>kleur-naam</glossterm
+> als invoer. <userinput
 >canvaskleur</userinput
 > kan worden afgekort met <userinput
 >ck</userinput

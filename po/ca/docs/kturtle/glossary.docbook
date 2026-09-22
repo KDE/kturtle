@@ -172,6 +172,16 @@ penup
 </row>
 <row>
 <entry
+>colors-amb-nom</entry>
+<entry
+>depèn del color</entry>
+<entry
+><glossterm linkend="named-colors"
+>Colors amb nom</glossterm
+> tindrà un color de fons idèntic a ells.</entry>
+</row>
+<row>
+<entry
 >nombres</entry>
 <entry
 >vermell fosc</entry>
@@ -399,6 +409,111 @@ penup
 </para>
 <para
 >Hi ha dues ordres que necessiten una combinació RGB com a entrada: Aquestes són <userinput
+>canvascolor</userinput
+> (<userinput
+>colorpaper</userinput
+>) i <userinput
+>pencolor</userinput
+> (<userinput
+>colorllapis</userinput
+>).</para
+></glossdef>
+</glossentry>
+
+<glossentry id="named-colors">
+<glossterm
+>Colors-amb-nom (cadena de color)</glossterm>
+<glossdef
+><para
+>A més de les combinacions RGB, podeu utilitzar colors amb nom. El Kturtle admet un grup de colors amb nom, que es passen com a cadenes a l'ordre que requereixi un color. <table frame="none">
+<title
+>Colors amb nom admesos actualment</title>
+<tgroup cols="1" rowsep="1">
+<tbody>
+<row
+><entry
+><userinput
+>"blanc"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"negre"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"gris"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"gris"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"vermell"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"marró"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"taronja"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"groc"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"or"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"verd"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"blau"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"púrpura"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"rosa"</userinput
+></entry
+></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para
+>Hi ha dues ordres que poden fer servir un color-amb-nom com a entrada: Aquestes són <userinput
 >canvascolor</userinput
 > (<userinput
 >colorpaper</userinput

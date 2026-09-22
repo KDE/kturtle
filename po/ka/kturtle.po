@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-20 16:13+0000\n"
-"PO-Revision-Date: 2023-08-17 06:33+0200\n"
+"PO-Revision-Date: 2026-09-21 04:08+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -56,77 +56,72 @@ msgstr "გაზგადასმული"
 #: color.cpp:36
 #, kde-format
 msgid "%1 is not a valid color."
-msgstr ""
+msgstr "%1 სწორი ფერი არაა."
 
 #: color.cpp:43
 #, kde-format
 msgid "white"
-msgstr ""
+msgstr "თეთრი"
 
 #: color.cpp:45
 #, kde-format
 msgid "black"
-msgstr ""
+msgstr "შავი"
 
 #: color.cpp:47
 #, kde-format
 msgid "grey"
-msgstr ""
+msgstr "ნაცრისფერი"
 
 #: color.cpp:49
 #, kde-format
 msgid "gray"
-msgstr ""
+msgstr "ნაცრისფერი"
 
 #: color.cpp:51
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Random' COMMAND ALIAS, there are some "
-#| "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn how to properly translate it."
-#| msgid "rnd"
+#, kde-format
 msgid "red"
-msgstr "rnd"
+msgstr "წითელი"
 
 #: color.cpp:53
 #, kde-format
 msgid "brown"
-msgstr ""
+msgstr "ყავისფერი"
 
 #: color.cpp:55
 #, kde-format
 msgid "orange"
-msgstr ""
+msgstr "ნარინჯისფერი"
 
 #: color.cpp:57
 #, kde-format
 msgid "yellow"
-msgstr ""
+msgstr "ყვითელი"
 
 #: color.cpp:59
 #, kde-format
 msgid "gold"
-msgstr ""
+msgstr "ოქროსფერი"
 
 #: color.cpp:61
 #, kde-format
 msgid "green"
-msgstr ""
+msgstr "მწვანე"
 
 #: color.cpp:63
 #, kde-format
 msgid "blue"
-msgstr ""
+msgstr "ლურჯი"
 
 #: color.cpp:65
 #, kde-format
 msgid "purple"
-msgstr ""
+msgstr "იისფერი"
 
 #: color.cpp:67
 #, kde-format
 msgid "pink"
-msgstr ""
+msgstr "ვარდისფერი"
 
 #: colorpicker.cpp:28
 #, kde-format
@@ -588,7 +583,7 @@ msgstr "ფუნქცია '%1' უკვე აღწერილია."
 #: interpreter/executer.cpp:1121 interpreter/executer.cpp:1149
 #, kde-format
 msgid "The command %1 takes either a string or %2 numbers"
-msgstr ""
+msgstr "ბრძანება %1 იღებს, ან სტრიქონს, ან %2 რიცხვს"
 
 #: interpreter/executer.cpp:1322
 #, kde-format

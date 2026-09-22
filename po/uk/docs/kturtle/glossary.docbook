@@ -158,6 +158,16 @@ $r = випадкове 1,100
 </row>
 <row>
 <entry
+>іменовані кольори</entry>
+<entry
+>залежить від кольору</entry>
+<entry
+><glossterm linkend="named-colors"
+>Іменовані кольори</glossterm
+> матимуть колір тла ідентичний до кольорів.</entry>
+</row>
+<row>
+<entry
 >числа</entry>
 <entry
 >темно-червоний</entry>
@@ -365,6 +375,107 @@ $r = випадкове 1,100
 </para>
 <para
 >Вхідні дані у форматі RGB-комбінації використовують дві команди: <userinput
+>canvascolor</userinput
+> і <userinput
+>pencolor</userinput
+>.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="named-colors">
+<glossterm
+>Іменовані кольори (рядки кольорів)</glossterm>
+<glossdef
+><para
+>Окрім RGB-комбінацій, можна використовувати назви кольорів. У Kturtle передбачено підтримку набору назв кольорів, які передаються як рядки командам, що потребують визначення кольору. <table frame="none">
+<title
+>У поточній версії передбачено підтримку іменованих кольорів</title>
+<tgroup cols="1" rowsep="1">
+<tbody>
+<row
+><entry
+><userinput
+>"білий"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"чорний"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"сірий"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"сірий"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"червоний"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"коричневий"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"помаранчевий"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"жовтий"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"золотий"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"зелений"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"синій"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"пурпуровий"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"рожевий"</userinput
+></entry
+></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para
+>Вхідні дані у форматі іменованих кольорів використовують дві команди: <userinput
 >canvascolor</userinput
 > і <userinput
 >pencolor</userinput

@@ -1005,13 +1005,17 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->колір_пера R,G,B</screen
+>колір_пера R,G,B</screen>
+      <screen
+>pencolor "колір"</screen
 >Команда <userinput
 >колір_пера</userinput
 > встановлює колір лінії, яку лишає по собі перо. Команда <userinput
 >колір_пера</userinput
 > отримує дані для кольору у вигляді <glossterm linkend="rgb"
 >RGB-комбінації</glossterm
+> або <glossterm linkend="named-colors"
+>іменованого кольору</glossterm
 >. Команду <userinput
 >колір_пера</userinput
 > можна скоротити до <userinput
@@ -1067,13 +1071,17 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->колір_полотна R,G,B</screen
+>колір_полотна R,G,B</screen>
+      <screen
+>canvascolor "колір"</screen
 >Команда <userinput
 >колір_полотна</userinput
 > встановлює колір тла полотна. Команда <userinput
 >колір_полотна</userinput
 > отримує вхідні дані у вигляді <glossterm linkend="rgb"
 >RGB-комбінації</glossterm
+> або <glossterm linkend="named-colors"
+>іменованого кольору</glossterm
 >. Команду <userinput
 >колір_полотна</userinput
 > можна скоротити до <userinput

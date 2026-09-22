@@ -160,6 +160,16 @@ penop
 </row>
 <row>
 <entry
+>kleur-namen</entry>
+<entry
+>afhankelijk van kleur</entry>
+<entry
+><glossterm linkend="named-colors"
+>Kleur-namen</glossterm
+> krijgen een achtergrondkleur die identiek is aan de kleur zelf.</entry>
+</row>
+<row>
+<entry
 >getallen</entry>
 <entry
 >donkerrood</entry>
@@ -381,6 +391,107 @@ penop
 </para>
 <para
 >Er zijn twee commando's die om een RGB-combinatie als invoer vragen. Deze commando's zijn <userinput
+>canvaskleur</userinput
+> en <userinput
+>penkleur</userinput
+>.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="named-colors">
+<glossterm
+>Kleur-namen (kleurtekenreeksen)</glossterm>
+<glossdef
+><para
+>Naast RGB-combinaties kunt u ook kleur-namen gebruiken. Kturtle ondersteunt een aantal kleur-namen die als tekstreeksen worden doorgegeven aan het commando dat een kleur vereist. <table frame="none">
+<title
+>Nu ondersteunde kleur-namen</title>
+<tgroup cols="1" rowsep="1">
+<tbody>
+<row
+><entry
+><userinput
+>"wit"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"zwart"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"grijs"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"grijs"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"rood"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"bruin"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"oranje"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"geel"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"goud"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"groen"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>'blauw"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"paars"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"roze"</userinput
+></entry
+></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para
+>Er zijn twee commando's die een kleur-naam als invoer gebruiken: deze commando's zijn <userinput
 >canvaskleur</userinput
 > en <userinput
 >penkleur</userinput

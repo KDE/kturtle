@@ -60,7 +60,9 @@ msgstr "gras"
 msgid "italic"
 msgstr "italique"
 
-# Il faudrait mettre "souligné" mais je ne voudrait pas casser des programmes existants. En même temps ca a lair de venir d'une fonction non utilisée donc jsp. (https://lxr.kde.org/source/education/kturtle/src/canvas.cpp#0191)
+# Il faudrait mettre "souligné" mais je ne voudrait pas casser des programmes
+# existants. En même temps ca a lair de venir d'une fonction non utilisée donc
+# jsp. (https://lxr.kde.org/source/education/kturtle/src/canvas.cpp#0191)
 #: canvas.cpp:192
 #, kde-format
 msgid "underline"
@@ -2192,7 +2194,8 @@ msgstr "Aide sur : %1"
 msgid " Line: %1 Column: %2 "
 msgstr " Ligne : %1 Col : %2 "
 
-# Corresponds au "%1" de "Help on: %1", le %1 est le mot sous le curseur et %2 est le type
+# Corresponds au "%1" de "Help on: %1", le %1 est le mot sous le curseur et %2
+# est le type
 #: mainwindow.cpp:763
 #, kde-format
 msgid "\"%1\" <%2>"

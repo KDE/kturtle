@@ -1003,13 +1003,17 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->pencolor R,G,B</screen
+>pencolor R,G,B</screen>
+      <screen
+>pencolor "color"</screen
 ><userinput
 >pencolor</userinput
 > estableix el color del llapis. <userinput
 >pencolor</userinput
 > pren una <glossterm linkend="rgb"
 >combinació RGB</glossterm
+> o un <glossterm linkend="named-colors"
+>color-amb-nom</glossterm
 > com a entrada. <userinput
 >pencolor</userinput
 > pot abreujar-se com <userinput
@@ -1065,13 +1069,17 @@ $answer = 10 &gt; 3
       <listitem
 ><para
 ><screen
->canvascolor R,G,B</screen
+>canvascolor R,G,B</screen>
+      <screen
+>canvascolor "color"</screen
 ><userinput
 >canvascolor</userinput
 > estableix el color del llenç. <userinput
 >canvascolor</userinput
 > pren una <glossterm linkend="rgb"
 >combinació RGB</glossterm
+> o un <glossterm linkend="named-colors"
+>color-amb-nom</glossterm
 > com a entrada. <userinput
 >canvascolor</userinput
 > pot abreujar-se com <userinput
