@@ -309,6 +309,69 @@ Please note that <userinput>$A</userinput> and <userinput>$B</userinput> have to
   </note>
 </sect2>
 
+<sect2 id="drawing-shapes">
+<title>Drawing shapes</title>
+<para>&kturtle; has commands for drawing common shapes, without having to build them out of <userinput>forward</userinput> and <userinput>turnleft</userinput> commands.</para>
+
+  <variablelist>
+    <anchor id="polygon" />
+    <varlistentry>
+      <term>polygon<indexterm><primary>polygon</primary></indexterm></term>
+      <listitem><para><screen>polygon corners, size</screen>
+      <userinput>polygon</userinput> draws a regular polygon with the given number of corners (between 3 and 10) and the given size. An optional third parameter sets the rotation angle in degrees, and an optional fourth parameter sets the spoke ratio (a number between 0 and 1) to turn the polygon into a star shape. The spoke ratio controls how far the points between the corners are pulled toward the center: a ratio of 1 leaves the polygon unchanged, while smaller values create sharper star points.
+<screen>
+polygon 3, 100
+polygon 6, 100, 45
+polygon 5, 100, 0, 0.5
+</screen>
+      The first line draws an equilateral triangle, the second a hexagon rotated 45 degrees, and the third a 5-pointed star.</para></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="triangle" />
+    <varlistentry>
+      <term>triangle<indexterm><primary>triangle</primary></indexterm></term>
+      <listitem><para><screen>triangle sideA, sideB, sideC</screen>
+      <userinput>triangle</userinput> draws a triangle with the three given side lengths. An optional fourth parameter sets the rotation angle in degrees.
+<screen>
+triangle 80, 100, 60
+</screen>
+      This draws a triangle with sides of length 80, 100 and 60.</para></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="rectangle" />
+    <varlistentry>
+      <term>rectangle<indexterm><primary>rectangle</primary></indexterm></term>
+      <listitem><para><screen>rectangle width, height</screen>
+      <userinput>rectangle</userinput> draws a rectangle with the given width and height. An optional third parameter sets the rotation angle in degrees.
+<screen>
+rectangle 100, 60
+rectangle 100, 60, 45
+</screen>
+      The second line draws the same rectangle rotated 45 degrees.</para></listitem>
+    </varlistentry>
+  </variablelist>
+
+<variablelist>
+    <anchor id="ellipse" />
+    <varlistentry>
+      <term>ellipse<indexterm><primary>ellipse</primary></indexterm></term>
+      <listitem><para><screen>ellipse width, height</screen>
+      <userinput>ellipse</userinput> draws an ellipse with the given width and height. If only one parameter is given, it is used for both width and height, drawing a circle. An optional third parameter sets the rotation angle in degrees.
+<screen>
+ellipse 50
+ellipse 100, 60
+ellipse 100, 60, 45
+</screen>
+      The first line draws a circle with a diameter of 50, the second an ellipse, and the third the same ellipse rotated 45 degrees.</para></listitem>
+    </varlistentry>
+  </variablelist>
+
+</sect2>
+
 <sect2 id="locate-the-turtle">
 <title>Where is the turtle?</title>
 <para>There are two commands which return the position of the turtle on the screen.</para>

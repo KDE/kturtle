@@ -279,6 +279,18 @@ void Executer::execute(TreeNode *node)
     case Token::Forward:
         executeForward(node);
         break;
+    case Token::Polygon:
+        executePolygon(node);
+        break;
+    case Token::Ellipse:
+        executeEllipse(node);
+        break;
+    case Token::Rectangle:
+        executeRectangle(node);
+        break;
+    case Token::Triangle:
+        executeTriangle(node);
+        break;
     case Token::Backward:
         executeBackward(node);
         break;
@@ -1050,6 +1062,115 @@ void Executer::executeForward(TreeNode *node)
     if (!checkParameterQuantity(node, 1, 20000 + Token::Forward * 100 + 90) || !checkParameterType(node, Value::Number, 20000 + Token::Forward * 100 + 91))
         return;
     Q_EMIT forward(node->child(0)->value()->number());
+}
+void Executer::executePolygon(TreeNode *node)
+{
+    int argCount = node->childCount();
+
+    if (argCount < 2 || argCount > 4) {
+        addError(i18n("Polygon needs between 2 and 4 parameters: corners, size, and optionally rotation and spoke ratio"), *node->token(), 0);
+        return;
+    }
+
+    if (!checkParameterType(node, Value::Number, 20000 + Token::Polygon * 100 + 91))
+        return;
+
+    int corners = static_cast<int>(node->child(0)->value()->number());
+    double side = node->child(1)->value()->number();
+    double rotation = (argCount >= 3) ? node->child(2)->value()->number() : 0.0;
+    double spokeRatio = (argCount >= 4) ? node->child(3)->value()->number() : 1.0;
+
+    if (corners < 3 || corners > 10) {
+        addError(i18n("A polygon must have between 3 and 10 corners"), *node->token(), 0);
+        return;
+    }
+
+    if (side < 0.0) {
+        addError(i18n("Polygon side must not be negative"), *node->token(), 0);
+        return;
+    }
+
+    if (spokeRatio <= 0.0 || spokeRatio > 1.0) {
+        addError(i18n("Spoke ratio must be greater than 0 and at most 1"), *node->token(), 0);
+        return;
+    }
+
+    Q_EMIT polygon(corners, side, rotation, spokeRatio);
+}
+void Executer::executeEllipse(TreeNode *node)
+{
+    int argCount = node->childCount();
+
+    if (argCount < 1 || argCount > 3) {
+        addError(i18n("Ellipse needs between 1 and 3 parameters: width, optionally height, and optionally rotation"), *node->token(), 0);
+        return;
+    }
+
+    if (!checkParameterType(node, Value::Number, 20000 + Token::Ellipse * 100 + 91))
+        return;
+
+    double width = node->child(0)->value()->number();
+    double height = (argCount >= 2) ? node->child(1)->value()->number() : width;
+    double rotation = (argCount >= 3) ? node->child(2)->value()->number() : 0.0;
+
+    if (width < 0.0 || height < 0.0) {
+        addError(i18n("Ellipse width and height must not be negative"), *node->token(), 0);
+        return;
+    }
+
+    Q_EMIT ellipse(width, height, rotation);
+}
+void Executer::executeRectangle(TreeNode *node)
+{
+    int argCount = node->childCount();
+
+    if (argCount < 2 || argCount > 3) {
+        addError(i18n("Rectangle needs 2 or 3 parameters: width, height, and optionally rotation"), *node->token(), 0);
+        return;
+    }
+
+    if (!checkParameterType(node, Value::Number, 20000 + Token::Rectangle * 100 + 91))
+        return;
+
+    double width = node->child(0)->value()->number();
+    double height = node->child(1)->value()->number();
+    double rotation = (argCount == 3) ? node->child(2)->value()->number() : 0.0;
+
+    if (width < 0.0 || height < 0.0) {
+        addError(i18n("Rectangle width and height must not be negative"), *node->token(), 0);
+        return;
+    }
+
+    Q_EMIT rectangle(width, height, rotation);
+}
+void Executer::executeTriangle(TreeNode *node)
+{
+    int argCount = node->childCount();
+
+    if (argCount < 3 || argCount > 4) {
+        addError(i18n("Triangle needs 3 or 4 parameters: sideA, sideB, sideC, and optionally rotation"), *node->token(), 0);
+        return;
+    }
+
+    if (!checkParameterType(node, Value::Number, 20000 + Token::Triangle * 100 + 91))
+        return;
+
+    double sideA = node->child(0)->value()->number();
+    double sideB = node->child(1)->value()->number();
+    double sideC = node->child(2)->value()->number();
+    double rotation = (argCount == 4) ? node->child(3)->value()->number() : 0.0;
+
+    if (sideA <= 0.0 || sideB <= 0.0 || sideC <= 0.0) {
+        addError(i18n("Triangle side lengths must be positive numbers"), *node->token(), 0);
+        return;
+    }
+
+    if (sideA + sideB <= sideC || sideB + sideC <= sideA || sideA + sideC <= sideB) {
+        addError(i18n("The given side lengths cannot form a triangle"), *node->token(), 0);
+        return;
+    }
+
+    Q_EMIT triangle(sideA, sideB, sideC, rotation);
 }
 void Executer::executeBackward(TreeNode *node)
 {

@@ -364,12 +364,76 @@ void Translator::setDictionary()
     look2typeMap[localizedCommandLook] = Token::Forward;
 
     localizedCommandLook = ki18nc(
+                               "You are about to translate the 'Polygon' COMMAND, there are some rules on how to translate it."
+                               "Please see https://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+                               "polygon")
+                               .toString(localizer);
+    default2localizedMap[QStringLiteral("polygon")] = localizedCommandLook;
+    look2typeMap[localizedCommandLook] = Token::Polygon;
+
+    localizedCommandLook = ki18nc(
+                               "You are about to translate the 'Ellipse' COMMAND, there are some rules on how to translate it."
+                               "Please see https://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+                               "ellipse")
+                               .toString(localizer);
+    default2localizedMap[QStringLiteral("ellipse")] = localizedCommandLook;
+    look2typeMap[localizedCommandLook] = Token::Ellipse;
+
+    localizedCommandLook = ki18nc(
+                               "You are about to translate the 'Rectangle' COMMAND, there are some rules on how to translate it."
+                               "Please see https://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+                               "rectangle")
+                               .toString(localizer);
+    default2localizedMap[QStringLiteral("rectangle")] = localizedCommandLook;
+    look2typeMap[localizedCommandLook] = Token::Rectangle;
+
+    localizedCommandLook = ki18nc(
+                               "You are about to translate the 'Triangle' COMMAND, there are some rules on how to translate it."
+                               "Please see https://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+                               "triangle")
+                               .toString(localizer);
+    default2localizedMap[QStringLiteral("triangle")] = localizedCommandLook;
+    look2typeMap[localizedCommandLook] = Token::Triangle;
+
+    localizedCommandLook = ki18nc(
                                "You are about to translate the 'Forward' COMMAND ALIAS, there are some rules on how to translate it."
                                "Please see https://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
                                "fw")
                                .toString(localizer);
     default2localizedMap[QStringLiteral("fw")] = localizedCommandLook;
     look2typeMap[localizedCommandLook] = Token::Forward;
+
+    localizedCommandLook = ki18nc(
+                               "You are about to translate the 'Polygon' COMMAND, there are some rules on how to translate it."
+                               "Please see https://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+                               "polygon")
+                               .toString(localizer);
+    default2localizedMap[QStringLiteral("polygon")] = localizedCommandLook;
+    look2typeMap[localizedCommandLook] = Token::Polygon;
+
+    localizedCommandLook = ki18nc(
+                               "You are about to translate the 'Ellipse' COMMAND, there are some rules on how to translate it."
+                               "Please see https://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+                               "ellipse")
+                               .toString(localizer);
+    default2localizedMap[QStringLiteral("ellipse")] = localizedCommandLook;
+    look2typeMap[localizedCommandLook] = Token::Ellipse;
+
+    localizedCommandLook = ki18nc(
+                               "You are about to translate the 'Rectangle' COMMAND, there are some rules on how to translate it."
+                               "Please see https://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+                               "rectangle")
+                               .toString(localizer);
+    default2localizedMap[QStringLiteral("rectangle")] = localizedCommandLook;
+    look2typeMap[localizedCommandLook] = Token::Rectangle;
+
+    localizedCommandLook = ki18nc(
+                               "You are about to translate the 'Triangle' COMMAND, there are some rules on how to translate it."
+                               "Please see https://edu.kde.org/kturtle/translator.php to learn how to properly translate it.",
+                               "triangle")
+                               .toString(localizer);
+    default2localizedMap[QStringLiteral("triangle")] = localizedCommandLook;
+    look2typeMap[localizedCommandLook] = Token::Triangle;
 
     localizedCommandLook = ki18nc(
                                "You are about to translate the 'Backward' COMMAND, there are some rules on how to translate it."

@@ -126,6 +126,116 @@ void Canvas::slotForward(double x)
     slotGo(x2, y2);
 }
 
+QPolygonF Canvas::rotatePolygon(const QPolygonF &polygon, const QPointF &center, double angleDegrees)
+{
+    double rad = qDegreesToRadians(angleDegrees);
+    QPolygonF rotated;
+
+    for (const QPointF &point : polygon) {
+        double dx = point.x() - center.x();
+        double dy = point.y() - center.y();
+        double newX = center.x() + dx * qCos(rad) - dy * qSin(rad);
+        double newY = center.y() + dx * qSin(rad) + dy * qCos(rad);
+        rotated << QPointF(newX, newY);
+    }
+
+    return rotated;
+}
+
+void Canvas::slotPolygon(int corners, double side, double rotation, double spokeRatio)
+{
+    if (penWidthIsZero)
+        return;
+
+    double x = turtle->pos().x();
+    double y = turtle->pos().y();
+    double outerR = side / 2.0;
+    double innerR = outerR * spokeRatio;
+
+    QPolygonF poly;
+    int totalPoints = (spokeRatio < 1.0) ? corners * 2 : corners;
+    double startAngle = -M_PI / 2.0;
+
+    if (corners == 4)
+        startAngle += M_PI / corners;
+
+    for (int i = 0; i < totalPoints; ++i) {
+        double angle = startAngle + i * M_PI / (totalPoints / 2.0);
+        double r = (spokeRatio < 1.0 && i % 2 != 0) ? innerR : outerR;
+        poly << QPointF(x + r * qCos(angle), y + r * qSin(angle));
+    }
+
+    poly = rotatePolygon(poly, QPointF(x, y), rotation);
+
+    QGraphicsPolygonItem *polygon = new QGraphicsPolygonItem(poly, nullptr);
+    _scene->addItem(polygon);
+    polygon->setPen(*pen);
+}
+
+void Canvas::slotEllipse(double width, double height, double rotation)
+{
+    if (penWidthIsZero)
+        return;
+
+    QPointF center = turtle->pos();
+    QPolygonF poly;
+
+    for (int i = 0; i < 72; ++i) {
+        double angle = i * 2.0 * M_PI / 72;
+        poly << QPointF(center.x() + (width / 2.0) * qCos(angle), center.y() + (height / 2.0) * qSin(angle));
+    }
+
+    poly = rotatePolygon(poly, center, rotation);
+
+    QGraphicsPolygonItem *ellipse = new QGraphicsPolygonItem(poly, nullptr);
+    _scene->addItem(ellipse);
+    ellipse->setPen(*pen);
+}
+
+void Canvas::slotRectangle(double width, double height, double rotation)
+{
+    if (penWidthIsZero)
+        return;
+
+    double x = turtle->pos().x();
+    double y = turtle->pos().y();
+
+    QPolygonF poly;
+    poly << QPointF(x - width / 2.0, y - height / 2.0) << QPointF(x + width / 2.0, y - height / 2.0) << QPointF(x + width / 2.0, y + height / 2.0)
+         << QPointF(x - width / 2.0, y + height / 2.0);
+
+    poly = rotatePolygon(poly, QPointF(x, y), rotation);
+
+    QGraphicsPolygonItem *rectangle = new QGraphicsPolygonItem(poly, nullptr);
+    _scene->addItem(rectangle);
+    rectangle->setPen(*pen);
+}
+
+void Canvas::slotTriangle(double sideA, double sideB, double sideC, double rotation)
+{
+    if (penWidthIsZero)
+        return;
+
+    QPointF a(0, 0);
+    QPointF b(sideC, 0);
+    double angleA = qAcos((sideB * sideB + sideC * sideC - sideA * sideA) / (2.0 * sideB * sideC));
+    QPointF c(sideB * qCos(angleA), -sideB * qSin(angleA));
+
+    double centroidX = (a.x() + b.x() + c.x()) / 3.0;
+    double centroidY = (a.y() + b.y() + c.y()) / 3.0;
+
+    QPointF center = turtle->pos();
+    QPolygonF poly;
+    poly << QPointF(a.x() - centroidX + center.x(), a.y() - centroidY + center.y()) << QPointF(b.x() - centroidX + center.x(), b.y() - centroidY + center.y())
+         << QPointF(c.x() - centroidX + center.x(), c.y() - centroidY + center.y());
+
+    poly = rotatePolygon(poly, center, rotation);
+
+    QGraphicsPolygonItem *triangle = new QGraphicsPolygonItem(poly, nullptr);
+    _scene->addItem(triangle);
+    triangle->setPen(*pen);
+}
+
 void Canvas::slotBackward(double x)
 {
     double x2 = turtle->pos().x() - (x * std::sin(qDegreesToRadians(turtle->angle())));

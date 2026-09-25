@@ -205,6 +205,10 @@ private:
     void executeGoX(TreeNode *node);
     void executeGoY(TreeNode *node);
     void executeForward(TreeNode *node);
+    void executePolygon(TreeNode *node);
+    void executeEllipse(TreeNode *node);
+    void executeRectangle(TreeNode *node);
+    void executeTriangle(TreeNode *node);
     void executeBackward(TreeNode *node);
     void executeDirection(TreeNode *node);
     void executeTurnLeft(TreeNode *node);
@@ -271,6 +275,10 @@ Q_SIGNALS:
     void goX(double);
     void goY(double);
     void forward(double);
+    void polygon(int, double, double, double);
+    void ellipse(double, double, double);
+    void rectangle(double, double, double);
+    void triangle(double, double, double, double);
     void backward(double);
     void direction(double);
     void turnLeft(double);

@@ -42,6 +42,10 @@ public Q_SLOTS:
         turtle->setPos(turtle->pos().x(), y);
     }
     void slotForward(double x);
+    void slotPolygon(int corners, double side, double rotation, double spokeRatio);
+    void slotEllipse(double width, double height, double rotation);
+    void slotRectangle(double width, double height, double rotation);
+    void slotTriangle(double sideA, double sideB, double sideC, double rotation);
     void slotBackward(double x);
     void slotDirection(double deg)
     {
@@ -92,6 +96,7 @@ protected:
     void resizeEvent(QResizeEvent *event) override;
 
 private:
+    QPolygonF rotatePolygon(const QPolygonF &polygon, const QPointF &center, double angleDegrees);
     void initValues();
     QColor rgbDoublesToColor(double r, double g, double b);
     void drawLine(double x1, double y1, double x2, double y2);

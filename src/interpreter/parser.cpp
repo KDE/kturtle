@@ -202,6 +202,14 @@ TreeNode *Parser::parseStatement()
         return parseGoY();
     case Token::Forward:
         return parseForward();
+    case Token::Polygon:
+        return parsePolygon();
+    case Token::Ellipse:
+        return parseEllipse();
+    case Token::Rectangle:
+        return parseRectangle();
+    case Token::Triangle:
+        return parseTriangle();
     case Token::Backward:
         return parseBackward();
     case Token::Direction:
@@ -753,6 +761,39 @@ TreeNode *Parser::parseGoY()
     return node;
 }
 TreeNode *Parser::parseForward()
+{
+    TreeNode *node = new TreeNode(currentToken);
+    nextToken();
+    appendArguments(node);
+    skipToken(Token::EndOfLine, *node->token());
+    return node;
+}
+TreeNode *Parser::parsePolygon()
+{
+    TreeNode *node = new TreeNode(currentToken);
+    nextToken();
+    appendArguments(node);
+    skipToken(Token::EndOfLine, *node->token());
+    return node;
+}
+TreeNode *Parser::parseEllipse()
+{
+    TreeNode *node = new TreeNode(currentToken);
+    nextToken();
+    appendArguments(node);
+    skipToken(Token::EndOfLine, *node->token());
+    return node;
+}
+
+TreeNode *Parser::parseRectangle()
+{
+    TreeNode *node = new TreeNode(currentToken);
+    nextToken();
+    appendArguments(node);
+    skipToken(Token::EndOfLine, *node->token());
+    return node;
+}
+TreeNode *Parser::parseTriangle()
 {
     TreeNode *node = new TreeNode(currentToken);
     nextToken();

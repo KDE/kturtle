@@ -28,6 +28,14 @@
 		canvas, &Canvas::slotGoY);
 	connect(executer, &Executer::forward, 
 		canvas, &Canvas::slotForward);
+	connect(executer, &Executer::polygon,
+		canvas, &Canvas::slotPolygon);
+	connect(executer, &Executer::ellipse,
+		canvas, &Canvas::slotEllipse);
+	connect(executer, &Executer::rectangle,
+		canvas, &Canvas::slotRectangle);
+	connect(executer, &Executer::triangle,
+		canvas, &Canvas::slotTriangle);
 	connect(executer, &Executer::backward, 
 		canvas, &Canvas::slotBackward);
 	connect(executer, &Executer::direction, 

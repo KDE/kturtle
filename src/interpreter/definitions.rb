@@ -1089,6 +1089,38 @@ new_item()
 parse_item()
 
 new_item()
+@type  = "Polygon"
+@cat   = "Command"
+@look  = "polygon"
+@funct = "statement, node, auto-Q_EMIT"
+@args  = [:number, :number]
+parse_item()
+
+new_item()
+@type  = "Ellipse"
+@cat   = "Command"
+@look  = "ellipse"
+@funct = "statement, node, auto-Q_EMIT"
+@args  = [:number]
+parse_item()
+
+new_item()
+@type  = "Rectangle"
+@cat   = "Command"
+@look  = "rectangle"
+@funct = "statement, node, auto-Q_EMIT"
+@args  = [:number, :number]
+parse_item()
+
+new_item()
+@type  = "Triangle"
+@cat   = "Command"
+@look  = "triangle"
+@funct = "statement, node, auto-Q_EMIT"
+@args  = [:number, :number, :number]
+parse_item()
+
+new_item()
 @type  = "Backward"
 @cat   = "Command"
 @look  = "backward"
@@ -1515,3 +1547,4 @@ new_item()
 	node->value()->setNumber(m);
 EOS
 parse_item()
+

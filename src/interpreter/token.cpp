@@ -59,6 +59,10 @@ int Token::typeToCategory(int type)
     case TurnRight:
     case Pi:
     case Forward:
+    case Polygon:
+    case Ellipse:
+    case Rectangle:
+    case Triangle:
     case Message:
     case Random:
     case Sqrt:

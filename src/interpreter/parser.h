@@ -139,6 +139,10 @@ private:
     TreeNode *parseGoX();
     TreeNode *parseGoY();
     TreeNode *parseForward();
+    TreeNode *parsePolygon();
+    TreeNode *parseEllipse();
+    TreeNode *parseRectangle();
+    TreeNode *parseTriangle();
     TreeNode *parseBackward();
     TreeNode *parseDirection();
     TreeNode *parseTurnLeft();
