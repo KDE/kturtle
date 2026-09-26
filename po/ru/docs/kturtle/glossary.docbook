@@ -13,7 +13,7 @@
 >градусы</glossterm>
 <glossdef
 ><para
->Градусы — единицы измерения углов или поворотов. Полный разворот — это 360 градусов, половина разворота  — это 180 градусов, четверть разворота — 90 градусов. Входными параметрами команд <userinput
+>Градусы — единицы измерения углов или поворотов. Полный разворот — это 360 градусов, половина разворота — это 180 градусов, четверть разворота — 90 градусов. Входными параметрами команд <userinput
 >налево</userinput
 >, <userinput
 >направо</userinput
@@ -164,6 +164,16 @@ $r = случайное 1,100
 </row>
 <row>
 <entry
+>именованные цвета</entry>
+<entry
+>зависит от цвета</entry>
+<entry
+>Для <glossterm linkend="named-colors"
+>именованных цветов</glossterm
+> цвет фона совпадает с самим цветом.</entry>
+</row>
+<row>
+<entry
 >числа</entry>
 <entry
 >тёмно-красный</entry>
@@ -282,10 +292,10 @@ $r = случайное 1,100
 
 <glossentry id="rgb">
 <glossterm
->RGB комбинации (коды цветов)</glossterm>
+>Комбинации RGB (коды цветов)</glossterm>
 <glossdef
 ><para
->RGB комбинации используются для описания цветов. <quote
+>Комбинации RGB используются для описания цветов. <quote
 >R</quote
 > отвечает за <quote
 >красный</quote
@@ -303,7 +313,7 @@ $r = случайное 1,100
 >красный</quote
 >, равно 255, а два остальных равны 0. Это говорит о том, что данная комбинация передаёт чистейший красный цвет. Каждая составляющая комбинации лежит в диапазоне от 0 до 255. Ниже приведён пример нескольких часто используемых цветов: <table frame="none">
 <title
->Часто используемые RGB комбинации</title>
+>Часто используемые комбинации RGB</title>
 <tgroup cols="2" colsep="5" rowsep="1">
 <colspec colname="c1"/>
 <tbody>
@@ -353,7 +363,7 @@ $r = случайное 1,100
 >0,0,255</userinput
 ></entry
 ><entry
->голубой</entry
+>синий</entry
 ></row>
 <row
 ><entry
@@ -384,7 +394,108 @@ $r = случайное 1,100
 </table>
 </para>
 <para
->RGB комбинации в качестве входных параметров используются в двух командах: <userinput
+>Комбинации RGB в качестве входных параметров используются в двух командах: <userinput
+>цвет_холста</userinput
+> и <userinput
+>цвет_пера</userinput
+>.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="named-colors">
+<glossterm
+>Именованные цвета (строки цветов)</glossterm>
+<glossdef
+><para
+>Помимо комбинаций RGB можно использовать именованные цвета. KTurtle поддерживает набор именованных цветов, которые передаются в виде строк командам, принимающим цвет. <table frame="none">
+<title
+>Поддерживаемые именованные цвета</title>
+<tgroup cols="1" rowsep="1">
+<tbody>
+<row
+><entry
+><userinput
+>"белый"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"чёрный"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"серый"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"серый"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"красный"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"коричневый"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"оранжевый"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"жёлтый"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"золотой"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"зелёный"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"синий"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"фиолетовый"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"розовый"</userinput
+></entry
+></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para
+>Именованный цвет в качестве входного параметра используется в двух командах: <userinput
 >цвет_холста</userinput
 > и <userinput
 >цвет_пера</userinput
@@ -397,9 +508,11 @@ $r = случайное 1,100
 >спрайт</glossterm>
 <glossdef
 ><para
->Спрайт — это небольшая картинка, перемещаемая по экрану. Наша Черепашка, к слову, является спрайтом.</para>
-<para
->Примечание: в данной версии &kturtle; спрайт не может быть заменён с Черепашки на что-либо другое. В следующих версиях &kturtle; такая возможность будет предусмотрена.</para
+>Спрайт — это небольшая картинка, перемещаемая по экрану. Наша Черепашка, к слову, является спрайтом. <note
+><para
+>В этой версии &kturtle; спрайт нельзя превратить из Черепашки во что-либо другое. В будущих версиях &kturtle; такая возможность появится.</para
+></note
+></para
 ></glossdef>
 </glossentry>
 

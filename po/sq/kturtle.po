@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeedu\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-20 16:13+0000\n"
+"POT-Creation-Date: 2026-09-26 00:41+0000\n"
 "PO-Revision-Date: 2011-06-18 18:18+0200\n"
 "Last-Translator: Dashamir Hoxha <dashohoxha@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -26,27 +26,27 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "dashohoxha@gmail.com"
 
-#: canvas.cpp:190
+#: canvas.cpp:300
 #, kde-format
 msgid "bold"
 msgstr "me të trasha"
 
-#: canvas.cpp:191
+#: canvas.cpp:301
 #, kde-format
 msgid "italic"
 msgstr "me të pjerrëta"
 
-#: canvas.cpp:192
+#: canvas.cpp:302
 #, kde-format
 msgid "underline"
 msgstr "nënvizo"
 
-#: canvas.cpp:193
+#: canvas.cpp:303
 #, kde-format
 msgid "overline"
 msgstr "mbivijëzo"
 
-#: canvas.cpp:194
+#: canvas.cpp:304
 #, kde-format
 msgid "strikeout"
 msgstr "zhgarravit"
@@ -212,8 +212,8 @@ msgstr "Hap"
 msgid "Turtle code files"
 msgstr "Skedarët me program breshke"
 
-#: editor.cpp:144 editor.cpp:255 mainwindow.cpp:1037 mainwindow.cpp:1056
-#: mainwindow.cpp:1069
+#: editor.cpp:144 editor.cpp:255 mainwindow.cpp:1041 mainwindow.cpp:1060
+#: mainwindow.cpp:1073
 #, kde-format
 msgid "All files"
 msgstr "Gjithë skedarët"
@@ -375,19 +375,19 @@ msgstr "Asnjë"
 msgid "Cannot return outside a function. "
 msgstr ""
 
-#: interpreter/executer.cpp:397
+#: interpreter/executer.cpp:409
 #, kde-format
 msgid "The %1 command accepts no parameters."
 msgstr "Komanda %1 nuk pranon parametra."
 
-#: interpreter/executer.cpp:407
+#: interpreter/executer.cpp:419
 #, kde-format
 msgid "The %2 command was called with %3 but needs 1 parameter."
 msgid_plural "The %2 command was called with %3 but needs %1 parameters."
 msgstr[0] "Komanda %2 ka nevojë për 1 parametër por është thirrur me %3."
 msgstr[1] "Komanda %2 ka nevojë për %1 parametra por është thirrur me %3."
 
-#: interpreter/executer.cpp:415
+#: interpreter/executer.cpp:427
 #, kde-format
 msgid "The %2 command was called with %3 but only accepts 1 parameter."
 msgid_plural ""
@@ -395,52 +395,52 @@ msgid_plural ""
 msgstr[0] "Komanda %2 pranon vetëm 1 parametër por është thirrur me %3."
 msgstr[1] "Komanda %2 pranon vetëm %1 parametra por është thirrur me %3."
 
-#: interpreter/executer.cpp:438
+#: interpreter/executer.cpp:450
 #, kde-format
 msgid "The %1 command only accepts a string as its parameter."
 msgstr "Komanda %1 pranon si parametër vetëm një varg."
 
-#: interpreter/executer.cpp:440
+#: interpreter/executer.cpp:452
 #, kde-format
 msgid "The %1 command only accepts strings as its parameters."
 msgstr "Komanda %1 pranon si parametra vetëm vargje."
 
-#: interpreter/executer.cpp:445
+#: interpreter/executer.cpp:457
 #, kde-format
 msgid "The %1 command only accepts a number as its parameter."
 msgstr "Komanda %1 pranon si parametër vetëm një numër."
 
-#: interpreter/executer.cpp:447
+#: interpreter/executer.cpp:459
 #, kde-format
 msgid "The %1 command only accepts numbers as its parameters."
 msgstr "Komanda %1 pranon si parametra vetëm numra."
 
-#: interpreter/executer.cpp:452
+#: interpreter/executer.cpp:464
 #, kde-format
 msgid "The %1 command only accepts an answer as its parameter."
 msgstr "Komanda %1 pranon si parametër vetëm një përgjigje."
 
-#: interpreter/executer.cpp:454
+#: interpreter/executer.cpp:466
 #, kde-format
 msgid "The %1 command only accepts answers as its parameters."
 msgstr "Komanda %1 pranon si parametra vetëm përgjigje."
 
-#: interpreter/executer.cpp:528
+#: interpreter/executer.cpp:540
 #, kde-format
 msgid "The variable '%1' was used without first being assigned to a value"
 msgstr "Ndryshorja '%1' është përdorur pa iu dhënë një vlerë"
 
-#: interpreter/executer.cpp:548
+#: interpreter/executer.cpp:560
 #, kde-format
 msgid "An unknown function named '%1' was called"
 msgstr "Funksioni '%1' që është thirrur është i panjohur"
 
-#: interpreter/executer.cpp:562
+#: interpreter/executer.cpp:574
 #, kde-format
 msgid "The function '%1' was called with %2, while it should be called with %3"
 msgstr "Funksioni '%1' është thirrur me %2, por duhet të thirret me %3"
 
-#: interpreter/executer.cpp:564 interpreter/executer.cpp:566
+#: interpreter/executer.cpp:576 interpreter/executer.cpp:578
 #, kde-format
 msgctxt ""
 "The function '%1' was called with %2, while it should be called with %3"
@@ -449,147 +449,209 @@ msgid_plural "%1 parameters"
 msgstr[0] "1 parametër"
 msgstr[1] "%1 parametra"
 
-#: interpreter/executer.cpp:789
+#: interpreter/executer.cpp:801
 #, kde-format
 msgid "ASSERT failed"
 msgstr "KUSHT-i dështoi"
 
-#: interpreter/executer.cpp:796
+#: interpreter/executer.cpp:808
 #, kde-format
 msgid "'And' needs two variables"
 msgstr "'edhe' përdoret me dy ndryshore"
 
-#: interpreter/executer.cpp:806
+#: interpreter/executer.cpp:818
 #, kde-format
 msgid "'Or' needs two variables"
 msgstr "'OSE' përdoret me dy ndryshore"
 
-#: interpreter/executer.cpp:817
+#: interpreter/executer.cpp:829
 #, kde-format
 msgid "I need something to do a not on"
 msgstr "JO duhet bërë mbi diçka"
 
-#: interpreter/executer.cpp:826
+#: interpreter/executer.cpp:838
 #, kde-format
 msgid "I cannot do a '==' without 2 variables"
 msgstr "Nuk mund të bëj '==' pa dy ndryshore"
 
-#: interpreter/executer.cpp:835
+#: interpreter/executer.cpp:847
 #, kde-format
 msgid "I cannot do a '!=' without 2 variables"
 msgstr "Nuk mund të bëj '!=' pa dy ndryshore"
 
-#: interpreter/executer.cpp:844
+#: interpreter/executer.cpp:856
 #, kde-format
 msgid "I cannot do a '>' without 2 variables"
 msgstr "Nuk mund të bëj '>' pa dy ndryshore"
 
-#: interpreter/executer.cpp:853
+#: interpreter/executer.cpp:865
 #, kde-format
 msgid "I cannot do a '<' without 2 variables"
 msgstr "Nuk mund të bëj '<' pa dy ndryshore"
 
-#: interpreter/executer.cpp:862
+#: interpreter/executer.cpp:874
 #, kde-format
 msgid "I cannot do a '>=' without 2 variables"
 msgstr "Nuk mund të bëj '>=' pa dy ndryshore"
 
-#: interpreter/executer.cpp:871
+#: interpreter/executer.cpp:883
 #, kde-format
 msgid "I cannot do a '<=' without 2 variables"
 msgstr "Nuk mund të bëj '<=' pa dy ndryshore"
 
-#: interpreter/executer.cpp:880
+#: interpreter/executer.cpp:892
 #, kde-format
 msgid "You need two numbers or string to do an addition"
 msgstr "Duhen dy numra ose vargje për të bërë një mbledhje"
 
-#: interpreter/executer.cpp:893
+#: interpreter/executer.cpp:905
 #, kde-format
 msgid "You need two numbers to subtract"
 msgstr "Duhen dy numra për të bërë një zbritje"
 
-#: interpreter/executer.cpp:900
+#: interpreter/executer.cpp:912
 #, kde-format
 msgid "You tried to subtract from a non-number, '%1'"
 msgstr "Jeni përpjekur të bëni zbritje nga një jo-numër, '%1'"
 
-#: interpreter/executer.cpp:902
+#: interpreter/executer.cpp:914
 #, kde-format
 msgid "You tried to subtract a non-number, '%1'"
 msgstr "Jeni përpjekur të zbrisni një jo-numër, '%1'"
 
-#: interpreter/executer.cpp:909
+#: interpreter/executer.cpp:921
 #, kde-format
 msgid "You need two numbers to multiplicate"
 msgstr "Duhen dy numra për të bërë shumëzim"
 
-#: interpreter/executer.cpp:916
+#: interpreter/executer.cpp:928
 #, kde-format
 msgid "You tried to multiplicate a non-number, '%1'"
 msgstr "Jeni përpjekur të shumëzoni një jo-numër, '%1'"
 
-#: interpreter/executer.cpp:918
+#: interpreter/executer.cpp:930
 #, kde-format
 msgid "You tried to multiplicate by a non-number, '%1'"
 msgstr "Jeni përpjekur të shumëzoni me një jo-numër, '%1'"
 
-#: interpreter/executer.cpp:925
+#: interpreter/executer.cpp:937
 #, kde-format
 msgid "You need two numbers to divide"
 msgstr "Duhen dy numra për të bërë një pjesëtim"
 
-#: interpreter/executer.cpp:930
+#: interpreter/executer.cpp:942
 #, kde-format
 msgid "You tried to divide by zero"
 msgstr "Jeni përpjekur të pjesëtoni me zero"
 
-#: interpreter/executer.cpp:936
+#: interpreter/executer.cpp:948
 #, kde-format
 msgid "You tried to divide a non-number, '%1'"
 msgstr "Jeni përpjekur të pjesëtoni një jo-numër, '%1'"
 
-#: interpreter/executer.cpp:938
+#: interpreter/executer.cpp:950
 #, kde-format
 msgid "You tried to divide by a non-number, '%1'"
 msgstr "Jeni përpjekur të pjesëtoni me një jo-numër, '%1'"
 
-#: interpreter/executer.cpp:945
+#: interpreter/executer.cpp:957
 #, kde-format
 msgid "You need two numbers to raise a power"
 msgstr "Duhen dy numra për të ngritur në fuqi"
 
-#: interpreter/executer.cpp:956
+#: interpreter/executer.cpp:968
 #, kde-format
 msgid "The result of an exponentiation was too large"
 msgstr "Rezultati i një eksponenciali ishte shumë i madh"
 
-#: interpreter/executer.cpp:962
+#: interpreter/executer.cpp:974
 #, kde-format
 msgid "You tried to raise a non-number to a power, '%1'"
 msgstr "Jeni përpjekur të ngrini në fuqi një jo-numër, '%1'"
 
-#: interpreter/executer.cpp:964
+#: interpreter/executer.cpp:976
 #, kde-format
 msgid "You tried to raise the power of a non-number, '%1'"
 msgstr "Jeni përpjekur të ngrini në një fuqi jo-numerike, '%1'"
 
-#: interpreter/executer.cpp:971
+#: interpreter/executer.cpp:983
 #, kde-format
 msgid "You need one variable and a value or variable to do a '='"
 msgstr "Duhet një ndryshore dhe një vlerë ose ndryshore për të bërë një '='"
 
-#: interpreter/executer.cpp:990
+#: interpreter/executer.cpp:1002
 #, kde-format
 msgid "The function '%1' is already defined."
 msgstr "Funksioni '%1' është përkufizuar tashmë."
 
-#: interpreter/executer.cpp:1121 interpreter/executer.cpp:1149
+#: interpreter/executer.cpp:1071
+#, kde-format
+msgid ""
+"Polygon needs between 2 and 4 parameters: corners, size, and optionally "
+"rotation and spoke ratio"
+msgstr ""
+
+#: interpreter/executer.cpp:1084
+#, kde-format
+msgid "A polygon must have between 3 and 10 corners"
+msgstr ""
+
+#: interpreter/executer.cpp:1089
+#, kde-format
+msgid "Polygon side must not be negative"
+msgstr ""
+
+#: interpreter/executer.cpp:1094
+#, kde-format
+msgid "Spoke ratio must be greater than 0 and at most 1"
+msgstr ""
+
+#: interpreter/executer.cpp:1105
+#, kde-format
+msgid ""
+"Ellipse needs between 1 and 3 parameters: width, optionally height, and "
+"optionally rotation"
+msgstr ""
+
+#: interpreter/executer.cpp:1117
+#, kde-format
+msgid "Ellipse width and height must not be negative"
+msgstr ""
+
+#: interpreter/executer.cpp:1128
+#, kde-format
+msgid ""
+"Rectangle needs 2 or 3 parameters: width, height, and optionally rotation"
+msgstr ""
+
+#: interpreter/executer.cpp:1140
+#, kde-format
+msgid "Rectangle width and height must not be negative"
+msgstr ""
+
+#: interpreter/executer.cpp:1151
+#, kde-format
+msgid ""
+"Triangle needs 3 or 4 parameters: sideA, sideB, sideC, and optionally "
+"rotation"
+msgstr ""
+
+#: interpreter/executer.cpp:1164
+#, kde-format
+msgid "Triangle side lengths must be positive numbers"
+msgstr ""
+
+#: interpreter/executer.cpp:1169
+#, kde-format
+msgid "The given side lengths cannot form a triangle"
+msgstr ""
+
+#: interpreter/executer.cpp:1242 interpreter/executer.cpp:1270
 #, kde-format
 msgid "The command %1 takes either a string or %2 numbers"
 msgstr ""
 
-#: interpreter/executer.cpp:1322
+#: interpreter/executer.cpp:1443
 #, kde-format
 msgid "Can't do a sqrt of a negative number"
 msgstr ""
@@ -634,12 +696,12 @@ msgstr "Pritej një 'deri_në' pas 'për_çdo'"
 msgid "Expected a name for a command after 'learn' command"
 msgstr "Pritej një emër komande pas komandës 'mëso' "
 
-#: interpreter/parser.cpp:273
+#: interpreter/parser.cpp:281
 #, kde-format
 msgid "You cannot put '%1' here."
 msgstr "Nuk mund të vendosni '%1' këtu."
 
-#: interpreter/parser.cpp:308
+#: interpreter/parser.cpp:316
 #, kde-format
 msgid ""
 "Text string was not properly closed, expected a double quote, ' \" ', to "
@@ -648,12 +710,12 @@ msgstr ""
 "Vargu i shkronjave nuk është mbyllur siç duhet; duhet të mbyllej me një "
 "thonjëz dyshe."
 
-#: interpreter/parser.cpp:635
+#: interpreter/parser.cpp:643
 #, kde-format
 msgid "'for' was called wrongly"
 msgstr "'për_çdo' është përdorur gabim"
 
-#: interpreter/parser.cpp:706
+#: interpreter/parser.cpp:714
 #, kde-format
 msgid "Expected a scope after the 'learn' command"
 msgstr "Pritej një bllok pas komandës 'mëso'"
@@ -1078,7 +1140,51 @@ msgctxt ""
 msgid "forward"
 msgstr "ec_përpara"
 
-#: interpreter/translator.cpp:369
+#: interpreter/translator.cpp:369 interpreter/translator.cpp:409
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Polygon' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "polygon"
+msgstr ""
+
+#: interpreter/translator.cpp:377 interpreter/translator.cpp:417
+#, kde-format
+msgctxt ""
+"You are about to translate the 'Ellipse' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "ellipse"
+msgstr ""
+
+#: interpreter/translator.cpp:385 interpreter/translator.cpp:425
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "This is an EXAMPLE NAME in KTurtle.Please see http://edu.kde.org/kturtle/"
+#| "translator.php to learn know how to properly translate it."
+#| msgid "triangle"
+msgctxt ""
+"You are about to translate the 'Rectangle' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "rectangle"
+msgstr "trekëndësh"
+
+#: interpreter/translator.cpp:393 interpreter/translator.cpp:433
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "This is an EXAMPLE NAME in KTurtle.Please see http://edu.kde.org/kturtle/"
+#| "translator.php to learn know how to properly translate it."
+#| msgid "triangle"
+msgctxt ""
+"You are about to translate the 'Triangle' COMMAND, there are some rules on "
+"how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
+"learn how to properly translate it."
+msgid "triangle"
+msgstr "trekëndësh"
+
+#: interpreter/translator.cpp:401
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Forward' COMMAND ALIAS, there are some "
@@ -1092,7 +1198,7 @@ msgctxt ""
 msgid "fw"
 msgstr "pp"
 
-#: interpreter/translator.cpp:377
+#: interpreter/translator.cpp:441
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Backward' COMMAND, there are some rules "
@@ -1106,7 +1212,7 @@ msgctxt ""
 msgid "backward"
 msgstr "ec_mbrapsht"
 
-#: interpreter/translator.cpp:385
+#: interpreter/translator.cpp:449
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Backward' COMMAND ALIAS, there are some "
@@ -1120,7 +1226,7 @@ msgctxt ""
 msgid "bw"
 msgstr "mb"
 
-#: interpreter/translator.cpp:393
+#: interpreter/translator.cpp:457
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Direction' COMMAND, there are some rules "
@@ -1134,7 +1240,7 @@ msgctxt ""
 msgid "direction"
 msgstr "drejtimi"
 
-#: interpreter/translator.cpp:401
+#: interpreter/translator.cpp:465
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Direction' COMMAND ALIAS, there are some "
@@ -1148,7 +1254,7 @@ msgctxt ""
 msgid "dir"
 msgstr "drj"
 
-#: interpreter/translator.cpp:409
+#: interpreter/translator.cpp:473
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'TurnLeft' COMMAND, there are some rules "
@@ -1162,7 +1268,7 @@ msgctxt ""
 msgid "turnleft"
 msgstr "kthehu_majtas"
 
-#: interpreter/translator.cpp:417
+#: interpreter/translator.cpp:481
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'TurnLeft' COMMAND ALIAS, there are some "
@@ -1176,7 +1282,7 @@ msgctxt ""
 msgid "tl"
 msgstr "mj"
 
-#: interpreter/translator.cpp:425
+#: interpreter/translator.cpp:489
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'TurnRight' COMMAND, there are some rules "
@@ -1190,7 +1296,7 @@ msgctxt ""
 msgid "turnright"
 msgstr "kthehu_djathtas"
 
-#: interpreter/translator.cpp:433
+#: interpreter/translator.cpp:497
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'TurnRight' COMMAND ALIAS, there are some "
@@ -1204,7 +1310,7 @@ msgctxt ""
 msgid "tr"
 msgstr "dj"
 
-#: interpreter/translator.cpp:441
+#: interpreter/translator.cpp:505
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'PenWidth' COMMAND, there are some rules "
@@ -1218,7 +1324,7 @@ msgctxt ""
 msgid "penwidth"
 msgstr "majë_lapsi"
 
-#: interpreter/translator.cpp:449
+#: interpreter/translator.cpp:513
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'PenWidth' COMMAND ALIAS, there are some "
@@ -1232,7 +1338,7 @@ msgctxt ""
 msgid "pw"
 msgstr "mjl"
 
-#: interpreter/translator.cpp:457
+#: interpreter/translator.cpp:521
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'PenUp' COMMAND, there are some rules on "
@@ -1246,7 +1352,7 @@ msgctxt ""
 msgid "penup"
 msgstr "ngri_lapsin"
 
-#: interpreter/translator.cpp:465
+#: interpreter/translator.cpp:529
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'PenUp' COMMAND ALIAS, there are some "
@@ -1260,7 +1366,7 @@ msgctxt ""
 msgid "pu"
 msgstr "ngri"
 
-#: interpreter/translator.cpp:473
+#: interpreter/translator.cpp:537
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'PenDown' COMMAND, there are some rules on "
@@ -1274,7 +1380,7 @@ msgctxt ""
 msgid "pendown"
 msgstr "ul_lapsin"
 
-#: interpreter/translator.cpp:481
+#: interpreter/translator.cpp:545
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'PenDown' COMMAND ALIAS, there are some "
@@ -1288,7 +1394,7 @@ msgctxt ""
 msgid "pd"
 msgstr "ul"
 
-#: interpreter/translator.cpp:489
+#: interpreter/translator.cpp:553
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'PenColor' COMMAND, there are some rules "
@@ -1302,7 +1408,7 @@ msgctxt ""
 msgid "pencolor"
 msgstr "ngjyrë_lapsi"
 
-#: interpreter/translator.cpp:497
+#: interpreter/translator.cpp:561
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'PenColor' COMMAND ALIAS, there are some "
@@ -1316,7 +1422,7 @@ msgctxt ""
 msgid "pc"
 msgstr "ngjl"
 
-#: interpreter/translator.cpp:505
+#: interpreter/translator.cpp:569
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'CanvasColor' COMMAND, there are some "
@@ -1330,7 +1436,7 @@ msgctxt ""
 msgid "canvascolor"
 msgstr "ngjyrë_tabele"
 
-#: interpreter/translator.cpp:513
+#: interpreter/translator.cpp:577
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'CanvasColor' COMMAND ALIAS, there are "
@@ -1344,7 +1450,7 @@ msgctxt ""
 msgid "cc"
 msgstr "ngjt"
 
-#: interpreter/translator.cpp:521
+#: interpreter/translator.cpp:585
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'CanvasSize' COMMAND, there are some rules "
@@ -1358,7 +1464,7 @@ msgctxt ""
 msgid "canvassize"
 msgstr "madhësi_tabele"
 
-#: interpreter/translator.cpp:529
+#: interpreter/translator.cpp:593
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'CanvasSize' COMMAND ALIAS, there are some "
@@ -1372,7 +1478,7 @@ msgctxt ""
 msgid "cs"
 msgstr "mt"
 
-#: interpreter/translator.cpp:537
+#: interpreter/translator.cpp:601
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'SpriteShow' COMMAND, there are some rules "
@@ -1386,7 +1492,7 @@ msgctxt ""
 msgid "spriteshow"
 msgstr "shfaq_figurinën"
 
-#: interpreter/translator.cpp:545
+#: interpreter/translator.cpp:609
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'SpriteShow' COMMAND ALIAS, there are some "
@@ -1400,7 +1506,7 @@ msgctxt ""
 msgid "ss"
 msgstr "shf"
 
-#: interpreter/translator.cpp:553
+#: interpreter/translator.cpp:617
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'SpriteHide' COMMAND, there are some rules "
@@ -1414,7 +1520,7 @@ msgctxt ""
 msgid "spritehide"
 msgstr "fshih_figurinën"
 
-#: interpreter/translator.cpp:561
+#: interpreter/translator.cpp:625
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'SpriteHide' COMMAND ALIAS, there are some "
@@ -1428,7 +1534,7 @@ msgctxt ""
 msgid "sh"
 msgstr "fsh"
 
-#: interpreter/translator.cpp:569
+#: interpreter/translator.cpp:633
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Print' COMMAND, there are some rules on "
@@ -1442,7 +1548,7 @@ msgctxt ""
 msgid "print"
 msgstr "shkruaj"
 
-#: interpreter/translator.cpp:577
+#: interpreter/translator.cpp:641
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'FontSize' COMMAND, there are some rules "
@@ -1456,7 +1562,7 @@ msgctxt ""
 msgid "fontsize"
 msgstr "madhësi_shkrimi"
 
-#: interpreter/translator.cpp:585
+#: interpreter/translator.cpp:649
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Random' COMMAND, there are some rules on "
@@ -1470,7 +1576,7 @@ msgctxt ""
 msgid "random"
 msgstr "rastësisht"
 
-#: interpreter/translator.cpp:593
+#: interpreter/translator.cpp:657
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Random' COMMAND ALIAS, there are some "
@@ -1484,7 +1590,7 @@ msgctxt ""
 msgid "rnd"
 msgstr "kot"
 
-#: interpreter/translator.cpp:601
+#: interpreter/translator.cpp:665
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'GetX' COMMAND, there are some rules on "
@@ -1498,7 +1604,7 @@ msgctxt ""
 msgid "getx"
 msgstr "merr_x"
 
-#: interpreter/translator.cpp:609
+#: interpreter/translator.cpp:673
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'GetY' COMMAND, there are some rules on "
@@ -1512,7 +1618,7 @@ msgctxt ""
 msgid "gety"
 msgstr "merr_y"
 
-#: interpreter/translator.cpp:617
+#: interpreter/translator.cpp:681
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Message' COMMAND, there are some rules on "
@@ -1526,7 +1632,7 @@ msgctxt ""
 msgid "message"
 msgstr "mesazh"
 
-#: interpreter/translator.cpp:625
+#: interpreter/translator.cpp:689
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Ask' COMMAND, there are some rules on how "
@@ -1540,7 +1646,7 @@ msgctxt ""
 msgid "ask"
 msgstr "pyet"
 
-#: interpreter/translator.cpp:633
+#: interpreter/translator.cpp:697
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Pi' COMMAND, there are some rules on how "
@@ -1554,7 +1660,7 @@ msgctxt ""
 msgid "pi"
 msgstr "pi"
 
-#: interpreter/translator.cpp:641
+#: interpreter/translator.cpp:705
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Tan' COMMAND, there are some rules on how "
@@ -1568,7 +1674,7 @@ msgctxt ""
 msgid "tan"
 msgstr "tan"
 
-#: interpreter/translator.cpp:649
+#: interpreter/translator.cpp:713
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Sin' COMMAND, there are some rules on how "
@@ -1582,7 +1688,7 @@ msgctxt ""
 msgid "sin"
 msgstr "sin"
 
-#: interpreter/translator.cpp:657
+#: interpreter/translator.cpp:721
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Cos' COMMAND, there are some rules on how "
@@ -1596,7 +1702,7 @@ msgctxt ""
 msgid "cos"
 msgstr "cos"
 
-#: interpreter/translator.cpp:665
+#: interpreter/translator.cpp:729
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'ArcTan' COMMAND, there are some rules on "
@@ -1610,7 +1716,7 @@ msgctxt ""
 msgid "arctan"
 msgstr "arctan"
 
-#: interpreter/translator.cpp:673
+#: interpreter/translator.cpp:737
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'ArcSin' COMMAND, there are some rules on "
@@ -1624,7 +1730,7 @@ msgctxt ""
 msgid "arcsin"
 msgstr "arcsin"
 
-#: interpreter/translator.cpp:681
+#: interpreter/translator.cpp:745
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'ArcCos' COMMAND, there are some rules on "
@@ -1638,7 +1744,7 @@ msgctxt ""
 msgid "arccos"
 msgstr "arccos"
 
-#: interpreter/translator.cpp:689
+#: interpreter/translator.cpp:753
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Sqrt' COMMAND, there are some rules on "
@@ -1652,7 +1758,7 @@ msgctxt ""
 msgid "sqrt"
 msgstr "sqrt"
 
-#: interpreter/translator.cpp:697
+#: interpreter/translator.cpp:761
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Round' COMMAND, there are some rules on "
@@ -1666,7 +1772,7 @@ msgctxt ""
 msgid "round"
 msgstr "rrumbullakos"
 
-#: interpreter/translator.cpp:705
+#: interpreter/translator.cpp:769
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'GetDirection' COMMAND, there are some "
@@ -1680,7 +1786,7 @@ msgctxt ""
 msgid "getdirection"
 msgstr "merr_drejtimin"
 
-#: interpreter/translator.cpp:713
+#: interpreter/translator.cpp:777
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Mod' COMMAND, there are some rules on how to "
@@ -1689,7 +1795,7 @@ msgctxt ""
 msgid "mod"
 msgstr ""
 
-#: interpreter/translator.cpp:729
+#: interpreter/translator.cpp:793
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "This is an EXAMPLE NAME in KTurtle.Please see http://edu.kde.org/kturtle/"
@@ -1701,7 +1807,7 @@ msgctxt ""
 msgid "triangle"
 msgstr "trekëndësh"
 
-#: interpreter/translator.cpp:741
+#: interpreter/translator.cpp:805
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "This is an EXAMPLE NAME in KTurtle.Please see http://edu.kde.org/kturtle/"
@@ -1713,7 +1819,7 @@ msgctxt ""
 msgid "curly"
 msgstr "vijë e përdredhur"
 
-#: interpreter/translator.cpp:759
+#: interpreter/translator.cpp:823
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "This is an EXAMPLE NAME in KTurtle.Please see http://edu.kde.org/kturtle/"
@@ -1725,7 +1831,7 @@ msgctxt ""
 msgid "arrow"
 msgstr "shigjetë"
 
-#: interpreter/translator.cpp:786
+#: interpreter/translator.cpp:850
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "This is an EXAMPLE NAME in KTurtle.Please see http://edu.kde.org/kturtle/"
@@ -1756,49 +1862,49 @@ msgid "&Edit"
 msgstr "&Shkruaj"
 
 #. i18n: ectx: Menu (canvas)
-#: kturtleui.rc:41 mainwindow.cpp:509 mainwindow.cpp:531
+#: kturtleui.rc:41 mainwindow.cpp:523 mainwindow.cpp:545
 #, kde-format
 msgid "&Canvas"
 msgstr "&Tabela"
 
 #. i18n: ectx: Menu (run)
-#: kturtleui.rc:47 mainwindow.cpp:309 mainwindow.cpp:428
+#: kturtleui.rc:47 mainwindow.cpp:301 mainwindow.cpp:467
 #, kde-format
 msgid "&Run"
 msgstr "&Nise"
 
-#. i18n: ectx: Menu (speed)
-#: kturtleui.rc:51
-#, kde-format
-msgid "&Run Speed"
-msgstr "&Shpejtësia e Lëvizjes"
-
 #. i18n: ectx: Menu (tools)
-#: kturtleui.rc:60
+#: kturtleui.rc:52
 #, kde-format
 msgid "&Tools"
 msgstr "&Mjetet"
 
+#. i18n: ectx: Menu (changeSprite)
+#: kturtleui.rc:55
+#, kde-format
+msgid "&Change Icon"
+msgstr ""
+
 #. i18n: ectx: Menu (settings)
-#: kturtleui.rc:64
+#: kturtleui.rc:65
 #, kde-format
 msgid "&Settings"
 msgstr "&Rregullimet"
 
 #. i18n: ectx: Menu (language)
-#: kturtleui.rc:65
+#: kturtleui.rc:66
 #, kde-format
 msgid "&Script Language"
 msgstr "&Gjuha e Programit"
 
 #. i18n: ectx: Menu (help)
-#: kturtleui.rc:75
+#: kturtleui.rc:76
 #, kde-format
 msgid "&Help"
 msgstr "&Ndihmë"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: kturtleui.rc:80
+#: kturtleui.rc:81
 #, kde-format
 msgid "Main Toolbar"
 msgstr "Shiriti Kryesor"
@@ -1899,289 +2005,289 @@ msgstr ""
 "Kthen kodin e breshkës në vargje shembuj C++ të ndërfutshëm (vetëm për "
 "zhvilluesit)"
 
-#: mainwindow.cpp:60
+#: mainwindow.cpp:63
 #, kde-format
 msgctxt "@info:status the application is ready for commands"
 msgid "Ready"
 msgstr "Gati"
 
-#: mainwindow.cpp:185
+#: mainwindow.cpp:177
 #, kde-format
 msgid "Create a new file"
 msgstr "Krijo një skedar të ri"
 
-#: mainwindow.cpp:186
+#: mainwindow.cpp:178
 #, kde-format
 msgid "New File: Create a new file"
 msgstr "Skedar i Ri: Krijo një skedar të ri"
 
-#: mainwindow.cpp:189
+#: mainwindow.cpp:181
 #, kde-format
 msgid "Open an existing file"
 msgstr "Hap një skedar ekzistues"
 
-#: mainwindow.cpp:190
+#: mainwindow.cpp:182
 #, kde-format
 msgid "Open File: Open an existing file"
 msgstr "Hap Skedar: Hap një skedar ekzistues"
 
-#: mainwindow.cpp:195
+#: mainwindow.cpp:187
 #, kde-format
 msgid "Open a recently used file"
 msgstr "Hap një nga skedarët e mëparshëm"
 
-#: mainwindow.cpp:196
+#: mainwindow.cpp:188
 #, kde-format
 msgid "Open Recent File: Open a recently used file"
 msgstr "Hap Skedar të Mëparshëm: Hap një nga skedarët e mëparshëm"
 
-#: mainwindow.cpp:198
+#: mainwindow.cpp:190
 #, kde-format
 msgid "Get more examples..."
 msgstr "Merr shembuj të tjerë..."
 
-#: mainwindow.cpp:207
+#: mainwindow.cpp:199
 #, kde-format
 msgid "Save the current file to disk"
 msgstr "Ruaj skedarin e tanishëm në disk"
 
-#: mainwindow.cpp:208
+#: mainwindow.cpp:200
 #, kde-format
 msgid "Save File: Save the current file to disk"
 msgstr "Ruaj Skedarin: Ruaj skedarin e tanishëm në disk"
 
-#: mainwindow.cpp:212
+#: mainwindow.cpp:204
 #, kde-format
 msgid "Save the current file under a different name"
 msgstr "Ruaj skedarin e tanishëm me një emër tjetër"
 
-#: mainwindow.cpp:213
+#: mainwindow.cpp:205
 #, kde-format
 msgid "Save File As: Save the current file under a different name"
 msgstr "Ruaj Si: Ruaj skedarin e tanishëm me një emër tjetër"
 
-#: mainwindow.cpp:216
+#: mainwindow.cpp:208
 #, kde-format
 msgid "Export to &HTML..."
 msgstr "Ktheje në &HTML..."
 
-#: mainwindow.cpp:217
+#: mainwindow.cpp:209
 #, kde-format
 msgid "Export the contents of the editor as HTML"
 msgstr "Ruaje përmbajtjen e programit si HTML"
 
-#: mainwindow.cpp:218
+#: mainwindow.cpp:210
 #, kde-format
 msgid "Export to HTML: Export the contents of the editor as HTML"
 msgstr "Ktheje në HTML: Ruaje përmbajtjen e programit si HTML"
 
-#: mainwindow.cpp:222
+#: mainwindow.cpp:214
 #, kde-format
 msgid "Print the code"
 msgstr "Shtyp programin"
 
-#: mainwindow.cpp:223
+#: mainwindow.cpp:215
 #, kde-format
 msgid "Print: Print the code"
 msgstr "Shtyp: Shtyp programin"
 
-#: mainwindow.cpp:226
+#: mainwindow.cpp:218
 #, kde-format
 msgid "Quit KTurtle"
 msgstr "Mbyll KTurtle"
 
-#: mainwindow.cpp:227
+#: mainwindow.cpp:219
 #, kde-format
 msgid "Quit: Quit KTurtle"
 msgstr "Mbyll: Mbyll KTurtle"
 
-#: mainwindow.cpp:231
+#: mainwindow.cpp:223
 #, kde-format
 msgid "Undo a change in the editor"
 msgstr "Kthe mbrapsht një ndryshim në program"
 
-#: mainwindow.cpp:232
+#: mainwindow.cpp:224
 #, kde-format
 msgid "Undo: Undo a change in the editor"
 msgstr "Ktheje: Kthe mbrapsht një ndryshim në program"
 
-#: mainwindow.cpp:237
+#: mainwindow.cpp:229
 #, kde-format
 msgid "Redo a previously undone change in the editor"
 msgstr "Bëj përsëri një ndryshim të kthyer mbrapsht më parë"
 
-#: mainwindow.cpp:238
+#: mainwindow.cpp:230
 #, kde-format
 msgid "Redo: Redo a previously undone change in the editor"
 msgstr "Ribëj: Bëj përsëri një ndryshim të kthyer mbrapsht më parë"
 
-#: mainwindow.cpp:243
+#: mainwindow.cpp:235
 #, kde-format
 msgid "Cut the selected text to the clipboard"
 msgstr "Preje tekstin e shënuar dhe ruaje në kujtesë."
 
-#: mainwindow.cpp:244
+#: mainwindow.cpp:236
 #, kde-format
 msgid "Cut: Cut the selected text to the clipboard"
 msgstr "Preje: Preje tekstin e shënuar dhe ruaje në kujtesë."
 
-#: mainwindow.cpp:249
+#: mainwindow.cpp:241
 #, kde-format
 msgid "Copy the selected text to the clipboard"
 msgstr "Kopjo tekstin e shënuar në kujtesë"
 
-#: mainwindow.cpp:250
+#: mainwindow.cpp:242
 #, kde-format
 msgid "Copy: Copy the selected text to the clipboard"
 msgstr "Kopjo: Kopjo tekstin e shënuar në kujtesë"
 
-#: mainwindow.cpp:255
+#: mainwindow.cpp:247
 #, kde-format
 msgid "Paste the clipboard's content into the current selection"
 msgstr "Vendose përmbajtjen e kujtesës në pjesën e shënuar"
 
-#: mainwindow.cpp:256
+#: mainwindow.cpp:248
 #, kde-format
 msgid "Paste: Paste the clipboard's content into the current selection"
 msgstr "Vendos: Vendose përmbajtjen e kujtesës në pjesën e shënuar"
 
-#: mainwindow.cpp:259
+#: mainwindow.cpp:251
 #, kde-format
 msgid "Select all the code in the editor"
 msgstr "Shëno të gjithë programin"
 
-#: mainwindow.cpp:260
+#: mainwindow.cpp:252
 #, kde-format
 msgid "Select All: Select all the code in the editor"
 msgstr "Shënoje të Gjithë: Shëno të gjithë programin"
 
-#: mainwindow.cpp:263
+#: mainwindow.cpp:255
 #, kde-format
 msgid "Overwrite Mode"
 msgstr "Mënyra Mbishkruese"
 
-#: mainwindow.cpp:265
+#: mainwindow.cpp:257
 #, kde-format
 msgid "Toggle between the 'insert' and 'overwrite' mode"
 msgstr "Ndërro mënyrat 'ndërfutëse' dhe 'mbishkruese'"
 
-#: mainwindow.cpp:266
+#: mainwindow.cpp:258
 #, kde-format
 msgid "Overwrite Mode: Toggle between the 'insert' and 'overwrite' mode"
 msgstr "Mënyra Mbishkruese: Ndërron mënyrat 'ndërfutëse' dhe 'mbishkruese'"
 
-#: mainwindow.cpp:273
+#: mainwindow.cpp:265
 #, kde-format
 msgid "Search through the code in the editor"
 msgstr "Kërko në program"
 
-#: mainwindow.cpp:274
+#: mainwindow.cpp:266
 #, kde-format
 msgid "Find: Search through the code in the editor"
 msgstr "Gjej: Kërko në program"
 
-#: mainwindow.cpp:277
+#: mainwindow.cpp:269
 #, kde-format
 msgid "Continue searching through the code in the editor"
 msgstr "Vazhdo kërkimin në program"
 
-#: mainwindow.cpp:278
+#: mainwindow.cpp:270
 #, kde-format
 msgid "Find Next: Continue searching through the code in the editor"
 msgstr "Gjej Tjetrën: Vazhdo kërkimin në program"
 
-#: mainwindow.cpp:281
+#: mainwindow.cpp:273
 #, kde-format
 msgid "Continue searching backwards through the code in the editor"
 msgstr "Vazhdo kërkimin mbrapsht në program"
 
-#: mainwindow.cpp:282
+#: mainwindow.cpp:274
 #, kde-format
 msgid ""
 "Find Previous: Continue searching backwards through the code in the editor"
 msgstr "Gjej më Sipër: Vazhdo kërkimin mbrapsht në program"
 
-#: mainwindow.cpp:291
+#: mainwindow.cpp:283
 #, kde-format
 msgid "Export to &Image (PNG)..."
 msgstr "Ruaje si &Imazh (PNG)..."
 
-#: mainwindow.cpp:292
+#: mainwindow.cpp:284
 #, kde-format
 msgid "Export the current canvas to a PNG raster image"
 msgstr "Ruaj tabelën e tanishme si një imazh PNG raster"
 
-#: mainwindow.cpp:293
+#: mainwindow.cpp:285
 #, kde-format
 msgid "Export to PNG: Export the current canvas to a PNG raster image"
 msgstr "Ruaje si PNG: Ruaj tabelën e tanishme si një imazh PNG raster"
 
-#: mainwindow.cpp:297
+#: mainwindow.cpp:289
 #, kde-format
 msgid "Export to &Drawing (SVG)..."
 msgstr "Ruaje si &Vizatim (SVG)..."
 
-#: mainwindow.cpp:298
+#: mainwindow.cpp:290
 #, kde-format
 msgid "Export the current canvas to Scalable Vector Graphics"
 msgstr "Ruaj tabelën e tanishme si SVG"
 
-#: mainwindow.cpp:299
+#: mainwindow.cpp:291
 #, kde-format
 msgid "Export to SVG: Export the current canvas to Scalable Vector Graphics"
 msgstr "Ruaje si SVG: Ruaj tabelën e tanishme si SVG"
 
-#: mainwindow.cpp:302
+#: mainwindow.cpp:294
 #, kde-format
 msgid "&Print Canvas..."
 msgstr "&Shtyp Tabelën..."
 
-#: mainwindow.cpp:304
+#: mainwindow.cpp:296
 #, kde-format
 msgid "Print the canvas"
 msgstr "Shtyp tabelën"
 
-#: mainwindow.cpp:305
+#: mainwindow.cpp:297
 #, kde-format
 msgid "Print: Print the canvas"
 msgstr "Shtyp: Shtyp tabelën"
 
-#: mainwindow.cpp:312
+#: mainwindow.cpp:304
 #, kde-format
 msgid "Execute the program"
 msgstr "Nis programin"
 
-#: mainwindow.cpp:313
+#: mainwindow.cpp:305
 #, kde-format
 msgid "Run: Execute the program"
 msgstr "Nise: Nis programin"
 
-#: mainwindow.cpp:316
+#: mainwindow.cpp:308
 #, kde-format
 msgid "&Pause"
 msgstr "N&dalo"
 
-#: mainwindow.cpp:320
+#: mainwindow.cpp:312
 #, kde-format
 msgid "Pause execution"
 msgstr "Ndalo programin"
 
-#: mainwindow.cpp:321
+#: mainwindow.cpp:313
 #, kde-format
 msgid "Pause: Pause execution"
 msgstr "Ndalo: Ndalo programin"
 
-#: mainwindow.cpp:324
+#: mainwindow.cpp:316
 #, kde-format
 msgid "&Abort"
 msgstr "Ndërpri&t"
 
-#: mainwindow.cpp:327
+#: mainwindow.cpp:319
 #, kde-format
 msgid "Stop executing program"
 msgstr "Ndërprit punën e programit"
 
-#: mainwindow.cpp:328
+#: mainwindow.cpp:320
 #, kde-format
 msgid "Abort: Stop executing program"
 msgstr "Ndërprit: Ndërprit punën e programit"
@@ -2192,77 +2298,125 @@ msgstr "Ndërprit: Ndërprit punën e programit"
 #. i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
 #. i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
 #. Tools menu actions
-#: mainwindow.cpp:338
+#: mainwindow.cpp:330
 #, kde-format
 msgid "&Direction Chooser..."
 msgstr "Zgjedhës &Drejtimi..."
 
-#: mainwindow.cpp:340
+#: mainwindow.cpp:332
 #, kde-format
 msgid "Shows the direction chooser dialog"
 msgstr "Tregon zgjedhësin e drejtimit"
 
-#: mainwindow.cpp:341
+#: mainwindow.cpp:333
 #, kde-format
 msgid "Direction Chooser: Show the direction chooser dialog"
 msgstr "Zgjedhës Drejtimi: Tregon zgjedhësin e drejtimit"
 
-#: mainwindow.cpp:344
+#: mainwindow.cpp:336
 #, kde-format
 msgid "&Color Picker..."
 msgstr "Zgjedhës &Ngjyre..."
 
-#: mainwindow.cpp:346
+#: mainwindow.cpp:338
 #, kde-format
 msgid "Shows the color picker dialog"
 msgstr "Tregon zgjedhësin e ngjyrës"
 
-#: mainwindow.cpp:347
+#: mainwindow.cpp:339
 #, kde-format
 msgid "Color Picker: Show the color picker dialog"
 msgstr "Zgjedhës Ngjyre: Tregon zgjedhësin e ngjyrës"
 
+#: mainwindow.cpp:343
+#, fuzzy, kde-format
+#| msgid "KTurtle"
+msgid "kturtle"
+msgstr "KTurtle"
+
 #: mainwindow.cpp:351
+#, kde-format
+msgid "kturtle gray"
+msgstr ""
+
+#: mainwindow.cpp:358
+#, fuzzy, kde-format
+#| msgid "KTurtle"
+msgid "turtle"
+msgstr "KTurtle"
+
+#: mainwindow.cpp:365
+#, kde-format
+msgid "crab"
+msgstr ""
+
+#: mainwindow.cpp:372
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "You are about to translate the 'And' COMMAND, there are some rules on how "
+#| "to translate it.Please see http://edu.kde.org/kturtle/translator.php to "
+#| "learn how to properly translate it."
+#| msgid "and"
+msgid "ant"
+msgstr "edhe"
+
+#: mainwindow.cpp:379
+#, fuzzy, kde-format
+#| msgid "Open"
+msgid "pen"
+msgstr "Hap"
+
+#: mainwindow.cpp:386
+#, kde-format
+msgid "Choose Custom Icon…"
+msgstr ""
+
+#: mainwindow.cpp:388 mainwindow.cpp:389
+#, kde-format
+msgid "Choose an Icon for the turtle"
+msgstr ""
+
+#: mainwindow.cpp:393
 #, kde-format
 msgid "Show &Editor"
 msgstr "Trego &Shkrimoren"
 
-#: mainwindow.cpp:353
+#: mainwindow.cpp:395
 #, kde-format
 msgid "Show or hide the Code Editor"
 msgstr "Shfaq ose fsheh shkrimoren e programit"
 
-#: mainwindow.cpp:354
+#: mainwindow.cpp:396
 #, kde-format
 msgid "Show Code Editor: Show or hide the Code Editor"
 msgstr "Shfaq Shkrimoren: Shfaq ose fsheh shkrimoren e programit"
 
-#: mainwindow.cpp:361
+#: mainwindow.cpp:403
 #, kde-format
 msgid "Show &Inspector"
 msgstr "Shfaq &Shqyrtuesin"
 
-#: mainwindow.cpp:363
+#: mainwindow.cpp:405
 #, kde-format
 msgid "Show or hide the Inspector"
 msgstr "Shfaq ose fsheh Shqyrtuesin"
 
-#: mainwindow.cpp:364
+#: mainwindow.cpp:406
 #, kde-format
 msgid "Show Inspector: Show or hide the Inspector"
 msgstr "Shfaq Shqyrtuesin: Shfaq ose fsheh Shqyrtuesin"
 
-#: mainwindow.cpp:371
+#: mainwindow.cpp:413
 #, kde-format
 msgid "Show E&rrors"
 msgstr "Shfaq &Gabimet"
 
-#: mainwindow.cpp:373
+#: mainwindow.cpp:415
 #, kde-format
 msgid "Show or hide the Errors tab"
 msgstr "Shfaq ose fsheh kartelën e Gabimeve"
 
-#: mainwindow.cpp:374
+#: mainwindow.cpp:416
 #, kde-format
 msgid "Show Errors: Show or hide the Errors tab"
 msgstr "Shfaq Gabimet: Shfaq ose fsheh kartelën e Gabimeve"
@@ -2275,64 +2429,64 @@ msgstr "Shfaq Gabimet: Shfaq ose fsheh kartelën e Gabimeve"
 #. a->setChecked(false);
 #. connect(a, SIGNAL(toggled(bool)), consoleDock, SLOT(setVisible(bool)));
 #. connect(consoleDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
-#: mainwindow.cpp:388
+#: mainwindow.cpp:430
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "Shfaq Numrat e &Rreshtave"
 
-#: mainwindow.cpp:390
+#: mainwindow.cpp:432
 #, kde-format
 msgid "Turn the line numbers on/off in the editor"
 msgstr "Shfaq ose fsheh numrat e rreshtave në shkrimore"
 
-#: mainwindow.cpp:391
+#: mainwindow.cpp:433
 #, kde-format
 msgid "Show Line Numbers: Turn the line numbers on/off in the editor"
 msgstr ""
 "Shfaq Numrat e Rreshtave: Shfaq ose fsheh numrat e rreshtave në shkrimore"
 
-#: mainwindow.cpp:402
+#: mainwindow.cpp:444
 #, kde-format
 msgid "Get help on the command under the cursor"
 msgstr "Merr ndihmë për komandën nën kursor"
 
-#: mainwindow.cpp:403
+#: mainwindow.cpp:445
 #, kde-format
 msgid "Context Help: Get help on the command under the cursor"
 msgstr "Ndihmë Specifike: Merr ndihmë për komandën nën kursor"
 
-#: mainwindow.cpp:408
+#: mainwindow.cpp:450
 #, kde-format
 msgid "Help"
 msgstr "Ndihmë"
 
-#: mainwindow.cpp:409
+#: mainwindow.cpp:451
 #, kde-format
 msgid "Help: Open manual for KTurtle"
 msgstr "Ndihmë: Hap udhëzuesin për KTurtle"
 
-#: mainwindow.cpp:413
+#: mainwindow.cpp:455
 #, kde-format
 msgid "Console"
 msgstr "Komanda"
 
-#: mainwindow.cpp:420
+#: mainwindow.cpp:462
 #, kde-format
 msgid "Execute"
 msgstr "Zbato"
 
-#: mainwindow.cpp:422
+#: mainwindow.cpp:464
 #, kde-format
 msgid "Execute: Executes the current line in the console"
 msgstr "Zbato: Zbaton komandën e dhënë në rreshtin e komandave"
 
-#: mainwindow.cpp:433
+#: mainwindow.cpp:472
 #, kde-format
 msgid "Execute the program, or use the drop down menu to select the run speed"
 msgstr ""
 "Nise programin, ose përdor menynë listore për të zgjedhur shpejtësinë e punës"
 
-#: mainwindow.cpp:434
+#: mainwindow.cpp:473
 #, kde-format
 msgid ""
 "Run: Execute the program, or use the drop down menu to select the run speed"
@@ -2340,135 +2494,54 @@ msgstr ""
 "Nise: Nise programin, ose përdor menynë listore për të zgjedhur shpejtësinë "
 "e punës"
 
-#: mainwindow.cpp:437
+#: mainwindow.cpp:495
 #, kde-format
-msgctxt "@option:radio"
-msgid "Full Speed (&no highlighting and inspector)"
-msgstr "Shpejtësi Maksimale (&pa ndriçuesin dhe shqyrtuesin)"
-
-#: mainwindow.cpp:440
-#, kde-format
-msgid "Run the program at full speed, with highlighting and inspector disabled"
+msgid "Set the execution speed"
 msgstr ""
-"Nise programin me shpejtësi maksimale, me ndriçuesin dhe shqyrtuesin të "
-"ç'aktivizuar"
 
-#: mainwindow.cpp:441
-#, kde-format
-msgid ""
-"Full Speed: Run the program at full speed, with highlighting and inspector "
-"disabled"
-msgstr ""
-"Shpejtësi Maksimale: Nise programin me shpejtësi maksimale, me ndriçuesin "
-"dhe shqyrtuesin të ç'aktivizuar"
-
-#: mainwindow.cpp:446
-#, kde-format
-msgctxt "@option:radio"
-msgid "&Full Speed"
-msgstr "Shpejtësi e M&adhe"
-
-#: mainwindow.cpp:450
-#, kde-format
-msgid "Run the program at full speed"
-msgstr "Nise programin me shpejtësi të madhe"
-
-#: mainwindow.cpp:451
-#, kde-format
-msgid "Full Speed: Run the program at full speed"
-msgstr "Shpejtësi e Madhe: Nise programin me shpejtësi të madhe"
-
-#: mainwindow.cpp:456
-#, kde-format
-msgctxt "@option:radio choose the slow speed"
-msgid "&Slow"
-msgstr "&Ngadalë"
-
-#: mainwindow.cpp:459
-#, kde-format
-msgid "Run the program at a slow speed"
-msgstr "Nise programin me shpejtësi të vogël"
-
-#: mainwindow.cpp:460
-#, kde-format
-msgid "Slow Speed: Run the program at a slow speed"
-msgstr "Shpejtësi e Vogël: Nise programin me shpejtësi të vogël"
-
-#: mainwindow.cpp:465
-#, kde-format
-msgctxt "@option:radio"
-msgid "S&lower"
-msgstr "Pak më Ngadalë"
-
-#: mainwindow.cpp:468
-#, kde-format
-msgid "Run the program at a slower speed"
-msgstr "Nise programin me shpejtësi pak më të vogël"
-
-#: mainwindow.cpp:469
-#, kde-format
-msgid "Slower Speed: Run the program at a slower speed"
-msgstr "Pak më Ngadalë: Nise programin me shpejtësi pak më të vogël"
-
-#: mainwindow.cpp:474
-#, kde-format
-msgctxt "@option:radio"
-msgid "Sl&owest"
-msgstr "Shumë Ngadalë"
-
-#: mainwindow.cpp:477
-#, kde-format
-msgid "Run the program at the slowest speed"
-msgstr "Nise programin me shpejtësi shumë të vogël"
-
-#: mainwindow.cpp:478
-#, kde-format
-msgid "Slowest Speed: Run the program at the slowest speed"
-msgstr "Shumë Ngadalë: Nise programin me shpejtësi shumë të vogël"
-
-#: mainwindow.cpp:483
+#: mainwindow.cpp:498
 #, kde-format
 msgctxt "@option:radio"
 msgid "S&tep-by-Step"
 msgstr "Hap-pas-Hapi"
 
-#: mainwindow.cpp:486
+#: mainwindow.cpp:501
 #, kde-format
 msgid "Run the program one step at a time"
 msgstr "Nise programin hap pas hapi"
 
-#: mainwindow.cpp:487
+#: mainwindow.cpp:502
 #, kde-format
 msgid "Step Speed: Run the program one step at a time"
 msgstr "Me Hapa: Nise programin hap e nga një hap"
 
-#: mainwindow.cpp:506
+#: mainwindow.cpp:520
 #, kde-format
 msgid ""
 "Canvas: This is where the turtle moves and draws when the program is running"
 msgstr "Tabela: Këtu lëviz dhe vizaton breshka kur programi është në punë"
 
-#: mainwindow.cpp:515
+#: mainwindow.cpp:529
 #, kde-format
 msgid "E&rrors"
 msgstr "&Gabimet"
 
-#: mainwindow.cpp:544
+#: mainwindow.cpp:558
 #, kde-format
 msgid "&Editor"
 msgstr "&Shkrimore"
 
-#: mainwindow.cpp:558
+#: mainwindow.cpp:572
 #, kde-format
 msgid "Editor: Write your KTurtle commands here"
 msgstr "Shkrimore: Këtu shkruhen komandat për KTurtle"
 
-#: mainwindow.cpp:561
+#: mainwindow.cpp:575
 #, kde-format
 msgid "&Inspector"
 msgstr "&Shqyrtuesi"
 
-#: mainwindow.cpp:571
+#: mainwindow.cpp:585
 #, kde-format
 msgid ""
 "Inspector: See information about variables and functions when the program "
@@ -2477,174 +2550,239 @@ msgstr ""
 "Shqyrtuesi: Shiko informata mbi ndryshoret dhe funksionet, gjatë kohës që "
 "programi është në punë"
 
-#: mainwindow.cpp:662
+#: mainwindow.cpp:676
 #, kde-format
 msgid "Switch to the %1 dictionary"
 msgstr "Kalo te fjalori %1"
 
-#: mainwindow.cpp:741
+#: mainwindow.cpp:755
 #, kde-format
 msgid " OVR "
 msgstr " OVR "
 
-#: mainwindow.cpp:741
+#: mainwindow.cpp:755
 #, kde-format
 msgid " INS "
 msgstr " INS "
 
-#: mainwindow.cpp:749
+#: mainwindow.cpp:763
 #, kde-format
 msgid "<nothing under cursor>"
 msgstr "<asgjë nën kursor>"
 
-#: mainwindow.cpp:750
+#: mainwindow.cpp:764
 #, kde-format
 msgid "Help on: %1"
 msgstr "Ndihmë për: %1"
 
-#: mainwindow.cpp:755
+#: mainwindow.cpp:769
 #, kde-format
 msgid " Line: %1 Column: %2 "
 msgstr " Rreshti: %1 Shtylla: %2 "
 
-#: mainwindow.cpp:763
+#: mainwindow.cpp:777
 #, kde-format
 msgid "\"%1\" <%2>"
 msgstr "\"%1\" <%2>"
 
-#: mainwindow.cpp:767
+#: mainwindow.cpp:781
 #, kde-format
 msgid "<variable>"
 msgstr "<ndryshore>"
 
-#: mainwindow.cpp:770
+#: mainwindow.cpp:784
 #, kde-format
 msgid "<number>"
 msgstr "<numër>"
 
-#: mainwindow.cpp:773
+#: mainwindow.cpp:787
 #, kde-format
 msgid "<comment>"
 msgstr "<koment>"
 
-#: mainwindow.cpp:776
+#: mainwindow.cpp:790
 #, kde-format
 msgid "<string>"
 msgstr "<varg>"
 
-#: mainwindow.cpp:787
+#: mainwindow.cpp:801
 #, kde-format
 msgid "scope"
 msgstr "bllok"
 
-#: mainwindow.cpp:790
+#: mainwindow.cpp:804
 #, kde-format
 msgid "assignment"
 msgstr "vlerëdhënie"
 
-#: mainwindow.cpp:793
+#: mainwindow.cpp:807
 #, kde-format
 msgid "parenthesis"
 msgstr "kllapat"
 
-#: mainwindow.cpp:796
+#: mainwindow.cpp:810
 #, kde-format
 msgid "mathematical operator"
 msgstr "veprim matematikor"
 
-#: mainwindow.cpp:799
+#: mainwindow.cpp:813
 #, kde-format
 msgid "expression"
 msgstr "shprehje"
 
-#: mainwindow.cpp:802
+#: mainwindow.cpp:816
 #, kde-format
 msgid "boolean operator"
 msgstr "veprim vërtetësie"
 
-#: mainwindow.cpp:805
+#: mainwindow.cpp:819
 #, kde-format
 msgid "learned command"
 msgstr "komandë e mësuar"
 
-#: mainwindow.cpp:808
+#: mainwindow.cpp:822
 #, kde-format
 msgid "argument separator"
 msgstr "ndarës i të dhënave"
 
-#: mainwindow.cpp:812
+#: mainwindow.cpp:826
 #, kde-format
 msgid "command"
 msgstr "komandë"
 
-#: mainwindow.cpp:815
+#: mainwindow.cpp:829
 #, kde-format
 msgid "controller command"
 msgstr "komandë kontrolluesi"
 
-#: mainwindow.cpp:839
+#: mainwindow.cpp:853
 #, kde-format
 msgid "Could not change the language to %1."
 msgstr "Nuk mund të ndryshohet gjuha në %1"
 
-#: mainwindow.cpp:846
+#: mainwindow.cpp:860
 #, kde-format
 msgid "English [built in]"
 msgstr "Anglisht [e veta]"
 
-#: mainwindow.cpp:847
+#: mainwindow.cpp:861
 #, kde-format
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: mainwindow.cpp:995
+#: mainwindow.cpp:999
 #, kde-format
 msgid "untitled"
 msgstr "skedar pa emër"
 
-#: mainwindow.cpp:1037
+#: mainwindow.cpp:1041
 #, kde-format
 msgid "Save as Picture"
 msgstr "Ruaje si Figurë"
 
-#: mainwindow.cpp:1037
+#: mainwindow.cpp:1041
 #, kde-format
 msgid "PNG Images"
 msgstr "Imazhet PNG"
 
-#: mainwindow.cpp:1054
+#: mainwindow.cpp:1058
 #, fuzzy, kde-format
 #| msgid "Save as SVG"
 msgctxt "@title:window"
 msgid "Save as SVG"
 msgstr "Ruaj si SVG"
 
-#: mainwindow.cpp:1056
+#: mainwindow.cpp:1060
 #, kde-format
 msgid "Scalable Vector Graphics"
 msgstr "Grafikë vektorialë të shkallëzueshëm"
 
-#: mainwindow.cpp:1067
+#: mainwindow.cpp:1071
 #, fuzzy, kde-format
 #| msgid "Save code as HTML"
 msgctxt "@title:window"
 msgid "Save code as HTML"
 msgstr "Ruaj programin si HTML"
 
-#: mainwindow.cpp:1069
+#: mainwindow.cpp:1073
 #, kde-format
 msgid "HTML documents"
 msgstr "Dokumente HTML"
 
-#: mainwindow.cpp:1086
+#: mainwindow.cpp:1090
 #, kde-format
 msgid "Input"
 msgstr "Futje"
 
-#: mainwindow.cpp:1095
+#: mainwindow.cpp:1099
 #, kde-format
 msgid "Message"
 msgstr "Mesazh"
+
+#: mainwindow.cpp:1106
+#, kde-format
+msgid "Choose Custom Icon"
+msgstr ""
+
+#~ msgid "&Run Speed"
+#~ msgstr "&Shpejtësia e Lëvizjes"
+
+#~ msgctxt "@option:radio"
+#~ msgid "Full Speed (&no highlighting and inspector)"
+#~ msgstr "Shpejtësi Maksimale (&pa ndriçuesin dhe shqyrtuesin)"
+
+#~ msgid ""
+#~ "Run the program at full speed, with highlighting and inspector disabled"
+#~ msgstr ""
+#~ "Nise programin me shpejtësi maksimale, me ndriçuesin dhe shqyrtuesin të "
+#~ "ç'aktivizuar"
+
+#~ msgid ""
+#~ "Full Speed: Run the program at full speed, with highlighting and "
+#~ "inspector disabled"
+#~ msgstr ""
+#~ "Shpejtësi Maksimale: Nise programin me shpejtësi maksimale, me ndriçuesin "
+#~ "dhe shqyrtuesin të ç'aktivizuar"
+
+#~ msgctxt "@option:radio"
+#~ msgid "&Full Speed"
+#~ msgstr "Shpejtësi e M&adhe"
+
+#~ msgid "Run the program at full speed"
+#~ msgstr "Nise programin me shpejtësi të madhe"
+
+#~ msgid "Full Speed: Run the program at full speed"
+#~ msgstr "Shpejtësi e Madhe: Nise programin me shpejtësi të madhe"
+
+#~ msgctxt "@option:radio choose the slow speed"
+#~ msgid "&Slow"
+#~ msgstr "&Ngadalë"
+
+#~ msgid "Run the program at a slow speed"
+#~ msgstr "Nise programin me shpejtësi të vogël"
+
+#~ msgid "Slow Speed: Run the program at a slow speed"
+#~ msgstr "Shpejtësi e Vogël: Nise programin me shpejtësi të vogël"
+
+#~ msgctxt "@option:radio"
+#~ msgid "S&lower"
+#~ msgstr "Pak më Ngadalë"
+
+#~ msgid "Run the program at a slower speed"
+#~ msgstr "Nise programin me shpejtësi pak më të vogël"
+
+#~ msgid "Slower Speed: Run the program at a slower speed"
+#~ msgstr "Pak më Ngadalë: Nise programin me shpejtësi pak më të vogël"
+
+#~ msgctxt "@option:radio"
+#~ msgid "Sl&owest"
+#~ msgstr "Shumë Ngadalë"
+
+#~ msgid "Run the program at the slowest speed"
+#~ msgstr "Nise programin me shpejtësi shumë të vogël"
+
+#~ msgid "Slowest Speed: Run the program at the slowest speed"
+#~ msgstr "Shumë Ngadalë: Nise programin me shpejtësi shumë të vogël"
 
 #~ msgid "Are you sure you want to overwrite %1?"
 #~ msgstr "Jeni i sigurt që doni të mbishkruani %1?"

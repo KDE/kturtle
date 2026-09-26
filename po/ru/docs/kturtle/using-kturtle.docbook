@@ -21,17 +21,17 @@
 >редактор</link
 > (1), расположенный слева, который предназначен для ввода команд &turtlescript;, <link linkend="the-canvas"
 >холст</link
-> (2) , расположенный справа, на котором Черепашка рисует, и  <link linkend="the-inspector"
+> (2), расположенный справа, на котором Черепашка рисует, и <link linkend="the-inspector"
 >инспектор</link
-> (3), который предоставляет вам информацию во время выполнения программы. Кроме этого имеется <link linkend="the-menubar"
->меню</link
-> (5), предоставляющее доступ ко всем функциям программы, <link linkend="the-toolbar"
+> (3), который предоставляет информацию во время выполнения программы. Кроме этого имеется <link linkend="the-menubar"
+>главное меню</link
+> (5), предоставляющее доступ ко всем действиям программы, <link linkend="the-toolbar"
 >панель инструментов</link
-> (4), которая предоставляет быстрый доступ к часто используемым командам, поле <guilabel
->команда</guilabel
->, которое можно использовать для тестирования команд, и <link linkend="the-statusbar"
+> (4), которая предоставляет быстрый доступ к часто используемым командам, поле ввода <guilabel
+>Команда:</guilabel
+>, которое можно использовать для ввода однострочной команды и её проверки, и <link linkend="the-statusbar"
 >строка состояния</link
-> (вдоль нижнего края окна), на которой отображается различная информация о состоянии &kturtle;.</para>
+> (вдоль нижнего края окна), на которой показывается информация о состоянии &kturtle;.</para>
 
 <sect1 id="the-editor">
 <title
@@ -49,8 +49,6 @@
 ><guisubmenu
 >Примеры</guisubmenu
 ></menuchoice
-> в <link linkend="the-file-menu"
->меню Файл</link
 > и выбрать необходимый пример. Выбранный файл примера будет открыт в <link linkend="the-editor"
 >редакторе</link
 > и его можно будет запустить на выполнение, вызвав пункт <menuchoice
@@ -59,15 +57,23 @@
 ><guimenuitem
 >Выполнить</guimenuitem
 ></menuchoice
-> из меню или нажав кнопку <guibutton
+> из меню (комбинация клавиш: <keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+>) или нажав кнопку <inlinemediaobject
+> <imageobject
+> <imagedata fileref="media-playback-start.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
 >Выполнить</guibutton
 > на панели инструментов.</para>
 <para
->Вы можете открыть файлы &turtlescript;, вызвав меню <menuchoice
+>Файлы &turtlescript; можно открыть, выбрав пункт меню <menuchoice
 ><guimenu
 >Файл</guimenu
 ><guimenuitem
->Открыть...</guimenuitem
+>Открыть…</guimenuitem
 ></menuchoice
 >.</para>
 <para
@@ -101,9 +107,9 @@
 <title
 >Панель инструментов</title>
 <para
->Здесь вы можете быстро получить доступ к наиболее часто используемым действиям. Панель также содержит поле для ввода <guilabel
->Команда</guilabel
->, где вы можете выполнять команды, что полезно, когда вы хотите протестировать команду, не изменяя содержимого <link linkend="the-editor"
+>Здесь вы можете быстро получить доступ к наиболее часто используемым действиям. Панель инструментов также содержит поле для ввода <guilabel
+>Команда:</guilabel
+>, где вы можете быстро выполнять команды, что полезно, когда вы хотите протестировать команду, не изменяя содержимого <link linkend="the-editor"
 >редактора</link
 >.</para>
 <para
@@ -139,9 +145,7 @@
 
 <sect2 id="the-file-menu">
 <title
->Меню <guimenu
->Файл</guimenu
-></title>
+>Меню «Файл»</title>
 
   <variablelist>
     <anchor id="file-new"/>
@@ -219,7 +223,7 @@
 ></term>
       <listitem
 ><para
->Показывает примеры программ на &turtlescript;. Примеры открываются на языке, выбранном в <menuchoice
+>Открывает примеры программ на &turtlescript;. Примеры открываются на языке, выбранном в подменю <menuchoice
 ><guimenu
 >Настройка</guimenu
 ><guisubmenu
@@ -244,7 +248,7 @@
 ><para
 >Открывает диалоговое окно <guilabel
 >Загрузить новые примеры</guilabel
-> для загрузки дополнительных файлов &turtlescript; из интернета.</para
+> для загрузки дополнительных файлов &turtlescript; из Интернета.</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -277,10 +281,16 @@
     <varlistentry>
       <term
 ><menuchoice
+><shortcut
+> <keycombo
+>&Ctrl;&Shift;<keycap
+>S</keycap
+></keycombo
+> </shortcut
 ><guimenu
 >Файл</guimenu
 > <guimenuitem
->Сохранить как...</guimenuitem
+>Сохранить как…</guimenuitem
 > </menuchoice
 ></term>
       <listitem
@@ -297,12 +307,12 @@
 ><guimenu
 >Файл</guimenu
 > <guimenuitem
->Экспорт кода в  HTML...</guimenuitem
+>Экспорт кода в HTML...</guimenuitem
 > </menuchoice
 ></term>
       <listitem
 ><para
->Экспортирует текущее содержимое редактора в файл HTML с подсветкой цветами.</para
+>Экспортирует текущее содержимое редактора в файл &HTML; с цветовой подсветкой.</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -320,7 +330,7 @@
 ><guimenu
 >Файл</guimenu
 > <guimenuitem
->Печать...         </guimenuitem
+>Печать...</guimenuitem
 > </menuchoice
 ></term>
       <listitem
@@ -356,9 +366,7 @@
 
 <sect2 id="the-edit-menu">
   <title
->Меню <guimenu
->Правка</guimenu
-></title>
+>Меню «Правка»</title>
   <variablelist>
     <anchor id="edit-undo"/>
     <varlistentry>
@@ -499,7 +507,7 @@
 ></term>
       <listitem
 ><para
->Копирует весь текст из  <link linkend="the-editor"
+>Копирует весь текст из <link linkend="the-editor"
 >редактора</link
 > в буфер обмена.</para
 ></listitem>
@@ -606,9 +614,7 @@
 ><menuchoice
 ><shortcut
 > <keycombo
-><keycap
->Ins</keycap
-></keycombo
+>&Ins;</keycombo
 > </shortcut
 > <guimenu
 >Правка</guimenu
@@ -627,9 +633,7 @@
 
 <sect2 id="the-canvas-menu">
   <title
->Меню <guimenu
->Холст</guimenu
-></title>
+>Меню «Холст»</title>
   <variablelist>
     <anchor id="canvas-export-to-image"/>
     <varlistentry>
@@ -645,7 +649,7 @@
 ><para
 >Экспортирует текущее состояние <link linkend="the-canvas"
 >холста</link
-> в растровое изображение  PNG (Portable Network Graphics).</para
+> в растровое изображение PNG (Portable Network Graphics).</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -664,7 +668,7 @@
 ><para
 >Экспортирует текущее состояние <link linkend="the-canvas"
 >холста</link
-> в векторный рисунок SVG (Scalable Vector Graphics).</para
+> в векторный рисунок &SVG; (Scalable Vector Graphics).</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -691,9 +695,7 @@
 
 <sect2 id="the-run-menu">
   <title
->Меню <guimenu
->Выполнить</guimenu
-></title>
+>Меню «Выполнить»</title>
   <variablelist>
     <anchor id="run-execute"/>
     <varlistentry>
@@ -751,7 +753,7 @@
 >F7</keysym
 ></keycombo
 > </shortcut
-> <guimenu
+><guimenu
 >Выполнить</guimenu
 > <guimenuitem
 >Прервать</guimenuitem
@@ -774,31 +776,13 @@
 >Скорость выполнения</guisubmenu
 > </menuchoice
 ></term>
-      <listitem
+     <listitem
 ><para
->Выводит список возможных скоростей выполнения, состоящий из: <guimenuitem
->С максимальной скоростью (без подсветки и инспектора)</guimenuitem
->, <guimenuitem
->С обычной скоростью</guimenuitem
->, <guimenuitem
->Замедленно</guimenuitem
->, <guimenuitem
->Медленно</guimenuitem
->, <guimenuitem
->Очень медленно</guimenuitem
-> и <guimenuitem
->Шаг за шагом</guimenuitem
->. Если скорость установлена как <guimenuitem
->С обычной скоростью</guimenuitem
-> (по умолчанию), то бывает трудно уследить за тем, что происходит. Иногда это то, что нужно, но порой хочется отследить выполнение программы. В этом случае вы можете установить скорость в <guimenuitem
->Замедленно</guimenuitem
->,  <guimenuitem
->Медленно</guimenuitem
-> или <guimenuitem
->Очень медленно</guimenuitem
->. Когда выбрана одна из медленных скоростей выполнения в редакторе показывается текущее положение выполнения. <guimenuitem
->Шаг за шагом</guimenuitem
-> выполняет по одной команде за раз.</para
+>Presents two execution modes: First, a <guilabel
+>Speed control slider</guilabel
+> to choose from a range of 1%–100% with a label to represent the current percentage. 1% indicates the slowest speed and 100% (default) indicates the fastest speed. Highlighting and inspector are enabled for any speed. Second Mode: <guimenuitem
+>Step-by-Step</guimenuitem
+> will execute one command at a time.</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -808,9 +792,7 @@
 
 <sect2 id="the-tools-menu">
   <title
->Меню <guimenu
->Сервис</guimenu
-></title>
+>Меню «Сервис»</title>
   <variablelist>
     <anchor id="tools-direction-chooser"/>
     <varlistentry>
@@ -849,9 +831,7 @@
 
 <sect2 id="the-setting-menu">
   <title
->Меню <guimenu
->Настройка</guimenu
-></title>
+>Меню «Настройка»</title>
   <variablelist>
     <anchor id="settings-set-script-language"/>
     <varlistentry>
@@ -936,8 +916,8 @@
 ><para
 >Показывает или скрывает вкладку <guilabel
 >Ошибки</guilabel
-> со списком всех ошибок, возникших при выполнении кода. Если этот параметр включён, щёлкните <guilabel
->холст</guilabel
+> со списком всех ошибок, возникших при выполнении кода. Если этот параметр включён, щёлкните по вкладке <guilabel
+>Холст</guilabel
 >, чтобы снова увидеть Черепашку.</para
 ></listitem>
     </varlistentry>
@@ -953,9 +933,9 @@
 >F11</keysym
 ></keycombo
 > </shortcut
-> <guimenu
+><guimenu
 >Настройка</guimenu
-> <guimenuitem
+><guimenuitem
 >Номера строк</guimenuitem
 > </menuchoice
 ></term>
@@ -981,8 +961,8 @@
       <listitem
 ><para
 ><action
->Управляет</action
-> отображением  панели инструментов.</para
+>Показывает или скрывает</action
+> основную панель инструментов.</para
 ></listitem>
     </varlistentry>
   </variablelist
@@ -1001,8 +981,8 @@
       <listitem
 ><para
 ><action
->Управляет</action
-> отображением  статусной строки.</para
+>Показывает или скрывает</action
+> строку состояния.</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -1019,7 +999,7 @@
 ></term>
       <listitem
 ><para
->Стандартное диалоговое окно &kde; для настройки клавиатурных комбинаций.</para
+>Стандартное диалоговое окно &kde; настройки комбинаций клавиш.</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -1036,7 +1016,7 @@
 ></term>
       <listitem
 ><para
->Стандартное диалоговое окно &kde; для настройки панелей инструментов.</para
+>Стандартное диалоговое окно &kde; настройки панелей инструментов.</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -1044,11 +1024,16 @@
 
 <sect2 id="the-help-menu">
   <title
->Меню <guimenu
+>Меню «Справка»</title>
+<para
+>В &kturtle; есть стандартное меню &kde; <guimenu
 >Справка</guimenu
-></title>
-&help.menu.documentation; <variablelist
-> <anchor id="help-context-help"/> <varlistentry>
+>, описанное в разделе <ulink url="help:/fundamentals/menus.html#menus-help"
+>Основы &kde;</ulink
+>, с одним дополнительным пунктом:</para>
+  <variablelist>
+    <anchor id="help-context-help"/>
+    <varlistentry>
       <term
 ><menuchoice
 ><shortcut
@@ -1088,7 +1073,7 @@
 <title
 >Строка состояния</title>
 <para
->В строке состояния выводится информации от &kturtle;. Слева показывается последнее действие. Справа показывается текущая позиция курсора (номера строк и столбцов). Посередине показывается текущий язык, используемый для команд.</para>
+>В строке состояния выводится информация о &kturtle;. Слева показывается последнее действие. Справа показывается текущая позиция курсора (номера строк и столбцов). Посередине показывается текущий язык, используемый для ввода команд.</para>
 </sect1>
 
 </chapter>
