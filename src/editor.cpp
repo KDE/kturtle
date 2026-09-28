@@ -58,10 +58,6 @@ Editor::Editor(QWidget *parent)
     box->addWidget(numbers);
     box->addWidget(editor);
 
-    // calculate the bg color for the highlighted line
-    QColor bgColor = this->palette().brush(this->backgroundRole()).color();
-    highlightedLineBackgroundColor.setHsv(LINE_HIGHLIGHT_COLOR.hue(), bgColor.saturation() + EXTRA_SATURATION, bgColor.value());
-
     // our syntax highlighter (this does not do any markings)
     highlighter = new Highlighter(editor->document());
 
@@ -413,7 +409,10 @@ void Editor::paintEvent(QPaintEvent *event)
     rect.translate(0, EDITOR_MARGIN); // small hack to nicely align the line highlighting
     // QColor bgColor = this->palette().brush(this->backgroundRole()).color();
     QPainter painter(this);
-    const QBrush brush(highlightedLineBackgroundColor);
+
+    const QColor lineHighlight = palette().color(QPalette::AlternateBase);
+    const QBrush brush(lineHighlight);
+
     painter.fillRect(rect, brush);
     painter.end();
     QFrame::paintEvent(event);

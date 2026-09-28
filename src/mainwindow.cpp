@@ -30,6 +30,9 @@
 #include "interpreter/errormsg.h"
 #include "interpreter/translator.h"
 #include <KActionCollection>
+#include <KActionMenu>
+#include <KColorSchemeManager>
+#include <KColorSchemeMenu>
 #include <KConfigGroup>
 #include <KHelpClient>
 #include <KLocalizedString>
@@ -390,6 +393,10 @@ void MainWindow::setupActions()
     connect(a, &QAction::triggered, this, &MainWindow::changeSprite);
 
     // Settings menu action
+    auto schemeManager = KColorSchemeManager::instance();
+    KActionMenu *schemeMenu = KColorSchemeMenu::createMenu(schemeManager, this);
+    actionCollection()->addAction(QStringLiteral("colorscheme_menu"), schemeMenu);
+
     a = new QAction(i18n("Show &Editor"), this);
     actionCollection()->addAction(QStringLiteral("show_editor"), a);
     a->setStatusTip(i18n("Show or hide the Code Editor"));

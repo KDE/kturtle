@@ -63,6 +63,8 @@
     </Menu>
   </Menu>
   <Menu name="settings"><text>&amp;Settings</text>
+    <Action name="colorscheme_menu" />
+    <Separator />
     <Menu name="language"><text>&amp;Script Language</text>
       <ActionList name="languages_actionlist" />
     </Menu>

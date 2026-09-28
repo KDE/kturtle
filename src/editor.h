@@ -24,11 +24,9 @@
 
 class QHBoxLayout;
 
-static const QColor LINE_HIGHLIGHT_COLOR(239, 247, 255);
 static const QColor WORD_HIGHLIGHT_COLOR(255, 255, 156);
 static const QColor ERROR_HIGHLIGHT_COLOR(255, 200, 200);
 
-static const int EXTRA_SATURATION = 30; // used for drawing the highlighted background
 static const int EDITOR_MARGIN = 2; // some margin that can't be set to zero, yet painters should know it
 static const int CURSOR_RECT_MARGIN = 5; // another margin that cannot be traced
 static const int LINENUMBER_SPACING = 2; // sets the margin for the line numbers
@@ -155,7 +153,9 @@ protected:
     void paintEvent(QPaintEvent *event) override
     {
         QPainter painter(viewport());
-        painter.fillRect(currentLineRect(), QBrush(LINE_HIGHLIGHT_COLOR));
+
+        const QColor lineHighlight = palette().color(QPalette::AlternateBase);
+        painter.fillRect(currentLineRect(), QBrush(lineHighlight));
         if (!currentWord.isNull()) {
             const auto coordsToRectsList{coordsToRects(currentWord)};
             for (const QRect &rect : coordsToRectsList)
@@ -323,7 +323,6 @@ private:
     QHBoxLayout *box; // TODO is this relly needed?
     KFindDialog *fdialog;
     QUrl m_currentUrl; // contains url to the currently load file or the exampleName
-    QColor highlightedLineBackgroundColor; // the bg color of the current line's line number space
     QString currentLine;
     int currentRow;
     int currentCol;
