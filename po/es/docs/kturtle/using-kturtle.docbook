@@ -776,31 +776,13 @@
 >Velocidad de ejecución</guisubmenu
 > </menuchoice
 ></term>
-      <listitem
+     <listitem
 ><para
->Muestra una lista con las posibles velocidades de ejecución:<guimenuitem
->Velocidad máxima (sin resaltado y sin inspector)</guimenuitem
->, <guimenuitem
->Velocidad máxima</guimenuitem
->, <guimenuitem
->Moderada </guimenuitem
->, <guimenuitem
->Lenta</guimenuitem
->, <guimenuitem
->Muy lenta </guimenuitem
-> y <guimenuitem
+>Presenta dos modos de ejecución. El primero de ellos, un <guilabel
+>Deslizador para controlar la velocidad</guilabel
+>, que permite escoger en el intervalo de 1 % a 100 %, junto a una etiqueta que muestra el porcentaje actual. 1 % indica a velocidad más lenta y 100 % (la predeterminada) la velocidad más rápida. El resaltado y el inspector están activados para cualquier velocidad. El segundo modo, <guimenuitem
 >Paso a paso</guimenuitem
->. Cuando la velocidad de ejecución es <guimenuitem
->Velocidad máxima</guimenuitem
-> (que es el valor predeterminado) apenas podremos ver lo que está ocurriendo. En ocasiones, esto es lo que se quiere, pero es posible que en otras se prefiera seguir con atención la ejecución. Es entonces cuando conviene cambiar la velocidad de ejecución a <guimenuitem
->Moderada</guimenuitem
->, <guimenuitem
->Lenta </guimenuitem
-> o <guimenuitem
->Muy lenta</guimenuitem
->. Cuando se selecciona uno de estos modos, el punto actual de la ejecución se muestra en el editor. Con el modo <guimenuitem
->Paso a paso</guimenuitem
-> las órdenes se ejecutan de una en una.</para
+> ejecutará una orden cada vez.</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -843,6 +825,33 @@
 ><para
 >Esta acción abre el diálogo de selección de color.</para
 ></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-change-icon"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Herramientas</guimenu
+> <guimenuitem
+>Cambiar icono…</guimenuitem
+> </menuchoice
+></term>
+      <listitem>
+        <para
+>Esta acción abre una lista que contiene varios iconos predefinidos y una acción <guimenuitem
+>Escoger icono personalizado…</guimenuitem
+> que permite seleccionar un archivo <literal
+>.svg</literal
+> para usarlo como icono.</para>
+        <para
+>Existen más iconos disponibles en <ulink url="https://freesvg.org"
+>freesvg.org</ulink
+> o en <ulink url="https://openclipart.org/"
+>openclipart.org</ulink
+>.</para>
+      </listitem>
     </varlistentry>
   </variablelist>
 </sect2>

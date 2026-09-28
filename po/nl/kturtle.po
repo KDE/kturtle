@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-26 00:41+0000\n"
-"PO-Revision-Date: 2026-09-21 10:36+0200\n"
+"PO-Revision-Date: 2026-09-26 18:55+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -613,21 +613,23 @@ msgid ""
 "Polygon needs between 2 and 4 parameters: corners, size, and optionally "
 "rotation and spoke ratio"
 msgstr ""
+"Veelhoek heeft tussen de 2 en 4 parameters nodig: hoeken, grootte en "
+"optioneel rotatie en spaakverhouding"
 
 #: interpreter/executer.cpp:1084
 #, kde-format
 msgid "A polygon must have between 3 and 10 corners"
-msgstr ""
+msgstr "Een veelhoek moet tussen 3 en 10 hoeken hebben"
 
 #: interpreter/executer.cpp:1089
 #, kde-format
 msgid "Polygon side must not be negative"
-msgstr ""
+msgstr "Zijde van veelhoek mag niet negatief zijn"
 
 #: interpreter/executer.cpp:1094
 #, kde-format
 msgid "Spoke ratio must be greater than 0 and at most 1"
-msgstr ""
+msgstr "Spaakverhouding moet groter zijn dan 0 en hoogstens 1"
 
 #: interpreter/executer.cpp:1105
 #, kde-format
@@ -635,22 +637,25 @@ msgid ""
 "Ellipse needs between 1 and 3 parameters: width, optionally height, and "
 "optionally rotation"
 msgstr ""
+"Ellips heeft 1 tot 3 parameters nodig: breedte, optioneel hoogte en "
+"optioneel rotatie"
 
 #: interpreter/executer.cpp:1117
 #, kde-format
 msgid "Ellipse width and height must not be negative"
-msgstr ""
+msgstr "De breedte en hoogte van de ellips mogen niet negatief zijn"
 
 #: interpreter/executer.cpp:1128
 #, kde-format
 msgid ""
 "Rectangle needs 2 or 3 parameters: width, height, and optionally rotation"
 msgstr ""
+"Rechthoek vereist 2 of 3 parameters: breedte, hoogte en optioneel rotatie"
 
 #: interpreter/executer.cpp:1140
 #, kde-format
 msgid "Rectangle width and height must not be negative"
-msgstr ""
+msgstr "De breedte en hoogte van de rechthoek mogen niet negatief zijn"
 
 #: interpreter/executer.cpp:1151
 #, kde-format
@@ -658,16 +663,19 @@ msgid ""
 "Triangle needs 3 or 4 parameters: sideA, sideB, sideC, and optionally "
 "rotation"
 msgstr ""
+"Driehoek heeft 3 of 4 parameters nodig: zijdeA, zijdeB, zijdeC en optioneel "
+"rotation"
 
 #: interpreter/executer.cpp:1164
 #, kde-format
 msgid "Triangle side lengths must be positive numbers"
 msgstr ""
+"De lengtes van de zijden van een driehoek moeten positieve getallen zijn"
 
 #: interpreter/executer.cpp:1169
 #, kde-format
 msgid "The given side lengths cannot form a triangle"
-msgstr ""
+msgstr "De gegeven zijdelengtes kunnen geen driehoek vormen."
 
 #: interpreter/executer.cpp:1242 interpreter/executer.cpp:1270
 #, kde-format
@@ -1020,7 +1028,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "polygon"
-msgstr ""
+msgstr "veelhoek"
 
 #: interpreter/translator.cpp:377 interpreter/translator.cpp:417
 #, kde-format
@@ -1029,27 +1037,19 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "ellipse"
-msgstr ""
+msgstr "ellips"
 
 #: interpreter/translator.cpp:385 interpreter/translator.cpp:425
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn know how to properly translate it."
-#| msgid "triangle"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Rectangle' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "rectangle"
-msgstr "driehoek"
+msgstr "rechthoek"
 
 #: interpreter/translator.cpp:393 interpreter/translator.cpp:433
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn know how to properly translate it."
-#| msgid "triangle"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Triangle' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
@@ -1525,7 +1525,7 @@ msgstr "&Hulpmiddelen"
 #: kturtleui.rc:55
 #, kde-format
 msgid "&Change Icon"
-msgstr ""
+msgstr "&Pictogram wijzigen"
 
 #. i18n: ectx: Menu (settings)
 #: kturtleui.rc:65
@@ -1976,52 +1976,44 @@ msgid "Color Picker: Show the color picker dialog"
 msgstr "Kleur kiezen: Dialoog tonen voor het kiezen van een kleur"
 
 #: mainwindow.cpp:343
-#, fuzzy, kde-format
-#| msgid "KTurtle"
+#, kde-format
 msgid "kturtle"
-msgstr "KTurtle"
+msgstr "kturtle"
 
 #: mainwindow.cpp:351
 #, kde-format
 msgid "kturtle gray"
-msgstr ""
+msgstr "kturtle grijs"
 
 #: mainwindow.cpp:358
-#, fuzzy, kde-format
-#| msgid "KTurtle"
+#, kde-format
 msgid "turtle"
-msgstr "KTurtle"
+msgstr "turtle"
 
 #: mainwindow.cpp:365
 #, kde-format
 msgid "crab"
-msgstr ""
+msgstr "krab"
 
 #: mainwindow.cpp:372
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'And' COMMAND, there are some rules on how "
-#| "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
-#| "learn how to properly translate it."
-#| msgid "and"
+#, kde-format
 msgid "ant"
-msgstr "en"
+msgstr "mier"
 
 #: mainwindow.cpp:379
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgid "pen"
-msgstr "Openen"
+msgstr "pen"
 
 #: mainwindow.cpp:386
 #, kde-format
 msgid "Choose Custom Icon…"
-msgstr ""
+msgstr "Aangepast pictogram kiezen…"
 
 #: mainwindow.cpp:388 mainwindow.cpp:389
 #, kde-format
 msgid "Choose an Icon for the turtle"
-msgstr ""
+msgstr "Kies een pictogram voor de turtle"
 
 #: mainwindow.cpp:393
 #, kde-format
@@ -2144,7 +2136,7 @@ msgstr ""
 #: mainwindow.cpp:495
 #, kde-format
 msgid "Set the execution speed"
-msgstr ""
+msgstr "Stel de snelheid van uitvoeren in"
 
 #: mainwindow.cpp:498
 #, kde-format
@@ -2368,7 +2360,7 @@ msgstr "Bericht"
 #: mainwindow.cpp:1106
 #, kde-format
 msgid "Choose Custom Icon"
-msgstr ""
+msgstr "Aangepast pictogram kiezen"
 
 #~ msgid "&Run Speed"
 #~ msgstr "&Loopsnelheid"

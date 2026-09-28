@@ -863,6 +863,115 @@ $answer = 10 &gt; 3
   </note>
 </sect2>
 
+<sect2 id="drawing-shapes">
+<title
+>Dibuix de formes</title>
+<para
+>El &kturtle; té ordres per dibuixar formes habituals, sense que calgui construir-les a partir de les ordres <userinput
+>forward</userinput
+> i <userinput
+>turnleft</userinput
+>.</para>
+
+  <variablelist>
+    <anchor id="polygon"/>
+    <varlistentry>
+      <term
+>polygon (polígon)<indexterm
+><primary
+>polygon (polígon)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>polígon cantonades, mida</screen
+><userinput
+>polygon</userinput
+> dibuixa un polígon regular amb el nombre indicat de cantonades (entre 3 i 10) i la mida indicada. Un tercer paràmetre opcional estableix l'angle de gir en graus, i un quart paràmetre opcional estableix la relació del radi (un nombre entre 0 i 1) per convertir el polígon en una forma d'estrella. La relació del radi controla com els punts entre les cantonades es tiren cap al centre: una proporció d'1 deixa el polígon sense canvis, mentre que els valors més petits creen punts de l'estella més nítids. <screen>
+polígon 3, 100
+polígon 6, 100, 45
+polígon 5, 100, 0, 0.5
+</screen
+> La primera línia dibuixa un triangle equilàter, el segon un hexàgon girat 45 graus, i el tercer una estrella de 5 puntes.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="triangle"/>
+    <varlistentry>
+      <term
+>triangle<indexterm
+><primary
+>triangle</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>triangle costatA, costatB, costatC</screen
+><userinput
+>triangle </userinput
+> dibuixa un triangle amb les tres longituds laterals indicades. Un quart paràmetre opcional estableix l'angle de gir en graus. <screen>
+triangle 80, 100, 60
+</screen
+> Això dibuixa un triangle amb costats de longitud 80, 100 i 60.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="rectangle"/>
+    <varlistentry>
+      <term
+>rectangle<indexterm
+><primary
+>rectangle</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>rectangle amplada, altura</screen
+><userinput
+>rectangle </userinput
+> dibuixa un rectangle amb l'amplada i l'altura indicada. Un tercer paràmetre opcional estableix l'angle de gir en graus. <screen>
+rectangle 100, 60
+rectangle 100, 60, 45
+</screen
+> La segona línia dibuixa el mateix rectangle girat 45 graus.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+<variablelist>
+    <anchor id="ellipse"/>
+    <varlistentry>
+      <term
+>ellipse (el·lipse)<indexterm
+><primary
+>ellipse (el·lipse)</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>el·lipse amplada, altura</screen
+><userinput
+>ellipse</userinput
+> dibuixa una el·lipse amb l'amplada i l'altura indicades. Si només s'indica un paràmetre, s'utilitza tant per a l'amplada com per a l'altura, dibuixant un cercle. Un tercer paràmetre opcional estableix l'angle de gir en graus. <screen>
+ellipse 50
+ellipse 100, 60
+ellipse 100, 60, 45
+</screen
+> La primera línia dibuixa un cercle amb un diàmetre de 50, la segona una el·lipse, i la tercera la mateixa el·lipse girada 45 graus.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+</sect2>
+
 <sect2 id="locate-the-turtle">
 <title
 >On està la tortuga?</title>

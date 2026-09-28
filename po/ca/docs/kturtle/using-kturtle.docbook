@@ -776,31 +776,13 @@
 >Velocitat d'execució</guisubmenu
 > </menuchoice
 ></term>
-      <listitem
+     <listitem
 ><para
->Presenta una llista de les possibles velocitats d'execució, consisteix en: <guimenuitem
->Velocitat màxima (sense ressaltat ni inspector)</guimenuitem
->, <guimenuitem
->Velocitat màxima</guimenuitem
->, <guimenuitem
->Lenta</guimenuitem
->, <guimenuitem
->Més lenta</guimenuitem
->, <guimenuitem
->La més lenta</guimenuitem
-> i <guimenuitem
+>Presenta dos modes d'execució: primer, un <guilabel
+>Control lliscant de velocitat</guilabel
+> per triar d'entre l'interval d'1%-100% amb una etiqueta per representar el percentatge actual. L'1% indica la velocitat més lenta i el 100% (predeterminada) indica la velocitat més ràpida. El ressaltat i l'inspector estan habilitats per a qualsevol velocitat. Segon mode: <guimenuitem
 >Instrucció a instrucció</guimenuitem
->. Quan la velocitat d'execució s'estableix a <guimenuitem
->Velocitat màxima</guimenuitem
-> (predeterminat) amb prou feines podreu mantenir-vos al dia amb què està succeint. De vegades, aquest comportament es vol, però de vegades volem fer un seguiment de l'execució. En aquest últim cas voldreu establir la velocitat d'execució a <guimenuitem
->Lenta</guimenuitem
->, <guimenuitem
->Més lenta</guimenuitem
-> o <guimenuitem
->La més lenta</guimenuitem
->. Quan se selecciona un dels modes lents la posició actual de l'executor es mostrarà a l'editor. <guimenuitem
->Instrucció a instrucció</guimenuitem
-> executarà una ordre a la vegada.</para
+> executarà una ordre alhora.</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -843,6 +825,33 @@
 ><para
 >Aquesta acció obre el diàleg selector de color.</para
 ></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-change-icon"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Eines</guimenu
+> <guimenuitem
+>Canvia la icona…</guimenuitem
+> </menuchoice
+></term>
+      <listitem>
+        <para
+>Aquesta acció obre una llista que conté algunes icones predefinides, i una acció <guimenuitem
+>Tria una icona personalitzada…</guimenuitem
+> que permet triar el vostre propi fitxer <literal
+>.svg</literal
+> per a utilitzar-lo com a icona.</para>
+        <para
+>Per a més icones, vegeu <ulink url="https://freesvg.org"
+>freesvg.org</ulink
+> o <ulink url="https://openclipart.org/"
+>openclipart.org</ulink
+>.</para>
+      </listitem>
     </varlistentry>
   </variablelist>
 </sect2>

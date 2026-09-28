@@ -584,66 +584,74 @@ msgid "The function '%1' is already defined."
 msgstr "Функцията „%1“ вече е дефинирана."
 
 #: interpreter/executer.cpp:1071
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Polygon needs between 2 and 4 parameters: corners, size, and optionally "
 "rotation and spoke ratio"
 msgstr ""
+"За многоъгълника са необходими между 2 и 4 параметъра: върхове, размер и по "
+"желание ротация и съотношение на спиците"
 
 #: interpreter/executer.cpp:1084
-#, kde-format
+#, fuzzy, kde-format
 msgid "A polygon must have between 3 and 10 corners"
-msgstr ""
+msgstr "Полигонът трябва да има между 3 и 10 върха"
 
 #: interpreter/executer.cpp:1089
-#, kde-format
+#, fuzzy, kde-format
 msgid "Polygon side must not be negative"
-msgstr ""
+msgstr "Страната на многоъгълника не трябва да бъде отрицателна"
 
 #: interpreter/executer.cpp:1094
-#, kde-format
+#, fuzzy, kde-format
 msgid "Spoke ratio must be greater than 0 and at most 1"
-msgstr ""
+msgstr "Съотношението на спиците трябва да бъде по-голямо от 0 и най-много 1"
 
 #: interpreter/executer.cpp:1105
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Ellipse needs between 1 and 3 parameters: width, optionally height, and "
 "optionally rotation"
 msgstr ""
+"Елипсът изисква между 1 и 3 параметъра: ширина, по желание височина и по "
+"желание ротация"
 
 #: interpreter/executer.cpp:1117
-#, kde-format
+#, fuzzy, kde-format
 msgid "Ellipse width and height must not be negative"
-msgstr ""
+msgstr "Ширината и височината на елипсата не трябва да бъдат отрицателни"
 
 #: interpreter/executer.cpp:1128
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Rectangle needs 2 or 3 parameters: width, height, and optionally rotation"
 msgstr ""
+"За правоъгълник са необходими 2 или 3 параметъра: ширина, височина и по "
+"желание ротация"
 
 #: interpreter/executer.cpp:1140
-#, kde-format
+#, fuzzy, kde-format
 msgid "Rectangle width and height must not be negative"
-msgstr ""
+msgstr "Ширината и височината на правоъгълника не трябва да бъдат отрицателни"
 
 #: interpreter/executer.cpp:1151
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Triangle needs 3 or 4 parameters: sideA, sideB, sideC, and optionally "
 "rotation"
 msgstr ""
+"За Триъгълник са необходими 3 или 4 параметъра: sideA, sideB, sideC и по "
+"желание rotation"
 
 #: interpreter/executer.cpp:1164
-#, kde-format
+#, fuzzy, kde-format
 msgid "Triangle side lengths must be positive numbers"
-msgstr ""
+msgstr "Страните на триъгълника трябва да бъдат положителни числа"
 
 #: interpreter/executer.cpp:1169
-#, kde-format
+#, fuzzy, kde-format
 msgid "The given side lengths cannot form a triangle"
-msgstr ""
+msgstr "Дадените дължини на страните не могат да образуват триъгълник"
 
 #: interpreter/executer.cpp:1242 interpreter/executer.cpp:1270
 #, kde-format
@@ -990,22 +998,22 @@ msgid "forward"
 msgstr "напред"
 
 #: interpreter/translator.cpp:369 interpreter/translator.cpp:409
-#, kde-format
+#, fuzzy, kde-format
 msgctxt ""
 "You are about to translate the 'Polygon' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "polygon"
-msgstr ""
+msgstr "многоъгълник"
 
 #: interpreter/translator.cpp:377 interpreter/translator.cpp:417
-#, kde-format
+#, fuzzy, kde-format
 msgctxt ""
 "You are about to translate the 'Ellipse' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "ellipse"
-msgstr ""
+msgstr "елипс"
 
 #: interpreter/translator.cpp:385 interpreter/translator.cpp:425
 #, fuzzy, kde-format
@@ -1018,7 +1026,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "rectangle"
-msgstr "триъгълник"
+msgstr "правоъгълник"
 
 #: interpreter/translator.cpp:393 interpreter/translator.cpp:433
 #, fuzzy, kde-format
@@ -1499,9 +1507,9 @@ msgstr "&Инструменти"
 
 #. i18n: ectx: Menu (changeSprite)
 #: kturtleui.rc:55
-#, kde-format
+#, fuzzy, kde-format
 msgid "&Change Icon"
-msgstr ""
+msgstr "&Смяна на иконата"
 
 #. i18n: ectx: Menu (settings)
 #: kturtleui.rc:65
@@ -1952,23 +1960,23 @@ msgstr "Избор на цвят: Показва прозореца за изб�
 #, fuzzy, kde-format
 #| msgid "KTurtle"
 msgid "kturtle"
-msgstr "KTurtle"
+msgstr "kturtle"
 
 #: mainwindow.cpp:351
-#, kde-format
+#, fuzzy, kde-format
 msgid "kturtle gray"
-msgstr ""
+msgstr "kturtle сив"
 
 #: mainwindow.cpp:358
 #, fuzzy, kde-format
 #| msgid "KTurtle"
 msgid "turtle"
-msgstr "KTurtle"
+msgstr "костенурка"
 
 #: mainwindow.cpp:365
-#, kde-format
+#, fuzzy, kde-format
 msgid "crab"
-msgstr ""
+msgstr "рак"
 
 #: mainwindow.cpp:372
 #, fuzzy, kde-format
@@ -1978,23 +1986,23 @@ msgstr ""
 #| "learn how to properly translate it."
 #| msgid "and"
 msgid "ant"
-msgstr "и"
+msgstr "мравка"
 
 #: mainwindow.cpp:379
 #, fuzzy, kde-format
 #| msgid "Open"
 msgid "pen"
-msgstr "Отваряне"
+msgstr "писалка"
 
 #: mainwindow.cpp:386
-#, kde-format
+#, fuzzy, kde-format
 msgid "Choose Custom Icon…"
-msgstr ""
+msgstr "Избор на персонализирана икона…"
 
 #: mainwindow.cpp:388 mainwindow.cpp:389
-#, kde-format
+#, fuzzy, kde-format
 msgid "Choose an Icon for the turtle"
-msgstr ""
+msgstr "Избор на икона за костенурката"
 
 #: mainwindow.cpp:393
 #, kde-format
@@ -2115,9 +2123,9 @@ msgstr ""
 "меню"
 
 #: mainwindow.cpp:495
-#, kde-format
+#, fuzzy, kde-format
 msgid "Set the execution speed"
-msgstr ""
+msgstr "Задаване на скоростта на изпълнение"
 
 #: mainwindow.cpp:498
 #, kde-format
@@ -2340,66 +2348,6 @@ msgid "Message"
 msgstr "Съобщение"
 
 #: mainwindow.cpp:1106
-#, kde-format
+#, fuzzy, kde-format
 msgid "Choose Custom Icon"
-msgstr ""
-
-#~ msgid "&Run Speed"
-#~ msgstr "&Бързо стартиране"
-
-#~ msgctxt "@option:radio"
-#~ msgid "Full Speed (&no highlighting and inspector)"
-#~ msgstr "Пълна скорост (&без оцветяване и инспектор)"
-
-#~ msgid ""
-#~ "Run the program at full speed, with highlighting and inspector disabled"
-#~ msgstr ""
-#~ "Стартиране на програмата на пълна скорост с изключени оцветяване и "
-#~ "инспектор"
-
-#~ msgid ""
-#~ "Full Speed: Run the program at full speed, with highlighting and "
-#~ "inspector disabled"
-#~ msgstr ""
-#~ "Пълна скорост: Стартиране на програмата на пълна скорост с изключени "
-#~ "оцветяване и инспектор"
-
-#~ msgctxt "@option:radio"
-#~ msgid "&Full Speed"
-#~ msgstr "&Пълна скорост"
-
-#~ msgid "Run the program at full speed"
-#~ msgstr "Стартиране на програмата на пълна скорост"
-
-#~ msgid "Full Speed: Run the program at full speed"
-#~ msgstr "Пълна скорост: Стартиране на програмата на пълна скорост"
-
-#~ msgctxt "@option:radio choose the slow speed"
-#~ msgid "&Slow"
-#~ msgstr "&Бавно"
-
-#~ msgid "Run the program at a slow speed"
-#~ msgstr "Стартиране на програмата на бавна скорост"
-
-#~ msgid "Slow Speed: Run the program at a slow speed"
-#~ msgstr "Бавна скорост: Стартиране на програмата на бавна скорост"
-
-#~ msgctxt "@option:radio"
-#~ msgid "S&lower"
-#~ msgstr "П&о-бавно"
-
-#~ msgid "Run the program at a slower speed"
-#~ msgstr "Стартиране на програмата на по-бавна скорост"
-
-#~ msgid "Slower Speed: Run the program at a slower speed"
-#~ msgstr "По-бавна скорост: Стартиране на програмата на по-бавна скорост"
-
-#~ msgctxt "@option:radio"
-#~ msgid "Sl&owest"
-#~ msgstr "На&й-бавно"
-
-#~ msgid "Run the program at the slowest speed"
-#~ msgstr "Стартиране на програмата на най-бавна скорост"
-
-#~ msgid "Slowest Speed: Run the program at the slowest speed"
-#~ msgstr "Най-бавна скорост: Стартиране на програмата на най-бавна скорост"
+msgstr "Избор на персонализирана икона"

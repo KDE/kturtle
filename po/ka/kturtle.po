@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-26 00:41+0000\n"
-"PO-Revision-Date: 2026-09-21 04:08+0200\n"
+"PO-Revision-Date: 2026-09-26 08:07+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -586,21 +586,23 @@ msgid ""
 "Polygon needs between 2 and 4 parameters: corners, size, and optionally "
 "rotation and spoke ratio"
 msgstr ""
+"მრავალკუთხედს 2-დან 4-მდე პარამეტრი სჭირდება: კუთხეები, ზომა და "
+"არასავალდებულო: ბორბლის მანა და ბრუნვა"
 
 #: interpreter/executer.cpp:1084
 #, kde-format
 msgid "A polygon must have between 3 and 10 corners"
-msgstr ""
+msgstr "მრავალკუთხედს 3-დან 10-მდე კუთხე უნდა ჰქონდეს"
 
 #: interpreter/executer.cpp:1089
 #, kde-format
 msgid "Polygon side must not be negative"
-msgstr ""
+msgstr "მრავალკუთხედის მხარე უარყოფითი არ უნდა იყოს"
 
 #: interpreter/executer.cpp:1094
 #, kde-format
 msgid "Spoke ratio must be greater than 0 and at most 1"
-msgstr ""
+msgstr "ბორბლის მანა 0-ზე მეტი და მაქს 1-ის ტოლი უნდა იყოს"
 
 #: interpreter/executer.cpp:1105
 #, kde-format
@@ -608,22 +610,26 @@ msgid ""
 "Ellipse needs between 1 and 3 parameters: width, optionally height, and "
 "optionally rotation"
 msgstr ""
+"ოვალს 1-დან 3-მდე პარამეტრი სჭირდება: სიგანე, არასავალდებულო სიმაღლე და "
+"არასავალდებულო ბრუნვა"
 
 #: interpreter/executer.cpp:1117
 #, kde-format
 msgid "Ellipse width and height must not be negative"
-msgstr ""
+msgstr "ოვალის სიგანე და სიმაღლე უარყოფითი არ უნდა იყოს"
 
 #: interpreter/executer.cpp:1128
 #, kde-format
 msgid ""
 "Rectangle needs 2 or 3 parameters: width, height, and optionally rotation"
 msgstr ""
+"მართკუთხედს 2, ან 3 პარამეტრი სჭირდება: სიგანე, სიმაღლე და არასავალდებულო "
+"მოტრიალება"
 
 #: interpreter/executer.cpp:1140
 #, kde-format
 msgid "Rectangle width and height must not be negative"
-msgstr ""
+msgstr "მართკუთხედის სიგანე და სიმაღლე უარყოფითი არ უნდა იყოს"
 
 #: interpreter/executer.cpp:1151
 #, kde-format
@@ -631,16 +637,18 @@ msgid ""
 "Triangle needs 3 or 4 parameters: sideA, sideB, sideC, and optionally "
 "rotation"
 msgstr ""
+"სამკუთხედს 3, ან 4 პარამეტრი სჭირდება: გვერდი A, გვერდი B, გვერდი C და "
+"არასავალდებულო ბრუნვა"
 
 #: interpreter/executer.cpp:1164
 #, kde-format
 msgid "Triangle side lengths must be positive numbers"
-msgstr ""
+msgstr "სამკუთხედის გვერდების სიგრძე დადებითი რიცხვი უნდა იყოს"
 
 #: interpreter/executer.cpp:1169
 #, kde-format
 msgid "The given side lengths cannot form a triangle"
-msgstr ""
+msgstr "მოცემული გვერდის სიგრძეები სამკუთხედს ვერ შეკრავს"
 
 #: interpreter/executer.cpp:1242 interpreter/executer.cpp:1270
 #, kde-format
@@ -993,7 +1001,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "polygon"
-msgstr ""
+msgstr "მრავალკუთხედი"
 
 #: interpreter/translator.cpp:377 interpreter/translator.cpp:417
 #, kde-format
@@ -1002,27 +1010,19 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "ellipse"
-msgstr ""
+msgstr "ოვალი"
 
 #: interpreter/translator.cpp:385 interpreter/translator.cpp:425
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn know how to properly translate it."
-#| msgid "triangle"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Rectangle' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "rectangle"
-msgstr "სამკუთხედი"
+msgstr "მართკუთხედი"
 
 #: interpreter/translator.cpp:393 interpreter/translator.cpp:433
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn know how to properly translate it."
-#| msgid "triangle"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Triangle' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
@@ -1498,7 +1498,7 @@ msgstr "&ხელსაწყოები"
 #: kturtleui.rc:55
 #, kde-format
 msgid "&Change Icon"
-msgstr ""
+msgstr "ხატულას შე&ცვლა"
 
 #. i18n: ectx: Menu (settings)
 #: kturtleui.rc:65
@@ -1946,52 +1946,44 @@ msgid "Color Picker: Show the color picker dialog"
 msgstr "ფერის არჩევა: ფერის ამრჩევის ფანჯრის ჩვენება"
 
 #: mainwindow.cpp:343
-#, fuzzy, kde-format
-#| msgid "KTurtle"
+#, kde-format
 msgid "kturtle"
-msgstr "KTurtle"
+msgstr "kturtle"
 
 #: mainwindow.cpp:351
 #, kde-format
 msgid "kturtle gray"
-msgstr ""
+msgstr "kturtle ნაცრისფერი"
 
 #: mainwindow.cpp:358
-#, fuzzy, kde-format
-#| msgid "KTurtle"
+#, kde-format
 msgid "turtle"
-msgstr "KTurtle"
+msgstr "კუ"
 
 #: mainwindow.cpp:365
 #, kde-format
 msgid "crab"
-msgstr ""
+msgstr "კიბორჩხალა"
 
 #: mainwindow.cpp:372
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'And' COMMAND, there are some rules on how "
-#| "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
-#| "learn how to properly translate it."
-#| msgid "and"
+#, kde-format
 msgid "ant"
-msgstr "and"
+msgstr "ჭიანჭველა"
 
 #: mainwindow.cpp:379
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgid "pen"
-msgstr "გახსნა"
+msgstr "პასტა"
 
 #: mainwindow.cpp:386
 #, kde-format
 msgid "Choose Custom Icon…"
-msgstr ""
+msgstr "მორგებული ხატულას არჩევა…"
 
 #: mainwindow.cpp:388 mainwindow.cpp:389
 #, kde-format
 msgid "Choose an Icon for the turtle"
-msgstr ""
+msgstr "ხატულას არჩევა კუსთვის"
 
 #: mainwindow.cpp:393
 #, kde-format
@@ -2114,7 +2106,7 @@ msgstr ""
 #: mainwindow.cpp:495
 #, kde-format
 msgid "Set the execution speed"
-msgstr ""
+msgstr "შესრულების სიჩქარის დაყენება"
 
 #: mainwindow.cpp:498
 #, kde-format
@@ -2338,7 +2330,7 @@ msgstr "შეტყობინება"
 #: mainwindow.cpp:1106
 #, kde-format
 msgid "Choose Custom Icon"
-msgstr ""
+msgstr "აირჩიეთ ხატულა"
 
 #~ msgid "&Run Speed"
 #~ msgstr "&გაშვების სიჩქარე"

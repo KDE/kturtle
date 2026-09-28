@@ -776,31 +776,13 @@
 >Швидкість виконання</guisubmenu
 > </menuchoice
 ></term>
-      <listitem
+     <listitem
 ><para
->Показує вам список всіх можливих швидкостей виконання, що складається з таких пунктів: <guimenuitem
->На повну швидкість (без пригальмовування і перевірки)</guimenuitem
->, <guimenuitem
->На повну швидкість</guimenuitem
->, <guimenuitem
->Повільно</guimenuitem
->, <guimenuitem
->Повільніше</guimenuitem
->, <guimenuitem
->Найповільніше</guimenuitem
-> і <guimenuitem
->Крок-за-кроком</guimenuitem
->. Якщо швидкість виконання встановлено у значення <guimenuitem
->На повну швидкість</guimenuitem
-> (типова поведінка), ви навряд чи помітите події, що відбуваються під час виконання програми. Іноді така поведінка — саме те, що потрібно, але іноді важливо прослідкувати за виконанням. У останньому випадку вам слід встановити швидкість виконання у значення <guimenuitem
->Повільно</guimenuitem
->, <guimenuitem
->Повільніше</guimenuitem
-> або <guimenuitem
->Найповільніше</guimenuitem
->. Якщо вибрано один з повільних режимів у редакторі коду буде помітно, яка саме команда зараз виконується. У режимі <guimenuitem
->Крок-за-кроком</guimenuitem
-> програма виконуватиме по одній команді на кожен запуск.</para
+>Передбачено два режими виконання: по-перше, <guilabel
+>повзунок керування швидкістю</guilabel
+> для вибору значення в діапазоні від 1% до 100% (з індикацією поточного відсотка); 1% відповідає найменшій швидкості, а 100% (типове значення) — найбільшій. Підсвічування та інспектор працюють за будь-якої швидкості. Другий режим — <guimenuitem
+>покрокове виконання</guimenuitem
+> (виконання по одній команді за раз).</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -843,6 +825,33 @@
 ><para
 >Цей пункт відкриває діалогове вікно піпетки.</para
 ></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-change-icon"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Інструменти</guimenu
+> <guimenuitem
+>Змінити піктограму…</guimenuitem
+> </menuchoice
+></term>
+      <listitem>
+        <para
+>Цей пункт відкриває список, який містить деякі попереднього визначені піктограми а пункт <guimenuitem
+>Вибрати нетипову піктограму…</guimenuitem
+>, який надає вам змогу вибрати власний файл <literal
+>.svg</literal
+> для піктограми.</para>
+        <para
+>Більше піктограм можна знайти на <ulink url="https://freesvg.org"
+>freesvg.org</ulink
+> або <ulink url="https://openclipart.org/"
+>openclipart.org</ulink
+>.</para>
+      </listitem>
     </varlistentry>
   </variablelist>
 </sect2>

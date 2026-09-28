@@ -2,7 +2,7 @@
 <title
 >Guía del lenguaje de programación &turtlescript; </title>
 <para
->Esta es la guía del lenguaje de programación &turtlescript; de &kturtle;. La primera sección de este capítulo está dedicada a aspectos relacionados con la <link linkend="grammar"
+>Esta es la guía del lenguaje de programación &turtlescript; de &kturtle;. La primera sección de este capítulo está dedicada a cuestiones relacionadas con la <link linkend="grammar"
 >gramática</link
 > de los programas de &turtlescript;. La segunda sección trata exclusivamente los <link linkend="mathematical-operators"
 >operadores aritméticos</link
@@ -12,7 +12,7 @@
 >operadores de comparación</link
 >. La tercera sección es, básicamente, una gran lista con todos las <link linkend="commands"
 >órdenes</link
-> explicadas una a una. La cuarta sección explica cómo  <link linkend="assignment-of-variables"
+> explicadas una a una. La cuarta sección explica cómo <link linkend="assignment-of-variables"
 >asignar valores a las variables</link
 >. Finalmente, en la quinta sección se explica cómo organizar la ejecución de órdenes usando <link linkend="controlling-execution"
 >declaraciones de control de la ejecución</link
@@ -47,7 +47,7 @@
 <para
 >Un programa consta de instrucciones (que es lo que se ejecuta) y de los denominados comentarios. Los comentarios no se ejecutan. Es decir, &kturtle; los ignora por completo cuando se ejecuta un programa. Los comentarios están ahí para que otros programadores puedan comprender mejor el programa. Todo lo que aparece después de un símbolo <userinput
 >#</userinput
-> se considera como un comentario en  &turtlescript;. Un ejemplo es este programa que no hace nada:  <screen>
+> se considera como un comentario en &turtlescript;. Un ejemplo es este programa que no hace nada: <screen>
 # este programa no hace nada, es solo un comentario
 </screen
 > Es un programa inútil, pero permite explicar bien el asunto.</para>
@@ -56,15 +56,15 @@
 >escribir</link
 >. <screen>
 # este programa ha sido creado por Cies Breijs
-escribir "este texto aparecerá escrito en el lienzo"
+escribir «este texto aparecerá escrito en el lienzo»
 # la línea anterior no es un comentario, pero la siguiente sí que lo es:
-# escribir "¡este texto no aparecerá escrito!"
+# escribir «¡este texto no aparecerá escrito!»
 </screen
 > La primera línea describe el programa. La segunda línea es ejecutada por &kturtle;, que escribe en el lienzo <userinput
 >este texto aparecerá escrito en el lienzo</userinput
 >. La tercera línea es un comentario. Y la cuarta es un comentario que contiene una orden de &turtlescript;. Si de esta cuarta línea se eliminara el símbolo <userinput
 >#</userinput
->, &kturtle; ejecutaría la orden de escribir.  Lo que los programadores suelen decir es que la orden de escribir se ha «comentado».</para>
+>, &kturtle; ejecutaría la orden de escribir. Lo que los programadores suelen decir es que la orden de escribir se ha «comentado».</para>
 <para
 >Las líneas comentadas aparecen <glossterm
 >resaltadas</glossterm
@@ -81,7 +81,7 @@ escribir "este texto aparecerá escrito en el lienzo"
 # avanzar es una orden que requiere de un parámetro de entrada, en este caso el número 100:
 avanzar 100
 </screen
-> La primera línea es un  <link linkend="comment"
+> La primera línea es un <link linkend="comment"
 >comentario</link
 >. La segunda línea contiene la orden <userinput
 >avanzar</userinput
@@ -211,7 +211,7 @@ escribir "Hola, soy una cadena."
 >uno</userinput
 >» y «<userinput
 >cero</userinput
->». Pero en &turtlescript; siempre los llamaremos  <userinput
+>». Pero en &turtlescript; siempre los llamaremos <userinput
 >verdadero</userinput
 > y <userinput
 >falso</userinput
@@ -855,6 +855,115 @@ $respuesta = 10 &gt; 3
 >centrar</userinput
 >, la tortuga no dibuja ningún trazo, independientemente de que el pincel esté bajado o no.</para>
   </note>
+</sect2>
+
+<sect2 id="drawing-shapes">
+<title
+>Dibujar figuras</title>
+<para
+>&kturtle; tiene órdenes para dibujar figuras comunes, sin tener que crearlas con órdenes como <userinput
+>avanzar</userinput
+> e <userinput
+>izquierda</userinput
+>.</para>
+
+  <variablelist>
+    <anchor id="polygon"/>
+    <varlistentry>
+      <term
+>polígono<indexterm
+><primary
+>polígono</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>polígono vértices, tamaño</screen
+><userinput
+>polígono</userinput
+> dibuja un polígono regular con el número de vértices (entre 3 y 10) y tamaño indicados. Un tercer parámetro opcional define el ángulo de rotación en grados, y un cuarto parámetro opcional define la relación de radios (un número entre 0 y 1) para convertir el polígono en una estrella. La relación de radios controla la distancia que se desplazan los puntos que hay entre los vértices hacia el centro: una relación de 1 deja el polígono sin cambios, mientras que valores más pequeños crean puntas de estrella más definidas. <screen>
+polígono 3, 100
+polígono 6, 100, 45
+polígono 5, 100, 0, 0.5
+</screen
+> La primera línea dibuja un triángulo equilátero, la segunda un hexágono rotado 45 grados, y la tercera una estrella de 5 puntas.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="triangle"/>
+    <varlistentry>
+      <term
+>triángulo<indexterm
+><primary
+>triángulo</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>triángulo ladoA, ladoB, ladoC</screen
+><userinput
+>triángulo</userinput
+> dibuja un triángulo con las tres longitudes de lado indicadas. Un cuarto parámetro opcional define el ángulo de rotación en grados. <screen>
+triángulo 80, 100, 60
+</screen
+> Esto dibuja un triángulo con lados de longitud 80, 100 y 60.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="rectangle"/>
+    <varlistentry>
+      <term
+>rectángulo<indexterm
+><primary
+>rectángulo</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>rectángulo anchura, altura</screen
+><userinput
+>rectángulo</userinput
+> dibuja un rectángulo con la anchura y la altura indicadas. Un tercer parámetro opcional define el ángulo de rotación en grados. <screen>
+rectángulo 100, 60
+rectángulo 100, 60, 45
+</screen
+> La segunda línea dibuja el mismo rectángulo que la primera, aunque rotado 45 grados.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+<variablelist>
+    <anchor id="ellipse"/>
+    <varlistentry>
+      <term
+>elipse<indexterm
+><primary
+>elipse</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>elipse anchura, altura</screen
+><userinput
+>elipse</userinput
+> dibuja una elipse con la anchura y la altura indicadas. Si solo se proporciona un parámetro, se usará tanto para la anchura como para la altura, por lo que se dibujará un círculo. Un tercer parámetro opcional define el ángulo de rotación en grados. <screen>
+elipse 50
+elipse 100, 60
+elipse 100, 60, 45
+</screen
+> La primera línea dibuja un círculo con un diámetro de 50, la segunda una elipse, y la tercera la misma elipse rotada 45 grados.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
 </sect2>
 
 <sect2 id="locate-the-turtle">
@@ -1534,7 +1643,7 @@ arctan X
 >número</link
 > o una <link linkend="string"
 >cadena</link
->, el resultado puede guardarse en una  <link linkend="assignment-of-variables"
+>, el resultado puede guardarse en una <link linkend="assignment-of-variables"
 >variable</link
 > o pasarse como un argumento a otra <link linkend="commands"
 >orden</link
@@ -1587,11 +1696,11 @@ $x = 10
 $x = $x / 3
 escribir $x
 </screen
-> Primero, a la variable  <userinput
+> Primero, a la variable <userinput
 >$x</userinput
 > se le asigna el valor <userinput
 >10</userinput
->. A continuación, a esta misma variable  <userinput
+>. A continuación, a esta misma variable <userinput
 >$x</userinput
 > se le asigna su propio valor dividido por <userinput
 >3</userinput
@@ -1601,7 +1710,7 @@ escribir $x
 >10 / 3</userinput
 >. Finalmente, se escribe <userinput
 >$x</userinput
->. En las líneas dos y tres, comprobará que se usa la variable  <userinput
+>. En las líneas dos y tres, comprobará que se usa la variable <userinput
 >$x</userinput
 > como si fuera un número.</para>
 
@@ -1616,10 +1725,10 @@ escribir $n
 $a = 2004
 $b = 25
 
-# la siguiente orden escribe "2029"
+# la siguiente orden escribe «2029»
 escribir $a + $b
 retroceder 30
-# la siguiente orden escribe  "2004 más 25 igual a 2029"
+# la siguiente orden escribe «2004 más 25 igual a 2029»
 escribir $a + " más " + $b + " es igual a " + ($a + $b)
 </screen
 > En las primeras dos líneas, a las variables <userinput
@@ -1861,7 +1970,7 @@ mientras $x &lt; 5 {
 > { … }</screen
 >El controlador <userinput
 >repetir</userinput
-> actúa de forma similar a  <link linkend="while"
+> actúa de forma similar a <link linkend="while"
 ><userinput
 >mientras</userinput
 ></link
