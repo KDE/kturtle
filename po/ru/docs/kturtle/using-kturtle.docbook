@@ -778,11 +778,11 @@
 ></term>
      <listitem
 ><para
->Presents two execution modes: First, a <guilabel
->Speed control slider</guilabel
-> to choose from a range of 1%–100% with a label to represent the current percentage. 1% indicates the slowest speed and 100% (default) indicates the fastest speed. Highlighting and inspector are enabled for any speed. Second Mode: <guimenuitem
->Step-by-Step</guimenuitem
-> will execute one command at a time.</para
+>Предоставляет два режима выполнения: первый — <guilabel
+>ползунок скорости</guilabel
+> для выбора значения в диапазоне от 1% до 100% с меткой, показывающей текущее значение в процентах. 1% соответствует самой низкой скорости, а 100% (по умолчанию) — самой высокой. Подсветка кода и инспектор работают при любой скорости. Второй режим — <guimenuitem
+>Шаг за шагом</guimenuitem
+>: команды выполняются по одной.</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -825,6 +825,33 @@
 ><para
 >Открывает диалоговое окно выбора цвета.</para
 ></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-change-icon"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Сервис</guimenu
+> <guimenuitem
+>Изменить значок…</guimenuitem
+> </menuchoice
+></term>
+      <listitem>
+        <para
+>Открывает список, с несколькими готовыми значками и пункт <guimenuitem
+>Выбрать другой значок…</guimenuitem
+>, позволяющий использовать собственный файл <literal
+>.svg</literal
+> в качестве значка.</para>
+        <para
+>Другие значки можно найти на сайтах <ulink url="https://freesvg.org"
+>freesvg.org</ulink
+> или <ulink url="https://openclipart.org/"
+>openclipart.org</ulink
+>.</para>
+      </listitem>
     </varlistentry>
   </variablelist>
 </sect2>

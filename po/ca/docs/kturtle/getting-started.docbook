@@ -185,7 +185,7 @@ go 40,100
 >combinació RGB</glossterm
 > on tots els valors estan establerts a <userinput
 >0</userinput
->, el qual resultarà en el color negre.</para>
+>, el qual donarà com a resultat el color negre.</para>
 
 <para
 ><userinput
@@ -198,7 +198,7 @@ go 40,100
 >255</userinput
 > (completament) on tots els altres valors (verd i blau) estan establerts a <userinput
 >0</userinput
-> (no gens). Això resultarà en un to més brillant de color vermell.</para>
+> (no gens). Això donarà com a resultat un to més brillant de color vermell.</para>
 
 <para
 >Si no enteneu els valors de color, assegureu-vos de llegir el glossari sobre la <glossterm linkend="rgb"

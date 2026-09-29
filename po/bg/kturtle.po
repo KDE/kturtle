@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-26 00:41+0000\n"
-"PO-Revision-Date: 2026-09-22 23:14+0200\n"
+"PO-Revision-Date: 2026-09-28 17:14+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -584,7 +584,7 @@ msgid "The function '%1' is already defined."
 msgstr "Функцията „%1“ вече е дефинирана."
 
 #: interpreter/executer.cpp:1071
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Polygon needs between 2 and 4 parameters: corners, size, and optionally "
 "rotation and spoke ratio"
@@ -593,36 +593,36 @@ msgstr ""
 "желание ротация и съотношение на спиците"
 
 #: interpreter/executer.cpp:1084
-#, fuzzy, kde-format
+#, kde-format
 msgid "A polygon must have between 3 and 10 corners"
 msgstr "Полигонът трябва да има между 3 и 10 върха"
 
 #: interpreter/executer.cpp:1089
-#, fuzzy, kde-format
+#, kde-format
 msgid "Polygon side must not be negative"
 msgstr "Страната на многоъгълника не трябва да бъде отрицателна"
 
 #: interpreter/executer.cpp:1094
-#, fuzzy, kde-format
+#, kde-format
 msgid "Spoke ratio must be greater than 0 and at most 1"
 msgstr "Съотношението на спиците трябва да бъде по-голямо от 0 и най-много 1"
 
 #: interpreter/executer.cpp:1105
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Ellipse needs between 1 and 3 parameters: width, optionally height, and "
 "optionally rotation"
 msgstr ""
-"Елипсът изисква между 1 и 3 параметъра: ширина, по желание височина и по "
+"Елипсата изисква между 1 и 3 параметъра: ширина, по желание височина и по "
 "желание ротация"
 
 #: interpreter/executer.cpp:1117
-#, fuzzy, kde-format
+#, kde-format
 msgid "Ellipse width and height must not be negative"
 msgstr "Ширината и височината на елипсата не трябва да бъдат отрицателни"
 
 #: interpreter/executer.cpp:1128
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Rectangle needs 2 or 3 parameters: width, height, and optionally rotation"
 msgstr ""
@@ -630,12 +630,12 @@ msgstr ""
 "желание ротация"
 
 #: interpreter/executer.cpp:1140
-#, fuzzy, kde-format
+#, kde-format
 msgid "Rectangle width and height must not be negative"
 msgstr "Ширината и височината на правоъгълника не трябва да бъдат отрицателни"
 
 #: interpreter/executer.cpp:1151
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Triangle needs 3 or 4 parameters: sideA, sideB, sideC, and optionally "
 "rotation"
@@ -644,12 +644,12 @@ msgstr ""
 "желание rotation"
 
 #: interpreter/executer.cpp:1164
-#, fuzzy, kde-format
+#, kde-format
 msgid "Triangle side lengths must be positive numbers"
 msgstr "Страните на триъгълника трябва да бъдат положителни числа"
 
 #: interpreter/executer.cpp:1169
-#, fuzzy, kde-format
+#, kde-format
 msgid "The given side lengths cannot form a triangle"
 msgstr "Дадените дължини на страните не могат да образуват триъгълник"
 
@@ -998,7 +998,7 @@ msgid "forward"
 msgstr "напред"
 
 #: interpreter/translator.cpp:369 interpreter/translator.cpp:409
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Polygon' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
@@ -1007,20 +1007,16 @@ msgid "polygon"
 msgstr "многоъгълник"
 
 #: interpreter/translator.cpp:377 interpreter/translator.cpp:417
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Ellipse' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "ellipse"
-msgstr "елипс"
+msgstr "елипса"
 
 #: interpreter/translator.cpp:385 interpreter/translator.cpp:425
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn know how to properly translate it."
-#| msgid "triangle"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Rectangle' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
@@ -1029,11 +1025,7 @@ msgid "rectangle"
 msgstr "правоъгълник"
 
 #: interpreter/translator.cpp:393 interpreter/translator.cpp:433
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn know how to properly translate it."
-#| msgid "triangle"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Triangle' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
@@ -1507,7 +1499,7 @@ msgstr "&Инструменти"
 
 #. i18n: ectx: Menu (changeSprite)
 #: kturtleui.rc:55
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Change Icon"
 msgstr "&Смяна на иконата"
 
@@ -1957,50 +1949,42 @@ msgid "Color Picker: Show the color picker dialog"
 msgstr "Избор на цвят: Показва прозореца за избор на цвят"
 
 #: mainwindow.cpp:343
-#, fuzzy, kde-format
-#| msgid "KTurtle"
+#, kde-format
 msgid "kturtle"
 msgstr "kturtle"
 
 #: mainwindow.cpp:351
-#, fuzzy, kde-format
+#, kde-format
 msgid "kturtle gray"
 msgstr "kturtle сив"
 
 #: mainwindow.cpp:358
-#, fuzzy, kde-format
-#| msgid "KTurtle"
+#, kde-format
 msgid "turtle"
 msgstr "костенурка"
 
 #: mainwindow.cpp:365
-#, fuzzy, kde-format
+#, kde-format
 msgid "crab"
 msgstr "рак"
 
 #: mainwindow.cpp:372
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'And' COMMAND, there are some rules on how "
-#| "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
-#| "learn how to properly translate it."
-#| msgid "and"
+#, kde-format
 msgid "ant"
 msgstr "мравка"
 
 #: mainwindow.cpp:379
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgid "pen"
 msgstr "писалка"
 
 #: mainwindow.cpp:386
-#, fuzzy, kde-format
+#, kde-format
 msgid "Choose Custom Icon…"
 msgstr "Избор на персонализирана икона…"
 
 #: mainwindow.cpp:388 mainwindow.cpp:389
-#, fuzzy, kde-format
+#, kde-format
 msgid "Choose an Icon for the turtle"
 msgstr "Избор на икона за костенурката"
 
@@ -2123,7 +2107,7 @@ msgstr ""
 "меню"
 
 #: mainwindow.cpp:495
-#, fuzzy, kde-format
+#, kde-format
 msgid "Set the execution speed"
 msgstr "Задаване на скоростта на изпълнение"
 
@@ -2348,6 +2332,6 @@ msgid "Message"
 msgstr "Съобщение"
 
 #: mainwindow.cpp:1106
-#, fuzzy, kde-format
+#, kde-format
 msgid "Choose Custom Icon"
 msgstr "Избор на персонализирана икона"

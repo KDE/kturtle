@@ -57,7 +57,7 @@ print "Hola!"
 >print</userinput
 > (<userinput
 >imprimeix</userinput
->) agafa una cadena (un tros de text) com a entrada. Observeu que l'entrada també port ser un contenidor. El següent exemple ho il·lustra: <screen
+>) agafa una cadena (un tros de text) com a entrada. Observeu que l'entrada també pot ser un contenidor. El següent exemple ho il·lustra: <screen
 >$x = 50
 print $x
 forward 50
