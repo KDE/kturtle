@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kdeedu-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-26 00:41+0000\n"
-"PO-Revision-Date: 2026-09-20 20:26+0300\n"
+"PO-Revision-Date: 2026-09-29 19:50+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -26,7 +26,7 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Görkem ÇETİN, Engin Çağatay, Renan Çakırerk, Emir SARI"
+msgstr "Görkem ÇETİN, Engin ÇAĞATAY, Renan ÇAKIRERK, Emir SARI"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -1005,7 +1005,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "polygon"
-msgstr ""
+msgstr "çokgen"
 
 #: interpreter/translator.cpp:377 interpreter/translator.cpp:417
 #, kde-format
@@ -1014,27 +1014,19 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "ellipse"
-msgstr ""
+msgstr "elips"
 
 #: interpreter/translator.cpp:385 interpreter/translator.cpp:425
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn know how to properly translate it."
-#| msgid "triangle"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Rectangle' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "rectangle"
-msgstr "üçgen"
+msgstr "dikdörtgen"
 
 #: interpreter/translator.cpp:393 interpreter/translator.cpp:433
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn know how to properly translate it."
-#| msgid "triangle"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Triangle' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
@@ -1510,7 +1502,7 @@ msgstr "&Araçlar"
 #: kturtleui.rc:55
 #, kde-format
 msgid "&Change Icon"
-msgstr ""
+msgstr "&Simgeyi Değiştir"
 
 #. i18n: ectx: Menu (settings)
 #: kturtleui.rc:65
@@ -1554,7 +1546,7 @@ msgid ""
 "programming tools available from the user interface. The programming "
 "language used is TurtleScript which allows its commands to be translated."
 msgstr ""
-"K Tosbağa programlamayı olabildiğince kolayca öğretmeyi hedefleyen bir "
+"K Tosbağa, programlamayı olabildiğince kolayca öğretmeyi hedefleyen bir "
 "eğitim yazılımıdır. Bunu gerçekleştirmek için K Tosbağa tüm programlama "
 "araçlarını kullanıcı arayüzünde bulundurur. Programlamada kullanılan dil "
 "komutları diğer dillere de çevrilebilen TurtleScript dilidir."
@@ -1958,52 +1950,44 @@ msgid "Color Picker: Show the color picker dialog"
 msgstr "Renk seçicisi: Renk seçim penceresini göster"
 
 #: mainwindow.cpp:343
-#, fuzzy, kde-format
-#| msgid "KTurtle"
+#, kde-format
 msgid "kturtle"
-msgstr "K Tosbağa"
+msgstr "kturtle"
 
 #: mainwindow.cpp:351
 #, kde-format
 msgid "kturtle gray"
-msgstr ""
+msgstr "kturtle gri"
 
 #: mainwindow.cpp:358
-#, fuzzy, kde-format
-#| msgid "KTurtle"
+#, kde-format
 msgid "turtle"
-msgstr "K Tosbağa"
+msgstr "tosbağa"
 
 #: mainwindow.cpp:365
 #, kde-format
 msgid "crab"
-msgstr ""
+msgstr "yengeç"
 
 #: mainwindow.cpp:372
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'And' COMMAND, there are some rules on how "
-#| "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
-#| "learn how to properly translate it."
-#| msgid "and"
+#, kde-format
 msgid "ant"
-msgstr "ve"
+msgstr "karınca"
 
 #: mainwindow.cpp:379
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgid "pen"
-msgstr "Aç"
+msgstr "kalem"
 
 #: mainwindow.cpp:386
 #, kde-format
 msgid "Choose Custom Icon…"
-msgstr ""
+msgstr "Özel Simge Seç…"
 
 #: mainwindow.cpp:388 mainwindow.cpp:389
 #, kde-format
 msgid "Choose an Icon for the turtle"
-msgstr ""
+msgstr "Tosbağa için bir simge seçin"
 
 #: mainwindow.cpp:393
 #, kde-format
@@ -2124,7 +2108,7 @@ msgstr ""
 #: mainwindow.cpp:495
 #, kde-format
 msgid "Set the execution speed"
-msgstr ""
+msgstr "Yürütme hızını ayarla"
 
 #: mainwindow.cpp:498
 #, kde-format
@@ -2287,7 +2271,7 @@ msgstr "denetleyici komutu"
 #: mainwindow.cpp:853
 #, kde-format
 msgid "Could not change the language to %1."
-msgstr "Dil %1 olarak değiştirilemedi."
+msgstr "Dil, %1 olarak değiştirilemedi."
 
 #: mainwindow.cpp:860
 #, kde-format
@@ -2312,7 +2296,7 @@ msgstr "Resim Olarak Kaydet"
 #: mainwindow.cpp:1041
 #, kde-format
 msgid "PNG Images"
-msgstr "PNG Görselleri"
+msgstr "PNG görselleri"
 
 #: mainwindow.cpp:1058
 #, kde-format
@@ -2349,7 +2333,7 @@ msgstr "İleti"
 #: mainwindow.cpp:1106
 #, kde-format
 msgid "Choose Custom Icon"
-msgstr ""
+msgstr "Özel Simge Seç"
 
 #~ msgid "&Run Speed"
 #~ msgstr "&Çalıştırma Hızı"
