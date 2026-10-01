@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-26 00:41+0000\n"
-"PO-Revision-Date: 2026-09-23 19:10+0400\n"
+"PO-Revision-Date: 2026-09-26 17:31+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -598,21 +598,23 @@ msgid ""
 "Polygon needs between 2 and 4 parameters: corners, size, and optionally "
 "rotation and spoke ratio"
 msgstr ""
+"يحتاج المضلع إلى ما بين 2 و4 معاملات: الزوايا، والحجم، واختياريًا الدوران "
+"ونسبة الشعاع"
 
 #: interpreter/executer.cpp:1084
 #, kde-format
 msgid "A polygon must have between 3 and 10 corners"
-msgstr ""
+msgstr "يجب أن يحتوي المضلع على ما بين 3 و10 زوايا"
 
 #: interpreter/executer.cpp:1089
 #, kde-format
 msgid "Polygon side must not be negative"
-msgstr ""
+msgstr "يجب ألا يكون ضلع المضلع سالبًا"
 
 #: interpreter/executer.cpp:1094
 #, kde-format
 msgid "Spoke ratio must be greater than 0 and at most 1"
-msgstr ""
+msgstr "يجب أن تكون نسبة الشعاع أكبر من 0 وفي حد أقصى 1"
 
 #: interpreter/executer.cpp:1105
 #, kde-format
@@ -620,22 +622,24 @@ msgid ""
 "Ellipse needs between 1 and 3 parameters: width, optionally height, and "
 "optionally rotation"
 msgstr ""
+"يحتاج الشكل البيضاوي إلى ما بين 1 و3 معاملات: العرض، واختياريًا الارتفاع، "
+"واختياريًا الدوران"
 
 #: interpreter/executer.cpp:1117
 #, kde-format
 msgid "Ellipse width and height must not be negative"
-msgstr ""
+msgstr "يجب ألا يكون عرض القطع الناقص وارتفاعه سالبين"
 
 #: interpreter/executer.cpp:1128
 #, kde-format
 msgid ""
 "Rectangle needs 2 or 3 parameters: width, height, and optionally rotation"
-msgstr ""
+msgstr "يحتاج المستطيل إلى 2 أو 3 معاملات: العرض، والارتفاع، واختياريًا الدوران"
 
 #: interpreter/executer.cpp:1140
 #, kde-format
 msgid "Rectangle width and height must not be negative"
-msgstr ""
+msgstr "يجب ألا يكون عرض المستطيل وارتفاعه سالبين"
 
 #: interpreter/executer.cpp:1151
 #, kde-format
@@ -643,16 +647,18 @@ msgid ""
 "Triangle needs 3 or 4 parameters: sideA, sideB, sideC, and optionally "
 "rotation"
 msgstr ""
+"يحتاج المثلث إلى 3 أو 4 معاملات: الضلع أ، والضلع ب، والضلع ج، واختياريًا "
+"الدوران"
 
 #: interpreter/executer.cpp:1164
 #, kde-format
 msgid "Triangle side lengths must be positive numbers"
-msgstr ""
+msgstr "يجب أن تكون أطوال أضلاع المثلث أعدادًا موجبة"
 
 #: interpreter/executer.cpp:1169
 #, kde-format
 msgid "The given side lengths cannot form a triangle"
-msgstr ""
+msgstr "لا يمكن لأطوال الأضلاع المعطاة أن تشكّل مثلثًا"
 
 #: interpreter/executer.cpp:1242 interpreter/executer.cpp:1270
 #, kde-format
@@ -1005,7 +1011,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "polygon"
-msgstr ""
+msgstr "مضلع"
 
 #: interpreter/translator.cpp:377 interpreter/translator.cpp:417
 #, kde-format
@@ -1014,33 +1020,25 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "ellipse"
-msgstr ""
+msgstr "بيضاوي"
 
 #: interpreter/translator.cpp:385 interpreter/translator.cpp:425
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn know how to properly translate it."
-#| msgid "triangle"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Rectangle' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "rectangle"
-msgstr "مثلّث"
+msgstr "مستطيل"
 
 #: interpreter/translator.cpp:393 interpreter/translator.cpp:433
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn know how to properly translate it."
-#| msgid "triangle"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Triangle' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "triangle"
-msgstr "مثلّث"
+msgstr "مثلث"
 
 #: interpreter/translator.cpp:401
 #, kde-format
@@ -1510,7 +1508,7 @@ msgstr "أ&دوات"
 #: kturtleui.rc:55
 #, kde-format
 msgid "&Change Icon"
-msgstr ""
+msgstr "&غيّر الأيقونة"
 
 #. i18n: ectx: Menu (settings)
 #: kturtleui.rc:65
@@ -1947,52 +1945,44 @@ msgid "Color Picker: Show the color picker dialog"
 msgstr "محدد الألوان: إظهار نافذة محدد الألوان"
 
 #: mainwindow.cpp:343
-#, fuzzy, kde-format
-#| msgid "KTurtle"
+#, kde-format
 msgid "kturtle"
 msgstr "سلحفاتك"
 
 #: mainwindow.cpp:351
 #, kde-format
 msgid "kturtle gray"
-msgstr ""
+msgstr "سلحفاة رمادية"
 
 #: mainwindow.cpp:358
-#, fuzzy, kde-format
-#| msgid "KTurtle"
+#, kde-format
 msgid "turtle"
-msgstr "سلحفاتك"
+msgstr "سلحفاة"
 
 #: mainwindow.cpp:365
 #, kde-format
 msgid "crab"
-msgstr ""
+msgstr "سلطعون"
 
 #: mainwindow.cpp:372
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'And' COMMAND, there are some rules on how "
-#| "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
-#| "learn how to properly translate it."
-#| msgid "and"
+#, kde-format
 msgid "ant"
-msgstr "و"
+msgstr "نملة"
 
 #: mainwindow.cpp:379
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgid "pen"
-msgstr "افتح"
+msgstr "قلم"
 
 #: mainwindow.cpp:386
 #, kde-format
 msgid "Choose Custom Icon…"
-msgstr ""
+msgstr "اختر أيقونة مخصصة…"
 
 #: mainwindow.cpp:388 mainwindow.cpp:389
 #, kde-format
 msgid "Choose an Icon for the turtle"
-msgstr ""
+msgstr "اختر أيقونة للسلحفاة"
 
 #: mainwindow.cpp:393
 #, kde-format
@@ -2111,7 +2101,7 @@ msgstr "تنفيذ: تنفيذ البرنامج، أو استعمل  القائ�
 #: mainwindow.cpp:495
 #, kde-format
 msgid "Set the execution speed"
-msgstr ""
+msgstr "اضبط سرعة التنفيذ"
 
 #: mainwindow.cpp:498
 #, kde-format
@@ -2332,7 +2322,7 @@ msgstr "رسالة"
 #: mainwindow.cpp:1106
 #, kde-format
 msgid "Choose Custom Icon"
-msgstr ""
+msgstr "اختر أيقونة مخصصة"
 
 #~ msgid "&Run Speed"
 #~ msgstr "سرعة الت&شغيل"

@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kdeedu-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-26 00:41+0000\n"
-"PO-Revision-Date: 2026-09-29 19:50+0300\n"
+"PO-Revision-Date: 2026-09-30 10:15+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -597,21 +597,23 @@ msgid ""
 "Polygon needs between 2 and 4 parameters: corners, size, and optionally "
 "rotation and spoke ratio"
 msgstr ""
+"Çokgen, 2 ila 4 parametre gerektirir: Köşeler, boyut ve isteğe bağlı "
+"döndürme ve kenar teli oranı"
 
 #: interpreter/executer.cpp:1084
 #, kde-format
 msgid "A polygon must have between 3 and 10 corners"
-msgstr ""
+msgstr "Bir çokgenin 3 ila 10 arasında köşesi olmalıdır"
 
 #: interpreter/executer.cpp:1089
 #, kde-format
 msgid "Polygon side must not be negative"
-msgstr ""
+msgstr "Çokgen kenarı negatif olamaz"
 
 #: interpreter/executer.cpp:1094
 #, kde-format
 msgid "Spoke ratio must be greater than 0 and at most 1"
-msgstr ""
+msgstr "Kenar teli oranı 0’dan büyük ve en çok 1 olmalıdır"
 
 #: interpreter/executer.cpp:1105
 #, kde-format
@@ -619,22 +621,26 @@ msgid ""
 "Ellipse needs between 1 and 3 parameters: width, optionally height, and "
 "optionally rotation"
 msgstr ""
+"Elips, 1 ila 3 parametre gerektirir: Genişlik, isteğe bağlı yükseklik ve "
+"isteğe bağlı döndürme"
 
 #: interpreter/executer.cpp:1117
 #, kde-format
 msgid "Ellipse width and height must not be negative"
-msgstr ""
+msgstr "Elips genişliği ve yüksekliği negatif olamaz"
 
 #: interpreter/executer.cpp:1128
 #, kde-format
 msgid ""
 "Rectangle needs 2 or 3 parameters: width, height, and optionally rotation"
 msgstr ""
+"Dikdörtgen, 2 ila 3 parametre gerektirir: Genişlik, yükseklik ve isteğe "
+"bağlı döndürme"
 
 #: interpreter/executer.cpp:1140
 #, kde-format
 msgid "Rectangle width and height must not be negative"
-msgstr ""
+msgstr "Dikdörtgen genişliği ve yüksekliği negatif olamaz"
 
 #: interpreter/executer.cpp:1151
 #, kde-format
@@ -642,16 +648,18 @@ msgid ""
 "Triangle needs 3 or 4 parameters: sideA, sideB, sideC, and optionally "
 "rotation"
 msgstr ""
+"Üçgen, 3 ila 4 parametre gerektirir: A kenarı, B kenarı, C kenarı ve isteğe "
+"bağlı döndürme"
 
 #: interpreter/executer.cpp:1164
 #, kde-format
 msgid "Triangle side lengths must be positive numbers"
-msgstr ""
+msgstr "Üçgen kenar uzunlukları pozitif sayılar olmalıdır"
 
 #: interpreter/executer.cpp:1169
 #, kde-format
 msgid "The given side lengths cannot form a triangle"
-msgstr ""
+msgstr "Verilen kenar uzunlukları bir üçgen oluşturamıyor"
 
 #: interpreter/executer.cpp:1242 interpreter/executer.cpp:1270
 #, kde-format
