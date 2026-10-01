@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-26 00:41+0000\n"
+"POT-Creation-Date: 2026-10-01 17:36+0000\n"
 "PO-Revision-Date: 2012-07-16 16:17+0700\n"
 "Last-Translator: Sok Sophea <sophea@khmeros.info>\n"
 "Language-Team: Khmer <>\n"
@@ -206,23 +206,23 @@ msgstr "ទិស​មុន ៖"
 msgid "&New direction:"
 msgstr "ទិស​ថ្មី ៖"
 
-#: editor.cpp:142
+#: editor.cpp:138
 #, kde-format
 msgid "Open"
 msgstr "បើក"
 
-#: editor.cpp:144 editor.cpp:255
+#: editor.cpp:140 editor.cpp:251
 #, kde-format
 msgid "Turtle code files"
 msgstr "ឯកសារ​កូដ Turtle"
 
-#: editor.cpp:144 editor.cpp:255 mainwindow.cpp:1041 mainwindow.cpp:1060
-#: mainwindow.cpp:1073
+#: editor.cpp:140 editor.cpp:251 mainwindow.cpp:1048 mainwindow.cpp:1067
+#: mainwindow.cpp:1080
 #, kde-format
 msgid "All files"
 msgstr "ឯកសារ​ទាំងអស់"
 
-#: editor.cpp:161
+#: editor.cpp:157
 #, kde-format
 msgid ""
 "The file you try to open is not a valid KTurtle script, or is incompatible "
@@ -232,17 +232,17 @@ msgstr ""
 "ឯកសារ​ដែល​អ្នក​បើក គឺ​មិនមែន​ជា​ស្គ្រីប KTurtle ត្រឹមត្រូវ​នោះ​ទេ ឬ​មិន​ឆបគ្នា​ជាមួយ​នឹង​កំណែ KTurtle ។\n"
 "មិនអាច​បើក %1"
 
-#: editor.cpp:230 editor.cpp:236
+#: editor.cpp:226 editor.cpp:232
 #, kde-format
 msgid "Could not save file."
 msgstr ""
 
-#: editor.cpp:253
+#: editor.cpp:249
 #, kde-format
 msgid "Save As"
 msgstr "រក្សា​ទុកជា"
 
-#: editor.cpp:267
+#: editor.cpp:263
 #, kde-format
 msgid ""
 "The program you are currently working on is not saved. By continuing you may "
@@ -251,12 +251,12 @@ msgstr ""
 "កម្មវិធី​ដែល​អ្នក​កំពុង​ធ្វើការ​បច្ចុប្បន្ន​មិន​បាន​រក្សា​ទុក​ទេ ។ ដោយ​បន្ត​អ្នក​ប្រហែល​ជា​បាត់បង់​ការ​ផ្លាស់ប្ដូរ​ដែល​"
 "អ្នក​បាន​ធ្វើ ។"
 
-#: editor.cpp:269
+#: editor.cpp:265
 #, kde-format
 msgid "Unsaved File"
 msgstr "មិន​បាន​រក្សា​ទុក​ឯកសារ"
 
-#: editor.cpp:270 editor.cpp:272
+#: editor.cpp:266 editor.cpp:268
 #, kde-format
 msgid "&Discard Changes"
 msgstr "បោះបង់​ការផ្លាស់ប្តូរ​"
@@ -1866,13 +1866,13 @@ msgid "&Edit"
 msgstr "កែសម្រួល"
 
 #. i18n: ectx: Menu (canvas)
-#: kturtleui.rc:41 mainwindow.cpp:523 mainwindow.cpp:545
+#: kturtleui.rc:41 mainwindow.cpp:530 mainwindow.cpp:552
 #, kde-format
 msgid "&Canvas"
 msgstr "ផ្ទាំង​កំណាត់"
 
 #. i18n: ectx: Menu (run)
-#: kturtleui.rc:47 mainwindow.cpp:301 mainwindow.cpp:467
+#: kturtleui.rc:47 mainwindow.cpp:304 mainwindow.cpp:474
 #, kde-format
 msgid "&Run"
 msgstr "រត់"
@@ -1896,19 +1896,19 @@ msgid "&Settings"
 msgstr "ការ​កំណត់"
 
 #. i18n: ectx: Menu (language)
-#: kturtleui.rc:66
+#: kturtleui.rc:68
 #, kde-format
 msgid "&Script Language"
 msgstr "ភាសា​ស្គ្រីប"
 
 #. i18n: ectx: Menu (help)
-#: kturtleui.rc:76
+#: kturtleui.rc:78
 #, kde-format
 msgid "&Help"
 msgstr "ជំនួយ"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: kturtleui.rc:81
+#: kturtleui.rc:83
 #, kde-format
 msgid "Main Toolbar"
 msgstr "របារ​ឧបករណ៍​មេ"
@@ -2005,290 +2005,290 @@ msgid ""
 msgstr ""
 "បកប្រែ​កូដ turtle ទៅជា​ខ្សែ​អក្សរ​ឧទាហរណ៍ C++ ដែល​អាច​បង្កប់​បាន (សម្រាប់​តែ​អ្នក​អភិវឌ្ឍ​ប៉ុណ្ណោះ)"
 
-#: mainwindow.cpp:63
+#: mainwindow.cpp:66
 #, kde-format
 msgctxt "@info:status the application is ready for commands"
 msgid "Ready"
 msgstr "រួចរាល់"
 
-#: mainwindow.cpp:177
+#: mainwindow.cpp:180
 #, kde-format
 msgid "Create a new file"
 msgstr "បង្កើត​ឯកសារ​ថ្មី"
 
-#: mainwindow.cpp:178
+#: mainwindow.cpp:181
 #, kde-format
 msgid "New File: Create a new file"
 msgstr "ឯកសារ​ថ្មី ៖ បង្កើត​ឯកសារ​ថ្មី"
 
-#: mainwindow.cpp:181
+#: mainwindow.cpp:184
 #, kde-format
 msgid "Open an existing file"
 msgstr "បើក​ឯកសារ​ដែល​មាន​ស្រាប់"
 
-#: mainwindow.cpp:182
+#: mainwindow.cpp:185
 #, kde-format
 msgid "Open File: Open an existing file"
 msgstr "បើក​ឯកសារ ៖ បើក​ឯកសារ​ដែល​មាន"
 
-#: mainwindow.cpp:187
+#: mainwindow.cpp:190
 #, kde-format
 msgid "Open a recently used file"
 msgstr "បើក​ឯកសារ​ដែល​បាន​ប្រើ​ថ្មីៗ"
 
-#: mainwindow.cpp:188
+#: mainwindow.cpp:191
 #, kde-format
 msgid "Open Recent File: Open a recently used file"
 msgstr "បើក​ឯកសារ​ថ្មីៗ ៖ បើក​ឯកសារ​ដែល​បាន​បើក​ថ្មីៗ"
 
-#: mainwindow.cpp:190
+#: mainwindow.cpp:193
 #, kde-format
 msgid "Get more examples..."
 msgstr "យក​ឧទាហរណ៍​ច្រើន​ទៀត..."
 
-#: mainwindow.cpp:199
+#: mainwindow.cpp:202
 #, kde-format
 msgid "Save the current file to disk"
 msgstr "រក្សាទុក​ឯកសារ​បច្ចុប្បន្ន​ទៅ​កាន់​ថាស"
 
-#: mainwindow.cpp:200
+#: mainwindow.cpp:203
 #, kde-format
 msgid "Save File: Save the current file to disk"
 msgstr "រក្សាទុក​ឯកសារ ៖ រក្សាទុក​ឯកសារ​បច្ចុប្បន្ន​ទៅ​កាន់​ថាស"
 
-#: mainwindow.cpp:204
+#: mainwindow.cpp:207
 #, kde-format
 msgid "Save the current file under a different name"
 msgstr "រក្សាទុក​ឯកសារ​បច្ចុប្បន្ន​ជា​ឈ្មោះ​ផ្សេង"
 
-#: mainwindow.cpp:205
+#: mainwindow.cpp:208
 #, kde-format
 msgid "Save File As: Save the current file under a different name"
 msgstr "រក្សាទុក​ឯកសារ​ជា ៖ រក្សាទុក​ឯកសារ​បច្ចុប្បន្ន​ជា​ឈ្មោះ​ផ្សេង"
 
-#: mainwindow.cpp:208
+#: mainwindow.cpp:211
 #, kde-format
 msgid "Export to &HTML..."
 msgstr "នាំចេញ​ទៅ HTML..."
 
-#: mainwindow.cpp:209
+#: mainwindow.cpp:212
 #, kde-format
 msgid "Export the contents of the editor as HTML"
 msgstr "នាំចេញ​មាតិកា​របស់​កម្មវិធី​កែសម្រួល​ជា HTML"
 
-#: mainwindow.cpp:210
+#: mainwindow.cpp:213
 #, kde-format
 msgid "Export to HTML: Export the contents of the editor as HTML"
 msgstr "នាំចេញ​ទៅជា HTML ៖ នាំចេញ​មាតិកា​របស់​កម្មវិធី​កែសម្រួល​ជា HTML"
 
-#: mainwindow.cpp:214
+#: mainwindow.cpp:217
 #, kde-format
 msgid "Print the code"
 msgstr "បោះពុម្ព​កូដ"
 
-#: mainwindow.cpp:215
+#: mainwindow.cpp:218
 #, kde-format
 msgid "Print: Print the code"
 msgstr "បោះពុម្ព ៖ បោះពុម្ព​កូដ"
 
-#: mainwindow.cpp:218
+#: mainwindow.cpp:221
 #, kde-format
 msgid "Quit KTurtle"
 msgstr "ចេញ​ពី KTurtle"
 
-#: mainwindow.cpp:219
+#: mainwindow.cpp:222
 #, kde-format
 msgid "Quit: Quit KTurtle"
 msgstr "ចេញ ៖ ចេញ​ពី KTurtle"
 
-#: mainwindow.cpp:223
+#: mainwindow.cpp:226
 #, kde-format
 msgid "Undo a change in the editor"
 msgstr "មិនធ្វើ​ការ​ផ្លាស់ប្ដូរ​វិញ​នៅ​ក្នុង​កម្មវិធី​កែសម្រួល"
 
-#: mainwindow.cpp:224
+#: mainwindow.cpp:227
 #, kde-format
 msgid "Undo: Undo a change in the editor"
 msgstr "មិនធ្វើ​វិញ ៖ មិនធ្វើ​ការ​ផ្លាស់ប្ដូរ​វិញ​នៅ​ក្នុង​កម្មវិធី​កែសម្រួល"
 
-#: mainwindow.cpp:229
+#: mainwindow.cpp:232
 #, kde-format
 msgid "Redo a previously undone change in the editor"
 msgstr "ធ្វើ​វិញ​នូវ​ការ​ផ្លាស់ប្ដូរ​ដែល​មិន​ធ្វើ​វិញ​ពី​មុន​នៅ​ក្នុង​កម្មវិធី​កែសម្រួល"
 
-#: mainwindow.cpp:230
+#: mainwindow.cpp:233
 #, kde-format
 msgid "Redo: Redo a previously undone change in the editor"
 msgstr "ធ្វើ​វិញ ៖ ធ្វើ​វិញ​នូវ​ការ​ផ្លាស់ប្ដូរ​ដែល​មិន​ធ្វើ​វិញ​ពី​មុន​នៅ​ក្នុង​កម្មវិធី​កែសម្រួល"
 
-#: mainwindow.cpp:235
+#: mainwindow.cpp:238
 #, kde-format
 msgid "Cut the selected text to the clipboard"
 msgstr "កាត់​អត្ថបទ​ដែល​បាន​ជ្រើស​ទៅ​ក្ដារ​តម្បៀត​ខ្ទាស់"
 
-#: mainwindow.cpp:236
+#: mainwindow.cpp:239
 #, kde-format
 msgid "Cut: Cut the selected text to the clipboard"
 msgstr "កាត់ ៖ កាត់​អត្ថបទ​ដែល​បាន​ជ្រើស​ទៅ​ក្ដារ​តម្បៀត​ខ្ទាស់"
 
-#: mainwindow.cpp:241
+#: mainwindow.cpp:244
 #, kde-format
 msgid "Copy the selected text to the clipboard"
 msgstr "ចម្លង​អត្ថបទ​ដែល​បាន​ជ្រើស​ទៅ​ក្ដារ​តម្បៀត​ខ្ទាស់"
 
-#: mainwindow.cpp:242
+#: mainwindow.cpp:245
 #, kde-format
 msgid "Copy: Copy the selected text to the clipboard"
 msgstr "ចម្លង ៖ ចម្លង​អត្ថបទ​ដែល​បាន ជ្រើស​ទៅ​ក្ដារ​តម្បៀត​ខ្ទាស់"
 
-#: mainwindow.cpp:247
+#: mainwindow.cpp:250
 #, kde-format
 msgid "Paste the clipboard's content into the current selection"
 msgstr "បិទភ្ជាប់​មាតិការ​របស់​ក្ដារ​តម្បៀត​ខ្ទាស់ ទៅ​ជម្រើស​បច្ចុប្បន្ន"
 
-#: mainwindow.cpp:248
+#: mainwindow.cpp:251
 #, kde-format
 msgid "Paste: Paste the clipboard's content into the current selection"
 msgstr "បិទភ្ជាប់ ៖ បិទភ្ជាប់​មាតិការ​របស់​ក្ដារ​តម្បៀត​ខ្ទាស់ ទៅ​ជម្រើស​បច្ចុប្បន្ន"
 
-#: mainwindow.cpp:251
+#: mainwindow.cpp:254
 #, kde-format
 msgid "Select all the code in the editor"
 msgstr "ជ្រើស​កូដ​ទាំងអស់​នៅ​ក្នុង​កម្មវិធី​កែសម្រួល"
 
-#: mainwindow.cpp:252
+#: mainwindow.cpp:255
 #, kde-format
 msgid "Select All: Select all the code in the editor"
 msgstr "ជ្រើស​ទាំងអស់ ៖ ជ្រើស​កូដ​ទាំងអស់​នៅ​ក្នុង​កម្មវិធី​កែសម្រួល"
 
-#: mainwindow.cpp:255
+#: mainwindow.cpp:258
 #, kde-format
 msgid "Overwrite Mode"
 msgstr "របៀប​សរសេរ​ជាន់​លើ"
 
-#: mainwindow.cpp:257
+#: mainwindow.cpp:260
 #, kde-format
 msgid "Toggle between the 'insert' and 'overwrite' mode"
 msgstr "បិទបើក​របៀប 'បញ្ចូល' និង 'សរសេរ​ជាន់លើ'"
 
-#: mainwindow.cpp:258
+#: mainwindow.cpp:261
 #, kde-format
 msgid "Overwrite Mode: Toggle between the 'insert' and 'overwrite' mode"
 msgstr "របៀប​សរសេរ​ជាន់លើ ៖ បិទបើក​របៀប 'បញ្ចូល' និង 'សរសេរ​ជាន់លើ'"
 
-#: mainwindow.cpp:265
+#: mainwindow.cpp:268
 #, kde-format
 msgid "Search through the code in the editor"
 msgstr "ស្វែងរក​ដោយប្រើ​កូដ​នៅ​ក្នុង​កម្មវិធី​កែសម្រួល"
 
-#: mainwindow.cpp:266
+#: mainwindow.cpp:269
 #, kde-format
 msgid "Find: Search through the code in the editor"
 msgstr "ស្វែងរក ៖ ស្វែងរក​ដោយប្រើ​​កូដ​នៅ​ក្នុង​កម្មវិធី​កែសម្រួល"
 
-#: mainwindow.cpp:269
+#: mainwindow.cpp:272
 #, kde-format
 msgid "Continue searching through the code in the editor"
 msgstr "បន្ត​ស្វែងរក​ដោយ​ប្រើ​កូដ​នៅ​ក្នុង​កម្មវិធី​កែសម្រួល"
 
-#: mainwindow.cpp:270
+#: mainwindow.cpp:273
 #, kde-format
 msgid "Find Next: Continue searching through the code in the editor"
 msgstr "ស្វែងរក​បន្ទាប់ ៖ បន្ត​ស្វែងរក​ដោយ​ប្រើ​កូដ​នៅ​ក្នុង​កម្មវិធី​កែសម្រួល"
 
-#: mainwindow.cpp:273
+#: mainwindow.cpp:276
 #, kde-format
 msgid "Continue searching backwards through the code in the editor"
 msgstr "បន្ត​ស្វែងរក​ត្រឡប់​ដោយប្រើ​កូដ​នៅ​ក្នុង​កម្មវិធី​កែសម្រួល"
 
-#: mainwindow.cpp:274
+#: mainwindow.cpp:277
 #, kde-format
 msgid ""
 "Find Previous: Continue searching backwards through the code in the editor"
 msgstr "រក​ថយក្រោយ ៖ បន្ត​ស្វែងរក​ត្រឡប់​ដោយប្រើ​កូដ​នៅ​ក្នុង​កម្មវិធី​កែសម្រួល"
 
-#: mainwindow.cpp:283
+#: mainwindow.cpp:286
 #, kde-format
 msgid "Export to &Image (PNG)..."
 msgstr "នាំចេញ​ទៅជា​រូបភាព (PNG)..."
 
-#: mainwindow.cpp:284
+#: mainwindow.cpp:287
 #, kde-format
 msgid "Export the current canvas to a PNG raster image"
 msgstr "នាំចេញ​ផ្ទាំង​ក្រណាត់​បច្ចុប្បន្ន​ទៅជា​រូបភាព​រ៉ាស្ទើ PNG"
 
-#: mainwindow.cpp:285
+#: mainwindow.cpp:288
 #, kde-format
 msgid "Export to PNG: Export the current canvas to a PNG raster image"
 msgstr "នាំចេញ​ទៅជា PNG ៖ នាំចេញ​ផ្ទាំង​ក្រណាត់​បច្ចុប្បន្ន​ទៅជា​រូបភាព​រ៉ាស្ទើ PNG"
 
-#: mainwindow.cpp:289
+#: mainwindow.cpp:292
 #, kde-format
 msgid "Export to &Drawing (SVG)..."
 msgstr "នាំចេញ​ទៅជា​គំនូរ (SVG)..."
 
-#: mainwindow.cpp:290
+#: mainwindow.cpp:293
 #, kde-format
 msgid "Export the current canvas to Scalable Vector Graphics"
 msgstr "នាំចេញ​ផ្ទាំង​ក្រណាត់​បច្ចុប្បន្ន​ទៅជា​ក្រាហ្វិក​វ៉ិចទ័រ​ដែល​អាច​ធ្វើ​មាត្រដ្ឋាន​បាន"
 
-#: mainwindow.cpp:291
+#: mainwindow.cpp:294
 #, kde-format
 msgid "Export to SVG: Export the current canvas to Scalable Vector Graphics"
 msgstr ""
 "នាំចេញ​ទៅជា SVG ៖ នាំចេញ​ផ្ទាំង​ក្រណាត់​បច្ចុប្បន្ន​ទៅជា​ក្រាហ្វិក​វ៉ិចទ័រ​ដែល​អាច​ធ្វើ​មាត្រដ្ឋាន​បាន"
 
-#: mainwindow.cpp:294
+#: mainwindow.cpp:297
 #, kde-format
 msgid "&Print Canvas..."
 msgstr "បោះពុម្ព​ផ្ទាំង​កំណាត់..."
 
-#: mainwindow.cpp:296
+#: mainwindow.cpp:299
 #, kde-format
 msgid "Print the canvas"
 msgstr "បោះពុម្ព​ផ្ទាំង​ក្រណាត់"
 
-#: mainwindow.cpp:297
+#: mainwindow.cpp:300
 #, kde-format
 msgid "Print: Print the canvas"
 msgstr "បោះពុម្ព ៖ បោះពុម្ព​ផ្ទាំង​ក្រណាត់"
 
-#: mainwindow.cpp:304
+#: mainwindow.cpp:307
 #, kde-format
 msgid "Execute the program"
 msgstr "ប្រតិបត្តិ​កម្មវិធី"
 
-#: mainwindow.cpp:305
+#: mainwindow.cpp:308
 #, kde-format
 msgid "Run: Execute the program"
 msgstr "រត់ ៖ ប្រតិបត្តិ​កម្មវិធី"
 
-#: mainwindow.cpp:308
+#: mainwindow.cpp:311
 #, kde-format
 msgid "&Pause"
 msgstr "ផ្អាក"
 
-#: mainwindow.cpp:312
+#: mainwindow.cpp:315
 #, kde-format
 msgid "Pause execution"
 msgstr "ផ្អាក​ប្រតិបត្តិការ"
 
-#: mainwindow.cpp:313
+#: mainwindow.cpp:316
 #, kde-format
 msgid "Pause: Pause execution"
 msgstr "ផ្អាក ៖ ផ្អាក​ប្រតិបត្តិ​ការ"
 
-#: mainwindow.cpp:316
+#: mainwindow.cpp:319
 #, kde-format
 msgid "&Abort"
 msgstr "បោះបង់"
 
-#: mainwindow.cpp:319
+#: mainwindow.cpp:322
 #, kde-format
 msgid "Stop executing program"
 msgstr "បញ្ឈប់​ប្រតិបត្តិការ​កម្មវិធី​នេះ"
 
-#: mainwindow.cpp:320
+#: mainwindow.cpp:323
 #, kde-format
 msgid "Abort: Stop executing program"
 msgstr "បោះបង់ ៖ បញ្ឈប់​ប្រតិបត្តិការ​កម្មវិធី​នេះ"
@@ -2299,59 +2299,59 @@ msgstr "បោះបង់ ៖ បញ្ឈប់​ប្រតិបត្ត
 #. i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
 #. i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
 #. Tools menu actions
-#: mainwindow.cpp:330
+#: mainwindow.cpp:333
 #, kde-format
 msgid "&Direction Chooser..."
 msgstr "កម្មវិធី​ជ្រើស​ទិស..."
 
-#: mainwindow.cpp:332
+#: mainwindow.cpp:335
 #, kde-format
 msgid "Shows the direction chooser dialog"
 msgstr "បង្ហាញ​ប្រអប់​កម្មវិធី​ជ្រើស​ទិស"
 
-#: mainwindow.cpp:333
+#: mainwindow.cpp:336
 #, kde-format
 msgid "Direction Chooser: Show the direction chooser dialog"
 msgstr "កម្មវិធី​ជ្រើស​ទិស ៖ បង្ហាញ​ប្រអប់​កម្មវិធី​ជ្រើស​ទិស"
 
-#: mainwindow.cpp:336
+#: mainwindow.cpp:339
 #, kde-format
 msgid "&Color Picker..."
 msgstr "កម្មវិធី​ជ្រើស​ពណ៌..."
 
-#: mainwindow.cpp:338
+#: mainwindow.cpp:341
 #, kde-format
 msgid "Shows the color picker dialog"
 msgstr "បង្ហាញ​ប្រអប់​កម្មវិធី​ជ្រើស​ពណ៌"
 
-#: mainwindow.cpp:339
+#: mainwindow.cpp:342
 #, kde-format
 msgid "Color Picker: Show the color picker dialog"
 msgstr "កម្មវិធី​ជ្រើស​ពណ៌ ៖ បង្ហាញ​ប្រអប់​កម្មវិធី​ជ្រើស​ពណ៌"
 
-#: mainwindow.cpp:343
+#: mainwindow.cpp:346
 #, fuzzy, kde-format
 #| msgid "KTurtle"
 msgid "kturtle"
 msgstr "KTurtle"
 
-#: mainwindow.cpp:351
+#: mainwindow.cpp:354
 #, kde-format
 msgid "kturtle gray"
 msgstr ""
 
-#: mainwindow.cpp:358
+#: mainwindow.cpp:361
 #, fuzzy, kde-format
 #| msgid "KTurtle"
 msgid "turtle"
 msgstr "KTurtle"
 
-#: mainwindow.cpp:365
+#: mainwindow.cpp:368
 #, kde-format
 msgid "crab"
 msgstr ""
 
-#: mainwindow.cpp:372
+#: mainwindow.cpp:375
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'And' COMMAND, there are some rules on how "
@@ -2361,63 +2361,63 @@ msgstr ""
 msgid "ant"
 msgstr "and"
 
-#: mainwindow.cpp:379
+#: mainwindow.cpp:382
 #, fuzzy, kde-format
 #| msgid "Open"
 msgid "pen"
 msgstr "បើក"
 
-#: mainwindow.cpp:386
+#: mainwindow.cpp:389
 #, kde-format
 msgid "Choose Custom Icon…"
 msgstr ""
 
-#: mainwindow.cpp:388 mainwindow.cpp:389
+#: mainwindow.cpp:391 mainwindow.cpp:392
 #, kde-format
 msgid "Choose an Icon for the turtle"
 msgstr ""
 
-#: mainwindow.cpp:393
+#: mainwindow.cpp:400
 #, kde-format
 msgid "Show &Editor"
 msgstr "បង្ហាញ​កម្មវិធី​កែសម្រួល"
 
-#: mainwindow.cpp:395
+#: mainwindow.cpp:402
 #, kde-format
 msgid "Show or hide the Code Editor"
 msgstr "បង្ហាញ ឬ​លាក់​កម្មវិធី​កែសម្រួល​កូដ"
 
-#: mainwindow.cpp:396
+#: mainwindow.cpp:403
 #, kde-format
 msgid "Show Code Editor: Show or hide the Code Editor"
 msgstr "បង្ហាញ​កម្មវិធី​កែសម្រួល​កូដ ៖ បង្ហាញ ឬ​លាក់​កម្មវិធី​កែសម្រួល​កូដ"
 
-#: mainwindow.cpp:403
+#: mainwindow.cpp:410
 #, kde-format
 msgid "Show &Inspector"
 msgstr "បង្ហាញ​កម្មវិធី​ត្រួតពិនិត្យ"
 
-#: mainwindow.cpp:405
+#: mainwindow.cpp:412
 #, kde-format
 msgid "Show or hide the Inspector"
 msgstr "បង្ហាញ ឬ​លាក់​កម្មវិធី​ត្រួតពិនិត្យ"
 
-#: mainwindow.cpp:406
+#: mainwindow.cpp:413
 #, kde-format
 msgid "Show Inspector: Show or hide the Inspector"
 msgstr "បង្ហាញ​កម្មវិធី​ត្រួត​ពិនិត្យ ៖ បង្ហាញ ឬ​លាក់​កម្មវិធី​ត្រួត​ពិនិត្យ"
 
-#: mainwindow.cpp:413
+#: mainwindow.cpp:420
 #, kde-format
 msgid "Show E&rrors"
 msgstr "បង្ហាញ​កំហុស"
 
-#: mainwindow.cpp:415
+#: mainwindow.cpp:422
 #, kde-format
 msgid "Show or hide the Errors tab"
 msgstr "បង្ហាញ ឬ​លាក់​ផ្ទាំង​កំហុស"
 
-#: mainwindow.cpp:416
+#: mainwindow.cpp:423
 #, kde-format
 msgid "Show Errors: Show or hide the Errors tab"
 msgstr "បង្ហាញ​កំហុស ៖ បង្ហាញ ឬ​លាក់​ផ្ទាំង​កំហុស"
@@ -2430,291 +2430,291 @@ msgstr "បង្ហាញ​កំហុស ៖ បង្ហាញ ឬ​ល�
 #. a->setChecked(false);
 #. connect(a, SIGNAL(toggled(bool)), consoleDock, SLOT(setVisible(bool)));
 #. connect(consoleDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
-#: mainwindow.cpp:430
+#: mainwindow.cpp:437
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "បង្ហាញ​លេខ​បន្ទាត់"
 
-#: mainwindow.cpp:432
+#: mainwindow.cpp:439
 #, kde-format
 msgid "Turn the line numbers on/off in the editor"
 msgstr "បិទ​/​បើក​លេខ​បន្ទាត់​ក្នុង​កម្មវិធី​កែសម្រួល"
 
-#: mainwindow.cpp:433
+#: mainwindow.cpp:440
 #, kde-format
 msgid "Show Line Numbers: Turn the line numbers on/off in the editor"
 msgstr "បង្ហាញ​លេខ​បន្ទាត់ ៖ បិទ​/​បើក​បន្ទាត់​ក្នុង​កម្មវិធី​កែសម្រួល"
 
-#: mainwindow.cpp:444
+#: mainwindow.cpp:451
 #, kde-format
 msgid "Get help on the command under the cursor"
 msgstr "មើល​ជំនួយ​តាម​ពាក្យ​បញ្ជា​​នៅ​ក្រោម​ទស្សន៍ទ្រនិច"
 
-#: mainwindow.cpp:445
+#: mainwindow.cpp:452
 #, kde-format
 msgid "Context Help: Get help on the command under the cursor"
 msgstr "ជំនួយ​បរិបទ ៖ មើល​ជំនួយ​តាម​ពាក្យ​បញ្ជា​​នៅ​ក្រោម​ទស្សន៍ទ្រនិច"
 
-#: mainwindow.cpp:450
+#: mainwindow.cpp:457
 #, kde-format
 msgid "Help"
 msgstr "ជំនួយ"
 
-#: mainwindow.cpp:451
+#: mainwindow.cpp:458
 #, kde-format
 msgid "Help: Open manual for KTurtle"
 msgstr "ជំនួយ ៖ បើក​សៀវភៅ​ដៃ​សម្រាប់ KTurtle"
 
-#: mainwindow.cpp:455
+#: mainwindow.cpp:462
 #, kde-format
 msgid "Console"
 msgstr "កុងសូល"
 
-#: mainwindow.cpp:462
+#: mainwindow.cpp:469
 #, kde-format
 msgid "Execute"
 msgstr "ប្រតិបត្តិ"
 
-#: mainwindow.cpp:464
+#: mainwindow.cpp:471
 #, kde-format
 msgid "Execute: Executes the current line in the console"
 msgstr "ប្រតិបត្តិ ៖ ប្រតិបត្តិ​បន្ទាត់​បច្ចុប្បន្ន​នៅ​ក្នុង​កុងសូល"
 
-#: mainwindow.cpp:472
+#: mainwindow.cpp:479
 #, kde-format
 msgid "Execute the program, or use the drop down menu to select the run speed"
 msgstr "ដំណើរការ​កម្មវិធី ឬ​ប្រើ​ម៉ឺនុយ​ទម្លាក់​ចុះ​ដើម្បី​ជ្រើស​ល្បឿន​ដំណើរការ"
 
-#: mainwindow.cpp:473
+#: mainwindow.cpp:480
 #, kde-format
 msgid ""
 "Run: Execute the program, or use the drop down menu to select the run speed"
 msgstr "ដំណើរការ ៖ ដំណើរការ​កម្មវិធី ឬ​ប្រើ​ម៉ឺនុយ​ទម្លាក់​ចុះ​ដើម្បី​ជ្រើស​ល្បឿន​ដំណើរការ"
 
-#: mainwindow.cpp:495
+#: mainwindow.cpp:502
 #, kde-format
 msgid "Set the execution speed"
 msgstr ""
 
-#: mainwindow.cpp:498
+#: mainwindow.cpp:505
 #, kde-format
 msgctxt "@option:radio"
 msgid "S&tep-by-Step"
 msgstr "មួយ​ជំហាន​ម្ដងៗ"
 
-#: mainwindow.cpp:501
+#: mainwindow.cpp:508
 #, kde-format
 msgid "Run the program one step at a time"
 msgstr "ដំណើរការ​កម្មវិធី​មួយ​ជំហាន​ម្ដងៗ"
 
-#: mainwindow.cpp:502
+#: mainwindow.cpp:509
 #, kde-format
 msgid "Step Speed: Run the program one step at a time"
 msgstr "ល្បឿន​តាម​ជំហាន ៖ ដំណើរការ​កម្មវិធី​មួយ​ជំហាន​ម្ដងៗ"
 
-#: mainwindow.cpp:520
+#: mainwindow.cpp:527
 #, kde-format
 msgid ""
 "Canvas: This is where the turtle moves and draws when the program is running"
 msgstr "ផ្ទាំង​កំណាត់ ៖ នេះ​ជា​កន្លែង​ដែល turtle ផ្លាស់ទី និង​គូរ​នៅពេល​ដែល​កម្មវិធី​ដំណើរការ"
 
-#: mainwindow.cpp:529
+#: mainwindow.cpp:536
 #, kde-format
 msgid "E&rrors"
 msgstr "កំហុស"
 
-#: mainwindow.cpp:558
+#: mainwindow.cpp:565
 #, kde-format
 msgid "&Editor"
 msgstr "កែសម្រួល"
 
-#: mainwindow.cpp:572
+#: mainwindow.cpp:579
 #, kde-format
 msgid "Editor: Write your KTurtle commands here"
 msgstr "កម្មវិធី​កែសម្រួល ៖ សរសេរ​ពាក្យ​បញ្ជា KTurtle របស់​អ្នក​នៅ​ទីនេះ"
 
-#: mainwindow.cpp:575
+#: mainwindow.cpp:582
 #, kde-format
 msgid "&Inspector"
 msgstr "កម្មវិធី​ត្រួត​ពិនិត្យ"
 
-#: mainwindow.cpp:585
+#: mainwindow.cpp:592
 #, kde-format
 msgid ""
 "Inspector: See information about variables and functions when the program "
 "runs"
 msgstr "កម្មវិធី​ត្រួត​ពិនិត្យ ៖ សូមមើល​ព័ត៌មាន​អំពី​អថេរ និង​អនុគមន៍ នៅពេល​ដែល​កម្មវិធី​ដំណើរការ"
 
-#: mainwindow.cpp:676
+#: mainwindow.cpp:683
 #, kde-format
 msgid "Switch to the %1 dictionary"
 msgstr "ប្ដូរ​ទៅ​វចនា​នុក្រម %1"
 
-#: mainwindow.cpp:755
+#: mainwindow.cpp:762
 #, kde-format
 msgid " OVR "
 msgstr " លើ "
 
-#: mainwindow.cpp:755
+#: mainwindow.cpp:762
 #, kde-format
 msgid " INS "
 msgstr " បញ្ចូល "
 
-#: mainwindow.cpp:763
+#: mainwindow.cpp:770
 #, kde-format
 msgid "<nothing under cursor>"
 msgstr "<nothing under cursor>"
 
-#: mainwindow.cpp:764
+#: mainwindow.cpp:771
 #, kde-format
 msgid "Help on: %1"
 msgstr "ជំនួយ​ ៖ %1"
 
-#: mainwindow.cpp:769
+#: mainwindow.cpp:776
 #, kde-format
 msgid " Line: %1 Column: %2 "
 msgstr " បន្ទាត់​ ៖ %1 ជួរឈរ ៖ %2 "
 
-#: mainwindow.cpp:777
+#: mainwindow.cpp:784
 #, kde-format
 msgid "\"%1\" <%2>"
 msgstr "\"%1\" <%2>"
 
-#: mainwindow.cpp:781
+#: mainwindow.cpp:788
 #, kde-format
 msgid "<variable>"
 msgstr "<អថេរ>"
 
-#: mainwindow.cpp:784
+#: mainwindow.cpp:791
 #, kde-format
 msgid "<number>"
 msgstr "<ចំនួន>"
 
-#: mainwindow.cpp:787
+#: mainwindow.cpp:794
 #, kde-format
 msgid "<comment>"
 msgstr "<សេចក្ដី​អធិប្បាយ>"
 
-#: mainwindow.cpp:790
+#: mainwindow.cpp:797
 #, kde-format
 msgid "<string>"
 msgstr "<ឃ្លា>"
 
-#: mainwindow.cpp:801
+#: mainwindow.cpp:808
 #, kde-format
 msgid "scope"
 msgstr "វិសាលភាព"
 
-#: mainwindow.cpp:804
+#: mainwindow.cpp:811
 #, kde-format
 msgid "assignment"
 msgstr "កិច្ចការ"
 
-#: mainwindow.cpp:807
+#: mainwindow.cpp:814
 #, kde-format
 msgid "parenthesis"
 msgstr "វង់ក្រចក"
 
-#: mainwindow.cpp:810
+#: mainwindow.cpp:817
 #, kde-format
 msgid "mathematical operator"
 msgstr "ប្រមាណ​វិធី​គណិតវិទ្យា"
 
-#: mainwindow.cpp:813
+#: mainwindow.cpp:820
 #, kde-format
 msgid "expression"
 msgstr "កន្សោម"
 
-#: mainwindow.cpp:816
+#: mainwindow.cpp:823
 #, kde-format
 msgid "boolean operator"
 msgstr "ប្រមាណ​វិធី​ប៊ូលីន"
 
-#: mainwindow.cpp:819
+#: mainwindow.cpp:826
 #, kde-format
 msgid "learned command"
 msgstr "ពាក្យ​បញ្ជា​ដែល​បាន​សិក្សា"
 
-#: mainwindow.cpp:822
+#: mainwindow.cpp:829
 #, kde-format
 msgid "argument separator"
 msgstr "សញ្ញា​បំបែក​អាគុយម៉ង"
 
-#: mainwindow.cpp:826
+#: mainwindow.cpp:833
 #, kde-format
 msgid "command"
 msgstr "ពាក្យ​បញ្ជា"
 
-#: mainwindow.cpp:829
+#: mainwindow.cpp:836
 #, kde-format
 msgid "controller command"
 msgstr "ពាក្យ​បញ្ជា​របស់​ឧបករណ៍​បញ្ជា"
 
-#: mainwindow.cpp:853
+#: mainwindow.cpp:860
 #, kde-format
 msgid "Could not change the language to %1."
 msgstr "មិនអាច​ប្ដូរ​ភាសា​ទៅ %1 បានទេ ។"
 
-#: mainwindow.cpp:860
+#: mainwindow.cpp:867
 #, kde-format
 msgid "English [built in]"
 msgstr "អង់គ្លេស [មាន​ស្រាប់]"
 
-#: mainwindow.cpp:861
+#: mainwindow.cpp:868
 #, kde-format
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: mainwindow.cpp:999
+#: mainwindow.cpp:1006
 #, kde-format
 msgid "untitled"
 msgstr "គ្មាន​ចំណង​ជើង"
 
-#: mainwindow.cpp:1041
+#: mainwindow.cpp:1048
 #, kde-format
 msgid "Save as Picture"
 msgstr "រក្សា​ទុក​រូបភាព​ជា"
 
-#: mainwindow.cpp:1041
+#: mainwindow.cpp:1048
 #, kde-format
 msgid "PNG Images"
 msgstr "រូបភាព PNG"
 
-#: mainwindow.cpp:1058
+#: mainwindow.cpp:1065
 #, fuzzy, kde-format
 #| msgid "Save as SVG"
 msgctxt "@title:window"
 msgid "Save as SVG"
 msgstr "រក្សា​ទុកជា SVG"
 
-#: mainwindow.cpp:1060
+#: mainwindow.cpp:1067
 #, kde-format
 msgid "Scalable Vector Graphics"
 msgstr "ក្រាហ្វិក​វ៉ិចទ័រ​ដែល​អាច​ធ្វើ​មាត្រដ្ឋាន​បាន"
 
-#: mainwindow.cpp:1071
+#: mainwindow.cpp:1078
 #, fuzzy, kde-format
 #| msgid "Save code as HTML"
 msgctxt "@title:window"
 msgid "Save code as HTML"
 msgstr "រក្សាទុក​កូដ​ជា HTML"
 
-#: mainwindow.cpp:1073
+#: mainwindow.cpp:1080
 #, kde-format
 msgid "HTML documents"
 msgstr "ឯកសារ HTML"
 
-#: mainwindow.cpp:1090
+#: mainwindow.cpp:1097
 #, kde-format
 msgid "Input"
 msgstr "បញ្ចូល"
 
-#: mainwindow.cpp:1099
+#: mainwindow.cpp:1106
 #, kde-format
 msgid "Message"
 msgstr "សារ"
 
-#: mainwindow.cpp:1106
+#: mainwindow.cpp:1113
 #, kde-format
 msgid "Choose Custom Icon"
 msgstr ""

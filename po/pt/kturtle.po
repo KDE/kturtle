@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-26 00:41+0000\n"
+"POT-Creation-Date: 2026-10-01 17:36+0000\n"
 "PO-Revision-Date: 2021-11-22 11:49+0000\n"
 "Last-Translator: Pedro Morais <morais@kde.org>\n"
 "Language-Team: pt <kde-i18n-pt@kde.org>\n"
@@ -205,23 +205,23 @@ msgstr "Direcção an&terior:"
 msgid "&New direction:"
 msgstr "&Nova direcção:"
 
-#: editor.cpp:142
+#: editor.cpp:138
 #, kde-format
 msgid "Open"
 msgstr "Abrir"
 
-#: editor.cpp:144 editor.cpp:255
+#: editor.cpp:140 editor.cpp:251
 #, kde-format
 msgid "Turtle code files"
 msgstr "Ficheiros de código do Turtle"
 
-#: editor.cpp:144 editor.cpp:255 mainwindow.cpp:1041 mainwindow.cpp:1060
-#: mainwindow.cpp:1073
+#: editor.cpp:140 editor.cpp:251 mainwindow.cpp:1048 mainwindow.cpp:1067
+#: mainwindow.cpp:1080
 #, kde-format
 msgid "All files"
 msgstr "Todos os ficheiros"
 
-#: editor.cpp:161
+#: editor.cpp:157
 #, kde-format
 msgid ""
 "The file you try to open is not a valid KTurtle script, or is incompatible "
@@ -232,17 +232,17 @@ msgstr ""
 "então é incompatível com esta versão do KTurtle.\n"
 "Não é possível abrir o %1"
 
-#: editor.cpp:230 editor.cpp:236
+#: editor.cpp:226 editor.cpp:232
 #, kde-format
 msgid "Could not save file."
 msgstr "Não foi possível gravar o ficheiro."
 
-#: editor.cpp:253
+#: editor.cpp:249
 #, kde-format
 msgid "Save As"
 msgstr "Gravar Como"
 
-#: editor.cpp:267
+#: editor.cpp:263
 #, kde-format
 msgid ""
 "The program you are currently working on is not saved. By continuing you may "
@@ -251,12 +251,12 @@ msgstr ""
 "As alterações que efectuou no ficheiro actual não foram gravadas. Se "
 "continuar irá perder todas as alterações efectuadas."
 
-#: editor.cpp:269
+#: editor.cpp:265
 #, kde-format
 msgid "Unsaved File"
 msgstr "Ficheiro Não Gravado"
 
-#: editor.cpp:270 editor.cpp:272
+#: editor.cpp:266 editor.cpp:268
 #, kde-format
 msgid "&Discard Changes"
 msgstr "Es&quecer as Alterações"
@@ -1487,13 +1487,13 @@ msgid "&Edit"
 msgstr "&Editar"
 
 #. i18n: ectx: Menu (canvas)
-#: kturtleui.rc:41 mainwindow.cpp:523 mainwindow.cpp:545
+#: kturtleui.rc:41 mainwindow.cpp:530 mainwindow.cpp:552
 #, kde-format
 msgid "&Canvas"
 msgstr "Área de &Desenho"
 
 #. i18n: ectx: Menu (run)
-#: kturtleui.rc:47 mainwindow.cpp:301 mainwindow.cpp:467
+#: kturtleui.rc:47 mainwindow.cpp:304 mainwindow.cpp:474
 #, kde-format
 msgid "&Run"
 msgstr "Executa&r"
@@ -1517,19 +1517,19 @@ msgid "&Settings"
 msgstr "&Configuração"
 
 #. i18n: ectx: Menu (language)
-#: kturtleui.rc:66
+#: kturtleui.rc:68
 #, kde-format
 msgid "&Script Language"
 msgstr "Linguagem de &Programação"
 
 #. i18n: ectx: Menu (help)
-#: kturtleui.rc:76
+#: kturtleui.rc:78
 #, kde-format
 msgid "&Help"
 msgstr "A&juda"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: kturtleui.rc:81
+#: kturtleui.rc:83
 #, kde-format
 msgid "Main Toolbar"
 msgstr "Barra Principal"
@@ -1629,294 +1629,294 @@ msgstr ""
 "Traduz o código da tartaruga em textos de exemplo em C++ (apenas para os "
 "programadores)"
 
-#: mainwindow.cpp:63
+#: mainwindow.cpp:66
 #, kde-format
 msgctxt "@info:status the application is ready for commands"
 msgid "Ready"
 msgstr "Pronto"
 
-#: mainwindow.cpp:177
+#: mainwindow.cpp:180
 #, kde-format
 msgid "Create a new file"
 msgstr "Criar um ficheiro novo"
 
-#: mainwindow.cpp:178
+#: mainwindow.cpp:181
 #, kde-format
 msgid "New File: Create a new file"
 msgstr "Novo Ficheiro: Criar um ficheiro novo"
 
-#: mainwindow.cpp:181
+#: mainwindow.cpp:184
 #, kde-format
 msgid "Open an existing file"
 msgstr "Abrir um ficheiro existente"
 
-#: mainwindow.cpp:182
+#: mainwindow.cpp:185
 #, kde-format
 msgid "Open File: Open an existing file"
 msgstr "Abrir um Ficheiro: Abrir um ficheiro existente"
 
-#: mainwindow.cpp:187
+#: mainwindow.cpp:190
 #, kde-format
 msgid "Open a recently used file"
 msgstr "Abrir um ficheiro usado recentemente"
 
-#: mainwindow.cpp:188
+#: mainwindow.cpp:191
 #, kde-format
 msgid "Open Recent File: Open a recently used file"
 msgstr "Abrir um Ficheiro Recente: Abrir um ficheiro usado recentemente"
 
-#: mainwindow.cpp:190
+#: mainwindow.cpp:193
 #, kde-format
 msgid "Get more examples..."
 msgstr "Obter mais exemplos..."
 
-#: mainwindow.cpp:199
+#: mainwindow.cpp:202
 #, kde-format
 msgid "Save the current file to disk"
 msgstr "Gravar o ficheiro actual em disco"
 
-#: mainwindow.cpp:200
+#: mainwindow.cpp:203
 #, kde-format
 msgid "Save File: Save the current file to disk"
 msgstr "Gravar o Ficheiro: Gravar o ficheiro actual em disco"
 
-#: mainwindow.cpp:204
+#: mainwindow.cpp:207
 #, kde-format
 msgid "Save the current file under a different name"
 msgstr "Gravar o ficheiro actual com um outro nome"
 
-#: mainwindow.cpp:205
+#: mainwindow.cpp:208
 #, kde-format
 msgid "Save File As: Save the current file under a different name"
 msgstr "Gravar o Ficheiro Como: Gravar o ficheiro actual com um outro nome"
 
-#: mainwindow.cpp:208
+#: mainwindow.cpp:211
 #, kde-format
 msgid "Export to &HTML..."
 msgstr "Exportar para &HTML..."
 
-#: mainwindow.cpp:209
+#: mainwindow.cpp:212
 #, kde-format
 msgid "Export the contents of the editor as HTML"
 msgstr "Exporta o conteúdo do editor como HTML"
 
-#: mainwindow.cpp:210
+#: mainwindow.cpp:213
 #, kde-format
 msgid "Export to HTML: Export the contents of the editor as HTML"
 msgstr "Exportar para HTML: Exporta o conteúdo do editor como HTML"
 
-#: mainwindow.cpp:214
+#: mainwindow.cpp:217
 #, kde-format
 msgid "Print the code"
 msgstr "Imprimir o código"
 
-#: mainwindow.cpp:215
+#: mainwindow.cpp:218
 #, kde-format
 msgid "Print: Print the code"
 msgstr "Imprimir: Imprimir o código"
 
-#: mainwindow.cpp:218
+#: mainwindow.cpp:221
 #, kde-format
 msgid "Quit KTurtle"
 msgstr "Sair do KTurtle"
 
-#: mainwindow.cpp:219
+#: mainwindow.cpp:222
 #, kde-format
 msgid "Quit: Quit KTurtle"
 msgstr "Sair: Sair do KTurtle"
 
-#: mainwindow.cpp:223
+#: mainwindow.cpp:226
 #, kde-format
 msgid "Undo a change in the editor"
 msgstr "Anula uma alteração no editor"
 
-#: mainwindow.cpp:224
+#: mainwindow.cpp:227
 #, kde-format
 msgid "Undo: Undo a change in the editor"
 msgstr "Desfazer: Anula uma alteração no editor"
 
-#: mainwindow.cpp:229
+#: mainwindow.cpp:232
 #, kde-format
 msgid "Redo a previously undone change in the editor"
 msgstr "Repete uma alteração anulada previamente no editor"
 
-#: mainwindow.cpp:230
+#: mainwindow.cpp:233
 #, kde-format
 msgid "Redo: Redo a previously undone change in the editor"
 msgstr "Refazer: Repete uma alteração anulada previamente no editor"
 
-#: mainwindow.cpp:235
+#: mainwindow.cpp:238
 #, kde-format
 msgid "Cut the selected text to the clipboard"
 msgstr "Cortar o texto seleccionado para a área de transferência"
 
-#: mainwindow.cpp:236
+#: mainwindow.cpp:239
 #, kde-format
 msgid "Cut: Cut the selected text to the clipboard"
 msgstr "Cortar: Cortar o texto seleccionado para a área de transferência"
 
-#: mainwindow.cpp:241
+#: mainwindow.cpp:244
 #, kde-format
 msgid "Copy the selected text to the clipboard"
 msgstr "Copiar o texto seleccionado para a área de transferência"
 
-#: mainwindow.cpp:242
+#: mainwindow.cpp:245
 #, kde-format
 msgid "Copy: Copy the selected text to the clipboard"
 msgstr "Copiar: Copiar o texto seleccionado para a área de transferência"
 
-#: mainwindow.cpp:247
+#: mainwindow.cpp:250
 #, kde-format
 msgid "Paste the clipboard's content into the current selection"
 msgstr "Colar o conteúdo da área de transferência para o texto seleccionado"
 
-#: mainwindow.cpp:248
+#: mainwindow.cpp:251
 #, kde-format
 msgid "Paste: Paste the clipboard's content into the current selection"
 msgstr ""
 "Colar: Colar o conteúdo da área de transferência para o texto seleccionado"
 
-#: mainwindow.cpp:251
+#: mainwindow.cpp:254
 #, kde-format
 msgid "Select all the code in the editor"
 msgstr "Seleccionar todo o código no editor"
 
-#: mainwindow.cpp:252
+#: mainwindow.cpp:255
 #, kde-format
 msgid "Select All: Select all the code in the editor"
 msgstr "Seleccionar Tudo: Seleccionar todo o código no editor"
 
-#: mainwindow.cpp:255
+#: mainwindow.cpp:258
 #, kde-format
 msgid "Overwrite Mode"
 msgstr "Modo de Sobreposição"
 
-#: mainwindow.cpp:257
+#: mainwindow.cpp:260
 #, kde-format
 msgid "Toggle between the 'insert' and 'overwrite' mode"
 msgstr "Comuta entre o modo de 'inserção' e 'sobreposição'"
 
-#: mainwindow.cpp:258
+#: mainwindow.cpp:261
 #, kde-format
 msgid "Overwrite Mode: Toggle between the 'insert' and 'overwrite' mode"
 msgstr ""
 "Modo de Sobreposição: Comuta entre o modo de 'inserção' e 'sobreposição'"
 
-#: mainwindow.cpp:265
+#: mainwindow.cpp:268
 #, kde-format
 msgid "Search through the code in the editor"
 msgstr "Procurar pelo código no editor"
 
-#: mainwindow.cpp:266
+#: mainwindow.cpp:269
 #, kde-format
 msgid "Find: Search through the code in the editor"
 msgstr "Procurar: Procurar pelo código no editor"
 
-#: mainwindow.cpp:269
+#: mainwindow.cpp:272
 #, kde-format
 msgid "Continue searching through the code in the editor"
 msgstr "Continuar a pesquisa pelo código no editor"
 
-#: mainwindow.cpp:270
+#: mainwindow.cpp:273
 #, kde-format
 msgid "Find Next: Continue searching through the code in the editor"
 msgstr "Procurar o Seguinte: Continuar a pesquisa pelo código no editor"
 
-#: mainwindow.cpp:273
+#: mainwindow.cpp:276
 #, kde-format
 msgid "Continue searching backwards through the code in the editor"
 msgstr "Continuar a pesquisa para trás pelo código no editor"
 
-#: mainwindow.cpp:274
+#: mainwindow.cpp:277
 #, kde-format
 msgid ""
 "Find Previous: Continue searching backwards through the code in the editor"
 msgstr "Procurar o Anterior: Procurar para trás pelo código no editor"
 
-#: mainwindow.cpp:283
+#: mainwindow.cpp:286
 #, kde-format
 msgid "Export to &Image (PNG)..."
 msgstr "Exportar para &Imagem (PNG)..."
 
-#: mainwindow.cpp:284
+#: mainwindow.cpp:287
 #, kde-format
 msgid "Export the current canvas to a PNG raster image"
 msgstr "Exportar a área de desenho actual para uma imagem PNG"
 
-#: mainwindow.cpp:285
+#: mainwindow.cpp:288
 #, kde-format
 msgid "Export to PNG: Export the current canvas to a PNG raster image"
 msgstr ""
 "Exportar para PNG: Exporta a área de desenho actual para uma imagem PNG"
 
-#: mainwindow.cpp:289
+#: mainwindow.cpp:292
 #, kde-format
 msgid "Export to &Drawing (SVG)..."
 msgstr "Exportar para &Desenho (SVG)..."
 
-#: mainwindow.cpp:290
+#: mainwindow.cpp:293
 #, kde-format
 msgid "Export the current canvas to Scalable Vector Graphics"
 msgstr "Exportar a área de desenho actual para uma imagem SVG (vectorial)"
 
-#: mainwindow.cpp:291
+#: mainwindow.cpp:294
 #, kde-format
 msgid "Export to SVG: Export the current canvas to Scalable Vector Graphics"
 msgstr ""
 "Exportar para SVG: Exporta a área de desenho actual para uma imagem SVG "
 "(vectorial)"
 
-#: mainwindow.cpp:294
+#: mainwindow.cpp:297
 #, kde-format
 msgid "&Print Canvas..."
 msgstr "Im&primir a Área de Desenho..."
 
-#: mainwindow.cpp:296
+#: mainwindow.cpp:299
 #, kde-format
 msgid "Print the canvas"
 msgstr "Imprimir a área de desenho"
 
-#: mainwindow.cpp:297
+#: mainwindow.cpp:300
 #, kde-format
 msgid "Print: Print the canvas"
 msgstr "Imprimir: Imprimir a área de desenho"
 
-#: mainwindow.cpp:304
+#: mainwindow.cpp:307
 #, kde-format
 msgid "Execute the program"
 msgstr "Executar o programa"
 
-#: mainwindow.cpp:305
+#: mainwindow.cpp:308
 #, kde-format
 msgid "Run: Execute the program"
 msgstr "Executar: Corre o programa"
 
-#: mainwindow.cpp:308
+#: mainwindow.cpp:311
 #, kde-format
 msgid "&Pause"
 msgstr "&Pausa"
 
-#: mainwindow.cpp:312
+#: mainwindow.cpp:315
 #, kde-format
 msgid "Pause execution"
 msgstr "Pausar a execução"
 
-#: mainwindow.cpp:313
+#: mainwindow.cpp:316
 #, kde-format
 msgid "Pause: Pause execution"
 msgstr "Pausa: Pausar a execução"
 
-#: mainwindow.cpp:316
+#: mainwindow.cpp:319
 #, kde-format
 msgid "&Abort"
 msgstr "&Interromper"
 
-#: mainwindow.cpp:319
+#: mainwindow.cpp:322
 #, kde-format
 msgid "Stop executing program"
 msgstr "Parar a execução do programa"
 
-#: mainwindow.cpp:320
+#: mainwindow.cpp:323
 #, kde-format
 msgid "Abort: Stop executing program"
 msgstr "Interromper: Parar a execução do programa"
@@ -1927,59 +1927,59 @@ msgstr "Interromper: Parar a execução do programa"
 #. i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
 #. i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
 #. Tools menu actions
-#: mainwindow.cpp:330
+#: mainwindow.cpp:333
 #, kde-format
 msgid "&Direction Chooser..."
 msgstr "Selector da &Direcção..."
 
-#: mainwindow.cpp:332
+#: mainwindow.cpp:335
 #, kde-format
 msgid "Shows the direction chooser dialog"
 msgstr "Mostra a janela de selecção da direcção"
 
-#: mainwindow.cpp:333
+#: mainwindow.cpp:336
 #, kde-format
 msgid "Direction Chooser: Show the direction chooser dialog"
 msgstr "Selector da Direcção: Mostra a janela de selecção da direcção"
 
-#: mainwindow.cpp:336
+#: mainwindow.cpp:339
 #, kde-format
 msgid "&Color Picker..."
 msgstr "Selector de &Cores..."
 
-#: mainwindow.cpp:338
+#: mainwindow.cpp:341
 #, kde-format
 msgid "Shows the color picker dialog"
 msgstr "Mostra a janela de selecção de cores"
 
-#: mainwindow.cpp:339
+#: mainwindow.cpp:342
 #, kde-format
 msgid "Color Picker: Show the color picker dialog"
 msgstr "Selector de Cores: Mostra a janela de selecção de cores"
 
-#: mainwindow.cpp:343
+#: mainwindow.cpp:346
 #, fuzzy, kde-format
 #| msgid "KTurtle"
 msgid "kturtle"
 msgstr "KTurtle"
 
-#: mainwindow.cpp:351
+#: mainwindow.cpp:354
 #, kde-format
 msgid "kturtle gray"
 msgstr ""
 
-#: mainwindow.cpp:358
+#: mainwindow.cpp:361
 #, fuzzy, kde-format
 #| msgid "KTurtle"
 msgid "turtle"
 msgstr "KTurtle"
 
-#: mainwindow.cpp:365
+#: mainwindow.cpp:368
 #, kde-format
 msgid "crab"
 msgstr ""
 
-#: mainwindow.cpp:372
+#: mainwindow.cpp:375
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'And' COMMAND, there are some rules on how "
@@ -1989,63 +1989,63 @@ msgstr ""
 msgid "ant"
 msgstr "e"
 
-#: mainwindow.cpp:379
+#: mainwindow.cpp:382
 #, fuzzy, kde-format
 #| msgid "Open"
 msgid "pen"
 msgstr "Abrir"
 
-#: mainwindow.cpp:386
+#: mainwindow.cpp:389
 #, kde-format
 msgid "Choose Custom Icon…"
 msgstr ""
 
-#: mainwindow.cpp:388 mainwindow.cpp:389
+#: mainwindow.cpp:391 mainwindow.cpp:392
 #, kde-format
 msgid "Choose an Icon for the turtle"
 msgstr ""
 
-#: mainwindow.cpp:393
+#: mainwindow.cpp:400
 #, kde-format
 msgid "Show &Editor"
 msgstr "Mostrar o &Editor"
 
-#: mainwindow.cpp:395
+#: mainwindow.cpp:402
 #, kde-format
 msgid "Show or hide the Code Editor"
 msgstr "Mostra ou esconde o Editor de Código"
 
-#: mainwindow.cpp:396
+#: mainwindow.cpp:403
 #, kde-format
 msgid "Show Code Editor: Show or hide the Code Editor"
 msgstr "Mostrar o Editor de Código: Mostra ou esconde o Editor de Código"
 
-#: mainwindow.cpp:403
+#: mainwindow.cpp:410
 #, kde-format
 msgid "Show &Inspector"
 msgstr "Mostrar o &Inspector"
 
-#: mainwindow.cpp:405
+#: mainwindow.cpp:412
 #, kde-format
 msgid "Show or hide the Inspector"
 msgstr "Mostra ou esconde o Inspector"
 
-#: mainwindow.cpp:406
+#: mainwindow.cpp:413
 #, kde-format
 msgid "Show Inspector: Show or hide the Inspector"
 msgstr "Mostrar o Inspector: Mostra ou esconde o Inspector"
 
-#: mainwindow.cpp:413
+#: mainwindow.cpp:420
 #, kde-format
 msgid "Show E&rrors"
 msgstr "Mostrar os E&rros"
 
-#: mainwindow.cpp:415
+#: mainwindow.cpp:422
 #, kde-format
 msgid "Show or hide the Errors tab"
 msgstr "Mostrar ou esconder a página de Erros"
 
-#: mainwindow.cpp:416
+#: mainwindow.cpp:423
 #, kde-format
 msgid "Show Errors: Show or hide the Errors tab"
 msgstr "Mostrar os Erros: Mostrar ou esconder a página de Erros"
@@ -2058,64 +2058,64 @@ msgstr "Mostrar os Erros: Mostrar ou esconder a página de Erros"
 #. a->setChecked(false);
 #. connect(a, SIGNAL(toggled(bool)), consoleDock, SLOT(setVisible(bool)));
 #. connect(consoleDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
-#: mainwindow.cpp:430
+#: mainwindow.cpp:437
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "Mostrar os Números de &Linha"
 
-#: mainwindow.cpp:432
+#: mainwindow.cpp:439
 #, kde-format
 msgid "Turn the line numbers on/off in the editor"
 msgstr "Activar/desactivar os números de linha no editor"
 
-#: mainwindow.cpp:433
+#: mainwindow.cpp:440
 #, kde-format
 msgid "Show Line Numbers: Turn the line numbers on/off in the editor"
 msgstr ""
 "Mostrar os Números de Linha: Activar/desactivar os números de linha no editor"
 
-#: mainwindow.cpp:444
+#: mainwindow.cpp:451
 #, kde-format
 msgid "Get help on the command under the cursor"
 msgstr "Obtém ajuda sobre o comando debaixo do cursor"
 
-#: mainwindow.cpp:445
+#: mainwindow.cpp:452
 #, kde-format
 msgid "Context Help: Get help on the command under the cursor"
 msgstr "Ajuda de Contexto: Obtém ajuda sobre o comando debaixo do cursor"
 
-#: mainwindow.cpp:450
+#: mainwindow.cpp:457
 #, kde-format
 msgid "Help"
 msgstr "Ajuda"
 
-#: mainwindow.cpp:451
+#: mainwindow.cpp:458
 #, kde-format
 msgid "Help: Open manual for KTurtle"
 msgstr "Ajuda: Abrir o manual do KTurtle"
 
-#: mainwindow.cpp:455
+#: mainwindow.cpp:462
 #, kde-format
 msgid "Console"
 msgstr "Consola"
 
-#: mainwindow.cpp:462
+#: mainwindow.cpp:469
 #, kde-format
 msgid "Execute"
 msgstr "Executar"
 
-#: mainwindow.cpp:464
+#: mainwindow.cpp:471
 #, kde-format
 msgid "Execute: Executes the current line in the console"
 msgstr "Executar: Executa a linha actual na consola"
 
-#: mainwindow.cpp:472
+#: mainwindow.cpp:479
 #, kde-format
 msgid "Execute the program, or use the drop down menu to select the run speed"
 msgstr ""
 "Execute o programa ou use a lista para seleccionar a velocidade de execução"
 
-#: mainwindow.cpp:473
+#: mainwindow.cpp:480
 #, kde-format
 msgid ""
 "Run: Execute the program, or use the drop down menu to select the run speed"
@@ -2123,28 +2123,28 @@ msgstr ""
 "Executar: Execute o programa ou use a lista para seleccionar a velocidade de "
 "execução"
 
-#: mainwindow.cpp:495
+#: mainwindow.cpp:502
 #, kde-format
 msgid "Set the execution speed"
 msgstr ""
 
-#: mainwindow.cpp:498
+#: mainwindow.cpp:505
 #, kde-format
 msgctxt "@option:radio"
 msgid "S&tep-by-Step"
 msgstr "&Passo-a-Passo"
 
-#: mainwindow.cpp:501
+#: mainwindow.cpp:508
 #, kde-format
 msgid "Run the program one step at a time"
 msgstr "Correr o programa um passo de cada vez"
 
-#: mainwindow.cpp:502
+#: mainwindow.cpp:509
 #, kde-format
 msgid "Step Speed: Run the program one step at a time"
 msgstr "Passo-a-Passo: Correr o programa um passo de cada vez"
 
-#: mainwindow.cpp:520
+#: mainwindow.cpp:527
 #, kde-format
 msgid ""
 "Canvas: This is where the turtle moves and draws when the program is running"
@@ -2152,27 +2152,27 @@ msgstr ""
 "Área de Trabalho: Aqui é onde a tartaruga se desloca e desenha quando o "
 "programa está em execução"
 
-#: mainwindow.cpp:529
+#: mainwindow.cpp:536
 #, kde-format
 msgid "E&rrors"
 msgstr "E&rros"
 
-#: mainwindow.cpp:558
+#: mainwindow.cpp:565
 #, kde-format
 msgid "&Editor"
 msgstr "&Editor"
 
-#: mainwindow.cpp:572
+#: mainwindow.cpp:579
 #, kde-format
 msgid "Editor: Write your KTurtle commands here"
 msgstr "Editor: Escreva aqui os seus programas no KTurtle"
 
-#: mainwindow.cpp:575
+#: mainwindow.cpp:582
 #, kde-format
 msgid "&Inspector"
 msgstr "&Inspector"
 
-#: mainwindow.cpp:585
+#: mainwindow.cpp:592
 #, kde-format
 msgid ""
 "Inspector: See information about variables and functions when the program "
@@ -2181,174 +2181,174 @@ msgstr ""
 "Inspector: Veja a informação acerca das variáveis e funções quando o "
 "programa se executa"
 
-#: mainwindow.cpp:676
+#: mainwindow.cpp:683
 #, kde-format
 msgid "Switch to the %1 dictionary"
 msgstr "Mudar para o dicionário %1"
 
-#: mainwindow.cpp:755
+#: mainwindow.cpp:762
 #, kde-format
 msgid " OVR "
 msgstr " SOB "
 
-#: mainwindow.cpp:755
+#: mainwindow.cpp:762
 #, kde-format
 msgid " INS "
 msgstr " INS "
 
-#: mainwindow.cpp:763
+#: mainwindow.cpp:770
 #, kde-format
 msgid "<nothing under cursor>"
 msgstr "<nada sob o cursor>"
 
-#: mainwindow.cpp:764
+#: mainwindow.cpp:771
 #, kde-format
 msgid "Help on: %1"
 msgstr "Ajuda em: %1"
 
-#: mainwindow.cpp:769
+#: mainwindow.cpp:776
 #, kde-format
 msgid " Line: %1 Column: %2 "
 msgstr " Linha: %1 Coluna: %2 "
 
-#: mainwindow.cpp:777
+#: mainwindow.cpp:784
 #, kde-format
 msgid "\"%1\" <%2>"
 msgstr "\"%1\" <%2>"
 
-#: mainwindow.cpp:781
+#: mainwindow.cpp:788
 #, kde-format
 msgid "<variable>"
 msgstr "<variável>"
 
-#: mainwindow.cpp:784
+#: mainwindow.cpp:791
 #, kde-format
 msgid "<number>"
 msgstr "<número>"
 
-#: mainwindow.cpp:787
+#: mainwindow.cpp:794
 #, kde-format
 msgid "<comment>"
 msgstr "<comentário>"
 
-#: mainwindow.cpp:790
+#: mainwindow.cpp:797
 #, kde-format
 msgid "<string>"
 msgstr "<texto>"
 
-#: mainwindow.cpp:801
+#: mainwindow.cpp:808
 #, kde-format
 msgid "scope"
 msgstr "âmbito"
 
-#: mainwindow.cpp:804
+#: mainwindow.cpp:811
 #, kde-format
 msgid "assignment"
 msgstr "atribuição"
 
-#: mainwindow.cpp:807
+#: mainwindow.cpp:814
 #, kde-format
 msgid "parenthesis"
 msgstr "parêntesis"
 
-#: mainwindow.cpp:810
+#: mainwindow.cpp:817
 #, kde-format
 msgid "mathematical operator"
 msgstr "operador matemático"
 
-#: mainwindow.cpp:813
+#: mainwindow.cpp:820
 #, kde-format
 msgid "expression"
 msgstr "expressão"
 
-#: mainwindow.cpp:816
+#: mainwindow.cpp:823
 #, kde-format
 msgid "boolean operator"
 msgstr "operador booleano"
 
-#: mainwindow.cpp:819
+#: mainwindow.cpp:826
 #, kde-format
 msgid "learned command"
 msgstr "comando aprendido"
 
-#: mainwindow.cpp:822
+#: mainwindow.cpp:829
 #, kde-format
 msgid "argument separator"
 msgstr "separador dos argumentos"
 
-#: mainwindow.cpp:826
+#: mainwindow.cpp:833
 #, kde-format
 msgid "command"
 msgstr "comando"
 
-#: mainwindow.cpp:829
+#: mainwindow.cpp:836
 #, kde-format
 msgid "controller command"
 msgstr "comando do controlador"
 
-#: mainwindow.cpp:853
+#: mainwindow.cpp:860
 #, kde-format
 msgid "Could not change the language to %1."
 msgstr "Não foi possível mudar a língua para %1."
 
-#: mainwindow.cpp:860
+#: mainwindow.cpp:867
 #, kde-format
 msgid "English [built in]"
 msgstr "Inglês [incorporado]"
 
-#: mainwindow.cpp:861
+#: mainwindow.cpp:868
 #, kde-format
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: mainwindow.cpp:999
+#: mainwindow.cpp:1006
 #, kde-format
 msgid "untitled"
 msgstr "sem título"
 
-#: mainwindow.cpp:1041
+#: mainwindow.cpp:1048
 #, kde-format
 msgid "Save as Picture"
 msgstr "Gravar como Imagem"
 
-#: mainwindow.cpp:1041
+#: mainwindow.cpp:1048
 #, kde-format
 msgid "PNG Images"
 msgstr "Imagens PNG"
 
-#: mainwindow.cpp:1058
+#: mainwindow.cpp:1065
 #, kde-format
 msgctxt "@title:window"
 msgid "Save as SVG"
 msgstr "Gravar como SVG"
 
-#: mainwindow.cpp:1060
+#: mainwindow.cpp:1067
 #, kde-format
 msgid "Scalable Vector Graphics"
 msgstr "Gráficos Vectoriais Escaláveis"
 
-#: mainwindow.cpp:1071
+#: mainwindow.cpp:1078
 #, kde-format
 msgctxt "@title:window"
 msgid "Save code as HTML"
 msgstr "Gravar o código como HTML"
 
-#: mainwindow.cpp:1073
+#: mainwindow.cpp:1080
 #, kde-format
 msgid "HTML documents"
 msgstr "Documentos em HTML"
 
-#: mainwindow.cpp:1090
+#: mainwindow.cpp:1097
 #, kde-format
 msgid "Input"
 msgstr "Entrada"
 
-#: mainwindow.cpp:1099
+#: mainwindow.cpp:1106
 #, kde-format
 msgid "Message"
 msgstr "Mensagem"
 
-#: mainwindow.cpp:1106
+#: mainwindow.cpp:1113
 #, kde-format
 msgid "Choose Custom Icon"
 msgstr ""

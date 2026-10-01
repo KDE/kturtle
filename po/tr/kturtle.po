@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeedu-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-26 00:41+0000\n"
+"POT-Creation-Date: 2026-10-01 17:36+0000\n"
 "PO-Revision-Date: 2026-09-30 10:15+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -205,23 +205,23 @@ msgstr "&Önceki yön:"
 msgid "&New direction:"
 msgstr "&Yeni yön:"
 
-#: editor.cpp:142
+#: editor.cpp:138
 #, kde-format
 msgid "Open"
 msgstr "Aç"
 
-#: editor.cpp:144 editor.cpp:255
+#: editor.cpp:140 editor.cpp:251
 #, kde-format
 msgid "Turtle code files"
 msgstr "TuntleScript kod dosyaları"
 
-#: editor.cpp:144 editor.cpp:255 mainwindow.cpp:1041 mainwindow.cpp:1060
-#: mainwindow.cpp:1073
+#: editor.cpp:140 editor.cpp:251 mainwindow.cpp:1048 mainwindow.cpp:1067
+#: mainwindow.cpp:1080
 #, kde-format
 msgid "All files"
 msgstr "Tüm dosyalar"
 
-#: editor.cpp:161
+#: editor.cpp:157
 #, kde-format
 msgid ""
 "The file you try to open is not a valid KTurtle script, or is incompatible "
@@ -232,17 +232,17 @@ msgstr ""
 "Tosbağa’nın bu sürümüyle uyumlu değil.\n"
 "%1 açılamıyor."
 
-#: editor.cpp:230 editor.cpp:236
+#: editor.cpp:226 editor.cpp:232
 #, kde-format
 msgid "Could not save file."
 msgstr "Dosya kaydedilemedi."
 
-#: editor.cpp:253
+#: editor.cpp:249
 #, kde-format
 msgid "Save As"
 msgstr "Farklı Kaydet"
 
-#: editor.cpp:267
+#: editor.cpp:263
 #, kde-format
 msgid ""
 "The program you are currently working on is not saved. By continuing you may "
@@ -251,12 +251,12 @@ msgstr ""
 "Şu anda üzerinde çalıştığınız program kaydedilmedi. Sürdürürseniz yaptığınız "
 "değişiklikleri kaybedeceksiniz."
 
-#: editor.cpp:269
+#: editor.cpp:265
 #, kde-format
 msgid "Unsaved File"
 msgstr "Kaydedilmemiş Dosya"
 
-#: editor.cpp:270 editor.cpp:272
+#: editor.cpp:266 editor.cpp:268
 #, kde-format
 msgid "&Discard Changes"
 msgstr "&Değişiklikleri Sil"
@@ -1489,13 +1489,13 @@ msgid "&Edit"
 msgstr "Dü&zen"
 
 #. i18n: ectx: Menu (canvas)
-#: kturtleui.rc:41 mainwindow.cpp:523 mainwindow.cpp:545
+#: kturtleui.rc:41 mainwindow.cpp:530 mainwindow.cpp:552
 #, kde-format
 msgid "&Canvas"
 msgstr "&Tuval"
 
 #. i18n: ectx: Menu (run)
-#: kturtleui.rc:47 mainwindow.cpp:301 mainwindow.cpp:467
+#: kturtleui.rc:47 mainwindow.cpp:304 mainwindow.cpp:474
 #, kde-format
 msgid "&Run"
 msgstr "&Çalıştır"
@@ -1519,19 +1519,19 @@ msgid "&Settings"
 msgstr "Ayar&lar"
 
 #. i18n: ectx: Menu (language)
-#: kturtleui.rc:66
+#: kturtleui.rc:68
 #, kde-format
 msgid "&Script Language"
 msgstr "&Betik Dili"
 
 #. i18n: ectx: Menu (help)
-#: kturtleui.rc:76
+#: kturtleui.rc:78
 #, kde-format
 msgid "&Help"
 msgstr "&Yardım"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: kturtleui.rc:81
+#: kturtleui.rc:83
 #, kde-format
 msgid "Main Toolbar"
 msgstr "Ana Araç Çubuğu"
@@ -1630,293 +1630,293 @@ msgstr ""
 "K Tosbağa kodunu gömülü C++ örnek dizilerine dönüştürür (yalnızca "
 "geliştiriciler için)"
 
-#: mainwindow.cpp:63
+#: mainwindow.cpp:66
 #, kde-format
 msgctxt "@info:status the application is ready for commands"
 msgid "Ready"
 msgstr "Hazır"
 
-#: mainwindow.cpp:177
+#: mainwindow.cpp:180
 #, kde-format
 msgid "Create a new file"
 msgstr "Yeni bir dosya oluştur"
 
-#: mainwindow.cpp:178
+#: mainwindow.cpp:181
 #, kde-format
 msgid "New File: Create a new file"
 msgstr "Yeni dosya: Yeni bir dosya oluştur"
 
-#: mainwindow.cpp:181
+#: mainwindow.cpp:184
 #, kde-format
 msgid "Open an existing file"
 msgstr "Var olan bir dosyayı aç"
 
-#: mainwindow.cpp:182
+#: mainwindow.cpp:185
 #, kde-format
 msgid "Open File: Open an existing file"
 msgstr "Dosya aç: Var olan bir dosyayı aç"
 
-#: mainwindow.cpp:187
+#: mainwindow.cpp:190
 #, kde-format
 msgid "Open a recently used file"
 msgstr "Güncel kullanılan bir dosya aç"
 
-#: mainwindow.cpp:188
+#: mainwindow.cpp:191
 #, kde-format
 msgid "Open Recent File: Open a recently used file"
 msgstr "Son kullanılan dosyayı aç: Son kullanılan bir dosyayı aç"
 
-#: mainwindow.cpp:190
+#: mainwindow.cpp:193
 #, kde-format
 msgid "Get more examples..."
 msgstr "Daha çok örnek indir…"
 
-#: mainwindow.cpp:199
+#: mainwindow.cpp:202
 #, kde-format
 msgid "Save the current file to disk"
 msgstr "Geçerli dosyayı diske kaydet"
 
-#: mainwindow.cpp:200
+#: mainwindow.cpp:203
 #, kde-format
 msgid "Save File: Save the current file to disk"
 msgstr "Dosyayı kaydet: Kullanılan dosyayı diske kaydet"
 
-#: mainwindow.cpp:204
+#: mainwindow.cpp:207
 #, kde-format
 msgid "Save the current file under a different name"
 msgstr "Geçerli dosyayı farklı bir adla kaydet"
 
-#: mainwindow.cpp:205
+#: mainwindow.cpp:208
 #, kde-format
 msgid "Save File As: Save the current file under a different name"
 msgstr "Dosyayı farklı kaydet: Kullanılan dosyayı farklı bir adla kaydet"
 
-#: mainwindow.cpp:208
+#: mainwindow.cpp:211
 #, kde-format
 msgid "Export to &HTML..."
 msgstr "&HTML Olarak Dışa Aktar…"
 
-#: mainwindow.cpp:209
+#: mainwindow.cpp:212
 #, kde-format
 msgid "Export the contents of the editor as HTML"
 msgstr "Düzenleyicinin içeriğini HTML olarak dışa aktar"
 
-#: mainwindow.cpp:210
+#: mainwindow.cpp:213
 #, kde-format
 msgid "Export to HTML: Export the contents of the editor as HTML"
 msgstr ""
 "HTML olarak dışa aktar: Düzenleyicinin içeriğini HTML olarak dışa aktar"
 
-#: mainwindow.cpp:214
+#: mainwindow.cpp:217
 #, kde-format
 msgid "Print the code"
 msgstr "Kodları yazdır"
 
-#: mainwindow.cpp:215
+#: mainwindow.cpp:218
 #, kde-format
 msgid "Print: Print the code"
 msgstr "Yazdır: Kodları yazdır"
 
-#: mainwindow.cpp:218
+#: mainwindow.cpp:221
 #, kde-format
 msgid "Quit KTurtle"
 msgstr "K Tosbağa Uygulamasından Çık"
 
-#: mainwindow.cpp:219
+#: mainwindow.cpp:222
 #, kde-format
 msgid "Quit: Quit KTurtle"
 msgstr "Çık: K Tosbağa Uygulamasından Çık"
 
-#: mainwindow.cpp:223
+#: mainwindow.cpp:226
 #, kde-format
 msgid "Undo a change in the editor"
 msgstr "Düzenleyicideki bir değişikliği geri al"
 
-#: mainwindow.cpp:224
+#: mainwindow.cpp:227
 #, kde-format
 msgid "Undo: Undo a change in the editor"
 msgstr "Geri al: Düzenleyicideki bir değişikliği geri al"
 
-#: mainwindow.cpp:229
+#: mainwindow.cpp:232
 #, kde-format
 msgid "Redo a previously undone change in the editor"
 msgstr "Düzenleyicide geri alınan bir değişikliği yeniden yap"
 
-#: mainwindow.cpp:230
+#: mainwindow.cpp:233
 #, kde-format
 msgid "Redo: Redo a previously undone change in the editor"
 msgstr "Yeniden yap: Düzenleyicide geri alınan bir değişikliği yeniden yap"
 
-#: mainwindow.cpp:235
+#: mainwindow.cpp:238
 #, kde-format
 msgid "Cut the selected text to the clipboard"
 msgstr "Seçili metni kes ve panoya yerleştir"
 
-#: mainwindow.cpp:236
+#: mainwindow.cpp:239
 #, kde-format
 msgid "Cut: Cut the selected text to the clipboard"
 msgstr "Kes: Seçili metni kes ve panoya yerleştir"
 
-#: mainwindow.cpp:241
+#: mainwindow.cpp:244
 #, kde-format
 msgid "Copy the selected text to the clipboard"
 msgstr "Seçili metni panoya kopyala"
 
-#: mainwindow.cpp:242
+#: mainwindow.cpp:245
 #, kde-format
 msgid "Copy: Copy the selected text to the clipboard"
 msgstr "Kopyala: Seçili metni panoya kopyala"
 
-#: mainwindow.cpp:247
+#: mainwindow.cpp:250
 #, kde-format
 msgid "Paste the clipboard's content into the current selection"
 msgstr "Pano içeriğini mevcut seçime yapıştırır"
 
-#: mainwindow.cpp:248
+#: mainwindow.cpp:251
 #, kde-format
 msgid "Paste: Paste the clipboard's content into the current selection"
 msgstr "Yapıştır: Pano içeriğini mevcut seçime yapıştırır"
 
-#: mainwindow.cpp:251
+#: mainwindow.cpp:254
 #, kde-format
 msgid "Select all the code in the editor"
 msgstr "Düzenleyici içindeki bütün kodu seç"
 
-#: mainwindow.cpp:252
+#: mainwindow.cpp:255
 #, kde-format
 msgid "Select All: Select all the code in the editor"
 msgstr "Tümünü seç: Düzenleyici içindeki bütün kodu seç"
 
-#: mainwindow.cpp:255
+#: mainwindow.cpp:258
 #, kde-format
 msgid "Overwrite Mode"
 msgstr "Üzerine Yazma Kipi"
 
-#: mainwindow.cpp:257
+#: mainwindow.cpp:260
 #, kde-format
 msgid "Toggle between the 'insert' and 'overwrite' mode"
 msgstr "“Ekle” ve “Üzerine Yaz” kipleri arasında geçiş yap"
 
-#: mainwindow.cpp:258
+#: mainwindow.cpp:261
 #, kde-format
 msgid "Overwrite Mode: Toggle between the 'insert' and 'overwrite' mode"
 msgstr "Üzerine yazma kipi: “Ekle” ve “Üzerine Yaz” kipleri arasında geçiş yap"
 
-#: mainwindow.cpp:265
+#: mainwindow.cpp:268
 #, kde-format
 msgid "Search through the code in the editor"
 msgstr "Düzenleyicideki kodda arama yap"
 
-#: mainwindow.cpp:266
+#: mainwindow.cpp:269
 #, kde-format
 msgid "Find: Search through the code in the editor"
 msgstr "Bul: Düzenleyicideki kodda arama yap"
 
-#: mainwindow.cpp:269
+#: mainwindow.cpp:272
 #, kde-format
 msgid "Continue searching through the code in the editor"
 msgstr "Düzenleyicideki kodda aramayı sürdür"
 
-#: mainwindow.cpp:270
+#: mainwindow.cpp:273
 #, kde-format
 msgid "Find Next: Continue searching through the code in the editor"
 msgstr "Sonrakini bul: Düzenleyicideki kodda aramayı sürdür"
 
-#: mainwindow.cpp:273
+#: mainwindow.cpp:276
 #, kde-format
 msgid "Continue searching backwards through the code in the editor"
 msgstr "Düzenleyicideki kodda geriye doğru aramayı sürdür"
 
-#: mainwindow.cpp:274
+#: mainwindow.cpp:277
 #, kde-format
 msgid ""
 "Find Previous: Continue searching backwards through the code in the editor"
 msgstr "Öncekini bul: Düzenleyicideki kodda geriye doğru aramayı sürdür"
 
-#: mainwindow.cpp:283
+#: mainwindow.cpp:286
 #, kde-format
 msgid "Export to &Image (PNG)..."
 msgstr "Gö&rsel Olarak Dışa Aktar (PNG)…"
 
-#: mainwindow.cpp:284
+#: mainwindow.cpp:287
 #, kde-format
 msgid "Export the current canvas to a PNG raster image"
 msgstr "Geçerli tuvali bir PNG görseli olarak kaydet"
 
-#: mainwindow.cpp:285
+#: mainwindow.cpp:288
 #, kde-format
 msgid "Export to PNG: Export the current canvas to a PNG raster image"
 msgstr ""
 "PNG olarak dışa aktar: Geçerli tuvali bir PNG görseli olarak dışa aktar"
 
-#: mainwindow.cpp:289
+#: mainwindow.cpp:292
 #, kde-format
 msgid "Export to &Drawing (SVG)..."
 msgstr "Çizim &Olarak Dışa Aktar (SVG)…"
 
-#: mainwindow.cpp:290
+#: mainwindow.cpp:293
 #, kde-format
 msgid "Export the current canvas to Scalable Vector Graphics"
 msgstr "Geçerli tuvali Ölçeklenebilir Vektör Grafiği olarak dışa aktar"
 
-#: mainwindow.cpp:291
+#: mainwindow.cpp:294
 #, kde-format
 msgid "Export to SVG: Export the current canvas to Scalable Vector Graphics"
 msgstr ""
 "SVG olarak dışa aktar: Geçerli tuvali Ölçeklenebilir Vektör Grafiği olarak "
 "dışa aktar"
 
-#: mainwindow.cpp:294
+#: mainwindow.cpp:297
 #, kde-format
 msgid "&Print Canvas..."
 msgstr "&Tuvali Yazdır…"
 
-#: mainwindow.cpp:296
+#: mainwindow.cpp:299
 #, kde-format
 msgid "Print the canvas"
 msgstr "Tuvali yazdır"
 
-#: mainwindow.cpp:297
+#: mainwindow.cpp:300
 #, kde-format
 msgid "Print: Print the canvas"
 msgstr "Yazdır: Tuvali yazdır"
 
-#: mainwindow.cpp:304
+#: mainwindow.cpp:307
 #, kde-format
 msgid "Execute the program"
 msgstr "Uygulamayı çalıştır"
 
-#: mainwindow.cpp:305
+#: mainwindow.cpp:308
 #, kde-format
 msgid "Run: Execute the program"
 msgstr "Çalıştır: Uygulamayı çalıştır"
 
-#: mainwindow.cpp:308
+#: mainwindow.cpp:311
 #, kde-format
 msgid "&Pause"
 msgstr "&Duraklat"
 
-#: mainwindow.cpp:312
+#: mainwindow.cpp:315
 #, kde-format
 msgid "Pause execution"
 msgstr "Çalıştırmayı duraklat"
 
-#: mainwindow.cpp:313
+#: mainwindow.cpp:316
 #, kde-format
 msgid "Pause: Pause execution"
 msgstr "Duraklat: Çalıştırmayı duraklat"
 
-#: mainwindow.cpp:316
+#: mainwindow.cpp:319
 #, kde-format
 msgid "&Abort"
 msgstr "&İptal"
 
-#: mainwindow.cpp:319
+#: mainwindow.cpp:322
 #, kde-format
 msgid "Stop executing program"
 msgstr "Uygulamanın çalışmasını durdur"
 
-#: mainwindow.cpp:320
+#: mainwindow.cpp:323
 #, kde-format
 msgid "Abort: Stop executing program"
 msgstr "İptal: Uygulamayı çalıştırmayı durdur"
@@ -1927,117 +1927,117 @@ msgstr "İptal: Uygulamayı çalıştırmayı durdur"
 #. i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
 #. i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
 #. Tools menu actions
-#: mainwindow.cpp:330
+#: mainwindow.cpp:333
 #, kde-format
 msgid "&Direction Chooser..."
 msgstr "&Yön Seçicisi…"
 
-#: mainwindow.cpp:332
+#: mainwindow.cpp:335
 #, kde-format
 msgid "Shows the direction chooser dialog"
 msgstr "Yön seçim penceresini gösterir"
 
-#: mainwindow.cpp:333
+#: mainwindow.cpp:336
 #, kde-format
 msgid "Direction Chooser: Show the direction chooser dialog"
 msgstr "Yön seçicisi: Yön seçim penceresini göster"
 
-#: mainwindow.cpp:336
+#: mainwindow.cpp:339
 #, kde-format
 msgid "&Color Picker..."
 msgstr "&Renk Seçicisi…"
 
-#: mainwindow.cpp:338
+#: mainwindow.cpp:341
 #, kde-format
 msgid "Shows the color picker dialog"
 msgstr "Renk seçim penceresini gösterir"
 
-#: mainwindow.cpp:339
+#: mainwindow.cpp:342
 #, kde-format
 msgid "Color Picker: Show the color picker dialog"
 msgstr "Renk seçicisi: Renk seçim penceresini göster"
 
-#: mainwindow.cpp:343
+#: mainwindow.cpp:346
 #, kde-format
 msgid "kturtle"
 msgstr "kturtle"
 
-#: mainwindow.cpp:351
+#: mainwindow.cpp:354
 #, kde-format
 msgid "kturtle gray"
 msgstr "kturtle gri"
 
-#: mainwindow.cpp:358
+#: mainwindow.cpp:361
 #, kde-format
 msgid "turtle"
 msgstr "tosbağa"
 
-#: mainwindow.cpp:365
+#: mainwindow.cpp:368
 #, kde-format
 msgid "crab"
 msgstr "yengeç"
 
-#: mainwindow.cpp:372
+#: mainwindow.cpp:375
 #, kde-format
 msgid "ant"
 msgstr "karınca"
 
-#: mainwindow.cpp:379
+#: mainwindow.cpp:382
 #, kde-format
 msgid "pen"
 msgstr "kalem"
 
-#: mainwindow.cpp:386
+#: mainwindow.cpp:389
 #, kde-format
 msgid "Choose Custom Icon…"
 msgstr "Özel Simge Seç…"
 
-#: mainwindow.cpp:388 mainwindow.cpp:389
+#: mainwindow.cpp:391 mainwindow.cpp:392
 #, kde-format
 msgid "Choose an Icon for the turtle"
 msgstr "Tosbağa için bir simge seçin"
 
-#: mainwindow.cpp:393
+#: mainwindow.cpp:400
 #, kde-format
 msgid "Show &Editor"
 msgstr "Dü&zenleyiciyi Göster"
 
-#: mainwindow.cpp:395
+#: mainwindow.cpp:402
 #, kde-format
 msgid "Show or hide the Code Editor"
 msgstr "Kod Düzenleyicisini Göster veya Gizle"
 
-#: mainwindow.cpp:396
+#: mainwindow.cpp:403
 #, kde-format
 msgid "Show Code Editor: Show or hide the Code Editor"
 msgstr "Kod düzenleyicisini göster: Kod Düzenleyicisini göster veya gizle"
 
-#: mainwindow.cpp:403
+#: mainwindow.cpp:410
 #, kde-format
 msgid "Show &Inspector"
 msgstr "Denetleyiciyi &Göster"
 
-#: mainwindow.cpp:405
+#: mainwindow.cpp:412
 #, kde-format
 msgid "Show or hide the Inspector"
 msgstr "Denetleyiciyi göster veya gizle"
 
-#: mainwindow.cpp:406
+#: mainwindow.cpp:413
 #, kde-format
 msgid "Show Inspector: Show or hide the Inspector"
 msgstr "Denetleyiciyi göster: Denetleyiciyi göster veya gizle"
 
-#: mainwindow.cpp:413
+#: mainwindow.cpp:420
 #, kde-format
 msgid "Show E&rrors"
 msgstr "Hataları &Göster"
 
-#: mainwindow.cpp:415
+#: mainwindow.cpp:422
 #, kde-format
 msgid "Show or hide the Errors tab"
 msgstr "Hata sekmesini göster veya gizle"
 
-#: mainwindow.cpp:416
+#: mainwindow.cpp:423
 #, kde-format
 msgid "Show Errors: Show or hide the Errors tab"
 msgstr "Hataları göster: Hata sekmesini göster veya gizle"
@@ -2050,62 +2050,62 @@ msgstr "Hataları göster: Hata sekmesini göster veya gizle"
 #. a->setChecked(false);
 #. connect(a, SIGNAL(toggled(bool)), consoleDock, SLOT(setVisible(bool)));
 #. connect(consoleDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
-#: mainwindow.cpp:430
+#: mainwindow.cpp:437
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "&Satır Numaralarını Göster"
 
-#: mainwindow.cpp:432
+#: mainwindow.cpp:439
 #, kde-format
 msgid "Turn the line numbers on/off in the editor"
 msgstr "Düzenleyicide satır numaralarını aç/kapat"
 
-#: mainwindow.cpp:433
+#: mainwindow.cpp:440
 #, kde-format
 msgid "Show Line Numbers: Turn the line numbers on/off in the editor"
 msgstr "Satır numaralarını göster: Düzenleyicide satır numaralarını aç/kapat"
 
-#: mainwindow.cpp:444
+#: mainwindow.cpp:451
 #, kde-format
 msgid "Get help on the command under the cursor"
 msgstr "İmlecin altındaki komut hakkında yardım al"
 
-#: mainwindow.cpp:445
+#: mainwindow.cpp:452
 #, kde-format
 msgid "Context Help: Get help on the command under the cursor"
 msgstr "İçerik yardımı: İmlecin altındaki komut hakkında yardım al"
 
-#: mainwindow.cpp:450
+#: mainwindow.cpp:457
 #, kde-format
 msgid "Help"
 msgstr "Yardım"
 
-#: mainwindow.cpp:451
+#: mainwindow.cpp:458
 #, kde-format
 msgid "Help: Open manual for KTurtle"
 msgstr "Yardım: K Tosbağa için Kılavuzu aç"
 
-#: mainwindow.cpp:455
+#: mainwindow.cpp:462
 #, kde-format
 msgid "Console"
 msgstr "Konsol"
 
-#: mainwindow.cpp:462
+#: mainwindow.cpp:469
 #, kde-format
 msgid "Execute"
 msgstr "Çalıştır"
 
-#: mainwindow.cpp:464
+#: mainwindow.cpp:471
 #, kde-format
 msgid "Execute: Executes the current line in the console"
 msgstr "Çalıştır: Geçerli satırı konsolda çalıştırır"
 
-#: mainwindow.cpp:472
+#: mainwindow.cpp:479
 #, kde-format
 msgid "Execute the program, or use the drop down menu to select the run speed"
 msgstr "Programı çalıştır veya çalışma hızını seçmek için açılır menüyü kullan"
 
-#: mainwindow.cpp:473
+#: mainwindow.cpp:480
 #, kde-format
 msgid ""
 "Run: Execute the program, or use the drop down menu to select the run speed"
@@ -2113,28 +2113,28 @@ msgstr ""
 "Çalıştır: Programı çalıştır veya çalışma hızını seçmek için açılır menüyü "
 "kullan"
 
-#: mainwindow.cpp:495
+#: mainwindow.cpp:502
 #, kde-format
 msgid "Set the execution speed"
 msgstr "Yürütme hızını ayarla"
 
-#: mainwindow.cpp:498
+#: mainwindow.cpp:505
 #, kde-format
 msgctxt "@option:radio"
 msgid "S&tep-by-Step"
 msgstr "A&dım Adım"
 
-#: mainwindow.cpp:501
+#: mainwindow.cpp:508
 #, kde-format
 msgid "Run the program one step at a time"
 msgstr "Programı her seferinde bir adım çalıştır"
 
-#: mainwindow.cpp:502
+#: mainwindow.cpp:509
 #, kde-format
 msgid "Step Speed: Run the program one step at a time"
 msgstr "Adım hızı: Programı her seferinde bir adım çalıştır"
 
-#: mainwindow.cpp:520
+#: mainwindow.cpp:527
 #, kde-format
 msgid ""
 "Canvas: This is where the turtle moves and draws when the program is running"
@@ -2142,27 +2142,27 @@ msgstr ""
 "Tuval: Burası program çalışırken kaplumbağanın hareket ettiği ve çizim "
 "yaptığı yerdir"
 
-#: mainwindow.cpp:529
+#: mainwindow.cpp:536
 #, kde-format
 msgid "E&rrors"
 msgstr "&Hatalar"
 
-#: mainwindow.cpp:558
+#: mainwindow.cpp:565
 #, kde-format
 msgid "&Editor"
 msgstr "Dü&zenleyici"
 
-#: mainwindow.cpp:572
+#: mainwindow.cpp:579
 #, kde-format
 msgid "Editor: Write your KTurtle commands here"
 msgstr "Düzenleyici: K Tosbağa komutlarınızı buraya yazın"
 
-#: mainwindow.cpp:575
+#: mainwindow.cpp:582
 #, kde-format
 msgid "&Inspector"
 msgstr "&Denetleyici"
 
-#: mainwindow.cpp:585
+#: mainwindow.cpp:592
 #, kde-format
 msgid ""
 "Inspector: See information about variables and functions when the program "
@@ -2171,174 +2171,174 @@ msgstr ""
 "Denetleyici: Program çalıştığında değişkenler ve işlevler hakkındaki "
 "bilgileri görün"
 
-#: mainwindow.cpp:676
+#: mainwindow.cpp:683
 #, kde-format
 msgid "Switch to the %1 dictionary"
 msgstr "%1 sözlüğüne geç"
 
-#: mainwindow.cpp:755
+#: mainwindow.cpp:762
 #, kde-format
 msgid " OVR "
 msgstr " OVR "
 
-#: mainwindow.cpp:755
+#: mainwindow.cpp:762
 #, kde-format
 msgid " INS "
 msgstr " INS "
 
-#: mainwindow.cpp:763
+#: mainwindow.cpp:770
 #, kde-format
 msgid "<nothing under cursor>"
 msgstr "<imleç altında bir şey yok>"
 
-#: mainwindow.cpp:764
+#: mainwindow.cpp:771
 #, kde-format
 msgid "Help on: %1"
 msgstr "%1 için yardım"
 
-#: mainwindow.cpp:769
+#: mainwindow.cpp:776
 #, kde-format
 msgid " Line: %1 Column: %2 "
 msgstr " Satır: %1 Sütun: %2 "
 
-#: mainwindow.cpp:777
+#: mainwindow.cpp:784
 #, kde-format
 msgid "\"%1\" <%2>"
 msgstr "“%1” <%2>"
 
-#: mainwindow.cpp:781
+#: mainwindow.cpp:788
 #, kde-format
 msgid "<variable>"
 msgstr "<değişken>"
 
-#: mainwindow.cpp:784
+#: mainwindow.cpp:791
 #, kde-format
 msgid "<number>"
 msgstr "<sayı>"
 
-#: mainwindow.cpp:787
+#: mainwindow.cpp:794
 #, kde-format
 msgid "<comment>"
 msgstr "<yorum>"
 
-#: mainwindow.cpp:790
+#: mainwindow.cpp:797
 #, kde-format
 msgid "<string>"
 msgstr "<dizi>"
 
-#: mainwindow.cpp:801
+#: mainwindow.cpp:808
 #, kde-format
 msgid "scope"
 msgstr "kapsam"
 
-#: mainwindow.cpp:804
+#: mainwindow.cpp:811
 #, kde-format
 msgid "assignment"
 msgstr "atama"
 
-#: mainwindow.cpp:807
+#: mainwindow.cpp:814
 #, kde-format
 msgid "parenthesis"
 msgstr "ayraç"
 
-#: mainwindow.cpp:810
+#: mainwindow.cpp:817
 #, kde-format
 msgid "mathematical operator"
 msgstr "matematiksel işleç"
 
-#: mainwindow.cpp:813
+#: mainwindow.cpp:820
 #, kde-format
 msgid "expression"
 msgstr "ifade"
 
-#: mainwindow.cpp:816
+#: mainwindow.cpp:823
 #, kde-format
 msgid "boolean operator"
 msgstr "mantıksal işlem operatörü"
 
-#: mainwindow.cpp:819
+#: mainwindow.cpp:826
 #, kde-format
 msgid "learned command"
 msgstr "öğrenilmiş komut"
 
-#: mainwindow.cpp:822
+#: mainwindow.cpp:829
 #, kde-format
 msgid "argument separator"
 msgstr "değişken ayırıcı"
 
-#: mainwindow.cpp:826
+#: mainwindow.cpp:833
 #, kde-format
 msgid "command"
 msgstr "komut"
 
-#: mainwindow.cpp:829
+#: mainwindow.cpp:836
 #, kde-format
 msgid "controller command"
 msgstr "denetleyici komutu"
 
-#: mainwindow.cpp:853
+#: mainwindow.cpp:860
 #, kde-format
 msgid "Could not change the language to %1."
 msgstr "Dil, %1 olarak değiştirilemedi."
 
-#: mainwindow.cpp:860
+#: mainwindow.cpp:867
 #, kde-format
 msgid "English [built in]"
 msgstr "İngilizce [dahili]"
 
-#: mainwindow.cpp:861
+#: mainwindow.cpp:868
 #, kde-format
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: mainwindow.cpp:999
+#: mainwindow.cpp:1006
 #, kde-format
 msgid "untitled"
 msgstr "adsız"
 
-#: mainwindow.cpp:1041
+#: mainwindow.cpp:1048
 #, kde-format
 msgid "Save as Picture"
 msgstr "Resim Olarak Kaydet"
 
-#: mainwindow.cpp:1041
+#: mainwindow.cpp:1048
 #, kde-format
 msgid "PNG Images"
 msgstr "PNG görselleri"
 
-#: mainwindow.cpp:1058
+#: mainwindow.cpp:1065
 #, kde-format
 msgctxt "@title:window"
 msgid "Save as SVG"
 msgstr "SVG olarak Kaydet"
 
-#: mainwindow.cpp:1060
+#: mainwindow.cpp:1067
 #, kde-format
 msgid "Scalable Vector Graphics"
 msgstr "Ölçeklendirilebilir Vektörel Grafikler"
 
-#: mainwindow.cpp:1071
+#: mainwindow.cpp:1078
 #, kde-format
 msgctxt "@title:window"
 msgid "Save code as HTML"
 msgstr "Kodu HTML olarak Kaydet"
 
-#: mainwindow.cpp:1073
+#: mainwindow.cpp:1080
 #, kde-format
 msgid "HTML documents"
 msgstr "HTML belgeleri"
 
-#: mainwindow.cpp:1090
+#: mainwindow.cpp:1097
 #, kde-format
 msgid "Input"
 msgstr "Girdi"
 
-#: mainwindow.cpp:1099
+#: mainwindow.cpp:1106
 #, kde-format
 msgid "Message"
 msgstr "İleti"
 
-#: mainwindow.cpp:1106
+#: mainwindow.cpp:1113
 #, kde-format
 msgid "Choose Custom Icon"
 msgstr "Özel Simge Seç"

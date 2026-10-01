@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-26 00:41+0000\n"
+"POT-Creation-Date: 2026-10-01 17:36+0000\n"
 "PO-Revision-Date: 2026-09-27 09:42+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -201,23 +201,23 @@ msgstr "הכיוון ה&קודם:"
 msgid "&New direction:"
 msgstr "&כיוון חדש:"
 
-#: editor.cpp:142
+#: editor.cpp:138
 #, kde-format
 msgid "Open"
 msgstr "פתיחה"
 
-#: editor.cpp:144 editor.cpp:255
+#: editor.cpp:140 editor.cpp:251
 #, kde-format
 msgid "Turtle code files"
 msgstr "קובצי קוד צב"
 
-#: editor.cpp:144 editor.cpp:255 mainwindow.cpp:1041 mainwindow.cpp:1060
-#: mainwindow.cpp:1073
+#: editor.cpp:140 editor.cpp:251 mainwindow.cpp:1048 mainwindow.cpp:1067
+#: mainwindow.cpp:1080
 #, kde-format
 msgid "All files"
 msgstr "כל הקבצים"
 
-#: editor.cpp:161
+#: editor.cpp:157
 #, kde-format
 msgid ""
 "The file you try to open is not a valid KTurtle script, or is incompatible "
@@ -228,17 +228,17 @@ msgstr ""
 "הזאת של KTurtle.\n"
 "אי אפשר לפתוח את %1"
 
-#: editor.cpp:230 editor.cpp:236
+#: editor.cpp:226 editor.cpp:232
 #, kde-format
 msgid "Could not save file."
 msgstr "לא ניתן לשמור קובץ."
 
-#: editor.cpp:253
+#: editor.cpp:249
 #, kde-format
 msgid "Save As"
 msgstr "שמירה בשם"
 
-#: editor.cpp:267
+#: editor.cpp:263
 #, kde-format
 msgid ""
 "The program you are currently working on is not saved. By continuing you may "
@@ -247,12 +247,12 @@ msgstr ""
 "התוכנית שכתבת עד כה אינה שמורה. המשך בתהליך עלול להוביל לאובדן השינויים "
 "שערכת."
 
-#: editor.cpp:269
+#: editor.cpp:265
 #, kde-format
 msgid "Unsaved File"
 msgstr "קובץ לא שמור"
 
-#: editor.cpp:270 editor.cpp:272
+#: editor.cpp:266 editor.cpp:268
 #, kde-format
 msgid "&Discard Changes"
 msgstr "&התעלמות משינויים"
@@ -1478,13 +1478,13 @@ msgid "&Edit"
 msgstr "&עריכה"
 
 #. i18n: ectx: Menu (canvas)
-#: kturtleui.rc:41 mainwindow.cpp:523 mainwindow.cpp:545
+#: kturtleui.rc:41 mainwindow.cpp:530 mainwindow.cpp:552
 #, kde-format
 msgid "&Canvas"
 msgstr "מ&שטח ציור"
 
 #. i18n: ectx: Menu (run)
-#: kturtleui.rc:47 mainwindow.cpp:301 mainwindow.cpp:467
+#: kturtleui.rc:47 mainwindow.cpp:304 mainwindow.cpp:474
 #, kde-format
 msgid "&Run"
 msgstr "ה&רצה"
@@ -1508,19 +1508,19 @@ msgid "&Settings"
 msgstr "ה&גדרות"
 
 #. i18n: ectx: Menu (language)
-#: kturtleui.rc:66
+#: kturtleui.rc:68
 #, kde-format
 msgid "&Script Language"
 msgstr "שפת ה&סקריפט"
 
 #. i18n: ectx: Menu (help)
-#: kturtleui.rc:76
+#: kturtleui.rc:78
 #, kde-format
 msgid "&Help"
 msgstr "ע&זרה"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: kturtleui.rc:81
+#: kturtleui.rc:83
 #, kde-format
 msgid "Main Toolbar"
 msgstr "סרגל כלים ראשי"
@@ -1615,289 +1615,289 @@ msgid ""
 "only)"
 msgstr "מתרגם את קוד הצב למחרוזות לדוגמה ב־C++‎ שניתן להטמיע (למתכנתים בלבד)"
 
-#: mainwindow.cpp:63
+#: mainwindow.cpp:66
 #, kde-format
 msgctxt "@info:status the application is ready for commands"
 msgid "Ready"
 msgstr "מוכן"
 
-#: mainwindow.cpp:177
+#: mainwindow.cpp:180
 #, kde-format
 msgid "Create a new file"
 msgstr "יצירת קובץ חדש"
 
-#: mainwindow.cpp:178
+#: mainwindow.cpp:181
 #, kde-format
 msgid "New File: Create a new file"
 msgstr "קובץ חדש: יצירת קובץ חדש"
 
-#: mainwindow.cpp:181
+#: mainwindow.cpp:184
 #, kde-format
 msgid "Open an existing file"
 msgstr "פתיחת קובץ קיים"
 
-#: mainwindow.cpp:182
+#: mainwindow.cpp:185
 #, kde-format
 msgid "Open File: Open an existing file"
 msgstr "פתיחת קובץ: פתיחת קובץ קיים"
 
-#: mainwindow.cpp:187
+#: mainwindow.cpp:190
 #, kde-format
 msgid "Open a recently used file"
 msgstr "פתיחת קובץ בו השתמשת לאחרונה"
 
-#: mainwindow.cpp:188
+#: mainwindow.cpp:191
 #, kde-format
 msgid "Open Recent File: Open a recently used file"
 msgstr "פתיחת קובץ מהאחרונים: פתיתת קובץ בו השתמשת לאחרונה"
 
-#: mainwindow.cpp:190
+#: mainwindow.cpp:193
 #, kde-format
 msgid "Get more examples..."
 msgstr "קבלת דוגמאות נוספות…"
 
-#: mainwindow.cpp:199
+#: mainwindow.cpp:202
 #, kde-format
 msgid "Save the current file to disk"
 msgstr "שמירת הקובץ הנוכחי לכונן"
 
-#: mainwindow.cpp:200
+#: mainwindow.cpp:203
 #, kde-format
 msgid "Save File: Save the current file to disk"
 msgstr "שמירת קובץ: שמירת הקובץ הנוכחי לכונן"
 
-#: mainwindow.cpp:204
+#: mainwindow.cpp:207
 #, kde-format
 msgid "Save the current file under a different name"
 msgstr "שמירת הקובץ הנוכחי בשם אחר"
 
-#: mainwindow.cpp:205
+#: mainwindow.cpp:208
 #, kde-format
 msgid "Save File As: Save the current file under a different name"
 msgstr "שמירת קובץ בשם: שמירת הקובץ הנוכחי בשם אחר"
 
-#: mainwindow.cpp:208
+#: mainwindow.cpp:211
 #, kde-format
 msgid "Export to &HTML..."
 msgstr "יי&צוא ל־HTML…"
 
-#: mainwindow.cpp:209
+#: mainwindow.cpp:212
 #, kde-format
 msgid "Export the contents of the editor as HTML"
 msgstr "ייצוא תוכן העורך כ־HTML"
 
-#: mainwindow.cpp:210
+#: mainwindow.cpp:213
 #, kde-format
 msgid "Export to HTML: Export the contents of the editor as HTML"
 msgstr "ייצוא ל־HTML: ייצוא תוכן העורך כ־HTML"
 
-#: mainwindow.cpp:214
+#: mainwindow.cpp:217
 #, kde-format
 msgid "Print the code"
 msgstr "הדפסת הקוד"
 
-#: mainwindow.cpp:215
+#: mainwindow.cpp:218
 #, kde-format
 msgid "Print: Print the code"
 msgstr "הדפסה: הדפסת הקוד"
 
-#: mainwindow.cpp:218
+#: mainwindow.cpp:221
 #, kde-format
 msgid "Quit KTurtle"
 msgstr "יציאה מ־KTurtle"
 
-#: mainwindow.cpp:219
+#: mainwindow.cpp:222
 #, kde-format
 msgid "Quit: Quit KTurtle"
 msgstr "יציאה: יציאה מ־KTurtle"
 
-#: mainwindow.cpp:223
+#: mainwindow.cpp:226
 #, kde-format
 msgid "Undo a change in the editor"
 msgstr "הסגת שינוי בעורך"
 
-#: mainwindow.cpp:224
+#: mainwindow.cpp:227
 #, kde-format
 msgid "Undo: Undo a change in the editor"
 msgstr "הסגה: הסגת שינוי בעורך"
 
-#: mainwindow.cpp:229
+#: mainwindow.cpp:232
 #, kde-format
 msgid "Redo a previously undone change in the editor"
 msgstr "ביצוע שינוי שהוסג בעורך מחדש"
 
-#: mainwindow.cpp:230
+#: mainwindow.cpp:233
 #, kde-format
 msgid "Redo: Redo a previously undone change in the editor"
 msgstr "ביצוע מחדש: ביצוע שינוי שהוסג בעורך מחדש"
 
-#: mainwindow.cpp:235
+#: mainwindow.cpp:238
 #, kde-format
 msgid "Cut the selected text to the clipboard"
 msgstr "גזירת הטקסט הנבחר ללוח הגזירים"
 
-#: mainwindow.cpp:236
+#: mainwindow.cpp:239
 #, kde-format
 msgid "Cut: Cut the selected text to the clipboard"
 msgstr "גזירה: גזירת הטקסט הנבחר ללוח הגזירים"
 
-#: mainwindow.cpp:241
+#: mainwindow.cpp:244
 #, kde-format
 msgid "Copy the selected text to the clipboard"
 msgstr "העתקת הטקסט הנבחר ללוח הגזירים"
 
-#: mainwindow.cpp:242
+#: mainwindow.cpp:245
 #, kde-format
 msgid "Copy: Copy the selected text to the clipboard"
 msgstr "העתקה: העתקת הטקסט הנבחר ללוח הגזירים"
 
-#: mainwindow.cpp:247
+#: mainwindow.cpp:250
 #, kde-format
 msgid "Paste the clipboard's content into the current selection"
 msgstr "הדבקת תוכן לוח הגזירים לבחירה הנוכחית"
 
-#: mainwindow.cpp:248
+#: mainwindow.cpp:251
 #, kde-format
 msgid "Paste: Paste the clipboard's content into the current selection"
 msgstr "הדבקה: הדבקת תוכן לוח הגזירים לבחירה הנוכחית"
 
-#: mainwindow.cpp:251
+#: mainwindow.cpp:254
 #, kde-format
 msgid "Select all the code in the editor"
 msgstr "לבחור את כל הקוד בעורך"
 
-#: mainwindow.cpp:252
+#: mainwindow.cpp:255
 #, kde-format
 msgid "Select All: Select all the code in the editor"
 msgstr "בחירה בהכול: לבחור את כל הקוד בעורך"
 
-#: mainwindow.cpp:255
+#: mainwindow.cpp:258
 #, kde-format
 msgid "Overwrite Mode"
 msgstr "מצב שכתוב"
 
-#: mainwindow.cpp:257
+#: mainwindow.cpp:260
 #, kde-format
 msgid "Toggle between the 'insert' and 'overwrite' mode"
 msgstr "החלפה בין המצבים ‚הוספה’ לבין ‚שכתוב’"
 
-#: mainwindow.cpp:258
+#: mainwindow.cpp:261
 #, kde-format
 msgid "Overwrite Mode: Toggle between the 'insert' and 'overwrite' mode"
 msgstr "מצב שכתוב: החלפה בין המצבים ‚הוספה’ לבין ‚שכתוב’"
 
-#: mainwindow.cpp:265
+#: mainwindow.cpp:268
 #, kde-format
 msgid "Search through the code in the editor"
 msgstr "חיפוש בקוד שבעורך"
 
-#: mainwindow.cpp:266
+#: mainwindow.cpp:269
 #, kde-format
 msgid "Find: Search through the code in the editor"
 msgstr "איתור: חיפוש בקוד שבעורך"
 
-#: mainwindow.cpp:269
+#: mainwindow.cpp:272
 #, kde-format
 msgid "Continue searching through the code in the editor"
 msgstr "להמשיך לחפש בקוד בעורך"
 
-#: mainwindow.cpp:270
+#: mainwindow.cpp:273
 #, kde-format
 msgid "Find Next: Continue searching through the code in the editor"
 msgstr "איתור הבא: להמשיך לחפש בקוד בעורך"
 
-#: mainwindow.cpp:273
+#: mainwindow.cpp:276
 #, kde-format
 msgid "Continue searching backwards through the code in the editor"
 msgstr "להמשיך לחפש אחורנית בקוד בעורך"
 
-#: mainwindow.cpp:274
+#: mainwindow.cpp:277
 #, kde-format
 msgid ""
 "Find Previous: Continue searching backwards through the code in the editor"
 msgstr "איתור הקודם: להמשיך לחפש אחורנית בקוד בעורך"
 
-#: mainwindow.cpp:283
+#: mainwindow.cpp:286
 #, kde-format
 msgid "Export to &Image (PNG)..."
 msgstr "ייצוא ל&תמונה (PNG)…"
 
-#: mainwindow.cpp:284
+#: mainwindow.cpp:287
 #, kde-format
 msgid "Export the current canvas to a PNG raster image"
 msgstr "ייצוא משטח הציור הנוכחי לתמונת PNG מעובדת"
 
-#: mainwindow.cpp:285
+#: mainwindow.cpp:288
 #, kde-format
 msgid "Export to PNG: Export the current canvas to a PNG raster image"
 msgstr "ייצוא ל־PNG: ייצוא משטח הציור הנוכחי לתמונת PNG מעובדת"
 
-#: mainwindow.cpp:289
+#: mainwindow.cpp:292
 #, kde-format
 msgid "Export to &Drawing (SVG)..."
 msgstr "ייצוא ל&ציור (SVG)…"
 
-#: mainwindow.cpp:290
+#: mainwindow.cpp:293
 #, kde-format
 msgid "Export the current canvas to Scalable Vector Graphics"
 msgstr "ייצוא משטח הציור הנוכחי לגרפיקת וקטורים נמתחת (SVG)"
 
-#: mainwindow.cpp:291
+#: mainwindow.cpp:294
 #, kde-format
 msgid "Export to SVG: Export the current canvas to Scalable Vector Graphics"
 msgstr "ייצוא ל־SVG: ייצוא משטח הציור הנוכחי לגרפיקת וקטורים נמתחת (SVG)"
 
-#: mainwindow.cpp:294
+#: mainwindow.cpp:297
 #, kde-format
 msgid "&Print Canvas..."
 msgstr "ה&דפסת משטח ציור…"
 
-#: mainwindow.cpp:296
+#: mainwindow.cpp:299
 #, kde-format
 msgid "Print the canvas"
 msgstr "הדפסת משטח הציור"
 
-#: mainwindow.cpp:297
+#: mainwindow.cpp:300
 #, kde-format
 msgid "Print: Print the canvas"
 msgstr "הדפסה: הדפסת משטח הציור"
 
-#: mainwindow.cpp:304
+#: mainwindow.cpp:307
 #, kde-format
 msgid "Execute the program"
 msgstr "ביצוע התוכנית"
 
-#: mainwindow.cpp:305
+#: mainwindow.cpp:308
 #, kde-format
 msgid "Run: Execute the program"
 msgstr "הרצה: ביצוע התוכנית"
 
-#: mainwindow.cpp:308
+#: mainwindow.cpp:311
 #, kde-format
 msgid "&Pause"
 msgstr "ה&שהיה"
 
-#: mainwindow.cpp:312
+#: mainwindow.cpp:315
 #, kde-format
 msgid "Pause execution"
 msgstr "השהית ביצוע"
 
-#: mainwindow.cpp:313
+#: mainwindow.cpp:316
 #, kde-format
 msgid "Pause: Pause execution"
 msgstr "השהיה: השהיית הביצוע"
 
-#: mainwindow.cpp:316
+#: mainwindow.cpp:319
 #, kde-format
 msgid "&Abort"
 msgstr "&ביטול"
 
-#: mainwindow.cpp:319
+#: mainwindow.cpp:322
 #, kde-format
 msgid "Stop executing program"
 msgstr "עצירת ביצוע התוכנית"
 
-#: mainwindow.cpp:320
+#: mainwindow.cpp:323
 #, kde-format
 msgid "Abort: Stop executing program"
 msgstr "ביטול: עצירת ביצוע התוכנית"
@@ -1908,117 +1908,117 @@ msgstr "ביטול: עצירת ביצוע התוכנית"
 #. i18n("Co&mment"), 0, CTRL+Key_D, this, SLOT(slotComment()), ac, "edit_comment");
 #. i18n("Unc&omment"), 0, CTRL+SHIFT+Key_D, this, SLOT(slotUnComment()), ac, "edit_uncomment");
 #. Tools menu actions
-#: mainwindow.cpp:330
+#: mainwindow.cpp:333
 #, kde-format
 msgid "&Direction Chooser..."
 msgstr "&בורר כיוונים…"
 
-#: mainwindow.cpp:332
+#: mainwindow.cpp:335
 #, kde-format
 msgid "Shows the direction chooser dialog"
 msgstr "מציג את חלונית בורר הכיוון"
 
-#: mainwindow.cpp:333
+#: mainwindow.cpp:336
 #, kde-format
 msgid "Direction Chooser: Show the direction chooser dialog"
 msgstr "בורר הכיוון: מציג את חלונית בורר הכיוון"
 
-#: mainwindow.cpp:336
+#: mainwindow.cpp:339
 #, kde-format
 msgid "&Color Picker..."
 msgstr "&בורר צבעים…"
 
-#: mainwindow.cpp:338
+#: mainwindow.cpp:341
 #, kde-format
 msgid "Shows the color picker dialog"
 msgstr "הצגת חלונית בורר הצבע"
 
-#: mainwindow.cpp:339
+#: mainwindow.cpp:342
 #, kde-format
 msgid "Color Picker: Show the color picker dialog"
 msgstr "בורר הצבע: הצגת חלונית בורר הצבע"
 
-#: mainwindow.cpp:343
+#: mainwindow.cpp:346
 #, kde-format
 msgid "kturtle"
 msgstr "kturtle"
 
-#: mainwindow.cpp:351
+#: mainwindow.cpp:354
 #, kde-format
 msgid "kturtle gray"
 msgstr "kturtle אפור"
 
-#: mainwindow.cpp:358
+#: mainwindow.cpp:361
 #, kde-format
 msgid "turtle"
 msgstr "צב"
 
-#: mainwindow.cpp:365
+#: mainwindow.cpp:368
 #, kde-format
 msgid "crab"
 msgstr "סרטן"
 
-#: mainwindow.cpp:372
+#: mainwindow.cpp:375
 #, kde-format
 msgid "ant"
 msgstr "נמלה"
 
-#: mainwindow.cpp:379
+#: mainwindow.cpp:382
 #, kde-format
 msgid "pen"
 msgstr "עט"
 
-#: mainwindow.cpp:386
+#: mainwindow.cpp:389
 #, kde-format
 msgid "Choose Custom Icon…"
 msgstr "בחירת סמל משלך…"
 
-#: mainwindow.cpp:388 mainwindow.cpp:389
+#: mainwindow.cpp:391 mainwindow.cpp:392
 #, kde-format
 msgid "Choose an Icon for the turtle"
 msgstr "בחירת סמל לצב"
 
-#: mainwindow.cpp:393
+#: mainwindow.cpp:400
 #, kde-format
 msgid "Show &Editor"
 msgstr "הצגת &עורך"
 
-#: mainwindow.cpp:395
+#: mainwindow.cpp:402
 #, kde-format
 msgid "Show or hide the Code Editor"
 msgstr "הצגת או הסתרת עורך הקוד"
 
-#: mainwindow.cpp:396
+#: mainwindow.cpp:403
 #, kde-format
 msgid "Show Code Editor: Show or hide the Code Editor"
 msgstr "הצגת עורך הקוד: הצגת או הסתרת עורך הקוד"
 
-#: mainwindow.cpp:403
+#: mainwindow.cpp:410
 #, kde-format
 msgid "Show &Inspector"
 msgstr "הצגת מ&אבחן"
 
-#: mainwindow.cpp:405
+#: mainwindow.cpp:412
 #, kde-format
 msgid "Show or hide the Inspector"
 msgstr "הצגת או הסתרת המאבחן"
 
-#: mainwindow.cpp:406
+#: mainwindow.cpp:413
 #, kde-format
 msgid "Show Inspector: Show or hide the Inspector"
 msgstr "הצגת המאבחן: הצגת או הסתרת המאבחן"
 
-#: mainwindow.cpp:413
+#: mainwindow.cpp:420
 #, kde-format
 msgid "Show E&rrors"
 msgstr "הצגת &שגיאות"
 
-#: mainwindow.cpp:415
+#: mainwindow.cpp:422
 #, kde-format
 msgid "Show or hide the Errors tab"
 msgstr "הצגת או הסתרת לשונית השגיאות"
 
-#: mainwindow.cpp:416
+#: mainwindow.cpp:423
 #, kde-format
 msgid "Show Errors: Show or hide the Errors tab"
 msgstr "הצגת שגיאות: הצגת או הסתרת לשונית השגיאות"
@@ -2031,289 +2031,289 @@ msgstr "הצגת שגיאות: הצגת או הסתרת לשונית השגיא�
 #. a->setChecked(false);
 #. connect(a, SIGNAL(toggled(bool)), consoleDock, SLOT(setVisible(bool)));
 #. connect(consoleDock, SIGNAL(visibilityChanged(bool)), a, SLOT(setChecked(bool)));
-#: mainwindow.cpp:430
+#: mainwindow.cpp:437
 #, kde-format
 msgid "Show &Line Numbers"
 msgstr "הצגת מ&מספרי שורות"
 
-#: mainwindow.cpp:432
+#: mainwindow.cpp:439
 #, kde-format
 msgid "Turn the line numbers on/off in the editor"
 msgstr "הצגה/הסתרה של מספרי השורות בעורך"
 
-#: mainwindow.cpp:433
+#: mainwindow.cpp:440
 #, kde-format
 msgid "Show Line Numbers: Turn the line numbers on/off in the editor"
 msgstr "הצגת מספרי שורות: הצגה/הסתרה של מספרי השורות בעורך"
 
-#: mainwindow.cpp:444
+#: mainwindow.cpp:451
 #, kde-format
 msgid "Get help on the command under the cursor"
 msgstr "קבלת עזרה על הפקודה שתחת הסמן"
 
-#: mainwindow.cpp:445
+#: mainwindow.cpp:452
 #, kde-format
 msgid "Context Help: Get help on the command under the cursor"
 msgstr "עזרה לפי הקשר: קבלת עזרה על הפקודה שתחת הסמן"
 
-#: mainwindow.cpp:450
+#: mainwindow.cpp:457
 #, kde-format
 msgid "Help"
 msgstr "עזרה"
 
-#: mainwindow.cpp:451
+#: mainwindow.cpp:458
 #, kde-format
 msgid "Help: Open manual for KTurtle"
 msgstr "עזרה: פתיחת המדריך של KTurtle"
 
-#: mainwindow.cpp:455
+#: mainwindow.cpp:462
 #, kde-format
 msgid "Console"
 msgstr "מסוף"
 
-#: mainwindow.cpp:462
+#: mainwindow.cpp:469
 #, kde-format
 msgid "Execute"
 msgstr "הפעלה"
 
-#: mainwindow.cpp:464
+#: mainwindow.cpp:471
 #, kde-format
 msgid "Execute: Executes the current line in the console"
 msgstr "ביצוע: מבצע את השורה הנוכחית במסוף"
 
-#: mainwindow.cpp:472
+#: mainwindow.cpp:479
 #, kde-format
 msgid "Execute the program, or use the drop down menu to select the run speed"
 msgstr "ביצוע התוכנית או שימוש בתפריט הנפתח כדי לבחור את מהירות ההרצה"
 
-#: mainwindow.cpp:473
+#: mainwindow.cpp:480
 #, kde-format
 msgid ""
 "Run: Execute the program, or use the drop down menu to select the run speed"
 msgstr "הרצה: ביצוע התוכנית או שימוש בתפריט הנפתח כדי לבחור את מהירות ההרצה"
 
-#: mainwindow.cpp:495
+#: mainwindow.cpp:502
 #, kde-format
 msgid "Set the execution speed"
 msgstr "הגדרת מהירות ההרצה"
 
-#: mainwindow.cpp:498
+#: mainwindow.cpp:505
 #, kde-format
 msgctxt "@option:radio"
 msgid "S&tep-by-Step"
 msgstr "&שלב אחרי שלב"
 
-#: mainwindow.cpp:501
+#: mainwindow.cpp:508
 #, kde-format
 msgid "Run the program one step at a time"
 msgstr "הרצת התוכנית תוך התעכבות על כל שלב ושלב"
 
-#: mainwindow.cpp:502
+#: mainwindow.cpp:509
 #, kde-format
 msgid "Step Speed: Run the program one step at a time"
 msgstr "מהירות צעידה: הרצת התוכנית תוך התעכבות על כל שלב ושלב"
 
-#: mainwindow.cpp:520
+#: mainwindow.cpp:527
 #, kde-format
 msgid ""
 "Canvas: This is where the turtle moves and draws when the program is running"
 msgstr "משטח ציור: כאן הצב נע ומצייר כשהתוכנית פעילה"
 
-#: mainwindow.cpp:529
+#: mainwindow.cpp:536
 #, kde-format
 msgid "E&rrors"
 msgstr "&שגיאות"
 
-#: mainwindow.cpp:558
+#: mainwindow.cpp:565
 #, kde-format
 msgid "&Editor"
 msgstr "&עורך"
 
-#: mainwindow.cpp:572
+#: mainwindow.cpp:579
 #, kde-format
 msgid "Editor: Write your KTurtle commands here"
 msgstr "עורך: כאן ניתן לכתוב את פקודות ה־KTurtle שלך"
 
-#: mainwindow.cpp:575
+#: mainwindow.cpp:582
 #, kde-format
 msgid "&Inspector"
 msgstr "מ&אבחן"
 
-#: mainwindow.cpp:585
+#: mainwindow.cpp:592
 #, kde-format
 msgid ""
 "Inspector: See information about variables and functions when the program "
 "runs"
 msgstr "מאבחן: צפייה בפרטים על משתנים ופונקציות בזמן שהתוכנית רצה"
 
-#: mainwindow.cpp:676
+#: mainwindow.cpp:683
 #, kde-format
 msgid "Switch to the %1 dictionary"
 msgstr "מעבר למילון %1"
 
-#: mainwindow.cpp:755
+#: mainwindow.cpp:762
 #, kde-format
 msgid " OVR "
 msgstr "שכתב"
 
-#: mainwindow.cpp:755
+#: mainwindow.cpp:762
 #, kde-format
 msgid " INS "
 msgstr "הוספה"
 
-#: mainwindow.cpp:763
+#: mainwindow.cpp:770
 #, kde-format
 msgid "<nothing under cursor>"
 msgstr "<אין כלום תחת הסמן>"
 
-#: mainwindow.cpp:764
+#: mainwindow.cpp:771
 #, kde-format
 msgid "Help on: %1"
 msgstr "עזרה עם: %1"
 
-#: mainwindow.cpp:769
+#: mainwindow.cpp:776
 #, kde-format
 msgid " Line: %1 Column: %2 "
 msgstr " שורה: %1 עמודה: %2"
 
-#: mainwindow.cpp:777
+#: mainwindow.cpp:784
 #, kde-format
 msgid "\"%1\" <%2>"
 msgstr "„%1” <%2>"
 
-#: mainwindow.cpp:781
+#: mainwindow.cpp:788
 #, kde-format
 msgid "<variable>"
 msgstr "<משתנה>"
 
-#: mainwindow.cpp:784
+#: mainwindow.cpp:791
 #, kde-format
 msgid "<number>"
 msgstr "<מספר>"
 
-#: mainwindow.cpp:787
+#: mainwindow.cpp:794
 #, kde-format
 msgid "<comment>"
 msgstr "<הערה>"
 
-#: mainwindow.cpp:790
+#: mainwindow.cpp:797
 #, kde-format
 msgid "<string>"
 msgstr "<מחרוזת>"
 
-#: mainwindow.cpp:801
+#: mainwindow.cpp:808
 #, kde-format
 msgid "scope"
 msgstr "היקף"
 
-#: mainwindow.cpp:804
+#: mainwindow.cpp:811
 #, kde-format
 msgid "assignment"
 msgstr "הצבה"
 
-#: mainwindow.cpp:807
+#: mainwindow.cpp:814
 #, kde-format
 msgid "parenthesis"
 msgstr "סוגריים"
 
-#: mainwindow.cpp:810
+#: mainwindow.cpp:817
 #, kde-format
 msgid "mathematical operator"
 msgstr "סימן מתמטי"
 
-#: mainwindow.cpp:813
+#: mainwindow.cpp:820
 #, kde-format
 msgid "expression"
 msgstr "ביטוי"
 
-#: mainwindow.cpp:816
+#: mainwindow.cpp:823
 #, kde-format
 msgid "boolean operator"
 msgstr "סימן בוליאני"
 
-#: mainwindow.cpp:819
+#: mainwindow.cpp:826
 #, kde-format
 msgid "learned command"
 msgstr "פקודה שנלמדה"
 
-#: mainwindow.cpp:822
+#: mainwindow.cpp:829
 #, kde-format
 msgid "argument separator"
 msgstr "מפריד ארגומנטים"
 
-#: mainwindow.cpp:826
+#: mainwindow.cpp:833
 #, kde-format
 msgid "command"
 msgstr "פקודה"
 
-#: mainwindow.cpp:829
+#: mainwindow.cpp:836
 #, kde-format
 msgid "controller command"
 msgstr "פקודת בקר"
 
-#: mainwindow.cpp:853
+#: mainwindow.cpp:860
 #, kde-format
 msgid "Could not change the language to %1."
 msgstr "לא ניתן להחליף את השפה ל%1."
 
-#: mainwindow.cpp:860
+#: mainwindow.cpp:867
 #, kde-format
 msgid "English [built in]"
 msgstr "אנגלית [מובנית]"
 
-#: mainwindow.cpp:861
+#: mainwindow.cpp:868
 #, kde-format
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: mainwindow.cpp:999
+#: mainwindow.cpp:1006
 #, kde-format
 msgid "untitled"
 msgstr "ללא שם"
 
-#: mainwindow.cpp:1041
+#: mainwindow.cpp:1048
 #, kde-format
 msgid "Save as Picture"
 msgstr "שמירה כתמונה"
 
-#: mainwindow.cpp:1041
+#: mainwindow.cpp:1048
 #, kde-format
 msgid "PNG Images"
 msgstr "תמונות PNG"
 
-#: mainwindow.cpp:1058
+#: mainwindow.cpp:1065
 #, kde-format
 msgctxt "@title:window"
 msgid "Save as SVG"
 msgstr "שמירה כ־SVG"
 
-#: mainwindow.cpp:1060
+#: mainwindow.cpp:1067
 #, kde-format
 msgid "Scalable Vector Graphics"
 msgstr "גרפיקת וקטורית נמתחת (SVG)"
 
-#: mainwindow.cpp:1071
+#: mainwindow.cpp:1078
 #, kde-format
 msgctxt "@title:window"
 msgid "Save code as HTML"
 msgstr "שמירת הקוד כ־HTML"
 
-#: mainwindow.cpp:1073
+#: mainwindow.cpp:1080
 #, kde-format
 msgid "HTML documents"
 msgstr "מסמכי HTML"
 
-#: mainwindow.cpp:1090
+#: mainwindow.cpp:1097
 #, kde-format
 msgid "Input"
 msgstr "קלט"
 
-#: mainwindow.cpp:1099
+#: mainwindow.cpp:1106
 #, kde-format
 msgid "Message"
 msgstr "מסר"
 
-#: mainwindow.cpp:1106
+#: mainwindow.cpp:1113
 #, kde-format
 msgid "Choose Custom Icon"
 msgstr "בחירת סמל משלך"
