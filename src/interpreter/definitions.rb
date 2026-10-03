@@ -1,4 +1,5 @@
 #  SPDX-FileCopyrightText: 2005-2009 Cies Breijs
+#  SPDX-FileCopyrightText: 2026 Zeyad Kamal <zeyadkamal2022@gmail.com>
 #
 #  SPDX-License-Identifier: GPL-2.0-only
 

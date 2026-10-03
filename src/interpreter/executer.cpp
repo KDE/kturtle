@@ -1,5 +1,7 @@
 /*
     SPDX-FileCopyrightText: 2003-2006 Cies Breijs <cies AT kde DOT nl>
+    SPDX-FileCopyrightText: 2026 Zeyad Kamal <zeyadkamal2022@gmail.com>
+    SPDX-FileCopyrightText: 2026 Omar Tamer <omar.t.shehata@protonmail.com>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */

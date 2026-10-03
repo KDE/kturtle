@@ -1,3 +1,9 @@
+/*
+    SPDX-FileCopyrightText: 2026 Omar Tamer <omar.t.shehata@protonmail.com>
+
+    SPDX-License-Identifier: GPL-2.0-or-later
+*/
+
 #ifndef _COLOR_H_
 #define _COLOR_H_
 
