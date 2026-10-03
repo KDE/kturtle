@@ -1,22 +1,84 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
+<!--
+SPDX-FileCopyrightText: 2026 Mohammed Ayman <mohammedaymanabdelghaffar@gmail.com>
+
+SPDX-License-Identifier: GPL-2.0-or-later
+-->
+
 <svg
-   width="89.06929mm"
-   height="303.45972mm"
-   viewBox="0 0 336.63985 1146.9343"
+   width="11.061309mm"
+   height="156.08661mm"
+   viewBox="0 0 41.806523 589.93361"
+   width="11.061309mm"
+   height="156.08661mm"
+   viewBox="0 0 41.806523 589.93361"
    version="1.1"
    id="svg1"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
+   sodipodi:docname="pen.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   sodipodi:docname="pen.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="41.806522"
+       height="589.93359"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="41.806522"
+       height="589.93359"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
   <defs
      id="defs1" />
   <g
      id="layer1"
-     transform="translate(-457.06093)">
+     transform="translate(-610.11138,-274.80816)">
+     transform="translate(-610.11138,-274.80816)">
     <g
-       id="g5">
+       id="g5"
+       transform="rotate(165,647.24742,424.99349)"
+       inkscape:export-filename="pen.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+       id="g5"
+       transform="rotate(165,647.24742,424.99349)"
+       inkscape:export-filename="pen.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
       <rect
          style="fill:#e53b00;fill-opacity:1;stroke:#000000;stroke-width:1.88976;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
          id="rect1"
@@ -67,19 +129,5 @@
          y="-195.91113"
          transform="rotate(15)" />
     </g>
-    <use
-       x="0"
-       y="0"
-       xlink:href="#g5"
-       id="use5"
-       transform="matrix(-0.99999186,0,0,1,1250.7553,-3.4459263e-6)"
-       style="display:none" />
-    <use
-       x="0"
-       y="0"
-       xlink:href="#g5"
-       id="use6"
-       transform="matrix(0.99999999,0,0,-1.0000028,1.0130708e-5,1146.9342)"
-       style="display:none" />
   </g>
 </svg>
