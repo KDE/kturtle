@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-01 17:36+0000\n"
-"PO-Revision-Date: 2026-09-21 10:23+0200\n"
+"PO-Revision-Date: 2026-10-01 16:32+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -33,7 +33,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 26.08.0\n"
+"X-Generator: Lokalize 26.08.1\n"
 "X-Text-Markup: kde4\n"
 
 #, kde-format
@@ -639,21 +639,23 @@ msgid ""
 "Polygon needs between 2 and 4 parameters: corners, size, and optionally "
 "rotation and spoke ratio"
 msgstr ""
+"Le polygone a besoin de 2 à 4 paramètres : arêtes, taille et éventuellement "
+"rotation et rapport des rayons."
 
 #: interpreter/executer.cpp:1084
 #, kde-format
 msgid "A polygon must have between 3 and 10 corners"
-msgstr ""
+msgstr "Un polygone doit être composé de 3 à 10 sommets."
 
 #: interpreter/executer.cpp:1089
 #, kde-format
 msgid "Polygon side must not be negative"
-msgstr ""
+msgstr "Le côté du polygone ne doit pas être négatif."
 
 #: interpreter/executer.cpp:1094
 #, kde-format
 msgid "Spoke ratio must be greater than 0 and at most 1"
-msgstr ""
+msgstr "Le rapport des rayons doit être supérieur à 0 et au maximum à 1."
 
 #: interpreter/executer.cpp:1105
 #, kde-format
@@ -661,22 +663,26 @@ msgid ""
 "Ellipse needs between 1 and 3 parameters: width, optionally height, and "
 "optionally rotation"
 msgstr ""
+"L'ellipse nécessite entre 1 et 3 paramètres : largeur, éventuellement "
+"hauteur et éventuellement rotation."
 
 #: interpreter/executer.cpp:1117
 #, kde-format
 msgid "Ellipse width and height must not be negative"
-msgstr ""
+msgstr ".La largeur et la hauteur de l'ellipse ne doivent pas être négatives"
 
 #: interpreter/executer.cpp:1128
 #, kde-format
 msgid ""
 "Rectangle needs 2 or 3 parameters: width, height, and optionally rotation"
 msgstr ""
+"Le rectangle nécessite 2 ou 3 paramètres : largeur, hauteur et "
+"éventuellement rotation."
 
 #: interpreter/executer.cpp:1140
 #, kde-format
 msgid "Rectangle width and height must not be negative"
-msgstr ""
+msgstr "La largeur et la hauteur du rectangle ne doivent pas être négatives."
 
 #: interpreter/executer.cpp:1151
 #, kde-format
@@ -684,16 +690,18 @@ msgid ""
 "Triangle needs 3 or 4 parameters: sideA, sideB, sideC, and optionally "
 "rotation"
 msgstr ""
+"Le triangle a besoin de 3 ou 4 paramètres : sideA, sideB, sideC et "
+"éventuellement rotation."
 
 #: interpreter/executer.cpp:1164
 #, kde-format
 msgid "Triangle side lengths must be positive numbers"
-msgstr ""
+msgstr "Les longueurs des côtés du triangle doivent être des nombres positifs."
 
 #: interpreter/executer.cpp:1169
 #, kde-format
 msgid "The given side lengths cannot form a triangle"
-msgstr ""
+msgstr "Les longueurs données de côté ne peuvent pas former un triangle."
 
 #: interpreter/executer.cpp:1242 interpreter/executer.cpp:1270
 #, kde-format
@@ -966,7 +974,7 @@ msgctxt ""
 "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "clear"
-msgstr "nettoietout"
+msgstr "effacer"
 
 #: interpreter/translator.cpp:305
 #, kde-format
@@ -1047,7 +1055,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "polygon"
-msgstr ""
+msgstr "polygone"
 
 #: interpreter/translator.cpp:377 interpreter/translator.cpp:417
 #, kde-format
@@ -1056,27 +1064,19 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "ellipse"
-msgstr ""
+msgstr "ellipse"
 
 #: interpreter/translator.cpp:385 interpreter/translator.cpp:425
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn know how to properly translate it."
-#| msgid "triangle"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Rectangle' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "rectangle"
-msgstr "triangle"
+msgstr "rectangle"
 
 #: interpreter/translator.cpp:393 interpreter/translator.cpp:433
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn know how to properly translate it."
-#| msgid "triangle"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Triangle' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
@@ -1552,7 +1552,7 @@ msgstr "&Outils"
 #: kturtleui.rc:55
 #, kde-format
 msgid "&Change Icon"
-msgstr ""
+msgstr "Modifier l'i&cône..."
 
 #. i18n: ectx: Menu (settings)
 #: kturtleui.rc:65
@@ -2006,52 +2006,44 @@ msgstr ""
 "Sélecteur de couleur : afficher la boite de dialogue du sélecteur de couleur"
 
 #: mainwindow.cpp:346
-#, fuzzy, kde-format
-#| msgid "KTurtle"
+#, kde-format
 msgid "kturtle"
-msgstr "KTurtle"
+msgstr "kturtle"
 
 #: mainwindow.cpp:354
 #, kde-format
 msgid "kturtle gray"
-msgstr ""
+msgstr "gris tortue"
 
 #: mainwindow.cpp:361
-#, fuzzy, kde-format
-#| msgid "KTurtle"
+#, kde-format
 msgid "turtle"
-msgstr "KTurtle"
+msgstr "tortue"
 
 #: mainwindow.cpp:368
 #, kde-format
 msgid "crab"
-msgstr ""
+msgstr "crabe"
 
 #: mainwindow.cpp:375
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'And' COMMAND, there are some rules on how "
-#| "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
-#| "learn how to properly translate it."
-#| msgid "and"
+#, kde-format
 msgid "ant"
-msgstr "et"
+msgstr "fourmi"
 
 #: mainwindow.cpp:382
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgid "pen"
-msgstr "Ouvrir"
+msgstr "stylo"
 
 #: mainwindow.cpp:389
 #, kde-format
 msgid "Choose Custom Icon…"
-msgstr ""
+msgstr "Sélectionner une icône personnalisée…"
 
 #: mainwindow.cpp:391 mainwindow.cpp:392
 #, kde-format
 msgid "Choose an Icon for the turtle"
-msgstr ""
+msgstr "Sélectionnez une icône pour la tortue"
 
 #: mainwindow.cpp:400
 #, kde-format
@@ -2176,7 +2168,7 @@ msgstr ""
 #: mainwindow.cpp:502
 #, kde-format
 msgid "Set the execution speed"
-msgstr ""
+msgstr "Définir la vitesse d'exécution"
 
 #: mainwindow.cpp:505
 #, kde-format
@@ -2403,7 +2395,7 @@ msgstr "Message"
 #: mainwindow.cpp:1113
 #, kde-format
 msgid "Choose Custom Icon"
-msgstr ""
+msgstr "Sélectionner une icône personnalisée"
 
 #~ msgid "&Run Speed"
 #~ msgstr "&Pleine vitesse"
