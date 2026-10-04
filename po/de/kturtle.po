@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-01 17:36+0000\n"
+"POT-Creation-Date: 2026-10-04 00:41+0000\n"
 "PO-Revision-Date: 2025-06-20 13:39+0200\n"
 "Last-Translator: Alois Spitzbart <spitz234@hotmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -32,57 +32,57 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-i18n-de@kde.org"
 
-#: canvas.cpp:300
+#: canvas.cpp:301
 #, kde-format
 msgid "bold"
 msgstr "fett"
 
-#: canvas.cpp:301
+#: canvas.cpp:302
 #, kde-format
 msgid "italic"
 msgstr "kursiv"
 
-#: canvas.cpp:302
+#: canvas.cpp:303
 #, kde-format
 msgid "underline"
 msgstr "unterstreichen"
 
-#: canvas.cpp:303
+#: canvas.cpp:304
 #, kde-format
 msgid "overline"
 msgstr "überstreichen"
 
-#: canvas.cpp:304
+#: canvas.cpp:305
 #, kde-format
 msgid "strikeout"
 msgstr "durchstreichen"
 
-#: color.cpp:36
+#: color.cpp:42
 #, kde-format
 msgid "%1 is not a valid color."
 msgstr ""
 
-#: color.cpp:43
+#: color.cpp:49
 #, kde-format
 msgid "white"
 msgstr ""
 
-#: color.cpp:45
+#: color.cpp:51
 #, kde-format
 msgid "black"
 msgstr ""
 
-#: color.cpp:47
+#: color.cpp:53
 #, kde-format
 msgid "grey"
 msgstr ""
 
-#: color.cpp:49
+#: color.cpp:55
 #, kde-format
 msgid "gray"
 msgstr ""
 
-#: color.cpp:51
+#: color.cpp:57
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "You are about to translate the 'Random' COMMAND ALIAS, there are some "
@@ -92,42 +92,42 @@ msgstr ""
 msgid "red"
 msgstr "zuf"
 
-#: color.cpp:53
+#: color.cpp:59
 #, kde-format
 msgid "brown"
 msgstr ""
 
-#: color.cpp:55
+#: color.cpp:61
 #, kde-format
 msgid "orange"
 msgstr ""
 
-#: color.cpp:57
+#: color.cpp:63
 #, kde-format
 msgid "yellow"
 msgstr ""
 
-#: color.cpp:59
+#: color.cpp:65
 #, kde-format
 msgid "gold"
 msgstr ""
 
-#: color.cpp:61
+#: color.cpp:67
 #, kde-format
 msgid "green"
 msgstr ""
 
-#: color.cpp:63
+#: color.cpp:69
 #, kde-format
 msgid "blue"
 msgstr ""
 
-#: color.cpp:65
+#: color.cpp:71
 #, kde-format
 msgid "purple"
 msgstr ""
 
-#: color.cpp:67
+#: color.cpp:73
 #, kde-format
 msgid "pink"
 msgstr ""
@@ -375,17 +375,17 @@ msgstr "Zeichenfolge"
 msgid "None"
 msgstr "Kein"
 
-#: interpreter/executer.cpp:72
+#: interpreter/executer.cpp:74
 #, kde-format
 msgid "Cannot return outside a function. "
 msgstr "Der Rücksprung von außerhalb einer Funktion ist nicht möglich"
 
-#: interpreter/executer.cpp:409
+#: interpreter/executer.cpp:411
 #, kde-format
 msgid "The %1 command accepts no parameters."
 msgstr "Der Befehl „%1“ akzeptiert keine Parameter."
 
-#: interpreter/executer.cpp:419
+#: interpreter/executer.cpp:421
 #, kde-format
 msgid "The %2 command was called with %3 but needs 1 parameter."
 msgid_plural "The %2 command was called with %3 but needs %1 parameters."
@@ -396,7 +396,7 @@ msgstr[1] ""
 "Der Befehl „%2“ wurde mit %3 Parametern aufgerufen, erfordert aber %1 "
 "Parameter."
 
-#: interpreter/executer.cpp:427
+#: interpreter/executer.cpp:429
 #, kde-format
 msgid "The %2 command was called with %3 but only accepts 1 parameter."
 msgid_plural ""
@@ -408,55 +408,55 @@ msgstr[1] ""
 "Der Befehl „%2“ wurde mit %3 Parametern aufgerufen, akzeptiert aber nur %1 "
 "Parameter."
 
-#: interpreter/executer.cpp:450
+#: interpreter/executer.cpp:452
 #, kde-format
 msgid "The %1 command only accepts a string as its parameter."
 msgstr "Der Befehl „%1“ akzeptiert nur eine Zeichenfolge als Parameter."
 
-#: interpreter/executer.cpp:452
+#: interpreter/executer.cpp:454
 #, kde-format
 msgid "The %1 command only accepts strings as its parameters."
 msgstr "Der Befehl „%1“ akzeptiert nur Zeichenfolgen als Parameter."
 
-#: interpreter/executer.cpp:457
+#: interpreter/executer.cpp:459
 #, kde-format
 msgid "The %1 command only accepts a number as its parameter."
 msgstr "Der Befehl „%1“ akzeptiert nur eine Zahl als Parameter."
 
-#: interpreter/executer.cpp:459
+#: interpreter/executer.cpp:461
 #, kde-format
 msgid "The %1 command only accepts numbers as its parameters."
 msgstr "Der Befehl „%1“ akzeptiert nur Zahlen als Parameter."
 
-#: interpreter/executer.cpp:464
+#: interpreter/executer.cpp:466
 #, kde-format
 msgid "The %1 command only accepts an answer as its parameter."
 msgstr "Der Befehl „%1“ akzeptiert nur eine Antwort als Parameter."
 
-#: interpreter/executer.cpp:466
+#: interpreter/executer.cpp:468
 #, kde-format
 msgid "The %1 command only accepts answers as its parameters."
 msgstr "Der Befehl „%1“ akzeptiert nur Antworten als Parameter."
 
-#: interpreter/executer.cpp:540
+#: interpreter/executer.cpp:542
 #, kde-format
 msgid "The variable '%1' was used without first being assigned to a value"
 msgstr ""
 "Die Variable „%1“ wurde verwendet, ohne dass ihr ein Wert zugewiesen wurde."
 
-#: interpreter/executer.cpp:560
+#: interpreter/executer.cpp:562
 #, kde-format
 msgid "An unknown function named '%1' was called"
 msgstr "Die unbekannte Funktion namens „%1“ wurde aufgerufen."
 
-#: interpreter/executer.cpp:574
+#: interpreter/executer.cpp:576
 #, kde-format
 msgid "The function '%1' was called with %2, while it should be called with %3"
 msgstr ""
 "Die Funktion „%1“ wurde mit %2 aufgerufen, sie sollte jedoch mit %3 "
 "aufgerufen werden."
 
-#: interpreter/executer.cpp:576 interpreter/executer.cpp:578
+#: interpreter/executer.cpp:578 interpreter/executer.cpp:580
 #, kde-format
 msgctxt ""
 "The function '%1' was called with %2, while it should be called with %3"
@@ -465,264 +465,264 @@ msgid_plural "%1 parameters"
 msgstr[0] "1 Parameter"
 msgstr[1] "%1 Parameter"
 
-#: interpreter/executer.cpp:801
+#: interpreter/executer.cpp:803
 #, kde-format
 msgid "ASSERT failed"
 msgstr "Zusicherung fehlgeschlagen"
 
-#: interpreter/executer.cpp:808
+#: interpreter/executer.cpp:810
 #, kde-format
 msgid "'And' needs two variables"
 msgstr "„und“ benötigt zwei Variablen."
 
-#: interpreter/executer.cpp:818
+#: interpreter/executer.cpp:820
 #, kde-format
 msgid "'Or' needs two variables"
 msgstr "„oder“ benötigt zwei Variablen."
 
-#: interpreter/executer.cpp:829
+#: interpreter/executer.cpp:831
 #, kde-format
 msgid "I need something to do a not on"
 msgstr "Es wird ein Operand für das „nicht“ gebraucht."
 
-#: interpreter/executer.cpp:838
+#: interpreter/executer.cpp:840
 #, kde-format
 msgid "I cannot do a '==' without 2 variables"
 msgstr "Ein „==“ kann nicht ohne 2 Variablen durchgeführt werden."
 
-#: interpreter/executer.cpp:847
+#: interpreter/executer.cpp:849
 #, kde-format
 msgid "I cannot do a '!=' without 2 variables"
 msgstr "Ein „!=“ kann nicht ohne 2 Variablen durchgeführt werden."
 
-#: interpreter/executer.cpp:856
+#: interpreter/executer.cpp:858
 #, kde-format
 msgid "I cannot do a '>' without 2 variables"
 msgstr "Ein „>“ kann nicht ohne 2 Variablen durchgeführt werden."
 
-#: interpreter/executer.cpp:865
+#: interpreter/executer.cpp:867
 #, kde-format
 msgid "I cannot do a '<' without 2 variables"
 msgstr "Ein „<“ kann nicht ohne 2 Variablen durchgeführt werden."
 
-#: interpreter/executer.cpp:874
+#: interpreter/executer.cpp:876
 #, kde-format
 msgid "I cannot do a '>=' without 2 variables"
 msgstr "Ein „>=“ kann nicht ohne 2 Variablen durchgeführt werden."
 
-#: interpreter/executer.cpp:883
+#: interpreter/executer.cpp:885
 #, kde-format
 msgid "I cannot do a '<=' without 2 variables"
 msgstr "Ein „<=“ kann nicht ohne 2 Variablen durchgeführt werden."
 
-#: interpreter/executer.cpp:892
+#: interpreter/executer.cpp:894
 #, kde-format
 msgid "You need two numbers or string to do an addition"
 msgstr "Es werden zwei Zahlen oder Zeichenfolgen für eine Addition benötigt."
 
-#: interpreter/executer.cpp:905
+#: interpreter/executer.cpp:907
 #, kde-format
 msgid "You need two numbers to subtract"
 msgstr "Es werden zwei Zahlen zum Subtrahieren benötigt"
 
-#: interpreter/executer.cpp:912
+#: interpreter/executer.cpp:914
 #, kde-format
 msgid "You tried to subtract from a non-number, '%1'"
 msgstr "Es wurde versucht, von einer Nicht-Zahl zu subtrahieren, „%1“"
 
-#: interpreter/executer.cpp:914
+#: interpreter/executer.cpp:916
 #, kde-format
 msgid "You tried to subtract a non-number, '%1'"
 msgstr "Es wurde versucht, eine Nicht-Zahl zu subtrahieren, „%1“"
 
-#: interpreter/executer.cpp:921
+#: interpreter/executer.cpp:923
 #, kde-format
 msgid "You need two numbers to multiplicate"
 msgstr "Es werden zwei Zahlen zum Multiplizieren benötigt."
 
-#: interpreter/executer.cpp:928
+#: interpreter/executer.cpp:930
 #, kde-format
 msgid "You tried to multiplicate a non-number, '%1'"
 msgstr "Es wurde versucht, eine Nicht-Zahl zu multiplizieren. „%1“"
 
-#: interpreter/executer.cpp:930
+#: interpreter/executer.cpp:932
 #, kde-format
 msgid "You tried to multiplicate by a non-number, '%1'"
 msgstr "Es wurde versucht, eine Nicht-Zahl zu multiplizieren. „%1“"
 
-#: interpreter/executer.cpp:937
+#: interpreter/executer.cpp:939
 #, kde-format
 msgid "You need two numbers to divide"
 msgstr "Es werden zwei Zahlen zum Teilen benötigt."
 
-#: interpreter/executer.cpp:942
+#: interpreter/executer.cpp:944
 #, kde-format
 msgid "You tried to divide by zero"
 msgstr "Es wurde versucht, durch Null zu teilen"
 
-#: interpreter/executer.cpp:948
+#: interpreter/executer.cpp:950
 #, kde-format
 msgid "You tried to divide a non-number, '%1'"
 msgstr "Es wurde versucht, eine Nicht-Zahl zu teilen. „%1“"
 
-#: interpreter/executer.cpp:950
+#: interpreter/executer.cpp:952
 #, kde-format
 msgid "You tried to divide by a non-number, '%1'"
 msgstr "Es wurde versucht, durch eine Nicht-Zahl zu teilen. „%1“"
 
-#: interpreter/executer.cpp:957
+#: interpreter/executer.cpp:959
 #, kde-format
 msgid "You need two numbers to raise a power"
 msgstr "Es werden zwei Zahlen zum Potenzieren benötigt."
 
-#: interpreter/executer.cpp:968
+#: interpreter/executer.cpp:970
 #, kde-format
 msgid "The result of an exponentiation was too large"
 msgstr "Das Ergebnis einer Potenzierung war zu groß"
 
-#: interpreter/executer.cpp:974
+#: interpreter/executer.cpp:976
 #, kde-format
 msgid "You tried to raise a non-number to a power, '%1'"
 msgstr "Es wurde versucht, eine Nicht-Zahl zu potenzieren, „%1“"
 
-#: interpreter/executer.cpp:976
+#: interpreter/executer.cpp:978
 #, kde-format
 msgid "You tried to raise the power of a non-number, '%1'"
 msgstr "Es wurde versucht, mit einer Nicht-Zahl zu potenzieren „%1“"
 
-#: interpreter/executer.cpp:983
+#: interpreter/executer.cpp:985
 #, kde-format
 msgid "You need one variable and a value or variable to do a '='"
 msgstr ""
 "Es wird eine Variable und ein Wert oder noch eine Variable für ein „=“ "
 "benötigt"
 
-#: interpreter/executer.cpp:1002
+#: interpreter/executer.cpp:1004
 #, kde-format
 msgid "The function '%1' is already defined."
 msgstr "Die Funktion „%1“ ist schon definiert."
 
-#: interpreter/executer.cpp:1071
+#: interpreter/executer.cpp:1073
 #, kde-format
 msgid ""
 "Polygon needs between 2 and 4 parameters: corners, size, and optionally "
 "rotation and spoke ratio"
 msgstr ""
 
-#: interpreter/executer.cpp:1084
+#: interpreter/executer.cpp:1086
 #, kde-format
 msgid "A polygon must have between 3 and 10 corners"
 msgstr ""
 
-#: interpreter/executer.cpp:1089
+#: interpreter/executer.cpp:1091
 #, kde-format
 msgid "Polygon side must not be negative"
 msgstr ""
 
-#: interpreter/executer.cpp:1094
+#: interpreter/executer.cpp:1096
 #, kde-format
 msgid "Spoke ratio must be greater than 0 and at most 1"
 msgstr ""
 
-#: interpreter/executer.cpp:1105
+#: interpreter/executer.cpp:1107
 #, kde-format
 msgid ""
 "Ellipse needs between 1 and 3 parameters: width, optionally height, and "
 "optionally rotation"
 msgstr ""
 
-#: interpreter/executer.cpp:1117
+#: interpreter/executer.cpp:1119
 #, kde-format
 msgid "Ellipse width and height must not be negative"
 msgstr ""
 
-#: interpreter/executer.cpp:1128
+#: interpreter/executer.cpp:1130
 #, kde-format
 msgid ""
 "Rectangle needs 2 or 3 parameters: width, height, and optionally rotation"
 msgstr ""
 
-#: interpreter/executer.cpp:1140
+#: interpreter/executer.cpp:1142
 #, kde-format
 msgid "Rectangle width and height must not be negative"
 msgstr ""
 
-#: interpreter/executer.cpp:1151
+#: interpreter/executer.cpp:1153
 #, kde-format
 msgid ""
 "Triangle needs 3 or 4 parameters: sideA, sideB, sideC, and optionally "
 "rotation"
 msgstr ""
 
-#: interpreter/executer.cpp:1164
+#: interpreter/executer.cpp:1166
 #, kde-format
 msgid "Triangle side lengths must be positive numbers"
 msgstr ""
 
-#: interpreter/executer.cpp:1169
+#: interpreter/executer.cpp:1171
 #, kde-format
 msgid "The given side lengths cannot form a triangle"
 msgstr ""
 
-#: interpreter/executer.cpp:1242 interpreter/executer.cpp:1270
+#: interpreter/executer.cpp:1244 interpreter/executer.cpp:1272
 #, kde-format
 msgid "The command %1 takes either a string or %2 numbers"
 msgstr ""
 
-#: interpreter/executer.cpp:1443
+#: interpreter/executer.cpp:1445
 #, kde-format
 msgid "Can't do a sqrt of a negative number"
 msgstr "Das Ziehen einer Wurzel aus einer negativen Zahl ist nicht möglich."
 
-#: interpreter/parser.cpp:38
+#: interpreter/parser.cpp:39
 #, kde-format
 msgid "Expected a command, instead got '%1'"
 msgstr "Es wurde ein Befehl erwartet, aber es wurde „%1“ erhalten"
 
-#: interpreter/parser.cpp:69
+#: interpreter/parser.cpp:70
 #, kde-format
 msgid "Could not understand '%1'"
 msgstr "„%1“ wurde nicht verstanden"
 
-#: interpreter/parser.cpp:104
+#: interpreter/parser.cpp:105
 #, kde-format
 msgid "A comma was expected here..."
 msgstr "Es wurde hier ein Komma erwartet …"
 
-#: interpreter/parser.cpp:107
+#: interpreter/parser.cpp:108
 #, kde-format
 msgid "Did not expect '%1', instead expected the line to end after %2"
 msgstr ""
 "Es wurde „%1“ nicht erwartet, stattdessen hätte die Zeile nach %2 zu Ende "
 "sein sollen"
 
-#: interpreter/parser.cpp:110
+#: interpreter/parser.cpp:111
 #, kde-format
 msgid "Expected an assignment, '=', after the variable '%1'"
 msgstr "Eine Zuweisung erwartet, „=“, nach der Variable „%1“"
 
-#: interpreter/parser.cpp:113
+#: interpreter/parser.cpp:114
 #, kde-format
 msgid "Did not expect '%1', instead expected a closing parenthesis, ')'"
 msgstr ""
 "Es wurde „%1“ nicht erwartet, sondern eine schließende runde Klammer „)“"
 
-#: interpreter/parser.cpp:116
+#: interpreter/parser.cpp:117
 #, kde-format
 msgid "Expected 'to' after 'for'"
 msgstr "Es wurde „bis“ nach „vor“ erwartet"
 
-#: interpreter/parser.cpp:119
+#: interpreter/parser.cpp:120
 #, kde-format
 msgid "Expected a name for a command after 'learn' command"
 msgstr "Es wurde ein Name nach dem Befehl „lerne“ erwartet"
 
-#: interpreter/parser.cpp:281
+#: interpreter/parser.cpp:282
 #, kde-format
 msgid "You cannot put '%1' here."
 msgstr "Sie können „%1“ nicht hier einsetzen."
 
-#: interpreter/parser.cpp:316
+#: interpreter/parser.cpp:317
 #, kde-format
 msgid ""
 "Text string was not properly closed, expected a double quote, ' \" ', to "
@@ -731,17 +731,17 @@ msgstr ""
 "Die Zeichenfolge wurde nicht ordentlich geschlossen, es wurde ein "
 "Doppelhochkomma, „\"“ erwartet, um die Zeichenfolge zu schließen."
 
-#: interpreter/parser.cpp:643
+#: interpreter/parser.cpp:644
 #, kde-format
 msgid "'for' was called wrongly"
 msgstr "„für“ wurde falsch aufgerufen"
 
-#: interpreter/parser.cpp:714
+#: interpreter/parser.cpp:715
 #, kde-format
 msgid "Expected a scope after the 'learn' command"
 msgstr "Es wurde ein Bereich nach dem Befehl „lerne“ erwartet"
 
-#: interpreter/translator.cpp:93
+#: interpreter/translator.cpp:94
 #, kde-format
 msgctxt ""
 "You are about to translate the 'True' COMMAND, there are some rules on how "
@@ -750,7 +750,7 @@ msgctxt ""
 msgid "true"
 msgstr "wahr"
 
-#: interpreter/translator.cpp:101
+#: interpreter/translator.cpp:102
 #, kde-format
 msgctxt ""
 "You are about to translate the 'False' COMMAND, there are some rules on how "
@@ -759,7 +759,7 @@ msgctxt ""
 msgid "false"
 msgstr "falsch"
 
-#: interpreter/translator.cpp:121
+#: interpreter/translator.cpp:122
 #, kde-format
 msgctxt ""
 "You are about to translate the 'ArgumentSeparator' COMMAND, there are some "
@@ -768,7 +768,7 @@ msgctxt ""
 msgid ","
 msgstr ","
 
-#: interpreter/translator.cpp:129
+#: interpreter/translator.cpp:130
 #, kde-format
 msgctxt ""
 "You are about to translate the 'DecimalSeparator' COMMAND, there are some "
@@ -777,7 +777,7 @@ msgctxt ""
 msgid "."
 msgstr "."
 
-#: interpreter/translator.cpp:137
+#: interpreter/translator.cpp:138
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Exit' COMMAND, there are some rules on how "
@@ -786,7 +786,7 @@ msgctxt ""
 msgid "exit"
 msgstr "ende"
 
-#: interpreter/translator.cpp:145
+#: interpreter/translator.cpp:146
 #, kde-format
 msgctxt ""
 "You are about to translate the 'If' COMMAND, there are some rules on how to "
@@ -795,7 +795,7 @@ msgctxt ""
 msgid "if"
 msgstr "wenn"
 
-#: interpreter/translator.cpp:153
+#: interpreter/translator.cpp:154
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Else' COMMAND, there are some rules on how "
@@ -804,7 +804,7 @@ msgctxt ""
 msgid "else"
 msgstr "sonst"
 
-#: interpreter/translator.cpp:161
+#: interpreter/translator.cpp:162
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Repeat' COMMAND, there are some rules on how "
@@ -813,7 +813,7 @@ msgctxt ""
 msgid "repeat"
 msgstr "wiederhole"
 
-#: interpreter/translator.cpp:169
+#: interpreter/translator.cpp:170
 #, kde-format
 msgctxt ""
 "You are about to translate the 'While' COMMAND, there are some rules on how "
@@ -822,7 +822,7 @@ msgctxt ""
 msgid "while"
 msgstr "solange"
 
-#: interpreter/translator.cpp:177
+#: interpreter/translator.cpp:178
 #, kde-format
 msgctxt ""
 "You are about to translate the 'For' COMMAND, there are some rules on how to "
@@ -831,7 +831,7 @@ msgctxt ""
 msgid "for"
 msgstr "von"
 
-#: interpreter/translator.cpp:185
+#: interpreter/translator.cpp:186
 #, kde-format
 msgctxt ""
 "You are about to translate the 'To' COMMAND, there are some rules on how to "
@@ -840,7 +840,7 @@ msgctxt ""
 msgid "to"
 msgstr "bis"
 
-#: interpreter/translator.cpp:193
+#: interpreter/translator.cpp:194
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Step' COMMAND, there are some rules on how "
@@ -849,7 +849,7 @@ msgctxt ""
 msgid "step"
 msgstr "schritt"
 
-#: interpreter/translator.cpp:201
+#: interpreter/translator.cpp:202
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Break' COMMAND, there are some rules on how "
@@ -858,7 +858,7 @@ msgctxt ""
 msgid "break"
 msgstr "abbrechen"
 
-#: interpreter/translator.cpp:209
+#: interpreter/translator.cpp:210
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Return' COMMAND, there are some rules on how "
@@ -867,7 +867,7 @@ msgctxt ""
 msgid "return"
 msgstr "zurück"
 
-#: interpreter/translator.cpp:217
+#: interpreter/translator.cpp:218
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Wait' COMMAND, there are some rules on how "
@@ -876,7 +876,7 @@ msgctxt ""
 msgid "wait"
 msgstr "warte"
 
-#: interpreter/translator.cpp:225
+#: interpreter/translator.cpp:226
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Assert' COMMAND, there are some rules on how "
@@ -885,7 +885,7 @@ msgctxt ""
 msgid "assert"
 msgstr "zusichern"
 
-#: interpreter/translator.cpp:233
+#: interpreter/translator.cpp:234
 #, kde-format
 msgctxt ""
 "You are about to translate the 'And' COMMAND, there are some rules on how to "
@@ -894,7 +894,7 @@ msgctxt ""
 msgid "and"
 msgstr "und"
 
-#: interpreter/translator.cpp:241
+#: interpreter/translator.cpp:242
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Or' COMMAND, there are some rules on how to "
@@ -903,7 +903,7 @@ msgctxt ""
 msgid "or"
 msgstr "oder"
 
-#: interpreter/translator.cpp:249
+#: interpreter/translator.cpp:250
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Not' COMMAND, there are some rules on how to "
@@ -912,7 +912,7 @@ msgctxt ""
 msgid "not"
 msgstr "nicht"
 
-#: interpreter/translator.cpp:281
+#: interpreter/translator.cpp:282
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Learn' COMMAND, there are some rules on how "
@@ -921,7 +921,7 @@ msgctxt ""
 msgid "learn"
 msgstr "lerne"
 
-#: interpreter/translator.cpp:289
+#: interpreter/translator.cpp:290
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Reset' COMMAND, there are some rules on how "
@@ -930,7 +930,7 @@ msgctxt ""
 msgid "reset"
 msgstr "zurücksetzen"
 
-#: interpreter/translator.cpp:297
+#: interpreter/translator.cpp:298
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Clear' COMMAND, there are some rules on how "
@@ -939,7 +939,7 @@ msgctxt ""
 msgid "clear"
 msgstr "lösche"
 
-#: interpreter/translator.cpp:305
+#: interpreter/translator.cpp:306
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Clear' COMMAND ALIAS, there are some rules "
@@ -948,7 +948,7 @@ msgctxt ""
 msgid "ccl"
 msgstr "lös"
 
-#: interpreter/translator.cpp:313
+#: interpreter/translator.cpp:314
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Center' COMMAND, there are some rules on how "
@@ -957,7 +957,7 @@ msgctxt ""
 msgid "center"
 msgstr "mitte"
 
-#: interpreter/translator.cpp:321
+#: interpreter/translator.cpp:322
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Go' COMMAND, there are some rules on how to "
@@ -966,7 +966,7 @@ msgctxt ""
 msgid "go"
 msgstr "gehe"
 
-#: interpreter/translator.cpp:329
+#: interpreter/translator.cpp:330
 #, kde-format
 msgctxt ""
 "You are about to translate the 'GoX' COMMAND, there are some rules on how to "
@@ -975,7 +975,7 @@ msgctxt ""
 msgid "gox"
 msgstr "gehex"
 
-#: interpreter/translator.cpp:337
+#: interpreter/translator.cpp:338
 #, kde-format
 msgctxt ""
 "You are about to translate the 'GoX' COMMAND ALIAS, there are some rules on "
@@ -984,7 +984,7 @@ msgctxt ""
 msgid "gx"
 msgstr "gx"
 
-#: interpreter/translator.cpp:345
+#: interpreter/translator.cpp:346
 #, kde-format
 msgctxt ""
 "You are about to translate the 'GoY' COMMAND, there are some rules on how to "
@@ -993,7 +993,7 @@ msgctxt ""
 msgid "goy"
 msgstr "gehey"
 
-#: interpreter/translator.cpp:353
+#: interpreter/translator.cpp:354
 #, kde-format
 msgctxt ""
 "You are about to translate the 'GoY' COMMAND ALIAS, there are some rules on "
@@ -1002,7 +1002,7 @@ msgctxt ""
 msgid "gy"
 msgstr "gy"
 
-#: interpreter/translator.cpp:361
+#: interpreter/translator.cpp:362
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Forward' COMMAND, there are some rules on "
@@ -1011,7 +1011,7 @@ msgctxt ""
 msgid "forward"
 msgstr "vorwärts"
 
-#: interpreter/translator.cpp:369 interpreter/translator.cpp:409
+#: interpreter/translator.cpp:370 interpreter/translator.cpp:410
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Polygon' COMMAND, there are some rules on "
@@ -1020,7 +1020,7 @@ msgctxt ""
 msgid "polygon"
 msgstr ""
 
-#: interpreter/translator.cpp:377 interpreter/translator.cpp:417
+#: interpreter/translator.cpp:378 interpreter/translator.cpp:418
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Ellipse' COMMAND, there are some rules on "
@@ -1029,7 +1029,7 @@ msgctxt ""
 msgid "ellipse"
 msgstr ""
 
-#: interpreter/translator.cpp:385 interpreter/translator.cpp:425
+#: interpreter/translator.cpp:386 interpreter/translator.cpp:426
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
@@ -1042,7 +1042,7 @@ msgctxt ""
 msgid "rectangle"
 msgstr "dreieck"
 
-#: interpreter/translator.cpp:393 interpreter/translator.cpp:433
+#: interpreter/translator.cpp:394 interpreter/translator.cpp:434
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
@@ -1055,7 +1055,7 @@ msgctxt ""
 msgid "triangle"
 msgstr "dreieck"
 
-#: interpreter/translator.cpp:401
+#: interpreter/translator.cpp:402
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Forward' COMMAND ALIAS, there are some rules "
@@ -1064,7 +1064,7 @@ msgctxt ""
 msgid "fw"
 msgstr "vw"
 
-#: interpreter/translator.cpp:441
+#: interpreter/translator.cpp:442
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Backward' COMMAND, there are some rules on "
@@ -1073,7 +1073,7 @@ msgctxt ""
 msgid "backward"
 msgstr "rückwärts"
 
-#: interpreter/translator.cpp:449
+#: interpreter/translator.cpp:450
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Backward' COMMAND ALIAS, there are some "
@@ -1082,7 +1082,7 @@ msgctxt ""
 msgid "bw"
 msgstr "rw"
 
-#: interpreter/translator.cpp:457
+#: interpreter/translator.cpp:458
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Direction' COMMAND, there are some rules on "
@@ -1091,7 +1091,7 @@ msgctxt ""
 msgid "direction"
 msgstr "richtung"
 
-#: interpreter/translator.cpp:465
+#: interpreter/translator.cpp:466
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Direction' COMMAND ALIAS, there are some "
@@ -1100,7 +1100,7 @@ msgctxt ""
 msgid "dir"
 msgstr "rtg"
 
-#: interpreter/translator.cpp:473
+#: interpreter/translator.cpp:474
 #, kde-format
 msgctxt ""
 "You are about to translate the 'TurnLeft' COMMAND, there are some rules on "
@@ -1109,7 +1109,7 @@ msgctxt ""
 msgid "turnleft"
 msgstr "linksdrehen"
 
-#: interpreter/translator.cpp:481
+#: interpreter/translator.cpp:482
 #, kde-format
 msgctxt ""
 "You are about to translate the 'TurnLeft' COMMAND ALIAS, there are some "
@@ -1118,7 +1118,7 @@ msgctxt ""
 msgid "tl"
 msgstr "ld"
 
-#: interpreter/translator.cpp:489
+#: interpreter/translator.cpp:490
 #, kde-format
 msgctxt ""
 "You are about to translate the 'TurnRight' COMMAND, there are some rules on "
@@ -1127,7 +1127,7 @@ msgctxt ""
 msgid "turnright"
 msgstr "rechtsdrehen"
 
-#: interpreter/translator.cpp:497
+#: interpreter/translator.cpp:498
 #, kde-format
 msgctxt ""
 "You are about to translate the 'TurnRight' COMMAND ALIAS, there are some "
@@ -1136,7 +1136,7 @@ msgctxt ""
 msgid "tr"
 msgstr "rd"
 
-#: interpreter/translator.cpp:505
+#: interpreter/translator.cpp:506
 #, kde-format
 msgctxt ""
 "You are about to translate the 'PenWidth' COMMAND, there are some rules on "
@@ -1145,7 +1145,7 @@ msgctxt ""
 msgid "penwidth"
 msgstr "stiftbreite"
 
-#: interpreter/translator.cpp:513
+#: interpreter/translator.cpp:514
 #, kde-format
 msgctxt ""
 "You are about to translate the 'PenWidth' COMMAND ALIAS, there are some "
@@ -1154,7 +1154,7 @@ msgctxt ""
 msgid "pw"
 msgstr "sb"
 
-#: interpreter/translator.cpp:521
+#: interpreter/translator.cpp:522
 #, kde-format
 msgctxt ""
 "You are about to translate the 'PenUp' COMMAND, there are some rules on how "
@@ -1163,7 +1163,7 @@ msgctxt ""
 msgid "penup"
 msgstr "stifthoch"
 
-#: interpreter/translator.cpp:529
+#: interpreter/translator.cpp:530
 #, kde-format
 msgctxt ""
 "You are about to translate the 'PenUp' COMMAND ALIAS, there are some rules "
@@ -1172,7 +1172,7 @@ msgctxt ""
 msgid "pu"
 msgstr "sh"
 
-#: interpreter/translator.cpp:537
+#: interpreter/translator.cpp:538
 #, kde-format
 msgctxt ""
 "You are about to translate the 'PenDown' COMMAND, there are some rules on "
@@ -1181,7 +1181,7 @@ msgctxt ""
 msgid "pendown"
 msgstr "stiftrunter"
 
-#: interpreter/translator.cpp:545
+#: interpreter/translator.cpp:546
 #, kde-format
 msgctxt ""
 "You are about to translate the 'PenDown' COMMAND ALIAS, there are some rules "
@@ -1190,7 +1190,7 @@ msgctxt ""
 msgid "pd"
 msgstr "sr"
 
-#: interpreter/translator.cpp:553
+#: interpreter/translator.cpp:554
 #, kde-format
 msgctxt ""
 "You are about to translate the 'PenColor' COMMAND, there are some rules on "
@@ -1199,7 +1199,7 @@ msgctxt ""
 msgid "pencolor"
 msgstr "stiftfarbe"
 
-#: interpreter/translator.cpp:561
+#: interpreter/translator.cpp:562
 #, kde-format
 msgctxt ""
 "You are about to translate the 'PenColor' COMMAND ALIAS, there are some "
@@ -1208,7 +1208,7 @@ msgctxt ""
 msgid "pc"
 msgstr "sf"
 
-#: interpreter/translator.cpp:569
+#: interpreter/translator.cpp:570
 #, kde-format
 msgctxt ""
 "You are about to translate the 'CanvasColor' COMMAND, there are some rules "
@@ -1217,7 +1217,7 @@ msgctxt ""
 msgid "canvascolor"
 msgstr "papierfarbe"
 
-#: interpreter/translator.cpp:577
+#: interpreter/translator.cpp:578
 #, kde-format
 msgctxt ""
 "You are about to translate the 'CanvasColor' COMMAND ALIAS, there are some "
@@ -1226,7 +1226,7 @@ msgctxt ""
 msgid "cc"
 msgstr "pf"
 
-#: interpreter/translator.cpp:585
+#: interpreter/translator.cpp:586
 #, kde-format
 msgctxt ""
 "You are about to translate the 'CanvasSize' COMMAND, there are some rules on "
@@ -1235,7 +1235,7 @@ msgctxt ""
 msgid "canvassize"
 msgstr "papiergröße"
 
-#: interpreter/translator.cpp:593
+#: interpreter/translator.cpp:594
 #, kde-format
 msgctxt ""
 "You are about to translate the 'CanvasSize' COMMAND ALIAS, there are some "
@@ -1244,7 +1244,7 @@ msgctxt ""
 msgid "cs"
 msgstr "pg"
 
-#: interpreter/translator.cpp:601
+#: interpreter/translator.cpp:602
 #, kde-format
 msgctxt ""
 "You are about to translate the 'SpriteShow' COMMAND, there are some rules on "
@@ -1253,7 +1253,7 @@ msgctxt ""
 msgid "spriteshow"
 msgstr "zeigebild"
 
-#: interpreter/translator.cpp:609
+#: interpreter/translator.cpp:610
 #, kde-format
 msgctxt ""
 "You are about to translate the 'SpriteShow' COMMAND ALIAS, there are some "
@@ -1262,7 +1262,7 @@ msgctxt ""
 msgid "ss"
 msgstr "zb"
 
-#: interpreter/translator.cpp:617
+#: interpreter/translator.cpp:618
 #, kde-format
 msgctxt ""
 "You are about to translate the 'SpriteHide' COMMAND, there are some rules on "
@@ -1271,7 +1271,7 @@ msgctxt ""
 msgid "spritehide"
 msgstr "versteckebild"
 
-#: interpreter/translator.cpp:625
+#: interpreter/translator.cpp:626
 #, kde-format
 msgctxt ""
 "You are about to translate the 'SpriteHide' COMMAND ALIAS, there are some "
@@ -1280,7 +1280,7 @@ msgctxt ""
 msgid "sh"
 msgstr "vb"
 
-#: interpreter/translator.cpp:633
+#: interpreter/translator.cpp:634
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Print' COMMAND, there are some rules on how "
@@ -1289,7 +1289,7 @@ msgctxt ""
 msgid "print"
 msgstr "drucke"
 
-#: interpreter/translator.cpp:641
+#: interpreter/translator.cpp:642
 #, kde-format
 msgctxt ""
 "You are about to translate the 'FontSize' COMMAND, there are some rules on "
@@ -1298,7 +1298,7 @@ msgctxt ""
 msgid "fontsize"
 msgstr "schriftgröße"
 
-#: interpreter/translator.cpp:649
+#: interpreter/translator.cpp:650
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Random' COMMAND, there are some rules on how "
@@ -1307,7 +1307,7 @@ msgctxt ""
 msgid "random"
 msgstr "zufall"
 
-#: interpreter/translator.cpp:657
+#: interpreter/translator.cpp:658
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Random' COMMAND ALIAS, there are some rules "
@@ -1316,7 +1316,7 @@ msgctxt ""
 msgid "rnd"
 msgstr "zuf"
 
-#: interpreter/translator.cpp:665
+#: interpreter/translator.cpp:666
 #, kde-format
 msgctxt ""
 "You are about to translate the 'GetX' COMMAND, there are some rules on how "
@@ -1325,7 +1325,7 @@ msgctxt ""
 msgid "getx"
 msgstr "holex"
 
-#: interpreter/translator.cpp:673
+#: interpreter/translator.cpp:674
 #, kde-format
 msgctxt ""
 "You are about to translate the 'GetY' COMMAND, there are some rules on how "
@@ -1334,7 +1334,7 @@ msgctxt ""
 msgid "gety"
 msgstr "holey"
 
-#: interpreter/translator.cpp:681
+#: interpreter/translator.cpp:682
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Message' COMMAND, there are some rules on "
@@ -1343,7 +1343,7 @@ msgctxt ""
 msgid "message"
 msgstr "nachricht"
 
-#: interpreter/translator.cpp:689
+#: interpreter/translator.cpp:690
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Ask' COMMAND, there are some rules on how to "
@@ -1352,7 +1352,7 @@ msgctxt ""
 msgid "ask"
 msgstr "frage"
 
-#: interpreter/translator.cpp:697
+#: interpreter/translator.cpp:698
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Pi' COMMAND, there are some rules on how to "
@@ -1361,7 +1361,7 @@ msgctxt ""
 msgid "pi"
 msgstr "pi"
 
-#: interpreter/translator.cpp:705
+#: interpreter/translator.cpp:706
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Tan' COMMAND, there are some rules on how to "
@@ -1370,7 +1370,7 @@ msgctxt ""
 msgid "tan"
 msgstr "tan"
 
-#: interpreter/translator.cpp:713
+#: interpreter/translator.cpp:714
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Sin' COMMAND, there are some rules on how to "
@@ -1379,7 +1379,7 @@ msgctxt ""
 msgid "sin"
 msgstr "sin"
 
-#: interpreter/translator.cpp:721
+#: interpreter/translator.cpp:722
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Cos' COMMAND, there are some rules on how to "
@@ -1388,7 +1388,7 @@ msgctxt ""
 msgid "cos"
 msgstr "cos"
 
-#: interpreter/translator.cpp:729
+#: interpreter/translator.cpp:730
 #, kde-format
 msgctxt ""
 "You are about to translate the 'ArcTan' COMMAND, there are some rules on how "
@@ -1397,7 +1397,7 @@ msgctxt ""
 msgid "arctan"
 msgstr "arctan"
 
-#: interpreter/translator.cpp:737
+#: interpreter/translator.cpp:738
 #, kde-format
 msgctxt ""
 "You are about to translate the 'ArcSin' COMMAND, there are some rules on how "
@@ -1406,7 +1406,7 @@ msgctxt ""
 msgid "arcsin"
 msgstr "arcsin"
 
-#: interpreter/translator.cpp:745
+#: interpreter/translator.cpp:746
 #, kde-format
 msgctxt ""
 "You are about to translate the 'ArcCos' COMMAND, there are some rules on how "
@@ -1415,7 +1415,7 @@ msgctxt ""
 msgid "arccos"
 msgstr "arccos"
 
-#: interpreter/translator.cpp:753
+#: interpreter/translator.cpp:754
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Sqrt' COMMAND, there are some rules on how "
@@ -1424,7 +1424,7 @@ msgctxt ""
 msgid "sqrt"
 msgstr "wurzel"
 
-#: interpreter/translator.cpp:761
+#: interpreter/translator.cpp:762
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Round' COMMAND, there are some rules on how "
@@ -1433,7 +1433,7 @@ msgctxt ""
 msgid "round"
 msgstr "runden"
 
-#: interpreter/translator.cpp:769
+#: interpreter/translator.cpp:770
 #, kde-format
 msgctxt ""
 "You are about to translate the 'GetDirection' COMMAND, there are some rules "
@@ -1442,7 +1442,7 @@ msgctxt ""
 msgid "getdirection"
 msgstr "holerichtung"
 
-#: interpreter/translator.cpp:777
+#: interpreter/translator.cpp:778
 #, kde-format
 msgctxt ""
 "You are about to translate the 'Mod' COMMAND, there are some rules on how to "
@@ -1451,7 +1451,7 @@ msgctxt ""
 msgid "mod"
 msgstr "mod"
 
-#: interpreter/translator.cpp:793
+#: interpreter/translator.cpp:794
 #, kde-format
 msgctxt ""
 "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
@@ -1459,7 +1459,7 @@ msgctxt ""
 msgid "triangle"
 msgstr "dreieck"
 
-#: interpreter/translator.cpp:805
+#: interpreter/translator.cpp:806
 #, kde-format
 msgctxt ""
 "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
@@ -1467,7 +1467,7 @@ msgctxt ""
 msgid "curly"
 msgstr "locken"
 
-#: interpreter/translator.cpp:823
+#: interpreter/translator.cpp:824
 #, kde-format
 msgctxt ""
 "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
@@ -1475,7 +1475,7 @@ msgctxt ""
 msgid "arrow"
 msgstr "pfeil"
 
-#: interpreter/translator.cpp:850
+#: interpreter/translator.cpp:851
 #, kde-format
 msgctxt ""
 "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
