@@ -1,6 +1,6 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2026 This file is copyright:
 # This file is distributed under the same license as the kturtle package.
-# Shinjo Park <kde@peremen.name>, 2021.
+# SPDX-FileCopyrightText: 2021, 2026 Shinjo Park <kde@peremen.name>
 #
 # KTurtle의 로고-like 명령 한국어 번역 참고 문헌:
 # 창조99, 한베1.1
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 21.08.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
