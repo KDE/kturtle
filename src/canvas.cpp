@@ -151,7 +151,7 @@ void Canvas::slotPolygon(int corners, double side, double rotation, double spoke
     double x = turtle->pos().x();
     double y = turtle->pos().y();
     double outerR = side / 2.0;
-    double innerR = outerR * spokeRatio;
+    double innerR = outerR * spokeRatio * qCos(M_PI / corners);
 
     QPolygonF poly;
     int totalPoints = (spokeRatio < 1.0) ? corners * 2 : corners;

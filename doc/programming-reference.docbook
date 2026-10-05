@@ -318,7 +318,7 @@ Please note that <userinput>$A</userinput> and <userinput>$B</userinput> have to
     <varlistentry>
       <term>polygon<indexterm><primary>polygon</primary></indexterm></term>
       <listitem><para><screen>polygon corners, size</screen>
-      <userinput>polygon</userinput> draws a regular polygon with the given number of corners (between 3 and 10) and the given size. An optional third parameter sets the rotation angle in degrees, and an optional fourth parameter sets the spoke ratio (a number between 0 and 1) to turn the polygon into a star shape. The spoke ratio controls how far the points between the corners are pulled toward the center: a ratio of 1 leaves the polygon unchanged, while smaller values create sharper star points.
+      <userinput>polygon</userinput> draws a regular polygon with the given number of corners (between 3 and 10) and the given size. An optional third parameter sets the rotation angle in degrees, and an optional fourth parameter sets the spoke ratio (a number between 0 and 1) to turn the polygon into a star shape. The spoke ratio controls how far the midpoints of the lines between the corners are pulled toward the center: a ratio of 1 creates a regular convex polygon, while smaller values bring them in to create star points.
 <screen>
 polygon 3, 100
 polygon 6, 100, 45
