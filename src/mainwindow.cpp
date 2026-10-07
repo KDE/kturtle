@@ -344,10 +344,10 @@ void MainWindow::setupActions()
 
     // Change Icon… list options
     a = new QAction(i18n("kturtle"), this);
-    a->setIcon(QIcon(QStringLiteral(":turtle.svg")));
+    a->setIcon(QIcon(QStringLiteral(":sprites/turtle.svg")));
     actionCollection()->addAction(QStringLiteral("kturtleSVG"), a);
     connect(a, &QAction::triggered, [this]() {
-        MainWindow::setSprite(QStringLiteral(":turtle.svg"));
+        MainWindow::setSprite(QStringLiteral(":sprites/turtle.svg"));
     });
 
     // sprite choices
@@ -379,12 +379,12 @@ void MainWindow::setupActions()
         MainWindow::setSprite(QStringLiteral(":sprites/ant.svg"));
     });
 
-    a = new QAction(i18n("pen"), this);
-    a->setIcon(QIcon(QStringLiteral(":sprites/pen.svg")));
-    actionCollection()->addAction(QStringLiteral("penSVG"), a);
-    connect(a, &QAction::triggered, [this]() {
-        MainWindow::setSprite(QStringLiteral(":sprites/pen.svg"), 2.0);
-    });
+    // a = new QAction(i18n("pen"), this);
+    // a->setIcon(QIcon(QStringLiteral(":sprites/pen.svg")));
+    // actionCollection()->addAction(QStringLiteral("penSVG"), a);
+    // connect(a, &QAction::triggered, [this]() {
+    //     MainWindow::setSprite(QStringLiteral(":sprites/pen.svg"), 2.0);
+    // });
 
     a = new QAction(i18n("Choose Custom Icon…"), this);
     actionCollection()->addAction(QStringLiteral("change_sprite"), a);

@@ -37,7 +37,7 @@ DirectionCanvas::DirectionCanvas(QWidget *parent)
     setMinimumSize(230, 200);
     setBackgroundRole(QPalette::Base);
     setAutoFillBackground(true);
-    turtle.load(QStringLiteral(":turtle.svg"));
+    turtle.load(QStringLiteral(":sprites/turtle.svg"));
     greyTurtle.load(QStringLiteral(":turtle_grey.svg"));
 
     deg = 0;

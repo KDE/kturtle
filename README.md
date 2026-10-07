@@ -1,4 +1,4 @@
-<img src="https://invent.kde.org/kde/kturtle/raw/master/src/turtle.svg" align="right"
+<img src="https://invent.kde.org/kde/kturtle/raw/master/src/sprites/turtle.svg" align="right"
      title="Kturtle logo" width="64" height="64">
 
 KTurtle is an educational programming environment that uses TurtleSpeak, a programming language loosely based on and inspired by [LOGO](http://en.wikipedia.org/wiki/Logo_programming_language).
