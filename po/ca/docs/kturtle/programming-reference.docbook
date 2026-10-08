@@ -888,7 +888,7 @@ $answer = 10 &gt; 3
 >polígon cantonades, mida</screen
 ><userinput
 >polygon</userinput
-> dibuixa un polígon regular amb el nombre indicat de cantonades (entre 3 i 10) i la mida indicada. Un tercer paràmetre opcional estableix l'angle de gir en graus, i un quart paràmetre opcional estableix la relació del radi (un nombre entre 0 i 1) per convertir el polígon en una forma d'estrella. La relació del radi controla com els punts entre les cantonades es tiren cap al centre: una proporció d'1 deixa el polígon sense canvis, mentre que els valors més petits creen punts de l'estella més nítids. <screen>
+> dibuixa un polígon regular amb el nombre indicat de cantonades (entre 3 i 10) i la mida indicada. Un tercer paràmetre opcional estableix l'angle de gir en graus, i un quart paràmetre opcional estableix la relació del radi (un nombre entre 0 i 1) per convertir el polígon en una forma d'estrella. La relació del radi controla com de lluny els punts mitjos de les línies entre les cantonades es tiren cap al centre: una proporció d'1 crea un polígon convex normal, mentre que els valors més petits els porten a crear punts d'estella. <screen>
 polígon 3, 100
 polígon 6, 100, 45
 polígon 5, 100, 0, 0.5

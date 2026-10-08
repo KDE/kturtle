@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-04 00:41+0000\n"
+"POT-Creation-Date: 2026-10-08 00:40+0000\n"
 "PO-Revision-Date: 2022-04-28 18:48+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1999,12 +1999,12 @@ msgstr ""
 msgid "ant"
 msgstr "ja"
 
-#: mainwindow.cpp:382
-#, fuzzy, kde-format
-#| msgid "Open"
-msgid "pen"
-msgstr "Avaa"
-
+#. i18n("pen"), this);
+#. a->setIcon(QIcon(QStringLiteral(":sprites/pen.svg")));
+#. actionCollection()->addAction(QStringLiteral("penSVG"), a);
+#. connect(a, &QAction::triggered, [this]() {
+#. MainWindow::setSprite(QStringLiteral(":sprites/pen.svg"), 2.0);
+#. });
 #: mainwindow.cpp:389
 #, kde-format
 msgid "Choose Custom Icon…"
@@ -2359,6 +2359,11 @@ msgstr "Viesti"
 #, kde-format
 msgid "Choose Custom Icon"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Open"
+#~ msgid "pen"
+#~ msgstr "Avaa"
 
 #~ msgid "&Run Speed"
 #~ msgstr "Suoritus&nopeus"

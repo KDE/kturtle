@@ -778,31 +778,13 @@
 >Snelheid...</guimenuitem
 > </menuchoice
 ></term>
-      <listitem
+     <listitem
 ><para
->Presenteert een lijst van mogelijke uitvoersnelheden, waarin: <guimenuitem
->Volle snelheid (geen markering in de code en geen inspector)</guimenuitem
->, <guimenuitem
->Volle snelheid</guimenuitem
->, <guimenuitem
->Langzaam</guimenuitem
->, <guimenuitem
->Langzamer</guimenuitem
->, <guimenuitem
->Erg langzaam</guimenuitem
-> en  <guimenuitem
->Stap-voor-stap</guimenuitem
->. Als de uitvoersnelheid <guimenuitem
->Volle snelheid</guimenuitem
-> is (standaard) zien we nauwelijks wat er gebeurt. Soms is dit gewenst, maar soms willen het uitvoeren kunnen volgen. In dat geval kan de snelheid worden ingesteld op <guimenuitem
->Langzaam</guimenuitem
->, <guimenuitem
->Langzamer</guimenuitem
-> of <guimenuitem
->Erg langzaam</guimenuitem
->. Wanneer een van de langzame snelheden is geselecteerd wordt het verloop van het programma in de codebewerker getoond. Bij <guimenuitem
->Stap-voor-stap</guimenuitem
-> wordt er steeds één commando uitgevoerd.</para
+>Biedt twee uitvoeringsmodi: ten eerste een <guilabel
+>snelheidsregelaar</guilabel
+> waarmee een waarde tussen 1% en 100% kan worden gekozen, voorzien van een aanduiding van het huidige percentage. 1% staat voor de laagste snelheid en 100% (standaard) voor de hoogste snelheid. Bij elke snelheid zijn markering en de inspector beschikbaar. Tweede modus: <guimenuitem
+>Stap voor stap</guimenuitem
+>, waarbij telkens één opdracht wordt uitgevoerd.</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -845,6 +827,33 @@
 ><para
 >Hiermee wordt de dialoog geopend voor het kiezen van een kleur.</para
 ></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-change-icon"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Hulpmiddelen</guimenu
+> <guimenuitem
+>Pictogram wijzigen…</guimenuitem
+> </menuchoice
+></term>
+      <listitem>
+        <para
+>Deze actie opent een lijst met enkele vooraf gedefinieerde pictogrammen en een actie <guimenuitem
+>Aangepast pictogram kiezen…</guimenuitem
+>, waarmee u uw eigen <literal
+>.svg</literal
+>-bestand kunt selecteren om als pictogram te gebruiken.</para>
+        <para
+>Voor meer pictogrammen zie <ulink url="https://freesvg.org"
+>freesvg.org</ulink
+> of <ulink url="https://openclipart.org/"
+>openclipart.org</ulink
+>.</para>
+      </listitem>
     </varlistentry>
   </variablelist>
 </sect2>

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-04 00:41+0000\n"
+"POT-Creation-Date: 2026-10-08 00:40+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1958,12 +1958,12 @@ msgstr ""
 msgid "ant"
 msgstr "和"
 
-#: mainwindow.cpp:382
-#, fuzzy, kde-format
-#| msgid "Open"
-msgid "pen"
-msgstr "打开"
-
+#. i18n("pen"), this);
+#. a->setIcon(QIcon(QStringLiteral(":sprites/pen.svg")));
+#. actionCollection()->addAction(QStringLiteral("penSVG"), a);
+#. connect(a, &QAction::triggered, [this]() {
+#. MainWindow::setSprite(QStringLiteral(":sprites/pen.svg"), 2.0);
+#. });
 #: mainwindow.cpp:389
 #, kde-format
 msgid "Choose Custom Icon…"
@@ -2313,6 +2313,11 @@ msgstr "信息"
 #, kde-format
 msgid "Choose Custom Icon"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Open"
+#~ msgid "pen"
+#~ msgstr "打开"
 
 #~ msgid "&Run Speed"
 #~ msgstr "运行速度(&R)"

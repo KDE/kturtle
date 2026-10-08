@@ -882,7 +882,7 @@ $respuesta = 10 &gt; 3
 >polígono vértices, tamaño</screen
 ><userinput
 >polígono</userinput
-> dibuja un polígono regular con el número de vértices (entre 3 y 10) y tamaño indicados. Un tercer parámetro opcional define el ángulo de rotación en grados, y un cuarto parámetro opcional define la relación de radios (un número entre 0 y 1) para convertir el polígono en una estrella. La relación de radios controla la distancia que se desplazan los puntos que hay entre los vértices hacia el centro: una relación de 1 deja el polígono sin cambios, mientras que valores más pequeños crean puntas de estrella más definidas. <screen>
+> dibuja un polígono regular con el número de vértices (entre 3 y 10) y tamaño indicados. Un tercer parámetro opcional define el ángulo de rotación en grados, y un cuarto parámetro opcional define la relación de radios (un número entre 0 y 1) para convertir el polígono en una estrella. La relación de radios controla la distancia que se desplazan los puntos medios de las líneas que hay entre los vértices hacia el centro: una relación de 1 crea un polígono convexo regular, mientras que valores más pequeños lo convierten en puntas de estrella. <screen>
 polígono 3, 100
 polígono 6, 100, 45
 polígono 5, 100, 0, 0.5

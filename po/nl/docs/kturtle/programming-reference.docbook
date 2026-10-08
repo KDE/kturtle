@@ -889,6 +889,115 @@ $antwoord = 10 &gt; 3
   </note>
 </sect2>
 
+<sect2 id="drawing-shapes">
+<title
+>Vormen tekenen</title>
+<para
+>&kturtle; beschikt over commando's voor het tekenen van veelvoorkomende vormen, zonder dat u deze hoeft op te bouwen uit <userinput
+>forward</userinput
+>- en <userinput
+>turnleft</userinput
+>-commando's.</para>
+
+  <variablelist>
+    <anchor id="polygon"/>
+    <varlistentry>
+      <term
+>veelhoek<indexterm
+><primary
+>veelhoek</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>veelhoekhoeken, grootte</screen
+><userinput
+>veelhoek</userinput
+> tekent een regelmatige veelhoek met het opgegeven aantal hoeken (tussen 3 en 10) en de opgegeven grootte. Een optionele derde parameter bepaalt de draaihoek in graden, en een optionele vierde parameter bepaalt de 'spoke ratio' (een getal tussen 0 en 1) om de veelhoek in een stervorm te veranderen. Deze verhouding bepaalt hoe ver de middelpunten de lijnen tussen de hoeken naar het centrum toe worden getrokken: bij een waarde van 1 maakt een reguliere convexe veelhoek, terwijl lagere waarden zorgen voor scherpere sterpunten. <screen>
+veelhoek 3, 100
+veelhoek 6, 100, 45
+veelhoek 5, 100, 0, 0.5
+</screen
+> De eerste regel tekent een gelijkzijdige driehoek, de tweede een zeshoek die 45 graden is gedraaid, en de derde een vijfpuntige ster.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="triangle"/>
+    <varlistentry>
+      <term
+>driehoek<indexterm
+><primary
+>driehoek</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>driehoek zijdeA, zijdeB, zijdeC</screen
+><userinput
+>driehoek</userinput
+> tekent een driehoek met de drie opgegeven zijdelengtes. Een optionele vierde parameter bepaalt de rotatiehoek in graden. <screen>
+driehoek 80, 100, 60
+</screen
+> Hiermee wordt een driehoek getekend met zijden van 80, 100 en 60.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="rectangle"/>
+    <varlistentry>
+      <term
+>rechthoek<indexterm
+><primary
+>rechthoek</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>rechthoek breedte, hoogte</screen
+><userinput
+>rechthoek</userinput
+> tekent een rechthoek met de opgegeven breedte en hoogte. Een optionele derde parameter bepaalt de rotatiehoek in graden. <screen>
+rechthoek 100, 60
+rechthoek 100, 60, 45
+</screen
+> De tweede regel tekent dezelfde rechthoek, maar dan 45 graden gedraaid.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+<variablelist>
+    <anchor id="ellipse"/>
+    <varlistentry>
+      <term
+>ellips<indexterm
+><primary
+>ellips</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>ellips breedte, hoogte</screen
+><userinput
+>ellips</userinput
+> tekent een ellips met de opgegeven breedte en hoogte. Als er slechts één parameter wordt opgegeven, wordt deze gebruikt voor zowel de breedte als de hoogte, waardoor een cirkel wordt getekend. Een optionele derde parameter bepaalt de rotatiehoek in graden. <screen>
+ellips 50
+ellips 100, 60
+ellips 100, 60, 45
+</screen
+> De eerste regel tekent een cirkel met een diameter van 50, de tweede een ellips, en de derde dezelfde ellips, maar dan 45 graden gedraaid.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+</sect2>
+
 <sect2 id="locate-the-turtle">
 <title
 >Waar is de schildpad?</title>

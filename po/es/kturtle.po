@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-04 00:41+0000\n"
+"POT-Creation-Date: 2026-10-08 00:40+0000\n"
 "PO-Revision-Date: 2026-09-26 17:39+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -1983,11 +1983,12 @@ msgstr "cangrejo"
 msgid "ant"
 msgstr "hormiga"
 
-#: mainwindow.cpp:382
-#, kde-format
-msgid "pen"
-msgstr "pincel"
-
+#. i18n("pen"), this);
+#. a->setIcon(QIcon(QStringLiteral(":sprites/pen.svg")));
+#. actionCollection()->addAction(QStringLiteral("penSVG"), a);
+#. connect(a, &QAction::triggered, [this]() {
+#. MainWindow::setSprite(QStringLiteral(":sprites/pen.svg"), 2.0);
+#. });
 #: mainwindow.cpp:389
 #, kde-format
 msgid "Choose Custom Icon…"
@@ -2347,3 +2348,6 @@ msgstr "Mensaje"
 #, kde-format
 msgid "Choose Custom Icon"
 msgstr "Escoger icono personalizado"
+
+#~ msgid "pen"
+#~ msgstr "pincel"

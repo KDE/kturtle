@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-04 00:41+0000\n"
+"POT-Creation-Date: 2026-10-08 00:40+0000\n"
 "PO-Revision-Date: 2012-05-16 19:14+0530\n"
 "Last-Translator: Joysankar Sengupta <joy.mcet@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -2363,12 +2363,12 @@ msgstr ""
 msgid "ant"
 msgstr "এবং"
 
-#: mainwindow.cpp:382
-#, fuzzy, kde-format
-#| msgid "Open"
-msgid "pen"
-msgstr "খোলো"
-
+#. i18n("pen"), this);
+#. a->setIcon(QIcon(QStringLiteral(":sprites/pen.svg")));
+#. actionCollection()->addAction(QStringLiteral("penSVG"), a);
+#. connect(a, &QAction::triggered, [this]() {
+#. MainWindow::setSprite(QStringLiteral(":sprites/pen.svg"), 2.0);
+#. });
 #: mainwindow.cpp:389
 #, kde-format
 msgid "Choose Custom Icon…"
@@ -2722,6 +2722,11 @@ msgstr "বার্তা"
 #, kde-format
 msgid "Choose Custom Icon"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Open"
+#~ msgid "pen"
+#~ msgstr "খোলো"
 
 #~ msgid "&Run Speed"
 #~ msgstr "&চালানোর গতি"

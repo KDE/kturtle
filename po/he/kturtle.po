@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-04 00:41+0000\n"
+"POT-Creation-Date: 2026-10-08 00:40+0000\n"
 "PO-Revision-Date: 2026-09-27 09:42+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -1963,11 +1963,12 @@ msgstr "סרטן"
 msgid "ant"
 msgstr "נמלה"
 
-#: mainwindow.cpp:382
-#, kde-format
-msgid "pen"
-msgstr "עט"
-
+#. i18n("pen"), this);
+#. a->setIcon(QIcon(QStringLiteral(":sprites/pen.svg")));
+#. actionCollection()->addAction(QStringLiteral("penSVG"), a);
+#. connect(a, &QAction::triggered, [this]() {
+#. MainWindow::setSprite(QStringLiteral(":sprites/pen.svg"), 2.0);
+#. });
 #: mainwindow.cpp:389
 #, kde-format
 msgid "Choose Custom Icon…"
@@ -2317,6 +2318,9 @@ msgstr "מסר"
 #, kde-format
 msgid "Choose Custom Icon"
 msgstr "בחירת סמל משלך"
+
+#~ msgid "pen"
+#~ msgstr "עט"
 
 #~ msgid "&Run Speed"
 #~ msgstr "מהירות ה&רצה"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-04 00:41+0000\n"
+"POT-Creation-Date: 2026-10-08 00:40+0000\n"
 "PO-Revision-Date: 2026-10-03 20:30+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1962,11 +1962,12 @@ msgstr "게"
 msgid "ant"
 msgstr "개미"
 
-#: mainwindow.cpp:382
-#, kde-format
-msgid "pen"
-msgstr "펜"
-
+#. i18n("pen"), this);
+#. a->setIcon(QIcon(QStringLiteral(":sprites/pen.svg")));
+#. actionCollection()->addAction(QStringLiteral("penSVG"), a);
+#. connect(a, &QAction::triggered, [this]() {
+#. MainWindow::setSprite(QStringLiteral(":sprites/pen.svg"), 2.0);
+#. });
 #: mainwindow.cpp:389
 #, kde-format
 msgid "Choose Custom Icon…"
@@ -2316,6 +2317,9 @@ msgstr "메시지"
 #, kde-format
 msgid "Choose Custom Icon"
 msgstr "사용자 정의 아이콘 선택"
+
+#~ msgid "pen"
+#~ msgstr "펜"
 
 #~ msgid "&Run Speed"
 #~ msgstr "실행 속도(&R)"

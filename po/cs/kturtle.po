@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-04 00:41+0000\n"
+"POT-Creation-Date: 2026-10-08 00:40+0000\n"
 "PO-Revision-Date: 2026-09-26 11:23+0200\n"
 "Last-Translator: Libor Filipek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -1982,11 +1982,12 @@ msgstr "rak"
 msgid "ant"
 msgstr "mravenec"
 
-#: mainwindow.cpp:382
-#, kde-format
-msgid "pen"
-msgstr "pero"
-
+#. i18n("pen"), this);
+#. a->setIcon(QIcon(QStringLiteral(":sprites/pen.svg")));
+#. actionCollection()->addAction(QStringLiteral("penSVG"), a);
+#. connect(a, &QAction::triggered, [this]() {
+#. MainWindow::setSprite(QStringLiteral(":sprites/pen.svg"), 2.0);
+#. });
 #: mainwindow.cpp:389
 #, kde-format
 msgid "Choose Custom Icon…"
@@ -2345,6 +2346,9 @@ msgstr "Zpráva"
 #, kde-format
 msgid "Choose Custom Icon"
 msgstr "Vyberte vlastní ikonu"
+
+#~ msgid "pen"
+#~ msgstr "pero"
 
 #~ msgid "&Run Speed"
 #~ msgstr "&Rychlost běhu"

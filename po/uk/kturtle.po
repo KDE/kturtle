@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-04 00:41+0000\n"
+"POT-Creation-Date: 2026-10-08 00:40+0000\n"
 "PO-Revision-Date: 2026-09-26 13:21+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -1986,11 +1986,12 @@ msgstr "краб"
 msgid "ant"
 msgstr "мураха"
 
-#: mainwindow.cpp:382
-#, kde-format
-msgid "pen"
-msgstr "ручка"
-
+#. i18n("pen"), this);
+#. a->setIcon(QIcon(QStringLiteral(":sprites/pen.svg")));
+#. actionCollection()->addAction(QStringLiteral("penSVG"), a);
+#. connect(a, &QAction::triggered, [this]() {
+#. MainWindow::setSprite(QStringLiteral(":sprites/pen.svg"), 2.0);
+#. });
 #: mainwindow.cpp:389
 #, kde-format
 msgid "Choose Custom Icon…"
@@ -2351,6 +2352,9 @@ msgstr "Повідомлення"
 #, kde-format
 msgid "Choose Custom Icon"
 msgstr "Виберіть нетипову піктограму"
+
+#~ msgid "pen"
+#~ msgstr "ручка"
 
 #~ msgid "&Run Speed"
 #~ msgstr "&Швидкість виконання"

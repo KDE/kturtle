@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeedu-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-04 00:41+0000\n"
+"POT-Creation-Date: 2026-10-08 00:40+0000\n"
 "PO-Revision-Date: 2026-09-30 10:15+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1982,11 +1982,12 @@ msgstr "yengeç"
 msgid "ant"
 msgstr "karınca"
 
-#: mainwindow.cpp:382
-#, kde-format
-msgid "pen"
-msgstr "kalem"
-
+#. i18n("pen"), this);
+#. a->setIcon(QIcon(QStringLiteral(":sprites/pen.svg")));
+#. actionCollection()->addAction(QStringLiteral("penSVG"), a);
+#. connect(a, &QAction::triggered, [this]() {
+#. MainWindow::setSprite(QStringLiteral(":sprites/pen.svg"), 2.0);
+#. });
 #: mainwindow.cpp:389
 #, kde-format
 msgid "Choose Custom Icon…"
@@ -2342,6 +2343,9 @@ msgstr "İleti"
 #, kde-format
 msgid "Choose Custom Icon"
 msgstr "Özel Simge Seç"
+
+#~ msgid "pen"
+#~ msgstr "kalem"
 
 #~ msgid "&Run Speed"
 #~ msgstr "&Çalıştırma Hızı"
