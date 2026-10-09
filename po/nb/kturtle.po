@@ -2325,8 +2325,3 @@ msgstr "Melding"
 #, kde-format
 msgid "Choose Custom Icon"
 msgstr ""
-
-#, fuzzy
-#~| msgid "Open"
-#~ msgid "pen"
-#~ msgstr "Åpne"
