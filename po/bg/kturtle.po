@@ -2336,6 +2336,3 @@ msgstr "Съобщение"
 #, kde-format
 msgid "Choose Custom Icon"
 msgstr "Избор на персонализирана икона"
-
-#~ msgid "pen"
-#~ msgstr "писалка"
