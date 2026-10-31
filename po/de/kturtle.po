@@ -6,13 +6,13 @@
 # SPDX-FileCopyrightText: 2009-2011, 2022 Frederik Schwarzer <schwarzer@kde.org>
 # SPDX-FileCopyrightText: 2010-2011 Panagiotis Papadopoulos <pano_90@gmx.net>
 # SPDX-FileCopyrightText: 2011 Peter Rüthemann <peter.ruethemann@gmail.com>
-# SPDX-FileCopyrightText: 2025 Alois Spitzbart <spitz234@hotmail.com>
+# SPDX-FileCopyrightText: 2025-2026 Alois Spitzbart <spitz234@hotmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kturtle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-08 00:40+0000\n"
-"PO-Revision-Date: 2025-06-20 13:39+0200\n"
+"PO-Revision-Date: 2026-10-30 08:08+0100\n"
 "Last-Translator: Alois Spitzbart <spitz234@hotmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.07.70\n"
+"X-Generator: Lokalize 26.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -60,77 +60,72 @@ msgstr "durchstreichen"
 #: color.cpp:42
 #, kde-format
 msgid "%1 is not a valid color."
-msgstr ""
+msgstr "%1 ist keine gültige Farbe."
 
 #: color.cpp:49
 #, kde-format
 msgid "white"
-msgstr ""
+msgstr "weiß"
 
 #: color.cpp:51
 #, kde-format
 msgid "black"
-msgstr ""
+msgstr "schwarz"
 
 #: color.cpp:53
 #, kde-format
 msgid "grey"
-msgstr ""
+msgstr "grau"
 
 #: color.cpp:55
 #, kde-format
 msgid "gray"
-msgstr ""
+msgstr "grau"
 
 #: color.cpp:57
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Random' COMMAND ALIAS, there are some "
-#| "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn how to properly translate it."
-#| msgid "rnd"
+#, kde-format
 msgid "red"
-msgstr "zuf"
+msgstr "rot"
 
 #: color.cpp:59
 #, kde-format
 msgid "brown"
-msgstr ""
+msgstr "braun"
 
 #: color.cpp:61
 #, kde-format
 msgid "orange"
-msgstr ""
+msgstr "orange"
 
 #: color.cpp:63
 #, kde-format
 msgid "yellow"
-msgstr ""
+msgstr "gelb"
 
 #: color.cpp:65
 #, kde-format
 msgid "gold"
-msgstr ""
+msgstr "gold"
 
 #: color.cpp:67
 #, kde-format
 msgid "green"
-msgstr ""
+msgstr "grün"
 
 #: color.cpp:69
 #, kde-format
 msgid "blue"
-msgstr ""
+msgstr "blau"
 
 #: color.cpp:71
 #, kde-format
 msgid "purple"
-msgstr ""
+msgstr "lila"
 
 #: color.cpp:73
 #, kde-format
 msgid "pink"
-msgstr ""
+msgstr "rosa"
 
 #: colorpicker.cpp:28
 #, kde-format
@@ -1018,7 +1013,7 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "polygon"
-msgstr ""
+msgstr "polygon"
 
 #: interpreter/translator.cpp:378 interpreter/translator.cpp:418
 #, kde-format
@@ -1027,27 +1022,19 @@ msgctxt ""
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "ellipse"
-msgstr ""
+msgstr "ellipse"
 
 #: interpreter/translator.cpp:386 interpreter/translator.cpp:426
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn know how to properly translate it."
-#| msgid "triangle"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Rectangle' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "rectangle"
-msgstr "dreieck"
+msgstr "rechteck"
 
 #: interpreter/translator.cpp:394 interpreter/translator.cpp:434
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn know how to properly translate it."
-#| msgid "triangle"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Triangle' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
@@ -1523,7 +1510,7 @@ msgstr "E&xtras"
 #: kturtleui.rc:55
 #, kde-format
 msgid "&Change Icon"
-msgstr ""
+msgstr "&Symbol ändern"
 
 #. i18n: ectx: Menu (settings)
 #: kturtleui.rc:65
@@ -1980,36 +1967,29 @@ msgid "Color Picker: Show the color picker dialog"
 msgstr "Farbauswahl: Den Farbauswahldialog anzeigen"
 
 #: mainwindow.cpp:346
-#, fuzzy, kde-format
-#| msgid "KTurtle"
+#, kde-format
 msgid "kturtle"
-msgstr "KTurtle"
+msgstr "kturtle"
 
 #: mainwindow.cpp:354
 #, kde-format
 msgid "kturtle gray"
-msgstr ""
+msgstr "kturtle grau"
 
 #: mainwindow.cpp:361
-#, fuzzy, kde-format
-#| msgid "KTurtle"
+#, kde-format
 msgid "turtle"
-msgstr "KTurtle"
+msgstr "Schildkröte"
 
 #: mainwindow.cpp:368
 #, kde-format
 msgid "crab"
-msgstr ""
+msgstr "Krabbe"
 
 #: mainwindow.cpp:375
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'And' COMMAND, there are some rules on how "
-#| "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
-#| "learn how to properly translate it."
-#| msgid "and"
+#, kde-format
 msgid "ant"
-msgstr "und"
+msgstr "Ameise"
 
 #. i18n("pen"), this);
 #. a->setIcon(QIcon(QStringLiteral(":sprites/pen.svg")));
@@ -2020,12 +2000,12 @@ msgstr "und"
 #: mainwindow.cpp:389
 #, kde-format
 msgid "Choose Custom Icon…"
-msgstr ""
+msgstr "Benutzerdefiniertes Symbol auswählen …"
 
 #: mainwindow.cpp:391 mainwindow.cpp:392
 #, kde-format
 msgid "Choose an Icon for the turtle"
-msgstr ""
+msgstr "Wählen Sie ein Symbol für die Schildkröte aus"
 
 #: mainwindow.cpp:400
 #, kde-format
@@ -2374,7 +2354,7 @@ msgstr "Nachricht"
 #: mainwindow.cpp:1113
 #, kde-format
 msgid "Choose Custom Icon"
-msgstr ""
+msgstr "Benutzerdefiniertes Symbol auswählen"
 
 #, fuzzy
 #~| msgid "Open"
