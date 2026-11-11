@@ -162,6 +162,16 @@ usenada
 </row>
 <row>
 <entry
+>cores nomeadas</entry>
+<entry
+>depende da cor</entry>
+<entry
+><glossterm linkend="named-colors"
+>Cores nomeadas</glossterm
+> terão uma cor de fundo idêntica a elas.</entry>
+</row>
+<row>
+<entry
 >números</entry>
 <entry
 >vermelho escuro</entry>
@@ -383,6 +393,107 @@ usenada
 >Dois comandos necessitam de uma combinação RGB como parâmetro, e são eles: o <userinput
 >cordofundo</userinput
 > e o <userinput
+>cordolápis</userinput
+>.</para
+></glossdef>
+</glossentry>
+
+<glossentry id="named-colors">
+<glossterm
+>Cores nomeadas (textos de cor)</glossterm>
+<glossdef
+><para
+>Além das combinações RGB, você pode usar cores nomeadas. O Kturtle oferece suporte a um conjunto de cores nomeadas, que são passadas como texto para o comando que requer uma cor. <table frame="none">
+<title
+>Cores nomeadas atualmente suportadas</title>
+<tgroup cols="1" rowsep="1">
+<tbody>
+<row
+><entry
+><userinput
+>"branco"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"preto"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"cinza"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"cinza"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"vermelho"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"marrom"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"laranja"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"amarelo"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"ouro"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"verde"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"azul"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"púrpura"</userinput
+></entry
+></row>
+<row
+><entry
+><userinput
+>"rosa"</userinput
+></entry
+></row>
+</tbody>
+</tgroup>
+</table>
+</para>
+<para
+>Dois comandos podem utilizar uma cor nomeada como entrada: esses comandos são <userinput
+>cordofundo</userinput
+> e <userinput
 >cordolápis</userinput
 >.</para
 ></glossdef>

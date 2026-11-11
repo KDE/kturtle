@@ -778,31 +778,13 @@
 >Velocidade da Execução</guisubmenu
 > </menuchoice
 ></term>
-      <listitem
+     <listitem
 ><para
->Apresenta uma lista com as velocidades de execução possíveis, consistindo em: <guimenuitem
->velocidade máxima (sem realce e inspetor)</guimenuitem
->, <guimenuitem
->velocidade máxima</guimenuitem
->, <guimenuitem
->velocidade baixa</guimenuitem
->, <guimenuitem
->velocidade mais baixa</guimenuitem
->, <guimenuitem
->velocidade mínima</guimenuitem
-> e <guimenuitem
->passo-a-passo</guimenuitem
->. Quando a velocidade de execução é igual <guimenuitem
->velocidade máxima</guimenuitem
-> (padrão), você poderá não conseguir ver o que está acontecendo. Em alguns dos casos este comportamento poderá ser o desejado, mas em outros casos você poderá querer ter uma ideia da execução. No último caso, você poderá desejar configurar a velocidade da execução como <guimenuitem
->velocidade baixa</guimenuitem
->, <guimenuitem
->velocidade mais baixa</guimenuitem
-> ou <guimenuitem
->velocidade mínima</guimenuitem
->. Quando um dos modos lentos for selecionado, a posição atual de execução será exibida no editor. O <guimenuitem
->passo-a-passo</guimenuitem
-> irá executar um comando por vez.</para
+>Oferece dois modos de execução: primeiro, um <guilabel
+>controle deslizante de velocidade</guilabel
+> para selecionar um valor na faixa de 1% a 100%, com um rótulo indicando a porcentagem atual. 1% representa a velocidade mais lenta e 100% (padrão), a mais rápida. O destaque e o inspetor permanecem ativos em qualquer velocidade. Segundo modo: <guimenuitem
+>Passo a passo</guimenuitem
+>, que executa um comando de cada vez.</para
 ></listitem>
     </varlistentry>
   </variablelist>
@@ -845,6 +827,33 @@
 ><para
 >Esta ação abre o diálogo do seletor de cores.</para
 ></listitem>
+    </varlistentry>
+  </variablelist>
+  <variablelist>
+    <anchor id="tools-change-icon"/>
+    <varlistentry>
+      <term
+><menuchoice
+><guimenu
+>Ferramentas</guimenu
+> <guimenuitem
+>Alterar ícone...</guimenuitem
+> </menuchoice
+></term>
+      <listitem>
+        <para
+>Esta ação abre uma lista que contém alguns ícones predefinidos e uma ação <guimenuitem
+>Escolher ícone personalizado…</guimenuitem
+>, que permite selecionar seu próprio arquivo <literal
+>.svg</literal
+> para usar como ícone.</para>
+        <para
+>Para mais ícones, consulte <ulink url="https://freesvg.org"
+>freesvg.org</ulink
+> ou <ulink url="https://openclipart.org/"
+>openclipart.org</ulink
+>.</para>
+      </listitem>
     </varlistentry>
   </variablelist>
 </sect2>

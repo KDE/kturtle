@@ -913,6 +913,115 @@ $resposta = 10 &gt; 3
   </note>
 </sect2>
 
+<sect2 id="drawing-shapes">
+<title
+>Desenhar formas</title>
+<para
+>O &kturtle; possui comandos para desenhar formas comuns, sem a necessidade de construí-las a partir dos comandos <userinput
+>parafrente</userinput
+> e <userinput
+>paraesquerda</userinput
+>.</para>
+
+  <variablelist>
+    <anchor id="polygon"/>
+    <varlistentry>
+      <term
+>polígono<indexterm
+><primary
+>polígono</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>polígono vértices, tamanho</screen
+><userinput
+>polígono</userinput
+> desenha um polígono regular com o número de vértices especificado (entre 3 e 10) e o tamanho definido. Um terceiro parâmetro opcional define o ângulo de rotação em graus, e um quarto parâmetro opcional define a proporção dos raios (um número entre 0 e 1) para transformar o polígono em uma estrela. A proporção dos raios controla o quanto os pontos médios das linhas que unem os vértices são puxados em direção ao centro: uma proporção de 1 cria um polígono convexo regular, enquanto valores menores os aproximam do centro, criando pontas em forma de estrela.<screen>
+polígono 3, 100
+polígono 6, 100, 45
+polígono 5, 100, 0, 0,5
+</screen
+> A primeira linha desenha um triângulo equilátero; a segunda, um hexágono rotacionado em 45 graus; e a terceira, uma estrela de 5 pontas.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="triangle"/>
+    <varlistentry>
+      <term
+>triângulo<indexterm
+><primary
+>triângulo</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>triângulo ladoA, ladoB, ladoC</screen
+><userinput
+>triângulo</userinput
+> desenha um triângulo com os três comprimentos de lado fornecidos. Um quarto parâmetro opcional define o ângulo de rotação em graus.<screen>
+triângulo 80, 100, 60
+</screen
+> Isso desenha um triângulo com lados de comprimento 80, 100 e 60.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <variablelist>
+    <anchor id="rectangle"/>
+    <varlistentry>
+      <term
+>retângulo<indexterm
+><primary
+>retângulo</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>retângulo largura, altura</screen
+><userinput
+>retângulo</userinput
+> desenha um retângulo com a largura e a altura especificadas. Um terceiro parâmetro opcional define o ângulo de rotação em graus.<screen>
+retângulo 100, 60
+retângulo 100, 60, 45
+</screen
+> A segunda linha desenha o mesmo retângulo rotacionado em 45 graus.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+<variablelist>
+    <anchor id="ellipse"/>
+    <varlistentry>
+      <term
+>elipse<indexterm
+><primary
+>elipse</primary
+></indexterm
+></term>
+      <listitem
+><para
+><screen
+>elipse largura, altura</screen
+><userinput
+>elipse</userinput
+> desenha uma elipse com a largura e a altura especificadas. Se apenas um parâmetro for fornecido, ele será usado tanto para a largura quanto para a altura, resultando em um círculo. Um terceiro parâmetro opcional define o ângulo de rotação em graus. <screen>
+elipse 50
+elipse 100, 60
+elipse 100, 60, 45
+</screen
+> A primeira linha desenha um círculo com diâmetro de 50; a segunda, uma elipse; e a terceira, a mesma elipse rotacionada em 45 graus.</para
+></listitem>
+    </varlistentry>
+  </variablelist>
+
+</sect2>
+
 <sect2 id="locate-the-turtle">
 <title
 >Onde está a tartaruga?</title>
@@ -1057,13 +1166,17 @@ $resposta = 10 &gt; 3
       <listitem
 ><para
 ><screen
->cordolápis R,G,B</screen
+>cordolápis R,G,B</screen>
+      <screen
+>cordolápis "cor"</screen
 >A <userinput
 >cordolápis</userinput
 > configura a cor do traço. A <userinput
 >cordolápis</userinput
 > recebe uma <glossterm linkend="rgb"
 >combinação de RGB</glossterm
+> ou uma <glossterm linkend="named-colors"
+>cor nomeada</glossterm
 > como parâmetro. A <userinput
 >cordolápis</userinput
 > pode ser abreviado para <userinput
@@ -1119,13 +1232,17 @@ $resposta = 10 &gt; 3
       <listitem
 ><para
 ><screen
->cordofundo R,G,B</screen
+>cordofundo R,G,B</screen>
+      <screen
+>cordofundo "cor"</screen
 >A <userinput
 >cordofundo</userinput
 > define a cor da área de desenho. A <userinput
 >cordofundor</userinput
 > recebe uma <glossterm linkend="rgb"
 >combinação RGB</glossterm
+> ou uma <glossterm linkend="named-colors"
+>cor nomeada</glossterm
 > como parâmetro. A <userinput
 >cordofundo</userinput
 > pode ser abreviado para <userinput
