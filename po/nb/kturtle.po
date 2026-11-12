@@ -2045,12 +2045,12 @@ msgstr "Vis &linjenummer"
 #: mainwindow.cpp:439
 #, kde-format
 msgid "Turn the line numbers on/off in the editor"
-msgstr "Skru av/på linjenummer i skriveprogrammet"
+msgstr "Skru på/av linjenummer i skriveprogrammet"
 
 #: mainwindow.cpp:440
 #, kde-format
 msgid "Show Line Numbers: Turn the line numbers on/off in the editor"
-msgstr "Vis linjenummer: Skru av/på linjenummer i skriveprogrammet"
+msgstr "Vis linjenummer: Skru på/av linjenummer i skriveprogrammet"
 
 #: mainwindow.cpp:451
 #, kde-format
