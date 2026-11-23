@@ -78,14 +78,9 @@ msgid "gray"
 msgstr ""
 
 #: color.cpp:57
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'Random' COMMAND ALIAS, there are some "
-#| "rules on how to translate it.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn how to properly translate it."
-#| msgid "rnd"
+#, kde-format
 msgid "red"
-msgstr "rnd"
+msgstr ""
 
 #: color.cpp:59
 #, kde-format
@@ -999,30 +994,22 @@ msgid "ellipse"
 msgstr ""
 
 #: interpreter/translator.cpp:386 interpreter/translator.cpp:426
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn know how to properly translate it."
-#| msgid "triangle"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Rectangle' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "rectangle"
-msgstr "三角形"
+msgstr ""
 
 #: interpreter/translator.cpp:394 interpreter/translator.cpp:434
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "This is an EXAMPLE NAME in KTurtle.Please see https://edu.kde.org/kturtle/"
-#| "translator.php to learn know how to properly translate it."
-#| msgid "triangle"
+#, kde-format
 msgctxt ""
 "You are about to translate the 'Triangle' COMMAND, there are some rules on "
 "how to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
 "learn how to properly translate it."
 msgid "triangle"
-msgstr "三角形"
+msgstr ""
 
 #: interpreter/translator.cpp:402
 #, kde-format
@@ -1927,10 +1914,9 @@ msgid "Color Picker: Show the color picker dialog"
 msgstr "颜色拾取器：显示颜色拾取器对话框"
 
 #: mainwindow.cpp:346
-#, fuzzy, kde-format
-#| msgid "KTurtle"
+#, kde-format
 msgid "kturtle"
-msgstr "KTurtle"
+msgstr ""
 
 #: mainwindow.cpp:354
 #, kde-format
@@ -1938,10 +1924,9 @@ msgid "kturtle gray"
 msgstr ""
 
 #: mainwindow.cpp:361
-#, fuzzy, kde-format
-#| msgid "KTurtle"
+#, kde-format
 msgid "turtle"
-msgstr "KTurtle"
+msgstr ""
 
 #: mainwindow.cpp:368
 #, kde-format
@@ -1949,14 +1934,9 @@ msgid "crab"
 msgstr ""
 
 #: mainwindow.cpp:375
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "You are about to translate the 'And' COMMAND, there are some rules on how "
-#| "to translate it.Please see https://edu.kde.org/kturtle/translator.php to "
-#| "learn how to properly translate it."
-#| msgid "and"
+#, kde-format
 msgid "ant"
-msgstr "和"
+msgstr ""
 
 #. i18n("pen"), this);
 #. a->setIcon(QIcon(QStringLiteral(":sprites/pen.svg")));
@@ -2313,64 +2293,3 @@ msgstr "信息"
 #, kde-format
 msgid "Choose Custom Icon"
 msgstr ""
-
-#, fuzzy
-#~| msgid "Open"
-#~ msgid "pen"
-#~ msgstr "打开"
-
-#~ msgid "&Run Speed"
-#~ msgstr "运行速度(&R)"
-
-#~ msgctxt "@option:radio"
-#~ msgid "Full Speed (&no highlighting and inspector)"
-#~ msgstr "全速 (无语法加亮和检查器) (&N)"
-
-#~ msgid ""
-#~ "Run the program at full speed, with highlighting and inspector disabled"
-#~ msgstr "全速运行程序，禁用语法加亮和检查器"
-
-#~ msgid ""
-#~ "Full Speed: Run the program at full speed, with highlighting and "
-#~ "inspector disabled"
-#~ msgstr "全速：全速运行程序，禁用语法加亮和检查器"
-
-#~ msgctxt "@option:radio"
-#~ msgid "&Full Speed"
-#~ msgstr "全速(&F)"
-
-#~ msgid "Run the program at full speed"
-#~ msgstr "全速运行程序"
-
-#~ msgid "Full Speed: Run the program at full speed"
-#~ msgstr "全速：全速运行程序"
-
-#~ msgctxt "@option:radio choose the slow speed"
-#~ msgid "&Slow"
-#~ msgstr "慢速(&S)"
-
-#~ msgid "Run the program at a slow speed"
-#~ msgstr "慢速运行程序"
-
-#~ msgid "Slow Speed: Run the program at a slow speed"
-#~ msgstr "慢速：慢速运行程序"
-
-#~ msgctxt "@option:radio"
-#~ msgid "S&lower"
-#~ msgstr "较慢(&L)"
-
-#~ msgid "Run the program at a slower speed"
-#~ msgstr "较慢速度运行程序"
-
-#~ msgid "Slower Speed: Run the program at a slower speed"
-#~ msgstr "较慢速：较慢速度运行程序"
-
-#~ msgctxt "@option:radio"
-#~ msgid "Sl&owest"
-#~ msgstr "最慢(&O)"
-
-#~ msgid "Run the program at the slowest speed"
-#~ msgstr "最慢速运行程序"
-
-#~ msgid "Slowest Speed: Run the program at the slowest speed"
-#~ msgstr "最慢速：最慢速运行程序"
