@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kdeedu-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-08 02:53+0000\n"
-"PO-Revision-Date: 2026-11-23 18:16+0300\n"
+"PO-Revision-Date: 2026-11-26 19:10+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -664,7 +664,7 @@ msgstr "Verilen kenar uzunlukları bir üçgen oluşturamıyor"
 #: interpreter/executer.cpp:1244 interpreter/executer.cpp:1272
 #, kde-format
 msgid "The command %1 takes either a string or %2 numbers"
-msgstr "%1 komutu ya bir dizi veya %2 sayısı alır"
+msgstr "%1 komutu ya bir dizge veya %2 sayısı alır"
 
 #: interpreter/executer.cpp:1445
 #, kde-format
@@ -723,8 +723,8 @@ msgid ""
 "Text string was not properly closed, expected a double quote, ' \" ', to "
 "close the string."
 msgstr ""
-"Deneme karakter dizisi doğru kapatılmadı, diziyi doğru kapatmak için bir "
-"çift tırnak (\") bekleniyor."
+"Deneme dizge doğru kapatılmadı, diziyi doğru kapatmak için bir çift tırnak "
+"(\") bekleniyor."
 
 #: interpreter/parser.cpp:644
 #, kde-format
